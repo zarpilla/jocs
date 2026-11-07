@@ -185,6 +185,8 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
         if (def?.name) thing.description = t(def.name);
       }
       writeJson(path, benneRoom);
+      // Art encara provisional: es redibuixa (els dissenys poden haver canviat).
+      if (existsSync(join(gameDir, 'assets/images/rooms', id, '.provisional'))) report.needsArt.push(`rooms/${id}`);
     }
     if (!listed.has(id)) {
       (manifest.rooms as Json[]).push({ id, definition: `${id}/${id}.room.json` });

@@ -20,6 +20,9 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from room_designs import DESIGNS, C  # noqa: E402
+
 PALETTE = {
     # passat: fàbrica de ferro-9 (calent, rovell, vapor)
     'iri': {'wall': (92, 62, 44), 'wall2': (108, 74, 52), 'floor': (52, 36, 26), 'line': (230, 170, 100), 'text': (255, 226, 180), 'door': (40, 26, 18)},
@@ -159,6 +162,60 @@ def short_labels(items):
     return out
 
 
+def draw_designed(dir_: Path, game_dir: Path, design):
+    """Sala amb disseny propi: fons en pixel art + props, i la geometria de Benne a joc."""
+    name = dir_.name
+    room_path = game_dir / 'rooms' / name / f'{name}.room.json'
+    room = json.loads(room_path.read_text())
+    w, h = room['size']['width'], room['size']['height']
+
+    bg = Image.new('RGBA', (w, h), (0, 0, 0, 255))
+    design['bg'](C(bg))
+    frames, tags = [bg], ['BG']
+    for prop in room['props']:
+        if prop['id'] == 'BG':
+            continue
+        frame = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+        draw = design['props'].get(prop['id'])
+        if draw:
+            draw(C(frame))
+        frames.append(frame)
+        tags.append(prop.get('tag', prop['id']))
+
+    sheet = Image.new('RGBA', (w * len(frames), h), (0, 0, 0, 0))
+    for i, f in enumerate(frames):
+        sheet.paste(f, (i * w, 0))
+    sheet.save(dir_ / f'{name}.png')
+    (dir_ / f'{name}.json').write_text(json.dumps(aseprite_sheet(name, len(frames), tags, w, h), indent=2) + '\n')
+    (dir_ / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
+
+    # Geometria: el que es pot clicar ha de coincidir amb el que es veu.
+    def poly(r):
+        x0, y0, x1, y1 = r
+        return [{'x': x0, 'y': y0}, {'x': x1, 'y': y0}, {'x': x1, 'y': y1}, {'x': x0, 'y': y1}]
+
+    things = design['things']
+    for hs in room['hotspots']:
+        t = things.get(hs['id'])
+        if t:
+            hs['points'] = poly(t['rect'])
+            hs['walkToPoint'] = {'x': t['walk'][0], 'y': t['walk'][1]}
+            hs['lookAtPoint'] = {'x': (t['rect'][0] + t['rect'][2]) // 2, 'y': t['rect'][3]}
+    for prop in room['props']:
+        t = things.get(prop['id'])
+        if t:
+            prop['collider'] = {'points': poly(t['rect'])}
+            prop['walkToPoint'] = {'x': t['walk'][0], 'y': t['walk'][1]}
+            prop['lookAtPoint'] = {'x': (t['rect'][0] + t['rect'][2]) // 2, 'y': t['rect'][3]}
+    for ch in room['characters']:
+        cid = ch['definition'].split('/')[0]
+        if cid in design['spawns']:
+            ch['x'], ch['y'] = design['spawns'][cid]
+    room['walkable']['polygons'][0]['points'] = [{'x': x, 'y': y} for x, y in design['walkable']]
+    room_path.write_text(json.dumps(room, indent=2, ensure_ascii=False) + '\n')
+    print(f'✔ escena provisional: rooms/{name}')
+
+
 def draw_inventory(dir_: Path, req, small):
     fw, fh = 36, 20
     items = req['items']
@@ -188,7 +245,10 @@ def main(game_dir: Path):
         dir_.mkdir(parents=True, exist_ok=True)
         if (dir_ / f'{dir_.name}.png').exists() and not (dir_ / '.provisional').exists():
             continue
-        draw_room(dir_, json.loads(req_path.read_text()), font, small)
+        if dir_.name in DESIGNS:
+            draw_designed(dir_, game_dir, DESIGNS[dir_.name])
+        else:
+            draw_room(dir_, json.loads(req_path.read_text()), font, small)
     inv = game_dir / 'assets/images/inventory'
     req_path = requests / 'inventory.json'
     if req_path.exists() and (not (inv / 'inventory.png').exists() or (inv / '.provisional').exists()):

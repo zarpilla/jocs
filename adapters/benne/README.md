@@ -74,6 +74,17 @@ coincideixen mai. Per això **cada sala és d'una protagonista** (`"protagonist"
 canviar de protagonista vol dir anar a la sala on és l'altra, i en entrar-hi el pont en pren el
 control. L'última sala de cada protagonista es desa amb la partida.
 
+## Escenes provisionals
+
+`tools/room_designs.py` té un disseny per a cada sala de l'Acte 1: el fons en pixel art (fàbrica de
+maons i coure al passat, presó orbital de metall al present) i, alhora, **la geometria per a Benne**:
+on és cada cosa clicable, on hi camina la protagonista i on hi ha cada personatge. El sync la
+dibuixa i ajusta el `.room.json` perquè el que es veu i el que es clica coincideixin.
+
+Només mentre la sala sigui provisional (marca `.provisional`): quan hi hagi art de debò i polígons
+retocats a l'editor de Benne, s'esborra la marca i el sync ja no hi toca res més que els textos.
+Les sales noves sense disseny surten amb caixes etiquetades fins que se'ls en faci un.
+
 ## Personatges provisionals
 
 `tools/draw_characters.py` dibuixa en pixel art els sprites de l'Iri, la Vet, el Cargol, el capatàs,
