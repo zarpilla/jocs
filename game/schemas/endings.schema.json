@@ -1,0 +1,371 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "EndingDef": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "$ref": "#/definitions/TextKey"
+        },
+        "text": {
+          "$ref": "#/definitions/TextKey"
+        },
+        "when": {
+          "$ref": "#/definitions/Condition",
+          "description": "Per triar-ne un automàticament amb `resolveEnding()`."
+        },
+        "priority": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "title",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "TextKey": {
+      "type": "string",
+      "description": "Clau d'un text a `game/locales/<idioma>/*.json`, p. ex. `\"dlg.pescador.hola\"`."
+    },
+    "Condition": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "flag": {
+              "$ref": "#/definitions/Id"
+            },
+            "is": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "flag"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "var": {
+              "$ref": "#/definitions/Id"
+            },
+            "op": {
+              "$ref": "#/definitions/CompareOp"
+            },
+            "value": {
+              "$ref": "#/definitions/Scalar"
+            }
+          },
+          "required": [
+            "var",
+            "op",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "hasItem": {
+              "$ref": "#/definitions/Id"
+            },
+            "is": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "hasItem"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "remembers": {
+              "type": "object",
+              "properties": {
+                "who": {
+                  "$ref": "#/definitions/Id"
+                },
+                "fact": {
+                  "$ref": "#/definitions/Id"
+                },
+                "atLeast": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "who",
+                "fact"
+              ],
+              "additionalProperties": false
+            },
+            "is": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "remembers"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "relation": {
+              "type": "object",
+              "properties": {
+                "who": {
+                  "$ref": "#/definitions/Id"
+                },
+                "op": {
+                  "$ref": "#/definitions/CompareOp"
+                },
+                "value": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "who",
+                "op",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "relation"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "quest": {
+              "$ref": "#/definitions/Id"
+            },
+            "status": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/QuestStatus"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/QuestStatus"
+                  }
+                }
+              ]
+            }
+          },
+          "required": [
+            "quest",
+            "status"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "objective": {
+              "type": "object",
+              "properties": {
+                "quest": {
+                  "$ref": "#/definitions/Id"
+                },
+                "objective": {
+                  "$ref": "#/definitions/Id"
+                }
+              },
+              "required": [
+                "quest",
+                "objective"
+              ],
+              "additionalProperties": false
+            },
+            "is": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "objective"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "visited": {
+              "$ref": "#/definitions/Id"
+            },
+            "is": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "visited"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "inRoom": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "inRoom"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "seen": {
+              "type": "object",
+              "properties": {
+                "dialogue": {
+                  "$ref": "#/definitions/Id"
+                },
+                "node": {
+                  "$ref": "#/definitions/Id"
+                }
+              },
+              "required": [
+                "dialogue",
+                "node"
+              ],
+              "additionalProperties": false
+            },
+            "is": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "seen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "chosen": {
+              "type": "object",
+              "properties": {
+                "dialogue": {
+                  "$ref": "#/definitions/Id"
+                },
+                "node": {
+                  "$ref": "#/definitions/Id"
+                },
+                "choice": {
+                  "$ref": "#/definitions/Id"
+                }
+              },
+              "required": [
+                "dialogue",
+                "node",
+                "choice"
+              ],
+              "additionalProperties": false
+            },
+            "is": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "chosen"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Condition"
+              }
+            }
+          },
+          "required": [
+            "all"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Condition"
+              }
+            }
+          },
+          "required": [
+            "any"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "not": {
+              "$ref": "#/definitions/Condition"
+            }
+          },
+          "required": [
+            "not"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Id": {
+      "type": "string"
+    },
+    "CompareOp": {
+      "type": "string",
+      "enum": [
+        "==",
+        "!=",
+        ">",
+        ">=",
+        "<",
+        "<="
+      ]
+    },
+    "Scalar": {
+      "type": [
+        "number",
+        "string",
+        "boolean"
+      ]
+    },
+    "QuestStatus": {
+      "type": "string",
+      "enum": [
+        "inactive",
+        "active",
+        "completed",
+        "failed"
+      ]
+    }
+  },
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "patternProperties": {
+    "^[a-z][a-z0-9_]*$": {
+      "$ref": "#/definitions/EndingDef"
+    }
+  },
+  "additionalProperties": false
+}

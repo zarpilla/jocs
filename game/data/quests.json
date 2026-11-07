@@ -1,0 +1,28 @@
+{
+  "$schema": "../schemas/quests.schema.json",
+  "encendre_far": {
+    "kind": "main",
+    "title": "mis.far.titol",
+    "description": "mis.far.desc",
+    "startWhen": { "visited": "moll" },
+    "objectives": [
+      { "id": "aconseguir_clau", "text": "mis.far.obj.clau", "completeWhen": { "hasItem": "clau_far" } },
+      { "id": "encendre", "text": "mis.far.obj.encendre", "completeWhen": { "flag": "far_ences" } }
+    ]
+  },
+  "esquer_pescador": {
+    "kind": "side",
+    "title": "mis.esquer.titol",
+    "description": "mis.esquer.desc",
+    "objectives": [
+      { "id": "trobar_esquer", "text": "mis.esquer.obj.trobar", "completeWhen": { "hasItem": "esquer" } },
+      { "id": "donar_esquer", "text": "mis.esquer.obj.donar" }
+    ],
+    "failWhen": { "relation": { "who": "pescador", "op": "<=", "value": -3 } },
+    "onComplete": [
+      { "relation": { "who": "pescador", "change": 2 } },
+      { "remember": { "who": "pescador", "fact": "ajudat" } },
+      { "addVar": "monedes", "amount": 3 }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "ItemDef": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/TextKey"
+        },
+        "description": {
+          "$ref": "#/definitions/TextKey"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "TextKey": {
+      "type": "string",
+      "description": "Clau d'un text a `game/locales/<idioma>/*.json`, p. ex. `\"dlg.pescador.hola\"`."
+    }
+  },
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "patternProperties": {
+    "^[a-z][a-z0-9_]*$": {
+      "$ref": "#/definitions/ItemDef"
+    }
+  },
+  "additionalProperties": false
+}

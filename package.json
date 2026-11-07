@@ -1,0 +1,26 @@
+{
+  "name": "aventura",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "game"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "validate": "tsx tools/validate.ts",
+    "schemas": "tsx tools/generate-schemas.ts",
+    "benne:sync": "tsx adapters/benne/sync.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "ajv": "^8.20.0",
+    "ts-json-schema-generator": "^2.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}

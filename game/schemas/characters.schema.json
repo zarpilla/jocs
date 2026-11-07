@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "CharacterDef": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "$ref": "#/definitions/TextKey"
+        },
+        "facts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Id"
+          },
+          "description": "Fets que aquest personatge pot recordar. Serveix per validar el contingut."
+        },
+        "relation": {
+          "type": "object",
+          "properties": {
+            "initial": {
+              "type": "number"
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
+        "description": {
+          "$ref": "#/definitions/TextKey",
+          "description": "Descripció per a \"mirar\" (opcional)."
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "TextKey": {
+      "type": "string",
+      "description": "Clau d'un text a `game/locales/<idioma>/*.json`, p. ex. `\"dlg.pescador.hola\"`."
+    },
+    "Id": {
+      "type": "string"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "patternProperties": {
+    "^[a-z][a-z0-9_]*$": {
+      "$ref": "#/definitions/CharacterDef"
+    }
+  },
+  "additionalProperties": false
+}

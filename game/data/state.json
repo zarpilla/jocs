@@ -1,0 +1,10 @@
+{
+  "$schema": "../schemas/state.schema.json",
+  "flags": {
+    "far_ences": false,
+    "porta_taverna_oberta": false
+  },
+  "vars": {
+    "monedes": 0
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "../schemas/game.schema.json",
+  "id": "aventura",
+  "title": "joc.titol",
+  "defaultLocale": "ca",
+  "locales": ["ca"],
+  "player": "protagonista"
+}

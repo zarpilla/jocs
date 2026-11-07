@@ -1,0 +1,14 @@
+{
+  "name": "@aventura/game",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Contingut del joc: dades i textos en JSON. Sense codi de cap motor.",
+  "type": "module",
+  "exports": {
+    ".": "./index.ts",
+    "./assemble": "./assemble.ts"
+  },
+  "dependencies": {
+    "@aventura/narrative-core": "*"
+  }
+}

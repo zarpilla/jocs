@@ -1,0 +1,19 @@
+{
+  "$schema": "../schemas/endings.schema.json",
+  "heroi_del_port": {
+    "title": "final.heroi.titol",
+    "text": "final.heroi.text",
+    "priority": 10,
+    "when": { "all": [ { "flag": "far_ences" }, { "relation": { "who": "pescador", "op": ">=", "value": 2 } } ] }
+  },
+  "far_ences_sol": {
+    "title": "final.sol.titol",
+    "text": "final.sol.text",
+    "priority": 5,
+    "when": { "flag": "far_ences" }
+  },
+  "fugida": {
+    "title": "final.fugida.titol",
+    "text": "final.fugida.text"
+  }
+}

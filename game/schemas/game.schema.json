@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$ref": "#/definitions/GameFile",
+  "definitions": {
+    "GameFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/definitions/Id"
+        },
+        "title": {
+          "$ref": "#/definitions/TextKey"
+        },
+        "defaultLocale": {
+          "type": "string"
+        },
+        "locales": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "player": {
+          "$ref": "#/definitions/Id",
+          "description": "Personatge que controla el jugador."
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "defaultLocale",
+        "id",
+        "locales",
+        "player",
+        "title"
+      ]
+    },
+    "Id": {
+      "type": "string"
+    },
+    "TextKey": {
+      "type": "string",
+      "description": "Clau d'un text a `game/locales/<idioma>/*.json`, p. ex. `\"dlg.pescador.hola\"`."
+    }
+  }
+}

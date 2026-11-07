@@ -1,0 +1,12 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "protagonista": {
+    "name": "pj.protagonista.nom"
+  },
+  "pescador": {
+    "name": "pj.pescador.nom",
+    "description": "pj.pescador.desc",
+    "facts": ["insultat", "ajudat", "preguntat_far"],
+    "relation": { "initial": 0, "min": -3, "max": 3 }
+  }
+}

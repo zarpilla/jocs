@@ -1,0 +1,6 @@
+{
+  "$schema": "../schemas/items.schema.json",
+  "moneda": { "name": "obj.moneda.nom", "description": "obj.moneda.desc" },
+  "esquer": { "name": "obj.esquer.nom", "description": "obj.esquer.desc" },
+  "clau_far": { "name": "obj.clau_far.nom", "description": "obj.clau_far.desc" }
+}
