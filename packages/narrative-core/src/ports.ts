@@ -39,7 +39,11 @@ export class MemoryWorld implements WorldPort {
   /** Sala on és cada protagonista. */
   rooms = new Map<Id, Id>();
 
-  constructor(public active: Id = 'player') {}
+  active: Id;
+
+  constructor(active: Id = 'player') {
+    this.active = active;
+  }
 
   private bag(who: Id = this.active) {
     let bag = this.inventories.get(who);

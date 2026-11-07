@@ -2,14 +2,14 @@
   "name": "@aventura/game",
   "version": "0.1.0",
   "private": true,
-  "description": "Contingut del joc: dades i textos en JSON. Sense codi de cap motor.",
+  "description": "Contingut del joc: dades i textos en JSON, i regles pròpies (logic/). Només importa tipus del nucli.",
   "type": "module",
   "exports": {
     ".": "./index.ts",
     "./assemble": "./assemble.ts",
     "./logic": "./logic/index.ts"
   },
-  "dependencies": {
+  "devDependencies": {
     "@aventura/narrative-core": "*"
   }
 }

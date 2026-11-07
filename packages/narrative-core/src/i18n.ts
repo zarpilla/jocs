@@ -13,7 +13,10 @@ export class Localizer {
   readonly missing = new Set<string>();
   private _locale: string;
 
-  constructor(readonly defaultLocale: string, tables: Record<string, LocaleTable> = {}) {
+  readonly defaultLocale: string;
+
+  constructor(defaultLocale: string, tables: Record<string, LocaleTable> = {}) {
+    this.defaultLocale = defaultLocale;
     this._locale = defaultLocale;
     for (const [locale, table] of Object.entries(tables)) this.add(locale, table);
   }

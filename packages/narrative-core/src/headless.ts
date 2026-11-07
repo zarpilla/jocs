@@ -25,11 +25,12 @@ export class HeadlessPlayer {
   deferDialogues = false;
   pendingDialogue: Id | null = null;
 
-  constructor(
-    readonly narrative: Narrative,
-    readonly world: MemoryWorld,
-    opts: HeadlessOptions = {},
-  ) {
+  readonly narrative: Narrative;
+  readonly world: MemoryWorld;
+
+  constructor(narrative: Narrative, world: MemoryWorld, opts: HeadlessOptions = {}) {
+    this.narrative = narrative;
+    this.world = world;
     narrative.on(world.listener);
     narrative.on((e) => {
       if (e.type === 'custom' && e.name === (opts.switchEvent ?? 'protagonista')) this.pendingSwitch = String(e.args.id);
