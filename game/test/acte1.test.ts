@@ -7,13 +7,38 @@ import { HeadlessPlayer, MemoryWorld, Narrative, validateContent } from '@aventu
 import { content, locales } from '../index.js';
 import { GAME_ACTIONS, GAME_TEXT_KEYS, estatFinestra, installGameLogic } from '../logic/index.js';
 
-function start() {
+function start(opts: { checkHints?: boolean } = {}) {
   const world = new MemoryWorld();
   const n = new Narrative({ content, locales, world });
   installGameLogic(n);
-  const p = new HeadlessPlayer(n, world);
-  p.newGame();
+  const player = new HeadlessPlayer(n, world);
+  player.newGame();
+  // Opcional: després de cada acció, el jugador ha de tenir alguna pista disponible.
+  const p = !opts.checkHints ? player : new Proxy(player, {
+    get(target, prop, receiver) {
+      const value = Reflect.get(target, prop, receiver);
+      if (typeof value !== 'function' || !['do', 'use', 'talk', 'goTo', 'switchTo'].includes(String(prop))) return value;
+      return (...args: unknown[]) => {
+        const result = (value as (...a: unknown[]) => unknown).apply(target, args);
+        if (!n.flag('acte1_acabat')) {
+          // Les pistes depenen de la protagonista: n'ha de tenir alguna l'una o l'altra.
+          const any = n.activeHints().length > 0 || otherHasHint(n, world);
+          expect(any, `Sense pistes després de ${String(prop)}(${JSON.stringify(args)})`).toBe(true);
+        }
+        return result;
+      };
+    },
+  });
   return { n, p, world };
+}
+
+function otherHasHint(n: Narrative, world: MemoryWorld) {
+  const current = world.active;
+  const other = n.content.manifest.protagonists.find((x) => x !== current)!;
+  world.active = other;
+  const has = n.activeHints().length > 0;
+  world.active = current;
+  return has;
 }
 
 const keys = (lines: { key: string }[]) => lines.map((l) => l.key);
@@ -58,8 +83,8 @@ describe('Ferro-9 · Acte 1', () => {
     expect(n.requestHint()!.text).toContain('Cargol');
   });
 
-  it('partida completa: de la primera alarma a fora de la cel·la', () => {
-    const { p, n } = start();
+  it('partida completa: de la primera alarma a fora de la cel·la (sempre amb alguna pista)', () => {
+    const { p, n } = start({ checkHints: true });
 
     // ── Iri: formulari, segell, clau de la cambra ──
     expect(texts(p.do('open', 'porta_cambra'))).toContain('Tancada');

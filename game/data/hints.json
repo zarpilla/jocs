@@ -542,5 +542,106 @@
       "pista.vet_sortir.1",
       "pista.vet_sortir.2"
     ]
+  },
+  "iri_porta": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "clau_cambra",
+          "who": "iri"
+        },
+        {
+          "flag": "porta_cambra_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "porta_cambra_oberta"
+    },
+    "levels": [
+      "pista.iri_porta.1",
+      "pista.iri_porta.2"
+    ]
+  },
+  "vet_armar": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "finestra_objecte_vet",
+          "op": "!=",
+          "value": ""
+        },
+        {
+          "var": "finestra_armada",
+          "op": "==",
+          "value": ""
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "var": "finestra_objecte_vet",
+          "op": "==",
+          "value": ""
+        },
+        {
+          "var": "finestra_armada",
+          "op": "!=",
+          "value": ""
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_armar.1",
+      "pista.vet_armar.2"
+    ]
+  },
+  "iri_armar": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "var": "finestra_objecte_iri",
+          "op": "!=",
+          "value": ""
+        },
+        {
+          "var": "finestra_armada",
+          "op": "==",
+          "value": ""
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "var": "finestra_objecte_iri",
+          "op": "==",
+          "value": ""
+        },
+        {
+          "var": "finestra_armada",
+          "op": "!=",
+          "value": ""
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_armar.1",
+      "pista.iri_armar.2"
+    ]
   }
 }

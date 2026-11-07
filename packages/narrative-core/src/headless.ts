@@ -18,6 +18,12 @@ export class HeadlessPlayer {
   /** Tot el que s'ha dit, en ordre (per depurar o per a una transcripció). */
   readonly transcript: string[] = [];
   private pendingSwitch: Id | null = null;
+  /**
+   * Si és cert, els diàlegs que obre una interacció no es juguen sols: queden a
+   * `pendingDialogue` perquè els condueixi qui fa servir el jugador (p. ex. un terminal).
+   */
+  deferDialogues = false;
+  pendingDialogue: Id | null = null;
 
   constructor(
     readonly narrative: Narrative,
@@ -105,7 +111,10 @@ export class HeadlessPlayer {
   private play(result: InteractionResult | null): ResolvedLine[] {
     if (!result) return [];
     const lines = this.say(result.lines);
-    if (result.dialogue) lines.push(...this.talk(result.dialogue));
+    if (result.dialogue) {
+      if (this.deferDialogues) this.pendingDialogue = result.dialogue;
+      else lines.push(...this.talk(result.dialogue));
+    }
     if (this.pendingSwitch) {
       const who = this.pendingSwitch;
       this.pendingSwitch = null;
@@ -116,11 +125,11 @@ export class HeadlessPlayer {
     return lines;
   }
 
-  private say(lines: ResolvedLine[]): ResolvedLine[] {
-    for (const l of lines) {
-      const who = l.who === 'player' ? this.active : l.who;
-      this.transcript.push(`${who}: ${l.text}`);
-    }
-    return [...lines];
+  /** Afegeix línies a la transcripció i hi resol `player` (per a qui condueix els diàlegs pel seu compte). */
+  say(lines: ResolvedLine[]): ResolvedLine[] {
+    // `player` es resol ara: si després es canvia de protagonista, la línia continua sent de qui la va dir.
+    const resolved = lines.map((l) => (l.who === 'player' ? { ...l, who: this.active } : l));
+    for (const l of resolved) this.transcript.push(`${l.who}: ${l.text}`);
+    return resolved;
   }
 }
