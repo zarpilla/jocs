@@ -362,6 +362,6 @@ ACTE 3
 ## Preguntes obertes
 
 1. **L'època de l'Iri:** és un passat retrofuturista inventat o té referents reals (per exemple, la
-   industrialització catalana)?
-2. **Edat i to:** tot públic o adolescents i adults? Això decideix fins on arriba la foscor del reciclatge.
-3. **El reajust:** quant es veu? Una transició visual, o només que la Vet ho comenti?
+   industrialització catalana)? -> passat retrofuturista inventat
+2. **Edat i to:** tot públic o adolescents i adults? Això decideix fins on arriba la foscor del reciclatge. -> adolescents i adults
+3. **El reajust:** quant es veu? Una transició visual, o només que la Vet ho comenti? -> només que la Vet ho comenti
