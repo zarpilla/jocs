@@ -1,8 +1,26 @@
 {
   "$schema": "../schemas/game.schema.json",
-  "id": "aventura",
+  "id": "ferro9",
   "title": "joc.titol",
   "defaultLocale": "ca",
-  "locales": ["ca"],
-  "player": "protagonista"
+  "locales": [
+    "ca"
+  ],
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "start": {
+    "iri": {
+      "room": "fabrica_calderes",
+      "items": [
+        "clau_anglesa",
+        "llapis",
+        "llibreta_torn"
+      ]
+    },
+    "vet": {
+      "room": "gavina_cella"
+    }
+  }
 }

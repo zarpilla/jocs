@@ -1,12 +1,45 @@
 {
   "$schema": "../schemas/characters.schema.json",
-  "protagonista": {
-    "name": "pj.protagonista.nom"
+  "iri": {
+    "name": "pj.iri.nom"
   },
-  "pescador": {
-    "name": "pj.pescador.nom",
-    "description": "pj.pescador.desc",
-    "facts": ["insultat", "ajudat", "preguntat_far"],
-    "relation": { "initial": 0, "min": -3, "max": 3 }
+  "vet": {
+    "name": "pj.vet.nom"
+  },
+  "cargol": {
+    "name": "pj.cargol.nom",
+    "description": "pj.cargol.desc",
+    "facts": [
+      "formulari_acceptat",
+      "preguntat_pel_dia",
+      "triplicat_acceptat"
+    ],
+    "relation": {
+      "initial": 0,
+      "min": -3,
+      "max": 5
+    }
+  },
+  "capatas": {
+    "name": "pj.capatas.nom"
+  },
+  "mare": {
+    "name": "pj.mare.nom"
+  },
+  "bruc": {
+    "name": "pj.bruc.nom",
+    "description": "pj.bruc.desc",
+    "facts": [
+      "insultat",
+      "elogiat",
+      "preguntat_reciclatge",
+      "preguntat_familia",
+      "perdonat"
+    ],
+    "relation": {
+      "initial": 0,
+      "min": -3,
+      "max": 3
+    }
   }
 }

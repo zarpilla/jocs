@@ -13,5 +13,5 @@
     "types": ["node", "vite/client"],
     "noEmit": true
   },
-  "include": ["packages/*/src", "packages/*/test", "game/*.ts", "tools", "adapters/benne/*.ts"]
+  "include": ["packages/*/src", "packages/*/test", "game/*.ts", "game/logic", "game/test", "tools", "adapters/benne/*.ts"]
 }

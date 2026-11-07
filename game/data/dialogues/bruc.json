@@ -1,0 +1,383 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "bruc",
+  "with": "bruc",
+  "start": [
+    {
+      "if": {
+        "remembers": {
+          "who": "bruc",
+          "fact": "insultat"
+        }
+      },
+      "node": "ofes"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "bruc",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.primera1"
+        },
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.primera2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "ofes": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.ofes"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "reciclatge",
+          "text": "dlg.bruc.opt.reciclatge",
+          "once": true,
+          "next": "reciclatge",
+          "effects": [
+            {
+              "remember": {
+                "who": "bruc",
+                "fact": "preguntat_reciclatge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "llapis",
+          "text": "dlg.bruc.opt.llapis",
+          "next": "llapis",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "flag": "panell_vet_reparat"
+              },
+              {
+                "relation": {
+                  "who": "bruc",
+                  "op": ">=",
+                  "value": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "llapis_demanar",
+          "text": "dlg.bruc.opt.llapis_demanar",
+          "next": "llapis_que",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "flag": "panell_vet_reparat"
+              },
+              {
+                "relation": {
+                  "who": "bruc",
+                  "op": "<",
+                  "value": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "maquillatge",
+          "text": "dlg.bruc.opt.maquillatge",
+          "once": true,
+          "next": "maquillatge"
+        },
+        {
+          "id": "familia",
+          "text": "dlg.bruc.opt.familia",
+          "once": true,
+          "next": "familia",
+          "if": {
+            "not": {
+              "remembers": {
+                "who": "bruc",
+                "fact": "insultat"
+              }
+            }
+          },
+          "effects": [
+            {
+              "remember": {
+                "who": "bruc",
+                "fact": "preguntat_familia"
+              }
+            }
+          ]
+        },
+        {
+          "id": "perdo",
+          "text": "dlg.bruc.opt.perdo",
+          "once": true,
+          "next": "perdo",
+          "if": {
+            "remembers": {
+              "who": "bruc",
+              "fact": "insultat"
+            }
+          },
+          "effects": [
+            {
+              "forget": {
+                "who": "bruc",
+                "fact": "insultat"
+              }
+            },
+            {
+              "remember": {
+                "who": "bruc",
+                "fact": "perdonat"
+              }
+            },
+            {
+              "relation": {
+                "who": "bruc",
+                "change": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.bruc.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "reciclatge": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.reciclatge1"
+        },
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.reciclatge2"
+        },
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.reciclatge3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "maquillatge": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.maquillatge1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "familia": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.familia1"
+        },
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.familia2"
+        }
+      ],
+      "effects": [
+        {
+          "startQuest": "carta_bruc"
+        }
+      ],
+      "goto": "menu"
+    },
+    "llapis": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.llapis_ok",
+          "effects": [
+            {
+              "giveItem": "llapis_ulls"
+            },
+            {
+              "setFlag": "llapis_donat"
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "llapis_que": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.llapis_que"
+        }
+      ],
+      "goto": "convencer"
+    },
+    "convencer": {
+      "choices": [
+        {
+          "id": "elogiar",
+          "text": "dlg.bruc.opt.elogiar",
+          "next": "elogiat",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "not": {
+                  "remembers": {
+                    "who": "bruc",
+                    "fact": "insultat"
+                  }
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "remember": {
+                "who": "bruc",
+                "fact": "elogiat"
+              }
+            },
+            {
+              "relation": {
+                "who": "bruc",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "insultar",
+          "text": "dlg.bruc.opt.insultar",
+          "next": "insultat",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "not": {
+                  "remembers": {
+                    "who": "bruc",
+                    "fact": "insultat"
+                  }
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "remember": {
+                "who": "bruc",
+                "fact": "insultat"
+              }
+            },
+            {
+              "relation": {
+                "who": "bruc",
+                "change": -2
+              }
+            }
+          ]
+        },
+        {
+          "id": "res",
+          "text": "dlg.bruc.opt.res",
+          "next": "menu"
+        }
+      ]
+    },
+    "elogiat": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.elogiat1",
+          "effects": [
+            {
+              "giveItem": "llapis_ulls"
+            },
+            {
+              "setFlag": "llapis_donat"
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "insultat": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.insultat1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "perdo": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.perdo1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "bruc",
+          "text": "dlg.bruc.adeu"
+        }
+      ]
+    }
+  }
+}

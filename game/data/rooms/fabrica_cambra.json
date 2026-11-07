@@ -1,0 +1,257 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_cambra.nom",
+  "protagonist": "iri",
+  "hotspots": {
+    "palanca": {
+      "name": "sala.fabrica_cambra.palanca.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "flag": "alarma_apagada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.palanca.clau1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.palanca.clau2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.palanca.clau3"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.palanca.clau4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_cambra.palanca.clau5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "alarma_apagada"
+            },
+            {
+              "takeItem": "clau_anglesa"
+            },
+            {
+              "setVar": "finestra_objecte_iri",
+              "value": "clau_anglesa"
+            },
+            {
+              "setVar": "finestra_armada",
+              "value": "iri"
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "alarma_apagada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.palanca.encallada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.palanca.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.palanca.baixada"
+            }
+          ]
+        }
+      ]
+    },
+    "cambra": {
+      "name": "sala.fabrica_cambra.cambra.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "finestra_armada",
+            "op": "==",
+            "value": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.cambra.parpelleja"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "var": "finestra_armada",
+                "op": "==",
+                "value": "iri"
+              },
+              {
+                "var": "finestra_objecte_iri",
+                "op": "!=",
+                "value": ""
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.cambra.armada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "transferencies",
+            "op": ">=",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.cambra.buida_despres"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.cambra.look"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "action": {
+            "name": "finestra.posar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open"
+          ],
+          "action": {
+            "name": "finestra.treure"
+          }
+        }
+      ]
+    },
+    "boto": {
+      "name": "sala.fabrica_cambra.boto.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.boto.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "action": {
+            "name": "finestra.boto"
+          }
+        }
+      ],
+      "visibleIf": {
+        "flag": "alarma_apagada"
+      }
+    },
+    "porta": {
+      "name": "sala.fabrica_cambra.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_calderes"
+        }
+      ]
+    }
+  },
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_cambra.intro1"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_cambra.intro2"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "var": "finestra_armada",
+        "op": "==",
+        "value": "vet"
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_cambra.parpelleja"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,442 @@
 {
   "$schema": "../schemas/items.schema.json",
-  "moneda": { "name": "obj.moneda.nom", "description": "obj.moneda.desc" },
-  "esquer": { "name": "obj.esquer.nom", "description": "obj.esquer.desc" },
-  "clau_far": { "name": "obj.clau_far.nom", "description": "obj.clau_far.desc" }
+  "clau_anglesa": {
+    "name": "obj.clau_anglesa.nom",
+    "description": "obj.clau_anglesa.desc",
+    "props": {
+      "pes": 1.2,
+      "material": "ferro9"
+    }
+  },
+  "formulari_27b": {
+    "name": "obj.formulari_27b.nom",
+    "description": "obj.formulari_27b.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "formulari_segellat": {
+    "name": "obj.formulari_segellat.nom",
+    "description": "obj.formulari_segellat.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "formulari_triplicat": {
+    "name": "obj.formulari_triplicat.nom",
+    "description": "obj.formulari_triplicat.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "plomall": {
+    "name": "obj.plomall.nom",
+    "description": "obj.plomall.desc",
+    "props": {
+      "pes": 0.2
+    }
+  },
+  "segell": {
+    "name": "obj.segell.nom",
+    "description": "obj.segell.desc",
+    "props": {
+      "pes": 0.4
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "formulari_27b",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.segell.formulari"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "formulari_27b"
+          },
+          {
+            "giveItem": "formulari_segellat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "formulari_segellat",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.segell.triplicat"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "formulari_segellat"
+          },
+          {
+            "giveItem": "formulari_triplicat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "formulari_triplicat",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.segell.massa"
+          }
+        ]
+      }
+    ]
+  },
+  "clau_cambra": {
+    "name": "obj.clau_cambra.nom",
+    "description": "obj.clau_cambra.desc",
+    "props": {
+      "pes": 0.1
+    }
+  },
+  "llapis": {
+    "name": "obj.llapis.nom",
+    "description": "obj.llapis.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "if": {
+          "all": [
+            {
+              "flag": "nota_vet_llegida"
+            },
+            {
+              "flag": "nota_iri_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis.resposta1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis.resposta2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_iri_escrita"
+          },
+          {
+            "giveItem": "nota_iri"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis.res"
+          }
+        ]
+      }
+    ]
+  },
+  "llibreta_torn": {
+    "name": "obj.llibreta_torn.nom",
+    "description": "obj.llibreta_torn.desc",
+    "props": {
+      "pes": 0.3
+    }
+  },
+  "caixa_eines": {
+    "name": "obj.caixa_eines.nom",
+    "description": "obj.caixa_eines.desc",
+    "props": {
+      "pes": 9
+    }
+  },
+  "imant_ferro9": {
+    "name": "obj.imant_ferro9.nom",
+    "description": "obj.imant_ferro9.desc",
+    "props": {
+      "pes": 0.3,
+      "material": "ferro9"
+    }
+  },
+  "nota_iri": {
+    "name": "obj.nota_iri.nom",
+    "description": "obj.nota_iri.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.vet1",
+            "if": {
+              "protagonist": "vet"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.vet2",
+            "if": {
+              "protagonist": "vet"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.vet3",
+            "if": {
+              "protagonist": "vet"
+            }
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "sap_que_es_temps"
+          }
+        ]
+      }
+    ]
+  },
+  "avis_reciclatge": {
+    "name": "obj.avis_reciclatge.nom",
+    "description": "obj.avis_reciclatge.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.avis_reciclatge.text"
+          }
+        ]
+      }
+    ]
+  },
+  "llapis_ulls": {
+    "name": "obj.llapis_ulls.nom",
+    "description": "obj.llapis_ulls.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "avis_reciclatge",
+        "if": {
+          "flag": "panell_vet_reparat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.nota"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_vet_escrita"
+          },
+          {
+            "takeItem": "avis_reciclatge"
+          },
+          {
+            "giveItem": "nota_vet"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "avis_reciclatge",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.encara_no"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_reeducacio",
+        "if": {
+          "all": [
+            {
+              "flag": "sap_que_es_temps"
+            },
+            {
+              "flag": "pany_mirat"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.pany1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.pany2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_pany_escrita"
+          },
+          {
+            "takeItem": "fullet_reeducacio"
+          },
+          {
+            "giveItem": "nota_pany"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_reeducacio",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.fullet"
+          }
+        ]
+      }
+    ]
+  },
+  "nota_vet": {
+    "name": "obj.nota_vet.nom",
+    "description": "obj.nota_vet.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet.iri1",
+            "if": {
+              "protagonist": "iri"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet.iri2",
+            "if": {
+              "protagonist": "iri"
+            }
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_vet_llegida"
+          }
+        ]
+      }
+    ]
+  },
+  "fullet_reeducacio": {
+    "name": "obj.fullet_reeducacio.nom",
+    "description": "obj.fullet_reeducacio.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "nota_pany": {
+    "name": "obj.nota_pany.nom",
+    "description": "obj.nota_pany.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pany.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pany.iri1",
+            "if": {
+              "protagonist": "iri"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pany.iri2",
+            "if": {
+              "protagonist": "iri"
+            }
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_pany"
+          }
+        ]
+      }
+    ]
+  },
+  "escarabat": {
+    "name": "obj.escarabat.nom",
+    "description": "obj.escarabat.desc",
+    "props": {
+      "pes": 0.01,
+      "viu": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.escarabat.look"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.escarabat.parlar"
+          }
+        ]
+      }
+    ]
+  },
+  "sopa": {
+    "name": "obj.sopa.nom",
+    "description": "obj.sopa.desc",
+    "props": {
+      "pes": 0.5,
+      "liquid": true
+    }
+  }
 }

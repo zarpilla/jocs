@@ -1,28 +1,75 @@
 {
   "$schema": "../schemas/quests.schema.json",
-  "encendre_far": {
+  "acte1": {
     "kind": "main",
-    "title": "mis.far.titol",
-    "description": "mis.far.desc",
-    "startWhen": { "visited": "moll" },
+    "title": "mis.acte1.titol",
+    "description": "mis.acte1.desc",
     "objectives": [
-      { "id": "aconseguir_clau", "text": "mis.far.obj.clau", "completeWhen": { "hasItem": "clau_far" } },
-      { "id": "encendre", "text": "mis.far.obj.encendre", "completeWhen": { "flag": "far_ences" } }
+      {
+        "id": "entrar_cambra",
+        "text": "mis.acte1.obj.entrar_cambra",
+        "completeWhen": {
+          "flag": "porta_cambra_oberta"
+        }
+      },
+      {
+        "id": "apagar_alarma",
+        "text": "mis.acte1.obj.apagar_alarma",
+        "completeWhen": {
+          "flag": "alarma_apagada"
+        }
+      },
+      {
+        "id": "primera_transferencia",
+        "text": "mis.acte1.obj.primera_transferencia",
+        "completeWhen": {
+          "var": "transferencies",
+          "op": ">=",
+          "value": 1
+        }
+      },
+      {
+        "id": "reparar_panell",
+        "text": "mis.acte1.obj.reparar_panell",
+        "completeWhen": {
+          "flag": "panell_vet_reparat"
+        }
+      },
+      {
+        "id": "primera_nota",
+        "text": "mis.acte1.obj.primera_nota",
+        "completeWhen": {
+          "flag": "nota_vet_llegida"
+        }
+      },
+      {
+        "id": "resposta",
+        "text": "mis.acte1.obj.resposta",
+        "completeWhen": {
+          "flag": "sap_que_es_temps"
+        }
+      },
+      {
+        "id": "sortir_cella",
+        "text": "mis.acte1.obj.sortir_cella",
+        "completeWhen": {
+          "flag": "acte1_acabat"
+        }
+      }
     ]
   },
-  "esquer_pescador": {
+  "carta_bruc": {
     "kind": "side",
-    "title": "mis.esquer.titol",
-    "description": "mis.esquer.desc",
+    "title": "mis.carta_bruc.titol",
+    "description": "mis.carta_bruc.desc",
     "objectives": [
-      { "id": "trobar_esquer", "text": "mis.esquer.obj.trobar", "completeWhen": { "hasItem": "esquer" } },
-      { "id": "donar_esquer", "text": "mis.esquer.obj.donar" }
-    ],
-    "failWhen": { "relation": { "who": "pescador", "op": "<=", "value": -3 } },
-    "onComplete": [
-      { "relation": { "who": "pescador", "change": 2 } },
-      { "remember": { "who": "pescador", "fact": "ajudat" } },
-      { "addVar": "monedes", "amount": 3 }
+      {
+        "id": "trobar_carta",
+        "text": "mis.carta_bruc.obj.trobar",
+        "completeWhen": {
+          "flag": "carta_bruc_trobada"
+        }
+      }
     ]
   }
 }

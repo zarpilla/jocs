@@ -1,0 +1,172 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_magatzem.nom",
+  "protagonist": "iri",
+  "hotspots": {
+    "cargol": {
+      "name": "sala.fabrica_magatzem.cargol.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "cargol"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.look"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.donar"
+            }
+          ],
+          "dialogue": "cargol"
+        },
+        {
+          "verb": [
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.empenyer1"
+            }
+          ]
+        }
+      ]
+    },
+    "plomall": {
+      "name": "sala.fabrica_magatzem.plomall.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.plomall.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.plomall.agafar1"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.plomall.agafar2"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "plomall"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "hasItem": "plomall",
+        "who": "iri",
+        "is": false
+      }
+    },
+    "caixa_eines": {
+      "name": "sala.fabrica_magatzem.caixa_eines.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.caixa.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "hasItem": "caixa_eines",
+            "who": "iri",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.caixa.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "caixa_eines"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "hasItem": "caixa_eines",
+        "who": "iri",
+        "is": false
+      }
+    },
+    "prestatges": {
+      "name": "sala.fabrica_magatzem.prestatges.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.prestatges.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.prestatges.agafar"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_calderes": {
+      "name": "sala.fabrica_magatzem.porta_calderes.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_calderes"
+        }
+      ]
+    }
+  },
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "sala.fabrica_magatzem.benvinguda"
+        }
+      ]
+    }
+  ]
+}

@@ -1,10 +1,39 @@
 {
   "$schema": "../schemas/state.schema.json",
   "flags": {
-    "far_ences": false,
-    "porta_taverna_oberta": false
+    "segell_caigut": false,
+    "segell_agafat": false,
+    "porta_cambra_oberta": false,
+    "alarma_apagada": false,
+    "nota_vet_llegida": false,
+    "nota_iri_escrita": false,
+    "iri_sap_pany": false,
+    "avis_agafat": false,
+    "fullet_agafat": false,
+    "escarabat_agafat": false,
+    "sopa_agafada": false,
+    "panell_vet_trencat": false,
+    "panell_vet_obert": false,
+    "panell_vet_reparat": false,
+    "nota_vet_escrita": false,
+    "llapis_donat": false,
+    "sap_que_es_temps": false,
+    "pany_mirat": false,
+    "nota_pany_escrita": false,
+    "acte1_acabat": false,
+    "carta_bruc_trobada": false,
+    "fugida_completada": false,
+    "mira_salvada": false,
+    "planols_robats": false,
+    "cargol_memoria": false
   },
   "vars": {
-    "monedes": 0
+    "finestra_armada": "",
+    "finestra_objecte_iri": "",
+    "finestra_objecte_vet": "",
+    "enceses_restants": 12,
+    "transferencies": 0,
+    "sospita_brau": 0,
+    "dies_reciclatge": 3
   }
 }

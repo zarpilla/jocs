@@ -1,0 +1,313 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "cargol",
+  "with": "cargol",
+  "start": [
+    {
+      "if": {
+        "remembers": {
+          "who": "cargol",
+          "fact": "formulari_acceptat"
+        }
+      },
+      "node": "amiga"
+    },
+    {
+      "node": "salutacio"
+    }
+  ],
+  "nodes": {
+    "salutacio": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "amiga": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.hola_amiga"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "clau",
+          "text": "dlg.cargol.opt.clau",
+          "next": "clau",
+          "if": {
+            "all": [
+              {
+                "flag": "porta_cambra_oberta",
+                "is": false
+              },
+              {
+                "hasItem": "clau_cambra",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "imant",
+          "text": "dlg.cargol.opt.imant",
+          "next": "imant",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_pany"
+              },
+              {
+                "hasItem": "imant_ferro9",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "hasItem": "imant_ferro9",
+                "who": "vet",
+                "is": false
+              },
+              {
+                "var": "finestra_objecte_iri",
+                "op": "!=",
+                "value": "imant_ferro9"
+              },
+              {
+                "flag": "acte1_acabat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "dia",
+          "text": "dlg.cargol.opt.dia",
+          "once": true,
+          "next": "dia",
+          "effects": [
+            {
+              "remember": {
+                "who": "cargol",
+                "fact": "preguntat_pel_dia"
+              }
+            },
+            {
+              "relation": {
+                "who": "cargol",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "alarma",
+          "text": "dlg.cargol.opt.alarma",
+          "once": true,
+          "next": "per_que"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.cargol.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "clau": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.clau_ok1",
+          "if": {
+            "any": [
+              {
+                "hasItem": "formulari_segellat"
+              },
+              {
+                "hasItem": "formulari_triplicat"
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.clau_ok2",
+          "if": {
+            "any": [
+              {
+                "hasItem": "formulari_segellat"
+              },
+              {
+                "hasItem": "formulari_triplicat"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "giveItem": "clau_cambra"
+            },
+            {
+              "remember": {
+                "who": "cargol",
+                "fact": "formulari_acceptat"
+              }
+            },
+            {
+              "relation": {
+                "who": "cargol",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.clau_sense_segell",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "any": [
+                    {
+                      "hasItem": "formulari_segellat"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                }
+              },
+              {
+                "hasItem": "formulari_27b"
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.clau_sense_res",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "any": [
+                    {
+                      "hasItem": "formulari_segellat"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                }
+              },
+              {
+                "hasItem": "formulari_27b",
+                "is": false
+              }
+            ]
+          }
+        }
+      ],
+      "goto": "menu"
+    },
+    "imant": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.imant_ok1",
+          "if": {
+            "hasItem": "formulari_triplicat"
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.imant_ok2",
+          "if": {
+            "hasItem": "formulari_triplicat"
+          },
+          "effects": [
+            {
+              "takeItem": "formulari_triplicat"
+            },
+            {
+              "giveItem": "imant_ferro9"
+            },
+            {
+              "remember": {
+                "who": "cargol",
+                "fact": "triplicat_acceptat"
+              }
+            },
+            {
+              "relation": {
+                "who": "cargol",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.imant_falta",
+          "if": {
+            "hasItem": "formulari_triplicat",
+            "is": false
+          }
+        }
+      ],
+      "goto": "menu"
+    },
+    "dia": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.dia1"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.dia2"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.dia3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "per_que": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.perque1"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.perque2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.cargol.perque3"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.perque4"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.adeu"
+        }
+      ]
+    }
+  }
+}

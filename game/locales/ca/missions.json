@@ -1,10 +1,14 @@
 {
-  "mis.far.titol": "La llum del far",
-  "mis.far.desc": "El far de Cala Fosca fa anys que està apagat.",
-  "mis.far.obj.clau": "Aconsegueix la clau del far",
-  "mis.far.obj.encendre": "Encén el far",
-  "mis.esquer.titol": "Esquer per al pescador",
-  "mis.esquer.desc": "El pescador vol esquer abans de parlar de claus.",
-  "mis.esquer.obj.trobar": "Troba esquer",
-  "mis.esquer.obj.donar": "Dona l'esquer al pescador"
+  "mis.acte1.titol": "La descoberta",
+  "mis.acte1.desc": "Una alarma al passat, una paret que vibra al futur.",
+  "mis.acte1.obj.entrar_cambra": "Iri: entra a la cambra de ressonància",
+  "mis.acte1.obj.apagar_alarma": "Iri: apaga l'alarma",
+  "mis.acte1.obj.primera_transferencia": "Vet: descobreix què fa vibrar la paret",
+  "mis.acte1.obj.reparar_panell": "Vet: fes funcionar el panell",
+  "mis.acte1.obj.primera_nota": "Iri: llegeix el missatge de la cambra",
+  "mis.acte1.obj.resposta": "Vet: entén qui hi ha a l'altra banda",
+  "mis.acte1.obj.sortir_cella": "Vet: surt de la cel·la",
+  "mis.carta_bruc.titol": "La carta d'en Bruc",
+  "mis.carta_bruc.desc": "En Bruc vol saber si la seva filla, la Nura, va rebre la seva carta.",
+  "mis.carta_bruc.obj.trobar": "Troba la carta d'en Bruc a l'arxiu"
 }

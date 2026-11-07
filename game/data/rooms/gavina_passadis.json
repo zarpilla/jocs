@@ -1,0 +1,86 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.gavina_passadis.nom",
+  "protagonist": "vet",
+  "hotspots": {
+    "cartell": {
+      "name": "sala.gavina_passadis.cartell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.cartell.look"
+            }
+          ]
+        }
+      ]
+    },
+    "camera": {
+      "name": "sala.gavina_passadis.camera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.camera.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_cella": {
+      "name": "sala.gavina_passadis.porta_cella.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_cella"
+        }
+      ]
+    }
+  },
+  "onEnter": [
+    {
+      "id": "fi_acte1",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_passadis.fi1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_passadis.fi2"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.gavina_passadis.fi3"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.gavina_passadis.fi4"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.gavina_passadis.fi5"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "acte1_acabat"
+        },
+        {
+          "addVar": "sospita_brau",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}
