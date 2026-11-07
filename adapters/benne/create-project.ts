@@ -1,5 +1,5 @@
 /**
- * `npm run benne:create -- --from <checkout de Benne> [--out joc-benne] [--force]`
+ * `npm run benne:create -- --from <checkout de Benne> [--out ferro-9] [--force]`
  *
  * Crea el projecte Benne del joc fent el mateix que l'ordre "BENNE: Create New Game" de
  * l'extensió (benne-editor/src/gameCreationScaffolding.ts), però sense VS Code:
@@ -22,7 +22,7 @@ const ROOT = resolve(HERE, '../..');
 const { values } = parseArgs({
   options: {
     from: { type: 'string' },
-    out: { type: 'string', default: join(ROOT, 'joc-benne') },
+    out: { type: 'string', default: join(ROOT, 'ferro-9') },
     template: { type: 'string', default: '9-verb' },
     force: { type: 'boolean', default: false },
   },

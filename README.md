@@ -36,8 +36,8 @@ Guió: [guio/proposta-1-v2.md](guio/proposta-1-v2.md).
 └──────────────────────────────────────────────────────────────────────┘
                  │ npm run benne:sync
 ┌──────────────────────────────────────────────────────────────────────┐
-│ joc-benne/   projecte Benne: motor, art, i el que genera el sync     │
-│              cd joc-benne && npm install && npm run dev              │
+│ ferro-9/   projecte Benne: motor, art, i el que genera el sync     │
+│              cd ferro-9 && npm install && npm run dev              │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -76,8 +76,8 @@ npm run validate       # comprova el contingut: forma, referències, textos que 
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
 npm run typecheck
 npm run schemas        # regenera game/schemas/ si canvien els tipus del nucli
-npm run benne:sync     # porta el contingut a joc-benne/ (sales noves, textos, diàlegs...) [--watch]
-npm run benne:create -- --from <checkout de Benne>   # (re)crea joc-benne/ o n'actualitza el motor
+npm run benne:sync     # porta el contingut a ferro-9/ (sales noves, textos, diàlegs...) [--watch]
+npm run benne:create -- --from <checkout de Benne>   # (re)crea ferro-9/ o n'actualitza el motor
 ```
 
 ## Documentació
@@ -89,6 +89,6 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea joc-benne/ o n'a
 
 - **Acte 1, «La descoberta»: escrit i jugable en mode text** (5 sales, 3 diàlegs, 19 objectes, 20 pistes).
 - Actes 2 i 3: al guió, pendents d'escriure en JSON.
-- **Projecte Benne a `joc-benne/`**, amb l'Acte 1 i art provisional: `cd joc-benne && npm install && npm run dev`.
+- **Projecte Benne a `ferro-9/`**, amb l'Acte 1 i art provisional: `cd ferro-9 && npm install && npm run dev`.
   Comprovat amb `tsc` i amb el validador de Benne, però encara no s'ha jugat al navegador.
 - Art definitiu: pendent (llista del que cal dibuixar a [guio/fitxes-sales.md](guio/fitxes-sales.md)).

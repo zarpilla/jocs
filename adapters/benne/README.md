@@ -13,12 +13,12 @@ Tot el codi que depèn de Benne és aquí. Si canviem de motor, aquesta carpeta 
 | `sync.ts` | Valida el contingut i el porta al projecte Benne. |
 | `mapping.json` | Identificadors que no coincideixen entre el nostre JSON i Benne (`characters`, `items`, `rooms`, `hotspots`). Per defecte, són iguals. |
 
-## El projecte Benne: `joc-benne/`
+## El projecte Benne: `ferro-9/`
 
 Ja està creat i dins del repositori. Per jugar:
 
 ```bash
-cd joc-benne
+cd ferro-9
 npm install      # la primera vegada (cal haver fet també `npm install` a l'arrel)
 npm run dev      # obre el joc al navegador
 ```
@@ -35,16 +35,16 @@ npm run benne:sync -- --init
 
 `benne:create` fa el mateix que l'ordre *BENNE: Create New Game* de l'extensió (copia el motor i la
 plantilla 9-verb, sense la demo), però sense VS Code ni executar codi de Benne. Si prefereixes fer
-servir l'extensió de VS Code per editar sales, obre la carpeta `joc-benne`: és un projecte Benne normal.
+servir l'extensió de VS Code per editar sales, obre la carpeta `ferro-9`: és un projecte Benne normal.
 
 ## Què genera el sync
 
-- `joc-benne/src/game/narrative/`: el pont, `content.generated.json` (dades i textos) i
+- `ferro-9/src/game/narrative/`: el pont, `content.generated.json` (dades i textos) i
   `mapping.generated.json`.
-- `joc-benne/src/game/dialogs/<id>/`: un diàleg de Benne per cada diàleg nostre. Totes les opcions
+- `ferro-9/src/game/dialogs/<id>/`: un diàleg de Benne per cada diàleg nostre. Totes les opcions
   de tots els nodes es converteixen en opcions de Benne (`<node>__<opció>`), i el pont encén
   només les que toquen a cada moment.
-- `joc-benne/src/game/globalScript.ts`: el bloc entre les marques es regenera sempre; el que hi
+- `ferro-9/src/game/globalScript.ts`: el bloc entre les marques es regenera sempre; el que hi
   afegeixis a sota es conserva. (La primera vegada, `--init`.)
 - **Sales, personatges i objectes que encara no existeixen a Benne**, amb una disposició automàtica i
   **art provisional** (caixes etiquetades; cal `python3` amb Pillow). El que ja existeix no es toca:
@@ -78,7 +78,7 @@ control. L'última sala de cada protagonista es desa amb la partida.
 
 Les fonts de mapa de bits de la plantilla no tenien la majoria de caràcters catalans (à, è, ò, ç,
 l·l...). `tools/extend_font.py` els afegeix compostos amb els píxels de la mateixa font (ja aplicat a
-`joc-benne`). Si s'afegeix una font nova: `python3 adapters/benne/tools/extend_font.py <font.xml>`.
+`ferro-9`). Si s'afegeix una font nova: `python3 adapters/benne/tools/extend_font.py <font.xml>`.
 
 Per a la GUI: `switchProtagonist()` (botó de canviar entre l'Iri i la Vet), `sayHint()` (botó de
 pista) i `playEnding()`.

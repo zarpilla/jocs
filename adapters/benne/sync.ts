@@ -1,5 +1,5 @@
 /**
- * `npm run benne:sync -- --project ../joc-benne [--locale ca] [--watch]`
+ * `npm run benne:sync -- --project ../ferro-9 [--locale ca] [--watch]`
  *
  * Porta el contingut del joc a un projecte Benne:
  *  1. Valida el contingut (si hi ha errors, no escriu res).
@@ -29,7 +29,7 @@ const MARK = 'GENERAT per adapters/benne/sync.ts';
 
 const { values } = parseArgs({
   options: {
-    project: { type: 'string', default: process.env.BENNE_PROJECT ?? join(HERE, '../../joc-benne') },
+    project: { type: 'string', default: process.env.BENNE_PROJECT ?? join(HERE, '../../ferro-9') },
     locale: { type: 'string' },
     watch: { type: 'boolean', default: false },
     /** Substitueix el globalScript.ts de Benne pel de l'adaptador (en fa còpia de seguretat). */
