@@ -13,25 +13,29 @@ Tot el codi que depèn de Benne és aquí. Si canviem de motor, aquesta carpeta 
 | `sync.ts` | Valida el contingut i el porta al projecte Benne. |
 | `mapping.json` | Identificadors que no coincideixen entre el nostre JSON i Benne (`characters`, `items`, `rooms`, `hotspots`). Per defecte, són iguals. |
 
-## Posar-ho en marxa (un sol cop)
+## El projecte Benne: `joc-benne/`
 
-1. A VS Code, amb l'extensió **BENNE Editor**: *BENNE: Create New Game*, plantilla **9-verb**,
-   carpeta `joc-benne` dins d'aquest repositori.
-2. Al `package.json` de `joc-benne`, afegeix les dependències i instal·la:
-   ```json
-   "dependencies": {
-     "@aventura/narrative-core": "file:../packages/narrative-core",
-     "@aventura/game": "file:../game"
-   }
-   ```
-   ```bash
-   cd joc-benne && npm install
-   ```
-3. Des de l'arrel: `npm run benne:sync -- --init`. Fa una còpia de l'antic `globalScript.ts` a
-   `.bak` i hi posa el de l'adaptador. Després, `npm run benne:sync` (o amb `--watch` mentre escrivim).
-4. A Benne, crea els personatges `iri` i `vet` (les dues protagonistes) i els altres de
-   `characters.json`. Crea les sales i les coses de [guio/fitxes-sales.md](../../guio/fitxes-sales.md)
-   amb aquests ids (`npm run fitxes` la regenera).
+Ja està creat i dins del repositori. Per jugar:
+
+```bash
+cd joc-benne
+npm install      # la primera vegada (cal haver fet també `npm install` a l'arrel)
+npm run dev      # obre el joc al navegador
+```
+
+Al joc: botó de menú (a baix a l'esquerra) → **Canvia** (a l'altra protagonista) i **Pista**.
+
+Com s'ha creat (per si mai cal refer-lo o actualitzar el motor):
+
+```bash
+git clone https://github.com/Bennethon/benne /algun/lloc/benne
+npm run benne:create -- --from /algun/lloc/benne [--force]   # --force: només substitueix el motor
+npm run benne:sync -- --init
+```
+
+`benne:create` fa el mateix que l'ordre *BENNE: Create New Game* de l'extensió (copia el motor i la
+plantilla 9-verb, sense la demo), però sense VS Code ni executar codi de Benne. Si prefereixes fer
+servir l'extensió de VS Code per editar sales, obre la carpeta `joc-benne`: és un projecte Benne normal.
 
 ## Què genera el sync
 
@@ -40,31 +44,41 @@ Tot el codi que depèn de Benne és aquí. Si canviem de motor, aquesta carpeta 
 - `joc-benne/src/game/dialogs/<id>/`: un diàleg de Benne per cada diàleg nostre. Totes les opcions
   de tots els nodes es converteixen en opcions de Benne (`<node>__<opció>`), i el pont encén
   només les que toquen a cada moment.
-- Amb `--init`: `joc-benne/src/game/globalScript.ts`.
+- `joc-benne/src/game/globalScript.ts`: el bloc entre les marques es regenera sempre; el que hi
+  afegeixis a sota es conserva. (La primera vegada, `--init`.)
+- **Sales, personatges i objectes que encara no existeixen a Benne**, amb una disposició automàtica i
+  **art provisional** (caixes etiquetades; cal `python3` amb Pillow). El que ja existeix no es toca:
+  quan un artista substitueixi un PNG, ha d'esborrar el fitxer `.provisional` del costat.
+- **Tots els textos de Benne en l'idioma triat**: verbs (`ui.verb.*`), menús (`ui.menu.*`...), noms
+  de coses, personatges i objectes.
+- Botons **Canvia** i **Pista** al menú del joc (una sola vegada).
 
 Tot porta la marca `GENERAT`: no s'edita a mà. El sync es nega a sobreescriure fitxers sense la marca.
 
 ## Com funciona una interacció
 
-1. A Benne, el jugador fa «Fer servir clau anglesa amb palanca».
+1. A Benne, el jugador fa «Usa clau anglesa amb palanca».
 2. Cap script de sala no la gestiona, i arriba a `fallbacks.onUseItem`, al `globalScript.ts`.
 3. `routeInteraction` la tradueix (`fabrica_cambra-hotspot-palanca` → `palanca`) i la passa al nucli.
 4. El nucli busca la interacció a `game/data/rooms/fabrica_cambra.json` i aplica els efectes. Retorna
    les línies, el diàleg, la sala o el canvi de protagonista.
 5. `playResult` ho fa a Benne: `player.say`, `dialogs.x.start()`, `player.switchTo`, `rooms.x.goTo()`.
 
-Els scripts de sala de Benne només calen per a coses visuals (animacions, moviments, càmera) i per
-lligar les coses condicionals:
+Els scripts de sala de Benne només calen per a coses visuals (animacions, moviments, càmera). Les
+coses amb `visibleIf` es generen com a **props** i el pont les mostra o amaga soles.
 
-```ts
-// joc-benne/src/game/rooms/fabrica_calderes/fabrica_calderes.room.ts
-import { bindHotspots } from '../../narrative/narrative';
-import { room, segell } from './fabrica_calderes.ids';
+## Dues protagonistes en una sola Benne
 
-room.onEnter(() => {
-  bindHotspots({ segell })   // apareix quan el capatàs el deixa caure
-})
-```
+A Benne, `player.switchTo` només funciona amb personatges de la mateixa sala, i l'Iri i la Vet no
+coincideixen mai. Per això **cada sala és d'una protagonista** (`"protagonist"` al JSON de la sala):
+canviar de protagonista vol dir anar a la sala on és l'altra, i en entrar-hi el pont en pren el
+control. L'última sala de cada protagonista es desa amb la partida.
+
+## Fonts
+
+Les fonts de mapa de bits de la plantilla no tenien la majoria de caràcters catalans (à, è, ò, ç,
+l·l...). `tools/extend_font.py` els afegeix compostos amb els píxels de la mateixa font (ja aplicat a
+`joc-benne`). Si s'afegeix una font nova: `python3 adapters/benne/tools/extend_font.py <font.xml>`.
 
 Per a la GUI: `switchProtagonist()` (botó de canviar entre l'Iri i la Vet), `sayHint()` (botó de
 pista) i `playEnding()`.
@@ -83,14 +97,16 @@ l'efecte visual de la finestra).
 - `fallbacks.onUnhandled` no porta la informació del clic, i per tant `walkToClicked()` potser no
   camina. Si cal que la protagonista s'hi acosti, es pot fer des de l'script de la sala.
 
-## Pendent de provar dins Benne
+## Què està comprovat i què no
 
-El pont s'ha comprovat amb `tsc` contra els tipus reals de Benne (amb la plantilla 9-verb i els
-diàlegs generats), però **encara no s'ha executat dins un joc Benne**. Coses a confirmar a la primera
-prova:
+Comprovat sense executar el joc:
+- el pont, els diàlegs, el menú i el `globalScript.ts` passen `tsc` amb la configuració estricta del
+  projecte Benne i amb els noms reals que genera Benne (`generate-game-ids`);
+- el contingut generat passa el validador de contingut de Benne (`scripts/lib/validate-game-content.mjs`).
 
-- que `gameState:replaced` es dispara en començar una partida nova (si no, els inventaris inicials no
-  es reparteixen);
-- que `player.switchTo` porta a la sala de l'altra protagonista;
-- que les interaccions arriben a `fallbacks.onUnhandled` i a `onUseItem` / `onGiveItem`;
-- quins ids exactes posa Benne a les coses de sala (per si cal ajustar el `mapping.json`).
+Pendent de confirmar a la primera partida al navegador:
+- que `game.onEnterAnyRoom` es dispara també a la primera sala (hi depèn l'inventari inicial);
+- que `fallbacks.onUnhandled` rep els verbs sense cap gestor (i que no hi ha una frase per defecte
+  de Benne abans de la nostra);
+- que un personatge invisible (la MARE, que parla per l'altaveu) pot parlar;
+- l'aspecte: posicions de les caixes, mida dels textos, botó «Empeny» (3 px més ample que el botó).

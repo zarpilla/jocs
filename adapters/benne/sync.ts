@@ -7,17 +7,21 @@
  *  3. Empaqueta dades + textos a `src/game/narrative/content.generated.json`.
  *  4. Genera un diàleg de Benne per cada diàleg nostre (`src/game/dialogs/<id>/`).
  *
- *  5. Amb `--init`, instal·la `globalScript.ts` (encamina les interaccions cap al JSON).
+ *  5. Genera a Benne les sales, personatges i objectes que hi falten (amb art provisional),
+ *     i posa tots els textos de Benne (verbs, menús, noms) en l'idioma triat.
+ *  6. Amb `--init`, instal·la `globalScript.ts` (encamina les interaccions cap al JSON).
  *
  * Tot el que escriu porta la marca GENERAT. Mai no sobreescriu fitxers sense marca
  * (llevat de `--init`, que abans en fa una còpia `.bak`).
  */
+import { spawnSync } from 'node:child_process';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, watch, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { validateContent, type DialogueDef, type GameContent, type LocaleTable } from '@aventura/narrative-core';
 import { GAME_ACTIONS, GAME_TEXT_KEYS } from '../../game/logic/index.js';
+import { writeBenneContent } from './benne-content.js';
 import { GAME_DIR, loadGameFromDisk } from '../../tools/load-game.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -114,15 +118,31 @@ function sync() {
     writeGenerated(script, benneDialogScript(d), 'ts');
   }
 
-  // 4. globalScript.ts
+  // 4. Sales, personatges, objectes, configuració i GUI de Benne
+  const report = writeBenneContent(gameDir, content, table, fallback);
+  for (const c of report.created) console.log(`  + ${c}`);
+  if (report.needsArt.length) {
+    const draw = spawnSync('python3', [join(HERE, 'tools/draw_placeholders.py'), gameDir], { stdio: 'inherit' });
+    if (draw.status !== 0) {
+      console.warn(`⚠ No s'ha pogut dibuixar l'art provisional (cal python3 amb Pillow). Falta: ${report.needsArt.join(', ')}`);
+    }
+  }
+
+  // 5. globalScript.ts: el bloc generat es regenera sempre; el que hi hagi a sota es conserva.
   const global = join(gameDir, 'globalScript.ts');
-  if (values.init) {
-    if (existsSync(global) && !readFileSync(global, 'utf8').includes(MARK)) {
+  const BEGIN = `// ── ${MARK}: inici. No l'editis. ──`;
+  const END = `// ── ${MARK}: fi. Pots afegir codi a sota. ──`;
+  const block = `${BEGIN}\n${readFileSync(join(HERE, 'templates/globalScript.ts'), 'utf8').trimEnd()}\n${END}\n`;
+  const current = existsSync(global) ? readFileSync(global, 'utf8') : '';
+  if (current.includes(BEGIN) && current.includes(END)) {
+    writeFileSync(global, block + current.slice(current.indexOf(END) + END.length).replace(/^\n/, ''));
+  } else if (values.init || current.includes(MARK)) {
+    if (current && !current.includes(MARK)) {
       copyFileSync(global, `${global}.bak`);
       console.log(`  (còpia de l'antic globalScript.ts a globalScript.ts.bak)`);
     }
-    writeFileSync(global, `// ${MARK}. Pots afegir-hi codi a sota.\n` + readFileSync(join(HERE, 'templates/globalScript.ts'), 'utf8'));
-  } else if (!existsSync(global) || !readFileSync(global, 'utf8').includes('routeInteraction')) {
+    writeFileSync(global, block);
+  } else {
     console.warn(`⚠ globalScript.ts encara no encamina les interaccions cap al JSON. Executa una vegada amb --init.`);
   }
 

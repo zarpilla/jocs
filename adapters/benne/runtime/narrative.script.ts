@@ -9,7 +9,10 @@
 import { display, fadeOut, player } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
-import { benneCharacter, benneDialog, benneRoom, fromBenne, narrative, takePendingSwitch, targetFromBenne } from './narrative';
+import {
+  applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, protagonistRoom,
+  rememberProtagonistRoom, roomProtagonist, takePendingSwitch, targetFromBenne,
+} from './narrative';
 
 /** Nom de l'opció de Benne per a una opció d'un node (el genera el sync). */
 export const optionName = (node: string, choice: string) => `${node}__${choice}`;
@@ -38,8 +41,7 @@ export function playResult(result: InteractionResult) {
   }
   const who = takePendingSwitch()
   if (who) {
-    const character = benneCharacter(who)
-    if (character) player.switchTo(character)
+    goToProtagonist(who)
     return
   }
   if (result.goTo) {
@@ -57,6 +59,32 @@ export function routeInteraction(verb: string, target: FallbackTarget, item?: st
   const result = narrative.interact(request)
   if (result) playResult(result)
   else playLines([narrative.defaultLine(verb)])
+}
+
+/**
+ * En entrar a una sala, abans del fos (des de `game.onEnterAnyRoom`): prepara la partida si és
+ * nova, pren el control de la protagonista de la sala i mostra o amaga les coses condicionals.
+ */
+export function onRoomEntered() {
+  ensureStarted()
+  const room = narrative.world.currentRoom()
+  if (!room) return
+  const who = roomProtagonist(room)
+  if (who) {
+    if (narrative.world.activeProtagonist() !== who) {
+      const character = benneCharacter(who)
+      if (character) player.switchTo(character)
+    }
+    rememberProtagonistRoom(who, room)
+  }
+  applyHotspotVisibility()
+}
+
+/** Va a la sala on és una protagonista (i, en entrar-hi, se'n pren el control). */
+export function goToProtagonist(who: string) {
+  const roomId = protagonistRoom(who)
+  const room = roomId ? benneRoom(roomId) : undefined
+  if (room) room.goTo()
 }
 
 /** En entrar a una sala (després del fos): l'`onEnter` del JSON. */
@@ -99,12 +127,11 @@ export function sayHint() {
   player.say(text)
 }
 
-/** Canvia a l'altra protagonista (per a un botó de la GUI). */
+/** Canvia a l'altra protagonista (per a un botó de la GUI): va a la sala on és. */
 export function switchProtagonist() {
   const all = narrative.content.manifest.protagonists
   const next = all[(all.indexOf(narrative.world.activeProtagonist()) + 1) % all.length]!
-  const character = benneCharacter(next)
-  if (character) player.switchTo(character)
+  goToProtagonist(next)
 }
 
 /** Mostra el final que toca (o el que li diguis). */

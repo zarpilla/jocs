@@ -17,15 +17,15 @@
         }
       ]
     },
-    "camera": {
-      "name": "sala.gavina_passadis.camera.nom",
+    "camera_vigilancia": {
+      "name": "sala.gavina_passadis.camera_vigilancia.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.camera.look"
+              "text": "sala.gavina_passadis.camera_vigilancia.look"
             }
           ]
         }

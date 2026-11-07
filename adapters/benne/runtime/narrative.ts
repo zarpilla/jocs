@@ -4,7 +4,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { defineVars, events, game, inventory, player, type VarValue } from '@benne/script';
+import { PropHandle, defineVars, events, game, inventory, player, type VarValue } from '@benne/script';
 import { characters, dialogs, items, rooms } from '@game';
 import { Narrative, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -65,7 +65,11 @@ export function takePendingSwitch() {
 
 // ─── Persistència: l'estat narratiu viatja dins les partides de Benne ───────
 
-const store = defineVars({ narrativeState: null as VarValue });
+const store = defineVars({
+  narrativeState: null as VarValue,
+  /** Última sala de cada protagonista: per tornar-hi en canviar de protagonista. */
+  protagonistRooms: {} as VarValue,
+});
 
 narrative.on((e) => {
   switch (e.type) {
@@ -88,12 +92,36 @@ narrative.on((e) => {
   }
 });
 
-// Partida carregada o nova. Sense estat desat = partida nova: inventaris inicials.
+// Partida carregada (o nova: aleshores l'estat és buit i `ensureStarted` la prepara en entrar a la primera sala).
 events.on('gameState:replaced', () => {
   if (store.narrativeState) narrative.load(store.narrativeState);
-  else narrative.newGame();
   applyLocalizedNames();
 });
+
+/** Partida nova: reparteix els inventaris inicials (game.json → start). Només la primera vegada. */
+export function ensureStarted() {
+  if (store.narrativeState) return;
+  narrative.newGame();
+  applyLocalizedNames();
+}
+
+// ─── Protagonistes: cada sala és d'una protagonista ─────────────────────────
+// A Benne, `player.switchTo` només funciona amb personatges de la mateixa sala, i l'Iri i la Vet
+// no coincideixen mai (120 anys!). Per això, canviar de protagonista = anar a la seva sala; en
+// entrar-hi, prenem el control de la protagonista d'aquella sala.
+
+/** La protagonista d'una sala (`protagonist` al JSON de la sala). */
+export const roomProtagonist = (room: string) => content.rooms[room]?.protagonist ?? null;
+
+/** On és (o era) cada protagonista. */
+export function protagonistRoom(who: string): string | null {
+  const rooms = (store.protagonistRooms ?? {}) as Record<string, string>;
+  return rooms[who] ?? content.manifest.start?.[who]?.room ?? null;
+}
+
+export function rememberProtagonistRoom(who: string, room: string) {
+  store.protagonistRooms = { ...((store.protagonistRooms ?? {}) as Record<string, string>), [who]: room };
+}
 // Canvis al món que poden completar missions o mostrar coses.
 events.on('gameState:inventoryChanged', () => narrative.worldChanged());
 events.on('gameState:roomContextChanged', () => {
@@ -114,26 +142,23 @@ export function targetFromBenne(kind: 'prop' | 'hotspot' | 'character' | 'item',
 }
 
 // ─── Coses condicionals ─────────────────────────────────────────────────────
+// Les coses amb `visibleIf` són props a Benne (el sync les crea així): es mostren o
+// s'amaguen soles cada vegada que canvia l'estat.
 
 type Showable = { visible: boolean } | { active: boolean };
 let boundHotspots: Record<string, Showable> = {};
 
-/**
- * Des de l'`onEnter` d'una sala: lliga les coses amb `visibleIf` del JSON de la
- * sala als props/hotspots de Benne. Es mostren o s'amaguen sols.
- *
- *   room.onEnter(() => { bindHotspots({ segell, plomall }) })
- */
+/** Per a casos especials: lliga a mà una cosa amb `visibleIf` a un handle concret (hotspot, personatge...). */
 export function bindHotspots(handles: Record<string, Showable>) {
   boundHotspots = { ...boundHotspots, ...handles };
   applyHotspotVisibility();
 }
 
-function applyHotspotVisibility() {
+export function applyHotspotVisibility() {
   const room = world.currentRoom();
   if (!room) return;
-  for (const [id, handle] of Object.entries(boundHotspots)) {
-    const visible = narrative.isHotspotVisible(room, id);
+  for (const { id, visible } of narrative.hotspotsIn(room)) {
+    const handle = boundHotspots[id] ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
     if ('visible' in handle) handle.visible = visible;
     else handle.active = visible;
   }

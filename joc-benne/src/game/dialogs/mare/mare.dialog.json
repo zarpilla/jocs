@@ -1,0 +1,34 @@
+{
+  "id": "mare",
+  "displayName": "mare",
+  "options": [
+    {
+      "id": "menu__reciclatge",
+      "scriptName": "menu__reciclatge",
+      "text": "Què és exactament el reciclatge?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__sortir",
+      "scriptName": "menu__sortir",
+      "text": "Vull sortir d'aquí.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__preso",
+      "scriptName": "menu__preso",
+      "text": "Qui va construir aquesta presó?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res. Adéu, MARE.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

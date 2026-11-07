@@ -1,0 +1,27 @@
+// GENERAT per adapters/benne/sync.ts. No l'editis aquí.
+import { dialog, options } from './cargol.ids';
+import { chooseNarrativeOption, startNarrativeDialog } from '../../narrative/narrative.script';
+
+dialog.onStart(() => {
+  startNarrativeDialog('cargol', dialog)
+})
+
+options.menu__clau.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'clau')
+})
+
+options.menu__imant.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'imant')
+})
+
+options.menu__dia.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'dia')
+})
+
+options.menu__alarma.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'alarma')
+})
+
+options.menu__adeu.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'adeu')
+})

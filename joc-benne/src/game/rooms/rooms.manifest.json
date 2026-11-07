@@ -1,0 +1,25 @@
+{
+  "startRoomId": "fabrica_calderes",
+  "rooms": [
+    {
+      "id": "fabrica_calderes",
+      "definition": "fabrica_calderes/fabrica_calderes.room.json"
+    },
+    {
+      "id": "fabrica_cambra",
+      "definition": "fabrica_cambra/fabrica_cambra.room.json"
+    },
+    {
+      "id": "fabrica_magatzem",
+      "definition": "fabrica_magatzem/fabrica_magatzem.room.json"
+    },
+    {
+      "id": "gavina_cella",
+      "definition": "gavina_cella/gavina_cella.room.json"
+    },
+    {
+      "id": "gavina_passadis",
+      "definition": "gavina_passadis/gavina_passadis.room.json"
+    }
+  ]
+}

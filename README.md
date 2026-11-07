@@ -36,7 +36,8 @@ Guió: [guio/proposta-1-v2.md](guio/proposta-1-v2.md).
 └──────────────────────────────────────────────────────────────────────┘
                  │ npm run benne:sync
 ┌──────────────────────────────────────────────────────────────────────┐
-│ joc-benne/   (projecte Benne: sales, art, so, scripts de sala)       │
+│ joc-benne/   projecte Benne: motor, art, i el que genera el sync     │
+│              cd joc-benne && npm install && npm run dev              │
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -75,7 +76,8 @@ npm run validate       # comprova el contingut: forma, referències, textos que 
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
 npm run typecheck
 npm run schemas        # regenera game/schemas/ si canvien els tipus del nucli
-npm run benne:sync -- --project joc-benne [--init] [--locale ca] [--watch]
+npm run benne:sync     # porta el contingut a joc-benne/ (sales noves, textos, diàlegs...) [--watch]
+npm run benne:create -- --from <checkout de Benne>   # (re)crea joc-benne/ o n'actualitza el motor
 ```
 
 ## Documentació
@@ -87,5 +89,6 @@ npm run benne:sync -- --project joc-benne [--init] [--locale ca] [--watch]
 
 - **Acte 1, «La descoberta»: escrit i jugable en mode text** (5 sales, 3 diàlegs, 19 objectes, 20 pistes).
 - Actes 2 i 3: al guió, pendents d'escriure en JSON.
-- Benne: el pont està comprovat amb els tipus reals de Benne, però **encara no s'ha executat dins un
-  projecte Benne**. Falta crear el projecte i l'art (vegeu [guio/fitxes-sales.md](guio/fitxes-sales.md)).
+- **Projecte Benne a `joc-benne/`**, amb l'Acte 1 i art provisional: `cd joc-benne && npm install && npm run dev`.
+  Comprovat amb `tsc` i amb el validador de Benne, però encara no s'ha jugat al navegador.
+- Art definitiu: pendent (llista del que cal dibuixar a [guio/fitxes-sales.md](guio/fitxes-sales.md)).

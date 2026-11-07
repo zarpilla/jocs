@@ -1,6 +1,6 @@
 import { game } from '@benne/script';
 import { fallbacks } from '@game';
-import { enterNarrativeRoom, routeInteraction } from './narrative/narrative.script';
+import { enterNarrativeRoom, onRoomEntered, routeInteraction } from './narrative/narrative.script';
 
 // Totes les interaccions que cap script de sala, personatge o objecte no gestiona
 // les resol el JSON del joc (game/data/rooms, characters.json, items.json).
@@ -20,7 +20,12 @@ fallbacks.onItemUnhandled((item, target) => {
   routeInteraction('use', target, item.id)
 })
 
-// L'onEnter de cada sala (game/data/rooms/<sala>.json).
+// Abans del fos: partida nova, protagonista de la sala, coses condicionals.
+game.onEnterAnyRoom(() => {
+  onRoomEntered()
+})
+
+// Després del fos: l'onEnter de cada sala (game/data/rooms/<sala>.json).
 game.onEnterAnyRoomAfterFade(() => {
   enterNarrativeRoom()
 })

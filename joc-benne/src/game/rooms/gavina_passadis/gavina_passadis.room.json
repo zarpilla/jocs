@@ -1,0 +1,166 @@
+{
+  "id": "gavina_passadis",
+  "name": "Passadís del mòdul C",
+  "size": {
+    "width": 352,
+    "height": 198
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 352,
+    "height": 198
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 118
+          },
+          {
+            "x": 338,
+            "y": 118
+          },
+          {
+            "x": 346,
+            "y": 148
+          },
+          {
+            "x": 6,
+            "y": 148
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_cella",
+      "active": true,
+      "description": "cel·la 9",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 6,
+          "y": 52
+        },
+        {
+          "x": 40,
+          "y": 52
+        },
+        {
+          "x": 40,
+          "y": 118
+        },
+        {
+          "x": 6,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 23,
+        "y": 132
+      },
+      "lookAtPoint": {
+        "x": 23,
+        "y": 118
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cartell",
+      "active": true,
+      "description": "cartell",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 86,
+          "y": 78
+        },
+        {
+          "x": 140,
+          "y": 78
+        },
+        {
+          "x": 140,
+          "y": 104
+        },
+        {
+          "x": 86,
+          "y": 104
+        }
+      ],
+      "walkToPoint": {
+        "x": 113,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 113,
+        "y": 104
+      }
+    },
+    {
+      "id": "camera_vigilancia",
+      "active": true,
+      "description": "càmera",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 212,
+          "y": 44
+        },
+        {
+          "x": 266,
+          "y": 44
+        },
+        {
+          "x": 266,
+          "y": 70
+        },
+        {
+          "x": 212,
+          "y": 70
+        }
+      ],
+      "walkToPoint": {
+        "x": 239,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 239,
+        "y": 70
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 176,
+      "y": 136,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

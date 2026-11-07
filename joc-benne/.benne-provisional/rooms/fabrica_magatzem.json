@@ -1,0 +1,49 @@
+{
+  "width": 352,
+  "height": 198,
+  "title": "Magatzem d'eines",
+  "era": "iri",
+  "floorTop": 112,
+  "floorBottom": 148,
+  "boxes": [
+    {
+      "id": "porta_calderes",
+      "label": "sala de calderes",
+      "kind": "exit",
+      "w": 34,
+      "h": 66,
+      "x": 6,
+      "y": 52
+    },
+    {
+      "id": "plomall",
+      "label": "plomall",
+      "kind": "prop",
+      "w": 54,
+      "h": 26,
+      "x": 65,
+      "y": 78
+    },
+    {
+      "id": "caixa_eines",
+      "label": "caixa d'eines",
+      "kind": "prop",
+      "w": 54,
+      "h": 26,
+      "x": 149,
+      "y": 44
+    },
+    {
+      "id": "prestatges",
+      "label": "prestatges",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 26,
+      "x": 233,
+      "y": 78
+    }
+  ],
+  "characters": [
+    "Cargol"
+  ]
+}

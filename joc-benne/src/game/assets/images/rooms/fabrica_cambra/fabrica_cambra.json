@@ -1,0 +1,75 @@
+{
+  "frames": {
+    "fabrica_cambra 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 1.aseprite": {
+      "frame": {
+        "x": 352,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py)",
+    "image": "fabrica_cambra.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 704,
+      "h": 198
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "boto",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

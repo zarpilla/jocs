@@ -1,0 +1,58 @@
+{
+  "width": 352,
+  "height": 198,
+  "title": "Sala de calderes",
+  "era": "iri",
+  "floorTop": 112,
+  "floorBottom": 148,
+  "boxes": [
+    {
+      "id": "porta_magatzem",
+      "label": "magatzem",
+      "kind": "exit",
+      "w": 34,
+      "h": 66,
+      "x": 6,
+      "y": 52
+    },
+    {
+      "id": "porta_cambra",
+      "label": "porta de la cambra",
+      "kind": "exit",
+      "w": 34,
+      "h": 66,
+      "x": 312,
+      "y": 52
+    },
+    {
+      "id": "segell",
+      "label": "segell oficial",
+      "kind": "prop",
+      "w": 54,
+      "h": 26,
+      "x": 65,
+      "y": 78
+    },
+    {
+      "id": "tauler",
+      "label": "tauler d'anuncis",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 26,
+      "x": 149,
+      "y": 44
+    },
+    {
+      "id": "alarma",
+      "label": "llum d'alarma",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 26,
+      "x": 233,
+      "y": 78
+    }
+  ],
+  "characters": [
+    "Capatàs Pruna"
+  ]
+}

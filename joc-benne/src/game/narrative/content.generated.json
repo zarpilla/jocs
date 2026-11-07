@@ -1,0 +1,3953 @@
+{
+  "$comment": "GENERAT per adapters/benne/sync.ts",
+  "content": {
+    "manifest": {
+      "id": "ferro9",
+      "title": "joc.titol",
+      "defaultLocale": "ca",
+      "locales": [
+        "ca"
+      ],
+      "protagonists": [
+        "iri",
+        "vet"
+      ],
+      "start": {
+        "iri": {
+          "room": "fabrica_calderes",
+          "items": [
+            "clau_anglesa",
+            "llapis",
+            "llibreta_torn"
+          ]
+        },
+        "vet": {
+          "room": "gavina_cella"
+        }
+      }
+    },
+    "state": {
+      "flags": {
+        "segell_caigut": false,
+        "segell_agafat": false,
+        "porta_cambra_oberta": false,
+        "alarma_apagada": false,
+        "nota_vet_llegida": false,
+        "nota_iri_escrita": false,
+        "iri_sap_pany": false,
+        "avis_agafat": false,
+        "fullet_agafat": false,
+        "escarabat_agafat": false,
+        "sopa_agafada": false,
+        "panell_vet_trencat": false,
+        "panell_vet_obert": false,
+        "panell_vet_reparat": false,
+        "nota_vet_escrita": false,
+        "llapis_donat": false,
+        "sap_que_es_temps": false,
+        "pany_mirat": false,
+        "nota_pany_escrita": false,
+        "acte1_acabat": false,
+        "carta_bruc_trobada": false,
+        "fugida_completada": false,
+        "mira_salvada": false,
+        "planols_robats": false,
+        "cargol_memoria": false
+      },
+      "vars": {
+        "finestra_armada": "",
+        "finestra_objecte_iri": "",
+        "finestra_objecte_vet": "",
+        "enceses_restants": 12,
+        "transferencies": 0,
+        "sospita_brau": 0,
+        "dies_reciclatge": 3
+      }
+    },
+    "characters": {
+      "iri": {
+        "name": "pj.iri.nom"
+      },
+      "vet": {
+        "name": "pj.vet.nom"
+      },
+      "cargol": {
+        "name": "pj.cargol.nom",
+        "description": "pj.cargol.desc",
+        "facts": [
+          "formulari_acceptat",
+          "preguntat_pel_dia",
+          "triplicat_acceptat"
+        ],
+        "relation": {
+          "initial": 0,
+          "min": -3,
+          "max": 5
+        }
+      },
+      "capatas": {
+        "name": "pj.capatas.nom"
+      },
+      "mare": {
+        "name": "pj.mare.nom"
+      },
+      "bruc": {
+        "name": "pj.bruc.nom",
+        "description": "pj.bruc.desc",
+        "facts": [
+          "insultat",
+          "elogiat",
+          "preguntat_reciclatge",
+          "preguntat_familia",
+          "perdonat"
+        ],
+        "relation": {
+          "initial": 0,
+          "min": -3,
+          "max": 3
+        }
+      }
+    },
+    "items": {
+      "clau_anglesa": {
+        "name": "obj.clau_anglesa.nom",
+        "description": "obj.clau_anglesa.desc",
+        "props": {
+          "pes": 1.2,
+          "material": "ferro9"
+        }
+      },
+      "formulari_27b": {
+        "name": "obj.formulari_27b.nom",
+        "description": "obj.formulari_27b.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "formulari_segellat": {
+        "name": "obj.formulari_segellat.nom",
+        "description": "obj.formulari_segellat.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "formulari_triplicat": {
+        "name": "obj.formulari_triplicat.nom",
+        "description": "obj.formulari_triplicat.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "plomall": {
+        "name": "obj.plomall.nom",
+        "description": "obj.plomall.desc",
+        "props": {
+          "pes": 0.2
+        }
+      },
+      "segell": {
+        "name": "obj.segell.nom",
+        "description": "obj.segell.desc",
+        "props": {
+          "pes": 0.4
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "formulari_27b",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.segell.formulari"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "formulari_27b"
+              },
+              {
+                "giveItem": "formulari_segellat"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "formulari_segellat",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.segell.triplicat"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "formulari_segellat"
+              },
+              {
+                "giveItem": "formulari_triplicat"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "formulari_triplicat",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.segell.massa"
+              }
+            ]
+          }
+        ]
+      },
+      "clau_cambra": {
+        "name": "obj.clau_cambra.nom",
+        "description": "obj.clau_cambra.desc",
+        "props": {
+          "pes": 0.1
+        }
+      },
+      "llapis": {
+        "name": "obj.llapis.nom",
+        "description": "obj.llapis.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "llibreta_torn",
+            "if": {
+              "all": [
+                {
+                  "flag": "nota_vet_llegida"
+                },
+                {
+                  "flag": "nota_iri_escrita",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis.resposta1"
+              },
+              {
+                "who": "player",
+                "text": "obj.llapis.resposta2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_iri_escrita"
+              },
+              {
+                "giveItem": "nota_iri"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "llibreta_torn",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis.res"
+              }
+            ]
+          }
+        ]
+      },
+      "llibreta_torn": {
+        "name": "obj.llibreta_torn.nom",
+        "description": "obj.llibreta_torn.desc",
+        "props": {
+          "pes": 0.3
+        }
+      },
+      "caixa_eines": {
+        "name": "obj.caixa_eines.nom",
+        "description": "obj.caixa_eines.desc",
+        "props": {
+          "pes": 9
+        }
+      },
+      "imant_ferro9": {
+        "name": "obj.imant_ferro9.nom",
+        "description": "obj.imant_ferro9.desc",
+        "props": {
+          "pes": 0.3,
+          "material": "ferro9"
+        }
+      },
+      "nota_iri": {
+        "name": "obj.nota_iri.nom",
+        "description": "obj.nota_iri.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_iri.vet1",
+                "if": {
+                  "protagonist": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_iri.vet2",
+                "if": {
+                  "protagonist": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_iri.vet3",
+                "if": {
+                  "protagonist": "vet"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "sap_que_es_temps"
+              }
+            ]
+          }
+        ]
+      },
+      "avis_reciclatge": {
+        "name": "obj.avis_reciclatge.nom",
+        "description": "obj.avis_reciclatge.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.avis_reciclatge.text"
+              }
+            ]
+          }
+        ]
+      },
+      "llapis_ulls": {
+        "name": "obj.llapis_ulls.nom",
+        "description": "obj.llapis_ulls.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "avis_reciclatge",
+            "if": {
+              "flag": "panell_vet_reparat"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.nota"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_vet_escrita"
+              },
+              {
+                "takeItem": "avis_reciclatge"
+              },
+              {
+                "giveItem": "nota_vet"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "avis_reciclatge",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.encara_no"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "fullet_reeducacio",
+            "if": {
+              "all": [
+                {
+                  "flag": "sap_que_es_temps"
+                },
+                {
+                  "flag": "pany_mirat"
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.pany1"
+              },
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.pany2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_pany_escrita"
+              },
+              {
+                "takeItem": "fullet_reeducacio"
+              },
+              {
+                "giveItem": "nota_pany"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "fullet_reeducacio",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.fullet"
+              }
+            ]
+          }
+        ]
+      },
+      "nota_vet": {
+        "name": "obj.nota_vet.nom",
+        "description": "obj.nota_vet.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_vet.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_vet.iri1",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_vet.iri2",
+                "if": {
+                  "protagonist": "iri"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_vet_llegida"
+              }
+            ]
+          }
+        ]
+      },
+      "fullet_reeducacio": {
+        "name": "obj.fullet_reeducacio.nom",
+        "description": "obj.fullet_reeducacio.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "nota_pany": {
+        "name": "obj.nota_pany.nom",
+        "description": "obj.nota_pany.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_pany.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_pany.iri1",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_pany.iri2",
+                "if": {
+                  "protagonist": "iri"
+                }
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "iri_sap_pany"
+              }
+            ]
+          }
+        ]
+      },
+      "escarabat": {
+        "name": "obj.escarabat.nom",
+        "description": "obj.escarabat.desc",
+        "props": {
+          "pes": 0.01,
+          "viu": true
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.escarabat.look"
+              }
+            ]
+          },
+          {
+            "verb": "talkTo",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.escarabat.parlar"
+              }
+            ]
+          }
+        ]
+      },
+      "sopa": {
+        "name": "obj.sopa.nom",
+        "description": "obj.sopa.desc",
+        "props": {
+          "pes": 0.5,
+          "liquid": true
+        }
+      }
+    },
+    "rooms": {
+      "fabrica_calderes": {
+        "name": "sala.fabrica_calderes.nom",
+        "protagonist": "iri",
+        "hotspots": {
+          "capatas": {
+            "name": "sala.fabrica_calderes.capatas.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "segell_caigut",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.look1"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.look2"
+                  }
+                ]
+              },
+              {
+                "verb": "talkTo",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.parlar1"
+                  },
+                  {
+                    "who": "capatas",
+                    "text": "sala.fabrica_calderes.capatas.parlar2"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pull",
+                  "pickUp"
+                ],
+                "if": {
+                  "flag": "segell_caigut",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.estirar1"
+                  },
+                  {
+                    "who": "capatas",
+                    "text": "sala.fabrica_calderes.capatas.estirar2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.estirar3"
+                  }
+                ]
+              },
+              {
+                "verb": "push",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.empenyer1"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "plomall",
+                "if": {
+                  "flag": "segell_caigut",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.plomall1"
+                  },
+                  {
+                    "who": "capatas",
+                    "text": "sala.fabrica_calderes.capatas.plomall2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.plomall3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "segell_caigut"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "*",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.objecte"
+                  }
+                ]
+              }
+            ]
+          },
+          "segell": {
+            "name": "sala.fabrica_calderes.segell.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.segell.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.segell.agafar"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "segell"
+                  },
+                  {
+                    "setFlag": "segell_agafat"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "segell_caigut"
+                },
+                {
+                  "flag": "segell_agafat",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "tauler": {
+            "name": "sala.fabrica_calderes.tauler.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.tauler.look1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.tauler.look2"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "formulari_27b",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_segellat",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_triplicat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.tauler.agafar"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "formulari_27b"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.tauler.prou"
+                  }
+                ]
+              }
+            ]
+          },
+          "alarma": {
+            "name": "sala.fabrica_calderes.alarma.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "alarma_apagada",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.alarma.look1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.alarma.look2"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.alarma.apagada"
+                  }
+                ]
+              }
+            ]
+          },
+          "porta_magatzem": {
+            "name": "sala.fabrica_calderes.porta_magatzem.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "goTo": "fabrica_magatzem"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.porta_magatzem.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "porta_cambra": {
+            "name": "sala.fabrica_calderes.porta_cambra.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "clau_cambra",
+                "if": {
+                  "flag": "porta_cambra_oberta",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.porta_cambra.obrir"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "porta_cambra_oberta"
+                  },
+                  {
+                    "takeItem": "clau_cambra"
+                  }
+                ],
+                "goTo": "fabrica_cambra"
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "if": {
+                  "flag": "porta_cambra_oberta"
+                },
+                "goTo": "fabrica_cambra"
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "pull",
+                  "push"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.porta_cambra.tancada"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.porta_cambra.look"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "onEnter": [
+          {
+            "id": "intro",
+            "verb": "*",
+            "once": true,
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "sala.fabrica_calderes.intro1"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_calderes.intro2"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_calderes.intro3"
+              }
+            ],
+            "effects": [
+              {
+                "startQuest": "acte1"
+              }
+            ]
+          }
+        ]
+      },
+      "fabrica_cambra": {
+        "name": "sala.fabrica_cambra.nom",
+        "protagonist": "iri",
+        "hotspots": {
+          "palanca": {
+            "name": "sala.fabrica_cambra.palanca.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "clau_anglesa",
+                "if": {
+                  "flag": "alarma_apagada",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.palanca.clau1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.palanca.clau2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.palanca.clau3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.palanca.clau4"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_cambra.palanca.clau5"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "alarma_apagada"
+                  },
+                  {
+                    "takeItem": "clau_anglesa"
+                  },
+                  {
+                    "setVar": "finestra_objecte_iri",
+                    "value": "clau_anglesa"
+                  },
+                  {
+                    "setVar": "finestra_armada",
+                    "value": "iri"
+                  },
+                  {
+                    "event": "protagonista",
+                    "args": {
+                      "id": "vet"
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pull",
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "flag": "alarma_apagada",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.palanca.encallada"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.palanca.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pull",
+                  "push",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.palanca.baixada"
+                  }
+                ]
+              }
+            ]
+          },
+          "cambra": {
+            "name": "sala.fabrica_cambra.cambra.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "var": "finestra_armada",
+                  "op": "==",
+                  "value": "vet"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.parpelleja"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "var": "finestra_armada",
+                      "op": "==",
+                      "value": "iri"
+                    },
+                    {
+                      "var": "finestra_objecte_iri",
+                      "op": "!=",
+                      "value": ""
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.armada"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "transferencies",
+                  "op": ">=",
+                  "value": 1
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.buida_despres"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.look"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "*",
+                "action": {
+                  "name": "finestra.posar",
+                  "args": {
+                    "item": "$item"
+                  }
+                }
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open"
+                ],
+                "action": {
+                  "name": "finestra.treure"
+                }
+              }
+            ]
+          },
+          "boto": {
+            "name": "sala.fabrica_cambra.boto.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.boto.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "action": {
+                  "name": "finestra.boto"
+                }
+              }
+            ],
+            "visibleIf": {
+              "flag": "alarma_apagada"
+            }
+          },
+          "porta": {
+            "name": "sala.fabrica_cambra.porta.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "goTo": "fabrica_calderes"
+              }
+            ]
+          }
+        },
+        "onEnter": [
+          {
+            "id": "primera",
+            "verb": "*",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_cambra.intro1"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_cambra.intro2"
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "if": {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": "vet"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_cambra.parpelleja"
+              }
+            ]
+          }
+        ]
+      },
+      "fabrica_magatzem": {
+        "name": "sala.fabrica_magatzem.nom",
+        "protagonist": "iri",
+        "hotspots": {
+          "cargol": {
+            "name": "sala.fabrica_magatzem.cargol.nom",
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "dialogue": "cargol"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.cargol.look"
+                  }
+                ]
+              },
+              {
+                "verb": "give",
+                "item": "*",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.cargol.donar"
+                  }
+                ],
+                "dialogue": "cargol"
+              },
+              {
+                "verb": [
+                  "push",
+                  "pull"
+                ],
+                "lines": [
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.cargol.empenyer1"
+                  }
+                ]
+              }
+            ]
+          },
+          "plomall": {
+            "name": "sala.fabrica_magatzem.plomall.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.plomall.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.plomall.agafar1"
+                  },
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.plomall.agafar2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "plomall"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "hasItem": "plomall",
+              "who": "iri",
+              "is": false
+            }
+          },
+          "caixa_eines": {
+            "name": "sala.fabrica_magatzem.caixa_eines.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.caixa.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "if": {
+                  "hasItem": "caixa_eines",
+                  "who": "iri",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.caixa.agafar"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "caixa_eines"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "hasItem": "caixa_eines",
+              "who": "iri",
+              "is": false
+            }
+          },
+          "prestatges": {
+            "name": "sala.fabrica_magatzem.prestatges.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.prestatges.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.prestatges.agafar"
+                  }
+                ]
+              }
+            ]
+          },
+          "porta_calderes": {
+            "name": "sala.fabrica_magatzem.porta_calderes.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "goTo": "fabrica_calderes"
+              }
+            ]
+          }
+        },
+        "onEnter": [
+          {
+            "id": "primera",
+            "verb": "*",
+            "once": true,
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "sala.fabrica_magatzem.benvinguda"
+              }
+            ]
+          }
+        ]
+      },
+      "gavina_cella": {
+        "name": "sala.gavina_cella.nom",
+        "protagonist": "vet",
+        "hotspots": {
+          "panell": {
+            "name": "sala.gavina_cella.panell.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "panell_vet_trencat",
+                      "is": false
+                    },
+                    {
+                      "var": "finestra_armada",
+                      "op": "==",
+                      "value": "iri"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.vibra"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "panell_vet_trencat",
+                      "is": false
+                    },
+                    {
+                      "var": "finestra_armada",
+                      "op": "==",
+                      "value": "iri"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.cop1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_cella.panell.cop2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.cop3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "panell_vet_trencat"
+                  }
+                ],
+                "action": {
+                  "name": "finestra.boto"
+                }
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "flag": "panell_vet_trencat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.paret_guanya"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "clau_anglesa",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "panell_vet_trencat"
+                    },
+                    {
+                      "flag": "panell_vet_obert",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.obrir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.obrir2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "panell_vet_obert"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "clau_anglesa",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "panell_vet_obert"
+                    },
+                    {
+                      "flag": "panell_vet_reparat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.reparar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.reparar2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "panell_vet_reparat"
+                  },
+                  {
+                    "takeItem": "clau_anglesa"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "panell_vet_trencat"
+                    },
+                    {
+                      "flag": "panell_vet_obert",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.trencat"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "panell_vet_obert"
+                    },
+                    {
+                      "flag": "panell_vet_reparat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.sense_palanca"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "flag": "panell_vet_reparat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.mort"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "finestra_armada",
+                  "op": "==",
+                  "value": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.parpelleja"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "finestra_armada",
+                  "op": "==",
+                  "value": "vet"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.armat"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.reparat"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "*",
+                "action": {
+                  "name": "finestra.posar",
+                  "args": {
+                    "item": "$item"
+                  }
+                }
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open"
+                ],
+                "action": {
+                  "name": "finestra.treure"
+                }
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "action": {
+                  "name": "finestra.boto"
+                }
+              }
+            ]
+          },
+          "altaveu": {
+            "name": "sala.gavina_cella.altaveu.nom",
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "dialogue": "mare"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.altaveu.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "pull",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "mare",
+                    "text": "sala.gavina_cella.altaveu.tocar1"
+                  }
+                ]
+              }
+            ]
+          },
+          "bruc": {
+            "name": "sala.gavina_cella.bruc.nom",
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "dialogue": "bruc"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.bruc.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "avis": {
+            "name": "sala.gavina_cella.avis.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.avis.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.avis.agafar"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "avis_reciclatge"
+                  },
+                  {
+                    "setFlag": "avis_agafat"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "flag": "avis_agafat",
+              "is": false
+            }
+          },
+          "llitera": {
+            "name": "sala.gavina_cella.llitera.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "fullet_agafat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.llitera.look1"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.llitera.look2"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "if": {
+                  "flag": "fullet_agafat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.llitera.fullet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "fullet_reeducacio"
+                  },
+                  {
+                    "setFlag": "fullet_agafat"
+                  }
+                ]
+              }
+            ]
+          },
+          "escarabat": {
+            "name": "sala.gavina_cella.escarabat.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.escarabat.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.escarabat.agafar"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "escarabat"
+                  },
+                  {
+                    "setFlag": "escarabat_agafat"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "flag": "escarabat_agafat",
+              "is": false
+            }
+          },
+          "safata": {
+            "name": "sala.gavina_cella.safata.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.safata.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.safata.agafar"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "sopa"
+                  },
+                  {
+                    "setFlag": "sopa_agafada"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "flag": "sopa_agafada",
+              "is": false
+            }
+          },
+          "porta": {
+            "name": "sala.gavina_cella.porta.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "imant_ferro9",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.imant1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.imant2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "imant_ferro9"
+                  }
+                ],
+                "goTo": "gavina_passadis"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.look"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "pany_mirat"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "push",
+                  "pull",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.tancada"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "pany_mirat"
+                  }
+                ]
+              }
+            ]
+          },
+          "finestreta": {
+            "name": "sala.gavina_cella.finestreta.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.finestreta.look1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.finestreta.look2"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "onEnter": [
+          {
+            "id": "intro",
+            "verb": "*",
+            "once": true,
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "sala.gavina_cella.intro1"
+              },
+              {
+                "who": "mare",
+                "text": "sala.gavina_cella.intro2"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_cella.intro3"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_cella.intro4"
+              }
+            ]
+          }
+        ]
+      },
+      "gavina_passadis": {
+        "name": "sala.gavina_passadis.nom",
+        "protagonist": "vet",
+        "hotspots": {
+          "cartell": {
+            "name": "sala.gavina_passadis.cartell.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_passadis.cartell.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "camera_vigilancia": {
+            "name": "sala.gavina_passadis.camera_vigilancia.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_passadis.camera_vigilancia.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "porta_cella": {
+            "name": "sala.gavina_passadis.porta_cella.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "goTo": "gavina_cella"
+              }
+            ]
+          }
+        },
+        "onEnter": [
+          {
+            "id": "fi_acte1",
+            "verb": "*",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.gavina_passadis.fi1"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_passadis.fi2"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.gavina_passadis.fi3"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.gavina_passadis.fi4"
+              },
+              {
+                "who": "narrator",
+                "text": "sala.gavina_passadis.fi5"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "acte1_acabat"
+              },
+              {
+                "addVar": "sospita_brau",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "quests": {
+      "acte1": {
+        "kind": "main",
+        "title": "mis.acte1.titol",
+        "description": "mis.acte1.desc",
+        "objectives": [
+          {
+            "id": "entrar_cambra",
+            "text": "mis.acte1.obj.entrar_cambra",
+            "completeWhen": {
+              "flag": "porta_cambra_oberta"
+            }
+          },
+          {
+            "id": "apagar_alarma",
+            "text": "mis.acte1.obj.apagar_alarma",
+            "completeWhen": {
+              "flag": "alarma_apagada"
+            }
+          },
+          {
+            "id": "primera_transferencia",
+            "text": "mis.acte1.obj.primera_transferencia",
+            "completeWhen": {
+              "var": "transferencies",
+              "op": ">=",
+              "value": 1
+            }
+          },
+          {
+            "id": "reparar_panell",
+            "text": "mis.acte1.obj.reparar_panell",
+            "completeWhen": {
+              "flag": "panell_vet_reparat"
+            }
+          },
+          {
+            "id": "primera_nota",
+            "text": "mis.acte1.obj.primera_nota",
+            "completeWhen": {
+              "flag": "nota_vet_llegida"
+            }
+          },
+          {
+            "id": "resposta",
+            "text": "mis.acte1.obj.resposta",
+            "completeWhen": {
+              "flag": "sap_que_es_temps"
+            }
+          },
+          {
+            "id": "sortir_cella",
+            "text": "mis.acte1.obj.sortir_cella",
+            "completeWhen": {
+              "flag": "acte1_acabat"
+            }
+          }
+        ]
+      },
+      "carta_bruc": {
+        "kind": "side",
+        "title": "mis.carta_bruc.titol",
+        "description": "mis.carta_bruc.desc",
+        "objectives": [
+          {
+            "id": "trobar_carta",
+            "text": "mis.carta_bruc.obj.trobar",
+            "completeWhen": {
+              "flag": "carta_bruc_trobada"
+            }
+          }
+        ]
+      }
+    },
+    "hints": {
+      "iri_clau": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "porta_cambra_oberta",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "porta_cambra_oberta"
+            },
+            {
+              "hasItem": "clau_cambra",
+              "who": "iri"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_clau.1",
+          "pista.iri_clau.2",
+          "pista.iri_clau.3"
+        ]
+      },
+      "iri_segell": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "formulari_27b",
+              "who": "iri"
+            },
+            {
+              "hasItem": "segell",
+              "who": "iri",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "segell",
+          "who": "iri"
+        },
+        "levels": [
+          "pista.iri_segell.1",
+          "pista.iri_segell.2",
+          "pista.iri_segell.3"
+        ]
+      },
+      "iri_alarma": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "porta_cambra_oberta"
+            },
+            {
+              "flag": "alarma_apagada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "alarma_apagada"
+        },
+        "levels": [
+          "pista.iri_alarma.1",
+          "pista.iri_alarma.2",
+          "pista.iri_alarma.3"
+        ]
+      },
+      "iri_esperar": {
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "finestra_armada",
+          "op": "!=",
+          "value": "iri"
+        },
+        "levels": [
+          "pista.iri_esperar.1",
+          "pista.iri_esperar.2"
+        ]
+      },
+      "vet_panell": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "panell_vet_trencat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "panell_vet_trencat"
+        },
+        "levels": [
+          "pista.vet_panell.1",
+          "pista.vet_panell.2"
+        ]
+      },
+      "vet_reparar": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "panell_vet_trencat"
+            },
+            {
+              "flag": "panell_vet_reparat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "panell_vet_reparat"
+        },
+        "levels": [
+          "pista.vet_reparar.1",
+          "pista.vet_reparar.2"
+        ]
+      },
+      "vet_nota": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "panell_vet_reparat"
+            },
+            {
+              "flag": "nota_vet_escrita",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "nota_vet_escrita"
+        },
+        "levels": [
+          "pista.vet_nota.1",
+          "pista.vet_nota.2",
+          "pista.vet_nota.3"
+        ]
+      },
+      "vet_enviar": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "any": [
+                {
+                  "hasItem": "nota_vet",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "nota_pany",
+                  "who": "vet"
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "all": [
+            {
+              "hasItem": "nota_vet",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "hasItem": "nota_pany",
+              "who": "vet",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_enviar.1",
+          "pista.vet_enviar.2"
+        ]
+      },
+      "vet_esperar": {
+        "priority": 7,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "finestra_armada",
+          "op": "!=",
+          "value": "vet"
+        },
+        "levels": [
+          "pista.vet_esperar.1",
+          "pista.vet_esperar.2"
+        ]
+      },
+      "iri_rebre": {
+        "priority": 8,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "finestra_armada",
+          "op": "!=",
+          "value": "vet"
+        },
+        "levels": [
+          "pista.iri_rebre.1",
+          "pista.iri_rebre.2"
+        ]
+      },
+      "iri_llegir": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "hasItem": "nota_vet",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "nota_vet_llegida",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "hasItem": "nota_pany",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "iri_sap_pany",
+                      "is": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "any": [
+              {
+                "all": [
+                  {
+                    "hasItem": "nota_vet",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "nota_vet_llegida",
+                    "is": false
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "nota_pany",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "iri_sap_pany",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.iri_llegir.1",
+          "pista.iri_llegir.2"
+        ]
+      },
+      "iri_respondre": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "nota_vet_llegida"
+            },
+            {
+              "flag": "nota_iri_escrita",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "nota_iri_escrita"
+        },
+        "levels": [
+          "pista.iri_respondre.1",
+          "pista.iri_respondre.2"
+        ]
+      },
+      "iri_enviar": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "any": [
+                {
+                  "hasItem": "nota_iri",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "imant_ferro9",
+                  "who": "iri"
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "all": [
+            {
+              "hasItem": "nota_iri",
+              "who": "iri",
+              "is": false
+            },
+            {
+              "hasItem": "imant_ferro9",
+              "who": "iri",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_enviar.1",
+          "pista.iri_enviar.2"
+        ]
+      },
+      "vet_llegir": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "nota_iri",
+              "who": "vet"
+            },
+            {
+              "flag": "sap_que_es_temps",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "sap_que_es_temps"
+        },
+        "levels": [
+          "pista.vet_llegir.1",
+          "pista.vet_llegir.2"
+        ]
+      },
+      "vet_pany": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "sap_que_es_temps"
+            },
+            {
+              "flag": "nota_pany_escrita",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "nota_pany_escrita"
+        },
+        "levels": [
+          "pista.vet_pany.1",
+          "pista.vet_pany.2",
+          "pista.vet_pany.3"
+        ]
+      },
+      "iri_imant": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "all": [
+                {
+                  "flag": "iri_sap_pany"
+                },
+                {
+                  "hasItem": "imant_ferro9",
+                  "who": "iri",
+                  "is": false
+                },
+                {
+                  "hasItem": "imant_ferro9",
+                  "who": "vet",
+                  "is": false
+                },
+                {
+                  "var": "finestra_objecte_iri",
+                  "op": "!=",
+                  "value": "imant_ferro9"
+                },
+                {
+                  "flag": "acte1_acabat",
+                  "is": false
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "all": [
+              {
+                "flag": "iri_sap_pany"
+              },
+              {
+                "hasItem": "imant_ferro9",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "hasItem": "imant_ferro9",
+                "who": "vet",
+                "is": false
+              },
+              {
+                "var": "finestra_objecte_iri",
+                "op": "!=",
+                "value": "imant_ferro9"
+              },
+              {
+                "flag": "acte1_acabat",
+                "is": false
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.iri_imant.1",
+          "pista.iri_imant.2",
+          "pista.iri_imant.3"
+        ]
+      },
+      "vet_sortir": {
+        "priority": 9,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "imant_ferro9",
+              "who": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "imant_ferro9",
+          "who": "vet",
+          "is": false
+        },
+        "levels": [
+          "pista.vet_sortir.1",
+          "pista.vet_sortir.2"
+        ]
+      },
+      "iri_porta": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "clau_cambra",
+              "who": "iri"
+            },
+            {
+              "flag": "porta_cambra_oberta",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "porta_cambra_oberta"
+        },
+        "levels": [
+          "pista.iri_porta.1",
+          "pista.iri_porta.2"
+        ]
+      },
+      "vet_armar": {
+        "priority": 7,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "finestra_objecte_vet",
+              "op": "!=",
+              "value": ""
+            },
+            {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": ""
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "var": "finestra_objecte_vet",
+              "op": "==",
+              "value": ""
+            },
+            {
+              "var": "finestra_armada",
+              "op": "!=",
+              "value": ""
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_armar.1",
+          "pista.vet_armar.2"
+        ]
+      },
+      "iri_armar": {
+        "priority": 7,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "finestra_objecte_iri",
+              "op": "!=",
+              "value": ""
+            },
+            {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": ""
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "var": "finestra_objecte_iri",
+              "op": "==",
+              "value": ""
+            },
+            {
+              "var": "finestra_armada",
+              "op": "!=",
+              "value": ""
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_armar.1",
+          "pista.iri_armar.2"
+        ]
+      }
+    },
+    "endings": {
+      "fugida": {
+        "title": "final.fugida.titol",
+        "text": "final.fugida.text",
+        "priority": 1,
+        "when": {
+          "flag": "fugida_completada"
+        }
+      },
+      "veritat": {
+        "title": "final.veritat.titol",
+        "text": "final.veritat.text",
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "flag": "fugida_completada"
+            },
+            {
+              "flag": "mira_salvada"
+            },
+            {
+              "flag": "planols_robats"
+            }
+          ]
+        }
+      },
+      "correspondencia": {
+        "title": "final.correspondencia.titol",
+        "text": "final.correspondencia.text",
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "flag": "fugida_completada"
+            },
+            {
+              "flag": "mira_salvada"
+            },
+            {
+              "flag": "planols_robats"
+            },
+            {
+              "flag": "cargol_memoria"
+            }
+          ]
+        }
+      }
+    },
+    "dialogues": {
+      "bruc": {
+        "id": "bruc",
+        "with": "bruc",
+        "start": [
+          {
+            "if": {
+              "remembers": {
+                "who": "bruc",
+                "fact": "insultat"
+              }
+            },
+            "node": "ofes"
+          },
+          {
+            "if": {
+              "seen": {
+                "dialogue": "bruc",
+                "node": "primera"
+              }
+            },
+            "node": "hola"
+          },
+          {
+            "node": "primera"
+          }
+        ],
+        "nodes": {
+          "primera": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.primera1"
+              },
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.primera2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "hola": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "ofes": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.ofes"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "reciclatge",
+                "text": "dlg.bruc.opt.reciclatge",
+                "once": true,
+                "next": "reciclatge",
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "bruc",
+                      "fact": "preguntat_reciclatge"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "llapis",
+                "text": "dlg.bruc.opt.llapis",
+                "next": "llapis",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "flag": "panell_vet_reparat"
+                    },
+                    {
+                      "relation": {
+                        "who": "bruc",
+                        "op": ">=",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "llapis_demanar",
+                "text": "dlg.bruc.opt.llapis_demanar",
+                "next": "llapis_que",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "flag": "panell_vet_reparat"
+                    },
+                    {
+                      "relation": {
+                        "who": "bruc",
+                        "op": "<",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "maquillatge",
+                "text": "dlg.bruc.opt.maquillatge",
+                "once": true,
+                "next": "maquillatge"
+              },
+              {
+                "id": "familia",
+                "text": "dlg.bruc.opt.familia",
+                "once": true,
+                "next": "familia",
+                "if": {
+                  "not": {
+                    "remembers": {
+                      "who": "bruc",
+                      "fact": "insultat"
+                    }
+                  }
+                },
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "bruc",
+                      "fact": "preguntat_familia"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "perdo",
+                "text": "dlg.bruc.opt.perdo",
+                "once": true,
+                "next": "perdo",
+                "if": {
+                  "remembers": {
+                    "who": "bruc",
+                    "fact": "insultat"
+                  }
+                },
+                "effects": [
+                  {
+                    "forget": {
+                      "who": "bruc",
+                      "fact": "insultat"
+                    }
+                  },
+                  {
+                    "remember": {
+                      "who": "bruc",
+                      "fact": "perdonat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "bruc",
+                      "change": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.bruc.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "reciclatge": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.reciclatge1"
+              },
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.reciclatge2"
+              },
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.reciclatge3"
+              }
+            ],
+            "goto": "menu"
+          },
+          "maquillatge": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.maquillatge1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "familia": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.familia1"
+              },
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.familia2"
+              }
+            ],
+            "effects": [
+              {
+                "startQuest": "carta_bruc"
+              }
+            ],
+            "goto": "menu"
+          },
+          "llapis": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.llapis_ok",
+                "effects": [
+                  {
+                    "giveItem": "llapis_ulls"
+                  },
+                  {
+                    "setFlag": "llapis_donat"
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "llapis_que": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.llapis_que"
+              }
+            ],
+            "goto": "convencer"
+          },
+          "convencer": {
+            "choices": [
+              {
+                "id": "elogiar",
+                "text": "dlg.bruc.opt.elogiar",
+                "next": "elogiat",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "remembers": {
+                          "who": "bruc",
+                          "fact": "insultat"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "bruc",
+                      "fact": "elogiat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "bruc",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "insultar",
+                "text": "dlg.bruc.opt.insultar",
+                "next": "insultat",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "remembers": {
+                          "who": "bruc",
+                          "fact": "insultat"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "bruc",
+                      "fact": "insultat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "bruc",
+                      "change": -2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "res",
+                "text": "dlg.bruc.opt.res",
+                "next": "menu"
+              }
+            ]
+          },
+          "elogiat": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.elogiat1",
+                "effects": [
+                  {
+                    "giveItem": "llapis_ulls"
+                  },
+                  {
+                    "setFlag": "llapis_donat"
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "insultat": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.insultat1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "perdo": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.perdo1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "bruc",
+                "text": "dlg.bruc.adeu"
+              }
+            ]
+          }
+        }
+      },
+      "cargol": {
+        "id": "cargol",
+        "with": "cargol",
+        "start": [
+          {
+            "if": {
+              "remembers": {
+                "who": "cargol",
+                "fact": "formulari_acceptat"
+              }
+            },
+            "node": "amiga"
+          },
+          {
+            "node": "salutacio"
+          }
+        ],
+        "nodes": {
+          "salutacio": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "amiga": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.hola_amiga"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "clau",
+                "text": "dlg.cargol.opt.clau",
+                "next": "clau",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "porta_cambra_oberta",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "clau_cambra",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "imant",
+                "text": "dlg.cargol.opt.imant",
+                "next": "imant",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "iri_sap_pany"
+                    },
+                    {
+                      "hasItem": "imant_ferro9",
+                      "who": "iri",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "imant_ferro9",
+                      "who": "vet",
+                      "is": false
+                    },
+                    {
+                      "var": "finestra_objecte_iri",
+                      "op": "!=",
+                      "value": "imant_ferro9"
+                    },
+                    {
+                      "flag": "acte1_acabat",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "dia",
+                "text": "dlg.cargol.opt.dia",
+                "once": true,
+                "next": "dia",
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "cargol",
+                      "fact": "preguntat_pel_dia"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "cargol",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "alarma",
+                "text": "dlg.cargol.opt.alarma",
+                "once": true,
+                "next": "per_que"
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.cargol.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "clau": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.clau_ok1",
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "formulari_segellat"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.clau_ok2",
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "formulari_segellat"
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "giveItem": "clau_cambra"
+                  },
+                  {
+                    "remember": {
+                      "who": "cargol",
+                      "fact": "formulari_acceptat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "cargol",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.clau_sense_segell",
+                "if": {
+                  "all": [
+                    {
+                      "not": {
+                        "any": [
+                          {
+                            "hasItem": "formulari_segellat"
+                          },
+                          {
+                            "hasItem": "formulari_triplicat"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "hasItem": "formulari_27b"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.clau_sense_res",
+                "if": {
+                  "all": [
+                    {
+                      "not": {
+                        "any": [
+                          {
+                            "hasItem": "formulari_segellat"
+                          },
+                          {
+                            "hasItem": "formulari_triplicat"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "hasItem": "formulari_27b",
+                      "is": false
+                    }
+                  ]
+                }
+              }
+            ],
+            "goto": "menu"
+          },
+          "imant": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.imant_ok1",
+                "if": {
+                  "hasItem": "formulari_triplicat"
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.imant_ok2",
+                "if": {
+                  "hasItem": "formulari_triplicat"
+                },
+                "effects": [
+                  {
+                    "takeItem": "formulari_triplicat"
+                  },
+                  {
+                    "giveItem": "imant_ferro9"
+                  },
+                  {
+                    "remember": {
+                      "who": "cargol",
+                      "fact": "triplicat_acceptat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "cargol",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.imant_falta",
+                "if": {
+                  "hasItem": "formulari_triplicat",
+                  "is": false
+                }
+              }
+            ],
+            "goto": "menu"
+          },
+          "dia": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.dia1"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.dia2"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.dia3"
+              }
+            ],
+            "goto": "menu"
+          },
+          "per_que": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.perque1"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.perque2"
+              },
+              {
+                "who": "player",
+                "text": "dlg.cargol.perque3"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.perque4"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.adeu"
+              }
+            ]
+          }
+        }
+      },
+      "mare": {
+        "id": "mare",
+        "with": "mare",
+        "start": "hola",
+        "nodes": {
+          "hola": {
+            "lines": [
+              {
+                "who": "mare",
+                "text": "dlg.mare.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "reciclatge",
+                "text": "dlg.mare.opt.reciclatge",
+                "next": "reciclatge"
+              },
+              {
+                "id": "sortir",
+                "text": "dlg.mare.opt.sortir",
+                "next": "sortir"
+              },
+              {
+                "id": "preso",
+                "text": "dlg.mare.opt.preso",
+                "once": true,
+                "next": "preso"
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.mare.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "reciclatge": {
+            "lines": [
+              {
+                "who": "mare",
+                "text": "dlg.mare.reciclatge1"
+              },
+              {
+                "who": "player",
+                "text": "dlg.mare.reciclatge2"
+              },
+              {
+                "who": "mare",
+                "text": "dlg.mare.reciclatge3"
+              }
+            ],
+            "goto": "menu"
+          },
+          "sortir": {
+            "lines": [
+              {
+                "who": "mare",
+                "text": "dlg.mare.sortir1"
+              },
+              {
+                "who": "mare",
+                "text": "dlg.mare.sortir2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "preso": {
+            "lines": [
+              {
+                "who": "mare",
+                "text": "dlg.mare.preso1"
+              },
+              {
+                "who": "mare",
+                "text": "dlg.mare.preso2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "mare",
+                "text": "dlg.mare.adeu"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "locales": {
+    "ca": {
+      "dlg.cargol.hola": "Senyora Iri! En què la pot servir el Cargol, robot de manteniment model C-1?",
+      "dlg.cargol.hola_amiga": "Senyora Iri! La meva usuària preferida. Vostè sí que entén els procediments.",
+      "dlg.cargol.opt.clau": "Necessito la clau de la cambra de ressonància.",
+      "dlg.cargol.opt.imant": "Necessito un imant de ferro-9.",
+      "dlg.cargol.opt.dia": "Com estàs, Cargol?",
+      "dlg.cargol.opt.alarma": "Per què es va construir la cambra?",
+      "dlg.cargol.opt.adeu": "Fins després, Cargol.",
+      "dlg.cargol.clau_ok1": "Formulari 27-B, degudament segellat. Procedint.",
+      "dlg.cargol.clau_ok2": "Aquí té la clau. Que tingui un torn productiu, senyora Iri!",
+      "dlg.cargol.clau_sense_segell": "Aquest formulari no està segellat, senyora. Un formulari sense segell és només un paper trist.",
+      "dlg.cargol.clau_sense_res": "Per lliurar material, necessito el formulari 27-B, degudament segellat. Són les normes. Les normes són boniques.",
+      "dlg.cargol.imant_ok1": "Tres segells! Senyora Iri, se m'escalfen els circuits d'emoció.",
+      "dlg.cargol.imant_ok2": "Un imant de ferro-9, lot 7. Arxivo el formulari. Que en faci bon ús!",
+      "dlg.cargol.imant_falta": "El material de ferro-9 requereix el formulari 27-B segellat per triplicat. Sense excepcions. Ni per a vostè.",
+      "dlg.cargol.dia1": "...",
+      "dlg.cargol.dia2": "Ningú no m'ho havia preguntat mai.",
+      "dlg.cargol.dia3": "Estic... funcional. Gràcies, senyora Iri. Ho registraré a la meva memòria permanent.",
+      "dlg.cargol.perque1": "Ordre directa del Director Aldaia. Classificació: secret. Accés: només direcció.",
+      "dlg.cargol.perque2": "Si em pregunta per què el Director em va fer instal·lar-la just abans del seu torn... també és secret.",
+      "dlg.cargol.perque3": "Abans del meu torn? Per què el meu?",
+      "dlg.cargol.perque4": "Secret, senyora.",
+      "dlg.cargol.adeu": "Recordi: un formulari a temps estalvia disgustos!",
+      "dlg.mare.hola": "Hola, interna 9! Sóc la MARE, el seu Mòdul d'Atenció i Reinserció Ecològica. Com la puc fer feliç?",
+      "dlg.mare.opt.reciclatge": "Què és exactament el reciclatge?",
+      "dlg.mare.opt.sortir": "Vull sortir d'aquí.",
+      "dlg.mare.opt.preso": "Qui va construir aquesta presó?",
+      "dlg.mare.opt.adeu": "Res. Adéu, MARE.",
+      "dlg.mare.reciclatge1": "El reciclatge és una experiència transformadora! Literalment.",
+      "dlg.mare.reciclatge2": "Literalment com?",
+      "dlg.mare.reciclatge3": "Aquesta informació no està disponible per a la seva tranquil·litat. De res!",
+      "dlg.mare.sortir1": "Sol·licitud de sortida registrada! Temps d'espera estimat: tres-cents quaranta anys.",
+      "dlg.mare.sortir2": "Gràcies per la seva paciència!",
+      "dlg.mare.preso1": "La Gavina es va construir sobre les restes de la gloriosa fàbrica de ferro-9 de la Corporació Aldaia!",
+      "dlg.mare.preso2": "La fàbrica va tancar fa cent vint anys, després d'un petit accident del torn de nit. Res de greu!",
+      "dlg.mare.adeu": "Fins aviat, interna 9! Recordi: queden tres dies!",
+      "dlg.bruc.primera1": "Ah, la nouvinguda està desperta. Tres dies, eh? Jo en porto vint, d'esperar.",
+      "dlg.bruc.primera2": "Diuen que m'han oblidat. Jo dic que m'estan reservant per a una ocasió especial.",
+      "dlg.bruc.hola": "Digues, nena.",
+      "dlg.bruc.ofes": "Ah. La que creu que soc un vell inútil.",
+      "dlg.bruc.opt.reciclatge": "Què és el reciclatge, Bruc?",
+      "dlg.bruc.opt.llapis": "Em deixes alguna cosa per escriure?",
+      "dlg.bruc.opt.llapis_demanar": "Necessito alguna cosa per escriure. Tens res?",
+      "dlg.bruc.opt.maquillatge": "Per què vas maquillat?",
+      "dlg.bruc.opt.familia": "Tens família, Bruc?",
+      "dlg.bruc.opt.perdo": "Perdona pel que et vaig dir, Bruc.",
+      "dlg.bruc.opt.adeu": "Res, res.",
+      "dlg.bruc.reciclatge1": "Ningú no ho sap. Els que se'n van no tornen.",
+      "dlg.bruc.reciclatge2": "I cap no ha tornat a queixar-se, que és el més sospitós de tot.",
+      "dlg.bruc.reciclatge3": "Això sí: diuen que els porten a la part vella de l'estació. On hi havia la fàbrica.",
+      "dlg.bruc.maquillatge1": "Per estar presentable per al reciclatge. Si m'han de reciclar, que sigui guapo.",
+      "dlg.bruc.familia1": "Una filla. La Nura. Li vaig escriure una carta quan em van tancar.",
+      "dlg.bruc.familia2": "Mai no he sabut si la va rebre. Aquí les cartes se les menja l'arxiu.",
+      "dlg.bruc.llapis_ok": "Té, el meu llapis d'ulls. Torna-me'l abans del reciclatge, eh?",
+      "dlg.bruc.llapis_que": "Només tinc el meu llapis d'ulls. I què hi guanyo jo, si te'l deixo?",
+      "dlg.bruc.opt.elogiar": "Que estaràs guapíssim al reciclatge. Més que ara, i mira que ho és difícil.",
+      "dlg.bruc.opt.insultar": "Que un vell inútil com tu no el necessita.",
+      "dlg.bruc.opt.res": "Res. Oblida-ho.",
+      "dlg.bruc.elogiat1": "Oh. Tu sí que en saps. Té, el llapis d'ulls. Fes-ne bon ús.",
+      "dlg.bruc.insultat1": "Això ho recordaré, nena. Tinc vint anys de temps lliure per recordar-ho.",
+      "dlg.bruc.perdo1": "Mmm. Acceptat. Però que no es repeteixi, que soc sensible.",
+      "dlg.bruc.adeu": "Res, res. Com la meva vida.",
+      "final.fugida.titol": "La fugida",
+      "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar.",
+      "final.veritat.titol": "La veritat a temps",
+      "final.veritat.text": "La corporació cau cent vint anys abans. La Gavina no ha estat mai una presó: és l'Estació Osset. I algú hi espera la Vet amb un somriure estranyament familiar.",
+      "final.correspondencia.titol": "Correspondència",
+      "final.correspondencia.text": "El Cargol ha esperat cent vint anys reparant la cambra. La finestra torna a funcionar. Una nota hi espera: «Hola, V. Tinc tantes coses per explicar-te. —I.»",
+      "joc.titol": "Ferro-9",
+      "ui.defecte": "Això no funciona.",
+      "ui.defecte.look": "Res d'especial.",
+      "ui.defecte.look.iri": "Res que no hagi vist mil vegades en aquest torn.",
+      "ui.defecte.look.vet": "Res d'especial. Com tota aquesta presó.",
+      "ui.defecte.pickUp.iri": "És propietat de la corporació. Bé, aquí tot ho és.",
+      "ui.defecte.pickUp.vet": "No em cap a la butxaca. I mira que tinc butxaques.",
+      "ui.defecte.use.iri": "No veig com.",
+      "ui.defecte.use.vet": "Ni amb paciència ni amb violència.",
+      "ui.defecte.talkTo": "No crec que em respongui.",
+      "ui.defecte.open": "No s'obre.",
+      "ui.defecte.close": "No cal tancar-ho.",
+      "ui.defecte.push": "No es mou.",
+      "ui.defecte.pull": "No es mou.",
+      "ui.defecte.give": "No crec que ho vulgui.",
+      "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal explorar una mica més.",
+      "ui.missio.nova": "Nova missió: {titol}",
+      "ui.missio.completada": "Missió completada: {titol}",
+      "ui.missio.fallida": "Missió fallida: {titol}",
+      "ui.fi": "FI",
+      "finestra.posat": "Poso {objecte} dins la cambra.",
+      "finestra.ple": "Ja hi ha {objecte} a dins. Hi cap una cosa cada vegada.",
+      "finestra.ja_armat": "El camp ja està armat. Ara ho ha de recollir l'altra banda.",
+      "finestra.tancada": "El vidre no s'obre mentre el camp està armat.",
+      "finestra.buida": "No hi ha res a dins.",
+      "finestra.tret": "Trec {objecte} de la cambra.",
+      "finestra.armat": "Un brunzit greu. El camp està armat.",
+      "finestra.armat_buit": "Un brunzit greu. El camp està armat... però la cambra és buida.",
+      "finestra.esgotada": "No passa res. La cambra està esgotada.",
+      "finestra.rebut": "Un espetec, una llum... i ha aparegut {objecte}!",
+      "finestra.rebut_res": "Un espetec, una llum... i res. Algú ha enviat aire.",
+      "finestra.rebuig.massa_pesat": "{objecte} no hi cap. És massa gran per a la cambra.",
+      "finestra.rebuig.viu": "No. Res que sigui viu. Ni tan sols per ciència.",
+      "finestra.rebuig.liquid": "Un líquid dins la cambra? Millor no.",
+      "finestra.rebuig.no_hi_cap": "Això no hi cap.",
+      "ui.verb.give": "Dona",
+      "ui.verb.give.prep": "a",
+      "ui.verb.pickUp": "Agafa",
+      "ui.verb.use": "Usa",
+      "ui.verb.use.prep": "amb",
+      "ui.verb.open": "Obre",
+      "ui.verb.look": "Mira",
+      "ui.verb.push": "Empeny",
+      "ui.verb.close": "Tanca",
+      "ui.verb.talkTo": "Parla amb",
+      "ui.verb.pull": "Estira",
+      "ui.verb.walkTo": "Ves a",
+      "ui.menu.titol": "Menú",
+      "ui.menu.desar": "Desa",
+      "ui.menu.carregar": "Carrega",
+      "ui.menu.opcions": "Opcions",
+      "ui.menu.sortir": "Surt",
+      "ui.menu.continuar": "Continua",
+      "ui.menu.inici": "Pantalla inicial",
+      "ui.menu.tornar": "Torna",
+      "ui.carregar.instruccions": "Tria una partida per carregar.",
+      "ui.desar.instruccions": "Tria una posició i escriu un nom per desar.",
+      "ui.opcions.clic_salta": "clic per saltar el diàleg",
+      "ui.opcions.volum_efectes": "volum dels efectes",
+      "ui.opcions.volum_musica": "volum de la música",
+      "ui.opcions.velocitat_text": "velocitat del text",
+      "ui.verb.talkTo.boto": "Parla",
+      "ui.menu.canviar": "Canvia",
+      "ui.menu.pista": "Pista",
+      "mis.acte1.titol": "La descoberta",
+      "mis.acte1.desc": "Una alarma al passat, una paret que vibra al futur.",
+      "mis.acte1.obj.entrar_cambra": "Iri: entra a la cambra de ressonància",
+      "mis.acte1.obj.apagar_alarma": "Iri: apaga l'alarma",
+      "mis.acte1.obj.primera_transferencia": "Vet: descobreix què fa vibrar la paret",
+      "mis.acte1.obj.reparar_panell": "Vet: fes funcionar el panell",
+      "mis.acte1.obj.primera_nota": "Iri: llegeix el missatge de la cambra",
+      "mis.acte1.obj.resposta": "Vet: entén qui hi ha a l'altra banda",
+      "mis.acte1.obj.sortir_cella": "Vet: surt de la cel·la",
+      "mis.carta_bruc.titol": "La carta d'en Bruc",
+      "mis.carta_bruc.desc": "En Bruc vol saber si la seva filla, la Nura, va rebre la seva carta.",
+      "mis.carta_bruc.obj.trobar": "Troba la carta d'en Bruc a l'arxiu",
+      "obj.clau_anglesa.nom": "clau anglesa",
+      "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
+      "obj.formulari_27b.nom": "formulari 27-B",
+      "obj.formulari_27b.desc": "Sol·licitud de material. En blanc.",
+      "obj.formulari_segellat.nom": "formulari 27-B segellat",
+      "obj.formulari_segellat.desc": "Amb el segell oficial. Una obra d'art.",
+      "obj.formulari_triplicat.nom": "formulari 27-B segellat per triplicat",
+      "obj.formulari_triplicat.desc": "Tres segells. La burocràcia en estat pur.",
+      "obj.plomall.nom": "plomall",
+      "obj.plomall.desc": "Un plomall per treure la pols. Fa pessigolles.",
+      "obj.segell.nom": "segell oficial",
+      "obj.segell.desc": "El segell del capatàs. Pesa més que la meva autoritat.",
+      "obj.clau_cambra.nom": "clau de la cambra",
+      "obj.clau_cambra.desc": "La clau de la cambra de ressonància.",
+      "obj.llapis.nom": "llapis",
+      "obj.llapis.desc": "Un llapis mossegat. No recordo haver-lo mossegat.",
+      "obj.llibreta_torn.nom": "llibreta de torn",
+      "obj.llibreta_torn.desc": "Hi apunto tot el que passa al torn de nit. Normalment, res.",
+      "obj.caixa_eines.nom": "caixa d'eines",
+      "obj.caixa_eines.desc": "Pesa una tona. Bé, nou quilos.",
+      "obj.imant_ferro9.nom": "imant de ferro-9",
+      "obj.imant_ferro9.desc": "Un imant de ferro-9. Obre els panys M-3.",
+      "obj.nota_iri.nom": "nota de l'Iri",
+      "obj.nota_iri.desc": "Un full arrencat de la meva llibreta.",
+      "obj.avis_reciclatge.nom": "avís de reciclatge",
+      "obj.avis_reciclatge.desc": "Un avís oficial. Amb un somriure dibuixat.",
+      "obj.llapis_ulls.nom": "llapis d'ulls",
+      "obj.llapis_ulls.desc": "El llapis d'ulls d'en Bruc. Negre intens.",
+      "obj.nota_vet.nom": "nota de la Vet",
+      "obj.nota_vet.desc": "L'avís de reciclatge, escrit pel darrere.",
+      "obj.fullet_reeducacio.nom": "fullet de reeducació",
+      "obj.fullet_reeducacio.desc": "«La Gavina: la teva segona oportunitat!»",
+      "obj.nota_pany.nom": "dibuix del pany",
+      "obj.nota_pany.desc": "El fullet, amb un dibuix del pany pel darrere.",
+      "obj.escarabat.nom": "escarabat",
+      "obj.escarabat.desc": "El Senyor Bigotis. El meu únic amic de veritat.",
+      "obj.sopa.nom": "sopa",
+      "obj.sopa.desc": "Sopa de reinserció. Fa bombolles soles.",
+      "obj.nota_vet.text": "«Ei, qui ets?? Soc a la cel·la 9 de La Gavina. Gràcies per la clau, ets brutal-plus. Però no entenc res. Ajuda'm, d'aquí a 3 dies em reciclen. —La de la cel·la 9»",
+      "obj.nota_vet.iri1": "«Brutal-plus»? «La Gavina»? «Reciclen»?",
+      "obj.nota_vet.iri2": "No hi ha cap cel·la a la fàbrica. Ni cap gavina. Aquí no hi ha ni ocells.",
+      "obj.nota_iri.text": "«Hola, la de la cel·la 9. Aquí és la fàbrica de ferro-9 de la Corporació Aldaia. No hi ha cap cel·la. Què vol dir \"brutal-plus\"? I què vol dir que et reciclen? —I.»",
+      "obj.nota_iri.vet1": "La fàbrica Aldaia? Va tancar fa cent vint anys. Ho diuen tots els fullets de reeducació.",
+      "obj.nota_iri.vet2": "...",
+      "obj.nota_iri.vet3": "Oh. Oh, no. Oh, sí!",
+      "obj.nota_pany.text": "«I.: Crec que ets al passat. Jo soc al futur. Ja ho sé, sona boig. Necessito sortir de la cel·la. El pany és com el del dibuix, posa \"Aldaia M-3\". Saps obrir-lo? —V.»",
+      "obj.nota_pany.iri1": "Al futur. Clar. I jo soc la reina de les calderes.",
+      "obj.nota_pany.iri2": "Però aquest dibuix... És un M-3! N'hi ha a tota la fàbrica. S'obren amb un imant de ferro-9.",
+      "obj.avis_reciclatge.text": "«AVÍS: La interna de la cel·la 9 serà reciclada d'aquí a 3 dies. El reciclatge és una oportunitat! Amb afecte, MARE.»",
+      "obj.escarabat.look": "El Senyor Bigotis. No té bigotis. És un nom aspiracional.",
+      "obj.escarabat.parlar": "Tranquil, Senyor Bigotis. A tu no et reciclaran. Ets massa petit.",
+      "obj.segell.formulari": "Pam! Formulari 27-B segellat. Me'n sento orgullosa i tot.",
+      "obj.segell.triplicat": "Pam! Pam! Segellat per triplicat. Per si de cas.",
+      "obj.segell.massa": "Més segells ja seria vici.",
+      "obj.llapis.resposta1": "Arrenco un full de la llibreta i escric una resposta.",
+      "obj.llapis.resposta2": "Si això és una broma del torn de dia, és molt elaborada.",
+      "obj.llapis.res": "No tinc res a apuntar. El torn de nit és així.",
+      "obj.llapis_ulls.nota": "Escric pel darrere de l'avís. Amb llapis d'ulls. Molt professional.",
+      "obj.llapis_ulls.encara_no": "Podria escriure-hi alguna cosa. Però a qui?",
+      "obj.llapis_ulls.pany1": "Dibuixo el pany de la porta. I escric què em passa. Breu: no hi ha gaire espai.",
+      "obj.llapis_ulls.pany2": "La de l'altra banda viu en una fàbrica. Potser coneix aquest pany.",
+      "obj.llapis_ulls.fullet": "Podria pintar bigotis al Director Aldaia de la portada. Ho apunto per a més tard.",
+      "pj.iri.nom": "Iri",
+      "pj.vet.nom": "Vet",
+      "pj.cargol.nom": "Cargol",
+      "pj.cargol.desc": "Un robot de manteniment. Brilla tant que fa mal als ulls.",
+      "pj.capatas.nom": "Capatàs Pruna",
+      "pj.mare.nom": "MARE",
+      "pj.bruc.nom": "Bruc",
+      "pj.bruc.desc": "El meu company de cel·la. Vell, prim i maquillat.",
+      "pista.iri_clau.1": "La clau de la cambra la té el Cargol, al magatzem.",
+      "pista.iri_clau.2": "El Cargol només dona material amb el formulari 27-B segellat.",
+      "pista.iri_clau.3": "Hi ha formularis al tauler d'anuncis. El segell el té el capatàs... agafat, mentre dorm.",
+      "pista.iri_segell.1": "El capatàs no deixarà anar el segell per les bones.",
+      "pista.iri_segell.2": "Si el fes riure, potser l'afluixaria.",
+      "pista.iri_segell.3": "Fes-li pessigolles al nas amb el plomall del magatzem.",
+      "pista.iri_alarma.1": "L'alarma ve de la consola de la cambra.",
+      "pista.iri_alarma.2": "La palanca està encallada. Cal fer palanca amb alguna cosa.",
+      "pista.iri_alarma.3": "Fes servir la clau anglesa amb la palanca.",
+      "pista.iri_esperar.1": "Aquí ja no puc fer res més. Què deu passar a l'altra banda del camp?",
+      "pista.iri_esperar.2": "Canvia a la Vet.",
+      "pista.vet_panell.1": "La paret vibra. Potser li he d'explicar qui mana.",
+      "pista.vet_panell.2": "Empeny el panell rovellat.",
+      "pista.vet_reparar.1": "La clau anglesa serveix per desmuntar coses.",
+      "pista.vet_reparar.2": "Fes servir la clau anglesa amb el panell. I torna-ho a fer.",
+      "pista.vet_nota.1": "Algú m'ha enviat una clau anglesa. Li podria respondre.",
+      "pista.vet_nota.2": "Per escriure necessito paper i alguna cosa que pinti.",
+      "pista.vet_nota.3": "L'avís de terra i el llapis d'ulls d'en Bruc. Potser en Bruc s'ha de deixar afalagar.",
+      "pista.vet_enviar.1": "La nota ha d'anar al buit de darrere el panell.",
+      "pista.vet_enviar.2": "Fes servir la nota amb el panell, i després prem el panell.",
+      "pista.vet_esperar.1": "He enviat el que podia. Ara ho ha de recollir algú.",
+      "pista.vet_esperar.2": "Canvia a l'Iri.",
+      "pista.iri_rebre.1": "La consola parpelleja. Hi ha algú a l'altra banda?",
+      "pista.iri_rebre.2": "Prem el botó de sincronia de la cambra.",
+      "pista.iri_llegir.1": "Hauria de llegir el que m'ha arribat.",
+      "pista.iri_llegir.2": "Mira la nota de l'inventari.",
+      "pista.iri_respondre.1": "Algú m'ha escrit. Li podria respondre.",
+      "pista.iri_respondre.2": "Fes servir el llapis amb la llibreta de torn.",
+      "pista.iri_enviar.1": "Si les coses que hi poso desapareixen... arriben a algun lloc.",
+      "pista.iri_enviar.2": "Posa-ho dins la cambra i prem el botó de sincronia.",
+      "pista.vet_llegir.1": "M'han contestat!",
+      "pista.vet_llegir.2": "Mira la nota de l'inventari.",
+      "pista.vet_pany.1": "Si la I. és en una fàbrica, potser coneix el pany de la meva porta.",
+      "pista.vet_pany.2": "Mira bé el pany, i després dibuixa'l en algun paper.",
+      "pista.vet_pany.3": "Hi ha un fullet sota el coixí. I el llapis d'ulls encara pinta.",
+      "pista.iri_imant.1": "Necessito un imant de ferro-9. El Cargol en té.",
+      "pista.iri_imant.2": "Per al ferro-9, el Cargol vol el formulari segellat per triplicat.",
+      "pista.iri_imant.3": "Fes servir el segell amb el formulari segellat. Si no en tens, agafa'n un altre del tauler.",
+      "pista.vet_sortir.1": "Un imant. El pany és magnètic...",
+      "pista.vet_sortir.2": "Fes servir l'imant amb la porta.",
+      "pista.iri_porta.1": "Ja tinc la clau de la cambra. Ara només cal trobar-li el pany.",
+      "pista.iri_porta.2": "Fes servir la clau de la cambra amb la porta de la cambra, a la sala de calderes.",
+      "pista.vet_armar.1": "La nota ja és a dins. Ara cal engegar aquest trasto.",
+      "pista.vet_armar.2": "Prem el panell per armar el camp.",
+      "pista.iri_armar.1": "Ja hi ha alguna cosa dins la cambra. Si armo el camp, potser arriba a algun lloc.",
+      "pista.iri_armar.2": "Prem el botó de sincronia.",
+      "sala.fabrica_calderes.capatas.look1": "El capatàs Pruna. Dorm abraçat al segell oficial com si fos un osset de peluix.",
+      "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
+      "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Pruna?",
+      "sala.fabrica_calderes.capatas.parlar2": "Zzz... cinc minuts més, mare...",
+      "sala.fabrica_calderes.capatas.estirar1": "Estiro el segell amb molt de compte...",
+      "sala.fabrica_calderes.capatas.estirar2": "Mmmf. És meu...",
+      "sala.fabrica_calderes.capatas.estirar3": "L'agafa encara més fort. Per estar dormint, té molta força.",
+      "sala.fabrica_calderes.capatas.empenyer1": "Si el desperto, m'enviarà a escurar calderes fins a la jubilació.",
+      "sala.fabrica_calderes.capatas.plomall1": "Li faig pessigolles al nas amb el plomall...",
+      "sala.fabrica_calderes.capatas.plomall2": "Ji, ji, ji... Prou, Margarida... ji, ji...",
+      "sala.fabrica_calderes.capatas.plomall3": "Ha deixat anar el segell per gratar-se el nas. Ha caigut a terra.",
+      "sala.fabrica_calderes.capatas.objecte": "Millor no despertar-lo amb això.",
+      "sala.fabrica_calderes.capatas.nom": "capatàs Pruna",
+      "sala.fabrica_calderes.segell.look": "El segell oficial, a terra. Tan a prop. Tan oficial.",
+      "sala.fabrica_calderes.segell.agafar": "Ja és meu. Ara tinc autoritat. Una mica.",
+      "sala.fabrica_calderes.segell.nom": "segell oficial",
+      "sala.fabrica_calderes.tauler.look1": "«RECORDEU: tota sol·licitud de material requereix el formulari 27-B, degudament segellat.»",
+      "sala.fabrica_calderes.tauler.look2": "Al costat, una pila de formularis 27-B. Tants que fan pila.",
+      "sala.fabrica_calderes.tauler.agafar": "Un formulari 27-B. En blanc, com la meva carrera professional.",
+      "sala.fabrica_calderes.tauler.prou": "Ja en tinc un. No vull que la paperassa em domini.",
+      "sala.fabrica_calderes.tauler.nom": "tauler d'anuncis",
+      "sala.fabrica_calderes.alarma.look1": "L'alarma de vibració. Ve de la cambra de ressonància.",
+      "sala.fabrica_calderes.alarma.look2": "La cambra experimental que ningú no fa servir. I que ningú no sap per què es va construir.",
+      "sala.fabrica_calderes.alarma.apagada": "Apagada. Silenci. El meu so preferit.",
+      "sala.fabrica_calderes.alarma.nom": "llum d'alarma",
+      "sala.fabrica_calderes.porta_magatzem.look": "El magatzem d'eines. El regne del Cargol.",
+      "sala.fabrica_calderes.porta_magatzem.nom": "magatzem",
+      "sala.fabrica_calderes.porta_cambra.obrir": "Clic. Oberta.",
+      "sala.fabrica_calderes.porta_cambra.tancada": "Tancada. La clau la guarda el Cargol, al magatzem. Amb paperassa, és clar.",
+      "sala.fabrica_calderes.porta_cambra.look": "La porta de la cambra de ressonància. Vibra.",
+      "sala.fabrica_calderes.porta_cambra.nom": "porta de la cambra",
+      "sala.fabrica_calderes.intro1": "Torn de nit. Fàbrica de ferro-9 de la Corporació Aldaia.",
+      "sala.fabrica_calderes.intro2": "Una altra vegada l'alarma de vibració. Ve de la cambra experimental.",
+      "sala.fabrica_calderes.intro3": "La clau la té el Cargol. I el Cargol només dona coses amb paperassa.",
+      "sala.fabrica_calderes.nom": "Sala de calderes",
+      "sala.fabrica_magatzem.cargol.look": "El Cargol, robot de manteniment model C-1. Acabat d'estrenar. Brilla tant que fa mal als ulls.",
+      "sala.fabrica_magatzem.cargol.donar": "Millor que li ho expliqui parlant. Li agraden els procediments.",
+      "sala.fabrica_magatzem.cargol.empenyer1": "Senyora Iri, el contacte físic no autoritzat requereix el formulari 12-F.",
+      "sala.fabrica_magatzem.cargol.nom": "Cargol",
+      "sala.fabrica_magatzem.plomall.look": "Un plomall. Per treure la pols de coses que mai no fan pols.",
+      "sala.fabrica_magatzem.plomall.agafar1": "Me l'emporto.",
+      "sala.fabrica_magatzem.plomall.agafar2": "Material de neteja no inventariable. Pot procedir, senyora.",
+      "sala.fabrica_magatzem.plomall.nom": "plomall",
+      "sala.fabrica_magatzem.caixa.look": "Una caixa d'eines enorme. Hi ha de tot, i tot pesa.",
+      "sala.fabrica_magatzem.caixa.agafar": "Uf. Nou quilos d'eines. Per si de cas.",
+      "sala.fabrica_magatzem.caixa_eines.nom": "caixa d'eines",
+      "sala.fabrica_magatzem.prestatges.look": "Claus, imants, cargols... Tot de ferro-9, tot inventariat. Tot sota la mirada del Cargol.",
+      "sala.fabrica_magatzem.prestatges.agafar": "Senyora Iri, li recordo que sense formulari això seria un furt.",
+      "sala.fabrica_magatzem.prestatges.nom": "prestatges",
+      "sala.fabrica_magatzem.porta_calderes.nom": "sala de calderes",
+      "sala.fabrica_magatzem.benvinguda": "Bona nit, senyora Iri! Benvinguda al magatzem. Recordi: sense formulari, no hi ha material.",
+      "sala.fabrica_magatzem.nom": "Magatzem d'eines",
+      "sala.fabrica_cambra.palanca.clau1": "Faig palanca amb la clau anglesa...",
+      "sala.fabrica_cambra.palanca.clau2": "La palanca baixa de cop, la clau se m'escapa i cau dins la cambra!",
+      "sala.fabrica_cambra.palanca.clau3": "I el vidre s'ha tancat. Fantàstic. Almenys l'alarma ha parat.",
+      "sala.fabrica_cambra.palanca.clau4": "Ja la recuperaré demà. Ara mateix, el meu llit em reclama.",
+      "sala.fabrica_cambra.palanca.clau5": "Mentrestant, cent vint anys després...",
+      "sala.fabrica_cambra.palanca.encallada": "Està encallada. Necessito fer palanca amb alguna cosa.",
+      "sala.fabrica_cambra.palanca.look": "La palanca de la consola. Vibra com si tingués fred.",
+      "sala.fabrica_cambra.palanca.baixada": "Ja està baixada. Millor no tocar-la més.",
+      "sala.fabrica_cambra.palanca.nom": "palanca",
+      "sala.fabrica_cambra.cambra.parpelleja": "Dins la cambra hi ha una llum que parpelleja. Com si algú, a l'altra banda, esperés.",
+      "sala.fabrica_cambra.cambra.armada": "El que he posat és a dins, i el vidre no s'obre. El camp està armat.",
+      "sala.fabrica_cambra.cambra.buida_despres": "La cambra és buida. Les coses hi entren... i desapareixen.",
+      "sala.fabrica_cambra.cambra.look": "Una cambra de vidre gruixut, plena de bobines de ferro-9.",
+      "sala.fabrica_cambra.cambra.nom": "cambra",
+      "sala.fabrica_cambra.boto.look": "Un botó vermell. «SINCRONIA. NO PRÉMER SENSE AUTORITZACIÓ DE DIRECCIÓ».",
+      "sala.fabrica_cambra.boto.nom": "botó de sincronia",
+      "sala.fabrica_cambra.porta.nom": "sala de calderes",
+      "sala.fabrica_cambra.intro1": "La cambra de ressonància. L'alarma ve de la consola.",
+      "sala.fabrica_cambra.intro2": "Una palanca, un botó vermell i un vidre gruixut. Res que em faci confiança.",
+      "sala.fabrica_cambra.parpelleja": "La consola parpelleja. Això abans no ho feia.",
+      "sala.fabrica_cambra.nom": "Cambra de ressonància",
+      "sala.gavina_cella.panell.vibra": "Un panell rovellat a la paret. Vibra. Com si tingués son. O ganes de molestar.",
+      "sala.gavina_cella.panell.cop1": "Prou de vibrar!",
+      "sala.gavina_cella.panell.cop2": "(La Vet clava un cop de puny al panell.)",
+      "sala.gavina_cella.panell.cop3": "Au, au, au!",
+      "sala.gavina_cella.panell.paret_guanya": "Au. La paret guanya. Com sempre.",
+      "sala.gavina_cella.panell.obrir1": "Desmunto la tapa amb la clau anglesa...",
+      "sala.gavina_cella.panell.obrir2": "A dins hi ha una consola! Molt vella. Li falta la palanca.",
+      "sala.gavina_cella.panell.reparar1": "La clau anglesa al forat de la palanca... Encaixa com si l'haguessin fet a mida.",
+      "sala.gavina_cella.panell.reparar2": "Clac. La consola s'encén. Una llumeta verda. Hola, llumeta.",
+      "sala.gavina_cella.panell.trencat": "L'he trencat. Ja no vibra. Però la tapa s'ha afluixat.",
+      "sala.gavina_cella.panell.sense_palanca": "Una consola antiga, sense palanca. Necessito alguna cosa que hi encaixi.",
+      "sala.gavina_cella.panell.mort": "No fa res. Encara.",
+      "sala.gavina_cella.panell.parpelleja": "La consola parpelleja. Algú, a l'altra banda?",
+      "sala.gavina_cella.panell.armat": "El camp està armat. Ara, que algú ho reculli. Si us plau.",
+      "sala.gavina_cella.panell.reparat": "La consola, amb la clau anglesa de palanca. Darrere hi ha un buit, com una petita cambra.",
+      "sala.gavina_cella.panell.nom": "panell rovellat",
+      "sala.gavina_cella.altaveu.look": "L'altaveu de la MARE. Té forma de cor. És el detall més sinistre de la presó.",
+      "sala.gavina_cella.altaveu.tocar1": "Interna 9, detectem una manipulació de l'altaveu. Li enviem una abraçada virtual!",
+      "sala.gavina_cella.altaveu.nom": "altaveu de la MARE",
+      "sala.gavina_cella.bruc.look": "En Bruc, el meu company de cel·la. Fa vint anys que espera el reciclatge. Diu que l'han oblidat.",
+      "sala.gavina_cella.bruc.nom": "Bruc",
+      "sala.gavina_cella.avis.look": "Un paper que la MARE m'ha passat per sota la porta.",
+      "sala.gavina_cella.avis.agafar": "El meu avís de reciclatge. Per al meu àlbum de records.",
+      "sala.gavina_cella.avis.nom": "avís",
+      "sala.gavina_cella.llitera.look1": "La meva llitera. Sota el coixí hi ha un fullet de reeducació. Ideal per a quan no puc dormir.",
+      "sala.gavina_cella.llitera.look2": "Una llitera dura com la vida mateixa.",
+      "sala.gavina_cella.llitera.fullet": "Agafo el fullet de reeducació.",
+      "sala.gavina_cella.llitera.nom": "llitera",
+      "sala.gavina_cella.escarabat.look": "El Senyor Bigotis, el meu escarabat. Viu a la cantonada. Paga lloguer amb companyia.",
+      "sala.gavina_cella.escarabat.agafar": "Vine, Senyor Bigotis. Anem d'aventura.",
+      "sala.gavina_cella.escarabat.nom": "Senyor Bigotis",
+      "sala.gavina_cella.safata.look": "Sopa de reinserció. Fa bombolles soles. No n'hi he vist mai cap ingredient.",
+      "sala.gavina_cella.safata.agafar": "M'emporto la sopa. Com a arma, no com a menjar.",
+      "sala.gavina_cella.safata.nom": "safata de sopar",
+      "sala.gavina_cella.porta.imant1": "Acosto l'imant al pany...",
+      "sala.gavina_cella.porta.imant2": "Clac! Oberta! Qui sigui que siguis, I., t'estimo.",
+      "sala.gavina_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Bruc.",
+      "sala.gavina_cella.porta.tancada": "Tancada. Si s'obrís empenyent, no seria una presó.",
+      "sala.gavina_cella.porta.nom": "porta de la cel·la",
+      "sala.gavina_cella.finestreta.look1": "Per la finestreta es veu la Terra, blava i petita.",
+      "sala.gavina_cella.finestreta.look2": "La Gavina dona voltes al planeta com una mosca pesada.",
+      "sala.gavina_cella.finestreta.nom": "finestreta",
+      "sala.gavina_cella.intro1": "La Gavina. Presó orbital. Mòdul C, cel·la 9.",
+      "sala.gavina_cella.intro2": "Bon dia, interna 9! Li recordem que d'aquí a tres dies serà reciclada. Que tingui una jornada plena de sentit!",
+      "sala.gavina_cella.intro3": "Tres dies. Genial. Fantàstic. Meravellós.",
+      "sala.gavina_cella.intro4": "I ara, a sobre, la paret vibra.",
+      "sala.gavina_cella.nom": "Cel·la 9",
+      "sala.gavina_passadis.cartell.look": "«RECICLATGE → Per aquí, amb un somriure!» Hi ha una fletxa i un somriure. El somriure fa por.",
+      "sala.gavina_passadis.cartell.nom": "cartell",
+      "sala.gavina_passadis.camera_vigilancia.look": "Una càmera de vigilància. El pilot verd parpelleja. Algú dorm a l'altra banda. Espero.",
+      "sala.gavina_passadis.camera_vigilancia.nom": "càmera",
+      "sala.gavina_passadis.porta_cella.nom": "cel·la 9",
+      "sala.gavina_passadis.fi1": "Fora de la cel·la!",
+      "sala.gavina_passadis.fi2": "Ara només em falta sortir d'una presó orbital. Bufar i fer ampolles.",
+      "sala.gavina_passadis.fi3": "Mentrestant, al passat, l'inventari del matí no quadra.",
+      "sala.gavina_passadis.fi4": "Falten una clau anglesa i un imant de ferro-9. L'Inspector Brau obre un expedient.",
+      "sala.gavina_passadis.fi5": "FI DE L'ACTE 1",
+      "sala.gavina_passadis.nom": "Passadís del mòdul C"
+    }
+  },
+  "locale": "ca"
+}

@@ -1,0 +1,131 @@
+{
+  "frames": {
+    "gavina_cella 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    },
+    "gavina_cella 1.aseprite": {
+      "frame": {
+        "x": 352,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    },
+    "gavina_cella 2.aseprite": {
+      "frame": {
+        "x": 704,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    },
+    "gavina_cella 3.aseprite": {
+      "frame": {
+        "x": 1056,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py)",
+    "image": "gavina_cella.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1408,
+      "h": 198
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "avis",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "escarabat",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "safata",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

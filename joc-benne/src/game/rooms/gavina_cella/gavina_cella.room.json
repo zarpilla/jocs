@@ -1,0 +1,371 @@
+{
+  "id": "gavina_cella",
+  "name": "Cel·la 9",
+  "size": {
+    "width": 352,
+    "height": 198
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 352,
+    "height": 198
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 118
+          },
+          {
+            "x": 338,
+            "y": 118
+          },
+          {
+            "x": 346,
+            "y": 148
+          },
+          {
+            "x": 6,
+            "y": 148
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta de la cel·la",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 6,
+          "y": 52
+        },
+        {
+          "x": 40,
+          "y": 52
+        },
+        {
+          "x": 40,
+          "y": 118
+        },
+        {
+          "x": 6,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 23,
+        "y": 132
+      },
+      "lookAtPoint": {
+        "x": 23,
+        "y": 118
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "panell",
+      "active": true,
+      "description": "panell rovellat",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 53,
+          "y": 78
+        },
+        {
+          "x": 83,
+          "y": 78
+        },
+        {
+          "x": 83,
+          "y": 104
+        },
+        {
+          "x": 53,
+          "y": 104
+        }
+      ],
+      "walkToPoint": {
+        "x": 68,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 68,
+        "y": 104
+      }
+    },
+    {
+      "id": "altaveu",
+      "active": true,
+      "description": "altaveu de la MARE",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 89,
+          "y": 44
+        },
+        {
+          "x": 119,
+          "y": 44
+        },
+        {
+          "x": 119,
+          "y": 70
+        },
+        {
+          "x": 89,
+          "y": 70
+        }
+      ],
+      "walkToPoint": {
+        "x": 104,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 104,
+        "y": 70
+      }
+    },
+    {
+      "id": "llitera",
+      "active": true,
+      "description": "llitera",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 161,
+          "y": 44
+        },
+        {
+          "x": 191,
+          "y": 44
+        },
+        {
+          "x": 191,
+          "y": 70
+        },
+        {
+          "x": 161,
+          "y": 70
+        }
+      ],
+      "walkToPoint": {
+        "x": 176,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 176,
+        "y": 70
+      }
+    },
+    {
+      "id": "finestreta",
+      "active": true,
+      "description": "finestreta",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 269,
+          "y": 78
+        },
+        {
+          "x": 299,
+          "y": 78
+        },
+        {
+          "x": 299,
+          "y": 104
+        },
+        {
+          "x": 269,
+          "y": 104
+        }
+      ],
+      "walkToPoint": {
+        "x": 284,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 284,
+        "y": 104
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "avis",
+      "tag": "avis",
+      "animations": {
+        "avis": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 125,
+            "y": 78
+          },
+          {
+            "x": 155,
+            "y": 78
+          },
+          {
+            "x": 155,
+            "y": 104
+          },
+          {
+            "x": 125,
+            "y": 104
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 140,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 140,
+        "y": 104
+      },
+      "description": "avís"
+    },
+    {
+      "id": "escarabat",
+      "tag": "escarabat",
+      "animations": {
+        "escarabat": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 197,
+            "y": 78
+          },
+          {
+            "x": 227,
+            "y": 78
+          },
+          {
+            "x": 227,
+            "y": 104
+          },
+          {
+            "x": 197,
+            "y": 104
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 212,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 212,
+        "y": 104
+      },
+      "description": "Senyor Bigotis"
+    },
+    {
+      "id": "safata",
+      "tag": "safata",
+      "animations": {
+        "safata": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 233,
+            "y": 44
+          },
+          {
+            "x": 263,
+            "y": 44
+          },
+          {
+            "x": 263,
+            "y": 70
+          },
+          {
+            "x": 233,
+            "y": 70
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 248,
+        "y": 126
+      },
+      "lookAtPoint": {
+        "x": 248,
+        "y": 70
+      },
+      "description": "safata de sopar"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 176,
+      "y": 136,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bruc-1",
+      "definition": "bruc/bruc.character.json",
+      "x": 270,
+      "y": 130,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "mare-veu",
+      "definition": "mare/mare.character.json",
+      "x": 40,
+      "y": 70,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

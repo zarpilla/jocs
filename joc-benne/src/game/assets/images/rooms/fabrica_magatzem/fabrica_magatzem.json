@@ -1,0 +1,103 @@
+{
+  "frames": {
+    "fabrica_magatzem 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    },
+    "fabrica_magatzem 1.aseprite": {
+      "frame": {
+        "x": 352,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    },
+    "fabrica_magatzem 2.aseprite": {
+      "frame": {
+        "x": 704,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 352,
+        "h": 198
+      },
+      "sourceSize": {
+        "w": 352,
+        "h": 198
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py)",
+    "image": "fabrica_magatzem.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1056,
+      "h": 198
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "plomall",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "caixa_eines",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}
