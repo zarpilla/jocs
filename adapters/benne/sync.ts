@@ -7,13 +7,17 @@
  *  3. Empaqueta dades + textos a `src/game/narrative/content.generated.json`.
  *  4. Genera un diàleg de Benne per cada diàleg nostre (`src/game/dialogs/<id>/`).
  *
- * Tot el que escriu porta la marca GENERAT. Mai no sobreescriu fitxers sense marca.
+ *  5. Amb `--init`, instal·la `globalScript.ts` (encamina les interaccions cap al JSON).
+ *
+ * Tot el que escriu porta la marca GENERAT. Mai no sobreescriu fitxers sense marca
+ * (llevat de `--init`, que abans en fa una còpia `.bak`).
  */
-import { existsSync, mkdirSync, readFileSync, readdirSync, watch, writeFileSync } from 'node:fs';
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, watch, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { validateContent, type DialogueDef, type GameContent, type LocaleTable } from '@aventura/narrative-core';
+import { GAME_ACTIONS, GAME_TEXT_KEYS } from '../../game/logic/index.js';
 import { GAME_DIR, loadGameFromDisk } from '../../tools/load-game.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
@@ -24,6 +28,8 @@ const { values } = parseArgs({
     project: { type: 'string', default: process.env.BENNE_PROJECT ?? join(HERE, '../../joc-benne') },
     locale: { type: 'string' },
     watch: { type: 'boolean', default: false },
+    /** Substitueix el globalScript.ts de Benne pel de l'adaptador (en fa còpia de seguretat). */
+    init: { type: 'boolean', default: false },
   },
 });
 
@@ -78,7 +84,7 @@ function sync() {
     throw new Error(`${project} no sembla un projecte Benne (falta src/game/game-config.json).`);
   }
   const { content, locales } = loadGameFromDisk();
-  const errors = validateContent(content, locales).filter((i) => i.level === 'error');
+  const errors = validateContent(content, locales, { actions: GAME_ACTIONS, textKeys: GAME_TEXT_KEYS }).filter((i) => i.level === 'error');
   if (errors.length) {
     for (const e of errors) console.error(`✖ ${e.where}: ${e.message}`);
     throw new Error(`El contingut té ${errors.length} errors. Arregla'ls (npm run validate) abans de sincronitzar.`);
@@ -106,6 +112,18 @@ function sync() {
     const script = join(dir, `${d.id}.dialog.ts`);
     writeGenerated(join(dir, `${d.id}.dialog.json`), json(benneDialog(d, table, fallback), false), 'json', script);
     writeGenerated(script, benneDialogScript(d), 'ts');
+  }
+
+  // 4. globalScript.ts
+  const global = join(gameDir, 'globalScript.ts');
+  if (values.init) {
+    if (existsSync(global) && !readFileSync(global, 'utf8').includes(MARK)) {
+      copyFileSync(global, `${global}.bak`);
+      console.log(`  (còpia de l'antic globalScript.ts a globalScript.ts.bak)`);
+    }
+    writeFileSync(global, `// ${MARK}. Pots afegir-hi codi a sota.\n` + readFileSync(join(HERE, 'templates/globalScript.ts'), 'utf8'));
+  } else if (!existsSync(global) || !readFileSync(global, 'utf8').includes('routeInteraction')) {
+    console.warn(`⚠ globalScript.ts encara no encamina les interaccions cap al JSON. Executa una vegada amb --init.`);
   }
 
   console.log(`✔ Sincronitzat amb ${project} (${Object.keys(content.dialogues).length} diàlegs, idioma de les llistes: ${locale})`);
