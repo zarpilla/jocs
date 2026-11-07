@@ -1,23 +1,23 @@
 # Guia per escriure contingut
 
 Tot el joc és a `game/`. Els fitxers de `data/` diuen **què passa**; els de `locales/` diuen
-**què es llegeix**. Després de qualsevol canvi: `npm run validate`.
+**què es llegeix**. Després de qualsevol canvi: `npm run validate`, i per provar-ho, `npm run jugar`.
 
 VS Code autocompleta i marca errors als JSON (gràcies a `game/schemas/`).
 
 ## Identificadors i claus de text
 
 - **Identificadors** (personatges, nodes, opcions, missions, flags...): `minuscules_i_xifres`, sense
-  accents ni espais. Exemple: `pescador`, `sobre_el_far`.
-- **Claus de text**: amb punts, per tema. Exemple: `dlg.pescador.hola.1`. Els prefixos que fem
+  accents ni espais. Exemple: `cargol`, `porta_cambra_oberta`.
+- **Claus de text**: amb punts, per tema. Exemple: `dlg.bruc.primera1`. Els prefixos que fem
   servir: `joc.`, `ui.`, `pj.` (personatges), `obj.` (objectes), `dlg.` (diàlegs), `mis.`
   (missions), `pista.`, `final.`.
-- Els textos poden incloure variables: `"Tens {monedes} monedes"`.
+- Els textos poden incloure variables: `"Queden {enceses_restants} enceses"`.
 
 ## Estat: `data/state.json`
 
 ```json
-{ "flags": { "far_ences": false }, "vars": { "monedes": 0 } }
+{ "flags": { "alarma_apagada": false }, "vars": { "enceses_restants": 12 } }
 ```
 
 Qualsevol flag o variable s'ha de declarar aquí (el validador ho comprova).
@@ -28,40 +28,123 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 
 | Condició | Exemple |
 |---|---|
-| Flag | `{ "flag": "far_ences" }` · `{ "flag": "far_ences", "is": false }` |
-| Variable | `{ "var": "monedes", "op": ">=", "value": 3 }` |
-| Té un objecte | `{ "hasItem": "esquer" }` |
-| Un personatge recorda | `{ "remembers": { "who": "pescador", "fact": "insultat" } }` (opcional: `"atLeast": 2`) |
-| Relació amb un personatge | `{ "relation": { "who": "pescador", "op": ">=", "value": 1 } }` |
+| Flag | `{ "flag": "alarma_apagada" }` · `{ "flag": "alarma_apagada", "is": false }` |
+| Variable | `{ "var": "finestra_armada", "op": "==", "value": "vet" }` |
+| Té un objecte | `{ "hasItem": "segell" }` (la protagonista activa) · `{ "hasItem": "imant_ferro9", "who": "vet" }` |
+| Protagonista activa | `{ "protagonist": "iri" }` |
+| Un personatge recorda | `{ "remembers": { "who": "bruc", "fact": "insultat" } }` (opcional: `"atLeast": 2`) |
+| Relació amb un personatge | `{ "relation": { "who": "bruc", "op": ">=", "value": 1 } }` |
 | Estat d'una missió | `{ "quest": "encendre_far", "status": "active" }` (o una llista d'estats) |
 | Objectiu fet | `{ "objective": { "quest": "q", "objective": "o" } }` |
 | Sala visitada / sala actual | `{ "visited": "moll" }` · `{ "inRoom": "moll" }` |
-| Node de diàleg vist abans | `{ "seen": { "dialogue": "pescador", "node": "sobre_el_far" } }` |
-| Opció triada abans | `{ "chosen": { "dialogue": "pescador", "node": "menu", "choice": "insultar" } }` |
+| Node de diàleg vist abans | `{ "seen": { "dialogue": "bruc", "node": "primera" } }` |
+| Opció triada abans | `{ "chosen": { "dialogue": "bruc", "node": "convencer", "choice": "insultar" } }` |
 | Combinacions | `{ "all": [...] }` · `{ "any": [...] }` · `{ "not": {...} }` |
 
 ## Efectes
 
 | Efecte | Exemple |
 |---|---|
-| Flag | `{ "setFlag": "far_ences" }` (o amb `"value": false`) |
-| Variable | `{ "setVar": "nom", "value": "x" }` · `{ "addVar": "monedes", "amount": 3 }` |
-| Inventari | `{ "giveItem": "clau_far" }` · `{ "takeItem": "esquer" }` |
-| Memòria | `{ "remember": { "who": "pescador", "fact": "ajudat" } }` · `{ "forget": ... }` |
-| Relació | `{ "relation": { "who": "pescador", "change": -2 } }` |
+| Flag | `{ "setFlag": "alarma_apagada" }` (o amb `"value": false`) |
+| Variable | `{ "setVar": "nom", "value": "x" }` · `{ "addVar": "sospita_brau", "amount": 1 }` |
+| Inventari | `{ "giveItem": "clau_cambra" }` · `{ "takeItem": "formulari_27b" }` (opcional: `"who": "vet"`) |
+| Memòria | `{ "remember": { "who": "cargol", "fact": "preguntat_pel_dia" } }` · `{ "forget": ... }` |
+| Relació | `{ "relation": { "who": "bruc", "change": -2 } }` |
 | Missions | `{ "startQuest": "q" }` · `{ "completeObjective": { "quest": "q", "objective": "o" } }` · `{ "completeQuest": "q" }` · `{ "failQuest": "q" }` |
 | Final | `{ "ending": "fugida" }` |
 | Esdeveniment per al motor | `{ "event": "obrir_porta", "args": { "porta": "taverna" } }` |
+| Canviar de protagonista | `{ "event": "protagonista", "args": { "id": "vet" } }` |
+
+## Joc i protagonistes: `data/game.json`
+
+```json
+"protagonists": ["iri", "vet"],
+"start": {
+  "iri": { "room": "fabrica_calderes", "items": ["clau_anglesa", "llapis", "llibreta_torn"] },
+  "vet": { "room": "gavina_cella" }
+}
+```
+
+Cada protagonista té el seu inventari i la seva sala. La primera de la llista és la que comença.
+`"who": "player"` a les línies és sempre la protagonista que juga en aquell moment.
+
+## Sales i interaccions: `data/rooms/<sala>.json`
+
+Una sala és una llista de **coses** (props, zones o personatges, amb el mateix id que tindran al motor)
+i què passa quan el jugador hi fa un verb.
+
+```json
+{
+  "name": "sala.fabrica_cambra.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    { "id": "primera", "verb": "*", "once": true, "lines": [ { "who": "player", "text": "sala.fabrica_cambra.intro1" } ] }
+  ],
+  "hotspots": {
+    "palanca": {
+      "name": "sala.fabrica_cambra.palanca.nom",
+      "interactions": [
+        { "verb": "use", "item": "clau_anglesa", "if": { "flag": "alarma_apagada", "is": false },
+          "lines": [ ... ], "effects": [ { "setFlag": "alarma_apagada" } ] },
+        { "verb": ["pull", "push", "use"], "lines": [ ... ] },
+        { "verb": "look", "lines": [ ... ] }
+      ]
+    },
+    "boto": { "visibleIf": { "flag": "alarma_apagada" }, "interactions": [ ... ] }
+  }
+}
+```
+
+- **Verbs** (els de la plantilla de 9 verbs de Benne): `look`, `pickUp`, `use`, `open`, `close`, `push`, `pull`,
+  `talkTo`, `give`, i també `walkTo`. `"*"` = qualsevol.
+- **S'agafa la primera interacció que encaixi**, de dalt a baix: posa primer les més concretes (amb
+  condició o amb objecte) i al final les generals.
+- `item`: només encaixa si el jugador fa servir aquest objecte ("fer servir X amb..."). `"*"` = qualsevol
+  objecte. Una interacció sense `item` no encaixa mai si n'hi ha un.
+- Una interacció pot tenir `lines`, `effects`, `dialogue` (comença una conversa), `goTo` (canvia de sala),
+  `action` (una regla del joc en codi, vegeu més avall) i `once` (amb `id`).
+- `visibleIf` a una cosa: si no es compleix, no es veu ni es pot tocar.
+- `onEnter`: s'executa la primera que encaixi en entrar a la sala.
+- Si cap interacció no encaixa, la protagonista diu la frase per defecte: `ui.defecte.<verb>.<protagonista>`,
+  o si no n'hi ha, `ui.defecte.<verb>`, o `ui.defecte`.
+
+Els **personatges** (`characters.json`) i els **objectes** (`items.json`) també poden tenir
+`interactions`: les dels personatges valen a totes les sales (una sala les pot substituir), i les dels
+objectes són per mirar-los a l'inventari o combinar-los (`"verb": "use", "item": "formulari_27b"` dins
+del `segell` = fer servir el segell amb el formulari; funciona en tots dos sentits).
+
+## Regles del joc en codi: `game/logic/`
+
+El que no es pot dir bé amb JSON (la finestra de fase, per exemple) és codi TypeScript **del joc**, que
+només depèn del nucli, mai de Benne. Les regles s'exposen com a **accions**:
+
+```json
+{ "verb": "use", "item": "*", "action": { "name": "finestra.posar", "args": { "item": "$item" } } }
+```
+
+`"$item"` és l'objecte que s'ha fet servir. Les accions que existeixen ara:
+
+| Acció | Què fa |
+|---|---|
+| `finestra.posar` | Posa l'objecte a la cambra de la protagonista activa, si hi cap (< 2 kg, ni viu ni líquid: `props` a `items.json`) |
+| `finestra.treure` | El torna a l'inventari, si el camp no està armat |
+| `finestra.boto` | Arma el camp, o el sincronitza si l'altra ja l'havia armat: l'objecte canvia d'època |
+
+Les propietats que fa servir la finestra són a cada objecte: `"props": { "pes": 1.2, "material": "ferro9" }`,
+`"viu": true`, `"liquid": true`.
 
 ## Personatges i memòria: `data/characters.json`
 
 ```json
-"pescador": {
-  "name": "pj.pescador.nom",
-  "facts": ["insultat", "ajudat"],
-  "relation": { "initial": 0, "min": -3, "max": 3 }
+"cargol": {
+  "name": "pj.cargol.nom",
+  "facts": ["formulari_acceptat", "preguntat_pel_dia", "triplicat_acceptat"],
+  "relation": { "initial": 0, "min": -3, "max": 5 }
 }
 ```
+
+El Cargol és a les dues èpoques amb **el mateix id**: el que recorda de l'Iri al passat ho continua
+recordant 120 anys després, quan el troba la Vet.
 
 `facts` és la llista de coses que el personatge **pot** recordar (si n'escrius una que no hi és, el
 validador ho detecta). Cada fet compta quantes vegades ha passat. `relation` és un número per a
@@ -74,21 +157,22 @@ respondre).
 
 ```json
 {
-  "id": "pescador",
-  "with": "pescador",
+  "id": "bruc",
+  "with": "bruc",
   "start": [
-    { "if": { "remembers": { "who": "pescador", "fact": "insultat" } }, "node": "rancunios" },
-    { "node": "primera_vegada" }
+    { "if": { "remembers": { "who": "bruc", "fact": "insultat" } }, "node": "ofes" },
+    { "if": { "seen": { "dialogue": "bruc", "node": "primera" } }, "node": "hola" },
+    { "node": "primera" }
   ],
   "nodes": {
-    "primera_vegada": {
-      "lines": [ { "who": "pescador", "text": "dlg.pescador.hola" } ],
+    "primera": {
+      "lines": [ { "who": "bruc", "text": "dlg.bruc.primera1" } ],
       "goto": "menu"
     },
     "menu": {
       "choices": [
-        { "id": "far", "text": "dlg.pescador.opt.far", "once": true, "next": "sobre_el_far" },
-        { "id": "adeu", "text": "dlg.pescador.opt.adeu", "next": "adeu", "end": true }
+        { "id": "reciclatge", "text": "dlg.bruc.opt.reciclatge", "once": true, "next": "reciclatge" },
+        { "id": "adeu", "text": "dlg.bruc.opt.adeu", "next": "adeu", "end": true }
       ]
     }
   }
@@ -108,16 +192,14 @@ respondre).
 ## Missions: `data/quests.json`
 
 ```json
-"esquer_pescador": {
-  "kind": "side",
-  "title": "mis.esquer.titol",
-  "startWhen": { ... },
+"acte1": {
+  "kind": "main",
+  "title": "mis.acte1.titol",
   "objectives": [
-    { "id": "trobar_esquer", "text": "mis.esquer.obj.trobar", "completeWhen": { "hasItem": "esquer" } },
-    { "id": "donar_esquer", "text": "mis.esquer.obj.donar" }
-  ],
-  "failWhen": { "relation": { "who": "pescador", "op": "<=", "value": -3 } },
-  "onComplete": [ { "relation": { "who": "pescador", "change": 2 } } ]
+    { "id": "entrar_cambra", "text": "mis.acte1.obj.entrar_cambra", "completeWhen": { "flag": "porta_cambra_oberta" } },
+    { "id": "primera_transferencia", "text": "mis.acte1.obj.primera_transferencia",
+      "completeWhen": { "var": "transferencies", "op": ">=", "value": 1 } }
+  ]
 }
 ```
 
@@ -130,11 +212,11 @@ respondre).
 ## Pistes: `data/hints.json`
 
 ```json
-"com_aconseguir_clau": {
-  "priority": 10,
-  "when": { "quest": "encendre_far", "status": "active" },
-  "doneWhen": { "hasItem": "clau_far" },
-  "levels": ["pista.clau.1", "pista.clau.2", "pista.clau.3"]
+"iri_segell": {
+  "priority": 5,
+  "when": { "all": [ { "protagonist": "iri" }, { "hasItem": "formulari_27b", "who": "iri" }, { "hasItem": "segell", "who": "iri", "is": false } ] },
+  "doneWhen": { "hasItem": "segell", "who": "iri" },
+  "levels": ["pista.iri_segell.1", "pista.iri_segell.2", "pista.iri_segell.3"]
 }
 ```
 
@@ -142,19 +224,20 @@ Quan el jugador demana una pista, es tria la de més prioritat que sigui relleva
 estigui resolta (`doneWhen`). Cada nova petició mostra el nivell següent, de més vague a més
 explícit.
 
-## Objectes condicionals: `data/objects.json`
+Posa `{ "protagonist": "iri" }` dins del `when` perquè la pista només surti a qui la pot fer servir.
+El test de l'Acte 1 comprova que, a cada pas de la partida, hi hagi alguna pista disponible: si
+afegeixes un trencaclosques i t'oblides la pista, el test ho diu.
 
-```json
-"esquer_al_moll": { "room": "moll", "visibleIf": { "quest": "esquer_pescador", "status": "active" } }
-```
+## Objectes condicionals
 
-Coses d'una sala que apareixen o desapareixen. A Benne, la sala les lliga als seus props amb
-`bindObjects` (vegeu l'adaptador).
+Són les coses d'una sala amb `visibleIf` (vegeu *Sales i interaccions*). A Benne, la sala les lliga als
+seus props amb `bindHotspots` (vegeu l'adaptador). `npm run fitxes` en fa la llista.
 
 ## Finals: `data/endings.json`
 
 ```json
-"heroi_del_port": { "title": "final.heroi.titol", "text": "final.heroi.text", "priority": 10, "when": { ... } }
+"veritat": { "title": "final.veritat.titol", "text": "final.veritat.text", "priority": 2,
+             "when": { "all": [ { "flag": "fugida_completada" }, { "flag": "mira_salvada" }, { "flag": "planols_robats" } ] } }
 ```
 
 En arribar al final, es tria el de més `priority` el `when` del qual es compleixi. Un efecte
