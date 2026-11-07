@@ -4,7 +4,7 @@
     { "fileMatch": ["game/data/state.json"], "url": "./game/schemas/state.schema.json" },
     { "fileMatch": ["game/data/characters.json"], "url": "./game/schemas/characters.schema.json" },
     { "fileMatch": ["game/data/items.json"], "url": "./game/schemas/items.schema.json" },
-    { "fileMatch": ["game/data/objects.json"], "url": "./game/schemas/objects.schema.json" },
+    { "fileMatch": ["game/data/rooms/*.json"], "url": "./game/schemas/room.schema.json" },
     { "fileMatch": ["game/data/quests.json"], "url": "./game/schemas/quests.schema.json" },
     { "fileMatch": ["game/data/hints.json"], "url": "./game/schemas/hints.schema.json" },
     { "fileMatch": ["game/data/endings.json"], "url": "./game/schemas/endings.schema.json" },

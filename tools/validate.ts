@@ -7,6 +7,7 @@ import { join } from 'node:path';
 import { Ajv } from 'ajv';
 import { validateContent, type ValidationIssue } from '@aventura/narrative-core';
 import { assembleGame } from '../game/assemble.js';
+import { GAME_ACTIONS, GAME_TEXT_KEYS } from '../game/logic/index.js';
 import { GAME_DIR, readGameFiles } from './load-game.js';
 
 const files = readGameFiles();
@@ -16,6 +17,7 @@ const ajv = new Ajv({ allErrors: true, strict: false });
 const schemaFor = (path: string) => {
   if (path.startsWith('locales/')) return 'locale';
   if (path.startsWith('data/dialogues/')) return 'dialogue';
+  if (path.startsWith('data/rooms/')) return 'room';
   return path.match(/^data\/(\w+)\.json$/)?.[1];
 };
 const shapeIssues: ValidationIssue[] = [];
@@ -33,7 +35,7 @@ for (const [path, json] of Object.entries(files)) {
 
 // 2. Coherència del contingut (només si la forma és correcta).
 const { content, locales } = assembleGame(files);
-const issues = shapeIssues.length ? shapeIssues : validateContent(content, locales);
+const issues = shapeIssues.length ? shapeIssues : validateContent(content, locales, { actions: GAME_ACTIONS, textKeys: GAME_TEXT_KEYS });
 const errors = issues.filter((i) => i.level === 'error');
 const warnings = issues.filter((i) => i.level === 'warning');
 

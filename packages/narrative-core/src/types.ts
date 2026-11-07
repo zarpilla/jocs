@@ -21,7 +21,10 @@ export type CompareOp = '==' | '!=' | '>' | '>=' | '<' | '<=';
 export type Condition =
   | { flag: Id; is?: boolean }
   | { var: Id; op: CompareOp; value: Scalar }
-  | { hasItem: Id; is?: boolean }
+  /** Sense `who`, mira l'inventari de la protagonista activa. */
+  | { hasItem: Id; who?: Id; is?: boolean }
+  /** Quina protagonista controla ara el jugador. */
+  | { protagonist: Id }
   | { remembers: { who: Id; fact: Id; atLeast?: number }; is?: boolean }
   | { relation: { who: Id; op: CompareOp; value: number } }
   | { quest: Id; status: QuestStatus | QuestStatus[] }
@@ -42,8 +45,9 @@ export type Effect =
   | { setFlag: Id; value?: boolean }
   | { setVar: Id; value: Scalar }
   | { addVar: Id; amount: number }
-  | { giveItem: Id }
-  | { takeItem: Id }
+  /** Sense `who`, a/de la protagonista activa. */
+  | { giveItem: Id; who?: Id }
+  | { takeItem: Id; who?: Id }
   | { remember: { who: Id; fact: Id } }
   | { forget: { who: Id; fact: Id } }
   | { relation: { who: Id; change: number } }
@@ -62,8 +66,10 @@ export interface GameManifest {
   title: TextKey;
   defaultLocale: string;
   locales: string[];
-  /** Personatge que controla el jugador. */
-  player: Id;
+  /** Personatges que pot controlar el jugador. La primera és la inicial. */
+  protagonists: Id[];
+  /** On comença cada protagonista i què porta a l'inventari. */
+  start?: Record<Id, { room: Id; items?: Id[] }>;
 }
 
 /** Declaració de flags i variables amb el seu valor inicial (`state.json`). */
@@ -81,6 +87,8 @@ export interface CharacterDef {
   relation?: { initial?: number; min?: number; max?: number };
   /** Descripció per a "mirar" (opcional). */
   description?: TextKey;
+  /** Interaccions amb aquest personatge a qualsevol sala (una sala les pot substituir). */
+  interactions?: InteractionDef[];
 }
 
 // ─── Objectes ────────────────────────────────────────────────────────────────
@@ -88,14 +96,53 @@ export interface CharacterDef {
 export interface ItemDef {
   name: TextKey;
   description?: TextKey;
+  /** Propietats lliures que fa servir la lògica del joc (pes, material...). */
+  props?: Record<Id, Scalar>;
+  /** Interaccions amb l'objecte a l'inventari (mirar-lo, combinar-lo amb un altre...). */
+  interactions?: InteractionDef[];
 }
 
-/** Cosa d'una sala que apareix o desapareix segons l'estat. */
-export interface WorldObjectDef {
-  room: Id;
+// ─── Sales i interaccions ────────────────────────────────────────────────────
+
+/**
+ * Què passa quan el jugador fa un verb sobre alguna cosa. S'agafa la primera
+ * interacció de la llista que encaixi (verb, objecte, condició, `once`).
+ */
+export interface InteractionDef {
+  /** Necessari si `once`: identifica la interacció a les partides desades. */
+  id?: Id;
+  /** Verb o verbs del motor (`look`, `use`, `pickUp`...), o `*` per a qualsevol. */
+  verb: Id | Id[];
+  /** Amb un objecte de l'inventari ("fer servir X amb..."). `*` = qualsevol objecte. */
+  item?: Id;
+  if?: Condition;
+  /** Només passa una vegada. */
+  once?: boolean;
+  lines?: DialogueLineDef[];
+  effects?: Effect[];
+  /** Acció de la lògica del joc (codi), p. ex. la finestra de fase. `"$item"` als args = l'objecte fet servir. */
+  action?: { name: string; args?: Record<string, Scalar> };
+  /** Comença aquest diàleg després de les línies. */
+  dialogue?: Id;
+  /** Va a aquesta sala al final. */
+  goTo?: Id;
+}
+
+export interface HotspotDef {
   name?: TextKey;
-  /** Si es compleix, l'objecte és visible. Sense `visibleIf`, sempre ho és. */
+  /** Si no es compleix, no es veu ni es pot tocar. */
   visibleIf?: Condition;
+  interactions?: InteractionDef[];
+}
+
+export interface RoomDef {
+  name: TextKey;
+  /** De quina protagonista és la sala (informatiu, i per validar). */
+  protagonist?: Id;
+  /** En entrar-hi, s'executa la primera que encaixi (el `verb` s'ignora: posa `*`). */
+  onEnter?: InteractionDef[];
+  /** Coses de la sala: props, zones i personatges, amb l'id que tenen al motor. */
+  hotspots: Record<Id, HotspotDef>;
 }
 
 // ─── Diàlegs ─────────────────────────────────────────────────────────────────
@@ -208,7 +255,7 @@ export interface GameContent {
   state: StateDeclaration;
   characters: Record<Id, CharacterDef>;
   items: Record<Id, ItemDef>;
-  objects: Record<Id, WorldObjectDef>;
+  rooms: Record<Id, RoomDef>;
   dialogues: Record<Id, DialogueDef>;
   quests: Record<Id, QuestDef>;
   hints: Record<Id, HintDef>;

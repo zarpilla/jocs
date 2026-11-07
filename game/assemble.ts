@@ -21,6 +21,7 @@ export function assembleGame(files: Record<string, unknown>): {
   };
 
   const dialogues: GameContent['dialogues'] = {};
+  const rooms: GameContent['rooms'] = {};
   const locales: Record<string, LocaleTable> = {};
 
   for (const [path, json] of Object.entries(files)) {
@@ -28,6 +29,11 @@ export function assembleGame(files: Record<string, unknown>): {
     if (dlg) {
       const def = strip<GameContent['dialogues'][string]>(json);
       dialogues[dlg[1]!] = def;
+      continue;
+    }
+    const room = path.match(/^data\/rooms\/([^/]+)\.json$/);
+    if (room) {
+      rooms[room[1]!] = strip<GameContent['rooms'][string]>(json);
       continue;
     }
     const loc = path.match(/^locales\/([^/]+)\/[^/]+\.json$/);
@@ -47,7 +53,7 @@ export function assembleGame(files: Record<string, unknown>): {
       state: file('data/state.json'),
       characters: file('data/characters.json'),
       items: file('data/items.json'),
-      objects: file('data/objects.json'),
+      rooms,
       quests: file('data/quests.json'),
       hints: file('data/hints.json'),
       endings: file('data/endings.json'),

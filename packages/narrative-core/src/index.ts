@@ -7,3 +7,4 @@ export * from './i18n.js';
 export * from './dialogue.js';
 export * from './narrative.js';
 export * from './validate.js';
+export * from './headless.js';

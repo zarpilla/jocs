@@ -21,9 +21,34 @@
             "type": "string"
           }
         },
-        "player": {
-          "$ref": "#/definitions/Id",
-          "description": "Personatge que controla el jugador."
+        "protagonists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Id"
+          },
+          "description": "Personatges que pot controlar el jugador. La primera és la inicial."
+        },
+        "start": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "room": {
+                "$ref": "#/definitions/Id"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Id"
+                }
+              }
+            },
+            "required": [
+              "room"
+            ],
+            "additionalProperties": false
+          },
+          "description": "On comença cada protagonista i què porta a l'inventari."
         },
         "$schema": {
           "type": "string"
@@ -33,7 +58,7 @@
         "defaultLocale",
         "id",
         "locales",
-        "player",
+        "protagonists",
         "title"
       ]
     },

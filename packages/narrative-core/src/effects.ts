@@ -20,9 +20,9 @@ export function applyEffect(effect: Effect, ctx: EffectContext): void {
   } else if ('addVar' in effect) {
     state.vars[effect.addVar] = Number(state.vars[effect.addVar] ?? 0) + effect.amount;
   } else if ('giveItem' in effect) {
-    emit({ type: 'giveItem', item: effect.giveItem });
+    emit({ type: 'giveItem', item: effect.giveItem, who: effect.who });
   } else if ('takeItem' in effect) {
-    emit({ type: 'takeItem', item: effect.takeItem });
+    emit({ type: 'takeItem', item: effect.takeItem, who: effect.who });
   } else if ('remember' in effect) {
     const mem = memoryOf(state, effect.remember.who);
     mem.facts[effect.remember.fact] = (mem.facts[effect.remember.fact] ?? 0) + 1;

@@ -17,6 +17,8 @@ export interface NarrativeState {
     /** `"<diàleg>/<node>/<opció>"` → vegades triada. */
     chosen: Record<string, number>;
   };
+  /** Interaccions `once` ja fetes: `"<sala>/<cosa>/<id>"` → vegades. */
+  interactions: Record<string, number>;
   /** Pista → quants nivells s'han mostrat. */
   hints: Record<Id, number>;
   ending: Id | null;
@@ -50,6 +52,7 @@ export function createInitialState(content: GameContent): NarrativeState {
     memory,
     quests,
     dialogue: { seen: {}, chosen: {} },
+    interactions: {},
     hints: {},
     ending: null,
   };
@@ -73,6 +76,7 @@ export function migrateState(content: GameContent, saved: unknown): NarrativeSta
       seen: { ...s.dialogue?.seen },
       chosen: { ...s.dialogue?.chosen },
     },
+    interactions: { ...s.interactions },
     hints: { ...s.hints },
     ending: s.ending ?? null,
   };

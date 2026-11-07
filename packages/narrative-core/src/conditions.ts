@@ -29,7 +29,8 @@ export function evaluate(cond: Condition | undefined, ctx: ConditionContext): bo
   if ('not' in cond) return !evaluate(cond.not, ctx);
   if ('flag' in cond) return expect(state.flags[cond.flag] === true, cond.is);
   if ('var' in cond) return compare(state.vars[cond.var], cond.op, cond.value);
-  if ('hasItem' in cond) return expect(world.hasItem(cond.hasItem), cond.is);
+  if ('hasItem' in cond) return expect(world.hasItem(cond.hasItem, cond.who), cond.is);
+  if ('protagonist' in cond) return world.activeProtagonist() === cond.protagonist;
   if ('remembers' in cond) {
     const { who, fact, atLeast = 1 } = cond.remembers;
     return expect((state.memory[who]?.facts[fact] ?? 0) >= atLeast, cond.is);

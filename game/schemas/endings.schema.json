@@ -71,12 +71,27 @@
             "hasItem": {
               "$ref": "#/definitions/Id"
             },
+            "who": {
+              "$ref": "#/definitions/Id"
+            },
             "is": {
               "type": "boolean"
             }
           },
           "required": [
             "hasItem"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protagonist": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "protagonist"
           ],
           "additionalProperties": false
         },

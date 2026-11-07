@@ -1,4 +1,4 @@
-import type { Condition, Effect, GameContent, LocaleTable, TextKey } from './types.js';
+import type { Condition, Effect, GameContent, InteractionDef, LocaleTable, TextKey } from './types.js';
 
 export interface ValidationIssue {
   level: 'error' | 'warning';
@@ -13,7 +13,18 @@ const ID_RE = /^[a-z][a-z0-9_]*$/;
  * nodes, missions...), identificadors mal formats i textos sense traduir.
  * L'idioma per defecte ha de ser complet (error); als altres, avís.
  */
-export function validateContent(content: GameContent, locales: Record<string, LocaleTable>): ValidationIssue[] {
+export interface ValidateOptions {
+  /** Accions de joc registrades (si es dona, es comprova que les interaccions les fan servir bé). */
+  actions?: string[];
+  /** Claus de text que fa servir el codi del joc: han d'existir i no compten com a sobreres. */
+  textKeys?: string[];
+}
+
+export function validateContent(
+  content: GameContent,
+  locales: Record<string, LocaleTable>,
+  options: ValidateOptions = {},
+): ValidationIssue[] {
   const issues: ValidationIssue[] = [];
   const err = (where: string, message: string): void => {
     issues.push({ level: 'error', where, message });
@@ -26,7 +37,7 @@ export function validateContent(content: GameContent, locales: Record<string, Lo
     if (!ID_RE.test(value)) err(where, `Identificador "${value}" no vàlid: minúscules, xifres i "_", començant per lletra.`);
   };
 
-  const { characters, items, objects, dialogues, quests, hints, endings, state, manifest } = content;
+  const { characters, items, rooms, dialogues, quests, hints, endings, state, manifest } = content;
   const speakers = new Set(['player', 'narrator', ...Object.keys(characters)]);
 
   // Condicions i efectes ────────────────────────────────────────────────────
@@ -51,7 +62,12 @@ export function validateContent(content: GameContent, locales: Record<string, Lo
     if ('not' in c) return cond(`${where}.not`, c.not);
     if ('flag' in c) { if (!(c.flag in state.flags)) err(where, `Flag no declarat "${c.flag}" (state.json).`); return; }
     if ('var' in c) { if (!(c.var in state.vars)) err(where, `Variable no declarada "${c.var}" (state.json).`); return; }
-    if ('hasItem' in c) { if (!items[c.hasItem]) err(where, `Objecte d'inventari desconegut "${c.hasItem}".`); return; }
+    if ('hasItem' in c) {
+      if (!items[c.hasItem]) err(where, `Objecte d'inventari desconegut "${c.hasItem}".`);
+      if (c.who && !characters[c.who]) err(where, `Personatge desconegut "${c.who}".`);
+      return;
+    }
+    if ('protagonist' in c) { if (!manifest.protagonists.includes(c.protagonist)) err(where, `"${c.protagonist}" no és cap protagonista (game.json).`); return; }
     if ('remembers' in c) return checkFact(where, c.remembers.who, c.remembers.fact);
     if ('relation' in c) { if (!characters[c.relation.who]) err(where, `Personatge desconegut "${c.relation.who}".`); return; }
     if ('quest' in c) { if (!quests[c.quest]) err(where, `Missió desconeguda "${c.quest}".`); return; }
@@ -63,7 +79,8 @@ export function validateContent(content: GameContent, locales: Record<string, Lo
       if (!dialogues[dialogue]?.nodes[node]?.choices?.some((x) => x.id === choice)) err(where, `Opció "${choice}" no existeix a "${dialogue}/${node}".`);
       return;
     }
-    if ('visited' in c || 'inRoom' in c) return; // les sales són del motor gràfic
+    if ('visited' in c) { if (!rooms[c.visited]) err(where, `Sala desconeguda "${c.visited}".`); return; }
+    if ('inRoom' in c) { if (!rooms[c.inRoom]) err(where, `Sala desconeguda "${c.inRoom}".`); return; }
     err(where, `Condició desconeguda: ${JSON.stringify(c)}`);
   };
 
@@ -73,8 +90,11 @@ export function validateContent(content: GameContent, locales: Record<string, Lo
       if ('setFlag' in e) { if (!(e.setFlag in state.flags)) err(w, `Flag no declarat "${e.setFlag}".`); }
       else if ('setVar' in e) { if (!(e.setVar in state.vars)) err(w, `Variable no declarada "${e.setVar}".`); }
       else if ('addVar' in e) { if (typeof state.vars[e.addVar] !== 'number') err(w, `"${e.addVar}" ha de ser una variable numèrica declarada.`); }
-      else if ('giveItem' in e) { if (!items[e.giveItem]) err(w, `Objecte desconegut "${e.giveItem}".`); }
-      else if ('takeItem' in e) { if (!items[e.takeItem]) err(w, `Objecte desconegut "${e.takeItem}".`); }
+      else if ('giveItem' in e || 'takeItem' in e) {
+        const item = 'giveItem' in e ? e.giveItem : e.takeItem;
+        if (!items[item]) err(w, `Objecte desconegut "${item}".`);
+        if (e.who && !characters[e.who]) err(w, `Personatge desconegut "${e.who}".`);
+      }
       else if ('remember' in e) checkFact(w, e.remember.who, e.remember.fact);
       else if ('forget' in e) checkFact(w, e.forget.who, e.forget.fact);
       else if ('relation' in e) { if (!characters[e.relation.who]) err(w, `Personatge desconegut "${e.relation.who}".`); }
@@ -87,9 +107,42 @@ export function validateContent(content: GameContent, locales: Record<string, Lo
     });
   };
 
+  const interactions = (where: string, list: InteractionDef[] | undefined) => {
+    (list ?? []).forEach((i, n) => {
+      const w = `${where}[${n}]`;
+      if (i.id) id(w, i.id);
+      if (i.once && !i.id) {
+        issues.push({ level: 'warning', where: w, message: `Interacció "once" sense "id": si canvia l'ordre de la llista, les partides desades ho notaran.` });
+      }
+      if (i.item && i.item !== '*' && !items[i.item]) err(w, `Objecte desconegut "${i.item}".`);
+      if (i.dialogue && !dialogues[i.dialogue]) err(w, `Diàleg desconegut "${i.dialogue}".`);
+      if (i.goTo && !rooms[i.goTo]) err(w, `Sala desconeguda "${i.goTo}".`);
+      if (i.action && options.actions && !options.actions.includes(i.action.name)) {
+        err(w, `Acció de joc desconeguda "${i.action.name}". Les que hi ha: ${options.actions.join(', ')}.`);
+      }
+      cond(`${w}.if`, i.if);
+      effects(`${w}.effects`, i.effects);
+      i.lines?.forEach((l, k) => {
+        if (!speakers.has(l.who)) err(`${w}.lines[${k}]`, `Qui parla? "${l.who}" no és cap personatge.`);
+        text(`${w}.lines[${k}]`, l.text);
+        cond(`${w}.lines[${k}].if`, l.if);
+        effects(`${w}.lines[${k}].effects`, l.effects);
+      });
+    });
+  };
+
   // Entitats ────────────────────────────────────────────────────────────────
+  for (const key of options.textKeys ?? []) text('codi del joc', key);
   text('game.json', manifest.title);
-  if (!characters[manifest.player]) err('game.json', `El jugador "${manifest.player}" no és a characters.json.`);
+  if (manifest.protagonists.length === 0) err('game.json', `Cal almenys una protagonista.`);
+  for (const p of manifest.protagonists) {
+    if (!characters[p]) err('game.json', `La protagonista "${p}" no és a characters.json.`);
+  }
+  for (const [who, start] of Object.entries(manifest.start ?? {})) {
+    if (!manifest.protagonists.includes(who)) err('game.json.start', `"${who}" no és cap protagonista.`);
+    if (!rooms[start.room]) err('game.json.start', `Sala desconeguda "${start.room}".`);
+    for (const item of start.items ?? []) if (!items[item]) err('game.json.start', `Objecte desconegut "${item}".`);
+  }
   if (!manifest.locales.includes(manifest.defaultLocale)) err('game.json', `defaultLocale no és a locales.`);
   for (const k of [...Object.keys(state.flags), ...Object.keys(state.vars)]) id('state.json', k);
 
@@ -97,16 +150,26 @@ export function validateContent(content: GameContent, locales: Record<string, Lo
     id(`characters.${cid}`, cid);
     text(`characters.${cid}.name`, c.name);
     text(`characters.${cid}.description`, c.description);
+    interactions(`characters.${cid}.interactions`, c.interactions);
   }
   for (const [iid, it] of Object.entries(items)) {
     id(`items.${iid}`, iid);
     text(`items.${iid}.name`, it.name);
     text(`items.${iid}.description`, it.description);
+    interactions(`items.${iid}.interactions`, it.interactions);
   }
-  for (const [oid, o] of Object.entries(objects)) {
-    id(`objects.${oid}`, oid);
-    text(`objects.${oid}.name`, o.name);
-    cond(`objects.${oid}.visibleIf`, o.visibleIf);
+  for (const [rid, r] of Object.entries(rooms)) {
+    const w = `rooms.${rid}`;
+    id(w, rid);
+    text(`${w}.name`, r.name);
+    if (r.protagonist && !manifest.protagonists.includes(r.protagonist)) err(w, `"${r.protagonist}" no és cap protagonista.`);
+    interactions(`${w}.onEnter`, r.onEnter);
+    for (const [hid, h] of Object.entries(r.hotspots)) {
+      id(`${w}.hotspots.${hid}`, hid);
+      text(`${w}.hotspots.${hid}.name`, h.name);
+      cond(`${w}.hotspots.${hid}.visibleIf`, h.visibleIf);
+      interactions(`${w}.hotspots.${hid}.interactions`, h.interactions);
+    }
   }
 
   for (const [did, d] of Object.entries(dialogues)) {

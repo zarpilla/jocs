@@ -8,12 +8,11 @@ import { fileURLToPath } from 'node:url';
 import { createGenerator } from 'ts-json-schema-generator';
 
 /** Fitxers que són un sol objecte. */
-const single: Record<string, string> = { game: 'GameFile', state: 'StateFile', dialogue: 'DialogueFile' };
+const single: Record<string, string> = { game: 'GameFile', state: 'StateFile', dialogue: 'DialogueFile', room: 'RoomFile' };
 /** Fitxers que són una taula `id → definició`. */
 const tables: Record<string, string> = {
   characters: 'CharacterDef',
   items: 'ItemDef',
-  objects: 'WorldObjectDef',
   quests: 'QuestDef',
   hints: 'HintDef',
   endings: 'EndingDef',
@@ -52,6 +51,6 @@ write('locale', {
   $schema: 'http://json-schema.org/draft-07/schema#',
   type: 'object',
   properties: { $schema: { type: 'string' } },
-  patternProperties: { '^[a-z0-9_]+(\\.[a-z0-9_]+)+$': { type: 'string' } },
+  patternProperties: { '^[a-zA-Z0-9_]+(\\.[a-zA-Z0-9_]+)+$': { type: 'string' } },
   additionalProperties: false,
 });

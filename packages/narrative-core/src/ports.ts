@@ -5,9 +5,11 @@ import type { Id, Scalar } from './types.js';
  * Cada motor (Benne, un altre, els tests) en dona una implementació.
  */
 export interface WorldPort {
-  hasItem(item: Id): boolean;
+  /** Sense `who`, la protagonista activa. */
+  hasItem(item: Id, who?: Id): boolean;
   hasVisited(room: Id): boolean;
   currentRoom(): Id | null;
+  activeProtagonist(): Id;
 }
 
 /**
@@ -15,8 +17,9 @@ export interface WorldPort {
  * El nucli mai no toca l'inventari ni la pantalla: només emet això.
  */
 export type NarrativeEvent =
-  | { type: 'giveItem'; item: Id }
-  | { type: 'takeItem'; item: Id }
+  /** `who`: a qui (sense `who`, la protagonista activa). */
+  | { type: 'giveItem'; item: Id; who?: Id }
+  | { type: 'takeItem'; item: Id; who?: Id }
   | { type: 'questStarted'; quest: Id }
   | { type: 'objectiveCompleted'; quest: Id; objective: Id }
   | { type: 'questCompleted'; quest: Id }
@@ -28,14 +31,24 @@ export type NarrativeEvent =
 
 export type NarrativeListener = (event: NarrativeEvent) => void;
 
-/** Món buit per a tests i eines (validació, simulació). */
+/** Món en memòria per a tests i eines: inventari per protagonista, sales visitades. */
 export class MemoryWorld implements WorldPort {
-  items = new Set<Id>();
+  inventories = new Map<Id, Set<Id>>();
   visited = new Set<Id>();
   room: Id | null = null;
+  /** Sala on és cada protagonista. */
+  rooms = new Map<Id, Id>();
 
-  hasItem(item: Id) {
-    return this.items.has(item);
+  constructor(public active: Id = 'player') {}
+
+  private bag(who: Id = this.active) {
+    let bag = this.inventories.get(who);
+    if (!bag) this.inventories.set(who, (bag = new Set()));
+    return bag;
+  }
+
+  hasItem(item: Id, who?: Id) {
+    return this.bag(who).has(item);
   }
   hasVisited(room: Id) {
     return this.visited.has(room);
@@ -43,13 +56,28 @@ export class MemoryWorld implements WorldPort {
   currentRoom() {
     return this.room;
   }
+  activeProtagonist() {
+    return this.active;
+  }
+  items(who?: Id) {
+    return [...this.bag(who)];
+  }
+  give(item: Id, who?: Id) {
+    this.bag(who).add(item);
+  }
   enter(room: Id) {
     this.room = room;
     this.visited.add(room);
+    this.rooms.set(this.active, room);
+  }
+  /** Canvia de protagonista i torna a la sala on era. */
+  switchTo(who: Id) {
+    this.active = who;
+    this.room = this.rooms.get(who) ?? null;
   }
   /** Aplica els esdeveniments d'inventari, com faria un motor real. */
   readonly listener: NarrativeListener = (e) => {
-    if (e.type === 'giveItem') this.items.add(e.item);
-    if (e.type === 'takeItem') this.items.delete(e.item);
+    if (e.type === 'giveItem') this.bag(e.who).add(e.item);
+    if (e.type === 'takeItem') this.bag(e.who).delete(e.item);
   };
 }

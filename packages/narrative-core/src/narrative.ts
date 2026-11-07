@@ -11,11 +11,51 @@ import type {
   Effect,
   GameContent,
   Id,
+  InteractionDef,
   LocaleTable,
   QuestDef,
   Scalar,
+  SpeakerId,
   TextKey,
 } from './types.js';
+
+/** Què ha de fer el motor després d'una interacció. */
+export interface InteractionResult {
+  lines: ResolvedLine[];
+  /** Diàleg a començar després de les línies. */
+  dialogue?: Id;
+  /** Sala on anar al final. */
+  goTo?: Id;
+}
+
+/** Una cosa sobre la qual es pot fer un verb. */
+export interface InteractionTarget {
+  /** `item` = objecte de l'inventari; la resta, coses de la sala. */
+  kind: 'hotspot' | 'character' | 'item';
+  id: Id;
+}
+
+export interface InteractionRequest {
+  verb: Id;
+  target: InteractionTarget;
+  /** Objecte de l'inventari fet servir ("fer servir X amb..."). */
+  item?: Id;
+  /** Per defecte, la sala actual del món. */
+  room?: Id;
+}
+
+export interface ActionContext {
+  narrative: Narrative;
+  args: Record<string, Scalar>;
+  request?: InteractionRequest;
+}
+
+/** El que torna una acció de joc: línies per dir (claus de text). */
+export interface ActionResult {
+  lines?: { who: SpeakerId; text: TextKey; params?: TextParams }[];
+}
+
+export type GameAction = (ctx: ActionContext) => ActionResult | void;
 
 export interface NarrativeOptions {
   content: GameContent;
@@ -61,6 +101,7 @@ export class Narrative {
   private _state: NarrativeState;
   private listeners = new Set<NarrativeListener>();
   private sessions = new DialogueSessions();
+  private actions = new Map<string, GameAction>();
   /** Dins un lot d'efectes: es retarda `stateChanged` fins al final. */
   private batchDepth = 0;
 
@@ -92,6 +133,22 @@ export class Narrative {
 
   reset() {
     this.load(null);
+  }
+
+  /**
+   * Partida nova: estat inicial i inventaris inicials (`game.json` → `start`).
+   * Retorna on ha de començar cada protagonista.
+   */
+  newGame(): Record<Id, Id> {
+    this.load(null);
+    const rooms: Record<Id, Id> = {};
+    this.batch(() => {
+      for (const [who, start] of Object.entries(this.content.manifest.start ?? {})) {
+        rooms[who] = start.room;
+        for (const item of start.items ?? []) this.emit({ type: 'giveItem', item, who });
+      }
+    });
+    return rooms;
   }
 
   on(listener: NarrativeListener): () => void {
@@ -266,22 +323,126 @@ export class Narrative {
     return { id, title: this.t(def.title), text: this.t(def.text) };
   }
 
-  // ─── Objectes condicionals ────────────────────────────────────────────────
+  // ─── Sales, coses i interaccions ──────────────────────────────────────────
 
-  isObjectVisible(id: Id): boolean {
-    const def = this.content.objects[id];
-    if (!def) throw new Error(`Objecte desconegut: ${id}`);
-    return this.check(def.visibleIf);
+  /** Registra una acció de joc (codi del joc, no del motor). */
+  registerAction(name: string, action: GameAction) {
+    if (this.actions.has(name)) throw new Error(`Acció repetida: ${name}`);
+    this.actions.set(name, action);
   }
 
-  /** Visibilitat de tots els objectes condicionals d'una sala. */
-  objectsIn(room: Id): { id: Id; visible: boolean }[] {
-    return Object.entries(this.content.objects)
-      .filter(([, o]) => o.room === room)
-      .map(([id]) => ({ id, visible: this.isObjectVisible(id) }));
+  get actionNames(): string[] {
+    return [...this.actions.keys()];
+  }
+
+  /** Executa una acció de joc fora d'una interacció (p. ex. des d'un script). */
+  runAction(name: string, args: Record<string, Scalar> = {}): ResolvedLine[] {
+    return this.batch(() => this.callAction(name, args));
+  }
+
+  isHotspotVisible(room: Id, hotspot: Id): boolean {
+    const def = this.content.rooms[room]?.hotspots[hotspot];
+    return def ? this.check(def.visibleIf) : true;
+  }
+
+  /** Visibilitat de les coses condicionals d'una sala (les que tenen `visibleIf`). */
+  hotspotsIn(room: Id): { id: Id; visible: boolean }[] {
+    return Object.entries(this.content.rooms[room]?.hotspots ?? {})
+      .filter(([, h]) => h.visibleIf)
+      .map(([id]) => ({ id, visible: this.isHotspotVisible(room, id) }));
+  }
+
+  /**
+   * El jugador fa un verb sobre alguna cosa. Busca la interacció a la sala,
+   * després al personatge o a l'objecte. `null` = cap interacció: el motor
+   * diu la frase per defecte (`defaultLine`).
+   */
+  interact(req: InteractionRequest): InteractionResult | null {
+    const room = req.room ?? this.world.currentRoom() ?? '';
+    const lists: [string, InteractionDef[] | undefined][] = [];
+    if (req.target.kind !== 'item') {
+      lists.push([`${room}/${req.target.id}`, this.content.rooms[room]?.hotspots[req.target.id]?.interactions]);
+    }
+    if (req.target.kind === 'character') {
+      lists.push([`character/${req.target.id}`, this.content.characters[req.target.id]?.interactions]);
+    }
+    if (req.target.kind === 'item') {
+      lists.push([`item/${req.target.id}`, this.content.items[req.target.id]?.interactions]);
+      // Combinar A amb B ha de funcionar en tots dos sentits.
+      if (req.item) {
+        lists.push([`item/${req.item}`, this.content.items[req.item]?.interactions]);
+      }
+    }
+    for (const [scope, list = []] of lists) {
+      // En combinar A amb B des de B, l'objecte "fet servir" passa a ser A.
+      const item = scope === `item/${req.item}` ? req.target.id : req.item;
+      const found = this.findInteraction(scope, list, req.verb, item);
+      if (found) return this.batch(() => this.runInteraction(scope, list, found, { ...req, item }));
+    }
+    return null;
+  }
+
+  /** En entrar a una sala: la primera entrada d'`onEnter` que encaixi. */
+  enterRoom(room: Id): InteractionResult | null {
+    const list = this.content.rooms[room]?.onEnter ?? [];
+    const found = this.findInteraction(`${room}/@enter`, list, '*');
+    return found ? this.batch(() => this.runInteraction(`${room}/@enter`, list, found)) : null;
+  }
+
+  /**
+   * Frase quan una interacció no està prevista. Busca, per ordre:
+   * `ui.defecte.<verb>.<protagonista>`, `ui.defecte.<verb>`, `ui.defecte`.
+   */
+  defaultLine(verb: Id): ResolvedLine {
+    const who = this.world.activeProtagonist();
+    const key = [`ui.defecte.${verb}.${who}`, `ui.defecte.${verb}`, 'ui.defecte'].find((k) => this.i18n.has(k) || this.i18n.has(k, this.i18n.defaultLocale)) ?? 'ui.defecte';
+    return { who: 'player', key, text: this.t(key) };
   }
 
   // ─── Intern ───────────────────────────────────────────────────────────────
+
+  private interactionKey(scope: string, list: InteractionDef[], i: InteractionDef) {
+    return `${scope}/${i.id ?? list.indexOf(i)}`;
+  }
+
+  private findInteraction(scope: string, list: InteractionDef[], verb: Id, item?: Id): InteractionDef | undefined {
+    return list.find((i) => {
+      const verbs = Array.isArray(i.verb) ? i.verb : [i.verb];
+      if (!verbs.includes('*') && !verbs.includes(verb)) return false;
+      // Amb objecte només encaixen les que en demanen; sense objecte, les que no.
+      if (item ? i.item !== '*' && i.item !== item : i.item !== undefined) return false;
+      if (i.once && (this._state.interactions[this.interactionKey(scope, list, i)] ?? 0) > 0) return false;
+      return this.check(i.if);
+    });
+  }
+
+  private runInteraction(scope: string, list: InteractionDef[], i: InteractionDef, req?: InteractionRequest): InteractionResult {
+    if (i.once) {
+      const key = this.interactionKey(scope, list, i);
+      this._state.interactions[key] = (this._state.interactions[key] ?? 0) + 1;
+    }
+    const lines: ResolvedLine[] = [];
+    for (const line of i.lines ?? []) {
+      if (!this.check(line.if)) continue;
+      applyEffects(line.effects, this.effectCtx());
+      lines.push({ who: line.who, key: line.text, text: this.t(line.text) });
+    }
+    applyEffects(i.effects, this.effectCtx());
+    if (i.action) {
+      const args = Object.fromEntries(
+        Object.entries(i.action.args ?? {}).map(([k, v]) => [k, v === '$item' ? (req?.item ?? '') : v]),
+      );
+      lines.push(...this.callAction(i.action.name, args, req));
+    }
+    return { lines, dialogue: i.dialogue, goTo: i.goTo };
+  }
+
+  private callAction(name: string, args: Record<string, Scalar>, request?: InteractionRequest): ResolvedLine[] {
+    const action = this.actions.get(name);
+    if (!action) throw new Error(`Acció de joc no registrada: ${name}`);
+    const result = action({ narrative: this, args, request }) ?? {};
+    return (result.lines ?? []).map((l) => ({ who: l.who, key: l.text, text: this.t(l.text, l.params) }));
+  }
 
   private dialogueDef(id: Id): DialogueDef {
     const def = this.content.dialogues[id];

@@ -1,189 +1,174 @@
-import { beforeEach, describe, expect, it } from 'vitest';
-import { content, locales } from '@aventura/game';
-import { MemoryWorld, Narrative, validateContent, type GameContent, type NarrativeEvent } from '../src/index.js';
+import { describe, expect, it } from 'vitest';
+import { HeadlessPlayer, MemoryWorld, Narrative, validateContent, type GameContent, type NarrativeEvent } from '../src/index.js';
+import { content, locales } from './fixture.js';
 
-function setup() {
+function setup(c: GameContent = content) {
   const world = new MemoryWorld();
-  const narrative = new Narrative({ content, locales, world });
+  const n = new Narrative({ content: c, locales, world });
+  n.registerAction('comptar', ({ args }) => ({ lines: [{ who: 'narrator', text: 'comptat', params: { que: String(args.que) } }] }));
+  const p = new HeadlessPlayer(n, world);
   const events: NarrativeEvent[] = [];
-  narrative.on(world.listener);
-  narrative.on((e) => e.type !== 'stateChanged' && events.push(e));
-  return { world, narrative, events };
+  n.on((e) => e.type !== 'stateChanged' && events.push(e));
+  p.newGame();
+  return { world, n, p, events };
 }
 
-/** Tria opcions en ordre i retorna l'últim pas. */
-function talk(n: Narrative, dialogue: string, ...choices: string[]) {
-  let step = n.startDialogue(dialogue);
-  for (const c of choices) {
-    expect(step.choices.map((x) => x.id), `l'opció "${c}" hauria d'estar disponible`).toContain(c);
-    step = n.choose(dialogue, c);
-  }
-  return step;
-}
+const keys = (lines: { key: string }[]) => lines.map((l) => l.key);
 
-describe('contingut del joc', () => {
-  it('és vàlid', () => {
-    const errors = validateContent(content, locales).filter((i) => i.level === 'error');
-    expect(errors).toEqual([]);
+describe('validació', () => {
+  it('el contingut de prova és vàlid', () => {
+    expect(validateContent(content, locales, { actions: ['comptar'] }).filter((i) => i.level === 'error')).toEqual([]);
   });
 
-  it('el validador detecta referències trencades i textos que falten', () => {
+  it('detecta referències trencades, accions desconegudes i textos que falten', () => {
     const broken: GameContent = structuredClone(content);
-    broken.quests.encendre_far!.startWhen = { flag: 'no_existeix' };
+    broken.quests.esquer!.startWhen = { flag: 'no_existeix' };
     broken.dialogues.pescador!.nodes.menu!.choices![0]!.next = 'node_fantasma';
-    const issues = validateContent(broken, { ca: { ...locales.ca, 'dlg.pescador.adeu': undefined as never } });
-    const messages = issues.map((i) => i.message).join('\n');
-    expect(messages).toContain('no_existeix');
-    expect(messages).toContain('node_fantasma');
-    expect(messages).toContain('dlg.pescador.adeu');
+    broken.rooms.moll!.hotspots.barca!.interactions![0]!.goTo = 'sala_fantasma';
+    broken.rooms.moll!.hotspots.caixa!.interactions![0]!.action = { name: 'accio_fantasma' };
+    const { 'p.adeu': _, ...ca } = locales.ca!;
+    const messages = validateContent(broken, { ca }, { actions: ['comptar'] }).map((i) => i.message).join('\n');
+    for (const bad of ['no_existeix', 'node_fantasma', 'sala_fantasma', 'accio_fantasma', 'p.adeu']) expect(messages).toContain(bad);
   });
 });
 
-describe('diàlegs i memòria dels personatges', () => {
-  let s: ReturnType<typeof setup>;
-  beforeEach(() => (s = setup()));
+describe('partida nova i sales', () => {
+  it('reparteix inventaris inicials i executa l\'entrada a la sala una sola vegada', () => {
+    const { p } = setup();
+    expect(p.inventory('ana')).toEqual(['moneda']);
+    expect(p.room).toBe('moll');
+    expect(p.transcript[0]).toBe('narrator: [moll.intro]');
+    expect(p.goTo('moll')).toEqual([]);
+  });
 
+  it('les interaccions "once" passen una vegada i després en toca una altra', () => {
+    const { p } = setup();
+    expect(keys(p.do('open', 'caixa'))).toEqual(['caixa.obrir', 'comptat']);
+    expect(keys(p.do('open', 'caixa'))).toEqual(['caixa.buida']);
+  });
+
+  it('les accions de joc reben els arguments i tornen línies', () => {
+    const { p } = setup();
+    expect(p.do('open', 'caixa').at(-1)!.text).toBe('Comptat: ');
+  });
+
+  it('sense interacció, frase per defecte segons la protagonista', () => {
+    const { p } = setup();
+    expect(p.do('push', 'barca')[0]!.key).toBe('ui.defecte');
+    p.switchTo('bo');
+    expect(p.do('look', 'llum')[0]!.key).toBe('ui.defecte.look.bo');
+  });
+
+  it('interaccions de personatge valen a qualsevol sala; combinar objectes funciona en tots dos sentits', () => {
+    const { p, n, world } = setup();
+    expect(keys(p.do('look', 'pescador'))).toEqual(['pescador.look']);
+    world.give('esquer');
+    p.use('moneda', { kind: 'item', id: 'esquer' });
+    p.use('esquer', { kind: 'item', id: 'moneda' });
+    expect(n.getVar('monedes')).toBe(2);
+  });
+
+  it('dues protagonistes amb inventaris i sales separats', () => {
+    const { p, n } = setup();
+    p.do('use', 'barca');
+    expect(p.room).toBe('far');
+    expect(p.do('use', 'llum')[0]!.key).toBe('ui.defecte'); // l'Ana no pot: condició `protagonist`
+    p.switchTo('bo');
+    expect(p.inventory()).toEqual([]);
+    p.do('use', 'llum');
+    expect(n.flag('far_ences')).toBe(true);
+  });
+});
+
+describe('diàlegs i memòria', () => {
   it('la primera conversa saluda diferent que les següents', () => {
-    const first = s.narrative.startDialogue('pescador');
-    expect(first.lines.map((l) => l.key)).toEqual(['dlg.pescador.hola.1', 'dlg.pescador.hola.2']);
-    expect(first.lines[0]!.text).toMatch(/cara nova/);
-    s.narrative.choose('pescador', 'adeu');
-
-    const second = s.narrative.startDialogue('pescador');
-    expect(second.lines.map((l) => l.key)).toEqual(['dlg.pescador.hola.2']);
+    const { p } = setup();
+    expect(keys(p.talk('pescador', 'adeu')).slice(0, 2)).toEqual(['p.hola.primer', 'p.hola']);
+    expect(keys(p.talk('pescador'))).toEqual(['p.hola']);
   });
 
-  it('el pescador recorda que l\'has insultat (i canvia la salutació i les opcions)', () => {
-    const step = talk(s.narrative, 'pescador', 'insultar');
-    expect(step.lines.map((l) => l.who)).toEqual(['player', 'pescador']);
-    expect(s.narrative.remembers('pescador', 'insultat')).toBe(1);
-    expect(s.narrative.relation('pescador')).toBe(-2);
-    expect(step.choices.map((c) => c.id)).toContain('demanar_perdo');
-    expect(step.choices.map((c) => c.id)).not.toContain('insultar');
-    s.narrative.choose('pescador', 'adeu');
-
-    const again = s.narrative.startDialogue('pescador');
-    expect(again.node).toBe('menu');
-    expect(again.lines[0]!.key).toBe('dlg.pescador.rancunios');
+  it('el pescador recorda l\'insult', () => {
+    const { p, n } = setup();
+    p.talk('pescador', 'insultar');
+    expect(n.relation('pescador')).toBe(-2);
+    expect(keys(p.talk('pescador'))).toEqual(['p.rancunios']);
+    expect(n.currentChoices('pescador')).toEqual([]);
   });
 
-  it('les opcions "once" desapareixen i "end" tanca la conversa', () => {
-    const step = talk(s.narrative, 'pescador', 'far');
-    expect(step.choices.map((c) => c.id)).not.toContain('far');
-    const bye = s.narrative.choose('pescador', 'adeu');
+  it('opcions "once" desapareixen; "end" acaba; opció sense next torna al node', () => {
+    const { n } = setup();
+    n.startDialogue('pescador');
+    expect(n.choose('pescador', 'far').choices.map((c) => c.id)).not.toContain('far');
+    const bye = n.choose('pescador', 'adeu');
     expect(bye.ended).toBe(true);
-    expect(bye.lines.at(-1)!.key).toBe('dlg.pescador.adeu');
-    expect(() => s.narrative.choose('pescador', 'adeu')).toThrow(/no està en curs/);
-  });
-
-  it('opcions que només surten en certes circumstàncies', () => {
-    expect(talk(s.narrative, 'pescador').choices.map((c) => c.id)).not.toContain('clau');
-    s.narrative.choose('pescador', 'far');
-    expect(s.narrative.currentChoices('pescador').map((c) => c.id)).toContain('clau');
+    expect(() => n.choose('pescador', 'adeu')).toThrow(/no està en curs/);
   });
 });
 
-describe('missió secundària, objectes condicionals, pistes i finals', () => {
-  it('partida completa: esquer → clau → far → final', () => {
-    const { world, narrative: n, events } = setup();
-
-    // Arribar al moll activa la missió principal.
-    world.enter('moll');
-    n.worldChanged();
-    expect(n.state.quests.encendre_far!.status).toBe('active');
-    expect(n.requestHint()!.text).toBe('Algú del port deu saber on és la clau.');
-    expect(n.requestHint()!.level).toBe(2);
-
-    // L'esquer encara no apareix al moll: cal la missió secundària.
-    expect(n.isObjectVisible('esquer_al_moll')).toBe(false);
-    talk(n, 'pescador', 'far', 'clau');
-    expect(n.state.quests.esquer_pescador!.status).toBe('active');
-    expect(n.objectsIn('moll')).toContainEqual({ id: 'esquer_al_moll', visible: true });
-    n.endDialogue('pescador');
-
-    // Agafar l'esquer (ho fa l'script de la sala).
-    n.apply({ giveItem: 'esquer' });
-    expect(n.state.quests.esquer_pescador!.objectives.trobar_esquer).toBe(true);
-    expect(n.isObjectVisible('esquer_al_moll')).toBe(false);
-
-    // Donar-lo completa la missió, i el premi canvia la relació i la memòria.
-    talk(n, 'pescador', 'donar_esquer');
-    expect(n.state.quests.esquer_pescador!.status).toBe('completed');
-    expect(n.getVar('monedes')).toBe(3);
-    expect(n.relation('pescador')).toBe(2);
+describe('missions, objectes condicionals, pistes i finals', () => {
+  it('missió secundària completa amb premi', () => {
+    const { p, n, world, events } = setup();
+    expect(n.isHotspotVisible('moll', 'cucs')).toBe(false);
+    p.talk('pescador', 'far');
+    expect(n.hotspotsIn('moll')).toContainEqual({ id: 'cucs', visible: true });
+    expect(n.requestHint()!.level).toBe(1);
+    expect(n.requestHint()!.hasMore).toBe(false);
+    p.do('pickUp', 'cucs');
+    expect(n.isHotspotVisible('moll', 'cucs')).toBe(false);
+    expect(n.requestHint()).toBeNull();
+    p.talk('pescador', 'esquer');
     expect(world.hasItem('esquer')).toBe(false);
+    expect(n.state.quests.esquer!.status).toBe('completed');
+    expect(n.relation('pescador')).toBe(2);
+    expect(events.map((e) => e.type)).toEqual(expect.arrayContaining(['questStarted', 'objectiveCompleted', 'questCompleted']));
 
-    // Ara sí que dona la clau.
-    const step = n.choose('pescador', 'clau');
-    expect(step.lines.map((l) => l.key)).toEqual(['dlg.pescador.opt.clau', 'dlg.pescador.clau.si']);
-    expect(world.hasItem('clau_far')).toBe(true);
-    expect(step.choices.map((c) => c.id)).not.toContain('clau');
-    n.endDialogue('pescador');
-
-    // Encendre el far tanca la missió principal i dona el millor final.
-    expect(n.resolveEnding()).toBeNull();
     n.apply({ setFlag: 'far_ences' });
-    expect(n.state.quests.encendre_far!.status).toBe('completed');
-    expect(n.isObjectVisible('llum_del_far')).toBe(true);
-    expect(n.resolveEnding()).toBe('heroi_del_port');
-    expect(n.ending('heroi_del_port').title).toBe("L'heroi del port");
-
-    expect(events.map((e) => e.type)).toEqual(
-      expect.arrayContaining(['questStarted', 'objectiveCompleted', 'questCompleted', 'giveItem', 'takeItem']),
-    );
+    expect(n.resolveEnding()).toBe('amic');
   });
 
-  it('si et barallas amb el pescador, el final és un altre i la missió falla', () => {
-    const { world, narrative: n } = setup();
-    world.enter('moll');
-    talk(n, 'pescador', 'far', 'clau');
-    n.choose('pescador', 'insultar');
-    n.apply({ relation: { who: 'pescador', change: -5 } });
-    expect(n.relation('pescador')).toBe(-3); // límit de characters.json
-    expect(n.state.quests.esquer_pescador!.status).toBe('failed');
+  it('la relació té límits i pot fer fallar la missió', () => {
+    const { p, n } = setup();
+    p.talk('pescador', 'far', 'insultar');
+    n.apply({ relation: { who: 'pescador', change: -9 } });
+    expect(n.relation('pescador')).toBe(-3);
+    expect(n.state.quests.esquer!.status).toBe('failed');
     n.apply({ setFlag: 'far_ences' });
-    expect(n.resolveEnding()).toBe('far_ences_sol');
+    expect(n.resolveEnding()).toBe('sol');
   });
 
   it('un final forçat per efecte té prioritat', () => {
-    const { narrative: n, events } = setup();
+    const { n } = setup();
     n.apply({ ending: 'fugida' });
     expect(n.resolveEnding()).toBe('fugida');
-    expect(events).toContainEqual({ type: 'ending', ending: 'fugida' });
   });
 });
 
 describe('desar i carregar', () => {
-  it('l\'estat sobreviu a una partida desada i suporta contingut nou', () => {
-    const a = setup();
-    talk(a.narrative, 'pescador', 'insultar');
-    const saved = JSON.parse(JSON.stringify(a.narrative.snapshot()));
+  it('l\'estat sobreviu i accepta contingut nou', () => {
+    const { p, n } = setup();
+    p.talk('pescador', 'insultar');
+    p.do('open', 'caixa');
+    const saved = JSON.parse(JSON.stringify(n.snapshot()));
 
-    // Simulem una versió nova del joc amb un flag que abans no existia.
     const newer: GameContent = structuredClone(content);
     newer.state.flags.flag_nou = true;
     const b = new Narrative({ content: newer, locales, world: new MemoryWorld() });
+    b.registerAction('comptar', () => {});
     b.load(saved);
     expect(b.remembers('pescador', 'insultat')).toBe(1);
-    expect(b.relation('pescador')).toBe(-2);
     expect(b.flag('flag_nou')).toBe(true);
-    expect(b.startDialogue('pescador').lines[0]!.key).toBe('dlg.pescador.rancunios');
+    expect(b.interact({ verb: 'open', target: { kind: 'hotspot', id: 'caixa' }, room: 'moll' })!.lines[0]!.key).toBe('caixa.buida');
   });
 });
 
 describe('traduccions', () => {
-  it('fa servir l\'idioma per defecte si falta una clau i interpola variables', () => {
-    const world = new MemoryWorld();
-    const n = new Narrative({
-      content,
-      locales: { ...locales, en: { 'pj.pescador.nom': 'Fisherman', 'ui.monedes': 'You have {monedes} coins' } },
-      world,
-    });
+  it('torna a l\'idioma per defecte i interpola variables', () => {
+    const n = new Narrative({ content, locales: { ...locales, en: { 'pj.pescador': 'Fisherman', x: 'You have {monedes} coins' } }, world: new MemoryWorld() });
     n.setLocale('en');
     expect(n.characterName('pescador')).toBe('Fisherman');
-    expect(n.itemName('esquer')).toBe('esquer'); // ve del català
+    expect(n.itemName('esquer')).toBe('[obj.esquer]');
     n.apply({ addVar: 'monedes', amount: 2 });
-    expect(n.t('ui.monedes')).toBe('You have 2 coins');
+    expect(n.t('x')).toBe('You have 2 coins');
     expect(n.t('no.existeix')).toBe('⟦no.existeix⟧');
   });
 });
