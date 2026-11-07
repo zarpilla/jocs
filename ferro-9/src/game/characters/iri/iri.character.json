@@ -2,48 +2,48 @@
   "id": "iri",
   "name": "Iri",
   "description": "Iri",
-  "walkSpeed": 88,
-  "walkToPoint": {
-    "x": -18,
-    "y": 63
-  },
-  "talkPoint": {
-    "x": 18,
-    "y": 1
-  },
   "clickable": true,
   "display": {
     "aseprite": true
   },
+  "walkSpeed": 84,
+  "walkToPoint": {
+    "x": 40,
+    "y": 61
+  },
+  "talkPoint": {
+    "x": 18,
+    "y": -2
+  },
   "feet": {
     "x": 18,
-    "y": 62
+    "y": 61
   },
   "collider": {
     "points": [
       {
         "x": 11,
-        "y": 3
-      },
-      {
-        "x": 5,
-        "y": 34
-      },
-      {
-        "x": 9,
-        "y": 64
-      },
-      {
-        "x": 28,
-        "y": 64
-      },
-      {
-        "x": 31,
-        "y": 34
+        "y": 2
       },
       {
         "x": 25,
-        "y": 1
+        "y": 2
+      },
+      {
+        "x": 27,
+        "y": 40
+      },
+      {
+        "x": 24,
+        "y": 63
+      },
+      {
+        "x": 11,
+        "y": 63
+      },
+      {
+        "x": 8,
+        "y": 40
       }
     ]
   },
@@ -59,24 +59,27 @@
     },
     "WalkL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 90
     },
     "WalkD": {
       "loop": true,
-      "frameDuration": 60
+      "frameDuration": 80
     },
     "WalkU": {
       "loop": true,
-      "frameDuration": 60
+      "frameDuration": 80
     },
     "TalkL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "TalkD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "TalkU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     }
   },
   "defaultVerb": "look",

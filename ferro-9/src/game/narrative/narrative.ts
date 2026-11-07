@@ -77,6 +77,7 @@ narrative.on((e) => {
     case 'stateChanged':
       store.narrativeState = narrative.snapshot() as unknown as VarValue;
       applyHotspotVisibility();
+      applyAppearances();
       break;
     case 'giveItem':
       bagOf(e.who).add(itemRef(e.item));
@@ -162,6 +163,23 @@ export function applyHotspotVisibility() {
     const handle = boundHotspots[id] ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
     if ('visible' in handle) handle.visible = visible;
     else handle.active = visible;
+  }
+}
+
+// ─── Aspecte dels personatges segons l'estat (`appearance` a characters.json) ──
+
+export function applyAppearances() {
+  for (const [id, def] of Object.entries(content.characters)) {
+    if (!def.appearance?.length) continue;
+    // Les animacions del JSON són text; Benne les tipa amb les etiquetes del sprite.
+    const handle = benneCharacter(id) as { animation: string; stopAnimation(): void } | undefined;
+    if (!handle) continue;
+    const anim = narrative.appearanceOf(id);
+    if (anim) {
+      if (handle.animation !== anim) handle.animation = anim;
+    } else if (def.appearance.some((a) => a.anim === handle.animation)) {
+      handle.stopAnimation();
+    }
   }
 }
 

@@ -2,40 +2,48 @@
   "id": "bruc",
   "name": "Bruc",
   "description": "El meu company de cel·la. Vell, prim i maquillat.",
-  "walkSpeed": 88,
-  "walkToPoint": {
-    "x": 44,
-    "y": 50
-  },
-  "talkPoint": {
-    "x": 18,
-    "y": 5
-  },
   "clickable": true,
   "display": {
     "aseprite": true
   },
+  "walkSpeed": 60,
+  "walkToPoint": {
+    "x": 44,
+    "y": 61
+  },
+  "talkPoint": {
+    "x": 18,
+    "y": -2
+  },
   "feet": {
-    "x": 19,
-    "y": 50
+    "x": 18,
+    "y": 61
   },
   "collider": {
     "points": [
       {
+        "x": 11,
+        "y": 2
+      },
+      {
+        "x": 25,
+        "y": 2
+      },
+      {
+        "x": 27,
+        "y": 40
+      },
+      {
         "x": 24,
-        "y": 4
+        "y": 63
       },
       {
-        "x": 28,
-        "y": 51
+        "x": 11,
+        "y": 63
       },
       {
-        "x": 10,
-        "y": 51
-      },
-      {
-        "x": 10,
-        "y": 4
+        "x": 8,
+        "y": 40
       }
     ]
   },
@@ -44,21 +52,24 @@
       "loop": true
     },
     "TalkD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "IdleL": {
       "loop": true
     },
     "TalkL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "IdleU": {
       "loop": true
     },
     "TalkU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     }
   },
   "defaultVerb": "talkTo",
-  "speechColor": "#ff90c8"
+  "speechColor": "#c8b8f0"
 }

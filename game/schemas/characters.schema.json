@@ -39,6 +39,25 @@
             "$ref": "#/definitions/InteractionDef"
           },
           "description": "Interaccions amb aquest personatge a qualsevol sala (una sala les pot substituir)."
+        },
+        "appearance": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "if": {
+                "$ref": "#/definitions/Condition"
+              },
+              "anim": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "anim"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Aspecte segons l'estat: la primera entrada que es compleixi diu quina animació (etiqueta del sprite) ha de fer el personatge. Si no se'n compleix cap, la normal. Ex.: el capatàs deixa anar el segell → `{ \"if\": { \"flag\": \"segell_caigut\" }, \"anim\": \"DormSenseSegell\" }`."
         }
       },
       "required": [

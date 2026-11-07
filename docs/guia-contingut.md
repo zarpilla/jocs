@@ -143,6 +143,12 @@ Les propietats que fa servir la finestra són a cada objecte: `"props": { "pes":
 }
 ```
 
+`appearance` canvia l'aspecte (l'animació del sprite) segons l'estat; la primera que es compleixi:
+
+```json
+"capatas": { "appearance": [ { "if": { "flag": "segell_caigut" }, "anim": "DormSenseSegell" } ] }
+```
+
 El Cargol és a les dues èpoques amb **el mateix id**: el que recorda de l'Iri al passat ho continua
 recordant 120 anys després, quan el troba la Vet.
 

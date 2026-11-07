@@ -21,7 +21,15 @@
     }
   },
   "capatas": {
-    "name": "pj.capatas.nom"
+    "name": "pj.capatas.nom",
+    "appearance": [
+      {
+        "if": {
+          "flag": "segell_caigut"
+        },
+        "anim": "DormSenseSegell"
+      }
+    ]
   },
   "mare": {
     "name": "pj.mare.nom"

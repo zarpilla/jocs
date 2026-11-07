@@ -1,0 +1,74 @@
+{
+  "id": "bruc",
+  "name": "bruc",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 60,
+  "walkToPoint": {
+    "x": 44,
+    "y": 61
+  },
+  "talkPoint": {
+    "x": 18,
+    "y": -2
+  },
+  "feet": {
+    "x": 18,
+    "y": 61
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 11,
+        "y": 2
+      },
+      {
+        "x": 25,
+        "y": 2
+      },
+      {
+        "x": 27,
+        "y": 40
+      },
+      {
+        "x": 24,
+        "y": 63
+      },
+      {
+        "x": 11,
+        "y": 63
+      },
+      {
+        "x": 8,
+        "y": 40
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleL": {
+      "loop": true
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "talkTo"
+}

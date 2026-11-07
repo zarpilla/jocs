@@ -2,63 +2,69 @@
   "id": "cargol",
   "name": "Cargol",
   "description": "Un robot de manteniment. Brilla tant que fa mal als ulls.",
-  "walkSpeed": 88,
-  "walkToPoint": {
-    "x": 44,
-    "y": 50
-  },
-  "talkPoint": {
-    "x": 18,
-    "y": 5
-  },
   "clickable": true,
   "display": {
     "aseprite": true
   },
+  "walkSpeed": 50,
+  "walkToPoint": {
+    "x": 46,
+    "y": 44
+  },
+  "talkPoint": {
+    "x": 20,
+    "y": 0
+  },
   "feet": {
-    "x": 19,
-    "y": 50
+    "x": 20,
+    "y": 44
   },
   "collider": {
     "points": [
       {
-        "x": 24,
+        "x": 6,
         "y": 4
       },
       {
-        "x": 28,
-        "y": 51
-      },
-      {
-        "x": 10,
-        "y": 51
-      },
-      {
-        "x": 10,
+        "x": 34,
         "y": 4
+      },
+      {
+        "x": 34,
+        "y": 45
+      },
+      {
+        "x": 6,
+        "y": 45
       }
     ]
   },
   "animations": {
     "IdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 250
     },
     "TalkD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "IdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 250
     },
     "TalkL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "IdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 250
     },
     "TalkU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     }
   },
   "defaultVerb": "talkTo",
-  "speechColor": "#c8c8c8"
+  "speechColor": "#a8f0c0"
 }

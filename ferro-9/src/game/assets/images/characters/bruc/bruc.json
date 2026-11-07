@@ -1,11 +1,11 @@
 {
   "frames": {
-    "penny 0.aseprite": {
+    "bruc 0.aseprite": {
       "frame": {
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -13,20 +13,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 1.aseprite": {
+    "bruc 1.aseprite": {
       "frame": {
         "x": 36,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -34,20 +34,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 2.aseprite": {
+    "bruc 2.aseprite": {
       "frame": {
         "x": 72,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -55,20 +55,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 3.aseprite": {
+    "bruc 3.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 55,
+        "x": 108,
+        "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -76,20 +76,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 4.aseprite": {
+    "bruc 4.aseprite": {
       "frame": {
-        "x": 36,
-        "y": 55,
+        "x": 144,
+        "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -97,20 +97,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 5.aseprite": {
+    "bruc 5.aseprite": {
       "frame": {
-        "x": 72,
-        "y": 55,
+        "x": 180,
+        "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -118,20 +118,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 6.aseprite": {
+    "bruc 6.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 110,
+        "x": 216,
+        "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -139,20 +139,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 7.aseprite": {
+    "bruc 7.aseprite": {
       "frame": {
-        "x": 36,
-        "y": 110,
+        "x": 252,
+        "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -160,20 +160,20 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     },
-    "penny 8.aseprite": {
+    "bruc 8.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 110,
+        "x": 288,
+        "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "rotated": false,
       "trimmed": false,
@@ -181,23 +181,23 @@
         "x": 0,
         "y": 0,
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "sourceSize": {
         "w": 36,
-        "h": 55
+        "h": 64
       },
       "duration": 100
     }
   },
   "meta": {
     "app": "https://www.aseprite.org/",
-    "version": "1.3.18-beta3-x64",
+    "version": "provisional (draw_characters.py)",
     "image": "bruc.png",
     "format": "RGBA8888",
     "size": {
-      "w": 108,
-      "h": 165
+      "w": 324,
+      "h": 64
     },
     "scale": "1",
     "frameTags": [
@@ -244,13 +244,7 @@
         "color": "#000000ff"
       }
     ],
-    "layers": [
-      {
-        "name": "Up",
-        "opacity": 255,
-        "blendMode": "normal"
-      }
-    ],
+    "layers": [],
     "slices": []
   }
 }

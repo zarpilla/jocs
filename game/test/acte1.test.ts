@@ -95,8 +95,10 @@ describe('Ferro-9 · Acte 1', () => {
     p.goTo('fabrica_calderes');
     expect(texts(p.do('pull', 'capatas'))).toContain('més fort');
     expect(n.isHotspotVisible('fabrica_calderes', 'segell')).toBe(false);
+    expect(n.appearanceOf('capatas')).toBeNull(); // dorm amb el segell a les mans
     p.use('plomall', 'capatas');
     expect(n.isHotspotVisible('fabrica_calderes', 'segell')).toBe(true);
+    expect(n.appearanceOf('capatas')).toBe('DormSenseSegell');
     p.do('pickUp', 'segell');
     p.use('segell', { kind: 'item', id: 'formulari_27b' });
     expect(p.inventory()).toContain('formulari_segellat');

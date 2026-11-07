@@ -2,63 +2,73 @@
   "id": "capatas",
   "name": "Capatàs Pruna",
   "description": "Capatàs Pruna",
-  "walkSpeed": 88,
-  "walkToPoint": {
-    "x": 44,
-    "y": 50
-  },
-  "talkPoint": {
-    "x": 18,
-    "y": 5
-  },
   "clickable": true,
   "display": {
     "aseprite": true
   },
+  "walkSpeed": 40,
+  "walkToPoint": {
+    "x": 52,
+    "y": 58
+  },
+  "talkPoint": {
+    "x": 24,
+    "y": 0
+  },
   "feet": {
-    "x": 19,
-    "y": 50
+    "x": 24,
+    "y": 58
   },
   "collider": {
     "points": [
       {
-        "x": 24,
+        "x": 8,
         "y": 4
       },
       {
-        "x": 28,
-        "y": 51
-      },
-      {
-        "x": 10,
-        "y": 51
-      },
-      {
-        "x": 10,
+        "x": 38,
         "y": 4
+      },
+      {
+        "x": 38,
+        "y": 59
+      },
+      {
+        "x": 8,
+        "y": 59
       }
     ]
   },
   "animations": {
     "IdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 600
     },
     "TalkD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 160
     },
     "IdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 600
     },
     "TalkL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 160
     },
     "IdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 600
     },
     "TalkU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 160
+    },
+    "DormSenseSegell": {
+      "loop": true,
+      "frameDuration": 600
     }
   },
-  "defaultVerb": "talkTo",
-  "speechColor": "#c89060"
+  "defaultVerb": "look",
+  "speechColor": "#d8a878"
 }

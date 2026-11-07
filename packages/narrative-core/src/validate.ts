@@ -151,6 +151,7 @@ export function validateContent(
     text(`characters.${cid}.name`, c.name);
     text(`characters.${cid}.description`, c.description);
     interactions(`characters.${cid}.interactions`, c.interactions);
+    c.appearance?.forEach((a, i) => cond(`characters.${cid}.appearance[${i}].if`, a.if));
   }
   for (const [iid, it] of Object.entries(items)) {
     id(`items.${iid}`, iid);

@@ -36,11 +36,21 @@ export interface BenneContentReport {
   needsArt: string[];
 }
 
-/** Colors de parla i art provisional per personatge (els protagonistes caminen: necessiten sprite complet). */
-const LOOK: Record<string, { sprite: 'hank' | 'henry' | 'penny'; color: string }> = {
-  iri: { sprite: 'henry', color: '#f0a050' },
-  vet: { sprite: 'hank', color: '#60c8e8' },
+/** Colors de parla per personatge. */
+const SPEECH: Record<string, string> = {
+  iri: '#f0a050', vet: '#60d8d8', cargol: '#a8f0c0', capatas: '#d8a878', bruc: '#c8b8f0', mare: '#ff90c8',
 };
+/** Camps del .character.json que venen del sprite (mides, peus, animacions). */
+const SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'animations', 'clickable', 'display'];
+
+/**
+ * Sprite provisional d'un personatge: el seu propi a placeholder-art/<id> (draw_characters.py),
+ * o un de la plantilla de Benne si no en té (les protagonistes necessiten caminar).
+ */
+function placeholderSprite(id: string, protagonist: boolean) {
+  if (existsSync(join(HERE, 'placeholder-art', id, `${id}.png`))) return id;
+  return protagonist ? 'hank' : 'penny';
+}
 const NPC_COLORS = ['#c8c8c8', '#c89060', '#b8a8e0', '#ff90c8', '#90d890', '#e8e070'];
 
 /** Textos de les GUI de la plantilla 9-verb: GUI → control → clau de text. */
@@ -107,17 +117,26 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   for (const [id, def] of Object.entries(content.characters)) {
     const dir = join(gameDir, 'characters', id);
     const path = join(dir, `${id}.character.json`);
-    const look = LOOK[id] ?? { sprite: 'penny' as const, color: NPC_COLORS[npcs.indexOf(id) % NPC_COLORS.length]! };
-    if (!existsSync(path)) {
-      const template = readJson(join(HERE, 'placeholder-art', look.sprite, `${look.sprite}.character.json`));
-      writeJson(path, { ...template, id, speechColor: look.color, defaultVerb: protagonists.includes(id) ? 'look' : 'talkTo' });
-      const art = join(gameDir, 'assets/images/characters', id);
+    const art = join(gameDir, 'assets/images/characters', id);
+    const isNew = !existsSync(path);
+    // Art provisional: es posa la primera vegada i s'actualitza mentre hi hagi la marca `.provisional`.
+    if (isNew || existsSync(join(art, '.provisional'))) {
+      const sprite = placeholderSprite(id, protagonists.includes(id));
+      const template = readJson(join(HERE, 'placeholder-art', sprite, `${sprite}.character.json`));
+      const current = isNew ? {} : readJson(path);
+      const fromSprite = Object.fromEntries(SPRITE_FIELDS.filter((k) => k in template).map((k) => [k, template[k]]));
+      writeJson(path, {
+        ...template, ...current, ...fromSprite, id,
+        speechColor: (current.speechColor as string) ?? SPEECH[id] ?? NPC_COLORS[npcs.indexOf(id) % NPC_COLORS.length],
+        defaultVerb: (current.defaultVerb as string) ?? template.defaultVerb ?? (protagonists.includes(id) ? 'look' : 'talkTo'),
+      });
       mkdirSync(art, { recursive: true });
-      copyFileSync(join(HERE, 'placeholder-art', look.sprite, `${look.sprite}.png`), join(art, `${id}.png`));
-      const sheet = readJson(join(HERE, 'placeholder-art', look.sprite, `${look.sprite}.json`));
+      copyFileSync(join(HERE, 'placeholder-art', sprite, `${sprite}.png`), join(art, `${id}.png`));
+      const sheet = readJson(join(HERE, 'placeholder-art', sprite, `${sprite}.json`));
       (sheet.meta as Json).image = `${id}.png`;
       writeJson(join(art, `${id}.json`), sheet);
-      report.created.push(`characters/${id}`);
+      writeFileSync(join(art, '.provisional'), "Art provisional: esborra aquest fitxer quan el sprite sigui definitiu.\n");
+      if (isNew) report.created.push(`characters/${id}`);
     }
     const character = readJson(path);
     character.name = t(def.name, id);
@@ -271,7 +290,8 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
     const w = Math.min(54, Math.floor(slot) - 6);
     const cx = span.from + slot * n + slot / 2;
     const tall = n % 2 === 1; // alternem alçades perquè les etiquetes no es toquin
-    boxes.push({ id: hid, label: t(h.name, hid), kind: h.visibleIf ? 'prop' : 'hotspot', w, h: 26, x: Math.round(cx - w / 2), y: tall ? 44 : 78 });
+    // A la part alta de la paret: els personatges (64 px) queden a sota, sense tapar-les.
+    boxes.push({ id: hid, label: t(h.name, hid), kind: h.visibleIf ? 'prop' : 'hotspot', w, h: 24, x: Math.round(cx - w / 2), y: tall ? 14 : 42 });
   });
 
   const walkTo = (b: Box) => ({ x: Math.round(b.x + b.w / 2), y: b.kind === 'exit' ? 132 : 126 });

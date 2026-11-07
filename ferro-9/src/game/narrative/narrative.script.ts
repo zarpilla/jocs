@@ -11,7 +11,7 @@ import { display, fadeOut, player } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, protagonistRoom,
+  applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, protagonistRoom,
   rememberProtagonistRoom, roomProtagonist, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
@@ -79,6 +79,7 @@ export function onRoomEntered() {
     rememberProtagonistRoom(who, room)
   }
   applyHotspotVisibility()
+  applyAppearances()
 }
 
 /** Va a la sala on és una protagonista (i, en entrar-hi, se'n pren el control). */

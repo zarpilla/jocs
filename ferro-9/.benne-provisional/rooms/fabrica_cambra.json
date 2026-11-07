@@ -20,27 +20,27 @@
       "label": "palanca",
       "kind": "hotspot",
       "w": 54,
-      "h": 26,
+      "h": 24,
       "x": 65,
-      "y": 78
+      "y": 42
     },
     {
       "id": "cambra",
       "label": "cambra",
       "kind": "hotspot",
       "w": 54,
-      "h": 26,
+      "h": 24,
       "x": 149,
-      "y": 44
+      "y": 14
     },
     {
       "id": "boto",
       "label": "botó de sincronia",
       "kind": "prop",
       "w": 54,
-      "h": 26,
+      "h": 24,
       "x": 233,
-      "y": 78
+      "y": 42
     }
   ],
   "characters": []

@@ -89,6 +89,12 @@ export interface CharacterDef {
   description?: TextKey;
   /** Interaccions amb aquest personatge a qualsevol sala (una sala les pot substituir). */
   interactions?: InteractionDef[];
+  /**
+   * Aspecte segons l'estat: la primera entrada que es compleixi diu quina animació (etiqueta
+   * del sprite) ha de fer el personatge. Si no se'n compleix cap, la normal.
+   * Ex.: el capatàs deixa anar el segell → `{ "if": { "flag": "segell_caigut" }, "anim": "DormSenseSegell" }`.
+   */
+  appearance?: { if?: Condition; anim: string }[];
 }
 
 // ─── Objectes ────────────────────────────────────────────────────────────────

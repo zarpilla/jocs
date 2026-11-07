@@ -207,6 +207,11 @@ export class Narrative {
     return def ? this.t(def.name) : id;
   }
 
+  /** L'animació que ha de fer un personatge segons l'estat (`appearance`), o `null` per a la normal. */
+  appearanceOf(id: Id): string | null {
+    return this.content.characters[id]?.appearance?.find((a) => this.check(a.if))?.anim ?? null;
+  }
+
   itemName(id: Id): string {
     const def = this.content.items[id];
     return def ? this.t(def.name) : id;

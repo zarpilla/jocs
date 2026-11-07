@@ -74,6 +74,14 @@ coincideixen mai. Per això **cada sala és d'una protagonista** (`"protagonist"
 canviar de protagonista vol dir anar a la sala on és l'altra, i en entrar-hi el pont en pren el
 control. L'última sala de cada protagonista es desa amb la partida.
 
+## Personatges provisionals
+
+`tools/draw_characters.py` dibuixa en pixel art els sprites de l'Iri, la Vet, el Cargol, el capatàs,
+en Bruc i la MARE (a `placeholder-art/`), amb les animacions que demana Benne. El sync els copia al
+projecte i els actualitza mentre hi hagi la marca `.provisional` a `assets/images/characters/<id>/`.
+L'aspecte segons l'estat (`appearance` a `characters.json`) l'aplica el pont en entrar a la sala i
+cada vegada que canvia l'estat.
+
 ## Fonts
 
 Les fonts de mapa de bits de la plantilla no tenien la majoria de caràcters catalans (à, è, ò, ç,

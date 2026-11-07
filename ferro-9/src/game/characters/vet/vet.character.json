@@ -2,22 +2,50 @@
   "id": "vet",
   "name": "Vet",
   "description": "Vet",
-  "walkSpeed": 88,
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 84,
   "walkToPoint": {
     "x": 40,
     "y": 61
   },
   "talkPoint": {
     "x": 18,
-    "y": -1
-  },
-  "clickable": true,
-  "display": {
-    "aseprite": true
+    "y": -2
   },
   "feet": {
     "x": 18,
     "y": 61
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 11,
+        "y": 2
+      },
+      {
+        "x": 25,
+        "y": 2
+      },
+      {
+        "x": 27,
+        "y": 40
+      },
+      {
+        "x": 24,
+        "y": 63
+      },
+      {
+        "x": 11,
+        "y": 63
+      },
+      {
+        "x": 8,
+        "y": 40
+      }
+    ]
   },
   "animations": {
     "IdleL": {
@@ -31,54 +59,29 @@
     },
     "WalkL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 90
     },
     "WalkD": {
       "loop": true,
-      "frameDuration": 60
+      "frameDuration": 80
     },
     "WalkU": {
       "loop": true,
-      "frameDuration": 60
+      "frameDuration": 80
     },
     "TalkL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "TalkD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     },
     "TalkU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 140
     }
   },
-  "collider": {
-    "points": [
-      {
-        "x": 31,
-        "y": 28
-      },
-      {
-        "x": 26,
-        "y": 0
-      },
-      {
-        "x": 11,
-        "y": 0
-      },
-      {
-        "x": 5,
-        "y": 30
-      },
-      {
-        "x": 7,
-        "y": 64
-      },
-      {
-        "x": 28,
-        "y": 64
-      }
-    ]
-  },
-  "speechColor": "#60c8e8",
-  "defaultVerb": "look"
+  "defaultVerb": "look",
+  "speechColor": "#60d8d8"
 }

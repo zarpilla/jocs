@@ -2,63 +2,69 @@
   "id": "mare",
   "name": "MARE",
   "description": "MARE",
-  "walkSpeed": 88,
-  "walkToPoint": {
-    "x": 44,
-    "y": 50
-  },
-  "talkPoint": {
-    "x": 18,
-    "y": 5
-  },
-  "clickable": true,
+  "clickable": false,
   "display": {
     "aseprite": true
   },
+  "walkSpeed": 1,
+  "walkToPoint": {
+    "x": 0,
+    "y": 30
+  },
+  "talkPoint": {
+    "x": 8,
+    "y": -2
+  },
   "feet": {
-    "x": 19,
-    "y": 50
+    "x": 8,
+    "y": 15
   },
   "collider": {
     "points": [
       {
-        "x": 24,
-        "y": 4
+        "x": 0,
+        "y": 0
       },
       {
-        "x": 28,
-        "y": 51
+        "x": 15,
+        "y": 0
       },
       {
-        "x": 10,
-        "y": 51
+        "x": 15,
+        "y": 15
       },
       {
-        "x": 10,
-        "y": 4
+        "x": 0,
+        "y": 15
       }
     ]
   },
   "animations": {
     "IdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "TalkD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "IdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "TalkL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "IdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "TalkU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     }
   },
   "defaultVerb": "talkTo",
-  "speechColor": "#b8a8e0"
+  "speechColor": "#ff90c8"
 }
