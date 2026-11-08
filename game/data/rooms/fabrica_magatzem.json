@@ -154,6 +154,19 @@
           "goTo": "fabrica_calderes"
         }
       ]
+    },
+    "porta_despatx": {
+      "name": "sala.fabrica_magatzem.porta_despatx.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_despatx"
+        }
+      ]
     }
   },
   "onEnter": [

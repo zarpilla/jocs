@@ -18,6 +18,10 @@ options.menu__diapaso.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'diapaso')
 })
 
+options.menu__imant2.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'imant2')
+})
+
 options.menu__dia.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'dia')
 })

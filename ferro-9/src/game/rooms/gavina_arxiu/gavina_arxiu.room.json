@@ -1,0 +1,198 @@
+{
+  "id": "gavina_arxiu",
+  "name": "Arxiu",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "escala_hangar",
+      "active": true,
+      "description": "moll de l'hangar",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 38
+        },
+        {
+          "x": 68,
+          "y": 38
+        },
+        {
+          "x": 68,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 47,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 38,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "expedient_iri",
+      "active": true,
+      "description": "expedients",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 229,
+          "y": 106
+        },
+        {
+          "x": 322,
+          "y": 106
+        },
+        {
+          "x": 322,
+          "y": 131
+        },
+        {
+          "x": 229,
+          "y": 131
+        }
+      ],
+      "walkToPoint": {
+        "x": 273,
+        "y": 177
+      },
+      "lookAtPoint": {
+        "x": 276,
+        "y": 131
+      }
+    },
+    {
+      "id": "arxivador",
+      "active": true,
+      "description": "arxivador",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 79,
+          "y": 38
+        },
+        {
+          "x": 204,
+          "y": 38
+        },
+        {
+          "x": 204,
+          "y": 153
+        },
+        {
+          "x": 79,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 142,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 142,
+        "y": 153
+      }
+    },
+    {
+      "id": "planols",
+      "active": true,
+      "description": "plànols",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 351,
+          "y": 81
+        },
+        {
+          "x": 466,
+          "y": 81
+        },
+        {
+          "x": 466,
+          "y": 136
+        },
+        {
+          "x": 351,
+          "y": 136
+        }
+      ],
+      "walkToPoint": {
+        "x": 404,
+        "y": 177
+      },
+      "lookAtPoint": {
+        "x": 409,
+        "y": 137
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 55,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

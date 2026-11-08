@@ -1,0 +1,47 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "Arxiu",
+  "era": "vet",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "escala_hangar",
+      "label": "moll de l'hangar",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "expedient_iri",
+      "label": "expedients",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 88,
+      "y": 57
+    },
+    {
+      "id": "arxivador",
+      "label": "arxivador",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 203,
+      "y": 19
+    },
+    {
+      "id": "planols",
+      "label": "plànols",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 318,
+      "y": 57
+    }
+  ],
+  "characters": []
+}

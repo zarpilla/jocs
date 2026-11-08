@@ -369,3 +369,119 @@ describe('Ferro-9 · Acte 2 · La vàlvula', () => {
     expect(n.flag('motor_engegat')).toBe(false);
   });
 });
+
+/** Fins a la llançadora engegada (la ruta curta de cada part). */
+function finsMotor(fins = 'acte2_acabat') {
+  const s = finsDiapaso(fins);
+  const { p } = s;
+  escriureIEnviar(p, 'nota_pressio');
+  p.do('look', item('nota_pressio'));
+  p.goTo('fabrica_calderes');
+  p.do('open', 'porta_moll');
+  p.do('close', 'conducte');
+  p.switchTo('vet');
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  escriureIEnviar(p, 'nota_massa');
+  p.do('look', item('nota_massa'));
+  p.goTo('fabrica_calderes');
+  p.do('open', 'porta_moll');
+  p.do('open', 'conducte');
+  p.switchTo('vet');
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  p.do('push', 'llancadora');
+  expect(s.n.flag('motor_engegat')).toBe(true);
+  return s;
+}
+
+/** L'Iri roba els plànols del despatx (amb un altre imant del Cargol). */
+function robarPlanols(p: ReturnType<typeof partida>['p']) {
+  p.goTo('fabrica_magatzem');
+  p.do('open', 'porta_despatx');
+  expect(texts(p.do('open', 'calaix'))).toContain('M-3');
+  p.goTo('fabrica_calderes');
+  p.do('pickUp', 'tauler');
+  p.use('segell', item('formulari_27b'));
+  p.use('segell', item('formulari_segellat'));
+  p.goTo('fabrica_magatzem');
+  expect(texts(p.talk('cargol', 'imant2'))).toContain('altre imant');
+  p.do('open', 'porta_despatx');
+  expect(texts(p.use('imant_ferro9', 'calaix'))).toContain('Plànols');
+  expect(texts(p.do('look', item('planols')))).toContain('em va triar');
+}
+
+describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
+  it("l'arxiu, la carta d'en Mos i els noms: fins al final de l'acte (sempre amb alguna pista)", () => {
+    const { p, n } = finsMotor();
+    // ── Vet: l'arxiu ──
+    expect(texts(p.do('open', 'escala'))).toContain('cadena');
+    p.use('clau_anglesa', 'escala');
+    p.do('open', 'escala');
+    expect(p.room).toBe('gavina_arxiu');
+    expect(n.state.quests.acte2!.objectives.arxiu).toBe(true);
+    expect(texts(p.do('look', 'expedient_iri'))).toContain('tres dies');
+    expect(texts(p.do('look', 'planols'))).toContain('sincronitzadors');
+    p.do('open', 'arxivador');
+    expect(p.inventory()).toContain('carta_mos');
+    // ── Vet: la carta, a en Mos ──
+    p.do('open', 'escala_hangar');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    expect(texts(p.use('carta_mos', 'mos'))).toContain('no els reciclen');
+    expect(n.state.quests.carta_mos!.status).toBe('completed');
+    // ── Els noms ──
+    p.do('open', 'porta');
+    p.do('pickUp', 'cartell');
+    p.use('llapis_ulls', item('tros_cartell'));
+    p.do('open', 'porta_cella');
+    p.use('nota_vet_nom', 'panell');
+    expect(p.active).toBe('iri');
+    expect(texts(p.do('look', item('nota_vet_nom')))).toContain('Es diu Vet');
+    p.use('llapis', item('llibreta_torn'));
+    p.goTo('fabrica_calderes');
+    p.goTo('fabrica_cambra');
+    p.use('nota_iri_nom', 'cambra');
+    expect(p.active).toBe('vet');
+    expect(texts(p.do('look', item('nota_iri_nom')))).toContain("FI DE L'ACTE 2");
+    expect(n.state.quests.acte2!.status).toBe('completed');
+    expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3 - 2 - 2 - 2);
+  });
+
+  it("els plànols del despatx fan que el Brau acusi la Mira; falsificar l'inventari la salva, i l'arxiu ho recorda", () => {
+    const { p, n } = finsMotor();
+    p.switchTo('iri');
+    robarPlanols(p);
+    expect(n.getVar('sospita_brau')).toBe(2);
+    expect(texts(p.do('look', 'expedient_brau'))).toContain('M. Osset');
+    expect(n.state.quests.salvar_mira!.status).toBe('active');
+    p.use('segell', 'llibre_inventari');
+    expect(n.flag('mira_salvada')).toBe(true);
+    expect(n.getVar('sospita_brau')).toBe(0);
+    expect(n.state.quests.salvar_mira!.status).toBe('completed');
+    expect(texts(p.do('look', 'expedient_brau'))).toContain('rovell');
+    // Al present, l'arxiu ha canviat.
+    p.switchTo('vet');
+    p.use('clau_anglesa', 'escala');
+    p.do('open', 'escala');
+    expect(texts(p.do('look', 'arxivador'))).toContain('besneta');
+  });
+
+  it("si la Mira no se salva, l'arxiu la recorda condemnada; si l'Iri confessa, el seu expedient ho diu", () => {
+    const s = finsMotor();
+    const { p, n } = s;
+    p.switchTo('iri');
+    robarPlanols(p);
+    p.do('look', 'expedient_brau');
+    p.switchTo('vet');
+    p.use('clau_anglesa', 'escala');
+    p.do('open', 'escala');
+    expect(texts(p.do('look', 'arxivador'))).toContain('Condemnada');
+    p.switchTo('iri');
+    expect(texts(p.use('llapis', 'expedient_brau'))).toContain('Ho vaig fer jo');
+    expect(n.flag('mira_salvada')).toBe(true);
+    p.switchTo('vet');
+    expect(texts(p.do('look', 'expedient_iri'))).toContain('confessió');
+    expect(texts(p.do('look', 'arxivador'))).toContain('besneta');
+  });
+});

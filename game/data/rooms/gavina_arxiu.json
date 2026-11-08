@@ -1,0 +1,215 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.gavina_arxiu.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "verb": "*",
+      "id": "primera",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_arxiu.intro"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "arxiu_explorat"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "escala_hangar": {
+      "name": "sala.gavina_arxiu.escala.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_hangar"
+        }
+      ]
+    },
+    "expedient_iri": {
+      "name": "sala.gavina_arxiu.expedient_iri.nom",
+      "interactions": [
+        {
+          "verb": [
+            "look",
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "iri_confessada"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_arxiu.expedient_iri.text_confessio"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.expedient_iri.vet1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.expedient_iri.vet2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_desaparicio"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "look",
+            "open",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_arxiu.expedient_iri.text"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.expedient_iri.vet1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.expedient_iri.vet2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_desaparicio"
+            }
+          ]
+        }
+      ]
+    },
+    "arxivador": {
+      "name": "sala.gavina_arxiu.arxivador.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "carta_mos_trobada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.arxivador.carta1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.arxivador.carta2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "carta_mos_trobada"
+            },
+            {
+              "giveItem": "carta_mos"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.arxivador.ja"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "mira_salvada"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_arxiu.arxivador.mira_salvada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "sospita_brau",
+            "op": ">=",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_arxiu.arxivador.mira_condemnada"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.arxivador.mira_vet"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.arxivador.look"
+            }
+          ]
+        }
+      ]
+    },
+    "planols": {
+      "name": "sala.gavina_arxiu.planols.nom",
+      "interactions": [
+        {
+          "verb": [
+            "look",
+            "pickUp",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_arxiu.planols.text"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.planols.vet1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_arxiu.planols.vet2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_gavina"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

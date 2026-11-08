@@ -84,7 +84,22 @@
         "caixa_agafada": false,
         "vet_coneix_mira": false,
         "motor_engegat": false,
-        "arxiu_explorat": false
+        "arxiu_explorat": false,
+        "iri_sap_calaix": false,
+        "iri_sap_cambra": false,
+        "iri_sap_mira_acusada": false,
+        "inventari_falsificat": false,
+        "iri_confessada": false,
+        "capatas_acusat": false,
+        "reixa_arxiu_oberta": false,
+        "vet_sap_desaparicio": false,
+        "vet_sap_gavina": false,
+        "carta_mos_lliurada": false,
+        "nota_vet_nom_escrita": false,
+        "iri_sap_desaparicio": false,
+        "nota_iri_nom_escrita": false,
+        "acte2_noms": false,
+        "acte2_acabat": false
       },
       "vars": {
         "finestra_armada": "",
@@ -277,6 +292,39 @@
           "pes": 0.01
         },
         "interactions": [
+          {
+            "verb": "use",
+            "item": "llibreta_torn",
+            "if": {
+              "all": [
+                {
+                  "flag": "iri_sap_desaparicio"
+                },
+                {
+                  "flag": "nota_iri_nom_escrita",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis.nom1"
+              },
+              {
+                "who": "player",
+                "text": "obj.llapis.nom2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_iri_nom_escrita"
+              },
+              {
+                "giveItem": "nota_iri_nom"
+              }
+            ]
+          },
           {
             "verb": "use",
             "item": "llibreta_torn",
@@ -495,6 +543,42 @@
           "pes": 0.01
         },
         "interactions": [
+          {
+            "verb": "use",
+            "item": "tros_cartell",
+            "if": {
+              "all": [
+                {
+                  "flag": "vet_sap_desaparicio"
+                },
+                {
+                  "flag": "nota_vet_nom_escrita",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.nom1"
+              },
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.nom2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_vet_nom_escrita"
+              },
+              {
+                "takeItem": "tros_cartell"
+              },
+              {
+                "giveItem": "nota_vet_nom"
+              }
+            ]
+          },
           {
             "verb": "use",
             "item": "tros_cartell",
@@ -1572,6 +1656,133 @@
             ]
           }
         ]
+      },
+      "planols": {
+        "name": "obj.planols.nom",
+        "description": "obj.planols.desc",
+        "props": {
+          "pes": 0.3
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.planols.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.planols.iri1"
+              },
+              {
+                "who": "player",
+                "text": "obj.planols.iri2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "iri_sap_cambra"
+              }
+            ]
+          }
+        ]
+      },
+      "carta_mos": {
+        "name": "obj.carta_mos.nom",
+        "description": "obj.carta_mos.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "nota_vet_nom": {
+        "name": "obj.nota_vet_nom.nom",
+        "description": "obj.nota_vet_nom.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_vet_nom.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_vet_nom.iri1"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_vet_nom.iri2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "iri_sap_desaparicio"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_vet_nom.text"
+              }
+            ]
+          }
+        ]
+      },
+      "nota_iri_nom": {
+        "name": "obj.nota_iri_nom.nom",
+        "description": "obj.nota_iri_nom.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "vet"
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri_nom.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_iri_nom.vet1"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri_nom.fi"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "acte2_noms"
+              },
+              {
+                "setFlag": "acte2_acabat"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri_nom.text"
+              }
+            ]
+          }
+        ]
       }
     },
     "rooms": {
@@ -1582,6 +1793,44 @@
           "capatas": {
             "name": "sala.fabrica_calderes.capatas.nom",
             "interactions": [
+              {
+                "verb": "use",
+                "item": "diapaso_espatllat",
+                "if": {
+                  "all": [
+                    {
+                      "var": "sospita_brau",
+                      "op": ">=",
+                      "value": 2
+                    },
+                    {
+                      "flag": "mira_salvada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.proves1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.proves2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "diapaso_espatllat"
+                  },
+                  {
+                    "setFlag": "mira_salvada"
+                  },
+                  {
+                    "setFlag": "capatas_acusat"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -2200,6 +2449,304 @@
           }
         ]
       },
+      "fabrica_despatx": {
+        "name": "sala.fabrica_despatx.nom",
+        "protagonist": "iri",
+        "onEnter": [
+          {
+            "verb": "*",
+            "id": "primera",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_despatx.intro"
+              }
+            ]
+          }
+        ],
+        "hotspots": {
+          "porta_magatzem": {
+            "name": "sala.fabrica_despatx.porta_magatzem.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "goTo": "fabrica_magatzem"
+              }
+            ]
+          },
+          "calaix": {
+            "name": "sala.fabrica_despatx.calaix.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "imant_ferro9",
+                "if": {
+                  "flag": "planols_robats",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.calaix.obrir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.calaix.obrir2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "planols"
+                  },
+                  {
+                    "setFlag": "planols_robats"
+                  },
+                  {
+                    "addVar": "sospita_brau",
+                    "amount": 1
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "use"
+                ],
+                "if": {
+                  "flag": "planols_robats"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.calaix.buit"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.calaix.tancat"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "iri_sap_calaix"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.calaix.look"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "iri_sap_calaix"
+                  }
+                ]
+              }
+            ]
+          },
+          "expedient_brau": {
+            "name": "sala.fabrica_despatx.expedient.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "llapis",
+                "if": {
+                  "all": [
+                    {
+                      "var": "sospita_brau",
+                      "op": ">=",
+                      "value": 2
+                    },
+                    {
+                      "flag": "mira_salvada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.expedient.confessar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.expedient.confessar2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "mira_salvada"
+                  },
+                  {
+                    "setFlag": "iri_confessada"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "inventari_falsificat"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_despatx.expedient.falsificat"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.expedient.falsificat_iri"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "iri_confessada"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_despatx.expedient.confessat"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "capatas_acusat"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_despatx.expedient.capatas"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "sospita_brau",
+                  "op": ">=",
+                  "value": 2
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_despatx.expedient.mira"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.expedient.mira_iri"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "iri_sap_mira_acusada"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_despatx.expedient.obert"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.expedient.obert_iri"
+                  }
+                ]
+              }
+            ]
+          },
+          "llibre_inventari": {
+            "name": "sala.fabrica_despatx.llibre.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "segell",
+                "if": {
+                  "all": [
+                    {
+                      "var": "sospita_brau",
+                      "op": ">=",
+                      "value": 2
+                    },
+                    {
+                      "flag": "mira_salvada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.llibre.falsificar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.llibre.falsificar2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "mira_salvada"
+                  },
+                  {
+                    "setFlag": "inventari_falsificat"
+                  },
+                  {
+                    "setVar": "sospita_brau",
+                    "value": 0
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.llibre.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "retrat": {
+            "name": "sala.fabrica_despatx.retrat.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_despatx.retrat.look"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
       "fabrica_magatzem": {
         "name": "sala.fabrica_magatzem.nom",
         "protagonist": "iri",
@@ -2353,6 +2900,19 @@
                   "walkTo"
                 ],
                 "goTo": "fabrica_calderes"
+              }
+            ]
+          },
+          "porta_despatx": {
+            "name": "sala.fabrica_magatzem.porta_despatx.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "goTo": "fabrica_despatx"
               }
             ]
           }
@@ -2947,6 +3507,220 @@
           }
         }
       },
+      "gavina_arxiu": {
+        "name": "sala.gavina_arxiu.nom",
+        "protagonist": "vet",
+        "onEnter": [
+          {
+            "verb": "*",
+            "id": "primera",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.gavina_arxiu.intro"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "arxiu_explorat"
+              }
+            ]
+          }
+        ],
+        "hotspots": {
+          "escala_hangar": {
+            "name": "sala.gavina_arxiu.escala.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "goTo": "gavina_hangar"
+              }
+            ]
+          },
+          "expedient_iri": {
+            "name": "sala.gavina_arxiu.expedient_iri.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "look",
+                  "open",
+                  "pickUp"
+                ],
+                "if": {
+                  "flag": "iri_confessada"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_arxiu.expedient_iri.text_confessio"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.expedient_iri.vet1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.expedient_iri.vet2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_sap_desaparicio"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "look",
+                  "open",
+                  "pickUp"
+                ],
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_arxiu.expedient_iri.text"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.expedient_iri.vet1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.expedient_iri.vet2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_sap_desaparicio"
+                  }
+                ]
+              }
+            ]
+          },
+          "arxivador": {
+            "name": "sala.gavina_arxiu.arxivador.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "use"
+                ],
+                "if": {
+                  "flag": "carta_mos_trobada",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.arxivador.carta1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.arxivador.carta2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "carta_mos_trobada"
+                  },
+                  {
+                    "giveItem": "carta_mos"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.arxivador.ja"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "mira_salvada"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_arxiu.arxivador.mira_salvada"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "sospita_brau",
+                  "op": ">=",
+                  "value": 2
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_arxiu.arxivador.mira_condemnada"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.arxivador.mira_vet"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.arxivador.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "planols": {
+            "name": "sala.gavina_arxiu.planols.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "look",
+                  "pickUp",
+                  "open"
+                ],
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_arxiu.planols.text"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.planols.vet1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_arxiu.planols.vet2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_sap_gavina"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
       "gavina_cella": {
         "name": "sala.gavina_cella.nom",
         "protagonist": "vet",
@@ -3291,6 +4065,49 @@
           "mos": {
             "name": "sala.gavina_cella.mos.nom",
             "interactions": [
+              {
+                "verb": [
+                  "give",
+                  "use"
+                ],
+                "item": "carta_mos",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.mos.carta1"
+                  },
+                  {
+                    "who": "mos",
+                    "text": "sala.gavina_cella.mos.carta2"
+                  },
+                  {
+                    "who": "mos",
+                    "text": "sala.gavina_cella.mos.carta3"
+                  },
+                  {
+                    "who": "mos",
+                    "text": "sala.gavina_cella.mos.carta4"
+                  },
+                  {
+                    "who": "mos",
+                    "text": "sala.gavina_cella.mos.carta5"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "carta_mos"
+                  },
+                  {
+                    "setFlag": "carta_mos_lliurada"
+                  },
+                  {
+                    "relation": {
+                      "who": "mos",
+                      "change": 2
+                    }
+                  }
+                ]
+              },
               {
                 "verb": "talkTo",
                 "dialogue": "mos"
@@ -4417,6 +5234,26 @@
             "name": "sala.gavina_hangar.escala.nom",
             "interactions": [
               {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "reixa_arxiu_oberta"
+                    },
+                    {
+                      "var": "valvula",
+                      "op": "!=",
+                      "value": "tancada"
+                    }
+                  ]
+                },
+                "goTo": "gavina_arxiu"
+              },
+              {
                 "verb": "look",
                 "if": {
                   "var": "valvula",
@@ -4454,6 +5291,38 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.escala.aigua"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "clau_anglesa",
+                "if": {
+                  "all": [
+                    {
+                      "var": "valvula",
+                      "op": "!=",
+                      "value": "tancada"
+                    },
+                    {
+                      "flag": "reixa_arxiu_oberta",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.escala.descargolar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.escala.descargolar2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "reixa_arxiu_oberta"
                   }
                 ]
               },
@@ -4756,6 +5625,13 @@
             "completeWhen": {
               "flag": "carta_mos_trobada"
             }
+          },
+          {
+            "id": "lliurar",
+            "text": "mis.carta_mos.obj.lliurar",
+            "completeWhen": {
+              "flag": "carta_mos_lliurada"
+            }
           }
         ]
       },
@@ -4823,6 +5699,39 @@
             "text": "mis.acte2.obj.arxiu",
             "completeWhen": {
               "flag": "arxiu_explorat"
+            }
+          },
+          {
+            "id": "nom",
+            "text": "mis.acte2.obj.nom",
+            "completeWhen": {
+              "flag": "acte2_acabat"
+            }
+          }
+        ]
+      },
+      "salvar_mira": {
+        "kind": "side",
+        "title": "mis.salvar_mira.titol",
+        "description": "mis.salvar_mira.desc",
+        "startWhen": {
+          "all": [
+            {
+              "var": "sospita_brau",
+              "op": ">=",
+              "value": 2
+            },
+            {
+              "flag": "iri_sap_mira_acusada"
+            }
+          ]
+        },
+        "objectives": [
+          {
+            "id": "salvar",
+            "text": "mis.salvar_mira.obj",
+            "completeWhen": {
+              "flag": "mira_salvada"
             }
           }
         ]
@@ -6975,6 +7884,445 @@
           "pista.iri_esperar_pressio.1",
           "pista.iri_esperar_pressio.2"
         ]
+      },
+      "vet_reixa_arxiu": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "motor_engegat"
+            },
+            {
+              "flag": "reixa_arxiu_oberta",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "reixa_arxiu_oberta"
+        },
+        "levels": [
+          "pista.vet_reixa_arxiu.1",
+          "pista.vet_reixa_arxiu.2",
+          "pista.vet_reixa_arxiu.3"
+        ]
+      },
+      "vet_baixar_arxiu": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "reixa_arxiu_oberta"
+            },
+            {
+              "flag": "arxiu_explorat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "arxiu_explorat"
+        },
+        "levels": [
+          "pista.vet_baixar_arxiu.1",
+          "pista.vet_baixar_arxiu.2"
+        ]
+      },
+      "vet_expedients": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "arxiu_explorat"
+            },
+            {
+              "flag": "vet_sap_desaparicio",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vet_sap_desaparicio"
+        },
+        "levels": [
+          "pista.vet_expedients.1",
+          "pista.vet_expedients.2"
+        ]
+      },
+      "vet_planols_arxiu": {
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "arxiu_explorat"
+            },
+            {
+              "flag": "vet_sap_gavina",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vet_sap_gavina"
+        },
+        "levels": [
+          "pista.vet_planols_arxiu.1",
+          "pista.vet_planols_arxiu.2"
+        ]
+      },
+      "vet_carta_mos": {
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "arxiu_explorat"
+            },
+            {
+              "flag": "carta_mos_trobada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "carta_mos_trobada"
+        },
+        "levels": [
+          "pista.vet_carta_mos.1",
+          "pista.vet_carta_mos.2"
+        ]
+      },
+      "vet_tornar_carta": {
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "carta_mos",
+              "who": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "carta_mos",
+          "who": "vet",
+          "is": false
+        },
+        "levels": [
+          "pista.vet_tornar_carta.1",
+          "pista.vet_tornar_carta.2"
+        ]
+      },
+      "vet_avisar": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "vet_sap_desaparicio"
+            },
+            {
+              "flag": "nota_vet_nom_escrita",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "nota_vet_nom_escrita"
+        },
+        "levels": [
+          "pista.vet_avisar.1",
+          "pista.vet_avisar.2"
+        ]
+      },
+      "vet_enviar_nom": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "nota_vet_nom",
+              "who": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "nota_vet_nom",
+          "who": "vet",
+          "is": false
+        },
+        "levels": [
+          "pista.vet_enviar_nom.1",
+          "pista.vet_enviar_nom.2"
+        ]
+      },
+      "iri_llegir_nom": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "nota_vet_nom",
+              "who": "iri"
+            },
+            {
+              "flag": "iri_sap_desaparicio",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "iri_sap_desaparicio"
+        },
+        "levels": [
+          "pista.iri_llegir_nom.1",
+          "pista.iri_llegir_nom.2"
+        ]
+      },
+      "iri_respondre_nom": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "iri_sap_desaparicio"
+            },
+            {
+              "flag": "nota_iri_nom_escrita",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "nota_iri_nom_escrita"
+        },
+        "levels": [
+          "pista.iri_respondre_nom.1",
+          "pista.iri_respondre_nom.2"
+        ]
+      },
+      "iri_enviar_nom": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "nota_iri_nom",
+              "who": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "nota_iri_nom",
+          "who": "iri",
+          "is": false
+        },
+        "levels": [
+          "pista.iri_enviar_nom.1",
+          "pista.iri_enviar_nom.2"
+        ]
+      },
+      "vet_llegir_nom": {
+        "priority": 7,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "nota_iri_nom",
+              "who": "vet"
+            },
+            {
+              "flag": "acte2_acabat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "acte2_acabat"
+        },
+        "levels": [
+          "pista.vet_llegir_nom.1",
+          "pista.vet_llegir_nom.2"
+        ]
+      },
+      "iri_planols": {
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "motor_engegat"
+            },
+            {
+              "flag": "planols_robats",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "planols_robats"
+        },
+        "levels": [
+          "pista.iri_planols.1",
+          "pista.iri_planols.2",
+          "pista.iri_planols.3"
+        ]
+      },
+      "iri_expedient": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "sospita_brau",
+              "op": ">=",
+              "value": 2
+            },
+            {
+              "flag": "iri_sap_mira_acusada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "iri_sap_mira_acusada"
+        },
+        "levels": [
+          "pista.iri_expedient.1",
+          "pista.iri_expedient.2"
+        ]
+      },
+      "iri_mira": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "var": "sospita_brau",
+              "op": ">=",
+              "value": 2
+            },
+            {
+              "flag": "iri_sap_mira_acusada"
+            },
+            {
+              "flag": "mira_salvada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "mira_salvada"
+        },
+        "levels": [
+          "pista.iri_mira.1",
+          "pista.iri_mira.2",
+          "pista.iri_mira.3"
+        ]
+      },
+      "vet_esperar_nom": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "nota_vet_nom_escrita"
+            },
+            {
+              "hasItem": "nota_vet_nom",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "hasItem": "nota_iri_nom",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "flag": "acte2_acabat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "acte2_acabat"
+        },
+        "levels": [
+          "pista.vet_esperar_nom.1",
+          "pista.vet_esperar_nom.2"
+        ]
+      },
+      "iri_esperar_nom": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "motor_engegat"
+            },
+            {
+              "flag": "iri_sap_desaparicio",
+              "is": false
+            },
+            {
+              "hasItem": "nota_vet_nom",
+              "who": "iri",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "iri_sap_desaparicio"
+            },
+            {
+              "flag": "acte2_acabat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_esperar_nom.1",
+          "pista.iri_esperar_nom.2"
+        ]
       }
     },
     "endings": {
@@ -7134,6 +8482,27 @@
                     {
                       "hasItem": "diapaso",
                       "who": "vet",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "imant2",
+                "text": "dlg.cargol.opt.imant2",
+                "next": "imant2",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "iri_sap_calaix"
+                    },
+                    {
+                      "flag": "planols_robats",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "imant_ferro9",
+                      "who": "iri",
                       "is": false
                     }
                   ]
@@ -7407,6 +8776,34 @@
                       "who": "cargol",
                       "fact": "diapaso_lliurat"
                     }
+                  }
+                ]
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.imant_falta",
+                "if": {
+                  "hasItem": "formulari_triplicat",
+                  "is": false
+                }
+              }
+            ],
+            "goto": "menu"
+          },
+          "imant2": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.imant2_ok",
+                "if": {
+                  "hasItem": "formulari_triplicat"
+                },
+                "effects": [
+                  {
+                    "takeItem": "formulari_triplicat"
+                  },
+                  {
+                    "giveItem": "imant_ferro9"
                   }
                 ]
               },
@@ -7966,6 +9363,8 @@
       "dlg.cargol.opt.diapaso": "Necessito un diapasó de ferro-9.",
       "dlg.cargol.diapaso_altre": "Un altre diapasó, senyora Iri? El d'abans xiulava, oi? Ho he sentit des d'aquí.",
       "dlg.cargol.diapaso_ok": "Diapasó de ferro-9, la 440. Formulari arxivat. Que soni bé!",
+      "dlg.cargol.opt.imant2": "Necessito un altre imant de ferro-9.",
+      "dlg.cargol.imant2_ok": "Un altre imant, senyora Iri? Cada vegada m'omple més l'arxiu. M'encanta. Que en faci bon ús!",
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar.",
       "final.veritat.titol": "La veritat a temps",
@@ -8060,6 +9459,11 @@
       "mis.acte2.obj.diapaso": "Vet: obre el pany sònic de la llançadora",
       "mis.acte2.obj.pressio": "Iri: dona pressió al conducte de la llançadora",
       "mis.acte2.obj.arxiu": "Vet: entra a l'arxiu",
+      "mis.acte2.obj.nom": "Totes dues: digueu-vos el nom",
+      "mis.carta_mos.obj.lliurar": "Torna-li la carta a en Mos",
+      "mis.salvar_mira.titol": "Salvar la Mira",
+      "mis.salvar_mira.desc": "L'Inspector Brau culpa la Mira dels robatoris de l'Iri.",
+      "mis.salvar_mira.obj": "Iri: treu la sospita de sobre la Mira",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
       "obj.clau_anglesa.vet1": "Una clau anglesa reluent, com acabada de fer. Porta un segell: «Aldaia · Ferro-9 · Lot 1».",
@@ -8208,6 +9612,27 @@
       "obj.fitxa_mira.desc": "Una fitxa de personal de la fàbrica, molla.",
       "obj.llapis_ulls.pressio": "Hi escric el del conducte i la pressió. Amb la meva millor lletra, que no és gaire bona.",
       "obj.llapis_ulls.massa": "MASSA. Amb tres exclamacions. I que afluixi.",
+      "obj.planols.text": "«Cambra de ressonància 1. Finalitat: obrir una finestra de fase. Prova de camp: torn de nit, operària I. No informar l'operària. —Dir. Aldaia.»",
+      "obj.planols.iri1": "No va ser un accident. Va construir la cambra per a això, i em va triar a mi.",
+      "obj.planols.iri2": "La Mira i jo ho podríem fer públic. Algun dia.",
+      "obj.planols.nom": "plànols",
+      "obj.planols.desc": "Els plànols originals de la cambra de ressonància.",
+      "obj.carta_mos.nom": "carta d'en Mos",
+      "obj.carta_mos.desc": "Una carta per a la Nura, la filla d'en Mos. No va sortir mai de l'arxiu.",
+      "obj.nota_vet_nom.text": "«Em dic Vet. Et faran desaparèixer d'aquí a tres dies. Ho sento.»",
+      "obj.nota_vet_nom.iri1": "Vet. Es diu Vet.",
+      "obj.nota_vet_nom.iri2": "Desaparèixer... Si he vist els plànols, ja sé qui.",
+      "obj.nota_vet_nom.nom": "nota de la Vet",
+      "obj.nota_vet_nom.desc": "Una nota signada amb un nom.",
+      "obj.nota_iri_nom.text": "«Em dic Iri. Ja ho sospitava. No penso desaparèixer.»",
+      "obj.nota_iri_nom.vet1": "Iri.",
+      "obj.nota_iri_nom.nom": "nota de l'Iri",
+      "obj.nota_iri_nom.desc": "Una nota signada amb un nom.",
+      "obj.nota_iri_nom.fi": "FI DE L'ACTE 2",
+      "obj.llapis_ulls.nom1": "Aquesta vegada, la signo amb el meu nom.",
+      "obj.llapis_ulls.nom2": "Em dic Vet. Et faran desaparèixer d'aquí a tres dies. Ho sento.",
+      "obj.llapis.nom1": "Si ella m'ha dit el seu nom, jo li dic el meu.",
+      "obj.llapis.nom2": "Em dic Iri. Ja ho sospitava. No penso desaparèixer.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -8354,6 +9779,43 @@
       "pista.vet_esperar_pressio.2": "Canvia a l'Iri.",
       "pista.iri_esperar_pressio.1": "Què deu passar, a l'altra banda?",
       "pista.iri_esperar_pressio.2": "Canvia a la Vet.",
+      "pista.vet_reixa_arxiu.1": "La llançadora ja engega. Però què amaga, l'arxiu?",
+      "pista.vet_reixa_arxiu.2": "La reixa de l'escala està lligada amb una cadena cargolada.",
+      "pista.vet_reixa_arxiu.3": "Fes servir la clau anglesa amb l'escala del moll de l'hangar.",
+      "pista.vet_baixar_arxiu.1": "La reixa és oberta.",
+      "pista.vet_baixar_arxiu.2": "Baixa per l'escala.",
+      "pista.vet_expedients.1": "Expedients de personal de la fàbrica... potser n'hi ha algun de la I.",
+      "pista.vet_expedients.2": "Mira els expedients de la taula de l'arxiu.",
+      "pista.vet_planols_arxiu.1": "Què hi fan, uns plànols a l'arxiu d'una presó?",
+      "pista.vet_planols_arxiu.2": "Mira els plànols de l'arxiu.",
+      "pista.vet_carta_mos.1": "En Mos deia que les cartes se les menja l'arxiu.",
+      "pista.vet_carta_mos.2": "Remena l'arxivador.",
+      "pista.vet_tornar_carta.1": "Aquesta carta és d'en Mos.",
+      "pista.vet_tornar_carta.2": "Dona-li la carta a en Mos.",
+      "pista.vet_avisar.1": "La I. ha de saber-ho. I potser ja és hora que sàpiga com em dic.",
+      "pista.vet_avisar.2": "Escriu-li: un tros de cartell i el llapis d'ulls.",
+      "pista.vet_enviar_nom.1": "La nota ha d'arribar a la I.",
+      "pista.vet_enviar_nom.2": "Fes servir la nota amb el panell de la cel·la.",
+      "pista.iri_llegir_nom.1": "La V. m'ha escrit. Amb el seu nom.",
+      "pista.iri_llegir_nom.2": "Mira la nota de l'inventari.",
+      "pista.iri_respondre_nom.1": "Li he de contestar. Amb el meu nom.",
+      "pista.iri_respondre_nom.2": "El llapis i la llibreta.",
+      "pista.iri_enviar_nom.1": "La nota ha d'arribar a la Vet.",
+      "pista.iri_enviar_nom.2": "Posa-la dins la cambra.",
+      "pista.vet_llegir_nom.1": "La I. m'ha contestat.",
+      "pista.vet_llegir_nom.2": "Mira la nota de l'inventari.",
+      "pista.iri_planols.1": "El despatx del director és al costat del magatzem. Què hi deu guardar?",
+      "pista.iri_planols.2": "El calaix del despatx té un pany M-3: s'obre amb un imant de ferro-9.",
+      "pista.iri_planols.3": "Demana un altre imant al Cargol (amb un formulari per triplicat) i obre el calaix del despatx.",
+      "pista.iri_expedient.1": "Massa robatoris. Què deu haver apuntat el Brau?",
+      "pista.iri_expedient.2": "Mira l'expedient del despatx del director.",
+      "pista.iri_mira.1": "La Mira pagarà per mi. No pot ser.",
+      "pista.iri_mira.2": "Puc falsificar l'inventari, culpar el capatàs o confessar.",
+      "pista.iri_mira.3": "Fes servir el segell amb el llibre d'inventari, o el llapis amb l'expedient del Brau.",
+      "pista.vet_esperar_nom.1": "Ara li toca a la I.",
+      "pista.vet_esperar_nom.2": "Canvia a l'Iri.",
+      "pista.iri_esperar_nom.1": "Què deu haver trobat, la V.?",
+      "pista.iri_esperar_nom.2": "Canvia a la Vet.",
       "sala.fabrica_calderes.capatas.look1": "El capatàs Pruna. Dorm abraçat al segell oficial com si fos un osset de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
       "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Pruna?",
@@ -8608,7 +10070,63 @@
       "sala.gavina_hangar.llancadora.en_marxa": "Ja està engegada. No la toquem, que s'ofega.",
       "sala.gavina_hangar.llancadora.escapa": "Premo el botó d'engegada. La pressió s'escapa pel forat del conducte. Res.",
       "sala.gavina_hangar.llancadora.sense_pressio": "Premo el botó d'engegada. Res. L'agulla del manòmetre ni es mou: el motor no té pressió.",
-      "sala.gavina_passadis.cartell.altre": "N'arrenco un altre tros. El somriure del cartell cada vegada és més petit."
+      "sala.gavina_passadis.cartell.altre": "N'arrenco un altre tros. El somriure del cartell cada vegada és més petit.",
+      "sala.fabrica_despatx.nom": "Despatx del director",
+      "sala.fabrica_despatx.intro": "El despatx del Director Aldaia. De nit, sense ell, fa menys por. Una mica menys.",
+      "sala.fabrica_despatx.porta_magatzem.nom": "magatzem",
+      "sala.fabrica_despatx.calaix.obrir1": "Acosto l'imant al pany... Clac. Com a la cel·la de la V., cent vint anys abans.",
+      "sala.fabrica_despatx.calaix.obrir2": "Plànols. Els plànols de la cambra. Me'ls emporto.",
+      "sala.fabrica_despatx.calaix.nom": "calaix",
+      "sala.fabrica_despatx.calaix.buit": "Buit. Els plànols ja els tinc jo.",
+      "sala.fabrica_despatx.calaix.tancat": "Tancat. Pany M-3: s'obre amb un imant de ferro-9.",
+      "sala.fabrica_despatx.calaix.look": "Un calaix amb pany M-3. El mateix model que la porta de la cel·la de la V.",
+      "sala.fabrica_despatx.expedient.confessar1": "Hi escric, amb la meva lletra: «Ho vaig fer jo. La Mira no hi té res a veure. —Iri.»",
+      "sala.fabrica_despatx.expedient.confessar2": "Si m'han de fer desaparèixer, que no s'emportin ningú més.",
+      "sala.fabrica_despatx.expedient.nom": "expedient",
+      "sala.fabrica_despatx.expedient.falsificat": "«Robatoris de ferro-9: material donat de baixa per rovell. Cas arxivat. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.falsificat_iri": "S'ho ha empassat. Té més fe en els segells que en la química.",
+      "sala.fabrica_despatx.expedient.confessat": "«Confessió de l'operària I. del torn de nit. Cas obert contra ella. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.capatas": "«Sospitós principal: el capatàs Pruna. Material inventariat trobat a la seva butxaca. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.mira": "«Robatoris de material inventariat. Sospitosa principal: M. Osset, ajudant del torn de nit. Proposta: acomiadament i denúncia. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.mira_iri": "La Mira! Ella no hi té res a veure. Ho he fet jo.",
+      "sala.fabrica_despatx.expedient.obert": "«Falten una clau anglesa i un imant de ferro-9. S'investiga el torn de nit. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.obert_iri": "Encara no hi ha cap nom. Encara.",
+      "sala.fabrica_despatx.llibre.nom": "llibre d'inventari",
+      "sala.fabrica_despatx.llibre.falsificar1": "Hi afegeixo una línia: «Material de ferro-9 donat de baixa per rovell.»",
+      "sala.fabrica_despatx.llibre.falsificar2": "I el segell oficial a sobre. El ferro-9 no s'oxida mai, però el Brau no és químic.",
+      "sala.fabrica_despatx.llibre.look": "El llibre d'inventari. Tot el ferro-9 de la fàbrica, apuntat a mà, gram a gram.",
+      "sala.fabrica_despatx.retrat.nom": "retrat",
+      "sala.fabrica_despatx.retrat.look": "El Director Aldaia. Somriu com qui ja sap com acaba la pel·lícula.",
+      "sala.gavina_arxiu.nom": "Arxiu",
+      "sala.gavina_arxiu.intro": "L'arxiu. Fa olor de paper vell i de secrets que algú va voler guardar.",
+      "sala.gavina_arxiu.escala.nom": "moll de l'hangar",
+      "sala.gavina_arxiu.expedient_iri.nom": "expedients",
+      "sala.gavina_arxiu.expedient_iri.text_confessio": "«Corporació Aldaia · Expedient de personal. I. (el cognom, ratllat), enginyera del torn de nit. Desapareguda tres dies després de l'accident de la cambra 1. Acusada de robatori per confessió pròpia. Cas tancat per ordre del Director.»",
+      "sala.gavina_arxiu.expedient_iri.vet1": "Desapareguda tres dies després. Tres dies: el que em queda a mi.",
+      "sala.gavina_arxiu.expedient_iri.vet2": "I... És ella. És la meva I.",
+      "sala.gavina_arxiu.expedient_iri.text": "«Corporació Aldaia · Expedient de personal. I. (el cognom, ratllat), enginyera del torn de nit. Desapareguda tres dies després de l'accident de la cambra 1. Cas tancat per ordre del Director.»",
+      "sala.gavina_arxiu.arxivador.nom": "arxivador",
+      "sala.gavina_arxiu.arxivador.carta1": "Correspondència confiscada... a muntanyes.",
+      "sala.gavina_arxiu.arxivador.carta2": "«Per a la Nura, del seu pare.» La carta d'en Mos! Mai no va sortir d'aquí.",
+      "sala.gavina_arxiu.arxivador.ja": "Cartes que no van arribar mai. Ja tinc la que buscava.",
+      "sala.gavina_arxiu.arxivador.mira_salvada": "«Mira Osset. Cap antecedent.» I una nota a mà, molt més nova: «La seva besneta treballa aquí, de guàrdia.»",
+      "sala.gavina_arxiu.arxivador.mira_condemnada": "«Mira Osset, ajudant del torn de nit. Condemnada pel robatori de ferro-9. Vint anys de treballs.»",
+      "sala.gavina_arxiu.arxivador.mira_vet": "La Mira va pagar el que va fer la I. Cent vint anys tard per arreglar-ho... o no?",
+      "sala.gavina_arxiu.arxivador.look": "Arxivadors de metall: expedients, cartes confiscades, factures. Cent vint anys de paperassa.",
+      "sala.gavina_arxiu.planols.nom": "plànols",
+      "sala.gavina_arxiu.planols.text": "«Projecte Gavina. Objectiu: reobrir la finestra de fase de la cambra 1. Mètode: sincronitzadors (interns). Pèrdues previstes: «reciclatge».»",
+      "sala.gavina_arxiu.planols.vet1": "Ens tenen aquí perquè fem de sincronitzadors. I el reciclatge és el que passa quan el camp et crema.",
+      "sala.gavina_arxiu.planols.vet2": "Jo l'he fet funcionar perquè a l'altra banda hi ha algú.",
+      "sala.fabrica_magatzem.porta_despatx.nom": "despatx del director",
+      "sala.gavina_hangar.escala.descargolar1": "La cadena va cargolada a una brida. I jo tinc una clau anglesa.",
+      "sala.gavina_hangar.escala.descargolar2": "Llesta. La reixa de l'arxiu és oberta.",
+      "sala.fabrica_calderes.capatas.proves1": "Li deixo el diapasó xiulador a la butxaca. Ferro-9 inventariat, a la butxaca del capatàs...",
+      "sala.fabrica_calderes.capatas.proves2": "No n'estic orgullosa. Però ell dorm i la Mira, no.",
+      "sala.gavina_cella.mos.carta1": "Mos, això és teu. Era a l'arxiu.",
+      "sala.gavina_cella.mos.carta2": "...La meva carta a la Nura. No va sortir mai d'aquí.",
+      "sala.gavina_cella.mos.carta3": "Gràcies, noia. Et diré una cosa que no diu ningú: als del reciclatge no els reciclen.",
+      "sala.gavina_cella.mos.carta4": "Els posen davant d'una cambra vella i esperen que funcioni. Quan el camp crema, crema la persona.",
+      "sala.gavina_cella.mos.carta5": "Tu l'has fet funcionar, oi? Doncs ara et voldran viva. Vés amb compte."
     }
   },
   "locale": "ca"

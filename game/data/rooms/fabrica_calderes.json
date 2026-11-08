@@ -7,6 +7,44 @@
       "name": "sala.fabrica_calderes.capatas.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "diapaso_espatllat",
+          "if": {
+            "all": [
+              {
+                "var": "sospita_brau",
+                "op": ">=",
+                "value": 2
+              },
+              {
+                "flag": "mira_salvada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.proves1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.proves2"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "diapaso_espatllat"
+            },
+            {
+              "setFlag": "mira_salvada"
+            },
+            {
+              "setFlag": "capatas_acusat"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "flag": "segell_caigut",

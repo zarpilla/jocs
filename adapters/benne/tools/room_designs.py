@@ -405,6 +405,8 @@ def magatzem_bg(c):
         c.rect(x, 33, x + 2, 38, (140, 146, 160))
 
     factory_door(c, 8, 50, 40, 112)
+    factory_door(c, 50, 54, 78, 112)                                # porta del despatx del director
+    c.rect(54, 46, 74, 50, (210, 200, 170))
     vignette(c)
 
 
@@ -433,6 +435,7 @@ MAGATZEM = {
         'prestatges': {'rect': (112, 16, 236, 110), 'walk': (174, 126)},
         'plomall': {'rect': (82, 44, 100, 100), 'walk': (92, 128)},
         'caixa_eines': {'rect': (264, 112, 306, 138), 'walk': (256, 140)},
+        'porta_despatx': {'rect': (48, 44, 80, 114), 'walk': (64, 132)},
     },
     'spawns': {'iri': (70, 138), 'cargol': (210, 132)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
@@ -1016,6 +1019,116 @@ HANGAR = {
 }
 
 
+# ─── Fàbrica: despatx del director (Acte 2) ─────────────────────────────────
+
+def despatx_bg(c):
+    c.vgrad(0, 0, W, 112, (92, 58, 40), (70, 44, 30))
+    for x in range(0, W, 22):                                       # plafons de fusta
+        c.rect(x + 2, 40, x + 20, 104, (104, 66, 44))
+        c.rect(x + 2, 40, x + 20, 41, (130, 86, 58))
+    c.rect(0, 36, W, 39, (60, 38, 26))
+    planks(c, 112, H, (110, 74, 48), (70, 46, 30))
+    c.rect(0, 110, W, 113, (52, 34, 24))
+    factory_door(c, 8, 50, 40, 112)
+    # Finestra: la nit i les xemeneies
+    c.rect(58, 14, 122, 78, (60, 38, 26))
+    c.vgrad(62, 18, 118, 74, (16, 18, 36), (50, 40, 54))
+    for x, h_ in ((70, 30), (86, 22), (100, 36)):
+        c.rect(x, 74 - h_, x + 6, 74, (30, 26, 30))
+    c.line([(90, 18), (90, 74)], (60, 38, 26)); c.line([(62, 46), (118, 46)], (60, 38, 26))
+    # Retrat del Director Aldaia
+    c.rect(150, 20, 190, 66, (170, 130, 60))
+    c.rect(154, 24, 186, 62, (60, 50, 46))
+    c.ellipse(162, 30, 178, 48, (200, 170, 140))
+    c.rect(160, 48, 180, 62, (40, 40, 50))
+    c.rect(164, 36, 166, 37, (30, 30, 30)); c.rect(174, 36, 176, 37, (30, 30, 30))
+    c.line([(166, 43), (174, 43)], (120, 60, 60))
+    # Escriptori
+    c.rect(196, 88, 268, 94, WOOD[2])
+    c.rect(198, 94, 266, 112, WOOD[1])
+    c.rect(210, 98, 250, 106, WOOD[0])                              # calaix
+    c.ellipse(226, 99, 234, 105, (90, 200, 255))                    # pany M-3
+    c.glow(230, 102, 8, (90, 200, 255), 0.4)
+    c.rect(214, 82, 246, 88, (230, 224, 204))                       # l'expedient del Brau
+    c.rect(216, 83, 226, 84, (150, 40, 40))
+    c.line([(254, 88), (254, 74)], IRON[1]); c.ellipse(248, 70, 260, 76, (60, 90, 60))
+    c.glow(254, 84, 26, (255, 220, 140), 0.6)
+    # Faristol amb el llibre d'inventari
+    c.rect(302, 96, 306, 124, WOOD[0])
+    c.d.polygon([(288, 96), (320, 96), (316, 84), (292, 84)], fill=WOOD[1])
+    c.rect(292, 80, 316, 92, (120, 40, 40)); c.rect(294, 81, 314, 90, (236, 230, 210))
+    c.line([(304, 81), (304, 90)], (120, 40, 40))
+    vignette(c)
+
+
+DESPATX = {
+    'era': 'iri',
+    'things': {
+        'porta_magatzem': {'rect': (6, 48, 42, 114), 'walk': (30, 134)},
+        'retrat': {'rect': (150, 20, 190, 66), 'walk': (170, 128)},
+        'calaix': {'rect': (208, 96, 252, 108), 'walk': (230, 134)},
+        'expedient_brau': {'rect': (212, 78, 248, 89), 'walk': (230, 130)},
+        'llibre_inventari': {'rect': (288, 78, 320, 98), 'walk': (300, 130)},
+    },
+    'spawns': {'iri': (40, 138)},
+    'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
+    'bg': despatx_bg,
+    'props': {},
+}
+
+
+# ─── La Gavina: l'arxiu (Acte 2) ────────────────────────────────────────────
+
+def arxiu_bg(c):
+    metal_panels(c, 0, 0, W, 112, (64, 66, 70), (36, 38, 42), (96, 98, 104), seed=71)
+    c.rect(0, 0, W, 6, (30, 32, 36))
+    grating(c, 112, H, (44, 46, 52), (30, 32, 36))
+    c.rect(0, 110, W, 113, (30, 32, 36))
+    # Escala amunt, cap al moll de l'hangar
+    c.rect(6, 30, 50, 112, (18, 20, 24))
+    for i, y in enumerate(range(34, 112, 8)):
+        c.rect(8, y, 48 - i * 3, y + 3, (60, 64, 72))
+    c.rect(48, 30, 50, 112, STEEL[1])
+    # Arxivadors
+    for x in range(60, 150, 30):
+        c.rect(x, 30, x + 28, 112, (110, 116, 110))
+        c.rect(x, 30, x + 28, 31, (150, 156, 150))
+        for y in range(36, 108, 18):
+            c.rect(x + 3, y, x + 25, y + 14, (96, 102, 96))
+            c.rect(x + 11, y + 5, x + 17, y + 7, (180, 184, 180))
+    c.rect(118, 74, 138, 80, (230, 220, 190))                       # un sobre que sobresurt
+    # Taula amb els expedients i un llum
+    c.rect(164, 92, 242, 96, (90, 90, 96))
+    c.rect(168, 96, 172, 124, (60, 60, 66)); c.rect(234, 96, 238, 124, (60, 60, 66))
+    for i, (x, col) in enumerate(((172, (200, 180, 120)), (194, (220, 200, 150)), (214, (190, 170, 110)))):
+        c.rect(x, 84 - i, x + 18, 92 - i, col)
+    c.line([(232, 92), (232, 70)], STEEL[1]); c.ellipse(224, 64, 240, 72, (200, 190, 120))
+    c.glow(232, 84, 30, (255, 230, 160), 0.6)
+    # Taula de dibuix amb les còpies dels plànols
+    c.d.polygon([(258, 98), (342, 98), (334, 62), (266, 62)], fill=(70, 74, 82))
+    c.d.polygon([(262, 96), (338, 96), (331, 65), (269, 65)], fill=(60, 110, 170))
+    for y in range(70, 94, 5):
+        c.line([(272, y), (328, y)], (170, 210, 240))
+    c.ellipse(286, 72, 314, 90, None, outline=(220, 240, 255))      # la cambra, dibuixada
+    c.rect(270, 98, 274, 124, (50, 52, 58)); c.rect(326, 98, 330, 124, (50, 52, 58))
+    vignette(c, 110)
+
+
+ARXIU = {
+    'era': 'vet',
+    'things': {
+        'escala_hangar': {'rect': (6, 28, 50, 114), 'walk': (34, 134)},
+        'arxivador': {'rect': (58, 28, 150, 112), 'walk': (104, 128)},
+        'expedient_iri': {'rect': (168, 78, 236, 96), 'walk': (200, 130)},
+        'planols': {'rect': (258, 60, 342, 100), 'walk': (296, 130)},
+    },
+    'spawns': {'vet': (40, 138)},
+    'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
+    'bg': arxiu_bg,
+    'props': {},
+}
+
+
 DESIGNS = {
     'fabrica_calderes': CALDERES,
     'fabrica_magatzem': MAGATZEM,
@@ -1024,4 +1137,6 @@ DESIGNS = {
     'gavina_passadis': PASSADIS,
     'fabrica_moll': MOLL,
     'gavina_hangar': HANGAR,
+    'fabrica_despatx': DESPATX,
+    'gavina_arxiu': ARXIU,
 }

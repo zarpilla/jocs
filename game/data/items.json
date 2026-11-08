@@ -129,6 +129,39 @@
         "if": {
           "all": [
             {
+              "flag": "iri_sap_desaparicio"
+            },
+            {
+              "flag": "nota_iri_nom_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis.nom1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis.nom2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_iri_nom_escrita"
+          },
+          {
+            "giveItem": "nota_iri_nom"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "if": {
+          "all": [
+            {
               "var": "biga_amagada",
               "op": "!=",
               "value": ""
@@ -341,6 +374,42 @@
       "pes": 0.01
     },
     "interactions": [
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_sap_desaparicio"
+            },
+            {
+              "flag": "nota_vet_nom_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.nom1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.nom2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_vet_nom_escrita"
+          },
+          {
+            "takeItem": "tros_cartell"
+          },
+          {
+            "giveItem": "nota_vet_nom"
+          }
+        ]
+      },
       {
         "verb": "use",
         "item": "tros_cartell",
@@ -1414,6 +1483,133 @@
         "effects": [
           {
             "setFlag": "vet_coneix_mira"
+          }
+        ]
+      }
+    ]
+  },
+  "planols": {
+    "name": "obj.planols.nom",
+    "description": "obj.planols.desc",
+    "props": {
+      "pes": 0.3
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.planols.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.planols.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.planols.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_cambra"
+          }
+        ]
+      }
+    ]
+  },
+  "carta_mos": {
+    "name": "obj.carta_mos.nom",
+    "description": "obj.carta_mos.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "nota_vet_nom": {
+    "name": "obj.nota_vet_nom.nom",
+    "description": "obj.nota_vet_nom.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet_nom.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet_nom.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet_nom.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_desaparicio"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet_nom.text"
+          }
+        ]
+      }
+    ]
+  },
+  "nota_iri_nom": {
+    "name": "obj.nota_iri_nom.nom",
+    "description": "obj.nota_iri_nom.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri_nom.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri_nom.vet1"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri_nom.fi"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "acte2_noms"
+          },
+          {
+            "setFlag": "acte2_acabat"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri_nom.text"
           }
         ]
       }

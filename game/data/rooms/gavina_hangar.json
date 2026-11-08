@@ -750,6 +750,26 @@
       "name": "sala.gavina_hangar.escala.nom",
       "interactions": [
         {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "reixa_arxiu_oberta"
+              },
+              {
+                "var": "valvula",
+                "op": "!=",
+                "value": "tancada"
+              }
+            ]
+          },
+          "goTo": "gavina_arxiu"
+        },
+        {
           "verb": "look",
           "if": {
             "var": "valvula",
@@ -787,6 +807,38 @@
             {
               "who": "player",
               "text": "sala.gavina_hangar.escala.aigua"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "all": [
+              {
+                "var": "valvula",
+                "op": "!=",
+                "value": "tancada"
+              },
+              {
+                "flag": "reixa_arxiu_oberta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.descargolar1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.descargolar2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reixa_arxiu_oberta"
             }
           ]
         },

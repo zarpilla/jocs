@@ -28,6 +28,14 @@
     {
       "id": "gavina_hangar",
       "definition": "gavina_hangar/gavina_hangar.room.json"
+    },
+    {
+      "id": "fabrica_despatx",
+      "definition": "fabrica_despatx/fabrica_despatx.room.json"
+    },
+    {
+      "id": "gavina_arxiu",
+      "definition": "gavina_arxiu/gavina_arxiu.room.json"
     }
   ]
 }

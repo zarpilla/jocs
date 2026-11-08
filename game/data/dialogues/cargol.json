@@ -112,6 +112,27 @@
           }
         },
         {
+          "id": "imant2",
+          "text": "dlg.cargol.opt.imant2",
+          "next": "imant2",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_calaix"
+              },
+              {
+                "flag": "planols_robats",
+                "is": false
+              },
+              {
+                "hasItem": "imant_ferro9",
+                "who": "iri",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
           "id": "dia",
           "text": "dlg.cargol.opt.dia",
           "once": true,
@@ -379,6 +400,34 @@
                 "who": "cargol",
                 "fact": "diapaso_lliurat"
               }
+            }
+          ]
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.imant_falta",
+          "if": {
+            "hasItem": "formulari_triplicat",
+            "is": false
+          }
+        }
+      ],
+      "goto": "menu"
+    },
+    "imant2": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.imant2_ok",
+          "if": {
+            "hasItem": "formulari_triplicat"
+          },
+          "effects": [
+            {
+              "takeItem": "formulari_triplicat"
+            },
+            {
+              "giveItem": "imant_ferro9"
             }
           ]
         },

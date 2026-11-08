@@ -377,12 +377,41 @@ def fitxa_mira(c):
     c.ellipse(22, 14, 3, 1.5, (120, 150, 190))                 # taca d'aigua
 
 
+
+def planols(c):
+    c.rect(6, 6, 29, 15, (60, 110, 170)); c.rect(6, 15, 29, 15, (40, 80, 130))
+    for x, y in ((12, 9), (13, 8), (14, 8), (15, 9), (14, 11), (12, 11), (11, 10)):
+        c.px(x, y, (220, 240, 255))                            # la cambra, dibuixada
+    for y in (8, 10, 12):
+        c.rect(20, y, 26, y, (170, 210, 240))
+    c.ellipse(29, 10.5, 1.5, 4.5, (220, 220, 210))             # el rotlle
+
+
+def carta_mos(c):
+    c.rect(9, 5, 26, 15, (230, 220, 190)); c.rect(9, 15, 26, 15, (190, 180, 150))
+    for i in range(6):                                          # la solapa
+        c.px(9 + i, 5 + i, (190, 180, 150)); c.px(26 - i, 5 + i, (190, 180, 150))
+    c.rect(16, 11, 19, 12, (150, 40, 40))                       # segell de cera
+
+
+def nota_vet_nom(c):
+    tros_cartell(c)
+    c.rect(16, 7, 16, 11, BLACK); c.rect(20, 7, 20, 11, BLACK); c.rect(17, 12, 19, 12, BLACK)  # «V»
+    c.rect(16, 14, 23, 14, BLACK)
+
+
+def nota_iri_nom(c):
+    sheet_of_paper(c, 10, 3, 25, 16, lines=False)
+    c.rect(17, 6, 17, 12, INK); c.rect(16, 6, 18, 6, INK); c.rect(16, 12, 18, 12, INK)       # «I»
+    c.rect(14, 14, 22, 14, INK)
+
+
 ICONS = {f.__name__: f for f in (
     clau_anglesa, formulari_27b, formulari_segellat, formulari_triplicat, plomall, segell, clau_cambra,
     llapis, llibreta_torn, caixa_eines, imant_ferro9, nota_iri, avis_reciclatge, llapis_ulls, nota_vet,
     fullet_reeducacio, nota_pany, escarabat, sopa,
     tros_cartell, nota_mida, biga_acer, biga_ferro9, serra, tram_biga_1, tram_biga_2, tram_biga_3, biga_muntada,
-    nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat, nota_pressio, nota_massa, fitxa_mira,
+    nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat, nota_pressio, nota_massa, fitxa_mira, planols, carta_mos, nota_vet_nom, nota_iri_nom,
 )}
 
 

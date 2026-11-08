@@ -103,6 +103,39 @@
         "x": 237,
         "y": 150
       }
+    },
+    {
+      "id": "porta_despatx",
+      "active": true,
+      "description": "despatx del director",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 65,
+          "y": 59
+        },
+        {
+          "x": 109,
+          "y": 59
+        },
+        {
+          "x": 109,
+          "y": 155
+        },
+        {
+          "x": 65,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 87,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 87,
+        "y": 156
+      },
+      "defaultVerb": "open"
     }
   ],
   "points": [],

@@ -69,6 +69,13 @@
         "completeWhen": {
           "flag": "carta_mos_trobada"
         }
+      },
+      {
+        "id": "lliurar",
+        "text": "mis.carta_mos.obj.lliurar",
+        "completeWhen": {
+          "flag": "carta_mos_lliurada"
+        }
       }
     ]
   },
@@ -136,6 +143,39 @@
         "text": "mis.acte2.obj.arxiu",
         "completeWhen": {
           "flag": "arxiu_explorat"
+        }
+      },
+      {
+        "id": "nom",
+        "text": "mis.acte2.obj.nom",
+        "completeWhen": {
+          "flag": "acte2_acabat"
+        }
+      }
+    ]
+  },
+  "salvar_mira": {
+    "kind": "side",
+    "title": "mis.salvar_mira.titol",
+    "description": "mis.salvar_mira.desc",
+    "startWhen": {
+      "all": [
+        {
+          "var": "sospita_brau",
+          "op": ">=",
+          "value": 2
+        },
+        {
+          "flag": "iri_sap_mira_acusada"
+        }
+      ]
+    },
+    "objectives": [
+      {
+        "id": "salvar",
+        "text": "mis.salvar_mira.obj",
+        "completeWhen": {
+          "flag": "mira_salvada"
         }
       }
     ]

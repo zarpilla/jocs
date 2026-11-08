@@ -776,6 +776,90 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 37.aseprite": {
+      "frame": {
+        "x": 1813,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 38.aseprite": {
+      "frame": {
+        "x": 1862,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 39.aseprite": {
+      "frame": {
+        "x": 1911,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 40.aseprite": {
+      "frame": {
+        "x": 1960,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -784,7 +868,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1813,
+      "w": 2009,
       "h": 27
     },
     "scale": "1",
@@ -1045,6 +1129,34 @@
         "name": "fitxa_mira",
         "from": 36,
         "to": 36,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "planols",
+        "from": 37,
+        "to": 37,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "carta_mos",
+        "from": 38,
+        "to": 38,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_vet_nom",
+        "from": 39,
+        "to": 39,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_iri_nom",
+        "from": 40,
+        "to": 40,
         "direction": "forward",
         "color": "#000000ff"
       }

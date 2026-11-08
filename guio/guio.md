@@ -150,7 +150,7 @@ registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau o
 **Comptes de les enceses:** n'hi ha vint-i-quatre. L'Acte 1 en gasta nou (cinc enviaments, dels quals només els dos primers amb
 el ritual, i les quatre notes del muntatge), i en queden quinze per a l'Acte 2 i l'Acte 3. La palanca de l'Acte 2 en gasta
 entre dues (biga de ferro-9 amagada) i quatre (per peces), el diapasó, dues (la molla i el diapasó), i la vàlvula, dues més (la nota de la pressió i el «MASSA»). Per la ruta
-més llarga, en queden set per a la quarta part i l'Acte 3.
+més llarga, en queden set; les notes dels noms en gasten dues, i n'arriben cinc a l'Acte 3.
 
 ### Acte 2 — «Els costos» (el cor del joc)
 
@@ -203,7 +203,8 @@ a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 1. **La comporta** (palanca): fet.
 2. **El diapasó**: fet.
 3. **La vàlvula**: fet.
-4. **El cost humà**: l'Inspector Brau, la Mira acusada i el Cargol del present; tancament de l'acte.
+4. **L'arxiu i el despatx** (el cost humà i el tancament): fet. Pendent per a més endavant: el Cargol del
+   present i la missió de la seva memòria, la Guàrdia Osset i la Sala de la Memòria.
 
 #### Component 2: el diapasó (el pany sònic de l'hangar)
 
@@ -281,6 +282,22 @@ la inundació no és un error del jugador, és la lliçó.
    que hi posen presos perquè facin de "sincronitzadors", i el reciclatge és el que passa quan el camp et
    crema. **La Vet és la primera que l'ha fet funcionar, perquè a l'altre costat hi ha algú.**
 4. La Directora Aldaia se n'adona. Ara vol la Vet viva, i també l'Iri.
+
+**Com es juga (fet al joc, quarta part de l'Acte 2: «L'arxiu i el despatx»).**
+
+- **Vet.** Quan la llançadora ja engega, descargola amb la clau anglesa la cadena de la reixa de l'escala (al moll
+  de l'hangar) i baixa a l'**Arxiu**: l'expedient de l'Iri («desapareguda tres dies després de l'accident»), les
+  còpies dels plànols del Projecte Gavina (sincronitzadors i «reciclatge») i, a l'arxivador, la **carta d'en Mos**.
+  Si li torna, en Mos li explica que als del reciclatge no els reciclen: els crema el camp.
+- **Iri.** Des del magatzem, al **despatx del director**: el calaix té un pany M-3, i amb un altre imant del
+  Cargol (formulari per triplicat) roba els **plànols originals**: «Prova de camp: torn de nit, operària I. No
+  informar l'operària». Amb dos robatoris, l'expedient del Brau **acusa la Mira**.
+- **Salvar la Mira** (secundària): falsificar el llibre d'inventari amb el segell («donat de baixa per rovell»),
+  deixar el diapasó espatllat (ferro-9) a la butxaca del capatàs, o confessar per escrit a l'expedient. A l'arxiu
+  del present, l'expedient de la Mira canvia: condemnada, o «cap antecedent; la seva besneta treballa aquí».
+  Si l'Iri confessa, el seu expedient del present també ho diu.
+- La revelació de la Sala de la Memòria (la foto ratllada) i la Directora Aldaia queden per a l'Acte 3; de
+  moment, la desaparició de l'Iri es descobreix a l'expedient de l'Arxiu.
 
 **Decisió de final d'acte:** la Vet ha d'avisar l'Iri que desapareixerà. Per primera vegada signa amb el seu nom:
 

@@ -344,6 +344,49 @@
       "name": "sala.gavina_cella.mos.nom",
       "interactions": [
         {
+          "verb": [
+            "give",
+            "use"
+          ],
+          "item": "carta_mos",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.mos.carta1"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.mos.carta2"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.mos.carta3"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.mos.carta4"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.mos.carta5"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "carta_mos"
+            },
+            {
+              "setFlag": "carta_mos_lliurada"
+            },
+            {
+              "relation": {
+                "who": "mos",
+                "change": 2
+              }
+            }
+          ]
+        },
+        {
           "verb": "talkTo",
           "dialogue": "mos"
         },
