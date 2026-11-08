@@ -28,6 +28,13 @@ export const benneCharacter = (who: string) => byId<(typeof characters)[keyof ty
 export const benneRoom = (id: string) => byId<(typeof rooms)[keyof typeof rooms]>(rooms, toBenne('rooms', id));
 export const benneDialog = (id: string) => byId<(typeof dialogs)[keyof typeof dialogs]>(dialogs, id);
 
+/**
+ * Nom de l'opció de Benne per a una opció d'un node (el genera el sync).
+ * Ha de ser aquí i no a `narrative.script.ts`: allà el plugin BenneScript converteix totes les
+ * funcions en asíncrones i retornaria una `Promise` en lloc del nom.
+ */
+export const optionName = (node: string, choice: string) => `${node}__${choice}`;
+
 /** Inventari d'una protagonista (sense `who`, la que juga ara). */
 const bagOf = (who?: string) => (who ? (benneCharacter(who)?.inventory ?? inventory) : inventory);
 const itemRef = (id: string) => ({ id: toBenne('items', id) });

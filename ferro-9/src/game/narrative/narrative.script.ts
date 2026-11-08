@@ -11,12 +11,9 @@ import { display, fadeOut, player } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, protagonistRoom,
+  applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   rememberProtagonistRoom, roomProtagonist, takePendingSwitch, targetFromBenne,
 } from './narrative';
-
-/** Nom de l'opció de Benne per a una opció d'un node (el genera el sync). */
-export const optionName = (node: string, choice: string) => `${node}__${choice}`;
 
 /** Diu les línies una darrere l'altra. */
 export function playLines(lines: ResolvedLine[]) {
