@@ -6,7 +6,7 @@
 
 ## Premissa
 
-**Iri** (Iris, però ningú no la diu així) viu fa 120 anys. És enginyera del torn de nit a la fàbrica de
+**Iri** viu fa 120 anys. És enginyera del torn de nit a la fàbrica de
 ferro-9 de la **Corporació Aldaia**, és brillant i ningú no se la mira. Una nit, mentre apaga
 una alarma, encén per accident el camp d'una cambra de ressonància experimental.
 
@@ -219,7 +219,7 @@ Per engegar, la llançadora necessita pressió al vell conducte.
 **Decisió de final d'acte:** la Vet ha d'avisar l'Iri que desapareixerà. Per primera vegada signa amb el seu nom:
 
 > *"Em dic Vet. Et faran desaparèixer d'aquí a tres dies. Ho sento."*
-> *"Em dic Iris. Tothom em diu Iri. Ja ho sospitava. No penso desaparèixer."*
+> *"Em dic Iri. Ja ho sospitava. No penso desaparèixer."*
 
 ### Acte 3 — «La finestra» (clímax)
 
