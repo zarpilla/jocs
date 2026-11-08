@@ -3,8 +3,8 @@
 Dibuixa els sprites provisionals dels personatges de Ferro-9, en pixel art, amb el format
 que espera Benne (full d'Aseprite PNG + JSON amb etiquetes, i el .character.json):
 
-  iri      enginyera del torn de nit (passat): granota de treball, monyo, ulleres al front
-  vet      presonera de la cel·la 9 (present): granota de presó, cabell curt punxegut
+  iri      enginyera del torn de nit (passat): bata blanca oberta, trena fosca, ulleres al front
+  vet      presonera de la cel·la 9 (present): granota de presó taronja, bob platí
   cargol   robot de manteniment amb closca de cargol, ulls a les antenes, erugues
   capatas  el capatàs Pruna, adormit a la cadira, amb el segell a les mans (i sense)
   mos     presoner vell i prim, maquillat
@@ -62,21 +62,158 @@ class Canvas:
 
 # ─── Persones ───────────────────────────────────────────────────────────────
 
+class Shift:
+    """Dibuixa sobre un Canvas desplaçat (el balanceig vertical del cicle de caminar)."""
+
+    def __init__(self, c, dy):
+        self.c, self.dy = c, dy
+
+    def px(self, x, y, col):
+        self.c.px(x, y + self.dy, col)
+
+    def rect(self, x0, y0, x1, y1, col):
+        self.c.rect(x0, y0 + self.dy, x1, y1 + self.dy, col)
+
+    def ellipse(self, cx, cy, rx, ry, col):
+        self.c.ellipse(cx, cy + self.dy, rx, ry, col)
+
+
+SILVER = (200, 200, 210)
+GOGGLE_STRAP, GOGGLE_GLASS = (200, 160, 60), (130, 206, 224)
+HAIR_TIE = (190, 50, 44)
+
+
+def braid(c, x, y0, y1, h, h2, w=2):
+    """Trena vertical amb textura alterna i un llaç vermell al final."""
+    for y in range(y0, y1 + 1):
+        k = (y - y0) % 3
+        c.rect(x, y, x + w - 1, y, h if k else h2)
+        if k == 0:
+            c.px(x + (w - 1 if (y // 3) % 2 else 0), y, (90, 66, 70))
+    c.rect(x, y1 + 1, x + w - 1, y1 + 1, HAIR_TIE)
+    c.px(x + w // 2, y1 + 2, h)
+
+
+def hair_iri(c, p, f, layer):
+    """Cabell fosc tirat enrere amb ratlla al mig, ulleres al front i una trena gruixuda sobre l'espatlla."""
+    if layer != 'front':
+        return
+    h, h2 = p['hair'], p['hair2']
+    if f == 'U':
+        c.ellipse(17.5, 11, 5.5, 6.5, h)
+        c.rect(17, 5, 18, 16, h2)
+        c.rect(12, 9, 23, 9, GOGGLE_STRAP)
+        braid(c, 16, 16, 35, h, h2, w=3)
+    elif f == 'D':
+        c.rect(12, 5, 23, 8, h)
+        c.px(17, 5, h2); c.px(18, 6, h2)
+        c.rect(12, 9, 12, 13, h); c.rect(23, 9, 23, 13, h)
+        c.rect(13, 8, 22, 8, GOGGLE_STRAP)
+        c.rect(14, 7, 16, 8, GOGGLE_GLASS); c.rect(19, 7, 21, 8, GOGGLE_GLASS)
+        c.rect(22, 12, 23, 14, h)
+        braid(c, 22, 15, 33, h, h2, w=3)
+    else:
+        c.rect(12, 5, 22, 8, h)
+        c.rect(18, 9, 22, 14, h)
+        c.px(18, 13, p['skin'])  # orella
+        c.rect(12, 8, 18, 8, GOGGLE_STRAP)
+        c.rect(12, 7, 14, 8, GOGGLE_GLASS)
+        braid(c, 20, 14, 33, h, h2, w=3)
+
+
+def hair_vet(c, p, f, layer):
+    """Bob platí a l'altura de la barbeta amb serrell recte."""
+    h, h2 = p['hair'], p['hair2']
+    if layer == 'back':
+        if f == 'D':
+            c.rect(11, 9, 24, 18, h2)
+        return
+    if f == 'U':
+        c.ellipse(17.5, 10, 6, 6, h); c.rect(11, 10, 24, 18, h); c.rect(11, 18, 24, 18, h2)
+    elif f == 'D':
+        c.ellipse(17.5, 7, 6.2, 3.5, h)
+        c.rect(11, 8, 13, 17, h); c.rect(22, 8, 24, 17, h)
+        c.rect(14, 8, 21, 9, h)
+        c.rect(11, 17, 13, 17, h2); c.rect(22, 17, 24, 17, h2)
+    else:
+        c.ellipse(17.5, 7, 6, 3.5, h)
+        c.rect(16, 8, 23, 17, h); c.rect(20, 14, 23, 17, h2)
+        c.rect(11, 8, 15, 9, h)
+
+
+def hair_mos(c, p, f, layer):
+    """Calb, amb cabells blancs als costats."""
+    if layer != 'front':
+        return
+    h, h2 = p['hair'], p['hair2']
+    if f == 'U':
+        c.ellipse(17.5, 12, 5.5, 6, h2)
+        c.ellipse(17.5, 9, 4, 3.5, p['skin'])
+    else:
+        c.rect(12, 9, 13, 14, h)
+        if f == 'D':
+            c.rect(22, 9, 23, 14, h)
+        else:
+            c.rect(18, 8, 23, 15, h)
+
+
+def deco_bata(c, p, f):
+    """Bata blanca llarga i oberta sobre una camisa blava, amb llapis i una clau a les butxaques."""
+    C, C2 = p['coat'], p['coat2']
+    shirt = (120, 150, 180)
+    if f == 'D':
+        c.rect(12, 22, 23, 52, C); c.rect(22, 22, 23, 52, C2); c.rect(12, 22, 12, 52, C2)
+        c.rect(16, 22, 19, 37, shirt); c.rect(16, 38, 19, 52, p['legs'])
+        c.rect(15, 22, 15, 52, C2); c.rect(20, 22, 20, 52, C2)
+        c.rect(14, 22, 15, 24, C2); c.rect(20, 22, 21, 24, C2)
+        c.rect(21, 27, 22, 29, C2); c.px(21, 26, (190, 50, 44)); c.px(22, 26, (60, 90, 160))
+        c.rect(13, 40, 14, 43, C2); c.rect(21, 40, 22, 43, C2)
+        c.px(13, 39, SILVER)
+    elif f == 'L':
+        c.rect(13, 22, 22, 52, C); c.rect(20, 22, 22, 52, C2)
+        c.rect(13, 22, 13, 52, C2); c.rect(14, 40, 16, 43, C2)
+    else:
+        c.rect(12, 22, 23, 52, C); c.rect(17, 42, 18, 52, C2); c.rect(14, 33, 21, 33, C2)
+
+
+def deco_taronja(c, p, f):
+    """Granota de presó taronja: número estampat al pit i a l'esquena (les franges van a les cames)."""
+    ink, white = (40, 40, 48), (240, 240, 240)
+    if f == 'D':
+        c.rect(17, 22, 18, 23, p['skin'])  # coll en V
+        c.rect(14, 25, 17, 28, ink)
+        c.px(15, 26, white); c.px(16, 27, white); c.px(15, 27, white)
+        c.rect(12, 37, 23, 37, white)
+    elif f == 'U':
+        c.rect(14, 26, 21, 31, ink); c.rect(15, 28, 20, 29, white)
+
+
+def deco_mos(c, p, f):
+    if f == 'D':
+        c.rect(19, 25, 22, 28, (236, 236, 236))  # pegat amb el número
+        c.px(20, 26, (40, 40, 60)); c.px(21, 27, (40, 40, 60))
+        c.rect(17, 22, 18, 23, p['skin'])
+
+
 IRI = {
-    'skin': (226, 176, 134), 'skin2': (196, 142, 106), 'hair': (78, 44, 30), 'hair2': (54, 30, 22),
-    'top': (178, 88, 44), 'top2': (140, 64, 32), 'sleeve': (236, 224, 196), 'legs': (178, 88, 44), 'legs2': (140, 64, 32),
-    'shoes': (62, 42, 30), 'belt': (82, 56, 34), 'style': 'iri', 'eyes': (40, 30, 30),
+    'skin': (226, 176, 134), 'skin2': (196, 142, 106), 'hair': (50, 34, 38), 'hair2': (30, 20, 24),
+    'top': (238, 236, 228), 'top2': (200, 198, 190), 'coat': (238, 236, 228), 'coat2': (200, 198, 190),
+    'sleeve': (238, 236, 228), 'sleeve_len': 'long', 'legs': (66, 56, 52), 'legs2': (50, 42, 38),
+    'shoes': (40, 30, 26), 'eyes': (40, 30, 30), 'lashes': True, 'hair_fn': hair_iri, 'deco': deco_bata,
 }
 VET = {
-    'skin': (156, 104, 76), 'skin2': (124, 80, 58), 'hair': (64, 196, 196), 'hair2': (38, 140, 152),
-    'top': (150, 172, 194), 'top2': (110, 132, 154), 'sleeve': (150, 172, 194), 'legs': (150, 172, 194), 'legs2': (110, 132, 154),
-    'shoes': (232, 232, 232), 'belt': None, 'style': 'vet', 'eyes': (30, 24, 30),
+    'skin': (156, 104, 76), 'skin2': (124, 80, 58), 'hair': (232, 226, 210), 'hair2': (190, 182, 168),
+    'top': (226, 116, 44), 'top2': (186, 88, 30), 'sleeve_len': 'long', 'legs': (226, 116, 44), 'legs2': (186, 88, 30),
+    'shoes': (232, 232, 232), 'sole': (90, 90, 96), 'leg_stripe': (240, 240, 240), 'eyes': (30, 24, 30), 'lashes': True,
+    'hair_fn': hair_vet, 'deco': deco_taronja,
 }
 MOS = {
     'skin': (214, 170, 140), 'skin2': (184, 138, 110), 'hair': (206, 206, 214), 'hair2': (160, 160, 170),
-    'top': (150, 172, 194), 'top2': (110, 132, 154), 'sleeve': (150, 172, 194), 'legs': (150, 172, 194), 'legs2': (110, 132, 154),
-    'shoes': (90, 90, 96), 'belt': None, 'style': 'mos', 'eyes': (20, 16, 24),
+    'top': (150, 172, 194), 'top2': (110, 132, 154), 'sleeve_len': 'long', 'legs': (150, 172, 194), 'legs2': (110, 132, 154),
+    'shoes': (90, 90, 96), 'eyes': (20, 16, 24), 'makeup': True, 'hair_fn': hair_mos, 'deco': deco_mos,
 }
+
+SLEEVE_END = {'long': 37, 'rolled': 29}
 
 
 def person(p, facing, walk=None, talk=False, thin=False):
@@ -84,153 +221,90 @@ def person(p, facing, walk=None, talk=False, thin=False):
     c = Canvas(36, 64)
     bob = [0, -1, 0, 0, -1, 0][walk] if walk is not None else 0
     narrow = 1 if thin else 0
+    s = Shift(c, bob)
+    p['hair_fn'](s, p, facing, 'back')
 
     # Cames i peus
+    stripe, sole = p.get('leg_stripe'), p.get('sole')
     if facing == 'L':
         swing = [-3, -1, 1, 3, 1, -1][walk] if walk is not None else 0
-        for leg, off, shade in ((0, -swing, p['legs2']), (1, swing, p['legs'])):
+        for off, shade in ((-swing, p['legs2']), (swing, p['legs'])):
             x = 16 + off
             c.rect(x, 42, x + 3, 57, shade)
+            if stripe:
+                c.rect(x, 42, x, 57, stripe)
             c.rect(x - 2, 58, x + 3, 61, p['shoes'])
+            if sole:
+                c.rect(x - 2, 61, x + 3, 61, sole)
     else:
         lift_l = [0, 2, 1, 0, 0, 0][walk] if walk is not None else 0
         lift_r = [0, 0, 0, 0, 2, 1][walk] if walk is not None else 0
-        c.rect(13 + narrow, 42, 16, 57 - lift_l, p['legs'])
-        c.rect(19, 42, 22 - narrow, 57 - lift_r, p['legs'])
-        c.rect(13 + narrow, 58 - lift_l, 16, 61 - lift_l, p['shoes'])
-        c.rect(19, 58 - lift_r, 22 - narrow, 61 - lift_r, p['shoes'])
-        if p['shoes'] == (232, 232, 232):  # sabatilles: sola fosca
-            c.rect(13 + narrow, 61 - lift_l, 16, 61 - lift_l, (90, 90, 96))
-            c.rect(19, 61 - lift_r, 22 - narrow, 61 - lift_r, (90, 90, 96))
+        for x0, x1, lift, sx in ((13 + narrow, 16, lift_l, 13 + narrow), (19, 22 - narrow, lift_r, 22 - narrow)):
+            c.rect(x0, 42, x1, 57 - lift, p['legs'])
+            if stripe:
+                c.rect(sx, 42, sx, 57 - lift, stripe)
+            c.rect(x0, 58 - lift, x1, 61 - lift, p['shoes'])
+            if sole:
+                c.rect(x0, 61 - lift, x1, 61 - lift, sole)
 
-    y0 = bob
-    # Malucs i tors (una mica més estret a les espatlles: silueta femenina a l'Iri i la Vet)
+    # Malucs i tors
     if facing == 'L':
-        c.rect(14, 22 + y0, 21, 41 + y0, p['top'])
-        c.rect(19, 22 + y0, 21, 41 + y0, p['top2'])
+        s.rect(14, 22, 21, 41, p['top'])
+        s.rect(19, 22, 21, 41, p['top2'])
     else:
-        c.rect(13 + narrow, 22 + y0, 22 - narrow, 37 + y0, p['top'])
-        c.rect(12 + narrow, 37 + y0, 23 - narrow, 41 + y0, p['legs'])
-        c.rect(21 - narrow, 22 + y0, 22 - narrow, 41 + y0, p['top2'])
-
-    # Detalls de la roba
-    if p['style'] == 'iri' and facing != 'U':
-        if facing == 'D':
-            c.rect(14, 22 + y0, 15, 27 + y0, p['sleeve'])        # camisa sota els tirants
-            c.rect(20, 22 + y0, 21, 27 + y0, p['sleeve'])
-            c.rect(16, 24 + y0, 19, 27 + y0, p['top2'])          # pitet de la granota
-        c.rect(13 if facing == 'D' else 14, 33 + y0, 22 if facing == 'D' else 21, 34 + y0, p['belt'])  # cinturó d'eines
-        c.rect(20 if facing == 'D' else 15, 34 + y0, 22 if facing == 'D' else 17, 37 + y0, (110, 78, 46))  # bossa
-        c.px(21 if facing == 'D' else 16, 35 + y0, (200, 200, 210))  # mànec d'una eina
-    if p['style'] in ('vet', 'mos') and facing == 'D':
-        c.rect(19, 25 + y0, 22 - narrow, 28 + y0, (236, 236, 236))  # pegat amb el número
-        c.px(20, 26 + y0, (40, 40, 60))
-        c.px(21 - narrow, 27 + y0, (40, 40, 60))
-        c.rect(17, 22 + y0, 18, 23 + y0, p['skin'])  # coll en V
+        s.rect(13 + narrow, 22, 22 - narrow, 37, p['top'])
+        s.rect(12 + narrow, 37, 23 - narrow, 41, p['legs'])
+        s.rect(21 - narrow, 22, 22 - narrow, 41, p['top2'])
+    p['deco'](s, p, facing)
 
     # Braços
-    arm_top, arm_bot = 23 + y0, 37 + y0
+    sleeve = p.get('sleeve', p['top2'])
+    end = SLEEVE_END[p['sleeve_len']]
     if facing == 'L':
-        swing = [-2, -1, 0, 2, 1, 0][walk] if walk is not None else 0
-        ax = 17 + swing
-        sleeve_end = 29 + y0 if p['style'] == 'iri' else arm_bot
-        c.rect(ax, arm_top, ax + 2, sleeve_end, p['sleeve'] if p['style'] == 'iri' else p['top2'])
-        c.rect(ax, sleeve_end + 1, ax + 2, arm_bot, p['skin'])
-        c.rect(ax, arm_bot + 1, ax + 2, arm_bot + 2, p['skin2'])
+        sw = [-2, -1, 0, 2, 1, 0][walk] if walk is not None else 0
+        arms = [(17 + sw, 0)]
     else:
         sw = [0, 1, 0, 0, -1, 0][walk] if walk is not None else 0
-        for ax, s in ((10 + narrow, sw), (23 - narrow, -sw)):
-            sleeve_end = 29 + y0 if p['style'] == 'iri' else arm_bot
-            c.rect(ax, arm_top + s, ax + 2, sleeve_end + s, p['sleeve'] if p['style'] == 'iri' else p['top2'])
-            c.rect(ax, sleeve_end + 1 + s, ax + 2, arm_bot + s, p['skin'])
-            c.rect(ax, arm_bot + 1 + s, ax + 2, arm_bot + 2 + s, p['skin2'])
+        arms = [(10 + narrow, sw), (23 - narrow, -sw)]
+    for ax, dy in arms:
+        s.rect(ax, 23 + dy, ax + 2, min(end, 37) + dy, sleeve)
+        if end < 37:
+            s.rect(ax, end + 1 + dy, ax + 2, 37 + dy, p['skin'])
+        s.rect(ax, 38 + dy, ax + 2, 39 + dy, p['skin2'])
 
     # Coll i cap
-    c.rect(16, 19 + y0, 19, 21 + y0, p['skin2'])
-    hx = 17.5 if facing != 'L' else 17
-    c.ellipse(hx, 12 + y0, 5, 6.5, p['skin'])
+    s.rect(16, 19, 19, 21, p['skin2'])
+    s.ellipse(17.5 if facing != 'L' else 17, 12, 5, 6.5, p['skin'])
     if facing == 'L':
-        c.px(11, 13 + y0, p['skin'])                         # nas
-        c.px(12, 13 + y0, p['skin'])
-    hair(c, p, facing, y0)
+        s.px(11, 13, p['skin'])  # nas
+        s.px(12, 13, p['skin'])
 
     # Cara
     eye = p['eyes']
     if facing == 'D':
-        c.px(15, 12 + y0, eye)
-        c.px(20, 12 + y0, eye)
-        if p['style'] in ('iri', 'vet'):                      # pestanyes
-            c.px(14, 11 + y0, eye)
-            c.px(21, 11 + y0, eye)
-        if p['style'] == 'mos':                              # llapis d'ulls i barba blanca
+        s.px(15, 12, eye); s.px(20, 12, eye)
+        if p.get('lashes'):
+            s.px(14, 11, eye); s.px(21, 11, eye)
+        if p.get('makeup'):  # llapis d'ulls i barba blanca
             for x in (14, 16, 19, 21):
-                c.px(x, 12 + y0, (60, 30, 70))
-            c.rect(14, 16 + y0, 21, 18 + y0, p['hair'])
-        mouth = (120, 50, 50)
+                s.px(x, 12, (60, 30, 70))
+            s.rect(14, 16, 21, 18, p['hair'])
         if talk:
-            c.rect(17, 15 + y0, 18, 16 + y0, (90, 30, 30))
+            s.rect(17, 15, 18, 16, (90, 30, 30))
         else:
-            c.rect(17, 16 + y0, 18, 16 + y0, mouth)
+            s.rect(17, 16, 18, 16, (120, 50, 50))
     elif facing == 'L':
-        c.px(14, 12 + y0, eye)
-        if p['style'] in ('iri', 'vet'):
-            c.px(13, 11 + y0, eye)
-        if p['style'] == 'mos':
-            c.px(13, 12 + y0, (60, 30, 70))
-            c.rect(13, 16 + y0, 17, 18 + y0, p['hair'])
-        c.rect(13, 16 + y0, 14, 16 + (1 if talk else 0) + y0, (90, 30, 30) if talk else (120, 50, 50))
+        s.px(14, 12, eye)
+        if p.get('lashes'):
+            s.px(13, 11, eye)
+        if p.get('makeup'):
+            s.px(13, 12, (60, 30, 70))
+            s.rect(13, 16, 17, 18, p['hair'])
+        s.rect(13, 16, 14, 16 + (1 if talk else 0), (90, 30, 30) if talk else (120, 50, 50))
 
+    p['hair_fn'](s, p, facing, 'front')
     c.outline()
     return c.img
-
-
-def hair(c, p, facing, y0):
-    h, h2 = p['hair'], p['hair2']
-    if p['style'] == 'iri':
-        if facing == 'U':
-            c.ellipse(17.5, 11 + y0, 5.5, 6.5, h)
-            c.ellipse(17.5, 4 + y0, 2.5, 2.5, h2)                # monyo
-            c.rect(12, 9 + y0, 23, 9 + y0, (200, 160, 60))     # cinta de les ulleres
-        else:
-            c.rect(12, 5 + y0, 23, 8 + y0, h)
-            c.rect(12, 9 + y0, 13, 15 + y0, h)
-            if facing == 'D':
-                c.rect(22, 9 + y0, 23, 15 + y0, h)
-                c.ellipse(17.5, 3 + y0, 2.5, 2.5, h2)              # monyo dalt
-                c.rect(13, 8 + y0, 22, 8 + y0, (200, 160, 60))     # ulleres al front
-                c.rect(14, 7 + y0, 16, 8 + y0, (130, 206, 224))
-                c.rect(19, 7 + y0, 21, 8 + y0, (130, 206, 224))
-            else:
-                c.rect(18, 9 + y0, 23, 15 + y0, h)
-                c.ellipse(22, 5 + y0, 2.5, 2.5, h2)                # monyo darrere
-                c.rect(12, 8 + y0, 18, 8 + y0, (200, 160, 60))
-                c.rect(12, 7 + y0, 14, 8 + y0, (130, 206, 224))
-    elif p['style'] == 'vet':
-        top = 5 + y0
-        c.rect(12, top, 23, top + 3, h)
-        for x in (13, 16, 19, 22):                             # punxes
-            c.px(x, top - 1, h)
-            c.px(x + 1, top - 2, h)
-        if facing == 'U':
-            c.ellipse(17.5, 11 + y0, 5.5, 6.5, h2)               # clatell rapat
-            c.rect(12, top, 23, top + 3, h)
-        else:
-            c.rect(12, top + 4, 12, top + 7, h2)                # laterals rapats
-            if facing == 'D':
-                c.rect(23, top + 4, 23, top + 7, h2)
-                c.rect(14, top + 4, 17, top + 4, h)              # serrell
-            else:
-                c.rect(19, top + 4, 23, top + 8, h2)
-    else:  # mos: calb, cabells blancs als costats
-        if facing == 'U':
-            c.ellipse(17.5, 12 + y0, 5.5, 6, h2)
-            c.ellipse(17.5, 9 + y0, 4, 3.5, p['skin'])
-        else:
-            c.rect(12, 9 + y0, 13, 14 + y0, h)
-            if facing == 'D':
-                c.rect(22, 9 + y0, 23, 14 + y0, h)
-            else:
-                c.rect(18, 8 + y0, 23, 15 + y0, h)
 
 
 # ─── Cargol (robot) ─────────────────────────────────────────────────────────
