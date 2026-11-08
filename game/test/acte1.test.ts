@@ -202,6 +202,11 @@ describe('Ferro-9 · Acte 1', () => {
     const sortida = p.use('imant_ferro9', 'porta');
     expect(p.room).toBe('gavina_passadis');
     expect(texts(sortida)).toContain("FI DE L'ACTE 1");
+    // La porta queda oberta: es pot tornar a la cel·la i sortir sense imant.
+    p.do('open', 'porta_cella');
+    expect(p.room).toBe('gavina_cella');
+    expect(texts(p.do('open', 'porta'))).not.toContain("FI DE L'ACTE 1");
+    expect(p.room).toBe('gavina_passadis');
     expect(n.state.quests.acte1!.status).toBe('completed');
     expect(n.getVar('sospita_brau')).toBe(1);
     // Cinc enviaments a mà i les quatre notes del muntatge.

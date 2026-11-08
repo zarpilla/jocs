@@ -477,6 +477,31 @@
       "name": "sala.gavina_cella.porta.nom",
       "interactions": [
         {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "porta_cella_oberta"
+          },
+          "goTo": "gavina_passadis"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "porta_cella_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.porta.oberta"
+            }
+          ]
+        },
+        {
           "verb": "use",
           "item": "imant_ferro9",
           "lines": [
@@ -492,6 +517,9 @@
           "effects": [
             {
               "takeItem": "imant_ferro9"
+            },
+            {
+              "setFlag": "porta_cella_oberta"
             }
           ],
           "goTo": "gavina_passadis"

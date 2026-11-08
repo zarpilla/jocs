@@ -47,6 +47,7 @@
         "sap_que_es_temps": false,
         "pany_mirat": false,
         "nota_pany_escrita": false,
+        "porta_cella_oberta": false,
         "acte1_acabat": false,
         "carta_mos_trobada": false,
         "fugida_completada": false,
@@ -1885,6 +1886,31 @@
             "name": "sala.gavina_cella.porta.nom",
             "interactions": [
               {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "flag": "porta_cella_oberta"
+                },
+                "goTo": "gavina_passadis"
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "porta_cella_oberta"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.oberta"
+                  }
+                ]
+              },
+              {
                 "verb": "use",
                 "item": "imant_ferro9",
                 "lines": [
@@ -1900,6 +1926,9 @@
                 "effects": [
                   {
                     "takeItem": "imant_ferro9"
+                  },
+                  {
+                    "setFlag": "porta_cella_oberta"
                   }
                 ],
                 "goTo": "gavina_passadis"
@@ -4053,6 +4082,7 @@
       "sala.gavina_cella.porta.imant2": "Clac! Oberta! Qui sigui que siguis, I., t'estimo.",
       "sala.gavina_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Mos.",
       "sala.gavina_cella.porta.tancada": "Tancada. Si s'obrís empenyent, no seria una presó.",
+      "sala.gavina_cella.porta.oberta": "Oberta. Gràcies a la I. i a un imant de fa cent vint anys.",
       "sala.gavina_cella.porta.nom": "porta de la cel·la",
       "sala.gavina_cella.finestreta.look1": "Per la finestreta es veu la Terra, blava i petita.",
       "sala.gavina_cella.finestreta.look2": "La Gavina dona voltes al planeta com una mosca pesada.",
