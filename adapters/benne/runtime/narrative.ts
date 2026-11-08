@@ -102,10 +102,19 @@ function persist() {
  */
 export function adoptLoadedState() {
   const saved = store.narrativeState;
-  const json = saved ? JSON.stringify(saved) : null;
+  // Sense estat a la partida no hi ha res a adoptar: una partida nova la prepara `ensureStarted`.
+  if (!saved) return;
+  const json = JSON.stringify(saved);
   if (json === persisted) return;
+  console.info('[Ferro-9] Estat narratiu adoptat de la partida', describeState(saved));
   persisted = json;
   narrative.load(saved);
+}
+
+/** Resum curt d'un estat narratiu per als missatges de la consola. */
+function describeState(state: unknown) {
+  const flags = ((state as { flags?: Record<string, boolean> })?.flags ?? {});
+  return Object.keys(flags).filter((f) => flags[f]).join(', ') || '(cap flag)';
 }
 
 narrative.on((e) => {
@@ -163,6 +172,7 @@ events.on('gameState:replaced', () => {
 /** Partida nova: reparteix els inventaris inicials (game.json → start). Només la primera vegada. */
 export function ensureStarted() {
   if (store.started) return;
+  console.info('[Ferro-9] Partida nova: estat narratiu inicial i inventaris inicials');
   store.started = true;
   store.resolucio = RESOLUCIO;
   narrative.newGame();
