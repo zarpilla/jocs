@@ -84,10 +84,33 @@ const store = defineVars({
   protagonistRooms: {} as VarValue,
 });
 
+/** L'últim estat narratiu que hem desat a la partida (en JSON), per saber si algú l'ha substituït. */
+let persisted: string | null = null;
+
+function persist() {
+  const snapshot = narrative.snapshot();
+  store.narrativeState = snapshot as unknown as VarValue;
+  persisted = JSON.stringify(snapshot);
+}
+
+/**
+ * Si la partida porta un estat narratiu que no és el que hi hem desat (s'ha carregat una partida o
+ * se n'ha començat una de nova), el carrega. Cal fer-ho abans de reaccionar a qualsevol canvi:
+ * en carregar, Benne avisa del canvi de sala i d'inventari abans que de `gameState:replaced`, i
+ * si llavors reavaluéssim el món amb l'estat vell, el desaríem damunt del carregat.
+ */
+function adoptLoadedState() {
+  const saved = store.narrativeState;
+  const json = saved ? JSON.stringify(saved) : null;
+  if (json === persisted) return;
+  persisted = json;
+  narrative.load(saved);
+}
+
 narrative.on((e) => {
   switch (e.type) {
     case 'stateChanged':
-      store.narrativeState = narrative.snapshot() as unknown as VarValue;
+      persist();
       applyHotspotVisibility();
       applyAppearances();
       break;
@@ -108,7 +131,7 @@ narrative.on((e) => {
 
 // Partida carregada (o nova: aleshores l'estat és buit i `ensureStarted` la prepara en entrar a la primera sala).
 events.on('gameState:replaced', () => {
-  if (store.narrativeState) narrative.load(store.narrativeState);
+  adoptLoadedState();
   applyLocalizedNames();
 });
 
@@ -138,9 +161,13 @@ export function rememberProtagonistRoom(who: string, room: string) {
   store.protagonistRooms = { ...((store.protagonistRooms ?? {}) as Record<string, string>), [who]: room };
 }
 // Canvis al món que poden completar missions o mostrar coses.
-events.on('gameState:inventoryChanged', () => narrative.worldChanged());
+events.on('gameState:inventoryChanged', () => {
+  adoptLoadedState();
+  narrative.worldChanged();
+});
 events.on('gameState:roomContextChanged', () => {
   boundHotspots = {};
+  adoptLoadedState();
   narrative.worldChanged();
 });
 
