@@ -301,6 +301,46 @@
         "y": 74
       },
       "description": "serra"
+    },
+    {
+      "id": "llima",
+      "tag": "llima",
+      "animations": {
+        "llima": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 316,
+            "y": 76
+          },
+          {
+            "x": 330,
+            "y": 76
+          },
+          {
+            "x": 330,
+            "y": 109
+          },
+          {
+            "x": 316,
+            "y": 109
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 317,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 323,
+        "y": 109
+      },
+      "description": "llima"
     }
   ],
   "characters": [

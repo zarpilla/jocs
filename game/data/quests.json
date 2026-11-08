@@ -102,6 +102,20 @@
         }
       },
       {
+        "id": "molla",
+        "text": "mis.acte2.obj.molla",
+        "completeWhen": {
+          "flag": "molla_afinada"
+        }
+      },
+      {
+        "id": "diapaso",
+        "text": "mis.acte2.obj.diapaso",
+        "completeWhen": {
+          "flag": "pany_sonic_obert"
+        }
+      },
+      {
         "id": "components",
         "text": "mis.acte2.obj.components",
         "completeWhen": {

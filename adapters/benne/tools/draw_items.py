@@ -328,12 +328,41 @@ def pols_rovell(c):
     c.px(9, 15, (130, 70, 40)); c.px(27, 15, (130, 70, 40))
 
 
+
+def molla(c):
+    for i, x in enumerate(range(9, 27, 3)):
+        c.ellipse(x + 1, 10, 1.6, 5, (180, 186, 196))
+        c.ellipse(x + 1, 10, 0.6, 4, (0, 0, 0, 0))
+    c.rect(5, 9, 8, 10, (180, 186, 196)); c.rect(28, 9, 31, 10, (180, 186, 196))
+
+
+def llima(c):
+    c.rect(6, 9, 24, 11, (170, 176, 186))
+    for x in range(7, 24, 2):
+        c.px(x, 10, (120, 126, 136))
+    c.rect(24, 8, 31, 12, (120, 70, 40))
+
+
+def diapaso(c):
+    c.rect(8, 7, 22, 8, F9); c.rect(8, 12, 22, 13, F9)       # les dues branques
+    c.rect(22, 7, 24, 13, F9)
+    c.rect(24, 9, 31, 11, (120, 150, 180))                  # mànec
+    c.px(12, 7, F9b); c.px(16, 12, F9b)
+
+
+def diapaso_espatllat(c):
+    diapaso(c)
+    c.rect(8, 7, 11, 8, (0, 0, 0, 0)); c.rect(8, 12, 12, 13, (0, 0, 0, 0))  # puntes llimades de més
+    for x, y in ((5, 5), (4, 9), (5, 15)):
+        c.px(x, y, (255, 240, 120))                         # xiulet
+
+
 ICONS = {f.__name__: f for f in (
     clau_anglesa, formulari_27b, formulari_segellat, formulari_triplicat, plomall, segell, clau_cambra,
     llapis, llibreta_torn, caixa_eines, imant_ferro9, nota_iri, avis_reciclatge, llapis_ulls, nota_vet,
     fullet_reeducacio, nota_pany, escarabat, sopa,
     tros_cartell, nota_mida, biga_acer, biga_ferro9, serra, tram_biga_1, tram_biga_2, tram_biga_3, biga_muntada,
-    nota_amagatall, pols_rovell,
+    nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat,
 )}
 
 

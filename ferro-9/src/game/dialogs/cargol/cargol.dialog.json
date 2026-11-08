@@ -17,6 +17,13 @@
       "say": false
     },
     {
+      "id": "menu__diapaso",
+      "scriptName": "menu__diapaso",
+      "text": "Necessito un diapasó de ferro-9.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__dia",
       "scriptName": "menu__dia",
       "text": "Com estàs, Cargol?",

@@ -372,6 +372,39 @@
           ]
         }
       ]
+    },
+    "llima": {
+      "name": "sala.fabrica_moll.llima.nom",
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llima.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "llima"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llima.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "hasItem": "llima",
+        "who": "iri",
+        "is": false
+      }
     }
   }
 }

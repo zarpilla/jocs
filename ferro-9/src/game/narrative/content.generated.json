@@ -69,7 +69,13 @@
         "iri_sap_rovell": false,
         "biga_muntada_feta": false,
         "comporta_oberta": false,
-        "components_complets": false
+        "components_complets": false,
+        "pany_sonic_sentit": false,
+        "molla_agafada": false,
+        "molla_afinada": false,
+        "iri_sap_diapaso": false,
+        "diapaso_afinat": false,
+        "pany_sonic_obert": false
       },
       "vars": {
         "finestra_armada": "",
@@ -79,7 +85,9 @@
         "transferencies": 0,
         "sospita_brau": 0,
         "dies_reciclatge": 3,
-        "biga_amagada": ""
+        "biga_amagada": "",
+        "molla_tensio": 1,
+        "diapaso_to": 0
       }
     },
     "characters": {
@@ -95,7 +103,8 @@
         "facts": [
           "formulari_acceptat",
           "preguntat_pel_dia",
-          "triplicat_acceptat"
+          "triplicat_acceptat",
+          "diapaso_lliurat"
         ],
         "relation": {
           "initial": 0,
@@ -1078,6 +1087,272 @@
             ]
           }
         ]
+      },
+      "molla": {
+        "name": "obj.molla.nom",
+        "description": "obj.molla.desc",
+        "props": {
+          "pes": 0.05
+        },
+        "interactions": [
+          {
+            "verb": [
+              "pull",
+              "push"
+            ],
+            "if": {
+              "flag": "molla_afinada"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.molla.quieta"
+              }
+            ]
+          },
+          {
+            "verb": "pull",
+            "if": {
+              "var": "molla_tensio",
+              "op": ">=",
+              "value": 5
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.molla.trencar"
+              }
+            ]
+          },
+          {
+            "verb": "pull",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.molla.estirar"
+              }
+            ],
+            "effects": [
+              {
+                "addVar": "molla_tensio",
+                "amount": 1
+              }
+            ]
+          },
+          {
+            "verb": "push",
+            "if": {
+              "var": "molla_tensio",
+              "op": "<=",
+              "value": 0
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.molla.massa"
+              }
+            ]
+          },
+          {
+            "verb": "push",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.molla.arronsar"
+              }
+            ],
+            "effects": [
+              {
+                "addVar": "molla_tensio",
+                "amount": -1
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "if": {
+              "all": [
+                {
+                  "protagonist": "iri"
+                },
+                {
+                  "flag": "molla_afinada"
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.molla.etiqueta"
+              },
+              {
+                "who": "player",
+                "text": "obj.molla.iri"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "iri_sap_diapaso"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "if": {
+              "flag": "molla_afinada"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.molla.afinada"
+              }
+            ]
+          }
+        ]
+      },
+      "llima": {
+        "name": "obj.llima.nom",
+        "description": "obj.llima.desc",
+        "props": {
+          "pes": 0.3
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "diapaso",
+            "if": {
+              "any": [
+                {
+                  "var": "diapaso_to",
+                  "op": ">=",
+                  "value": 2
+                },
+                {
+                  "flag": "diapaso_afinat"
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llima.passat1"
+              },
+              {
+                "who": "player",
+                "text": "obj.llima.passat2"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "diapaso"
+              },
+              {
+                "giveItem": "diapaso_espatllat"
+              },
+              {
+                "setFlag": "diapaso_afinat",
+                "value": false
+              },
+              {
+                "setVar": "diapaso_to",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "diapaso",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llima.llimar"
+              }
+            ],
+            "effects": [
+              {
+                "addVar": "diapaso_to",
+                "amount": 1
+              }
+            ]
+          }
+        ]
+      },
+      "diapaso": {
+        "name": "obj.diapaso.nom",
+        "description": "obj.diapaso.desc",
+        "props": {
+          "pes": 0.2,
+          "material": "ferro9"
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "molla",
+            "if": {
+              "flag": "diapaso_afinat"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.diapaso.ja"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "molla",
+            "if": {
+              "var": "diapaso_to",
+              "op": "<",
+              "value": 2
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.diapaso.greu"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "molla",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.diapaso.igual1"
+              },
+              {
+                "who": "player",
+                "text": "obj.diapaso.igual2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "diapaso_afinat"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "if": {
+              "flag": "diapaso_afinat"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.diapaso.look_afinat"
+              }
+            ]
+          }
+        ]
+      },
+      "diapaso_espatllat": {
+        "name": "obj.diapaso_espatllat.nom",
+        "description": "obj.diapaso_espatllat.desc",
+        "props": {
+          "pes": 0.2,
+          "material": "ferro9"
+        }
       }
     },
     "rooms": {
@@ -2250,6 +2525,39 @@
                 ]
               }
             ]
+          },
+          "llima": {
+            "name": "sala.fabrica_moll.llima.nom",
+            "interactions": [
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llima.agafar"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "llima"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llima.look"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "hasItem": "llima",
+              "who": "iri",
+              "is": false
+            }
           }
         }
       },
@@ -2650,6 +2958,34 @@
           "llitera": {
             "name": "sala.gavina_cella.llitera.nom",
             "interactions": [
+              {
+                "verb": "pickUp",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "pany_sonic_sentit"
+                    },
+                    {
+                      "flag": "molla_agafada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.llitera.molla"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "molla_agafada"
+                  },
+                  {
+                    "giveItem": "molla"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -3320,30 +3656,175 @@
             "interactions": [
               {
                 "verb": "look",
+                "if": {
+                  "flag": "pany_sonic_obert"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.oberta"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "diapaso",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "diapaso_afinat"
+                    },
+                    {
+                      "flag": "pany_sonic_obert",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.obrir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.obrir2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_hangar.llancadora.obrir3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.obrir4"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_hangar.llancadora.obrir5"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "diapaso"
+                  },
+                  {
+                    "setFlag": "pany_sonic_obert"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "diapaso",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.diapaso_no"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "molla",
+                "if": {
+                  "flag": "molla_afinada"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.molla_ja"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "molla",
+                "if": {
+                  "var": "molla_tensio",
+                  "op": "<",
+                  "value": 3
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.molla_greu"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "molla",
+                "if": {
+                  "var": "molla_tensio",
+                  "op": ">",
+                  "value": 3
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.molla_aguda"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "molla",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.molla_igual1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.molla_igual2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "molla_afinada"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use",
+                  "pull",
+                  "open"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.tocar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.tocar2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "pany_sonic_sentit"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.llancadora.look"
                   }
                 ]
-              },
-              {
-                "verb": [
-                  "open",
-                  "use",
-                  "push",
-                  "pull"
-                ],
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.tocar"
-                  }
-                ]
               }
             ],
             "visibleIf": {
               "flag": "comporta_oberta"
+            }
+          }
+        },
+        "decor": {
+          "porta_llancadora": {
+            "visibleIf": {
+              "flag": "pany_sonic_obert"
             }
           }
         }
@@ -3577,6 +4058,20 @@
             "text": "mis.acte2.obj.comporta",
             "completeWhen": {
               "flag": "comporta_oberta"
+            }
+          },
+          {
+            "id": "molla",
+            "text": "mis.acte2.obj.molla",
+            "completeWhen": {
+              "flag": "molla_afinada"
+            }
+          },
+          {
+            "id": "diapaso",
+            "text": "mis.acte2.obj.diapaso",
+            "completeWhen": {
+              "flag": "pany_sonic_obert"
             }
           },
           {
@@ -4045,6 +4540,30 @@
           "pista.vet_pany.1",
           "pista.vet_pany.2",
           "pista.vet_pany.3"
+        ]
+      },
+      "vet_pany_sonic": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "comporta_oberta"
+            },
+            {
+              "flag": "pany_sonic_sentit",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "pany_sonic_sentit"
+        },
+        "levels": [
+          "pista.vet_pany_sonic.1",
+          "pista.vet_pany_sonic.2"
         ]
       },
       "iri_imant": {
@@ -4877,6 +5396,370 @@
           "pista.iri_esperar_a2.1",
           "pista.iri_esperar_a2.2"
         ]
+      },
+      "vet_molla": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "pany_sonic_sentit"
+            },
+            {
+              "flag": "molla_agafada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "molla_agafada"
+        },
+        "levels": [
+          "pista.vet_molla.1",
+          "pista.vet_molla.2",
+          "pista.vet_molla.3"
+        ]
+      },
+      "vet_afinar": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "molla",
+              "who": "vet"
+            },
+            {
+              "flag": "molla_afinada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "molla_afinada"
+        },
+        "levels": [
+          "pista.vet_afinar.1",
+          "pista.vet_afinar.2",
+          "pista.vet_afinar.3"
+        ]
+      },
+      "vet_enviar_molla": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "molla",
+              "who": "vet"
+            },
+            {
+              "flag": "molla_afinada"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "molla",
+          "who": "vet",
+          "is": false
+        },
+        "levels": [
+          "pista.vet_enviar_molla.1",
+          "pista.vet_enviar_molla.2"
+        ]
+      },
+      "iri_llegir_molla": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "molla",
+              "who": "iri"
+            },
+            {
+              "flag": "iri_sap_diapaso",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "iri_sap_diapaso"
+        },
+        "levels": [
+          "pista.iri_llegir_molla.1",
+          "pista.iri_llegir_molla.2"
+        ]
+      },
+      "iri_diapaso": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "iri_sap_diapaso"
+            },
+            {
+              "flag": "pany_sonic_obert",
+              "is": false
+            },
+            {
+              "all": [
+                {
+                  "hasItem": "diapaso",
+                  "who": "iri",
+                  "is": false
+                },
+                {
+                  "hasItem": "diapaso",
+                  "who": "vet",
+                  "is": false
+                },
+                {
+                  "hasItem": "diapaso_espatllat",
+                  "who": "iri",
+                  "is": false
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "all": [
+              {
+                "flag": "pany_sonic_obert",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "diapaso",
+                    "who": "iri",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "diapaso",
+                    "who": "vet",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "diapaso_espatllat",
+                    "who": "iri",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.iri_diapaso.1",
+          "pista.iri_diapaso.2",
+          "pista.iri_diapaso.3"
+        ]
+      },
+      "iri_afinar": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "diapaso",
+              "who": "iri"
+            },
+            {
+              "flag": "diapaso_afinat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "diapaso_afinat"
+            },
+            {
+              "hasItem": "diapaso",
+              "who": "iri",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_afinar.1",
+          "pista.iri_afinar.2",
+          "pista.iri_afinar.3"
+        ]
+      },
+      "iri_espatllat": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "diapaso_espatllat",
+              "who": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "diapaso_espatllat",
+          "who": "iri",
+          "is": false
+        },
+        "levels": [
+          "pista.iri_espatllat.1",
+          "pista.iri_espatllat.2"
+        ]
+      },
+      "iri_enviar_diapaso": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "diapaso",
+              "who": "iri"
+            },
+            {
+              "flag": "diapaso_afinat"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "diapaso",
+          "who": "iri",
+          "is": false
+        },
+        "levels": [
+          "pista.iri_enviar_diapaso.1",
+          "pista.iri_enviar_diapaso.2"
+        ]
+      },
+      "vet_obrir_pany": {
+        "priority": 7,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "diapaso",
+              "who": "vet"
+            },
+            {
+              "flag": "pany_sonic_obert",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "hasItem": "diapaso",
+              "who": "vet",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_obrir_pany.1",
+          "pista.vet_obrir_pany.2"
+        ]
+      },
+      "vet_esperar_diapaso": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "molla_afinada"
+            },
+            {
+              "hasItem": "molla",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "flag": "pany_sonic_obert",
+              "is": false
+            },
+            {
+              "hasItem": "diapaso",
+              "who": "vet",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "pany_sonic_obert"
+        },
+        "levels": [
+          "pista.vet_esperar_diapaso.1",
+          "pista.vet_esperar_diapaso.2"
+        ]
+      },
+      "iri_esperar_diapaso": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "comporta_oberta"
+            },
+            {
+              "flag": "pany_sonic_obert",
+              "is": false
+            },
+            {
+              "flag": "iri_sap_diapaso",
+              "is": false
+            },
+            {
+              "hasItem": "molla",
+              "who": "iri",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "flag": "iri_sap_diapaso"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_esperar_diapaso.1",
+          "pista.iri_esperar_diapaso.2"
+        ]
       }
     },
     "endings": {
@@ -5010,6 +5893,32 @@
                     },
                     {
                       "flag": "acte1_acabat",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "diapaso",
+                "text": "dlg.cargol.opt.diapaso",
+                "next": "diapaso",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "iri_sap_diapaso"
+                    },
+                    {
+                      "flag": "pany_sonic_obert",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "diapaso",
+                      "who": "iri",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "diapaso",
+                      "who": "vet",
                       "is": false
                     }
                   ]
@@ -5238,6 +6147,64 @@
                 "text": "dlg.cargol.adeu"
               }
             ]
+          },
+          "diapaso": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.diapaso_altre",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "formulari_triplicat"
+                    },
+                    {
+                      "remembers": {
+                        "who": "cargol",
+                        "fact": "diapaso_lliurat"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.diapaso_ok",
+                "if": {
+                  "hasItem": "formulari_triplicat"
+                },
+                "effects": [
+                  {
+                    "takeItem": "formulari_triplicat"
+                  },
+                  {
+                    "takeItem": "diapaso_espatllat"
+                  },
+                  {
+                    "giveItem": "diapaso"
+                  },
+                  {
+                    "setVar": "diapaso_to",
+                    "value": 0
+                  },
+                  {
+                    "remember": {
+                      "who": "cargol",
+                      "fact": "diapaso_lliurat"
+                    }
+                  }
+                ]
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.imant_falta",
+                "if": {
+                  "hasItem": "formulari_triplicat",
+                  "is": false
+                }
+              }
+            ],
+            "goto": "menu"
           }
         }
       },
@@ -5781,6 +6748,9 @@
       "dlg.mos.insultat1": "Això ho recordaré, nena. Tinc vint anys de temps lliure per recordar-ho.",
       "dlg.mos.perdo1": "Mmm. Acceptat. Però que no es repeteixi, que soc sensible.",
       "dlg.mos.adeu": "Res, res. Com la meva vida.",
+      "dlg.cargol.opt.diapaso": "Necessito un diapasó de ferro-9.",
+      "dlg.cargol.diapaso_altre": "Un altre diapasó, senyora Iri? El d'abans xiulava, oi? Ho he sentit des d'aquí.",
+      "dlg.cargol.diapaso_ok": "Diapasó de ferro-9, la 440. Formulari arxivat. Que soni bé!",
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar.",
       "final.veritat.titol": "La veritat a temps",
@@ -5871,6 +6841,8 @@
       "mis.acte2.obj.mida": "Iri: entén quina palanca necessita la V.",
       "mis.acte2.obj.comporta": "Vet: obre la comporta de l'hangar",
       "mis.acte2.obj.components": "Totes dues: aconsegueix les tres peces de la llançadora",
+      "mis.acte2.obj.molla": "Vet: fes arribar la nota del pany a la I.",
+      "mis.acte2.obj.diapaso": "Vet: obre el pany sònic de la llançadora",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
       "obj.clau_anglesa.vet1": "Una clau anglesa reluent, com acabada de fer. Porta un segell: «Aldaia · Ferro-9 · Lot 1».",
@@ -5978,6 +6950,30 @@
       "obj.llapis_ulls.cartell_aviat": "Podria escriure-hi. Però què? Primer he de saber què necessito.",
       "obj.llapis.amagatall1": "Li he de dir on mirar, o cent vint anys d'espera no serviran de res.",
       "obj.llapis.amagatall2": "Arrenco un full i hi apunto el pilar 7.",
+      "obj.molla.quieta": "Ara que sona com el pany, no la toco ni per riure.",
+      "obj.molla.trencar": "Si l'estiro més, es trenca.",
+      "obj.molla.estirar": "L'estiro una mica.",
+      "obj.molla.massa": "Més arronsada no pot estar.",
+      "obj.molla.arronsar": "L'arronso una mica.",
+      "obj.molla.etiqueta": "Una molla de llit, amb una tira de tela lligada: «I.: fes-me una cosa de ferro-9 que soni EXACTAMENT com aquesta molla. És per obrir un pany. No la toquis, que està afinada. —V.»",
+      "obj.molla.iri": "Una nota dins d'una molla. Necessito un diapasó de ferro-9 que soni igual.",
+      "obj.molla.afinada": "La molla afinada, amb el missatge per a la I.",
+      "obj.molla.nom": "molla",
+      "obj.molla.desc": "Una molla de la llitera.",
+      "obj.llima.passat1": "Una passada més, per si de cas...",
+      "obj.llima.passat2": "Massa! Ara xiula com una tetera. Aquest diapasó ja no serveix.",
+      "obj.llima.llimar": "Llimo les puntes amb compte. Ara sona una mica més agut.",
+      "obj.llima.nom": "llima",
+      "obj.llima.desc": "Una llima fina. Per afinar coses.",
+      "obj.diapaso.ja": "El diapasó i la molla ja sonen igual.",
+      "obj.diapaso.greu": "Toco el diapasó i la molla. El diapasó és més greu.",
+      "obj.diapaso.igual1": "Toco el diapasó i la molla... la mateixa nota.",
+      "obj.diapaso.igual2": "Afinat. Que no se m'acudeixi tornar-lo a llimar.",
+      "obj.diapaso.look_afinat": "Un diapasó de ferro-9, afinat com la molla de la V.",
+      "obj.diapaso.nom": "diapasó",
+      "obj.diapaso.desc": "Un diapasó de ferro-9.",
+      "obj.diapaso_espatllat.nom": "diapasó espatllat",
+      "obj.diapaso_espatllat.desc": "Un diapasó de ferro-9 llimat de més. Xiula com una tetera.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -6071,6 +7067,34 @@
       "pista.vet_esperar_a2.2": "Canvia a l'Iri.",
       "pista.iri_esperar_a2.1": "Què deu necessitar, la V.?",
       "pista.iri_esperar_a2.2": "Canvia a la Vet.",
+      "pista.vet_molla.1": "El so no passa per la finestra. Però una cosa que faci el mateix so, sí.",
+      "pista.vet_molla.2": "Alguna cosa que vibri... Les lliteres tenen molles.",
+      "pista.vet_molla.3": "Agafa una molla de la llitera de la cel·la.",
+      "pista.vet_afinar.1": "La molla ha de sonar igual que el pany.",
+      "pista.vet_afinar.2": "Prova-la amb el pany. Si cal, estira-la o arronsa-la.",
+      "pista.vet_afinar.3": "Fes servir la molla amb la llançadora per comparar-les. «Estira» la tiba i «Empeny» l'arronsa.",
+      "pista.vet_enviar_molla.1": "La molla afinada ha d'arribar a la I.",
+      "pista.vet_enviar_molla.2": "Fes servir la molla amb el panell de la cel·la.",
+      "pista.iri_llegir_molla.1": "M'ha arribat una molla. Amb una etiqueta.",
+      "pista.iri_llegir_molla.2": "Mira la molla de l'inventari.",
+      "pista.iri_diapaso.1": "Per fer un diapasó de ferro-9, primer necessito ferro-9.",
+      "pista.iri_diapaso.2": "El Cargol en té. Amb paperassa, és clar.",
+      "pista.iri_diapaso.3": "Segella un formulari per triplicat i demana-li un diapasó al Cargol.",
+      "pista.iri_afinar.1": "Ha de sonar com la molla de la V.",
+      "pista.iri_afinar.2": "Llima'l a poc a poc i compara'l amb la molla cada vegada.",
+      "pista.iri_afinar.3": "La llima és al tauler d'eines del moll. Llima el diapasó i fes-lo servir amb la molla per comparar.",
+      "pista.iri_espatllat.1": "M'he passat de llima. Necessito un altre diapasó.",
+      "pista.iri_espatllat.2": "Un altre formulari per triplicat, i cap al Cargol.",
+      "pista.iri_enviar_diapaso.1": "El diapasó ha d'arribar a la V.",
+      "pista.iri_enviar_diapaso.2": "Posa el diapasó dins la cambra.",
+      "pista.vet_obrir_pany.1": "Un diapasó. Per al pany.",
+      "pista.vet_obrir_pany.2": "Fes servir el diapasó amb la llançadora.",
+      "pista.vet_esperar_diapaso.1": "La I. hi està treballant.",
+      "pista.vet_esperar_diapaso.2": "Canvia a l'Iri.",
+      "pista.iri_esperar_diapaso.1": "Què deu necessitar, ara, la V.?",
+      "pista.iri_esperar_diapaso.2": "Canvia a la Vet.",
+      "pista.vet_pany_sonic.1": "La llançadora té un pany ben estrany.",
+      "pista.vet_pany_sonic.2": "Toca el pany de la llançadora.",
       "sala.fabrica_calderes.capatas.look1": "El capatàs Pruna. Dorm abraçat al segell oficial com si fos un osset de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
       "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Pruna?",
@@ -6239,7 +7263,7 @@
       "sala.gavina_hangar.comporta.obrir1": "Amunt... amunt... AMUNT!",
       "sala.gavina_hangar.comporta.obrir2": "La comporta puja amb un gemec de cent vint anys.",
       "sala.gavina_hangar.comporta.obrir3": "I aquí la tenim: la llançadora de càrrega.",
-      "sala.gavina_hangar.comporta.obrir4": "Li falten peces. Tres, si no compto malament. Bé, I., tenim feina.",
+      "sala.gavina_hangar.comporta.obrir4": "La porta té un pany estrany i el motor sembla mort. Bé, I., tenim feina.",
       "sala.gavina_hangar.comporta.obrir5": "FI DE LA PRIMERA PART DE L'ACTE 2",
       "sala.gavina_hangar.porta_passadis.nom": "passadís",
       "sala.gavina_hangar.comporta.nom": "comporta",
@@ -6264,14 +7288,31 @@
       "sala.gavina_hangar.placa.look_pilar": "La placa del costat del pilar 7. La de la nota de la I.",
       "sala.gavina_hangar.placa.look": "Plaques del terra, cargolades. Totes iguals.",
       "sala.gavina_hangar.llancadora.nom": "llançadora",
-      "sala.gavina_hangar.llancadora.look": "La llançadora de càrrega. Vella, coberta de pols i amb tres forats on hi hauria d'haver peces.",
-      "sala.gavina_hangar.llancadora.tocar": "Sense les tres peces no anirà enlloc. I jo tampoc.",
+      "sala.gavina_hangar.llancadora.look": "La llançadora de càrrega. Vella, coberta de pols. La porta té un pany estrany, sense forat per a cap clau.",
       "sala.fabrica_calderes.porta_moll.nom": "moll de càrrega",
       "sala.gavina_passadis.porta_hangar.nom": "porta del fons",
       "sala.gavina_passadis.cartell.agafar": "N'arrenco un tros del marge. Per darrere és blanc: paper de primera.",
       "sala.gavina_passadis.cartell.prou": "Ja n'he arrencat un tros. Si n'arrenco més, es veurà.",
       "sala.gavina_cella.panell.recuperar1": "Ara que la cambra de la I. ho sincronitza tot sola, ja no cal la palanca.",
-      "sala.gavina_cella.panell.recuperar2": "Recupero la clau anglesa."
+      "sala.gavina_cella.panell.recuperar2": "Recupero la clau anglesa.",
+      "sala.gavina_hangar.llancadora.obrir1": "Toco el diapasó i l'acosto al pany...",
+      "sala.gavina_hangar.llancadora.obrir2": "El pany respon amb la mateixa nota. Clac!",
+      "sala.gavina_hangar.llancadora.obrir3": "La porta de la llançadora s'obre per primera vegada en cent vint anys.",
+      "sala.gavina_hangar.llancadora.obrir4": "A dins, tot és mort. El motor no té pressió. Ni una mica.",
+      "sala.gavina_hangar.llancadora.obrir5": "FI DE LA SEGONA PART DE L'ACTE 2",
+      "sala.gavina_hangar.llancadora.oberta": "La llançadora, amb la porta oberta. El motor és mort: sense pressió no anirà enlloc.",
+      "sala.gavina_hangar.llancadora.diapaso_no": "El toco davant del pany... i res. No és ben bé la mateixa nota.",
+      "sala.gavina_hangar.llancadora.molla_ja": "La molla i el pany ja canten igual.",
+      "sala.gavina_hangar.llancadora.molla_greu": "La molla fa «nnng»... més greu que el pany.",
+      "sala.gavina_hangar.llancadora.molla_aguda": "La molla fa «niiing»... més aguda que el pany.",
+      "sala.gavina_hangar.llancadora.molla_igual1": "Igual! La molla i el pany fan exactament la mateixa nota.",
+      "sala.gavina_hangar.llancadora.molla_igual2": "Hi lligo una tira de la granota amb un missatge, escrit amb el llapis d'ulls.",
+      "sala.gavina_hangar.llancadora.tocar1": "Toco el pany. Fa «nnnnng». Una nota llarga, neta.",
+      "sala.gavina_hangar.llancadora.tocar2": "Un pany sònic: s'obre amb la mateixa nota. I jo no sé ni què és una nota.",
+      "sala.gavina_cella.llitera.molla": "Arrenco una molla de la llitera. En Mos ni se n'adona: ronca.",
+      "sala.fabrica_moll.llima.nom": "llima",
+      "sala.fabrica_moll.llima.agafar": "Una llima fina. Per afinar coses.",
+      "sala.fabrica_moll.llima.look": "Una llima fina, al tauler d'eines."
     }
   },
   "locale": "ca"

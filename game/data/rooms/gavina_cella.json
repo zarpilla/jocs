@@ -397,6 +397,34 @@
       "name": "sala.gavina_cella.llitera.nom",
       "interactions": [
         {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "pany_sonic_sentit"
+              },
+              {
+                "flag": "molla_agafada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.llitera.molla"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "molla_agafada"
+            },
+            {
+              "giveItem": "molla"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "flag": "fullet_agafat",

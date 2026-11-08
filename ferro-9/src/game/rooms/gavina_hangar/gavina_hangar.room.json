@@ -221,6 +221,17 @@
         "y": 142
       },
       "description": "llançadora"
+    },
+    {
+      "id": "porta_llancadora",
+      "tag": "porta_llancadora",
+      "animations": {
+        "porta_llancadora": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

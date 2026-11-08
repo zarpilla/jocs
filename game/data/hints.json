@@ -457,6 +457,30 @@
       "pista.vet_pany.3"
     ]
   },
+  "vet_pany_sonic": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "comporta_oberta"
+        },
+        {
+          "flag": "pany_sonic_sentit",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pany_sonic_sentit"
+    },
+    "levels": [
+      "pista.vet_pany_sonic.1",
+      "pista.vet_pany_sonic.2"
+    ]
+  },
   "iri_imant": {
     "priority": 4,
     "when": {
@@ -1286,6 +1310,370 @@
     "levels": [
       "pista.iri_esperar_a2.1",
       "pista.iri_esperar_a2.2"
+    ]
+  },
+  "vet_molla": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "pany_sonic_sentit"
+        },
+        {
+          "flag": "molla_agafada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "molla_agafada"
+    },
+    "levels": [
+      "pista.vet_molla.1",
+      "pista.vet_molla.2",
+      "pista.vet_molla.3"
+    ]
+  },
+  "vet_afinar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "molla",
+          "who": "vet"
+        },
+        {
+          "flag": "molla_afinada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "molla_afinada"
+    },
+    "levels": [
+      "pista.vet_afinar.1",
+      "pista.vet_afinar.2",
+      "pista.vet_afinar.3"
+    ]
+  },
+  "vet_enviar_molla": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "molla",
+          "who": "vet"
+        },
+        {
+          "flag": "molla_afinada"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "molla",
+      "who": "vet",
+      "is": false
+    },
+    "levels": [
+      "pista.vet_enviar_molla.1",
+      "pista.vet_enviar_molla.2"
+    ]
+  },
+  "iri_llegir_molla": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "molla",
+          "who": "iri"
+        },
+        {
+          "flag": "iri_sap_diapaso",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_sap_diapaso"
+    },
+    "levels": [
+      "pista.iri_llegir_molla.1",
+      "pista.iri_llegir_molla.2"
+    ]
+  },
+  "iri_diapaso": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "iri_sap_diapaso"
+        },
+        {
+          "flag": "pany_sonic_obert",
+          "is": false
+        },
+        {
+          "all": [
+            {
+              "hasItem": "diapaso",
+              "who": "iri",
+              "is": false
+            },
+            {
+              "hasItem": "diapaso",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "hasItem": "diapaso_espatllat",
+              "who": "iri",
+              "is": false
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "all": [
+          {
+            "flag": "pany_sonic_obert",
+            "is": false
+          },
+          {
+            "all": [
+              {
+                "hasItem": "diapaso",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "hasItem": "diapaso",
+                "who": "vet",
+                "is": false
+              },
+              {
+                "hasItem": "diapaso_espatllat",
+                "who": "iri",
+                "is": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "levels": [
+      "pista.iri_diapaso.1",
+      "pista.iri_diapaso.2",
+      "pista.iri_diapaso.3"
+    ]
+  },
+  "iri_afinar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "diapaso",
+          "who": "iri"
+        },
+        {
+          "flag": "diapaso_afinat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "diapaso_afinat"
+        },
+        {
+          "hasItem": "diapaso",
+          "who": "iri",
+          "is": false
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_afinar.1",
+      "pista.iri_afinar.2",
+      "pista.iri_afinar.3"
+    ]
+  },
+  "iri_espatllat": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "diapaso_espatllat",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "diapaso_espatllat",
+      "who": "iri",
+      "is": false
+    },
+    "levels": [
+      "pista.iri_espatllat.1",
+      "pista.iri_espatllat.2"
+    ]
+  },
+  "iri_enviar_diapaso": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "diapaso",
+          "who": "iri"
+        },
+        {
+          "flag": "diapaso_afinat"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "diapaso",
+      "who": "iri",
+      "is": false
+    },
+    "levels": [
+      "pista.iri_enviar_diapaso.1",
+      "pista.iri_enviar_diapaso.2"
+    ]
+  },
+  "vet_obrir_pany": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "diapaso",
+          "who": "vet"
+        },
+        {
+          "flag": "pany_sonic_obert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "pany_sonic_obert"
+        },
+        {
+          "hasItem": "diapaso",
+          "who": "vet",
+          "is": false
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_obrir_pany.1",
+      "pista.vet_obrir_pany.2"
+    ]
+  },
+  "vet_esperar_diapaso": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "molla_afinada"
+        },
+        {
+          "hasItem": "molla",
+          "who": "vet",
+          "is": false
+        },
+        {
+          "flag": "pany_sonic_obert",
+          "is": false
+        },
+        {
+          "hasItem": "diapaso",
+          "who": "vet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pany_sonic_obert"
+    },
+    "levels": [
+      "pista.vet_esperar_diapaso.1",
+      "pista.vet_esperar_diapaso.2"
+    ]
+  },
+  "iri_esperar_diapaso": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "comporta_oberta"
+        },
+        {
+          "flag": "pany_sonic_obert",
+          "is": false
+        },
+        {
+          "flag": "iri_sap_diapaso",
+          "is": false
+        },
+        {
+          "hasItem": "molla",
+          "who": "iri",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "pany_sonic_obert"
+        },
+        {
+          "flag": "iri_sap_diapaso"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_esperar_diapaso.1",
+      "pista.iri_esperar_diapaso.2"
     ]
   }
 }

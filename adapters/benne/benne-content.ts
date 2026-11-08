@@ -276,7 +276,8 @@ pista.onClick(() => {
 // ─── Disposició automàtica d'una sala nova ──────────────────────────────────
 
 /** Un decorat (`decor` a la sala): un prop que es veu o no segons l'estat, però no es pot clicar. */
-const decorProp = (id: string) => ({ id, tag: id, animations: { [id]: {} }, zIndex: 2, visible: false, alpha: 1, clickable: false });
+// Per sobre dels props clicables (zIndex 3): un decorat pot canviar l'aspecte d'un prop. No es pot clicar.
+const decorProp = (id: string) => ({ id, tag: id, animations: { [id]: {} }, zIndex: 4, visible: false, alpha: 1, clickable: false });
 
 interface Box { id: string; label: string; x: number; y: number; w: number; h: number; kind: 'hotspot' | 'prop' | 'exit' }
 

@@ -375,30 +375,175 @@
       "interactions": [
         {
           "verb": "look",
+          "if": {
+            "flag": "pany_sonic_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.oberta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "diapaso",
+          "if": {
+            "all": [
+              {
+                "flag": "diapaso_afinat"
+              },
+              {
+                "flag": "pany_sonic_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.obrir1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.obrir2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.llancadora.obrir3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.obrir4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.llancadora.obrir5"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "diapaso"
+            },
+            {
+              "setFlag": "pany_sonic_obert"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "diapaso",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.diapaso_no"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "if": {
+            "flag": "molla_afinada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_ja"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "if": {
+            "var": "molla_tensio",
+            "op": "<",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_greu"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "if": {
+            "var": "molla_tensio",
+            "op": ">",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_aguda"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_igual1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_igual2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "molla_afinada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tocar1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tocar2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pany_sonic_sentit"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",
               "text": "sala.gavina_hangar.llancadora.look"
             }
           ]
-        },
-        {
-          "verb": [
-            "open",
-            "use",
-            "push",
-            "pull"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.gavina_hangar.llancadora.tocar"
-            }
-          ]
         }
       ],
       "visibleIf": {
         "flag": "comporta_oberta"
+      }
+    }
+  },
+  "decor": {
+    "porta_llancadora": {
+      "visibleIf": {
+        "flag": "pany_sonic_obert"
       }
     }
   }

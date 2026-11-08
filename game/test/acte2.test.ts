@@ -9,8 +9,8 @@ import { jugarActe1, keys, partida, texts } from './partida.js';
 const item = (id: string) => ({ kind: 'item' as const, id });
 
 /** De la sortida de la cel·la fins que l'Iri sap quina palanca necessita la Vet. */
-function finsMida(checkHints = true) {
-  const s = partida({ checkHints });
+function finsMida(checkHints = true, fins?: string) {
+  const s = partida({ checkHints, fins });
   const { p, n } = s;
   jugarActe1(p);
   expect(p.room).toBe('gavina_passadis');
@@ -153,5 +153,102 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
     p.do('open', 'porta');
     p.do('open', 'porta_hangar');
     expect(texts(p.use('tram_biga_1', 'comporta'))).toContain('tres');
+  });
+});
+
+/** Primera part sencera (per peces): la Vet acaba al moll de l'hangar amb la comporta oberta. */
+function finsComporta(fins = 'pany_sonic_obert') {
+  const s = finsMida(true, fins);
+  s.p.do('pickUp', 'serra');
+  s.p.use('serra', 'biga_acer');
+  enviarTramsIObrir(s);
+  expect(s.n.flag('comporta_oberta')).toBe(true);
+  return s;
+}
+
+/** L'Iri, amb la molla ja llegida, aconsegueix un diapasó del Cargol (formulari per triplicat). */
+function demanarDiapaso(p: ReturnType<typeof partida>['p']) {
+  p.goTo('fabrica_calderes');
+  p.do('pickUp', 'tauler');
+  p.use('segell', item('formulari_27b'));
+  p.use('segell', item('formulari_segellat'));
+  p.goTo('fabrica_magatzem');
+  return p.talk('cargol', 'diapaso');
+}
+
+describe('Ferro-9 · Acte 2 · El diapasó', () => {
+  it('la nota del pany viatja dins una molla i torna dins un diapasó (sempre amb alguna pista)', () => {
+    const { p, n } = finsComporta();
+    // ── Vet: el pany sònic ──
+    expect(texts(p.do('push', 'llancadora'))).toContain('nnnnng');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    p.do('pickUp', 'llitera');
+    expect(p.inventory()).toContain('molla');
+    p.do('open', 'porta');
+    p.do('open', 'porta_hangar');
+    // ── Vet: afina la molla ──
+    expect(texts(p.use('molla', 'llancadora'))).toContain('més greu');
+    for (let i = 0; i < 3; i++) p.do('pull', item('molla'));
+    expect(texts(p.use('molla', 'llancadora'))).toContain('més aguda');
+    p.do('push', item('molla'));
+    expect(texts(p.use('molla', 'llancadora'))).toContain('mateixa nota');
+    expect(texts(p.do('pull', item('molla')))).toContain('no la toco');
+    // ── Vet: l'envia ──
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    p.use('molla', 'panell');
+    expect(p.active).toBe('iri');
+    expect(texts(p.do('look', item('molla')))).toContain('diapasó');
+    // ── Iri: el diapasó, amb paperassa ──
+    expect(texts(demanarDiapaso(p))).toContain('Diapasó de ferro-9');
+    expect(p.inventory()).toContain('diapaso');
+    p.goTo('fabrica_calderes');
+    p.do('open', 'porta_moll');
+    p.do('pickUp', 'llima');
+    p.use('llima', item('diapaso'));
+    expect(texts(p.use('diapaso', item('molla')))).toContain('més greu');
+    p.use('llima', item('diapaso'));
+    expect(texts(p.use('diapaso', item('molla')))).toContain('mateixa nota');
+    // ── Iri: l'envia; Vet: obre el pany ──
+    p.goTo('fabrica_calderes');
+    p.goTo('fabrica_cambra');
+    p.use('diapaso', 'cambra');
+    expect(p.active).toBe('vet');
+    p.do('open', 'porta');
+    p.do('open', 'porta_hangar');
+    expect(texts(p.use('diapaso', 'llancadora'))).toContain('Clac');
+    expect(n.flag('pany_sonic_obert')).toBe(true);
+    expect(n.state.quests.acte2!.objectives.diapaso).toBe(true);
+    expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3 - 2);
+  });
+
+  it('si l\'Iri llima de més, el diapasó xiula i n\'ha de demanar un altre', () => {
+    const { p, n } = finsComporta();
+    p.do('push', 'llancadora');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    p.do('pickUp', 'llitera');
+    for (let i = 0; i < 2; i++) p.do('pull', item('molla'));
+    p.do('open', 'porta');
+    p.do('open', 'porta_hangar');
+    p.use('molla', 'llancadora');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    p.use('molla', 'panell');
+    p.do('look', item('molla'));
+    demanarDiapaso(p);
+    p.goTo('fabrica_calderes');
+    p.do('open', 'porta_moll');
+    p.do('pickUp', 'llima');
+    for (let i = 0; i < 2; i++) p.use('llima', item('diapaso'));
+    expect(texts(p.use('llima', item('diapaso')))).toContain('tetera');
+    expect(p.inventory()).toContain('diapaso_espatllat');
+    expect(texts(p.talk('cargol', 'diapaso'))).toContain('per triplicat'); // sense formulari
+    expect(p.inventory()).not.toContain('diapaso');
+    expect(texts(demanarDiapaso(p))).toContain('xiulava');
+    expect(p.inventory()).toContain('diapaso');
+    expect(p.inventory()).not.toContain('diapaso_espatllat');
+    expect(n.getVar('diapaso_to')).toBe(0);
   });
 });

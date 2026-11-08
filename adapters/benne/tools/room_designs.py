@@ -821,6 +821,13 @@ def moll_serra(c):
     c.rect(232, 44, 240, 52, (120, 60, 40))                         # mànec
 
 
+def moll_llima(c):
+    c.rect(236, 58, 238, 72, (170, 176, 186))
+    for y in range(59, 72, 2):
+        c.px(237, y, (120, 126, 136))
+    c.rect(235, 72, 239, 78, (120, 70, 40))
+
+
 MOLL = {
     'era': 'iri',
     'things': {
@@ -828,6 +835,7 @@ MOLL = {
         'biga_acer': {'rect': (54, 90, 158, 104), 'walk': (106, 132)},
         'biga_ferro9': {'rect': (56, 46, 156, 66), 'walk': (106, 128)},
         'serra': {'rect': (212, 42, 242, 54), 'walk': (226, 128)},
+        'llima': {'rect': (232, 56, 242, 80), 'walk': (232, 128)},
         'trapa': {'rect': (196, 118, 228, 132), 'walk': (212, 142)},
         'comporta': {'rect': (244, 8, 350, 40), 'walk': (296, 132)},
         'llancadora': {'rect': (236, 42, 346, 110), 'walk': (264, 136)},
@@ -835,7 +843,7 @@ MOLL = {
     'spawns': {'iri': (40, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': moll_bg,
-    'props': {'biga_acer': moll_biga_acer, 'biga_ferro9': moll_biga_ferro9, 'serra': moll_serra},
+    'props': {'biga_acer': moll_biga_acer, 'biga_ferro9': moll_biga_ferro9, 'serra': moll_serra, 'llima': moll_llima},
 }
 
 
@@ -893,6 +901,20 @@ def hangar_llancadora(c):
         c.px(rnd.randint(200, 326), rnd.randint(50, 98), (160, 160, 150))
     c.line([(176, 22), (196, 50)], (190, 190, 190))                 # teranyines
     c.line([(346, 22), (326, 52)], (190, 190, 190))
+    # La porta, amb el pany sònic (un ressonador rodó, sense forat per a cap clau)
+    c.rect(214, 56, 234, 90, (104, 104, 100))
+    c.d.rectangle([214, 56, 234, 90], outline=(70, 70, 66))
+    c.ellipse(228, 70, 234, 76, (150, 140, 110))
+    for r_ in (1, 2):
+        c.ellipse(231 - r_, 73 - r_, 231 + r_, 73 + r_, None, outline=(90, 84, 66))
+
+
+def hangar_porta_llancadora(c):
+    """La porta de la llançadora, oberta (quan el diapasó obre el pany sònic)."""
+    c.rect(214, 56, 234, 90, (10, 12, 16))
+    c.rect(206, 56, 213, 90, (104, 104, 100))
+    c.d.rectangle([206, 56, 213, 90], outline=(70, 70, 66))
+    c.glow(224, 84, 10, (120, 160, 200), 0.3)
 
 
 HANGAR = {
@@ -907,7 +929,7 @@ HANGAR = {
     'spawns': {'vet': (70, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': hangar_bg,
-    'props': {'llancadora': hangar_llancadora},
+    'props': {'llancadora': hangar_llancadora, 'porta_llancadora': hangar_porta_llancadora},
 }
 
 

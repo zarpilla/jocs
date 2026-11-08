@@ -86,6 +86,32 @@
           }
         },
         {
+          "id": "diapaso",
+          "text": "dlg.cargol.opt.diapaso",
+          "next": "diapaso",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_diapaso"
+              },
+              {
+                "flag": "pany_sonic_obert",
+                "is": false
+              },
+              {
+                "hasItem": "diapaso",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "hasItem": "diapaso",
+                "who": "vet",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
           "id": "dia",
           "text": "dlg.cargol.opt.dia",
           "once": true,
@@ -308,6 +334,64 @@
           "text": "dlg.cargol.adeu"
         }
       ]
+    },
+    "diapaso": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.diapaso_altre",
+          "if": {
+            "all": [
+              {
+                "hasItem": "formulari_triplicat"
+              },
+              {
+                "remembers": {
+                  "who": "cargol",
+                  "fact": "diapaso_lliurat"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.diapaso_ok",
+          "if": {
+            "hasItem": "formulari_triplicat"
+          },
+          "effects": [
+            {
+              "takeItem": "formulari_triplicat"
+            },
+            {
+              "takeItem": "diapaso_espatllat"
+            },
+            {
+              "giveItem": "diapaso"
+            },
+            {
+              "setVar": "diapaso_to",
+              "value": 0
+            },
+            {
+              "remember": {
+                "who": "cargol",
+                "fact": "diapaso_lliurat"
+              }
+            }
+          ]
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.imant_falta",
+          "if": {
+            "hasItem": "formulari_triplicat",
+            "is": false
+          }
+        }
+      ],
+      "goto": "menu"
     }
   }
 }

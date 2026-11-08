@@ -42,7 +42,13 @@
     "iri_sap_rovell": false,
     "biga_muntada_feta": false,
     "comporta_oberta": false,
-    "components_complets": false
+    "components_complets": false,
+    "pany_sonic_sentit": false,
+    "molla_agafada": false,
+    "molla_afinada": false,
+    "iri_sap_diapaso": false,
+    "diapaso_afinat": false,
+    "pany_sonic_obert": false
   },
   "vars": {
     "finestra_armada": "",
@@ -52,6 +58,8 @@
     "transferencies": 0,
     "sospita_brau": 0,
     "dies_reciclatge": 3,
-    "biga_amagada": ""
+    "biga_amagada": "",
+    "molla_tensio": 1,
+    "diapaso_to": 0
   }
 }

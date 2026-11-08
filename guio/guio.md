@@ -149,7 +149,7 @@ registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau o
 
 **Comptes de les enceses:** n'hi ha vint-i-quatre. L'Acte 1 en gasta nou (cinc enviaments, dels quals només els dos primers amb
 el ritual, i les quatre notes del muntatge), i en queden quinze per a l'Acte 2 i l'Acte 3. La palanca de l'Acte 2 en gasta
-entre dues (biga de ferro-9 amagada) i quatre (per peces).
+entre dues (biga de ferro-9 amagada) i quatre (per peces), i el diapasó, dues (la molla i el diapasó).
 
 ### Acte 2 — «Els costos» (el cor del joc)
 
@@ -200,7 +200,7 @@ a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 ### Pla de producció de l'Acte 2
 
 1. **La comporta** (palanca): fet.
-2. **El diapasó**: la molla de la llitera, el pany sònic i el diapasó de ferro-9.
+2. **El diapasó**: fet.
 3. **La vàlvula**: la pressió del conducte, la inundació i el reajust.
 4. **El cost humà**: l'Inspector Brau, la Mira acusada i el Cargol del present; tancament de l'acte.
 
@@ -213,6 +213,20 @@ El pany s'obre amb una nota musical concreta. Quan la Vet el toca, sona.
   que el pany, i l'envia a l'Iri. L'Iri afina un diapasó de ferro-9 llimant-lo fins que sona igual que
   la molla, i el torna a enviar.
 - És **comunicació a través dels objectes**: la nota musical viatja dins d'una molla.
+
+**Com es juga (fet al joc, segona part de l'Acte 2).** El pany sònic és a la porta de la llançadora, darrere la
+comporta.
+
+1. La Vet toca el pany: «nnnnng». No sap què és una nota, i el so no passa per la finestra.
+2. Arrenca una molla de la llitera de la cel·la (en Mos ronca) i l'afina davant del pany: «Estira» la tiba (més
+   aguda) i «Empeny» l'arronsa (més greu). Quan sonen igual, hi lliga una tira de la granota amb un missatge i
+   l'envia.
+3. L'Iri entén el missatge i necessita ferro-9: demana un diapasó al Cargol, amb un formulari 27-B segellat per
+   triplicat.
+4. El llima amb la llima del moll i el compara amb la molla. Llimar el fa més agut i no té marxa enrere: si s'hi
+   passa, xiula com una tetera i n'ha de demanar un altre (el Cargol se'n recorda: «El d'abans xiulava, oi?»).
+5. Envia el diapasó afinat; la Vet el toca davant del pany i la porta de la llançadora s'obre. A dins, el motor no
+   té pressió: l'enllaç amb la vàlvula.
 
 #### Component 3: la vàlvula (la pressió per engegar la llançadora)
 

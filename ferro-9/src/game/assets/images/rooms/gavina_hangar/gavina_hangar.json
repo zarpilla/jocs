@@ -41,6 +41,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "gavina_hangar 2.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -49,7 +70,7 @@
     "image": "gavina_hangar.png",
     "format": "RGBA8888",
     "size": {
-      "w": 960,
+      "w": 1440,
       "h": 270
     },
     "scale": "1",
@@ -65,6 +86,13 @@
         "name": "llancadora",
         "from": 1,
         "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "porta_llancadora",
+        "from": 2,
+        "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       }

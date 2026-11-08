@@ -943,5 +943,271 @@
         ]
       }
     ]
+  },
+  "molla": {
+    "name": "obj.molla.nom",
+    "description": "obj.molla.desc",
+    "props": {
+      "pes": 0.05
+    },
+    "interactions": [
+      {
+        "verb": [
+          "pull",
+          "push"
+        ],
+        "if": {
+          "flag": "molla_afinada"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.quieta"
+          }
+        ]
+      },
+      {
+        "verb": "pull",
+        "if": {
+          "var": "molla_tensio",
+          "op": ">=",
+          "value": 5
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.trencar"
+          }
+        ]
+      },
+      {
+        "verb": "pull",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.estirar"
+          }
+        ],
+        "effects": [
+          {
+            "addVar": "molla_tensio",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "verb": "push",
+        "if": {
+          "var": "molla_tensio",
+          "op": "<=",
+          "value": 0
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.massa"
+          }
+        ]
+      },
+      {
+        "verb": "push",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.arronsar"
+          }
+        ],
+        "effects": [
+          {
+            "addVar": "molla_tensio",
+            "amount": -1
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "molla_afinada"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.molla.etiqueta"
+          },
+          {
+            "who": "player",
+            "text": "obj.molla.iri"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_diapaso"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "molla_afinada"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.afinada"
+          }
+        ]
+      }
+    ]
+  },
+  "llima": {
+    "name": "obj.llima.nom",
+    "description": "obj.llima.desc",
+    "props": {
+      "pes": 0.3
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "diapaso",
+        "if": {
+          "any": [
+            {
+              "var": "diapaso_to",
+              "op": ">=",
+              "value": 2
+            },
+            {
+              "flag": "diapaso_afinat"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llima.passat1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llima.passat2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "diapaso"
+          },
+          {
+            "giveItem": "diapaso_espatllat"
+          },
+          {
+            "setFlag": "diapaso_afinat",
+            "value": false
+          },
+          {
+            "setVar": "diapaso_to",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "diapaso",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llima.llimar"
+          }
+        ],
+        "effects": [
+          {
+            "addVar": "diapaso_to",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "diapaso": {
+    "name": "obj.diapaso.nom",
+    "description": "obj.diapaso.desc",
+    "props": {
+      "pes": 0.2,
+      "material": "ferro9"
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "molla",
+        "if": {
+          "flag": "diapaso_afinat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.ja"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "molla",
+        "if": {
+          "var": "diapaso_to",
+          "op": "<",
+          "value": 2
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.greu"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "molla",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.igual1"
+          },
+          {
+            "who": "player",
+            "text": "obj.diapaso.igual2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "diapaso_afinat"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "diapaso_afinat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.look_afinat"
+          }
+        ]
+      }
+    ]
+  },
+  "diapaso_espatllat": {
+    "name": "obj.diapaso_espatllat.nom",
+    "description": "obj.diapaso_espatllat.desc",
+    "props": {
+      "pes": 0.2,
+      "material": "ferro9"
+    }
   }
 }

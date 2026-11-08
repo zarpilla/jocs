@@ -83,6 +83,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "fabrica_moll 4.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -91,7 +112,7 @@
     "image": "fabrica_moll.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1920,
+      "w": 2400,
       "h": 270
     },
     "scale": "1",
@@ -121,6 +142,13 @@
         "name": "serra",
         "from": 3,
         "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "llima",
+        "from": 4,
+        "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       }
