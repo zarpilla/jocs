@@ -179,5 +179,36 @@
         }
       }
     ]
+  },
+  "acte3": {
+    "kind": "main",
+    "title": "mis.acte3.titol",
+    "description": "mis.acte3.desc",
+    "startWhen": {
+      "flag": "acte3_iniciat"
+    },
+    "objectives": [
+      {
+        "id": "memoria",
+        "text": "mis.acte3.obj.memoria",
+        "completeWhen": {
+          "visited": "gavina_memoria"
+        }
+      },
+      {
+        "id": "ruta",
+        "text": "mis.acte3.obj.ruta",
+        "completeWhen": {
+          "flag": "vet_sap_conducte"
+        }
+      },
+      {
+        "id": "fugida",
+        "text": "mis.acte3.obj.fugida",
+        "completeWhen": {
+          "flag": "fugida_completada"
+        }
+      }
+    ]
   }
 }

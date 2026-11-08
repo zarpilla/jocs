@@ -277,6 +277,16 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
+    },
+    {
+      "instanceId": "brau-1",
+      "definition": "brau/brau.character.json",
+      "x": 409,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }

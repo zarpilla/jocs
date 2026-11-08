@@ -1593,6 +1593,22 @@
           {
             "who": "narrator",
             "text": "obj.nota_iri_nom.fi"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri_nom.acte3"
+          },
+          {
+            "who": "mare",
+            "text": "obj.nota_iri_nom.mare1"
+          },
+          {
+            "who": "mare",
+            "text": "obj.nota_iri_nom.mare2"
+          },
+          {
+            "who": "directora",
+            "text": "obj.nota_iri_nom.directora"
           }
         ],
         "effects": [
@@ -1601,6 +1617,9 @@
           },
           {
             "setFlag": "acte2_acabat"
+          },
+          {
+            "setFlag": "acte3_iniciat"
           }
         ]
       },
@@ -1614,5 +1633,12 @@
         ]
       }
     ]
+  },
+  "fullet_memoria": {
+    "name": "obj.fullet_memoria.nom",
+    "description": "obj.fullet_memoria.desc",
+    "props": {
+      "pes": 0.01
+    }
   }
 }

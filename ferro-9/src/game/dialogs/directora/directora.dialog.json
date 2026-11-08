@@ -1,0 +1,34 @@
+{
+  "id": "directora",
+  "displayName": "directora",
+  "options": [
+    {
+      "id": "menu__que_vol",
+      "scriptName": "menu__que_vol",
+      "text": "Què vol de mi?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__iri",
+      "scriptName": "menu__iri",
+      "text": "Què li passarà a la I.?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__no",
+      "scriptName": "menu__no",
+      "text": "I si dic que no?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Ja m'ho pensaré.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

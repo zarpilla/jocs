@@ -93,3 +93,109 @@ export function jugarActe1(p: Jugador) {
   p.use('imant_ferro9', 'cambra');
   p.use('imant_ferro9', 'porta');
 }
+
+/** La Vet escriu en un tros nou del cartell i ho envia des de la cel·la (acaba amb l'Iri). */
+function escriureIEnviar(p: Jugador, nota: string) {
+  p.do('open', 'porta_passadis');
+  p.do('pickUp', 'cartell');
+  p.use('llapis_ulls', item('tros_cartell'));
+  p.do('open', 'porta_cella');
+  p.use(nota, 'panell');
+}
+
+/**
+ * L'Acte 2 sencer pel camí més curt (la palanca per peces, sense plànols ni Mira): comença amb la Vet
+ * al passadís i acaba amb la Vet a la cel·la, just quan comença l'Acte 3.
+ */
+export function jugarActe2(p: Jugador) {
+  // La comporta
+  p.do('open', 'porta_hangar');
+  p.do('open', 'porta_passadis');
+  p.do('open', 'porta_cella');
+  p.do('pickUp', 'panell');
+  p.do('open', 'porta');
+  p.do('pickUp', 'cartell');
+  p.do('open', 'porta_hangar');
+  p.use('clau_anglesa', 'comporta');
+  p.use('llapis_ulls', item('tros_cartell'));
+  p.do('open', 'porta_passadis');
+  p.do('open', 'porta_cella');
+  p.use('nota_mida', 'panell');
+  p.do('look', item('nota_mida'));
+  p.goTo('fabrica_calderes');
+  p.do('open', 'porta_moll');
+  p.do('pickUp', 'serra');
+  p.use('serra', 'biga_acer');
+  p.goTo('fabrica_calderes');
+  p.goTo('fabrica_cambra');
+  for (const n of [1, 2, 3]) {
+    p.use(`tram_biga_${n}`, 'cambra');
+    if (n < 3) p.switchTo('iri');
+  }
+  p.use('tram_biga_1', item('tram_biga_2'));
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  p.use('biga_muntada', 'comporta');
+  // El diapasó
+  p.do('push', 'llancadora');
+  p.do('open', 'porta_passadis');
+  p.do('open', 'porta_cella');
+  p.do('pickUp', 'llitera');
+  p.do('pull', item('molla'));
+  p.do('pull', item('molla'));
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  p.use('molla', 'llancadora');
+  p.do('open', 'porta_passadis');
+  p.do('open', 'porta_cella');
+  p.use('molla', 'panell');
+  p.do('look', item('molla'));
+  p.goTo('fabrica_calderes');
+  p.do('pickUp', 'tauler');
+  p.use('segell', item('formulari_27b'));
+  p.use('segell', item('formulari_segellat'));
+  p.goTo('fabrica_magatzem');
+  p.talk('cargol', 'diapaso');
+  p.goTo('fabrica_calderes');
+  p.do('open', 'porta_moll');
+  p.do('pickUp', 'llima');
+  p.use('llima', item('diapaso'));
+  p.use('llima', item('diapaso'));
+  p.use('diapaso', item('molla'));
+  p.goTo('fabrica_calderes');
+  p.goTo('fabrica_cambra');
+  p.use('diapaso', 'cambra');
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  p.use('diapaso', 'llancadora');
+  // La vàlvula
+  escriureIEnviar(p, 'nota_pressio');
+  p.do('look', item('nota_pressio'));
+  p.goTo('fabrica_calderes');
+  p.do('open', 'porta_moll');
+  p.do('close', 'conducte');
+  p.switchTo('vet');
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  escriureIEnviar(p, 'nota_massa');
+  p.do('look', item('nota_massa'));
+  p.goTo('fabrica_calderes');
+  p.do('open', 'porta_moll');
+  p.do('open', 'conducte');
+  p.switchTo('vet');
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  p.do('push', 'llancadora');
+  // L'arxiu i els noms
+  p.use('clau_anglesa', 'escala');
+  p.do('open', 'escala');
+  p.do('look', 'expedient_iri');
+  p.do('open', 'escala_hangar');
+  escriureIEnviar(p, 'nota_vet_nom');
+  p.do('look', item('nota_vet_nom'));
+  p.use('llapis', item('llibreta_torn'));
+  p.goTo('fabrica_calderes');
+  p.goTo('fabrica_cambra');
+  p.use('nota_iri_nom', 'cambra');
+  p.do('look', item('nota_iri_nom'));
+}

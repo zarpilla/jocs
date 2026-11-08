@@ -1,0 +1,109 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "brau",
+  "with": "brau",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "brau",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "brau",
+          "text": "dlg.brau.primera1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "brau",
+          "text": "dlg.brau.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "que_passa",
+          "text": "dlg.brau.opt.que_passa",
+          "next": "que_passa",
+          "once": true
+        },
+        {
+          "id": "passar",
+          "text": "dlg.brau.opt.passar",
+          "next": "passar"
+        },
+        {
+          "id": "director",
+          "text": "dlg.brau.opt.director",
+          "next": "director",
+          "once": true
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.brau.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "que_passa": {
+      "lines": [
+        {
+          "who": "brau",
+          "text": "dlg.brau.que_passa1"
+        },
+        {
+          "who": "brau",
+          "text": "dlg.brau.que_passa2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "passar": {
+      "lines": [
+        {
+          "who": "brau",
+          "text": "dlg.brau.passar1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "director": {
+      "lines": [
+        {
+          "who": "brau",
+          "text": "dlg.brau.director1"
+        },
+        {
+          "who": "brau",
+          "text": "dlg.brau.director2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "brau",
+          "text": "dlg.brau.adeu"
+        }
+      ]
+    }
+  }
+}

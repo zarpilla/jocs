@@ -344,7 +344,7 @@ CALDERES = {
         'segell': {'rect': (222, 124, 242, 140), 'walk': (214, 140)},
         'porta_moll': {'rect': (152, 62, 202, 114), 'walk': (177, 132)},
     },
-    'spawns': {'iri': (160, 138), 'capatas': (262, 132)},
+    'spawns': {'iri': (160, 138), 'capatas': (262, 132), 'brau': (300, 136)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': calderes_bg,
     'props': {'segell': calderes_segell},
@@ -657,7 +657,7 @@ CELLA = {
         'escarabat': {'rect': (88, 114, 104, 128), 'walk': (110, 134)},
         'safata': {'rect': (232, 120, 264, 138), 'walk': (226, 142)},
     },
-    'spawns': {'vet': (150, 138), 'mos': (306, 140), 'mare': (130, 30)},
+    'spawns': {'vet': (150, 138), 'mos': (306, 140), 'mare': (130, 30), 'directora': (214, 138)},
     'walkable': [(14, 118), (266, 118), (268, 128), (338, 130), (346, 148), (6, 148)],
     'bg': cella_bg,
     'props': {'avis': cella_avis, 'escarabat': cella_escarabat, 'safata': cella_safata,
@@ -719,6 +719,11 @@ def passadis_bg(c):
     c.glow(320, 18, 6, (90, 255, 120), 0.6)
 
     cell_door(c, 8, 38, 46, 112, outside=True)
+    # Porta de la Sala de la Memòria, a la paret de la dreta
+    c.d.polygon([(262, 62), (294, 58), (294, 112), (262, 110)], fill=(26, 32, 42))
+    c.d.polygon([(265, 65), (291, 62), (291, 110), (265, 108)], fill=(120, 150, 170))
+    c.rect(270, 50, 288, 55, (236, 236, 226))                          # rètol, amb el somriure
+    c.ellipse(276, 51, 280, 54, (250, 220, 70))
     vignette(c, 110)
 
 
@@ -729,6 +734,7 @@ PASSADIS = {
         'cartell': {'rect': (238, 28, 312, 56), 'walk': (270, 128)},
         'camera_vigilancia': {'rect': (300, 8, 328, 26), 'walk': (310, 128)},
         'porta_hangar': {'rect': (186, 46, 214, 90), 'walk': (200, 120)},
+        'porta_memoria': {'rect': (260, 56, 296, 112), 'walk': (276, 128)},
     },
     'spawns': {'vet': (90, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
@@ -1129,6 +1135,72 @@ ARXIU = {
 }
 
 
+# ─── La Gavina: la Sala de la Memòria (Acte 3) ──────────────────────────────
+
+def memoria_bg(c):
+    c.vgrad(0, 0, W, 112, (196, 206, 214), (160, 172, 184))
+    for x in range(0, W, 44):                                       # plafons nets, de museu
+        c.rect(x, 8, x + 1, 108, (176, 186, 196))
+    c.rect(0, 0, W, 6, (120, 130, 144))
+    c.vgrad(0, 112, W, H, (130, 140, 154), (70, 78, 90))            # terra polit
+    for y in range(116, H, 9):
+        c.line([(0, y), (W, y)], (150, 160, 172))
+    c.rect(0, 110, W, 113, (96, 104, 118))
+    # Porta
+    c.rect(5, 35, 49, 112, (90, 100, 114))
+    c.hgrad(8, 38, 46, 112, [(0, STEEL[0]), (0.3, STEEL[2]), (1, STEEL[0])])
+    # Foto del torn de nit
+    c.rect(68, 28, 122, 72, (120, 90, 50))
+    c.rect(71, 31, 119, 69, (210, 200, 176))
+    for i, x in enumerate(range(76, 116, 9)):                       # el torn de nit, en fila
+        c.ellipse(x, 42, x + 6, 48, (150, 130, 110)); c.rect(x, 48, x + 6, 62, (110, 100, 90))
+    c.rect(94, 42, 100, 48, (60, 50, 50)); c.line([(93, 41), (101, 49)], (40, 30, 30)); c.line([(101, 41), (93, 49)], (40, 30, 30))  # la cara ratllada
+    c.rect(104, 52, 112, 64, (176, 180, 186))                       # el Cargol, nou
+    # Mapa de La Gavina
+    c.rect(130, 24, 192, 72, (30, 40, 60))
+    c.ellipse(140, 32, 182, 64, None, outline=(150, 200, 230))
+    c.rect(156, 44, 166, 52, (150, 200, 230))
+    for x in range(140, 184, 4):                                    # el conducte, en discontínua
+        c.line([(x, 60), (x + 2, 60)], (240, 200, 80))
+    c.px(160, 46, (250, 80, 80))                                    # «vostè és aquí»
+    # Pedestal de l'holograma (la figura és un prop a part, però sempre hi és)
+    c.ellipse(204, 104, 246, 116, (90, 100, 116))
+    c.ellipse(208, 102, 242, 110, (130, 200, 240))
+    c.glow(225, 80, 40, (120, 200, 255), 0.5)
+    c.d.polygon([(214, 104), (236, 104), (232, 40), (218, 40)], fill=(150, 210, 240, 90))
+    c.ellipse(218, 30, 232, 44, (170, 220, 245))
+    c.rect(216, 46, 234, 84, (150, 210, 240))
+    for y in range(32, 100, 3):                                     # línies d'escaneig
+        c.line([(214, y), (236, y)], (200, 235, 255))
+    # Vitrina buida
+    c.rect(262, 92, 298, 112, (90, 96, 110))
+    c.rect(264, 66, 296, 92, (200, 225, 240))
+    c.d.rectangle([264, 66, 296, 92], outline=(240, 250, 255))
+    c.rect(270, 94, 290, 98, (236, 230, 210))
+    # Expositor de fullets
+    c.rect(314, 76, 340, 112, (110, 116, 128))
+    for y in (80, 90, 100):
+        c.rect(317, y, 337, y + 7, (240, 220, 120)); c.ellipse(324, y + 1, 330, y + 6, (250, 220, 70))
+    vignette(c, 70)
+
+
+MEMORIA = {
+    'era': 'vet',
+    'things': {
+        'porta_passadis': {'rect': (6, 34, 48, 114), 'walk': (34, 134)},
+        'foto': {'rect': (66, 26, 124, 74), 'walk': (95, 128)},
+        'mapa': {'rect': (128, 22, 194, 74), 'walk': (161, 128)},
+        'holograma': {'rect': (204, 26, 246, 114), 'walk': (225, 136)},
+        'vitrina': {'rect': (260, 64, 300, 112), 'walk': (280, 132)},
+        'fullets': {'rect': (312, 74, 342, 112), 'walk': (322, 132)},
+    },
+    'spawns': {'vet': (40, 138)},
+    'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
+    'bg': memoria_bg,
+    'props': {},
+}
+
+
 DESIGNS = {
     'fabrica_calderes': CALDERES,
     'fabrica_magatzem': MAGATZEM,
@@ -1139,4 +1211,5 @@ DESIGNS = {
     'gavina_hangar': HANGAR,
     'fabrica_despatx': DESPATX,
     'gavina_arxiu': ARXIU,
+    'gavina_memoria': MEMORIA,
 }

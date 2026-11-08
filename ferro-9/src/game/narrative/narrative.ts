@@ -237,7 +237,9 @@ export function applyHotspotVisibility() {
   const room = world.currentRoom();
   if (!room) return;
   for (const { id, visible } of narrative.hotspotsIn(room)) {
-    const handle = boundHotspots[id] ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
+    // Un personatge amb `visibleIf` (p. ex. la Directora a la cel·la a l'Acte 3) s'amaga o es mostra sencer.
+    const character = content.characters[id] ? (benneCharacter(id) as Showable | undefined) : undefined;
+    const handle = boundHotspots[id] ?? character ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
     if ('visible' in handle) handle.visible = visible;
     else handle.active = visible;
   }

@@ -230,6 +230,83 @@ MOS = {
     'shoes': (90, 90, 96), 'leg_stripe': (226, 222, 210), 'eyes': (20, 16, 24), 'makeup': True, 'hair_fn': hair_mos, 'deco': deco_mos,
 }
 
+def hair_directora(c, p, f, layer):
+    """Cabell blanc recollit en un monyo estirat."""
+    if layer != 'front':
+        return
+    h, h2 = p['hair'], p['hair2']
+    if f == 'U':
+        c.ellipse(17.5, 10, 5.5, 6, h)
+        c.ellipse(17.5, 4, 3, 2.5, h2)
+    elif f == 'D':
+        c.rect(12, 5, 23, 8, h); c.rect(12, 9, 12, 12, h); c.rect(23, 9, 23, 12, h)
+        c.ellipse(17.5, 3, 3, 2, h2)
+        c.px(17, 5, h2)
+    else:
+        c.rect(12, 5, 22, 8, h); c.rect(18, 9, 22, 13, h)
+        c.ellipse(22, 4, 2.5, 2.5, h2)
+        c.px(18, 12, p['skin'])
+
+
+def hair_brau(c, p, f, layer):
+    """Barret de feltre i un bigoti espès."""
+    if layer != 'front':
+        return
+    hat, band, mus = p['hat'], (30, 28, 30), p['hair']
+    if f == 'U':
+        c.ellipse(17.5, 11, 5.5, 6, p['hair2'])
+        c.rect(10, 6, 25, 7, hat); c.rect(13, 1, 22, 6, hat); c.rect(13, 5, 22, 5, band)
+        return
+    c.rect(12, 8, 13, 13, p['hair2'])
+    if f == 'D':
+        c.rect(22, 8, 23, 13, p['hair2'])
+        c.rect(10, 6, 25, 7, hat); c.rect(13, 1, 22, 6, hat); c.rect(13, 5, 22, 5, band)
+        c.rect(15, 14, 20, 15, mus)
+    else:
+        c.rect(8, 6, 24, 7, hat); c.rect(12, 1, 21, 6, hat); c.rect(12, 5, 21, 5, band)
+        c.rect(18, 8, 22, 13, p['hair2'])
+        c.rect(11, 14, 15, 15, mus)
+
+
+def deco_vestit(c, p, f):
+    """Vestit fosc de directora: solapes, camisa blanca i el pin d'or d'Aldaia."""
+    if f == 'D':
+        c.rect(16, 22, 19, 30, (236, 236, 232))
+        c.rect(15, 22, 15, 33, p['top2']); c.rect(20, 22, 20, 33, p['top2'])
+        c.rect(14, 22, 15, 25, p['top2']); c.rect(20, 22, 21, 25, p['top2'])
+        c.px(21, 27, (230, 190, 70)); c.px(22, 27, (230, 190, 70))
+    elif f == 'L':
+        c.rect(14, 22, 15, 28, (236, 236, 232)); c.px(15, 27, (230, 190, 70))
+
+
+def deco_gavardina(c, p, f):
+    """Gavardina llarga i cordada, amb cinturó."""
+    C, C2 = p['coat'], p['coat2']
+    if f == 'D':
+        c.rect(12, 22, 23, 52, C); c.rect(21, 22, 23, 52, C2)
+        c.rect(15, 22, 20, 25, C2); c.rect(17, 26, 18, 52, C2)
+        c.rect(12, 34, 23, 35, (70, 56, 44))
+        for y in (28, 40, 46):
+            c.px(16, y, (60, 56, 50)); c.px(19, y, (60, 56, 50))
+    elif f == 'L':
+        c.rect(13, 22, 22, 52, C); c.rect(20, 22, 22, 52, C2); c.rect(13, 34, 22, 35, (70, 56, 44))
+    else:
+        c.rect(12, 22, 23, 52, C); c.rect(17, 40, 18, 52, C2); c.rect(12, 34, 23, 35, (70, 56, 44))
+
+
+DIRECTORA = {
+    'skin': (232, 196, 170), 'skin2': (204, 166, 140), 'hair': (226, 226, 232), 'hair2': (190, 190, 200),
+    'top': (52, 54, 66), 'top2': (36, 38, 48), 'sleeve': (52, 54, 66), 'sleeve_len': 'long', 'legs': (52, 54, 66), 'legs2': (36, 38, 48),
+    'shoes': (24, 22, 26), 'eyes': (40, 30, 40), 'lashes': True, 'hair_fn': hair_directora, 'deco': deco_vestit,
+}
+BRAU = {
+    'skin': (214, 168, 136), 'skin2': (186, 140, 110), 'hair': (70, 56, 50), 'hair2': (90, 76, 70), 'hat': (96, 94, 92),
+    'top': (150, 146, 136), 'top2': (118, 114, 106), 'coat': (150, 146, 136), 'coat2': (118, 114, 106),
+    'sleeve': (150, 146, 136), 'sleeve_len': 'long', 'legs': (70, 66, 64), 'legs2': (56, 52, 50),
+    'shoes': (40, 30, 26), 'eyes': (30, 24, 24), 'hair_fn': hair_brau, 'deco': deco_gavardina,
+}
+
+
 SLEEVE_END = {'long': 37, 'rolled': 29}
 
 
@@ -570,6 +647,8 @@ def main():
     walker('iri', IRI)
     walker('vet', VET)
     standing('mos', MOS, thin=True)
+    standing('directora', DIRECTORA)
+    standing('brau', BRAU)
 
     tags = []
     for f in 'DLU':

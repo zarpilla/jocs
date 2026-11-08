@@ -168,6 +168,39 @@
         "y": 123
       },
       "defaultVerb": "open"
+    },
+    {
+      "id": "porta_memoria",
+      "active": true,
+      "description": "Sala de la Memòria",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 354,
+          "y": 76
+        },
+        {
+          "x": 403,
+          "y": 76
+        },
+        {
+          "x": 403,
+          "y": 153
+        },
+        {
+          "x": 354,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 377,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 379,
+        "y": 153
+      },
+      "defaultVerb": "open"
     }
   ],
   "points": [],

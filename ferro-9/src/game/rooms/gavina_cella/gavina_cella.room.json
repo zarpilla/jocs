@@ -407,6 +407,16 @@
       "visible": false,
       "clickable": false,
       "zIndex": 1
+    },
+    {
+      "instanceId": "directora-1",
+      "definition": "directora/directora.character.json",
+      "x": 292,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }

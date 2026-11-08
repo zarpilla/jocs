@@ -406,12 +406,20 @@ def nota_iri_nom(c):
     c.rect(14, 14, 22, 14, INK)
 
 
+
+def fullet_memoria(c):
+    c.rect(10, 3, 25, 17, (240, 220, 120)); c.rect(10, 16, 25, 17, (210, 180, 80))
+    c.ellipse(17.5, 8, 3.5, 3.5, (250, 220, 70))
+    c.px(16, 7, BLACK); c.px(19, 7, BLACK); c.rect(16, 10, 19, 10, BLACK)
+    c.rect(12, 13, 23, 13, (180, 150, 60))
+
+
 ICONS = {f.__name__: f for f in (
     clau_anglesa, formulari_27b, formulari_segellat, formulari_triplicat, plomall, segell, clau_cambra,
     llapis, llibreta_torn, caixa_eines, imant_ferro9, nota_iri, avis_reciclatge, llapis_ulls, nota_vet,
     fullet_reeducacio, nota_pany, escarabat, sopa,
     tros_cartell, nota_mida, biga_acer, biga_ferro9, serra, tram_biga_1, tram_biga_2, tram_biga_3, biga_muntada,
-    nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat, nota_pressio, nota_massa, fitxa_mira, planols, carta_mos, nota_vet_nom, nota_iri_nom,
+    nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat, nota_pressio, nota_massa, fitxa_mira, planols, carta_mos, nota_vet_nom, nota_iri_nom, fullet_memoria,
 )}
 
 

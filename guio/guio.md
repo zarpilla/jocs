@@ -331,6 +331,21 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
 **El gir final:** la "desaparició" de l'Iri que explica el museu **va ser, de fet, la seva fugida**. La
 història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia ajudada.
 
+**Pla de producció de l'Acte 3**
+
+1. **Acorralades**: fet. En llegir el nom de l'Iri, comença l'acte: la MARE avança el reciclatge a avui i la
+   **Directora Aldaia** s'instal·la a la cel·la (el panell «ara és meu»; li ofereix un pacte). Al passat, el
+   Director anuncia per megafonia que ho sap tot i l'**Inspector Brau** fa fora l'Iri de la cambra i en vigila la
+   porta. La Vet visita la **Sala de la Memòria** (que fins ara era tancada): l'holograma del Director («un
+   accident»), la foto del torn de nit amb la cara de l'Iri ratllada (al costat, la Mira somrient si es va
+   salvar, o un forat), la vitrina buida de la «clau anglesa Lot 1 (desapareguda)», el mapa amb el **conducte de
+   servei** de l'antiga fàbrica i el fullet on dibuixarà la ruta.
+2. **El mapa de fuga**: la Vet dibuixa la ruta al fullet i fa veure que accepta el pacte de la Directora per
+   arribar al panell; l'Iri distreu el Brau per tornar a la seva cambra. Primera encesa.
+3. **L'últim component**: la Directora ha desmuntat el tub de la vàlvula de la llançadora; l'Iri en fa un de
+   ferro-9 i hi enrotlla la llibreta amb les proves. Segona encesa. L'Iri fuig pel conducte; la Vet, amb la nau.
+4. **Finals**: el Cargol del present i la seva memòria, la Guàrdia Osset i els tres finals.
+
 **Peces de l'Acte 2 que es fan aquí:** la **Sala de la Memòria** (la foto ratllada del torn de nit, l'holograma
 del Director i el fullet on la Vet dibuixa el mapa de fuga), la **Directora Aldaia** (que ja vol la Vet viva),
 el **Cargol del present** i la missió de **la seva memòria**, i la **Guàrdia Osset**, que només existeix si la Mira

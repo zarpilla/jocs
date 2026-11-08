@@ -2585,5 +2585,188 @@
       "pista.iri_esperar_nom.1",
       "pista.iri_esperar_nom.2"
     ]
+  },
+  "vet_directora": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "acte3_iniciat"
+        },
+        {
+          "not": {
+            "seen": {
+              "dialogue": "directora",
+              "node": "primera"
+            }
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "seen": {
+        "dialogue": "directora",
+        "node": "primera"
+      }
+    },
+    "levels": [
+      "pista.vet_directora.1",
+      "pista.vet_directora.2"
+    ]
+  },
+  "vet_memoria": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "acte3_iniciat"
+        },
+        {
+          "not": {
+            "visited": "gavina_memoria"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "visited": "gavina_memoria"
+    },
+    "levels": [
+      "pista.vet_memoria.1",
+      "pista.vet_memoria.2"
+    ]
+  },
+  "vet_foto": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "visited": "gavina_memoria"
+        },
+        {
+          "flag": "vet_veu_foto",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_veu_foto"
+    },
+    "levels": [
+      "pista.vet_foto.1",
+      "pista.vet_foto.2"
+    ]
+  },
+  "vet_mapa_fuga": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "visited": "gavina_memoria"
+        },
+        {
+          "flag": "vet_sap_conducte",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_sap_conducte"
+    },
+    "levels": [
+      "pista.vet_mapa_fuga.1",
+      "pista.vet_mapa_fuga.2"
+    ]
+  },
+  "vet_fullet_mapa": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "vet_sap_conducte"
+        },
+        {
+          "flag": "fullet_memoria_agafat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "fullet_memoria_agafat"
+    },
+    "levels": [
+      "pista.vet_fullet_mapa.1",
+      "pista.vet_fullet_mapa.2"
+    ]
+  },
+  "vet_canvia_iri": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "acte3_iniciat"
+        },
+        {
+          "flag": "iri_descoberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_descoberta"
+    },
+    "levels": [
+      "pista.vet_canvia_iri.1",
+      "pista.vet_canvia_iri.2"
+    ]
+  },
+  "iri_brau": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "iri_descoberta"
+        },
+        {
+          "not": {
+            "seen": {
+              "dialogue": "brau",
+              "node": "primera"
+            }
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "seen": {
+        "dialogue": "brau",
+        "node": "primera"
+      }
+    },
+    "levels": [
+      "pista.iri_brau.1",
+      "pista.iri_brau.2"
+    ]
   }
 }

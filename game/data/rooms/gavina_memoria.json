@@ -1,0 +1,231 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.gavina_memoria.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "verb": "*",
+      "id": "primera",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.gavina_memoria.intro1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_memoria.intro2"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta_passadis": {
+      "name": "sala.gavina_memoria.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_passadis"
+        }
+      ]
+    },
+    "holograma": {
+      "name": "sala.gavina_memoria.holograma.nom",
+      "interactions": [
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.holograma.parla1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.holograma.parla2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.holograma.parla3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.holograma.look"
+            }
+          ]
+        }
+      ]
+    },
+    "foto": {
+      "name": "sala.gavina_memoria.foto.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "mira_salvada"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.foto.text"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.foto.mira"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.foto.vet1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.foto.vet2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_veu_foto"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.foto.text"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.foto.forat"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.foto.vet1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_veu_foto"
+            }
+          ]
+        }
+      ]
+    },
+    "vitrina": {
+      "name": "sala.gavina_memoria.vitrina.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.vitrina.text"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.vitrina.vet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.vitrina.tocar"
+            }
+          ]
+        }
+      ]
+    },
+    "mapa": {
+      "name": "sala.gavina_memoria.mapa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.mapa.text"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.mapa.vet1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.mapa.vet2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_conducte"
+            }
+          ]
+        }
+      ]
+    },
+    "fullets": {
+      "name": "sala.gavina_memoria.fullets.nom",
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "if": {
+            "hasItem": "fullet_memoria",
+            "who": "vet",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.fullets.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "fullet_memoria_agafat"
+            },
+            {
+              "giveItem": "fullet_memoria"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.fullets.prou"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.fullets.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

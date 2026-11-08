@@ -308,6 +308,37 @@
       "interactions": [
         {
           "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "iri_descoberta"
+          },
+          "lines": [
+            {
+              "who": "brau",
+              "text": "sala.fabrica_calderes.porta_cambra.brau"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "iri_descoberta"
+          },
+          "lines": [
+            {
+              "who": "brau",
+              "text": "sala.fabrica_calderes.porta_cambra.brau"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "clau_cambra",
           "if": {
             "flag": "porta_cambra_oberta",
@@ -377,9 +408,63 @@
           "goTo": "fabrica_moll"
         }
       ]
+    },
+    "brau": {
+      "name": "sala.fabrica_calderes.brau.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "brau"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.brau.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "flag": "iri_descoberta"
+      }
     }
   },
   "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "iri_descoberta",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta2"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica.descoberta3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_descoberta"
+        }
+      ]
+    },
     {
       "id": "intro",
       "verb": "*",

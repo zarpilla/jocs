@@ -213,6 +213,13 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
         props.push(p);
         report.created.push(`rooms/${id}: ${String(p.id)}`);
       }
+      // Personatges nous a la sala (p. ex. algú que hi arriba en un acte posterior).
+      const spawns = ((benneRoom.characters as Json[]) ??= []);
+      for (const c of fresh.characters as Json[]) {
+        if (spawns.some((x) => x.definition === c.definition)) continue;
+        spawns.push(c);
+        report.created.push(`rooms/${id}: ${String(c.definition).split('/')[0]}`);
+      }
       writeJson(path, benneRoom);
       // Art encara provisional: es redibuixa (els dissenys poden haver canviat).
       if (existsSync(join(gameDir, 'assets/images/rooms', id, '.provisional'))) report.needsArt.push(`rooms/${id}`);

@@ -171,6 +171,39 @@
   },
   "onEnter": [
     {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "iri_descoberta",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta2"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica.descoberta3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_descoberta"
+        }
+      ]
+    },
+    {
       "id": "primera",
       "verb": "*",
       "once": true,

@@ -50,5 +50,13 @@
       "min": -3,
       "max": 3
     }
+  },
+  "directora": {
+    "name": "pj.directora.nom",
+    "description": "pj.directora.desc"
+  },
+  "brau": {
+    "name": "pj.brau.nom",
+    "description": "pj.brau.desc"
   }
 }

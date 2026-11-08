@@ -1,0 +1,34 @@
+{
+  "id": "brau",
+  "displayName": "brau",
+  "options": [
+    {
+      "id": "menu__que_passa",
+      "scriptName": "menu__que_passa",
+      "text": "Què ha passat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__passar",
+      "scriptName": "menu__passar",
+      "text": "Deixi'm passar.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__director",
+      "scriptName": "menu__director",
+      "text": "On és el Director?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, res.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

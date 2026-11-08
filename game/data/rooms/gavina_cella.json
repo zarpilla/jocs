@@ -7,6 +7,37 @@
       "name": "sala.gavina_cella.panell.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "lines": [
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.directora"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "lines": [
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.directora"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "all": [
@@ -685,6 +716,27 @@
           ]
         }
       ]
+    },
+    "directora": {
+      "name": "sala.gavina_cella.directora.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "directora"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.directora.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "flag": "acte3_iniciat"
+      }
     }
   },
   "decor": {

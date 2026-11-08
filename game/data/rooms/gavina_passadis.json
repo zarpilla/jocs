@@ -104,6 +104,44 @@
           "goTo": "gavina_hangar"
         }
       ]
+    },
+    "porta_memoria": {
+      "name": "sala.gavina_passadis.porta_memoria.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "goTo": "gavina_memoria"
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.porta_memoria.tancada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.porta_memoria.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [

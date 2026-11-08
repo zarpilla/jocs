@@ -72,7 +72,12 @@
     "iri_sap_desaparicio": false,
     "nota_iri_nom_escrita": false,
     "acte2_noms": false,
-    "acte2_acabat": false
+    "acte2_acabat": false,
+    "acte3_iniciat": false,
+    "iri_descoberta": false,
+    "vet_veu_foto": false,
+    "vet_sap_conducte": false,
+    "fullet_memoria_agafat": false
   },
   "vars": {
     "finestra_armada": "",
