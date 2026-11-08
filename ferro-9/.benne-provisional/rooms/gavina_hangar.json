@@ -1,0 +1,56 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "Moll de l'hangar",
+  "era": "vet",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "porta_passadis",
+      "label": "passadís",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "comporta",
+      "label": "comporta",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 74,
+      "y": 57
+    },
+    {
+      "id": "pilar",
+      "label": "pilar",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 160,
+      "y": 19
+    },
+    {
+      "id": "placa_terra",
+      "label": "placa del terra",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 246,
+      "y": 57
+    },
+    {
+      "id": "llancadora",
+      "label": "llançadora",
+      "kind": "prop",
+      "w": 74,
+      "h": 33,
+      "x": 332,
+      "y": 19
+    }
+  ],
+  "characters": []
+}

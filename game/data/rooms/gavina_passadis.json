@@ -7,6 +7,36 @@
       "name": "sala.gavina_passadis.cartell.nom",
       "interactions": [
         {
+          "verb": "pickUp",
+          "if": {
+            "flag": "tros_cartell_agafat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.cartell.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tros_cartell_agafat"
+            },
+            {
+              "giveItem": "tros_cartell"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.cartell.prou"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
@@ -41,6 +71,19 @@
             "walkTo"
           ],
           "goTo": "gavina_cella"
+        }
+      ]
+    },
+    "porta_hangar": {
+      "name": "sala.gavina_passadis.porta_hangar.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_hangar"
         }
       ]
     }

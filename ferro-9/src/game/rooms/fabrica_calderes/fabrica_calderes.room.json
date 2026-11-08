@@ -168,6 +168,39 @@
         "x": 447,
         "y": 66
       }
+    },
+    {
+      "id": "porta_moll",
+      "active": true,
+      "description": "moll de càrrega",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 207,
+          "y": 84
+        },
+        {
+          "x": 275,
+          "y": 84
+        },
+        {
+          "x": 275,
+          "y": 155
+        },
+        {
+          "x": 207,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 242,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 242,
+        "y": 156
+      },
+      "defaultVerb": "open"
     }
   ],
   "points": [],

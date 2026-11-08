@@ -71,5 +71,43 @@
         }
       }
     ]
+  },
+  "acte2": {
+    "kind": "main",
+    "title": "mis.acte2.titol",
+    "description": "mis.acte2.desc",
+    "startWhen": {
+      "flag": "acte1_acabat"
+    },
+    "objectives": [
+      {
+        "id": "hangar",
+        "text": "mis.acte2.obj.hangar",
+        "completeWhen": {
+          "visited": "gavina_hangar"
+        }
+      },
+      {
+        "id": "mida",
+        "text": "mis.acte2.obj.mida",
+        "completeWhen": {
+          "flag": "iri_sap_mida"
+        }
+      },
+      {
+        "id": "comporta",
+        "text": "mis.acte2.obj.comporta",
+        "completeWhen": {
+          "flag": "comporta_oberta"
+        }
+      },
+      {
+        "id": "components",
+        "text": "mis.acte2.obj.components",
+        "completeWhen": {
+          "flag": "components_complets"
+        }
+      }
+    ]
   }
 }

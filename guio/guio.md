@@ -147,8 +147,9 @@ per imitació, signa *"I."*. La tensió de "qui és l'altra?" sorgeix sola.
 **Final de l'Acte 1:** la Vet surt de la cel·la, però no de la presó. Mentrestant, l'inventari de la fàbrica
 registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau obre un expedient.
 
-**Comptes de les enceses:** n'hi ha setze. L'Acte 1 en gasta nou (cinc enviaments, dels quals només els dos primers amb el ritual, i les quatre notes
-del muntatge), i en queden set per a l'Acte 2 i l'Acte 3.
+**Comptes de les enceses:** n'hi ha vint-i-quatre. L'Acte 1 en gasta nou (cinc enviaments, dels quals només els dos primers amb
+el ritual, i les quatre notes del muntatge), i en queden quinze per a l'Acte 2 i l'Acte 3. La palanca de l'Acte 2 en gasta
+entre dues (biga de ferro-9 amagada) i quatre (per peces).
 
 ### Acte 2 — «Els costos» (el cor del joc)
 
@@ -179,6 +180,29 @@ La comporta s'obre amb una biga llarga i rígida.
   canviat, i la Vet ha de trobar a la presó un objecte la mida del qual l'Iri conegui (per exemple, la clau
   anglesa, que totes dues tenen).
 - La ruta B és més llarga però **no deixa rastre**.
+
+**Com es juga (fet al joc, primera part de l'Acte 2).** Sales noves: el **moll de càrrega** de la fàbrica (Iri, s'hi
+va des de la sala de calderes) i el **moll de l'hangar** de La Gavina (Vet, al fons del passadís). És el mateix lloc
+a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
+
+1. La Vet troba la comporta encallada, amb l'encaix buit. Ara que la cambra de l'Iri sincronitza sola, recupera
+   la clau anglesa del panell i la fa servir de cinta mètrica: **sis claus angleses i mitja**.
+2. Arrenca un tros del cartell del reciclatge, hi escriu la mida amb el llapis d'ulls i l'envia.
+3. L'Iri ho tradueix: una clau Lot 1 fa trenta centímetres, uns dos metres de biga.
+4. **Per peces:** serra la biga d'acer del moll en tres trams de menys de 2 kg i els envia d'un en un; la Vet els
+   cargola.
+5. **Camí llarg:** amaga una biga a la trapa dels fonaments, al costat del pilar 7, i escriu a la Vet on mirar.
+   La Vet aixeca la placa del terra del costat del pilar. Si era d'acer, hi troba pols de rovell; l'envia a l'Iri,
+   que ho entén, torna a pujar la biga (al passat encara és nova) i pot provar-ho a trossos. Si era la biga de
+   ferro-9 reservada per a la caldera 4, arriba perfecta, però robar-la puja la sospita de l'Inspector Brau.
+6. Amb la biga, la Vet obre la comporta: la llançadora hi és, vella i amb **tres forats** on hi falten peces.
+
+### Pla de producció de l'Acte 2
+
+1. **La comporta** (palanca): fet.
+2. **El diapasó**: la molla de la llitera, el pany sònic i el diapasó de ferro-9.
+3. **La vàlvula**: la pressió del conducte, la inundació i el reajust.
+4. **El cost humà**: l'Inspector Brau, la Mira acusada i el Cargol del present; tancament de l'acte.
 
 #### Component 2: el diapasó (el pany sònic de l'hangar)
 

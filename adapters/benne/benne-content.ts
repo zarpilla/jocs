@@ -198,6 +198,21 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
           console.warn(`⚠ rooms/${id}: falta el fotograma «${did}» a l'art de la sala.`);
         }
       }
+      // Coses noves del contingut (una porta, un objecte...): s'afegeixen amb la disposició
+      // automàtica. Si la sala té disseny propi (room_designs.py), l'art provisional les recol·loca.
+      const hotspots = ((benneRoom.hotspots as Json[]) ??= []);
+      const has = (thingId: unknown) => hotspots.some((h) => h.id === thingId) || props.some((p) => p.id === thingId);
+      const fresh = layoutRoom(id, room, content, t).room;
+      for (const h of fresh.hotspots as Json[]) {
+        if (has(h.id)) continue;
+        hotspots.push(h);
+        report.created.push(`rooms/${id}: ${String(h.id)}`);
+      }
+      for (const p of fresh.props as Json[]) {
+        if (has(p.id)) continue;
+        props.push(p);
+        report.created.push(`rooms/${id}: ${String(p.id)}`);
+      }
       writeJson(path, benneRoom);
       // Art encara provisional: es redibuixa (els dissenys poden haver canviat).
       if (existsSync(join(gameDir, 'assets/images/rooms', id, '.provisional'))) report.needsArt.push(`rooms/${id}`);

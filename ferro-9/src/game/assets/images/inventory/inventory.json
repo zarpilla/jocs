@@ -398,6 +398,237 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 19.aseprite": {
+      "frame": {
+        "x": 931,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 20.aseprite": {
+      "frame": {
+        "x": 980,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 21.aseprite": {
+      "frame": {
+        "x": 1029,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 22.aseprite": {
+      "frame": {
+        "x": 1078,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 23.aseprite": {
+      "frame": {
+        "x": 1127,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 24.aseprite": {
+      "frame": {
+        "x": 1176,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 25.aseprite": {
+      "frame": {
+        "x": 1225,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 26.aseprite": {
+      "frame": {
+        "x": 1274,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 27.aseprite": {
+      "frame": {
+        "x": 1323,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 28.aseprite": {
+      "frame": {
+        "x": 1372,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 29.aseprite": {
+      "frame": {
+        "x": 1421,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -406,7 +637,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 931,
+      "w": 1470,
       "h": 27
     },
     "scale": "1",
@@ -541,6 +772,83 @@
         "name": "sopa",
         "from": 18,
         "to": 18,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tros_cartell",
+        "from": 19,
+        "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_mida",
+        "from": 20,
+        "to": 20,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "biga_acer",
+        "from": 21,
+        "to": 21,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "biga_ferro9",
+        "from": 22,
+        "to": 22,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "serra",
+        "from": 23,
+        "to": 23,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tram_biga_1",
+        "from": 24,
+        "to": 24,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tram_biga_2",
+        "from": 25,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tram_biga_3",
+        "from": 26,
+        "to": 26,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "biga_muntada",
+        "from": 27,
+        "to": 27,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_amagatall",
+        "from": 28,
+        "to": 28,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pols_rovell",
+        "from": 29,
+        "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       }

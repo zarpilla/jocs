@@ -1,0 +1,405 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.gavina_hangar.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "verb": "*",
+      "id": "primera",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.intro1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.intro2"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta_passadis": {
+      "name": "sala.gavina_hangar.porta_passadis.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_passadis"
+        }
+      ]
+    },
+    "comporta": {
+      "name": "sala.gavina_hangar.comporta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "comporta_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.oberta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "biga_ferro9",
+          "if": {
+            "flag": "comporta_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.comporta.obrir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.comporta.obrir5"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "biga_ferro9"
+            },
+            {
+              "setFlag": "comporta_oberta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "biga_muntada",
+          "if": {
+            "flag": "comporta_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.comporta.obrir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.comporta.obrir5"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "biga_muntada"
+            },
+            {
+              "setFlag": "comporta_oberta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tram_biga_1",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.tram"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tram_biga_2",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.tram"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tram_biga_3",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.tram"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "flag": "comporta_mesurada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurar1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurar2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurar3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "comporta_mesurada"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.encallada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "pilar": {
+      "name": "sala.gavina_hangar.pilar.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.pilar.look"
+            }
+          ]
+        }
+      ]
+    },
+    "placa_terra": {
+      "name": "sala.gavina_hangar.placa.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "vet_sap_amagatall"
+              },
+              {
+                "var": "biga_amagada",
+                "op": "==",
+                "value": "ferro9"
+              },
+              {
+                "flag": "biga_trobada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.ferro9_1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.ferro9_2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "biga_trobada"
+            },
+            {
+              "giveItem": "biga_ferro9"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "vet_sap_amagatall"
+              },
+              {
+                "var": "biga_amagada",
+                "op": "==",
+                "value": "acer"
+              },
+              {
+                "flag": "rovell_trobat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.rovell1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.rovell2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.rovell3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "rovell_trobat"
+            },
+            {
+              "giveItem": "pols_rovell"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "vet_sap_amagatall"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.buida"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.perque"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "vet_sap_amagatall"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.look_pilar"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "llancadora": {
+      "name": "sala.gavina_hangar.llancadora.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tocar"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "flag": "comporta_oberta"
+      }
+    }
+  }
+}

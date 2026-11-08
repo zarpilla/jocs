@@ -20,6 +20,14 @@
     {
       "id": "gavina_passadis",
       "definition": "gavina_passadis/gavina_passadis.room.json"
+    },
+    {
+      "id": "fabrica_moll",
+      "definition": "fabrica_moll/fabrica_moll.room.json"
+    },
+    {
+      "id": "gavina_hangar",
+      "definition": "gavina_hangar/gavina_hangar.room.json"
     }
   ]
 }

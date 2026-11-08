@@ -27,15 +27,31 @@
     "mira_salvada": false,
     "planols_robats": false,
     "cargol_memoria": false,
-    "sincronia_automatica": false
+    "sincronia_automatica": false,
+    "tros_cartell_agafat": false,
+    "clau_recuperada": false,
+    "comporta_mesurada": false,
+    "nota_mida_escrita": false,
+    "iri_sap_mida": false,
+    "biga_acer_serrada": false,
+    "biga_ferro9_robada": false,
+    "nota_amagatall_escrita": false,
+    "vet_sap_amagatall": false,
+    "biga_trobada": false,
+    "rovell_trobat": false,
+    "iri_sap_rovell": false,
+    "biga_muntada_feta": false,
+    "comporta_oberta": false,
+    "components_complets": false
   },
   "vars": {
     "finestra_armada": "",
     "finestra_objecte_iri": "",
     "finestra_objecte_vet": "",
-    "enceses_restants": 16,
+    "enceses_restants": 24,
     "transferencies": 0,
     "sospita_brau": 0,
-    "dies_reciclatge": 3
+    "dies_reciclatge": 3,
+    "biga_amagada": ""
   }
 }

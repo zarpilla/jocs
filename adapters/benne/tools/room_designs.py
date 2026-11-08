@@ -320,6 +320,10 @@ def calderes_bg(c):
 
     factory_door(c, 8, 50, 40, 112)
     factory_door(c, 312, 50, 344, 112, iron=True, sign=True)
+    factory_door(c, 154, 70, 200, 112)                              # porta del moll de càrrega
+    c.rect(166, 64, 188, 68, (210, 200, 170))                        # rètol «MOLL»
+    for x in (169, 174, 179, 184):
+        c.rect(x, 65, x + 2, 67, (60, 46, 30))
     vignette(c)
 
 
@@ -338,6 +342,7 @@ CALDERES = {
         'tauler': {'rect': (146, 24, 206, 64), 'walk': (176, 128)},
         'alarma': {'rect': (318, 28, 338, 48), 'walk': (316, 132)},
         'segell': {'rect': (222, 124, 242, 140), 'walk': (214, 140)},
+        'porta_moll': {'rect': (152, 62, 202, 114), 'walk': (177, 132)},
     },
     'spawns': {'iri': (160, 138), 'capatas': (262, 132)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
@@ -720,11 +725,189 @@ PASSADIS = {
         'porta_cella': {'rect': (6, 34, 48, 114), 'walk': (34, 134)},
         'cartell': {'rect': (238, 28, 312, 56), 'walk': (270, 128)},
         'camera_vigilancia': {'rect': (300, 8, 328, 26), 'walk': (310, 128)},
+        'porta_hangar': {'rect': (186, 46, 214, 90), 'walk': (200, 120)},
     },
     'spawns': {'vet': (90, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': passadis_bg,
     'props': {},
+}
+
+
+# ─── Fàbrica: moll de càrrega (Acte 2) ──────────────────────────────────────
+
+def pillar(c, x0, x1, base, dark, num_col, y0=0, y1=112):
+    """Pilar amb un 7 pintat (és el mateix lloc a les dues èpoques)."""
+    c.hgrad(x0, y0, x1, y1, [(0, dark), (0.4, base), (1, dark)])
+    seven = ['####', '...#', '..#.', '..#.', '.#..', '.#..']
+    for dy, row in enumerate(seven):
+        for dx, ch in enumerate(row):
+            if ch == '#':
+                c.px(x0 + 4 + dx, 40 + dy, num_col)
+
+
+def moll_bg(c):
+    bricks(c, 0, 0, W, 112, (122, 62, 42), (68, 38, 30), seed=51)
+    c.vgrad(0, 0, W, 10, (40, 26, 20), (70, 40, 30))
+    pipe_h(c, 0, 240, 6, 3, IRON)
+    planks(c, 112, H, (92, 64, 44), (58, 38, 26))
+    c.rect(0, 110, W, 113, (52, 34, 24))
+    # Rails de la llançadora
+    for y in (126, 138):
+        c.line([(240, y), (W, y + 6)], IRON[2], 2)
+    factory_door(c, 8, 50, 40, 112)
+    # Comporta del moll, oberta: a fora, la nit
+    c.rect(244, 10, 350, 112, (40, 34, 30))
+    c.vgrad(250, 16, 346, 108, (18, 20, 40), (40, 34, 50))
+    rnd = random.Random(52)
+    for _ in range(18):
+        c.px(rnd.randint(252, 344), rnd.randint(18, 60), (220, 220, 240))
+    c.rect(244, 10, 350, 18, IRON[1])
+    for x in range(248, 350, 8):                                    # franges de perill
+        c.rect(x, 12, x + 3, 16, (230, 180, 40))
+    # La llançadora, nova
+    c.ellipse(256, 44, 344, 98, (176, 186, 196))
+    c.ellipse(262, 50, 338, 70, (214, 222, 230))
+    c.d.polygon([(256, 71), (238, 66), (238, 76)], fill=(150, 160, 170))   # morro
+    for x in range(270, 340, 10):
+        c.px(x, 72, (120, 130, 140))
+        c.px(x, 86, (120, 130, 140))
+    c.rect(290, 60, 306, 72, (60, 120, 160))                        # finestreta
+    c.rect(318, 92, 334, 104, (140, 150, 160))                      # aleta
+    c.rect(270, 98, 276, 112, IRON[1])                              # suports
+    c.rect(322, 98, 328, 112, IRON[1])
+    # Pilar 7
+    pillar(c, 182, 196, (150, 92, 64), (100, 60, 40), (240, 230, 210))
+    # Cavallets (la biga és un prop a part)
+    for x in (70, 136):
+        c.line([(x - 6, 126), (x, 100)], WOOD[0], 2)
+        c.line([(x + 6, 126), (x, 100)], WOOD[0], 2)
+        c.rect(x - 8, 100, x + 8, 102, WOOD[1])
+    # Bastidor de la paret (la biga de ferro-9 és un prop a part)
+    for x in (66, 146):
+        c.rect(x, 48, x + 3, 62, IRON[0])
+        c.rect(x - 2, 60, x + 5, 62, IRON[1])
+    # Tauler d'eines
+    c.rect(204, 30, 244, 82, (110, 80, 52))
+    c.rect(206, 32, 242, 80, (150, 112, 74))
+    c.rect(210, 62, 216, 76, IRON[1]); c.rect(208, 60, 218, 63, IRON[2])      # martell
+    c.rect(226, 62, 228, 78, (190, 196, 206)); c.rect(224, 60, 230, 63, (190, 196, 206))  # clau
+    # Trapa als fonaments, al costat del pilar
+    c.rect(198, 120, 226, 130, (70, 48, 30))
+    c.rect(200, 122, 224, 128, WOOD[1])
+    c.line([(212, 122), (212, 128)], WOOD[0])
+    c.ellipse(216, 123, 220, 127, None, outline=IRON[2])
+    vignette(c)
+
+
+def moll_biga_acer(c):
+    c.rect(56, 94, 156, 100, (150, 156, 164))
+    c.rect(56, 94, 156, 95, (196, 202, 210))
+    c.rect(56, 99, 156, 100, (100, 106, 114))
+
+
+def moll_biga_ferro9(c):
+    c.rect(58, 52, 154, 58, (170, 200, 230))
+    c.rect(58, 52, 154, 53, (230, 245, 255))
+    c.glow(106, 55, 30, (160, 210, 255), 0.35)
+    c.rect(100, 58, 112, 64, (236, 230, 210))                       # etiqueta
+    c.line([(102, 60), (110, 60)], (160, 40, 40))
+
+
+def moll_serra(c):
+    c.rect(214, 46, 234, 49, (200, 206, 216))                       # fulla
+    for x in range(214, 234, 2):
+        c.px(x, 50, (150, 156, 166))
+    c.rect(232, 44, 240, 52, (120, 60, 40))                         # mànec
+
+
+MOLL = {
+    'era': 'iri',
+    'things': {
+        'porta_calderes': {'rect': (6, 48, 42, 114), 'walk': (30, 134)},
+        'biga_acer': {'rect': (54, 90, 158, 104), 'walk': (106, 132)},
+        'biga_ferro9': {'rect': (56, 46, 156, 66), 'walk': (106, 128)},
+        'serra': {'rect': (212, 42, 242, 54), 'walk': (226, 128)},
+        'trapa': {'rect': (196, 118, 228, 132), 'walk': (212, 142)},
+        'comporta': {'rect': (244, 8, 350, 40), 'walk': (296, 132)},
+        'llancadora': {'rect': (236, 42, 346, 110), 'walk': (264, 136)},
+    },
+    'spawns': {'iri': (40, 138)},
+    'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
+    'bg': moll_bg,
+    'props': {'biga_acer': moll_biga_acer, 'biga_ferro9': moll_biga_ferro9, 'serra': moll_serra},
+}
+
+
+# ─── La Gavina: moll de l'hangar (Acte 2) ───────────────────────────────────
+
+def hangar_bg(c):
+    metal_panels(c, 0, 0, W, 112, (56, 66, 80), (28, 34, 44), (90, 104, 120), seed=61)
+    c.rect(0, 0, W, 6, (24, 30, 40))
+    grating(c, 112, H, (38, 46, 58), (26, 30, 40))
+    c.rect(0, 110, W, 113, (24, 30, 40))
+    # Porta del passadís
+    c.rect(5, 35, 49, 112, (26, 32, 42))
+    c.hgrad(8, 38, 46, 112, [(0, STEEL[0]), (0.3, STEEL[2]), (1, STEEL[0])])
+    c.rect(38, 70, 42, 78, (40, 44, 54))
+    # Pilar 7: el de la fàbrica, cent vint anys després
+    pillar(c, 110, 124, (96, 70, 60), (60, 44, 40), (170, 150, 120))
+    c.shade(110, 0, 124, 112, (40, 30, 30), 70)
+    # Plaques del terra (la del costat del pilar és la de la nota)
+    for x in range(20, 340, 40):
+        c.d.rectangle([x, 120, x + 36, 128], outline=(52, 62, 76))
+    c.d.rectangle([100, 120, 136, 128], outline=(70, 82, 98))
+    for x, y in ((102, 122), (134, 122), (102, 126), (134, 126)):
+        c.px(x, y, (120, 130, 140))
+    # La comporta, tancada i rovellada
+    c.rect(156, 6, 350, 112, (30, 36, 46))
+    for y in range(10, 104, 8):
+        c.vgrad(176, y, 346, y + 6, (110, 116, 124), (70, 76, 86))
+    rnd = random.Random(62)
+    for _ in range(26):                                             # rovell
+        x, y = rnd.randint(178, 340), rnd.randint(12, 100)
+        c.ellipse(x, y, x + rnd.randint(2, 7), y + rnd.randint(2, 5), (130, 74, 44))
+    for x in range(176, 346, 8):                                    # franges de perill
+        c.rect(x, 104, x + 3, 110, (200, 160, 40))
+    # L'encaix de la palanca, buit
+    c.rect(158, 56, 172, 104, (20, 24, 30))
+    c.rect(162, 60, 168, 100, (8, 10, 14))
+    c.rect(156, 52, 174, 56, STEEL[1])
+    vignette(c, 100)
+
+
+def hangar_llancadora(c):
+    """La comporta oberta i, a dins, la llançadora vella (quan la Vet obre amb la biga)."""
+    c.rect(176, 10, 346, 104, (14, 16, 22))
+    for y in range(10, 22, 3):                                      # la comporta, plegada a dalt
+        c.rect(176, y, 346, y + 2, (100, 106, 114))
+    c.ellipse(196, 46, 330, 100, (120, 120, 116))
+    c.ellipse(204, 52, 322, 70, (146, 146, 140))
+    c.d.polygon([(196, 73), (178, 68), (178, 78)], fill=(100, 100, 96))
+    for x, y in ((236, 76), (268, 82), (300, 74)):                  # els tres forats
+        c.rect(x, y, x + 10, y + 7, (20, 20, 24))
+        c.d.rectangle([x - 1, y - 1, x + 11, y + 8], outline=(200, 160, 40))
+    c.rect(250, 60, 266, 70, (50, 70, 80))
+    rnd = random.Random(63)
+    for _ in range(40):                                             # pols
+        c.px(rnd.randint(200, 326), rnd.randint(50, 98), (160, 160, 150))
+    c.line([(176, 22), (196, 50)], (190, 190, 190))                 # teranyines
+    c.line([(346, 22), (326, 52)], (190, 190, 190))
+
+
+HANGAR = {
+    'era': 'vet',
+    'things': {
+        'porta_passadis': {'rect': (6, 34, 48, 114), 'walk': (34, 134)},
+        'comporta': {'rect': (156, 6, 350, 112), 'walk': (220, 132)},
+        'pilar': {'rect': (108, 8, 126, 112), 'walk': (118, 128)},
+        'placa_terra': {'rect': (98, 118, 138, 130), 'walk': (118, 142)},
+        'llancadora': {'rect': (178, 40, 334, 104), 'walk': (260, 132)},
+    },
+    'spawns': {'vet': (70, 138)},
+    'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
+    'bg': hangar_bg,
+    'props': {'llancadora': hangar_llancadora},
 }
 
 
@@ -734,4 +917,6 @@ DESIGNS = {
     'fabrica_cambra': CAMBRA,
     'gavina_cella': CELLA,
     'gavina_passadis': PASSADIS,
+    'fabrica_moll': MOLL,
+    'gavina_hangar': HANGAR,
 }

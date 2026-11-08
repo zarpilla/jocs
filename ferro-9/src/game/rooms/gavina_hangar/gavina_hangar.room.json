@@ -1,0 +1,238 @@
+{
+  "id": "gavina_hangar",
+  "name": "Moll de l'hangar",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_passadis",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 46
+        },
+        {
+          "x": 65,
+          "y": 46
+        },
+        {
+          "x": 65,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 47,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 37,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "comporta",
+      "active": true,
+      "description": "comporta",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 212,
+          "y": 8
+        },
+        {
+          "x": 477,
+          "y": 8
+        },
+        {
+          "x": 477,
+          "y": 153
+        },
+        {
+          "x": 212,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 300,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 345,
+        "y": 153
+      }
+    },
+    {
+      "id": "pilar",
+      "active": true,
+      "description": "pilar",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 147,
+          "y": 10
+        },
+        {
+          "x": 172,
+          "y": 10
+        },
+        {
+          "x": 172,
+          "y": 153
+        },
+        {
+          "x": 147,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 161,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 160,
+        "y": 153
+      }
+    },
+    {
+      "id": "placa_terra",
+      "active": true,
+      "description": "placa del terra",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 133,
+          "y": 160
+        },
+        {
+          "x": 188,
+          "y": 160
+        },
+        {
+          "x": 188,
+          "y": 177
+        },
+        {
+          "x": 133,
+          "y": 177
+        }
+      ],
+      "walkToPoint": {
+        "x": 161,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 161,
+        "y": 177
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llancadora",
+      "tag": "llancadora",
+      "animations": {
+        "llancadora": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 242,
+            "y": 54
+          },
+          {
+            "x": 455,
+            "y": 54
+          },
+          {
+            "x": 455,
+            "y": 142
+          },
+          {
+            "x": 242,
+            "y": 142
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 355,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 349,
+        "y": 142
+      },
+      "description": "llançadora"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 96,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

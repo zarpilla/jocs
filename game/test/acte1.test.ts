@@ -210,7 +210,7 @@ describe('Ferro-9 · Acte 1', () => {
     expect(n.state.quests.acte1!.status).toBe('completed');
     expect(n.getVar('sospita_brau')).toBe(1);
     // Cinc enviaments a mà i les quatre notes del muntatge.
-    expect(estatFinestra(n).enceses).toBe(16 - 5 - 4);
+    expect(estatFinestra(n).enceses).toBe(24 - 5 - 4);
     expect(n.flag('sincronia_automatica')).toBe(true);
   });
 

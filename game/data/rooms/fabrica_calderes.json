@@ -326,6 +326,19 @@
           ]
         }
       ]
+    },
+    "porta_moll": {
+      "name": "sala.fabrica_calderes.porta_moll.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_moll"
+        }
+      ]
     }
   },
   "onEnter": [

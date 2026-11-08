@@ -135,6 +135,39 @@
         "x": 428,
         "y": 36
       }
+    },
+    {
+      "id": "porta_hangar",
+      "active": true,
+      "description": "porta del fons",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 253,
+          "y": 62
+        },
+        {
+          "x": 292,
+          "y": 62
+        },
+        {
+          "x": 292,
+          "y": 123
+        },
+        {
+          "x": 253,
+          "y": 123
+        }
+      ],
+      "walkToPoint": {
+        "x": 273,
+        "y": 164
+      },
+      "lookAtPoint": {
+        "x": 273,
+        "y": 123
+      },
+      "defaultVerb": "open"
     }
   ],
   "points": [],

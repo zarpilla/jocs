@@ -251,10 +251,89 @@ def sopa(c):
     c.ellipse(16, 4, 1.2, 1.2, (210, 230, 160)); c.px(21, 2, (210, 230, 160))  # bombolles que s'escapen
 
 
+# ─── Acte 2 ──────────────────────────────────────────────────────────────────
+
+STEEL_B, STEEL_B2, F9, F9b = (150, 156, 164), (100, 106, 114), (170, 200, 230), (230, 245, 255)
+
+
+def tros_cartell(c):
+    c.rect(11, 4, 25, 16, (236, 236, 226)); c.rect(11, 15, 25, 16, (200, 200, 190))
+    c.rect(11, 4, 14, 16, (60, 160, 90))                     # tros de la vora verda del cartell
+    c.px(25, 4, (0, 0, 0, 0)); c.px(24, 4, (0, 0, 0, 0)); c.px(25, 5, (0, 0, 0, 0))  # estripat
+
+
+def nota_mida(c):
+    tros_cartell(c)
+    c.rect(16, 7, 23, 8, BLACK); c.rect(16, 11, 21, 12, BLACK)   # «6 ½»
+    c.px(23, 12, BLACK)
+
+
+def biga(c, col, col2, hi):
+    c.rect(2, 8, 33, 12, col); c.rect(2, 8, 33, 8, hi); c.rect(2, 12, 33, 12, col2)
+
+
+def biga_acer(c):
+    biga(c, STEEL_B, STEEL_B2, (196, 202, 210))
+
+
+def biga_ferro9(c):
+    biga(c, F9, (120, 150, 180), F9b)
+    c.px(10, 9, SHINE); c.px(22, 9, SHINE)
+
+
+def serra(c):
+    c.rect(6, 9, 26, 11, (200, 206, 216))
+    for x in range(6, 26, 2):
+        c.px(x, 12, (150, 156, 166))
+    c.rect(26, 7, 31, 14, (120, 60, 40)); c.rect(27, 9, 29, 12, (0, 0, 0, 0))
+
+
+def tram(c, n):
+    c.rect(8, 8, 27, 12, STEEL_B); c.rect(8, 8, 27, 8, (196, 202, 210)); c.rect(8, 12, 27, 12, STEEL_B2)
+    for x in (10, 25):
+        c.px(x, 10, BLACK)                                    # forats dels cargols
+    for i in range(n):                                        # marques del número de tram
+        c.px(16 + i * 2, 15, (230, 180, 40))
+
+
+def tram_biga_1(c):
+    tram(c, 1)
+
+
+def tram_biga_2(c):
+    tram(c, 2)
+
+
+def tram_biga_3(c):
+    tram(c, 3)
+
+
+def biga_muntada(c):
+    biga_acer(c)
+    for x in (12, 23):
+        c.rect(x, 7, x, 13, STEEL_B2); c.px(x, 10, BLACK)
+
+
+def nota_amagatall(c):
+    sheet_of_paper(c, 10, 3, 25, 16, lines=False)
+    c.rect(16, 6, 19, 6, INK); c.rect(19, 6, 19, 11, INK); c.px(18, 8, INK); c.px(17, 10, INK)  # un 7
+    for x in range(12, 23, 2):
+        c.px(x, 13, INK)
+
+
+def pols_rovell(c):
+    c.ellipse(17.5, 12, 9, 4, (150, 80, 44))
+    for x, y in ((12, 10), (16, 9), (21, 10), (24, 12), (14, 13), (19, 12)):
+        c.px(x, y, (190, 110, 60))
+    c.px(9, 15, (130, 70, 40)); c.px(27, 15, (130, 70, 40))
+
+
 ICONS = {f.__name__: f for f in (
     clau_anglesa, formulari_27b, formulari_segellat, formulari_triplicat, plomall, segell, clau_cambra,
     llapis, llibreta_torn, caixa_eines, imant_ferro9, nota_iri, avis_reciclatge, llapis_ulls, nota_vet,
     fullet_reeducacio, nota_pany, escarabat, sopa,
+    tros_cartell, nota_mida, biga_acer, biga_ferro9, serra, tram_biga_1, tram_biga_2, tram_biga_3, biga_muntada,
+    nota_amagatall, pols_rovell,
 )}
 
 
