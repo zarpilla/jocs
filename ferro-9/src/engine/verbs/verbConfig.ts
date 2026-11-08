@@ -103,7 +103,7 @@ export function composeVerbLineText(
   }
 
   if (walkMode) {
-    return `${WALK_TO_VERB_DISPLAY_LABEL} ${desc}`;
+    return `${resolveWalkToLabel(settings)} ${desc}`;
   }
   if (useInventoryPrepLine) {
     const verbWord = resolveVerbLineLeadingVerbWord(settings, trimmedVerb);
