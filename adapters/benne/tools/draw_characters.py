@@ -7,7 +7,7 @@ que espera Benne (full d'Aseprite PNG + JSON amb etiquetes, i el .character.json
   vet      presonera de la cel·la 9 (present): granota de presó taronja, bob platí
   cargol   robot de manteniment amb closca de cargol, ulls a les antenes, erugues
   capatas  el capatàs Pruna, adormit a la cadira, amb el segell a les mans (i sense)
-  mos     presoner vell i prim, maquillat
+  mos      presoner vell i prim, maquillat: granota taronja descolorida
   mare     l'altaveu en forma de cor de la IA (normalment invisible)
 
 Les protagonistes tenen Idle/Walk/Talk en tres direccions (L, D, U; Benne fa el mirall per a R).
@@ -226,8 +226,8 @@ VET = {
 }
 MOS = {
     'skin': (214, 170, 140), 'skin2': (184, 138, 110), 'hair': (206, 206, 214), 'hair2': (160, 160, 170),
-    'top': (150, 172, 194), 'top2': (110, 132, 154), 'sleeve_len': 'long', 'legs': (150, 172, 194), 'legs2': (110, 132, 154),
-    'shoes': (90, 90, 96), 'eyes': (20, 16, 24), 'makeup': True, 'hair_fn': hair_mos, 'deco': deco_mos,
+    'top': (204, 122, 70), 'top2': (164, 92, 50), 'sleeve_len': 'long', 'legs': (204, 122, 70), 'legs2': (164, 92, 50),
+    'shoes': (90, 90, 96), 'leg_stripe': (226, 222, 210), 'eyes': (20, 16, 24), 'makeup': True, 'hair_fn': hair_mos, 'deco': deco_mos,
 }
 
 SLEEVE_END = {'long': 37, 'rolled': 29}
