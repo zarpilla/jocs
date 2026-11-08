@@ -213,6 +213,10 @@ export interface GameSettings {
    */
   defaultFallbackLine?: string;
   /**
+   * Verb-line label for the built-in walk mode (no verb armed). Defaults to **`"Walk to"`**.
+   */
+  walkToLabel?: string;
+  /**
    * Global default policy for whether the **active inventory item** is "dropped" (active inventory +
    * active verb both cleared) after it is used on a clickable target (prop / hotspot / character).
    *

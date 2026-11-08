@@ -332,6 +332,10 @@ function assertVerbSettings(data: GameSettings): void {
   if (data.defaultFallbackLine !== undefined && typeof data.defaultFallbackLine !== 'string') {
     throw new Error('game-config defaultFallbackLine must be a string when present');
   }
+
+  if (data.walkToLabel !== undefined && typeof data.walkToLabel !== 'string') {
+    throw new Error('game-config walkToLabel must be a string when present');
+  }
 }
 
 function assertInitialGameState(data: GameSettings): void {

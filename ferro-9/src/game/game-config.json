@@ -54,6 +54,7 @@
   "dropWhenInventoryUsed": true,
   "cutscenesSkippable": true,
   "defaultFallbackLine": "Això no funciona.",
+  "walkToLabel": "Camina cap a",
   "startingPlayerCharacter": "iri",
   "startingRoomId": "fabrica_calderes",
   "initialGameState": {

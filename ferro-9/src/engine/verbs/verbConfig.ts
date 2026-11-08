@@ -13,6 +13,12 @@ export const WALK_TO_VERB_ID = 'walkTo';
  */
 export const WALK_TO_VERB_DISPLAY_LABEL = 'Walk to';
 
+/** Walk-mode label: `game-config.json` `walkToLabel` when set, else {@link WALK_TO_VERB_DISPLAY_LABEL}. */
+export function resolveWalkToLabel(settings: GameSettings): string {
+  const custom = settings.walkToLabel?.trim();
+  return custom && custom.length > 0 ? custom : WALK_TO_VERB_DISPLAY_LABEL;
+}
+
 function titleCaseVerbId(id: string): string {
   if (id.length === 0) {
     return id;
@@ -28,7 +34,7 @@ function titleCaseVerbId(id: string): string {
 export function resolveVerbLineDisplayLabel(settings: GameSettings, activeVerbId: string | null): string {
   const trimmed = activeVerbId?.trim() ?? '';
   if (trimmed.length === 0 || trimmed === WALK_TO_VERB_ID) {
-    return WALK_TO_VERB_DISPLAY_LABEL;
+    return resolveWalkToLabel(settings);
   }
   const defs = getEffectiveVerbDefinitions(settings);
   const def = defs.find((v) => v.id === trimmed);
@@ -53,7 +59,7 @@ export function resolveVerbLineDisplayLabel(settings: GameSettings, activeVerbId
 export function resolveVerbLineLeadingVerbWord(settings: GameSettings, activeVerbId: string): string {
   const trimmed = activeVerbId.trim();
   if (trimmed.length === 0 || trimmed === WALK_TO_VERB_ID) {
-    return WALK_TO_VERB_DISPLAY_LABEL;
+    return resolveWalkToLabel(settings);
   }
   const defs = getEffectiveVerbDefinitions(settings);
   const def = defs.find((v) => v.id === trimmed);
