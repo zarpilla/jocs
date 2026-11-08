@@ -1,5 +1,5 @@
 /**
- * La finestra de fase (regles a guio/proposta-1-v2.md).
+ * La finestra de fase (regles a guio/guio.md).
  *
  * Lògica del joc, no del motor: només fa servir el nucli narratiu. L'estat va
  * a variables de `state.json`, i per tant es desa amb la partida.

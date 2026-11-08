@@ -1,27 +1,8 @@
-# Proposta 1 (v2) — «Ferro-9»
+# Ferro-9 — guió
 
-> Títol de treball. Versió millorada de `proposta-1.txt`, que es manté intacta.
->
-> **Revisió 2:** s'intercanvien les protagonistes (ara l'**Iri** és al passat i la **Vet** al present) i
-> es refan els finals: **les dues se salven sempre, cap no se sacrifica i la corporació no guanya mai**.
-
-## Què ha canviat i per què
-
-| # | Problema a la v1 | Canvi |
-|---|---|---|
-| 1 | La finestra necessita els dos costats, però a l'escena 2 la clau arriba sense que la Vet faci res. | La Vet **sincronitza per accident**: dona un cop de puny al panell rovellat que vibra. |
-| 2 | Si un objecte arriba al cap de 0,3 s, no pot "degradar-se pel camí". | **Dues rutes**: la finestra (instantània, intacta, però limitada) i el **camí llarg** (amagar l'objecte i esperar 120 anys). Triar la ruta és el cor dels trencaclosques. |
-| 3 | No es diu com canvia el present quan es toca el passat, ni per què la Vet se n'adona. | Regla del **reajust**: el present es reescriu quan es tanca la finestra. La Vet ho recorda perquè era dins el camp, i ningú més no ho recorda. |
-| 4 | Els trencaclosques demanen calcular moments de força i freqüències. En una aventura gràfica això frustra. | Es manté la física com a ambientació, però es resolen **observant i provant**, no calculant. |
-| 5 | Hi ha fracassos irreversibles (inundar la cel·la). | **Cap atzucac**: les errades tenen conseqüències visibles (i gràcia), però sempre es poden corregir. És la norma del gènere. |
-| 6 | El to és molt fosc per a una referència a Monkey Island o Indiana Jones. | Hi entra **humor** de personatges, malentesos entre èpoques i burocràcia absurda. El drama hi continua, però no tot és gris. |
-| 7 | Per què hi ha una presó just a sobre de la fàbrica? | Aquest és el **misteri central**: la corporació fa 120 anys que vol reobrir la finestra. Els presos fan de sincronitzadors. |
-| 8 | No hi ha cap personatge que pugui "recordar" a través del temps. | **Cargol**, robot de manteniment, és a les dues èpoques. El que l'Iri li fa, ell ho recorda 120 anys després. |
-| 9 | Falten missions secundàries i un sistema de pistes. | N'hi ha, i n'hi ha que canvien el final. |
-| 10 | El final C depèn d'"una tercera via" que no es concreta, i els altres finals demanen un sacrifici. | **Tres finals sense sacrificis**: les dues se salven sempre i la corporació perd sempre. El que canvia és fins on arriba la victòria. |
-| 11 | La mecànica "el passat canvia el futur" s'assembla a jocs coneguts. | La fan pròpia la **sincronia dels dos costats**, el límit de 2 kg, les notes com a única via de comunicació i el camí llarg. |
-
----
+> Títol de treball. Document únic del guió: premissa, regles del món, actes, finals i encaix amb el motor.
+> L'**Iri** és al passat i la **Vet** al present. **Les dues se salven sempre, cap no se sacrifica i la
+> corporació no guanya mai.**
 
 ## Premissa
 
@@ -359,9 +340,30 @@ ACTE 3
   quins llocs es dupliquen.
 - **L'Acte 1 sol ja és jugable** com a demostració: unes 6 sales i les mecàniques bàsiques.
 
-## Preguntes obertes
+## Decisions preses
 
 1. **L'època de l'Iri:** és un passat retrofuturista inventat o té referents reals (per exemple, la
    industrialització catalana)? -> passat retrofuturista inventat
 2. **Edat i to:** tot públic o adolescents i adults? Això decideix fins on arriba la foscor del reciclatge. -> adolescents i adults
 3. **El reajust:** quant es veu? Una transició visual, o només que la Vet ho comenti? -> només que la Vet ho comenti
+
+---
+
+## Annex: decisions de disseny
+
+Canvis fets respecte de l'esborrany inicial (on la Vet era al passat, l'Iri al present i els finals
+demanaven un sacrifici), i per què.
+
+| # | Problema de l'esborrany | Canvi |
+|---|---|---|
+| 1 | La finestra necessita els dos costats, però a l'escena 2 la clau arriba sense que la Vet faci res. | La Vet **sincronitza per accident**: dona un cop de puny al panell rovellat que vibra. |
+| 2 | Si un objecte arriba al cap de 0,3 s, no pot "degradar-se pel camí". | **Dues rutes**: la finestra (instantània, intacta, però limitada) i el **camí llarg** (amagar l'objecte i esperar 120 anys). Triar la ruta és el cor dels trencaclosques. |
+| 3 | No es diu com canvia el present quan es toca el passat, ni per què la Vet se n'adona. | Regla del **reajust**: el present es reescriu quan es tanca la finestra. La Vet ho recorda perquè era dins el camp, i ningú més no ho recorda. |
+| 4 | Els trencaclosques demanen calcular moments de força i freqüències. En una aventura gràfica això frustra. | Es manté la física com a ambientació, però es resolen **observant i provant**, no calculant. |
+| 5 | Hi ha fracassos irreversibles (inundar la cel·la). | **Cap atzucac**: les errades tenen conseqüències visibles (i gràcia), però sempre es poden corregir. És la norma del gènere. |
+| 6 | El to és molt fosc per a una referència a Monkey Island o Indiana Jones. | Hi entra **humor** de personatges, malentesos entre èpoques i burocràcia absurda. El drama hi continua, però no tot és gris. |
+| 7 | Per què hi ha una presó just a sobre de la fàbrica? | Aquest és el **misteri central**: la corporació fa 120 anys que vol reobrir la finestra. Els presos fan de sincronitzadors. |
+| 8 | No hi ha cap personatge que pugui "recordar" a través del temps. | **Cargol**, robot de manteniment, és a les dues èpoques. El que l'Iri li fa, ell ho recorda 120 anys després. |
+| 9 | Falten missions secundàries i un sistema de pistes. | N'hi ha, i n'hi ha que canvien el final. |
+| 10 | El tercer final depèn d'"una tercera via" que no es concreta, i els altres finals demanen un sacrifici. | **Tres finals sense sacrificis**: les dues se salven sempre i la corporació perd sempre. El que canvia és fins on arriba la victòria. |
+| 11 | La mecànica "el passat canvia el futur" s'assembla a jocs coneguts. | La fan pròpia la **sincronia dels dos costats**, el límit de 2 kg, les notes com a única via de comunicació i el camí llarg. |

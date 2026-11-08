@@ -5,7 +5,7 @@ Aventura gràfica de "point & click" feta amb [Benne](https://benne.games/), amb
 
 Dues protagonistes separades per 120 anys: l'**Iri**, enginyera de la fàbrica de ferro-9, i la **Vet**,
 presonera de La Gavina, la presó construïda damunt les seves restes. Es comuniquen amb la finestra de fase.
-Guió: [guio/proposta-1-v2.md](guio/proposta-1-v2.md).
+Guió: [guio/guio.md](guio/guio.md).
 
 ## Les tres capes
 
