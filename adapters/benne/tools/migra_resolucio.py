@@ -66,8 +66,9 @@ def migrate_gui_image(png: Path):
         nx, ny, nw, nh = round(x * k), round(y * k), round(w * k), round(h * k)
         out.paste(src.crop((x, y, x + w, y + h)).resize((nw, nh), Image.NEAREST), (nx, ny))
         f['frame'] = {'x': nx, 'y': ny, 'w': nw, 'h': nh}
-        f['spriteSourceSize'] = {'x': 0, 'y': 0, 'w': nw, 'h': nh}
-        f['sourceSize'] = {'w': nw, 'h': nh}
+        # Fulls retallats: el desplaçament dins la pantalla també s'escala.
+        f['spriteSourceSize'] = {key: round(v * k) for key, v in f['spriteSourceSize'].items()}
+        f['sourceSize'] = {key: round(v * k) for key, v in f['sourceSize'].items()}
     meta['meta']['size'] = {'w': new_w, 'h': new_h}
     out.save(png)
     save(meta_path, meta)
