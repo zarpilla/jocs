@@ -4,7 +4,7 @@ Dibuixa l'art provisional que demana `npm run benne:sync` (fitxers de .benne-pro
 
   - per a cada sala nova: un full d'Aseprite (PNG + JSON) amb el fons i un fotograma per a
     cada prop condicional, amb caixes etiquetades on hi ha cada cosa;
-  - el full d'objectes d'inventari: una icona etiquetada per objecte.
+  - el full d'objectes d'inventari: la icona de draw_items.py, o una caixa amb el nom si encara no en té.
 
 Només redibuixa el que encara és provisional (marca `.provisional` o PNG inexistent): si un
 artista substitueix el PNG i esborra la marca, no es toca mai més.
@@ -22,6 +22,7 @@ from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from room_designs import DESIGNS, C  # noqa: E402
+from draw_items import icon  # noqa: E402
 
 PALETTE = {
     # passat: fàbrica de ferro-9 (calent, rovell, vapor)
@@ -222,6 +223,10 @@ def draw_inventory(dir_: Path, req, small):
     labels = short_labels(items)
     sheet = Image.new('RGBA', (fw * len(items), fh), (0, 0, 0, 0))
     for i, it in enumerate(items):
+        drawn = icon(it['id'])
+        if drawn is not None:
+            sheet.paste(drawn, (i * fw, 0))
+            continue
         hue = int(hashlib.md5(it['id'].encode()).hexdigest()[:6], 16)
         color = (80 + hue % 150, 80 + (hue >> 8) % 150, 80 + (hue >> 16) % 150)
         frame = Image.new('RGBA', (fw, fh), (0, 0, 0, 0))
