@@ -167,6 +167,38 @@
         "x": 405,
         "y": 55
       }
+    },
+    {
+      "id": "conducte",
+      "active": true,
+      "description": "conducte",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 215,
+          "y": 27
+        },
+        {
+          "x": 245,
+          "y": 27
+        },
+        {
+          "x": 245,
+          "y": 153
+        },
+        {
+          "x": 215,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 229,
+        "y": 177
+      },
+      "lookAtPoint": {
+        "x": 231,
+        "y": 153
+      }
     }
   ],
   "points": [],

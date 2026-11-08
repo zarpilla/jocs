@@ -405,6 +405,173 @@
         "who": "iri",
         "is": false
       }
+    },
+    "conducte": {
+      "name": "sala.fabrica_moll.conducte.nom",
+      "interactions": [
+        {
+          "verb": "close",
+          "if": {
+            "flag": "iri_sap_pressio",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.no_toquis"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "var": "valvula",
+            "op": "!=",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.tancar1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.tancar2"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "valvula",
+              "value": "tancada"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.ja_tancada"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "flag": "iri_sap_pressio",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.no_toquis"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.mig1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.mig2"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "valvula",
+              "value": "mig"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "mig"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.obrir"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "valvula",
+              "value": "oberta"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.ja_oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.usar"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.look_tancada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "mig"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.look_mig"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.look"
+            }
+          ]
+        }
+      ]
     }
   }
 }

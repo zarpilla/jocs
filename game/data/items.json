@@ -345,7 +345,15 @@
         "verb": "use",
         "item": "tros_cartell",
         "if": {
-          "flag": "comporta_mesurada"
+          "all": [
+            {
+              "flag": "comporta_mesurada"
+            },
+            {
+              "flag": "nota_mida_escrita",
+              "is": false
+            }
+          ]
         },
         "lines": [
           {
@@ -362,6 +370,75 @@
           },
           {
             "giveItem": "nota_mida"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "if": {
+          "all": [
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "flag": "nota_pressio_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.pressio"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_pressio_escrita"
+          },
+          {
+            "takeItem": "tros_cartell"
+          },
+          {
+            "giveItem": "nota_pressio"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_ha_vist_inundacio"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "tancada"
+            },
+            {
+              "flag": "nota_massa_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.massa"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_massa_escrita"
+          },
+          {
+            "takeItem": "tros_cartell"
+          },
+          {
+            "giveItem": "nota_massa"
           }
         ]
       },
@@ -1209,5 +1286,137 @@
       "pes": 0.2,
       "material": "ferro9"
     }
+  },
+  "nota_pressio": {
+    "name": "obj.nota_pressio.nom",
+    "description": "obj.nota_pressio.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pressio.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pressio.iri1"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_pressio"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pressio.text"
+          }
+        ]
+      }
+    ]
+  },
+  "nota_massa": {
+    "name": "obj.nota_massa.nom",
+    "description": "obj.nota_massa.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_massa.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_massa.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_massa.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_massa"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_massa.text"
+          }
+        ]
+      }
+    ]
+  },
+  "fitxa_mira": {
+    "name": "obj.fitxa_mira.nom",
+    "description": "obj.fitxa_mira.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "var": "sospita_brau",
+          "op": ">=",
+          "value": 2
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.fitxa_mira.text_acusada"
+          },
+          {
+            "who": "player",
+            "text": "obj.fitxa_mira.vet_acusada"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "vet_coneix_mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.fitxa_mira.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.fitxa_mira.vet"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "vet_coneix_mira"
+          }
+        ]
+      }
+    ]
   }
 }

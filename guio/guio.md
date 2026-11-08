@@ -149,7 +149,8 @@ registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau o
 
 **Comptes de les enceses:** n'hi ha vint-i-quatre. L'Acte 1 en gasta nou (cinc enviaments, dels quals només els dos primers amb
 el ritual, i les quatre notes del muntatge), i en queden quinze per a l'Acte 2 i l'Acte 3. La palanca de l'Acte 2 en gasta
-entre dues (biga de ferro-9 amagada) i quatre (per peces), i el diapasó, dues (la molla i el diapasó).
+entre dues (biga de ferro-9 amagada) i quatre (per peces), el diapasó, dues (la molla i el diapasó), i la vàlvula, dues més (la nota de la pressió i el «MASSA»). Per la ruta
+més llarga, en queden set per a la quarta part i l'Acte 3.
 
 ### Acte 2 — «Els costos» (el cor del joc)
 
@@ -201,7 +202,7 @@ a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 
 1. **La comporta** (palanca): fet.
 2. **El diapasó**: fet.
-3. **La vàlvula**: la pressió del conducte, la inundació i el reajust.
+3. **La vàlvula**: fet.
 4. **El cost humà**: l'Inspector Brau, la Mira acusada i el Cargol del present; tancament de l'acte.
 
 #### Component 2: el diapasó (el pany sònic de l'hangar)
@@ -239,6 +240,25 @@ Per engegar, la llançadora necessita pressió al vell conducte.
   corregeix. Mentre el nivell està inundat, a més, s'obre un camí nou (l'aigua fa surar una caixa que
   abans era inabastable) i se'n tanca un altre.
 - És el trencaclosques que ensenya que **el món respon**: provar, mirar, corregir.
+
+**Com es juga (fet al joc, tercera part de l'Acte 2).**
+
+1. Amb la porta de la llançadora oberta, el motor no té pressió. Li arriba per un conducte vell de la fàbrica que
+   passa per la paret del moll de l'hangar (manòmetre a zero). La Vet ho escriu en un altre tros de cartell (el
+   cartell en dona tants com calgui) i ho envia.
+2. Al moll de la fàbrica hi ha el mateix conducte, amb una vàlvula. L'Iri la **tanca del tot**: «cent vint anys de
+   pressió, n'hi haurà de sobres».
+3. **Reajust:** quan la Vet torna al moll de l'hangar, té mal de cap i el troba inundat («abans era sec, n'estic
+   segura»). El conducte ha rebentat i la llançadora no engega.
+4. **Mentre està inundat**, s'obre un camí: una caixa de l'arxiu sura fins al moll, i a dins hi ha la fitxa de
+   personal de la **Mira Osset**. El que hi diu depèn del passat: amb la sospita del Brau alta (si l'Iri ha robat
+   ferro-9), «acusada del robatori de material inventariat. Acomiadada». I se'n tanca un altre: l'escala de l'arxiu
+   és sota l'aigua.
+5. La Vet envia «MASSA!!!». L'Iri **obre una mica** la vàlvula. Un altre reajust: l'aigua desapareix com si no hi
+   hagués estat mai («però jo me'n recordo»), el conducte vibra i la llançadora arrenca.
+
+La vàlvula té tres posicions (oberta, tancada del tot, una mica oberta) i la bona només s'hi arriba des de tancada:
+la inundació no és un error del jugador, és la lliçó.
 
 #### El cost humà
 

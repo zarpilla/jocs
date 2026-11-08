@@ -167,6 +167,70 @@
         "x": 161,
         "y": 177
       }
+    },
+    {
+      "id": "conducte",
+      "active": true,
+      "description": "conducte",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 177,
+          "y": 13
+        },
+        {
+          "x": 207,
+          "y": 13
+        },
+        {
+          "x": 207,
+          "y": 153
+        },
+        {
+          "x": 177,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 191,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 192,
+        "y": 153
+      }
+    },
+    {
+      "id": "escala",
+      "active": true,
+      "description": "escala",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 76,
+          "y": 100
+        },
+        {
+          "x": 136,
+          "y": 100
+        },
+        {
+          "x": 136,
+          "y": 155
+        },
+        {
+          "x": 76,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 107,
+        "y": 177
+      },
+      "lookAtPoint": {
+        "x": 107,
+        "y": 156
+      }
     }
   ],
   "points": [],
@@ -232,6 +296,57 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "animations": {
+        "aigua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "caixa_flotant",
+      "tag": "caixa_flotant",
+      "animations": {
+        "caixa_flotant": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 79,
+            "y": 144
+          },
+          {
+            "x": 123,
+            "y": 144
+          },
+          {
+            "x": 123,
+            "y": 169
+          },
+          {
+            "x": 79,
+            "y": 169
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 101,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 101,
+        "y": 169
+      },
+      "description": "caixa que sura"
     }
   ],
   "characters": [

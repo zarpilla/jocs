@@ -75,7 +75,16 @@
         "molla_afinada": false,
         "iri_sap_diapaso": false,
         "diapaso_afinat": false,
-        "pany_sonic_obert": false
+        "pany_sonic_obert": false,
+        "nota_pressio_escrita": false,
+        "iri_sap_pressio": false,
+        "vet_ha_vist_inundacio": false,
+        "nota_massa_escrita": false,
+        "iri_sap_massa": false,
+        "caixa_agafada": false,
+        "vet_coneix_mira": false,
+        "motor_engegat": false,
+        "arxiu_explorat": false
       },
       "vars": {
         "finestra_armada": "",
@@ -87,7 +96,8 @@
         "dies_reciclatge": 3,
         "biga_amagada": "",
         "molla_tensio": 1,
-        "diapaso_to": 0
+        "diapaso_to": 0,
+        "valvula": "oberta"
       }
     },
     "characters": {
@@ -489,7 +499,15 @@
             "verb": "use",
             "item": "tros_cartell",
             "if": {
-              "flag": "comporta_mesurada"
+              "all": [
+                {
+                  "flag": "comporta_mesurada"
+                },
+                {
+                  "flag": "nota_mida_escrita",
+                  "is": false
+                }
+              ]
             },
             "lines": [
               {
@@ -506,6 +524,75 @@
               },
               {
                 "giveItem": "nota_mida"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "tros_cartell",
+            "if": {
+              "all": [
+                {
+                  "flag": "pany_sonic_obert"
+                },
+                {
+                  "flag": "nota_pressio_escrita",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.pressio"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_pressio_escrita"
+              },
+              {
+                "takeItem": "tros_cartell"
+              },
+              {
+                "giveItem": "nota_pressio"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "tros_cartell",
+            "if": {
+              "all": [
+                {
+                  "flag": "vet_ha_vist_inundacio"
+                },
+                {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "tancada"
+                },
+                {
+                  "flag": "nota_massa_escrita",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.massa"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "nota_massa_escrita"
+              },
+              {
+                "takeItem": "tros_cartell"
+              },
+              {
+                "giveItem": "nota_massa"
               }
             ]
           },
@@ -1353,6 +1440,138 @@
           "pes": 0.2,
           "material": "ferro9"
         }
+      },
+      "nota_pressio": {
+        "name": "obj.nota_pressio.nom",
+        "description": "obj.nota_pressio.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_pressio.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_pressio.iri1"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "iri_sap_pressio"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_pressio.text"
+              }
+            ]
+          }
+        ]
+      },
+      "nota_massa": {
+        "name": "obj.nota_massa.nom",
+        "description": "obj.nota_massa.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_massa.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_massa.iri1"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_massa.iri2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "iri_sap_massa"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_massa.text"
+              }
+            ]
+          }
+        ]
+      },
+      "fitxa_mira": {
+        "name": "obj.fitxa_mira.nom",
+        "description": "obj.fitxa_mira.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "var": "sospita_brau",
+              "op": ">=",
+              "value": 2
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.fitxa_mira.text_acusada"
+              },
+              {
+                "who": "player",
+                "text": "obj.fitxa_mira.vet_acusada"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "vet_coneix_mira"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.fitxa_mira.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.fitxa_mira.vet"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "vet_coneix_mira"
+              }
+            ]
+          }
+        ]
       }
     },
     "rooms": {
@@ -2558,6 +2777,173 @@
               "who": "iri",
               "is": false
             }
+          },
+          "conducte": {
+            "name": "sala.fabrica_moll.conducte.nom",
+            "interactions": [
+              {
+                "verb": "close",
+                "if": {
+                  "flag": "iri_sap_pressio",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.no_toquis"
+                  }
+                ]
+              },
+              {
+                "verb": "close",
+                "if": {
+                  "var": "valvula",
+                  "op": "!=",
+                  "value": "tancada"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.tancar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.tancar2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setVar": "valvula",
+                    "value": "tancada"
+                  }
+                ]
+              },
+              {
+                "verb": "close",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.ja_tancada"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "if": {
+                  "flag": "iri_sap_pressio",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.no_toquis"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "tancada"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.mig1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.mig2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setVar": "valvula",
+                    "value": "mig"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "mig"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.obrir"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setVar": "valvula",
+                    "value": "oberta"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.ja_oberta"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.usar"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "tancada"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.look_tancada"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "mig"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.look_mig"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.conducte.look"
+                  }
+                ]
+              }
+            ]
           }
         }
       },
@@ -3286,6 +3672,58 @@
         "onEnter": [
           {
             "verb": "*",
+            "if": {
+              "var": "valvula",
+              "op": "==",
+              "value": "tancada"
+            },
+            "id": "inundat",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.gavina_hangar.inundat1"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_hangar.inundat2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "vet_ha_vist_inundacio"
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "if": {
+              "all": [
+                {
+                  "flag": "vet_ha_vist_inundacio"
+                },
+                {
+                  "var": "valvula",
+                  "op": "!=",
+                  "value": "tancada"
+                }
+              ]
+            },
+            "id": "secat",
+            "once": true,
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.gavina_hangar.secat1"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_hangar.secat2"
+              }
+            ]
+          },
+          {
+            "verb": "*",
             "id": "primera",
             "once": true,
             "lines": [
@@ -3657,6 +4095,120 @@
               {
                 "verb": "look",
                 "if": {
+                  "flag": "motor_engegat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.a_punt"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "pany_sonic_obert"
+                    },
+                    {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "mig"
+                    },
+                    {
+                      "flag": "motor_engegat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.engegar1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.engegar2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.engegar3"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_hangar.llancadora.engegar4"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "motor_engegat"
+                  },
+                  {
+                    "setFlag": "components_complets"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "flag": "motor_engegat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.en_marxa"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "pany_sonic_obert"
+                    },
+                    {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "tancada"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.escapa"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "flag": "pany_sonic_obert"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.sense_pressio"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
                   "flag": "pany_sonic_obert"
                 },
                 "lines": [
@@ -3819,12 +4371,186 @@
             "visibleIf": {
               "flag": "comporta_oberta"
             }
+          },
+          "conducte": {
+            "name": "sala.gavina_hangar.conducte.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "tancada"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.conducte.look_rebentat"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "mig"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.conducte.look_ple"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.conducte.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "close",
+                  "push",
+                  "pull"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.conducte.tocar"
+                  }
+                ]
+              }
+            ]
+          },
+          "escala": {
+            "name": "sala.gavina_hangar.escala.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "tancada"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.escala.look_aigua"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.escala.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "if": {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "tancada"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.escala.aigua"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.escala.reixa"
+                  }
+                ]
+              }
+            ]
+          },
+          "caixa_flotant": {
+            "name": "sala.gavina_hangar.caixa.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "pickUp",
+                  "open"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.caixa.obrir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.caixa.obrir2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "caixa_agafada"
+                  },
+                  {
+                    "giveItem": "fitxa_mira"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.caixa.look"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "tancada"
+                },
+                {
+                  "flag": "caixa_agafada",
+                  "is": false
+                }
+              ]
+            }
           }
         },
         "decor": {
           "porta_llancadora": {
             "visibleIf": {
               "flag": "pany_sonic_obert"
+            }
+          },
+          "aigua": {
+            "visibleIf": {
+              "var": "valvula",
+              "op": "==",
+              "value": "tancada"
             }
           }
         }
@@ -3859,10 +4585,28 @@
               },
               {
                 "verb": "pickUp",
+                "if": {
+                  "hasItem": "tros_cartell",
+                  "who": "vet"
+                },
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.gavina_passadis.cartell.prou"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_passadis.cartell.altre"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "tros_cartell"
                   }
                 ]
               },
@@ -4075,10 +4819,26 @@
             }
           },
           {
+            "id": "pressio",
+            "text": "mis.acte2.obj.pressio",
+            "completeWhen": {
+              "var": "valvula",
+              "op": "==",
+              "value": "mig"
+            }
+          },
+          {
             "id": "components",
             "text": "mis.acte2.obj.components",
             "completeWhen": {
               "flag": "components_complets"
+            }
+          },
+          {
+            "id": "arxiu",
+            "text": "mis.acte2.obj.arxiu",
+            "completeWhen": {
+              "flag": "arxiu_explorat"
             }
           }
         ]
@@ -5760,6 +6520,477 @@
           "pista.iri_esperar_diapaso.1",
           "pista.iri_esperar_diapaso.2"
         ]
+      },
+      "vet_pressio": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "flag": "motor_engegat",
+              "is": false
+            },
+            {
+              "flag": "nota_pressio_escrita",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "nota_pressio_escrita"
+        },
+        "levels": [
+          "pista.vet_pressio.1",
+          "pista.vet_pressio.2",
+          "pista.vet_pressio.3"
+        ]
+      },
+      "vet_enviar_pressio": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "any": [
+                {
+                  "hasItem": "nota_pressio",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "nota_massa",
+                  "who": "vet"
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "all": [
+            {
+              "hasItem": "nota_pressio",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "hasItem": "nota_massa",
+              "who": "vet",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_enviar_pressio.1",
+          "pista.vet_enviar_pressio.2"
+        ]
+      },
+      "iri_llegir_pressio": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "hasItem": "nota_pressio",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "iri_sap_pressio",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "hasItem": "nota_massa",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "iri_sap_massa",
+                      "is": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "any": [
+              {
+                "all": [
+                  {
+                    "hasItem": "nota_pressio",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "iri_sap_pressio",
+                    "is": false
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "nota_massa",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "iri_sap_massa",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "levels": [
+          "pista.iri_llegir_pressio.1",
+          "pista.iri_llegir_pressio.2"
+        ]
+      },
+      "iri_valvula": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "iri_sap_pressio"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "oberta"
+            },
+            {
+              "flag": "motor_engegat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "var": "valvula",
+              "op": "!=",
+              "value": "oberta"
+            },
+            {
+              "flag": "motor_engegat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_valvula.1",
+          "pista.iri_valvula.2",
+          "pista.iri_valvula.3"
+        ]
+      },
+      "vet_reajust": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "tancada"
+            },
+            {
+              "flag": "vet_ha_vist_inundacio",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vet_ha_vist_inundacio"
+        },
+        "levels": [
+          "pista.vet_reajust.1",
+          "pista.vet_reajust.2"
+        ]
+      },
+      "vet_massa": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "tancada"
+            },
+            {
+              "flag": "vet_ha_vist_inundacio"
+            },
+            {
+              "flag": "nota_massa_escrita",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "nota_massa_escrita"
+            },
+            {
+              "var": "valvula",
+              "op": "!=",
+              "value": "tancada"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_massa.1",
+          "pista.vet_massa.2",
+          "pista.vet_massa.3"
+        ]
+      },
+      "iri_afluixar": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "iri_sap_massa"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "tancada"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "valvula",
+          "op": "!=",
+          "value": "tancada"
+        },
+        "levels": [
+          "pista.iri_afluixar.1",
+          "pista.iri_afluixar.2"
+        ]
+      },
+      "iri_massa_poc": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "iri_sap_massa"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "oberta"
+            },
+            {
+              "flag": "motor_engegat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "var": "valvula",
+              "op": "!=",
+              "value": "oberta"
+            },
+            {
+              "flag": "motor_engegat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_massa_poc.1",
+          "pista.iri_massa_poc.2"
+        ]
+      },
+      "vet_engegar": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "mig"
+            },
+            {
+              "flag": "motor_engegat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "motor_engegat"
+        },
+        "levels": [
+          "pista.vet_engegar.1",
+          "pista.vet_engegar.2"
+        ]
+      },
+      "vet_esperar_pressio": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "motor_engegat",
+              "is": false
+            },
+            {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "flag": "nota_pressio_escrita"
+                    },
+                    {
+                      "hasItem": "nota_pressio",
+                      "who": "vet",
+                      "is": false
+                    },
+                    {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "oberta"
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "nota_massa_escrita"
+                    },
+                    {
+                      "hasItem": "nota_massa",
+                      "who": "vet",
+                      "is": false
+                    },
+                    {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "tancada"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "motor_engegat"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "mig"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_esperar_pressio.1",
+          "pista.vet_esperar_pressio.2"
+        ]
+      },
+      "iri_esperar_pressio": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "flag": "motor_engegat",
+              "is": false
+            },
+            {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "flag": "iri_sap_pressio",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "nota_pressio",
+                      "who": "iri",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "tancada"
+                    },
+                    {
+                      "flag": "iri_sap_massa",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "nota_massa",
+                      "who": "iri",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "var": "valvula",
+                  "op": "==",
+                  "value": "mig"
+                }
+              ]
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "motor_engegat"
+        },
+        "levels": [
+          "pista.iri_esperar_pressio.1",
+          "pista.iri_esperar_pressio.2"
+        ]
       }
     },
     "endings": {
@@ -6840,9 +8071,11 @@
       "mis.acte2.obj.hangar": "Vet: troba la sortida de la presó",
       "mis.acte2.obj.mida": "Iri: entén quina palanca necessita la V.",
       "mis.acte2.obj.comporta": "Vet: obre la comporta de l'hangar",
-      "mis.acte2.obj.components": "Totes dues: aconsegueix les tres peces de la llançadora",
+      "mis.acte2.obj.components": "Vet: engega la llançadora",
       "mis.acte2.obj.molla": "Vet: fes arribar la nota del pany a la I.",
       "mis.acte2.obj.diapaso": "Vet: obre el pany sònic de la llançadora",
+      "mis.acte2.obj.pressio": "Iri: dona pressió al conducte de la llançadora",
+      "mis.acte2.obj.arxiu": "Vet: entra a l'arxiu",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
       "obj.clau_anglesa.vet1": "Una clau anglesa reluent, com acabada de fer. Porta un segell: «Aldaia · Ferro-9 · Lot 1».",
@@ -6974,6 +8207,23 @@
       "obj.diapaso.desc": "Un diapasó de ferro-9.",
       "obj.diapaso_espatllat.nom": "diapasó espatllat",
       "obj.diapaso_espatllat.desc": "Un diapasó de ferro-9 llimat de més. Xiula com una tetera.",
+      "obj.nota_pressio.text": "«I.: la llançadora engega amb pressió, i li arriba per un conducte vell de la fàbrica, el que passa per la paret del moll. Està buit. Pots fer-hi alguna cosa, des d'allà? —V.»",
+      "obj.nota_pressio.iri1": "El conducte de pressió del moll. Si el tapo ara, cent vint anys de pressió s'hi aniran acumulant...",
+      "obj.nota_pressio.nom": "nota de la pressió",
+      "obj.nota_pressio.desc": "Un tros de cartell, escrit amb llapis d'ulls.",
+      "obj.nota_massa.text": "«MASSA!!! El conducte ha rebentat i el nivell de sota és una piscina. AFLUIXA. —V.»",
+      "obj.nota_massa.iri1": "Massa pressió. Cent vint anys és molt de temps.",
+      "obj.nota_massa.iri2": "L'he d'obrir una mica. Només una mica.",
+      "obj.nota_massa.nom": "nota «MASSA»",
+      "obj.nota_massa.desc": "Un tros de cartell, escrit amb llapis d'ulls.",
+      "obj.fitxa_mira.text_acusada": "«Corporació Aldaia · Ferro-9 · Fitxa de personal. Mira Osset, ajudant de torn de nit. Observacions: acusada del robatori de material inventariat. Acomiadada.»",
+      "obj.fitxa_mira.vet_acusada": "Acomiadada per robatori... Torn de nit, com la I. Què hi va passar, aquí?",
+      "obj.fitxa_mira.text": "«Corporació Aldaia · Ferro-9 · Fitxa de personal. Mira Osset, ajudant de torn de nit. Observacions: cap.»",
+      "obj.fitxa_mira.vet": "Mira Osset. Torn de nit, com la I. Potser es coneixen.",
+      "obj.fitxa_mira.nom": "fitxa de personal",
+      "obj.fitxa_mira.desc": "Una fitxa de personal de la fàbrica, molla.",
+      "obj.llapis_ulls.pressio": "Hi escric el del conducte i la pressió. Amb la meva millor lletra, que no és gaire bona.",
+      "obj.llapis_ulls.massa": "MASSA. Amb tres exclamacions. I que afluixi.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -7095,6 +8345,31 @@
       "pista.iri_esperar_diapaso.2": "Canvia a la Vet.",
       "pista.vet_pany_sonic.1": "La llançadora té un pany ben estrany.",
       "pista.vet_pany_sonic.2": "Toca el pany de la llançadora.",
+      "pista.vet_pressio.1": "El motor no té pressió. D'on li ha de venir?",
+      "pista.vet_pressio.2": "Hi ha un conducte vell a la paret del moll de l'hangar. Potser la I. hi pot fer alguna cosa al passat.",
+      "pista.vet_pressio.3": "Escriu-li a la I.: un altre tros de cartell i el llapis d'ulls.",
+      "pista.vet_enviar_pressio.1": "Això ho ha de llegir la I.",
+      "pista.vet_enviar_pressio.2": "Fes servir la nota amb el panell de la cel·la.",
+      "pista.iri_llegir_pressio.1": "La V. m'ha escrit.",
+      "pista.iri_llegir_pressio.2": "Mira la nota de l'inventari.",
+      "pista.iri_valvula.1": "Si tapo el conducte ara, la pressió s'hi anirà acumulant durant cent vint anys.",
+      "pista.iri_valvula.2": "El conducte del moll té una vàlvula.",
+      "pista.iri_valvula.3": "Tanca la vàlvula del conducte del moll.",
+      "pista.vet_reajust.1": "Tinc mal de cap. Alguna cosa ha canviat.",
+      "pista.vet_reajust.2": "Ves al moll de l'hangar.",
+      "pista.vet_massa.1": "Massa pressió! El conducte ha rebentat.",
+      "pista.vet_massa.2": "La I. ho ha d'arreglar al passat. Digues-li.",
+      "pista.vet_massa.3": "Un altre tros de cartell, el llapis d'ulls... i que afluixi la vàlvula.",
+      "pista.iri_afluixar.1": "Massa pressió. Afluixa, Iri.",
+      "pista.iri_afluixar.2": "Obre una mica la vàlvula del conducte del moll.",
+      "pista.iri_massa_poc.1": "Oberta del tot no fa res, i tancada del tot rebenta.",
+      "pista.iri_massa_poc.2": "Tanca-la del tot i després obre-la una mica.",
+      "pista.vet_engegar.1": "El conducte vibra. Ara sí que hi ha pressió.",
+      "pista.vet_engegar.2": "Prova d'engegar la llançadora: empeny-la.",
+      "pista.vet_esperar_pressio.1": "Ara li toca a la I.",
+      "pista.vet_esperar_pressio.2": "Canvia a l'Iri.",
+      "pista.iri_esperar_pressio.1": "Què deu passar, a l'altra banda?",
+      "pista.iri_esperar_pressio.2": "Canvia a la Vet.",
       "sala.fabrica_calderes.capatas.look1": "El capatàs Pruna. Dorm abraçat al segell oficial com si fos un osset de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
       "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Pruna?",
@@ -7292,7 +8567,7 @@
       "sala.fabrica_calderes.porta_moll.nom": "moll de càrrega",
       "sala.gavina_passadis.porta_hangar.nom": "porta del fons",
       "sala.gavina_passadis.cartell.agafar": "N'arrenco un tros del marge. Per darrere és blanc: paper de primera.",
-      "sala.gavina_passadis.cartell.prou": "Ja n'he arrencat un tros. Si n'arrenco més, es veurà.",
+      "sala.gavina_passadis.cartell.prou": "Ja en tinc un tros. Primer l'he de fer servir.",
       "sala.gavina_cella.panell.recuperar1": "Ara que la cambra de la I. ho sincronitza tot sola, ja no cal la palanca.",
       "sala.gavina_cella.panell.recuperar2": "Recupero la clau anglesa.",
       "sala.gavina_hangar.llancadora.obrir1": "Toco el diapasó i l'acosto al pany...",
@@ -7312,7 +8587,47 @@
       "sala.gavina_cella.llitera.molla": "Arrenco una molla de la llitera. En Mos ni se n'adona: ronca.",
       "sala.fabrica_moll.llima.nom": "llima",
       "sala.fabrica_moll.llima.agafar": "Una llima fina. Per afinar coses.",
-      "sala.fabrica_moll.llima.look": "Una llima fina, al tauler d'eines."
+      "sala.fabrica_moll.llima.look": "Una llima fina, al tauler d'eines.",
+      "sala.fabrica_moll.conducte.no_toquis": "Si la toco sense motiu, el capatàs em farà omplir formularis fins a la jubilació.",
+      "sala.fabrica_moll.conducte.nom": "conducte",
+      "sala.fabrica_moll.conducte.tancar1": "Tanco la vàlvula del tot.",
+      "sala.fabrica_moll.conducte.tancar2": "Cent vint anys de pressió acumulant-se... n'hi haurà de sobres.",
+      "sala.fabrica_moll.conducte.ja_tancada": "Ja està tancada del tot.",
+      "sala.fabrica_moll.conducte.mig1": "L'obro una mica. Ni massa ni massa poc.",
+      "sala.fabrica_moll.conducte.mig2": "Cent vint anys. Espero haver-ho calculat bé.",
+      "sala.fabrica_moll.conducte.obrir": "La torno a obrir del tot.",
+      "sala.fabrica_moll.conducte.ja_oberta": "Ja està oberta del tot.",
+      "sala.fabrica_moll.conducte.usar": "Una vàlvula. S'obre i es tanca.",
+      "sala.fabrica_moll.conducte.look_tancada": "El conducte de pressió, amb la vàlvula tancada del tot.",
+      "sala.fabrica_moll.conducte.look_mig": "El conducte de pressió, amb la vàlvula una mica oberta.",
+      "sala.fabrica_moll.conducte.look": "El conducte de pressió que va de les calderes cap al moll, amb una vàlvula. Per dins és de ferro-9: durarà més que tots nosaltres.",
+      "sala.gavina_hangar.inundat1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
+      "sala.gavina_hangar.inundat2": "El moll és ple d'aigua! Abans era sec. N'estic segura.",
+      "sala.gavina_hangar.secat1": "Un altre mal de cap. L'aigua ha desaparegut com si no hi hagués estat mai.",
+      "sala.gavina_hangar.secat2": "Però jo me'n recordo.",
+      "sala.gavina_hangar.conducte.nom": "conducte",
+      "sala.gavina_hangar.conducte.look_rebentat": "Rebentat. D'aquí surt tota l'aigua.",
+      "sala.gavina_hangar.conducte.look_ple": "El conducte vibra, ple de pressió. I aguanta.",
+      "sala.gavina_hangar.conducte.look": "Un conducte vell de la fàbrica, que va cap a la llançadora. Té un manòmetre: zero. Ni un bri de pressió.",
+      "sala.gavina_hangar.conducte.tocar": "La vàlvula fa cent anys que és rovellada. Això s'ha d'arreglar al passat.",
+      "sala.gavina_hangar.escala.nom": "escala",
+      "sala.gavina_hangar.escala.look_aigua": "L'escala del nivell de sota. Ara és una piscina.",
+      "sala.gavina_hangar.escala.look": "Una escala cap al nivell de sota. Al fons, una reixa amb un rètol: «ARXIU». Tancada amb una cadena.",
+      "sala.gavina_hangar.escala.aigua": "Sense banyador, no.",
+      "sala.gavina_hangar.escala.reixa": "La reixa de l'arxiu està tancada amb una cadena. Un altre dia.",
+      "sala.gavina_hangar.caixa.nom": "caixa que sura",
+      "sala.gavina_hangar.caixa.obrir1": "La caixa ha pujat del nivell de sota amb l'aigua.",
+      "sala.gavina_hangar.caixa.obrir2": "A dins, papers molls... i una fitxa de la fàbrica. Me la quedo.",
+      "sala.gavina_hangar.caixa.look": "Una caixa de fusta que sura. Hi posa «ARXIU · NIVELL -1».",
+      "sala.gavina_hangar.llancadora.a_punt": "La llançadora ronca com en Mos. A punt per sortir.",
+      "sala.gavina_hangar.llancadora.engegar1": "Premo el botó d'engegada. L'agulla del manòmetre puja...",
+      "sala.gavina_hangar.llancadora.engegar2": "El motor tus, s'ofega... i arrenca!",
+      "sala.gavina_hangar.llancadora.engegar3": "Ho tenim, I. La llançadora és a punt.",
+      "sala.gavina_hangar.llancadora.engegar4": "FI DE LA TERCERA PART DE L'ACTE 2",
+      "sala.gavina_hangar.llancadora.en_marxa": "Ja està engegada. No la toquem, que s'ofega.",
+      "sala.gavina_hangar.llancadora.escapa": "Premo el botó d'engegada. La pressió s'escapa pel forat del conducte. Res.",
+      "sala.gavina_hangar.llancadora.sense_pressio": "Premo el botó d'engegada. Res. L'agulla del manòmetre ni es mou: el motor no té pressió.",
+      "sala.gavina_passadis.cartell.altre": "N'arrenco un altre tros. El somriure del cartell cada vegada és més petit."
     }
   },
   "locale": "ca"

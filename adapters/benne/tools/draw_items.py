@@ -357,12 +357,32 @@ def diapaso_espatllat(c):
         c.px(x, y, (255, 240, 120))                         # xiulet
 
 
+
+def nota_pressio(c):
+    tros_cartell(c)
+    c.rect(16, 7, 18, 13, BLACK); c.rect(18, 7, 21, 8, BLACK); c.rect(21, 7, 21, 10, BLACK); c.rect(18, 10, 21, 10, BLACK)  # una «P»
+
+
+def nota_massa(c):
+    tros_cartell(c)
+    for x in (16, 19, 22):                                     # !!!
+        c.rect(x, 6, x, 11, (200, 30, 30)); c.px(x, 13, (200, 30, 30))
+
+
+def fitxa_mira(c):
+    c.rect(9, 4, 26, 16, (220, 214, 190)); c.rect(9, 4, 26, 6, (150, 110, 70))
+    c.rect(11, 8, 15, 13, (150, 140, 120))                     # foto
+    for y in (8, 10, 12):
+        c.rect(17, y, 24, y, INK)
+    c.ellipse(22, 14, 3, 1.5, (120, 150, 190))                 # taca d'aigua
+
+
 ICONS = {f.__name__: f for f in (
     clau_anglesa, formulari_27b, formulari_segellat, formulari_triplicat, plomall, segell, clau_cambra,
     llapis, llibreta_torn, caixa_eines, imant_ferro9, nota_iri, avis_reciclatge, llapis_ulls, nota_vet,
     fullet_reeducacio, nota_pany, escarabat, sopa,
     tros_cartell, nota_mida, biga_acer, biga_ferro9, serra, tram_biga_1, tram_biga_2, tram_biga_3, biga_muntada,
-    nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat,
+    nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat, nota_pressio, nota_massa, fitxa_mira,
 )}
 
 

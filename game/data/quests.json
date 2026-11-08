@@ -116,10 +116,26 @@
         }
       },
       {
+        "id": "pressio",
+        "text": "mis.acte2.obj.pressio",
+        "completeWhen": {
+          "var": "valvula",
+          "op": "==",
+          "value": "mig"
+        }
+      },
+      {
         "id": "components",
         "text": "mis.acte2.obj.components",
         "completeWhen": {
           "flag": "components_complets"
+        }
+      },
+      {
+        "id": "arxiu",
+        "text": "mis.acte2.obj.arxiu",
+        "completeWhen": {
+          "flag": "arxiu_explorat"
         }
       }
     ]

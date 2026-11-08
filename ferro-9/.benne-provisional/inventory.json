@@ -135,6 +135,18 @@
     {
       "id": "diapaso_espatllat",
       "label": "diapasó espatllat"
+    },
+    {
+      "id": "nota_pressio",
+      "label": "nota de la pressió"
+    },
+    {
+      "id": "nota_massa",
+      "label": "nota «MASSA»"
+    },
+    {
+      "id": "fitxa_mira",
+      "label": "fitxa de personal"
     }
   ]
 }

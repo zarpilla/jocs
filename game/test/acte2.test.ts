@@ -252,3 +252,120 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     expect(n.getVar('diapaso_to')).toBe(0);
   });
 });
+
+/** Fins a la porta de la llançadora oberta, per la ruta curta de cada part. */
+function finsDiapaso(fins = 'motor_engegat') {
+  const s = finsComporta(fins);
+  const { p } = s;
+  p.do('push', 'llancadora');
+  p.do('open', 'porta_passadis');
+  p.do('open', 'porta_cella');
+  p.do('pickUp', 'llitera');
+  for (let i = 0; i < 2; i++) p.do('pull', item('molla'));
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  p.use('molla', 'llancadora');
+  p.do('open', 'porta_passadis');
+  p.do('open', 'porta_cella');
+  p.use('molla', 'panell');
+  p.do('look', item('molla'));
+  demanarDiapaso(p);
+  p.goTo('fabrica_calderes');
+  p.do('open', 'porta_moll');
+  p.do('pickUp', 'llima');
+  for (let i = 0; i < 2; i++) p.use('llima', item('diapaso'));
+  p.use('diapaso', item('molla'));
+  p.goTo('fabrica_calderes');
+  p.goTo('fabrica_cambra');
+  p.use('diapaso', 'cambra');
+  p.do('open', 'porta');
+  p.do('open', 'porta_hangar');
+  p.use('diapaso', 'llancadora');
+  expect(s.n.flag('pany_sonic_obert')).toBe(true);
+  return s;
+}
+
+/** La Vet escriu en un tros nou del cartell i ho envia des de la cel·la (acaba amb l'Iri). */
+function escriureIEnviar(p: ReturnType<typeof partida>['p'], nota: string) {
+  p.do('open', 'porta_passadis');
+  p.do('pickUp', 'cartell');
+  p.use('llapis_ulls', item('tros_cartell'));
+  expect(p.inventory()).toContain(nota);
+  p.do('open', 'porta_cella');
+  p.use(nota, 'panell');
+  expect(p.active).toBe('iri');
+}
+
+describe('Ferro-9 · Acte 2 · La vàlvula', () => {
+  it('massa pressió inunda el present, i el reajust ho arregla (sempre amb alguna pista)', () => {
+    const { p, n } = finsDiapaso();
+    expect(texts(p.do('push', 'llancadora'))).toContain('no té pressió');
+    expect(texts(p.do('look', 'conducte'))).toContain('zero');
+    // ── Vet → Iri: el conducte ──
+    escriureIEnviar(p, 'nota_pressio');
+    expect(texts(p.do('look', item('nota_pressio')))).toContain('cent vint anys');
+    p.goTo('fabrica_calderes');
+    p.do('open', 'porta_moll');
+    expect(texts(p.do('close', 'conducte'))).toContain('del tot');
+    // ── Vet: el reajust (mal de cap i inundació) ──
+    p.switchTo('vet');
+    p.do('open', 'porta');
+    expect(texts(p.do('open', 'porta_hangar'))).toContain("ple d'aigua");
+    expect(texts(p.do('look', 'conducte'))).toContain('Rebentat');
+    expect(texts(p.do('push', 'llancadora'))).toContain("s'escapa");
+    expect(texts(p.do('open', 'escala'))).toContain('banyador');
+    // Un camí que s'obre: la caixa de l'arxiu sura.
+    p.do('pickUp', 'caixa_flotant');
+    expect(texts(p.do('look', item('fitxa_mira')))).toContain('Potser es coneixen');
+    expect(n.isHotspotVisible('gavina_hangar', 'caixa_flotant')).toBe(false);
+    // ── Vet → Iri: MASSA ──
+    escriureIEnviar(p, 'nota_massa');
+    expect(texts(p.do('look', item('nota_massa')))).toContain('una mica');
+    p.goTo('fabrica_calderes');
+    p.do('open', 'porta_moll');
+    p.do('open', 'conducte');
+    expect(n.getVar('valvula')).toBe('mig');
+    // ── Vet: un altre reajust, i engega ──
+    p.switchTo('vet');
+    p.do('open', 'porta');
+    expect(texts(p.do('open', 'porta_hangar'))).toContain('me\'n recordo');
+    expect(texts(p.do('push', 'llancadora'))).toContain('arrenca');
+    expect(n.flag('motor_engegat')).toBe(true);
+    expect(n.state.quests.acte2!.objectives.pressio).toBe(true);
+    expect(n.state.quests.acte2!.objectives.components).toBe(true);
+    expect(n.state.quests.acte2!.status).toBe('active'); // queda l'arxiu
+    expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3 - 2 - 2);
+  });
+
+  it('la fitxa de la Mira depèn del passat: si el Brau sospita, diu que la van acomiadar', () => {
+    const { p, n } = finsDiapaso();
+    escriureIEnviar(p, 'nota_pressio');
+    p.do('look', item('nota_pressio'));
+    p.goTo('fabrica_calderes');
+    p.do('open', 'porta_moll');
+    p.do('close', 'conducte');
+    p.switchTo('vet');
+    p.do('open', 'porta');
+    p.do('open', 'porta_hangar');
+    p.do('pickUp', 'caixa_flotant');
+    n.apply({ addVar: 'sospita_brau', amount: 1 }); // com si l'Iri hagués robat la biga de ferro-9
+    expect(texts(p.do('look', item('fitxa_mira')))).toContain('Acomiadada');
+  });
+
+  it("sense tocar la vàlvula, o tornant-la a obrir del tot, la llançadora no engega", () => {
+    const { p, n } = finsDiapaso();
+    escriureIEnviar(p, 'nota_pressio');
+    p.do('look', item('nota_pressio'));
+    p.goTo('fabrica_calderes');
+    p.do('open', 'porta_moll');
+    p.do('close', 'conducte');
+    p.do('open', 'conducte');
+    p.do('open', 'conducte');
+    expect(n.getVar('valvula')).toBe('oberta');
+    p.switchTo('vet');
+    p.do('open', 'porta');
+    p.do('open', 'porta_hangar');
+    expect(texts(p.do('push', 'llancadora'))).toContain('no té pressió');
+    expect(n.flag('motor_engegat')).toBe(false);
+  });
+});

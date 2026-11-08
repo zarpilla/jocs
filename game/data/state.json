@@ -48,7 +48,16 @@
     "molla_afinada": false,
     "iri_sap_diapaso": false,
     "diapaso_afinat": false,
-    "pany_sonic_obert": false
+    "pany_sonic_obert": false,
+    "nota_pressio_escrita": false,
+    "iri_sap_pressio": false,
+    "vet_ha_vist_inundacio": false,
+    "nota_massa_escrita": false,
+    "iri_sap_massa": false,
+    "caixa_agafada": false,
+    "vet_coneix_mira": false,
+    "motor_engegat": false,
+    "arxiu_explorat": false
   },
   "vars": {
     "finestra_armada": "",
@@ -60,6 +69,7 @@
     "dies_reciclatge": 3,
     "biga_amagada": "",
     "molla_tensio": 1,
-    "diapaso_to": 0
+    "diapaso_to": 0,
+    "valvula": "oberta"
   }
 }

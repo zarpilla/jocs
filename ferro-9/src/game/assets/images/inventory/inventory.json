@@ -713,6 +713,69 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 34.aseprite": {
+      "frame": {
+        "x": 1666,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 35.aseprite": {
+      "frame": {
+        "x": 1715,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 36.aseprite": {
+      "frame": {
+        "x": 1764,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -721,7 +784,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1666,
+      "w": 1813,
       "h": 27
     },
     "scale": "1",
@@ -961,6 +1024,27 @@
         "name": "diapaso_espatllat",
         "from": 33,
         "to": 33,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_pressio",
+        "from": 34,
+        "to": 34,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_massa",
+        "from": 35,
+        "to": 35,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "fitxa_mira",
+        "from": 36,
+        "to": 36,
         "direction": "forward",
         "color": "#000000ff"
       }

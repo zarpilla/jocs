@@ -776,6 +776,11 @@ def moll_bg(c):
     c.rect(318, 92, 334, 104, (140, 150, 160))                      # aleta
     c.rect(270, 98, 276, 112, IRON[1])                              # suports
     c.rect(322, 98, 328, 112, IRON[1])
+    # Conducte de pressió amb la vàlvula
+    pipe_v(c, 168, 6, 112, 4, COPPER)
+    c.ellipse(160, 72, 176, 88, None, outline=(170, 40, 40))
+    c.line([(168, 72), (168, 88)], (170, 40, 40))
+    c.line([(160, 80), (176, 80)], (170, 40, 40))
     # Pilar 7
     pillar(c, 182, 196, (150, 92, 64), (100, 60, 40), (240, 230, 210))
     # Cavallets (la biga és un prop a part)
@@ -837,6 +842,7 @@ MOLL = {
         'serra': {'rect': (212, 42, 242, 54), 'walk': (226, 128)},
         'llima': {'rect': (232, 56, 242, 80), 'walk': (232, 128)},
         'trapa': {'rect': (196, 118, 228, 132), 'walk': (212, 142)},
+        'conducte': {'rect': (158, 20, 180, 112), 'walk': (168, 130)},
         'comporta': {'rect': (244, 8, 350, 40), 'walk': (296, 132)},
         'llancadora': {'rect': (236, 42, 346, 110), 'walk': (264, 136)},
     },
@@ -877,6 +883,18 @@ def hangar_bg(c):
         c.ellipse(x, y, x + rnd.randint(2, 7), y + rnd.randint(2, 5), (130, 74, 44))
     for x in range(176, 346, 8):                                    # franges de perill
         c.rect(x, 104, x + 3, 110, (200, 160, 40))
+    # Conducte vell, amb el manòmetre a zero
+    pipe_v(c, 141, 6, 112, 4, STEEL)
+    c.ellipse(134, 54, 148, 68, (220, 220, 210), outline=(40, 44, 54))
+    c.line([(141, 61), (137, 64)], (180, 30, 30))
+    # Escala cap al nivell de sota (l'arxiu)
+    c.rect(56, 76, 100, 112, (12, 14, 20))
+    for i, y in enumerate(range(80, 112, 6)):
+        c.rect(58 + i * 3, y, 98, y + 2, (40, 46, 56))
+    c.rect(56, 92, 100, 93, STEEL[1])
+    for x in (56, 70, 85, 100):
+        c.rect(x, 92, x + 1, 112, STEEL[1])
+    c.rect(70, 78, 86, 82, (200, 190, 150))                         # rètol «ARXIU»
     # L'encaix de la palanca, buit
     c.rect(158, 56, 172, 104, (20, 24, 30))
     c.rect(162, 60, 168, 100, (8, 10, 14))
@@ -917,6 +935,26 @@ def hangar_porta_llancadora(c):
     c.glow(224, 84, 10, (120, 160, 200), 0.3)
 
 
+def hangar_aigua(c):
+    """El nivell de sota inundat (massa pressió al conducte): aigua al terra i un raig del conducte."""
+    c.shade(0, 116, W, H, (40, 90, 140), 120)
+    c.shade(56, 84, 100, 116, (40, 90, 140), 200)
+    rnd = random.Random(64)
+    for _ in range(30):
+        x, y = rnd.randint(0, W - 8), rnd.randint(118, H - 2)
+        c.line([(x, y), (x + rnd.randint(3, 8), y)], (140, 190, 230))
+    for i in range(6):                                              # el raig del conducte rebentat
+        c.line([(144, 96 + i * 2), (152 + i * 3, 104 + i * 4)], (170, 210, 240))
+
+
+def hangar_caixa(c):
+    c.rect(60, 110, 86, 120, WOOD[1])
+    c.rect(60, 110, 86, 111, WOOD[2])
+    c.line([(60, 115), (86, 115)], WOOD[0])
+    c.rect(66, 112, 80, 114, (200, 190, 150))
+    c.line([(56, 121), (90, 121)], (140, 190, 230))
+
+
 HANGAR = {
     'era': 'vet',
     'things': {
@@ -925,11 +963,15 @@ HANGAR = {
         'pilar': {'rect': (108, 8, 126, 112), 'walk': (118, 128)},
         'placa_terra': {'rect': (98, 118, 138, 130), 'walk': (118, 142)},
         'llancadora': {'rect': (178, 40, 334, 104), 'walk': (260, 132)},
+        'conducte': {'rect': (130, 10, 152, 112), 'walk': (140, 128)},
+        'escala': {'rect': (56, 74, 100, 114), 'walk': (78, 130)},
+        'caixa_flotant': {'rect': (58, 106, 90, 124), 'walk': (74, 136)},
     },
     'spawns': {'vet': (70, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': hangar_bg,
-    'props': {'llancadora': hangar_llancadora, 'porta_llancadora': hangar_porta_llancadora},
+    'props': {'llancadora': hangar_llancadora, 'porta_llancadora': hangar_porta_llancadora,
+              'aigua': hangar_aigua, 'caixa_flotant': hangar_caixa},
 }
 
 
