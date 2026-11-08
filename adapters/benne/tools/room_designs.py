@@ -1013,6 +1013,7 @@ HANGAR = {
         'pilar': {'rect': (108, 8, 126, 112), 'walk': (118, 128)},
         'placa_terra': {'rect': grate_rect(*HANGAR_GRATES[1]), 'walk': (117, 143)},
         'llancadora': {'rect': (178, 40, 334, 104), 'walk': (260, 132)},
+        'pany': {'rect': (224, 65, 238, 81), 'walk': (231, 132)},
         'conducte': {'rect': (130, 10, 152, 112), 'walk': (140, 128)},
         'escala': {'rect': (56, 74, 100, 114), 'walk': (78, 130)},
         'caixa_flotant': {'rect': (58, 106, 90, 124), 'walk': (74, 136)},

@@ -347,6 +347,46 @@
         "y": 169
       },
       "description": "caixa que sura"
+    },
+    {
+      "id": "pany",
+      "tag": "pany",
+      "animations": {
+        "pany": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 305,
+            "y": 88
+          },
+          {
+            "x": 324,
+            "y": 88
+          },
+          {
+            "x": 324,
+            "y": 110
+          },
+          {
+            "x": 305,
+            "y": 110
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 315,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 315,
+        "y": 111
+      },
+      "description": "pany sònic"
     }
   ],
   "characters": [

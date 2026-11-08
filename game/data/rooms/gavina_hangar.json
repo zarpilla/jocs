@@ -540,6 +540,59 @@
           ]
         },
         {
+          "verb": [
+            "push",
+            "use",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.porta_tancada"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pany_vist"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pany_vist"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "flag": "comporta_oberta"
+      }
+    },
+    "pany": {
+      "name": "sala.gavina_hangar.pany.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "pany_sonic_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.pany.obert"
+            }
+          ]
+        },
+        {
           "verb": "use",
           "item": "diapaso",
           "if": {
@@ -680,13 +733,20 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.look"
+              "text": "sala.gavina_hangar.pany.look"
             }
           ]
         }
       ],
       "visibleIf": {
-        "flag": "comporta_oberta"
+        "all": [
+          {
+            "flag": "comporta_oberta"
+          },
+          {
+            "flag": "pany_vist"
+          }
+        ]
       }
     },
     "conducte": {

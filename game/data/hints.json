@@ -457,6 +457,30 @@
       "pista.vet_pany.3"
     ]
   },
+  "vet_mirar_llancadora": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "comporta_oberta"
+        },
+        {
+          "flag": "pany_vist",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pany_vist"
+    },
+    "levels": [
+      "pista.vet_mirar_llancadora.1",
+      "pista.vet_mirar_llancadora.2"
+    ]
+  },
   "vet_pany_sonic": {
     "priority": 3,
     "when": {
@@ -470,6 +494,9 @@
         {
           "flag": "pany_sonic_sentit",
           "is": false
+        },
+        {
+          "flag": "pany_vist"
         }
       ]
     },

@@ -137,7 +137,8 @@ export function jugarActe2(p: Jugador) {
   p.do('open', 'porta_hangar');
   p.use('biga_muntada', 'comporta');
   // El diapasó
-  p.do('push', 'llancadora');
+  p.do('look', 'llancadora');
+  p.do('push', 'pany');
   p.do('open', 'porta_passadis');
   p.do('open', 'porta_cella');
   p.do('pickUp', 'llitera');
@@ -145,7 +146,7 @@ export function jugarActe2(p: Jugador) {
   p.do('pull', item('molla'));
   p.do('open', 'porta');
   p.do('open', 'porta_hangar');
-  p.use('molla', 'llancadora');
+  p.use('molla', 'pany');
   p.do('open', 'porta_passadis');
   p.do('open', 'porta_cella');
   p.use('molla', 'panell');
@@ -167,7 +168,7 @@ export function jugarActe2(p: Jugador) {
   p.use('diapaso', 'cambra');
   p.do('open', 'porta');
   p.do('open', 'porta_hangar');
-  p.use('diapaso', 'llancadora');
+  p.use('diapaso', 'pany');
   // La vàlvula
   escriureIEnviar(p, 'nota_pressio');
   p.do('look', item('nota_pressio'));

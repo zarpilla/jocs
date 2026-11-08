@@ -104,7 +104,8 @@
         "iri_descoberta": false,
         "vet_veu_foto": false,
         "vet_sap_conducte": false,
-        "fullet_memoria_agafat": false
+        "fullet_memoria_agafat": false,
+        "pany_vist": false
       },
       "vars": {
         "finestra_armada": "",
@@ -5337,6 +5338,59 @@
                 ]
               },
               {
+                "verb": [
+                  "push",
+                  "use",
+                  "pull",
+                  "open"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.porta_tancada"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "pany_vist"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.look"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "pany_vist"
+                  }
+                ]
+              }
+            ],
+            "visibleIf": {
+              "flag": "comporta_oberta"
+            }
+          },
+          "pany": {
+            "name": "sala.gavina_hangar.pany.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "pany_sonic_obert"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.pany.obert"
+                  }
+                ]
+              },
+              {
                 "verb": "use",
                 "item": "diapaso",
                 "if": {
@@ -5477,13 +5531,20 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.look"
+                    "text": "sala.gavina_hangar.pany.look"
                   }
                 ]
               }
             ],
             "visibleIf": {
-              "flag": "comporta_oberta"
+              "all": [
+                {
+                  "flag": "comporta_oberta"
+                },
+                {
+                  "flag": "pany_vist"
+                }
+              ]
             }
           },
           "conducte": {
@@ -6807,6 +6868,30 @@
           "pista.vet_pany.3"
         ]
       },
+      "vet_mirar_llancadora": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "comporta_oberta"
+            },
+            {
+              "flag": "pany_vist",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "pany_vist"
+        },
+        "levels": [
+          "pista.vet_mirar_llancadora.1",
+          "pista.vet_mirar_llancadora.2"
+        ]
+      },
       "vet_pany_sonic": {
         "priority": 3,
         "when": {
@@ -6820,6 +6905,9 @@
             {
               "flag": "pany_sonic_sentit",
               "is": false
+            },
+            {
+              "flag": "pany_vist"
             }
           ]
         },
@@ -10791,7 +10879,7 @@
       "pista.vet_molla.3": "Agafa una molla de la llitera de la cel·la.",
       "pista.vet_afinar.1": "La molla ha de sonar igual que el pany.",
       "pista.vet_afinar.2": "Prova-la amb el pany. Si cal, estira-la o arronsa-la.",
-      "pista.vet_afinar.3": "Fes servir la molla amb la llançadora per comparar-les. «Estira» la tiba i «Empeny» l'arronsa.",
+      "pista.vet_afinar.3": "Fes servir la molla amb el pany sònic per comparar-les. «Estira» la tiba i «Empeny» l'arronsa.",
       "pista.vet_enviar_molla.1": "La molla afinada ha d'arribar a la I.",
       "pista.vet_enviar_molla.2": "Fes servir la molla amb el panell de la cel·la.",
       "pista.iri_llegir_molla.1": "M'ha arribat una molla. Amb una etiqueta.",
@@ -10807,13 +10895,13 @@
       "pista.iri_enviar_diapaso.1": "El diapasó ha d'arribar a la V.",
       "pista.iri_enviar_diapaso.2": "Posa el diapasó dins la cambra.",
       "pista.vet_obrir_pany.1": "Un diapasó. Per al pany.",
-      "pista.vet_obrir_pany.2": "Fes servir el diapasó amb la llançadora.",
+      "pista.vet_obrir_pany.2": "Fes servir el diapasó amb el pany sònic.",
       "pista.vet_esperar_diapaso.1": "La I. hi està treballant.",
       "pista.vet_esperar_diapaso.2": "Canvia a l'Iri.",
       "pista.iri_esperar_diapaso.1": "Què deu necessitar, ara, la V.?",
       "pista.iri_esperar_diapaso.2": "Canvia a la Vet.",
       "pista.vet_pany_sonic.1": "La llançadora té un pany ben estrany.",
-      "pista.vet_pany_sonic.2": "Toca el pany de la llançadora.",
+      "pista.vet_pany_sonic.2": "Toca el pany sònic de la porta de la llançadora.",
       "pista.vet_pressio.1": "El motor no té pressió. D'on li ha de venir?",
       "pista.vet_pressio.2": "Hi ha un conducte vell a la paret del moll de l'hangar. Potser la I. hi pot fer alguna cosa al passat.",
       "pista.vet_pressio.3": "Escriu-li a la I.: un altre tros de cartell i el llapis d'ulls.",
@@ -10890,6 +10978,8 @@
       "pista.vet_canvia_iri.2": "Canvia a l'Iri.",
       "pista.iri_brau.1": "El Brau vigila la porta de la cambra.",
       "pista.iri_brau.2": "Parla amb el Brau.",
+      "pista.vet_mirar_llancadora.1": "La llançadora té una porta. Com s'obre?",
+      "pista.vet_mirar_llancadora.2": "Mira la llançadora.",
       "sala.fabrica_calderes.capatas.look1": "El capatàs Pruna. Dorm abraçat al segell oficial com si fos un osset de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
       "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Pruna?",
@@ -11240,7 +11330,11 @@
       "sala.fabrica_calderes.brau.nom": "Inspector Brau",
       "sala.fabrica_calderes.brau.look": "L'Inspector Brau, plantat davant la porta de la cambra com un pilar més.",
       "sala.fabrica_calderes.porta_cambra.brau": "Ni un pas, operària.",
-      "sala.fabrica.descoberta_cambra": "El Brau ja és aquí. M'acompanya a fora de la cambra, amb molta educació i cap mena de dubte."
+      "sala.fabrica.descoberta_cambra": "El Brau ja és aquí. M'acompanya a fora de la cambra, amb molta educació i cap mena de dubte.",
+      "sala.gavina_hangar.llancadora.porta_tancada": "La porta no té maneta. Només aquell pany rodó, sense forat per a cap clau.",
+      "sala.gavina_hangar.pany.nom": "pany sònic",
+      "sala.gavina_hangar.pany.obert": "El pany sònic. Ara la porta és oberta.",
+      "sala.gavina_hangar.pany.look": "Un pany rodó, com un ressonador. Sense forat per a cap clau."
     }
   },
   "locale": "ca"

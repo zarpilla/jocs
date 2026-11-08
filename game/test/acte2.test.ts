@@ -180,7 +180,9 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
   it('la nota del pany viatja dins una molla i torna dins un diapasó (sempre amb alguna pista)', () => {
     const { p, n } = finsComporta();
     // ── Vet: el pany sònic ──
-    expect(texts(p.do('push', 'llancadora'))).toContain('nnnnng');
+    expect(n.isHotspotVisible('gavina_hangar', 'pany')).toBe(false); // encara no l'ha vist
+    p.do('look', 'llancadora');
+    expect(texts(p.do('push', 'pany'))).toContain('nnnnng');
     p.do('open', 'porta_passadis');
     p.do('open', 'porta_cella');
     p.do('pickUp', 'llitera');
@@ -188,11 +190,11 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     p.do('open', 'porta');
     p.do('open', 'porta_hangar');
     // ── Vet: afina la molla ──
-    expect(texts(p.use('molla', 'llancadora'))).toContain('més greu');
+    expect(texts(p.use('molla', 'pany'))).toContain('més greu');
     for (let i = 0; i < 3; i++) p.do('pull', item('molla'));
-    expect(texts(p.use('molla', 'llancadora'))).toContain('més aguda');
+    expect(texts(p.use('molla', 'pany'))).toContain('més aguda');
     p.do('push', item('molla'));
-    expect(texts(p.use('molla', 'llancadora'))).toContain('mateixa nota');
+    expect(texts(p.use('molla', 'pany'))).toContain('mateixa nota');
     expect(texts(p.do('pull', item('molla')))).toContain('no la toco');
     // ── Vet: l'envia ──
     p.do('open', 'porta_passadis');
@@ -217,7 +219,7 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     expect(p.active).toBe('vet');
     p.do('open', 'porta');
     p.do('open', 'porta_hangar');
-    expect(texts(p.use('diapaso', 'llancadora'))).toContain('Clac');
+    expect(texts(p.use('diapaso', 'pany'))).toContain('Clac');
     expect(n.flag('pany_sonic_obert')).toBe(true);
     expect(n.state.quests.acte2!.objectives.diapaso).toBe(true);
     expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3 - 2);
@@ -225,14 +227,15 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
 
   it('si l\'Iri llima de més, el diapasó xiula i n\'ha de demanar un altre', () => {
     const { p, n } = finsComporta();
-    p.do('push', 'llancadora');
+    p.do('look', 'llancadora');
+    p.do('push', 'pany');
     p.do('open', 'porta_passadis');
     p.do('open', 'porta_cella');
     p.do('pickUp', 'llitera');
     for (let i = 0; i < 2; i++) p.do('pull', item('molla'));
     p.do('open', 'porta');
     p.do('open', 'porta_hangar');
-    p.use('molla', 'llancadora');
+    p.use('molla', 'pany');
     p.do('open', 'porta_passadis');
     p.do('open', 'porta_cella');
     p.use('molla', 'panell');
@@ -257,14 +260,15 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
 function finsDiapaso(fins = 'motor_engegat') {
   const s = finsComporta(fins);
   const { p } = s;
-  p.do('push', 'llancadora');
+  p.do('look', 'llancadora');
+  p.do('push', 'pany');
   p.do('open', 'porta_passadis');
   p.do('open', 'porta_cella');
   p.do('pickUp', 'llitera');
   for (let i = 0; i < 2; i++) p.do('pull', item('molla'));
   p.do('open', 'porta');
   p.do('open', 'porta_hangar');
-  p.use('molla', 'llancadora');
+  p.use('molla', 'pany');
   p.do('open', 'porta_passadis');
   p.do('open', 'porta_cella');
   p.use('molla', 'panell');
@@ -280,7 +284,7 @@ function finsDiapaso(fins = 'motor_engegat') {
   p.use('diapaso', 'cambra');
   p.do('open', 'porta');
   p.do('open', 'porta_hangar');
-  p.use('diapaso', 'llancadora');
+  p.use('diapaso', 'pany');
   expect(s.n.flag('pany_sonic_obert')).toBe(true);
   return s;
 }

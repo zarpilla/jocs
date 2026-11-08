@@ -104,6 +104,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "gavina_hangar 5.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -112,7 +133,7 @@
     "image": "gavina_hangar.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2400,
+      "w": 2880,
       "h": 270
     },
     "scale": "1",
@@ -149,6 +170,13 @@
         "name": "caixa_flotant",
         "from": 4,
         "to": 4,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pany",
+        "from": 5,
+        "to": 5,
         "direction": "forward",
         "color": "#000000ff"
       }
