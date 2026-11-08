@@ -123,8 +123,11 @@ function sync() {
   for (const c of report.created) console.log(`  + ${c}`);
   if (report.needsArt.length) {
     const draw = spawnSync('python3', [join(HERE, 'tools/draw_placeholders.py'), gameDir], { stdio: 'inherit' });
-    if (draw.status !== 0) {
+    if (draw.error) {
       console.warn(`⚠ No s'ha pogut dibuixar l'art provisional (cal python3 amb Pillow). Falta: ${report.needsArt.join(', ')}`);
+    } else if (draw.status !== 0) {
+      // Un error de Python en dibuixar (p. ex. a room_designs.py) no pot passar per un sync correcte.
+      throw new Error(`L'art provisional ha fallat (draw_placeholders.py, codi ${draw.status}): mira l'error de Python de més amunt.`);
     }
   }
 

@@ -734,6 +734,52 @@ PASSADIS = {
 }
 
 
+# ─── Reixes de desguàs (moll de càrrega i moll de l'hangar: el mateix lloc) ──
+
+# Punt de fuga del terra: les línies de planks() i grating() hi convergeixen (vx=176, y≈76).
+FLOOR_VP = (176, 76)
+GRATE_Y = (127, 137)
+GRATE_NOVA = ((70, 64, 58), (14, 12, 10), (150, 140, 128), (190, 178, 160))      # al passat: ferro nou
+GRATE_VELLA = ((58, 66, 78), (10, 12, 16), (96, 106, 120), (110, 122, 138))      # al present
+
+
+def grate_quad(xa, xb, y0=GRATE_Y[0], y1=GRATE_Y[1]):
+    """Cantonades d'una reixa al terra: xa..xb és la vora de davant (a y1); la del fons es projecta
+    cap al punt de fuga. Retorna (davant-esquerra, davant-dreta, fons-dreta, fons-esquerra)."""
+    vx, vy = FLOOR_VP
+    k = (y0 - vy) / (y1 - vy)
+    far = lambda x: vx + (x - vx) * k
+    return (xa, y1), (xb, y1), (far(xb), y0), (far(xa), y0)
+
+
+def grate_rect(xa, xb, pad=2):
+    """Rectangle clicable que cobreix una reixa (per als `things` dels dissenys)."""
+    pts = grate_quad(xa, xb)
+    xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    return (int(min(xs)) - pad, int(min(ys)) - pad, int(max(xs)) + pad, int(max(ys)) + pad)
+
+
+def floor_grate(c, xa, xb, palette):
+    """Reixa de desguàs encastada al terra, en perspectiva: marc, forat fosc i barrots que fugen."""
+    frame, hole, bar, edge = palette
+    (x0, y1), (x1, _), (x2, y0), (x3, _) = grate_quad(xa, xb)
+    c.d.polygon([(x0, y1), (x1, y1), (x2, y0), (x3, y0)], fill=frame)
+    inset = lambda p, q, t: (p[0] + (q[0] - p[0]) * t, p[1] + (q[1] - p[1]) * t)
+    a, b2, cc, d = (x0 + 2, y1 - 1), (x1 - 2, y1 - 1), (x2 - 1.5, y0 + 1), (x3 + 1.5, y0 + 1)
+    c.d.polygon([a, b2, cc, d], fill=hole)
+    n = 9
+    for i in range(1, n):
+        t = i / n
+        c.line([inset(a, b2, t), inset(d, cc, t)], bar)
+    c.line([(x3, y0), (x2, y0)], edge)
+    for p in ((x0 + 1, y1 - 1), (x1 - 1, y1 - 1), (x2 - 1, y0 + 1), (x3 + 1, y0 + 1)):
+        c.px(int(p[0]), int(p[1]), edge)
+
+
+HANGAR_GRATES = ((16, 54), (98, 136), (214, 252), (296, 334))
+MOLL_GRATES = ((24, 62), (100, 138), (170, 208))
+
+
 # ─── Fàbrica: moll de càrrega (Acte 2) ──────────────────────────────────────
 
 def pillar(c, x0, x1, base, dark, num_col, y0=0, y1=112):
@@ -797,11 +843,9 @@ def moll_bg(c):
     c.rect(206, 32, 242, 80, (150, 112, 74))
     c.rect(210, 62, 216, 76, IRON[1]); c.rect(208, 60, 218, 63, IRON[2])      # martell
     c.rect(226, 62, 228, 78, (190, 196, 206)); c.rect(224, 60, 230, 63, (190, 196, 206))  # clau
-    # Trapa als fonaments, al costat del pilar
-    c.rect(198, 120, 226, 130, (70, 48, 30))
-    c.rect(200, 122, 224, 128, WOOD[1])
-    c.line([(212, 122), (212, 128)], WOOD[0])
-    c.ellipse(216, 123, 220, 127, None, outline=IRON[2])
+    # Reixes de desguàs, noves. La del costat del pilar 7 s'aixeca: a sota, els fonaments.
+    for xa, xb in MOLL_GRATES:
+        floor_grate(c, xa, xb, GRATE_NOVA)
     vignette(c)
 
 
@@ -841,7 +885,7 @@ MOLL = {
         'biga_ferro9': {'rect': (56, 46, 156, 66), 'walk': (106, 128)},
         'serra': {'rect': (212, 42, 242, 54), 'walk': (226, 128)},
         'llima': {'rect': (232, 56, 242, 80), 'walk': (232, 128)},
-        'trapa': {'rect': (196, 118, 228, 132), 'walk': (212, 142)},
+        'trapa': {'rect': grate_rect(*MOLL_GRATES[2]), 'walk': (189, 143)},
         'conducte': {'rect': (158, 20, 180, 112), 'walk': (168, 130)},
         'comporta': {'rect': (244, 8, 350, 40), 'walk': (296, 132)},
         'llancadora': {'rect': (236, 42, 346, 110), 'walk': (264, 136)},
@@ -855,17 +899,6 @@ MOLL = {
 
 # ─── La Gavina: moll de l'hangar (Acte 2) ───────────────────────────────────
 
-def floor_grate(c, x0, y0, x1, y1):
-    """Reixa de desguàs encastada al terra: marc, fons fosc i barrots."""
-    c.rect(x0, y0, x1, y1, (58, 66, 78))                            # marc
-    c.rect(x0 + 2, y0 + 1, x1 - 2, y1 - 1, (10, 12, 16))            # el forat, fosc
-    for x in range(x0 + 4, x1 - 2, 3):                              # barrots
-        c.line([(x, y0 + 1), (x, y1 - 1)], (96, 106, 120))
-    c.line([(x0, y0), (x1, y0)], (110, 122, 138))                   # vora il·luminada
-    for x, y in ((x0 + 1, y0 + 1), (x1 - 1, y0 + 1), (x0 + 1, y1 - 1), (x1 - 1, y1 - 1)):
-        c.px(x, y, (130, 140, 150))                                 # cargols
-
-
 def hangar_bg(c):
     metal_panels(c, 0, 0, W, 112, (56, 66, 80), (28, 34, 44), (90, 104, 120), seed=61)
     c.rect(0, 0, W, 6, (24, 30, 40))
@@ -878,9 +911,9 @@ def hangar_bg(c):
     # Pilar 7: el de la fàbrica, cent vint anys després
     pillar(c, 110, 124, (96, 70, 60), (60, 44, 40), (170, 150, 120))
     c.shade(110, 0, 124, 112, (40, 30, 30), 70)
-    # Reixes de desguàs al terra (la del costat del pilar 7 és la de la nota de la I.)
-    for x0 in (22, 100, 214, 292):
-        floor_grate(c, x0, 120, x0 + 36, 129)
+    # Reixes de desguàs al terra, les mateixes que al moll de la fàbrica (la del pilar 7 és la de la nota)
+    for xa, xb in HANGAR_GRATES:
+        floor_grate(c, xa, xb, GRATE_VELLA)
     # La comporta, tancada i rovellada
     c.rect(156, 6, 350, 112, (30, 36, 46))
     for y in range(10, 104, 8):
@@ -969,7 +1002,7 @@ HANGAR = {
         'porta_passadis': {'rect': (6, 34, 48, 114), 'walk': (34, 134)},
         'comporta': {'rect': (156, 6, 350, 112), 'walk': (220, 132)},
         'pilar': {'rect': (108, 8, 126, 112), 'walk': (118, 128)},
-        'placa_terra': {'rect': (98, 118, 138, 130), 'walk': (118, 142)},
+        'placa_terra': {'rect': grate_rect(*HANGAR_GRATES[1]), 'walk': (117, 143)},
         'llancadora': {'rect': (178, 40, 334, 104), 'walk': (260, 132)},
         'conducte': {'rect': (130, 10, 152, 112), 'walk': (140, 128)},
         'escala': {'rect': (56, 74, 100, 114), 'walk': (78, 130)},
