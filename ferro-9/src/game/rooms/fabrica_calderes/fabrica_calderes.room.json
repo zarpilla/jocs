@@ -2,14 +2,14 @@
   "id": "fabrica_calderes",
   "name": "Sala de calderes",
   "size": {
-    "width": 352,
-    "height": 198
+    "width": 480,
+    "height": 270
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 352,
-    "height": 198
+    "width": 480,
+    "height": 270
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 14,
-            "y": 118
+            "x": 19,
+            "y": 161
           },
           {
-            "x": 338,
-            "y": 118
+            "x": 461,
+            "y": 161
           },
           {
-            "x": 346,
-            "y": 148
+            "x": 472,
+            "y": 202
           },
           {
-            "x": 6,
-            "y": 148
+            "x": 8,
+            "y": 202
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 6,
-          "y": 48
+          "x": 8,
+          "y": 65
         },
         {
-          "x": 42,
-          "y": 48
+          "x": 57,
+          "y": 65
         },
         {
-          "x": 42,
-          "y": 114
+          "x": 57,
+          "y": 155
         },
         {
-          "x": 6,
-          "y": 114
+          "x": 8,
+          "y": 155
         }
       ],
       "walkToPoint": {
-        "x": 30,
-        "y": 134
+        "x": 41,
+        "y": 183
       },
       "lookAtPoint": {
-        "x": 24,
-        "y": 114
+        "x": 33,
+        "y": 156
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 310,
-          "y": 48
+          "x": 422,
+          "y": 65
         },
         {
-          "x": 346,
-          "y": 48
+          "x": 472,
+          "y": 65
         },
         {
-          "x": 346,
-          "y": 114
+          "x": 472,
+          "y": 155
         },
         {
-          "x": 310,
-          "y": 114
+          "x": 422,
+          "y": 155
         }
       ],
       "walkToPoint": {
-        "x": 320,
-        "y": 134
+        "x": 437,
+        "y": 183
       },
       "lookAtPoint": {
-        "x": 328,
-        "y": 114
+        "x": 447,
+        "y": 156
       },
       "defaultVerb": "open"
     },
@@ -112,29 +112,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 146,
-          "y": 24
+          "x": 199,
+          "y": 32
         },
         {
-          "x": 206,
-          "y": 24
+          "x": 281,
+          "y": 32
         },
         {
-          "x": 206,
-          "y": 64
+          "x": 281,
+          "y": 87
         },
         {
-          "x": 146,
-          "y": 64
+          "x": 199,
+          "y": 87
         }
       ],
       "walkToPoint": {
-        "x": 176,
-        "y": 128
+        "x": 240,
+        "y": 175
       },
       "lookAtPoint": {
-        "x": 176,
-        "y": 64
+        "x": 240,
+        "y": 87
       }
     },
     {
@@ -144,29 +144,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 318,
-          "y": 28
+          "x": 433,
+          "y": 38
         },
         {
-          "x": 338,
-          "y": 28
+          "x": 461,
+          "y": 38
         },
         {
-          "x": 338,
-          "y": 48
+          "x": 461,
+          "y": 65
         },
         {
-          "x": 318,
-          "y": 48
+          "x": 433,
+          "y": 65
         }
       ],
       "walkToPoint": {
-        "x": 316,
-        "y": 132
+        "x": 431,
+        "y": 180
       },
       "lookAtPoint": {
-        "x": 328,
-        "y": 48
+        "x": 447,
+        "y": 66
       }
     }
   ],
@@ -196,30 +196,30 @@
       "collider": {
         "points": [
           {
-            "x": 222,
-            "y": 124
+            "x": 302,
+            "y": 169
           },
           {
-            "x": 242,
-            "y": 124
+            "x": 330,
+            "y": 169
           },
           {
-            "x": 242,
-            "y": 140
+            "x": 330,
+            "y": 191
           },
           {
-            "x": 222,
-            "y": 140
+            "x": 302,
+            "y": 191
           }
         ]
       },
       "walkToPoint": {
-        "x": 214,
-        "y": 140
+        "x": 292,
+        "y": 191
       },
       "lookAtPoint": {
-        "x": 232,
-        "y": 140
+        "x": 317,
+        "y": 191
       },
       "description": "segell oficial"
     }
@@ -228,8 +228,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 160,
-      "y": 138,
+      "x": 218,
+      "y": 188,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -238,8 +238,8 @@
     {
       "instanceId": "capatas-1",
       "definition": "capatas/capatas.character.json",
-      "x": 262,
-      "y": 132,
+      "x": 357,
+      "y": 180,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

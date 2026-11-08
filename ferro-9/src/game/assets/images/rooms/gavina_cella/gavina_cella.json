@@ -4,83 +4,83 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "sourceSize": {
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "duration": 100
     },
     "gavina_cella 1.aseprite": {
       "frame": {
-        "x": 352,
+        "x": 480,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "sourceSize": {
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "duration": 100
     },
     "gavina_cella 2.aseprite": {
       "frame": {
-        "x": 704,
+        "x": 960,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "sourceSize": {
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "duration": 100
     },
     "gavina_cella 3.aseprite": {
       "frame": {
-        "x": 1056,
+        "x": 1440,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "sourceSize": {
-        "w": 352,
-        "h": 198
+        "w": 480,
+        "h": 270
       },
       "duration": 100
     }
@@ -91,8 +91,8 @@
     "image": "gavina_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1408,
-      "h": 198
+      "w": 1920,
+      "h": 270
     },
     "scale": "1",
     "frameTags": [

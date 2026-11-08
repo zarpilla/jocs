@@ -21,8 +21,10 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+import room_designs  # noqa: E402
 from room_designs import DESIGNS, C  # noqa: E402
 from draw_items import icon  # noqa: E402
+from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
 
 PALETTE = {
     # passat: fàbrica de ferro-9 (calent, rovell, vapor)
@@ -169,6 +171,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     room_path = game_dir / 'rooms' / name / f'{name}.room.json'
     room = json.loads(room_path.read_text())
     w, h = room['size']['width'], room['size']['height']
+    k = room_designs.K = h / DESIGN_H  # el disseny és en coordenades de 352×198
 
     bg = Image.new('RGBA', (w, h), (0, 0, 0, 255))
     design['bg'](C(bg))
@@ -192,33 +195,37 @@ def draw_designed(dir_: Path, game_dir: Path, design):
 
     # Geometria: el que es pot clicar ha de coincidir amb el que es veu.
     def poly(r):
-        x0, y0, x1, y1 = r
+        x0, y0, x1, y1 = box(*r, k)
         return [{'x': x0, 'y': y0}, {'x': x1, 'y': y0}, {'x': x1, 'y': y1}, {'x': x0, 'y': y1}]
+
+    def xy(x, y):
+        x, y = pt(x, y, k)
+        return {'x': x, 'y': y}
 
     things = design['things']
     for hs in room['hotspots']:
         t = things.get(hs['id'])
         if t:
             hs['points'] = poly(t['rect'])
-            hs['walkToPoint'] = {'x': t['walk'][0], 'y': t['walk'][1]}
-            hs['lookAtPoint'] = {'x': (t['rect'][0] + t['rect'][2]) // 2, 'y': t['rect'][3]}
+            hs['walkToPoint'] = xy(*t['walk'])
+            hs['lookAtPoint'] = xy((t['rect'][0] + t['rect'][2]) // 2, t['rect'][3])
     for prop in room['props']:
         t = things.get(prop['id'])
         if t:
             prop['collider'] = {'points': poly(t['rect'])}
-            prop['walkToPoint'] = {'x': t['walk'][0], 'y': t['walk'][1]}
-            prop['lookAtPoint'] = {'x': (t['rect'][0] + t['rect'][2]) // 2, 'y': t['rect'][3]}
+            prop['walkToPoint'] = xy(*t['walk'])
+            prop['lookAtPoint'] = xy((t['rect'][0] + t['rect'][2]) // 2, t['rect'][3])
     for ch in room['characters']:
         cid = ch['definition'].split('/')[0]
         if cid in design['spawns']:
-            ch['x'], ch['y'] = design['spawns'][cid]
-    room['walkable']['polygons'][0]['points'] = [{'x': x, 'y': y} for x, y in design['walkable']]
+            ch['x'], ch['y'] = pt(*design['spawns'][cid], k)
+    room['walkable']['polygons'][0]['points'] = [xy(x, y) for x, y in design['walkable']]
     room_path.write_text(json.dumps(room, indent=2, ensure_ascii=False) + '\n')
     print(f'✔ escena provisional: rooms/{name}')
 
 
 def draw_inventory(dir_: Path, req, small):
-    fw, fh = 36, 20
+    fw, fh = scaled(36), scaled(20)  # la casella de l'inventari
     items = req['items']
     labels = short_labels(items)
     sheet = Image.new('RGBA', (fw * len(items), fh), (0, 0, 0, 0))

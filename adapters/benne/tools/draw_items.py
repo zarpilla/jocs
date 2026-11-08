@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Icones provisionals dels objectes d'inventari de Ferro-9, en pixel art (36×20, la mida de la
-casella de l'inventari de Benne), amb el mateix contorn fosc que els personatges.
+Icones provisionals dels objectes d'inventari de Ferro-9, en pixel art (dissenyades a 36×20 i
+rasteritzades a l'escala del joc: la mida de la casella de l'inventari de Benne), amb el mateix contorn fosc que els personatges.
 
 draw_placeholders.py les fa servir quan dibuixa el full d'inventari; els objectes que no tenen
 icona aquí continuen sortint com una caixa amb el nom.
@@ -259,7 +259,7 @@ ICONS = {f.__name__: f for f in (
 
 
 def icon(item_id):
-    """Imatge 36×20 de l'objecte, o None si encara no en té."""
+    """Imatge de l'objecte a la mida de la casella, o None si encara no en té."""
     draw = ICONS.get(item_id)
     if draw is None:
         return None
@@ -270,8 +270,9 @@ def icon(item_id):
 
 
 if __name__ == '__main__':
-    scale, cols = 6, 5
+    scale, cols = 4, 5
     ids = list(ICONS)
+    W, H = icon(ids[0]).size
     rows = (len(ids) + cols - 1) // cols
     out = Image.new('RGBA', (cols * (W + 4) * scale, rows * (H + 4) * scale), (27, 58, 92, 255))
     for i, iid in enumerate(ids):

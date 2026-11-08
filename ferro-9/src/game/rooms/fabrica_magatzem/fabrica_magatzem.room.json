@@ -2,14 +2,14 @@
   "id": "fabrica_magatzem",
   "name": "Magatzem d'eines",
   "size": {
-    "width": 352,
-    "height": 198
+    "width": 480,
+    "height": 270
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 352,
-    "height": 198
+    "width": 480,
+    "height": 270
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 14,
-            "y": 118
+            "x": 19,
+            "y": 161
           },
           {
-            "x": 338,
-            "y": 118
+            "x": 461,
+            "y": 161
           },
           {
-            "x": 346,
-            "y": 148
+            "x": 472,
+            "y": 202
           },
           {
-            "x": 6,
-            "y": 148
+            "x": 8,
+            "y": 202
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 6,
-          "y": 48
+          "x": 8,
+          "y": 65
         },
         {
-          "x": 42,
-          "y": 48
+          "x": 57,
+          "y": 65
         },
         {
-          "x": 42,
-          "y": 114
+          "x": 57,
+          "y": 155
         },
         {
-          "x": 6,
-          "y": 114
+          "x": 8,
+          "y": 155
         }
       ],
       "walkToPoint": {
-        "x": 30,
-        "y": 134
+        "x": 41,
+        "y": 183
       },
       "lookAtPoint": {
-        "x": 24,
-        "y": 114
+        "x": 33,
+        "y": 156
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 112,
-          "y": 16
+          "x": 152,
+          "y": 21
         },
         {
-          "x": 236,
-          "y": 16
+          "x": 322,
+          "y": 21
         },
         {
-          "x": 236,
-          "y": 110
+          "x": 322,
+          "y": 150
         },
         {
-          "x": 112,
-          "y": 110
+          "x": 152,
+          "y": 150
         }
       ],
       "walkToPoint": {
-        "x": 174,
-        "y": 126
+        "x": 237,
+        "y": 172
       },
       "lookAtPoint": {
-        "x": 174,
-        "y": 110
+        "x": 237,
+        "y": 150
       }
     }
   ],
@@ -131,30 +131,30 @@
       "collider": {
         "points": [
           {
-            "x": 82,
-            "y": 44
+            "x": 111,
+            "y": 59
           },
           {
-            "x": 100,
-            "y": 44
+            "x": 136,
+            "y": 59
           },
           {
-            "x": 100,
-            "y": 100
+            "x": 136,
+            "y": 136
           },
           {
-            "x": 82,
-            "y": 100
+            "x": 111,
+            "y": 136
           }
         ]
       },
       "walkToPoint": {
-        "x": 92,
-        "y": 128
+        "x": 126,
+        "y": 175
       },
       "lookAtPoint": {
-        "x": 91,
-        "y": 100
+        "x": 124,
+        "y": 137
       },
       "description": "plomall"
     },
@@ -171,30 +171,30 @@
       "collider": {
         "points": [
           {
-            "x": 264,
-            "y": 112
+            "x": 360,
+            "y": 152
           },
           {
-            "x": 306,
-            "y": 112
+            "x": 417,
+            "y": 152
           },
           {
-            "x": 306,
-            "y": 138
+            "x": 417,
+            "y": 188
           },
           {
-            "x": 264,
-            "y": 138
+            "x": 360,
+            "y": 188
           }
         ]
       },
       "walkToPoint": {
-        "x": 256,
-        "y": 140
+        "x": 349,
+        "y": 191
       },
       "lookAtPoint": {
-        "x": 285,
-        "y": 138
+        "x": 389,
+        "y": 188
       },
       "description": "caixa d'eines"
     }
@@ -203,8 +203,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 70,
-      "y": 138,
+      "x": 96,
+      "y": 188,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -213,8 +213,8 @@
     {
       "instanceId": "cargol-1",
       "definition": "cargol/cargol.character.json",
-      "x": 210,
-      "y": 132,
+      "x": 287,
+      "y": 180,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

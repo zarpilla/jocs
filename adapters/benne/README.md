@@ -93,6 +93,20 @@ projecte i els actualitza mentre hi hagi la marca `.provisional` a `assets/image
 L'aspecte segons l'estat (`appearance` a `characters.json`) l'aplica el pont en entrar a la sala i
 cada vegada que canvia l'estat.
 
+Els objectes d'inventari tenen icona a `tools/draw_items.py`; els que no en tenen surten com una
+caixa amb el nom.
+
+## Resolució
+
+El joc és a **480×270**. L'art provisional (personatges, objectes i sales) es dissenya en coordenades
+de 352×198 i es rasteritza a l'escala de `tools/escala.py` (×15/11), amb el contorn i els detalls de
+les cares a píxel real. Les constants equivalents per a les sales noves són a `benne-content.ts`.
+Les fonts no s'escalen: són de mapa de bits i només es veuen nítides a múltiples enters.
+
+El sync no torna a escriure les GUI ni la geometria de les sales existents: per passar un projecte
+de 352×198 a la resolució nova s'ha fet una vegada `python3 adapters/benne/tools/migra_resolucio.py
+ferro-9/src/game` (ja aplicat) i després `npm run benne:sync`.
+
 ## Fonts
 
 Les fonts de mapa de bits de la plantilla no tenien la majoria de caràcters catalans (à, è, ò, ç,

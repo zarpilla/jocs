@@ -11,14 +11,22 @@ Cada disseny:
   bg(c)     dibuixa el fons
   props     id → funció que dibuixa el prop condicional (fotograma a part)
 
-Resolució 352×198; per sota de y≈150 hi ha la barra de verbs.
+Coordenades de disseny 352×198 (escala.py les porta a la resolució del joc); per sota de y≈150
+hi ha la barra de verbs.
 """
 import math
 import random
 
+import sys
+from pathlib import Path
+
 from PIL import Image, ImageDraw
 
-W, H = 352, 198
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from escala import DESIGN_W, DESIGN_H, box, pt  # noqa: E402
+
+W, H = DESIGN_W, DESIGN_H
+K = 1.0  # escala de disseny → píxels reals; la fixa draw_placeholders.py segons la mida de la sala
 
 
 # ─── Eines de dibuix ────────────────────────────────────────────────────────
@@ -27,12 +35,46 @@ def lerp(a, b, t):
     return tuple(int(a[i] + (b[i] - a[i]) * t) for i in range(3))
 
 
-class C:
-    """Llenç amb utilitats de pixel art."""
+class ScaledDraw:
+    """ImageDraw amb coordenades de disseny: les converteix a píxels reals abans de dibuixar."""
 
-    def __init__(self, img):
+    def __init__(self, img, k):
+        self.d, self.k = ImageDraw.Draw(img), k
+
+    def _box(self, b):
+        x0, y0, x1, y1 = b
+        return list(box(x0, y0, x1, y1, self.k))
+
+    def _pts(self, pts):
+        return [pt(x, y, self.k) for x, y in pts]
+
+    def _w(self, width):
+        return max(1, round(width * self.k))
+
+    def rectangle(self, b, fill=None, outline=None, width=1):
+        self.d.rectangle(self._box(b), fill=fill, outline=outline, width=self._w(width))
+
+    def ellipse(self, b, fill=None, outline=None, width=1):
+        self.d.ellipse(self._box(b), fill=fill, outline=outline, width=self._w(width))
+
+    def polygon(self, pts, fill=None, outline=None):
+        self.d.polygon(self._pts(pts), fill=fill, outline=outline)
+
+    def line(self, pts, fill=None, width=1):
+        self.d.line(self._pts(pts), fill=fill, width=self._w(width))
+
+    def arc(self, b, start, end, fill=None, width=1):
+        self.d.arc(self._box(b), start, end, fill=fill, width=self._w(width))
+
+
+class C:
+    """Llenç amb utilitats de pixel art. Les coordenades són de disseny (352×198); `k` és l'escala
+    fins als píxels reals de la imatge (vegeu escala.py)."""
+
+    def __init__(self, img, k=None):
         self.img = img
-        self.d = ImageDraw.Draw(img)
+        self.k = K if k is None else k
+        self.d = ScaledDraw(img, self.k)
 
     def rect(self, x0, y0, x1, y1, col):
         self.d.rectangle([x0, y0, x1, y1], fill=col)
@@ -41,21 +83,24 @@ class C:
         self.d.line(pts, fill=col, width=w)
 
     def px(self, x, y, col):
-        if 0 <= x < self.img.width and 0 <= y < self.img.height:
-            self.img.putpixel((int(x), int(y)), col + (255,) if len(col) == 3 else col)
+        self.d.rectangle([int(x), int(y), int(x), int(y)], fill=col)
 
     def vgrad(self, x0, y0, x1, y1, c1, c2):
-        for y in range(y0, y1 + 1):
-            t = (y - y0) / max(1, y1 - y0)
-            self.d.line([(x0, y), (x1, y)], fill=lerp(c1, c2, t))
+        X0, Y0, X1, Y1 = box(x0, y0, x1, y1, self.k)
+        dr = ImageDraw.Draw(self.img)
+        for y in range(Y0, Y1 + 1):
+            t = (y - Y0) / max(1, Y1 - Y0)
+            dr.line([(X0, y), (X1, y)], fill=lerp(c1, c2, t))
 
     def hgrad(self, x0, y0, x1, y1, stops):
         """Gradient horitzontal per tons (cilindres): stops = [(t, color), ...]."""
-        for x in range(x0, x1 + 1):
-            t = (x - x0) / max(1, x1 - x0)
+        X0, Y0, X1, Y1 = box(x0, y0, x1, y1, self.k)
+        dr = ImageDraw.Draw(self.img)
+        for x in range(X0, X1 + 1):
+            t = (x - X0) / max(1, X1 - X0)
             for (t0, c0), (t1, c1) in zip(stops, stops[1:]):
                 if t0 <= t <= t1:
-                    self.d.line([(x, y0), (x, y1)], fill=lerp(c0, c1, (t - t0) / max(1e-6, t1 - t0)))
+                    dr.line([(x, Y0), (x, Y1)], fill=lerp(c0, c1, (t - t0) / max(1e-6, t1 - t0)))
                     break
 
     def ellipse(self, x0, y0, x1, y1, col, outline=None):
@@ -64,14 +109,15 @@ class C:
     def glow(self, cx, cy, r, col, strength=0.5):
         layer = Image.new('RGBA', self.img.size, (0, 0, 0, 0))
         ld = ImageDraw.Draw(layer)
-        for i in range(r, 0, -2):
-            a = int(255 * strength * (1 - i / r) ** 1.6)
-            ld.ellipse([cx - i, cy - i, cx + i, cy + i], fill=col + (max(0, min(255, a)) // 3,))
+        (X, Y), R = pt(cx, cy, self.k), round(r * self.k)
+        for i in range(R, 0, -2):
+            a = int(255 * strength * (1 - i / R) ** 1.6)
+            ld.ellipse([X - i, Y - i, X + i, Y + i], fill=col + (max(0, min(255, a)) // 3,))
         self.img.alpha_composite(layer)
 
     def shade(self, x0, y0, x1, y1, col, alpha):
         layer = Image.new('RGBA', self.img.size, (0, 0, 0, 0))
-        ImageDraw.Draw(layer).rectangle([x0, y0, x1, y1], fill=col + (alpha,))
+        ImageDraw.Draw(layer).rectangle(list(box(x0, y0, x1, y1, self.k)), fill=col + (alpha,))
         self.img.alpha_composite(layer)
 
 
@@ -154,9 +200,10 @@ def gauge(c, cx, cy, r, angle):
 def vignette(c, strength=90):
     layer = Image.new('RGBA', c.img.size, (0, 0, 0, 0))
     ld = ImageDraw.Draw(layer)
-    for i in range(24):
-        a = int(strength * (1 - i / 24) ** 2)
-        ld.rectangle([i, i, W - 1 - i, H - 1 - i], outline=(0, 0, 0, a))
+    w, h, steps = c.img.width, c.img.height, round(24 * c.k)
+    for i in range(steps):
+        a = int(strength * (1 - i / steps) ** 2)
+        ld.rectangle([i, i, w - 1 - i, h - 1 - i], outline=(0, 0, 0, a))
     c.img.alpha_composite(layer)
 
 
@@ -471,8 +518,8 @@ def cella_bg(c):
     # Ull de bou amb la Terra (dibuixada a part i retallada en cercle)
     cx, cy, r = 247, 37, 19
     c.ellipse(cx - r - 4, cy - r - 4, cx + r + 4, cy + r + 4, (30, 36, 46))
-    space = Image.new('RGBA', (2 * r + 1, 2 * r + 1), (8, 10, 24, 255))
-    sc = C(space)
+    space = Image.new('RGBA', (round((2 * r + 1) * c.k),) * 2, (8, 10, 24, 255))
+    sc = C(space, c.k)
     rnd = random.Random(4)
     for _ in range(22):
         sc.px(rnd.randint(0, 2 * r), rnd.randint(0, 2 * r), (230, 230, 255))
@@ -481,8 +528,8 @@ def cella_bg(c):
     sc.ellipse(r + 12, r + 4, r + 22, r + 9, (230, 240, 255))
     sc.glow(r + 14, r + 20, 22, (120, 180, 255), 0.5)
     mask = Image.new('L', space.size, 0)
-    ImageDraw.Draw(mask).ellipse([0, 0, 2 * r, 2 * r], fill=255)
-    c.img.paste(space, (cx - r, cy - r), mask)
+    ImageDraw.Draw(mask).ellipse([0, 0, space.width - 1, space.height - 1], fill=255)
+    c.img.paste(space, box(cx - r, cy - r, cx - r, cy - r, c.k)[:2], mask)
     c.d.ellipse([cx - r - 2, cy - r - 2, cx + r + 2, cy + r + 2], outline=(130, 150, 170))
     c.line([(cx - 8, cy - 12), (cx - 2, cy - 15)], (200, 220, 240))     # reflex del vidre
 

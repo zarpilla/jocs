@@ -16,10 +16,13 @@ import { fileURLToPath } from 'node:url';
 import type { GameContent, InteractionDef, LocaleTable, RoomDef } from '@aventura/narrative-core';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
-const W = 352;
-const H = 198;
+/** Resolució del joc. Les mides de disseny (com a tools/escala.py) són de 352×198 i s'escalen amb `s()`. */
+const W = 480;
+const H = 270;
+const S = W / 352;
+const s = (v: number) => Math.round(v * S);
 /** Per sota d'aquesta línia hi ha la barra de verbs. */
-const FLOOR_BOTTOM = 148;
+const FLOOR_BOTTOM = s(148);
 
 type Json = Record<string, unknown>;
 /** Peticions d'art provisional per a draw_placeholders.py (fora d'assets/, perquè Benne no les llegeixi). */
@@ -284,19 +287,19 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
   exits.forEach(([hid, h], n) => {
     const side = n % 2 === 0 ? 'left' : 'right';
     const level = Math.floor(n / 2);
-    boxes.push({ id: hid, label: t(h.name, hid), kind: 'exit', w: 34, h: 66 - level * 8, x: side === 'left' ? 6 + level * 40 : W - 40 - level * 40, y: 52 + level * 8 });
+    boxes.push({ id: hid, label: t(h.name, hid), kind: 'exit', w: s(34), h: s(66 - level * 8), x: side === 'left' ? s(6 + level * 40) : W - s(40 + level * 40), y: s(52 + level * 8) });
   });
-  const span = { from: 50, to: W - 50 };
+  const span = { from: s(50), to: W - s(50) };
   const slot = (span.to - span.from) / Math.max(1, others.length);
   others.forEach(([hid, h], n) => {
-    const w = Math.min(54, Math.floor(slot) - 6);
+    const w = Math.min(s(54), Math.floor(slot) - s(6));
     const cx = span.from + slot * n + slot / 2;
     const tall = n % 2 === 1; // alternem alçades perquè les etiquetes no es toquin
-    // A la part alta de la paret: els personatges (64 px) queden a sota, sense tapar-les.
-    boxes.push({ id: hid, label: t(h.name, hid), kind: h.visibleIf ? 'prop' : 'hotspot', w, h: 24, x: Math.round(cx - w / 2), y: tall ? 14 : 42 });
+    // A la part alta de la paret: els personatges (87 px) queden a sota, sense tapar-les.
+    boxes.push({ id: hid, label: t(h.name, hid), kind: h.visibleIf ? 'prop' : 'hotspot', w, h: s(24), x: Math.round(cx - w / 2), y: s(tall ? 14 : 42) });
   });
 
-  const walkTo = (b: Box) => ({ x: Math.round(b.x + b.w / 2), y: b.kind === 'exit' ? 132 : 126 });
+  const walkTo = (b: Box) => ({ x: Math.round(b.x + b.w / 2), y: s(b.kind === 'exit' ? 132 : 126) });
   const hotspots = boxes.filter((b) => b.kind !== 'prop').map((b, n) => ({
     id: b.id, active: true, description: b.label, zIndex: n, points: rect(b), walkToPoint: walkTo(b),
     lookAtPoint: { x: Math.round(b.x + b.w / 2), y: b.y + b.h }, ...(b.kind === 'exit' ? { defaultVerb: 'open' } : {}),
@@ -312,15 +315,15 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
   const spawn: Json[] = [];
   const protagonist = room.protagonist;
   if (protagonist) {
-    spawn.push({ instanceId: `${protagonist}-1`, definition: `${protagonist}/${protagonist}.character.json`, x: W / 2, y: 136, initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 10 });
+    spawn.push({ instanceId: `${protagonist}-1`, definition: `${protagonist}/${protagonist}.character.json`, x: W / 2, y: s(136), initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 10 });
   }
   characters.forEach((c, n) => {
-    const x = characters.length === 1 ? 270 : 70 + n * ((W - 140) / Math.max(1, characters.length - 1));
-    spawn.push({ instanceId: `${c}-1`, definition: `${c}/${c}.character.json`, x: Math.round(x), y: 130, initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 9 });
+    const x = characters.length === 1 ? s(270) : s(70) + n * ((W - s(140)) / Math.max(1, characters.length - 1));
+    spawn.push({ instanceId: `${c}-1`, definition: `${c}/${c}.character.json`, x: Math.round(x), y: s(130), initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 9 });
   });
   voicesIn(room, content).forEach((c, n) => {
     // Una veu: hi és perquè pugui parlar, però no es veu ni es pot clicar.
-    spawn.push({ instanceId: `${c}-veu`, definition: `${c}/${c}.character.json`, x: 40 + n * 30, y: 70, initialFacing: 'D', initialAnimation: 'Idle', visible: false, clickable: false, zIndex: 1 });
+    spawn.push({ instanceId: `${c}-veu`, definition: `${c}/${c}.character.json`, x: s(40 + n * 30), y: s(70), initialFacing: 'D', initialAnimation: 'Idle', visible: false, clickable: false, zIndex: 1 });
   });
 
   const benneRoom = {
@@ -329,7 +332,7 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
     size: { width: W, height: H },
     scrollBounds: { x: 0, y: 0, width: W, height: H },
     walkable: {
-      polygons: [{ id: 'walk-1', active: true, points: [{ x: 14, y: 118 }, { x: W - 14, y: 118 }, { x: W - 6, y: FLOOR_BOTTOM }, { x: 6, y: FLOOR_BOTTOM }], holes: [] }],
+      polygons: [{ id: 'walk-1', active: true, points: [{ x: s(14), y: s(118) }, { x: W - s(14), y: s(118) }, { x: W - s(6), y: FLOOR_BOTTOM }, { x: s(6), y: FLOOR_BOTTOM }], holes: [] }],
     },
     hotspots,
     points: [],
@@ -342,7 +345,7 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
     height: H,
     title: t(room.name, id),
     era: protagonist ?? '',
-    floorTop: 112,
+    floorTop: s(112),
     floorBottom: FLOOR_BOTTOM,
     boxes,
     characters: characters.map((c) => t(content.characters[c]?.name, c)),

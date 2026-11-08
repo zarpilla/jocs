@@ -14,9 +14,13 @@ Les protagonistes tenen Idle/Walk/Talk en tres direccions (L, D, U; Benne fa el 
 Surt a adapters/benne/placeholder-art/<id>/. Ús: python3 draw_characters.py
 """
 import json
+import sys
 from pathlib import Path
 
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from escala import SCALE, box, pt  # noqa: E402
 
 OUT = Path(__file__).resolve().parent.parent / 'placeholder-art'
 OUTLINE = (34, 24, 30, 255)
@@ -28,24 +32,37 @@ def rgba(c):
 
 
 class Canvas:
-    def __init__(self, w, h):
-        self.img = Image.new('RGBA', (w, h), CLEAR)
-        self.w, self.h = w, h
+    """Llenç amb coordenades de disseny (les de sempre, p. ex. 36×64) que es rasteritza a l'escala
+    del joc: rectangles i el·lipses es tornen a rasteritzar a la mida real, i el contorn és d'un píxel real."""
 
-    def px(self, x, y, c):
+    def __init__(self, w, h, k=SCALE):
+        self.k = k
+        self.w, self.h = round(w * k), round(h * k)
+        self.img = Image.new('RGBA', (self.w, self.h), CLEAR)
+
+    def rpx(self, x, y, c):
+        """Un píxel real (per als detalls que només caben a la resolució gran)."""
         if 0 <= x < self.w and 0 <= y < self.h:
             self.img.putpixel((x, y), rgba(c))
 
+    def rrect(self, x0, y0, x1, y1, c):
+        for y in range(max(0, y0), min(self.h - 1, y1) + 1):
+            for x in range(max(0, x0), min(self.w - 1, x1) + 1):
+                self.img.putpixel((x, y), rgba(c))
+
+    def px(self, x, y, c):
+        self.rect(x, y, x, y, c)
+
     def rect(self, x0, y0, x1, y1, c):
-        for y in range(y0, y1 + 1):
-            for x in range(x0, x1 + 1):
-                self.px(x, y, c)
+        self.rrect(*box(x0, y0, x1, y1, self.k), c)
 
     def ellipse(self, cx, cy, rx, ry, c):
-        for y in range(int(cy - ry), int(cy + ry) + 1):
-            for x in range(int(cx - rx), int(cx + rx) + 1):
-                if ((x - cx) / (rx + 0.3)) ** 2 + ((y - cy) / (ry + 0.3)) ** 2 <= 1:
-                    self.px(x, y, c)
+        k = self.k
+        for y in range(max(0, int((cy - ry - 1) * k)), min(self.h, int((cy + ry + 2) * k))):
+            for x in range(max(0, int((cx - rx - 1) * k)), min(self.w, int((cx + rx + 2) * k))):
+                lx, ly = (x + 0.5) / k - 0.5, (y + 0.5) / k - 0.5
+                if ((lx - cx) / (rx + 0.3)) ** 2 + ((ly - cy) / (ry + 0.3)) ** 2 <= 1:
+                    self.img.putpixel((x, y), rgba(c))
 
     def outline(self):
         """Contorn fosc d'un píxel al voltant de tot el que s'ha dibuixat (llegibilitat sobre qualsevol fons)."""
@@ -199,13 +216,13 @@ IRI = {
     'skin': (226, 176, 134), 'skin2': (196, 142, 106), 'hair': (50, 34, 38), 'hair2': (30, 20, 24),
     'top': (238, 236, 228), 'top2': (200, 198, 190), 'coat': (238, 236, 228), 'coat2': (200, 198, 190),
     'sleeve': (238, 236, 228), 'sleeve_len': 'long', 'legs': (66, 56, 52), 'legs2': (50, 42, 38),
-    'shoes': (40, 30, 26), 'eyes': (40, 30, 30), 'lashes': True, 'hair_fn': hair_iri, 'deco': deco_bata,
+    'shoes': (40, 30, 26), 'eyes': (40, 30, 30), 'lashes': True, 'hair_fn': hair_iri, 'deco': deco_bata, 'shine': 0.3,
 }
 VET = {
     'skin': (156, 104, 76), 'skin2': (124, 80, 58), 'hair': (232, 226, 210), 'hair2': (190, 182, 168),
     'top': (226, 116, 44), 'top2': (186, 88, 30), 'sleeve_len': 'long', 'legs': (226, 116, 44), 'legs2': (186, 88, 30),
     'shoes': (232, 232, 232), 'sole': (90, 90, 96), 'leg_stripe': (240, 240, 240), 'eyes': (30, 24, 30), 'lashes': True,
-    'hair_fn': hair_vet, 'deco': deco_taronja,
+    'hair_fn': hair_vet, 'deco': deco_taronja, 'shine': 0.6,
 }
 MOS = {
     'skin': (214, 170, 140), 'skin2': (184, 138, 110), 'hair': (206, 206, 214), 'hair2': (160, 160, 170),
@@ -303,8 +320,46 @@ def person(p, facing, walk=None, talk=False, thin=False):
         s.rect(13, 16, 14, 16 + (1 if talk else 0), (90, 30, 30) if talk else (120, 50, 50))
 
     p['hair_fn'](s, p, facing, 'front')
+    face_detail(c, p, facing, bob)
     c.outline()
     return c.img
+
+
+def mix(a, b, t):
+    return tuple(round(a[i] + (b[i] - a[i]) * t) for i in range(3))
+
+
+def face_detail(c, p, facing, bob):
+    """Detalls a píxel real, que només caben a la resolució gran: celles, nas, galtes i lluentors al cabell."""
+    if c.k < 1.2 or facing == 'U':
+        if facing == 'U' and c.k >= 1.2 and p.get('shine'):
+            hx, hy = pt(15, 7 + bob)
+            for i in range(3):
+                c.rpx(hx + i, hy - (1 if i == 1 else 0), mix(p['hair'], (255, 255, 255), p['shine']))
+        return
+    brow = mix(p['hair2'], (30, 20, 24), 0.4) if not p.get('makeup') else p['hair2']
+    blush = mix(p['skin'], (230, 90, 90), 0.35)
+    shade = p['skin2']
+    if facing == 'D':
+        for ex in (15, 20):
+            x, y = pt(ex, 12 + bob)
+            c.rpx(x, y - 1, p['eyes'])                     # ulls d'1×2
+            c.rpx(x - 1 if ex == 15 else x, y - 3, brow)   # celles
+            c.rpx(x if ex == 15 else x + 1, y - 3, brow)
+            c.rpx(x + (-1 if ex == 15 else 1), y + 2, blush)  # galtes
+        nx, ny = pt(17.5, 14 + bob)
+        c.rpx(nx, ny, shade)                               # nas
+    else:
+        x, y = pt(14, 12 + bob)
+        c.rpx(x, y - 1, p['eyes'])
+        c.rpx(x, y - 3, brow); c.rpx(x - 1, y - 3, brow)
+        c.rpx(x + 1, y + 2, blush)
+        nx, ny = pt(12, 14 + bob)
+        c.rpx(nx, ny, shade)
+    if p.get('shine'):                                      # lluentor al cabell
+        hx, hy = pt(15 if facing == 'D' else 16, 6 + bob)
+        for i in range(3):
+            c.rpx(hx + i, hy - (1 if i == 1 else 0), mix(p['hair'], (255, 255, 255), p['shine']))
 
 
 # ─── Cargol (robot) ─────────────────────────────────────────────────────────
@@ -435,10 +490,22 @@ def mare(glow=False):
 
 # ─── Fulls i definicions ────────────────────────────────────────────────────
 
+def scaled_extra(extra):
+    """Punts i velocitats del .character.json, de coordenades de disseny a píxels reals."""
+    out = dict(extra)
+    out['walkSpeed'] = round(extra['walkSpeed'] * SCALE)
+    for key in ('walkToPoint', 'talkPoint', 'feet'):
+        x, y = pt(extra[key]['x'], extra[key]['y'])
+        out[key] = {'x': x, 'y': y}
+    out['collider'] = {'points': [dict(zip('xy', pt(p['x'], p['y']))) for p in extra['collider']['points']]}
+    return out
+
+
 def write(cid, tags, size, extra):
     """tags: [(nom, [imatges])]. Escriu <id>.png, <id>.json (Aseprite) i <id>.character.json."""
-    w, h = size
     frames = [img for _, imgs in tags for img in imgs]
+    w, h = frames[0].size
+    extra = scaled_extra(extra)
     sheet = Image.new('RGBA', (w * len(frames), h), CLEAR)
     for i, img in enumerate(frames):
         sheet.paste(img, (i * w, 0))
