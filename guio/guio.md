@@ -203,8 +203,8 @@ a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 1. **La comporta** (palanca): fet.
 2. **El diapasó**: fet.
 3. **La vàlvula**: fet.
-4. **L'arxiu i el despatx** (el cost humà i el tancament): fet. Pendent per a més endavant: el Cargol del
-   present i la missió de la seva memòria, la Guàrdia Osset i la Sala de la Memòria.
+4. **L'arxiu i el despatx** (el cost humà i el tancament): fet. El Cargol del present i la missió de la seva
+   memòria, la Guàrdia Osset i la Sala de la Memòria passen a l'Acte 3.
 
 #### Component 2: el diapasó (el pany sònic de l'hangar)
 
@@ -330,6 +330,11 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
 
 **El gir final:** la "desaparició" de l'Iri que explica el museu **va ser, de fet, la seva fugida**. La
 història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia ajudada.
+
+**Peces de l'Acte 2 que es fan aquí:** la **Sala de la Memòria** (la foto ratllada del torn de nit, l'holograma
+del Director i el fullet on la Vet dibuixa el mapa de fuga), la **Directora Aldaia** (que ja vol la Vet viva),
+el **Cargol del present** i la missió de **la seva memòria**, i la **Guàrdia Osset**, que només existeix si la Mira
+es va salvar.
 
 **Sense derrotes ni atzucacs:** si alguna cosa surt malament a l'Acte 3 (la Directora descobreix la Vet,
 el Director atrapa l'Iri), es torna a provar aquell pas. No hi ha cap final en què guanyi la corporació.
