@@ -341,6 +341,39 @@
         "y": 188
       },
       "description": "safata de sopar"
+    },
+    {
+      "id": "panell_afluixat",
+      "tag": "panell_afluixat",
+      "animations": {
+        "panell_afluixat": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "panell_obert",
+      "tag": "panell_obert",
+      "animations": {
+        "panell_obert": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "panell_reparat",
+      "tag": "panell_reparat",
+      "animations": {
+        "panell_reparat": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

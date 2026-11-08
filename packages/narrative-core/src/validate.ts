@@ -171,6 +171,11 @@ export function validateContent(
       cond(`${w}.hotspots.${hid}.visibleIf`, h.visibleIf);
       interactions(`${w}.hotspots.${hid}.interactions`, h.interactions);
     }
+    for (const [did, d] of Object.entries(r.decor ?? {})) {
+      id(`${w}.decor.${did}`, did);
+      if (did in r.hotspots) err(`${w}.decor.${did}`, `Ja hi ha una cosa "${did}" a la sala: el decorat necessita un altre id.`);
+      cond(`${w}.decor.${did}.visibleIf`, d.visibleIf);
+    }
   }
 
   for (const [did, d] of Object.entries(dialogues)) {

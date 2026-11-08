@@ -350,11 +350,15 @@ export class Narrative {
     return def ? this.check(def.visibleIf) : true;
   }
 
-  /** Visibilitat de les coses condicionals d'una sala (les que tenen `visibleIf`). */
+  /** Visibilitat de les coses condicionals d'una sala (les que tenen `visibleIf`) i dels decorats. */
   hotspotsIn(room: Id): { id: Id; visible: boolean }[] {
-    return Object.entries(this.content.rooms[room]?.hotspots ?? {})
-      .filter(([, h]) => h.visibleIf)
-      .map(([id]) => ({ id, visible: this.isHotspotVisible(room, id) }));
+    const def = this.content.rooms[room];
+    return [
+      ...Object.entries(def?.hotspots ?? {})
+        .filter(([, h]) => h.visibleIf)
+        .map(([id]) => ({ id, visible: this.isHotspotVisible(room, id) })),
+      ...Object.entries(def?.decor ?? {}).map(([id, d]) => ({ id, visible: this.check(d.visibleIf) })),
+    ];
   }
 
   /**
@@ -384,6 +388,11 @@ export class Narrative {
       const found = this.findInteraction(scope, list, req.verb, item);
       if (found) return this.batch(() => this.runInteraction(scope, list, found, { ...req, item }));
     }
+    // Mirar un objecte de l'inventari sense cap "look" propi: la seva descripció.
+    const description = req.target.kind === 'item' && req.verb === 'look' && !req.item
+      ? this.content.items[req.target.id]?.description
+      : undefined;
+    if (description) return { lines: [{ who: 'player', key: description, text: this.t(description) }] };
     return null;
   }
 

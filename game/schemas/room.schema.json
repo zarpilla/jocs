@@ -27,6 +27,13 @@
           },
           "description": "Coses de la sala: props, zones i personatges, amb l'id que tenen al motor."
         },
+        "decor": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/DecorDef"
+          },
+          "description": "Decorats condicionals: dibuixos que es veuen quan es compleix `visibleIf`, però no es poden clicar (p. ex. un panell obert damunt del panell tancat). Els clics passen a la cosa de sota."
+        },
         "$schema": {
           "type": "string"
         }
@@ -765,6 +772,18 @@
           }
         }
       },
+      "additionalProperties": false
+    },
+    "DecorDef": {
+      "type": "object",
+      "properties": {
+        "visibleIf": {
+          "$ref": "#/definitions/Condition"
+        }
+      },
+      "required": [
+        "visibleIf"
+      ],
       "additionalProperties": false
     }
   }

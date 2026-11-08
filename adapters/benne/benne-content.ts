@@ -187,6 +187,17 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
         const def = room.hotspots[String(thing.id)];
         if (def?.name) thing.description = t(def.name);
       }
+      // Decorats nous: s'afegeixen com a props no clicables (cal art nou).
+      const props = ((benneRoom.props as Json[]) ??= []);
+      for (const did of Object.keys(room.decor ?? {})) {
+        if (props.some((p) => p.id === did)) continue;
+        props.push(decorProp(did));
+        report.created.push(`rooms/${id}: decorat ${did}`);
+        // Amb art definitiu, el fotograma l'ha d'afegir qui dibuixa (etiqueta = id del decorat).
+        if (!existsSync(join(gameDir, 'assets/images/rooms', id, '.provisional'))) {
+          console.warn(`⚠ rooms/${id}: falta el fotograma «${did}» a l'art de la sala.`);
+        }
+      }
       writeJson(path, benneRoom);
       // Art encara provisional: es redibuixa (els dissenys poden haver canviat).
       if (existsSync(join(gameDir, 'assets/images/rooms', id, '.provisional'))) report.needsArt.push(`rooms/${id}`);
@@ -249,6 +260,9 @@ pista.onClick(() => {
 
 // ─── Disposició automàtica d'una sala nova ──────────────────────────────────
 
+/** Un decorat (`decor` a la sala): un prop que es veu o no segons l'estat, però no es pot clicar. */
+const decorProp = (id: string) => ({ id, tag: id, animations: { [id]: {} }, zIndex: 2, visible: false, alpha: 1, clickable: false });
+
 interface Box { id: string; label: string; x: number; y: number; w: number; h: number; kind: 'hotspot' | 'prop' | 'exit' }
 
 const rect = (b: { x: number; y: number; w: number; h: number }) => [
@@ -310,6 +324,7 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
       id: b.id, tag: b.id, animations: { [b.id]: {} }, zIndex: 3, visible: true, alpha: 1, clickable: true,
       collider: { points: rect(b) }, walkToPoint: walkTo(b), lookAtPoint: { x: Math.round(b.x + b.w / 2), y: b.y + b.h }, description: b.label,
     })),
+    ...Object.keys(room.decor ?? {}).map(decorProp),
   ];
 
   const spawn: Json[] = [];

@@ -589,6 +589,54 @@ def cella_safata(c):
         c.ellipse(x, y, x + 2, y + 2, (190, 230, 140))                # bombolles
 
 
+def cella_panell_afluixat(c):
+    # La tapa, afluixada pel cop: una escletxa fosca i un cargol menys.
+    c.rect(176, 57, 209, 60, (20, 22, 28))
+    c.rect(176, 57, 179, 93, (20, 22, 28))
+    c.rect(179, 60, 209, 94, (120, 74, 52))
+    c.rect(181, 62, 207, 92, (150, 96, 64))
+    rnd = random.Random(9)
+    for _ in range(30):
+        c.px(181 + rnd.randint(0, 26), 62 + rnd.randint(0, 30), rnd.choice([(110, 60, 40), (170, 110, 70), (90, 52, 36)]))
+    for x, y in ((205, 64), (183, 90), (205, 90)):
+        c.px(x, y, (60, 50, 50))
+    for y in range(68, 86, 4):
+        c.line([(187, y), (203, y)], (90, 56, 40))
+
+
+def _cella_consola(c):
+    """El forat del panell amb la consola vella a dins, i la tapa recolzada a terra."""
+    c.rect(176, 58, 208, 92, (120, 74, 52))                           # marc rovellat
+    c.rect(178, 60, 206, 90, (18, 20, 26))                            # forat
+    c.rect(181, 70, 203, 88, (78, 84, 92))                            # consola
+    c.rect(181, 70, 203, 72, (110, 118, 128))
+    c.ellipse(184, 75, 192, 83, (210, 200, 170))                      # rellotge
+    c.line([(188, 79), (190, 76)], (150, 40, 30))
+    c.rect(196, 64, 199, 70, (30, 30, 34))                            # forat de la palanca
+    for x in (195, 198, 201):
+        c.px(x, 84, (60, 40, 40))                                     # llums apagades
+    # La tapa, a terra contra la paret
+    c.d.polygon([(214, 113), (238, 113), (234, 96), (218, 96)], fill=(150, 96, 64))
+    c.line([(219, 101), (233, 101)], (90, 56, 40))
+    c.line([(218, 106), (234, 106)], (90, 56, 40))
+
+
+def cella_panell_obert(c):
+    _cella_consola(c)
+
+
+def cella_panell_reparat(c):
+    _cella_consola(c)
+    # La clau anglesa fent de palanca
+    c.line([(197, 69), (203, 52)], (200, 210, 225), 2)
+    c.ellipse(200, 47, 208, 55, (200, 210, 225))
+    c.rect(203, 47, 206, 51, (18, 20, 26))
+    c.px(201, 60, (240, 250, 255))
+    c.rect(194, 83, 197, 86, (90, 240, 120))                          # llumeta verda
+    c.px(195, 84, (220, 255, 230))
+    c.glow(195, 84, 10, (90, 240, 120), 0.9)
+
+
 CELLA = {
     'era': 'vet',
     'things': {
@@ -604,7 +652,9 @@ CELLA = {
     'spawns': {'vet': (150, 138), 'mos': (306, 140), 'mare': (130, 30)},
     'walkable': [(14, 118), (266, 118), (268, 128), (338, 130), (346, 148), (6, 148)],
     'bg': cella_bg,
-    'props': {'avis': cella_avis, 'escarabat': cella_escarabat, 'safata': cella_safata},
+    'props': {'avis': cella_avis, 'escarabat': cella_escarabat, 'safata': cella_safata,
+              'panell_afluixat': cella_panell_afluixat, 'panell_obert': cella_panell_obert,
+              'panell_reparat': cella_panell_reparat},
 }
 
 

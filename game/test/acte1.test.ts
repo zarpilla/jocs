@@ -228,6 +228,39 @@ describe('Ferro-9 · Acte 1', () => {
     expect(world.hasItem('caixa_eines')).toBe(true);
   });
 
+  it('el panell de la Vet es veu diferent a cada pas (decorats)', () => {
+    const s = start();
+    const decor = () => Object.fromEntries(s.n.hotspotsIn('gavina_cella').filter((h) => h.id.startsWith('panell_')).map((h) => [h.id, h.visible]));
+    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: false });
+    s.n.apply({ setFlag: 'panell_vet_trencat' });
+    expect(decor()).toEqual({ panell_afluixat: true, panell_obert: false, panell_reparat: false });
+    s.n.apply({ setFlag: 'panell_vet_obert' });
+    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: true, panell_reparat: false });
+    s.n.apply({ setFlag: 'panell_vet_reparat' });
+    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: true });
+  });
+
+  it('mirar un objecte de l\'inventari: la descripció, o el que en diu la Vet de la clau anglesa', () => {
+    const { p } = start();
+    const clau = { kind: 'item' as const, id: 'clau_anglesa' };
+    expect(keys(p.do('look', clau))).toEqual(['obj.clau_anglesa.desc']);
+    expect(keys(p.do('look', { kind: 'item', id: 'llapis' }))).toEqual(['obj.llapis.desc']);
+    p.do('pickUp', 'tauler');
+    p.goTo('fabrica_magatzem');
+    p.do('pickUp', 'plomall');
+    p.goTo('fabrica_calderes');
+    p.use('plomall', 'capatas');
+    p.do('pickUp', 'segell');
+    p.use('segell', { kind: 'item', id: 'formulari_27b' });
+    p.goTo('fabrica_magatzem');
+    p.talk('cargol', 'clau');
+    p.goTo('fabrica_calderes');
+    p.use('clau_cambra', 'porta_cambra');
+    p.use('clau_anglesa', 'palanca');
+    p.do('push', 'panell');
+    expect(texts(p.do('look', clau))).toContain('Aldaia · Ferro-9 · Lot 1');
+  });
+
   it('cada protagonista té la seva veu a les frases per defecte', () => {
     const { p } = finsPanellReparat();
     expect(texts(p.do('pickUp', 'finestreta'))).toContain('butxaques');

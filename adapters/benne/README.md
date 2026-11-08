@@ -65,7 +65,9 @@ Tot porta la marca `GENERAT`: no s'edita a mà. El sync es nega a sobreescriure 
 5. `playResult` ho fa a Benne: `player.say`, `dialogs.x.start()`, `player.switchTo`, `rooms.x.goTo()`.
 
 Els scripts de sala de Benne només calen per a coses visuals (animacions, moviments, càmera). Les
-coses amb `visibleIf` es generen com a **props** i el pont les mostra o amaga soles.
+coses amb `visibleIf` es generen com a **props** i el pont les mostra o amaga soles. Els **decorats**
+(`decor` a la sala) també són props, però amb `clickable: false`; el sync els afegeix també a les sales
+que ja existeixen.
 
 ## Dues protagonistes en una sola Benne
 

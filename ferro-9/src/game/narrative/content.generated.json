@@ -123,7 +123,25 @@
         "props": {
           "pes": 1.2,
           "material": "ferro9"
-        }
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "vet"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.clau_anglesa.vet1"
+              },
+              {
+                "who": "player",
+                "text": "obj.clau_anglesa.vet2"
+              }
+            ]
+          }
+        ]
       },
       "formulari_27b": {
         "name": "obj.formulari_27b.nom",
@@ -1890,6 +1908,39 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "panell_afluixat": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "panell_vet_trencat"
+                },
+                {
+                  "flag": "panell_vet_obert",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "panell_obert": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "panell_vet_obert"
+                },
+                {
+                  "flag": "panell_vet_reparat",
+                  "is": false
+                }
+              ]
+            }
+          },
+          "panell_reparat": {
+            "visibleIf": {
+              "flag": "panell_vet_reparat"
+            }
           }
         },
         "onEnter": [
@@ -3710,6 +3761,8 @@
       "mis.carta_mos.obj.trobar": "Troba la carta d'en Mos a l'arxiu",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
+      "obj.clau_anglesa.vet1": "Una clau anglesa reluent, com acabada de fer. Porta un segell: «Aldaia · Ferro-9 · Lot 1».",
+      "obj.clau_anglesa.vet2": "El ferro-9 fa un segle que no es fabrica. D'on dimonis ha sortit?",
       "obj.formulari_27b.nom": "formulari 27-B",
       "obj.formulari_27b.desc": "Sol·licitud de material. En blanc.",
       "obj.formulari_segellat.nom": "formulari 27-B segellat",

@@ -6,7 +6,25 @@
     "props": {
       "pes": 1.2,
       "material": "ferro9"
-    }
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.clau_anglesa.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.clau_anglesa.vet2"
+          }
+        ]
+      }
+    ]
   },
   "formulari_27b": {
     "name": "obj.formulari_27b.nom",

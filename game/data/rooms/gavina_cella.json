@@ -550,6 +550,39 @@
       ]
     }
   },
+  "decor": {
+    "panell_afluixat": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "panell_vet_trencat"
+          },
+          {
+            "flag": "panell_vet_obert",
+            "is": false
+          }
+        ]
+      }
+    },
+    "panell_obert": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "panell_vet_obert"
+          },
+          {
+            "flag": "panell_vet_reparat",
+            "is": false
+          }
+        ]
+      }
+    },
+    "panell_reparat": {
+      "visibleIf": {
+        "flag": "panell_vet_reparat"
+      }
+    }
+  },
   "onEnter": [
     {
       "id": "intro",

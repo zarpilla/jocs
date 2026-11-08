@@ -106,7 +106,9 @@ i què passa quan el jugador hi fa un verb.
 - `visibleIf` a una cosa: si no es compleix, no es veu ni es pot tocar.
 - `onEnter`: s'executa la primera que encaixi en entrar a la sala.
 - Si cap interacció no encaixa, la protagonista diu la frase per defecte: `ui.defecte.<verb>.<protagonista>`,
-  o si no n'hi ha, `ui.defecte.<verb>`, o `ui.defecte`.
+  o si no n'hi ha, `ui.defecte.<verb>`, o `ui.defecte`. Excepció: **mirar un objecte de l'inventari**
+  sense `look` propi diu la seva `description` (`items.json`). Per a una frase diferent segons qui
+  mira, posa-li un `look` amb `"if": { "protagonist": "vet" }`.
 
 Els **personatges** (`characters.json`) i els **objectes** (`items.json`) també poden tenir
 `interactions`: les dels personatges valen a totes les sales (una sala les pot substituir), i les dels
@@ -238,6 +240,22 @@ afegeixes un trencaclosques i t'oblides la pista, el test ho diu.
 
 Són les coses d'una sala amb `visibleIf` (vegeu *Sales i interaccions*). A Benne, la sala les lliga als
 seus props amb `bindHotspots` (vegeu l'adaptador). `npm run fitxes` en fa la llista.
+
+### Decorats: una cosa que canvia d'aspecte
+
+Quan una cosa s'ha de **veure diferent** segons l'estat però s'ha de poder seguir clicant igual (un panell
+tancat, obert, reparat...), no la dupliquis: afegeix **decorats** a la sala. Són dibuixos que es posen
+damunt quan es compleix `visibleIf` i que no es poden clicar (el clic arriba a la cosa de sota).
+
+```json
+"decor": {
+  "panell_obert":   { "visibleIf": { "all": [ { "flag": "panell_vet_obert" }, { "flag": "panell_vet_reparat", "is": false } ] } },
+  "panell_reparat": { "visibleIf": { "flag": "panell_vet_reparat" } }
+}
+```
+
+`npm run benne:sync` els afegeix a la sala de Benne com a props no clicables. Cada decorat necessita un
+fotograma amb el seu id a l'art de la sala (a l'art provisional, una funció a `room_designs.py`).
 
 ## Finals: `data/endings.json`
 

@@ -149,6 +149,15 @@ export interface RoomDef {
   onEnter?: InteractionDef[];
   /** Coses de la sala: props, zones i personatges, amb l'id que tenen al motor. */
   hotspots: Record<Id, HotspotDef>;
+  /**
+   * Decorats condicionals: dibuixos que es veuen quan es compleix `visibleIf`, però no es poden
+   * clicar (p. ex. un panell obert damunt del panell tancat). Els clics passen a la cosa de sota.
+   */
+  decor?: Record<Id, DecorDef>;
+}
+
+export interface DecorDef {
+  visibleIf: Condition;
 }
 
 // ─── Diàlegs ─────────────────────────────────────────────────────────────────
