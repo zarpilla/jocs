@@ -9,19 +9,22 @@
  *  - Un camp armat espera indefinidament la sincronia.
  *  - Només objectes de < 2 kg, inerts, no vius i no líquids (propietats a items.json).
  *  - Cada transferència gasta una encesa.
- *  - Acte 1: el ritual sencer (posar, armar, canviar, sincronitzar). A partir de l'Acte 2
- *    (flag `sincronia_automatica`), l'Iri ha deixat les cambres sincronitzades: posar-hi un
- *    objecte ja l'envia, i arriba a l'inventari de l'altra.
+ *  - El ritual sencer (posar, armar, canviar, sincronitzar) només es fa una vegada: quan l'Iri
+ *    rep el primer enviament fet a mà (la segona transferència; la primera és l'accident), deixa
+ *    la cambra sincronitzada (flag `sincronia_automatica`). Des d'aleshores, posar un objecte a la
+ *    cambra ho fa tot: l'envia, canvia de protagonista i l'objecte apareix a l'inventari de l'altra.
  */
 import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
 export const PES_MAXIM = 2;
+/** Transferències fetes amb el ritual sencer abans que la sincronia sigui automàtica. */
+export const TRANSFERENCIES_RITUAL = 2;
 
 /** Textos que fa servir aquest mòdul (el validador comprova que existeixin). */
 export const FINESTRA_TEXTS = [
   'finestra.posat', 'finestra.ple', 'finestra.ja_armat', 'finestra.tancada', 'finestra.buida', 'finestra.tret',
   'finestra.armat', 'finestra.armat_buit', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
-  'finestra.enviat', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
+  'finestra.enviat', 'finestra.automatica', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
 ];
 
 const v = {
@@ -73,6 +76,7 @@ export function installFinestra(n: Narrative) {
         { addVar: v.enceses, amount: -1 },
         { addVar: v.transferencies, amount: 1 },
         { event: 'finestra.transferencia', args: { de: costat, a: altra, objecte: item } },
+        { event: 'protagonista', args: { id: altra } },
       ]);
       return { lines: [line('finestra.enviat', { objecte: n.itemName(item) })] };
     }
@@ -118,6 +122,11 @@ export function installFinestra(n: Narrative) {
       ...(item ? [{ giveItem: item, who: costat }] : []),
       { event: 'finestra.transferencia', args: { de: emissora, a: costat, objecte: item } },
     ]);
-    return { lines: [line(item ? 'finestra.rebut' : 'finestra.rebut_res', { objecte: item ? n.itemName(item) : '' })] };
+    const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', { objecte: item ? n.itemName(item) : '' })];
+    if (!n.flag(v.automatica) && Number(n.getVar(v.transferencies)) >= TRANSFERENCIES_RITUAL) {
+      n.apply({ setFlag: v.automatica });
+      lines.push(line('finestra.automatica'));
+    }
+    return { lines };
   });
 }

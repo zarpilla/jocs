@@ -154,16 +154,19 @@ describe('Ferro-9 · Acte 1', () => {
     // ── Iri: rep la nota, la llegeix i respon ──
     const tornada = p.switchTo('iri');
     expect(texts(tornada)).toContain('parpelleja');
-    p.do('push', 'boto');
+    const rebuda = p.do('push', 'boto');
     expect(p.inventory()).toContain('nota_vet');
+    // Primer enviament fet a mà: l'Iri deixa la cambra sincronitzada.
+    expect(keys(rebuda)).toContain('finestra.automatica');
+    expect(n.flag('sincronia_automatica')).toBe(true);
     expect(texts(p.do('look', { kind: 'item', id: 'nota_vet' }))).toContain('brutal-plus');
     p.use('llapis', { kind: 'item', id: 'llibreta_torn' });
-    p.use('nota_iri', 'cambra');
-    p.do('push', 'boto');
+    // Des d'ara, posar-ho a la cambra ho fa tot: s'envia i canviem a l'altra banda.
+    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.enviat']);
 
     // ── Vet: entén que són en temps diferents ──
-    p.switchTo('vet');
-    p.do('push', 'panell');
+    expect(p.active).toBe('vet');
+    expect(p.inventory()).toContain('nota_iri');
     const lectura = texts(p.do('look', { kind: 'item', id: 'nota_iri' }));
     expect(lectura).toContain('cent vint anys');
     // El muntatge de correspondència: quatre notes més, sense ritual.
@@ -176,11 +179,9 @@ describe('Ferro-9 · Acte 1', () => {
     p.do('pickUp', 'llitera');
     p.use('llapis_ulls', { kind: 'item', id: 'fullet_reeducacio' });
     p.use('nota_pany', 'panell');
-    p.do('push', 'panell');
 
     // ── Iri: l'imant, amb el formulari per triplicat ──
-    p.switchTo('iri');
-    p.do('push', 'boto');
+    expect(p.active).toBe('iri');
     p.do('look', { kind: 'item', id: 'nota_pany' });
     expect(n.flag('iri_sap_pany')).toBe(true);
     p.goTo('fabrica_calderes');
@@ -195,11 +196,9 @@ describe('Ferro-9 · Acte 1', () => {
     p.goTo('fabrica_calderes');
     p.goTo('fabrica_cambra');
     p.use('imant_ferro9', 'cambra');
-    p.do('push', 'boto');
 
     // ── Vet: surt de la cel·la ──
-    p.switchTo('vet');
-    p.do('push', 'panell');
+    expect(p.active).toBe('vet');
     const sortida = p.use('imant_ferro9', 'porta');
     expect(p.room).toBe('gavina_passadis');
     expect(texts(sortida)).toContain("FI DE L'ACTE 1");
@@ -210,16 +209,16 @@ describe('Ferro-9 · Acte 1', () => {
     expect(n.flag('sincronia_automatica')).toBe(true);
   });
 
-  it("a partir de l'Acte 2, posar un objecte a la cambra ja l'envia", () => {
+  it('amb la sincronia automàtica, posar un objecte a la cambra ja l\'envia', () => {
     const { p, n } = finsPanellReparat();
     n.apply({ setFlag: 'sincronia_automatica' });
     const abans = estatFinestra(n).enceses;
     p.do('pickUp', 'avis');
     expect(keys(p.use('avis_reciclatge', 'panell'))).toEqual(['finestra.enviat']);
-    expect(p.inventory()).not.toContain('avis_reciclatge');
     expect(estatFinestra(n).armada).toBe('');
     expect(estatFinestra(n).enceses).toBe(abans - 1);
-    p.switchTo('iri');
+    // Canvi automàtic a l'altra banda, amb l'objecte a l'inventari.
+    expect(p.active).toBe('iri');
     expect(p.inventory()).toContain('avis_reciclatge');
     // Les regles de la finestra continuen valent.
     p.switchTo('vet');

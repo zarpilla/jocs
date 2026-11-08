@@ -2095,9 +2095,6 @@
                 "setFlag": "acte1_acabat"
               },
               {
-                "setFlag": "sincronia_automatica"
-              },
-              {
                 "addVar": "sospita_brau",
                 "amount": 1
               }
@@ -2366,36 +2363,42 @@
               "protagonist": "vet"
             },
             {
-              "any": [
-                {
-                  "hasItem": "nota_vet",
-                  "who": "vet"
-                },
-                {
-                  "hasItem": "nota_pany",
-                  "who": "vet"
-                }
-              ]
+              "hasItem": "nota_vet",
+              "who": "vet"
             }
           ]
         },
         "doneWhen": {
-          "all": [
-            {
-              "hasItem": "nota_vet",
-              "who": "vet",
-              "is": false
-            },
-            {
-              "hasItem": "nota_pany",
-              "who": "vet",
-              "is": false
-            }
-          ]
+          "hasItem": "nota_vet",
+          "who": "vet",
+          "is": false
         },
         "levels": [
           "pista.vet_enviar.1",
           "pista.vet_enviar.2"
+        ]
+      },
+      "vet_enviar_pany": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "nota_pany",
+              "who": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "nota_pany",
+          "who": "vet",
+          "is": false
+        },
+        "levels": [
+          "pista.vet_enviar_pany.1",
+          "pista.vet_enviar_pany.2"
         ]
       },
       "vet_esperar": {
@@ -3770,6 +3773,7 @@
       "finestra.rebuig.liquid": "Un líquid dins la cambra? Millor no.",
       "finestra.rebuig.no_hi_cap": "Això no hi cap.",
       "finestra.enviat": "Poso {objecte} dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
+      "finestra.automatica": "Si hi ha algú a l'altra banda, no penso anar amunt i avall cada vegada. Deixo la cambra sincronitzada: el que s'hi posi, passarà sol.",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -3910,6 +3914,8 @@
       "pista.vet_nota.3": "L'avís de terra i el llapis d'ulls d'en Mos. Potser en Mos s'ha de deixar afalagar.",
       "pista.vet_enviar.1": "La nota ha d'anar al buit de darrere el panell.",
       "pista.vet_enviar.2": "Fes servir la nota amb el panell, i després prem el panell.",
+      "pista.vet_enviar_pany.1": "El dibuix ha d'arribar a la I. Pel mateix camí que la nota.",
+      "pista.vet_enviar_pany.2": "Fes servir el dibuix del pany amb el panell.",
       "pista.vet_esperar.1": "He enviat el que podia. Ara ho ha de recollir algú.",
       "pista.vet_esperar.2": "Canvia a l'Iri.",
       "pista.iri_rebre.1": "La consola parpelleja. Hi ha algú a l'altra banda?",
@@ -3919,7 +3925,7 @@
       "pista.iri_respondre.1": "Algú m'ha escrit. Li podria respondre.",
       "pista.iri_respondre.2": "Fes servir el llapis amb la llibreta de torn.",
       "pista.iri_enviar.1": "Si les coses que hi poso desapareixen... arriben a algun lloc.",
-      "pista.iri_enviar.2": "Posa-ho dins la cambra i prem el botó de sincronia.",
+      "pista.iri_enviar.2": "Posa-ho dins la cambra.",
       "pista.vet_llegir.1": "M'han contestat!",
       "pista.vet_llegir.2": "Mira la nota de l'inventari.",
       "pista.vet_pany.1": "Si la I. és en una fàbrica, potser coneix el pany de la meva porta.",

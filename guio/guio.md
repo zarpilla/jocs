@@ -83,10 +83,11 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 5. Per tant, **la comunicació és només per escrit**: notes, dibuixos, objectes amb significat.
 6. **Cada encesa desgasta la cambra de l'Iri.** Això no és un recurs que el jugador pugui malgastar per
    error, sinó un rellotge narratiu: a l'Acte 3 només queda una encesa.
-7. **El ritual s'aprèn una vegada.** A l'Acte 1 cada enviament es fa sencer (posar l'objecte, armar,
-   canviar de protagonista, sincronitzar), perquè és el tutorial. A partir de l'Acte 2, l'Iri ha deixat les
-   dues cambres sincronitzades: **posar un objecte a la cambra ja l'envia** i arriba a l'altra banda. El
-   que costa és decidir què s'envia, no el gest; cada enviament continua gastant una encesa.
+7. **El ritual s'aprèn una vegada.** El primer enviament que fa el jugador (la nota de la Vet) es fa sencer:
+   posar-la al panell, armar, canviar de protagonista i sincronitzar des de l'altra banda. Quan l'Iri la rep,
+   deixa la cambra sincronitzada ("no penso anar amunt i avall cada vegada"). Des d'aleshores, **posar un
+   objecte a la cambra ho fa tot**: s'envia, el joc canvia a l'altra protagonista i l'objecte apareix al seu
+   inventari. El que costa és decidir què s'envia, no el gest; cada enviament continua gastant una encesa.
 
 ### El camí llarg
 
@@ -144,10 +145,9 @@ per imitació, signa *"I."*. La tensió de "qui és l'altra?" sorgeix sola.
    dibuix. L'Iri hi reconeix un model de la fàbrica i li envia un imant de ferro-9.
 
 **Final de l'Acte 1:** la Vet surt de la cel·la, però no de la presó. Mentrestant, l'inventari de la fàbrica
-registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau obre un expedient. I l'Iri,
-farta d'anar amunt i avall, deixa les cambres sincronitzades: des d'ara, enviar és un sol gest.
+registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau obre un expedient.
 
-**Comptes de les enceses:** n'hi ha setze. L'Acte 1 en gasta nou (cinc enviaments a mà i les quatre notes
+**Comptes de les enceses:** n'hi ha setze. L'Acte 1 en gasta nou (cinc enviaments, dels quals només els dos primers amb el ritual, i les quatre notes
 del muntatge), i en queden set per a l'Acte 2 i l'Acte 3.
 
 ### Acte 2 — «Els costos» (el cor del joc)

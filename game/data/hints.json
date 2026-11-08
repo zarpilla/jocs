@@ -185,36 +185,42 @@
           "protagonist": "vet"
         },
         {
-          "any": [
-            {
-              "hasItem": "nota_vet",
-              "who": "vet"
-            },
-            {
-              "hasItem": "nota_pany",
-              "who": "vet"
-            }
-          ]
+          "hasItem": "nota_vet",
+          "who": "vet"
         }
       ]
     },
     "doneWhen": {
-      "all": [
-        {
-          "hasItem": "nota_vet",
-          "who": "vet",
-          "is": false
-        },
-        {
-          "hasItem": "nota_pany",
-          "who": "vet",
-          "is": false
-        }
-      ]
+      "hasItem": "nota_vet",
+      "who": "vet",
+      "is": false
     },
     "levels": [
       "pista.vet_enviar.1",
       "pista.vet_enviar.2"
+    ]
+  },
+  "vet_enviar_pany": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "nota_pany",
+          "who": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "nota_pany",
+      "who": "vet",
+      "is": false
+    },
+    "levels": [
+      "pista.vet_enviar_pany.1",
+      "pista.vet_enviar_pany.2"
     ]
   },
   "vet_esperar": {
