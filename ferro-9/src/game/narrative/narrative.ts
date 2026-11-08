@@ -82,6 +82,8 @@ const store = defineVars({
   started: false as VarValue,
   /** Última sala de cada protagonista: per tornar-hi en canviar de protagonista. */
   protagonistRooms: {} as VarValue,
+  /** Resolució amb què es van desar les posicions dels personatges (null: partida de 352×198). */
+  resolucio: null as VarValue,
 });
 
 /** L'últim estat narratiu que hem desat a la partida (en JSON), per saber si algú l'ha substituït. */
@@ -99,7 +101,7 @@ function persist() {
  * en carregar, Benne avisa del canvi de sala i d'inventari abans que de `gameState:replaced`, i
  * si llavors reavaluéssim el món amb l'estat vell, el desaríem damunt del carregat.
  */
-function adoptLoadedState() {
+export function adoptLoadedState() {
   const saved = store.narrativeState;
   const json = saved ? JSON.stringify(saved) : null;
   if (json === persisted) return;
@@ -129,8 +131,32 @@ narrative.on((e) => {
   }
 });
 
+// ─── Partides desades a 352×198 ─────────────────────────────────────────────
+// Benne desa dins la partida la posició de cada personatge a cada sala, i en tornar-hi la fa servir.
+// Les partides d'abans de passar a 480×270 les tenen en coordenades velles: els personatges quedarien
+// enlairats (i els que no es mouen, com el capatàs, les arrossegarien per sempre). S'escalen una vegada.
+const RESOLUCIO = 480;
+const ESCALA_ANTIGA = RESOLUCIO / 352;
+/** Per sota d'aquesta alçada no hi ha cap peu a 480×270 (el terra comença més avall). */
+const TERRA_MINIM = 155;
+
+function migrateOldPositions() {
+  if (store.resolucio === RESOLUCIO) return;
+  for (const room of Object.keys(content.rooms)) {
+    for (const id of Object.keys(content.characters)) {
+      const key = `room:${toBenne('rooms', room)}:character:${toBenne('characters', id)}:position`;
+      const saved = defineVars({ [key]: null as VarValue });
+      const pos = saved[key] as { x?: number; y?: number } | null;
+      if (!pos || typeof pos.x !== 'number' || typeof pos.y !== 'number' || pos.y >= TERRA_MINIM) continue;
+      saved[key] = { x: Math.round(pos.x * ESCALA_ANTIGA), y: Math.round(pos.y * ESCALA_ANTIGA) };
+    }
+  }
+  store.resolucio = RESOLUCIO;
+}
+
 // Partida carregada (o nova: aleshores l'estat és buit i `ensureStarted` la prepara en entrar a la primera sala).
 events.on('gameState:replaced', () => {
+  migrateOldPositions();
   adoptLoadedState();
   applyLocalizedNames();
 });
@@ -139,6 +165,7 @@ events.on('gameState:replaced', () => {
 export function ensureStarted() {
   if (store.started) return;
   store.started = true;
+  store.resolucio = RESOLUCIO;
   narrative.newGame();
   applyLocalizedNames();
 }

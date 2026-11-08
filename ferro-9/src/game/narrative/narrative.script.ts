@@ -11,7 +11,7 @@ import { display, fadeOut, player } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  adoptLoadedState, applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   rememberProtagonistRoom, roomProtagonist, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
@@ -53,6 +53,7 @@ export function playResult(result: InteractionResult) {
  * (des de `globalScript.ts`) i les resol el JSON del joc.
  */
 export function routeInteraction(verb: string, target: FallbackTarget, item?: string) {
+  adoptLoadedState()
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const result = narrative.interact(request)
   if (result) playResult(result)
@@ -64,6 +65,7 @@ export function routeInteraction(verb: string, target: FallbackTarget, item?: st
  * nova, pren el control de la protagonista de la sala i mostra o amaga les coses condicionals.
  */
 export function onRoomEntered() {
+  adoptLoadedState()
   ensureStarted()
   const room = narrative.world.currentRoom()
   if (!room) return
@@ -88,6 +90,7 @@ export function goToProtagonist(who: string) {
 
 /** En entrar a una sala (després del fos): l'`onEnter` del JSON. */
 export function enterNarrativeRoom() {
+  adoptLoadedState()
   const room = narrative.world.currentRoom()
   if (!room) return
   narrative.worldChanged()
@@ -105,6 +108,7 @@ function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
 
 /** Des de `dialog.onStart` (generat). */
 export function startNarrativeDialog(id: string, dialog: DialogHandle) {
+  adoptLoadedState()
   const step = narrative.startDialogue(id)
   refreshOptions(dialog, step.choices)
   playLines(step.lines)
@@ -113,6 +117,7 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
 
 /** Des de cada `options.x.onChoose` (generat). */
 export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: string, choice: string) {
+  adoptLoadedState()
   const step = narrative.choose(id, choice, { node })
   refreshOptions(dialog, step.choices)
   playLines(step.lines)
