@@ -83,6 +83,10 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 5. Per tant, **la comunicació és només per escrit**: notes, dibuixos, objectes amb significat.
 6. **Cada encesa desgasta la cambra de l'Iri.** Això no és un recurs que el jugador pugui malgastar per
    error, sinó un rellotge narratiu: a l'Acte 3 només queda una encesa.
+7. **El ritual s'aprèn una vegada.** A l'Acte 1 cada enviament es fa sencer (posar l'objecte, armar,
+   canviar de protagonista, sincronitzar), perquè és el tutorial. A partir de l'Acte 2, l'Iri ha deixat les
+   dues cambres sincronitzades: **posar un objecte a la cambra ja l'envia** i arriba a l'altra banda. El
+   que costa és decidir què s'envia, no el gest; cada enviament continua gastant una encesa.
 
 ### El camí llarg
 
@@ -124,7 +128,7 @@ la Vet, la cel·la 9, el passadís del mòdul i la cambra en ruïnes.
 | 1. El torn de nit | Salta una alarma de vibració. Per entrar a la cambra cal la clau, i el Cargol només la dona amb el formulari 27-B. Un cop a dins, l'Iri arma el camp sense voler. | MARE li anuncia el reciclatge "en tres dies, amb molta il·lusió". La paret vibra. La Vet, farta, dona un cop de puny al panell rovellat i el sincronitza sense saber-ho. |
 | 2. La clau anglesa | A l'Iri li desapareix una clau anglesa de damunt la cambra. No ho entén. | Una clau anglesa reluent apareix a terra, amb un segell: *"Aldaia · Ferro-9 · Lot 1"*. Aquest metall fa un segle que no es fabrica. |
 | 3. La nota | L'Iri torna a la cambra per investigar. El Cargol li avisa que "el panell parpelleja de manera no reglamentària". L'Iri prem "sincronitzar". | La Vet obre el panell amb la clau anglesa i fa servir la mateixa clau com a palanca, perquè la de la paret és trencada. Arma el camp i envia una nota escrita amb llapis d'ulls darrere de l'avís de reciclatge. |
-| 4. El reconeixement | L'Iri llegeix la nota i no entén ni la meitat de l'argot. Respon. | Es van creuant notes: "Soc a La Gavina." "Què és La Gavina?" "La presó. On ets tu." "Aquí hi ha una fàbrica." **Les dues entenen que les separa el temps.** |
+| 4. El reconeixement | L'Iri llegeix la nota i no entén ni la meitat de l'argot. Respon. | La Vet llegeix la resposta («la fàbrica Aldaia va tancar fa cent vint anys...») i comença un **muntatge de correspondència**, sense ritual: durant una hora es creuen quatre notes (què veu cadascuna per la finestra, el segell de la clau anglesa) fins que l'Iri respon amb un full en blanc i tres punts. **Les dues entenen que les separa el temps.** |
 
 **Per què no es diuen el nom?** Perquè la Vet és lladre i desconfia: signa *"La de la cel·la 9"*. L'Iri,
 per imitació, signa *"I."*. La tensió de "qui és l'altra?" sorgeix sola.
@@ -140,7 +144,11 @@ per imitació, signa *"I."*. La tensió de "qui és l'altra?" sorgeix sola.
    dibuix. L'Iri hi reconeix un model de la fàbrica i li envia un imant de ferro-9.
 
 **Final de l'Acte 1:** la Vet surt de la cel·la, però no de la presó. Mentrestant, l'inventari de la fàbrica
-registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau obre un expedient.
+registra que falten una clau anglesa i un imant de ferro-9, i l'Inspector Brau obre un expedient. I l'Iri,
+farta d'anar amunt i avall, deixa les cambres sincronitzades: des d'ara, enviar és un sol gest.
+
+**Comptes de les enceses:** n'hi ha setze. L'Acte 1 en gasta nou (cinc enviaments a mà i les quatre notes
+del muntatge), i en queden set per a l'Acte 2 i l'Acte 3.
 
 ### Acte 2 — «Els costos» (el cor del joc)
 

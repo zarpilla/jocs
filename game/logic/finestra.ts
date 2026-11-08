@@ -9,6 +9,9 @@
  *  - Un camp armat espera indefinidament la sincronia.
  *  - Només objectes de < 2 kg, inerts, no vius i no líquids (propietats a items.json).
  *  - Cada transferència gasta una encesa.
+ *  - Acte 1: el ritual sencer (posar, armar, canviar, sincronitzar). A partir de l'Acte 2
+ *    (flag `sincronia_automatica`), l'Iri ha deixat les cambres sincronitzades: posar-hi un
+ *    objecte ja l'envia, i arriba a l'inventari de l'altra.
  */
 import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
@@ -18,10 +21,11 @@ export const PES_MAXIM = 2;
 export const FINESTRA_TEXTS = [
   'finestra.posat', 'finestra.ple', 'finestra.ja_armat', 'finestra.tancada', 'finestra.buida', 'finestra.tret',
   'finestra.armat', 'finestra.armat_buit', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
-  'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
+  'finestra.enviat', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
 ];
 
 const v = {
+  automatica: 'sincronia_automatica',
   armada: 'finestra_armada',
   enceses: 'enceses_restants',
   transferencies: 'transferencies',
@@ -58,6 +62,20 @@ export function installFinestra(n: Narrative) {
     if (estat.armada === costat) return { lines: [line('finestra.ja_armat')] };
     const rebuig = motiuRebuig(n, item);
     if (rebuig) return { lines: [line(rebuig, { objecte: n.itemName(item) })] };
+    if (n.flag(v.automatica)) {
+      // Un sol pas: posar-lo ja és enviar-lo.
+      if (estat.armada) return { lines: [line('finestra.ja_armat')] };
+      if (estat.enceses <= 0) return { lines: [line('finestra.esgotada')] };
+      const altra = n.content.manifest.protagonists.find((p) => p !== costat)!;
+      n.apply([
+        { takeItem: item, who: costat },
+        { giveItem: item, who: altra },
+        { addVar: v.enceses, amount: -1 },
+        { addVar: v.transferencies, amount: 1 },
+        { event: 'finestra.transferencia', args: { de: costat, a: altra, objecte: item } },
+      ]);
+      return { lines: [line('finestra.enviat', { objecte: n.itemName(item) })] };
+    }
     n.apply([{ takeItem: item, who: costat }, { setVar: v.objecte(costat), value: item }]);
     return { lines: [line('finestra.posat', { objecte: n.itemName(item) })] };
   });

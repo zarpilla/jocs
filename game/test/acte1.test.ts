@@ -164,8 +164,12 @@ describe('Ferro-9 · Acte 1', () => {
     // ── Vet: entén que són en temps diferents ──
     p.switchTo('vet');
     p.do('push', 'panell');
-    expect(texts(p.do('look', { kind: 'item', id: 'nota_iri' }))).toContain('cent vint anys');
+    const lectura = texts(p.do('look', { kind: 'item', id: 'nota_iri' }));
+    expect(lectura).toContain('cent vint anys');
+    // El muntatge de correspondència: quatre notes més, sense ritual.
+    expect(lectura).toContain('Un full en blanc');
     expect(n.flag('sap_que_es_temps')).toBe(true);
+    expect(texts(p.do('look', { kind: 'item', id: 'nota_iri' }))).not.toContain('Un full en blanc');
 
     // ── Vet: dibuixa el pany ──
     p.do('look', 'porta');
@@ -201,7 +205,26 @@ describe('Ferro-9 · Acte 1', () => {
     expect(texts(sortida)).toContain("FI DE L'ACTE 1");
     expect(n.state.quests.acte1!.status).toBe('completed');
     expect(n.getVar('sospita_brau')).toBe(1);
-    expect(estatFinestra(n).enceses).toBe(12 - 5);
+    // Cinc enviaments a mà i les quatre notes del muntatge.
+    expect(estatFinestra(n).enceses).toBe(16 - 5 - 4);
+    expect(n.flag('sincronia_automatica')).toBe(true);
+  });
+
+  it("a partir de l'Acte 2, posar un objecte a la cambra ja l'envia", () => {
+    const { p, n } = finsPanellReparat();
+    n.apply({ setFlag: 'sincronia_automatica' });
+    const abans = estatFinestra(n).enceses;
+    p.do('pickUp', 'avis');
+    expect(keys(p.use('avis_reciclatge', 'panell'))).toEqual(['finestra.enviat']);
+    expect(p.inventory()).not.toContain('avis_reciclatge');
+    expect(estatFinestra(n).armada).toBe('');
+    expect(estatFinestra(n).enceses).toBe(abans - 1);
+    p.switchTo('iri');
+    expect(p.inventory()).toContain('avis_reciclatge');
+    // Les regles de la finestra continuen valent.
+    p.switchTo('vet');
+    p.do('pickUp', 'escarabat');
+    expect(keys(p.use('escarabat', 'panell'))).toEqual(['finestra.rebuig.viu']);
   });
 
   it('si insultes en Mos, no et deixa el llapis fins que li demanis perdó', () => {

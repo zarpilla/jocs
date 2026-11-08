@@ -25,13 +25,14 @@
     "fugida_completada": false,
     "mira_salvada": false,
     "planols_robats": false,
-    "cargol_memoria": false
+    "cargol_memoria": false,
+    "sincronia_automatica": false
   },
   "vars": {
     "finestra_armada": "",
     "finestra_objecte_iri": "",
     "finestra_objecte_vet": "",
-    "enceses_restants": 12,
+    "enceses_restants": 16,
     "transferencies": 0,
     "sospita_brau": 0,
     "dies_reciclatge": 3

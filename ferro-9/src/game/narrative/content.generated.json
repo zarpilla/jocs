@@ -52,13 +52,14 @@
         "fugida_completada": false,
         "mira_salvada": false,
         "planols_robats": false,
-        "cargol_memoria": false
+        "cargol_memoria": false,
+        "sincronia_automatica": false
       },
       "vars": {
         "finestra_armada": "",
         "finestra_objecte_iri": "",
         "finestra_objecte_vet": "",
-        "enceses_restants": 12,
+        "enceses_restants": 16,
         "transferencies": 0,
         "sospita_brau": 0,
         "dies_reciclatge": 3
@@ -316,6 +317,17 @@
         "interactions": [
           {
             "verb": "look",
+            "if": {
+              "all": [
+                {
+                  "protagonist": "vet"
+                },
+                {
+                  "flag": "sap_que_es_temps",
+                  "is": false
+                }
+              ]
+            },
             "lines": [
               {
                 "who": "narrator",
@@ -323,29 +335,65 @@
               },
               {
                 "who": "player",
-                "text": "obj.nota_iri.vet1",
-                "if": {
-                  "protagonist": "vet"
-                }
+                "text": "obj.nota_iri.vet1"
               },
               {
                 "who": "player",
-                "text": "obj.nota_iri.vet2",
-                "if": {
-                  "protagonist": "vet"
-                }
+                "text": "obj.nota_iri.vet2"
               },
               {
                 "who": "player",
-                "text": "obj.nota_iri.vet3",
-                "if": {
-                  "protagonist": "vet"
-                }
+                "text": "obj.nota_iri.vet3"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri.correspondencia.inici"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri.correspondencia.1"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri.correspondencia.2"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri.correspondencia.3"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri.correspondencia.4"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_iri.correspondencia.vet1"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_iri.correspondencia.vet2"
               }
             ],
             "effects": [
               {
                 "setFlag": "sap_que_es_temps"
+              },
+              {
+                "addVar": "enceses_restants",
+                "amount": -4
+              },
+              {
+                "addVar": "transferencies",
+                "amount": 4
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_iri.text"
               }
             ]
           }
@@ -2047,6 +2095,9 @@
                 "setFlag": "acte1_acabat"
               },
               {
+                "setFlag": "sincronia_automatica"
+              },
+              {
                 "addVar": "sospita_brau",
                 "amount": 1
               }
@@ -3718,6 +3769,7 @@
       "finestra.rebuig.viu": "No. Res que sigui viu. Ni tan sols per ciència.",
       "finestra.rebuig.liquid": "Un líquid dins la cambra? Millor no.",
       "finestra.rebuig.no_hi_cap": "Això no hi cap.",
+      "finestra.enviat": "Poso {objecte} dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -3806,8 +3858,15 @@
       "obj.nota_iri.vet1": "La fàbrica Aldaia? Va tancar fa cent vint anys. Ho diuen tots els fullets de reeducació.",
       "obj.nota_iri.vet2": "...",
       "obj.nota_iri.vet3": "Oh. Oh, no. Oh, sí!",
-      "obj.nota_pany.text": "«I.: Crec que ets al passat. Jo soc al futur. Ja ho sé, sona boig. Necessito sortir de la cel·la. El pany és com el del dibuix, posa \"Aldaia M-3\". Saps obrir-lo? —V.»",
-      "obj.nota_pany.iri1": "Al futur. Clar. I jo soc la reina de les calderes.",
+      "obj.nota_iri.correspondencia.inici": "(Durant una hora, la cambra no para d'espetegar.)",
+      "obj.nota_iri.correspondencia.1": "«\"Brutal-plus\" vol dir que ets molt bona. \"Reciclar\" no ho sé: ningú no en torna. Pregunta rara: què veus per la finestra? —La de la cel·la 9»",
+      "obj.nota_iri.correspondencia.2": "«Xemeneies, fum i el canal. Com cada nit. I torna'm la clau anglesa, que l'he de retornar al Cargol. —I.»",
+      "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica. —La de la cel·la 9»",
+      "obj.nota_iri.correspondencia.4": "«... —I.»",
+      "obj.nota_iri.correspondencia.vet1": "Un full en blanc i tres punts. Ja ho ha entès.",
+      "obj.nota_iri.correspondencia.vet2": "Una enginyera de fa cent vint anys que em pot fer arribar coses. I a mi em queden tres dies.",
+      "obj.nota_pany.text": "«I.: Necessito sortir de la cel·la. El pany és com el del dibuix, hi posa \"Aldaia M-3\". Si és de la teva fàbrica, saps obrir-lo? —V.»",
+      "obj.nota_pany.iri1": "Cent vint anys, i encara fan servir els nostres panys.",
       "obj.nota_pany.iri2": "Però aquest dibuix... És un M-3! N'hi ha a tota la fàbrica. S'obren amb un imant de ferro-9.",
       "obj.avis_reciclatge.text": "«AVÍS: La interna de la cel·la 9 serà reciclada d'aquí a 3 dies. El reciclatge és una oportunitat! Amb afecte, MARE.»",
       "obj.escarabat.look": "El Senyor Bigotis. No té bigotis. És un nom aspiracional.",

@@ -199,6 +199,17 @@
     "interactions": [
       {
         "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "sap_que_es_temps",
+              "is": false
+            }
+          ]
+        },
         "lines": [
           {
             "who": "narrator",
@@ -206,29 +217,65 @@
           },
           {
             "who": "player",
-            "text": "obj.nota_iri.vet1",
-            "if": {
-              "protagonist": "vet"
-            }
+            "text": "obj.nota_iri.vet1"
           },
           {
             "who": "player",
-            "text": "obj.nota_iri.vet2",
-            "if": {
-              "protagonist": "vet"
-            }
+            "text": "obj.nota_iri.vet2"
           },
           {
             "who": "player",
-            "text": "obj.nota_iri.vet3",
-            "if": {
-              "protagonist": "vet"
-            }
+            "text": "obj.nota_iri.vet3"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.inici"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.1"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.2"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.3"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.4"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.correspondencia.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.correspondencia.vet2"
           }
         ],
         "effects": [
           {
             "setFlag": "sap_que_es_temps"
+          },
+          {
+            "addVar": "enceses_restants",
+            "amount": -4
+          },
+          {
+            "addVar": "transferencies",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.text"
           }
         ]
       }
