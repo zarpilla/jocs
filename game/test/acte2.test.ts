@@ -96,7 +96,7 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
     p.goTo('fabrica_cambra');
     p.use('nota_amagatall', 'cambra');
     expect(p.active).toBe('vet');
-    // Sense llegir la nota, una placa qualsevol no diu res.
+    // Sense llegir la nota, una reixa qualsevol no diu res.
     p.do('open', 'porta');
     p.do('open', 'porta_hangar');
     expect(texts(p.do('open', 'placa_terra'))).toContain('qualsevol');

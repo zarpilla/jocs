@@ -855,6 +855,17 @@ MOLL = {
 
 # ─── La Gavina: moll de l'hangar (Acte 2) ───────────────────────────────────
 
+def floor_grate(c, x0, y0, x1, y1):
+    """Reixa de desguàs encastada al terra: marc, fons fosc i barrots."""
+    c.rect(x0, y0, x1, y1, (58, 66, 78))                            # marc
+    c.rect(x0 + 2, y0 + 1, x1 - 2, y1 - 1, (10, 12, 16))            # el forat, fosc
+    for x in range(x0 + 4, x1 - 2, 3):                              # barrots
+        c.line([(x, y0 + 1), (x, y1 - 1)], (96, 106, 120))
+    c.line([(x0, y0), (x1, y0)], (110, 122, 138))                   # vora il·luminada
+    for x, y in ((x0 + 1, y0 + 1), (x1 - 1, y0 + 1), (x0 + 1, y1 - 1), (x1 - 1, y1 - 1)):
+        c.px(x, y, (130, 140, 150))                                 # cargols
+
+
 def hangar_bg(c):
     metal_panels(c, 0, 0, W, 112, (56, 66, 80), (28, 34, 44), (90, 104, 120), seed=61)
     c.rect(0, 0, W, 6, (24, 30, 40))
@@ -867,12 +878,9 @@ def hangar_bg(c):
     # Pilar 7: el de la fàbrica, cent vint anys després
     pillar(c, 110, 124, (96, 70, 60), (60, 44, 40), (170, 150, 120))
     c.shade(110, 0, 124, 112, (40, 30, 30), 70)
-    # Plaques del terra (la del costat del pilar és la de la nota)
-    for x in range(20, 340, 40):
-        c.d.rectangle([x, 120, x + 36, 128], outline=(52, 62, 76))
-    c.d.rectangle([100, 120, 136, 128], outline=(70, 82, 98))
-    for x, y in ((102, 122), (134, 122), (102, 126), (134, 126)):
-        c.px(x, y, (120, 130, 140))
+    # Reixes de desguàs al terra (la del costat del pilar 7 és la de la nota de la I.)
+    for x0 in (22, 100, 214, 292):
+        floor_grate(c, x0, 120, x0 + 36, 129)
     # La comporta, tancada i rovellada
     c.rect(156, 6, 350, 112, (30, 36, 46))
     for y in range(10, 104, 8):
