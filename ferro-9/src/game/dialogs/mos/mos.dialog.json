@@ -1,11 +1,11 @@
 {
-  "id": "bruc",
-  "displayName": "bruc",
+  "id": "mos",
+  "displayName": "mos",
   "options": [
     {
       "id": "menu__reciclatge",
       "scriptName": "menu__reciclatge",
-      "text": "Què és el reciclatge, Bruc?",
+      "text": "Què és el reciclatge, Mos?",
       "enabled": false,
       "say": false
     },
@@ -33,14 +33,14 @@
     {
       "id": "menu__familia",
       "scriptName": "menu__familia",
-      "text": "Tens família, Bruc?",
+      "text": "Tens família, Mos?",
       "enabled": false,
       "say": false
     },
     {
       "id": "menu__perdo",
       "scriptName": "menu__perdo",
-      "text": "Perdona pel que et vaig dir, Bruc.",
+      "text": "Perdona pel que et vaig dir, Mos.",
       "enabled": false,
       "say": false
     },

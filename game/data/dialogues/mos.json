@@ -1,12 +1,12 @@
 {
   "$schema": "../../schemas/dialogue.schema.json",
-  "id": "bruc",
-  "with": "bruc",
+  "id": "mos",
+  "with": "mos",
   "start": [
     {
       "if": {
         "remembers": {
-          "who": "bruc",
+          "who": "mos",
           "fact": "insultat"
         }
       },
@@ -15,7 +15,7 @@
     {
       "if": {
         "seen": {
-          "dialogue": "bruc",
+          "dialogue": "mos",
           "node": "primera"
         }
       },
@@ -29,12 +29,12 @@
     "primera": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.primera1"
+          "who": "mos",
+          "text": "dlg.mos.primera1"
         },
         {
-          "who": "bruc",
-          "text": "dlg.bruc.primera2"
+          "who": "mos",
+          "text": "dlg.mos.primera2"
         }
       ],
       "goto": "menu"
@@ -42,8 +42,8 @@
     "hola": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.hola"
+          "who": "mos",
+          "text": "dlg.mos.hola"
         }
       ],
       "goto": "menu"
@@ -51,8 +51,8 @@
     "ofes": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.ofes"
+          "who": "mos",
+          "text": "dlg.mos.ofes"
         }
       ],
       "goto": "menu"
@@ -61,13 +61,13 @@
       "choices": [
         {
           "id": "reciclatge",
-          "text": "dlg.bruc.opt.reciclatge",
+          "text": "dlg.mos.opt.reciclatge",
           "once": true,
           "next": "reciclatge",
           "effects": [
             {
               "remember": {
-                "who": "bruc",
+                "who": "mos",
                 "fact": "preguntat_reciclatge"
               }
             }
@@ -75,7 +75,7 @@
         },
         {
           "id": "llapis",
-          "text": "dlg.bruc.opt.llapis",
+          "text": "dlg.mos.opt.llapis",
           "next": "llapis",
           "if": {
             "all": [
@@ -88,7 +88,7 @@
               },
               {
                 "relation": {
-                  "who": "bruc",
+                  "who": "mos",
                   "op": ">=",
                   "value": 1
                 }
@@ -98,7 +98,7 @@
         },
         {
           "id": "llapis_demanar",
-          "text": "dlg.bruc.opt.llapis_demanar",
+          "text": "dlg.mos.opt.llapis_demanar",
           "next": "llapis_que",
           "if": {
             "all": [
@@ -111,7 +111,7 @@
               },
               {
                 "relation": {
-                  "who": "bruc",
+                  "who": "mos",
                   "op": "<",
                   "value": 1
                 }
@@ -121,19 +121,19 @@
         },
         {
           "id": "maquillatge",
-          "text": "dlg.bruc.opt.maquillatge",
+          "text": "dlg.mos.opt.maquillatge",
           "once": true,
           "next": "maquillatge"
         },
         {
           "id": "familia",
-          "text": "dlg.bruc.opt.familia",
+          "text": "dlg.mos.opt.familia",
           "once": true,
           "next": "familia",
           "if": {
             "not": {
               "remembers": {
-                "who": "bruc",
+                "who": "mos",
                 "fact": "insultat"
               }
             }
@@ -141,7 +141,7 @@
           "effects": [
             {
               "remember": {
-                "who": "bruc",
+                "who": "mos",
                 "fact": "preguntat_familia"
               }
             }
@@ -149,31 +149,31 @@
         },
         {
           "id": "perdo",
-          "text": "dlg.bruc.opt.perdo",
+          "text": "dlg.mos.opt.perdo",
           "once": true,
           "next": "perdo",
           "if": {
             "remembers": {
-              "who": "bruc",
+              "who": "mos",
               "fact": "insultat"
             }
           },
           "effects": [
             {
               "forget": {
-                "who": "bruc",
+                "who": "mos",
                 "fact": "insultat"
               }
             },
             {
               "remember": {
-                "who": "bruc",
+                "who": "mos",
                 "fact": "perdonat"
               }
             },
             {
               "relation": {
-                "who": "bruc",
+                "who": "mos",
                 "change": 2
               }
             }
@@ -181,7 +181,7 @@
         },
         {
           "id": "adeu",
-          "text": "dlg.bruc.opt.adeu",
+          "text": "dlg.mos.opt.adeu",
           "next": "adeu",
           "end": true
         }
@@ -190,16 +190,16 @@
     "reciclatge": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.reciclatge1"
+          "who": "mos",
+          "text": "dlg.mos.reciclatge1"
         },
         {
-          "who": "bruc",
-          "text": "dlg.bruc.reciclatge2"
+          "who": "mos",
+          "text": "dlg.mos.reciclatge2"
         },
         {
-          "who": "bruc",
-          "text": "dlg.bruc.reciclatge3"
+          "who": "mos",
+          "text": "dlg.mos.reciclatge3"
         }
       ],
       "goto": "menu"
@@ -207,8 +207,8 @@
     "maquillatge": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.maquillatge1"
+          "who": "mos",
+          "text": "dlg.mos.maquillatge1"
         }
       ],
       "goto": "menu"
@@ -216,17 +216,17 @@
     "familia": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.familia1"
+          "who": "mos",
+          "text": "dlg.mos.familia1"
         },
         {
-          "who": "bruc",
-          "text": "dlg.bruc.familia2"
+          "who": "mos",
+          "text": "dlg.mos.familia2"
         }
       ],
       "effects": [
         {
-          "startQuest": "carta_bruc"
+          "startQuest": "carta_mos"
         }
       ],
       "goto": "menu"
@@ -234,8 +234,8 @@
     "llapis": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.llapis_ok",
+          "who": "mos",
+          "text": "dlg.mos.llapis_ok",
           "effects": [
             {
               "giveItem": "llapis_ulls"
@@ -251,8 +251,8 @@
     "llapis_que": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.llapis_que"
+          "who": "mos",
+          "text": "dlg.mos.llapis_que"
         }
       ],
       "goto": "convencer"
@@ -261,7 +261,7 @@
       "choices": [
         {
           "id": "elogiar",
-          "text": "dlg.bruc.opt.elogiar",
+          "text": "dlg.mos.opt.elogiar",
           "next": "elogiat",
           "if": {
             "all": [
@@ -272,7 +272,7 @@
               {
                 "not": {
                   "remembers": {
-                    "who": "bruc",
+                    "who": "mos",
                     "fact": "insultat"
                   }
                 }
@@ -282,13 +282,13 @@
           "effects": [
             {
               "remember": {
-                "who": "bruc",
+                "who": "mos",
                 "fact": "elogiat"
               }
             },
             {
               "relation": {
-                "who": "bruc",
+                "who": "mos",
                 "change": 1
               }
             }
@@ -296,7 +296,7 @@
         },
         {
           "id": "insultar",
-          "text": "dlg.bruc.opt.insultar",
+          "text": "dlg.mos.opt.insultar",
           "next": "insultat",
           "if": {
             "all": [
@@ -307,7 +307,7 @@
               {
                 "not": {
                   "remembers": {
-                    "who": "bruc",
+                    "who": "mos",
                     "fact": "insultat"
                   }
                 }
@@ -317,13 +317,13 @@
           "effects": [
             {
               "remember": {
-                "who": "bruc",
+                "who": "mos",
                 "fact": "insultat"
               }
             },
             {
               "relation": {
-                "who": "bruc",
+                "who": "mos",
                 "change": -2
               }
             }
@@ -331,7 +331,7 @@
         },
         {
           "id": "res",
-          "text": "dlg.bruc.opt.res",
+          "text": "dlg.mos.opt.res",
           "next": "menu"
         }
       ]
@@ -339,8 +339,8 @@
     "elogiat": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.elogiat1",
+          "who": "mos",
+          "text": "dlg.mos.elogiat1",
           "effects": [
             {
               "giveItem": "llapis_ulls"
@@ -356,8 +356,8 @@
     "insultat": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.insultat1"
+          "who": "mos",
+          "text": "dlg.mos.insultat1"
         }
       ],
       "goto": "menu"
@@ -365,8 +365,8 @@
     "perdo": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.perdo1"
+          "who": "mos",
+          "text": "dlg.mos.perdo1"
         }
       ],
       "goto": "menu"
@@ -374,8 +374,8 @@
     "adeu": {
       "lines": [
         {
-          "who": "bruc",
-          "text": "dlg.bruc.adeu"
+          "who": "mos",
+          "text": "dlg.mos.adeu"
         }
       ]
     }

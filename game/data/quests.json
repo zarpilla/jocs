@@ -58,16 +58,16 @@
       }
     ]
   },
-  "carta_bruc": {
+  "carta_mos": {
     "kind": "side",
-    "title": "mis.carta_bruc.titol",
-    "description": "mis.carta_bruc.desc",
+    "title": "mis.carta_mos.titol",
+    "description": "mis.carta_mos.desc",
     "objectives": [
       {
         "id": "trobar_carta",
-        "text": "mis.carta_bruc.obj.trobar",
+        "text": "mis.carta_mos.obj.trobar",
         "completeWhen": {
-          "flag": "carta_bruc_trobada"
+          "flag": "carta_mos_trobada"
         }
       }
     ]

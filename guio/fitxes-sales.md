@@ -44,7 +44,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 |---|---|---|---|---|
 | `panell` | panell rovellat | hotspot / prop | sempre | look, push, use, use + clau_anglesa, use + objecte, pickUp, open |
 | `altaveu` | altaveu de la MARE | hotspot / prop | sempre | talkTo, look, push, pull, use |
-| `bruc` | Bruc | personatge | sempre | talkTo, look |
+| `mos` | Mos | personatge | sempre | talkTo, look |
 | `avis` | avís | prop | `{"flag":"avis_agafat","is":false}` | look, pickUp |
 | `llitera` | llitera | hotspot / prop | sempre | look, pickUp |
 | `escarabat` | Senyor Bigotis | prop | `{"flag":"escarabat_agafat","is":false}` | look, pickUp |
@@ -57,7 +57,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
 | `cartell` | cartell | hotspot / prop | sempre | look |
-| `camera` | càmera | hotspot / prop | sempre | look |
+| `camera_vigilancia` | càmera | hotspot / prop | sempre | look |
 | `porta_cella` | cel·la 9 | hotspot / prop → `gavina_cella` | sempre | open, use, walkTo |
 
 ## Objectes d'inventari

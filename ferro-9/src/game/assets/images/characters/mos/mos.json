@@ -1,6 +1,6 @@
 {
   "frames": {
-    "bruc 0.aseprite": {
+    "mos 0.aseprite": {
       "frame": {
         "x": 0,
         "y": 0,
@@ -21,7 +21,7 @@
       },
       "duration": 100
     },
-    "bruc 1.aseprite": {
+    "mos 1.aseprite": {
       "frame": {
         "x": 36,
         "y": 0,
@@ -42,7 +42,7 @@
       },
       "duration": 100
     },
-    "bruc 2.aseprite": {
+    "mos 2.aseprite": {
       "frame": {
         "x": 72,
         "y": 0,
@@ -63,7 +63,7 @@
       },
       "duration": 100
     },
-    "bruc 3.aseprite": {
+    "mos 3.aseprite": {
       "frame": {
         "x": 108,
         "y": 0,
@@ -84,7 +84,7 @@
       },
       "duration": 100
     },
-    "bruc 4.aseprite": {
+    "mos 4.aseprite": {
       "frame": {
         "x": 144,
         "y": 0,
@@ -105,7 +105,7 @@
       },
       "duration": 100
     },
-    "bruc 5.aseprite": {
+    "mos 5.aseprite": {
       "frame": {
         "x": 180,
         "y": 0,
@@ -126,7 +126,7 @@
       },
       "duration": 100
     },
-    "bruc 6.aseprite": {
+    "mos 6.aseprite": {
       "frame": {
         "x": 216,
         "y": 0,
@@ -147,7 +147,7 @@
       },
       "duration": 100
     },
-    "bruc 7.aseprite": {
+    "mos 7.aseprite": {
       "frame": {
         "x": 252,
         "y": 0,
@@ -168,7 +168,7 @@
       },
       "duration": 100
     },
-    "bruc 8.aseprite": {
+    "mos 8.aseprite": {
       "frame": {
         "x": 288,
         "y": 0,
@@ -193,7 +193,7 @@
   "meta": {
     "app": "https://www.aseprite.org/",
     "version": "provisional (draw_characters.py)",
-    "image": "bruc.png",
+    "image": "mos.png",
     "format": "RGBA8888",
     "size": {
       "w": 324,

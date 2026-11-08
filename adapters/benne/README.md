@@ -88,7 +88,7 @@ Les sales noves sense disseny surten amb caixes etiquetades fins que se'ls en fa
 ## Personatges provisionals
 
 `tools/draw_characters.py` dibuixa en pixel art els sprites de l'Iri, la Vet, el Cargol, el capatàs,
-en Bruc i la MARE (a `placeholder-art/`), amb les animacions que demana Benne. El sync els copia al
+en Mos i la MARE (a `placeholder-art/`), amb les animacions que demana Benne. El sync els copia al
 projecte i els actualitza mentre hi hagi la marca `.provisional` a `assets/images/characters/<id>/`.
 L'aspecte segons l'estat (`appearance` a `characters.json`) l'aplica el pont en entrar a la sala i
 cada vegada que canvia l'estat.

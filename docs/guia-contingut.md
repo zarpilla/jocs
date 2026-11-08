@@ -9,7 +9,7 @@ VS Code autocompleta i marca errors als JSON (gràcies a `game/schemas/`).
 
 - **Identificadors** (personatges, nodes, opcions, missions, flags...): `minuscules_i_xifres`, sense
   accents ni espais. Exemple: `cargol`, `porta_cambra_oberta`.
-- **Claus de text**: amb punts, per tema. Exemple: `dlg.bruc.primera1`. Els prefixos que fem
+- **Claus de text**: amb punts, per tema. Exemple: `dlg.mos.primera1`. Els prefixos que fem
   servir: `joc.`, `ui.`, `pj.` (personatges), `obj.` (objectes), `dlg.` (diàlegs), `mis.`
   (missions), `pista.`, `final.`.
 - Els textos poden incloure variables: `"Queden {enceses_restants} enceses"`.
@@ -32,13 +32,13 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 | Variable | `{ "var": "finestra_armada", "op": "==", "value": "vet" }` |
 | Té un objecte | `{ "hasItem": "segell" }` (la protagonista activa) · `{ "hasItem": "imant_ferro9", "who": "vet" }` |
 | Protagonista activa | `{ "protagonist": "iri" }` |
-| Un personatge recorda | `{ "remembers": { "who": "bruc", "fact": "insultat" } }` (opcional: `"atLeast": 2`) |
-| Relació amb un personatge | `{ "relation": { "who": "bruc", "op": ">=", "value": 1 } }` |
+| Un personatge recorda | `{ "remembers": { "who": "mos", "fact": "insultat" } }` (opcional: `"atLeast": 2`) |
+| Relació amb un personatge | `{ "relation": { "who": "mos", "op": ">=", "value": 1 } }` |
 | Estat d'una missió | `{ "quest": "encendre_far", "status": "active" }` (o una llista d'estats) |
 | Objectiu fet | `{ "objective": { "quest": "q", "objective": "o" } }` |
 | Sala visitada / sala actual | `{ "visited": "moll" }` · `{ "inRoom": "moll" }` |
-| Node de diàleg vist abans | `{ "seen": { "dialogue": "bruc", "node": "primera" } }` |
-| Opció triada abans | `{ "chosen": { "dialogue": "bruc", "node": "convencer", "choice": "insultar" } }` |
+| Node de diàleg vist abans | `{ "seen": { "dialogue": "mos", "node": "primera" } }` |
+| Opció triada abans | `{ "chosen": { "dialogue": "mos", "node": "convencer", "choice": "insultar" } }` |
 | Combinacions | `{ "all": [...] }` · `{ "any": [...] }` · `{ "not": {...} }` |
 
 ## Efectes
@@ -49,7 +49,7 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 | Variable | `{ "setVar": "nom", "value": "x" }` · `{ "addVar": "sospita_brau", "amount": 1 }` |
 | Inventari | `{ "giveItem": "clau_cambra" }` · `{ "takeItem": "formulari_27b" }` (opcional: `"who": "vet"`) |
 | Memòria | `{ "remember": { "who": "cargol", "fact": "preguntat_pel_dia" } }` · `{ "forget": ... }` |
-| Relació | `{ "relation": { "who": "bruc", "change": -2 } }` |
+| Relació | `{ "relation": { "who": "mos", "change": -2 } }` |
 | Missions | `{ "startQuest": "q" }` · `{ "completeObjective": { "quest": "q", "objective": "o" } }` · `{ "completeQuest": "q" }` · `{ "failQuest": "q" }` |
 | Final | `{ "ending": "fugida" }` |
 | Esdeveniment per al motor | `{ "event": "obrir_porta", "args": { "porta": "taverna" } }` |
@@ -163,22 +163,22 @@ respondre).
 
 ```json
 {
-  "id": "bruc",
-  "with": "bruc",
+  "id": "mos",
+  "with": "mos",
   "start": [
-    { "if": { "remembers": { "who": "bruc", "fact": "insultat" } }, "node": "ofes" },
-    { "if": { "seen": { "dialogue": "bruc", "node": "primera" } }, "node": "hola" },
+    { "if": { "remembers": { "who": "mos", "fact": "insultat" } }, "node": "ofes" },
+    { "if": { "seen": { "dialogue": "mos", "node": "primera" } }, "node": "hola" },
     { "node": "primera" }
   ],
   "nodes": {
     "primera": {
-      "lines": [ { "who": "bruc", "text": "dlg.bruc.primera1" } ],
+      "lines": [ { "who": "mos", "text": "dlg.mos.primera1" } ],
       "goto": "menu"
     },
     "menu": {
       "choices": [
-        { "id": "reciclatge", "text": "dlg.bruc.opt.reciclatge", "once": true, "next": "reciclatge" },
-        { "id": "adeu", "text": "dlg.bruc.opt.adeu", "next": "adeu", "end": true }
+        { "id": "reciclatge", "text": "dlg.mos.opt.reciclatge", "once": true, "next": "reciclatge" },
+        { "id": "adeu", "text": "dlg.mos.opt.adeu", "next": "adeu", "end": true }
       ]
     }
   }

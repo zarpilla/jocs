@@ -554,7 +554,7 @@ CELLA = {
         'escarabat': {'rect': (88, 114, 104, 128), 'walk': (110, 134)},
         'safata': {'rect': (232, 120, 264, 138), 'walk': (226, 142)},
     },
-    'spawns': {'vet': (150, 138), 'bruc': (306, 140), 'mare': (130, 30)},
+    'spawns': {'vet': (150, 138), 'mos': (306, 140), 'mare': (130, 30)},
     'walkable': [(14, 118), (266, 118), (268, 128), (338, 130), (346, 148), (6, 148)],
     'bg': cella_bg,
     'props': {'avis': cella_avis, 'escarabat': cella_escarabat, 'safata': cella_safata},

@@ -65,7 +65,7 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 | **Director Aldaia** | Fundador de la corporació. Encantador i terrible. | Holograma de la Sala de la Memòria, fent de guia turístic. | L'antagonista del passat, i també un gag recurrent al present. |
 | **Directora Aldaia** | — | Rebesneta del fundador. Cita l'avantpassat a cada frase. | L'antagonista del present. A l'Acte 3 vol la finestra per a ella. |
 | **Inspector Brau** | Inspector d'inventari de la corporació. Té un humor de pedra. | — | L'amenaça que creix a l'Acte 2. Cada robatori de l'Iri li deixa una pista. |
-| **Bruc** | — | Company de cel·la de la Vet. Vell sincronitzador fallit. | Sap rumors sobre el reciclatge, i té una missió secundària. |
+| **Mos** | — | Company de cel·la de la Vet. Vell sincronitzador fallit. | Sap rumors sobre el reciclatge, i té una missió secundària. |
 
 ---
 
@@ -273,7 +273,7 @@ Com que sempre és la mateixa història amb més o menys coses arreglades, el ju
 |---|---|---|---|
 | **Salvar la Mira** | Iri | Treure la sospita de sobre la Mira (amb tres solucions possibles). | La Guàrdia Osset existeix al present. Necessari per als finals 2 i 3. |
 | **La memòria del Cargol** | Iri + Vet | L'Iri li repara el mòdul de memòria i li grava el nom a la placa. La Vet li retorna la placa, que s'havia perdut. | El Cargol vell ajuda la Vet. Necessari per al final 3. |
-| **El missatge d'en Bruc** | Vet | En Bruc vol saber si la seva filla va rebre una carta que ell va escriure. La Vet la troba a l'Arxiu. | En Bruc explica el secret del reciclatge abans d'hora i dona una drecera a l'Acte 2. |
+| **El missatge d'en Mos** | Vet | En Mos vol saber si la seva filla va rebre una carta que ell va escriure. La Vet la troba a l'Arxiu. | En Mos explica el secret del reciclatge abans d'hora i dona una drecera a l'Acte 2. |
 | **Les notes perdudes** | Vet | Col·leccionable: notes de sincronitzadors fallits amagades per la presó durant 120 anys. | Història del món i pistes. |
 | **El formulari 27-B** | Iri | Cadena d'humor burocràtic que es repeteix i es complica a cada acte. | Gags, i una eina extra. |
 
@@ -304,7 +304,7 @@ ACTE 2  (els tres components, en qualsevol ordre)
   Diapasó:  [Vet ajusta molla] → (molla → Iri) → [Iri afina] → (diapasó → Vet)
   Vàlvula:  [Iri tapa conducte] ⇄ [Vet veu resultat (reajust)] ⇄ [nota de correcció]
   Història: [Sala de la Memòria] → [foto ratllada] → [Arxiu] → [revelació] → [noms]
-  Secundàries: [Salvar la Mira] · [Memòria del Cargol] · [Missatge d'en Bruc]
+  Secundàries: [Salvar la Mira] · [Memòria del Cargol] · [Missatge d'en Mos]
 
 ACTE 3
   [Directora pren la cambra] ∥ [Director descobreix l'Iri]

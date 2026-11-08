@@ -302,19 +302,19 @@
         }
       ]
     },
-    "bruc": {
-      "name": "sala.gavina_cella.bruc.nom",
+    "mos": {
+      "name": "sala.gavina_cella.mos.nom",
       "interactions": [
         {
           "verb": "talkTo",
-          "dialogue": "bruc"
+          "dialogue": "mos"
         },
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.bruc.look"
+              "text": "sala.gavina_cella.mos.look"
             }
           ]
         }

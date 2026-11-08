@@ -7,7 +7,7 @@ que espera Benne (full d'Aseprite PNG + JSON amb etiquetes, i el .character.json
   vet      presonera de la cel·la 9 (present): granota de presó, cabell curt punxegut
   cargol   robot de manteniment amb closca de cargol, ulls a les antenes, erugues
   capatas  el capatàs Pruna, adormit a la cadira, amb el segell a les mans (i sense)
-  bruc     presoner vell i prim, maquillat
+  mos     presoner vell i prim, maquillat
   mare     l'altaveu en forma de cor de la IA (normalment invisible)
 
 Les protagonistes tenen Idle/Walk/Talk en tres direccions (L, D, U; Benne fa el mirall per a R).
@@ -72,10 +72,10 @@ VET = {
     'top': (150, 172, 194), 'top2': (110, 132, 154), 'sleeve': (150, 172, 194), 'legs': (150, 172, 194), 'legs2': (110, 132, 154),
     'shoes': (232, 232, 232), 'belt': None, 'style': 'vet', 'eyes': (30, 24, 30),
 }
-BRUC = {
+MOS = {
     'skin': (214, 170, 140), 'skin2': (184, 138, 110), 'hair': (206, 206, 214), 'hair2': (160, 160, 170),
     'top': (150, 172, 194), 'top2': (110, 132, 154), 'sleeve': (150, 172, 194), 'legs': (150, 172, 194), 'legs2': (110, 132, 154),
-    'shoes': (90, 90, 96), 'belt': None, 'style': 'bruc', 'eyes': (20, 16, 24),
+    'shoes': (90, 90, 96), 'belt': None, 'style': 'mos', 'eyes': (20, 16, 24),
 }
 
 
@@ -122,7 +122,7 @@ def person(p, facing, walk=None, talk=False, thin=False):
         c.rect(13 if facing == 'D' else 14, 33 + y0, 22 if facing == 'D' else 21, 34 + y0, p['belt'])  # cinturó d'eines
         c.rect(20 if facing == 'D' else 15, 34 + y0, 22 if facing == 'D' else 17, 37 + y0, (110, 78, 46))  # bossa
         c.px(21 if facing == 'D' else 16, 35 + y0, (200, 200, 210))  # mànec d'una eina
-    if p['style'] in ('vet', 'bruc') and facing == 'D':
+    if p['style'] in ('vet', 'mos') and facing == 'D':
         c.rect(19, 25 + y0, 22 - narrow, 28 + y0, (236, 236, 236))  # pegat amb el número
         c.px(20, 26 + y0, (40, 40, 60))
         c.px(21 - narrow, 27 + y0, (40, 40, 60))
@@ -162,7 +162,7 @@ def person(p, facing, walk=None, talk=False, thin=False):
         if p['style'] in ('iri', 'vet'):                      # pestanyes
             c.px(14, 11 + y0, eye)
             c.px(21, 11 + y0, eye)
-        if p['style'] == 'bruc':                              # llapis d'ulls i barba blanca
+        if p['style'] == 'mos':                              # llapis d'ulls i barba blanca
             for x in (14, 16, 19, 21):
                 c.px(x, 12 + y0, (60, 30, 70))
             c.rect(14, 16 + y0, 21, 18 + y0, p['hair'])
@@ -175,7 +175,7 @@ def person(p, facing, walk=None, talk=False, thin=False):
         c.px(14, 12 + y0, eye)
         if p['style'] in ('iri', 'vet'):
             c.px(13, 11 + y0, eye)
-        if p['style'] == 'bruc':
+        if p['style'] == 'mos':
             c.px(13, 12 + y0, (60, 30, 70))
             c.rect(13, 16 + y0, 17, 18 + y0, p['hair'])
         c.rect(13, 16 + y0, 14, 16 + (1 if talk else 0) + y0, (90, 30, 30) if talk else (120, 50, 50))
@@ -221,7 +221,7 @@ def hair(c, p, facing, y0):
                 c.rect(14, top + 4, 17, top + 4, h)              # serrell
             else:
                 c.rect(19, top + 4, 23, top + 8, h2)
-    else:  # bruc: calb, cabells blancs als costats
+    else:  # mos: calb, cabells blancs als costats
         if facing == 'U':
             c.ellipse(17.5, 12 + y0, 5.5, 6, h2)
             c.ellipse(17.5, 9 + y0, 4, 3.5, p['skin'])
@@ -428,7 +428,7 @@ def standing(cid, p, thin=False):
 def main():
     walker('iri', IRI)
     walker('vet', VET)
-    standing('bruc', BRUC, thin=True)
+    standing('mos', MOS, thin=True)
 
     tags = []
     for f in 'DLU':

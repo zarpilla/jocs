@@ -139,11 +139,11 @@ describe('Ferro-9 · Acte 1', () => {
     expect(keys(p.use('escarabat', 'panell'))).toEqual(['finestra.rebuig.viu']);
     expect(keys(p.use('sopa', 'panell'))).toEqual(['finestra.rebuig.liquid']);
 
-    // ── Vet: en Bruc i el llapis d'ulls ──
+    // ── Vet: en Mos i el llapis d'ulls ──
     p.do('pickUp', 'avis');
-    p.talk('bruc', 'familia', 'llapis_demanar', 'elogiar');
+    p.talk('mos', 'familia', 'llapis_demanar', 'elogiar');
     expect(p.inventory()).toContain('llapis_ulls');
-    expect(n.state.quests.carta_bruc!.status).toBe('active');
+    expect(n.state.quests.carta_mos!.status).toBe('active');
     p.use('llapis_ulls', { kind: 'item', id: 'avis_reciclatge' });
     p.use('nota_vet', 'panell');
     p.do('push', 'panell');
@@ -204,15 +204,15 @@ describe('Ferro-9 · Acte 1', () => {
     expect(estatFinestra(n).enceses).toBe(12 - 5);
   });
 
-  it('si insultes en Bruc, no et deixa el llapis fins que li demanis perdó', () => {
+  it('si insultes en Mos, no et deixa el llapis fins que li demanis perdó', () => {
     const { p, n } = finsPanellReparat();
-    p.talk('bruc', 'llapis_demanar', 'insultar');
+    p.talk('mos', 'llapis_demanar', 'insultar');
     expect(p.inventory()).not.toContain('llapis_ulls');
-    expect(keys(p.talk('bruc'))).toEqual(['dlg.bruc.ofes']);
-    p.talk('bruc', 'perdo');
-    expect(n.remembers('bruc', 'perdonat')).toBe(1);
+    expect(keys(p.talk('mos'))).toEqual(['dlg.mos.ofes']);
+    p.talk('mos', 'perdo');
+    expect(n.remembers('mos', 'perdonat')).toBe(1);
     // Ja ha perdonat, però encara cal convèncer-lo.
-    p.talk('bruc', 'llapis_demanar', 'elogiar');
+    p.talk('mos', 'llapis_demanar', 'elogiar');
     expect(p.inventory()).toContain('llapis_ulls');
   });
 

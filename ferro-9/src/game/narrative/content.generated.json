@@ -48,7 +48,7 @@
         "pany_mirat": false,
         "nota_pany_escrita": false,
         "acte1_acabat": false,
-        "carta_bruc_trobada": false,
+        "carta_mos_trobada": false,
         "fugida_completada": false,
         "mira_salvada": false,
         "planols_robats": false,
@@ -99,9 +99,9 @@
       "mare": {
         "name": "pj.mare.nom"
       },
-      "bruc": {
-        "name": "pj.bruc.nom",
-        "description": "pj.bruc.desc",
+      "mos": {
+        "name": "pj.mos.nom",
+        "description": "pj.mos.desc",
         "facts": [
           "insultat",
           "elogiat",
@@ -1644,19 +1644,19 @@
               }
             ]
           },
-          "bruc": {
-            "name": "sala.gavina_cella.bruc.nom",
+          "mos": {
+            "name": "sala.gavina_cella.mos.nom",
             "interactions": [
               {
                 "verb": "talkTo",
-                "dialogue": "bruc"
+                "dialogue": "mos"
               },
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.bruc.look"
+                    "text": "sala.gavina_cella.mos.look"
                   }
                 ]
               }
@@ -2063,16 +2063,16 @@
           }
         ]
       },
-      "carta_bruc": {
+      "carta_mos": {
         "kind": "side",
-        "title": "mis.carta_bruc.titol",
-        "description": "mis.carta_bruc.desc",
+        "title": "mis.carta_mos.titol",
+        "description": "mis.carta_mos.desc",
         "objectives": [
           {
             "id": "trobar_carta",
-            "text": "mis.carta_bruc.obj.trobar",
+            "text": "mis.carta_mos.obj.trobar",
             "completeWhen": {
-              "flag": "carta_bruc_trobada"
+              "flag": "carta_mos_trobada"
             }
           }
         ]
@@ -2774,388 +2774,6 @@
       }
     },
     "dialogues": {
-      "bruc": {
-        "id": "bruc",
-        "with": "bruc",
-        "start": [
-          {
-            "if": {
-              "remembers": {
-                "who": "bruc",
-                "fact": "insultat"
-              }
-            },
-            "node": "ofes"
-          },
-          {
-            "if": {
-              "seen": {
-                "dialogue": "bruc",
-                "node": "primera"
-              }
-            },
-            "node": "hola"
-          },
-          {
-            "node": "primera"
-          }
-        ],
-        "nodes": {
-          "primera": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.primera1"
-              },
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.primera2"
-              }
-            ],
-            "goto": "menu"
-          },
-          "hola": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.hola"
-              }
-            ],
-            "goto": "menu"
-          },
-          "ofes": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.ofes"
-              }
-            ],
-            "goto": "menu"
-          },
-          "menu": {
-            "choices": [
-              {
-                "id": "reciclatge",
-                "text": "dlg.bruc.opt.reciclatge",
-                "once": true,
-                "next": "reciclatge",
-                "effects": [
-                  {
-                    "remember": {
-                      "who": "bruc",
-                      "fact": "preguntat_reciclatge"
-                    }
-                  }
-                ]
-              },
-              {
-                "id": "llapis",
-                "text": "dlg.bruc.opt.llapis",
-                "next": "llapis",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "llapis_donat",
-                      "is": false
-                    },
-                    {
-                      "flag": "panell_vet_reparat"
-                    },
-                    {
-                      "relation": {
-                        "who": "bruc",
-                        "op": ">=",
-                        "value": 1
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "llapis_demanar",
-                "text": "dlg.bruc.opt.llapis_demanar",
-                "next": "llapis_que",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "llapis_donat",
-                      "is": false
-                    },
-                    {
-                      "flag": "panell_vet_reparat"
-                    },
-                    {
-                      "relation": {
-                        "who": "bruc",
-                        "op": "<",
-                        "value": 1
-                      }
-                    }
-                  ]
-                }
-              },
-              {
-                "id": "maquillatge",
-                "text": "dlg.bruc.opt.maquillatge",
-                "once": true,
-                "next": "maquillatge"
-              },
-              {
-                "id": "familia",
-                "text": "dlg.bruc.opt.familia",
-                "once": true,
-                "next": "familia",
-                "if": {
-                  "not": {
-                    "remembers": {
-                      "who": "bruc",
-                      "fact": "insultat"
-                    }
-                  }
-                },
-                "effects": [
-                  {
-                    "remember": {
-                      "who": "bruc",
-                      "fact": "preguntat_familia"
-                    }
-                  }
-                ]
-              },
-              {
-                "id": "perdo",
-                "text": "dlg.bruc.opt.perdo",
-                "once": true,
-                "next": "perdo",
-                "if": {
-                  "remembers": {
-                    "who": "bruc",
-                    "fact": "insultat"
-                  }
-                },
-                "effects": [
-                  {
-                    "forget": {
-                      "who": "bruc",
-                      "fact": "insultat"
-                    }
-                  },
-                  {
-                    "remember": {
-                      "who": "bruc",
-                      "fact": "perdonat"
-                    }
-                  },
-                  {
-                    "relation": {
-                      "who": "bruc",
-                      "change": 2
-                    }
-                  }
-                ]
-              },
-              {
-                "id": "adeu",
-                "text": "dlg.bruc.opt.adeu",
-                "next": "adeu",
-                "end": true
-              }
-            ]
-          },
-          "reciclatge": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.reciclatge1"
-              },
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.reciclatge2"
-              },
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.reciclatge3"
-              }
-            ],
-            "goto": "menu"
-          },
-          "maquillatge": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.maquillatge1"
-              }
-            ],
-            "goto": "menu"
-          },
-          "familia": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.familia1"
-              },
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.familia2"
-              }
-            ],
-            "effects": [
-              {
-                "startQuest": "carta_bruc"
-              }
-            ],
-            "goto": "menu"
-          },
-          "llapis": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.llapis_ok",
-                "effects": [
-                  {
-                    "giveItem": "llapis_ulls"
-                  },
-                  {
-                    "setFlag": "llapis_donat"
-                  }
-                ]
-              }
-            ],
-            "goto": "menu"
-          },
-          "llapis_que": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.llapis_que"
-              }
-            ],
-            "goto": "convencer"
-          },
-          "convencer": {
-            "choices": [
-              {
-                "id": "elogiar",
-                "text": "dlg.bruc.opt.elogiar",
-                "next": "elogiat",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "llapis_donat",
-                      "is": false
-                    },
-                    {
-                      "not": {
-                        "remembers": {
-                          "who": "bruc",
-                          "fact": "insultat"
-                        }
-                      }
-                    }
-                  ]
-                },
-                "effects": [
-                  {
-                    "remember": {
-                      "who": "bruc",
-                      "fact": "elogiat"
-                    }
-                  },
-                  {
-                    "relation": {
-                      "who": "bruc",
-                      "change": 1
-                    }
-                  }
-                ]
-              },
-              {
-                "id": "insultar",
-                "text": "dlg.bruc.opt.insultar",
-                "next": "insultat",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "llapis_donat",
-                      "is": false
-                    },
-                    {
-                      "not": {
-                        "remembers": {
-                          "who": "bruc",
-                          "fact": "insultat"
-                        }
-                      }
-                    }
-                  ]
-                },
-                "effects": [
-                  {
-                    "remember": {
-                      "who": "bruc",
-                      "fact": "insultat"
-                    }
-                  },
-                  {
-                    "relation": {
-                      "who": "bruc",
-                      "change": -2
-                    }
-                  }
-                ]
-              },
-              {
-                "id": "res",
-                "text": "dlg.bruc.opt.res",
-                "next": "menu"
-              }
-            ]
-          },
-          "elogiat": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.elogiat1",
-                "effects": [
-                  {
-                    "giveItem": "llapis_ulls"
-                  },
-                  {
-                    "setFlag": "llapis_donat"
-                  }
-                ]
-              }
-            ],
-            "goto": "menu"
-          },
-          "insultat": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.insultat1"
-              }
-            ],
-            "goto": "menu"
-          },
-          "perdo": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.perdo1"
-              }
-            ],
-            "goto": "menu"
-          },
-          "adeu": {
-            "lines": [
-              {
-                "who": "bruc",
-                "text": "dlg.bruc.adeu"
-              }
-            ]
-          }
-        }
-      },
       "cargol": {
         "id": "cargol",
         "with": "cargol",
@@ -3560,6 +3178,388 @@
             ]
           }
         }
+      },
+      "mos": {
+        "id": "mos",
+        "with": "mos",
+        "start": [
+          {
+            "if": {
+              "remembers": {
+                "who": "mos",
+                "fact": "insultat"
+              }
+            },
+            "node": "ofes"
+          },
+          {
+            "if": {
+              "seen": {
+                "dialogue": "mos",
+                "node": "primera"
+              }
+            },
+            "node": "hola"
+          },
+          {
+            "node": "primera"
+          }
+        ],
+        "nodes": {
+          "primera": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.primera1"
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.primera2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "hola": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "ofes": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.ofes"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "reciclatge",
+                "text": "dlg.mos.opt.reciclatge",
+                "once": true,
+                "next": "reciclatge",
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "mos",
+                      "fact": "preguntat_reciclatge"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "llapis",
+                "text": "dlg.mos.opt.llapis",
+                "next": "llapis",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "flag": "panell_vet_reparat"
+                    },
+                    {
+                      "relation": {
+                        "who": "mos",
+                        "op": ">=",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "llapis_demanar",
+                "text": "dlg.mos.opt.llapis_demanar",
+                "next": "llapis_que",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "flag": "panell_vet_reparat"
+                    },
+                    {
+                      "relation": {
+                        "who": "mos",
+                        "op": "<",
+                        "value": 1
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "maquillatge",
+                "text": "dlg.mos.opt.maquillatge",
+                "once": true,
+                "next": "maquillatge"
+              },
+              {
+                "id": "familia",
+                "text": "dlg.mos.opt.familia",
+                "once": true,
+                "next": "familia",
+                "if": {
+                  "not": {
+                    "remembers": {
+                      "who": "mos",
+                      "fact": "insultat"
+                    }
+                  }
+                },
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "mos",
+                      "fact": "preguntat_familia"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "perdo",
+                "text": "dlg.mos.opt.perdo",
+                "once": true,
+                "next": "perdo",
+                "if": {
+                  "remembers": {
+                    "who": "mos",
+                    "fact": "insultat"
+                  }
+                },
+                "effects": [
+                  {
+                    "forget": {
+                      "who": "mos",
+                      "fact": "insultat"
+                    }
+                  },
+                  {
+                    "remember": {
+                      "who": "mos",
+                      "fact": "perdonat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "mos",
+                      "change": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.mos.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "reciclatge": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.reciclatge1"
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.reciclatge2"
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.reciclatge3"
+              }
+            ],
+            "goto": "menu"
+          },
+          "maquillatge": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.maquillatge1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "familia": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.familia1"
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.familia2"
+              }
+            ],
+            "effects": [
+              {
+                "startQuest": "carta_mos"
+              }
+            ],
+            "goto": "menu"
+          },
+          "llapis": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.llapis_ok",
+                "effects": [
+                  {
+                    "giveItem": "llapis_ulls"
+                  },
+                  {
+                    "setFlag": "llapis_donat"
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "llapis_que": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.llapis_que"
+              }
+            ],
+            "goto": "convencer"
+          },
+          "convencer": {
+            "choices": [
+              {
+                "id": "elogiar",
+                "text": "dlg.mos.opt.elogiar",
+                "next": "elogiat",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "remembers": {
+                          "who": "mos",
+                          "fact": "insultat"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "mos",
+                      "fact": "elogiat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "mos",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "insultar",
+                "text": "dlg.mos.opt.insultar",
+                "next": "insultat",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llapis_donat",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "remembers": {
+                          "who": "mos",
+                          "fact": "insultat"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "remember": {
+                      "who": "mos",
+                      "fact": "insultat"
+                    }
+                  },
+                  {
+                    "relation": {
+                      "who": "mos",
+                      "change": -2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "res",
+                "text": "dlg.mos.opt.res",
+                "next": "menu"
+              }
+            ]
+          },
+          "elogiat": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.elogiat1",
+                "effects": [
+                  {
+                    "giveItem": "llapis_ulls"
+                  },
+                  {
+                    "setFlag": "llapis_donat"
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
+          },
+          "insultat": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.insultat1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "perdo": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.perdo1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "mos",
+                "text": "dlg.mos.adeu"
+              }
+            ]
+          }
+        }
       }
     }
   },
@@ -3600,32 +3600,32 @@
       "dlg.mare.preso1": "La Gavina es va construir sobre les restes de la gloriosa fàbrica de ferro-9 de la Corporació Aldaia!",
       "dlg.mare.preso2": "La fàbrica va tancar fa cent vint anys, després d'un petit accident del torn de nit. Res de greu!",
       "dlg.mare.adeu": "Fins aviat, interna 9! Recordi: queden tres dies!",
-      "dlg.bruc.primera1": "Ah, la nouvinguda està desperta. Tres dies, eh? Jo en porto vint, d'esperar.",
-      "dlg.bruc.primera2": "Diuen que m'han oblidat. Jo dic que m'estan reservant per a una ocasió especial.",
-      "dlg.bruc.hola": "Digues, nena.",
-      "dlg.bruc.ofes": "Ah. La que creu que soc un vell inútil.",
-      "dlg.bruc.opt.reciclatge": "Què és el reciclatge, Bruc?",
-      "dlg.bruc.opt.llapis": "Em deixes alguna cosa per escriure?",
-      "dlg.bruc.opt.llapis_demanar": "Necessito alguna cosa per escriure. Tens res?",
-      "dlg.bruc.opt.maquillatge": "Per què vas maquillat?",
-      "dlg.bruc.opt.familia": "Tens família, Bruc?",
-      "dlg.bruc.opt.perdo": "Perdona pel que et vaig dir, Bruc.",
-      "dlg.bruc.opt.adeu": "Res, res.",
-      "dlg.bruc.reciclatge1": "Ningú no ho sap. Els que se'n van no tornen.",
-      "dlg.bruc.reciclatge2": "I cap no ha tornat a queixar-se, que és el més sospitós de tot.",
-      "dlg.bruc.reciclatge3": "Això sí: diuen que els porten a la part vella de l'estació. On hi havia la fàbrica.",
-      "dlg.bruc.maquillatge1": "Per estar presentable per al reciclatge. Si m'han de reciclar, que sigui guapo.",
-      "dlg.bruc.familia1": "Una filla. La Nura. Li vaig escriure una carta quan em van tancar.",
-      "dlg.bruc.familia2": "Mai no he sabut si la va rebre. Aquí les cartes se les menja l'arxiu.",
-      "dlg.bruc.llapis_ok": "Té, el meu llapis d'ulls. Torna-me'l abans del reciclatge, eh?",
-      "dlg.bruc.llapis_que": "Només tinc el meu llapis d'ulls. I què hi guanyo jo, si te'l deixo?",
-      "dlg.bruc.opt.elogiar": "Que estaràs guapíssim al reciclatge. Més que ara, i mira que ho és difícil.",
-      "dlg.bruc.opt.insultar": "Que un vell inútil com tu no el necessita.",
-      "dlg.bruc.opt.res": "Res. Oblida-ho.",
-      "dlg.bruc.elogiat1": "Oh. Tu sí que en saps. Té, el llapis d'ulls. Fes-ne bon ús.",
-      "dlg.bruc.insultat1": "Això ho recordaré, nena. Tinc vint anys de temps lliure per recordar-ho.",
-      "dlg.bruc.perdo1": "Mmm. Acceptat. Però que no es repeteixi, que soc sensible.",
-      "dlg.bruc.adeu": "Res, res. Com la meva vida.",
+      "dlg.mos.primera1": "Ah, la nouvinguda està desperta. Tres dies, eh? Jo en porto vint, d'esperar.",
+      "dlg.mos.primera2": "Diuen que m'han oblidat. Jo dic que m'estan reservant per a una ocasió especial.",
+      "dlg.mos.hola": "Digues, nena.",
+      "dlg.mos.ofes": "Ah. La que creu que soc un vell inútil.",
+      "dlg.mos.opt.reciclatge": "Què és el reciclatge, Mos?",
+      "dlg.mos.opt.llapis": "Em deixes alguna cosa per escriure?",
+      "dlg.mos.opt.llapis_demanar": "Necessito alguna cosa per escriure. Tens res?",
+      "dlg.mos.opt.maquillatge": "Per què vas maquillat?",
+      "dlg.mos.opt.familia": "Tens família, Mos?",
+      "dlg.mos.opt.perdo": "Perdona pel que et vaig dir, Mos.",
+      "dlg.mos.opt.adeu": "Res, res.",
+      "dlg.mos.reciclatge1": "Ningú no ho sap. Els que se'n van no tornen.",
+      "dlg.mos.reciclatge2": "I cap no ha tornat a queixar-se, que és el més sospitós de tot.",
+      "dlg.mos.reciclatge3": "Això sí: diuen que els porten a la part vella de l'estació. On hi havia la fàbrica.",
+      "dlg.mos.maquillatge1": "Per estar presentable per al reciclatge. Si m'han de reciclar, que sigui guapo.",
+      "dlg.mos.familia1": "Una filla. La Nura. Li vaig escriure una carta quan em van tancar.",
+      "dlg.mos.familia2": "Mai no he sabut si la va rebre. Aquí les cartes se les menja l'arxiu.",
+      "dlg.mos.llapis_ok": "Té, el meu llapis d'ulls. Torna-me'l abans del reciclatge, eh?",
+      "dlg.mos.llapis_que": "Només tinc el meu llapis d'ulls. I què hi guanyo jo, si te'l deixo?",
+      "dlg.mos.opt.elogiar": "Que estaràs guapíssim al reciclatge. Més que ara, i mira que ho és difícil.",
+      "dlg.mos.opt.insultar": "Que un vell inútil com tu no el necessita.",
+      "dlg.mos.opt.res": "Res. Oblida-ho.",
+      "dlg.mos.elogiat1": "Oh. Tu sí que en saps. Té, el llapis d'ulls. Fes-ne bon ús.",
+      "dlg.mos.insultat1": "Això ho recordaré, nena. Tinc vint anys de temps lliure per recordar-ho.",
+      "dlg.mos.perdo1": "Mmm. Acceptat. Però que no es repeteixi, que soc sensible.",
+      "dlg.mos.adeu": "Res, res. Com la meva vida.",
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar.",
       "final.veritat.titol": "La veritat a temps",
@@ -3705,9 +3705,9 @@
       "mis.acte1.obj.primera_nota": "Iri: llegeix el missatge de la cambra",
       "mis.acte1.obj.resposta": "Vet: entén qui hi ha a l'altra banda",
       "mis.acte1.obj.sortir_cella": "Vet: surt de la cel·la",
-      "mis.carta_bruc.titol": "La carta d'en Bruc",
-      "mis.carta_bruc.desc": "En Bruc vol saber si la seva filla, la Nura, va rebre la seva carta.",
-      "mis.carta_bruc.obj.trobar": "Troba la carta d'en Bruc a l'arxiu",
+      "mis.carta_mos.titol": "La carta d'en Mos",
+      "mis.carta_mos.desc": "En Mos vol saber si la seva filla, la Nura, va rebre la seva carta.",
+      "mis.carta_mos.obj.trobar": "Troba la carta d'en Mos a l'arxiu",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
       "obj.formulari_27b.nom": "formulari 27-B",
@@ -3735,7 +3735,7 @@
       "obj.avis_reciclatge.nom": "avís de reciclatge",
       "obj.avis_reciclatge.desc": "Un avís oficial. Amb un somriure dibuixat.",
       "obj.llapis_ulls.nom": "llapis d'ulls",
-      "obj.llapis_ulls.desc": "El llapis d'ulls d'en Bruc. Negre intens.",
+      "obj.llapis_ulls.desc": "El llapis d'ulls d'en Mos. Negre intens.",
       "obj.nota_vet.nom": "nota de la Vet",
       "obj.nota_vet.desc": "L'avís de reciclatge, escrit pel darrere.",
       "obj.fullet_reeducacio.nom": "fullet de reeducació",
@@ -3776,8 +3776,8 @@
       "pj.cargol.desc": "Un robot de manteniment. Brilla tant que fa mal als ulls.",
       "pj.capatas.nom": "Capatàs Pruna",
       "pj.mare.nom": "MARE",
-      "pj.bruc.nom": "Bruc",
-      "pj.bruc.desc": "El meu company de cel·la. Vell, prim i maquillat.",
+      "pj.mos.nom": "Mos",
+      "pj.mos.desc": "El meu company de cel·la. Vell, prim i maquillat.",
       "pista.iri_clau.1": "La clau de la cambra la té el Cargol, al magatzem.",
       "pista.iri_clau.2": "El Cargol només dona material amb el formulari 27-B segellat.",
       "pista.iri_clau.3": "Hi ha formularis al tauler d'anuncis. El segell el té el capatàs... agafat, mentre dorm.",
@@ -3795,7 +3795,7 @@
       "pista.vet_reparar.2": "Fes servir la clau anglesa amb el panell. I torna-ho a fer.",
       "pista.vet_nota.1": "Algú m'ha enviat una clau anglesa. Li podria respondre.",
       "pista.vet_nota.2": "Per escriure necessito paper i alguna cosa que pinti.",
-      "pista.vet_nota.3": "L'avís de terra i el llapis d'ulls d'en Bruc. Potser en Bruc s'ha de deixar afalagar.",
+      "pista.vet_nota.3": "L'avís de terra i el llapis d'ulls d'en Mos. Potser en Mos s'ha de deixar afalagar.",
       "pista.vet_enviar.1": "La nota ha d'anar al buit de darrere el panell.",
       "pista.vet_enviar.2": "Fes servir la nota amb el panell, i després prem el panell.",
       "pista.vet_esperar.1": "He enviat el que podia. Ara ho ha de recollir algú.",
@@ -3916,8 +3916,8 @@
       "sala.gavina_cella.altaveu.look": "L'altaveu de la MARE. Té forma de cor. És el detall més sinistre de la presó.",
       "sala.gavina_cella.altaveu.tocar1": "Interna 9, detectem una manipulació de l'altaveu. Li enviem una abraçada virtual!",
       "sala.gavina_cella.altaveu.nom": "altaveu de la MARE",
-      "sala.gavina_cella.bruc.look": "En Bruc, el meu company de cel·la. Fa vint anys que espera el reciclatge. Diu que l'han oblidat.",
-      "sala.gavina_cella.bruc.nom": "Bruc",
+      "sala.gavina_cella.mos.look": "En Mos, el meu company de cel·la. Fa vint anys que espera el reciclatge. Diu que l'han oblidat.",
+      "sala.gavina_cella.mos.nom": "Mos",
       "sala.gavina_cella.avis.look": "Un paper que la MARE m'ha passat per sota la porta.",
       "sala.gavina_cella.avis.agafar": "El meu avís de reciclatge. Per al meu àlbum de records.",
       "sala.gavina_cella.avis.nom": "avís",
@@ -3933,7 +3933,7 @@
       "sala.gavina_cella.safata.nom": "safata de sopar",
       "sala.gavina_cella.porta.imant1": "Acosto l'imant al pany...",
       "sala.gavina_cella.porta.imant2": "Clac! Oberta! Qui sigui que siguis, I., t'estimo.",
-      "sala.gavina_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Bruc.",
+      "sala.gavina_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Mos.",
       "sala.gavina_cella.porta.tancada": "Tancada. Si s'obrís empenyent, no seria una presó.",
       "sala.gavina_cella.porta.nom": "porta de la cel·la",
       "sala.gavina_cella.finestreta.look1": "Per la finestreta es veu la Terra, blava i petita.",

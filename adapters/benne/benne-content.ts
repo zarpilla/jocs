@@ -38,7 +38,7 @@ export interface BenneContentReport {
 
 /** Colors de parla per personatge. */
 const SPEECH: Record<string, string> = {
-  iri: '#f0a050', vet: '#60d8d8', cargol: '#a8f0c0', capatas: '#d8a878', bruc: '#c8b8f0', mare: '#ff90c8',
+  iri: '#f0a050', vet: '#60d8d8', cargol: '#a8f0c0', capatas: '#d8a878', mos: '#c8b8f0', mare: '#ff90c8',
 };
 /** Camps del .character.json que venen del sprite (mides, peus, animacions). */
 const SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'animations', 'clickable', 'display'];
