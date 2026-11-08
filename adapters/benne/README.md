@@ -49,6 +49,9 @@ servir l'extensió de VS Code per editar sales, obre la carpeta `ferro-9`: és u
 - **Sales, personatges i objectes que encara no existeixen a Benne**, amb una disposició automàtica i
   **art provisional** (caixes etiquetades; cal `python3` amb Pillow). El que ja existeix no es toca:
   quan un artista substitueixi un PNG, ha d'esborrar el fitxer `.provisional` del costat.
+- **Coses noves en sales que ja existeixen** (una porta, un objecte, un decorat): s'hi afegeixen amb
+  la disposició automàtica, sense tocar la resta. Si la sala té disseny propi (`tools/room_designs.py`),
+  l'art provisional les col·loca on diu el disseny.
 - **Tots els textos de Benne en l'idioma triat**: verbs (`ui.verb.*`), menús (`ui.menu.*`...), noms
   de coses, personatges i objectes.
 - Botons **Canvia** i **Pista** al menú del joc (una sola vegada).
