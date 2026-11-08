@@ -75,6 +75,11 @@ export function takePendingSwitch() {
 
 const store = defineVars({
   narrativeState: null as VarValue,
+  /**
+   * La partida ja s'ha preparat (`newGame`). No n'hi ha prou amb `narrativeState`: qualsevol
+   * `stateChanged` (p. ex. el `worldChanged` en entrar a la primera sala) el desa abans d'hora.
+   */
+  started: false as VarValue,
   /** Última sala de cada protagonista: per tornar-hi en canviar de protagonista. */
   protagonistRooms: {} as VarValue,
 });
@@ -109,7 +114,8 @@ events.on('gameState:replaced', () => {
 
 /** Partida nova: reparteix els inventaris inicials (game.json → start). Només la primera vegada. */
 export function ensureStarted() {
-  if (store.narrativeState) return;
+  if (store.started) return;
+  store.started = true;
   narrative.newGame();
   applyLocalizedNames();
 }
