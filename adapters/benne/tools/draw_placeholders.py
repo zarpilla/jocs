@@ -247,15 +247,58 @@ def draw_inventory(dir_: Path, req, small):
     print(f'✔ art provisional: inventari ({len(items)} objectes)')
 
 
+def switch_button_image(hover=False):
+    """El botó «Canvia»: mitja Iri i mitja Vet, partides en diagonal entre la fàbrica i les estrelles."""
+    art = Path(__file__).resolve().parent.parent / 'placeholder-art'
+
+    def retrat(cid, x0):
+        sh = json.loads((art / cid / f'{cid}.json').read_text())
+        img = Image.open(art / cid / f'{cid}.png').convert('RGBA')
+        tag = next(t['from'] for t in sh['meta']['frameTags'] if t['name'] == 'IdleD')
+        f = list(sh['frames'].values())[tag]['frame']
+        return img.crop((f['x'] + x0, f['y'] + 3, f['x'] + x0 + 26, f['y'] + 32))
+
+    w, h = 43, 32
+    passat = Image.new('RGBA', (w, h), (96, 52, 36, 255))
+    pd = ImageDraw.Draw(passat)
+    for y in range(0, h, 4):
+        pd.line([(0, y), (w, y)], fill=(70, 36, 26, 255))
+        for x in range((y // 4) % 2 * 5, w, 10):
+            pd.line([(x, y), (x, y + 3)], fill=(70, 36, 26, 255))
+    present = Image.new('RGBA', (w, h), (20, 28, 58, 255))
+    for x, y in ((30, 4), (37, 9), (33, 25), (40, 20), (26, 14), (39, 29)):
+        present.putpixel((x, y), (230, 230, 255, 255))
+    tall = Image.new('L', (w, h), 0)
+    ImageDraw.Draw(tall).polygon([(0, 0), (26, 0), (17, h), (0, h)], fill=255)
+    out = present.copy()
+    out.paste(passat, (0, 0), tall)
+    cara = Image.new('RGBA', (26, 29), (0, 0, 0, 0))
+    meitat = Image.new('L', (26, 29), 0)
+    ImageDraw.Draw(meitat).polygon([(0, 0), (17, 0), (8, 29), (0, 29)], fill=255)
+    cara.paste(retrat('vet', 11), (0, 0))
+    cara.paste(retrat('iri', 12), (0, 0), meitat)
+    out.alpha_composite(cara, (9, 3))
+    d = ImageDraw.Draw(out)
+    d.line([(26, 0), (17, h - 1)], fill=(235, 235, 245, 255))
+    if hover:
+        out = Image.blend(out, Image.new('RGBA', (w, h), (255, 255, 255, 255)), 0.15)
+        ImageDraw.Draw(out).rectangle([0, 0, w - 1, h - 1], outline=(150, 230, 190, 255))
+    return out
+
+
 def add_switch_button(game_dir: Path):
-    """La casella del botó «Canvia» a la barra de verbs: dos fotogrames més (normal i hover)."""
+    """
+    La casella del botó «Canvia» a la barra de verbs: dos fotogrames (normal i hover) amb la imatge
+    de `switch_button_image`. Es redibuixa mentre hi hagi la marca `.canvia-provisional`.
+    """
     d = game_dir / 'assets/images/guis/verbs'
-    sheet_path, json_path = d / 'verbs.png', d / 'verbs.json'
+    sheet_path, json_path, marca = d / 'verbs.png', d / 'verbs.json', d / '.canvia-provisional'
     if not json_path.exists():
         return
     meta = json.loads(json_path.read_text())
     tags = meta['meta']['frameTags']
-    if any(t['name'] == 'CanviaBtn' for t in tags):
+    existents = {t['name']: t['from'] for t in tags}
+    if 'CanviaBtn' in existents and not marca.exists():
         return
     frames = meta['frames']
     keys = list(frames)
@@ -263,29 +306,35 @@ def add_switch_button(game_dir: Path):
     fw, fh = first['w'], first['h']
     sheet = Image.open(sheet_path).convert('RGBA')
     cols = max(1, sheet.width // fw)
-    n = len(keys)
-    rows = (n + 2 + cols - 1) // cols
+    nous = [t for t in ('CanviaBtn', 'CanviaBtn-hover') if t not in existents]
+    rows = (len(keys) + len(nous) + cols - 1) // cols
     if rows * fh > sheet.height:
         bigger = Image.new('RGBA', (sheet.width, rows * fh), (0, 0, 0, 0))
         bigger.paste(sheet, (0, 0))
         sheet = bigger
     base = keys[0].rsplit(' ', 1)[0]
     duration = frames[keys[0]].get('duration', 100)
-    for i, (tag, fill) in enumerate((('CanviaBtn', (26, 70, 107)), ('CanviaBtn-hover', (40, 96, 140)))):
-        idx = n + i
+    n = len(keys)
+    for tag in ('CanviaBtn', 'CanviaBtn-hover'):
+        if tag in existents:
+            idx = existents[tag]
+        else:
+            idx = n
+            n += 1
+            tags.append({'name': tag, 'from': idx, 'to': idx, 'direction': 'forward', 'color': '#000000ff'})
         x, y = (idx % cols) * fw, (idx // cols) * fh
-        frame = Image.new('RGBA', (fw, fh), (0, 0, 0, 0))
-        ImageDraw.Draw(frame).rectangle([3, 211, 45, 242], fill=fill + (255,))
-        sheet.paste(frame, (x, y))
         frames[f'{base} {idx}.aseprite'] = {
             'frame': {'x': x, 'y': y, 'w': fw, 'h': fh}, 'rotated': False, 'trimmed': False,
             'spriteSourceSize': {'x': 0, 'y': 0, 'w': fw, 'h': fh}, 'sourceSize': {'w': fw, 'h': fh}, 'duration': duration,
         }
-        tags.append({'name': tag, 'from': idx, 'to': idx, 'direction': 'forward', 'color': '#000000ff'})
+        frame = Image.new('RGBA', (fw, fh), (0, 0, 0, 0))
+        frame.paste(switch_button_image(hover=tag.endswith('hover')), (3, 211))
+        sheet.paste(frame, (x, y))
     meta['meta']['size'] = {'w': sheet.width, 'h': sheet.height}
     sheet.save(sheet_path)
     json_path.write_text(json.dumps(meta, indent=2) + '\n')
-    print('✔ barra de verbs: casella del botó «Canvia»')
+    marca.write_text("Botó «Canvia» provisional (draw_placeholders.py): esborra aquest fitxer quan el dibuix sigui definitiu.\n")
+    print('✔ barra de verbs: botó «Canvia»')
 
 
 def main(game_dir: Path):

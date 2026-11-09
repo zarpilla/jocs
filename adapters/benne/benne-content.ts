@@ -61,7 +61,7 @@ const GUI_TEXTS: Record<string, Record<string, string>> = {
   verbs: {
     GiveBtn: 'ui.verb.give', OpenBtn: 'ui.verb.open', CloseBtn: 'ui.verb.close', PickUpBtn: 'ui.verb.pickUp',
     TalkToBtn: 'ui.verb.talkTo.boto', LookAtBtn: 'ui.verb.look', UseBtn: 'ui.verb.use', PushBtn: 'ui.verb.push',
-    PullBtn: 'ui.verb.pull', verbLineText: 'ui.verb.walkTo', CanviaBtn: 'ui.menu.canviar',
+    PullBtn: 'ui.verb.pull', verbLineText: 'ui.verb.walkTo',
   },
   'game-menu': {
     title: 'ui.menu.titol', save: 'ui.menu.desar', load: 'ui.menu.carregar', settings: 'ui.menu.opcions',
@@ -299,7 +299,7 @@ function addSwitchButton(gameDir: string): boolean {
     const menu = controls.findIndex((c) => c.id === 'MenuBtn');
     controls.splice(menu, 0, {
       ...structuredClone(model), id: 'CanviaBtn', x: 3, y: 211, width: 43, height: 32,
-      backgroundTag: 'CanviaBtn', backgroundAnchor: 'screen', text: 'Canvia',
+      backgroundTag: 'CanviaBtn', backgroundAnchor: 'screen', text: '',
     });
     writeJson(jsonPath, def);
   }
@@ -318,7 +318,7 @@ canviaBtn.onClick(() => switchProtagonist())
   const sheet = join(gameDir, 'assets/images/guis/verbs/verbs.json');
   if (!existsSync(sheet)) return false;
   const tags = ((readJson(sheet).meta as Json).frameTags as Json[]) ?? [];
-  return !tags.some((t) => t.name === 'CanviaBtn');
+  return !tags.some((t) => t.name === 'CanviaBtn') || existsSync(join(gameDir, 'assets/images/guis/verbs/.canvia-provisional'));
 }
 
 // ─── Disposició automàtica d'una sala nova ──────────────────────────────────
