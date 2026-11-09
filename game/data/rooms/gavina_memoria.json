@@ -502,5 +502,18 @@
         }
       ]
     }
+  },
+  "decor": {
+    "foto_mira": {
+      "visibleIf": {
+        "flag": "mira_salvada"
+      }
+    },
+    "placa_robot": {
+      "visibleIf": {
+        "flag": "vitrina_oberta",
+        "is": false
+      }
+    }
   }
 }

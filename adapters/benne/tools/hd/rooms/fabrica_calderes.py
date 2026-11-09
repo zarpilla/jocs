@@ -21,10 +21,20 @@ ENAMEL = [(30, 34, 40), (70, 76, 80), (130, 132, 126), (186, 184, 170), (226, 22
 
 FIRE_X, FIRE_Y = 128, 146
 
-LIGHT = Light(vignette=(70, 40), floor_fade=(198, 40))
-LIGHT.point(FIRE_X, FIRE_Y - 4, r=230, k=3.4, squash=0.95, power=2.0)     # la boca del foc
-LIGHT.point(447, 54, r=62, k=1.5, power=1.8)                           # alarma vermella
-LIGHT.point(322, 116, r=70, k=1.7, squash=1.2, down=True)              # llum del capatàs
+
+
+def make_light(alarm=False):
+    lt = Light(vignette=(70, 40), floor_fade=(198, 40))
+    lt.point(FIRE_X, FIRE_Y - 4, r=230, k=3.4, squash=0.95, power=2.0)     # la boca del foc
+    if alarm:
+        lt.point(447, 54, r=62, k=1.5, power=1.8)                           # alarma vermella
+    lt.point(322, 116, r=70, k=1.7, squash=1.2, down=True)              # llum del capatàs
+    return lt
+
+
+# el fons té l'alarma apagada; el prop alarma_encesa hi posa el llum i el seu halo
+LIGHT = make_light()
+LIGHT_ALARM = make_light(alarm=True)
 
 FLOOR_Y = 158
 
@@ -331,7 +341,7 @@ def soot(x, y):
     return s
 
 
-def bg(cv):
+def bg(cv, alarm=False):
     # ─── Sostre i paret ───────────────────────────────────────────────────────
     ceiling(cv)
     brick_wall(cv, 0, 14, W - 1, 151, seed=11, base=1.5, extra=soot)
@@ -683,17 +693,22 @@ def bg(cv):
     AX, AY = 447, 52
     cv.rect(441, 61, 453, 64, IRON, lambda x, y: 3.0 - (y - 61) * 0.6)         # base
     cv.rect(445, 58, 449, 61, IRON, 2.4)
-    cv.disc(AX, AY, 8, 8, RED, lambda nx, ny: 5.2 - math.hypot(nx + 0.3, ny + 0.4) * 2.6, 0)
-    cv.disc(AX - 2, AY - 3, 2.2, 1.6, PINK_HOT, 1, 0)
+    if alarm:
+        cv.disc(AX, AY, 8, 8, RED, lambda nx, ny: 5.2 - math.hypot(nx + 0.3, ny + 0.4) * 2.6, 0)
+        cv.disc(AX - 2, AY - 3, 2.2, 1.6, PINK_HOT, 1, 0)
+    else:                                                            # vidre vermell fosc, apagat
+        cv.disc(AX, AY, 8, 8, RED, lambda nx, ny: 2.6 - math.hypot(nx + 0.3, ny + 0.4) * 1.6 - ny * 0.4, 0.4)
+        cv.disc(AX - 3, AY - 4, 1.6, 1.2, RED, 3.6, 0.4)                      # reflex del foc al vidre
     for a in (-60, -20, 20, 60):                                     # gàbia
         for t in range(-8, 9):
             ang = math.radians(a)
             x = AX + math.sin(ang) * 8 * math.cos(t / 8 * 1.2)
-            cv.put(round(x), AY + t, IRON, 1.2, 0)
-    cv.hline(AX - 8, AX + 8, AY, IRON, 1.4, 0)
+            cv.put(round(x), AY + t, IRON, 1.2 if alarm else 1.0, 0 if alarm else 0.6)
+    cv.hline(AX - 8, AX + 8, AY, IRON, 1.4 if alarm else 1.2, 0 if alarm else 0.6)
     cv.rect(AX - 3, AY - 11, AX + 3, AY - 8, IRON, lambda x, y: 3.0 - (y - AY + 11) * 0.5)
-    cv.glow(AX, AY, 42, (255, 60, 40), 0.55)
-    cv.glow(AX, AY, 18, (255, 120, 90), 0.35)
+    if alarm:
+        cv.glow(AX, AY, 42, (255, 60, 40), 0.55)
+        cv.glow(AX, AY, 18, (255, 120, 90), 0.35)
     # cable de l'alarma que surt de la cambra
     for y in range(29, 41):
         cv.put(450, y, IRON, 1.6)
@@ -789,4 +804,23 @@ def segell(cv):
     cv.glow(SX, 178, 14, (255, 220, 150), 0.1)
 
 
-PROPS = {'segell': segell}
+_ALARM = []
+
+
+def alarma_encesa(cv):
+    """El llum d'alarma encès: es renderitza la sala amb i sense alarma i es copia el que canvia
+    al voltant del llum (vidre, gàbia, halo vermell i la paret que tenyeix)."""
+    if not _ALARM:
+        on, off = Canvas(light=LIGHT_ALARM), Canvas(light=LIGHT)
+        bg(on, alarm=True)
+        bg(off)
+        _ALARM.append((on, off))
+    on, off = _ALARM[0]
+    for y in range(0, 120):
+        for x in range(380, W):
+            p = on.P[x, y]
+            if p != off.P[x, y]:
+                cv.P[x, y] = p
+
+
+PROPS = {'segell': segell, 'alarma_encesa': alarma_encesa}

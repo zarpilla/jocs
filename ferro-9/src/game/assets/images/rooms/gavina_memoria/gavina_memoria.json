@@ -41,6 +41,48 @@
         "h": 270
       },
       "duration": 100
+    },
+    "gavina_memoria 2.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "gavina_memoria 3.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -49,7 +91,7 @@
     "image": "gavina_memoria.png",
     "format": "RGBA8888",
     "size": {
-      "w": 960,
+      "w": 1920,
       "h": 270
     },
     "scale": "1",
@@ -65,6 +107,20 @@
         "name": "socol",
         "from": 1,
         "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "foto_mira",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "placa_robot",
+        "from": 3,
+        "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       }

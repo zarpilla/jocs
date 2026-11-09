@@ -299,17 +299,14 @@ def bg(cv, alarm=False):
             cv.line(round(xa), round(ya) + 1, round(xb), round(yb) + 1, SIL, lv + 0.6)
             cv.line(round(xa), round(ya) + 2, round(xb), round(yb) + 2, SIL, 0.2)
 
-    # ─── Palanca (152..181 × 54..93): alçada, en un quadrant dentat ───────────
+    # ─── Base de la palanca (152..181 × 54..93): quadrant dentat i ranura ────
+    # (el braç és un prop: palanca_alcada / palanca_baixada)
     cv.disc(166, 92, 11, 5, IRON, lambda nx, ny: 2.6 - ny * 1.2 - nx * 0.4)       # quadrant
     for a in range(200, 341, 20):
         cv.put(round(166 + math.cos(math.radians(a)) * 10), round(92 + math.sin(math.radians(a)) * 4.5), GOLD, 3.6)
     cv.rect(162, 91, 170, 97, IRON, lambda x, y: 2.8 - (x - 162) * 0.25)
     cv.hline(162, 170, 91, IRON, 4.0)
-    cv.poly([(164, 92), (169, 92), (174.5, 63), (170.5, 63)], IRON,
-            lambda x, y: 4.6 - ((x - (164 + (92 - y) / 29 * 6.5)) / 4) * 4.2)
-    # mànec de fusta
-    thick(cv, 172, 63, 174, 56, 2, WALNUT, lambda s: 4.4 - s * 2.2)
-    cv.disc(174.5, 55.5, 2.6, 2.2, WALNUT, lambda nx, ny: 4.6 - nx - ny)
+    cv.hline(164, 169, 93, IRON, 0.2)                                            # ranura per on corre el braç
     cv.disc(166, 92, 2, 2, GOLD, lambda nx, ny: 4.4 - nx - ny)                   # eix
 
     # ─── Llum d'alarma de la consola (gàbia amb vidre vermell) ───────────────
@@ -574,6 +571,34 @@ def boto(cv):
     cv.glow(127, 91, 16, (255, 70, 50), 0.6)
 
 
+def lever(cv, ang, arm=29):
+    """Braç de la palanca amb mànec de fusta; ang en graus des de la vertical (+ cap a la dreta)."""
+    px, py = 166.5, 92
+    ux, uy = math.sin(math.radians(ang)), -math.cos(math.radians(ang))
+    nx, ny = -uy, ux                                                              # normal (cap a la dreta del braç)
+    tx, ty = px + ux * arm, py + uy * arm
+    cv.poly([(px - nx * 2.6, py - ny * 2.6), (px + nx * 2.6, py + ny * 2.6),
+             (tx + nx * 2.0, ty + ny * 2.0), (tx - nx * 2.0, ty - ny * 2.0)], IRON,
+            lambda x, y: 4.6 - (((x - px) * nx + (y - py) * ny) / 2.4 + 1) * 2.1)
+    # mànec de fusta
+    hx, hy = tx + ux * 7, ty + uy * 7
+    thick(cv, round(tx), round(ty), round(hx), round(hy), 2, WALNUT, lambda s: 4.4 - s * 2.2)
+    cv.disc(hx + ux * 0.5, hy + uy * 0.5, 2.6, 2.4, WALNUT, lambda a, b: 4.6 - a - b)
+    cv.disc(166, 92, 2, 2, GOLD, lambda a, b: 4.4 - a - b)                       # eix, per sobre del braç
+
+
+def palanca_alcada(cv):
+    """La palanca alçada: l'alarma encara funciona."""
+    lever(cv, 11.7)
+
+
+def palanca_baixada(cv):
+    """La palanca abatuda contra el tope esquerre del quadrant."""
+    lever(cv, -52, arm=21)
+    # el tope de goma que l'atura
+    cv.disc(156, 89, 1.6, 1.4, IRON, lambda a, b: 1.6 - a - b)
+
+
 def reixa_llimada(cv):
     """Els cargols de la reixa, llimats (llueixen), i una ratlla de llima al marc."""
     RX0, RY0, RX1, RY1 = 335, 114, 393, 150
@@ -594,4 +619,5 @@ def reixa_llimada(cv):
         cv.put(x, y, IRON, 5.4 + hr(i, 1), 0.3)
 
 
-PROPS = {'boto': boto, 'reixa_llimada': reixa_llimada}
+PROPS = {'boto': boto, 'reixa_llimada': reixa_llimada,
+         'palanca_alcada': palanca_alcada, 'palanca_baixada': palanca_baixada}

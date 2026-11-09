@@ -1,10 +1,10 @@
 """
 Moll de càrrega de la fàbrica (Acte 2, Iri): maó, bigues de ferro, taulons; la llançadora nova a la badia,
-amb la comporta enlairada i la nit a fora. És el mateix lloc que l'hangar de La Gavina (gavina_hangar), cent
+amb la comporta tancada al fons (per sota s'escola la lluna). És el mateix lloc que l'hangar de La Gavina (gavina_hangar), cent
 vint anys abans: el pilar 7, el conducte, les reixes del terra i la llançadora es dibuixen amb les mateixes
 funcions a totes dues sales (aquí, nous; allà, envellits).
 Llums: làmpada penjada sobre les bigues, la porta entreoberta de les calderes (foc), un aplic sobre el tauler
-d'eines i la lluna que entra per la badia.
+d'eines, el llum de servei de la badia i la lluna que s'escola per sota la comporta.
 """
 import math
 import random
@@ -31,10 +31,10 @@ LIGHT.point(304, 40, r=78, k=1.5, squash=1.0, down=True)          # aplic sobre 
 
 
 def _moon(x, y):
-    """Llum freda que entra per la badia (sobre la llançadora i el terra del davant)."""
+    """Llum freda que s'escola per sota la comporta tancada (terra de la badia i del davant)."""
     v = 0.0
-    if x > 330:
-        v += max(0.0, 1 - math.hypot(x - 410, (y - 90) * 0.8) / 120) ** 1.4 * 1.2
+    if x > 340 and y > 120:
+        v += max(0.0, 1 - math.hypot((x - 407) / 70, (y - 146) / 16)) ** 1.4 * 1.0
     if y > FLOOR_Y and x > 300:                                   # taca al terra davant la badia
         t = (y - FLOOR_Y) / 50
         xl, xr = 334 - t * 40, 480
@@ -44,6 +44,7 @@ def _moon(x, y):
 
 
 LIGHT.add(_moon)
+LIGHT.point(404, 16, r=120, k=1.7, squash=0.9, down=True)        # llum de servei de la badia
 
 
 # ─── Peces compartides amb l'hangar ─────────────────────────────────────────
@@ -495,85 +496,95 @@ def bg(cv):
     cv.hline(297, 311, 40, [(255, 236, 170)], 0, 0)
     cv.glow(304, 42, 22, (255, 220, 150), 0.35)
 
-    # ─── La badia: comporta enlairada, la llançadora i la nit ─────────────
-    BX0, BX1, BY0 = 334, 476, 56
+    # ─── La badia: la llançadora i, al fons, la comporta tancada ──────────
+    BX0, BX1, BY0 = 334, 476, 9
     # marc d'acer de la badia
     cv.rect(BX0 - 3, 8, BX0, FLOOR_Y - 1, IRON, lambda x, y: [1.4, 3.6, 2.8, 1.8][x - BX0 + 3])
     cv.rect(BX1, 8, W - 1, FLOOR_Y - 1, IRON, lambda x, y: 1.6 + (0.8 if x == BX1 else 0))
-    # interior de la badia: parets de maó fosques en perspectiva i l'obertura a la nit
-    FX0, FX1, FY0, FY1 = 352, 462, 66, 140
+    cv.rect(BX0 - 3, 6, W - 1, 8, IRON, lambda x, y: [3.8, 2.6, 1.0][y - 6])
+    # interior de la badia: sostre, parets de maó i terra en perspectiva cap a la comporta
+    FX0, FX1, FY0, FY1 = 352, 462, 22, 140
     for y in range(BY0, FLOOR_Y):
         for x in range(BX0 + 1, BX1):
-            inside_far = FX0 <= x <= FX1 and FY0 <= y <= FY1
-            if inside_far:
+            if FX0 <= x <= FX1 and FY0 <= y <= FY1:
                 continue
             if y > FY1:                                           # terra de la badia
-                cv.put(x, y, FLOOR, 1.2 + (y - FY1) / 12 - (0.6 if (x - 405) * 0 + (x % 9 == 0) else 0))
-            elif y < FY0:                                         # sostre de la badia
-                cv.put(x, y, IRON, 0.6 + (FY0 - y) / 20)
+                cv.put(x, y, FLOOR, 1.2 + (y - FY1) / 12 - (0.6 if x % 9 == 0 else 0))
+            elif y < FY0:                                         # sostre de la badia, amb una biga
+                cv.put(x, y, IRON, 0.5 + (FY0 - y) / 12 + (1.2 if y == 14 else 0) - (0.6 if y == 15 else 0))
             else:                                                 # parets laterals
                 v = (y - FY0) % 6 == 5 or (x + ((y - FY0) // 6) * 5) % 10 == 0
                 cv.put(x, y, BRICK, 1.2 - (0.6 if v else 0) - (0.4 if x < FX0 else 0.1))
-    # cel de nit amb la ciutat-fàbrica
-    rnd = random.Random(52)
-    stars = {(rnd.randint(FX0, FX1), rnd.randint(FY0, FY0 + 34)) for _ in range(30)}
-    sky_line = {}
-    CHIM = ((362, 4, 70), (404, 3, 76), (440, 5, 68))
-    for x in range(FX0, FX1 + 1):
-        top = 98 - int(hr(x // 9, 9) * 9)
-        if 380 <= x < 398:
-            top = min(top, 92 - (x - 380) % 6)                     # teulada de dents de serra
-        for cx_, cw, ct in CHIM:
-            if cx_ <= x < cx_ + cw:
-                top = ct
-        sky_line[x] = top
+    # la comporta: planxes de ferro reblades sobre taulons, corredisses a banda i banda
+    GX0, GX1 = FX0 + 5, FX1 - 5
     for y in range(FY0, FY1 + 1):
         for x in range(FX0, FX1 + 1):
-            if y >= sky_line[x]:
-                if hr(x // 2, y // 3, 4) > 0.9 and sky_line[x] + 2 < y < 128:
-                    cv.flat(x, y, (230, 160, 80))
-                else:
-                    cv.put(x, y, SIL, 0.6 + (2.2 if y == sky_line[x] else 0), 0)
+            if x < GX0 or x > GX1:                                # guies de ferro (canal en U)
+                u = x - FX0 if x < GX0 else FX1 - x
+                cv.put(x, y, IRON, [0.6, 2.8, 1.6, 0.8, 0.3][u])
                 continue
-            lvl = 1.0 + min(1.0, (y - FY0) / 36) ** 1.5 * 5.6
-            cv.put(x, y, NIGHT, lvl, 0)
-            if (x, y) in stars:
-                cv.flat(x, y, (210, 210, 236))
-    cv.disc(424, 74, 4.5, 4.5, PAPER, lambda nx, ny: 5.4 - nx - ny * 0.5, 0)        # lluna
-    cv.glow(424, 74, 16, (200, 210, 255), 0.25)
-    for cx_, top in ((364, 70), (405, 76), (442, 68)):                     # fum de les xemeneies
-        for k in range(6):
-            cv.disc(cx_ + 2 - k * 3, top - 3 - k * 4, 1.5 + k * 0.8, 1.2 + k * 0.6, SMOKE, 2.6 - k * 0.3, 0)
+            band = (y - FY0) % 20
+            if band < 4:                                          # fleixos de ferro horitzontals
+                lvl = [3.2, 2.4, 2.0, 0.6][band]
+                cv.put(x, y, IRON, lvl + (hr(x // 5, y, 81) - 0.5) * 0.3)
+                if band == 1 and (x - GX0) % 9 == 4:
+                    cv.put(x, y, IRON, 4.6)                       # reblons
+                continue
+            k = (x - GX0) % 11                                    # taulons verticals
+            lvl = 1.8 + (hr((x - GX0) // 11, 81) - 0.5) * 0.6 + (hr(x, y // 3, 82) - 0.5) * 0.3
+            if k == 0:
+                lvl = 0.4
+            elif k == 1:
+                lvl += 0.7
+            cv.put(x, y, WALNUT, lvl)
+    # rovell que regalima dels fleixos
+    for x in range(GX0, GX1, 3):
+        if hr(x, 83) > 0.7:
+            y0 = FY0 + 4 + int(hr(x, 84) * 5) * 20
+            for y in range(y0, min(FY1 - 8, y0 + 3 + int(hr(x, 85) * 6))):
+                cv.put(x, y, RUST, 1.8)
+    # franges de perill a la vora de baix i l'escletxa de lluna per sota
+    for x in range(GX0, GX1 + 1):
+        for y in range(FY1 - 7, FY1 - 1):
+            yel = ((x + y) // 5) % 2 == 0
+            cv.put(x, y, GOLD if yel else IRON, (3.4 if yel else 0.8) - (y - FY1 + 7) * 0.15)
+        cv.put(x, FY1 - 1, IRON, 0.2)
+        if hr(x // 3, 86) > 0.15:
+            cv.flat(x, FY1, mix((150, 170, 230), (230, 236, 255), hr(x, 87)))
+    # la lluna que s'escola per sota, tirada pel terra de la badia
+    for y in range(FY1 + 1, FLOOR_Y):
+        for x in range(GX0 - 4, GX1 + 5):
+            a = (1 - (y - FY1) / (FLOOR_Y - FY1)) * 0.5
+            if a > B4[y & 3][x & 3]:
+                cv.P[x, y] = mix(cv.P[x, y], (150, 170, 230), 0.4) + (255,)
+    # cadenes que pugen del cap de la comporta fins al tambor del sostre
+    for cx_ in (GX0 + 10, GX1 - 10):
+        cv.rect(cx_ - 2, FY0, cx_ + 2, FY0 + 2, IRON, 3.6)                  # orella
+        for y in range(BY0 + 5, FY0):
+            cv.put(cx_, y, IRON, 3.4 if y % 3 else 1.0)
+            cv.put(cx_ + 1, y, IRON, 2.0 if y % 3 else 3.2)
+    cv.rect(GX0 + 4, BY0 + 2, GX1 - 4, BY0 + 6, IRON, lambda x, y: [1.2, 3.4, 2.8, 1.8, 0.8][y - BY0 - 2])   # tambor
+    # encaix de la palanca de dos metres, a la guia esquerra, amb la roda dentada i el retén
+    cv.rect(FX0 - 1, 52, FX0 + 12, 70, IRON, lambda x, y: 3.0 - (x - FX0) * 0.12 - (y - 52) * 0.03)
+    cv.hline(FX0 - 1, FX0 + 12, 52, IRON, 4.4)
+    cv.disc(FX0 + 6, 58, 4.6, 4.6, IRON, lambda nx, ny: 4.0 - nx - ny)
+    for a_ in range(0, 360, 30):
+        cv.put(round(FX0 + 6 + math.cos(math.radians(a_)) * 5.6), round(58 + math.sin(math.radians(a_)) * 5.6), IRON, 3.0)
+    cv.rect(FX0 + 4, 63, FX0 + 8, 69, SIL, 0.4, 0)                        # l'encaix (buit)
+    cv.line(FX0 + 10, 53, FX0 + 13, 57, IRON, 4.0)                        # retén
     # carrils dins la badia
     for ry in (150, 146):
         cv.hline(BX0 + 1, BX1 - 1, ry, IRON, 3.4)
     # la llançadora, nova de trinca
     shuttle(cv, 338, 108)
     cv.darken(BX0 + 1, 147, BX1 - 1, 152, lambda x, y: 0.5)
-    # comporta enlairada (332..477 × 10..54): planxes, franges de perill i l'encaix de la palanca
-    for y in range(9, BY0):
-        for x in range(BX0 - 2, BX1 + 1):
-            k = (y - 9) % 9
-            lvl = 2.6 + [1.0, 0.6, 0.2, 0.0, -0.1, -0.2, -0.4, -0.8, -1.6][k] + (hr(x // 30, (y - 9) // 9) - 0.5) * 0.3
-            cv.put(x, y, IRON, lvl)
-            if k == 2 and x % 12 == 5:
-                cv.put(x, y, IRON, lvl + 2.0)
-    for x in range(BX0 - 2, BX1 + 1):                            # franges de perill
-        for y in range(BY0 - 6, BY0):
-            yel = ((x + y) // 5) % 2 == 0
-            cv.put(x, y, GOLD if yel else IRON, (4.0 if yel else 0.8) - (y - BY0 + 6) * 0.15)
-    cv.hline(BX0 - 2, BX1, BY0, IRON, 0.2)
-    cv.darken(BX0 + 1, BY0 + 1, BX1 - 1, BY0 + 6, lambda x, y: (BY0 + 7 - y) / 6)
-    # encaix de la palanca
-    cv.rect(352, 30, 362, 44, IRON, lambda x, y: 3.6 - (x - 352) * 0.25)
-    cv.rect(355, 33, 359, 42, SIL, 0.4, 0)
-    # cadenes del contrapès
-    for cx_ in (340, 470):
-        for y in range(8, BY0 - 6):
-            cv.put(cx_, y, IRON, 3.4 if y % 3 else 1.0)
-            cv.put(cx_ + 1, y, IRON, 2.0 if y % 3 else 3.2)
-    # tint fred de la lluna dins la badia i davant
-    cv.tint(270, BY0, BX1, FLOOR_Y + 50, (150, 170, 230), lambda x, y: 0.18 * min(1, _moon(x, y)))
+    # llum de servei de la badia, engabiat al sostre
+    cv.vline(404, BY0 + 6, 12, IRON, 1.4)
+    cv.disc(404, 14, 3, 2, IRON, 2.6)
+    cv.disc(404, 16, 2.2, 1.4, [(255, 236, 180)], 0, 0)
+    cv.glow(404, 17, 26, (255, 220, 160), 0.35)
+    # tint fred de la lluna que entra per sota la comporta
+    cv.tint(BX0, FY1 - 20, BX1, FLOOR_Y + 30, (150, 170, 230), lambda x, y: 0.2 * min(1, _moon(x, y)))
 
     # ─── Làmpada penjada ──────────────────────────────────────────────────
     cv.vline(150, 20, 28, IRON, 1.4)

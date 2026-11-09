@@ -806,6 +806,46 @@ def p_panell_reparat(cv):
     cv.put(264, 112, [(230, 255, 235)], 0, 0)
 
 
+def p_panell_sincronitzat(cv):
+    """Sense la clau anglesa: la cambra de la I. ho sincronitza tot sola. La consola, viva i tranquil·la."""
+    _console(cv, True)
+    x0, y0, x1, y1 = COVER
+    # lluïssor cian que surt del buit de darrere, per les vores de la consola
+    for y in range(y0 + 1, y1):
+        for x in range(x0 + 1, x1):
+            if 246 <= x <= 277 and 96 <= y <= 119:
+                continue
+            d = math.hypot((x - 261) / 24, (y - 106) / 22)
+            a = max(0.0, 1 - d) * 1.6
+            if a > B4[y & 3][x & 3] * 0.8:
+                cv.put(x, y, TEAL, 0.6 + a * 2.2, 0)
+    # contrallum cian a les vores de la caixa de la consola
+    for x in range(247, 277):
+        cv.put(x, 95, TEAL, 4.0 + hr(x, 3), 0)
+    for y in range(97, 119):
+        cv.put(245, y, TEAL, 4.2 - (y - 97) * 0.1, 0)
+        cv.put(278, y, TEAL, 3.4 - (y - 97) * 0.1, 0)
+    # l'agulla, més enllà: a la zona verda
+    cv.disc(255, 108, 4.8, 4.8, PAPER, lambda nx, ny: 4.6 - ny * 0.5 - nx * 0.3)
+    for a in range(200, 341, 35):
+        cv.put(255 + round(math.cos(math.radians(a)) * 4), 108 + round(math.sin(math.radians(a)) * 4), PAPER, 1.2)
+    for a in range(300, 341, 10):
+        cv.flat(255 + round(math.cos(math.radians(a)) * 4), 108 + round(math.sin(math.radians(a)) * 4), (60, 170, 80))
+    ang = math.radians(318)
+    for r in range(0, 4):
+        cv.flat(255 + round(math.cos(ang) * r), 108 + round(math.sin(ang) * r), (170, 30, 30))
+    cv.flat(255, 108, (40, 30, 30))
+    # el forat de la palanca, buit (ja no cal)
+    cv.rect(266, 98, 271, 103, GRIME, 0.0, 0)
+    cv.rect(267, 99, 270, 100, TEAL, 0.8, 0)                          # el cian de dins, pel forat
+    # els tres llums encesos, en verd
+    for lx in (265, 269, 273):
+        cv.disc(lx, 113, 1.6, 1.6, LAMPG, 6, 0)
+        cv.put(lx - 1, 112, [(230, 255, 235)], 0, 0)
+    cv.glow(269, 113, 18, (90, 240, 120), 0.5)
+    cv.glow(261, 104, 30, (110, 230, 240), 0.18)
+
+
 def p_reixa_oberta(cv):
     """La reixa, treta i recolzada a la paret; a dins, la marca de l'Iri i una fletxa."""
     # el marc de la reixa queda: el forat (ja dibuixat al fons, sota la reixa)
@@ -875,6 +915,7 @@ PROPS = {
     'panell_afluixat': p_panell_afluixat,
     'panell_obert': p_panell_obert,
     'panell_reparat': p_panell_reparat,
+    'panell_sincronitzat': p_panell_sincronitzat,
     'reixa_oberta': p_reixa_oberta,
     'esquerda': p_esquerda,
     'fullet': p_fullet,

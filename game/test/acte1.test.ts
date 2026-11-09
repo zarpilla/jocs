@@ -278,13 +278,15 @@ describe('Ferro-9 · Acte 1', () => {
   it('el panell de la Vet es veu diferent a cada pas (decorats)', () => {
     const s = start();
     const decor = () => Object.fromEntries(s.n.hotspotsIn('gavina_cella').filter((h) => h.id.startsWith('panell_')).map((h) => [h.id, h.visible]));
-    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: false });
+    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: false, panell_sincronitzat: false });
     s.n.apply({ setFlag: 'panell_vet_trencat' });
-    expect(decor()).toEqual({ panell_afluixat: true, panell_obert: false, panell_reparat: false });
+    expect(decor()).toEqual({ panell_afluixat: true, panell_obert: false, panell_reparat: false, panell_sincronitzat: false });
     s.n.apply({ setFlag: 'panell_vet_obert' });
-    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: true, panell_reparat: false });
+    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: true, panell_reparat: false, panell_sincronitzat: false });
     s.n.apply({ setFlag: 'panell_vet_reparat' });
-    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: true });
+    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: true, panell_sincronitzat: false });
+    s.n.apply({ setFlag: 'clau_recuperada' });
+    expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: false, panell_sincronitzat: true });
   });
 
   it('mirar un objecte de l\'inventari: la descripció, o el que en diu la Vet de la clau anglesa', () => {

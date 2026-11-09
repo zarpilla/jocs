@@ -209,6 +209,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "gavina_cella 10.aseprite": {
+      "frame": {
+        "x": 4800,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -217,7 +238,7 @@
     "image": "gavina_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4800,
+      "w": 5280,
       "h": 270
     },
     "scale": "1",
@@ -289,6 +310,13 @@
         "name": "fullet",
         "from": 9,
         "to": 9,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "panell_sincronitzat",
+        "from": 10,
+        "to": 10,
         "direction": "forward",
         "color": "#000000ff"
       }

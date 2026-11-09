@@ -24,8 +24,8 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
 | `palanca` | palanca | hotspot / prop | sempre | use + clau_anglesa, pull, push, use, look |
-| `cambra` | cambra | hotspot / prop | sempre | look, use + diapaso, use + tub_ferro9, use + objecte, pickUp, open |
-| `boto` | botó de sincronia | prop | `{"flag":"alarma_apagada"}` | look, push, use |
+| `cambra` | cambra | hotspot / prop | sempre | look, pickUp, open, use + diapaso, use + tub_ferro9, use + imant_ferro9, use + objecte |
+| `boto` | botó de sincronia | prop | `{"flag":"alarma_apagada"}` | push, use, look |
 | `porta` | sala de calderes | hotspot / prop → `fabrica_calderes` | sempre | open, use, walkTo |
 | `reixa` | reixa | hotspot / prop → `fabrica_moll` | sempre | open, use, walkTo, pull, pickUp, push, use + llima, look |
 
@@ -87,6 +87,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `mos` | Mos | personatge | sempre | give + nota_mos, use + nota_mos, give + carta_mos, use + carta_mos, talkTo, look |
 | `avis` | avís | prop | `{"flag":"avis_agafat","is":false}` | look, pickUp |
 | `llitera` | llitera | hotspot / prop | sempre | pickUp, pull, look |
+| `fullet` | fullet de reeducació | prop | `{"all":[{"flag":"fullet_vist"},{"flag":"fullet_agafat","is":false}]}` | look, pickUp |
 | `escarabat` | Senyor Bigotis | prop | `{"flag":"escarabat_agafat","is":false}` | look, pickUp |
 | `safata` | safata de sopar | prop | `{"flag":"sopa_agafada","is":false}` | look, pickUp |
 | `porta` | porta de la cel·la | hotspot / prop → `gavina_passadis` | sempre | open, use, walkTo, push, pull, use + objecte, look, use + imant_ferro9 |

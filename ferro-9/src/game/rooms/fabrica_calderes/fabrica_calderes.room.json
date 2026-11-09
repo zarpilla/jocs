@@ -255,6 +255,17 @@
         "y": 191
       },
       "description": "segell oficial"
+    },
+    {
+      "id": "alarma_encesa",
+      "tag": "alarma_encesa",
+      "animations": {
+        "alarma_encesa": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

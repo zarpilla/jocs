@@ -285,6 +285,28 @@
         "y": 158
       },
       "description": "sòcol de l'holograma"
+    },
+    {
+      "id": "foto_mira",
+      "tag": "foto_mira",
+      "animations": {
+        "foto_mira": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "placa_robot",
+      "tag": "placa_robot",
+      "animations": {
+        "placa_robot": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

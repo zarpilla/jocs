@@ -6,7 +6,7 @@ Les làmpades són apagades; el llum giratori de la consola escombra la sala amb
 import math
 
 from hd.pix import Light, B4, W, H, mix
-from hd.rooms.fabrica_cambra import bg as cambra_bg, make_light, BEACON
+from hd.rooms.fabrica_cambra import bg as cambra_bg, make_light, BEACON, palanca_alcada
 
 BX, BY = BEACON[0], BEACON[1] + 3          # centre del vidre del llum giratori
 # feixos: (angle en graus, mig angle d'obertura, força)
@@ -41,6 +41,7 @@ LIGHT = _light()
 
 def bg(cv):
     cambra_bg(cv, alarm=True)
+    palanca_alcada(cv)                       # l'alarma sona: la palanca encara és alçada
 
     # ─── Tot vermell: la llum que queda és la de l'alarma ────────────────────
     for y in range(H):

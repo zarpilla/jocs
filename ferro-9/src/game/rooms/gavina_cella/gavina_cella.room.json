@@ -498,6 +498,17 @@
         "y": 139
       },
       "description": "fullet de reeducació"
+    },
+    {
+      "id": "panell_sincronitzat",
+      "tag": "panell_sincronitzat",
+      "animations": {
+        "panell_sincronitzat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

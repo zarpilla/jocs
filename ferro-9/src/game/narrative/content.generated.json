@@ -2927,7 +2927,15 @@
               }
             ]
           }
-        ]
+        ],
+        "decor": {
+          "alarma_encesa": {
+            "visibleIf": {
+              "flag": "alarma_apagada",
+              "is": false
+            }
+          }
+        }
       },
       "fabrica_cambra": {
         "name": "sala.fabrica_cambra.nom",
@@ -3558,6 +3566,17 @@
           "reixa_llimada": {
             "visibleIf": {
               "flag": "reixa_preparada"
+            }
+          },
+          "palanca_alcada": {
+            "visibleIf": {
+              "flag": "alarma_apagada",
+              "is": false
+            }
+          },
+          "palanca_baixada": {
+            "visibleIf": {
+              "flag": "alarma_apagada"
             }
           }
         }
@@ -7013,20 +7032,17 @@
           },
           "panell_obert": {
             "visibleIf": {
-              "any": [
+              "all": [
                 {
-                  "all": [
-                    {
-                      "flag": "panell_vet_obert"
-                    },
-                    {
-                      "flag": "panell_vet_reparat",
-                      "is": false
-                    }
-                  ]
+                  "flag": "panell_vet_obert"
                 },
                 {
-                  "flag": "clau_recuperada"
+                  "flag": "panell_vet_reparat",
+                  "is": false
+                },
+                {
+                  "flag": "clau_recuperada",
+                  "is": false
                 }
               ]
             }
@@ -7047,6 +7063,11 @@
           "reixa_oberta": {
             "visibleIf": {
               "flag": "reixa_oberta"
+            }
+          },
+          "panell_sincronitzat": {
+            "visibleIf": {
+              "flag": "clau_recuperada"
             }
           }
         },
@@ -8965,6 +8986,19 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "foto_mira": {
+            "visibleIf": {
+              "flag": "mira_salvada"
+            }
+          },
+          "placa_robot": {
+            "visibleIf": {
+              "flag": "vitrina_oberta",
+              "is": false
+            }
           }
         }
       },

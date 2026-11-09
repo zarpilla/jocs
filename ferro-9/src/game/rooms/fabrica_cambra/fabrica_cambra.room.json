@@ -232,6 +232,28 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "palanca_alcada",
+      "tag": "palanca_alcada",
+      "animations": {
+        "palanca_alcada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "palanca_baixada",
+      "tag": "palanca_baixada",
+      "animations": {
+        "palanca_baixada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

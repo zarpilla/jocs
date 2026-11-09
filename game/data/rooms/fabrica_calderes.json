@@ -572,5 +572,13 @@
         }
       ]
     }
-  ]
+  ],
+  "decor": {
+    "alarma_encesa": {
+      "visibleIf": {
+        "flag": "alarma_apagada",
+        "is": false
+      }
+    }
+  }
 }

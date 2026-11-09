@@ -1455,20 +1455,17 @@
     },
     "panell_obert": {
       "visibleIf": {
-        "any": [
+        "all": [
           {
-            "all": [
-              {
-                "flag": "panell_vet_obert"
-              },
-              {
-                "flag": "panell_vet_reparat",
-                "is": false
-              }
-            ]
+            "flag": "panell_vet_obert"
           },
           {
-            "flag": "clau_recuperada"
+            "flag": "panell_vet_reparat",
+            "is": false
+          },
+          {
+            "flag": "clau_recuperada",
+            "is": false
           }
         ]
       }
@@ -1489,6 +1486,11 @@
     "reixa_oberta": {
       "visibleIf": {
         "flag": "reixa_oberta"
+      }
+    },
+    "panell_sincronitzat": {
+      "visibleIf": {
+        "flag": "clau_recuperada"
       }
     }
   },

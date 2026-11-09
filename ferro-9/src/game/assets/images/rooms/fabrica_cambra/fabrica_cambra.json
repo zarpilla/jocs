@@ -62,6 +62,48 @@
         "h": 270
       },
       "duration": 100
+    },
+    "fabrica_cambra 3.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "fabrica_cambra 4.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -70,7 +112,7 @@
     "image": "fabrica_cambra.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1440,
+      "w": 2400,
       "h": 270
     },
     "scale": "1",
@@ -93,6 +135,20 @@
         "name": "reixa_llimada",
         "from": 2,
         "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "palanca_alcada",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "palanca_baixada",
+        "from": 4,
+        "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       }

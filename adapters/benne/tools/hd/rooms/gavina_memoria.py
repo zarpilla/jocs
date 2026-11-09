@@ -5,7 +5,7 @@ Llums: l'holograma (cian, la més forta), focus sobre la foto i sobre la vitrina
 """
 import math
 
-from hd.pix import (Light, B4, W, H, hr, ramp, mix, STEEL, PANEL, CYAN, WARN, RED, PAPER, IRON, SPACE, GRAY, NAVY,
+from hd.pix import (Canvas, Light, B4, W, H, hr, ramp, mix, STEEL, PANEL, CYAN, WARN, RED, PAPER, IRON, SPACE, GRAY, NAVY,
                     TEAL, SKIN)
 from hd.rooms.gavina_passadis import (HULL, LAMPW, SIGN, CORPG, PILOT, FLOOR_Y, text, text_w, smile, rivet)
 
@@ -121,7 +121,7 @@ def reflect(cv, k=0.18):
                     cv.P[x, y] = mix(o, s, a) + (255,)
 
 
-def bg(cv):
+def bg(cv, mira=False):
     museum_wall(cv, 0, W - 1)
     resin_floor(cv)
 
@@ -198,6 +198,8 @@ def bg(cv):
     # el torn de nit, en fila
     people = [(104, 0, 28, True), (114, 1, 27, False), (123, 2, 23, False), (133, 3, 29, True), (143, 4, 27, True)]
     for px, k, h, cap in people:
+        if k == 2 and not mira:
+            continue                                                        # la M. d'Orís: retallada (vegeu el forat)
         top = PY1 - h
         # cos (granota de treball fosca)
         for y in range(top + 7, PY1 + 1):
@@ -219,8 +221,27 @@ def bg(cv):
         cv.put(ix + i + 1, itop + 2 + (i * 3) // 4, SEPIA, 0.4, 0.3)
     # la del costat (M. d'Orís): més baixeta, somrient, amb una trena
     mx, mtop = 123, PY1 - 23
-    cv.vline(mx + 3, mtop + 2, mtop + 8, SEPIA, 0.8, 0.3)                 # trena
-    cv.hline(mx - 1, mx + 1, mtop + 5, SEPIA, 2.0, 0.3)                    # somriure
+    if mira:
+        cv.vline(mx + 3, mtop + 2, mtop + 8, SEPIA, 0.8, 0.3)             # trena
+        cv.hline(mx - 1, mx + 1, mtop + 5, SEPIA, 2.0, 0.3)                # somriure
+    else:
+        # algú la va retallar amb tisores: un forat amb la seva silueta, i a dins el cartró fosc del darrere
+        def cut(x, y):
+            j = (hr(x, y, 71) - 0.5) * 1.1                                 # tall de tisora, no gaire net
+            if y <= mtop + 6:
+                return math.hypot((x - mx) / 3.8, (y - mtop - 3) / 4.3) + j * 0.2 < 1
+            if y <= mtop + 9:
+                return abs(x - mx) <= 2.6 + j
+            return abs(x - mx) <= 5 + j + (1 if y > mtop + 11 else 0)
+        for y in range(mtop - 2, PY1 + 1):
+            for x in range(mx - 8, mx + 9):
+                if not cut(x, y):
+                    continue
+                edge = not cut(x - 1, y) or not cut(x, y - 1)
+                if edge:
+                    cv.put(x, y, SEPIA, 6.2, 0.3)                          # vora blanca del paper tallat
+                else:
+                    cv.put(x, y, FRAME, 0.9 + (y - mtop) / 30 + (hr(x, y, 72) - 0.5) * 0.3, 0.3)
     # el Cargol, nou de trinca, a la dreta
     cv.rect(153, PY1 - 22, 160, PY1 - 10, SEPIA, lambda x, y: 5.0 - (x - 153) * 0.3, 0.3)   # cos
     cv.rect(154, PY1 - 27, 159, PY1 - 23, SEPIA, 5.4, 0.3)                                   # cap
@@ -317,9 +338,10 @@ def bg(cv):
     cv.disc(392, 113.5, 3.4, 2.8, VELVET, 0.6)
     cv.rect(361, 112, 364, 115, VELVET, 3.4)                         # boca oberta de la clau
     cv.rect(393, 112, 396, 115, VELVET, 3.4)
-    # placa del robot, petita, a la dreta
-    cv.rect(397, 109, 403, 113, IRON, lambda x, y: 4.4 - (y - 109) * 0.4)
-    cv.put(398, 110, IRON, 6.0); cv.put(402, 110, IRON, 6.0)
+    # buit de la placa del robot, petit, a la dreta (la placa és un prop)
+    cv.rect(397, 109, 403, 113, VELVET, lambda x, y: 2.2 + (y - 109) * 0.15)
+    cv.hline(397, 403, 109, VELVET, 1.0)
+    cv.vline(397, 109, 113, VELVET, 1.2)
     # cartellet dins la vitrina
     cv.poly([(366, 117), (378, 117), (377, 119), (367, 119)], PAPER, 4.0)
     # marc d'acer, tapa amb llum interior i reflexos
@@ -494,4 +516,34 @@ def socol(cv):
     cv.put(x1 + 10, SY1 + 3, MUSE, 2.6)
 
 
-PROPS = {'socol': socol}
+
+# ─── Placa del robot (prop): a la vitrina, fins que s'obre ─────────────────
+
+def placa_robot(cv):
+    cv.rect(397, 109, 403, 113, IRON, lambda x, y: 4.4 - (y - 109) * 0.4)
+    cv.put(398, 110, IRON, 6.0); cv.put(402, 110, IRON, 6.0)
+    for x in (399, 400, 401):                                       # el nom gravat a mà, ratllat
+        cv.put(x, 111 + (x & 1), IRON, 1.6)
+    cv.hline(397, 403, 114, VELVET, 1.0)                            # ombra sota la placa
+
+
+# ─── La M. d'Orís a la foto (prop): torna a ser-hi ──────────────────────────
+# Es dibuixa la sala amb ella i sense (amb el forat) i es copia la diferència dins la foto.
+_FOTO = []
+
+
+def foto_mira(cv):
+    if not _FOTO:
+        on, off = Canvas(light=LIGHT), Canvas(light=LIGHT)
+        bg(on, mira=True)
+        bg(off)
+        _FOTO.append((on, off))
+    on, off = _FOTO[0]
+    for y in range(37, 93):
+        for x in range(92, 168):
+            p = on.P[x, y]
+            if p != off.P[x, y]:
+                cv.P[x, y] = p
+
+
+PROPS = {'socol': socol, 'foto_mira': foto_mira, 'placa_robot': placa_robot}

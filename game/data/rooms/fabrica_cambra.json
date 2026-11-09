@@ -629,6 +629,17 @@
       "visibleIf": {
         "flag": "reixa_preparada"
       }
+    },
+    "palanca_alcada": {
+      "visibleIf": {
+        "flag": "alarma_apagada",
+        "is": false
+      }
+    },
+    "palanca_baixada": {
+      "visibleIf": {
+        "flag": "alarma_apagada"
+      }
     }
   }
 }
