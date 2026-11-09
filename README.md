@@ -4,7 +4,7 @@ Aventura gràfica de "point & click" feta amb [Benne](https://benne.games/), amb
 **separada del motor**: si mai canviem de motor, només cal reescriure l'adaptador.
 
 Dues protagonistes separades per 120 anys: l'**Iri**, enginyera de la fàbrica de ferro-9, i la **Vet**,
-presonera de La Gavina, la presó construïda damunt les seves restes. Es comuniquen amb la finestra de fase.
+presonera de La Gavina, la presó que l'Aldaia va construir en òrbita amb les restes de la fàbrica. Es comuniquen amb la finestra de fase.
 Guió: [guio/guio.md](guio/guio.md).
 
 ## Les tres capes

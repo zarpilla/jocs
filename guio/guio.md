@@ -11,7 +11,7 @@ ferro-9 de la **Corporació Aldaia**, és brillant i ningú no se la mira. Una n
 una alarma, encén per accident el camp d'una cambra de ressonància experimental.
 
 **Vet** viu al present. És presonera a **La Gavina**, una presó orbital construïda amb les restes de la
-fàbrica. D'aquí a tres dies l'han de "reciclar", i ningú no sap què vol dir, perquè ningú no n'ha tornat.
+fàbrica, que l'Aldaia va pujar a l'òrbita peça a peça quan la va tancar. D'aquí a tres dies l'han de "reciclar", i ningú no sap què vol dir, perquè ningú no n'ha tornat.
 
 No es coneixen. Es descobriran a través de la finestra de fase i de les coses que es fan arribar. Fins a
 l'Acte 2, el joc manté una pregunta: **qui és l'altra?**
@@ -82,8 +82,9 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 
 ### La finestra de fase
 
-1. Hi ha **dues cambres de ressonància al mateix punt de l'espai**: la de l'Iri, nova, i la de la Vet, en
-   ruïnes, darrere la paret de la cel·la 9.
+1. La finestra no uneix dos llocs, sinó **la mateixa cambra de ressonància amb ella mateixa, 120 anys després**,
+   sigui on sigui. La de l'Iri és nova, a la fàbrica, a la Terra. La de la Vet és la mateixa, en ruïnes, darrere la
+   paret de la cel·la 9: l'Aldaia se la va endur a l'òrbita amb la resta de la fàbrica, i ara és part de La Gavina.
 2. **S'encén des dels dos costats.** Qui *arma* el camp és qui envia. L'altra l'ha de *sincronitzar*.
 3. **Un camp armat espera** fins que l'altre costat sincronitza o fins que qui l'ha armat surt de la cambra.
    Així el jugador pot canviar de protagonista amb calma, sense haver de córrer contra un rellotge.
@@ -112,7 +113,7 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 
 ### El ferro-9
 
-- **No s'oxida mai.** Per això La Gavina està feta amb restes de la fàbrica, i per això el que l'Iri
+- **No s'oxida mai.** Per això, quan la corporació va tancar la fàbrica, se'n va endur les naus a l'òrbita i en va fer La Gavina, i per això el que l'Iri
   fabrica amb ferro-9 arriba perfecte.
 - **El controla la corporació.** Cada gram està registrat, i robar-ne té conseqüències.
 
@@ -137,8 +138,8 @@ Quatre pantalles sense res per clicar, abans de l'Acte 1 (es poden saltar amb Es
    orbital. Aquí hi tanquen els qui planten cara a la Corporació Aldaia.»
 2. **La cel·la 9, de nit:** la Vet dorm i el panell de la paret vibra. «Fa dies que la paret vibra. Ningú no sap
    per què.»
-3. **«Cent vint anys abans...»:** la fàbrica de ferro-9 de nit, amb xemeneies, fum i el canal. «De les restes
-   d'aquesta fàbrica, un dia, en construiran La Gavina.»
+3. **«Cent vint anys abans...»:** la fàbrica de ferro-9 de nit, amb xemeneies, fum i el canal. «Un dia,
+   l'Aldaia s'endurà les restes d'aquesta fàbrica a l'òrbita, i en farà La Gavina.»
 4. **La cambra de ressonància**, tenyida de vermell: «I salta una alarma que no havia sonat mai.»
 
 Després, «Ferro-9» i «Acte 1 · La descoberta».
@@ -209,8 +210,8 @@ La comporta s'obre amb una biga llarga i rígida.
 - La ruta B és més llarga però **no deixa rastre**.
 
 **Com es juga (fet al joc, primera part de l'Acte 2).** Sales noves: el **moll de càrrega** de la fàbrica (Iri, s'hi
-va des de la sala de calderes) i el **moll de l'hangar** de La Gavina (Vet, al fons del passadís). És el mateix lloc
-a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
+va des de la sala de calderes) i el **moll de l'hangar** de La Gavina (Vet, al fons del passadís). És la mateixa nau
+a les dues èpoques (la van pujar a l'òrbita amb la resta): el **pilar amb un 7 pintat** hi és en totes dues.
 
 1. La Vet troba la comporta encallada, amb l'encaix buit. Ara que la cambra de l'Iri sincronitza sola, recupera
    la clau anglesa del panell i la fa servir de cinta mètrica: **sis claus angleses i mitja**.
