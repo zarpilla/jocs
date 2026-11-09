@@ -300,4 +300,12 @@ describe('Ferro-9 · Acte 1', () => {
     p.switchTo('iri');
     expect(texts(p.do('pickUp', 'palanca'))).toContain('corporació');
   });
+
+  it("el despatx del director és tancat fins que l'Iri en fa sortir el director (Acte 2)", () => {
+    const { p } = start();
+    p.switchTo('iri');
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.do('open', 'porta_despatx'))).toContain('reunits');
+    expect(p.room).toBe('fabrica_magatzem');
+  });
 });

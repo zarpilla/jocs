@@ -164,6 +164,23 @@
             "use",
             "walkTo"
           ],
+          "if": {
+            "flag": "director_fora",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.porta_despatx.reunio"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
           "goTo": "fabrica_despatx"
         }
       ]

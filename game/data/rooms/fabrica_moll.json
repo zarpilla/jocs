@@ -712,12 +712,19 @@
             {
               "who": "player",
               "text": "sala.fabrica_moll.conducte.mig2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_moll.conducte.mig3"
             }
           ],
           "effects": [
             {
               "setVar": "valvula",
               "value": "mig"
+            },
+            {
+              "setFlag": "director_fora"
             }
           ]
         },

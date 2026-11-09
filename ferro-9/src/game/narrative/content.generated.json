@@ -122,7 +122,8 @@
         "iri_sap_tub": false,
         "tub_muntat": false,
         "vet_fugida": false,
-        "iri_fugida": false
+        "iri_fugida": false,
+        "director_fora": false
       },
       "vars": {
         "finestra_armada": "",
@@ -3605,6 +3606,23 @@
                   "use",
                   "walkTo"
                 ],
+                "if": {
+                  "flag": "director_fora",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.porta_despatx.reunio"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo"
+                ],
                 "goTo": "fabrica_despatx"
               }
             ]
@@ -4370,12 +4388,19 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_moll.conducte.mig2"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_moll.conducte.mig3"
                   }
                 ],
                 "effects": [
                   {
                     "setVar": "valvula",
                     "value": "mig"
+                  },
+                  {
+                    "setFlag": "director_fora"
                   }
                 ]
               },
@@ -13916,7 +13941,9 @@
       "sala.gavina_hangar.llancadora.fugir2": "La comporta s'obre a l'espai. Adeu, Gavina. Adeu, MARE.",
       "sala.gavina_hangar.llancadora.fugir3": "I gràcies, I. Ara et toca a tu.",
       "sala.gavina_hangar.llancadora.sense_tub": "Premo el botó d'engegada. Res. Sense el tub de la vàlvula, la pressió no arriba al motor.",
-      "sala.gavina_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»"
+      "sala.gavina_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»",
+      "sala.fabrica_moll.conducte.mig3": "Pels altaveus: «Director Aldaia a les calderes. Caiguda de pressió.» El seu despatx es quedarà buit una estona.",
+      "sala.fabrica_magatzem.porta_despatx.reunio": "Hi ha llum sota la porta i se senten veus: el director i l'inspector Brau, reunits. No penso entrar-hi a saludar."
     }
   },
   "locale": "ca"

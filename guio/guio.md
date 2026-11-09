@@ -308,7 +308,7 @@ la inundació no és un error del jugador, és la lliçó.
   de l'hangar) i baixa a l'**Arxiu**: l'expedient de l'Iri («desapareguda tres dies després de l'accident»), les
   còpies dels plànols del Projecte Gavina (sincronitzadors i «reciclatge») i, a l'arxivador, la **carta d'en Mos**.
   Si li torna, en Mos li explica que als del reciclatge no els reciclen: els crema el camp.
-- **Iri.** Des del magatzem, al **despatx del director**: el calaix té un pany M-3, i amb un altre imant del
+- **Iri.** Des del magatzem, al **despatx del director** (fins ara tancat: el director hi era reunit amb el Brau; quan l'Iri obre la vàlvula a mitges, el criden a les calderes i el despatx queda buit): el calaix té un pany M-3, i amb un altre imant del
   Cargol (formulari per triplicat) roba els **plànols originals**: «Prova de camp: torn de nit, operària I. No
   informar l'operària». Amb dos robatoris, l'expedient del Brau **acusa la Mira**.
 - **Salvar la Mira** (secundària): falsificar el llibre d'inventari amb el segell («donat de baixa per rovell»),
