@@ -16950,5 +16950,10 @@
       "sala.portada.nom": "Ferro-9"
     }
   },
-  "locale": "ca"
+  "locale": "ca",
+  "zones": {
+    "gavina_hangar": [
+      "sortida_conducte"
+    ]
+  }
 }

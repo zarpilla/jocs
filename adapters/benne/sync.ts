@@ -53,6 +53,24 @@ function writeGenerated(path: string, body: string, kind: 'ts' | 'json', owner =
 const json = (value: object, mark = true) =>
   JSON.stringify(mark ? { $comment: MARK, ...value } : value, null, 2) + '\n';
 
+/**
+ * Les coses amb `visibleIf` que a Benne són zones (hotspots) i no props: el pont les activa o desactiva
+ * en lloc de mostrar-les o amagar-les. Sala → ids nostres.
+ */
+function conditionalZones(content: GameContent) {
+  const zones: Record<string, string[]> = {};
+  const benne = (kind: string, id: string) => (JSON.parse(readFileSync(join(HERE, 'mapping.json'), 'utf8'))[kind]?.[id] as string) ?? id;
+  for (const [roomId, room] of Object.entries(content.rooms)) {
+    const r = benne('rooms', roomId);
+    const path = join(gameDir, 'rooms', r, `${r}.room.json`);
+    if (!existsSync(path)) continue;
+    const hotspots = new Set((JSON.parse(readFileSync(path, 'utf8')).hotspots as { id: string }[]).map((h) => h.id));
+    const ids = Object.entries(room.hotspots ?? {}).filter(([id, h]) => h.visibleIf && hotspots.has(benne('hotspots', id))).map(([id]) => id);
+    if (ids.length) zones[roomId] = ids;
+  }
+  return zones;
+}
+
 function benneDialog(d: DialogueDef, text: LocaleTable, fallback: LocaleTable) {
   const options = Object.entries(d.nodes).flatMap(([node, n]) =>
     (n.choices ?? []).map((c) => ({
@@ -107,7 +125,8 @@ function sync() {
   writeGenerated(join(narrativeDir, 'mapping.generated.json'), json(mapping), 'json');
 
   // 2. Contingut
-  const bundle: { content: GameContent; locales: Record<string, LocaleTable>; locale: string } = { content, locales, locale };
+  const bundle: { content: GameContent; locales: Record<string, LocaleTable>; locale: string; zones: Record<string, string[]> } =
+    { content, locales, locale, zones: conditionalZones(content) };
   writeGenerated(join(narrativeDir, 'content.generated.json'), json(bundle), 'json');
 
   // 2b. Sons: els de `game/audio/sfx/` van a `assets/audio/sfx/` (Benne els carrega tots en arrencar).

@@ -5,7 +5,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { PropHandle, defineVars, events, game, inventory, player, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, defineVars, events, game, inventory, player, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -52,10 +52,12 @@ const world: WorldPort = {
   activeProtagonist: () => fromBenne('characters', player.id),
 };
 
-const { content, locales, locale } = bundle as unknown as {
+const { content, locales, locale, zones } = bundle as unknown as {
   content: GameContent;
   locales: Record<string, LocaleTable>;
   locale: string;
+  /** Coses amb `visibleIf` que a Benne són zones (hotspots), no props. Sala → ids. */
+  zones: Record<string, string[]>;
 };
 
 export const narrative = new Narrative({ content, locales, locale, world });
@@ -234,7 +236,8 @@ export function targetFromBenne(kind: 'prop' | 'hotspot' | 'character' | 'item',
 
 // ─── Coses condicionals ─────────────────────────────────────────────────────
 // Les coses amb `visibleIf` són props a Benne (el sync les crea així): es mostren o
-// s'amaguen soles cada vegada que canvia l'estat.
+// s'amaguen soles cada vegada que canvia l'estat. Si a Benne ja eren zones (hotspots), s'activen o
+// es desactiven.
 
 type Showable = { visible: boolean } | { active: boolean };
 let boundHotspots: Record<string, Showable> = {};
@@ -261,7 +264,8 @@ export function applyHotspotVisibility() {
   for (const { id, visible } of narrative.hotspotsIn(room)) {
     // Un personatge amb `visibleIf` (p. ex. la Directora a la cel·la a l'Acte 3) s'amaga o es mostra sencer.
     const character = content.characters[id] ? (benneCharacter(id) as Showable | undefined) : undefined;
-    const handle = boundHotspots[id] ?? character ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
+    const zone = zones[room]?.includes(id) ? new HotspotHandle(toBenne('rooms', room), toBenne('hotspots', id)) : undefined;
+    const handle = boundHotspots[id] ?? character ?? zone ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
     if ('visible' in handle) handle.visible = visible;
     else handle.active = visible;
   }
