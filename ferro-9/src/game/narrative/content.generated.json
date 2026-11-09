@@ -27,7 +27,21 @@
       },
       "intro": "proleg_gavina",
       "switchWhen": {
-        "flag": "accident_cambra"
+        "any": [
+          {
+            "flag": "accident_cambra"
+          },
+          {
+            "var": "finestra_armada",
+            "op": "==",
+            "value": "iri"
+          },
+          {
+            "var": "transferencies",
+            "op": ">=",
+            "value": 1
+          }
+        ]
       },
       "cover": "portada"
     },
