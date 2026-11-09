@@ -40,6 +40,16 @@ const v = {
 
 const line = (text: string, params?: Record<string, string | number>, sound?: string) => ({ who: 'player' as const, text, params, sound });
 
+/**
+ * El nom d'un objecte per als textos de la cambra, amb article («la molla», «l'imant de ferro-9»):
+ * `obj.<id>.amb_article`. `Objecte` és el mateix amb majúscula, per començar una frase.
+ */
+function nomObjecte(n: Narrative, item: string) {
+  const amb = n.t(`obj.${item}.amb_article`);
+  const objecte = amb.startsWith('⟦') ? n.itemName(item) : amb;
+  return { objecte, Objecte: objecte.charAt(0).toUpperCase() + objecte.slice(1) };
+}
+
 /** Sons de la cambra (`game/audio/sfx/`). */
 export const SONS_FINESTRA = { posar: 'cambra_posa', armar: 'cambra_arma', fase: 'fase' };
 
@@ -68,10 +78,10 @@ export function installFinestra(n: Narrative) {
     const costat = n.world.activeProtagonist();
     const item = String(args.item ?? '');
     const estat = estatFinestra(n);
-    if (estat.objecte(costat)) return { lines: [line('finestra.ple', { objecte: n.itemName(estat.objecte(costat)) })] };
+    if (estat.objecte(costat)) return { lines: [line('finestra.ple', nomObjecte(n, estat.objecte(costat)))] };
     if (estat.armada === costat) return { lines: [line('finestra.ja_armat')] };
     const rebuig = motiuRebuig(n, item, costat);
-    if (rebuig) return { lines: [line(rebuig, { objecte: n.itemName(item) })] };
+    if (rebuig) return { lines: [line(rebuig, nomObjecte(n, item))] };
     if (n.flag(v.automatica)) {
       // Un sol pas: posar-lo ja és enviar-lo.
       if (estat.armada) return { lines: [line('finestra.ja_armat')] };
@@ -85,10 +95,10 @@ export function installFinestra(n: Narrative) {
         { event: 'finestra.transferencia', args: { de: costat, a: altra, objecte: item } },
         { event: 'protagonista', args: { id: altra } },
       ]);
-      return { lines: [line('finestra.enviat', { objecte: n.itemName(item) }, SONS_FINESTRA.fase)] };
+      return { lines: [line('finestra.enviat', nomObjecte(n, item), SONS_FINESTRA.fase)] };
     }
     n.apply([{ takeItem: item, who: costat }, { setVar: v.objecte(costat), value: item }]);
-    return { lines: [line('finestra.posat', { objecte: n.itemName(item) }, SONS_FINESTRA.posar)] };
+    return { lines: [line('finestra.posat', nomObjecte(n, item), SONS_FINESTRA.posar)] };
   });
 
   /** Treure l'objecte de la cambra (si no està armada). */
@@ -99,7 +109,7 @@ export function installFinestra(n: Narrative) {
     if (!item) return { lines: [line('finestra.buida')] };
     if (estat.armada === costat) return { lines: [line('finestra.tancada')] };
     n.apply([{ setVar: v.objecte(costat), value: '' }, { giveItem: item, who: costat }]);
-    return { lines: [line('finestra.tret', { objecte: n.itemName(item) })] };
+    return { lines: [line('finestra.tret', nomObjecte(n, item))] };
   });
 
   /**
@@ -129,7 +139,7 @@ export function installFinestra(n: Narrative) {
       ...(item ? [{ giveItem: item, who: costat }] : []),
       { event: 'finestra.transferencia', args: { de: emissora, a: costat, objecte: item } },
     ]);
-    const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', { objecte: item ? n.itemName(item) : '' }, SONS_FINESTRA.fase)];
+    const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', item ? nomObjecte(n, item) : { objecte: '' }, SONS_FINESTRA.fase)];
     if (!n.flag(v.automatica) && Number(n.getVar(v.transferencies)) >= TRANSFERENCIES_RITUAL) {
       n.apply({ setFlag: v.automatica });
       lines.push(line('finestra.automatica'));

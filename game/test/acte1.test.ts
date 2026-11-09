@@ -5,7 +5,7 @@
 import { describe, expect, it } from 'vitest';
 import { HeadlessPlayer, MemoryWorld, Narrative, validateContent } from '@aventura/narrative-core';
 import { content, locales } from '../index.js';
-import { GAME_ACTIONS, GAME_TEXT_KEYS, estatFinestra, installGameLogic } from '../logic/index.js';
+import { GAME_ACTIONS, gameTextKeys, estatFinestra, installGameLogic } from '../logic/index.js';
 
 function start(opts: { checkHints?: boolean } = {}) {
   const world = new MemoryWorld();
@@ -68,7 +68,7 @@ function finsPanellReparat() {
 
 describe('Ferro-9 · contingut', () => {
   it('és vàlid i no té textos sense traduir', () => {
-    const issues = validateContent(content, locales, { actions: GAME_ACTIONS, textKeys: GAME_TEXT_KEYS });
+    const issues = validateContent(content, locales, { actions: GAME_ACTIONS, textKeys: gameTextKeys(content) });
     expect(issues).toEqual([]);
   });
 });

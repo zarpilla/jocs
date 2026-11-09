@@ -1931,7 +1931,18 @@
               },
               {
                 "who": "player",
-                "text": "obj.nota_vet_nom.iri2"
+                "text": "obj.nota_vet_nom.iri2",
+                "if": {
+                  "flag": "planols_robats"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_vet_nom.iri2_sense",
+                "if": {
+                  "flag": "planols_robats",
+                  "is": false
+                }
               }
             ],
             "effects": [
@@ -13125,6 +13136,24 @@
         "start": [
           {
             "if": {
+              "all": [
+                {
+                  "flag": "cella_tancada"
+                },
+                {
+                  "not": {
+                    "seen": {
+                      "dialogue": "guardia",
+                      "node": "fugitiva"
+                    }
+                  }
+                }
+              ]
+            },
+            "node": "fugitiva"
+          },
+          {
+            "if": {
               "seen": {
                 "dialogue": "guardia",
                 "node": "primera"
@@ -13237,6 +13266,19 @@
                 "text": "dlg.guardia.adeu"
               }
             ]
+          },
+          "fugitiva": {
+            "lines": [
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.fugitiva1"
+              },
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.fugitiva2"
+              }
+            ],
+            "goto": "menu"
           }
         }
       },
@@ -14162,6 +14204,8 @@
       "dlg.cargol_vell.qui2": "Abans de ser conserge vaig ser alguna cosa més. No ho recordo. Ningú no em va deixar recordar-ho.",
       "dlg.cargol_vell.opt.adeu": "Adeu.",
       "dlg.cargol_vell.adeu": "Adeu. No toqui les vitrines.",
+      "dlg.guardia.fugitiva1": "Interna 9? Tu no eres a la cel·la, tancada amb clau?",
+      "dlg.guardia.fugitiva2": "...Saps què? No t'he vist. Avui tinc la vista fatal.",
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "La veritat a temps",
@@ -14197,9 +14241,9 @@
       "finestra.armat": "Un brunzit greu. El camp està armat.",
       "finestra.armat_buit": "Un brunzit greu. El camp està armat... però la cambra és buida.",
       "finestra.esgotada": "No passa res. La cambra està esgotada.",
-      "finestra.rebut": "Un espetec, una llum... i ha aparegut {objecte}!",
+      "finestra.rebut": "Un espetec, una llum... i a la cambra hi apareix {objecte}!",
       "finestra.rebut_res": "Un espetec, una llum... i res. Algú ha enviat aire.",
-      "finestra.rebuig.massa_pesat": "{objecte} no hi cap. És massa gran per a la cambra.",
+      "finestra.rebuig.massa_pesat": "{Objecte} no hi cap. És massa gran per a la cambra.",
       "finestra.rebuig.viu": "No. Res que sigui viu. Ni tan sols per ciència.",
       "finestra.rebuig.liquid": "Un líquid dins la cambra? Millor no.",
       "finestra.rebuig.no_hi_cap": "Això no hi cap.",
@@ -14334,7 +14378,7 @@
       "obj.nota_iri.correspondencia.inici": "(Durant una hora, la cambra no para d'espetegar.)",
       "obj.nota_iri.correspondencia.1": "«\"Brutal-plus\" vol dir que ets molt bona. \"Reciclar\" no ho sé: ningú no en torna. Pregunta rara: què veus per la finestra? —La de la cel·la 9»",
       "obj.nota_iri.correspondencia.2": "«Xemeneies, fum i el canal. Com cada nit. I torna'm la clau anglesa, que l'he de retornar al Cargol. —I.»",
-      "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica. —La de la cel·la 9»",
+      "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica. No te la puc tornar: és l'única eina que tinc. —La de la cel·la 9»",
       "obj.nota_iri.correspondencia.4": "«... —I.»",
       "obj.nota_iri.correspondencia.vet1": "Un full en blanc i tres punts. Ja ho ha entès.",
       "obj.nota_iri.correspondencia.vet2": "Una enginyera de fa cent vint anys que em pot fer arribar coses. I a mi em queden tres dies.",
@@ -14441,7 +14485,7 @@
       "obj.carta_mos.desc": "Una carta per a la Nura, la filla d'en Mos. No va sortir mai de l'arxiu.",
       "obj.nota_vet_nom.text": "«Em dic Vet. Et faran desaparèixer d'aquí a tres dies. Ho sento.»",
       "obj.nota_vet_nom.iri1": "Vet. Es diu Vet.",
-      "obj.nota_vet_nom.iri2": "Desaparèixer... Si he vist els plànols, ja sé qui.",
+      "obj.nota_vet_nom.iri2": "Desaparèixer... He vist els plànols del Director. Ja sé qui.",
       "obj.nota_vet_nom.nom": "nota de la Vet",
       "obj.nota_vet_nom.desc": "Una nota signada amb un nom.",
       "obj.nota_iri_nom.text": "«Em dic Iri. Ja ho sospitava. No penso desaparèixer.»",
@@ -14487,6 +14531,54 @@
       "obj.placa_cargol.gravada": "Sota, gravat a mà amb una llima, un nom: «CARGOL».",
       "obj.placa_cargol.vet_gravada": "Algú li va voler deixar el nom per escrit. Algú amb una llima.",
       "obj.placa_cargol.vet_buida": "No hi ha cap nom. És la placa d'un robot sense nom.",
+      "obj.clau_anglesa.amb_article": "la clau anglesa",
+      "obj.formulari_27b.amb_article": "el formulari 27-B",
+      "obj.formulari_segellat.amb_article": "el formulari 27-B segellat",
+      "obj.formulari_triplicat.amb_article": "el formulari 27-B segellat per triplicat",
+      "obj.plomall.amb_article": "el plomall",
+      "obj.segell.amb_article": "el segell oficial",
+      "obj.clau_cambra.amb_article": "la clau de la cambra",
+      "obj.llapis.amb_article": "el llapis",
+      "obj.llibreta_torn.amb_article": "la llibreta de torn",
+      "obj.caixa_eines.amb_article": "la caixa d'eines",
+      "obj.imant_ferro9.amb_article": "l'imant de ferro-9",
+      "obj.nota_iri.amb_article": "la nota d'I.",
+      "obj.avis_reciclatge.amb_article": "l'avís de reciclatge",
+      "obj.llapis_ulls.amb_article": "el llapis d'ulls",
+      "obj.nota_vet.amb_article": "la nota de la cel·la 9",
+      "obj.fullet_reeducacio.amb_article": "el fullet de reeducació",
+      "obj.nota_pany.amb_article": "el dibuix del pany",
+      "obj.escarabat.amb_article": "l'escarabat",
+      "obj.sopa.amb_article": "la sopa",
+      "obj.tros_cartell.amb_article": "el tros de cartell",
+      "obj.nota_mida.amb_article": "la nota de la mida",
+      "obj.biga_acer.amb_article": "la biga d'acer",
+      "obj.biga_ferro9.amb_article": "la biga de ferro-9",
+      "obj.serra.amb_article": "la serra",
+      "obj.tram_biga_1.amb_article": "el tram de biga (1)",
+      "obj.tram_biga_2.amb_article": "el tram de biga (2)",
+      "obj.tram_biga_3.amb_article": "el tram de biga (3)",
+      "obj.biga_muntada.amb_article": "la biga muntada",
+      "obj.nota_amagatall.amb_article": "la nota del moll",
+      "obj.pols_rovell.amb_article": "la pols de rovell",
+      "obj.molla.amb_article": "la molla",
+      "obj.llima.amb_article": "la llima",
+      "obj.diapaso.amb_article": "el diapasó",
+      "obj.diapaso_espatllat.amb_article": "el diapasó espatllat",
+      "obj.nota_pressio.amb_article": "la nota de la pressió",
+      "obj.nota_massa.amb_article": "la nota «MASSA»",
+      "obj.fitxa_mira.amb_article": "la fitxa de personal",
+      "obj.planols.amb_article": "els plànols",
+      "obj.carta_mos.amb_article": "la carta d'en Mos",
+      "obj.nota_vet_nom.amb_article": "la nota de la Vet",
+      "obj.nota_iri_nom.amb_article": "la nota de l'Iri",
+      "obj.fullet_memoria.amb_article": "el fullet de la Sala de la Memòria",
+      "obj.mapa_fuga.amb_article": "el mapa de fuga",
+      "obj.tub_ferro9.amb_article": "el tub de ferro-9",
+      "obj.tub_amb_llibreta.amb_article": "el tub amb la llibreta",
+      "obj.clau_vitrina.amb_article": "la clau de la vitrina",
+      "obj.placa_cargol.amb_article": "la placa de robot",
+      "obj.nota_vet_nom.iri2_sense": "Desaparèixer... Aquí només hi ha una persona que pugui fer desaparèixer algú: el Director.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -15159,7 +15251,7 @@
       "sala.fabrica_cambra.reixa.look_mapa": "La reixa del conducte de servei: quatre cargols d'acer. D'aquí a cent vint anys, el rovell els soldarà.",
       "sala.fabrica_cambra.reixa.look": "Una reixa de ventilació arran de terra, amb quatre cargols d'acer. Darrere, el conducte de servei.",
       "sala.fabrica_cambra.reixa.encara_no": "Encara no. Per aquí fugiré, però no fins que la V. estigui a punt.",
-      "sala.fabrica_cambra.reixa.cargolada": "Ben cargolada. Quatre cargols d'acer, nous de trinca.",
+      "sala.fabrica_cambra.reixa.cargolada": "Ben cargolada. Quatre cargols d'acer, nous de trinca. La meva clau anglesa aniria de primera, però és a cent vint anys d'aquí.",
       "sala.gavina_cella.panell.molla_no": "Encara no sona com el pany. Si l'envio així, la I. afinarà una nota equivocada.",
       "sala.gavina_cella.tub1": "Què t'ha arribat, interna? Una canonada? Dona-me-la.",
       "sala.gavina_cella.tub2": "Ni parlar-ne.",

@@ -5,6 +5,24 @@
   "start": [
     {
       "if": {
+        "all": [
+          {
+            "flag": "cella_tancada"
+          },
+          {
+            "not": {
+              "seen": {
+                "dialogue": "guardia",
+                "node": "fugitiva"
+              }
+            }
+          }
+        ]
+      },
+      "node": "fugitiva"
+    },
+    {
+      "if": {
         "seen": {
           "dialogue": "guardia",
           "node": "primera"
@@ -117,6 +135,19 @@
           "text": "dlg.guardia.adeu"
         }
       ]
+    },
+    "fugitiva": {
+      "lines": [
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.fugitiva1"
+        },
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.fugitiva2"
+        }
+      ],
+      "goto": "menu"
     }
   }
 }

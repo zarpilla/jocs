@@ -1712,7 +1712,18 @@
           },
           {
             "who": "player",
-            "text": "obj.nota_vet_nom.iri2"
+            "text": "obj.nota_vet_nom.iri2",
+            "if": {
+              "flag": "planols_robats"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet_nom.iri2_sense",
+            "if": {
+              "flag": "planols_robats",
+              "is": false
+            }
           }
         ],
         "effects": [

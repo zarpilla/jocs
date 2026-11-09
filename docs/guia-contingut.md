@@ -151,6 +151,10 @@ Les propietats que fa servir la finestra són a cada objecte: `"props": { "pes":
 l'envia) o `true` (totes dues). Sense aquesta marca, o des de l'altra banda, un objecte que hi cabria no passa:
 la protagonista diu que no val una encesa. Si un trencaclosques nou demana enviar alguna cosa, cal marcar-la.
 
+Els textos de la cambra diuen el nom de l'objecte amb article («Poso la molla dins la cambra»): cada objecte
+necessita un text `obj.<id>.amb_article` («la molla», «l'imant de ferro-9», «els plànols»). El validador avisa
+si en falta algun.
+
 Un `{ "event": "final" }` acaba el joc amb el final que toqui (`endings.json`).
 
 ## Personatges i memòria: `data/characters.json`
