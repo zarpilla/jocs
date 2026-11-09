@@ -3,13 +3,13 @@
  */
 import { describe, expect, it } from 'vitest';
 import { estatFinestra } from '../logic/index.js';
-import { jugarActe1, jugarActe2, partida, texts } from './partida.js';
+import { jugarActe1, jugarActe2, keys, partida, texts } from './partida.js';
 
 const item = (id: string) => ({ kind: 'item' as const, id });
 
 describe('Ferro-9 · Acte 3 · Acorralades', () => {
   it("la Directora pren la cel·la, el Brau vigila la cambra i la Vet troba una ruta a la Sala de la Memòria (sempre amb alguna pista)", () => {
-    const { p, n } = partida({ checkHints: true, fins: 'reixa_oberta' });
+    const { p, n } = partida({ checkHints: true, fins: 'fugida_completada' });
     jugarActe1(p);
     // A l'Acte 2, la Sala de la Memòria encara és tancada.
     expect(texts(p.do('open', 'porta_memoria'))).toContain('dimarts');
@@ -102,5 +102,48 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     p.do('open', 'porta_hangar');
     p.do('open', 'sortida_conducte');
     expect(p.room).toBe('gavina_cella');
+
+    // ── Iri: un tub de ferro-9 (el Cargol no demana formularis als fugitius) i la llibreta a dins ──
+    p.switchTo('iri');
+    expect(texts(p.use('llapis', 'cambra'))).toContain('no li fa cap falta');
+    p.goTo('fabrica_calderes');
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.talk('cargol', 'tub'))).toContain('fugitius');
+    p.goTo('fabrica_calderes');
+    p.goTo('fabrica_cambra');
+    expect(texts(p.use('tub_ferro9', 'cambra'))).toContain('llibreta');
+    p.use('llibreta_torn', item('tub_ferro9'));
+    expect(p.inventory()).toContain('tub_amb_llibreta');
+    expect(keys(p.use('tub_amb_llibreta', 'cambra'))).toContain('finestra.enviat');
+    expect(estatFinestra(n).enceses).toBe(enceses - 2);
+
+    // ── Vet: la Directora el vol; fuig per la reixa, munta el tub i marxa ──
+    expect(p.active).toBe('vet');
+    expect(texts(p.switchTo('vet'))).toBeDefined();
+    expect(texts(p.do('open', 'reixa'))).toContain('Atureu-la');
+    expect(p.room).toBe('gavina_hangar');
+    expect(texts(p.do('push', 'llancadora'))).toContain('Sense el tub');
+    expect(texts(p.use('tub_amb_llibreta', 'llancadora'))).toContain('proves');
+    expect(p.inventory()).toContain('llibreta_torn');
+    expect(texts(p.do('push', 'llancadora'))).toContain('Ara et toca a tu');
+    expect(p.active).toBe('iri');
+
+    // ── Iri: segueix les seves fletxes fins al moll i fuig amb la llançadora nova ──
+    p.do('open', 'reixa');
+    expect(p.room).toBe('fabrica_moll');
+    expect(texts(p.do('use', 'llancadora'))).toContain('Desapareguda');
+    expect(n.flag('fugida_completada')).toBe(true);
+    expect(n.state.quests.acte3!.objectives.fugida).toBe(true);
+    expect(n.resolveEnding()).toBe('fugida');
+  });
+
+  it("només s'envia el que l'altra necessita, i en el sentit que toca", () => {
+    const { p, n } = partida({ fins: 'acte2_acabat' });
+    jugarActe1(p);
+    p.switchTo('iri');
+    const enceses = estatFinestra(n).enceses;
+    n.apply({ giveItem: 'nota_vet', who: 'iri' });
+    expect(keys(p.use('nota_vet', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri']);
+    expect(estatFinestra(n).enceses).toBe(enceses);
   });
 });

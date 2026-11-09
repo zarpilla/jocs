@@ -429,6 +429,139 @@
       "name": "sala.fabrica_moll.llancadora.nom",
       "interactions": [
         {
+          "verb": [
+            "open",
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "vet"
+                  },
+                  {
+                    "flag": "tub_muntat"
+                  }
+                ]
+              },
+              {
+                "flag": "iri_fugida",
+                "is": false
+              },
+              {
+                "flag": "vet_fugida"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir3",
+              "sound": "motor"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_fugida"
+            },
+            {
+              "setFlag": "fugida_completada"
+            },
+            {
+              "event": "final"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "vet"
+                  },
+                  {
+                    "flag": "tub_muntat"
+                  }
+                ]
+              },
+              {
+                "flag": "iri_fugida",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir3",
+              "sound": "motor"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_moll.llancadora.mentrestant"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_fugida"
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "any": [
+              {
+                "hasItem": "tub_amb_llibreta",
+                "who": "vet"
+              },
+              {
+                "flag": "tub_muntat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.look_fugir"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {

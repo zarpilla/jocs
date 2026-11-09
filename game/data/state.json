@@ -90,7 +90,12 @@
     "iri_sap_reixa": false,
     "reixa_preparada": false,
     "vet_veu_reixa": false,
-    "reixa_oberta": false
+    "reixa_oberta": false,
+    "vet_sap_tub": false,
+    "iri_sap_tub": false,
+    "tub_muntat": false,
+    "vet_fugida": false,
+    "iri_fugida": false
   },
   "vars": {
     "finestra_armada": "",

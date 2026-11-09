@@ -90,7 +90,8 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 4. **Hi passa un objecte per encesa i en una sola direcció.** Ha de pesar menys de 2 kg, ha de ser inert i no
    pot ser un líquid a pressió. No hi passen éssers vius, ni so, ni imatge, ni persones. A més, al joc només
    s'hi poden posar les coses que l'altra necessita: si el jugador hi prova un llapis o un formulari, la
-   protagonista diu que no val una encesa, i no se'n gasta cap.
+   protagonista diu que no val una encesa, i no se'n gasta cap. Tampoc no es pot tornar el que s'ha rebut (cada
+   cosa passa en un sol sentit), ni enviar una molla o un diapasó que encara no estan afinats.
 5. Per tant, **la comunicació és només per escrit**: notes, dibuixos, objectes amb significat.
 6. **Cada encesa desgasta la cambra de l'Iri.** Això no és un recurs que el jugador pugui malgastar per
    error, sinó un rellotge narratiu: a l'Acte 3 només queda una encesa.
@@ -353,8 +354,10 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
 3. **Segona encesa, de l'Iri a la Vet: l'últim component.** Només pot passar un objecte, però l'Iri també vol
    enviar la llibreta amb les proves. Trencaclosques d'inventari: **enrotlla la llibreta dins el tub de la
    vàlvula**, i així és un sol objecte de menys de 2 kg.
-4. L'Iri espera la sincronia de la Vet (un camp armat espera, i ningú no s'hi ha de quedar) i **fuig per la ruta
-   de la Vet**. La Vet surt de la cel·la tancada per la reixa que l'Iri li va deixar oberta, munta la llançadora i fuig.
+4. L'Iri **fuig per la ruta de la Vet**: obre la seva reixa, segueix les seves pròpies fletxes fins al moll i
+   s'emporta la llançadora nova. La Vet surt de la cel·la tancada per la reixa que l'Iri li va deixar oberta, munta
+   el tub a la llançadora vella i fuig. És la mateixa nau: la corporació la va recuperar després de la fugida de
+   l'Iri i la va desballestar, i per això li faltaven els tres components de ferro-9.
 
 **El gir final:** la "desaparició" de l'Iri que explica el museu **va ser, de fet, la seva fugida**. La
 història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia ajudada.
@@ -373,8 +376,13 @@ història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia 
    vibra si l'Iri no és a la seva cambra. L'Iri distreu el Brau («he vist algú al magatzem del ferro-9») i hi torna.
    Primera encesa. L'Iri llima els cargols de la reixa i grava les fletxes. Reajust: la Vet obre la reixa i el
    conducte la porta fins a l'hangar, i en torna (la cel·la és tancada).
-3. **L'últim component**: la Directora ha desmuntat el tub de la vàlvula de la llançadora; l'Iri en fa un de
-   ferro-9 i hi enrotlla la llibreta amb les proves. Segona encesa. L'Iri fuig pel conducte; la Vet, amb la nau.
+3. **L'últim component**: fet. La Directora avisa que ha fet treure el tub de la vàlvula de la llançadora (també
+   ho diu una etiqueta a l'hangar), i la Vet ho afegeix al mapa com a segona postdata: així l'Acte 3 gasta
+   exactament dues enceses. El Cargol dona a l'Iri un tub de ferro-9 sense formulari («els fugitius no omplen
+   formularis») i l'Iri hi enrotlla la llibreta de torn; el tub sol no l'envia. Segona encesa. La Directora vol el
+   tub i la Vet fuig per la reixa, desenrotlla la llibreta (les proves), munta el tub i marxa; l'Iri fuig pel
+   conducte fins al moll i marxa amb la llançadora nova. L'ordre és lliure: quan una marxa, el joc passa a
+   l'altra, i quan han marxat totes dues surt el final.
 4. **Finals**: el Cargol del present i la seva memòria, la Guàrdia Osset i els tres finals.
 
 **Peces de l'Acte 2 que es fan aquí:** la **Sala de la Memòria** (la foto ratllada del torn de nit, l'holograma

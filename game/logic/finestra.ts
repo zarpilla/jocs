@@ -8,8 +8,8 @@
  *  - L'altra el SINCRONITZA i rep l'objecte que hi hagi a la cambra de qui l'ha armat.
  *  - Un camp armat espera indefinidament la sincronia.
  *  - Només objectes de < 2 kg, inerts, no vius i no líquids (propietats a items.json).
- *  - I només els que la història necessita a l'altra banda (`finestra: true`): així no es pot gastar
- *    una encesa per error enviant un llapis.
+ *  - I només els que la història necessita a l'altra banda, i en el sentit que toca (`finestra: "vet"`
+ *    o `"iri"`, qui l'envia; `true`, totes dues): així no es pot gastar una encesa per error.
  *  - Cada transferència gasta una encesa.
  *  - El ritual sencer (posar, armar, canviar, sincronitzar) només es fa una vegada: quan l'Iri
  *    rep el primer enviament fet a mà (la segona transferència; la primera és l'accident), deixa
@@ -58,7 +58,7 @@ export function motiuRebuig(n: Narrative, item: string, costat: string): string 
   if (props.liquid === true) return 'finestra.rebuig.liquid';
   if (typeof props.pes !== 'number') return 'finestra.rebuig.no_hi_cap';
   if (props.pes >= PES_MAXIM) return 'finestra.rebuig.massa_pesat';
-  if (props.finestra !== true) return `finestra.rebuig.no_cal_${costat}`;
+  if (props.finestra !== true && props.finestra !== costat) return `finestra.rebuig.no_cal_${costat}`;
   return null;
 }
 

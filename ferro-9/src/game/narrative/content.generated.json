@@ -117,7 +117,12 @@
         "iri_sap_reixa": false,
         "reixa_preparada": false,
         "vet_veu_reixa": false,
-        "reixa_oberta": false
+        "reixa_oberta": false,
+        "vet_sap_tub": false,
+        "iri_sap_tub": false,
+        "tub_muntat": false,
+        "vet_fugida": false,
+        "iri_fugida": false
       },
       "vars": {
         "finestra_armada": "",
@@ -451,7 +456,7 @@
         "props": {
           "pes": 0.3,
           "material": "ferro9",
-          "finestra": true
+          "finestra": "iri"
         }
       },
       "nota_iri": {
@@ -459,7 +464,7 @@
         "description": "obj.nota_iri.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "iri"
         },
         "interactions": [
           {
@@ -585,6 +590,9 @@
                 {
                   "flag": "mapa_fuga_escrit",
                   "is": false
+                },
+                {
+                  "flag": "vet_sap_tub"
                 }
               ]
             },
@@ -607,6 +615,26 @@
               },
               {
                 "giveItem": "mapa_fuga"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "fullet_memoria",
+            "if": {
+              "all": [
+                {
+                  "flag": "vet_sap_conducte"
+                },
+                {
+                  "flag": "reixa_mirada"
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llapis_ulls.mapa_tub"
               }
             ]
           },
@@ -856,7 +884,7 @@
         "description": "obj.nota_vet.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -901,7 +929,7 @@
         "description": "obj.nota_pany.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -982,7 +1010,7 @@
         "description": "obj.nota_mida.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -1104,7 +1132,7 @@
         "props": {
           "pes": 1.8,
           "material": "acer",
-          "finestra": true
+          "finestra": "iri"
         },
         "interactions": [
           {
@@ -1215,7 +1243,7 @@
         "props": {
           "pes": 1.8,
           "material": "acer",
-          "finestra": true
+          "finestra": "iri"
         },
         "interactions": [
           {
@@ -1276,7 +1304,7 @@
         "props": {
           "pes": 1.8,
           "material": "acer",
-          "finestra": true
+          "finestra": "iri"
         }
       },
       "biga_muntada": {
@@ -1292,7 +1320,7 @@
         "description": "obj.nota_amagatall.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "iri"
         },
         "interactions": [
           {
@@ -1332,7 +1360,7 @@
         "description": "obj.pols_rovell.desc",
         "props": {
           "pes": 0.2,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -1363,7 +1391,7 @@
         "description": "obj.molla.desc",
         "props": {
           "pes": 0.05,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -1562,7 +1590,7 @@
         "props": {
           "pes": 0.2,
           "material": "ferro9",
-          "finestra": true
+          "finestra": "iri"
         },
         "interactions": [
           {
@@ -1642,7 +1670,7 @@
         "description": "obj.nota_pressio.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -1682,7 +1710,7 @@
         "description": "obj.nota_massa.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -1814,7 +1842,7 @@
         "description": "obj.nota_vet_nom.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -1858,7 +1886,7 @@
         "description": "obj.nota_iri_nom.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "iri"
         },
         "interactions": [
           {
@@ -1931,7 +1959,7 @@
         "description": "obj.mapa_fuga.desc",
         "props": {
           "pes": 0.01,
-          "finestra": true
+          "finestra": "vet"
         },
         "interactions": [
           {
@@ -1955,11 +1983,18 @@
               {
                 "who": "player",
                 "text": "obj.mapa_fuga.iri3"
+              },
+              {
+                "who": "player",
+                "text": "obj.mapa_fuga.iri4"
               }
             ],
             "effects": [
               {
                 "setFlag": "iri_sap_reixa"
+              },
+              {
+                "setFlag": "iri_sap_tub"
               }
             ]
           },
@@ -1969,6 +2004,68 @@
               {
                 "who": "narrator",
                 "text": "obj.mapa_fuga.text"
+              }
+            ]
+          }
+        ]
+      },
+      "tub_ferro9": {
+        "name": "obj.tub_ferro9.nom",
+        "description": "obj.tub_ferro9.desc",
+        "props": {
+          "pes": 1.2,
+          "material": "ferro9"
+        },
+        "interactions": [
+          {
+            "verb": "use",
+            "item": "llibreta_torn",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.tub_ferro9.enrotllar1"
+              },
+              {
+                "who": "player",
+                "text": "obj.tub_ferro9.enrotllar2"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "tub_ferro9"
+              },
+              {
+                "takeItem": "llibreta_torn"
+              },
+              {
+                "giveItem": "tub_amb_llibreta"
+              }
+            ]
+          }
+        ]
+      },
+      "tub_amb_llibreta": {
+        "name": "obj.tub_amb_llibreta.nom",
+        "description": "obj.tub_amb_llibreta.desc",
+        "props": {
+          "pes": 1.5,
+          "material": "ferro9",
+          "finestra": "iri"
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "vet"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.tub_amb_llibreta.vet1"
+              },
+              {
+                "who": "player",
+                "text": "obj.tub_amb_llibreta.vet2"
               }
             ]
           }
@@ -2660,6 +2757,30 @@
               },
               {
                 "verb": "use",
+                "item": "diapaso",
+                "if": {
+                  "flag": "diapaso_afinat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.diapaso_no"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "tub_ferro9",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.tub_sol"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
                 "item": "*",
                 "action": {
                   "name": "finestra.posar",
@@ -2721,6 +2842,38 @@
           "reixa": {
             "name": "sala.fabrica_cambra.reixa.nom",
             "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo",
+                  "pull",
+                  "pickUp",
+                  "push"
+                ],
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "vet"
+                    },
+                    {
+                      "flag": "tub_muntat"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.reixa.fugir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.reixa.fugir2"
+                  }
+                ],
+                "goTo": "fabrica_moll"
+              },
               {
                 "verb": "use",
                 "item": "llima",
@@ -3934,6 +4087,139 @@
             "name": "sala.fabrica_moll.llancadora.nom",
             "interactions": [
               {
+                "verb": [
+                  "open",
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "any": [
+                        {
+                          "hasItem": "tub_amb_llibreta",
+                          "who": "vet"
+                        },
+                        {
+                          "flag": "tub_muntat"
+                        }
+                      ]
+                    },
+                    {
+                      "flag": "iri_fugida",
+                      "is": false
+                    },
+                    {
+                      "flag": "vet_fugida"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llancadora.fugir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llancadora.fugir2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llancadora.fugir3",
+                    "sound": "motor"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "iri_fugida"
+                  },
+                  {
+                    "setFlag": "fugida_completada"
+                  },
+                  {
+                    "event": "final"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "push",
+                  "pull"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "any": [
+                        {
+                          "hasItem": "tub_amb_llibreta",
+                          "who": "vet"
+                        },
+                        {
+                          "flag": "tub_muntat"
+                        }
+                      ]
+                    },
+                    {
+                      "flag": "iri_fugida",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llancadora.fugir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llancadora.fugir2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llancadora.fugir3",
+                    "sound": "motor"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_moll.llancadora.mentrestant"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "iri_fugida"
+                  },
+                  {
+                    "event": "protagonista",
+                    "args": {
+                      "id": "vet"
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "vet"
+                    },
+                    {
+                      "flag": "tub_muntat"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.llancadora.look_fugir"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
@@ -4915,6 +5201,20 @@
               },
               {
                 "verb": "use",
+                "item": "molla",
+                "if": {
+                  "flag": "molla_afinada",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.panell.molla_no"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
                 "item": "*",
                 "action": {
                   "name": "finestra.posar",
@@ -5487,6 +5787,36 @@
                   "pull"
                 ],
                 "if": {
+                  "all": [
+                    {
+                      "flag": "reixa_oberta"
+                    },
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "vet"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "directora",
+                    "text": "sala.gavina_cella.reixa.fugir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.reixa.fugir2"
+                  }
+                ],
+                "goTo": "gavina_hangar"
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo",
+                  "pull"
+                ],
+                "if": {
                   "flag": "reixa_oberta"
                 },
                 "lines": [
@@ -5676,6 +6006,29 @@
           }
         },
         "onEnter": [
+          {
+            "verb": "*",
+            "id": "tub_arribat",
+            "once": true,
+            "if": {
+              "hasItem": "tub_amb_llibreta",
+              "who": "vet"
+            },
+            "lines": [
+              {
+                "who": "directora",
+                "text": "sala.gavina_cella.tub1"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_cella.tub2"
+              },
+              {
+                "who": "directora",
+                "text": "sala.gavina_cella.tub3"
+              }
+            ]
+          },
           {
             "verb": "*",
             "id": "reixa_reajust",
@@ -6202,6 +6555,179 @@
           "llancadora": {
             "name": "sala.gavina_hangar.llancadora.nom",
             "interactions": [
+              {
+                "verb": "use",
+                "item": "tub_amb_llibreta",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.tub1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.tub2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.tub3",
+                    "sound": "eina"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "tub_amb_llibreta"
+                  },
+                  {
+                    "giveItem": "llibreta_torn"
+                  },
+                  {
+                    "setFlag": "tub_muntat"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "tub_muntat"
+                    },
+                    {
+                      "flag": "vet_fugida",
+                      "is": false
+                    },
+                    {
+                      "flag": "iri_fugida"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.fugir1",
+                    "sound": "motor"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.fugir2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.fugir3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_fugida"
+                  },
+                  {
+                    "setFlag": "fugida_completada"
+                  },
+                  {
+                    "event": "final"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "tub_muntat"
+                    },
+                    {
+                      "flag": "vet_fugida",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.fugir1",
+                    "sound": "motor"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.fugir2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.fugir3"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica.descoberta1"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_fugida"
+                  },
+                  {
+                    "event": "protagonista",
+                    "args": {
+                      "id": "iri"
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "tub_muntat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.look_tub"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "flag": "acte3_iniciat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.sense_tub",
+                    "sound": "boto"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_sap_tub"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "acte3_iniciat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.look_sense_tub"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_sap_tub"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -7467,6 +7993,13 @@
             "text": "mis.acte3.obj.reixa",
             "completeWhen": {
               "flag": "reixa_preparada"
+            }
+          },
+          {
+            "id": "component",
+            "text": "mis.acte3.obj.component",
+            "completeWhen": {
+              "flag": "tub_muntat"
             }
           },
           {
@@ -10344,6 +10877,9 @@
             {
               "flag": "mapa_fuga_escrit",
               "is": false
+            },
+            {
+              "flag": "vet_sap_tub"
             }
           ]
         },
@@ -10583,6 +11119,31 @@
             {
               "flag": "reixa_oberta",
               "is": false
+            },
+            {
+              "not": {
+                "any": [
+                  {
+                    "hasItem": "tub_ferro9",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "iri"
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "tub_amb_llibreta",
+                        "who": "vet"
+                      },
+                      {
+                        "flag": "tub_muntat"
+                      }
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10646,6 +11207,267 @@
         "levels": [
           "pista.vet_obrir_reixa.1",
           "pista.vet_obrir_reixa.2"
+        ]
+      },
+      "vet_tub_directora": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "reixa_mirada"
+            },
+            {
+              "flag": "vet_sap_tub",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vet_sap_tub"
+        },
+        "levels": [
+          "pista.vet_tub_directora.1",
+          "pista.vet_tub_directora.2"
+        ]
+      },
+      "iri_tub": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "iri_sap_tub"
+            },
+            {
+              "not": {
+                "any": [
+                  {
+                    "hasItem": "tub_ferro9",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "iri"
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "tub_amb_llibreta",
+                        "who": "vet"
+                      },
+                      {
+                        "flag": "tub_muntat"
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "not": {
+              "any": [
+                {
+                  "hasItem": "tub_ferro9",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "tub_amb_llibreta",
+                  "who": "iri"
+                },
+                {
+                  "any": [
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "vet"
+                    },
+                    {
+                      "flag": "tub_muntat"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "levels": [
+          "pista.iri_tub.1",
+          "pista.iri_tub.2"
+        ]
+      },
+      "iri_tub_llibreta": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "tub_ferro9",
+              "who": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "tub_ferro9",
+          "who": "iri",
+          "is": false
+        },
+        "levels": [
+          "pista.iri_tub_llibreta.1",
+          "pista.iri_tub_llibreta.2",
+          "pista.iri_tub_llibreta.3"
+        ]
+      },
+      "iri_enviar_tub": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "tub_amb_llibreta",
+              "who": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "tub_amb_llibreta",
+          "who": "iri",
+          "is": false
+        },
+        "levels": [
+          "pista.iri_enviar_tub.1",
+          "pista.iri_enviar_tub.2"
+        ]
+      },
+      "iri_fugir": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "any": [
+                {
+                  "hasItem": "tub_amb_llibreta",
+                  "who": "vet"
+                },
+                {
+                  "flag": "tub_muntat"
+                }
+              ]
+            },
+            {
+              "flag": "iri_fugida",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "iri_fugida"
+        },
+        "levels": [
+          "pista.iri_fugir.1",
+          "pista.iri_fugir.2"
+        ]
+      },
+      "vet_esperar_tub": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "reixa_oberta"
+            },
+            {
+              "not": {
+                "any": [
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "vet"
+                  },
+                  {
+                    "flag": "tub_muntat"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "tub_amb_llibreta",
+              "who": "vet"
+            },
+            {
+              "flag": "tub_muntat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_esperar_tub.1",
+          "pista.vet_esperar_tub.2"
+        ]
+      },
+      "vet_tub": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "tub_amb_llibreta",
+              "who": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "tub_amb_llibreta",
+          "who": "vet",
+          "is": false
+        },
+        "levels": [
+          "pista.vet_tub.1",
+          "pista.vet_tub.2",
+          "pista.vet_tub.3"
+        ]
+      },
+      "vet_volar": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "tub_muntat"
+            },
+            {
+              "flag": "vet_fugida",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vet_fugida"
+        },
+        "levels": [
+          "pista.vet_volar.1",
+          "pista.vet_volar.2"
         ]
       }
     },
@@ -10971,6 +11793,41 @@
                 }
               },
               {
+                "id": "tub",
+                "text": "dlg.cargol.opt.tub",
+                "next": "tub",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "iri_sap_tub"
+                    },
+                    {
+                      "hasItem": "tub_ferro9",
+                      "who": "iri",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "iri",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "any": [
+                          {
+                            "hasItem": "tub_amb_llibreta",
+                            "who": "vet"
+                          },
+                          {
+                            "flag": "tub_muntat"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
                 "id": "dia",
                 "text": "dlg.cargol.opt.dia",
                 "once": true,
@@ -11279,6 +12136,28 @@
               }
             ],
             "goto": "menu"
+          },
+          "tub": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.tub1"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.tub2"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.tub3",
+                "effects": [
+                  {
+                    "giveItem": "tub_ferro9"
+                  }
+                ]
+              }
+            ],
+            "goto": "menu"
           }
         }
       },
@@ -11313,6 +12192,15 @@
               {
                 "who": "directora",
                 "text": "dlg.directora.primera3"
+              },
+              {
+                "who": "directora",
+                "text": "dlg.directora.primera4",
+                "effects": [
+                  {
+                    "setFlag": "vet_sap_tub"
+                  }
+                ]
               }
             ],
             "goto": "menu"
@@ -12036,6 +12924,11 @@
       "dlg.brau.opt.enganyar": "Inspector, m'ha semblat veure algú al magatzem del ferro-9.",
       "dlg.brau.enganyar1": "Al magatzem? El lladre!",
       "dlg.brau.enganyar2": "No es mogui d'aquí, operària. I no toqui res.",
+      "dlg.directora.primera4": "Ah, i he fet treure el tub de la vàlvula de la teva llançadora. Per si et venien ganes de viatjar.",
+      "dlg.cargol.opt.tub": "Necessito un tub de vàlvula de ferro-9.",
+      "dlg.cargol.tub1": "Un tub de ferro-9, senyora Iri? El Director diu per megafonia que vostè és una fugitiva.",
+      "dlg.cargol.tub2": "I els fugitius no omplen formularis. No hi ha casella.",
+      "dlg.cargol.tub3": "Té. Que no em vegi ningú donant-l'hi. M'agradaria continuar arxivant.",
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "La veritat a temps",
@@ -12144,6 +13037,7 @@
       "mis.acte3.obj.fugida": "Totes dues: fugiu",
       "mis.acte3.obj.mapa": "Vet: fes arribar el mapa de fuga a l'Iri",
       "mis.acte3.obj.reixa": "Iri: deixa la reixa del conducte a punt per a la Vet",
+      "mis.acte3.obj.component": "Totes dues: el tub de la vàlvula, a la llançadora",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
       "obj.clau_anglesa.vet1": "Una clau anglesa reluent, com acabada de fer. Porta un segell: «Aldaia · Ferro-9 · Lot 1».",
@@ -12326,10 +13220,20 @@
       "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
       "obj.mapa_fuga.nom": "mapa de fuga",
       "obj.mapa_fuga.desc": "El fullet de la Sala de la Memòria, amb la ruta dibuixada per darrere amb llapis d'ulls.",
-      "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. —V.»",
+      "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
       "obj.mapa_fuga.iri1": "Una ruta per fugir. I la V. també la necessita.",
       "obj.mapa_fuga.iri2": "La reixa té quatre cargols d'acer. En cent vint anys, el rovell els soldarà.",
       "obj.mapa_fuga.iri3": "Si els llimo fins que s'aguantin per un fil, no hi quedarà res per soldar.",
+      "obj.llapis_ulls.mapa_tub": "Abans de dibuixar res, vull saber què em vol la Directora.",
+      "obj.mapa_fuga.iri4": "I un tub de vàlvula per a la llançadora. De ferro-9, que aguanti cent vint anys d'espera.",
+      "obj.tub_ferro9.nom": "tub de ferro-9",
+      "obj.tub_ferro9.desc": "Un tub de vàlvula de ferro-9. Buit per dins.",
+      "obj.tub_ferro9.enrotllar1": "Enrotllo la llibreta de torn i la fico dins el tub. Hi ho he apuntat tot: la cambra, el Director, la Mira.",
+      "obj.tub_ferro9.enrotllar2": "Un sol objecte, d'un quilo i mig. Hi passarà.",
+      "obj.tub_amb_llibreta.nom": "tub amb la llibreta",
+      "obj.tub_amb_llibreta.desc": "El tub de vàlvula de ferro-9, amb la llibreta de torn de l'Iri enrotllada a dins.",
+      "obj.tub_amb_llibreta.vet1": "Un tub de vàlvula, nou. I a dins hi ha alguna cosa enrotllada.",
+      "obj.tub_amb_llibreta.vet2": "Ja ho miraré a l'hangar. Aquí la Directora no em treu els ulls de sobre.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -12564,6 +13468,24 @@
       "pista.vet_esperar_reixa.2": "Canvia a l'Iri.",
       "pista.vet_obrir_reixa.1": "La reixa ha canviat.",
       "pista.vet_obrir_reixa.2": "Obre la reixa de la cel·la.",
+      "pista.vet_tub_directora.1": "Abans de planejar res, vull saber què vol de mi la Directora.",
+      "pista.vet_tub_directora.2": "Parla amb la Directora, o mira la llançadora de l'hangar.",
+      "pista.iri_tub.1": "Un tub de vàlvula de ferro-9. Qui guarda peces, en aquesta fàbrica?",
+      "pista.iri_tub.2": "Demana-li un tub al Cargol, al magatzem.",
+      "pista.iri_tub_llibreta.1": "Només em queda un enviament, i la llibreta amb les proves també ha d'arribar.",
+      "pista.iri_tub_llibreta.2": "El tub és buit per dins.",
+      "pista.iri_tub_llibreta.3": "Fes servir la llibreta de torn amb el tub.",
+      "pista.iri_enviar_tub.1": "Tot a punt. A la cambra.",
+      "pista.iri_enviar_tub.2": "Posa el tub a la cambra.",
+      "pista.iri_fugir.1": "La V. ja té el tub. Ara em toca a mi.",
+      "pista.iri_fugir.2": "Fuig per la reixa del conducte i, al moll, puja a la llançadora.",
+      "pista.vet_esperar_tub.1": "La I. m'ha d'enviar el tub.",
+      "pista.vet_esperar_tub.2": "Canvia a l'Iri.",
+      "pista.vet_tub.1": "La Directora vol el tub. Hora de marxar.",
+      "pista.vet_tub.2": "Per la reixa, fins a l'hangar.",
+      "pista.vet_tub.3": "Fes servir el tub amb la llançadora.",
+      "pista.vet_volar.1": "La llançadora té el tub. Aquí ja no em queda res.",
+      "pista.vet_volar.2": "Engega la llançadora.",
       "sala.fabrica_calderes.capatas.look1": "El capatàs Pruna. Dorm abraçat al segell oficial com si fos un osset de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
       "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Pruna?",
@@ -12970,7 +13892,31 @@
       "sala.fabrica_cambra.reixa.look_mapa": "La reixa del conducte de servei: quatre cargols d'acer. D'aquí a cent vint anys, el rovell els soldarà.",
       "sala.fabrica_cambra.reixa.look": "Una reixa de ventilació arran de terra, amb quatre cargols d'acer. Darrere, el conducte de servei.",
       "sala.fabrica_cambra.reixa.encara_no": "Encara no. Per aquí fugiré, però no fins que la V. estigui a punt.",
-      "sala.fabrica_cambra.reixa.cargolada": "Ben cargolada. Quatre cargols d'acer, nous de trinca."
+      "sala.fabrica_cambra.reixa.cargolada": "Ben cargolada. Quatre cargols d'acer, nous de trinca.",
+      "sala.gavina_cella.panell.molla_no": "Encara no sona com el pany. Si l'envio així, la I. afinarà una nota equivocada.",
+      "sala.gavina_cella.tub1": "Què t'ha arribat, interna? Una canonada? Dona-me-la.",
+      "sala.gavina_cella.tub2": "Ni parlar-ne.",
+      "sala.gavina_cella.tub3": "MARE, avisa els guàrdies. La interna 9 ja no és reeducable.",
+      "sala.gavina_cella.reixa.fugir1": "On vas? Atureu-la!",
+      "sala.gavina_cella.reixa.fugir2": "Massa tard. Ja soc dins el conducte, seguint les fletxes de la I.",
+      "sala.fabrica_cambra.cambra.diapaso_no": "Encara no sona com la molla. Si l'envio així, a la V. no li servirà de res.",
+      "sala.fabrica_cambra.cambra.tub_sol": "Si envio el tub sol, la llibreta amb les proves es queda aquí. Ha de ser tot en un sol enviament.",
+      "sala.fabrica_cambra.reixa.fugir1": "Ara sí. Aparto la reixa, que surt com si res, i m'hi fico.",
+      "sala.fabrica_cambra.reixa.fugir2": "Segueixo les meves pròpies fletxes fins al moll. Qui m'ho havia de dir.",
+      "sala.fabrica_moll.llancadora.look_fugir": "La llançadora, nova de trinca. I avui ningú no la vigila.",
+      "sala.fabrica_moll.llancadora.fugir1": "Pujo a la llançadora. Diuen que pot arribar fins a la Lluna. Ho comprovarem.",
+      "sala.fabrica_moll.llancadora.fugir2": "Adeu, Director. Adeu, formulari 27-B.",
+      "sala.fabrica_moll.llancadora.fugir3": "La comporta s'obre i la fàbrica es fa petita. Desapareguda, diran. Que ho diguin.",
+      "sala.fabrica_moll.llancadora.mentrestant": "Mentrestant, cent vint anys després...",
+      "sala.gavina_hangar.llancadora.tub1": "Desenrotllo la llibreta de dins el tub. És la llibreta de torn de la I.: la cambra, el Director, les proves. Tot.",
+      "sala.gavina_hangar.llancadora.tub2": "Me la guardo. Algú l'haurà de llegir.",
+      "sala.gavina_hangar.llancadora.tub3": "I munto el tub on hi havia l'altre. Ferro-9: aquest no el treu ningú.",
+      "sala.gavina_hangar.llancadora.look_tub": "La llançadora, amb el tub nou. A punt per marxar.",
+      "sala.gavina_hangar.llancadora.fugir1": "Premo el botó d'engegada. El motor arrenca a la primera.",
+      "sala.gavina_hangar.llancadora.fugir2": "La comporta s'obre a l'espai. Adeu, Gavina. Adeu, MARE.",
+      "sala.gavina_hangar.llancadora.fugir3": "I gràcies, I. Ara et toca a tu.",
+      "sala.gavina_hangar.llancadora.sense_tub": "Premo el botó d'engegada. Res. Sense el tub de la vàlvula, la pressió no arriba al motor.",
+      "sala.gavina_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»"
     }
   },
   "locale": "ca"

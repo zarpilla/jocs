@@ -424,6 +424,20 @@
         },
         {
           "verb": "use",
+          "item": "molla",
+          "if": {
+            "flag": "molla_afinada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.molla_no"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "*",
           "action": {
             "name": "finestra.posar",
@@ -996,6 +1010,36 @@
             "pull"
           ],
           "if": {
+            "all": [
+              {
+                "flag": "reixa_oberta"
+              },
+              {
+                "hasItem": "tub_amb_llibreta",
+                "who": "vet"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.reixa.fugir1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.fugir2"
+            }
+          ],
+          "goTo": "gavina_hangar"
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "pull"
+          ],
+          "if": {
             "flag": "reixa_oberta"
           },
           "lines": [
@@ -1185,6 +1229,29 @@
     }
   },
   "onEnter": [
+    {
+      "verb": "*",
+      "id": "tub_arribat",
+      "once": true,
+      "if": {
+        "hasItem": "tub_amb_llibreta",
+        "who": "vet"
+      },
+      "lines": [
+        {
+          "who": "directora",
+          "text": "sala.gavina_cella.tub1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_cella.tub2"
+        },
+        {
+          "who": "directora",
+          "text": "sala.gavina_cella.tub3"
+        }
+      ]
+    },
     {
       "verb": "*",
       "id": "reixa_reajust",

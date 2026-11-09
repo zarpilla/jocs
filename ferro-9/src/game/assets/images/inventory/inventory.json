@@ -902,6 +902,48 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 43.aseprite": {
+      "frame": {
+        "x": 2107,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 44.aseprite": {
+      "frame": {
+        "x": 2156,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -910,7 +952,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2107,
+      "w": 2205,
       "h": 27
     },
     "scale": "1",
@@ -1213,6 +1255,20 @@
         "name": "mapa_fuga",
         "from": 42,
         "to": 42,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tub_ferro9",
+        "from": 43,
+        "to": 43,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tub_amb_llibreta",
+        "from": 44,
+        "to": 44,
         "direction": "forward",
         "color": "#000000ff"
       }

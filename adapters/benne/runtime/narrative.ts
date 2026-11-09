@@ -70,6 +70,16 @@ export function takePendingSwitch() {
   return who;
 }
 
+/** Esdeveniment de contingut que acaba el joc amb el final que toca (`{ "event": "final" }`). */
+export const ENDING_EVENT = 'final';
+let pendingEnding = false;
+/** Si l'última interacció ha acabat el joc (i ho esborra). */
+export function takePendingEnding() {
+  const yes = pendingEnding;
+  pendingEnding = false;
+  return yes;
+}
+
 // ─── Persistència: l'estat narratiu viatja dins les partides de Benne ───────
 
 const store = defineVars({
@@ -132,6 +142,7 @@ narrative.on((e) => {
       break;
     case 'custom':
       if (e.name === SWITCH_EVENT) pendingSwitch = String(e.args.id);
+      if (e.name === ENDING_EVENT) pendingEnding = true;
       events.emit(`narrative:${e.name}`, e.args);
       break;
     default:

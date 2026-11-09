@@ -468,6 +468,179 @@
       "name": "sala.gavina_hangar.llancadora.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "tub_amb_llibreta",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tub1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tub2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tub3",
+              "sound": "eina"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "tub_amb_llibreta"
+            },
+            {
+              "giveItem": "llibreta_torn"
+            },
+            {
+              "setFlag": "tub_muntat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "tub_muntat"
+              },
+              {
+                "flag": "vet_fugida",
+                "is": false
+              },
+              {
+                "flag": "iri_fugida"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir1",
+              "sound": "motor"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_fugida"
+            },
+            {
+              "setFlag": "fugida_completada"
+            },
+            {
+              "event": "final"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "tub_muntat"
+              },
+              {
+                "flag": "vet_fugida",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir1",
+              "sound": "motor"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica.descoberta1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_fugida"
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tub_muntat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.look_tub"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.sense_tub",
+              "sound": "boto"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_tub"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.look_sense_tub"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_tub"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "if": {
             "flag": "motor_engegat"

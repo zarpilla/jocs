@@ -218,6 +218,13 @@
         }
       },
       {
+        "id": "component",
+        "text": "mis.acte3.obj.component",
+        "completeWhen": {
+          "flag": "tub_muntat"
+        }
+      },
+      {
         "id": "fugida",
         "text": "mis.acte3.obj.fugida",
         "completeWhen": {

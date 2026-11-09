@@ -11,7 +11,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   adoptLoadedState, applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  rememberProtagonistRoom, roomProtagonist, takePendingSwitch, targetFromBenne,
+  rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
 /** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
@@ -33,6 +33,11 @@ export function playLines(lines: ResolvedLine[]) {
 /** Fa el que diu el resultat d'una interacció: línies, diàleg, canvi de protagonista o de sala. */
 export function playResult(result: InteractionResult) {
   playLines(result.lines)
+  if (takePendingEnding()) {
+    takePendingSwitch()
+    playEnding()
+    return
+  }
   if (result.dialogue) {
     const dialog = benneDialog(result.dialogue)
     if (dialog) dialog.start()

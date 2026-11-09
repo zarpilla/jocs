@@ -30,6 +30,15 @@
         {
           "who": "directora",
           "text": "dlg.directora.primera3"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.primera4",
+          "effects": [
+            {
+              "setFlag": "vet_sap_tub"
+            }
+          ]
         }
       ],
       "goto": "menu"

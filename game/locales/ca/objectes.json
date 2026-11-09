@@ -181,8 +181,18 @@
   "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
   "obj.mapa_fuga.nom": "mapa de fuga",
   "obj.mapa_fuga.desc": "El fullet de la Sala de la Memòria, amb la ruta dibuixada per darrere amb llapis d'ulls.",
-  "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. —V.»",
+  "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
   "obj.mapa_fuga.iri1": "Una ruta per fugir. I la V. també la necessita.",
   "obj.mapa_fuga.iri2": "La reixa té quatre cargols d'acer. En cent vint anys, el rovell els soldarà.",
-  "obj.mapa_fuga.iri3": "Si els llimo fins que s'aguantin per un fil, no hi quedarà res per soldar."
+  "obj.mapa_fuga.iri3": "Si els llimo fins que s'aguantin per un fil, no hi quedarà res per soldar.",
+  "obj.llapis_ulls.mapa_tub": "Abans de dibuixar res, vull saber què em vol la Directora.",
+  "obj.mapa_fuga.iri4": "I un tub de vàlvula per a la llançadora. De ferro-9, que aguanti cent vint anys d'espera.",
+  "obj.tub_ferro9.nom": "tub de ferro-9",
+  "obj.tub_ferro9.desc": "Un tub de vàlvula de ferro-9. Buit per dins.",
+  "obj.tub_ferro9.enrotllar1": "Enrotllo la llibreta de torn i la fico dins el tub. Hi ho he apuntat tot: la cambra, el Director, la Mira.",
+  "obj.tub_ferro9.enrotllar2": "Un sol objecte, d'un quilo i mig. Hi passarà.",
+  "obj.tub_amb_llibreta.nom": "tub amb la llibreta",
+  "obj.tub_amb_llibreta.desc": "El tub de vàlvula de ferro-9, amb la llibreta de torn de l'Iri enrotllada a dins.",
+  "obj.tub_amb_llibreta.vet1": "Un tub de vàlvula, nou. I a dins hi ha alguna cosa enrotllada.",
+  "obj.tub_amb_llibreta.vet2": "Ja ho miraré a l'hangar. Aquí la Directora no em treu els ulls de sobre."
 }

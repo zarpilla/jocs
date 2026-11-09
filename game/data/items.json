@@ -256,7 +256,7 @@
     "props": {
       "pes": 0.3,
       "material": "ferro9",
-      "finestra": true
+      "finestra": "iri"
     }
   },
   "nota_iri": {
@@ -264,7 +264,7 @@
     "description": "obj.nota_iri.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "iri"
     },
     "interactions": [
       {
@@ -390,6 +390,9 @@
             {
               "flag": "mapa_fuga_escrit",
               "is": false
+            },
+            {
+              "flag": "vet_sap_tub"
             }
           ]
         },
@@ -412,6 +415,26 @@
           },
           {
             "giveItem": "mapa_fuga"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_memoria",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_sap_conducte"
+            },
+            {
+              "flag": "reixa_mirada"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa_tub"
           }
         ]
       },
@@ -661,7 +684,7 @@
     "description": "obj.nota_vet.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -706,7 +729,7 @@
     "description": "obj.nota_pany.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -787,7 +810,7 @@
     "description": "obj.nota_mida.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -909,7 +932,7 @@
     "props": {
       "pes": 1.8,
       "material": "acer",
-      "finestra": true
+      "finestra": "iri"
     },
     "interactions": [
       {
@@ -1020,7 +1043,7 @@
     "props": {
       "pes": 1.8,
       "material": "acer",
-      "finestra": true
+      "finestra": "iri"
     },
     "interactions": [
       {
@@ -1081,7 +1104,7 @@
     "props": {
       "pes": 1.8,
       "material": "acer",
-      "finestra": true
+      "finestra": "iri"
     }
   },
   "biga_muntada": {
@@ -1097,7 +1120,7 @@
     "description": "obj.nota_amagatall.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "iri"
     },
     "interactions": [
       {
@@ -1137,7 +1160,7 @@
     "description": "obj.pols_rovell.desc",
     "props": {
       "pes": 0.2,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -1168,7 +1191,7 @@
     "description": "obj.molla.desc",
     "props": {
       "pes": 0.05,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -1367,7 +1390,7 @@
     "props": {
       "pes": 0.2,
       "material": "ferro9",
-      "finestra": true
+      "finestra": "iri"
     },
     "interactions": [
       {
@@ -1447,7 +1470,7 @@
     "description": "obj.nota_pressio.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -1487,7 +1510,7 @@
     "description": "obj.nota_massa.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -1619,7 +1642,7 @@
     "description": "obj.nota_vet_nom.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -1663,7 +1686,7 @@
     "description": "obj.nota_iri_nom.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "iri"
     },
     "interactions": [
       {
@@ -1736,7 +1759,7 @@
     "description": "obj.mapa_fuga.desc",
     "props": {
       "pes": 0.01,
-      "finestra": true
+      "finestra": "vet"
     },
     "interactions": [
       {
@@ -1760,11 +1783,18 @@
           {
             "who": "player",
             "text": "obj.mapa_fuga.iri3"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri4"
           }
         ],
         "effects": [
           {
             "setFlag": "iri_sap_reixa"
+          },
+          {
+            "setFlag": "iri_sap_tub"
           }
         ]
       },
@@ -1774,6 +1804,68 @@
           {
             "who": "narrator",
             "text": "obj.mapa_fuga.text"
+          }
+        ]
+      }
+    ]
+  },
+  "tub_ferro9": {
+    "name": "obj.tub_ferro9.nom",
+    "description": "obj.tub_ferro9.desc",
+    "props": {
+      "pes": 1.2,
+      "material": "ferro9"
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tub_ferro9.enrotllar1"
+          },
+          {
+            "who": "player",
+            "text": "obj.tub_ferro9.enrotllar2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "tub_ferro9"
+          },
+          {
+            "takeItem": "llibreta_torn"
+          },
+          {
+            "giveItem": "tub_amb_llibreta"
+          }
+        ]
+      }
+    ]
+  },
+  "tub_amb_llibreta": {
+    "name": "obj.tub_amb_llibreta.nom",
+    "description": "obj.tub_amb_llibreta.desc",
+    "props": {
+      "pes": 1.5,
+      "material": "ferro9",
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet2"
           }
         ]
       }

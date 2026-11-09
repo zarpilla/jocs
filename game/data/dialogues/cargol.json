@@ -133,6 +133,41 @@
           }
         },
         {
+          "id": "tub",
+          "text": "dlg.cargol.opt.tub",
+          "next": "tub",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_tub"
+              },
+              {
+                "hasItem": "tub_ferro9",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "hasItem": "tub_amb_llibreta",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "not": {
+                  "any": [
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "vet"
+                    },
+                    {
+                      "flag": "tub_muntat"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
           "id": "dia",
           "text": "dlg.cargol.opt.dia",
           "once": true,
@@ -438,6 +473,28 @@
             "hasItem": "formulari_triplicat",
             "is": false
           }
+        }
+      ],
+      "goto": "menu"
+    },
+    "tub": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.tub1"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.tub2"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.tub3",
+          "effects": [
+            {
+              "giveItem": "tub_ferro9"
+            }
+          ]
         }
       ],
       "goto": "menu"

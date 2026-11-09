@@ -31,6 +31,13 @@
       "say": false
     },
     {
+      "id": "menu__tub",
+      "scriptName": "menu__tub",
+      "text": "Necessito un tub de vàlvula de ferro-9.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__dia",
       "scriptName": "menu__dia",
       "text": "Com estàs, Cargol?",

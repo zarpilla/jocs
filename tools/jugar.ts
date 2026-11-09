@@ -109,6 +109,8 @@ Pots fer servir els noms o els [ids].${c.off}`);
 async function main() {
   console.log(`${c.bold}${n.t(content.manifest.title)}${c.off} — mode text`);
   help();
+  let acabat = false;
+  n.on((e) => { if (e.type === 'custom' && e.name === 'final') acabat = true; });
   print(p.newGame());
   describeRoom();
   for (;;) {
@@ -171,6 +173,14 @@ async function main() {
         const d = p.pendingDialogue;
         p.pendingDialogue = null;
         await runDialogue(d);
+      }
+      if (acabat) {
+        const id = n.resolveEnding();
+        if (id) {
+          const f = n.ending(id);
+          console.log(`\n${c.bold}${f.title}${c.off}\n${f.text}\n\n${n.t('ui.fi')}`);
+        }
+        break;
       }
       if (p.room !== before || p.active !== activeBefore) describeRoom();
     } catch (e) {
