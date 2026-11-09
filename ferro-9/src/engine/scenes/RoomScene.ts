@@ -1867,6 +1867,12 @@ export class RoomScene extends Phaser.Scene {
   }
 
   /**
+   * Set during a room's enter handlers (Bennescript `stayBlackOnEnter()`): the room transition skips
+   * its fade-in and leaves the screen black, so a title can be shown before the room is revealed.
+   */
+  holdScreenFadeOnEnter = false;
+
+  /**
    * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
    * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
    */

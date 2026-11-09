@@ -406,7 +406,11 @@ export class RoomTransitionOrchestrator {
         await entranceSound.prepareForPlayback();
       }
 
-      if (skipEnterFadeIn) {
+      if (roomScene.holdScreenFadeOnEnter) {
+        // The script wants to start on black (e.g. a title card); it fades in itself later.
+        roomScene.holdScreenFadeOnEnter = false;
+        roomScene.screenFadeLayer?.setAlpha(1);
+      } else if (skipEnterFadeIn) {
         roomScene.screenFadeLayer?.setAlpha(0);
       } else {
         syncBenneRuntimeHiDpiSceneMainCameras(this.game);

@@ -311,6 +311,15 @@ function screenFade(toAlpha: number, seconds?: number, color?: number): Task {
   );
 }
 
+/**
+ * Called from a room-enter handler (`onEnter`, `game.onEnterAnyRoom`): the room is not revealed —
+ * the screen stays black until a later `fadeIn()`. For title cards shown before a room appears.
+ */
+export function stayBlackOnEnter(): void {
+  const scene = roomFor('stayBlackOnEnter');
+  if (scene) scene.holdScreenFadeOnEnter = true;
+}
+
 /** Fades the screen to `color` (black by default) over `seconds`. Waits. */
 export const fadeOut = timed((seconds?: number, color?: number): Task => screenFade(1, seconds, color));
 

@@ -14,6 +14,7 @@ export {
   inventory,
   player,
   say,
+  stayBlackOnEnter,
   wait,
   waitForClick,
   walkToClicked,

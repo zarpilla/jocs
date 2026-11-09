@@ -7,7 +7,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { SfxHandle, display, fadeIn, fadeOut, player, wait } from '@benne/script';
+import { SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
@@ -98,7 +98,16 @@ export function onRoomEntered() {
   }
   applyHotspotVisibility()
   applyAppearances()
+  // L'onEnter es resol ara, abans del fos, i es reprodueix després (`enterNarrativeRoom`). Si comença
+  // amb un títol, la pantalla es posa a negre ja: si no, es veuria la sala, s'enfosquiria i tornaria.
+  narrative.worldChanged()
+  const result = narrative.enterRoom(room)
+  entrada = { room, result }
+  if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
 }
+
+/** L'onEnter de la sala on acabem d'entrar, resolt abans del fos (vegeu `onRoomEntered`). */
+let entrada: { room: string; result: InteractionResult | null } | null = null
 
 /** Va a la sala on és una protagonista (i, en entrar-hi, se'n pren el control). */
 export function goToProtagonist(who: string) {
@@ -112,8 +121,14 @@ export function enterNarrativeRoom() {
   adoptLoadedState()
   const room = narrative.world.currentRoom()
   if (!room) return
-  narrative.worldChanged()
-  const result = narrative.enterRoom(room)
+  let result: InteractionResult | null
+  if (entrada?.room === room) {
+    result = entrada.result
+  } else {
+    narrative.worldChanged()
+    result = narrative.enterRoom(room)
+  }
+  entrada = null
   if (!result) return
   const cutscene = narrative.content.rooms[room]?.cutscene
   if (!cutscene) {
