@@ -115,6 +115,13 @@ async function main() {
   help();
   let acabat = false;
   n.on((e) => { if (e.type === 'custom' && e.name === 'final') acabat = true; });
+  // El pròleg: les sales de cinemàtica, l'una darrere l'altra (amb el `goTo` de cada una).
+  for (let r = content.manifest.intro; r && content.rooms[r]?.cutscene;) {
+    const res = n.enterRoom(r);
+    if (!res) break;
+    print(res.lines);
+    r = res.goTo;
+  }
   print(p.newGame());
   describeRoom();
   for (;;) {

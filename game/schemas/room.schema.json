@@ -34,6 +34,16 @@
           },
           "description": "Decorats condicionals: dibuixos que es veuen quan es compleix `visibleIf`, però no es poden clicar (p. ex. un panell obert damunt del panell tancat). Els clics passen a la cosa de sota."
         },
+        "cutscene": {
+          "type": "object",
+          "properties": {
+            "skipTo": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "additionalProperties": false,
+          "description": "Sala de cinemàtica (p. ex. el pròleg): no hi ha res per clicar ni cap protagonista, l'adaptador amaga la interfície, i l'`onEnter` es reprodueix sol fins al `goTo`. Si el jugador la salta, es va directament a `skipTo`."
+        },
         "$schema": {
           "type": "string"
         }

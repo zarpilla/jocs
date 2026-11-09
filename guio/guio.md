@@ -129,6 +129,20 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 
 ## Estructura en tres actes
 
+### Pròleg
+
+Quatre pantalles sense res per clicar, abans de l'Acte 1 (es poden saltar amb Esc):
+
+1. **L'espai:** la Terra i La Gavina en òrbita, amb les ales de panells solars com una gavina. «La Gavina. Presó
+   orbital. Aquí hi tanquen els qui planten cara a la Corporació Aldaia.»
+2. **La cel·la 9, de nit:** la Vet dorm i el panell de la paret vibra. «Fa dies que la paret vibra. Ningú no sap
+   per què.»
+3. **«Cent vint anys abans...»:** la fàbrica de ferro-9 de nit, amb xemeneies, fum i el canal. «De les restes
+   d'aquesta fàbrica, un dia, en construiran La Gavina.»
+4. **La cambra de ressonància**, tenyida de vermell: «I salta una alarma que no havia sonat mai.»
+
+Després, «Ferro-9» i «Acte 1 · La descoberta».
+
 ### Acte 1 — «La descoberta» (tutorial)
 
 **Objectiu:** aprendre a armar i sincronitzar, i descobrir que a l'altre costat hi ha algú.

@@ -87,7 +87,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   const config = readJson(configPath);
   config.name = content.manifest.id;
   config.startingPlayerCharacter = first;
-  config.startingRoomId = content.manifest.start?.[first]?.room ?? config.startingRoomId;
+  config.startingRoomId = content.manifest.intro ?? content.manifest.start?.[first]?.room ?? config.startingRoomId;
   // Els inventaris inicials els reparteix el nucli (game.json → start).
   config.initialGameState = { flags: {}, variables: {}, inventory: [] };
   config.defaultFallbackLine = t('ui.defecte', String(config.defaultFallbackLine ?? ''));

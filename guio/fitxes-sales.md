@@ -136,6 +136,28 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `guardia` | Guàrdia d'Orís | personatge | `{"flag":"mira_salvada"}` | talkTo, look |
 | `rajola` | rajola solta | prop | `{"flag":"nota_perduda_2","is":false}` | open, pickUp, pull, push, use, look |
 
+## Sense protagonista
+
+### La cambra · `proleg_cambra`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### Cel·la 9 · `proleg_cella`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### La fàbrica · `proleg_fabrica`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### La Gavina · `proleg_gavina`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
 ## Objectes d'inventari
 
 | Id | Nom | Pes | Altres |

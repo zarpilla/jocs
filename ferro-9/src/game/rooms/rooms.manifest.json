@@ -1,5 +1,5 @@
 {
-  "startRoomId": "fabrica_calderes",
+  "startRoomId": "proleg_gavina",
   "rooms": [
     {
       "id": "fabrica_calderes",
@@ -40,6 +40,22 @@
     {
       "id": "gavina_memoria",
       "definition": "gavina_memoria/gavina_memoria.room.json"
+    },
+    {
+      "id": "proleg_cambra",
+      "definition": "proleg_cambra/proleg_cambra.room.json"
+    },
+    {
+      "id": "proleg_cella",
+      "definition": "proleg_cella/proleg_cella.room.json"
+    },
+    {
+      "id": "proleg_fabrica",
+      "definition": "proleg_fabrica/proleg_fabrica.room.json"
+    },
+    {
+      "id": "proleg_gavina",
+      "definition": "proleg_gavina/proleg_gavina.room.json"
     }
   ]
 }

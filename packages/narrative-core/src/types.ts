@@ -70,6 +70,11 @@ export interface GameManifest {
   protagonists: Id[];
   /** On comença cada protagonista i què porta a l'inventari. */
   start?: Record<Id, { room: Id; items?: Id[] }>;
+  /**
+   * Sala on comença la partida abans de la de la primera protagonista: un pròleg fet de sales
+   * `cutscene` que es porten l'una a l'altra amb `goTo`.
+   */
+  intro?: Id;
 }
 
 /** Declaració de flags i variables amb el seu valor inicial (`state.json`). */
@@ -154,6 +159,12 @@ export interface RoomDef {
    * clicar (p. ex. un panell obert damunt del panell tancat). Els clics passen a la cosa de sota.
    */
   decor?: Record<Id, DecorDef>;
+  /**
+   * Sala de cinemàtica (p. ex. el pròleg): no hi ha res per clicar ni cap protagonista, l'adaptador
+   * amaga la interfície, i l'`onEnter` es reprodueix sol fins al `goTo`. Si el jugador la salta,
+   * es va directament a `skipTo`.
+   */
+  cutscene?: { skipTo?: Id };
 }
 
 export interface DecorDef {

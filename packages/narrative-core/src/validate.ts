@@ -156,6 +156,11 @@ export function validateContent(
     if (!rooms[start.room]) err('game.json.start', `Sala desconeguda "${start.room}".`);
     for (const item of start.items ?? []) if (!items[item]) err('game.json.start', `Objecte desconegut "${item}".`);
   }
+  if (manifest.intro && !rooms[manifest.intro]) err('game.json.intro', `Sala desconeguda "${manifest.intro}".`);
+  for (const [rid, room] of Object.entries(rooms)) {
+    const skip = room.cutscene?.skipTo;
+    if (skip && !rooms[skip]) err(`rooms.${rid}.cutscene`, `Sala desconeguda "${skip}".`);
+  }
   if (!manifest.locales.includes(manifest.defaultLocale)) err('game.json', `defaultLocale no és a locales.`);
   for (const k of [...Object.keys(state.flags), ...Object.keys(state.vars)]) id('state.json', k);
 

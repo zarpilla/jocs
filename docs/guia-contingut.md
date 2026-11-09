@@ -157,6 +157,13 @@ si en falta algun.
 
 Un `{ "event": "final" }` acaba el joc amb el final que toqui (`endings.json`).
 
+## Pròleg i cinemàtiques
+
+Una sala amb `"cutscene": { "skipTo": "<sala>" }` és una cinemàtica: no té res per clicar ni protagonista,
+l'adaptador amaga la barra de verbs, i el seu `onEnter` es reprodueix sol fins al `goTo`, que porta a la
+pantalla següent. Amb Esc se salta tot i es va directament a `skipTo`. Per començar la partida amb un pròleg,
+`game.json` porta `"intro": "<primera sala>"`. Les imatges de les pantalles es dibuixen com les de les sales.
+
 Cada final té un títol (`title`), una escena opcional (`scene`) i un text de tancament (`text`). L'escena és una
 llista de línies com les d'una interacció, amb `if` per explicar el que passa després segons la partida (p. ex.
 «En Mos surt de la presó» només si la Vet li va tornar la carta). A Benne es mostren sobre negre; si parla un

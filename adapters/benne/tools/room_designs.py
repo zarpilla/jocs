@@ -1320,6 +1320,127 @@ MEMORIA = {
 }
 
 
+
+# ─── El pròleg: quatre pantalles sense res per clicar ───────────────────────
+# Ocupen tota la imatge (sense barra de verbs). Les sales són `cutscene` al contingut.
+
+def _estels(c, n, seed, y1=H):
+    rnd = random.Random(seed)
+    for _ in range(n):
+        x, y = rnd.randint(0, W), rnd.randint(0, y1)
+        b = rnd.randint(150, 255)
+        c.px(x, y, (b, b, min(255, b + 20)))
+
+
+def proleg_gavina_bg(c):
+    c.vgrad(0, 0, W, H, (4, 6, 16), (10, 16, 40))
+    _estels(c, 90, 7)
+    # La Terra, enorme, a baix a la dreta
+    c.glow(290, 250, 150, (90, 150, 255), 0.6)
+    c.ellipse(170, 130, 410, 370, (36, 90, 190))
+    c.ellipse(200, 150, 260, 185, (70, 140, 80)); c.ellipse(240, 170, 300, 200, (80, 150, 86))
+    c.ellipse(300, 145, 345, 165, (90, 156, 92)); c.ellipse(320, 175, 352, 198, (70, 140, 80))
+    c.ellipse(215, 140, 250, 150, (232, 240, 255)); c.ellipse(275, 160, 320, 170, (232, 240, 255))
+    c.d.arc([170, 130, 410, 370], 180, 360, fill=(160, 210, 255), width=2)
+    # La Gavina: un cos central i dues ales de panells solars doblegades, com una gavina planant
+    cx, cy = 120, 70
+    for sign in (-1, 1):
+        colze = (cx + sign * 46, cy - 26)
+        punta = (cx + sign * 96, cy - 8)
+        interior = [(cx + sign * 10, cy - 4), colze, (colze[0] + sign * 4, colze[1] + 9), (cx + sign * 12, cy + 6)]
+        exterior = [colze, punta, (punta[0] - sign * 2, punta[1] + 7), (colze[0] + sign * 4, colze[1] + 9)]
+        for ala in (interior, exterior):
+            c.d.polygon(ala, fill=(48, 66, 110), outline=(130, 160, 210))
+        for k in range(1, 4):
+            t = k / 4
+            c.line([(cx + sign * (10 + 36 * t), cy - 4 - 22 * t), (cx + sign * (12 + 38 * t), cy + 6 - 19 * t)], (90, 120, 170))
+            c.line([(colze[0] + sign * 50 * t, colze[1] + 18 * t), (colze[0] + sign * (4 + 44 * t), colze[1] + 9 + 4 * t)], (90, 120, 170))
+    c.ellipse(cx - 14, cy - 9, cx + 14, cy + 9, (150, 160, 172))
+    c.ellipse(cx - 14, cy - 9, cx + 14, cy + 1, (190, 198, 208))
+    c.rect(cx - 2, cy + 8, cx + 2, cy + 18, (120, 128, 140))                  # el moll de càrrega
+    for x in range(cx - 10, cx + 11, 4):
+        c.px(x, cy + 2, (60, 66, 80))
+    c.px(cx + 6, cy + 3, (255, 210, 120))                                      # una sola finestra encesa
+    c.glow(cx + 6, cy + 3, 6, (255, 200, 120), 0.8)
+    vignette(c, 110)
+
+
+def proleg_cella_bg(c):
+    cella_bg(c)
+    c.shade(0, 0, W, H, (6, 10, 30), 170)                                      # és de nit
+    # La Vet dorm a la llitera
+    c.ellipse(282, 92, 338, 108, (60, 40, 30))                                 # la manta
+    c.ellipse(276, 88, 292, 100, (200, 196, 184))                              # el cabell platí
+    # El panell vibra i fa llum
+    c.glow(192, 75, 40, (110, 200, 255), 0.9)
+    c.d.rectangle([176, 58, 208, 92], outline=(150, 220, 255))
+    for i, x in enumerate((168, 214)):
+        sx = -1 if i == 0 else 1
+        for k in range(3):
+            c.line([(x + sx * k * 4, 66 + k * 2), (x + sx * k * 4 + sx * 2, 70 + k * 2), (x + sx * k * 4, 74 + k * 2)], (150, 220, 255))
+    vignette(c, 140)
+
+
+def proleg_fabrica_bg(c):
+    c.vgrad(0, 0, W, 120, (12, 10, 30), (54, 36, 54))
+    _estels(c, 40, 12, 70)
+    c.ellipse(286, 18, 300, 32, (236, 228, 200))                               # la lluna
+    # Xemeneies i fum
+    for x, top in ((70, 16), (104, 28), (250, 22)):
+        c.rect(x, top, x + 12, 110, (70, 36, 30))
+        c.rect(x - 2, top - 3, x + 14, top, (52, 28, 24))
+        fum = Image.new('RGBA', c.img.size, (0, 0, 0, 0))
+        fd = ScaledDraw(fum, c.k)
+        for k in range(6):
+            r, fx, fy = 5 + k * 3, x + 6 + k * 9, top - 8 - k * 8
+            fd.ellipse([fx - r, fy - r * 0.7, fx + r, fy + r * 0.7], fill=(150, 140, 150, 120 - k * 16))
+        c.img.alpha_composite(fum)
+    # Les naus de la fàbrica
+    bricks(c, 20, 60, 200, 120, (98, 46, 34), (60, 30, 24), seed=21)
+    bricks(c, 200, 50, 340, 120, (90, 42, 32), (56, 28, 22), seed=22)
+    c.d.polygon([(20, 60), (110, 36), (200, 60)], fill=(40, 30, 34))
+    c.d.polygon([(200, 50), (270, 30), (340, 50)], fill=(40, 30, 34))
+    for row, y in enumerate((72, 92)):
+        for x in range(30, 196, 18):
+            lit = (x // 18 + row) % 3 != 0
+            c.rect(x, y, x + 9, y + 10, (250, 200, 110) if lit else (40, 30, 34))
+        for x in range(210, 336, 18):
+            lit = (x // 18 + row) % 4 != 1
+            c.rect(x, y - 6, x + 9, y + 4, (250, 200, 110) if lit else (40, 30, 34))
+    c.glow(176, 100, 40, (255, 190, 100), 0.35)
+    c.rect(150, 26, 230, 34, (30, 22, 24))                                     # el rètol
+    c.rect(152, 28, 228, 32, (200, 150, 70))
+    # El canal, amb el reflex de les finestres
+    c.vgrad(0, 120, W, H, (18, 22, 40), (6, 8, 18))
+    rnd = random.Random(5)
+    for _ in range(60):
+        x, y = rnd.randint(20, 340), rnd.randint(124, 190)
+        c.line([(x, y), (x + rnd.randint(3, 10), y)], (120, 100, 70) if x < 340 else (60, 70, 90))
+    vignette(c, 120)
+
+
+def proleg_cambra_bg(c):
+    cambra_bg(c)
+    c.shade(0, 0, W, H, (10, 4, 6), 150)
+    c.shade(0, 0, W, H, (255, 20, 20), 40)                                     # tot vermell d'alarma
+    c.glow(190, 60, 110, (255, 30, 30), 1.0)                                   # l'alarma
+    c.glow(190, 60, 50, (255, 120, 80), 0.8)
+    c.ellipse(184, 2, 196, 10, (255, 60, 50))                                  # el llum giratori
+    c.glow(190, 6, 24, (255, 80, 60), 0.9)
+    vignette(c, 150)
+
+
+def _proleg(bg, era):
+    return {'era': era, 'things': {}, 'spawns': {}, 'walkable': [(150, 190), (200, 190), (200, 196), (150, 196)],
+            'bg': bg, 'props': {}}
+
+
+PROLEG_GAVINA = _proleg(proleg_gavina_bg, 'vet')
+PROLEG_CELLA = _proleg(proleg_cella_bg, 'vet')
+PROLEG_FABRICA = _proleg(proleg_fabrica_bg, 'iri')
+PROLEG_CAMBRA = _proleg(proleg_cambra_bg, 'iri')
+
+
 DESIGNS = {
     'fabrica_calderes': CALDERES,
     'fabrica_magatzem': MAGATZEM,
@@ -1331,4 +1452,8 @@ DESIGNS = {
     'fabrica_despatx': DESPATX,
     'gavina_arxiu': ARXIU,
     'gavina_memoria': MEMORIA,
+    'proleg_gavina': PROLEG_GAVINA,
+    'proleg_cella': PROLEG_CELLA,
+    'proleg_fabrica': PROLEG_FABRICA,
+    'proleg_cambra': PROLEG_CAMBRA,
 }

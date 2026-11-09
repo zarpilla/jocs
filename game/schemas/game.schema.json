@@ -50,6 +50,10 @@
           },
           "description": "On comença cada protagonista i què porta a l'inventari."
         },
+        "intro": {
+          "$ref": "#/definitions/Id",
+          "description": "Sala on comença la partida abans de la de la primera protagonista: un pròleg fet de sales `cutscene` que es porten l'una a l'altra amb `goTo`."
+        },
         "$schema": {
           "type": "string"
         }

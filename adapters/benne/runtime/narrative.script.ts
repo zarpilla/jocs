@@ -6,8 +6,9 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { SfxHandle, display, fadeIn, fadeOut, player } from '@benne/script';
+import { SfxHandle, display, fadeIn, fadeOut, player, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
+import { guis } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   adoptLoadedState, applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
@@ -82,6 +83,9 @@ export function onRoomEntered() {
   ensureStarted()
   const room = narrative.world.currentRoom()
   if (!room) return
+  // A les cinemàtiques (el pròleg) no hi ha res per clicar: fora la barra de verbs.
+  if (narrative.content.rooms[room]?.cutscene) guis.verbs.hide()
+  else guis.verbs.show()
   const who = roomProtagonist(room)
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
@@ -108,7 +112,28 @@ export function enterNarrativeRoom() {
   if (!room) return
   narrative.worldChanged()
   const result = narrative.enterRoom(room)
-  if (result) playResult(result)
+  if (!result) return
+  const cutscene = narrative.content.rooms[room]?.cutscene
+  if (!cutscene) {
+    playResult(result)
+    return
+  }
+  // Cinemàtica: Benne ja embolica aquest moment en una cutscene, i amb Esc la resta s'acaba de cop.
+  // Si l'han saltada, anem directament al final (`skipTo`) en lloc de passar per les altres pantalles.
+  let saltada = false
+  for (const line of result.lines) {
+    playLines([line])
+    // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
+    const inici = Date.now()
+    wait(0.1)
+    if (Date.now() - inici < 50) {
+      saltada = true
+      break
+    }
+  }
+  const desti = saltada && cutscene.skipTo ? cutscene.skipTo : result.goTo
+  const sala = desti ? benneRoom(desti) : undefined
+  if (sala) sala.goTo()
 }
 
 function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
