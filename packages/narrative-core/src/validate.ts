@@ -18,6 +18,8 @@ export interface ValidateOptions {
   actions?: string[];
   /** Claus de text que fa servir el codi del joc: han d'existir i no compten com a sobreres. */
   textKeys?: string[];
+  /** Sons que hi ha (`game/audio/sfx/`, sense extensió). Si es dona, es comprova que les línies en fan servir de bons. */
+  sounds?: string[];
 }
 
 export function validateContent(
@@ -107,6 +109,16 @@ export function validateContent(
     });
   };
 
+  const sound = (where: string, name: string | undefined) => {
+    if (name === undefined) return;
+    const vars = [...name.matchAll(/\{(\w+)\}/g)].map((m) => m[1]!);
+    for (const v of vars) if (!(v in state.vars)) err(where, `So "${name}": variable no declarada "${v}" (state.json).`);
+    if (!options.sounds) return;
+    // Amb variables, n'hi ha prou que n'hi hagi algun que encaixi (els valors depenen de la partida).
+    const pattern = new RegExp(`^${name.split(/\{\w+\}/).map((s) => s.replace(/[.*+?^$()|[\]\\]/g, '\\$&')).join('[^/]+')}$`);
+    if (!options.sounds.some((s) => pattern.test(s))) err(where, `So desconegut "${name}": no hi és a game/audio/sfx/.`);
+  };
+
   const interactions = (where: string, list: InteractionDef[] | undefined) => {
     (list ?? []).forEach((i, n) => {
       const w = `${where}[${n}]`;
@@ -127,6 +139,7 @@ export function validateContent(
         text(`${w}.lines[${k}]`, l.text);
         cond(`${w}.lines[${k}].if`, l.if);
         effects(`${w}.lines[${k}].effects`, l.effects);
+        sound(`${w}.lines[${k}].sound`, l.sound);
       });
     });
   };
@@ -201,6 +214,7 @@ export function validateContent(
         text(`${nw}.lines[${i}]`, l.text);
         cond(`${nw}.lines[${i}].if`, l.if);
         effects(`${nw}.lines[${i}].effects`, l.effects);
+        sound(`${nw}.lines[${i}].sound`, l.sound);
       });
       const seen = new Set<string>();
       n.choices?.forEach((c, i) => {

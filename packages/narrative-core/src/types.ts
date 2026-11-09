@@ -170,7 +170,15 @@ export interface DialogueLineDef {
   text: TextKey;
   if?: Condition;
   effects?: Effect[];
+  /**
+   * So que fa en dir la línia: un fitxer de `game/audio/sfx/` sense extensió. Pot dur variables
+   * entre claus, que es posen en acabar la interacció: `"molla_{molla_tensio}"` → `molla_3`.
+   */
+  sound?: SoundId;
 }
+
+/** Nom d'un so de `game/audio/sfx/` (sense extensió), amb `{variable}` opcionals. */
+export type SoundId = string;
 
 export interface DialogueChoiceDef {
   id: Id;

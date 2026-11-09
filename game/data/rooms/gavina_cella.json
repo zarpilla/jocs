@@ -55,7 +55,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.panell.vibra"
+              "text": "sala.gavina_cella.panell.vibra",
+              "sound": "vibracio"
             }
           ]
         },
@@ -84,7 +85,8 @@
             },
             {
               "who": "narrator",
-              "text": "sala.gavina_cella.panell.cop2"
+              "text": "sala.gavina_cella.panell.cop2",
+              "sound": "cop"
             },
             {
               "who": "player",
@@ -133,7 +135,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.panell.obrir1"
+              "text": "sala.gavina_cella.panell.obrir1",
+              "sound": "eina"
             },
             {
               "who": "player",
@@ -167,7 +170,8 @@
             },
             {
               "who": "player",
-              "text": "sala.gavina_cella.panell.reparar2"
+              "text": "sala.gavina_cella.panell.reparar2",
+              "sound": "consola"
             }
           ],
           "effects": [
@@ -365,7 +369,8 @@
           "lines": [
             {
               "who": "mare",
-              "text": "sala.gavina_cella.altaveu.tocar1"
+              "text": "sala.gavina_cella.altaveu.tocar1",
+              "sound": "altaveu"
             }
           ]
         }
@@ -489,7 +494,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.llitera.molla"
+              "text": "sala.gavina_cella.llitera.molla",
+              "sound": "ronc"
             }
           ],
           "effects": [
@@ -674,7 +680,8 @@
             },
             {
               "who": "player",
-              "text": "sala.gavina_cella.porta.imant2"
+              "text": "sala.gavina_cella.porta.imant2",
+              "sound": "clac"
             }
           ],
           "effects": [
@@ -822,7 +829,8 @@
         },
         {
           "who": "mare",
-          "text": "sala.gavina_cella.intro2"
+          "text": "sala.gavina_cella.intro2",
+          "sound": "altaveu"
         },
         {
           "who": "player",
@@ -830,7 +838,8 @@
         },
         {
           "who": "player",
-          "text": "sala.gavina_cella.intro4"
+          "text": "sala.gavina_cella.intro4",
+          "sound": "vibracio"
         }
       ]
     }

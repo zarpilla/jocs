@@ -5,6 +5,8 @@ export interface ResolvedLine {
   who: SpeakerId;
   key: TextKey;
   text: string;
+  /** So que ha de fer el motor en dir la línia (ja amb les variables posades). */
+  sound?: string;
 }
 
 export interface ResolvedChoice {

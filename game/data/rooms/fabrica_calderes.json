@@ -62,7 +62,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_calderes.capatas.look2"
+              "text": "sala.fabrica_calderes.capatas.look2",
+              "sound": "ronc"
             }
           ]
         },
@@ -476,7 +477,8 @@
         },
         {
           "who": "player",
-          "text": "sala.fabrica_calderes.intro2"
+          "text": "sala.fabrica_calderes.intro2",
+          "sound": "alarma"
         },
         {
           "who": "player",

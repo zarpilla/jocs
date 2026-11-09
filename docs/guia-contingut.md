@@ -110,6 +110,20 @@ i què passa quan el jugador hi fa un verb.
   sense `look` propi diu la seva `description` (`items.json`). Per a una frase diferent segons qui
   mira, posa-li un `look` amb `"if": { "protagonist": "vet" }`.
 
+### Sons
+
+Qualsevol línia (d'una interacció o d'un diàleg) pot dur `"sound"`: el so sona just quan la línia comença.
+És el nom d'un fitxer de `game/audio/sfx/` sense extensió, i pot dur variables entre claus, que es posen
+amb el valor que tenen en acabar la interacció:
+
+```json
+{ "who": "player", "text": "obj.molla.estirar", "sound": "molla_{molla_tensio}" }
+```
+
+Els sons els genera `npm run sons` (`tools/sons.py`, sintetitzats). Per posar-hi un so fet a mà, deixa
+el fitxer a `game/audio/sfx/` i treu-lo de la llista `SONS` del generador. `npm run validate` avisa si una
+línia demana un so que no existeix, i `npm run benne:sync` els copia al projecte Benne.
+
 Els **personatges** (`characters.json`) i els **objectes** (`items.json`) també poden tenir
 `interactions`: les dels personatges valen a totes les sales (una sala les pot substituir), i les dels
 objectes són per mirar-los a l'inventari o combinar-los (`"verb": "use", "item": "formulari_27b"` dins

@@ -35,7 +35,10 @@ const v = {
   objecte: (costat: string) => `finestra_objecte_${costat}`,
 };
 
-const line = (text: string, params?: Record<string, string | number>) => ({ who: 'player' as const, text, params });
+const line = (text: string, params?: Record<string, string | number>, sound?: string) => ({ who: 'player' as const, text, params, sound });
+
+/** Sons de la cambra (`game/audio/sfx/`). */
+export const SONS_FINESTRA = { posar: 'cambra_posa', armar: 'cambra_arma', fase: 'fase' };
 
 export function estatFinestra(n: Narrative) {
   return {
@@ -78,10 +81,10 @@ export function installFinestra(n: Narrative) {
         { event: 'finestra.transferencia', args: { de: costat, a: altra, objecte: item } },
         { event: 'protagonista', args: { id: altra } },
       ]);
-      return { lines: [line('finestra.enviat', { objecte: n.itemName(item) })] };
+      return { lines: [line('finestra.enviat', { objecte: n.itemName(item) }, SONS_FINESTRA.fase)] };
     }
     n.apply([{ takeItem: item, who: costat }, { setVar: v.objecte(costat), value: item }]);
-    return { lines: [line('finestra.posat', { objecte: n.itemName(item) })] };
+    return { lines: [line('finestra.posat', { objecte: n.itemName(item) }, SONS_FINESTRA.posar)] };
   });
 
   /** Treure l'objecte de la cambra (si no està armada). */
@@ -108,7 +111,7 @@ export function installFinestra(n: Narrative) {
     if (!estat.armada) {
       if (estat.enceses <= 0) return { lines: [line('finestra.esgotada')] };
       n.apply({ setVar: v.armada, value: costat });
-      return { lines: [line(estat.objecte(costat) ? 'finestra.armat' : 'finestra.armat_buit')] };
+      return { lines: [line(estat.objecte(costat) ? 'finestra.armat' : 'finestra.armat_buit', undefined, SONS_FINESTRA.armar)] };
     }
 
     // Sincronia: l'objecte de la cambra de qui ha armat arriba aquí.
@@ -122,7 +125,7 @@ export function installFinestra(n: Narrative) {
       ...(item ? [{ giveItem: item, who: costat }] : []),
       { event: 'finestra.transferencia', args: { de: emissora, a: costat, objecte: item } },
     ]);
-    const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', { objecte: item ? n.itemName(item) : '' })];
+    const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', { objecte: item ? n.itemName(item) : '' }, SONS_FINESTRA.fase)];
     if (!n.flag(v.automatica) && Number(n.getVar(v.transferencies)) >= TRANSFERENCIES_RITUAL) {
       n.apply({ setFlag: v.automatica });
       lines.push(line('finestra.automatica'));

@@ -20,7 +20,8 @@
             },
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.palanca.clau2"
+              "text": "sala.fabrica_cambra.palanca.clau2",
+              "sound": "palanca"
             },
             {
               "who": "player",
@@ -269,7 +270,8 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.fabrica_cambra.intro1"
+          "text": "sala.fabrica_cambra.intro1",
+          "sound": "alarma"
         },
         {
           "who": "player",

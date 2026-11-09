@@ -7,6 +7,8 @@ import { estatFinestra } from '../logic/index.js';
 import { jugarActe1, keys, partida, texts } from './partida.js';
 
 const item = (id: string) => ({ kind: 'item' as const, id });
+/** Els sons de les línies (el motor els fa sonar en dir-les). */
+const sounds = (lines: { sound?: string }[]) => lines.flatMap((l) => (l.sound ? [l.sound] : []));
 
 /** De la sortida de la cel·la fins que l'Iri sap quina palanca necessita la Vet. */
 function finsMida(checkHints = true, fins?: string) {
@@ -183,6 +185,7 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     expect(n.isHotspotVisible('gavina_hangar', 'pany')).toBe(false); // encara no l'ha vist
     p.do('look', 'llancadora');
     expect(texts(p.do('push', 'pany'))).toContain('nnnnng');
+    expect(sounds(p.do('push', 'pany'))).toEqual(['pany']);
     p.do('open', 'porta_passadis');
     p.do('open', 'porta_cella');
     p.do('pickUp', 'llitera');
@@ -191,7 +194,10 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     p.do('open', 'porta_hangar');
     // ── Vet: afina la molla ──
     expect(texts(p.use('molla', 'pany'))).toContain('més greu');
-    for (let i = 0; i < 3; i++) p.do('pull', item('molla'));
+    // Se sent d'oïda: el pany i després la molla, a la tensió d'ara (comença a 1; el pany és la 3).
+    expect(sounds(p.use('molla', 'pany'))).toEqual(['pany_molla_1']);
+    expect(sounds(p.do('pull', item('molla')))).toEqual(['molla_2']);
+    for (let i = 0; i < 2; i++) p.do('pull', item('molla'));
     expect(texts(p.use('molla', 'pany'))).toContain('més aguda');
     p.do('push', item('molla'));
     expect(texts(p.use('molla', 'pany'))).toContain('mateixa nota');
@@ -210,6 +216,7 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     p.do('pickUp', 'llima');
     p.use('llima', item('diapaso'));
     expect(texts(p.use('diapaso', item('molla')))).toContain('més greu');
+    expect(sounds(p.use('diapaso', item('molla')))).toEqual(['molla_diapaso_1']);
     p.use('llima', item('diapaso'));
     expect(texts(p.use('diapaso', item('molla')))).toContain('mateixa nota');
     // ── Iri: l'envia; Vet: obre el pany ──

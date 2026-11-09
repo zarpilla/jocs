@@ -856,7 +856,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.tram_biga.muntar1"
+            "text": "obj.tram_biga.muntar1",
+            "sound": "eina"
           },
           {
             "who": "player",
@@ -905,7 +906,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.tram_biga.muntar1"
+            "text": "obj.tram_biga.muntar1",
+            "sound": "eina"
           },
           {
             "who": "player",
@@ -964,7 +966,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.tram_biga.muntar1"
+            "text": "obj.tram_biga.muntar1",
+            "sound": "eina"
           },
           {
             "who": "player",
@@ -1108,7 +1111,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.molla.quieta"
+            "text": "obj.molla.quieta",
+            "sound": "molla_3"
           }
         ]
       },
@@ -1122,7 +1126,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.molla.trencar"
+            "text": "obj.molla.trencar",
+            "sound": "molla_5"
           }
         ]
       },
@@ -1131,7 +1136,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.molla.estirar"
+            "text": "obj.molla.estirar",
+            "sound": "molla_{molla_tensio}"
           }
         ],
         "effects": [
@@ -1151,7 +1157,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.molla.massa"
+            "text": "obj.molla.massa",
+            "sound": "molla_0"
           }
         ]
       },
@@ -1160,7 +1167,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.molla.arronsar"
+            "text": "obj.molla.arronsar",
+            "sound": "molla_{molla_tensio}"
           }
         ],
         "effects": [
@@ -1237,11 +1245,13 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llima.passat1"
+            "text": "obj.llima.passat1",
+            "sound": "llima"
           },
           {
             "who": "player",
-            "text": "obj.llima.passat2"
+            "text": "obj.llima.passat2",
+            "sound": "diapaso_xiulet"
           }
         ],
         "effects": [
@@ -1267,7 +1277,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llima.llimar"
+            "text": "obj.llima.llimar",
+            "sound": "llima"
           }
         ],
         "effects": [
@@ -1296,7 +1307,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.diapaso.ja"
+            "text": "obj.diapaso.ja",
+            "sound": "molla_diapaso_2"
           }
         ]
       },
@@ -1311,7 +1323,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.diapaso.greu"
+            "text": "obj.diapaso.greu",
+            "sound": "molla_diapaso_{diapaso_to}"
           }
         ]
       },
@@ -1321,7 +1334,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.diapaso.igual1"
+            "text": "obj.diapaso.igual1",
+            "sound": "molla_diapaso_2"
           },
           {
             "who": "player",

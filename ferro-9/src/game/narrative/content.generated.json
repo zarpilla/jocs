@@ -1039,7 +1039,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.tram_biga.muntar1"
+                "text": "obj.tram_biga.muntar1",
+                "sound": "eina"
               },
               {
                 "who": "player",
@@ -1088,7 +1089,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.tram_biga.muntar1"
+                "text": "obj.tram_biga.muntar1",
+                "sound": "eina"
               },
               {
                 "who": "player",
@@ -1147,7 +1149,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.tram_biga.muntar1"
+                "text": "obj.tram_biga.muntar1",
+                "sound": "eina"
               },
               {
                 "who": "player",
@@ -1291,7 +1294,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.molla.quieta"
+                "text": "obj.molla.quieta",
+                "sound": "molla_3"
               }
             ]
           },
@@ -1305,7 +1309,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.molla.trencar"
+                "text": "obj.molla.trencar",
+                "sound": "molla_5"
               }
             ]
           },
@@ -1314,7 +1319,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.molla.estirar"
+                "text": "obj.molla.estirar",
+                "sound": "molla_{molla_tensio}"
               }
             ],
             "effects": [
@@ -1334,7 +1340,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.molla.massa"
+                "text": "obj.molla.massa",
+                "sound": "molla_0"
               }
             ]
           },
@@ -1343,7 +1350,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.molla.arronsar"
+                "text": "obj.molla.arronsar",
+                "sound": "molla_{molla_tensio}"
               }
             ],
             "effects": [
@@ -1420,11 +1428,13 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.llima.passat1"
+                "text": "obj.llima.passat1",
+                "sound": "llima"
               },
               {
                 "who": "player",
-                "text": "obj.llima.passat2"
+                "text": "obj.llima.passat2",
+                "sound": "diapaso_xiulet"
               }
             ],
             "effects": [
@@ -1450,7 +1460,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.llima.llimar"
+                "text": "obj.llima.llimar",
+                "sound": "llima"
               }
             ],
             "effects": [
@@ -1479,7 +1490,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.diapaso.ja"
+                "text": "obj.diapaso.ja",
+                "sound": "molla_diapaso_2"
               }
             ]
           },
@@ -1494,7 +1506,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.diapaso.greu"
+                "text": "obj.diapaso.greu",
+                "sound": "molla_diapaso_{diapaso_to}"
               }
             ]
           },
@@ -1504,7 +1517,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "obj.diapaso.igual1"
+                "text": "obj.diapaso.igual1",
+                "sound": "molla_diapaso_2"
               },
               {
                 "who": "player",
@@ -1889,7 +1903,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_calderes.capatas.look2"
+                    "text": "sala.fabrica_calderes.capatas.look2",
+                    "sound": "ronc"
                   }
                 ]
               },
@@ -2303,7 +2318,8 @@
               },
               {
                 "who": "player",
-                "text": "sala.fabrica_calderes.intro2"
+                "text": "sala.fabrica_calderes.intro2",
+                "sound": "alarma"
               },
               {
                 "who": "player",
@@ -2339,7 +2355,8 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.fabrica_cambra.palanca.clau2"
+                    "text": "sala.fabrica_cambra.palanca.clau2",
+                    "sound": "palanca"
                   },
                   {
                     "who": "player",
@@ -2588,7 +2605,8 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.fabrica_cambra.intro1"
+                "text": "sala.fabrica_cambra.intro1",
+                "sound": "alarma"
               },
               {
                 "who": "player",
@@ -2688,7 +2706,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_despatx.calaix.obrir1"
+                    "text": "sala.fabrica_despatx.calaix.obrir1",
+                    "sound": "clac"
                   },
                   {
                     "who": "player",
@@ -3626,7 +3645,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_moll.conducte.tancar1"
+                    "text": "sala.fabrica_moll.conducte.tancar1",
+                    "sound": "valvula"
                   },
                   {
                     "who": "player",
@@ -3672,7 +3692,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_moll.conducte.mig1"
+                    "text": "sala.fabrica_moll.conducte.mig1",
+                    "sound": "valvula"
                   },
                   {
                     "who": "player",
@@ -3696,7 +3717,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_moll.conducte.obrir"
+                    "text": "sala.fabrica_moll.conducte.obrir",
+                    "sound": "valvula"
                   }
                 ],
                 "effects": [
@@ -4039,7 +4061,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.vibra"
+                    "text": "sala.gavina_cella.panell.vibra",
+                    "sound": "vibracio"
                   }
                 ]
               },
@@ -4068,7 +4091,8 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_cella.panell.cop2"
+                    "text": "sala.gavina_cella.panell.cop2",
+                    "sound": "cop"
                   },
                   {
                     "who": "player",
@@ -4117,7 +4141,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.obrir1"
+                    "text": "sala.gavina_cella.panell.obrir1",
+                    "sound": "eina"
                   },
                   {
                     "who": "player",
@@ -4151,7 +4176,8 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.reparar2"
+                    "text": "sala.gavina_cella.panell.reparar2",
+                    "sound": "consola"
                   }
                 ],
                 "effects": [
@@ -4349,7 +4375,8 @@
                 "lines": [
                   {
                     "who": "mare",
-                    "text": "sala.gavina_cella.altaveu.tocar1"
+                    "text": "sala.gavina_cella.altaveu.tocar1",
+                    "sound": "altaveu"
                   }
                 ]
               }
@@ -4473,7 +4500,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.llitera.molla"
+                    "text": "sala.gavina_cella.llitera.molla",
+                    "sound": "ronc"
                   }
                 ],
                 "effects": [
@@ -4658,7 +4686,8 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.imant2"
+                    "text": "sala.gavina_cella.porta.imant2",
+                    "sound": "clac"
                   }
                 ],
                 "effects": [
@@ -4806,7 +4835,8 @@
               },
               {
                 "who": "mare",
-                "text": "sala.gavina_cella.intro2"
+                "text": "sala.gavina_cella.intro2",
+                "sound": "altaveu"
               },
               {
                 "who": "player",
@@ -4814,7 +4844,8 @@
               },
               {
                 "who": "player",
-                "text": "sala.gavina_cella.intro4"
+                "text": "sala.gavina_cella.intro4",
+                "sound": "vibracio"
               }
             ]
           }
@@ -4840,7 +4871,8 @@
               },
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.inundat2"
+                "text": "sala.gavina_hangar.inundat2",
+                "sound": "aigua"
               }
             ],
             "effects": [
@@ -4935,7 +4967,8 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_hangar.comporta.obrir2"
+                    "text": "sala.gavina_hangar.comporta.obrir2",
+                    "sound": "comporta"
                   },
                   {
                     "who": "player",
@@ -4969,7 +5002,8 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_hangar.comporta.obrir2"
+                    "text": "sala.gavina_hangar.comporta.obrir2",
+                    "sound": "comporta"
                   },
                   {
                     "who": "player",
@@ -5274,11 +5308,13 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.engegar1"
+                    "text": "sala.gavina_hangar.llancadora.engegar1",
+                    "sound": "boto"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.engegar2"
+                    "text": "sala.gavina_hangar.llancadora.engegar2",
+                    "sound": "motor"
                   },
                   {
                     "who": "player",
@@ -5329,7 +5365,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.escapa"
+                    "text": "sala.gavina_hangar.llancadora.escapa",
+                    "sound": "boto"
                   }
                 ]
               },
@@ -5344,7 +5381,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.sense_pressio"
+                    "text": "sala.gavina_hangar.llancadora.sense_pressio",
+                    "sound": "boto"
                   }
                 ]
               },
@@ -5430,15 +5468,18 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.obrir1"
+                    "text": "sala.gavina_hangar.llancadora.obrir1",
+                    "sound": "diapaso_2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.obrir2"
+                    "text": "sala.gavina_hangar.llancadora.obrir2",
+                    "sound": "clac"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_hangar.llancadora.obrir3"
+                    "text": "sala.gavina_hangar.llancadora.obrir3",
+                    "sound": "porta_llancadora"
                   },
                   {
                     "who": "player",
@@ -5460,7 +5501,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.diapaso_no"
+                    "text": "sala.gavina_hangar.llancadora.diapaso_no",
+                    "sound": "pany_diapaso_{diapaso_to}"
                   }
                 ]
               },
@@ -5473,7 +5515,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_ja"
+                    "text": "sala.gavina_hangar.llancadora.molla_ja",
+                    "sound": "pany_molla_3"
                   }
                 ]
               },
@@ -5488,7 +5531,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_greu"
+                    "text": "sala.gavina_hangar.llancadora.molla_greu",
+                    "sound": "pany_molla_{molla_tensio}"
                   }
                 ]
               },
@@ -5503,7 +5547,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_aguda"
+                    "text": "sala.gavina_hangar.llancadora.molla_aguda",
+                    "sound": "pany_molla_{molla_tensio}"
                   }
                 ]
               },
@@ -5513,7 +5558,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_igual1"
+                    "text": "sala.gavina_hangar.llancadora.molla_igual1",
+                    "sound": "pany_molla_3"
                   },
                   {
                     "who": "player",
@@ -5536,7 +5582,8 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.tocar1"
+                    "text": "sala.gavina_hangar.llancadora.tocar1",
+                    "sound": "pany"
                   },
                   {
                     "who": "player",
@@ -5714,7 +5761,8 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.escala.descargolar2"
+                    "text": "sala.gavina_hangar.escala.descargolar2",
+                    "sound": "eina"
                   }
                 ],
                 "effects": [

@@ -465,7 +465,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.conducte.tancar1"
+              "text": "sala.fabrica_moll.conducte.tancar1",
+              "sound": "valvula"
             },
             {
               "who": "player",
@@ -511,7 +512,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.conducte.mig1"
+              "text": "sala.fabrica_moll.conducte.mig1",
+              "sound": "valvula"
             },
             {
               "who": "player",
@@ -535,7 +537,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.conducte.obrir"
+              "text": "sala.fabrica_moll.conducte.obrir",
+              "sound": "valvula"
             }
           ],
           "effects": [

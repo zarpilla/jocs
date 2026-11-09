@@ -484,6 +484,10 @@
           "items": {
             "$ref": "#/definitions/Effect"
           }
+        },
+        "sound": {
+          "$ref": "#/definitions/SoundId",
+          "description": "So que fa en dir la línia: un fitxer de `game/audio/sfx/` sense extensió. Pot dur variables entre claus, que es posen en acabar la interacció: `\"molla_{molla_tensio}\"` → `molla_3`."
         }
       },
       "required": [
@@ -754,6 +758,10 @@
           "additionalProperties": false
         }
       ]
+    },
+    "SoundId": {
+      "type": "string",
+      "description": "Nom d'un so de `game/audio/sfx/` (sense extensió), amb `{variable}` opcionals."
     },
     "HotspotDef": {
       "type": "object",

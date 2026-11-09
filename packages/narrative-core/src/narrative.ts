@@ -52,7 +52,7 @@ export interface ActionContext {
 
 /** El que torna una acció de joc: línies per dir (claus de text). */
 export interface ActionResult {
-  lines?: { who: SpeakerId; text: TextKey; params?: TextParams }[];
+  lines?: { who: SpeakerId; text: TextKey; params?: TextParams; sound?: string }[];
 }
 
 export type GameAction = (ctx: ActionContext) => ActionResult | void;
@@ -439,9 +439,11 @@ export class Narrative {
     for (const line of i.lines ?? []) {
       if (!this.check(line.if)) continue;
       applyEffects(line.effects, this.effectCtx());
-      lines.push({ who: line.who, key: line.text, text: this.t(line.text) });
+      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: line.sound }) });
     }
     applyEffects(i.effects, this.effectCtx());
+    // Les variables del so es posen al final: «estira la molla» ha de sonar amb la tensió nova.
+    for (const line of lines) if (line.sound) line.sound = this.soundName(line.sound);
     if (i.action) {
       const args = Object.fromEntries(
         Object.entries(i.action.args ?? {}).map(([k, v]) => [k, v === '$item' ? (req?.item ?? '') : v]),
@@ -455,7 +457,12 @@ export class Narrative {
     const action = this.actions.get(name);
     if (!action) throw new Error(`Acció de joc no registrada: ${name}`);
     const result = action({ narrative: this, args, request }) ?? {};
-    return (result.lines ?? []).map((l) => ({ who: l.who, key: l.text, text: this.t(l.text, l.params) }));
+    return (result.lines ?? []).map((l) => ({ who: l.who, key: l.text, text: this.t(l.text, l.params), ...(l.sound && { sound: l.sound }) }));
+  }
+
+  /** `"molla_{molla_tensio}"` → `"molla_3"`, amb les variables d'ara. */
+  private soundName(sound: string): string {
+    return sound.replace(/\{(\w+)\}/g, (_, v: string) => String(this._state.vars[v] ?? ''));
   }
 
   private dialogueDef(id: Id): DialogueDef {
@@ -474,7 +481,7 @@ export class Narrative {
     for (const line of node.lines ?? []) {
       if (!this.check(line.if)) continue;
       applyEffects(line.effects, this.effectCtx());
-      lines.push({ who: line.who, key: line.text, text: this.t(line.text) });
+      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: this.soundName(line.sound) }) });
     }
 
     // Es marca després de les línies: dins el node, `seen` vol dir "en una visita anterior".

@@ -6,7 +6,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { display, fadeOut, player } from '@benne/script';
+import { SfxHandle, display, fadeOut, player } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
@@ -14,9 +14,10 @@ import {
   rememberProtagonistRoom, roomProtagonist, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
-/** Diu les línies una darrere l'altra. */
+/** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
 export function playLines(lines: ResolvedLine[]) {
   for (const line of lines) {
+    if (line.sound) new SfxHandle(line.sound).play()
     if (line.who === 'narrator') {
       display(line.text)
     } else if (line.who === 'player') {
