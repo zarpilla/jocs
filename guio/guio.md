@@ -88,7 +88,9 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 3. **Un camp armat espera** fins que l'altre costat sincronitza o fins que qui l'ha armat surt de la cambra.
    Així el jugador pot canviar de protagonista amb calma, sense haver de córrer contra un rellotge.
 4. **Hi passa un objecte per encesa i en una sola direcció.** Ha de pesar menys de 2 kg, ha de ser inert i no
-   pot ser un líquid a pressió. No hi passen éssers vius, ni so, ni imatge, ni persones.
+   pot ser un líquid a pressió. No hi passen éssers vius, ni so, ni imatge, ni persones. A més, al joc només
+   s'hi poden posar les coses que l'altra necessita: si el jugador hi prova un llapis o un formulari, la
+   protagonista diu que no val una encesa, i no se'n gasta cap.
 5. Per tant, **la comunicació és només per escrit**: notes, dibuixos, objectes amb significat.
 6. **Cada encesa desgasta la cambra de l'Iri.** Això no és un recurs que el jugador pugui malgastar per
    error, sinó un rellotge narratiu: a l'Acte 3 només queda una encesa.

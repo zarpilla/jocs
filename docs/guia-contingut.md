@@ -142,12 +142,14 @@ només depèn del nucli, mai de Benne. Les regles s'exposen com a **accions**:
 
 | Acció | Què fa |
 |---|---|
-| `finestra.posar` | Posa l'objecte a la cambra de la protagonista activa, si hi cap (< 2 kg, ni viu ni líquid: `props` a `items.json`) |
+| `finestra.posar` | Posa l'objecte a la cambra de la protagonista activa, si hi cap (< 2 kg, ni viu ni líquid) i si la història el necessita a l'altra banda (`finestra: true`): `props` a `items.json` |
 | `finestra.treure` | El torna a l'inventari, si el camp no està armat |
 | `finestra.boto` | Arma el camp, o el sincronitza si l'altra ja l'havia armat: l'objecte canvia d'època |
 
 Les propietats que fa servir la finestra són a cada objecte: `"props": { "pes": 1.2, "material": "ferro9" }`,
-`"viu": true`, `"liquid": true`.
+`"viu": true`, `"liquid": true`, i `"finestra": true` per als que s'han de poder enviar. Sense aquesta marca,
+un objecte que hi cabria no passa: la protagonista diu que no val una encesa. Si un trencaclosques nou
+demana enviar alguna cosa, cal marcar-la.
 
 ## Personatges i memòria: `data/characters.json`
 

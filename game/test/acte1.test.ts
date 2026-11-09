@@ -218,13 +218,19 @@ describe('Ferro-9 · Acte 1', () => {
     const { p, n } = finsPanellReparat();
     n.apply({ setFlag: 'sincronia_automatica' });
     const abans = estatFinestra(n).enceses;
+    // El que l'altra no necessita no passa, i no gasta cap encesa.
     p.do('pickUp', 'avis');
-    expect(keys(p.use('avis_reciclatge', 'panell'))).toEqual(['finestra.enviat']);
+    expect(keys(p.use('avis_reciclatge', 'panell'))).toEqual(['finestra.rebuig.no_cal_vet']);
+    expect(estatFinestra(n).enceses).toBe(abans);
+    expect(p.inventory()).toContain('avis_reciclatge');
+    n.apply({ giveItem: 'nota_vet', who: 'vet' });
+    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.enviat']);
     expect(estatFinestra(n).armada).toBe('');
     expect(estatFinestra(n).enceses).toBe(abans - 1);
     // Canvi automàtic a l'altra banda, amb l'objecte a l'inventari.
     expect(p.active).toBe('iri');
-    expect(p.inventory()).toContain('avis_reciclatge');
+    expect(p.inventory()).toContain('nota_vet');
+    expect(keys(p.use('llapis', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri']);
     // Les regles de la finestra continuen valent.
     p.switchTo('vet');
     p.do('pickUp', 'escarabat');

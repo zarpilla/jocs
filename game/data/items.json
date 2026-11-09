@@ -255,14 +255,16 @@
     "description": "obj.imant_ferro9.desc",
     "props": {
       "pes": 0.3,
-      "material": "ferro9"
+      "material": "ferro9",
+      "finestra": true
     }
   },
   "nota_iri": {
     "name": "obj.nota_iri.nom",
     "description": "obj.nota_iri.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -658,7 +660,8 @@
     "name": "obj.nota_vet.nom",
     "description": "obj.nota_vet.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -702,7 +705,8 @@
     "name": "obj.nota_pany.nom",
     "description": "obj.nota_pany.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -782,7 +786,8 @@
     "name": "obj.nota_mida.nom",
     "description": "obj.nota_mida.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -903,7 +908,8 @@
     "description": "obj.tram_biga_1.desc",
     "props": {
       "pes": 1.8,
-      "material": "acer"
+      "material": "acer",
+      "finestra": true
     },
     "interactions": [
       {
@@ -1013,7 +1019,8 @@
     "description": "obj.tram_biga_2.desc",
     "props": {
       "pes": 1.8,
-      "material": "acer"
+      "material": "acer",
+      "finestra": true
     },
     "interactions": [
       {
@@ -1073,7 +1080,8 @@
     "description": "obj.tram_biga_3.desc",
     "props": {
       "pes": 1.8,
-      "material": "acer"
+      "material": "acer",
+      "finestra": true
     }
   },
   "biga_muntada": {
@@ -1088,7 +1096,8 @@
     "name": "obj.nota_amagatall.nom",
     "description": "obj.nota_amagatall.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -1127,7 +1136,8 @@
     "name": "obj.pols_rovell.nom",
     "description": "obj.pols_rovell.desc",
     "props": {
-      "pes": 0.2
+      "pes": 0.2,
+      "finestra": true
     },
     "interactions": [
       {
@@ -1157,7 +1167,8 @@
     "name": "obj.molla.nom",
     "description": "obj.molla.desc",
     "props": {
-      "pes": 0.05
+      "pes": 0.05,
+      "finestra": true
     },
     "interactions": [
       {
@@ -1355,7 +1366,8 @@
     "description": "obj.diapaso.desc",
     "props": {
       "pes": 0.2,
-      "material": "ferro9"
+      "material": "ferro9",
+      "finestra": true
     },
     "interactions": [
       {
@@ -1434,7 +1446,8 @@
     "name": "obj.nota_pressio.nom",
     "description": "obj.nota_pressio.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -1473,7 +1486,8 @@
     "name": "obj.nota_massa.nom",
     "description": "obj.nota_massa.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -1604,7 +1618,8 @@
     "name": "obj.nota_vet_nom.nom",
     "description": "obj.nota_vet_nom.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -1647,7 +1662,8 @@
     "name": "obj.nota_iri_nom.nom",
     "description": "obj.nota_iri_nom.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {
@@ -1719,7 +1735,8 @@
     "name": "obj.mapa_fuga.nom",
     "description": "obj.mapa_fuga.desc",
     "props": {
-      "pes": 0.01
+      "pes": 0.01,
+      "finestra": true
     },
     "interactions": [
       {

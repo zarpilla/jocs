@@ -8,6 +8,8 @@
  *  - L'altra el SINCRONITZA i rep l'objecte que hi hagi a la cambra de qui l'ha armat.
  *  - Un camp armat espera indefinidament la sincronia.
  *  - Només objectes de < 2 kg, inerts, no vius i no líquids (propietats a items.json).
+ *  - I només els que la història necessita a l'altra banda (`finestra: true`): així no es pot gastar
+ *    una encesa per error enviant un llapis.
  *  - Cada transferència gasta una encesa.
  *  - El ritual sencer (posar, armar, canviar, sincronitzar) només es fa una vegada: quan l'Iri
  *    rep el primer enviament fet a mà (la segona transferència; la primera és l'accident), deixa
@@ -25,6 +27,7 @@ export const FINESTRA_TEXTS = [
   'finestra.posat', 'finestra.ple', 'finestra.ja_armat', 'finestra.tancada', 'finestra.buida', 'finestra.tret',
   'finestra.armat', 'finestra.armat_buit', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
   'finestra.enviat', 'finestra.automatica', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
+  'finestra.rebuig.no_cal_iri', 'finestra.rebuig.no_cal_vet',
 ];
 
 const v = {
@@ -48,13 +51,14 @@ export function estatFinestra(n: Narrative) {
   };
 }
 
-/** Per què un objecte no pot passar (clau de text), o `null` si pot. */
-export function motiuRebuig(n: Narrative, item: string): string | null {
+/** Per què un objecte no pot passar (clau de text), o `null` si pot. `costat`: qui l'envia. */
+export function motiuRebuig(n: Narrative, item: string, costat: string): string | null {
   const props = n.content.items[item]?.props ?? {};
   if (props.viu === true) return 'finestra.rebuig.viu';
   if (props.liquid === true) return 'finestra.rebuig.liquid';
   if (typeof props.pes !== 'number') return 'finestra.rebuig.no_hi_cap';
   if (props.pes >= PES_MAXIM) return 'finestra.rebuig.massa_pesat';
+  if (props.finestra !== true) return `finestra.rebuig.no_cal_${costat}`;
   return null;
 }
 
@@ -66,7 +70,7 @@ export function installFinestra(n: Narrative) {
     const estat = estatFinestra(n);
     if (estat.objecte(costat)) return { lines: [line('finestra.ple', { objecte: n.itemName(estat.objecte(costat)) })] };
     if (estat.armada === costat) return { lines: [line('finestra.ja_armat')] };
-    const rebuig = motiuRebuig(n, item);
+    const rebuig = motiuRebuig(n, item, costat);
     if (rebuig) return { lines: [line(rebuig, { objecte: n.itemName(item) })] };
     if (n.flag(v.automatica)) {
       // Un sol pas: posar-lo ja és enviar-lo.
