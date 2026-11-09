@@ -290,5 +290,73 @@
         }
       }
     ]
+  },
+  "formulari_27b": {
+    "kind": "side",
+    "title": "mis.formulari_27b.titol",
+    "description": "mis.formulari_27b.desc",
+    "startWhen": {
+      "remembers": {
+        "who": "cargol",
+        "fact": "formulari_acceptat"
+      }
+    },
+    "objectives": [
+      {
+        "id": "segellat",
+        "text": "mis.formulari_27b.obj.segellat",
+        "completeWhen": {
+          "remembers": {
+            "who": "cargol",
+            "fact": "formulari_acceptat"
+          }
+        }
+      },
+      {
+        "id": "triplicat",
+        "text": "mis.formulari_27b.obj.triplicat",
+        "completeWhen": {
+          "remembers": {
+            "who": "cargol",
+            "fact": "triplicat_acceptat"
+          }
+        }
+      },
+      {
+        "id": "carnet",
+        "text": "mis.formulari_27b.obj.carnet",
+        "completeWhen": {
+          "flag": "carnet_obtingut"
+        }
+      }
+    ]
+  },
+  "notes_perdudes": {
+    "kind": "side",
+    "title": "mis.notes_perdudes.titol",
+    "description": "mis.notes_perdudes.desc",
+    "startWhen": {
+      "var": "notes_trobades",
+      "op": ">=",
+      "value": 1
+    },
+    "objectives": [
+      {
+        "id": "trobar",
+        "text": "mis.notes_perdudes.obj.trobar",
+        "completeWhen": {
+          "var": "notes_trobades",
+          "op": ">=",
+          "value": 5
+        }
+      },
+      {
+        "id": "mos",
+        "text": "mis.notes_perdudes.obj.mos",
+        "completeWhen": {
+          "flag": "nota_mos_tornada"
+        }
+      }
+    ]
   }
 }

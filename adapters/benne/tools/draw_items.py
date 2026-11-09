@@ -446,6 +446,35 @@ def placa_cargol(c):
     c.rect(11, 11, 24, 12, BRASS2)                                # el nom gravat
 
 
+def formulari_27be(c):
+    form_27b(c, 12, 2)
+    c.rect(15, 14, 21, 14, INK)                                   # la ratlla de la signatura
+    c.rect(19, 4, 21, 6, BLACK)                                   # la «E»
+
+
+def formulari_27be_signat(c):
+    formulari_27be(c)
+    line(c, 15, 13, 17, 11, BLACK); line(c, 17, 11, 19, 13, BLACK); line(c, 19, 13, 21, 11, BLACK)
+
+
+def carnet_exemplar(c):
+    c.rect(8, 4, 27, 16, (236, 236, 240)); c.rect(8, 4, 27, 6, RED)
+    c.rect(10, 8, 15, 14, (200, 180, 160)); c.ellipse(12.5, 10, 1.5, 1.5, (60, 40, 40))
+    c.rect(17, 9, 25, 9, INK); c.rect(17, 11, 23, 11, INK)
+    c.ellipse(23, 14, 1.5, 1.5, BRASS)                            # l'estrella d'exemplar
+
+
+def notes_perdudes(c):
+    sheet_of_paper(c, 8, 6, 22, 17, lines=True, fold=False)
+    sheet_of_paper(c, 12, 3, 27, 14, lines=True, fold=True)
+    c.rect(20, 12, 26, 15, (200, 184, 150))                       # paper vell, groguenc
+
+
+def nota_mos(c):
+    sheet_of_paper(c, 11, 4, 25, 16, lines=True, fold=True)
+    c.rect(19, 13, 23, 13, PINK2)                                 # signat amb llapis d'ulls?
+
+
 ICONS = {f.__name__: f for f in (
     clau_anglesa, formulari_27b, formulari_segellat, formulari_triplicat, plomall, segell, clau_cambra,
     llapis, llibreta_torn, caixa_eines, imant_ferro9, nota_iri, avis_reciclatge, llapis_ulls, nota_vet,
@@ -453,6 +482,7 @@ ICONS = {f.__name__: f for f in (
     tros_cartell, nota_mida, biga_acer, biga_ferro9, serra, tram_biga_1, tram_biga_2, tram_biga_3, biga_muntada,
     nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat, nota_pressio, nota_massa, fitxa_mira, planols, carta_mos, nota_vet_nom, nota_iri_nom, fullet_memoria,
     mapa_fuga, tub_ferro9, tub_amb_llibreta, clau_vitrina, placa_cargol,
+    formulari_27be, formulari_27be_signat, carnet_exemplar, notes_perdudes, nota_mos,
 )}
 
 

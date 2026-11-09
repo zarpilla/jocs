@@ -544,6 +544,49 @@
             "give",
             "use"
           ],
+          "item": "nota_mos",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.mos.nota1"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.mos.nota2"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.mos.nota3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.mos.nota4"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.mos.nota5"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "nota_mos"
+            },
+            {
+              "setFlag": "nota_mos_tornada"
+            },
+            {
+              "relation": {
+                "who": "mos",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "give",
+            "use"
+          ],
           "item": "carta_mos",
           "lines": [
             {
@@ -1176,6 +1219,72 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.reixa.soldada"
+            }
+          ]
+        }
+      ]
+    },
+    "esquerda": {
+      "name": "nota_perduda.1.lloc",
+      "visibleIf": {
+        "flag": "nota_perduda_1",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.trobada",
+              "if": {
+                "hasItem": "notes_perdudes",
+                "is": false
+              },
+              "effects": [
+                {
+                  "giveItem": "notes_perdudes"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.una_mes",
+              "if": {
+                "hasItem": "notes_perdudes"
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "nota_perduda.1.text"
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.1.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nota_perduda_1"
+            },
+            {
+              "addVar": "notes_trobades",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.1.look"
             }
           ]
         }

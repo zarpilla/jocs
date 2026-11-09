@@ -7,6 +7,51 @@
       "name": "sala.fabrica_calderes.capatas.nom",
       "interactions": [
         {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "formulari_27be",
+          "if": {
+            "hasItem": "llapis"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.signar1"
+            },
+            {
+              "who": "capatas",
+              "text": "sala.fabrica_calderes.capatas.signar2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.signar3"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "formulari_27be"
+            },
+            {
+              "giveItem": "formulari_27be_signat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "formulari_27be",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.signar_sense"
+            }
+          ]
+        },
+        {
           "verb": "use",
           "item": "diapaso_espatllat",
           "if": {

@@ -88,11 +88,11 @@
         },
         {
           "x": 335,
-          "y": 155
+          "y": 142
         },
         {
           "x": 278,
-          "y": 155
+          "y": 142
         }
       ],
       "walkToPoint": {
@@ -101,7 +101,7 @@
       },
       "lookAtPoint": {
         "x": 307,
-        "y": 156
+        "y": 142
       }
     },
     {
@@ -245,6 +245,46 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "socol",
+      "tag": "socol",
+      "animations": {
+        "socol": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 278,
+            "y": 141
+          },
+          {
+            "x": 335,
+            "y": 141
+          },
+          {
+            "x": 335,
+            "y": 158
+          },
+          {
+            "x": 278,
+            "y": 158
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 307,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 307,
+        "y": 158
+      },
+      "description": "sòcol de l'holograma"
     }
   ],
   "characters": [

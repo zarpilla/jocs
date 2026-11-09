@@ -26,6 +26,14 @@ options.menu__tub.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'tub')
 })
 
+options.menu__carnet.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'carnet')
+})
+
+options.menu__carnet_lliurar.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'carnet_lliurar')
+})
+
 options.menu__dia.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'dia')
 })

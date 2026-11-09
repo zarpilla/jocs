@@ -235,3 +235,56 @@ describe('Ferro-9 · Acte 3 · Els finals', () => {
     expect(n.resolveEnding()).toBe('fugida');
   });
 });
+
+describe('Ferro-9 · Missions secundàries', () => {
+  it("el formulari 27-B: amb dos triplicats, el carnet d'usuària exemplar (signat pel capatàs dormint) estalvia formularis", () => {
+    const { p, n } = partida({ checkHints: true, fins: 'fugida_completada' });
+    jugarActe1(p);
+    jugarActe2(p);
+    expect(n.getVar('formularis_arxivats')).toBe(2);
+    expect(n.state.quests.formulari_27b!.objectives.triplicat).toBe(true);
+    p.switchTo('iri');
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.talk('cargol', 'carnet'))).toContain('27-B/E');
+    p.goTo('fabrica_calderes');
+    expect(texts(p.use('formulari_27be', 'capatas'))).toContain('Cinc minuts més, mare');
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.talk('cargol', 'carnet_lliurar'))).toContain('sense formularis');
+    expect(n.state.quests.formulari_27b!.status).toBe('completed');
+    // Sense cap formulari, un altre imant (per al calaix del despatx).
+    p.do('open', 'porta_despatx');
+    p.do('open', 'calaix');
+    p.goTo('fabrica_magatzem');
+    const imant = texts(p.talk('cargol', 'imant2'));
+    expect(imant).toContain('sense paperassa');
+    expect(imant).not.toContain('Sense excepcions');
+    expect(p.inventory()).toContain('imant_ferro9');
+  });
+
+  it("les notes perdudes: cinc amagatalls, i la d'en Mos torna a en Mos", () => {
+    const { p, n } = partida({ checkHints: true, fins: 'fugida_completada' });
+    jugarActe1(p);
+    jugarActe2(p);
+    expect(p.room).toBe('gavina_cella');
+    expect(texts(p.do('pickUp', 'esquerda'))).toContain('Interna 4');
+    expect(p.inventory()).toContain('notes_perdudes');
+    expect(n.state.quests.notes_perdudes!.status).toBe('active');
+    p.do('open', 'porta');
+    expect(texts(p.do('pickUp', 'rajola'))).toContain('paper bo');
+    p.do('open', 'porta_hangar');
+    expect(texts(p.do('open', 'caixa_recanvis'))).toContain('Interna 23');
+    p.do('open', 'escala');
+    expect(texts(p.do('pickUp', 'carpeta'))).toContain('reciclatge');
+    p.do('open', 'escala_hangar');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_memoria');
+    expect(texts(p.do('open', 'socol'))).toContain('En Mos');
+    expect(n.getVar('notes_trobades')).toBe(5);
+    expect(n.isHotspotVisible('gavina_memoria', 'socol')).toBe(false);
+    expect(texts(p.do('look', { kind: 'item', id: 'notes_perdudes' }))).toContain('any 80');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    expect(texts(p.use('nota_mos', 'mos'))).toContain('Ets un sol');
+    expect(n.state.quests.notes_perdudes!.status).toBe('completed');
+  });
+});

@@ -129,7 +129,14 @@
         "cargol_gravat": false,
         "planols_lliurats": false,
         "placa_vista": false,
-        "vitrina_oberta": false
+        "vitrina_oberta": false,
+        "carnet_obtingut": false,
+        "nota_perduda_1": false,
+        "nota_perduda_2": false,
+        "nota_perduda_3": false,
+        "nota_perduda_4": false,
+        "nota_perduda_5": false,
+        "nota_mos_tornada": false
       },
       "vars": {
         "finestra_armada": "",
@@ -142,7 +149,9 @@
         "biga_amagada": "",
         "molla_tensio": 1,
         "diapaso_to": 0,
-        "valvula": "oberta"
+        "valvula": "oberta",
+        "formularis_arxivats": 0,
+        "notes_trobades": 0
       }
     },
     "characters": {
@@ -2200,6 +2209,91 @@
             ]
           }
         ]
+      },
+      "formulari_27be": {
+        "name": "obj.formulari_27be.nom",
+        "description": "obj.formulari_27be.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "formulari_27be_signat": {
+        "name": "obj.formulari_27be_signat.nom",
+        "description": "obj.formulari_27be_signat.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "carnet_exemplar": {
+        "name": "obj.carnet_exemplar.nom",
+        "description": "obj.carnet_exemplar.desc",
+        "props": {
+          "pes": 0.01
+        }
+      },
+      "notes_perdudes": {
+        "name": "obj.notes_perdudes.nom",
+        "description": "obj.notes_perdudes.desc",
+        "props": {
+          "pes": 0.05
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.notes_perdudes.look"
+              },
+              {
+                "who": "narrator",
+                "text": "nota_perduda.1.text",
+                "if": {
+                  "flag": "nota_perduda_1"
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "nota_perduda.2.text",
+                "if": {
+                  "flag": "nota_perduda_2"
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "nota_perduda.3.text",
+                "if": {
+                  "flag": "nota_perduda_3"
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "nota_perduda.4.text",
+                "if": {
+                  "flag": "nota_perduda_4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "nota_mos": {
+        "name": "obj.nota_mos.nom",
+        "description": "obj.nota_mos.desc",
+        "props": {
+          "pes": 0.01
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "nota_perduda.5.text"
+              }
+            ]
+          }
+        ]
       }
     },
     "rooms": {
@@ -2210,6 +2304,51 @@
           "capatas": {
             "name": "sala.fabrica_calderes.capatas.nom",
             "interactions": [
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "formulari_27be",
+                "if": {
+                  "hasItem": "llapis"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.signar1"
+                  },
+                  {
+                    "who": "capatas",
+                    "text": "sala.fabrica_calderes.capatas.signar2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.signar3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "formulari_27be"
+                  },
+                  {
+                    "giveItem": "formulari_27be_signat"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "formulari_27be",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_calderes.capatas.signar_sense"
+                  }
+                ]
+              },
               {
                 "verb": "use",
                 "item": "diapaso_espatllat",
@@ -5154,6 +5293,72 @@
                 ]
               }
             ]
+          },
+          "carpeta": {
+            "name": "nota_perduda.4.lloc",
+            "visibleIf": {
+              "flag": "nota_perduda_4",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "pull",
+                  "push",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.trobada",
+                    "if": {
+                      "hasItem": "notes_perdudes",
+                      "is": false
+                    },
+                    "effects": [
+                      {
+                        "giveItem": "notes_perdudes"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.una_mes",
+                    "if": {
+                      "hasItem": "notes_perdudes"
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "nota_perduda.4.text"
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.4.vet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "nota_perduda_4"
+                  },
+                  {
+                    "addVar": "notes_trobades",
+                    "amount": 1
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.4.look"
+                  }
+                ]
+              }
+            ]
           }
         }
       },
@@ -5697,6 +5902,49 @@
           "mos": {
             "name": "sala.gavina_cella.mos.nom",
             "interactions": [
+              {
+                "verb": [
+                  "give",
+                  "use"
+                ],
+                "item": "nota_mos",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.mos.nota1"
+                  },
+                  {
+                    "who": "mos",
+                    "text": "sala.gavina_cella.mos.nota2"
+                  },
+                  {
+                    "who": "mos",
+                    "text": "sala.gavina_cella.mos.nota3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.mos.nota4"
+                  },
+                  {
+                    "who": "mos",
+                    "text": "sala.gavina_cella.mos.nota5"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "nota_mos"
+                  },
+                  {
+                    "setFlag": "nota_mos_tornada"
+                  },
+                  {
+                    "relation": {
+                      "who": "mos",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
               {
                 "verb": [
                   "give",
@@ -6334,6 +6582,72 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.reixa.soldada"
+                  }
+                ]
+              }
+            ]
+          },
+          "esquerda": {
+            "name": "nota_perduda.1.lloc",
+            "visibleIf": {
+              "flag": "nota_perduda_1",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "pull",
+                  "push",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.trobada",
+                    "if": {
+                      "hasItem": "notes_perdudes",
+                      "is": false
+                    },
+                    "effects": [
+                      {
+                        "giveItem": "notes_perdudes"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.una_mes",
+                    "if": {
+                      "hasItem": "notes_perdudes"
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "nota_perduda.1.text"
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.1.vet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "nota_perduda_1"
+                  },
+                  {
+                    "addVar": "notes_trobades",
+                    "amount": 1
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.1.look"
                   }
                 ]
               }
@@ -7712,6 +8026,72 @@
                 ]
               }
             ]
+          },
+          "caixa_recanvis": {
+            "name": "nota_perduda.3.lloc",
+            "visibleIf": {
+              "flag": "nota_perduda_3",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "pull",
+                  "push",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.trobada",
+                    "if": {
+                      "hasItem": "notes_perdudes",
+                      "is": false
+                    },
+                    "effects": [
+                      {
+                        "giveItem": "notes_perdudes"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.una_mes",
+                    "if": {
+                      "hasItem": "notes_perdudes"
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "nota_perduda.3.text"
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.3.vet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "nota_perduda_3"
+                  },
+                  {
+                    "addVar": "notes_trobades",
+                    "amount": 1
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.3.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -8178,6 +8558,59 @@
                 ]
               }
             ]
+          },
+          "socol": {
+            "name": "nota_perduda.5.lloc",
+            "visibleIf": {
+              "flag": "nota_perduda_5",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "pull",
+                  "push",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.trobada_mos"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "nota_perduda.5.text"
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.5.vet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "nota_perduda_5"
+                  },
+                  {
+                    "addVar": "notes_trobades",
+                    "amount": 1
+                  },
+                  {
+                    "giveItem": "nota_mos"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.5.look"
+                  }
+                ]
+              }
+            ]
           }
         }
       },
@@ -8357,6 +8790,72 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_passadis.guardia.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "rajola": {
+            "name": "nota_perduda.2.lloc",
+            "visibleIf": {
+              "flag": "nota_perduda_2",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "pull",
+                  "push",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.trobada",
+                    "if": {
+                      "hasItem": "notes_perdudes",
+                      "is": false
+                    },
+                    "effects": [
+                      {
+                        "giveItem": "notes_perdudes"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.una_mes",
+                    "if": {
+                      "hasItem": "notes_perdudes"
+                    }
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "nota_perduda.2.text"
+                  },
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.2.vet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "nota_perduda_2"
+                  },
+                  {
+                    "addVar": "notes_trobades",
+                    "amount": 1
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "nota_perduda.2.look"
                   }
                 ]
               }
@@ -8695,6 +9194,74 @@
             "text": "mis.memoria_cargol.obj.placa",
             "completeWhen": {
               "flag": "cargol_memoria"
+            }
+          }
+        ]
+      },
+      "formulari_27b": {
+        "kind": "side",
+        "title": "mis.formulari_27b.titol",
+        "description": "mis.formulari_27b.desc",
+        "startWhen": {
+          "remembers": {
+            "who": "cargol",
+            "fact": "formulari_acceptat"
+          }
+        },
+        "objectives": [
+          {
+            "id": "segellat",
+            "text": "mis.formulari_27b.obj.segellat",
+            "completeWhen": {
+              "remembers": {
+                "who": "cargol",
+                "fact": "formulari_acceptat"
+              }
+            }
+          },
+          {
+            "id": "triplicat",
+            "text": "mis.formulari_27b.obj.triplicat",
+            "completeWhen": {
+              "remembers": {
+                "who": "cargol",
+                "fact": "triplicat_acceptat"
+              }
+            }
+          },
+          {
+            "id": "carnet",
+            "text": "mis.formulari_27b.obj.carnet",
+            "completeWhen": {
+              "flag": "carnet_obtingut"
+            }
+          }
+        ]
+      },
+      "notes_perdudes": {
+        "kind": "side",
+        "title": "mis.notes_perdudes.titol",
+        "description": "mis.notes_perdudes.desc",
+        "startWhen": {
+          "var": "notes_trobades",
+          "op": ">=",
+          "value": 1
+        },
+        "objectives": [
+          {
+            "id": "trobar",
+            "text": "mis.notes_perdudes.obj.trobar",
+            "completeWhen": {
+              "var": "notes_trobades",
+              "op": ">=",
+              "value": 5
+            }
+          },
+          {
+            "id": "mos",
+            "text": "mis.notes_perdudes.obj.mos",
+            "completeWhen": {
+              "flag": "nota_mos_tornada"
             }
           }
         ]
@@ -12294,6 +12861,101 @@
         "levels": [
           "pista.vet_vitrina_obrir.1"
         ]
+      },
+      "iri_carnet_signar": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "formulari_27be"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "formulari_27be_signat"
+            },
+            {
+              "flag": "carnet_obtingut"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_carnet_signar.1",
+          "pista.iri_carnet_signar.2"
+        ]
+      },
+      "iri_carnet_lliurar": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "formulari_27be_signat"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "carnet_obtingut"
+        },
+        "levels": [
+          "pista.iri_carnet_lliurar.1"
+        ]
+      },
+      "vet_notes": {
+        "priority": 0,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "var": "notes_trobades",
+              "op": ">=",
+              "value": 1
+            },
+            {
+              "var": "notes_trobades",
+              "op": "<",
+              "value": 5
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "notes_trobades",
+          "op": ">=",
+          "value": 5
+        },
+        "levels": [
+          "pista.vet_notes.1",
+          "pista.vet_notes.2"
+        ]
+      },
+      "vet_nota_mos": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "nota_mos"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "nota_mos_tornada"
+        },
+        "levels": [
+          "pista.vet_nota_mos.1",
+          "pista.vet_nota_mos.2"
+        ]
       }
     },
     "endings": {
@@ -12515,6 +13177,25 @@
                 }
               },
               {
+                "id": "carnet",
+                "text": "dlg.cargol.opt.carnet",
+                "next": "carnet",
+                "once": true,
+                "if": {
+                  "var": "formularis_arxivats",
+                  "op": ">=",
+                  "value": 2
+                }
+              },
+              {
+                "id": "carnet_lliurar",
+                "text": "dlg.cargol.opt.carnet_lliurar",
+                "next": "carnet_lliurar",
+                "if": {
+                  "hasItem": "formulari_27be_signat"
+                }
+              },
+              {
                 "id": "dia",
                 "text": "dlg.cargol.opt.dia",
                 "once": true,
@@ -12658,16 +13339,60 @@
             "lines": [
               {
                 "who": "cargol",
+                "text": "dlg.cargol.imant_falta",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "carnet_exemplar",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_triplicat",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet_material",
+                "if": {
+                  "hasItem": "carnet_exemplar"
+                },
+                "effects": [
+                  {
+                    "giveItem": "imant_ferro9"
+                  }
+                ]
+              },
+              {
+                "who": "cargol",
                 "text": "dlg.cargol.imant_ok1",
                 "if": {
-                  "hasItem": "formulari_triplicat"
+                  "all": [
+                    {
+                      "hasItem": "carnet_exemplar",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
                 }
               },
               {
                 "who": "cargol",
                 "text": "dlg.cargol.imant_ok2",
                 "if": {
-                  "hasItem": "formulari_triplicat"
+                  "all": [
+                    {
+                      "hasItem": "carnet_exemplar",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
                 },
                 "effects": [
                   {
@@ -12687,16 +13412,12 @@
                       "who": "cargol",
                       "change": 1
                     }
+                  },
+                  {
+                    "addVar": "formularis_arxivats",
+                    "amount": 1
                   }
                 ]
-              },
-              {
-                "who": "cargol",
-                "text": "dlg.cargol.imant_falta",
-                "if": {
-                  "hasItem": "formulari_triplicat",
-                  "is": false
-                }
               }
             ],
             "goto": "menu"
@@ -12751,31 +13472,27 @@
             "lines": [
               {
                 "who": "cargol",
-                "text": "dlg.cargol.diapaso_altre",
+                "text": "dlg.cargol.imant_falta",
                 "if": {
                   "all": [
                     {
-                      "hasItem": "formulari_triplicat"
+                      "hasItem": "carnet_exemplar",
+                      "is": false
                     },
                     {
-                      "remembers": {
-                        "who": "cargol",
-                        "fact": "diapaso_lliurat"
-                      }
+                      "hasItem": "formulari_triplicat",
+                      "is": false
                     }
                   ]
                 }
               },
               {
                 "who": "cargol",
-                "text": "dlg.cargol.diapaso_ok",
+                "text": "dlg.cargol.carnet_material",
                 "if": {
-                  "hasItem": "formulari_triplicat"
+                  "hasItem": "carnet_exemplar"
                 },
                 "effects": [
-                  {
-                    "takeItem": "formulari_triplicat"
-                  },
                   {
                     "takeItem": "diapaso_espatllat"
                   },
@@ -12796,11 +13513,68 @@
               },
               {
                 "who": "cargol",
-                "text": "dlg.cargol.imant_falta",
+                "text": "dlg.cargol.diapaso_altre",
                 "if": {
-                  "hasItem": "formulari_triplicat",
-                  "is": false
+                  "all": [
+                    {
+                      "hasItem": "carnet_exemplar",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "hasItem": "formulari_triplicat"
+                        },
+                        {
+                          "remembers": {
+                            "who": "cargol",
+                            "fact": "diapaso_lliurat"
+                          }
+                        }
+                      ]
+                    }
+                  ]
                 }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.diapaso_ok",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "carnet_exemplar",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "takeItem": "formulari_triplicat"
+                  },
+                  {
+                    "takeItem": "diapaso_espatllat"
+                  },
+                  {
+                    "giveItem": "diapaso"
+                  },
+                  {
+                    "setVar": "diapaso_to",
+                    "value": 0
+                  },
+                  {
+                    "remember": {
+                      "who": "cargol",
+                      "fact": "diapaso_lliurat"
+                    }
+                  },
+                  {
+                    "addVar": "formularis_arxivats",
+                    "amount": 1
+                  }
+                ]
               }
             ],
             "goto": "menu"
@@ -12809,14 +13583,27 @@
             "lines": [
               {
                 "who": "cargol",
-                "text": "dlg.cargol.imant2_ok",
+                "text": "dlg.cargol.imant_falta",
                 "if": {
-                  "hasItem": "formulari_triplicat"
+                  "all": [
+                    {
+                      "hasItem": "carnet_exemplar",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_triplicat",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet_material",
+                "if": {
+                  "hasItem": "carnet_exemplar"
                 },
                 "effects": [
-                  {
-                    "takeItem": "formulari_triplicat"
-                  },
                   {
                     "giveItem": "imant_ferro9"
                   }
@@ -12824,11 +13611,30 @@
               },
               {
                 "who": "cargol",
-                "text": "dlg.cargol.imant_falta",
+                "text": "dlg.cargol.imant2_ok",
                 "if": {
-                  "hasItem": "formulari_triplicat",
-                  "is": false
-                }
+                  "all": [
+                    {
+                      "hasItem": "carnet_exemplar",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "formulari_triplicat"
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "takeItem": "formulari_triplicat"
+                  },
+                  {
+                    "giveItem": "imant_ferro9"
+                  },
+                  {
+                    "addVar": "formularis_arxivats",
+                    "amount": 1
+                  }
+                ]
               }
             ],
             "goto": "menu"
@@ -12842,6 +13648,13 @@
               {
                 "who": "cargol",
                 "text": "dlg.cargol.tub2"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.tub_carnet",
+                "if": {
+                  "hasItem": "carnet_exemplar"
+                }
               },
               {
                 "who": "cargol",
@@ -12877,6 +13690,66 @@
             "effects": [
               {
                 "setFlag": "cargol_sap_revisio"
+              }
+            ],
+            "goto": "menu"
+          },
+          "carnet": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet1"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet2"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet3"
+              },
+              {
+                "who": "player",
+                "text": "dlg.cargol.carnet_iri"
+              }
+            ],
+            "effects": [
+              {
+                "giveItem": "formulari_27be"
+              }
+            ],
+            "goto": "menu"
+          },
+          "carnet_lliurar": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet_ok1"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet_ok2"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.carnet_ok3"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "formulari_27be_signat"
+              },
+              {
+                "giveItem": "carnet_exemplar"
+              },
+              {
+                "setFlag": "carnet_obtingut"
+              },
+              {
+                "relation": {
+                  "who": "cargol",
+                  "change": 1
+                }
               }
             ],
             "goto": "menu"
@@ -14206,6 +15079,17 @@
       "dlg.cargol_vell.adeu": "Adeu. No toqui les vitrines.",
       "dlg.guardia.fugitiva1": "Interna 9? Tu no eres a la cel·la, tancada amb clau?",
       "dlg.guardia.fugitiva2": "...Saps què? No t'he vist. Avui tinc la vista fatal.",
+      "dlg.cargol.carnet_material": "Carnet d'usuària exemplar! Procedint sense paperassa. Em sap greu: m'encanta la paperassa.",
+      "dlg.cargol.opt.carnet": "Cargol, hi ha cap manera d'omplir menys formularis?",
+      "dlg.cargol.carnet1": "Quina pregunta tan bonica! Amb dos triplicats arxivats, vostè opta al Carnet d'Usuària Exemplar.",
+      "dlg.cargol.carnet2": "Només cal el formulari 27-B/E, signat a mà pel capatàs en persona. El segell no val: ha de ser la signatura.",
+      "dlg.cargol.carnet3": "El capatàs no ha signat mai res. Però la norma és la norma.",
+      "dlg.cargol.carnet_iri": "Un formulari per deixar d'omplir formularis. És clar.",
+      "dlg.cargol.opt.carnet_lliurar": "Aquí tens el 27-B/E, signat pel capatàs.",
+      "dlg.cargol.carnet_ok1": "«Cinc minuts més, mare.» Signatura manuscrita del capatàs. Inconfusible.",
+      "dlg.cargol.carnet_ok2": "Felicitats, senyora Iri! Carnet d'Usuària Exemplar. A partir d'ara, el material de ferro-9 li surt sense formularis.",
+      "dlg.cargol.carnet_ok3": "L'arxivaré amb molt d'amor. És el darrer formulari que em portarà.",
+      "dlg.cargol.tub_carnet": "I el seu carnet no diu res de fugitives. És un buit legal preciós.",
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "La veritat a temps",
@@ -14328,6 +15212,15 @@
       "mis.memoria_cargol.obj.segell": "Iri: fes que no li esborrin la memòria",
       "mis.memoria_cargol.obj.nom": "Iri: que sàpiga com es diu",
       "mis.memoria_cargol.obj.placa": "Vet: torna-li el nom al conserge del museu",
+      "mis.formulari_27b.titol": "El formulari 27-B",
+      "mis.formulari_27b.desc": "A la fàbrica, sense formulari no hi ha material. I cada vegada en calen més.",
+      "mis.formulari_27b.obj.segellat": "Iri: un 27-B segellat",
+      "mis.formulari_27b.obj.triplicat": "Iri: un 27-B segellat per triplicat",
+      "mis.formulari_27b.obj.carnet": "Iri: el Carnet d'Usuària Exemplar",
+      "mis.notes_perdudes.titol": "Les notes perdudes",
+      "mis.notes_perdudes.desc": "Altres sincronitzadors van parlar amb el panell abans que jo. Van deixar notes amagades per la presó.",
+      "mis.notes_perdudes.obj.trobar": "Vet: troba les notes amagades ({notes_trobades} de 5)",
+      "mis.notes_perdudes.obj.mos": "Vet: torna la nota de la cel·la 9 a qui la va escriure",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
       "obj.clau_anglesa.vet1": "Una clau anglesa reluent, com acabada de fer. Porta un segell: «Aldaia · Ferro-9 · Lot 1».",
@@ -14579,6 +15472,22 @@
       "obj.clau_vitrina.amb_article": "la clau de la vitrina",
       "obj.placa_cargol.amb_article": "la placa de robot",
       "obj.nota_vet_nom.iri2_sense": "Desaparèixer... Aquí només hi ha una persona que pugui fer desaparèixer algú: el Director.",
+      "obj.formulari_27be.nom": "formulari 27-B/E",
+      "obj.formulari_27be.amb_article": "el formulari 27-B/E",
+      "obj.formulari_27be.desc": "«Sol·licitud de Carnet d'Usuària Exemplar. Signatura del capatàs (a mà, en persona): ______»",
+      "obj.formulari_27be_signat.nom": "formulari 27-B/E signat",
+      "obj.formulari_27be_signat.amb_article": "el formulari 27-B/E signat",
+      "obj.formulari_27be_signat.desc": "Signat pel capatàs en persona. La signatura diu: «Cinc minuts més, mare».",
+      "obj.carnet_exemplar.nom": "carnet d'usuària exemplar",
+      "obj.carnet_exemplar.amb_article": "el carnet d'usuària exemplar",
+      "obj.carnet_exemplar.desc": "«Iri, usuària exemplar. Exempta de formularis.» Plastificat i tot.",
+      "obj.notes_perdudes.nom": "notes perdudes",
+      "obj.notes_perdudes.amb_article": "les notes perdudes",
+      "obj.notes_perdudes.desc": "Notes de sincronitzadors d'altres anys, amagades per la presó.",
+      "obj.notes_perdudes.look": "Les notes que he trobat per la presó. Cadascuna d'algú que també va parlar amb el panell.",
+      "obj.nota_mos.nom": "nota de la cel·la 9",
+      "obj.nota_mos.amb_article": "la nota de la cel·la 9",
+      "obj.nota_mos.desc": "Una nota vella, signada «M., cel·la 9».",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -14846,6 +15755,13 @@
       "pista.vet_vitrina.1": "La vitrina és tancada. Algú del personal de la presó en deu tenir la clau.",
       "pista.vet_vitrina.2": "Demana la clau de la vitrina a la Guàrdia d'Orís, al passadís.",
       "pista.vet_vitrina_obrir.1": "Obre la vitrina del museu amb la clau.",
+      "pista.iri_carnet_signar.1": "El 27-B/E l'ha de signar el capatàs. Dorm, però té mans.",
+      "pista.iri_carnet_signar.2": "Fes servir el formulari 27-B/E amb el capatàs (amb el llapis a l'inventari).",
+      "pista.iri_carnet_lliurar.1": "Porta el formulari signat al Cargol.",
+      "pista.vet_notes.1": "Hi ha més notes amagades per la presó: en esquerdes, sota rajoles, en racons que ningú no mira.",
+      "pista.vet_notes.2": "N'hi ha una a cada lloc on pots anar: la cel·la, el passadís, l'hangar, l'arxiu i la Sala de la Memòria.",
+      "pista.vet_nota_mos.1": "«M., cel·la 9», fa vint anys. Qui fa vint anys que és a la cel·la 9?",
+      "pista.vet_nota_mos.2": "Dona la nota a en Mos.",
       "sala.fabrica_calderes.capatas.look1": "El capatàs Tul. Dorm abraçat al segell oficial com si fos un osset de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
       "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Tul?",
@@ -15308,7 +16224,39 @@
       "sala.gavina_memoria.cargol_vell.placa7": "Doncs digui-li que el Cargol ho recorda tot. Tot.",
       "sala.gavina_memoria.cargol_vell.sense_nom1": "Una placa sense nom. Em sona... Em sona molt.",
       "sala.gavina_memoria.cargol_vell.sense_nom2": "Però sense nom no sé de qui és. Ho sento, interna.",
-      "sala.gavina_memoria.cargol_vell.res": "Una placa de robot. No em diu res. La tornaré a la vitrina quan pugui."
+      "sala.gavina_memoria.cargol_vell.res": "Una placa de robot. No em diu res. La tornaré a la vitrina quan pugui.",
+      "sala.fabrica_calderes.capatas.signar1": "Li poso el formulari sota la mà i el llapis entre els dits...",
+      "sala.fabrica_calderes.capatas.signar2": "Mmm... cinc minuts més, mare...",
+      "sala.fabrica_calderes.capatas.signar3": "Ha signat. Literalment: «Cinc minuts més, mare». Per al Cargol, n'hi haurà prou.",
+      "sala.fabrica_calderes.capatas.signar_sense": "Sense un llapis, no signarà ni dormint.",
+      "nota_perduda.trobada": "Hi ha un paper doblegat, amagat. Una nota.",
+      "nota_perduda.una_mes": "Una altra nota amagada. La guardo amb les altres.",
+      "nota_perduda.trobada_mos": "A dins, un paper doblegat moltes vegades.",
+      "nota_perduda.1.lloc": "esquerda",
+      "nota_perduda.1.look": "Una esquerda a la paret, just a l'altura de la mà. Hi ha alguna cosa encastada.",
+      "nota_perduda.1.text": "«Interna 4, any 12. El panell vibra cada nit. Li he donat cops, li he cridat, li he escrit. A l'altra banda no hi ha ningú. Si algun dia hi és, digues-li que l'he esperada.»",
+      "nota_perduda.1.vet": "Cent anys abans que jo, algú altre parlava amb aquest panell. I ningú no li responia.",
+      "nota_perduda.2.lloc": "rajola solta",
+      "nota_perduda.2.look": "Una rajola del terra que balla. Algú la va aixecar abans que jo.",
+      "nota_perduda.2.text": "«Intern 11, any 37. Diuen que el reciclatge és un trasllat. Ningú no torna del trasllat. PD: els cartells del somriure són de paper bo. Per escriure-hi, vull dir.»",
+      "nota_perduda.2.vet": "Paper bo. Ho tindré en compte.",
+      "nota_perduda.3.lloc": "caixa de recanvis",
+      "nota_perduda.3.look": "Una caixa de recanvis buida, rovellada. Fa anys que no s'hi recanvia res.",
+      "nota_perduda.3.text": "«Interna 23, any 58. He arribat fins a l'hangar. La comporta no té palanca, el pany de la llançadora canta i el motor no té pressió. Algú hi ha tret el ferro-9 a propòsit.»",
+      "nota_perduda.3.vet": "Ella també ho va intentar. Però no tenia ningú a l'altra banda.",
+      "nota_perduda.4.lloc": "carpeta caiguda",
+      "nota_perduda.4.look": "Una carpeta caiguda darrere l'arxivador. Ningú no l'ha recollida en anys.",
+      "nota_perduda.4.text": "«Sense número, any 80. He llegit els plànols. El camp crema els que no tenen ningú a l'altra banda. D'això en diuen reciclatge. Si llegeixes això, troba algú a l'altra banda.»",
+      "nota_perduda.4.vet": "Troba algú a l'altra banda. Ja ho he fet.",
+      "nota_perduda.5.lloc": "sòcol de l'holograma",
+      "nota_perduda.5.look": "El sòcol de l'holograma. Una de les plaques està descargolada.",
+      "nota_perduda.5.text": "«Any 100. El Director de l'holograma diu que va ser un accident. Mireu la foto del torn de nit: no va ser un accident. —M., cel·la 9»",
+      "nota_perduda.5.vet": "M., cel·la 9. La meva cel·la, fa vint anys. En Mos.",
+      "sala.gavina_cella.mos.nota1": "Mos. Això és teu, oi?",
+      "sala.gavina_cella.mos.nota2": "On l'has trobada? La vaig amagar el primer any. Pensava que algú la llegiria i vindria a buscar-me.",
+      "sala.gavina_cella.mos.nota3": "No va venir ningú. Al final, em vaig maquillar i vaig esperar.",
+      "sala.gavina_cella.mos.nota4": "Doncs ara l'ha llegida algú. I tenies raó: no va ser un accident.",
+      "sala.gavina_cella.mos.nota5": "Ets un sol, nouvinguda. Un sol amb granota taronja."
     }
   },
   "locale": "ca"

@@ -181,6 +181,46 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "carpeta",
+      "tag": "carpeta",
+      "animations": {
+        "carpeta": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 201,
+            "y": 150
+          },
+          {
+            "x": 234,
+            "y": 150
+          },
+          {
+            "x": 234,
+            "y": 168
+          },
+          {
+            "x": 201,
+            "y": 168
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 218,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 218,
+        "y": 168
+      },
+      "description": "carpeta caiguda"
     }
   ],
   "characters": [

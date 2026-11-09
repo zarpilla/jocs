@@ -249,5 +249,21 @@
   "obj.tub_amb_llibreta.amb_article": "el tub amb la llibreta",
   "obj.clau_vitrina.amb_article": "la clau de la vitrina",
   "obj.placa_cargol.amb_article": "la placa de robot",
-  "obj.nota_vet_nom.iri2_sense": "Desaparèixer... Aquí només hi ha una persona que pugui fer desaparèixer algú: el Director."
+  "obj.nota_vet_nom.iri2_sense": "Desaparèixer... Aquí només hi ha una persona que pugui fer desaparèixer algú: el Director.",
+  "obj.formulari_27be.nom": "formulari 27-B/E",
+  "obj.formulari_27be.amb_article": "el formulari 27-B/E",
+  "obj.formulari_27be.desc": "«Sol·licitud de Carnet d'Usuària Exemplar. Signatura del capatàs (a mà, en persona): ______»",
+  "obj.formulari_27be_signat.nom": "formulari 27-B/E signat",
+  "obj.formulari_27be_signat.amb_article": "el formulari 27-B/E signat",
+  "obj.formulari_27be_signat.desc": "Signat pel capatàs en persona. La signatura diu: «Cinc minuts més, mare».",
+  "obj.carnet_exemplar.nom": "carnet d'usuària exemplar",
+  "obj.carnet_exemplar.amb_article": "el carnet d'usuària exemplar",
+  "obj.carnet_exemplar.desc": "«Iri, usuària exemplar. Exempta de formularis.» Plastificat i tot.",
+  "obj.notes_perdudes.nom": "notes perdudes",
+  "obj.notes_perdudes.amb_article": "les notes perdudes",
+  "obj.notes_perdudes.desc": "Notes de sincronitzadors d'altres anys, amagades per la presó.",
+  "obj.notes_perdudes.look": "Les notes que he trobat per la presó. Cadascuna d'algú que també va parlar amb el panell.",
+  "obj.nota_mos.nom": "nota de la cel·la 9",
+  "obj.nota_mos.amb_article": "la nota de la cel·la 9",
+  "obj.nota_mos.desc": "Una nota vella, signada «M., cel·la 9»."
 }

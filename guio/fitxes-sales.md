@@ -10,7 +10,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `capatas` | capatàs Tul | personatge | sempre | use + diapaso_espatllat, look, talkTo, pull, pickUp, push, use + plomall, use + objecte |
+| `capatas` | capatàs Tul | personatge | sempre | use + formulari_27be, give + formulari_27be, use + diapaso_espatllat, look, talkTo, pull, pickUp, push, use + plomall, use + objecte |
 | `segell` | segell oficial | prop | `{"all":[{"flag":"segell_caigut"},{"flag":"segell_agafat","is":false}]}` | look, pickUp |
 | `tauler` | tauler d'anuncis | hotspot / prop | sempre | look, pickUp |
 | `alarma` | llum d'alarma | hotspot / prop | sempre | look |
@@ -76,6 +76,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `expedient_iri` | expedients | hotspot / prop | sempre | look, open, pickUp |
 | `arxivador` | arxivador | hotspot / prop | sempre | open, pickUp, use, look |
 | `planols` | plànols | hotspot / prop | sempre | look, pickUp, open |
+| `carpeta` | carpeta caiguda | prop | `{"flag":"nota_perduda_4","is":false}` | open, pickUp, pull, push, use, look |
 
 ### Cel·la 9 · `gavina_cella`
 
@@ -83,7 +84,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 |---|---|---|---|---|
 | `panell` | panell rovellat | hotspot / prop | sempre | use + mapa_fuga, use + objecte, push + objecte, look + objecte, use, push, look, pull, pickUp, open, use + clau_anglesa, use + molla |
 | `altaveu` | altaveu de la MARE | hotspot / prop | sempre | talkTo, look, push, pull, use |
-| `mos` | Mos | personatge | sempre | give + carta_mos, use + carta_mos, talkTo, look |
+| `mos` | Mos | personatge | sempre | give + nota_mos, use + nota_mos, give + carta_mos, use + carta_mos, talkTo, look |
 | `avis` | avís | prop | `{"flag":"avis_agafat","is":false}` | look, pickUp |
 | `llitera` | llitera | hotspot / prop | sempre | pickUp, pull, look |
 | `escarabat` | Senyor Bigotis | prop | `{"flag":"escarabat_agafat","is":false}` | look, pickUp |
@@ -92,6 +93,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `finestreta` | finestreta | hotspot / prop | sempre | look |
 | `directora` | Directora Aldaia | personatge | `{"flag":"acte3_iniciat"}` | talkTo, look |
 | `reixa` | reixa | hotspot / prop → `gavina_hangar` | sempre | open, pull, pickUp, use, push, walkTo, look, use + clau_anglesa |
+| `esquerda` | esquerda | prop | `{"flag":"nota_perduda_1","is":false}` | open, pickUp, pull, push, use, look |
 
 ### Moll de l'hangar · `gavina_hangar`
 
@@ -107,6 +109,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `escala` | escala | hotspot / prop → `gavina_arxiu` | sempre | open, use, walkTo, look, use + clau_anglesa |
 | `caixa_flotant` | caixa que sura | prop | `{"all":[{"var":"valvula","op":"==","value":"tancada"},{"flag":"caixa_agafada","is":false}]}` | pickUp, open, look |
 | `sortida_conducte` | sortida del conducte | prop → `gavina_cella` | `{"flag":"reixa_oberta"}` | open, use, walkTo, pull, look |
+| `caixa_recanvis` | caixa de recanvis | prop | `{"flag":"nota_perduda_3","is":false}` | open, pickUp, pull, push, use, look |
 
 ### Sala de la Memòria · `gavina_memoria`
 
@@ -119,6 +122,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `mapa` | mapa de La Gavina | hotspot / prop | sempre | look |
 | `fullets` | fullets | hotspot / prop | sempre | pickUp, look |
 | `cargol_vell` | Conserge | personatge | sempre | use + placa_cargol, give + placa_cargol, talkTo, look |
+| `socol` | sòcol de l'holograma | prop | `{"flag":"nota_perduda_5","is":false}` | open, pickUp, pull, push, use, look |
 
 ### Passadís del mòdul C · `gavina_passadis`
 
@@ -130,6 +134,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `porta_hangar` | porta del fons | hotspot / prop → `gavina_hangar` | sempre | open, use, walkTo |
 | `porta_memoria` | Sala de la Memòria | hotspot / prop → `gavina_memoria` | sempre | open, use, walkTo, look |
 | `guardia` | Guàrdia d'Orís | personatge | `{"flag":"mira_salvada"}` | talkTo, look |
+| `rajola` | rajola solta | prop | `{"flag":"nota_perduda_2","is":false}` | open, pickUp, pull, push, use, look |
 
 ## Objectes d'inventari
 
@@ -182,3 +187,8 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `tub_amb_llibreta` | tub amb la llibreta | 1.5 | material: ferro9, finestra: iri |
 | `clau_vitrina` | clau de la vitrina | 0.05 |  |
 | `placa_cargol` | placa de robot | 0.2 |  |
+| `formulari_27be` | formulari 27-B/E | 0.01 |  |
+| `formulari_27be_signat` | formulari 27-B/E signat | 0.01 |  |
+| `carnet_exemplar` | carnet d'usuària exemplar | 0.01 |  |
+| `notes_perdudes` | notes perdudes | 0.05 |  |
+| `nota_mos` | nota de la cel·la 9 | 0.01 |  |

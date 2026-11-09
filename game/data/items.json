@@ -1981,5 +1981,90 @@
         ]
       }
     ]
+  },
+  "formulari_27be": {
+    "name": "obj.formulari_27be.nom",
+    "description": "obj.formulari_27be.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "formulari_27be_signat": {
+    "name": "obj.formulari_27be_signat.nom",
+    "description": "obj.formulari_27be_signat.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "carnet_exemplar": {
+    "name": "obj.carnet_exemplar.nom",
+    "description": "obj.carnet_exemplar.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "notes_perdudes": {
+    "name": "obj.notes_perdudes.nom",
+    "description": "obj.notes_perdudes.desc",
+    "props": {
+      "pes": 0.05
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.notes_perdudes.look"
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.1.text",
+            "if": {
+              "flag": "nota_perduda_1"
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.2.text",
+            "if": {
+              "flag": "nota_perduda_2"
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.3.text",
+            "if": {
+              "flag": "nota_perduda_3"
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.4.text",
+            "if": {
+              "flag": "nota_perduda_4"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "nota_mos": {
+    "name": "obj.nota_mos.nom",
+    "description": "obj.nota_mos.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "nota_perduda.5.text"
+          }
+        ]
+      }
+    ]
   }
 }

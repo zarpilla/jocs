@@ -38,6 +38,20 @@
       "say": false
     },
     {
+      "id": "menu__carnet",
+      "scriptName": "menu__carnet",
+      "text": "Cargol, hi ha cap manera d'omplir menys formularis?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__carnet_lliurar",
+      "scriptName": "menu__carnet_lliurar",
+      "text": "Aquí tens el 27-B/E, signat pel capatàs.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__dia",
       "scriptName": "menu__dia",
       "text": "Com estàs, Cargol?",

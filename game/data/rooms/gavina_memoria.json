@@ -443,6 +443,59 @@
           ]
         }
       ]
+    },
+    "socol": {
+      "name": "nota_perduda.5.lloc",
+      "visibleIf": {
+        "flag": "nota_perduda_5",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.trobada_mos"
+            },
+            {
+              "who": "narrator",
+              "text": "nota_perduda.5.text"
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.5.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nota_perduda_5"
+            },
+            {
+              "addVar": "notes_trobades",
+              "amount": 1
+            },
+            {
+              "giveItem": "nota_mos"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.5.look"
+            }
+          ]
+        }
+      ]
     }
   }
 }

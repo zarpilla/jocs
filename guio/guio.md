@@ -447,8 +447,8 @@ Com que sempre és la mateixa història amb més o menys coses arreglades, el ju
 | **Salvar la Mira** | Iri | Treure la sospita de sobre la Mira (amb tres solucions possibles). | La Guàrdia d'Orís existeix al present. Necessari per als finals 2 i 3. |
 | **La memòria del Cargol** | Iri + Vet | L'Iri li repara el mòdul de memòria i li grava el nom a la placa. La Vet li retorna la placa, que s'havia perdut. | El Cargol vell ajuda la Vet. Necessari per al final 3. |
 | **El missatge d'en Mos** | Vet | En Mos vol saber si la seva filla va rebre una carta que ell va escriure. La Vet la troba a l'Arxiu. | En Mos explica el secret del reciclatge abans d'hora i dona una drecera a l'Acte 2. |
-| **Les notes perdudes** | Vet | Col·leccionable: notes de sincronitzadors fallits amagades per la presó durant 120 anys. | Història del món i pistes. |
-| **El formulari 27-B** | Iri | Cadena d'humor burocràtic que es repeteix i es complica a cada acte. | Gags, i una eina extra. |
+| **Les notes perdudes** | Vet | Col·leccionable: cinc notes de sincronitzadors fallits amagades per la presó durant 120 anys (una esquerda a la cel·la, una rajola solta al passadís, una caixa de recanvis a l'hangar, una carpeta caiguda a l'arxiu i el sòcol de l'holograma). La cinquena és d'en Mos, de fa vint anys: si la Vet l'hi torna, es tanca la missió. | Història del món i pistes (p. ex. «els cartells del somriure són de paper bo»). |
+| **El formulari 27-B** | Iri | Cadena d'humor burocràtic que es complica a cada acte: segellat (Acte 1), per triplicat (Acte 2) i, amb dos triplicats arxivats, el formulari 27-B/E per al Carnet d'Usuària Exemplar, «signat a mà pel capatàs en persona». El capatàs dorm: l'Iri li posa el llapis a la mà i signa «Cinc minuts més, mare». A l'Acte 3, «els fugitius no omplen formularis». | Gags, i una eina extra: amb el carnet, el Cargol dona el material de ferro-9 sense formularis. |
 
 ## Sistema de pistes
 

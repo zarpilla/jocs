@@ -167,6 +167,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "gavina_cella 8.aseprite": {
+      "frame": {
+        "x": 3840,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -175,7 +196,7 @@
     "image": "gavina_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
+      "w": 4320,
       "h": 270
     },
     "scale": "1",
@@ -233,6 +254,13 @@
         "name": "reixa_oberta",
         "from": 7,
         "to": 7,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "esquerda",
+        "from": 8,
+        "to": 8,
         "direction": "forward",
         "color": "#000000ff"
       }

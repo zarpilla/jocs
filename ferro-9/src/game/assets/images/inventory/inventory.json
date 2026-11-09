@@ -986,6 +986,111 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 47.aseprite": {
+      "frame": {
+        "x": 2303,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 48.aseprite": {
+      "frame": {
+        "x": 2352,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 49.aseprite": {
+      "frame": {
+        "x": 2401,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 50.aseprite": {
+      "frame": {
+        "x": 2450,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 51.aseprite": {
+      "frame": {
+        "x": 2499,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -994,7 +1099,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2303,
+      "w": 2548,
       "h": 27
     },
     "scale": "1",
@@ -1325,6 +1430,41 @@
         "name": "placa_cargol",
         "from": 46,
         "to": 46,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "formulari_27be",
+        "from": 47,
+        "to": 47,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "formulari_27be_signat",
+        "from": 48,
+        "to": 48,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "carnet_exemplar",
+        "from": 49,
+        "to": 49,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "notes_perdudes",
+        "from": 50,
+        "to": 50,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_mos",
+        "from": 51,
+        "to": 51,
         "direction": "forward",
         "color": "#000000ff"
       }

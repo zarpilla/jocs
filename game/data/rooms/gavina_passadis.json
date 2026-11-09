@@ -179,6 +179,72 @@
           ]
         }
       ]
+    },
+    "rajola": {
+      "name": "nota_perduda.2.lloc",
+      "visibleIf": {
+        "flag": "nota_perduda_2",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.trobada",
+              "if": {
+                "hasItem": "notes_perdudes",
+                "is": false
+              },
+              "effects": [
+                {
+                  "giveItem": "notes_perdudes"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.una_mes",
+              "if": {
+                "hasItem": "notes_perdudes"
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "nota_perduda.2.text"
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.2.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nota_perduda_2"
+            },
+            {
+              "addVar": "notes_trobades",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.2.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [

@@ -418,6 +418,46 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "esquerda",
+      "tag": "esquerda",
+      "animations": {
+        "esquerda": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 201,
+            "y": 87
+          },
+          {
+            "x": 223,
+            "y": 87
+          },
+          {
+            "x": 223,
+            "y": 117
+          },
+          {
+            "x": 201,
+            "y": 117
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 213,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 213,
+        "y": 117
+      },
+      "description": "esquerda"
     }
   ],
   "characters": [

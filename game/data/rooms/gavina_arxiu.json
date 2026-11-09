@@ -210,6 +210,72 @@
           ]
         }
       ]
+    },
+    "carpeta": {
+      "name": "nota_perduda.4.lloc",
+      "visibleIf": {
+        "flag": "nota_perduda_4",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.trobada",
+              "if": {
+                "hasItem": "notes_perdudes",
+                "is": false
+              },
+              "effects": [
+                {
+                  "giveItem": "notes_perdudes"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.una_mes",
+              "if": {
+                "hasItem": "notes_perdudes"
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "nota_perduda.4.text"
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.4.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nota_perduda_4"
+            },
+            {
+              "addVar": "notes_trobades",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.4.look"
+            }
+          ]
+        }
+      ]
     }
   }
 }

@@ -3593,5 +3593,100 @@
     "levels": [
       "pista.vet_vitrina_obrir.1"
     ]
+  },
+  "iri_carnet_signar": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "formulari_27be"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "formulari_27be_signat"
+        },
+        {
+          "flag": "carnet_obtingut"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_carnet_signar.1",
+      "pista.iri_carnet_signar.2"
+    ]
+  },
+  "iri_carnet_lliurar": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "formulari_27be_signat"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "carnet_obtingut"
+    },
+    "levels": [
+      "pista.iri_carnet_lliurar.1"
+    ]
+  },
+  "vet_notes": {
+    "priority": 0,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "var": "notes_trobades",
+          "op": ">=",
+          "value": 1
+        },
+        {
+          "var": "notes_trobades",
+          "op": "<",
+          "value": 5
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "notes_trobades",
+      "op": ">=",
+      "value": 5
+    },
+    "levels": [
+      "pista.vet_notes.1",
+      "pista.vet_notes.2"
+    ]
+  },
+  "vet_nota_mos": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "nota_mos"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "nota_mos_tornada"
+    },
+    "levels": [
+      "pista.vet_nota_mos.1",
+      "pista.vet_nota_mos.2"
+    ]
   }
 }

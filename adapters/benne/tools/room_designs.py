@@ -238,6 +238,65 @@ def carved_mark(c, x, y, col):
     c.ellipse(x + 9, y - 2, x + 14, y + 3, None, outline=col)
 
 
+# ─── Les notes perdudes: amagatalls petits (només es veuen si hi mires bé) ───
+
+def amb(bg, *extres):
+    """El fons `bg` amb uns quants detalls més dibuixats al damunt."""
+    def draw(c):
+        bg(c)
+        for e in extres:
+            e(c)
+    return draw
+
+
+def esquerda(c):
+    col = (22, 26, 34)
+    c.line([(152, 68), (156, 72), (154, 75), (159, 79), (157, 82)], col)
+    c.line([(156, 72), (161, 70)], col)
+
+
+def rajola_solta(c):
+    c.rect(122, 131, 144, 139, (52, 60, 74))
+    c.line([(122, 131), (144, 131)], (90, 100, 116))
+    c.line([(122, 139), (144, 139)], (20, 24, 32))
+
+
+def caixa_recanvis(c):
+    c.rect(302, 113, 328, 125, (96, 70, 48))
+    c.rect(302, 113, 328, 115, (122, 90, 60))
+    c.rect(306, 117, 324, 118, (70, 50, 34))
+    c.px(318, 120, (150, 74, 40)); c.px(309, 122, (150, 74, 40))   # rovell
+
+
+def socol_holograma(c):
+    c.rect(214, 106, 236, 112, (120, 132, 148))
+    c.rect(229, 107, 235, 111, (80, 90, 104))                        # la placa descargolada
+
+
+# Els papers de les notes: props que desapareixen quan la Vet les agafa.
+PAPER_VELL = (220, 210, 184)
+
+
+def nota_esquerda(c):
+    c.rect(154, 75, 156, 77, PAPER_VELL)
+
+
+def nota_rajola(c):
+    c.rect(140, 132, 143, 134, PAPER_VELL)
+
+
+def nota_caixa(c):
+    c.rect(320, 111, 324, 113, PAPER_VELL)
+
+
+def nota_carpeta(c):
+    c.d.polygon([(150, 114), (168, 112), (170, 119), (152, 121)], fill=(196, 170, 96))
+    c.line([(151, 117), (169, 115)], (150, 124, 70))
+
+
+def nota_socol(c):
+    c.rect(230, 109, 233, 110, PAPER_VELL)
+
 def factory_door(c, x0, y0, x1, y1, iron=False, sign=False):
     frame = (52, 36, 26)
     c.rect(x0 - 2, y0 - 3, x1 + 2, y1, frame)
@@ -699,13 +758,14 @@ CELLA = {
         'escarabat': {'rect': (88, 114, 104, 128), 'walk': (110, 134)},
         'safata': {'rect': (232, 120, 264, 138), 'walk': (226, 142)},
         'reixa': {'rect': (60, 82, 102, 110), 'walk': (80, 128)},
+        'esquerda': {'rect': (148, 64, 164, 86), 'walk': (156, 128)},
     },
     'spawns': {'vet': (150, 138), 'mos': (306, 140), 'mare': (130, 30), 'directora': (214, 138)},
     'walkable': [(14, 118), (266, 118), (268, 128), (338, 130), (346, 148), (6, 148)],
-    'bg': cella_bg,
+    'bg': amb(cella_bg, esquerda),
     'props': {'avis': cella_avis, 'escarabat': cella_escarabat, 'safata': cella_safata,
               'panell_afluixat': cella_panell_afluixat, 'panell_obert': cella_panell_obert,
-              'panell_reparat': cella_panell_reparat, 'reixa_oberta': cella_reixa_oberta},
+              'panell_reparat': cella_panell_reparat, 'reixa_oberta': cella_reixa_oberta, 'esquerda': nota_esquerda},
 }
 
 
@@ -778,11 +838,12 @@ PASSADIS = {
         'camera_vigilancia': {'rect': (300, 8, 328, 26), 'walk': (310, 128)},
         'porta_hangar': {'rect': (186, 46, 214, 90), 'walk': (200, 120)},
         'porta_memoria': {'rect': (260, 56, 296, 112), 'walk': (276, 128)},
+        'rajola': {'rect': (120, 129, 146, 141), 'walk': (133, 138)},
     },
     'spawns': {'vet': (90, 138), 'guardia': (236, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
-    'bg': passadis_bg,
-    'props': {},
+    'bg': amb(passadis_bg, rajola_solta),
+    'props': {'rajola': nota_rajola},
 }
 
 
@@ -1071,11 +1132,12 @@ HANGAR = {
         'escala': {'rect': (56, 74, 100, 114), 'walk': (78, 130)},
         'caixa_flotant': {'rect': (58, 106, 90, 124), 'walk': (74, 136)},
         'sortida_conducte': {'rect': grate_rect(*HANGAR_GRATES[0]), 'walk': (35, 143)},
+        'caixa_recanvis': {'rect': (300, 111, 330, 127), 'walk': (296, 136)},
     },
     'spawns': {'vet': (70, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
-    'bg': hangar_bg,
-    'props': {'llancadora': hangar_llancadora, 'porta_llancadora': hangar_porta_llancadora,
+    'bg': amb(hangar_bg, caixa_recanvis),
+    'props': {'caixa_recanvis': nota_caixa, 'llancadora': hangar_llancadora, 'porta_llancadora': hangar_porta_llancadora,
               'aigua': hangar_aigua, 'caixa_flotant': hangar_caixa, 'marca_pilar': hangar_marca_pilar},
 }
 
@@ -1182,11 +1244,12 @@ ARXIU = {
         'arxivador': {'rect': (58, 28, 150, 112), 'walk': (104, 128)},
         'expedient_iri': {'rect': (168, 78, 236, 96), 'walk': (200, 130)},
         'planols': {'rect': (258, 60, 342, 100), 'walk': (296, 130)},
+        'carpeta': {'rect': (148, 110, 172, 123), 'walk': (160, 132)},
     },
     'spawns': {'vet': (40, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': arxiu_bg,
-    'props': {},
+    'props': {'carpeta': nota_carpeta},
 }
 
 
@@ -1245,14 +1308,15 @@ MEMORIA = {
         'porta_passadis': {'rect': (6, 34, 48, 114), 'walk': (34, 134)},
         'foto': {'rect': (66, 26, 124, 74), 'walk': (95, 128)},
         'mapa': {'rect': (128, 22, 194, 74), 'walk': (161, 128)},
-        'holograma': {'rect': (204, 26, 246, 114), 'walk': (225, 136)},
+        'holograma': {'rect': (204, 26, 246, 104), 'walk': (225, 136)},
+        'socol': {'rect': (204, 104, 246, 116), 'walk': (225, 136)},
         'vitrina': {'rect': (260, 64, 300, 112), 'walk': (280, 132)},
         'fullets': {'rect': (312, 74, 342, 112), 'walk': (322, 132)},
     },
     'spawns': {'vet': (40, 138), 'cargol_vell': (180, 136)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
-    'bg': memoria_bg,
-    'props': {},
+    'bg': amb(memoria_bg, socol_holograma),
+    'props': {'socol': nota_socol},
 }
 
 

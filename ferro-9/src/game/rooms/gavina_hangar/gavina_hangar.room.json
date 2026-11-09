@@ -431,6 +431,46 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "caixa_recanvis",
+      "tag": "caixa_recanvis",
+      "animations": {
+        "caixa_recanvis": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 409,
+            "y": 151
+          },
+          {
+            "x": 450,
+            "y": 151
+          },
+          {
+            "x": 450,
+            "y": 173
+          },
+          {
+            "x": 409,
+            "y": 173
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 404,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 430,
+        "y": 173
+      },
+      "description": "caixa de recanvis"
     }
   ],
   "characters": [

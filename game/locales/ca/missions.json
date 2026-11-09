@@ -41,5 +41,14 @@
   "mis.memoria_cargol.desc": "A cada revisió, al Cargol li esborren la memòria.",
   "mis.memoria_cargol.obj.segell": "Iri: fes que no li esborrin la memòria",
   "mis.memoria_cargol.obj.nom": "Iri: que sàpiga com es diu",
-  "mis.memoria_cargol.obj.placa": "Vet: torna-li el nom al conserge del museu"
+  "mis.memoria_cargol.obj.placa": "Vet: torna-li el nom al conserge del museu",
+  "mis.formulari_27b.titol": "El formulari 27-B",
+  "mis.formulari_27b.desc": "A la fàbrica, sense formulari no hi ha material. I cada vegada en calen més.",
+  "mis.formulari_27b.obj.segellat": "Iri: un 27-B segellat",
+  "mis.formulari_27b.obj.triplicat": "Iri: un 27-B segellat per triplicat",
+  "mis.formulari_27b.obj.carnet": "Iri: el Carnet d'Usuària Exemplar",
+  "mis.notes_perdudes.titol": "Les notes perdudes",
+  "mis.notes_perdudes.desc": "Altres sincronitzadors van parlar amb el panell abans que jo. Van deixar notes amagades per la presó.",
+  "mis.notes_perdudes.obj.trobar": "Vet: troba les notes amagades ({notes_trobades} de 5)",
+  "mis.notes_perdudes.obj.mos": "Vet: torna la nota de la cel·la 9 a qui la va escriure"
 }

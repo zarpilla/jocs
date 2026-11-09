@@ -102,7 +102,14 @@
     "cargol_gravat": false,
     "planols_lliurats": false,
     "placa_vista": false,
-    "vitrina_oberta": false
+    "vitrina_oberta": false,
+    "carnet_obtingut": false,
+    "nota_perduda_1": false,
+    "nota_perduda_2": false,
+    "nota_perduda_3": false,
+    "nota_perduda_4": false,
+    "nota_perduda_5": false,
+    "nota_mos_tornada": false
   },
   "vars": {
     "finestra_armada": "",
@@ -115,6 +122,8 @@
     "biga_amagada": "",
     "molla_tensio": 1,
     "diapaso_to": 0,
-    "valvula": "oberta"
+    "valvula": "oberta",
+    "formularis_arxivats": 0,
+    "notes_trobades": 0
   }
 }
