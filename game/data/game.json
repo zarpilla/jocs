@@ -23,5 +23,8 @@
       "room": "gavina_cella"
     }
   },
-  "intro": "proleg_gavina"
+  "intro": "proleg_gavina",
+  "switchWhen": {
+    "flag": "alarma_apagada"
+  }
 }

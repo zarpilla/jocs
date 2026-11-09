@@ -75,6 +75,11 @@ export interface GameManifest {
    * `cutscene` que es porten l'una a l'altra amb `goTo`.
    */
   intro?: Id;
+  /**
+   * Quan pot el jugador canviar de protagonista quan vulgui (botó «Canvia»). Sense, sempre. Els canvis
+   * que fa la història (`{ "event": "protagonista" }`) no en depenen.
+   */
+  switchWhen?: Condition;
 }
 
 /** Declaració de flags i variables amb el seu valor inicial (`state.json`). */

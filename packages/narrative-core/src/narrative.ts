@@ -160,6 +160,11 @@ export class Narrative {
 
   // ─── Lectures ràpides per als scripts ─────────────────────────────────────
 
+  /** Si el jugador pot canviar de protagonista quan vulgui (`switchWhen` a game.json). */
+  canSwitch(): boolean {
+    return this.check(this.content.manifest.switchWhen);
+  }
+
   check(cond: Condition | undefined): boolean {
     return evaluate(cond, this.condCtx());
   }

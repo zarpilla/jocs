@@ -247,7 +247,49 @@ def draw_inventory(dir_: Path, req, small):
     print(f'✔ art provisional: inventari ({len(items)} objectes)')
 
 
+def add_switch_button(game_dir: Path):
+    """La casella del botó «Canvia» a la barra de verbs: dos fotogrames més (normal i hover)."""
+    d = game_dir / 'assets/images/guis/verbs'
+    sheet_path, json_path = d / 'verbs.png', d / 'verbs.json'
+    if not json_path.exists():
+        return
+    meta = json.loads(json_path.read_text())
+    tags = meta['meta']['frameTags']
+    if any(t['name'] == 'CanviaBtn' for t in tags):
+        return
+    frames = meta['frames']
+    keys = list(frames)
+    first = frames[keys[0]]['frame']
+    fw, fh = first['w'], first['h']
+    sheet = Image.open(sheet_path).convert('RGBA')
+    cols = max(1, sheet.width // fw)
+    n = len(keys)
+    rows = (n + 2 + cols - 1) // cols
+    if rows * fh > sheet.height:
+        bigger = Image.new('RGBA', (sheet.width, rows * fh), (0, 0, 0, 0))
+        bigger.paste(sheet, (0, 0))
+        sheet = bigger
+    base = keys[0].rsplit(' ', 1)[0]
+    duration = frames[keys[0]].get('duration', 100)
+    for i, (tag, fill) in enumerate((('CanviaBtn', (26, 70, 107)), ('CanviaBtn-hover', (40, 96, 140)))):
+        idx = n + i
+        x, y = (idx % cols) * fw, (idx // cols) * fh
+        frame = Image.new('RGBA', (fw, fh), (0, 0, 0, 0))
+        ImageDraw.Draw(frame).rectangle([3, 211, 45, 242], fill=fill + (255,))
+        sheet.paste(frame, (x, y))
+        frames[f'{base} {idx}.aseprite'] = {
+            'frame': {'x': x, 'y': y, 'w': fw, 'h': fh}, 'rotated': False, 'trimmed': False,
+            'spriteSourceSize': {'x': 0, 'y': 0, 'w': fw, 'h': fh}, 'sourceSize': {'w': fw, 'h': fh}, 'duration': duration,
+        }
+        tags.append({'name': tag, 'from': idx, 'to': idx, 'direction': 'forward', 'color': '#000000ff'})
+    meta['meta']['size'] = {'w': sheet.width, 'h': sheet.height}
+    sheet.save(sheet_path)
+    json_path.write_text(json.dumps(meta, indent=2) + '\n')
+    print('✔ barra de verbs: casella del botó «Canvia»')
+
+
 def main(game_dir: Path):
+    add_switch_button(game_dir)
     fonts = game_dir / 'assets/fonts'
     font = BitmapFont(fonts / 'lucasarts-scumm-solid.xml')
     small = BitmapFont(fonts / 'lucasfont-alternate.xml')

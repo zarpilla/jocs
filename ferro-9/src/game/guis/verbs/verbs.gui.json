@@ -309,6 +309,31 @@
     },
     {
       "type": "button",
+      "id": "CanviaBtn",
+      "x": 3,
+      "y": 211,
+      "width": 43,
+      "height": 32,
+      "backgroundAnchor": "screen",
+      "text": "Canvia",
+      "font": "lucasarts-scumm-solid",
+      "fontSize": 8,
+      "textColor": "#10908e",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "CanviaBtn",
+      "textColorStates": {
+        "hover": "#28c074"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#132243",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
       "id": "MenuBtn",
       "x": 27,
       "y": 247,

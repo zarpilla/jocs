@@ -157,6 +157,13 @@ si en falta algun.
 
 Un `{ "event": "final" }` acaba el joc amb el final que toqui (`endings.json`).
 
+## Canviar de protagonista
+
+El jugador canvia de protagonista amb el botó «Canvia» (a l'esquerra dels verbs) o amb `canviar` en mode text.
+`game.json` pot dir des de quan amb `"switchWhen"` (una condició; a Ferro-9, quan l'Iri ha apagat l'alarma i el
+joc ha passat per primer cop a la Vet). Fins aleshores, el botó no surt. Els canvis que fa la mateixa història
+(`{ "event": "protagonista" }`) no en depenen.
+
 ## Pròleg i cinemàtiques
 
 Una sala amb `"cutscene": { "skipTo": "<sala>" }` és una cinemàtica: no té res per clicar ni protagonista,

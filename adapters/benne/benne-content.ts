@@ -61,7 +61,7 @@ const GUI_TEXTS: Record<string, Record<string, string>> = {
   verbs: {
     GiveBtn: 'ui.verb.give', OpenBtn: 'ui.verb.open', CloseBtn: 'ui.verb.close', PickUpBtn: 'ui.verb.pickUp',
     TalkToBtn: 'ui.verb.talkTo.boto', LookAtBtn: 'ui.verb.look', UseBtn: 'ui.verb.use', PushBtn: 'ui.verb.push',
-    PullBtn: 'ui.verb.pull', verbLineText: 'ui.verb.walkTo',
+    PullBtn: 'ui.verb.pull', verbLineText: 'ui.verb.walkTo', CanviaBtn: 'ui.menu.canviar',
   },
   'game-menu': {
     title: 'ui.menu.titol', save: 'ui.menu.desar', load: 'ui.menu.carregar', settings: 'ui.menu.opcions',
@@ -100,6 +100,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
 
   // ── GUI ─────────────────────────────────────────────────────────────────
   addGameMenuButtons(gameDir);
+  if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
   for (const [gui, controls] of Object.entries(GUI_TEXTS)) {
     const path = join(gameDir, 'guis', gui, `${gui}.gui.json`);
     if (!existsSync(path)) continue;
@@ -278,6 +279,46 @@ pista.onClick(() => {
 })
 `);
   }
+}
+
+// ─── Botó «Canvia» a la barra de verbs ──────────────────────────────────────
+
+/**
+ * Un botó «Canvia» a l'esquerra dels verbs, damunt del botó del menú: canviar de protagonista no pot
+ * quedar amagat dins el menú. Retorna si cal dibuixar-ne la casella a la imatge de la barra.
+ */
+function addSwitchButton(gameDir: string): boolean {
+  const dir = join(gameDir, 'guis/verbs');
+  const jsonPath = join(dir, 'verbs.gui.json');
+  const tsPath = join(dir, 'verbs.gui.ts');
+  if (!existsSync(jsonPath) || !existsSync(tsPath)) return false;
+  const def = readJson(jsonPath);
+  const controls = (def.controls as Json[]) ?? [];
+  const model = controls.find((c) => c.id === 'GiveBtn');
+  if (model && !controls.some((c) => c.id === 'CanviaBtn')) {
+    const menu = controls.findIndex((c) => c.id === 'MenuBtn');
+    controls.splice(menu, 0, {
+      ...structuredClone(model), id: 'CanviaBtn', x: 3, y: 211, width: 43, height: 32,
+      backgroundTag: 'CanviaBtn', backgroundAnchor: 'screen', text: 'Canvia',
+    });
+    writeJson(jsonPath, def);
+  }
+  const script = readFileSync(tsPath, 'utf8');
+  if (!script.includes('switchProtagonist')) {
+    const withImports = script.replace(
+      /import \{([^}]*)\} from '\.\/verbs\.ids';/,
+      (_m, names: string) => `import {${names.trimEnd()} canviaBtn,\n} from './verbs.ids';\nimport { switchProtagonist } from '../../narrative/narrative.script';`,
+    );
+    writeFileSync(tsPath, `${withImports.trimEnd()}
+
+// Afegit per adapters/benne (benne-content.ts): canviar de protagonista.
+canviaBtn.onClick(() => switchProtagonist())
+`);
+  }
+  const sheet = join(gameDir, 'assets/images/guis/verbs/verbs.json');
+  if (!existsSync(sheet)) return false;
+  const tags = ((readJson(sheet).meta as Json).frameTags as Json[]) ?? [];
+  return !tags.some((t) => t.name === 'CanviaBtn');
 }
 
 // ─── Disposició automàtica d'una sala nova ──────────────────────────────────

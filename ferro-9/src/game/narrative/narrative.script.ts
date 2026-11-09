@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  adoptLoadedState, applyAppearances, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  adoptLoadedState, applyAppearances, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
@@ -87,6 +87,7 @@ export function onRoomEntered() {
   // A les cinemàtiques (el pròleg) no hi ha res per clicar: fora la barra de verbs.
   if (narrative.content.rooms[room]?.cutscene) guis.verbs.hide()
   else guis.verbs.show()
+  applySwitchButton()
   const who = roomProtagonist(room)
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
@@ -172,6 +173,7 @@ export function sayHint() {
 
 /** Canvia a l'altra protagonista (per a un botó de la GUI): va a la sala on és. */
 export function switchProtagonist() {
+  if (!narrative.canSwitch()) return
   const all = narrative.content.manifest.protagonists
   const next = all[(all.indexOf(narrative.world.activeProtagonist()) + 1) % all.length]!
   goToProtagonist(next)

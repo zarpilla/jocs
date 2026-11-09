@@ -6,7 +6,7 @@
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
 import { PropHandle, defineVars, events, game, inventory, player, type VarValue } from '@benne/script';
-import { characters, dialogs, items, rooms } from '@game';
+import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
@@ -132,6 +132,7 @@ narrative.on((e) => {
   switch (e.type) {
     case 'stateChanged':
       persist();
+      applySwitchButton();
       applyHotspotVisibility();
       applyAppearances();
       break;
@@ -242,6 +243,16 @@ let boundHotspots: Record<string, Showable> = {};
 export function bindHotspots(handles: Record<string, Showable>) {
   boundHotspots = { ...boundHotspots, ...handles };
   applyHotspotVisibility();
+}
+
+/**
+ * El botó «Canvia» (a la barra de verbs i al menú) només hi és quan el jugador pot canviar de
+ * protagonista (`switchWhen` a game.json).
+ */
+export function applySwitchButton() {
+  const pot = narrative.canSwitch();
+  guis.verbs.controls.canviaBtn.visible = pot;
+  guis.gameMenu.controls.canviar.visible = pot;
 }
 
 export function applyHotspotVisibility() {

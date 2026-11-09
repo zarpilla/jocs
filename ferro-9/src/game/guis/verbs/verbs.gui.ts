@@ -1,8 +1,9 @@
 import { pointer } from '@benne/script';
 import { guis, verbs } from '@game';
 import {
-  gui, closeBtn, giveBtn, lookAtBtn, menuBtn, openBtn, pickUpBtn, pullBtn, pushBtn, talkToBtn, useBtn, verbLineText,
+  gui, closeBtn, giveBtn, lookAtBtn, menuBtn, openBtn, pickUpBtn, pullBtn, pushBtn, talkToBtn, useBtn, verbLineText, canviaBtn,
 } from './verbs.ids';
+import { switchProtagonist } from '../../narrative/narrative.script';
 
 const buttons = new Map([
   [verbs.give, giveBtn],
@@ -32,3 +33,6 @@ function refresh() {
 
 gui.onBuilt(refresh)
 pointer.onContextChange(refresh)
+
+// Afegit per adapters/benne (benne-content.ts): canviar de protagonista.
+canviaBtn.onClick(() => switchProtagonist())

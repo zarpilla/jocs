@@ -151,6 +151,7 @@ async function main() {
         continue;
       }
       if (cmd === 'canviar') {
+        if (!n.canSwitch()) { console.log(`${c.dim}${n.t('ui.canvia.encara_no')}${c.off}`); continue; }
         const all = content.manifest.protagonists;
         print(p.switchTo(all[(all.indexOf(p.active) + 1) % all.length]!));
         describeRoom();

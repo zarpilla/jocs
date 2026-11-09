@@ -25,7 +25,10 @@
           "room": "gavina_cella"
         }
       },
-      "intro": "proleg_gavina"
+      "intro": "proleg_gavina",
+      "switchWhen": {
+        "flag": "alarma_apagada"
+      }
     },
     "state": {
       "flags": {
@@ -15619,6 +15622,7 @@
       "ui.verb.talkTo.boto": "Parla",
       "ui.menu.canviar": "Canvia",
       "ui.menu.pista": "Pista",
+      "ui.canvia.encara_no": "Encara no: de moment, això és cosa de l'Iri.",
       "mis.acte1.titol": "Acte 1 · La descoberta",
       "mis.acte1.desc": "Una alarma al passat, una paret que vibra al futur.",
       "mis.acte1.obj.entrar_cambra": "Iri: entra a la cambra de ressonància",
