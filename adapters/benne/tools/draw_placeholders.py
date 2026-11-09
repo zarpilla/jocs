@@ -26,7 +26,7 @@ from room_designs import DESIGNS, C  # noqa: E402
 from draw_items import icon  # noqa: E402
 from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
 from hd.pix import W as HD_W, H as HD_H  # noqa: E402
-from hd.render import has_hd, render as render_hd  # noqa: E402
+from hd.render import has_hd, render as render_hd, render_anims as render_hd_anims  # noqa: E402
 
 PALETTE = {
     # passat: fàbrica de ferro-9 (calent, rovell, vapor)
@@ -90,8 +90,15 @@ class BitmapFont:
             self.draw(img, x, yy, line, color)
 
 
-def aseprite_sheet(name, frames, tags, frame_w, frame_h):
-    """JSON en format d'exportació d'Aseprite (hash), com els de les plantilles de Benne."""
+def aseprite_sheet(name, frames, tags, frame_w, frame_h, spans=None):
+    """JSON en format d'exportació d'Aseprite (hash), com els de les plantilles de Benne.
+    `spans` (opcional): {etiqueta: nombre de fotogrames} per a les etiquetes animades."""
+    spans = spans or {}
+    ranges, i = [], 0
+    for tag in tags:
+        n = spans.get(tag, 1)
+        ranges.append((tag, i, i + n - 1))
+        i += n
     return {
         'frames': {
             f'{name} {i}.aseprite': {
@@ -106,7 +113,7 @@ def aseprite_sheet(name, frames, tags, frame_w, frame_h):
             'app': 'https://www.aseprite.org/', 'version': 'provisional (draw_placeholders.py)',
             'image': f'{name}.png', 'format': 'RGBA8888',
             'size': {'w': frames * frame_w, 'h': frame_h}, 'scale': '1',
-            'frameTags': [{'name': tag, 'from': i, 'to': i, 'direction': 'forward', 'color': '#000000ff'} for i, tag in enumerate(tags)],
+            'frameTags': [{'name': tag, 'from': a, 'to': b, 'direction': 'forward', 'color': '#000000ff'} for tag, a, b in ranges],
             'layers': [], 'slices': [],
         },
     }
@@ -196,11 +203,24 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         frames.append(frame)
         tags.append(prop.get('tag', prop['id']))
 
+    # Animacions de fons (hd ANIMS): decorat no clicable i sempre visible, amb una etiqueta de
+    # diversos fotogrames en bucle. Si la sala encara no el té, s'hi afegeix.
+    spans = {}
+    for aid, (anim_frames, ms) in (render_hd_anims(name).items() if hd else []):
+        frames.extend(anim_frames)
+        tags.append(aid)
+        spans[aid] = len(anim_frames)
+        prop = next((p for p in room['props'] if p['id'] == aid), None)
+        if prop is None:
+            prop = {'id': aid, 'tag': aid, 'zIndex': 1, 'visible': True, 'alpha': 1, 'clickable': False}
+            room['props'].append(prop)
+        prop['animations'] = {aid: {'loop': True, 'frameDuration': ms}}
+
     sheet = Image.new('RGBA', (w * len(frames), h), (0, 0, 0, 0))
     for i, f in enumerate(frames):
         sheet.paste(f, (i * w, 0))
     sheet.save(dir_ / f'{name}.png')
-    (dir_ / f'{name}.json').write_text(json.dumps(aseprite_sheet(name, len(frames), tags, w, h), indent=2) + '\n')
+    (dir_ / f'{name}.json').write_text(json.dumps(aseprite_sheet(name, len(frames), tags, w, h, spans), indent=2) + '\n')
     (dir_ / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
 
     # Geometria: el que es pot clicar ha de coincidir amb el que es veu.

@@ -238,6 +238,20 @@ def gauge(cv, cx, cy, r, ang, lit=0.6, red_zone=True):
     cv.flat(round(cx), round(cy), (30, 20, 20))
 
 
+def drift(puffs, t):
+    """Fa avançar un raig de vapor: cada bufada va cap a la posició de la següent (t = 0..1), en
+    neix una de nova a l'inici i l'última s'esvaeix. Amb t = 0 i t = 1 surt el mateix: fa bucle."""
+    if not t:
+        return puffs
+    lerp = lambda a, b: tuple(a[i] + (b[i] - a[i]) * t for i in range(4))
+    out = [(puffs[0][0], puffs[0][1], puffs[0][2], puffs[0][3] * t)]
+    out += [lerp(a, b) for a, b in zip(puffs, puffs[1:])]
+    last, prev = puffs[-1], puffs[-2]
+    nxt = (2 * last[0] - prev[0], 2 * last[1] - prev[1], last[2] * 1.2, 0.0)
+    out.append(lerp(last, nxt))
+    return out
+
+
 def steam(cv, puffs, lit=0.5, k=1.0):
     """Vapor: núvols suaus i dithered. puffs = [(cx, cy, r, densitat)]."""
     xs = [p[0] for p in puffs]
@@ -341,7 +355,10 @@ def soot(x, y):
     return s
 
 
-def bg(cv, alarm=False):
+def bg(cv, alarm=False, t=0.0):
+    """t (0..1): moment del cicle d'animació del foc i el vapor (0 = el fons quiet)."""
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
     # ─── Sostre i paret ───────────────────────────────────────────────────────
     ceiling(cv)
     brick_wall(cv, 0, 14, W - 1, 151, seed=11, base=1.5, extra=soot)
@@ -487,10 +504,10 @@ def bg(cv, alarm=False):
                 continue
             t = (y - FY0) / (FY1 - FY0)                            # 0 dalt, 1 baix
             u = (x - FX0) / (FX1 - FX0)
-            flame = math.sin(u * 19 + 1.3) * 0.5 + math.sin(u * 7.3) * 0.6 + math.sin(u * 31) * 0.25
+            flame = math.sin(u * 19 + 1.3 - ph * 2) * 0.5 + math.sin(u * 7.3 + ph) * 0.6 + math.sin(u * 31 - ph * 3) * 0.25
             lvl = 0.6 + t * 4.4 + flame * (1 - t) * 1.8 - abs(u - 0.5) * 1.8
             if y >= FY1 - 3:
-                lvl = 4.6 + (hr(x // 2, y) - 0.5) * 2.4                # brases
+                lvl = 4.6 + (hr(x // 2, y) - 0.5) * 2.4 + 0.5 * (math.sin(ph + hr(x // 2, y, 5) * 6.3) - math.sin(hr(x // 2, y, 5) * 6.3))  # brases
                 if hr(x // 3, 77) > 0.7 and y == FY1 - 3:
                     lvl -= 2.6                                         # carbó encara negre
             cv.put(x, y, FIRE, lvl, 0)
@@ -499,13 +516,13 @@ def bg(cv, alarm=False):
         cv.vline(x, FY1 - 4, FY1 - 3, IRON, 0.8, 0)
     cv.hline(FX0, FX1, FY1 + 1, IRON, 1.2, 0.3)
     # resplendor
-    cv.glow(MCX, FY1 - 4, 44, (255, 150, 60), 0.5)
+    cv.glow(MCX, FY1 - 4, 44, (255, 150, 60), 0.5 + 0.05 * math.sin(ph * 2))
     cv.glow(MCX, FY1 - 2, 22, (255, 210, 120), 0.45)
     # guspires
     sp = random.Random(9)
     for _ in range(14):
         x = sp.uniform(FX0 + 8, FX1 - 8)
-        y = sp.uniform(FY0 + 1, FY0 + 9)
+        y = FY0 + 1 + (sp.uniform(0, 8) - tt * 8) % 8                    # pugen poc a poc
         cv.flat(x, y, (255, 220, 120) if sp.random() > 0.4 else (255, 150, 60))
 
     # ─── Pila de carbó al terra, davant la base, i la pala clavada ────────────
@@ -754,8 +771,8 @@ def bg(cv, alarm=False):
     cv.glow(321, 121, 26, (255, 226, 150), 0.5)
 
     # ─── Vapor que s'escapa (vàlvula de seguretat, brida del tub) ─────────────
-    steam(cv, [(157, 20, 4, 0.9), (162, 15, 6, 0.75), (170, 12, 8, 0.55), (181, 11, 10, 0.35)], lit=0.6)
-    steam(cv, [(193, 59, 3, 0.8), (199, 55, 5, 0.6), (207, 51, 6, 0.35)], lit=0.6)
+    steam(cv, drift([(157, 20, 4, 0.9), (162, 15, 6, 0.75), (170, 12, 8, 0.55), (181, 11, 10, 0.35)], tt), lit=0.6)
+    steam(cv, drift([(193, 59, 3, 0.8), (199, 55, 5, 0.6), (207, 51, 6, 0.35)], tt), lit=0.6)
 
     # ─── Llum del foc: to taronja a tota la meitat esquerra ───────────────────
     cv.tint(0, 0, W - 1, 205, (255, 140, 60), lambda x, y: fire_tint(x, y) * 0.14)
@@ -763,7 +780,7 @@ def bg(cv, alarm=False):
     for y in range(FLOOR_Y, 200):
         for x in range(60, 200):
             d = math.hypot((x - FIRE_X) / 2.4, (y - FLOOR_Y) * 0.9)
-            a = max(0, 1 - d / 36) ** 1.3 * 0.7
+            a = max(0, 1 - d / 36) ** 1.3 * (0.7 + 0.06 * math.sin(ph * 2))
             if a > B4[y & 3][x & 3] * 0.7:
                 o = cv.P[x, y]
                 cv.P[x, y] = mix(o, (255, 170, 80), a * 0.6) + (255,)
@@ -824,3 +841,25 @@ def alarma_encesa(cv):
 
 
 PROPS = {'segell': segell, 'alarma_encesa': alarma_encesa}
+
+
+# Animació de fons: el foc respira, les guspires pugen i el vapor s'escampa. Cada fotograma només
+# té els píxels que canvien respecte del fons quiet (t = 0).
+def _ambient_frames(n=8):
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 160}}

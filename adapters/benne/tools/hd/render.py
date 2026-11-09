@@ -6,6 +6,9 @@ Cada mòdul de sala defineix:
   LIGHT              Light de la sala (també s'aplica als props)
   bg(cv)             dibuixa el fons en un Canvas opac de 480×270
   PROPS              {id: fn(cv)}: cada prop condicional, en un Canvas transparent a part
+  ANIMS (opcional)   {id: {'frames': fn() → [imatges RGBA], 'frameDuration': ms}}: animacions de fons
+                     en bucle (decorat no clicable, sempre visible); cada fotograma porta només el que
+                     canvia respecte del fons
 
 La geometria (zones clicables, punts on es camina, terra) continua a room_designs.py: el dibuix ha
 de coincidir amb `things` (vegeu pix.R per passar-los a píxels reals).
@@ -53,6 +56,12 @@ def render(name, prop_ids=None):
     return cv.img, props
 
 
+def render_anims(name):
+    """→ {id: (fotogrames RGBA, durada de cada fotograma en ms)}."""
+    mod = load(name)
+    return {aid: (a['frames'](), a.get('frameDuration', 150)) for aid, a in getattr(mod, 'ANIMS', {}).items()}
+
+
 def _sprite(cid):
     art = HERE.parent.parent / 'placeholder-art' / cid
     if not (art / f'{cid}.png').exists():
@@ -86,6 +95,14 @@ def main():
         for i, (pid, p) in enumerate(props.items()):
             sheet.alpha_composite(p, (0, i * H))
         sheet.save(out / f'{name}_props_sheet.png')
+
+    for aid, (frames, ms) in render_anims(name).items():
+        gif = []
+        for f in frames:
+            im = bg.copy()
+            im.alpha_composite(f)
+            gif.append(im.crop((0, 0, W, VISIBLE_H)).resize((W * 2, VISIBLE_H * 2), Image.NEAREST).convert('RGB'))
+        gif[0].save(out / f'{name}_{aid}.gif', save_all=True, append_images=gif[1:], duration=ms, loop=0)
 
     # Depuració: zones, terra, personatges
     sys.path.insert(0, str(HERE.parent))
