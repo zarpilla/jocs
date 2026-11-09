@@ -308,4 +308,40 @@ describe('Ferro-9 · Acte 1', () => {
     expect(texts(p.do('open', 'porta_despatx'))).toContain('reunits');
     expect(p.room).toBe('fabrica_magatzem');
   });
+
+  it("l'Iri no parla de la V. abans de saber que existeix", () => {
+    const { p } = start();
+    p.switchTo('iri');
+    p.goTo('fabrica_moll');
+    expect(texts(p.do('pickUp', 'biga_acer'))).not.toContain('V.');
+  });
+
+  it('si la Vet mira la seva pròpia nota, no compta com a llegida per l\'Iri', () => {
+    const { n, p } = start();
+    const item = (id: string) => ({ kind: 'item' as const, id });
+    p.do('pickUp', 'tauler');
+    p.goTo('fabrica_magatzem');
+    p.talk('cargol', 'clau');
+    p.do('pickUp', 'plomall');
+    p.goTo('fabrica_calderes');
+    p.use('plomall', 'capatas');
+    p.do('pickUp', 'segell');
+    p.use('segell', item('formulari_27b'));
+    p.goTo('fabrica_magatzem');
+    p.talk('cargol', 'clau', 'dia');
+    p.goTo('fabrica_calderes');
+    p.use('clau_cambra', 'porta_cambra');
+    p.use('clau_anglesa', 'palanca');
+    p.do('push', 'panell');
+    p.use('clau_anglesa', 'panell');
+    p.use('clau_anglesa', 'panell');
+    p.do('pickUp', 'avis');
+    p.talk('mos', 'familia', 'llapis_demanar', 'elogiar');
+    p.use('llapis_ulls', item('avis_reciclatge'));
+    expect(p.active).toBe('vet');
+    const t = texts(p.do('look', { kind: 'item', id: 'nota_vet' }));
+    expect(t).toContain('Ei, qui ets');
+    expect(t).not.toContain('Brutal-plus»?');
+    expect(n.flag('nota_vet_llegida')).toBe(false);
+  });
 });

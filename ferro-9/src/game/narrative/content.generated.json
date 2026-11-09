@@ -890,6 +890,9 @@
         "interactions": [
           {
             "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
             "lines": [
               {
                 "who": "narrator",
@@ -897,22 +900,25 @@
               },
               {
                 "who": "player",
-                "text": "obj.nota_vet.iri1",
-                "if": {
-                  "protagonist": "iri"
-                }
+                "text": "obj.nota_vet.iri1"
               },
               {
                 "who": "player",
-                "text": "obj.nota_vet.iri2",
-                "if": {
-                  "protagonist": "iri"
-                }
+                "text": "obj.nota_vet.iri2"
               }
             ],
             "effects": [
               {
                 "setFlag": "nota_vet_llegida"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_vet.text"
               }
             ]
           }
@@ -935,6 +941,9 @@
         "interactions": [
           {
             "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
             "lines": [
               {
                 "who": "narrator",
@@ -942,22 +951,25 @@
               },
               {
                 "who": "player",
-                "text": "obj.nota_pany.iri1",
-                "if": {
-                  "protagonist": "iri"
-                }
+                "text": "obj.nota_pany.iri1"
               },
               {
                 "who": "player",
-                "text": "obj.nota_pany.iri2",
-                "if": {
-                  "protagonist": "iri"
-                }
+                "text": "obj.nota_pany.iri2"
               }
             ],
             "effects": [
               {
                 "setFlag": "iri_sap_pany"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.nota_pany.text"
               }
             ]
           }
@@ -1179,6 +1191,19 @@
           {
             "verb": "use",
             "item": "tram_biga_2",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.tram_biga.iri"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "tram_biga_2",
             "lines": [
               {
                 "who": "player",
@@ -1223,6 +1248,19 @@
               {
                 "giveItem": "biga_muntada",
                 "who": "vet"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "tram_biga_3",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.tram_biga.iri"
               }
             ]
           },
@@ -1284,6 +1322,19 @@
               {
                 "giveItem": "biga_muntada",
                 "who": "vet"
+              }
+            ]
+          },
+          {
+            "verb": "use",
+            "item": "tram_biga_3",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.tram_biga.iri"
               }
             ]
           },
@@ -3847,6 +3898,18 @@
                     "who": "player",
                     "text": "sala.fabrica_moll.sense_mida"
                   }
+                ],
+                "if": {
+                  "flag": "iri_sap_pany"
+                }
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.biga_per_que"
+                  }
                 ]
               },
               {
@@ -3939,6 +4002,18 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_moll.sense_mida"
+                  }
+                ],
+                "if": {
+                  "flag": "iri_sap_pany"
+                }
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_moll.biga_per_que"
                   }
                 ]
               },
@@ -13259,6 +13334,7 @@
       "obj.tub_amb_llibreta.desc": "El tub de vàlvula de ferro-9, amb la llibreta de torn de l'Iri enrotllada a dins.",
       "obj.tub_amb_llibreta.vet1": "Un tub de vàlvula, nou. I a dins hi ha alguna cosa enrotllada.",
       "obj.tub_amb_llibreta.vet2": "Ja ho miraré a l'hangar. Aquí la Directora no em treu els ulls de sobre.",
+      "obj.tram_biga.iri": "Si els encaixo, la biga ja no passarà per la finestra. Millor d'un en un.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -13943,7 +14019,8 @@
       "sala.gavina_hangar.llancadora.sense_tub": "Premo el botó d'engegada. Res. Sense el tub de la vàlvula, la pressió no arriba al motor.",
       "sala.gavina_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»",
       "sala.fabrica_moll.conducte.mig3": "Pels altaveus: «Director Aldaia a les calderes. Caiguda de pressió.» El seu despatx es quedarà buit una estona.",
-      "sala.fabrica_magatzem.porta_despatx.reunio": "Hi ha llum sota la porta i se senten veus: el director i l'inspector Sic, reunits. No penso entrar-hi a saludar."
+      "sala.fabrica_magatzem.porta_despatx.reunio": "Hi ha llum sota la porta i se senten veus: el director i l'inspector Sic, reunits. No penso entrar-hi a saludar.",
+      "sala.fabrica_moll.biga_per_que": "Una biga? Per a què la vull? Prou feina tinc amb les calderes."
     }
   },
   "locale": "ca"

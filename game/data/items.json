@@ -689,6 +689,9 @@
     "interactions": [
       {
         "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
         "lines": [
           {
             "who": "narrator",
@@ -696,22 +699,25 @@
           },
           {
             "who": "player",
-            "text": "obj.nota_vet.iri1",
-            "if": {
-              "protagonist": "iri"
-            }
+            "text": "obj.nota_vet.iri1"
           },
           {
             "who": "player",
-            "text": "obj.nota_vet.iri2",
-            "if": {
-              "protagonist": "iri"
-            }
+            "text": "obj.nota_vet.iri2"
           }
         ],
         "effects": [
           {
             "setFlag": "nota_vet_llegida"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet.text"
           }
         ]
       }
@@ -734,6 +740,9 @@
     "interactions": [
       {
         "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
         "lines": [
           {
             "who": "narrator",
@@ -741,22 +750,25 @@
           },
           {
             "who": "player",
-            "text": "obj.nota_pany.iri1",
-            "if": {
-              "protagonist": "iri"
-            }
+            "text": "obj.nota_pany.iri1"
           },
           {
             "who": "player",
-            "text": "obj.nota_pany.iri2",
-            "if": {
-              "protagonist": "iri"
-            }
+            "text": "obj.nota_pany.iri2"
           }
         ],
         "effects": [
           {
             "setFlag": "iri_sap_pany"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pany.text"
           }
         ]
       }
@@ -978,6 +990,19 @@
       {
         "verb": "use",
         "item": "tram_biga_2",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.iri"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_2",
         "lines": [
           {
             "who": "player",
@@ -1022,6 +1047,19 @@
           {
             "giveItem": "biga_muntada",
             "who": "vet"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.iri"
           }
         ]
       },
@@ -1083,6 +1121,19 @@
           {
             "giveItem": "biga_muntada",
             "who": "vet"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.iri"
           }
         ]
       },

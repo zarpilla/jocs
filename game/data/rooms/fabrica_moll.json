@@ -171,6 +171,18 @@
               "who": "player",
               "text": "sala.fabrica_moll.sense_mida"
             }
+          ],
+          "if": {
+            "flag": "iri_sap_pany"
+          }
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_per_que"
+            }
           ]
         },
         {
@@ -263,6 +275,18 @@
             {
               "who": "player",
               "text": "sala.fabrica_moll.sense_mida"
+            }
+          ],
+          "if": {
+            "flag": "iri_sap_pany"
+          }
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_per_que"
             }
           ]
         },
