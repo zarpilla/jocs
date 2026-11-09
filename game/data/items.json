@@ -244,7 +244,26 @@
     "description": "obj.llibreta_torn.desc",
     "props": {
       "pes": 0.3
-    }
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.vet1",
+            "sound": "paper"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.vet2"
+          }
+        ]
+      }
+    ]
   },
   "caixa_eines": {
     "name": "obj.caixa_eines.nom",

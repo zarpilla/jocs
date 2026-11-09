@@ -133,6 +133,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(texts(p.do('look', item('tub_amb_llibreta')))).toContain('li falta a la llançadora');
     expect(texts(p.do('push', 'llancadora'))).toContain('Sense el tub');
     expect(texts(p.use('tub_amb_llibreta', 'llancadora'))).toContain('proves');
+    expect(texts(p.do('look', item('llibreta_torn')))).toContain('ja no hi ha cap «res»');
     expect(p.inventory()).toContain('llibreta_torn');
     expect(texts(p.do('push', 'llancadora'))).toContain('Ara et toca a tu');
     expect(p.active).toBe('iri');
