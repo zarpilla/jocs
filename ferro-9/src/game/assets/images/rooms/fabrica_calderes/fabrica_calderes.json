@@ -251,6 +251,153 @@
         "h": 270
       },
       "duration": 100
+    },
+    "fabrica_calderes 12.aseprite": {
+      "frame": {
+        "x": 5760,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 13.aseprite": {
+      "frame": {
+        "x": 6240,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 14.aseprite": {
+      "frame": {
+        "x": 6720,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 15.aseprite": {
+      "frame": {
+        "x": 7200,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 16.aseprite": {
+      "frame": {
+        "x": 7680,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 17.aseprite": {
+      "frame": {
+        "x": 8160,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 18.aseprite": {
+      "frame": {
+        "x": 8640,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -259,7 +406,7 @@
     "image": "fabrica_calderes.png",
     "format": "RGBA8888",
     "size": {
-      "w": 5760,
+      "w": 9120,
       "h": 270
     },
     "scale": "1",
@@ -288,13 +435,6 @@
       {
         "name": "ambient",
         "from": 3,
-        "to": 10,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "ambient",
-        "from": 11,
         "to": 18,
         "direction": "forward",
         "color": "#000000ff"

@@ -185,12 +185,13 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     hd = (w, h) == (HD_W, HD_H) and has_hd(name)  # art HD (hd/rooms/<sala>.py), si n'hi ha
     if hd:
         bg, hd_props = render_hd(name)
+        hd_anims = render_hd_anims(name)
     else:
         bg = Image.new('RGBA', (w, h), (0, 0, 0, 255))
         design['bg'](C(bg))
     frames, tags = [bg], ['BG']
     for prop in room['props']:
-        if prop['id'] == 'BG':
+        if prop['id'] == 'BG' or (hd and prop['id'] in hd_anims):
             continue
         frame = Image.new('RGBA', (w, h), (0, 0, 0, 0))
         if hd:
@@ -206,7 +207,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     # Animacions de fons (hd ANIMS): decorat no clicable i sempre visible, amb una etiqueta de
     # diversos fotogrames en bucle. Si la sala encara no el té, s'hi afegeix.
     spans = {}
-    for aid, (anim_frames, ms) in (render_hd_anims(name).items() if hd else []):
+    for aid, (anim_frames, ms) in (hd_anims.items() if hd else []):
         frames.extend(anim_frames)
         tags.append(aid)
         spans[aid] = len(anim_frames)
