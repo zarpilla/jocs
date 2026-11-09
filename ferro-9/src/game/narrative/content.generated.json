@@ -1110,6 +1110,10 @@
               {
                 "who": "player",
                 "text": "obj.nota_mida.iri4"
+              },
+              {
+                "who": "player",
+                "text": "obj.nota_mida.iri5"
               }
             ],
             "effects": [
@@ -16053,7 +16057,8 @@
       "obj.fullet_memoria.nom": "fullet de la Sala de la Memòria",
       "obj.fullet_memoria.desc": "«La Gavina: aquí va començar tot!» Per darrere, en blanc.",
       "obj.nota_mida.iri3": "Un pilar amb un 7 pintat. Al meu moll n'hi ha un. La V. és aquí mateix, cent vint anys més tard.",
-      "obj.nota_mida.iri4": "Li hauria de dir que ho tinc. Però no gastaré una encesa per un «d'acord»: si és el meu moll, li ho puc deixar escrit.",
+      "obj.nota_mida.iri4": "La biga no passarà mai per la finestra. Però si la V. és al meu moll, el que hi deixi ella ho trobarà... d'aquí a cent vint anys.",
+      "obj.nota_mida.iri5": "Abans de jugar-m'hi una biga, ho provo amb una cosa petita: una marca al pilar. I així de pas sabrà que ho he rebut.",
       "obj.llapis_ulls.mapa1": "Hi dibuixo la ruta: de la reixa de la cambra fins al moll, pel conducte.",
       "obj.llapis_ulls.mapa2": "I una postdata. La més important.",
       "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
@@ -16358,7 +16363,7 @@
       "pista.vet_mirar_llancadora.1": "La llançadora té una porta. Com s'obre?",
       "pista.vet_mirar_llancadora.2": "Mira la llançadora.",
       "pista.iri_marca.1": "La V. és al costat d'un pilar amb un 7 pintat. Al meu moll n'hi ha un.",
-      "pista.iri_marca.2": "Li puc dir que ho he rebut sense gastar cap encesa: deixant-ho escrit al pilar.",
+      "pista.iri_marca.2": "La biga no hi cap, per la finestra. Si deixo una marca al pilar i la V. la troba, el moll ens pot fer de bústia.",
       "pista.iri_marca.3": "Agafa la llima del moll i fes-la servir amb el pilar.",
       "pista.vet_reixa.1": "El conducte comença al mòdul C. On hi ha una entrada?",
       "pista.vet_reixa.2": "Mira la reixa de la paret de la cel·la.",
@@ -16789,10 +16794,10 @@
       "sala.gavina_hangar.pany.nom": "pany sònic",
       "sala.gavina_hangar.pany.obert": "El pany sònic. Ara la porta és oberta.",
       "sala.gavina_hangar.pany.look": "Un pany rodó, com un ressonador. Sense forat per a cap clau.",
-      "sala.fabrica_moll.primer_marca": "Abans, el pilar 7. La V. ha de saber que ho he rebut.",
+      "sala.fabrica_moll.primer_marca": "Abans, el pilar 7. Si la V. troba la meva marca, sabré que el moll ens fa de bústia.",
       "sala.fabrica_moll.pilar.nom": "pilar",
       "sala.fabrica_moll.pilar.gravar1": "Amb la llima, hi gravo una I. i una clau anglesa. Ben fondo.",
-      "sala.fabrica_moll.pilar.gravar2": "Si el teu hangar és el meu moll, V., d'aquí a cent vint anys encara hi serà. Vol dir: rebut.",
+      "sala.fabrica_moll.pilar.gravar2": "Si el teu hangar és el meu moll, V., d'aquí a cent vint anys encara hi serà. Vol dir: rebut. I: aquí hi podem deixar coses.",
       "sala.fabrica_moll.pilar.ja_gravat": "Ja hi ha la marca. Si n'hi faig més, el capatàs pensarà que és art.",
       "sala.fabrica_moll.pilar.res_a_dir": "Gravar-hi què? Encara no tinc res a dir a ningú.",
       "sala.fabrica_moll.pilar.look_marca": "El pilar 7, amb la meva marca: una I. i una clau anglesa. Que duri.",

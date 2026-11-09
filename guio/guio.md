@@ -217,9 +217,10 @@ a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 2. Arrenca un tros del cartell del reciclatge, hi escriu la mida amb el llapis d'ulls i l'envia. Per dir on és,
    hi afegeix que té al costat un pilar amb un 7 pintat.
 3. L'Iri ho tradueix: una clau Lot 1 fa trenta centímetres, uns dos metres de biga.
-3b. **La marca del pilar 7.** Al moll de l'Iri també hi ha un pilar amb un 7 pintat: la V. és al seu moll. Abans de
-   posar-se amb la biga, l'Iri li vol dir que ho ha rebut, però queden poques enceses i no en vol gastar una per dir
-   «d'acord». Si és el mateix lloc, no cal: amb la llima, grava al pilar una I. i una clau anglesa. Quan la Vet torna
+3b. **La marca del pilar 7.** Al moll de l'Iri també hi ha un pilar amb un 7 pintat: la V. és al seu moll. La biga no
+   passarà mai per la finestra, però si és el mateix lloc, el que l'Iri hi deixi la Vet ho trobarà cent vint anys
+   després. Abans de jugar-s'hi una biga, ho prova amb una cosa petita: amb la llima, grava al pilar una I. i una
+   clau anglesa (que de pas vol dir «rebut», sense gastar cap encesa). Quan la Vet torna
    a l'hangar, té mal de cap i hi troba la marca, que abans no hi era: **el primer cop que el passat canvia el
    present sense passar per la finestra**. Ensenya la regla que fan servir la vàlvula (Acte 2) i la reixa del conducte
    (Acte 3), i dona sentit al camí llarg: el moll és una bústia que triga cent vint anys.
