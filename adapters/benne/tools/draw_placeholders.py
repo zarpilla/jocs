@@ -425,8 +425,8 @@ def main(game_dir: Path):
     draw_cover_gui(game_dir)
     add_switch_button(game_dir)
     fonts = game_dir / 'assets/fonts'
-    font = BitmapFont(fonts / 'lucasarts-scumm-solid.xml')
-    small = BitmapFont(fonts / 'lucasfont-alternate.xml')
+    font = BitmapFont(fonts / 'ferro-negreta.xml')
+    small = BitmapFont(fonts / 'ferro-regular.xml')
     requests = game_dir / '../../.benne-provisional'
     for req_path in sorted((requests / 'rooms').glob('*.json')):
         dir_ = game_dir / 'assets/images/rooms' / req_path.stem

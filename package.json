@@ -17,6 +17,7 @@
     "schemas": "tsx tools/generate-schemas.ts",
     "sons": "python3 tools/sons.py",
     "musica": "python3 tools/musica.py",
+    "font": "python3 tools/font/ferro_font.py",
     "benne:create": "tsx adapters/benne/create-project.ts",
     "benne:sync": "tsx adapters/benne/sync.ts"
   },

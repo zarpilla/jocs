@@ -1,18 +1,10 @@
 {
-  "lucasarts-scumm-solid": {
-    "textureFile": "lucasarts-scumm-solid_0.png",
-    "dataFile": "lucasarts-scumm-solid.xml"
+  "ferro-regular": {
+    "textureFile": "ferro-regular_0.png",
+    "dataFile": "ferro-regular.xml"
   },
-  "lucasfont-alternate": {
-    "textureFile": "lucasfont-alternate_0.png",
-    "dataFile": "lucasfont-alternate.xml"
-  },
-  "PressStart2P-Regular": {
-    "textureFile": "PressStart2P-Regular_0.png",
-    "dataFile": "PressStart2P-Regular.xml"
-  },
-  "sierra-sci-menu-font": {
-    "textureFile": "sierra-sci-menu-font_0.png",
-    "dataFile": "sierra-sci-menu-font.xml"
+  "ferro-negreta": {
+    "textureFile": "ferro-negreta_0.png",
+    "dataFile": "ferro-negreta.xml"
   }
 }

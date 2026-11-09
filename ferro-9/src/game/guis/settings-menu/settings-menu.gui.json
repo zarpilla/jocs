@@ -34,7 +34,7 @@
       "x": 240,
       "y": 68,
       "text": "Opcions",
-      "font": "lucasarts-scumm-solid",
+      "font": "ferro-negreta",
       "fontSize": 8,
       "color": "#d8b46a",
       "align": "center",
@@ -140,7 +140,7 @@
       "x": 101,
       "y": 86,
       "text": "clic per saltar el diàleg",
-      "font": "lucasfont-alternate",
+      "font": "ferro-regular",
       "fontSize": 8,
       "color": "#ffffff",
       "gridPlacement": {
@@ -172,7 +172,7 @@
       "x": 0,
       "y": 0,
       "text": "volum dels efectes",
-      "font": "lucasfont-alternate",
+      "font": "ferro-regular",
       "fontSize": 8,
       "color": "#ffffff",
       "gridPlacement": {
@@ -191,7 +191,7 @@
       "x": 0,
       "y": 0,
       "text": "volum de la música",
-      "font": "lucasfont-alternate",
+      "font": "ferro-regular",
       "fontSize": 8,
       "color": "#ffffff",
       "gridPlacement": {
@@ -212,7 +212,7 @@
       "height": 20,
       "backgroundAnchor": "top-left",
       "text": "Torna",
-      "font": "lucasfont-alternate",
+      "font": "ferro-regular",
       "fontSize": 8,
       "textColor": "#ffffff",
       "textAlign": "center",
@@ -233,7 +233,7 @@
       "x": 0,
       "y": 0,
       "text": "velocitat del text",
-      "font": "lucasfont-alternate",
+      "font": "ferro-regular",
       "fontSize": 8,
       "color": "#ffffff",
       "gridPlacement": {

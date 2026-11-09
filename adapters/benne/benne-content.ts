@@ -346,7 +346,7 @@ function addCoverGui(gameDir: string): boolean {
       display: { aseprite: true },
       controls: COVER_BUTTONS.map((b) => ({
         type: 'button', ...b, backgroundAnchor: 'screen', text: b.id,
-        font: 'lucasarts-scumm-solid', fontSize: 8, textColor: '#10908e', textAlign: 'center', textOffsetX: 0, textOffsetY: 0,
+        font: 'ferro-negreta', fontSize: 8, textColor: '#10908e', textAlign: 'center', textOffsetX: 0, textOffsetY: 0,
         textColorStates: { hover: '#28c074' }, textOutline: { enabled: true, color: '#132243', sides: 'bottomRight' },
         backgroundTag: `${b.id}`, states: { hover: `${b.id}-hover` },
       })),
