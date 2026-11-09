@@ -77,6 +77,7 @@ npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor 
 npm run typecheck
 npm run schemas        # regenera game/schemas/ si canvien els tipus del nucli
 npm run sons           # regenera els efectes de so sintetitzats (game/audio/sfx/; cal numpy i ffmpeg)
+npm run musica         # regenera la música d'ambient de la fàbrica i de La Gavina (game/audio/music/)
 npm run benne:sync     # porta el contingut a ferro-9/ (sales noves, textos, diàlegs, sons...) [--watch]
 npm run benne:create -- --from <checkout de Benne>   # (re)crea ferro-9/ o n'actualitza el motor
 ```

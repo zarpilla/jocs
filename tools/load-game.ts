@@ -42,6 +42,13 @@ export function gameSoundFiles(dir = GAME_DIR) {
   return readdirSync(sfx).filter((f) => SOUND_EXTENSIONS.some((e) => f.endsWith(e))).map((f) => join(sfx, f));
 }
 
+/** Pistes de música de `game/audio/music/` (les genera `npm run musica`). */
+export function gameMusicFiles(dir = GAME_DIR) {
+  const music = join(dir, 'audio', 'music');
+  if (!existsSync(music)) return [];
+  return readdirSync(music).filter((f) => SOUND_EXTENSIONS.some((e) => f.endsWith(e))).map((f) => join(music, f));
+}
+
 /** Noms dels sons (sense extensió), el que va al camp `sound` de les línies. */
 export function gameSounds(dir = GAME_DIR) {
   return gameSoundFiles(dir).map((f) => f.slice(f.lastIndexOf(sep) + 1).replace(/\.[^.]+$/, ''));

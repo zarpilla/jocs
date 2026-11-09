@@ -202,6 +202,9 @@ export function ensureStarted() {
 /** La protagonista d'una sala (`protagonist` al JSON de la sala). */
 export const roomProtagonist = (room: string) => content.rooms[room]?.protagonist ?? null;
 
+/** La música d'ambient de les sales d'una protagonista (`music` a `adapters/benne/mapping.json`). */
+export const protagonistMusic = (who: string) => (mapping as { music?: Record<string, string> }).music?.[who] ?? null;
+
 /** On és (o era) cada protagonista. */
 export function protagonistRoom(who: string): string | null {
   const rooms = (store.protagonistRooms ?? {}) as Record<string, string>;

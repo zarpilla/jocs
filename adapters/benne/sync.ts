@@ -3,7 +3,7 @@
  *
  * Porta el contingut del joc a un projecte Benne:
  *  1. Valida el contingut (si hi ha errors, no escriu res).
- *  2. Copia el pont (runtime/) a `src/game/narrative/`, i els sons de `game/audio/sfx/` als de Benne.
+ *  2. Copia el pont (runtime/) a `src/game/narrative/`, i els sons i la música de `game/audio/` als de Benne.
  *  3. Empaqueta dades + textos a `src/game/narrative/content.generated.json`.
  *  4. Genera un diàleg de Benne per cada diàleg nostre (`src/game/dialogs/<id>/`).
  *
@@ -22,7 +22,7 @@ import { parseArgs } from 'node:util';
 import { validateContent, type DialogueDef, type GameContent, type LocaleTable } from '@aventura/narrative-core';
 import { GAME_ACTIONS, GAME_TEXT_KEYS } from '../../game/logic/index.js';
 import { writeBenneContent } from './benne-content.js';
-import { GAME_DIR, gameSoundFiles, gameSounds, loadGameFromDisk } from '../../tools/load-game.js';
+import { GAME_DIR, gameMusicFiles, gameSoundFiles, gameSounds, loadGameFromDisk } from '../../tools/load-game.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const MARK = 'GENERAT per adapters/benne/sync.ts';
@@ -133,6 +133,10 @@ function sync() {
   const sfxDir = join(gameDir, 'assets/audio/sfx');
   mkdirSync(sfxDir, { recursive: true });
   for (const file of gameSoundFiles()) copyFileSync(file, join(sfxDir, basename(file)));
+  // I la música, de `game/audio/music/` a `assets/audio/music/`.
+  const musicDir = join(gameDir, 'assets/audio/music');
+  mkdirSync(musicDir, { recursive: true });
+  for (const file of gameMusicFiles()) copyFileSync(file, join(musicDir, basename(file)));
 
   // 3. Diàlegs
   for (const d of Object.values(content.dialogues)) {

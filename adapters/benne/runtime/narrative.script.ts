@@ -6,13 +6,13 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
-import { guis } from '@game';
+import { guis, music } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
+  protagonistMusic, rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
 /** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
@@ -99,6 +99,7 @@ export function onRoomEntered() {
   else guis.portada.hide()
   applySwitchButton()
   const who = roomProtagonist(room)
+  applyAmbientMusic(portada, who)
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
       const character = benneCharacter(who)
@@ -114,6 +115,21 @@ export function onRoomEntered() {
   const result = narrative.enterRoom(room)
   entrada = { room, result }
   if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
+}
+
+/**
+ * Música d'ambient: cada protagonista té la del seu espai i, en canviar d'una a l'altra, s'encadenen.
+ * A la portada no en sona cap; a les cinemàtiques (pròleg, finals) continua la que sonava.
+ */
+function applyAmbientMusic(portada: boolean, who: string | null) {
+  if (portada) {
+    if (music.isPlaying) music.stop()
+    return
+  }
+  const track = who ? protagonistMusic(who) : null
+  if (!track) return
+  const handle = new MusicHandle(track)
+  if (!handle.isPlaying) handle.play({ fadeSeconds: 2.5 })
 }
 
 /** L'onEnter de la sala on acabem d'entrar, resolt abans del fos (vegeu `onRoomEntered`). */
