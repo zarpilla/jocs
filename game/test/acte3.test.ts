@@ -194,6 +194,9 @@ describe('Ferro-9 · Acte 3 · Els finals', () => {
     });
     expect(n.flag('fugida_completada')).toBe(true);
     expect(n.resolveEnding()).toBe('correspondencia');
+    const final = n.ending('correspondencia');
+    expect(texts(final.scene)).toContain('CARGOL');
+    expect(texts(final.scene)).toContain('Tinc la sensació que et conec');
   });
 
   it("amb la Mira salvada però sense la memòria del Cargol, el final 2; la placa sense nom no li diu res", () => {
@@ -286,5 +289,32 @@ describe('Ferro-9 · Missions secundàries', () => {
     p.do('open', 'porta_cella');
     expect(texts(p.use('nota_mos', 'mos'))).toContain('Ets un sol');
     expect(n.state.quests.notes_perdudes!.status).toBe('completed');
+  });
+
+  it("la drecera d'en Mos: amb la carta tornada, es desmaia de mentida i la Vet no ha d'acceptar el pacte", () => {
+    const { p, n } = partida({ checkHints: true, fins: 'fugida_completada' });
+    jugarActe1(p);
+    jugarActe2(p);
+    jugarActe3(p, {
+      inici: () => {
+        // La carta d'en Mos, de l'arxiu (ja obert a l'Acte 2) a en Mos.
+        p.do('open', 'porta');
+        p.do('open', 'porta_hangar');
+        p.do('open', 'escala');
+        p.do('open', 'arxivador');
+        p.do('open', 'escala_hangar');
+        p.do('open', 'porta_passadis');
+        p.do('open', 'porta_cella');
+        p.use('carta_mos', 'mos');
+      },
+      mos: true,
+    });
+    expect(n.flag('mos_distreu')).toBe(true);
+    expect(n.flag('pacte_acceptat')).toBe(false);
+    expect(n.flag('cella_tancada')).toBe(true);
+    expect(n.resolveEnding()).toBe('fugida');
+    const scene = texts(n.ending('fugida').scene);
+    expect(scene).toContain('Nura');
+    expect(scene).not.toContain('Mira');
   });
 });

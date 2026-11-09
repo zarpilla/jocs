@@ -6,7 +6,50 @@
     "priority": 1,
     "when": {
       "flag": "fugida_completada"
-    }
+    },
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.fugida.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.4"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.mira",
+        "if": {
+          "flag": "mira_salvada"
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.cargol",
+        "if": {
+          "flag": "cargol_memoria"
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.mos",
+        "if": {
+          "flag": "carta_mos_lliurada"
+        }
+      }
+    ]
   },
   "veritat": {
     "title": "final.veritat.titol",
@@ -24,7 +67,33 @@
           "flag": "planols_lliurats"
         }
       ]
-    }
+    },
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.oris.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.4"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.mos"
+      }
+    ]
   },
   "correspondencia": {
     "title": "final.correspondencia.titol",
@@ -45,6 +114,48 @@
           "flag": "cargol_memoria"
         }
       ]
-    }
+    },
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.oris.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.4"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.mos"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.4"
+      }
+    ]
   }
 }

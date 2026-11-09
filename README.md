@@ -71,12 +71,13 @@ Regles:
 ```bash
 npm install
 npm run jugar          # juga en mode text, al terminal (sense art ni Benne)
-npm test               # tests: nucli + l'Acte 1 jugat de cap a peus
+npm test               # tests: el nucli i els tres actes jugats de cap a peus, amb els tres finals
 npm run validate       # comprova el contingut: forma, referències, textos que falten
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
 npm run typecheck
 npm run schemas        # regenera game/schemas/ si canvien els tipus del nucli
-npm run benne:sync     # porta el contingut a ferro-9/ (sales noves, textos, diàlegs...) [--watch]
+npm run sons           # regenera els efectes de so sintetitzats (game/audio/sfx/; cal numpy i ffmpeg)
+npm run benne:sync     # porta el contingut a ferro-9/ (sales noves, textos, diàlegs, sons...) [--watch]
 npm run benne:create -- --from <checkout de Benne>   # (re)crea ferro-9/ o n'actualitza el motor
 ```
 
@@ -87,8 +88,15 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea ferro-9/ o n'act
 
 ## Estat actual
 
-- **Acte 1, «La descoberta»: escrit i jugable en mode text** (5 sales, 3 diàlegs, 19 objectes, 20 pistes).
-- Actes 2 i 3: al guió, pendents d'escriure en JSON.
-- **Projecte Benne a `ferro-9/`**, amb l'Acte 1 i art provisional: `cd ferro-9 && npm install && npm run dev`.
-  Comprovat amb `tsc` i amb el validador de Benne, però encara no s'ha jugat al navegador.
-- Art definitiu: pendent (llista del que cal dibuixar a [guio/fitxes-sales.md](guio/fitxes-sales.md)).
+- **El joc sencer està escrit i es pot jugar de principi a fi**, en mode text (`npm run jugar`) i a Benne:
+  - **Acte 1**, «La descoberta»; **Acte 2**, «Els costos»; **Acte 3**, «La finestra».
+  - **Tres finals** («La fugida», «La veritat a temps», «Correspondència»), amb escenes que canvien segons el
+    que s'ha fet.
+  - **Missions secundàries:** salvar la Mira, la carta d'en Mos, la memòria del Cargol, el formulari 27-B i les
+    notes perdudes.
+  - 10 sales, 11 personatges, 8 diàlegs, 52 objectes, 117 pistes i 51 efectes de so.
+- **Tests:** cada acte es juga sencer, per diversos camins, comprovant que a cada pas hi ha alguna pista.
+- **Projecte Benne a `ferro-9/`**, amb art provisional: `cd ferro-9 && npm install && npm run dev`. Compila
+  amb `tsc`; l'Acte 1 s'ha jugat al navegador, i els actes 2 i 3 s'hi estan provant.
+- **Pendent:** l'art definitiu (llista del que cal dibuixar a [guio/fitxes-sales.md](guio/fitxes-sales.md)) i la
+  música.

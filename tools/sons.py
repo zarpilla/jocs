@@ -321,6 +321,93 @@ def llima():
     return mix(passada(), (passada(), 0.38), (passada(), 0.76))
 
 
+# ─── Més sons (Acte 3, missions secundàries i detalls de tots els actes) ────
+
+
+def segell():
+    """Pam!: un segell de goma contra el paper i la taula."""
+    pam = osc(np.linspace(140, 70, int(SR * 0.18)), 0.18) * env(0.18, 0.001, 0.05)
+    paper = band(noise(0.06), 800, 5000) * env(0.06, 0.001, 0.015) * 0.5
+    return mix(pam, paper)
+
+
+def paper():
+    """Paper que es desplega o s'arrenca: un frec irregular."""
+    d = 0.5
+    x = t(d)
+    tremolor = (np.sin(2 * np.pi * np.cumsum(30 + 25 * np.sin(2 * np.pi * 3 * x)) / SR) > 0.2).astype(float)
+    frec = band(noise(d), 1500, 9000) * (0.4 + 0.6 * tremolor)
+    return frec * np.sin(np.pi * x / d) ** 0.5 * 0.6
+
+
+def escriure():
+    """Un llapis que escriu: ratllades curtes."""
+    def ratlla(d):
+        x = t(d)
+        return band(noise(d), 2000, 7000) * np.sin(np.pi * x / d) * 0.45
+    inicis = [0, 0.16, 0.27, 0.45, 0.58, 0.8]
+    durs = [0.12, 0.08, 0.15, 0.1, 0.18, 0.09]
+    return mix(*[(ratlla(dd), ii) for ii, dd in zip(inicis, durs)])
+
+
+def serra():
+    """Una serra de metall: anar i tornar, quatre vegades."""
+    def passada(f0, f1):
+        d = 0.32
+        x = t(d)
+        f = np.linspace(f0, f1, len(x))
+        dents = (np.sin(2 * np.pi * np.cumsum(f) / SR) > 0.3).astype(float)
+        return band(noise(d) * (0.3 + 0.7 * dents), 1800, 8000) * np.sin(np.pi * x / d) ** 0.8 * 0.6
+    return mix(*[(passada(60, 110) if i % 2 == 0 else passada(110, 60), i * 0.34) for i in range(4)])
+
+
+def reixa():
+    """Una reixa de metall que s'aixeca: grinyol curt i un clonc."""
+    d = 0.6
+    x = t(d)
+    grinyol = (osc(1100 + 300 * x / d, d) + 0.4 * osc(2300 + 500 * x / d, d)) * env(d, 0.05, None, 0.1) * 0.2
+    rasca = band(noise(d), 1500, 6000) * env(d, 0.02, 0.25) * 0.4
+    clonc = mix(osc(np.linspace(180, 90, int(SR * 0.2)), 0.2) * env(0.2, 0.001, 0.05),
+                (osc(520, 0.5) * env(0.5, 0.001, 0.12) + 0.5 * osc(1370, 0.5) * env(0.5, 0.001, 0.08)) * 0.3)
+    return mix(grinyol, rasca, (clonc, d - 0.05))
+
+
+def conducte():
+    """Arrossegar-se per un conducte de metall: cops buits que ressonen."""
+    def pas(g):
+        d = 0.5
+        cos = osc(np.linspace(170, 140, int(SR * d)), d) * env(d, 0.002, 0.12) + 0.4 * osc(410, d) * env(d, 0.002, 0.2)
+        return g * mix(cos, band(noise(0.04), 300, 2000) * env(0.04, 0.001, 0.01) * 0.6)
+    return mix(*[(pas(0.8 if i % 2 == 0 else 0.55), i * 0.33 + (0.05 if i % 2 else 0)) for i in range(5)])
+
+
+def holograma():
+    """Un holograma que s'encén: brunzit que puja i una mica de soroll de transmissió."""
+    d = 1.4
+    x = t(d)
+    brunzit = (osc(120, d, 'saw') * 0.3 + osc(240 + 60 * np.minimum(1, x / 0.4), d) * 0.4) * env(d, 0.3, None, 0.4)
+    brunzit = band(brunzit, 80, 2500)
+    talls = (np.sin(2 * np.pi * 7 * x) > 0.85).astype(float)
+    estatica = band(noise(d), 2000, 8000) * talls * 0.25
+    return mix(brunzit, estatica, (osc(1760, 0.15) * env(0.15, 0.005, 0.05) * 0.15, 0.35))
+
+
+def tos():
+    """Tus, tus: dues tossides discretes."""
+    def una(g):
+        d = 0.18
+        x = t(d)
+        return g * band(noise(d) + 0.4 * osc(160, d, 'saw'), 200, 2500) * env(d, 0.005, 0.05)
+    return mix(una(1.0), (una(0.8), 0.28))
+
+
+def porta_preso():
+    """La porta de la cel·la que es tanca: buf pneumàtic, cop i forrellat."""
+    buf = band(noise(0.5), 400, 5000) * env(0.5, 0.05, 0.2) * 0.4
+    cop_ = osc(np.linspace(110, 60, int(SR * 0.3)), 0.3) * env(0.3, 0.001, 0.08)
+    return mix(buf, (cop_, 0.45), (clac() * 0.7, 0.75))
+
+
 # ─── Llista ─────────────────────────────────────────────────────────────────
 
 SONS = {
@@ -351,10 +438,19 @@ SONS = {
     'cambra_posa': cambra_posa,
     'cambra_arma': cambra_arma,
     'fase': fase,
+    'segell': segell,
+    'paper': paper,
+    'escriure': escriure,
+    'serra': serra,
+    'reixa': reixa,
+    'conducte': conducte,
+    'holograma': holograma,
+    'tos': tos,
+    'porta_preso': porta_preso,
 }
 
 # Volum de cada so respecte del màxim (els cops forts no han de tapar les notes).
-VOLUM = {'alarma': 0.5, 'vibracio': 0.6, 'motor': 0.7, 'comporta': 0.7, 'aigua': 0.6, 'ronc': 0.6, 'diapaso_xiulet': 0.5, 'boto': 0.6}
+VOLUM = {'alarma': 0.5, 'vibracio': 0.6, 'motor': 0.7, 'comporta': 0.7, 'aigua': 0.6, 'ronc': 0.6, 'diapaso_xiulet': 0.5, 'boto': 0.6, 'holograma': 0.6, 'conducte': 0.7, 'paper': 0.6, 'escriure': 0.5, 'tos': 0.6}
 
 
 def write(name, x):

@@ -18,7 +18,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_calderes.capatas.signar1"
+              "text": "sala.fabrica_calderes.capatas.signar1",
+              "sound": "escriure"
             },
             {
               "who": "capatas",
@@ -121,7 +122,8 @@
             },
             {
               "who": "capatas",
-              "text": "sala.fabrica_calderes.capatas.parlar2"
+              "text": "sala.fabrica_calderes.capatas.parlar2",
+              "sound": "ronc"
             }
           ]
         },
@@ -176,7 +178,8 @@
             },
             {
               "who": "player",
-              "text": "sala.fabrica_calderes.capatas.plomall3"
+              "text": "sala.fabrica_calderes.capatas.plomall3",
+              "sound": "segell"
             }
           ],
           "effects": [
@@ -409,7 +412,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_calderes.porta_cambra.obrir"
+              "text": "sala.fabrica_calderes.porta_cambra.obrir",
+              "sound": "clac"
             }
           ],
           "effects": [

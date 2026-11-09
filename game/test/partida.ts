@@ -232,8 +232,10 @@ export function jugarActe2(p: Jugador, opts: { mira?: boolean; cargol?: boolean 
 /**
  * L'Acte 3 sencer, des de la Vet a la cel·la fins a la fugida de totes dues. `vet` es fa amb la Vet a
  * l'hangar, quan ja pot anar al passadís pel conducte; `iri`, amb l'Iri al magatzem, abans de fugir.
+ * `inici`, amb la Vet a la cel·la just en començar l'acte; `mos`: en Mos distreu la Directora en lloc del pacte.
  */
-export function jugarActe3(p: Jugador, extra: { vet?: () => void; iri?: () => void } = {}) {
+export function jugarActe3(p: Jugador, extra: { inici?: () => void; vet?: () => void; iri?: () => void; mos?: boolean } = {}) {
+  extra.inici?.();
   p.do('push', 'panell');
   p.talk('directora', 'que_vol', 'iri');
   p.switchTo('iri');
@@ -251,7 +253,8 @@ export function jugarActe3(p: Jugador, extra: { vet?: () => void; iri?: () => vo
   p.do('open', 'reixa');
   p.use('llapis_ulls', item('fullet_memoria'));
   p.use('mapa_fuga', 'panell');
-  p.talk('directora', 'pacte');
+  if (extra.mos) p.talk('mos', 'distreure');
+  else p.talk('directora', 'pacte');
   p.switchTo('iri');
   p.talk('sic', 'enganyar');
   p.do('open', 'porta_cambra');

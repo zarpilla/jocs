@@ -473,7 +473,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.tub1"
+              "text": "sala.gavina_hangar.llancadora.tub1",
+              "sound": "paper"
             },
             {
               "who": "player",
@@ -524,7 +525,8 @@
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir2"
+              "text": "sala.gavina_hangar.llancadora.fugir2",
+              "sound": "comporta"
             },
             {
               "who": "player",
@@ -567,7 +569,8 @@
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir2"
+              "text": "sala.gavina_hangar.llancadora.fugir2",
+              "sound": "comporta"
             },
             {
               "who": "player",
@@ -1125,7 +1128,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.escala.descargolar1"
+              "text": "sala.gavina_hangar.escala.descargolar1",
+              "sound": "eina"
             },
             {
               "who": "player",
@@ -1221,7 +1225,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.sortida_conducte.entrar"
+              "text": "sala.gavina_hangar.sortida_conducte.entrar",
+              "sound": "conducte"
             }
           ],
           "goTo": "gavina_cella"
@@ -1275,7 +1280,8 @@
             },
             {
               "who": "narrator",
-              "text": "nota_perduda.3.text"
+              "text": "nota_perduda.3.text",
+              "sound": "paper"
             },
             {
               "who": "player",

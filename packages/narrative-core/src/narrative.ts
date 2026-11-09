@@ -86,6 +86,8 @@ export interface HintView {
 export interface EndingView {
   id: Id;
   title: string;
+  /** L'escena, ja filtrada per les condicions de cada línia. */
+  scene: ResolvedLine[];
   text: string;
 }
 
@@ -325,7 +327,10 @@ export class Narrative {
   ending(id: Id): EndingView {
     const def = this.content.endings[id];
     if (!def) throw new Error(`Final desconegut: ${id}`);
-    return { id, title: this.t(def.title), text: this.t(def.text) };
+    const scene = (def.scene ?? [])
+      .filter((line) => this.check(line.if))
+      .map((line) => ({ who: line.who, key: line.text, text: this.t(line.text) }));
+    return { id, title: this.t(def.title), scene, text: this.t(def.text) };
   }
 
   // ─── Sales, coses i interaccions ──────────────────────────────────────────

@@ -182,7 +182,9 @@ async function main() {
         const id = n.resolveEnding();
         if (id) {
           const f = n.ending(id);
-          console.log(`\n${c.bold}${f.title}${c.off}\n${f.text}\n\n${n.t('ui.fi')}`);
+          console.log(`\n${c.bold}${f.title}${c.off}\n`);
+          print(f.scene);
+          console.log(`\n${f.text}\n\n${n.t('ui.fi')}`);
         }
         break;
       }

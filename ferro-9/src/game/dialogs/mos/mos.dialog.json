@@ -52,6 +52,13 @@
       "say": false
     },
     {
+      "id": "menu__distreure",
+      "scriptName": "menu__distreure",
+      "text": "Mos, necessito que la Directora miri cap a una altra banda. Un moment.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Res, res.",

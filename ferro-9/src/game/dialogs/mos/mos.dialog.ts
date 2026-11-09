@@ -34,6 +34,10 @@ options.menu__perdo.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'perdo')
 })
 
+options.menu__distreure.onChoose(() => {
+  chooseNarrativeOption('mos', dialog, 'menu', 'distreure')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'adeu')
 })

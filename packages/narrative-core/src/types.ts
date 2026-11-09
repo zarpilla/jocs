@@ -269,6 +269,11 @@ export interface HintDef {
 export interface EndingDef {
   title: TextKey;
   text: TextKey;
+  /**
+   * Escena entre el títol i el text final: línies (de narrador, títols o personatges) amb `if`
+   * opcional, per explicar què passa després segons el que s'ha fet. No hi ha efectes.
+   */
+  scene?: DialogueLineDef[];
   /** Per triar-ne un automàticament amb `resolveEnding()`. */
   when?: Condition;
   priority?: number;

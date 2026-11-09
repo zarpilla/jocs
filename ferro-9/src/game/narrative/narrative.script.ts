@@ -159,6 +159,11 @@ export function playEnding(id?: string) {
   const ending = narrative.ending(endingId)
   fadeOut(1.5)
   display(ending.title)
+  // Els personatges ja no són a la sala: el que diuen surt amb el nom al davant.
+  for (const line of ending.scene) {
+    if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') display(line.text)
+    else display(`${narrative.characterName(line.who)}: ${line.text}`)
+  }
   display(ending.text)
   display(narrative.t('ui.fi'))
 }

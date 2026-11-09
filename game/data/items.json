@@ -67,7 +67,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.segell.formulari"
+            "text": "obj.segell.formulari",
+            "sound": "segell"
           }
         ],
         "effects": [
@@ -85,7 +86,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.segell.triplicat"
+            "text": "obj.segell.triplicat",
+            "sound": "segell"
           }
         ],
         "effects": [
@@ -208,7 +210,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis.resposta1"
+            "text": "obj.llapis.resposta1",
+            "sound": "escriure"
           },
           {
             "who": "player",
@@ -399,7 +402,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis_ulls.mapa1"
+            "text": "obj.llapis_ulls.mapa1",
+            "sound": "escriure"
           },
           {
             "who": "player",
@@ -468,7 +472,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis_ulls.nom1"
+            "text": "obj.llapis_ulls.nom1",
+            "sound": "escriure"
           },
           {
             "who": "player",
@@ -504,7 +509,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis_ulls.mida"
+            "text": "obj.llapis_ulls.mida",
+            "sound": "escriure"
           }
         ],
         "effects": [
@@ -536,7 +542,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis_ulls.pressio"
+            "text": "obj.llapis_ulls.pressio",
+            "sound": "escriure"
           }
         ],
         "effects": [
@@ -573,7 +580,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis_ulls.massa"
+            "text": "obj.llapis_ulls.massa",
+            "sound": "escriure"
           }
         ],
         "effects": [
@@ -607,7 +615,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis_ulls.nota"
+            "text": "obj.llapis_ulls.nota",
+            "sound": "escriure"
           }
         ],
         "effects": [
@@ -648,7 +657,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.llapis_ulls.pany1"
+            "text": "obj.llapis_ulls.pany1",
+            "sound": "escriure"
           },
           {
             "who": "player",
@@ -901,7 +911,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "sala.fabrica_moll.serrar1"
+            "text": "sala.fabrica_moll.serrar1",
+            "sound": "serra"
           },
           {
             "who": "player",
@@ -1885,7 +1896,8 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.tub_ferro9.enrotllar1"
+            "text": "obj.tub_ferro9.enrotllar1",
+            "sound": "paper"
           },
           {
             "who": "player",

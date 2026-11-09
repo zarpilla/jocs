@@ -186,6 +186,26 @@
           ]
         },
         {
+          "id": "distreure",
+          "text": "dlg.mos.opt.distreure",
+          "once": true,
+          "next": "distreure",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "flag": "carta_mos_lliurada"
+              },
+              {
+                "flag": "pacte_acceptat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
           "id": "adeu",
           "text": "dlg.mos.opt.adeu",
           "next": "adeu",
@@ -402,6 +422,28 @@
         {
           "who": "mos",
           "text": "dlg.mos.galeria4"
+        }
+      ],
+      "goto": "menu"
+    },
+    "distreure": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.distreure1"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.distreure2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.mos.distreure3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "mos_distreu"
         }
       ],
       "goto": "menu"

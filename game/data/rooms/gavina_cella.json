@@ -15,6 +15,62 @@
                 "flag": "acte3_iniciat"
               },
               {
+                "flag": "mos_distreu"
+              },
+              {
+                "flag": "pacte_acceptat",
+                "is": false
+              },
+              {
+                "flag": "iri_a_la_cambra"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.mos1",
+              "sound": "tos"
+            },
+            {
+              "who": "mos",
+              "text": "sala.gavina_cella.panell.mos2"
+            },
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.mos3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_cella.panell.mos4"
+            },
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.mos5",
+              "sound": "porta_preso"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cella_tancada"
+            }
+          ],
+          "action": {
+            "name": "finestra.posar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": "use",
+          "item": "mapa_fuga",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
                 "flag": "pacte_acceptat"
               },
               {
@@ -37,7 +93,8 @@
             },
             {
               "who": "directora",
-              "text": "sala.gavina_cella.panell.mapa4"
+              "text": "sala.gavina_cella.panell.mapa4",
+              "sound": "porta_preso"
             }
           ],
           "effects": [
@@ -65,7 +122,14 @@
                 "flag": "acte3_iniciat"
               },
               {
-                "flag": "pacte_acceptat"
+                "any": [
+                  {
+                    "flag": "pacte_acceptat"
+                  },
+                  {
+                    "flag": "mos_distreu"
+                  }
+                ]
               },
               {
                 "flag": "iri_a_la_cambra",
@@ -92,7 +156,14 @@
                 "flag": "acte3_iniciat"
               },
               {
-                "flag": "pacte_acceptat"
+                "any": [
+                  {
+                    "flag": "pacte_acceptat"
+                  },
+                  {
+                    "flag": "mos_distreu"
+                  }
+                ]
               },
               {
                 "flag": "iri_a_la_cambra",
@@ -116,7 +187,14 @@
                 "flag": "acte3_iniciat"
               },
               {
-                "flag": "pacte_acceptat"
+                "any": [
+                  {
+                    "flag": "pacte_acceptat"
+                  },
+                  {
+                    "flag": "mos_distreu"
+                  }
+                ]
               }
             ]
           },
@@ -141,7 +219,14 @@
                 "flag": "acte3_iniciat"
               },
               {
-                "flag": "pacte_acceptat"
+                "any": [
+                  {
+                    "flag": "pacte_acceptat"
+                  },
+                  {
+                    "flag": "mos_distreu"
+                  }
+                ]
               }
             ]
           },
@@ -312,7 +397,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.panell.reparar1"
+              "text": "sala.gavina_cella.panell.reparar1",
+              "sound": "eina"
             },
             {
               "who": "player",
@@ -472,7 +558,8 @@
             },
             {
               "who": "player",
-              "text": "sala.gavina_cella.panell.recuperar2"
+              "text": "sala.gavina_cella.panell.recuperar2",
+              "sound": "eina"
             }
           ],
           "effects": [
@@ -1066,7 +1153,8 @@
           "lines": [
             {
               "who": "directora",
-              "text": "sala.gavina_cella.reixa.fugir1"
+              "text": "sala.gavina_cella.reixa.fugir1",
+              "sound": "alarma"
             },
             {
               "who": "narrator",
@@ -1077,7 +1165,8 @@
             },
             {
               "who": "player",
-              "text": "sala.gavina_cella.reixa.fugir2"
+              "text": "sala.gavina_cella.reixa.fugir2",
+              "sound": "conducte"
             }
           ],
           "goTo": "gavina_hangar"
@@ -1095,7 +1184,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.reixa.entrar"
+              "text": "sala.gavina_cella.reixa.entrar",
+              "sound": "conducte"
             }
           ],
           "goTo": "gavina_hangar"
@@ -1262,7 +1352,8 @@
             },
             {
               "who": "narrator",
-              "text": "nota_perduda.1.text"
+              "text": "nota_perduda.1.text",
+              "sound": "paper"
             },
             {
               "who": "player",

@@ -115,7 +115,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.serrar1"
+              "text": "sala.fabrica_moll.serrar1",
+              "sound": "serra"
             },
             {
               "who": "player",
@@ -347,7 +348,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.trapa.amagar_acer"
+              "text": "sala.fabrica_moll.trapa.amagar_acer",
+              "sound": "reixa"
             }
           ],
           "effects": [
@@ -366,7 +368,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.trapa.amagar_ferro9"
+              "text": "sala.fabrica_moll.trapa.amagar_ferro9",
+              "sound": "reixa"
             }
           ],
           "effects": [
@@ -396,7 +399,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.trapa.treure_acer"
+              "text": "sala.fabrica_moll.trapa.treure_acer",
+              "sound": "reixa"
             }
           ],
           "effects": [
@@ -434,7 +438,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.trapa.buida"
+              "text": "sala.fabrica_moll.trapa.buida",
+              "sound": "reixa"
             }
           ]
         },
@@ -484,7 +489,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.llancadora.fugir1"
+              "text": "sala.fabrica_moll.llancadora.fugir1",
+              "sound": "motor"
             },
             {
               "who": "player",
@@ -537,7 +543,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_moll.llancadora.fugir1"
+              "text": "sala.fabrica_moll.llancadora.fugir1",
+              "sound": "motor"
             },
             {
               "who": "player",
@@ -739,7 +746,8 @@
             },
             {
               "who": "narrator",
-              "text": "sala.fabrica_moll.conducte.mig3"
+              "text": "sala.fabrica_moll.conducte.mig3",
+              "sound": "altaveu"
             }
           ],
           "effects": [

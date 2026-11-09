@@ -10,6 +10,13 @@
         "text": {
           "$ref": "#/definitions/TextKey"
         },
+        "scene": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/DialogueLineDef"
+          },
+          "description": "Escena entre el títol i el text final: línies (de narrador, títols o personatges) amb `if` opcional, per explicar què passa després segons el que s'ha fet. No hi ha efectes."
+        },
         "when": {
           "$ref": "#/definitions/Condition",
           "description": "Per triar-ne un automàticament amb `resolveEnding()`."
@@ -27,6 +34,58 @@
     "TextKey": {
       "type": "string",
       "description": "Clau d'un text a `game/locales/<idioma>/*.json`, p. ex. `\"dlg.pescador.hola\"`."
+    },
+    "DialogueLineDef": {
+      "type": "object",
+      "properties": {
+        "who": {
+          "$ref": "#/definitions/SpeakerId"
+        },
+        "text": {
+          "$ref": "#/definitions/TextKey"
+        },
+        "if": {
+          "$ref": "#/definitions/Condition"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Effect"
+          }
+        },
+        "sound": {
+          "$ref": "#/definitions/SoundId",
+          "description": "So que fa en dir la línia: un fitxer de `game/audio/sfx/` sense extensió. Pot dur variables entre claus, que es posen en acabar la interacció: `\"molla_{molla_tensio}\"` → `molla_3`."
+        }
+      },
+      "required": [
+        "who",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "SpeakerId": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/Id"
+        },
+        {
+          "type": "string",
+          "const": "player"
+        },
+        {
+          "type": "string",
+          "const": "narrator"
+        },
+        {
+          "type": "string",
+          "const": "title"
+        }
+      ],
+      "description": "`player` = el protagonista, `narrator` = text de narració, `title` = pantalla de títol (p. ex. el canvi d'acte): la pantalla es fon a negre, s'hi mostra el text i torna la imatge."
+    },
+    "Id": {
+      "type": "string"
     },
     "Condition": {
       "anyOf": [
@@ -340,9 +399,6 @@
         }
       ]
     },
-    "Id": {
-      "type": "string"
-    },
     "CompareOp": {
       "type": "string",
       "enum": [
@@ -369,6 +425,257 @@
         "completed",
         "failed"
       ]
+    },
+    "Effect": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "setFlag": {
+              "$ref": "#/definitions/Id"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "setFlag"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "setVar": {
+              "$ref": "#/definitions/Id"
+            },
+            "value": {
+              "$ref": "#/definitions/Scalar"
+            }
+          },
+          "required": [
+            "setVar",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "addVar": {
+              "$ref": "#/definitions/Id"
+            },
+            "amount": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "addVar",
+            "amount"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "giveItem": {
+              "$ref": "#/definitions/Id"
+            },
+            "who": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "giveItem"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "takeItem": {
+              "$ref": "#/definitions/Id"
+            },
+            "who": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "takeItem"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "remember": {
+              "type": "object",
+              "properties": {
+                "who": {
+                  "$ref": "#/definitions/Id"
+                },
+                "fact": {
+                  "$ref": "#/definitions/Id"
+                }
+              },
+              "required": [
+                "who",
+                "fact"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "remember"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "forget": {
+              "type": "object",
+              "properties": {
+                "who": {
+                  "$ref": "#/definitions/Id"
+                },
+                "fact": {
+                  "$ref": "#/definitions/Id"
+                }
+              },
+              "required": [
+                "who",
+                "fact"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "forget"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "relation": {
+              "type": "object",
+              "properties": {
+                "who": {
+                  "$ref": "#/definitions/Id"
+                },
+                "change": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "who",
+                "change"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "relation"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "startQuest": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "startQuest"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "completeObjective": {
+              "type": "object",
+              "properties": {
+                "quest": {
+                  "$ref": "#/definitions/Id"
+                },
+                "objective": {
+                  "$ref": "#/definitions/Id"
+                }
+              },
+              "required": [
+                "quest",
+                "objective"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "completeObjective"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "completeQuest": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "completeQuest"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "failQuest": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "failQuest"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "ending": {
+              "$ref": "#/definitions/Id"
+            }
+          },
+          "required": [
+            "ending"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "event": {
+              "type": "string"
+            },
+            "args": {
+              "type": "object",
+              "additionalProperties": {
+                "$ref": "#/definitions/Scalar"
+              }
+            }
+          },
+          "required": [
+            "event"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "SoundId": {
+      "type": "string",
+      "description": "Nom d'un so de `game/audio/sfx/` (sense extensió), amb `{variable}` opcionals."
     }
   },
   "type": "object",

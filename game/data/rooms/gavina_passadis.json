@@ -15,7 +15,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.cartell.agafar"
+              "text": "sala.gavina_passadis.cartell.agafar",
+              "sound": "paper"
             }
           ],
           "effects": [
@@ -218,7 +219,8 @@
             },
             {
               "who": "narrator",
-              "text": "nota_perduda.2.text"
+              "text": "nota_perduda.2.text",
+              "sound": "paper"
             },
             {
               "who": "player",

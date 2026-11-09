@@ -354,7 +354,8 @@
             {
               "giveItem": "imant_ferro9"
             }
-          ]
+          ],
+          "sound": "eina"
         },
         {
           "who": "cargol",
@@ -408,7 +409,8 @@
               "addVar": "formularis_arxivats",
               "amount": 1
             }
-          ]
+          ],
+          "sound": "eina"
         }
       ],
       "goto": "menu"
@@ -500,7 +502,8 @@
                 "fact": "diapaso_lliurat"
               }
             }
-          ]
+          ],
+          "sound": "eina"
         },
         {
           "who": "cargol",
@@ -565,7 +568,8 @@
               "addVar": "formularis_arxivats",
               "amount": 1
             }
-          ]
+          ],
+          "sound": "eina"
         }
       ],
       "goto": "menu"
@@ -598,7 +602,8 @@
             {
               "giveItem": "imant_ferro9"
             }
-          ]
+          ],
+          "sound": "eina"
         },
         {
           "who": "cargol",
@@ -625,7 +630,8 @@
               "addVar": "formularis_arxivats",
               "amount": 1
             }
-          ]
+          ],
+          "sound": "eina"
         }
       ],
       "goto": "menu"
@@ -654,7 +660,8 @@
             {
               "giveItem": "tub_ferro9"
             }
-          ]
+          ],
+          "sound": "eina"
         }
       ],
       "goto": "menu"
@@ -719,7 +726,8 @@
         },
         {
           "who": "cargol",
-          "text": "dlg.cargol.carnet_ok2"
+          "text": "dlg.cargol.carnet_ok2",
+          "sound": "segell"
         },
         {
           "who": "cargol",

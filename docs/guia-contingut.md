@@ -157,6 +157,11 @@ si en falta algun.
 
 Un `{ "event": "final" }` acaba el joc amb el final que toqui (`endings.json`).
 
+Cada final té un títol (`title`), una escena opcional (`scene`) i un text de tancament (`text`). L'escena és una
+llista de línies com les d'una interacció, amb `if` per explicar el que passa després segons la partida (p. ex.
+«En Mos surt de la presó» només si la Vet li va tornar la carta). A Benne es mostren sobre negre; si parla un
+personatge, surt amb el nom al davant.
+
 ## Personatges i memòria: `data/characters.json`
 
 ```json

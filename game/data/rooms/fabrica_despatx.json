@@ -168,7 +168,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_despatx.expedient.confessar1"
+              "text": "sala.fabrica_despatx.expedient.confessar1",
+              "sound": "escriure"
             },
             {
               "who": "player",
@@ -284,11 +285,13 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_despatx.llibre.falsificar1"
+              "text": "sala.fabrica_despatx.llibre.falsificar1",
+              "sound": "escriure"
             },
             {
               "who": "player",
-              "text": "sala.fabrica_despatx.llibre.falsificar2"
+              "text": "sala.fabrica_despatx.llibre.falsificar2",
+              "sound": "segell"
             }
           ],
           "effects": [

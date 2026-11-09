@@ -30,7 +30,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_magatzem.cargol.segell1"
+              "text": "sala.fabrica_magatzem.cargol.segell1",
+              "sound": "segell"
             },
             {
               "who": "cargol",
@@ -73,7 +74,8 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_magatzem.cargol.llima1"
+              "text": "sala.fabrica_magatzem.cargol.llima1",
+              "sound": "llima"
             },
             {
               "who": "cargol",

@@ -273,11 +273,13 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.reixa.fugir1"
+              "text": "sala.fabrica_cambra.reixa.fugir1",
+              "sound": "reixa"
             },
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.reixa.fugir2"
+              "text": "sala.fabrica_cambra.reixa.fugir2",
+              "sound": "conducte"
             }
           ],
           "goTo": "fabrica_moll"
@@ -304,7 +306,8 @@
             },
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.reixa.llimar2"
+              "text": "sala.fabrica_cambra.reixa.llimar2",
+              "sound": "conducte"
             },
             {
               "who": "player",

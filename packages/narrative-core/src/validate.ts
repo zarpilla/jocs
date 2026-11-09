@@ -260,6 +260,11 @@ export function validateContent(
     id(`endings.${eid}`, eid);
     text(`endings.${eid}.title`, e.title);
     text(`endings.${eid}.text`, e.text);
+    e.scene?.forEach((l, k) => {
+      if (!speakers.has(l.who)) err(`endings.${eid}.scene[${k}]`, `Qui parla? "${l.who}" no és cap personatge.`);
+      text(`endings.${eid}.scene[${k}]`, l.text);
+      cond(`endings.${eid}.scene[${k}].if`, l.if);
+    });
     cond(`endings.${eid}.when`, e.when);
   }
 
