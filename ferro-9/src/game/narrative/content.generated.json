@@ -2506,12 +2506,12 @@
                   },
                   {
                     "who": "capatas",
-                    "text": "sala.fabrica_calderes.capatas.plomall2"
+                    "text": "sala.fabrica_calderes.capatas.plomall2",
+                    "sound": "segell"
                   },
                   {
                     "who": "player",
-                    "text": "sala.fabrica_calderes.capatas.plomall3",
-                    "sound": "segell"
+                    "text": "sala.fabrica_calderes.capatas.plomall3"
                   }
                 ],
                 "effects": [
