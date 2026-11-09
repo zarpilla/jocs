@@ -3159,6 +3159,19 @@
               },
               {
                 "verb": "use",
+                "item": "imant_ferro9",
+                "if": {
+                  "flag": "porta_cella_oberta"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.imant_no"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
                 "item": "*",
                 "action": {
                   "name": "finestra.posar",
@@ -10325,6 +10338,10 @@
             {
               "hasItem": "imant_ferro9",
               "who": "vet"
+            },
+            {
+              "flag": "porta_cella_oberta",
+              "is": false
             }
           ]
         },
@@ -16872,6 +16889,7 @@
       "sala.gavina_cella.reixa.fugir1": "On vas? Atureu-la!",
       "sala.gavina_cella.reixa.fugir2": "Massa tard. Ja soc dins el conducte, seguint les fletxes de la I.",
       "sala.fabrica_cambra.cambra.diapaso_no": "Encara no sona com la molla. Si l'envio així, a la V. no li servirà de res.",
+      "sala.fabrica_cambra.cambra.imant_no": "Un altre imant per a la V.? Ja és fora de la cel·la. Me'l quedo, que aquí també hi ha panys M-3.",
       "sala.fabrica_cambra.cambra.tub_sol": "Si envio el tub sol, la llibreta amb les proves es queda aquí. Ha de ser tot en un sol enviament.",
       "sala.fabrica_cambra.reixa.fugir1": "Ara sí. Aparto la reixa, que surt com si res, i m'hi fico.",
       "sala.fabrica_cambra.reixa.fugir2": "Segueixo les meves pròpies fletxes fins al moll. Qui m'ho havia de dir.",

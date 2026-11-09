@@ -229,6 +229,19 @@
         },
         {
           "verb": "use",
+          "item": "imant_ferro9",
+          "if": {
+            "flag": "porta_cella_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.cambra.imant_no"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "*",
           "action": {
             "name": "finestra.posar",

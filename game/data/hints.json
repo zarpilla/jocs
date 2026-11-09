@@ -611,6 +611,10 @@
         {
           "hasItem": "imant_ferro9",
           "who": "vet"
+        },
+        {
+          "flag": "porta_cella_oberta",
+          "is": false
         }
       ]
     },

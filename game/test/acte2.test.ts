@@ -429,6 +429,18 @@ function robarPlanols(p: ReturnType<typeof partida>['p']) {
 }
 
 describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
+  it("l'imant dels plànols no es pot enviar a la Vet: ja és fora de la cel·la", () => {
+    const { p, n } = finsMotor();
+    p.switchTo('iri');
+    robarPlanols(p);
+    p.goTo('fabrica_calderes');
+    p.goTo('fabrica_cambra');
+    expect(texts(p.use('imant_ferro9', 'cambra'))).toContain('Ja és fora de la cel·la');
+    expect(p.inventory()).toContain('imant_ferro9');
+    p.switchTo('vet');
+    expect(n.activeHints()).not.toContain('vet_sortir');
+  });
+
   it("l'arxiu, la carta d'en Mos i els noms: fins al final de l'acte (sempre amb alguna pista)", () => {
     const { p, n } = finsMotor();
     // ── Vet: l'arxiu ──
