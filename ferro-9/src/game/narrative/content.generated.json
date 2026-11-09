@@ -27,7 +27,7 @@
       },
       "intro": "proleg_gavina",
       "switchWhen": {
-        "flag": "alarma_apagada"
+        "flag": "accident_cambra"
       },
       "cover": "portada"
     },
@@ -37,6 +37,7 @@
         "segell_agafat": false,
         "porta_cambra_oberta": false,
         "alarma_apagada": false,
+        "accident_cambra": false,
         "nota_vet_llegida": false,
         "nota_iri_escrita": false,
         "iri_sap_pany": false,
@@ -2921,11 +2922,8 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.fabrica_cambra.palanca.clau4"
-                  },
-                  {
-                    "who": "narrator",
-                    "text": "sala.fabrica_cambra.palanca.clau5"
+                    "text": "sala.fabrica_cambra.palanca.clau4",
+                    "sound": "cambra_posa"
                   }
                 ],
                 "effects": [
@@ -2938,16 +2936,6 @@
                   {
                     "setVar": "finestra_objecte_iri",
                     "value": "clau_anglesa"
-                  },
-                  {
-                    "setVar": "finestra_armada",
-                    "value": "iri"
-                  },
-                  {
-                    "event": "protagonista",
-                    "args": {
-                      "id": "vet"
-                    }
                   }
                 ]
               },
@@ -2995,6 +2983,59 @@
           "cambra": {
             "name": "sala.fabrica_cambra.cambra.nom",
             "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "alarma_apagada"
+                    },
+                    {
+                      "flag": "accident_cambra",
+                      "is": false
+                    },
+                    {
+                      "var": "finestra_objecte_iri",
+                      "op": "==",
+                      "value": "clau_anglesa"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.clau_dins"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "open"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "alarma_apagada"
+                    },
+                    {
+                      "flag": "accident_cambra",
+                      "is": false
+                    },
+                    {
+                      "var": "finestra_objecte_iri",
+                      "op": "==",
+                      "value": "clau_anglesa"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.cambra.deixar_clau"
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "if": {
@@ -3103,6 +3144,66 @@
           "boto": {
             "name": "sala.fabrica_cambra.boto.nom",
             "interactions": [
+              {
+                "verb": [
+                  "push",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "alarma_apagada"
+                    },
+                    {
+                      "flag": "accident_cambra",
+                      "is": false
+                    },
+                    {
+                      "var": "finestra_objecte_iri",
+                      "op": "==",
+                      "value": "clau_anglesa"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.boto.accident1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.boto.accident2",
+                    "sound": "cambra_arma"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.boto.accident3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.boto.accident4"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.fabrica_cambra.boto.accident5"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "accident_cambra"
+                  },
+                  {
+                    "setVar": "finestra_armada",
+                    "value": "iri"
+                  },
+                  {
+                    "event": "protagonista",
+                    "args": {
+                      "id": "vet"
+                    }
+                  }
+                ]
+              },
               {
                 "verb": "look",
                 "lines": [
@@ -9628,6 +9729,30 @@
           "pista.iri_alarma.3"
         ]
       },
+      "iri_boto": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "alarma_apagada"
+            },
+            {
+              "flag": "accident_cambra",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "accident_cambra"
+        },
+        "levels": [
+          "pista.iri_boto.1",
+          "pista.iri_boto.2"
+        ]
+      },
       "iri_esperar": {
         "priority": 2,
         "when": {
@@ -16003,6 +16128,8 @@
       "pista.iri_alarma.1": "L'alarma ve de la consola de la cambra.",
       "pista.iri_alarma.2": "La palanca està encallada. Cal fer palanca amb alguna cosa.",
       "pista.iri_alarma.3": "Fes servir la clau anglesa amb la palanca.",
+      "pista.iri_boto.1": "La clau és dins la cambra, i el botó vermell fa pampallugues.",
+      "pista.iri_boto.2": "Prem el botó vermell.",
       "pista.iri_esperar.1": "Aquí ja no puc fer res més. Què deu passar a l'altra banda del camp?",
       "pista.iri_esperar.2": "Canvia a la Vet.",
       "pista.vet_panell.1": "La paret vibra. Potser li he d'explicar qui mana.",
@@ -16303,10 +16430,16 @@
       "sala.fabrica_magatzem.benvinguda": "Bona nit, senyora Iri! Benvinguda al magatzem. Recordi: sense formulari, no hi ha material.",
       "sala.fabrica_magatzem.nom": "Magatzem d'eines",
       "sala.fabrica_cambra.palanca.clau1": "Faig palanca amb la clau anglesa...",
-      "sala.fabrica_cambra.palanca.clau2": "La palanca baixa de cop, la clau se m'escapa i cau dins la cambra!",
-      "sala.fabrica_cambra.palanca.clau3": "I el vidre s'ha tancat. Fantàstic. Almenys l'alarma ha parat.",
-      "sala.fabrica_cambra.palanca.clau4": "Ja la recuperaré demà. Ara mateix, el meu llit em reclama.",
-      "sala.fabrica_cambra.palanca.clau5": "Mentrestant, cent vint anys després...",
+      "sala.fabrica_cambra.palanca.clau2": "La palanca baixa de cop! L'alarma, per fi, para.",
+      "sala.fabrica_cambra.palanca.clau3": "Però ara la cambra brunzeix, i a la consola s'ha encès un botó vermell.",
+      "sala.fabrica_cambra.palanca.clau4": "I la clau anglesa vibra igual que la cambra. Curiós... La poso a dins, a veure què fa.",
+      "sala.fabrica_cambra.boto.accident1": "Ningú no ho ha d'autoritzar si ningú no ho veu. Premo el botó.",
+      "sala.fabrica_cambra.boto.accident2": "El vidre baixa de cop! La clau s'ha quedat a dins.",
+      "sala.fabrica_cambra.boto.accident3": "I ara no s'obre. Fantàstic.",
+      "sala.fabrica_cambra.boto.accident4": "Ja la recuperaré demà. Ara mateix, el meu llit em reclama.",
+      "sala.fabrica_cambra.boto.accident5": "Mentrestant, cent vint anys després...",
+      "sala.fabrica_cambra.cambra.clau_dins": "La clau anglesa és a dins, i la cambra brunzeix. El botó vermell fa pampallugues.",
+      "sala.fabrica_cambra.cambra.deixar_clau": "La deixo a dins una estona. Vull veure què passa.",
       "sala.fabrica_cambra.palanca.encallada": "Està encallada. Necessito fer palanca amb alguna cosa.",
       "sala.fabrica_cambra.palanca.look": "La palanca de la consola. Vibra com si tingués fred.",
       "sala.fabrica_cambra.palanca.baixada": "Ja està baixada. Millor no tocar-la més.",

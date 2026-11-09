@@ -59,7 +59,8 @@ function finsPanellReparat() {
   p.talk('cargol', 'clau');
   p.goTo('fabrica_calderes');
   p.use('clau_cambra', 'porta_cambra');
-  p.use('clau_anglesa', 'palanca'); // → canvia a la Vet
+  p.use('clau_anglesa', 'palanca');
+  p.do('push', 'boto'); // → canvia a la Vet
   p.do('push', 'panell');
   p.use('clau_anglesa', 'panell');
   p.use('clau_anglesa', 'panell');
@@ -113,8 +114,14 @@ describe('Ferro-9 · Acte 1', () => {
     p.use('clau_cambra', 'porta_cambra');
     expect(p.room).toBe('fabrica_cambra');
     expect(texts(p.do('pull', 'palanca'))).toContain('encallada');
-    const accident = p.use('clau_anglesa', 'palanca');
-    expect(texts(accident)).toContain('cau dins la cambra');
+    // La palanca para l'alarma, i l'Iri posa la clau dins la cambra per veure què fa.
+    expect(n.isHotspotVisible('fabrica_cambra', 'boto')).toBe(false);
+    expect(texts(p.use('clau_anglesa', 'palanca'))).toContain('a veure què fa');
+    expect(p.active).toBe('iri');
+    expect(texts(p.do('pickUp', 'cambra'))).toContain('La deixo a dins');
+    // El botó: el vidre baixa amb la clau a dins.
+    const accident = p.do('push', 'boto');
+    expect(texts(accident)).toContain('La clau s\'ha quedat a dins');
     expect(estatFinestra(n).armada).toBe('iri');
 
     // ── Canvi automàtic a la Vet ──
@@ -295,6 +302,7 @@ describe('Ferro-9 · Acte 1', () => {
     p.goTo('fabrica_calderes');
     p.use('clau_cambra', 'porta_cambra');
     p.use('clau_anglesa', 'palanca');
+    p.do('push', 'boto');
     p.do('push', 'panell');
     expect(texts(p.do('look', clau))).toContain('Aldaia · Ferro-9 · Lot 1');
   });
@@ -337,6 +345,7 @@ describe('Ferro-9 · Acte 1', () => {
     p.goTo('fabrica_calderes');
     p.use('clau_cambra', 'porta_cambra');
     p.use('clau_anglesa', 'palanca');
+    p.do('push', 'boto');
     p.do('push', 'panell');
     p.use('clau_anglesa', 'panell');
     p.use('clau_anglesa', 'panell');

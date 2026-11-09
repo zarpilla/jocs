@@ -29,11 +29,8 @@
             },
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.palanca.clau4"
-            },
-            {
-              "who": "narrator",
-              "text": "sala.fabrica_cambra.palanca.clau5"
+              "text": "sala.fabrica_cambra.palanca.clau4",
+              "sound": "cambra_posa"
             }
           ],
           "effects": [
@@ -46,16 +43,6 @@
             {
               "setVar": "finestra_objecte_iri",
               "value": "clau_anglesa"
-            },
-            {
-              "setVar": "finestra_armada",
-              "value": "iri"
-            },
-            {
-              "event": "protagonista",
-              "args": {
-                "id": "vet"
-              }
             }
           ]
         },
@@ -103,6 +90,59 @@
     "cambra": {
       "name": "sala.fabrica_cambra.cambra.nom",
       "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "alarma_apagada"
+              },
+              {
+                "flag": "accident_cambra",
+                "is": false
+              },
+              {
+                "var": "finestra_objecte_iri",
+                "op": "==",
+                "value": "clau_anglesa"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.cambra.clau_dins"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "alarma_apagada"
+              },
+              {
+                "flag": "accident_cambra",
+                "is": false
+              },
+              {
+                "var": "finestra_objecte_iri",
+                "op": "==",
+                "value": "clau_anglesa"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.cambra.deixar_clau"
+            }
+          ]
+        },
         {
           "verb": "look",
           "if": {
@@ -211,6 +251,66 @@
     "boto": {
       "name": "sala.fabrica_cambra.boto.nom",
       "interactions": [
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "alarma_apagada"
+              },
+              {
+                "flag": "accident_cambra",
+                "is": false
+              },
+              {
+                "var": "finestra_objecte_iri",
+                "op": "==",
+                "value": "clau_anglesa"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.boto.accident1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.boto.accident2",
+              "sound": "cambra_arma"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.boto.accident3"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.boto.accident4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_cambra.boto.accident5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "accident_cambra"
+            },
+            {
+              "setVar": "finestra_armada",
+              "value": "iri"
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
         {
           "verb": "look",
           "lines": [

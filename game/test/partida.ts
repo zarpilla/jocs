@@ -63,6 +63,7 @@ export function jugarActe1(p: Jugador) {
   p.goTo('fabrica_calderes');
   p.use('clau_cambra', 'porta_cambra');
   p.use('clau_anglesa', 'palanca');
+  p.do('push', 'boto');
   p.do('push', 'panell');
   p.use('clau_anglesa', 'panell');
   p.use('clau_anglesa', 'panell');

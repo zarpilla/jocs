@@ -83,6 +83,30 @@
       "pista.iri_alarma.3"
     ]
   },
+  "iri_boto": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "alarma_apagada"
+        },
+        {
+          "flag": "accident_cambra",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "accident_cambra"
+    },
+    "levels": [
+      "pista.iri_boto.1",
+      "pista.iri_boto.2"
+    ]
+  },
   "iri_esperar": {
     "priority": 2,
     "when": {
