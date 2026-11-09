@@ -47,6 +47,12 @@ function finsMida(checkHints = true, fins?: string) {
   p.goTo('fabrica_calderes');
   p.do('open', 'porta_moll');
   expect(p.room).toBe('fabrica_moll');
+
+  // ── Iri: abans de la biga, la marca del pilar 7 (sense gastar cap encesa) ──
+  expect(texts(p.do('pickUp', 'biga_acer'))).toContain('pilar 7');
+  p.do('pickUp', 'llima');
+  expect(texts(p.use('llima', 'pilar'))).toContain('rebut');
+  expect(n.flag('marca_pilar')).toBe(true);
   return s;
 }
 
@@ -83,6 +89,9 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
     expect(n.flag('comporta_oberta')).toBe(true);
     expect(n.state.quests.acte2!.objectives.comporta).toBe(true);
     expect(n.isHotspotVisible('gavina_hangar', 'llancadora')).toBe(true);
+    // En tornar a l'hangar, la Vet hi troba la marca de l'Iri: el passat ha canviat el present sense la finestra.
+    expect(n.flag('vet_ha_vist_marca')).toBe(true);
+    expect(texts(p.do('look', 'pilar'))).toContain('bústia');
     expect(n.getVar('sospita_brau')).toBe(1); // només la de l'Acte 1
     // Acte 1: 9 enceses. Aquí: la nota de la mida i els tres trams.
     expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3);
@@ -213,7 +222,6 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     expect(p.inventory()).toContain('diapaso');
     p.goTo('fabrica_calderes');
     p.do('open', 'porta_moll');
-    p.do('pickUp', 'llima');
     p.use('llima', item('diapaso'));
     expect(texts(p.use('diapaso', item('molla')))).toContain('més greu');
     expect(sounds(p.use('diapaso', item('molla')))).toEqual(['molla_diapaso_1']);
@@ -250,7 +258,6 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     demanarDiapaso(p);
     p.goTo('fabrica_calderes');
     p.do('open', 'porta_moll');
-    p.do('pickUp', 'llima');
     for (let i = 0; i < 2; i++) p.use('llima', item('diapaso'));
     expect(texts(p.use('llima', item('diapaso')))).toContain('tetera');
     expect(p.inventory()).toContain('diapaso_espatllat');
@@ -283,7 +290,6 @@ function finsDiapaso(fins = 'motor_engegat') {
   demanarDiapaso(p);
   p.goTo('fabrica_calderes');
   p.do('open', 'porta_moll');
-  p.do('pickUp', 'llima');
   for (let i = 0; i < 2; i++) p.use('llima', item('diapaso'));
   p.use('diapaso', item('molla'));
   p.goTo('fabrica_calderes');

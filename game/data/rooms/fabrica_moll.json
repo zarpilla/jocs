@@ -69,6 +69,47 @@
           "verb": "use",
           "item": "serra",
           "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.primer_marca"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.primer_marca"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "serra",
+          "if": {
             "flag": "iri_sap_mida"
           },
           "lines": [
@@ -164,6 +205,26 @@
     "biga_ferro9": {
       "name": "sala.fabrica_moll.biga_ferro9.nom",
       "interactions": [
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.primer_marca"
+            }
+          ]
+        },
         {
           "verb": "pickUp",
           "if": {
@@ -608,6 +669,105 @@
           ]
         }
       ]
+    },
+    "pilar": {
+      "name": "sala.fabrica_moll.pilar.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "llima",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.gravar1",
+              "sound": "llima"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.gravar2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "marca_pilar"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llima",
+          "if": {
+            "flag": "marca_pilar"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.ja_gravat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llima",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.res_a_dir"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "marca_pilar"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.look_marca"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "iri_sap_mida"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.look_mida"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "marca_pilar": {
+      "visibleIf": {
+        "flag": "marca_pilar"
+      }
     }
   }
 }

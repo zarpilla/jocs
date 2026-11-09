@@ -135,6 +135,38 @@
         "x": 259,
         "y": 161
       }
+    },
+    {
+      "id": "reixa",
+      "active": true,
+      "description": "reixa",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 335,
+          "y": 114
+        },
+        {
+          "x": 393,
+          "y": 114
+        },
+        {
+          "x": 393,
+          "y": 150
+        },
+        {
+          "x": 335,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 363,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 364,
+        "y": 150
+      }
     }
   ],
   "points": [],
@@ -189,6 +221,17 @@
         "y": 104
       },
       "description": "botó de sincronia"
+    },
+    {
+      "id": "reixa_llimada",
+      "tag": "reixa_llimada",
+      "animations": {
+        "reixa_llimada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

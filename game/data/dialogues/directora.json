@@ -58,6 +58,17 @@
           "once": true
         },
         {
+          "id": "pacte",
+          "text": "dlg.directora.opt.pacte",
+          "next": "pacte",
+          "once": true,
+          "effects": [
+            {
+              "setFlag": "pacte_acceptat"
+            }
+          ]
+        },
+        {
           "id": "no",
           "text": "dlg.directora.opt.no",
           "next": "no"
@@ -116,6 +127,19 @@
           "text": "dlg.directora.adeu"
         }
       ]
+    },
+    "pacte": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.pacte1"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.pacte2"
+        }
+      ],
+      "goto": "menu"
     }
   }
 }

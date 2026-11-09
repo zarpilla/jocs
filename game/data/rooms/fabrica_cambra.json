@@ -222,6 +222,135 @@
           "goTo": "fabrica_calderes"
         }
       ]
+    },
+    "reixa": {
+      "name": "sala.fabrica_cambra.reixa.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "llima",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_reixa"
+              },
+              {
+                "flag": "reixa_preparada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.llimar1",
+              "sound": "llima"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.llimar2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.llimar3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reixa_preparada"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llima",
+          "if": {
+            "flag": "reixa_preparada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.ja_llimada"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llima",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.per_que"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "reixa_preparada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.look_llimada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "iri_sap_reixa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.look_mapa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull",
+            "pickUp",
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "reixa_preparada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.encara_no"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull",
+            "pickUp",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.cargolada"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [
@@ -264,6 +393,35 @@
       "goTo": "fabrica_calderes"
     },
     {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "brau_distret"
+          },
+          {
+            "flag": "iri_a_la_cambra",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_cambra.tornar1"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_cambra.tornar2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_a_la_cambra"
+        }
+      ]
+    },
+    {
       "id": "primera",
       "verb": "*",
       "once": true,
@@ -293,5 +451,12 @@
         }
       ]
     }
-  ]
+  ],
+  "decor": {
+    "reixa_llimada": {
+      "visibleIf": {
+        "flag": "reixa_preparada"
+      }
+    }
+  }
 }

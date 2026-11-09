@@ -231,6 +231,39 @@
         "x": 107,
         "y": 156
       }
+    },
+    {
+      "id": "sortida_conducte",
+      "active": true,
+      "description": "sortida del conducte",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 19,
+          "y": 170
+        },
+        {
+          "x": 103,
+          "y": 170
+        },
+        {
+          "x": 103,
+          "y": 189
+        },
+        {
+          "x": 19,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 48,
+        "y": 195
+      },
+      "lookAtPoint": {
+        "x": 62,
+        "y": 190
+      },
+      "defaultVerb": "open"
     }
   ],
   "points": [],
@@ -387,6 +420,17 @@
         "y": 111
       },
       "description": "pany sònic"
+    },
+    {
+      "id": "marca_pilar",
+      "tag": "marca_pilar",
+      "animations": {
+        "marca_pilar": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

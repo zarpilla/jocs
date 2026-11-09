@@ -220,6 +220,24 @@ WOOD = ((70, 46, 30), (112, 76, 48), (146, 104, 66))
 
 # ─── Portes ─────────────────────────────────────────────────────────────────
 
+def wall_vent(c, x0, y0, x1, y1, frame, bar, bolt):
+    """Reixa de ventilació a la paret, arran de terra, amb un cargol a cada cantonada."""
+    c.rect(x0, y0, x1, y1, (14, 14, 18))
+    outline_rect(c, x0, y0, x1, y1, frame)
+    for x in range(x0 + 4, x1 - 2, 5):
+        c.rect(x, y0 + 2, x + 1, y1 - 2, bar)
+    for x, y in ((x0 + 1, y0 + 1), (x1 - 2, y0 + 1), (x0 + 1, y1 - 2), (x1 - 2, y1 - 2)):
+        c.rect(x, y, x + 1, y + 1, bolt)
+
+
+def carved_mark(c, x, y, col):
+    """La marca de l'Iri: una I. i una clau anglesa, gravades."""
+    c.rect(x, y, x + 1, y + 7, col)
+    c.px(x + 3, y + 7, col)
+    c.line([(x + 6, y + 8), (x + 11, y + 1)], col)
+    c.ellipse(x + 9, y - 2, x + 14, y + 3, None, outline=col)
+
+
 def factory_door(c, x0, y0, x1, y1, iron=False, sign=False):
     frame = (52, 36, 26)
     c.rect(x0 - 2, y0 - 3, x1 + 2, y1, frame)
@@ -489,7 +507,15 @@ def cambra_bg(c):
         c.line([(x, 44), (x + 4, 32)], (40, 40, 40))
     factory_door(c, 8, 50, 40, 112, iron=True)
     pipe_v(c, 300, 10, 110, 3, COPPER)
+    wall_vent(c, 248, 86, 286, 108, IRON[2], IRON[1], (200, 204, 212))   # reixa del conducte de servei
     vignette(c)
+
+
+def cambra_reixa_llimada(c):
+    """Els cargols de la reixa, llimats (llueixen) i una ratlla de llima."""
+    for x, y in ((249, 87), (284, 87), (249, 106), (284, 106)):
+        c.rect(x, y, x + 1, y + 1, (255, 250, 220))
+    c.line([(252, 110), (282, 110)], (170, 170, 176))
 
 
 def cambra_boto(c):
@@ -505,11 +531,12 @@ CAMBRA = {
         'palanca': {'rect': (112, 40, 132, 68), 'walk': (122, 126)},
         'cambra': {'rect': (148, 10, 232, 118), 'walk': (190, 128)},
         'boto': {'rect': (84, 62, 102, 76), 'walk': (94, 126)},
+        'reixa': {'rect': (246, 84, 288, 110), 'walk': (266, 128)},
     },
     'spawns': {'iri': (276, 138)},
     'walkable': [(14, 120), (338, 120), (346, 148), (6, 148)],
     'bg': cambra_bg,
-    'props': {'boto': cambra_boto},
+    'props': {'boto': cambra_boto, 'reixa_llimada': cambra_reixa_llimada},
 }
 
 
@@ -571,6 +598,10 @@ def cella_bg(c):
     c.rect(lx0 + 4, 96, lx0 + 20, 99, (200, 180, 120))                # fullet sota el coixí... a sota
 
     cell_door(c, 8, 38, 46, 112)
+    wall_vent(c, 62, 84, 100, 108, (120, 74, 52), (110, 64, 44), (90, 52, 36))   # reixa del conducte, rovellada
+    rnd = random.Random(42)
+    for _ in range(26):
+        c.px(63 + rnd.randint(0, 36), 85 + rnd.randint(0, 22), rnd.choice([(150, 90, 56), (130, 74, 44)]))
     vignette(c, 110)
 
 
@@ -629,6 +660,17 @@ def _cella_consola(c):
     c.line([(218, 106), (234, 106)], (90, 56, 40))
 
 
+def cella_reixa_oberta(c):
+    """La reixa, treta i recolzada a la paret; a dins, la marca de l'Iri i una fletxa."""
+    c.rect(62, 84, 100, 108, (6, 6, 8))
+    carved_mark(c, 70, 92, (150, 140, 120))
+    c.line([(86, 98), (96, 98)], (150, 140, 120))
+    c.line([(93, 95), (96, 98), (93, 101)], (150, 140, 120))
+    c.d.polygon([(102, 112), (124, 112), (120, 90), (104, 90)], fill=(120, 74, 52))
+    for x in range(107, 120, 4):
+        c.line([(x, 92), (x, 110)], (90, 52, 36))
+
+
 def cella_panell_obert(c):
     _cella_consola(c)
 
@@ -656,13 +698,14 @@ CELLA = {
         'avis': {'rect': (54, 126, 76, 140), 'walk': (82, 140)},
         'escarabat': {'rect': (88, 114, 104, 128), 'walk': (110, 134)},
         'safata': {'rect': (232, 120, 264, 138), 'walk': (226, 142)},
+        'reixa': {'rect': (60, 82, 102, 110), 'walk': (80, 128)},
     },
     'spawns': {'vet': (150, 138), 'mos': (306, 140), 'mare': (130, 30), 'directora': (214, 138)},
     'walkable': [(14, 118), (266, 118), (268, 128), (338, 130), (346, 148), (6, 148)],
     'bg': cella_bg,
     'props': {'avis': cella_avis, 'escarabat': cella_escarabat, 'safata': cella_safata,
               'panell_afluixat': cella_panell_afluixat, 'panell_obert': cella_panell_obert,
-              'panell_reparat': cella_panell_reparat},
+              'panell_reparat': cella_panell_reparat, 'reixa_oberta': cella_reixa_oberta},
 }
 
 
@@ -858,6 +901,10 @@ def moll_bg(c):
     vignette(c)
 
 
+def moll_marca_pilar(c):
+    carved_mark(c, 185, 60, (70, 40, 28))
+
+
 def moll_biga_acer(c):
     c.rect(56, 94, 156, 100, (150, 156, 164))
     c.rect(56, 94, 156, 95, (196, 202, 210))
@@ -898,11 +945,13 @@ MOLL = {
         'conducte': {'rect': (158, 20, 180, 112), 'walk': (168, 130)},
         'comporta': {'rect': (244, 8, 350, 40), 'walk': (296, 132)},
         'llancadora': {'rect': (236, 42, 346, 110), 'walk': (264, 136)},
+        'pilar': {'rect': (182, 8, 196, 108), 'walk': (189, 128)},
     },
     'spawns': {'iri': (40, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': moll_bg,
-    'props': {'biga_acer': moll_biga_acer, 'biga_ferro9': moll_biga_ferro9, 'serra': moll_serra, 'llima': moll_llima},
+    'props': {'biga_acer': moll_biga_acer, 'biga_ferro9': moll_biga_ferro9, 'serra': moll_serra, 'llima': moll_llima,
+              'marca_pilar': moll_marca_pilar},
 }
 
 
@@ -997,6 +1046,10 @@ def hangar_aigua(c):
         c.line([(144, 96 + i * 2), (152 + i * 3, 104 + i * 4)], (170, 210, 240))
 
 
+def hangar_marca_pilar(c):
+    carved_mark(c, 113, 60, (40, 28, 24))
+
+
 def hangar_caixa(c):
     c.rect(60, 110, 86, 120, WOOD[1])
     c.rect(60, 110, 86, 111, WOOD[2])
@@ -1017,12 +1070,13 @@ HANGAR = {
         'conducte': {'rect': (130, 10, 152, 112), 'walk': (140, 128)},
         'escala': {'rect': (56, 74, 100, 114), 'walk': (78, 130)},
         'caixa_flotant': {'rect': (58, 106, 90, 124), 'walk': (74, 136)},
+        'sortida_conducte': {'rect': grate_rect(*HANGAR_GRATES[0]), 'walk': (35, 143)},
     },
     'spawns': {'vet': (70, 138)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': hangar_bg,
     'props': {'llancadora': hangar_llancadora, 'porta_llancadora': hangar_porta_llancadora,
-              'aigua': hangar_aigua, 'caixa_flotant': hangar_caixa},
+              'aigua': hangar_aigua, 'caixa_flotant': hangar_caixa, 'marca_pilar': hangar_marca_pilar},
 }
 
 

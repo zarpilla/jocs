@@ -207,6 +207,39 @@
         "x": 337,
         "y": 79
       }
+    },
+    {
+      "id": "reixa",
+      "active": true,
+      "description": "reixa",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 81,
+          "y": 111
+        },
+        {
+          "x": 139,
+          "y": 111
+        },
+        {
+          "x": 139,
+          "y": 150
+        },
+        {
+          "x": 81,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 109,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 111,
+        "y": 150
+      },
+      "defaultVerb": "open"
     }
   ],
   "points": [],
@@ -371,6 +404,17 @@
         "panell_reparat": {}
       },
       "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "reixa_oberta",
+      "tag": "reixa_oberta",
+      "animations": {
+        "reixa_oberta": {}
+      },
+      "zIndex": 4,
       "visible": false,
       "alpha": 1,
       "clickable": false

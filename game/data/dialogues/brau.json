@@ -55,6 +55,19 @@
           "once": true
         },
         {
+          "id": "enganyar",
+          "text": "dlg.brau.opt.enganyar",
+          "next": "enganyar",
+          "once": true,
+          "if": {
+            "chosen": {
+              "dialogue": "brau",
+              "node": "menu",
+              "choice": "que_passa"
+            }
+          }
+        },
+        {
           "id": "adeu",
           "text": "dlg.brau.opt.adeu",
           "next": "adeu",
@@ -102,6 +115,23 @@
         {
           "who": "brau",
           "text": "dlg.brau.adeu"
+        }
+      ]
+    },
+    "enganyar": {
+      "lines": [
+        {
+          "who": "brau",
+          "text": "dlg.brau.enganyar1"
+        },
+        {
+          "who": "brau",
+          "text": "dlg.brau.enganyar2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "brau_distret"
         }
       ]
     }

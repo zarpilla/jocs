@@ -124,6 +124,8 @@ export function jugarActe2(p: Jugador) {
   p.do('look', item('nota_mida'));
   p.goTo('fabrica_calderes');
   p.do('open', 'porta_moll');
+  p.do('pickUp', 'llima');
+  p.use('llima', 'pilar');
   p.do('pickUp', 'serra');
   p.use('serra', 'biga_acer');
   p.goTo('fabrica_calderes');
@@ -159,7 +161,6 @@ export function jugarActe2(p: Jugador) {
   p.talk('cargol', 'diapaso');
   p.goTo('fabrica_calderes');
   p.do('open', 'porta_moll');
-  p.do('pickUp', 'llima');
   p.use('llima', item('diapaso'));
   p.use('llima', item('diapaso'));
   p.use('diapaso', item('molla'));

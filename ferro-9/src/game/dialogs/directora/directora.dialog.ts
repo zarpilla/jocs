@@ -14,6 +14,10 @@ options.menu__iri.onChoose(() => {
   chooseNarrativeOption('directora', dialog, 'menu', 'iri')
 })
 
+options.menu__pacte.onChoose(() => {
+  chooseNarrativeOption('directora', dialog, 'menu', 'pacte')
+})
+
 options.menu__no.onChoose(() => {
   chooseNarrativeOption('directora', dialog, 'menu', 'no')
 })

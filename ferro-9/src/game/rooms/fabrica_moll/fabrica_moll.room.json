@@ -199,6 +199,38 @@
         "x": 231,
         "y": 153
       }
+    },
+    {
+      "id": "pilar",
+      "active": true,
+      "description": "pilar",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 248,
+          "y": 10
+        },
+        {
+          "x": 267,
+          "y": 10
+        },
+        {
+          "x": 267,
+          "y": 147
+        },
+        {
+          "x": 248,
+          "y": 147
+        }
+      ],
+      "walkToPoint": {
+        "x": 258,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 258,
+        "y": 147
+      }
     }
   ],
   "points": [],
@@ -373,6 +405,17 @@
         "y": 109
       },
       "description": "llima"
+    },
+    {
+      "id": "marca_pilar",
+      "tag": "marca_pilar",
+      "animations": {
+        "marca_pilar": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

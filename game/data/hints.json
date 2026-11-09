@@ -899,6 +899,9 @@
           "flag": "iri_sap_mida"
         },
         {
+          "flag": "marca_pilar"
+        },
+        {
           "flag": "comporta_oberta",
           "is": false
         },
@@ -2794,6 +2797,375 @@
     "levels": [
       "pista.iri_brau.1",
       "pista.iri_brau.2"
+    ]
+  },
+  "iri_marca": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "iri_sap_mida"
+        },
+        {
+          "flag": "marca_pilar",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "marca_pilar"
+    },
+    "levels": [
+      "pista.iri_marca.1",
+      "pista.iri_marca.2",
+      "pista.iri_marca.3"
+    ]
+  },
+  "vet_reixa": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "vet_sap_conducte"
+        },
+        {
+          "flag": "fullet_memoria_agafat"
+        },
+        {
+          "flag": "reixa_mirada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reixa_mirada"
+    },
+    "levels": [
+      "pista.vet_reixa.1",
+      "pista.vet_reixa.2"
+    ]
+  },
+  "vet_dibuixar": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "reixa_mirada"
+        },
+        {
+          "flag": "mapa_fuga_escrit",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "mapa_fuga_escrit"
+    },
+    "levels": [
+      "pista.vet_dibuixar.1",
+      "pista.vet_dibuixar.2"
+    ]
+  },
+  "vet_pacte": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "mapa_fuga",
+          "who": "vet"
+        },
+        {
+          "flag": "pacte_acceptat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pacte_acceptat"
+    },
+    "levels": [
+      "pista.vet_pacte.1",
+      "pista.vet_pacte.2"
+    ]
+  },
+  "vet_panell_buit": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "mapa_fuga",
+          "who": "vet"
+        },
+        {
+          "flag": "pacte_acceptat"
+        },
+        {
+          "flag": "iri_a_la_cambra",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_a_la_cambra"
+    },
+    "levels": [
+      "pista.vet_panell_buit.1",
+      "pista.vet_panell_buit.2"
+    ]
+  },
+  "vet_enviar_mapa": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "mapa_fuga",
+          "who": "vet"
+        },
+        {
+          "flag": "pacte_acceptat"
+        },
+        {
+          "flag": "iri_a_la_cambra"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "mapa_fuga",
+        "who": "vet"
+      }
+    },
+    "levels": [
+      "pista.vet_enviar_mapa.1",
+      "pista.vet_enviar_mapa.2"
+    ]
+  },
+  "iri_enganyar": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "iri_descoberta"
+        },
+        {
+          "flag": "brau_distret",
+          "is": false
+        },
+        {
+          "seen": {
+            "dialogue": "brau",
+            "node": "primera"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "brau_distret"
+    },
+    "levels": [
+      "pista.iri_enganyar.1",
+      "pista.iri_enganyar.2",
+      "pista.iri_enganyar.3"
+    ]
+  },
+  "iri_tornar_cambra": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "brau_distret"
+        },
+        {
+          "flag": "iri_a_la_cambra",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_a_la_cambra"
+    },
+    "levels": [
+      "pista.iri_tornar_cambra.1",
+      "pista.iri_tornar_cambra.2"
+    ]
+  },
+  "iri_esperar_mapa": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "iri_a_la_cambra"
+        },
+        {
+          "not": {
+            "hasItem": "mapa_fuga",
+            "who": "iri"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "mapa_fuga",
+      "who": "iri"
+    },
+    "levels": [
+      "pista.iri_esperar_mapa.1",
+      "pista.iri_esperar_mapa.2"
+    ]
+  },
+  "iri_llegir_mapa": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "mapa_fuga",
+          "who": "iri"
+        },
+        {
+          "flag": "iri_sap_reixa",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_sap_reixa"
+    },
+    "levels": [
+      "pista.iri_llegir_mapa.1",
+      "pista.iri_llegir_mapa.2"
+    ]
+  },
+  "iri_reixa": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "iri_sap_reixa"
+        },
+        {
+          "flag": "reixa_preparada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reixa_preparada"
+    },
+    "levels": [
+      "pista.iri_reixa.1",
+      "pista.iri_reixa.2",
+      "pista.iri_reixa.3"
+    ]
+  },
+  "iri_esperar_reixa": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "reixa_preparada"
+        },
+        {
+          "flag": "reixa_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reixa_oberta"
+    },
+    "levels": [
+      "pista.iri_esperar_reixa.1",
+      "pista.iri_esperar_reixa.2"
+    ]
+  },
+  "vet_esperar_reixa": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "not": {
+            "hasItem": "mapa_fuga",
+            "who": "vet"
+          }
+        },
+        {
+          "flag": "mapa_fuga_escrit"
+        },
+        {
+          "flag": "reixa_preparada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reixa_preparada"
+    },
+    "levels": [
+      "pista.vet_esperar_reixa.1",
+      "pista.vet_esperar_reixa.2"
+    ]
+  },
+  "vet_obrir_reixa": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "reixa_preparada"
+        },
+        {
+          "flag": "reixa_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reixa_oberta"
+    },
+    "levels": [
+      "pista.vet_obrir_reixa.1",
+      "pista.vet_obrir_reixa.2"
     ]
   }
 }

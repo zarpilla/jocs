@@ -311,7 +311,15 @@
           "verb": "use",
           "item": "*",
           "if": {
-            "flag": "iri_descoberta"
+            "all": [
+              {
+                "flag": "iri_descoberta"
+              },
+              {
+                "flag": "brau_distret",
+                "is": false
+              }
+            ]
           },
           "lines": [
             {
@@ -329,7 +337,15 @@
             "pull"
           ],
           "if": {
-            "flag": "iri_descoberta"
+            "all": [
+              {
+                "flag": "iri_descoberta"
+              },
+              {
+                "flag": "brau_distret",
+                "is": false
+              }
+            ]
           },
           "lines": [
             {
@@ -428,7 +444,15 @@
         }
       ],
       "visibleIf": {
-        "flag": "iri_descoberta"
+        "all": [
+          {
+            "flag": "iri_descoberta"
+          },
+          {
+            "flag": "brau_distret",
+            "is": false
+          }
+        ]
       }
     }
   },

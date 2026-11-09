@@ -197,11 +197,18 @@ a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 
 1. La Vet troba la comporta encallada, amb l'encaix buit. Ara que la cambra de l'Iri sincronitza sola, recupera
    la clau anglesa del panell i la fa servir de cinta mètrica: **sis claus angleses i mitja**.
-2. Arrenca un tros del cartell del reciclatge, hi escriu la mida amb el llapis d'ulls i l'envia.
+2. Arrenca un tros del cartell del reciclatge, hi escriu la mida amb el llapis d'ulls i l'envia. Per dir on és,
+   hi afegeix que té al costat un pilar amb un 7 pintat.
 3. L'Iri ho tradueix: una clau Lot 1 fa trenta centímetres, uns dos metres de biga.
+3b. **La marca del pilar 7.** Al moll de l'Iri també hi ha un pilar amb un 7 pintat: la V. és al seu moll. Abans de
+   posar-se amb la biga, l'Iri li vol dir que ho ha rebut, però queden poques enceses i no en vol gastar una per dir
+   «d'acord». Si és el mateix lloc, no cal: amb la llima, grava al pilar una I. i una clau anglesa. Quan la Vet torna
+   a l'hangar, té mal de cap i hi troba la marca, que abans no hi era: **el primer cop que el passat canvia el
+   present sense passar per la finestra**. Ensenya la regla que fan servir la vàlvula (Acte 2) i la reixa del conducte
+   (Acte 3), i dona sentit al camí llarg: el moll és una bústia que triga cent vint anys.
 4. **Per peces:** serra la biga d'acer del moll en tres trams de menys de 2 kg i els envia d'un en un; la Vet els
    cargola.
-5. **Camí llarg:** amaga una biga a la trapa dels fonaments, al costat del pilar 7, i escriu a la Vet on mirar.
+5. **Camí llarg:** amaga una biga a la trapa dels fonaments, al costat del pilar de la marca, i escriu a la Vet on mirar.
    La Vet aixeca la placa del terra del costat del pilar. Si era d'acer, hi troba pols de rovell; l'envia a l'Iri,
    que ho entén, torna a pujar la biga (al passat encara és nova) i pot provar-ho a trossos. Si era la biga de
    ferro-9 reservada per a la caldera 4, arriba perfecta, però robar-la puja la sospita de l'Inspector Brau.
@@ -326,16 +333,26 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
 **El pla (cada protagonista salva l'altra):**
 
 1. **Primera encesa, de la Vet a l'Iri: el mapa de fuga.** La Vet coneix la presó, que està feta damunt la
-   fàbrica, i sap per on es pot arribar a l'hangar sense passar per on vigila el Director: un conducte que
-   al passat és de servei i al present és un passadís. Hi dibuixa la ruta al dors d'un fullet de la Sala de
+   fàbrica, i sap per on es pot arribar a l'hangar sense passar per on vigila el Director: el conducte de
+   servei de l'antiga fàbrica, que comença a la cambra de l'Iri (al present, la cel·la 9) i baixa fins al moll. Hi dibuixa la ruta al dors d'un fullet de la Sala de
    la Memòria.
 2. **La Vet ha d'arribar a la cambra**, que ara té la Directora. Trencaclosques: **fa veure que accepta el
    seu pacte** ("Ho faré per vosaltres") per poder entrar-hi. La Directora no sap que l'Iri també ho sap.
+   Envia el mapa dient que és propaganda («que vegi que m'he reformat»), i la Directora fa tancar la cel·la.
+2b. **La reixa del conducte: l'Iri obre el camí de la Vet sense la finestra.** El conducte de servei comença a la
+   cambra de l'Iri, que al present és la cel·la 9. Al present, la reixa és soldada per cent vint anys de rovell, i
+   la Vet hi ha de sortir tant com l'Iri. Per això el mapa porta una postdata: «fes que s'obri d'aquí a cent vint
+   anys». L'Iri no pot fer res per la finestra (el Brau li ha pres la cambra i n'ha de tornar a entrar d'amagat),
+   però pot canviar el món: amb la llima, deixa els cargols de la reixa a punt de rompre's, sense res que el rovell
+   pugui soldar, i grava una I. i una fletxa a cada revolt del conducte. Reajust: a la cel·la, la Vet hi troba la
+   reixa amb els cargols serrats, i a dins, la mateixa marca que al pilar 7. **Cadascuna obre el camí de l'altra**:
+   la Vet li dona la ruta, l'Iri la hi deixa oberta, i les dues fugen pel mateix conducte amb cent vint anys de
+   diferència.
 3. **Segona encesa, de l'Iri a la Vet: l'últim component.** Només pot passar un objecte, però l'Iri també vol
    enviar la llibreta amb les proves. Trencaclosques d'inventari: **enrotlla la llibreta dins el tub de la
    vàlvula**, i així és un sol objecte de menys de 2 kg.
 4. L'Iri espera la sincronia de la Vet (un camp armat espera, i ningú no s'hi ha de quedar) i **fuig per la ruta
-   de la Vet**. La Vet munta la llançadora i fuig.
+   de la Vet**. La Vet surt de la cel·la tancada per la reixa que l'Iri li va deixar oberta, munta la llançadora i fuig.
 
 **El gir final:** la "desaparició" de l'Iri que explica el museu **va ser, de fet, la seva fugida**. La
 història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia ajudada.
@@ -349,8 +366,11 @@ història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia 
    accident»), la foto del torn de nit amb la cara de l'Iri ratllada (al costat, la Mira somrient si es va
    salvar, o un forat), la vitrina buida de la «clau anglesa Lot 1 (desapareguda)», el mapa amb el **conducte de
    servei** de l'antiga fàbrica i el fullet on dibuixarà la ruta.
-2. **El mapa de fuga**: la Vet dibuixa la ruta al fullet i fa veure que accepta el pacte de la Directora per
-   arribar al panell; l'Iri distreu el Brau per tornar a la seva cambra. Primera encesa.
+2. **El mapa de fuga i la reixa**: fet. La Vet troba la reixa rovellada de la cel·la, dibuixa la ruta al fullet
+   (amb la postdata de la reixa) i fa veure que accepta el pacte de la Directora per arribar al panell; el panell no
+   vibra si l'Iri no és a la seva cambra. L'Iri distreu el Brau («he vist algú al magatzem del ferro-9») i hi torna.
+   Primera encesa. L'Iri llima els cargols de la reixa i grava les fletxes. Reajust: la Vet obre la reixa i el
+   conducte la porta fins a l'hangar, i en torna (la cel·la és tancada).
 3. **L'últim component**: la Directora ha desmuntat el tub de la vàlvula de la llançadora; l'Iri en fa un de
    ferro-9 i hi enrotlla la llibreta amb les proves. Segona encesa. L'Iri fuig pel conducte; la Vet, amb la nau.
 4. **Finals**: el Cargol del present i la seva memòria, la Guàrdia Osset i els tres finals.

@@ -125,6 +125,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "gavina_hangar 6.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -133,7 +154,7 @@
     "image": "gavina_hangar.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2880,
+      "w": 3360,
       "h": 270
     },
     "scale": "1",
@@ -177,6 +198,13 @@
         "name": "pany",
         "from": 5,
         "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "marca_pilar",
+        "from": 6,
+        "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       }

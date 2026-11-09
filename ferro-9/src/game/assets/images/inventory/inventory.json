@@ -881,6 +881,27 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 42.aseprite": {
+      "frame": {
+        "x": 2058,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -889,7 +910,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2058,
+      "w": 2107,
       "h": 27
     },
     "scale": "1",
@@ -1185,6 +1206,13 @@
         "name": "fullet_memoria",
         "from": 41,
         "to": 41,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mapa_fuga",
+        "from": 42,
+        "to": 42,
         "direction": "forward",
         "color": "#000000ff"
       }

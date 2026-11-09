@@ -18,6 +18,10 @@ options.menu__director.onChoose(() => {
   chooseNarrativeOption('brau', dialog, 'menu', 'director')
 })
 
+options.menu__enganyar.onChoose(() => {
+  chooseNarrativeOption('brau', dialog, 'menu', 'enganyar')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('brau', dialog, 'menu', 'adeu')
 })

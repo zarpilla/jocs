@@ -203,6 +203,21 @@
         }
       },
       {
+        "id": "mapa",
+        "text": "mis.acte3.obj.mapa",
+        "completeWhen": {
+          "hasItem": "mapa_fuga",
+          "who": "iri"
+        }
+      },
+      {
+        "id": "reixa",
+        "text": "mis.acte3.obj.reixa",
+        "completeWhen": {
+          "flag": "reixa_preparada"
+        }
+      },
+      {
         "id": "fugida",
         "text": "mis.acte3.obj.fugida",
         "completeWhen": {

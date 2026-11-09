@@ -88,6 +88,22 @@
             "use",
             "walkTo"
           ],
+          "if": {
+            "flag": "cella_tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.porta_cella.tancada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
           "goTo": "gavina_cella"
         }
       ]

@@ -376,6 +376,58 @@
     "interactions": [
       {
         "verb": "use",
+        "item": "fullet_memoria",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_sap_conducte"
+            },
+            {
+              "flag": "reixa_mirada"
+            },
+            {
+              "flag": "mapa_fuga_escrit",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "mapa_fuga_escrit"
+          },
+          {
+            "takeItem": "fullet_memoria"
+          },
+          {
+            "giveItem": "mapa_fuga"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_memoria",
+        "if": {
+          "flag": "vet_sap_conducte"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa_on"
+          }
+        ]
+      },
+      {
+        "verb": "use",
         "item": "tros_cartell",
         "if": {
           "all": [
@@ -750,6 +802,14 @@
           {
             "who": "player",
             "text": "obj.nota_mida.iri2"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri3"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri4"
           }
         ],
         "effects": [
@@ -1654,5 +1714,52 @@
     "props": {
       "pes": 0.01
     }
+  },
+  "mapa_fuga": {
+    "name": "obj.mapa_fuga.nom",
+    "description": "obj.mapa_fuga.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri2"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri3"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_reixa"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.text"
+          }
+        ]
+      }
+    ]
   }
 }

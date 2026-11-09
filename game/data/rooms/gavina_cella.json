@@ -8,6 +8,152 @@
       "interactions": [
         {
           "verb": "use",
+          "item": "mapa_fuga",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "flag": "pacte_acceptat"
+              },
+              {
+                "flag": "iri_a_la_cambra"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.mapa1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.mapa2"
+            },
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.mapa3"
+            },
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.mapa4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cella_tancada"
+            }
+          ],
+          "action": {
+            "name": "finestra.posar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "look"
+          ],
+          "item": "*",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "flag": "pacte_acceptat"
+              },
+              {
+                "flag": "iri_a_la_cambra",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.no_vibra"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "look"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "flag": "pacte_acceptat"
+              },
+              {
+                "flag": "iri_a_la_cambra",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.no_vibra"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "flag": "pacte_acceptat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.pacte_res"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "flag": "pacte_acceptat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.panell.pacte_res"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "*",
           "if": {
             "flag": "acte3_iniciat"
@@ -654,6 +800,37 @@
             "pull"
           ],
           "if": {
+            "flag": "cella_tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.porta.tancada_mare"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "cella_tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.porta.tancada_mare"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
             "flag": "porta_cella_oberta"
           },
           "goTo": "gavina_passadis"
@@ -767,6 +944,191 @@
       "visibleIf": {
         "flag": "acte3_iniciat"
       }
+    },
+    "reixa": {
+      "name": "sala.gavina_cella.reixa.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pull",
+            "pickUp",
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "reixa_preparada"
+              },
+              {
+                "flag": "reixa_oberta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.obrir1",
+              "sound": "clac"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.obrir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.obrir3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reixa_oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "pull"
+          ],
+          "if": {
+            "flag": "reixa_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.entrar"
+            }
+          ],
+          "goTo": "gavina_hangar"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "reixa_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.look_oberta"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "reixa_preparada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.look_llimada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "vet_sap_conducte"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.look_conducte1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.look_conducte2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reixa_mirada"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "flag": "vet_sap_conducte"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.clau",
+              "sound": "eina"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reixa_mirada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull",
+            "pickUp",
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "vet_sap_conducte"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.soldada"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reixa_mirada"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.clau",
+              "sound": "eina"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull",
+            "pickUp",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.soldada"
+            }
+          ]
+        }
+      ]
     }
   },
   "decor": {
@@ -815,9 +1177,45 @@
           }
         ]
       }
+    },
+    "reixa_oberta": {
+      "visibleIf": {
+        "flag": "reixa_oberta"
+      }
     }
   },
   "onEnter": [
+    {
+      "verb": "*",
+      "id": "reixa_reajust",
+      "once": true,
+      "if": {
+        "all": [
+          {
+            "flag": "reixa_preparada"
+          },
+          {
+            "flag": "vet_veu_reixa",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_cella.reixa.reajust1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_cella.reixa.reajust2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "vet_veu_reixa"
+        }
+      ]
+    },
     {
       "id": "intro",
       "verb": "*",
