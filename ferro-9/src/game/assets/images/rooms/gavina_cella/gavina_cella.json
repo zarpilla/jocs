@@ -170,8 +170,8 @@
     },
     "gavina_cella 8.aseprite": {
       "frame": {
-        "x": 3840,
-        "y": 0,
+        "x": 0,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -191,8 +191,8 @@
     },
     "gavina_cella 9.aseprite": {
       "frame": {
-        "x": 4320,
-        "y": 0,
+        "x": 480,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -212,8 +212,8 @@
     },
     "gavina_cella 10.aseprite": {
       "frame": {
-        "x": 4800,
-        "y": 0,
+        "x": 960,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -238,8 +238,8 @@
     "image": "gavina_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 5280,
-      "h": 270
+      "w": 3840,
+      "h": 540
     },
     "scale": "1",
     "frameTags": [

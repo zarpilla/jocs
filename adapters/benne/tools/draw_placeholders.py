@@ -90,10 +90,31 @@ class BitmapFont:
             self.draw(img, x, yy, line, color)
 
 
+MAX_SHEET_W = 4096  # textures més amples no carreguen a moltes GPU (el fons surt negre)
+
+
+def sheet_cols(frames, frame_w):
+    """Fotogrames per fila: tots en una fila mentre el full no passi de MAX_SHEET_W."""
+    return max(1, min(frames, MAX_SHEET_W // frame_w))
+
+
+def paste_grid(frames, frame_w, frame_h):
+    """Full d'imatges en graella (d'esquerra a dreta i de dalt a baix)."""
+    cols = sheet_cols(len(frames), frame_w)
+    rows = (len(frames) + cols - 1) // cols
+    sheet = Image.new('RGBA', (frame_w * cols, frame_h * rows), (0, 0, 0, 0))
+    for i, f in enumerate(frames):
+        sheet.paste(f, ((i % cols) * frame_w, (i // cols) * frame_h))
+    return sheet
+
+
 def aseprite_sheet(name, frames, tags, frame_w, frame_h, spans=None):
     """JSON en format d'exportació d'Aseprite (hash), com els de les plantilles de Benne.
-    `spans` (opcional): {etiqueta: nombre de fotogrames} per a les etiquetes animades."""
+    `spans` (opcional): {etiqueta: nombre de fotogrames} per a les etiquetes animades.
+    Els fotogrames van en graella (vegeu sheet_cols)."""
     spans = spans or {}
+    cols = sheet_cols(frames, frame_w)
+    rows = (frames + cols - 1) // cols
     ranges, i = [], 0
     for tag in tags:
         n = spans.get(tag, 1)
@@ -102,7 +123,7 @@ def aseprite_sheet(name, frames, tags, frame_w, frame_h, spans=None):
     return {
         'frames': {
             f'{name} {i}.aseprite': {
-                'frame': {'x': i * frame_w, 'y': 0, 'w': frame_w, 'h': frame_h},
+                'frame': {'x': (i % cols) * frame_w, 'y': (i // cols) * frame_h, 'w': frame_w, 'h': frame_h},
                 'rotated': False, 'trimmed': False,
                 'spriteSourceSize': {'x': 0, 'y': 0, 'w': frame_w, 'h': frame_h},
                 'sourceSize': {'w': frame_w, 'h': frame_h}, 'duration': 100,
@@ -112,7 +133,7 @@ def aseprite_sheet(name, frames, tags, frame_w, frame_h, spans=None):
         'meta': {
             'app': 'https://www.aseprite.org/', 'version': 'provisional (draw_placeholders.py)',
             'image': f'{name}.png', 'format': 'RGBA8888',
-            'size': {'w': frames * frame_w, 'h': frame_h}, 'scale': '1',
+            'size': {'w': cols * frame_w, 'h': rows * frame_h}, 'scale': '1',
             'frameTags': [{'name': tag, 'from': a, 'to': b, 'direction': 'forward', 'color': '#000000ff'} for tag, a, b in ranges],
             'layers': [], 'slices': [],
         },
@@ -154,9 +175,7 @@ def draw_room(dir_: Path, req, font, small):
             prop_tags.append(b['id'])
 
     frames = [bg] + prop_frames
-    sheet = Image.new('RGBA', (w * len(frames), h), (0, 0, 0, 0))
-    for i, f in enumerate(frames):
-        sheet.paste(f, (i * w, 0))
+    sheet = paste_grid(frames, w, h)
     sheet.save(dir_ / f'{name}.png')
     (dir_ / f'{name}.json').write_text(json.dumps(aseprite_sheet(name, len(frames), ['BG'] + prop_tags, w, h), indent=2) + '\n')
     (dir_ / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
@@ -217,9 +236,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
             room['props'].append(prop)
         prop['animations'] = {aid: {'loop': True, 'frameDuration': ms}}
 
-    sheet = Image.new('RGBA', (w * len(frames), h), (0, 0, 0, 0))
-    for i, f in enumerate(frames):
-        sheet.paste(f, (i * w, 0))
+    sheet = paste_grid(frames, w, h)
     sheet.save(dir_ / f'{name}.png')
     (dir_ / f'{name}.json').write_text(json.dumps(aseprite_sheet(name, len(frames), tags, w, h, spans), indent=2) + '\n')
     (dir_ / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
@@ -259,11 +276,11 @@ def draw_inventory(dir_: Path, req, small):
     fw, fh = scaled(36), scaled(20)  # la casella de l'inventari
     items = req['items']
     labels = short_labels(items)
-    sheet = Image.new('RGBA', (fw * len(items), fh), (0, 0, 0, 0))
-    for i, it in enumerate(items):
+    frames = []
+    for it in items:
         drawn = icon(it['id'])
         if drawn is not None:
-            sheet.paste(drawn, (i * fw, 0))
+            frames.append(drawn)
             continue
         hue = int(hashlib.md5(it['id'].encode()).hexdigest()[:6], 16)
         color = (80 + hue % 150, 80 + (hue >> 8) % 150, 80 + (hue >> 16) % 150)
@@ -271,7 +288,8 @@ def draw_inventory(dir_: Path, req, small):
         ImageDraw.Draw(frame).rounded_rectangle([1, 1, fw - 2, fh - 2], radius=3, fill=color + (255,), outline=(255, 255, 255, 255))
         label = small.fit(it['label'] if small.width(it['label']) <= fw - 4 else labels[it['id']], fw - 4)
         small.draw_centered(frame, fw / 2, 5, label, (255, 255, 255), fw)
-        sheet.paste(frame, (i * fw, 0))
+        frames.append(frame)
+    sheet = paste_grid(frames, fw, fh)
     sheet.save(dir_ / 'inventory.png')
     (dir_ / 'inventory.json').write_text(json.dumps(aseprite_sheet('inventory', len(items), [it['id'] for it in items], fw, fh), indent=2) + '\n')
     (dir_ / '.provisional').write_text("Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n")
@@ -396,9 +414,7 @@ def draw_cover_gui(game_dir: Path):
             ImageDraw.Draw(f).rectangle(box, fill=fill + (235,), outline=vora + (255,))
             frames.append(f)
             tags.append(tag)
-    sheet = Image.new('RGBA', (w * len(frames), h), (0, 0, 0, 0))
-    for i, f in enumerate(frames):
-        sheet.paste(f, (i * w, 0))
+    sheet = paste_grid(frames, w, h)
     sheet.save(d / 'portada.png')
     (d / 'portada.json').write_text(json.dumps(aseprite_sheet('portada', len(frames), tags, w, h), indent=2) + '\n')
     (d / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')

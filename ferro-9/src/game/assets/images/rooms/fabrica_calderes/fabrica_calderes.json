@@ -170,8 +170,8 @@
     },
     "fabrica_calderes 8.aseprite": {
       "frame": {
-        "x": 3840,
-        "y": 0,
+        "x": 0,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -191,8 +191,8 @@
     },
     "fabrica_calderes 9.aseprite": {
       "frame": {
-        "x": 4320,
-        "y": 0,
+        "x": 480,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -212,8 +212,8 @@
     },
     "fabrica_calderes 10.aseprite": {
       "frame": {
-        "x": 4800,
-        "y": 0,
+        "x": 960,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -233,8 +233,8 @@
     },
     "fabrica_calderes 11.aseprite": {
       "frame": {
-        "x": 5280,
-        "y": 0,
+        "x": 1440,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -254,8 +254,8 @@
     },
     "fabrica_calderes 12.aseprite": {
       "frame": {
-        "x": 5760,
-        "y": 0,
+        "x": 1920,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -275,8 +275,8 @@
     },
     "fabrica_calderes 13.aseprite": {
       "frame": {
-        "x": 6240,
-        "y": 0,
+        "x": 2400,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -296,8 +296,8 @@
     },
     "fabrica_calderes 14.aseprite": {
       "frame": {
-        "x": 6720,
-        "y": 0,
+        "x": 2880,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -317,8 +317,8 @@
     },
     "fabrica_calderes 15.aseprite": {
       "frame": {
-        "x": 7200,
-        "y": 0,
+        "x": 3360,
+        "y": 270,
         "w": 480,
         "h": 270
       },
@@ -338,8 +338,8 @@
     },
     "fabrica_calderes 16.aseprite": {
       "frame": {
-        "x": 7680,
-        "y": 0,
+        "x": 0,
+        "y": 540,
         "w": 480,
         "h": 270
       },
@@ -359,8 +359,8 @@
     },
     "fabrica_calderes 17.aseprite": {
       "frame": {
-        "x": 8160,
-        "y": 0,
+        "x": 480,
+        "y": 540,
         "w": 480,
         "h": 270
       },
@@ -380,8 +380,8 @@
     },
     "fabrica_calderes 18.aseprite": {
       "frame": {
-        "x": 8640,
-        "y": 0,
+        "x": 960,
+        "y": 540,
         "w": 480,
         "h": 270
       },
@@ -406,8 +406,8 @@
     "image": "fabrica_calderes.png",
     "format": "RGBA8888",
     "size": {
-      "w": 9120,
-      "h": 270
+      "w": 3840,
+      "h": 810
     },
     "scale": "1",
     "frameTags": [
