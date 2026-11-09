@@ -188,6 +188,15 @@
           ]
         },
         {
+          "id": "memoria",
+          "text": "dlg.cargol.opt.memoria",
+          "next": "memoria",
+          "once": true,
+          "if": {
+            "flag": "acte1_acabat"
+          }
+        },
+        {
           "id": "alarma",
           "text": "dlg.cargol.opt.alarma",
           "once": true,
@@ -495,6 +504,32 @@
               "giveItem": "tub_ferro9"
             }
           ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "memoria": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.memoria1"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.memoria2"
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.memoria3"
+        },
+        {
+          "who": "player",
+          "text": "dlg.cargol.memoria_iri"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "cargol_sap_revisio"
         }
       ],
       "goto": "menu"

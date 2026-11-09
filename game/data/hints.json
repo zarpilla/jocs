@@ -1165,24 +1165,26 @@
     ]
   },
   "vet_placa": {
-    "priority": 4,
+    "priority": 1,
     "when": {
       "all": [
         {
           "protagonist": "vet"
         },
         {
-          "hasItem": "nota_amagatall",
-          "who": "vet"
+          "hasItem": "placa_cargol"
         },
         {
-          "flag": "vet_sap_amagatall",
+          "flag": "cargol_gravat"
+        },
+        {
+          "flag": "cargol_memoria",
           "is": false
         }
       ]
     },
     "doneWhen": {
-      "flag": "vet_sap_amagatall"
+      "flag": "cargol_memoria"
     },
     "levels": [
       "pista.vet_placa.1",
@@ -3455,6 +3457,141 @@
     "levels": [
       "pista.vet_volar.1",
       "pista.vet_volar.2"
+    ]
+  },
+  "iri_cargol_segell": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "cargol_sap_revisio"
+        },
+        {
+          "flag": "cargol_reparat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cargol_reparat"
+    },
+    "levels": [
+      "pista.iri_cargol_segell.1",
+      "pista.iri_cargol_segell.2"
+    ]
+  },
+  "iri_cargol_nom": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "cargol_reparat"
+        },
+        {
+          "flag": "cargol_gravat",
+          "is": false
+        },
+        {
+          "hasItem": "llima"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cargol_gravat"
+    },
+    "levels": [
+      "pista.iri_cargol_nom.1",
+      "pista.iri_cargol_nom.2"
+    ]
+  },
+  "iri_mira_planols": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "all": [
+            {
+              "flag": "acte3_iniciat"
+            },
+            {
+              "flag": "mira_salvada"
+            },
+            {
+              "flag": "iri_fugida",
+              "is": false
+            }
+          ]
+        },
+        {
+          "hasItem": "planols"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "planols_lliurats"
+    },
+    "levels": [
+      "pista.iri_mira_planols.1",
+      "pista.iri_mira_planols.2"
+    ]
+  },
+  "vet_vitrina": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "placa_vista"
+        },
+        {
+          "flag": "mira_salvada"
+        },
+        {
+          "flag": "vitrina_oberta",
+          "is": false
+        },
+        {
+          "hasItem": "clau_vitrina",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vitrina_oberta"
+    },
+    "levels": [
+      "pista.vet_vitrina.1",
+      "pista.vet_vitrina.2"
+    ]
+  },
+  "vet_vitrina_obrir": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "clau_vitrina"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vitrina_oberta"
+    },
+    "levels": [
+      "pista.vet_vitrina_obrir.1"
     ]
   }
 }

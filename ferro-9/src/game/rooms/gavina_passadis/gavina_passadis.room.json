@@ -227,6 +227,16 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 10
+    },
+    {
+      "instanceId": "guardia-1",
+      "definition": "guardia/guardia.character.json",
+      "x": 322,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }

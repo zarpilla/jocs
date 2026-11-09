@@ -944,6 +944,48 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 45.aseprite": {
+      "frame": {
+        "x": 2205,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 46.aseprite": {
+      "frame": {
+        "x": 2254,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -952,7 +994,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2205,
+      "w": 2303,
       "h": 27
     },
     "scale": "1",
@@ -1269,6 +1311,20 @@
         "name": "tub_amb_llibreta",
         "from": 44,
         "to": 44,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "clau_vitrina",
+        "from": 45,
+        "to": 45,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "placa_cargol",
+        "from": 46,
+        "to": 46,
         "direction": "forward",
         "color": "#000000ff"
       }

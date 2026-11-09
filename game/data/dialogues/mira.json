@@ -1,0 +1,130 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "mira",
+  "with": "mira",
+  "start": [
+    {
+      "if": {
+        "flag": "planols_lliurats"
+      },
+      "node": "despres"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "mira",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "mira",
+          "text": "dlg.mira.primera1"
+        },
+        {
+          "who": "mira",
+          "text": "dlg.mira.primera2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "mira",
+          "text": "dlg.mira.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "despres": {
+      "lines": [
+        {
+          "who": "mira",
+          "text": "dlg.mira.despres"
+        }
+      ]
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "que_dius",
+          "text": "dlg.mira.opt.que_dius",
+          "once": true,
+          "next": "que_dius"
+        },
+        {
+          "id": "planols",
+          "text": "dlg.mira.opt.planols",
+          "next": "planols",
+          "if": {
+            "hasItem": "planols"
+          }
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.mira.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "que_dius": {
+      "lines": [
+        {
+          "who": "mira",
+          "text": "dlg.mira.que_dius1"
+        },
+        {
+          "who": "mira",
+          "text": "dlg.mira.que_dius2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "planols": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.mira.planols1"
+        },
+        {
+          "who": "mira",
+          "text": "dlg.mira.planols2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.mira.planols3"
+        },
+        {
+          "who": "mira",
+          "text": "dlg.mira.planols4"
+        }
+      ],
+      "effects": [
+        {
+          "takeItem": "planols"
+        },
+        {
+          "setFlag": "planols_lliurats"
+        }
+      ]
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "mira",
+          "text": "dlg.mira.adeu"
+        }
+      ]
+    }
+  }
+}

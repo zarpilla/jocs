@@ -257,6 +257,16 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 10
+    },
+    {
+      "instanceId": "cargol_vell-1",
+      "definition": "cargol_vell/cargol_vell.character.json",
+      "x": 246,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }

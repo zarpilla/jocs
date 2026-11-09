@@ -193,5 +193,13 @@
   "obj.tub_amb_llibreta.desc": "El tub de vàlvula de ferro-9, amb la llibreta de torn de l'Iri enrotllada a dins.",
   "obj.tub_amb_llibreta.vet1": "Un tub de vàlvula, nou. I a dins hi ha alguna cosa enrotllada.",
   "obj.tub_amb_llibreta.vet2": "Ja ho miraré a l'hangar. Aquí la Directora no em treu els ulls de sobre.",
-  "obj.tram_biga.iri": "Si els encaixo, la biga ja no passarà per la finestra. Millor d'un en un."
+  "obj.tram_biga.iri": "Si els encaixo, la biga ja no passarà per la finestra. Millor d'un en un.",
+  "obj.clau_vitrina.nom": "clau de la vitrina",
+  "obj.clau_vitrina.desc": "Una clau petita amb una etiqueta: «Museu».",
+  "obj.placa_cargol.nom": "placa de robot",
+  "obj.placa_cargol.desc": "Una placa d'identificació de robot, de metall gastat.",
+  "obj.placa_cargol.text": "«Robot de manteniment C-1. Corporació Aldaia.»",
+  "obj.placa_cargol.gravada": "Sota, gravat a mà amb una llima, un nom: «CARGOL».",
+  "obj.placa_cargol.vet_gravada": "Algú li va voler deixar el nom per escrit. Algú amb una llima.",
+  "obj.placa_cargol.vet_buida": "No hi ha cap nom. És la placa d'un robot sense nom."
 }

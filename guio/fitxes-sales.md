@@ -43,12 +43,13 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `cargol` | Cargol | personatge | sempre | talkTo, look, give + objecte, push, pull |
+| `cargol` | Cargol | personatge | sempre | talkTo, use + segell, give + segell, use + llima, give + llima, look, give + objecte, push, pull |
 | `plomall` | plomall | prop | `{"hasItem":"plomall","who":"iri","is":false}` | look, pickUp |
 | `caixa_eines` | caixa d'eines | prop | `{"hasItem":"caixa_eines","who":"iri","is":false}` | look, pickUp |
 | `prestatges` | prestatges | hotspot / prop | sempre | look, pickUp |
 | `porta_calderes` | sala de calderes | hotspot / prop → `fabrica_calderes` | sempre | open, use, walkTo |
 | `porta_despatx` | despatx del director | hotspot / prop → `fabrica_despatx` | sempre | open, use, walkTo |
+| `mira` | Mira | personatge | `{"all":[{"flag":"acte3_iniciat"},{"flag":"mira_salvada"},{"flag":"iri_fugida","is":false}]}` | use + planols, give + planols, talkTo, look |
 
 ### Moll de càrrega · `fabrica_moll`
 
@@ -114,9 +115,10 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `porta_passadis` | passadís | hotspot / prop → `gavina_passadis` | sempre | open, use, walkTo |
 | `holograma` | holograma del Director | hotspot / prop | sempre | talkTo, use, push, look |
 | `foto` | foto del torn de nit | hotspot / prop | sempre | look |
-| `vitrina` | vitrina | hotspot / prop | sempre | look, open, pickUp, use |
+| `vitrina` | vitrina | hotspot / prop | sempre | use + clau_vitrina, look, open, pickUp, use |
 | `mapa` | mapa de La Gavina | hotspot / prop | sempre | look |
 | `fullets` | fullets | hotspot / prop | sempre | pickUp, look |
+| `cargol_vell` | Conserge | personatge | sempre | use + placa_cargol, give + placa_cargol, talkTo, look |
 
 ### Passadís del mòdul C · `gavina_passadis`
 
@@ -127,6 +129,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `porta_cella` | cel·la 9 | hotspot / prop → `gavina_cella` | sempre | open, use, walkTo |
 | `porta_hangar` | porta del fons | hotspot / prop → `gavina_hangar` | sempre | open, use, walkTo |
 | `porta_memoria` | Sala de la Memòria | hotspot / prop → `gavina_memoria` | sempre | open, use, walkTo, look |
+| `guardia` | Guàrdia d'Orís | personatge | `{"flag":"mira_salvada"}` | talkTo, look |
 
 ## Objectes d'inventari
 
@@ -177,3 +180,5 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `mapa_fuga` | mapa de fuga | 0.01 | finestra: vet |
 | `tub_ferro9` | tub de ferro-9 | 1.2 | material: ferro9 |
 | `tub_amb_llibreta` | tub amb la llibreta | 1.5 | material: ferro9, finestra: iri |
+| `clau_vitrina` | clau de la vitrina | 0.05 |  |
+| `placa_cargol` | placa de robot | 0.2 |  |

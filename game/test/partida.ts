@@ -107,7 +107,7 @@ function escriureIEnviar(p: Jugador, nota: string) {
  * L'Acte 2 sencer pel camí més curt (la palanca per peces, sense plànols ni Mira): comença amb la Vet
  * al passadís i acaba amb la Vet a la cel·la, just quan comença l'Acte 3.
  */
-export function jugarActe2(p: Jugador) {
+export function jugarActe2(p: Jugador, opts: { mira?: boolean; cargol?: boolean } = {}) {
   // La comporta
   p.do('open', 'porta_hangar');
   p.do('open', 'porta_passadis');
@@ -188,6 +188,33 @@ export function jugarActe2(p: Jugador) {
   p.do('open', 'porta');
   p.do('open', 'porta_hangar');
   p.do('push', 'llancadora');
+  if (opts.mira || opts.cargol) {
+    p.switchTo('iri');
+    if (opts.mira) {
+      // Els plànols del despatx (amb un altre imant del Cargol), i la Mira salvada falsificant l'inventari.
+      p.goTo('fabrica_magatzem');
+      p.do('open', 'porta_despatx');
+      p.do('open', 'calaix');
+      p.goTo('fabrica_calderes');
+      p.do('pickUp', 'tauler');
+      p.use('segell', item('formulari_27b'));
+      p.use('segell', item('formulari_segellat'));
+      p.goTo('fabrica_magatzem');
+      p.talk('cargol', 'imant2');
+      p.do('open', 'porta_despatx');
+      p.use('imant_ferro9', 'calaix');
+      p.do('look', 'expedient_sic');
+      p.use('segell', 'llibre_inventari');
+    }
+    if (opts.cargol) {
+      // La memòria del Cargol: el segell a la revisió i el nom gravat amb la llima.
+      p.goTo('fabrica_magatzem');
+      p.talk('cargol', 'memoria');
+      p.use('segell', 'cargol');
+      p.use('llima', 'cargol');
+    }
+    p.switchTo('vet');
+  }
   // L'arxiu i els noms
   p.use('clau_anglesa', 'escala');
   p.do('open', 'escala');
@@ -200,4 +227,53 @@ export function jugarActe2(p: Jugador) {
   p.goTo('fabrica_cambra');
   p.use('nota_iri_nom', 'cambra');
   p.do('look', item('nota_iri_nom'));
+}
+
+/**
+ * L'Acte 3 sencer, des de la Vet a la cel·la fins a la fugida de totes dues. `vet` es fa amb la Vet a
+ * l'hangar, quan ja pot anar al passadís pel conducte; `iri`, amb l'Iri al magatzem, abans de fugir.
+ */
+export function jugarActe3(p: Jugador, extra: { vet?: () => void; iri?: () => void } = {}) {
+  p.do('push', 'panell');
+  p.talk('directora', 'que_vol', 'iri');
+  p.switchTo('iri');
+  p.talk('sic', 'que_passa');
+  p.switchTo('vet');
+  p.do('open', 'porta');
+  p.do('open', 'porta_memoria');
+  p.do('look', 'foto');
+  p.do('look', 'mapa');
+  p.do('pickUp', 'fullets');
+  p.do('open', 'porta_passadis');
+  p.do('open', 'porta_cella');
+  p.use('llapis_ulls', item('fullet_memoria'));
+  p.do('look', 'reixa');
+  p.do('open', 'reixa');
+  p.use('llapis_ulls', item('fullet_memoria'));
+  p.use('mapa_fuga', 'panell');
+  p.talk('directora', 'pacte');
+  p.switchTo('iri');
+  p.talk('sic', 'enganyar');
+  p.do('open', 'porta_cambra');
+  p.switchTo('vet');
+  p.use('mapa_fuga', 'panell');
+  p.do('look', item('mapa_fuga'));
+  p.use('llima', 'reixa');
+  p.switchTo('vet');
+  p.do('open', 'reixa');
+  p.do('open', 'reixa');
+  extra.vet?.();
+  p.do('open', 'sortida_conducte');
+  p.switchTo('iri');
+  p.goTo('fabrica_magatzem');
+  p.talk('cargol', 'tub');
+  extra.iri?.();
+  p.goTo('fabrica_cambra');
+  p.use('llibreta_torn', item('tub_ferro9'));
+  p.use('tub_amb_llibreta', 'cambra');
+  p.do('open', 'reixa');
+  p.use('tub_amb_llibreta', 'llancadora');
+  p.do('push', 'llancadora');
+  p.do('open', 'reixa');
+  p.do('use', 'llancadora');
 }

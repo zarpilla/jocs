@@ -11,6 +11,109 @@
           "dialogue": "cargol"
         },
         {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "segell",
+          "if": {
+            "all": [
+              {
+                "flag": "cargol_sap_revisio"
+              },
+              {
+                "flag": "cargol_reparat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.segell1"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.segell2"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.segell3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cargol_reparat"
+            },
+            {
+              "relation": {
+                "who": "cargol",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "llima",
+          "if": {
+            "all": [
+              {
+                "flag": "cargol_reparat"
+              },
+              {
+                "flag": "cargol_gravat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.llima1"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.llima2"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.llima3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cargol_gravat"
+            },
+            {
+              "relation": {
+                "who": "cargol",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "llima",
+          "if": {
+            "flag": "cargol_gravat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.llima_no"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
@@ -184,6 +287,71 @@
           "goTo": "fabrica_despatx"
         }
       ]
+    },
+    "mira": {
+      "name": "pj.mira.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "mira_salvada"
+          },
+          {
+            "flag": "iri_fugida",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "planols",
+          "lines": [
+            {
+              "who": "player",
+              "text": "dlg.mira.planols1"
+            },
+            {
+              "who": "mira",
+              "text": "dlg.mira.planols2"
+            },
+            {
+              "who": "player",
+              "text": "dlg.mira.planols3"
+            },
+            {
+              "who": "mira",
+              "text": "dlg.mira.planols4"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "planols"
+            },
+            {
+              "setFlag": "planols_lliurats"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "mira"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.mira.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [
@@ -217,6 +385,37 @@
       "effects": [
         {
           "setFlag": "iri_descoberta"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "id": "mira_absent",
+      "once": true,
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "mira_salvada",
+            "is": false
+          },
+          {
+            "var": "sospita_sic",
+            "op": ">=",
+            "value": 2
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_magatzem.mira_absent1"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_magatzem.mira_absent2"
         }
       ]
     },

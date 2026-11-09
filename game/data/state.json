@@ -96,7 +96,13 @@
     "tub_muntat": false,
     "vet_fugida": false,
     "iri_fugida": false,
-    "director_fora": false
+    "director_fora": false,
+    "cargol_sap_revisio": false,
+    "cargol_reparat": false,
+    "cargol_gravat": false,
+    "planols_lliurats": false,
+    "placa_vista": false,
+    "vitrina_oberta": false
   },
   "vars": {
     "finestra_armada": "",

@@ -307,6 +307,88 @@ SIC = {
 }
 
 
+def hair_mira(c, p, f, layer):
+    """Cabell coure i arrissat, curt, amb un mocador de feina."""
+    h, h2, band = p['hair'], p['hair2'], p['band']
+    if layer == 'back':
+        if f == 'D':
+            c.ellipse(17.5, 12, 7, 6, h2)
+        return
+    if f == 'U':
+        c.ellipse(17.5, 10, 6.5, 6.5, h); c.rect(11, 6, 24, 7, band)
+        for x in (12, 16, 20, 23):
+            c.px(x, 14, h2)
+    elif f == 'D':
+        c.ellipse(17.5, 7, 6.5, 3.5, h)
+        c.rect(10, 8, 12, 15, h); c.rect(23, 8, 25, 15, h)
+        c.px(10, 15, h2); c.px(25, 15, h2); c.px(11, 12, h2); c.px(24, 12, h2)
+        c.rect(11, 5, 24, 6, band)
+    else:
+        c.ellipse(17.5, 7, 6.5, 3.5, h)
+        c.rect(17, 8, 24, 15, h); c.px(23, 15, h2); c.px(21, 12, h2)
+        c.rect(11, 5, 23, 6, band)
+
+
+def hair_guardia(c, p, f, layer):
+    """El mateix cabell coure de la família, recollit en una cua, i una gorra d'uniforme."""
+    h, h2, cap, peak = p['hair'], p['hair2'], p['cap'], p['cap2']
+    if layer == 'back':
+        if f in 'U':
+            c.rect(16, 12, 19, 20, h); c.px(17, 21, h2)
+        return
+    if f == 'U':
+        c.ellipse(17.5, 10, 6, 6, h); c.rect(16, 12, 19, 20, h)
+        c.rect(11, 3, 24, 7, cap)
+    elif f == 'D':
+        c.rect(12, 8, 13, 13, h); c.rect(22, 8, 23, 13, h)
+        c.rect(11, 3, 24, 7, cap); c.rect(11, 7, 24, 8, peak); c.px(17, 4, (230, 190, 70)); c.px(18, 4, (230, 190, 70))
+    else:
+        c.rect(18, 8, 22, 13, h); c.rect(23, 10, 25, 17, h); c.px(24, 18, h2)
+        c.rect(12, 3, 24, 7, cap); c.rect(9, 7, 15, 8, peak)
+
+
+def deco_granota_feina(c, p, f):
+    """Granota de feina amb pitet i tirants, i una clau anglesa a la butxaca."""
+    C2 = p['top2']
+    if f == 'D':
+        c.rect(14, 22, 21, 23, p['shirt']); c.rect(14, 24, 14, 30, C2); c.rect(21, 24, 21, 30, C2)
+        c.rect(15, 28, 20, 32, C2); c.px(14, 24, (220, 220, 220)); c.px(21, 24, (220, 220, 220))
+        c.px(20, 30, (186, 196, 206))
+    elif f == 'L':
+        c.rect(14, 22, 21, 23, p['shirt']); c.rect(15, 24, 15, 32, C2)
+    else:
+        c.rect(14, 24, 15, 34, C2); c.rect(20, 24, 21, 34, C2)
+
+
+def deco_uniforme(c, p, f):
+    """Uniforme de guàrdia: jaqueta cordada, placa al pit i cinturó."""
+    if f == 'D':
+        c.rect(17, 22, 18, 36, p['top2'])
+        for y in (25, 29, 33):
+            c.px(17, y, (200, 200, 210))
+        c.rect(20, 25, 21, 26, (230, 190, 70))
+        c.rect(12, 36, 23, 37, (30, 30, 36)); c.px(17, 36, (180, 180, 190))
+    elif f == 'L':
+        c.rect(13, 36, 22, 37, (30, 30, 36))
+    else:
+        c.rect(12, 36, 23, 37, (30, 30, 36))
+
+
+MIRA = {
+    'skin': (236, 196, 166), 'skin2': (206, 160, 132), 'hair': (196, 98, 52), 'hair2': (150, 70, 36), 'band': (230, 200, 70),
+    'top': (78, 120, 150), 'top2': (58, 94, 120), 'sleeve': (220, 216, 204), 'sleeve_len': 'rolled', 'shirt': (220, 216, 204),
+    'legs': (78, 120, 150), 'legs2': (58, 94, 120), 'shoes': (60, 44, 36), 'eyes': (40, 60, 50), 'lashes': True,
+    'hair_fn': hair_mira, 'deco': deco_granota_feina,
+}
+GUARDIA = {
+    'skin': (236, 196, 166), 'skin2': (206, 160, 132), 'hair': (196, 98, 52), 'hair2': (150, 70, 36),
+    'cap': (40, 52, 84), 'cap2': (26, 34, 56),
+    'top': (48, 62, 98), 'top2': (34, 44, 72), 'sleeve': (48, 62, 98), 'sleeve_len': 'long',
+    'legs': (40, 52, 84), 'legs2': (30, 40, 66), 'shoes': (24, 22, 26), 'eyes': (40, 60, 50), 'lashes': True,
+    'hair_fn': hair_guardia, 'deco': deco_uniforme,
+}
+
+
 SLEEVE_END = {'long': 37, 'rolled': 29}
 
 
@@ -441,15 +523,22 @@ def face_detail(c, p, facing, bob):
 
 # ─── Cargol (robot) ─────────────────────────────────────────────────────────
 
-BRASS, BRASS2, BRASS3 = (206, 160, 70), (164, 120, 48), (120, 84, 34)
-STEEL, STEEL2 = (186, 196, 206), (140, 150, 162)
+BRASS_, BRASS2_, BRASS3_ = (206, 160, 70), (164, 120, 48), (120, 84, 34)
+STEEL_, STEEL2_ = (186, 196, 206), (140, 150, 162)
 
 
-def cargol(facing, blink=False, talk=False):
+def cargol(facing, blink=False, talk=False, old=False):
     c = Canvas(40, 46)
     lamp = (120, 240, 170) if not blink else (60, 120, 90)
     if talk:
         lamp = (190, 255, 210)
+    # De vell: rovellat i amb els llums gastats.
+    BRASS, BRASS2, BRASS3 = ((150, 84, 46), (118, 62, 34), (86, 44, 26)) if old else (BRASS_, BRASS2_, BRASS3_)
+    STEEL, STEEL2 = ((150, 120, 100), (116, 88, 70)) if old else (STEEL_, STEEL2_)
+    if old:
+        lamp = (200, 170, 90) if not blink else (110, 90, 50)
+        if talk:
+            lamp = (240, 210, 120)
     # Erugues
     c.rect(7, 37, 32, 44, (70, 70, 78))
     for x in range(9, 32, 4):
@@ -649,12 +738,25 @@ def main():
     standing('mos', MOS, thin=True)
     standing('directora', DIRECTORA)
     standing('sic', SIC)
+    standing('mira', MIRA)
+    standing('guardia', GUARDIA)
 
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', [cargol(f), cargol(f), cargol(f), cargol(f, blink=True)]))
         tags.append((f'Talk{f}', [cargol(f, talk=False), cargol(f, talk=True)]))
     write('cargol', tags, (40, 46), {
+        'walkSpeed': 50, 'walkToPoint': {'x': 46, 'y': 44}, 'talkPoint': {'x': 20, 'y': 0}, 'feet': {'x': 20, 'y': 44},
+        'collider': {'points': [{'x': 6, 'y': 4}, {'x': 34, 'y': 4}, {'x': 34, 'y': 45}, {'x': 6, 'y': 45}]},
+        'animations': {t: {'loop': True, 'frameDuration': 250 if t.startswith('Idle') else 140} for t, _ in tags},
+        'defaultVerb': 'talkTo',
+    })
+
+    tags = []
+    for f in 'DLU':
+        tags.append((f'Idle{f}', [cargol(f, old=True), cargol(f, old=True), cargol(f, old=True), cargol(f, blink=True, old=True)]))
+        tags.append((f'Talk{f}', [cargol(f, old=True, talk=False), cargol(f, old=True, talk=True)]))
+    write('cargol_vell', tags, (40, 46), {
         'walkSpeed': 50, 'walkToPoint': {'x': 46, 'y': 44}, 'talkPoint': {'x': 20, 'y': 0}, 'feet': {'x': 20, 'y': 44},
         'collider': {'points': [{'x': 6, 'y': 4}, {'x': 34, 'y': 4}, {'x': 34, 'y': 45}, {'x': 6, 'y': 45}]},
         'animations': {t: {'loop': True, 'frameDuration': 250 if t.startswith('Idle') else 140} for t, _ in tags},

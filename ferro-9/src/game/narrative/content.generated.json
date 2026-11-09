@@ -123,7 +123,13 @@
         "tub_muntat": false,
         "vet_fugida": false,
         "iri_fugida": false,
-        "director_fora": false
+        "director_fora": false,
+        "cargol_sap_revisio": false,
+        "cargol_reparat": false,
+        "cargol_gravat": false,
+        "planols_lliurats": false,
+        "placa_vista": false,
+        "vitrina_oberta": false
       },
       "vars": {
         "finestra_armada": "",
@@ -198,6 +204,18 @@
       "sic": {
         "name": "pj.sic.nom",
         "description": "pj.sic.desc"
+      },
+      "mira": {
+        "name": "pj.mira.nom",
+        "description": "pj.mira.desc"
+      },
+      "guardia": {
+        "name": "pj.guardia.nom",
+        "description": "pj.guardia.desc"
+      },
+      "cargol_vell": {
+        "name": "pj.cargol_vell.nom",
+        "description": "pj.cargol_vell.desc"
       }
     },
     "items": {
@@ -2122,6 +2140,55 @@
             ]
           }
         ]
+      },
+      "clau_vitrina": {
+        "name": "obj.clau_vitrina.nom",
+        "description": "obj.clau_vitrina.desc",
+        "props": {
+          "pes": 0.05
+        }
+      },
+      "placa_cargol": {
+        "name": "obj.placa_cargol.nom",
+        "description": "obj.placa_cargol.desc",
+        "props": {
+          "pes": 0.2
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "flag": "cargol_gravat"
+            },
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.placa_cargol.text"
+              },
+              {
+                "who": "narrator",
+                "text": "obj.placa_cargol.gravada"
+              },
+              {
+                "who": "player",
+                "text": "obj.placa_cargol.vet_gravada"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "obj.placa_cargol.text"
+              },
+              {
+                "who": "player",
+                "text": "obj.placa_cargol.vet_buida"
+              }
+            ]
+          }
+        ]
       }
     },
     "rooms": {
@@ -3508,6 +3575,109 @@
                 "dialogue": "cargol"
               },
               {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "segell",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "cargol_sap_revisio"
+                    },
+                    {
+                      "flag": "cargol_reparat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.cargol.segell1"
+                  },
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.cargol.segell2"
+                  },
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.cargol.segell3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "cargol_reparat"
+                  },
+                  {
+                    "relation": {
+                      "who": "cargol",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "llima",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "cargol_reparat"
+                    },
+                    {
+                      "flag": "cargol_gravat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.cargol.llima1"
+                  },
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.cargol.llima2"
+                  },
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.cargol.llima3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "cargol_gravat"
+                  },
+                  {
+                    "relation": {
+                      "who": "cargol",
+                      "change": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "llima",
+                "if": {
+                  "flag": "cargol_gravat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.cargol.llima_no"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
@@ -3681,6 +3851,71 @@
                 "goTo": "fabrica_despatx"
               }
             ]
+          },
+          "mira": {
+            "name": "pj.mira.nom",
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "acte3_iniciat"
+                },
+                {
+                  "flag": "mira_salvada"
+                },
+                {
+                  "flag": "iri_fugida",
+                  "is": false
+                }
+              ]
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "planols",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "dlg.mira.planols1"
+                  },
+                  {
+                    "who": "mira",
+                    "text": "dlg.mira.planols2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "dlg.mira.planols3"
+                  },
+                  {
+                    "who": "mira",
+                    "text": "dlg.mira.planols4"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "planols"
+                  },
+                  {
+                    "setFlag": "planols_lliurats"
+                  }
+                ]
+              },
+              {
+                "verb": "talkTo",
+                "dialogue": "mira"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.mira.look"
+                  }
+                ]
+              }
+            ]
           }
         },
         "onEnter": [
@@ -3714,6 +3949,37 @@
             "effects": [
               {
                 "setFlag": "iri_descoberta"
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "id": "mira_absent",
+            "once": true,
+            "if": {
+              "all": [
+                {
+                  "flag": "acte3_iniciat"
+                },
+                {
+                  "flag": "mira_salvada",
+                  "is": false
+                },
+                {
+                  "var": "sospita_sic",
+                  "op": ">=",
+                  "value": 2
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_magatzem.mira_absent1"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_magatzem.mira_absent2"
               }
             ]
           },
@@ -5907,6 +6173,13 @@
                     "text": "sala.gavina_cella.reixa.fugir1"
                   },
                   {
+                    "who": "narrator",
+                    "text": "sala.gavina_cella.reixa.fugir_guardia",
+                    "if": {
+                      "flag": "mira_salvada"
+                    }
+                  },
+                  {
                     "who": "player",
                     "text": "sala.gavina_cella.reixa.fugir2"
                   }
@@ -7579,7 +7852,41 @@
             "name": "sala.gavina_memoria.vitrina.nom",
             "interactions": [
               {
+                "verb": [
+                  "use"
+                ],
+                "item": "clau_vitrina",
+                "if": {
+                  "flag": "vitrina_oberta",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.vitrina.obrir1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.vitrina.obrir2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "clau_vitrina"
+                  },
+                  {
+                    "giveItem": "placa_cargol"
+                  },
+                  {
+                    "setFlag": "vitrina_oberta"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
+                "if": {
+                  "flag": "vitrina_oberta"
+                },
                 "lines": [
                   {
                     "who": "narrator",
@@ -7587,7 +7894,74 @@
                   },
                   {
                     "who": "player",
+                    "text": "sala.gavina_memoria.vitrina.sense_placa"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "cargol_gravat"
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.vitrina.text"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.vitrina.placa"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.vitrina.placa_gravada"
+                  },
+                  {
+                    "who": "player",
                     "text": "sala.gavina_memoria.vitrina.vet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "placa_vista"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.vitrina.text"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "sala.gavina_memoria.vitrina.placa"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.vitrina.vet"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "placa_vista"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "open",
+                  "pickUp",
+                  "use"
+                ],
+                "if": {
+                  "flag": "vitrina_oberta"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.vitrina.tocar"
                   }
                 ]
               },
@@ -7600,7 +7974,12 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.vitrina.tocar"
+                    "text": "sala.gavina_memoria.vitrina.tancada"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "placa_vista"
                   }
                 ]
               }
@@ -7673,6 +8052,117 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_memoria.fullets.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "cargol_vell": {
+            "name": "pj.cargol_vell.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "placa_cargol",
+                "if": {
+                  "flag": "cargol_gravat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.cargol_vell.placa1"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.placa2"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.placa3"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.placa4"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.placa5"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.cargol_vell.placa6"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.placa7"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "placa_cargol"
+                  },
+                  {
+                    "setFlag": "cargol_memoria"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "placa_cargol",
+                "if": {
+                  "flag": "cargol_reparat"
+                },
+                "lines": [
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.sense_nom1"
+                  },
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.sense_nom2"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "give"
+                ],
+                "item": "placa_cargol",
+                "lines": [
+                  {
+                    "who": "cargol_vell",
+                    "text": "sala.gavina_memoria.cargol_vell.res"
+                  }
+                ]
+              },
+              {
+                "verb": "talkTo",
+                "dialogue": "cargol_vell"
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "cargol_memoria"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.cargol_vell.look_recorda"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.cargol_vell.look"
                   }
                 ]
               }
@@ -7835,6 +8325,27 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_passadis.porta_memoria.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "guardia": {
+            "name": "pj.guardia.nom",
+            "visibleIf": {
+              "flag": "mira_salvada"
+            },
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "dialogue": "guardia"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_passadis.guardia.look"
                   }
                 ]
               }
@@ -8115,6 +8626,64 @@
             "text": "mis.acte3.obj.fugida",
             "completeWhen": {
               "flag": "fugida_completada"
+            }
+          }
+        ]
+      },
+      "veritat": {
+        "kind": "side",
+        "title": "mis.veritat.titol",
+        "description": "mis.veritat.desc",
+        "startWhen": {
+          "all": [
+            {
+              "flag": "acte3_iniciat"
+            },
+            {
+              "flag": "mira_salvada"
+            },
+            {
+              "flag": "planols_robats"
+            }
+          ]
+        },
+        "objectives": [
+          {
+            "id": "lliurar",
+            "text": "mis.veritat.obj",
+            "completeWhen": {
+              "flag": "planols_lliurats"
+            }
+          }
+        ]
+      },
+      "memoria_cargol": {
+        "kind": "side",
+        "title": "mis.memoria_cargol.titol",
+        "description": "mis.memoria_cargol.desc",
+        "startWhen": {
+          "flag": "cargol_sap_revisio"
+        },
+        "objectives": [
+          {
+            "id": "segell",
+            "text": "mis.memoria_cargol.obj.segell",
+            "completeWhen": {
+              "flag": "cargol_reparat"
+            }
+          },
+          {
+            "id": "nom",
+            "text": "mis.memoria_cargol.obj.nom",
+            "completeWhen": {
+              "flag": "cargol_gravat"
+            }
+          },
+          {
+            "id": "placa",
+            "text": "mis.memoria_cargol.obj.placa",
+            "completeWhen": {
+              "flag": "cargol_memoria"
             }
           }
         ]
@@ -9286,24 +9855,26 @@
         ]
       },
       "vet_placa": {
-        "priority": 4,
+        "priority": 1,
         "when": {
           "all": [
             {
               "protagonist": "vet"
             },
             {
-              "hasItem": "nota_amagatall",
-              "who": "vet"
+              "hasItem": "placa_cargol"
             },
             {
-              "flag": "vet_sap_amagatall",
+              "flag": "cargol_gravat"
+            },
+            {
+              "flag": "cargol_memoria",
               "is": false
             }
           ]
         },
         "doneWhen": {
-          "flag": "vet_sap_amagatall"
+          "flag": "cargol_memoria"
         },
         "levels": [
           "pista.vet_placa.1",
@@ -11577,6 +12148,141 @@
           "pista.vet_volar.1",
           "pista.vet_volar.2"
         ]
+      },
+      "iri_cargol_segell": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "cargol_sap_revisio"
+            },
+            {
+              "flag": "cargol_reparat",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "cargol_reparat"
+        },
+        "levels": [
+          "pista.iri_cargol_segell.1",
+          "pista.iri_cargol_segell.2"
+        ]
+      },
+      "iri_cargol_nom": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "cargol_reparat"
+            },
+            {
+              "flag": "cargol_gravat",
+              "is": false
+            },
+            {
+              "hasItem": "llima"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "cargol_gravat"
+        },
+        "levels": [
+          "pista.iri_cargol_nom.1",
+          "pista.iri_cargol_nom.2"
+        ]
+      },
+      "iri_mira_planols": {
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "all": [
+                {
+                  "flag": "acte3_iniciat"
+                },
+                {
+                  "flag": "mira_salvada"
+                },
+                {
+                  "flag": "iri_fugida",
+                  "is": false
+                }
+              ]
+            },
+            {
+              "hasItem": "planols"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "planols_lliurats"
+        },
+        "levels": [
+          "pista.iri_mira_planols.1",
+          "pista.iri_mira_planols.2"
+        ]
+      },
+      "vet_vitrina": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "placa_vista"
+            },
+            {
+              "flag": "mira_salvada"
+            },
+            {
+              "flag": "vitrina_oberta",
+              "is": false
+            },
+            {
+              "hasItem": "clau_vitrina",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vitrina_oberta"
+        },
+        "levels": [
+          "pista.vet_vitrina.1",
+          "pista.vet_vitrina.2"
+        ]
+      },
+      "vet_vitrina_obrir": {
+        "priority": 2,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "clau_vitrina"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vitrina_oberta"
+        },
+        "levels": [
+          "pista.vet_vitrina_obrir.1"
+        ]
       }
     },
     "endings": {
@@ -11601,7 +12307,7 @@
               "flag": "mira_salvada"
             },
             {
-              "flag": "planols_robats"
+              "flag": "planols_lliurats"
             }
           ]
         }
@@ -11619,7 +12325,7 @@
               "flag": "mira_salvada"
             },
             {
-              "flag": "planols_robats"
+              "flag": "planols_lliurats"
             },
             {
               "flag": "cargol_memoria"
@@ -11816,6 +12522,15 @@
                     }
                   }
                 ]
+              },
+              {
+                "id": "memoria",
+                "text": "dlg.cargol.opt.memoria",
+                "next": "memoria",
+                "once": true,
+                "if": {
+                  "flag": "acte1_acabat"
+                }
               },
               {
                 "id": "alarma",
@@ -12128,6 +12843,126 @@
               }
             ],
             "goto": "menu"
+          },
+          "memoria": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.memoria1"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.memoria2"
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.memoria3"
+              },
+              {
+                "who": "player",
+                "text": "dlg.cargol.memoria_iri"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "cargol_sap_revisio"
+              }
+            ],
+            "goto": "menu"
+          }
+        }
+      },
+      "cargol_vell": {
+        "id": "cargol_vell",
+        "with": "cargol_vell",
+        "start": [
+          {
+            "if": {
+              "flag": "cargol_memoria"
+            },
+            "node": "recorda"
+          },
+          {
+            "if": {
+              "seen": {
+                "dialogue": "cargol_vell",
+                "node": "primera"
+              }
+            },
+            "node": "hola"
+          },
+          {
+            "node": "primera"
+          }
+        ],
+        "nodes": {
+          "primera": {
+            "lines": [
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.primera1"
+              },
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.primera2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "hola": {
+            "lines": [
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "recorda": {
+            "lines": [
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.recorda"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "qui",
+                "text": "dlg.cargol_vell.opt.qui",
+                "once": true,
+                "next": "qui"
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.cargol_vell.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "qui": {
+            "lines": [
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.qui1"
+              },
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.qui2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "cargol_vell",
+                "text": "dlg.cargol_vell.adeu"
+              }
+            ]
           }
         }
       },
@@ -12284,6 +13119,127 @@
           }
         }
       },
+      "guardia": {
+        "id": "guardia",
+        "with": "guardia",
+        "start": [
+          {
+            "if": {
+              "seen": {
+                "dialogue": "guardia",
+                "node": "primera"
+              }
+            },
+            "node": "hola"
+          },
+          {
+            "node": "primera"
+          }
+        ],
+        "nodes": {
+          "primera": {
+            "lines": [
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.primera1"
+              },
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.primera2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "hola": {
+            "lines": [
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "qui",
+                "text": "dlg.guardia.opt.qui",
+                "once": true,
+                "next": "qui"
+              },
+              {
+                "id": "vitrina",
+                "text": "dlg.guardia.opt.vitrina",
+                "next": "vitrina",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "placa_vista"
+                    },
+                    {
+                      "flag": "vitrina_oberta",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "clau_vitrina",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.guardia.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "qui": {
+            "lines": [
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.qui1"
+              },
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.qui2"
+              },
+              {
+                "who": "player",
+                "text": "dlg.guardia.qui_vet"
+              }
+            ],
+            "goto": "menu"
+          },
+          "vitrina": {
+            "lines": [
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.vitrina1"
+              },
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.vitrina2"
+              }
+            ],
+            "effects": [
+              {
+                "giveItem": "clau_vitrina"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "guardia",
+                "text": "dlg.guardia.adeu"
+              }
+            ]
+          }
+        }
+      },
       "mare": {
         "id": "mare",
         "with": "mare",
@@ -12372,6 +13328,135 @@
               {
                 "who": "mare",
                 "text": "dlg.mare.adeu"
+              }
+            ]
+          }
+        }
+      },
+      "mira": {
+        "id": "mira",
+        "with": "mira",
+        "start": [
+          {
+            "if": {
+              "flag": "planols_lliurats"
+            },
+            "node": "despres"
+          },
+          {
+            "if": {
+              "seen": {
+                "dialogue": "mira",
+                "node": "primera"
+              }
+            },
+            "node": "hola"
+          },
+          {
+            "node": "primera"
+          }
+        ],
+        "nodes": {
+          "primera": {
+            "lines": [
+              {
+                "who": "mira",
+                "text": "dlg.mira.primera1"
+              },
+              {
+                "who": "mira",
+                "text": "dlg.mira.primera2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "hola": {
+            "lines": [
+              {
+                "who": "mira",
+                "text": "dlg.mira.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "despres": {
+            "lines": [
+              {
+                "who": "mira",
+                "text": "dlg.mira.despres"
+              }
+            ]
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "que_dius",
+                "text": "dlg.mira.opt.que_dius",
+                "once": true,
+                "next": "que_dius"
+              },
+              {
+                "id": "planols",
+                "text": "dlg.mira.opt.planols",
+                "next": "planols",
+                "if": {
+                  "hasItem": "planols"
+                }
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.mira.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "que_dius": {
+            "lines": [
+              {
+                "who": "mira",
+                "text": "dlg.mira.que_dius1"
+              },
+              {
+                "who": "mira",
+                "text": "dlg.mira.que_dius2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "planols": {
+            "lines": [
+              {
+                "who": "player",
+                "text": "dlg.mira.planols1"
+              },
+              {
+                "who": "mira",
+                "text": "dlg.mira.planols2"
+              },
+              {
+                "who": "player",
+                "text": "dlg.mira.planols3"
+              },
+              {
+                "who": "mira",
+                "text": "dlg.mira.planols4"
+              }
+            ],
+            "effects": [
+              {
+                "takeItem": "planols"
+              },
+              {
+                "setFlag": "planols_lliurats"
+              }
+            ]
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "mira",
+                "text": "dlg.mira.adeu"
               }
             ]
           }
@@ -13037,6 +14122,46 @@
       "dlg.cargol.tub1": "Un tub de ferro-9, senyora Iri? El Director diu per megafonia que vostè és una fugitiva.",
       "dlg.cargol.tub2": "I els fugitius no omplen formularis. No hi ha casella.",
       "dlg.cargol.tub3": "Té. Que no em vegi ningú donant-l'hi. M'agradaria continuar arxivant.",
+      "dlg.cargol.opt.memoria": "Cargol, què recordes de l'any passat?",
+      "dlg.cargol.memoria1": "Res, senyora Iri. A cada revisió anual m'esborren la memòria. Norma 4-C: un robot no ha de tenir records.",
+      "dlg.cargol.memoria2": "La propera revisió és la setmana que ve. El formulari diu: «Memòria: esborrar». Segellat i tot.",
+      "dlg.cargol.memoria3": "Així que, tècnicament, la meva memòria permanent dura fins dilluns.",
+      "dlg.cargol.memoria_iri": "Fins dilluns. Ja ho veurem.",
+      "dlg.mira.planols1": "Mira. Els plànols de la cambra. El Director la va fer per obrir una finestra, i va fer servir el meu torn per provar-la.",
+      "dlg.mira.planols2": "Ho sabia. Ho sabia que no havia estat un accident.",
+      "dlg.mira.planols3": "Jo me'n vaig. Quan jo ja no hi sigui, fes-los públics.",
+      "dlg.mira.planols4": "Tu marxa. Jo me n'encarrego. I Iri... gràcies per no deixar que em culpessin a mi.",
+      "dlg.mira.primera1": "Iri! Tothom diu que el Director et busca. Què has fet?",
+      "dlg.mira.primera2": "No, no m'ho diguis. Si no ho sé, no ho puc explicar.",
+      "dlg.mira.hola": "Encara aquí? Vés amb compte.",
+      "dlg.mira.despres": "Ves-te'n, Iri. Jo m'encarrego dels plànols.",
+      "dlg.mira.opt.que_dius": "Què diuen de mi?",
+      "dlg.mira.que_dius1": "Que vas trencar la cambra del Director. I que el Sic t'ha de portar a declarar.",
+      "dlg.mira.que_dius2": "Jo dic que no et conec gaire. Menteixo fatal, però ho dic.",
+      "dlg.mira.opt.planols": "Tinc una cosa per a tu.",
+      "dlg.mira.opt.adeu": "He de marxar, Mira.",
+      "dlg.mira.adeu": "Doncs marxa. I no em diguis on.",
+      "dlg.guardia.primera1": "Interna 9. Perdona, és que... Tinc la sensació que et conec.",
+      "dlg.guardia.primera2": "Bé. No et puc deixar passar de la zona comuna, però no et trepitjaré els talons.",
+      "dlg.guardia.hola": "Interna 9. Tot bé?",
+      "dlg.guardia.opt.qui": "Qui ets?",
+      "dlg.guardia.qui1": "Guàrdia d'Orís. La meva besàvia va treballar a la fàbrica d'aquí sota, al torn de nit.",
+      "dlg.guardia.qui2": "Sempre deia que una tal I. li havia salvat la feina. I potser alguna cosa més.",
+      "dlg.guardia.qui_vet": "(La Mira. És la besneta de la Mira.)",
+      "dlg.guardia.opt.vitrina": "Tens la clau de les vitrines del museu?",
+      "dlg.guardia.vitrina1": "Les vitrines? Sí, les tinc totes en aquest clauer. Per què?",
+      "dlg.guardia.vitrina2": "...No m'ho diguis. Té. Si algú pregunta, se m'ha caigut.",
+      "dlg.guardia.opt.adeu": "Fins després.",
+      "dlg.guardia.adeu": "Vés amb compte, interna 9.",
+      "dlg.cargol_vell.primera1": "Benvinguda a la Sala de la Memòria. No toqui les vitrines.",
+      "dlg.cargol_vell.primera2": "No recordo per què. Però no les toqui.",
+      "dlg.cargol_vell.hola": "No toqui les vitrines, interna.",
+      "dlg.cargol_vell.recorda": "Interna Vet! La senyora Iri n'estaria orgullosa.",
+      "dlg.cargol_vell.opt.qui": "Qui ets?",
+      "dlg.cargol_vell.qui1": "Un robot de manteniment, model C-1. Nom... no en tinc. Em diuen «el conserge».",
+      "dlg.cargol_vell.qui2": "Abans de ser conserge vaig ser alguna cosa més. No ho recordo. Ningú no em va deixar recordar-ho.",
+      "dlg.cargol_vell.opt.adeu": "Adeu.",
+      "dlg.cargol_vell.adeu": "Adeu. No toqui les vitrines.",
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "La veritat a temps",
@@ -13151,6 +14276,14 @@
       "mis.acte3.obj.mapa": "Vet: fes arribar el mapa de fuga a l'Iri",
       "mis.acte3.obj.reixa": "Iri: deixa la reixa del conducte a punt per a la Vet",
       "mis.acte3.obj.component": "Totes dues: el tub de la vàlvula, a la llançadora",
+      "mis.veritat.titol": "La veritat a temps",
+      "mis.veritat.desc": "La Mira pot fer públics els plànols del Director quan l'Iri ja no hi sigui.",
+      "mis.veritat.obj": "Iri: dona els plànols a la Mira",
+      "mis.memoria_cargol.titol": "La memòria del Cargol",
+      "mis.memoria_cargol.desc": "A cada revisió, al Cargol li esborren la memòria.",
+      "mis.memoria_cargol.obj.segell": "Iri: fes que no li esborrin la memòria",
+      "mis.memoria_cargol.obj.nom": "Iri: que sàpiga com es diu",
+      "mis.memoria_cargol.obj.placa": "Vet: torna-li el nom al conserge del museu",
       "obj.clau_anglesa.nom": "clau anglesa",
       "obj.clau_anglesa.desc": "Una clau anglesa de ferro-9.",
       "obj.clau_anglesa.vet1": "Una clau anglesa reluent, com acabada de fer. Porta un segell: «Aldaia · Ferro-9 · Lot 1».",
@@ -13346,6 +14479,14 @@
       "obj.tub_amb_llibreta.vet1": "Un tub de vàlvula, nou. I a dins hi ha alguna cosa enrotllada.",
       "obj.tub_amb_llibreta.vet2": "Ja ho miraré a l'hangar. Aquí la Directora no em treu els ulls de sobre.",
       "obj.tram_biga.iri": "Si els encaixo, la biga ja no passarà per la finestra. Millor d'un en un.",
+      "obj.clau_vitrina.nom": "clau de la vitrina",
+      "obj.clau_vitrina.desc": "Una clau petita amb una etiqueta: «Museu».",
+      "obj.placa_cargol.nom": "placa de robot",
+      "obj.placa_cargol.desc": "Una placa d'identificació de robot, de metall gastat.",
+      "obj.placa_cargol.text": "«Robot de manteniment C-1. Corporació Aldaia.»",
+      "obj.placa_cargol.gravada": "Sota, gravat a mà amb una llima, un nom: «CARGOL».",
+      "obj.placa_cargol.vet_gravada": "Algú li va voler deixar el nom per escrit. Algú amb una llima.",
+      "obj.placa_cargol.vet_buida": "No hi ha cap nom. És la placa d'un robot sense nom.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
@@ -13358,6 +14499,12 @@
       "pj.directora.desc": "La directora de La Gavina. Besneta del Director Aldaia, i se li nota.",
       "pj.sic.nom": "Inspector Sic",
       "pj.sic.desc": "L'inspector d'inventari de la corporació. Té un humor de pedra.",
+      "pj.mira.nom": "Mira",
+      "pj.mira.desc": "La Mira d'Orís, ajudant del torn de nit. La meva amiga.",
+      "pj.guardia.nom": "Guàrdia d'Orís",
+      "pj.guardia.desc": "Una guàrdia jove d'uniforme. Somriu com si em conegués.",
+      "pj.cargol_vell.nom": "Conserge",
+      "pj.cargol_vell.desc": "Un robot de manteniment vell i rovellat, conserge del museu.",
       "pista.iri_clau.1": "La clau de la cambra la té el Cargol, al magatzem.",
       "pista.iri_clau.2": "El Cargol només dona material amb el formulari 27-B segellat.",
       "pista.iri_clau.3": "Hi ha formularis al tauler d'anuncis. El segell el té el capatàs... agafat, mentre dorm.",
@@ -13431,8 +14578,8 @@
       "pista.iri_nota_amagatall.2": "Escriu-li on és: el llapis i la llibreta.",
       "pista.iri_enviar_a2.1": "La nota ha d'arribar a la V.",
       "pista.iri_enviar_a2.2": "Posa-la dins la cambra.",
-      "pista.vet_placa.1": "La I. m'ha escrit.",
-      "pista.vet_placa.2": "Mira la nota de l'inventari.",
+      "pista.vet_placa.1": "La placa porta un nom. I al museu hi ha algú que no recorda el seu.",
+      "pista.vet_placa.2": "Dona la placa al conserge del museu.",
       "pista.vet_buscar.1": "El pilar 7... és al moll de l'hangar.",
       "pista.vet_buscar.2": "Aixeca la reixa del terra del costat del pilar.",
       "pista.iri_rovell.1": "L'acer no aguanta cent vint anys. O ferro-9, o a trossos per la finestra.",
@@ -13598,6 +14745,15 @@
       "pista.vet_tub.3": "Fes servir el tub amb la llançadora.",
       "pista.vet_volar.1": "La llançadora té el tub. Aquí ja no em queda res.",
       "pista.vet_volar.2": "Engega la llançadora.",
+      "pista.iri_cargol_segell.1": "Per al Cargol, un paper segellat és llei. Fins i tot el formulari de la seva revisió.",
+      "pista.iri_cargol_segell.2": "Fes servir el segell oficial amb el Cargol.",
+      "pista.iri_cargol_nom.1": "Ara el Cargol ho recordarà tot. Però sap com es diu?",
+      "pista.iri_cargol_nom.2": "Grava-li el nom a la placa amb la llima.",
+      "pista.iri_mira_planols.1": "La Mira és al magatzem. Ella podria fer públics els plànols quan tu ja no hi siguis.",
+      "pista.iri_mira_planols.2": "Dona els plànols a la Mira.",
+      "pista.vet_vitrina.1": "La vitrina és tancada. Algú del personal de la presó en deu tenir la clau.",
+      "pista.vet_vitrina.2": "Demana la clau de la vitrina a la Guàrdia d'Orís, al passadís.",
+      "pista.vet_vitrina_obrir.1": "Obre la vitrina del museu amb la clau.",
       "sala.fabrica_calderes.capatas.look1": "El capatàs Tul. Dorm abraçat al segell oficial com si fos un osset de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
       "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Tul?",
@@ -13931,9 +15087,9 @@
       "sala.gavina_memoria.foto.vet2": "I la noia del costat... la Mira. Somriu. Ho ha aconseguit, I.",
       "sala.gavina_memoria.foto.forat": "Al costat, un forat: algú en va retallar una altra persona.",
       "sala.gavina_memoria.vitrina.nom": "vitrina",
-      "sala.gavina_memoria.vitrina.text": "Una vitrina buida. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda)».",
+      "sala.gavina_memoria.vitrina.text": "Una vitrina. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda)». A dins, només l'espai buit de la clau.",
       "sala.gavina_memoria.vitrina.vet": "Desapareguda. Ja. Era a la meva cel·la, i ara la tinc a la butxaca.",
-      "sala.gavina_memoria.vitrina.tocar": "Buida. Com tantes coses en aquest museu.",
+      "sala.gavina_memoria.vitrina.tocar": "Ja l'he buidada. No cal fer-ne més.",
       "sala.gavina_memoria.mapa.nom": "mapa de La Gavina",
       "sala.gavina_memoria.mapa.text": "Un mapa de La Gavina, amb una estrella: «Vostè és aquí». Per sota del mòdul C hi passa una línia discontínua: «Conducte de servei de l'antiga fàbrica (en desús)».",
       "sala.gavina_memoria.mapa.vet1": "Un conducte de servei de la fàbrica, que arriba fins a l'hangar.",
@@ -14030,7 +15186,37 @@
       "sala.gavina_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»",
       "sala.fabrica_moll.conducte.mig3": "Pels altaveus: «Director Aldaia a les calderes. Caiguda de pressió.» El seu despatx es quedarà buit una estona.",
       "sala.fabrica_magatzem.porta_despatx.reunio": "Hi ha llum sota la porta i se senten veus: el director i l'inspector Sic, reunits. No penso entrar-hi a saludar.",
-      "sala.fabrica_moll.biga_per_que": "Una biga? Per a què la vull? Prou feina tinc amb les calderes."
+      "sala.fabrica_moll.biga_per_que": "Una biga? Per a què la vull? Prou feina tinc amb les calderes.",
+      "sala.fabrica_magatzem.cargol.segell1": "Agafo el seu formulari de revisió, ratllo «esborrar» i hi escric «permanent». I hi planto el segell oficial.",
+      "sala.fabrica_magatzem.cargol.segell2": "Un canvi segellat pel capatàs! Doncs és oficial: no m'esborraran res.",
+      "sala.fabrica_magatzem.cargol.segell3": "Senyora Iri... ara ho recordaré tot. També aquest moment. Sobretot aquest moment.",
+      "sala.fabrica_magatzem.cargol.llima1": "Si ho ha de recordar tot, que recordi com es diu. Li gravo el nom a la placa: C-A-R-G-O-L.",
+      "sala.fabrica_magatzem.cargol.llima2": "Un nom gravat. A la placa. Això no surt a cap norma.",
+      "sala.fabrica_magatzem.cargol.llima3": "...M'agrada. Cargol. Ho arxivaré a la memòria permanent. La de debò.",
+      "sala.fabrica_magatzem.cargol.llima_no": "Gravar-li alguna cosa? Per què, si l'any que ve no recordarà ni qui li ho va fer?",
+      "sala.fabrica_magatzem.mira.look": "La Mira, fent inventari de cargols. Per sort, encara treballa aquí.",
+      "sala.fabrica_magatzem.mira_absent1": "La taquilla de la Mira és buida. Hi ha un paper enganxat: «Acomiadada».",
+      "sala.fabrica_magatzem.mira_absent2": "La Mira ja no treballa aquí. Per culpa meva.",
+      "sala.gavina_passadis.guardia.look": "Una guàrdia jove. Té els ulls de la noia de la foto del museu.",
+      "sala.gavina_cella.reixa.fugir_guardia": "Al passadís, la Guàrdia d'Orís busca la clau de la cel·la amb una calma admirable.",
+      "sala.gavina_memoria.vitrina.placa": "Al costat, una placa de metall: «Placa d'identificació, robot C-1. Donació anònima».",
+      "sala.gavina_memoria.vitrina.placa_gravada": "Hi ha un nom gravat a mà: «CARGOL».",
+      "sala.gavina_memoria.vitrina.sense_placa": "Ara ja no hi ha ni la clau ni la placa. Un museu cada vegada més honest.",
+      "sala.gavina_memoria.vitrina.tancada": "Tancada amb clau. Algú del personal en deu tenir la clau.",
+      "sala.gavina_memoria.vitrina.obrir1": "Clic. La vitrina s'obre.",
+      "sala.gavina_memoria.vitrina.obrir2": "La clau, ja la tinc. M'emporto la placa.",
+      "sala.gavina_memoria.cargol_vell.look": "Un robot de manteniment vell, rovellat de dalt a baix. Treu la pols de les vitrines amb un plomall.",
+      "sala.gavina_memoria.cargol_vell.look_recorda": "El Cargol. Llueix la placa al pit com una medalla.",
+      "sala.gavina_memoria.cargol_vell.placa1": "Crec que això és teu.",
+      "sala.gavina_memoria.cargol_vell.placa2": "«CARGOL»... Cargol. Em dic Cargol.",
+      "sala.gavina_memoria.cargol_vell.placa3": "La senyora Iri. Em va segellar la memòria i em va gravar el nom amb una llima. Fa cent vint anys.",
+      "sala.gavina_memoria.cargol_vell.placa4": "Després va desaparèixer. Tothom deia que no tornaria. Jo vaig esperar.",
+      "sala.gavina_memoria.cargol_vell.placa5": "Vaig esperar. Era la meva feina.",
+      "sala.gavina_memoria.cargol_vell.placa6": "Ella està bé, Cargol. Ens escrivim.",
+      "sala.gavina_memoria.cargol_vell.placa7": "Doncs digui-li que el Cargol ho recorda tot. Tot.",
+      "sala.gavina_memoria.cargol_vell.sense_nom1": "Una placa sense nom. Em sona... Em sona molt.",
+      "sala.gavina_memoria.cargol_vell.sense_nom2": "Però sense nom no sé de qui és. Ho sento, interna.",
+      "sala.gavina_memoria.cargol_vell.res": "Una placa de robot. No em diu res. La tornaré a la vitrina quan pugui."
     }
   },
   "locale": "ca"

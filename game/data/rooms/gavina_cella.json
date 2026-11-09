@@ -1026,6 +1026,13 @@
               "text": "sala.gavina_cella.reixa.fugir1"
             },
             {
+              "who": "narrator",
+              "text": "sala.gavina_cella.reixa.fugir_guardia",
+              "if": {
+                "flag": "mira_salvada"
+              }
+            },
+            {
               "who": "player",
               "text": "sala.gavina_cella.reixa.fugir2"
             }

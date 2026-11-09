@@ -30,6 +30,10 @@ options.menu__dia.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'dia')
 })
 
+options.menu__memoria.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'memoria')
+})
+
 options.menu__alarma.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'alarma')
 })

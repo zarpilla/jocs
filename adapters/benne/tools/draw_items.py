@@ -414,12 +414,45 @@ def fullet_memoria(c):
     c.rect(12, 13, 23, 13, (180, 150, 60))
 
 
+def mapa_fuga(c):
+    fullet_memoria(c)
+    c.rect(11, 4, 24, 16, PAPER)                                  # el dors, dibuixat
+    line(c, 13, 6, 18, 6, INK); line(c, 18, 6, 18, 12, INK); line(c, 18, 12, 23, 12, INK)
+    c.px(13, 6, RED); c.px(23, 12, RED)
+
+
+def tub_ferro9(c):
+    c.rect(6, 8, 29, 12, F9); c.rect(6, 12, 29, 12, STEEL_B2); c.rect(6, 8, 29, 8, F9b)
+    c.rect(4, 7, 6, 13, STEEL_B); c.rect(29, 7, 31, 13, STEEL_B)
+
+
+def tub_amb_llibreta(c):
+    tub_ferro9(c)
+    c.rect(30, 9, 33, 11, RED2); c.px(33, 10, PAPER)              # la llibreta sobresurt
+
+
+def clau_vitrina(c):
+    c.ellipse(9, 10, 3.5, 3.5, SILVER); c.ellipse(9, 10, 1.4, 1.4, (0, 0, 0, 0))
+    c.rect(12, 9, 24, 10, SILVER); c.rect(12, 10, 24, 10, SILVER2)
+    c.rect(21, 11, 22, 13, SILVER); c.rect(24, 11, 24, 12, SILVER)
+    line(c, 9, 14, 11, 16, (160, 150, 130)); c.rect(10, 15, 17, 18, PAPER); c.rect(11, 16, 15, 16, INK)
+
+
+def placa_cargol(c):
+    c.rect(8, 5, 27, 15, BRASS); c.rect(8, 14, 27, 15, BRASS3); c.rect(8, 5, 27, 5, (250, 220, 140))
+    for x, y in ((9, 6), (26, 6), (9, 14), (26, 14)):
+        c.px(x, y, BRASS3)                                        # cargols
+    c.rect(11, 8, 24, 8, BRASS3)                                  # «C-1»
+    c.rect(11, 11, 24, 12, BRASS2)                                # el nom gravat
+
+
 ICONS = {f.__name__: f for f in (
     clau_anglesa, formulari_27b, formulari_segellat, formulari_triplicat, plomall, segell, clau_cambra,
     llapis, llibreta_torn, caixa_eines, imant_ferro9, nota_iri, avis_reciclatge, llapis_ulls, nota_vet,
     fullet_reeducacio, nota_pany, escarabat, sopa,
     tros_cartell, nota_mida, biga_acer, biga_ferro9, serra, tram_biga_1, tram_biga_2, tram_biga_3, biga_muntada,
     nota_amagatall, pols_rovell, molla, llima, diapaso, diapaso_espatllat, nota_pressio, nota_massa, fitxa_mira, planols, carta_mos, nota_vet_nom, nota_iri_nom, fullet_memoria,
+    mapa_fuga, tub_ferro9, tub_amb_llibreta, clau_vitrina, placa_cargol,
 )}
 
 

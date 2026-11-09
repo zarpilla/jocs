@@ -383,7 +383,38 @@ història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia 
    tub i la Vet fuig per la reixa, desenrotlla la llibreta (les proves), munta el tub i marxa; l'Iri fuig pel
    conducte fins al moll i marxa amb la llançadora nova. L'ordre és lliure: quan una marxa, el joc passa a
    l'altra, i quan han marxat totes dues surt el final.
-4. **Finals**: el Cargol del present i la seva memòria, la Guàrdia d'Orís i els tres finals.
+4. **Finals**: fet. La Guàrdia d'Orís, la Mira al passat, la memòria del Cargol i els finals
+   2 i 3. Tot és opcional i **no gasta cap encesa**: com la marca del pilar i la reixa, el passat canvia el present
+   sense la finestra. El final 1 continua sortint sense fer-ne res.
+
+   **a) La Guàrdia d'Orís** (només si la Mira es va salvar). Des del reajust en què la Mira se salva, al passadís
+   hi ha una guàrdia jove que tracta la Vet amb una amabilitat estranya: *«Tinc la sensació que et conec.»* La
+   seva besàvia va treballar a la fàbrica, al torn de nit, i sempre deia que una tal I. li havia salvat la feina.
+   Si no es va salvar la Mira, al passadís hi ha un guàrdia qualsevol, o ningú. A l'Acte 3, quan la Directora crida
+   «Atureu-la!», la Guàrdia mira cap a una altra banda. I té la clau de les vitrines del museu (vegeu c).
+
+   **b) La Mira al passat: la veritat a temps** (només si la Mira es va salvar). A l'Acte 3, quan l'Iri ja és
+   una fugitiva, la Mira és al magatzem, de torn. L'Iri li dona els **plànols** robats: *«Quan jo ja no hi sigui,
+   fes-los públics.»* «Tu marxa. Jo me n'encarrego.» Si la Mira no es va salvar, no hi és: «La Mira ja no
+   treballa aquí. Per culpa meva.» **Final 2:** fugida + Mira salvada + plànols lliurats a la Mira (abans
+   n'hi havia prou amb robar-los).
+
+   **c) La memòria del Cargol.** Al passat (des de l'Acte 2): si l'Iri li pregunta pel seu dia, el Cargol explica
+   que a cada revisió anual li esborren la memòria («norma 4-C: un robot no ha de tenir records»). L'Iri, que no
+   en té cap necessitat, li ho arregla: ratlla «esborrar» al formulari de la revisió, hi escriu «permanent» i hi
+   planta el **segell oficial** del capatàs (per al Cargol, un paper segellat és llei), i amb la llima li **grava el
+   nom a la placa**: «CARGOL», perquè sàpiga com es diu. Al present, a la Sala de la Memòria,
+   hi ha el **Cargol vell**, rovellat, que fa de conserge del museu i no recorda res (al joc es diu «Conserge»
+   fins que recupera el nom). A la vitrina, al costat de
+   la clau desapareguda, hi ha una placa: «Placa d'identificació, robot C-1. Donació anònima». Si l'Iri la hi va
+   gravar, hi diu CARGOL. La vitrina és tancada i la clau la té la **Guàrdia d'Orís** (per això el final 3 també
+   demana el 2). La Vet li torna la placa al Cargol vell, i ell **recorda**: *«La senyora Iri. [...] Jo vaig esperar.
+   Vaig esperar. Era la meva feina.»* Sense la memòria reparada, la placa no li diu res. **Final 3:**
+   el final 2 + la memòria del Cargol (reparat i amb el nom gravat, i la placa retornada).
+
+   **Personatges nous:** la Guàrdia d'Orís (present), la Mira (passat, només a l'Acte 3) i el Cargol vell
+   (present). **Pistes:** les d'aquestes missions tenen prioritat baixa, i només surten quan ja hi ha alguna cosa
+   a fer (p. ex. la de la vitrina, quan la Vet ha vist la placa).
 
 **Peces de l'Acte 2 que es fan aquí:** la **Sala de la Memòria** (la foto ratllada del torn de nit, l'holograma
 del Director i el fullet on la Vet dibuixa el mapa de fuga), la **Directora Aldaia** (que ja vol la Vet viva),
@@ -401,7 +432,7 @@ la victòria**, i depèn del que s'ha fet a les missions secundàries.
 | Final | Què passa | Requisits |
 |---|---|---|
 | **1 · La fugida** | Les dues escapen. La Vet fa pública la llibreta i La Gavina tanca: la corporació cau al present. Escena final: la Vet visita la Sala de la Memòria, ja convertida en museu de veritat, davant la foto de l'Iri, que ara no està ratllada, i un cartell que diu *"desapareguda"*. La Vet somriu, perquè ella sap on va anar. | Els tres components. És el final base. |
-| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació d'Orís**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols robats. |
+| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació d'Orís**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols lliurats a la Mira abans de fugir. |
 | **3 · Correspondència** | Tot el que passa al final 2, i a més el Cargol, que es va quedar al passat, **es passa 120 anys reparant la cambra** sense que ningú no ho sàpiga. Quan la Vet arriba a l'estació, el Cargol vell l'hi espera amb una carta de l'Iri: va viure una vida llarga i lliure. La finestra torna a funcionar, i **les dues es poden continuar escrivint**. *"Vaig esperar. Era la meva feina."* | Final 2, i també la memòria del Cargol (reparat, no desmuntat, amb el nom gravat). |
 
 Com que sempre és la mateixa història amb més o menys coses arreglades, el jugador que acabi el final 1

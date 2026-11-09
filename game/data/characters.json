@@ -58,5 +58,17 @@
   "sic": {
     "name": "pj.sic.nom",
     "description": "pj.sic.desc"
+  },
+  "mira": {
+    "name": "pj.mira.nom",
+    "description": "pj.mira.desc"
+  },
+  "guardia": {
+    "name": "pj.guardia.nom",
+    "description": "pj.guardia.desc"
+  },
+  "cargol_vell": {
+    "name": "pj.cargol_vell.nom",
+    "description": "pj.cargol_vell.desc"
   }
 }

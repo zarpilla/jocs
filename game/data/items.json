@@ -1921,5 +1921,54 @@
         ]
       }
     ]
+  },
+  "clau_vitrina": {
+    "name": "obj.clau_vitrina.nom",
+    "description": "obj.clau_vitrina.desc",
+    "props": {
+      "pes": 0.05
+    }
+  },
+  "placa_cargol": {
+    "name": "obj.placa_cargol.nom",
+    "description": "obj.placa_cargol.desc",
+    "props": {
+      "pes": 0.2
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "cargol_gravat"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.placa_cargol.text"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.placa_cargol.gravada"
+          },
+          {
+            "who": "player",
+            "text": "obj.placa_cargol.vet_gravada"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.placa_cargol.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.placa_cargol.vet_buida"
+          }
+        ]
+      }
+    ]
   }
 }

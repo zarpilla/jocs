@@ -232,5 +232,63 @@
         }
       }
     ]
+  },
+  "veritat": {
+    "kind": "side",
+    "title": "mis.veritat.titol",
+    "description": "mis.veritat.desc",
+    "startWhen": {
+      "all": [
+        {
+          "flag": "acte3_iniciat"
+        },
+        {
+          "flag": "mira_salvada"
+        },
+        {
+          "flag": "planols_robats"
+        }
+      ]
+    },
+    "objectives": [
+      {
+        "id": "lliurar",
+        "text": "mis.veritat.obj",
+        "completeWhen": {
+          "flag": "planols_lliurats"
+        }
+      }
+    ]
+  },
+  "memoria_cargol": {
+    "kind": "side",
+    "title": "mis.memoria_cargol.titol",
+    "description": "mis.memoria_cargol.desc",
+    "startWhen": {
+      "flag": "cargol_sap_revisio"
+    },
+    "objectives": [
+      {
+        "id": "segell",
+        "text": "mis.memoria_cargol.obj.segell",
+        "completeWhen": {
+          "flag": "cargol_reparat"
+        }
+      },
+      {
+        "id": "nom",
+        "text": "mis.memoria_cargol.obj.nom",
+        "completeWhen": {
+          "flag": "cargol_gravat"
+        }
+      },
+      {
+        "id": "placa",
+        "text": "mis.memoria_cargol.obj.placa",
+        "completeWhen": {
+          "flag": "cargol_memoria"
+        }
+      }
+    ]
   }
 }

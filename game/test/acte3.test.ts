@@ -3,7 +3,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { estatFinestra } from '../logic/index.js';
-import { jugarActe1, jugarActe2, keys, partida, texts } from './partida.js';
+import { jugarActe1, jugarActe2, jugarActe3, keys, partida, texts } from './partida.js';
 
 const item = (id: string) => ({ kind: 'item' as const, id });
 
@@ -145,5 +145,93 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     n.apply({ giveItem: 'nota_vet', who: 'iri' });
     expect(keys(p.use('nota_vet', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri']);
     expect(estatFinestra(n).enceses).toBe(enceses);
+  });
+});
+
+describe('Ferro-9 · Acte 3 · Els finals', () => {
+  it('sense res de més, el final 1: la fugida', () => {
+    const { p, n } = partida({ checkHints: true, fins: 'fugida_completada' });
+    jugarActe1(p);
+    jugarActe2(p);
+    jugarActe3(p);
+    expect(n.flag('fugida_completada')).toBe(true);
+    expect(n.resolveEnding()).toBe('fugida');
+  });
+
+  it("la Mira salvada rep els plànols (final 2), i el Cargol vell recupera el nom (final 3)", () => {
+    const { p, n } = partida({ checkHints: true, fins: 'fugida_completada' });
+    jugarActe1(p);
+    jugarActe2(p, { mira: true, cargol: true });
+    expect(n.flag('mira_salvada')).toBe(true);
+    expect(n.flag('cargol_reparat')).toBe(true);
+    expect(n.flag('cargol_gravat')).toBe(true);
+    expect(n.state.quests.memoria_cargol!.objectives.nom).toBe(true);
+    jugarActe3(p, {
+      vet: () => {
+        // La Guàrdia d'Orís, al passadís; la placa, a la vitrina del museu.
+        p.do('open', 'porta_passadis');
+        expect(n.isHotspotVisible('gavina_passadis', 'guardia')).toBe(true);
+        expect(texts(p.talk('guardia', 'qui'))).toContain('una tal I.');
+        p.do('open', 'porta_memoria');
+        expect(texts(p.do('look', 'vitrina'))).toContain('CARGOL');
+        expect(texts(p.do('open', 'vitrina'))).toContain('Tancada');
+        expect(texts(p.talk('cargol_vell', 'qui'))).toContain('conserge');
+        p.do('open', 'porta_passadis');
+        expect(texts(p.talk('guardia', 'vitrina'))).toContain('se m\'ha caigut');
+        p.do('open', 'porta_memoria');
+        p.use('clau_vitrina', 'vitrina');
+        expect(p.inventory()).toContain('placa_cargol');
+        expect(texts(p.use('placa_cargol', 'cargol_vell'))).toContain('Era la meva feina');
+        expect(n.flag('cargol_memoria')).toBe(true);
+        p.do('open', 'porta_passadis');
+        p.do('open', 'porta_hangar');
+      },
+      iri: () => {
+        expect(n.isHotspotVisible('fabrica_magatzem', 'mira')).toBe(true);
+        expect(texts(p.use('planols', 'mira'))).toContain('fes-los públics');
+        expect(n.flag('planols_lliurats')).toBe(true);
+      },
+    });
+    expect(n.flag('fugida_completada')).toBe(true);
+    expect(n.resolveEnding()).toBe('correspondencia');
+  });
+
+  it("amb la Mira salvada però sense la memòria del Cargol, el final 2; la placa sense nom no li diu res", () => {
+    const { p, n } = partida({ fins: 'fugida_completada' });
+    jugarActe1(p);
+    jugarActe2(p, { mira: true });
+    jugarActe3(p, {
+      vet: () => {
+        p.do('open', 'porta_passadis');
+        p.do('open', 'porta_memoria');
+        expect(texts(p.do('look', 'vitrina'))).not.toContain('CARGOL');
+        p.do('open', 'porta_passadis');
+        p.talk('guardia', 'vitrina');
+        p.do('open', 'porta_memoria');
+        p.use('clau_vitrina', 'vitrina');
+        expect(texts(p.use('placa_cargol', 'cargol_vell'))).toContain('No em diu res');
+        expect(n.flag('cargol_memoria')).toBe(false);
+        p.do('open', 'porta_passadis');
+        p.do('open', 'porta_hangar');
+      },
+      iri: () => { p.use('planols', 'mira'); },
+    });
+    expect(n.resolveEnding()).toBe('veritat');
+  });
+
+  it('si la Mira no es va salvar, al passat no hi és i al present no hi ha cap guàrdia', () => {
+    const { p, n } = partida({ fins: 'fugida_completada' });
+    jugarActe1(p);
+    jugarActe2(p);
+    n.apply({ addVar: 'sospita_sic', amount: 5 });
+    jugarActe3(p, {
+      vet: () => {
+        p.do('open', 'porta_passadis');
+        expect(n.isHotspotVisible('gavina_passadis', 'guardia')).toBe(false);
+        p.do('open', 'porta_hangar');
+      },
+    });
+    expect(n.isHotspotVisible('fabrica_magatzem', 'mira')).toBe(false);
+    expect(n.resolveEnding()).toBe('fugida');
   });
 });

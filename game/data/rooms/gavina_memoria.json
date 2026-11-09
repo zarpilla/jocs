@@ -128,7 +128,41 @@
       "name": "sala.gavina_memoria.vitrina.nom",
       "interactions": [
         {
+          "verb": [
+            "use"
+          ],
+          "item": "clau_vitrina",
+          "if": {
+            "flag": "vitrina_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.vitrina.obrir1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.vitrina.obrir2"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "clau_vitrina"
+            },
+            {
+              "giveItem": "placa_cargol"
+            },
+            {
+              "setFlag": "vitrina_oberta"
+            }
+          ]
+        },
+        {
           "verb": "look",
+          "if": {
+            "flag": "vitrina_oberta"
+          },
           "lines": [
             {
               "who": "narrator",
@@ -136,7 +170,74 @@
             },
             {
               "who": "player",
+              "text": "sala.gavina_memoria.vitrina.sense_placa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "cargol_gravat"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.vitrina.text"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.vitrina.placa"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.vitrina.placa_gravada"
+            },
+            {
+              "who": "player",
               "text": "sala.gavina_memoria.vitrina.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "placa_vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.vitrina.text"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_memoria.vitrina.placa"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.vitrina.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "placa_vista"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "vitrina_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.vitrina.tocar"
             }
           ]
         },
@@ -149,7 +250,12 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_memoria.vitrina.tocar"
+              "text": "sala.gavina_memoria.vitrina.tancada"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "placa_vista"
             }
           ]
         }
@@ -222,6 +328,117 @@
             {
               "who": "player",
               "text": "sala.gavina_memoria.fullets.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cargol_vell": {
+      "name": "pj.cargol_vell.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "placa_cargol",
+          "if": {
+            "flag": "cargol_gravat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.cargol_vell.placa1"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.placa2"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.placa3"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.placa4"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.placa5"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.cargol_vell.placa6"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.placa7"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "placa_cargol"
+            },
+            {
+              "setFlag": "cargol_memoria"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "placa_cargol",
+          "if": {
+            "flag": "cargol_reparat"
+          },
+          "lines": [
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.sense_nom1"
+            },
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.sense_nom2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "placa_cargol",
+          "lines": [
+            {
+              "who": "cargol_vell",
+              "text": "sala.gavina_memoria.cargol_vell.res"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "cargol_vell"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "cargol_memoria"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.cargol_vell.look_recorda"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.cargol_vell.look"
             }
           ]
         }

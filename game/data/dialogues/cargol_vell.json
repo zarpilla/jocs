@@ -1,0 +1,95 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "cargol_vell",
+  "with": "cargol_vell",
+  "start": [
+    {
+      "if": {
+        "flag": "cargol_memoria"
+      },
+      "node": "recorda"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "cargol_vell",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.primera1"
+        },
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.primera2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "recorda": {
+      "lines": [
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.recorda"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "qui",
+          "text": "dlg.cargol_vell.opt.qui",
+          "once": true,
+          "next": "qui"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.cargol_vell.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "qui": {
+      "lines": [
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.qui1"
+        },
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.qui2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "cargol_vell",
+          "text": "dlg.cargol_vell.adeu"
+        }
+      ]
+    }
+  }
+}

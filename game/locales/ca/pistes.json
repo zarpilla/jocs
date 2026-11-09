@@ -72,8 +72,8 @@
   "pista.iri_nota_amagatall.2": "Escriu-li on és: el llapis i la llibreta.",
   "pista.iri_enviar_a2.1": "La nota ha d'arribar a la V.",
   "pista.iri_enviar_a2.2": "Posa-la dins la cambra.",
-  "pista.vet_placa.1": "La I. m'ha escrit.",
-  "pista.vet_placa.2": "Mira la nota de l'inventari.",
+  "pista.vet_placa.1": "La placa porta un nom. I al museu hi ha algú que no recorda el seu.",
+  "pista.vet_placa.2": "Dona la placa al conserge del museu.",
   "pista.vet_buscar.1": "El pilar 7... és al moll de l'hangar.",
   "pista.vet_buscar.2": "Aixeca la reixa del terra del costat del pilar.",
   "pista.iri_rovell.1": "L'acer no aguanta cent vint anys. O ferro-9, o a trossos per la finestra.",
@@ -238,5 +238,14 @@
   "pista.vet_tub.2": "Per la reixa, fins a l'hangar.",
   "pista.vet_tub.3": "Fes servir el tub amb la llançadora.",
   "pista.vet_volar.1": "La llançadora té el tub. Aquí ja no em queda res.",
-  "pista.vet_volar.2": "Engega la llançadora."
+  "pista.vet_volar.2": "Engega la llançadora.",
+  "pista.iri_cargol_segell.1": "Per al Cargol, un paper segellat és llei. Fins i tot el formulari de la seva revisió.",
+  "pista.iri_cargol_segell.2": "Fes servir el segell oficial amb el Cargol.",
+  "pista.iri_cargol_nom.1": "Ara el Cargol ho recordarà tot. Però sap com es diu?",
+  "pista.iri_cargol_nom.2": "Grava-li el nom a la placa amb la llima.",
+  "pista.iri_mira_planols.1": "La Mira és al magatzem. Ella podria fer públics els plànols quan tu ja no hi siguis.",
+  "pista.iri_mira_planols.2": "Dona els plànols a la Mira.",
+  "pista.vet_vitrina.1": "La vitrina és tancada. Algú del personal de la presó en deu tenir la clau.",
+  "pista.vet_vitrina.2": "Demana la clau de la vitrina a la Guàrdia d'Orís, al passadís.",
+  "pista.vet_vitrina_obrir.1": "Obre la vitrina del museu amb la clau."
 }

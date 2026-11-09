@@ -158,6 +158,27 @@
           ]
         }
       ]
+    },
+    "guardia": {
+      "name": "pj.guardia.nom",
+      "visibleIf": {
+        "flag": "mira_salvada"
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "guardia"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.guardia.look"
+            }
+          ]
+        }
+      ]
     }
   },
   "onEnter": [

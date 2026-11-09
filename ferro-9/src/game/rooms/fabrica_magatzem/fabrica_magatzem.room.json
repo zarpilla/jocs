@@ -252,6 +252,16 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
+    },
+    {
+      "instanceId": "mira-1",
+      "definition": "mira/mira.character.json",
+      "x": 409,
+      "y": 191,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }
