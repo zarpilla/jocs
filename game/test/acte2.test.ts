@@ -470,7 +470,7 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     p.switchTo('iri');
     robarPlanols(p);
     expect(n.getVar('sospita_sic')).toBe(2);
-    expect(texts(p.do('look', 'expedient_sic'))).toContain('M. Alsina');
+    expect(texts(p.do('look', 'expedient_sic'))).toContain("M. d'Orís");
     expect(n.state.quests.salvar_mira!.status).toBe('active');
     p.use('segell', 'llibre_inventari');
     expect(n.flag('mira_salvada')).toBe(true);

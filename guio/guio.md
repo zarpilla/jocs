@@ -69,8 +69,8 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 | Personatge | Passat | Present | Per a què serveix |
 |---|---|---|---|
 | **Cargol** | Robot de manteniment acabat d'estrenar. Obsessionat amb les normes. | Vell i rovellat (ell no és de ferro-9), conserge de la presó. Parla de "la senyora Iri". | **Memòria a través del temps.** Si l'Iri el repara i el tracta bé, al present ajuda la Vet. Si li pren peces per fer components, al present és hostil o ni tan sols hi és. |
-| **Mira Alsina** | Companya i amiga de l'Iri. | Existeix només als registres... o no. | **El cost humà.** La corporació l'acusa dels robatoris de l'Iri. Salvar-la és una missió secundària. |
-| **Guàrdia Alsina** | — | Guàrdia de La Gavina, besneta de la Mira. **Només existeix si la Mira es va salvar.** | Una aliada al present i una peça dels finals 2 i 3. |
+| **Mira d'Orís** | Companya i amiga de l'Iri. | Existeix només als registres... o no. | **El cost humà.** La corporació l'acusa dels robatoris de l'Iri. Salvar-la és una missió secundària. |
+| **Guàrdia d'Orís** | — | Guàrdia de La Gavina, besneta de la Mira. **Només existeix si la Mira es va salvar.** | Una aliada al present i una peça dels finals 2 i 3. |
 | **Director Aldaia** | Fundador de la corporació. Encantador i terrible. | Holograma de la Sala de la Memòria, fent de guia turístic. | L'antagonista del passat, i també un gag recurrent al present. |
 | **Directora Aldaia** | — | Rebesneta del fundador. Cita l'avantpassat a cada frase. | L'antagonista del present. A l'Acte 3 vol la finestra per a ella. |
 | **Inspector Sic** | Inspector d'inventari de la corporació. Té un humor de pedra. | — | L'amenaça que creix a l'Acte 2. Cada robatori de l'Iri li deixa una pista. |
@@ -223,7 +223,7 @@ a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 2. **El diapasó**: fet.
 3. **La vàlvula**: fet.
 4. **L'arxiu i el despatx** (el cost humà i el tancament): fet. El Cargol del present i la missió de la seva
-   memòria, la Guàrdia Alsina i la Sala de la Memòria passen a l'Acte 3.
+   memòria, la Guàrdia d'Orís i la Sala de la Memòria passen a l'Acte 3.
 
 #### Component 2: el diapasó (el pany sònic de l'hangar)
 
@@ -271,7 +271,7 @@ Per engegar, la llançadora necessita pressió al vell conducte.
 3. **Reajust:** quan la Vet torna al moll de l'hangar, té mal de cap i el troba inundat («abans era sec, n'estic
    segura»). El conducte ha rebentat i la llançadora no engega.
 4. **Mentre està inundat**, s'obre un camí: una caixa de l'arxiu sura fins al moll, i a dins hi ha la fitxa de
-   personal de la **Mira Alsina**. El que hi diu depèn del passat: amb la sospita del Sic alta (si l'Iri ha robat
+   personal de la **Mira d'Orís**. El que hi diu depèn del passat: amb la sospita del Sic alta (si l'Iri ha robat
    ferro-9), «acusada del robatori de material inventariat. Acomiadada». I se'n tanca un altre: l'escala de l'arxiu
    és sota l'aigua.
 5. La Vet envia «MASSA!!!». L'Iri **obre una mica** la vàlvula. Un altre reajust: l'aigua desapareix com si no hi
@@ -286,7 +286,7 @@ la inundació no és un error del jugador, és la lliçó.
 - Al segon robatori **acusen la Mira**. Salvar-la és una missió secundària: l'Iri pot falsificar
   l'inventari, posar proves falses contra el capatàs o confessar.
 - Al present, la Sala de la Memòria **canvia amb el reajust**: el registre de l'empresonament de la Mira hi
-  és o no hi és. Si la Mira es va salvar, la Guàrdia Alsina existeix i tracta la Vet amb una amabilitat
+  és o no hi és. Si la Mira es va salvar, la Guàrdia d'Orís existeix i tracta la Vet amb una amabilitat
   estranya ("Tinc la sensació que et conec").
 
 #### La revelació de l'Acte 2
@@ -383,11 +383,11 @@ història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia 
    tub i la Vet fuig per la reixa, desenrotlla la llibreta (les proves), munta el tub i marxa; l'Iri fuig pel
    conducte fins al moll i marxa amb la llançadora nova. L'ordre és lliure: quan una marxa, el joc passa a
    l'altra, i quan han marxat totes dues surt el final.
-4. **Finals**: el Cargol del present i la seva memòria, la Guàrdia Alsina i els tres finals.
+4. **Finals**: el Cargol del present i la seva memòria, la Guàrdia d'Orís i els tres finals.
 
 **Peces de l'Acte 2 que es fan aquí:** la **Sala de la Memòria** (la foto ratllada del torn de nit, l'holograma
 del Director i el fullet on la Vet dibuixa el mapa de fuga), la **Directora Aldaia** (que ja vol la Vet viva),
-el **Cargol del present** i la missió de **la seva memòria**, i la **Guàrdia Alsina**, que només existeix si la Mira
+el **Cargol del present** i la missió de **la seva memòria**, i la **Guàrdia d'Orís**, que només existeix si la Mira
 es va salvar.
 
 **Sense derrotes ni atzucacs:** si alguna cosa surt malament a l'Acte 3 (la Directora descobreix la Vet,
@@ -401,7 +401,7 @@ la victòria**, i depèn del que s'ha fet a les missions secundàries.
 | Final | Què passa | Requisits |
 |---|---|---|
 | **1 · La fugida** | Les dues escapen. La Vet fa pública la llibreta i La Gavina tanca: la corporació cau al present. Escena final: la Vet visita la Sala de la Memòria, ja convertida en museu de veritat, davant la foto de l'Iri, que ara no està ratllada, i un cartell que diu *"desapareguda"*. La Vet somriu, perquè ella sap on va anar. | Els tres components. És el final base. |
-| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació Alsina**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols robats. |
+| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació d'Orís**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols robats. |
 | **3 · Correspondència** | Tot el que passa al final 2, i a més el Cargol, que es va quedar al passat, **es passa 120 anys reparant la cambra** sense que ningú no ho sàpiga. Quan la Vet arriba a l'estació, el Cargol vell l'hi espera amb una carta de l'Iri: va viure una vida llarga i lliure. La finestra torna a funcionar, i **les dues es poden continuar escrivint**. *"Vaig esperar. Era la meva feina."* | Final 2, i també la memòria del Cargol (reparat, no desmuntat, amb el nom gravat). |
 
 Com que sempre és la mateixa història amb més o menys coses arreglades, el jugador que acabi el final 1
@@ -413,7 +413,7 @@ Com que sempre és la mateixa història amb més o menys coses arreglades, el ju
 
 | Missió | Qui | Què | Conseqüència |
 |---|---|---|---|
-| **Salvar la Mira** | Iri | Treure la sospita de sobre la Mira (amb tres solucions possibles). | La Guàrdia Alsina existeix al present. Necessari per als finals 2 i 3. |
+| **Salvar la Mira** | Iri | Treure la sospita de sobre la Mira (amb tres solucions possibles). | La Guàrdia d'Orís existeix al present. Necessari per als finals 2 i 3. |
 | **La memòria del Cargol** | Iri + Vet | L'Iri li repara el mòdul de memòria i li grava el nom a la placa. La Vet li retorna la placa, que s'havia perdut. | El Cargol vell ajuda la Vet. Necessari per al final 3. |
 | **El missatge d'en Mos** | Vet | En Mos vol saber si la seva filla va rebre una carta que ell va escriure. La Vet la troba a l'Arxiu. | En Mos explica el secret del reciclatge abans d'hora i dona una drecera a l'Acte 2. |
 | **Les notes perdudes** | Vet | Col·leccionable: notes de sincronitzadors fallits amagades per la presó durant 120 anys. | Història del món i pistes. |
@@ -462,7 +462,7 @@ ACTE 3
 | Camp armat, components muntats, plànols robats... | `flags` a `state.json`: `camp_vet_armat`, `palanca_muntada`, `planols_robats`... |
 | L'encesa que queda, el nivell de sospita de l'Inspector | `vars`: `enceses_restants`, `sospita_sic` |
 | El Cargol recorda l'Iri | `characters.json`: el Cargol amb els fets `reparat`, `desmuntat` i `nom_gravat`, i la `relation` |
-| La Mira i la Guàrdia Alsina | Missió `salvar_mira`. La Guàrdia Alsina és un objecte o personatge condicional (`visibleIf`) |
+| La Mira i la Guàrdia d'Orís | Missió `salvar_mira`. La Guàrdia d'Orís és un objecte o personatge condicional (`visibleIf`) |
 | Inundació, caixa que sura | Objectes condicionals segons `conducte_segellat` |
 | Tres finals | `endings.json` amb `when` i `priority` (el 3 és el de més prioritat) |
 | Pistes de la llibreta i del diari | `hints.json`, amb nivells |
