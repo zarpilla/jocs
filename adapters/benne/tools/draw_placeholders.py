@@ -337,7 +337,34 @@ def add_switch_button(game_dir: Path):
     print('✔ barra de verbs: botó «Canvia»')
 
 
+def draw_cover_gui(game_dir: Path):
+    """Les caselles dels botons de la portada (GUI `portada`): normal i hover, a pantalla completa."""
+    gui = game_dir / 'guis/portada/portada.gui.json'
+    d = game_dir / 'assets/images/guis/portada'
+    if not gui.exists() or ((d / 'portada.png').exists() and not (d / '.provisional').exists()):
+        return
+    d.mkdir(parents=True, exist_ok=True)
+    buttons = [ctl for ctl in json.loads(gui.read_text())['controls'] if ctl.get('type') == 'button']
+    w, h = 480, 270
+    frames, tags = [], []
+    for b in buttons:
+        for tag, fill, vora in ((b['id'], (26, 70, 107), (60, 110, 150)), (f"{b['id']}-hover", (40, 96, 140), (150, 230, 190))):
+            f = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+            box = [b['x'], b['y'], b['x'] + b['width'] - 1, b['y'] + b['height'] - 1]
+            ImageDraw.Draw(f).rectangle(box, fill=fill + (235,), outline=vora + (255,))
+            frames.append(f)
+            tags.append(tag)
+    sheet = Image.new('RGBA', (w * len(frames), h), (0, 0, 0, 0))
+    for i, f in enumerate(frames):
+        sheet.paste(f, (i * w, 0))
+    sheet.save(d / 'portada.png')
+    (d / 'portada.json').write_text(json.dumps(aseprite_sheet('portada', len(frames), tags, w, h), indent=2) + '\n')
+    (d / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
+    print('✔ portada: caselles dels botons')
+
+
 def main(game_dir: Path):
+    draw_cover_gui(game_dir)
     add_switch_button(game_dir)
     fonts = game_dir / 'assets/fonts'
     font = BitmapFont(fonts / 'lucasarts-scumm-solid.xml')

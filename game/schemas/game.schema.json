@@ -54,6 +54,10 @@
           "$ref": "#/definitions/Id",
           "description": "Sala on comença la partida abans de la de la primera protagonista: un pròleg fet de sales `cutscene` que es porten l'una a l'altra amb `goTo`."
         },
+        "cover": {
+          "$ref": "#/definitions/Id",
+          "description": "Portada: la sala on s'obre el joc, amb el títol i els botons «Comença» i «Carrega» (els posa l'adaptador). «Comença» porta a `intro` (o a la sala de la primera protagonista)."
+        },
         "switchWhen": {
           "$ref": "#/definitions/Condition",
           "description": "Quan pot el jugador canviar de protagonista quan vulgui (botó «Canvia»). Sense, sempre. Els canvis que fa la història (`{ \"event\": \"protagonista\" }`) no en depenen."

@@ -1332,18 +1332,20 @@ def _estels(c, n, seed, y1=H):
         c.px(x, y, (b, b, min(255, b + 20)))
 
 
-def proleg_gavina_bg(c):
+def espai_gavina(c, cx=120, cy=70, tx=290, ty=250, vinyeta=True):
+    """L'espai amb la Terra (centre tx, ty) i La Gavina (centre cx, cy)."""
     c.vgrad(0, 0, W, H, (4, 6, 16), (10, 16, 40))
     _estels(c, 90, 7)
     # La Terra, enorme, a baix a la dreta
-    c.glow(290, 250, 150, (90, 150, 255), 0.6)
-    c.ellipse(170, 130, 410, 370, (36, 90, 190))
-    c.ellipse(200, 150, 260, 185, (70, 140, 80)); c.ellipse(240, 170, 300, 200, (80, 150, 86))
-    c.ellipse(300, 145, 345, 165, (90, 156, 92)); c.ellipse(320, 175, 352, 198, (70, 140, 80))
-    c.ellipse(215, 140, 250, 150, (232, 240, 255)); c.ellipse(275, 160, 320, 170, (232, 240, 255))
-    c.d.arc([170, 130, 410, 370], 180, 360, fill=(160, 210, 255), width=2)
+    ox, oy = tx - 290, ty - 250
+    T = lambda x0, y0, x1, y1: (x0 + ox, y0 + oy, x1 + ox, y1 + oy)
+    c.glow(tx, ty, 150, (90, 150, 255), 0.6)
+    c.ellipse(*T(170, 130, 410, 370), (36, 90, 190))
+    c.ellipse(*T(200, 150, 260, 185), (70, 140, 80)); c.ellipse(*T(240, 170, 300, 200), (80, 150, 86))
+    c.ellipse(*T(300, 145, 345, 165), (90, 156, 92)); c.ellipse(*T(320, 175, 352, 198), (70, 140, 80))
+    c.ellipse(*T(215, 140, 250, 150), (232, 240, 255)); c.ellipse(*T(275, 160, 320, 170), (232, 240, 255))
+    c.d.arc(list(T(170, 130, 410, 370)), 180, 360, fill=(160, 210, 255), width=2)
     # La Gavina: un cos central i dues ales de panells solars doblegades, com una gavina planant
-    cx, cy = 120, 70
     for sign in (-1, 1):
         colze = (cx + sign * 46, cy - 26)
         punta = (cx + sign * 96, cy - 8)
@@ -1362,7 +1364,12 @@ def proleg_gavina_bg(c):
         c.px(x, cy + 2, (60, 66, 80))
     c.px(cx + 6, cy + 3, (255, 210, 120))                                      # una sola finestra encesa
     c.glow(cx + 6, cy + 3, 6, (255, 200, 120), 0.8)
-    vignette(c, 110)
+    if vinyeta:
+        vignette(c, 110)
+
+
+def proleg_gavina_bg(c):
+    espai_gavina(c)
 
 
 def proleg_cella_bg(c):
@@ -1441,6 +1448,60 @@ PROLEG_FABRICA = _proleg(proleg_fabrica_bg, 'iri')
 PROLEG_CAMBRA = _proleg(proleg_cambra_bg, 'iri')
 
 
+
+# ─── Portada: la fàbrica i La Gavina, partides en diagonal, i el títol ──────
+
+# Lletres de 5×7 per al títol (1 = píxel ple).
+LLETRES = {
+    'F': ['11111', '10000', '10000', '11110', '10000', '10000', '10000'],
+    'E': ['11111', '10000', '10000', '11110', '10000', '10000', '11111'],
+    'R': ['11110', '10001', '10001', '11110', '10100', '10010', '10001'],
+    'O': ['01110', '10001', '10001', '10001', '10001', '10001', '01110'],
+    '-': ['00000', '00000', '00000', '11111', '00000', '00000', '00000'],
+    '9': ['01110', '10001', '10001', '01111', '00001', '00010', '01100'],
+}
+
+
+def titol(c, text, cx, y, mida):
+    """Un títol en lletres de píxel grosses, de metall (ferro-9 que no s'oxida), amb ombra."""
+    amplada = len(text) * 6 * mida - mida
+    x0 = cx - amplada / 2
+    for passada, desplaçament in (('ombra', 2), ('vora', 1), ('cos', 0)):
+        for i, lletra in enumerate(text):
+            for fila, bits in enumerate(LLETRES[lletra]):
+                for col, bit in enumerate(bits):
+                    if bit != '1':
+                        continue
+                    x = x0 + (i * 6 + col) * mida + desplaçament
+                    yy = y + fila * mida + desplaçament
+                    if passada == 'ombra':
+                        c.rect(x, yy, x + mida - 1, yy + mida - 1, (6, 8, 16))
+                    elif passada == 'vora':
+                        c.rect(x - 1, yy - 1, x + mida, yy + mida, (20, 30, 50))
+                    else:
+                        t = fila / 6
+                        c.rect(x, yy, x + mida - 1, yy + mida - 1, lerp((236, 244, 255), (120, 170, 220), t))
+                        c.px(x, yy, (255, 255, 255))
+
+
+def portada_bg(c):
+    w, h = c.img.size
+    fabrica = Image.new('RGBA', (w, h), (0, 0, 0, 255))
+    proleg_fabrica_bg(C(fabrica, c.k))
+    espai_gavina(c, cx=262, cy=104, tx=360, ty=260, vinyeta=False)
+    tall = Image.new('L', (w, h), 0)
+    ImageDraw.Draw(tall).polygon([(0, 0), (round(200 * c.k), 0), (round(150 * c.k), h), (0, h)], fill=255)
+    c.img.paste(fabrica, (0, 0), tall)
+    c.line([(200, 0), (150, H)], (235, 235, 245), 1)
+    c.shade(0, 0, W, H, (0, 0, 0), 60)
+    titol(c, 'FERRO-9', W / 2, 16, 5)
+    vignette(c, 120)
+
+
+PORTADA = {'era': 'vet', 'things': {}, 'spawns': {}, 'walkable': [(150, 190), (200, 190), (200, 196), (150, 196)],
+           'bg': portada_bg, 'props': {}}
+
+
 DESIGNS = {
     'fabrica_calderes': CALDERES,
     'fabrica_magatzem': MAGATZEM,
@@ -1456,4 +1517,5 @@ DESIGNS = {
     'proleg_cella': PROLEG_CELLA,
     'proleg_fabrica': PROLEG_FABRICA,
     'proleg_cambra': PROLEG_CAMBRA,
+    'portada': PORTADA,
 }

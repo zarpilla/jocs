@@ -138,6 +138,11 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 
 ## Sense protagonista
 
+### Ferro-9 · `portada`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
 ### La cambra · `proleg_cambra`
 
 | Id | Nom | Tipus | Apareix | Verbs |

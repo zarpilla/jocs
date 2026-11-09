@@ -76,6 +76,11 @@ export interface GameManifest {
    */
   intro?: Id;
   /**
+   * Portada: la sala on s'obre el joc, amb el títol i els botons «Comença» i «Carrega» (els posa
+   * l'adaptador). «Comença» porta a `intro` (o a la sala de la primera protagonista).
+   */
+  cover?: Id;
+  /**
    * Quan pot el jugador canviar de protagonista quan vulgui (botó «Canvia»). Sense, sempre. Els canvis
    * que fa la història (`{ "event": "protagonista" }`) no en depenen.
    */

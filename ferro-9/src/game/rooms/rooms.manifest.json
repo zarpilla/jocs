@@ -1,5 +1,5 @@
 {
-  "startRoomId": "proleg_gavina",
+  "startRoomId": "portada",
   "rooms": [
     {
       "id": "fabrica_calderes",
@@ -56,6 +56,10 @@
     {
       "id": "proleg_gavina",
       "definition": "proleg_gavina/proleg_gavina.room.json"
+    },
+    {
+      "id": "portada",
+      "definition": "portada/portada.room.json"
     }
   ]
 }

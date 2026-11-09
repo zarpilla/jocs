@@ -157,6 +157,7 @@ export function validateContent(
     for (const item of start.items ?? []) if (!items[item]) err('game.json.start', `Objecte desconegut "${item}".`);
   }
   cond('game.json.switchWhen', manifest.switchWhen);
+  if (manifest.cover && !rooms[manifest.cover]) err('game.json.cover', `Sala desconeguda "${manifest.cover}".`);
   if (manifest.intro && !rooms[manifest.intro]) err('game.json.intro', `Sala desconeguda "${manifest.intro}".`);
   for (const [rid, room] of Object.entries(rooms)) {
     const skip = room.cutscene?.skipTo;

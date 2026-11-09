@@ -84,9 +84,12 @@ export function onRoomEntered() {
   ensureStarted()
   const room = narrative.world.currentRoom()
   if (!room) return
-  // A les cinemàtiques (el pròleg) no hi ha res per clicar: fora la barra de verbs.
-  if (narrative.content.rooms[room]?.cutscene) guis.verbs.hide()
+  // A la portada i a les cinemàtiques (el pròleg) no hi ha res per clicar: fora la barra de verbs.
+  const portada = room === narrative.content.manifest.cover
+  if (portada || narrative.content.rooms[room]?.cutscene) guis.verbs.hide()
   else guis.verbs.show()
+  if (portada) guis.portada.show()
+  else guis.portada.hide()
   applySwitchButton()
   const who = roomProtagonist(room)
   if (who) {
@@ -108,6 +111,15 @@ export function onRoomEntered() {
 
 /** L'onEnter de la sala on acabem d'entrar, resolt abans del fos (vegeu `onRoomEntered`). */
 let entrada: { room: string; result: InteractionResult | null } | null = null
+
+/** El botó «Comença» de la portada: el pròleg, si n'hi ha, o la sala de la primera protagonista. */
+export function startFromCover() {
+  const manifest = narrative.content.manifest
+  const first = manifest.protagonists[0]!
+  const desti = manifest.intro ?? manifest.start?.[first]?.room
+  const sala = desti ? benneRoom(desti) : undefined
+  if (sala) sala.goTo()
+}
 
 /** Va a la sala on és una protagonista (i, en entrar-hi, se'n pren el control). */
 export function goToProtagonist(who: string) {

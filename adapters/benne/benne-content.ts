@@ -63,6 +63,7 @@ const GUI_TEXTS: Record<string, Record<string, string>> = {
     TalkToBtn: 'ui.verb.talkTo.boto', LookAtBtn: 'ui.verb.look', UseBtn: 'ui.verb.use', PushBtn: 'ui.verb.push',
     PullBtn: 'ui.verb.pull', verbLineText: 'ui.verb.walkTo',
   },
+  portada: { comenca: 'ui.portada.comenca', carrega: 'ui.portada.carrega' },
   'game-menu': {
     title: 'ui.menu.titol', save: 'ui.menu.desar', load: 'ui.menu.carregar', settings: 'ui.menu.opcions',
     quit: 'ui.menu.sortir', resume: 'ui.menu.continuar', 'title-screen': 'ui.menu.inici',
@@ -87,7 +88,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   const config = readJson(configPath);
   config.name = content.manifest.id;
   config.startingPlayerCharacter = first;
-  config.startingRoomId = content.manifest.intro ?? content.manifest.start?.[first]?.room ?? config.startingRoomId;
+  config.startingRoomId = content.manifest.cover ?? content.manifest.intro ?? content.manifest.start?.[first]?.room ?? config.startingRoomId;
   // Els inventaris inicials els reparteix el nucli (game.json → start).
   config.initialGameState = { flags: {}, variables: {}, inventory: [] };
   config.defaultFallbackLine = t('ui.defecte', String(config.defaultFallbackLine ?? ''));
@@ -101,6 +102,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   // ── GUI ─────────────────────────────────────────────────────────────────
   addGameMenuButtons(gameDir);
   if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
+  if (content.manifest.cover && addCoverGui(gameDir)) report.needsArt.push('guis/portada');
   for (const [gui, controls] of Object.entries(GUI_TEXTS)) {
     const path = join(gameDir, 'guis', gui, `${gui}.gui.json`);
     if (!existsSync(path)) continue;
@@ -319,6 +321,49 @@ canviaBtn.onClick(() => switchProtagonist())
   if (!existsSync(sheet)) return false;
   const tags = ((readJson(sheet).meta as Json).frameTags as Json[]) ?? [];
   return !tags.some((t) => t.name === 'CanviaBtn') || existsSync(join(gameDir, 'assets/images/guis/verbs/.canvia-provisional'));
+}
+
+// ─── Portada: «Comença» i «Carrega» ──────────────────────────────────────────
+
+/** Els botons de la portada (coordenades de pantalla, 480×270). Els dibuixa draw_placeholders.py. */
+const COVER_BUTTONS = [
+  { id: 'comenca', x: 165, y: 196, width: 150, height: 22 },
+  { id: 'carrega', x: 165, y: 224, width: 150, height: 22 },
+];
+
+/**
+ * Una GUI `portada` amb els botons de la portada, si encara no hi és. Es mostra només a la sala
+ * `cover` (ho fa el runtime). Retorna si cal dibuixar-ne l'art.
+ */
+function addCoverGui(gameDir: string): boolean {
+  const dir = join(gameDir, 'guis/portada');
+  const jsonPath = join(dir, 'portada.gui.json');
+  const tsPath = join(dir, 'portada.gui.ts');
+  if (!existsSync(jsonPath)) {
+    mkdirSync(dir, { recursive: true });
+    writeJson(jsonPath, {
+      id: 'portada', name: 'Portada', description: 'Botons de la portada (adapters/benne).', visible: false,
+      display: { aseprite: true },
+      controls: COVER_BUTTONS.map((b) => ({
+        type: 'button', ...b, backgroundAnchor: 'screen', text: b.id,
+        font: 'lucasarts-scumm-solid', fontSize: 8, textColor: '#10908e', textAlign: 'center', textOffsetX: 0, textOffsetY: 0,
+        textColorStates: { hover: '#28c074' }, textOutline: { enabled: true, color: '#132243', sides: 'bottomRight' },
+        backgroundTag: `${b.id}`, states: { hover: `${b.id}-hover` },
+      })),
+    });
+  }
+  if (!existsSync(tsPath)) {
+    writeFileSync(tsPath, `// Creat per adapters/benne (benne-content.ts): els botons de la portada.
+import { guis } from '@game';
+import { comenca, carrega } from './portada.ids';
+import { startFromCover } from '../../narrative/narrative.script';
+
+comenca.onClick(() => startFromCover())
+carrega.onClick(() => guis.loadMenu.show())
+`);
+  }
+  const art = join(gameDir, 'assets/images/guis/portada');
+  return !existsSync(join(art, 'portada.png')) || existsSync(join(art, '.provisional'));
 }
 
 // ─── Disposició automàtica d'una sala nova ──────────────────────────────────

@@ -171,6 +171,9 @@ l'adaptador amaga la barra de verbs, i el seu `onEnter` es reprodueix sol fins a
 pantalla següent. Amb Esc se salta tot i es va directament a `skipTo`. Per començar la partida amb un pròleg,
 `game.json` porta `"intro": "<primera sala>"`. Les imatges de les pantalles es dibuixen com les de les sales.
 
+La **portada** és la sala de `"cover"` a `game.json`: l'adaptador hi amaga la barra de verbs i hi posa els botons
+«Comença» (va a `intro`) i «Carrega una partida» (GUI `portada`, creada per la sincronització).
+
 Cada final té un títol (`title`), una escena opcional (`scene`) i un text de tancament (`text`). L'escena és una
 llista de línies com les d'una interacció, amb `if` per explicar el que passa després segons la partida (p. ex.
 «En Mos surt de la presó» només si la Vet li va tornar la carta). A Benne es mostren sobre negre; si parla un
