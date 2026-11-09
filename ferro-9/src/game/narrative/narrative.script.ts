@@ -7,7 +7,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait } from '@benne/script';
+import { SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait, walkToClicked } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
@@ -68,6 +68,10 @@ export function playResult(result: InteractionResult) {
  * (des de `globalScript.ts`) i les resol el JSON del joc.
  */
 export function routeInteraction(verb: string, target: FallbackTarget, item?: string) {
+  // Primer hi va caminant (al `walkToPoint` de la cosa o del personatge) i s'hi gira, com a les
+  // aventures clàssiques. Ha de ser el primer pas: així, si el jugador clica una altra cosa pel camí,
+  // el motor atura aquesta acció i fa la nova.
+  if (target.kind !== 'item') walkToClicked()
   adoptLoadedState()
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const result = narrative.interact(request)
