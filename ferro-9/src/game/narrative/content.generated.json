@@ -1956,12 +1956,12 @@
                 "text": "obj.nota_iri_nom.vet1"
               },
               {
-                "who": "narrator",
-                "text": "obj.nota_iri_nom.fi"
+                "who": "title",
+                "text": "acte.fi2"
               },
               {
-                "who": "narrator",
-                "text": "obj.nota_iri_nom.acte3"
+                "who": "title",
+                "text": "acte.3"
               },
               {
                 "who": "mare",
@@ -2621,6 +2621,10 @@
             "verb": "*",
             "once": true,
             "lines": [
+              {
+                "who": "title",
+                "text": "acte.1"
+              },
               {
                 "who": "narrator",
                 "text": "sala.fabrica_calderes.intro1"
@@ -7860,8 +7864,12 @@
                 "text": "sala.gavina_passadis.fi4"
               },
               {
-                "who": "narrator",
-                "text": "sala.gavina_passadis.fi5"
+                "who": "title",
+                "text": "acte.fi1"
+              },
+              {
+                "who": "title",
+                "text": "acte.2"
               }
             ],
             "effects": [
@@ -13074,6 +13082,11 @@
       "finestra.rebuig.no_cal_vet": "Una encesa per enviar {objecte}? La I. no en treuria res, i jo potser sí.",
       "finestra.enviat": "Poso {objecte} dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
       "finestra.automatica": "Si hi ha algú a l'altra banda, no penso anar amunt i avall cada vegada. Deixo la cambra sincronitzada: el que s'hi posi, passarà sol.",
+      "acte.1": "Acte 1 · La descoberta",
+      "acte.fi1": "Fi de l'Acte 1",
+      "acte.2": "Acte 2 · Els costos",
+      "acte.fi2": "Fi de l'Acte 2",
+      "acte.3": "Acte 3 · La finestra",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -13103,7 +13116,7 @@
       "ui.verb.talkTo.boto": "Parla",
       "ui.menu.canviar": "Canvia",
       "ui.menu.pista": "Pista",
-      "mis.acte1.titol": "La descoberta",
+      "mis.acte1.titol": "Acte 1 · La descoberta",
       "mis.acte1.desc": "Una alarma al passat, una paret que vibra al futur.",
       "mis.acte1.obj.entrar_cambra": "Iri: entra a la cambra de ressonància",
       "mis.acte1.obj.apagar_alarma": "Iri: apaga l'alarma",
@@ -13302,12 +13315,10 @@
       "obj.nota_iri_nom.vet1": "Iri.",
       "obj.nota_iri_nom.nom": "nota de l'Iri",
       "obj.nota_iri_nom.desc": "Una nota signada amb un nom.",
-      "obj.nota_iri_nom.fi": "FI DE L'ACTE 2",
       "obj.llapis_ulls.nom1": "Aquesta vegada, la signo amb el meu nom.",
       "obj.llapis_ulls.nom2": "Em dic Vet. Et faran desaparèixer d'aquí a tres dies. Ho sento.",
       "obj.llapis.nom1": "Si ella m'ha dit el seu nom, jo li dic el meu.",
       "obj.llapis.nom2": "Em dic Iri. Ja ho sospitava. No penso desaparèixer.",
-      "obj.nota_iri_nom.acte3": "ACTE 3 · LA FINESTRA",
       "obj.nota_iri_nom.mare1": "Bon dia, interna 9! Bones notícies: el teu reciclatge s'avança a avui!",
       "obj.nota_iri_nom.mare2": "I abans, visita de reeducació obligatòria a la Sala de la Memòria. Hi ha galetes!",
       "obj.nota_iri_nom.directora": "No tan de pressa, MARE. Abans, la interna i jo hem de parlar.",
@@ -13717,7 +13728,6 @@
       "sala.gavina_passadis.fi2": "Ara només em falta sortir d'una presó orbital. Bufar i fer ampolles.",
       "sala.gavina_passadis.fi3": "Mentrestant, al passat, l'inventari del matí no quadra.",
       "sala.gavina_passadis.fi4": "Falten una clau anglesa i un imant de ferro-9. L'Inspector Sic obre un expedient.",
-      "sala.gavina_passadis.fi5": "FI DE L'ACTE 1",
       "sala.gavina_passadis.nom": "Passadís del mòdul C",
       "sala.fabrica_moll.nom": "Moll de càrrega",
       "sala.fabrica_moll.intro": "El moll de càrrega. De nit, només hi som la llançadora i jo.",

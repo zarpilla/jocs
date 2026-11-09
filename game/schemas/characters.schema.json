@@ -530,9 +530,13 @@
         {
           "type": "string",
           "const": "narrator"
+        },
+        {
+          "type": "string",
+          "const": "title"
         }
       ],
-      "description": "`player` = el protagonista, `narrator` = text de narració."
+      "description": "`player` = el protagonista, `narrator` = text de narració, `title` = pantalla de títol (p. ex. el canvi d'acte): la pantalla es fon a negre, s'hi mostra el text i torna la imatge."
     },
     "Effect": {
       "anyOf": [

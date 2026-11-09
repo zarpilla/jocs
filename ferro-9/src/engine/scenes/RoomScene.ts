@@ -230,6 +230,7 @@ import {
   BENNE_SCREEN_FADE_DEFAULT_COLOR,
   BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
   BENNE_SCREEN_FADE_OVERLAY_DEPTH,
+  DISPLAY_TEXT_OVERLAY_DEPTH,
   SPEAKING_TEXT_OVERLAY_DEPTH,
 } from './roomScreenFadeConstants';
 import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
@@ -874,7 +875,7 @@ export class RoomScene extends Phaser.Scene {
       const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
 
       const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
-      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : stackDepth;
+      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : isDisplayText ? DISPLAY_TEXT_OVERLAY_DEPTH : stackDepth;
       const guiStartVisible =
         isSpeakingText || isDisplayText || isChoiceDialog
           ? false

@@ -460,7 +460,7 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     p.goTo('fabrica_cambra');
     p.use('nota_iri_nom', 'cambra');
     expect(p.active).toBe('vet');
-    expect(texts(p.do('look', item('nota_iri_nom')))).toContain("FI DE L'ACTE 2");
+    expect(texts(p.do('look', item('nota_iri_nom')))).toContain("Fi de l'Acte 2");
     expect(n.state.quests.acte2!.status).toBe('completed');
     expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3 - 2 - 2 - 2);
   });

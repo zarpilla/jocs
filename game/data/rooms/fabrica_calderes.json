@@ -496,6 +496,10 @@
       "once": true,
       "lines": [
         {
+          "who": "title",
+          "text": "acte.1"
+        },
+        {
           "who": "narrator",
           "text": "sala.fabrica_calderes.intro1"
         },

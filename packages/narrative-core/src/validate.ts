@@ -40,7 +40,7 @@ export function validateContent(
   };
 
   const { characters, items, rooms, dialogues, quests, hints, endings, state, manifest } = content;
-  const speakers = new Set(['player', 'narrator', ...Object.keys(characters)]);
+  const speakers = new Set(['player', 'narrator', 'title', ...Object.keys(characters)]);
 
   // Condicions i efectes ────────────────────────────────────────────────────
   const checkFact = (where: string, who: string, fact: string) => {

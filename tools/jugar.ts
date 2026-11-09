@@ -40,6 +40,10 @@ function name(who: string) {
 
 function print(lines: ResolvedLine[]) {
   for (const l of lines) {
+    if (l.who === 'title') {
+      console.log(`\n${c.bold}${c.cyan}═══ ${l.text} ═══${c.off}\n`);
+      continue;
+    }
     const who = name(l.who);
     console.log(who ? `${c.bold}${who}:${c.off} ${l.text}` : `${c.dim}${l.text}${c.off}`);
   }

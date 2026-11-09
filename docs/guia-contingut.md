@@ -207,8 +207,10 @@ respondre).
 
 - `start`: un node, o una llista; s'agafa el primer que compleixi la condició. Així una conversa
   comença diferent segons el que ha passat. L'última entrada no hauria de tenir condició.
-- **Línies**: `who` és un personatge, `player` (el protagonista) o `narrator`. Poden tenir `if`
-  (només es diuen si es compleix) i `effects`.
+- **Línies**: `who` és un personatge, `player` (el protagonista), `narrator` o `title`. Poden tenir
+  `if` (només es diuen si es compleix) i `effects`. Una línia `title` és una pantalla de títol (p. ex.
+  «Acte 2 · Els costos»): la pantalla es fon a negre, s'hi mostra el text i torna la imatge. Les
+  línies `title` seguides es mostren juntes sobre el mateix negre.
 - **Opcions**: `if` (només surt si...), `once` (desapareix un cop triada), `silent` (el protagonista
   no la diu en veu alta), `effects`, `next` (a quin node va), `end` (acaba la conversa).
 - `goto`: quan un node no té opcions, salta a un altre (típicament, tornar al `menu`).

@@ -162,8 +162,11 @@ export interface DecorDef {
 
 // ─── Diàlegs ─────────────────────────────────────────────────────────────────
 
-/** `player` = el protagonista, `narrator` = text de narració. */
-export type SpeakerId = Id | 'player' | 'narrator';
+/**
+ * `player` = el protagonista, `narrator` = text de narració, `title` = pantalla de títol (p. ex. el
+ * canvi d'acte): la pantalla es fon a negre, s'hi mostra el text i torna la imatge.
+ */
+export type SpeakerId = Id | 'player' | 'narrator' | 'title';
 
 export interface DialogueLineDef {
   who: SpeakerId;
