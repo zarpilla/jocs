@@ -1,0 +1,95 @@
+"""
+Pròleg 2: la cel·la 9 de nit. La Vet dorm a la llitera de baix (en Mos, a la de dalt) i el panell
+rovellat vibra i treu llum cian per les juntes. Llums: el panell, la Terra a la finestreta, el cor
+de la MARE, tènue.
+"""
+import math
+
+from hd.pix import Light, W, H, hr, ramp, CYAN, NAVY, SKIN, PAPER, GRAY, ORANGE, STEEL, RUST
+from hd.rooms.gavina_cella import bg as cella_bg, COVER, p_escarabat, p_safata, GRIME, MATT
+
+LIGHT = Light(ambient=-0.9, vignette=(90, 50), floor_fade=(190, 30))
+LIGHT.point(261, 102, r=170, k=3.4, squash=0.9, power=1.8)          # el panell que vibra
+LIGHT.point(336, 50, r=90, k=1.3)                                    # la Terra a la finestreta
+LIGHT.point(176, 30, r=50, k=0.8)                                    # el cor de la MARE
+
+BLANKET = ramp((8, 10, 24), (18, 22, 46), (30, 36, 70), (46, 54, 96), (70, 80, 124), n=7)
+
+
+def bg(cv):
+    cella_bg(cv, night=True)
+    # el sopar i el Senyor Bigotis, de nit
+    p_safata(cv)
+    p_escarabat(cv)
+
+    # ─── La Vet dorm a la llitera de baix ─────────────────────────────────────
+    # manta: un bony llarg del cos, dels peus (esquerra) a les espatlles
+    for x in range(382, 446):
+        u = (x - 382) / 63
+        top = 124 - math.sin(u * math.pi * 0.95) * 3 - (2 if 0.55 < u < 0.8 else 0)
+        for y in range(round(top), 136):
+            lvl = 3.0 - (y - top) * 0.12 + math.sin(x / 4.0 + y / 6.0) * 0.4
+            if y == round(top):
+                lvl += 1.6
+            elif y == round(top) + 1:
+                lvl += 0.7
+            cv.put(x, y, BLANKET, lvl)
+    # el braç fora de la manta, amb la màniga taronja de la granota
+    for x in range(424, 441):
+        cv.put(x, 127, ORANGE, 2.6)
+        cv.put(x, 128, ORANGE, 1.8)
+    cv.rect(441, 127, 443, 128, SKIN, 2.0)
+    # el cap: cabell platí sobre el coixí, la cara de perfil, girada cap a nosaltres
+    cv.disc(453, 120, 7, 5, PAPER, lambda nx, ny: 4.2 - nx * 0.9 - ny * 1.2)
+    cv.disc(449, 124, 4, 3.2, SKIN, lambda nx, ny: 3.0 - nx * 0.6 - ny * 0.8)
+    for x in range(446, 452):
+        cv.put(x, 122, PAPER, 4.6)                                      # serrell
+    cv.put(447, 124, SKIN, 0.4)                                       # ull tancat
+    cv.put(448, 124, SKIN, 0.4)
+    cv.put(446, 126, SKIN, 1.2)
+
+    # ─── En Mos, a la de dalt: un bony i el cap pelat ─────────────────────────
+    cv.disc(446, 71, 4.6, 3.8, SKIN, lambda nx, ny: 3.4 - nx * 0.8 - ny)
+    cv.put(444, 69, SKIN, 4.6)
+    for y in range(70, 75):
+        cv.put(450, y, GRAY, 3.6)
+        cv.put(451, y, GRAY, 2.8)
+
+    # ─── El panell vibra i fa llum ────────────────────────────────────────────
+    x0, y0, x1, y1 = COVER
+    # llum cian per les juntes de la tapa
+    for x in range(x0 - 1, x1 + 2):
+        for y in (y0 - 1, y1 + 1):
+            cv.put(x, y, CYAN, 4.4 + hr(x, y, 3) * 0.8, 0)
+    for y in range(y0 - 1, y1 + 2):
+        for x in (x0 - 1, x1 + 1):
+            cv.put(x, y, CYAN, 4.4 + hr(x, y, 4) * 0.8, 0)
+    # la tapa tremola: una imatge fantasma desplaçada, en cian
+    cv.tint(x0, y0, x1, y1, (120, 220, 255), 0.08)
+    for x in range(x0 + 1, x1 + 2):
+        if x % 2:
+            cv.put(x, y0 - 2, CYAN, 3.2, 0)
+    # ones de vibració a banda i banda
+    for side in (-1, 1):
+        bx = (x0 - 6) if side < 0 else (x1 + 6)
+        for k in range(3):
+            cx = bx + side * k * 5
+            for t in range(-7 - k * 2, 8 + k * 2):
+                xx = cx + side * round(abs(t) ** 2 / (14 + k * 6))
+                cv.put(xx, 102 + t, CYAN, 4.2 - k * 0.9, 0)
+    # pols que cau del panell
+    for i in range(14):
+        px = x0 + hr(i, 5) * (x1 - x0)
+        py = y1 + 3 + hr(i, 6) * 30
+        cv.put(px, py, CYAN, 3.0 - (py - y1) / 20, 0)
+    cv.glow(261, 102, 64, (90, 200, 255), 0.35)
+    
+    # llum cian al terra, davant del panell
+    cv.tint(170, 158, 360, 204, (80, 180, 240),
+            lambda x, y: max(0, 1 - math.hypot((x - 261) / 90, (y - 165) / 22)) * 0.25)
+
+    # ─── Nit: tot més fred ────────────────────────────────────────────────────
+    cv.tint(0, 0, W - 1, H - 1, (10, 16, 46), lambda x, y: 0.25 * min(1, math.hypot(x - 261, y - 102) / 140))
+
+
+PROPS = {}
