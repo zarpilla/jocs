@@ -1,10 +1,10 @@
 {
   "$schema": "../../schemas/room.schema.json",
-  "name": "sala.gavina_passadis.nom",
+  "name": "sala.oris_passadis.nom",
   "protagonist": "vet",
   "hotspots": {
     "cartell": {
-      "name": "sala.gavina_passadis.cartell.nom",
+      "name": "sala.oris_passadis.cartell.nom",
       "interactions": [
         {
           "verb": "pickUp",
@@ -15,7 +15,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.cartell.agafar"
+              "text": "sala.oris_passadis.cartell.agafar"
             }
           ],
           "effects": [
@@ -36,7 +36,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.cartell.prou"
+              "text": "sala.oris_passadis.cartell.prou"
             }
           ]
         },
@@ -45,7 +45,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.cartell.altre"
+              "text": "sala.oris_passadis.cartell.altre"
             }
           ],
           "effects": [
@@ -59,28 +59,28 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.cartell.look"
+              "text": "sala.oris_passadis.cartell.look"
             }
           ]
         }
       ]
     },
     "camera_vigilancia": {
-      "name": "sala.gavina_passadis.camera_vigilancia.nom",
+      "name": "sala.oris_passadis.camera_vigilancia.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.camera_vigilancia.look"
+              "text": "sala.oris_passadis.camera_vigilancia.look"
             }
           ]
         }
       ]
     },
     "porta_cella": {
-      "name": "sala.gavina_passadis.porta_cella.nom",
+      "name": "sala.oris_passadis.porta_cella.nom",
       "interactions": [
         {
           "verb": [
@@ -94,7 +94,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.porta_cella.tancada"
+              "text": "sala.oris_passadis.porta_cella.tancada"
             }
           ]
         },
@@ -104,12 +104,12 @@
             "use",
             "walkTo"
           ],
-          "goTo": "gavina_cella"
+          "goTo": "oris_cella"
         }
       ]
     },
     "porta_hangar": {
-      "name": "sala.gavina_passadis.porta_hangar.nom",
+      "name": "sala.oris_passadis.porta_hangar.nom",
       "interactions": [
         {
           "verb": [
@@ -117,12 +117,12 @@
             "use",
             "walkTo"
           ],
-          "goTo": "gavina_hangar"
+          "goTo": "oris_hangar"
         }
       ]
     },
     "porta_memoria": {
-      "name": "sala.gavina_passadis.porta_memoria.nom",
+      "name": "sala.oris_passadis.porta_memoria.nom",
       "interactions": [
         {
           "verb": [
@@ -133,7 +133,7 @@
           "if": {
             "flag": "acte3_iniciat"
           },
-          "goTo": "gavina_memoria"
+          "goTo": "oris_memoria"
         },
         {
           "verb": [
@@ -144,7 +144,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.porta_memoria.tancada"
+              "text": "sala.oris_passadis.porta_memoria.tancada"
             }
           ]
         },
@@ -153,7 +153,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_passadis.porta_memoria.look"
+              "text": "sala.oris_passadis.porta_memoria.look"
             }
           ]
         }
@@ -168,23 +168,23 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.gavina_passadis.fi1"
+          "text": "sala.oris_passadis.fi1"
         },
         {
           "who": "player",
-          "text": "sala.gavina_passadis.fi2"
+          "text": "sala.oris_passadis.fi2"
         },
         {
           "who": "narrator",
-          "text": "sala.gavina_passadis.fi3"
+          "text": "sala.oris_passadis.fi3"
         },
         {
           "who": "narrator",
-          "text": "sala.gavina_passadis.fi4"
+          "text": "sala.oris_passadis.fi4"
         },
         {
           "who": "narrator",
-          "text": "sala.gavina_passadis.fi5"
+          "text": "sala.oris_passadis.fi5"
         }
       ],
       "effects": [

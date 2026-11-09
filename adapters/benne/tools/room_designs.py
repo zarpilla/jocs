@@ -540,7 +540,7 @@ CAMBRA = {
 }
 
 
-# ─── La Gavina: cel·la 9 ────────────────────────────────────────────────────
+# ─── Orís: cel·la 9 ────────────────────────────────────────────────────
 
 def cella_bg(c):
     metal_panels(c, 0, 0, W, 112, (58, 70, 86), (30, 38, 50), (96, 112, 130), seed=41)
@@ -709,7 +709,7 @@ CELLA = {
 }
 
 
-# ─── La Gavina: passadís ────────────────────────────────────────────────────
+# ─── Orís: passadís ────────────────────────────────────────────────────
 
 def passadis_bg(c):
     vx, vy = 200, 64
@@ -955,7 +955,7 @@ MOLL = {
 }
 
 
-# ─── La Gavina: moll de l'hangar (Acte 2) ───────────────────────────────────
+# ─── Orís: moll de l'hangar (Acte 2) ───────────────────────────────────
 
 def hangar_bg(c):
     metal_panels(c, 0, 0, W, 112, (56, 66, 80), (28, 34, 44), (90, 104, 120), seed=61)
@@ -1138,7 +1138,7 @@ DESPATX = {
 }
 
 
-# ─── La Gavina: l'arxiu (Acte 2) ────────────────────────────────────────────
+# ─── Orís: l'arxiu (Acte 2) ────────────────────────────────────────────
 
 def arxiu_bg(c):
     metal_panels(c, 0, 0, W, 112, (64, 66, 70), (36, 38, 42), (96, 98, 104), seed=71)
@@ -1190,7 +1190,7 @@ ARXIU = {
 }
 
 
-# ─── La Gavina: la Sala de la Memòria (Acte 3) ──────────────────────────────
+# ─── Orís: la Sala de la Memòria (Acte 3) ──────────────────────────────
 
 def memoria_bg(c):
     c.vgrad(0, 0, W, 112, (196, 206, 214), (160, 172, 184))
@@ -1211,7 +1211,7 @@ def memoria_bg(c):
         c.ellipse(x, 42, x + 6, 48, (150, 130, 110)); c.rect(x, 48, x + 6, 62, (110, 100, 90))
     c.rect(94, 42, 100, 48, (60, 50, 50)); c.line([(93, 41), (101, 49)], (40, 30, 30)); c.line([(101, 41), (93, 49)], (40, 30, 30))  # la cara ratllada
     c.rect(104, 52, 112, 64, (176, 180, 186))                       # el Cargol, nou
-    # Mapa de La Gavina
+    # Mapa d'Orís
     c.rect(130, 24, 192, 72, (30, 40, 60))
     c.ellipse(140, 32, 182, 64, None, outline=(150, 200, 230))
     c.rect(156, 44, 166, 52, (150, 200, 230))
@@ -1260,11 +1260,11 @@ DESIGNS = {
     'fabrica_calderes': CALDERES,
     'fabrica_magatzem': MAGATZEM,
     'fabrica_cambra': CAMBRA,
-    'gavina_cella': CELLA,
-    'gavina_passadis': PASSADIS,
+    'oris_cella': CELLA,
+    'oris_passadis': PASSADIS,
     'fabrica_moll': MOLL,
-    'gavina_hangar': HANGAR,
+    'oris_hangar': HANGAR,
     'fabrica_despatx': DESPATX,
-    'gavina_arxiu': ARXIU,
-    'gavina_memoria': MEMORIA,
+    'oris_arxiu': ARXIU,
+    'oris_memoria': MEMORIA,
 }

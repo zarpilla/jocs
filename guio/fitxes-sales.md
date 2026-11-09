@@ -67,16 +67,16 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 
 ## Vet
 
-### Arxiu · `gavina_arxiu`
+### Arxiu · `oris_arxiu`
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `escala_hangar` | moll de l'hangar | hotspot / prop → `gavina_hangar` | sempre | open, use, walkTo |
+| `escala_hangar` | moll de l'hangar | hotspot / prop → `oris_hangar` | sempre | open, use, walkTo |
 | `expedient_iri` | expedients | hotspot / prop | sempre | look, open, pickUp |
 | `arxivador` | arxivador | hotspot / prop | sempre | open, pickUp, use, look |
 | `planols` | plànols | hotspot / prop | sempre | look, pickUp, open |
 
-### Cel·la 9 · `gavina_cella`
+### Cel·la 9 · `oris_cella`
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
@@ -87,46 +87,46 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `llitera` | llitera | hotspot / prop | sempre | pickUp, pull, look |
 | `escarabat` | Senyor Bigotis | prop | `{"flag":"escarabat_agafat","is":false}` | look, pickUp |
 | `safata` | safata de sopar | prop | `{"flag":"sopa_agafada","is":false}` | look, pickUp |
-| `porta` | porta de la cel·la | hotspot / prop → `gavina_passadis` | sempre | open, use, walkTo, push, pull, use + objecte, look, use + imant_ferro9 |
+| `porta` | porta de la cel·la | hotspot / prop → `oris_passadis` | sempre | open, use, walkTo, push, pull, use + objecte, look, use + imant_ferro9 |
 | `finestreta` | finestreta | hotspot / prop | sempre | look |
 | `directora` | Directora Aldaia | personatge | `{"flag":"acte3_iniciat"}` | talkTo, look |
-| `reixa` | reixa | hotspot / prop → `gavina_hangar` | sempre | open, pull, pickUp, use, push, walkTo, look, use + clau_anglesa |
+| `reixa` | reixa | hotspot / prop → `oris_hangar` | sempre | open, pull, pickUp, use, push, walkTo, look, use + clau_anglesa |
 
-### Moll de l'hangar · `gavina_hangar`
+### Moll de l'hangar · `oris_hangar`
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `porta_passadis` | passadís | hotspot / prop → `gavina_passadis` | sempre | open, use, walkTo |
+| `porta_passadis` | passadís | hotspot / prop → `oris_passadis` | sempre | open, use, walkTo |
 | `comporta` | comporta | hotspot / prop | sempre | look, use + biga_ferro9, use + biga_muntada, use + tram_biga_1, use + tram_biga_2, use + tram_biga_3, use + clau_anglesa, open, push, pull |
 | `pilar` | pilar | hotspot / prop | sempre | look |
 | `placa_terra` | reixa del terra | hotspot / prop | sempre | open, pickUp, use, look |
 | `llancadora` | llançadora | prop | `{"flag":"comporta_oberta"}` | use + tub_amb_llibreta, push, use, look, pull, open |
 | `pany` | pany sònic | prop | `{"all":[{"flag":"comporta_oberta"},{"flag":"pany_vist"}]}` | look, use + diapaso, use + molla, push, use, pull, open |
 | `conducte` | conducte | hotspot / prop | sempre | look, use, open, close, push, pull |
-| `escala` | escala | hotspot / prop → `gavina_arxiu` | sempre | open, use, walkTo, look, use + clau_anglesa |
+| `escala` | escala | hotspot / prop → `oris_arxiu` | sempre | open, use, walkTo, look, use + clau_anglesa |
 | `caixa_flotant` | caixa que sura | prop | `{"all":[{"var":"valvula","op":"==","value":"tancada"},{"flag":"caixa_agafada","is":false}]}` | pickUp, open, look |
-| `sortida_conducte` | sortida del conducte | prop → `gavina_cella` | `{"flag":"reixa_oberta"}` | open, use, walkTo, pull, look |
+| `sortida_conducte` | sortida del conducte | prop → `oris_cella` | `{"flag":"reixa_oberta"}` | open, use, walkTo, pull, look |
 
-### Sala de la Memòria · `gavina_memoria`
+### Sala de la Memòria · `oris_memoria`
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `porta_passadis` | passadís | hotspot / prop → `gavina_passadis` | sempre | open, use, walkTo |
+| `porta_passadis` | passadís | hotspot / prop → `oris_passadis` | sempre | open, use, walkTo |
 | `holograma` | holograma del Director | hotspot / prop | sempre | talkTo, use, push, look |
 | `foto` | foto del torn de nit | hotspot / prop | sempre | look |
 | `vitrina` | vitrina | hotspot / prop | sempre | look, open, pickUp, use |
-| `mapa` | mapa de La Gavina | hotspot / prop | sempre | look |
+| `mapa` | mapa d'Orís | hotspot / prop | sempre | look |
 | `fullets` | fullets | hotspot / prop | sempre | pickUp, look |
 
-### Passadís del mòdul C · `gavina_passadis`
+### Passadís del mòdul C · `oris_passadis`
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
 | `cartell` | cartell | hotspot / prop | sempre | pickUp, look |
 | `camera_vigilancia` | càmera | hotspot / prop | sempre | look |
-| `porta_cella` | cel·la 9 | hotspot / prop → `gavina_cella` | sempre | open, use, walkTo |
-| `porta_hangar` | porta del fons | hotspot / prop → `gavina_hangar` | sempre | open, use, walkTo |
-| `porta_memoria` | Sala de la Memòria | hotspot / prop → `gavina_memoria` | sempre | open, use, walkTo, look |
+| `porta_cella` | cel·la 9 | hotspot / prop → `oris_cella` | sempre | open, use, walkTo |
+| `porta_hangar` | porta del fons | hotspot / prop → `oris_hangar` | sempre | open, use, walkTo |
+| `porta_memoria` | Sala de la Memòria | hotspot / prop → `oris_memoria` | sempre | open, use, walkTo, look |
 
 ## Objectes d'inventari
 

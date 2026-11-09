@@ -22,7 +22,7 @@
           ]
         },
         "vet": {
-          "room": "gavina_cella"
+          "room": "oris_cella"
         }
       }
     },
@@ -93,7 +93,7 @@
         "capatas_acusat": false,
         "reixa_arxiu_oberta": false,
         "vet_sap_desaparicio": false,
-        "vet_sap_gavina": false,
+        "vet_sap_oris": false,
         "carta_mos_lliurada": false,
         "nota_vet_nom_escrita": false,
         "iri_sap_desaparicio": false,
@@ -4587,8 +4587,8 @@
           }
         }
       },
-      "gavina_arxiu": {
-        "name": "sala.gavina_arxiu.nom",
+      "oris_arxiu": {
+        "name": "sala.oris_arxiu.nom",
         "protagonist": "vet",
         "onEnter": [
           {
@@ -4598,7 +4598,7 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_arxiu.intro"
+                "text": "sala.oris_arxiu.intro"
               }
             ],
             "effects": [
@@ -4610,7 +4610,7 @@
         ],
         "hotspots": {
           "escala_hangar": {
-            "name": "sala.gavina_arxiu.escala.nom",
+            "name": "sala.oris_arxiu.escala.nom",
             "interactions": [
               {
                 "verb": [
@@ -4618,12 +4618,12 @@
                   "use",
                   "walkTo"
                 ],
-                "goTo": "gavina_hangar"
+                "goTo": "oris_hangar"
               }
             ]
           },
           "expedient_iri": {
-            "name": "sala.gavina_arxiu.expedient_iri.nom",
+            "name": "sala.oris_arxiu.expedient_iri.nom",
             "interactions": [
               {
                 "verb": [
@@ -4637,15 +4637,15 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_arxiu.expedient_iri.text_confessio"
+                    "text": "sala.oris_arxiu.expedient_iri.text_confessio"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.expedient_iri.vet1"
+                    "text": "sala.oris_arxiu.expedient_iri.vet1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.expedient_iri.vet2"
+                    "text": "sala.oris_arxiu.expedient_iri.vet2"
                   }
                 ],
                 "effects": [
@@ -4663,15 +4663,15 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_arxiu.expedient_iri.text"
+                    "text": "sala.oris_arxiu.expedient_iri.text"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.expedient_iri.vet1"
+                    "text": "sala.oris_arxiu.expedient_iri.vet1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.expedient_iri.vet2"
+                    "text": "sala.oris_arxiu.expedient_iri.vet2"
                   }
                 ],
                 "effects": [
@@ -4683,7 +4683,7 @@
             ]
           },
           "arxivador": {
-            "name": "sala.gavina_arxiu.arxivador.nom",
+            "name": "sala.oris_arxiu.arxivador.nom",
             "interactions": [
               {
                 "verb": [
@@ -4698,11 +4698,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.arxivador.carta1"
+                    "text": "sala.oris_arxiu.arxivador.carta1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.arxivador.carta2"
+                    "text": "sala.oris_arxiu.arxivador.carta2"
                   }
                 ],
                 "effects": [
@@ -4723,7 +4723,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.arxivador.ja"
+                    "text": "sala.oris_arxiu.arxivador.ja"
                   }
                 ]
               },
@@ -4735,7 +4735,7 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_arxiu.arxivador.mira_salvada"
+                    "text": "sala.oris_arxiu.arxivador.mira_salvada"
                   }
                 ]
               },
@@ -4749,11 +4749,11 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_arxiu.arxivador.mira_condemnada"
+                    "text": "sala.oris_arxiu.arxivador.mira_condemnada"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.arxivador.mira_vet"
+                    "text": "sala.oris_arxiu.arxivador.mira_vet"
                   }
                 ]
               },
@@ -4762,14 +4762,14 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.arxivador.look"
+                    "text": "sala.oris_arxiu.arxivador.look"
                   }
                 ]
               }
             ]
           },
           "planols": {
-            "name": "sala.gavina_arxiu.planols.nom",
+            "name": "sala.oris_arxiu.planols.nom",
             "interactions": [
               {
                 "verb": [
@@ -4780,20 +4780,20 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_arxiu.planols.text"
+                    "text": "sala.oris_arxiu.planols.text"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.planols.vet1"
+                    "text": "sala.oris_arxiu.planols.vet1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_arxiu.planols.vet2"
+                    "text": "sala.oris_arxiu.planols.vet2"
                   }
                 ],
                 "effects": [
                   {
-                    "setFlag": "vet_sap_gavina"
+                    "setFlag": "vet_sap_oris"
                   }
                 ]
               }
@@ -4801,12 +4801,12 @@
           }
         }
       },
-      "gavina_cella": {
-        "name": "sala.gavina_cella.nom",
+      "oris_cella": {
+        "name": "sala.oris_cella.nom",
         "protagonist": "vet",
         "hotspots": {
           "panell": {
-            "name": "sala.gavina_cella.panell.nom",
+            "name": "sala.oris_cella.panell.nom",
             "interactions": [
               {
                 "verb": "use",
@@ -4827,19 +4827,19 @@
                 "lines": [
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.panell.mapa1"
+                    "text": "sala.oris_cella.panell.mapa1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.mapa2"
+                    "text": "sala.oris_cella.panell.mapa2"
                   },
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.panell.mapa3"
+                    "text": "sala.oris_cella.panell.mapa3"
                   },
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.panell.mapa4"
+                    "text": "sala.oris_cella.panell.mapa4"
                   }
                 ],
                 "effects": [
@@ -4878,7 +4878,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.no_vibra"
+                    "text": "sala.oris_cella.panell.no_vibra"
                   }
                 ]
               },
@@ -4905,7 +4905,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.no_vibra"
+                    "text": "sala.oris_cella.panell.no_vibra"
                   }
                 ]
               },
@@ -4925,7 +4925,7 @@
                 "lines": [
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.panell.pacte_res"
+                    "text": "sala.oris_cella.panell.pacte_res"
                   }
                 ]
               },
@@ -4950,7 +4950,7 @@
                 "lines": [
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.panell.pacte_res"
+                    "text": "sala.oris_cella.panell.pacte_res"
                   }
                 ]
               },
@@ -4963,7 +4963,7 @@
                 "lines": [
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.panell.directora"
+                    "text": "sala.oris_cella.panell.directora"
                   }
                 ]
               },
@@ -4981,7 +4981,7 @@
                 "lines": [
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.panell.directora"
+                    "text": "sala.oris_cella.panell.directora"
                   }
                 ]
               },
@@ -5003,7 +5003,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.vibra",
+                    "text": "sala.oris_cella.panell.vibra",
                     "sound": "vibracio"
                   }
                 ]
@@ -5029,16 +5029,16 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.cop1"
+                    "text": "sala.oris_cella.panell.cop1"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_cella.panell.cop2",
+                    "text": "sala.oris_cella.panell.cop2",
                     "sound": "cop"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.cop3"
+                    "text": "sala.oris_cella.panell.cop3"
                   }
                 ],
                 "effects": [
@@ -5062,7 +5062,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.paret_guanya"
+                    "text": "sala.oris_cella.panell.paret_guanya"
                   }
                 ]
               },
@@ -5083,12 +5083,12 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.obrir1",
+                    "text": "sala.oris_cella.panell.obrir1",
                     "sound": "eina"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.obrir2"
+                    "text": "sala.oris_cella.panell.obrir2"
                   }
                 ],
                 "effects": [
@@ -5114,11 +5114,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.reparar1"
+                    "text": "sala.oris_cella.panell.reparar1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.reparar2",
+                    "text": "sala.oris_cella.panell.reparar2",
                     "sound": "consola"
                   }
                 ],
@@ -5147,7 +5147,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.trencat"
+                    "text": "sala.oris_cella.panell.trencat"
                   }
                 ]
               },
@@ -5167,7 +5167,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.sense_palanca"
+                    "text": "sala.oris_cella.panell.sense_palanca"
                   }
                 ]
               },
@@ -5183,7 +5183,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.mort"
+                    "text": "sala.oris_cella.panell.mort"
                   }
                 ]
               },
@@ -5197,7 +5197,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.parpelleja"
+                    "text": "sala.oris_cella.panell.parpelleja"
                   }
                 ]
               },
@@ -5211,7 +5211,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.armat"
+                    "text": "sala.oris_cella.panell.armat"
                   }
                 ]
               },
@@ -5220,7 +5220,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.reparat"
+                    "text": "sala.oris_cella.panell.reparat"
                   }
                 ]
               },
@@ -5234,7 +5234,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.molla_no"
+                    "text": "sala.oris_cella.panell.molla_no"
                   }
                 ]
               },
@@ -5270,11 +5270,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.recuperar1"
+                    "text": "sala.oris_cella.panell.recuperar1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.panell.recuperar2"
+                    "text": "sala.oris_cella.panell.recuperar2"
                   }
                 ],
                 "effects": [
@@ -5307,7 +5307,7 @@
             ]
           },
           "altaveu": {
-            "name": "sala.gavina_cella.altaveu.nom",
+            "name": "sala.oris_cella.altaveu.nom",
             "interactions": [
               {
                 "verb": "talkTo",
@@ -5318,7 +5318,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.altaveu.look"
+                    "text": "sala.oris_cella.altaveu.look"
                   }
                 ]
               },
@@ -5331,7 +5331,7 @@
                 "lines": [
                   {
                     "who": "mare",
-                    "text": "sala.gavina_cella.altaveu.tocar1",
+                    "text": "sala.oris_cella.altaveu.tocar1",
                     "sound": "altaveu"
                   }
                 ]
@@ -5339,7 +5339,7 @@
             ]
           },
           "mos": {
-            "name": "sala.gavina_cella.mos.nom",
+            "name": "sala.oris_cella.mos.nom",
             "interactions": [
               {
                 "verb": [
@@ -5350,23 +5350,23 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.mos.carta1"
+                    "text": "sala.oris_cella.mos.carta1"
                   },
                   {
                     "who": "mos",
-                    "text": "sala.gavina_cella.mos.carta2"
+                    "text": "sala.oris_cella.mos.carta2"
                   },
                   {
                     "who": "mos",
-                    "text": "sala.gavina_cella.mos.carta3"
+                    "text": "sala.oris_cella.mos.carta3"
                   },
                   {
                     "who": "mos",
-                    "text": "sala.gavina_cella.mos.carta4"
+                    "text": "sala.oris_cella.mos.carta4"
                   },
                   {
                     "who": "mos",
-                    "text": "sala.gavina_cella.mos.carta5"
+                    "text": "sala.oris_cella.mos.carta5"
                   }
                 ],
                 "effects": [
@@ -5393,21 +5393,21 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.mos.look"
+                    "text": "sala.oris_cella.mos.look"
                   }
                 ]
               }
             ]
           },
           "avis": {
-            "name": "sala.gavina_cella.avis.nom",
+            "name": "sala.oris_cella.avis.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.avis.look"
+                    "text": "sala.oris_cella.avis.look"
                   }
                 ]
               },
@@ -5416,7 +5416,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.avis.agafar"
+                    "text": "sala.oris_cella.avis.agafar"
                   }
                 ],
                 "effects": [
@@ -5435,7 +5435,7 @@
             }
           },
           "llitera": {
-            "name": "sala.gavina_cella.llitera.nom",
+            "name": "sala.oris_cella.llitera.nom",
             "interactions": [
               {
                 "verb": [
@@ -5456,7 +5456,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.llitera.molla",
+                    "text": "sala.oris_cella.llitera.molla",
                     "sound": "ronc"
                   }
                 ],
@@ -5478,7 +5478,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.llitera.look1"
+                    "text": "sala.oris_cella.llitera.look1"
                   }
                 ]
               },
@@ -5498,7 +5498,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.llitera.look_molles"
+                    "text": "sala.oris_cella.llitera.look_molles"
                   }
                 ]
               },
@@ -5507,7 +5507,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.llitera.look2"
+                    "text": "sala.oris_cella.llitera.look2"
                   }
                 ]
               },
@@ -5520,7 +5520,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.llitera.fullet"
+                    "text": "sala.oris_cella.llitera.fullet"
                   }
                 ],
                 "effects": [
@@ -5535,14 +5535,14 @@
             ]
           },
           "escarabat": {
-            "name": "sala.gavina_cella.escarabat.nom",
+            "name": "sala.oris_cella.escarabat.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.escarabat.look"
+                    "text": "sala.oris_cella.escarabat.look"
                   }
                 ]
               },
@@ -5551,7 +5551,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.escarabat.agafar"
+                    "text": "sala.oris_cella.escarabat.agafar"
                   }
                 ],
                 "effects": [
@@ -5570,14 +5570,14 @@
             }
           },
           "safata": {
-            "name": "sala.gavina_cella.safata.nom",
+            "name": "sala.oris_cella.safata.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.safata.look"
+                    "text": "sala.oris_cella.safata.look"
                   }
                 ]
               },
@@ -5586,7 +5586,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.safata.agafar"
+                    "text": "sala.oris_cella.safata.agafar"
                   }
                 ],
                 "effects": [
@@ -5605,7 +5605,7 @@
             }
           },
           "porta": {
-            "name": "sala.gavina_cella.porta.nom",
+            "name": "sala.oris_cella.porta.nom",
             "interactions": [
               {
                 "verb": [
@@ -5621,7 +5621,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.tancada_mare"
+                    "text": "sala.oris_cella.porta.tancada_mare"
                   }
                 ]
               },
@@ -5634,7 +5634,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.tancada_mare"
+                    "text": "sala.oris_cella.porta.tancada_mare"
                   }
                 ]
               },
@@ -5649,7 +5649,7 @@
                 "if": {
                   "flag": "porta_cella_oberta"
                 },
-                "goTo": "gavina_passadis"
+                "goTo": "oris_passadis"
               },
               {
                 "verb": "look",
@@ -5659,7 +5659,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.oberta"
+                    "text": "sala.oris_cella.porta.oberta"
                   }
                 ]
               },
@@ -5669,11 +5669,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.imant1"
+                    "text": "sala.oris_cella.porta.imant1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.imant2",
+                    "text": "sala.oris_cella.porta.imant2",
                     "sound": "clac"
                   }
                 ],
@@ -5685,14 +5685,14 @@
                     "setFlag": "porta_cella_oberta"
                   }
                 ],
-                "goTo": "gavina_passadis"
+                "goTo": "oris_passadis"
               },
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.look"
+                    "text": "sala.oris_cella.porta.look"
                   }
                 ],
                 "effects": [
@@ -5711,7 +5711,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.porta.tancada"
+                    "text": "sala.oris_cella.porta.tancada"
                   }
                 ],
                 "effects": [
@@ -5723,25 +5723,25 @@
             ]
           },
           "finestreta": {
-            "name": "sala.gavina_cella.finestreta.nom",
+            "name": "sala.oris_cella.finestreta.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.finestreta.look1"
+                    "text": "sala.oris_cella.finestreta.look1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.finestreta.look2"
+                    "text": "sala.oris_cella.finestreta.look2"
                   }
                 ]
               }
             ]
           },
           "directora": {
-            "name": "sala.gavina_cella.directora.nom",
+            "name": "sala.oris_cella.directora.nom",
             "interactions": [
               {
                 "verb": "talkTo",
@@ -5752,7 +5752,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.directora.look"
+                    "text": "sala.oris_cella.directora.look"
                   }
                 ]
               }
@@ -5762,7 +5762,7 @@
             }
           },
           "reixa": {
-            "name": "sala.gavina_cella.reixa.nom",
+            "name": "sala.oris_cella.reixa.nom",
             "interactions": [
               {
                 "verb": [
@@ -5786,16 +5786,16 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.obrir1",
+                    "text": "sala.oris_cella.reixa.obrir1",
                     "sound": "clac"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.obrir2"
+                    "text": "sala.oris_cella.reixa.obrir2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.obrir3"
+                    "text": "sala.oris_cella.reixa.obrir3"
                   }
                 ],
                 "effects": [
@@ -5825,14 +5825,14 @@
                 "lines": [
                   {
                     "who": "directora",
-                    "text": "sala.gavina_cella.reixa.fugir1"
+                    "text": "sala.oris_cella.reixa.fugir1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.fugir2"
+                    "text": "sala.oris_cella.reixa.fugir2"
                   }
                 ],
-                "goTo": "gavina_hangar"
+                "goTo": "oris_hangar"
               },
               {
                 "verb": [
@@ -5847,10 +5847,10 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.entrar"
+                    "text": "sala.oris_cella.reixa.entrar"
                   }
                 ],
-                "goTo": "gavina_hangar"
+                "goTo": "oris_hangar"
               },
               {
                 "verb": "look",
@@ -5860,7 +5860,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.look_oberta"
+                    "text": "sala.oris_cella.reixa.look_oberta"
                   }
                 ]
               },
@@ -5872,7 +5872,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.look_llimada"
+                    "text": "sala.oris_cella.reixa.look_llimada"
                   }
                 ]
               },
@@ -5884,11 +5884,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.look_conducte1"
+                    "text": "sala.oris_cella.reixa.look_conducte1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.look_conducte2"
+                    "text": "sala.oris_cella.reixa.look_conducte2"
                   }
                 ],
                 "effects": [
@@ -5906,7 +5906,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.clau",
+                    "text": "sala.oris_cella.reixa.clau",
                     "sound": "eina"
                   }
                 ],
@@ -5930,7 +5930,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.soldada"
+                    "text": "sala.oris_cella.reixa.soldada"
                   }
                 ],
                 "effects": [
@@ -5945,7 +5945,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.clau",
+                    "text": "sala.oris_cella.reixa.clau",
                     "sound": "eina"
                   }
                 ]
@@ -5955,7 +5955,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.look"
+                    "text": "sala.oris_cella.reixa.look"
                   }
                 ]
               },
@@ -5970,7 +5970,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.soldada"
+                    "text": "sala.oris_cella.reixa.soldada"
                   }
                 ]
               }
@@ -6042,15 +6042,15 @@
             "lines": [
               {
                 "who": "directora",
-                "text": "sala.gavina_cella.tub1"
+                "text": "sala.oris_cella.tub1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_cella.tub2"
+                "text": "sala.oris_cella.tub2"
               },
               {
                 "who": "directora",
-                "text": "sala.gavina_cella.tub3"
+                "text": "sala.oris_cella.tub3"
               }
             ]
           },
@@ -6072,11 +6072,11 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_cella.reixa.reajust1"
+                "text": "sala.oris_cella.reixa.reajust1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_cella.reixa.reajust2"
+                "text": "sala.oris_cella.reixa.reajust2"
               }
             ],
             "effects": [
@@ -6092,28 +6092,28 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.gavina_cella.intro1"
+                "text": "sala.oris_cella.intro1"
               },
               {
                 "who": "mare",
-                "text": "sala.gavina_cella.intro2",
+                "text": "sala.oris_cella.intro2",
                 "sound": "altaveu"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_cella.intro3"
+                "text": "sala.oris_cella.intro3"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_cella.intro4",
+                "text": "sala.oris_cella.intro4",
                 "sound": "vibracio"
               }
             ]
           }
         ]
       },
-      "gavina_hangar": {
-        "name": "sala.gavina_hangar.nom",
+      "oris_hangar": {
+        "name": "sala.oris_hangar.nom",
         "protagonist": "vet",
         "onEnter": [
           {
@@ -6128,11 +6128,11 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.inundat1"
+                "text": "sala.oris_hangar.inundat1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.inundat2",
+                "text": "sala.oris_hangar.inundat2",
                 "sound": "aigua"
               }
             ],
@@ -6161,11 +6161,11 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.secat1"
+                "text": "sala.oris_hangar.secat1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.secat2"
+                "text": "sala.oris_hangar.secat2"
               }
             ]
           },
@@ -6187,15 +6187,15 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.marca1"
+                "text": "sala.oris_hangar.marca1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.marca2"
+                "text": "sala.oris_hangar.marca2"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.marca3"
+                "text": "sala.oris_hangar.marca3"
               }
             ],
             "effects": [
@@ -6211,18 +6211,18 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.intro1"
+                "text": "sala.oris_hangar.intro1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_hangar.intro2"
+                "text": "sala.oris_hangar.intro2"
               }
             ]
           }
         ],
         "hotspots": {
           "porta_passadis": {
-            "name": "sala.gavina_hangar.porta_passadis.nom",
+            "name": "sala.oris_hangar.porta_passadis.nom",
             "interactions": [
               {
                 "verb": [
@@ -6230,12 +6230,12 @@
                   "use",
                   "walkTo"
                 ],
-                "goTo": "gavina_passadis"
+                "goTo": "oris_passadis"
               }
             ]
           },
           "comporta": {
-            "name": "sala.gavina_hangar.comporta.nom",
+            "name": "sala.oris_hangar.comporta.nom",
             "interactions": [
               {
                 "verb": "look",
@@ -6245,7 +6245,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.oberta"
+                    "text": "sala.oris_hangar.comporta.oberta"
                   }
                 ]
               },
@@ -6259,20 +6259,20 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir1"
+                    "text": "sala.oris_hangar.comporta.obrir1"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_hangar.comporta.obrir2",
+                    "text": "sala.oris_hangar.comporta.obrir2",
                     "sound": "comporta"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir3"
+                    "text": "sala.oris_hangar.comporta.obrir3"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir4"
+                    "text": "sala.oris_hangar.comporta.obrir4"
                   }
                 ],
                 "effects": [
@@ -6294,20 +6294,20 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir1"
+                    "text": "sala.oris_hangar.comporta.obrir1"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_hangar.comporta.obrir2",
+                    "text": "sala.oris_hangar.comporta.obrir2",
                     "sound": "comporta"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir3"
+                    "text": "sala.oris_hangar.comporta.obrir3"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.obrir4"
+                    "text": "sala.oris_hangar.comporta.obrir4"
                   }
                 ],
                 "effects": [
@@ -6325,7 +6325,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.tram"
+                    "text": "sala.oris_hangar.comporta.tram"
                   }
                 ]
               },
@@ -6335,7 +6335,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.tram"
+                    "text": "sala.oris_hangar.comporta.tram"
                   }
                 ]
               },
@@ -6345,7 +6345,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.tram"
+                    "text": "sala.oris_hangar.comporta.tram"
                   }
                 ]
               },
@@ -6359,15 +6359,15 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.mesurar1"
+                    "text": "sala.oris_hangar.comporta.mesurar1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.mesurar2"
+                    "text": "sala.oris_hangar.comporta.mesurar2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.mesurar3"
+                    "text": "sala.oris_hangar.comporta.mesurar3"
                   }
                 ],
                 "effects": [
@@ -6382,7 +6382,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.mesurada"
+                    "text": "sala.oris_hangar.comporta.mesurada"
                   }
                 ]
               },
@@ -6395,7 +6395,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.encallada"
+                    "text": "sala.oris_hangar.comporta.encallada"
                   }
                 ]
               },
@@ -6404,14 +6404,14 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.comporta.look"
+                    "text": "sala.oris_hangar.comporta.look"
                   }
                 ]
               }
             ]
           },
           "pilar": {
-            "name": "sala.gavina_hangar.pilar.nom",
+            "name": "sala.oris_hangar.pilar.nom",
             "interactions": [
               {
                 "verb": "look",
@@ -6421,7 +6421,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.pilar.look_marca"
+                    "text": "sala.oris_hangar.pilar.look_marca"
                   }
                 ]
               },
@@ -6430,14 +6430,14 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.pilar.look"
+                    "text": "sala.oris_hangar.pilar.look"
                   }
                 ]
               }
             ]
           },
           "placa_terra": {
-            "name": "sala.gavina_hangar.placa.nom",
+            "name": "sala.oris_hangar.placa.nom",
             "interactions": [
               {
                 "verb": [
@@ -6464,11 +6464,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.ferro9_1"
+                    "text": "sala.oris_hangar.placa.ferro9_1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.ferro9_2"
+                    "text": "sala.oris_hangar.placa.ferro9_2"
                   }
                 ],
                 "effects": [
@@ -6505,15 +6505,15 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.rovell1"
+                    "text": "sala.oris_hangar.placa.rovell1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.rovell2"
+                    "text": "sala.oris_hangar.placa.rovell2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.rovell3"
+                    "text": "sala.oris_hangar.placa.rovell3"
                   }
                 ],
                 "effects": [
@@ -6537,7 +6537,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.buida"
+                    "text": "sala.oris_hangar.placa.buida"
                   }
                 ]
               },
@@ -6550,7 +6550,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.perque"
+                    "text": "sala.oris_hangar.placa.perque"
                   }
                 ]
               },
@@ -6562,7 +6562,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.look_pilar"
+                    "text": "sala.oris_hangar.placa.look_pilar"
                   }
                 ]
               },
@@ -6571,14 +6571,14 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.placa.look"
+                    "text": "sala.oris_hangar.placa.look"
                   }
                 ]
               }
             ]
           },
           "llancadora": {
-            "name": "sala.gavina_hangar.llancadora.nom",
+            "name": "sala.oris_hangar.llancadora.nom",
             "interactions": [
               {
                 "verb": "use",
@@ -6586,15 +6586,15 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.tub1"
+                    "text": "sala.oris_hangar.llancadora.tub1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.tub2"
+                    "text": "sala.oris_hangar.llancadora.tub2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.tub3",
+                    "text": "sala.oris_hangar.llancadora.tub3",
                     "sound": "eina"
                   }
                 ],
@@ -6632,16 +6632,16 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.fugir1",
+                    "text": "sala.oris_hangar.llancadora.fugir1",
                     "sound": "motor"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.fugir2"
+                    "text": "sala.oris_hangar.llancadora.fugir2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.fugir3"
+                    "text": "sala.oris_hangar.llancadora.fugir3"
                   }
                 ],
                 "effects": [
@@ -6675,16 +6675,16 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.fugir1",
+                    "text": "sala.oris_hangar.llancadora.fugir1",
                     "sound": "motor"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.fugir2"
+                    "text": "sala.oris_hangar.llancadora.fugir2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.fugir3"
+                    "text": "sala.oris_hangar.llancadora.fugir3"
                   },
                   {
                     "who": "narrator",
@@ -6711,7 +6711,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.look_tub"
+                    "text": "sala.oris_hangar.llancadora.look_tub"
                   }
                 ]
               },
@@ -6726,7 +6726,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.sense_tub",
+                    "text": "sala.oris_hangar.llancadora.sense_tub",
                     "sound": "boto"
                   }
                 ],
@@ -6744,7 +6744,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.look_sense_tub"
+                    "text": "sala.oris_hangar.llancadora.look_sense_tub"
                   }
                 ],
                 "effects": [
@@ -6761,7 +6761,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.a_punt"
+                    "text": "sala.oris_hangar.llancadora.a_punt"
                   }
                 ]
               },
@@ -6789,17 +6789,17 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.engegar1",
+                    "text": "sala.oris_hangar.llancadora.engegar1",
                     "sound": "boto"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.engegar2",
+                    "text": "sala.oris_hangar.llancadora.engegar2",
                     "sound": "motor"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.engegar3"
+                    "text": "sala.oris_hangar.llancadora.engegar3"
                   }
                 ],
                 "effects": [
@@ -6822,7 +6822,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.en_marxa"
+                    "text": "sala.oris_hangar.llancadora.en_marxa"
                   }
                 ]
               },
@@ -6846,7 +6846,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.escapa",
+                    "text": "sala.oris_hangar.llancadora.escapa",
                     "sound": "boto"
                   }
                 ]
@@ -6862,7 +6862,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.sense_pressio",
+                    "text": "sala.oris_hangar.llancadora.sense_pressio",
                     "sound": "boto"
                   }
                 ]
@@ -6875,7 +6875,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.oberta"
+                    "text": "sala.oris_hangar.llancadora.oberta"
                   }
                 ]
               },
@@ -6889,7 +6889,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.porta_tancada"
+                    "text": "sala.oris_hangar.llancadora.porta_tancada"
                   }
                 ],
                 "effects": [
@@ -6903,7 +6903,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.look"
+                    "text": "sala.oris_hangar.llancadora.look"
                   }
                 ],
                 "effects": [
@@ -6918,7 +6918,7 @@
             }
           },
           "pany": {
-            "name": "sala.gavina_hangar.pany.nom",
+            "name": "sala.oris_hangar.pany.nom",
             "interactions": [
               {
                 "verb": "look",
@@ -6928,7 +6928,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.pany.obert"
+                    "text": "sala.oris_hangar.pany.obert"
                   }
                 ]
               },
@@ -6949,22 +6949,22 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.obrir1",
+                    "text": "sala.oris_hangar.llancadora.obrir1",
                     "sound": "diapaso_2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.obrir2",
+                    "text": "sala.oris_hangar.llancadora.obrir2",
                     "sound": "clac"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_hangar.llancadora.obrir3",
+                    "text": "sala.oris_hangar.llancadora.obrir3",
                     "sound": "porta_llancadora"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.obrir4"
+                    "text": "sala.oris_hangar.llancadora.obrir4"
                   }
                 ],
                 "effects": [
@@ -6982,7 +6982,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.diapaso_no",
+                    "text": "sala.oris_hangar.llancadora.diapaso_no",
                     "sound": "pany_diapaso_{diapaso_to}"
                   }
                 ]
@@ -6996,7 +6996,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_ja",
+                    "text": "sala.oris_hangar.llancadora.molla_ja",
                     "sound": "pany_molla_3"
                   }
                 ]
@@ -7012,7 +7012,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_greu",
+                    "text": "sala.oris_hangar.llancadora.molla_greu",
                     "sound": "pany_molla_{molla_tensio}"
                   }
                 ]
@@ -7028,7 +7028,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_aguda",
+                    "text": "sala.oris_hangar.llancadora.molla_aguda",
                     "sound": "pany_molla_{molla_tensio}"
                   }
                 ]
@@ -7039,12 +7039,12 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_igual1",
+                    "text": "sala.oris_hangar.llancadora.molla_igual1",
                     "sound": "pany_molla_3"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.molla_igual2"
+                    "text": "sala.oris_hangar.llancadora.molla_igual2"
                   }
                 ],
                 "effects": [
@@ -7063,12 +7063,12 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.tocar1",
+                    "text": "sala.oris_hangar.llancadora.tocar1",
                     "sound": "pany"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.llancadora.tocar2"
+                    "text": "sala.oris_hangar.llancadora.tocar2"
                   }
                 ],
                 "effects": [
@@ -7082,7 +7082,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.pany.look"
+                    "text": "sala.oris_hangar.pany.look"
                   }
                 ]
               }
@@ -7099,7 +7099,7 @@
             }
           },
           "conducte": {
-            "name": "sala.gavina_hangar.conducte.nom",
+            "name": "sala.oris_hangar.conducte.nom",
             "interactions": [
               {
                 "verb": "look",
@@ -7111,7 +7111,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.conducte.look_rebentat"
+                    "text": "sala.oris_hangar.conducte.look_rebentat"
                   }
                 ]
               },
@@ -7125,7 +7125,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.conducte.look_ple"
+                    "text": "sala.oris_hangar.conducte.look_ple"
                   }
                 ]
               },
@@ -7134,7 +7134,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.conducte.look"
+                    "text": "sala.oris_hangar.conducte.look"
                   }
                 ]
               },
@@ -7149,14 +7149,14 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.conducte.tocar"
+                    "text": "sala.oris_hangar.conducte.tocar"
                   }
                 ]
               }
             ]
           },
           "escala": {
-            "name": "sala.gavina_hangar.escala.nom",
+            "name": "sala.oris_hangar.escala.nom",
             "interactions": [
               {
                 "verb": [
@@ -7176,7 +7176,7 @@
                     }
                   ]
                 },
-                "goTo": "gavina_arxiu"
+                "goTo": "oris_arxiu"
               },
               {
                 "verb": "look",
@@ -7188,7 +7188,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.escala.look_aigua"
+                    "text": "sala.oris_hangar.escala.look_aigua"
                   }
                 ]
               },
@@ -7197,7 +7197,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.escala.look"
+                    "text": "sala.oris_hangar.escala.look"
                   }
                 ]
               },
@@ -7215,7 +7215,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.escala.aigua"
+                    "text": "sala.oris_hangar.escala.aigua"
                   }
                 ]
               },
@@ -7238,11 +7238,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.escala.descargolar1"
+                    "text": "sala.oris_hangar.escala.descargolar1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.escala.descargolar2",
+                    "text": "sala.oris_hangar.escala.descargolar2",
                     "sound": "eina"
                   }
                 ],
@@ -7261,14 +7261,14 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.escala.reixa"
+                    "text": "sala.oris_hangar.escala.reixa"
                   }
                 ]
               }
             ]
           },
           "caixa_flotant": {
-            "name": "sala.gavina_hangar.caixa.nom",
+            "name": "sala.oris_hangar.caixa.nom",
             "interactions": [
               {
                 "verb": [
@@ -7278,11 +7278,11 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.caixa.obrir1"
+                    "text": "sala.oris_hangar.caixa.obrir1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.caixa.obrir2"
+                    "text": "sala.oris_hangar.caixa.obrir2"
                   }
                 ],
                 "effects": [
@@ -7299,7 +7299,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.caixa.look"
+                    "text": "sala.oris_hangar.caixa.look"
                   }
                 ]
               }
@@ -7319,7 +7319,7 @@
             }
           },
           "sortida_conducte": {
-            "name": "sala.gavina_hangar.sortida_conducte.nom",
+            "name": "sala.oris_hangar.sortida_conducte.nom",
             "visibleIf": {
               "flag": "reixa_oberta"
             },
@@ -7334,17 +7334,17 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.sortida_conducte.entrar"
+                    "text": "sala.oris_hangar.sortida_conducte.entrar"
                   }
                 ],
-                "goTo": "gavina_cella"
+                "goTo": "oris_cella"
               },
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.sortida_conducte.look"
+                    "text": "sala.oris_hangar.sortida_conducte.look"
                   }
                 ]
               }
@@ -7371,8 +7371,8 @@
           }
         }
       },
-      "gavina_memoria": {
-        "name": "sala.gavina_memoria.nom",
+      "oris_memoria": {
+        "name": "sala.oris_memoria.nom",
         "protagonist": "vet",
         "onEnter": [
           {
@@ -7382,18 +7382,18 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.gavina_memoria.intro1"
+                "text": "sala.oris_memoria.intro1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_memoria.intro2"
+                "text": "sala.oris_memoria.intro2"
               }
             ]
           }
         ],
         "hotspots": {
           "porta_passadis": {
-            "name": "sala.gavina_memoria.porta.nom",
+            "name": "sala.oris_memoria.porta.nom",
             "interactions": [
               {
                 "verb": [
@@ -7401,12 +7401,12 @@
                   "use",
                   "walkTo"
                 ],
-                "goTo": "gavina_passadis"
+                "goTo": "oris_passadis"
               }
             ]
           },
           "holograma": {
-            "name": "sala.gavina_memoria.holograma.nom",
+            "name": "sala.oris_memoria.holograma.nom",
             "interactions": [
               {
                 "verb": [
@@ -7417,15 +7417,15 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.holograma.parla1"
+                    "text": "sala.oris_memoria.holograma.parla1"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.holograma.parla2"
+                    "text": "sala.oris_memoria.holograma.parla2"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.holograma.parla3"
+                    "text": "sala.oris_memoria.holograma.parla3"
                   }
                 ]
               },
@@ -7434,14 +7434,14 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.holograma.look"
+                    "text": "sala.oris_memoria.holograma.look"
                   }
                 ]
               }
             ]
           },
           "foto": {
-            "name": "sala.gavina_memoria.foto.nom",
+            "name": "sala.oris_memoria.foto.nom",
             "interactions": [
               {
                 "verb": "look",
@@ -7451,19 +7451,19 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.foto.text"
+                    "text": "sala.oris_memoria.foto.text"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.foto.mira"
+                    "text": "sala.oris_memoria.foto.mira"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.foto.vet1"
+                    "text": "sala.oris_memoria.foto.vet1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.foto.vet2"
+                    "text": "sala.oris_memoria.foto.vet2"
                   }
                 ],
                 "effects": [
@@ -7477,15 +7477,15 @@
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.foto.text"
+                    "text": "sala.oris_memoria.foto.text"
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.foto.forat"
+                    "text": "sala.oris_memoria.foto.forat"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.foto.vet1"
+                    "text": "sala.oris_memoria.foto.vet1"
                   }
                 ],
                 "effects": [
@@ -7497,18 +7497,18 @@
             ]
           },
           "vitrina": {
-            "name": "sala.gavina_memoria.vitrina.nom",
+            "name": "sala.oris_memoria.vitrina.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.vitrina.text"
+                    "text": "sala.oris_memoria.vitrina.text"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.vitrina.vet"
+                    "text": "sala.oris_memoria.vitrina.vet"
                   }
                 ]
               },
@@ -7521,29 +7521,29 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.vitrina.tocar"
+                    "text": "sala.oris_memoria.vitrina.tocar"
                   }
                 ]
               }
             ]
           },
           "mapa": {
-            "name": "sala.gavina_memoria.mapa.nom",
+            "name": "sala.oris_memoria.mapa.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_memoria.mapa.text"
+                    "text": "sala.oris_memoria.mapa.text"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.mapa.vet1"
+                    "text": "sala.oris_memoria.mapa.vet1"
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.mapa.vet2"
+                    "text": "sala.oris_memoria.mapa.vet2"
                   }
                 ],
                 "effects": [
@@ -7555,7 +7555,7 @@
             ]
           },
           "fullets": {
-            "name": "sala.gavina_memoria.fullets.nom",
+            "name": "sala.oris_memoria.fullets.nom",
             "interactions": [
               {
                 "verb": "pickUp",
@@ -7567,7 +7567,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.fullets.agafar"
+                    "text": "sala.oris_memoria.fullets.agafar"
                   }
                 ],
                 "effects": [
@@ -7584,7 +7584,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.fullets.prou"
+                    "text": "sala.oris_memoria.fullets.prou"
                   }
                 ]
               },
@@ -7593,7 +7593,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_memoria.fullets.look"
+                    "text": "sala.oris_memoria.fullets.look"
                   }
                 ]
               }
@@ -7601,12 +7601,12 @@
           }
         }
       },
-      "gavina_passadis": {
-        "name": "sala.gavina_passadis.nom",
+      "oris_passadis": {
+        "name": "sala.oris_passadis.nom",
         "protagonist": "vet",
         "hotspots": {
           "cartell": {
-            "name": "sala.gavina_passadis.cartell.nom",
+            "name": "sala.oris_passadis.cartell.nom",
             "interactions": [
               {
                 "verb": "pickUp",
@@ -7617,7 +7617,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.cartell.agafar"
+                    "text": "sala.oris_passadis.cartell.agafar"
                   }
                 ],
                 "effects": [
@@ -7638,7 +7638,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.cartell.prou"
+                    "text": "sala.oris_passadis.cartell.prou"
                   }
                 ]
               },
@@ -7647,7 +7647,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.cartell.altre"
+                    "text": "sala.oris_passadis.cartell.altre"
                   }
                 ],
                 "effects": [
@@ -7661,28 +7661,28 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.cartell.look"
+                    "text": "sala.oris_passadis.cartell.look"
                   }
                 ]
               }
             ]
           },
           "camera_vigilancia": {
-            "name": "sala.gavina_passadis.camera_vigilancia.nom",
+            "name": "sala.oris_passadis.camera_vigilancia.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.camera_vigilancia.look"
+                    "text": "sala.oris_passadis.camera_vigilancia.look"
                   }
                 ]
               }
             ]
           },
           "porta_cella": {
-            "name": "sala.gavina_passadis.porta_cella.nom",
+            "name": "sala.oris_passadis.porta_cella.nom",
             "interactions": [
               {
                 "verb": [
@@ -7696,7 +7696,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.porta_cella.tancada"
+                    "text": "sala.oris_passadis.porta_cella.tancada"
                   }
                 ]
               },
@@ -7706,12 +7706,12 @@
                   "use",
                   "walkTo"
                 ],
-                "goTo": "gavina_cella"
+                "goTo": "oris_cella"
               }
             ]
           },
           "porta_hangar": {
-            "name": "sala.gavina_passadis.porta_hangar.nom",
+            "name": "sala.oris_passadis.porta_hangar.nom",
             "interactions": [
               {
                 "verb": [
@@ -7719,12 +7719,12 @@
                   "use",
                   "walkTo"
                 ],
-                "goTo": "gavina_hangar"
+                "goTo": "oris_hangar"
               }
             ]
           },
           "porta_memoria": {
-            "name": "sala.gavina_passadis.porta_memoria.nom",
+            "name": "sala.oris_passadis.porta_memoria.nom",
             "interactions": [
               {
                 "verb": [
@@ -7735,7 +7735,7 @@
                 "if": {
                   "flag": "acte3_iniciat"
                 },
-                "goTo": "gavina_memoria"
+                "goTo": "oris_memoria"
               },
               {
                 "verb": [
@@ -7746,7 +7746,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.porta_memoria.tancada"
+                    "text": "sala.oris_passadis.porta_memoria.tancada"
                   }
                 ]
               },
@@ -7755,7 +7755,7 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_passadis.porta_memoria.look"
+                    "text": "sala.oris_passadis.porta_memoria.look"
                   }
                 ]
               }
@@ -7770,23 +7770,23 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_passadis.fi1"
+                "text": "sala.oris_passadis.fi1"
               },
               {
                 "who": "player",
-                "text": "sala.gavina_passadis.fi2"
+                "text": "sala.oris_passadis.fi2"
               },
               {
                 "who": "narrator",
-                "text": "sala.gavina_passadis.fi3"
+                "text": "sala.oris_passadis.fi3"
               },
               {
                 "who": "narrator",
-                "text": "sala.gavina_passadis.fi4"
+                "text": "sala.oris_passadis.fi4"
               },
               {
                 "who": "narrator",
-                "text": "sala.gavina_passadis.fi5"
+                "text": "sala.oris_passadis.fi5"
               }
             ],
             "effects": [
@@ -7894,7 +7894,7 @@
             "id": "hangar",
             "text": "mis.acte2.obj.hangar",
             "completeWhen": {
-              "visited": "gavina_hangar"
+              "visited": "oris_hangar"
             }
           },
           {
@@ -7995,7 +7995,7 @@
             "id": "memoria",
             "text": "mis.acte3.obj.memoria",
             "completeWhen": {
-              "visited": "gavina_memoria"
+              "visited": "oris_memoria"
             }
           },
           {
@@ -8751,13 +8751,13 @@
             },
             {
               "not": {
-                "visited": "gavina_hangar"
+                "visited": "oris_hangar"
               }
             }
           ]
         },
         "doneWhen": {
-          "visited": "gavina_hangar"
+          "visited": "oris_hangar"
         },
         "levels": [
           "pista.vet_hangar.1",
@@ -8772,7 +8772,7 @@
               "protagonist": "vet"
             },
             {
-              "visited": "gavina_hangar"
+              "visited": "oris_hangar"
             },
             {
               "flag": "comporta_mesurada",
@@ -10299,13 +10299,13 @@
               "flag": "arxiu_explorat"
             },
             {
-              "flag": "vet_sap_gavina",
+              "flag": "vet_sap_oris",
               "is": false
             }
           ]
         },
         "doneWhen": {
-          "flag": "vet_sap_gavina"
+          "flag": "vet_sap_oris"
         },
         "levels": [
           "pista.vet_planols_arxiu.1",
@@ -10697,13 +10697,13 @@
             },
             {
               "not": {
-                "visited": "gavina_memoria"
+                "visited": "oris_memoria"
               }
             }
           ]
         },
         "doneWhen": {
-          "visited": "gavina_memoria"
+          "visited": "oris_memoria"
         },
         "levels": [
           "pista.vet_memoria.1",
@@ -10718,7 +10718,7 @@
               "protagonist": "vet"
             },
             {
-              "visited": "gavina_memoria"
+              "visited": "oris_memoria"
             },
             {
               "flag": "vet_veu_foto",
@@ -10742,7 +10742,7 @@
               "protagonist": "vet"
             },
             {
-              "visited": "gavina_memoria"
+              "visited": "oris_memoria"
             },
             {
               "flag": "vet_sap_conducte",
@@ -12877,7 +12877,7 @@
       "dlg.mare.reciclatge3": "Aquesta informació no està disponible per a la seva tranquil·litat. De res!",
       "dlg.mare.sortir1": "Sol·licitud de sortida registrada! Temps d'espera estimat: tres-cents quaranta anys.",
       "dlg.mare.sortir2": "Gràcies per la seva paciència!",
-      "dlg.mare.preso1": "La Gavina es va construir sobre les restes de la gloriosa fàbrica de ferro-9 de la Corporació Aldaia!",
+      "dlg.mare.preso1": "Orís es va construir sobre les restes de la gloriosa fàbrica de ferro-9 de la Corporació Aldaia!",
       "dlg.mare.preso2": "La fàbrica va tancar fa cent vint anys, després d'un petit accident del torn de nit. Res de greu!",
       "dlg.mare.adeu": "Fins aviat, interna 9! Recordi: queden tres dies!",
       "dlg.mos.primera1": "Ah, la nouvinguda està desperta. Tres dies, eh? Jo en porto vint, d'esperar.",
@@ -12955,9 +12955,9 @@
       "dlg.cargol.tub2": "I els fugitius no omplen formularis. No hi ha casella.",
       "dlg.cargol.tub3": "Té. Que no em vegi ningú donant-l'hi. M'agradaria continuar arxivant.",
       "final.fugida.titol": "La fugida",
-      "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
+      "final.fugida.text": "Les dues han escapat. Orís tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "La veritat a temps",
-      "final.veritat.text": "La corporació cau cent vint anys abans. La Gavina no ha estat mai una presó: és l'Estació Alsina. I algú hi espera la Vet amb un somriure estranyament familiar.",
+      "final.veritat.text": "La corporació cau cent vint anys abans. Orís no ha estat mai una presó: és l'Estació Alsina. I algú hi espera la Vet amb un somriure estranyament familiar.",
       "final.correspondencia.titol": "Correspondència",
       "final.correspondencia.text": "El Cargol ha esperat cent vint anys reparant la cambra. La finestra torna a funcionar. Una nota hi espera: «Hola, V. Tinc tantes coses per explicar-te. —I.»",
       "joc.titol": "Ferro-9",
@@ -13041,7 +13041,7 @@
       "mis.carta_mos.desc": "En Mos vol saber si la seva filla, la Nura, va rebre la seva carta.",
       "mis.carta_mos.obj.trobar": "Troba la carta d'en Mos a l'arxiu",
       "mis.acte2.titol": "Acte 2 · Els costos",
-      "mis.acte2.desc": "L'única sortida de La Gavina és la vella llançadora de càrrega. Li falten tres peces de ferro-9.",
+      "mis.acte2.desc": "L'única sortida d'Orís és la vella llançadora de càrrega. Li falten tres peces de ferro-9.",
       "mis.acte2.obj.hangar": "Vet: troba la sortida de la presó",
       "mis.acte2.obj.mida": "Iri: entén quina palanca necessita la V.",
       "mis.acte2.obj.comporta": "Vet: obre la comporta de l'hangar",
@@ -13096,16 +13096,16 @@
       "obj.nota_vet.nom": "nota de la cel·la 9",
       "obj.nota_vet.desc": "L'avís de reciclatge, escrit pel darrere.",
       "obj.fullet_reeducacio.nom": "fullet de reeducació",
-      "obj.fullet_reeducacio.desc": "«La Gavina: la teva segona oportunitat!»",
+      "obj.fullet_reeducacio.desc": "«Orís: la teva segona oportunitat!»",
       "obj.nota_pany.nom": "dibuix del pany",
       "obj.nota_pany.desc": "El fullet, amb un dibuix del pany pel darrere.",
       "obj.escarabat.nom": "escarabat",
       "obj.escarabat.desc": "El Senyor Bigotis. El meu únic amic de veritat.",
       "obj.sopa.nom": "sopa",
       "obj.sopa.desc": "Sopa de reinserció. Fa bombolles soles.",
-      "obj.nota_vet.text": "«Ei, qui ets?? Soc a la cel·la 9 de La Gavina. Gràcies per la clau, ets brutal-plus. Però no entenc res. Ajuda'm, d'aquí a 3 dies em reciclen. —La de la cel·la 9»",
-      "obj.nota_vet.iri1": "«Brutal-plus»? «La Gavina»? «Reciclen»?",
-      "obj.nota_vet.iri2": "No hi ha cap cel·la a la fàbrica. Ni cap gavina. Aquí no hi ha ni ocells.",
+      "obj.nota_vet.text": "«Ei, qui ets?? Soc a la cel·la 9 d'Orís. Gràcies per la clau, ets brutal-plus. Però no entenc res. Ajuda'm, d'aquí a 3 dies em reciclen. —La de la cel·la 9»",
+      "obj.nota_vet.iri1": "«Brutal-plus»? «Orís»? «Reciclen»?",
+      "obj.nota_vet.iri2": "No hi ha cap cel·la a la fàbrica. I no he sentit dir mai cap lloc que es digui Orís.",
       "obj.nota_iri.text": "«Hola, la de la cel·la 9. Aquí és la fàbrica de ferro-9 de la Corporació Aldaia. No hi ha cap cel·la. Què vol dir \"brutal-plus\"? I què vol dir que et reciclen? —I.»",
       "obj.nota_iri.vet1": "La fàbrica Aldaia? Va tancar fa cent vint anys. Ho diuen tots els fullets de reeducació.",
       "obj.nota_iri.vet2": "...",
@@ -13113,7 +13113,7 @@
       "obj.nota_iri.correspondencia.inici": "(Durant una hora, la cambra no para d'espetegar.)",
       "obj.nota_iri.correspondencia.1": "«\"Brutal-plus\" vol dir que ets molt bona. \"Reciclar\" no ho sé: ningú no en torna. Pregunta rara: què veus per la finestra? —La de la cel·la 9»",
       "obj.nota_iri.correspondencia.2": "«Xemeneies, fum i el canal. Com cada nit. I torna'm la clau anglesa, que l'he de retornar al Cargol. —I.»",
-      "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. La Gavina dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica. —La de la cel·la 9»",
+      "obj.nota_iri.correspondencia.3": "«Per la meva finestra hi ha estrelles, i la Terra, petita i blava. Orís dona voltes al món. I la teva clau porta un segell: \"Aldaia · Ferro-9 · Lot 1\". Aquest metall fa cent vint anys que no es fabrica. —La de la cel·la 9»",
       "obj.nota_iri.correspondencia.4": "«... —I.»",
       "obj.nota_iri.correspondencia.vet1": "Un full en blanc i tres punts. Ja ho ha entès.",
       "obj.nota_iri.correspondencia.vet2": "Una enginyera de fa cent vint anys que em pot fer arribar coses. I a mi em queden tres dies.",
@@ -13237,7 +13237,7 @@
       "obj.nota_iri_nom.mare2": "I abans, visita de reeducació obligatòria a la Sala de la Memòria. Hi ha galetes!",
       "obj.nota_iri_nom.directora": "No tan de pressa, MARE. Abans, la interna i jo hem de parlar.",
       "obj.fullet_memoria.nom": "fullet de la Sala de la Memòria",
-      "obj.fullet_memoria.desc": "«La Gavina: aquí va començar tot!» Per darrere, en blanc.",
+      "obj.fullet_memoria.desc": "«Orís: aquí va començar tot!» Per darrere, en blanc.",
       "obj.nota_mida.iri3": "Un pilar amb un 7 pintat. Al meu moll n'hi ha un. La V. és aquí mateix, cent vint anys més tard.",
       "obj.nota_mida.iri4": "Li hauria de dir que ho tinc. Però no gastaré una encesa per un «d'acord»: si és el meu moll, li ho puc deixar escrit.",
       "obj.llapis_ulls.mapa1": "Hi dibuixo la ruta: de la reixa de la cambra fins al moll, pel conducte.",
@@ -13268,7 +13268,7 @@
       "pj.mos.nom": "Mos",
       "pj.mos.desc": "El meu company de cel·la. Vell, prim i maquillat.",
       "pj.directora.nom": "Directora Aldaia",
-      "pj.directora.desc": "La directora de La Gavina. Besneta del Director Aldaia, i se li nota.",
+      "pj.directora.desc": "La directora d'Orís. Besneta del Director Aldaia, i se li nota.",
       "pj.sic.nom": "Inspector Sic",
       "pj.sic.desc": "L'inspector d'inventari de la corporació. Té un humor de pedra.",
       "pista.iri_clau.1": "La clau de la cambra la té el Cargol, al magatzem.",
@@ -13453,7 +13453,7 @@
       "pista.vet_foto.1": "En aquesta sala hi ha fotos de la fàbrica.",
       "pista.vet_foto.2": "Mira la foto del torn de nit.",
       "pista.vet_mapa_fuga.1": "Si la I. ha de fugir de la fàbrica, necessito saber per on.",
-      "pista.vet_mapa_fuga.2": "Mira el mapa de La Gavina.",
+      "pista.vet_mapa_fuga.2": "Mira el mapa d'Orís.",
       "pista.vet_fullet_mapa.1": "Per dibuixar-li la ruta, em cal paper.",
       "pista.vet_fullet_mapa.2": "Agafa un fullet de l'expositor.",
       "pista.vet_canvia_iri.1": "I a l'altra banda? Què li deu estar passant, a la I.?",
@@ -13584,65 +13584,65 @@
       "sala.fabrica_cambra.intro2": "Una palanca, un botó vermell i un vidre gruixut. Res que em faci confiança.",
       "sala.fabrica_cambra.parpelleja": "La consola parpelleja. Això abans no ho feia.",
       "sala.fabrica_cambra.nom": "Cambra de ressonància",
-      "sala.gavina_cella.panell.vibra": "Un panell rovellat a la paret. Vibra. Com si tingués son. O ganes de molestar.",
-      "sala.gavina_cella.panell.cop1": "Prou de vibrar!",
-      "sala.gavina_cella.panell.cop2": "(La Vet clava un cop de puny al panell.)",
-      "sala.gavina_cella.panell.cop3": "Au, au, au!",
-      "sala.gavina_cella.panell.paret_guanya": "Au. La paret guanya. Com sempre.",
-      "sala.gavina_cella.panell.obrir1": "Desmunto la tapa amb la clau anglesa...",
-      "sala.gavina_cella.panell.obrir2": "A dins hi ha una consola! Molt vella. Li falta la palanca.",
-      "sala.gavina_cella.panell.reparar1": "La clau anglesa al forat de la palanca... Encaixa com si l'haguessin fet a mida.",
-      "sala.gavina_cella.panell.reparar2": "Clac. La consola s'encén. Una llumeta verda. Hola, llumeta.",
-      "sala.gavina_cella.panell.trencat": "L'he trencat. Ja no vibra. Però la tapa s'ha afluixat.",
-      "sala.gavina_cella.panell.sense_palanca": "Una consola antiga, sense palanca. Necessito alguna cosa que hi encaixi.",
-      "sala.gavina_cella.panell.mort": "No fa res. Encara.",
-      "sala.gavina_cella.panell.parpelleja": "La consola parpelleja. Algú, a l'altra banda?",
-      "sala.gavina_cella.panell.armat": "El camp està armat. Ara, que algú ho reculli. Si us plau.",
-      "sala.gavina_cella.panell.reparat": "La consola, amb la clau anglesa de palanca. Darrere hi ha un buit, com una petita cambra.",
-      "sala.gavina_cella.panell.nom": "panell rovellat",
-      "sala.gavina_cella.altaveu.look": "L'altaveu de la MARE. Té forma de cor. És el detall més sinistre de la presó.",
-      "sala.gavina_cella.altaveu.tocar1": "Interna 9, detectem una manipulació de l'altaveu. Li enviem una abraçada virtual!",
-      "sala.gavina_cella.altaveu.nom": "altaveu de la MARE",
-      "sala.gavina_cella.mos.look": "En Mos, el meu company de cel·la. Fa vint anys que espera el reciclatge. Diu que l'han oblidat.",
-      "sala.gavina_cella.mos.nom": "Mos",
-      "sala.gavina_cella.avis.look": "Un paper que la MARE m'ha passat per sota la porta.",
-      "sala.gavina_cella.avis.agafar": "El meu avís de reciclatge. Per al meu àlbum de records.",
-      "sala.gavina_cella.avis.nom": "avís",
-      "sala.gavina_cella.llitera.look1": "La meva llitera. Sota el coixí hi ha un fullet de reeducació. Ideal per a quan no puc dormir.",
-      "sala.gavina_cella.llitera.look2": "Una llitera dura com la vida mateixa.",
-      "sala.gavina_cella.llitera.fullet": "Agafo el fullet de reeducació.",
-      "sala.gavina_cella.llitera.nom": "llitera",
-      "sala.gavina_cella.escarabat.look": "El Senyor Bigotis, el meu escarabat. Viu a la cantonada. Paga lloguer amb companyia.",
-      "sala.gavina_cella.escarabat.agafar": "Vine, Senyor Bigotis. Anem d'aventura.",
-      "sala.gavina_cella.escarabat.nom": "Senyor Bigotis",
-      "sala.gavina_cella.safata.look": "Sopa de reinserció. Fa bombolles soles. No n'hi he vist mai cap ingredient.",
-      "sala.gavina_cella.safata.agafar": "M'emporto la sopa. Com a arma, no com a menjar.",
-      "sala.gavina_cella.safata.nom": "safata de sopar",
-      "sala.gavina_cella.porta.imant1": "Acosto l'imant al pany...",
-      "sala.gavina_cella.porta.imant2": "Clac! Oberta! Qui sigui que siguis, I., t'estimo.",
-      "sala.gavina_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Mos.",
-      "sala.gavina_cella.porta.tancada": "Tancada. Si s'obrís empenyent, no seria una presó.",
-      "sala.gavina_cella.porta.oberta": "Oberta. Gràcies a la I. i a un imant de fa cent vint anys.",
-      "sala.gavina_cella.porta.nom": "porta de la cel·la",
-      "sala.gavina_cella.finestreta.look1": "Per la finestreta es veu la Terra, blava i petita.",
-      "sala.gavina_cella.finestreta.look2": "La Gavina dona voltes al planeta com una mosca pesada.",
-      "sala.gavina_cella.finestreta.nom": "finestreta",
-      "sala.gavina_cella.intro1": "La Gavina. Presó orbital. Mòdul C, cel·la 9.",
-      "sala.gavina_cella.intro2": "Bon dia, interna 9! Li recordem que d'aquí a tres dies serà reciclada. Que tingui una jornada plena de sentit!",
-      "sala.gavina_cella.intro3": "Tres dies. Genial. Fantàstic. Meravellós.",
-      "sala.gavina_cella.intro4": "I ara, a sobre, la paret vibra.",
-      "sala.gavina_cella.nom": "Cel·la 9",
-      "sala.gavina_passadis.cartell.look": "«RECICLATGE → Per aquí, amb un somriure!» Hi ha una fletxa i un somriure. El somriure fa por.",
-      "sala.gavina_passadis.cartell.nom": "cartell",
-      "sala.gavina_passadis.camera_vigilancia.look": "Una càmera de vigilància. El pilot verd parpelleja. Algú dorm a l'altra banda. Espero.",
-      "sala.gavina_passadis.camera_vigilancia.nom": "càmera",
-      "sala.gavina_passadis.porta_cella.nom": "cel·la 9",
-      "sala.gavina_passadis.fi1": "Fora de la cel·la!",
-      "sala.gavina_passadis.fi2": "Ara només em falta sortir d'una presó orbital. Bufar i fer ampolles.",
-      "sala.gavina_passadis.fi3": "Mentrestant, al passat, l'inventari del matí no quadra.",
-      "sala.gavina_passadis.fi4": "Falten una clau anglesa i un imant de ferro-9. L'Inspector Sic obre un expedient.",
-      "sala.gavina_passadis.fi5": "FI DE L'ACTE 1",
-      "sala.gavina_passadis.nom": "Passadís del mòdul C",
+      "sala.oris_cella.panell.vibra": "Un panell rovellat a la paret. Vibra. Com si tingués son. O ganes de molestar.",
+      "sala.oris_cella.panell.cop1": "Prou de vibrar!",
+      "sala.oris_cella.panell.cop2": "(La Vet clava un cop de puny al panell.)",
+      "sala.oris_cella.panell.cop3": "Au, au, au!",
+      "sala.oris_cella.panell.paret_guanya": "Au. La paret guanya. Com sempre.",
+      "sala.oris_cella.panell.obrir1": "Desmunto la tapa amb la clau anglesa...",
+      "sala.oris_cella.panell.obrir2": "A dins hi ha una consola! Molt vella. Li falta la palanca.",
+      "sala.oris_cella.panell.reparar1": "La clau anglesa al forat de la palanca... Encaixa com si l'haguessin fet a mida.",
+      "sala.oris_cella.panell.reparar2": "Clac. La consola s'encén. Una llumeta verda. Hola, llumeta.",
+      "sala.oris_cella.panell.trencat": "L'he trencat. Ja no vibra. Però la tapa s'ha afluixat.",
+      "sala.oris_cella.panell.sense_palanca": "Una consola antiga, sense palanca. Necessito alguna cosa que hi encaixi.",
+      "sala.oris_cella.panell.mort": "No fa res. Encara.",
+      "sala.oris_cella.panell.parpelleja": "La consola parpelleja. Algú, a l'altra banda?",
+      "sala.oris_cella.panell.armat": "El camp està armat. Ara, que algú ho reculli. Si us plau.",
+      "sala.oris_cella.panell.reparat": "La consola, amb la clau anglesa de palanca. Darrere hi ha un buit, com una petita cambra.",
+      "sala.oris_cella.panell.nom": "panell rovellat",
+      "sala.oris_cella.altaveu.look": "L'altaveu de la MARE. Té forma de cor. És el detall més sinistre de la presó.",
+      "sala.oris_cella.altaveu.tocar1": "Interna 9, detectem una manipulació de l'altaveu. Li enviem una abraçada virtual!",
+      "sala.oris_cella.altaveu.nom": "altaveu de la MARE",
+      "sala.oris_cella.mos.look": "En Mos, el meu company de cel·la. Fa vint anys que espera el reciclatge. Diu que l'han oblidat.",
+      "sala.oris_cella.mos.nom": "Mos",
+      "sala.oris_cella.avis.look": "Un paper que la MARE m'ha passat per sota la porta.",
+      "sala.oris_cella.avis.agafar": "El meu avís de reciclatge. Per al meu àlbum de records.",
+      "sala.oris_cella.avis.nom": "avís",
+      "sala.oris_cella.llitera.look1": "La meva llitera. Sota el coixí hi ha un fullet de reeducació. Ideal per a quan no puc dormir.",
+      "sala.oris_cella.llitera.look2": "Una llitera dura com la vida mateixa.",
+      "sala.oris_cella.llitera.fullet": "Agafo el fullet de reeducació.",
+      "sala.oris_cella.llitera.nom": "llitera",
+      "sala.oris_cella.escarabat.look": "El Senyor Bigotis, el meu escarabat. Viu a la cantonada. Paga lloguer amb companyia.",
+      "sala.oris_cella.escarabat.agafar": "Vine, Senyor Bigotis. Anem d'aventura.",
+      "sala.oris_cella.escarabat.nom": "Senyor Bigotis",
+      "sala.oris_cella.safata.look": "Sopa de reinserció. Fa bombolles soles. No n'hi he vist mai cap ingredient.",
+      "sala.oris_cella.safata.agafar": "M'emporto la sopa. Com a arma, no com a menjar.",
+      "sala.oris_cella.safata.nom": "safata de sopar",
+      "sala.oris_cella.porta.imant1": "Acosto l'imant al pany...",
+      "sala.oris_cella.porta.imant2": "Clac! Oberta! Qui sigui que siguis, I., t'estimo.",
+      "sala.oris_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Mos.",
+      "sala.oris_cella.porta.tancada": "Tancada. Si s'obrís empenyent, no seria una presó.",
+      "sala.oris_cella.porta.oberta": "Oberta. Gràcies a la I. i a un imant de fa cent vint anys.",
+      "sala.oris_cella.porta.nom": "porta de la cel·la",
+      "sala.oris_cella.finestreta.look1": "Per la finestreta es veu la Terra, blava i petita.",
+      "sala.oris_cella.finestreta.look2": "Orís dona voltes al planeta com una mosca pesada.",
+      "sala.oris_cella.finestreta.nom": "finestreta",
+      "sala.oris_cella.intro1": "Orís. Presó orbital. Mòdul C, cel·la 9.",
+      "sala.oris_cella.intro2": "Bon dia, interna 9! Li recordem que d'aquí a tres dies serà reciclada. Que tingui una jornada plena de sentit!",
+      "sala.oris_cella.intro3": "Tres dies. Genial. Fantàstic. Meravellós.",
+      "sala.oris_cella.intro4": "I ara, a sobre, la paret vibra.",
+      "sala.oris_cella.nom": "Cel·la 9",
+      "sala.oris_passadis.cartell.look": "«RECICLATGE → Per aquí, amb un somriure!» Hi ha una fletxa i un somriure. El somriure fa por.",
+      "sala.oris_passadis.cartell.nom": "cartell",
+      "sala.oris_passadis.camera_vigilancia.look": "Una càmera de vigilància. El pilot verd parpelleja. Algú dorm a l'altra banda. Espero.",
+      "sala.oris_passadis.camera_vigilancia.nom": "càmera",
+      "sala.oris_passadis.porta_cella.nom": "cel·la 9",
+      "sala.oris_passadis.fi1": "Fora de la cel·la!",
+      "sala.oris_passadis.fi2": "Ara només em falta sortir d'una presó orbital. Bufar i fer ampolles.",
+      "sala.oris_passadis.fi3": "Mentrestant, al passat, l'inventari del matí no quadra.",
+      "sala.oris_passadis.fi4": "Falten una clau anglesa i un imant de ferro-9. L'Inspector Sic obre un expedient.",
+      "sala.oris_passadis.fi5": "FI DE L'ACTE 1",
+      "sala.oris_passadis.nom": "Passadís del mòdul C",
       "sala.fabrica_moll.nom": "Moll de càrrega",
       "sala.fabrica_moll.intro": "El moll de càrrega. De nit, només hi som la llançadora i jo.",
       "sala.fabrica_moll.sense_mida": "Per a què la vull? Primer he de saber què necessita la V.",
@@ -13673,58 +13673,58 @@
       "sala.fabrica_moll.llancadora.tocar": "Si la toco i salta una alarma, no hi haurà formulari que em salvi.",
       "sala.fabrica_moll.comporta.nom": "comporta",
       "sala.fabrica_moll.comporta.look": "La comporta del moll. S'obre amb una palanca de dos metres. Aquí, de palanques, en tenim de sobres.",
-      "sala.gavina_hangar.nom": "Moll de l'hangar",
-      "sala.gavina_hangar.intro1": "Un moll de càrrega. I una comporta.",
-      "sala.gavina_hangar.intro2": "Si darrere hi ha el que crec que hi ha, aquesta és la meva sortida.",
-      "sala.gavina_hangar.comporta.obrir1": "Amunt... amunt... AMUNT!",
-      "sala.gavina_hangar.comporta.obrir2": "La comporta puja amb un gemec de cent vint anys.",
-      "sala.gavina_hangar.comporta.obrir3": "I aquí la tenim: la llançadora de càrrega.",
-      "sala.gavina_hangar.comporta.obrir4": "La porta té un pany estrany i el motor sembla mort. Bé, I., tenim feina.",
-      "sala.gavina_hangar.porta_passadis.nom": "passadís",
-      "sala.gavina_hangar.comporta.nom": "comporta",
-      "sala.gavina_hangar.comporta.oberta": "Oberta. Darrere, la llançadora.",
-      "sala.gavina_hangar.comporta.tram": "Un tram sol no fa palanca. Me'n calen els tres, cargolats.",
-      "sala.gavina_hangar.comporta.mesurar1": "Poso la clau anglesa a l'encaix i vaig comptant...",
-      "sala.gavina_hangar.comporta.mesurar2": "Sis claus angleses i mitja. Com a cinta mètrica, no està malament.",
-      "sala.gavina_hangar.comporta.mesurar3": "La I. coneix aquesta clau. Era seva.",
-      "sala.gavina_hangar.comporta.mesurada": "Sis claus i mitja. No ha canviat.",
-      "sala.gavina_hangar.comporta.encallada": "No es mou ni un mil·límetre. Sense palanca, res.",
-      "sala.gavina_hangar.comporta.look": "Una comporta enorme, encallada. Té un encaix per a una palanca molt llarga, però la palanca fa anys que no hi és.",
-      "sala.gavina_hangar.pilar.nom": "pilar",
-      "sala.gavina_hangar.pilar.look": "Un pilar amb un 7 pintat. Pintura de fàbrica: d'abans de la presó.",
-      "sala.gavina_hangar.placa.ferro9_1": "Aixeco la reixa i... una biga!",
-      "sala.gavina_hangar.placa.ferro9_2": "Cent vint anys sota terra i ni una taca. Ferro-9. Gràcies, I.",
-      "sala.gavina_hangar.placa.rovell1": "Aixeco la reixa i... una ratlla llarga de pols vermella.",
-      "sala.gavina_hangar.placa.rovell2": "Això era una biga. Fa cent vint anys.",
-      "sala.gavina_hangar.placa.rovell3": "N'agafo un grapat. La I. ho ha de veure.",
-      "sala.gavina_hangar.placa.nom": "reixa del terra",
-      "sala.gavina_hangar.placa.buida": "A sota no hi ha res més que pols de la normal.",
-      "sala.gavina_hangar.placa.perque": "Per què hauria d'aixecar una reixa qualsevol? Totes donen al mateix forat fosc.",
-      "sala.gavina_hangar.placa.look_pilar": "La reixa del costat del pilar 7. La de la nota de la I.",
-      "sala.gavina_hangar.placa.look": "Reixes de desguàs, encastades al terra. Totes iguals.",
-      "sala.gavina_hangar.llancadora.nom": "llançadora",
-      "sala.gavina_hangar.llancadora.look": "La llançadora de càrrega. Vella, coberta de pols. La porta té un pany estrany, sense forat per a cap clau.",
+      "sala.oris_hangar.nom": "Moll de l'hangar",
+      "sala.oris_hangar.intro1": "Un moll de càrrega. I una comporta.",
+      "sala.oris_hangar.intro2": "Si darrere hi ha el que crec que hi ha, aquesta és la meva sortida.",
+      "sala.oris_hangar.comporta.obrir1": "Amunt... amunt... AMUNT!",
+      "sala.oris_hangar.comporta.obrir2": "La comporta puja amb un gemec de cent vint anys.",
+      "sala.oris_hangar.comporta.obrir3": "I aquí la tenim: la llançadora de càrrega.",
+      "sala.oris_hangar.comporta.obrir4": "La porta té un pany estrany i el motor sembla mort. Bé, I., tenim feina.",
+      "sala.oris_hangar.porta_passadis.nom": "passadís",
+      "sala.oris_hangar.comporta.nom": "comporta",
+      "sala.oris_hangar.comporta.oberta": "Oberta. Darrere, la llançadora.",
+      "sala.oris_hangar.comporta.tram": "Un tram sol no fa palanca. Me'n calen els tres, cargolats.",
+      "sala.oris_hangar.comporta.mesurar1": "Poso la clau anglesa a l'encaix i vaig comptant...",
+      "sala.oris_hangar.comporta.mesurar2": "Sis claus angleses i mitja. Com a cinta mètrica, no està malament.",
+      "sala.oris_hangar.comporta.mesurar3": "La I. coneix aquesta clau. Era seva.",
+      "sala.oris_hangar.comporta.mesurada": "Sis claus i mitja. No ha canviat.",
+      "sala.oris_hangar.comporta.encallada": "No es mou ni un mil·límetre. Sense palanca, res.",
+      "sala.oris_hangar.comporta.look": "Una comporta enorme, encallada. Té un encaix per a una palanca molt llarga, però la palanca fa anys que no hi és.",
+      "sala.oris_hangar.pilar.nom": "pilar",
+      "sala.oris_hangar.pilar.look": "Un pilar amb un 7 pintat. Pintura de fàbrica: d'abans de la presó.",
+      "sala.oris_hangar.placa.ferro9_1": "Aixeco la reixa i... una biga!",
+      "sala.oris_hangar.placa.ferro9_2": "Cent vint anys sota terra i ni una taca. Ferro-9. Gràcies, I.",
+      "sala.oris_hangar.placa.rovell1": "Aixeco la reixa i... una ratlla llarga de pols vermella.",
+      "sala.oris_hangar.placa.rovell2": "Això era una biga. Fa cent vint anys.",
+      "sala.oris_hangar.placa.rovell3": "N'agafo un grapat. La I. ho ha de veure.",
+      "sala.oris_hangar.placa.nom": "reixa del terra",
+      "sala.oris_hangar.placa.buida": "A sota no hi ha res més que pols de la normal.",
+      "sala.oris_hangar.placa.perque": "Per què hauria d'aixecar una reixa qualsevol? Totes donen al mateix forat fosc.",
+      "sala.oris_hangar.placa.look_pilar": "La reixa del costat del pilar 7. La de la nota de la I.",
+      "sala.oris_hangar.placa.look": "Reixes de desguàs, encastades al terra. Totes iguals.",
+      "sala.oris_hangar.llancadora.nom": "llançadora",
+      "sala.oris_hangar.llancadora.look": "La llançadora de càrrega. Vella, coberta de pols. La porta té un pany estrany, sense forat per a cap clau.",
       "sala.fabrica_calderes.porta_moll.nom": "moll de càrrega",
-      "sala.gavina_passadis.porta_hangar.nom": "porta del fons",
-      "sala.gavina_passadis.cartell.agafar": "N'arrenco un tros del marge. Per darrere és blanc: paper de primera.",
-      "sala.gavina_passadis.cartell.prou": "Ja en tinc un tros. Primer l'he de fer servir.",
-      "sala.gavina_cella.panell.recuperar1": "Ara que la cambra de la I. ho sincronitza tot sola, ja no cal la palanca.",
-      "sala.gavina_cella.panell.recuperar2": "Recupero la clau anglesa.",
-      "sala.gavina_hangar.llancadora.obrir1": "Toco el diapasó i l'acosto al pany...",
-      "sala.gavina_hangar.llancadora.obrir2": "El pany respon amb la mateixa nota. Clac!",
-      "sala.gavina_hangar.llancadora.obrir3": "La porta de la llançadora s'obre per primera vegada en cent vint anys.",
-      "sala.gavina_hangar.llancadora.obrir4": "A dins, tot és mort. El motor no té pressió. Ni una mica.",
-      "sala.gavina_hangar.llancadora.oberta": "La llançadora, amb la porta oberta. El motor és mort: sense pressió no anirà enlloc.",
-      "sala.gavina_hangar.llancadora.diapaso_no": "El toco davant del pany... i res. No és ben bé la mateixa nota.",
-      "sala.gavina_hangar.llancadora.molla_ja": "La molla i el pany ja canten igual.",
-      "sala.gavina_hangar.llancadora.molla_greu": "La molla fa «nnng»... més greu que el pany.",
-      "sala.gavina_hangar.llancadora.molla_aguda": "La molla fa «niiing»... més aguda que el pany.",
-      "sala.gavina_hangar.llancadora.molla_igual1": "Igual! La molla i el pany fan exactament la mateixa nota.",
-      "sala.gavina_hangar.llancadora.molla_igual2": "Hi lligo una tira de la granota amb un missatge, escrit amb el llapis d'ulls.",
-      "sala.gavina_hangar.llancadora.tocar1": "Toco el pany. Fa «nnnnng». Una nota llarga, neta.",
-      "sala.gavina_hangar.llancadora.tocar2": "Un pany sònic: s'obre amb la mateixa nota. I jo no sé ni què és una nota.",
-      "sala.gavina_cella.llitera.molla": "Arrenco una molla de la llitera. En Mos ni se n'adona: ronca.",
-      "sala.gavina_cella.llitera.look_molles": "La meva llitera. Cada cop que m'hi assec, les molles fan «nnng». Com el pany de la llançadora.",
+      "sala.oris_passadis.porta_hangar.nom": "porta del fons",
+      "sala.oris_passadis.cartell.agafar": "N'arrenco un tros del marge. Per darrere és blanc: paper de primera.",
+      "sala.oris_passadis.cartell.prou": "Ja en tinc un tros. Primer l'he de fer servir.",
+      "sala.oris_cella.panell.recuperar1": "Ara que la cambra de la I. ho sincronitza tot sola, ja no cal la palanca.",
+      "sala.oris_cella.panell.recuperar2": "Recupero la clau anglesa.",
+      "sala.oris_hangar.llancadora.obrir1": "Toco el diapasó i l'acosto al pany...",
+      "sala.oris_hangar.llancadora.obrir2": "El pany respon amb la mateixa nota. Clac!",
+      "sala.oris_hangar.llancadora.obrir3": "La porta de la llançadora s'obre per primera vegada en cent vint anys.",
+      "sala.oris_hangar.llancadora.obrir4": "A dins, tot és mort. El motor no té pressió. Ni una mica.",
+      "sala.oris_hangar.llancadora.oberta": "La llançadora, amb la porta oberta. El motor és mort: sense pressió no anirà enlloc.",
+      "sala.oris_hangar.llancadora.diapaso_no": "El toco davant del pany... i res. No és ben bé la mateixa nota.",
+      "sala.oris_hangar.llancadora.molla_ja": "La molla i el pany ja canten igual.",
+      "sala.oris_hangar.llancadora.molla_greu": "La molla fa «nnng»... més greu que el pany.",
+      "sala.oris_hangar.llancadora.molla_aguda": "La molla fa «niiing»... més aguda que el pany.",
+      "sala.oris_hangar.llancadora.molla_igual1": "Igual! La molla i el pany fan exactament la mateixa nota.",
+      "sala.oris_hangar.llancadora.molla_igual2": "Hi lligo una tira de la granota amb un missatge, escrit amb el llapis d'ulls.",
+      "sala.oris_hangar.llancadora.tocar1": "Toco el pany. Fa «nnnnng». Una nota llarga, neta.",
+      "sala.oris_hangar.llancadora.tocar2": "Un pany sònic: s'obre amb la mateixa nota. I jo no sé ni què és una nota.",
+      "sala.oris_cella.llitera.molla": "Arrenco una molla de la llitera. En Mos ni se n'adona: ronca.",
+      "sala.oris_cella.llitera.look_molles": "La meva llitera. Cada cop que m'hi assec, les molles fan «nnng». Com el pany de la llançadora.",
       "sala.fabrica_moll.llima.nom": "llima",
       "sala.fabrica_moll.llima.agafar": "Una llima fina. Per afinar coses.",
       "sala.fabrica_moll.llima.look": "Una llima fina, al tauler d'eines.",
@@ -13741,32 +13741,32 @@
       "sala.fabrica_moll.conducte.look_tancada": "El conducte de pressió, amb la vàlvula tancada del tot.",
       "sala.fabrica_moll.conducte.look_mig": "El conducte de pressió, amb la vàlvula una mica oberta.",
       "sala.fabrica_moll.conducte.look": "El conducte de pressió que va de les calderes cap al moll, amb una vàlvula. Per dins és de ferro-9: durarà més que tots nosaltres.",
-      "sala.gavina_hangar.inundat1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
-      "sala.gavina_hangar.inundat2": "El moll és ple d'aigua! Abans era sec. N'estic segura.",
-      "sala.gavina_hangar.secat1": "Un altre mal de cap. L'aigua ha desaparegut com si no hi hagués estat mai.",
-      "sala.gavina_hangar.secat2": "Però jo me'n recordo.",
-      "sala.gavina_hangar.conducte.nom": "conducte",
-      "sala.gavina_hangar.conducte.look_rebentat": "Rebentat. D'aquí surt tota l'aigua.",
-      "sala.gavina_hangar.conducte.look_ple": "El conducte vibra, ple de pressió. I aguanta.",
-      "sala.gavina_hangar.conducte.look": "Un conducte vell de la fàbrica, que va cap a la llançadora. Té un manòmetre: zero. Ni un bri de pressió.",
-      "sala.gavina_hangar.conducte.tocar": "La vàlvula fa cent anys que és rovellada. Això s'ha d'arreglar al passat.",
-      "sala.gavina_hangar.escala.nom": "escala",
-      "sala.gavina_hangar.escala.look_aigua": "L'escala del nivell de sota. Ara és una piscina.",
-      "sala.gavina_hangar.escala.look": "Una escala cap al nivell de sota. Al fons, una reixa amb un rètol: «ARXIU». Tancada amb una cadena.",
-      "sala.gavina_hangar.escala.aigua": "Sense banyador, no.",
-      "sala.gavina_hangar.escala.reixa": "La reixa de l'arxiu està tancada amb una cadena. Un altre dia.",
-      "sala.gavina_hangar.caixa.nom": "caixa que sura",
-      "sala.gavina_hangar.caixa.obrir1": "La caixa ha pujat del nivell de sota amb l'aigua.",
-      "sala.gavina_hangar.caixa.obrir2": "A dins, papers molls... i una fitxa de la fàbrica. Me la quedo.",
-      "sala.gavina_hangar.caixa.look": "Una caixa de fusta que sura. Hi posa «ARXIU · NIVELL -1».",
-      "sala.gavina_hangar.llancadora.a_punt": "La llançadora ronca com en Mos. A punt per sortir.",
-      "sala.gavina_hangar.llancadora.engegar1": "Premo el botó d'engegada. L'agulla del manòmetre puja...",
-      "sala.gavina_hangar.llancadora.engegar2": "El motor tus, s'ofega... i arrenca!",
-      "sala.gavina_hangar.llancadora.engegar3": "Ho tenim, I. La llançadora és a punt.",
-      "sala.gavina_hangar.llancadora.en_marxa": "Ja està engegada. No la toquem, que s'ofega.",
-      "sala.gavina_hangar.llancadora.escapa": "Premo el botó d'engegada. La pressió s'escapa pel forat del conducte. Res.",
-      "sala.gavina_hangar.llancadora.sense_pressio": "Premo el botó d'engegada. Res. L'agulla del manòmetre ni es mou: el motor no té pressió.",
-      "sala.gavina_passadis.cartell.altre": "N'arrenco un altre tros. El somriure del cartell cada vegada és més petit.",
+      "sala.oris_hangar.inundat1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
+      "sala.oris_hangar.inundat2": "El moll és ple d'aigua! Abans era sec. N'estic segura.",
+      "sala.oris_hangar.secat1": "Un altre mal de cap. L'aigua ha desaparegut com si no hi hagués estat mai.",
+      "sala.oris_hangar.secat2": "Però jo me'n recordo.",
+      "sala.oris_hangar.conducte.nom": "conducte",
+      "sala.oris_hangar.conducte.look_rebentat": "Rebentat. D'aquí surt tota l'aigua.",
+      "sala.oris_hangar.conducte.look_ple": "El conducte vibra, ple de pressió. I aguanta.",
+      "sala.oris_hangar.conducte.look": "Un conducte vell de la fàbrica, que va cap a la llançadora. Té un manòmetre: zero. Ni un bri de pressió.",
+      "sala.oris_hangar.conducte.tocar": "La vàlvula fa cent anys que és rovellada. Això s'ha d'arreglar al passat.",
+      "sala.oris_hangar.escala.nom": "escala",
+      "sala.oris_hangar.escala.look_aigua": "L'escala del nivell de sota. Ara és una piscina.",
+      "sala.oris_hangar.escala.look": "Una escala cap al nivell de sota. Al fons, una reixa amb un rètol: «ARXIU». Tancada amb una cadena.",
+      "sala.oris_hangar.escala.aigua": "Sense banyador, no.",
+      "sala.oris_hangar.escala.reixa": "La reixa de l'arxiu està tancada amb una cadena. Un altre dia.",
+      "sala.oris_hangar.caixa.nom": "caixa que sura",
+      "sala.oris_hangar.caixa.obrir1": "La caixa ha pujat del nivell de sota amb l'aigua.",
+      "sala.oris_hangar.caixa.obrir2": "A dins, papers molls... i una fitxa de la fàbrica. Me la quedo.",
+      "sala.oris_hangar.caixa.look": "Una caixa de fusta que sura. Hi posa «ARXIU · NIVELL -1».",
+      "sala.oris_hangar.llancadora.a_punt": "La llançadora ronca com en Mos. A punt per sortir.",
+      "sala.oris_hangar.llancadora.engegar1": "Premo el botó d'engegada. L'agulla del manòmetre puja...",
+      "sala.oris_hangar.llancadora.engegar2": "El motor tus, s'ofega... i arrenca!",
+      "sala.oris_hangar.llancadora.engegar3": "Ho tenim, I. La llançadora és a punt.",
+      "sala.oris_hangar.llancadora.en_marxa": "Ja està engegada. No la toquem, que s'ofega.",
+      "sala.oris_hangar.llancadora.escapa": "Premo el botó d'engegada. La pressió s'escapa pel forat del conducte. Res.",
+      "sala.oris_hangar.llancadora.sense_pressio": "Premo el botó d'engegada. Res. L'agulla del manòmetre ni es mou: el motor no té pressió.",
+      "sala.oris_passadis.cartell.altre": "N'arrenco un altre tros. El somriure del cartell cada vegada és més petit.",
       "sala.fabrica_despatx.nom": "Despatx del director",
       "sala.fabrica_despatx.intro": "El despatx del Director Aldaia. De nit, sense ell, fa menys por. Una mica menys.",
       "sala.fabrica_despatx.porta_magatzem.nom": "magatzem",
@@ -13793,69 +13793,69 @@
       "sala.fabrica_despatx.llibre.look": "El llibre d'inventari. Tot el ferro-9 de la fàbrica, apuntat a mà, gram a gram.",
       "sala.fabrica_despatx.retrat.nom": "retrat",
       "sala.fabrica_despatx.retrat.look": "El Director Aldaia. Somriu com qui ja sap com acaba la pel·lícula.",
-      "sala.gavina_arxiu.nom": "Arxiu",
-      "sala.gavina_arxiu.intro": "L'arxiu. Fa olor de paper vell i de secrets que algú va voler guardar.",
-      "sala.gavina_arxiu.escala.nom": "moll de l'hangar",
-      "sala.gavina_arxiu.expedient_iri.nom": "expedients",
-      "sala.gavina_arxiu.expedient_iri.text_confessio": "«Corporació Aldaia · Expedient de personal. I. (el cognom, ratllat), enginyera del torn de nit. Desapareguda tres dies després de l'accident de la cambra 1. Acusada de robatori per confessió pròpia. Cas tancat per ordre del Director.»",
-      "sala.gavina_arxiu.expedient_iri.vet1": "Desapareguda tres dies després. Tres dies: el que em queda a mi.",
-      "sala.gavina_arxiu.expedient_iri.vet2": "I... És ella. És la meva I.",
-      "sala.gavina_arxiu.expedient_iri.text": "«Corporació Aldaia · Expedient de personal. I. (el cognom, ratllat), enginyera del torn de nit. Desapareguda tres dies després de l'accident de la cambra 1. Cas tancat per ordre del Director.»",
-      "sala.gavina_arxiu.arxivador.nom": "arxivador",
-      "sala.gavina_arxiu.arxivador.carta1": "Correspondència confiscada... a muntanyes.",
-      "sala.gavina_arxiu.arxivador.carta2": "«Per a la Nura, del seu pare.» La carta d'en Mos! Mai no va sortir d'aquí.",
-      "sala.gavina_arxiu.arxivador.ja": "Cartes que no van arribar mai. Ja tinc la que buscava.",
-      "sala.gavina_arxiu.arxivador.mira_salvada": "«Mira Alsina. Cap antecedent.» I una nota a mà, molt més nova: «La seva besneta treballa aquí, de guàrdia.»",
-      "sala.gavina_arxiu.arxivador.mira_condemnada": "«Mira Alsina, ajudant del torn de nit. Condemnada pel robatori de ferro-9. Vint anys de treballs.»",
-      "sala.gavina_arxiu.arxivador.mira_vet": "La Mira va pagar el que va fer la I. Cent vint anys tard per arreglar-ho... o no?",
-      "sala.gavina_arxiu.arxivador.look": "Arxivadors de metall: expedients, cartes confiscades, factures. Cent vint anys de paperassa.",
-      "sala.gavina_arxiu.planols.nom": "plànols",
-      "sala.gavina_arxiu.planols.text": "«Projecte Gavina. Objectiu: reobrir la finestra de fase de la cambra 1. Mètode: sincronitzadors (interns). Pèrdues previstes: «reciclatge».»",
-      "sala.gavina_arxiu.planols.vet1": "Ens tenen aquí perquè fem de sincronitzadors. I el reciclatge és el que passa quan el camp et crema.",
-      "sala.gavina_arxiu.planols.vet2": "Jo l'he fet funcionar perquè a l'altra banda hi ha algú.",
+      "sala.oris_arxiu.nom": "Arxiu",
+      "sala.oris_arxiu.intro": "L'arxiu. Fa olor de paper vell i de secrets que algú va voler guardar.",
+      "sala.oris_arxiu.escala.nom": "moll de l'hangar",
+      "sala.oris_arxiu.expedient_iri.nom": "expedients",
+      "sala.oris_arxiu.expedient_iri.text_confessio": "«Corporació Aldaia · Expedient de personal. I. (el cognom, ratllat), enginyera del torn de nit. Desapareguda tres dies després de l'accident de la cambra 1. Acusada de robatori per confessió pròpia. Cas tancat per ordre del Director.»",
+      "sala.oris_arxiu.expedient_iri.vet1": "Desapareguda tres dies després. Tres dies: el que em queda a mi.",
+      "sala.oris_arxiu.expedient_iri.vet2": "I... És ella. És la meva I.",
+      "sala.oris_arxiu.expedient_iri.text": "«Corporació Aldaia · Expedient de personal. I. (el cognom, ratllat), enginyera del torn de nit. Desapareguda tres dies després de l'accident de la cambra 1. Cas tancat per ordre del Director.»",
+      "sala.oris_arxiu.arxivador.nom": "arxivador",
+      "sala.oris_arxiu.arxivador.carta1": "Correspondència confiscada... a muntanyes.",
+      "sala.oris_arxiu.arxivador.carta2": "«Per a la Nura, del seu pare.» La carta d'en Mos! Mai no va sortir d'aquí.",
+      "sala.oris_arxiu.arxivador.ja": "Cartes que no van arribar mai. Ja tinc la que buscava.",
+      "sala.oris_arxiu.arxivador.mira_salvada": "«Mira Alsina. Cap antecedent.» I una nota a mà, molt més nova: «La seva besneta treballa aquí, de guàrdia.»",
+      "sala.oris_arxiu.arxivador.mira_condemnada": "«Mira Alsina, ajudant del torn de nit. Condemnada pel robatori de ferro-9. Vint anys de treballs.»",
+      "sala.oris_arxiu.arxivador.mira_vet": "La Mira va pagar el que va fer la I. Cent vint anys tard per arreglar-ho... o no?",
+      "sala.oris_arxiu.arxivador.look": "Arxivadors de metall: expedients, cartes confiscades, factures. Cent vint anys de paperassa.",
+      "sala.oris_arxiu.planols.nom": "plànols",
+      "sala.oris_arxiu.planols.text": "«Projecte Orís. Objectiu: reobrir la finestra de fase de la cambra 1. Mètode: sincronitzadors (interns). Pèrdues previstes: «reciclatge».»",
+      "sala.oris_arxiu.planols.vet1": "Ens tenen aquí perquè fem de sincronitzadors. I el reciclatge és el que passa quan el camp et crema.",
+      "sala.oris_arxiu.planols.vet2": "Jo l'he fet funcionar perquè a l'altra banda hi ha algú.",
       "sala.fabrica_magatzem.porta_despatx.nom": "despatx del director",
-      "sala.gavina_hangar.escala.descargolar1": "La cadena va cargolada a una brida. I jo tinc una clau anglesa.",
-      "sala.gavina_hangar.escala.descargolar2": "Llesta. La reixa de l'arxiu és oberta.",
+      "sala.oris_hangar.escala.descargolar1": "La cadena va cargolada a una brida. I jo tinc una clau anglesa.",
+      "sala.oris_hangar.escala.descargolar2": "Llesta. La reixa de l'arxiu és oberta.",
       "sala.fabrica_calderes.capatas.proves1": "Li deixo el diapasó xiulador a la butxaca. Ferro-9 inventariat, a la butxaca del capatàs...",
       "sala.fabrica_calderes.capatas.proves2": "No n'estic orgullosa. Però ell dorm i la Mira, no.",
-      "sala.gavina_cella.mos.carta1": "Mos, això és teu. Era a l'arxiu.",
-      "sala.gavina_cella.mos.carta2": "...La meva carta a la Nura. No va sortir mai d'aquí.",
-      "sala.gavina_cella.mos.carta3": "Gràcies, noia. Et diré una cosa que no diu ningú: als del reciclatge no els reciclen.",
-      "sala.gavina_cella.mos.carta4": "Els posen davant d'una cambra vella i esperen que funcioni. Quan el camp crema, crema la persona.",
-      "sala.gavina_cella.mos.carta5": "Tu l'has fet funcionar, oi? Doncs ara et voldran viva. Vés amb compte.",
-      "sala.gavina_cella.directora.nom": "Directora Aldaia",
-      "sala.gavina_cella.directora.look": "La Directora Aldaia. Vestit fosc, pin d'or i un somriure que no arriba als ulls.",
-      "sala.gavina_cella.panell.directora": "Les mans lluny del panell, interna. Ara és meu.",
-      "sala.gavina_passadis.porta_memoria.nom": "Sala de la Memòria",
-      "sala.gavina_passadis.porta_memoria.tancada": "Tancada. «Sala de la Memòria: visites de reeducació, els dimarts.»",
-      "sala.gavina_passadis.porta_memoria.look": "«SALA DE LA MEMÒRIA». Amb el mateix somriure del cartell.",
-      "sala.gavina_memoria.nom": "Sala de la Memòria",
-      "sala.gavina_memoria.intro1": "Un holograma s'encén en veure-la entrar.",
-      "sala.gavina_memoria.intro2": "La Sala de la Memòria. On la corporació explica la seva versió.",
-      "sala.gavina_memoria.porta.nom": "passadís",
-      "sala.gavina_memoria.holograma.nom": "holograma del Director",
-      "sala.gavina_memoria.holograma.parla1": "«Benvinguts a la Sala de la Memòria! Aquí va començar tot: la Fàbrica Aldaia, el ferro-9 i el somni d'un món millor.»",
-      "sala.gavina_memoria.holograma.parla2": "«Fa cent vint anys, un accident a la cambra 1 ens va ensenyar una lliçó: la ciència necessita ordre.»",
-      "sala.gavina_memoria.holograma.parla3": "Un accident. Ja.",
-      "sala.gavina_memoria.holograma.look": "El Director Aldaia, en holograma. Té el mateix somriure que la Directora.",
-      "sala.gavina_memoria.foto.nom": "foto del torn de nit",
-      "sala.gavina_memoria.foto.text": "Una foto del torn de nit de la fàbrica. Hi ha el Cargol, nou de trinca. I una cara ratllada, amb un nom mig esborrat: «I... (desapareguda)».",
-      "sala.gavina_memoria.foto.mira": "Al costat, una noia somrient. A sota hi diu: «M. Alsina».",
-      "sala.gavina_memoria.foto.vet1": "És ella. La I. Algú li va ratllar la cara.",
-      "sala.gavina_memoria.foto.vet2": "I la noia del costat... la Mira. Somriu. Ho ha aconseguit, I.",
-      "sala.gavina_memoria.foto.forat": "Al costat, un forat: algú en va retallar una altra persona.",
-      "sala.gavina_memoria.vitrina.nom": "vitrina",
-      "sala.gavina_memoria.vitrina.text": "Una vitrina buida. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda)».",
-      "sala.gavina_memoria.vitrina.vet": "Desapareguda. Ja. Era a la meva cel·la, i ara la tinc a la butxaca.",
-      "sala.gavina_memoria.vitrina.tocar": "Buida. Com tantes coses en aquest museu.",
-      "sala.gavina_memoria.mapa.nom": "mapa de La Gavina",
-      "sala.gavina_memoria.mapa.text": "Un mapa de La Gavina, amb una estrella: «Vostè és aquí». Per sota del mòdul C hi passa una línia discontínua: «Conducte de servei de l'antiga fàbrica (en desús)».",
-      "sala.gavina_memoria.mapa.vet1": "Un conducte de servei de la fàbrica, que arriba fins a l'hangar.",
-      "sala.gavina_memoria.mapa.vet2": "Al temps de la I. encara s'hi deu poder passar. Per allà no la veuria ningú.",
-      "sala.gavina_memoria.fullets.nom": "fullets",
-      "sala.gavina_memoria.fullets.agafar": "N'agafo un. Per darrere és en blanc: hi cap un mapa.",
-      "sala.gavina_memoria.fullets.prou": "Ja en tinc un.",
-      "sala.gavina_memoria.fullets.look": "Un expositor de fullets: «La Gavina: aquí va començar tot!»",
+      "sala.oris_cella.mos.carta1": "Mos, això és teu. Era a l'arxiu.",
+      "sala.oris_cella.mos.carta2": "...La meva carta a la Nura. No va sortir mai d'aquí.",
+      "sala.oris_cella.mos.carta3": "Gràcies, noia. Et diré una cosa que no diu ningú: als del reciclatge no els reciclen.",
+      "sala.oris_cella.mos.carta4": "Els posen davant d'una cambra vella i esperen que funcioni. Quan el camp crema, crema la persona.",
+      "sala.oris_cella.mos.carta5": "Tu l'has fet funcionar, oi? Doncs ara et voldran viva. Vés amb compte.",
+      "sala.oris_cella.directora.nom": "Directora Aldaia",
+      "sala.oris_cella.directora.look": "La Directora Aldaia. Vestit fosc, pin d'or i un somriure que no arriba als ulls.",
+      "sala.oris_cella.panell.directora": "Les mans lluny del panell, interna. Ara és meu.",
+      "sala.oris_passadis.porta_memoria.nom": "Sala de la Memòria",
+      "sala.oris_passadis.porta_memoria.tancada": "Tancada. «Sala de la Memòria: visites de reeducació, els dimarts.»",
+      "sala.oris_passadis.porta_memoria.look": "«SALA DE LA MEMÒRIA». Amb el mateix somriure del cartell.",
+      "sala.oris_memoria.nom": "Sala de la Memòria",
+      "sala.oris_memoria.intro1": "Un holograma s'encén en veure-la entrar.",
+      "sala.oris_memoria.intro2": "La Sala de la Memòria. On la corporació explica la seva versió.",
+      "sala.oris_memoria.porta.nom": "passadís",
+      "sala.oris_memoria.holograma.nom": "holograma del Director",
+      "sala.oris_memoria.holograma.parla1": "«Benvinguts a la Sala de la Memòria! Aquí va començar tot: la Fàbrica Aldaia, el ferro-9 i el somni d'un món millor.»",
+      "sala.oris_memoria.holograma.parla2": "«Fa cent vint anys, un accident a la cambra 1 ens va ensenyar una lliçó: la ciència necessita ordre.»",
+      "sala.oris_memoria.holograma.parla3": "Un accident. Ja.",
+      "sala.oris_memoria.holograma.look": "El Director Aldaia, en holograma. Té el mateix somriure que la Directora.",
+      "sala.oris_memoria.foto.nom": "foto del torn de nit",
+      "sala.oris_memoria.foto.text": "Una foto del torn de nit de la fàbrica. Hi ha el Cargol, nou de trinca. I una cara ratllada, amb un nom mig esborrat: «I... (desapareguda)».",
+      "sala.oris_memoria.foto.mira": "Al costat, una noia somrient. A sota hi diu: «M. Alsina».",
+      "sala.oris_memoria.foto.vet1": "És ella. La I. Algú li va ratllar la cara.",
+      "sala.oris_memoria.foto.vet2": "I la noia del costat... la Mira. Somriu. Ho ha aconseguit, I.",
+      "sala.oris_memoria.foto.forat": "Al costat, un forat: algú en va retallar una altra persona.",
+      "sala.oris_memoria.vitrina.nom": "vitrina",
+      "sala.oris_memoria.vitrina.text": "Una vitrina buida. El cartell diu: «Clau anglesa Lot 1, la primera peça de ferro-9 (desapareguda)».",
+      "sala.oris_memoria.vitrina.vet": "Desapareguda. Ja. Era a la meva cel·la, i ara la tinc a la butxaca.",
+      "sala.oris_memoria.vitrina.tocar": "Buida. Com tantes coses en aquest museu.",
+      "sala.oris_memoria.mapa.nom": "mapa d'Orís",
+      "sala.oris_memoria.mapa.text": "Un mapa d'Orís, amb una estrella: «Vostè és aquí». Per sota del mòdul C hi passa una línia discontínua: «Conducte de servei de l'antiga fàbrica (en desús)».",
+      "sala.oris_memoria.mapa.vet1": "Un conducte de servei de la fàbrica, que arriba fins a l'hangar.",
+      "sala.oris_memoria.mapa.vet2": "Al temps de la I. encara s'hi deu poder passar. Per allà no la veuria ningú.",
+      "sala.oris_memoria.fullets.nom": "fullets",
+      "sala.oris_memoria.fullets.agafar": "N'agafo un. Per darrere és en blanc: hi cap un mapa.",
+      "sala.oris_memoria.fullets.prou": "Ja en tinc un.",
+      "sala.oris_memoria.fullets.look": "Un expositor de fullets: «Orís: aquí va començar tot!»",
       "sala.fabrica.descoberta1": "Mentrestant, cent vint anys abans...",
       "sala.fabrica.descoberta2": "«Atenció, operària I. Sé què ha fet amb la meva cambra. Inspector Sic: que no hi torni a entrar.»",
       "sala.fabrica.descoberta3": "M'ha descobert. És clar: la cambra la va fer ell.",
@@ -13863,10 +13863,10 @@
       "sala.fabrica_calderes.sic.look": "L'Inspector Sic, plantat davant la porta de la cambra com un pilar més.",
       "sala.fabrica_calderes.porta_cambra.sic": "Ni un pas, operària.",
       "sala.fabrica.descoberta_cambra": "El Sic ja és aquí. M'acompanya a fora de la cambra, amb molta educació i cap mena de dubte.",
-      "sala.gavina_hangar.llancadora.porta_tancada": "La porta no té maneta. Només aquell pany rodó, sense forat per a cap clau.",
-      "sala.gavina_hangar.pany.nom": "pany sònic",
-      "sala.gavina_hangar.pany.obert": "El pany sònic. Ara la porta és oberta.",
-      "sala.gavina_hangar.pany.look": "Un pany rodó, com un ressonador. Sense forat per a cap clau.",
+      "sala.oris_hangar.llancadora.porta_tancada": "La porta no té maneta. Només aquell pany rodó, sense forat per a cap clau.",
+      "sala.oris_hangar.pany.nom": "pany sònic",
+      "sala.oris_hangar.pany.obert": "El pany sònic. Ara la porta és oberta.",
+      "sala.oris_hangar.pany.look": "Un pany rodó, com un ressonador. Sense forat per a cap clau.",
       "sala.fabrica_moll.primer_marca": "Abans, el pilar 7. La V. ha de saber que ho he rebut.",
       "sala.fabrica_moll.pilar.nom": "pilar",
       "sala.fabrica_moll.pilar.gravar1": "Amb la llima, hi gravo una I. i una clau anglesa. Ben fondo.",
@@ -13876,35 +13876,35 @@
       "sala.fabrica_moll.pilar.look_marca": "El pilar 7, amb la meva marca: una I. i una clau anglesa. Que duri.",
       "sala.fabrica_moll.pilar.look_mida": "Un pilar amb un 7 pintat. Com el que diu la V. És aquí mateix, cent vint anys més tard.",
       "sala.fabrica_moll.pilar.look": "Un pilar amb un 7 pintat. Pintura nova: aquí tot és nou.",
-      "sala.gavina_hangar.marca1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
-      "sala.gavina_hangar.marca2": "Al pilar 7 hi ha una I. gravada, i una clau anglesa. Abans no hi era. N'estic segura.",
-      "sala.gavina_hangar.marca3": "Fa cent vint anys que hi és... des de fa un minut. Rebut, I.",
-      "sala.gavina_hangar.pilar.look_marca": "El pilar 7. Una I. i una clau anglesa, gravades fa cent vint anys. La I. ha fet servir la paret de bústia.",
-      "sala.gavina_hangar.sortida_conducte.nom": "sortida del conducte",
-      "sala.gavina_hangar.sortida_conducte.entrar": "Torno a la cel·la pel conducte, seguint les fletxes de la I. al revés.",
-      "sala.gavina_hangar.sortida_conducte.look": "La reixa del terra per on surt el conducte de servei. Les fletxes de la I. arriben fins aquí.",
-      "sala.gavina_cella.reixa.nom": "reixa",
-      "sala.gavina_cella.reixa.reajust1": "Ai. Mal de cap. Un altre reajust.",
-      "sala.gavina_cella.reixa.reajust2": "La reixa de la paret... Fa un moment era una sola peça de rovell.",
-      "sala.gavina_cella.reixa.obrir1": "Els cargols cedeixen com si fossin de galeta.",
-      "sala.gavina_cella.reixa.obrir2": "A dins, a la paret del conducte, una I. gravada i una fletxa. La mateixa marca que al pilar 7.",
-      "sala.gavina_cella.reixa.obrir3": "M'has obert la porta des de fa cent vint anys, I.",
-      "sala.gavina_cella.reixa.entrar": "M'hi fico de quatre grapes i segueixo les fletxes de la I. fins a l'hangar.",
-      "sala.gavina_cella.reixa.look_oberta": "La reixa del conducte, oberta. A dins, la I. i la fletxa.",
-      "sala.gavina_cella.reixa.look_llimada": "La reixa. Els quatre cargols, llimats fins a quedar en un fil. Fa cent vint anys.",
-      "sala.gavina_cella.reixa.look_conducte1": "Una reixa arran de terra... El conducte de servei del mapa comença al mòdul C. Comença aquí!",
-      "sala.gavina_cella.reixa.look_conducte2": "Però el rovell l'ha soldada a la paret. Per aquí no surt ningú.",
-      "sala.gavina_cella.reixa.clau": "Ni amb la clau anglesa. Cent vint anys de rovell fan de soldadura.",
-      "sala.gavina_cella.reixa.soldada": "Soldada pel rovell. No es mou ni un pèl.",
-      "sala.gavina_cella.reixa.look": "Una reixa de ventilació arran de terra. El rovell l'ha soldada a la paret.",
-      "sala.gavina_cella.panell.mapa1": "Què hi envies, interna?",
-      "sala.gavina_cella.panell.mapa2": "Un fullet de la Sala de la Memòria. Que vegi que m'he reformat.",
-      "sala.gavina_cella.panell.mapa3": "M'agrada. La reeducació funciona.",
-      "sala.gavina_cella.panell.mapa4": "MARE: quan acabi, tanca la cel·la. La interna no surt d'aquí fins al vespre.",
-      "sala.gavina_cella.panell.no_vibra": "El panell no vibra. A l'altra banda no hi ha ningú: la I. no és a la cambra.",
-      "sala.gavina_cella.panell.pacte_res": "Quan jo t'ho digui, interna. Ni un minut abans.",
-      "sala.gavina_cella.porta.tancada_mare": "Tancada. La MARE ha canviat el pany, i ja no em queden imants.",
-      "sala.gavina_passadis.porta_cella.tancada": "La MARE l'ha tancada. Si vull tornar a la cel·la, haurà de ser pel conducte.",
+      "sala.oris_hangar.marca1": "Ai... Mal de cap. Com si m'haguessin donat la volta.",
+      "sala.oris_hangar.marca2": "Al pilar 7 hi ha una I. gravada, i una clau anglesa. Abans no hi era. N'estic segura.",
+      "sala.oris_hangar.marca3": "Fa cent vint anys que hi és... des de fa un minut. Rebut, I.",
+      "sala.oris_hangar.pilar.look_marca": "El pilar 7. Una I. i una clau anglesa, gravades fa cent vint anys. La I. ha fet servir la paret de bústia.",
+      "sala.oris_hangar.sortida_conducte.nom": "sortida del conducte",
+      "sala.oris_hangar.sortida_conducte.entrar": "Torno a la cel·la pel conducte, seguint les fletxes de la I. al revés.",
+      "sala.oris_hangar.sortida_conducte.look": "La reixa del terra per on surt el conducte de servei. Les fletxes de la I. arriben fins aquí.",
+      "sala.oris_cella.reixa.nom": "reixa",
+      "sala.oris_cella.reixa.reajust1": "Ai. Mal de cap. Un altre reajust.",
+      "sala.oris_cella.reixa.reajust2": "La reixa de la paret... Fa un moment era una sola peça de rovell.",
+      "sala.oris_cella.reixa.obrir1": "Els cargols cedeixen com si fossin de galeta.",
+      "sala.oris_cella.reixa.obrir2": "A dins, a la paret del conducte, una I. gravada i una fletxa. La mateixa marca que al pilar 7.",
+      "sala.oris_cella.reixa.obrir3": "M'has obert la porta des de fa cent vint anys, I.",
+      "sala.oris_cella.reixa.entrar": "M'hi fico de quatre grapes i segueixo les fletxes de la I. fins a l'hangar.",
+      "sala.oris_cella.reixa.look_oberta": "La reixa del conducte, oberta. A dins, la I. i la fletxa.",
+      "sala.oris_cella.reixa.look_llimada": "La reixa. Els quatre cargols, llimats fins a quedar en un fil. Fa cent vint anys.",
+      "sala.oris_cella.reixa.look_conducte1": "Una reixa arran de terra... El conducte de servei del mapa comença al mòdul C. Comença aquí!",
+      "sala.oris_cella.reixa.look_conducte2": "Però el rovell l'ha soldada a la paret. Per aquí no surt ningú.",
+      "sala.oris_cella.reixa.clau": "Ni amb la clau anglesa. Cent vint anys de rovell fan de soldadura.",
+      "sala.oris_cella.reixa.soldada": "Soldada pel rovell. No es mou ni un pèl.",
+      "sala.oris_cella.reixa.look": "Una reixa de ventilació arran de terra. El rovell l'ha soldada a la paret.",
+      "sala.oris_cella.panell.mapa1": "Què hi envies, interna?",
+      "sala.oris_cella.panell.mapa2": "Un fullet de la Sala de la Memòria. Que vegi que m'he reformat.",
+      "sala.oris_cella.panell.mapa3": "M'agrada. La reeducació funciona.",
+      "sala.oris_cella.panell.mapa4": "MARE: quan acabi, tanca la cel·la. La interna no surt d'aquí fins al vespre.",
+      "sala.oris_cella.panell.no_vibra": "El panell no vibra. A l'altra banda no hi ha ningú: la I. no és a la cambra.",
+      "sala.oris_cella.panell.pacte_res": "Quan jo t'ho digui, interna. Ni un minut abans.",
+      "sala.oris_cella.porta.tancada_mare": "Tancada. La MARE ha canviat el pany, i ja no em queden imants.",
+      "sala.oris_passadis.porta_cella.tancada": "La MARE l'ha tancada. Si vull tornar a la cel·la, haurà de ser pel conducte.",
       "sala.fabrica_cambra.tornar1": "La cambra. El Sic trigarà a tornar: al magatzem hi ha molts racons.",
       "sala.fabrica_cambra.tornar2": "V., si m'has d'enviar alguna cosa, ara és el moment.",
       "sala.fabrica_cambra.reixa.nom": "reixa",
@@ -13918,12 +13918,12 @@
       "sala.fabrica_cambra.reixa.look": "Una reixa de ventilació arran de terra, amb quatre cargols d'acer. Darrere, el conducte de servei.",
       "sala.fabrica_cambra.reixa.encara_no": "Encara no. Per aquí fugiré, però no fins que la V. estigui a punt.",
       "sala.fabrica_cambra.reixa.cargolada": "Ben cargolada. Quatre cargols d'acer, nous de trinca.",
-      "sala.gavina_cella.panell.molla_no": "Encara no sona com el pany. Si l'envio així, la I. afinarà una nota equivocada.",
-      "sala.gavina_cella.tub1": "Què t'ha arribat, interna? Una canonada? Dona-me-la.",
-      "sala.gavina_cella.tub2": "Ni parlar-ne.",
-      "sala.gavina_cella.tub3": "MARE, avisa els guàrdies. La interna 9 ja no és reeducable.",
-      "sala.gavina_cella.reixa.fugir1": "On vas? Atureu-la!",
-      "sala.gavina_cella.reixa.fugir2": "Massa tard. Ja soc dins el conducte, seguint les fletxes de la I.",
+      "sala.oris_cella.panell.molla_no": "Encara no sona com el pany. Si l'envio així, la I. afinarà una nota equivocada.",
+      "sala.oris_cella.tub1": "Què t'ha arribat, interna? Una canonada? Dona-me-la.",
+      "sala.oris_cella.tub2": "Ni parlar-ne.",
+      "sala.oris_cella.tub3": "MARE, avisa els guàrdies. La interna 9 ja no és reeducable.",
+      "sala.oris_cella.reixa.fugir1": "On vas? Atureu-la!",
+      "sala.oris_cella.reixa.fugir2": "Massa tard. Ja soc dins el conducte, seguint les fletxes de la I.",
       "sala.fabrica_cambra.cambra.diapaso_no": "Encara no sona com la molla. Si l'envio així, a la V. no li servirà de res.",
       "sala.fabrica_cambra.cambra.tub_sol": "Si envio el tub sol, la llibreta amb les proves es queda aquí. Ha de ser tot en un sol enviament.",
       "sala.fabrica_cambra.reixa.fugir1": "Ara sí. Aparto la reixa, que surt com si res, i m'hi fico.",
@@ -13933,15 +13933,15 @@
       "sala.fabrica_moll.llancadora.fugir2": "Adeu, Director. Adeu, formulari 27-B.",
       "sala.fabrica_moll.llancadora.fugir3": "La comporta s'obre i la fàbrica es fa petita. Desapareguda, diran. Que ho diguin.",
       "sala.fabrica_moll.llancadora.mentrestant": "Mentrestant, cent vint anys després...",
-      "sala.gavina_hangar.llancadora.tub1": "Desenrotllo la llibreta de dins el tub. És la llibreta de torn de la I.: la cambra, el Director, les proves. Tot.",
-      "sala.gavina_hangar.llancadora.tub2": "Me la guardo. Algú l'haurà de llegir.",
-      "sala.gavina_hangar.llancadora.tub3": "I munto el tub on hi havia l'altre. Ferro-9: aquest no el treu ningú.",
-      "sala.gavina_hangar.llancadora.look_tub": "La llançadora, amb el tub nou. A punt per marxar.",
-      "sala.gavina_hangar.llancadora.fugir1": "Premo el botó d'engegada. El motor arrenca a la primera.",
-      "sala.gavina_hangar.llancadora.fugir2": "La comporta s'obre a l'espai. Adeu, Gavina. Adeu, MARE.",
-      "sala.gavina_hangar.llancadora.fugir3": "I gràcies, I. Ara et toca a tu.",
-      "sala.gavina_hangar.llancadora.sense_tub": "Premo el botó d'engegada. Res. Sense el tub de la vàlvula, la pressió no arriba al motor.",
-      "sala.gavina_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»",
+      "sala.oris_hangar.llancadora.tub1": "Desenrotllo la llibreta de dins el tub. És la llibreta de torn de la I.: la cambra, el Director, les proves. Tot.",
+      "sala.oris_hangar.llancadora.tub2": "Me la guardo. Algú l'haurà de llegir.",
+      "sala.oris_hangar.llancadora.tub3": "I munto el tub on hi havia l'altre. Ferro-9: aquest no el treu ningú.",
+      "sala.oris_hangar.llancadora.look_tub": "La llançadora, amb el tub nou. A punt per marxar.",
+      "sala.oris_hangar.llancadora.fugir1": "Premo el botó d'engegada. El motor arrenca a la primera.",
+      "sala.oris_hangar.llancadora.fugir2": "La comporta s'obre a l'espai. Adeu, Orís. Adeu, MARE.",
+      "sala.oris_hangar.llancadora.fugir3": "I gràcies, I. Ara et toca a tu.",
+      "sala.oris_hangar.llancadora.sense_tub": "Premo el botó d'engegada. Res. Sense el tub de la vàlvula, la pressió no arriba al motor.",
+      "sala.oris_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»",
       "sala.fabrica_moll.conducte.mig3": "Pels altaveus: «Director Aldaia a les calderes. Caiguda de pressió.» El seu despatx es quedarà buit una estona.",
       "sala.fabrica_magatzem.porta_despatx.reunio": "Hi ha llum sota la porta i se senten veus: el director i l'inspector Sic, reunits. No penso entrar-hi a saludar."
     }

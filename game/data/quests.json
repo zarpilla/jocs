@@ -91,7 +91,7 @@
         "id": "hangar",
         "text": "mis.acte2.obj.hangar",
         "completeWhen": {
-          "visited": "gavina_hangar"
+          "visited": "oris_hangar"
         }
       },
       {
@@ -192,7 +192,7 @@
         "id": "memoria",
         "text": "mis.acte3.obj.memoria",
         "completeWhen": {
-          "visited": "gavina_memoria"
+          "visited": "oris_memoria"
         }
       },
       {

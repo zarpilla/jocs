@@ -10,7 +10,7 @@
 ferro-9 de la **Corporació Aldaia**, és brillant i ningú no se la mira. Una nit, mentre apaga
 una alarma, encén per accident el camp d'una cambra de ressonància experimental.
 
-**Vet** viu al present. És presonera a **La Gavina**, una presó orbital construïda amb les restes de la
+**Vet** viu al present. És presonera a **Orís**, una presó orbital construïda amb les restes de la
 fàbrica. D'aquí a tres dies l'han de "reciclar", i ningú no sap què vol dir, perquè ningú no n'ha tornat.
 
 No es coneixen. Es descobriran a través de la finestra de fase i de les coses que es fan arribar. Fins a
@@ -58,7 +58,7 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
   per impagament. La Vet va buidar un magatzem Aldaia de **quaranta filtres d'aire** i els va instal·lar a les cases
   del barri, de franc. Ella diu que els va vendre ben cars, perquè no vol que ningú la prengui per una heroïna. A
   l'Anell de Baix pinten claus angleses a les parets. Per a la corporació, robar-li és el pitjor delicte possible, i
-  els que li planten cara acaben a La Gavina de sincronitzadors.
+  els que li planten cara acaben a Orís de sincronitzadors.
 - **On es diu:** l'avís de reciclatge en dona el motiu oficial (*"sostracció de 40 filtres d'aire"*), en Mos explica
   el que se'n diu a la galeria (i la Vet ho nega), la Directora Aldaia l'hi retreu a l'Acte 3 i el final de la
   fugida la porta de tornada a l'Anell de Baix. Així el jugador ho sap des del principi, però la veritat (que no en
@@ -70,7 +70,7 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 |---|---|---|---|
 | **Cargol** | Robot de manteniment acabat d'estrenar. Obsessionat amb les normes. | Vell i rovellat (ell no és de ferro-9), conserge de la presó. Parla de "la senyora Iri". | **Memòria a través del temps.** Si l'Iri el repara i el tracta bé, al present ajuda la Vet. Si li pren peces per fer components, al present és hostil o ni tan sols hi és. |
 | **Mira Alsina** | Companya i amiga de l'Iri. | Existeix només als registres... o no. | **El cost humà.** La corporació l'acusa dels robatoris de l'Iri. Salvar-la és una missió secundària. |
-| **Guàrdia Alsina** | — | Guàrdia de La Gavina, besneta de la Mira. **Només existeix si la Mira es va salvar.** | Una aliada al present i una peça dels finals 2 i 3. |
+| **Guàrdia Alsina** | — | Guàrdia d'Orís, besneta de la Mira. **Només existeix si la Mira es va salvar.** | Una aliada al present i una peça dels finals 2 i 3. |
 | **Director Aldaia** | Fundador de la corporació. Encantador i terrible. | Holograma de la Sala de la Memòria, fent de guia turístic. | L'antagonista del passat, i també un gag recurrent al present. |
 | **Directora Aldaia** | — | Rebesneta del fundador. Cita l'avantpassat a cada frase. | L'antagonista del present. A l'Acte 3 vol la finestra per a ella. |
 | **Inspector Sic** | Inspector d'inventari de la corporació. Té un humor de pedra. | — | L'amenaça que creix a l'Acte 2. Cada robatori de l'Iri li deixa una pista. |
@@ -112,7 +112,7 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 
 ### El ferro-9
 
-- **No s'oxida mai.** Per això La Gavina està feta amb restes de la fàbrica, i per això el que l'Iri
+- **No s'oxida mai.** Per això la presó d'Orís està feta amb restes de la fàbrica, i per això el que l'Iri
   fabrica amb ferro-9 arriba perfecte.
 - **El controla la corporació.** Cada gram està registrat, i robar-ne té conseqüències.
 
@@ -195,7 +195,7 @@ La comporta s'obre amb una biga llarga i rígida.
 - La ruta B és més llarga però **no deixa rastre**.
 
 **Com es juga (fet al joc, primera part de l'Acte 2).** Sales noves: el **moll de càrrega** de la fàbrica (Iri, s'hi
-va des de la sala de calderes) i el **moll de l'hangar** de La Gavina (Vet, al fons del passadís). És el mateix lloc
+va des de la sala de calderes) i el **moll de l'hangar** d'Orís (Vet, al fons del passadís). És el mateix lloc
 a les dues èpoques: el **pilar amb un 7 pintat** hi és en totes dues.
 
 1. La Vet troba la comporta encallada, amb l'encaix buit. Ara que la cambra de l'Iri sincronitza sola, recupera
@@ -297,7 +297,7 @@ la inundació no és un error del jugador, és la lliçó.
 2. A la Sala de la Memòria, la Vet troba una foto del torn de nit amb una cara ratllada i un nom mig esborrat:
    *"I... (desapareguda)"*. L'Iri va **desaparèixer tres dies després** de "l'accident". Tres dies: el mateix temps que
    li queda a la Vet.
-3. A l'Arxiu, la Vet descobreix que **La Gavina es va construir per tornar a obrir la finestra**. Fa 120 anys
+3. A l'Arxiu, la Vet descobreix que **Orís es va construir per tornar a obrir la finestra**. Fa 120 anys
    que hi posen presos perquè facin de "sincronitzadors", i el reciclatge és el que passa quan el camp et
    crema. **La Vet és la primera que l'ha fet funcionar, perquè a l'altre costat hi ha algú.**
 4. La Directora Aldaia se n'adona. Ara vol la Vet viva, i també l'Iri.
@@ -306,7 +306,7 @@ la inundació no és un error del jugador, és la lliçó.
 
 - **Vet.** Quan la llançadora ja engega, descargola amb la clau anglesa la cadena de la reixa de l'escala (al moll
   de l'hangar) i baixa a l'**Arxiu**: l'expedient de l'Iri («desapareguda tres dies després de l'accident»), les
-  còpies dels plànols del Projecte Gavina (sincronitzadors i «reciclatge») i, a l'arxivador, la **carta d'en Mos**.
+  còpies dels plànols del Projecte Orís (sincronitzadors i «reciclatge») i, a l'arxivador, la **carta d'en Mos**.
   Si li torna, en Mos li explica que als del reciclatge no els reciclen: els crema el camp.
 - **Iri.** Des del magatzem, al **despatx del director** (fins ara tancat: el director hi era reunit amb el Sic; quan l'Iri obre la vàlvula a mitges, el criden a les calderes i el despatx queda buit): el calaix té un pany M-3, i amb un altre imant del
   Cargol (formulari per triplicat) roba els **plànols originals**: «Prova de camp: torn de nit, operària I. No
@@ -400,8 +400,8 @@ la victòria**, i depèn del que s'ha fet a les missions secundàries.
 
 | Final | Què passa | Requisits |
 |---|---|---|
-| **1 · La fugida** | Les dues escapen. La Vet fa pública la llibreta i La Gavina tanca: la corporació cau al present. Escena final: la Vet visita la Sala de la Memòria, ja convertida en museu de veritat, davant la foto de l'Iri, que ara no està ratllada, i un cartell que diu *"desapareguda"*. La Vet somriu, perquè ella sap on va anar. | Els tres components. És el final base. |
-| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació Alsina**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols robats. |
+| **1 · La fugida** | Les dues escapen. La Vet fa pública la llibreta i Orís tanca: la corporació cau al present. Escena final: la Vet visita la Sala de la Memòria, ja convertida en museu de veritat, davant la foto de l'Iri, que ara no està ratllada, i un cartell que diu *"desapareguda"*. La Vet somriu, perquè ella sap on va anar. | Els tres components. És el final base. |
+| **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, Orís no arriba a ser mai una presó: és l'**Estació Alsina**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols robats. |
 | **3 · Correspondència** | Tot el que passa al final 2, i a més el Cargol, que es va quedar al passat, **es passa 120 anys reparant la cambra** sense que ningú no ho sàpiga. Quan la Vet arriba a l'estació, el Cargol vell l'hi espera amb una carta de l'Iri: va viure una vida llarga i lliure. La finestra torna a funcionar, i **les dues es poden continuar escrivint**. *"Vaig esperar. Era la meva feina."* | Final 2, i també la memòria del Cargol (reparat, no desmuntat, amb el nom gravat). |
 
 Com que sempre és la mateixa història amb més o menys coses arreglades, el jugador que acabi el final 1

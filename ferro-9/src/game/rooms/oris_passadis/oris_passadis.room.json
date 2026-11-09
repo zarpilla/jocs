@@ -1,6 +1,6 @@
 {
-  "id": "gavina_arxiu",
-  "name": "Arxiu",
+  "id": "oris_passadis",
+  "name": "Passadís del mòdul C",
   "size": {
     "width": 480,
     "height": 270
@@ -40,21 +40,21 @@
   },
   "hotspots": [
     {
-      "id": "escala_hangar",
+      "id": "porta_cella",
       "active": true,
-      "description": "moll de l'hangar",
+      "description": "cel·la 9",
       "zIndex": 0,
       "points": [
         {
           "x": 8,
-          "y": 38
+          "y": 46
         },
         {
-          "x": 68,
-          "y": 38
+          "x": 65,
+          "y": 46
         },
         {
-          "x": 68,
+          "x": 65,
           "y": 155
         },
         {
@@ -67,105 +67,139 @@
         "y": 183
       },
       "lookAtPoint": {
-        "x": 38,
+        "x": 37,
         "y": 156
       },
       "defaultVerb": "open"
     },
     {
-      "id": "expedient_iri",
+      "id": "porta_hangar",
       "active": true,
-      "description": "expedients",
+      "description": "porta del fons",
       "zIndex": 1,
       "points": [
         {
-          "x": 229,
-          "y": 106
+          "x": 253,
+          "y": 62
         },
         {
-          "x": 322,
-          "y": 106
+          "x": 292,
+          "y": 62
         },
         {
-          "x": 322,
-          "y": 131
+          "x": 292,
+          "y": 123
         },
         {
-          "x": 229,
-          "y": 131
+          "x": 253,
+          "y": 123
         }
       ],
       "walkToPoint": {
         "x": 273,
-        "y": 177
+        "y": 164
       },
       "lookAtPoint": {
-        "x": 276,
-        "y": 131
-      }
+        "x": 273,
+        "y": 123
+      },
+      "defaultVerb": "open"
     },
     {
-      "id": "arxivador",
+      "id": "porta_memoria",
       "active": true,
-      "description": "arxivador",
+      "description": "Sala de la Memòria",
       "zIndex": 2,
       "points": [
         {
-          "x": 79,
-          "y": 38
+          "x": 354,
+          "y": 76
         },
         {
-          "x": 204,
-          "y": 38
+          "x": 403,
+          "y": 76
         },
         {
-          "x": 204,
+          "x": 403,
           "y": 153
         },
         {
-          "x": 79,
+          "x": 354,
           "y": 153
         }
       ],
       "walkToPoint": {
-        "x": 142,
+        "x": 377,
         "y": 175
       },
       "lookAtPoint": {
-        "x": 142,
+        "x": 379,
         "y": 153
-      }
+      },
+      "defaultVerb": "open"
     },
     {
-      "id": "planols",
+      "id": "cartell",
       "active": true,
-      "description": "plànols",
+      "description": "cartell",
       "zIndex": 3,
       "points": [
         {
-          "x": 351,
-          "y": 81
+          "x": 324,
+          "y": 38
         },
         {
-          "x": 466,
-          "y": 81
+          "x": 425,
+          "y": 38
         },
         {
-          "x": 466,
-          "y": 136
+          "x": 425,
+          "y": 76
         },
         {
-          "x": 351,
-          "y": 136
+          "x": 324,
+          "y": 76
         }
       ],
       "walkToPoint": {
-        "x": 404,
-        "y": 177
+        "x": 368,
+        "y": 175
       },
       "lookAtPoint": {
-        "x": 409,
-        "y": 137
+        "x": 375,
+        "y": 77
+      }
+    },
+    {
+      "id": "camera_vigilancia",
+      "active": true,
+      "description": "càmera",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 409,
+          "y": 10
+        },
+        {
+          "x": 447,
+          "y": 10
+        },
+        {
+          "x": 447,
+          "y": 35
+        },
+        {
+          "x": 409,
+          "y": 35
+        }
+      ],
+      "walkToPoint": {
+        "x": 423,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 428,
+        "y": 36
       }
     }
   ],
@@ -187,7 +221,7 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 55,
+      "x": 123,
       "y": 188,
       "initialFacing": "D",
       "initialAnimation": "Idle",

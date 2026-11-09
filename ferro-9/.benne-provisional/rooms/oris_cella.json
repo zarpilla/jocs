@@ -1,85 +1,95 @@
 {
-  "width": 352,
-  "height": 198,
+  "width": 480,
+  "height": 270,
   "title": "Cel·la 9",
   "era": "vet",
-  "floorTop": 112,
-  "floorBottom": 148,
+  "floorTop": 153,
+  "floorBottom": 202,
   "boxes": [
     {
       "id": "porta",
       "label": "porta de la cel·la",
       "kind": "exit",
-      "w": 34,
-      "h": 66,
-      "x": 6,
-      "y": 52
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "reixa",
+      "label": "reixa",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 425,
+      "y": 71
     },
     {
       "id": "panell",
       "label": "panell rovellat",
       "kind": "hotspot",
-      "w": 30,
-      "h": 24,
-      "x": 53,
-      "y": 42
+      "w": 41,
+      "h": 33,
+      "x": 72,
+      "y": 57
     },
     {
       "id": "altaveu",
       "label": "altaveu de la MARE",
       "kind": "hotspot",
-      "w": 30,
-      "h": 24,
-      "x": 89,
-      "y": 14
+      "w": 41,
+      "h": 33,
+      "x": 121,
+      "y": 19
     },
     {
       "id": "avis",
       "label": "avís",
       "kind": "prop",
-      "w": 30,
-      "h": 24,
-      "x": 125,
-      "y": 42
+      "w": 41,
+      "h": 33,
+      "x": 170,
+      "y": 57
     },
     {
       "id": "llitera",
       "label": "llitera",
       "kind": "hotspot",
-      "w": 30,
-      "h": 24,
-      "x": 161,
-      "y": 14
+      "w": 41,
+      "h": 33,
+      "x": 220,
+      "y": 19
     },
     {
       "id": "escarabat",
       "label": "Senyor Bigotis",
       "kind": "prop",
-      "w": 30,
-      "h": 24,
-      "x": 197,
-      "y": 42
+      "w": 41,
+      "h": 33,
+      "x": 269,
+      "y": 57
     },
     {
       "id": "safata",
       "label": "safata de sopar",
       "kind": "prop",
-      "w": 30,
-      "h": 24,
-      "x": 233,
-      "y": 14
+      "w": 41,
+      "h": 33,
+      "x": 318,
+      "y": 19
     },
     {
       "id": "finestreta",
       "label": "finestreta",
       "kind": "hotspot",
-      "w": 30,
-      "h": 24,
-      "x": 269,
-      "y": 42
+      "w": 41,
+      "h": 33,
+      "x": 367,
+      "y": 57
     }
   ],
   "characters": [
-    "Mos"
+    "Mos",
+    "Directora Aldaia"
   ]
 }

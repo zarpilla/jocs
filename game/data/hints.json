@@ -713,13 +713,13 @@
         },
         {
           "not": {
-            "visited": "gavina_hangar"
+            "visited": "oris_hangar"
           }
         }
       ]
     },
     "doneWhen": {
-      "visited": "gavina_hangar"
+      "visited": "oris_hangar"
     },
     "levels": [
       "pista.vet_hangar.1",
@@ -734,7 +734,7 @@
           "protagonist": "vet"
         },
         {
-          "visited": "gavina_hangar"
+          "visited": "oris_hangar"
         },
         {
           "flag": "comporta_mesurada",
@@ -2261,13 +2261,13 @@
           "flag": "arxiu_explorat"
         },
         {
-          "flag": "vet_sap_gavina",
+          "flag": "vet_sap_oris",
           "is": false
         }
       ]
     },
     "doneWhen": {
-      "flag": "vet_sap_gavina"
+      "flag": "vet_sap_oris"
     },
     "levels": [
       "pista.vet_planols_arxiu.1",
@@ -2659,13 +2659,13 @@
         },
         {
           "not": {
-            "visited": "gavina_memoria"
+            "visited": "oris_memoria"
           }
         }
       ]
     },
     "doneWhen": {
-      "visited": "gavina_memoria"
+      "visited": "oris_memoria"
     },
     "levels": [
       "pista.vet_memoria.1",
@@ -2680,7 +2680,7 @@
           "protagonist": "vet"
         },
         {
-          "visited": "gavina_memoria"
+          "visited": "oris_memoria"
         },
         {
           "flag": "vet_veu_foto",
@@ -2704,7 +2704,7 @@
           "protagonist": "vet"
         },
         {
-          "visited": "gavina_memoria"
+          "visited": "oris_memoria"
         },
         {
           "flag": "vet_sap_conducte",

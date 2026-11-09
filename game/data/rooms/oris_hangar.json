@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/room.schema.json",
-  "name": "sala.gavina_hangar.nom",
+  "name": "sala.oris_hangar.nom",
   "protagonist": "vet",
   "onEnter": [
     {
@@ -15,11 +15,11 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.gavina_hangar.inundat1"
+          "text": "sala.oris_hangar.inundat1"
         },
         {
           "who": "player",
-          "text": "sala.gavina_hangar.inundat2",
+          "text": "sala.oris_hangar.inundat2",
           "sound": "aigua"
         }
       ],
@@ -48,11 +48,11 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.gavina_hangar.secat1"
+          "text": "sala.oris_hangar.secat1"
         },
         {
           "who": "player",
-          "text": "sala.gavina_hangar.secat2"
+          "text": "sala.oris_hangar.secat2"
         }
       ]
     },
@@ -74,15 +74,15 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.gavina_hangar.marca1"
+          "text": "sala.oris_hangar.marca1"
         },
         {
           "who": "player",
-          "text": "sala.gavina_hangar.marca2"
+          "text": "sala.oris_hangar.marca2"
         },
         {
           "who": "player",
-          "text": "sala.gavina_hangar.marca3"
+          "text": "sala.oris_hangar.marca3"
         }
       ],
       "effects": [
@@ -98,18 +98,18 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.gavina_hangar.intro1"
+          "text": "sala.oris_hangar.intro1"
         },
         {
           "who": "player",
-          "text": "sala.gavina_hangar.intro2"
+          "text": "sala.oris_hangar.intro2"
         }
       ]
     }
   ],
   "hotspots": {
     "porta_passadis": {
-      "name": "sala.gavina_hangar.porta_passadis.nom",
+      "name": "sala.oris_hangar.porta_passadis.nom",
       "interactions": [
         {
           "verb": [
@@ -117,12 +117,12 @@
             "use",
             "walkTo"
           ],
-          "goTo": "gavina_passadis"
+          "goTo": "oris_passadis"
         }
       ]
     },
     "comporta": {
-      "name": "sala.gavina_hangar.comporta.nom",
+      "name": "sala.oris_hangar.comporta.nom",
       "interactions": [
         {
           "verb": "look",
@@ -132,7 +132,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.oberta"
+              "text": "sala.oris_hangar.comporta.oberta"
             }
           ]
         },
@@ -146,20 +146,20 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir1"
+              "text": "sala.oris_hangar.comporta.obrir1"
             },
             {
               "who": "narrator",
-              "text": "sala.gavina_hangar.comporta.obrir2",
+              "text": "sala.oris_hangar.comporta.obrir2",
               "sound": "comporta"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir3"
+              "text": "sala.oris_hangar.comporta.obrir3"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir4"
+              "text": "sala.oris_hangar.comporta.obrir4"
             }
           ],
           "effects": [
@@ -181,20 +181,20 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir1"
+              "text": "sala.oris_hangar.comporta.obrir1"
             },
             {
               "who": "narrator",
-              "text": "sala.gavina_hangar.comporta.obrir2",
+              "text": "sala.oris_hangar.comporta.obrir2",
               "sound": "comporta"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir3"
+              "text": "sala.oris_hangar.comporta.obrir3"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.obrir4"
+              "text": "sala.oris_hangar.comporta.obrir4"
             }
           ],
           "effects": [
@@ -212,7 +212,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.tram"
+              "text": "sala.oris_hangar.comporta.tram"
             }
           ]
         },
@@ -222,7 +222,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.tram"
+              "text": "sala.oris_hangar.comporta.tram"
             }
           ]
         },
@@ -232,7 +232,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.tram"
+              "text": "sala.oris_hangar.comporta.tram"
             }
           ]
         },
@@ -246,15 +246,15 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.mesurar1"
+              "text": "sala.oris_hangar.comporta.mesurar1"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.mesurar2"
+              "text": "sala.oris_hangar.comporta.mesurar2"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.mesurar3"
+              "text": "sala.oris_hangar.comporta.mesurar3"
             }
           ],
           "effects": [
@@ -269,7 +269,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.mesurada"
+              "text": "sala.oris_hangar.comporta.mesurada"
             }
           ]
         },
@@ -282,7 +282,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.encallada"
+              "text": "sala.oris_hangar.comporta.encallada"
             }
           ]
         },
@@ -291,14 +291,14 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.comporta.look"
+              "text": "sala.oris_hangar.comporta.look"
             }
           ]
         }
       ]
     },
     "pilar": {
-      "name": "sala.gavina_hangar.pilar.nom",
+      "name": "sala.oris_hangar.pilar.nom",
       "interactions": [
         {
           "verb": "look",
@@ -308,7 +308,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.pilar.look_marca"
+              "text": "sala.oris_hangar.pilar.look_marca"
             }
           ]
         },
@@ -317,14 +317,14 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.pilar.look"
+              "text": "sala.oris_hangar.pilar.look"
             }
           ]
         }
       ]
     },
     "placa_terra": {
-      "name": "sala.gavina_hangar.placa.nom",
+      "name": "sala.oris_hangar.placa.nom",
       "interactions": [
         {
           "verb": [
@@ -351,11 +351,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.ferro9_1"
+              "text": "sala.oris_hangar.placa.ferro9_1"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.ferro9_2"
+              "text": "sala.oris_hangar.placa.ferro9_2"
             }
           ],
           "effects": [
@@ -392,15 +392,15 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.rovell1"
+              "text": "sala.oris_hangar.placa.rovell1"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.rovell2"
+              "text": "sala.oris_hangar.placa.rovell2"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.rovell3"
+              "text": "sala.oris_hangar.placa.rovell3"
             }
           ],
           "effects": [
@@ -424,7 +424,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.buida"
+              "text": "sala.oris_hangar.placa.buida"
             }
           ]
         },
@@ -437,7 +437,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.perque"
+              "text": "sala.oris_hangar.placa.perque"
             }
           ]
         },
@@ -449,7 +449,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.look_pilar"
+              "text": "sala.oris_hangar.placa.look_pilar"
             }
           ]
         },
@@ -458,14 +458,14 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.placa.look"
+              "text": "sala.oris_hangar.placa.look"
             }
           ]
         }
       ]
     },
     "llancadora": {
-      "name": "sala.gavina_hangar.llancadora.nom",
+      "name": "sala.oris_hangar.llancadora.nom",
       "interactions": [
         {
           "verb": "use",
@@ -473,15 +473,15 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.tub1"
+              "text": "sala.oris_hangar.llancadora.tub1"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.tub2"
+              "text": "sala.oris_hangar.llancadora.tub2"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.tub3",
+              "text": "sala.oris_hangar.llancadora.tub3",
               "sound": "eina"
             }
           ],
@@ -519,16 +519,16 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir1",
+              "text": "sala.oris_hangar.llancadora.fugir1",
               "sound": "motor"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir2"
+              "text": "sala.oris_hangar.llancadora.fugir2"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir3"
+              "text": "sala.oris_hangar.llancadora.fugir3"
             }
           ],
           "effects": [
@@ -562,16 +562,16 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir1",
+              "text": "sala.oris_hangar.llancadora.fugir1",
               "sound": "motor"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir2"
+              "text": "sala.oris_hangar.llancadora.fugir2"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.fugir3"
+              "text": "sala.oris_hangar.llancadora.fugir3"
             },
             {
               "who": "narrator",
@@ -598,7 +598,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.look_tub"
+              "text": "sala.oris_hangar.llancadora.look_tub"
             }
           ]
         },
@@ -613,7 +613,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.sense_tub",
+              "text": "sala.oris_hangar.llancadora.sense_tub",
               "sound": "boto"
             }
           ],
@@ -631,7 +631,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.look_sense_tub"
+              "text": "sala.oris_hangar.llancadora.look_sense_tub"
             }
           ],
           "effects": [
@@ -648,7 +648,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.a_punt"
+              "text": "sala.oris_hangar.llancadora.a_punt"
             }
           ]
         },
@@ -676,17 +676,17 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.engegar1",
+              "text": "sala.oris_hangar.llancadora.engegar1",
               "sound": "boto"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.engegar2",
+              "text": "sala.oris_hangar.llancadora.engegar2",
               "sound": "motor"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.engegar3"
+              "text": "sala.oris_hangar.llancadora.engegar3"
             }
           ],
           "effects": [
@@ -709,7 +709,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.en_marxa"
+              "text": "sala.oris_hangar.llancadora.en_marxa"
             }
           ]
         },
@@ -733,7 +733,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.escapa",
+              "text": "sala.oris_hangar.llancadora.escapa",
               "sound": "boto"
             }
           ]
@@ -749,7 +749,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.sense_pressio",
+              "text": "sala.oris_hangar.llancadora.sense_pressio",
               "sound": "boto"
             }
           ]
@@ -762,7 +762,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.oberta"
+              "text": "sala.oris_hangar.llancadora.oberta"
             }
           ]
         },
@@ -776,7 +776,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.porta_tancada"
+              "text": "sala.oris_hangar.llancadora.porta_tancada"
             }
           ],
           "effects": [
@@ -790,7 +790,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.look"
+              "text": "sala.oris_hangar.llancadora.look"
             }
           ],
           "effects": [
@@ -805,7 +805,7 @@
       }
     },
     "pany": {
-      "name": "sala.gavina_hangar.pany.nom",
+      "name": "sala.oris_hangar.pany.nom",
       "interactions": [
         {
           "verb": "look",
@@ -815,7 +815,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.pany.obert"
+              "text": "sala.oris_hangar.pany.obert"
             }
           ]
         },
@@ -836,22 +836,22 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.obrir1",
+              "text": "sala.oris_hangar.llancadora.obrir1",
               "sound": "diapaso_2"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.obrir2",
+              "text": "sala.oris_hangar.llancadora.obrir2",
               "sound": "clac"
             },
             {
               "who": "narrator",
-              "text": "sala.gavina_hangar.llancadora.obrir3",
+              "text": "sala.oris_hangar.llancadora.obrir3",
               "sound": "porta_llancadora"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.obrir4"
+              "text": "sala.oris_hangar.llancadora.obrir4"
             }
           ],
           "effects": [
@@ -869,7 +869,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.diapaso_no",
+              "text": "sala.oris_hangar.llancadora.diapaso_no",
               "sound": "pany_diapaso_{diapaso_to}"
             }
           ]
@@ -883,7 +883,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.molla_ja",
+              "text": "sala.oris_hangar.llancadora.molla_ja",
               "sound": "pany_molla_3"
             }
           ]
@@ -899,7 +899,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.molla_greu",
+              "text": "sala.oris_hangar.llancadora.molla_greu",
               "sound": "pany_molla_{molla_tensio}"
             }
           ]
@@ -915,7 +915,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.molla_aguda",
+              "text": "sala.oris_hangar.llancadora.molla_aguda",
               "sound": "pany_molla_{molla_tensio}"
             }
           ]
@@ -926,12 +926,12 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.molla_igual1",
+              "text": "sala.oris_hangar.llancadora.molla_igual1",
               "sound": "pany_molla_3"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.molla_igual2"
+              "text": "sala.oris_hangar.llancadora.molla_igual2"
             }
           ],
           "effects": [
@@ -950,12 +950,12 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.tocar1",
+              "text": "sala.oris_hangar.llancadora.tocar1",
               "sound": "pany"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.llancadora.tocar2"
+              "text": "sala.oris_hangar.llancadora.tocar2"
             }
           ],
           "effects": [
@@ -969,7 +969,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.pany.look"
+              "text": "sala.oris_hangar.pany.look"
             }
           ]
         }
@@ -986,7 +986,7 @@
       }
     },
     "conducte": {
-      "name": "sala.gavina_hangar.conducte.nom",
+      "name": "sala.oris_hangar.conducte.nom",
       "interactions": [
         {
           "verb": "look",
@@ -998,7 +998,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.conducte.look_rebentat"
+              "text": "sala.oris_hangar.conducte.look_rebentat"
             }
           ]
         },
@@ -1012,7 +1012,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.conducte.look_ple"
+              "text": "sala.oris_hangar.conducte.look_ple"
             }
           ]
         },
@@ -1021,7 +1021,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.conducte.look"
+              "text": "sala.oris_hangar.conducte.look"
             }
           ]
         },
@@ -1036,14 +1036,14 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.conducte.tocar"
+              "text": "sala.oris_hangar.conducte.tocar"
             }
           ]
         }
       ]
     },
     "escala": {
-      "name": "sala.gavina_hangar.escala.nom",
+      "name": "sala.oris_hangar.escala.nom",
       "interactions": [
         {
           "verb": [
@@ -1063,7 +1063,7 @@
               }
             ]
           },
-          "goTo": "gavina_arxiu"
+          "goTo": "oris_arxiu"
         },
         {
           "verb": "look",
@@ -1075,7 +1075,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.escala.look_aigua"
+              "text": "sala.oris_hangar.escala.look_aigua"
             }
           ]
         },
@@ -1084,7 +1084,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.escala.look"
+              "text": "sala.oris_hangar.escala.look"
             }
           ]
         },
@@ -1102,7 +1102,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.escala.aigua"
+              "text": "sala.oris_hangar.escala.aigua"
             }
           ]
         },
@@ -1125,11 +1125,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.escala.descargolar1"
+              "text": "sala.oris_hangar.escala.descargolar1"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.escala.descargolar2",
+              "text": "sala.oris_hangar.escala.descargolar2",
               "sound": "eina"
             }
           ],
@@ -1148,14 +1148,14 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.escala.reixa"
+              "text": "sala.oris_hangar.escala.reixa"
             }
           ]
         }
       ]
     },
     "caixa_flotant": {
-      "name": "sala.gavina_hangar.caixa.nom",
+      "name": "sala.oris_hangar.caixa.nom",
       "interactions": [
         {
           "verb": [
@@ -1165,11 +1165,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.caixa.obrir1"
+              "text": "sala.oris_hangar.caixa.obrir1"
             },
             {
               "who": "player",
-              "text": "sala.gavina_hangar.caixa.obrir2"
+              "text": "sala.oris_hangar.caixa.obrir2"
             }
           ],
           "effects": [
@@ -1186,7 +1186,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.caixa.look"
+              "text": "sala.oris_hangar.caixa.look"
             }
           ]
         }
@@ -1206,7 +1206,7 @@
       }
     },
     "sortida_conducte": {
-      "name": "sala.gavina_hangar.sortida_conducte.nom",
+      "name": "sala.oris_hangar.sortida_conducte.nom",
       "visibleIf": {
         "flag": "reixa_oberta"
       },
@@ -1221,17 +1221,17 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.sortida_conducte.entrar"
+              "text": "sala.oris_hangar.sortida_conducte.entrar"
             }
           ],
-          "goTo": "gavina_cella"
+          "goTo": "oris_cella"
         },
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.sortida_conducte.look"
+              "text": "sala.oris_hangar.sortida_conducte.look"
             }
           ]
         }
