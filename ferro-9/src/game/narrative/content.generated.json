@@ -5772,6 +5772,10 @@
                           "flag": "mos_distreu"
                         }
                       ]
+                    },
+                    {
+                      "flag": "cella_tancada",
+                      "is": false
                     }
                   ]
                 },
@@ -5804,6 +5808,10 @@
                           "flag": "mos_distreu"
                         }
                       ]
+                    },
+                    {
+                      "flag": "cella_tancada",
+                      "is": false
                     }
                   ]
                 },
@@ -5818,7 +5826,15 @@
                 "verb": "use",
                 "item": "*",
                 "if": {
-                  "flag": "acte3_iniciat"
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "flag": "cella_tancada",
+                      "is": false
+                    }
+                  ]
                 },
                 "lines": [
                   {
@@ -5836,7 +5852,15 @@
                   "use"
                 ],
                 "if": {
-                  "flag": "acte3_iniciat"
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "flag": "cella_tancada",
+                      "is": false
+                    }
+                  ]
                 },
                 "lines": [
                   {

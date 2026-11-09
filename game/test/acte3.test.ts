@@ -104,6 +104,8 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     p.do('open', 'porta_hangar');
     p.do('open', 'sortida_conducte');
     expect(p.room).toBe('gavina_cella');
+    // Sense la Directora, el panell torna a ser de la Vet: qui decideix què passa és la finestra.
+    expect(texts(p.use('llapis_ulls', 'panell'))).not.toContain('Ni un minut abans');
 
     // ── Iri: un tub de ferro-9 (el Cargol no demana formularis als fugitius) i la llibreta a dins ──
     p.switchTo('iri');
