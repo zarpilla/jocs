@@ -22,7 +22,8 @@ LIGHT.point(222, 22, r=70, k=1.1)                                 # balisa de la
 LIGHT.point(70, 96, r=46, k=0.9)                                  # pilot de la porta
 
 COMPORTA = (214, 27, 476, 150)
-PILAR_CX = 159
+PILAR_CX = 186                       # el pilar 7, a la dreta del conducte (com al moll)
+PIPE_X = 147                         # el conducte (147..157), entre l'escala i el pilar
 
 
 def wall_panels(cv, x0, x1, y0, y1):
@@ -107,7 +108,7 @@ def bg(cv):
             yel = ((x - y) // 6) % 2 == 0
             cv.put(x, y, WARN if yel else STEEL, (3.0 if yel else 0.6) - (159 - y) * 0.1)
     # reixes de desguàs (les de la fàbrica, envellides): la 1a és la sortida del conducte; la 2a, la del pilar 7
-    for xa, xb in ((16, 54), (98, 136), (214, 252), (296, 334)):
+    for xa, xb in ((16, 54), (118, 156), (214, 252), (296, 334)):
         grate(cv, round(xa * 480 / 352), round(xb * 480 / 352), aged=True)
 
     # ─── Porta del passadís (8..65 × 46..155) ─────────────────────────────
@@ -179,10 +180,10 @@ def bg(cv):
     cv.glow(106, 130, 18, (80, 120, 140), 0.12)
 
     # ─── Conducte (rovellat): de dalt fins a terra i cap a la comporta ────
-    pipe(cv, aged=True, x=186, w=11, run_y=26, y_end=FLOOR_Y - 1)
+    pipe(cv, aged=True, x=PIPE_X, w=11, run_y=26, y_end=FLOOR_Y - 1)
     for yy in range(140, 151):                                     # tram cap a la llançadora
         i = yy - 140
-        for xx in range(196, 216):
+        for xx in range(PIPE_X + 10, 216):                          # passa per darrere el pilar
             cv.put(xx, yy, RUST, [1.6, 3.0, 3.8, 3.4, 3.0, 2.6, 2.2, 1.8, 1.4, 1.0, 0.6][i] + (hr(xx // 3, yy) - 0.5) * 0.5)
 
     # ─── Pilar 7: el de la fàbrica, envellit ──────────────────────────────
@@ -408,16 +409,16 @@ def p_aigua(cv):
     for i in range(26):
         t = i / 25
         for k in range(4):
-            x = 197 + t * 22 + k
-            y = 124 + t * t * 30 + k * 2
+            x = PIPE_X - 1 - t * 13 - k
+            y = 124 + t * t * 28 + k * 2
             cv.put(x, y, WATER, 6.4 - k * 0.8, 0)
     for k in range(8):
-        cv.put(198 + k % 3, 120 + k, WATER, 5.6, 0)
-    cv.put(196, 122, SIL, 0.0, 0)
+        cv.put(PIPE_X - 2 - k % 3, 120 + k, WATER, 5.6, 0)
+    cv.put(PIPE_X, 122, SIL, 0.0, 0)
     # esquitxos on cau
     for dx in (-3, -1, 2, 4, 6):
-        cv.put(219 + dx, 152 - abs(dx) // 2, WATER, 7, 0)
-    cv.put(219, 150, WATER, 7, 0)
+        cv.put(PIPE_X - 16 + dx, 152 - abs(dx) // 2, WATER, 7, 0)
+    cv.put(PIPE_X - 16, 150, WATER, 7, 0)
 
 
 def p_caixa_flotant(cv):

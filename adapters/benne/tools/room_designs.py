@@ -587,7 +587,7 @@ CAMBRA = {
     'era': 'iri',
     'things': {
         'porta': {'rect': (6, 48, 42, 114), 'walk': (30, 134)},
-        'palanca': {'rect': (112, 40, 132, 68), 'walk': (122, 126)},
+        'palanca': {'rect': (106, 40, 132, 68), 'walk': (122, 126)},
         'cambra': {'rect': (148, 10, 232, 118), 'walk': (190, 128)},
         'boto': {'rect': (84, 62, 102, 76), 'walk': (94, 126)},
         'reixa': {'rect': (246, 84, 288, 110), 'walk': (266, 128)},
@@ -896,7 +896,7 @@ def floor_grate(c, xa, xb, palette):
         c.px(int(p[0]), int(p[1]), edge)
 
 
-HANGAR_GRATES = ((16, 54), (98, 136), (214, 252), (296, 334))
+HANGAR_GRATES = ((16, 54), (118, 156), (214, 252), (296, 334))
 MOLL_GRATES = ((24, 62), (100, 138), (170, 208))
 
 
@@ -1131,11 +1131,11 @@ HANGAR = {
     'things': {
         'porta_passadis': {'rect': (6, 34, 48, 114), 'walk': (34, 134)},
         'comporta': {'rect': (156, 6, 350, 112), 'walk': (220, 132)},
-        'pilar': {'rect': (108, 8, 126, 112), 'walk': (118, 128)},
-        'placa_terra': {'rect': grate_rect(*HANGAR_GRATES[1]), 'walk': (117, 143)},
+        'pilar': {'rect': (128, 8, 146, 112), 'walk': (137, 128)},
+        'placa_terra': {'rect': grate_rect(*HANGAR_GRATES[1]), 'walk': (137, 143)},
         'llancadora': {'rect': (178, 40, 334, 104), 'walk': (260, 132)},
         'pany': {'rect': (224, 65, 238, 81), 'walk': (231, 132)},
-        'conducte': {'rect': (130, 10, 152, 112), 'walk': (140, 128)},
+        'conducte': {'rect': (104, 10, 124, 112), 'walk': (114, 128)},
         'escala': {'rect': (56, 74, 100, 114), 'walk': (78, 130)},
         'caixa_flotant': {'rect': (58, 106, 90, 124), 'walk': (74, 136)},
         'sortida_conducte': {'rect': grate_rect(*HANGAR_GRATES[0]), 'walk': (35, 143)},
