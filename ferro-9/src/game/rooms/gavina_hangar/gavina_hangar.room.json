@@ -1,5 +1,5 @@
 {
-  "id": "oris_hangar",
+  "id": "gavina_hangar",
   "name": "Moll de l'hangar",
   "size": {
     "width": 480,
@@ -73,10 +73,138 @@
       "defaultVerb": "open"
     },
     {
+      "id": "comporta",
+      "active": true,
+      "description": "comporta",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 212,
+          "y": 8
+        },
+        {
+          "x": 477,
+          "y": 8
+        },
+        {
+          "x": 477,
+          "y": 153
+        },
+        {
+          "x": 212,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 300,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 345,
+        "y": 153
+      }
+    },
+    {
+      "id": "pilar",
+      "active": true,
+      "description": "pilar",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 147,
+          "y": 10
+        },
+        {
+          "x": 172,
+          "y": 10
+        },
+        {
+          "x": 172,
+          "y": 153
+        },
+        {
+          "x": 147,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 161,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 160,
+        "y": 153
+      }
+    },
+    {
+      "id": "placa_terra",
+      "active": true,
+      "description": "reixa del terra",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 130,
+          "y": 170
+        },
+        {
+          "x": 196,
+          "y": 170
+        },
+        {
+          "x": 196,
+          "y": 189
+        },
+        {
+          "x": 130,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 160,
+        "y": 195
+      },
+      "lookAtPoint": {
+        "x": 164,
+        "y": 190
+      }
+    },
+    {
+      "id": "conducte",
+      "active": true,
+      "description": "conducte",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 177,
+          "y": 13
+        },
+        {
+          "x": 207,
+          "y": 13
+        },
+        {
+          "x": 207,
+          "y": 153
+        },
+        {
+          "x": 177,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 191,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 192,
+        "y": 153
+      }
+    },
+    {
       "id": "escala",
       "active": true,
       "description": "escala",
-      "zIndex": 1,
+      "zIndex": 5,
       "points": [
         {
           "x": 76,
@@ -102,8 +230,7 @@
       "lookAtPoint": {
         "x": 107,
         "y": 156
-      },
-      "defaultVerb": "open"
+      }
     },
     {
       "id": "sortida_conducte",
@@ -137,134 +264,6 @@
         "y": 190
       },
       "defaultVerb": "open"
-    },
-    {
-      "id": "comporta",
-      "active": true,
-      "description": "comporta",
-      "zIndex": 3,
-      "points": [
-        {
-          "x": 212,
-          "y": 8
-        },
-        {
-          "x": 477,
-          "y": 8
-        },
-        {
-          "x": 477,
-          "y": 153
-        },
-        {
-          "x": 212,
-          "y": 153
-        }
-      ],
-      "walkToPoint": {
-        "x": 300,
-        "y": 180
-      },
-      "lookAtPoint": {
-        "x": 345,
-        "y": 153
-      }
-    },
-    {
-      "id": "pilar",
-      "active": true,
-      "description": "pilar",
-      "zIndex": 4,
-      "points": [
-        {
-          "x": 147,
-          "y": 10
-        },
-        {
-          "x": 172,
-          "y": 10
-        },
-        {
-          "x": 172,
-          "y": 153
-        },
-        {
-          "x": 147,
-          "y": 153
-        }
-      ],
-      "walkToPoint": {
-        "x": 161,
-        "y": 175
-      },
-      "lookAtPoint": {
-        "x": 160,
-        "y": 153
-      }
-    },
-    {
-      "id": "placa_terra",
-      "active": true,
-      "description": "reixa del terra",
-      "zIndex": 5,
-      "points": [
-        {
-          "x": 130,
-          "y": 170
-        },
-        {
-          "x": 196,
-          "y": 170
-        },
-        {
-          "x": 196,
-          "y": 189
-        },
-        {
-          "x": 130,
-          "y": 189
-        }
-      ],
-      "walkToPoint": {
-        "x": 160,
-        "y": 195
-      },
-      "lookAtPoint": {
-        "x": 164,
-        "y": 190
-      }
-    },
-    {
-      "id": "conducte",
-      "active": true,
-      "description": "conducte",
-      "zIndex": 6,
-      "points": [
-        {
-          "x": 177,
-          "y": 13
-        },
-        {
-          "x": 207,
-          "y": 13
-        },
-        {
-          "x": 207,
-          "y": 153
-        },
-        {
-          "x": 177,
-          "y": 153
-        }
-      ],
-      "walkToPoint": {
-        "x": 191,
-        "y": 175
-      },
-      "lookAtPoint": {
-        "x": 192,
-        "y": 153
-      }
     }
   ],
   "points": [],
@@ -321,44 +320,26 @@
       "description": "llançadora"
     },
     {
-      "id": "pany",
-      "tag": "pany",
+      "id": "porta_llancadora",
+      "tag": "porta_llancadora",
       "animations": {
-        "pany": {}
+        "porta_llancadora": {}
       },
-      "zIndex": 3,
-      "visible": true,
+      "zIndex": 4,
+      "visible": false,
       "alpha": 1,
-      "clickable": true,
-      "collider": {
-        "points": [
-          {
-            "x": 305,
-            "y": 88
-          },
-          {
-            "x": 324,
-            "y": 88
-          },
-          {
-            "x": 324,
-            "y": 110
-          },
-          {
-            "x": 305,
-            "y": 110
-          }
-        ]
+      "clickable": false
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "animations": {
+        "aigua": {}
       },
-      "walkToPoint": {
-        "x": 315,
-        "y": 180
-      },
-      "lookAtPoint": {
-        "x": 315,
-        "y": 111
-      },
-      "description": "pany sònic"
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     },
     {
       "id": "caixa_flotant",
@@ -401,26 +382,44 @@
       "description": "caixa que sura"
     },
     {
-      "id": "porta_llancadora",
-      "tag": "porta_llancadora",
+      "id": "pany",
+      "tag": "pany",
       "animations": {
-        "porta_llancadora": {}
+        "pany": {}
       },
-      "zIndex": 4,
-      "visible": false,
+      "zIndex": 3,
+      "visible": true,
       "alpha": 1,
-      "clickable": false
-    },
-    {
-      "id": "aigua",
-      "tag": "aigua",
-      "animations": {
-        "aigua": {}
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 305,
+            "y": 88
+          },
+          {
+            "x": 324,
+            "y": 88
+          },
+          {
+            "x": 324,
+            "y": 110
+          },
+          {
+            "x": 305,
+            "y": 110
+          }
+        ]
       },
-      "zIndex": 4,
-      "visible": false,
-      "alpha": 1,
-      "clickable": false
+      "walkToPoint": {
+        "x": 315,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 315,
+        "y": 111
+      },
+      "description": "pany sònic"
     },
     {
       "id": "marca_pilar",

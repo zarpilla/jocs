@@ -15,18 +15,18 @@ function finsMida(checkHints = true, fins?: string) {
   const s = partida({ checkHints, fins });
   const { p, n } = s;
   jugarActe1(p);
-  expect(p.room).toBe('oris_passadis');
+  expect(p.room).toBe('gavina_passadis');
   expect(n.state.quests.acte2!.status).toBe('active');
 
   // ── Vet: troba l'hangar ──
   p.do('open', 'porta_hangar');
-  expect(p.room).toBe('oris_hangar');
+  expect(p.room).toBe('gavina_hangar');
   expect(texts(p.do('push', 'comporta'))).toContain('palanca');
 
   // ── Vet: recupera la clau anglesa i mesura l'encaix ──
   p.do('open', 'porta_passadis');
   p.do('open', 'porta_cella');
-  expect(keys(p.do('pickUp', 'panell'))).toContain('sala.oris_cella.panell.recuperar2');
+  expect(keys(p.do('pickUp', 'panell'))).toContain('sala.gavina_cella.panell.recuperar2');
   expect(p.inventory()).toContain('clau_anglesa');
   p.do('open', 'porta');
   p.do('pickUp', 'cartell');
@@ -88,7 +88,7 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
     expect(obrir).toContain('llançadora');
     expect(n.flag('comporta_oberta')).toBe(true);
     expect(n.state.quests.acte2!.objectives.comporta).toBe(true);
-    expect(n.isHotspotVisible('oris_hangar', 'llancadora')).toBe(true);
+    expect(n.isHotspotVisible('gavina_hangar', 'llancadora')).toBe(true);
     // En tornar a l'hangar, la Vet hi troba la marca de l'Iri: el passat ha canviat el present sense la finestra.
     expect(n.flag('vet_ha_vist_marca')).toBe(true);
     expect(texts(p.do('look', 'pilar'))).toContain('bústia');
@@ -191,7 +191,7 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
   it('la nota del pany viatja dins una molla i torna dins un diapasó (sempre amb alguna pista)', () => {
     const { p, n } = finsComporta();
     // ── Vet: el pany sònic ──
-    expect(n.isHotspotVisible('oris_hangar', 'pany')).toBe(false); // encara no l'ha vist
+    expect(n.isHotspotVisible('gavina_hangar', 'pany')).toBe(false); // encara no l'ha vist
     p.do('look', 'llancadora');
     expect(texts(p.do('push', 'pany'))).toContain('nnnnng');
     expect(sounds(p.do('push', 'pany'))).toEqual(['pany']);
@@ -334,7 +334,7 @@ describe('Ferro-9 · Acte 2 · La vàlvula', () => {
     // Un camí que s'obre: la caixa de l'arxiu sura.
     p.do('pickUp', 'caixa_flotant');
     expect(texts(p.do('look', item('fitxa_mira')))).toContain('Potser es coneixen');
-    expect(n.isHotspotVisible('oris_hangar', 'caixa_flotant')).toBe(false);
+    expect(n.isHotspotVisible('gavina_hangar', 'caixa_flotant')).toBe(false);
     // ── Vet → Iri: MASSA ──
     escriureIEnviar(p, 'nota_massa');
     expect(texts(p.do('look', item('nota_massa')))).toContain('una mica');
@@ -435,7 +435,7 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     expect(texts(p.do('open', 'escala'))).toContain('cadena');
     p.use('clau_anglesa', 'escala');
     p.do('open', 'escala');
-    expect(p.room).toBe('oris_arxiu');
+    expect(p.room).toBe('gavina_arxiu');
     expect(n.state.quests.acte2!.objectives.arxiu).toBe(true);
     expect(texts(p.do('look', 'expedient_iri'))).toContain('tres dies');
     expect(texts(p.do('look', 'planols'))).toContain('sincronitzadors');

@@ -61,7 +61,7 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 "protagonists": ["iri", "vet"],
 "start": {
   "iri": { "room": "fabrica_calderes", "items": ["clau_anglesa", "llapis", "llibreta_torn"] },
-  "vet": { "room": "oris_cella" }
+  "vet": { "room": "gavina_cella" }
 }
 ```
 

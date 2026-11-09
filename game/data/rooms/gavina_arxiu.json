@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/room.schema.json",
-  "name": "sala.oris_arxiu.nom",
+  "name": "sala.gavina_arxiu.nom",
   "protagonist": "vet",
   "onEnter": [
     {
@@ -10,7 +10,7 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.oris_arxiu.intro"
+          "text": "sala.gavina_arxiu.intro"
         }
       ],
       "effects": [
@@ -22,7 +22,7 @@
   ],
   "hotspots": {
     "escala_hangar": {
-      "name": "sala.oris_arxiu.escala.nom",
+      "name": "sala.gavina_arxiu.escala.nom",
       "interactions": [
         {
           "verb": [
@@ -30,12 +30,12 @@
             "use",
             "walkTo"
           ],
-          "goTo": "oris_hangar"
+          "goTo": "gavina_hangar"
         }
       ]
     },
     "expedient_iri": {
-      "name": "sala.oris_arxiu.expedient_iri.nom",
+      "name": "sala.gavina_arxiu.expedient_iri.nom",
       "interactions": [
         {
           "verb": [
@@ -49,15 +49,15 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_arxiu.expedient_iri.text_confessio"
+              "text": "sala.gavina_arxiu.expedient_iri.text_confessio"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.expedient_iri.vet1"
+              "text": "sala.gavina_arxiu.expedient_iri.vet1"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.expedient_iri.vet2"
+              "text": "sala.gavina_arxiu.expedient_iri.vet2"
             }
           ],
           "effects": [
@@ -75,15 +75,15 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_arxiu.expedient_iri.text"
+              "text": "sala.gavina_arxiu.expedient_iri.text"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.expedient_iri.vet1"
+              "text": "sala.gavina_arxiu.expedient_iri.vet1"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.expedient_iri.vet2"
+              "text": "sala.gavina_arxiu.expedient_iri.vet2"
             }
           ],
           "effects": [
@@ -95,7 +95,7 @@
       ]
     },
     "arxivador": {
-      "name": "sala.oris_arxiu.arxivador.nom",
+      "name": "sala.gavina_arxiu.arxivador.nom",
       "interactions": [
         {
           "verb": [
@@ -110,11 +110,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_arxiu.arxivador.carta1"
+              "text": "sala.gavina_arxiu.arxivador.carta1"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.arxivador.carta2"
+              "text": "sala.gavina_arxiu.arxivador.carta2"
             }
           ],
           "effects": [
@@ -135,7 +135,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_arxiu.arxivador.ja"
+              "text": "sala.gavina_arxiu.arxivador.ja"
             }
           ]
         },
@@ -147,7 +147,7 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_arxiu.arxivador.mira_salvada"
+              "text": "sala.gavina_arxiu.arxivador.mira_salvada"
             }
           ]
         },
@@ -161,11 +161,11 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_arxiu.arxivador.mira_condemnada"
+              "text": "sala.gavina_arxiu.arxivador.mira_condemnada"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.arxivador.mira_vet"
+              "text": "sala.gavina_arxiu.arxivador.mira_vet"
             }
           ]
         },
@@ -174,14 +174,14 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_arxiu.arxivador.look"
+              "text": "sala.gavina_arxiu.arxivador.look"
             }
           ]
         }
       ]
     },
     "planols": {
-      "name": "sala.oris_arxiu.planols.nom",
+      "name": "sala.gavina_arxiu.planols.nom",
       "interactions": [
         {
           "verb": [
@@ -192,20 +192,20 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_arxiu.planols.text"
+              "text": "sala.gavina_arxiu.planols.text"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.planols.vet1"
+              "text": "sala.gavina_arxiu.planols.vet1"
             },
             {
               "who": "player",
-              "text": "sala.oris_arxiu.planols.vet2"
+              "text": "sala.gavina_arxiu.planols.vet2"
             }
           ],
           "effects": [
             {
-              "setFlag": "vet_sap_oris"
+              "setFlag": "vet_sap_gavina"
             }
           ]
         }

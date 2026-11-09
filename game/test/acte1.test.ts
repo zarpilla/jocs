@@ -119,7 +119,7 @@ describe('Ferro-9 · Acte 1', () => {
 
     // ── Canvi automàtic a la Vet ──
     expect(p.active).toBe('vet');
-    expect(p.room).toBe('oris_cella');
+    expect(p.room).toBe('gavina_cella');
     expect(texts(accident)).toContain('tres dies');
 
     // ── Vet: el cop de puny (sincronia per accident) ──
@@ -200,13 +200,13 @@ describe('Ferro-9 · Acte 1', () => {
     // ── Vet: surt de la cel·la ──
     expect(p.active).toBe('vet');
     const sortida = p.use('imant_ferro9', 'porta');
-    expect(p.room).toBe('oris_passadis');
+    expect(p.room).toBe('gavina_passadis');
     expect(texts(sortida)).toContain("FI DE L'ACTE 1");
     // La porta queda oberta: es pot tornar a la cel·la i sortir sense imant.
     p.do('open', 'porta_cella');
-    expect(p.room).toBe('oris_cella');
+    expect(p.room).toBe('gavina_cella');
     expect(texts(p.do('open', 'porta'))).not.toContain("FI DE L'ACTE 1");
-    expect(p.room).toBe('oris_passadis');
+    expect(p.room).toBe('gavina_passadis');
     expect(n.state.quests.acte1!.status).toBe('completed');
     expect(n.getVar('sospita_sic')).toBe(1);
     // Cinc enviaments a mà i les quatre notes del muntatge.
@@ -263,7 +263,7 @@ describe('Ferro-9 · Acte 1', () => {
 
   it('el panell de la Vet es veu diferent a cada pas (decorats)', () => {
     const s = start();
-    const decor = () => Object.fromEntries(s.n.hotspotsIn('oris_cella').filter((h) => h.id.startsWith('panell_')).map((h) => [h.id, h.visible]));
+    const decor = () => Object.fromEntries(s.n.hotspotsIn('gavina_cella').filter((h) => h.id.startsWith('panell_')).map((h) => [h.id, h.visible]));
     expect(decor()).toEqual({ panell_afluixat: false, panell_obert: false, panell_reparat: false });
     s.n.apply({ setFlag: 'panell_vet_trencat' });
     expect(decor()).toEqual({ panell_afluixat: true, panell_obert: false, panell_reparat: false });

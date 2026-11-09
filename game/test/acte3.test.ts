@@ -19,8 +19,8 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(n.state.quests.acte3!.status).toBe('active');
 
     // ── Vet: la Directora, a la cel·la ──
-    expect(p.room).toBe('oris_cella');
-    expect(n.isHotspotVisible('oris_cella', 'directora')).toBe(true);
+    expect(p.room).toBe('gavina_cella');
+    expect(n.isHotspotVisible('gavina_cella', 'directora')).toBe(true);
     expect(texts(p.do('push', 'panell'))).toContain('Ara és meu');
     expect(texts(p.talk('directora', 'que_vol', 'iri'))).toContain('besavi');
 
@@ -37,7 +37,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     p.switchTo('vet');
     p.do('open', 'porta');
     p.do('open', 'porta_memoria');
-    expect(p.room).toBe('oris_memoria');
+    expect(p.room).toBe('gavina_memoria');
     expect(texts(p.do('look', 'foto'))).toContain('desapareguda');
     expect(texts(p.do('look', 'vitrina'))).toContain('Lot 1');
     expect(texts(p.do('look', 'mapa'))).toContain('Conducte de servei');
@@ -49,7 +49,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     // ── Vet: el conducte comença a la seva cel·la, però la reixa és soldada pel rovell ──
     p.do('open', 'porta_passadis');
     p.do('open', 'porta_cella');
-    expect(p.room).toBe('oris_cella');
+    expect(p.room).toBe('gavina_cella');
     expect(texts(p.use('llapis_ulls', item('fullet_memoria')))).toContain('on, exactament');
     expect(texts(p.do('look', 'reixa'))).toContain('Comença aquí');
     expect(texts(p.do('open', 'reixa'))).toContain('Soldada');
@@ -92,16 +92,16 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     // ── Vet: reajust. La porta és tancada, però la reixa s'obre i el conducte porta a l'hangar ──
     expect(texts(p.switchTo('vet'))).toContain('reajust');
     expect(texts(p.do('open', 'porta'))).toContain('MARE');
-    expect(p.room).toBe('oris_cella');
+    expect(p.room).toBe('gavina_cella');
     expect(texts(p.do('open', 'reixa'))).toContain('pilar 7');
     expect(n.flag('reixa_oberta')).toBe(true);
     p.do('open', 'reixa');
-    expect(p.room).toBe('oris_hangar');
+    expect(p.room).toBe('gavina_hangar');
     expect(texts(p.do('open', 'porta_passadis'))).toBeDefined();
     expect(texts(p.do('open', 'porta_cella'))).toContain('conducte');
     p.do('open', 'porta_hangar');
     p.do('open', 'sortida_conducte');
-    expect(p.room).toBe('oris_cella');
+    expect(p.room).toBe('gavina_cella');
 
     // ── Iri: un tub de ferro-9 (el Cargol no demana formularis als fugitius) i la llibreta a dins ──
     p.switchTo('iri');
@@ -121,7 +121,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(p.active).toBe('vet');
     expect(texts(p.switchTo('vet'))).toBeDefined();
     expect(texts(p.do('open', 'reixa'))).toContain('Atureu-la');
-    expect(p.room).toBe('oris_hangar');
+    expect(p.room).toBe('gavina_hangar');
     expect(texts(p.do('push', 'llancadora'))).toContain('Sense el tub');
     expect(texts(p.use('tub_amb_llibreta', 'llancadora'))).toContain('proves');
     expect(p.inventory()).toContain('llibreta_torn');

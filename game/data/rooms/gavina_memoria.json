@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/room.schema.json",
-  "name": "sala.oris_memoria.nom",
+  "name": "sala.gavina_memoria.nom",
   "protagonist": "vet",
   "onEnter": [
     {
@@ -10,18 +10,18 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.oris_memoria.intro1"
+          "text": "sala.gavina_memoria.intro1"
         },
         {
           "who": "player",
-          "text": "sala.oris_memoria.intro2"
+          "text": "sala.gavina_memoria.intro2"
         }
       ]
     }
   ],
   "hotspots": {
     "porta_passadis": {
-      "name": "sala.oris_memoria.porta.nom",
+      "name": "sala.gavina_memoria.porta.nom",
       "interactions": [
         {
           "verb": [
@@ -29,12 +29,12 @@
             "use",
             "walkTo"
           ],
-          "goTo": "oris_passadis"
+          "goTo": "gavina_passadis"
         }
       ]
     },
     "holograma": {
-      "name": "sala.oris_memoria.holograma.nom",
+      "name": "sala.gavina_memoria.holograma.nom",
       "interactions": [
         {
           "verb": [
@@ -45,15 +45,15 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.holograma.parla1"
+              "text": "sala.gavina_memoria.holograma.parla1"
             },
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.holograma.parla2"
+              "text": "sala.gavina_memoria.holograma.parla2"
             },
             {
               "who": "player",
-              "text": "sala.oris_memoria.holograma.parla3"
+              "text": "sala.gavina_memoria.holograma.parla3"
             }
           ]
         },
@@ -62,14 +62,14 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_memoria.holograma.look"
+              "text": "sala.gavina_memoria.holograma.look"
             }
           ]
         }
       ]
     },
     "foto": {
-      "name": "sala.oris_memoria.foto.nom",
+      "name": "sala.gavina_memoria.foto.nom",
       "interactions": [
         {
           "verb": "look",
@@ -79,19 +79,19 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.foto.text"
+              "text": "sala.gavina_memoria.foto.text"
             },
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.foto.mira"
+              "text": "sala.gavina_memoria.foto.mira"
             },
             {
               "who": "player",
-              "text": "sala.oris_memoria.foto.vet1"
+              "text": "sala.gavina_memoria.foto.vet1"
             },
             {
               "who": "player",
-              "text": "sala.oris_memoria.foto.vet2"
+              "text": "sala.gavina_memoria.foto.vet2"
             }
           ],
           "effects": [
@@ -105,15 +105,15 @@
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.foto.text"
+              "text": "sala.gavina_memoria.foto.text"
             },
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.foto.forat"
+              "text": "sala.gavina_memoria.foto.forat"
             },
             {
               "who": "player",
-              "text": "sala.oris_memoria.foto.vet1"
+              "text": "sala.gavina_memoria.foto.vet1"
             }
           ],
           "effects": [
@@ -125,18 +125,18 @@
       ]
     },
     "vitrina": {
-      "name": "sala.oris_memoria.vitrina.nom",
+      "name": "sala.gavina_memoria.vitrina.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.vitrina.text"
+              "text": "sala.gavina_memoria.vitrina.text"
             },
             {
               "who": "player",
-              "text": "sala.oris_memoria.vitrina.vet"
+              "text": "sala.gavina_memoria.vitrina.vet"
             }
           ]
         },
@@ -149,29 +149,29 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_memoria.vitrina.tocar"
+              "text": "sala.gavina_memoria.vitrina.tocar"
             }
           ]
         }
       ]
     },
     "mapa": {
-      "name": "sala.oris_memoria.mapa.nom",
+      "name": "sala.gavina_memoria.mapa.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "narrator",
-              "text": "sala.oris_memoria.mapa.text"
+              "text": "sala.gavina_memoria.mapa.text"
             },
             {
               "who": "player",
-              "text": "sala.oris_memoria.mapa.vet1"
+              "text": "sala.gavina_memoria.mapa.vet1"
             },
             {
               "who": "player",
-              "text": "sala.oris_memoria.mapa.vet2"
+              "text": "sala.gavina_memoria.mapa.vet2"
             }
           ],
           "effects": [
@@ -183,7 +183,7 @@
       ]
     },
     "fullets": {
-      "name": "sala.oris_memoria.fullets.nom",
+      "name": "sala.gavina_memoria.fullets.nom",
       "interactions": [
         {
           "verb": "pickUp",
@@ -195,7 +195,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_memoria.fullets.agafar"
+              "text": "sala.gavina_memoria.fullets.agafar"
             }
           ],
           "effects": [
@@ -212,7 +212,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_memoria.fullets.prou"
+              "text": "sala.gavina_memoria.fullets.prou"
             }
           ]
         },
@@ -221,7 +221,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_memoria.fullets.look"
+              "text": "sala.gavina_memoria.fullets.look"
             }
           ]
         }

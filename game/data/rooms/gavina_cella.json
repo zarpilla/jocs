@@ -1,10 +1,10 @@
 {
   "$schema": "../../schemas/room.schema.json",
-  "name": "sala.oris_cella.nom",
+  "name": "sala.gavina_cella.nom",
   "protagonist": "vet",
   "hotspots": {
     "panell": {
-      "name": "sala.oris_cella.panell.nom",
+      "name": "sala.gavina_cella.panell.nom",
       "interactions": [
         {
           "verb": "use",
@@ -25,19 +25,19 @@
           "lines": [
             {
               "who": "directora",
-              "text": "sala.oris_cella.panell.mapa1"
+              "text": "sala.gavina_cella.panell.mapa1"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.mapa2"
+              "text": "sala.gavina_cella.panell.mapa2"
             },
             {
               "who": "directora",
-              "text": "sala.oris_cella.panell.mapa3"
+              "text": "sala.gavina_cella.panell.mapa3"
             },
             {
               "who": "directora",
-              "text": "sala.oris_cella.panell.mapa4"
+              "text": "sala.gavina_cella.panell.mapa4"
             }
           ],
           "effects": [
@@ -76,7 +76,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.no_vibra"
+              "text": "sala.gavina_cella.panell.no_vibra"
             }
           ]
         },
@@ -103,7 +103,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.no_vibra"
+              "text": "sala.gavina_cella.panell.no_vibra"
             }
           ]
         },
@@ -123,7 +123,7 @@
           "lines": [
             {
               "who": "directora",
-              "text": "sala.oris_cella.panell.pacte_res"
+              "text": "sala.gavina_cella.panell.pacte_res"
             }
           ]
         },
@@ -148,7 +148,7 @@
           "lines": [
             {
               "who": "directora",
-              "text": "sala.oris_cella.panell.pacte_res"
+              "text": "sala.gavina_cella.panell.pacte_res"
             }
           ]
         },
@@ -161,7 +161,7 @@
           "lines": [
             {
               "who": "directora",
-              "text": "sala.oris_cella.panell.directora"
+              "text": "sala.gavina_cella.panell.directora"
             }
           ]
         },
@@ -179,7 +179,7 @@
           "lines": [
             {
               "who": "directora",
-              "text": "sala.oris_cella.panell.directora"
+              "text": "sala.gavina_cella.panell.directora"
             }
           ]
         },
@@ -201,7 +201,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.vibra",
+              "text": "sala.gavina_cella.panell.vibra",
               "sound": "vibracio"
             }
           ]
@@ -227,16 +227,16 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.cop1"
+              "text": "sala.gavina_cella.panell.cop1"
             },
             {
               "who": "narrator",
-              "text": "sala.oris_cella.panell.cop2",
+              "text": "sala.gavina_cella.panell.cop2",
               "sound": "cop"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.cop3"
+              "text": "sala.gavina_cella.panell.cop3"
             }
           ],
           "effects": [
@@ -260,7 +260,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.paret_guanya"
+              "text": "sala.gavina_cella.panell.paret_guanya"
             }
           ]
         },
@@ -281,12 +281,12 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.obrir1",
+              "text": "sala.gavina_cella.panell.obrir1",
               "sound": "eina"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.obrir2"
+              "text": "sala.gavina_cella.panell.obrir2"
             }
           ],
           "effects": [
@@ -312,11 +312,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.reparar1"
+              "text": "sala.gavina_cella.panell.reparar1"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.reparar2",
+              "text": "sala.gavina_cella.panell.reparar2",
               "sound": "consola"
             }
           ],
@@ -345,7 +345,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.trencat"
+              "text": "sala.gavina_cella.panell.trencat"
             }
           ]
         },
@@ -365,7 +365,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.sense_palanca"
+              "text": "sala.gavina_cella.panell.sense_palanca"
             }
           ]
         },
@@ -381,7 +381,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.mort"
+              "text": "sala.gavina_cella.panell.mort"
             }
           ]
         },
@@ -395,7 +395,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.parpelleja"
+              "text": "sala.gavina_cella.panell.parpelleja"
             }
           ]
         },
@@ -409,7 +409,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.armat"
+              "text": "sala.gavina_cella.panell.armat"
             }
           ]
         },
@@ -418,7 +418,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.reparat"
+              "text": "sala.gavina_cella.panell.reparat"
             }
           ]
         },
@@ -432,7 +432,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.molla_no"
+              "text": "sala.gavina_cella.panell.molla_no"
             }
           ]
         },
@@ -468,11 +468,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.recuperar1"
+              "text": "sala.gavina_cella.panell.recuperar1"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.panell.recuperar2"
+              "text": "sala.gavina_cella.panell.recuperar2"
             }
           ],
           "effects": [
@@ -505,7 +505,7 @@
       ]
     },
     "altaveu": {
-      "name": "sala.oris_cella.altaveu.nom",
+      "name": "sala.gavina_cella.altaveu.nom",
       "interactions": [
         {
           "verb": "talkTo",
@@ -516,7 +516,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.altaveu.look"
+              "text": "sala.gavina_cella.altaveu.look"
             }
           ]
         },
@@ -529,7 +529,7 @@
           "lines": [
             {
               "who": "mare",
-              "text": "sala.oris_cella.altaveu.tocar1",
+              "text": "sala.gavina_cella.altaveu.tocar1",
               "sound": "altaveu"
             }
           ]
@@ -537,7 +537,7 @@
       ]
     },
     "mos": {
-      "name": "sala.oris_cella.mos.nom",
+      "name": "sala.gavina_cella.mos.nom",
       "interactions": [
         {
           "verb": [
@@ -548,23 +548,23 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.mos.carta1"
+              "text": "sala.gavina_cella.mos.carta1"
             },
             {
               "who": "mos",
-              "text": "sala.oris_cella.mos.carta2"
+              "text": "sala.gavina_cella.mos.carta2"
             },
             {
               "who": "mos",
-              "text": "sala.oris_cella.mos.carta3"
+              "text": "sala.gavina_cella.mos.carta3"
             },
             {
               "who": "mos",
-              "text": "sala.oris_cella.mos.carta4"
+              "text": "sala.gavina_cella.mos.carta4"
             },
             {
               "who": "mos",
-              "text": "sala.oris_cella.mos.carta5"
+              "text": "sala.gavina_cella.mos.carta5"
             }
           ],
           "effects": [
@@ -591,21 +591,21 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.mos.look"
+              "text": "sala.gavina_cella.mos.look"
             }
           ]
         }
       ]
     },
     "avis": {
-      "name": "sala.oris_cella.avis.nom",
+      "name": "sala.gavina_cella.avis.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.avis.look"
+              "text": "sala.gavina_cella.avis.look"
             }
           ]
         },
@@ -614,7 +614,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.avis.agafar"
+              "text": "sala.gavina_cella.avis.agafar"
             }
           ],
           "effects": [
@@ -633,7 +633,7 @@
       }
     },
     "llitera": {
-      "name": "sala.oris_cella.llitera.nom",
+      "name": "sala.gavina_cella.llitera.nom",
       "interactions": [
         {
           "verb": [
@@ -654,7 +654,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.llitera.molla",
+              "text": "sala.gavina_cella.llitera.molla",
               "sound": "ronc"
             }
           ],
@@ -676,7 +676,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.llitera.look1"
+              "text": "sala.gavina_cella.llitera.look1"
             }
           ]
         },
@@ -696,7 +696,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.llitera.look_molles"
+              "text": "sala.gavina_cella.llitera.look_molles"
             }
           ]
         },
@@ -705,7 +705,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.llitera.look2"
+              "text": "sala.gavina_cella.llitera.look2"
             }
           ]
         },
@@ -718,7 +718,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.llitera.fullet"
+              "text": "sala.gavina_cella.llitera.fullet"
             }
           ],
           "effects": [
@@ -733,14 +733,14 @@
       ]
     },
     "escarabat": {
-      "name": "sala.oris_cella.escarabat.nom",
+      "name": "sala.gavina_cella.escarabat.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.escarabat.look"
+              "text": "sala.gavina_cella.escarabat.look"
             }
           ]
         },
@@ -749,7 +749,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.escarabat.agafar"
+              "text": "sala.gavina_cella.escarabat.agafar"
             }
           ],
           "effects": [
@@ -768,14 +768,14 @@
       }
     },
     "safata": {
-      "name": "sala.oris_cella.safata.nom",
+      "name": "sala.gavina_cella.safata.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.safata.look"
+              "text": "sala.gavina_cella.safata.look"
             }
           ]
         },
@@ -784,7 +784,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.safata.agafar"
+              "text": "sala.gavina_cella.safata.agafar"
             }
           ],
           "effects": [
@@ -803,7 +803,7 @@
       }
     },
     "porta": {
-      "name": "sala.oris_cella.porta.nom",
+      "name": "sala.gavina_cella.porta.nom",
       "interactions": [
         {
           "verb": [
@@ -819,7 +819,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.porta.tancada_mare"
+              "text": "sala.gavina_cella.porta.tancada_mare"
             }
           ]
         },
@@ -832,7 +832,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.porta.tancada_mare"
+              "text": "sala.gavina_cella.porta.tancada_mare"
             }
           ]
         },
@@ -847,7 +847,7 @@
           "if": {
             "flag": "porta_cella_oberta"
           },
-          "goTo": "oris_passadis"
+          "goTo": "gavina_passadis"
         },
         {
           "verb": "look",
@@ -857,7 +857,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.porta.oberta"
+              "text": "sala.gavina_cella.porta.oberta"
             }
           ]
         },
@@ -867,11 +867,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.porta.imant1"
+              "text": "sala.gavina_cella.porta.imant1"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.porta.imant2",
+              "text": "sala.gavina_cella.porta.imant2",
               "sound": "clac"
             }
           ],
@@ -883,14 +883,14 @@
               "setFlag": "porta_cella_oberta"
             }
           ],
-          "goTo": "oris_passadis"
+          "goTo": "gavina_passadis"
         },
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.porta.look"
+              "text": "sala.gavina_cella.porta.look"
             }
           ],
           "effects": [
@@ -909,7 +909,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.porta.tancada"
+              "text": "sala.gavina_cella.porta.tancada"
             }
           ],
           "effects": [
@@ -921,25 +921,25 @@
       ]
     },
     "finestreta": {
-      "name": "sala.oris_cella.finestreta.nom",
+      "name": "sala.gavina_cella.finestreta.nom",
       "interactions": [
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.finestreta.look1"
+              "text": "sala.gavina_cella.finestreta.look1"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.finestreta.look2"
+              "text": "sala.gavina_cella.finestreta.look2"
             }
           ]
         }
       ]
     },
     "directora": {
-      "name": "sala.oris_cella.directora.nom",
+      "name": "sala.gavina_cella.directora.nom",
       "interactions": [
         {
           "verb": "talkTo",
@@ -950,7 +950,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.directora.look"
+              "text": "sala.gavina_cella.directora.look"
             }
           ]
         }
@@ -960,7 +960,7 @@
       }
     },
     "reixa": {
-      "name": "sala.oris_cella.reixa.nom",
+      "name": "sala.gavina_cella.reixa.nom",
       "interactions": [
         {
           "verb": [
@@ -984,16 +984,16 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.obrir1",
+              "text": "sala.gavina_cella.reixa.obrir1",
               "sound": "clac"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.obrir2"
+              "text": "sala.gavina_cella.reixa.obrir2"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.obrir3"
+              "text": "sala.gavina_cella.reixa.obrir3"
             }
           ],
           "effects": [
@@ -1023,14 +1023,14 @@
           "lines": [
             {
               "who": "directora",
-              "text": "sala.oris_cella.reixa.fugir1"
+              "text": "sala.gavina_cella.reixa.fugir1"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.fugir2"
+              "text": "sala.gavina_cella.reixa.fugir2"
             }
           ],
-          "goTo": "oris_hangar"
+          "goTo": "gavina_hangar"
         },
         {
           "verb": [
@@ -1045,10 +1045,10 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.entrar"
+              "text": "sala.gavina_cella.reixa.entrar"
             }
           ],
-          "goTo": "oris_hangar"
+          "goTo": "gavina_hangar"
         },
         {
           "verb": "look",
@@ -1058,7 +1058,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.look_oberta"
+              "text": "sala.gavina_cella.reixa.look_oberta"
             }
           ]
         },
@@ -1070,7 +1070,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.look_llimada"
+              "text": "sala.gavina_cella.reixa.look_llimada"
             }
           ]
         },
@@ -1082,11 +1082,11 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.look_conducte1"
+              "text": "sala.gavina_cella.reixa.look_conducte1"
             },
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.look_conducte2"
+              "text": "sala.gavina_cella.reixa.look_conducte2"
             }
           ],
           "effects": [
@@ -1104,7 +1104,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.clau",
+              "text": "sala.gavina_cella.reixa.clau",
               "sound": "eina"
             }
           ],
@@ -1128,7 +1128,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.soldada"
+              "text": "sala.gavina_cella.reixa.soldada"
             }
           ],
           "effects": [
@@ -1143,7 +1143,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.clau",
+              "text": "sala.gavina_cella.reixa.clau",
               "sound": "eina"
             }
           ]
@@ -1153,7 +1153,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.look"
+              "text": "sala.gavina_cella.reixa.look"
             }
           ]
         },
@@ -1168,7 +1168,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.oris_cella.reixa.soldada"
+              "text": "sala.gavina_cella.reixa.soldada"
             }
           ]
         }
@@ -1240,15 +1240,15 @@
       "lines": [
         {
           "who": "directora",
-          "text": "sala.oris_cella.tub1"
+          "text": "sala.gavina_cella.tub1"
         },
         {
           "who": "player",
-          "text": "sala.oris_cella.tub2"
+          "text": "sala.gavina_cella.tub2"
         },
         {
           "who": "directora",
-          "text": "sala.oris_cella.tub3"
+          "text": "sala.gavina_cella.tub3"
         }
       ]
     },
@@ -1270,11 +1270,11 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.oris_cella.reixa.reajust1"
+          "text": "sala.gavina_cella.reixa.reajust1"
         },
         {
           "who": "player",
-          "text": "sala.oris_cella.reixa.reajust2"
+          "text": "sala.gavina_cella.reixa.reajust2"
         }
       ],
       "effects": [
@@ -1290,20 +1290,20 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.oris_cella.intro1"
+          "text": "sala.gavina_cella.intro1"
         },
         {
           "who": "mare",
-          "text": "sala.oris_cella.intro2",
+          "text": "sala.gavina_cella.intro2",
           "sound": "altaveu"
         },
         {
           "who": "player",
-          "text": "sala.oris_cella.intro3"
+          "text": "sala.gavina_cella.intro3"
         },
         {
           "who": "player",
-          "text": "sala.oris_cella.intro4",
+          "text": "sala.gavina_cella.intro4",
           "sound": "vibracio"
         }
       ]

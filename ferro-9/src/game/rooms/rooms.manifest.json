@@ -14,32 +14,32 @@
       "definition": "fabrica_magatzem/fabrica_magatzem.room.json"
     },
     {
-      "id": "oris_cella",
-      "definition": "oris_cella/oris_cella.room.json"
+      "id": "gavina_cella",
+      "definition": "gavina_cella/gavina_cella.room.json"
     },
     {
-      "id": "oris_passadis",
-      "definition": "oris_passadis/oris_passadis.room.json"
+      "id": "gavina_passadis",
+      "definition": "gavina_passadis/gavina_passadis.room.json"
     },
     {
       "id": "fabrica_moll",
       "definition": "fabrica_moll/fabrica_moll.room.json"
     },
     {
-      "id": "oris_hangar",
-      "definition": "oris_hangar/oris_hangar.room.json"
+      "id": "gavina_hangar",
+      "definition": "gavina_hangar/gavina_hangar.room.json"
     },
     {
       "id": "fabrica_despatx",
       "definition": "fabrica_despatx/fabrica_despatx.room.json"
     },
     {
-      "id": "oris_arxiu",
-      "definition": "oris_arxiu/oris_arxiu.room.json"
+      "id": "gavina_arxiu",
+      "definition": "gavina_arxiu/gavina_arxiu.room.json"
     },
     {
-      "id": "oris_memoria",
-      "definition": "oris_memoria/oris_memoria.room.json"
+      "id": "gavina_memoria",
+      "definition": "gavina_memoria/gavina_memoria.room.json"
     }
   ]
 }

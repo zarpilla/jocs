@@ -1,5 +1,5 @@
 {
-  "id": "oris_cella",
+  "id": "gavina_cella",
   "name": "Cel·la 9",
   "size": {
     "width": 480,
@@ -81,43 +81,10 @@
       "defaultVerb": "open"
     },
     {
-      "id": "reixa",
-      "active": true,
-      "description": "reixa",
-      "zIndex": 1,
-      "points": [
-        {
-          "x": 81,
-          "y": 111
-        },
-        {
-          "x": 139,
-          "y": 111
-        },
-        {
-          "x": 139,
-          "y": 150
-        },
-        {
-          "x": 81,
-          "y": 150
-        }
-      ],
-      "walkToPoint": {
-        "x": 109,
-        "y": 175
-      },
-      "lookAtPoint": {
-        "x": 111,
-        "y": 150
-      },
-      "defaultVerb": "open"
-    },
-    {
       "id": "panell",
       "active": true,
       "description": "panell rovellat",
-      "zIndex": 2,
+      "zIndex": 1,
       "points": [
         {
           "x": 239,
@@ -149,7 +116,7 @@
       "id": "altaveu",
       "active": true,
       "description": "altaveu de la MARE",
-      "zIndex": 3,
+      "zIndex": 2,
       "points": [
         {
           "x": 158,
@@ -181,7 +148,7 @@
       "id": "llitera",
       "active": true,
       "description": "llitera",
-      "zIndex": 4,
+      "zIndex": 3,
       "points": [
         {
           "x": 368,
@@ -213,7 +180,7 @@
       "id": "finestreta",
       "active": true,
       "description": "finestreta",
-      "zIndex": 5,
+      "zIndex": 4,
       "points": [
         {
           "x": 308,
@@ -240,6 +207,39 @@
         "x": 337,
         "y": 79
       }
+    },
+    {
+      "id": "reixa",
+      "active": true,
+      "description": "reixa",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 81,
+          "y": 111
+        },
+        {
+          "x": 139,
+          "y": 111
+        },
+        {
+          "x": 139,
+          "y": 150
+        },
+        {
+          "x": 81,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 109,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 111,
+        "y": 150
+      },
+      "defaultVerb": "open"
     }
   ],
   "points": [],
@@ -381,7 +381,7 @@
       "animations": {
         "panell_afluixat": {}
       },
-      "zIndex": 4,
+      "zIndex": 2,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -392,7 +392,7 @@
       "animations": {
         "panell_obert": {}
       },
-      "zIndex": 4,
+      "zIndex": 2,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -403,7 +403,7 @@
       "animations": {
         "panell_reparat": {}
       },
-      "zIndex": 4,
+      "zIndex": 2,
       "visible": false,
       "alpha": 1,
       "clickable": false
@@ -442,16 +442,6 @@
       "zIndex": 9
     },
     {
-      "instanceId": "directora-1",
-      "definition": "directora/directora.character.json",
-      "x": 292,
-      "y": 188,
-      "initialFacing": "D",
-      "initialAnimation": "Idle",
-      "visible": true,
-      "zIndex": 9
-    },
-    {
       "instanceId": "mare-veu",
       "definition": "mare/mare.character.json",
       "x": 177,
@@ -461,6 +451,16 @@
       "visible": false,
       "clickable": false,
       "zIndex": 1
+    },
+    {
+      "instanceId": "directora-1",
+      "definition": "directora/directora.character.json",
+      "x": 292,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }

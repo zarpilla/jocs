@@ -1,6 +1,6 @@
 {
-  "id": "oris_arxiu",
-  "name": "Arxiu",
+  "id": "gavina_memoria",
+  "name": "Sala de la Memòria",
   "size": {
     "width": 480,
     "height": 270
@@ -40,21 +40,21 @@
   },
   "hotspots": [
     {
-      "id": "escala_hangar",
+      "id": "porta_passadis",
       "active": true,
-      "description": "moll de l'hangar",
+      "description": "passadís",
       "zIndex": 0,
       "points": [
         {
           "x": 8,
-          "y": 38
+          "y": 46
         },
         {
-          "x": 68,
-          "y": 38
+          "x": 65,
+          "y": 46
         },
         {
-          "x": 68,
+          "x": 65,
           "y": 155
         },
         {
@@ -67,105 +67,169 @@
         "y": 183
       },
       "lookAtPoint": {
-        "x": 38,
+        "x": 37,
         "y": 156
       },
       "defaultVerb": "open"
     },
     {
-      "id": "expedient_iri",
+      "id": "holograma",
       "active": true,
-      "description": "expedients",
+      "description": "holograma del Director",
       "zIndex": 1,
       "points": [
         {
-          "x": 229,
-          "y": 106
+          "x": 278,
+          "y": 35
         },
         {
-          "x": 322,
-          "y": 106
+          "x": 335,
+          "y": 35
         },
         {
-          "x": 322,
-          "y": 131
+          "x": 335,
+          "y": 155
         },
         {
-          "x": 229,
-          "y": 131
+          "x": 278,
+          "y": 155
         }
       ],
       "walkToPoint": {
-        "x": 273,
-        "y": 177
+        "x": 307,
+        "y": 186
       },
       "lookAtPoint": {
-        "x": 276,
-        "y": 131
+        "x": 307,
+        "y": 156
       }
     },
     {
-      "id": "arxivador",
+      "id": "foto",
       "active": true,
-      "description": "arxivador",
+      "description": "foto del torn de nit",
       "zIndex": 2,
       "points": [
         {
-          "x": 79,
-          "y": 38
+          "x": 90,
+          "y": 35
         },
         {
-          "x": 204,
-          "y": 38
+          "x": 169,
+          "y": 35
         },
         {
-          "x": 204,
+          "x": 169,
+          "y": 101
+        },
+        {
+          "x": 90,
+          "y": 101
+        }
+      ],
+      "walkToPoint": {
+        "x": 130,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 130,
+        "y": 101
+      }
+    },
+    {
+      "id": "vitrina",
+      "active": true,
+      "description": "vitrina",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 354,
+          "y": 87
+        },
+        {
+          "x": 409,
+          "y": 87
+        },
+        {
+          "x": 409,
           "y": 153
         },
         {
-          "x": 79,
+          "x": 354,
           "y": 153
         }
       ],
       "walkToPoint": {
-        "x": 142,
-        "y": 175
+        "x": 382,
+        "y": 180
       },
       "lookAtPoint": {
-        "x": 142,
+        "x": 382,
         "y": 153
       }
     },
     {
-      "id": "planols",
+      "id": "mapa",
       "active": true,
-      "description": "plànols",
-      "zIndex": 3,
+      "description": "mapa de La Gavina",
+      "zIndex": 4,
       "points": [
         {
-          "x": 351,
-          "y": 81
+          "x": 174,
+          "y": 29
         },
         {
-          "x": 466,
-          "y": 81
+          "x": 264,
+          "y": 29
         },
         {
-          "x": 466,
-          "y": 136
+          "x": 264,
+          "y": 101
         },
         {
-          "x": 351,
-          "y": 136
+          "x": 174,
+          "y": 101
         }
       ],
       "walkToPoint": {
-        "x": 404,
-        "y": 177
+        "x": 220,
+        "y": 175
       },
       "lookAtPoint": {
-        "x": 409,
-        "y": 137
+        "x": 220,
+        "y": 101
+      }
+    },
+    {
+      "id": "fullets",
+      "active": true,
+      "description": "fullets",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 425,
+          "y": 100
+        },
+        {
+          "x": 466,
+          "y": 100
+        },
+        {
+          "x": 466,
+          "y": 153
+        },
+        {
+          "x": 425,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 439,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 446,
+        "y": 153
       }
     }
   ],

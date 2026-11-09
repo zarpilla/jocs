@@ -1,6 +1,6 @@
 {
   "frames": {
-    "oris_cella 0.aseprite": {
+    "gavina_hangar 0.aseprite": {
       "frame": {
         "x": 0,
         "y": 0,
@@ -21,7 +21,7 @@
       },
       "duration": 100
     },
-    "oris_cella 1.aseprite": {
+    "gavina_hangar 1.aseprite": {
       "frame": {
         "x": 480,
         "y": 0,
@@ -42,7 +42,7 @@
       },
       "duration": 100
     },
-    "oris_cella 2.aseprite": {
+    "gavina_hangar 2.aseprite": {
       "frame": {
         "x": 960,
         "y": 0,
@@ -63,7 +63,7 @@
       },
       "duration": 100
     },
-    "oris_cella 3.aseprite": {
+    "gavina_hangar 3.aseprite": {
       "frame": {
         "x": 1440,
         "y": 0,
@@ -84,7 +84,7 @@
       },
       "duration": 100
     },
-    "oris_cella 4.aseprite": {
+    "gavina_hangar 4.aseprite": {
       "frame": {
         "x": 1920,
         "y": 0,
@@ -105,7 +105,7 @@
       },
       "duration": 100
     },
-    "oris_cella 5.aseprite": {
+    "gavina_hangar 5.aseprite": {
       "frame": {
         "x": 2400,
         "y": 0,
@@ -126,30 +126,9 @@
       },
       "duration": 100
     },
-    "oris_cella 6.aseprite": {
+    "gavina_hangar 6.aseprite": {
       "frame": {
         "x": 2880,
-        "y": 0,
-        "w": 480,
-        "h": 270
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
-      },
-      "sourceSize": {
-        "w": 480,
-        "h": 270
-      },
-      "duration": 100
-    },
-    "oris_cella 7.aseprite": {
-      "frame": {
-        "x": 3360,
         "y": 0,
         "w": 480,
         "h": 270
@@ -172,10 +151,10 @@
   "meta": {
     "app": "https://www.aseprite.org/",
     "version": "provisional (draw_placeholders.py)",
-    "image": "oris_cella.png",
+    "image": "gavina_hangar.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
+      "w": 3360,
       "h": 270
     },
     "scale": "1",
@@ -188,51 +167,44 @@
         "color": "#000000ff"
       },
       {
-        "name": "avis",
+        "name": "llancadora",
         "from": 1,
         "to": 1,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "escarabat",
+        "name": "porta_llancadora",
         "from": 2,
         "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "safata",
+        "name": "aigua",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "panell_afluixat",
+        "name": "caixa_flotant",
         "from": 4,
         "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "panell_obert",
+        "name": "pany",
         "from": 5,
         "to": 5,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "panell_reparat",
+        "name": "marca_pilar",
         "from": 6,
         "to": 6,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "reixa_oberta",
-        "from": 7,
-        "to": 7,
         "direction": "forward",
         "color": "#000000ff"
       }
