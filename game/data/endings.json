@@ -10,7 +10,8 @@
     "scene": [
       {
         "who": "narrator",
-        "text": "final.fugida.1"
+        "text": "final.fugida.1",
+        "room": "final_llancadora"
       },
       {
         "who": "narrator",
@@ -22,7 +23,8 @@
       },
       {
         "who": "narrator",
-        "text": "final.fugida.4"
+        "text": "final.fugida.4",
+        "room": "final_museu"
       },
       {
         "who": "narrator",
@@ -49,7 +51,8 @@
           "flag": "carta_mos_lliurada"
         }
       }
-    ]
+    ],
+    "textRoom": "final_anell"
   },
   "veritat": {
     "title": "final.veritat.titol",
@@ -71,11 +74,13 @@
     "scene": [
       {
         "who": "narrator",
-        "text": "final.oris.1"
+        "text": "final.oris.1",
+        "room": "final_llancadora"
       },
       {
         "who": "narrator",
-        "text": "final.oris.2"
+        "text": "final.oris.2",
+        "room": "final_estacio"
       },
       {
         "who": "narrator",
@@ -118,11 +123,13 @@
     "scene": [
       {
         "who": "narrator",
-        "text": "final.oris.1"
+        "text": "final.oris.1",
+        "room": "final_llancadora"
       },
       {
         "who": "narrator",
-        "text": "final.oris.2"
+        "text": "final.oris.2",
+        "room": "final_estacio"
       },
       {
         "who": "narrator",
@@ -142,7 +149,8 @@
       },
       {
         "who": "narrator",
-        "text": "final.correspondencia.1"
+        "text": "final.correspondencia.1",
+        "room": "final_cargol"
       },
       {
         "who": "narrator",
@@ -156,6 +164,7 @@
         "who": "narrator",
         "text": "final.correspondencia.4"
       }
-    ]
+    ],
+    "textRoom": "final_nota"
   }
 }

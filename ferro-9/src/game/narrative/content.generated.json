@@ -5337,6 +5337,48 @@
           }
         }
       },
+      "final_anell": {
+        "name": "sala.final_anell.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "final_cargol": {
+        "name": "sala.final_cargol.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "final_estacio": {
+        "name": "sala.final_estacio.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "final_llancadora": {
+        "name": "sala.final_llancadora.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
+      "final_museu": {
+        "name": "sala.final_museu.nom",
+        "cutscene": {},
+        "hotspots": {},
+        "decor": {
+          "foto_mira": {
+            "visibleIf": {
+              "flag": "mira_salvada"
+            }
+          },
+          "conserge_cargol": {
+            "visibleIf": {
+              "flag": "cargol_memoria"
+            }
+          }
+        }
+      },
+      "final_nota": {
+        "name": "sala.final_nota.nom",
+        "cutscene": {},
+        "hotspots": {}
+      },
       "gavina_arxiu": {
         "name": "sala.gavina_arxiu.nom",
         "protagonist": "vet",
@@ -13602,7 +13644,8 @@
         "scene": [
           {
             "who": "narrator",
-            "text": "final.fugida.1"
+            "text": "final.fugida.1",
+            "room": "final_llancadora"
           },
           {
             "who": "narrator",
@@ -13614,7 +13657,8 @@
           },
           {
             "who": "narrator",
-            "text": "final.fugida.4"
+            "text": "final.fugida.4",
+            "room": "final_museu"
           },
           {
             "who": "narrator",
@@ -13641,7 +13685,8 @@
               "flag": "carta_mos_lliurada"
             }
           }
-        ]
+        ],
+        "textRoom": "final_anell"
       },
       "veritat": {
         "title": "final.veritat.titol",
@@ -13663,11 +13708,13 @@
         "scene": [
           {
             "who": "narrator",
-            "text": "final.oris.1"
+            "text": "final.oris.1",
+            "room": "final_llancadora"
           },
           {
             "who": "narrator",
-            "text": "final.oris.2"
+            "text": "final.oris.2",
+            "room": "final_estacio"
           },
           {
             "who": "narrator",
@@ -13710,11 +13757,13 @@
         "scene": [
           {
             "who": "narrator",
-            "text": "final.oris.1"
+            "text": "final.oris.1",
+            "room": "final_llancadora"
           },
           {
             "who": "narrator",
-            "text": "final.oris.2"
+            "text": "final.oris.2",
+            "room": "final_estacio"
           },
           {
             "who": "narrator",
@@ -13734,7 +13783,8 @@
           },
           {
             "who": "narrator",
-            "text": "final.correspondencia.1"
+            "text": "final.correspondencia.1",
+            "room": "final_cargol"
           },
           {
             "who": "narrator",
@@ -13748,7 +13798,8 @@
             "who": "narrator",
             "text": "final.correspondencia.4"
           }
-        ]
+        ],
+        "textRoom": "final_nota"
       }
     },
     "dialogues": {
@@ -17115,7 +17166,13 @@
       "proleg.fabrica2": "De les restes d'aquesta fàbrica, un dia, en construiran La Gavina.",
       "proleg.cambra1": "Una nit qualsevol. Al fons de la sala de calderes, una cambra que ningú no fa servir.",
       "proleg.cambra2": "I salta una alarma que no havia sonat mai.",
-      "sala.portada.nom": "Ferro-9"
+      "sala.portada.nom": "Ferro-9",
+      "sala.final_llancadora.nom": "La llançadora",
+      "sala.final_museu.nom": "El museu",
+      "sala.final_anell.nom": "L'Anell de Baix",
+      "sala.final_estacio.nom": "L'Estació d'Orís",
+      "sala.final_cargol.nom": "El Cargol",
+      "sala.final_nota.nom": "La nota"
     }
   },
   "locale": "ca",

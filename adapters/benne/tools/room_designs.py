@@ -1456,6 +1456,15 @@ PROLEG_CAMBRA = _proleg(proleg_cambra_bg, 'iri')
 
 
 
+# ─── Finals: pantalles de cinemàtica (l'art és a hd/rooms/final_*.py) ───────
+
+def final_bg(c):
+    c.rect(0, 0, W, H, (0, 0, 0))
+
+
+FINALS = {f'final_{nom}': _proleg(final_bg, 'vet') for nom in ('llancadora', 'museu', 'anell', 'estacio', 'cargol', 'nota')}
+
+
 # ─── Portada: la fàbrica i La Gavina, partides en diagonal, i el títol ──────
 
 # Lletres de 5×7 per al títol (1 = píxel ple).
@@ -1525,4 +1534,5 @@ DESIGNS = {
     'proleg_fabrica': PROLEG_FABRICA,
     'proleg_cambra': PROLEG_CAMBRA,
     'portada': PORTADA,
+    **FINALS,
 }

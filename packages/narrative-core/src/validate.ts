@@ -271,7 +271,10 @@ export function validateContent(
       if (!speakers.has(l.who)) err(`endings.${eid}.scene[${k}]`, `Qui parla? "${l.who}" no és cap personatge.`);
       text(`endings.${eid}.scene[${k}]`, l.text);
       cond(`endings.${eid}.scene[${k}].if`, l.if);
+      if (l.room && !rooms[l.room]) err(`endings.${eid}.scene[${k}].room`, `Sala desconeguda "${l.room}".`);
+      else if (l.room && !rooms[l.room]!.cutscene) err(`endings.${eid}.scene[${k}].room`, `"${l.room}" ha de ser una cinemàtica (\`cutscene\`).`);
     });
+    if (e.textRoom && !rooms[e.textRoom]?.cutscene) err(`endings.${eid}.textRoom`, `"${e.textRoom}" ha de ser una cinemàtica (\`cutscene\`).`);
     cond(`endings.${eid}.when`, e.when);
   }
 

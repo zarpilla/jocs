@@ -287,6 +287,15 @@ export interface HintDef {
 
 // ─── Finals ──────────────────────────────────────────────────────────────────
 
+/** Una línia de l'escena d'un final. */
+export interface EndingLineDef extends DialogueLineDef {
+  /**
+   * Sala de fons (una `cutscene` sense `onEnter`) des d'aquesta línia: com al pròleg, el text surt
+   * damunt la imatge. Sense cap `room`, el final es llegeix sobre negre.
+   */
+  room?: Id;
+}
+
 export interface EndingDef {
   title: TextKey;
   text: TextKey;
@@ -294,7 +303,9 @@ export interface EndingDef {
    * Escena entre el títol i el text final: línies (de narrador, títols o personatges) amb `if`
    * opcional, per explicar què passa després segons el que s'ha fet. No hi ha efectes.
    */
-  scene?: DialogueLineDef[];
+  scene?: EndingLineDef[];
+  /** Sala de fons per a `text` (si no, la de l'última línia de l'escena que en tingui). */
+  textRoom?: Id;
   /** Per triar-ne un automàticament amb `resolveEnding()`. */
   when?: Condition;
   priority?: number;

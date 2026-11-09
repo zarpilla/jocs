@@ -86,9 +86,11 @@ export interface HintView {
 export interface EndingView {
   id: Id;
   title: string;
-  /** L'escena, ja filtrada per les condicions de cada línia. */
-  scene: ResolvedLine[];
+  /** L'escena, ja filtrada per les condicions de cada línia. `room`: sala de fons des d'aquesta línia. */
+  scene: (ResolvedLine & { room?: Id })[];
   text: string;
+  /** Sala de fons per al text final, si en canvia. */
+  textRoom?: Id;
 }
 
 /**
@@ -334,8 +336,8 @@ export class Narrative {
     if (!def) throw new Error(`Final desconegut: ${id}`);
     const scene = (def.scene ?? [])
       .filter((line) => this.check(line.if))
-      .map((line) => ({ who: line.who, key: line.text, text: this.t(line.text) }));
-    return { id, title: this.t(def.title), scene, text: this.t(def.text) };
+      .map((line) => ({ who: line.who, key: line.text, text: this.t(line.text), ...(line.room ? { room: line.room } : {}) }));
+    return { id, title: this.t(def.title), scene, text: this.t(def.text), ...(def.textRoom ? { textRoom: def.textRoom } : {}) };
   }
 
   // ─── Sales, coses i interaccions ──────────────────────────────────────────

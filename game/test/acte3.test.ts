@@ -207,6 +207,9 @@ describe('Ferro-9 · Acte 3 · Els finals', () => {
     const final = n.ending('correspondencia');
     expect(texts(final.scene)).toContain('CARGOL');
     expect(texts(final.scene)).toContain('Tinc la sensació que et conec');
+    // Les imatges de fons, com al pròleg: la llançadora, l'estació, el Cargol i, per acabar, la nota.
+    expect(final.scene.map((l) => l.room).filter(Boolean)).toEqual(['final_llancadora', 'final_estacio', 'final_cargol']);
+    expect(final.textRoom).toBe('final_nota');
   });
 
   it("amb la Mira salvada però sense la memòria del Cargol, el final 2; la placa sense nom no li diu res", () => {

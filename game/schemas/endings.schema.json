@@ -13,9 +13,13 @@
         "scene": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/DialogueLineDef"
+            "$ref": "#/definitions/EndingLineDef"
           },
           "description": "Escena entre el títol i el text final: línies (de narrador, títols o personatges) amb `if` opcional, per explicar què passa després segons el que s'ha fet. No hi ha efectes."
+        },
+        "textRoom": {
+          "$ref": "#/definitions/Id",
+          "description": "Sala de fons per a `text` (si no, la de l'última línia de l'escena que en tingui)."
         },
         "when": {
           "$ref": "#/definitions/Condition",
@@ -35,7 +39,7 @@
       "type": "string",
       "description": "Clau d'un text a `game/locales/<idioma>/*.json`, p. ex. `\"dlg.pescador.hola\"`."
     },
-    "DialogueLineDef": {
+    "EndingLineDef": {
       "type": "object",
       "properties": {
         "who": {
@@ -56,13 +60,18 @@
         "sound": {
           "$ref": "#/definitions/SoundId",
           "description": "So que fa en dir la línia: un fitxer de `game/audio/sfx/` sense extensió. Pot dur variables entre claus, que es posen en acabar la interacció: `\"molla_{molla_tensio}\"` → `molla_3`."
+        },
+        "room": {
+          "$ref": "#/definitions/Id",
+          "description": "Sala de fons (una `cutscene` sense `onEnter`) des d'aquesta línia: com al pròleg, el text surt damunt la imatge. Sense cap `room`, el final es llegeix sobre negre."
         }
       },
+      "additionalProperties": false,
       "required": [
-        "who",
-        "text"
+        "text",
+        "who"
       ],
-      "additionalProperties": false
+      "description": "Una línia de l'escena d'un final."
     },
     "SpeakerId": {
       "anyOf": [

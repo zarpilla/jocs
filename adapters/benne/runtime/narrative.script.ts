@@ -121,6 +121,12 @@ let entrada: { room: string; result: InteractionResult | null } | null = null
 
 /** El botó «Comença» de la portada: el pròleg, si n'hi ha, o la sala de la primera protagonista. */
 export function startFromCover() {
+  // Per provar els finals (només en desenvolupament): `?final=fugida` a l'adreça.
+  const provar = import.meta.env.DEV ? new URLSearchParams(location.search).get('final') : null
+  if (provar && narrative.content.endings[provar]) {
+    playEnding(provar)
+    return
+  }
   const manifest = narrative.content.manifest
   const first = manifest.protagonists[0]!
   const desti = manifest.intro ?? manifest.start?.[first]?.room
@@ -148,6 +154,10 @@ export function enterNarrativeRoom() {
     result = narrative.enterRoom(room)
   }
   entrada = null
+  if (finale[0]?.room === room) {
+    playFinaleRoom()
+    return
+  }
   if (!result) return
   const cutscene = narrative.content.rooms[room]?.cutscene
   if (!cutscene) {
@@ -213,18 +223,70 @@ export function switchProtagonist() {
   goToProtagonist(next)
 }
 
+/** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
+function displayEndingLine(line: { who: string; text: string }) {
+  if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') display(line.text)
+  else display(`${narrative.characterName(line.who)}: ${line.text}`)
+}
+
+/**
+ * Un final amb imatges (`room` a les línies de l'escena): les línies que van damunt de cada sala.
+ * Es reprodueixen en entrar-hi (`enterNarrativeRoom`), com el pròleg, i després es passa a la següent.
+ */
+let finale: { room: string; lines: { who: string; text: string }[] }[] = []
+
 /** Mostra el final que toca (o el que li diguis). */
 export function playEnding(id?: string) {
   const endingId = id ?? narrative.resolveEnding()
   if (!endingId) return
   const ending = narrative.ending(endingId)
+  // Trossos de l'escena: el que va sobre negre (abans de la primera sala) i el que va damunt de cada sala.
+  const negre: { who: string; text: string }[] = []
+  const trossos: typeof finale = []
+  for (const line of ending.scene) {
+    const actual = trossos[trossos.length - 1]
+    if (line.room && line.room !== actual?.room) trossos.push({ room: line.room, lines: [line] })
+    else (actual ? actual.lines : negre).push(line)
+  }
+  const tancament = { who: 'narrator', text: ending.text }
+  const ultim = trossos[trossos.length - 1]
+  if (ending.textRoom && ending.textRoom !== ultim?.room) trossos.push({ room: ending.textRoom, lines: [tancament] })
+  else (ultim ? ultim.lines : negre).push(tancament)
+
   fadeOut(1.5)
   display(ending.title)
-  // Els personatges ja no són a la sala: el que diuen surt amb el nom al davant.
-  for (const line of ending.scene) {
-    if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') display(line.text)
-    else display(`${narrative.characterName(line.who)}: ${line.text}`)
+  for (const line of negre) displayEndingLine(line)
+  const primer = trossos[0]
+  const sala = primer ? benneRoom(primer.room) : undefined
+  if (!sala) {
+    display(narrative.t('ui.fi'))
+    return
   }
-  display(ending.text)
+  finale = trossos
+  sala.goTo()
+}
+
+/** En entrar a una sala d'un final: les seves línies, i després la sala següent o el «Fi». */
+function playFinaleRoom() {
+  const tros = finale.shift()!
+  let saltat = false
+  for (const line of tros.lines) {
+    displayEndingLine(line)
+    // Amb Esc, `wait` acaba a l'instant: llavors anem directament al «Fi».
+    const inici = Date.now()
+    wait(0.1)
+    if (Date.now() - inici < 50) {
+      saltat = true
+      break
+    }
+  }
+  const seguent = saltat ? undefined : finale[0]
+  const sala = seguent ? benneRoom(seguent.room) : undefined
+  if (sala) {
+    sala.goTo()
+    return
+  }
+  finale = []
+  fadeOut(1.5)
   display(narrative.t('ui.fi'))
 }

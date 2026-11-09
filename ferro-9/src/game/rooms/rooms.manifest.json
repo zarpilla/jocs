@@ -60,6 +60,30 @@
     {
       "id": "portada",
       "definition": "portada/portada.room.json"
+    },
+    {
+      "id": "final_anell",
+      "definition": "final_anell/final_anell.room.json"
+    },
+    {
+      "id": "final_cargol",
+      "definition": "final_cargol/final_cargol.room.json"
+    },
+    {
+      "id": "final_estacio",
+      "definition": "final_estacio/final_estacio.room.json"
+    },
+    {
+      "id": "final_llancadora",
+      "definition": "final_llancadora/final_llancadora.room.json"
+    },
+    {
+      "id": "final_museu",
+      "definition": "final_museu/final_museu.room.json"
+    },
+    {
+      "id": "final_nota",
+      "definition": "final_nota/final_nota.room.json"
     }
   ]
 }
