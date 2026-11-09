@@ -51,6 +51,20 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
     }
   ],
   "characters": []

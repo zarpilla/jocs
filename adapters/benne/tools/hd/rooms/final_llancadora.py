@@ -29,6 +29,9 @@ _l = math.sqrt(sum(c * c for c in SUN))
 SUN = tuple(c / _l for c in SUN)
 
 NX, NY, ANG = 404, 57, -0.13        # morro de la llançadora i inclinació (puja cap a la dreta)
+NY0 = NY
+TAU = 2 * math.pi
+_T = 0.0                            # temps del bucle d'animació (0..1); t=0 és el fons quiet
 LEN, RAD = 150, 19
 GVX, GVY = 54, 44                   # La Gavina, lluny
 
@@ -106,7 +109,11 @@ def terra_nit(cv):
                 dens = max(0.0, blob - 0.52) * 3.2 * coast
                 c = hr(x, y, 5)
                 if c < dens * 0.55:
-                    cv.flat(x, y, (255, 220, 140) if c < dens * 0.14 else (214, 132, 60) if c < dens * 0.35 else (130, 74, 46))
+                    col = (255, 220, 140) if c < dens * 0.14 else (214, 132, 60) if c < dens * 0.35 else (130, 74, 46)
+                    if _T and hr(x, y, 8) < 0.35:              # llumetes que titil·len
+                        m = 1 + int(hr(x, y, 9) * 3)
+                        col = mix(col, (12, 12, 16), 0.65 * math.sin(math.pi * m * _T) ** 2)
+                    cv.flat(x, y, col)
                     if c < dens * 0.04:
                         cv.glow(x, y, 4, (255, 170, 80), 0.3)
             elif day < 0.12 and rmp is CLOUD and N_CITY.fbm(lon * 2.2, lat * 4.4, 3) > 0.6 and hr(x, y, 9) < 0.25:
@@ -125,7 +132,7 @@ def sol(cv):
     sx, sy = SX, limb_y(SX) - 1
     cv.glow(sx, sy, 150, (255, 130, 60), 0.18)
     cv.glow(sx, sy, 90, (255, 150, 70), 0.35)
-    cv.glow(sx, sy, 40, (255, 200, 120), 0.6)
+    cv.glow(sx, sy, 40, (255, 200, 120), 0.6 + 0.12 * math.sin(TAU * _T))
     cv.glow(sx, sy, 14, (255, 250, 230), 1.0)
     # esclat horitzontal (seguint la tangent de la vora) i raigs curts
     tx = 1.0
@@ -139,8 +146,9 @@ def sol(cv):
             blend(cv, x, y, (255, 236, 200), a * 1.3)
         if a > 0.4:
             blend(cv, x, y - 1, (255, 200, 140), a * 0.5)
-    for k in range(1, 34):
-        a = (1 - k / 34) ** 2
+    rl = 34 + 6 * math.sin(TAU * 2 * _T)                    # el centelleig: els raigs s'allarguen i s'escurcen
+    for k in range(1, int(rl) + 1):
+        a = (1 - k / rl) ** 2
         for dx, dy in ((0, -k), (k * 0.6, -k * 0.6), (-k * 0.6, -k * 0.6)):
             blend(cv, sx + dx, sy + dy, (255, 240, 210), a * 0.9)
             if k < 14:
@@ -192,18 +200,20 @@ def flama(cv):
             t = (u - L0) / FL
             if t < 0 or t > 1:
                 continue
-            half = 8.0 * (1 - t) ** 0.7 + 1.2 * math.sin(t * 9) * (1 - t)
+            half = (8.0 * (1 - t) ** 0.7 + 1.2 * math.sin(t * 9 - TAU * 2 * _T) * (1 - t)) \
+                * (1 + 0.08 * math.sin(TAU * 3 * _T))      # respira
             if abs(v) > half + 3:
                 continue
             core = max(0.0, 1 - abs(v) / max(half, 0.5))
             lvl = core * 6.2 * (1 - t) ** 0.8 + (1 - t) * 1.6
-            lvl += 0.9 * max(0.0, math.cos(t * 30)) * (1 - t) * core          # diamants
+            lvl += 0.9 * max(0.0, math.cos(t * 30 - TAU * 4 * _T)) * (1 - t) * core   # diamants, que corren
+            lvl += (0.4 * math.sin(TAU * 5 * _T) + 0.25 * (math.cos(TAU * 3 * _T) - 1)) * core * (1 - t)   # parpelleig
             if abs(v) > half:
                 lvl = (1 - (abs(v) - half) / 3) * 1.4 * (1 - t)
             if lvl > 0.4 + B4[y & 3][x & 3] * 0.6:
                 cv.put(x, y, FLAME, lvl, 0)
     cx, cy = _to_screen(L0 + 4, 0)
-    cv.glow(cx, cy, 46, (80, 150, 255), 0.45)
+    cv.glow(cx, cy, 46, (80, 150, 255), 0.45 + 0.07 * math.sin(TAU * 3 * _T))
     cv.glow(cx, cy, 16, (200, 236, 255), 0.7)
 
 
@@ -391,8 +401,24 @@ def llancadora(dst):
     dst.glow(round(fx), round(fy) - 1, 6, (255, 70, 60), 0.6)
 
 
-def bg(cv):
+def titil(cv):
+    """Estrelles que titil·len: s'apaguen una mica, cadascuna al seu ritme (a t=0, totes enceses)."""
+    if not _T:
+        return
+    for y in range(H):
+        for x in range(W):
+            p = cv.P[x, y]
+            if p[0] + p[1] + p[2] > 420 and hr(x, y, 21) < 0.6:
+                m = 1 + int(hr(x, y, 22) * 3)
+                cv.flat(x, y, mix(p, (20, 18, 40), 0.75 * math.sin(math.pi * m * _T) ** 2))
+
+
+def bg(cv, t=0.0):
+    global _T, NY
+    _T = t % 1.0
+    NY = NY0 + round(math.sin(TAU * _T) * 1.2)      # la nau balanceja un píxel
     espai(cv, seed=21)
+    titil(cv)
     terra_nit(cv)
     sol(cv)
     gavina(cv, GVX, GVY, 0.26)
@@ -403,3 +429,24 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+def _ambient_frames(n=16):
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    bg(Canvas(light=LIGHT))                         # deixa l'estat del mòdul com el del fons quiet
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 110}}

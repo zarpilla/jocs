@@ -10,7 +10,7 @@ paret, terra o sostre toca i a quina distància, i la boirina hi barreja l'or de
 import math
 import random
 
-from hd.pix import (Light, B4, W, H, hr, mix, ramp, STEEL, PANEL, RUST, TEAL, WARN, GRAY, SIL, IRON,
+from hd.pix import (Canvas, Light, B4, W, H, hr, mix, ramp, STEEL, PANEL, RUST, TEAL, WARN, GRAY, SIL, IRON,
                     PAPER, WALNUT, RED, SUIT, SKIN)
 from hd.characters import person, VET
 
@@ -39,6 +39,8 @@ HC = 19.0                       # alçada del sostre
 CURV = 1 / (2 * 300.0)          # curvatura de l'anell: el terra puja z²/(2R)
 HAZE_Z = 95.0                   # distància característica de la boirina
 STOREY = 3.0                    # alçada d'un pis
+TAU = 2 * math.pi
+_T = 0.0                        # temps del bucle d'animació (0..1); t=0 és el fons quiet
 
 
 def _houses(seed):
@@ -176,7 +178,7 @@ WRENCHES = [(-1, 11.4, 6.25, 0.95, 0.0, (246, 206, 90)), (1, 10.6, 5.9, 0.8, 3.1
             (-1, 40.0, 5.0, 1.4, 0.0, (246, 206, 90))]
 
 
-def mat_fan(du, dv, r, z):
+def mat_fan(du, dv, r, z, spin=1):
     """Ventilador d'un filtre d'aire, girant (les pales, mogudes)."""
     d = math.hypot(du, dv)
     if d > r + 0.32 or max(abs(du), abs(dv)) > r + 0.3:
@@ -193,15 +195,15 @@ def mat_fan(du, dv, r, z):
     if (d % 0.3) < 0.035 * max(1.0, z / 9):
         return STEEL, 3.2                               # la reixa
     a = math.atan2(dv, du)
-    ph = (a * 3 / (2 * math.pi) + d * 0.5) % 1
+    ph = (a * 3 / (2 * math.pi) + d * 0.5 + spin * 2 * _T) % 1     # dues pales per bucle
     blade = max(0.0, 1 - ph / 0.55)                     # pala nítida al davant, estela de moviment darrere
     return IRON, 1.0 + blade ** 1.5 * 3.2 + (0.4 if ph < 0.05 else 0)
 
 
 def mat_wall(side, z, y):
-    for sd, zc, yc, r in FANS:
+    for i, (sd, zc, yc, r) in enumerate(FANS):
         if sd == side and abs(z - zc) < r + 0.4 and abs(y - yc) < r + 0.4:
-            m = mat_fan(z - zc, y - yc, r, z)
+            m = mat_fan(z - zc, y - yc, r, z, spin=1 if i % 2 else -1)
             if m:
                 return m
     paint = None
@@ -270,7 +272,7 @@ def mat_wall(side, z, y):
         d = math.hypot(u - fu, v - fv)
         if abs(u - fu) < 0.38 and abs(v - fv) < 0.38:
             if d < 0.27:
-                return IRON, 1.6 + (1.4 if d < 0.06 else 0) + (0.8 if (math.atan2(v - fv, u - fu) * 3 / math.pi) % 1 < 0.4 else 0)
+                return IRON, 1.6 + (1.4 if d < 0.06 else 0) + (0.8 if (math.atan2(v - fv, u - fu) * 3 / math.pi + 2 * _T) % 1 < 0.4 else 0)
             return GRAY, 3.2 - (v - fv) * 1.5
     return rmp, lvl
 
@@ -368,7 +370,7 @@ CLOTH = [ROSE, MINT, PAPER, OCHRE, BLUE, PAPER, WARN, ROSE, BLUE]
 
 def garment(kind, w, h, rmp, seed):
     def f(u, v):
-        fold = 0.35 * math.sin(u * 22 + seed) + (hr(seed, int(u * 30)) - 0.5) * 0.2
+        fold = 0.35 * math.sin(u * 22 + seed - TAU * 2 * _T) + (hr(seed, int(u * 30)) - 0.5) * 0.2
         base = 4.4 - v / h * 1.4 + fold
         if kind == 'shirt':
             body = abs(u - w / 2) < w * 0.3 and v < h
@@ -387,7 +389,7 @@ def garment(kind, w, h, rmp, seed):
                 return rmp, base
             return None
         # llençol: la vora de baix fa ones
-        if v < h - 0.06 * (1 + math.sin(u * 9 + seed)):
+        if v < h - 0.06 * (1 + math.sin(u * 9 + seed - TAU * _T)):
             return rmp, base + (0.5 if v < 0.05 else 0) - (0.5 if u < 0.04 or w - u < 0.04 else 0)
         return None
     return f
@@ -436,6 +438,9 @@ def garlanda(cv, zbuf, z, h, sag, seed):
         x = -WD + 2 * WD * i / n
         px, py = proj(x, cable_y(x, h, sag) - 0.12, z)
         col = rnd.choice([(255, 214, 120), (255, 170, 90), (255, 236, 180), (250, 130, 90)])
+        if _T:                                           # parpellegen, cadascuna al seu ritme
+            m = 1 + int(hr(seed, i, 3) * 3)
+            col = mix(col, (110, 60, 40), 0.7 * math.sin(math.pi * (m * _T)) ** 2 * (hr(seed, i, 4) < 0.6))
         wput(cv, zbuf, px, py, z, col)
         if z < 30:
             wput(cv, zbuf, px, py + 1, z, mix(col, (120, 60, 40), 0.4))
@@ -482,7 +487,7 @@ def pancarta(cv, zbuf):
             return None
         px = int(ax + u * s)
         py = int(vv * s - (bh * s - 5 * k) / 2)
-        lvl = 4.2 - vv * 0.8 + 0.3 * math.sin(u * 3.1) - (0.8 if u < 0.06 or bw - u < 0.06 else 0)
+        lvl = 4.2 - vv * 0.8 + 0.3 * math.sin(u * 3.1 - TAU * _T) - (0.8 if u < 0.06 or bw - u < 0.06 else 0)
         if vv < 0.08:
             return PAPER, lvl + 0.6
         if (px, py) in rows:
@@ -668,7 +673,9 @@ def resplendor(cv, zbuf):
     cv.glow(CX, 0, 30, (255, 240, 200), 0.6)
 
 
-def bg(cv):
+def bg(cv, t=0.0):
+    global _T
+    _T = t % 1.0
     zbuf = scene(cv)
     resplendor(cv, zbuf)
     carrer(cv, zbuf)
@@ -680,3 +687,24 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+def _ambient_frames(n=16):
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    bg(Canvas(light=LIGHT))                         # deixa l'estat del mòdul com el del fons quiet
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 110}}

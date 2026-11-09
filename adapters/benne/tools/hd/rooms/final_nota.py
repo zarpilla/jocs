@@ -7,7 +7,7 @@ Llums: el camp violeta de la cambra (gairebé l'única) i la nota, que fa una ll
 """
 import math
 
-from hd.pix import (Light, B4, W, H, hr, ramp, mix, GOLD, COPPER, RUST, BRICK, IRON, PAPER, STEEL, WARN, MANILA)
+from hd.pix import (Canvas, Light, B4, W, H, hr, ramp, mix, GOLD, COPPER, RUST, BRICK, IRON, PAPER, STEEL, WARN, MANILA)
 from hd.rooms.fabrica_cambra import FE9, FIELD, rivet
 from hd.rooms.gavina_passadis import text, text_w
 
@@ -114,20 +114,24 @@ def tallies(cv, x0, y0, rows, per_row, seed=0):
 
 # ─── La cambra ──────────────────────────────────────────────────────────────
 
-def chamber(cv):
+def chamber(cv, t=0.0):
+    TAU = 2 * math.pi
     # ─── interior: el camp ───────────────────────────────────────────────
     for y in range(GY0, GY1 + 1):
         for x in range(GX0, GX1 + 1):
             d = math.hypot((x - CX) / 1.2, (y - CY) * 0.75) / 110
             lvl = 4.6 - d * 3.6
-            for gx in ((COILS[0] + COILS[1]) / 2, (COILS[1] + COILS[2]) / 2):
-                w = gx + math.sin(y / 7.0 + gx) * 4.0 + math.sin(y / 2.3 + gx * 2) * 1.0
+            for j, gx in enumerate(((COILS[0] + COILS[1]) / 2, (COILS[1] + COILS[2]) / 2)):
+                sg = 1 if j == 0 else -1                                 # els dos fils corren en sentits contraris
+                w = (gx + math.sin(y / 7.0 + gx + sg * TAU * t) * 4.0
+                     + math.sin(y / 2.3 + gx * 2 - sg * TAU * 3 * t) * 1.0)
                 if abs(x - w) < 1.0 and GY0 + 14 < y < GY1 - 18:
-                    lvl += 2.4
+                    # el fil crepita: polsos de llum que hi corren amunt i avall
+                    lvl += 2.4 + 0.9 * max(0.0, math.sin(y / 11.0 - sg * TAU * 2 * t + j)) ** 3
                 elif abs(x - w) < 5:
                     lvl += 0.8 * (1 - abs(x - w) / 5)
             # arcs fins de les vores de les bobines cap a fora
-            lvl += 0.4 * (math.sin(x / 9.0 + y / 13.0) * math.sin(y / 7.0 - x / 17.0))
+            lvl += 0.4 * (math.sin(x / 9.0 + y / 13.0 + TAU * t) * math.sin(y / 7.0 - x / 17.0 - TAU * 2 * t))
             cv.put(x, y, FIELD, lvl, 0)
 
     # anells de llautó que aguanten les bobines
@@ -172,12 +176,13 @@ def chamber(cv):
                 cv.hline(cx - 13, cx + 13, y, IRON, 4.6 - (y - 110) * 2, 0.4)
     # el camp, lluïssor entre les bobines
     for gx in ((COILS[0] + COILS[1]) / 2, (COILS[1] + COILS[2]) / 2):
-        cv.glow(gx, 120, 34, (200, 170, 255), 0.5)
+        cv.glow(gx, 120, 34, (200, 170, 255), 0.5 + 0.1 * math.sin(TAU * (2 * t + gx / 40)))
     cv.glow(CX, CY, 120, (150, 110, 240), 0.35)
 
     # ─── la nota, plegada en tenda damunt la base, davant la bobina del mig ─
     nx, ny = NOTE
-    cv.glow(nx, ny - 8, 60, (255, 236, 214), 0.5)
+    pulse = math.sin(TAU * t)                                        # la nota fa llum, polsant a poc a poc
+    cv.glow(nx, ny - 8, 60, (255, 236, 214), 0.5 + 0.12 * pulse)
     cv.darken(nx - 24, ny + 3, nx + 26, ny + 8, lambda x, y: 0.0 if x < nx - 20 else 0.8 - (y - ny - 3) / 6, dither=True)
     back = [(nx - 19, ny - 16), (nx + 20, ny - 20), (nx + 25, ny - 1), (nx - 14, ny + 3)]
     cv.poly(back, PAPERW, 2.4, 0.2)
@@ -216,24 +221,28 @@ def chamber(cv):
                         mix(INK, (200, 190, 200), 0.45))
     write('-I.', nx + 8, ny + 1)
     # halo i guspires al voltant de la nota
-    cv.glow(nx, ny - 8, 28, (255, 250, 236), 0.3)
+    cv.glow(nx, ny - 8, 28, (255, 250, 236), 0.3 + 0.1 * pulse)
     for i in range(22):
         a = hr(i, 1) * math.pi * 2
         r = 16 + hr(i, 2) * 40
         x, y = round(nx + math.cos(a) * r * 1.3), round(ny - 12 + math.sin(a) * r * 0.6)
-        if GX0 < x < GX1 and GY0 < y < GY1:
-            cv.flat(x, y, mix(cv.P[x, y], (255, 244, 255), 0.8))
+        tw = 0.5 + 0.5 * math.sin(TAU * ((1 + i % 3) * t + hr(i, 4)))   # parpellegen
+        if GX0 < x < GX1 and GY0 < y < GY1 and tw > 0.15:
+            cv.flat(x, y, mix(cv.P[x, y], (255, 244, 255), 0.8 * tw))
             if hr(i, 3) > 0.6:
                 for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
-                    cv.flat(x + dx, y + dy, mix(cv.P[x + dx, y + dy], (255, 236, 255), 0.35))
+                    cv.flat(x + dx, y + dy, mix(cv.P[x + dx, y + dy], (255, 236, 255), 0.35 * tw))
     # partícules del camp que pugen
     for i in range(60):
-        x = GX0 + 4 + int(hr(i, 11) * (GX1 - GX0 - 8))
-        y = GY0 + 4 + int(hr(i, 12) * (GY1 - GY0 - 8))
-        c = cv.P[x, y]
-        cv.flat(x, y, mix(c, (230, 214, 255), 0.6))
+        f = (t * (1 + int(hr(i, 14) * 2)) + hr(i, 15)) % 1                # cada una puja un tros i s'esvaeix
+        x = GX0 + 4 + int(hr(i, 11) * (GX1 - GX0 - 8)) + round(math.sin(TAU * f + i) * 1.5)
+        y = GY0 + 4 + int(hr(i, 12) * (GY1 - GY0 - 8)) - round(f * (14 + hr(i, 16) * 16))
+        a = math.sin(math.pi * f)
+        if y < GY0 + 2 or a < 0.12:
+            continue
+        cv.flat(x, y, mix(cv.P[x, y], (230, 214, 255), 0.75 * a))
         if hr(i, 13) > 0.6:
-            cv.flat(x, y + 1, mix(cv.P[x, y + 1], (200, 180, 255), 0.35))
+            cv.flat(x, y + 1, mix(cv.P[x, y + 1], (200, 180, 255), 0.4 * a))
 
     # ─── el vidre: tint fred, reflexos en diagonal, cantell gruixut ─────
     cv.tint(GX0, GY0, GX1, GY1, (180, 200, 240), 0.05)
@@ -342,12 +351,12 @@ def chamber(cv):
     text(cv, 240 - tw // 2, 223, t, STEEL, 1.0, 0)
 
 
-def bg(cv):
+def bg(cv, t=0.0):
     walls(cv)
     # ratlles dels dies a la paret de la dreta, i unes quantes a l'esquerra (cent vint anys no caben)
     tallies(cv, 384, 98, 12, 7, seed=1)
     tallies(cv, 6, 84, 14, 7, seed=2)
-    chamber(cv)
+    chamber(cv, t)
 
     # ─── la llum de fase sobre el que hi ha al voltant ───────────────────
     cv.tint(0, 0, W - 1, H - 1, (130, 90, 220),
@@ -366,3 +375,28 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+# ─── Animació de fons ──────────────────────────────────────────────────────
+# El camp crepita i els dos fils d'energia s'ondulen en sentits contraris, les partícules pugen i
+# s'esvaeixen, les guspires parpellegen i la nota fa llum polsant. Cada fotograma només té els píxels
+# que canvien respecte del fons quiet (t = 0).
+
+def _ambient_frames(n=24):
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 120}}

@@ -555,7 +555,7 @@ def flors(cv, x0, y0):
 
 # ─── Fons ──────────────────────────────────────────────────────────────────
 
-def bg(cv, mira=False, cargol=False):
+def bg(cv, mira=False, cargol=False, t=0.0):
     wall(cv)
     floor(cv)
 
@@ -621,22 +621,38 @@ def bg(cv, mira=False, cargol=False):
     vet(cv)
 
     # ─── Gradació final: calidesa de focus, i pols daurada als cons ─────────
-    for (sx, sy), (tx_, ty_) in zip(SPOTS.values(), ((130, 64), (219, 62), (310, 64), (382, 98))):
+    # (amb t, la llum dels focus respira i la pols sura; t = 0 és el fons quiet)
+    TGT = ((130, 64), (219, 62), (310, 64), (382, 98))
+    for k, ((sx, sy), (tx_, ty_)) in enumerate(zip(SPOTS.values(), TGT)):
+        breath = 1 + 0.35 * math.sin(2 * math.pi * (t * (1 + k % 2) + k * 0.27))
         for y in range(sy + 8, ty_ + 30):
-            t = (y - sy) / (ty_ + 30 - sy)
-            half = 3 + t * 30
-            mx = sx + (tx_ - sx) * t
+            u = (y - sy) / (ty_ + 30 - sy)
+            half = 3 + u * 30
+            mx = sx + (tx_ - sx) * u
             for x in range(int(mx - half), int(mx + half) + 1):
-                a = 0.10 * (1 - abs(x - mx) / half) * (1 - t * 0.7)
+                a = 0.10 * breath * (1 - abs(x - mx) / half) * (1 - u * 0.7)
                 if 0 <= x < W and a > B4[y & 3][x & 3] * 0.25:
                     cv.P[x, y] = mix(cv.P[x, y], (255, 232, 190), a) + (255,)
     for i in range(70):                                                      # motes de pols als feixos
         k = int(hr(i, 1) * 4)
-        (sx, sy), (tx_, ty_) = list(SPOTS.values())[k], ((130, 64), (219, 62), (310, 64), (382, 98))[k]
-        t = 0.15 + hr(i, 2) * 0.8
-        x = round(sx + (tx_ - sx) * t + (hr(i, 3) - 0.5) * 40 * t)
-        y = round(sy + (ty_ - sy) * t)
-        cv.P[x, y] = mix(cv.P[x, y], (255, 240, 200), 0.6) + (255,)
+        (sx, sy), (tx_, ty_) = list(SPOTS.values())[k], TGT[k]
+        u = 0.15 + hr(i, 2) * 0.8
+        ph = hr(i, 4)
+        sp = 1 + int(hr(i, 5) * 2)                                           # cicles per bucle: 1 o 2
+        x = round(sx + (tx_ - sx) * u + (hr(i, 3) - 0.5) * 40 * u + 2.5 * math.sin(2 * math.pi * (sp * t + ph)))
+        y = round(sy + (ty_ - sy) * u + 2.0 * math.sin(2 * math.pi * (t + ph * 1.7)) + 1.5 * math.cos(2 * math.pi * (sp * t + ph)))
+        a = 0.35 + 0.35 * (0.5 + 0.5 * math.sin(2 * math.pi * (2 * t + ph * 3)))  # parpelleja quan travessa la llum
+        if 0 <= x < W and 0 <= y < H:
+            cv.P[x, y] = mix(cv.P[x, y], (255, 240, 200), a) + (255,)
+    # un reflex que passa pel vidre de la vitrina (fora del vidre a t = 0)
+    g = (t * 1.0) * 2.2 - 0.6
+    if 0 < g < 1:
+        gx = 356 + g * 51
+        for y in range(90, 120):
+            for x in range(356, 408):
+                d = abs((x - gx) + (y - 105) * 0.6)
+                if d < 2.5:
+                    cv.P[x, y] = mix(cv.P[x, y], (255, 250, 236), 0.35 * (1 - d / 2.5)) + (255,)
     cv.tint(0, 0, W - 1, H - 1, (255, 196, 128), 0.07)
     # vinyeta suau per tancar el pla
     for y in range(H):
@@ -677,3 +693,38 @@ def conserge_cargol(cv):
 
 
 PROPS = {'foto_mira': foto_mira, 'conserge_cargol': conserge_cargol}
+
+
+# ─── Animació de fons ──────────────────────────────────────────────────────
+# La llum dels focus respira, la pols sura i parpelleja dins els cons i un reflex passa pel vidre de la
+# vitrina. Cada fotograma només té els píxels que canvien respecte del fons quiet (t = 0), i mai no toca
+# els píxels que pinten els props (la Mira a la foto, en Cargol), perquè es pinta per damunt.
+
+def _ambient_frames(n=16):
+    base = Canvas(light=LIGHT)
+    bg(base)
+    blocked = set()
+    for amb in ({'mira': True}, {'cargol': True}):
+        on = Canvas(light=LIGHT)
+        bg(on, **amb)
+        for y in range(H):
+            for x in range(W):
+                if on.P[x, y] != base.P[x, y]:
+                    for dx in (-1, 0, 1):
+                        for dy in (-1, 0, 1):
+                            blocked.add((x + dx, y + dy))
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y] and (x, y) not in blocked:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 110}}

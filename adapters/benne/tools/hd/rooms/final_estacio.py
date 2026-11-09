@@ -96,17 +96,24 @@ def text5_width(s, k=1):
     return text5_px(s, 0, 0, k)[1] + 1
 
 
-def bulb_sign(cv, s, x0, y0, k=3, glow=True):
-    """Lletres de bombetes (com el rètol del pròleg): cada punt de la lletra és una bombeta de k×k."""
+def bulb_sign(cv, s, x0, y0, k=3, glow=True, chase=None, band=None):
+    """Lletres de bombetes (com el rètol del pròleg): cada punt de la lletra és una bombeta de k×k.
+    `chase`: x on passa una onada de llum (les bombetes de prop s'encenen més), d'amplada `band`."""
     pts, _ = text5_px(s, x0, y0, k)
+    band = band or 4 * k
     for x, y, acc in pts:
+        boost = max(0.0, 1 - abs(x - chase) / band) if chase is not None else 0.0
         for dy in range(k):
             for dx in range(k):
                 edge = dx == k - 1 or dy == k - 1
                 c = BULB[2] if edge else (BULB[4] if (dx, dy) == (0, 0) else BULB[3])
                 if (x // k + y // k) % 2 and not edge:
                     c = mix(c, (255, 214, 140), 0.35)
+                if boost > 0:
+                    c = mix(c, (255, 255, 250) if not edge else BULB[4], min(1.0, boost * 1.3))
                 cv.flat(x + dx, y + dy, c)
+    if chase is not None and x0 - band < chase < x0 + _ + band:
+        cv.glow(chase, y0 + 7 * k // 2, band * 2.4, (255, 236, 180), 0.5)
     if glow:
         for x, y, acc in pts[::3]:
             cv.glow(x + 1, y + 1, 7, (255, 220, 150), 0.22)
@@ -155,7 +162,7 @@ def wall(cv, x0, x1, y0, y1):
             cv.put(x, y, MINT, [5.6, 4.2, 3.6, 3.4, 3.2, 3.0, 1.8][y - y1 + 6])
 
 
-def sign(cv):
+def sign(cv, t=0.0):
     """El rètol: «ESTACIÓ D'ORÍS» en bombetes sobre una biga blanca, i una gavina a cada banda."""
     k = 3
     txt = "ESTACIÓ D'ORÍS"
@@ -182,7 +189,8 @@ def sign(cv):
     pts, _ = text5_px(txt, x0, SIGN_Y, k)
     for x, y, _a in pts:
         cv.darken(x + 1, y + 2, x + k, y + k + 1, 0.35)
-    bulb_sign(cv, txt, x0, SIGN_Y, k)
+    # una onada de llum recorre les bombetes d'esquerra a dreta (a t=0 és fora del rètol)
+    bulb_sign(cv, txt, x0, SIGN_Y, k, chase=x0 - 30 + (t % 1) * (w + 60), band=14)
     # gavines (l'emblema de l'estació) a cada banda
     for gx, flip in ((x0 - 16, False), (x0 + w + 15, True)):
         gull(cv, gx - 1, SIGN_Y + 11, flip, k=2)
@@ -246,7 +254,7 @@ def window(cv):
             cv.put(mx, y, WALLW, 7.6)
 
 
-def planter(cv, x0, x1, ytop, seed=0, tall=26):
+def planter(cv, x0, x1, ytop, seed=0, tall=26, time=0.0):
     """Jardinera llarga amb plantes de fulla (sota el finestral)."""
     rnd = random.Random(seed)
     # mates de fulla rodona
@@ -268,6 +276,7 @@ def planter(cv, x0, x1, ytop, seed=0, tall=26):
         for i in range(int(hgt)):
             t = i / hgt
             x = bx + lean * i + math.sin(t * 3 + bx) * 1.2
+            x += 1.1 * t * t * (math.sin(2 * math.pi * time + bx * 0.4) - math.sin(bx * 0.4))   # es gronxen
             y = ytop - i
             wdt = 1.6 * math.sin(t * math.pi) + 0.4
             for dx in range(-int(wdt), int(wdt) + 1):
@@ -589,30 +598,32 @@ def held_crate(cv, x0, y0, w=20, h=14):
 
 # ─── La pantalla ────────────────────────────────────────────────────────────
 
-def estacio(cv, people=True):
+def estacio(cv, people=True, t=0.0):
     ceiling(cv)
     wall(cv, 0, W - 1, 17, FLOOR_Y - 1)
     window(cv)
+    twinkle(cv, t)
     door(cv)
     # el pilar 7, repintat de nou: el de la fàbrica, que ara és la columna d'honor de l'estació
     pillar(cv, PILAR_CX, 17, FLOOR_Y - 1, aged=False)
     cv.rect(PILAR_CX - 9, 128, PILAR_CX + 9, 134, GOLD, lambda x, y: 4.2 - (y - 128) * 0.3)    # placa de llautó
     for x in range(PILAR_CX - 7, PILAR_CX + 8, 2):
         cv.put(x, 131, GOLD, 1.6)
-    sign(cv)
+    sign(cv, t)
     floor_deck(cv)
     cv.darken(PILAR_CX - 16, FLOOR_Y, PILAR_CX + 16, FLOOR_Y + 5, lambda x, y: 0.7 - abs(x - PILAR_CX) / 24)
     # jardineres sota el finestral, i plantes grans
-    planter(cv, 158, 268, 175, seed=1, tall=22)
-    planter(cv, 404, 466, 175, seed=2, tall=24)
+    planter(cv, 158, 268, 175, seed=1, tall=22, time=t)
+    planter(cv, 404, 466, 175, seed=2, tall=24, time=(t * 2) % 1)
     big_plant(cv, 96, 200, seed=5, h=60)
     # cistella penjant amb una heura, a l'esquerra
-    hang_ivy(cv, 46, 22)
+    hang_ivy(cv, 46, 22, t)
     # la llançadora vella, aterrada, amb els tres components al lloc
     sx, sy = SHUTTLE
     shadow(cv, sx + 66, sy + 46, 80, 5, 0.45)
     shuttle(cv, sx, sy, aged=True)
     components(cv, sx, sy)
+    beacon(cv, sx, sy, t)
     # caixes descarregades al costat de la cua
     crate(cv, 404, 212, 30, 22, seed=1)
     crate(cv, 410, 192, 24, 20, seed=2)
@@ -628,7 +639,7 @@ def estacio(cv, people=True):
         held_crate(cv, 438, 223, 18, 13)
 
 
-def hang_ivy(cv, cx, top):
+def hang_ivy(cv, cx, top, t=0.0):
     """Una test penjat amb heura que cau."""
     cv.vline(cx - 6, top, top + 24, STEEL, 5.0)
     cv.vline(cx + 6, top, top + 24, STEEL, 5.0)
@@ -639,11 +650,76 @@ def hang_ivy(cv, cx, top):
         ln = rnd.randint(14, 44)
         for s in range(ln):
             xx = x + math.sin(s / 5 + i) * 1.5
+            xx += 1.4 * (s / 44) ** 1.5 * (math.sin(2 * math.pi * t - s / 14 + i * 0.3) - math.sin(-s / 14 + i * 0.3))
             yy = top + 28 + s
             if s % 3 == 0:
                 cv.put(xx - 1, yy, LEAF, 3.6 - s * 0.02)
                 cv.put(xx + 1, yy + 1, LEAF, 2.4)
             cv.put(xx, yy, LEAF, 2.8 + (s % 3 == 1) * 1.0)
+
+
+# ─── Animació de fons ──────────────────────────────────────────────────────
+# Tot és funció de t ∈ [0, 1) i fa bucle (t=1 ≡ t=0); a t=0 cap efecte no canvia el fons quiet.
+
+def twinkle(cv, t):
+    """Algunes estrelles del finestral parpellegen, cadascuna al seu ritme."""
+    if not t:
+        return
+    X0, Y0, X1, Y1 = WIN
+    rnd = random.Random(31)
+    for _ in range(400):
+        x, y = rnd.randint(X0 + 5, X1 - 5), rnd.randint(Y0 + 3, Y1 - 3)
+        m = rnd.randint(1, 3)
+        c = cv.get(x, y)
+        if sum(c[:3]) > 330 and sum(cv.get(x + 2, y)[:3]) < 150 and sum(cv.get(x - 2, y)[:3]) < 150:
+            k = 0.75 * abs(math.sin(math.pi * m * t))
+            cv.flat(x, y, mix(c, (20, 18, 40), k))
+
+
+def dust(cv, t):
+    """Pols que sura dins els raigs de sol: baixa a poc a poc i s'encén i s'apaga."""
+    if not t:
+        return
+    X0, Y0, X1, Y1 = WIN
+    rnd = random.Random(44)
+    for xa, xb in PANES:
+        for _ in range(9):
+            u, v = rnd.random(), rnd.random()
+            m = rnd.choice((1, 2, 3))
+            b = math.sin(math.pi * (m * t)) ** 2 * rnd.uniform(0.5, 1.0)
+            vv = (v + t) % 1                                         # baixa (una volta per bucle)
+            y = Y0 + 10 + vv * (162 - Y0 - 10)
+            tt = (y - Y0) / (FLOOR_Y + 3 - Y0)
+            x = xa + 14 + tt * 8 + u * (xb - xa - 26) + 2 * math.sin(2 * math.pi * (t + u))
+            if b > 0.15 and 0 <= x < W:
+                cv.flat(x, y, mix(cv.get(x, y), (255, 240, 200), min(1.0, b)))
+
+
+def beacon(cv, sx, sy, t):
+    """Una llumeta verda a l'aleta de la llançadora: dos cops per bucle (apagada a t=0)."""
+    on = 0.25 <= t % 0.5 < 0.30
+    if on:
+        x, y = sx + 130 - 1, sy - 24 - 15
+        cv.flat(x, y, (170, 255, 190)); cv.flat(x + 1, y, (120, 230, 160))
+        cv.glow(x + 0.5, y, 7, (130, 255, 170), 0.6)
+
+
+def _ambient_frames(n=16):
+    """Fotogrames de l'animació de fons: només els píxels que canvien respecte del fons quiet."""
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    return frames
 
 
 def grade(cv):
@@ -653,10 +729,12 @@ def grade(cv):
     cv.tint(300, 60, W - 1, H - 1, (90, 150, 255), lambda x, y: 0.10 * max(0.0, 1 - math.hypot(x - ex, y - ey - 30) / 200))
 
 
-def bg(cv):
-    estacio(cv)
+def bg(cv, t=0.0):
+    estacio(cv, t=t)
+    dust(cv, t)
     grade(cv)
     vinyeta(cv, 0.45)
 
 
 PROPS = {}
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 110}}

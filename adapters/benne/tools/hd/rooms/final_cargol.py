@@ -30,7 +30,8 @@ HAZE = (214, 222, 236)
 
 # ─── Fons (desenfocat: menys contrast, una boirina clara) ──────────────────
 
-def background(cv):
+def background(cv, t=0.0):
+    T = t                                                         # temps del bucle (t es reutilitza a sota)
     X0, Y0, X1, Y1 = WIN
     # sostre i biga del rètol
     for y in range(0, Y0):
@@ -80,8 +81,8 @@ def background(cv):
     cv.hline(0, W - 1, FLOOR_Y - 2, MINT, 3.0)
     cv.hline(0, W - 1, FLOOR_Y - 1, MINT, 1.6)
     # jardineres al peu del finestral
-    planter(cv, 6, 140, Y1 - 6, seed=4, tall=30)
-    planter(cv, 340, 476, Y1 - 6, seed=6, tall=34)
+    planter(cv, 6, 140, Y1 - 6, seed=4, tall=30, time=T)
+    planter(cv, 340, 476, Y1 - 6, seed=6, tall=34, time=(T * 2) % 1)
     # terra polit
     above = cv.img.copy().load()
     for y in range(FLOOR_Y, H):
@@ -110,14 +111,15 @@ def background(cv):
                     k = 0.42 * max(0.0, 1 - d / 60) * min(1.0, e / 4)
                     if k > B4[y & 3][x & 3] * 0.3:
                         cv.flat(x, y, mix(cv.get(x, y), (255, 228, 170), k))
-    # raigs de sol a l'aire
+    # raigs de sol a l'aire (respiren a poc a poc, cadascun al seu ritme)
     for y in range(Y0, FLOOR_Y):
-        t = (y - Y0) / (FLOOR_Y - Y0)
+        ty = (y - Y0) / (FLOOR_Y - Y0)
         for x in range(W):
-            for xa, xb in ((0, 140), (160, 320)):
-                a, b = xa + 10 + t * 30, xb - 10 + t * 20
+            for j, (xa, xb) in enumerate(((0, 140), (160, 320))):
+                a, b = xa + 10 + ty * 30, xb - 10 + ty * 20
                 if a < x < b:
-                    cv.flat(x, y, mix(cv.get(x, y), (255, 228, 170), 0.06 * (0.3 + t)))
+                    pulse = 1 + 0.6 * math.sin(2 * math.pi * (j + 1) * T)
+                    cv.flat(x, y, mix(cv.get(x, y), (255, 228, 170), 0.06 * (0.3 + ty) * pulse))
     # la directora jove, al fons a la dreta, que s'ho mira (una mica més lluny: més pàl·lida)
     img = person(DIRECTORA_JOVE, 'L')
     reflect(cv, img, 424, 238, k=0.3)
@@ -152,7 +154,7 @@ def rust_lvl(seed, k=1.0):
     return f
 
 
-def cargol_gran():
+def cargol_gran(blink=0):
     """En Cargol vell, de cara, a escala 3: el braç dret (a la dreta de la imatge) allargat amb la pinça oberta,
     l'esquerre avall amb la clau anglesa; la placa amb el nom; els ulls somrient."""
     fw, fh = 230, 200
@@ -190,6 +192,14 @@ def cargol_gran():
     # ulls que somriuen: arcs encesos
     for ex in (23.2, 30.8):
         cx, cy = ex * s, 33.4 * s
+        if blink:                                                  # parpelleig: mig tancats o una ratlla
+            for k in range(-7, 8):
+                x = cx + k / 7 * 2.3 * s
+                y = cy + (0.9 if blink == 2 else 0.2) * s - (0 if blink == 2 else math.cos(k / 7 * 1.25) * 0.6 * s)
+                fg.px(x, y, LAMPD, 3.2 - abs(k) / 7 * 0.8)
+                if blink == 1:
+                    fg.px(x, y + 1, LAMPD, 2.4 - abs(k) / 7 * 0.8)
+            continue
         for k in range(-7, 8):
             t = k / 7
             x = cx + t * 2.3 * s
@@ -348,9 +358,12 @@ def vet_hand():
 CX, CY = 2, 80                    # on va el fotograma d'en Cargol
 
 
-def bg(cv):
-    background(cv)
-    img = cargol_gran()
+def bg(cv, t=0.0):
+    background(cv, t)
+    # parpelleja un cop per bucle (fotogrames a t ≈ 0.5–0.62)
+    ph = t % 1
+    blink = 2 if 0.555 <= ph < 0.6 else (1 if 0.49 <= ph < 0.68 else 0)
+    img = cargol_gran(blink)
     # reflex al terra i ombra
     fy = CY + int(60 * S)
     from PIL import ImageOps
@@ -372,7 +385,9 @@ def bg(cv):
     cv.img.alpha_composite(img, (CX, CY))
     # la carta a la pinça (la pinça la tapa per la cantonada)
     wx, wy = CX + 57.5 * S, CY + 37.5 * S
-    letter(cv, int(wx + 15), int(wy - 11), w=34, h=24)
+    # la carta tremola una mica a la pinça (tres cops per bucle)
+    flutter = 1 if math.sin(2 * math.pi * 3 * t) > 0.8 else 0
+    letter(cv, int(wx + 15), int(wy - 11) + flutter, w=34, h=24)
     # redibuixa la punta del dit de sobre de la pinça, per davant de la carta
     Pi = img.load()
     for j in range(int(wy - CY - 3.5 * S), int(wy - CY)):
@@ -383,20 +398,51 @@ def bg(cv):
     # la llum càlida dels ulls i la de la carta
     cv.glow(CX + 27 * S, CY + 33.4 * S, 26, (255, 210, 120), 0.18)
     cv.glow(wx + 26, wy + 4, 30, (255, 236, 190), 0.25)
+    # els llums de les antenes respiren (un cop per bucle)
+    breath = math.sin(math.pi * t) ** 2
+    if breath > 0.02:
+        for ax, ay in ((17.0, 9.5), (35.9, 8.5)):
+            cv.glow(CX + ax * S, CY + ay * S, 12, (255, 214, 110), 0.45 * breath)
     # la mà de la Vet
     hand = vet_hand()
     hx, hy = int(wx + 64), int(wy - 26)
     cv.img.alpha_composite(hand, (hx, hy))
     # pols que brilla al raig de sol, al voltant de la carta
     rnd = random.Random(17)
+    mv = random.Random(18)                                       # (a part, perquè t=0 sigui el fons quiet)
     for _ in range(46):
         x, y = rnd.gauss(wx + 30, 46), rnd.gauss(wy - 10, 34)
+        ph1, ph2, m = mv.uniform(0, 6.3), mv.uniform(0, 6.3), mv.choice((1, 2, 3))
+        x += 3 * (math.sin(2 * math.pi * t + ph1) - math.sin(ph1))
+        y += 5 * (math.cos(2 * math.pi * t + ph2) - math.cos(ph2))
         if 0 <= x < W and 0 <= y < H:
             b = rnd.random()
-            cv.flat(x, y, mix(cv.get(x, y), (255, 240, 200), 0.5 + b * 0.5))
+            tw = 1 - 0.8 * math.sin(math.pi * m * t) ** 2
+            cv.flat(x, y, mix(cv.get(x, y), (255, 240, 200), (0.5 + b * 0.5) * tw))
             if b > 0.85:
                 cv.glow(x, y, 4, (255, 230, 170), 0.5)
     vinyeta(cv, 0.5)
 
 
 PROPS = {}
+
+
+def _ambient_frames(n=16):
+    """Fotogrames de l'animació de fons: només els píxels que canvien respecte del fons quiet."""
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 110}}
