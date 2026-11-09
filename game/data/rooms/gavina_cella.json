@@ -404,6 +404,14 @@
               "who": "player",
               "text": "sala.gavina_cella.panell.reparar2",
               "sound": "consola"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.reparar3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.panell.reparar4"
             }
           ],
           "effects": [
