@@ -287,16 +287,6 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
-    },
-    {
-      "instanceId": "sic-1",
-      "definition": "sic/sic.character.json",
-      "x": 409,
-      "y": 186,
-      "initialFacing": "D",
-      "initialAnimation": "Idle",
-      "visible": true,
-      "zIndex": 9
     }
   ]
 }
