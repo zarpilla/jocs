@@ -4455,7 +4455,10 @@
             "name": "sala.gavina_cella.llitera.nom",
             "interactions": [
               {
-                "verb": "pickUp",
+                "verb": [
+                  "pickUp",
+                  "pull"
+                ],
                 "if": {
                   "all": [
                     {
@@ -4492,6 +4495,26 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.llitera.look1"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "pany_sonic_sentit"
+                    },
+                    {
+                      "flag": "molla_agafada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.llitera.look_molles"
                   }
                 ]
               },
@@ -11193,6 +11216,7 @@
       "sala.gavina_hangar.llancadora.tocar1": "Toco el pany. Fa «nnnnng». Una nota llarga, neta.",
       "sala.gavina_hangar.llancadora.tocar2": "Un pany sònic: s'obre amb la mateixa nota. I jo no sé ni què és una nota.",
       "sala.gavina_cella.llitera.molla": "Arrenco una molla de la llitera. En Mos ni se n'adona: ronca.",
+      "sala.gavina_cella.llitera.look_molles": "La meva llitera. Cada cop que m'hi assec, les molles fan «nnng». Com el pany de la llançadora.",
       "sala.fabrica_moll.llima.nom": "llima",
       "sala.fabrica_moll.llima.agafar": "Una llima fina. Per afinar coses.",
       "sala.fabrica_moll.llima.look": "Una llima fina, al tauler d'eines.",

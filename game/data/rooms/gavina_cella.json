@@ -471,7 +471,10 @@
       "name": "sala.gavina_cella.llitera.nom",
       "interactions": [
         {
-          "verb": "pickUp",
+          "verb": [
+            "pickUp",
+            "pull"
+          ],
           "if": {
             "all": [
               {
@@ -508,6 +511,26 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.llitera.look1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "pany_sonic_sentit"
+              },
+              {
+                "flag": "molla_agafada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.llitera.look_molles"
             }
           ]
         },
