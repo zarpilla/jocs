@@ -82,17 +82,17 @@
       "text": "Dona",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -107,17 +107,17 @@
       "text": "Obre",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -132,17 +132,17 @@
       "text": "Tanca",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -157,17 +157,17 @@
       "text": "Agafa",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -182,17 +182,17 @@
       "text": "Parla",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -207,17 +207,17 @@
       "text": "Mira",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -232,17 +232,17 @@
       "text": "Usa",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -257,17 +257,17 @@
       "text": "Empeny",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -282,17 +282,17 @@
       "text": "Estira",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },
@@ -304,7 +304,7 @@
       "text": "Ves a",
       "font": "lucasfont-alternate",
       "fontSize": 8,
-      "color": "#28c074",
+      "color": "#c8d3de",
       "align": "center"
     },
     {
@@ -318,17 +318,17 @@
       "text": "",
       "font": "lucasarts-scumm-solid",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#9fb0c2",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "CanviaBtn",
       "textColorStates": {
-        "hover": "#28c074"
+        "hover": "#f2c66d"
       },
       "textOutline": {
         "enabled": true,
-        "color": "#132243",
+        "color": "#07090e",
         "sides": "bottomRight"
       }
     },

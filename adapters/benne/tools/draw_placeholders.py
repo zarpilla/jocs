@@ -289,10 +289,21 @@ def switch_button_image(hover=False):
     cara.paste(retrat('iri', 12), (0, 0), meitat)
     out.alpha_composite(cara, (9, 3))
     d = ImageDraw.Draw(out)
-    d.line([(26, 0), (17, h - 1)], fill=(235, 235, 245, 255))
+    d.line([(26, 0), (17, h - 1)], fill=(230, 200, 130, 255))
     if hover:
-        out = Image.blend(out, Image.new('RGBA', (w, h), (255, 255, 255, 255)), 0.15)
-        ImageDraw.Draw(out).rectangle([0, 0, w - 1, h - 1], outline=(150, 230, 190, 255))
+        out = Image.blend(out, Image.new('RGBA', (w, h), (255, 240, 210, 255)), 0.12)
+    # Marc de metall pissarra com la barra de verbs (hd/gui.py): contorn fosc i bisell amb llum de dalt;
+    # en hover, el bisell és de llautó encès.
+    d = ImageDraw.Draw(out)
+    fosc = (7, 9, 14, 255)
+    clar, ombra = (((248, 232, 186, 255), (168, 128, 64, 255)) if hover else ((118, 128, 146, 255), (25, 30, 41, 255)))
+    d.rectangle([0, 0, w - 1, h - 1], outline=fosc)
+    d.line([(1, 1), (w - 2, 1)], fill=clar)
+    d.line([(1, 1), (1, h - 2)], fill=clar)
+    d.line([(1, h - 2), (w - 2, h - 2)], fill=ombra)
+    d.line([(w - 2, 2), (w - 2, h - 2)], fill=ombra)
+    for x, y in ((0, 0), (w - 1, 0), (0, h - 1), (w - 1, h - 1)):
+        out.putpixel((x, y), (0, 0, 0, 0))
     return out
 
 
