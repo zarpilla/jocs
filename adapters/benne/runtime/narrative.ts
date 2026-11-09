@@ -233,6 +233,40 @@ export function targetFromBenne(kind: 'prop' | 'hotspot' | 'character' | 'item',
   return { kind: 'hotspot', id: stripped };
 }
 
+// ─── Girar-se cap a la cosa clicada ─────────────────────────────────────────
+
+type Point = { x: number; y: number };
+type RoomThing = { id: string; lookAtPoint?: Point; points?: Point[]; collider?: { points: Point[] } };
+type RoomFile = { id: string; hotspots: RoomThing[]; props: RoomThing[] };
+const roomFiles = Object.values(import.meta.glob<RoomFile>('../rooms/*/*.room.json', { eager: true, import: 'default' }));
+
+const centre = (pts: Point[]) => ({ x: pts.reduce((a, p) => a + p.x, 0) / pts.length, y: pts.reduce((a, p) => a + p.y, 0) / pts.length });
+
+/** On mira una cosa de la sala o un personatge (en píxels de la sala), o `null` si no se sap. */
+function lookPoint(kind: 'prop' | 'hotspot' | 'character', benneId: string): Point | null {
+  if (kind === 'character') {
+    const handle = benneCharacter(fromBenne('characters', benneId)) as { position?: Point } | undefined;
+    return handle?.position ?? null;
+  }
+  const room = roomFiles.find((r) => r.id === toBenne('rooms', world.currentRoom() ?? ''));
+  const thing = (kind === 'prop' ? room?.props : room?.hotspots)?.find((t) => t.id === benneId);
+  if (!thing) return null;
+  const pts = thing.collider?.points ?? thing.points;
+  return thing.lookAtPoint ?? (pts?.length ? centre(pts) : null);
+}
+
+/** Cap on s'ha de girar la protagonista (des d'on és ara) per mirar la cosa, o `null`. */
+export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', benneId: string): 'U' | 'D' | 'L' | 'R' | null {
+  if (kind === 'item') return null;
+  const to = lookPoint(kind, benneId);
+  if (!to) return null;
+  const from = player.position;
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  if (Math.hypot(dx, dy) < 2) return null;
+  return Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'L' : 'R') : dy < 0 ? 'U' : 'D';
+}
+
 // ─── Coses condicionals ─────────────────────────────────────────────────────
 // Les coses amb `visibleIf` són props a Benne (el sync les crea així): es mostren o
 // s'amaguen soles cada vegada que canvia l'estat. Si a Benne ja eren zones (hotspots), s'activen o

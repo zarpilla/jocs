@@ -6,12 +6,12 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait, walkToClicked } from '@benne/script';
+import { SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  adoptLoadedState, applyAppearances, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
@@ -69,8 +69,12 @@ export function playResult(result: InteractionResult) {
 export function routeInteraction(verb: string, target: FallbackTarget, item?: string) {
   // Primer hi va caminant (al `walkToPoint` de la cosa o del personatge) i s'hi gira, com a les
   // aventures clàssiques. Ha de ser el primer pas: així, si el jugador clica una altra cosa pel camí,
-  // el motor atura aquesta acció i fa la nova.
-  if (target.kind !== 'item') walkToClicked()
+  // el motor atura aquesta acció i fa la nova. (`walkToClicked` no serveix: als fallbacks no hi ha clic.)
+  if (target.kind !== 'item') {
+    player.walkTo(target.id)
+    const facing = facingToward(target.kind, target.id)
+    if (facing) player.face(facing)
+  }
   adoptLoadedState()
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const result = narrative.interact(request)
