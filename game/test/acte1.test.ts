@@ -176,7 +176,12 @@ describe('Ferro-9 · Acte 1', () => {
 
     // ── Vet: dibuixa el pany ──
     p.do('look', 'porta');
-    p.do('pickUp', 'llitera');
+    // El fullet no es veu fins que la Vet mira la llitera, i desapareix quan l'agafa.
+    expect(() => p.do('pickUp', 'fullet')).toThrow('no és visible');
+    p.do('look', 'llitera');
+    p.do('pickUp', 'fullet');
+    expect(p.inventory()).toContain('fullet_reeducacio');
+    expect(() => p.do('look', 'fullet')).toThrow('no és visible');
     p.use('llapis_ulls', { kind: 'item', id: 'fullet_reeducacio' });
     p.use('nota_pany', 'panell');
 

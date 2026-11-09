@@ -654,7 +654,6 @@ def cella_bg(c):
         c.rect(lx0, y, lx1, y + 3, STEEL[1])
         c.rect(lx0 + 4, y - 6, lx1 - 4, y - 1, mat)
         c.rect(lx1 - 18, y - 9, lx1 - 6, y - 5, (220, 220, 225))       # coixí
-    c.rect(lx0 + 4, 96, lx0 + 20, 99, (200, 180, 120))                # fullet sota el coixí... a sota
 
     cell_door(c, 8, 38, 46, 112)
     wall_vent(c, 62, 84, 100, 108, (120, 74, 52), (110, 64, 44), (90, 52, 36))   # reixa del conducte, rovellada
@@ -669,6 +668,13 @@ def cella_avis(c):
     c.line([(60, 132), (70, 131)], (160, 150, 150))
     c.line([(61, 134), (69, 133)], (160, 150, 150))
     c.ellipse(64, 133, 67, 136, (240, 120, 170))
+
+
+def cella_fullet(c):
+    """El fullet de reeducació, que treu el nas per sota el coixí de la llitera de baix."""
+    c.rect(316, 93, 331, 97, (236, 226, 196))
+    c.rect(318, 94, 322, 96, (240, 120, 170))                         # el cor de la MARE a la portada
+    c.line([(324, 95), (330, 95)], (150, 140, 130))
 
 
 def cella_escarabat(c):
@@ -753,6 +759,7 @@ CELLA = {
         'panell': {'rect': (176, 58, 208, 92), 'walk': (192, 126)},
         'altaveu': {'rect': (116, 10, 142, 32), 'walk': (130, 126)},
         'llitera': {'rect': (270, 46, 346, 126), 'walk': (262, 134)},
+        'fullet': {'rect': (312, 88, 334, 102), 'walk': (296, 138)},
         'finestreta': {'rect': (226, 16, 268, 58), 'walk': (240, 126)},
         'avis': {'rect': (54, 126, 76, 140), 'walk': (82, 140)},
         'escarabat': {'rect': (88, 114, 104, 128), 'walk': (110, 134)},
@@ -763,7 +770,7 @@ CELLA = {
     'spawns': {'vet': (150, 138), 'mos': (306, 140), 'mare': (130, 30), 'directora': (214, 138)},
     'walkable': [(14, 118), (266, 118), (268, 128), (338, 130), (346, 148), (6, 148)],
     'bg': amb(cella_bg, esquerda),
-    'props': {'avis': cella_avis, 'escarabat': cella_escarabat, 'safata': cella_safata,
+    'props': {'avis': cella_avis, 'fullet': cella_fullet, 'escarabat': cella_escarabat, 'safata': cella_safata,
               'panell_afluixat': cella_panell_afluixat, 'panell_obert': cella_panell_obert,
               'panell_reparat': cella_panell_reparat, 'reixa_oberta': cella_reixa_oberta, 'esquerda': nota_esquerda},
 }

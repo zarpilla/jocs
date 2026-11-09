@@ -41,6 +41,7 @@
         "nota_iri_escrita": false,
         "iri_sap_pany": false,
         "avis_agafat": false,
+        "fullet_vist": false,
         "fullet_agafat": false,
         "escarabat_agafat": false,
         "sopa_agafada": false,
@@ -6214,6 +6215,11 @@
                     "who": "player",
                     "text": "sala.gavina_cella.llitera.look1"
                   }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "fullet_vist"
+                  }
                 ]
               },
               {
@@ -6244,17 +6250,38 @@
                     "text": "sala.gavina_cella.llitera.look2"
                   }
                 ]
-              },
-              {
-                "verb": "pickUp",
-                "if": {
+              }
+            ]
+          },
+          "fullet": {
+            "name": "sala.gavina_cella.fullet.nom",
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "fullet_vist"
+                },
+                {
                   "flag": "fullet_agafat",
                   "is": false
-                },
+                }
+              ]
+            },
+            "interactions": [
+              {
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.llitera.fullet"
+                    "text": "sala.gavina_cella.fullet.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.fullet.agafar"
                   }
                 ],
                 "effects": [
@@ -16322,7 +16349,9 @@
       "sala.gavina_cella.avis.nom": "avís",
       "sala.gavina_cella.llitera.look1": "La meva llitera. Sota el coixí hi ha un fullet de reeducació. Ideal per a quan no puc dormir.",
       "sala.gavina_cella.llitera.look2": "Una llitera dura com la vida mateixa.",
-      "sala.gavina_cella.llitera.fullet": "Agafo el fullet de reeducació.",
+      "sala.gavina_cella.fullet.nom": "fullet de reeducació",
+      "sala.gavina_cella.fullet.look": "Treu el nas per sota el coixí: «La Gavina: la teva segona oportunitat!»",
+      "sala.gavina_cella.fullet.agafar": "Agafo el fullet de reeducació.",
       "sala.gavina_cella.llitera.nom": "llitera",
       "sala.gavina_cella.escarabat.look": "El Senyor Bigotis, el meu escarabat. Viu a la cantonada. Paga lloguer amb companyia.",
       "sala.gavina_cella.escarabat.agafar": "Vine, Senyor Bigotis. Anem d'aventura.",

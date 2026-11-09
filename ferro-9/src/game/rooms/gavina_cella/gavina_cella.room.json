@@ -458,6 +458,46 @@
         "y": 117
       },
       "description": "esquerda"
+    },
+    {
+      "id": "fullet",
+      "tag": "fullet",
+      "animations": {
+        "fullet": {}
+      },
+      "zIndex": 4,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 425,
+            "y": 119
+          },
+          {
+            "x": 455,
+            "y": 119
+          },
+          {
+            "x": 455,
+            "y": 139
+          },
+          {
+            "x": 425,
+            "y": 139
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 404,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 441,
+        "y": 139
+      },
+      "description": "fullet de reeducació"
     }
   ],
   "characters": [

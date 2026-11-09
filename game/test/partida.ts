@@ -78,7 +78,8 @@ export function jugarActe1(p: Jugador) {
   p.use('nota_iri', 'cambra');
   p.do('look', item('nota_iri'));
   p.do('look', 'porta');
-  p.do('pickUp', 'llitera');
+  p.do('look', 'llitera');
+  p.do('pickUp', 'fullet');
   p.use('llapis_ulls', item('fullet_reeducacio'));
   p.use('nota_pany', 'panell');
   p.do('look', item('nota_pany'));

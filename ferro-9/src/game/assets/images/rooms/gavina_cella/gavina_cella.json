@@ -188,6 +188,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "gavina_cella 9.aseprite": {
+      "frame": {
+        "x": 4320,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -196,7 +217,7 @@
     "image": "gavina_cella.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4320,
+      "w": 4800,
       "h": 270
     },
     "scale": "1",
@@ -261,6 +282,13 @@
         "name": "esquerda",
         "from": 8,
         "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "fullet",
+        "from": 9,
+        "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       }

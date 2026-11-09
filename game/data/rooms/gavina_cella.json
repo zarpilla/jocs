@@ -808,6 +808,11 @@
               "who": "player",
               "text": "sala.gavina_cella.llitera.look1"
             }
+          ],
+          "effects": [
+            {
+              "setFlag": "fullet_vist"
+            }
           ]
         },
         {
@@ -838,17 +843,38 @@
               "text": "sala.gavina_cella.llitera.look2"
             }
           ]
-        },
-        {
-          "verb": "pickUp",
-          "if": {
+        }
+      ]
+    },
+    "fullet": {
+      "name": "sala.gavina_cella.fullet.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "fullet_vist"
+          },
+          {
             "flag": "fullet_agafat",
             "is": false
-          },
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.llitera.fullet"
+              "text": "sala.gavina_cella.fullet.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.fullet.agafar"
             }
           ],
           "effects": [
