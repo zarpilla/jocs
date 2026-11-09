@@ -10,6 +10,7 @@ from hd.pix import (Light, B4, W, H, hr, mix, WALNUT, FLOOR, GOLD, COPPER, RUST,
                     MANILA, GLASS, CYAN, LAMPG, GRAY, TEAL, NAVY)
 from hd.rooms.fabrica_calderes import (STONE, ENAMEL, CORK, text, text_w, brick_wall, contact_shadow, plank_door,
                                        pipe_h, pipe_v, bracket, ceiling, wall_plinth, gauge, outline)
+from hd.rooms.fabrica_despatx import dust, ambient_frames
 
 # metall de ferro-9: acer blavós amb un reflex cian
 F9 = [(14, 18, 28), (26, 34, 48), (40, 54, 72), (60, 80, 100), (90, 116, 136), (130, 160, 176), (180, 214, 222), (226, 248, 250)]
@@ -49,7 +50,37 @@ def plank_floor(cv, y0):
             cv.put(x, y, FLOOR, lvl)
 
 
-def bg(cv):
+def lamp_cone(x, y):
+    """El con de llum sota el llum penjant del banc (0..1)."""
+    if not 80 <= y <= 112:
+        return 0.0
+    half = 9 + (y - 80) * 0.9
+    return max(0.0, min(1.0, (1 - abs(x - 388) / half) * 2.2)) * (1 - (y - 80) / 40)
+
+
+def bulb_halo(x, y):
+    """La claror al voltant de la bombeta de la prestatgeria (0..1)."""
+    return max(0.0, 1 - math.hypot(x - 237, (y - 18) * 1.2) / 38) ** 0.8
+
+
+def moth(cv, tt):
+    """Una arna que volta el llum del banc."""
+    ph = 2 * math.pi * tt
+    x = 388 + 15 * math.sin(ph) + 4 * math.sin(ph * 3 + 1.1)
+    y = 74 + 5 * math.sin(ph * 2 + 0.5) + 2.5 * math.cos(ph * 5)
+    x, y = round(x), round(y)
+    up = math.sin(ph * 11) > 0                                     # aleteja
+    body = (58, 46, 40)
+    wing = (196, 176, 140) if math.cos(ph) < 0 else (120, 100, 80)  # de cara al llum, més clara
+    cv.flat(x, y, body)
+    if up:
+        cv.flat(x - 1, y - 1, wing); cv.flat(x + 1, y - 1, wing)
+    else:
+        cv.flat(x - 1, y, wing); cv.flat(x + 1, y, wing)
+
+
+def bg(cv, t=0.0):
+    tt = t                                   # (None: sense la capa animada)
     # ─── Sostre, paret de maó i arrimador pintat ──────────────────────────────
     ceiling(cv)
     brick_wall(cv, 0, 14, W - 1, 151, seed=21, base=1.5,
@@ -387,6 +418,16 @@ def bg(cv):
             lambda x, y: max(0, 1 - math.hypot(x - 388, (y - 95) * 0.9) / 150) ** 2 * 0.15
             + max(0, 1 - math.hypot(x - 237, (y - 30) * 0.9) / 140) ** 2 * 0.12)
 
+    if tt is not None:
+        anim_layer(cv, tt)
+
+
+def anim_layer(cv, tt):
+    """Pols que sura a la llum de les dues bombetes, i una arna que volta el llum del banc (al damunt de tot)."""
+    dust(cv, tt, 14, 31, (370, 84, 410, 104), (255, 236, 190), 0.7, lamp_cone, fall=(2, 5))
+    dust(cv, tt, 14, 32, (208, 20, 268, 52), (255, 232, 180), 0.6, bulb_halo, fall=(-2, 5))
+    moth(cv, tt)
+
 
 def plomall(cv):
     """El plomall, penjat del ganxo (111..136 × 60..136): mànec de fusta i un plomall gros de plomes d'estruç."""
@@ -482,3 +523,17 @@ def caixa_eines(cv):
 
 
 PROPS = {'plomall': plomall, 'caixa_eines': caixa_eines}
+
+def _ambient_frames(n=24):
+    from hd.pix import Canvas
+    room = Canvas(light=LIGHT)
+    bg(room, t=None)                                               # la sala sense la capa animada
+
+    def draw(t):
+        cv = Canvas(light=LIGHT, img=room.img.copy())
+        anim_layer(cv, t)
+        return cv.img.convert('RGB')
+    return ambient_frames(bg, LIGHT, n, box=(200, 10, 420, 120), draw=draw)
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 130}}

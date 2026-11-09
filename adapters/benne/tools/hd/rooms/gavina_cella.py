@@ -73,7 +73,24 @@ def contact_shadow(cv, x0, x1, y0, y1, k=0.9):
 
 # ─── Fons ─────────────────────────────────────────────────────────────────────
 
-def bg(cv, night=False):
+def _bump(u, c, w):
+    """Pols triangular centrat a `c` (d'amplada `w`), 0 fora."""
+    return max(0.0, 1 - abs(u - c) / w)
+
+
+def heartbeat(t):
+    """El cor de la MARE: dos batecs per cicle (lub-dub), suaus. 0 a t = 0."""
+    u = (t * 2) % 1
+    return _bump(u, 0.36, 0.1) + 0.6 * _bump(u, 0.56, 0.1)
+
+
+def bg(cv, night=False, t=0.0):
+    """`t` (0..1): moment del cicle de l'animació de fons (t = 0 és el fons quiet)."""
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
+    beat = heartbeat(tt)
+    # el fluorescent fa un parpelleig (un fotograma) un cop per cicle; de nit, la llum de vigilància respira
+    flick = 0.0 if night else (1.0 if 0.70 <= tt < 0.74 else 0.0)
     # ─── Sostre amb el fluorescent ────────────────────────────────────────────
     cv.rect(0, 0, W - 1, 10, STEEL, lambda x, y: 1.0 + y * 0.12 + (0.5 if x % 40 == 0 else 0))
     for x in range(0, W, 40):
@@ -90,10 +107,13 @@ def bg(cv, night=False):
     cv.hline(194, 294, 9, STEEL, 4.6)
     if night:
         cv.rect(198, 3, 290, 7, CYAN, lambda x, y: 0.6 + (0.4 if (x // 6) % 2 else 0), 0)
-        cv.rect(240, 4, 248, 6, CYAN, 2.4, 0)                          # llum de vigilància, tènue
+        cv.rect(240, 4, 248, 6, CYAN, 2.4 + 0.7 * math.sin(ph), 0)    # llum de vigilància, tènue
     else:
-        cv.rect(198, 3, 290, 7, CYAN, lambda x, y: 4.6 - (0.6 if x % 12 == 0 else 0), 0)
-        cv.hline(198, 290, 5, [(250, 254, 255)], 0, 0)
+        cv.rect(198, 3, 290, 7, CYAN, lambda x, y: 4.6 - (0.6 if x % 12 == 0 else 0) - (2.0 if flick and x < 262 else 0), 0)
+        if not flick:
+            cv.hline(198, 290, 5, [(250, 254, 255)], 0, 0)
+        else:
+            cv.hline(262, 290, 5, [(250, 254, 255)], 0, 0)
         for x in range(198, 291, 12):
             cv.vline(x, 3, 7, STEEL, 3.0, 0)
 
@@ -279,7 +299,7 @@ def bg(cv, night=False):
             edge = not (heart_in(x - 1, y) and heart_in(x + 1, y) and heart_in(x, y - 1) and heart_in(x, y + 1))
             edge2 = not (heart_in(x - 2, y) and heart_in(x + 2, y) and heart_in(x, y - 2) and heart_in(x, y + 2))
             nx, ny = (x - HX) / 15, (y - HY) / 14
-            lvl = 3.0 - nx * 0.9 - ny * 1.1
+            lvl = 3.0 - nx * 0.9 - ny * 1.1 + beat * 0.45
             if edge:
                 lvl = 0.8 if (nx > 0 or ny > 0.3) else 2.0
             elif edge2:
@@ -292,9 +312,9 @@ def bg(cv, night=False):
     for x, y in ((166, 20), (167, 19), (168, 19), (165, 21), (165, 22)):
         cv.put(x, y, PINK, 5.6, 0)
     if not night:
-        cv.glow(HX, HY, 30, (255, 120, 190), 0.32)
+        cv.glow(HX, HY, 30, (255, 120, 190), 0.32 * (1 + 0.45 * beat))
     else:
-        cv.glow(HX, HY, 18, (200, 70, 150), 0.25)
+        cv.glow(HX, HY, 18, (200, 70, 150), 0.25 * (1 + 0.6 * beat))
 
     # ─── Finestreta amb la Terra (308..365 × 21..79) ──────────────────────────
     PX, PY, PR = 336, 50, 27
@@ -319,6 +339,17 @@ def bg(cv, night=False):
     # l'espai
     stars = random.Random(19)
     STARS = {(stars.randint(PX - 19, PX + 19), stars.randint(PY - 19, PY + 19)): stars.random() for _ in range(34)}
+
+    def twinkle(x, y, s):
+        """Els estels titil·len, cadascun al seu ritme (harmònics 1..3). A t = 0, com sempre."""
+        k = 1 + int(hr(x, y, 23) * 3)
+        f = hr(x, y, 24) * 2 * math.pi
+        v = math.sin(ph * k + f) - math.sin(f)
+        if v > 0.9:
+            return (255, 255, 255) if s > 0.6 else (200, 206, 250)
+        if v < -0.9:
+            return (110, 114, 170) if s > 0.6 else None
+        return (230, 232, 255) if s > 0.6 else (130, 136, 190)
     EX, EY, ER = 342, 55, 7.5
     for y in range(PY - 19, PY + 20):
         for x in range(PX - 19, PX + 20):
@@ -346,7 +377,9 @@ def bg(cv, night=False):
                 cv.put(x, y, SPACE, lvl, 0)
                 s = STARS.get((x, y))
                 if s is not None and de > 13:
-                    cv.flat(x, y, (230, 232, 255) if s > 0.6 else (130, 136, 190))
+                    col = twinkle(x, y, s)
+                    if col:
+                        cv.flat(x, y, col)
     # reflex al vidre
     for i in range(7):
         cv.put(326 + i, 41 - i // 2 - (1 if i > 4 else 0), CYAN, 4.4, 0)
@@ -399,8 +432,11 @@ def bg(cv, night=False):
     cv.disc(101, 27, 5, 3.4, STEEL, lambda nx, ny: 3.6 - nx - ny * 1.2)
     cv.disc(99.5, 28, 1.6, 1.4, NAVY, 0.6, 0)
     cv.put(99, 27, CYAN, 3.4, 0)
-    cv.put(104, 26, [(255, 60, 60)], 0, 0)
-    cv.glow(104, 26, 4, (255, 60, 60), 0.5)
+    if (tt * 3) % 1 < 0.6:                                              # el LED fa pampallugues
+        cv.put(104, 26, [(255, 60, 60)], 0, 0)
+        cv.glow(104, 26, 4, (255, 60, 60), 0.5)
+    else:
+        cv.put(104, 26, [(110, 30, 34)], 0, 0)
     # rascades i un camí gastat al terra, de la porta a la llitera
     for y in range(166, 205):
         for x in range(40, 440):
@@ -418,7 +454,7 @@ def bg(cv, night=False):
     # ─── Llums de color sobre el conjunt ──────────────────────────────────────
     if not night:
         cv.glow(244, 14, 110, (200, 235, 255), 0.2)
-        cv.tint(150, 14, 205, 70, (255, 110, 180), lambda x, y: max(0, 1 - math.hypot(x - HX, y - HY) / 34) * 0.18)
+        cv.tint(150, 14, 205, 70, (255, 110, 180), lambda x, y: max(0, 1 - math.hypot(x - HX, y - HY) / 34) * 0.18 * (1 + 0.5 * beat))
         cv.tint(290, 20, 380, 100, (80, 140, 255), lambda x, y: max(0, 1 - math.hypot(x - PX, y - PY) / 45) * 0.12)
 
 
@@ -906,6 +942,32 @@ def p_fullet(cv):
             cv.put(438 + k, 130 - k // 6, PAPER, 2.0)
     # l'ombra del coixí que hi cau a sobre
     cv.darken(440, 125, 447, 127, 0.6)
+
+
+def _ambient_frames(n=24):
+    return ambient_frames(bg, LIGHT, n)
+
+
+def ambient_frames(draw, light, n):
+    """N fotogrames transparents amb només els píxels que canvien respecte de draw(t=0)."""
+    from hd.pix import Canvas
+    base = Canvas(light=light)
+    draw(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=light)
+        draw(cv, t=i / n)
+        fr = Canvas(light=light, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 125}}
 
 
 PROPS = {

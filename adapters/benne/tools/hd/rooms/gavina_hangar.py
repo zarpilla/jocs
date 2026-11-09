@@ -68,7 +68,9 @@ def floor_deck(cv):
             cv.put(x, y, STEEL, lvl)
 
 
-def bg(cv):
+def bg(cv, t=0.0):
+    tt = t                                   # moment del cicle de l'animació (0..1)
+    ph = 2 * math.pi * tt
     # ─── Sostre: planxes, i la biga d'acer de la fàbrica (encara hi és) ────
     cv.rect(0, 0, W - 1, 12, PANEL, lambda x, y: 0.4 + (0.6 if x % 40 == 1 else 0), 0.4)
     cv.rect(0, 13, W - 1, 20, PANEL, lambda x, y: [3.6, 3.0, 2.2, 1.8, 1.8, 1.8, 1.4, 0.6][y - 13] + (hr(x // 3, y, 2) - 0.5) * 0.4)
@@ -216,25 +218,67 @@ def bg(cv):
     cv.rect(410, 167, 414, 170, STEEL, 2.4)                        # un cargol caigut
 
     # ─── Fluorescents i balisa ────────────────────────────────────────────
-    lamps(cv)
-    # balisa
+    lamps(cv, tt=tt)
+    # balisa: gira (tres voltes per cicle); quan el feix mira cap a nosaltres, la cúpula i l'halo s'encenen
+    a = ph * 3
+    s, face = math.sin(a) * 0.9, (1 + math.cos(a)) / 2
     cv.rect(217, 23, 227, 26, STEEL, 2.6)
-    cv.disc(222, 20, 4, 4, ORANGE, lambda nx, ny: 5.0 - ny - abs(nx), 0)
-    cv.glow(222, 22, 26, (255, 150, 60), 0.45)
+    cv.disc(222, 20, 4, 4, ORANGE, lambda nx, ny: 5.0 - ny - abs(nx - s) - 1.6 * (1 - face), 0)
+    cv.glow(222, 22, 26, (255, 150, 60), 0.45 * (0.55 + 0.45 * max(0.0, math.cos(a)) ** 2))
 
     # tint fred general i una mica de calor de la balisa a la comporta
     cv.tint(0, 0, W - 1, H - 1, (40, 70, 110), 0.10)
     cv.tint(200, 10, 300, 90, (255, 140, 60), lambda x, y: max(0, 0.16 * (1 - math.hypot(x - 222, y - 22) / 80)))
+    # el feix de la balisa escombra la biga i el capdamunt de la comporta quan mira de costat
+    w = 0.2 * math.sin(a) ** 2
+    if w > 0.004:
+        bx = 222 + 130 * math.sin(a)
+        cv.tint(bx - 46, 6, bx + 46, 64, (255, 150, 60),
+                lambda x, y: w * max(0.0, 1 - math.hypot((x - bx) / 46, (y - 24) / 34)))
+    drips(cv, tt)
 
 
-def lamps(cv, only=(96, 352)):
+def drips(cv, tt):
+    """Gotes que regalimen de la brida del conducte (x = 77) i esclaten a la vora de l'escala."""
+    DX, Y0, Y1 = 77, 35, 99
+    for start in (0.0, 0.48):
+        u = (tt - start) % 1
+        if u < 0.28:                                             # la gota s'infla, penjada de la brida
+            if u > 0.08:
+                cv.put(DX, Y0, WATER, 5.4, 0)
+            if u > 0.18:
+                cv.put(DX, Y0 + 1, WATER, 6.6, 0)
+        elif u < 0.43:                                           # cau (accelerant)
+            k = (u - 0.28) / 0.15
+            y = round(Y0 + 1 + k * k * (Y1 - Y0 - 1))
+            cv.put(DX, y, WATER, 7.0, 0)
+            cv.put(DX, y - 1, WATER, 5.6, 0)
+            if k > 0.4:
+                cv.put(DX, y - 2, WATER, 4.4, 0)
+                cv.put(DX, y - 3, WATER, 3.6, 0)
+        elif u < 0.51:                                           # esquitx
+            k = (u - 0.43) / 0.08
+            r = 1 + round(k * 2)
+            for dx, dy in ((-r, -1), (r, -1), (-r - 1, 0), (r + 1, 0)):
+                cv.put(DX + dx, Y1 + dy - (1 if k < 0.5 else 0), WATER, 6.6 - k * 1.6, 0)
+
+
+def lamps(cv, only=(96, 352), tt=0.0):
     for lx in only:
+        # el fluorescent esquerre fa figa de tant en tant (dos fotogrames, amb un d'encès al mig)
+        dim = 0.0
+        if lx == 96 and (0.62 <= tt < 0.66 or 0.70 <= tt < 0.74):
+            dim = 1.0 if tt < 0.66 else 0.6
         cv.vline(lx - 16, 24, 30, STEEL, 2.0)
         cv.vline(lx + 16, 24, 30, STEEL, 2.0)
         cv.rect(lx - 20, 30, lx + 20, 32, STEEL, lambda x, y: 3.2 - (y - 30) * 0.8)
-        cv.hline(lx - 18, lx + 18, 33, [(230, 244, 255)], 0, 0)
-        cv.hline(lx - 18, lx + 18, 34, CYAN, 4.4, 0)
-        cv.glow(lx, 36, 34, (210, 236, 255), 0.35)
+        if dim:
+            cv.hline(lx - 18, lx + 18, 33, CYAN, 4.4 - dim * 2.6, 0)
+            cv.hline(lx - 18, lx + 18, 34, CYAN, 3.6 - dim * 2.2, 0)
+        else:
+            cv.hline(lx - 18, lx + 18, 33, [(230, 244, 255)], 0, 0)
+            cv.hline(lx - 18, lx + 18, 34, CYAN, 4.4, 0)
+        cv.glow(lx, 36, 34, (210, 236, 255), 0.35 * (1 - dim * 0.75))
 
 
 def comporta(cv):
@@ -465,3 +509,24 @@ PROPS = {
     'marca_pilar': p_marca,
     'caixa_recanvis': p_nota_caixa,
 }
+
+
+# ─── Animació de fons: la balisa gira, el fluorescent esquerre fa figa i regalima el conducte ─────
+
+def _ambient_frames(n=24):
+    from PIL import Image, ImageChops
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        d = ImageChops.difference(cv.img.convert('RGB'), base.img.convert('RGB'))
+        mask = ImageChops.lighter(ImageChops.lighter(*d.split()[:2]), d.split()[2]).point(lambda v: 255 if v else 0)
+        fr = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        fr.paste(cv.img, mask=mask)
+        frames.append(fr)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 120}}

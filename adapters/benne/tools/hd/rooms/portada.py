@@ -8,7 +8,7 @@ import math
 
 from hd.pix import Canvas, Light, W, H, mix, ramp, STEEL
 from hd.rooms import proleg_fabrica as fab
-from hd.rooms.proleg_gavina import espai, terra, gavina, vinyeta
+from hd.rooms.proleg_gavina import espai, terra, gavina, vinyeta, ambient_frames
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 
@@ -141,14 +141,32 @@ def sparkle(cv, x, y, n=3):
     cv.glow(x, y, 7, (200, 220, 255), 0.4)
 
 
-def bg(cv):
+def glint(cv, M, t):
+    """Un destell que travessa el títol en diagonal, un sol cop per bucle (entre t = 0,3 i 0,62)."""
+    a, b = 0.30, 0.62
+    if not a <= t < b:
+        return
+    xs = [p[0] for p in M]
+    ys = [p[1] for p in M]
+    x0, top = min(xs), min(ys)
+    span = max(xs) - x0 + (max(ys) - top) * 0.6 + 40
+    c = -20 + (t - a) / (b - a) * span
+    for x, y in M:
+        d = abs((x - x0) + (y - top) * 0.6 - c)
+        k = max(0.0, 1 - d / 6) * 0.75 + (0.25 if d < 1.5 else 0)
+        if k > 0:
+            cv.flat(x, y, mix(cv.get(x, y), (255, 255, 255), min(1.0, k)))
+
+
+def bg(cv, t=0.0):
+    """`t` (0..1): moment del bucle de l'animació de fons (amb 0, el fons quiet)."""
     # el present: l'espai, la Terra i La Gavina
-    espai(cv, x0=180)
-    terra(cv, 500, 384, 186, x0=180)
-    gavina(cv, 362, 130, 0.66)
+    espai(cv, x0=180, t=t)
+    terra(cv, 500, 384, 186, x0=180, t=t)
+    gavina(cv, 362, 130, 0.66, t=t)
     # el passat: la fàbrica (sense el rètol, que aquí el títol ja fa de rètol)
     f = Canvas(light=fab.LIGHT)
-    fab.bg(f, retol=False)
+    fab.bg(f, retol=False, t=t)
     F = f.img.load()
     for y in range(H):
         sx = seam_x(y)
@@ -172,10 +190,15 @@ def bg(cv):
 
     # el títol
     M = title(cv, 'FERRO-9', W / 2, 14, m=8, depth=4)
-    sparkle(cv, min(p[0] for p in M) + 3, 16, 4)
+    glint(cv, M, t)
+    # les dues espurnes: la de l'esquerra s'encén quan el destell hi entra, la de la dreta quan en surt
+    sparkle(cv, min(p[0] for p in M) + 3, 16, 5 if 0.29 <= t < 0.36 else 4)
     xs = [p[0] for p in M]
-    sparkle(cv, max(xs) - 3, 40, 3)
+    sparkle(cv, max(xs) - 3, 40, 5 if 0.58 <= t < 0.62 else 4 if 0.62 <= t < 0.7 else 3)
     vinyeta(cv, 0.5)
 
 
 PROPS = {}
+
+# Res d'animació sota els botons de la GUI (x 165..315, y 196..246), amb marge
+ANIMS = {'ambient': {'frames': lambda: ambient_frames(bg, LIGHT, mask=(158, 190, 322, 252)), 'frameDuration': 130}}

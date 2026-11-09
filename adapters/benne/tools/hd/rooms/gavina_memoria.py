@@ -5,6 +5,8 @@ Llums: l'holograma (cian, la més forta), focus sobre la foto i sobre la vitrina
 """
 import math
 
+from PIL import Image, ImageChops
+
 from hd.pix import (Canvas, Light, B4, W, H, hr, ramp, mix, STEEL, PANEL, CYAN, WARN, RED, PAPER, IRON, SPACE, GRAY, NAVY,
                     TEAL, SKIN)
 from hd.rooms.gavina_passadis import (HULL, LAMPW, SIGN, CORPG, PILOT, FLOOR_Y, text, text_w, smile, rivet)
@@ -121,7 +123,9 @@ def reflect(cv, k=0.18):
                     cv.P[x, y] = mix(o, s, a) + (255,)
 
 
-def bg(cv, mira=False):
+def bg(cv, mira=False, t=0.0):
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
     museum_wall(cv, 0, W - 1)
     resin_floor(cv)
 
@@ -168,7 +172,7 @@ def bg(cv, mira=False):
     cv.glow(37, 52, 18, (90, 255, 140), 0.35)
     # lector d'accés
     cv.rect(DX1 + 7, 98, DX1 + 12, 108, MUSE, lambda x, y: 1.6 if x == DX1 + 12 else 4.0)
-    cv.put(DX1 + 9, 101, PILOT, 3.0, 0)
+    cv.put(DX1 + 9, 101, PILOT, 1.0 if (tt * 2 + 0.37) % 1 < 0.1 else 3.0, 0)   # el pilot s'apaga un instant
 
     # ─── Foto del torn de nit (90..169 × 35..101) ─────────────────────────
     FX0, FY0, FX1, FY1 = 92, 37, 167, 92
@@ -284,15 +288,17 @@ def bg(cv, mira=False):
     cv.disc(cx, cy, 5, 3, CYAN, 2.5, 0)
     # «Vostè és aquí» (estrella al mòdul C)
     sx_, sy_ = round(cx + math.cos(math.radians(100)) * 24) + 7, round(cy + math.sin(math.radians(100)) * 13) - 1
+    star_dim = (tt * 3) % 1 >= 0.75                                    # parpelleja
     for dx, dy in ((0, -2), (0, -1), (-2, 0), (-1, 0), (0, 0), (1, 0), (2, 0), (0, 1), (-1, 2), (1, 2)):
-        cv.put(sx_ + dx, sy_ + dy, WARN, 4.5, 0)
-    cv.glow(sx_, sy_, 5, (255, 220, 80), 0.6)
+        cv.put(sx_ + dx, sy_ + dy, WARN, 2.6 if star_dim else 4.5, 0)
+    cv.glow(sx_, sy_, 5, (255, 220, 80), 0.2 if star_dim else 0.6)
     # conducte de servei en discontínua, per sota del mòdul C fins a l'hangar
     hx_, hy_ = 244, 90
     cmx, cmy = round(cx + math.cos(math.radians(100)) * 24), round(cy + math.sin(math.radians(100)) * 13) + 4
+    off = int(tt * 12) % 4                                             # la ruta avança cap a l'hangar
     for i in range(0, 34):
         t = i / 33
-        if (i // 2) % 2 == 0:
+        if ((i - off) // 2) % 2 == 0:
             x = round(cmx + (hx_ - cmx) * t)
             y = round(cmy + 10 * math.sin(t * math.pi) * 0.8 + (hy_ - cmy) * t)
             cv.put(x, y, WARN, 3.5, 0)
@@ -302,13 +308,29 @@ def bg(cv, mira=False):
     # llegenda
     for y in (91, 94):
         cv.hline(MX0 + 4, MX0 + 4 + int(hr(y, 1) * 20) + 10, y, CYAN, 3.5, 0)
+    # línia d'escaneig que baixa per la pantalla
+    f = tt % 1
+    env = math.sin(math.pi * f)
+    if env > 0.02:
+        ys = int(MY0 + f * (MY1 - MY0))
+        cv.tint(MX0, ys, MX1, ys, (150, 215, 255), 0.28 * env)
+        cv.tint(MX0, ys - 1, MX1, ys - 1, (150, 215, 255), 0.1 * env)
     cv.glow(219, 65, 46, (90, 170, 255), 0.25)
 
     # ─── Holograma del Director (278..335 × 35..142) i el sòcol ───────────
     # con de llum del projector
-    cv.tint(272, 40, 340, 146, (140, 230, 255), lambda x, y: max(0.0, 0.22 * (1 - abs(x - HX) / (8 + (146 - y) * 0.26))) if y < 146 else 0)
-    _director(cv)
-    _socol(cv)
+    kc = 0.22 * (1 + 0.15 * math.sin(ph * 2) + 0.06 * math.sin(ph * 5))      # el raig respira
+    cone = lambda x, y: max(0.0, 1 - abs(x - HX) / (8 + (146 - y) * 0.26)) if y < 146 else 0
+    cv.tint(272, 40, 340, 146, (140, 230, 255), lambda x, y: kc * cone(x, y))
+    # polsos de llum que pugen pel raig des del sòcol (dos per cicle)
+    for f in ((tt * 2) % 1,):
+        env = math.sin(math.pi * f)
+        if env > 0.02:
+            yb = 144 - f * 100
+            cv.tint(272, yb - 5, 340, yb + 5, (170, 240, 255),
+                    lambda x, y: 0.2 * env * (1 - abs(y - yb) / 6) * cone(x, y))
+    _director(cv, tt)
+    _socol(cv, tt)
 
     # ─── Vitrina (354..409 × 87..153) ─────────────────────────────────────
     VX0, VX1 = 356, 407
@@ -424,9 +446,22 @@ def _holo_shape(x, y):
     return None
 
 
-def _director(cv):
+def _director(cv, tt=0.0):
+    ph = 2 * math.pi * tt
+    so = int(tt * 12) % 3                                                 # les línies d'escaneig pugen
+    yb = 40 + (31 + int(tt * 101)) % 101                                  # franja de glitch que baixa
+    g112 = round(2 * math.cos(ph * 2))
+    seed = 77 + int(tt * 6) % 6                                           # guspires que canvien
+    jolt = 0.375 <= tt < 0.417                                            # una sacsejada de tant en tant
+    head = 0.79 <= tt < 0.83
+    fa = 1 + 0.06 * math.sin(ph * 5) + 0.04 * math.sin(ph * 3)            # tremolor de la intensitat
     for y in range(40, 141):
-        glitch = 2 if y in (71, 72, 112) else 0
+        glitch = 2 if y in (yb, yb + 1) else (g112 if y == 112 else 0)
+        if jolt:
+            glitch += 1 + (-4 if 84 <= y <= 92 else 0)
+        if head and 48 <= y <= 56:
+            glitch += 2
+        scan = (y + so) % 3 == 0
         for x in range(274, 340):
             v = _holo_shape(x - glitch, y)
             if v is None:
@@ -445,13 +480,13 @@ def _director(cv):
                 v = 4.0 if y < 66 else 1.4                                # camisa i corbata
             if 64 <= y <= 74 and abs(abs(x - cx) - (2 + (y - 64) // 3)) < 0.6:
                 v += 1.2                                                  # solapes
-            if (y % 3) == 0:
+            if scan:
                 v -= 0.9                                                  # línies d'escaneig
-            if hr(x, y, 77) > 0.94:
+            if hr(x, y, seed) > 0.94:
                 v += 1.2
             o = cv.P[x, y]
             col = HOLO[max(0, min(len(HOLO) - 1, math.floor(v + B4[y & 3][x & 3] - 0.5)))]
-            a = 0.78 if y % 3 else 0.5
+            a = min(1.0, (0.5 if scan else 0.78) * fa * (0.8 if jolt else 1))
             cv.P[x, y] = mix(o, col, a) + (255,)
     # vora brillant
     cv.glow(HX, 88, 46, (150, 235, 255), 0.22)
@@ -460,7 +495,7 @@ def _director(cv):
 SX0, SX1, SY0, SY1 = 281, 331, 142, 157
 
 
-def _socol(cv):
+def _socol(cv, tt=0.0):
     # cos cilíndric amb plaques
     for y in range(SY0 + 4, SY1 + 1):
         for x in range(SX0, SX1 + 1):
@@ -482,8 +517,9 @@ def _socol(cv):
             cv.put(x + 1, yy, MUSE, 2.6)
     # tapa amb l'anell emissor
     cv.disc(HX, SY0 + 3, 26, 4.2, MUSE, lambda nx, ny: 6.4 - ny * 0.8 - nx * 0.6)
-    cv.disc(HX, SY0 + 3, 20, 3, HOLO, lambda nx, ny: 4.6 - (nx * nx + ny * ny) * 1.5, 0)
-    cv.disc(HX, SY0 + 3, 9, 1.4, HOLO, 5.5, 0)
+    p = 0.6 * math.sin(4 * math.pi * tt)                                   # l'emissor batega amb els polsos
+    cv.disc(HX, SY0 + 3, 20, 3, HOLO, lambda nx, ny: 4.6 + p - (nx * nx + ny * ny) * 1.5, 0)
+    cv.disc(HX, SY0 + 3, 9, 1.4, HOLO, 5.5 + p * 0.5, 0)
     cv.glow(HX, SY0 + 2, 24, (150, 235, 255), 0.5)
     # ombra al terra
     cv.darken(SX0 - 2, SY1 + 1, SX1 + 2, SY1 + 4, lambda x, y: 0.7 - (y - SY1 - 1) * 0.2)
@@ -547,3 +583,25 @@ def foto_mira(cv):
 
 
 PROPS = {'socol': socol, 'foto_mira': foto_mira, 'placa_robot': placa_robot}
+
+
+# ─── Animació de fons: l'holograma tremola (línies d'escaneig que pugen, franges de glitch, alguna
+# sacsejada), el raig del sòcol respira i hi pugen polsos, i al mapa la ruta avança i l'estrella parpelleja ──
+
+def _ambient_frames(n=24):
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        d = ImageChops.difference(cv.img.convert('RGB'), base.img.convert('RGB'))
+        r, g, b = d.split()
+        mask = ImageChops.lighter(ImageChops.lighter(r, g), b).point(lambda v: 255 if v else 0)
+        fr = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        fr.paste(cv.img, mask=mask)
+        frames.append(fr)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 120}}

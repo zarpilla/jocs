@@ -6,7 +6,9 @@ Llums: el flexo dels expedients, la taula de llum (cian) i la claror freda que b
 """
 import math
 
-from hd.pix import (Light, W, H, hr, ramp, STEEL, PANEL, CYAN, WARN, ORANGE, RED, PAPER, MANILA, IRON, SPACE,
+from PIL import Image, ImageChops
+
+from hd.pix import (Canvas, Light, W, H, hr, ramp, STEEL, PANEL, CYAN, WARN, ORANGE, RED, PAPER, MANILA, IRON, SPACE,
                     COPPER, GOLD, BLUEP, TEAL, GRAY)
 from hd.rooms.gavina_passadis import (HULL, DECK, LAMPW, SIGN, RUSTG, FLOOR_Y, text, wall, deck, pool, hazard,
                                       rivet)
@@ -29,7 +31,9 @@ LIGHT.add(pool(410, 172, 70, 18, 1.0))
 LIGHT.add(pool(40, 172, 60, 18, 1.2))
 
 
-def bg(cv):
+def bg(cv, t=0.0):
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
     # ─── Paret i sostre ───────────────────────────────────────────────────
     wall(cv, 0, W - 1, seed=5, base=2.6)
     cv.rect(0, 0, W - 1, 7, HULL, lambda x, y: 0.7 + (0.5 if y in (5, 6) else 0))
@@ -237,12 +241,20 @@ def bg(cv):
         for x in range(round(299 - half), round(299 + half) + 1):
             cv.put(x, y, STEEL, 5.0 - (x - 299) / half * 1.2 - t * 1.4 + (1.2 if y == 94 else 0), 0.2)
     # pols que balla a la llum del flexo
+    # (cada mota sura a poc a poc pel seu compte; amb tt = 0 són al lloc de sempre)
     for i in range(14):
-        px, py = 286 + int(hr(i, 61) * 26), 104 + int(hr(i, 62) * 14)
-        cv.put(px, py, BULB, 2.6 + hr(i, 63), 0)
-    cv.hline(294, 304, 102, BULB, 3.5, 0)
-    cv.hline(296, 302, 103, BULB, 4.5, 0)
-    cv.glow(299, 106, 30, (255, 220, 150), 0.4)
+        kx, ky = 1 + int(hr(i, 64) * 3), 1 + int(hr(i, 65) * 2)
+        fx, fy = hr(i, 66) * 6.283, hr(i, 67) * 6.283
+        dx = round(2.4 * (math.sin(ph * kx + fx) - math.sin(fx)))
+        dy = round(1.8 * (math.sin(ph * ky + fy) - math.sin(fy)))
+        tw = 0.7 * (math.sin(ph * (kx + ky) + fx) - math.sin(fx))
+        px, py = 286 + int(hr(i, 61) * 26) + dx, 104 + int(hr(i, 62) * 14) + dy
+        cv.put(px, py, BULB, 2.6 + hr(i, 63) + tw, 0)
+    # la bombeta és vella: un cop per cicle fa una mica de figa
+    fl = 0.8 if 0.79 <= tt < 0.83 else 0.0
+    cv.hline(294, 304, 102, BULB, 3.5 - fl, 0)
+    cv.hline(296, 302, 103, BULB, 4.5 - fl, 0)
+    cv.glow(299, 106, 30, (255, 220, 150), 0.4 - fl * 0.1)
 
     # ─── Taula de llum amb els plànols (351..466 × 81..136) ───────────────
     LX0, LX1 = 354, 463
@@ -301,6 +313,15 @@ def bg(cv):
     cv.line(366, 114, 378, 110, WARN, 3.6, 0.4)
     cv.put(379, 110, PAPER, 4.0, 0.4)
     cv.disc(448, 92, 2.4, 1.6, IRON, lambda nx, ny: 3.4 - nx - ny, 0.5)
+    # línia d'escaneig que recorre el vidre de llum, del fons cap endavant
+    f = tt % 1
+    env = math.sin(math.pi * f)
+    if env > 0.02:
+        ys = LT + 2 + f * (LB - LT - 4)
+        for y in range(int(ys) - 2, int(ys) + 1):
+            k = env * (0.42 if y == int(ys) else 0.16 if y == int(ys) - 1 else 0.07)
+            tl = (y - LT) / (LB - LT)
+            cv.tint(GX0 - tl * 6, y, GX1 + tl * 6, y, (190, 245, 255), k)
     cv.glow(408, 102, 54, (120, 210, 255), 0.35)
 
     # ─── Detalls de paret ─────────────────────────────────────────────────
@@ -315,6 +336,10 @@ def bg(cv):
     cv.rect(336, 60, 346, 74, HULL, lambda x, y: 1.0 if x == 346 or y == 74 else 3.4)
     cv.rect(338, 62, 344, 66, TEAL, 3.0, 0)
     cv.hline(339, 342, 64, TEAL, 5.0, 0)
+    # pilot del termòstat que fa pampallugues
+    if (tt * 2) % 1 >= 0.62 and (tt * 2) % 1 < 0.72:
+        cv.put(343, 71, TEAL, 6.0, 0)
+        cv.put(343, 70, TEAL, 3.0, 0)
     # rajola d'avís d'incendi
     cv.rect(468, 96, 477, 104, RED, 3.0)
     cv.rect(470, 98, 475, 102, PAPER, 3.6)
@@ -335,9 +360,9 @@ def _floor(cv):
 _bg = bg
 
 
-def bg(cv):  # noqa: F811
+def bg(cv, t=0.0):  # noqa: F811
     _floor(cv)
-    _bg(cv)
+    _bg(cv, t)
 
 
 # ─── Carpeta caiguda (prop): darrere l'arxivador, a terra, amb els fulls escampats ──
@@ -362,3 +387,25 @@ def carpeta(cv):
 
 
 PROPS = {'carpeta': carpeta}
+
+
+# ─── Animació de fons: la pols sura a la llum del flexo, la taula de llum escaneja el plànol,
+# el pilot del termòstat fa pampallugues i la bombeta vella fa figa un moment ──────────────────
+
+def _ambient_frames(n=24):
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        d = ImageChops.difference(cv.img.convert('RGB'), base.img.convert('RGB'))
+        r, g, b = d.split()
+        mask = ImageChops.lighter(ImageChops.lighter(r, g), b).point(lambda v: 255 if v else 0)
+        fr = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        fr.paste(cv.img, mask=mask)
+        frames.append(fr)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 120}}

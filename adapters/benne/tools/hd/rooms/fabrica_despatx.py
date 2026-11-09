@@ -5,7 +5,11 @@ Llums: làmpada de banquer a l'escriptori, llum de llautó sobre el retrat, llun
 import math
 import random
 
-from hd.pix import (Canvas, Light, B4, W, H, hr, WALNUT, GREEN, FLOOR, GOLD, RED, NAVY, SKIN, GRAY, SUIT, PAPER,
+from PIL import Image, ImageChops
+
+from hd.rooms.fabrica_calderes import drift
+
+from hd.pix import (Canvas, Light, B4, W, H, hr, mix, WALNUT, GREEN, FLOOR, GOLD, RED, NAVY, SKIN, GRAY, SUIT, PAPER,
                     MANILA, SKY, SIL, IRON, BLUEP, CYAN, LAMPG, COPPER, SMOKE, GLASS)
 
 LIGHT = Light(vignette=(80, 46), floor_fade=(196, 36))
@@ -28,7 +32,67 @@ def moon(x, y):
     return min(1.0, edge * 6)
 
 
-def bg(cv):
+# ─── Animació de fons (també la fan servir el magatzem i el moll) ───────────
+def dust(cv, tt, n, seed, box, col, k=0.5, mask=None, fall=(-3, 6), wander=2.0):
+    """Pols que sura dins un feix de llum (moment tt = 0..1 del cicle). Cada mota fa un tram curt (fall = dx, dy
+    al llarg del cicle), amb un balanceig lateral, i neix i s'apaga (sin(π·s)) quan el seu tram torna a començar:
+    cada una en un moment diferent, i el bucle no es nota. `mask(x, y)` → 0..1: on hi ha llum per veure-la."""
+    rnd = random.Random(seed)
+    x0, y0, x1, y1 = box
+    for _ in range(n):
+        bx, by = rnd.uniform(x0, x1), rnd.uniform(y0, y1)
+        s0, m, fi = rnd.random(), rnd.choice((1, 2, 3)), rnd.uniform(0, 6.283)
+        amp = rnd.uniform(0.4, 1.0) * wander
+        sp = rnd.uniform(0.6, 1.0)
+        s = (s0 + tt) % 1
+        x = round(bx + fall[0] * sp * s + amp * math.sin(2 * math.pi * tt * m + fi))
+        y = round(by + fall[1] * sp * s + amp * 0.5 * math.sin(2 * math.pi * tt * (4 - m) + fi * 1.7))
+        if not (0 <= x < cv.w and 0 <= y < cv.h):
+            continue
+        a = k * math.sin(math.pi * s) * (mask(x, y) if mask else 1.0)
+        if a > 0.06:
+            o = cv.P[x, y]
+            cv.P[x, y] = mix(o, col, min(1.0, a)) + (o[3],)
+
+
+def ambient_frames(bg, light, n, box=None, draw=None):
+    """Fotogrames de l'animació: bg(cv, t=i/n) menys el fons quiet (bg amb t = 0); només els píxels que canvien.
+    `box` = (x0, y0, x1, y1): zona fora de la qual no es mou res. `draw(t)` → imatge: per no haver de redibuixar
+    la sala sencera a cada fotograma quan l'animació és només una capa al damunt."""
+    if draw is None:
+        def draw(t):
+            cv = Canvas(light=light)
+            bg(cv, t=t)
+            return cv.img.convert('RGB')
+    base = draw(0.0)
+    frames = []
+    for i in range(n):
+        img = draw(i / n)
+        d = ImageChops.difference(base, img).split()
+        m = ImageChops.lighter(ImageChops.lighter(d[0], d[1]), d[2]).point(lambda v: 255 if v else 0)
+        if box:
+            keep = Image.new('L', m.size, 0)
+            keep.paste(255, box)
+            m = ImageChops.multiply(m, keep)
+        fr = Image.new('RGBA', base.size, (0, 0, 0, 0))
+        fr.paste(img.convert('RGBA'), mask=m)
+        frames.append(fr)
+    return frames
+
+
+def moon_beam(x, y):
+    """El raig de lluna a l'aire, de l'ampit de la finestra a la taca del terra (0..1)."""
+    s = (y - 100) / 80
+    if not 0 <= s <= 1.1:
+        return 0.0
+    cx, half = 124 + s * 46, 34 + s * 10
+    e = 1 - abs(x - cx) / half
+    return max(0.0, min(1.0, e * 2.5)) * min(1.0, s * 6)
+
+
+def bg(cv, t=0.0):
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
     # ─── Sostre, cornisa i paper pintat ───────────────────────────────────────
     FLOOR_Y = 154
 
@@ -253,10 +317,10 @@ def bg(cv):
 
 
     PUFFS = []
-    for cx, cw, top in CHIMNEYS:
+    for ci, (cx, cw, top) in enumerate(CHIMNEYS):
         pr = random.Random(cx)
-        for k in range(7):
-            PUFFS.append((cx + cw / 2 - k * 3.2 + pr.uniform(-1, 1), top - 2 - k * 3.6, 1.6 + k * 1.1, 1 - k / 7))
+        col = [(cx + cw / 2 - k * 3.2 + pr.uniform(-1, 1), top - 2 - k * 3.6, 1.6 + k * 1.1, 1 - k / 7) for k in range(7)]
+        PUFFS += drift(col, (tt * (1, 1, 2, 1)[ci] + (0, 0.35, 0.2, 0.7)[ci]) % 1)   # el fum puja i s'escampa
 
 
     def smoke(x, y):
@@ -273,6 +337,9 @@ def bg(cv):
         for x in range(GX0, GX1 + 1):
             if y >= skyline[x]:
                 lvl = 1.2 + (0.0 if y > skyline[x] else 2.6)  # vora encesa pel foc dels forns
+                if y == skyline[x]:                            # (que respira, a cada edifici al seu ritme)
+                    fi = hr(x // 6, 41) * 6.283
+                    lvl += 0.7 * (math.sin(ph * (1 + (x // 6) % 3) + fi) - math.sin(fi))
                 if (x, y) in WINDOWS or (x + 1, y) in WINDOWS:
                     cv.flat(x, y, (236, 170, 80) if hr(x, y) > 0.3 else (190, 110, 50))
                 else:
@@ -288,7 +355,13 @@ def bg(cv):
             if s > 0:
                 cv.put(x, y, SMOKE, s * 3.6 + 0.4, 0) if s > B4[y & 3][x & 3] * 0.7 else None
             if (x, y) in STARS and dm > 9:
-                cv.flat(x, y, (200, 200, 230) if hr(x, y, 1) > 0.5 else (140, 140, 190))
+                si = 2 if hr(x, y, 1) > 0.5 else 1
+                if hr(x, y, 2) > 0.45:                         # n'hi ha que titil·len
+                    fi = hr(x, y, 3) * 6.283
+                    si += round(1.2 * (math.sin(ph * (1 + int(hr(x, y, 4) * 3)) + fi) - math.sin(fi)))
+                si = max(0, min(3, si))
+                if si:
+                    cv.flat(x, y, ((0, 0, 0), (140, 140, 190), (200, 200, 230), (244, 244, 255))[si])
     cv.disc(MOON[0], MOON[1], 5.5, 5.5, PAPER, lambda nx, ny: 5.6 - nx * 1.2 - ny * 0.6, 0)
     cv.put(100, 38, PAPER, 3.6, 0); cv.put(104, 42, PAPER, 3.6, 0); cv.put(103, 37, PAPER, 4.0, 0)
     # travessers
@@ -659,6 +732,10 @@ def bg(cv):
 
     # ─── Retocs finals: tint fred de la lluna ─────────────────────────────────
     cv.tint(0, 150, W - 1, 205, (150, 170, 230), lambda x, y: 0.22 * moon(x, y))
+    # pols que sura dins el raig de la lluna, de la finestra al terra
+    dust(cv, tt, 20, 7, (96, 104, 200, 176), (206, 216, 248), 0.75, moon_beam)
 
 
 PROPS = {}
+
+ANIMS = {'ambient': {'frames': lambda: ambient_frames(bg, LIGHT, 24, box=(80, 20, 250, 205)), 'frameDuration': 130}}

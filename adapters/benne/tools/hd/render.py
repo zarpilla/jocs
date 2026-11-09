@@ -67,19 +67,34 @@ def _render_anims(name):
 CACHE = HERE / '.cache'
 
 
-def _code_key():
+def _code_key(name):
+    """Hash del codi que dibuixa la sala: pix.py i els mòduls de sala que fa servir (vegeu _deps)."""
     import hashlib
+    files = [HERE / 'pix.py'] + sorted(HERE / 'rooms' / f"{m.split('.')[-1]}.py" for m in _deps(name))
     h = hashlib.sha256()
-    for f in sorted(HERE.rglob('*.py')):
-        if '.cache' not in f.parts:
-            h.update(f.relative_to(HERE).as_posix().encode())
-            h.update(f.read_bytes())
+    for f in files:
+        h.update(f.relative_to(HERE).as_posix().encode())
+        h.update(f.read_bytes())
     return h.hexdigest()[:16]
+
+
+def _deps(name):
+    """Mòduls de sala que fa servir una sala (imports al principi o dins funcions), mirant el codi."""
+    import re
+    seen, todo = set(), [name]
+    while todo:
+        n = todo.pop()
+        if n in seen:
+            continue
+        seen.add(n)
+        src = (HERE / 'rooms' / f'{n}.py').read_text()
+        todo += [m for m in re.findall(r'hd\.rooms\.(\w+)', src) if (HERE / 'rooms' / f'{m}.py').exists()]
+    return {f'hd.rooms.{n}' for n in seen}
 
 
 def render_anims(name):
     """→ {id: (fotogrames RGBA, durada de cada fotograma en ms)} (amb memòria cau)."""
-    d = CACHE / f'{name}-{_code_key()}'
+    d = CACHE / f'{name}-{_code_key(name)}'
     meta = d / 'anims.json'
     if meta.exists():
         info = json.loads(meta.read_text())

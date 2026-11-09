@@ -88,7 +88,10 @@ def contact_shadow(cv, x0, x1, y0, depth, fall=8):
 
 # ─── Fons ──────────────────────────────────────────────────────────────────
 
-def bg(cv, alarm=False):
+def bg(cv, alarm=False, t=0.0):
+    """`t` (0..1): moment del cicle de l'animació de fons; amb t = 0 surt el fons quiet."""
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
     # ─── Sostre: biga de ferro reblonada i canonada de coure ─────────────────
     cv.rect(0, 0, W - 1, 3, IRON, 0.4)
     cv.rect(0, 4, W - 1, 9, IRON, lambda x, y: 2.0 + (0.6 if y == 4 else 0) - (y - 4) * 0.15)
@@ -180,13 +183,17 @@ def bg(cv, alarm=False):
     for y in range(78, 94):
         for x in range(23, 43):
             f = 1 - abs(x - 33) / 14 + (y - 78) / 16 * 0.6 + (hr(x // 2, y // 3, 5) - 0.5) * 0.6
+            if tt:                                                 # les flames es mouen darrere els barrots
+                u = x * 0.45 + y * 0.35
+                f += 0.28 * (math.sin(u - ph * 3 + y * 0.2) - math.sin(u + y * 0.2)) \
+                    + 0.18 * (math.sin(x * 0.9 - ph * 4) - math.sin(x * 0.9))
             cv.put(x, y, FIRE, 1.4 + f * 2.2, 0)
     for x in (28, 33, 38):
         cv.vline(x, 78, 93, IRON, 1.4, 0)
         cv.vline(x + 1, 78, 93, IRON, 0.4, 0)
     cv.hline(21, 44, 76, IRON, 3.6)
     cv.hline(21, 44, 95, IRON, 0.8)
-    cv.glow(33, 88, 26, (255, 150, 70), 0.0 if alarm else 0.35)
+    cv.glow(33, 88, 26, (255, 150, 70), 0.0 if alarm else 0.35 + 0.05 * math.sin(ph * 3) + 0.03 * math.sin(ph * 4 + 1) - 0.03 * math.sin(1))
     # maneta de palanca i pany
     cv.rect(44, 108, 47, 120, IRON, lambda x, y: 3.2 - (x - 44) * 0.5)
     cv.rect(38, 111, 49, 113, IRON, lambda x, y: 4.0 - (y - 111) * 1.2)
@@ -249,13 +256,22 @@ def bg(cv, alarm=False):
         cv.flat(round(cx), round(cy), (30, 24, 24))
         cv.put(round(cx - r * 0.4), round(cy - r * 0.5), PAPER, 6, 0)
 
-    gauge(106, 120, 7, math.radians(-30))
-    gauge(126, 120, 7, math.radians(-120))
-    # fila de llums de senyal (vidres apagats)
+    # les agulles tremolen una mica (la cambra brunzeix)
+    gauge(106, 120, 7, math.radians(-30 + 7 * math.sin(ph * 7) + 4 * math.sin(ph * 11)))
+    gauge(126, 120, 7, math.radians(-120 + 6 * math.sin(ph * 5 + 1) - 6 * math.sin(1) + 4 * math.sin(ph * 13)))
+    # fila de llums de senyal (vidres apagats; de tant en tant se n'encén algun)
+    BLINK = ((0.10, 0.30), (0.40, 0.46), (0.58, 0.63), (0.70, 0.75), (0.84, 0.96))
+    WHO = (0, 1, 2, 2, 3)
     for i, (rp, lv) in enumerate(((FE9, 2.0), (WARN, 1.4), (FE9, 2.0), (WARN, 1.4))):
         x = 142 + i * 8
+        on = any(a <= tt < b and WHO[k] == i for k, (a, b) in enumerate(BLINK))
         cv.disc(x, 115, 2.2, 2.2, GOLD, 3.0)
-        cv.disc(x, 115, 1.4, 1.4, rp, lambda nx, ny: lv + 1 - nx - ny)
+        if on:
+            cv.glow(x, 115, 7, rp[-3], 0.55)
+            cv.disc(x, 115, 1.4, 1.4, rp, lambda nx, ny: len(rp) - 2.4 - (nx * nx + ny * ny) * 1.2, 0)
+            cv.flat(x - 1, 114, rp[-1])
+        else:
+            cv.disc(x, 115, 1.4, 1.4, rp, lambda nx, ny: lv + 1 - nx - ny)
     # interruptors de ganivet
     for i in range(3):
         x = 144 + i * 9
@@ -369,8 +385,9 @@ def bg(cv, alarm=False):
         for x in range(GX0, GX1 + 1):
             d = math.hypot(x - CORE[0], (y - CORE[1]) * 0.7) / 70
             lvl = 4.2 - d * 3.2 - dim
-            for gx in (247.5, 270.5):                                # fils d'energia entre bobines
-                w = gx + math.sin(y / 5.0 + gx) * 2.2
+            for k, gx in enumerate((247.5, 270.5)):                  # fils d'energia entre bobines (ondulen)
+                w = gx + math.sin(y / 5.0 + gx - ph * (2 + k)) * (2.2 + 0.5 * math.sin(ph * (1 + 2 * k) + gx)
+                                                                    - 0.5 * math.sin(gx))
                 if abs(x - w) < 0.8 and 52 < y < 124:
                     lvl += 1.8
                 elif abs(x - w) < 3:
@@ -401,9 +418,20 @@ def bg(cv, alarm=False):
         cv.vline(cx, 42, 49, FE9, 4.4, 0.3)
         cv.vline(cx - 1, 127, 136, FE9, 4.4, 0.3)
     # el camp: lluïssor entre les bobines
-    for cx in (247, 271):
-        cv.glow(cx, 88, 18, (190, 160, 255), 0.0 if alarm else 0.45)
+    for k, cx in enumerate((247, 271)):
+        breath = 0.07 * (math.sin(ph * (1 + k) + k * 2) - math.sin(k * 2))       # el camp respira
+        cv.glow(cx, 88, 18, (190, 160, 255), 0.0 if alarm else 0.45 + breath)
     cv.glow(CORE[0], CORE[1], 60, (150, 110, 240), 0.22 if alarm else 0.4)
+    # petits arcs entre les bobines, de tant en tant (un parell de fotogrames cadascun)
+    for (a, b, x0, y0, x1, seed) in ARCS:
+        if a <= tt < b:
+            n = abs(x1 - x0)
+            pts = [(x0 + (x1 - x0) * i / n, y0 + (hr(i // 2, seed, int(tt * 97)) - 0.5) * 7 * math.sin(math.pi * i / n))
+                   for i in range(n + 1)]
+            for (xa, ya) in pts:
+                cv.glow(xa, ya, 3, (200, 180, 255), 0.5)
+            for (xa, ya) in pts:
+                cv.flat(round(xa), round(ya), FIELD[7])
     # el vidre: lleuger tint fred i reflexos en diagonal
     cv.tint(GX0, GY0, GX1, GY1, (170, 200, 230), 0.06)
 
@@ -481,7 +509,8 @@ def bg(cv, alarm=False):
     cv.disc(407, 96, 1.6, 1.6, RED, 3.2)
     cv.disc(419, 72, 5.6, 5.6, GOLD, lambda nx, ny: 3.4 - nx - ny)              # manòmetre
     cv.disc(419, 72, 4.2, 4.2, PAPER, lambda nx, ny: 3.8 - ny * 0.6)
-    cv.line(419, 72, 422, 70, RED, 2.6)
+    na = math.radians(-34 + 9 * math.sin(ph * 9 + 2) - 9 * math.sin(2) + 5 * math.sin(ph * 2))   # l'agulla tremola
+    cv.line(419, 72, round(419 + math.cos(na) * 3.6), round(72 + math.sin(na) * 3.6), RED, 2.6)
     cv.hline(411, 414, 72, COPPER, 3.0)
     # rètol de perill sobre la reixa
     cv.rect(346, 72, 382, 92, WARN, lambda x, y: 3.2 - (y - 72) * 0.04)
@@ -544,6 +573,10 @@ def bg(cv, alarm=False):
         cv.tint(0, 0, W - 1, H - 1, (255, 200, 130),
                 lambda x, y: 0.10 * max(0.0, 1 - math.hypot(x - LAMP1[0], (y - LAMP1[1]) * 1.1) / 120))
 
+
+# arcs del camp: (des de t, fins a t, x d'una bobina, y, x de l'altra, llavor)
+ARCS = ((0.22, 0.30, 242, 70, 253, 1), (0.52, 0.57, 265, 104, 276, 2), (0.79, 0.86, 242, 96, 253, 3),
+        (0.90, 0.94, 265, 62, 276, 4))
 
 GLASSD = [(30, 26, 26), (56, 50, 48), (90, 84, 80)]
 
@@ -621,3 +654,30 @@ def reixa_llimada(cv):
 
 PROPS = {'boto': boto, 'reixa_llimada': reixa_llimada,
          'palanca_alcada': palanca_alcada, 'palanca_baixada': palanca_baixada}
+
+
+# Animació de fons: el camp violeta ondula i fa petits arcs, les llums de senyal parpellegen, el foc es
+# mou darrere l'espiell i les agulles tremolen. Cada fotograma porta només el que canvia respecte del
+# fons quiet (t = 0).
+def frame_diff(base, img):
+    """Imatge transparent amb només els píxels d'`img` que no són iguals a `base`."""
+    from PIL import Image, ImageChops
+    d = ImageChops.difference(base.convert('RGB'), img.convert('RGB')).convert('L').point(lambda v: 255 if v else 0)
+    out = Image.new('RGBA', img.size, (0, 0, 0, 0))
+    out.paste(img, (0, 0), d)
+    return out
+
+
+def _ambient_frames(n=24):
+    from hd.pix import Canvas
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        frames.append(frame_diff(base.img, cv.img))
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 120}}

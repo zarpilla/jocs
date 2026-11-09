@@ -345,7 +345,18 @@ def floor_planks(cv):
             cv.put(x, y, FLOOR, lvl)
 
 
-def bg(cv):
+def lamp_cone(x, y):
+    """El con de llum sota la làmpada penjada (0..1)."""
+    if not 40 <= y <= 120:
+        return 0.0
+    half = 8 + (y - 40) * 0.55
+    return max(0.0, min(1.0, (1 - abs(x - 150) / half) * 2.0)) * (1 - (y - 40) / 80) ** 0.7
+
+
+def bg(cv, t=0.0):
+    from hd.rooms.fabrica_despatx import dust
+    tt = t
+    ph = 2 * math.pi * tt
     # ─── Sostre: taulons foscos i una biga d'acer ──────────────────────────
     cv.rect(0, 0, W - 1, 12, WALNUT, lambda x, y: 0.4 + (0.5 if x % 24 in (0, 1) else 0) + (hr(x // 24, 3) - 0.5) * 0.4, 0.4)
     for x in range(0, W, 48):                                    # tirants de la cavallada
@@ -390,7 +401,11 @@ def bg(cv):
     # interior: el foc de les calderes
     for y in range(70, FLOOR_Y):
         for x in range(13, 53):
-            cv.put(x, y, FIRE, 1.4 + (y - 70) / 80 * 2.4 - abs(x - 46) / 20 + (hr(x // 2, y // 3) - 0.5) * 0.4, 0.2)
+            fl = 0.0
+            if x > 40:                                            # (la part que es veu) les flames que es mouen a la paret
+                fl = 0.35 * math.sin(y * 0.29 + x * 0.21 + ph * 3) + 0.25 * math.sin(y * 0.13 - x * 0.37 + ph * 2 + 1.0) \
+                    + 0.15 * math.sin(y * 0.5 + ph * 5 + 2.0)
+            cv.put(x, y, FIRE, 1.4 + (y - 70) / 80 * 2.4 - abs(x - 46) / 20 + (hr(x // 2, y // 3) - 0.5) * 0.4 + fl, 0.2)
     # silueta d'una caldera al fons
     for y in range(84, FLOOR_Y):                                  # caldera: cos cilíndric reblonat
         for x in range(26, 51):
@@ -423,7 +438,7 @@ def bg(cv):
     text(cv, 17, 52, 'CALDERES', [(30, 34, 70), (40, 46, 96)], 0.5, 0)
     cv.put(15, 57, IRON, 1.0); cv.put(50, 57, IRON, 1.0)
     # llum del foc: halo i taca al terra
-    cv.glow(46, 120, 46, (255, 140, 60), 0.32)
+    cv.glow(46, 120, 46, (255, 140, 60), 0.32 + 0.03 * math.sin(ph * 3) + 0.025 * (math.sin(ph * 5 + 1) - math.sin(1)))
     for y in range(FLOOR_Y, 200):
         t = (y - FLOOR_Y) / 47
         for x in range(int(14 - t * 20), int(58 + t * 26)):
@@ -549,8 +564,9 @@ def bg(cv):
             yel = ((x + y) // 5) % 2 == 0
             cv.put(x, y, GOLD if yel else IRON, (3.4 if yel else 0.8) - (y - FY1 + 7) * 0.15)
         cv.put(x, FY1 - 1, IRON, 0.2)
-        if hr(x // 3, 86) > 0.15:
-            cv.flat(x, FY1, mix((150, 170, 230), (230, 236, 255), hr(x, 87)))
+        if hr(x // 3, 86) > 0.15:                             # (la claror de l'escletxa tremola una mica)
+            fi = hr(x // 4, 88) * 6.283
+            cv.flat(x, FY1, mix((150, 170, 230), (230, 236, 255), min(1, max(0, hr(x, 87) + 0.3 * math.sin(ph * (1 + x // 4 % 3) + fi)))))
     # la lluna que s'escola per sota, tirada pel terra de la badia
     for y in range(FY1 + 1, FLOOR_Y):
         for x in range(GX0 - 4, GX1 + 5):
@@ -595,6 +611,10 @@ def bg(cv):
     cv.hline(139, 161, 35, [(255, 240, 190)], 0, 0)
     cv.disc(150, 36, 2.4, 1.6, PAPER, 6, 0)
     cv.glow(150, 38, 40, (255, 222, 150), 0.4)
+
+    # pols que sura sota la làmpada i a la llum de la lluna que entra per sota la comporta
+    dust(cv, tt, 18, 61, (126, 44, 174, 104), (255, 236, 190), 0.6, lamp_cone)
+    dust(cv, tt, 16, 62, (336, 124, 474, 186), (206, 216, 248), 0.85, lambda x, y: min(1.0, _moon(x, y) * 1.4), fall=(-2, -5))
 
     # ─── Detalls: caixes i sacs a la vora de la porta ─────────────────────
     crate(cv, 60, 133, 20, 19)
@@ -744,6 +764,15 @@ def p_llima(cv):
 def p_marca(cv):
     carved_mark(cv, 252, 80)
 
+
+# Animació de fons: el foc de les calderes es mou darrere la porta, la pols sura a la llum de la làmpada i de
+# la lluna, i l'escletxa de sota la comporta tremola.
+def _ambient_frames():
+    from hd.rooms.fabrica_despatx import ambient_frames
+    return ambient_frames(bg, LIGHT, 24, box=(0, 30, W - 1, 205))
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 130}}
 
 PROPS = {
     'biga_acer': p_biga_acer,

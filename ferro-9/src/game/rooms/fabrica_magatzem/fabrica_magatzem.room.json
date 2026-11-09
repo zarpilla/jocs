@@ -230,6 +230,20 @@
         "y": 188
       },
       "description": "caixa d'eines"
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 130
+        }
+      }
     }
   ],
   "characters": [

@@ -241,7 +241,13 @@ def red_alarm(x, y):
     return max(0.0, 1 - d / 70) ** 2
 
 
-def bg(cv):
+def bg(cv, t=0.0):
+    """`t` (0..1): moment del cicle de l'animació de fons (t = 0 és el fons quiet)."""
+    tt = t                                   # (dins la funció, `t` es fa servir per a altres coses)
+    ph = 2 * math.pi * tt
+    al = math.sin(ph * 2)                    # l'alarma del fons polsa (dues vegades per cicle)
+    tube_off = 0.40 <= tt < 0.44             # un tub del passadís parpelleja (un fotograma)
+    strip_off = (0.79 <= tt < 0.83) or (0.875 <= tt < 0.915)   # la tira del cartell fa dues pampallugues
     # ─── Passadís (darrere de tot) ────────────────────────────────────────
     # sostre del passadís
     for y in range(OPEN_TOP, round(FAR_T) + 1):
@@ -259,9 +265,10 @@ def bg(cv):
         (xa, ya), (xb, _) = cp(205, OPEN_TOP, f), cp(275, OPEN_TOP, f)
         ya = round(VY + (OPEN_TOP + 10 - VY) * f)
         th = max(1, round(3 * f))
-        cv.rect(round(xa), ya, round(xb), ya + th - 1, LAMPW, 3.6, 0)
+        off = tube_off and f == 0.66
+        cv.rect(round(xa), ya, round(xb), ya + th - 1, LAMPW, 1.6 if off else 3.6, 0)
         cv.hline(round(xa) - 1, round(xb) + 1, ya + th, HULL, 0.6, 0)
-        cv.glow((xa + xb) / 2, ya + 1, 26 * f, (180, 225, 255), 0.4)
+        cv.glow((xa + xb) / 2, ya + 1, 26 * f, (180, 225, 255), 0.12 if off else 0.4)
 
     # parets laterals del passadís
     def side(x0, sgn):
@@ -342,10 +349,13 @@ def bg(cv):
     cv.rect(DX0 + 3, 98, DX0 + 6, 101, ORANGE, 3.0, 0)               # rètol de l'hangar
     # pilot vermell sobre la porta
     cv.rect(268, DT - 8, 276, DT - 4, HULL, 1.2, 0)
-    cv.rect(269, DT - 7, 275, DT - 5, ALARM, 4.2, 0)
-    cv.hline(270, 274, DT - 7, ALARM, 5.0, 0)
-    cv.tint(fl, ft, fr, fb + 30, (255, 60, 50), lambda x, y: 0.42 * red_alarm(x, y))
+    cv.rect(269, DT - 7, 275, DT - 5, ALARM, 4.2 + 0.9 * al, 0)
+    cv.hline(270, 274, DT - 7, ALARM, 5.0 + 0.6 * al, 0)
+    cv.tint(fl, ft, fr, fb + 30, (255, 60, 50), lambda x, y: 0.42 * (1 + 0.3 * al) * red_alarm(x, y))
     cv.glow(272, DT - 6, 22, (255, 70, 60), 0.6)
+    if al > 0:                                                         # el halo creix (barreja suau)
+        cv.tint(250, DT - 28, 294, DT + 16, (255, 80, 64),
+                lambda x, y: 0.22 * al * max(0.0, 1 - math.hypot(x - 272, y - DT + 6) / 22))
 
     # terra (vestíbul + passadís)
     def floor_extra(x, y):
@@ -355,7 +365,7 @@ def bg(cv):
         return v
 
     deck(cv, VX, VY, FS, FK, FOU, FOV, y0=round(FAR_B) + 1, inside=floor_inside, extra=floor_extra, wall_y=FAR_B)
-    cv.tint(OPEN_X0, round(FAR_B), OPEN_X1, 160, (255, 60, 50), lambda x, y: 0.3 * red_alarm(x, y * 0.7 + 30))
+    cv.tint(OPEN_X0, round(FAR_B), OPEN_X1, 160, (255, 60, 50), lambda x, y: 0.3 * (1 + 0.3 * al) * red_alarm(x, y * 0.7 + 30))
     # línia groga de guia, cap a la porta del fons
     for y in range(round(FAR_B) + 1, H):
         d = y - VY
@@ -460,6 +470,8 @@ def bg(cv):
     cv.rect(94, 77, 108, 86, SPACE, 2.6, 0)
     for y in range(78, 86, 2):
         cv.hline(95, 95 + int(hr(y, 3) * 11), y, TEAL, 3.6, 0)
+    if (tt * 4) % 1 >= 0.5:                                            # el cursor de l'intèrfon
+        cv.rect(97 + int(hr(84, 3) * 11), 84, 98 + int(hr(84, 3) * 11), 84, TEAL, 5.0, 0)
     cv.glow(101, 81, 12, (90, 220, 200), 0.35)
     for i in range(3):
         cv.rect(95 + i * 5, 90, 97 + i * 5, 93, HULL, 2.2)
@@ -475,8 +487,9 @@ def bg(cv):
     # ─── Paret dreta: cartell, càmera, porta de la Sala de la Memòria ─────
     # tira de llum sobre el cartell
     cv.rect(346, 28, 402, 31, HULL, 1.6)
-    cv.hline(348, 400, 31, LAMPW, 3.8, 0)
-    cv.glow(374, 33, 40, (200, 235, 255), 0.35)
+    cv.hline(348, 400, 31, LAMPW, 1.4 if strip_off else 3.8, 0)
+    if not strip_off:
+        cv.glow(374, 33, 40, (200, 235, 255), 0.35)
 
     # Cartell del reciclatge (324..425 × 38..77): somriure, fletxa cap al fons
     PX0, PY0, PX1, PY1 = 327, 39, 421, 74
@@ -505,12 +518,14 @@ def bg(cv):
         cv.rect(x, y, x + 3, y + 3, SIGN, 3.5, 0.3)
     # canto superior dret una mica despenjat
     cv.put(PX1, PY0, HULL, 2.0)
+    if strip_off:                                                      # la tira parpelleja: el cartell s'enfosqueix
+        cv.tint(PX0 - 1, PY0 - 1, PX1 + 2, PY1 + 2, (8, 10, 16), 0.3)
 
     # Càmera de vigilància (409..447 × 10..35)
     cv.rect(436, 12, 441, 20, HULL, lambda x, y: 3.0 - (x - 436) * 0.3)        # suport
     cv.rect(432, 10, 445, 13, HULL, 2.0)
     for y in range(18, 31):
-        t = (y - 18) / 12
+        t = (y - 18) / 12                                                   # (tapa el `t` del cicle: fem servir `tt`)
         x0 = round(414 + t * 2)
         for x in range(x0, 444):
             lvl = 4.0 - t * 1.6 - (x - x0) / 60
@@ -522,9 +537,13 @@ def bg(cv):
     cv.rect(410, 20, 415, 28, HULL, lambda x, y: 1.0 + (y - 20) * 0.1)     # objectiu
     cv.disc(412, 24, 2, 3, SPACE, lambda nx, ny: 2.0 - nx - ny, 0)
     cv.put(411, 23, CYAN, 4.0, 0)
-    cv.put(438, 23, PILOT, 3.6, 0)
-    cv.put(438, 22, PILOT, 2.6, 0)
-    cv.glow(438, 23, 6, (90, 255, 120), 0.6)
+    if (tt * 3 + 0.2) % 1 < 0.75:                                      # el LED de la càmera fa pampallugues
+        cv.put(438, 23, PILOT, 3.6, 0)
+        cv.put(438, 22, PILOT, 2.6, 0)
+        cv.glow(438, 23, 6, (90, 255, 120), 0.6)
+    else:
+        cv.put(438, 23, PILOT, 1.0, 0)
+        cv.put(438, 22, PILOT, 0.6, 0)
     cv.line(441, 13, 470, 13, HULL, 0.6)                                    # cable
     cv.darken(414, 31, 444, 34, 0.35)
 
@@ -613,5 +632,26 @@ def rajola(cv):
     # ombra de la planxa
     cv.line(dx + 2, dy + 1, cx_ + 1, cy_ + 1, DECK, 0.0, 0)
 
+
+def _ambient_frames(n=24):
+    """N fotogrames transparents amb només els píxels que canvien respecte de bg(t=0)."""
+    from hd.pix import Canvas
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT)
+        bg(cv, t=i / n)
+        fr = Canvas(light=LIGHT, transparent=True)
+        for y in range(H):
+            for x in range(W):
+                p = cv.P[x, y]
+                if p != base.P[x, y]:
+                    fr.P[x, y] = p
+        frames.append(fr.img)
+    return frames
+
+
+ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 125}}
 
 PROPS = {'rajola': rajola}

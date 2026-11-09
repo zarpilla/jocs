@@ -57,8 +57,18 @@ SUN = tuple(c / _l for c in SUN)
 
 # ─── Fons d'estrelles ───────────────────────────────────────────────────────
 
-def espai(cv, x0=0, x1=W - 1, seed=7):
-    """Cel negre, una via làctia tènue en diagonal i estrelles (algunes amb creu)."""
+def _tw(t, *key):
+    """Titil·leig: una ona de -1..1 que val 0 a t = 0 (el fons quiet) i fa bucle (harmònic 1..3, fase pròpia)."""
+    if not t:
+        return 0.0
+    k = 1 + int(hr(*key, 1) * 3)
+    p = hr(*key, 2) * 2 * math.pi
+    return (math.sin(2 * math.pi * t * k + p) - math.sin(p)) / 2
+
+
+def espai(cv, x0=0, x1=W - 1, seed=7, t=0.0):
+    """Cel negre, una via làctia tènue en diagonal i estrelles (algunes amb creu).
+    `t` (0..1): moment del bucle d'animació; algunes estrelles titil·len (amb t = 0, el fons quiet)."""
     for y in range(H):
         for x in range(x0, x1 + 1):
             # banda de la via làctia: de dalt a l'esquerra cap a la dreta, baixant
@@ -73,25 +83,37 @@ def espai(cv, x0=0, x1=W - 1, seed=7):
         if rnd.random() > 0.35 + math.exp(-d * d) * 0.6:
             continue
         b = rnd.random() ** 2.4
-        col = mix((70, 70, 110), (230, 236, 255), b)
-        if rnd.random() < 0.2:
-            col = mix(col, (255, 220, 170), 0.5)                # algunes estrelles càlides
+        warm = rnd.random() < 0.2                               # algunes estrelles càlides
+        if t and b > 0.12 and hr(x, y, 41) < 0.55:
+            b += 0.4 * _tw(t, x, y)                             # titil·la
+        col = mix((70, 70, 110), (230, 236, 255), max(0.0, min(1.0, b)))
+        if warm:
+            col = mix(col, (255, 220, 170), 0.5)
+        if b < 0:
+            col = mix(cv.get(x, y), col, max(0.0, 1 + b * 3))   # gairebé s'apaga
         cv.flat(x, y, col)
     for _ in range(14):                                         # estrelles brillants amb creu
         x, y = rnd.randint(x0 + 4, x1 - 4), rnd.randint(4, H - 4)
         n = rnd.choice((1, 2, 2, 3))
+        tw = _tw(t, x, y, 9)                                    # la creu s'allarga i s'escurça
         cv.flat(x, y, (255, 255, 255))
-        for k in range(1, n + 1):
+        for k in range(1, n + 2):
+            f = max(0.0, min(1.0, n + 1 - k + tw * 1.3))
+            if f <= 0:
+                continue
             c = mix((255, 255, 255), (60, 70, 120), k / (n + 1))
             for dx, dy in ((k, 0), (-k, 0), (0, k), (0, -k)):
-                cv.flat(x + dx, y + dy, c)
-        cv.glow(x, y, 4 + n, (150, 170, 255), 0.35)
+                if 0 <= x + dx < W and 0 <= y + dy < H:
+                    cv.flat(x + dx, y + dy, c if f >= 1 else mix(cv.get(x + dx, y + dy), c, f))
+        cv.glow(x, y, 4 + n, (150, 170, 255), 0.35 * (1 + tw * 0.4))
 
 
 # ─── La Terra ───────────────────────────────────────────────────────────────
 
-def terra(cv, ex, ey, r, x0=0, x1=W - 1):
-    """La Terra de centre (ex, ey) i radi r: oceans, continents, núvols, terminador i llums de ciutat."""
+def terra(cv, ex, ey, r, x0=0, x1=W - 1, t=0.0):
+    """La Terra de centre (ex, ey) i radi r: oceans, continents, núvols, terminador i llums de ciutat.
+    `t` (0..1): moment del bucle d'animació; les llums de ciutat fan pampallugues (amb t = 0, el fons quiet)."""
+    tt = t                                                       # (més avall, `t` es fa servir per a altres coses)
     for y in range(max(0, int(ey - r - 12)), H):
         for x in range(max(x0, int(ex - r - 12)), min(x1, int(ex + r + 12)) + 1):
             nx, ny = (x - ex) / r, (y - ey) / r
@@ -145,7 +167,11 @@ def terra(cv, ex, ey, r, x0=0, x1=W - 1):
                 c = hr(x, y, 5)
                 dens = max(0.0, N_CLOUD(u * 7, v * 7) - 0.55) * (1 - abs(land - 0.56) * 12)
                 if c < dens * 1.0 and limb < 0.5:
-                    cv.flat(x, y, (255, 196, 110) if c < 0.05 else (190, 120, 60))
+                    col = (255, 196, 110) if c < 0.05 else (190, 120, 60)
+                    if tt:
+                        q = _tw(tt, x, y, 5)
+                        col = mix(col, (255, 230, 170), q) if q > 0 else mix(col, (60, 34, 30), -q * 1.2)
+                    cv.flat(x, y, col)
     # línia fina de llum a la vora il·luminada
     for a in range(0, 3600):
         t = math.radians(a / 10)
@@ -194,8 +220,13 @@ def _quad_wing(cv, s, root, tip, chord_root, chord_tip, cells, base, sheen, lit_
                 cv.put(x, y, SOLAR, lvl, 0)
 
 
-def gavina(dst, cx, cy, s=1.0, light=True):
-    """La Gavina centrada a (cx, cy), escala s. Sol des de l'esquerra; la Terra la il·lumina de blau per sota."""
+def gavina(dst, cx, cy, s=1.0, light=True, t=0.0):
+    """La Gavina centrada a (cx, cy), escala s. Sol des de l'esquerra; la Terra la il·lumina de blau per sota.
+    `t` (0..1): moment del bucle d'animació: les llums de navegació parpellegen per torns (vermell, verd), la balisa
+    de l'antena batega i la finestra encesa tremola una mica. Amb t = 0, el fons quiet (tot encès)."""
+    tt = t
+    ph = 2 * math.pi * tt
+    fr = (tt * 24) % 12                                           # (en fotogrames d'un bucle de 24)
     cv = Canvas(dst.w, dst.h, transparent=True)
     halos = []
     P = lambda dx, dy: (cx + dx * s, cy + dy * s)
@@ -229,8 +260,13 @@ def gavina(dst, cx, cy, s=1.0, light=True):
         # llums de navegació a les puntes (vermell a babord, verd a estribord)
         tx, ty = P(*tip)
         col = (255, 60, 50) if left else (70, 255, 120)
-        cv.flat(tx, ty - 1, col)
-        halos.append((tx, ty - 1, 6 * s + 2, col, 0.8))
+        off = (2.5 <= fr < 4.5) if left else (8.5 <= fr < 10.5)  # s'apaguen per torns, dos cops per bucle
+        if off:
+            cv.flat(tx, ty - 1, mix(col, (20, 24, 40), 0.65))
+            halos.append((tx, ty - 1, 3 * s + 2, col, 0.25))
+        else:
+            cv.flat(tx, ty - 1, col)
+            halos.append((tx, ty - 1, 6 * s + 2, col, 0.8))
         # puntal de la biga fins al cos (l'espatlla)
         rx, ry = P(*root)
         cv.disc(rx, ry + 2, 4 * s + 0.5, 5 * s + 0.5, STEEL, lambda nx, ny: 4.6 - nx * 1.6 - ny * 1.6, 0)
@@ -342,7 +378,7 @@ def gavina(dst, cx, cy, s=1.0, light=True):
     mx = round(cx + 5 * s)
     cv.vline(mx, round(cy - 30 * s), round(TOP - 6 * s), STEEL, 5.0, 0)
     cv.flat(mx, round(cy - 31 * s), (255, 255, 255))
-    halos.append((mx, cy - 31 * s, 5 * s + 1, (220, 230, 255), 0.6))
+    halos.append((mx, cy - 31 * s, 5 * s + 1, (220, 230, 255), 0.6 + 0.25 * (math.cos(ph * 3) - 1)))
     dx_, dy_ = cx - 12 * s, cy - 22 * s
     cv.line(dx_ + 1, dy_ + 1, cx - 6 * s, TOP - 5 * s, STEEL, 3.6, 0)
     cv.disc(dx_, dy_, 4 * s, 2.4 * s, STEEL, lambda nx, ny: 7.0 - nx * 2 + ny * 1.4, 0)
@@ -362,7 +398,8 @@ def gavina(dst, cx, cy, s=1.0, light=True):
             mask=lambda x, y: 1.0 if cv.get(x, y)[3] else 0.0)
     dst.img.alpha_composite(cv.img)
     if light:
-        halos.append((lit_x + 0.5, wy + 0.5, 10 * s + 2, (255, 190, 110), 0.5))
+        fl = 0.07 * (math.sin(ph * 5 + 1) - math.sin(1)) + 0.04 * (math.sin(ph * 2) - 0)
+        halos.append((lit_x + 0.5, wy + 0.5, 10 * s + 2, (255, 190, 110), 0.5 + fl))
     for h in halos:
         dst.glow(*h)
 
@@ -393,12 +430,39 @@ def lluna(cv, x, y, r):
                     cv.flat(xx, yy, mix(cv.get(xx, yy), (8, 8, 18), 0.7))   # la cara fosca tapa les estrelles
 
 
-def bg(cv):
-    espai(cv)
+def bg(cv, t=0.0):
+    espai(cv, t=t)
     lluna(cv, 418, 46, 9)
-    terra(cv, EX, EY, ER)
-    gavina(cv, GX, GY, 1.12)
+    terra(cv, EX, EY, ER, t=t)
+    gavina(cv, GX, GY, 1.12, t=t)
     vinyeta(cv)
 
 
 PROPS = {}
+
+
+# ─── Animació de fons ───────────────────────────────────────────────────────
+
+def ambient_frames(bg_fn, light, n=24, mask=None):
+    """Fotogrames d'una animació de fons: la sala en n moments del bucle, i de cada un només els píxels que canvien
+    respecte del fons quiet (t = 0). `mask(x0, y0, x1, y1)`: rectangle on no s'hi anima res (opcional)."""
+    import numpy as np
+    from PIL import Image
+    base = Canvas(light=light)
+    bg_fn(base)
+    B = np.asarray(base.img)
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=light)
+        bg_fn(cv, t=i / n)
+        A = np.array(cv.img)
+        ch = (A[..., :3] != B[..., :3]).any(axis=2)
+        if mask:
+            x0, y0, x1, y1 = mask
+            ch[y0:y1 + 1, x0:x1 + 1] = False
+        A[~ch] = 0
+        frames.append(Image.fromarray(A, 'RGBA'))
+    return frames
+
+
+ANIMS = {'ambient': {'frames': lambda: ambient_frames(bg, LIGHT), 'frameDuration': 130}}
