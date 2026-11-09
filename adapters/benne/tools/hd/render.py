@@ -56,10 +56,47 @@ def render(name, prop_ids=None):
     return cv.img, props
 
 
-def render_anims(name):
-    """→ {id: (fotogrames RGBA, durada de cada fotograma en ms)}."""
+def _render_anims(name):
     mod = load(name)
     return {aid: (a['frames'](), a.get('frameDuration', 150)) for aid, a in getattr(mod, 'ANIMS', {}).items()}
+
+
+# ─── Memòria cau de les animacions ─────────────────────────────────────────
+# Una animació són molts renders de la sala sencera (segons cadascun). Es desa a hd/.cache amb una
+# clau que depèn de tot el codi de hd/: si no ha canviat res, el sync la reaprofita.
+CACHE = HERE / '.cache'
+
+
+def _code_key():
+    import hashlib
+    h = hashlib.sha256()
+    for f in sorted(HERE.rglob('*.py')):
+        if '.cache' not in f.parts:
+            h.update(f.relative_to(HERE).as_posix().encode())
+            h.update(f.read_bytes())
+    return h.hexdigest()[:16]
+
+
+def render_anims(name):
+    """→ {id: (fotogrames RGBA, durada de cada fotograma en ms)} (amb memòria cau)."""
+    d = CACHE / f'{name}-{_code_key()}'
+    meta = d / 'anims.json'
+    if meta.exists():
+        info = json.loads(meta.read_text())
+        return {aid: ([Image.open(d / f'{aid}_{i}.png').convert('RGBA') for i in range(a['n'])], a['ms'])
+                for aid, a in info.items()}
+    anims = _render_anims(name)
+    if anims:
+        for old in CACHE.glob(f'{name}-*'):
+            for f in old.iterdir():
+                f.unlink()
+            old.rmdir()
+        d.mkdir(parents=True, exist_ok=True)
+        for aid, (frames, ms) in anims.items():
+            for i, f in enumerate(frames):
+                f.save(d / f'{aid}_{i}.png')
+        meta.write_text(json.dumps({aid: {'n': len(fr), 'ms': ms} for aid, (fr, ms) in anims.items()}))
+    return anims
 
 
 def _sprite(cid):
