@@ -1953,7 +1953,14 @@
       {
         "verb": "look",
         "if": {
-          "protagonist": "vet"
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "inRoom": "gavina_cella"
+            }
+          ]
         },
         "lines": [
           {
@@ -1963,6 +1970,22 @@
           {
             "who": "player",
             "text": "obj.tub_amb_llibreta.vet2"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet_fora"
           }
         ]
       }

@@ -127,8 +127,10 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(p.active).toBe('vet');
     expect(n.isHotspotVisible('gavina_cella', 'directora')).toBe(true);
     expect(texts(p.switchTo('vet'))).toBeDefined();
+    expect(texts(p.do('look', item('tub_amb_llibreta')))).toContain('la Directora');
     expect(texts(p.do('open', 'reixa'))).toContain('Atureu-la');
     expect(p.room).toBe('gavina_hangar');
+    expect(texts(p.do('look', item('tub_amb_llibreta')))).toContain('li falta a la llançadora');
     expect(texts(p.do('push', 'llancadora'))).toContain('Sense el tub');
     expect(texts(p.use('tub_amb_llibreta', 'llancadora'))).toContain('proves');
     expect(p.inventory()).toContain('llibreta_torn');

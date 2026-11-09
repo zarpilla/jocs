@@ -2203,7 +2203,14 @@
           {
             "verb": "look",
             "if": {
-              "protagonist": "vet"
+              "all": [
+                {
+                  "protagonist": "vet"
+                },
+                {
+                  "inRoom": "gavina_cella"
+                }
+              ]
             },
             "lines": [
               {
@@ -2213,6 +2220,22 @@
               {
                 "who": "player",
                 "text": "obj.tub_amb_llibreta.vet2"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "vet"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.tub_amb_llibreta.vet1"
+              },
+              {
+                "who": "player",
+                "text": "obj.tub_amb_llibreta.vet_fora"
               }
             ]
           }
@@ -16194,6 +16217,7 @@
       "obj.tub_amb_llibreta.desc": "El tub de vàlvula de ferro-9, amb la llibreta de torn de l'Iri enrotllada a dins.",
       "obj.tub_amb_llibreta.vet1": "Un tub de vàlvula, nou. I a dins hi ha alguna cosa enrotllada.",
       "obj.tub_amb_llibreta.vet2": "Ja ho miraré a l'hangar. Aquí la Directora no em treu els ulls de sobre.",
+      "obj.tub_amb_llibreta.vet_fora": "És el tub que li falta a la llançadora! El que hi ha a dins, ho trauré quan el munti.",
       "obj.tram_biga.iri": "Si els encaixo, la biga ja no passarà per la finestra. Millor d'un en un.",
       "obj.clau_vitrina.nom": "clau de la vitrina",
       "obj.clau_vitrina.desc": "Una clau petita amb una etiqueta: «Museu».",
