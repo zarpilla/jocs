@@ -54,6 +54,15 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 - **Arc:** comença fent servir l'Iri com si fos una eina ("la del passat em fabrica coses") i acaba decidint que no marxarà
   sense salvar-la.
 - **Joc:** rep coses, les repara, les combina i les fa servir. Investiga el passat a partir de les restes.
+- **Per què és a la presó:** la corporació Aldaia va tallar l'aire a l'**Anell de Baix**, el barri on es va criar,
+  per impagament. La Vet va buidar un magatzem Aldaia de **quaranta filtres d'aire** i els va instal·lar a les cases
+  del barri, de franc. Ella diu que els va vendre ben cars, perquè no vol que ningú la prengui per una heroïna. A
+  l'Anell de Baix pinten claus angleses a les parets. Per a la corporació, robar-li és el pitjor delicte possible, i
+  els que li planten cara acaben a La Gavina de sincronitzadors.
+- **On es diu:** l'avís de reciclatge en dona el motiu oficial (*"sostracció de 40 filtres d'aire"*), en Mos explica
+  el que se'n diu a la galeria (i la Vet ho nega), la Directora Aldaia l'hi retreu a l'Acte 3 i el final de la
+  fugida la porta de tornada a l'Anell de Baix. Així el jugador ho sap des del principi, però la veritat (que no en
+  va cobrar res) li arriba per boca dels altres, mai de la Vet.
 
 ## Secundaris
 

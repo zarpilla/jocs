@@ -101,6 +101,10 @@
         {
           "who": "directora",
           "text": "dlg.directora.no1"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.no2"
         }
       ],
       "goto": "menu"

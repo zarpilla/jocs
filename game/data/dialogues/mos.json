@@ -126,6 +126,12 @@
           "next": "maquillatge"
         },
         {
+          "id": "galeria",
+          "text": "dlg.mos.opt.galeria",
+          "once": true,
+          "next": "galeria"
+        },
+        {
           "id": "familia",
           "text": "dlg.mos.opt.familia",
           "once": true,
@@ -378,6 +384,27 @@
           "text": "dlg.mos.adeu"
         }
       ]
+    },
+    "galeria": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.galeria1"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.galeria2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.mos.galeria3"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.galeria4"
+        }
+      ],
+      "goto": "menu"
     }
   }
 }

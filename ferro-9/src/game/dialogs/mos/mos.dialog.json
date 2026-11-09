@@ -31,6 +31,13 @@
       "say": false
     },
     {
+      "id": "menu__galeria",
+      "scriptName": "menu__galeria",
+      "text": "Què diuen de mi, a la galeria?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__familia",
       "scriptName": "menu__familia",
       "text": "Tens família, Mos?",

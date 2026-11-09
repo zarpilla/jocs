@@ -22,6 +22,10 @@ options.menu__maquillatge.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'maquillatge')
 })
 
+options.menu__galeria.onChoose(() => {
+  chooseNarrativeOption('mos', dialog, 'menu', 'galeria')
+})
+
 options.menu__familia.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'familia')
 })
