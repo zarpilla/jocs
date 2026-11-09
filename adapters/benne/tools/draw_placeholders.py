@@ -25,6 +25,8 @@ import room_designs  # noqa: E402
 from room_designs import DESIGNS, C  # noqa: E402
 from draw_items import icon  # noqa: E402
 from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
+from hd.pix import W as HD_W, H as HD_H  # noqa: E402
+from hd.render import has_hd, render as render_hd  # noqa: E402
 
 PALETTE = {
     # passat: fàbrica de ferro-9 (calent, rovell, vapor)
@@ -173,16 +175,24 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     w, h = room['size']['width'], room['size']['height']
     k = room_designs.K = h / DESIGN_H  # el disseny és en coordenades de 352×198
 
-    bg = Image.new('RGBA', (w, h), (0, 0, 0, 255))
-    design['bg'](C(bg))
+    hd = (w, h) == (HD_W, HD_H) and has_hd(name)  # art HD (hd/rooms/<sala>.py), si n'hi ha
+    if hd:
+        bg, hd_props = render_hd(name)
+    else:
+        bg = Image.new('RGBA', (w, h), (0, 0, 0, 255))
+        design['bg'](C(bg))
     frames, tags = [bg], ['BG']
     for prop in room['props']:
         if prop['id'] == 'BG':
             continue
         frame = Image.new('RGBA', (w, h), (0, 0, 0, 0))
-        draw = design['props'].get(prop['id'])
-        if draw:
-            draw(C(frame))
+        if hd:
+            if prop['id'] in hd_props:
+                frame = hd_props[prop['id']]
+        else:
+            draw = design['props'].get(prop['id'])
+            if draw:
+                draw(C(frame))
         frames.append(frame)
         tags.append(prop.get('tag', prop['id']))
 
