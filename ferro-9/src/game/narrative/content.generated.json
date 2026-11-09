@@ -6573,15 +6573,43 @@
               },
               {
                 "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "sap_que_es_temps"
+                    },
+                    {
+                      "flag": "nota_pany_escrita",
+                      "is": false
+                    }
+                  ]
+                },
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.porta.look"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.aldaia1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.aldaia2"
                   }
                 ],
                 "effects": [
                   {
                     "setFlag": "pany_mirat"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.porta.look"
                   }
                 ]
               },
@@ -6596,11 +6624,6 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.porta.tancada"
-                  }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "pany_mirat"
                   }
                 ]
               }
@@ -16519,6 +16542,8 @@
       "sala.gavina_cella.porta.imant1": "Acosto l'imant al pany...",
       "sala.gavina_cella.porta.imant2": "Clac! Oberta! Qui sigui que siguis, I., t'estimo.",
       "sala.gavina_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Mos.",
+      "sala.gavina_cella.porta.aldaia1": "Aldaia... Com el segell de la clau anglesa. Com la fàbrica de la I.!",
+      "sala.gavina_cella.porta.aldaia2": "Si aquest pany el van fer a la seva fàbrica, potser ella sap com obrir-lo. Li en faré un dibuix.",
       "sala.gavina_cella.porta.tancada": "Tancada. Si s'obrís empenyent, no seria una presó.",
       "sala.gavina_cella.porta.oberta": "Oberta. Gràcies a la I. i a un imant de fa cent vint anys.",
       "sala.gavina_cella.porta.nom": "porta de la cel·la",

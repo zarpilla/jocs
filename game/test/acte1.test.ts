@@ -182,13 +182,15 @@ describe('Ferro-9 · Acte 1', () => {
     expect(texts(p.do('look', { kind: 'item', id: 'nota_iri' }))).not.toContain('Un full en blanc');
 
     // ── Vet: dibuixa el pany ──
-    p.do('look', 'porta');
     // El fullet no es veu fins que la Vet mira la llitera, i desapareix quan l'agafa.
     expect(() => p.do('pickUp', 'fullet')).toThrow('no és visible');
     p.do('look', 'llitera');
     p.do('pickUp', 'fullet');
     expect(p.inventory()).toContain('fullet_reeducacio');
     expect(() => p.do('look', 'fullet')).toThrow('no és visible');
+    // Abans de mirar el pany no sap què dibuixar-hi; en mirar-lo, hi veu la fàbrica de la I.
+    expect(texts(p.use('llapis_ulls', { kind: 'item', id: 'fullet_reeducacio' }))).not.toContain('Dibuixo el pany');
+    expect(texts(p.do('look', 'porta'))).toContain('Com la fàbrica de la I.');
     p.use('llapis_ulls', { kind: 'item', id: 'fullet_reeducacio' });
     p.use('nota_pany', 'panell');
 

@@ -1051,15 +1051,43 @@
         },
         {
           "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_que_es_temps"
+              },
+              {
+                "flag": "nota_pany_escrita",
+                "is": false
+              }
+            ]
+          },
           "lines": [
             {
               "who": "player",
               "text": "sala.gavina_cella.porta.look"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.porta.aldaia1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.porta.aldaia2"
             }
           ],
           "effects": [
             {
               "setFlag": "pany_mirat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.porta.look"
             }
           ]
         },
@@ -1074,11 +1102,6 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.porta.tancada"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "pany_mirat"
             }
           ]
         }
