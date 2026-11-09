@@ -8,7 +8,7 @@ import { jugarActe1, jugarActe2, keys, partida, texts } from './partida.js';
 const item = (id: string) => ({ kind: 'item' as const, id });
 
 describe('Ferro-9 · Acte 3 · Acorralades', () => {
-  it("la Directora pren la cel·la, el Brau vigila la cambra i la Vet troba una ruta a la Sala de la Memòria (sempre amb alguna pista)", () => {
+  it("la Directora pren la cel·la, el Sic vigila la cambra i la Vet troba una ruta a la Sala de la Memòria (sempre amb alguna pista)", () => {
     const { p, n } = partida({ checkHints: true, fins: 'fugida_completada' });
     jugarActe1(p);
     // A l'Acte 2, la Sala de la Memòria encara és tancada.
@@ -29,9 +29,9 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(descoberta).toContain('Sé què ha fet amb la meva cambra');
     expect(descoberta).toContain('fora de la cambra');
     expect(p.room).toBe('fabrica_calderes');
-    expect(n.isHotspotVisible('fabrica_calderes', 'brau')).toBe(true);
+    expect(n.isHotspotVisible('fabrica_calderes', 'sic')).toBe(true);
     expect(texts(p.do('open', 'porta_cambra'))).toContain('Ni un pas');
-    expect(texts(p.talk('brau', 'que_passa'))).toContain('zing');
+    expect(texts(p.talk('sic', 'que_passa'))).toContain('zing');
 
     // ── Vet: la Sala de la Memòria ──
     p.switchTo('vet');
@@ -63,12 +63,12 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(n.flag('pacte_acceptat')).toBe(true);
     expect(texts(p.use('mapa_fuga', 'panell'))).toContain('no vibra');
 
-    // ── Iri: enganya el Brau i torna a la cambra ──
+    // ── Iri: enganya el Sic i torna a la cambra ──
     p.switchTo('iri');
     expect(p.room).toBe('fabrica_calderes');
-    p.talk('brau', 'enganyar');
-    expect(n.flag('brau_distret')).toBe(true);
-    expect(n.isHotspotVisible('fabrica_calderes', 'brau')).toBe(false);
+    p.talk('sic', 'enganyar');
+    expect(n.flag('sic_distret')).toBe(true);
+    expect(n.isHotspotVisible('fabrica_calderes', 'sic')).toBe(false);
     expect(texts(p.do('open', 'porta_cambra'))).toContain('molts racons');
     expect(p.room).toBe('fabrica_cambra');
     expect(texts(p.use('llima', 'reixa'))).toContain('formulari');

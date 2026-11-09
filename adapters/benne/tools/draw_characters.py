@@ -6,7 +6,7 @@ que espera Benne (full d'Aseprite PNG + JSON amb etiquetes, i el .character.json
   iri      enginyera del torn de nit (passat): bata blanca oberta, trena fosca, ulleres al front
   vet      presonera de la cel·la 9 (present): granota de presó taronja, bob platí
   cargol   robot de manteniment amb closca de cargol, ulls a les antenes, erugues
-  capatas  el capatàs Pruna, adormit a la cadira, amb el segell a les mans (i sense)
+  capatas  el capatàs Tul, adormit a la cadira, amb el segell a les mans (i sense)
   mos      presoner vell i prim, maquillat: granota taronja descolorida
   mare     l'altaveu en forma de cor de la IA (normalment invisible)
 
@@ -248,7 +248,7 @@ def hair_directora(c, p, f, layer):
         c.px(18, 12, p['skin'])
 
 
-def hair_brau(c, p, f, layer):
+def hair_sic(c, p, f, layer):
     """Barret de feltre i un bigoti espès."""
     if layer != 'front':
         return
@@ -299,11 +299,11 @@ DIRECTORA = {
     'top': (52, 54, 66), 'top2': (36, 38, 48), 'sleeve': (52, 54, 66), 'sleeve_len': 'long', 'legs': (52, 54, 66), 'legs2': (36, 38, 48),
     'shoes': (24, 22, 26), 'eyes': (40, 30, 40), 'lashes': True, 'hair_fn': hair_directora, 'deco': deco_vestit,
 }
-BRAU = {
+SIC = {
     'skin': (214, 168, 136), 'skin2': (186, 140, 110), 'hair': (70, 56, 50), 'hair2': (90, 76, 70), 'hat': (96, 94, 92),
     'top': (150, 146, 136), 'top2': (118, 114, 106), 'coat': (150, 146, 136), 'coat2': (118, 114, 106),
     'sleeve': (150, 146, 136), 'sleeve_len': 'long', 'legs': (70, 66, 64), 'legs2': (56, 52, 50),
-    'shoes': (40, 30, 26), 'eyes': (30, 24, 24), 'hair_fn': hair_brau, 'deco': deco_gavardina,
+    'shoes': (40, 30, 26), 'eyes': (30, 24, 24), 'hair_fn': hair_sic, 'deco': deco_gavardina,
 }
 
 
@@ -494,7 +494,7 @@ def cargol(facing, blink=False, talk=False):
     return c.img
 
 
-# ─── El capatàs Pruna, adormit ──────────────────────────────────────────────
+# ─── El capatàs Tul, adormit ──────────────────────────────────────────────
 
 def capatas(breath=0, with_seal=True, talk=False, zz=0):
     c = Canvas(48, 60)
@@ -648,7 +648,7 @@ def main():
     walker('vet', VET)
     standing('mos', MOS, thin=True)
     standing('directora', DIRECTORA)
-    standing('brau', BRAU)
+    standing('sic', SIC)
 
     tags = []
     for f in 'DLU':

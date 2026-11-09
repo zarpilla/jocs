@@ -92,15 +92,15 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
     // En tornar a l'hangar, la Vet hi troba la marca de l'Iri: el passat ha canviat el present sense la finestra.
     expect(n.flag('vet_ha_vist_marca')).toBe(true);
     expect(texts(p.do('look', 'pilar'))).toContain('bústia');
-    expect(n.getVar('sospita_brau')).toBe(1); // només la de l'Acte 1
+    expect(n.getVar('sospita_sic')).toBe(1); // només la de l'Acte 1
     // Acte 1: 9 enceses. Aquí: la nota de la mida i els tres trams.
     expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3);
   });
 
-  it('camí llarg amb ferro-9: arriba perfecta, però el Brau ho sabrà', () => {
+  it('camí llarg amb ferro-9: arriba perfecta, però el Sic ho sabrà', () => {
     const { p, n } = finsMida();
-    expect(texts(p.do('pickUp', 'biga_ferro9'))).toContain('Brau');
-    expect(n.getVar('sospita_brau')).toBe(2);
+    expect(texts(p.do('pickUp', 'biga_ferro9'))).toContain('Sic');
+    expect(n.getVar('sospita_sic')).toBe(2);
     p.use('biga_ferro9', 'trapa');
     p.use('llapis', item('llibreta_torn'));
     p.goTo('fabrica_calderes');
@@ -354,7 +354,7 @@ describe('Ferro-9 · Acte 2 · La vàlvula', () => {
     expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3 - 2 - 2);
   });
 
-  it('la fitxa de la Mira depèn del passat: si el Brau sospita, diu que la van acomiadar', () => {
+  it('la fitxa de la Mira depèn del passat: si el Sic sospita, diu que la van acomiadar', () => {
     const { p, n } = finsDiapaso();
     escriureIEnviar(p, 'nota_pressio');
     p.do('look', item('nota_pressio'));
@@ -365,7 +365,7 @@ describe('Ferro-9 · Acte 2 · La vàlvula', () => {
     p.do('open', 'porta');
     p.do('open', 'porta_hangar');
     p.do('pickUp', 'caixa_flotant');
-    n.apply({ addVar: 'sospita_brau', amount: 1 }); // com si l'Iri hagués robat la biga de ferro-9
+    n.apply({ addVar: 'sospita_sic', amount: 1 }); // com si l'Iri hagués robat la biga de ferro-9
     expect(texts(p.do('look', item('fitxa_mira')))).toContain('Acomiadada');
   });
 
@@ -465,18 +465,18 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     expect(estatFinestra(n).enceses).toBe(24 - 9 - 1 - 3 - 2 - 2 - 2);
   });
 
-  it("els plànols del despatx fan que el Brau acusi la Mira; falsificar l'inventari la salva, i l'arxiu ho recorda", () => {
+  it("els plànols del despatx fan que el Sic acusi la Mira; falsificar l'inventari la salva, i l'arxiu ho recorda", () => {
     const { p, n } = finsMotor();
     p.switchTo('iri');
     robarPlanols(p);
-    expect(n.getVar('sospita_brau')).toBe(2);
-    expect(texts(p.do('look', 'expedient_brau'))).toContain('M. Osset');
+    expect(n.getVar('sospita_sic')).toBe(2);
+    expect(texts(p.do('look', 'expedient_sic'))).toContain('M. Alsina');
     expect(n.state.quests.salvar_mira!.status).toBe('active');
     p.use('segell', 'llibre_inventari');
     expect(n.flag('mira_salvada')).toBe(true);
-    expect(n.getVar('sospita_brau')).toBe(0);
+    expect(n.getVar('sospita_sic')).toBe(0);
     expect(n.state.quests.salvar_mira!.status).toBe('completed');
-    expect(texts(p.do('look', 'expedient_brau'))).toContain('rovell');
+    expect(texts(p.do('look', 'expedient_sic'))).toContain('rovell');
     // Al present, l'arxiu ha canviat.
     p.switchTo('vet');
     p.use('clau_anglesa', 'escala');
@@ -489,13 +489,13 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     const { p, n } = s;
     p.switchTo('iri');
     robarPlanols(p);
-    p.do('look', 'expedient_brau');
+    p.do('look', 'expedient_sic');
     p.switchTo('vet');
     p.use('clau_anglesa', 'escala');
     p.do('open', 'escala');
     expect(texts(p.do('look', 'arxivador'))).toContain('Condemnada');
     p.switchTo('iri');
-    expect(texts(p.use('llapis', 'expedient_brau'))).toContain('Ho vaig fer jo');
+    expect(texts(p.use('llapis', 'expedient_sic'))).toContain('Ho vaig fer jo');
     expect(n.flag('mira_salvada')).toBe(true);
     p.switchTo('vet');
     expect(texts(p.do('look', 'expedient_iri'))).toContain('confessió');

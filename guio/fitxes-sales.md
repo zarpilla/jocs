@@ -10,14 +10,14 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `capatas` | capatàs Pruna | personatge | sempre | use + diapaso_espatllat, look, talkTo, pull, pickUp, push, use + plomall, use + objecte |
+| `capatas` | capatàs Tul | personatge | sempre | use + diapaso_espatllat, look, talkTo, pull, pickUp, push, use + plomall, use + objecte |
 | `segell` | segell oficial | prop | `{"all":[{"flag":"segell_caigut"},{"flag":"segell_agafat","is":false}]}` | look, pickUp |
 | `tauler` | tauler d'anuncis | hotspot / prop | sempre | look, pickUp |
 | `alarma` | llum d'alarma | hotspot / prop | sempre | look |
 | `porta_magatzem` | magatzem | hotspot / prop → `fabrica_magatzem` | sempre | open, use, walkTo, look |
 | `porta_cambra` | porta de la cambra | hotspot / prop → `fabrica_cambra` | sempre | use + objecte, open, use, walkTo, push, pull, use + clau_cambra, look |
 | `porta_moll` | moll de càrrega | hotspot / prop → `fabrica_moll` | sempre | open, use, walkTo |
-| `brau` | Inspector Brau | personatge | `{"all":[{"flag":"iri_descoberta"},{"flag":"brau_distret","is":false}]}` | talkTo, look |
+| `sic` | Inspector Sic | personatge | `{"all":[{"flag":"iri_descoberta"},{"flag":"sic_distret","is":false}]}` | talkTo, look |
 
 ### Cambra de ressonància · `fabrica_cambra`
 
@@ -35,7 +35,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 |---|---|---|---|---|
 | `porta_magatzem` | magatzem | hotspot / prop → `fabrica_magatzem` | sempre | open, use, walkTo |
 | `calaix` | calaix | hotspot / prop | sempre | use + imant_ferro9, open, pickUp, use, look |
-| `expedient_brau` | expedient | hotspot / prop | sempre | use + llapis, look |
+| `expedient_sic` | expedient | hotspot / prop | sempre | use + llapis, look |
 | `llibre_inventari` | llibre d'inventari | hotspot / prop | sempre | use + segell, look |
 | `retrat` | retrat | hotspot / prop | sempre | look |
 

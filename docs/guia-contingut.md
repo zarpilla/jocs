@@ -46,7 +46,7 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 | Efecte | Exemple |
 |---|---|
 | Flag | `{ "setFlag": "alarma_apagada" }` (o amb `"value": false`) |
-| Variable | `{ "setVar": "nom", "value": "x" }` · `{ "addVar": "sospita_brau", "amount": 1 }` |
+| Variable | `{ "setVar": "nom", "value": "x" }` · `{ "addVar": "sospita_sic", "amount": 1 }` |
 | Inventari | `{ "giveItem": "clau_cambra" }` · `{ "takeItem": "formulari_27b" }` (opcional: `"who": "vet"`) |
 | Memòria | `{ "remember": { "who": "cargol", "fact": "preguntat_pel_dia" } }` · `{ "forget": ... }` |
 | Relació | `{ "relation": { "who": "mos", "change": -2 } }` |

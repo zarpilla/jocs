@@ -111,7 +111,7 @@
         "reixa_mirada": false,
         "mapa_fuga_escrit": false,
         "pacte_acceptat": false,
-        "brau_distret": false,
+        "sic_distret": false,
         "iri_a_la_cambra": false,
         "cella_tancada": false,
         "iri_sap_reixa": false,
@@ -131,7 +131,7 @@
         "finestra_objecte_vet": "",
         "enceses_restants": 24,
         "transferencies": 0,
-        "sospita_brau": 0,
+        "sospita_sic": 0,
         "dies_reciclatge": 3,
         "biga_amagada": "",
         "molla_tensio": 1,
@@ -195,9 +195,9 @@
         "name": "pj.directora.nom",
         "description": "pj.directora.desc"
       },
-      "brau": {
-        "name": "pj.brau.nom",
-        "description": "pj.brau.desc"
+      "sic": {
+        "name": "pj.sic.nom",
+        "description": "pj.sic.desc"
       }
     },
     "items": {
@@ -1760,7 +1760,7 @@
           {
             "verb": "look",
             "if": {
-              "var": "sospita_brau",
+              "var": "sospita_sic",
               "op": ">=",
               "value": 2
             },
@@ -2087,7 +2087,7 @@
                 "if": {
                   "all": [
                     {
-                      "var": "sospita_brau",
+                      "var": "sospita_sic",
                       "op": ">=",
                       "value": 2
                     },
@@ -2391,15 +2391,15 @@
                       "flag": "iri_descoberta"
                     },
                     {
-                      "flag": "brau_distret",
+                      "flag": "sic_distret",
                       "is": false
                     }
                   ]
                 },
                 "lines": [
                   {
-                    "who": "brau",
-                    "text": "sala.fabrica_calderes.porta_cambra.brau"
+                    "who": "sic",
+                    "text": "sala.fabrica_calderes.porta_cambra.sic"
                   }
                 ]
               },
@@ -2417,15 +2417,15 @@
                       "flag": "iri_descoberta"
                     },
                     {
-                      "flag": "brau_distret",
+                      "flag": "sic_distret",
                       "is": false
                     }
                   ]
                 },
                 "lines": [
                   {
-                    "who": "brau",
-                    "text": "sala.fabrica_calderes.porta_cambra.brau"
+                    "who": "sic",
+                    "text": "sala.fabrica_calderes.porta_cambra.sic"
                   }
                 ]
               },
@@ -2501,19 +2501,19 @@
               }
             ]
           },
-          "brau": {
-            "name": "sala.fabrica_calderes.brau.nom",
+          "sic": {
+            "name": "sala.fabrica_calderes.sic.nom",
             "interactions": [
               {
                 "verb": "talkTo",
-                "dialogue": "brau"
+                "dialogue": "sic"
               },
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fabrica_calderes.brau.look"
+                    "text": "sala.fabrica_calderes.sic.look"
                   }
                 ]
               }
@@ -2524,7 +2524,7 @@
                   "flag": "iri_descoberta"
                 },
                 {
-                  "flag": "brau_distret",
+                  "flag": "sic_distret",
                   "is": false
                 }
               ]
@@ -3046,7 +3046,7 @@
             "if": {
               "all": [
                 {
-                  "flag": "brau_distret"
+                  "flag": "sic_distret"
                 },
                 {
                   "flag": "iri_a_la_cambra",
@@ -3201,7 +3201,7 @@
                     "setFlag": "planols_robats"
                   },
                   {
-                    "addVar": "sospita_brau",
+                    "addVar": "sospita_sic",
                     "amount": 1
                   }
                 ]
@@ -3256,7 +3256,7 @@
               }
             ]
           },
-          "expedient_brau": {
+          "expedient_sic": {
             "name": "sala.fabrica_despatx.expedient.nom",
             "interactions": [
               {
@@ -3265,7 +3265,7 @@
                 "if": {
                   "all": [
                     {
-                      "var": "sospita_brau",
+                      "var": "sospita_sic",
                       "op": ">=",
                       "value": 2
                     },
@@ -3337,7 +3337,7 @@
               {
                 "verb": "look",
                 "if": {
-                  "var": "sospita_brau",
+                  "var": "sospita_sic",
                   "op": ">=",
                   "value": 2
                 },
@@ -3381,7 +3381,7 @@
                 "if": {
                   "all": [
                     {
-                      "var": "sospita_brau",
+                      "var": "sospita_sic",
                       "op": ">=",
                       "value": 2
                     },
@@ -3409,7 +3409,7 @@
                     "setFlag": "inventari_falsificat"
                   },
                   {
-                    "setVar": "sospita_brau",
+                    "setVar": "sospita_sic",
                     "value": 0
                   }
                 ]
@@ -3928,7 +3928,7 @@
                     "setFlag": "biga_ferro9_robada"
                   },
                   {
-                    "addVar": "sospita_brau",
+                    "addVar": "sospita_sic",
                     "amount": 1
                   }
                 ]
@@ -4742,7 +4742,7 @@
               {
                 "verb": "look",
                 "if": {
-                  "var": "sospita_brau",
+                  "var": "sospita_sic",
                   "op": ">=",
                   "value": 2
                 },
@@ -7794,7 +7794,7 @@
                 "setFlag": "acte1_acabat"
               },
               {
-                "addVar": "sospita_brau",
+                "addVar": "sospita_sic",
                 "amount": 1
               }
             ]
@@ -7964,7 +7964,7 @@
         "startWhen": {
           "all": [
             {
-              "var": "sospita_brau",
+              "var": "sospita_sic",
               "op": ">=",
               "value": 2
             },
@@ -10536,7 +10536,7 @@
               "protagonist": "iri"
             },
             {
-              "var": "sospita_brau",
+              "var": "sospita_sic",
               "op": ">=",
               "value": 2
             },
@@ -10562,7 +10562,7 @@
               "protagonist": "iri"
             },
             {
-              "var": "sospita_brau",
+              "var": "sospita_sic",
               "op": ">=",
               "value": 2
             },
@@ -10806,7 +10806,7 @@
           "pista.vet_canvia_iri.2"
         ]
       },
-      "iri_brau": {
+      "iri_sic": {
         "priority": 5,
         "when": {
           "all": [
@@ -10819,7 +10819,7 @@
             {
               "not": {
                 "seen": {
-                  "dialogue": "brau",
+                  "dialogue": "sic",
                   "node": "primera"
                 }
               }
@@ -10828,13 +10828,13 @@
         },
         "doneWhen": {
           "seen": {
-            "dialogue": "brau",
+            "dialogue": "sic",
             "node": "primera"
           }
         },
         "levels": [
-          "pista.iri_brau.1",
-          "pista.iri_brau.2"
+          "pista.iri_sic.1",
+          "pista.iri_sic.2"
         ]
       },
       "iri_marca": {
@@ -11010,19 +11010,19 @@
               "flag": "iri_descoberta"
             },
             {
-              "flag": "brau_distret",
+              "flag": "sic_distret",
               "is": false
             },
             {
               "seen": {
-                "dialogue": "brau",
+                "dialogue": "sic",
                 "node": "primera"
               }
             }
           ]
         },
         "doneWhen": {
-          "flag": "brau_distret"
+          "flag": "sic_distret"
         },
         "levels": [
           "pista.iri_enganyar.1",
@@ -11038,7 +11038,7 @@
               "protagonist": "iri"
             },
             {
-              "flag": "brau_distret"
+              "flag": "sic_distret"
             },
             {
               "flag": "iri_a_la_cambra",
@@ -11546,144 +11546,6 @@
       }
     },
     "dialogues": {
-      "brau": {
-        "id": "brau",
-        "with": "brau",
-        "start": [
-          {
-            "if": {
-              "seen": {
-                "dialogue": "brau",
-                "node": "primera"
-              }
-            },
-            "node": "hola"
-          },
-          {
-            "node": "primera"
-          }
-        ],
-        "nodes": {
-          "primera": {
-            "lines": [
-              {
-                "who": "brau",
-                "text": "dlg.brau.primera1"
-              }
-            ],
-            "goto": "menu"
-          },
-          "hola": {
-            "lines": [
-              {
-                "who": "brau",
-                "text": "dlg.brau.hola"
-              }
-            ],
-            "goto": "menu"
-          },
-          "menu": {
-            "choices": [
-              {
-                "id": "que_passa",
-                "text": "dlg.brau.opt.que_passa",
-                "next": "que_passa",
-                "once": true
-              },
-              {
-                "id": "passar",
-                "text": "dlg.brau.opt.passar",
-                "next": "passar"
-              },
-              {
-                "id": "director",
-                "text": "dlg.brau.opt.director",
-                "next": "director",
-                "once": true
-              },
-              {
-                "id": "enganyar",
-                "text": "dlg.brau.opt.enganyar",
-                "next": "enganyar",
-                "once": true,
-                "if": {
-                  "chosen": {
-                    "dialogue": "brau",
-                    "node": "menu",
-                    "choice": "que_passa"
-                  }
-                }
-              },
-              {
-                "id": "adeu",
-                "text": "dlg.brau.opt.adeu",
-                "next": "adeu",
-                "end": true
-              }
-            ]
-          },
-          "que_passa": {
-            "lines": [
-              {
-                "who": "brau",
-                "text": "dlg.brau.que_passa1"
-              },
-              {
-                "who": "brau",
-                "text": "dlg.brau.que_passa2"
-              }
-            ],
-            "goto": "menu"
-          },
-          "passar": {
-            "lines": [
-              {
-                "who": "brau",
-                "text": "dlg.brau.passar1"
-              }
-            ],
-            "goto": "menu"
-          },
-          "director": {
-            "lines": [
-              {
-                "who": "brau",
-                "text": "dlg.brau.director1"
-              },
-              {
-                "who": "brau",
-                "text": "dlg.brau.director2"
-              }
-            ],
-            "goto": "menu"
-          },
-          "adeu": {
-            "lines": [
-              {
-                "who": "brau",
-                "text": "dlg.brau.adeu"
-              }
-            ]
-          },
-          "enganyar": {
-            "lines": [
-              {
-                "who": "brau",
-                "text": "dlg.brau.enganyar1"
-              },
-              {
-                "who": "brau",
-                "text": "dlg.brau.enganyar2"
-              }
-            ],
-            "effects": [
-              {
-                "setFlag": "brau_distret"
-              }
-            ]
-          }
-        }
-      },
       "cargol": {
         "id": "cargol",
         "with": "cargol",
@@ -12840,6 +12702,144 @@
             "goto": "menu"
           }
         }
+      },
+      "sic": {
+        "id": "sic",
+        "with": "sic",
+        "start": [
+          {
+            "if": {
+              "seen": {
+                "dialogue": "sic",
+                "node": "primera"
+              }
+            },
+            "node": "hola"
+          },
+          {
+            "node": "primera"
+          }
+        ],
+        "nodes": {
+          "primera": {
+            "lines": [
+              {
+                "who": "sic",
+                "text": "dlg.sic.primera1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "hola": {
+            "lines": [
+              {
+                "who": "sic",
+                "text": "dlg.sic.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "que_passa",
+                "text": "dlg.sic.opt.que_passa",
+                "next": "que_passa",
+                "once": true
+              },
+              {
+                "id": "passar",
+                "text": "dlg.sic.opt.passar",
+                "next": "passar"
+              },
+              {
+                "id": "director",
+                "text": "dlg.sic.opt.director",
+                "next": "director",
+                "once": true
+              },
+              {
+                "id": "enganyar",
+                "text": "dlg.sic.opt.enganyar",
+                "next": "enganyar",
+                "once": true,
+                "if": {
+                  "chosen": {
+                    "dialogue": "sic",
+                    "node": "menu",
+                    "choice": "que_passa"
+                  }
+                }
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.sic.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "que_passa": {
+            "lines": [
+              {
+                "who": "sic",
+                "text": "dlg.sic.que_passa1"
+              },
+              {
+                "who": "sic",
+                "text": "dlg.sic.que_passa2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "passar": {
+            "lines": [
+              {
+                "who": "sic",
+                "text": "dlg.sic.passar1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "director": {
+            "lines": [
+              {
+                "who": "sic",
+                "text": "dlg.sic.director1"
+              },
+              {
+                "who": "sic",
+                "text": "dlg.sic.director2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "sic",
+                "text": "dlg.sic.adeu"
+              }
+            ]
+          },
+          "enganyar": {
+            "lines": [
+              {
+                "who": "sic",
+                "text": "dlg.sic.enganyar1"
+              },
+              {
+                "who": "sic",
+                "text": "dlg.sic.enganyar2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "sic_distret"
+              }
+            ]
+          }
+        }
       }
     }
   },
@@ -12931,24 +12931,24 @@
       "dlg.directora.no1": "Ja vas dir que no a la corporació una vegada, per quaranta filtres d'aire i un barri de morosos. Mira on t'ha portat.",
       "dlg.directora.no2": "Aleshores el reciclatge torna a ser per avui. Tu tries.",
       "dlg.directora.adeu": "Fins al vespre. La MARE et vigila.",
-      "dlg.brau.primera1": "Operària I. Ordres del Director: ningú entra a la cambra. Vostè, menys que ningú.",
-      "dlg.brau.hola": "Encara aquí, operària?",
-      "dlg.brau.opt.que_passa": "Què ha passat?",
-      "dlg.brau.opt.passar": "Deixi'm passar.",
-      "dlg.brau.opt.director": "On és el Director?",
-      "dlg.brau.opt.adeu": "Res, res.",
-      "dlg.brau.que_passa1": "Falten coses. Una clau anglesa, imants, una biga...",
-      "dlg.brau.que_passa2": "I cada vegada que la cambra fa «zing», en falta una altra.",
-      "dlg.brau.passar1": "No.",
-      "dlg.brau.director1": "Al despatx. Esperant que vostè hi vagi a confessar.",
-      "dlg.brau.director2": "Jo no hi aniria.",
-      "dlg.brau.adeu": "Ni un pas, operària.",
+      "dlg.sic.primera1": "Operària I. Ordres del Director: ningú entra a la cambra. Vostè, menys que ningú.",
+      "dlg.sic.hola": "Encara aquí, operària?",
+      "dlg.sic.opt.que_passa": "Què ha passat?",
+      "dlg.sic.opt.passar": "Deixi'm passar.",
+      "dlg.sic.opt.director": "On és el Director?",
+      "dlg.sic.opt.adeu": "Res, res.",
+      "dlg.sic.que_passa1": "Falten coses. Una clau anglesa, imants, una biga...",
+      "dlg.sic.que_passa2": "I cada vegada que la cambra fa «zing», en falta una altra.",
+      "dlg.sic.passar1": "No.",
+      "dlg.sic.director1": "Al despatx. Esperant que vostè hi vagi a confessar.",
+      "dlg.sic.director2": "Jo no hi aniria.",
+      "dlg.sic.adeu": "Ni un pas, operària.",
       "dlg.directora.opt.pacte": "D'acord. Ho faré per vosaltres.",
       "dlg.directora.pacte1": "Sàvia decisió, interna. Ho sabia: al final, tothom es reforma.",
       "dlg.directora.pacte2": "El panell torna a ser teu, sota la meva supervisió. Envia alguna cosa a la teva amiga: que vegi que continues allà.",
-      "dlg.brau.opt.enganyar": "Inspector, m'ha semblat veure algú al magatzem del ferro-9.",
-      "dlg.brau.enganyar1": "Al magatzem? El lladre!",
-      "dlg.brau.enganyar2": "No es mogui d'aquí, operària. I no toqui res.",
+      "dlg.sic.opt.enganyar": "Inspector, m'ha semblat veure algú al magatzem del ferro-9.",
+      "dlg.sic.enganyar1": "Al magatzem? El lladre!",
+      "dlg.sic.enganyar2": "No es mogui d'aquí, operària. I no toqui res.",
       "dlg.directora.primera4": "Ah, i he fet treure el tub de la vàlvula de la teva llançadora. Per si et venien ganes de viatjar.",
       "dlg.cargol.opt.tub": "Necessito un tub de vàlvula de ferro-9.",
       "dlg.cargol.tub1": "Un tub de ferro-9, senyora Iri? El Director diu per megafonia que vostè és una fugitiva.",
@@ -12957,7 +12957,7 @@
       "final.fugida.titol": "La fugida",
       "final.fugida.text": "Les dues han escapat. La Gavina tanca. Al museu, la foto de l'Iri ja no està ratllada. Sota hi diu «desapareguda». La Vet somriu: ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "La veritat a temps",
-      "final.veritat.text": "La corporació cau cent vint anys abans. La Gavina no ha estat mai una presó: és l'Estació Osset. I algú hi espera la Vet amb un somriure estranyament familiar.",
+      "final.veritat.text": "La corporació cau cent vint anys abans. La Gavina no ha estat mai una presó: és l'Estació Alsina. I algú hi espera la Vet amb un somriure estranyament familiar.",
       "final.correspondencia.titol": "Correspondència",
       "final.correspondencia.text": "El Cargol ha esperat cent vint anys reparant la cambra. La finestra torna a funcionar. Una nota hi espera: «Hola, V. Tinc tantes coses per explicar-te. —I.»",
       "joc.titol": "Ferro-9",
@@ -13053,7 +13053,7 @@
       "mis.acte2.obj.nom": "Totes dues: digueu-vos el nom",
       "mis.carta_mos.obj.lliurar": "Torna-li la carta a en Mos",
       "mis.salvar_mira.titol": "Salvar la Mira",
-      "mis.salvar_mira.desc": "L'Inspector Brau culpa la Mira dels robatoris de l'Iri.",
+      "mis.salvar_mira.desc": "L'Inspector Sic culpa la Mira dels robatoris de l'Iri.",
       "mis.salvar_mira.obj": "Iri: treu la sospita de sobre la Mira",
       "mis.acte3.titol": "Acte 3 · La finestra",
       "mis.acte3.desc": "La Directora Aldaia té la cambra de la Vet, i el Director ha descobert l'Iri. Totes dues han de fugir.",
@@ -13203,10 +13203,10 @@
       "obj.nota_massa.iri2": "L'he d'obrir una mica. Només una mica.",
       "obj.nota_massa.nom": "nota «MASSA»",
       "obj.nota_massa.desc": "Un tros de cartell, escrit amb llapis d'ulls.",
-      "obj.fitxa_mira.text_acusada": "«Corporació Aldaia · Ferro-9 · Fitxa de personal. Mira Osset, ajudant de torn de nit. Observacions: acusada del robatori de material inventariat. Acomiadada.»",
+      "obj.fitxa_mira.text_acusada": "«Corporació Aldaia · Ferro-9 · Fitxa de personal. Mira Alsina, ajudant de torn de nit. Observacions: acusada del robatori de material inventariat. Acomiadada.»",
       "obj.fitxa_mira.vet_acusada": "Acomiadada per robatori... Torn de nit, com la I. Què hi va passar, aquí?",
-      "obj.fitxa_mira.text": "«Corporació Aldaia · Ferro-9 · Fitxa de personal. Mira Osset, ajudant de torn de nit. Observacions: cap.»",
-      "obj.fitxa_mira.vet": "Mira Osset. Torn de nit, com la I. Potser es coneixen.",
+      "obj.fitxa_mira.text": "«Corporació Aldaia · Ferro-9 · Fitxa de personal. Mira Alsina, ajudant de torn de nit. Observacions: cap.»",
+      "obj.fitxa_mira.vet": "Mira Alsina. Torn de nit, com la I. Potser es coneixen.",
       "obj.fitxa_mira.nom": "fitxa de personal",
       "obj.fitxa_mira.desc": "Una fitxa de personal de la fàbrica, molla.",
       "obj.llapis_ulls.pressio": "Hi escric el del conducte i la pressió. Amb la meva millor lletra, que no és gaire bona.",
@@ -13263,14 +13263,14 @@
       "pj.vet.nom": "Vet",
       "pj.cargol.nom": "Cargol",
       "pj.cargol.desc": "Un robot de manteniment. Brilla tant que fa mal als ulls.",
-      "pj.capatas.nom": "Capatàs Pruna",
+      "pj.capatas.nom": "Capatàs Tul",
       "pj.mare.nom": "MARE",
       "pj.mos.nom": "Mos",
       "pj.mos.desc": "El meu company de cel·la. Vell, prim i maquillat.",
       "pj.directora.nom": "Directora Aldaia",
       "pj.directora.desc": "La directora de La Gavina. Besneta del Director Aldaia, i se li nota.",
-      "pj.brau.nom": "Inspector Brau",
-      "pj.brau.desc": "L'inspector d'inventari de la corporació. Té un humor de pedra.",
+      "pj.sic.nom": "Inspector Sic",
+      "pj.sic.desc": "L'inspector d'inventari de la corporació. Té un humor de pedra.",
       "pista.iri_clau.1": "La clau de la cambra la té el Cargol, al magatzem.",
       "pista.iri_clau.2": "El Cargol només dona material amb el formulari 27-B segellat.",
       "pista.iri_clau.3": "Hi ha formularis al tauler d'anuncis. El segell el té el capatàs... agafat, mentre dorm.",
@@ -13437,11 +13437,11 @@
       "pista.iri_planols.1": "El despatx del director és al costat del magatzem. Què hi deu guardar?",
       "pista.iri_planols.2": "El calaix del despatx té un pany M-3: s'obre amb un imant de ferro-9.",
       "pista.iri_planols.3": "Demana un altre imant al Cargol (amb un formulari per triplicat) i obre el calaix del despatx.",
-      "pista.iri_expedient.1": "Massa robatoris. Què deu haver apuntat el Brau?",
+      "pista.iri_expedient.1": "Massa robatoris. Què deu haver apuntat el Sic?",
       "pista.iri_expedient.2": "Mira l'expedient del despatx del director.",
       "pista.iri_mira.1": "La Mira pagarà per mi. No pot ser.",
       "pista.iri_mira.2": "Puc falsificar l'inventari, culpar el capatàs o confessar.",
-      "pista.iri_mira.3": "Fes servir el segell amb el llibre d'inventari, o el llapis amb l'expedient del Brau.",
+      "pista.iri_mira.3": "Fes servir el segell amb el llibre d'inventari, o el llapis amb l'expedient del Sic.",
       "pista.vet_esperar_nom.1": "Ara li toca a la I.",
       "pista.vet_esperar_nom.2": "Canvia a l'Iri.",
       "pista.iri_esperar_nom.1": "Què deu haver trobat, la V.?",
@@ -13458,8 +13458,8 @@
       "pista.vet_fullet_mapa.2": "Agafa un fullet de l'expositor.",
       "pista.vet_canvia_iri.1": "I a l'altra banda? Què li deu estar passant, a la I.?",
       "pista.vet_canvia_iri.2": "Canvia a l'Iri.",
-      "pista.iri_brau.1": "El Brau vigila la porta de la cambra.",
-      "pista.iri_brau.2": "Parla amb el Brau.",
+      "pista.iri_sic.1": "El Sic vigila la porta de la cambra.",
+      "pista.iri_sic.2": "Parla amb el Sic.",
       "pista.vet_mirar_llancadora.1": "La llançadora té una porta. Com s'obre?",
       "pista.vet_mirar_llancadora.2": "Mira la llançadora.",
       "pista.iri_marca.1": "La V. és al costat d'un pilar amb un 7 pintat. Al meu moll n'hi ha un.",
@@ -13475,7 +13475,7 @@
       "pista.vet_panell_buit.2": "Canvia a l'Iri.",
       "pista.vet_enviar_mapa.1": "La I. és a la cambra i la Directora em deixa fer. Ara!",
       "pista.vet_enviar_mapa.2": "Fes servir el mapa de fuga amb el panell.",
-      "pista.iri_enganyar.1": "El Brau només pensa en una cosa: els robatoris.",
+      "pista.iri_enganyar.1": "El Sic només pensa en una cosa: els robatoris.",
       "pista.iri_enganyar.2": "Potser, si li dic que he vist el lladre...",
       "pista.iri_enganyar.3": "Pregunta-li què ha passat, i després digues-li que has vist algú al magatzem.",
       "pista.iri_tornar_cambra.1": "La porta de la cambra és lliure.",
@@ -13511,9 +13511,9 @@
       "pista.vet_tub.3": "Fes servir el tub amb la llançadora.",
       "pista.vet_volar.1": "La llançadora té el tub. Aquí ja no em queda res.",
       "pista.vet_volar.2": "Engega la llançadora.",
-      "sala.fabrica_calderes.capatas.look1": "El capatàs Pruna. Dorm abraçat al segell oficial com si fos un osset de peluix.",
+      "sala.fabrica_calderes.capatas.look1": "El capatàs Tul. Dorm abraçat al segell oficial com si fos un alsina de peluix.",
       "sala.fabrica_calderes.capatas.look2": "Dorm com un angelet. Un angelet que ronca.",
-      "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Pruna?",
+      "sala.fabrica_calderes.capatas.parlar1": "Capatàs? Capatàs Tul?",
       "sala.fabrica_calderes.capatas.parlar2": "Zzz... cinc minuts més, mare...",
       "sala.fabrica_calderes.capatas.estirar1": "Estiro el segell amb molt de compte...",
       "sala.fabrica_calderes.capatas.estirar2": "Mmmf. És meu...",
@@ -13523,7 +13523,7 @@
       "sala.fabrica_calderes.capatas.plomall2": "Ji, ji, ji... Prou, Margarida... ji, ji...",
       "sala.fabrica_calderes.capatas.plomall3": "Ha deixat anar el segell per gratar-se el nas. Ha caigut a terra.",
       "sala.fabrica_calderes.capatas.objecte": "Millor no despertar-lo amb això.",
-      "sala.fabrica_calderes.capatas.nom": "capatàs Pruna",
+      "sala.fabrica_calderes.capatas.nom": "capatàs Tul",
       "sala.fabrica_calderes.segell.look": "El segell oficial, a terra. Tan a prop. Tan oficial.",
       "sala.fabrica_calderes.segell.agafar": "Ja és meu. Ara tinc autoritat. Una mica.",
       "sala.fabrica_calderes.segell.nom": "segell oficial",
@@ -13640,7 +13640,7 @@
       "sala.gavina_passadis.fi1": "Fora de la cel·la!",
       "sala.gavina_passadis.fi2": "Ara només em falta sortir d'una presó orbital. Bufar i fer ampolles.",
       "sala.gavina_passadis.fi3": "Mentrestant, al passat, l'inventari del matí no quadra.",
-      "sala.gavina_passadis.fi4": "Falten una clau anglesa i un imant de ferro-9. L'Inspector Brau obre un expedient.",
+      "sala.gavina_passadis.fi4": "Falten una clau anglesa i un imant de ferro-9. L'Inspector Sic obre un expedient.",
       "sala.gavina_passadis.fi5": "FI DE L'ACTE 1",
       "sala.gavina_passadis.nom": "Passadís del mòdul C",
       "sala.fabrica_moll.nom": "Moll de càrrega",
@@ -13654,7 +13654,7 @@
       "sala.fabrica_moll.biga_acer.agafar": "Me la carrego a l'espatlla. Pesa com un capatàs.",
       "sala.fabrica_moll.biga_acer.look": "Una biga d'acer de dos metres, damunt dels cavallets. D'aquestes, n'hi ha a totes les naus.",
       "sala.fabrica_moll.biga_ferro9.nom": "biga de ferro-9",
-      "sala.fabrica_moll.biga_ferro9.robar1": "Ferro-9 inventariat. Si la prenc, l'Inspector Brau ho sabrà demà al matí.",
+      "sala.fabrica_moll.biga_ferro9.robar1": "Ferro-9 inventariat. Si la prenc, l'Inspector Sic ho sabrà demà al matí.",
       "sala.fabrica_moll.biga_ferro9.robar2": "I buscarà algú a qui culpar.",
       "sala.fabrica_moll.biga_ferro9.robar3": "...Me l'emporto.",
       "sala.fabrica_moll.biga_ferro9.look": "Una biga de ferro-9 al bastidor, amb l'etiqueta: «Reservada. Caldera 4. No tocar.» No s'oxidarà mai.",
@@ -13667,7 +13667,7 @@
       "sala.fabrica_moll.trapa.treure_acer": "Torno a pujar la biga d'acer.",
       "sala.fabrica_moll.trapa.ferro9_amagada": "La biga de ferro-9 és a baix. Que s'hi quedi.",
       "sala.fabrica_moll.trapa.buida": "A sota de la reixa, els fonaments. Fa olor de terra i de secrets.",
-      "sala.fabrica_moll.trapa.look": "Una reixa de desguàs, al costat del pilar 7. S'aixeca: a sota hi ha els fonaments, on baixen els que no volen que els vegi el Brau.",
+      "sala.fabrica_moll.trapa.look": "Una reixa de desguàs, al costat del pilar 7. S'aixeca: a sota hi ha els fonaments, on baixen els que no volen que els vegi el Sic.",
       "sala.fabrica_moll.llancadora.nom": "llançadora",
       "sala.fabrica_moll.llancadora.look": "La llançadora de càrrega, nova de trinca. Diuen que pot arribar fins a la Lluna. Diuen moltes coses.",
       "sala.fabrica_moll.llancadora.tocar": "Si la toco i salta una alarma, no hi haurà formulari que em salvi.",
@@ -13779,17 +13779,17 @@
       "sala.fabrica_despatx.expedient.confessar1": "Hi escric, amb la meva lletra: «Ho vaig fer jo. La Mira no hi té res a veure. —Iri.»",
       "sala.fabrica_despatx.expedient.confessar2": "Si m'han de fer desaparèixer, que no s'emportin ningú més.",
       "sala.fabrica_despatx.expedient.nom": "expedient",
-      "sala.fabrica_despatx.expedient.falsificat": "«Robatoris de ferro-9: material donat de baixa per rovell. Cas arxivat. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.falsificat": "«Robatoris de ferro-9: material donat de baixa per rovell. Cas arxivat. —Insp. Sic.»",
       "sala.fabrica_despatx.expedient.falsificat_iri": "S'ho ha empassat. Té més fe en els segells que en la química.",
-      "sala.fabrica_despatx.expedient.confessat": "«Confessió de l'operària I. del torn de nit. Cas obert contra ella. —Insp. Brau.»",
-      "sala.fabrica_despatx.expedient.capatas": "«Sospitós principal: el capatàs Pruna. Material inventariat trobat a la seva butxaca. —Insp. Brau.»",
-      "sala.fabrica_despatx.expedient.mira": "«Robatoris de material inventariat. Sospitosa principal: M. Osset, ajudant del torn de nit. Proposta: acomiadament i denúncia. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.confessat": "«Confessió de l'operària I. del torn de nit. Cas obert contra ella. —Insp. Sic.»",
+      "sala.fabrica_despatx.expedient.capatas": "«Sospitós principal: el capatàs Tul. Material inventariat trobat a la seva butxaca. —Insp. Sic.»",
+      "sala.fabrica_despatx.expedient.mira": "«Robatoris de material inventariat. Sospitosa principal: M. Alsina, ajudant del torn de nit. Proposta: acomiadament i denúncia. —Insp. Sic.»",
       "sala.fabrica_despatx.expedient.mira_iri": "La Mira! Ella no hi té res a veure. Ho he fet jo.",
-      "sala.fabrica_despatx.expedient.obert": "«Falten una clau anglesa i un imant de ferro-9. S'investiga el torn de nit. —Insp. Brau.»",
+      "sala.fabrica_despatx.expedient.obert": "«Falten una clau anglesa i un imant de ferro-9. S'investiga el torn de nit. —Insp. Sic.»",
       "sala.fabrica_despatx.expedient.obert_iri": "Encara no hi ha cap nom. Encara.",
       "sala.fabrica_despatx.llibre.nom": "llibre d'inventari",
       "sala.fabrica_despatx.llibre.falsificar1": "Hi afegeixo una línia: «Material de ferro-9 donat de baixa per rovell.»",
-      "sala.fabrica_despatx.llibre.falsificar2": "I el segell oficial a sobre. El ferro-9 no s'oxida mai, però el Brau no és químic.",
+      "sala.fabrica_despatx.llibre.falsificar2": "I el segell oficial a sobre. El ferro-9 no s'oxida mai, però el Sic no és químic.",
       "sala.fabrica_despatx.llibre.look": "El llibre d'inventari. Tot el ferro-9 de la fàbrica, apuntat a mà, gram a gram.",
       "sala.fabrica_despatx.retrat.nom": "retrat",
       "sala.fabrica_despatx.retrat.look": "El Director Aldaia. Somriu com qui ja sap com acaba la pel·lícula.",
@@ -13805,8 +13805,8 @@
       "sala.gavina_arxiu.arxivador.carta1": "Correspondència confiscada... a muntanyes.",
       "sala.gavina_arxiu.arxivador.carta2": "«Per a la Nura, del seu pare.» La carta d'en Mos! Mai no va sortir d'aquí.",
       "sala.gavina_arxiu.arxivador.ja": "Cartes que no van arribar mai. Ja tinc la que buscava.",
-      "sala.gavina_arxiu.arxivador.mira_salvada": "«Mira Osset. Cap antecedent.» I una nota a mà, molt més nova: «La seva besneta treballa aquí, de guàrdia.»",
-      "sala.gavina_arxiu.arxivador.mira_condemnada": "«Mira Osset, ajudant del torn de nit. Condemnada pel robatori de ferro-9. Vint anys de treballs.»",
+      "sala.gavina_arxiu.arxivador.mira_salvada": "«Mira Alsina. Cap antecedent.» I una nota a mà, molt més nova: «La seva besneta treballa aquí, de guàrdia.»",
+      "sala.gavina_arxiu.arxivador.mira_condemnada": "«Mira Alsina, ajudant del torn de nit. Condemnada pel robatori de ferro-9. Vint anys de treballs.»",
       "sala.gavina_arxiu.arxivador.mira_vet": "La Mira va pagar el que va fer la I. Cent vint anys tard per arreglar-ho... o no?",
       "sala.gavina_arxiu.arxivador.look": "Arxivadors de metall: expedients, cartes confiscades, factures. Cent vint anys de paperassa.",
       "sala.gavina_arxiu.planols.nom": "plànols",
@@ -13840,7 +13840,7 @@
       "sala.gavina_memoria.holograma.look": "El Director Aldaia, en holograma. Té el mateix somriure que la Directora.",
       "sala.gavina_memoria.foto.nom": "foto del torn de nit",
       "sala.gavina_memoria.foto.text": "Una foto del torn de nit de la fàbrica. Hi ha el Cargol, nou de trinca. I una cara ratllada, amb un nom mig esborrat: «I... (desapareguda)».",
-      "sala.gavina_memoria.foto.mira": "Al costat, una noia somrient. A sota hi diu: «M. Osset».",
+      "sala.gavina_memoria.foto.mira": "Al costat, una noia somrient. A sota hi diu: «M. Alsina».",
       "sala.gavina_memoria.foto.vet1": "És ella. La I. Algú li va ratllar la cara.",
       "sala.gavina_memoria.foto.vet2": "I la noia del costat... la Mira. Somriu. Ho ha aconseguit, I.",
       "sala.gavina_memoria.foto.forat": "Al costat, un forat: algú en va retallar una altra persona.",
@@ -13857,12 +13857,12 @@
       "sala.gavina_memoria.fullets.prou": "Ja en tinc un.",
       "sala.gavina_memoria.fullets.look": "Un expositor de fullets: «La Gavina: aquí va començar tot!»",
       "sala.fabrica.descoberta1": "Mentrestant, cent vint anys abans...",
-      "sala.fabrica.descoberta2": "«Atenció, operària I. Sé què ha fet amb la meva cambra. Inspector Brau: que no hi torni a entrar.»",
+      "sala.fabrica.descoberta2": "«Atenció, operària I. Sé què ha fet amb la meva cambra. Inspector Sic: que no hi torni a entrar.»",
       "sala.fabrica.descoberta3": "M'ha descobert. És clar: la cambra la va fer ell.",
-      "sala.fabrica_calderes.brau.nom": "Inspector Brau",
-      "sala.fabrica_calderes.brau.look": "L'Inspector Brau, plantat davant la porta de la cambra com un pilar més.",
-      "sala.fabrica_calderes.porta_cambra.brau": "Ni un pas, operària.",
-      "sala.fabrica.descoberta_cambra": "El Brau ja és aquí. M'acompanya a fora de la cambra, amb molta educació i cap mena de dubte.",
+      "sala.fabrica_calderes.sic.nom": "Inspector Sic",
+      "sala.fabrica_calderes.sic.look": "L'Inspector Sic, plantat davant la porta de la cambra com un pilar més.",
+      "sala.fabrica_calderes.porta_cambra.sic": "Ni un pas, operària.",
+      "sala.fabrica.descoberta_cambra": "El Sic ja és aquí. M'acompanya a fora de la cambra, amb molta educació i cap mena de dubte.",
       "sala.gavina_hangar.llancadora.porta_tancada": "La porta no té maneta. Només aquell pany rodó, sense forat per a cap clau.",
       "sala.gavina_hangar.pany.nom": "pany sònic",
       "sala.gavina_hangar.pany.obert": "El pany sònic. Ara la porta és oberta.",
@@ -13905,12 +13905,12 @@
       "sala.gavina_cella.panell.pacte_res": "Quan jo t'ho digui, interna. Ni un minut abans.",
       "sala.gavina_cella.porta.tancada_mare": "Tancada. La MARE ha canviat el pany, i ja no em queden imants.",
       "sala.gavina_passadis.porta_cella.tancada": "La MARE l'ha tancada. Si vull tornar a la cel·la, haurà de ser pel conducte.",
-      "sala.fabrica_cambra.tornar1": "La cambra. El Brau trigarà a tornar: al magatzem hi ha molts racons.",
+      "sala.fabrica_cambra.tornar1": "La cambra. El Sic trigarà a tornar: al magatzem hi ha molts racons.",
       "sala.fabrica_cambra.tornar2": "V., si m'has d'enviar alguna cosa, ara és el moment.",
       "sala.fabrica_cambra.reixa.nom": "reixa",
       "sala.fabrica_cambra.reixa.llimar1": "Llimo els quatre cargols fins que la reixa s'aguanta per costum. No quedarà res que el rovell pugui soldar.",
       "sala.fabrica_cambra.reixa.llimar2": "M'hi fico i, a cada revolt del conducte, hi gravo una I. i una fletxa. La V. ja coneix la meva marca.",
-      "sala.fabrica_cambra.reixa.llimar3": "Fins al moll i tornar, abans que el Brau trobi el seu lladre. Ja està, V.",
+      "sala.fabrica_cambra.reixa.llimar3": "Fins al moll i tornar, abans que el Sic trobi el seu lladre. Ja està, V.",
       "sala.fabrica_cambra.reixa.ja_llimada": "Ja està. Una passada més i em quedo amb la reixa a la mà.",
       "sala.fabrica_cambra.reixa.per_que": "Fer malbé una reixa nova? El capatàs ho veuria i em faria omplir un formulari per cada cargol.",
       "sala.fabrica_cambra.reixa.look_llimada": "La reixa del conducte, amb els cargols llimats. Sembla ben cargolada. No ho està.",
@@ -13943,7 +13943,7 @@
       "sala.gavina_hangar.llancadora.sense_tub": "Premo el botó d'engegada. Res. Sense el tub de la vàlvula, la pressió no arriba al motor.",
       "sala.gavina_hangar.llancadora.look_sense_tub": "La llançadora. On hi havia el tub de la vàlvula, un forat i una etiqueta: «Retirat per ordre de la Directora. Per si de cas.»",
       "sala.fabrica_moll.conducte.mig3": "Pels altaveus: «Director Aldaia a les calderes. Caiguda de pressió.» El seu despatx es quedarà buit una estona.",
-      "sala.fabrica_magatzem.porta_despatx.reunio": "Hi ha llum sota la porta i se senten veus: el director i l'inspector Brau, reunits. No penso entrar-hi a saludar."
+      "sala.fabrica_magatzem.porta_despatx.reunio": "Hi ha llum sota la porta i se senten veus: el director i l'inspector Sic, reunits. No penso entrar-hi a saludar."
     }
   },
   "locale": "ca"

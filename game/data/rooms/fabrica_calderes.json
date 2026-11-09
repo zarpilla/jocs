@@ -12,7 +12,7 @@
           "if": {
             "all": [
               {
-                "var": "sospita_brau",
+                "var": "sospita_sic",
                 "op": ">=",
                 "value": 2
               },
@@ -316,15 +316,15 @@
                 "flag": "iri_descoberta"
               },
               {
-                "flag": "brau_distret",
+                "flag": "sic_distret",
                 "is": false
               }
             ]
           },
           "lines": [
             {
-              "who": "brau",
-              "text": "sala.fabrica_calderes.porta_cambra.brau"
+              "who": "sic",
+              "text": "sala.fabrica_calderes.porta_cambra.sic"
             }
           ]
         },
@@ -342,15 +342,15 @@
                 "flag": "iri_descoberta"
               },
               {
-                "flag": "brau_distret",
+                "flag": "sic_distret",
                 "is": false
               }
             ]
           },
           "lines": [
             {
-              "who": "brau",
-              "text": "sala.fabrica_calderes.porta_cambra.brau"
+              "who": "sic",
+              "text": "sala.fabrica_calderes.porta_cambra.sic"
             }
           ]
         },
@@ -426,19 +426,19 @@
         }
       ]
     },
-    "brau": {
-      "name": "sala.fabrica_calderes.brau.nom",
+    "sic": {
+      "name": "sala.fabrica_calderes.sic.nom",
       "interactions": [
         {
           "verb": "talkTo",
-          "dialogue": "brau"
+          "dialogue": "sic"
         },
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.fabrica_calderes.brau.look"
+              "text": "sala.fabrica_calderes.sic.look"
             }
           ]
         }
@@ -449,7 +449,7 @@
             "flag": "iri_descoberta"
           },
           {
-            "flag": "brau_distret",
+            "flag": "sic_distret",
             "is": false
           }
         ]

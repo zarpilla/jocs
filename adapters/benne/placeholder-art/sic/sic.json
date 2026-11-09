@@ -1,6 +1,6 @@
 {
   "frames": {
-    "brau 0.aseprite": {
+    "sic 0.aseprite": {
       "frame": {
         "x": 0,
         "y": 0,
@@ -21,7 +21,7 @@
       },
       "duration": 100
     },
-    "brau 1.aseprite": {
+    "sic 1.aseprite": {
       "frame": {
         "x": 49,
         "y": 0,
@@ -42,7 +42,7 @@
       },
       "duration": 100
     },
-    "brau 2.aseprite": {
+    "sic 2.aseprite": {
       "frame": {
         "x": 98,
         "y": 0,
@@ -63,7 +63,7 @@
       },
       "duration": 100
     },
-    "brau 3.aseprite": {
+    "sic 3.aseprite": {
       "frame": {
         "x": 147,
         "y": 0,
@@ -84,7 +84,7 @@
       },
       "duration": 100
     },
-    "brau 4.aseprite": {
+    "sic 4.aseprite": {
       "frame": {
         "x": 196,
         "y": 0,
@@ -105,7 +105,7 @@
       },
       "duration": 100
     },
-    "brau 5.aseprite": {
+    "sic 5.aseprite": {
       "frame": {
         "x": 245,
         "y": 0,
@@ -126,7 +126,7 @@
       },
       "duration": 100
     },
-    "brau 6.aseprite": {
+    "sic 6.aseprite": {
       "frame": {
         "x": 294,
         "y": 0,
@@ -147,7 +147,7 @@
       },
       "duration": 100
     },
-    "brau 7.aseprite": {
+    "sic 7.aseprite": {
       "frame": {
         "x": 343,
         "y": 0,
@@ -168,7 +168,7 @@
       },
       "duration": 100
     },
-    "brau 8.aseprite": {
+    "sic 8.aseprite": {
       "frame": {
         "x": 392,
         "y": 0,
@@ -193,7 +193,7 @@
   "meta": {
     "app": "https://www.aseprite.org/",
     "version": "provisional (draw_characters.py)",
-    "image": "brau.png",
+    "image": "sic.png",
     "format": "RGBA8888",
     "size": {
       "w": 441,

@@ -161,7 +161,7 @@
     "startWhen": {
       "all": [
         {
-          "var": "sospita_brau",
+          "var": "sospita_sic",
           "op": ">=",
           "value": 2
         },

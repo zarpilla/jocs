@@ -1,7 +1,7 @@
 {
-  "id": "brau",
-  "name": "brau",
-  "description": "",
+  "id": "sic",
+  "name": "Inspector Sic",
+  "description": "L'inspector d'inventari de la corporació. Té un humor de pedra.",
   "clickable": true,
   "display": {
     "aseprite": true
@@ -70,5 +70,6 @@
       "frameDuration": 140
     }
   },
-  "defaultVerb": "talkTo"
+  "defaultVerb": "talkTo",
+  "speechColor": "#e8e070"
 }

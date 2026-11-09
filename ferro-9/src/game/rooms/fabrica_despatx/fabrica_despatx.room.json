@@ -199,6 +199,38 @@
         "x": 232,
         "y": 90
       }
+    },
+    {
+      "id": "expedient_sic",
+      "active": true,
+      "description": "expedient",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 289,
+          "y": 106
+        },
+        {
+          "x": 338,
+          "y": 106
+        },
+        {
+          "x": 338,
+          "y": 121
+        },
+        {
+          "x": 289,
+          "y": 121
+        }
+      ],
+      "walkToPoint": {
+        "x": 314,
+        "y": 177
+      },
+      "lookAtPoint": {
+        "x": 314,
+        "y": 122
+      }
     }
   ],
   "points": [],

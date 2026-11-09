@@ -362,7 +362,7 @@ CALDERES = {
         'segell': {'rect': (222, 124, 242, 140), 'walk': (214, 140)},
         'porta_moll': {'rect': (152, 62, 202, 114), 'walk': (177, 132)},
     },
-    'spawns': {'iri': (160, 138), 'capatas': (262, 132), 'brau': (300, 136)},
+    'spawns': {'iri': (160, 138), 'capatas': (262, 132), 'sic': (300, 136)},
     'walkable': [(14, 118), (338, 118), (346, 148), (6, 148)],
     'bg': calderes_bg,
     'props': {'segell': calderes_segell},
@@ -1110,7 +1110,7 @@ def despatx_bg(c):
     c.rect(210, 98, 250, 106, WOOD[0])                              # calaix
     c.ellipse(226, 99, 234, 105, (90, 200, 255))                    # pany M-3
     c.glow(230, 102, 8, (90, 200, 255), 0.4)
-    c.rect(214, 82, 246, 88, (230, 224, 204))                       # l'expedient del Brau
+    c.rect(214, 82, 246, 88, (230, 224, 204))                       # l'expedient del Sic
     c.rect(216, 83, 226, 84, (150, 40, 40))
     c.line([(254, 88), (254, 74)], IRON[1]); c.ellipse(248, 70, 260, 76, (60, 90, 60))
     c.glow(254, 84, 26, (255, 220, 140), 0.6)
@@ -1128,7 +1128,7 @@ DESPATX = {
         'porta_magatzem': {'rect': (6, 48, 42, 114), 'walk': (30, 134)},
         'retrat': {'rect': (150, 20, 190, 66), 'walk': (170, 128)},
         'calaix': {'rect': (208, 96, 252, 108), 'walk': (230, 134)},
-        'expedient_brau': {'rect': (212, 78, 248, 89), 'walk': (230, 130)},
+        'expedient_sic': {'rect': (212, 78, 248, 89), 'walk': (230, 130)},
         'llibre_inventari': {'rect': (288, 78, 320, 98), 'walk': (300, 130)},
     },
     'spawns': {'iri': (40, 138)},

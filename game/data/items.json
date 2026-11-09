@@ -1559,7 +1559,7 @@
       {
         "verb": "look",
         "if": {
-          "var": "sospita_brau",
+          "var": "sospita_sic",
           "op": ">=",
           "value": 2
         },

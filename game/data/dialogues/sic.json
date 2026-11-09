@@ -1,12 +1,12 @@
 {
   "$schema": "../../schemas/dialogue.schema.json",
-  "id": "brau",
-  "with": "brau",
+  "id": "sic",
+  "with": "sic",
   "start": [
     {
       "if": {
         "seen": {
-          "dialogue": "brau",
+          "dialogue": "sic",
           "node": "primera"
         }
       },
@@ -20,8 +20,8 @@
     "primera": {
       "lines": [
         {
-          "who": "brau",
-          "text": "dlg.brau.primera1"
+          "who": "sic",
+          "text": "dlg.sic.primera1"
         }
       ],
       "goto": "menu"
@@ -29,8 +29,8 @@
     "hola": {
       "lines": [
         {
-          "who": "brau",
-          "text": "dlg.brau.hola"
+          "who": "sic",
+          "text": "dlg.sic.hola"
         }
       ],
       "goto": "menu"
@@ -39,29 +39,29 @@
       "choices": [
         {
           "id": "que_passa",
-          "text": "dlg.brau.opt.que_passa",
+          "text": "dlg.sic.opt.que_passa",
           "next": "que_passa",
           "once": true
         },
         {
           "id": "passar",
-          "text": "dlg.brau.opt.passar",
+          "text": "dlg.sic.opt.passar",
           "next": "passar"
         },
         {
           "id": "director",
-          "text": "dlg.brau.opt.director",
+          "text": "dlg.sic.opt.director",
           "next": "director",
           "once": true
         },
         {
           "id": "enganyar",
-          "text": "dlg.brau.opt.enganyar",
+          "text": "dlg.sic.opt.enganyar",
           "next": "enganyar",
           "once": true,
           "if": {
             "chosen": {
-              "dialogue": "brau",
+              "dialogue": "sic",
               "node": "menu",
               "choice": "que_passa"
             }
@@ -69,7 +69,7 @@
         },
         {
           "id": "adeu",
-          "text": "dlg.brau.opt.adeu",
+          "text": "dlg.sic.opt.adeu",
           "next": "adeu",
           "end": true
         }
@@ -78,12 +78,12 @@
     "que_passa": {
       "lines": [
         {
-          "who": "brau",
-          "text": "dlg.brau.que_passa1"
+          "who": "sic",
+          "text": "dlg.sic.que_passa1"
         },
         {
-          "who": "brau",
-          "text": "dlg.brau.que_passa2"
+          "who": "sic",
+          "text": "dlg.sic.que_passa2"
         }
       ],
       "goto": "menu"
@@ -91,8 +91,8 @@
     "passar": {
       "lines": [
         {
-          "who": "brau",
-          "text": "dlg.brau.passar1"
+          "who": "sic",
+          "text": "dlg.sic.passar1"
         }
       ],
       "goto": "menu"
@@ -100,12 +100,12 @@
     "director": {
       "lines": [
         {
-          "who": "brau",
-          "text": "dlg.brau.director1"
+          "who": "sic",
+          "text": "dlg.sic.director1"
         },
         {
-          "who": "brau",
-          "text": "dlg.brau.director2"
+          "who": "sic",
+          "text": "dlg.sic.director2"
         }
       ],
       "goto": "menu"
@@ -113,25 +113,25 @@
     "adeu": {
       "lines": [
         {
-          "who": "brau",
-          "text": "dlg.brau.adeu"
+          "who": "sic",
+          "text": "dlg.sic.adeu"
         }
       ]
     },
     "enganyar": {
       "lines": [
         {
-          "who": "brau",
-          "text": "dlg.brau.enganyar1"
+          "who": "sic",
+          "text": "dlg.sic.enganyar1"
         },
         {
-          "who": "brau",
-          "text": "dlg.brau.enganyar2"
+          "who": "sic",
+          "text": "dlg.sic.enganyar2"
         }
       ],
       "effects": [
         {
-          "setFlag": "brau_distret"
+          "setFlag": "sic_distret"
         }
       ]
     }

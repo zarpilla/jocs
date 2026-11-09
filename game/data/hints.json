@@ -2498,7 +2498,7 @@
           "protagonist": "iri"
         },
         {
-          "var": "sospita_brau",
+          "var": "sospita_sic",
           "op": ">=",
           "value": 2
         },
@@ -2524,7 +2524,7 @@
           "protagonist": "iri"
         },
         {
-          "var": "sospita_brau",
+          "var": "sospita_sic",
           "op": ">=",
           "value": 2
         },
@@ -2768,7 +2768,7 @@
       "pista.vet_canvia_iri.2"
     ]
   },
-  "iri_brau": {
+  "iri_sic": {
     "priority": 5,
     "when": {
       "all": [
@@ -2781,7 +2781,7 @@
         {
           "not": {
             "seen": {
-              "dialogue": "brau",
+              "dialogue": "sic",
               "node": "primera"
             }
           }
@@ -2790,13 +2790,13 @@
     },
     "doneWhen": {
       "seen": {
-        "dialogue": "brau",
+        "dialogue": "sic",
         "node": "primera"
       }
     },
     "levels": [
-      "pista.iri_brau.1",
-      "pista.iri_brau.2"
+      "pista.iri_sic.1",
+      "pista.iri_sic.2"
     ]
   },
   "iri_marca": {
@@ -2972,19 +2972,19 @@
           "flag": "iri_descoberta"
         },
         {
-          "flag": "brau_distret",
+          "flag": "sic_distret",
           "is": false
         },
         {
           "seen": {
-            "dialogue": "brau",
+            "dialogue": "sic",
             "node": "primera"
           }
         }
       ]
     },
     "doneWhen": {
-      "flag": "brau_distret"
+      "flag": "sic_distret"
     },
     "levels": [
       "pista.iri_enganyar.1",
@@ -3000,7 +3000,7 @@
           "protagonist": "iri"
         },
         {
-          "flag": "brau_distret"
+          "flag": "sic_distret"
         },
         {
           "flag": "iri_a_la_cambra",
