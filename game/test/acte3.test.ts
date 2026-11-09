@@ -82,6 +82,8 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(estatFinestra(n).enceses).toBe(enceses - 1);
     expect(p.active).toBe('iri');
     expect(n.state.quests.acte3!.objectives.mapa).toBe(true);
+    // La Directora marxa: ja no hi és quan la Vet obre la reixa.
+    expect(n.isHotspotVisible('gavina_cella', 'directora')).toBe(false);
 
     // ── Iri: llegeix la postdata i deixa la reixa a punt per a d'aquí a cent vint anys ──
     expect(texts(p.do('look', item('mapa_fuga')))).toContain('llimo');
@@ -114,11 +116,14 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(texts(p.use('tub_ferro9', 'cambra'))).toContain('llibreta');
     p.use('llibreta_torn', item('tub_ferro9'));
     expect(p.inventory()).toContain('tub_amb_llibreta');
-    expect(keys(p.use('tub_amb_llibreta', 'cambra'))).toContain('finestra.enviat');
+    const tub = keys(p.use('tub_amb_llibreta', 'cambra'));
+    expect(tub).toContain('finestra.enviat');
+    expect(tub).toContain('sala.gavina_cella.tub0');
     expect(estatFinestra(n).enceses).toBe(enceses - 2);
 
     // ── Vet: la Directora el vol; fuig per la reixa, munta el tub i marxa ──
     expect(p.active).toBe('vet');
+    expect(n.isHotspotVisible('gavina_cella', 'directora')).toBe(true);
     expect(texts(p.switchTo('vet'))).toBeDefined();
     expect(texts(p.do('open', 'reixa'))).toContain('Atureu-la');
     expect(p.room).toBe('gavina_hangar');

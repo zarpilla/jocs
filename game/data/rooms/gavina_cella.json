@@ -1143,7 +1143,23 @@
         }
       ],
       "visibleIf": {
-        "flag": "acte3_iniciat"
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "any": [
+              {
+                "flag": "cella_tancada",
+                "is": false
+              },
+              {
+                "hasItem": "tub_amb_llibreta",
+                "who": "vet"
+              }
+            ]
+          }
+        ]
       }
     },
     "reixa": {
@@ -1504,6 +1520,11 @@
         "who": "vet"
       },
       "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.gavina_cella.tub0",
+          "sound": "porta_preso"
+        },
         {
           "who": "directora",
           "text": "sala.gavina_cella.tub1"

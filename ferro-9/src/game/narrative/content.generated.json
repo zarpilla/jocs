@@ -6720,7 +6720,23 @@
               }
             ],
             "visibleIf": {
-              "flag": "acte3_iniciat"
+              "all": [
+                {
+                  "flag": "acte3_iniciat"
+                },
+                {
+                  "any": [
+                    {
+                      "flag": "cella_tancada",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              ]
             }
           },
           "reixa": {
@@ -7081,6 +7097,11 @@
               "who": "vet"
             },
             "lines": [
+              {
+                "who": "narrator",
+                "text": "sala.gavina_cella.tub0",
+                "sound": "porta_preso"
+              },
               {
                 "who": "directora",
                 "text": "sala.gavina_cella.tub1"
@@ -16917,6 +16938,7 @@
       "sala.fabrica_cambra.reixa.encara_no": "Encara no. Per aquí fugiré, però no fins que la V. estigui a punt.",
       "sala.fabrica_cambra.reixa.cargolada": "Ben cargolada. Quatre cargols d'acer, nous de trinca. La meva clau anglesa aniria de primera, però és a cent vint anys d'aquí.",
       "sala.gavina_cella.panell.molla_no": "Encara no sona com el pany. Si l'envio així, la I. afinarà una nota equivocada.",
+      "sala.gavina_cella.tub0": "La porta de la cel·la s'obre. La Directora torna a fer la ronda.",
       "sala.gavina_cella.tub1": "Què t'ha arribat, interna? Una canonada? Dona-me-la.",
       "sala.gavina_cella.tub2": "Ni parlar-ne.",
       "sala.gavina_cella.tub3": "MARE, avisa els guàrdies. La interna 9 ja no és reeducable.",
