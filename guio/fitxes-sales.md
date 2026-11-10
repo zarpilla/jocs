@@ -25,10 +25,10 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `llibre` | Llibre Major | hotspot / prop | sempre | use + clau_llibre, use, push, look |
+| `llibre` | Llibre Major | hotspot / prop → `muntatge` | sempre | use + clau_llibre, use, push, look |
 | `tub` | estació del tub | hotspot / prop | sempre | use + objecte, open, use, pickUp, look |
 | `panell` | panell de NETA-3 | hotspot / prop | sempre | use, open, look |
-| `conducte` | conducte | hotspot / prop | sempre | use, open, look |
+| `conducte` | conducte | hotspot / prop | sempre | use, open, use + extintor, look |
 | `bosses` | bosses | hotspot / prop | sempre | pickUp, look |
 | `porta` | porta | hotspot / prop → `bcmu_passadis` | sempre | use, open, walkTo, look |
 
@@ -53,7 +53,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `cartell` | cartell | prop | `{"all":[{"hasItem":"cartell","who":"iri","is":false},{"flag":"camera1_tapada","is":false}]}` | pickUp, look |
 | `extintor` | extintor | prop | `{"hasItem":"extintor","who":"iri","is":false}` | pickUp, look |
 | `porta_neteja` | porta de neteja | hotspot / prop → `bcmu_escombraries` | sempre | use, open, walkTo, look |
-| `porta_escala` | porta de l'escala | hotspot / prop | sempre | use, open, look |
+| `porta_escala` | porta de l'escala | hotspot / prop | sempre | use + clau_llibre, use, open, look |
 | `porta_vip` | porta VIP | hotspot / prop | sempre | use, open, walkTo, look |
 | `tub` | estació del tub | hotspot / prop | sempre | use + objecte, open, use, pickUp, look |
 | `ascensor` | ascensor de servei | hotspot / prop | sempre | use, open, look |
@@ -69,9 +69,9 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `ordinadors` | ordinadors | hotspot / prop | sempre | use, look |
 | `router` | router | hotspot / prop | sempre | use + cable_xarxa, use + cable_alimentacio, use + objecte, look, use, push, pull, pickUp |
 | `fibra` | presa de la fibra | hotspot / prop | sempre | pickUp, use, pull, look |
-| `passaplats` | passaplats | hotspot / prop | sempre | open, close, talkTo, use, use + objecte, look |
+| `passaplats` | passaplats | hotspot / prop | sempre | talkTo, use, use + objecte, open, close, look |
 | `caixa` | caixa | prop | `{"all":[{"hasItem":"caixa_cartro","is":false,"who":"iri"},{"not":{"var":"sacrifici","op":"==","value":"caixa"}}]}` | look, open, pickUp |
-| `diu` | Diu | personatge | sempre | use + objecte, use + caixa_cartro, use + auriculars, use + pizza, talkTo, look, pickUp |
+| `diu` | Diu | personatge | sempre | use + objecte, use + auriculars_boto, use + caixa_cartro, use + auriculars, use + pizza, talkTo, look, pickUp |
 
 ## Vet
 
@@ -109,11 +109,41 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `porta_rebost` | rebost | hotspot / prop → `bar_rebost` | sempre | use, open, walkTo, look |
 | `porta` | sortida | hotspot / prop → `aeroport_terminal` | sempre | use, open, walkTo, look |
 
+### L'avantdespatx · `bcmu_avantdespatx`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+| `pons` | Pons | personatge | sempre | talkTo, look |
+| `factura` | factura | hotspot / prop | sempre | look, pickUp |
+| `nomina` | nòmina | hotspot / prop | sempre | look, pickUp |
+| `porta` | despatx del Director | hotspot / prop → `bcmu_despatx` | sempre | use, open, walkTo, look |
+| `tub` | estació del tub | hotspot / prop | sempre | use + objecte, open, use, pickUp, look |
+| `ascensor` | ascensor | hotspot / prop → `bcmu_vestibul` | sempre | use, open, walkTo, look |
+
+### Darrere del banc · `bcmu_contenidor`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+| `contenidor` | contenidor | hotspot / prop | sempre | open, use, look |
+| `carrer` | carrer | hotspot / prop | sempre | look, use, open, walkTo |
+
+### El despatx del Director · `bcmu_despatx`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+| `bonfill` | Director | personatge | sempre | talkTo, look, give + objecte |
+| `mobil` | mòbil del Director | hotspot / prop | sempre | pickUp, use, look |
+| `foto` | foto | hotspot / prop | sempre | look, pickUp |
+| `bol` | bol | hotspot / prop | sempre | look, pickUp, use |
+| `finestra` | finestra | hotspot / prop | sempre | look, open |
+| `ballester` | Ballester | personatge | `{"flag":"ballester_acompanya"}` | talkTo, look |
+| `porta` | avantdespatx | hotspot / prop → `bcmu_avantdespatx` | sempre | use, open, walkTo, look |
+
 ### La sala de seguretat · `bcmu_seguretat`
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
-| `ballester` | Ballester | personatge | sempre | talkTo, look |
+| `ballester` | Ballester | personatge | `{"flag":"ballester_acompanya","is":false}` | talkTo, look |
 | `monitors` | monitors | hotspot / prop | sempre | look |
 | `radio` | ràdio | hotspot / prop | sempre | look, use, pickUp, push |
 | `got` | got | hotspot / prop | sempre | use, push, pickUp, look |
@@ -121,7 +151,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `clauer` | clauer | prop | `{"flag":"clauer_agafat","is":false}` | pickUp, look |
 | `collaret` | collaret | prop | `{"all":[{"flag":"aliat_ballester"},{"flag":"clau_agafada","is":false}]}` | pickUp, look |
 | `tub` | estació del tub | hotspot / prop | sempre | use + objecte, open, use, pickUp, look |
-| `ascensor` | ascensor | hotspot / prop → `bcmu_vestibul` | sempre | use, open, walkTo, look |
+| `ascensor` | ascensor | hotspot / prop → `bcmu_avantdespatx` | sempre | use, open, walkTo, look |
 
 ### El vestíbul del BCMU · `bcmu_vestibul`
 
@@ -136,7 +166,8 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `maquina` | màquina d'entrepans | hotspot / prop | sempre | use, pickUp, push, look |
 | `plantes` | plantes | hotspot / prop | sempre | look |
 | `ascensor` | ascensor | hotspot / prop → `bcmu_seguretat` | sempre | use, open, walkTo, look |
-| `sortida` | sortida | hotspot / prop | sempre | use, open, walkTo, look |
+| `sortida` | sortida | hotspot / prop → `bcmu_contenidor` | sempre | use, open, walkTo, look |
+| `recepcionista` | recepcionista | personatge | `{"flag":"virus_aturat"}` | talkTo, look |
 
 ### La cuina · `pis_cuina`
 
@@ -157,7 +188,22 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
 
+### La Propina, una setmana després · `final_bar`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### ROBIN HOOD 2.0 · `muntatge`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
 ### Suma Zero · `portada`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### El pis, de nit · `postcredits`
 
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
@@ -172,6 +218,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | Id | Nom | Pes | Altres |
 |---|---|---|---|
 | `auriculars` | auriculars | — | no_enviar: tub.auriculars |
+| `auriculars_boto` | auriculars de botó | — | no_enviar: tub.auriculars_boto |
 | `cable_xarxa` | cable de xarxa | — |  |
 | `cable_alimentacio` | cable d'alimentació | — |  |
 | `caixa_cartro` | caixa de cartró | — |  |

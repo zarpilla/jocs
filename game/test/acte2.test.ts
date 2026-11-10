@@ -16,7 +16,9 @@ describe('Acte 2 · camins', () => {
     const { n, p, world } = aGinebra();
     jugarActe2(p, { aliats: true });
     expect(n.flag('acte2_fet')).toBe(true);
-    expect(n.resolveEnding()).toBe('continuara');
+    // girar la clau ja no acaba el joc: comença l'Acte 3, amb l'Iri al Llibre Major i la Vet a seguretat
+    expect(n.resolveEnding()).toBe(null);
+    expect(n.flag('cal_director')).toBe(true);
     expect(n.getVar('aliats')).toBe(3);
     for (const f of ['aliada_rius', 'aliat_neta', 'aliat_ballester']) expect(n.flag(f), f).toBe(true);
     expect(world.items('iri')).toContain('compte_nomines');

@@ -1,0 +1,272 @@
+{
+  "id": "bcmu_despatx",
+  "name": "El despatx del Director",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "avantdespatx",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 161
+        },
+        {
+          "x": 8,
+          "y": 161
+        }
+      ],
+      "walkToPoint": {
+        "x": 31,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 161
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "mobil",
+      "active": true,
+      "description": "mòbil del Director",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 74,
+          "y": 57
+        },
+        {
+          "x": 148,
+          "y": 57
+        },
+        {
+          "x": 148,
+          "y": 90
+        },
+        {
+          "x": 74,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 111,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 111,
+        "y": 90
+      }
+    },
+    {
+      "id": "foto",
+      "active": true,
+      "description": "foto",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 160,
+          "y": 19
+        },
+        {
+          "x": 234,
+          "y": 19
+        },
+        {
+          "x": 234,
+          "y": 52
+        },
+        {
+          "x": 160,
+          "y": 52
+        }
+      ],
+      "walkToPoint": {
+        "x": 197,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 197,
+        "y": 52
+      }
+    },
+    {
+      "id": "bol",
+      "active": true,
+      "description": "bol",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 246,
+          "y": 57
+        },
+        {
+          "x": 320,
+          "y": 57
+        },
+        {
+          "x": 320,
+          "y": 90
+        },
+        {
+          "x": 246,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 283,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 283,
+        "y": 90
+      }
+    },
+    {
+      "id": "finestra",
+      "active": true,
+      "description": "finestra",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 332,
+          "y": 19
+        },
+        {
+          "x": 406,
+          "y": 19
+        },
+        {
+          "x": 406,
+          "y": 52
+        },
+        {
+          "x": 332,
+          "y": 52
+        }
+      ],
+      "walkToPoint": {
+        "x": 369,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 369,
+        "y": 52
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 240,
+      "y": 185,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bonfill-1",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 95,
+      "y": 177,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ballester-1",
+      "definition": "ballester/ballester.character.json",
+      "x": 384,
+      "y": 177,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "pons-veu",
+      "definition": "pons/pons.character.json",
+      "x": 95,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

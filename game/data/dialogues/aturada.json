@@ -1,0 +1,141 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "aturada",
+  "with": "iri",
+  "start": [
+    {
+      "node": "pregunta"
+    }
+  ],
+  "nodes": {
+    "pregunta": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.pregunta"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.rius",
+          "if": {
+            "hasItem": "compte_nomines",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.ballester",
+          "if": {
+            "all": [
+              {
+                "flag": "ballester_compte"
+              },
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri",
+                "is": false
+              }
+            ]
+          }
+        }
+      ],
+      "goto": "tria"
+    },
+    "tria": {
+      "choices": [
+        {
+          "id": "tornar",
+          "text": "dlg.aturada.opt.tornar",
+          "next": "tornar"
+        },
+        {
+          "id": "pagar",
+          "text": "dlg.aturada.opt.pagar",
+          "if": {
+            "any": [
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri"
+              },
+              {
+                "flag": "ballester_compte"
+              }
+            ]
+          },
+          "next": "pagar",
+          "effects": [
+            {
+              "setFlag": "pagar_primer"
+            }
+          ]
+        }
+      ]
+    },
+    "tornar": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.tornar1",
+          "sound": "aturada"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.tornar2"
+        }
+      ],
+      "goto": "fi"
+    },
+    "pagar": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.pagar1",
+          "sound": "aturada"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.pagar2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.pagar3"
+        }
+      ],
+      "goto": "fi"
+    },
+    "fi": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.aturada.fi1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.fi2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.fi3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.fi4",
+          "sound": "megafonia_bcmu"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.fi5"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.aturada.fi6"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "virus_aturat"
+        }
+      ]
+    }
+  }
+}

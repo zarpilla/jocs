@@ -1,0 +1,429 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "despatx",
+  "with": "bonfill",
+  "start": [
+    {
+      "if": {
+        "flag": "virus_aturat"
+      },
+      "node": "despres"
+    },
+    {
+      "if": {
+        "flag": "sync_mobil"
+      },
+      "node": "sync"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "gos",
+          "text": "dlg.despatx.opt.gos",
+          "once": true,
+          "next": "gos_fora"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.despatx.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "gos_fora": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.gos_fora"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sap_rockefeller"
+        }
+      ],
+      "goto": "menu"
+    },
+    "sync": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.sync"
+        }
+      ],
+      "goto": "eines"
+    },
+    "eines": {
+      "choices": [
+        {
+          "id": "reunio",
+          "text": "dlg.despatx.opt.reunio",
+          "if": {
+            "flag": "reunio1",
+            "is": false
+          },
+          "next": "reunio"
+        },
+        {
+          "id": "reunio2",
+          "text": "dlg.despatx.opt.reunio2",
+          "if": {
+            "all": [
+              {
+                "flag": "reunio1"
+              },
+              {
+                "flag": "reunio2",
+                "is": false
+              }
+            ]
+          },
+          "next": "reunio2"
+        },
+        {
+          "id": "gos",
+          "text": "dlg.despatx.opt.gos_sync",
+          "if": {
+            "all": [
+              {
+                "flag": "gos_preguntat",
+                "is": false
+              },
+              {
+                "flag": "sap_rockefeller"
+              }
+            ]
+          },
+          "next": "gos"
+        },
+        {
+          "id": "gos_nom",
+          "text": "dlg.despatx.opt.gos_nom",
+          "if": {
+            "all": [
+              {
+                "flag": "gos_preguntat",
+                "is": false
+              },
+              {
+                "flag": "sap_rockefeller",
+                "is": false
+              }
+            ]
+          },
+          "next": "gos"
+        },
+        {
+          "id": "pons",
+          "text": "dlg.despatx.opt.pons",
+          "silent": true,
+          "if": {
+            "all": [
+              {
+                "flag": "aliada_pons"
+              },
+              {
+                "flag": "mobil_resolt",
+                "is": false
+              }
+            ]
+          },
+          "next": "pons"
+        },
+        {
+          "id": "ballester",
+          "text": "dlg.despatx.opt.ballester",
+          "silent": true,
+          "if": {
+            "all": [
+              {
+                "flag": "ballester_acompanya"
+              },
+              {
+                "flag": "mobil_resolt",
+                "is": false
+              }
+            ]
+          },
+          "next": "ballester"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.despatx.opt.adeu_sync",
+          "end": true
+        }
+      ]
+    },
+    "reunio": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.despatx.reunio1"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.reunio2"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.reunio3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "reunio1"
+        },
+        {
+          "setVar": "coberta_mobil",
+          "value": 3
+        }
+      ]
+    },
+    "reunio2": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.reunio2_1"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "reunio2"
+        },
+        {
+          "setVar": "coberta_mobil",
+          "value": 2
+        }
+      ]
+    },
+    "gos": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.gos1"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.gos2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "gos_preguntat"
+        },
+        {
+          "setFlag": "sap_rockefeller"
+        },
+        {
+          "setVar": "coberta_mobil",
+          "value": 2
+        }
+      ]
+    },
+    "pons": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.mobil1"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.pons2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.despatx.pons3"
+        },
+        {
+          "who": "pons",
+          "text": "dlg.despatx.pons_codi1",
+          "if": {
+            "all": [
+              {
+                "flag": "codi_demanat"
+              },
+              {
+                "var": "codi_n",
+                "op": "==",
+                "value": 0
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "codi_llegit"
+            }
+          ]
+        },
+        {
+          "who": "pons",
+          "text": "dlg.despatx.pons_codi2",
+          "if": {
+            "all": [
+              {
+                "flag": "codi_demanat"
+              },
+              {
+                "var": "codi_n",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "codi_llegit"
+            }
+          ]
+        },
+        {
+          "who": "pons",
+          "text": "dlg.despatx.pons_codi3",
+          "if": {
+            "all": [
+              {
+                "flag": "codi_demanat"
+              },
+              {
+                "var": "codi_n",
+                "op": ">=",
+                "value": 2
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "codi_llegit"
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "mobil_resolt"
+        },
+        {
+          "setFlag": "pons_mobil"
+        }
+      ]
+    },
+    "ballester": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.despatx.ballester1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.despatx.ballester2"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.ballester3"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.despatx.ballester4"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.despatx.ballester_codi1",
+          "if": {
+            "all": [
+              {
+                "flag": "codi_demanat"
+              },
+              {
+                "var": "codi_n",
+                "op": "==",
+                "value": 0
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "codi_llegit"
+            }
+          ]
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.despatx.ballester_codi2",
+          "if": {
+            "all": [
+              {
+                "flag": "codi_demanat"
+              },
+              {
+                "var": "codi_n",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "codi_llegit"
+            }
+          ]
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.despatx.ballester_codi3",
+          "if": {
+            "all": [
+              {
+                "flag": "codi_demanat"
+              },
+              {
+                "var": "codi_n",
+                "op": ">=",
+                "value": 2
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "codi_llegit"
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "mobil_resolt"
+        }
+      ]
+    },
+    "despres": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.despres1"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.despres2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.despatx.despres3"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bcmu_avantdespatx.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "verb": "*",
+      "id": "intro",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_avantdespatx.intro1"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_avantdespatx.intro2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "a_planta_noble"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "pons": {
+      "name": "sala.bcmu_avantdespatx.pons.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "pons"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aliada_pons"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.pons.look_aliada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.pons.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sap_pons"
+            }
+          ]
+        }
+      ]
+    },
+    "factura": {
+      "name": "sala.bcmu_avantdespatx.factura.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.factura.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "factura_vista"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.factura.agafa"
+            }
+          ]
+        }
+      ]
+    },
+    "nomina": {
+      "name": "sala.bcmu_avantdespatx.nomina.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.nomina.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nomina_vista"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.nomina.agafa"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.bcmu_avantdespatx.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "any": [
+              {
+                "flag": "aliada_pons"
+              },
+              {
+                "flag": "pons_enredada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.porta.entra"
+            }
+          ],
+          "goTo": "bcmu_despatx"
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.porta.pons"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.porta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tub": {
+      "name": "sala.bcmu_avantdespatx.tub.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "*",
+          "action": {
+            "name": "tub.enviar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "tub.buida"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.tub.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ascensor": {
+      "name": "sala.bcmu_avantdespatx.ascensor.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_avantdespatx.ascensor.baixa",
+              "sound": "ascensor"
+            }
+          ],
+          "goTo": "bcmu_vestibul"
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.ascensor.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_avantdespatx.ascensor.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

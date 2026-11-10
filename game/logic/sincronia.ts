@@ -33,9 +33,17 @@ export interface PasSincronia {
   alarma?: { flag: string; var: string };
   /** Avisos del rellotge: quan queden aquests torns, la línia (amb `{torns}`). */
   avisos?: Record<number, string>;
-  /** En reiniciar: línies (narrador) i efectes, a més de tornar el rellotge a `torns` i apagar l'alarma. */
-  reinici: { linies: string[]; efectes: Effect[] };
+  /**
+   * Una regla pròpia de cada torn (el Director que mira el mòbil): es crida després de cada acció que gasta
+   * torn i, si torna cert, es reinicia el pas amb les línies de la regla en lloc de les del rellotge.
+   */
+  regla?: { torn: (n: Narrative) => boolean; linies: Linia[] };
+  /** En reiniciar: línies i efectes, a més de tornar el rellotge a `torns` i apagar l'alarma. */
+  reinici: { linies: Linia[]; efectes: Effect[] };
 }
+
+/** Una línia de reinici: una clau (la diu el narrador) o qui la diu i la clau. */
+export type Linia = string | { who: string; text: string };
 
 /** Els passos de sincronia del joc. */
 export const PASSOS: Record<string, PasSincronia> = {
@@ -54,6 +62,41 @@ export const PASSOS: Record<string, PasSincronia> = {
         { setFlag: 'imprimint', value: false },
         { setFlag: 'acreditacions_llestes', value: false },
         { addVar: 'reinicis_aeroport', amount: 1 },
+      ],
+    },
+  },
+  // L'Escena 8: el mòbil del Director. Quan l'Iri ja ha demanat el codi, al final de cada torn en què el
+  // Director no està distret, mira el mòbil i cancel·la l'aturada (per protocol). Si la senyora Pons o en
+  // Ballester se n'encarreguen (`mobil_resolt`), ja no el pot mirar.
+  mobil: {
+    actiu: 'sync_mobil',
+    sales: ['bcmu_escombraries', 'bcmu_despatx'],
+    rellotge: 'torns_mobil',
+    torns: 9,
+    avisos: { 3: 'sync.mobil.queden', 1: 'sync.mobil.ultima' },
+    regla: {
+      torn: (n) => {
+        if (n.flag('mobil_resolt')) return false;
+        const coberta = Number(n.getVar('coberta_mobil') ?? 0);
+        if (n.flag('codi_demanat') && coberta <= 0) return true;
+        if (coberta > 0) n.apply({ setVar: 'coberta_mobil', value: coberta - 1 });
+        return false;
+      },
+      linies: [
+        'sync.mobil.mira1',
+        { who: 'bonfill', text: 'sync.mobil.mira2' },
+        { who: 'vet', text: 'sync.mobil.mira3' },
+        { who: 'bonfill', text: 'sync.mobil.mira4' },
+        'sync.mobil.caducat',
+      ],
+    },
+    reinici: {
+      linies: [{ who: 'bonfill', text: 'sync.mobil.reinici1' }, 'sync.mobil.caducat'],
+      efectes: [
+        ...['codi_demanat', 'codi_llegit', 'reunio1', 'reunio2', 'gos_preguntat'].map((f) => ({ setFlag: f, value: false })),
+        { setVar: 'coberta_mobil', value: 0 },
+        { addVar: 'codi_n', amount: 1 },
+        { addVar: 'reinicis_mobil', amount: 1 },
       ],
     },
   },
@@ -82,7 +125,11 @@ const LLIURES = new Set(['look', 'walkTo', 'talkTo']);
 export const SINCRONIA_TEXTS = [
   'sync.aeroport.queden', 'sync.aeroport.ultima', 'sync.aeroport.reinici1', 'sync.aeroport.reinici2', 'sync.aeroport.reinici3',
   'sync.collaret.reinici1', 'sync.collaret.reinici2', 'sync.collaret.reinici3',
+  'sync.mobil.queden', 'sync.mobil.ultima', 'sync.mobil.mira1', 'sync.mobil.mira2', 'sync.mobil.mira3', 'sync.mobil.mira4',
+  'sync.mobil.caducat', 'sync.mobil.reinici1',
 ];
+
+const linia = (l: Linia) => (typeof l === 'string' ? narrador(l) : { who: l.who, text: l.text });
 
 const narrador = (text: string, params?: Record<string, string | number>) => ({ who: 'narrator' as const, text, params });
 
@@ -111,14 +158,16 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
     alarmaEsgotada = a <= 0;
   }
   const limitAssolit = !!pas.limit && Number(n.getVar(pas.limit.var) ?? 0) >= pas.limit.max;
+  const reglaTrencada = !!pas.regla && pas.regla.torn(n);
 
-  if (queden <= 0 || alarmaEsgotada || limitAssolit) {
+  if (queden <= 0 || alarmaEsgotada || limitAssolit || reglaTrencada) {
     n.apply([
       ...pas.reinici.efectes,
       ...(pas.rellotge ? [{ setVar: pas.rellotge, value: pas.torns ?? 0 }] as Effect[] : []),
       ...(pas.alarma ? [{ setFlag: pas.alarma.flag, value: false }, { setVar: pas.alarma.var, value: 0 }] as Effect[] : []),
     ]);
-    return { lines: pas.reinici.linies.map((t) => narrador(t)), endDialogue: true };
+    const linies = reglaTrencada ? pas.regla!.linies : pas.reinici.linies;
+    return { lines: linies.map(linia), endDialogue: true };
   }
   const avis = pas.avisos?.[queden];
   return avis ? { lines: [narrador(avis, { torns: queden })] } : undefined;

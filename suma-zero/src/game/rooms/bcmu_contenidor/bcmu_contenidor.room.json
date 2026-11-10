@@ -1,0 +1,144 @@
+{
+  "id": "bcmu_contenidor",
+  "name": "Darrere del banc",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "contenidor",
+      "active": true,
+      "description": "contenidor",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 117,
+          "y": 57
+        },
+        {
+          "x": 191,
+          "y": 57
+        },
+        {
+          "x": 191,
+          "y": 90
+        },
+        {
+          "x": 117,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 154,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 154,
+        "y": 90
+      }
+    },
+    {
+      "id": "carrer",
+      "active": true,
+      "description": "carrer",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 289,
+          "y": 19
+        },
+        {
+          "x": 363,
+          "y": 19
+        },
+        {
+          "x": 363,
+          "y": 52
+        },
+        {
+          "x": 289,
+          "y": 52
+        }
+      ],
+      "walkToPoint": {
+        "x": 326,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 326,
+        "y": 52
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 240,
+      "y": 185,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

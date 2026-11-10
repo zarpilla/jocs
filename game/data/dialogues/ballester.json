@@ -5,6 +5,12 @@
   "start": [
     {
       "if": {
+        "flag": "cal_director"
+      },
+      "node": "virus"
+    },
+    {
+      "if": {
         "flag": "aliat_ballester"
       },
       "node": "amic"
@@ -619,6 +625,14 @@
         {
           "who": "ballester",
           "text": "dlg.ballester.orgullos"
+        }
+      ]
+    },
+    "virus": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.virus1"
         }
       ]
     }

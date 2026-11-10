@@ -4,6 +4,48 @@
   "protagonist": "vet",
   "onEnter": [
     {
+      "verb": "*",
+      "if": {
+        "flag": "cal_director"
+      },
+      "id": "virus_seguretat",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_seguretat.virus1"
+        },
+        {
+          "who": "ballester",
+          "text": "sala.bcmu_seguretat.virus2"
+        },
+        {
+          "who": "ballester",
+          "text": "sala.bcmu_seguretat.virus3",
+          "if": {
+            "flag": "aliat_ballester"
+          },
+          "effects": [
+            {
+              "setFlag": "ballester_acompanya"
+            }
+          ]
+        },
+        {
+          "who": "ballester",
+          "text": "sala.bcmu_seguretat.virus4",
+          "if": {
+            "flag": "aliat_ballester",
+            "is": false
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_seguretat.virus5"
+        }
+      ]
+    },
+    {
       "id": "arribada",
       "verb": "*",
       "once": true,
@@ -86,7 +128,11 @@
             }
           ]
         }
-      ]
+      ],
+      "visibleIf": {
+        "flag": "ballester_acompanya",
+        "is": false
+      }
     },
     "monitors": {
       "name": "sala.bcmu_seguretat.monitors.nom",
@@ -444,6 +490,39 @@
               "text": "sala.bcmu_seguretat.ascensor.sync"
             }
           ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "cal_director"
+              },
+              {
+                "flag": "virus_aturat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_seguretat.ascensor.noble",
+              "sound": "ascensor"
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_seguretat.ascensor.ballester",
+              "if": {
+                "flag": "ballester_acompanya"
+              }
+            }
+          ],
+          "goTo": "bcmu_avantdespatx"
         },
         {
           "verb": [

@@ -44,5 +44,14 @@
   "ui.missio.fallida": "Missió fallida: {titol}",
   "ui.missio.nova": "Nova missió: {titol}",
   "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal explorar una mica més.",
-  "tub.auriculars_boto": "La Vet ja en porta un. L'altre és el meu recanvi."
+  "tub.auriculars_boto": "La Vet ja en porta un. L'altre és el meu recanvi.",
+  "sync.mobil.queden": "El Director allarga la mà cap al mòbil. Li queden {torns} moments de paciència.",
+  "sync.mobil.ultima": "El Director ja té la mà damunt del mòbil.",
+  "sync.mobil.mira1": "El Director gira el mòbil.",
+  "sync.mobil.mira2": "Intent d'aturada no autoritzat. El protocol diu: cancel·lar. Sempre he seguit el protocol.",
+  "sync.mobil.mira3": "Però si és per tornar-li els diners!",
+  "sync.mobil.mira4": "No ho he autoritzat jo. Per tant, no és segur.",
+  "sync.mobil.caducat": "El codi ha caducat. En caldrà un de nou.",
+  "sync.mobil.reinici1": "Bé. Tornem-hi?",
+  "acte.3": "Acte 3 · Robin Hood 2.0"
 }

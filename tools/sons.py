@@ -343,6 +343,57 @@ def got():
     return mix(vidre, dring)
 
 
+# ─── Acte 3: Robin Hood 2.0 ─────────────────────────────────────────────────
+
+
+def virus():
+    """ROBIN HOOD 2.0 s'executa: una cascada de comptadors que cauen, cada cop més de pressa, i un bip llarg."""
+    parts = []
+    t0 = 0.0
+    for i in range(18):
+        f = 1800 - i * 70
+        parts.append((osc(f, 0.05, 'square') * env(0.05, 0.002, 0.02) * 0.35, t0))
+        t0 += max(0.03, 0.14 - i * 0.008)
+    final = osc(523, 0.8, 'square') * env(0.8, 0.003, None, 0.2) * 0.5
+    return mix(*parts, (final, t0 + 0.05))
+
+
+def mobil_vibra():
+    """El mòbil del Director que vibra damunt la taula: dues vibracions."""
+    d = 0.35
+    vib = band(osc(170, d, 'square') * (0.6 + 0.4 * osc(31, d)), 80, 1200) * env(d, 0.01, None, 0.05) * 0.6
+    return seq(vib, vib, gap=0.15)
+
+
+def aturada():
+    """El Llibre Major atura el virus: un motor que s'apaga i tres notes que baixen, com un sospir."""
+    d = 1.0
+    motor = osc(np.linspace(220, 50, int(SR * d)), d, 'saw') * env(d, 0.01, None, 0.3) * 0.25
+    nota = lambda f: osc(f, 0.35, 'square') * env(0.35, 0.003, None, 0.1) * 0.35
+    return mix(motor, (seq(nota(784), nota(659), nota(523), gap=0.05), 0.4))
+
+
+def megafonia_bcmu():
+    """La megafonia del banc: tres notes elegants, de les que demanen calma mentre et busquen."""
+    nota = lambda f: (osc(f, 0.8) + 0.3 * osc(f * 2, 0.8) + 0.1 * osc(f * 3, 0.8)) * env(0.8, 0.005, 0.3) * 0.5
+    return mix(nota(659), (nota(880), 0.35), (nota(1319), 0.7))
+
+
+def extintor():
+    """Un extintor que baixa pel conducte i esclata en escuma: cops metàl·lics i un xiuxiueig llarg."""
+    cops = mix(*[(osc(np.linspace(300, 200, int(SR * 0.08)), 0.08) * env(0.08, 0.001, 0.03) * (0.6 - 0.1 * i), i * 0.22) for i in range(4)])
+    d = 1.6
+    escuma = band(noise(d), 1500, 9000) * env(d, 0.02, None, 0.6) * 0.5
+    return mix(cops, (escuma, 0.95))
+
+
+def contenidor():
+    """La tapa d'un contenidor que s'obre i algú que hi cau a dins, damunt d'una cosa tova."""
+    tapa = mix(clic(400, 0.06), (band(osc(np.linspace(300, 260, int(SR * 0.4)), 0.4, 'saw'), 200, 2000) * env(0.4, 0.02, 0.1) * 0.3, 0.05))
+    caiguda = osc(np.linspace(90, 50, int(SR * 0.35)), 0.35) * env(0.35, 0.001, 0.12) + band(noise(0.35), 100, 900) * env(0.35, 0.001, 0.1) * 0.6
+    return mix(tapa, (caiguda, 0.9))
+
+
 # ─── Llista ─────────────────────────────────────────────────────────────────
 
 SONS = {
@@ -353,6 +404,8 @@ SONS = {
     'ascensor': ascensor, 'tub_envia': tub_envia, 'tub_rep': tub_rep, 'bip_llibre': bip_llibre, 'clau_gira': clau_gira,
     'rebobinar': rebobinar, 'mobil_ok': mobil_ok, 'maquina_cafe': maquina_cafe, 'robot_neteja': robot_neteja,
     'robot_atura': robot_atura, 'galleda': galleda, 'porta_neteja': porta_neteja, 'got': got,
+    'virus': virus, 'mobil_vibra': mobil_vibra, 'aturada': aturada, 'megafonia_bcmu': megafonia_bcmu,
+    'extintor': extintor, 'contenidor': contenidor,
 }
 
 # Volum de cada so respecte del màxim.

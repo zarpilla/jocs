@@ -4,6 +4,29 @@
   "protagonist": "vet",
   "onEnter": [
     {
+      "verb": "*",
+      "if": {
+        "flag": "virus_aturat"
+      },
+      "id": "fugida",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_vestibul.fugida1"
+        },
+        {
+          "who": "recepcionista",
+          "text": "sala.bcmu_vestibul.fugida2",
+          "if": {
+            "var": "sospita_max",
+            "op": ">=",
+            "value": 50
+          }
+        }
+      ]
+    },
+    {
       "id": "intro",
       "verb": "*",
       "once": true,
@@ -169,6 +192,13 @@
     "recepcio": {
       "name": "sala.bcmu_vestibul.recepcio.nom",
       "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "dialogue": "recepcionista"
+        },
         {
           "verb": "talkTo",
           "lines": [
@@ -342,6 +372,21 @@
         {
           "verb": [
             "use",
+            "open"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.ascensor.fugida"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
             "open",
             "walkTo"
           ],
@@ -394,6 +439,57 @@
             "open",
             "walkTo"
           ],
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "var": "sospita_max",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "flag": "recepcionista_enredada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.sortida.recepcionista"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_vestibul.sortida.fora"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_al_carrer"
+            }
+          ],
+          "goTo": "bcmu_contenidor"
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
           "lines": [
             {
               "who": "player",
@@ -407,6 +503,52 @@
             {
               "who": "player",
               "text": "sala.bcmu_vestibul.sortida.look"
+            }
+          ]
+        }
+      ]
+    },
+    "recepcionista": {
+      "name": "sala.bcmu_vestibul.recepcionista.nom",
+      "visibleIf": {
+        "flag": "virus_aturat"
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "recepcionista"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "var": "sospita_max",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "flag": "recepcionista_enredada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.recepcionista.look_mira"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.recepcionista.look"
             }
           ]
         }

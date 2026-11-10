@@ -333,6 +333,17 @@
       "visible": false,
       "clickable": false,
       "zIndex": 1
+    },
+    {
+      "instanceId": "pons-veu",
+      "definition": "pons/pons.character.json",
+      "x": 95,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
     }
   ]
 }

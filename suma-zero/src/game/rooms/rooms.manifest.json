@@ -60,6 +60,30 @@
     {
       "id": "bcmu_vestibul",
       "definition": "bcmu_vestibul/bcmu_vestibul.room.json"
+    },
+    {
+      "id": "bcmu_avantdespatx",
+      "definition": "bcmu_avantdespatx/bcmu_avantdespatx.room.json"
+    },
+    {
+      "id": "bcmu_contenidor",
+      "definition": "bcmu_contenidor/bcmu_contenidor.room.json"
+    },
+    {
+      "id": "bcmu_despatx",
+      "definition": "bcmu_despatx/bcmu_despatx.room.json"
+    },
+    {
+      "id": "final_bar",
+      "definition": "final_bar/final_bar.room.json"
+    },
+    {
+      "id": "muntatge",
+      "definition": "muntatge/muntatge.room.json"
+    },
+    {
+      "id": "postcredits",
+      "definition": "postcredits/postcredits.room.json"
     }
   ]
 }

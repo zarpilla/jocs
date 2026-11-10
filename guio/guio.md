@@ -200,7 +200,7 @@ mòbil del Director (Escena 8). El joc les anuncia amb un títol: **«Ara necess
 | 1 · «El pla és un desastre» | 1. El pis · 2. El bar · 3. L'aeroport | `pis_estudi`, `pis_cuina`, `bar_sala`, `bar_rebost`, `aeroport_terminal`, `aeroport_personal`, `aeroport_oficina`, `avio` (cinemàtica) | Iri · Vet · les dues |
 | 2 · «La seu del mal» | 4. El vestíbul · 4b. El moll de càrrega · 5. El tercer pis · 6. El collaret | `bcmu_vestibul`, `bcmu_moll`, `bcmu_passadis`, `bcmu_escombraries`, `bcmu_seguretat` | Vet · Iri · Iri · les dues |
 | 3 · «Robin Hood 2.0» | 7. L'execució · 8. El despatx · 9. La sortida | `bcmu_escombraries`, `bcmu_seguretat`, `bcmu_avantdespatx`, `bcmu_despatx`, `bcmu_vestibul`, `bcmu_passadis`, `bcmu_contenidor` | les dues |
-| Final | La Propina, mirant les notícies | `final_bar` | cinemàtica |
+| Final | La Propina, mirant les notícies (i els postcrèdits al pis) | `final_bar`, `postcredits` | cinemàtica (l'escena del final) |
 
 **Escenes noves** respecte del primer guió (a petició de l'usuari): el passaplats i l'entrepà (Escena 1), el
 telèfon i el rebost del bar (2), els objectes perduts de l'aeroport (3), el moll de càrrega (4b), la senyora
@@ -422,8 +422,7 @@ Durant la sincronia, objectes perduts i la cafeteria no s'hi poden fer servir: �
 **Final de l'acte (cinemàtica `avio`):** a l'avió, entre tècnics de debò. L'Iri dona l'acreditació a la Vet.
 La Rius les mira: «Sou noves? Soc la Rius, l'encarregada. Benvingudes a la subcontracta. Aquí ningú no cobra el viatge.» (Al moll s'hi torna a presentar: «Ho repeteixo perquè a l'avió dormíeu.») La Vet ja
 porta el vestit d'auditora. IRI: «I aquest vestit? Fa una hora anaves amb la bomber.» VET: «Objectes perduts. Algú
-s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.» IRI: «Era d'un altre.» L'avió s'enlaira. **Fi de l'Acte 1.** (Mentre no hi hagi l'Acte 2, aquí s'acaba la demostració, amb el final
-provisional «Continuarà».)
+s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.» IRI: «Era d'un altre.» L'avió s'enlaira. **Fi de l'Acte 1.**
 
 ---
 
@@ -593,7 +592,8 @@ clau de casa; si mai no la tingués, a la taula d'en Ballester hi ha un clauer d
 La Vet envia **la clau del Llibre Major** pel tub a l'Iri. [SO: tub_envia] [SO: tub_rep] L'Iri la gira.
 [SO: clau_gira] «Autoritzat. Ja la pots treure.» La clau queda a l'inventari de l'Iri.
 
-**Fi de l'Acte 2:** «Executar ROBIN HOOD 2.0? S/N». L'Iri prem S. **Acte 3 · Robin Hood 2.0.**
+**Fi de l'Acte 2:** «Executar ROBIN HOOD 2.0? S/N». L'Iri prem S. **Acte 3 · Robin Hood 2.0.** El muntatge és una
+cinemàtica (`muntatge`); després, l'Iri torna al Llibre Major i la Vet és a la sala de seguretat.
 
 ---
 
@@ -642,16 +642,21 @@ teclejant.»
 **Sales:** `bcmu_avantdespatx` (Vet, amb la senyora Pons), `bcmu_despatx` (Vet, amb el Director) i
 `bcmu_escombraries` (Iri, al Llibre Major).
 
-**L'avantdespatx (sense rellotge).** La senyora Pons (placa a la taula) barra el pas: «El Director no rep.» A la
-taula hi ha una **factura de la perruqueria de Rockefeller** i la **nòmina de la Pons**. La Vet ho veu i en
-pensa una cosa:
+**L'avantdespatx (sense rellotge).** La senyora Pons es presenta («Pons. Secretària de Direcció. El Director no
+rep»; també ho diu la placa de la taula) i barra el pas. A la taula hi ha una **factura de la perruqueria de
+Rockefeller** (4.200 €, mensual) i la **nòmina de la Pons** (2.900 €, vint anys d'antiguitat). La Vet les mira i
+en pensa una cosa:
 
-- **Escoltar-la (aliada):** la Vet llegeix en veu alta la factura, al costat de la nòmina. La Pons no diu res.
-  Després: «Passi. I si necessita alguna cosa, soc aquí. Fa vint anys que soc aquí.» `aliat_pons`.
-- **Enredar-la:** «Soc de la UE.» La Pons la deixa passar, però no serà aliada.
+- **Escoltar-la (aliada):** amb les dues mirades, la Vet llegeix en veu alta la factura, al costat de la nòmina.
+  La Pons no diu res. Després: «Passi. I si necessita alguna cosa, soc aquí. Fa vint anys que soc aquí.»
+  `aliada_pons`. Es pot fer fins i tot després d'enredar-la.
+- **Enredar-la:** «Soc auditora de la Unió Europea.» La Pons la deixa passar, però no és aliada.
+- La missió **La senyora Pons** falla si el virus s'atura sense haver-la escoltada.
 
-**El despatx.** El Director ja no és una amenaça: està en xoc, mirant el mòbil, amb **14,32 €** al compte (els
-12 € del repartiment i 2,32 € d'interessos: «Al Director, el banc sempre li paga»).
+**El despatx.** El Director ja no és una amenaça: està en xoc, amb **14,32 €** al compte (els 12 € del repartiment
+i 2,32 € d'interessos: «Al Director, el banc sempre li paga»). Té el mòbil **cap per avall a la taula** i el gira
+cada dos per tres, «com qui mira si ha plogut». Si en Ballester l'acompanya, en entrar diu el compte de les
+nòmines (vegeu «La decisió de l'Iri»).
 
 > DIRECTOR (tremolant): Això... això és un delicte.
 > VET: Tècnicament, sí. Però també ho és el que vostè feia amb els diners dels altres.
@@ -663,8 +668,13 @@ Director. Pista de la pantalla: *«El meu millor amic»*. L'Iri ho diu per l'aur
 
 - Si la Vet va llegir la placa del retrat (Escena 4), totes dues ho saben: **Rockefeller**. L'Iri: «Rockefeller.
   Ho va dir la Vet.»
-- Si no, al despatx hi ha una **foto del gos** a la taula i un **bol d'aigua** amb el nom gravat. Cap atzucac.
-- Una contrasenya dolenta: «Contrasenya incorrecta. Li queden infinits intents: el Llibre Major és de 1984.»
+- Si no, al despatx hi ha una **foto del gos** a la taula i un **bol d'aigua** amb el nom gravat, i el Director en
+  diu el nom si se li pregunta pel gos. La Vet ho diu en veu alta. Cap atzucac.
+- Com que el joc no té camp de text, la contrasenya és una tria al Llibre Major: «Rockefeller» (només si se sap),
+  «Bonfill», «Diners» i «Sostenibilitat». Una contrasenya dolenta: «Contrasenya incorrecta. Li queden infinits
+  intents: el Llibre Major és de 1984.»
+- **La sincronia comença amb la contrasenya**, i només si la Vet ja és al despatx; si no, l'Iri: «Si el codi arriba
+  i la Vet no és amb ell, el veurà ell.»
 
 **Trencaclosques 8.2 — El mòbil (sincronia, 9 torns).** Després de la contrasenya, el Llibre Major envia un
 **codi al mòbil del Director**. El mòbil és el terminal d'accés: si el Director el mira quan el codi ja ha
@@ -675,18 +685,20 @@ arribat, hi veu «Intent d'aturada no autoritzat» i el cancel·la. No per diner
 > DIRECTOR: No ho he autoritzat jo. Per tant, no és segur.
 
 **La regla:** al final de cada torn en què **no** està distret, el Director mira el mòbil. Abans que l'Iri demani el
-codi, no passa res. Després, cancel·la, i es torna a començar el pas (amb un codi nou: si l'Iri tecleja el vell,
-«Codi caducat»). [SO: mobil_vibra]
+codi, no passa res. Després, cancel·la, i es torna a començar el pas («El codi ha caducat. En caldrà un de nou»: el
+codi següent és un altre). Agafar el mòbil quan no està distret també compta com a torn descobert.
+[SO: mobil_vibra]
 
-- **Iri:** demana el codi (1 torn), tecleja el codi que li dicti la Vet (1 torn) i confirma l'aturada (1 torn).
+- **Iri:** demana el codi (1 torn) i tecleja el codi que li dicti la Vet (1 torn). Amb el codi teclejat, l'aturada
+  ja no es pot cancel·lar: s'acaba la sincronia i ve la decisió, sense rellotge.
 - **Vet:**
   - **«Una reunió urgent sobre la sostenibilitat dels bancs»**: el Director parla de la seva visió amb els ulls
     tancats. Cobreix els **2 torns següents**. Una segona vegada («Ja n'hem parlat... però sí, sí»), només 1.
   - **Preguntar-li pel gos**: cobreix el torn següent (una vegada).
   - **Agafar el mòbil i llegir el codi** (1 torn, només mentre està distret i quan el codi ja ha arribat; si encara
     no: «Encara no ha arribat res»). La Vet el llegeix en veu alta i el torna a deixar cap per avall.
-  - **La senyora Pons** (si és aliada): «Senyor Director, li carrego el mòbil?» Se l'emporta a l'avantdespatx i
-    llegeix el codi en veu alta des de la porta. **Resol el pas sencer.**
+  - **La senyora Pons** (si és aliada; opció «Cridar la senyora Pons»): «Senyor Director, li carrego el mòbil?»
+    Se l'emporta a l'avantdespatx i llegeix el codi en veu alta des de la porta. **Resol el pas sencer.**
   - **En Ballester** (si és aliat i l'ha acompanyat): immobilitza el Director amb molta delicadesa. «Ho sento,
     senyor. Tinc una hipoteca, però també tinc vergonya.» **Resol el pas sencer. El joc recompensa la
     solidaritat.**
@@ -720,8 +732,13 @@ Per megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuador
 - **Vet:** baixa amb l'ascensor al vestíbul i surt per la porta principal, com a auditora. Si `sospita_max` va
   arribar a 50 o més, la recepcionista, que ha vist la gravació del vestíbul, la reconeix: «Vostè és l'auditora
   que ha fet suar el Director.» La Vet l'ha d'enredar («Soc de la UE. Venia per la font.»). Sense rellotge.
-- **Al carrer** (`bcmu_contenidor`, sala de la Vet): la Vet obre la tapa del contenidor. Cinemàtica: l'Iri cau a
-  dins. [SO: contenidor]
+- **Al carrer** (`bcmu_contenidor`, sala de la Vet): quan l'Iri té el coixí fet, avisa («Vet: coixí fet. Obre el
+  contenidor i salto»). La Vet obre la tapa; abans, «Encara no. L'Iri ha de fer el coixí». L'Iri cau a dins,
+  damunt de les bosses o de l'escuma. [SO: contenidor] (Les bosses, l'Iri sola no les pot llençar: «en caldrien
+  cent, i jo tinc dos braços. NETA-3 en té quatre.»)
+- **La recepcionista** (si la reconeix) també té respostes dolentes, que no costen res: «Jo soc la de la
+  dessuadora» («La de la dessuadora la busquen a dalt. Vostè va de jaqueta») o «M'ha confós amb una altra».
+- Per on no es pot sortir: l'ascensor de servei («Al moll hi deu haver seguretat») i, per a la Vet, tornar amunt.
 
 > VET: Ets una heroïna.
 > IRI: Faig pudor de banc.
@@ -767,7 +784,7 @@ Fosc a negre. Crèdits amb música de sintetitzador, i un text final:
 
 > *Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.*
 
-**Postcrèdits (sala `pis_estudi`, cinemàtica):** de nit, al pis. En Diu mossega el cable del router. A la pantalla
+**Postcrèdits (sala `postcredits`, un fons del pis de nit):** de nit, al pis. En Diu mossega el cable del router. A la pantalla
 de l'Iri: «ROBIN HOOD 3.0?». Tot torna a començar. (Si a l'Escena 1 l'Iri va sacrificar la pizza, en Diu li porta
 un tros de pizza, amb respecte.)
 
@@ -808,7 +825,7 @@ Un torn és una acció de qualsevol de les dues (regla 1.2). El camí mínim, i 
 |---|---|---|---|---|
 | **3 · Aeroport** | 12 torns | Vet: fill (1) i tres respostes (2–4) · Iri: codi (5) · terminal (6) · empènyer la impressora (7) · agafar (8) · sortir (9) · Vet: «L'he trobat!» (no gasta) | 3 | Un codi dolent (+1) i plorar (+1); o fins a tres respostes llargues (+1 cada una). Totes tres llargues i una acció perduda: es reinicia |
 | **6 · Collaret** | sospita 3 | 1r bip lliure · Vet cobreix (sèrie: 2 bips) · Iri: codi 2 · Iri: codi 3 · clau | 2 de sospita | Dos bips descoberts, o dos gots, o un capítol dolent i un got |
-| **8 · Mòbil** (sense aliats) | 9 torns | Vet: reunió (1, cobreix 2–3) · Iri: demana codi (2) · Vet: agafa el mòbil (3) · Vet: gos (4, cobreix 5) · Iri: tecleja codi (5) · Vet: reunió (6, cobreix 7) · Iri: confirma (7) | 2 | Un torn mal gastat (si queda sense cobrir un torn després del codi, es reinicia) |
+| **8 · Mòbil** (sense aliats) | 9 torns | Iri: contrasenya (1) · Vet: reunió (2, cobreix 3–4) · Iri: demana codi (3) · Vet: agafa el mòbil (4) · Vet: gos (5, cobreix 6) · Iri: tecleja codi (6) | 3 | Els torns que vulguis abans de demanar el codi; després, cap torn sense cobrir (si no, es reinicia) |
 | **8 · Mòbil** (amb la Pons o en Ballester) | — | El pas sencer es resol amb una acció | — | — |
 
 ---
@@ -1013,8 +1030,9 @@ enviada, la contrasenya ja posada, el panell de NETA i el conducte.
 | Títols d'acte i «Ara necessites les dues» | Línies `title` |
 | Gramàtica | `obj.<id>.amb_article` (ja hi és) i `obj.<id>.plural` per a les ulleres; els textos amb variables eviten les contraccions («de l'entrepà», «pel tub») o en tenen una clau pròpia |
 
-**Què caldrà afegir:** `game/logic/tub.ts` (els límits del tub), i els passos de sincronia de les escenes 6 i 8.
-Ja fet: `game/logic/sincronia.ts` i, al nucli, `onAfterAction` i l'esdeveniment `situar` (moure l'altra protagonista). La
+Ja fet: `game/logic/tub.ts` (els límits del tub) i `game/logic/sincronia.ts`, amb els passos de les escenes 3, 6 i 8
+(el del mòbil té una regla pròpia: el Director mira el mòbil si no està distret); al nucli, `onAfterAction` i
+l'esdeveniment `situar` (moure l'altra protagonista). La
 resta ja ho fa el nucli de Ferro-9. Cap altre canvi a Benne: la «pantalla dividida» és el botó Canvia.
 
 ## Abast (producció)

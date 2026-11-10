@@ -129,11 +129,16 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   d'en Tomàs) i l'aeroport (la primera sincronia per torns, amb la cigarreta de l'Ortega).
 - **Acte 2 jugable de cap a peus** (en mode text, als tests i a Benne, amb l'art definitiu): el vestíbul (el Director i la sospita, amb el
   Dia de la Marmota), el moll (la Rius i la targeta), el tercer pis (NETA-3 i les càmeres) i la sincronia del
-  collaret (els bips del Llibre Major i en Ballester). Acaba amb un final provisional, «Continuarà».
+  collaret (els bips del Llibre Major i en Ballester).
+- **Acte 3 jugable de cap a peus** (en mode text, als tests i a Benne, amb art provisional): el muntatge del virus,
+  la planta noble (la senyora Pons i el Director, la contrasenya i la sincronia del mòbil, amb la regla del
+  Director que mira el mòbil), la decisió de l'Iri (tornar-ho tot o pagar primer les nòmines) i la sortida (l'escala
+  plena, el conducte amb NETA-3 o l'extintor, la recepcionista i el contenidor). Tres finals segons els aliats.
 - **Regles en codi:** la sincronia (`game/logic/sincronia.ts`: per torns a l'aeroport, per sospita al collaret),
   el tub pneumàtic (`tub.ts`) i la sospita del Director (`sospita.ts`), sobre dues novetats del nucli:
   `onAfterAction` (una regla després de cada acció) i l'esdeveniment `situar` (moure l'altra protagonista).
-- **Tests:** l'Acte 2 per tots els camins (amb els tres aliats o cap, els tres entrepans per al robot, l'Iri
+- **Tests:** l'Acte 3 per tots els camins (els tres finals; el mòbil resolt per la Vet, la Pons o en Ballester; els
+  reinicis del Director; sense la placa del retrat; la recepcionista; el contenidor abans d'hora), l'Acte 2 per tots els camins (amb els tres aliats o cap, els tres entrepans per al robot, l'Iri
   primer, el Dia de la Marmota, els reinicis del collaret, la veritat i la mentida a en Ballester) i l'Acte 1 per tots els camins (els tres sacrificis per a en Diu, amb i sense entrepà, tap i
   preparació, el codi dolent, els reinicis de la sincronia), amb una pista a cada pas, i proves de coherència.
 - **Art de l'Acte 1, definitiu:** totes les sales (el pis, el bar, l'aeroport) i les cinemàtiques (la portada,
@@ -147,4 +152,5 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
 - **Art de l'Acte 2, definitiu:** les cinc sales del BCMU (`hd/rooms/bcmu_*.py`, amb la paleta i l'estació del tub
   comunes a `hd/rooms/bcmu.py`), el Director, la Rius, en Ballester i NETA-3 amb les seves animacions d'estat, i les
   icones dels objectes nous. Els sons de l'Acte 2 són sintetitzats, i la música del banc (`banc`) sona a les cinc sales.
-- **Següent pas:** les impressions de la primera partida a l'Acte 2. Després, l'Acte 3.
+- **Següent pas:** jugar l'Acte 3 a Benne i fer-ne l'art definitiu (l'avantdespatx, el despatx, el contenidor, el
+  muntatge, el bar del final i els postcrèdits; la senyora Pons i la recepcionista).

@@ -127,5 +127,64 @@
     "failWhen": {
       "flag": "clau_canviada"
     }
+  },
+  "acte3": {
+    "kind": "main",
+    "title": "mis.acte3.titol",
+    "description": "mis.acte3.desc",
+    "startWhen": {
+      "flag": "acte2_fet"
+    },
+    "objectives": [
+      {
+        "id": "director",
+        "text": "mis.acte3.obj.director",
+        "completeWhen": {
+          "flag": "vet_al_despatx"
+        }
+      },
+      {
+        "id": "aturar",
+        "text": "mis.acte3.obj.aturar",
+        "completeWhen": {
+          "flag": "virus_aturat"
+        }
+      },
+      {
+        "id": "sortir",
+        "text": "mis.acte3.obj.sortir",
+        "completeWhen": {
+          "flag": "escapada"
+        }
+      }
+    ]
+  },
+  "senyora_pons": {
+    "kind": "side",
+    "title": "mis.senyora_pons.titol",
+    "description": "mis.senyora_pons.desc",
+    "startWhen": {
+      "flag": "sap_pons"
+    },
+    "objectives": [
+      {
+        "id": "escoltar",
+        "text": "mis.senyora_pons.obj.escoltar",
+        "completeWhen": {
+          "flag": "aliada_pons"
+        }
+      }
+    ],
+    "failWhen": {
+      "all": [
+        {
+          "flag": "virus_aturat"
+        },
+        {
+          "flag": "aliada_pons",
+          "is": false
+        }
+      ]
+    }
   }
 }

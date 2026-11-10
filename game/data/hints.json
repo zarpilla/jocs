@@ -1803,5 +1803,724 @@
       "pista.iri_girar.2",
       "pista.iri_girar.3"
     ]
+  },
+  "vet_planta_noble": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "cal_director"
+        },
+        {
+          "flag": "a_planta_noble",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "a_planta_noble"
+    },
+    "levels": [
+      "pista.vet_planta_noble.1",
+      "pista.vet_planta_noble.2",
+      "pista.vet_planta_noble.3"
+    ]
+  },
+  "vet_pons": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "a_planta_noble"
+        },
+        {
+          "flag": "aliada_pons",
+          "is": false
+        },
+        {
+          "flag": "pons_enredada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "aliada_pons"
+        },
+        {
+          "flag": "pons_enredada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_pons.1",
+      "pista.vet_pons.2",
+      "pista.vet_pons.3"
+    ]
+  },
+  "vet_entrar": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "any": [
+            {
+              "flag": "aliada_pons"
+            },
+            {
+              "flag": "pons_enredada"
+            }
+          ]
+        },
+        {
+          "flag": "vet_al_despatx",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_al_despatx"
+    },
+    "levels": [
+      "pista.vet_entrar.1",
+      "pista.vet_entrar.2",
+      "pista.vet_entrar.3"
+    ]
+  },
+  "vet_gos": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "pista_contrasenya"
+        },
+        {
+          "flag": "sap_rockefeller",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sap_rockefeller"
+    },
+    "levels": [
+      "pista.vet_gos.1",
+      "pista.vet_gos.2",
+      "pista.vet_gos.3"
+    ]
+  },
+  "vet_contrasenya": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "vet_al_despatx"
+        },
+        {
+          "flag": "contrasenya_ok",
+          "is": false
+        },
+        {
+          "any": [
+            {
+              "flag": "pista_contrasenya",
+              "is": false
+            },
+            {
+              "flag": "sap_rockefeller"
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "contrasenya_ok"
+    },
+    "levels": [
+      "pista.vet_contrasenya.1",
+      "pista.vet_contrasenya.2",
+      "pista.vet_contrasenya.3"
+    ]
+  },
+  "vet_llegir": {
+    "priority": 10,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "codi_demanat"
+        },
+        {
+          "flag": "codi_llegit",
+          "is": false
+        },
+        {
+          "var": "coberta_mobil",
+          "op": ">",
+          "value": 0
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "codi_llegit"
+    },
+    "levels": [
+      "pista.vet_llegir.1",
+      "pista.vet_llegir.2",
+      "pista.vet_llegir.3"
+    ]
+  },
+  "vet_espera_codi": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "codi_demanat",
+          "is": false
+        },
+        {
+          "any": [
+            {
+              "var": "coberta_mobil",
+              "op": ">",
+              "value": 0
+            },
+            {
+              "flag": "mobil_resolt"
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "codi_demanat"
+    },
+    "levels": [
+      "pista.vet_espera_codi.1",
+      "pista.vet_espera_codi.2",
+      "pista.vet_espera_codi.3"
+    ]
+  },
+  "vet_espera_teclejar": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "codi_llegit"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "codi_teclejat"
+    },
+    "levels": [
+      "pista.vet_espera_teclejar.1",
+      "pista.vet_espera_teclejar.2",
+      "pista.vet_espera_teclejar.3"
+    ]
+  },
+  "vet_decidir": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "codi_teclejat"
+        },
+        {
+          "flag": "virus_aturat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "virus_aturat"
+    },
+    "levels": [
+      "pista.vet_decidir.1",
+      "pista.vet_decidir.2",
+      "pista.vet_decidir.3"
+    ]
+  },
+  "vet_baixar": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "virus_aturat"
+        },
+        {
+          "flag": "vet_al_carrer",
+          "is": false
+        },
+        {
+          "var": "sospita_max",
+          "op": "<",
+          "value": 50
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_al_carrer"
+    },
+    "levels": [
+      "pista.vet_baixar.1",
+      "pista.vet_baixar.2",
+      "pista.vet_baixar.3"
+    ]
+  },
+  "vet_recepcionista": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "virus_aturat"
+        },
+        {
+          "flag": "vet_al_carrer",
+          "is": false
+        },
+        {
+          "var": "sospita_max",
+          "op": ">=",
+          "value": 50
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_al_carrer"
+    },
+    "levels": [
+      "pista.vet_recepcionista.1",
+      "pista.vet_recepcionista.2",
+      "pista.vet_recepcionista.3"
+    ]
+  },
+  "vet_coixi": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "vet_al_carrer"
+        },
+        {
+          "flag": "iri_llesta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_llesta"
+    },
+    "levels": [
+      "pista.vet_coixi.1",
+      "pista.vet_coixi.2",
+      "pista.vet_coixi.3"
+    ]
+  },
+  "vet_obrir": {
+    "priority": 10,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "vet_al_carrer"
+        },
+        {
+          "flag": "iri_llesta"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "escapada"
+    },
+    "levels": [
+      "pista.vet_obrir.1",
+      "pista.vet_obrir.2",
+      "pista.vet_obrir.3"
+    ]
+  },
+  "iri_virus_espera": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "cal_director"
+        },
+        {
+          "flag": "vet_al_despatx",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_al_despatx"
+    },
+    "levels": [
+      "pista.iri_virus_espera.1",
+      "pista.iri_virus_espera.2",
+      "pista.iri_virus_espera.3"
+    ]
+  },
+  "iri_contrasenya": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "vet_al_despatx"
+        },
+        {
+          "flag": "contrasenya_ok",
+          "is": false
+        },
+        {
+          "any": [
+            {
+              "flag": "sap_rockefeller"
+            },
+            {
+              "flag": "pista_contrasenya",
+              "is": false
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "contrasenya_ok"
+    },
+    "levels": [
+      "pista.iri_contrasenya.1",
+      "pista.iri_contrasenya.2",
+      "pista.iri_contrasenya.3"
+    ]
+  },
+  "iri_gos": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "pista_contrasenya"
+        },
+        {
+          "flag": "sap_rockefeller",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sap_rockefeller"
+    },
+    "levels": [
+      "pista.iri_gos.1",
+      "pista.iri_gos.2",
+      "pista.iri_gos.3"
+    ]
+  },
+  "iri_demanar": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "codi_demanat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "codi_demanat"
+    },
+    "levels": [
+      "pista.iri_demanar.1",
+      "pista.iri_demanar.2",
+      "pista.iri_demanar.3"
+    ]
+  },
+  "iri_esperar_codi": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "codi_demanat"
+        },
+        {
+          "flag": "codi_llegit",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "codi_llegit"
+    },
+    "levels": [
+      "pista.iri_esperar_codi.1",
+      "pista.iri_esperar_codi.2",
+      "pista.iri_esperar_codi.3"
+    ]
+  },
+  "iri_teclejar_codi": {
+    "priority": 10,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "codi_llegit"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "codi_teclejat"
+    },
+    "levels": [
+      "pista.iri_teclejar_codi.1",
+      "pista.iri_teclejar_codi.2",
+      "pista.iri_teclejar_codi.3"
+    ]
+  },
+  "iri_decidir": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "codi_teclejat"
+        },
+        {
+          "flag": "virus_aturat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "virus_aturat"
+    },
+    "levels": [
+      "pista.iri_decidir.1",
+      "pista.iri_decidir.2",
+      "pista.iri_decidir.3"
+    ]
+  },
+  "iri_escala": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "virus_aturat"
+        },
+        {
+          "flag": "escala_provada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "escala_provada"
+    },
+    "levels": [
+      "pista.iri_escala.1",
+      "pista.iri_escala.2",
+      "pista.iri_escala.3"
+    ]
+  },
+  "iri_coixi_neta": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "escala_provada"
+        },
+        {
+          "flag": "iri_llesta",
+          "is": false
+        },
+        {
+          "flag": "aliat_neta"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_llesta"
+    },
+    "levels": [
+      "pista.iri_coixi_neta.1",
+      "pista.iri_coixi_neta.2",
+      "pista.iri_coixi_neta.3"
+    ]
+  },
+  "iri_coixi": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "escala_provada"
+        },
+        {
+          "flag": "iri_llesta",
+          "is": false
+        },
+        {
+          "flag": "aliat_neta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "iri_llesta"
+    },
+    "levels": [
+      "pista.iri_coixi.1",
+      "pista.iri_coixi.2",
+      "pista.iri_coixi.3"
+    ]
+  },
+  "iri_saltar": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "iri_llesta"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "escapada"
+    },
+    "levels": [
+      "pista.iri_saltar.1",
+      "pista.iri_saltar.2",
+      "pista.iri_saltar.3"
+    ]
+  },
+  "vet_entretenir": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "mobil_resolt",
+          "is": false
+        },
+        {
+          "var": "coberta_mobil",
+          "op": "<=",
+          "value": 0
+        },
+        {
+          "flag": "codi_teclejat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "var": "coberta_mobil",
+          "op": ">",
+          "value": 0
+        },
+        {
+          "flag": "mobil_resolt"
+        },
+        {
+          "flag": "codi_teclejat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_entretenir.1",
+      "pista.vet_entretenir.2",
+      "pista.vet_entretenir.3"
+    ]
   }
 }

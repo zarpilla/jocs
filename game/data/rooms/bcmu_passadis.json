@@ -687,6 +687,123 @@
       "name": "sala.bcmu_passadis.porta_escala.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "clau_llibre",
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre2",
+              "sound": "clau_gira"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre4"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "escala_provada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada",
+                "is": false
+              },
+              {
+                "hasItem": "clau_llibre",
+                "who": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre2",
+              "sound": "clau_gira"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre4"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "escala_provada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "escala_provada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.plena"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_llibre",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.encara"
+            }
+          ]
+        },
+        {
           "verb": [
             "use",
             "open"
@@ -776,6 +893,21 @@
     "ascensor": {
       "name": "sala.bcmu_passadis.ascensor.nom",
       "interactions": [
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.ascensor.buscada"
+            }
+          ]
+        },
         {
           "verb": [
             "use",

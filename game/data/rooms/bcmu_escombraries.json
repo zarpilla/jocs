@@ -4,6 +4,52 @@
   "protagonist": "iri",
   "onEnter": [
     {
+      "verb": "*",
+      "if": {
+        "flag": "clau_girada"
+      },
+      "id": "virus",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.bcmu_escombraries.virus1"
+        },
+        {
+          "who": "vet",
+          "text": "sala.bcmu_escombraries.virus2"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_escombraries.virus3"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_escombraries.virus4"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_escombraries.virus5"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_escombraries.virus6"
+        },
+        {
+          "who": "vet",
+          "text": "sala.bcmu_escombraries.virus7"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "virus_executat"
+        },
+        {
+          "setFlag": "cal_director"
+        }
+      ]
+    },
+    {
       "id": "intro",
       "verb": "*",
       "once": true,
@@ -48,6 +94,383 @@
           "verb": "use",
           "item": "clau_llibre",
           "if": {
+            "flag": "clau_girada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.clau_ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.aturat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "clau_girada"
+              },
+              {
+                "flag": "vet_al_despatx",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.sense_vet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "clau_girada"
+              },
+              {
+                "flag": "contrasenya_ok",
+                "is": false
+              }
+            ]
+          },
+          "dialogue": "llibre"
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "sync_mobil"
+              },
+              {
+                "flag": "codi_demanat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.demana1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.demana2",
+              "sound": "mobil_vibra"
+            },
+            {
+              "who": "vet",
+              "text": "sala.bcmu_escombraries.demana3",
+              "if": {
+                "flag": "mobil_resolt",
+                "is": false
+              }
+            },
+            {
+              "who": "pons",
+              "text": "sala.bcmu_escombraries.pons_llegeix1",
+              "if": {
+                "all": [
+                  {
+                    "flag": "pons_mobil"
+                  },
+                  {
+                    "var": "codi_n",
+                    "op": "==",
+                    "value": 0
+                  }
+                ]
+              },
+              "effects": [
+                {
+                  "setFlag": "codi_llegit"
+                }
+              ]
+            },
+            {
+              "who": "pons",
+              "text": "sala.bcmu_escombraries.pons_llegeix2",
+              "if": {
+                "all": [
+                  {
+                    "flag": "pons_mobil"
+                  },
+                  {
+                    "var": "codi_n",
+                    "op": "==",
+                    "value": 1
+                  }
+                ]
+              },
+              "effects": [
+                {
+                  "setFlag": "codi_llegit"
+                }
+              ]
+            },
+            {
+              "who": "pons",
+              "text": "sala.bcmu_escombraries.pons_llegeix3",
+              "if": {
+                "all": [
+                  {
+                    "flag": "pons_mobil"
+                  },
+                  {
+                    "var": "codi_n",
+                    "op": ">=",
+                    "value": 2
+                  }
+                ]
+              },
+              "effects": [
+                {
+                  "setFlag": "codi_llegit"
+                }
+              ]
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_escombraries.ballester_llegeix1",
+              "if": {
+                "all": [
+                  {
+                    "flag": "mobil_resolt"
+                  },
+                  {
+                    "flag": "pons_mobil",
+                    "is": false
+                  },
+                  {
+                    "var": "codi_n",
+                    "op": "==",
+                    "value": 0
+                  }
+                ]
+              },
+              "effects": [
+                {
+                  "setFlag": "codi_llegit"
+                }
+              ]
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_escombraries.ballester_llegeix2",
+              "if": {
+                "all": [
+                  {
+                    "flag": "mobil_resolt"
+                  },
+                  {
+                    "flag": "pons_mobil",
+                    "is": false
+                  },
+                  {
+                    "var": "codi_n",
+                    "op": "==",
+                    "value": 1
+                  }
+                ]
+              },
+              "effects": [
+                {
+                  "setFlag": "codi_llegit"
+                }
+              ]
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_escombraries.ballester_llegeix3",
+              "if": {
+                "all": [
+                  {
+                    "flag": "mobil_resolt"
+                  },
+                  {
+                    "flag": "pons_mobil",
+                    "is": false
+                  },
+                  {
+                    "var": "codi_n",
+                    "op": ">=",
+                    "value": 2
+                  }
+                ]
+              },
+              "effects": [
+                {
+                  "setFlag": "codi_llegit"
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "codi_demanat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "sync_mobil"
+              },
+              {
+                "flag": "codi_llegit",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.esperant"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "sync_mobil"
+              },
+              {
+                "flag": "codi_teclejat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.tecleja1",
+              "if": {
+                "var": "codi_n",
+                "op": "==",
+                "value": 0
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.tecleja2",
+              "if": {
+                "var": "codi_n",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.tecleja3",
+              "if": {
+                "var": "codi_n",
+                "op": ">=",
+                "value": 2
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.tecleja_ok",
+              "sound": "bip_llibre"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.tecleja_ok2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "codi_teclejat"
+            },
+            {
+              "setFlag": "sync_mobil",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "codi_teclejat"
+              },
+              {
+                "flag": "virus_aturat",
+                "is": false
+              }
+            ]
+          },
+          "dialogue": "aturada"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.look_aturat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "clau_girada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.look_virus"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_llibre",
+          "if": {
             "flag": "cal_clau"
           },
           "lines": [
@@ -83,6 +506,10 @@
             {
               "who": "title",
               "text": "acte.fi2"
+            },
+            {
+              "who": "title",
+              "text": "acte.3"
             }
           ],
           "effects": [
@@ -93,9 +520,14 @@
               "setFlag": "acte2_fet"
             },
             {
-              "ending": "continuara"
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "bcmu_seguretat"
+              }
             }
-          ]
+          ],
+          "goTo": "muntatge"
         },
         {
           "verb": "use",
@@ -442,6 +874,21 @@
             "open"
           ],
           "if": {
+            "flag": "sync_mobil"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.mobil"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
             "flag": "sync_collaret"
           },
           "lines": [
@@ -562,6 +1009,189 @@
             "use",
             "open"
           ],
+          "if": {
+            "flag": "iri_llesta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.llesta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.escala"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "escala_provada"
+                  },
+                  {
+                    "flag": "iri_llesta",
+                    "is": false
+                  }
+                ]
+              },
+              {
+                "flag": "aliat_neta"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.conducte.neta1",
+              "sound": "robot_neteja"
+            },
+            {
+              "who": "neta",
+              "text": "sala.bcmu_escombraries.conducte.neta2",
+              "sound": "robot_atura"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.neta3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_llesta"
+            },
+            {
+              "setVar": "coixi",
+              "value": "bosses"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada"
+              },
+              {
+                "flag": "iri_llesta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.sense"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "extintor",
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada"
+              },
+              {
+                "flag": "iri_llesta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.extintor1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.conducte.extintor2",
+              "sound": "extintor"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.extintor3"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "extintor"
+            },
+            {
+              "setFlag": "iri_llesta"
+            },
+            {
+              "setVar": "coixi",
+              "value": "escuma"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "extintor",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.extintor_no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "iri_llesta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.look_llesta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
           "lines": [
             {
               "who": "player",
@@ -583,6 +1213,29 @@
     "bosses": {
       "name": "sala.bcmu_escombraries.bosses.nom",
       "interactions": [
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada"
+              },
+              {
+                "flag": "iri_llesta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.bosses.coixi"
+            }
+          ]
+        },
         {
           "verb": "pickUp",
           "lines": [

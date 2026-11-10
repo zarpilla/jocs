@@ -365,10 +365,211 @@ PORTA «sortida»
 
 ```
 
+## Sala L'avantdespatx · `bcmu_avantdespatx` (vet)
+
+```
+EN ENTRAR
+    • * (una vegada) — SEMPRE
+        NARRADOR: La planta noble. Catifa gruixuda, quadres de cavalls i una porta de fusta amb el nom del Director.
+        JUGADORA: I, davant de la porta, una senyora que no deixa passar ni l'aire condicionat.
+        ⇒ +a_planta_noble
+
+PONS «Pons»
+    • talkTo — SEMPRE
+        ⇒ diàleg pons
+    • look — si aliada_pons
+        JUGADORA: La senyora Pons. Ara em mira per sobre de les ulleres d'una altra manera.
+    • look — SEMPRE
+        JUGADORA: Una secretària amb les ulleres a la punta del nas. A la taula, una placa: «Sra. Pons. Secretària de Direcció».
+        ⇒ +sap_pons
+
+FACTURA «factura»
+    • look — SEMPRE
+        JUGADORA: Una factura: «Perruqueria canina Le Caniche d'Or. Client: Rockefeller. Tall, bany i massatge: 4.200 €». Mensual.
+        ⇒ +factura_vista
+    • pickUp — SEMPRE
+        JUGADORA: No és meva. Però ja me la sé de memòria.
+
+NOMINA «nòmina»
+    • look — SEMPRE
+        JUGADORA: Una nòmina: «Sra. Pons. Secretària de Direcció. Vint anys d'antiguitat. Net: 2.900 €».
+        ⇒ +nomina_vista
+    • pickUp — SEMPRE
+        JUGADORA: Les nòmines dels altres no es toquen. Només es llegeixen.
+
+PORTA «despatx del Director»
+    • use/open/walkTo — si aliada_pons o pons_enredada
+        JUGADORA: Endavant. Sense trucar: les auditores no truquen.
+        ⇒ → bcmu_despatx
+    • use/open — SEMPRE
+        JUGADORA: La senyora Pons em mira. Sense dir res, em diu que no.
+    • look — SEMPRE
+        JUGADORA: Una porta de fusta noble. Una placa daurada: «Director». Ni nom: no li cal.
+
+TUB «estació del tub»
+    • use + qualsevol objecte — SEMPRE
+        ⇒ acció tub.enviar
+    • open/use/pickUp — SEMPRE
+        JUGADORA: Una càpsula de llautó, buida. Hi caben coses petites i secrets.
+    • look — SEMPRE
+        JUGADORA: L'estació del tub de la planta noble. Té una càpsula de pell. Clar.
+
+ASCENSOR «ascensor»
+    • use/open/walkTo — si virus_aturat
+        [SO: ascensor] NARRADOR: L'ascensor baixa al vestíbul, amb violins de comiat.
+        ⇒ → bcmu_vestibul
+    • use/open — SEMPRE
+        JUGADORA: Primer, el Director. Després, ja baixarem.
+    • look — SEMPRE
+        JUGADORA: L'ascensor daurat. Baixa al vestíbul.
+
+```
+
+## Sala Darrere del banc · `bcmu_contenidor` (vet)
+
+```
+EN ENTRAR
+    • * (una vegada) — SEMPRE
+        NARRADOR: Al carrer, darrere del banc. Un contenidor verd, just a sota del conducte de les escombraries.
+        JUGADORA: Iri, soc a baix. Al contenidor.
+        IRI: A punt. Obre la tapa i salto. ⟨si iri_llesta⟩
+        IRI: Dona'm un minut. Tres pisos són tres pisos. ⟨si NO iri_llesta⟩
+
+CONTENIDOR «contenidor»
+    • open/use — si NO iri_llesta
+        JUGADORA: Encara no. L'Iri ha de fer el coixí, i jo no la vull recollir a trossos.
+    • open/use — si pagar_primer i aliats ≥ 3
+        [SO: contenidor] NARRADOR: La Vet aixeca la tapa. Tres pisos més amunt, algú crida «Ara!».
+        NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'una muntanya de secrets bancaris triturats. ⟨si coixi = "bosses"⟩
+        NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'un coixí d'escuma d'extintor. ⟨si coixi = "escuma"⟩
+        JUGADORA: Ets una heroïna.
+        IRI: Faig pudor de banc.
+        ⇒ +escapada, FINAL final_taula
+    • open/use — si aliats ≥ 1
+        [SO: contenidor] NARRADOR: La Vet aixeca la tapa. Tres pisos més amunt, algú crida «Ara!».
+        NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'una muntanya de secrets bancaris triturats. ⟨si coixi = "bosses"⟩
+        NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'un coixí d'escuma d'extintor. ⟨si coixi = "escuma"⟩
+        JUGADORA: Ets una heroïna.
+        IRI: Faig pudor de banc.
+        ⇒ +escapada, FINAL final_hores
+    • open/use — SEMPRE
+        [SO: contenidor] NARRADOR: La Vet aixeca la tapa. Tres pisos més amunt, algú crida «Ara!».
+        NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'una muntanya de secrets bancaris triturats. ⟨si coixi = "bosses"⟩
+        NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'un coixí d'escuma d'extintor. ⟨si coixi = "escuma"⟩
+        JUGADORA: Ets una heroïna.
+        IRI: Faig pudor de banc.
+        ⇒ +escapada, FINAL final_base
+    • look — SEMPRE
+        JUGADORA: Un contenidor de paper. A dins, el que el banc vol oblidar. Aviat, també l'Iri.
+
+CARRER «carrer»
+    • look — SEMPRE
+        JUGADORA: Ginebra: neta, ordenada i plena de bancs. Avui, una mica menys plena.
+    • use/open/walkTo — SEMPRE
+        JUGADORA: Sense l'Iri, no me'n vaig enlloc.
+
+```
+
+## Sala El despatx del Director · `bcmu_despatx` (vet)
+
+```
+EN ENTRAR
+    • * (una vegada) — SEMPRE
+        NARRADOR: El despatx del Director. Vistes al llac, un sofà de pell i, a la taula, un mòbil cap per avall.
+        EL DIRECTOR: Catorze euros amb trenta-dos. Catorze amb trenta-dos.
+        JUGADORA: Bon dia, senyor Director.
+        EL DIRECTOR: Dotze del repartiment. I dos amb trenta-dos d'interessos. Al Director, el banc sempre li paga.
+        EL DIRECTOR: Això... això és un delicte.
+        JUGADORA: Tècnicament, sí. Però també ho és el que vostè feia amb els diners dels altres.
+        EL DIRECTOR: Jo no robava.
+        JUGADORA: No. Vostè cobrava comissió.
+        BALLESTER: Per a la seva companya, senyora: les nòmines van totes pel compte 0001. Sempre ho han fet. Per això sempre arriben tard. ⟨si ballester_acompanya⟩
+          ⇒ +ballester_compte
+        IRI: Ho he sentit, Ballester. ⟨si ballester_acompanya⟩
+        ⇒ +vet_al_despatx
+    • * — SEMPRE
+        ⇒ +vet_al_despatx
+
+BONFILL «Director»
+    • talkTo — SEMPRE
+        ⇒ diàleg despatx
+    • look — SEMPRE
+        JUGADORA: El Director, en xoc. Gira el mòbil, el mira, el torna a deixar cap per avall. I hi torna.
+    • give + qualsevol objecte — SEMPRE
+        JUGADORA: Ara mateix no acceptaria res que valgués menys de catorze euros amb trenta-dos.
+
+MOBIL «mòbil del Director»
+    • pickUp/use — si virus_aturat
+        JUGADORA: Ja no cal. I fa pena de mirar.
+    • pickUp/use — si NO sync_mobil
+        JUGADORA: És del Director. I el Director el vigila més que als diners.
+    • pickUp/use — si mobil_resolt
+        JUGADORA: El mòbil ja és en bones mans. Millors que les meves.
+    • pickUp/use — si NO codi_demanat
+        JUGADORA: Encara no ha arribat res.
+    • pickUp/use — si codi_llegit
+        JUGADORA: Ja l'he llegit. I l'he tornat a deixar cap per avall.
+    • pickUp/use — si coberta_mobil ≤ 0
+        JUGADORA: Ara em veuria. Primer l'he de distreure.
+    • pickUp/use — SEMPRE
+        JUGADORA: Iri: 4-1-9-7. I el torno a deixar cap per avall. ⟨si codi_n = 0⟩
+        JUGADORA: Iri: 2-8-0-5. I el torno a deixar cap per avall. ⟨si codi_n = 1⟩
+        JUGADORA: Iri: 6-6-3-1. I el torno a deixar cap per avall. ⟨si codi_n ≥ 2⟩
+        ⇒ +codi_llegit
+    • look — si codi_demanat i NO codi_llegit
+        JUGADORA: El mòbil del Director, cap per avall. Ha vibrat. Hi ha un codi, esperant que algú el miri.
+    • look — SEMPRE
+        JUGADORA: El mòbil del Director, cap per avall. Ell el gira cada dos per tres, com qui mira si ha plogut.
+
+FOTO «foto»
+    • look — SEMPRE
+        JUGADORA: Una foto del gos, amb un llaç. Al marc, gravat: «Rockefeller». Iri, el gos es diu Rockefeller.
+        ⇒ +sap_rockefeller
+    • pickUp — SEMPRE
+        JUGADORA: No. Aquest home ja ha perdut prou coses avui.
+
+BOL «bol»
+    • look — SEMPRE
+        JUGADORA: Un bol d'aigua de plata, a terra. Gravat: «ROCKEFELLER». El gos beu en plata. La Pons, de l'aixeta.
+        ⇒ +sap_rockefeller
+    • pickUp/use — SEMPRE
+        JUGADORA: No tinc set. I tampoc no tinc pedigrí.
+
+FINESTRA «finestra»
+    • look — SEMPRE
+        JUGADORA: El llac de Ginebra. Des d'aquí dalt, sembla que el món funciona.
+    • open — SEMPRE
+        JUGADORA: No s'obre. Els directors no salten: dimiteixen.
+
+BALLESTER «Ballester» — hi és si ballester_acompanya
+    • talkTo — SEMPRE
+        BALLESTER: Jo soc aquí, senyora. Per si de cas. Vostè digui.
+    • look — SEMPRE
+        JUGADORA: En Ballester, dret al costat de la porta. Per primera vegada, sembla que vigila alguna cosa que li importa.
+
+PORTA «avantdespatx»
+    • use/open/walkTo — si sync_mobil
+        JUGADORA: Ara no puc deixar el Director sol amb el mòbil.
+    • use/open/walkTo — SEMPRE
+        ⇒ → bcmu_avantdespatx
+    • look — SEMPRE
+        JUGADORA: La porta de l'avantdespatx. A l'altra banda, vint anys de senyora Pons.
+
+```
+
 ## Sala La sala d'escombraries · `bcmu_escombraries` (iri)
 
 ```
 EN ENTRAR
+    • * (una vegada) — si clau_girada
+        JUGADORA: No. No no no. Això no era el pla.
+        VET: Quin era el pla?
+        JUGADORA: Que els rics perdessin. No que tothom quedés a dotze euros esperant tres hores.
+        JUGADORA: L'he d'aturar abans de les dotze.
+        NARRADOR: A la pantalla: «ATURAR OPERACIÓ: NOMÉS EL DIRECTOR. CONTRASENYA PERSONAL I CODI AL MÒBIL.»
+        JUGADORA: Només el Director pot dir prou. I s'atura des d'aquest teclat: jo no em moc d'aquí.
+        VET: El Director és dalt, al seu despatx. Ho va dir ell. Hi vaig.
+        ⇒ +virus_executat, +cal_director
     • * (una vegada) — SEMPRE
         NARRADOR: La sala d'escombraries. Bosses, olor de paper triturat i, al fons, un armari gris amb llums verds.
         JUGADORA: Hola, preciós. Quaranta-dos anys i encara funciones. El Llibre Major.
@@ -377,6 +578,46 @@ EN ENTRAR
         ⇒ +iri_a_llibre
 
 LLIBRE «Llibre Major»
+    • use + clau_llibre — si clau_girada
+        JUGADORA: Ja l'he girada. Me la quedo: una clau grossa sempre obre alguna cosa més.
+    • use/push — si virus_aturat
+        JUGADORA: Aturat. El Llibre Major descansa, com NETA-3. Ara, a sortir d'aquí.
+    • use/push — si clau_girada i NO vet_al_despatx
+        JUGADORA: Contrasenya del Director i codi al seu mòbil. Si el codi arriba i la Vet no és amb ell, el veurà ell.
+    • use/push — si clau_girada i NO contrasenya_ok
+        ⇒ diàleg llibre
+    • use/push — si sync_mobil i NO codi_demanat
+        JUGADORA: Codi, vine.
+        [SO: mobil_vibra] NARRADOR: ENVIANT CODI DE CONFIRMACIÓ AL MÒBIL DEL DIRECTOR...
+        VET: Ha vibrat. ⟨si NO mobil_resolt⟩
+        PONS: Senyor Director, li ha arribat un codi: 4-1-9-7. Ho dic en veu alta, que avui no hi veig gaire. ⟨si pons_mobil i codi_n = 0⟩
+          ⇒ +codi_llegit
+        PONS: Senyor Director, li ha arribat un codi: 2-8-0-5. Ho dic en veu alta, que avui no hi veig gaire. ⟨si pons_mobil i codi_n = 1⟩
+          ⇒ +codi_llegit
+        PONS: Senyor Director, li ha arribat un codi: 6-6-3-1. Ho dic en veu alta, que avui no hi veig gaire. ⟨si pons_mobil i codi_n ≥ 2⟩
+          ⇒ +codi_llegit
+        BALLESTER: Ha arribat un codi. 4-1-9-7. Jo no he vist res, però l'he llegit. ⟨si mobil_resolt i NO pons_mobil i codi_n = 0⟩
+          ⇒ +codi_llegit
+        BALLESTER: Ha arribat un codi. 2-8-0-5. Jo no he vist res, però l'he llegit. ⟨si mobil_resolt i NO pons_mobil i codi_n = 1⟩
+          ⇒ +codi_llegit
+        BALLESTER: Ha arribat un codi. 6-6-3-1. Jo no he vist res, però l'he llegit. ⟨si mobil_resolt i NO pons_mobil i codi_n ≥ 2⟩
+          ⇒ +codi_llegit
+        ⇒ +codi_demanat
+    • use/push — si sync_mobil i NO codi_llegit
+        JUGADORA: Vet, el codi. Ha arribat al mòbil del Director.
+    • use/push — si sync_mobil i NO codi_teclejat
+        JUGADORA: 4-1-9-7. Teclejat. ⟨si codi_n = 0⟩
+        JUGADORA: 2-8-0-5. Teclejat. ⟨si codi_n = 1⟩
+        JUGADORA: 6-6-3-1. Teclejat. ⟨si codi_n ≥ 2⟩
+        [SO: bip_llibre] NARRADOR: CODI CORRECTE. L'ATURADA JA NO ES POT CANCEL·LAR.
+        JUGADORA: Ja no ho pot desfer ningú. Ni ell. Ara, la pregunta difícil.
+        ⇒ +codi_teclejat, −sync_mobil
+    • use/push — si codi_teclejat i NO virus_aturat
+        ⇒ diàleg aturada
+    • look — si virus_aturat
+        JUGADORA: La pantalla diu «ATURAT». Per primera vegada en quaranta-dos anys, el Llibre Major no compta res.
+    • look — si clau_girada
+        JUGADORA: Els comptadors del virus: dotze euros per persona. La ronda següent, d'aquí a tres hores. Rellotge: les onze i vint.
     • use + clau_llibre — si cal_clau
         JUGADORA: La clau al pany. I gira.
         [SO: clau_gira] NARRADOR: AUTORITZAT. JA LA POT TREURE.
@@ -386,7 +627,8 @@ LLIBRE «Llibre Major»
         JUGADORA: Ho estava fa cinc minuts.
         NARRADOR: L'Iri prem la S.
         TÍTOL: Fi de l'Acte 2
-        ⇒ +clau_girada, +acte2_fet, FINAL continuara
+        TÍTOL: Acte 3 · Robin Hood 2.0
+        ⇒ +clau_girada, +acte2_fet, esdeveniment situar, → muntatge
     • use + clau_llibre — SEMPRE
         JUGADORA: Primer els tres codis. Després, la clau.
     • use/push — si NO sync_collaret i NO vet_a_seguretat i NO cal_clau
@@ -438,6 +680,8 @@ TUB «estació del tub»
         JUGADORA: L'estació del tub de 1958. Plena de pols. Encara funciona: les coses de 1958 funcionaven.
 
 PANELL «panell de NETA-3»
+    • use/open — si sync_mobil
+        JUGADORA: Ara no, NETA. Estic teclejant, i cada tecla del panell fa bip.
     • use/open — si sync_collaret
         JUGADORA: Ara no. Cada tecla d'aquest panell també fa bip.
     • use/open — si aliat_neta
@@ -458,12 +702,34 @@ PANELL «panell de NETA-3»
         JUGADORA: El panell de control de NETA-3. Horari: «Sempre».
 
 CONDUCTE «conducte»
+    • use/open — si iri_llesta
+        JUGADORA: Coixí fet. Vet, quan obris el contenidor, salto.
+    • use/open — si virus_aturat i NO escala_provada
+        JUGADORA: Pel conducte? Tres pisos avall? Primer provaré la sortida de la gent normal: l'escala.
+    • use/open — si (virus_aturat i escala_provada i NO iri_llesta) i aliat_neta
+        [SO: robot_neteja] NARRADOR: NETA-3 entra a la sala, agafa les bosses de paper triturat i les llença pel conducte, una rere l'altra.
+        [SO: robot_atura] NETA-3: Vés. Jo plego a les sis. Per primera vegada.
+        JUGADORA: Gràcies, NETA. Vet: coixí fet. Obre el contenidor i salto.
+        ⇒ +iri_llesta, coixi := "bosses"
+    • use/open — si virus_aturat i escala_provada i NO iri_llesta
+        JUGADORA: Tres pisos? No, gràcies. Primer, coixí.
+    • use + extintor — si virus_aturat i escala_provada i NO iri_llesta
+        JUGADORA: Massa dramàtic. Perfecte.
+        [SO: extintor] NARRADOR: L'extintor baixa pel conducte, rebota tres pisos i, a baix, esclata en un coixí d'escuma.
+        JUGADORA: Vet: coixí fet. Obre el contenidor i salto.
+        ⇒ perd extintor, +iri_llesta, coixi := "escuma"
+    • use + extintor — SEMPRE
+        JUGADORA: L'extintor és el pla B. Encara no hi som, al pla B.
+    • look — si iri_llesta
+        JUGADORA: Al fons, tres pisos avall, un coixí. Un tobogan de la vergonya.
     • use/open — SEMPRE
         JUGADORA: Encara no hem acabat aquí dalt.
     • look — SEMPRE
         JUGADORA: El conducte de les escombraries. Tres pisos avall, un contenidor. No és una sortida. Encara.
 
 BOSSES «bosses»
+    • pickUp — si virus_aturat i escala_provada i NO iri_llesta
+        JUGADORA: Per fer un coixí en caldrien cent bosses, i jo tinc dos braços. NETA-3 en té quatre.
     • pickUp — SEMPRE
         JUGADORA: Confeti de secrets bancaris. No en vull.
     • look — SEMPRE
@@ -665,6 +931,24 @@ PORTA_NETEJA «porta de neteja»
         JUGADORA: La porta de neteja. Darrere, la sala d'escombraries i el Llibre Major.
 
 PORTA_ESCALA «porta de l'escala»
+    • use + clau_llibre — si virus_aturat i NO escala_provada
+        JUGADORA: La clau del Llibre Major... i el pany de l'escala. Pany antic, clau grossa. És la mateixa.
+        [SO: clau_gira] NARRADOR: La porta s'obre. L'escala és plena de guardes de seguretat, que pugen.
+        JUGADORA: Sempre he dit que les coses es fan «més tard». Més tard era ara.
+        NARRADOR: L'Iri tanca la porta, molt a poc a poc.
+        JUGADORA: Pla B: escombraries.
+        ⇒ +escala_provada
+    • use/open — si virus_aturat i NO escala_provada i té clau_llibre (iri)
+        JUGADORA: La clau del Llibre Major... i el pany de l'escala. Pany antic, clau grossa. És la mateixa.
+        [SO: clau_gira] NARRADOR: La porta s'obre. L'escala és plena de guardes de seguretat, que pugen.
+        JUGADORA: Sempre he dit que les coses es fan «més tard». Més tard era ara.
+        NARRADOR: L'Iri tanca la porta, molt a poc a poc.
+        JUGADORA: Pla B: escombraries.
+        ⇒ +escala_provada
+    • use/open — si escala_provada
+        JUGADORA: Plena de seguretat. Pla B: escombraries.
+    • use + clau_llibre — SEMPRE
+        JUGADORA: Encara no. Primer, el virus.
     • use/open — SEMPRE
         JUGADORA: Tancada. Pany antic, de clau grossa.
     • look — SEMPRE
@@ -685,6 +969,8 @@ TUB «estació del tub»
         JUGADORA: L'estació del tub pneumàtic del tercer pis.
 
 ASCENSOR «ascensor de servei»
+    • use/open — si virus_aturat
+        JUGADORA: Al moll hi deu haver seguretat, esperant una noia amb dessuadora. No, gràcies.
     • use/open — SEMPRE
         JUGADORA: Baixar? El Llibre Major és aquí dalt.
     • look — SEMPRE
@@ -696,6 +982,13 @@ ASCENSOR «ascensor de servei»
 
 ```
 EN ENTRAR
+    • * (una vegada) — si cal_director
+        NARRADOR: Als monitors, tots els comptes del banc s'han posat a zero, un rere l'altre.
+        BALLESTER: Tot a zero. Fins i tot el meu sou. ...Bé, tampoc no era gaire.
+        BALLESTER: El Director és a la planta noble. L'ascensor és aquí. I jo hi vinc: també vull veure-li la cara. ⟨si aliat_ballester⟩
+          ⇒ +ballester_acompanya
+        BALLESTER: L'ascensor és aquí, senyora. Planta noble. Jo he de trucar a algú, però no sé a qui. ⟨si NO aliat_ballester⟩
+        JUGADORA: Auditaré el Director.
     • * (una vegada) — SEMPRE
         EL DIRECTOR: Ballester, atengui la senyora. És auditora.
         BALLESTER: Sí, senyor Director.
@@ -706,7 +999,7 @@ EN ENTRAR
 DECORAT got_trencat — es veu si got_trencat
 DECORAT collaret_taula — es veu si aliat_ballester i NO clau_agafada
 
-BALLESTER «Ballester»
+BALLESTER «Ballester» — hi és si NO ballester_acompanya
     • talkTo — SEMPRE
         ⇒ diàleg ballester
     • look — si aliat_ballester
@@ -782,6 +1075,10 @@ TUB «estació del tub»
 ASCENSOR «ascensor»
     • use/open/walkTo — si sync_collaret
         JUGADORA: Ara no puc deixar en Ballester sol amb la ràdio.
+    • use/open/walkTo — si cal_director i NO virus_aturat
+        [SO: ascensor] NARRADOR: L'ascensor puja a la planta noble. Els violins, aquí, són més cars.
+        BALLESTER: Trenta anys aquí i és el primer cop que pujo sense que em cridin. ⟨si ballester_acompanya⟩
+        ⇒ → bcmu_avantdespatx
     • use/open/walkTo — SEMPRE
         [SO: ascensor] NARRADOR: L'ascensor baixa al vestíbul, amb els mateixos violins.
         ⇒ −vet_a_seguretat, → bcmu_vestibul
@@ -794,6 +1091,9 @@ ASCENSOR «ascensor»
 
 ```
 EN ENTRAR
+    • * (una vegada) — si virus_aturat
+        NARRADOR: El vestíbul. La recepcionista ha tornat de la reunió de benestar laboral.
+        RECEPCIONISTA: Un moment. Vostè... ⟨si sospita_max ≥ 50⟩
     • * (una vegada) — SEMPRE
         NARRADOR: Ginebra. El vestíbul del Banc Central Mundial Unificat. Marbre, quadres i un silenci que cobra comissió.
         [SO: auricular] IRI: Jo entro pel moll de càrrega, amb els tècnics. Tu, per la porta gran.
@@ -839,6 +1139,8 @@ RETRAT «retrat»
         ⇒ +sap_rockefeller, +sap_bonfill
 
 RECEPCIO «recepció»
+    • talkTo — si virus_aturat
+        ⇒ diàleg recepcionista
     • talkTo — SEMPRE
         JUGADORA: No hi ha ningú. Ni tan sols algú que digui que no hi ha ningú.
     • look — SEMPRE
@@ -873,6 +1175,8 @@ PLANTES «plantes»
         JUGADORA: Plantes de plàstic. Aquí ni les plantes fan la fotosíntesi gratis.
 
 ASCENSOR «ascensor»
+    • use/open — si virus_aturat
+        JUGADORA: Amunt no hi torno. Ara, fora.
     • use/open/walkTo — si auditoria_acceptada
         [SO: ascensor] NARRADOR: L'ascensor puja amb música de violins.
         ⇒ +vet_a_seguretat, → bcmu_seguretat
@@ -882,10 +1186,46 @@ ASCENSOR «ascensor»
         JUGADORA: Un ascensor daurat. Fins i tot els botons semblen cars.
 
 SORTIDA «sortida»
+    • use/open/walkTo — si virus_aturat i sospita_max ≥ 50 i NO recepcionista_enredada
+        JUGADORA: La recepcionista no em treu l'ull de sobre. Si surto així, crida.
+    • use/open/walkTo — si virus_aturat
+        NARRADOR: La Vet surt per la porta gran, com una auditora que ha acabat la feina.
+        ⇒ +vet_al_carrer, → bcmu_contenidor
     • use/open/walkTo — SEMPRE
         JUGADORA: Encara no. No he vingut fins a Ginebra per un entrepà.
     • look — SEMPRE
         JUGADORA: La porta gran. Per aquí s'hi entra. Sortir, ja és més car.
+
+RECEPCIONISTA «recepcionista» — hi és si virus_aturat
+    • talkTo — SEMPRE
+        ⇒ diàleg recepcionista
+    • look — si virus_aturat i sospita_max ≥ 50 i NO recepcionista_enredada
+        JUGADORA: La recepcionista. Em mira com si m'hagués vist en algun vídeo. M'ha vist en algun vídeo.
+    • look — SEMPRE
+        JUGADORA: La recepcionista, de tornada de la reunió de benestar laboral. Fa cara de no haver-hi trobat el benestar.
+
+```
+
+## Sala La Propina, una setmana després · `final_bar` — cinemàtica
+
+```
+```
+
+## Sala ROBIN HOOD 2.0 · `muntatge` — cinemàtica
+
+```
+EN ENTRAR
+    • * — SEMPRE
+        [SO: virus] NARRADOR: ROBIN HOOD 2.0. Fase 1: buidar.
+        NARRADOR: Tots els comptes del món passen al compte zero. Als monitors de seguretat, els números cauen un rere l'altre.
+        NARRADOR: Fase 2: repartir. Primera ronda: dotze euros per persona. La ronda següent, d'aquí a tres hores.
+        NARRADOR: Mònaco. Un bilionari mira el mòbil: dotze euros. La seva dona el deixa.
+        NARRADOR: Nova York. Un fons d'inversió es troba amb el sou d'un becari. El becari plora d'alegria.
+        NARRADOR: Ginebra. Un senyor amb corbata es troba amb gairebé el mateix que la seva secretària. Per primera vegada, ha de decidir si agafa el bus o el metro.
+        NARRADOR: La Propina. En Tomàs mira la tele i abaixa la persiana: avui ningú no podrà pagar.
+        NARRADOR: Són les onze i quart. A les dotze, això:
+        NARRADOR: Una àvia davant d'un caixer. Un cambrer esperant la nòmina. Les pensions, els ajuts i les nòmines de tot el món, a dotze euros.
+        ⇒ → bcmu_escombraries
 
 ```
 
@@ -1242,6 +1582,11 @@ DIU «Diu»
 ```
 ```
 
+## Sala El pis, de nit · `postcredits` — cinemàtica
+
+```
+```
+
 ## Sala Ginebra · `proleg_ginebra` — cinemàtica
 
 ```
@@ -1450,10 +1795,48 @@ EN ENTRAR
     JUGADORA: Un clauer de «Visiteu Ginebra». Sense cap clau. Ideal per fer un canvi.
 ```
 
+## Diàleg `aturada` amb Iri
+
+```
+COMENÇA A: pregunta
+
+[pregunta]
+    NARRADOR: ATURAR ROBIN HOOD 2.0. QUÈ FEM AMB EL QUE QUEDA AL COMPTE ZERO?
+    JUGADORA: El paper de la Rius! El compte de les nòmines. Si les pago primer, avui cobra tothom. ⟨si té compte_nomines (iri)⟩
+    JUGADORA: El compte 0001, el d'en Ballester. Si pago primer les nòmines, avui cobra tothom. ⟨si ballester_compte i no té compte_nomines (iri)⟩
+    ↪ tria
+
+[tria]
+    ▸ Tornar-ho tot als comptes d'origen. → tornar
+    ▸ Pagar primer les pensions, els ajuts i les nòmines del mes. I tornar la resta. ⟨si té compte_nomines (iri) o ballester_compte⟩ → pagar
+        ⇒ +pagar_primer
+
+[tornar]
+    [SO: aturada] NARRADOR: ROBIN HOOD 2.0: ATURAT. EL QUE QUEDAVA AL COMPTE ZERO TORNA ALS COMPTES D'ORIGEN.
+    NARRADOR: El que ja s'ha repartit, es queda repartit. Dotze euros per persona. Una cervesa a tot el món.
+    ↪ fi
+
+[pagar]
+    [SO: aturada] NARRADOR: ROBIN HOOD 2.0: ATURAT. PRIMER: PENSIONS, AJUTS I NÒMINES DEL MES. DESPRÉS, LA RESTA ALS COMPTES D'ORIGEN.
+    NARRADOR: Per primera vegada en la història, totes les nòmines del món surten alhora. Fins i tot les de la subcontracta.
+    JUGADORA: Avui, a les dotze, cobra tothom.
+    ↪ fi
+
+[fi]
+    VET: Iri... ho has fet?
+    JUGADORA: Ho hem fet. I ara, a fugir.
+    NARRADOR: Al despatx, el Director mira la gravació de l'ascensor de servei: «Una tècnica... amb dessuadora?»
+    [SO: megafonia_bcmu] NARRADOR: Megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuadora.»
+    JUGADORA: La noia amb dessuadora soc jo.
+    VET: Doncs fora d'aquí. Ens trobem al carrer, darrere del banc.
+    ⇒ +virus_aturat
+
+```
+
 ## Diàleg `ballester` amb Ballester
 
 ```
-COMENÇA A: amic (si aliat_ballester) · orgullos (si clau_canviada) · clau_relaxat (si cal_clau i ballester_relaxat) · clau_tens (si cal_clau) · sync (si sync_collaret) · servei (si ha vist ballester.hola) · hola
+COMENÇA A: virus (si cal_director) · amic (si aliat_ballester) · orgullos (si clau_canviada) · clau_relaxat (si cal_clau i ballester_relaxat) · clau_tens (si cal_clau) · sync (si sync_collaret) · servei (si ha vist ballester.hola) · hola
 
 [hola]
     BALLESTER: Ballester. Cap de Seguretat. Trenta anys a la casa.
@@ -1587,6 +1970,9 @@ COMENÇA A: amic (si aliat_ballester) · orgullos (si clau_canviada) · clau_rel
 
 [orgullos]
     BALLESTER: Avui la clau em pesa diferent. Deu ser l'edat.
+
+[virus]
+    BALLESTER: Jo em quedo amb els monitors. Algú els ha de mirar, avui que hi ha alguna cosa a veure.
 
 ```
 
@@ -1785,6 +2171,84 @@ COMENÇA A: hola_marmota (si marmota ≥ 1) · hola
 
 ```
 
+## Diàleg `despatx` amb El Director
+
+```
+COMENÇA A: despres (si virus_aturat) · sync (si sync_mobil) · hola
+
+[hola]
+    EL DIRECTOR: Ara no, senyora auditora. Estic... comptant. No hi ha gaire res a comptar.
+    ↪ menu
+
+[menu]
+    ▸ I el seu gos, com està? ⟨una vegada⟩ → gos_fora
+    ▸ Res, res. Continuï comptant. → (es queda) · FI
+
+[gos_fora]
+    EL DIRECTOR: Rockefeller? Ell no sap res. Ell encara té el seu bol de plata.
+    ⇒ +sap_rockefeller
+    ↪ menu
+
+[sync]
+    EL DIRECTOR: Sí? Digui. Però de pressa, que el mòbil em crida.
+    ↪ eines
+
+[eines]
+    ▸ Necessito una reunió urgent sobre la sostenibilitat dels bancs. ⟨si NO reunio1⟩ → reunio
+    ▸ I de la sostenibilitat, què més em pot dir? ⟨si reunio1 i NO reunio2⟩ → reunio2
+    ▸ I en Rockefeller, com està? ⟨si NO gos_preguntat i sap_rockefeller⟩ → gos
+    ▸ I el seu gos, com està? ⟨si NO gos_preguntat i NO sap_rockefeller⟩ → gos
+    ▸ (Cridar la senyora Pons.) ⟨si aliada_pons i NO mobil_resolt⟩ → pons
+    ▸ (Fer un senyal a en Ballester.) ⟨si ballester_acompanya i NO mobil_resolt⟩ → ballester
+    ▸ Res. Continuï. → (es queda) · FI
+
+[reunio]
+    NARRADOR: El Director tanca els ulls, com qui entra en una església.
+    EL DIRECTOR: La sostenibilitat... és un viatge. Un viatge cap a dins. Cap a dins del banc.
+    EL DIRECTOR: Nosaltres no ens mirem el melic: ens mirem el balanç, que és el melic dels adults.
+    ⇒ +reunio1, coberta_mobil := 3
+
+[reunio2]
+    EL DIRECTOR: Ja n'hem parlat... però sí, sí. La sostenibilitat és com un gos: cal passejar-la cada dia.
+    ⇒ +reunio2, coberta_mobil := 2
+
+[gos]
+    EL DIRECTOR: Rockefeller! Té un tall nou. Quatre mil dos-cents euros de dignitat.
+    EL DIRECTOR: Quan em mira, sé que algú en aquest món em respecta. I no em demana res. Bé, el bany.
+    ⇒ +gos_preguntat, +sap_rockefeller, coberta_mobil := 2
+
+[pons]
+    PONS: Senyor Director, li carrego el mòbil?
+    EL DIRECTOR: Sí... sí. Gràcies, Pons. Sempre pensa en tot.
+    NARRADOR: La senyora Pons s'emporta el mòbil a l'avantdespatx, i el Director no el torna a veure.
+    PONS: Ha arribat un codi: 4-1-9-7. Ho dic des de la porta, que avui tinc la veu clara. ⟨si codi_demanat i codi_n = 0⟩
+      ⇒ +codi_llegit
+    PONS: Ha arribat un codi: 2-8-0-5. Ho dic des de la porta, que avui tinc la veu clara. ⟨si codi_demanat i codi_n = 1⟩
+      ⇒ +codi_llegit
+    PONS: Ha arribat un codi: 6-6-3-1. Ho dic des de la porta, que avui tinc la veu clara. ⟨si codi_demanat i codi_n ≥ 2⟩
+      ⇒ +codi_llegit
+    ⇒ +mobil_resolt, +pons_mobil
+
+[ballester]
+    BALLESTER: Ho sento, senyor. Tinc una hipoteca, però també tinc vergonya.
+    NARRADOR: En Ballester immobilitza el Director amb molta delicadesa, com qui abraça un armari.
+    EL DIRECTOR: Ballester! Això no és el protocol!
+    BALLESTER: No, senyor. Això és un abraçada. El mòbil, el miro jo.
+    BALLESTER: Hi ha un codi. 4-1-9-7. Jo no he vist res, però l'he llegit. ⟨si codi_demanat i codi_n = 0⟩
+      ⇒ +codi_llegit
+    BALLESTER: Hi ha un codi. 2-8-0-5. Jo no he vist res, però l'he llegit. ⟨si codi_demanat i codi_n = 1⟩
+      ⇒ +codi_llegit
+    BALLESTER: Hi ha un codi. 6-6-3-1. Jo no he vist res, però l'he llegit. ⟨si codi_demanat i codi_n ≥ 2⟩
+      ⇒ +codi_llegit
+    ⇒ +mobil_resolt
+
+[despres]
+    EL DIRECTOR: Una tècnica... amb dessuadora. A la gravació de l'ascensor de servei.
+    EL DIRECTOR: I els diners tornen a ser on eren. Per què no m'alegro?
+    JUGADORA: Potser perquè avui, per primera vegada, ha vist com viu la seva secretària.
+
+```
+
 ## Diàleg `diu` amb Diu
 
 ```
@@ -1844,6 +2308,38 @@ COMENÇA A: hola
 
 [adeu]
     EMPLEAT: Si perd alguna cosa, ja sap on soc.
+
+```
+
+## Diàleg `llibre` amb Iri
+
+```
+COMENÇA A: pista
+
+[pista]
+    NARRADOR: CONTRASENYA DEL DIRECTOR. PISTA: «EL MEU MILLOR AMIC».
+    JUGADORA: El seu millor amic. Un home així només en té un: el gos. Però com es diu? Vet, ho pots esbrinar? ⟨si NO sap_rockefeller⟩
+    JUGADORA: El seu millor amic. Rockefeller. Ho va dir la Vet. ⟨si sap_rockefeller⟩
+    ⇒ +pista_contrasenya
+    ↪ menu
+
+[menu]
+    ▸ Rockefeller. ⟨si sap_rockefeller⟩ → ok
+    ▸ Bonfill. → mal
+    ▸ Diners. → mal
+    ▸ Sostenibilitat. → mal
+    ▸ (Deixar-ho estar, de moment.) → (es queda) · FI
+
+[mal]
+    NARRADOR: CONTRASENYA INCORRECTA. LI QUEDEN INFINITS INTENTS: EL LLIBRE MAJOR ÉS DE 1984.
+    ↪ menu
+
+[ok]
+    NARRADOR: CONTRASENYA CORRECTA. PER ATURAR, CAL EL CODI DE CONFIRMACIÓ QUE ARRIBARÀ AL MÒBIL DEL DIRECTOR.
+    TÍTOL: Ara necessites les dues.
+    JUGADORA: Vet: quan demani el codi, li arribarà al mòbil. Si el Director el mira, ho cancel·larà. Tingues-lo entretingut.
+    VET: Entretenir un director. És el que faig millor, després de mentir.
+    ⇒ +contrasenya_ok, +sync_mobil, torns_mobil := 9, coberta_mobil := 0
 
 ```
 
@@ -2007,6 +2503,92 @@ COMENÇA A: hola
 
 [adeu]
     VET: Doncs no em distreguis, que faig tard.
+
+```
+
+## Diàleg `pons` amb Pons
+
+```
+COMENÇA A: despres (si virus_aturat) · aliada (si aliada_pons) · enredada (si pons_enredada) · altra (si ha vist pons.hola) · hola
+
+[hola]
+    PONS: Pons. Secretària de Direcció. El Director no rep.
+    PONS: Avui, menys.
+    ⇒ +sap_pons
+    ↪ menu
+
+[altra]
+    PONS: Encara aquí? El Director continua sense rebre.
+    ↪ menu
+
+[menu]
+    ▸ (Llegir en veu alta la factura i la nòmina.) ⟨si factura_vista i nomina_vista i NO aliada_pons⟩ → escoltar
+    ▸ Soc auditora de la Unió Europea. Necessito veure el Director. ⟨si NO pons_enredada⟩ → ue
+    ▸ Què fa, el Director? ⟨una vegada⟩ → per_que
+    ▸ Ja tornaré. → (es queda) · FI
+
+[per_que]
+    PONS: Mira el mòbil. Fa mitja hora que mira el mòbil i diu «catorze amb trenta-dos».
+    PONS: Jo fa vint anys que miro com ell mira coses.
+    ↪ menu
+
+[escoltar]
+    JUGADORA: «Perruqueria canina: tall, bany i massatge, 4.200 €.» I, al costat: «Sra. Pons, vint anys d'antiguitat, 2.900 €».
+    NARRADOR: La senyora Pons no diu res. Durant molta estona.
+    PONS: Passi. I si necessita alguna cosa, soc aquí. Fa vint anys que soc aquí.
+    ⇒ +aliada_pons, aliats += 1
+
+[ue]
+    PONS: Auditora. De la Unió Europea.
+    PONS: ...Passi. Avui ja res no em sorprèn.
+    ⇒ +pons_enredada
+
+[aliada]
+    PONS: Passi, passi. Jo soc aquí.
+
+[enredada]
+    PONS: Ja li he dit que passi. No m'ho faci repetir, que no cobro les repeticions.
+    ↪ menu
+
+[despres]
+    PONS: Ha sentit la megafonia? Busquen una noia amb dessuadora. Vostè no en porta. Que vagi bé.
+
+```
+
+## Diàleg `recepcionista` amb Recepcionista
+
+```
+COMENÇA A: adeu2 (si recepcionista_enredada) · reconeix (si sospita_max ≥ 50) · hola
+
+[hola]
+    RECEPCIONISTA: Bon dia. Que tingui un dia sostenible.
+
+[reconeix]
+    RECEPCIONISTA: Vostè és l'auditora que ha fet suar el Director. Ho he vist a la gravació del vestíbul.
+    ↪ menu
+
+[menu]
+    ▸ Soc de la UE. Venia per la font. → font
+    ▸ No, no. Jo soc la de la dessuadora. → dessuadora
+    ▸ M'ha confós amb una altra. → altra
+    ▸ (Fer veure que mira el mòbil.) → (es queda) · FI
+
+[font]
+    RECEPCIONISTA: La font? Està tancada per estalvi de costos.
+    JUGADORA: Exacte. Ho posaré a l'informe. Molt malament.
+    RECEPCIONISTA: ...Ja era hora que algú se'n queixés. Passi, passi.
+    ⇒ +recepcionista_enredada
+
+[dessuadora]
+    RECEPCIONISTA: La de la dessuadora la busquen a dalt. Vostè va de jaqueta.
+    ↪ menu
+
+[altra]
+    RECEPCIONISTA: No confonc mai ningú. És la meva feina, i no me la paguen prou per equivocar-me.
+    ↪ menu
+
+[adeu2]
+    RECEPCIONISTA: Que vagi bé. I insisteixi amb la font.
 
 ```
 
@@ -2451,11 +3033,184 @@ iri_girar — quan juga iri i té clau_llibre (iri) i NO clau_girada · fins que
     1. Hola, preciosa.
     2. El Llibre Major té un pany.
     3. Faig servir la clau amb el Llibre Major.
+vet_planta_noble — quan juga vet i cal_director i NO a_planta_noble · fins que a_planta_noble
+    1. El Director és dalt, al seu despatx. Ho va dir ell.
+    2. L'ascensor de seguretat puja a la planta noble.
+    3. Agafo l'ascensor cap a la planta noble.
+vet_pons — quan juga vet i a_planta_noble i NO aliada_pons i NO pons_enredada · fins que aliada_pons o pons_enredada
+    1. La senyora Pons no deixa passar ningú. Ni a mi, que és dir molt.
+    2. A la taula hi ha papers: una factura i una nòmina. Potser diuen més que ella.
+    3. Miro la factura i la nòmina, i les llegeixo en veu alta a la Pons. O li dic que soc de la Unió Europea.
+vet_entrar — quan juga vet i (aliada_pons o pons_enredada) i NO vet_al_despatx · fins que vet_al_despatx
+    1. La senyora Pons ja em deixa passar.
+    2. El despatx del Director és darrere la porta de fusta.
+    3. Entro al despatx.
+vet_gos — quan juga vet i pista_contrasenya i NO sap_rockefeller · fins que sap_rockefeller
+    1. «El meu millor amic». Un home així, el millor amic que té és el gos.
+    2. Al despatx hi ha una foto i un bol d'aigua. I el Director, que parla del gos amb poc que l'hi demanin.
+    3. Miro la foto o el bol del gos, o pregunto al Director pel gos.
+vet_contrasenya — quan juga vet i vet_al_despatx i NO contrasenya_ok i (NO pista_contrasenya o sap_rockefeller) · fins que contrasenya_ok
+    1. Ja soc amb el Director. Ara, l'Iri.
+    2. Per aturar el virus, l'Iri ha de posar la contrasenya del Director al Llibre Major.
+    3. Canvio a l'Iri: que posi la contrasenya.
+vet_llegir — quan juga vet i sync_mobil i codi_demanat i NO codi_llegit i coberta_mobil > 0 · fins que codi_llegit
+    1. Ha vibrat. El codi és al mòbil.
+    2. Amb el Director distret, el puc girar un moment.
+    3. Agafo el mòbil del Director i llegeixo el codi en veu alta.
+vet_espera_codi — quan juga vet i sync_mobil i NO codi_demanat i (coberta_mobil > 0 o mobil_resolt) · fins que codi_demanat
+    1. El Director està entretingut. Ara li toca a l'Iri.
+    2. L'Iri ha de demanar el codi al Llibre Major.
+    3. Canvio a l'Iri: que demani el codi.
+vet_espera_teclejar — quan juga vet i sync_mobil i codi_llegit · fins que codi_teclejat
+    1. L'Iri ja té el codi.
+    2. Que el tecleji abans que el Director torni a mirar el mòbil.
+    3. Canvio a l'Iri: que tecleji el codi.
+vet_decidir — quan juga vet i codi_teclejat i NO virus_aturat · fins que virus_aturat
+    1. El codi ha entrat. Ara, l'Iri decideix.
+    2. El Llibre Major li pregunta què fa amb el que queda.
+    3. Canvio a l'Iri.
+vet_baixar — quan juga vet i virus_aturat i NO vet_al_carrer i sospita_max < 50 · fins que vet_al_carrer
+    1. Ara, sortir com he entrat: per la porta gran.
+    2. L'ascensor de l'avantdespatx baixa al vestíbul.
+    3. Baixo al vestíbul i surto per la porta principal.
+vet_recepcionista — quan juga vet i virus_aturat i NO vet_al_carrer i sospita_max ≥ 50 · fins que vet_al_carrer
+    1. Ara, sortir com he entrat: per la porta gran. Si ningú no em reconeix.
+    2. Al vestíbul hi ha la recepcionista, i ha vist la gravació. L'he d'enredar amb alguna cosa del vestíbul.
+    3. Baixo al vestíbul, parlo amb la recepcionista (soc de la UE i venia per la font) i surto per la porta principal.
+vet_coixi — quan juga vet i vet_al_carrer i NO iri_llesta · fins que iri_llesta
+    1. L'Iri baixarà pel conducte. Però abans ha de fer un coixí.
+    2. Des d'aquí no la puc ajudar. Des de dalt, sí.
+    3. Canvio a l'Iri.
+vet_obrir — quan juga vet i vet_al_carrer i iri_llesta · fins que escapada
+    1. L'Iri està a punt.
+    2. Només falta una cosa: obrir la tapa.
+    3. Obro el contenidor.
+iri_virus_espera — quan juga iri i cal_director i NO vet_al_despatx · fins que vet_al_despatx
+    1. Només el Director pot aturar-lo. I la Vet sap on és.
+    2. La Vet ha d'arribar al despatx del Director.
+    3. Canvio a la Vet: que pugi a la planta noble.
+iri_contrasenya — quan juga iri i vet_al_despatx i NO contrasenya_ok i (sap_rockefeller o NO pista_contrasenya) · fins que contrasenya_ok
+    1. El Llibre Major demana la contrasenya del Director.
+    2. La pista diu «el meu millor amic». Què faries tu, Llibre Major? Jo diria que és el gos.
+    3. Faig servir el Llibre Major i poso el nom del gos.
+iri_gos — quan juga iri i pista_contrasenya i NO sap_rockefeller · fins que sap_rockefeller
+    1. El millor amic del Director deu ser el gos. Però no sé com es diu.
+    2. La Vet és al despatx. Allà segur que hi ha alguna cosa del gos.
+    3. Canvio a la Vet: que esbrini com es diu el gos.
+iri_demanar — quan juga iri i sync_mobil i NO codi_demanat · fins que codi_demanat
+    1. El codi arriba al mòbil del Director. Si el mira, ho cancel·la.
+    2. Primer, que la Vet l'entretingui. Després, demano el codi.
+    3. Quan la Vet tingui el Director distret, faig servir el Llibre Major per demanar el codi.
+iri_esperar_codi — quan juga iri i sync_mobil i codi_demanat i NO codi_llegit · fins que codi_llegit
+    1. El codi ja és al mòbil del Director.
+    2. La Vet l'ha de llegir mentre ell no mira.
+    3. Canvio a la Vet: que llegeixi el codi.
+iri_teclejar_codi — quan juga iri i sync_mobil i codi_llegit · fins que codi_teclejat
+    1. Tinc el codi.
+    2. Abans que el Director torni a mirar el mòbil.
+    3. Faig servir el Llibre Major i teclejo el codi.
+iri_decidir — quan juga iri i codi_teclejat i NO virus_aturat · fins que virus_aturat
+    1. El codi ha entrat. Ara, la pregunta difícil.
+    2. Què fem amb el que queda al compte zero?
+    3. Faig servir el Llibre Major i decideixo.
+iri_escala — quan juga iri i virus_aturat i NO escala_provada · fins que escala_provada
+    1. Ara, sortir. Per on?
+    2. La porta de l'escala té un pany antic, de clau grossa. I jo tinc una clau grossa.
+    3. Obro la porta de l'escala del passadís amb la clau del Llibre Major.
+iri_coixi_neta — quan juga iri i escala_provada i NO iri_llesta i aliat_neta · fins que iri_llesta
+    1. Pla B: el conducte d'escombraries. Però tres pisos són tres pisos.
+    2. Cal un coixí a baix. I tinc un amic que sap moure bosses.
+    3. Faig servir el conducte de la sala d'escombraries: NETA-3 m'ajudarà.
+iri_coixi — quan juga iri i escala_provada i NO iri_llesta i NO aliat_neta · fins que iri_llesta
+    1. Pla B: el conducte d'escombraries. Però tres pisos són tres pisos.
+    2. Cal un coixí a baix. Una cosa que faci molta escuma, per exemple.
+    3. Llenço l'extintor del passadís pel conducte de la sala d'escombraries.
+iri_saltar — quan juga iri i iri_llesta · fins que escapada
+    1. Coixí fet. Ara, la Vet.
+    2. La Vet ha de ser al carrer i obrir el contenidor.
+    3. Canvio a la Vet: que surti del banc i obri el contenidor.
+vet_entretenir — quan juga vet i sync_mobil i NO mobil_resolt i coberta_mobil ≤ 0 i NO codi_teclejat · fins que coberta_mobil > 0 o mobil_resolt o codi_teclejat
+    1. Si el Director gira el mòbil quan hi ha el codi, ho cancel·la tot.
+    2. L'he de tenir entretingut abans que l'Iri demani el codi: la sostenibilitat, el gos... o algú que m'ajudi.
+    3. Parlo amb el Director: una reunió sobre sostenibilitat el tapa dos torns; el gos, un. Si la senyora Pons o en Ballester són amb mi, ho resolen sols.
 ```
 
 ## Finals
 
 ```
-continuara «Continuarà» — quan acte2_fet
-    Fins aquí, els dos primers actes de Suma Zero. ROBIN HOOD 2.0 ja està en marxa. Què podria sortir malament?
+final_taula «Final · La taula llarga» — quan escapada i (pagar_primer i aliats ≥ 3)
+    NARRADOR: Una setmana després. Bar La Propina.
+    NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
+    NARRADOR: ...i avui, per primera vegada, totes les pensions del món han arribat el mateix dia. ⟨si pagar_primer⟩
+    IRI: No hem canviat el món.
+    VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si pagar_primer i aliats ≥ 3⟩
+    BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
+    NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
+    RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
+    PONS: He demanat un augment. M'han dit que sí. Encara no m'ho crec. ⟨si aliada_pons⟩
+    IRI: Això és un final feliç?
+    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+    MARCEL: Em van dir que una auditora va dir al Director que la banca és imprescindible. ⟨si mentida_corporativa⟩
+    VET: Era una auditora molt convincent. ⟨si mentida_corporativa⟩
+    MARCEL: Diuen que una auditora li va parlar de cordons de sabates. ⟨si dignitat⟩
+    TOMÀS: On és el meu tap? ⟨si NO tap_tornat⟩
+    TOMÀS: Avui convida la casa. Un cop. ⟨si tap_tornat⟩
+    [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
+    IRI: Diu, et mato.
+    VET: Deixa'l. Ell també és un treballador explotat.
+    [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
+    NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
+    NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
+    Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
+    NARRADOR: Una setmana després. Bar La Propina.
+    NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
+    NARRADOR: ...i avui, per primera vegada, totes les pensions del món han arribat el mateix dia. ⟨si pagar_primer⟩
+    IRI: No hem canviat el món.
+    VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si pagar_primer i aliats ≥ 3⟩
+    BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
+    NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
+    RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
+    PONS: He demanat un augment. M'han dit que sí. Encara no m'ho crec. ⟨si aliada_pons⟩
+    IRI: Això és un final feliç?
+    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+    MARCEL: Em van dir que una auditora va dir al Director que la banca és imprescindible. ⟨si mentida_corporativa⟩
+    VET: Era una auditora molt convincent. ⟨si mentida_corporativa⟩
+    MARCEL: Diuen que una auditora li va parlar de cordons de sabates. ⟨si dignitat⟩
+    TOMÀS: On és el meu tap? ⟨si NO tap_tornat⟩
+    TOMÀS: Avui convida la casa. Un cop. ⟨si tap_tornat⟩
+    [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
+    IRI: Diu, et mato.
+    VET: Deixa'l. Ell també és un treballador explotat.
+    [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
+    NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
+    NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
+    Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+final_base «Final · Ni caos ni paradís» — quan escapada
+    NARRADOR: Una setmana després. Bar La Propina.
+    NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
+    NARRADOR: ...i avui, per primera vegada, totes les pensions del món han arribat el mateix dia. ⟨si pagar_primer⟩
+    IRI: No hem canviat el món.
+    VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si pagar_primer i aliats ≥ 3⟩
+    BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
+    NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
+    RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
+    PONS: He demanat un augment. M'han dit que sí. Encara no m'ho crec. ⟨si aliada_pons⟩
+    IRI: Això és un final feliç?
+    VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+    MARCEL: Em van dir que una auditora va dir al Director que la banca és imprescindible. ⟨si mentida_corporativa⟩
+    VET: Era una auditora molt convincent. ⟨si mentida_corporativa⟩
+    MARCEL: Diuen que una auditora li va parlar de cordons de sabates. ⟨si dignitat⟩
+    TOMÀS: On és el meu tap? ⟨si NO tap_tornat⟩
+    TOMÀS: Avui convida la casa. Un cop. ⟨si tap_tornat⟩
+    [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
+    IRI: Diu, et mato.
+    VET: Deixa'l. Ell també és un treballador explotat.
+    [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
+    NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
+    NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
+    Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
 ```
