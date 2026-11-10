@@ -182,6 +182,20 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "ventilador",
+      "tag": "ventilador",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ventilador": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
     }
   ],
   "characters": [
