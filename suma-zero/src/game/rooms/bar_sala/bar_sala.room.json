@@ -221,7 +221,7 @@
       "animations": {
         "tap_barra": {}
       },
-      "zIndex": 3,
+      "zIndex": 20,
       "visible": true,
       "alpha": 1,
       "clickable": true,
@@ -253,7 +253,8 @@
         "x": 257,
         "y": 120
       },
-      "description": "clauer"
+      "description": "clauer",
+      "baseline": 160
     },
     {
       "id": "comandament_barra",
@@ -261,7 +262,7 @@
       "animations": {
         "comandament_barra": {}
       },
-      "zIndex": 3,
+      "zIndex": 20,
       "visible": true,
       "alpha": 1,
       "clickable": true,
@@ -293,7 +294,8 @@
         "x": 291,
         "y": 120
       },
-      "description": "comandament"
+      "description": "comandament",
+      "baseline": 160
     },
     {
       "id": "tele_bassols",
@@ -316,6 +318,32 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "bar",
+      "tag": "bar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 160
     }
   ],
   "characters": [
@@ -332,17 +360,7 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 140,
-      "y": 190,
-      "initialFacing": "D",
-      "initialAnimation": "Idle",
-      "visible": true,
-      "zIndex": 9
-    },
-    {
-      "instanceId": "puig-1",
-      "definition": "puig/puig.character.json",
-      "x": 340,
+      "x": 132,
       "y": 172,
       "initialFacing": "D",
       "initialAnimation": "Idle",
@@ -359,6 +377,16 @@
       "visible": false,
       "clickable": false,
       "zIndex": 1
+    },
+    {
+      "instanceId": "tomas-1",
+      "definition": "tomas/tomas.character.json",
+      "x": 300,
+      "y": 138,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }

@@ -123,7 +123,7 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
 - **Guió** complet i revisat ([guio/guio.md](guio/guio.md)), amb la primera revisió de coherència aplicada.
 - **Acte 1 jugable de cap a peus** (en mode text, als tests i a Benne): pròleg, el pis (els tres cables,
   en Diu i el passaplats), el bar (les tres coses per a en Marcel, el pany intel·ligent, la trucada de la «dona»
-  d'en Puig) i l'aeroport (la primera sincronia per torns, amb la cigarreta de l'Ortega). Acaba amb un final
+  d'en Tomàs) i l'aeroport (la primera sincronia per torns, amb la cigarreta de l'Ortega). Acaba amb un final
   provisional, «Continuarà».
 - **Regles en codi:** la sincronia per torns (`game/logic/sincronia.ts`), sobre dues novetats del nucli:
   `onAfterAction` (una regla després de cada acció) i l'esdeveniment `situar` (moure l'altra protagonista).

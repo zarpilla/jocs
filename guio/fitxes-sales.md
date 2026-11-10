@@ -63,9 +63,9 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | Id | Nom | Tipus | Apareix | Verbs |
 |---|---|---|---|---|
 | `marcel` | Marcel | personatge | sempre | give + tap, give + recepta, give + comandament, give + objecte, talkTo, look |
-| `puig` | Puig | personatge | `{"flag":"puig_rebost","is":false}` | give + tap, give + objecte, talkTo, look |
+| `tomas` | Tomàs | personatge | `{"flag":"tomas_rebost","is":false}` | give + tap, give + objecte, talkTo, look |
 | `tap_barra` | clauer | prop | `{"flag":"tap_barra"}` | pickUp, look |
-| `comandament_barra` | comandament | prop | `{"all":[{"flag":"puig_rebost"},{"hasItem":"comandament","is":false},{"flag":"marcel_comandament","is":false}]}` | pickUp, look |
+| `comandament_barra` | comandament | prop | `{"all":[{"flag":"tomas_rebost"},{"hasItem":"comandament","is":false},{"flag":"marcel_comandament","is":false}]}` | pickUp, look |
 | `tele` | tele | hotspot / prop | sempre | use + comandament, look |
 | `retol` | rètol | hotspot / prop | sempre | look |
 | `telefon` | telèfon | hotspot / prop | sempre | talkTo, use, look |

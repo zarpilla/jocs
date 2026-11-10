@@ -53,7 +53,7 @@ export interface OpcionsActe1 {
   sacrifici?: 'caixa' | 'auricular' | 'pizza';
   /** La Vet es fa l'entrepà abans de marxar. */
   entrepa?: boolean;
-  /** La Vet li torna el tap a en Puig. */
+  /** La Vet li torna el tap a en Tomàs. */
   tap?: boolean;
   /** La Vet recupera el maletí i les ulleres a l'aeroport. */
   preparacio?: boolean;
@@ -101,7 +101,7 @@ export function jugarPis(p: Jugador, o: OpcionsActe1 = {}) {
 export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
   p.talk('marcel');
   // el tap
-  p.talk('puig', 'cafe', 'adeu');
+  p.talk('tomas', 'cafe', 'adeu');
   p.do('pickUp', 'tap_barra');
   p.do('give', 'marcel', 'tap');
   // la recepta
@@ -119,7 +119,7 @@ export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
   p.do('use', 'porta');
   p.do('give', 'marcel', 'recepta');
   // el comandament
-  p.talk('puig', 'comandament', 'adeu');
+  p.talk('tomas', 'comandament', 'adeu');
   p.talk('trucada', 'trucada', 'adeu');
   p.switchTo('iri');
   p.do('use', 'ordinadors');
@@ -129,7 +129,7 @@ export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
   // el que sap en Marcel, i la trucada a l'Iri
   p.talk('marcel', 'servidor', 'clau', 'tub', 'vol', 'ballester', 'neta', 'gracies');
   p.talk('trucada', 'resum', 'robot', 'adeu');
-  if (o.tap) p.do('give', 'puig', 'tap');
+  if (o.tap) p.do('give', 'tomas', 'tap');
   p.do('use', 'porta');
 }
 

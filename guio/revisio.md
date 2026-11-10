@@ -215,7 +215,7 @@ CALAIX «calaix»
     • open/pickUp — SEMPRE
         JUGADORA: Tancat. L'Iri el podria obrir des de casa, si li truco.
     • look — SEMPRE
-        JUGADORA: El calaix d'en Puig. Hi guarda la recepta secreta de llimonada.
+        JUGADORA: El calaix d'en Tomàs. Hi guarda la recepta secreta de llimonada.
 
 CAIXES «caixes»
     • look — SEMPRE
@@ -235,14 +235,14 @@ PORTA «bar»
 EN ENTRAR
     • * (una vegada) — SEMPRE
         [SO: porta_bar] NARRADOR: Dilluns, nit. Bar La Propina, a la sortida de l'autopista.
-        JUGADORA: Bona nit, Puig. Bona nit, Marcel. Bona nit, gent que no paga.
+        JUGADORA: Bona nit, Tomàs. Bona nit, Marcel. Bona nit, gent que no paga.
 
 DECORAT tele_bassols — es veu si bassols
-DECORAT rebost_tancat — es veu si puig_rebost
+DECORAT rebost_tancat — es veu si tomas_rebost
 
 MARCEL «Marcel»
     • give + tap — SEMPRE
-        MARCEL: El tap del clauer d'en Puig! Ni se n'ha adonat, oi?
+        MARCEL: El tap del clauer d'en Tomàs! Ni se n'ha adonat, oi?
           ⇒ perd tap, +marcel_tap, donats += 1
         MARCEL: Ja en falten menys. ⟨si donats < 3⟩
         MARCEL: Tres de tres. Ara et fio. ⟨si donats ≥ 3⟩
@@ -262,10 +262,10 @@ MARCEL «Marcel»
     • give + comandament — SEMPRE
         MARCEL: El comandament! A veure... Ah! El capítol del violí!
           ⇒ perd comandament, +marcel_comandament, donats += 1
-        NARRADOR: En Puig surt del rebost amb el telèfon a la mà.
-          ⇒ −puig_rebost
-        PUIG: Ja està. Som lliures. Tots dos.
-        PUIG: ...Qui ha posat aquesta sèrie? Bé, igual. Avui no tinc forces.
+        NARRADOR: En Tomàs surt del rebost amb el telèfon a la mà.
+          ⇒ −tomas_rebost
+        TOMÀS: Ja està. Som lliures. Tots dos.
+        TOMÀS: ...Qui ha posat aquesta sèrie? Bé, igual. Avui no tinc forces.
         MARCEL: Ja en falten menys. ⟨si donats < 3⟩
         MARCEL: Tres de tres. Ara et fio. ⟨si donats ≥ 3⟩
         MARCEL: No les vull, eh. Volia saber si ho faries. ⟨si donats ≥ 3⟩
@@ -273,35 +273,35 @@ MARCEL «Marcel»
           ⇒ rep tap, rep recepta
         MARCEL: Pregunta. ⟨si donats ≥ 3⟩
     • give + qualsevol objecte — SEMPRE
-        MARCEL: No, això no l'has pres a en Puig. No compta.
+        MARCEL: No, això no l'has pres a en Tomàs. No compta.
     • talkTo — SEMPRE
         ⇒ diàleg marcel
     • look — SEMPRE
         JUGADORA: En Marcel. Vint anys al BCMU, ara un cafè amb llet. Diu que és més feliç.
 
-PUIG «Puig» — hi és si NO puig_rebost
+TOMAS «Tomàs» — hi és si NO tomas_rebost
     • give + tap — SEMPRE
-        PUIG: ...El meu tap? On era?
+        TOMÀS: ...El meu tap? On era?
         JUGADORA: A la barra. Allà on el deixes sempre.
-        PUIG: ...Gràcies? Mai ningú m'havia tornat res.
+        TOMÀS: ...Gràcies? Mai ningú m'havia tornat res.
         ⇒ perd tap, +tap_tornat
     • give + qualsevol objecte — SEMPRE
-        PUIG: Jo només accepto efectiu. I propines, que també són efectiu.
+        TOMÀS: Jo només accepto efectiu. I propines, que també són efectiu.
     • talkTo — SEMPRE
-        ⇒ diàleg puig
+        ⇒ diàleg tomas
     • look — SEMPRE
-        JUGADORA: En Puig. Bigoti i ràbia, a parts iguals.
+        JUGADORA: En Tomàs. Bigoti i ràbia, a parts iguals.
 
 TAP_BARRA «clauer» — hi és si tap_barra
     • pickUp — SEMPRE
         JUGADORA: Al davantal. Ni se n'ha adonat.
         ⇒ rep tap, −tap_barra
     • look — SEMPRE
-        JUGADORA: El clauer d'en Puig: un tap de la cervesera. Damunt la barra, sol i desprotegit.
+        JUGADORA: El clauer d'en Tomàs: un tap de la cervesera. Damunt la barra, sol i desprotegit.
 
-COMANDAMENT_BARRA «comandament» — hi és si puig_rebost i no té comandament i NO marcel_comandament
+COMANDAMENT_BARRA «comandament» — hi és si tomas_rebost i no té comandament i NO marcel_comandament
     • pickUp — SEMPRE
-        JUGADORA: El ceptre d'en Puig. Partit fora.
+        JUGADORA: El ceptre d'en Tomàs. Partit fora.
         ⇒ rep comandament
     • look — SEMPRE
         JUGADORA: El comandament de la tele. Sense vigilància, per primera vegada en la història.
@@ -320,7 +320,7 @@ RETOL «rètol»
         JUGADORA: «Exceptosinopaga». Tot junt. És la contrasenya de la wifi. Sempre ho ha estat.
         ⇒ +contrasenya_llegida
     • look — SEMPRE
-        JUGADORA: «El cliente siempre tiene razón (excepto si no paga)». La filosofia d'en Puig. I la de la banca mundial.
+        JUGADORA: «El cliente siempre tiene razón (excepto si no paga)». La filosofia d'en Tomàs. I la de la banca mundial.
 
 TELEFON «telèfon»
     • talkTo/use — SEMPRE
@@ -329,12 +329,12 @@ TELEFON «telèfon»
         JUGADORA: El telèfon de paret del bar. Amb fil i tot. Per trucar a l'Iri.
 
 PORTA_REBOST «rebost»
-    • use/open/walkTo — si puig_rebost
-        JUGADORA: En Puig és a dins, divorciant-se d'una persona que no existeix. Millor no entrar.
+    • use/open/walkTo — si tomas_rebost
+        JUGADORA: En Tomàs és a dins, divorciant-se d'una persona que no existeix. Millor no entrar.
     • use/open/walkTo — SEMPRE
         ⇒ → bar_rebost
     • look — SEMPRE
-        JUGADORA: El rebost. I el despatx d'en Puig, que és el mateix amb una cadira.
+        JUGADORA: El rebost. I el despatx d'en Tomàs, que és el mateix amb una cadira.
 
 PORTA «sortida»
     • use/open/walkTo — si NO marcel_fet
@@ -345,8 +345,8 @@ PORTA «sortida»
         NARRADOR: La Vet plega. Al pot de les propines hi ha 9,20 €.
           ⇒ +propines
         JUGADORA: Les propines d'una nit. A Ginebra, potser un entrepà.
-        [SO: porta_bar] PUIG: On és el meu tap? ⟨si NO tap_tornat⟩
-        [SO: porta_bar] PUIG: Bona nit, Vet. I gràcies pel tap. ⟨si tap_tornat⟩
+        [SO: porta_bar] TOMÀS: On és el meu tap? ⟨si NO tap_tornat⟩
+        [SO: porta_bar] TOMÀS: Bona nit, Vet. I gràcies pel tap. ⟨si tap_tornat⟩
         ⇒ +bar_fet, esdeveniment situar, → aeroport_terminal
     • look — SEMPRE
         JUGADORA: La sortida. Fora, l'autopista i els camions que no paren mai.
@@ -509,13 +509,13 @@ ORDINADORS «ordinadors»
     • use — si trucada_demanada i NO trucada_feta
         [SO: teclat] JUGADORA: Veu sintètica: activada. Accent: dona enfadada. Ho puc fer.
         [SO: telefon_bar] NARRADOR: L'Iri truca al bar.
-        PUIG: Digui? Bar La Propina.
+        TOMÀS: Digui? Bar La Propina.
         JUGADORA: (Veu sintètica) Soc la teva dona.
-        PUIG: ...La meva dona? Jo no estic casat.
+        TOMÀS: ...La meva dona? Jo no estic casat.
         JUGADORA: (Veu sintètica) Doncs ja ho saps. Vull el divorci.
-        PUIG: ...Un moment.
+        TOMÀS: ...Un moment.
         JUGADORA: He parlat amb una persona. Bé, ho ha fet el portàtil. Compta igual.
-        ⇒ +trucada_feta, +puig_rebost
+        ⇒ +trucada_feta, +tomas_rebost
     • use — si contrasenya_dita i NO calaix_obert
         [SO: teclat] JUGADORA: Xarxa del bar. Contrasenya: «exceptosinopaga». Dins.
         [SO: pany_clic] JUGADORA: Un pany intel·ligent de 19,99 €. Obrir. Fet.
@@ -759,21 +759,21 @@ EN ENTRAR
 
 ```
 • look — si juga vet
-    JUGADORA: El clauer d'en Puig: un tap de la cervesera. Pesa més que les claus.
+    JUGADORA: El clauer d'en Tomàs: un tap de la cervesera. Pesa més que les claus.
 ```
 
 ## Objecte recepta de la llimonada · `recepta`
 
 ```
 • look — si juga vet
-    JUGADORA: La recepta secreta d'en Puig: «1. Obrir el pot. 2. Abocar.»
+    JUGADORA: La recepta secreta d'en Tomàs: «1. Obrir el pot. 2. Abocar.»
 ```
 
 ## Objecte comandament · `comandament`
 
 ```
 • look — si juga vet
-    JUGADORA: El comandament de la tele. El ceptre d'en Puig.
+    JUGADORA: El comandament de la tele. El ceptre d'en Tomàs.
 ```
 
 ## Objecte maletí · `maleti`
@@ -879,7 +879,7 @@ COMENÇA A: hola (si ha vist marcel.intro) · intro
     MARCEL: Jo treballava dotze hores perquè un senyor a Ginebra tingués una casa a tres països.
     MARCEL: Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.
     MARCEL: Al BCMU, la propina se la queda el banc.
-    MARCEL: Si vols que parli, porta'm tres coses d'en Puig sense que se n'adoni: el tap del seu clauer, la recepta secreta de llimonada i el comandament de la tele.
+    MARCEL: Si vols que parli, porta'm tres coses d'en Tomàs sense que se n'adoni: el tap del seu clauer, la recepta secreta de llimonada i el comandament de la tele.
     MARCEL: Si robes al teu cap per mi, et fiaré.
     ⇒ +prova_marcel
     ↪ menu
@@ -901,7 +901,7 @@ COMENÇA A: hola (si ha vist marcel.intro) · intro
     ▸ Ja tornaré. → adeu · FI
 
 [falten]
-    MARCEL: El tap del clauer d'en Puig. ⟨si NO marcel_tap⟩
+    MARCEL: El tap del clauer d'en Tomàs. ⟨si NO marcel_tap⟩
     MARCEL: La recepta de la llimonada. ⟨si NO marcel_recepta⟩
     MARCEL: El comandament de la tele. ⟨si NO marcel_comandament⟩
     ↪ menu
@@ -989,50 +989,6 @@ COMENÇA A: hola
 
 ```
 
-## Diàleg `puig` amb Puig
-
-```
-COMENÇA A: hola
-
-[hola]
-    PUIG: Què vols? Estàs treballant, eh. Que consti.
-    ↪ menu
-
-[menu]
-    ▸ Un cafè amb llet per a en Marcel. ⟨si prova_marcel i NO tap_barra i no té tap i NO marcel_tap i NO tap_tornat⟩ → cafe
-    ▸ Un altre cafè per a en Marcel? ⟨si té tap o marcel_tap o tap_tornat⟩ → cafe2
-    ▸ Em deixes el comandament de la tele? ⟨si prova_marcel i NO sap_dona⟩ → comandament
-    ▸ Quina és la contrasenya de la wifi? ⟨una vegada, si cal_contrasenya i NO contrasenya_llegida⟩ → wifi
-    ▸ Res, Puig. → adeu · FI
-
-[cafe]
-    PUIG: Per a en Marcel. Que no paga mai.
-    PUIG: Està bé. Però el pagues tu.
-    [SO: vaporitzador] NARRADOR: En Puig es treu el clauer, el deixa a la barra i es posa a escumar la llet com si li anés la vida.
-    ⇒ +tap_barra
-    ↪ menu
-
-[cafe2]
-    PUIG: Un altre? En Marcel ja va prou excitat.
-    ↪ menu
-
-[comandament]
-    PUIG: El comandament? Hi ha partit.
-    PUIG: Només el deixaria per una cosa: una trucada de la meva dona.
-    JUGADORA: ...La teva dona.
-    PUIG: La meva dona. Que és de viatge. Des de fa vint anys.
-    ⇒ +sap_dona
-    ↪ menu
-
-[wifi]
-    PUIG: Està al rètol. Sempre ho ha estat. Llegeix, que per això el vaig penjar.
-    ↪ menu
-
-[adeu]
-    PUIG: Doncs a treballar.
-
-```
-
 ## Diàleg `soler` amb Soler
 
 ```
@@ -1095,6 +1051,50 @@ COMENÇA A: xiulet (si alarma_porta) · buscant (si soler_distret) · hola
 
 ```
 
+## Diàleg `tomas` amb Tomàs
+
+```
+COMENÇA A: hola
+
+[hola]
+    TOMÀS: Què vols? Estàs treballant, eh. Que consti.
+    ↪ menu
+
+[menu]
+    ▸ Un cafè amb llet per a en Marcel. ⟨si prova_marcel i NO tap_barra i no té tap i NO marcel_tap i NO tap_tornat⟩ → cafe
+    ▸ Un altre cafè per a en Marcel? ⟨si té tap o marcel_tap o tap_tornat⟩ → cafe2
+    ▸ Em deixes el comandament de la tele? ⟨si prova_marcel i NO sap_dona⟩ → comandament
+    ▸ Quina és la contrasenya de la wifi? ⟨una vegada, si cal_contrasenya i NO contrasenya_llegida⟩ → wifi
+    ▸ Res, Tomàs. → adeu · FI
+
+[cafe]
+    TOMÀS: Per a en Marcel. Que no paga mai.
+    TOMÀS: Està bé. Però el pagues tu.
+    [SO: vaporitzador] NARRADOR: En Tomàs es treu el clauer, el deixa a la barra i es posa a escumar la llet com si li anés la vida.
+    ⇒ +tap_barra
+    ↪ menu
+
+[cafe2]
+    TOMÀS: Un altre? En Marcel ja va prou excitat.
+    ↪ menu
+
+[comandament]
+    TOMÀS: El comandament? Hi ha partit.
+    TOMÀS: Només el deixaria per una cosa: una trucada de la meva dona.
+    JUGADORA: ...La teva dona.
+    TOMÀS: La meva dona. Que és de viatge. Des de fa vint anys.
+    ⇒ +sap_dona
+    ↪ menu
+
+[wifi]
+    TOMÀS: Està al rètol. Sempre ho ha estat. Llegeix, que per això el vaig penjar.
+    ↪ menu
+
+[adeu]
+    TOMÀS: Doncs a treballar.
+
+```
+
 ## Diàleg `trucada` amb Iri
 
 ```
@@ -1108,7 +1108,7 @@ COMENÇA A: hola
 [menu]
     ▸ Saps obrir un pany intel·ligent? ⟨si sap_pany i NO cal_contrasenya⟩ → pany
     ▸ La contrasenya és «exceptosinopaga». Tot junt. ⟨si contrasenya_llegida i NO contrasenya_dita⟩ → contrasenya
-    ▸ Necessito que truquis al bar i facis de dona d'en Puig. ⟨si sap_dona i NO trucada_demanada⟩ → trucada
+    ▸ Necessito que truquis al bar i facis de dona d'en Tomàs. ⟨si sap_dona i NO trucada_demanada⟩ → trucada
     ▸ Ho tinc tot. Apunta. ⟨si marcel_fet i NO resum_fet⟩ → resum
     ▸ I el robot de neteja: si li dius «NETA, descansa», s'atura. ⟨si resum_fet i marcel_neta i NO iri_sap_neta⟩ → robot
     ▸ Res, ja et trucaré. → adeu · FI
@@ -1207,7 +1207,7 @@ iri_pany — quan juga iri i contrasenya_dita i NO calaix_obert · fins que cala
     2. Amb la contrasenya de la wifi puc obrir el pany des de l'ordinador.
     3. Faig servir els ordinadors.
 iri_trucar — quan juga iri i trucada_demanada i NO trucada_feta · fins que trucada_feta
-    1. La Vet vol que truqui al bar i faci de dona d'en Puig. Jo.
+    1. La Vet vol que truqui al bar i faci de dona d'en Tomàs. Jo.
     2. Amb una veu sintètica, des de l'ordinador, ho puc fer.
     3. Faig servir els ordinadors per trucar al bar.
 vet_marcel — quan juga vet i vet_marxa i NO prova_marcel · fins que prova_marcel
@@ -1215,17 +1215,17 @@ vet_marcel — quan juga vet i vet_marxa i NO prova_marcel · fins que prova_mar
     2. En Marcel és a la barra, amb el seu cafè amb llet.
     3. Parlo amb en Marcel.
 vet_tap — quan juga vet i prova_marcel i no té tap i NO marcel_tap i NO tap_tornat · fins que té tap o marcel_tap
-    1. El tap del clauer d'en Puig. El porta penjat al cinturó.
-    2. En Puig es treu el clauer quan fa cafè, perquè li molesta.
-    3. Demano a en Puig un cafè amb llet per a en Marcel i agafo el clauer de la barra.
+    1. El tap del clauer d'en Tomàs. El porta penjat al cinturó.
+    2. En Tomàs es treu el clauer quan fa cafè, perquè li molesta.
+    3. Demano a en Tomàs un cafè amb llet per a en Marcel i agafo el clauer de la barra.
 vet_recepta — quan juga vet i prova_marcel i no té recepta i NO marcel_recepta · fins que té recepta o marcel_recepta
     1. La recepta de la llimonada és al calaix del rebost.
     2. El calaix té un pany amb aplicació. L'Iri el podria obrir des de casa, amb la contrasenya de la wifi.
     3. Miro el calaix, truco a l'Iri, llegeixo el rètol, li dic la contrasenya, i quan l'hagi obert agafo la recepta.
 vet_comandament — quan juga vet i prova_marcel i no té comandament i NO marcel_comandament · fins que té comandament o marcel_comandament
-    1. En Puig no deixa el comandament per res del món. Per res?
+    1. En Tomàs no deixa el comandament per res del món. Per res?
     2. Només el deixaria per una trucada de la seva dona. Que no existeix. L'Iri podria fer de dona.
-    3. Demano el comandament a en Puig, truco a l'Iri perquè truqui al bar, i agafo el comandament de la barra.
+    3. Demano el comandament a en Tomàs, truco a l'Iri perquè truqui al bar, i agafo el comandament de la barra.
 vet_donar — quan juga vet i (té tap o té recepta o té comandament) i donats < 3 · fins que donats ≥ 3
     1. En Marcel vol les tres coses.
     2. Li he de donar el que tinc.
@@ -1240,7 +1240,7 @@ vet_resum — quan juga vet i marcel_fet i NO resum_fet · fins que resum_fet
     3. Truco a l'Iri des del telèfon i li ho explico tot.
 vet_plegar — quan juga vet i resum_fet i NO bar_fet · fins que bar_fet
     1. Ja ho tenim. Hora de plegar.
-    2. (I potser tornar-li el tap a en Puig.)
+    2. (I potser tornar-li el tap a en Tomàs.)
     3. Surto per la porta del bar.
 vet_preparar — quan juga vet i bar_fet i NO sync_aeroport i NO aeroport_fet i (no té maleti o no té ulleres) · fins que sync_aeroport o aeroport_fet o (té maleti i té ulleres)
     1. A Ginebra hauré de semblar algú important. Una auditora, per exemple.

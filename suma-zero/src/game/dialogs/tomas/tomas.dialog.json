@@ -1,6 +1,6 @@
 {
-  "id": "puig",
-  "displayName": "puig",
+  "id": "tomas",
+  "displayName": "tomas",
   "options": [
     {
       "id": "menu__cafe",
@@ -33,7 +33,7 @@
     {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
-      "text": "Res, Puig.",
+      "text": "Res, Tomàs.",
       "enabled": false,
       "say": false
     }

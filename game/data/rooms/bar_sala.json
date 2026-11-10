@@ -199,17 +199,17 @@
               "text": "sala.bar_sala.comandament2",
               "effects": [
                 {
-                  "setFlag": "puig_rebost",
+                  "setFlag": "tomas_rebost",
                   "value": false
                 }
               ]
             },
             {
-              "who": "puig",
+              "who": "tomas",
               "text": "sala.bar_sala.comandament3"
             },
             {
-              "who": "puig",
+              "who": "tomas",
               "text": "sala.bar_sala.comandament4"
             },
             {
@@ -292,10 +292,10 @@
         }
       ]
     },
-    "puig": {
-      "name": "sala.bar_sala.puig.nom",
+    "tomas": {
+      "name": "sala.bar_sala.tomas.nom",
       "visibleIf": {
-        "flag": "puig_rebost",
+        "flag": "tomas_rebost",
         "is": false
       },
       "interactions": [
@@ -304,7 +304,7 @@
           "item": "tap",
           "lines": [
             {
-              "who": "puig",
+              "who": "tomas",
               "text": "sala.bar_sala.tap1"
             },
             {
@@ -312,7 +312,7 @@
               "text": "sala.bar_sala.tap2"
             },
             {
-              "who": "puig",
+              "who": "tomas",
               "text": "sala.bar_sala.tap3"
             }
           ],
@@ -330,21 +330,21 @@
           "item": "*",
           "lines": [
             {
-              "who": "puig",
+              "who": "tomas",
               "text": "sala.bar_sala.dona"
             }
           ]
         },
         {
           "verb": "talkTo",
-          "dialogue": "puig"
+          "dialogue": "tomas"
         },
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.bar_sala.puig.look"
+              "text": "sala.bar_sala.tomas.look"
             }
           ]
         }
@@ -390,7 +390,7 @@
       "visibleIf": {
         "all": [
           {
-            "flag": "puig_rebost"
+            "flag": "tomas_rebost"
           },
           {
             "hasItem": "comandament",
@@ -530,12 +530,12 @@
             "walkTo"
           ],
           "if": {
-            "flag": "puig_rebost"
+            "flag": "tomas_rebost"
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.bar_sala.rebost.puig"
+              "text": "sala.bar_sala.rebost.tomas"
             }
           ]
         },
@@ -616,7 +616,7 @@
               "text": "sala.bar_sala.porta.propines2"
             },
             {
-              "who": "puig",
+              "who": "tomas",
               "text": "sala.bar_sala.porta.tap",
               "sound": "porta_bar",
               "if": {
@@ -625,7 +625,7 @@
               }
             },
             {
-              "who": "puig",
+              "who": "tomas",
               "text": "sala.bar_sala.porta.adeu",
               "sound": "porta_bar",
               "if": {
@@ -667,7 +667,7 @@
     },
     "rebost_tancat": {
       "visibleIf": {
-        "flag": "puig_rebost"
+        "flag": "tomas_rebost"
       }
     }
   }

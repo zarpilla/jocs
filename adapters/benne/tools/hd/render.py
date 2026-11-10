@@ -9,6 +9,10 @@ Cada mòdul de sala defineix:
   ANIMS (opcional)   {id: {'frames': fn() → [imatges RGBA], 'frameDuration': ms}}: animacions de fons
                      en bucle (decorat no clicable, sempre visible); cada fotograma porta només el que
                      canvia respecte del fons
+  FRONT (opcional)   {'mask': fn(x, y) → bool, 'baseline': y, 'zIndex': n, 'props': (ids,)}: un retall
+                     del fons que es dibuixa per davant dels personatges que hi ha darrere (p. ex. una
+                     barra de bar). Qui té els peus per sota de `baseline` hi passa per davant. Els
+                     `props` (coses posades damunt del que tapa) van a la mateixa capa.
 
 La geometria (zones clicables, punts on es camina, terra) continua a room_designs.py: el dibuix ha
 de coincidir amb `things` (vegeu pix.R per passar-los a píxels reals).
@@ -54,6 +58,20 @@ def render(name, prop_ids=None):
         fn(pc)
         props[pid] = pc.img
     return cv.img, props
+
+
+def front(name, bg):
+    """→ (retall RGBA del fons, FRONT) o None si la sala no en té."""
+    f = getattr(load(name), 'FRONT', None)
+    if not f:
+        return None
+    img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
+    src, dst = bg.load(), img.load()
+    for y in range(bg.size[1]):
+        for x in range(bg.size[0]):
+            if f['mask'](x, y):
+                dst[x, y] = src[x, y]
+    return img, f
 
 
 def _render_anims(name):
@@ -162,11 +180,16 @@ def main():
     dbg = full.copy()
     design = DESIGNS.get(name)
     if design:
-        for cid, (x, y) in design['spawns'].items():
-            spr, feet = _sprite(cid)
-            if spr:
+        fr = front(name, full)
+        base = fr[1]['baseline'] if fr else None
+        for behind in (True, False):   # primer els de darrere la capa del davant, després la capa, després la resta
+            for cid, (x, y) in design['spawns'].items():
+                spr, feet = _sprite(cid)
                 fx, fy = Pt(x, y)
-                dbg.alpha_composite(spr, (fx - feet['x'], fy - feet['y']))
+                if spr and (base is not None and fy <= base) == behind:
+                    dbg.alpha_composite(spr, (fx - feet['x'], fy - feet['y']))
+            if behind and fr:
+                dbg.alpha_composite(fr[0])
     big = dbg.resize((W * 3, H * 3), Image.NEAREST)
     d = ImageDraw.Draw(big)
     if design:

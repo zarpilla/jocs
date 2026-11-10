@@ -260,10 +260,12 @@ def leg_points(hip, a, s, th=LEG, sh=LEG):
 class Pose:
     """Geometria d'un fotograma: articulacions segons la direcció i el pas."""
 
-    def __init__(self, facing, walk=None, talk=False, thin=0, stoop=0):
+    def __init__(self, facing, walk=None, talk=False, thin=0, stoop=0, seated=None):
         self.f, self.walk, self.talk, self.thin = facing, walk, talk, thin
         self.bob = 0
-        if facing == 'L':
+        if seated is not None:
+            self._seated(seated, stoop)
+        elif facing == 'L':
             self._side(walk, stoop)
         else:
             self._front(walk, stoop)
@@ -287,6 +289,29 @@ class Pose:
         self.knee = [(21 + t * 0.5, 66 + b - lift[0] * 0.6), (28 - t * 0.5, 66 + b - lift[1] * 0.6)]
         self.ankle = [(21.5 + t * 0.5, 80 - lift[0]), (27.5 - t * 0.5, 80 - lift[1])]
         self.lift = lift
+
+    def _seated(self, hipy, stoop):
+        """De perfil (mirant a l'esquerra), assegut en un tamboret alt: el maluc a `hipy`, les cuixes una mica
+        cap avall, els peus al reposapeus i la mà del davant damunt el genoll."""
+        hipx = 26.0
+        self.f = 'L'
+        self.bob = round(hipy - HIPY)
+        b = self.bob
+        self.hip_y = hipy
+        self.legs = []
+        for a, sh, dx in ((72, -6, 0.0), (68, -10, 1.5)):          # la cama del davant i la del darrere
+            hip = (hipx + dx, hipy)
+            k, an = leg_points(hip, a, sh)
+            self.legs.append((hip, k, an, 0.0))
+        self.head = (24.5, 15 + b + stoop)
+        self.shoulder = (25.5, 30 + b)
+        self.arms = []
+        for a, bend in ((6, 60), (-4, 66)):                          # les mans, damunt les cuixes
+            ra, rb = math.radians(a), math.radians(a + bend)
+            sx, sy = self.shoulder
+            el = (sx - math.sin(ra) * 10.5, sy + math.cos(ra) * 10.5)
+            wr = (el[0] - math.sin(rb) * 9.5, el[1] + math.cos(rb) * 9.5)
+            self.arms.append(((sx, sy), el, wr))
 
     def _side(self, walk, stoop):
         hipx = 25.5
@@ -523,10 +548,10 @@ def side_torso_edges(p, top=27):
 def person(spec, facing, walk=None, talk=False):
     """Persona de 49×87 (peus a (25, 83)). `spec`: materials i ganxos de cada personatge."""
     fg = Fig(49, 87)
-    p = Pose(facing, walk, talk, thin=spec.get('thin', 0), stoop=spec.get('stoop', 0))
+    p = Pose(facing, walk, talk, thin=spec.get('thin', 0), stoop=spec.get('stoop', 0), seated=spec.get('seated'))
     p.spec = spec
     S = spec['skin']
-    if facing == 'L':
+    if p.f == 'L':
         _person_side(fg, p, spec, S)
     else:
         _person_front(fg, p, spec, S)

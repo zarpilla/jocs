@@ -148,7 +148,7 @@ describe('Acte 1 · coherència', () => {
     expect(iri).not.toContain('vídua');
   });
 
-  it("en Puig només pregunta pel tap si no l'hi han tornat", () => {
+  it("en Tomàs només pregunta pel tap si no l'hi han tornat", () => {
     const amb = partida();
     jugarActe1(amb.p, { tap: true });
     expect(amb.p.transcript.join('\n')).not.toContain('On és el meu tap?');
@@ -157,16 +157,16 @@ describe('Acte 1 · coherència', () => {
     expect(sense.p.transcript.join('\n')).toContain('On és el meu tap?');
   });
 
-  it('el rebost és tancat mentre en Puig hi discuteix amb la seva dona inexistent', () => {
+  it('el rebost és tancat mentre en Tomàs hi discuteix amb la seva dona inexistent', () => {
     const { n, p } = partida();
     jugarPis(p);
     p.talk('marcel');
-    p.talk('puig', 'comandament', 'adeu');
+    p.talk('tomas', 'comandament', 'adeu');
     p.talk('trucada', 'trucada', 'adeu');
     p.switchTo('iri');
     p.do('use', 'ordinadors');
     p.switchTo('vet');
-    expect(n.flag('puig_rebost')).toBe(true);
+    expect(n.flag('tomas_rebost')).toBe(true);
     expect(texts(p.do('use', 'porta_rebost'))).toContain('divorciant-se');
     expect(p.room).toBe('bar_sala');
   });

@@ -205,8 +205,10 @@ def secundari(cid):
         tags.append((f'Idle{f}', [personatges.npc(cid, f)]))
         tags.append((f'Talk{f}', [personatges.npc(cid, f), personatges.npc(cid, f, talk=True)]))
     anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else {})} for t, _ in tags}
+    # assegut, amb les cames endavant: qui hi parla s'hi atura una mica més enllà dels genolls
+    walk_to = {'x': 66, 'y': 90} if personatges.NPCS[cid].get('seated') is not None else {'x': 44, 'y': 83}
     write(cid, tags, (49, 87), {
-        'walkSpeed': 70, 'walkToPoint': {'x': 44, 'y': 83}, 'talkPoint': {'x': 25, 'y': -2}, 'feet': {'x': 25, 'y': 83},
+        'walkSpeed': 70, 'walkToPoint': walk_to, 'talkPoint': {'x': 25, 'y': -2}, 'feet': {'x': 25, 'y': 83},
         'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},
         'animations': anims, 'defaultVerb': 'talkTo',
     })

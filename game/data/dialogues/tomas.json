@@ -1,7 +1,7 @@
 {
   "$schema": "../../schemas/dialogue.schema.json",
-  "id": "puig",
-  "with": "puig",
+  "id": "tomas",
+  "with": "tomas",
   "start": [
     {
       "node": "hola"
@@ -11,8 +11,8 @@
     "hola": {
       "lines": [
         {
-          "who": "puig",
-          "text": "dlg.puig.hola"
+          "who": "tomas",
+          "text": "dlg.tomas.hola"
         }
       ],
       "goto": "menu"
@@ -21,7 +21,7 @@
       "choices": [
         {
           "id": "cafe",
-          "text": "dlg.puig.opt.cafe",
+          "text": "dlg.tomas.opt.cafe",
           "if": {
             "all": [
               {
@@ -49,7 +49,7 @@
         },
         {
           "id": "cafe2",
-          "text": "dlg.puig.opt.cafe2",
+          "text": "dlg.tomas.opt.cafe2",
           "if": {
             "any": [
               {
@@ -67,7 +67,7 @@
         },
         {
           "id": "comandament",
-          "text": "dlg.puig.opt.comandament",
+          "text": "dlg.tomas.opt.comandament",
           "if": {
             "all": [
               {
@@ -83,7 +83,7 @@
         },
         {
           "id": "wifi",
-          "text": "dlg.puig.opt.wifi",
+          "text": "dlg.tomas.opt.wifi",
           "if": {
             "all": [
               {
@@ -100,7 +100,7 @@
         },
         {
           "id": "adeu",
-          "text": "dlg.puig.opt.adeu",
+          "text": "dlg.tomas.opt.adeu",
           "next": "adeu",
           "end": true
         }
@@ -114,16 +114,16 @@
       ],
       "lines": [
         {
-          "who": "puig",
-          "text": "dlg.puig.cafe1"
+          "who": "tomas",
+          "text": "dlg.tomas.cafe1"
         },
         {
-          "who": "puig",
-          "text": "dlg.puig.cafe2"
+          "who": "tomas",
+          "text": "dlg.tomas.cafe2"
         },
         {
           "who": "narrator",
-          "text": "dlg.puig.cafe3",
+          "text": "dlg.tomas.cafe3",
           "sound": "vaporitzador"
         }
       ],
@@ -132,8 +132,8 @@
     "cafe2": {
       "lines": [
         {
-          "who": "puig",
-          "text": "dlg.puig.cafe2_1"
+          "who": "tomas",
+          "text": "dlg.tomas.cafe2_1"
         }
       ],
       "goto": "menu"
@@ -146,20 +146,20 @@
       ],
       "lines": [
         {
-          "who": "puig",
-          "text": "dlg.puig.comandament1"
+          "who": "tomas",
+          "text": "dlg.tomas.comandament1"
         },
         {
-          "who": "puig",
-          "text": "dlg.puig.comandament2"
+          "who": "tomas",
+          "text": "dlg.tomas.comandament2"
         },
         {
           "who": "player",
-          "text": "dlg.puig.comandament3"
+          "text": "dlg.tomas.comandament3"
         },
         {
-          "who": "puig",
-          "text": "dlg.puig.comandament4"
+          "who": "tomas",
+          "text": "dlg.tomas.comandament4"
         }
       ],
       "goto": "menu"
@@ -167,8 +167,8 @@
     "wifi": {
       "lines": [
         {
-          "who": "puig",
-          "text": "dlg.puig.wifi"
+          "who": "tomas",
+          "text": "dlg.tomas.wifi"
         }
       ],
       "goto": "menu"
@@ -176,8 +176,8 @@
     "adeu": {
       "lines": [
         {
-          "who": "puig",
-          "text": "dlg.puig.adeu"
+          "who": "tomas",
+          "text": "dlg.tomas.adeu"
         }
       ]
     }

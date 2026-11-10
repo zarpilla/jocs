@@ -95,7 +95,7 @@ pneumàtic** (vegeu «Regles del món»).
 |---|---|---|
 | **Diu** | El gat. Mossega cables. | Tutorial (Acte 1), gag recurrent i escena final. Intocable. |
 | **Marcel** | Ex-enginyer del BCMU, acomiadat per «reestructuració» després de vint anys. Va modernitzar el tub pneumàtic de la seu i va programar el robot de neteja. Beu cafè amb llet a La Propina. No té dentista. | **La informació.** Sap on és el Llibre Major, qui té la clau, els gustos d'en Ballester i el codi del robot. Fa de veu de la crítica, en frases curtes. |
-| **En Puig** | L'amo de La Propina. Bigoti i ràbia. Rètol: *«El cliente siempre tiene razón (excepto si no paga)»*. Parla sempre de «la seva dona», que tothom sap que no existeix. | L'obstacle de l'Escena 2, i un final petit: tanca el bar el dia del virus i el torna a obrir. |
+| **En Tomàs** | L'amo de La Propina. Bigoti i ràbia. Rètol: *«El cliente siempre tiene razón (excepto si no paga)»*. Parla sempre de «la seva dona», que tothom sap que no existeix. | L'obstacle de l'Escena 2, i un final petit: tanca el bar el dia del virus i el torna a obrir. |
 | **La supervisora Ortega** | Supervisora de facturació de l'aeroport. Surt a fumar cada hora en punt, davant la vidriera. | El rellotge de la sincronia de l'aeroport (la cigarreta). |
 | **L'agent Soler** | Guàrdia de l'aeroport, de cor tendre. | El que la Vet ha de distreure amb el fill que no existeix. |
 | **El Director Bonfill** | Director de la seu del BCMU. Educat, impecable, somriu massa. Parla de «sostenibilitat» i «inclusió financera». Té un retrat seu al vestíbul, amb el seu gos **Rockefeller**. No crida mai. Segueix el protocol. | L'antagonista. Creu que fa el bé. Al final, agafa el metro. |
@@ -278,7 +278,7 @@ damunt la taula de l'Iri, ple de forats de dent.
 
 ### Escena 2 — El bar La Propina
 
-**Sales:** `bar_sala` (Vet) i `bar_rebost` (Vet: el rebost i despatx d'en Puig). L'Iri continua a
+**Sales:** `bar_sala` (Vet) i `bar_rebost` (Vet: el rebost i despatx d'en Tomàs). L'Iri continua a
 `pis_estudi` (en Diu dorm dins el que li han donat) i s'hi pot canviar. Es parlen pel **telèfon de paret** del
 bar; l'Iri fa la seva part des de l'ordinador. Dilluns, nit: a la tele hi ha futbol, i a les deu fan *La
 Comissària Bassols*.
@@ -292,23 +292,23 @@ Comissària Bassols*.
 > MARCEL: Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.
 > MARCEL: Al BCMU, la propina se la queda el banc.
 
-Després, la prova: **«Porta'm tres coses del bar sense que en Puig se n'adoni. Si robes al teu cap per mi, et
+Després, la prova: **«Porta'm tres coses del bar sense que en Tomàs se n'adoni. Si robes al teu cap per mi, et
 fiaré.»** En Marcel diu quines (el tap, la recepta, el comandament) i, cada vegada que la Vet torna, quantes en
 falten i quines. Les tres es poden fer **en qualsevol ordre**.
 
-**Trencaclosques 2.1 — El tap de la cervesera (Vet).** En Puig fa servir un tap de la cervesera de clauer, penjat
+**Trencaclosques 2.1 — El tap de la cervesera (Vet).** En Tomàs fa servir un tap de la cervesera de clauer, penjat
 al cinturó. Quan fa cafè, se'l treu perquè xoca amb el vaporitzador, i el deixa damunt la barra. La Vet li
-demana **un cafè amb llet per a en Marcel** («El paga en Puig, però no ho sap») i, mentre en Puig fa escuma,
+demana **un cafè amb llet per a en Marcel** («El paga en Tomàs, però no ho sap») i, mentre en Tomàs fa escuma,
 agafa el tap. [SO: vaporitzador] Després: «Un altre cafè? En Marcel ja va prou excitat.»
 
-**Trencaclosques 2.2 — La recepta de la llimonada (Vet + Iri).** La servilleta amb la recepta secreta d'en Puig
+**Trencaclosques 2.2 — La recepta de la llimonada (Vet + Iri).** La servilleta amb la recepta secreta d'en Tomàs
 és al calaix del rebost, tancat amb un **pany intel·ligent** de 19,99 €, «al núvol». La Vet el mira i ho diu
 per telèfon: «Un pany amb aplicació. D'aquests que obres tu des de casa.» L'Iri: «Necessito la contrasenya
 d'administrador. Que segur que és la mateixa que la de la wifi.» La contrasenya és al rètol: la Vet la llegeix
 («excepto si no paga», sense espais) [SO: pany_clic]. Cooperació a distància, sense rellotge: prepara la
 sincronia.
 
-**Trencaclosques 2.3 — El comandament de la tele (Vet + Iri).** En Puig no deixa el comandament (hi ha partit).
+**Trencaclosques 2.3 — El comandament de la tele (Vet + Iri).** En Tomàs no deixa el comandament (hi ha partit).
 La Vet ho explica a l'Iri: «Només el deixaria per una trucada de la seva dona. Que no existeix.» L'Iri, que és
 un desastre parlant amb la gent, truca al bar amb **una veu sintètica** del portàtil. [SO: telefon_bar]
 
@@ -316,13 +316,13 @@ un desastre parlant amb la gent, truca al bar amb **una veu sintètica** del por
 > IRI (veu sintètica): Doncs ja ho saps. Vull el divorci.
 > PUIG: ...Un moment.
 
-En Puig s'endú el telèfon al rebost (que es tanca: «Està discutint amb la seva dona inexistent. Millor no
+En Tomàs s'endú el telèfon al rebost (que es tanca: «Està discutint amb la seva dona inexistent. Millor no
 entrar») i deixa el comandament a la barra. La Vet l'agafa i el dona a en Marcel, que posa *La Comissària
-Bassols* («Ah! El capítol del violí!»). Aleshores en Puig surt del rebost: «Ja està. Som lliures. Tots dos.», i
+Bassols* («Ah! El capítol del violí!»). Aleshores en Tomàs surt del rebost: «Ja està. Som lliures. Tots dos.», i
 recupera el comandament.
 
 **La recompensa: el que sap en Marcel.** Amb les tres coses, en Marcel les mira i les torna: «No les vull.
-Volia saber si ho faries.» (El comandament, en Puig el recupera sol en tornar; la recepta, en Marcel la llegeix:
+Volia saber si ho faries.» (El comandament, en Tomàs el recupera sol en tornar; la recepta, en Marcel la llegeix:
 «Llimonada de pot. Vint anys guardant un secret de pot.») Després explica, en una conversa amb opcions que es
 poden fer en qualsevol ordre:
 
@@ -350,7 +350,7 @@ Si soc a la llista, soc tècnica.»
 **Les propines.** En plegar, la Vet buida el pot de les propines: 9,20 € (`propines`). «Les propines d'una
 nit. A Ginebra, potser un entrepà.»
 
-**El tap.** Abans de sortir, la Vet pot **tornar el tap a en Puig** (`tap_tornat`): «...Gràcies? Mai ningú
+**El tap.** Abans de sortir, la Vet pot **tornar el tap a en Tomàs** (`tap_tornat`): «...Gràcies? Mai ningú
 m'havia tornat res.» Si no, en sortir: «On és el meu tap?». [SO: porta_bar]
 
 ### Escena 3 — L'aeroport (primera sincronia)
@@ -600,7 +600,7 @@ Muntatge (línies del narrador amb imatges):
 - Un fons d'inversió de Nova York es troba amb el sou d'un becari. El becari plora d'alegria.
 - Un senyor a Ginebra (el Director) es troba amb gairebé el mateix que la seva secretària. Per primera vegada,
   ha de decidir si agafa el bus o el metro.
-- En Puig, a La Propina, mira la tele i abaixa la persiana: ningú no pot pagar.
+- En Tomàs, a La Propina, mira la tele i abaixa la persiana: ningú no pot pagar.
 - NARRADOR: Són les onze i quart. **A les dotze, això:** una àvia davant d'un caixer. Un cambrer esperant la
   nòmina. Pensions, ajuts i nòmines de tot el món, a 12 €.
 
@@ -729,11 +729,11 @@ decisió de l'Iri a l'Escena 8.
 > IRI: No hem canviat el món.
 > VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
 > BALLESTER (si aliat_ballester): Un tallat, sisplau. I aquest el pago jo.
-> NETA-3 (si aliat_neta, amb un davantal): Taula tres, servida. En Puig em paga les hores extres. Per primer cop, algú me les paga.
+> NETA-3 (si aliat_neta, amb un davantal): Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga.
 > RIUS (si aliada_rius): Avui hem fitxat a l'hora. Tota la colla.
 > PONS (si aliada_pons): He demanat un augment. M'han dit que sí. Encara no m'ho crec.
 > IRI: Això és un final feliç?
-> VET: És un final. I en Puig ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+> VET: És un final. I en Tomàs ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
 > MARCEL (si mentida_corporativa): Em van dir que una auditora va dir al Director que la banca és imprescindible.
 > VET: Era una auditora molt convincent.
 > MARCEL (si dignitat): Diuen que una auditora li va parlar de cordons de sabates.
@@ -766,7 +766,7 @@ Com que sempre és la mateixa història amb més o menys gent a la taula, el jug
 | **Les hores extres de NETA-3** | Iri | Aturar-lo amb el codi d'en Marcel (no amb l'entrepà) i arreglar-li l'horari al panell de la sala d'escombraries. | Aliat. A l'Escena 9 esmorteeix la caiguda. |
 | **Subcontractats** | Iri | A l'Escena 4b, arreglar l'aplicació de la Rius. | Aliada. Dona el compte de nòmines. |
 | **La senyora Pons** | Vet | A l'avantdespatx, llegir en veu alta la factura de la perruqueria de Rockefeller al costat de la nòmina de la Pons. | Aliada. A l'Escena 8 s'emporta el mòbil i llegeix el codi. |
-| **On és el meu tap?** (petita, sense missió al diari) | Vet | Tornar el tap a en Puig abans de sortir del bar (Escena 2). | Una línia diferent al final. |
+| **On és el meu tap?** (petita, sense missió al diari) | Vet | Tornar el tap a en Tomàs abans de sortir del bar (Escena 2). | Una línia diferent al final. |
 
 ## Sistema de pistes
 
@@ -843,7 +843,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | El Llibre Major existeix i és a Ginebra | Iri, Vet (ho sent des de la cuina) | Escena 1, `llibre_trobat` | Abans, cap línia en parla |
 | La Vet s'ha fet un entrepà | Iri | Escena 1, `te_entrepa` | Si no, cap pista de l'Iri en parla |
 | En Marcel va treballar al BCMU | Vet (ja ho sabia), Iri | Escena 1, `llibre_trobat` | L'Iri no coneix en Marcel en persona |
-| En Puig «té» una dona | Vet (ja ho sabia), Iri | Escena 2, en demanar el comandament | |
+| En Tomàs «té» una dona | Vet (ja ho sabia), Iri | Escena 2, en demanar el comandament | |
 | El Llibre Major és a la sala d'escombraries del 3r pis | Vet; Iri (trucada) | Escena 2, `marcel_servidor` | |
 | La clau és al collaret del Cap de Seguretat | Vet; Iri (trucada) | Escena 2, `marcel_clau` | |
 | El tub pneumàtic existeix | Vet; Iri (trucada) | Escena 2, `marcel_tub` | |
@@ -868,7 +868,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | La seguretat busca «una noia amb dessuadora» | Tothom | Escena 9 (megafonia) | Abans, ningú no busca l'Iri |
 | L'Ortega, en Soler | Vet | Escena 3 (la placa del Soler; «la supervisora» fins que la Vet llegeix el gafet de l'Ortega per la vidriera) | |
 
-**Diu, en Marcel, en Puig:** no saben res del pla fins al final, excepte en Marcel, que ho dedueix a l'Escena 2
+**Diu, en Marcel, en Tomàs:** no saben res del pla fins al final, excepte en Marcel, que ho dedueix a l'Escena 2
 («Voleu robar el banc? Tothom ho vol»).
 
 ## Presència dels personatges
@@ -879,7 +879,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | Vet | — | cuina | bar | terminal | vestíbul | vestíbul o seguretat | seguretat | seguretat | avantdespatx → despatx | despatx → vestíbul → contenidor | bar |
 | Diu | — | estudi | estudi (dorm) | — | — | — | — | — | — | — | bar (cistell); postcrèdits (pis) |
 | Marcel | — | — | bar | — | — | — | — | — | — | — | bar |
-| Puig | — | — | bar (rebost durant la trucada) | — | — | — | — | muntatge (tanca) | — | — | bar |
+| Tomàs | — | — | bar (rebost durant la trucada) | — | — | — | — | muntatge (tanca) | — | — | bar |
 | Ortega | — | — | — | fora, darrere la vidriera | — | — | — | — | — | — | — |
 | Soler, nen, empleat d'objectes perduts | — | — | — | terminal | — | — | — | — | — | — | — |
 | Director | anunci | — | — | — | vestíbul (fins que acaba la 4) → despatx | despatx (o vestíbul, si la 4 no és feta) | despatx (**fora** de seguretat) | muntatge | despatx | despatx | — (tele) |
@@ -893,7 +893,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 
 - A l'Escena 6 el Director **no hi és**: cap línia d'en Ballester el pot fer present («el Director ens vigila»
   és prohibit; «el Director és dalt, a la reunió de sostenibilitat», sí).
-- A l'Escena 2, durant la trucada, en Puig és al rebost: la Vet no hi pot entrar ni demanar cafè («En Puig és al
+- A l'Escena 2, durant la trucada, en Tomàs és al rebost: la Vet no hi pot entrar ni demanar cafè («En Tomàs és al
   rebost divorciant-se d'una persona que no existeix. Esperaré»).
 - A l'Escena 8, si en Ballester no és aliat, no surt al despatx; si la Pons no és aliada, és a l'avantdespatx però
   no ajuda.
@@ -913,12 +913,12 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | Passaplats | `pis_cuina` / `pis_estudi` | tancat · obert (`passaplats_obert`, el mateix als dos costats) | Obre / Tanca, des de qualsevol costat. Per parlar-hi o passar-hi coses ha d'estar obert | Portetes de vidre glaçat / obertes (es veu l'altra habitació) | «Primer l'he d'obrir» |
 | Nevera | `pis_cuina` | amb pizza i entrepà possible · sense pizza · sense entrepà · sense res | Agafar | Interior en mirar-la | «Una pizza per a demà, pa, tonyina i un iogurt que ja vota» (i les variants) |
 | Plats bruts | `pis_cuina` | sempre (gag) | — | Pila | «Nou dies. Els he comptat» |
-| Puig | `bar_sala` | a la barra · fent cafè · fora (rebost) · de tornada, «lliure» | Cafè; trucada | Quatre poses | Línies segons l'estat |
-| Tap de la cervesera | `bar_sala` | al cinturó · a la barra · agafat · tornat | Demanar el cafè; tornar-lo | Al Puig / a la barra | — |
-| Rètol d'en Puig | `bar_sala` | sempre | — | — | «El cliente siempre tiene razón (excepto si no paga)». Vet: «És la contrasenya de la wifi. Sempre ho ha estat» (només quan cal la contrasenya) |
+| Tomàs | `bar_sala` | a la barra · fent cafè · fora (rebost) · de tornada, «lliure» | Cafè; trucada | Quatre poses | Línies segons l'estat |
+| Tap de la cervesera | `bar_sala` | al cinturó · a la barra · agafat · tornat | Demanar el cafè; tornar-lo | Al Tomàs / a la barra | — |
+| Rètol d'en Tomàs | `bar_sala` | sempre | — | — | «El cliente siempre tiene razón (excepto si no paga)». Vet: «És la contrasenya de la wifi. Sempre ho ha estat» (només quan cal la contrasenya) |
 | Porta del rebost | `bar_sala` | oberta · tancada (trucada) | Trucada | — | «Està discutint amb la seva dona inexistent» |
 | Calaix del rebost | `bar_rebost` | tancat · obert · buit | L'Iri obre el pany; la Vet agafa la recepta | Llum vermell / verd / obert | «Un pany amb aplicació» |
-| Comandament | `bar_sala` | a la mà d'en Puig · a la barra · agafat · tornat | Trucada; en tornar en Puig | — | — |
+| Comandament | `bar_sala` | a la mà d'en Tomàs · a la barra · agafat · tornat | Trucada; en tornar en Tomàs | — | — |
 | Tele del bar | `bar_sala`, `final_bar` | partit · *La Comissària Bassols* · notícies (final) | Comandament; final | Tres pantalles | Marcel: comentaris |
 | Maletí | `aeroport_terminal` | a objectes perduts · de la Vet | Reclamar-lo | Adhesiu «AGENDA 2019 — COMPTE, LLIMONA» | — |
 | Ulleres | `aeroport_terminal` | a la cafeteria · a l'inventari · posades | Agafar; usar | Al sprite de la Vet | — |
@@ -1002,7 +1002,7 @@ resta ja ho fa el nucli de Ferro-9. Cap altre canvi a Benne: la «pantalla divid
 
 - **19 sales**: portada, pròleg, 2 del pis, 2 del bar, 3 de l'aeroport, l'avió (cinemàtica), 7 del BCMU, el
   contenidor i el bar final (que reaprofita `bar_sala`).
-- **16 personatges** amb sprite: l'Iri i la Vet (amb totes les animacions), en Diu, en Marcel, en Puig, l'Ortega,
+- **16 personatges** amb sprite: l'Iri i la Vet (amb totes les animacions), en Diu, en Marcel, en Tomàs, l'Ortega,
   en Soler, el nen, l'empleat d'objectes perduts, el Director, en Ballester, NETA-3, la Rius (i un tècnic genèric),
   la recepcionista i la senyora Pons. En Rockefeller només surt en el retrat i la foto.
 - **L'Acte 1 sol ja és jugable** com a demostració.
@@ -1026,7 +1026,7 @@ resta ja ho fa el nucli de Ferro-9. Cap altre canvi a Benne: la «pantalla divid
 4. **Escenes noves** (el moll de càrrega, els objectes perduts, la sortida per les escombraries, la senyora
    Pons). -> s'hi queden totes
 5. **La ciutat de l'Iri i la Vet:** no es diu mai (proposta) o és una de concreta? -> proposta: no es diu
-6. **El nom del bar** (el primer guió deia «El Último Peaje»). -> **Bar La Propina**. El rètol d'en Puig continua
+6. **El nom del bar** (el primer guió deia «El Último Peaje»). -> **Bar La Propina**. El rètol d'en Tomàs continua
    en castellà («El cliente siempre tiene razón (excepto si no paga)»)
 7. **La sèrie *La Comissària Bassols*** i els capítols (*El violí mut*, *La vídua del Liceu*): inventats, per no
    referenciar cap sèrie real. -> proposta
@@ -1054,7 +1054,7 @@ Canvis respecte del primer guió (`primer-guio.txt`), i per què.
 | 6 | L'entrepà de la Vet «no preguntis d'on surt». | Surt de l'Escena 1 i arriba pel tub. Es manté el gag i té lògica. |
 | 7 | Com paguen el viatge, si no tenen ni per pizzes? | El **vol propi del BCMU** per als tècnics de caixes fortes. L'aeroport és colar-se a la llista. |
 | 8 | La contrasenya «Rockefeller» surt del no-res. | Es planta a l'Escena 4 (la placa del retrat) i hi ha alternatives al despatx. |
-| 9 | La «dona que no existeix» d'en Puig: si no existeix, ell ho sap. | És el gag: «Jo no estic casat.» «Doncs ja ho saps. Vull el divorci.» I truca l'Iri, que és un desastre parlant amb la gent. |
+| 9 | La «dona que no existeix» d'en Tomàs: si no existeix, ell ho sap. | És el gag: «Jo no estic casat.» «Doncs ja ho saps. Vull el divorci.» I truca l'Iri, que és un desastre parlant amb la gent. |
 | 10 | La flag «mentida corporativa» desbloqueja un diàleg amb en Marcel, però en Marcel és lluny. | El diàleg és al final, al bar. |
 | 11 | «+1 respecte del jugador» no és cap mecànica. | Flag `dignitat`, que canvia una línia d'en Marcel al final. |
 | 12 | El primer puzle del bar (tres coses) i el revisat (el comandament) eren alternatius. | Són el mateix: tres coses, i el comandament és la tercera, amb la trucada. |
@@ -1086,7 +1086,7 @@ problemes (22 greus, 26 mitjans, 13 menors); tots s'han resolt en aquesta versi�
 | G13 | El muntatge passava ja de les dotze. | «Són les onze i quart. A les dotze, això:». |
 | G14 | La recepcionista reconeixia la Vet sense haver-la vista. | Ha vist la gravació del vestíbul; només si `sospita_max ≥ 50`. |
 | G15 | Les claus alternatives del camí de la mentida no existien. | La clau de casa s'agafa sempre i no es pot enviar; un clauer a la taula d'en Ballester, per si de cas. |
-| G16 | El final del bar xocava amb l'ordre lliure. | En Puig torna sol de la trucada; l'escena s'acaba amb en Marcel. |
+| G16 | El final del bar xocava amb l'ordre lliure. | En Tomàs torna sol de la trucada; l'escena s'acaba amb en Marcel. |
 | G17 | La missió del tap era impossible (el final és cinemàtic). | En Marcel torna les coses; el tap es torna a l'Escena 2; la línia final depèn de `tap_tornat`. |
 | G18 | Casos de finals sense cobrir. | Condicions noves (vegeu «Finals»). |
 | G19 | 14,32 € «amb interessos que no ha sabut no cobrar-se» volia dir menys, no més. | «Al Director, el banc sempre li paga.» |

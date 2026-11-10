@@ -73,7 +73,6 @@
         "porta_oberta": false,
         "propines": false,
         "prova_marcel": false,
-        "puig_rebost": false,
         "recepta_agafada": false,
         "resum_fet": false,
         "router_connectat": false,
@@ -84,6 +83,7 @@
         "tap_barra": false,
         "tap_tornat": false,
         "te_entrepa": false,
+        "tomas_rebost": false,
         "trucada_demanada": false,
         "trucada_feta": false,
         "ulleres_posades": false,
@@ -184,8 +184,8 @@
       "marcel": {
         "name": "pj.marcel.nom"
       },
-      "puig": {
-        "name": "pj.puig.nom"
+      "tomas": {
+        "name": "pj.tomas.nom"
       },
       "ortega": {
         "name": "pj.ortega.nom"
@@ -1783,17 +1783,17 @@
                     "text": "sala.bar_sala.comandament2",
                     "effects": [
                       {
-                        "setFlag": "puig_rebost",
+                        "setFlag": "tomas_rebost",
                         "value": false
                       }
                     ]
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.bar_sala.comandament3"
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.bar_sala.comandament4"
                   },
                   {
@@ -1876,10 +1876,10 @@
               }
             ]
           },
-          "puig": {
-            "name": "sala.bar_sala.puig.nom",
+          "tomas": {
+            "name": "sala.bar_sala.tomas.nom",
             "visibleIf": {
-              "flag": "puig_rebost",
+              "flag": "tomas_rebost",
               "is": false
             },
             "interactions": [
@@ -1888,7 +1888,7 @@
                 "item": "tap",
                 "lines": [
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.bar_sala.tap1"
                   },
                   {
@@ -1896,7 +1896,7 @@
                     "text": "sala.bar_sala.tap2"
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.bar_sala.tap3"
                   }
                 ],
@@ -1914,21 +1914,21 @@
                 "item": "*",
                 "lines": [
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.bar_sala.dona"
                   }
                 ]
               },
               {
                 "verb": "talkTo",
-                "dialogue": "puig"
+                "dialogue": "tomas"
               },
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.bar_sala.puig.look"
+                    "text": "sala.bar_sala.tomas.look"
                   }
                 ]
               }
@@ -1974,7 +1974,7 @@
             "visibleIf": {
               "all": [
                 {
-                  "flag": "puig_rebost"
+                  "flag": "tomas_rebost"
                 },
                 {
                   "hasItem": "comandament",
@@ -2114,12 +2114,12 @@
                   "walkTo"
                 ],
                 "if": {
-                  "flag": "puig_rebost"
+                  "flag": "tomas_rebost"
                 },
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.bar_sala.rebost.puig"
+                    "text": "sala.bar_sala.rebost.tomas"
                   }
                 ]
               },
@@ -2200,7 +2200,7 @@
                     "text": "sala.bar_sala.porta.propines2"
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.bar_sala.porta.tap",
                     "sound": "porta_bar",
                     "if": {
@@ -2209,7 +2209,7 @@
                     }
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.bar_sala.porta.adeu",
                     "sound": "porta_bar",
                     "if": {
@@ -2251,7 +2251,7 @@
           },
           "rebost_tancat": {
             "visibleIf": {
-              "flag": "puig_rebost"
+              "flag": "tomas_rebost"
             }
           }
         }
@@ -3034,7 +3034,7 @@
                     "sound": "telefon_bar"
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.pis_estudi.trucada3"
                   },
                   {
@@ -3042,7 +3042,7 @@
                     "text": "sala.pis_estudi.trucada4"
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.pis_estudi.trucada5"
                   },
                   {
@@ -3050,7 +3050,7 @@
                     "text": "sala.pis_estudi.trucada6"
                   },
                   {
-                    "who": "puig",
+                    "who": "tomas",
                     "text": "sala.pis_estudi.trucada7"
                   },
                   {
@@ -3063,7 +3063,7 @@
                     "setFlag": "trucada_feta"
                   },
                   {
-                    "setFlag": "puig_rebost"
+                    "setFlag": "tomas_rebost"
                   }
                 ]
               },
@@ -5911,190 +5911,6 @@
           }
         }
       },
-      "puig": {
-        "id": "puig",
-        "with": "puig",
-        "start": [
-          {
-            "node": "hola"
-          }
-        ],
-        "nodes": {
-          "hola": {
-            "lines": [
-              {
-                "who": "puig",
-                "text": "dlg.puig.hola"
-              }
-            ],
-            "goto": "menu"
-          },
-          "menu": {
-            "choices": [
-              {
-                "id": "cafe",
-                "text": "dlg.puig.opt.cafe",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "prova_marcel"
-                    },
-                    {
-                      "flag": "tap_barra",
-                      "is": false
-                    },
-                    {
-                      "hasItem": "tap",
-                      "is": false
-                    },
-                    {
-                      "flag": "marcel_tap",
-                      "is": false
-                    },
-                    {
-                      "flag": "tap_tornat",
-                      "is": false
-                    }
-                  ]
-                },
-                "next": "cafe"
-              },
-              {
-                "id": "cafe2",
-                "text": "dlg.puig.opt.cafe2",
-                "if": {
-                  "any": [
-                    {
-                      "hasItem": "tap"
-                    },
-                    {
-                      "flag": "marcel_tap"
-                    },
-                    {
-                      "flag": "tap_tornat"
-                    }
-                  ]
-                },
-                "next": "cafe2"
-              },
-              {
-                "id": "comandament",
-                "text": "dlg.puig.opt.comandament",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "prova_marcel"
-                    },
-                    {
-                      "flag": "sap_dona",
-                      "is": false
-                    }
-                  ]
-                },
-                "next": "comandament"
-              },
-              {
-                "id": "wifi",
-                "text": "dlg.puig.opt.wifi",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "cal_contrasenya"
-                    },
-                    {
-                      "flag": "contrasenya_llegida",
-                      "is": false
-                    }
-                  ]
-                },
-                "once": true,
-                "next": "wifi"
-              },
-              {
-                "id": "adeu",
-                "text": "dlg.puig.opt.adeu",
-                "next": "adeu",
-                "end": true
-              }
-            ]
-          },
-          "cafe": {
-            "effects": [
-              {
-                "setFlag": "tap_barra"
-              }
-            ],
-            "lines": [
-              {
-                "who": "puig",
-                "text": "dlg.puig.cafe1"
-              },
-              {
-                "who": "puig",
-                "text": "dlg.puig.cafe2"
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.puig.cafe3",
-                "sound": "vaporitzador"
-              }
-            ],
-            "goto": "menu"
-          },
-          "cafe2": {
-            "lines": [
-              {
-                "who": "puig",
-                "text": "dlg.puig.cafe2_1"
-              }
-            ],
-            "goto": "menu"
-          },
-          "comandament": {
-            "effects": [
-              {
-                "setFlag": "sap_dona"
-              }
-            ],
-            "lines": [
-              {
-                "who": "puig",
-                "text": "dlg.puig.comandament1"
-              },
-              {
-                "who": "puig",
-                "text": "dlg.puig.comandament2"
-              },
-              {
-                "who": "player",
-                "text": "dlg.puig.comandament3"
-              },
-              {
-                "who": "puig",
-                "text": "dlg.puig.comandament4"
-              }
-            ],
-            "goto": "menu"
-          },
-          "wifi": {
-            "lines": [
-              {
-                "who": "puig",
-                "text": "dlg.puig.wifi"
-              }
-            ],
-            "goto": "menu"
-          },
-          "adeu": {
-            "lines": [
-              {
-                "who": "puig",
-                "text": "dlg.puig.adeu"
-              }
-            ]
-          }
-        }
-      },
       "soler": {
         "id": "soler",
         "with": "soler",
@@ -6317,6 +6133,190 @@
               {
                 "who": "soler",
                 "text": "dlg.soler.adeu"
+              }
+            ]
+          }
+        }
+      },
+      "tomas": {
+        "id": "tomas",
+        "with": "tomas",
+        "start": [
+          {
+            "node": "hola"
+          }
+        ],
+        "nodes": {
+          "hola": {
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "cafe",
+                "text": "dlg.tomas.opt.cafe",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "prova_marcel"
+                    },
+                    {
+                      "flag": "tap_barra",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "tap",
+                      "is": false
+                    },
+                    {
+                      "flag": "marcel_tap",
+                      "is": false
+                    },
+                    {
+                      "flag": "tap_tornat",
+                      "is": false
+                    }
+                  ]
+                },
+                "next": "cafe"
+              },
+              {
+                "id": "cafe2",
+                "text": "dlg.tomas.opt.cafe2",
+                "if": {
+                  "any": [
+                    {
+                      "hasItem": "tap"
+                    },
+                    {
+                      "flag": "marcel_tap"
+                    },
+                    {
+                      "flag": "tap_tornat"
+                    }
+                  ]
+                },
+                "next": "cafe2"
+              },
+              {
+                "id": "comandament",
+                "text": "dlg.tomas.opt.comandament",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "prova_marcel"
+                    },
+                    {
+                      "flag": "sap_dona",
+                      "is": false
+                    }
+                  ]
+                },
+                "next": "comandament"
+              },
+              {
+                "id": "wifi",
+                "text": "dlg.tomas.opt.wifi",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "cal_contrasenya"
+                    },
+                    {
+                      "flag": "contrasenya_llegida",
+                      "is": false
+                    }
+                  ]
+                },
+                "once": true,
+                "next": "wifi"
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.tomas.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "cafe": {
+            "effects": [
+              {
+                "setFlag": "tap_barra"
+              }
+            ],
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.cafe1"
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.cafe2"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.tomas.cafe3",
+                "sound": "vaporitzador"
+              }
+            ],
+            "goto": "menu"
+          },
+          "cafe2": {
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.cafe2_1"
+              }
+            ],
+            "goto": "menu"
+          },
+          "comandament": {
+            "effects": [
+              {
+                "setFlag": "sap_dona"
+              }
+            ],
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.comandament1"
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.comandament2"
+              },
+              {
+                "who": "player",
+                "text": "dlg.tomas.comandament3"
+              },
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.comandament4"
+              }
+            ],
+            "goto": "menu"
+          },
+          "wifi": {
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.wifi"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "tomas",
+                "text": "dlg.tomas.adeu"
               }
             ]
           }
@@ -6584,7 +6584,7 @@
       "dlg.marcel.clau2": "Perfecte. M'agraden els reptes estúpids.",
       "dlg.marcel.falta_comandament": "El comandament de la tele.",
       "dlg.marcel.falta_recepta": "La recepta de la llimonada.",
-      "dlg.marcel.falta_tap": "El tap del clauer d'en Puig.",
+      "dlg.marcel.falta_tap": "El tap del clauer d'en Tomàs.",
       "dlg.marcel.gracies1": "Me'n deus un dentista.",
       "dlg.marcel.gracies2": "I ves amb compte. El banc no crida mai. Només somriu.",
       "dlg.marcel.hola_falta": "Què, ja ho tens?",
@@ -6596,7 +6596,7 @@
       "dlg.marcel.intro5": "Jo treballava dotze hores perquè un senyor a Ginebra tingués una casa a tres països.",
       "dlg.marcel.intro6": "Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.",
       "dlg.marcel.intro7": "Al BCMU, la propina se la queda el banc.",
-      "dlg.marcel.intro8": "Si vols que parli, porta'm tres coses d'en Puig sense que se n'adoni: el tap del seu clauer, la recepta secreta de llimonada i el comandament de la tele.",
+      "dlg.marcel.intro8": "Si vols que parli, porta'm tres coses d'en Tomàs sense que se n'adoni: el tap del seu clauer, la recepta secreta de llimonada i el comandament de la tele.",
       "dlg.marcel.intro9": "Si robes al teu cap per mi, et fiaré.",
       "dlg.marcel.neta1": "El robot de neteja. NETA-3. El vaig programar jo.",
       "dlg.marcel.neta2": "Si li dius «NETA, descansa», s'atura. Mai ningú no li ho ha dit.",
@@ -6628,22 +6628,22 @@
       "dlg.passaplats.pizza1": "La de demà? Per a què la vols?",
       "dlg.passaplats.pizza2": "Per al gat.",
       "dlg.passaplats.pizza3": "...Això és un sacrilegi. Ara te la passo.",
-      "dlg.puig.adeu": "Doncs a treballar.",
-      "dlg.puig.cafe1": "Per a en Marcel. Que no paga mai.",
-      "dlg.puig.cafe2": "Està bé. Però el pagues tu.",
-      "dlg.puig.cafe2_1": "Un altre? En Marcel ja va prou excitat.",
-      "dlg.puig.cafe3": "En Puig es treu el clauer, el deixa a la barra i es posa a escumar la llet com si li anés la vida.",
-      "dlg.puig.comandament1": "El comandament? Hi ha partit.",
-      "dlg.puig.comandament2": "Només el deixaria per una cosa: una trucada de la meva dona.",
-      "dlg.puig.comandament3": "...La teva dona.",
-      "dlg.puig.comandament4": "La meva dona. Que és de viatge. Des de fa vint anys.",
-      "dlg.puig.hola": "Què vols? Estàs treballant, eh. Que consti.",
-      "dlg.puig.opt.adeu": "Res, Puig.",
-      "dlg.puig.opt.cafe": "Un cafè amb llet per a en Marcel.",
-      "dlg.puig.opt.cafe2": "Un altre cafè per a en Marcel?",
-      "dlg.puig.opt.comandament": "Em deixes el comandament de la tele?",
-      "dlg.puig.opt.wifi": "Quina és la contrasenya de la wifi?",
-      "dlg.puig.wifi": "Està al rètol. Sempre ho ha estat. Llegeix, que per això el vaig penjar.",
+      "dlg.tomas.adeu": "Doncs a treballar.",
+      "dlg.tomas.cafe1": "Per a en Marcel. Que no paga mai.",
+      "dlg.tomas.cafe2": "Està bé. Però el pagues tu.",
+      "dlg.tomas.cafe2_1": "Un altre? En Marcel ja va prou excitat.",
+      "dlg.tomas.cafe3": "En Tomàs es treu el clauer, el deixa a la barra i es posa a escumar la llet com si li anés la vida.",
+      "dlg.tomas.comandament1": "El comandament? Hi ha partit.",
+      "dlg.tomas.comandament2": "Només el deixaria per una cosa: una trucada de la meva dona.",
+      "dlg.tomas.comandament3": "...La teva dona.",
+      "dlg.tomas.comandament4": "La meva dona. Que és de viatge. Des de fa vint anys.",
+      "dlg.tomas.hola": "Què vols? Estàs treballant, eh. Que consti.",
+      "dlg.tomas.opt.adeu": "Res, Tomàs.",
+      "dlg.tomas.opt.cafe": "Un cafè amb llet per a en Marcel.",
+      "dlg.tomas.opt.cafe2": "Un altre cafè per a en Marcel?",
+      "dlg.tomas.opt.comandament": "Em deixes el comandament de la tele?",
+      "dlg.tomas.opt.wifi": "Quina és la contrasenya de la wifi?",
+      "dlg.tomas.wifi": "Està al rètol. Sempre ho ha estat. Llegeix, que per això el vaig penjar.",
       "dlg.soler.adeu": "Bon viatge.",
       "dlg.soler.busca1": "Samarreta vermella, set anys. El busco. No es mogui.",
       "dlg.soler.busca2": "En Soler deixa la porta de personal i se'n va a mirar darrere de cada columna.",
@@ -6676,7 +6676,7 @@
       "dlg.trucada.opt.pany": "Saps obrir un pany intel·ligent?",
       "dlg.trucada.opt.resum": "Ho tinc tot. Apunta.",
       "dlg.trucada.opt.robot": "I el robot de neteja: si li dius «NETA, descansa», s'atura.",
-      "dlg.trucada.opt.trucada": "Necessito que truquis al bar i facis de dona d'en Puig.",
+      "dlg.trucada.opt.trucada": "Necessito que truquis al bar i facis de dona d'en Tomàs.",
       "dlg.trucada.pany1": "Si és dels de 19,99 €, amb l'aplicació. Necessito la contrasenya d'administrador.",
       "dlg.trucada.pany2": "Que segur que és la mateixa que la de la wifi. Sempre ho és.",
       "dlg.trucada.resum1": "El servidor és a la sala d'escombraries del tercer pis.",
@@ -6785,7 +6785,7 @@
       "obj.clau_casa.look.vet": "La clau de casa. Si la perdo, dormim al replà.",
       "obj.clau_casa.nom": "clau de casa",
       "obj.comandament.amb_article": "el comandament",
-      "obj.comandament.look.vet": "El comandament de la tele. El ceptre d'en Puig.",
+      "obj.comandament.look.vet": "El comandament de la tele. El ceptre d'en Tomàs.",
       "obj.comandament.nom": "comandament",
       "obj.entrepa.amb_article": "l'entrepà",
       "obj.entrepa.look.iri": "L'entrepà de la Vet. No preguntis d'on surt.",
@@ -6799,10 +6799,10 @@
       "obj.pizza.look.vet": "La pizza de demà. Quatre talls d'esperança.",
       "obj.pizza.nom": "pizza",
       "obj.recepta.amb_article": "la recepta de la llimonada",
-      "obj.recepta.look.vet": "La recepta secreta d'en Puig: «1. Obrir el pot. 2. Abocar.»",
+      "obj.recepta.look.vet": "La recepta secreta d'en Tomàs: «1. Obrir el pot. 2. Abocar.»",
       "obj.recepta.nom": "recepta de la llimonada",
       "obj.tap.amb_article": "el tap de la cervesera",
-      "obj.tap.look.vet": "El clauer d'en Puig: un tap de la cervesera. Pesa més que les claus.",
+      "obj.tap.look.vet": "El clauer d'en Tomàs: un tap de la cervesera. Pesa més que les claus.",
       "obj.tap.nom": "tap de la cervesera",
       "obj.ulleres.amb_article": "les ulleres",
       "obj.ulleres.look.vet": "Unes ulleres de pasta. No tenen graduació, però donen autoritat.",
@@ -6814,7 +6814,7 @@
       "pj.marcel.nom": "Marcel",
       "pj.nen.nom": "Nen",
       "pj.ortega.nom": "Ortega",
-      "pj.puig.nom": "Puig",
+      "pj.tomas.nom": "Tomàs",
       "pj.rius.nom": "Rius",
       "pj.soler.nom": "Soler",
       "pj.vet.nom": "Vet",
@@ -6860,7 +6860,7 @@
       "pista.iri_sortir.1": "Ja les tinc. Fora d'aquí.",
       "pista.iri_sortir.2": "La porta de l'oficina.",
       "pista.iri_sortir.3": "Surto per la porta (amb en Soler distret).",
-      "pista.iri_trucar.1": "La Vet vol que truqui al bar i faci de dona d'en Puig. Jo.",
+      "pista.iri_trucar.1": "La Vet vol que truqui al bar i faci de dona d'en Tomàs. Jo.",
       "pista.iri_trucar.2": "Amb una veu sintètica, des de l'ordinador, ho puc fer.",
       "pista.iri_trucar.3": "Faig servir els ordinadors per trucar al bar.",
       "pista.vet_cable.1": "L'Iri vol el cable de la cafetera. Adeu, cafè.",
@@ -6869,9 +6869,9 @@
       "pista.vet_codi.1": "La porta de personal té un codi. Els codis sempre són a prop.",
       "pista.vet_codi.2": "Ara que en Soler no hi és, puc mirar el taulell de facturació.",
       "pista.vet_codi.3": "Miro el taulell: sota hi ha el codi.",
-      "pista.vet_comandament.1": "En Puig no deixa el comandament per res del món. Per res?",
+      "pista.vet_comandament.1": "En Tomàs no deixa el comandament per res del món. Per res?",
       "pista.vet_comandament.2": "Només el deixaria per una trucada de la seva dona. Que no existeix. L'Iri podria fer de dona.",
-      "pista.vet_comandament.3": "Demano el comandament a en Puig, truco a l'Iri perquè truqui al bar, i agafo el comandament de la barra.",
+      "pista.vet_comandament.3": "Demano el comandament a en Tomàs, truco a l'Iri perquè truqui al bar, i agafo el comandament de la barra.",
       "pista.vet_distreure.1": "En Soler vigila la porta de personal. Necessito que la deixi.",
       "pista.vet_distreure.2": "Un guàrdia de cor tendre no deixaria sola una mare desesperada.",
       "pista.vet_distreure.3": "Parlo amb en Soler: he perdut el meu fill.",
@@ -6894,7 +6894,7 @@
       "pista.vet_pizza.2": "La pizza és a la nevera.",
       "pista.vet_pizza.3": "Obro la nevera, agafo la pizza i la passo pel passaplats (obert).",
       "pista.vet_plegar.1": "Ja ho tenim. Hora de plegar.",
-      "pista.vet_plegar.2": "(I potser tornar-li el tap a en Puig.)",
+      "pista.vet_plegar.2": "(I potser tornar-li el tap a en Tomàs.)",
       "pista.vet_plegar.3": "Surto per la porta del bar.",
       "pista.vet_plorar.1": "La porta ha xiulat. En Soler ho ha sentit.",
       "pista.vet_plorar.2": "Cal tapar-ho amb un drama més gran.",
@@ -6911,9 +6911,9 @@
       "pista.vet_resum.1": "L'Iri ha de saber el que m'ha dit en Marcel.",
       "pista.vet_resum.2": "El telèfon de paret.",
       "pista.vet_resum.3": "Truco a l'Iri des del telèfon i li ho explico tot.",
-      "pista.vet_tap.1": "El tap del clauer d'en Puig. El porta penjat al cinturó.",
-      "pista.vet_tap.2": "En Puig es treu el clauer quan fa cafè, perquè li molesta.",
-      "pista.vet_tap.3": "Demano a en Puig un cafè amb llet per a en Marcel i agafo el clauer de la barra.",
+      "pista.vet_tap.1": "El tap del clauer d'en Tomàs. El porta penjat al cinturó.",
+      "pista.vet_tap.2": "En Tomàs es treu el clauer quan fa cafè, perquè li molesta.",
+      "pista.vet_tap.3": "Demano a en Tomàs un cafè amb llet per a en Marcel i agafo el clauer de la barra.",
       "pista.vet_trobat.1": "L'Iri ja és fora. Cal acabar la funció.",
       "pista.vet_trobat.2": "Un nen perdut s'acaba quan es troba.",
       "pista.vet_trobat.3": "Assenyalo el nen de la samarreta vermella: l'he trobat!",
@@ -7007,7 +7007,7 @@
       "sala.bar_rebost.caixes.look": "Caixes de cervesa, tovallons i un cartell de «Prohibit fumar» ple de cremades.",
       "sala.bar_rebost.caixes.nom": "caixes",
       "sala.bar_rebost.calaix.buit": "Buit. Com el pot de les propines a les deu.",
-      "sala.bar_rebost.calaix.look": "El calaix d'en Puig. Hi guarda la recepta secreta de llimonada.",
+      "sala.bar_rebost.calaix.look": "El calaix d'en Tomàs. Hi guarda la recepta secreta de llimonada.",
       "sala.bar_rebost.calaix.nom": "calaix",
       "sala.bar_rebost.calaix.pany1": "Tancat. Un pany amb aplicació: d'aquests que s'obren des del mòbil.",
       "sala.bar_rebost.calaix.pany2": "L'Iri el podria obrir des de casa. Li hauria de trucar.",
@@ -7016,11 +7016,11 @@
       "sala.bar_rebost.nom": "El rebost",
       "sala.bar_rebost.porta.look": "Cap al bar.",
       "sala.bar_rebost.porta.nom": "bar",
-      "sala.bar_sala.altre": "No, això no l'has pres a en Puig. No compta.",
+      "sala.bar_sala.altre": "No, això no l'has pres a en Tomàs. No compta.",
       "sala.bar_sala.comandament": "El comandament! A veure... Ah! El capítol del violí!",
-      "sala.bar_sala.comandament.agafa": "El ceptre d'en Puig. Partit fora.",
+      "sala.bar_sala.comandament.agafa": "El ceptre d'en Tomàs. Partit fora.",
       "sala.bar_sala.comandament.look": "El comandament de la tele. Sense vigilància, per primera vegada en la història.",
-      "sala.bar_sala.comandament2": "En Puig surt del rebost amb el telèfon a la mà.",
+      "sala.bar_sala.comandament2": "En Tomàs surt del rebost amb el telèfon a la mà.",
       "sala.bar_sala.comandament3": "Ja està. Som lliures. Tots dos.",
       "sala.bar_sala.comandament4": "...Qui ha posat aquesta sèrie? Bé, igual. Avui no tinc forces.",
       "sala.bar_sala.comandament_barra.nom": "comandament",
@@ -7031,7 +7031,7 @@
       "sala.bar_sala.fet3": "En Marcel li torna el tap i la recepta.",
       "sala.bar_sala.fet4": "Pregunta.",
       "sala.bar_sala.intro1": "Dilluns, nit. Bar La Propina, a la sortida de l'autopista.",
-      "sala.bar_sala.intro2": "Bona nit, Puig. Bona nit, Marcel. Bona nit, gent que no paga.",
+      "sala.bar_sala.intro2": "Bona nit, Tomàs. Bona nit, Marcel. Bona nit, gent que no paga.",
       "sala.bar_sala.marcel.look": "En Marcel. Vint anys al BCMU, ara un cafè amb llet. Diu que és més feliç.",
       "sala.bar_sala.marcel.nom": "Marcel",
       "sala.bar_sala.nom": "Bar La Propina",
@@ -7044,18 +7044,18 @@
       "sala.bar_sala.porta.tap": "On és el meu tap?",
       "sala.bar_sala.porta.trucar": "Abans he de trucar a l'Iri i explicar-li-ho tot.",
       "sala.bar_sala.porta_rebost.nom": "rebost",
-      "sala.bar_sala.puig.look": "En Puig. Bigoti i ràbia, a parts iguals.",
-      "sala.bar_sala.puig.nom": "Puig",
-      "sala.bar_sala.rebost.look": "El rebost. I el despatx d'en Puig, que és el mateix amb una cadira.",
-      "sala.bar_sala.rebost.puig": "En Puig és a dins, divorciant-se d'una persona que no existeix. Millor no entrar.",
+      "sala.bar_sala.tomas.look": "En Tomàs. Bigoti i ràbia, a parts iguals.",
+      "sala.bar_sala.tomas.nom": "Tomàs",
+      "sala.bar_sala.rebost.look": "El rebost. I el despatx d'en Tomàs, que és el mateix amb una cadira.",
+      "sala.bar_sala.rebost.tomas": "En Tomàs és a dins, divorciant-se d'una persona que no existeix. Millor no entrar.",
       "sala.bar_sala.recepta": "La recepta secreta... «1. Obrir el pot. 2. Abocar.» Vint anys guardant un secret de pot.",
       "sala.bar_sala.retol.contrasenya1": "«El cliente siempre tiene razón (excepto si no paga)».",
       "sala.bar_sala.retol.contrasenya2": "«Exceptosinopaga». Tot junt. És la contrasenya de la wifi. Sempre ho ha estat.",
-      "sala.bar_sala.retol.look": "«El cliente siempre tiene razón (excepto si no paga)». La filosofia d'en Puig. I la de la banca mundial.",
+      "sala.bar_sala.retol.look": "«El cliente siempre tiene razón (excepto si no paga)». La filosofia d'en Tomàs. I la de la banca mundial.",
       "sala.bar_sala.retol.nom": "rètol",
-      "sala.bar_sala.tap": "El tap del clauer d'en Puig! Ni se n'ha adonat, oi?",
+      "sala.bar_sala.tap": "El tap del clauer d'en Tomàs! Ni se n'ha adonat, oi?",
       "sala.bar_sala.tap.agafa": "Al davantal. Ni se n'ha adonat.",
-      "sala.bar_sala.tap.look": "El clauer d'en Puig: un tap de la cervesera. Damunt la barra, sol i desprotegit.",
+      "sala.bar_sala.tap.look": "El clauer d'en Tomàs: un tap de la cervesera. Damunt la barra, sol i desprotegit.",
       "sala.bar_sala.tap1": "...El meu tap? On era?",
       "sala.bar_sala.tap2": "A la barra. Allà on el deixes sempre.",
       "sala.bar_sala.tap3": "...Gràcies? Mai ningú m'havia tornat res.",

@@ -1,6 +1,6 @@
 {
   "frames": {
-    "puig 0.aseprite": {
+    "tomas 0.aseprite": {
       "frame": {
         "x": 0,
         "y": 0,
@@ -21,7 +21,7 @@
       },
       "duration": 100
     },
-    "puig 1.aseprite": {
+    "tomas 1.aseprite": {
       "frame": {
         "x": 49,
         "y": 0,
@@ -42,7 +42,7 @@
       },
       "duration": 100
     },
-    "puig 2.aseprite": {
+    "tomas 2.aseprite": {
       "frame": {
         "x": 98,
         "y": 0,
@@ -63,7 +63,7 @@
       },
       "duration": 100
     },
-    "puig 3.aseprite": {
+    "tomas 3.aseprite": {
       "frame": {
         "x": 147,
         "y": 0,
@@ -84,7 +84,7 @@
       },
       "duration": 100
     },
-    "puig 4.aseprite": {
+    "tomas 4.aseprite": {
       "frame": {
         "x": 196,
         "y": 0,
@@ -105,7 +105,7 @@
       },
       "duration": 100
     },
-    "puig 5.aseprite": {
+    "tomas 5.aseprite": {
       "frame": {
         "x": 245,
         "y": 0,
@@ -126,7 +126,7 @@
       },
       "duration": 100
     },
-    "puig 6.aseprite": {
+    "tomas 6.aseprite": {
       "frame": {
         "x": 294,
         "y": 0,
@@ -147,7 +147,7 @@
       },
       "duration": 100
     },
-    "puig 7.aseprite": {
+    "tomas 7.aseprite": {
       "frame": {
         "x": 343,
         "y": 0,
@@ -168,7 +168,7 @@
       },
       "duration": 100
     },
-    "puig 8.aseprite": {
+    "tomas 8.aseprite": {
       "frame": {
         "x": 392,
         "y": 0,
@@ -193,7 +193,7 @@
   "meta": {
     "app": "https://www.aseprite.org/",
     "version": "provisional (draw_characters.py)",
-    "image": "puig.png",
+    "image": "tomas.png",
     "format": "RGBA8888",
     "size": {
       "w": 441,

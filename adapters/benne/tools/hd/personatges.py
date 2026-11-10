@@ -271,11 +271,13 @@ def hooks(*fns):
 
 
 NPCS = {
-    # en Marcel: gran, calb amb cabells blancs als costats, ulleres, jersei de punt marró i camisa crema
+    # en Marcel: gran, calb amb cabells blancs als costats, ulleres, jersei de punt marró i camisa crema.
+    # Sempre assegut de costat en un tamboret de la barra (el maluc a l'alçada del seient).
     'marcel': {'skin': SKIN_OLD, 'legs': TROUSER, 'top': TRENCH, 'shoes': BOOT, 'brow': (190, 186, 190), 'stoop': 1,
+               'seated': 49,
                'hooks': {'hair': hooks(hair_cap(HAIR_WHITE, bald=True), glasses)}},
-    # en Puig: vermellós, bigoti, camisa blanca i davantal negre
-    'puig': {'skin': SKIN_RUDDY, 'legs': TROUSER, 'top': WHITE, 'shoes': BOOT, 'thin': -1,
+    # en Tomàs: vermellós, bigoti, camisa blanca i davantal negre
+    'tomas': {'skin': SKIN_RUDDY, 'legs': TROUSER, 'top': WHITE, 'shoes': BOOT, 'thin': -1,
              'hooks': {'hair': hooks(hair_cap(HAIR_BROWN, fringe=1.0), moustache), 'over': apron}},
     # l'agent Soler: uniforme blau marí, gorra i placa
     'soler': {'skin': SKIN_PALE, 'legs': NAVY_U, 'top': NAVY_U, 'shoes': GRAY_SHOE,
@@ -290,6 +292,12 @@ NPCS = {
 
 
 def npc(cid, facing, talk=False):
+    if NPCS[cid].get('seated') is not None and facing != 'L':
+        # Assegut no es gira de cara ni d'esquena: mira a la dreta (el perfil, de l'altra banda; els peus a x = 25)
+        side = person(NPCS[cid], 'L', talk=talk)
+        out = Image.new('RGBA', side.size, (0, 0, 0, 0))
+        out.alpha_composite(side.transpose(Image.FLIP_LEFT_RIGHT), (2, 0))
+        return out
     img = person(NPCS[cid], facing, talk=talk)
     if cid == 'nen':
         # un nen de set anys: el mateix dibuix a mida petita, amb els peus al mateix lloc

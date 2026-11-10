@@ -452,7 +452,7 @@ BAR_SALA = {
         'comandament_barra': {'rect': (280, 108, 302, 120), 'walk': (290, 186)},
     },
     'sense_etiqueta': ('tap_barra', 'comandament_barra'),
-    'spawns': {'vet': (226, 196), 'marcel': (140, 190), 'puig': (340, 172)},
+    'spawns': {'vet': (226, 196), 'marcel': (132, 172), 'tomas': (300, 138)},
     'walkable': WALK_STD,
     'bg': bar_bg,
     'props': {'tap_barra': bar_tap, 'comandament_barra': bar_comandament, 'tele_bassols': bar_bassols, 'rebost_tancat': bar_rebost_tancat},
@@ -462,7 +462,7 @@ BAR_SALA = {
 # El rebost (Vet)
 def rebost_bg(c):
     room_base(c, (86, 76, 64), (66, 58, 48), (56, 48, 40))
-    obj(c, 160, 116, 290, 160, (100, 70, 46))                    # escriptori d'en Puig
+    obj(c, 160, 116, 290, 160, (100, 70, 46))                    # escriptori d'en Tomàs
     obj(c, 196, 120, 252, 136, (130, 90, 60))                    # calaix
     c.rect(220, 124, 228, 132, (40, 40, 44))
     c.px(224, 128, (220, 40, 40))                                # el llum vermell del pany
