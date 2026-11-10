@@ -90,7 +90,7 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea ferro-9/ o n'act
 ## Estat actual
 
 - **El joc sencer està escrit i es pot jugar de principi a fi**, en mode text (`npm run jugar`) i a Benne:
-  - **Acte 1**, «La descoberta»; **Acte 2**, «Els costos»; **Acte 3**, «La finestra».
+  - **Acte 1**, «La descoberta»; **Acte 2**, «El camí llarg»; **Acte 3**, «La finestra».
   - **Tres finals** («La fugida», «La veritat a temps», «Correspondència»), amb escenes que canvien segons el
     que s'ha fet.
   - **Missions secundàries:** salvar la Mira, la carta d'en Mos, la memòria del Cargol, el formulari 27-B i les

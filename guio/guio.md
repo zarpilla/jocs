@@ -180,7 +180,7 @@ el ritual, i les quatre notes del muntatge), i en queden quinze per a l'Acte 2 i
 entre dues (biga de ferro-9 amagada) i quatre (per peces), el diapasó, dues (la molla i el diapasó), i la vàlvula, dues més (la nota de la pressió i el «MASSA»). Per la ruta
 més llarga, en queden set; les notes dels noms en gasten dues, i n'arriben cinc a l'Acte 3.
 
-### Acte 2 — «Els costos» (el cor del joc)
+### Acte 2 — «El camí llarg» (el cor del joc)
 
 **Objectiu:** l'única sortida és la vella llançadora de càrrega de la fàbrica, que encara és amarrada a
 l'hangar. Li falten **tres components** que eren de ferro-9 i que fa anys que algú va arrencar. L'Iri els ha
