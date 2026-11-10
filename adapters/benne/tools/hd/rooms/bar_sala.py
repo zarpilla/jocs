@@ -135,7 +135,7 @@ def sign(cv):
     for (x, y) in ((x0 + 5, y0 + 4), (x1 - 5, y0 + 2)):
         cv.disc(x, y, 1.3, 1.3, STEELB, 4.0)
     ink = [(40, 6, 8), (90, 14, 16), (140, 24, 24), (180, 40, 34)]
-    l1, l2 = 'EL CLIENTE SIEMPRE TIENE RAZON', '(EXCEPTO SI NO PAGA)'
+    l1, l2 = 'EL CLIENTE SIEMPRE TIENE RAZÓN', '(EXCEPTO SI NO PAGA)'
     text(cv, l1, (x0 + x1 - text_width(l1)) // 2, y0 + 6, ink, 2.6)
     text(cv, l2, (x0 + x1 - text_width(l2)) // 2 + 6, y0 + 15, ink, 2.0)
     cv.line(x1 - 46, y0 + 21, x1 - 12, y0 + 21, ink, 2.4)                # subratllat amb ràbia
@@ -441,8 +441,8 @@ def tele_bassols(cv):
     cv.flat(367, 51, (20, 20, 20))
     cv.rect(366, 56, 372, 56, [(250, 250, 250)], 0, lit=0)             # una cigarreta (és de 1987)
     # el rètol del capítol
-    cv.rect(sx0, sy1 - 7, sx1, sy1, SLATE, 1.2, lit=0)
-    text(cv, 'EL VIOLI MUT', sx0 + 4, sy1 - 6, TVB, 0, lit=0, flat=(240, 220, 120))
+    cv.rect(sx0, sy1 - 10, sx1, sy1, SLATE, 1.2, lit=0)
+    text(cv, 'EL VIOLÍ MUT', sx0 + 4, sy1 - 6, TVB, 0, lit=0, flat=(240, 220, 120))
 
 
 def rebost_tancat(cv):

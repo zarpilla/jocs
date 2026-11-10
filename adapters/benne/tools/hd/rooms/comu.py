@@ -84,7 +84,8 @@ def _diff(frame, base):
 
 
 # ─── Text petit (rètols, cartells, pantalles) ──────────────────────────────
-# Lletres de 5 píxels d'alt (la majoria de 3 d'ample). Només majúscules, xifres i quatre signes.
+# Lletres de 5 píxels d'alt (la majoria de 3 d'ample): majúscules (també accentuades: l'accent ocupa 3 files
+# més amunt), xifres i quatre signes.
 GLYPHS = {
     'A': ['010', '101', '111', '101', '101'], 'B': ['110', '101', '110', '101', '110'], 'C': ['011', '100', '100', '100', '011'],
     'D': ['110', '101', '101', '101', '110'], 'E': ['111', '100', '110', '100', '111'], 'F': ['111', '100', '110', '100', '100'],
@@ -101,12 +102,32 @@ GLYPHS = {
     '9': ['010', '101', '011', '001', '110'], '(': ['01', '10', '10', '10', '01'], ')': ['10', '01', '01', '01', '10'],
     '-': ['000', '000', '111', '000', '000'], '.': ['0', '0', '0', '0', '1'], ',': ['00', '00', '00', '01', '10'],
     ':': ['0', '1', '0', '1', '0'], '!': ['1', '1', '1', '0', '1'], '€': ['011', '100', '111', '100', '011'], "'": ['1', '1', '0', '0', '0'],
-    '/': ['001', '001', '010', '100', '100'], ' ': ['00', '00', '00', '00', '00'],
+    '/': ['001', '001', '010', '100', '100'], ' ': ['00', '00', '00', '00', '00'], '·': ['0', '0', '1', '0', '0'],
 }
+
+# Majúscules accentuades: la lletra de base i, a sobre (deixant una fila buida), l'accent de dues files.
+# La ce trencada porta la cua a sota.
+MARKS = {'´': ['001', '010'], '`': ['100', '010'], '¨': ['101', '000'], '~': ['011', '110']}
+ACCENTED = {'À': ('A', '`'), 'È': ('E', '`'), 'É': ('E', '´'), 'Í': ('I', '´'), 'Ï': ('I', '¨'), 'Ò': ('O', '`'),
+            'Ó': ('O', '´'), 'Ú': ('U', '´'), 'Ü': ('U', '¨'), 'Ñ': ('N', '~'), 'Á': ('A', '´')}
+CEDILLA = ['010', '110']
+
+
+def _glyph(ch):
+    """→ (files, fila de dalt): les lletres accentuades comencen 3 files més amunt."""
+    if ch in ACCENTED:
+        base, mark = ACCENTED[ch]
+        g = GLYPHS[base]
+        w = len(g[0])
+        m = [row.rjust(w - (w - 3) // 2, '0').ljust(w, '0') for row in MARKS[mark]]
+        return m + ['0' * w] + g, -3
+    if ch == 'Ç':
+        return GLYPHS['C'] + CEDILLA, 0
+    return GLYPHS.get(ch, GLYPHS[' ']), 0
 
 
 def text_width(s):
-    return sum(len(GLYPHS.get(ch, GLYPHS[' '])[0]) + 1 for ch in s) - 1
+    return sum(len(_glyph(ch)[0][0]) + 1 for ch in s) - 1
 
 
 def text(cv, s, x, y, ramp, lvl, lit=1.0, mirror=False, flat=None):
@@ -114,8 +135,8 @@ def text(cv, s, x, y, ramp, lvl, lit=1.0, mirror=False, flat=None):
     w = text_width(s)
     cx = x
     for ch in s:
-        g = GLYPHS.get(ch, GLYPHS[' '])
-        for j, row in enumerate(g):
+        g, top = _glyph(ch)
+        for j, row in enumerate(g, start=top):
             for i, bit in enumerate(row):
                 if bit == '1':
                     px = cx + i

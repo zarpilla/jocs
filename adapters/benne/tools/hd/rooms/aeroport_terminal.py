@@ -191,9 +191,9 @@ def departures(cv):
     cv.vline(60, 7, y0, STEELB, 2.4)
     cv.vline(122, 7, y0, STEELB, 2.4)
     obox(cv, x0, y0, x1, y1, BOARD, 1.4)
-    rows = (('GINEBRA', 'BCMU-07', '06:10'), ('PARIS', 'VY 8000', '06:45'), ('PALMA', 'IB 1234', '07:05'))
+    rows = (('GINEBRA', 'BCMU-07', '06:10'), ('PARÍS', 'VY 8000', '06:45'), ('PALMA', 'IB 1234', '07:05'))
     for j, (dest, fl, hh) in enumerate(rows):
-        yy = y0 + 3 + j * 8
+        yy = y0 + 3 + j * 9
         col = (250, 190, 50) if j else (255, 220, 120)
         text(cv, dest, x0 + 3, yy, AMBER, 0, lit=0, flat=col)
         text(cv, fl, x0 + 44, yy, AMBER, 0, lit=0, flat=col)
@@ -224,8 +224,8 @@ def checkin(cv):
         cv.rect(mx + 2, 86, mx + 20, 97, BLUE, 2.0, lit=0)
         cv.rect(mx + 10, 100, mx + 12, top, PLASTIC, 2.4)
     obox(cv, 66, 46, 118, 58, BLUE, 3.0)
-    w = text_width('FACTURACIO')
-    text(cv, 'FACTURACIO', 92 - w // 2, 50, [(240, 244, 250)], 0, flat=(240, 244, 250))
+    w = text_width('FACTURACIÓ')
+    text(cv, 'FACTURACIÓ', 92 - w // 2, 50, [(240, 244, 250)], 0, flat=(240, 244, 250))
     cv.vline(80, 39, 46, STEELB, 2.4)
     cv.vline(104, 39, 46, STEELB, 2.4)
     # el taulell
@@ -321,7 +321,7 @@ def cafe(cv):
     obox(cv, x0, y0, x1, y1, VEND, 2.6)
     cv.rect(x0 + 3, y0 + 4, x1 - 3, y0 + 30, [(60, 30, 20), (140, 80, 40), (220, 150, 80), (250, 210, 150)], lambda x, y: 1.4 + (y - y0) / 14, lit=0)
     cv.disc(460, y0 + 17, 7, 7, [(30, 14, 8), (80, 40, 20), (160, 100, 50), (240, 200, 140)], lambda nx, ny: 2.6 - ny, lit=0)   # la tassa
-    text(cv, 'CAFE', x0 + 9, y0 + 36, [(250, 240, 220)], 0, lit=0, flat=(250, 240, 220))
+    text(cv, 'CAFÈ', x0 + 9, y0 + 36, [(250, 240, 220)], 0, lit=0, flat=(250, 240, 220))
     for j in range(3):
         for i in range(3):
             cv.rect(x0 + 6 + i * 7, y0 + 46 + j * 6, x0 + 10 + i * 7, y0 + 49 + j * 6, CHROME, 3.6)
