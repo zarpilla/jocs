@@ -182,7 +182,7 @@
       "id": "resume",
       "x": 0,
       "y": 0,
-      "width": 139,
+      "width": 68,
       "height": 20,
       "backgroundAnchor": "top-left",
       "text": "Continua",
@@ -197,11 +197,41 @@
         "gridControlId": "menu-layout",
         "row": 1,
         "col": 0,
-        "align": "center"
+        "align": "center-left"
       },
       "backgroundColor": "#1a466b",
       "backgroundColorStates": {
         "hover": "#10908e",
+        "pressed": "#10908e",
+        "disabled": "#636363"
+      }
+    },
+    {
+      "type": "button",
+      "id": "historial",
+      "x": 0,
+      "y": 0,
+      "width": 68,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "text": "Historial",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -1,
+      "backgroundTag": "",
+      "zIndex": 5,
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 1,
+        "col": 0,
+        "align": "center-right"
+      },
+      "backgroundColor": "#132243",
+      "backgroundColorStates": {
+        "hover": "#1a466b",
         "pressed": "#10908e",
         "disabled": "#636363"
       }

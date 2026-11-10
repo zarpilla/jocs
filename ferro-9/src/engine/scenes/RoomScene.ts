@@ -109,6 +109,7 @@ import {
   getGameSettings,
   getPerspectiveSettings,
   getSpeechSettings,
+  getSpeechSettingsFromConfig,
 } from '../ConfigManager';
 import {
   applyGameCursorSpriteHotspot,
@@ -173,7 +174,7 @@ import type { Point2, RoomData, RoomHotspotData, RoomPropInstance, WalkablePolyg
 import type { GuiButtonControl, GuiData, GuiGridControl } from '../../types/gui';
 import type { RoomCharacterSpawn, RoomPropSpawn, RoomSceneStartData } from './BootScene';
 import { attachRoomHandlers } from '../bennescript/roomHandlers.js';
-import { notifyGuiBuilt } from '../bennescript/guis.js';
+import { notifyGuiBuilt, notifyGuiVisibility } from '../bennescript/guis.js';
 import { runOnUpdateHandlers } from '../bennescript/onUpdateRegistry.js';
 import {
   buildGuiOverlay,
@@ -232,6 +233,7 @@ import {
   BENNE_SCREEN_FADE_OVERLAY_DEPTH,
   DISPLAY_TEXT_OVERLAY_DEPTH,
   SPEAKING_TEXT_OVERLAY_DEPTH,
+  PAUSE_GUI_OVERLAY_DEPTH,
 } from './roomScreenFadeConstants';
 import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
 import { benneVideoCacheKey } from '../video/benneVideoCacheKeys.js';
@@ -685,6 +687,10 @@ export class RoomScene extends Phaser.Scene {
    * before the room's own `pointerdown` handler sees the same click.
    */
   private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
+  /** Shown GUIs with `pauseGame`: while any is, the room's timers and tweens are paused. */
+  private readonly pausingGuiIds = new Set<string>();
+  /** `time.now` when the click-to-skip hook was armed: clicks before `speech.clickProtectMs` are swallowed. */
+  private scriptedDialogClickToSkipArmedAt = 0;
 
   /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
   private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
@@ -706,6 +712,16 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
     if (event.key !== 'Escape') {
+      return;
+    }
+    // Esc closes a pausing GUI (a line history) instead of skipping the cutscene underneath.
+    if (this.pausingGuiIds.size > 0) {
+      event.preventDefault();
+      event.stopPropagation();
+      for (const id of [...this.pausingGuiIds]) {
+        this.guiOverlayHandleByGuiId.get(id)?.setVisible(false);
+        notifyGuiVisibility(id, false);
+      }
       return;
     }
     // A skippable cutscene wins over the video handler: skipping fast-forwards the whole cutscene,
@@ -875,7 +891,14 @@ export class RoomScene extends Phaser.Scene {
       const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
 
       const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
-      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : isDisplayText ? DISPLAY_TEXT_OVERLAY_DEPTH : stackDepth;
+      const pausesGame = isGenericHud && gui.modal === true && gui.pauseGame === true;
+      const guiDepth = isSpeakingText
+        ? SPEAKING_TEXT_OVERLAY_DEPTH
+        : isDisplayText
+          ? DISPLAY_TEXT_OVERLAY_DEPTH
+          : pausesGame
+            ? PAUSE_GUI_OVERLAY_DEPTH + stackIndex
+            : stackDepth;
       const guiStartVisible =
         isSpeakingText || isDisplayText || isChoiceDialog
           ? false
@@ -889,7 +912,7 @@ export class RoomScene extends Phaser.Scene {
         this.makeGuiOverlayBuildOptions(guiDepth, {
           startVisible: guiStartVisible,
           inventoryPanelPointerContext,
-          isButtonClickSuppressed,
+          isButtonClickSuppressed: pausesGame ? () => this.isUserInputDisabled() : isButtonClickSuppressed,
           previewGuiAsepriteSheetJson: data.previewGuiAsepriteSheetJsonById?.[gui.id],
         }),
       );
@@ -899,6 +922,9 @@ export class RoomScene extends Phaser.Scene {
       }
 
       this.registerModalGuiOverlay(gui, guiDepth, built.handle, guiStartVisible);
+      if (pausesGame) {
+        this.registerPauseGuiOverlay(gui.id, built.handle, guiStartVisible);
+      }
       this.guiOverlayHandleByGuiId.set(gui.id, built.handle);
 
       // Every GUI gets a runtime, so `guis.x.controls.y` handles can reach its controls.
@@ -1007,6 +1033,8 @@ export class RoomScene extends Phaser.Scene {
       this.dialogChoiceInputSuppressionActive = false;
       this.scriptedDialogInputSuppressionDepth = 0;
       this.scriptedDialogClickToSkip = null;
+      this.pausingGuiIds.clear();
+      this.applyGuiPause();
       this.scale.off('resize', this.onScaleResize, this);
       this.input.off('pointerdown', this.handleRoomPointerDown);
       this.input.off('pointermove', this.onRoomPointerMove);
@@ -2315,6 +2343,37 @@ export class RoomScene extends Phaser.Scene {
     this.modalGuiEntries.push({ depth, isVisible: () => overlayVisible });
   }
 
+  /** Pauses the room while a `pauseGame` GUI is visible (see {@link GuiData.pauseGame}). */
+  private registerPauseGuiOverlay(guiId: string, handle: GuiOverlayHandle, startVisible: boolean): void {
+    const setVisible = handle.setVisible.bind(handle);
+    handle.setVisible = (visible: boolean) => {
+      setVisible(visible);
+      if (visible) {
+        this.pausingGuiIds.add(guiId);
+      } else {
+        this.pausingGuiIds.delete(guiId);
+      }
+      this.applyGuiPause();
+    };
+    if (startVisible) {
+      this.pausingGuiIds.add(guiId);
+      this.applyGuiPause();
+    }
+  }
+
+  private applyGuiPause(): void {
+    const paused = this.pausingGuiIds.size > 0;
+    if (this.time.paused === paused) {
+      return;
+    }
+    this.time.paused = paused;
+    if (paused) {
+      this.tweens.pauseAll();
+    } else {
+      this.tweens.resumeAll();
+    }
+  }
+
   /**
    * While a skippable scripted dialog line is showing, left-clicks invoke **`fn`** once (same cleanup as the timer).
    * Cleared when the line ends or when {@link clearScriptedDialogClickToSkip} runs.
@@ -2323,6 +2382,7 @@ export class RoomScene extends Phaser.Scene {
     this.scriptedDialogClickToSkip = fn;
     const pointer = this.input?.activePointer;
     this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
+    this.scriptedDialogClickToSkipArmedAt = this.time?.now ?? 0;
   }
 
   clearScriptedDialogClickToSkip(): void {
@@ -2346,8 +2406,18 @@ export class RoomScene extends Phaser.Scene {
     if (!pointer.leftButtonDown()) {
       return false;
     }
+    // Paused under a line history: the click is for its buttons, not for the line.
+    if (this.pausingGuiIds.size > 0) {
+      return false;
+    }
     if (this.scriptedDialogClickToSkipArmedDuringDown != null && pointer.downTime === this.scriptedDialogClickToSkipArmedDuringDown) {
       return false;
+    }
+    // Protected click: the line has only just appeared. Swallow the click so it skips nothing
+    // and reaches nothing else either.
+    const protectMs = getSpeechSettingsFromConfig().clickProtectMs ?? 0;
+    if (protectMs > 0 && this.time.now - this.scriptedDialogClickToSkipArmedAt < protectMs) {
+      return true;
     }
     const fn = this.scriptedDialogClickToSkip;
     this.scriptedDialogClickToSkip = null;

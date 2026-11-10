@@ -169,6 +169,7 @@ function mergeSpeechSettings(data: GameSettings): GameSettingsSpeech {
     msPerCharacter: s.msPerCharacter ?? SPEECH_DEFAULTS.msPerCharacter,
     maxDurationMs: s.maxDurationMs ?? SPEECH_DEFAULTS.maxDurationMs,
     durationMultiplier: s.durationMultiplier ?? SPEECH_DEFAULTS.durationMultiplier,
+    clickProtectMs: s.clickProtectMs ?? 0,
   };
 }
 
@@ -218,6 +219,9 @@ function assertSpeechSettings(data: GameSettings): void {
     if (v !== undefined && !Number.isFinite(v)) {
       throw new Error(`game-config speech.${key} must be a finite number when present`);
     }
+  }
+  if (s.clickProtectMs !== undefined && !(Number.isFinite(s.clickProtectMs) && s.clickProtectMs >= 0)) {
+    throw new Error('game-config speech.clickProtectMs must be a number >= 0 when present');
   }
   const merged = mergeSpeechSettings(data);
   if (merged.minDurationMs < 0 || merged.maxDurationMs < 0 || merged.msPerCharacter < 0 || merged.durationMultiplier <= 0) {

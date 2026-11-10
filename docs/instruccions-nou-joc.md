@@ -274,6 +274,9 @@ Regles per al joc nou:
   en veu alta, i el test que comprova que a cada pas n'hi ha alguna.
 - **Missions secundàries que canvien el final**.
 - **El mode text i els tests de partida sencera**: van trobar la majoria d'errors abans d'obrir el navegador.
+- **No perdre línies sense llegir.** Hi ha dues mesures:
+  - **Historial:** el botó «Historial» del menú i la tecla H obren les últimes línies dites, amb qui les ha dit. Mentre és obert, el joc s'atura, i en tancar-lo (amb «Torna», H o Esc) la línia continua on era. Ho fan l'opció `pauseGame` de les GUI (al motor) i la GUI `historial`, que crea el pont.
+  - **Clic protegit:** durant el primer mig segon de cada línia, els clics no la salten, perquè un doble clic no se'n mengi una. És `speech.clickProtectMs` a `game-config.json`.
 
 ---
 

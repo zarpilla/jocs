@@ -121,6 +121,7 @@ export function adoptLoadedState() {
   console.info('[Ferro-9] Estat narratiu adoptat de la partida', describeState(saved));
   persisted = json;
   narrative.load(saved);
+  historial.length = 0;
 }
 
 /** Resum curt d'un estat narratiu per als missatges de la consola. */
@@ -341,4 +342,35 @@ export function applyLocalizedNames() {
 export function setLanguage(locale: string) {
   narrative.setLocale(locale);
   applyLocalizedNames();
+}
+
+// ─── Historial: les últimes línies dites, per tornar a llegir les que han passat massa de pressa ──
+
+const HISTORIAL_MAX = 80;
+const historial: { who: string | null; text: string }[] = [];
+
+/** Apunta una línia a l'historial (els títols no). `who`: un personatge, `player` o `narrator`. */
+export function recordLine(who: string, text: string) {
+  if (who === 'title') return;
+  const id = who === 'player' ? narrative.world.activeProtagonist() : who;
+  historial.push({ who: who === 'narrator' ? null : narrative.characterName(id), text });
+  if (historial.length > HISTORIAL_MAX) historial.shift();
+}
+
+/**
+ * Les últimes línies de l'historial que caben en `rows` files de `perRow` caràcters, la més nova
+ * a baix. Si no n'hi ha cap, `empty`.
+ */
+export function historyText(empty: string, rows: number, perRow: number) {
+  const out: string[] = [];
+  let used = 0;
+  for (let i = historial.length - 1; i >= 0; i--) {
+    const { who, text } = historial[i]!;
+    const line = who ? `${who}: ${text}` : text;
+    const n = Math.ceil(line.length / perRow);
+    if (used + n > rows && out.length) break;
+    out.unshift(line);
+    used += n;
+  }
+  return out.length ? out.join('\n') : empty;
 }

@@ -21,3 +21,9 @@ export const SPEAKING_TEXT_OVERLAY_DEPTH = 460_000;
  * title or an ending can be shown over black (`fadeOut()` then `display()`).
  */
 export const DISPLAY_TEXT_OVERLAY_DEPTH = 455_000;
+
+/**
+ * A GUI with `pauseGame` (e.g. a line history) draws above the speech and display text it pauses,
+ * and above the screen fade, so it can be opened during a title over black.
+ */
+export const PAUSE_GUI_OVERLAY_DEPTH = 470_000;

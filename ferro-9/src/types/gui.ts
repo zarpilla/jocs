@@ -621,6 +621,12 @@ export interface GuiData {
    */
   modal?: boolean;
   /**
+   * When **`true`** (with **`modal`**), the room is paused while this GUI is shown: timers (speech lines,
+   * waits), tweens and walks stop where they are and resume when it hides. Drawn above speech and
+   * Display Text; its buttons work during cutscenes, and Esc hides it. For a line history or similar.
+   */
+  pauseGame?: boolean;
+  /**
    * Stack order among GUI overlays (lower = behind). Omitted = **0**.
    * Distinct from per-control **`zIndex`** in **`controls[]`**, which only layers widgets inside this GUI.
    */

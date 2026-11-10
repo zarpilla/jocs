@@ -11,7 +11,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, recordLine,
   protagonistMusic, rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
@@ -20,6 +20,7 @@ export function playLines(lines: ResolvedLine[]) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
     if (line.sound) new SfxHandle(line.sound).play()
+    recordLine(line.who, line.text)
     if (line.who === 'title') {
       // Pantalla de títol: les línies `title` seguides es mostren juntes sobre negre.
       const first = i === 0 || lines[i - 1]!.who !== 'title'
@@ -228,6 +229,7 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
 export function sayHint() {
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.t('ui.pista.cap')
+  recordLine('player', text)
   player.say(text)
 }
 
@@ -241,6 +243,7 @@ export function switchProtagonist() {
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
 function displayEndingLine(line: { who: string; text: string }) {
+  recordLine(line.who, line.text)
   if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') display(line.text)
   else display(`${narrative.characterName(line.who)}: ${line.text}`)
 }

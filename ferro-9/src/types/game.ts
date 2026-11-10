@@ -109,6 +109,12 @@ export interface GameSettingsSpeech {
   msPerCharacter: number;
   maxDurationMs: number;
   durationMultiplier: number;
+  /**
+   * Milliseconds after a click-to-skip line (speech, Display Text, `waitForClick`) appears during which
+   * left-clicks are swallowed instead of skipping it, so a double click or one click too many does not
+   * eat the next line unread. 0 or omitted = no protection.
+   */
+  clickProtectMs?: number;
 }
 
 /**

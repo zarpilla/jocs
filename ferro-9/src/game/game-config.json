@@ -84,7 +84,8 @@
     "minDurationMs": 800,
     "msPerCharacter": 80,
     "maxDurationMs": 4500,
-    "durationMultiplier": 1
+    "durationMultiplier": 1,
+    "clickProtectMs": 500
   },
   "dialog": {
     "choiceOptionsViewportHeightPx": 63,

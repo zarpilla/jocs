@@ -1,5 +1,5 @@
 import { guis } from '@game';
-import { gui, load, resume, save, settingsBtn, canviar, pista } from './game-menu.ids';
+import { gui, load, resume, save, settingsBtn, canviar, pista, historial } from './game-menu.ids';
 import { sayHint, switchProtagonist } from '../../narrative/narrative.script';
 
 resume.onClick(() => gui.hide())
@@ -28,4 +28,10 @@ canviar.onClick(() => {
 pista.onClick(() => {
   gui.hide()
   sayHint()
+})
+
+// Afegit per adapters/benne (benne-content.ts): l'historial de línies.
+historial.onClick(() => {
+  gui.hide()
+  guis.historial.show()
 })
