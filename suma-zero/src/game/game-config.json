@@ -80,9 +80,9 @@
       "x": 0,
       "y": 0
     },
-    "minDurationMs": 800,
-    "msPerCharacter": 80,
-    "maxDurationMs": 4500,
+    "minDurationMs": 1500,
+    "msPerCharacter": 75,
+    "maxDurationMs": 14000,
     "durationMultiplier": 1
   },
   "dialog": {

@@ -92,6 +92,9 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   // Els inventaris inicials els reparteix el nucli (game.json → start).
   config.initialGameState = { flags: {}, variables: {}, inventory: [] };
   config.defaultFallbackLine = t('ui.defecte', String(config.defaultFallbackLine ?? ''));
+  // Temps de lectura: Benne talla les línies a 4,5 s, i les llargues (en Marcel) no es poden llegir.
+  // Amb un clic se salten, de manera que val més que es quedin prou estona.
+  config.speech = { ...(config.speech as Json), clickToSkip: true, minDurationMs: 1500, msPerCharacter: 75, maxDurationMs: 14000 };
   // «Walk to» de la línia de verbs (pegat del motor: walkToLabel).
   config.walkToLabel = t('ui.verb.walkTo', String(config.walkToLabel ?? 'Walk to'));
   for (const verb of (config.verbs as Json[]) ?? []) {
