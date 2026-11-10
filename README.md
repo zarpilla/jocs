@@ -84,16 +84,19 @@ caricatura**, amb la calidesa lila de la A. Captura al joc: [guio/art/sala-mostr
 
 On és cada cosa (a `adapters/benne/tools/`):
 
-- `hd/personatges.py`: l'Iri i en Diu; `draw_characters.py` en genera els fulls (el sync els copia).
-- `hd/rooms/pis_estudi.py`: el dibuix de la sala; `hd/rooms/comu.py`: eines i rampes comunes;
+- `hd/personatges.py`: l'Iri, la Vet (amb la roba de cada escena), en Diu i els secundaris;
+  `draw_characters.py` en genera els fulls (el sync els copia).
+- `hd/rooms/<sala>.py`: el dibuix de cada sala; `hd/rooms/comu.py`: eines i rampes comunes;
   `room_designs.py`: la geometria (on es clica, on es camina).
+- `hd/items.py`: les icones de l'inventari; `hd/gui.py`: la interfície (barra de verbs, opcions de diàleg i
+  menús), una consola d'hacker on els verbs i els botons són tecles.
 - `python3 hd/render.py <sala> <carpeta>`: previsualitzacions ampliades, amb una de depuració (zones, terra
   i personatges a escala).
 - `hd/caricatura/`: la proposta A (caricatura, 64 px i cap gran), guardada per a un joc per a públic infantil.
   No la fa servir el sync.
 
-Les altres sales tindran art provisional amb la geometria definitiva fins que el guió de cada acte estigui
-tancat i jugat. La barra de verbs i els menús encara són els de la plantilla (ampliats): falten.
+Cada acte comença amb art provisional (caixes amb la geometria definitiva) i passa a l'art definitiu sala
+per sala quan el guió de l'acte està tancat i jugat. L'Acte 1 ja és tot definitiu.
 
 ## Ordres
 
@@ -129,9 +132,13 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   `onAfterAction` (una regla després de cada acció) i l'esdeveniment `situar` (moure l'altra protagonista).
 - **Tests:** l'Acte 1 per tots els camins (els tres sacrificis per a en Diu, amb i sense entrepà, tap i
   preparació, el codi dolent, els reinicis de la sincronia), amb una pista a cada pas, i proves de coherència.
-- **Art:** la sala de mostra (l'estudi de l'Iri) és definitiva; les altres sales de l'Acte 1 són provisionals,
-  amb la geometria definitiva, el nom de cada cosa i un fotograma per a cada estat. L'Iri, la Vet, en Diu i els
-  secundaris tenen sprite (els secundaris, provisionals). Els sons són provisionals (`npm run sons`); la barra
-  de verbs i els menús són els de la plantilla; la majoria d'icones encara són etiquetes.
+- **Art de l'Acte 1, definitiu:** totes les sales (el pis, el bar, l'aeroport) i les cinemàtiques (la portada,
+  el pròleg a Ginebra, l'avió), amb un fotograma per a cada estat; l'Iri, la Vet (cinc conjunts i les ulleres),
+  en Diu i els secundaris; les icones de tots els objectes; i la interfície pròpia (la consola d'hacker: verbs,
+  menús, desa, carrega i opcions). Font de píxels pròpia, amb accents.
+- **So:** efectes sintetitzats (`npm run sons`) i música d'ambient per lloc (`npm run musica`): el tema de la
+  portada, el pis, el bar i l'aeroport, el mateix tema amb instruments diferents que s'encadena al mateix punt
+  en canviar de sala.
 - **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botons «Pista» i «Historial»; la tecla H també obre l'historial).
-- **Següent pas:** les impressions de la primera partida a l'Acte 1. Després, l'Acte 2.
+- **Següent pas:** l'Acte 2 («La seu del mal»): primer la lògica, els textos i els tests de tots els camins, amb
+  art provisional; després, l'art definitiu sala per sala.
