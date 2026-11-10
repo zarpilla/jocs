@@ -3,17 +3,17 @@ Proposta B: l'estudi de l'Iri **sense caricatura**, amb to urbà de hacker i d'e
 
 La mateixa habitació i la mateixa disposició que la proposta A (hd/rooms/pis_estudi.py), però:
   - **escala real** dels mobles, per a personatges de ≈83 px (escriptori a l'altura del maluc);
-  - **paleta freda i apagada**: maó pintat de gris blavós, negres, i la llum ve de les pantalles (cian) i
-    del neó del carrer (magenta), que entra per les **persianes** i pinta franges a la paret;
+  - **maó pintat de lila**, negres, i la llum ve de les pantalles (cian) i del neó del carrer (magenta),
+    que entra per les **persianes** i pinta franges a la paret; el pòster del gat i el 404 de la proposta A;
   - pluja al vidre, i contorns només on cal (com a Ferro-9).
 """
 import math
 
 from hd.pix import Light, Canvas, W, H, hr
-from hd.rooms.pis_estudi import (obox, outline, cable, _diff, PLASTIC, SCREEN, SKY, CITY, NEON, SHEET, GRAYC, YEL, CARD)
+from hd.rooms.pis_estudi import (poster, obox, outline, cable, _diff, PLASTIC, SCREEN, SKY, CITY, NEON, SHEET, GRAYC, YEL, CARD)
 
-BRICK = [(10, 12, 18), (16, 20, 28), (24, 28, 38), (32, 38, 50), (42, 50, 64), (54, 64, 80), (70, 82, 98), (90, 104, 120)]
-MORTAR = [(8, 10, 14), (14, 16, 22), (20, 24, 30), (28, 32, 40), (38, 42, 50)]
+BRICK = [(16, 10, 24), (24, 16, 36), (34, 24, 50), (46, 32, 64), (60, 44, 80), (76, 58, 96), (96, 76, 114), (120, 98, 134)]
+MORTAR = [(10, 6, 16), (16, 10, 24), (24, 16, 34), (34, 24, 46), (46, 34, 58)]
 FLOORB = [(8, 8, 12), (14, 14, 20), (22, 22, 30), (32, 30, 40), (44, 42, 52), (58, 56, 66), (76, 72, 82)]
 DESKB = [(6, 6, 10), (12, 12, 18), (20, 20, 28), (30, 30, 40), (42, 42, 54), (58, 58, 72), (78, 78, 92)]
 STEELB = [(10, 12, 16), (20, 24, 30), (34, 38, 46), (50, 56, 66), (70, 78, 90), (96, 104, 116), (130, 138, 150)]
@@ -240,7 +240,7 @@ def bg(cv):
     wall(cv)
     floor(cv)
     window(cv)
-    wall_map(cv)
+    poster(cv)
     neon_stripes(cv)
     mattress(cv)
     pizza_stack(cv)
