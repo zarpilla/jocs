@@ -54,6 +54,7 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 | Final | `{ "ending": "fugida" }` |
 | Esdeveniment per al motor | `{ "event": "obrir_porta", "args": { "porta": "taverna" } }` |
 | Canviar de protagonista | `{ "event": "protagonista", "args": { "id": "vet" } }` |
+| Moure l'altra protagonista | `{ "event": "situar", "args": { "who": "iri", "room": "aeroport_personal" } }` (hi és quan s'hi canviï; no serveix per a la protagonista activa, que va amb `goTo`) |
 
 ## Joc i protagonistes: `data/game.json`
 

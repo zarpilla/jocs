@@ -147,6 +147,10 @@ narrative.on((e) => {
     case 'custom':
       if (e.name === SWITCH_EVENT) pendingSwitch = String(e.args.id);
       if (e.name === ENDING_EVENT) pendingEnding = true;
+      // `situar`: l'altra protagonista passa a ser en una altra sala (s'hi anirà en canviar-hi).
+      if (e.name === 'situar' && String(e.args.who) !== narrative.world.activeProtagonist()) {
+        rememberProtagonistRoom(String(e.args.who), String(e.args.room));
+      }
       events.emit(`narrative:${e.name}`, e.args);
       break;
     default:

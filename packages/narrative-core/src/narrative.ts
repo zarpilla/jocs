@@ -57,6 +57,21 @@ export interface ActionResult {
 
 export type GameAction = (ctx: ActionContext) => ActionResult | void;
 
+/**
+ * Què acaba de fer el jugador, per a les regles que han de reaccionar a **cada** acció (p. ex. una
+ * sincronia per torns, on cada acció gasta un torn): una interacció que ha encaixat, o una opció de diàleg.
+ */
+export type PlayerAction =
+  | { kind: 'interaction'; room: Id | null; verb: Id; target: InteractionTarget; item?: Id }
+  | { kind: 'choice'; room: Id | null; dialogue: Id; choice: Id };
+
+/** El que torna una regla d'«acció feta»: línies per afegir i, en un diàleg, si cal tancar-lo. */
+export interface AfterActionResult extends ActionResult {
+  endDialogue?: boolean;
+}
+
+export type AfterActionHook = (action: PlayerAction, narrative: Narrative) => AfterActionResult | void;
+
 export interface NarrativeOptions {
   content: GameContent;
   locales: Record<string, LocaleTable>;
@@ -106,6 +121,7 @@ export class Narrative {
   private listeners = new Set<NarrativeListener>();
   private sessions = new DialogueSessions();
   private actions = new Map<string, GameAction>();
+  private afterHooks: AfterActionHook[] = [];
   /** Dins un lot d'efectes: es retarda `stateChanged` fins al final. */
   private batchDepth = 0;
 
@@ -252,12 +268,22 @@ export class Narrative {
         : [{ who: 'player', key: choice.text, text: this.t(choice.text) }];
       applyEffects(choice.effects, this.effectCtx());
 
+      let step: DialogueStep;
       if (choice.next) {
-        const step = this.enterNode(def, choice.next, lines);
-        return choice.end ? this.endStep(def.id, step.node, step.lines) : step;
+        step = this.enterNode(def, choice.next, lines);
+        if (choice.end) step = this.endStep(def.id, step.node, step.lines);
+      } else if (choice.end) {
+        step = this.endStep(def.id, node, lines);
+      } else {
+        step = this.stepAt(def, node, lines);
       }
-      if (choice.end) return this.endStep(def.id, node, lines);
-      return this.stepAt(def, node, lines);
+      const after = this.runAfterHooks({ kind: 'choice', room: this.world.currentRoom(), dialogue: dialogueId, choice: choiceId });
+      if (after.lines.length || after.end) {
+        step = { ...step, lines: [...step.lines, ...after.lines] };
+        if (after.end && !step.ended) step = this.endStep(def.id, step.node, step.lines);
+        else if (!step.ended) step = { ...step, choices: this.availableChoices(def, step.node) };
+      }
+      return step;
     });
   }
 
@@ -348,6 +374,28 @@ export class Narrative {
     this.actions.set(name, action);
   }
 
+  /**
+   * Regla que s'executa després de cada acció del jugador que ha fet alguna cosa (una interacció que ha
+   * encaixat o una opció de diàleg). Les frases per defecte («No es mou») no compten com a acció.
+   */
+  onAfterAction(hook: AfterActionHook): () => void {
+    this.afterHooks.push(hook);
+    return () => {
+      this.afterHooks = this.afterHooks.filter((h) => h !== hook);
+    };
+  }
+
+  private runAfterHooks(action: PlayerAction): { lines: ResolvedLine[]; end: boolean } {
+    const lines: ResolvedLine[] = [];
+    let end = false;
+    for (const hook of this.afterHooks) {
+      const r = hook(action, this) ?? {};
+      for (const l of r.lines ?? []) lines.push({ who: l.who, key: l.text, text: this.t(l.text, l.params), ...(l.sound && { sound: l.sound }) });
+      end ||= !!r.endDialogue;
+    }
+    return { lines, end };
+  }
+
   get actionNames(): string[] {
     return [...this.actions.keys()];
   }
@@ -398,7 +446,13 @@ export class Narrative {
       // En combinar A amb B des de B, l'objecte "fet servir" passa a ser A.
       const item = scope === `item/${req.item}` ? req.target.id : req.item;
       const found = this.findInteraction(scope, list, req.verb, item);
-      if (found) return this.batch(() => this.runInteraction(scope, list, found, { ...req, item }));
+      if (found) {
+        return this.batch(() => {
+          const result = this.runInteraction(scope, list, found, { ...req, item });
+          const after = this.runAfterHooks({ kind: 'interaction', room, verb: req.verb, target: req.target, item: req.item });
+          return after.lines.length ? { ...result, lines: [...result.lines, ...after.lines] } : result;
+        });
+      }
     }
     // Mirar un objecte de l'inventari sense cap "look" propi: la seva descripció.
     const description = req.target.kind === 'item' && req.verb === 'look' && !req.item

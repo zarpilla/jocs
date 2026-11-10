@@ -172,3 +172,26 @@ describe('traduccions', () => {
     expect(n.t('no.existeix')).toBe('⟦no.existeix⟧');
   });
 });
+
+describe('regles després de cada acció i situar', () => {
+  it("onAfterAction s'executa després de cada interacció i opció que encaixa, però no amb les frases per defecte", () => {
+    const { n, p } = setup();
+    const vistes: string[] = [];
+    n.onAfterAction((a) => {
+      vistes.push(a.kind === 'interaction' ? `${a.verb}:${a.target.id}` : `${a.dialogue}.${a.choice}`);
+      return a.kind === 'interaction' && a.verb === 'open' ? { lines: [{ who: 'narrator', text: 'comptat', params: { que: 'torn' } }] } : undefined;
+    });
+    const lines = p.do('open', 'caixa');
+    expect(keys(lines)).toContain('comptat');
+    p.do('push', 'caixa'); // cap interacció: frase per defecte, no compta
+    p.talk('pescador', 'far');
+    expect(vistes).toEqual(['open:caixa', 'pescador.far']);
+  });
+
+  it("l'esdeveniment situar mou l'altra protagonista: hi entra quan s'hi canvia", () => {
+    const { n, p } = setup();
+    n.apply({ event: 'situar', args: { who: 'bo', room: 'moll' } });
+    p.switchTo('bo');
+    expect(p.room).toBe('moll');
+  });
+});

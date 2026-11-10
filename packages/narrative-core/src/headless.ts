@@ -33,7 +33,10 @@ export class HeadlessPlayer {
     this.world = world;
     narrative.on(world.listener);
     narrative.on((e) => {
-      if (e.type === 'custom' && e.name === (opts.switchEvent ?? 'protagonista')) this.pendingSwitch = String(e.args.id);
+      if (e.type !== 'custom') return;
+      if (e.name === (opts.switchEvent ?? 'protagonista')) this.pendingSwitch = String(e.args.id);
+      // `situar`: l'altra protagonista passa a ser en una altra sala (hi entrarà quan s'hi canviï).
+      if (e.name === 'situar' && String(e.args.who) !== this.world.active) this.world.rooms.set(String(e.args.who), String(e.args.room));
     });
   }
 
