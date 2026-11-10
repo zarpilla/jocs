@@ -1,0 +1,48 @@
+{
+  "id": "trucada",
+  "displayName": "trucada",
+  "options": [
+    {
+      "id": "menu__pany",
+      "scriptName": "menu__pany",
+      "text": "Saps obrir un pany intel·ligent?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__contrasenya",
+      "scriptName": "menu__contrasenya",
+      "text": "La contrasenya és «exceptosinopaga». Tot junt.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__trucada",
+      "scriptName": "menu__trucada",
+      "text": "Necessito que truquis al bar i facis de dona d'en Tomàs.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__resum",
+      "scriptName": "menu__resum",
+      "text": "Ho tinc tot. Apunta.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__robot",
+      "scriptName": "menu__robot",
+      "text": "I el robot de neteja: si li dius «NETA, descansa», s'atura.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, ja et trucaré.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

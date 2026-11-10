@@ -1,0 +1,276 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "iri": {
+    "name": "pj.iri.nom",
+    "outfit": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "auricular"
+            },
+            {
+              "flag": "vet_marxa",
+              "is": false
+            }
+          ]
+        },
+        "name": "SenseAuriculars"
+      }
+    ]
+  },
+  "vet": {
+    "name": "pj.vet.nom",
+    "outfit": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "aeroport_fet"
+            },
+            {
+              "flag": "ulleres_posades"
+            }
+          ]
+        },
+        "name": "AuditoraUlleres"
+      },
+      {
+        "if": {
+          "flag": "aeroport_fet"
+        },
+        "name": "Auditora"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "bar_fet"
+            },
+            {
+              "flag": "ulleres_posades"
+            }
+          ]
+        },
+        "name": "BomberUlleres"
+      },
+      {
+        "if": {
+          "flag": "bar_fet"
+        },
+        "name": "Bomber"
+      },
+      {
+        "if": {
+          "flag": "vet_marxa"
+        },
+        "name": "Franela"
+      }
+    ]
+  },
+  "diu": {
+    "name": "pj.diu.nom",
+    "appearance": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "vet_marxa"
+            },
+            {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "caixa"
+            }
+          ]
+        },
+        "anim": "CaixaDorm"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "vet_marxa"
+            },
+            {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "pizza"
+            }
+          ]
+        },
+        "anim": "PizzaDorm"
+      },
+      {
+        "if": {
+          "flag": "vet_marxa"
+        },
+        "anim": "Dorm"
+      },
+      {
+        "if": {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "caixa"
+        },
+        "anim": "Caixa"
+      },
+      {
+        "if": {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "auricular"
+        },
+        "anim": "Auricular"
+      },
+      {
+        "if": {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "pizza"
+        },
+        "anim": "Pizza"
+      }
+    ]
+  },
+  "marcel": {
+    "name": "pj.marcel.nom"
+  },
+  "tomas": {
+    "name": "pj.tomas.nom"
+  },
+  "ortega": {
+    "name": "pj.ortega.nom"
+  },
+  "soler": {
+    "name": "pj.soler.nom"
+  },
+  "nen": {
+    "name": "pj.nen.nom"
+  },
+  "empleat": {
+    "name": "pj.empleat.nom"
+  },
+  "rius": {
+    "name": "pj.rius.nom",
+    "appearance": [
+      {
+        "if": {
+          "flag": "aliada_rius"
+        },
+        "anim": "Contenta"
+      }
+    ]
+  },
+  "bonfill": {
+    "name": "pj.bonfill.nom",
+    "appearance": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "auditoria"
+            },
+            {
+              "var": "sospita",
+              "op": ">=",
+              "value": 75
+            }
+          ]
+        },
+        "anim": "Telefon"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "auditoria"
+            },
+            {
+              "var": "sospita",
+              "op": ">=",
+              "value": 50
+            }
+          ]
+        },
+        "anim": "Corbata"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "auditoria"
+            },
+            {
+              "var": "sospita",
+              "op": ">=",
+              "value": 25
+            }
+          ]
+        },
+        "anim": "Cella"
+      }
+    ]
+  },
+  "ballester": {
+    "name": "pj.ballester.nom",
+    "appearance": [
+      {
+        "if": {
+          "any": [
+            {
+              "flag": "aliat_ballester"
+            },
+            {
+              "flag": "clau_canviada"
+            }
+          ]
+        },
+        "anim": "SenseCollaret"
+      },
+      {
+        "if": {
+          "var": "sospita_ballester",
+          "op": ">=",
+          "value": 1
+        },
+        "anim": "Alerta"
+      },
+      {
+        "if": {
+          "flag": "ballester_relaxat"
+        },
+        "anim": "Relaxat"
+      }
+    ]
+  },
+  "neta": {
+    "name": "pj.neta.nom",
+    "appearance": [
+      {
+        "if": {
+          "var": "robot",
+          "op": "==",
+          "value": "codi"
+        },
+        "anim": "Descansa"
+      },
+      {
+        "if": {
+          "var": "robot",
+          "op": "==",
+          "value": "entrepa"
+        },
+        "anim": "Molles"
+      }
+    ]
+  },
+  "pons": {
+    "name": "pj.pons.nom"
+  },
+  "recepcionista": {
+    "name": "pj.recepcionista.nom"
+  }
+}

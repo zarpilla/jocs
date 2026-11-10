@@ -1,0 +1,20 @@
+{
+  "id": "aturada",
+  "displayName": "aturada",
+  "options": [
+    {
+      "id": "tria__tornar",
+      "scriptName": "tria__tornar",
+      "text": "Tornar-ho tot als comptes d'origen.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__pagar",
+      "scriptName": "tria__pagar",
+      "text": "Pagar primer les pensions, els ajuts i les nòmines del mes. I tornar la resta.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

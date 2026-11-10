@@ -1,0 +1,182 @@
+{
+  "id": "aeroport_personal",
+  "name": "La porta de personal",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "teclat",
+      "active": true,
+      "description": "teclat",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 224,
+          "y": 84
+        },
+        {
+          "x": 248,
+          "y": 84
+        },
+        {
+          "x": 248,
+          "y": 114
+        },
+        {
+          "x": 224,
+          "y": 114
+        }
+      ],
+      "walkToPoint": {
+        "x": 236,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 236,
+        "y": 114
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta de personal",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 250,
+          "y": 44
+        },
+        {
+          "x": 312,
+          "y": 44
+        },
+        {
+          "x": 312,
+          "y": 160
+        },
+        {
+          "x": 250,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 280,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 281,
+        "y": 160
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "porta_oberta",
+      "tag": "porta_oberta",
+      "animations": {
+        "porta_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "alarma",
+      "tag": "alarma",
+      "animations": {
+        "alarma": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "soler_vidre",
+      "tag": "soler_vidre",
+      "animations": {
+        "soler_vidre": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "fluorescent",
+      "tag": "fluorescent",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fluorescent": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 160,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

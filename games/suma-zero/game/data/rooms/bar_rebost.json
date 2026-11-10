@@ -1,0 +1,161 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bar_rebost.nom",
+  "protagonist": "vet",
+  "hotspots": {
+    "calaix": {
+      "name": "sala.bar_rebost.calaix.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "calaix_obert"
+              },
+              {
+                "flag": "recepta_agafada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.calaix.recepta"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "recepta"
+            },
+            {
+              "setFlag": "recepta_agafada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "calaix_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.calaix.buit"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "look"
+          ],
+          "if": {
+            "flag": "sap_pany",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.calaix.pany1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.calaix.pany2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sap_pany"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.calaix.tancat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.calaix.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixes": {
+      "name": "sala.bar_rebost.caixes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.caixes.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.bar_rebost.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "bar_sala"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_rebost.porta.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "calaix_obert": {
+      "visibleIf": {
+        "flag": "calaix_obert"
+      }
+    },
+    "recepta_calaix": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "calaix_obert"
+          },
+          {
+            "flag": "recepta_agafada",
+            "is": false
+          }
+        ]
+      }
+    }
+  }
+}

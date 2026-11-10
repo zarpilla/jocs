@@ -1,0 +1,253 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bcmu_moll.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_moll.intro1"
+        },
+        {
+          "who": "rius",
+          "text": "sala.bcmu_moll.intro2"
+        },
+        {
+          "who": "rius",
+          "text": "sala.bcmu_moll.intro3"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_moll.intro4"
+        },
+        {
+          "who": "rius",
+          "text": "sala.bcmu_moll.intro5"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_moll.intro6"
+        },
+        {
+          "who": "vet",
+          "text": "sala.bcmu_moll.intro7",
+          "if": {
+            "flag": "auditoria_acceptada",
+            "is": false
+          },
+          "sound": "auricular"
+        },
+        {
+          "who": "vet",
+          "text": "sala.bcmu_moll.intro8",
+          "if": {
+            "flag": "auditoria_acceptada"
+          },
+          "sound": "auricular"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sap_rius"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "rius": {
+      "name": "sala.bcmu_moll.rius.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "rius"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aliada_rius"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.rius.look_aliada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.rius.look"
+            }
+          ]
+        }
+      ]
+    },
+    "maquina": {
+      "name": "sala.bcmu_moll.maquina.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "push",
+            "pickUp"
+          ],
+          "if": {
+            "hasItem": "targeta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.maquina.ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.maquina.usa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.maquina.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ascensor": {
+      "name": "sala.bcmu_moll.ascensor.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "hasItem": "targeta"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_moll.ascensor.puja",
+              "sound": "ascensor"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_al_tercer"
+            }
+          ],
+          "goTo": "bcmu_passadis"
+        },
+        {
+          "verb": "use",
+          "item": "targeta",
+          "if": {
+            "hasItem": "targeta"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_moll.ascensor.puja",
+              "sound": "ascensor"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_al_tercer"
+            }
+          ],
+          "goTo": "bcmu_passadis"
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.ascensor.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.ascensor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tecnics": {
+      "name": "sala.bcmu_moll.tecnics.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.tecnics.parla"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.tecnics.look"
+            }
+          ]
+        }
+      ]
+    },
+    "furgonetes": {
+      "name": "sala.bcmu_moll.furgonetes.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.furgonetes.obre"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_moll.furgonetes.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

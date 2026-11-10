@@ -1,0 +1,45 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.proleg_ginebra.nom",
+  "cutscene": {
+    "skipTo": "pis_estudi"
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "proleg.1"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.2"
+        },
+        {
+          "who": "bonfill",
+          "text": "proleg.3"
+        },
+        {
+          "who": "bonfill",
+          "text": "proleg.4"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.5",
+          "sound": "teclat"
+        },
+        {
+          "who": "title",
+          "text": "joc.titol"
+        },
+        {
+          "who": "title",
+          "text": "acte.1"
+        }
+      ],
+      "goTo": "pis_estudi"
+    }
+  ],
+  "hotspots": {}
+}

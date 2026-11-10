@@ -1,0 +1,640 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "ballester",
+  "with": "ballester",
+  "start": [
+    {
+      "if": {
+        "flag": "cal_director"
+      },
+      "node": "virus"
+    },
+    {
+      "if": {
+        "flag": "aliat_ballester"
+      },
+      "node": "amic"
+    },
+    {
+      "if": {
+        "flag": "clau_canviada"
+      },
+      "node": "orgullos"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "flag": "cal_clau"
+          },
+          {
+            "flag": "ballester_relaxat"
+          }
+        ]
+      },
+      "node": "clau_relaxat"
+    },
+    {
+      "if": {
+        "flag": "cal_clau"
+      },
+      "node": "clau_tens"
+    },
+    {
+      "if": {
+        "flag": "sync_collaret"
+      },
+      "node": "sync"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "ballester",
+          "node": "hola"
+        }
+      },
+      "node": "servei"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.hola1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.hola2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "servei": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.servei"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "seguretat",
+          "text": "dlg.ballester.opt.seguretat",
+          "once": true,
+          "next": "seguretat"
+        },
+        {
+          "id": "collaret",
+          "text": "dlg.ballester.opt.collaret",
+          "once": true,
+          "next": "collaret"
+        },
+        {
+          "id": "serie",
+          "text": "dlg.ballester.opt.serie",
+          "next": "serie"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.ballester.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "seguretat": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.seguretat1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.seguretat2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "collaret": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.collaret1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.collaret2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "serie": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.serie1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.serie2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "sync": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.sync"
+        }
+      ],
+      "goto": "eines"
+    },
+    "eines": {
+      "choices": [
+        {
+          "id": "cantar",
+          "text": "dlg.ballester.opt.cantar",
+          "if": {
+            "flag": "cantat",
+            "is": false
+          },
+          "silent": true,
+          "next": "cantar"
+        },
+        {
+          "id": "banquers",
+          "text": "dlg.ballester.opt.banquers",
+          "if": {
+            "flag": "acudit1",
+            "is": false
+          },
+          "silent": true,
+          "next": "banquers"
+        },
+        {
+          "id": "euros",
+          "text": "dlg.ballester.opt.euros",
+          "if": {
+            "flag": "acudit2",
+            "is": false
+          },
+          "silent": true,
+          "next": "euros"
+        },
+        {
+          "id": "auditor",
+          "text": "dlg.ballester.opt.auditor",
+          "if": {
+            "flag": "acudit3",
+            "is": false
+          },
+          "silent": true,
+          "next": "auditor"
+        },
+        {
+          "id": "violi",
+          "text": "dlg.ballester.opt.violi",
+          "if": {
+            "all": [
+              {
+                "flag": "marcel_ballester"
+              },
+              {
+                "flag": "violi_dit",
+                "is": false
+              }
+            ]
+          },
+          "next": "violi"
+        },
+        {
+          "id": "vidua",
+          "text": "dlg.ballester.opt.vidua",
+          "if": {
+            "all": [
+              {
+                "flag": "marcel_ballester"
+              },
+              {
+                "flag": "vidua_dita",
+                "is": false
+              }
+            ]
+          },
+          "next": "vidua"
+        },
+        {
+          "id": "serie_sync",
+          "text": "dlg.ballester.opt.serie_sync",
+          "if": {
+            "flag": "marcel_ballester",
+            "is": false
+          },
+          "once": true,
+          "next": "serie_sync"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.ballester.opt.adeu_sync",
+          "end": true
+        }
+      ]
+    },
+    "cantar": {
+      "effects": [
+        {
+          "setFlag": "cantat"
+        },
+        {
+          "addVar": "coberta",
+          "amount": 1
+        }
+      ],
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.ballester.cantar1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.cantar2"
+        }
+      ],
+      "goto": "eines"
+    },
+    "banquers": {
+      "effects": [
+        {
+          "setFlag": "acudit1"
+        },
+        {
+          "addVar": "coberta",
+          "amount": 1
+        }
+      ],
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.ballester.banquers1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.banquers2"
+        }
+      ],
+      "goto": "eines"
+    },
+    "euros": {
+      "effects": [
+        {
+          "setFlag": "acudit2"
+        },
+        {
+          "addVar": "coberta",
+          "amount": 1
+        }
+      ],
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.ballester.euros1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.euros2"
+        }
+      ],
+      "goto": "eines"
+    },
+    "auditor": {
+      "effects": [
+        {
+          "setFlag": "acudit3"
+        }
+      ],
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.ballester.auditor1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.ballester.auditor2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.auditor3"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.auditor4"
+        }
+      ],
+      "goto": "eines"
+    },
+    "violi": {
+      "effects": [
+        {
+          "setFlag": "violi_dit"
+        },
+        {
+          "setFlag": "ballester_relaxat"
+        },
+        {
+          "addVar": "coberta",
+          "amount": 2
+        }
+      ],
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.violi1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.violi2"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.violi3"
+        }
+      ],
+      "goto": "eines"
+    },
+    "vidua": {
+      "effects": [
+        {
+          "setFlag": "vidua_dita"
+        },
+        {
+          "addVar": "sospita_ballester",
+          "amount": 1
+        }
+      ],
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.vidua1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.vidua2"
+        }
+      ],
+      "goto": "eines"
+    },
+    "serie_sync": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.serie_sync"
+        }
+      ],
+      "goto": "eines"
+    },
+    "clau_relaxat": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.hipoteca1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.ballester.hipoteca2"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.hipoteca3"
+        }
+      ],
+      "choices": [
+        {
+          "id": "veritat",
+          "text": "dlg.ballester.opt.veritat",
+          "next": "veritat"
+        },
+        {
+          "id": "mentida",
+          "text": "dlg.ballester.opt.mentida",
+          "if": {
+            "any": [
+              {
+                "hasItem": "clau_casa"
+              },
+              {
+                "hasItem": "clauer"
+              }
+            ]
+          },
+          "next": "mentida"
+        }
+      ]
+    },
+    "clau_tens": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.tens"
+        }
+      ],
+      "choices": [
+        {
+          "id": "or",
+          "text": "dlg.ballester.opt.or",
+          "if": {
+            "any": [
+              {
+                "hasItem": "clau_casa"
+              },
+              {
+                "hasItem": "clauer"
+              }
+            ]
+          },
+          "next": "or"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.ballester.opt.adeu_clau",
+          "end": true
+        }
+      ]
+    },
+    "veritat": {
+      "effects": [
+        {
+          "setFlag": "aliat_ballester"
+        },
+        {
+          "addVar": "aliats",
+          "amount": 1
+        }
+      ],
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.veritat1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.veritat2"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.veritat3"
+        }
+      ]
+    },
+    "mentida": {
+      "effects": [
+        {
+          "setFlag": "clau_canviada"
+        },
+        {
+          "giveItem": "clau_llibre"
+        }
+      ],
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.mentida1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.canvi1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.canvi2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.canvi_clauer",
+          "if": {
+            "all": [
+              {
+                "hasItem": "clau_casa",
+                "is": false
+              },
+              {
+                "hasItem": "clauer"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "takeItem": "clauer"
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.canvi_casa",
+          "if": {
+            "hasItem": "clau_casa"
+          },
+          "effects": [
+            {
+              "takeItem": "clau_casa"
+            }
+          ]
+        },
+        {
+          "who": "player",
+          "text": "dlg.ballester.canvi3"
+        }
+      ]
+    },
+    "or": {
+      "effects": [
+        {
+          "setFlag": "clau_canviada"
+        },
+        {
+          "giveItem": "clau_llibre"
+        }
+      ],
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.or1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.canvi1"
+        },
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.canvi2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.canvi_clauer",
+          "if": {
+            "all": [
+              {
+                "hasItem": "clau_casa",
+                "is": false
+              },
+              {
+                "hasItem": "clauer"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "takeItem": "clauer"
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.canvi_casa",
+          "if": {
+            "hasItem": "clau_casa"
+          },
+          "effects": [
+            {
+              "takeItem": "clau_casa"
+            }
+          ]
+        },
+        {
+          "who": "player",
+          "text": "dlg.ballester.canvi3"
+        }
+      ]
+    },
+    "amic": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.amic"
+        }
+      ]
+    },
+    "orgullos": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.orgullos"
+        }
+      ]
+    },
+    "virus": {
+      "lines": [
+        {
+          "who": "ballester",
+          "text": "dlg.ballester.virus1"
+        }
+      ]
+    }
+  }
+}

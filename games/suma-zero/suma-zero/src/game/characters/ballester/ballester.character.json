@@ -1,0 +1,87 @@
+{
+  "id": "ballester",
+  "name": "Ballester",
+  "description": "Ballester",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 70,
+  "walkToPoint": {
+    "x": 48,
+    "y": 96
+  },
+  "talkPoint": {
+    "x": 29,
+    "y": -2
+  },
+  "feet": {
+    "x": 29,
+    "y": 96
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 19,
+        "y": 2
+      },
+      {
+        "x": 39,
+        "y": 2
+      },
+      {
+        "x": 41,
+        "y": 50
+      },
+      {
+        "x": 37,
+        "y": 98
+      },
+      {
+        "x": 20,
+        "y": 98
+      },
+      {
+        "x": 16,
+        "y": 50
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleL": {
+      "loop": true
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "Relaxat": {
+      "loop": true,
+      "frameDuration": 400
+    },
+    "Alerta": {
+      "loop": true,
+      "frameDuration": 400
+    },
+    "SenseCollaret": {
+      "loop": true,
+      "frameDuration": 400
+    }
+  },
+  "defaultVerb": "talkTo",
+  "speechColor": "#ff90c8"
+}

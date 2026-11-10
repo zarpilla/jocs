@@ -1,0 +1,27 @@
+{
+  "id": "diu",
+  "displayName": "diu",
+  "options": [
+    {
+      "id": "menu__cables",
+      "scriptName": "menu__cables",
+      "text": "Diu, deixa els cables, sisplau.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__gracies",
+      "scriptName": "menu__gracies",
+      "text": "Gràcies per deixar-me treballar.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, res.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

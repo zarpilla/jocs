@@ -1,0 +1,284 @@
+{
+  "id": "vet",
+  "name": "vet",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 110,
+  "walkToPoint": {
+    "x": 43,
+    "y": 83
+  },
+  "talkPoint": {
+    "x": 25,
+    "y": -2
+  },
+  "feet": {
+    "x": 25,
+    "y": 83
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 15,
+        "y": 2
+      },
+      {
+        "x": 35,
+        "y": 2
+      },
+      {
+        "x": 37,
+        "y": 50
+      },
+      {
+        "x": 33,
+        "y": 85
+      },
+      {
+        "x": 16,
+        "y": 85
+      },
+      {
+        "x": 12,
+        "y": 50
+      }
+    ]
+  },
+  "animations": {
+    "IdleL": {
+      "loop": true
+    },
+    "IdleD": {
+      "loop": true
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "FranelaIdleL": {
+      "loop": true
+    },
+    "FranelaIdleD": {
+      "loop": true
+    },
+    "FranelaIdleU": {
+      "loop": true
+    },
+    "FranelaWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "FranelaWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "FranelaWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "FranelaTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "FranelaTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "FranelaTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BomberIdleL": {
+      "loop": true
+    },
+    "BomberIdleD": {
+      "loop": true
+    },
+    "BomberIdleU": {
+      "loop": true
+    },
+    "BomberWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "BomberWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "BomberWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "BomberTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BomberTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BomberTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "AuditoraIdleL": {
+      "loop": true
+    },
+    "AuditoraIdleD": {
+      "loop": true
+    },
+    "AuditoraIdleU": {
+      "loop": true
+    },
+    "AuditoraWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "AuditoraWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "AuditoraWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "AuditoraTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "AuditoraTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "AuditoraTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "CalaveraIdleL": {
+      "loop": true
+    },
+    "CalaveraIdleD": {
+      "loop": true
+    },
+    "CalaveraIdleU": {
+      "loop": true
+    },
+    "CalaveraWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "CalaveraWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "CalaveraWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "CalaveraTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "CalaveraTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "CalaveraTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BomberUlleresIdleL": {
+      "loop": true
+    },
+    "BomberUlleresIdleD": {
+      "loop": true
+    },
+    "BomberUlleresIdleU": {
+      "loop": true
+    },
+    "BomberUlleresWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "BomberUlleresWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "BomberUlleresWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "BomberUlleresTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BomberUlleresTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BomberUlleresTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "AuditoraUlleresIdleL": {
+      "loop": true
+    },
+    "AuditoraUlleresIdleD": {
+      "loop": true
+    },
+    "AuditoraUlleresIdleU": {
+      "loop": true
+    },
+    "AuditoraUlleresWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "AuditoraUlleresWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "AuditoraUlleresWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "AuditoraUlleresTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "AuditoraUlleresTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "AuditoraUlleresTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "look"
+}

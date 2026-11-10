@@ -1,0 +1,41 @@
+{
+  "id": "tomas",
+  "displayName": "tomas",
+  "options": [
+    {
+      "id": "menu__cafe",
+      "scriptName": "menu__cafe",
+      "text": "Un cafè amb llet per a en Marcel.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__cafe2",
+      "scriptName": "menu__cafe2",
+      "text": "Un altre cafè per a en Marcel?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__comandament",
+      "scriptName": "menu__comandament",
+      "text": "Em deixes el comandament de la tele?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__wifi",
+      "scriptName": "menu__wifi",
+      "text": "Quina és la contrasenya de la wifi?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, Tomàs.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

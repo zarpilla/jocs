@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.benne/
+releases/
+
+# Generats per Benne (npm run generate:game-ids)
+src/game/**/*.ids.ts

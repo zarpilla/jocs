@@ -1,0 +1,499 @@
+{
+  "id": "bcmu_vestibul",
+  "name": "El vestíbul del BCMU",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "ascensor",
+      "active": true,
+      "description": "ascensor",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 424,
+          "y": 38
+        },
+        {
+          "x": 472,
+          "y": 38
+        },
+        {
+          "x": 472,
+          "y": 150
+        },
+        {
+          "x": 424,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 448,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 448,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "font",
+      "active": true,
+      "description": "font",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 96,
+          "y": 104
+        },
+        {
+          "x": 170,
+          "y": 104
+        },
+        {
+          "x": 170,
+          "y": 156
+        },
+        {
+          "x": 96,
+          "y": 156
+        }
+      ],
+      "walkToPoint": {
+        "x": 134,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 133,
+        "y": 156
+      }
+    },
+    {
+      "id": "cartell",
+      "active": true,
+      "description": "cartell",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 250,
+          "y": 18
+        },
+        {
+          "x": 360,
+          "y": 18
+        },
+        {
+          "x": 360,
+          "y": 34
+        },
+        {
+          "x": 250,
+          "y": 34
+        }
+      ],
+      "walkToPoint": {
+        "x": 300,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 305,
+        "y": 34
+      }
+    },
+    {
+      "id": "retrat",
+      "active": true,
+      "description": "retrat",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 184,
+          "y": 26
+        },
+        {
+          "x": 236,
+          "y": 26
+        },
+        {
+          "x": 236,
+          "y": 92
+        },
+        {
+          "x": 184,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 210,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 210,
+        "y": 92
+      }
+    },
+    {
+      "id": "recepcio",
+      "active": true,
+      "description": "recepció",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 262,
+          "y": 100
+        },
+        {
+          "x": 350,
+          "y": 100
+        },
+        {
+          "x": 350,
+          "y": 150
+        },
+        {
+          "x": 262,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 306,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 306,
+        "y": 150
+      }
+    },
+    {
+      "id": "tub",
+      "active": true,
+      "description": "estació del tub",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 354,
+          "y": 70
+        },
+        {
+          "x": 372,
+          "y": 70
+        },
+        {
+          "x": 372,
+          "y": 112
+        },
+        {
+          "x": 354,
+          "y": 112
+        }
+      ],
+      "walkToPoint": {
+        "x": 362,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 363,
+        "y": 112
+      }
+    },
+    {
+      "id": "maquina",
+      "active": true,
+      "description": "màquina d'entrepans",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 380,
+          "y": 64
+        },
+        {
+          "x": 414,
+          "y": 64
+        },
+        {
+          "x": 414,
+          "y": 150
+        },
+        {
+          "x": 380,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 396,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 397,
+        "y": 150
+      }
+    },
+    {
+      "id": "plantes",
+      "active": true,
+      "description": "plantes",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 62,
+          "y": 98
+        },
+        {
+          "x": 86,
+          "y": 98
+        },
+        {
+          "x": 86,
+          "y": 150
+        },
+        {
+          "x": 62,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 74,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 74,
+        "y": 150
+      }
+    },
+    {
+      "id": "sortida",
+      "active": true,
+      "description": "sortida",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 6,
+          "y": 40
+        },
+        {
+          "x": 56,
+          "y": 40
+        },
+        {
+          "x": 56,
+          "y": 150
+        },
+        {
+          "x": 6,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 40,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 150
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "sospita",
+      "tag": "sospita",
+      "animations": {
+        "sospita": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_25",
+      "tag": "sospita_25",
+      "animations": {
+        "sospita_25": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_50",
+      "tag": "sospita_50",
+      "animations": {
+        "sospita_50": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_75",
+      "tag": "sospita_75",
+      "animations": {
+        "sospita_75": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "planta_retallada",
+      "tag": "planta_retallada",
+      "animations": {
+        "planta_retallada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "maquina_forat",
+      "tag": "maquina_forat",
+      "animations": {
+        "maquina_forat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ascensor",
+      "tag": "ascensor",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ascensor": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      },
+      "collider": {
+        "points": [
+          {
+            "x": 424,
+            "y": 38
+          },
+          {
+            "x": 472,
+            "y": 38
+          },
+          {
+            "x": 472,
+            "y": 150
+          },
+          {
+            "x": 424,
+            "y": 150
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 448,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 448,
+        "y": 150
+      },
+      "description": "ascensor",
+      "scriptName": "ascensorAnim"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 150,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bonfill-1",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 236,
+      "y": 182,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "recepcionista-1",
+      "definition": "recepcionista/recepcionista.character.json",
+      "x": 250,
+      "y": 184,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

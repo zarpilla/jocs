@@ -1,0 +1,437 @@
+{
+  "id": "bcmu_seguretat",
+  "name": "La sala de seguretat",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "ascensor",
+      "active": true,
+      "description": "ascensor",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 56,
+          "y": 40
+        },
+        {
+          "x": 108,
+          "y": 40
+        },
+        {
+          "x": 108,
+          "y": 150
+        },
+        {
+          "x": 56,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 84,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 82,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "monitors",
+      "active": true,
+      "description": "monitors",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 130,
+          "y": 18
+        },
+        {
+          "x": 340,
+          "y": 18
+        },
+        {
+          "x": 340,
+          "y": 92
+        },
+        {
+          "x": 130,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 236,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 235,
+        "y": 92
+      }
+    },
+    {
+      "id": "radio",
+      "active": true,
+      "description": "ràdio",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 392,
+          "y": 92
+        },
+        {
+          "x": 406,
+          "y": 92
+        },
+        {
+          "x": 406,
+          "y": 112
+        },
+        {
+          "x": 392,
+          "y": 112
+        }
+      ],
+      "walkToPoint": {
+        "x": 396,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 399,
+        "y": 112
+      }
+    },
+    {
+      "id": "got",
+      "active": true,
+      "description": "got",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 174,
+          "y": 106
+        },
+        {
+          "x": 184,
+          "y": 106
+        },
+        {
+          "x": 184,
+          "y": 118
+        },
+        {
+          "x": 174,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 180,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 179,
+        "y": 118
+      }
+    },
+    {
+      "id": "tub",
+      "active": true,
+      "description": "estació del tub",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 24,
+          "y": 64
+        },
+        {
+          "x": 44,
+          "y": 64
+        },
+        {
+          "x": 44,
+          "y": 108
+        },
+        {
+          "x": 24,
+          "y": 108
+        }
+      ],
+      "walkToPoint": {
+        "x": 36,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 34,
+        "y": 108
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "entrepa",
+      "tag": "entrepa",
+      "animations": {
+        "entrepa": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 196,
+            "y": 110
+          },
+          {
+            "x": 216,
+            "y": 110
+          },
+          {
+            "x": 216,
+            "y": 118
+          },
+          {
+            "x": 196,
+            "y": 118
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 206,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 206,
+        "y": 118
+      },
+      "description": "entrepà d'en Ballester"
+    },
+    {
+      "id": "clauer",
+      "tag": "clauer",
+      "animations": {
+        "clauer": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 226,
+            "y": 111
+          },
+          {
+            "x": 238,
+            "y": 111
+          },
+          {
+            "x": 238,
+            "y": 118
+          },
+          {
+            "x": 226,
+            "y": 118
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 232,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 232,
+        "y": 118
+      },
+      "description": "clauer"
+    },
+    {
+      "id": "collaret",
+      "tag": "collaret",
+      "animations": {
+        "collaret": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 252,
+            "y": 110
+          },
+          {
+            "x": 268,
+            "y": 110
+          },
+          {
+            "x": 268,
+            "y": 118
+          },
+          {
+            "x": 252,
+            "y": 118
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 260,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 260,
+        "y": 118
+      },
+      "description": "collaret"
+    },
+    {
+      "id": "got_trencat",
+      "tag": "got_trencat",
+      "animations": {
+        "got_trencat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "collaret_taula",
+      "tag": "collaret_taula",
+      "animations": {
+        "collaret_taula": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "monitors",
+      "tag": "monitors",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "monitors": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      },
+      "collider": {
+        "points": [
+          {
+            "x": 130,
+            "y": 18
+          },
+          {
+            "x": 340,
+            "y": 18
+          },
+          {
+            "x": 340,
+            "y": 92
+          },
+          {
+            "x": 130,
+            "y": 92
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 236,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 235,
+        "y": 92
+      },
+      "description": "monitors",
+      "scriptName": "monitorsAnim"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 150,
+      "y": 196,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "ballester-1",
+      "definition": "ballester/ballester.character.json",
+      "x": 372,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bonfill-veu",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

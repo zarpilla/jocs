@@ -1,0 +1,31 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "L'estudi",
+  "era": "iri",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "caixa",
+      "label": "caixa",
+      "kind": "prop",
+      "w": 74,
+      "h": 33,
+      "x": 117,
+      "y": 57
+    },
+    {
+      "id": "router",
+      "label": "router",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 289,
+      "y": 19
+    }
+  ],
+  "characters": [
+    "Diu"
+  ]
+}

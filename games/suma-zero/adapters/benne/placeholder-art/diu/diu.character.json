@@ -1,0 +1,93 @@
+{
+  "id": "diu",
+  "name": "diu",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 60,
+  "walkToPoint": {
+    "x": 36,
+    "y": 25
+  },
+  "talkPoint": {
+    "x": 13,
+    "y": -2
+  },
+  "feet": {
+    "x": 13,
+    "y": 25
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 4,
+        "y": 0
+      },
+      {
+        "x": 28,
+        "y": 0
+      },
+      {
+        "x": 28,
+        "y": 25
+      },
+      {
+        "x": 4,
+        "y": 25
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "Caixa": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "Auricular": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "Pizza": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "CaixaDorm": {
+      "loop": true,
+      "frameDuration": 500
+    },
+    "PizzaDorm": {
+      "loop": true,
+      "frameDuration": 500
+    },
+    "Dorm": {
+      "loop": true,
+      "frameDuration": 500
+    }
+  },
+  "defaultVerb": "look"
+}

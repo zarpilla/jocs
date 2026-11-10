@@ -1,0 +1,617 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bcmu_vestibul.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "flag": "virus_aturat"
+      },
+      "id": "fugida",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_vestibul.fugida1"
+        },
+        {
+          "who": "recepcionista",
+          "text": "sala.bcmu_vestibul.fugida2",
+          "if": {
+            "var": "sospita_max",
+            "op": ">=",
+            "value": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_vestibul.intro1"
+        },
+        {
+          "who": "iri",
+          "text": "sala.bcmu_vestibul.intro2",
+          "sound": "auricular"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_vestibul.intro3"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_vestibul.intro4"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_vestibul.intro5"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "bonfill": {
+      "name": "sala.bcmu_vestibul.bonfill.nom",
+      "visibleIf": {
+        "flag": "auditoria_acceptada",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "bonfill"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "sap_bonfill"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.bonfill.look_nom"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.bonfill.look"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.bonfill.dona"
+            }
+          ]
+        }
+      ]
+    },
+    "font": {
+      "name": "sala.bcmu_vestibul.font.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.font.usa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.font.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cartell": {
+      "name": "sala.bcmu_vestibul.cartell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.cartell.look1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.cartell.look2"
+            }
+          ]
+        }
+      ]
+    },
+    "retrat": {
+      "name": "sala.bcmu_vestibul.retrat.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "sap_rockefeller"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.retrat.ja"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.retrat.placa"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.retrat.gos"
+            },
+            {
+              "who": "iri",
+              "text": "sala.bcmu_vestibul.retrat.iri",
+              "if": {
+                "flag": "auricular_compartit"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sap_rockefeller"
+            },
+            {
+              "setFlag": "sap_bonfill"
+            }
+          ]
+        }
+      ]
+    },
+    "recepcio": {
+      "name": "sala.bcmu_vestibul.recepcio.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "dialogue": "recepcionista"
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.recepcio.parla"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.recepcio.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tub": {
+      "name": "sala.bcmu_vestibul.tub.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "*",
+          "action": {
+            "name": "tub.enviar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.tub.obre"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.tub.look"
+            }
+          ]
+        }
+      ]
+    },
+    "maquina": {
+      "name": "sala.bcmu_vestibul.maquina.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "push"
+          ],
+          "if": {
+            "flag": "entrepa_comprat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.maquina.ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "push"
+          ],
+          "if": {
+            "flag": "propines"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.maquina.propines"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_vestibul.maquina.cau",
+              "sound": "maquina_cafe"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "entrepa_suis"
+            },
+            {
+              "setFlag": "entrepa_comprat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.maquina.sense"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "entrepa_comprat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.maquina.look_forat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.maquina.look"
+            }
+          ]
+        }
+      ]
+    },
+    "plantes": {
+      "name": "sala.bcmu_vestibul.plantes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "planta_retallada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.plantes.retallada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.plantes.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ascensor": {
+      "name": "sala.bcmu_vestibul.ascensor.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.ascensor.fugida"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "auditoria_acceptada"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_vestibul.ascensor.puja",
+              "sound": "ascensor"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_a_seguretat"
+            }
+          ],
+          "goTo": "bcmu_seguretat"
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.ascensor.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.ascensor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "sortida": {
+      "name": "sala.bcmu_vestibul.sortida.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "var": "sospita_max",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "flag": "recepcionista_enredada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.sortida.recepcionista"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_vestibul.sortida.fora"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_al_carrer"
+            }
+          ],
+          "goTo": "bcmu_contenidor"
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.sortida.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.sortida.look"
+            }
+          ]
+        }
+      ]
+    },
+    "recepcionista": {
+      "name": "sala.bcmu_vestibul.recepcionista.nom",
+      "visibleIf": {
+        "flag": "virus_aturat"
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "recepcionista"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "var": "sospita_max",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "flag": "recepcionista_enredada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.recepcionista.look_mira"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_vestibul.recepcionista.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "sospita": {
+      "visibleIf": {
+        "flag": "auditoria"
+      }
+    },
+    "sospita_25": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 25
+          }
+        ]
+      }
+    },
+    "sospita_50": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 50
+          }
+        ]
+      }
+    },
+    "sospita_75": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 75
+          }
+        ]
+      }
+    },
+    "planta_retallada": {
+      "visibleIf": {
+        "flag": "planta_retallada"
+      }
+    },
+    "maquina_forat": {
+      "visibleIf": {
+        "flag": "entrepa_comprat"
+      }
+    }
+  }
+}

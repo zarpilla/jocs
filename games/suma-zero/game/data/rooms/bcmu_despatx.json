@@ -1,0 +1,422 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bcmu_despatx.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "verb": "*",
+      "id": "intro",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_despatx.intro1"
+        },
+        {
+          "who": "bonfill",
+          "text": "sala.bcmu_despatx.intro_d1"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_despatx.intro2"
+        },
+        {
+          "who": "bonfill",
+          "text": "sala.bcmu_despatx.intro_d2"
+        },
+        {
+          "who": "bonfill",
+          "text": "sala.bcmu_despatx.intro_d3"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_despatx.intro3"
+        },
+        {
+          "who": "bonfill",
+          "text": "sala.bcmu_despatx.intro_d4"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_despatx.intro4"
+        },
+        {
+          "who": "ballester",
+          "text": "sala.bcmu_despatx.intro5",
+          "if": {
+            "flag": "ballester_acompanya"
+          },
+          "effects": [
+            {
+              "setFlag": "ballester_compte"
+            }
+          ]
+        },
+        {
+          "who": "iri",
+          "text": "sala.bcmu_despatx.intro6",
+          "if": {
+            "flag": "ballester_acompanya"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "vet_al_despatx"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "effects": [
+        {
+          "setFlag": "vet_al_despatx"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "bonfill": {
+      "name": "sala.bcmu_despatx.bonfill.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "despatx"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.bonfill.look"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.bonfill.dona"
+            }
+          ]
+        }
+      ]
+    },
+    "mobil": {
+      "name": "sala.bcmu_despatx.mobil.nom",
+      "interactions": [
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.aturat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "sync_mobil",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.abans"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "mobil_resolt"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.resolt"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "codi_demanat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.res"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "codi_llegit"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "var": "coberta_mobil",
+            "op": "<=",
+            "value": 0
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.veu"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.llegeix1",
+              "if": {
+                "var": "codi_n",
+                "op": "==",
+                "value": 0
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.llegeix2",
+              "if": {
+                "var": "codi_n",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.llegeix3",
+              "if": {
+                "var": "codi_n",
+                "op": ">=",
+                "value": 2
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "codi_llegit"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "codi_demanat"
+              },
+              {
+                "flag": "codi_llegit",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.look_codi"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.mobil.look"
+            }
+          ]
+        }
+      ]
+    },
+    "foto": {
+      "name": "sala.bcmu_despatx.foto.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.foto.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sap_rockefeller"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.foto.agafa"
+            }
+          ]
+        }
+      ]
+    },
+    "bol": {
+      "name": "sala.bcmu_despatx.bol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.bol.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sap_rockefeller"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.bol.agafa"
+            }
+          ]
+        }
+      ]
+    },
+    "finestra": {
+      "name": "sala.bcmu_despatx.finestra.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.finestra.look"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.finestra.obre"
+            }
+          ]
+        }
+      ]
+    },
+    "ballester": {
+      "name": "sala.bcmu_despatx.ballester.nom",
+      "visibleIf": {
+        "flag": "ballester_acompanya"
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_despatx.ballester.parla"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.ballester.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.bcmu_despatx.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "sync_mobil"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.porta.sync"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "bcmu_avantdespatx"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_despatx.porta.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "passaplats",
+  "displayName": "passaplats",
+  "options": [
+    {
+      "id": "menu__cable",
+      "scriptName": "menu__cable",
+      "text": "Vet, em cal el cable de la cafetera.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__pizza",
+      "scriptName": "menu__pizza",
+      "text": "Vet, passa'm la pizza de demà.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__marcel",
+      "scriptName": "menu__marcel",
+      "text": "Qui és aquest Marcel?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, res.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

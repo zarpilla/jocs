@@ -1,0 +1,392 @@
+{
+  "id": "bar_sala",
+  "name": "Bar La Propina",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_rebost",
+      "active": true,
+      "description": "rebost",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 18,
+          "y": 54
+        },
+        {
+          "x": 64,
+          "y": 54
+        },
+        {
+          "x": 64,
+          "y": 150
+        },
+        {
+          "x": 18,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 42,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 41,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sortida",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 456,
+          "y": 48
+        },
+        {
+          "x": 478,
+          "y": 48
+        },
+        {
+          "x": 478,
+          "y": 160
+        },
+        {
+          "x": 456,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 462,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 467,
+        "y": 160
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "tele",
+      "active": true,
+      "description": "tele",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 326,
+          "y": 40
+        },
+        {
+          "x": 404,
+          "y": 40
+        },
+        {
+          "x": 404,
+          "y": 86
+        },
+        {
+          "x": 326,
+          "y": 86
+        }
+      ],
+      "walkToPoint": {
+        "x": 360,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 365,
+        "y": 86
+      }
+    },
+    {
+      "id": "retol",
+      "active": true,
+      "description": "rètol",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 150,
+          "y": 18
+        },
+        {
+          "x": 310,
+          "y": 18
+        },
+        {
+          "x": 310,
+          "y": 48
+        },
+        {
+          "x": 150,
+          "y": 48
+        }
+      ],
+      "walkToPoint": {
+        "x": 230,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 230,
+        "y": 48
+      }
+    },
+    {
+      "id": "telefon",
+      "active": true,
+      "description": "telèfon",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 430,
+          "y": 68
+        },
+        {
+          "x": 452,
+          "y": 68
+        },
+        {
+          "x": 452,
+          "y": 100
+        },
+        {
+          "x": 430,
+          "y": 100
+        }
+      ],
+      "walkToPoint": {
+        "x": 440,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 441,
+        "y": 100
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "tap_barra",
+      "tag": "tap_barra",
+      "animations": {
+        "tap_barra": {}
+      },
+      "zIndex": 20,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 248,
+            "y": 108
+          },
+          {
+            "x": 266,
+            "y": 108
+          },
+          {
+            "x": 266,
+            "y": 120
+          },
+          {
+            "x": 248,
+            "y": 120
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 256,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 257,
+        "y": 120
+      },
+      "description": "clauer",
+      "baseline": 160
+    },
+    {
+      "id": "comandament_barra",
+      "tag": "comandament_barra",
+      "animations": {
+        "comandament_barra": {}
+      },
+      "zIndex": 20,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 280,
+            "y": 108
+          },
+          {
+            "x": 302,
+            "y": 108
+          },
+          {
+            "x": 302,
+            "y": 120
+          },
+          {
+            "x": 280,
+            "y": 120
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 290,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 291,
+        "y": 120
+      },
+      "description": "comandament",
+      "baseline": 160
+    },
+    {
+      "id": "tele_bassols",
+      "tag": "tele_bassols",
+      "animations": {
+        "tele_bassols": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "rebost_tancat",
+      "tag": "rebost_tancat",
+      "animations": {
+        "rebost_tancat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "bar",
+      "tag": "bar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 160
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 226,
+      "y": 196,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 132,
+      "y": 172,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "tomas-1",
+      "definition": "tomas/tomas.character.json",
+      "x": 300,
+      "y": 138,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

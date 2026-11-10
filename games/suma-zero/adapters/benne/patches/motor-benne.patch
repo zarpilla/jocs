@@ -1,0 +1,273 @@
+diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
+--- src/engine/bennescript/actions.ts
++++ src/engine/bennescript/actions.ts
+@@ -1,5 +1,6 @@
+ import {
+   clearSavedCharacterSpeechPosition,
++  getCharacterAnimationOverrideTag,
+   readSavedCharacterAlpha,
+   readSavedCharacterFollowingTarget,
+   readSavedCharacterSpeechOffset,
+@@ -9,7 +10,7 @@
+   writeSavedCharacterSpeechPosition,
+ } from '../benneAnimationRuntime.js';
+ import { getCharacterWorldFeet } from '../characterFeet.js';
+-import { resolveInitialIdleFacing } from '../directionalCharacterAnimation.js';
++import { playDirectionalAnimation, resolveInitialIdleFacing } from '../directionalCharacterAnimation.js';
+ import type { GameStateManager } from '../gameState/GameStateManager.js';
+ import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManager.js';
+ import { BENNE_SCREEN_FADE_DEFAULT_COLOR, BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC } from '../scenes/roomScreenFadeConstants.js';
+@@ -311,6 +312,30 @@
+   );
+ }
+ 
++/**
++ * Called from a room-enter handler (`onEnter`, `game.onEnterAnyRoom`): the room is not revealed —
++ * the screen stays black until a later `fadeIn()`. For title cards shown before a room appears.
++ */
++export function stayBlackOnEnter(): void {
++  const scene = roomFor('stayBlackOnEnter');
++  if (scene) scene.holdScreenFadeOnEnter = true;
++}
++
++/**
++ * Changes a character's outfit (Suma Zero patch): directional clips are looked up as
++ * `<outfit><Base><dir>` first (e.g. `BarWalkL`), then the plain ones. `''` is the default outfit.
++ * Instant; not saved (the game sets it again from its own state on every room enter).
++ */
++export function setOutfit(characterId: string, outfit: string): void {
++  const sprite = activeRoomScene()?.getCharacterSprite(characterId);
++  if (!(sprite instanceof Phaser.GameObjects.Sprite) || !sprite.anims) return;
++  if (((sprite.getData('outfit') as string | undefined) ?? '') === outfit) return;
++  sprite.setData('outfit', outfit);
++  if (getCharacterAnimationOverrideTag(sprite)) return;
++  const base = (sprite.getData('facingBase') as string | undefined) ?? 'Idle';
++  playDirectionalAnimation(sprite, base, sprite.getData('facing') ?? resolveInitialIdleFacing(sprite));
++}
++
+ /** Fades the screen to `color` (black by default) over `seconds`. Waits. */
+ export const fadeOut = timed((seconds?: number, color?: number): Task => screenFade(1, seconds, color));
+ 
+diff -ruN src/engine/bennescript/index.ts src/engine/bennescript/index.ts
+--- src/engine/bennescript/index.ts
++++ src/engine/bennescript/index.ts
+@@ -14,6 +14,8 @@
+   inventory,
+   player,
+   say,
++  setOutfit,
++  stayBlackOnEnter,
+   wait,
+   waitForClick,
+   walkToClicked,
+diff -ruN src/engine/ConfigManager.ts src/engine/ConfigManager.ts
+--- src/engine/ConfigManager.ts
++++ src/engine/ConfigManager.ts
+@@ -332,6 +332,10 @@
+   if (data.defaultFallbackLine !== undefined && typeof data.defaultFallbackLine !== 'string') {
+     throw new Error('game-config defaultFallbackLine must be a string when present');
+   }
++
++  if (data.walkToLabel !== undefined && typeof data.walkToLabel !== 'string') {
++    throw new Error('game-config walkToLabel must be a string when present');
++  }
+ }
+ 
+ function assertInitialGameState(data: GameSettings): void {
+diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
+--- src/engine/scenes/RoomScene.ts
++++ src/engine/scenes/RoomScene.ts
+@@ -230,6 +230,7 @@
+   BENNE_SCREEN_FADE_DEFAULT_COLOR,
+   BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
+   BENNE_SCREEN_FADE_OVERLAY_DEPTH,
++  DISPLAY_TEXT_OVERLAY_DEPTH,
+   SPEAKING_TEXT_OVERLAY_DEPTH,
+ } from './roomScreenFadeConstants';
+ import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
+@@ -345,6 +346,9 @@
+   return v && v.length > 0 ? { defaultVerb: v } : {};
+ }
+ 
++/** Suma Zero patch: a line can't be clicked away during its first half second. */
++const SCRIPTED_SKIP_GUARD_MS = 500;
++
+ export class RoomScene extends Phaser.Scene {
+   private roomData!: RoomData;
+ 
+@@ -684,6 +688,11 @@
+    * before the room's own `pointerdown` handler sees the same click.
+    */
+   private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
++  /**
++   * Suma Zero patch: when the current click-to-skip hook was armed (scene time, ms). Clicks in the first
++   * {@link SCRIPTED_SKIP_GUARD_MS} are swallowed, so a double click or a stray click doesn't eat a line unread.
++   */
++  private scriptedDialogClickToSkipSince = 0;
+ 
+   /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
+   private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
+@@ -874,7 +883,7 @@
+       const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
+ 
+       const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
+-      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : stackDepth;
++      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : isDisplayText ? DISPLAY_TEXT_OVERLAY_DEPTH : stackDepth;
+       const guiStartVisible =
+         isSpeakingText || isDisplayText || isChoiceDialog
+           ? false
+@@ -1866,6 +1875,12 @@
+   }
+ 
+   /**
++   * Set during a room's enter handlers (Bennescript `stayBlackOnEnter()`): the room transition skips
++   * its fade-in and leaves the screen black, so a title can be shown before the room is revealed.
++   */
++  holdScreenFadeOnEnter = false;
++
++  /**
+    * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
+    * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
+    */
+@@ -2314,6 +2329,7 @@
+    */
+   setScriptedDialogClickToSkip(fn: (() => void) | null): void {
+     this.scriptedDialogClickToSkip = fn;
++    this.scriptedDialogClickToSkipSince = this.time?.now ?? 0;
+     const pointer = this.input?.activePointer;
+     this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
+   }
+@@ -2342,6 +2358,9 @@
+     if (this.scriptedDialogClickToSkipArmedDuringDown != null && pointer.downTime === this.scriptedDialogClickToSkipArmedDuringDown) {
+       return false;
+     }
++    if (this.time.now - this.scriptedDialogClickToSkipSince < SCRIPTED_SKIP_GUARD_MS) {
++      return true;
++    }
+     const fn = this.scriptedDialogClickToSkip;
+     this.scriptedDialogClickToSkip = null;
+     fn();
+diff -ruN src/engine/scenes/roomScreenFadeConstants.ts src/engine/scenes/roomScreenFadeConstants.ts
+--- src/engine/scenes/roomScreenFadeConstants.ts
++++ src/engine/scenes/roomScreenFadeConstants.ts
+@@ -4,7 +4,7 @@
+ export const BENNE_SCREEN_FADE_DEFAULT_COLOR = 0x000000;
+ 
+ /**
+- * Renders above HUD, choice-dialog, and display-text GUI overlays; below Speaking Text
++ * Renders above HUD and choice-dialog GUI overlays; below Display Text, Speaking Text
+  * ({@link SPEAKING_TEXT_OVERLAY_DEPTH}) and the {@link RoomScene} custom game cursor
+  * (see `CUSTOM_CURSOR_DEPTH` in `RoomScene.ts`).
+  */
+@@ -15,3 +15,9 @@
+  * stay readable during `fadeOut()`, and below the custom cursor (`CUSTOM_CURSOR_DEPTH`).
+  */
+ export const SPEAKING_TEXT_OVERLAY_DEPTH = 460_000;
++
++/**
++ * Display Text (`display-text`, Bennescript `display`) also draws above the screen fade, so a
++ * title or an ending can be shown over black (`fadeOut()` then `display()`).
++ */
++export const DISPLAY_TEXT_OVERLAY_DEPTH = 455_000;
+diff -ruN src/engine/scenes/RoomTransitionOrchestrator.ts src/engine/scenes/RoomTransitionOrchestrator.ts
+--- src/engine/scenes/RoomTransitionOrchestrator.ts
++++ src/engine/scenes/RoomTransitionOrchestrator.ts
+@@ -406,7 +406,11 @@
+         await entranceSound.prepareForPlayback();
+       }
+ 
+-      if (skipEnterFadeIn) {
++      if (roomScene.holdScreenFadeOnEnter) {
++        // The script wants to start on black (e.g. a title card); it fades in itself later.
++        roomScene.holdScreenFadeOnEnter = false;
++        roomScene.screenFadeLayer?.setAlpha(1);
++      } else if (skipEnterFadeIn) {
+         roomScene.screenFadeLayer?.setAlpha(0);
+       } else {
+         syncBenneRuntimeHiDpiSceneMainCameras(this.game);
+diff -ruN src/engine/verbs/verbConfig.ts src/engine/verbs/verbConfig.ts
+--- src/engine/verbs/verbConfig.ts
++++ src/engine/verbs/verbConfig.ts
+@@ -13,6 +13,12 @@
+  */
+ export const WALK_TO_VERB_DISPLAY_LABEL = 'Walk to';
+ 
++/** Walk-mode label: `game-config.json` `walkToLabel` when set, else {@link WALK_TO_VERB_DISPLAY_LABEL}. */
++export function resolveWalkToLabel(settings: GameSettings): string {
++  const custom = settings.walkToLabel?.trim();
++  return custom && custom.length > 0 ? custom : WALK_TO_VERB_DISPLAY_LABEL;
++}
++
+ function titleCaseVerbId(id: string): string {
+   if (id.length === 0) {
+     return id;
+@@ -28,7 +34,7 @@
+ export function resolveVerbLineDisplayLabel(settings: GameSettings, activeVerbId: string | null): string {
+   const trimmed = activeVerbId?.trim() ?? '';
+   if (trimmed.length === 0 || trimmed === WALK_TO_VERB_ID) {
+-    return WALK_TO_VERB_DISPLAY_LABEL;
++    return resolveWalkToLabel(settings);
+   }
+   const defs = getEffectiveVerbDefinitions(settings);
+   const def = defs.find((v) => v.id === trimmed);
+@@ -53,7 +59,7 @@
+ export function resolveVerbLineLeadingVerbWord(settings: GameSettings, activeVerbId: string): string {
+   const trimmed = activeVerbId.trim();
+   if (trimmed.length === 0 || trimmed === WALK_TO_VERB_ID) {
+-    return WALK_TO_VERB_DISPLAY_LABEL;
++    return resolveWalkToLabel(settings);
+   }
+   const defs = getEffectiveVerbDefinitions(settings);
+   const def = defs.find((v) => v.id === trimmed);
+@@ -97,7 +103,7 @@
+   }
+ 
+   if (walkMode) {
+-    return `${WALK_TO_VERB_DISPLAY_LABEL} ${desc}`;
++    return `${resolveWalkToLabel(settings)} ${desc}`;
+   }
+   if (useInventoryPrepLine) {
+     const verbWord = resolveVerbLineLeadingVerbWord(settings, trimmedVerb);
+diff -ruN src/types/game.ts src/types/game.ts
+--- src/types/game.ts
++++ src/types/game.ts
+@@ -213,6 +213,10 @@
+    */
+   defaultFallbackLine?: string;
+   /**
++   * Verb-line label for the built-in walk mode (no verb armed). Defaults to **`"Walk to"`**.
++   */
++  walkToLabel?: string;
++  /**
+    * Global default policy for whether the **active inventory item** is "dropped" (active inventory +
+    * active verb both cleared) after it is used on a clickable target (prop / hotspot / character).
+    *
+diff -ruN src/engine/directionalCharacterAnimation.ts src/engine/directionalCharacterAnimation.ts
+--- src/engine/directionalCharacterAnimation.ts
++++ src/engine/directionalCharacterAnimation.ts
+@@ -166,13 +166,18 @@
+     return true;
+   };
+ 
+-  for (const d of facingFallbackOrder(direction)) {
+-    if (tryPlay(`${baseName}${d}`, false)) {
+-      return;
+-    }
+-    const m = mirrorHorizontalFacing(d);
+-    if (m !== null && tryPlay(`${baseName}${m}`, true)) {
+-      return;
++  // Vestuari (pegat de Suma Zero): si el sprite té `outfit`, primer prova `<outfit><base><dir>` (p. ex.
++  // `BarWalkL`) i, si no existeix, la normal. Així un personatge pot canviar de roba sense canviar de sprite.
++  const outfit = (sprite.getData('outfit') as string | undefined) ?? '';
++  for (const prefix of outfit ? [outfit, ''] : ['']) {
++    for (const d of facingFallbackOrder(direction)) {
++      if (tryPlay(`${prefix}${baseName}${d}`, false)) {
++        return;
++      }
++      const m = mirrorHorizontalFacing(d);
++      if (m !== null && tryPlay(`${prefix}${baseName}${m}`, true)) {
++        return;
++      }
+     }
+   }
+ }

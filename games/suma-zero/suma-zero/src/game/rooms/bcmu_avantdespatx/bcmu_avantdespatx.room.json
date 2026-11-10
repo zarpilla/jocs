@@ -1,0 +1,241 @@
+{
+  "id": "bcmu_avantdespatx",
+  "name": "L'avantdespatx",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "despatx del Director",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 380,
+          "y": 36
+        },
+        {
+          "x": 444,
+          "y": 36
+        },
+        {
+          "x": 444,
+          "y": 150
+        },
+        {
+          "x": 380,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 412,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 412,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "ascensor",
+      "active": true,
+      "description": "ascensor",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 14,
+          "y": 40
+        },
+        {
+          "x": 66,
+          "y": 40
+        },
+        {
+          "x": 66,
+          "y": 150
+        },
+        {
+          "x": 14,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 40,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 40,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "factura",
+      "active": true,
+      "description": "factura",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 214,
+          "y": 109
+        },
+        {
+          "x": 232,
+          "y": 109
+        },
+        {
+          "x": 232,
+          "y": 118
+        },
+        {
+          "x": 214,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 222,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 223,
+        "y": 118
+      }
+    },
+    {
+      "id": "nomina",
+      "active": true,
+      "description": "nòmina",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 246,
+          "y": 109
+        },
+        {
+          "x": 264,
+          "y": 109
+        },
+        {
+          "x": 264,
+          "y": 118
+        },
+        {
+          "x": 246,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 256,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 255,
+        "y": 118
+      }
+    },
+    {
+      "id": "tub",
+      "active": true,
+      "description": "estació del tub",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 80,
+          "y": 66
+        },
+        {
+          "x": 98,
+          "y": 66
+        },
+        {
+          "x": 98,
+          "y": 110
+        },
+        {
+          "x": 80,
+          "y": 110
+        }
+      ],
+      "walkToPoint": {
+        "x": 90,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 89,
+        "y": 110
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 150,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "pons-1",
+      "definition": "pons/pons.character.json",
+      "x": 350,
+      "y": 184,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

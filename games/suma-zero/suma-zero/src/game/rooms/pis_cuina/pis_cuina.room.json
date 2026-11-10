@@ -1,0 +1,368 @@
+{
+  "id": "pis_cuina",
+  "name": "La cuina",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "plats",
+      "active": true,
+      "description": "plats",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 104,
+          "y": 98
+        },
+        {
+          "x": 176,
+          "y": 98
+        },
+        {
+          "x": 176,
+          "y": 122
+        },
+        {
+          "x": 104,
+          "y": 122
+        }
+      ],
+      "walkToPoint": {
+        "x": 140,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 140,
+        "y": 122
+      }
+    },
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 418,
+          "y": 40
+        },
+        {
+          "x": 466,
+          "y": 40
+        },
+        {
+          "x": 466,
+          "y": 160
+        },
+        {
+          "x": 418,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 442,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 442,
+        "y": 160
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cafetera",
+      "active": true,
+      "description": "cafetera",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 56,
+          "y": 86
+        },
+        {
+          "x": 86,
+          "y": 86
+        },
+        {
+          "x": 86,
+          "y": 118
+        },
+        {
+          "x": 56,
+          "y": 118
+        }
+      ],
+      "walkToPoint": {
+        "x": 80,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 71,
+        "y": 118
+      }
+    },
+    {
+      "id": "nevera",
+      "active": true,
+      "description": "nevera",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 220,
+          "y": 50
+        },
+        {
+          "x": 282,
+          "y": 50
+        },
+        {
+          "x": 282,
+          "y": 160
+        },
+        {
+          "x": 220,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 250,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 251,
+        "y": 160
+      }
+    },
+    {
+      "id": "passaplats",
+      "active": true,
+      "description": "passaplats",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 300,
+          "y": 66
+        },
+        {
+          "x": 352,
+          "y": 66
+        },
+        {
+          "x": 352,
+          "y": 110
+        },
+        {
+          "x": 300,
+          "y": 110
+        }
+      ],
+      "walkToPoint": {
+        "x": 326,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 326,
+        "y": 110
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "pizza_nevera",
+      "tag": "pizza_nevera",
+      "animations": {
+        "pizza_nevera": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 228,
+            "y": 80
+          },
+          {
+            "x": 266,
+            "y": 80
+          },
+          {
+            "x": 266,
+            "y": 92
+          },
+          {
+            "x": 228,
+            "y": 92
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 250,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 247,
+        "y": 92
+      },
+      "description": "pizza"
+    },
+    {
+      "id": "tonyina",
+      "tag": "tonyina",
+      "animations": {
+        "tonyina": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 230,
+            "y": 100
+          },
+          {
+            "x": 266,
+            "y": 100
+          },
+          {
+            "x": 266,
+            "y": 114
+          },
+          {
+            "x": 230,
+            "y": 114
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 250,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 248,
+        "y": 114
+      },
+      "description": "pa i tonyina"
+    },
+    {
+      "id": "cable_cafetera",
+      "tag": "cable_cafetera",
+      "animations": {
+        "cable_cafetera": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "nevera_oberta",
+      "tag": "nevera_oberta",
+      "animations": {
+        "nevera_oberta": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pluja",
+      "tag": "pluja",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pluja": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "passaplats_obert",
+      "tag": "passaplats_obert",
+      "animations": {
+        "passaplats_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 180,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

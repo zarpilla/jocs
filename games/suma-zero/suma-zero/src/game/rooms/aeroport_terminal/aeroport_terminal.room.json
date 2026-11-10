@@ -1,0 +1,302 @@
+{
+  "id": "aeroport_terminal",
+  "name": "La terminal",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "taulell",
+      "active": true,
+      "description": "taulell",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 30,
+          "y": 104
+        },
+        {
+          "x": 154,
+          "y": 104
+        },
+        {
+          "x": 154,
+          "y": 150
+        },
+        {
+          "x": 30,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 92,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 92,
+        "y": 150
+      }
+    },
+    {
+      "id": "vidriera",
+      "active": true,
+      "description": "vidriera",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 170,
+          "y": 26
+        },
+        {
+          "x": 310,
+          "y": 26
+        },
+        {
+          "x": 310,
+          "y": 112
+        },
+        {
+          "x": 170,
+          "y": 112
+        }
+      ],
+      "walkToPoint": {
+        "x": 240,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 240,
+        "y": 112
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "maleti",
+      "tag": "maleti",
+      "animations": {
+        "maleti": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 392,
+            "y": 84
+          },
+          {
+            "x": 418,
+            "y": 84
+          },
+          {
+            "x": 418,
+            "y": 106
+          },
+          {
+            "x": 392,
+            "y": 106
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 380,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 405,
+        "y": 106
+      },
+      "description": "maletí"
+    },
+    {
+      "id": "ulleres",
+      "tag": "ulleres",
+      "animations": {
+        "ulleres": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 436,
+            "y": 126
+          },
+          {
+            "x": 462,
+            "y": 126
+          },
+          {
+            "x": 462,
+            "y": 140
+          },
+          {
+            "x": 436,
+            "y": 140
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 446,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 449,
+        "y": 140
+      },
+      "description": "ulleres"
+    },
+    {
+      "id": "cigarreta_mitja",
+      "tag": "cigarreta_mitja",
+      "animations": {
+        "cigarreta_mitja": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cigarreta_curta",
+      "tag": "cigarreta_curta",
+      "animations": {
+        "cigarreta_curta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "terminal",
+      "tag": "terminal",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "terminal": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 160
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 220,
+      "y": 196,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "soler-1",
+      "definition": "soler/soler.character.json",
+      "x": 44,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "empleat-1",
+      "definition": "empleat/empleat.character.json",
+      "x": 376,
+      "y": 156,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "nen-1",
+      "definition": "nen/nen.character.json",
+      "x": 300,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

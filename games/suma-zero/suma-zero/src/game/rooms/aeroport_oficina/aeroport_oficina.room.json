@@ -1,0 +1,213 @@
+{
+  "id": "aeroport_oficina",
+  "name": "L'oficina de facturació",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 400,
+          "y": 50
+        },
+        {
+          "x": 450,
+          "y": 50
+        },
+        {
+          "x": 450,
+          "y": 160
+        },
+        {
+          "x": 400,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 424,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 425,
+        "y": 160
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "terminal",
+      "active": true,
+      "description": "terminal",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 118,
+          "y": 84
+        },
+        {
+          "x": 182,
+          "y": 84
+        },
+        {
+          "x": 182,
+          "y": 124
+        },
+        {
+          "x": 118,
+          "y": 124
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 150,
+        "y": 124
+      }
+    },
+    {
+      "id": "impressora",
+      "active": true,
+      "description": "impressora",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 256,
+          "y": 90
+        },
+        {
+          "x": 306,
+          "y": 90
+        },
+        {
+          "x": 306,
+          "y": 124
+        },
+        {
+          "x": 256,
+          "y": 124
+        }
+      ],
+      "walkToPoint": {
+        "x": 280,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 281,
+        "y": 124
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llista_feta",
+      "tag": "llista_feta",
+      "animations": {
+        "llista_feta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "imprimint",
+      "tag": "imprimint",
+      "animations": {
+        "imprimint": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "acreditacions_llestes",
+      "tag": "acreditacions_llestes",
+      "animations": {
+        "acreditacions_llestes": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ventilador",
+      "tag": "ventilador",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ventilador": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 200,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}
