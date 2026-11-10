@@ -109,6 +109,34 @@
               "who": "player",
               "text": "sala.pis_cuina.nevera.obre",
               "sound": "nevera"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_pizza",
+              "if": {
+                "all": [
+                  {
+                    "flag": "pizza_demanada",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "pizza",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_pa",
+              "if": {
+                "flag": "te_entrepa",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_iogurt"
             }
           ],
           "effects": [
@@ -174,6 +202,18 @@
             {
               "who": "player",
               "text": "sala.pis_cuina.nevera.look_iogurt"
+            }
+          ],
+          "if": {
+            "flag": "nevera_oberta"
+          }
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_tancada"
             }
           ]
         },

@@ -2365,6 +2365,34 @@
                     "who": "player",
                     "text": "sala.pis_cuina.nevera.obre",
                     "sound": "nevera"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.nevera.look_pizza",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "pizza_demanada",
+                          "is": false
+                        },
+                        {
+                          "hasItem": "pizza",
+                          "is": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.nevera.look_pa",
+                    "if": {
+                      "flag": "te_entrepa",
+                      "is": false
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.nevera.look_iogurt"
                   }
                 ],
                 "effects": [
@@ -2430,6 +2458,18 @@
                   {
                     "who": "player",
                     "text": "sala.pis_cuina.nevera.look_iogurt"
+                  }
+                ],
+                "if": {
+                  "flag": "nevera_oberta"
+                }
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.nevera.look_tancada"
                   }
                 ]
               },
@@ -6852,6 +6892,7 @@
       "sala.pis_cuina.nevera.look_iogurt": "I un iogurt que ja vota.",
       "sala.pis_cuina.nevera.look_pa": "Pa i tonyina.",
       "sala.pis_cuina.nevera.look_pizza": "Hi ha una pizza per a demà.",
+      "sala.pis_cuina.nevera.look_tancada": "La nevera. Brunzeix com si es queixés. Té motius.",
       "sala.pis_cuina.nevera.nom": "nevera",
       "sala.pis_cuina.nevera.obre": "A veure què hi ha.",
       "sala.pis_cuina.nevera.tanca": "Tancada.",
