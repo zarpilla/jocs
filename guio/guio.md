@@ -3,7 +3,6 @@
 > Document únic del guió: premissa, regles del món, actes, finals i encaix amb el motor. Ve de
 > [primer-guio.txt](../primer-guio.txt) (les dues versions i les notes de l'usuari), revisat i ampliat.
 > **Cap derrota i cap atzucac**: si alguna cosa surt malament, es torna a provar el pas, amb gràcia.
-> Els noms marcats amb ⚑ són provisionals (vegeu «Preguntes obertes»).
 
 ## Premissa
 
@@ -82,7 +81,7 @@ i els objectes, pel **tub pneumàtic** (vegeu «Regles del món»).
 | **Senyor Puig** | L'amo d'El Último Peaje. Bigoti i ràbia. Rètol: *«El cliente siempre tiene razón (excepto si no paga)»*. Parla sempre de «la seva dona», que tothom sap que no existeix. | L'obstacle de l'Escena 2, i un final petit: torna a obrir el bar. |
 | **La supervisora Ortega** | Supervisora de facturació de l'aeroport. Surt a fumar cada hora en punt. | El rellotge de la sincronització de l'aeroport (la cigarreta). |
 | **L'agent Soler** | Guàrdia de l'aeroport, de cor tendre. | El que la Vet ha de distreure amb el nen que no existeix. |
-| **El Director Rendal** ⚑ | Director de la seu del BCMU. Educat, impecable, somriu massa. Parla de «sostenibilitat» i «inclusió financera». Té un retrat seu al vestíbul, amb el seu gos **Rockefeller**. No crida mai. | L'antagonista. Creu que fa el bé. Al final, agafa el metro. |
+| **El Director Bonfill** | Director de la seu del BCMU. Educat, impecable, somriu massa. Parla de «sostenibilitat» i «inclusió financera». Té un retrat seu al vestíbul, amb el seu gos **Rockefeller**. No crida mai. | L'antagonista. Creu que fa el bé. Al final, agafa el metro. |
 | **En Ballester** | El Cap de Seguretat. Gran i enorme, trenta anys a la casa, «reestructurat» tres cops. Porta la clau del Llibre Major en un collaret perquè «el banc no es fia de ningú, ni dels seus». Fan de la sèrie *La Comissària Bassols*. Té una hipoteca. | L'Escena 6. Si la Vet li diu la veritat, és un aliat a l'Acte 3. |
 | **NETA-3** | El robot de neteja del tercer pis. Porta catorze hores seguides. No li paguen les hores extres. | L'obstacle de l'Escena 5. Si l'Iri l'atura amb el codi d'en Marcel, en lloc de l'entrepà, és un aliat. |
 | **La Rius** | Encarregada dels tècnics de manteniment de caixes fortes. Subcontractada d'una subcontracta. Una aplicació li descompta el temps que passa al lavabo. | L'entrada de l'Iri al banc. Si l'Iri l'ajuda, és una aliada. |
@@ -814,14 +813,12 @@ tub). La resta ja ho fa el nucli de Ferro-9. Cap canvi a Benne: la «pantalla di
 
 ## Preguntes obertes
 
-1. **El nom del Director** (el primer guió deia Aguilar, i no t'agrada). Proposta: **Rendal** (de «renda»).
-   Altres: Bonfill, Mas-Rich, Valls-Capdevila. -> ?
-2. **Iri i Vet** són els mateixos noms que les protagonistes de Ferro-9. Es mantenen (com un «repartiment»
-   que torna) o se'n busquen d'altres? -> ?
-3. **Finals per aliats** (1 · Ni caos ni paradís, 2 · Hores extres, 3 · La taula llarga): et sembla bé que el
-   millor final depengui de la solidaritat amb els treballadors? -> ?
-4. **Escenes noves** (el moll de càrrega amb la Rius, la sortida per les escombraries, la senyora Pons): s'hi
-   queden? -> ?
+1. **El nom del Director** (el primer guió deia Aguilar). -> **Bonfill** («bon fill»: l'hereu)
+2. **Iri i Vet** són els mateixos noms que les protagonistes de Ferro-9. -> es mantenen, com un repartiment
+   que torna, sense cap relació entre les històries
+3. **Finals per aliats** (1 · Ni caos ni paradís, 2 · Hores extres, 3 · La taula llarga). -> sí
+4. **Escenes noves** (el moll de càrrega, els objectes perduts, la sortida per les escombraries, la senyora
+   Pons). -> s'hi queden totes
 5. **La ciutat de l'Iri i la Vet:** no es diu mai (proposta) o és una de concreta? -> proposta: no es diu
 6. **El bar es diu «El Último Peaje»** i el rètol del Puig és en castellà. Es manté (és realista i té gràcia)?
    -> proposta: es manté
