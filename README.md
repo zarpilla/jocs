@@ -5,7 +5,7 @@ cor polític. Dues germanes de fet, l'**Iri** (hacker) i la **Vet** (cambrera i 
 professional), volen entrar a la seu del Banc Central Mundial Unificat i repartir tots els diners del
 món a parts iguals. Funciona massa bé.
 
-Guió: `guio/guio.md` (en preparació, a partir de [primer-guio.txt](primer-guio.txt)).
+Guió: [guio/guio.md](guio/guio.md) (primera versió, a partir de [primer-guio.txt](primer-guio.txt)).
 
 La base tècnica (nucli narratiu, adaptador de Benne, eines) ve de Ferro-9
 (`../ferro-9`), amb la història separada del motor.
