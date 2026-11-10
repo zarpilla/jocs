@@ -111,13 +111,42 @@ def teclat():
     return mix(*parts)
 
 
+def _ressonador(x, fc, bw):
+    """Ressonador de 2 pols (un formant) amb la freqüència `fc` variable (vector) i l'amplada `bw` fixa."""
+    r = np.exp(-np.pi * bw / SR)
+    a1 = 2 * r * np.cos(2 * np.pi * fc / SR)
+    a2, g = -r * r, 1 - r
+    y = np.zeros_like(x)
+    y1 = y2 = 0.0
+    for n in range(len(x)):
+        v = g * x[n] + a1[n] * y1 + a2 * y2
+        y2, y1 = y1, v
+        y[n] = v
+    return y
+
+
 def miol():
-    """Un gat: miau (glissando amb formants)."""
-    d = 0.7
+    """En Diu, queixós: «miaaaau» llarg que vol menjar. Una veu (to que puja i cau, vibrato) passada per
+    tres formants que van de la «m» a la «i», l'«a» i la «u»."""
+    d = 1.0
     n = int(SR * d)
-    f = np.concatenate([np.linspace(500, 820, int(SR * 0.25)), np.linspace(820, 420, n - int(SR * 0.25))])
-    v = osc(f, d, 'saw') * 0.6 + osc(f * 2, d) * 0.3
-    return band(v, 400, 3000) * env(d, 0.05, None, 0.15)
+    u = np.arange(n) / n
+    k = lambda keys: np.interp(u, [a for a, _ in keys], [b for _, b in keys])
+    vibrato = 1 + 0.04 * np.sin(2 * np.pi * 5 * t(d)) * np.minimum(1, u * 4)
+    f0 = k([(0, 480), (0.25, 720), (0.6, 690), (1, 400)]) * vibrato
+    ph = np.cumsum(f0) / SR
+    veu = sum(np.sin(2 * np.pi * h * ph) / h ** 0.8 for h in range(1, 18))
+    veu = veu + 0.09 * np.random.default_rng(1).uniform(-1, 1, n)  # alè (no toca el `rng` dels altres sons)
+    formants = [
+        ([(0, 300), (0.1, 420), (0.3, 980), (0.75, 920), (0.92, 480), (1, 420)], 140, 1.0),
+        ([(0, 1100), (0.1, 2600), (0.25, 2000), (0.6, 1650), (0.88, 1050), (1, 900)], 180, 0.7),
+        ([(0, 2600), (0.12, 3400), (0.5, 3000), (1, 2600)], 260, 0.35),
+    ]
+    x = sum(g * _ressonador(veu, k(keys), bw) for keys, bw, g in formants)
+    x = np.append(x[0], x[1:] - 0.92 * x[:-1])  # més brillant, menys xiulet
+    e = k([(0, 0), (0.08, 0.3), (0.2, 1), (0.75, 0.85), (1, 0)])
+    e[-int(SR * 0.03):] *= np.linspace(1, 0, int(SR * 0.03))
+    return x * e
 
 
 def mossegada():
