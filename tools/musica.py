@@ -8,6 +8,8 @@ Totes les peces són el mateix tema (La menor, 84 ppm, 24 compassos) amb instrum
 - `pis`: el pis. Lo-fi de hacker: ritme mandrós, piano apagat i vinil.
 - `bar`: La Propina. Jazz de tarda: contrabaix caminant, escombretes i vibràfon.
 - `aeroport`: l'aeroport. Espies: baix obstinat, cops d'aro, cordes en tremolo i guitarra seca.
+- `banc`: la seu del BCMU. Elegància de vestíbul amb un cop a sota: cordes llargues, arpegis en pizzicato,
+  un pols greu de cor i un rellotge de paret. El tema, al vibràfon, com una música d'ascensor que vigila.
 
 Com que tenen la mateixa durada, el joc les encadena al mateix punt (`sync`) en canviar de lloc.
 Les peces són bucles perfectes: cada so que passa del final torna a sonar al principi i la
@@ -387,12 +389,38 @@ def aeroport():
     melodia(p, lambda f, d: punteig(f, d, 3500), pan=0.2, vol=0.2, eco=0.4, staccato=0.6)
     return reverb(p.lr, durada=0.7, cua=2.5, humit=0.3, rng=rng, fosc=5000)
 
+
+def banc():
+    """La seu del BCMU: elegància de vestíbul amb un cop a sota. Cordes, pizzicato, pols greu i vibràfon."""
+    rng = np.random.default_rng(5)
+    p = Pista(COMPASSOS * COMPAS)
+    for i, (baix, veus) in enumerate(ACORDS):
+        inici = 2 * i * COMPAS
+        d = 2 * COMPAS + 2
+        for j, v in enumerate(veus):
+            p.posa(pad(midi(v), d, rng) * env(d, 1.2, 2.0), inici, pan=-0.6 + 0.4 * j, vol=0.06)
+    for c in range(COMPASSOS):
+        baix, veus = acord(c)
+        # Pizzicato: l'acord arpegiat a corxeres, amunt i avall, com un arpa de vestíbul.
+        arpegi = list(veus) + [veus[-1] + 12] + list(reversed(veus))[1:]
+        for k in range(8):
+            nota = arpegi[k % len(arpegi)]
+            p.posa(punteig(midi(nota + 12), 0.35, fosc=4000), quan(c, k / 2), pan=0.4 - 0.1 * (k % 4), vol=0.07)
+        # El pols: un cor greu a l'1 i a l'«i» del 2, com qui espera que el descobreixin.
+        for b, vol in ((0, 0.3), (1.5, 0.2)):
+            p.posa(baix_suau(midi(baix - 12), 0.6 * TEMPS), quan(c, b), vol=vol)
+        # El rellotge de paret, a cada temps; més fort al primer.
+        for b in range(4):
+            p.posa(aro(rng), quan(c, b), pan=-0.5, vol=0.06 if b else 0.09)
+    melodia(p, vibrafon, pan=0.1, vol=0.12, octava=0, eco=0.25)
+    return reverb(p.lr, durada=1.2, cua=4.0, humit=0.45, rng=rng, fosc=5500)
+
 # ─── Sortida ────────────────────────────────────────────────────────────────
 
-MUSICA = {'tema': tema, 'pis': pis, 'bar': bar, 'aeroport': aeroport}
+MUSICA = {'tema': tema, 'pis': pis, 'bar': bar, 'aeroport': aeroport, 'banc': banc}
 
 # Volum eficaç (RMS) de cada peça: fluix, que és ambient i no ha de tapar les veus ni els sons.
-RMS = {'tema': 0.08, 'pis': 0.08, 'bar': 0.08, 'aeroport': 0.08}
+RMS = {'tema': 0.08, 'pis': 0.08, 'bar': 0.08, 'aeroport': 0.08, 'banc': 0.08}
 
 
 def write(name, lr):

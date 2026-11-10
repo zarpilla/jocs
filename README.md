@@ -141,10 +141,10 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   en Diu i els secundaris; les icones de tots els objectes; i la interfície pròpia (la consola d'hacker: verbs,
   menús, desa, carrega i opcions). Font de píxels pròpia, amb accents.
 - **So:** efectes sintetitzats (`npm run sons`) i música d'ambient per lloc (`npm run musica`): el tema de la
-  portada, el pis, el bar i l'aeroport, el mateix tema amb instruments diferents que s'encadena al mateix punt
+  portada, el pis, el bar, l'aeroport i el banc, el mateix tema amb instruments diferents que s'encadena al mateix punt
   en canviar de sala.
 - **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botons «Pista» i «Historial»; la tecla H també obre l'historial).
 - **Art de l'Acte 2, definitiu:** les cinc sales del BCMU (`hd/rooms/bcmu_*.py`, amb la paleta i l'estació del tub
   comunes a `hd/rooms/bcmu.py`), el Director, la Rius, en Ballester i NETA-3 amb les seves animacions d'estat, i les
-  icones dels objectes nous. Els sons de l'Acte 2 són sintetitzats; encara no té música pròpia.
+  icones dels objectes nous. Els sons de l'Acte 2 són sintetitzats, i la música del banc (`banc`) sona a les cinc sales.
 - **Següent pas:** les impressions de la primera partida a l'Acte 2. Després, l'Acte 3.
