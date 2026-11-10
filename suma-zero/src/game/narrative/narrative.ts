@@ -77,6 +77,10 @@ export function takePendingSwitch() {
 /** Esdeveniment de contingut que acaba el joc amb el final que toca (`{ "event": "final" }`). */
 export const ENDING_EVENT = 'final';
 let pendingEnding = false;
+/** Si l'última interacció ha acabat el joc (sense esborrar-ho). */
+export function hasPendingEnding() {
+  return pendingEnding;
+}
 /** Si l'última interacció ha acabat el joc (i ho esborra). */
 export function takePendingEnding() {
   const yes = pendingEnding;
@@ -133,6 +137,10 @@ function describeState(state: unknown) {
 
 narrative.on((e) => {
   switch (e.type) {
+    case 'ending':
+      // Un efecte `{ "ending": ... }` (p. ex. l'avió, al final de l'Acte 1) també acaba el joc.
+      pendingEnding = true;
+      break;
     case 'stateChanged':
       persist();
       applySwitchButton();

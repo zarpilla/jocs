@@ -13,22 +13,30 @@ import { guis, music } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  protagonistMusic, recordLine, rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
+  protagonistMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
+/**
+ * Què hi ha just abans i just després d'aquestes línies, quan es diuen a trossos (les cinemàtiques en diuen
+ * una cada vegada): `before`/`after` són el `who` de la línia del costat; `after: 'negre'` vol dir que tot
+ * seguit es canvia de sala o ve un final, i la pantalla s'ha de quedar a negre.
+ */
+type Around = { before?: string; after?: string }
+
 /** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
-export function playLines(lines: ResolvedLine[]) {
+export function playLines(lines: ResolvedLine[], around: Around = {}) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
     recordLine(line.who, line.text)
     if (line.sound) new SfxHandle(line.sound).play()
     if (line.who === 'title') {
-      // Pantalla de títol: les línies `title` seguides es mostren juntes sobre negre.
-      const first = i === 0 || lines[i - 1]!.who !== 'title'
-      const last = i === lines.length - 1 || lines[i + 1]!.who !== 'title'
-      if (first) fadeOut(1)
+      // Pantalla de títol: les línies `title` seguides es mostren juntes sobre negre. Si després es canvia
+      // de sala (o ve un final), no es torna a la sala d'ara: la següent ja entrarà des del negre.
+      const before = i === 0 ? around.before : lines[i - 1]!.who
+      const after = i === lines.length - 1 ? around.after : lines[i + 1]!.who
+      if (before !== 'title') fadeOut(1)
       display(line.text)
-      if (last) fadeIn(1)
+      if (after !== 'title' && after !== 'negre') fadeIn(1)
     } else if (line.who === 'narrator') {
       display(line.text)
     } else if (line.who === 'player') {
@@ -43,7 +51,7 @@ export function playLines(lines: ResolvedLine[]) {
 
 /** Fa el que diu el resultat d'una interacció: línies, diàleg, canvi de protagonista o de sala. */
 export function playResult(result: InteractionResult) {
-  playLines(result.lines)
+  playLines(result.lines, { after: result.goTo || hasPendingEnding() ? 'negre' : undefined })
   if (takePendingEnding()) {
     takePendingSwitch()
     playEnding()
@@ -117,7 +125,16 @@ export function onRoomEntered() {
   const result = narrative.enterRoom(room)
   entrada = { room, result }
   if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
+  // Entrada caminant: abans del fos, la protagonista es posa fora de la pantalla, a la mateixa alçada.
+  if (result?.walkIn) {
+    const lloc = player.position
+    entrada.walkTo = lloc
+    player.moveTo({ x: result.walkIn === 'left' ? -FORA : 480 + FORA, y: lloc.y })
+  }
 }
+
+/** Quants píxels fora de la pantalla (de 480 d'ample) comença una entrada caminant (`walkIn`). */
+const FORA = 24
 
 /**
  * Música d'ambient: cada protagonista té la del seu espai i, en canviar d'una a l'altra, s'encadenen.
@@ -135,7 +152,7 @@ function applyAmbientMusic(portada: boolean, who: string | null) {
 }
 
 /** L'onEnter de la sala on acabem d'entrar, resolt abans del fos (vegeu `onRoomEntered`). */
-let entrada: { room: string; result: InteractionResult | null } | null = null
+let entrada: { room: string; result: InteractionResult | null; walkTo?: { x: number; y: number } } | null = null
 
 /** El botó «Comença» de la portada: el pròleg, si n'hi ha, o la sala de la primera protagonista. */
 export function startFromCover() {
@@ -165,8 +182,10 @@ export function enterNarrativeRoom() {
   const room = narrative.world.currentRoom()
   if (!room) return
   let result: InteractionResult | null
+  let walkTo: { x: number; y: number } | undefined
   if (entrada?.room === room) {
     result = entrada.result
+    walkTo = entrada.walkTo
   } else {
     narrative.worldChanged()
     result = narrative.enterRoom(room)
@@ -179,14 +198,17 @@ export function enterNarrativeRoom() {
   if (!result) return
   const cutscene = narrative.content.rooms[room]?.cutscene
   if (!cutscene) {
+    if (walkTo) player.walkTo(walkTo)
     playResult(result)
     return
   }
   // Cinemàtica: Benne ja embolica aquest moment en una cutscene, i amb Esc la resta s'acaba de cop.
   // Si l'han saltada, anem directament al final (`skipTo`) en lloc de passar per les altres pantalles.
+  const final = takePendingEnding()
+  const negre = result.goTo || final ? 'negre' : undefined
   let saltada = false
-  for (const line of result.lines) {
-    playLines([line])
+  for (let k = 0; k < result.lines.length; k++) {
+    playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre })
     // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
     const inici = Date.now()
     wait(0.1)
@@ -194,6 +216,12 @@ export function enterNarrativeRoom() {
       saltada = true
       break
     }
+  }
+  if (final) {
+    // La cinemàtica acaba el joc (l'avió: «Continuarà»).
+    takePendingSwitch()
+    playEnding()
+    return
   }
   const desti = saltada && cutscene.skipTo ? cutscene.skipTo : result.goTo
   const sala = desti ? benneRoom(desti) : undefined
