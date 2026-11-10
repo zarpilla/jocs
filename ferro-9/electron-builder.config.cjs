@@ -25,7 +25,8 @@ module.exports = {
   directories: { output: 'releases/windows', buildResources: '.benne/desktop-build' },
   files: ['dist/**/*', 'electron/main.cjs', 'electron/preload.cjs', 'electron/protocol-path.cjs',
     'electron/game-info.cjs', 'src/game/game-config.json', 'package.json', '!node_modules/**/*'],
-  extraFiles: [{ from: itchManifest, to: '.itch.toml' }],
+  // LLICENCIES.txt (avisos MIT de Benne i Phaser) al costat de l'executable, on el jugador el pot veure.
+  extraFiles: [{ from: itchManifest, to: '.itch.toml' }, { from: 'public/LLICENCIES.txt', to: 'LLICENCIES.txt' }],
   ...(info.hasIcon ? { extraResources: [{ from: info.iconPath, to: 'icon.png' }] } : {}),
   asar: true,
   npmRebuild: false,
