@@ -389,8 +389,194 @@ def auricular(f):
     f.fill(f.E(17.6, 15, 2.4, 5.0), DARK, 2.0, rim=None)
 
 
+# Materials de l'Acte 1
+NETB = M((6, 20, 50), (12, 40, 96), (24, 70, 150), (46, 110, 200), (100, 160, 236), (180, 214, 252))   # cable de xarxa, blau
+CLEAR = M((60, 70, 80), (120, 132, 140), (176, 186, 192), (216, 224, 228), (244, 248, 250))           # plàstic transparent
+FOIL = M((40, 44, 52), (86, 92, 104), (136, 142, 152), (186, 190, 198), (226, 228, 232), (250, 250, 252))
+BREAD = M((60, 30, 10), (112, 62, 22), (164, 104, 44), (206, 148, 76), (232, 190, 120), (248, 224, 170))
+TUNA = M((70, 50, 40), (130, 100, 80), (184, 154, 126), (220, 196, 166))
+GOLDK = M((48, 30, 6), (100, 70, 16), (160, 120, 30), (214, 172, 60), (244, 214, 110), (255, 244, 190))   # clau de llautó
+NAPK = M((70, 70, 84), (140, 140, 150), (196, 196, 200), (230, 230, 230), (248, 248, 246), (255, 255, 255))
+LEATHB = M((26, 12, 8), (54, 26, 14), (88, 46, 22), (124, 70, 34), (160, 98, 50), (196, 132, 74), (226, 170, 110))
+BADGE = M((40, 44, 56), (100, 106, 120), (170, 176, 188), (220, 224, 230), (246, 248, 250), (255, 255, 255))
+NAVY = M((6, 10, 24), (14, 22, 50), (26, 40, 84), (42, 62, 120), (70, 96, 160))
+
+
+def cable_xarxa(f):
+    """El cable de xarxa blau, enrotllat, amb el connector transparent (i una mossegada d'en Diu)."""
+    for k, (cx, cy, rx, ry) in enumerate(((20, 13, 11, 7.5), (25, 14, 10, 6.5))):   # dues voltes netes
+        f.ring(cx, cy, rx, ry, NETB, 3.4 - k * 0.6, th=1.8)
+    for i in range(40):                                                  # la llum de dalt a cada volta
+        a = math.pi * (1.1 + 0.8 * i / 39)
+        f.px(round(20 + 11 * math.cos(a)), round(13 + 7.5 * math.sin(a)), NETB, 4.8)
+    f.limb((32, 16), (39, 20), 1.0, 1.0, NETB, 3.0, amp=1.6)           # la cua que en surt
+    S = f.R(39, 17, 46, 23)                                              # el connector RJ45
+    f.drop(S)
+    f.fill(S, CLEAR, lambda x, y: 3.4 - (x - 39) * 0.15, rim=(0.8, -1.2))
+    for x in range(41, 46, 1):
+        f.px(x, 22, GOLDK, 4.0 if x % 2 else 2.4)                        # els contactes daurats
+    f.rect(40, 16, 43, 16, CLEAR, 2.6)                                   # la pestanya
+    f.dots([(13, 17), (14, 18), (12, 18)], DARK, 1.0)                    # les dents del gat
+
+
+def entrepa(f):
+    """L'entrepà de tonyina: mitja barra embolicada en paper d'alumini, amb l'enciam que sobresurt."""
+    S = f.P([(6, 15), (10, 9), (40, 7), (44, 12), (41, 19), (9, 21)])
+    f.drop(S)
+    f.fill(S, BREAD, lambda x, y: 4.2 - (y - 7) * 0.12 - (x - 6) * 0.01, rim=(0.6, -1.2))
+    for x in range(12, 40, 6):                                           # els talls de la crosta
+        f.px(x, 10 - (x // 20), BREAD, 2.0)
+        f.px(x + 1, 11 - (x // 20), BREAD, 2.0)
+    for x in range(8, 42):                                               # el farcit: enciam i tonyina
+        y = 15 + round((x - 8) * -0.05)
+        f.px(x, y, CORPG, 3.6 if x % 3 else 2.4)
+        if x % 4 != 1:
+            f.px(x, y + 1, TUNA, 3.0)
+    S2 = f.P([(26, 6), (45, 9), (46, 17), (42, 22), (26, 22)])           # el paper d'alumini, mig obert
+    f.fill(S2, FOIL, lambda x, y: 3.8 + (1.2 if (x + y * 2) % 7 == 0 else 0) - (x - 26) * 0.06, rim=(0.8, -1.2))
+    for (x, y) in ((30, 10), (34, 14), (38, 11), (41, 18), (31, 18)):
+        f.shade(x, y, 1.6)
+
+
+def clau_casa(f):
+    """La clau de casa, de llautó, amb l'anella i un clauer de plàstic groc amb una etiqueta."""
+    f.ring(12, 13, 6.5, 6.5, ACER, 4.0, th=1.4)                        # l'anella
+    S = f.E(24, 13, 5.5, 5.5)                                           # el cap de la clau
+    f.drop(S)
+    f.fill(S, GOLDK, lambda x, y: 4.2 - (x - 19) * 0.12 - (y - 8) * 0.12, rim=(0.8, -1.2))
+    f.fill(f.E(23, 13, 1.6, 1.6), DARK, 0.6, rim=None)                  # el forat
+    S = f.R(29, 12, 43, 15)                                              # la tija
+    f.drop(S)
+    f.fill(S, GOLDK, lambda x, y: 3.8 - (y - 12) * 0.4, rim=(0.6, -1.0))
+    for (x, d) in ((33, 2), (35, 3), (37, 1), (39, 3), (41, 2)):         # les dents
+        f.rect(x, 16, x + 1, 15 + d, GOLDK, 3.0)
+    S = f.P([(4, 18), (10, 17), (12, 25), (5, 26)])                      # el clauer groc amb l'etiqueta
+    f.drop(S)
+    f.fill(S, SUNY, 3.8, rim=(0.6, -1.0))
+    f.dots([(6, 21), (7, 21), (8, 21), (6, 23), (8, 23)], INKB, 2.0)
+
+
+def tap(f):
+    """El clauer d'en Tomàs: un tap vermell de la cervesera, amb l'anella i dues claus."""
+    S = f.E(15, 14, 10, 8)
+    f.drop(S)
+    f.fill(S, RED, lambda x, y: 4.0 - (x - 5) * 0.1 - (y - 6) * 0.14, rim=(0.8, -1.2))
+    for i in range(16):                                                  # l'estriat del tap
+        a = i / 16 * 2 * math.pi
+        f.px(round(15 + 9.4 * math.cos(a)), round(14 + 7.4 * math.sin(a)), RED, 1.6)
+    S = f.E(15, 13, 4, 3.4)
+    f.fill(S, BRASS, lambda x, y: 4.6 - (x - 11) * 0.2 - (y - 10) * 0.3, rim=(0.8, -1.0))   # el disc de llautó
+    f.dots([(14, 12), (16, 12), (15, 14)], BRASS, 2.0)
+    f.ring(29, 12, 4.5, 4.5, ACER, 4.2, th=1.2)                          # l'anella
+    for k, (mat, y0) in enumerate(((ACER, 8), (GOLDK, 15))):             # les dues claus
+        S = f.E(36, y0 + 2, 3, 3)
+        f.drop(S)
+        f.fill(S, mat, 4.0, rim=(0.8, -1.0))
+        f.rect(38, y0 + 1, 46, y0 + 3, mat, 3.6, rim=(0.6, -1.0))
+        f.rect(42, y0 + 4, 43, y0 + 5, mat, 2.6)
+        f.rect(45, y0 + 4, 45, y0 + 5, mat, 2.6)
+
+
+def recepta(f):
+    """La recepta secreta: una servilleta de bar, plegada, escrita amb bolígraf vermell."""
+    S = f.P([(11, 3), (37, 4), (38, 24), (12, 24)])
+    f.drop(S)
+    f.fill(S, NAPK, lambda x, y: 4.6 - (x - 11) * 0.03 - (y - 3) * 0.02, rim=(0.6, -1.0))
+    for y in range(5, 24, 3):                                            # el gofrat de la servilleta
+        for x in range(13, 37, 3):
+            f.shade(x, y, -0.5)
+    f.fill(f.P([(29, 18), (38, 18), (38, 24)]), NAPK, 3.0, rim=(0.4, -1.0))   # el cantó plegat
+    f.text(15, 6, '1.', STAMP, 2.0)
+    f.scrib(21, 33, 8, STAMP, 2.0, seed=3)
+    f.text(15, 13, '2.', STAMP, 2.0)
+    f.scrib(21, 30, 15, STAMP, 2.0, seed=5)
+    f.scrib(15, 25, 20, STAMP, 2.2, seed=8, dens=0.9)                   # el subratllat
+
+
+def comandament(f):
+    """El comandament de la tele: negre, llarg, amb el botó vermell i la creueta."""
+    S = f.P([(5, 10), (42, 7), (44, 15), (7, 19)])
+    f.drop(S)
+    f.fill(S, PLAST, lambda x, y: 2.4 - (y - 7) * 0.12, rim=(0.8, -1.2))
+    f.fill(f.E(10, 13, 2, 2), RED, 4.2, rim=None)                       # el botó d'engegar
+    for i in range(4):                                                   # el teclat numèric
+        for j in range(2):
+            f.px(16 + i * 3, 11 + j * 3, PLAST, 4.8)
+    S = f.E(34, 11, 3, 2.6)                                              # la creueta
+    f.fill(S, PLAST, 3.6, rim=(0.6, -0.8))
+    f.px(34, 11, PLAST, 1.0)
+    f.px(41, 10, RED, 3.0)                                               # el led de l'infraroig
+
+
+def maleti(f):
+    """El maletí de pell, amb la nansa, els tancaments i l'adhesiu groc."""
+    S = f.R(6, 8, 42, 24)
+    f.drop(S)
+    f.fill(S, LEATHB, lambda x, y: 4.0 - (x - 6) * 0.04 - (y - 8) * 0.08, rim=(0.8, -1.4))
+    f.rect(6, 12, 42, 12, LEATHB, 2.2)                                   # la tapa
+    for x in range(18, 31):                                              # la nansa
+        f.px(x, 4, LEATHB, 3.6)
+        f.px(x, 5, LEATHB, 2.4)
+    f.rect(18, 4, 18, 8, LEATHB, 3.0)
+    f.rect(30, 4, 30, 8, LEATHB, 2.4)
+    for x0 in (11, 35):                                                  # els tancaments
+        f.rect(x0, 11, x0 + 2, 14, BRASS, 4.4, rim=(0.6, -1.0))
+    S = f.R(14, 16, 24, 21)                                              # l'adhesiu «AGENDA 2019 — COMPTE, LLIMONA»
+    f.fill(S, SUNY, 4.0, rim=(0.4, -0.8))
+    f.scrib(15, 23, 18, INKG, 1.2, seed=2)
+    f.scrib(15, 21, 20, INKG, 1.2, seed=4)
+    for x in range(8, 41, 4):                                            # el pespunt
+        f.px(x, 23, LEATHB, 5.0)
+
+
+def ulleres(f):
+    """Ulleres de pasta negra, gruixudes, sense graduació (però amb autoritat)."""
+    for cx in (15, 33):
+        S = f.E(cx, 14, 8, 6.5)
+        f.drop(S)
+        f.fill(S, DARK, 2.4, rim=(0.6, -0.4))
+        f.fill(f.E(cx, 14, 4.6, 3.4), CYAN, lambda x, y, cx=cx: 1.6 + (1.8 if (x - cx) + (y - 14) < -3 else 0), rim=None)   # el vidre, amb un reflex
+    f.rect(22, 11, 26, 12, DARK, 2.4)                                    # el pont
+    f.rect(2, 10, 7, 11, DARK, 2.0)                                      # les potes
+    f.rect(41, 10, 46, 11, DARK, 2.0)
+
+
+def _badge(f, x0, y0, face, hair, lit=0.0):
+    """Una acreditació plastificada del BCMU: la foto, el nom, la franja vermella de «manteniment»."""
+    S = f.R(x0, y0, x0 + 17, y0 + 22)
+    f.drop(S)
+    f.fill(S, BADGE, lambda x, y: 4.6 + lit - (y - y0) * 0.03, rim=(0.8, -1.2))
+    f.rect(x0 + 6, y0 - 2, x0 + 11, y0, ACER, 4.0, rim=(0.6, -1.0))      # la pinça
+    f.rect(x0 + 1, y0 + 1, x0 + 16, y0 + 4, NAVY, 3.0)                   # la capçalera blava del banc
+    f.dots([(x0 + 3 + i, y0 + 2) for i in range(0, 11, 2)], SUNY, 4.0)
+    f.rect(x0 + 2, y0 + 6, x0 + 8, y0 + 13, CYAN, 3.4)                  # la foto
+    f.fill(f.E(x0 + 5, y0 + 10, 2, 2.4), face, 3.6, rim=None)
+    f.rect(x0 + 3, y0 + 7, x0 + 7, y0 + 8, hair, 2.0)
+    for k in range(3):                                                   # el nom i el càrrec
+        f.rect(x0 + 10, y0 + 7 + k * 2, x0 + 15 - k, y0 + 7 + k * 2, INKG, 1.4)
+    f.rect(x0 + 1, y0 + 16, x0 + 16, y0 + 19, RED, 3.4)                  # la franja de manteniment
+    f.dots([(x0 + 3 + i, y0 + 17) for i in range(0, 12, 3)], BADGE, 5.0)
+    f.shade(x0 + 2, y0 + 1, 1.4)                                         # el reflex del plàstic
+    f.shade(x0 + 3, y0 + 2, 1.0)
+
+
+def acreditacions(f):
+    """Les dues acreditacions, una damunt de l'altra (la de l'Iri i la de la Vet)."""
+    _badge(f, 8, 4, SKIN, HAIR, lit=-0.4)
+    _badge(f, 22, 3, SKIN, HAIR)
+
+
+def acreditacio(f):
+    """Una acreditació, penjada del cordó blau marí del banc."""
+    for i in range(14):                                                  # el cordó
+        f.px(8 + i, 2 + round(math.sin(i / 4) * 1.2), NAVY, 3.0)
+        f.px(36 - i, 2 + round(math.sin(i / 4) * 1.2), NAVY, 2.4)
+    _badge(f, 15, 4, SKIN, HAIR)
+
+
 ICONS = {fn.__name__: fn for fn in (
     caixa_cartro, cable_alimentacio, pizza, auricular,
+    cable_xarxa, entrepa, clau_casa, tap, recepta, comandament, maleti, ulleres, acreditacions, acreditacio,
 )}
 ICONS['auriculars'] = auricular   # l'objecte de l'Iri es diu «auriculars»
 
