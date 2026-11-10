@@ -68,7 +68,7 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
 
 | Personatge | Passat | Present | Per a què serveix |
 |---|---|---|---|
-| **Cargol** | Robot de manteniment acabat d'estrenar. Obsessionat amb les normes. | Vell i rovellat (ell no és de ferro-9), conserge de la presó. Parla de "la senyora Iri". | **Memòria a través del temps.** Si l'Iri el repara i el tracta bé, al present ajuda la Vet. Si li pren peces per fer components, al present és hostil o ni tan sols hi és. |
+| **Cargol** | Robot de manteniment acabat d'estrenar. Obsessionat amb les normes. | Vell i rovellat (ell no és de ferro-9), conserge de la presó. Parla de "la senyora Iri". | **Memòria a través del temps.** Si l'Iri li salva la memòria i li grava el nom, al present recorda la senyora Iri. Si no, és un conserge sense nom que no recorda res. |
 | **Mira d'Orís** | Companya i amiga de l'Iri. | Existeix només als registres... o no. | **El cost humà.** La corporació l'acusa dels robatoris de l'Iri. Salvar-la és una missió secundària. |
 | **Guàrdia d'Orís** | — | Guàrdia de La Gavina, besneta de la Mira. **Només existeix si la Mira es va salvar.** | Una aliada al present i una peça dels finals 2 i 3. |
 | **Director Aldaia** | Fundador de la corporació. Encantador i terrible. | Holograma de la Sala de la Memòria, fent de guia turístic. | L'antagonista del passat, i també un gag recurrent al present. |
@@ -95,7 +95,8 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
    cosa passa en un sol sentit), ni enviar una molla o un diapasó que encara no estan afinats.
 5. Per tant, **la comunicació és només per escrit**: notes, dibuixos, objectes amb significat.
 6. **Cada encesa desgasta la cambra de l'Iri.** Això no és un recurs que el jugador pugui malgastar per
-   error, sinó un rellotge narratiu: a l'Acte 3 només queda una encesa.
+   error, sinó un rellotge narratiu: el comptador no es veu mai, i a l'Acte 3 la cambra està a les últimes (el
+   pla en gasta dues, i el tub ha de ser l'últim enviament).
 7. **El ritual s'aprèn una vegada.** El primer enviament que fa el jugador (la nota de la Vet) es fa sencer:
    posar-la al panell, armar, canviar de protagonista i sincronitzar des de l'altra banda. Quan l'Iri la rep,
    deixa la cambra sincronitzada ("no penso anar amunt i avall cada vegada"). Des d'aleshores, **posar un
@@ -342,8 +343,8 @@ la inundació no és un error del jugador, és la lliçó.
 ### Acte 3 — «La finestra» (clímax)
 
 **Situació:** al present, la Directora Aldaia pren la cambra de la Vet. Al passat, el Director Aldaia
-descobreix l'Iri. Les dues queden acorralades **al mateix moment, amb 120 anys de diferència**. A la cambra
-de l'Iri només li queden **dues enceses**.
+descobreix l'Iri. Les dues queden acorralades **al mateix moment, amb 120 anys de diferència**. La cambra
+de l'Iri està a les últimes: el pla només pot gastar **dues enceses**.
 
 **La idea clau: una sola nau, dues fugides.** La llançadora de l'hangar és la mateixa a les dues èpoques. Al
 passat és nova i funciona; al present és vella i la Vet l'ha reparada amb els components. **Totes dues
@@ -373,7 +374,8 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
 4. L'Iri **fuig per la ruta de la Vet**: obre la seva reixa, segueix les seves pròpies fletxes fins al moll i
    s'emporta la llançadora nova. La Vet surt de la cel·la tancada per la reixa que l'Iri li va deixar oberta, munta
    el tub a la llançadora vella i fuig. És la mateixa nau: la corporació la va recuperar després de la fugida de
-   l'Iri i la va desballestar, i per això li faltaven els tres components de ferro-9.
+   l'Iri i la va desballestar, i per això li faltaven els tres components de ferro-9. Al joc ho diu l'Iri quan hi
+   puja («És la mateixa que la V. ha arreglat al seu hangar»).
 
 **El gir final:** la "desaparició" de l'Iri que explica el museu **va ser, de fet, la seva fugida**. La
 història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia ajudada.
@@ -449,7 +451,7 @@ la victòria**, i depèn del que s'ha fet a les missions secundàries.
 |---|---|---|
 | **1 · La fugida** | Les dues escapen. La Vet fa pública la llibreta i La Gavina tanca: la corporació cau al present. Escena final: la Vet visita la Sala de la Memòria, ja convertida en museu de veritat, davant la foto de l'Iri, que ara no està ratllada, i un cartell que diu *"desapareguda"*. La Vet somriu, perquè ella sap on va anar. | Els tres components. És el final base. |
 | **2 · La veritat a temps** | La Mira i l'Iri fan públics els plànols al passat, i la corporació cau **120 anys abans**. Amb el reajust, La Gavina no arriba a ser mai una presó: és l'**Estació d'Orís**, fundada per la Mira. La Vet aterra en un món diferent, i la besneta de la Mira, que ja no és guàrdia sinó directora de l'estació, la rep: *"Tinc la sensació que et conec."* | La Mira salvada i els plànols lliurats a la Mira abans de fugir. |
-| **3 · Correspondència** | Tot el que passa al final 2, i a més el Cargol, que es va quedar al passat, **es passa 120 anys reparant la cambra** sense que ningú no ho sàpiga. Quan la Vet arriba a l'estació, el Cargol vell l'hi espera amb una carta de l'Iri: va viure una vida llarga i lliure. La finestra torna a funcionar, i **les dues es poden continuar escrivint**. *"Vaig esperar. Era la meva feina."* | Final 2, i també la memòria del Cargol (reparat, no desmuntat, amb el nom gravat). |
+| **3 · Correspondència** | Tot el que passa al final 2, i a més el Cargol, que es va quedar al passat, **es passa 120 anys reparant la cambra** sense que ningú no ho sàpiga. Quan la Vet arriba a l'estació, el Cargol vell l'hi espera amb una carta de l'Iri: va viure una vida llarga i lliure. La finestra torna a funcionar, i **les dues es poden continuar escrivint**. *"Vaig esperar. Era la meva feina."* | Final 2, i també la memòria del Cargol (revisió segellada, nom gravat i placa retornada). |
 
 Com que sempre és la mateixa història amb més o menys coses arreglades, el jugador que acabi el final 1
 **entendrà què li ha faltat** per arribar al 2 o al 3, i tindrà ganes de tornar-hi.
@@ -461,7 +463,7 @@ Com que sempre és la mateixa història amb més o menys coses arreglades, el ju
 | Missió | Qui | Què | Conseqüència |
 |---|---|---|---|
 | **Salvar la Mira** | Iri | Treure la sospita de sobre la Mira (amb tres solucions possibles). | La Guàrdia d'Orís existeix al present. Necessari per als finals 2 i 3. |
-| **La memòria del Cargol** | Iri + Vet | L'Iri li repara el mòdul de memòria i li grava el nom a la placa. La Vet li retorna la placa, que s'havia perdut. | El Cargol vell ajuda la Vet. Necessari per al final 3. |
+| **La memòria del Cargol** | Iri + Vet | L'Iri segella el formulari de la revisió perquè no li esborrin la memòria, i li grava el nom a la placa. La Vet li retorna la placa, que s'havia perdut. | El Cargol vell ajuda la Vet. Necessari per al final 3. |
 | **El missatge d'en Mos** | Vet | En Mos vol saber si la seva filla va rebre una carta que ell va escriure. La Vet la troba a l'Arxiu. | En Mos explica el secret del reciclatge, i a l'Acte 3 dona una drecera: es desmaia de mentida («el millor desmai de la història de La Gavina») perquè la Vet pugui enviar el mapa sense fer veure que accepta el pacte de la Directora. |
 | **Les notes perdudes** | Vet | Col·leccionable: cinc notes de sincronitzadors fallits amagades per la presó durant 120 anys (una esquerda a la cel·la, una rajola solta al passadís, una caixa de recanvis a l'hangar, una carpeta caiguda a l'arxiu i el sòcol de l'holograma). La cinquena és d'en Mos, de fa vint anys: si la Vet l'hi torna, es tanca la missió. | Història del món i pistes (p. ex. «els cartells del somriure són de paper bo»). |
 | **El formulari 27-B** | Iri | Cadena d'humor burocràtic que es complica a cada acte: segellat (Acte 1), per triplicat (Acte 2) i, amb dos triplicats arxivats, el formulari 27-B/E per al Carnet d'Usuària Exemplar, «signat a mà pel capatàs en persona». El capatàs dorm: l'Iri li posa el llapis a la mà i signa «Cinc minuts més, mare». A l'Acte 3, «els fugitius no omplen formularis». | Gags, i una eina extra: amb el carnet, el Cargol dona el material de ferro-9 sense formularis. |
@@ -472,7 +474,8 @@ Les pistes formen part de la història:
 
 - **La llibreta de torn de l'Iri** i **el diari de cel·la de la Vet**: en demanar una pista, la protagonista
   activa "pensa en veu alta". La primera és vaga, la segona concreta, la tercera gairebé la solució.
-- **El Cargol vell** dona pistes críptiques i mig boges (tant si és amic com si no ho és, però si és amic són més clares).
+- *Idea pendent, encara no és al joc:* que **el Cargol vell** doni pistes críptiques i mig boges (més clares si és
+  amic).
 - Mai no surt una pista sobre un trencaclosques que encara no és obert (`when`) o que ja està resolt
   (`doneWhen`).
 
@@ -508,7 +511,7 @@ ACTE 3
 |---|---|
 | Camp armat, components muntats, plànols robats... | `flags` a `state.json`: `camp_vet_armat`, `palanca_muntada`, `planols_robats`... |
 | L'encesa que queda, el nivell de sospita de l'Inspector | `vars`: `enceses_restants`, `sospita_sic` |
-| El Cargol recorda l'Iri | `characters.json`: el Cargol amb els fets `reparat`, `desmuntat` i `nom_gravat`, i la `relation` |
+| El Cargol recorda l'Iri | Flags `cargol_reparat`, `cargol_gravat` i `cargol_memoria` (la placa retornada) |
 | La Mira i la Guàrdia d'Orís | Missió `salvar_mira`. La Guàrdia d'Orís és un objecte o personatge condicional (`visibleIf`) |
 | Inundació, caixa que sura | Objectes condicionals segons `conducte_segellat` |
 | Tres finals | `endings.json` amb `when` i `priority` (el 3 és el de més prioritat) |

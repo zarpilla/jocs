@@ -15056,7 +15056,18 @@
             "lines": [
               {
                 "who": "mare",
-                "text": "dlg.mare.adeu"
+                "text": "dlg.mare.adeu",
+                "if": {
+                  "flag": "acte3_iniciat",
+                  "is": false
+                }
+              },
+              {
+                "who": "mare",
+                "text": "dlg.mare.adeu_avui",
+                "if": {
+                  "flag": "acte3_iniciat"
+                }
               }
             ]
           }
@@ -15802,7 +15813,7 @@
       "dlg.cargol.dia2": "Ningú no m'ho havia preguntat mai.",
       "dlg.cargol.dia3": "Estic... funcional. Gràcies, senyora Iri. Ho registraré a la meva memòria permanent.",
       "dlg.cargol.perque1": "Ordre directa del Director Aldaia. Classificació: secret. Accés: només direcció.",
-      "dlg.cargol.perque2": "Si em pregunta per què el Director em va fer instal·lar-la just abans del seu torn... també és secret.",
+      "dlg.cargol.perque2": "Si em pregunta per què el Director em va fer posar-la a punt just abans del seu torn... també és secret.",
       "dlg.cargol.perque3": "Abans del meu torn? Per què el meu?",
       "dlg.cargol.perque4": "Secret, senyora.",
       "dlg.cargol.adeu": "Recordi: un formulari a temps estalvia disgustos!",
@@ -15819,6 +15830,7 @@
       "dlg.mare.preso1": "La Gavina es va construir amb les restes de la gloriosa fàbrica de ferro-9 de la Corporació Aldaia, pujades a l'òrbita peça a peça!",
       "dlg.mare.preso2": "La fàbrica va tancar fa cent vint anys, després d'un petit accident del torn de nit. Res de greu!",
       "dlg.mare.adeu": "Fins aviat, interna 9! Recordi: queden tres dies!",
+      "dlg.mare.adeu_avui": "Fins aviat, interna 9! Recordi: el seu reciclatge és avui! O no. Ho estem revisant!",
       "dlg.mos.primera1": "Ah, la nouvinguda està desperta. Tres dies, eh? Jo en porto vint, d'esperar.",
       "dlg.mos.primera2": "Diuen que m'han oblidat. Jo dic que m'estan reservant per a una ocasió especial.",
       "dlg.mos.hola": "Digues, nena.",
@@ -15951,7 +15963,7 @@
       "dlg.mos.distreure2": "Quan siguis al panell, tus dues vegades. I no em miris, que se m'escapa el riure.",
       "dlg.mos.distreure3": "Gràcies, Mos.",
       "final.fugida.titol": "Final · La fugida",
-      "final.fugida.text": "La Vet somriu. Ella sap on va anar. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
+      "final.fugida.text": "La Vet somriu. Ella sap on va anar la I. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "Final · La veritat a temps",
       "final.veritat.text": "En aquest món, la Vet no ha estat mai presa. Però ho recorda tot. I a l'altra banda de cent vint anys, una enginyera del torn de nit també.",
       "final.correspondencia.titol": "Final · Correspondència",
@@ -15967,7 +15979,7 @@
       "final.oris.1": "La llançadora vella travessa la nit. La Vet té mal de cap: el pitjor de tots. Com si el món sencer s'hagués girat.",
       "final.oris.2": "Cent vint anys abans, una ajudant del torn de nit, la Mira d'Orís, va fer públics uns plànols.",
       "final.oris.3": "La Corporació Aldaia no va arribar a construir mai cap presó. La Gavina és una estació orbital: l'Estació d'Orís.",
-      "final.oris.4": "Quan la Vet hi aterra, l'espera una dona jove amb el cabell coure i l'uniforme de directora de l'estació.",
+      "final.oris.4": "La Vet hi fa mitja volta. Al moll l'espera una dona jove amb el cabell coure i l'uniforme de directora de l'estació.",
       "final.oris.5": "«Benvinguda a l'Estació d'Orís. Perdona... Tinc la sensació que et conec.»",
       "final.oris.mos": "Al moll, un home gran amb els ulls pintats ajuda a descarregar. No ha estat mai a cap cel·la.",
       "final.correspondencia.1": "Al costat de la directora hi ha un robot vell i rovellat, amb una placa al pit: «CARGOL».",
@@ -16065,7 +16077,7 @@
       "mis.carta_mos.desc": "En Mos vol saber si la seva filla, la Nura, va rebre la seva carta.",
       "mis.carta_mos.obj.trobar": "Troba la carta d'en Mos a l'arxiu",
       "mis.acte2.titol": "Acte 2 · Els costos",
-      "mis.acte2.desc": "L'única sortida de La Gavina és la vella llançadora de càrrega. Li falten tres peces de ferro-9.",
+      "mis.acte2.desc": "Fora de la cel·la, però no de La Gavina. Si hi ha una sortida, l'hauran d'obrir entre totes dues, amb cent vint anys pel mig.",
       "mis.acte2.obj.hangar": "Vet: troba la sortida de la presó",
       "mis.acte2.obj.mida": "Iri: entén quina palanca necessita la V.",
       "mis.acte2.obj.comporta": "Vet: obre la comporta de l'hangar",
@@ -16296,7 +16308,7 @@
       "obj.mapa_fuga.iri4": "I un tub de vàlvula per a la llançadora. De ferro-9, com les peces que li van arrencar.",
       "obj.tub_ferro9.nom": "tub de ferro-9",
       "obj.tub_ferro9.desc": "Un tub de vàlvula de ferro-9. Buit per dins.",
-      "obj.tub_ferro9.enrotllar1": "Enrotllo la llibreta de torn i la fico dins el tub. Hi ho he apuntat tot: la cambra, el Director, la Mira.",
+      "obj.tub_ferro9.enrotllar1": "Enrotllo la llibreta de torn i la fico dins el tub. Hi he apuntat tot: la cambra, el Director, la Mira.",
       "obj.tub_ferro9.enrotllar2": "Un sol objecte, d'un quilo i mig. Hi passarà.",
       "obj.tub_amb_llibreta.nom": "tub amb la llibreta",
       "obj.tub_amb_llibreta.desc": "El tub de vàlvula de ferro-9, amb la llibreta de torn de l'Iri enrotllada a dins.",
@@ -17083,7 +17095,7 @@
       "sala.fabrica_cambra.reixa.fugir1": "Ara sí. Aparto la reixa, que surt com si res, i m'hi fico.",
       "sala.fabrica_cambra.reixa.fugir2": "Segueixo les meves pròpies fletxes fins al moll. Qui m'ho havia de dir.",
       "sala.fabrica_moll.llancadora.look_fugir": "La llançadora, nova de trinca. I avui ningú no la vigila.",
-      "sala.fabrica_moll.llancadora.fugir1": "Pujo a la llançadora. Diuen que pot arribar fins a la Lluna. Ho comprovarem.",
+      "sala.fabrica_moll.llancadora.fugir1": "Pujo a la llançadora. És la mateixa que la V. ha arreglat al seu hangar, cent vint anys més tard. Que ens porti a totes dues.",
       "sala.fabrica_moll.llancadora.fugir2": "Adeu, Director. Adeu, formulari 27-B.",
       "sala.fabrica_moll.llancadora.fugir3": "La comporta s'obre i la fàbrica es fa petita. Desapareguda, diran. Que ho diguin.",
       "sala.fabrica_moll.llancadora.mentrestant": "Mentrestant, cent vint anys després...",
@@ -17138,8 +17150,8 @@
       "nota_perduda.trobada_mos": "A dins, un paper doblegat moltes vegades.",
       "nota_perduda.1.lloc": "esquerda",
       "nota_perduda.1.look": "Una esquerda a la paret, just a l'altura de la mà. Hi ha alguna cosa encastada.",
-      "nota_perduda.1.text": "«Interna 4, any 12. El panell vibra cada nit. Li he donat cops, li he cridat, li he escrit. A l'altra banda no hi ha ningú. Si algun dia hi és, digues-li que l'he esperada.»",
-      "nota_perduda.1.vet": "Cent anys abans que jo, algú altre parlava amb aquest panell. I ningú no li responia.",
+      "nota_perduda.1.text": "«Interna 4, any 12. El panell no ha vibrat mai. Li he donat cops, li he cridat, li he escrit. A l'altra banda no hi ha ningú. Si algun dia hi és, digues-li que l'he esperada.»",
+      "nota_perduda.1.vet": "Fa més de cent anys, algú altre parlava amb aquest panell. I a ella no li vibrava: no hi havia ningú a l'altra banda.",
       "nota_perduda.2.lloc": "rajola solta",
       "nota_perduda.2.look": "Una rajola del terra que balla. Algú la va aixecar abans que jo.",
       "nota_perduda.2.text": "«Intern 11, any 37. Diuen que el reciclatge és un trasllat. Ningú no torna del trasllat. PD: els cartells del somriure són de paper bo. Per escriure-hi, vull dir.»",

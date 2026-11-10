@@ -86,7 +86,18 @@
       "lines": [
         {
           "who": "mare",
-          "text": "dlg.mare.adeu"
+          "text": "dlg.mare.adeu",
+          "if": {
+            "flag": "acte3_iniciat",
+            "is": false
+          }
+        },
+        {
+          "who": "mare",
+          "text": "dlg.mare.adeu_avui",
+          "if": {
+            "flag": "acte3_iniciat"
+          }
         }
       ]
     }
