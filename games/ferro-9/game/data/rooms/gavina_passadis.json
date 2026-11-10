@@ -1,0 +1,294 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.gavina_passadis.nom",
+  "protagonist": "vet",
+  "hotspots": {
+    "cartell": {
+      "name": "sala.gavina_passadis.cartell.nom",
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "tros_cartell_agafat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.cartell.agafar",
+              "sound": "paper"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tros_cartell_agafat"
+            },
+            {
+              "giveItem": "tros_cartell"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "hasItem": "tros_cartell",
+            "who": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.cartell.prou"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.cartell.altre"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "tros_cartell"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.cartell.look"
+            }
+          ]
+        }
+      ]
+    },
+    "camera_vigilancia": {
+      "name": "sala.gavina_passadis.camera_vigilancia.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.camera_vigilancia.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_cella": {
+      "name": "sala.gavina_passadis.porta_cella.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "cella_tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.porta_cella.tancada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_cella"
+        }
+      ]
+    },
+    "porta_hangar": {
+      "name": "sala.gavina_passadis.porta_hangar.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_hangar"
+        }
+      ]
+    },
+    "porta_memoria": {
+      "name": "sala.gavina_passadis.porta_memoria.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "goTo": "gavina_memoria"
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.porta_memoria.tancada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.porta_memoria.look"
+            }
+          ]
+        }
+      ]
+    },
+    "guardia": {
+      "name": "pj.guardia.nom",
+      "visibleIf": {
+        "flag": "mira_salvada"
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "guardia"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_passadis.guardia.look"
+            }
+          ]
+        }
+      ]
+    },
+    "rajola": {
+      "name": "nota_perduda.2.lloc",
+      "visibleIf": {
+        "flag": "nota_perduda_2",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.trobada",
+              "if": {
+                "hasItem": "notes_perdudes",
+                "is": false
+              },
+              "effects": [
+                {
+                  "giveItem": "notes_perdudes"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.una_mes",
+              "if": {
+                "hasItem": "notes_perdudes"
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "nota_perduda.2.text",
+              "sound": "paper"
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.2.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nota_perduda_2"
+            },
+            {
+              "addVar": "notes_trobades",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.2.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "onEnter": [
+    {
+      "id": "fi_acte1",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_passadis.fi1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_passadis.fi2"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.gavina_passadis.fi3"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.gavina_passadis.fi4"
+        },
+        {
+          "who": "title",
+          "text": "acte.fi1"
+        },
+        {
+          "who": "title",
+          "text": "acte.2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "acte1_acabat"
+        },
+        {
+          "addVar": "sospita_sic",
+          "amount": 1
+        }
+      ]
+    }
+  ]
+}

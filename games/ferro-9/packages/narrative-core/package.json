@@ -1,0 +1,10 @@
+{
+  "name": "@aventura/narrative-core",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Motor narratiu independent del motor gràfic: estat, diàlegs, memòria, missions, pistes, finals i traduccions.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

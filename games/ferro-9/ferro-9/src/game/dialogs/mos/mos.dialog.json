@@ -1,0 +1,90 @@
+{
+  "id": "mos",
+  "displayName": "mos",
+  "options": [
+    {
+      "id": "menu__reciclatge",
+      "scriptName": "menu__reciclatge",
+      "text": "Què és el reciclatge, Mos?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__llapis",
+      "scriptName": "menu__llapis",
+      "text": "Em deixes alguna cosa per escriure?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__llapis_demanar",
+      "scriptName": "menu__llapis_demanar",
+      "text": "Necessito alguna cosa per escriure. Tens res?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__maquillatge",
+      "scriptName": "menu__maquillatge",
+      "text": "Per què vas maquillat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__galeria",
+      "scriptName": "menu__galeria",
+      "text": "Què diuen de mi, a la galeria?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__familia",
+      "scriptName": "menu__familia",
+      "text": "Tens família, Mos?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__perdo",
+      "scriptName": "menu__perdo",
+      "text": "Perdona pel que et vaig dir, Mos.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__distreure",
+      "scriptName": "menu__distreure",
+      "text": "Mos, necessito que la Directora miri cap a una altra banda. Un moment.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, res.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "convencer__elogiar",
+      "scriptName": "convencer__elogiar",
+      "text": "Que estaràs guapíssim al reciclatge. Més que ara, i mira que ho és difícil.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "convencer__insultar",
+      "scriptName": "convencer__insultar",
+      "text": "Que un vell inútil com tu no el necessita.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "convencer__res",
+      "scriptName": "convencer__res",
+      "text": "Res. Oblida-ho.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

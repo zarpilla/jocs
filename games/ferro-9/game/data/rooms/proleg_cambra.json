@@ -1,0 +1,25 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.proleg_cambra.nom",
+  "cutscene": {
+    "skipTo": "fabrica_calderes"
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "proleg.cambra1"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.cambra2",
+          "sound": "alarma"
+        }
+      ],
+      "goTo": "fabrica_calderes"
+    }
+  ],
+  "hotspots": {}
+}

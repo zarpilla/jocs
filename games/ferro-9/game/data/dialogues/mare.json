@@ -1,0 +1,105 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "mare",
+  "with": "mare",
+  "start": "hola",
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "mare",
+          "text": "dlg.mare.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "reciclatge",
+          "text": "dlg.mare.opt.reciclatge",
+          "next": "reciclatge"
+        },
+        {
+          "id": "sortir",
+          "text": "dlg.mare.opt.sortir",
+          "next": "sortir"
+        },
+        {
+          "id": "preso",
+          "text": "dlg.mare.opt.preso",
+          "once": true,
+          "next": "preso"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.mare.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "reciclatge": {
+      "lines": [
+        {
+          "who": "mare",
+          "text": "dlg.mare.reciclatge1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.mare.reciclatge2"
+        },
+        {
+          "who": "mare",
+          "text": "dlg.mare.reciclatge3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "sortir": {
+      "lines": [
+        {
+          "who": "mare",
+          "text": "dlg.mare.sortir1"
+        },
+        {
+          "who": "mare",
+          "text": "dlg.mare.sortir2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "preso": {
+      "lines": [
+        {
+          "who": "mare",
+          "text": "dlg.mare.preso1"
+        },
+        {
+          "who": "mare",
+          "text": "dlg.mare.preso2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "mare",
+          "text": "dlg.mare.adeu",
+          "if": {
+            "flag": "acte3_iniciat",
+            "is": false
+          }
+        },
+        {
+          "who": "mare",
+          "text": "dlg.mare.adeu_avui",
+          "if": {
+            "flag": "acte3_iniciat"
+          }
+        }
+      ]
+    }
+  }
+}

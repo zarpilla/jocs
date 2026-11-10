@@ -1,0 +1,20 @@
+{
+  "id": "cargol_vell",
+  "displayName": "cargol_vell",
+  "options": [
+    {
+      "id": "menu__qui",
+      "scriptName": "menu__qui",
+      "text": "Qui ets?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Adeu.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

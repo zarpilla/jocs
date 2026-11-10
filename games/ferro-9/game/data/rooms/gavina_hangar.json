@@ -1,0 +1,1332 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.gavina_hangar.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "var": "valvula",
+        "op": "==",
+        "value": "tancada"
+      },
+      "id": "inundat",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.inundat1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.inundat2",
+          "sound": "aigua"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "vet_ha_vist_inundacio"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "vet_ha_vist_inundacio"
+          },
+          {
+            "var": "valvula",
+            "op": "!=",
+            "value": "tancada"
+          }
+        ]
+      },
+      "id": "secat",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.secat1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.secat2"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "marca_pilar"
+          },
+          {
+            "flag": "vet_ha_vist_marca",
+            "is": false
+          }
+        ]
+      },
+      "id": "marca",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.marca1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.marca2"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.marca3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "vet_ha_vist_marca"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "id": "primera",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.intro1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_hangar.intro2"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta_passadis": {
+      "name": "sala.gavina_hangar.porta_passadis.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "gavina_passadis"
+        }
+      ]
+    },
+    "comporta": {
+      "name": "sala.gavina_hangar.comporta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "comporta_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.oberta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "biga_ferro9",
+          "if": {
+            "flag": "comporta_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.comporta.obrir2",
+              "sound": "comporta"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir4"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "biga_ferro9"
+            },
+            {
+              "setFlag": "comporta_oberta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "biga_muntada",
+          "if": {
+            "flag": "comporta_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.comporta.obrir2",
+              "sound": "comporta"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.obrir4"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "biga_muntada"
+            },
+            {
+              "setFlag": "comporta_oberta"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tram_biga_1",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.tram"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tram_biga_2",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.tram"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "tram_biga_3",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.tram"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "flag": "comporta_mesurada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurar1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurar2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurar3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "comporta_mesurada"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.mesurada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.encallada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "pilar": {
+      "name": "sala.gavina_hangar.pilar.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "marca_pilar"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.pilar.look_marca"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.pilar.look"
+            }
+          ]
+        }
+      ]
+    },
+    "placa_terra": {
+      "name": "sala.gavina_hangar.placa.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "vet_sap_amagatall"
+              },
+              {
+                "var": "biga_amagada",
+                "op": "==",
+                "value": "ferro9"
+              },
+              {
+                "flag": "biga_trobada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.ferro9_1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.ferro9_2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "biga_trobada"
+            },
+            {
+              "giveItem": "biga_ferro9"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "vet_sap_amagatall"
+              },
+              {
+                "var": "biga_amagada",
+                "op": "==",
+                "value": "acer"
+              },
+              {
+                "flag": "rovell_trobat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.rovell1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.rovell2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.rovell3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "rovell_trobat"
+            },
+            {
+              "giveItem": "pols_rovell"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "vet_sap_amagatall"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.buida"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.perque"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "vet_sap_amagatall"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.look_pilar"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.placa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "llancadora": {
+      "name": "sala.gavina_hangar.llancadora.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "tub_amb_llibreta",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tub1",
+              "sound": "paper"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tub2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tub3",
+              "sound": "eina"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "tub_amb_llibreta"
+            },
+            {
+              "giveItem": "llibreta_torn"
+            },
+            {
+              "setFlag": "tub_muntat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "tub_muntat"
+              },
+              {
+                "flag": "vet_fugida",
+                "is": false
+              },
+              {
+                "flag": "iri_fugida"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir1",
+              "sound": "motor"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir2",
+              "sound": "comporta"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_fugida"
+            },
+            {
+              "setFlag": "fugida_completada"
+            },
+            {
+              "event": "final"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "tub_muntat"
+              },
+              {
+                "flag": "vet_fugida",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir1",
+              "sound": "motor"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir2",
+              "sound": "comporta"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.fugir3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica.descoberta1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_fugida"
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tub_muntat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.look_tub"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.sense_tub",
+              "sound": "boto"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_tub"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "acte3_iniciat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.look_sense_tub"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_tub"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "motor_engegat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.a_punt"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "pany_sonic_obert"
+              },
+              {
+                "var": "valvula",
+                "op": "==",
+                "value": "mig"
+              },
+              {
+                "flag": "motor_engegat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.engegar1",
+              "sound": "boto"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.engegar2",
+              "sound": "motor"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.engegar3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "motor_engegat"
+            },
+            {
+              "setFlag": "components_complets"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "motor_engegat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.en_marxa"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "pany_sonic_obert"
+              },
+              {
+                "var": "valvula",
+                "op": "==",
+                "value": "tancada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.escapa",
+              "sound": "boto"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "pany_sonic_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.sense_pressio",
+              "sound": "boto"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "pany_sonic_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.porta_tancada"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pany_vist"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pany_vist"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "flag": "comporta_oberta"
+      }
+    },
+    "pany": {
+      "name": "sala.gavina_hangar.pany.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "pany_sonic_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.pany.obert"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "diapaso",
+          "if": {
+            "all": [
+              {
+                "flag": "diapaso_afinat"
+              },
+              {
+                "flag": "pany_sonic_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.obrir1",
+              "sound": "diapaso_2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.obrir2",
+              "sound": "clac"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.gavina_hangar.llancadora.obrir3",
+              "sound": "porta_llancadora"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.obrir4"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "diapaso"
+            },
+            {
+              "setFlag": "pany_sonic_obert"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "diapaso",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.diapaso_no",
+              "sound": "pany_diapaso_{diapaso_to}"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "if": {
+            "flag": "molla_afinada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_ja",
+              "sound": "pany_molla_3"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "if": {
+            "var": "molla_tensio",
+            "op": "<",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_greu",
+              "sound": "pany_molla_{molla_tensio}"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "if": {
+            "var": "molla_tensio",
+            "op": ">",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_aguda",
+              "sound": "pany_molla_{molla_tensio}"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "molla",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_igual1",
+              "sound": "pany_molla_3"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.molla_igual2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "molla_afinada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tocar1",
+              "sound": "pany"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tocar2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pany_sonic_sentit"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.pany.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "comporta_oberta"
+          },
+          {
+            "flag": "pany_vist"
+          }
+        ]
+      }
+    },
+    "conducte": {
+      "name": "sala.gavina_hangar.conducte.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.conducte.look_rebentat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "mig"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.conducte.look_ple"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.conducte.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "close",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.conducte.tocar"
+            }
+          ]
+        }
+      ]
+    },
+    "escala": {
+      "name": "sala.gavina_hangar.escala.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "reixa_arxiu_oberta"
+              },
+              {
+                "var": "valvula",
+                "op": "!=",
+                "value": "tancada"
+              }
+            ]
+          },
+          "goTo": "gavina_arxiu"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.look_aigua"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.aigua"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "all": [
+              {
+                "var": "valvula",
+                "op": "!=",
+                "value": "tancada"
+              },
+              {
+                "flag": "reixa_arxiu_oberta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.descargolar1",
+              "sound": "eina"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.descargolar2",
+              "sound": "eina"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reixa_arxiu_oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.escala.reixa"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa_flotant": {
+      "name": "sala.gavina_hangar.caixa.nom",
+      "interactions": [
+        {
+          "verb": [
+            "pickUp",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.caixa.obrir1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.caixa.obrir2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "caixa_agafada"
+            },
+            {
+              "giveItem": "fitxa_mira"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.caixa.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "all": [
+          {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          {
+            "flag": "caixa_agafada",
+            "is": false
+          }
+        ]
+      }
+    },
+    "sortida_conducte": {
+      "name": "sala.gavina_hangar.sortida_conducte.nom",
+      "visibleIf": {
+        "flag": "reixa_oberta"
+      },
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.sortida_conducte.entrar",
+              "sound": "conducte"
+            }
+          ],
+          "goTo": "gavina_cella"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.sortida_conducte.look"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa_recanvis": {
+      "name": "nota_perduda.3.lloc",
+      "visibleIf": {
+        "flag": "nota_perduda_3",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.trobada",
+              "if": {
+                "hasItem": "notes_perdudes",
+                "is": false
+              },
+              "effects": [
+                {
+                  "giveItem": "notes_perdudes"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.una_mes",
+              "if": {
+                "hasItem": "notes_perdudes"
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "nota_perduda.3.text",
+              "sound": "paper"
+            },
+            {
+              "who": "player",
+              "text": "nota_perduda.3.vet"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nota_perduda_3"
+            },
+            {
+              "addVar": "notes_trobades",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "nota_perduda.3.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "porta_llancadora": {
+      "visibleIf": {
+        "flag": "pany_sonic_obert"
+      }
+    },
+    "aigua": {
+      "visibleIf": {
+        "var": "valvula",
+        "op": "==",
+        "value": "tancada"
+      }
+    },
+    "marca_pilar": {
+      "visibleIf": {
+        "flag": "marca_pilar"
+      }
+    }
+  }
+}

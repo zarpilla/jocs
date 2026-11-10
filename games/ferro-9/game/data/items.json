@@ -1,0 +1,2155 @@
+{
+  "$schema": "../schemas/items.schema.json",
+  "clau_anglesa": {
+    "name": "obj.clau_anglesa.nom",
+    "description": "obj.clau_anglesa.desc",
+    "props": {
+      "pes": 1.2,
+      "material": "ferro9"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.clau_anglesa.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.clau_anglesa.vet2"
+          }
+        ]
+      }
+    ]
+  },
+  "formulari_27b": {
+    "name": "obj.formulari_27b.nom",
+    "description": "obj.formulari_27b.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "formulari_segellat": {
+    "name": "obj.formulari_segellat.nom",
+    "description": "obj.formulari_segellat.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "formulari_triplicat": {
+    "name": "obj.formulari_triplicat.nom",
+    "description": "obj.formulari_triplicat.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "plomall": {
+    "name": "obj.plomall.nom",
+    "description": "obj.plomall.desc",
+    "props": {
+      "pes": 0.2
+    }
+  },
+  "segell": {
+    "name": "obj.segell.nom",
+    "description": "obj.segell.desc",
+    "props": {
+      "pes": 0.4
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "formulari_27b",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.segell.formulari",
+            "sound": "segell"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "formulari_27b"
+          },
+          {
+            "giveItem": "formulari_segellat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "formulari_segellat",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.segell.triplicat",
+            "sound": "segell"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "formulari_segellat"
+          },
+          {
+            "giveItem": "formulari_triplicat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "formulari_triplicat",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.segell.massa"
+          }
+        ]
+      }
+    ]
+  },
+  "clau_cambra": {
+    "name": "obj.clau_cambra.nom",
+    "description": "obj.clau_cambra.desc",
+    "props": {
+      "pes": 0.1
+    }
+  },
+  "llapis": {
+    "name": "obj.llapis.nom",
+    "description": "obj.llapis.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "if": {
+          "all": [
+            {
+              "flag": "iri_sap_desaparicio"
+            },
+            {
+              "flag": "nota_iri_nom_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis.nom1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis.nom2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_iri_nom_escrita"
+          },
+          {
+            "giveItem": "nota_iri_nom"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "if": {
+          "all": [
+            {
+              "var": "biga_amagada",
+              "op": "!=",
+              "value": ""
+            },
+            {
+              "flag": "nota_amagatall_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis.amagatall1"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis.amagatall2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_amagatall_escrita"
+          },
+          {
+            "giveItem": "nota_amagatall"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "if": {
+          "all": [
+            {
+              "flag": "nota_vet_llegida"
+            },
+            {
+              "flag": "nota_iri_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis.resposta1",
+            "sound": "escriure"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis.resposta2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_iri_escrita"
+          },
+          {
+            "giveItem": "nota_iri"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis.res"
+          }
+        ]
+      }
+    ]
+  },
+  "llibreta_torn": {
+    "name": "obj.llibreta_torn.nom",
+    "description": "obj.llibreta_torn.desc",
+    "props": {
+      "pes": 0.3
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.vet1",
+            "sound": "paper"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.vet2"
+          }
+        ]
+      }
+    ]
+  },
+  "caixa_eines": {
+    "name": "obj.caixa_eines.nom",
+    "description": "obj.caixa_eines.desc",
+    "props": {
+      "pes": 9
+    }
+  },
+  "imant_ferro9": {
+    "name": "obj.imant_ferro9.nom",
+    "description": "obj.imant_ferro9.desc",
+    "props": {
+      "pes": 0.3,
+      "material": "ferro9",
+      "finestra": "iri"
+    }
+  },
+  "nota_iri": {
+    "name": "obj.nota_iri.nom",
+    "description": "obj.nota_iri.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "sap_que_es_temps",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.vet2"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.vet3"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.inici"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.1"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.2"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.3"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.correspondencia.4"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.correspondencia.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri.correspondencia.vet2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "sap_que_es_temps"
+          },
+          {
+            "addVar": "enceses_restants",
+            "amount": -4
+          },
+          {
+            "addVar": "transferencies",
+            "amount": 4
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri.text"
+          }
+        ]
+      }
+    ]
+  },
+  "avis_reciclatge": {
+    "name": "obj.avis_reciclatge.nom",
+    "description": "obj.avis_reciclatge.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.avis_reciclatge.text"
+          }
+        ]
+      }
+    ]
+  },
+  "llapis_ulls": {
+    "name": "obj.llapis_ulls.nom",
+    "description": "obj.llapis_ulls.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "fullet_memoria",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_sap_conducte"
+            },
+            {
+              "flag": "reixa_mirada"
+            },
+            {
+              "flag": "mapa_fuga_escrit",
+              "is": false
+            },
+            {
+              "flag": "vet_sap_tub"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa1",
+            "sound": "escriure"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "mapa_fuga_escrit"
+          },
+          {
+            "takeItem": "fullet_memoria"
+          },
+          {
+            "giveItem": "mapa_fuga"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_memoria",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_sap_conducte"
+            },
+            {
+              "flag": "reixa_mirada"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa_tub"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_memoria",
+        "if": {
+          "flag": "vet_sap_conducte"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mapa_on"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_sap_desaparicio"
+            },
+            {
+              "flag": "nota_vet_nom_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.nom1",
+            "sound": "escriure"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.nom2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_vet_nom_escrita"
+          },
+          {
+            "takeItem": "tros_cartell"
+          },
+          {
+            "giveItem": "nota_vet_nom"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "if": {
+          "all": [
+            {
+              "flag": "comporta_mesurada"
+            },
+            {
+              "flag": "nota_mida_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.mida",
+            "sound": "escriure"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_mida_escrita"
+          },
+          {
+            "takeItem": "tros_cartell"
+          },
+          {
+            "giveItem": "nota_mida"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "if": {
+          "all": [
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "flag": "nota_pressio_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.pressio",
+            "sound": "escriure"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_pressio_escrita"
+          },
+          {
+            "takeItem": "tros_cartell"
+          },
+          {
+            "giveItem": "nota_pressio"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_ha_vist_inundacio"
+            },
+            {
+              "var": "valvula",
+              "op": "==",
+              "value": "tancada"
+            },
+            {
+              "flag": "nota_massa_escrita",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.massa",
+            "sound": "escriure"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_massa_escrita"
+          },
+          {
+            "takeItem": "tros_cartell"
+          },
+          {
+            "giveItem": "nota_massa"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tros_cartell",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.cartell_aviat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "avis_reciclatge",
+        "if": {
+          "flag": "panell_vet_reparat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.nota",
+            "sound": "escriure"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_vet_escrita"
+          },
+          {
+            "takeItem": "avis_reciclatge"
+          },
+          {
+            "giveItem": "nota_vet"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "avis_reciclatge",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.encara_no"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_reeducacio",
+        "if": {
+          "all": [
+            {
+              "flag": "sap_que_es_temps"
+            },
+            {
+              "flag": "pany_mirat"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.pany1",
+            "sound": "escriure"
+          },
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.pany2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_pany_escrita"
+          },
+          {
+            "takeItem": "fullet_reeducacio"
+          },
+          {
+            "giveItem": "nota_pany"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "fullet_reeducacio",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llapis_ulls.fullet"
+          }
+        ]
+      }
+    ]
+  },
+  "nota_vet": {
+    "name": "obj.nota_vet.nom",
+    "description": "obj.nota_vet.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "nota_vet_llegida"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet.text"
+          }
+        ]
+      }
+    ]
+  },
+  "fullet_reeducacio": {
+    "name": "obj.fullet_reeducacio.nom",
+    "description": "obj.fullet_reeducacio.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "nota_pany": {
+    "name": "obj.nota_pany.nom",
+    "description": "obj.nota_pany.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pany.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pany.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pany.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_pany"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pany.text"
+          }
+        ]
+      }
+    ]
+  },
+  "escarabat": {
+    "name": "obj.escarabat.nom",
+    "description": "obj.escarabat.desc",
+    "props": {
+      "pes": 0.01,
+      "viu": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.escarabat.look"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.escarabat.parlar"
+          }
+        ]
+      }
+    ]
+  },
+  "sopa": {
+    "name": "obj.sopa.nom",
+    "description": "obj.sopa.desc",
+    "props": {
+      "pes": 0.5,
+      "liquid": true
+    }
+  },
+  "tros_cartell": {
+    "name": "obj.tros_cartell.nom",
+    "description": "obj.tros_cartell.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "nota_mida": {
+    "name": "obj.nota_mida.nom",
+    "description": "obj.nota_mida.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_mida.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri2"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri3"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri4"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_mida.iri5"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_mida"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_mida.text"
+          }
+        ]
+      }
+    ]
+  },
+  "biga_acer": {
+    "name": "obj.biga_acer.nom",
+    "description": "obj.biga_acer.desc",
+    "props": {
+      "pes": 40,
+      "material": "acer"
+    }
+  },
+  "biga_ferro9": {
+    "name": "obj.biga_ferro9.nom",
+    "description": "obj.biga_ferro9.desc",
+    "props": {
+      "pes": 30,
+      "material": "ferro9"
+    }
+  },
+  "serra": {
+    "name": "obj.serra.nom",
+    "description": "obj.serra.desc",
+    "props": {
+      "pes": 0.6
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "biga_acer",
+        "if": {
+          "flag": "iri_sap_mida"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "sala.fabrica_moll.serrar1",
+            "sound": "serra"
+          },
+          {
+            "who": "player",
+            "text": "sala.fabrica_moll.serrar2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "biga_acer"
+          },
+          {
+            "setFlag": "biga_acer_serrada"
+          },
+          {
+            "giveItem": "tram_biga_1"
+          },
+          {
+            "giveItem": "tram_biga_2"
+          },
+          {
+            "giveItem": "tram_biga_3"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "biga_acer",
+        "lines": [
+          {
+            "who": "player",
+            "text": "sala.fabrica_moll.biga_acer.serra_no"
+          }
+        ]
+      }
+    ]
+  },
+  "tram_biga_1": {
+    "name": "obj.tram_biga_1.nom",
+    "description": "obj.tram_biga_1.desc",
+    "props": {
+      "pes": 1.8,
+      "material": "acer",
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "tram_biga_2",
+        "if": {
+          "hasItem": "tram_biga_3",
+          "who": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.muntar1",
+            "sound": "eina"
+          },
+          {
+            "who": "player",
+            "text": "obj.tram_biga.muntar2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "tram_biga_1",
+            "who": "vet"
+          },
+          {
+            "takeItem": "tram_biga_2",
+            "who": "vet"
+          },
+          {
+            "takeItem": "tram_biga_3",
+            "who": "vet"
+          },
+          {
+            "setFlag": "biga_muntada_feta"
+          },
+          {
+            "giveItem": "biga_muntada",
+            "who": "vet"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_2",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.iri"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_2",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.falta"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "if": {
+          "hasItem": "tram_biga_2",
+          "who": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.muntar1",
+            "sound": "eina"
+          },
+          {
+            "who": "player",
+            "text": "obj.tram_biga.muntar2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "tram_biga_1",
+            "who": "vet"
+          },
+          {
+            "takeItem": "tram_biga_2",
+            "who": "vet"
+          },
+          {
+            "takeItem": "tram_biga_3",
+            "who": "vet"
+          },
+          {
+            "setFlag": "biga_muntada_feta"
+          },
+          {
+            "giveItem": "biga_muntada",
+            "who": "vet"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.iri"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.falta"
+          }
+        ]
+      }
+    ]
+  },
+  "tram_biga_2": {
+    "name": "obj.tram_biga_2.nom",
+    "description": "obj.tram_biga_2.desc",
+    "props": {
+      "pes": 1.8,
+      "material": "acer",
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "if": {
+          "hasItem": "tram_biga_1",
+          "who": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.muntar1",
+            "sound": "eina"
+          },
+          {
+            "who": "player",
+            "text": "obj.tram_biga.muntar2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "tram_biga_1",
+            "who": "vet"
+          },
+          {
+            "takeItem": "tram_biga_2",
+            "who": "vet"
+          },
+          {
+            "takeItem": "tram_biga_3",
+            "who": "vet"
+          },
+          {
+            "setFlag": "biga_muntada_feta"
+          },
+          {
+            "giveItem": "biga_muntada",
+            "who": "vet"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.iri"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "tram_biga_3",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram_biga.falta"
+          }
+        ]
+      }
+    ]
+  },
+  "tram_biga_3": {
+    "name": "obj.tram_biga_3.nom",
+    "description": "obj.tram_biga_3.desc",
+    "props": {
+      "pes": 1.8,
+      "material": "acer",
+      "finestra": "iri"
+    }
+  },
+  "biga_muntada": {
+    "name": "obj.biga_muntada.nom",
+    "description": "obj.biga_muntada.desc",
+    "props": {
+      "pes": 5.4,
+      "material": "acer"
+    }
+  },
+  "nota_amagatall": {
+    "name": "obj.nota_amagatall.nom",
+    "description": "obj.nota_amagatall.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_amagatall.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_amagatall.vet1"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "vet_sap_amagatall"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_amagatall.text"
+          }
+        ]
+      }
+    ]
+  },
+  "pols_rovell": {
+    "name": "obj.pols_rovell.nom",
+    "description": "obj.pols_rovell.desc",
+    "props": {
+      "pes": 0.2,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.pols_rovell.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.pols_rovell.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_rovell"
+          }
+        ]
+      }
+    ]
+  },
+  "molla": {
+    "name": "obj.molla.nom",
+    "description": "obj.molla.desc",
+    "props": {
+      "pes": 0.05,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": [
+          "pull",
+          "push"
+        ],
+        "if": {
+          "flag": "molla_afinada"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.quieta",
+            "sound": "molla_3"
+          }
+        ]
+      },
+      {
+        "verb": "pull",
+        "if": {
+          "var": "molla_tensio",
+          "op": ">=",
+          "value": 5
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.trencar",
+            "sound": "molla_5"
+          }
+        ]
+      },
+      {
+        "verb": "pull",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.estirar",
+            "sound": "molla_{molla_tensio}"
+          }
+        ],
+        "effects": [
+          {
+            "addVar": "molla_tensio",
+            "amount": 1
+          }
+        ]
+      },
+      {
+        "verb": "push",
+        "if": {
+          "var": "molla_tensio",
+          "op": "<=",
+          "value": 0
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.massa",
+            "sound": "molla_0"
+          }
+        ]
+      },
+      {
+        "verb": "push",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.arronsar",
+            "sound": "molla_{molla_tensio}"
+          }
+        ],
+        "effects": [
+          {
+            "addVar": "molla_tensio",
+            "amount": -1
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "molla_afinada"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.molla.etiqueta"
+          },
+          {
+            "who": "player",
+            "text": "obj.molla.iri"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_diapaso"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "molla_afinada"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.molla.afinada"
+          }
+        ]
+      }
+    ]
+  },
+  "llima": {
+    "name": "obj.llima.nom",
+    "description": "obj.llima.desc",
+    "props": {
+      "pes": 0.3
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "diapaso",
+        "if": {
+          "any": [
+            {
+              "var": "diapaso_to",
+              "op": ">=",
+              "value": 2
+            },
+            {
+              "flag": "diapaso_afinat"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llima.passat1",
+            "sound": "llima"
+          },
+          {
+            "who": "player",
+            "text": "obj.llima.passat2",
+            "sound": "diapaso_xiulet"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "diapaso"
+          },
+          {
+            "giveItem": "diapaso_espatllat"
+          },
+          {
+            "setFlag": "diapaso_afinat",
+            "value": false
+          },
+          {
+            "setVar": "diapaso_to",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "diapaso",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llima.llimar",
+            "sound": "llima"
+          }
+        ],
+        "effects": [
+          {
+            "addVar": "diapaso_to",
+            "amount": 1
+          }
+        ]
+      }
+    ]
+  },
+  "diapaso": {
+    "name": "obj.diapaso.nom",
+    "description": "obj.diapaso.desc",
+    "props": {
+      "pes": 0.2,
+      "material": "ferro9",
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "molla",
+        "if": {
+          "flag": "diapaso_afinat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.ja",
+            "sound": "molla_diapaso_2"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "molla",
+        "if": {
+          "var": "diapaso_to",
+          "op": "<",
+          "value": 2
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.greu",
+            "sound": "molla_diapaso_{diapaso_to}"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "molla",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.igual1",
+            "sound": "molla_diapaso_2"
+          },
+          {
+            "who": "player",
+            "text": "obj.diapaso.igual2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "diapaso_afinat"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "diapaso_afinat"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.look_vet"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "diapaso_afinat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.diapaso.look_afinat"
+          }
+        ]
+      }
+    ]
+  },
+  "diapaso_espatllat": {
+    "name": "obj.diapaso_espatllat.nom",
+    "description": "obj.diapaso_espatllat.desc",
+    "props": {
+      "pes": 0.2,
+      "material": "ferro9"
+    }
+  },
+  "nota_pressio": {
+    "name": "obj.nota_pressio.nom",
+    "description": "obj.nota_pressio.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pressio.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_pressio.iri1"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_pressio"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_pressio.text"
+          }
+        ]
+      }
+    ]
+  },
+  "nota_massa": {
+    "name": "obj.nota_massa.nom",
+    "description": "obj.nota_massa.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_massa.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_massa.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_massa.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_massa"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_massa.text"
+          }
+        ]
+      }
+    ]
+  },
+  "fitxa_mira": {
+    "name": "obj.fitxa_mira.nom",
+    "description": "obj.fitxa_mira.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "var": "sospita_sic",
+              "op": ">=",
+              "value": 2
+            },
+            {
+              "flag": "mira_salvada",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.fitxa_mira.text_acusada"
+          },
+          {
+            "who": "player",
+            "text": "obj.fitxa_mira.vet_acusada"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "vet_coneix_mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.fitxa_mira.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.fitxa_mira.vet"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "vet_coneix_mira"
+          }
+        ]
+      }
+    ]
+  },
+  "planols": {
+    "name": "obj.planols.nom",
+    "description": "obj.planols.desc",
+    "props": {
+      "pes": 0.3
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.planols.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.planols.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.planols.iri2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_cambra"
+          }
+        ]
+      }
+    ]
+  },
+  "carta_mos": {
+    "name": "obj.carta_mos.nom",
+    "description": "obj.carta_mos.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "nota_vet_nom": {
+    "name": "obj.nota_vet_nom.nom",
+    "description": "obj.nota_vet_nom.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet_nom.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet_nom.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet_nom.iri2",
+            "if": {
+              "flag": "planols_robats"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_vet_nom.iri2_sense",
+            "if": {
+              "flag": "planols_robats",
+              "is": false
+            }
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_desaparicio"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_vet_nom.text"
+          }
+        ]
+      }
+    ]
+  },
+  "nota_iri_nom": {
+    "name": "obj.nota_iri_nom.nom",
+    "description": "obj.nota_iri_nom.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri_nom.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.nota_iri_nom.vet1"
+          },
+          {
+            "who": "title",
+            "text": "acte.fi2"
+          },
+          {
+            "who": "title",
+            "text": "acte.3"
+          },
+          {
+            "who": "mare",
+            "text": "obj.nota_iri_nom.mare1"
+          },
+          {
+            "who": "mare",
+            "text": "obj.nota_iri_nom.mare2"
+          },
+          {
+            "who": "directora",
+            "text": "obj.nota_iri_nom.directora"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "acte2_noms"
+          },
+          {
+            "setFlag": "acte2_acabat"
+          },
+          {
+            "setFlag": "acte3_iniciat"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.nota_iri_nom.text"
+          }
+        ]
+      }
+    ]
+  },
+  "fullet_memoria": {
+    "name": "obj.fullet_memoria.nom",
+    "description": "obj.fullet_memoria.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "mapa_fuga": {
+    "name": "obj.mapa_fuga.nom",
+    "description": "obj.mapa_fuga.desc",
+    "props": {
+      "pes": 0.01,
+      "finestra": "vet"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri1"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri2"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri3"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri4"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "iri_sap_reixa"
+          },
+          {
+            "setFlag": "iri_sap_tub"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.mapa_fuga.text"
+          }
+        ]
+      }
+    ]
+  },
+  "tub_ferro9": {
+    "name": "obj.tub_ferro9.nom",
+    "description": "obj.tub_ferro9.desc",
+    "props": {
+      "pes": 1.2,
+      "material": "ferro9"
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "llibreta_torn",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tub_ferro9.enrotllar1",
+            "sound": "paper"
+          },
+          {
+            "who": "player",
+            "text": "obj.tub_ferro9.enrotllar2"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "tub_ferro9"
+          },
+          {
+            "takeItem": "llibreta_torn"
+          },
+          {
+            "giveItem": "tub_amb_llibreta"
+          }
+        ]
+      }
+    ]
+  },
+  "tub_amb_llibreta": {
+    "name": "obj.tub_amb_llibreta.nom",
+    "description": "obj.tub_amb_llibreta.desc",
+    "props": {
+      "pes": 1.5,
+      "material": "ferro9",
+      "finestra": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "inRoom": "gavina_cella"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet2"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet1"
+          },
+          {
+            "who": "player",
+            "text": "obj.tub_amb_llibreta.vet_fora"
+          }
+        ]
+      }
+    ]
+  },
+  "clau_vitrina": {
+    "name": "obj.clau_vitrina.nom",
+    "description": "obj.clau_vitrina.desc",
+    "props": {
+      "pes": 0.05
+    }
+  },
+  "placa_cargol": {
+    "name": "obj.placa_cargol.nom",
+    "description": "obj.placa_cargol.desc",
+    "props": {
+      "pes": 0.2
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "cargol_gravat"
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.placa_cargol.text"
+          },
+          {
+            "who": "narrator",
+            "text": "obj.placa_cargol.gravada"
+          },
+          {
+            "who": "player",
+            "text": "obj.placa_cargol.vet_gravada"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.placa_cargol.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.placa_cargol.vet_buida"
+          }
+        ]
+      }
+    ]
+  },
+  "formulari_27be": {
+    "name": "obj.formulari_27be.nom",
+    "description": "obj.formulari_27be.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "formulari_27be_signat": {
+    "name": "obj.formulari_27be_signat.nom",
+    "description": "obj.formulari_27be_signat.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "carnet_exemplar": {
+    "name": "obj.carnet_exemplar.nom",
+    "description": "obj.carnet_exemplar.desc",
+    "props": {
+      "pes": 0.01
+    }
+  },
+  "notes_perdudes": {
+    "name": "obj.notes_perdudes.nom",
+    "description": "obj.notes_perdudes.desc",
+    "props": {
+      "pes": 0.05
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.notes_perdudes.look"
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.1.text",
+            "if": {
+              "flag": "nota_perduda_1"
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.2.text",
+            "if": {
+              "flag": "nota_perduda_2"
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.3.text",
+            "if": {
+              "flag": "nota_perduda_3"
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "nota_perduda.4.text",
+            "if": {
+              "flag": "nota_perduda_4"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "nota_mos": {
+    "name": "obj.nota_mos.nom",
+    "description": "obj.nota_mos.desc",
+    "props": {
+      "pes": 0.01
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "nota_perduda.5.text"
+          }
+        ]
+      }
+    ]
+  }
+}

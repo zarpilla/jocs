@@ -1,0 +1,348 @@
+{
+  "id": "gavina_memoria",
+  "name": "Sala de la Memòria",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_passadis",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 46
+        },
+        {
+          "x": 65,
+          "y": 46
+        },
+        {
+          "x": 65,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 47,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 37,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "holograma",
+      "active": true,
+      "description": "holograma del Director",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 278,
+          "y": 35
+        },
+        {
+          "x": 335,
+          "y": 35
+        },
+        {
+          "x": 335,
+          "y": 142
+        },
+        {
+          "x": 278,
+          "y": 142
+        }
+      ],
+      "walkToPoint": {
+        "x": 307,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 307,
+        "y": 142
+      }
+    },
+    {
+      "id": "foto",
+      "active": true,
+      "description": "foto del torn de nit",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 90,
+          "y": 35
+        },
+        {
+          "x": 169,
+          "y": 35
+        },
+        {
+          "x": 169,
+          "y": 101
+        },
+        {
+          "x": 90,
+          "y": 101
+        }
+      ],
+      "walkToPoint": {
+        "x": 130,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 130,
+        "y": 101
+      }
+    },
+    {
+      "id": "vitrina",
+      "active": true,
+      "description": "vitrina",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 354,
+          "y": 87
+        },
+        {
+          "x": 409,
+          "y": 87
+        },
+        {
+          "x": 409,
+          "y": 153
+        },
+        {
+          "x": 354,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 382,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 382,
+        "y": 153
+      }
+    },
+    {
+      "id": "mapa",
+      "active": true,
+      "description": "mapa de La Gavina",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 174,
+          "y": 29
+        },
+        {
+          "x": 264,
+          "y": 29
+        },
+        {
+          "x": 264,
+          "y": 101
+        },
+        {
+          "x": 174,
+          "y": 101
+        }
+      ],
+      "walkToPoint": {
+        "x": 220,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 220,
+        "y": 101
+      }
+    },
+    {
+      "id": "fullets",
+      "active": true,
+      "description": "fullets",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 425,
+          "y": 100
+        },
+        {
+          "x": 466,
+          "y": 100
+        },
+        {
+          "x": 466,
+          "y": 153
+        },
+        {
+          "x": 425,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 439,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 446,
+        "y": 153
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "socol",
+      "tag": "socol",
+      "animations": {
+        "socol": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 278,
+            "y": 141
+          },
+          {
+            "x": 335,
+            "y": 141
+          },
+          {
+            "x": 335,
+            "y": 158
+          },
+          {
+            "x": 278,
+            "y": 158
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 307,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 307,
+        "y": 158
+      },
+      "description": "sòcol de l'holograma"
+    },
+    {
+      "id": "foto_mira",
+      "tag": "foto_mira",
+      "animations": {
+        "foto_mira": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "placa_robot",
+      "tag": "placa_robot",
+      "animations": {
+        "placa_robot": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 55,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "cargol_vell-1",
+      "definition": "cargol_vell/cargol_vell.character.json",
+      "x": 246,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

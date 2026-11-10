@@ -1,0 +1,70 @@
+{
+  "id": "cargol",
+  "name": "Cargol",
+  "description": "Un robot de manteniment. Brilla tant que fa mal als ulls.",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 68,
+  "walkToPoint": {
+    "x": 63,
+    "y": 60
+  },
+  "talkPoint": {
+    "x": 27,
+    "y": 0
+  },
+  "feet": {
+    "x": 27,
+    "y": 60
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 8,
+        "y": 6
+      },
+      {
+        "x": 47,
+        "y": 6
+      },
+      {
+        "x": 47,
+        "y": 62
+      },
+      {
+        "x": 8,
+        "y": 62
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "talkTo",
+  "speechColor": "#a8f0c0"
+}

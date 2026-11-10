@@ -1,0 +1,93 @@
+{
+  "startRoomId": "portada",
+  "rooms": [
+    {
+      "id": "fabrica_calderes",
+      "definition": "fabrica_calderes/fabrica_calderes.room.json"
+    },
+    {
+      "id": "fabrica_cambra",
+      "definition": "fabrica_cambra/fabrica_cambra.room.json"
+    },
+    {
+      "id": "fabrica_magatzem",
+      "definition": "fabrica_magatzem/fabrica_magatzem.room.json"
+    },
+    {
+      "id": "gavina_cella",
+      "definition": "gavina_cella/gavina_cella.room.json"
+    },
+    {
+      "id": "gavina_passadis",
+      "definition": "gavina_passadis/gavina_passadis.room.json"
+    },
+    {
+      "id": "fabrica_moll",
+      "definition": "fabrica_moll/fabrica_moll.room.json"
+    },
+    {
+      "id": "gavina_hangar",
+      "definition": "gavina_hangar/gavina_hangar.room.json"
+    },
+    {
+      "id": "fabrica_despatx",
+      "definition": "fabrica_despatx/fabrica_despatx.room.json"
+    },
+    {
+      "id": "gavina_arxiu",
+      "definition": "gavina_arxiu/gavina_arxiu.room.json"
+    },
+    {
+      "id": "gavina_memoria",
+      "definition": "gavina_memoria/gavina_memoria.room.json"
+    },
+    {
+      "id": "proleg_cambra",
+      "definition": "proleg_cambra/proleg_cambra.room.json"
+    },
+    {
+      "id": "proleg_cella",
+      "definition": "proleg_cella/proleg_cella.room.json"
+    },
+    {
+      "id": "proleg_fabrica",
+      "definition": "proleg_fabrica/proleg_fabrica.room.json"
+    },
+    {
+      "id": "proleg_gavina",
+      "definition": "proleg_gavina/proleg_gavina.room.json"
+    },
+    {
+      "id": "portada",
+      "definition": "portada/portada.room.json"
+    },
+    {
+      "id": "final_anell",
+      "definition": "final_anell/final_anell.room.json"
+    },
+    {
+      "id": "final_cargol",
+      "definition": "final_cargol/final_cargol.room.json"
+    },
+    {
+      "id": "final_estacio",
+      "definition": "final_estacio/final_estacio.room.json"
+    },
+    {
+      "id": "final_llancadora",
+      "definition": "final_llancadora/final_llancadora.room.json"
+    },
+    {
+      "id": "final_museu",
+      "definition": "final_museu/final_museu.room.json"
+    },
+    {
+      "id": "final_nota",
+      "definition": "final_nota/final_nota.room.json"
+    },
+    {
+      "id": "credits",
+      "definition": "credits/credits.room.json"
+    }
+  ]
+}

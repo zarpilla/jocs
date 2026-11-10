@@ -1,0 +1,336 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_despatx.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "iri_descoberta",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta2"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica.descoberta3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_descoberta"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "id": "primera",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_despatx.intro"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta_magatzem": {
+      "name": "sala.fabrica_despatx.porta_magatzem.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_magatzem"
+        }
+      ]
+    },
+    "calaix": {
+      "name": "sala.fabrica_despatx.calaix.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "imant_ferro9",
+          "if": {
+            "flag": "planols_robats",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.calaix.obrir1",
+              "sound": "clac"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.calaix.obrir2"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "planols"
+            },
+            {
+              "setFlag": "planols_robats"
+            },
+            {
+              "addVar": "sospita_sic",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "planols_robats"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.calaix.buit"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.calaix.tancat"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_sap_calaix"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.calaix.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_sap_calaix"
+            }
+          ]
+        }
+      ]
+    },
+    "expedient_sic": {
+      "name": "sala.fabrica_despatx.expedient.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "llapis",
+          "if": {
+            "all": [
+              {
+                "var": "sospita_sic",
+                "op": ">=",
+                "value": 2
+              },
+              {
+                "flag": "mira_salvada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.expedient.confessar1",
+              "sound": "escriure"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.expedient.confessar2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "mira_salvada"
+            },
+            {
+              "setFlag": "iri_confessada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "inventari_falsificat"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_despatx.expedient.falsificat"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.expedient.falsificat_iri"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "iri_confessada"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_despatx.expedient.confessat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "capatas_acusat"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_despatx.expedient.capatas"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "sospita_sic",
+            "op": ">=",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_despatx.expedient.mira"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.expedient.mira_iri"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_sap_mira_acusada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_despatx.expedient.obert"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.expedient.obert_iri"
+            }
+          ]
+        }
+      ]
+    },
+    "llibre_inventari": {
+      "name": "sala.fabrica_despatx.llibre.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "segell",
+          "if": {
+            "all": [
+              {
+                "var": "sospita_sic",
+                "op": ">=",
+                "value": 2
+              },
+              {
+                "flag": "mira_salvada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.llibre.falsificar1",
+              "sound": "escriure"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.llibre.falsificar2",
+              "sound": "segell"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "mira_salvada"
+            },
+            {
+              "setFlag": "inventari_falsificat"
+            },
+            {
+              "setVar": "sospita_sic",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.llibre.look"
+            }
+          ]
+        }
+      ]
+    },
+    "retrat": {
+      "name": "sala.fabrica_despatx.retrat.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_despatx.retrat.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

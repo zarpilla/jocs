@@ -1,0 +1,74 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "Moll de càrrega",
+  "era": "iri",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "porta_calderes",
+      "label": "sala de calderes",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "biga_acer",
+      "label": "biga d'acer",
+      "kind": "prop",
+      "w": 49,
+      "h": 33,
+      "x": 72,
+      "y": 57
+    },
+    {
+      "id": "biga_ferro9",
+      "label": "biga de ferro-9",
+      "kind": "prop",
+      "w": 49,
+      "h": 33,
+      "x": 130,
+      "y": 19
+    },
+    {
+      "id": "serra",
+      "label": "serra",
+      "kind": "prop",
+      "w": 49,
+      "h": 33,
+      "x": 187,
+      "y": 57
+    },
+    {
+      "id": "trapa",
+      "label": "trapa",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 244,
+      "y": 19
+    },
+    {
+      "id": "llancadora",
+      "label": "llançadora",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 302,
+      "y": 57
+    },
+    {
+      "id": "comporta",
+      "label": "comporta",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 359,
+      "y": 19
+    }
+  ],
+  "characters": []
+}

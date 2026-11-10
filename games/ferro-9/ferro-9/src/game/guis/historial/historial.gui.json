@@ -1,0 +1,84 @@
+{
+  "id": "historial",
+  "name": "Historial",
+  "description": "Les últimes línies dites (adapters/benne).",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "modal": true,
+  "pauseGame": true,
+  "zIndex": 102,
+  "controls": [
+    {
+      "type": "nineSliceImage",
+      "id": "fons",
+      "x": 16,
+      "y": 8,
+      "width": 448,
+      "height": 254,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      },
+      "zIndex": 1
+    },
+    {
+      "type": "text",
+      "id": "titol",
+      "x": 240,
+      "y": 17,
+      "text": "Historial",
+      "font": "ferro-negreta",
+      "fontSize": 8,
+      "color": "#d8b46a",
+      "align": "center",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "linies",
+      "x": 32,
+      "y": 35,
+      "text": "",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#ffffff",
+      "align": "left",
+      "wordWrapWidth": 416,
+      "zIndex": 2
+    },
+    {
+      "type": "button",
+      "id": "tanca",
+      "x": 206,
+      "y": 234,
+      "width": 68,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "text": "Torna",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -1,
+      "backgroundTag": "",
+      "zIndex": 5,
+      "backgroundColor": "#132243",
+      "backgroundColorStates": {
+        "hover": "#1a466b",
+        "pressed": "#10908e",
+        "disabled": "#636363"
+      }
+    }
+  ]
+}

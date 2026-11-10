@@ -1,0 +1,436 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_magatzem.nom",
+  "protagonist": "iri",
+  "hotspots": {
+    "cargol": {
+      "name": "sala.fabrica_magatzem.cargol.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "cargol"
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "segell",
+          "if": {
+            "all": [
+              {
+                "flag": "cargol_sap_revisio"
+              },
+              {
+                "flag": "cargol_reparat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.segell1",
+              "sound": "segell"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.segell2"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.segell3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cargol_reparat"
+            },
+            {
+              "relation": {
+                "who": "cargol",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "llima",
+          "if": {
+            "all": [
+              {
+                "flag": "cargol_reparat"
+              },
+              {
+                "flag": "cargol_gravat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.llima1",
+              "sound": "llima"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.llima2"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.llima3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cargol_gravat"
+            },
+            {
+              "relation": {
+                "who": "cargol",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "llima",
+          "if": {
+            "flag": "cargol_gravat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.llima_no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.look"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.donar"
+            }
+          ],
+          "dialogue": "cargol"
+        },
+        {
+          "verb": [
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.empenyer1"
+            }
+          ]
+        }
+      ]
+    },
+    "plomall": {
+      "name": "sala.fabrica_magatzem.plomall.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.plomall.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.plomall.agafar1"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.plomall.agafar2"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "plomall"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "hasItem": "plomall",
+        "who": "iri",
+        "is": false
+      }
+    },
+    "caixa_eines": {
+      "name": "sala.fabrica_magatzem.caixa_eines.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.caixa.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "hasItem": "caixa_eines",
+            "who": "iri",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.caixa.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "caixa_eines"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "hasItem": "caixa_eines",
+        "who": "iri",
+        "is": false
+      }
+    },
+    "prestatges": {
+      "name": "sala.fabrica_magatzem.prestatges.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.prestatges.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.prestatges.agafar"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_calderes": {
+      "name": "sala.fabrica_magatzem.porta_calderes.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_calderes"
+        }
+      ]
+    },
+    "porta_despatx": {
+      "name": "sala.fabrica_magatzem.porta_despatx.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "director_fora",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.porta_despatx.reunio"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_despatx"
+        }
+      ]
+    },
+    "mira": {
+      "name": "pj.mira.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "mira_salvada"
+          },
+          {
+            "flag": "iri_fugida",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "planols",
+          "lines": [
+            {
+              "who": "player",
+              "text": "dlg.mira.planols1"
+            },
+            {
+              "who": "mira",
+              "text": "dlg.mira.planols2"
+            },
+            {
+              "who": "player",
+              "text": "dlg.mira.planols3"
+            },
+            {
+              "who": "mira",
+              "text": "dlg.mira.planols4"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "planols"
+            },
+            {
+              "setFlag": "planols_lliurats"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "mira"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.mira.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "iri_descoberta",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta2"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica.descoberta3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_descoberta"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "id": "mira_absent",
+      "once": true,
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "mira_salvada",
+            "is": false
+          },
+          {
+            "var": "sospita_sic",
+            "op": ">=",
+            "value": 2
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_magatzem.mira_absent1"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_magatzem.mira_absent2"
+        }
+      ]
+    },
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "sala.fabrica_magatzem.benvinguda"
+        }
+      ]
+    }
+  ]
+}

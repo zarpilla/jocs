@@ -1,0 +1,65 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "Sala de la Memòria",
+  "era": "vet",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "porta_passadis",
+      "label": "passadís",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "holograma",
+      "label": "holograma del Director",
+      "kind": "hotspot",
+      "w": 60,
+      "h": 33,
+      "x": 72,
+      "y": 57
+    },
+    {
+      "id": "foto",
+      "label": "foto del torn de nit",
+      "kind": "hotspot",
+      "w": 60,
+      "h": 33,
+      "x": 141,
+      "y": 19
+    },
+    {
+      "id": "vitrina",
+      "label": "vitrina",
+      "kind": "hotspot",
+      "w": 60,
+      "h": 33,
+      "x": 210,
+      "y": 57
+    },
+    {
+      "id": "mapa",
+      "label": "mapa de La Gavina",
+      "kind": "hotspot",
+      "w": 60,
+      "h": 33,
+      "x": 279,
+      "y": 19
+    },
+    {
+      "id": "fullets",
+      "label": "fullets",
+      "kind": "hotspot",
+      "w": 60,
+      "h": 33,
+      "x": 348,
+      "y": 57
+    }
+  ],
+  "characters": []
+}

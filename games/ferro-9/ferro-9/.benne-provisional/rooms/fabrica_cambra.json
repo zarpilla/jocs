@@ -1,0 +1,47 @@
+{
+  "width": 352,
+  "height": 198,
+  "title": "Cambra de ressonància",
+  "era": "iri",
+  "floorTop": 112,
+  "floorBottom": 148,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "sala de calderes",
+      "kind": "exit",
+      "w": 34,
+      "h": 66,
+      "x": 6,
+      "y": 52
+    },
+    {
+      "id": "palanca",
+      "label": "palanca",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 24,
+      "x": 65,
+      "y": 42
+    },
+    {
+      "id": "cambra",
+      "label": "cambra",
+      "kind": "hotspot",
+      "w": 54,
+      "h": 24,
+      "x": 149,
+      "y": 14
+    },
+    {
+      "id": "boto",
+      "label": "botó de sincronia",
+      "kind": "prop",
+      "w": 54,
+      "h": 24,
+      "x": 233,
+      "y": 42
+    }
+  ],
+  "characters": []
+}

@@ -1,0 +1,12 @@
+{
+  "$comment": "GENERAT per adapters/benne/sync.ts",
+  "characters": {},
+  "items": {},
+  "rooms": {},
+  "hotspots": {},
+  "music": {
+    "$comment": "Música d'ambient de les sales de cada protagonista (game/audio/music/<pista>.ogg, la genera `npm run musica`).",
+    "iri": "fabrica",
+    "vet": "gavina"
+  }
+}

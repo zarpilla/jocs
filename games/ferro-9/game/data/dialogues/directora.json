@@ -1,0 +1,154 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "directora",
+  "with": "directora",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "directora",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.primera1"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.primera2"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.primera3"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.primera4",
+          "effects": [
+            {
+              "setFlag": "vet_sap_tub"
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "que_vol",
+          "text": "dlg.directora.opt.que_vol",
+          "next": "que_vol",
+          "once": true
+        },
+        {
+          "id": "iri",
+          "text": "dlg.directora.opt.iri",
+          "next": "iri",
+          "once": true
+        },
+        {
+          "id": "pacte",
+          "text": "dlg.directora.opt.pacte",
+          "next": "pacte",
+          "once": true,
+          "effects": [
+            {
+              "setFlag": "pacte_acceptat"
+            }
+          ]
+        },
+        {
+          "id": "no",
+          "text": "dlg.directora.opt.no",
+          "next": "no"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.directora.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "que_vol": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.que_vol1"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.que_vol2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "iri": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.iri1"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.iri2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "no": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.no1"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.no2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.adeu"
+        }
+      ]
+    },
+    "pacte": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.pacte1"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.pacte2"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

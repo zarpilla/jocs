@@ -1,0 +1,139 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "sic",
+  "with": "sic",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "sic",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "sic",
+          "text": "dlg.sic.primera1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "sic",
+          "text": "dlg.sic.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "que_passa",
+          "text": "dlg.sic.opt.que_passa",
+          "next": "que_passa",
+          "once": true
+        },
+        {
+          "id": "passar",
+          "text": "dlg.sic.opt.passar",
+          "next": "passar"
+        },
+        {
+          "id": "director",
+          "text": "dlg.sic.opt.director",
+          "next": "director",
+          "once": true
+        },
+        {
+          "id": "enganyar",
+          "text": "dlg.sic.opt.enganyar",
+          "next": "enganyar",
+          "once": true,
+          "if": {
+            "chosen": {
+              "dialogue": "sic",
+              "node": "menu",
+              "choice": "que_passa"
+            }
+          }
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.sic.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "que_passa": {
+      "lines": [
+        {
+          "who": "sic",
+          "text": "dlg.sic.que_passa1"
+        },
+        {
+          "who": "sic",
+          "text": "dlg.sic.que_passa2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "passar": {
+      "lines": [
+        {
+          "who": "sic",
+          "text": "dlg.sic.passar1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "director": {
+      "lines": [
+        {
+          "who": "sic",
+          "text": "dlg.sic.director1"
+        },
+        {
+          "who": "sic",
+          "text": "dlg.sic.director2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "sic",
+          "text": "dlg.sic.adeu"
+        }
+      ]
+    },
+    "enganyar": {
+      "lines": [
+        {
+          "who": "sic",
+          "text": "dlg.sic.enganyar1"
+        },
+        {
+          "who": "sic",
+          "text": "dlg.sic.enganyar2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sic_distret"
+        }
+      ]
+    }
+  }
+}

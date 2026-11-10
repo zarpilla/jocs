@@ -1,0 +1,584 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_calderes.nom",
+  "protagonist": "iri",
+  "hotspots": {
+    "capatas": {
+      "name": "sala.fabrica_calderes.capatas.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "formulari_27be",
+          "if": {
+            "hasItem": "llapis"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.signar1",
+              "sound": "escriure"
+            },
+            {
+              "who": "capatas",
+              "text": "sala.fabrica_calderes.capatas.signar2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.signar3"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "formulari_27be"
+            },
+            {
+              "giveItem": "formulari_27be_signat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "formulari_27be",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.signar_sense"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "diapaso_espatllat",
+          "if": {
+            "all": [
+              {
+                "var": "sospita_sic",
+                "op": ">=",
+                "value": 2
+              },
+              {
+                "flag": "mira_salvada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.proves1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.proves2"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "diapaso_espatllat"
+            },
+            {
+              "setFlag": "mira_salvada"
+            },
+            {
+              "setFlag": "capatas_acusat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "segell_caigut",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.look1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.look2",
+              "sound": "ronc"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.parlar1"
+            },
+            {
+              "who": "capatas",
+              "text": "sala.fabrica_calderes.capatas.parlar2",
+              "sound": "ronc"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "segell_caigut",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.estirar1"
+            },
+            {
+              "who": "capatas",
+              "text": "sala.fabrica_calderes.capatas.estirar2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.estirar3"
+            }
+          ]
+        },
+        {
+          "verb": "push",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.empenyer1"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "plomall",
+          "if": {
+            "flag": "segell_caigut",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.plomall1"
+            },
+            {
+              "who": "capatas",
+              "text": "sala.fabrica_calderes.capatas.plomall2",
+              "sound": "segell"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.plomall3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "segell_caigut"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.capatas.objecte"
+            }
+          ]
+        }
+      ]
+    },
+    "segell": {
+      "name": "sala.fabrica_calderes.segell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.segell.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.segell.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "segell"
+            },
+            {
+              "setFlag": "segell_agafat"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "segell_caigut"
+          },
+          {
+            "flag": "segell_agafat",
+            "is": false
+          }
+        ]
+      }
+    },
+    "tauler": {
+      "name": "sala.fabrica_calderes.tauler.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.tauler.look1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.tauler.look2"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "hasItem": "formulari_27b",
+                "is": false
+              },
+              {
+                "hasItem": "formulari_segellat",
+                "is": false
+              },
+              {
+                "hasItem": "formulari_triplicat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.tauler.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "formulari_27b"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.tauler.prou"
+            }
+          ]
+        }
+      ]
+    },
+    "alarma": {
+      "name": "sala.fabrica_calderes.alarma.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "alarma_apagada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.alarma.look1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.alarma.look2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.alarma.apagada"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_magatzem": {
+      "name": "sala.fabrica_calderes.porta_magatzem.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_magatzem"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.porta_magatzem.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_cambra": {
+      "name": "sala.fabrica_calderes.porta_cambra.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_descoberta"
+              },
+              {
+                "flag": "sic_distret",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "sic",
+              "text": "sala.fabrica_calderes.porta_cambra.sic"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "iri_descoberta"
+              },
+              {
+                "flag": "sic_distret",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "sic",
+              "text": "sala.fabrica_calderes.porta_cambra.sic"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_cambra",
+          "if": {
+            "flag": "porta_cambra_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.porta_cambra.obrir",
+              "sound": "clac"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "porta_cambra_oberta"
+            },
+            {
+              "takeItem": "clau_cambra"
+            }
+          ],
+          "goTo": "fabrica_cambra"
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "porta_cambra_oberta"
+          },
+          "goTo": "fabrica_cambra"
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pull",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.porta_cambra.tancada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.porta_cambra.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_moll": {
+      "name": "sala.fabrica_calderes.porta_moll.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_moll"
+        }
+      ]
+    },
+    "sic": {
+      "name": "sala.fabrica_calderes.sic.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "sic"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_calderes.sic.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "iri_descoberta"
+          },
+          {
+            "flag": "sic_distret",
+            "is": false
+          }
+        ]
+      }
+    }
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "iri_descoberta",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta2"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica.descoberta3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_descoberta"
+        }
+      ]
+    },
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "title",
+          "text": "joc.titol"
+        },
+        {
+          "who": "title",
+          "text": "acte.1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fabrica_calderes.intro1"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_calderes.intro2",
+          "sound": "alarma"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_calderes.intro3"
+        }
+      ],
+      "effects": [
+        {
+          "startQuest": "acte1"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "alarma_encesa": {
+      "visibleIf": {
+        "flag": "alarma_apagada",
+        "is": false
+      }
+    }
+  }
+}

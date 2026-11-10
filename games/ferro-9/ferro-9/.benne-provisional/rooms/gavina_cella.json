@@ -1,0 +1,85 @@
+{
+  "width": 352,
+  "height": 198,
+  "title": "Cel·la 9",
+  "era": "vet",
+  "floorTop": 112,
+  "floorBottom": 148,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "porta de la cel·la",
+      "kind": "exit",
+      "w": 34,
+      "h": 66,
+      "x": 6,
+      "y": 52
+    },
+    {
+      "id": "panell",
+      "label": "panell rovellat",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 24,
+      "x": 53,
+      "y": 42
+    },
+    {
+      "id": "altaveu",
+      "label": "altaveu de la MARE",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 24,
+      "x": 89,
+      "y": 14
+    },
+    {
+      "id": "avis",
+      "label": "avís",
+      "kind": "prop",
+      "w": 30,
+      "h": 24,
+      "x": 125,
+      "y": 42
+    },
+    {
+      "id": "llitera",
+      "label": "llitera",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 24,
+      "x": 161,
+      "y": 14
+    },
+    {
+      "id": "escarabat",
+      "label": "Senyor Bigotis",
+      "kind": "prop",
+      "w": 30,
+      "h": 24,
+      "x": 197,
+      "y": 42
+    },
+    {
+      "id": "safata",
+      "label": "safata de sopar",
+      "kind": "prop",
+      "w": 30,
+      "h": 24,
+      "x": 233,
+      "y": 14
+    },
+    {
+      "id": "finestreta",
+      "label": "finestreta",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 24,
+      "x": 269,
+      "y": 42
+    }
+  ],
+  "characters": [
+    "Mos"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "../schemas/game.schema.json",
+  "id": "ferro9",
+  "title": "joc.titol",
+  "defaultLocale": "ca",
+  "locales": [
+    "ca"
+  ],
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "start": {
+    "iri": {
+      "room": "fabrica_calderes",
+      "items": [
+        "clau_anglesa",
+        "llapis",
+        "llibreta_torn"
+      ]
+    },
+    "vet": {
+      "room": "gavina_cella"
+    }
+  },
+  "intro": "proleg_gavina",
+  "switchWhen": {
+    "any": [
+      {
+        "flag": "accident_cambra"
+      },
+      {
+        "var": "finestra_armada",
+        "op": "==",
+        "value": "iri"
+      },
+      {
+        "var": "transferencies",
+        "op": ">=",
+        "value": 1
+      }
+    ]
+  },
+  "cover": "portada"
+}

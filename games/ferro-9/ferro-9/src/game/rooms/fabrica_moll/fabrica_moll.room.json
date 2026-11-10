@@ -1,0 +1,447 @@
+{
+  "id": "fabrica_moll",
+  "name": "Moll de càrrega",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_calderes",
+      "active": true,
+      "description": "sala de calderes",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 41,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 33,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "trapa",
+      "active": true,
+      "description": "reixa del terra",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 229,
+          "y": 170
+        },
+        {
+          "x": 286,
+          "y": 170
+        },
+        {
+          "x": 286,
+          "y": 189
+        },
+        {
+          "x": 229,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 258,
+        "y": 195
+      },
+      "lookAtPoint": {
+        "x": 258,
+        "y": 190
+      }
+    },
+    {
+      "id": "llancadora",
+      "active": true,
+      "description": "llançadora",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 321,
+          "y": 57
+        },
+        {
+          "x": 472,
+          "y": 57
+        },
+        {
+          "x": 472,
+          "y": 150
+        },
+        {
+          "x": 321,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 360,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 397,
+        "y": 150
+      }
+    },
+    {
+      "id": "comporta",
+      "active": true,
+      "description": "comporta",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 332,
+          "y": 10
+        },
+        {
+          "x": 477,
+          "y": 10
+        },
+        {
+          "x": 477,
+          "y": 54
+        },
+        {
+          "x": 332,
+          "y": 54
+        }
+      ],
+      "walkToPoint": {
+        "x": 404,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 405,
+        "y": 55
+      }
+    },
+    {
+      "id": "conducte",
+      "active": true,
+      "description": "conducte",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 215,
+          "y": 27
+        },
+        {
+          "x": 245,
+          "y": 27
+        },
+        {
+          "x": 245,
+          "y": 153
+        },
+        {
+          "x": 215,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 229,
+        "y": 177
+      },
+      "lookAtPoint": {
+        "x": 231,
+        "y": 153
+      }
+    },
+    {
+      "id": "pilar",
+      "active": true,
+      "description": "pilar",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 248,
+          "y": 10
+        },
+        {
+          "x": 267,
+          "y": 10
+        },
+        {
+          "x": 267,
+          "y": 147
+        },
+        {
+          "x": 248,
+          "y": 147
+        }
+      ],
+      "walkToPoint": {
+        "x": 258,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 258,
+        "y": 147
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "biga_acer",
+      "tag": "biga_acer",
+      "animations": {
+        "biga_acer": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 73,
+            "y": 122
+          },
+          {
+            "x": 215,
+            "y": 122
+          },
+          {
+            "x": 215,
+            "y": 142
+          },
+          {
+            "x": 73,
+            "y": 142
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 145,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 145,
+        "y": 142
+      },
+      "description": "biga d'acer"
+    },
+    {
+      "id": "biga_ferro9",
+      "tag": "biga_ferro9",
+      "animations": {
+        "biga_ferro9": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 76,
+            "y": 62
+          },
+          {
+            "x": 213,
+            "y": 62
+          },
+          {
+            "x": 213,
+            "y": 90
+          },
+          {
+            "x": 76,
+            "y": 90
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 145,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 145,
+        "y": 90
+      },
+      "description": "biga de ferro-9"
+    },
+    {
+      "id": "serra",
+      "tag": "serra",
+      "animations": {
+        "serra": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 289,
+            "y": 57
+          },
+          {
+            "x": 330,
+            "y": 57
+          },
+          {
+            "x": 330,
+            "y": 74
+          },
+          {
+            "x": 289,
+            "y": 74
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 308,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 310,
+        "y": 74
+      },
+      "description": "serra"
+    },
+    {
+      "id": "llima",
+      "tag": "llima",
+      "animations": {
+        "llima": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 316,
+            "y": 76
+          },
+          {
+            "x": 330,
+            "y": 76
+          },
+          {
+            "x": 330,
+            "y": 109
+          },
+          {
+            "x": 316,
+            "y": 109
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 317,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 323,
+        "y": 109
+      },
+      "description": "llima"
+    },
+    {
+      "id": "marca_pilar",
+      "tag": "marca_pilar",
+      "animations": {
+        "marca_pilar": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 130
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

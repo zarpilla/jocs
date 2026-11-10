@@ -1,0 +1,452 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "mos",
+  "with": "mos",
+  "start": [
+    {
+      "if": {
+        "remembers": {
+          "who": "mos",
+          "fact": "insultat"
+        }
+      },
+      "node": "ofes"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "mos",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.primera1"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.primera2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "ofes": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.ofes"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "reciclatge",
+          "text": "dlg.mos.opt.reciclatge",
+          "once": true,
+          "next": "reciclatge",
+          "effects": [
+            {
+              "remember": {
+                "who": "mos",
+                "fact": "preguntat_reciclatge"
+              }
+            }
+          ]
+        },
+        {
+          "id": "llapis",
+          "text": "dlg.mos.opt.llapis",
+          "next": "llapis",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "flag": "panell_vet_reparat"
+              },
+              {
+                "relation": {
+                  "who": "mos",
+                  "op": ">=",
+                  "value": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "llapis_demanar",
+          "text": "dlg.mos.opt.llapis_demanar",
+          "next": "llapis_que",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "flag": "panell_vet_reparat"
+              },
+              {
+                "relation": {
+                  "who": "mos",
+                  "op": "<",
+                  "value": 1
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "maquillatge",
+          "text": "dlg.mos.opt.maquillatge",
+          "once": true,
+          "next": "maquillatge"
+        },
+        {
+          "id": "galeria",
+          "text": "dlg.mos.opt.galeria",
+          "once": true,
+          "next": "galeria"
+        },
+        {
+          "id": "familia",
+          "text": "dlg.mos.opt.familia",
+          "once": true,
+          "next": "familia",
+          "if": {
+            "not": {
+              "remembers": {
+                "who": "mos",
+                "fact": "insultat"
+              }
+            }
+          },
+          "effects": [
+            {
+              "remember": {
+                "who": "mos",
+                "fact": "preguntat_familia"
+              }
+            }
+          ]
+        },
+        {
+          "id": "perdo",
+          "text": "dlg.mos.opt.perdo",
+          "once": true,
+          "next": "perdo",
+          "if": {
+            "remembers": {
+              "who": "mos",
+              "fact": "insultat"
+            }
+          },
+          "effects": [
+            {
+              "forget": {
+                "who": "mos",
+                "fact": "insultat"
+              }
+            },
+            {
+              "remember": {
+                "who": "mos",
+                "fact": "perdonat"
+              }
+            },
+            {
+              "relation": {
+                "who": "mos",
+                "change": 2
+              }
+            }
+          ]
+        },
+        {
+          "id": "distreure",
+          "text": "dlg.mos.opt.distreure",
+          "once": true,
+          "next": "distreure",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "flag": "carta_mos_lliurada"
+              },
+              {
+                "flag": "pacte_acceptat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.mos.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "reciclatge": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.reciclatge1"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.reciclatge2"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.reciclatge3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "maquillatge": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.maquillatge1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "familia": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.familia1"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.familia2"
+        }
+      ],
+      "effects": [
+        {
+          "startQuest": "carta_mos"
+        }
+      ],
+      "goto": "menu"
+    },
+    "llapis": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.llapis_ok",
+          "effects": [
+            {
+              "giveItem": "llapis_ulls"
+            },
+            {
+              "setFlag": "llapis_donat"
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "llapis_que": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.llapis_que"
+        }
+      ],
+      "goto": "convencer"
+    },
+    "convencer": {
+      "choices": [
+        {
+          "id": "elogiar",
+          "text": "dlg.mos.opt.elogiar",
+          "next": "elogiat",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "not": {
+                  "remembers": {
+                    "who": "mos",
+                    "fact": "insultat"
+                  }
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "remember": {
+                "who": "mos",
+                "fact": "elogiat"
+              }
+            },
+            {
+              "relation": {
+                "who": "mos",
+                "change": 1
+              }
+            }
+          ]
+        },
+        {
+          "id": "insultar",
+          "text": "dlg.mos.opt.insultar",
+          "next": "insultat",
+          "if": {
+            "all": [
+              {
+                "flag": "llapis_donat",
+                "is": false
+              },
+              {
+                "not": {
+                  "remembers": {
+                    "who": "mos",
+                    "fact": "insultat"
+                  }
+                }
+              }
+            ]
+          },
+          "effects": [
+            {
+              "remember": {
+                "who": "mos",
+                "fact": "insultat"
+              }
+            },
+            {
+              "relation": {
+                "who": "mos",
+                "change": -2
+              }
+            }
+          ]
+        },
+        {
+          "id": "res",
+          "text": "dlg.mos.opt.res",
+          "next": "menu"
+        }
+      ]
+    },
+    "elogiat": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.elogiat1",
+          "effects": [
+            {
+              "giveItem": "llapis_ulls"
+            },
+            {
+              "setFlag": "llapis_donat"
+            }
+          ]
+        }
+      ],
+      "goto": "menu"
+    },
+    "insultat": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.insultat1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "perdo": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.perdo1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.adeu"
+        }
+      ]
+    },
+    "galeria": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.galeria1"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.galeria2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.mos.galeria3"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.galeria4"
+        }
+      ],
+      "goto": "menu"
+    },
+    "distreure": {
+      "lines": [
+        {
+          "who": "mos",
+          "text": "dlg.mos.distreure1"
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.distreure2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.mos.distreure3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "mos_distreu"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

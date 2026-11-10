@@ -1,0 +1,502 @@
+{
+  "id": "gavina_hangar",
+  "name": "Moll de l'hangar",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_passadis",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 46
+        },
+        {
+          "x": 65,
+          "y": 46
+        },
+        {
+          "x": 65,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 47,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 37,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "comporta",
+      "active": true,
+      "description": "comporta",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 212,
+          "y": 8
+        },
+        {
+          "x": 477,
+          "y": 8
+        },
+        {
+          "x": 477,
+          "y": 153
+        },
+        {
+          "x": 212,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 300,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 345,
+        "y": 153
+      }
+    },
+    {
+      "id": "pilar",
+      "active": true,
+      "description": "pilar",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 174,
+          "y": 10
+        },
+        {
+          "x": 199,
+          "y": 10
+        },
+        {
+          "x": 199,
+          "y": 153
+        },
+        {
+          "x": 174,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 187,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 187,
+        "y": 153
+      }
+    },
+    {
+      "id": "placa_terra",
+      "active": true,
+      "description": "reixa del terra",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 158,
+          "y": 170
+        },
+        {
+          "x": 219,
+          "y": 170
+        },
+        {
+          "x": 219,
+          "y": 189
+        },
+        {
+          "x": 158,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 187,
+        "y": 195
+      },
+      "lookAtPoint": {
+        "x": 188,
+        "y": 190
+      }
+    },
+    {
+      "id": "conducte",
+      "active": true,
+      "description": "conducte",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 141,
+          "y": 13
+        },
+        {
+          "x": 169,
+          "y": 13
+        },
+        {
+          "x": 169,
+          "y": 153
+        },
+        {
+          "x": 141,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 156,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 156,
+        "y": 153
+      }
+    },
+    {
+      "id": "escala",
+      "active": true,
+      "description": "escala",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 76,
+          "y": 100
+        },
+        {
+          "x": 136,
+          "y": 100
+        },
+        {
+          "x": 136,
+          "y": 155
+        },
+        {
+          "x": 76,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 107,
+        "y": 177
+      },
+      "lookAtPoint": {
+        "x": 107,
+        "y": 156
+      }
+    },
+    {
+      "id": "sortida_conducte",
+      "active": true,
+      "description": "sortida del conducte",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 19,
+          "y": 170
+        },
+        {
+          "x": 103,
+          "y": 170
+        },
+        {
+          "x": 103,
+          "y": 189
+        },
+        {
+          "x": 19,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 48,
+        "y": 195
+      },
+      "lookAtPoint": {
+        "x": 62,
+        "y": 190
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llancadora",
+      "tag": "llancadora",
+      "animations": {
+        "llancadora": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 242,
+            "y": 54
+          },
+          {
+            "x": 455,
+            "y": 54
+          },
+          {
+            "x": 455,
+            "y": 142
+          },
+          {
+            "x": 242,
+            "y": 142
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 355,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 349,
+        "y": 142
+      },
+      "description": "llançadora"
+    },
+    {
+      "id": "porta_llancadora",
+      "tag": "porta_llancadora",
+      "animations": {
+        "porta_llancadora": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "animations": {
+        "aigua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "caixa_flotant",
+      "tag": "caixa_flotant",
+      "animations": {
+        "caixa_flotant": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 79,
+            "y": 144
+          },
+          {
+            "x": 123,
+            "y": 144
+          },
+          {
+            "x": 123,
+            "y": 169
+          },
+          {
+            "x": 79,
+            "y": 169
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 101,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 101,
+        "y": 169
+      },
+      "description": "caixa que sura"
+    },
+    {
+      "id": "pany",
+      "tag": "pany",
+      "animations": {
+        "pany": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 305,
+            "y": 88
+          },
+          {
+            "x": 324,
+            "y": 88
+          },
+          {
+            "x": 324,
+            "y": 110
+          },
+          {
+            "x": 305,
+            "y": 110
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 315,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 315,
+        "y": 111
+      },
+      "description": "pany sònic"
+    },
+    {
+      "id": "marca_pilar",
+      "tag": "marca_pilar",
+      "animations": {
+        "marca_pilar": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "caixa_recanvis",
+      "tag": "caixa_recanvis",
+      "animations": {
+        "caixa_recanvis": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 409,
+            "y": 151
+          },
+          {
+            "x": 450,
+            "y": 151
+          },
+          {
+            "x": 450,
+            "y": 173
+          },
+          {
+            "x": 409,
+            "y": 173
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 404,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 430,
+        "y": 173
+      },
+      "description": "caixa de recanvis"
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 96,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

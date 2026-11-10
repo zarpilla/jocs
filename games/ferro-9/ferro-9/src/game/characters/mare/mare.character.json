@@ -1,0 +1,70 @@
+{
+  "id": "mare",
+  "name": "MARE",
+  "description": "MARE",
+  "clickable": false,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 1,
+  "walkToPoint": {
+    "x": 0,
+    "y": 41
+  },
+  "talkPoint": {
+    "x": 11,
+    "y": -3
+  },
+  "feet": {
+    "x": 11,
+    "y": 21
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 0,
+        "y": 0
+      },
+      {
+        "x": 21,
+        "y": 0
+      },
+      {
+        "x": 21,
+        "y": 21
+      },
+      {
+        "x": 0,
+        "y": 21
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 300
+    }
+  },
+  "defaultVerb": "talkTo",
+  "speechColor": "#ff90c8"
+}

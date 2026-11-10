@@ -1,0 +1,317 @@
+{
+  "id": "fabrica_calderes",
+  "name": "Sala de calderes",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_magatzem",
+      "active": true,
+      "description": "magatzem",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 41,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 33,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_cambra",
+      "active": true,
+      "description": "porta de la cambra",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 422,
+          "y": 65
+        },
+        {
+          "x": 472,
+          "y": 65
+        },
+        {
+          "x": 472,
+          "y": 155
+        },
+        {
+          "x": 422,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 437,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 447,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "tauler",
+      "active": true,
+      "description": "tauler d'anuncis",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 199,
+          "y": 32
+        },
+        {
+          "x": 281,
+          "y": 32
+        },
+        {
+          "x": 281,
+          "y": 87
+        },
+        {
+          "x": 199,
+          "y": 87
+        }
+      ],
+      "walkToPoint": {
+        "x": 240,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 240,
+        "y": 87
+      }
+    },
+    {
+      "id": "alarma",
+      "active": true,
+      "description": "llum d'alarma",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 433,
+          "y": 38
+        },
+        {
+          "x": 461,
+          "y": 38
+        },
+        {
+          "x": 461,
+          "y": 65
+        },
+        {
+          "x": 433,
+          "y": 65
+        }
+      ],
+      "walkToPoint": {
+        "x": 431,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 447,
+        "y": 66
+      }
+    },
+    {
+      "id": "porta_moll",
+      "active": true,
+      "description": "moll de càrrega",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 207,
+          "y": 84
+        },
+        {
+          "x": 275,
+          "y": 84
+        },
+        {
+          "x": 275,
+          "y": 155
+        },
+        {
+          "x": 207,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 242,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 242,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "segell",
+      "tag": "segell",
+      "animations": {
+        "segell": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 302,
+            "y": 169
+          },
+          {
+            "x": 330,
+            "y": 169
+          },
+          {
+            "x": 330,
+            "y": 191
+          },
+          {
+            "x": 302,
+            "y": 191
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 292,
+        "y": 191
+      },
+      "lookAtPoint": {
+        "x": 317,
+        "y": 191
+      },
+      "description": "segell oficial"
+    },
+    {
+      "id": "alarma_encesa",
+      "tag": "alarma_encesa",
+      "animations": {
+        "alarma_encesa": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 218,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "capatas-1",
+      "definition": "capatas/capatas.character.json",
+      "x": 357,
+      "y": 180,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "sic-1",
+      "definition": "sic/sic.character.json",
+      "x": 409,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

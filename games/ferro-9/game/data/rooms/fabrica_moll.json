@@ -1,0 +1,945 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_moll.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "flag": "acte3_iniciat"
+          },
+          {
+            "flag": "iri_descoberta",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.fabrica.descoberta2"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica.descoberta3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_descoberta"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "id": "primera",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_moll.intro"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta_calderes": {
+      "name": "sala.fabrica_moll.porta_calderes.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "goTo": "fabrica_calderes"
+        }
+      ]
+    },
+    "biga_acer": {
+      "name": "sala.fabrica_moll.biga_acer.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "serra",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.primer_marca"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.primer_marca"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "serra",
+          "if": {
+            "flag": "iri_sap_mida"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.serrar1",
+              "sound": "serra"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.serrar2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "biga_acer_serrada"
+            },
+            {
+              "giveItem": "tram_biga_1"
+            },
+            {
+              "giveItem": "tram_biga_2"
+            },
+            {
+              "giveItem": "tram_biga_3"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "serra",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_acer.serra_no"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "iri_sap_mida"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_acer.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "biga_acer"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.sense_mida"
+            }
+          ],
+          "if": {
+            "flag": "iri_sap_pany"
+          }
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_per_que"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_acer.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "all": [
+          {
+            "hasItem": "biga_acer",
+            "who": "iri",
+            "is": false
+          },
+          {
+            "flag": "biga_acer_serrada",
+            "is": false
+          },
+          {
+            "var": "biga_amagada",
+            "op": "!=",
+            "value": "acer"
+          }
+        ]
+      }
+    },
+    "biga_ferro9": {
+      "name": "sala.fabrica_moll.biga_ferro9.nom",
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.primer_marca"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "iri_sap_mida"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_ferro9.robar1"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_ferro9.robar2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_ferro9.robar3"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "biga_ferro9"
+            },
+            {
+              "setFlag": "biga_ferro9_robada"
+            },
+            {
+              "addVar": "sospita_sic",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.sense_mida"
+            }
+          ],
+          "if": {
+            "flag": "iri_sap_pany"
+          }
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_per_que"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.biga_ferro9.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "flag": "biga_ferro9_robada",
+        "is": false
+      }
+    },
+    "serra": {
+      "name": "sala.fabrica_moll.serra.nom",
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.serra.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "serra"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.serra.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "hasItem": "serra",
+        "who": "iri",
+        "is": false
+      }
+    },
+    "trapa": {
+      "name": "sala.fabrica_moll.trapa.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "biga_acer",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.trapa.amagar_acer",
+              "sound": "reixa"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "biga_acer"
+            },
+            {
+              "setVar": "biga_amagada",
+              "value": "acer"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "biga_ferro9",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.trapa.amagar_ferro9",
+              "sound": "reixa"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "biga_ferro9"
+            },
+            {
+              "setVar": "biga_amagada",
+              "value": "ferro9"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "biga_amagada",
+                "op": "==",
+                "value": "acer"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.trapa.treure_acer",
+              "sound": "reixa"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "biga_amagada",
+              "value": ""
+            },
+            {
+              "giveItem": "biga_acer"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "var": "biga_amagada",
+            "op": "==",
+            "value": "ferro9"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.trapa.ferro9_amagada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.trapa.buida",
+              "sound": "reixa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.trapa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "llancadora": {
+      "name": "sala.fabrica_moll.llancadora.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "vet"
+                  },
+                  {
+                    "flag": "tub_muntat"
+                  }
+                ]
+              },
+              {
+                "flag": "iri_fugida",
+                "is": false
+              },
+              {
+                "flag": "vet_fugida"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir1",
+              "sound": "motor"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir3",
+              "sound": "motor"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_fugida"
+            },
+            {
+              "setFlag": "fugida_completada"
+            },
+            {
+              "event": "final"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "any": [
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "vet"
+                  },
+                  {
+                    "flag": "tub_muntat"
+                  }
+                ]
+              },
+              {
+                "flag": "iri_fugida",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir1",
+              "sound": "motor"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir2"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.fugir3",
+              "sound": "motor"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_moll.llancadora.mentrestant"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_fugida"
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "any": [
+              {
+                "hasItem": "tub_amb_llibreta",
+                "who": "vet"
+              },
+              {
+                "flag": "tub_muntat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.look_fugir"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llancadora.tocar"
+            }
+          ]
+        }
+      ]
+    },
+    "comporta": {
+      "name": "sala.fabrica_moll.comporta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.comporta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "llima": {
+      "name": "sala.fabrica_moll.llima.nom",
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llima.agafar"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "llima"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.llima.look"
+            }
+          ]
+        }
+      ],
+      "visibleIf": {
+        "hasItem": "llima",
+        "who": "iri",
+        "is": false
+      }
+    },
+    "conducte": {
+      "name": "sala.fabrica_moll.conducte.nom",
+      "interactions": [
+        {
+          "verb": "close",
+          "if": {
+            "flag": "iri_sap_pressio",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.no_toquis"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "var": "valvula",
+            "op": "!=",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.tancar1",
+              "sound": "valvula"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.tancar2"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "valvula",
+              "value": "tancada"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.ja_tancada"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "flag": "iri_sap_pressio",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.no_toquis"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.mig1",
+              "sound": "valvula"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.mig2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.fabrica_moll.conducte.mig3",
+              "sound": "altaveu"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "valvula",
+              "value": "mig"
+            },
+            {
+              "setFlag": "director_fora"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "mig"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.obrir",
+              "sound": "valvula"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "valvula",
+              "value": "oberta"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.ja_oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.usar"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.look_tancada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "valvula",
+            "op": "==",
+            "value": "mig"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.look_mig"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.conducte.look"
+            }
+          ]
+        }
+      ]
+    },
+    "pilar": {
+      "name": "sala.fabrica_moll.pilar.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "llima",
+          "if": {
+            "all": [
+              {
+                "flag": "iri_sap_mida"
+              },
+              {
+                "flag": "marca_pilar",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.gravar1",
+              "sound": "llima"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.gravar2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "marca_pilar"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llima",
+          "if": {
+            "flag": "marca_pilar"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.ja_gravat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llima",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.res_a_dir"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "marca_pilar"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.look_marca"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "iri_sap_mida"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.look_mida"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_moll.pilar.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "marca_pilar": {
+      "visibleIf": {
+        "flag": "marca_pilar"
+      }
+    }
+  }
+}

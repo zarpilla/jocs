@@ -1,0 +1,18 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.final_museu.nom",
+  "cutscene": {},
+  "hotspots": {},
+  "decor": {
+    "foto_mira": {
+      "visibleIf": {
+        "flag": "mira_salvada"
+      }
+    },
+    "conserge_cargol": {
+      "visibleIf": {
+        "flag": "cargol_memoria"
+      }
+    }
+  }
+}

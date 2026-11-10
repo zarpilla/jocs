@@ -1,0 +1,281 @@
+{
+  "id": "fabrica_magatzem",
+  "name": "Magatzem d'eines",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_calderes",
+      "active": true,
+      "description": "sala de calderes",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 41,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 33,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "prestatges",
+      "active": true,
+      "description": "prestatges",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 152,
+          "y": 21
+        },
+        {
+          "x": 322,
+          "y": 21
+        },
+        {
+          "x": 322,
+          "y": 150
+        },
+        {
+          "x": 152,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 237,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 237,
+        "y": 150
+      }
+    },
+    {
+      "id": "porta_despatx",
+      "active": true,
+      "description": "despatx del director",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 65,
+          "y": 59
+        },
+        {
+          "x": 109,
+          "y": 59
+        },
+        {
+          "x": 109,
+          "y": 155
+        },
+        {
+          "x": 65,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 87,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 87,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "plomall",
+      "tag": "plomall",
+      "animations": {
+        "plomall": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 111,
+            "y": 59
+          },
+          {
+            "x": 136,
+            "y": 59
+          },
+          {
+            "x": 136,
+            "y": 136
+          },
+          {
+            "x": 111,
+            "y": 136
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 126,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 124,
+        "y": 137
+      },
+      "description": "plomall"
+    },
+    {
+      "id": "caixa_eines",
+      "tag": "caixa_eines",
+      "animations": {
+        "caixa_eines": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 360,
+            "y": 152
+          },
+          {
+            "x": 417,
+            "y": 152
+          },
+          {
+            "x": 417,
+            "y": 188
+          },
+          {
+            "x": 360,
+            "y": 188
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 349,
+        "y": 191
+      },
+      "lookAtPoint": {
+        "x": 389,
+        "y": 188
+      },
+      "description": "caixa d'eines"
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 130
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 96,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "cargol-1",
+      "definition": "cargol/cargol.character.json",
+      "x": 287,
+      "y": 180,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "mira-1",
+      "definition": "mira/mira.character.json",
+      "x": 409,
+      "y": 191,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

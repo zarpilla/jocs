@@ -1,0 +1,215 @@
+{
+  "$schema": "../schemas/endings.schema.json",
+  "fugida": {
+    "title": "final.fugida.titol",
+    "text": "final.fugida.text",
+    "priority": 1,
+    "when": {
+      "flag": "fugida_completada"
+    },
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.fugida.1",
+        "room": "final_llancadora"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.4",
+        "room": "final_museu"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.mira",
+        "if": {
+          "flag": "mira_salvada"
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.cargol",
+        "if": {
+          "flag": "cargol_memoria"
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.fugida.mos",
+        "if": {
+          "flag": "carta_mos_lliurada"
+        }
+      }
+    ],
+    "textRoom": "final_anell",
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits2"
+      }
+    ]
+  },
+  "veritat": {
+    "title": "final.veritat.titol",
+    "text": "final.veritat.text",
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "flag": "fugida_completada"
+        },
+        {
+          "flag": "mira_salvada"
+        },
+        {
+          "flag": "planols_lliurats"
+        }
+      ]
+    },
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.oris.1",
+        "room": "final_llancadora"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.2",
+        "room": "final_estacio"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.4"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.mos"
+      }
+    ],
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits2"
+      }
+    ]
+  },
+  "correspondencia": {
+    "title": "final.correspondencia.titol",
+    "text": "final.correspondencia.text",
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "flag": "fugida_completada"
+        },
+        {
+          "flag": "mira_salvada"
+        },
+        {
+          "flag": "planols_lliurats"
+        },
+        {
+          "flag": "cargol_memoria"
+        }
+      ]
+    },
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.oris.1",
+        "room": "final_llancadora"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.2",
+        "room": "final_estacio"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.4"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.oris.mos"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.1",
+        "room": "final_cargol"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.3"
+      },
+      {
+        "who": "narrator",
+        "text": "final.correspondencia.4"
+      }
+    ],
+    "textRoom": "final_nota",
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits2"
+      }
+    ]
+  }
+}

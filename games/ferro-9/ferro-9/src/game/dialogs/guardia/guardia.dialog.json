@@ -1,0 +1,27 @@
+{
+  "id": "guardia",
+  "displayName": "guardia",
+  "options": [
+    {
+      "id": "menu__qui",
+      "scriptName": "menu__qui",
+      "text": "Qui ets?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__vitrina",
+      "scriptName": "menu__vitrina",
+      "text": "Tens la clau de les vitrines del museu?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Fins després.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

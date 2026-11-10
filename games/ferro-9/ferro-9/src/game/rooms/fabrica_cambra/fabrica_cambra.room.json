@@ -1,0 +1,285 @@
+{
+  "id": "fabrica_cambra",
+  "name": "Cambra de ressonància",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 164
+          },
+          {
+            "x": 461,
+            "y": 164
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sala de calderes",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 65
+        },
+        {
+          "x": 57,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 41,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 33,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "palanca",
+      "active": true,
+      "description": "palanca",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 144,
+          "y": 54
+        },
+        {
+          "x": 180,
+          "y": 54
+        },
+        {
+          "x": 180,
+          "y": 93
+        },
+        {
+          "x": 144,
+          "y": 93
+        }
+      ],
+      "walkToPoint": {
+        "x": 167,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 162,
+        "y": 93
+      }
+    },
+    {
+      "id": "cambra",
+      "active": true,
+      "description": "cambra",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 201,
+          "y": 13
+        },
+        {
+          "x": 316,
+          "y": 13
+        },
+        {
+          "x": 316,
+          "y": 161
+        },
+        {
+          "x": 201,
+          "y": 161
+        }
+      ],
+      "walkToPoint": {
+        "x": 259,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 259,
+        "y": 161
+      }
+    },
+    {
+      "id": "reixa",
+      "active": true,
+      "description": "reixa",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 335,
+          "y": 114
+        },
+        {
+          "x": 393,
+          "y": 114
+        },
+        {
+          "x": 393,
+          "y": 150
+        },
+        {
+          "x": 335,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 363,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 364,
+        "y": 150
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "boto",
+      "tag": "boto",
+      "animations": {
+        "boto": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 114,
+            "y": 84
+          },
+          {
+            "x": 139,
+            "y": 84
+          },
+          {
+            "x": 139,
+            "y": 103
+          },
+          {
+            "x": 114,
+            "y": 103
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 128,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 127,
+        "y": 104
+      },
+      "description": "botó de sincronia"
+    },
+    {
+      "id": "reixa_llimada",
+      "tag": "reixa_llimada",
+      "animations": {
+        "reixa_llimada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "palanca_alcada",
+      "tag": "palanca_alcada",
+      "animations": {
+        "palanca_alcada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "palanca_baixada",
+      "tag": "palanca_baixada",
+      "animations": {
+        "palanca_baixada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 377,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

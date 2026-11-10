@@ -1,0 +1,362 @@
+{
+  "$schema": "../schemas/quests.schema.json",
+  "acte1": {
+    "kind": "main",
+    "title": "mis.acte1.titol",
+    "description": "mis.acte1.desc",
+    "objectives": [
+      {
+        "id": "entrar_cambra",
+        "text": "mis.acte1.obj.entrar_cambra",
+        "completeWhen": {
+          "flag": "porta_cambra_oberta"
+        }
+      },
+      {
+        "id": "apagar_alarma",
+        "text": "mis.acte1.obj.apagar_alarma",
+        "completeWhen": {
+          "flag": "alarma_apagada"
+        }
+      },
+      {
+        "id": "primera_transferencia",
+        "text": "mis.acte1.obj.primera_transferencia",
+        "completeWhen": {
+          "var": "transferencies",
+          "op": ">=",
+          "value": 1
+        }
+      },
+      {
+        "id": "reparar_panell",
+        "text": "mis.acte1.obj.reparar_panell",
+        "completeWhen": {
+          "flag": "panell_vet_reparat"
+        }
+      },
+      {
+        "id": "primera_nota",
+        "text": "mis.acte1.obj.primera_nota",
+        "completeWhen": {
+          "flag": "nota_vet_llegida"
+        }
+      },
+      {
+        "id": "resposta",
+        "text": "mis.acte1.obj.resposta",
+        "completeWhen": {
+          "flag": "sap_que_es_temps"
+        }
+      },
+      {
+        "id": "sortir_cella",
+        "text": "mis.acte1.obj.sortir_cella",
+        "completeWhen": {
+          "flag": "acte1_acabat"
+        }
+      }
+    ]
+  },
+  "carta_mos": {
+    "kind": "side",
+    "title": "mis.carta_mos.titol",
+    "description": "mis.carta_mos.desc",
+    "objectives": [
+      {
+        "id": "trobar_carta",
+        "text": "mis.carta_mos.obj.trobar",
+        "completeWhen": {
+          "flag": "carta_mos_trobada"
+        }
+      },
+      {
+        "id": "lliurar",
+        "text": "mis.carta_mos.obj.lliurar",
+        "completeWhen": {
+          "flag": "carta_mos_lliurada"
+        }
+      }
+    ]
+  },
+  "acte2": {
+    "kind": "main",
+    "title": "mis.acte2.titol",
+    "description": "mis.acte2.desc",
+    "startWhen": {
+      "flag": "acte1_acabat"
+    },
+    "objectives": [
+      {
+        "id": "hangar",
+        "text": "mis.acte2.obj.hangar",
+        "completeWhen": {
+          "visited": "gavina_hangar"
+        }
+      },
+      {
+        "id": "mida",
+        "text": "mis.acte2.obj.mida",
+        "completeWhen": {
+          "flag": "iri_sap_mida"
+        }
+      },
+      {
+        "id": "comporta",
+        "text": "mis.acte2.obj.comporta",
+        "completeWhen": {
+          "flag": "comporta_oberta"
+        }
+      },
+      {
+        "id": "molla",
+        "text": "mis.acte2.obj.molla",
+        "completeWhen": {
+          "flag": "molla_afinada"
+        }
+      },
+      {
+        "id": "diapaso",
+        "text": "mis.acte2.obj.diapaso",
+        "completeWhen": {
+          "flag": "pany_sonic_obert"
+        }
+      },
+      {
+        "id": "pressio",
+        "text": "mis.acte2.obj.pressio",
+        "completeWhen": {
+          "var": "valvula",
+          "op": "==",
+          "value": "mig"
+        }
+      },
+      {
+        "id": "components",
+        "text": "mis.acte2.obj.components",
+        "completeWhen": {
+          "flag": "components_complets"
+        }
+      },
+      {
+        "id": "arxiu",
+        "text": "mis.acte2.obj.arxiu",
+        "completeWhen": {
+          "flag": "arxiu_explorat"
+        }
+      },
+      {
+        "id": "nom",
+        "text": "mis.acte2.obj.nom",
+        "completeWhen": {
+          "flag": "acte2_acabat"
+        }
+      }
+    ]
+  },
+  "salvar_mira": {
+    "kind": "side",
+    "title": "mis.salvar_mira.titol",
+    "description": "mis.salvar_mira.desc",
+    "startWhen": {
+      "all": [
+        {
+          "var": "sospita_sic",
+          "op": ">=",
+          "value": 2
+        },
+        {
+          "flag": "iri_sap_mira_acusada"
+        }
+      ]
+    },
+    "objectives": [
+      {
+        "id": "salvar",
+        "text": "mis.salvar_mira.obj",
+        "completeWhen": {
+          "flag": "mira_salvada"
+        }
+      }
+    ]
+  },
+  "acte3": {
+    "kind": "main",
+    "title": "mis.acte3.titol",
+    "description": "mis.acte3.desc",
+    "startWhen": {
+      "flag": "acte3_iniciat"
+    },
+    "objectives": [
+      {
+        "id": "memoria",
+        "text": "mis.acte3.obj.memoria",
+        "completeWhen": {
+          "visited": "gavina_memoria"
+        }
+      },
+      {
+        "id": "ruta",
+        "text": "mis.acte3.obj.ruta",
+        "completeWhen": {
+          "flag": "vet_sap_conducte"
+        }
+      },
+      {
+        "id": "mapa",
+        "text": "mis.acte3.obj.mapa",
+        "completeWhen": {
+          "hasItem": "mapa_fuga",
+          "who": "iri"
+        }
+      },
+      {
+        "id": "reixa",
+        "text": "mis.acte3.obj.reixa",
+        "completeWhen": {
+          "flag": "reixa_preparada"
+        }
+      },
+      {
+        "id": "component",
+        "text": "mis.acte3.obj.component",
+        "completeWhen": {
+          "flag": "tub_muntat"
+        }
+      },
+      {
+        "id": "fugida",
+        "text": "mis.acte3.obj.fugida",
+        "completeWhen": {
+          "flag": "fugida_completada"
+        }
+      }
+    ]
+  },
+  "veritat": {
+    "kind": "side",
+    "title": "mis.veritat.titol",
+    "description": "mis.veritat.desc",
+    "startWhen": {
+      "all": [
+        {
+          "flag": "acte3_iniciat"
+        },
+        {
+          "flag": "mira_salvada"
+        },
+        {
+          "flag": "planols_robats"
+        }
+      ]
+    },
+    "objectives": [
+      {
+        "id": "lliurar",
+        "text": "mis.veritat.obj",
+        "completeWhen": {
+          "flag": "planols_lliurats"
+        }
+      }
+    ]
+  },
+  "memoria_cargol": {
+    "kind": "side",
+    "title": "mis.memoria_cargol.titol",
+    "description": "mis.memoria_cargol.desc",
+    "startWhen": {
+      "flag": "cargol_sap_revisio"
+    },
+    "objectives": [
+      {
+        "id": "segell",
+        "text": "mis.memoria_cargol.obj.segell",
+        "completeWhen": {
+          "flag": "cargol_reparat"
+        }
+      },
+      {
+        "id": "nom",
+        "text": "mis.memoria_cargol.obj.nom",
+        "completeWhen": {
+          "flag": "cargol_gravat"
+        }
+      },
+      {
+        "id": "placa",
+        "text": "mis.memoria_cargol.obj.placa",
+        "completeWhen": {
+          "flag": "cargol_memoria"
+        }
+      }
+    ]
+  },
+  "formulari_27b": {
+    "kind": "side",
+    "title": "mis.formulari_27b.titol",
+    "description": "mis.formulari_27b.desc",
+    "startWhen": {
+      "remembers": {
+        "who": "cargol",
+        "fact": "formulari_acceptat"
+      }
+    },
+    "objectives": [
+      {
+        "id": "segellat",
+        "text": "mis.formulari_27b.obj.segellat",
+        "completeWhen": {
+          "remembers": {
+            "who": "cargol",
+            "fact": "formulari_acceptat"
+          }
+        }
+      },
+      {
+        "id": "triplicat",
+        "text": "mis.formulari_27b.obj.triplicat",
+        "completeWhen": {
+          "remembers": {
+            "who": "cargol",
+            "fact": "triplicat_acceptat"
+          }
+        }
+      },
+      {
+        "id": "carnet",
+        "text": "mis.formulari_27b.obj.carnet",
+        "completeWhen": {
+          "flag": "carnet_obtingut"
+        }
+      }
+    ]
+  },
+  "notes_perdudes": {
+    "kind": "side",
+    "title": "mis.notes_perdudes.titol",
+    "description": "mis.notes_perdudes.desc",
+    "startWhen": {
+      "var": "notes_trobades",
+      "op": ">=",
+      "value": 1
+    },
+    "objectives": [
+      {
+        "id": "trobar",
+        "text": "mis.notes_perdudes.obj.trobar",
+        "completeWhen": {
+          "var": "notes_trobades",
+          "op": ">=",
+          "value": 5
+        }
+      },
+      {
+        "id": "mos",
+        "text": "mis.notes_perdudes.obj.mos",
+        "completeWhen": {
+          "flag": "nota_mos_tornada"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "iri": {
+    "name": "pj.iri.nom"
+  },
+  "vet": {
+    "name": "pj.vet.nom"
+  },
+  "cargol": {
+    "name": "pj.cargol.nom",
+    "description": "pj.cargol.desc",
+    "facts": [
+      "formulari_acceptat",
+      "preguntat_pel_dia",
+      "triplicat_acceptat",
+      "diapaso_lliurat"
+    ],
+    "relation": {
+      "initial": 0,
+      "min": -3,
+      "max": 5
+    }
+  },
+  "capatas": {
+    "name": "pj.capatas.nom",
+    "appearance": [
+      {
+        "if": {
+          "flag": "segell_caigut"
+        },
+        "anim": "DormSenseSegell"
+      }
+    ]
+  },
+  "mare": {
+    "name": "pj.mare.nom"
+  },
+  "mos": {
+    "name": "pj.mos.nom",
+    "description": "pj.mos.desc",
+    "facts": [
+      "insultat",
+      "elogiat",
+      "preguntat_reciclatge",
+      "preguntat_familia",
+      "perdonat"
+    ],
+    "relation": {
+      "initial": 0,
+      "min": -3,
+      "max": 3
+    }
+  },
+  "directora": {
+    "name": "pj.directora.nom",
+    "description": "pj.directora.desc"
+  },
+  "sic": {
+    "name": "pj.sic.nom",
+    "description": "pj.sic.desc"
+  },
+  "mira": {
+    "name": "pj.mira.nom",
+    "description": "pj.mira.desc"
+  },
+  "guardia": {
+    "name": "pj.guardia.nom",
+    "description": "pj.guardia.desc"
+  },
+  "cargol_vell": {
+    "name": "pj.cargol_vell.nom",
+    "description": "pj.cargol_vell.desc"
+  }
+}

@@ -1,0 +1,571 @@
+{
+  "id": "gavina_cella",
+  "name": "Cel·la 9",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 363,
+            "y": 161
+          },
+          {
+            "x": 366,
+            "y": 175
+          },
+          {
+            "x": 461,
+            "y": 177
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta de la cel·la",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 49
+        },
+        {
+          "x": 65,
+          "y": 49
+        },
+        {
+          "x": 65,
+          "y": 155
+        },
+        {
+          "x": 8,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 47,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 37,
+        "y": 156
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "panell",
+      "active": true,
+      "description": "panell rovellat",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 239,
+          "y": 79
+        },
+        {
+          "x": 284,
+          "y": 79
+        },
+        {
+          "x": 284,
+          "y": 125
+        },
+        {
+          "x": 239,
+          "y": 125
+        }
+      ],
+      "walkToPoint": {
+        "x": 262,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 262,
+        "y": 126
+      }
+    },
+    {
+      "id": "altaveu",
+      "active": true,
+      "description": "altaveu de la MARE",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 158,
+          "y": 13
+        },
+        {
+          "x": 193,
+          "y": 13
+        },
+        {
+          "x": 193,
+          "y": 44
+        },
+        {
+          "x": 158,
+          "y": 44
+        }
+      ],
+      "walkToPoint": {
+        "x": 177,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 176,
+        "y": 44
+      }
+    },
+    {
+      "id": "llitera",
+      "active": true,
+      "description": "llitera",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 368,
+          "y": 62
+        },
+        {
+          "x": 472,
+          "y": 62
+        },
+        {
+          "x": 472,
+          "y": 172
+        },
+        {
+          "x": 368,
+          "y": 172
+        }
+      ],
+      "walkToPoint": {
+        "x": 357,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 420,
+        "y": 172
+      }
+    },
+    {
+      "id": "finestreta",
+      "active": true,
+      "description": "finestreta",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 308,
+          "y": 21
+        },
+        {
+          "x": 365,
+          "y": 21
+        },
+        {
+          "x": 365,
+          "y": 79
+        },
+        {
+          "x": 308,
+          "y": 79
+        }
+      ],
+      "walkToPoint": {
+        "x": 327,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 337,
+        "y": 79
+      }
+    },
+    {
+      "id": "reixa",
+      "active": true,
+      "description": "reixa",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 81,
+          "y": 111
+        },
+        {
+          "x": 139,
+          "y": 111
+        },
+        {
+          "x": 139,
+          "y": 150
+        },
+        {
+          "x": 81,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 109,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 111,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "avis",
+      "tag": "avis",
+      "animations": {
+        "avis": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 73,
+            "y": 171
+          },
+          {
+            "x": 103,
+            "y": 171
+          },
+          {
+            "x": 103,
+            "y": 191
+          },
+          {
+            "x": 73,
+            "y": 191
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 112,
+        "y": 191
+      },
+      "lookAtPoint": {
+        "x": 89,
+        "y": 191
+      },
+      "description": "avís"
+    },
+    {
+      "id": "escarabat",
+      "tag": "escarabat",
+      "animations": {
+        "escarabat": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 119,
+            "y": 155
+          },
+          {
+            "x": 142,
+            "y": 155
+          },
+          {
+            "x": 142,
+            "y": 174
+          },
+          {
+            "x": 119,
+            "y": 174
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 150,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 131,
+        "y": 175
+      },
+      "description": "Senyor Bigotis"
+    },
+    {
+      "id": "safata",
+      "tag": "safata",
+      "animations": {
+        "safata": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 316,
+            "y": 163
+          },
+          {
+            "x": 360,
+            "y": 163
+          },
+          {
+            "x": 360,
+            "y": 188
+          },
+          {
+            "x": 316,
+            "y": 188
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 308,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 338,
+        "y": 188
+      },
+      "description": "safata de sopar"
+    },
+    {
+      "id": "panell_afluixat",
+      "tag": "panell_afluixat",
+      "animations": {
+        "panell_afluixat": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "panell_obert",
+      "tag": "panell_obert",
+      "animations": {
+        "panell_obert": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "panell_reparat",
+      "tag": "panell_reparat",
+      "animations": {
+        "panell_reparat": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "reixa_oberta",
+      "tag": "reixa_oberta",
+      "animations": {
+        "reixa_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "esquerda",
+      "tag": "esquerda",
+      "animations": {
+        "esquerda": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 201,
+            "y": 87
+          },
+          {
+            "x": 223,
+            "y": 87
+          },
+          {
+            "x": 223,
+            "y": 117
+          },
+          {
+            "x": 201,
+            "y": 117
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 213,
+        "y": 175
+      },
+      "lookAtPoint": {
+        "x": 213,
+        "y": 117
+      },
+      "description": "esquerda"
+    },
+    {
+      "id": "fullet",
+      "tag": "fullet",
+      "animations": {
+        "fullet": {}
+      },
+      "zIndex": 4,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 425,
+            "y": 119
+          },
+          {
+            "x": 455,
+            "y": 119
+          },
+          {
+            "x": 455,
+            "y": 139
+          },
+          {
+            "x": 425,
+            "y": 139
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 404,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 441,
+        "y": 139
+      },
+      "description": "fullet de reeducació"
+    },
+    {
+      "id": "panell_sincronitzat",
+      "tag": "panell_sincronitzat",
+      "animations": {
+        "panell_sincronitzat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 125
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 205,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "mos-1",
+      "definition": "mos/mos.character.json",
+      "x": 417,
+      "y": 191,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "mare-veu",
+      "definition": "mare/mare.character.json",
+      "x": 177,
+      "y": 41,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "directora-1",
+      "definition": "directora/directora.character.json",
+      "x": 292,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

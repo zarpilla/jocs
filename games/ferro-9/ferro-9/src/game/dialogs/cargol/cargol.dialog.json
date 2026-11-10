@@ -1,0 +1,83 @@
+{
+  "id": "cargol",
+  "displayName": "cargol",
+  "options": [
+    {
+      "id": "menu__clau",
+      "scriptName": "menu__clau",
+      "text": "Necessito la clau de la cambra de ressonància.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__imant",
+      "scriptName": "menu__imant",
+      "text": "Necessito un imant de ferro-9.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__diapaso",
+      "scriptName": "menu__diapaso",
+      "text": "Necessito un diapasó de ferro-9.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__imant2",
+      "scriptName": "menu__imant2",
+      "text": "Necessito un altre imant de ferro-9.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__tub",
+      "scriptName": "menu__tub",
+      "text": "Necessito un tub de vàlvula de ferro-9.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__carnet",
+      "scriptName": "menu__carnet",
+      "text": "Cargol, hi ha cap manera d'omplir menys formularis?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__carnet_lliurar",
+      "scriptName": "menu__carnet_lliurar",
+      "text": "Aquí tens el 27-B/E, signat pel capatàs.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__dia",
+      "scriptName": "menu__dia",
+      "text": "Com estàs, Cargol?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__memoria",
+      "scriptName": "menu__memoria",
+      "text": "Cargol, què recordes de l'any passat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__alarma",
+      "scriptName": "menu__alarma",
+      "text": "Per què es va construir la cambra?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Fins després, Cargol.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

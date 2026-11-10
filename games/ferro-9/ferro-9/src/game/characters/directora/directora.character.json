@@ -1,0 +1,75 @@
+{
+  "id": "directora",
+  "name": "Directora Aldaia",
+  "description": "La directora de La Gavina. Rebesneta del Director Aldaia, i se li nota.",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 82,
+  "walkToPoint": {
+    "x": 60,
+    "y": 83
+  },
+  "talkPoint": {
+    "x": 25,
+    "y": -3
+  },
+  "feet": {
+    "x": 25,
+    "y": 83
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 15,
+        "y": 3
+      },
+      {
+        "x": 34,
+        "y": 3
+      },
+      {
+        "x": 37,
+        "y": 55
+      },
+      {
+        "x": 33,
+        "y": 86
+      },
+      {
+        "x": 15,
+        "y": 86
+      },
+      {
+        "x": 11,
+        "y": 55
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleL": {
+      "loop": true
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "talkTo",
+  "speechColor": "#90d890"
+}

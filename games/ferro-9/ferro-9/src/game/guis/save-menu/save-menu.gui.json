@@ -1,0 +1,139 @@
+{
+  "id": "save-menu",
+  "name": "Save Menu",
+  "description": "",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "controls": [
+    {
+      "type": "nineSliceImage",
+      "id": "save-bg",
+      "x": 63,
+      "y": 34,
+      "width": 355,
+      "height": 202,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 240,
+      "y": 46,
+      "text": "Desa",
+      "font": "ferro-negreta",
+      "fontSize": 8,
+      "color": "#d8b46a",
+      "align": "center"
+    },
+    {
+      "type": "textInput",
+      "id": "save-name",
+      "x": 82,
+      "y": 202,
+      "width": 215,
+      "height": 19,
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "text": "",
+      "maxLength": 26,
+      "placeholder": "Nom de la partida...",
+      "color": "#ffffff",
+      "backgroundColor": "#222222",
+      "outlineColor": "#666666",
+      "caretColor": "#ffffff",
+      "hoverBackgroundColor": "#2f2f2f",
+      "focusedOutlineColor": "#a0a0a0",
+      "textAlign": "left"
+    },
+    {
+      "type": "listBox",
+      "id": "saved-list",
+      "x": 82,
+      "y": 87,
+      "width": 215,
+      "height": 109,
+      "rowCount": 5,
+      "rowPadding": 3,
+      "normalBackgroundColor": "#222222",
+      "hoverBackgroundColor": "#2f2f2f",
+      "selectedBackgroundColor": "#4a4a4a",
+      "textColor": "#ffffff",
+      "selectedTextColor": "#ffffff",
+      "placeholderTextColor": "#999999",
+      "font": "ferro-regular",
+      "fontSize": 8
+    },
+    {
+      "type": "text",
+      "id": "instructions",
+      "x": 82,
+      "y": 65,
+      "text": "Tria una posició i escriu un nom per desar.",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#d8b46a",
+      "wordWrapWidth": 305
+    },
+    {
+      "type": "button",
+      "id": "save-btn",
+      "x": 311,
+      "y": 136,
+      "width": 85,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "text": "Desa",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -1,
+      "backgroundTag": "",
+      "backgroundColor": "#132243",
+      "backgroundColorStates": {
+        "hover": "#1a466b",
+        "pressed": "#10908e",
+        "disabled": "#636363"
+      }
+    },
+    {
+      "type": "button",
+      "id": "back-btn",
+      "x": 311,
+      "y": 160,
+      "width": 85,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "text": "Torna",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -1,
+      "backgroundTag": "",
+      "backgroundColor": "#132243",
+      "backgroundColorStates": {
+        "hover": "#1a466b",
+        "pressed": "#10908e",
+        "disabled": "#636363"
+      }
+    }
+  ],
+  "modal": true,
+  "zIndex": 101
+}

@@ -1,0 +1,153 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "guardia",
+  "with": "guardia",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "flag": "cella_tancada"
+          },
+          {
+            "not": {
+              "seen": {
+                "dialogue": "guardia",
+                "node": "fugitiva"
+              }
+            }
+          }
+        ]
+      },
+      "node": "fugitiva"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "guardia",
+          "node": "primera"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.primera1"
+        },
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.primera2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "qui",
+          "text": "dlg.guardia.opt.qui",
+          "once": true,
+          "next": "qui"
+        },
+        {
+          "id": "vitrina",
+          "text": "dlg.guardia.opt.vitrina",
+          "next": "vitrina",
+          "if": {
+            "all": [
+              {
+                "flag": "placa_vista"
+              },
+              {
+                "flag": "vitrina_oberta",
+                "is": false
+              },
+              {
+                "hasItem": "clau_vitrina",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.guardia.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "qui": {
+      "lines": [
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.qui1"
+        },
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.qui2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.guardia.qui_vet"
+        }
+      ],
+      "goto": "menu"
+    },
+    "vitrina": {
+      "lines": [
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.vitrina1"
+        },
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.vitrina2"
+        }
+      ],
+      "effects": [
+        {
+          "giveItem": "clau_vitrina"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.adeu"
+        }
+      ]
+    },
+    "fugitiva": {
+      "lines": [
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.fugitiva1"
+        },
+        {
+          "who": "guardia",
+          "text": "dlg.guardia.fugitiva2"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

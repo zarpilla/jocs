@@ -1,0 +1,27 @@
+{
+  "id": "mira",
+  "displayName": "mira",
+  "options": [
+    {
+      "id": "menu__que_dius",
+      "scriptName": "menu__que_dius",
+      "text": "Què diuen de mi?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__planols",
+      "scriptName": "menu__planols",
+      "text": "Tinc una cosa per a tu.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "He de marxar, Mira.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}
