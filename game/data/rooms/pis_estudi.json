@@ -77,20 +77,6 @@
         }
       ]
     },
-    "prestatge": {
-      "name": "sala.pis_estudi.prestatge.nom",
-      "interactions": [
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.prestatge.look"
-            }
-          ]
-        }
-      ]
-    },
     "ordinadors": {
       "name": "sala.pis_estudi.ordinadors.nom",
       "interactions": [

@@ -69,20 +69,31 @@ Regles:
 
 ## Art
 
-**En comparació: dues propostes** amb la mateixa sala de mostra (`pis_estudi`, l'estudi de l'Iri). Vegeu
-[guio/art/](guio/art/).
+Fixat amb la **sala de mostra** (`pis_estudi`, l'estudi de l'Iri), que fa de guia d'estil. Es van comparar
+dues propostes ([guio/art/comparacio.png](guio/art/comparacio.png)); s'ha triat la **B: urbana, sense
+caricatura**, amb la calidesa lila de la A. Captura al joc: [guio/art/sala-mostra-joc.png](guio/art/sala-mostra-joc.png).
 
-| | Proposta A · caricatura | Proposta B · urbà, sense caricatura |
-|---|---|---|
-| Personatges | **64 px**, cap gran (≈26 px), fotograma 48×68, peus a (24, 65) | Proporcions de Ferro-9 (≈83 px), fotograma 49×87 |
-| Dibuix | `hd/cartoon.py`: contorn fosc del color de cada peça, dos o tres tons per color | `hd/characters.py` (de Ferro-9): volum, llum i trama |
-| Mobles | Escriptori a mig cos (≈30 px de terra a taulell) | Escala real (≈46 px) |
-| Fons | `hd/rooms/pis_estudi.py` | `hd/rooms/pis_estudi_b.py` |
+| Què | Mida i regla |
+|---|---|
+| Pantalla | 480×270; la sala es veu fins a y≈205 (a sota hi ha la barra de verbs) |
+| Personatges | Proporcions de Ferro-9: ≈83 px, fotograma de 49×87, peus a (25, 83). Direccions L, D, U (Benne fa el mirall de R). Dibuix amb volum, llum i trama (`hd/characters.py`) |
+| Mobles | Escala real: un escriptori arriba al maluc (≈46 px de terra a taulell) |
+| Icones | La casella de l'inventari: 49×27, amb el mateix dibuix de volum (`hd/items.py`) |
+| Fons | `hd/pix.py`: rampes de color amb trama ordenada i llums de sala; contorns només on cal |
+| To | Urbà, de hacker i d'espies: colors apagats, llum de pantalles (cian) i de neó (magenta). Un accent fort per personatge (l'Iri: dessuadora verd petroli amb «</>» i auriculars vermells) |
 
-Comú: 480×270, la sala es veu fins a y≈205 (a sota, la barra de verbs); casella d'inventari de 49×27; fons amb
-`hd/pix.py` (rampes, trama ordenada, llums de sala). Previsualitzacions: `python3 adapters/benne/tools/hd/render.py
-<sala> <carpeta>` (amb una de depuració: zones, terra i personatges a escala). La barra de verbs i els menús
-encara són els de la plantilla, ampliats.
+On és cada cosa (a `adapters/benne/tools/`):
+
+- `hd/personatges.py`: l'Iri i en Diu; `draw_characters.py` en genera els fulls (el sync els copia).
+- `hd/rooms/pis_estudi.py`: el dibuix de la sala; `hd/rooms/comu.py`: eines i rampes comunes;
+  `room_designs.py`: la geometria (on es clica, on es camina).
+- `python3 hd/render.py <sala> <carpeta>`: previsualitzacions ampliades, amb una de depuració (zones, terra
+  i personatges a escala).
+- `hd/caricatura/`: la proposta A (caricatura, 64 px i cap gran), guardada per a un joc per a públic infantil.
+  No la fa servir el sync.
+
+Les altres sales tindran art provisional amb la geometria definitiva fins que el guió de cada acte estigui
+tancat i jugat. La barra de verbs i els menús encara són els de la plantilla (ampliats): falten.
 
 ## Ordres
 
@@ -116,6 +127,6 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
 - Projecte Benne a `suma-zero/` creat amb `npm run benne:create`, amb els pegats propis al motor
   (`adapters/benne/patches/`) i la font pròpia.
 - **Guió** complet i revisat ([guio/guio.md](guio/guio.md)), amb la primera revisió de coherència aplicada.
-- **Sala de mostra** (l'estudi de l'Iri) en dues propostes d'art, per triar-ne una. La A (caricatura) s'ha
-  provat al navegador: s'hi camina i s'hi parla.
-- **Següent pas:** triar l'estil i començar l'Acte 1.
+- **Sala de mostra amb l'art definitiu** (proposta B): l'estudi de l'Iri, l'Iri i en Diu, i quatre icones.
+  Provada al navegador: s'hi camina i s'hi parla.
+- **Següent pas:** l'Acte 1 (contingut, mode text, tests de tots els camins, sync, art provisional).

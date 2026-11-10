@@ -158,40 +158,40 @@ def standing(cid, p, thin=False):
     })
 
 
-def protagonist(cid, draw):
-    """Protagonista de Suma Zero (hd/personatges.py): 48×68, peus a (24, 65); Idle amb parpelleig."""
+def protagonist(cid, draw, feet=(25, 83)):
+    """Protagonista de Suma Zero (hd/personatges.py): 49×87, peus a (25, 83), com a Ferro-9."""
     tags = []
     for f in 'LDU':
-        tags.append((f'Idle{f}', [draw(f)] * 11 + [draw(f, blink=f != 'U')]))
+        tags.append((f'Idle{f}', [draw(f)]))
     for f in 'LDU':
         tags.append((f'Walk{f}', [draw(f, walk=k) for k in range(6)]))
     for f in 'LDU':
         tags.append((f'Talk{f}', [draw(f, talk=False), draw(f, talk=True)]))
     anims = {t: {'loop': True} for t, _ in tags}
     for f in 'LDU':
-        anims[f'Idle{f}']['frameDuration'] = 250
-        anims[f'Walk{f}']['frameDuration'] = 110 if f == 'L' else 120
+        anims[f'Walk{f}']['frameDuration'] = 90 if f == 'L' else 100
         anims[f'Talk{f}']['frameDuration'] = 140
-    fx, fy = personatges.FEET
-    write(cid, tags, (personatges.FW, personatges.FH), {
+    w, h = tags[0][1][0].size
+    fx, fy = feet
+    write(cid, tags, (w, h), {
         'walkSpeed': 110, 'walkToPoint': {'x': fx + 18, 'y': fy}, 'talkPoint': {'x': fx, 'y': -2}, 'feet': {'x': fx, 'y': fy},
-        'collider': {'points': [{'x': 11, 'y': 2}, {'x': 37, 'y': 2}, {'x': 37, 'y': 30}, {'x': 33, 'y': 66}, {'x': 15, 'y': 66}, {'x': 11, 'y': 30}]},
+        'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},
         'animations': anims, 'defaultVerb': 'look',
     })
 
 
 def gat(cid='diu'):
-    """En Diu: sempre de cara (un gat no es gira per ningú)."""
+    """En Diu: sempre assegut de cara (un gat no es gira per ningú)."""
     idle = [personatges.diu(cua=k % 4, parpelleja=(k == 7)) for k in range(8)]
-    talk = [personatges.diu(cua=0), personatges.diu(cua=0, boca=True)]
+    talk = [personatges.diu(cua=0), personatges.diu(cua=1)]
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', idle))
         tags.append((f'Talk{f}', talk))
     anims = {t: {'loop': True, 'frameDuration': 300 if t.startswith('Idle') else 160} for t, _ in tags}
     write(cid, tags, (personatges.GW, personatges.GH), {
-        'walkSpeed': 60, 'walkToPoint': {'x': 34, 'y': 23}, 'talkPoint': {'x': 13, 'y': -2}, 'feet': {'x': 13, 'y': 23},
-        'collider': {'points': [{'x': 4, 'y': 0}, {'x': 24, 'y': 0}, {'x': 24, 'y': 23}, {'x': 4, 'y': 23}]},
+        'walkSpeed': 60, 'walkToPoint': {'x': 36, 'y': 25}, 'talkPoint': {'x': 13, 'y': -2}, 'feet': {'x': 13, 'y': 25},
+        'collider': {'points': [{'x': 4, 'y': 0}, {'x': 28, 'y': 0}, {'x': 28, 'y': 25}, {'x': 4, 'y': 25}]},
         'animations': anims, 'defaultVerb': 'look',
     })
 

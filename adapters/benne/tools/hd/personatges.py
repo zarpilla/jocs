@@ -1,225 +1,192 @@
 """
-Personatges de Suma Zero en pixel art caricaturesc (hd/cartoon.py).
-
-Mides fixes del joc (README): una persona fa **64 px** dels peus a dalt del cap, amb el **cap gran**
-(uns 26 px, dues cinquenes parts de l'alçada). Fotograma de 48×68, peus a (24, 65).
-Direccions: D (de cara), L (de perfil, mirant a l'esquerra; Benne fa el mirall per a R), U (d'esquena).
+Personatges de Suma Zero (proposta B, la triada): **sense caricatura**, amb les proporcions i el dibuix de Ferro-9
+(hd/characters.py: volum, llum i trama). Una persona fa ≈83 px; fotograma de 49×87, peus a (25, 83).
+To urbà, de hacker i d'espies: colors apagats i un accent fort per personatge. L'Iri: dessuadora verd
+petroli amb «</>» al pit, texans negres, auriculars vermells i cabell negre recollit en una cua.
 """
 import math
 
-from hd.cartoon import Fig
+from hd.characters import (Fig, M, Pose, person, hair_lvl, front_normal, fold, SKIN_IRI, SNEAKER, BELT, HAIR_IRI)
 
-FW, FH = 48, 68
-FEET = (24, 65)
-
-
-# ─── Peces comunes ─────────────────────────────────────────────────────────
-
-def leg(f, hip, foot, w, mat):
-    """Cama com un quadrilàter de l'amplada `w` entre el maluc i el turmell."""
-    (hx, hy), (fx, fy) = hip, foot
-    a = math.atan2(fy - hy, fx - hx)
-    ox, oy = -math.sin(a) * w / 2, math.cos(a) * w / 2
-    f.poly([(hx - ox, hy - oy), (hx + ox, hy + oy), (fx + ox, fy + oy), (fx - ox, fy - oy)], mat)
+# ─── Materials ─────────────────────────────────────────────────────────────
+HOODIE = M((6, 20, 24), (12, 36, 40), (20, 56, 58), (30, 80, 80), (46, 106, 102), (70, 136, 126), (106, 170, 156), dith=0.0)
+JEANS_BLACK = M((8, 8, 14), (16, 16, 24), (26, 26, 36), (38, 40, 52), (54, 58, 72), (76, 80, 94), dith=0.0)
+PHONES = M((8, 8, 12), (18, 18, 24), (30, 30, 38), (46, 46, 56), (66, 66, 78))
+PHONES_RED = M((50, 6, 14), (110, 16, 26), (170, 30, 36), (220, 60, 54), (250, 120, 100))
+CORD = M((120, 120, 128), (170, 170, 176), (220, 220, 222), (250, 250, 250))
+HAIR_SHORT = HAIR_IRI
+SCRUNCHIE = PHONES_RED
 
 
-def walk_phase(walk):
-    """Fase del cicle de 6 fotogrames (0..2π), o None si està quieta."""
-    return None if walk is None else walk / 6 * 2 * math.pi
+# ─── Iri: ganxos sobre la persona de Ferro-9 ───────────────────────────────
+
+def ponytail(fg, p, pts, H):
+    """Cua: segments que s'aprimen al llarg d'una corba, amb la goma vermella a dalt."""
+    n = len(pts)
+    for i, ((x0, y0), (x1, y1)) in enumerate(zip(pts, pts[1:])):
+        r0, r1 = 2.4 - i * 1.6 / n, 2.4 - (i + 1) * 1.6 / n
+        fg.limb((x0, y0), (x1, y1), r0, r1, H, 2.0, amp=1.6, cont=(0.2, 1.0),
+                lvlfn=lambda x, y: 0.4 * math.sin(x * 2.0 + y * 0.6))
+    x, y = pts[0]
+    fg.ell(x, y, 1.8, 1.4, SCRUNCHIE, 2.6, amp=1.2)
 
 
-# ─── Iri ───────────────────────────────────────────────────────────────────
-# 24 anys, hacker. Dessuadora verd petroli amb caputxa, auriculars vermells grossos que no es treu
-# mai, cabell negre esbullat amb serrell, texans i bambes blanques. Una mica encorbada.
+def iri_hair_back(fg, p, spec):
+    """La cua, darrere del cap (de cara i de perfil)."""
+    hx, hy = p.head
+    sway = 0.0 if p.walk is None else math.sin(2 * math.pi * p.walk / 6) * 1.2
+    if p.f == 'D':
+        ponytail(fg, p, [(hx + 5.0, hy - 5.5), (hx + 8.4, hy - 2.0), (hx + 9.2 + sway * 0.3, hy + 3.0), (hx + 8.4 + sway * 0.6, hy + 8.0)], HAIR_SHORT)
+    elif p.f == 'L':
+        ponytail(fg, p, [(hx + 6.4, hy - 4.6), (hx + 9.6, hy - 1.6), (hx + 10.6 + sway * 0.5, hy + 3.6), (hx + 10.0 + sway, hy + 8.6), (hx + 9.0 + sway * 1.4, hy + 12.0)], HAIR_SHORT)
 
-def iri(facing, walk=None, talk=False, blink=False, auricular=2):
-    """`auricular`: 2 (els dos), 1 (només el dret: l'esquerre és d'en Diu), 'mossegat' (l'esquerre amb forats)."""
-    f = Fig(FW, FH)
-    ph = walk_phase(walk)
-    bob = 0 if ph is None else -round(abs(math.sin(ph)))
-    if facing == 'L':
-        _iri_side(f, ph, bob, talk, blink, auricular)
+
+def iri_hair(fg, p, spec):
+    """Cabell negre recollit en una cua alta, amb un serrell lateral i dos blens solts a la cara."""
+    hx, hy = p.head
+    H = HAIR_SHORT
+    tex = hair_lvl(hx - 0.5, hy - 2.0, 5.4, k=1.2, strands=0.45, freq=2.6)
+    if p.f == 'D':
+        line = lambda x, y: y <= hy - 3.4 + ((x - hx) / 6.8) ** 2 * 5.0
+        fg.ell(hx, hy - 1.4, 7.5, 7.4, H, 1.8, amp=1.6, clip=line, lvlfn=tex)
+        fg.poly([(hx - 6.6, hy - 4.0), (hx + 1.0, hy - 6.6), (hx - 1.0, hy - 2.6), (hx - 5.0, hy - 1.4)], H, 2.0)   # serrell
+        fg.limb((hx - 6.8, hy - 2.0), (hx - 6.4, hy + 5.0), 1.0, 0.6, H, 1.8, amp=1.2)                       # blens solts
+        fg.limb((hx + 6.8, hy - 2.0), (hx + 6.6, hy + 4.0), 1.0, 0.6, H, 1.6, amp=1.2)
+    elif p.f == 'L':
+        line = lambda x, y: (x >= hx - 3.4 + max(0, y - (hy - 5)) * 0.3 or y <= hy - 5.0) and not (x < hx + 2.5 and y > hy - 1.5)
+        fg.ell(hx + 1.2, hy - 1.2, 7.3, 7.4, H, 1.8, amp=1.6, clip=line, lvlfn=tex)
+        fg.poly([(hx - 5.6, hy - 4.4), (hx - 0.5, hy - 6.6), (hx - 2.0, hy - 2.4), (hx - 5.4, hy - 1.6)], H, 2.0)
+        fg.limb((hx - 4.6, hy - 2.0), (hx - 4.4, hy + 4.6), 0.9, 0.6, H, 1.8, amp=1.2)
     else:
-        _iri_front(f, facing == 'U', ph, bob, talk, blink, auricular)
-    return f.render()
+        fg.ell(hx, hy - 0.8, 7.5, 7.8, H, 1.8, amp=1.6, lvlfn=tex)
+        for x in range(int(hx - 5), int(hx + 6), 2):                              # pentinat cap a la goma
+            fg.shade(x, hy - 1 + abs(x - hx) * 0.3, -0.6, H)
+        sway = 0.0 if p.walk is None else math.sin(2 * math.pi * p.walk / 6) * 1.2
+        ponytail(fg, p, [(hx, hy - 3.6), (hx + 0.4, hy + 1.0), (hx + sway * 0.6, hy + 6.0), (hx + sway, hy + 11.0)], H)
 
 
-def _iri_front(f, back, ph, bob, talk, blink, auricular):
-    # cames i bambes (sense balanceig)
-    s = 0 if ph is None else math.sin(ph)
-    lift_l, lift_r = (max(0, s) * 3, max(0, -s) * 3) if ph is not None else (0, 0)
-    for x, lift in ((20, lift_l), (28, lift_r)):
-        top = 47
-        bottom = 61 - round(lift)
-        f.rect(x - 2, top, x + 2, bottom, 'texans')
-        f.ell(x - (0.5 if x < 24 else -0.5), bottom + 2.5, 4.5, 2.6, 'bamba')
-        f.rect(x - 4, bottom + 4, x + 4, bottom + 4, 'bamba_sola', shade=False, light=False, tone=2)
-    f.dy = bob
-    # braços (darrere del cos a l'esquena, davant a la cara: els pinto abans i el cos els tapa una mica)
-    sw = 0 if ph is None else round(math.sin(ph) * 2)
-    for side, x0, d in ((-1, 14, sw), (1, 34, -sw)):
-        sx = 17 if side < 0 else 31
-        f.poly([(sx - 2, 31), (sx + 2, 31), (x0 + side * 1 + 1, 45 + d), (x0 + side * 1 - 2, 45 + d)], 'iri_dessuadora')
-        f.ell(x0 + side * 0.5, 47 + d, 2.6, 2.6, 'pell')
-    # cos: dessuadora ampla, amb la butxaca de cangur i el cordó de la caputxa
-    f.poly([(17, 30), (31, 30), (33, 37), (32, 49), (16, 49), (15, 37)], 'iri_dessuadora')
-    f.rect(16, 47, 32, 49, 'iri_dessuadora', tone=1)                       # cintura elàstica
-    if not back:
-        f.line(19, 41, 29, 41, 'iri_dessuadora', tone=1)                   # butxaca
-        f.line(19, 41, 18, 46, 'iri_dessuadora', tone=1)
-        f.line(29, 41, 30, 46, 'iri_dessuadora', tone=1)
-        f.ell(24, 31, 6.5, 2.5, 'iri_dessuadora', line=True)               # coll de la caputxa
-        f.px([(22, 32), (22, 33), (22, 34), (26, 32), (26, 33), (26, 34), (26, 35)], 'cable_gris', tone=2)  # cordons
+def iri_hoodie(fg, p, spec):
+    """Dessuadora ampla de grafit: butxaca de cangur, cordons blancs i la caputxa al clatell."""
+    b = p.bob
+    hx = 24.5
+    O = HOODIE
+    if p.f == 'D':
+        for x in range(int(hx - 6), int(hx + 7)):                                 # butxaca
+            fg.shade(x, 38 + b, -1.0, O)
+        for y in range(38 + b, 46 + b):
+            fg.shade(hx - 6, y, -0.9, O)
+            fg.shade(hx + 6, y, -0.9, O)
+        for y in range(28 + b, 30 + b):                                            # cordons
+            fg.px(hx - 3, y, CORD, 1)
+            fg.px(hx + 3, y, CORD, 1)
+        for x in range(int(hx - 9), int(hx + 10)):                                 # cintura elàstica
+            fg.shade(x, 46 + b, -1.0, O)
+            fg.shade(x, 47 + b, 0.4, O)
+        fg.shade(hx - 7, 33 + b, -0.6, O)
+        fg.shade(hx + 7, 34 + b, -0.6, O)
+
+    elif p.f == 'U':
+        fg.ell(hx, 31 + b, 6.0, 4.6, O, 2.4, amp=1.6, cont=(0.2, 1.0))            # caputxa caiguda
+        for x in range(int(hx - 4), int(hx + 5)):
+            fg.shade(x, 33 + b, -0.8, O)
+        for x in range(int(hx - 9), int(hx + 10)):
+            fg.shade(x, 46 + b, -1.0, O)
     else:
-        f.poly([(17, 30), (31, 30), (30, 40), (24, 43), (18, 40)], 'iri_dessuadora', line=True)  # caputxa a l'esquena
-        f.line(20, 37, 24, 40, 'iri_dessuadora', tone=1)
-        f.line(28, 37, 24, 40, 'iri_dessuadora', tone=1)
-    # cap
-    f.ell(24, 16.5, 13, 14, 'pell')
-    if not back:
-        # orelles tapades pels auriculars; cara
-        ey = 18
-        for ex in (19, 29):
-            if blink:
-                f.line(ex - 2, ey, ex + 2, ey, 'pell', tone=0)
-            else:
-                f.ell(ex + 0.5, ey, 3.2, 4, 'blanc_ull', shade=False, line=True)
-                f.px([(ex, ey), (ex + 1, ey), (ex, ey + 1), (ex + 1, ey + 1)], 'pupil·la', tone=1)
-                f.px([(ex, ey)], 'blanc_ull', tone=3)
-        f.line(16, 13, 21, 12, 'cabell_negre', tone=1)                      # celles (preocupades)
-        f.line(27, 12, 32, 13, 'cabell_negre', tone=1)
-        f.px([(17, 23), (18, 23), (30, 23), (31, 23)], 'pell', tone=1)      # ulleres de no dormir
-        f.px([(24, 21), (24, 22), (25, 22)], 'pell', tone=1)                # nas
-        if talk:
-            f.ell(24.5, 25.5, 2.5, 1.8, 'boca', shade=False, light=False, outline=False)
-            f.px([(24, 26), (25, 26)], 'llengua', tone=2)
-        else:
-            f.line(22, 25, 26, 25, 'boca', tone=1)
-            f.px([(27, 24)], 'boca', tone=1)                                # mig somriure nerviós
-        f.px([(16, 25), (17, 25), (31, 25), (32, 25)], 'pell_rosa', tone=2)  # galtes
-    # cabell negre esbullat: un casc amb puntes que surten de la silueta i un serrell tort
-    if back:
-        f.ell(24, 14, 13.5, 13.5, 'cabell_negre', line=True)
-        f.poly([(12, 17), (36, 17), (35, 27), (30, 30), (24, 28), (18, 30), (13, 27)], 'cabell_negre')
+        fg.ell(29.0, 30 + b, 3.6, 4.0, O, 2.4, amp=1.6, cont=(0.2, 1.0))          # caputxa al clatell
+        for y in range(29 + b, 35 + b):
+            fg.px(21.0, y, CORD, 2 if y < 33 + b else 1)
+        for x in range(19, 33):
+            fg.shade(x, 46 + b, -1.0, O)
+
+
+def iri_collar(fg, p, spec):
+    """El coll de la caputxa, que tapa el coll (davant)."""
+    if p.f == 'D':
+        b = p.bob
+        fg.ell(24.5, 28.2 + b, 6.4, 2.4, HOODIE, 2.8, amp=1.4, cont=(0.2, 1.0))
+
+
+def iri_phones(fg, p, spec):
+    """Auriculars grossos, negres i vermells: no se'ls treu mai."""
+    hx, hy = p.head
+    if p.f in ('D', 'U'):
+        for i in range(17):
+            a = math.pi * i / 16
+            fg.px(hx - math.cos(a) * 8.6, hy - 0.5 - math.sin(a) * 9.2, PHONES, 2.4)
+            fg.px(hx - math.cos(a) * 8.6, hy + 0.5 - math.sin(a) * 9.2, PHONES, 1.2)
+        for sx in (-8.4, 8.4):
+            fg.ell(hx + sx, hy + 1.2, 2.4, 3.4, PHONES, 2.2, amp=1.6, cont=(0.2, 1.0))
+            fg.ell(hx + sx + (0.6 if sx < 0 else -0.6), hy + 1.2, 1.2, 2.4, PHONES_RED, 2.6, amp=1.4)
     else:
-        f.ell(24, 9, 13.5, 8, 'cabell_negre', line=True)
-        f.poly([(11, 8), (16, 8), (15, 16), (12, 22), (10, 14)], 'cabell_negre', line=True)
-        f.poly([(37, 8), (32, 8), (33, 16), (36, 22), (38, 14)], 'cabell_negre', line=True)
-        # serrell: tres flocs que tapen mig front, un de més llarg sobre la cella dreta
-        f.poly([(14, 10), (20, 11), (17, 15)], 'cabell_negre', line=True)
-        f.poly([(18, 10), (26, 11), (22, 16)], 'cabell_negre', line=True)
-        f.poly([(24, 10), (34, 10), (31, 15), (29, 12), (27, 14)], 'cabell_negre', line=True)
-    # puntes rebels a dalt
-    for pts in ([(14, 5), (12, 0), (18, 3)], [(19, 3), (20, -2), (24, 2)], [(26, 2), (31, -1), (30, 4)], [(31, 4), (37, 2), (34, 7)]):
-        f.poly(pts, 'cabell_negre')
-    # auriculars: diadema i dues copes
-    for i in range(15):
-        a = math.pi * i / 14
-        f.px([(round(24 - math.cos(a) * 14), round(14 - math.sin(a) * 13))], 'negre_suau', tone=2)
-    cups = []
-    if auricular == 2 or back:
-        cups = [10, 38]
-    elif auricular == 1:
-        cups = [38]
-    else:
-        cups = [10, 38]
-    for cx in cups:
-        f.ell(cx, 18, 3.4, 5, 'auricular', line=True)
-        f.px([(cx, 15), (cx, 16)], 'auricular', tone=3)
-    if auricular == 'mossegat' and not back:
-        f.px([(9, 16), (11, 19), (9, 21)], 'negre_suau', tone=0)          # forats de dent
-    f.dy = 0
+        for i in range(12):
+            a = math.pi * (0.2 + 0.6 * i / 11)
+            fg.px(hx + 1.4 + math.cos(a) * 2.5, hy - 0.5 - math.sin(a) * 9.2, PHONES, 2.4)
+        fg.ell(hx + 1.6, hy + 1.2, 3.0, 3.8, PHONES, 2.2, amp=1.6, cont=(0.2, 1.0))
+        fg.ell(hx + 1.2, hy + 1.2, 1.8, 2.8, PHONES_RED, 2.6, amp=1.4)
 
 
-def _iri_side(f, ph, bob, talk, blink, auricular):
-    hip = (24, 47)
-    s = 0 if ph is None else math.sin(ph)
-    swing = s * 6
-    # cama del fons, després la del davant
-    for d, mat_tone in ((-1, True), (1, False)):
-        fx = hip[0] + d * swing
-        fy = 61 - (max(0, d * math.cos(ph)) * 2 if ph is not None else 0)
-        leg(f, hip, (fx, fy), 6, 'texans')
-        f.ell(fx - 2, fy + 2.5, 5, 2.6, 'bamba')
-        f.rect(round(fx) - 7, round(fy) + 4, round(fx) + 2, round(fy) + 4, 'bamba_sola', shade=False, light=False, tone=2)
-    f.dy = bob
-    # cos de perfil, una mica encorbat cap endavant
-    f.poly([(20, 30), (29, 30), (31, 37), (30, 49), (18, 49), (18, 37)], 'iri_dessuadora')
-    f.rect(18, 47, 30, 49, 'iri_dessuadora', tone=1)
-    f.poly([(26, 28), (32, 29), (33, 37), (28, 35)], 'iri_dessuadora', line=True)   # caputxa a l'esquena
-    # braç del davant, que balanceja
-    hx = 24 - s * 4
-    f.poly([(22, 32), (27, 32), (hx + 2, 45), (hx - 2, 45)], 'iri_dessuadora', line=True)
-    f.ell(hx, 47, 2.6, 2.6, 'pell')
-    # cap (de perfil: el nas cap a l'esquerra)
-    f.ell(24, 16.5, 12, 14, 'pell')
-    f.poly([(13, 17), (9, 21), (13, 23)], 'pell')                               # nas
-    if blink:
-        f.line(15, 18, 18, 18, 'pell', tone=0)
-    else:
-        f.ell(17.5, 18, 2.8, 3.8, 'blanc_ull', shade=False, line=True)
-        f.px([(15, 18), (15, 19), (16, 18), (16, 19)], 'pupil·la', tone=1)
-    f.line(15, 13, 20, 12, 'cabell_negre', tone=1)
-    f.px([(19, 23), (20, 23)], 'pell', tone=1)
-    if talk:
-        f.ell(15.5, 25.5, 2, 1.6, 'boca', shade=False, light=False, outline=False)
-    else:
-        f.line(14, 25, 17, 25, 'boca', tone=1)
-    f.px([(19, 25), (20, 25)], 'pell_rosa', tone=2)
-    # cabell: de la clatellera al serrell
-    f.ell(28, 11, 11, 9.5, 'cabell_negre', line=True)
-    f.poly([(28, 14), (38, 12), (37, 25), (32, 30), (29, 25)], 'cabell_negre', line=True)
-    f.poly([(14, 8), (20, 4), (26, 7), (23, 10), (20, 9), (17, 13), (13, 11)], 'cabell_negre', line=True)
-    for pts in ([(17, 4), (17, -1), (22, 2)], [(23, 2), (27, -2), (28, 3)], [(30, 3), (36, 1), (34, 6)], [(36, 8), (41, 8), (37, 12)]):
-        f.poly(pts, 'cabell_negre')
-    # auriculars: la copa del costat i la diadema
-    for i in range(11):
-        a = math.pi * (0.15 + 0.7 * i / 10)
-        f.px([(round(28 + math.cos(a) * 3), round(14 - math.sin(a) * 13))], 'negre_suau', tone=2)
-    if auricular != 1:
-        f.ell(28, 18, 4, 5.2, 'auricular', line=True)
-        f.px([(27, 16), (27, 17)], 'auricular', tone=3)
-        if auricular == 'mossegat':
-            f.px([(29, 17), (27, 20)], 'negre_suau', tone=0)
-    else:
-        f.ell(28, 18, 2, 2.5, 'pell', line=True)                              # l'orella, sense auricular
-    f.dy = 0
+IRI = {
+    'skin': SKIN_IRI, 'legs': JEANS_BLACK, 'top': HOODIE, 'shoes': SNEAKER, 'shoe_lvl': 3.4, 'lashes': True,
+    'iris': (52, 38, 30), 'brow': (24, 16, 22), 'stoop': 1,
+    'hooks': {'hair_back': iri_hair_back, 'hair': iri_hair, 'torso': iri_hoodie, 'collar': iri_collar, 'over': None},
+}
 
 
-# ─── Diu, el gat ───────────────────────────────────────────────────────────
-# Gat gris tigrat amb pitet blanc, assegut, ulls verds enormes. Intocable. Fotograma de 28×24.
+def iri(facing, walk=None, talk=False):
+    spec = dict(IRI)
+    hooks = dict(spec['hooks'])
+    hair = hooks['hair']
 
-GW, GH = 28, 24
+    def hair_and_phones(fg, p, s):
+        hair(fg, p, s)
+        iri_phones(fg, p, s)
+    hooks['hair'] = hair_and_phones
+    del hooks['over']
+    spec['hooks'] = hooks
+    img = person(spec, facing, walk=walk, talk=talk)
+    if facing == 'D':
+        # «</>» estampat al pit: es posa píxel a píxel al final, sense volum, perquè es llegeixi
+        b = Pose(facing, walk, talk, stoop=spec.get('stoop', 0)).bob
+        P = img.load()
+        for dx, dy in LOGO:
+            P[19 + dx, 33 + b + dy] = (226, 236, 228, 255)
+    return img
 
 
-def diu(cua=0, parpelleja=False, boca=False, mira='D'):
-    """Assegut de cara. `cua`: fase de la cua (0..3)."""
-    f = Fig(GW, GH)
-    # cua que es mou
-    tx = [20, 22, 23, 22][cua % 4]
-    f.poly([(17, 21), (20, 20), (tx + 3, 14), (tx + 2, 10), (tx, 12), (tx + 1, 15)], 'gat')
-    # cos assegut
-    f.ell(13, 17, 7.5, 6.5, 'gat')
-    f.ell(13, 18, 3.5, 4.5, 'gat_clar', shade=False)                           # pitet
-    f.ell(9, 22, 2.5, 1.5, 'gat_clar')                                       # potes
-    f.ell(16, 22, 2.5, 1.5, 'gat_clar')
-    # cap gran
-    f.ell(13, 8, 7.5, 6.5, 'gat')
-    f.poly([(6, 5), (7, -1), (11, 3)], 'gat', line=True)                     # orelles
-    f.poly([(20, 5), (19, -1), (15, 3)], 'gat', line=True)
-    f.px([(8, 2), (8, 3), (18, 2), (18, 3)], 'rosa_nas', tone=1)
-    f.px([(11, 3), (13, 2), (15, 3)], 'gat', tone=1)                          # ratlles del front
-    for ex in (10, 16):
+# «</>» de 11×5
+LOGO = ((2, 0), (1, 1), (0, 2), (1, 3), (2, 4), (6, 0), (6, 1), (5, 2), (4, 3), (4, 4),
+        (8, 0), (9, 1), (10, 2), (9, 3), (8, 4))
+
+
+# ─── Diu, el gat (amb volum) ───────────────────────────────────────────────
+
+CAT = M((14, 12, 16), (34, 30, 34), (58, 52, 54), (86, 78, 76), (116, 106, 100), (150, 140, 128))
+CAT_WHITE = M((70, 66, 74), (130, 126, 128), (182, 178, 172), (220, 216, 206), (244, 240, 230))
+CAT_EYE = M((20, 40, 10), (90, 130, 30), (160, 200, 60), (220, 240, 130))
+GW, GH = 30, 26
+
+
+def diu(cua=0, parpelleja=False):
+    """Assegut de tres quarts, tigrat i amb el pitet blanc. Fotograma de 30×26."""
+    fg = Fig(GW, GH)
+    tx = [24, 26, 27, 26][cua % 4]
+    fg.limb((19, 22), (tx, 14), 1.4, 1.2, CAT, 2.2, cont=(0.2, 0.8))
+    fg.limb((tx, 14), (tx - 1, 10), 1.2, 1.1, CAT, 2.4, cont=(0.2, 0.8))
+    fg.ell(14, 18, 7.5, 6.5, CAT, 2.6, amp=1.6, cont=(0.2, 1.0),
+           lvlfn=lambda x, y: -0.8 if (int(x) + int(y) // 2) % 4 == 0 else 0)
+    fg.ell(12, 19, 3.2, 4.4, CAT_WHITE, 2.8, amp=1.4)
+    fg.ell(10, 24, 2.4, 1.4, CAT_WHITE, 2.8, amp=1.2)
+    fg.ell(15, 24, 2.4, 1.4, CAT_WHITE, 2.4, amp=1.2)
+    fg.ell(12, 9, 5.6, 5.0, CAT, 2.8, amp=1.6, cont=(0.2, 1.0),
+           lvlfn=lambda x, y: -0.8 if int(y) in (5, 6) and int(x) % 3 == 0 else 0)
+    fg.poly([(7, 6), (8, 1), (11, 4)], CAT, 2.6)
+    fg.poly([(17, 6), (16, 1), (13, 4)], CAT, 2.2)
+    fg.ell(12, 11.5, 2.4, 1.6, CAT_WHITE, 3.0, amp=1.0)
+    for ex in (9.5, 14.5):
         if parpelleja:
-            f.line(ex - 1, 8, ex + 1, 8, 'gat', tone=0)
+            fg.px(ex - 1, 9, CAT, 0); fg.px(ex, 9, CAT, 0); fg.px(ex + 1, 9, CAT, 0)
         else:
-            f.ell(ex + 0.5, 8, 2.2, 2.4, 'gat_ull', shade=False, line=True)
-            px = ex + (0 if mira == 'D' else (-1 if mira == 'L' else 1))
-            f.px([(px, 7), (px, 8), (px, 9)], 'pupil·la', tone=0)
-    f.px([(13, 11)], 'rosa_nas', tone=2)
-    if boca:
-        f.px([(12, 12), (13, 13), (14, 12)], 'boca', tone=1)
-    else:
-        f.px([(12, 12), (14, 12)], 'gat', tone=0)
-    f.px([(5, 10), (6, 11), (21, 10), (20, 11)], 'gat_clar', tone=3)          # bigotis
-    return f.render()
+            fg.ell(ex, 9, 1.4, 1.3, CAT_EYE, 2.6, amp=1.0)
+            fg.px(ex, 9, CAT, 0)
+    fg.px(12, 11, (190, 110, 120), 0)
+    return fg.render()

@@ -329,71 +329,73 @@ def finish(f):
     return f.render()
 
 
-# ─── Icones de Suma Zero: pixel art caricaturesc (hd/cartoon.py), com els personatges ──
-
-from hd.cartoon import Fig as CFig  # noqa: E402
-
+# ─── Icones de Suma Zero (el mateix dibuix de volum que els personatges) ─────
 
 def caixa_cartro(f):
-    """La caixa del router, oberta, amb les solapes enlaire."""
-    f.poly([(12, 9), (36, 9), (37, 24), (11, 24)], 'cartro')
-    f.poly([(12, 9), (8, 3), (20, 4), (22, 9)], 'cartro', line=True)
-    f.poly([(36, 9), (41, 4), (29, 3), (27, 9)], 'cartro', line=True)
-    f.rect(13, 10, 35, 11, 'cartro', tone=0)
-    f.rect(16, 15, 27, 19, 'blanc_ull', shade=False)
-    f.line(17, 17, 25, 17, 'cable_gris', tone=1)
+    """La caixa del router, oberta, amb les solapes enlaire i l'etiqueta."""
+    S = f.R(10, 10, 37, 24)
+    f.drop(S)
+    f.fill(S, MANI, lambda x, y: 3.0 - (x - 10) / 27 * 1.2 - (0.8 if y == 10 else 0), rim=(0.6, -1.0))
+    f.fill(f.P([(10, 10), (6, 3), (19, 4), (21, 10)]), MANI, lambda x, y: 4.2 - (y - 3) * 0.12)
+    f.fill(f.P([(37, 10), (42, 4), (29, 3), (27, 10)]), MANI, lambda x, y: 2.6 - (y - 3) * 0.1)
+    f.rect(11, 11, 36, 12, MANI, 0.6)
+    f.rect(15, 15, 26, 19, PAP_W, 4.4, rim=(0.4, -1.2))
+    f.rect(17, 17, 24, 17, INKG, 1.4)
+    f.rect(29, 14, 34, 22, MANI, 2.0)                                   # cinta d'embalar arrencada
 
 
 def cable_alimentacio(f):
-    """El cable de la cafetera: endoll, cable en zig-zag i el connector."""
-    pts = [(13, 14), (19, 21), (25, 7), (31, 21), (36, 13)]
-    for (x0, y0), (x1, y1) in zip(pts, pts[1:]):
-        f.line(x0, y0, x1, y1, 'cable_gris', tone=3)
-        f.line(x0, y0 + 1, x1, y1 + 1, 'cable_gris', tone=2)
-        f.line(x0, y0 + 2, x1, y1 + 2, 'cable_gris', tone=0)
-    f.rect(5, 9, 13, 19, 'cable_gris')
-    f.rect(1, 11, 4, 12, 'metall')
-    f.rect(1, 16, 4, 17, 'metall')
-    f.rect(36, 9, 44, 18, 'cable_gris')
-    f.px([(39, 12), (40, 12), (39, 13), (40, 13)], 'negre_suau', tone=1)
+    """El cable de la cafetera: l'endoll, el cable enrotllat i el connector."""
+    pts = [(14, 14), (19, 20), (24, 9), (29, 20), (34, 13)]
+    for p0, p1 in zip(pts, pts[1:]):
+        f.limb(p0, p1, 1.1, 1.1, PLAST, 2.8, amp=2.0)
+    S = f.R(5, 9, 13, 19)
+    f.drop(S)
+    f.fill(S, PLAST, lambda x, y: 3.6 - (x - 5) * 0.2, rim=(0.6, -1.2))
+    f.rect(1, 11, 4, 12, ACER, 5.2)
+    f.rect(1, 16, 4, 17, ACER, 4.6)
+    S = f.R(34, 9, 43, 18)
+    f.drop(S)
+    f.fill(S, PLAST, lambda x, y: 3.2 - (x - 34) * 0.2, rim=(0.6, -1.2))
+    f.rect(37, 12, 40, 15, DARK, 1.0)
 
 
 def pizza(f):
-    """La pizza de demà, en un tros de caixa: quatre talls, tomàquet i formatge fos."""
-    f.ell(24, 14, 15, 10, 'pizza_caixa')
-    f.ell(24, 13, 12.5, 8.5, 'pizza_massa')
-    f.ell(24, 13, 10.5, 6.8, 'tomaquet', shade=False)
+    """La pizza de demà: quatre talls, tomàquet, formatge fos i alfàbrega."""
+    S = f.E(24, 14, 15, 10)
+    f.drop(S)
+    f.fill(S, MANI, lambda x, y: 3.6 - (y - 4) * 0.08, rim=(0.6, -1.0))          # el cartró
+    f.fill(f.E(24, 13, 12.5, 8.5), ORNG, lambda x, y: 4.4 - abs(y - 13) * 0.1)    # la crosta
+    f.fill(f.E(24, 13, 10.5, 6.8), RED, 3.4, rim=None)
     for cx, cy, rx, ry in ((20, 11, 3.5, 2.2), (28, 15, 4, 2.4), (25, 10, 2.5, 1.6), (18, 15, 2.8, 1.8)):
-        f.ell(cx, cy, rx, ry, 'formatge', shade=False, outline=False)
-    f.line(14, 13, 34, 13, 'pizza_massa', tone=0)
-    f.line(24, 6, 24, 20, 'pizza_massa', tone=0)
-    f.px([(30, 10), (31, 10), (17, 12)], 'verd_llum', tone=1)     # alfàbrega
+        f.fill(f.E(cx, cy, rx, ry), SUNY, lambda x, y: 4.2 - (y - cy) * 0.4, rim=None)
+    for x in range(14, 35):
+        f.px(x, 13, ORNG, 1.4)
+    for y in range(6, 21):
+        f.px(24, y, ORNG, 1.4)
+    f.dots([(30, 10), (31, 10), (17, 12)], CORPG, 3.0)
 
 
 def auricular(f):
     """L'auricular esquerre de l'Iri: la copa vermella i un tros de diadema."""
-    for i in range(10):
-        a = 3.14159 * (0.5 + 0.5 * i / 9)
-        x, y = round(28 + 12 * __import__('math').cos(a)), round(18 - 13 * __import__('math').sin(a))
-        f.px([(x, y), (x + 1, y)], 'negre_suau', tone=2)
-    f.ell(18, 16, 6, 8, 'auricular', line=True)
-    f.ell(16.5, 16, 3, 5, 'negre_suau', shade=False)
-    f.px([(19, 11), (19, 12)], 'auricular', tone=3)
-
-
-CARTOON = {fn.__name__: fn for fn in (caixa_cartro, cable_alimentacio, pizza, auricular)}
+    for i in range(14):
+        a = math.pi * (0.45 + 0.5 * i / 13)
+        f.px(30 + 13 * math.cos(a), 20 - 15 * math.sin(a), PLAST, 4.4)
+        f.px(30 + 13 * math.cos(a), 21 - 15 * math.sin(a), PLAST, 2.6)
+    S = f.E(19, 15, 7.5, 10)
+    f.drop(S)
+    f.fill(S, PLAST, 3.0, rim=(0.8, -1.2))
+    f.fill(f.E(20, 15, 5.6, 8.4), RED, lambda x, y: 4.8 - (x - 15) * 0.25 - (y - 7) * 0.08, rim=(0.8, -1.0))
+    f.fill(f.E(17.6, 15, 2.4, 5.0), DARK, 2.0, rim=None)
 
 
 ICONS = {fn.__name__: fn for fn in (
+    caixa_cartro, cable_alimentacio, pizza, auricular,
 )}
 
 
 def render(item_id):
     """Imatge RGBA de 49×27 de l'objecte, o None si no en té."""
-    if item_id in CARTOON:
-        f = CFig(W, H)
-        CARTOON[item_id](f)
-        return f.render()
     fn = ICONS.get(item_id)
     if fn is None:
         return None
