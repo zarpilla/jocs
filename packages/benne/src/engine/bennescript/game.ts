@@ -59,6 +59,11 @@ interface RoomRef {
 
 /** The running game (§4.16, §4.17). */
 export const game = {
+  /** The game's version, from the `version` field of its package.json (e.g. "0.9.0"). */
+  get version(): string {
+    return (import.meta.env.VITE_BENNE_GAME_VERSION as string | undefined)?.trim() || '0.0.0';
+  },
+
   /** True in the desktop (Electron) build, where `quit()` closes the window. */
   get isDesktop(): boolean {
     return getBenneEnvironment() === 'electron';

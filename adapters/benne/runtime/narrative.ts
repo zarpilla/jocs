@@ -26,6 +26,13 @@ const JOC_ID = (mapping as { id?: string }).id ?? '';
 
 type Kind = 'characters' | 'items' | 'rooms' | 'hotspots';
 const maps = mapping as Partial<Record<Kind, Record<string, string>>>;
+/**
+ * La partida que es desa sola en entrar a cada sala (la carrega el botó «Continua» de la portada).
+ * És aquí i no a narrative.script.ts perquè BenneScript tracta tot el que s'importa d'un .script.ts
+ * com una funció de passos.
+ */
+export const AUTOSAVE = 'Autosave'
+
 export const toBenne = (kind: Kind, id: string) => maps[kind]?.[id] ?? id;
 export const fromBenne = (kind: Kind, benneId: string) =>
   Object.entries(maps[kind] ?? {}).find(([, b]) => b === benneId)?.[0] ?? benneId;
@@ -154,7 +161,9 @@ narrative.on((e) => {
     case 'stateChanged':
       persist();
       applySwitchButton();
-      applyHotspotVisibility();
+      // Els efectes s'apliquen abans de dir les línies: qui marxa (p. ex. el Director a «acceptada») ha
+      // d'acabar de parlar. `playLines` l'amaga quan ja s'ha dit tot.
+      applyHotspotVisibility({ keepSpeakers: true });
       applyAppearances();
       break;
     case 'giveItem':
@@ -328,16 +337,39 @@ export function applySwitchButton() {
   if (menu.canviar) menu.canviar.visible = pot;
 }
 
-export function applyHotspotVisibility() {
+/** `keepSpeakers`: els personatges que s'han d'amagar es queden fins que `playLines` acabi (poden parlar). */
+export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   const room = world.currentRoom();
   if (!room) return;
   for (const { id, visible } of narrative.hotspotsIn(room)) {
     // Un personatge amb `visibleIf` (p. ex. la Directora a la cel·la a l'Acte 3) s'amaga o es mostra sencer.
     const character = content.characters[id] ? (benneCharacter(id) as Showable | undefined) : undefined;
+    if (keepSpeakers && character && !visible) continue;
     const zone = zones[room]?.includes(id) ? new HotspotHandle(toBenne('rooms', room), toBenne('hotspots', id)) : undefined;
     const handle = boundHotspots[id] ?? character ?? zone ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
     if ('visible' in handle) handle.visible = visible;
     else handle.active = visible;
+  }
+  applyCharacterVisibility(room);
+}
+
+/**
+ * Benne desa si un personatge es veu per personatge, no per sala: si en Tomàs es mostra al bar, la seva
+ * veu (invisible) a l'estudi també sortiria. Per això, a cada sala es torna a decidir qui es veu: els
+ * personatges que hi són com a cosa i la protagonista, sí; la resta (les veus), no.
+ */
+function applyCharacterVisibility(room: string) {
+  const def = content.rooms[room];
+  if (!def) return;
+  for (const id of Object.keys(content.characters)) {
+    // Els que tenen `visibleIf` ja els ha decidit `applyHotspotVisibility`.
+    if (def.hotspots[id]?.visibleIf) continue;
+    // La protagonista de la sala, no la que juga ara: en entrar, el canvi de protagonista encara no s'ha fet
+    // i l'altra (que aquí és una veu) sortiria. A les sales sense protagonista (cinemàtiques, finals) les
+    // protagonistes només hi són com a veus: no s'hi veu ningú que no sigui a `hotspots`.
+    const visible = id in def.hotspots || id === def.protagonist;
+    const handle = benneCharacter(id) as { visible: boolean } | undefined;
+    if (handle && handle.visible !== visible) handle.visible = visible;
   }
 }
 
@@ -357,6 +389,29 @@ export function applyAppearances() {
     } else if (def.appearance.some((a) => a.anim === handle.animation)) {
       handle.stopAnimation();
     }
+  }
+}
+
+// ─── On és cada personatge segons l'estat (`place` a characters.json) ────────
+
+type Movable = { position: { x: number; y: number }; moveTo(p: { x: number; y: number }): void; walkTo: { now(p: { x: number; y: number }): unknown } };
+
+/**
+ * Posa cada personatge de la sala on diu `place`. Amb `walk`, hi camina (l'estat ha canviat mentre s'hi era);
+ * si no, hi és de cop (en entrar a la sala o carregar una partida). Benne desa la posició amb la partida.
+ */
+export function applyPlaces(walk: boolean) {
+  const room = world.currentRoom();
+  if (!room) return;
+  for (const id of Object.keys(content.characters)) {
+    const to = narrative.placeOf(id, room);
+    if (!to) continue;
+    const handle = benneCharacter(id) as unknown as Movable | undefined;
+    if (!handle) continue;
+    const at = handle.position;
+    if (Math.hypot(at.x - to.x, at.y - to.y) < 2) continue;
+    if (walk) handle.walkTo.now(to);
+    else handle.moveTo(to);
   }
 }
 

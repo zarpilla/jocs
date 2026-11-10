@@ -39,10 +39,17 @@ import {
   GAME_STATE_ROOM_CONTEXT_CHANGED_EVENT,
   GAME_STATE_VARIABLE_CHANGED_EVENT,
 } from '../../types/gameState.js';
-import { mergePreserveDialogSettingsVariables } from '../dialog/dialogGameState.js';
-import { mergePreserveSpeechSettingsVariables } from '../dialog/speechGameState.js';
+import {
+  mergePreserveDialogSettingsVariables,
+  PERSISTED_DIALOG_SETTINGS_VARIABLE_KEYS,
+} from '../dialog/dialogGameState.js';
+import {
+  mergePreserveSpeechSettingsVariables,
+  PERSISTED_SPEECH_SETTINGS_VARIABLE_KEYS,
+} from '../dialog/speechGameState.js';
 import {
   mergePreserveAudioVolumeVariables,
+  PERSISTED_AUDIO_VOLUME_VARIABLE_KEYS,
   SETTINGS_CURRENT_MUSIC_VARIABLE,
 } from '../sound/audioGameState.js';
 import {
@@ -172,6 +179,54 @@ function localStorageKey(slot: number): string {
 const SAVE_MANIFEST_STORAGE_KEY = `${STORAGE_KEY_PREFIX}saves-manifest-v1`;
 const NAMED_SAVE_STORAGE_KEY_PREFIX = `${STORAGE_KEY_PREFIX}save-v1-`;
 
+/**
+ * Player options (volumes, speech and dialog settings) live under their own key, apart from
+ * save slots, so they survive a reload and win over whatever an older save carries.
+ */
+const PLAYER_SETTINGS_STORAGE_KEY = `${STORAGE_KEY_PREFIX}settings-v1`;
+
+const PLAYER_SETTINGS_VARIABLE_KEYS: ReadonlySet<string> = new Set([
+  ...PERSISTED_AUDIO_VOLUME_VARIABLE_KEYS,
+  ...PERSISTED_SPEECH_SETTINGS_VARIABLE_KEYS,
+  ...PERSISTED_DIALOG_SETTINGS_VARIABLE_KEYS,
+]);
+
+function readStoredPlayerSettings(): Record<string, unknown> {
+  try {
+    const raw = localStorage.getItem(PLAYER_SETTINGS_STORAGE_KEY);
+    if (!raw) {
+      return {};
+    }
+    const parsed: unknown = JSON.parse(raw);
+    if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return {};
+    }
+    const out: Record<string, unknown> = {};
+    for (const [key, value] of Object.entries(parsed)) {
+      if (PLAYER_SETTINGS_VARIABLE_KEYS.has(key)) {
+        out[key] = value;
+      }
+    }
+    return out;
+  } catch {
+    return {};
+  }
+}
+
+function writeStoredPlayerSettings(variables: Record<string, unknown>): void {
+  const out: Record<string, unknown> = {};
+  for (const key of PLAYER_SETTINGS_VARIABLE_KEYS) {
+    if (Object.prototype.hasOwnProperty.call(variables, key)) {
+      out[key] = variables[key];
+    }
+  }
+  try {
+    localStorage.setItem(PLAYER_SETTINGS_STORAGE_KEY, JSON.stringify(out));
+  } catch {
+    // Storage full or blocked: the options still apply for this session.
+  }
+}
+
 function normalizeSaveName(raw: string): string {
   return raw.trim();
 }
@@ -245,7 +300,7 @@ export class GameStateManager {
     this.state = {
       version: 2,
       flags: initial?.flags != null ? { ...initial.flags } : {},
-      variables: initial?.variables != null ? { ...initial.variables } : {},
+      variables: { ...(initial?.variables ?? {}), ...readStoredPlayerSettings() },
       inventoryByCharacter,
       activePlayerCharacterId: resolveActivePlayerCharacterId(
         initial?.activePlayerCharacterId,
@@ -291,6 +346,7 @@ export class GameStateManager {
       ),
       this.state.variables,
     );
+    Object.assign(mergedVariables, readStoredPlayerSettings());
     const startingPlayer = getStartingPlayerCharacterId();
     if (snapshotVersion === 1) {
       const migrated = migrateV1SnapshotToPersistedState(snapshot as SerializableBenneGameStateV1);
@@ -393,6 +449,7 @@ export class GameStateManager {
       ),
       this.state.variables,
     );
+    Object.assign(mergedVariables, readStoredPlayerSettings());
     if (!Object.prototype.hasOwnProperty.call(seededVariables, SETTINGS_CURRENT_MUSIC_VARIABLE)) {
       mergedVariables[SETTINGS_CURRENT_MUSIC_VARIABLE] = null;
     }
@@ -539,6 +596,9 @@ export class GameStateManager {
   setVariable(key: string, value: unknown): void {
     const previousValue = this.state.variables[key];
     this.state.variables[key] = value;
+    if (PLAYER_SETTINGS_VARIABLE_KEYS.has(key)) {
+      writeStoredPlayerSettings(this.state.variables);
+    }
     const payload: GameStateVariableChangedPayload = { key, previousValue, value };
     this.events.emit(GAME_STATE_VARIABLE_CHANGED_EVENT, payload);
   }
@@ -557,6 +617,9 @@ export class GameStateManager {
     }
     const previousValue = this.state.variables[key];
     delete this.state.variables[key];
+    if (PLAYER_SETTINGS_VARIABLE_KEYS.has(key)) {
+      writeStoredPlayerSettings(this.state.variables);
+    }
     const payload: GameStateVariableChangedPayload = { key, previousValue, value: undefined };
     this.events.emit(GAME_STATE_VARIABLE_CHANGED_EVENT, payload);
   }

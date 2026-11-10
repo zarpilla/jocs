@@ -292,12 +292,32 @@ export function registerDialogStartHandler(dialogId: string, handler: Handler): 
   startHandlers.set(dialogId, list);
 }
 
+/**
+ * Runs the `onStart` handlers with the choices hidden, like a choice handler: otherwise the menu
+ * shows (and can be clicked) while the opening lines are still being said.
+ */
+async function runStartHandlers(dialogId: string, guiId: string, handlers: readonly Handler[]): Promise<void> {
+  // The room shows the choice overlay from its own DIALOG_STARTED listener, which runs after this one.
+  await Promise.resolve();
+  liveRoomScene()?.hideDialogChoicesWhileChoiceRuns(guiId);
+  try {
+    await Promise.all(
+      handlers.map((handler) =>
+        runHandler(`dialog ${dialogId} onStart`, liveRoomScene(), null, handler, [], { gameplay: false }),
+      ),
+    );
+  } finally {
+    liveRoomScene()?.showDialogChoicesAfterChoice(guiId, dialogId);
+  }
+}
+
 gameEvents.on(DIALOG_STARTED_EVENT, (payload: unknown) => {
   const p = payload as DialogStartedPayload;
   detach();
   attach(p.dialogId, p.guiId);
-  for (const handler of startHandlers.get(p.dialogId) ?? []) {
-    void runHandler(`dialog ${p.dialogId} onStart`, liveRoomScene(), null, handler, [], { gameplay: false });
+  const handlers = startHandlers.get(p.dialogId) ?? [];
+  if (handlers.length > 0) {
+    void runStartHandlers(p.dialogId, p.guiId, handlers);
   }
 });
 

@@ -116,6 +116,13 @@ export interface CharacterDef {
    * A diferència d'`appearance`, no és una animació fixa: el personatge camina i parla igual.
    */
   outfit?: { if?: Condition; name: string }[];
+  /**
+   * On és dins una sala segons l'estat: la primera entrada d'aquella sala que es compleixi diu on ha de ser
+   * (peus, en píxels de la sala). Si l'estat canvia mentre s'hi és, hi camina; en entrar-hi, ja hi és.
+   * Ex.: el vigilant deixa la porta per buscar el nen → `{ "if": { "flag": "soler_distret" }, "room": "aeroport_terminal", "x": 430, "y": 190 }`,
+   * i una última entrada sense `if` amb el seu lloc de sempre.
+   */
+  place?: { if?: Condition; room: Id; x: number; y: number }[];
 }
 
 // ─── Objectes ────────────────────────────────────────────────────────────────

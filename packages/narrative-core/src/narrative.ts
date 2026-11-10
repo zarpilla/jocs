@@ -104,13 +104,16 @@ export interface HintView {
 export interface EndingView {
   id: Id;
   title: string;
-  /** L'escena, ja filtrada per les condicions de cada línia. `room`: sala de fons des d'aquesta línia. */
-  scene: (ResolvedLine & { room?: Id })[];
+  /**
+   * L'escena, ja filtrada per les condicions de cada línia. `room`: sala de fons des d'aquesta línia.
+   * `effects`: el que canvia en dir-la (p. ex. algú que es mou o una cosa que s'apaga); l'aplica l'adaptador.
+   */
+  scene: (ResolvedLine & { room?: Id; effects?: Effect[] })[];
   text: string;
   /** Sala de fons per al text final, si en canvia. */
   textRoom?: Id;
   /** Els crèdits, després del text final (filtrats com l'escena). */
-  credits: (ResolvedLine & { room?: Id })[];
+  credits: (ResolvedLine & { room?: Id; effects?: Effect[] })[];
 }
 
 /**
@@ -240,6 +243,12 @@ export class Narrative {
   /** L'animació que ha de fer un personatge segons l'estat (`appearance`), o `null` per a la normal. */
   appearanceOf(id: Id): string | null {
     return this.content.characters[id]?.appearance?.find((a) => this.check(a.if))?.anim ?? null;
+  }
+
+  /** On ha de ser un personatge en una sala segons l'estat (`place`), o `null` si no en diu res. */
+  placeOf(id: Id, room: Id): { x: number; y: number } | null {
+    const p = this.content.characters[id]?.place?.find((e) => e.room === room && this.check(e.if));
+    return p ? { x: p.x, y: p.y } : null;
   }
 
   /** La roba que porta un personatge segons l'estat (`outfit`), o `''` per a la normal. */
@@ -372,7 +381,10 @@ export class Narrative {
     if (!def) throw new Error(`Final desconegut: ${id}`);
     const lines = (defs: EndingLineDef[] = []) => defs
       .filter((line) => this.check(line.if))
-      .map((line) => ({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound ? { sound: line.sound } : {}), ...(line.room ? { room: line.room } : {}) }));
+      .map((line) => ({
+        who: line.who, key: line.text, text: this.t(line.text), ...(line.sound ? { sound: line.sound } : {}), ...(line.room ? { room: line.room } : {}),
+        ...(line.effects?.length ? { effects: line.effects } : {}),
+      }));
     return {
       id, title: this.t(def.title), scene: lines(def.scene), text: this.t(def.text),
       ...(def.textRoom ? { textRoom: def.textRoom } : {}), credits: lines(def.credits),

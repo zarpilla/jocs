@@ -1,6 +1,6 @@
 import { game } from '@benne/script';
 import { fallbacks } from '@game';
-import { enterNarrativeRoom, onRoomEntered, routeInteraction } from './narrative/narrative.script';
+import { enterNarrativeRoom, onRoomEntered, onRoomLoaded, routeInteraction } from './narrative/narrative.script';
 
 // Totes les interaccions que cap script de sala, personatge o objecte no gestiona
 // les resol el JSON del joc (game/data/rooms, characters.json, items.json).
@@ -28,4 +28,9 @@ game.onEnterAnyRoom(() => {
 // Després del fos: l'onEnter de cada sala (game/data/rooms/<sala>.json).
 game.onEnterAnyRoomAfterFade(() => {
   enterNarrativeRoom()
+})
+
+// En carregar una partida no hi ha entrada a la sala: es tornen a mirar les coses condicionals.
+game.onLoadedAnyRoom(() => {
+  onRoomLoaded()
 })

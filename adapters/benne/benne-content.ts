@@ -60,7 +60,7 @@ const GUI_TEXTS: Record<string, Record<string, string>> = {
     TalkToBtn: 'ui.verb.talkTo.boto', LookAtBtn: 'ui.verb.look', UseBtn: 'ui.verb.use', PushBtn: 'ui.verb.push',
     PullBtn: 'ui.verb.pull', verbLineText: 'ui.verb.walkTo',
   },
-  portada: { comenca: 'ui.portada.comenca', carrega: 'ui.portada.carrega' },
+  portada: { continua: 'ui.portada.continua', comenca: 'ui.portada.comenca', carrega: 'ui.portada.carrega' },
   'game-menu': {
     title: 'ui.menu.titol', save: 'ui.menu.desar', load: 'ui.menu.carregar', settings: 'ui.menu.opcions',
     quit: 'ui.menu.sortir', resume: 'ui.menu.continuar', 'title-screen': 'ui.menu.inici',
@@ -281,10 +281,12 @@ canviaBtn.onClick(() => switchProtagonist())
   return !tags.some((t) => t.name === 'CanviaBtn') || existsSync(join(gameDir, 'assets/images/guis/verbs/.canvia-provisional'));
 }
 
-// ─── Portada: «Comença» i «Carrega» ──────────────────────────────────────────
+// ─── Portada: «Continua», «Comença» i «Carrega» ─────────────────────────────
 
 /** Els botons de la portada (coordenades de pantalla, 480×270). Els dibuixa draw_placeholders.py. */
 const COVER_BUTTONS = [
+  // Només es veu si hi ha una partida desada sola (vegeu portada.gui.ts).
+  { id: 'continua', x: 165, y: 168, width: 150, height: 22 },
   { id: 'comenca', x: 165, y: 196, width: 150, height: 22 },
   { id: 'carrega', x: 165, y: 224, width: 150, height: 22 },
 ];
@@ -307,17 +309,35 @@ function addCoverGui(gameDir: string, joc: JocBenne): boolean {
         font: joc.fonts.negreta, fontSize: 8, textColor: '#10908e', textAlign: 'center', textOffsetX: 0, textOffsetY: 0,
         textColorStates: { hover: '#28c074' }, textOutline: { enabled: true, color: '#132243', sides: 'bottomRight' },
         backgroundTag: `${b.id}`, states: { hover: `${b.id}-hover` },
-      })),
+      } as Record<string, unknown>)).concat([{
+        // La versió del joc, a la cantonada de baix a la dreta (el text el posa portada.gui.ts).
+        type: 'text', id: 'version', x: 474, y: 259, text: '', font: joc.fonts.regular, fontSize: 8,
+        color: '#10908e', align: 'right', textOutline: { enabled: true, color: '#132243', sides: 'bottomRight' },
+      }]),
     });
   }
   if (!existsSync(tsPath)) {
     writeFileSync(tsPath, `// Creat per adapters/benne (benne-content.ts): els botons de la portada.
+import { game, saves } from '@benne/script';
 import { guis } from '@game';
-import { comenca, carrega } from './portada.ids';
+import { gui, continua, comenca, carrega, version } from './portada.ids';
+import { AUTOSAVE } from '../../narrative/narrative';
 import { startFromCover } from '../../narrative/narrative.script';
 
+// «Continua» carrega la partida que es desa sola a cada sala; només surt si n'hi ha una.
+function syncContinua() {
+  continua.visible = saves.get(AUTOSAVE) != null
+}
+
+continua.onClick(() => saves.load(AUTOSAVE))
 comenca.onClick(() => startFromCover())
 carrega.onClick(() => guis.loadMenu.show())
+
+gui.onBuilt(() => {
+  version.text = \`v\${game.version}\`
+  syncContinua()
+})
+gui.onShow(() => syncContinua())
 `);
   }
   const art = join(gameDir, 'assets/images/guis/portada');

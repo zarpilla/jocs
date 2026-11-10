@@ -8,6 +8,7 @@ import { benneScriptPlugin } from './vite-plugin-bennescript';
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8')) as {
   name?: string;
+  version?: string;
   benne?: { displayName?: string };
 };
 const slug = (pkg.name || 'benne-game').replace(/[^a-zA-Z0-9-]+/g, '-').replace(/^-|-$/g, '');
@@ -69,6 +70,8 @@ export default defineConfig({
   // Namespace for localStorage saves, so games on the same origin don't share them.
   define: {
     'import.meta.env.VITE_BENNE_GAME_ID': JSON.stringify(slug),
+    // La versió del joc (camp `version` del package.json), per a `game.version`.
+    'import.meta.env.VITE_BENNE_GAME_VERSION': JSON.stringify(pkg.version ?? '0.0.0'),
   },
   build: {
     chunkSizeWarningLimit: 2000,
