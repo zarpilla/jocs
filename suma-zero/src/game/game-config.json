@@ -1,8 +1,8 @@
 {
   "name": "sumazero",
   "resolution": {
-    "width": 352,
-    "height": 198
+    "width": 480,
+    "height": 270
   },
   "verbs": [
     {
@@ -86,7 +86,7 @@
     "durationMultiplier": 1
   },
   "dialog": {
-    "choiceOptionsViewportHeightPx": 46,
+    "choiceOptionsViewportHeightPx": 63,
     "usedColor": "#888888"
   },
   "perspective": {

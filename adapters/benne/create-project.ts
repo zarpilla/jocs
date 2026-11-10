@@ -112,6 +112,12 @@ export const flags = defineFlags({});
 export const vars = defineVars({});
 `);
   replaceTemplateFonts(gameDir);
+  // La plantilla és de 352×198: el joc és a 480×270 des del primer dia (game-config, GUI i imatges de GUI).
+  const migra = spawnSync('python3', [join(HERE, 'tools/migra_resolucio.py'), gameDir], { stdio: 'inherit' });
+  if (migra.status !== 0) {
+    console.error('✖ No s\'ha pogut passar la plantilla a 480×270 (tools/migra_resolucio.py)');
+    process.exit(1);
+  }
   console.log(`✔ Plantilla ${values.template} copiada (sense la demo)`);
 } else {
   console.log(`· src/game ja existeix: només s'ha actualitzat el motor`);

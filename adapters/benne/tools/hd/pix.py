@@ -252,9 +252,10 @@ class Canvas:
                     self.P[x, y] = tuple(int(c * (1 - a * 0.6)) for c in o[:3]) + (o[3],)
 
 
-# ─── Coordenades de disseny (room_designs.py, 352×198) → píxels reals ──────
+# ─── Coordenades de disseny (room_designs.py) → píxels reals ──────────────
+# A Suma Zero el disseny ja és a 480×270 (escala.py): K = 1.
 
-K = W / 352
+K = W / 480
 
 
 def R(x0, y0, x1, y1):

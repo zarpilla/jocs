@@ -28,6 +28,9 @@ from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
 from hd.pix import W as HD_W, H as HD_H  # noqa: E402
 from hd.render import has_hd, render as render_hd, render_anims as render_hd_anims  # noqa: E402
 
+# La casella de l'inventari de la plantilla 9-verb (36×20) passada a 480×270.
+INV_W, INV_H = 49, 27
+
 PALETTE = {
     # Iri: el pis i els ordinadors (càlid, nit, pantalles)
     'iri': {'wall': (92, 62, 44), 'wall2': (108, 74, 52), 'floor': (52, 36, 26), 'line': (230, 170, 100), 'text': (255, 226, 180), 'door': (40, 26, 18)},
@@ -273,7 +276,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
 
 
 def draw_inventory(dir_: Path, req, small):
-    fw, fh = scaled(36), scaled(20)  # la casella de l'inventari
+    fw, fh = INV_W, INV_H  # la casella de l'inventari
     items = req['items']
     labels = short_labels(items)
     frames = []
