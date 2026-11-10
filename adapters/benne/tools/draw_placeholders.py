@@ -359,12 +359,11 @@ def switch_button_image(hover=False):
     d = ImageDraw.Draw(out)
     d.line([(26, 0), (17, h - 1)], fill=(230, 200, 130, 255))
     if hover:
-        out = Image.blend(out, Image.new('RGBA', (w, h), (255, 240, 210, 255)), 0.12)
-    # Marc de metall pissarra com la barra de verbs (hd/gui.py): contorn fosc i bisell amb llum de dalt;
-    # en hover, el bisell és de llautó encès.
+        out = Image.blend(out, Image.new('RGBA', (w, h), (255, 220, 240, 255)), 0.12)
+    # Marc de la consola (hd/gui.py): contorn fosc i vora de llum verd blavós; en hover, magenta.
     d = ImageDraw.Draw(out)
-    fosc = (7, 9, 14, 255)
-    clar, ombra = (((248, 232, 186, 255), (168, 128, 64, 255)) if hover else ((118, 128, 146, 255), (25, 30, 41, 255)))
+    fosc = (3, 4, 10, 255)
+    clar, ombra = (((255, 120, 210, 255), (140, 26, 104, 255)) if hover else ((80, 210, 190, 255), (10, 78, 80, 255)))
     d.rectangle([0, 0, w - 1, h - 1], outline=fosc)
     d.line([(1, 1), (w - 2, 1)], fill=clar)
     d.line([(1, 1), (1, h - 2)], fill=clar)

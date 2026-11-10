@@ -97,7 +97,7 @@
       "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       "font": "suma-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#d6f5ee",
       "textAlign": "left",
       "textOffsetX": 0,
       "textOffsetY": 0,
@@ -106,6 +106,9 @@
         "gridControlId": "Option-Grid",
         "row": 0,
         "col": 1
+      },
+      "textColorStates": {
+        "hover": "#ff78d2"
       }
     }
   ]
