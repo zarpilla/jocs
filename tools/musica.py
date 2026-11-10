@@ -10,6 +10,8 @@ Totes les peces són el mateix tema (La menor, 84 ppm, 24 compassos) amb instrum
 - `aeroport`: l'aeroport. Espies: baix obstinat, cops d'aro, cordes en tremolo i guitarra seca.
 - `banc`: la seu del BCMU. Elegància de vestíbul amb un cop a sota: cordes llargues, arpegis en pizzicato,
   un pols greu de cor i un rellotge de paret. El tema, al vibràfon, com una música d'ascensor que vigila.
+- `rellotge`: l'Acte 3, de les onze i quart a les dotze. El tic-tac a corxeres, un baix que batega a
+  semicorxeres, cops de corda curts a contratemps i el tema al piano, amb pressa i sense pànic.
 
 Com que tenen la mateixa durada, el joc les encadena al mateix punt (`sync`) en canviar de lloc.
 Les peces són bucles perfectes: cada so que passa del final torna a sonar al principi i la
@@ -415,12 +417,37 @@ def banc():
     melodia(p, vibrafon, pan=0.1, vol=0.12, octava=0, eco=0.25)
     return reverb(p.lr, durada=1.2, cua=4.0, humit=0.45, rng=rng, fosc=5500)
 
+
+def rellotge():
+    """L'Acte 3: el temps s'acaba. Tic-tac a corxeres, baix que batega, cops de corda i el tema al piano."""
+    rng = np.random.default_rng(6)
+    p = Pista(COMPASSOS * COMPAS)
+    for c in range(COMPASSOS):
+        baix, veus = acord(c)
+        # El rellotge: tic (agut) i tac (greu), a corxeres.
+        for k in range(8):
+            p.posa(aro(rng), quan(c, k / 2), pan=0.5 if k % 2 == 0 else -0.5, vol=0.07 if k % 2 == 0 else 0.05)
+        # El baix: semicorxeres fluixes amb accent a cada temps.
+        for k in range(16):
+            p.posa(baix_suau(midi(baix - 12), 0.18), quan(c, k / 4), vol=0.24 if k % 4 == 0 else 0.12)
+        # Cordes: l'acord curt i sec a l'«i» del 2 i al 4.
+        for b in (1.5, 3):
+            d = 0.35
+            for j, v in enumerate(veus):
+                p.posa(pad(midi(v), d, rng) * env(d, 0.01, 0.1), quan(c, b), pan=-0.5 + 0.33 * j, vol=0.07)
+        # Bombo al primer temps de cada compàs, i al tercer dels senars: un cor que s'accelera.
+        p.posa(bombo(), quan(c, 0), vol=0.3)
+        if c % 2:
+            p.posa(bombo(), quan(c, 2), vol=0.22)
+    melodia(p, epiano, pan=0.15, vol=0.12, eco=0.3)
+    return reverb(p.lr, durada=0.6, cua=2.0, humit=0.3, rng=rng, fosc=4500)
+
 # ─── Sortida ────────────────────────────────────────────────────────────────
 
-MUSICA = {'tema': tema, 'pis': pis, 'bar': bar, 'aeroport': aeroport, 'banc': banc}
+MUSICA = {'tema': tema, 'pis': pis, 'bar': bar, 'aeroport': aeroport, 'banc': banc, 'rellotge': rellotge}
 
 # Volum eficaç (RMS) de cada peça: fluix, que és ambient i no ha de tapar les veus ni els sons.
-RMS = {'tema': 0.08, 'pis': 0.08, 'bar': 0.08, 'aeroport': 0.08, 'banc': 0.08}
+RMS = {'tema': 0.08, 'pis': 0.08, 'bar': 0.08, 'aeroport': 0.08, 'banc': 0.08, 'rellotge': 0.08}
 
 
 def write(name, lr):

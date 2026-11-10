@@ -704,7 +704,7 @@ BCMU_VESTIBUL = {
         'maquina': {'rect': (380, 64, 414, 150), 'walk': (396, 188)},
         'ascensor': {'rect': (424, 38, 472, 150), 'walk': (448, 186)},
     },
-    'spawns': {'vet': (150, 194), 'bonfill': (236, 182)},
+    'spawns': {'vet': (150, 194), 'bonfill': (236, 182), 'recepcionista': (250, 184)},
     'walkable': WALK_STD,
     'bg': bcmu_bg,
     'props': {},
@@ -779,6 +779,52 @@ BCMU_SEGURETAT = {
 }
 
 
+# ─── Acte 3: la planta noble, el carrer i les cinemàtiques ─────────────────
+# Geometria definitiva (l'art és a hd/rooms/<sala>.py).
+
+BCMU_AVANTDESPATX = {
+    'era': 'vet',
+    'things': {
+        'ascensor': {'rect': (14, 40, 66, 150), 'walk': (40, 186)},
+        'tub': {'rect': (80, 66, 98, 110), 'walk': (90, 186)},
+        'factura': {'rect': (214, 109, 232, 118), 'walk': (222, 188)},
+        'nomina': {'rect': (246, 109, 264, 118), 'walk': (256, 188)},
+        'porta': {'rect': (380, 36, 444, 150), 'walk': (412, 186)},
+    },
+    'spawns': {'vet': (150, 194), 'pons': (350, 184)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+BCMU_DESPATX = {
+    'era': 'vet',
+    'things': {
+        'porta': {'rect': (14, 40, 62, 150), 'walk': (38, 186)},
+        'finestra': {'rect': (150, 20, 300, 100), 'walk': (226, 186)},
+        'foto': {'rect': (330, 104, 344, 117), 'walk': (336, 188)},
+        'mobil': {'rect': (360, 112, 376, 118), 'walk': (366, 188)},
+        'bol': {'rect': (440, 142, 464, 154), 'walk': (446, 190)},
+    },
+    'spawns': {'vet': (180, 196), 'bonfill': (296, 184), 'ballester': (86, 186)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+BCMU_CONTENIDOR = {
+    'era': 'vet',
+    'things': {
+        'contenidor': {'rect': (240, 104, 344, 162), 'walk': (292, 194)},
+        'carrer': {'rect': (400, 40, 472, 160), 'walk': (432, 192)},
+    },
+    'spawns': {'vet': (150, 196)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+
 # Cada sala amb disseny propi: id de la sala → disseny (vegeu el principi del fitxer).
 DESIGNS = {
     'pis_estudi': PIS_ESTUDI,
@@ -796,4 +842,10 @@ DESIGNS = {
     'bcmu_passadis': BCMU_PASSADIS,
     'bcmu_escombraries': BCMU_ESCOMBRARIES,
     'bcmu_seguretat': BCMU_SEGURETAT,
+    'bcmu_avantdespatx': BCMU_AVANTDESPATX,
+    'bcmu_despatx': BCMU_DESPATX,
+    'bcmu_contenidor': BCMU_CONTENIDOR,
+    'muntatge': cinematica(avio_bg),
+    'final_bar': cinematica(avio_bg),
+    'postcredits': cinematica(avio_bg),
 }

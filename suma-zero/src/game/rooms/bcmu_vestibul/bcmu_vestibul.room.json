@@ -487,8 +487,8 @@
     {
       "instanceId": "recepcionista-1",
       "definition": "recepcionista/recepcionista.character.json",
-      "x": 384,
-      "y": 177,
+      "x": 250,
+      "y": 184,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

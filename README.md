@@ -130,7 +130,7 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
 - **Acte 2 jugable de cap a peus** (en mode text, als tests i a Benne, amb l'art definitiu): el vestíbul (el Director i la sospita, amb el
   Dia de la Marmota), el moll (la Rius i la targeta), el tercer pis (NETA-3 i les càmeres) i la sincronia del
   collaret (els bips del Llibre Major i en Ballester).
-- **Acte 3 jugable de cap a peus** (en mode text, als tests i a Benne, amb art provisional): el muntatge del virus,
+- **Acte 3 jugable de cap a peus** (en mode text, als tests i a Benne): el muntatge del virus,
   la planta noble (la senyora Pons i el Director, la contrasenya i la sincronia del mòbil, amb la regla del
   Director que mira el mòbil), la decisió de l'Iri (tornar-ho tot o pagar primer les nòmines) i la sortida (l'escala
   plena, el conducte amb NETA-3 o l'extintor, la recepcionista i el contenidor). Tres finals segons els aliats.
@@ -146,11 +146,14 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   en Diu i els secundaris; les icones de tots els objectes; i la interfície pròpia (la consola d'hacker: verbs,
   menús, desa, carrega i opcions). Font de píxels pròpia, amb accents.
 - **So:** efectes sintetitzats (`npm run sons`) i música d'ambient per lloc (`npm run musica`): el tema de la
-  portada, el pis, el bar, l'aeroport i el banc, el mateix tema amb instruments diferents que s'encadena al mateix punt
+  portada, el pis, el bar, l'aeroport, el banc i el rellotge de l'Acte 3, el mateix tema amb instruments diferents que s'encadena al mateix punt
   en canviar de sala.
 - **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botons «Pista» i «Historial»; la tecla H també obre l'historial).
 - **Art de l'Acte 2, definitiu:** les cinc sales del BCMU (`hd/rooms/bcmu_*.py`, amb la paleta i l'estació del tub
   comunes a `hd/rooms/bcmu.py`), el Director, la Rius, en Ballester i NETA-3 amb les seves animacions d'estat, i les
   icones dels objectes nous. Els sons de l'Acte 2 són sintetitzats, i la música del banc (`banc`) sona a les cinc sales.
-- **Següent pas:** jugar l'Acte 3 a Benne i fer-ne l'art definitiu (l'avantdespatx, el despatx, el contenidor, el
-  muntatge, el bar del final i els postcrèdits; la senyora Pons i la recepcionista).
+- **Art de l'Acte 3, definitiu:** l'avantdespatx (els cavalls, la porta del Director) i el despatx (el llac i el Jet
+  d'Eau, el sofà, el bol de plata), el carrer del darrere amb el contenidor i el conducte, el muntatge del virus (sis
+  pantalles i el rellotge de les 11:15), el bar del final (la tele, la taula llarga) i els postcrèdits (el pis de nit,
+  «ROBIN HOOD 3.0?»); la senyora Pons i la recepcionista.
+- **Següent pas:** jugar el joc sencer a Benne i recollir-ne les impressions.

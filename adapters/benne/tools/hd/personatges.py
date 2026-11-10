@@ -609,7 +609,7 @@ def vet(facing, walk=None, talk=False, roba='', ulleres=False):
 # l'etiqueta és el de la variant. Les postures (mòbil a la mà, mà a la corbata o a la ràdio) es fan amb el
 # ganxo `pose` de `person`, que mou els braços abans de dibuixar.
 
-from hd.characters import HAIR_PLAT, SKIN_PALE as _SKIN_PALE, EYE_W, MOUTH, front_face, side_face  # noqa: E402
+from hd.characters import HAIR_PLAT, SKIN_PALE as _SKIN_PALE, EYE_W, MOUTH, GOLDPIN, front_face, side_face  # noqa: E402
 
 PHONE = M((6, 6, 10), (16, 16, 22), (30, 30, 38), (48, 48, 58))
 PHONE_LIT = (110, 210, 240)
@@ -884,6 +884,229 @@ def _ballester(estat=''):
     return spec
 
 
+# ─── La senyora Pons i la recepcionista ────────────────────────────────────
+
+HAIR_SILVER = M((58, 60, 74), (98, 100, 114), (140, 142, 154), (180, 182, 190), (210, 210, 216), (236, 236, 240))
+CARDIGAN = M((22, 6, 12), (44, 12, 22), (70, 20, 32), (98, 32, 42), (128, 48, 54), (158, 74, 74), dith=0.0)
+SKIRT_GREY = M((14, 14, 18), (28, 28, 34), (44, 44, 52), (64, 64, 72), (88, 88, 94), (116, 116, 120), dith=0.0)
+TIGHTS_NUDE = M((46, 28, 32), (84, 58, 56), (124, 92, 82), (160, 126, 108), (188, 158, 138))
+SPECS = M((40, 18, 14), (70, 34, 22), (104, 56, 34), (140, 84, 50))            # muntura de carei
+CHAIN_FINE = M((90, 70, 30), (150, 124, 60), (206, 180, 100), (240, 222, 150))
+BLAZER = M((6, 8, 22), (12, 18, 40), (20, 30, 62), (32, 46, 88), (48, 66, 114), (72, 92, 142), dith=0.0)
+SKIRT_NAVY = M((4, 6, 16), (10, 14, 32), (16, 24, 50), (26, 38, 72), (40, 54, 96), (60, 78, 122), dith=0.0)
+TIGHTS_OLIVE = M((40, 24, 24), (76, 50, 42), (114, 80, 62), (150, 112, 84), (178, 142, 108))
+SCARF = M((66, 40, 12), (130, 92, 28), (190, 146, 52), (228, 192, 96), (250, 230, 156))
+HAIR_REC = M((8, 4, 6), (20, 10, 12), (36, 20, 20), (56, 34, 30), (82, 54, 44), (114, 82, 66))
+SKIN_OLIVE = M((56, 32, 30), (104, 66, 52), (152, 106, 78), (194, 146, 106), (222, 180, 136), (244, 212, 170))
+
+
+def skirt(mat, hem, top=47):
+    """Faldilla de tub fins a `hem` (y), dibuixada damunt el maluc i les cuixes; un plec al mig i la vora fosca."""
+    def hook(fg, p, spec):
+        b = p.bob
+        t = p.thin
+        if p.f == 'L':
+            def e(y):
+                k = y - b - 47
+                return (20.6 + k * 0.06 + t * 0.5, 31.4 - k * 0.12 - t * 0.5)
+            fg.lathe(top + b, hem + b, e, mat, 2.6, amp=1.6, cont=(0.2, 0.8))
+            for y in range(52 + b, hem + b):
+                fg.shade(27, y, -0.5, mat)
+        else:
+            def e(y):
+                k = y - b - 47
+                w = 8.6 - t - k * 0.06
+                return (24.5 - w, 24.5 + w)
+            fg.lathe(top + b, hem + b, e, mat, 2.7, amp=1.6, cont=(0.2, 0.8))
+            for y in range(54 + b, hem + b):
+                fg.shade(24.5 if p.f == 'D' else 25, y, -0.8 if y > hem + b - 6 else -0.4, mat)   # el plec (o el trau)
+        for x in range(10, 40):
+            fg.shade(x, hem + b, -0.8, mat)
+    return hook
+
+
+def bob_hair(H):
+    """Melena curta a l'altura de la mandíbula, amb clenxa al costat i un serrell escombrat (la senyora Pons)."""
+    def back(fg, p, spec):
+        hx, hy = p.head
+        tex = hair_lvl(hx - 1, hy - 2, 5.4, k=1.0, strands=0.4, freq=2.2)
+        if p.f == 'D':
+            fg.poly([(hx - 7.8, hy - 1), (hx + 7.8, hy - 1), (hx + 8.2, hy + 7), (hx - 8.2, hy + 7)], H, 1.4, lvlfn=tex)
+        elif p.f == 'L':
+            fg.poly([(hx - 1, hy - 2), (hx + 8.0, hy - 2), (hx + 8.2, hy + 7), (hx + 1, hy + 7.5)], H, 1.8, lvlfn=tex)
+
+    def front(fg, p, spec):
+        hx, hy = p.head
+        tex = hair_lvl(hx - 1, hy - 2, 5.4, k=1.3, strands=0.4, freq=2.2)
+        if p.f == 'D':
+            line = lambda x, y: (y <= hy - 3.4 + ((x - hx) / 7.0) ** 2 * 3.0 or abs(x - hx) > 5.4) and y <= hy + 7.4
+            fg.ell(hx, hy - 0.4, 8.0, 8.4, H, 2.4, amp=1.6, clip=line, lvlfn=tex)
+            # el serrell, escombrat cap a la dreta de la imatge des de la clenxa
+            fg.poly([(hx - 2.0, hy - 7.6), (hx + 6.6, hy - 5.0), (hx + 6.2, hy - 1.6), (hx + 1.0, hy - 3.6)], H, 2.8, lvlfn=tex)
+            fg.px(hx - 2, hy - 7, H, 0.8)                                            # la clenxa
+            for sx in (-1, 1):                                                       # les puntes, girades endins
+                fg.shade(hx + sx * 6.5, hy + 7, -0.8, H)
+        elif p.f == 'L':
+            line = lambda x, y: ((x >= hx - 2.6 + max(0, y - (hy - 5)) * 0.2 or y <= hy - 4.6)
+                                 and not (x < hx + 1.6 and y > hy - 1.5) and y <= hy + 7.4)
+            fg.ell(hx + 1.2, hy - 0.4, 7.6, 8.2, H, 2.4, amp=1.6, clip=line, lvlfn=tex)
+            fg.poly([(hx - 5.6, hy - 4.8), (hx + 0.6, hy - 7.6), (hx - 0.6, hy - 2.4), (hx - 5.0, hy - 1.8)], H, 2.8)
+        else:
+            fg.ell(hx, hy - 0.4, 7.9, 8.4, H, 2.4, amp=1.6, lvlfn=tex)
+            fg.poly([(hx - 8.0, hy + 1), (hx + 8.0, hy + 1), (hx + 8.2, hy + 7), (hx - 8.2, hy + 7)], H, 2.2, lvlfn=tex)
+            for x in range(int(hx - 8), int(hx + 9)):
+                fg.shade(x, hy + 7, -0.8, H)
+    return back, front
+
+
+def _chain(fg, pts, lvl):
+    """Una cadeneta de punts (un sí, un no) per sobre del que ja hi ha dibuixat: no penja mai a l'aire."""
+    k = 0
+    for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+        n = int(max(abs(bx - ax), abs(by - ay))) + 1
+        for i in range(n):
+            x, y = ax + (bx - ax) * i / n, ay + (by - ay) * i / n
+            if k % 2 == 0 and fg.get(x, y):
+                fg.px(x, y, CHAIN_FINE, lvl)
+            k += 1
+
+
+def reading_glasses(fg, p, spec):
+    """Ulleres de lectura de mitja lluna a la punta del nas (els ulls hi miren per sobre) i la cadeneta que penja
+    de les patilles."""
+    hx, hy = p.head
+    ey = int(hy + 0.5)
+    S = spec['skin']
+    if p.f == 'D':
+        xl, xr, nx = int(hx - 3.5), int(hx + 2.5), int(hx)
+        for x0 in (xl, xr):
+            for x in range(x0 - 1, x0 + 3):
+                fg.px(x, ey + 2, SPECS, 2.6)                                         # la vora de dalt
+            fg.px(x0 - 1, ey + 3, SPECS, 1.4); fg.px(x0 + 2, ey + 3, SPECS, 1.4)
+            fg.shade(x0, ey + 3, 0.6, S); fg.shade(x0 + 1, ey + 3, 0.6, S)            # el vidre
+        fg.px(nx, ey + 2, SPECS, 1.8)                                                # el pont, al nas
+        for sx in (-1, 1):                                                           # la cadeneta
+            _chain(fg, [(hx + sx * 6.2, hy + 6), (hx + sx * 5.6, hy + 10), (hx + sx * 4.2, 28 + p.bob)], 1.8)
+    elif p.f == 'L':
+        gx = int(hx - 6.5)
+        fg.px(gx, ey + 2, SPECS, 2.4); fg.px(gx + 1, ey + 2, SPECS, 2.2)
+        fg.px(gx - 1, ey + 3, SPECS, 2.0)
+        for x in range(gx + 2, int(hx + 2)):
+            fg.px(x, ey + 2 - (x - gx) * 0.25, SPECS, 1.8)                          # la patilla
+        _chain(fg, [(hx + 2, ey + 1), (hx + 2.5, hy + 8), (hx + 0.5, 29 + p.bob)], 2.2)
+    elif p.f == 'U':
+        _chain(fg, [(hx - 5.4, hy + 7.6), (hx, hy + 9.8), (hx + 5.4, hy + 7.6)], 2.2)   # pel clatell
+
+
+def tired_mouth(fg, p, spec):
+    """Els plecs del costat de la boca (vint anys de secretària)."""
+    hx, hy = p.head
+    my = int(hy + 0.5) + 5
+    nx = int(hx)
+    if p.f == 'D':
+        fg.shade(nx - 3, my - 1, -0.6, spec['skin']); fg.shade(nx + 3, my - 1, -0.7, spec['skin'])
+        fg.shade(nx - 3, my, -0.4, spec['skin']); fg.shade(nx + 3, my, -0.5, spec['skin'])
+
+
+def pons_torso(fg, p, spec):
+    """El conjunt de punt: jaqueta granat amb botons, brusa crema de coll rodó i la vora de punt a la cintura."""
+    b = p.bob
+    hx = 24.5
+    if p.f == 'D':
+        for y in range(28 + b, 35 + b):
+            half = (35 + b - y) * 0.5
+            for x in range(int(round(hx - half)), int(round(hx + half)) + 1):
+                fg.px(x, y, CREAM, 3.0 if abs(x - hx) < half - 0.5 else 2.2)
+        fg.px(hx - 2, 28 + b, CREAM, 3.4); fg.px(hx + 2, 28 + b, CREAM, 2.8)        # el coll de la brusa
+        for y in range(35 + b, 47 + b):
+            fg.shade(hx, y, -1.0, CARDIGAN)
+        for y in (37, 40, 43):
+            fg.px(hx + 1, y + b, CREAM, 2.2)
+        for y in (45, 46):
+            for x in range(14, 36):
+                fg.shade(x, y + b, -0.5 if (x + y) % 2 else 0.2, CARDIGAN)          # el punt de la vora
+    elif p.f == 'L':
+        for y in range(28 + b, 32 + b):
+            fg.px(20.0, y, CREAM, 2.6)
+        for y in (45, 46):
+            for x in range(18, 33):
+                fg.shade(x, y + b, -0.5 if (x + y) % 2 else 0.2, CARDIGAN)
+    else:
+        for y in (45, 46):
+            for x in range(14, 36):
+                fg.shade(x, y + b, -0.5 if (x + y) % 2 else 0.2, CARDIGAN)
+
+
+def _pons():
+    hb, hf = bob_hair(HAIR_SILVER)
+    return {'skin': SKIN_OLD, 'legs': TIGHTS_NUDE, 'top': CARDIGAN, 'shoes': SHOE_BLACK, 'thin': 0.6, 'shoe_lvl': 2.2,
+            'brow': (124, 118, 124), 'lip': (140, 76, 82), 'iris': (70, 84, 96),
+            'hooks': {'hair_back': hb, 'hair': hooks(hf, reading_glasses, tired_mouth),
+                      'torso': hooks(pons_torso, skirt(SKIRT_GREY, 69))}}
+
+
+def headset(fg, p, spec):
+    """Els auriculars de diadema de recepció: la diadema, un auricular i el micro davant la boca."""
+    hx, hy = p.head
+    if p.f in ('D', 'U'):
+        for i in range(0, 19):
+            a = math.pi * i / 18
+            fg.px(hx - 7.6 * math.cos(a), hy - 0.5 - 8.6 * math.sin(a), PHONES, 2.6 if i % 3 else 1.8)
+        ex = hx - 7.2 if p.f == 'D' else hx + 7.2
+        fg.ell(ex, hy + 1.6, 1.6, 2.2, PHONES, 2.6, amp=1.2, cont=(0.2, 0.8))
+        if p.f == 'D':
+            fg.line(ex + 0.6, hy + 3.6, hx - 3.0, hy + 6.2, PHONES, 2.0)               # el micro
+            fg.px(hx - 3, hy + 6, PHONES, 3.2)
+    elif p.f == 'L':
+        for i in range(0, 13):
+            a = math.pi * i / 12
+            fg.px(hx + 2.4 - 1.6 * math.cos(a), hy - 0.5 - 8.8 * math.sin(a), PHONES, 2.6 if i % 3 else 1.8)
+        fg.ell(hx + 3.2, hy + 2.0, 1.8, 2.4, PHONES, 2.6, amp=1.2, cont=(0.2, 0.8))
+        fg.line(hx + 1.8, hy + 4.0, hx - 4.0, hy + 5.6, PHONES, 2.0)
+        fg.px(hx - 4, hy + 5.6, PHONES, 3.2)
+
+
+def rec_torso(fg, p, spec):
+    """L'americana blau marí de la casa: mocador daurat al coll, botons i el pin del BCMU a la solapa."""
+    b = p.bob
+    hx = 24.5
+    if p.f == 'D':
+        for y in range(28 + b, 37 + b):
+            half = (37 + b - y) * 0.45
+            for x in range(int(round(hx - half)), int(round(hx + half)) + 1):
+                fg.px(x, y, CREAM, 2.8 if abs(x - hx) < half - 0.5 else 2.0)
+        fg.ell(hx - 1.0, 29.5 + b, 2.6, 1.8, SCARF, 2.8, amp=1.4, cont=(0.2, 0.8))   # el nus del mocador
+        fg.poly([(hx - 2.5, 30 + b), (hx + 0.5, 30 + b), (hx - 0.5, 35 + b), (hx - 2.8, 34 + b)], SCARF, 2.4, cont=(0.2, 0.6))
+        fg.poly([(hx + 0.5, 29 + b), (hx + 3.0, 29 + b), (hx + 3.6, 31 + b), (hx + 1.0, 31 + b)], SCARF, 2.0)
+        for y in range(29 + b, 38 + b):                                               # solapes
+            d = (38 + b - y) * 0.45 + 1
+            fg.shade(hx - d, y, 1.0, BLAZER)
+            fg.shade(hx + d, y, -0.8, BLAZER)
+        for y in (39, 43):
+            fg.px(hx, y + b, GOLDPIN, 2.6)                                            # botons daurats
+        for y in range(40 + b, 48 + b):
+            fg.shade(hx + 0.5, y, -1.0, BLAZER)
+        fg.px(hx + 5.5, 32 + b, GOLDPIN, 3.0); fg.px(hx + 6.5, 32 + b, GOLDPIN, 2.0)  # el pin del BCMU
+        for x in range(14, 36):
+            fg.shade(x, 49 + b, -1.2, BLAZER)                                         # la vora de l'americana
+    elif p.f == 'L':
+        fg.ell(21.4, 29.2 + b, 1.8, 1.4, SCARF, 2.8, amp=1.2)
+        fg.px(21.0, 31 + b, SCARF, 2.2)
+        fg.px(20.6, 40 + b, GOLDPIN, 2.6)
+        for x in range(18, 34):
+            fg.shade(x, 49 + b, -1.2, BLAZER)
+    else:
+        for x in range(14, 36):
+            fg.shade(x, 49 + b, -1.2, BLAZER)
+
+
+def _recepcionista():
+    bun = lambda fg, p, s: vet_bun(fg, p, s, HAIR_REC)
+    return {'skin': SKIN_OLIVE, 'legs': TIGHTS_OLIVE, 'top': BLAZER, 'shoes': SHOE_BLACK, 'thin': 0.8, 'shoe_lvl': 2.2,
+            'lashes': True, 'lip': (164, 58, 70), 'iris': (56, 34, 24), 'brow': (30, 16, 16),
+            'hooks': {'hair': hooks(bun, headset, smile), 'torso': hooks(rec_torso, skirt(SKIRT_NAVY, 66, top=50))}}
+
+
 # Tots els de l'Acte 2: id → {variant: espec}; la variant '' és la normal.
 NPCS2 = {
     'bonfill': {'': _director(), 'Cella': _director(extra=brow_raised), 'Corbata': _director(pose=pose_collar),
@@ -891,6 +1114,10 @@ NPCS2 = {
     'rius': {'': _rius(), 'Contenta': _rius(contenta=True)},
     'ballester': {'': _ballester(), 'Relaxat': _ballester('Relaxat'), 'Alerta': _ballester('Alerta'),
                   'SenseCollaret': _ballester('SenseCollaret')},
+    # la senyora Pons, la secretària del Director (vint anys a la casa)
+    'pons': {'': _pons()},
+    # la recepcionista del vestíbul, de tornada de la reunió de benestar laboral
+    'recepcionista': {'': _recepcionista()},
 }
 # en Ballester és enorme: el mateix dibuix, ampliat (i el fotograma, més gran)
 BIG = {'ballester': 1.14}

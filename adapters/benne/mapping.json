@@ -20,10 +20,11 @@
     "bcmu_passadis": "banc",
     "bcmu_escombraries": "banc",
     "bcmu_seguretat": "banc",
-    "bcmu_avantdespatx": "banc",
-    "bcmu_despatx": "banc",
-    "bcmu_contenidor": "banc",
+    "bcmu_avantdespatx": "rellotge",
+    "bcmu_despatx": "rellotge",
+    "bcmu_contenidor": "aeroport",
     "final_bar": "bar",
-    "postcredits": "pis"
+    "postcredits": "pis",
+    "muntatge": "rellotge"
   }
 }

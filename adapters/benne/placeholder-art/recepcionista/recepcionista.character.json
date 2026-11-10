@@ -1,0 +1,74 @@
+{
+  "id": "recepcionista",
+  "name": "recepcionista",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 70,
+  "walkToPoint": {
+    "x": 44,
+    "y": 83
+  },
+  "talkPoint": {
+    "x": 25,
+    "y": -2
+  },
+  "feet": {
+    "x": 25,
+    "y": 83
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 15,
+        "y": 2
+      },
+      {
+        "x": 35,
+        "y": 2
+      },
+      {
+        "x": 37,
+        "y": 50
+      },
+      {
+        "x": 33,
+        "y": 85
+      },
+      {
+        "x": 16,
+        "y": 85
+      },
+      {
+        "x": 12,
+        "y": 50
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleL": {
+      "loop": true
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "talkTo"
+}
