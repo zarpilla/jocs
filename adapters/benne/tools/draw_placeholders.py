@@ -427,26 +427,43 @@ def add_switch_button(game_dir: Path):
 
 
 def draw_cover_gui(game_dir: Path):
-    """Les caselles dels botons de la portada (GUI `portada`): normal i hover, a pantalla completa."""
+    """Els botons de la portada (GUI `portada`), a pantalla completa: placa fosca amb vora verd blavós i cantons
+    retallats; en passar-hi per sobre, més clara i amb la vora verda. Es redibuixen mentre hi hagi la marca
+    `.generat` (si algú hi posa art fet a mà, n'ha d'esborrar la marca)."""
     gui = game_dir / 'guis/portada/portada.gui.json'
     d = game_dir / 'assets/images/guis/portada'
-    if not gui.exists() or ((d / 'portada.png').exists() and not (d / '.provisional').exists()):
+    hand_made = (d / 'portada.png').exists() and not (d / '.provisional').exists() and not (d / '.generat').exists()
+    if not gui.exists() or hand_made:
         return
     d.mkdir(parents=True, exist_ok=True)
     buttons = [ctl for ctl in json.loads(gui.read_text())['controls'] if ctl.get('type') == 'button']
     w, h = 480, 270
     frames, tags = [], []
     for b in buttons:
-        for tag, fill, vora in ((b['id'], (26, 70, 107), (60, 110, 150)), (f"{b['id']}-hover", (40, 96, 140), (150, 230, 190))):
+        for tag, fill, vora, llum in ((b['id'], (10, 16, 34, 225), (16, 120, 118), (20, 70, 80)),
+                                      (f"{b['id']}-hover", (16, 34, 58, 240), (40, 192, 116), (60, 150, 120))):
             f = Image.new('RGBA', (w, h), (0, 0, 0, 0))
-            box = [b['x'], b['y'], b['x'] + b['width'] - 1, b['y'] + b['height'] - 1]
-            ImageDraw.Draw(f).rectangle(box, fill=fill + (235,), outline=vora + (255,))
+            x0, y0 = b['x'], b['y']
+            x1, y1 = x0 + b['width'] - 1, y0 + b['height'] - 1
+            dr = ImageDraw.Draw(f)
+            dr.rectangle([x0 + 1, y0 + 1, x1 - 1, y1 - 1], fill=fill)
+            dr.line([(x0 + 2, y0), (x1 - 2, y0)], fill=vora + (255,))           # la vora, amb els cantons retallats
+            dr.line([(x0 + 2, y1), (x1 - 2, y1)], fill=vora + (255,))
+            dr.line([(x0, y0 + 2), (x0, y1 - 2)], fill=vora + (255,))
+            dr.line([(x1, y0 + 2), (x1, y1 - 2)], fill=vora + (255,))
+            for (cx, cy) in ((x0 + 1, y0 + 1), (x1 - 1, y0 + 1), (x0 + 1, y1 - 1), (x1 - 1, y1 - 1)):
+                f.putpixel((cx, cy), vora + (255,))
+            dr.line([(x0 + 3, y0 + 2), (x1 - 3, y0 + 2)], fill=llum + (255,))   # la llum de dalt
+            for k in (6, 10):                                                     # dues ratlletes a cada costat
+                f.putpixel((x0 + k, y0 + b['height'] // 2), vora + (255,))
+                f.putpixel((x1 - k, y0 + b['height'] // 2), vora + (255,))
             frames.append(f)
             tags.append(tag)
     sheet = paste_grid(frames, w, h)
     sheet.save(d / 'portada.png')
     (d / 'portada.json').write_text(json.dumps(aseprite_sheet('portada', len(frames), tags, w, h), indent=2) + '\n')
-    (d / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
+    (d / '.provisional').unlink(missing_ok=True)
+    (d / '.generat').write_text('Botons generats per draw_placeholders.py (draw_cover_gui): esborra aquesta marca si hi poses art fet a mà.\n')
     print('✔ portada: caselles dels botons')
 
 

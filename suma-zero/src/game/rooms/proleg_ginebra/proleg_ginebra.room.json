@@ -51,6 +51,20 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "nit",
+      "tag": "nit",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "nit": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
     }
   ],
   "characters": [

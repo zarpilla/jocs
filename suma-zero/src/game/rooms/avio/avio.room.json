@@ -51,6 +51,20 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "enlairament",
+      "tag": "enlairament",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "enlairament": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
     }
   ],
   "characters": [

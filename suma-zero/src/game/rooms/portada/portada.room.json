@@ -51,6 +51,20 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "senyal",
+      "tag": "senyal",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "senyal": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
     }
   ],
   "characters": []
