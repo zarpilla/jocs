@@ -437,6 +437,105 @@ def build_menus(game):
         img.save(p)
 
 
+# ─── Botons dels menús: tecles de cada mida ─────────────────────────────────
+
+MENUS = ('game-menu', 'save-menu', 'load-menu', 'settings-menu')
+KEY_STATES = (('', 4.4), ('-hover', 5.4), ('-pressed', 3.4), ('-disabled', 3.2))
+TITLE = '#4fd3bf'
+LABEL = '#bfeee4'
+
+
+def key_image(w, h, state):
+    """Una tecla de w×h per a un botó de menú (normal, hover, premuda o desactivada)."""
+    face = dict(KEY_STATES)[state]
+    cv = Canvas(w, h, transparent=True)
+    if state == '-pressed':
+        key(cv, 0, 1, w - 1, h - 1, face=face, skirt=1)          # enfonsada: més baixa i sense gaire faldó
+    else:
+        key(cv, 0, 0, w - 1, h - 1, face=face)
+    if state == '-hover':
+        for x in range(3, w - 3):                                 # una ratlla magenta sota el text
+            cv.put(x, h - 4, MAG, 3.6, lit=0)
+    return cv.img
+
+
+def build_menu_keys(game, name):
+    """Afegeix al full de la GUI les tecles de les mides dels seus botons i fa que els botons les facin servir.
+    Idempotent: les tecles d'abans (etiquetes `key-…`) es treuen i es tornen a fer."""
+    gp = game / 'guis' / name / f'{name}.gui.json'
+    sd = game / 'assets/images/guis' / name
+    jp, pp = sd / f'{name}.json', sd / f'{name}.png'
+    if not (gp.exists() and jp.exists() and pp.exists()):
+        return
+    gui = json.loads(gp.read_text())
+    sheet_json = json.loads(jp.read_text())
+    sheet = Image.open(pp).convert('RGBA')
+    # el que hi havia (sense les tecles d'abans)
+    tags = [t for t in sheet_json['meta']['frameTags'] if not t['name'].startswith('key-')]
+    keep = max((t['to'] for t in tags), default=-1)
+    names = list(sheet_json['frames'])[:keep + 1]
+    frames = {k: sheet_json['frames'][k] for k in names}
+    bottom = max((f['frame']['y'] + f['frame']['h'] for f in frames.values()), default=0)
+    right = max((f['frame']['x'] + f['frame']['w'] for f in frames.values()), default=0)
+    sizes = []
+    for c in gui.get('controls', []):
+        if c.get('type') != 'button':
+            continue
+        if 'backgroundColor' not in c and not str(c.get('backgroundTag', '')).startswith('key-'):
+            continue
+        wh = (c['width'], c['height'])
+        if wh not in sizes:
+            sizes.append(wh)
+        tag = f'key-{wh[0]}x{wh[1]}'
+        c.pop('backgroundColor', None)
+        c.pop('backgroundColorStates', None)
+        c['backgroundTag'] = tag
+        c['backgroundAnchor'] = 'top-left'
+        c['states'] = {'hover': f'{tag}-hover', 'pressed': f'{tag}-pressed', 'disabled': f'{tag}-disabled'}
+        c['textColor'] = LABEL
+        c['textColorStates'] = {'hover': TEXT_HOVER, 'pressed': TEXT_HOVER, 'disabled': '#4a5670'}
+        c['textOutline'] = {'enabled': True, 'color': TEXT_OUTLINE, 'sides': 'bottomRight'}
+    # els textos: títols en verd blavós, la resta en clar
+    for c in gui.get('controls', []):
+        if c.get('type') == 'text':
+            c['color'] = TITLE if c.get('id') == 'title' else LABEL
+        if c.get('type') == 'textInput':
+            c.update({'backgroundColor': '#090c17', 'hoverBackgroundColor': '#0d1222', 'color': LABEL,
+                      'outlineColor': '#0a4e50', 'focusedOutlineColor': '#4fd3bf', 'caretColor': '#ff78d2',
+                      'placeholder': 'Nom de la partida...'})
+        if c.get('type') == 'listBox':
+            # les files són pantalletes: fosques, la seleccionada amb llum verd blavós
+            c.update({'normalBackgroundColor': '#0d1222', 'hoverBackgroundColor': '#18203a',
+                      'selectedBackgroundColor': '#0a4e50', 'textColor': LABEL, 'selectedTextColor': '#ffffff',
+                      'placeholderTextColor': '#4a5670'})
+    if not sizes:
+        return
+    # el full nou: el d'abans (fins on arribava) i, a sota, una fila per a cada mida
+    rows_h = sum(h for _, h in sizes)
+    width = max(right, max(w for w, _ in sizes) * len(KEY_STATES))
+    out = Image.new('RGBA', (width, bottom + rows_h), (0, 0, 0, 0))
+    out.paste(sheet.crop((0, 0, right, bottom)), (0, 0))
+    base = names[0].rsplit(' ', 1)[0].replace('.aseprite', '') if names else name
+    n = len(names)
+    y = bottom
+    for (w, h) in sizes:
+        for k, (suffix, _) in enumerate(KEY_STATES):
+            x = k * w
+            out.paste(key_image(w, h, suffix), (x, y))
+            frames[f'{base} key{n}.aseprite'] = {
+                'frame': {'x': x, 'y': y, 'w': w, 'h': h}, 'rotated': False, 'trimmed': False,
+                'spriteSourceSize': {'x': 0, 'y': 0, 'w': w, 'h': h}, 'sourceSize': {'w': w, 'h': h}, 'duration': 100}
+            tags.append({'name': f'key-{w}x{h}{suffix}', 'from': n, 'to': n, 'direction': 'forward', 'color': '#000000ff'})
+            n += 1
+        y += h
+    sheet_json['frames'] = frames
+    sheet_json['meta']['frameTags'] = tags
+    sheet_json['meta']['size'] = {'w': out.width, 'h': out.height}
+    out.save(pp)
+    jp.write_text(json.dumps(sheet_json, indent=1) + '\n')
+    gp.write_text(json.dumps(gui, indent=2, ensure_ascii=False) + '\n')
+
+
 def apply_text_colors(game):
     """Els colors del text dels botons de verbs, de la frase i de les opcions de diàleg."""
     guis = game / 'guis'
@@ -466,6 +565,8 @@ def main(game):
     build_dialog(game)
     build_menus(game)
     apply_text_colors(game)
+    for name in MENUS:
+        build_menu_keys(game, name)
     print('✔ interfície HD: verbs, diàleg i menús')
 
 

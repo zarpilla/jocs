@@ -35,7 +35,7 @@
       "text": "Carrega",
       "font": "suma-negreta",
       "fontSize": 8,
-      "color": "#1a466b",
+      "color": "#4fd3bf",
       "align": "center"
     },
     {
@@ -47,12 +47,12 @@
       "height": 109,
       "rowCount": 5,
       "rowPadding": 3,
-      "normalBackgroundColor": "#222222",
-      "hoverBackgroundColor": "#2f2f2f",
-      "selectedBackgroundColor": "#4a4a4a",
-      "textColor": "#ffffff",
+      "normalBackgroundColor": "#0d1222",
+      "hoverBackgroundColor": "#18203a",
+      "selectedBackgroundColor": "#0a4e50",
+      "textColor": "#bfeee4",
       "selectedTextColor": "#ffffff",
-      "placeholderTextColor": "#999999",
+      "placeholderTextColor": "#4a5670",
       "font": "suma-regular",
       "fontSize": 8
     },
@@ -64,7 +64,7 @@
       "text": "Tria una partida per carregar.",
       "font": "suma-regular",
       "fontSize": 8,
-      "color": "#1a466b",
+      "color": "#bfeee4",
       "wordWrapWidth": 305
     },
     {
@@ -78,16 +78,25 @@
       "text": "Carrega",
       "font": "suma-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#bfeee4",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "",
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "backgroundTag": "key-85x20",
+      "states": {
+        "hover": "key-85x20-hover",
+        "pressed": "key-85x20-pressed",
+        "disabled": "key-85x20-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff78d2",
+        "pressed": "#ff78d2",
+        "disabled": "#4a5670"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#03040a",
+        "sides": "bottomRight"
       }
     },
     {
@@ -101,16 +110,25 @@
       "text": "Torna",
       "font": "suma-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#bfeee4",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "",
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "backgroundTag": "key-85x20",
+      "states": {
+        "hover": "key-85x20-hover",
+        "pressed": "key-85x20-pressed",
+        "disabled": "key-85x20-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff78d2",
+        "pressed": "#ff78d2",
+        "disabled": "#4a5670"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#03040a",
+        "sides": "bottomRight"
       }
     }
   ],

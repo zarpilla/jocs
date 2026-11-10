@@ -36,7 +36,7 @@
       "text": "Opcions",
       "font": "suma-negreta",
       "fontSize": 8,
-      "color": "#1a466b",
+      "color": "#4fd3bf",
       "align": "center",
       "zIndex": 102
     },
@@ -142,7 +142,7 @@
       "text": "clic per saltar el diàleg",
       "font": "suma-regular",
       "fontSize": 8,
-      "color": "#ffffff",
+      "color": "#bfeee4",
       "gridPlacement": {
         "gridControlId": "settings-layout",
         "row": 0,
@@ -174,7 +174,7 @@
       "text": "volum dels efectes",
       "font": "suma-regular",
       "fontSize": 8,
-      "color": "#ffffff",
+      "color": "#bfeee4",
       "gridPlacement": {
         "gridControlId": "settings-layout",
         "row": 2,
@@ -193,7 +193,7 @@
       "text": "volum de la música",
       "font": "suma-regular",
       "fontSize": 8,
-      "color": "#ffffff",
+      "color": "#bfeee4",
       "gridPlacement": {
         "gridControlId": "settings-layout",
         "row": 3,
@@ -214,18 +214,27 @@
       "text": "Torna",
       "font": "suma-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#bfeee4",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "",
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "backgroundTag": "key-68x20",
+      "zIndex": 103,
+      "states": {
+        "hover": "key-68x20-hover",
+        "pressed": "key-68x20-pressed",
+        "disabled": "key-68x20-disabled"
       },
-      "zIndex": 103
+      "textColorStates": {
+        "hover": "#ff78d2",
+        "pressed": "#ff78d2",
+        "disabled": "#4a5670"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#03040a",
+        "sides": "bottomRight"
+      }
     },
     {
       "type": "text",
@@ -235,7 +244,7 @@
       "text": "velocitat del text",
       "font": "suma-regular",
       "fontSize": 8,
-      "color": "#ffffff",
+      "color": "#bfeee4",
       "gridPlacement": {
         "gridControlId": "settings-layout",
         "row": 1,
