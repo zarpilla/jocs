@@ -9,7 +9,10 @@ describe('Acte 1 · camins', () => {
       jugarActe1(p, { sacrifici });
       expect(n.getVar('sacrifici')).toBe(sacrifici);
       expect(n.flag('acte1_fet')).toBe(true);
-      expect(n.resolveEnding()).toBe('continuara');
+      // L'avió ja no acaba el joc: porta la Vet al vestíbul del BCMU i l'Iri, al moll de càrrega.
+      expect(n.resolveEnding()).toBe(null);
+      expect(p.room).toBe('bcmu_vestibul');
+      expect(world.rooms.get('iri')).toBe('bcmu_moll');
       expect(world.items('vet')).toContain('acreditacio');
       expect(world.items('iri')).toContain('acreditacio');
       expect(world.items('iri')).not.toContain('acreditacions');

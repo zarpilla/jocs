@@ -100,9 +100,117 @@
     "name": "pj.empleat.nom"
   },
   "rius": {
-    "name": "pj.rius.nom"
+    "name": "pj.rius.nom",
+    "appearance": [
+      {
+        "if": {
+          "flag": "aliada_rius"
+        },
+        "anim": "Contenta"
+      }
+    ]
   },
   "bonfill": {
-    "name": "pj.bonfill.nom"
+    "name": "pj.bonfill.nom",
+    "appearance": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "auditoria"
+            },
+            {
+              "var": "sospita",
+              "op": ">=",
+              "value": 75
+            }
+          ]
+        },
+        "anim": "Telefon"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "auditoria"
+            },
+            {
+              "var": "sospita",
+              "op": ">=",
+              "value": 50
+            }
+          ]
+        },
+        "anim": "Corbata"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "auditoria"
+            },
+            {
+              "var": "sospita",
+              "op": ">=",
+              "value": 25
+            }
+          ]
+        },
+        "anim": "Cella"
+      }
+    ]
+  },
+  "ballester": {
+    "name": "pj.ballester.nom",
+    "appearance": [
+      {
+        "if": {
+          "any": [
+            {
+              "flag": "aliat_ballester"
+            },
+            {
+              "flag": "clau_canviada"
+            }
+          ]
+        },
+        "anim": "SenseCollaret"
+      },
+      {
+        "if": {
+          "var": "sospita_ballester",
+          "op": ">=",
+          "value": 1
+        },
+        "anim": "Alerta"
+      },
+      {
+        "if": {
+          "flag": "ballester_relaxat"
+        },
+        "anim": "Relaxat"
+      }
+    ]
+  },
+  "neta": {
+    "name": "pj.neta.nom",
+    "appearance": [
+      {
+        "if": {
+          "var": "robot",
+          "op": "==",
+          "value": "codi"
+        },
+        "anim": "Descansa"
+      },
+      {
+        "if": {
+          "var": "robot",
+          "op": "==",
+          "value": "entrepa"
+        },
+        "anim": "Molles"
+      }
+    ]
   }
 }

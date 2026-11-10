@@ -163,3 +163,95 @@ export function jugarActe1(p: Jugador, o: OpcionsActe1 = {}) {
   jugarBar(p, o);
   jugarAeroport(p, o);
 }
+
+export interface OpcionsActe2 {
+  /** Els tres aliats de l'Acte 2: la Rius (l'aplicació), NETA-3 (el codi i l'horari) i en Ballester (la veritat). */
+  aliats?: boolean;
+  /** Com s'atura el robot (per defecte, amb el codi si hi ha aliats i amb l'entrepà de la Vet si no). */
+  robot?: 'codi' | 'entrepa' | 'maquina' | 'ballester';
+  /** L'Iri fa la seva part (fins al Llibre Major) abans que la Vet parli amb el Director. */
+  iriPrimer?: boolean;
+}
+
+/** L'Escena 4: la Vet convenç el Director i puja a la sala de seguretat. */
+export function jugarVestibul(p: Jugador) {
+  if (p.active !== 'vet') p.switchTo('vet');
+  p.do('look', 'retrat');
+  const preparada = p.inventory('vet').includes('maleti');
+  p.talk('bonfill', ...(preparada ? [] : ['secrets', 'directives']), 'cor', 'rockefeller', 'seguretat');
+  p.do('use', 'ascensor');
+}
+
+/** Les escenes 4b i 5: l'Iri puja amb la targeta, atura el robot, tapa les càmeres i arriba al Llibre Major. */
+export function jugarTercerPis(p: Jugador, o: OpcionsActe2 = {}) {
+  if (p.active !== 'iri') p.switchTo('iri');
+  if (o.aliats) p.talk('rius', 'mobil', 'arreglar');
+  else p.talk('rius', 'cafe');
+  p.do('use', 'ascensor');
+  const robot = o.robot ?? (o.aliats ? 'codi' : 'entrepa');
+  if (robot === 'codi') {
+    p.talk('neta', 'descansa');
+  } else {
+    p.switchTo('vet');
+    let menjar = 'entrepa';
+    if (robot === 'maquina') {
+      if (p.room === 'bcmu_seguretat') p.do('use', 'ascensor');
+      p.do('use', 'maquina');
+      menjar = 'entrepa_suis';
+    } else if (robot === 'ballester') {
+      p.do('pickUp', 'entrepa');
+      menjar = 'entrepa_ballester';
+    }
+    p.use(menjar, 'tub');
+    p.switchTo('iri');
+    p.use(menjar, 'neta');
+  }
+  p.do('pickUp', 'cartell');
+  p.use('cartell', 'camera1');
+  p.do('pickUp', 'galleda');
+  p.use('galleda', 'camera2');
+  p.do('use', 'porta_neteja');
+  if (o.aliats) p.do('use', 'panell');
+}
+
+/** L'Escena 6: la sincronia del collaret, la clau pel tub i ROBIN HOOD 2.0. */
+export function jugarCollaret(p: Jugador, o: OpcionsActe2 = {}) {
+  if (p.active !== 'vet') p.switchTo('vet');
+  if (p.room !== 'bcmu_seguretat') p.do('use', 'ascensor');
+  p.switchTo('iri');
+  p.do('use', 'llibre'); // el primer bip, lliure
+  p.switchTo('vet');
+  if (o.aliats) {
+    p.talk('ballester', 'violi', 'adeu'); // tapa dos bips
+    p.switchTo('iri');
+    p.do('use', 'llibre');
+    p.do('use', 'llibre');
+    p.switchTo('vet');
+    p.talk('ballester', 'veritat');
+    p.do('pickUp', 'collaret');
+  } else {
+    p.talk('ballester', 'cantar', 'adeu');
+    p.switchTo('iri');
+    p.do('use', 'llibre');
+    p.switchTo('vet');
+    p.talk('ballester', 'banquers', 'adeu');
+    p.switchTo('iri');
+    p.do('use', 'llibre');
+    p.switchTo('vet');
+    p.talk('ballester', 'or');
+  }
+  p.use('clau_llibre', 'tub');
+  p.switchTo('iri');
+  p.use('clau_llibre', 'llibre');
+}
+
+export function jugarActe2(p: Jugador, o: OpcionsActe2 = {}) {
+  if (o.iriPrimer) {
+    jugarTercerPis(p, o);
+    jugarVestibul(p);
+  } else {
+    jugarVestibul(p);
+    jugarTercerPis(p, o);
+  }
+  jugarCollaret(p, o);
+}

@@ -1,7 +1,9 @@
 {
   "$schema": "../../schemas/room.schema.json",
   "name": "sala.avio.nom",
-  "cutscene": {},
+  "cutscene": {
+    "skipTo": "bcmu_vestibul"
+  },
   "onEnter": [
     {
       "verb": "*",
@@ -41,6 +43,10 @@
         {
           "who": "title",
           "text": "acte.fi1"
+        },
+        {
+          "who": "title",
+          "text": "acte.2"
         }
       ],
       "effects": [
@@ -60,9 +66,14 @@
           "setFlag": "acte1_fet"
         },
         {
-          "ending": "continuara"
+          "event": "situar",
+          "args": {
+            "who": "iri",
+            "room": "bcmu_moll"
+          }
         }
-      ]
+      ],
+      "goTo": "bcmu_vestibul"
     }
   ],
   "hotspots": {}

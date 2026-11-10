@@ -27,5 +27,105 @@
         }
       }
     ]
+  },
+  "acte2": {
+    "kind": "main",
+    "title": "mis.acte2.titol",
+    "description": "mis.acte2.desc",
+    "startWhen": {
+      "flag": "acte1_fet"
+    },
+    "objectives": [
+      {
+        "id": "seguretat",
+        "text": "mis.acte2.obj.seguretat",
+        "completeWhen": {
+          "flag": "auditoria_acceptada"
+        }
+      },
+      {
+        "id": "tercer",
+        "text": "mis.acte2.obj.tercer",
+        "completeWhen": {
+          "flag": "iri_al_tercer"
+        }
+      },
+      {
+        "id": "llibre",
+        "text": "mis.acte2.obj.llibre",
+        "completeWhen": {
+          "flag": "iri_a_llibre"
+        }
+      },
+      {
+        "id": "clau",
+        "text": "mis.acte2.obj.clau",
+        "completeWhen": {
+          "flag": "clau_girada"
+        }
+      }
+    ]
+  },
+  "subcontractats": {
+    "kind": "side",
+    "title": "mis.subcontractats.titol",
+    "description": "mis.subcontractats.desc",
+    "startWhen": {
+      "flag": "sap_app"
+    },
+    "objectives": [
+      {
+        "id": "app",
+        "text": "mis.subcontractats.obj.app",
+        "completeWhen": {
+          "flag": "aliada_rius"
+        }
+      }
+    ],
+    "failWhen": {
+      "all": [
+        {
+          "flag": "iri_al_tercer"
+        },
+        {
+          "flag": "aliada_rius",
+          "is": false
+        }
+      ]
+    }
+  },
+  "hores_neta": {
+    "kind": "side",
+    "title": "mis.hores_neta.titol",
+    "description": "mis.hores_neta.desc",
+    "objectives": [
+      {
+        "id": "horari",
+        "text": "mis.hores_neta.obj.horari",
+        "completeWhen": {
+          "flag": "aliat_neta"
+        }
+      }
+    ]
+  },
+  "veritat_ballester": {
+    "kind": "side",
+    "title": "mis.veritat_ballester.titol",
+    "description": "mis.veritat_ballester.desc",
+    "startWhen": {
+      "flag": "ballester_relaxat"
+    },
+    "objectives": [
+      {
+        "id": "veritat",
+        "text": "mis.veritat_ballester.obj.veritat",
+        "completeWhen": {
+          "flag": "aliat_ballester"
+        }
+      }
+    ],
+    "failWhen": {
+      "flag": "clau_canviada"
+    }
   }
 }

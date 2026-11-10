@@ -1,0 +1,502 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bcmu_seguretat.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "arribada",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "sala.bcmu_seguretat.arribada1"
+        },
+        {
+          "who": "ballester",
+          "text": "sala.bcmu_seguretat.arribada2"
+        },
+        {
+          "who": "bonfill",
+          "text": "sala.bcmu_seguretat.arribada3"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_seguretat.arribada4"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_seguretat.arribada5"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "ballester": {
+      "name": "sala.bcmu_seguretat.ballester.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "ballester"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aliat_ballester"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.ballester.look_aliat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "clau_canviada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.ballester.look_canvi"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "sospita_ballester",
+            "op": ">=",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.ballester.look_alerta"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.ballester.look"
+            }
+          ]
+        }
+      ]
+    },
+    "monitors": {
+      "name": "sala.bcmu_seguretat.monitors.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "camera1_tapada"
+              },
+              {
+                "flag": "camera2_tapada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.monitors.look_tapats"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "iri_al_tercer"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.monitors.look_iri"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.monitors.look"
+            }
+          ]
+        }
+      ]
+    },
+    "radio": {
+      "name": "sala.bcmu_seguretat.radio.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "regla_bips"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.radio.look_bips"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.radio.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.radio.usa"
+            }
+          ]
+        }
+      ]
+    },
+    "got": {
+      "name": "sala.bcmu_seguretat.got.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "push",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "sync_collaret"
+              },
+              {
+                "flag": "got_trencat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.got.trenca1",
+              "sound": "got"
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_seguretat.got.trenca2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "got_trencat"
+            },
+            {
+              "addVar": "coberta",
+              "amount": 1
+            },
+            {
+              "addVar": "sospita_ballester",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "got_trencat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.got.trencat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.got.encara"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "got_trencat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.got.look_trencat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.got.look"
+            }
+          ]
+        }
+      ]
+    },
+    "entrepa": {
+      "name": "sala.bcmu_seguretat.entrepa.nom",
+      "visibleIf": {
+        "flag": "entrepa_b_agafat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.entrepa.agafa1"
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_seguretat.entrepa.agafa2"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.entrepa.agafa3"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "entrepa_ballester"
+            },
+            {
+              "setFlag": "entrepa_b_agafat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.entrepa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "clauer": {
+      "name": "sala.bcmu_seguretat.clauer.nom",
+      "visibleIf": {
+        "flag": "clauer_agafat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.clauer.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "clauer"
+            },
+            {
+              "setFlag": "clauer_agafat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.clauer.look"
+            }
+          ]
+        }
+      ]
+    },
+    "collaret": {
+      "name": "sala.bcmu_seguretat.collaret.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "aliat_ballester"
+          },
+          {
+            "flag": "clau_agafada",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.collaret.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "clau_llibre"
+            },
+            {
+              "setFlag": "clau_agafada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.collaret.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tub": {
+      "name": "sala.bcmu_seguretat.tub.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "*",
+          "action": {
+            "name": "tub.enviar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.tub.obre"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.tub.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ascensor": {
+      "name": "sala.bcmu_seguretat.ascensor.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "sync_collaret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.ascensor.sync"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_seguretat.ascensor.baixa",
+              "sound": "ascensor"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_a_seguretat",
+              "value": false
+            }
+          ],
+          "goTo": "bcmu_vestibul"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_seguretat.ascensor.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "got_trencat": {
+      "visibleIf": {
+        "flag": "got_trencat"
+      }
+    },
+    "collaret_taula": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "aliat_ballester"
+          },
+          {
+            "flag": "clau_agafada",
+            "is": false
+          }
+        ]
+      },
+      "sota": true
+    }
+  }
+}

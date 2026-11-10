@@ -126,11 +126,15 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
 - **Guió** complet i revisat ([guio/guio.md](guio/guio.md)), amb la primera revisió de coherència aplicada.
 - **Acte 1 jugable de cap a peus** (en mode text, als tests i a Benne): pròleg, el pis (els tres cables,
   en Diu i el passaplats), el bar (les tres coses per a en Marcel, el pany intel·ligent, la trucada de la «dona»
-  d'en Tomàs) i l'aeroport (la primera sincronia per torns, amb la cigarreta de l'Ortega). Acaba amb un final
-  provisional, «Continuarà».
-- **Regles en codi:** la sincronia per torns (`game/logic/sincronia.ts`), sobre dues novetats del nucli:
+  d'en Tomàs) i l'aeroport (la primera sincronia per torns, amb la cigarreta de l'Ortega).
+- **Acte 2 jugable en mode text i als tests** (encara no a Benne): el vestíbul (el Director i la sospita, amb el
+  Dia de la Marmota), el moll (la Rius i la targeta), el tercer pis (NETA-3 i les càmeres) i la sincronia del
+  collaret (els bips del Llibre Major i en Ballester). Acaba amb un final provisional, «Continuarà».
+- **Regles en codi:** la sincronia (`game/logic/sincronia.ts`: per torns a l'aeroport, per sospita al collaret),
+  el tub pneumàtic (`tub.ts`) i la sospita del Director (`sospita.ts`), sobre dues novetats del nucli:
   `onAfterAction` (una regla després de cada acció) i l'esdeveniment `situar` (moure l'altra protagonista).
-- **Tests:** l'Acte 1 per tots els camins (els tres sacrificis per a en Diu, amb i sense entrepà, tap i
+- **Tests:** l'Acte 2 per tots els camins (amb els tres aliats o cap, els tres entrepans per al robot, l'Iri
+  primer, el Dia de la Marmota, els reinicis del collaret, la veritat i la mentida a en Ballester) i l'Acte 1 per tots els camins (els tres sacrificis per a en Diu, amb i sense entrepà, tap i
   preparació, el codi dolent, els reinicis de la sincronia), amb una pista a cada pas, i proves de coherència.
 - **Art de l'Acte 1, definitiu:** totes les sales (el pis, el bar, l'aeroport) i les cinemàtiques (la portada,
   el pròleg a Ginebra, l'avió), amb un fotograma per a cada estat; l'Iri, la Vet (cinc conjunts i les ulleres),
@@ -140,5 +144,5 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   portada, el pis, el bar i l'aeroport, el mateix tema amb instruments diferents que s'encadena al mateix punt
   en canviar de sala.
 - **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botons «Pista» i «Historial»; la tecla H també obre l'historial).
-- **Següent pas:** l'Acte 2 («La seu del mal»): primer la lògica, els textos i els tests de tots els camins, amb
-  art provisional; després, l'art definitiu sala per sala.
+- **Següent pas:** l'Acte 2 a Benne: les cinc sales del BCMU amb art provisional (`room_designs.py`) i els
+  sprites d'en Ballester, NETA-3, la Rius i el Director amb les seves animacions d'estat; després, l'art definitiu.

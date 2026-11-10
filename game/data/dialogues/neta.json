@@ -1,0 +1,144 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "neta",
+  "with": "neta",
+  "start": [
+    {
+      "if": {
+        "flag": "aliat_neta"
+      },
+      "node": "amic"
+    },
+    {
+      "if": {
+        "var": "robot",
+        "op": "==",
+        "value": "codi"
+      },
+      "node": "descansant"
+    },
+    {
+      "if": {
+        "var": "robot",
+        "op": "==",
+        "value": "entrepa"
+      },
+      "node": "molles"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "neta",
+          "text": "dlg.neta.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "descansa",
+          "text": "dlg.neta.opt.descansa",
+          "if": {
+            "flag": "iri_sap_neta"
+          },
+          "next": "descansa"
+        },
+        {
+          "id": "hores",
+          "text": "dlg.neta.opt.hores",
+          "once": true,
+          "next": "hores"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.neta.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "hores": {
+      "lines": [
+        {
+          "who": "neta",
+          "text": "dlg.neta.hores1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.neta.hores2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "descansa": {
+      "effects": [
+        {
+          "setVar": "robot",
+          "value": "codi"
+        },
+        {
+          "setFlag": "robot_aturat"
+        },
+        {
+          "startQuest": "hores_neta"
+        }
+      ],
+      "lines": [
+        {
+          "who": "neta",
+          "text": "dlg.neta.descansa1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.neta.descansa2",
+          "sound": "robot_atura"
+        },
+        {
+          "who": "neta",
+          "text": "dlg.neta.descansa3"
+        },
+        {
+          "who": "neta",
+          "text": "dlg.neta.descansa4"
+        },
+        {
+          "who": "player",
+          "text": "dlg.neta.descansa5"
+        }
+      ]
+    },
+    "molles": {
+      "lines": [
+        {
+          "who": "neta",
+          "text": "dlg.neta.molles"
+        }
+      ]
+    },
+    "descansant": {
+      "lines": [
+        {
+          "who": "neta",
+          "text": "dlg.neta.descansant1"
+        },
+        {
+          "who": "neta",
+          "text": "dlg.neta.descansant2"
+        }
+      ]
+    },
+    "amic": {
+      "lines": [
+        {
+          "who": "neta",
+          "text": "dlg.neta.amic"
+        }
+      ]
+    }
+  }
+}

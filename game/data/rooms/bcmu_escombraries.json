@@ -1,0 +1,614 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bcmu_escombraries.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_escombraries.intro1"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_escombraries.intro2"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_escombraries.intro3",
+          "if": {
+            "flag": "vet_a_seguretat",
+            "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "sala.bcmu_escombraries.intro4",
+          "if": {
+            "flag": "vet_a_seguretat"
+          },
+          "sound": "auricular"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_a_llibre"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "llibre": {
+      "name": "sala.bcmu_escombraries.llibre.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "clau_llibre",
+          "if": {
+            "flag": "cal_clau"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.clau1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.clau2",
+              "sound": "clau_gira"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.clau3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.clau4"
+            },
+            {
+              "who": "vet",
+              "text": "sala.bcmu_escombraries.llibre.clau5"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.clau6"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.clau7"
+            },
+            {
+              "who": "title",
+              "text": "acte.fi2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "clau_girada"
+            },
+            {
+              "setFlag": "acte2_fet"
+            },
+            {
+              "ending": "continuara"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_llibre",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.clau_abans"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "sync_collaret",
+                "is": false
+              },
+              {
+                "flag": "vet_a_seguretat",
+                "is": false
+              },
+              {
+                "flag": "cal_clau",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.espera"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "flag": "cal_clau"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.demana_clau"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "flag": "sync_collaret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "title",
+              "text": "sync.titol"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.codi1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.bip1",
+              "sound": "bip_llibre"
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_escombraries.llibre.canonada"
+            },
+            {
+              "who": "vet",
+              "text": "sala.bcmu_escombraries.llibre.regla"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.soroll"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sync_collaret"
+            },
+            {
+              "setFlag": "regla_bips"
+            },
+            {
+              "setVar": "codis",
+              "value": 1
+            },
+            {
+              "setVar": "coberta",
+              "value": 0
+            },
+            {
+              "setVar": "sospita_ballester",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "var": "codis",
+            "op": "==",
+            "value": 0
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.codi1_altra"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.bip1",
+              "sound": "bip_llibre"
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_escombraries.llibre.canonada2"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "codis",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "var": "coberta",
+            "op": ">=",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.codi2",
+              "if": {
+                "var": "codis",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.codi3",
+              "if": {
+                "var": "codis",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.bip",
+              "sound": "bip_llibre"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.tapat"
+            },
+            {
+              "who": "vet",
+              "text": "sala.bcmu_escombraries.llibre.ara_clau",
+              "if": {
+                "var": "codis",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.demana",
+              "if": {
+                "var": "codis",
+                "op": "==",
+                "value": 2
+              },
+              "effects": [
+                {
+                  "setFlag": "cal_clau"
+                },
+                {
+                  "setFlag": "sync_collaret",
+                  "value": false
+                }
+              ]
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "codis",
+              "amount": 1
+            },
+            {
+              "addVar": "coberta",
+              "amount": -1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.codi2",
+              "if": {
+                "var": "codis",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.codi3",
+              "if": {
+                "var": "codis",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.bip",
+              "sound": "bip_llibre"
+            },
+            {
+              "who": "ballester",
+              "text": "sala.bcmu_escombraries.llibre.sent"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.llibre.caduca"
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "sospita_ballester",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "cal_clau"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.look_clau"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "sync_collaret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.look_sync"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.llibre.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tub": {
+      "name": "sala.bcmu_escombraries.tub.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "*",
+          "action": {
+            "name": "tub.enviar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.tub.obre"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.tub.look"
+            }
+          ]
+        }
+      ]
+    },
+    "panell": {
+      "name": "sala.bcmu_escombraries.panell.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "sync_collaret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.sync"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "aliat_neta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.fet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "robot",
+            "op": "==",
+            "value": "codi"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.horari1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_escombraries.panell.horari2"
+            },
+            {
+              "who": "neta",
+              "text": "sala.bcmu_escombraries.panell.horari3"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.horari4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "aliat_neta"
+            },
+            {
+              "addVar": "aliats",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aliat_neta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.look_fet"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.look"
+            }
+          ]
+        }
+      ]
+    },
+    "conducte": {
+      "name": "sala.bcmu_escombraries.conducte.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.usa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.conducte.look"
+            }
+          ]
+        }
+      ]
+    },
+    "bosses": {
+      "name": "sala.bcmu_escombraries.bosses.nom",
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.bosses.agafa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.bosses.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.bcmu_escombraries.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "bcmu_passadis"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.porta.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -246,6 +246,103 @@ def auricular():
     return mix(frec, (clic(3000, 0.03), 0.15))
 
 
+# ─── Acte 2: el BCMU ────────────────────────────────────────────────────────
+
+
+def ascensor():
+    """Un ascensor que arrenca, puja amb un brunzit i fa «ding» en arribar."""
+    d = 1.6
+    motor = (band(noise(d), 60, 400) * 0.5 + osc(np.linspace(70, 95, int(SR * d)), d) * 0.3) * env(d, 0.25, None, 0.3)
+    ding = (osc(1318, 0.9) + 0.4 * osc(2636, 0.9)) * env(0.9, 0.002, 0.3) * 0.5
+    return mix(motor, (ding, 1.45))
+
+
+def tub_envia():
+    """La càpsula que entra al tub: el tap que s'obre, i l'aire que se l'endú (fuuup)."""
+    d = 0.7
+    xiulet = band(noise(d), 600, 4000) * env(d, 0.01, None, 0.15)
+    xiulet *= np.linspace(1, 0.2, len(xiulet))
+    return mix((clic(800, 0.04), 0), (xiulet, 0.05), (osc(np.linspace(500, 1500, int(SR * 0.5)), 0.5) * env(0.5, 0.01, 0.15) * 0.15, 0.05))
+
+
+def tub_rep():
+    """La càpsula que arriba: un xiulet que s'acosta i el cop sec contra el tope."""
+    d = 0.5
+    arriba = band(noise(d), 600, 4000) * np.linspace(0.1, 1, int(SR * d)) * env(d, 0.01)
+    cop = osc(np.linspace(220, 110, int(SR * 0.15)), 0.15) * env(0.15, 0.001, 0.04)
+    return mix(arriba, (cop, 0.5), (clic(1500, 0.04) * 0.5, 0.52))
+
+
+def bip_llibre():
+    """El Llibre Major (1984) confirma un codi: un bip fortíssim, quadrat i llarg."""
+    d = 0.9
+    return osc(1046, d, 'square') * env(d, 0.003, None, 0.05) * 0.8
+
+
+def clau_gira():
+    """Una clau grossa que entra i gira dins d'un pany antic: metall, ressort i el clac final."""
+    entra = band(noise(0.25), 2000, 7000) * env(0.25, 0.01, 0.1) * 0.4
+    gir = band(noise(0.35), 400, 2500) * env(0.35, 0.05, None, 0.1) * 0.5
+    return mix(entra, (gir, 0.3), (clic(600, 0.08), 0.7), (clic(1200, 0.04) * 0.6, 0.72))
+
+
+def rebobinar():
+    """El Dia de la Marmota: una cinta que rebobina a tota velocitat."""
+    d = 1.3
+    f = np.linspace(300, 2400, int(SR * d))
+    cinta = osc(f, d, 'saw') * 0.25 + band(noise(d), 1000, 8000) * 0.3
+    return cinta * env(d, 0.05, None, 0.25) * (0.7 + 0.3 * osc(23, d, 'square'))
+
+
+def mobil_ok():
+    """Un mòbil que torna a la vida: l'arpegi d'engegada."""
+    nota = lambda f: (osc(f, 0.18) + 0.3 * osc(f * 2, 0.18)) * env(0.18, 0.005, 0.08) * 0.6
+    return seq(nota(784), nota(988), nota(1175), nota(1568), gap=0.02)
+
+
+def maquina_cafe():
+    """Una màquina expenedora que s'empassa la moneda i rep un cop de puny."""
+    moneda = mix(*[(clic(3000 - i * 400, 0.02) * (0.8 - i * 0.15), i * 0.05) for i in range(4)])
+    cop = osc(np.linspace(110, 60, int(SR * 0.3)), 0.3) * env(0.3, 0.001, 0.08) + band(noise(0.3), 100, 1200) * env(0.3, 0.001, 0.05)
+    return mix(moneda, (cop, 0.6))
+
+
+def robot_neteja():
+    """NETA-3 netejant molles: un aspirador petit i uns quants xiulets de servo."""
+    d = 1.4
+    aspira = band(noise(d), 800, 5000) * env(d, 0.1, None, 0.3) * 0.5
+    servo = mix(*[(osc(np.linspace(400, 700, int(SR * 0.12)), 0.12, 'square') * env(0.12, 0.005, 0.05) * 0.2, x) for x in (0.2, 0.6, 1.0)])
+    return mix(aspira, servo)
+
+
+def robot_atura():
+    """NETA-3 que s'atura: un motor que baixa de to fins a callar, i un sospir electrònic."""
+    d = 1.2
+    f = np.linspace(500, 60, int(SR * d))
+    return osc(f, d, 'saw') * env(d, 0.01, None, 0.3) * 0.4 * np.linspace(1, 0.3, int(SR * d))
+
+
+def galleda():
+    """Una galleda de plàstic que es posa de barret a una càmera: un cop buit."""
+    cop = osc(np.linspace(260, 180, int(SR * 0.3)), 0.3) * env(0.3, 0.001, 0.07)
+    return mix(cop, (band(noise(0.1), 500, 3000) * env(0.1, 0.001, 0.03) * 0.4, 0))
+
+
+def porta_neteja():
+    """Una porta de servei que s'obre: el pom, la frontissa que grinyola i el tancament."""
+    pom = clic(900, 0.05)
+    grinyol = band(osc(np.linspace(700, 900, int(SR * 0.5)), 0.5, 'saw'), 500, 3000) * env(0.5, 0.05, None, 0.1) * 0.3
+    tanca = osc(np.linspace(90, 60, int(SR * 0.2)), 0.2) * env(0.2, 0.001, 0.06)
+    return mix(pom, (grinyol, 0.1), (tanca, 0.7))
+
+
+def got():
+    """Un got que cau i es trenca."""
+    vidre = mix(*[(band(noise(0.25), 3000, 10000) * env(0.25, 0.001, 0.06) * (0.9 - 0.2 * i), i * 0.04) for i in range(4)])
+    dring = mix(*[((osc(f, 0.6) * env(0.6, 0.001, 0.15)) * 0.25, 0.01 * i) for i, f in enumerate((2900, 4100, 5300))])
+    return mix(vidre, dring)
+
+
 # ─── Llista ─────────────────────────────────────────────────────────────────
 
 SONS = {
@@ -253,10 +350,13 @@ SONS = {
     'nevera': nevera, 'porta_pis': porta_pis, 'vaporitzador': vaporitzador, 'pany_clic': pany_clic,
     'telefon_bar': telefon_bar, 'porta_bar': porta_bar, 'megafonia': megafonia, 'teclat_porta': teclat_porta,
     'alarma_porta': alarma_porta, 'plor': plor, 'impressora': impressora, 'auricular': auricular,
+    'ascensor': ascensor, 'tub_envia': tub_envia, 'tub_rep': tub_rep, 'bip_llibre': bip_llibre, 'clau_gira': clau_gira,
+    'rebobinar': rebobinar, 'mobil_ok': mobil_ok, 'maquina_cafe': maquina_cafe, 'robot_neteja': robot_neteja,
+    'robot_atura': robot_atura, 'galleda': galleda, 'porta_neteja': porta_neteja, 'got': got,
 }
 
 # Volum de cada so respecte del màxim.
-VOLUM = {'alarma_porta': 0.5, 'telefon_bar': 0.6, 'vaporitzador': 0.5, 'impressora': 0.6, 'teclat': 0.6}
+VOLUM = {'bip_llibre': 0.45, 'rebobinar': 0.6, 'alarma_porta': 0.5, 'telefon_bar': 0.6, 'vaporitzador': 0.5, 'impressora': 0.6, 'teclat': 0.6}
 
 
 def write(name, x):

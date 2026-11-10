@@ -29,7 +29,10 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "no_enviar": "tub.auriculars"
+    }
   },
   "cable_xarxa": {
     "name": "obj.cable_xarxa.nom",
@@ -144,7 +147,12 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "cap_al_tub": true,
+      "tub_per": "iri",
+      "tub_fins": "robot_aturat"
+    }
   },
   "clau_casa": {
     "name": "obj.clau_casa.nom",
@@ -161,7 +169,10 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "no_enviar": "tub.clau_casa"
+    }
   },
   "tap": {
     "name": "obj.tap.nom",
@@ -178,7 +189,10 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "cap_al_tub": true
+    }
   },
   "recepta": {
     "name": "obj.recepta.nom",
@@ -195,7 +209,10 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "cap_al_tub": true
+    }
   },
   "comandament": {
     "name": "obj.comandament.nom",
@@ -246,7 +263,10 @@
           }
         ]
       }
-    ]
+    ],
+    "props": {
+      "cap_al_tub": true
+    }
   },
   "acreditacions": {
     "name": "obj.acreditacions.nom",
@@ -274,6 +294,233 @@
           {
             "who": "player",
             "text": "obj.acreditacio.look"
+          }
+        ]
+      }
+    ],
+    "props": {
+      "cap_al_tub": true
+    }
+  },
+  "entrepa_suis": {
+    "name": "obj.entrepa_suis.nom",
+    "props": {
+      "cap_al_tub": true,
+      "tub_per": "iri",
+      "tub_fins": "robot_aturat"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.entrepa_suis.look.vet"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.entrepa_suis.look.iri"
+          }
+        ]
+      }
+    ]
+  },
+  "entrepa_ballester": {
+    "name": "obj.entrepa_ballester.nom",
+    "props": {
+      "cap_al_tub": true,
+      "tub_per": "iri",
+      "tub_fins": "robot_aturat"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.entrepa_ballester.look.vet"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.entrepa_ballester.look.iri"
+          }
+        ]
+      }
+    ]
+  },
+  "targeta": {
+    "name": "obj.targeta.nom",
+    "props": {
+      "cap_al_tub": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.targeta.look.iri"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.targeta.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "compte_nomines": {
+    "name": "obj.compte_nomines.nom",
+    "props": {
+      "cap_al_tub": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.compte_nomines.look.iri"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.compte_nomines.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "galleda": {
+    "name": "obj.galleda.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.galleda.look"
+          }
+        ]
+      }
+    ]
+  },
+  "cartell": {
+    "name": "obj.cartell.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cartell.look"
+          }
+        ]
+      }
+    ]
+  },
+  "extintor": {
+    "name": "obj.extintor.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.extintor.look"
+          }
+        ]
+      }
+    ]
+  },
+  "clau_llibre": {
+    "name": "obj.clau_llibre.nom",
+    "props": {
+      "cap_al_tub": true,
+      "tub_per": "iri"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.clau_llibre.look.vet"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.clau_llibre.look.iri"
+          }
+        ]
+      }
+    ]
+  },
+  "clauer": {
+    "name": "obj.clauer.nom",
+    "props": {
+      "cap_al_tub": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.clauer.look"
           }
         ]
       }

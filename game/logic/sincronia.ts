@@ -5,8 +5,9 @@
  * sales del pas gasta un torn del rellotge: una interacció que fa alguna cosa o una opció de diàleg.
  * Mirar, caminar i obrir una conversa no en gasten; canviar de protagonista, tampoc.
  *
- * Quan el rellotge arriba a zero (o salta una alarma que ningú no ha tapat), es torna a començar el
- * pas: línies de gràcia i efectes de reinici. Mai no hi ha derrota.
+ * Quan el rellotge arriba a zero (o salta una alarma que ningú no ha tapat, o una variable arriba al seu
+ * límit, com la sospita d'en Ballester), es torna a començar el pas: línies de gràcia i efectes de
+ * reinici. Mai no hi ha derrota.
  *
  * Lògica del joc, no del motor: l'estat és a `state.json` (es desa amb la partida), i els textos, als
  * locales. El contingut hi afegeix el que sigui propi de cada pas amb efectes normals (p. ex. una
@@ -19,10 +20,12 @@ export interface PasSincronia {
   actiu: string;
   /** Sales on compten les accions. */
   sales: string[];
-  /** Variable amb els torns que queden. */
-  rellotge: string;
+  /** Variable amb els torns que queden (si el pas té rellotge). */
+  rellotge?: string;
   /** Torns del pas (el valor del rellotge en començar i en reiniciar). */
-  torns: number;
+  torns?: number;
+  /** Un límit: quan la variable arriba al màxim, es reinicia el pas (la sospita d'en Ballester). */
+  limit?: { var: string; max: number };
   /**
    * Una alarma que s'ha de tapar: mentre el `flag` és cert, cada torn resta 1 a `var`; si arriba a
    * zero, es reinicia el pas. El contingut l'encén (flag + var) i la tapa (flag a fals).
@@ -54,6 +57,23 @@ export const PASSOS: Record<string, PasSincronia> = {
       ],
     },
   },
+  // L'Escena 6: no hi ha rellotge, sinó la sospita d'en Ballester. A la tercera, tot torna a començar
+  // pel primer codi, i totes les eines de la Vet tornen (cantar, els acudits, el got, la sèrie).
+  collaret: {
+    actiu: 'sync_collaret',
+    sales: ['bcmu_escombraries', 'bcmu_seguretat'],
+    limit: { var: 'sospita_ballester', max: 3 },
+    reinici: {
+      linies: ['sync.collaret.reinici1', 'sync.collaret.reinici2', 'sync.collaret.reinici3'],
+      efectes: [
+        { setVar: 'sospita_ballester', value: 0 },
+        { setVar: 'codis', value: 0 },
+        { setVar: 'coberta', value: 0 },
+        ...['cantat', 'acudit1', 'acudit2', 'acudit3', 'violi_dit', 'vidua_dita', 'got_trencat'].map((f) => ({ setFlag: f, value: false })),
+        { addVar: 'reinicis_collaret', amount: 1 },
+      ],
+    },
+  },
 };
 
 /** Verbs que no gasten torn. */
@@ -61,6 +81,7 @@ const LLIURES = new Set(['look', 'walkTo', 'talkTo']);
 
 export const SINCRONIA_TEXTS = [
   'sync.aeroport.queden', 'sync.aeroport.ultima', 'sync.aeroport.reinici1', 'sync.aeroport.reinici2', 'sync.aeroport.reinici3',
+  'sync.collaret.reinici1', 'sync.collaret.reinici2', 'sync.collaret.reinici3',
 ];
 
 const narrador = (text: string, params?: Record<string, string | number>) => ({ who: 'narrator' as const, text, params });
@@ -77,8 +98,11 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
   if (!action.room || !pas.sales.includes(action.room)) return;
   if (action.kind === 'interaction' && LLIURES.has(action.verb)) return;
 
-  const queden = Number(n.getVar(pas.rellotge) ?? pas.torns) - 1;
-  n.apply({ setVar: pas.rellotge, value: queden });
+  let queden = Infinity;
+  if (pas.rellotge) {
+    queden = Number(n.getVar(pas.rellotge) ?? pas.torns) - 1;
+    n.apply({ setVar: pas.rellotge, value: queden });
+  }
 
   let alarmaEsgotada = false;
   if (pas.alarma && n.flag(pas.alarma.flag)) {
@@ -86,11 +110,12 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
     n.apply({ setVar: pas.alarma.var, value: a });
     alarmaEsgotada = a <= 0;
   }
+  const limitAssolit = !!pas.limit && Number(n.getVar(pas.limit.var) ?? 0) >= pas.limit.max;
 
-  if (queden <= 0 || alarmaEsgotada) {
+  if (queden <= 0 || alarmaEsgotada || limitAssolit) {
     n.apply([
       ...pas.reinici.efectes,
-      { setVar: pas.rellotge, value: pas.torns },
+      ...(pas.rellotge ? [{ setVar: pas.rellotge, value: pas.torns ?? 0 }] as Effect[] : []),
       ...(pas.alarma ? [{ setFlag: pas.alarma.flag, value: false }, { setVar: pas.alarma.var, value: 0 }] as Effect[] : []),
     ]);
     return { lines: pas.reinici.linies.map((t) => narrador(t)), endDialogue: true };
