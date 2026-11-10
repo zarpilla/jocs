@@ -50,6 +50,8 @@ la carpeta des d'on s'executen (o per la variable `JOC=<joc>`): vegeu `tools/joc
    `adapters/benne/joc.ts` + `mapping.json`.
 2. `npm run benne:create -w <joc> -- --from <checkout de Benne>` crea el projecte Benne.
 3. `npm run benne:sync -w <joc> -- --init`.
+4. Estadístiques: anomena les missions principals `acte1`, `acte2`, `acte3`… i afegeix el joc a `JOCS`
+   del servidor (vegeu [Estadístiques](adapters/benne/README.md#estadístiques)).
 
 Més detalls a [adapters/benne/README.md](adapters/benne/README.md) i
 [packages/benne/README.md](packages/benne/README.md).

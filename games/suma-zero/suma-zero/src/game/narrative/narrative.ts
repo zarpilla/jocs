@@ -12,12 +12,15 @@ import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
 import mapping from './mapping.generated.json';
 import { resetHistory } from './historial';
+import { installStats } from './estadistiques';
 
 // L'historial de línies és de cada joc (runtime/historial.ts del joc, o el buit per defecte).
 export * from './historial';
 
 /** El nom del joc, per als missatges de la consola. */
 const JOC = (mapping as { nom?: string }).nom ?? 'Joc';
+/** La carpeta del joc (`games/<id>`), per a les estadístiques. */
+const JOC_ID = (mapping as { id?: string }).id ?? '';
 
 // ─── Correspondència d'identificadors (nostres ↔ Benne) ─────────────────────
 // Per defecte són iguals. Les excepcions es posen a `adapters/benne/mapping.json`.
@@ -69,6 +72,7 @@ const { content, locales, locale, zones } = bundle as unknown as {
 
 export const narrative = new Narrative({ content, locales, locale, world });
 installGameLogic(narrative);
+installStats(narrative, JOC_ID);
 
 /** Esdeveniment de contingut que canvia de protagonista (`{ "event": "protagonista", "args": { "id": "vet" } }`). */
 export const SWITCH_EVENT = 'protagonista';

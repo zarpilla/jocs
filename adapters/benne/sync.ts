@@ -132,7 +132,7 @@ function sync() {
   }
   for (const [file, from] of runtime) writeGenerated(join(narrativeDir, file), readFileSync(from, 'utf8'), 'ts');
   const { $comment: _c, ...mapping } = JSON.parse(readFileSync(join(JOC_ADAPTER, 'mapping.json'), 'utf8'));
-  writeGenerated(join(narrativeDir, 'mapping.generated.json'), json({ nom: joc.nom, musicSync: joc.musicaSincronitzada === true, ...mapping }), 'json');
+  writeGenerated(join(narrativeDir, 'mapping.generated.json'), json({ id: basename(jocDir()), nom: joc.nom, musicSync: joc.musicaSincronitzada === true, ...mapping }), 'json');
 
   // 2. Contingut
   const bundle: { content: GameContent; locales: Record<string, LocaleTable>; locale: string; zones: Record<string, string[]> } =

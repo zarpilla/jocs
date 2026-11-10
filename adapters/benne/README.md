@@ -15,6 +15,7 @@ Les ordres s'executen per a un joc: des de `games/<joc>/` (`npm run benne:sync`)
 | `runtime/narrative.script.ts` | Funcions de BenneScript que fan coses al llarg del temps: dir línies, resoldre interaccions del JSON, conduir els diàlegs, canviar de protagonista, dir una pista, mostrar un final. |
 | `templates/globalScript.ts` | El `globalScript.ts` del projecte Benne. Envia totes les interaccions sense gestor propi i l'entrada a cada sala al JSON. |
 | `runtime/historial.ts` | Historial de línies buit, per als jocs que no en tenen. |
+| `runtime/estadistiques.ts` | Estadístiques anònimes de tots els jocs (vegeu [Estadístiques](#estadístiques)). |
 | `sync.ts` | Valida el contingut i el porta al projecte Benne. |
 | `benne-content.ts` | Sales, personatges, objectes, configuració i GUI de Benne a partir del JSON (el fa servir el sync). |
 | `create-project.ts` | Crea el projecte Benne d'un joc nou; amb `--motor`, actualitza el motor compartit. |
@@ -155,6 +156,32 @@ cada línia que es diu (`recordLine`) i la GUI `historial` (que crea el seu `joc
 
 Els esdeveniments del nucli arriben com a esdeveniments de Benne `narrative:<tipus>` (per exemple,
 `events.on('narrative:questStarted', …)`).
+
+## Estadístiques
+
+`runtime/estadistiques.ts` envia comptadors anònims a `https://malaherbasoft.cat/api/e` (el servei és
+al repo de la web, `api/`). Tots els jocs ho fan sols, sense res al seu `joc.ts`:
+
+| Què | D'on surt |
+|---|---|
+| `nova` | `startFromCover()` (botó «Comença») |
+| `continua` | `onRoomLoaded()`: s'ha carregat una partida desada (un cop per pàgina) |
+| `acte` 2, 3… | el nucli emet `questStarted` d'una missió `acteN` (l'1 no: ja és `nova`) |
+| `final` + id | `playEnding()` |
+| `temps` (segons) | en amagar o tancar la pestanya; només compta amb la pestanya visible i alguna acció en els darrers 2 minuts |
+
+El joc s'identifica amb el nom de la seva carpeta (`games/<joc>`), que el sync posa a
+`mapping.generated.json` (`id`).
+
+- **No es desa res al dispositiu** (ni galetes ni localStorage) ni s'envia cap identificador. La web
+  promet «sense galetes»: no hi afegiu res que ho trenqui.
+- **No s'envia res** en desenvolupament (`npm run dev`), des de localhost ni si el navegador té Global
+  Privacy Control o Do Not Track.
+- **Un joc nou:** perquè se'n comptin els actes, les missions principals s'han de dir `acte1`, `acte2`,
+  `acte3`… I el servidor l'ha de tenir a la llista `JOCS` (`api/compose.yaml` del repo de la web), o
+  rebutjarà els seus esdeveniments.
+- **Un esdeveniment nou:** cal afegir-lo a `estadistiques.ts` i a la validació del servidor
+  (`valida()` a `api/servidor.mjs`). Mantingueu-los pocs i agregats.
 
 ## Limitacions conegudes de Benne (versió actual)
 

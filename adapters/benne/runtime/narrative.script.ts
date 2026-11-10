@@ -14,6 +14,7 @@ import {
   adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
+import { statsEnding, statsNewGame } from './estadistiques';
 
 /**
  * Què hi ha just abans i just després d'aquestes línies, quan es diuen a trossos (les cinemàtiques en diuen
@@ -161,6 +162,7 @@ export function startFromCover() {
     playEnding(provar)
     return
   }
+  statsNewGame()
   const manifest = narrative.content.manifest
   const first = manifest.protagonists[0]!
   const desti = manifest.intro ?? manifest.start?.[first]?.room
@@ -288,6 +290,7 @@ export function playEnding(id?: string) {
   const endingId = id ?? narrative.resolveEnding()
   if (!endingId) return
   const ending = narrative.ending(endingId)
+  statsEnding(endingId)
   // Trossos de l'escena: el que va sobre negre (abans de la primera sala) i el que va damunt de cada sala.
   const negre: { who: string; text: string; sound?: string }[] = []
   const trossos: typeof finale = []
