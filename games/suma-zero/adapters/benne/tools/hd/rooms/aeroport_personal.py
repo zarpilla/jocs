@@ -367,4 +367,23 @@ def _frames():
     return frames
 
 
-ANIMS = {'fluorescent': {'frames': _frames, 'frameDuration': 120}}
+def _frames_avio():
+    """Per la vidriera del fons de la terminal, un avió que s'acosta de cara: el far fix i el llum vermell que parpelleja."""
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(10):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        cv.flat(41, 47, (250, 240, 220))                                 # el far d'aterratge
+        cv.glow(41, 47, 2, (255, 236, 200), 0.35)
+        if i in (0, 5):
+            cv.flat(43, 46, (255, 70, 60))                               # el llum anticol·lisió
+            cv.glow(43, 46, 3, (255, 60, 60), 0.5)
+        if i == 2:
+            cv.flat(39, 47, (255, 255, 255))                             # el flaix blanc de la punta d'ala
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'fluorescent': {'frames': _frames, 'frameDuration': 120},
+         'avio': {'frames': _frames_avio, 'frameDuration': 140}}

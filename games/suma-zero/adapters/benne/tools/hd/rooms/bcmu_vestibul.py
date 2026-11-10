@@ -11,8 +11,8 @@ El vestíbul del BCMU (Escena 4, la Vet), Ginebra, les nou del matí. Art defini
   - l'estació del tub pneumàtic (la comuna, hd/rooms/bcmu.py);
   - la màquina d'entrepans de luxe (8,50 €; `maquina_forat`: en falta un);
   - l'ascensor de portes daurades, amb l'indicador de plantes d'agulla (animació `ascensor`).
-  - la barra de sospita (`sospita`, `sospita_25`, `sospita_50`, `sospita_75`): un HUD a dalt de tot, sense llum de
-    sala, que només es veu mentre la Vet parla amb el Director.
+  - la barra de sospita (`sospita` i un tros per cada 5: `sospita_5` … `sospita_95`): un HUD a dalt de tot, sense
+    llum de sala, que només es veu mentre la Vet parla amb el Director.
 """
 import math
 
@@ -153,8 +153,10 @@ def door(cv):
 PLANTS = ((66, 0), (80, 1))   # (centre, varietat)
 
 
-def plant(cv, cx, kind):
-    """Un test de llautó amb una planta de plàstic massa verda."""
+def plant(cv, cx, kind, sway=None):
+    """Un test de llautó amb una planta de plàstic massa verda.
+
+    `sway`: fase (radiants) del corrent de l'aire condicionat que gronxa les fulles del ficus (animació `planta`)."""
     obox(cv, cx - 5, 132, cx + 5, 149, BRASS, 3.4)
     cv.rect(cx - 6, 131, cx + 6, 133, BRASS, 5.0)
     if kind == 0:                                                     # una mena de ficus, alt
@@ -163,6 +165,10 @@ def plant(cv, cx, kind):
             r = 3 + hr(i, 2) * 9
             lx = cx + math.cos(a) * r * 0.8
             ly = 116 - i * 0.6 + math.sin(a) * r * 0.5
+            if sway is not None:                                      # les de dalt es mouen més
+                h = min(1.0, max(0.0, (122 - ly) / 16))
+                lx += h * (0.9 * math.sin(sway) + 0.25 * math.sin(2 * sway + i * 0.3))
+                ly += h * 0.3 * math.cos(sway + i * 0.3)
             cv.disc(lx, ly, 2.6, 1.8, LEAF, lambda nx, ny, k=i: 3.4 - ny + (hr(k, 3) - 0.5))
         cv.line(cx, 130, cx, 104, MAHOG, 3.0)
     else:                                                             # una de fulles llargues (sansevièria)
@@ -323,7 +329,7 @@ SLOTS = [(386 + c * 9, 74 + r * 15) for r in range(4) for c in range(3)]
 EMPTY = 4   # l'espiral que queda buida (fila 2, columna 2)
 
 
-def machine(cv, empty=()):
+def machine(cv, empty=(), price=True):
     """Una màquina expenedora de luxe: blau marí i llautó, vitrina amb espirals d'entrepans triangulars i el preu."""
     x0, y0, x1, y1 = MACHINE
     obox(cv, x0, y0, x1, y1, NAVYB, 3.0, top=0.8)
@@ -345,7 +351,8 @@ def machine(cv, empty=()):
     for r in range(5):
         cv.rect(kx, gy0 + 4 + r * 6, kx + 3, gy0 + 7 + r * 6, BRASS, 4.0)
     obox(cv, x0 + 4, y1 - 19, x1 - 4, y1 - 12, [(10, 10, 10), (20, 40, 20)], 0.6, lit=0)
-    text(cv, '8,50 €', x0 + 7, y1 - 17, [(120, 255, 140)], 0, lit=0, flat=(120, 255, 140))
+    if price:                                                         # (l'animació `maquina` el fa parpellejar)
+        text(cv, '8,50 €', x0 + 7, y1 - 17, [(120, 255, 140)], 0, lit=0, flat=(120, 255, 140))
     cv.rect(x0 + 6, y1 - 9, x1 - 6, y1 - 4, DARKM, 1.4)              # la boca
     cv.glow((x0 + x1) // 2, (gy0 + gy1) // 2, 20, (200, 220, 255), 0.12)
     cv.darken(x1 + 1, y0 + 3, x1 + 3, y1, 0.45)
@@ -399,7 +406,7 @@ def dial(cv, needle):
 
 # ─── Composició ────────────────────────────────────────────────────────────
 
-def bg(cv, plants=(0, 1), empty=()):
+def bg(cv, plants=(0, 1), empty=(), sway=None, price=True):
     wall(cv)
     door(cv)
     frame(cv, 100, 30, 166, 88)                                       # un banquer gran, damunt la font
@@ -411,11 +418,11 @@ def bg(cv, plants=(0, 1), empty=()):
     tub_station(cv, 354, 70, 372, 112)
     elevator(cv)
     reception(cv)
-    machine(cv, empty)
+    machine(cv, empty, price)
     floor(cv)
     reflections(cv)
     for i in plants:
-        plant(cv, *PLANTS[i])
+        plant(cv, *PLANTS[i], sway=sway)
     fountain(cv)
 
 
@@ -442,11 +449,28 @@ def maquina_forat(cv):
 
 BAR = (186, 2, 294, 12)
 TRACK = (220, 5, 291, 9)
-SEGS = {25: ((221, 238), (250, 210, 60)), 50: ((239, 256), (246, 150, 40)), 75: ((257, 274), (230, 60, 40))}
+STEP = 5                                                             # cada resposta mou la sospita de 5 en 5
+QUARTS = (25, 50, 75)                                                # els gestos del Director
+
+
+def _x(value):
+    """On acaba la barra plena fins a `value` (0–100)."""
+    tx0, _, tx1, _ = TRACK
+    return tx0 + round((tx1 - tx0 + 1) * value / 100)
+
+
+def _color(value):
+    """Groc a baix, taronja al mig, vermell a prop del 100."""
+    stops = ((0, (250, 210, 60)), (50, (246, 150, 40)), (100, (230, 50, 40)))
+    for (v0, c0), (v1, c1) in zip(stops, stops[1:]):
+        if value <= v1:
+            t = (value - v0) / (v1 - v0)
+            return tuple(round(a + (b - a) * t) for a, b in zip(c0, c1))
+    return stops[-1][1]
 
 
 def sospita(cv):
-    """La barra buida: plaqueta fosca, l'etiqueta SOSPITA, la guia i quatre marques."""
+    """La barra buida: plaqueta fosca, l'etiqueta SOSPITA, la guia i les marques dels quarts."""
     x0, y0, x1, y1 = BAR
     cv.rect(x0, y0, x1, y1, [(14, 12, 22)], 0, lit=0)
     outline(cv, x0, y0, x1, y1, [(240, 200, 90)])
@@ -454,22 +478,26 @@ def sospita(cv):
     tx0, ty0, tx1, ty1 = TRACK
     cv.rect(tx0, ty0, tx1, ty1, [(40, 36, 52)], 0, lit=0)
     outline(cv, tx0 - 1, ty0 - 1, tx1 + 1, ty1 + 1, [(120, 110, 130)])
-    for k in range(1, 4):
-        cv.vline(tx0 + k * 18 - 1, ty0, ty1, [(90, 84, 100)], 0, lit=0)
+    for q in QUARTS:
+        cv.vline(_x(q) - 1, ty0, ty1, [(90, 84, 100)], 0, lit=0)
     cv.flat(tx1 - 1, ty0 + 2, (200, 40, 40))                         # el 100: el telèfon
 
 
 def _seg(value):
+    """El tros de barra entre `value - 5` i `value`. Als quarts hi deixa una ratlla fosca: s'hi veu el gest."""
     def draw(cv):
-        (a, b), col = SEGS[value]
+        a, b = _x(value - STEP), _x(value) - 1
+        col = _color(value)
         tx0, ty0, tx1, ty1 = TRACK
-        cv.rect(a, ty0, b - 1, ty1, [col], 0, lit=0)
-        cv.hline(a, b - 1, ty0, [tuple(min(255, c + 50) for c in col)], 0, lit=0)
-        cv.hline(a, b - 1, ty1, [tuple(int(c * 0.6) for c in col)], 0, lit=0)
+        cv.rect(a, ty0, b, ty1, [col], 0, lit=0)
+        cv.hline(a, b, ty0, [tuple(min(255, c + 50) for c in col)], 0, lit=0)
+        cv.hline(a, b, ty1, [tuple(int(c * 0.6) for c in col)], 0, lit=0)
+        if value in QUARTS:
+            cv.vline(b, ty0, ty1, [tuple(int(c * 0.45) for c in col)], 0, lit=0)
     return draw
 
 
-PROPS = {'sospita': sospita, 'sospita_25': _seg(25), 'sospita_50': _seg(50), 'sospita_75': _seg(75),
+PROPS = {'sospita': sospita, **{f'sospita_{v}': _seg(v) for v in range(STEP, 100, STEP)},
          'planta_retallada': planta_retallada, 'maquina_forat': maquina_forat}
 
 
@@ -490,3 +518,46 @@ def _frames():
 
 
 ANIMS = {'ascensor': {'frames': _frames, 'frameDuration': 260}}
+
+
+# ─── Animacions: el ficus a l'aire condicionat i el preu que parpelleja ────
+# No toquen cap píxel dels props (la planta que falta, l'entrepà que falta): els props hi van per sobre.
+
+def _prop_mask():
+    """Els píxels que cobreix algun prop de la sala (planta_retallada, maquina_forat)."""
+    m = Image.new('L', (W, H), 0)
+    for kw in ({'plants': (0,)}, {'empty': (EMPTY,)}):
+        m.paste(255, mask=_variant(**kw).getchannel('A').point(lambda a: 255 if a else 0))
+    return m
+
+
+def _anim(variants):
+    """Un fotograma per cada variant de bg (kw), amb només el que canvia i fora dels props."""
+    base = Canvas(light=LIGHT)
+    bg(base)
+    hole = _prop_mask()
+    frames, cache = [], {}
+    for kw in variants:
+        key = tuple(sorted(kw.items()))
+        if key not in cache:
+            cv = Canvas(light=LIGHT)
+            bg(cv, **kw)
+            f = _diff(cv.img, base.img)
+            f.paste((0, 0, 0, 0), mask=hole)
+            cache[key] = f
+        frames.append(cache[key])
+    return frames
+
+
+def _frames_planta():
+    """El corrent de l'aire condicionat gronxa les fulles de dalt del ficus."""
+    return _anim([{'sway': i * math.tau / 8} for i in range(8)])
+
+
+def _frames_maquina():
+    """La pantalleta del preu de la màquina parpelleja (dos cops) per cridar l'atenció."""
+    return _anim([{}] * 4 + [{'price': False}, {}, {'price': False}, {}])
+
+
+ANIMS['planta'] = {'frames': _frames_planta, 'frameDuration': 220}
+ANIMS['maquina'] = {'frames': _frames_maquina, 'frameDuration': 380}

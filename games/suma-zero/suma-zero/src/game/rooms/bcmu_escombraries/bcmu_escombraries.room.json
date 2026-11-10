@@ -289,6 +289,34 @@
       },
       "description": "Llibre Major",
       "scriptName": "llibreAnim"
+    },
+    {
+      "id": "fluorescent",
+      "tag": "fluorescent",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fluorescent": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      }
     }
   ],
   "characters": [

@@ -65,8 +65,10 @@ def wall(cv):
     cv.hline(0, W - 1, FLOOR_Y, CONCB, 0)
 
 
-def ceiling(cv):
-    """Canonades i una safata de cables, i el fluorescent brut, amb mosques mortes a la tapa."""
+def ceiling(cv, tube=1.0):
+    """Canonades i una safata de cables, i el fluorescent brut, amb mosques mortes a la tapa.
+
+    `tube`: com d'encès és el fluorescent (1 = normal; per a l'animació `fluorescent`, que fa figa)."""
     cv.rect(0, 0, W - 1, 3, CONCB, 2.4)
     cv.rect(0, 14, W - 1, 18, STEELB, lambda x, y: 2.8 + (1.4 if y == 15 else 0) - (1.0 if y == 18 else 0))
     for bx in range(20, W, 80):
@@ -76,10 +78,11 @@ def ceiling(cv):
     # el fluorescent
     x0, x1 = TUBE[0] - 40, TUBE[0] + 40
     obox(cv, x0 - 4, 2, x1 + 4, 8, STEELB, 2.6)
-    cv.hline(x0, x1, 6, [(214, 226, 200)], 0, lit=0)
+    cv.hline(x0, x1, 6, [tuple(round(c * (0.35 + 0.65 * tube)) for c in (214, 226, 200))], 0, lit=0)
     for i in range(5):
         cv.flat(x0 + 8 + int(hr(i, 9) * 64), 6, (60, 60, 50))           # mosques mortes
-    cv.glow(TUBE[0], 8, 30, (220, 232, 200), 0.22)
+    if tube > 0.5:
+        cv.glow(TUBE[0], 8, 30, (220, 232, 200), 0.22 * tube)
 
 
 def floor(cv):
@@ -395,9 +398,9 @@ def wall_bits(cv):
     cv.darken(cx + 8, cy - 6, cx + 10, cy + 9, 0.4)
 
 
-def bg(cv):
+def bg(cv, tube=1.0):
     wall(cv)
-    ceiling(cv)
+    ceiling(cv, tube)
     floor(cv)
     door(cv)
     wall_bits(cv)
@@ -432,3 +435,82 @@ def _frames():
 
 
 ANIMS = {'llibre': {'frames': _frames, 'frameDuration': 260}}
+
+
+# ─── Animacions: el fluorescent que fa figa i la gota de la canonada ───────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+def _frames_fluorescent():
+    """El fluorescent brut aguanta una estona i de cop tartamudeja: s'apaga, torna, mig s'apaga i torna."""
+    base = _base()
+    empty = _diff(base, base)
+    dims = {}
+    frames = []
+    for t in (1,) * 14 + (0.0, 1, 0.0, 0.6, 1, 0.6):
+        if t == 1:
+            frames.append(empty)
+            continue
+        if t not in dims:
+            cv = Canvas(light=LIGHT)
+            bg(cv, tube=t)
+            f = _diff(cv.img, base)
+            # sense el fluorescent la sala s'enfosqueix una mica al voltant (només el sostre i el capdamunt)
+            c = Canvas(light=LIGHT, img=base.copy())
+            c.img.alpha_composite(f)
+            k = 0.3 if t == 0 else 0.15
+            for y in range(9, 60):
+                for x in range(TUBE[0] - 100, TUBE[0] + 101):
+                    d = math.hypot((x - TUBE[0]) / 100, (y - 6) / 54)
+                    if d < 1:
+                        o = c.P[x, y]
+                        m = 1 - k * (1 - d) ** 1.5
+                        c.P[x, y] = (round(o[0] * m), round(o[1] * m), round(o[2] * m), o[3])
+            dims[t] = _diff(c.img, base)
+        frames.append(dims[t])
+    return frames
+
+
+DRIP_X, DRIP_Y = 217, 25                 # sota la canonada vella; cau a la taca d'humitat del terra
+DRIP_FLOOR = 173
+DROP = [(70, 84, 82), (150, 170, 160), (200, 220, 206)]
+
+
+def _frames_gota():
+    """Una gota es forma sota la canonada vella, s'allarga, cau i esquitxa la taca d'humitat."""
+    base = _base()
+    empty = _diff(base, base)
+    frames = [empty] * 6
+    # la gota que es forma: (alçada en píxels)
+    for h in (1, 1, 2, 2, 3):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        cv.vline(DRIP_X, DRIP_Y, DRIP_Y + h - 1, DROP, 1)
+        cv.flat(DRIP_X, DRIP_Y + h - 1, DROP[2])
+        frames.append(_diff(cv.img, base))
+    # la caiguda, cada cop més ràpida (y del cap de la gota i la llargada de l'estela)
+    for y, ln in ((30, 2), (40, 3), (58, 4), (84, 5), (116, 6), (150, 6)):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        cv.vline(DRIP_X, y - ln + 1, y - 1, DROP, 0.6)
+        cv.flat(DRIP_X, y, DROP[2])
+        frames.append(_diff(cv.img, base))
+    # l'esquitx: dues gotetes que salten i una rodoneta a la taca
+    for k in range(3):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        if k < 2:
+            cv.flat(DRIP_X - 1 - k, DRIP_FLOOR - 1 - (1 - k), DROP[1])
+            cv.flat(DRIP_X + 1 + k, DRIP_FLOOR - 1 - (1 - k), DROP[1])
+        r = 2 + k * 2                                                   # la rodoneta, aplanada: és a terra
+        for a in range(0, 360, 10):
+            cv.put(round(DRIP_X + math.cos(math.radians(a)) * r), round(DRIP_FLOOR + math.sin(math.radians(a)) * r * 0.35),
+                   DROP, 1.0 - k * 0.4)
+        frames.append(_diff(cv.img, base))
+    frames += [empty] * 2
+    return frames
+
+
+ANIMS['fluorescent'] = {'frames': _frames_fluorescent, 'frameDuration': 110}
+ANIMS['gota'] = {'frames': _frames_gota, 'frameDuration': 100}

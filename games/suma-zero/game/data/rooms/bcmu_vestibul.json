@@ -561,6 +561,62 @@
         "flag": "auditoria"
       }
     },
+    "sospita_5": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 5
+          }
+        ]
+      }
+    },
+    "sospita_10": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 10
+          }
+        ]
+      }
+    },
+    "sospita_15": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 15
+          }
+        ]
+      }
+    },
+    "sospita_20": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 20
+          }
+        ]
+      }
+    },
     "sospita_25": {
       "visibleIf": {
         "all": [
@@ -571,6 +627,62 @@
             "var": "sospita",
             "op": ">=",
             "value": 25
+          }
+        ]
+      }
+    },
+    "sospita_30": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 30
+          }
+        ]
+      }
+    },
+    "sospita_35": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 35
+          }
+        ]
+      }
+    },
+    "sospita_40": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 40
+          }
+        ]
+      }
+    },
+    "sospita_45": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 45
           }
         ]
       }
@@ -589,6 +701,62 @@
         ]
       }
     },
+    "sospita_55": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 55
+          }
+        ]
+      }
+    },
+    "sospita_60": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 60
+          }
+        ]
+      }
+    },
+    "sospita_65": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 65
+          }
+        ]
+      }
+    },
+    "sospita_70": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 70
+          }
+        ]
+      }
+    },
     "sospita_75": {
       "visibleIf": {
         "all": [
@@ -599,6 +767,62 @@
             "var": "sospita",
             "op": ">=",
             "value": 75
+          }
+        ]
+      }
+    },
+    "sospita_80": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 80
+          }
+        ]
+      }
+    },
+    "sospita_85": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 85
+          }
+        ]
+      }
+    },
+    "sospita_90": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 90
+          }
+        ]
+      }
+    },
+    "sospita_95": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "auditoria"
+          },
+          {
+            "var": "sospita",
+            "op": ">=",
+            "value": 95
           }
         ]
       }

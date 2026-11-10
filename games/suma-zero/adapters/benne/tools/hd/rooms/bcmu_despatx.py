@@ -85,8 +85,11 @@ def floor(cv):
 
 # ─── El finestral ──────────────────────────────────────────────────────────
 
-def view(cv, x0, y0, x1, y1):
-    """El llac de Ginebra a mig matí: cel, els Alps, l'altra riba, l'aigua, el Jet d'Eau i les teulades."""
+def view(cv, x0, y0, x1, y1, f=None):
+    """El llac de Ginebra a mig matí: cel, els Alps, l'altra riba, l'aigua, el Jet d'Eau i les teulades.
+
+    `f`: fotograma de l'animació (0..ANIM_N-1): l'aigua es mou, el Jet d'Eau bufa i el vaixell es gronxa."""
+    ph = 0.0 if f is None else f / ANIM_N * 2 * math.pi
     hz = 58                                                           # la línia de l'altra riba
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
@@ -94,8 +97,10 @@ def view(cv, x0, y0, x1, y1):
                 cv.put(x, y, SKYD, 4.6 - (y - y0) * 0.06 + (hr(x // 3, y // 2, 1) - 0.5) * 0.2, lit=0)
             else:
                 d = (y - hz) / (y1 - hz)
-                glint = 1.2 if (hr(x // 3, y, 2) > 0.93 and abs(x - 200) < 60) else 0
-                cv.put(x, y, LAKE, 3.6 - d * 1.2 + glint + math.sin(x * 0.5 + y * 2.1) * 0.25, lit=0)
+                gx = x // 3 if f is None else (x + round(math.sin(ph + y) * 2)) // 3
+                gk = 2 if f is None else 2 + (f + y) % 3
+                glint = 1.2 if (hr(gx, y, gk) > 0.93 and abs(x - 200) < 60) else 0
+                cv.put(x, y, LAKE, 3.6 - d * 1.2 + glint + math.sin(x * 0.5 + y * 2.1 - ph) * 0.25, lit=0)
     # uns núvols
     for (cx, cy, rx) in ((176, 30, 14), (194, 27, 10), (266, 34, 16), (284, 31, 9)):
         cv.disc(cx, cy, rx, rx * 0.35, SKYD, lambda nx, ny: 5.4 - ny * 0.8, lit=0)
@@ -118,17 +123,22 @@ def view(cv, x0, y0, x1, y1):
     jx, jb, jt = 236, 76, 30
     for y in range(jt, jb + 1):
         t = (jb - y) / (jb - jt)
-        cx = jx + t * t * 4
-        w = 0.8 + t * 1.6
+        cx = jx + t * t * (4 + math.sin(ph) * 1.2)
+        w = 0.8 + t * 1.6 + (0 if f is None else math.sin(ph * 2 - y * 0.4) * 0.35 * t)
         for x in range(int(cx - w), int(cx + w) + 1):
             cv.put(x, y, SKYD, 5.4 - abs(x - cx) / w * 0.8, lit=0)
-    cv.disc(jx + 5, jt + 1, 4, 3, SKYD, lambda nx, ny: 5.2 - nx * 0.6, lit=0)   # l'esprai de dalt
-    for i in range(16):
-        cv.flat(jx + 6 + int(hr(i, 3) * 8), jt + int(hr(i, 4) * 10), SKYD[4])
+    sx = jx + 5 + (0 if f is None else round(math.sin(ph) * 1.2))
+    cv.disc(sx, jt + 1 - (0 if f is None else round(math.cos(ph))), 4, 3, SKYD, lambda nx, ny: 5.2 - nx * 0.6, lit=0)   # l'esprai de dalt
+    for i in range(16):                                               # les gotes que s'endú el vent
+        if f is None:
+            cv.flat(jx + 6 + int(hr(i, 3) * 8), jt + int(hr(i, 4) * 10), SKYD[4])
+        else:
+            k = (hr(i, 5) + f / ANIM_N) % 1                           # cada gota cau i s'allunya, en bucle
+            cv.flat(sx + 1 + int(hr(i, 3) * 5 + k * 6), jt - 1 + int(hr(i, 4) * 4 + k * 10), SKYD[4])
     cv.hline(jx - 4, jx + 4, jb + 1, LAKE, 5.6, lit=0)
     cv.rect(jx - 8, jb + 2, jx - 4, jb + 2, TOWN, 3.0, lit=0)          # la punta del moll
     # un vaixell de rodes
-    bx, by = 186, 72
+    bx, by = 186, 72 + (0 if f is None or (f // 3) % 2 == 0 else 1)
     cv.rect(bx, by, bx + 14, by + 2, TOWN, 4.2, lit=0)
     cv.rect(bx + 3, by - 2, bx + 10, by - 1, TOWN, 3.2, lit=0)
     cv.rect(bx + 6, by - 4, bx + 7, by - 3, ROOF, 2.0, lit=0)
@@ -146,10 +156,10 @@ def view(cv, x0, y0, x1, y1):
         cv.disc(tx, y1 - 9, 4, 3, TREE, lambda nx, ny: 2.6 - ny, lit=0)
 
 
-def window(cv):
+def window(cv, f=None):
     """El finestral: marc de caoba, travessers, la vista, el reflex del vidre i l'ampit de marbre."""
     x0, y0, x1, y1 = WIN
-    view(cv, x0 + 3, y0 + 3, x1 - 3, y1 - 3)
+    view(cv, x0 + 3, y0 + 3, x1 - 3, y1 - 3, f)
     cv.tint(x0 + 3, y0 + 3, x1 - 3, y1 - 3, (255, 255, 255), lambda x, y: 0.16 if (x + y) % 46 < 5 else 0.0)
     # el marc i els travessers
     obox(cv, x0, y0, x1, y0 + 3, MAHOG, 4.0)
@@ -478,7 +488,7 @@ def bowl(cv):
 
 # ─── Composició ────────────────────────────────────────────────────────────
 
-def bg(cv):
+def bg(cv, f=None):
     wall(cv)
     floor(cv)
     sconce(cv, 106)
@@ -487,7 +497,7 @@ def bg(cv):
     sofa(cv)
     curtain(cv, 140, 152, True)
     curtain(cv, 298, 310, False)
-    window(cv)
+    window(cv, f)
     dog_bed(cv)
     globe_bar(cv)
     bookcase(cv)
@@ -501,3 +511,24 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+# ─── Animació: el llac i el Jet d'Eau ──────────────────────────────────────
+
+ANIM_N = 12
+
+
+def _frames():
+    from hd.pix import Canvas
+    from hd.rooms.comu import _diff
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(ANIM_N):
+        cv = Canvas(light=LIGHT)
+        bg(cv, f=i)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'llac': {'frames': _frames, 'frameDuration': 140}}

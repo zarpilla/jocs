@@ -434,3 +434,62 @@ def _frames():
 
 
 ANIMS = {'arna': {'frames': _frames, 'frameDuration': 90}}
+
+
+# ─── Animacions de més: la gota de la canonada i passos al bar ────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+WATER = [(20, 26, 30), (50, 62, 70), (100, 116, 124), (160, 176, 184), (220, 230, 236)]
+DRIP_X = 420                   # entre la pila de caixes i la prestatgeria
+
+
+def _frames_gota():
+    """La canonada del sostre goteja: la gota s'infla, cau arran de paret i esquitxa el terra."""
+    base = _base()
+    frames = []
+    fall = (16, 34, 60, 92, 128)                                   # on és la gota a cada fotograma de caiguda
+    for i in range(20):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        if i < 10:                                                 # la gota es forma sota la canonada
+            if i >= 3:
+                cv.put(DRIP_X, 12, WATER, 3.0, lit=0)
+            if i >= 7:
+                cv.put(DRIP_X, 13, WATER, 2.4, lit=0)
+                cv.flat(DRIP_X, 12, (190, 204, 210))
+        elif i < 15:                                               # cau
+            y = fall[i - 10]
+            cv.put(DRIP_X, y, WATER, 3.4, lit=0)
+            cv.put(DRIP_X, y - 1, WATER, 2.0, lit=0)
+            if i > 11:
+                cv.put(DRIP_X, y - 2, WATER, 1.2, lit=0)
+        elif i < 17:                                               # esquitx
+            cv.put(DRIP_X, 151, WATER, 3.0, lit=0)
+            r = 1 + (i - 15)
+            cv.put(DRIP_X - r - 1, 151 - (2 - (i - 15)), WATER, 2.6, lit=0)
+            cv.put(DRIP_X + r + 1, 151 - (2 - (i - 15)), WATER, 2.6, lit=0)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+def _frames_passos():
+    """Algú passa pel bar, a l'altra banda de la porta: l'ombra dels peus talla la ratlla de llum de sota."""
+    base = _base()
+    frames = []
+    for i in range(22):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        if i < 10:
+            x = 22 + i * 6                                       # d'esquerra a dreta, dos peus
+            for fx in (x, x + 9 - (4 if i % 2 else 0)):
+                cv.darken(max(30, fx), 149, min(76, fx + 4), 151, 0.9, dither=False)
+                cv.darken(max(30, fx - 1), 152, min(76, fx + 5), 153, 0.5)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+ANIMS['gota'] = {'frames': _frames_gota, 'frameDuration': 110}
+ANIMS['passos'] = {'frames': _frames_passos, 'frameDuration': 120}

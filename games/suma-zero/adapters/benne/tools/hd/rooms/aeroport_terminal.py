@@ -42,9 +42,21 @@ LIGHT.point(240, -30, r=300, k=2.2, squash=0.7, power=1.2)           # els fluor
 LIGHT.point(455, 100, r=60, k=1.0, squash=1.0, power=2.0)            # la màquina de cafè
 LIGHT.point(240, 112, r=90, k=0.7, squash=1.6, power=2.0)            # la claror de l'alba per la vidriera
 
-# la cigarreta: de la mà de l'Ortega (x 287) cap a la dreta; llargada segons l'estat
-CIG = (287, 67)
-CIG_LEN = {'sencera': 10, 'mitja': 6, 'curta': 3}
+# L'Ortega és a fora, lluny: petita (K) i amb els peus al paviment de la zona de fumadors (FEET_Y).
+# Els detalls (monyo, gafet, mòbil, cigarreta) es van dibuixar sobre la figura a escala 0.78 amb l'origen
+# a (259, 28); `_o` els porta a l'escala i el lloc d'ara.
+K = 0.6
+FEET_Y = 105
+_OX, _OY = 264, FEET_Y - round(86 * K)
+
+
+def _o(x, y):
+    return round(_OX + (x - 259) * K / 0.78), round(_OY + (y - 28) * K / 0.78)
+
+
+# la cigarreta: de la mà de l'Ortega cap a la dreta; llargada segons l'estat
+CIG = _o(287, 67)
+CIG_LEN = {'sencera': 8, 'mitja': 5, 'curta': 2}
 
 
 # ─── Paret, sostre i terra ─────────────────────────────────────────────────
@@ -134,26 +146,33 @@ ORTEGA = {'skin': M((56, 30, 34), (104, 62, 56), (152, 100, 80), (194, 138, 106)
 def ortega(cv, cig='sencera'):
     """La supervisora Ortega, darrere el vidre: uniforme granat, gafet, el mòbil en una mà i la cigarreta a l'altra."""
     fig = person(ORTEGA, 'D')
-    k = 0.78
-    fig = fig.resize((round(fig.width * k), round(fig.height * k)), Image.NEAREST)
-    ox, oy = 259, 28
-    cv.img.alpha_composite(fig, (ox, oy))
+    fig = fig.resize((round(fig.width * K), round(fig.height * K)), Image.NEAREST)
+    # l'ombra als peus, perquè trepitgi el paviment i no suri
+    cx0, _ = _o(268, 0)
+    cx1, _ = _o(290, 0)
+    cv.tint(cx0, FEET_Y - 1, cx1, FEET_Y + 1, (4, 6, 10), 0.55)
+    cv.img.alpha_composite(fig, (_OX, _OY))
     # el monyo i el mocador de coll
-    cv.disc(278, oy + 4, 3, 2.4, [(10, 10, 12), (30, 28, 32), (56, 54, 58)], lambda nx, ny: 1.8 - ny, lit=0)
-    cv.rect(275, oy + 20, 282, oy + 21, YELS, 3.0, lit=0)
-    cv.flat(281, oy + 27, (230, 230, 240))                              # el gafet
-    cv.flat(281, oy + 28, (90, 140, 200))
+    mx, my = _o(278, 32)
+    cv.disc(mx, my, 2, 2, [(10, 10, 12), (30, 28, 32), (56, 54, 58)], lambda nx, ny: 1.8 - ny, lit=0)
+    (sx0, sy), (sx1, _) = _o(275, 48), _o(282, 48)
+    cv.hline(sx0, sx1, sy, YELS, 3.0, lit=0)
+    gx, gy = _o(281, 55)
+    cv.flat(gx, gy, (230, 230, 240))                                    # el gafet
+    cv.flat(gx, gy + 1, (90, 140, 200))
     # el mòbil, a la mà esquerra (la pantalla li il·lumina la cara des de baix)
-    cv.rect(268, 64, 270, 68, [(20, 20, 26)], 0, lit=0)
-    cv.flat(269, 65, (170, 220, 255))
-    cv.glow(272, 46, 8, (150, 200, 255), 0.18)
+    px, py = _o(268, 64)
+    cv.rect(px, py, px + 1, py + 2, [(20, 20, 26)], 0, lit=0)
+    cv.flat(px, py + 1, (170, 220, 255))
+    lx, ly = _o(272, 46)
+    cv.glow(lx, ly, 6, (150, 200, 255), 0.18)
     # la cigarreta
     n = CIG_LEN[cig]
     cx, cy = CIG
     cv.hline(cx, cx + n - 1, cy, [(236, 232, 222)], 0, lit=0)
     cv.flat(cx, cy, (210, 150, 80))                                     # el filtre
     cv.flat(cx + n, cy, (255, 110, 40))                                 # la brasa
-    cv.glow(cx + n, cy, 3, (255, 120, 40), 0.5)
+    cv.glow(cx + n, cy, 2, (255, 120, 40), 0.5)
 
 
 def window_frame(cv):
@@ -423,4 +442,33 @@ def _frames():
     return frames
 
 
-ANIMS = {'terminal': {'frames': _frames, 'frameDuration': 160}}
+def _frames_panell():
+    """El llumet d'«embarcant» del BCMU-07, al panell de sortides: encès, apagat."""
+    base = Canvas(light=LIGHT)
+    bg(base)
+    cv = Canvas(light=LIGHT, img=base.img.copy())
+    for k in range(3):                                                  # una fletxeta que apunta a GINEBRA
+        cv.vline(115 + k, 17 - k, 17 + k, [(255, 220, 120)], 0, lit=0)
+    cv.glow(116, 17, 5, (250, 180, 60), 0.3)
+    return [_diff(cv.img, base.img), _diff(base.img, base.img)]
+
+
+def _frames_cafe():
+    """La màquina de cafè, esperant clients: els botons s'il·luminen d'un en un i després descansen."""
+    base = Canvas(light=LIGHT)
+    bg(base)
+    x0, y0 = 444, 52
+    frames = []
+    for i in range(12):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        if i < 9:
+            bx, by = x0 + 6 + (i % 3) * 7, y0 + 46 + (i // 3) * 6
+            cv.rect(bx, by, bx + 4, by + 3, [(150, 110, 80), (230, 190, 140), (255, 236, 200)], lambda x, y: 2.0 - (y - by) * 0.3, lit=0)
+            cv.glow(bx + 2, by + 1, 5, (255, 190, 130), 0.25)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'terminal': {'frames': _frames, 'frameDuration': 160},
+         'panell': {'frames': _frames_panell, 'frameDuration': 650},
+         'cafe': {'frames': _frames_cafe, 'frameDuration': 260}}

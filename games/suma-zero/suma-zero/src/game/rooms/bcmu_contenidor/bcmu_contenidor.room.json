@@ -116,6 +116,48 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "vent",
+      "tag": "vent",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "vent": {
+          "loop": true,
+          "frameDuration": 170
+        }
+      }
+    },
+    {
+      "id": "camera",
+      "tag": "camera",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "camera": {
+          "loop": true,
+          "frameDuration": 450
+        }
+      }
+    },
+    {
+      "id": "paperet",
+      "tag": "paperet",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "paperet": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
     }
   ],
   "characters": [

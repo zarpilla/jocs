@@ -65,7 +65,121 @@
           "frameDuration": 260
         }
       }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 200
+    },
+    {
+      "id": "tele_apagada",
+      "tag": "tele_apagada",
+      "animations": {
+        "tele_apagada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
-  "characters": []
+  "characters": [
+    {
+      "instanceId": "rius-1",
+      "definition": "rius/rius.character.json",
+      "x": 136,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "ballester-1",
+      "definition": "ballester/ballester.character.json",
+      "x": 176,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 214,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 252,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 290,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "tomas-1",
+      "definition": "tomas/tomas.character.json",
+      "x": 328,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "pons-1",
+      "definition": "pons/pons.character.json",
+      "x": 368,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "neta-1",
+      "definition": "neta/neta.character.json",
+      "x": 94,
+      "y": 202,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 430,
+      "y": 170,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
 }

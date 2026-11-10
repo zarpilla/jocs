@@ -6,14 +6,15 @@ Es dibuixa damunt del bar de l'Escena 2 (bar_sala), amb llum de dia:
     RESISTIT» i, a la cinta de sota, «CAL MÉS REGULACIÓ»;
   - un paper escrit a mà a la barra, «TORNEM A ESTAR OBERTS», amb cinta adhesiva;
   - la taula llarga: tres taules diferents ajuntades, amb gots, ampolles i pa amb tomàquet;
-  - a la punta, una cadira amb la cistella d'en Diu (en Diu no: els personatges no són al fons).
+  - a la punta, una cadira amb la cistella d'en Diu (en Diu no: és un personatge). Els personatges seuen darrere la taula (FRONT);
+  - el cable de la tele, que penja fins a la barra; i la tele apagada (`tele_apagada`), quan en Diu el mossega.
 """
 import math
 
 from hd.pix import Light, Canvas, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET, YEL
 from hd.rooms.bar_sala import (bg as bar_bg, slot_machine, WOOD, FORMICA, STEELB, BRASS, ENAMEL, PORC,
-                               BOTTLES, FLOOR_Y)
+                               BOTTLES, FLOOR_Y, SLATE)
 from hd.rooms.pis_cuina import outline_poly
 
 DAYSKY = [(70, 96, 130), (100, 130, 166), (136, 166, 196), (176, 196, 214), (216, 214, 206), (240, 222, 186), (252, 236, 200)]
@@ -209,20 +210,56 @@ def table_chair(cv, x, y, back=True):
     cv.darken(x - 9, y + 25, x + 10, y + 27, 0.6)
 
 
+CLOTH = [(70, 66, 62), (120, 116, 108), (170, 166, 156), (210, 206, 196), (236, 232, 222), (250, 248, 240)]
+VICHY = [(50, 8, 10), (96, 20, 22), (150, 38, 36), (196, 68, 62), (228, 116, 106), (244, 170, 160)]
+PAPER = [(100, 86, 50), (150, 134, 90), (196, 182, 136), (226, 214, 172), (244, 236, 204)]
+HEM = 194          # on acaben les estovalles: tapen les cames de qui seu al darrere
+
+
 def long_table(cv):
-    """La taula llarga: tres taules que no lliguen (fòrmica, fusta i una de plegable), ajuntades."""
+    """La taula llarga: tres taules que no lliguen, ajuntades, i cadascuna amb les seves estovalles (de quadres
+    vermells, de fil blanc i de paper), que pengen fins gairebé a terra i tapen les cames de qui hi seu."""
     top, front = 164, 171
-    parts = ((112, 204, FORMICA, 3.6, 0), (205, 306, WOOD, 4.0, -1), (307, 404, ENAMEL, 3.6, 0))
-    for x0, x1, rp, lv, dy in parts:
-        cv.poly([(x0 + 3, top + dy), (x1 - 3, top + dy), (x1, front + dy), (x0, front + dy)], rp,
-                lambda x, y, lv=lv: lv + (y - top) * 0.08 + (hr(x // 6, y) - 0.5) * 0.3)
-        cv.rect(x0, front + dy + 1, x1, front + dy + 3, rp, lv - 1.6)
-        cv.hline(x0, x1, front + dy + 4, rp, 0)
+    parts = ((112, 204, 'quadres', 0), (205, 306, 'fil', -1), (307, 404, 'paper', 0))
+    for x0, x1, kind, dy in parts:
+        # les potes: només en surt la punta per sota les estovalles
         for lx in (x0 + 3, x1 - 4):
-            cv.rect(lx, front + dy + 4, lx + 1, 199, rp if rp is not ENAMEL else STEELB, 1.6)
-        cv.darken(x0, front + dy + 5, x1, front + dy + 9, lambda x, y: 0.6 - (y - front - dy - 5) * 0.12)
-    cv.vline(205, top - 1, front + 2, WOOD, 0.4)                     # les juntes
-    cv.vline(306, top, front + 2, WOOD, 0.4)
+            cv.rect(lx, HEM, lx + 1, 199, STEELB if kind == 'paper' else WOOD, 1.6)
+
+        def cloth(x, y, lv, x0=x0, kind=kind):
+            """Un punt de les estovalles (`lv`: la llum que hi toca)."""
+            if kind == 'quadres':
+                a, b = (x // 4) % 2, (y // 3) % 2
+                if a and b:
+                    cv.put(x, y, VICHY, lv - 0.8)
+                elif a or b:
+                    cv.put(x, y, VICHY, lv + 0.6)
+                else:
+                    cv.put(x, y, CLOTH, lv + 0.6)
+            elif kind == 'fil':
+                cv.put(x, y, CLOTH, lv + 0.4 + (hr(x // 2, y // 3, 3) - 0.5) * 0.15)
+            else:
+                cv.put(x, y, PAPER, lv + (hr(x // 3, y // 2, 4) - 0.5) * 0.3)
+
+        # damunt: el sobre, en perspectiva
+        for y in range(top + dy, front + dy + 1):
+            inset = round((front + dy - y) * 3 / max(1, front - top))
+            for x in range(x0 - 1 + inset, x1 + 2 - inset):
+                cloth(x, y, 3.6 + (y - top) * 0.05)
+        # la caiguda: plecs verticals i la vora una mica ondulada
+        for x in range(x0 - 2, x1 + 3):
+            fold = math.sin((x - x0) * 0.55) * 0.45 + math.sin((x - x0) * 0.17 + dy) * 0.25
+            hem = HEM - (1 if math.sin(x * 0.45 + dy) > 0.6 else 0)
+            for y in range(front + dy + 1, hem + 1):
+                lv = 3.0 + fold - (y - front) * 0.025
+                if y == front + dy + 1:
+                    lv += 0.8                                        # el cantell de la taula, que marca
+                cloth(x, y, lv)
+            if kind == 'paper' and x % 9 == 0:                       # el paper, amb un estrip
+                cv.put(x, hem, PAPER, 1.0)
+        cv.darken(x0 - 2, front + dy + 2, x1 + 2, front + dy + 4, 0.25)  # l'ombra del sobre
+        cv.vline(x0 - 2, front + dy + 1, HEM, CLOTH, 0.6)
+        cv.vline(x1 + 2, front + dy + 1, HEM, CLOTH, 0.6)
     cv.darken(112, 196, 404, 202, 0.5)                               # l'ombra a terra
     # damunt: gots, plats de pa amb tomàquet, ampolles, un porró
     for i, gx in enumerate((124, 156, 222, 262, 318, 352, 388)):
@@ -272,10 +309,30 @@ def cat_basket(cv):
     cv.line(cx - 13, by + 1, cx + 13, by + 1, WICKER, 1.0)
 
 
+def tv_cable(cv):
+    """El cable de la tele: surt de sota, penja per la paret i s'amaga darrere la barra (el que mossega en Diu)."""
+    x0, y0 = TV[2] - 6, TV[3] + 1
+    for y in range(y0, 113):
+        x = x0 + round(math.sin((y - y0) / 25 * math.pi) * 2)          # una mica de panxa
+        cv.put(x, y, SLATE, 1.6)
+        cv.put(x + 1, y, SLATE, 0.6)
+
+
+def tele_apagada(cv):
+    """La tele, apagada (en Diu ha mossegat el cable): la pantalla negra amb un reflex, i el llum verd, apagat."""
+    sx0, sy0, sx1, sy1 = SCR
+    for y in range(sy0, sy1 + 1):
+        for x in range(sx0, sx1 + 1):
+            cv.put(x, y, SLATE, 1.0 + (0.9 if (x - sx0) + (y - sy0) < 18 and (x - sx0) + (y - sy0) > 12 else 0)
+                   + (hr(x, y, 9) - 0.5) * 0.2, lit=0)
+    cv.rect(TV[2] - 10, TV[3] - 4, TV[2] - 8, TV[3] - 3, [(20, 40, 24)], 0, lit=0)
+
+
 def bg(cv):
     bar_bg(cv)
     window_day(cv)
     door_day(cv)
+    tv_cable(cv)
     tv_frame(cv)
     tv_news(cv, 0)
     bar_extras(cv)
@@ -285,7 +342,15 @@ def bg(cv):
     cat_basket(cv)
 
 
-PROPS = {}
+PROPS = {'tele_apagada': tele_apagada}
+
+# La taula llarga tapa les cames de qui hi seu al darrere (tothom: vegeu FINAL_BAR a room_designs.py).
+# El que hi ha damunt la taula i sobresurt per sobre del sobre (gots, ampolles, el porró): també va davant.
+_DAMUNT = ([(gx, 157, gx + 3, 165) for i, gx in enumerate((124, 156, 222, 262, 318, 352, 388)) if i not in (1, 4)]
+           + [(bx, 148, bx + 3, 165) for bx in (140, 238, 336)] + [(280, 150, 298, 165)])
+FRONT = {'mask': lambda x, y: (110 <= x <= 406 and 164 <= y <= HEM)
+                              or any(a <= x <= c and b <= y <= d for a, b, c, d in _DAMUNT),
+         'baseline': 200, 'zIndex': 20}
 
 
 def _frames():

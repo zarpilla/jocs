@@ -293,14 +293,20 @@ NPCS = {
 }
 
 
-def npc(cid, facing, talk=False):
+def marcel_taula(facing='D', talk=False):
+    """En Marcel al bar del final (roba «Taula»): assegut a la taula llarga, de cara. La taula li tapa les cames,
+    així que n'hi ha prou amb dibuixar-lo dret i de cara (en qualsevol direcció mira el jugador)."""
+    return person(dict(NPCS['marcel'], seated=None), 'D', talk=talk)
+
+
+def npc(cid, facing, talk=False, walk=None):
     if NPCS[cid].get('seated') is not None and facing != 'L':
         # Assegut no es gira de cara ni d'esquena: mira a la dreta (el perfil, de l'altra banda; els peus a x = 25)
         side = person(NPCS[cid], 'L', talk=talk)
         out = Image.new('RGBA', side.size, (0, 0, 0, 0))
         out.alpha_composite(side.transpose(Image.FLIP_LEFT_RIGHT), (2, 0))
         return out
-    img = person(NPCS[cid], facing, talk=talk)
+    img = person(NPCS[cid], facing, walk=walk, talk=talk)
     if cid == 'nen':
         # un nen de set anys: el mateix dibuix a mida petita, amb els peus al mateix lloc
         w, h = img.size
@@ -1161,8 +1167,9 @@ SCR_ON = (90, 230, 240)
 SCR_DIM = (30, 90, 100)
 
 
-def neta(facing='D', talk=False, estat='', k=0):
-    """`estat`: '' (fent la volta), 'descansa' (abaixat, llums baixos) o 'molles' (ajupit, netejant). `k`: fotograma."""
+def neta(facing='D', talk=False, estat='', k=0, davantal=False):
+    """`estat`: '' (fent la volta), 'descansa' (abaixat, llums baixos) o 'molles' (ajupit, netejant). `k`: fotograma.
+    `davantal`: amb el davantal negre de La Propina (roba «Davantal», al bar del final)."""
     fg = Fig(NW, NH)
     low = 4 if estat == 'descansa' else 0
     lean = estat == 'molles'
@@ -1192,6 +1199,12 @@ def neta(facing='D', talk=False, estat='', k=0):
         for x in range(8, 33):
             for y in (gy - 12, gy - 11):
                 fg.px(x, y, HAZ, 2.4 if (x + y) % 4 < 2 else 0.6)
+    if davantal and facing in ('D', 'L'):                      # el davantal de La Propina, com el d'en Tomàs
+        ax0, ax1 = (13, 27) if facing == 'D' else (8, 17)
+        fg.poly([(ax0, top + 8), (ax1, top + 8), (ax1 + 1, gy - 9), (ax0 - 1, gy - 9)], APRON, 2.2, cont=(0.2, 0.8))
+        fg.line(ax0 + 1, top + 8, ax0 + 3, top + 5, APRON, 1.6)   # les tires del coll
+        fg.line(ax1 - 1, top + 8, ax1 - 3, top + 5, APRON, 1.6)
+        fg.line(ax0 + 3, top + 13, ax1 - 3, top + 13, APRON, 3.6)  # la butxaca
     # el cap: una pantalleta en un coll curt
     hx = 20 - (4 if lean and facing == 'L' else 0)
     hy = top - 3 + (3 if lean else 0)

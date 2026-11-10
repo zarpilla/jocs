@@ -185,6 +185,34 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "passos",
+      "tag": "passos",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "passos": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
     }
   ],
   "characters": [

@@ -4,7 +4,7 @@ la sala de mostra (pis_estudi):
   - bar de carretera: arrimador de fusta, paret groguenca de fum vell, terra de terratzo amb tovallons;
   - la llum: un fluorescent groguenc damunt la barra, la tele (blava), l'escurabutxaques (colors) i el neó
     magenta «LA PROPINA» a l'aparador, que des de dins es llegeix del revés;
-  - el rètol del lema d'en Tomàs, pintat a mà: «EL CLIENTE SIEMPRE TIENE RAZÓN (EXCEPTO SI NO PAGA)» (la
+  - el rètol del lema d'en Tomàs, pintat a mà: «AVUI NO ES FIA, DEMÀ SÍ» (la
     contrasenya del pany, Trencaclosques 2.2);
   - la cafetera exprés amb el vaporitzador (el tap, Trencaclosques 2.1), la cervesera, el pot de les propines,
     la caixa registradora i un pernil.
@@ -135,10 +135,11 @@ def sign(cv):
     for (x, y) in ((x0 + 5, y0 + 4), (x1 - 5, y0 + 2)):
         cv.disc(x, y, 1.3, 1.3, STEELB, 4.0)
     ink = [(40, 6, 8), (90, 14, 16), (140, 24, 24), (180, 40, 34)]
-    l1, l2 = 'EL CLIENTE SIEMPRE TIENE RAZÓN', '(EXCEPTO SI NO PAGA)'
-    text(cv, l1, (x0 + x1 - text_width(l1)) // 2, y0 + 6, ink, 2.6)
-    text(cv, l2, (x0 + x1 - text_width(l2)) // 2 + 6, y0 + 15, ink, 2.0)
-    cv.line(x1 - 46, y0 + 21, x1 - 12, y0 + 21, ink, 2.4)                # subratllat amb ràbia
+    l1, l2 = 'AVUI NO ES FIA,', 'DEMÀ SÍ'
+    text(cv, l1, (x0 + x1 - text_width(l1)) // 2, y0 + 5, ink, 2.6)
+    l2x = (x0 + x1 - text_width(l2)) // 2 + 6                            # una mica desplaçat: pintat a corre-cuita
+    text(cv, l2, l2x, y0 + 17, ink, 2.0)
+    cv.line(l2x - 2, y0 + 23, l2x + text_width(l2) + 2, y0 + 23, ink, 2.4)  # subratllat amb ràbia
     # taques de rovell als cantons
     for (x, y) in ((x0 + 2, y1 - 2), (x1 - 3, y1 - 3), (x1 - 2, y0 + 1)):
         cv.disc(x, y, 2, 1.5, [(40, 20, 8), (90, 50, 20), (130, 80, 30)], 1.6)

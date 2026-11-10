@@ -679,9 +679,21 @@ def portada_bg(c):
     titol(c, 'SUMA ZERO', W / 2, 40, 5)
 
 
+# El bar del final: tothom (menys NETA-3, que serveix) assegut darrere la taula llarga (hd/rooms/final_bar.py), de cara; la taula els tapa
+# les cames (la capa FRONT). Els aliats només hi són si ho són (`visibleIf` a game/data/rooms/final_bar.json).
+FINAL_BAR_SEIENTS = {'rius': 136, 'ballester': 176, 'marcel': 214, 'iri': 252, 'vet': 290,
+                     'tomas': 328, 'pons': 368}
+FINAL_BAR_PEUS = 194
+
+
 def cinematica(bg):
     return {'era': '', 'things': {}, 'spawns': {}, 'walkable': [(150, 190), (200, 190), (200, 196), (150, 196)],
             'bg': bg, 'props': {}, 'etiquetes': False}
+
+
+FINAL_BAR = {**cinematica(avio_bg), 'spawns': {**{c: (x, FINAL_BAR_PEUS) for c, x in FINAL_BAR_SEIENTS.items()},
+                                               'neta': (94, 202),    # NETA-3 (42 px) no seu: serveix, dreta a la punta
+                                               'diu': (430, 170)}}   # a la cistella (`place` a characters.json)
 
 
 # ─── Acte 2: la seu del BCMU ───────────────────────────────────────────────
@@ -846,7 +858,7 @@ DESIGNS = {
     'bcmu_despatx': BCMU_DESPATX,
     'bcmu_contenidor': BCMU_CONTENIDOR,
     'muntatge': cinematica(avio_bg),
-    'final_bar': cinematica(avio_bg),
+    'final_bar': FINAL_BAR,
     'postcredits': cinematica(avio_bg),
     'credits': cinematica(ginebra_bg),
 }

@@ -642,8 +642,68 @@
           ]
         },
         {
+          "verb": "use",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.repas"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.estat.fibra_ok",
+              "if": {
+                "flag": "fibra_connectada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.estat.fibra_falta",
+              "if": {
+                "not": {
+                  "flag": "fibra_connectada"
+                }
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.estat.xarxa_ok",
+              "if": {
+                "flag": "xarxa_connectada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.estat.xarxa_falta",
+              "if": {
+                "not": {
+                  "flag": "xarxa_connectada"
+                }
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.estat.alimentacio_ok",
+              "if": {
+                "flag": "alimentacio_connectada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.estat.alimentacio_falta",
+              "if": {
+                "not": {
+                  "flag": "alimentacio_connectada"
+                }
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.sense"
+            }
+          ]
+        },
+        {
           "verb": [
-            "use",
             "push",
             "pull",
             "pickUp"

@@ -10,6 +10,6 @@ options.tria__tornar.onChoose(() => {
   chooseNarrativeOption('aturada', dialog, 'tria', 'tornar')
 })
 
-options.tria__pagar.onChoose(() => {
-  chooseNarrativeOption('aturada', dialog, 'tria', 'pagar')
+options.tria__repartir.onChoose(() => {
+  chooseNarrativeOption('aturada', dialog, 'tria', 'repartir')
 })

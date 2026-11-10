@@ -262,9 +262,14 @@ def draw_designed(dir_: Path, game_dir: Path, design):
             prop = {'id': 'davant', 'tag': 'davant', 'visible': True, 'alpha': 1, 'clickable': False}
             room['props'].append(prop)
         prop['animations'] = {'davant': {}}
+        # Els props de damunt la barra, un nivell per sobre: amb el mateix zIndex el motor desempata
+        # per id i la capa «davant» podria tapar-los (p. ex. «comandament_barra» < «davant»).
+        z = f.get('zIndex', 20)
         for p in room['props']:
-            if p is prop or p['id'] in f.get('props', ()):
-                p['zIndex'], p['baseline'] = f.get('zIndex', 20), f['baseline']
+            if p is prop:
+                p['zIndex'], p['baseline'] = z, f['baseline']
+            elif p['id'] in f.get('props', ()):
+                p['zIndex'], p['baseline'] = z + 1, f['baseline']
 
     sheet = paste_grid(frames, w, h)
     sheet.save(dir_ / f'{name}.png')

@@ -15,9 +15,13 @@
       },
       {
         "who": "narrator",
+        "text": "final.tele3"
+      },
+      {
+        "who": "narrator",
         "text": "final.tele2",
         "if": {
-          "flag": "pagar_primer"
+          "flag": "repartit"
         }
       },
       {
@@ -34,7 +38,7 @@
         "if": {
           "all": [
             {
-              "flag": "pagar_primer"
+              "flag": "repartit"
             },
             {
               "var": "aliats",
@@ -119,7 +123,12 @@
       {
         "who": "narrator",
         "text": "final.diu1",
-        "sound": "mossegada"
+        "sound": "mossegada",
+        "effects": [
+          {
+            "setFlag": "diu_cable"
+          }
+        ]
       },
       {
         "who": "iri",
@@ -171,7 +180,7 @@
         {
           "all": [
             {
-              "flag": "pagar_primer"
+              "flag": "repartit"
             },
             {
               "var": "aliats",
@@ -198,9 +207,13 @@
       },
       {
         "who": "narrator",
+        "text": "final.tele3"
+      },
+      {
+        "who": "narrator",
         "text": "final.tele2",
         "if": {
-          "flag": "pagar_primer"
+          "flag": "repartit"
         }
       },
       {
@@ -217,7 +230,7 @@
         "if": {
           "all": [
             {
-              "flag": "pagar_primer"
+              "flag": "repartit"
             },
             {
               "var": "aliats",
@@ -302,7 +315,12 @@
       {
         "who": "narrator",
         "text": "final.diu1",
-        "sound": "mossegada"
+        "sound": "mossegada",
+        "effects": [
+          {
+            "setFlag": "diu_cable"
+          }
+        ]
       },
       {
         "who": "iri",
@@ -374,9 +392,13 @@
       },
       {
         "who": "narrator",
+        "text": "final.tele3"
+      },
+      {
+        "who": "narrator",
         "text": "final.tele2",
         "if": {
-          "flag": "pagar_primer"
+          "flag": "repartit"
         }
       },
       {
@@ -393,7 +415,7 @@
         "if": {
           "all": [
             {
-              "flag": "pagar_primer"
+              "flag": "repartit"
             },
             {
               "var": "aliats",
@@ -478,7 +500,12 @@
       {
         "who": "narrator",
         "text": "final.diu1",
-        "sound": "mossegada"
+        "sound": "mossegada",
+        "effects": [
+          {
+            "setFlag": "diu_cable"
+          }
+        ]
       },
       {
         "who": "iri",

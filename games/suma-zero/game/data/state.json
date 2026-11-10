@@ -80,7 +80,7 @@
     "mobil_resolt": false,
     "nevera_oberta": false,
     "nomina_vista": false,
-    "pagar_primer": false,
+    "repartit": false,
     "passaplats_obert": false,
     "pista_contrasenya": false,
     "pizza_demanada": false,
@@ -126,7 +126,8 @@
     "violi_dit": false,
     "virus_aturat": false,
     "virus_executat": false,
-    "xarxa_connectada": false
+    "xarxa_connectada": false,
+    "diu_cable": false
   },
   "vars": {
     "alarma": 0,

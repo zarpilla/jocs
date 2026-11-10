@@ -54,9 +54,6 @@
           "setFlag": "sync_aeroport"
         },
         {
-          "setFlag": "soler_distret"
-        },
-        {
           "setVar": "cigarreta",
           "value": 12
         }
@@ -150,6 +147,11 @@
       ]
     },
     "busca": {
+      "effects": [
+        {
+          "setFlag": "soler_distret"
+        }
+      ],
       "lines": [
         {
           "who": "soler",

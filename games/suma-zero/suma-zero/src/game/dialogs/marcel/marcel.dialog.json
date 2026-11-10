@@ -12,21 +12,21 @@
     {
       "id": "menu__servidor",
       "scriptName": "menu__servidor",
-      "text": "On és el servidor antic?",
+      "text": "Doncs ara sí: on és el servidor antic?",
       "enabled": false,
       "say": false
     },
     {
       "id": "menu__clau",
       "scriptName": "menu__clau",
-      "text": "I com s'hi entra?",
+      "text": "I un cop hi sigui, com el faig anar?",
       "enabled": false,
       "say": false
     },
     {
       "id": "menu__tub",
       "scriptName": "menu__tub",
-      "text": "Com es passen coses d'un pis a l'altre, allà dins?",
+      "text": "El servidor en un pis i la clau al coll d'un altre. Com ho ajunto?",
       "enabled": false,
       "say": false
     },

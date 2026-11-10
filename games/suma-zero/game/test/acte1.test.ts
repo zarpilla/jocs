@@ -81,8 +81,8 @@ describe("Acte 1 · la sincronia de l'aeroport", () => {
     const lines = texts(p.do('pickUp', 'impressora'));
     expect(lines).toContain('Una hora i una cigarreta més tard');
     expect(n.flag('soler_distret')).toBe(false);
-    // L'Iri té les acreditacions, però en Soler torna a ser a la porta: no pot sortir fins que la Vet el distregui.
-    expect(texts(p.do('use', 'porta'))).toContain('En Soler em veuria sortir');
+    // L'Iri té les acreditacions, però el vigilant torna a ser a la porta: no pot sortir fins que la Vet el distregui.
+    expect(texts(p.do('use', 'porta'))).toContain('El vigilant em veuria sortir');
     p.switchTo('vet');
     p.talk('soler', 'fill', 'nom_curt', 'edat_curt', 'roba_curt');
     p.switchTo('iri');

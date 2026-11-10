@@ -130,7 +130,7 @@ def upper_cabinets(cv):
     cv.vline(81, 5, 18, [(6, 16, 10), (14, 34, 20), (24, 56, 32), (40, 86, 50)], 3.6)
 
 
-def window(cv, rain=0):
+def window(cv, rain=0, tv=None):
     """Finestra al pati de llums, damunt de l'aigüera."""
     x0, y0, x1, y1 = 110, 24, 172, 76
     for y in range(y0 + 3, y1 - 2):
@@ -143,7 +143,8 @@ def window(cv, rain=0):
     cv.rect(146, y0 + 3, 148, y1 - 3, COURT, 3.4, lit=0)                         # el baixant
     for yy in range(y0 + 8, y1 - 3, 12):
         cv.hline(145, 149, yy, COURT, 4.2, lit=0)
-    for (wx0, wy0, wx1, wy1, col) in ((118, 30, 128, 42, (210, 160, 90)), (156, 30, 166, 42, None), (124, 58, 134, 70, (90, 130, 210)), (156, 58, 166, 70, None)):
+    tv_col, tv_k = tv or ((90, 130, 210), 0.35)                    # tv: (color, força del halo) de la tele del veí
+    for (wx0, wy0, wx1, wy1, col) in ((118, 30, 128, 42, (210, 160, 90)), (156, 30, 166, 42, None), (124, 58, 134, 70, tv_col), (156, 58, 166, 70, None)):
         cv.rect(wx0 - 1, wy0 - 1, wx1 + 1, wy1 + 1, COURT, 0.6, lit=0)
         if col:
             for y in range(wy0, wy1 + 1):
@@ -154,7 +155,7 @@ def window(cv, rain=0):
             cv.rect(wx0, wy0, wx1, wy1, COURT, 1.0, lit=0)
             for yy in range(wy0, wy1 + 1, 2):                                    # persiana de llibret, tancada
                 cv.hline(wx0, wx1, yy, COURT, 1.8, lit=0)
-    cv.glow(129, 64, 14, (90, 140, 220), 0.35)               # el veí mira la tele
+    cv.glow(129, 64, 14, (90, 140, 220) if tv is None else tv_col, tv_k)               # el veí mira la tele
     cv.glow(123, 36, 12, (230, 170, 90), 0.3)
     # l'estenedor: una corda amb roba
     cv.line(x0 + 3, 46, x1 - 3, 49, GRAYC, 3.4, lit=0)
@@ -584,3 +585,44 @@ def _frames():
 
 
 ANIMS = {'pluja': {'frames': _frames, 'frameDuration': 200}}
+
+
+# ─── Animacions de més: la tele del veí i el rellotge del microones ───────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+# els canvis de pla de la tele del veí: (color, força del halo); el primer és el del fons
+TV_SEQ = [((90, 130, 210), 0.35), ((90, 130, 210), 0.35), ((110, 150, 220), 0.42), ((70, 100, 170), 0.28),
+          ((70, 100, 170), 0.28), ((150, 170, 200), 0.5), ((90, 130, 210), 0.35), ((80, 140, 150), 0.32),
+          ((80, 140, 150), 0.32), ((80, 140, 150), 0.32), ((120, 110, 170), 0.38), ((90, 130, 210), 0.35)]
+
+
+def _frames_tele():
+    """A l'altra banda del pati, la tele del veí canvia de color amb els plans de la pel·lícula."""
+    base = _base()
+    frames = []
+    for col, k in TV_SEQ:
+        cv = Canvas(light=LIGHT, img=base.copy())
+        window(cv, tv=None if (col, k) == TV_SEQ[0] else (col, k))
+        d = _diff(cv.img, base)
+        only = d.copy()
+        only.paste((0, 0, 0, 0), (0, 0) + d.size)
+        only.paste(d.crop((112, 48, 146, 80)), (112, 48))            # només la tele i el seu halo
+        frames.append(only)
+    return frames
+
+
+def _frames_rellotge():
+    """El 00:00 del microones parpelleja (ningú l'ha posat en hora des de l'últim tall de llum)."""
+    base = _base()
+    cv = Canvas(light=LIGHT, img=base.copy())
+    cv.rect(42, 98, 47, 101, [(8, 16, 10), (14, 26, 16)], 0.6, lit=0)
+    return [_diff(base, base), _diff(cv.img, base)]
+
+
+ANIMS['tele'] = {'frames': _frames_tele, 'frameDuration': 260}
+ANIMS['rellotge'] = {'frames': _frames_rellotge, 'frameDuration': 550}

@@ -13,8 +13,8 @@ El carrer de darrere del BCMU (final de l'Acte 3, la Vet). Art definitiu:
 """
 import math
 
-from hd.pix import Light, W, H, hr
-from hd.rooms.comu import obox, outline, text, text_width, PLASTIC, SHEET, RED
+from hd.pix import Canvas, Light, W, H, hr
+from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET, RED
 from hd.rooms.pis_cuina import outline_poly
 from hd.rooms.bcmu import NAVYB, BRASS, logo
 
@@ -150,8 +150,8 @@ def plate(cv):
     cv.disc(x0 + 11, y1 + 17, 1.4, 1.4, [(220, 200, 140)], 0, lit=0)
 
 
-def camera(cv):
-    """La càmera de vigilància, en un braç, apuntant cap a la porta de servei (llum vermell)."""
+def camera(cv, led=True):
+    """La càmera de vigilància, en un braç, apuntant cap a la porta de servei (llum vermell que parpelleja)."""
     bx, by = 262, 20
     obox(cv, bx, by - 4, bx + 6, by + 6, ZINC, 3.4)                     # la placa de la paret
     cv.line(bx, by + 1, bx - 8, by + 5, ZINC, 3.6)                       # el braç
@@ -162,12 +162,15 @@ def camera(cv):
     cv.poly([(bx - 32, by + 10), (bx - 6, by), (bx - 5, by + 2), (bx - 30, by + 12)], SHEET, 5.2)   # la visera
     cv.disc(bx - 28, by + 15, 2.2, 2.2, PLASTIC, 1.0)                    # l'objectiu
     cv.flat(bx - 29, by + 14, (160, 200, 230))
-    cv.flat(bx - 10, by + 9, (240, 40, 36))
-    cv.glow(bx - 10, by + 9, 4, (255, 50, 40), 0.5)
+    if led:
+        cv.flat(bx - 10, by + 9, (240, 40, 36))
+        cv.glow(bx - 10, by + 9, 4, (255, 50, 40), 0.5)
+    else:
+        cv.flat(bx - 10, by + 9, (90, 24, 24))
     cv.darken(bx - 28, by + 19, bx - 4, by + 23, 0.3)
 
 
-def chute(cv):
+def chute(cv, wind=0.0):
     """El conducte de les escombraries: xapa galvanitzada a trams, amb brides i abraçadores a la paret,
     que acaba amb una boca inclinada i una cortina de tires de goma just damunt del contenidor."""
     x0, x1 = CHUTE
@@ -193,10 +196,13 @@ def chute(cv):
     cv.poly(mouth, ZINC, lambda x, y: 4.6 - (y - end) * 0.08 - (1.2 if x > x1 else 0))
     outline_poly(cv, mouth, ZINC)
     cv.rect(x0 - 5, 97, x1 + 5, 98, ZINC, 5.6)
-    # la cortina de goma (tires negres)
+    # la cortina de goma (tires negres): el vent en mou la punta
     for k, x in enumerate(range(x0 - 4, x1 + 5, 3)):
         ln = 4 + int(hr(k, 8) * 2)
-        cv.rect(x, 99, x + 1, 99 + ln, PLASTIC, 1.6 + (0.6 if k % 2 else 0))
+        sway = math.sin(wind + k * 0.9)
+        for j in range(ln + 1):
+            dx = round(sway * 1.4 * j / ln)
+            cv.rect(x + dx, 99 + j, x + 1 + dx, 99 + j, PLASTIC, 1.6 + (0.6 if k % 2 else 0))
     # una etiqueta groga d'avís, al conducte
     obox(cv, x0 + 4, 64, x1 - 4, 74, [(60, 40, 0), (150, 110, 10), (230, 190, 40), (250, 226, 110)], 2.6)
     cv.poly([(x0 + 10, 72), (x0 + 12, 66), (x0 + 14, 72)], [(30, 20, 0)], 0)
@@ -207,7 +213,7 @@ def chute(cv):
 
 # ─── El contenidor ─────────────────────────────────────────────────────────
 
-def container(cv):
+def container(cv, wind=0.0):
     """El contenidor verd del paper, amb la tapa mig oberta i paper triturat que en surt."""
     x0, y0, x1, y1 = BIN_R
     lid_y1 = y0 + 9
@@ -258,11 +264,13 @@ def container(cv):
     for k in range(26):
         sx = x0 + 6 + int(hr(k, 31) * (x1 - x0 - 12))
         ln = 2 + int(hr(k, 32) * 7)
+        sway = math.sin(wind + hr(k, 35) * 6.28) * (0.6 + hr(k, 36))
         for j in range(ln):
-            cv.put(sx + (j // 3 if hr(k, 33) > 0.5 else -(j // 3)), lid_y1 + 1 + j, SHRED, 2.6 + hr(k, 34) * 1.6)
-    # una tira llarga que penja fins a l'adhesiu
+            dx = (j // 3 if hr(k, 33) > 0.5 else -(j // 3)) + round(sway * j / 7)
+            cv.put(sx + dx, lid_y1 + 1 + j, SHRED, 2.6 + hr(k, 34) * 1.6)
+    # una tira llarga que penja fins a l'adhesiu (i que el vent fa onejar)
     for j in range(14):
-        cv.put(300 + round(math.sin(j * 0.6)), lid_y1 + 1 + j, SHRED, 3.4)
+        cv.put(300 + round(math.sin(j * 0.6 - wind) * (0.6 + j / 14)), lid_y1 + 1 + j, SHRED, 3.4)
     # les rodes
     for wx in (x0 + 8, x1 - 14):
         obox(cv, wx, body_bot + 1, wx + 6, body_bot + 3, ZINC, 2.6)
@@ -376,19 +384,89 @@ def ground(cv):
     cv.darken(0, FLOOR_Y + 1, 120, H - 1, lambda x, y: 0.35 * max(0, 1 - x / 120))
 
 
-def bg(cv):
+def bg(cv, wind=0.0, led=True):
     wall(cv)
     windows(cv)
     drainpipe(cv, 12)
     drainpipe(cv, 380)
     service_door(cv)
     plate(cv)
-    camera(cv)
+    camera(cv, led)
     street(cv)
     ground(cv)
-    chute(cv)
+    chute(cv, wind)
     litter(cv)
-    container(cv)
+    container(cv, wind)
 
 
 PROPS = {}
+
+
+# ─── Animacions: el vent, el llum de la càmera i un full que vola ───────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+def _frames_vent():
+    """El corrent del carreró mou el paper triturat i la cortina de goma del conducte."""
+    base = _base()
+    frames = []
+    for i in range(8):
+        cv = Canvas(light=LIGHT)
+        bg(cv, wind=i * math.tau / 8)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+def _frames_camera():
+    """El llum vermell de la càmera: encès, i un instant apagat."""
+    base = _base()
+    cv = Canvas(light=LIGHT)
+    bg(cv, led=False)
+    return [_diff(base, base), _diff(base, base), _diff(cv.img, base)]
+
+
+# Les quatre posicions d'un full que dona voltes: pla, inclinat, de cantell, inclinat a l'altra banda.
+SHEET_POSES = [
+    ['11111111', '11111111', '01111110'],
+    ['000111', '001111', '011110', '111100', '111000'],
+    ['11', '11', '11', '11', '11'],
+    ['111000', '111100', '011110', '001111', '000111'],
+]
+PAPER = [(90, 88, 80), (150, 146, 134), (200, 198, 186), (232, 230, 220), (250, 250, 244)]
+FLY = 40                       # fotogrames que el full és a la vista
+REST = 8                       # i fotogrames de calma fins a la ràfega següent
+
+
+def _frames_paperet():
+    """Una ràfega arrossega un full des del carrer cap a l'esquerra del carreró, fent tombarelles."""
+    base = _base()
+    frames = []
+    for i in range(FLY + REST):
+        if i >= FLY:
+            frames.append(_diff(base, base))
+            continue
+        cv = Canvas(light=LIGHT, img=base.copy())
+        t = i / (FLY - 1)
+        x = round(486 - t * 500)
+        floor = 176 + round(t * 18)                                      # va baixant cap al davant
+        hop = abs(math.sin(i * 0.55)) * (9 - 5 * t)
+        y = floor - round(hop)
+        rows = SHEET_POSES[(i // 2) % 4]
+        cv.darken(x - 1, floor + 1, x + 7, floor + 2, 0.5 if hop < 4 else 0.25, dither=False)   # l'ombra
+        for j, row in enumerate(rows):
+            for k, b in enumerate(row):
+                if b == '1':
+                    cv.put(x + k, y - len(rows) + j, PAPER, 3.6 - j * 0.4 + (0.6 if k == 0 else 0))
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+ANIMS = {
+    'vent': {'frames': _frames_vent, 'frameDuration': 170},
+    'camera': {'frames': _frames_camera, 'frameDuration': 450},
+    'paperet': {'frames': _frames_paperet, 'frameDuration': 70},
+}

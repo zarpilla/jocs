@@ -117,9 +117,16 @@
           "id": "clau",
           "text": "dlg.marcel.opt.clau",
           "if": {
-            "var": "donats",
-            "op": ">=",
-            "value": 3
+            "all": [
+              {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              },
+              {
+                "flag": "marcel_servidor"
+              }
+            ]
           },
           "once": true,
           "next": "clau"
@@ -128,9 +135,16 @@
           "id": "tub",
           "text": "dlg.marcel.opt.tub",
           "if": {
-            "var": "donats",
-            "op": ">=",
-            "value": 3
+            "all": [
+              {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              },
+              {
+                "flag": "marcel_clau"
+              }
+            ]
           },
           "once": true,
           "next": "tub"

@@ -451,6 +451,240 @@
       },
       "description": "ascensor",
       "scriptName": "ascensorAnim"
+    },
+    {
+      "id": "sospita_5",
+      "tag": "sospita_5",
+      "animations": {
+        "sospita_5": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_10",
+      "tag": "sospita_10",
+      "animations": {
+        "sospita_10": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_15",
+      "tag": "sospita_15",
+      "animations": {
+        "sospita_15": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_20",
+      "tag": "sospita_20",
+      "animations": {
+        "sospita_20": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_30",
+      "tag": "sospita_30",
+      "animations": {
+        "sospita_30": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_35",
+      "tag": "sospita_35",
+      "animations": {
+        "sospita_35": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_40",
+      "tag": "sospita_40",
+      "animations": {
+        "sospita_40": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_45",
+      "tag": "sospita_45",
+      "animations": {
+        "sospita_45": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_55",
+      "tag": "sospita_55",
+      "animations": {
+        "sospita_55": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_60",
+      "tag": "sospita_60",
+      "animations": {
+        "sospita_60": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_65",
+      "tag": "sospita_65",
+      "animations": {
+        "sospita_65": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_70",
+      "tag": "sospita_70",
+      "animations": {
+        "sospita_70": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_80",
+      "tag": "sospita_80",
+      "animations": {
+        "sospita_80": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_85",
+      "tag": "sospita_85",
+      "animations": {
+        "sospita_85": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_90",
+      "tag": "sospita_90",
+      "animations": {
+        "sospita_90": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "sospita_95",
+      "tag": "sospita_95",
+      "animations": {
+        "sospita_95": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "planta",
+      "tag": "planta",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "planta": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "maquina",
+      "tag": "maquina",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "maquina": {
+          "loop": true,
+          "frameDuration": 380
+        }
+      },
+      "scriptName": "maquinaAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 380,
+            "y": 64
+          },
+          {
+            "x": 414,
+            "y": 64
+          },
+          {
+            "x": 414,
+            "y": 150
+          },
+          {
+            "x": 380,
+            "y": 150
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 396,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 397,
+        "y": 150
+      },
+      "description": "màquina d'entrepans"
     }
   ],
   "characters": [

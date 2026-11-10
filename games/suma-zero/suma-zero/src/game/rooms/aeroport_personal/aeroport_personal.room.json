@@ -165,6 +165,20 @@
           "frameDuration": 120
         }
       }
+    },
+    {
+      "id": "avio",
+      "tag": "avio",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "avio": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
     }
   ],
   "characters": [

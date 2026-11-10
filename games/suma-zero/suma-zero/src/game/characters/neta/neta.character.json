@@ -71,6 +71,30 @@
     "Molles": {
       "loop": true,
       "frameDuration": 220
+    },
+    "DavantalIdleD": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "DavantalTalkD": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "DavantalIdleL": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "DavantalTalkL": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "DavantalIdleU": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "DavantalTalkU": {
+      "loop": true,
+      "frameDuration": 160
     }
   },
   "defaultVerb": "talkTo",

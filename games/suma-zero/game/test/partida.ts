@@ -261,8 +261,8 @@ export interface OpcionsActe3 {
   pons?: boolean;
   /** Qui resol el mòbil del Director: la Vet sola (per defecte), la Pons o en Ballester. */
   mobil?: 'vet' | 'pons' | 'ballester';
-  /** L'Iri fa pagar primer les nòmines (cal el paper de la Rius o en Ballester). */
-  pagar?: boolean;
+  /** L'Iri ho reparteix tot pel compte de les nòmines (cal el paper de la Rius o en Ballester). */
+  repartir?: boolean;
 }
 
 /** Les escenes 7 i 8: del virus al despatx, la contrasenya i la sincronia del mòbil. */
@@ -295,7 +295,7 @@ export function jugarDespatx(p: Jugador, o: OpcionsActe3 = {}) {
   }
   p.switchTo('iri');
   p.do('use', 'llibre'); // el tecleja
-  p.talk('aturada', o.pagar ? 'pagar' : 'tornar');
+  p.talk('aturada', o.repartir ? 'repartir' : 'tornar');
 }
 
 /** L'Escena 9: l'escala, el conducte (amb NETA-3 o amb l'extintor), el vestíbul i el contenidor. */

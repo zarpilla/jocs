@@ -67,20 +67,22 @@ def floor(cv):
 
 # ─── La finestra, el rellotge, el pòster ───────────────────────────────────
 
-def window(cv):
-    """Una finestra amb persianes venecianes: l'alba, a ratlles."""
+def window(cv, sway=0.0):
+    """Una finestra amb persianes venecianes: l'alba, a ratlles. `sway`: el corrent del ventilador (-1..1)."""
     x0, y0, x1, y1 = 330, 22, 388, 80
     obox(cv, x0 - 3, y0 - 3, x1 + 3, y1 + 3, CHROME, 3.6)
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
             if (y - y0) % 5 < 3:
-                cv.put(x, y, BEIGE, 4.6 - (x - x0) * 0.01)               # les lamel·les
+                tilt = sway * 0.8 * ((y - y0) / (y1 - y0)) ** 2 * ((y - y0) % 5 - 1)   # les de baix es gronxen
+                cv.put(x, y, BEIGE, 4.6 - (x - x0) * 0.01 + tilt)        # les lamel·les
             else:
                 cv.put(x, y, DAWN, 3.0 + (y - y0) / 14, lit=0)            # el cel, entre lamel·les
     cv.vline(345, y0, y1, BEIGE, 2.4)
     cv.vline(373, y0, y1, BEIGE, 2.4)
-    cv.line(386, y0 + 2, 386, y1 + 14, SHEET, 3.4)                       # el cordill
-    cv.disc(386, y1 + 15, 1.4, 2, BEIGE, 3.4)
+    dx = round(sway * 2)
+    cv.line(386, y0 + 2, 386 + dx, y1 + 14, SHEET, 3.4)                  # el cordill
+    cv.disc(386 + dx, y1 + 15, 1.4, 2, BEIGE, 3.4)
     # la claror a ratlles a la paret de sota
     cv.tint(320, 84, 400, 140, (255, 196, 160), lambda x, y: 0.10 if (y // 3) % 2 else 0.0)
 
@@ -284,10 +286,10 @@ def chair(cv):
     cv.darken(cx - 12, 167, cx + 14, 169, 0.55)
 
 
-def bg(cv, llista=False, impressora='parada'):
+def bg(cv, llista=False, impressora='parada', sway=0.0):
     wall(cv)
     floor(cv)
-    window(cv)
+    window(cv, sway)
     clock(cv)
     poster(cv)
     cabinets(cv)
@@ -352,4 +354,31 @@ def _frames():
     return frames
 
 
-ANIMS = {'ventilador': {'frames': _frames, 'frameDuration': 70}}
+def _frames_persiana():
+    """El corrent del ventilador gronxa una mica el cordill i les lamel·les de baix de la persiana."""
+    base = _base()
+    frames = []
+    for i in range(10):
+        cv = Canvas(light=LIGHT)
+        bg(cv, sway=math.sin(i * math.tau / 10))
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+def _frames_segons():
+    """El rellotge té la pila gastada: l'agulla dels segons prova d'avançar i torna enrere."""
+    base = _base()
+    cx, cy = 240, 30
+    out = []
+    for s in (15, 16):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        a = s / 60 * 2 * math.pi
+        cv.line(cx - round(math.sin(a) * 2), cy + round(math.cos(a) * 2), cx + round(math.sin(a) * 8), cy - round(math.cos(a) * 8), [(190, 36, 36)], 0, lit=0)
+        cv.flat(cx, cy, (200, 40, 40))
+        out.append(_diff(cv.img, base))
+    return [out[0]] * 4 + [out[1]]
+
+
+ANIMS = {'ventilador': {'frames': _frames, 'frameDuration': 70},
+         'persiana': {'frames': _frames_persiana, 'frameDuration': 180},
+         'segons': {'frames': _frames_segons, 'frameDuration': 200}}

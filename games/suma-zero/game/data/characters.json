@@ -26,6 +26,12 @@
     "outfit": [
       {
         "if": {
+          "flag": "escapada"
+        },
+        "name": ""
+      },
+      {
+        "if": {
           "all": [
             {
               "flag": "aeroport_fet"
@@ -73,6 +79,12 @@
   "diu": {
     "name": "pj.diu.nom",
     "appearance": [
+      {
+        "if": {
+          "flag": "escapada"
+        },
+        "anim": ""
+      },
       {
         "if": {
           "all": [
@@ -133,10 +145,33 @@
         },
         "anim": "Pizza"
       }
+    ],
+    "place": [
+      {
+        "if": {
+          "flag": "diu_cable"
+        },
+        "room": "final_bar",
+        "x": 404,
+        "y": 118
+      },
+      {
+        "room": "final_bar",
+        "x": 430,
+        "y": 170
+      }
     ]
   },
   "marcel": {
-    "name": "pj.marcel.nom"
+    "name": "pj.marcel.nom",
+    "outfit": [
+      {
+        "if": {
+          "flag": "escapada"
+        },
+        "name": "Taula"
+      }
+    ]
   },
   "tomas": {
     "name": "pj.tomas.nom"
@@ -145,7 +180,22 @@
     "name": "pj.ortega.nom"
   },
   "soler": {
-    "name": "pj.soler.nom"
+    "name": "pj.soler.nom",
+    "place": [
+      {
+        "if": {
+          "flag": "soler_distret"
+        },
+        "room": "aeroport_terminal",
+        "x": 440,
+        "y": 192
+      },
+      {
+        "room": "aeroport_terminal",
+        "x": 44,
+        "y": 186
+      }
+    ]
   },
   "nen": {
     "name": "pj.nen.nom"
@@ -251,6 +301,12 @@
     "appearance": [
       {
         "if": {
+          "flag": "escapada"
+        },
+        "anim": ""
+      },
+      {
+        "if": {
           "var": "robot",
           "op": "==",
           "value": "codi"
@@ -264,6 +320,14 @@
           "value": "entrepa"
         },
         "anim": "Molles"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "flag": "escapada"
+        },
+        "name": "Davantal"
       }
     ]
   },

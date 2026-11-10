@@ -77,6 +77,33 @@
             "additionalProperties": false
           },
           "description": "Vestuari segons l'estat: la primera entrada que es compleixi diu quina roba porta (el prefix de les etiquetes del sprite: `Bar` → `BarIdleD`, `BarWalkL`...). Si no se'n compleix cap, la normal. A diferència d'`appearance`, no és una animació fixa: el personatge camina i parla igual."
+        },
+        "place": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "if": {
+                "$ref": "#/definitions/Condition"
+              },
+              "room": {
+                "$ref": "#/definitions/Id"
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "room",
+              "x",
+              "y"
+            ],
+            "additionalProperties": false
+          },
+          "description": "On és dins una sala segons l'estat: la primera entrada d'aquella sala que es compleixi diu on ha de ser (peus, en píxels de la sala). Si l'estat canvia mentre s'hi és, hi camina; en entrar-hi, ja hi és. Ex.: el vigilant deixa la porta per buscar el nen → `{ \"if\": { \"flag\": \"soler_distret\" }, \"room\": \"aeroport_terminal\", \"x\": 430, \"y\": 190 }`, i una última entrada sense `if` amb el seu lloc de sempre."
         }
       },
       "required": [

@@ -111,7 +111,7 @@
         "mobil_resolt": false,
         "nevera_oberta": false,
         "nomina_vista": false,
-        "pagar_primer": false,
+        "repartit": false,
         "passaplats_obert": false,
         "pista_contrasenya": false,
         "pizza_demanada": false,
@@ -157,7 +157,8 @@
         "violi_dit": false,
         "virus_aturat": false,
         "virus_executat": false,
-        "xarxa_connectada": false
+        "xarxa_connectada": false,
+        "diu_cable": false
       },
       "vars": {
         "alarma": 0,
@@ -210,6 +211,12 @@
         "outfit": [
           {
             "if": {
+              "flag": "escapada"
+            },
+            "name": ""
+          },
+          {
+            "if": {
               "all": [
                 {
                   "flag": "aeroport_fet"
@@ -257,6 +264,12 @@
       "diu": {
         "name": "pj.diu.nom",
         "appearance": [
+          {
+            "if": {
+              "flag": "escapada"
+            },
+            "anim": ""
+          },
           {
             "if": {
               "all": [
@@ -317,10 +330,33 @@
             },
             "anim": "Pizza"
           }
+        ],
+        "place": [
+          {
+            "if": {
+              "flag": "diu_cable"
+            },
+            "room": "final_bar",
+            "x": 404,
+            "y": 118
+          },
+          {
+            "room": "final_bar",
+            "x": 430,
+            "y": 170
+          }
         ]
       },
       "marcel": {
-        "name": "pj.marcel.nom"
+        "name": "pj.marcel.nom",
+        "outfit": [
+          {
+            "if": {
+              "flag": "escapada"
+            },
+            "name": "Taula"
+          }
+        ]
       },
       "tomas": {
         "name": "pj.tomas.nom"
@@ -329,7 +365,22 @@
         "name": "pj.ortega.nom"
       },
       "soler": {
-        "name": "pj.soler.nom"
+        "name": "pj.soler.nom",
+        "place": [
+          {
+            "if": {
+              "flag": "soler_distret"
+            },
+            "room": "aeroport_terminal",
+            "x": 440,
+            "y": 192
+          },
+          {
+            "room": "aeroport_terminal",
+            "x": 44,
+            "y": 186
+          }
+        ]
       },
       "nen": {
         "name": "pj.nen.nom"
@@ -435,6 +486,12 @@
         "appearance": [
           {
             "if": {
+              "flag": "escapada"
+            },
+            "anim": ""
+          },
+          {
+            "if": {
               "var": "robot",
               "op": "==",
               "value": "codi"
@@ -448,6 +505,14 @@
               "value": "entrepa"
             },
             "anim": "Molles"
+          }
+        ],
+        "outfit": [
+          {
+            "if": {
+              "flag": "escapada"
+            },
+            "name": "Davantal"
           }
         ]
       },
@@ -2412,6 +2477,9 @@
                         "setFlag": "marcel_comandament"
                       },
                       {
+                        "setFlag": "bassols"
+                      },
+                      {
                         "addVar": "donats",
                         "amount": 1
                       }
@@ -3237,7 +3305,7 @@
                 "if": {
                   "all": [
                     {
-                      "flag": "pagar_primer"
+                      "flag": "repartit"
                     },
                     {
                       "var": "aliats",
@@ -7469,6 +7537,62 @@
               "flag": "auditoria"
             }
           },
+          "sospita_5": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 5
+                }
+              ]
+            }
+          },
+          "sospita_10": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 10
+                }
+              ]
+            }
+          },
+          "sospita_15": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 15
+                }
+              ]
+            }
+          },
+          "sospita_20": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 20
+                }
+              ]
+            }
+          },
           "sospita_25": {
             "visibleIf": {
               "all": [
@@ -7479,6 +7603,62 @@
                   "var": "sospita",
                   "op": ">=",
                   "value": 25
+                }
+              ]
+            }
+          },
+          "sospita_30": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 30
+                }
+              ]
+            }
+          },
+          "sospita_35": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 35
+                }
+              ]
+            }
+          },
+          "sospita_40": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 40
+                }
+              ]
+            }
+          },
+          "sospita_45": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 45
                 }
               ]
             }
@@ -7497,6 +7677,62 @@
               ]
             }
           },
+          "sospita_55": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 55
+                }
+              ]
+            }
+          },
+          "sospita_60": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 60
+                }
+              ]
+            }
+          },
+          "sospita_65": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 65
+                }
+              ]
+            }
+          },
+          "sospita_70": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 70
+                }
+              ]
+            }
+          },
           "sospita_75": {
             "visibleIf": {
               "all": [
@@ -7507,6 +7743,62 @@
                   "var": "sospita",
                   "op": ">=",
                   "value": 75
+                }
+              ]
+            }
+          },
+          "sospita_80": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "sospita_85": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 85
+                }
+              ]
+            }
+          },
+          "sospita_90": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 90
+                }
+              ]
+            }
+          },
+          "sospita_95": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "auditoria"
+                },
+                {
+                  "var": "sospita",
+                  "op": ">=",
+                  "value": 95
                 }
               ]
             }
@@ -7531,7 +7823,54 @@
       "final_bar": {
         "name": "sala.final_bar.nom",
         "cutscene": {},
-        "hotspots": {}
+        "hotspots": {
+          "rius": {
+            "name": "pj.rius.nom",
+            "visibleIf": {
+              "flag": "aliada_rius"
+            }
+          },
+          "ballester": {
+            "name": "pj.ballester.nom",
+            "visibleIf": {
+              "flag": "aliat_ballester"
+            }
+          },
+          "marcel": {
+            "name": "pj.marcel.nom"
+          },
+          "iri": {
+            "name": "pj.iri.nom"
+          },
+          "vet": {
+            "name": "pj.vet.nom"
+          },
+          "tomas": {
+            "name": "pj.tomas.nom"
+          },
+          "pons": {
+            "name": "pj.pons.nom",
+            "visibleIf": {
+              "flag": "aliada_pons"
+            }
+          },
+          "neta": {
+            "name": "pj.neta.nom",
+            "visibleIf": {
+              "flag": "aliat_neta"
+            }
+          },
+          "diu": {
+            "name": "pj.diu.nom"
+          }
+        },
+        "decor": {
+          "tele_apagada": {
+            "visibleIf": {
+              "flag": "diu_cable"
+            }
+          }
+        }
       },
       "muntatge": {
         "name": "sala.muntatge.nom",
@@ -8894,8 +9233,68 @@
                 ]
               },
               {
+                "verb": "use",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.repas"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.estat.fibra_ok",
+                    "if": {
+                      "flag": "fibra_connectada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.estat.fibra_falta",
+                    "if": {
+                      "not": {
+                        "flag": "fibra_connectada"
+                      }
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.estat.xarxa_ok",
+                    "if": {
+                      "flag": "xarxa_connectada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.estat.xarxa_falta",
+                    "if": {
+                      "not": {
+                        "flag": "xarxa_connectada"
+                      }
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.estat.alimentacio_ok",
+                    "if": {
+                      "flag": "alimentacio_connectada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.estat.alimentacio_falta",
+                    "if": {
+                      "not": {
+                        "flag": "alimentacio_connectada"
+                      }
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.sense"
+                  }
+                ]
+              },
+              {
                 "verb": [
-                  "use",
                   "push",
                   "pull",
                   "pickUp"
@@ -10354,6 +10753,10 @@
             {
               "flag": "tap_tornat",
               "is": false
+            },
+            {
+              "flag": "tap_barra",
+              "is": false
             }
           ]
         },
@@ -10364,6 +10767,9 @@
             },
             {
               "flag": "marcel_tap"
+            },
+            {
+              "flag": "tap_barra"
             }
           ]
         },
@@ -10371,6 +10777,46 @@
           "pista.vet_tap.1",
           "pista.vet_tap.2",
           "pista.vet_tap.3"
+        ]
+      },
+      "vet_agafar_tap": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "tap_barra"
+            },
+            {
+              "hasItem": "tap",
+              "is": false
+            },
+            {
+              "flag": "marcel_tap",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "tap"
+            },
+            {
+              "flag": "marcel_tap"
+            },
+            {
+              "flag": "tap_barra",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_agafar_tap.1",
+          "pista.vet_agafar_tap.2",
+          "pista.vet_agafar_tap.3"
         ]
       },
       "vet_recepta": {
@@ -10382,6 +10828,135 @@
             },
             {
               "flag": "prova_marcel"
+            },
+            {
+              "hasItem": "recepta",
+              "is": false
+            },
+            {
+              "flag": "marcel_recepta",
+              "is": false
+            },
+            {
+              "flag": "cal_contrasenya",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "recepta"
+            },
+            {
+              "flag": "marcel_recepta"
+            },
+            {
+              "flag": "cal_contrasenya"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_recepta.1",
+          "pista.vet_recepta.2",
+          "pista.vet_recepta.3"
+        ]
+      },
+      "vet_dir_contrasenya": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "cal_contrasenya"
+            },
+            {
+              "flag": "contrasenya_dita",
+              "is": false
+            },
+            {
+              "hasItem": "recepta",
+              "is": false
+            },
+            {
+              "flag": "marcel_recepta",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "contrasenya_dita"
+            },
+            {
+              "hasItem": "recepta"
+            },
+            {
+              "flag": "marcel_recepta"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_dir_contrasenya.1",
+          "pista.vet_dir_contrasenya.2",
+          "pista.vet_dir_contrasenya.3"
+        ]
+      },
+      "vet_esperar_pany": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "contrasenya_dita"
+            },
+            {
+              "flag": "calaix_obert",
+              "is": false
+            },
+            {
+              "hasItem": "recepta",
+              "is": false
+            },
+            {
+              "flag": "marcel_recepta",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "calaix_obert"
+            },
+            {
+              "hasItem": "recepta"
+            },
+            {
+              "flag": "marcel_recepta"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_esperar_pany.1",
+          "pista.vet_esperar_pany.2",
+          "pista.vet_esperar_pany.3"
+        ]
+      },
+      "vet_agafar_recepta": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "calaix_obert"
             },
             {
               "hasItem": "recepta",
@@ -10404,9 +10979,9 @@
           ]
         },
         "levels": [
-          "pista.vet_recepta.1",
-          "pista.vet_recepta.2",
-          "pista.vet_recepta.3"
+          "pista.vet_agafar_recepta.1",
+          "pista.vet_agafar_recepta.2",
+          "pista.vet_agafar_recepta.3"
         ]
       },
       "vet_comandament": {
@@ -10418,6 +10993,92 @@
             },
             {
               "flag": "prova_marcel"
+            },
+            {
+              "hasItem": "comandament",
+              "is": false
+            },
+            {
+              "flag": "marcel_comandament",
+              "is": false
+            },
+            {
+              "flag": "trucada_demanada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "comandament"
+            },
+            {
+              "flag": "marcel_comandament"
+            },
+            {
+              "flag": "trucada_demanada"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_comandament.1",
+          "pista.vet_comandament.2",
+          "pista.vet_comandament.3"
+        ]
+      },
+      "vet_esperar_trucada": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "trucada_demanada"
+            },
+            {
+              "flag": "trucada_feta",
+              "is": false
+            },
+            {
+              "hasItem": "comandament",
+              "is": false
+            },
+            {
+              "flag": "marcel_comandament",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "trucada_feta"
+            },
+            {
+              "hasItem": "comandament"
+            },
+            {
+              "flag": "marcel_comandament"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_esperar_trucada.1",
+          "pista.vet_esperar_trucada.2",
+          "pista.vet_esperar_trucada.3"
+        ]
+      },
+      "vet_agafar_comandament": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "tomas_rebost"
             },
             {
               "hasItem": "comandament",
@@ -10440,9 +11101,9 @@
           ]
         },
         "levels": [
-          "pista.vet_comandament.1",
-          "pista.vet_comandament.2",
-          "pista.vet_comandament.3"
+          "pista.vet_agafar_comandament.1",
+          "pista.vet_agafar_comandament.2",
+          "pista.vet_agafar_comandament.3"
         ]
       },
       "vet_donar": {
@@ -11580,28 +12241,63 @@
               "flag": "sync_collaret"
             },
             {
-              "any": [
-                {
-                  "var": "coberta",
-                  "op": ">=",
-                  "value": 1
-                },
-                {
-                  "var": "codis",
-                  "op": "==",
-                  "value": 0
-                }
-              ]
+              "var": "coberta",
+              "op": ">=",
+              "value": 1
             }
           ]
         },
         "doneWhen": {
-          "flag": "cal_clau"
+          "any": [
+            {
+              "flag": "cal_clau"
+            },
+            {
+              "var": "coberta",
+              "op": "<",
+              "value": 1
+            }
+          ]
         },
         "levels": [
           "pista.iri_teclejar.1",
           "pista.iri_teclejar.2",
           "pista.iri_teclejar.3"
+        ]
+      },
+      "iri_teclejar_primer": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "sync_collaret"
+            },
+            {
+              "var": "codis",
+              "op": "==",
+              "value": 0
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "var": "codis",
+              "op": ">=",
+              "value": 1
+            },
+            {
+              "flag": "cal_clau"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_teclejar_primer.1",
+          "pista.iri_teclejar_primer.2",
+          "pista.iri_teclejar_primer.3"
         ]
       },
       "iri_esperar": {
@@ -12178,6 +12874,64 @@
             {
               "flag": "codi_demanat",
               "is": false
+            },
+            {
+              "var": "coberta_mobil",
+              "op": "<=",
+              "value": 0
+            },
+            {
+              "flag": "mobil_resolt",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "codi_demanat"
+            },
+            {
+              "var": "coberta_mobil",
+              "op": ">",
+              "value": 0
+            },
+            {
+              "flag": "mobil_resolt"
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_demanar.1",
+          "pista.iri_demanar.2",
+          "pista.iri_demanar.3"
+        ]
+      },
+      "iri_demanar_ara": {
+        "priority": 8,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "sync_mobil"
+            },
+            {
+              "flag": "codi_demanat",
+              "is": false
+            },
+            {
+              "any": [
+                {
+                  "var": "coberta_mobil",
+                  "op": ">",
+                  "value": 0
+                },
+                {
+                  "flag": "mobil_resolt"
+                }
+              ]
             }
           ]
         },
@@ -12185,9 +12939,9 @@
           "flag": "codi_demanat"
         },
         "levels": [
-          "pista.iri_demanar.1",
-          "pista.iri_demanar.2",
-          "pista.iri_demanar.3"
+          "pista.iri_demanar_ara.1",
+          "pista.iri_demanar_ara.2",
+          "pista.iri_demanar_ara.3"
         ]
       },
       "iri_esperar_codi": {
@@ -12390,6 +13144,10 @@
               "value": 0
             },
             {
+              "flag": "codi_llegit",
+              "is": false
+            },
+            {
               "flag": "codi_teclejat",
               "is": false
             }
@@ -12404,6 +13162,9 @@
             },
             {
               "flag": "mobil_resolt"
+            },
+            {
+              "flag": "codi_llegit"
             },
             {
               "flag": "codi_teclejat"
@@ -12433,9 +13194,13 @@
           },
           {
             "who": "narrator",
+            "text": "final.tele3"
+          },
+          {
+            "who": "narrator",
             "text": "final.tele2",
             "if": {
-              "flag": "pagar_primer"
+              "flag": "repartit"
             }
           },
           {
@@ -12452,7 +13217,7 @@
             "if": {
               "all": [
                 {
-                  "flag": "pagar_primer"
+                  "flag": "repartit"
                 },
                 {
                   "var": "aliats",
@@ -12537,7 +13302,12 @@
           {
             "who": "narrator",
             "text": "final.diu1",
-            "sound": "mossegada"
+            "sound": "mossegada",
+            "effects": [
+              {
+                "setFlag": "diu_cable"
+              }
+            ]
           },
           {
             "who": "iri",
@@ -12589,7 +13359,7 @@
             {
               "all": [
                 {
-                  "flag": "pagar_primer"
+                  "flag": "repartit"
                 },
                 {
                   "var": "aliats",
@@ -12616,9 +13386,13 @@
           },
           {
             "who": "narrator",
+            "text": "final.tele3"
+          },
+          {
+            "who": "narrator",
             "text": "final.tele2",
             "if": {
-              "flag": "pagar_primer"
+              "flag": "repartit"
             }
           },
           {
@@ -12635,7 +13409,7 @@
             "if": {
               "all": [
                 {
-                  "flag": "pagar_primer"
+                  "flag": "repartit"
                 },
                 {
                   "var": "aliats",
@@ -12720,7 +13494,12 @@
           {
             "who": "narrator",
             "text": "final.diu1",
-            "sound": "mossegada"
+            "sound": "mossegada",
+            "effects": [
+              {
+                "setFlag": "diu_cable"
+              }
+            ]
           },
           {
             "who": "iri",
@@ -12792,9 +13571,13 @@
           },
           {
             "who": "narrator",
+            "text": "final.tele3"
+          },
+          {
+            "who": "narrator",
             "text": "final.tele2",
             "if": {
-              "flag": "pagar_primer"
+              "flag": "repartit"
             }
           },
           {
@@ -12811,7 +13594,7 @@
             "if": {
               "all": [
                 {
-                  "flag": "pagar_primer"
+                  "flag": "repartit"
                 },
                 {
                   "var": "aliats",
@@ -12896,7 +13679,12 @@
           {
             "who": "narrator",
             "text": "final.diu1",
-            "sound": "mossegada"
+            "sound": "mossegada",
+            "effects": [
+              {
+                "setFlag": "diu_cable"
+              }
+            ]
           },
           {
             "who": "iri",
@@ -12996,8 +13784,8 @@
                 "next": "tornar"
               },
               {
-                "id": "pagar",
-                "text": "dlg.aturada.opt.pagar",
+                "id": "repartir",
+                "text": "dlg.aturada.opt.repartir",
                 "if": {
                   "any": [
                     {
@@ -13009,10 +13797,10 @@
                     }
                   ]
                 },
-                "next": "pagar",
+                "next": "repartir",
                 "effects": [
                   {
-                    "setFlag": "pagar_primer"
+                    "setFlag": "repartit"
                   }
                 ]
               }
@@ -13032,20 +13820,20 @@
             ],
             "goto": "fi"
           },
-          "pagar": {
+          "repartir": {
             "lines": [
               {
                 "who": "narrator",
-                "text": "dlg.aturada.pagar1",
+                "text": "dlg.aturada.repartir1",
                 "sound": "aturada"
               },
               {
                 "who": "narrator",
-                "text": "dlg.aturada.pagar2"
+                "text": "dlg.aturada.repartir2"
               },
               {
                 "who": "player",
-                "text": "dlg.aturada.pagar3"
+                "text": "dlg.aturada.repartir3"
               }
             ],
             "goto": "fi"
@@ -13059,6 +13847,30 @@
               {
                 "who": "player",
                 "text": "dlg.aturada.fi2"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.aturada.zero1"
+              },
+              {
+                "who": "player",
+                "text": "dlg.aturada.zero2"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.aturada.zero3"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.aturada.zero4"
+              },
+              {
+                "who": "player",
+                "text": "dlg.aturada.zero5"
+              },
+              {
+                "who": "player",
+                "text": "dlg.aturada.zero6"
               },
               {
                 "who": "narrator",
@@ -16011,9 +16823,16 @@
                 "id": "clau",
                 "text": "dlg.marcel.opt.clau",
                 "if": {
-                  "var": "donats",
-                  "op": ">=",
-                  "value": 3
+                  "all": [
+                    {
+                      "var": "donats",
+                      "op": ">=",
+                      "value": 3
+                    },
+                    {
+                      "flag": "marcel_servidor"
+                    }
+                  ]
                 },
                 "once": true,
                 "next": "clau"
@@ -16022,9 +16841,16 @@
                 "id": "tub",
                 "text": "dlg.marcel.opt.tub",
                 "if": {
-                  "var": "donats",
-                  "op": ">=",
-                  "value": 3
+                  "all": [
+                    {
+                      "var": "donats",
+                      "op": ">=",
+                      "value": 3
+                    },
+                    {
+                      "flag": "marcel_clau"
+                    }
+                  ]
                 },
                 "once": true,
                 "next": "tub"
@@ -17188,9 +18014,6 @@
                 "setFlag": "sync_aeroport"
               },
               {
-                "setFlag": "soler_distret"
-              },
-              {
                 "setVar": "cigarreta",
                 "value": 12
               }
@@ -17284,6 +18107,11 @@
             ]
           },
           "busca": {
+            "effects": [
+              {
+                "setFlag": "soler_distret"
+              }
+            ],
             "lines": [
               {
                 "who": "soler",
@@ -17824,12 +18652,12 @@
       "dlg.marcel.neta2": "Si li dius «NETA, descansa», s'atura. Mai ningú no li ho ha dit.",
       "dlg.marcel.opt.adeu": "Ja tornaré.",
       "dlg.marcel.opt.ballester": "I el Cap de Seguretat, com és?",
-      "dlg.marcel.opt.clau": "I com s'hi entra?",
+      "dlg.marcel.opt.clau": "I un cop hi sigui, com el faig anar?",
       "dlg.marcel.opt.falten": "Què em falta?",
       "dlg.marcel.opt.gracies": "Gràcies, Marcel. Te'n dec una.",
       "dlg.marcel.opt.neta": "Hi ha algú més pel mig, al tercer pis?",
-      "dlg.marcel.opt.servidor": "On és el servidor antic?",
-      "dlg.marcel.opt.tub": "Com es passen coses d'un pis a l'altre, allà dins?",
+      "dlg.marcel.opt.servidor": "Doncs ara sí: on és el servidor antic?",
+      "dlg.marcel.opt.tub": "El servidor en un pis i la clau al coll d'un altre. Com ho ajunto?",
       "dlg.marcel.opt.vol": "I com arribem a Ginebra, si no tenim ni per pizzes?",
       "dlg.marcel.servidor1": "A la sala d'escombraries del tercer pis. El van posar allà quan el van jubilar.",
       "dlg.marcel.servidor2": "Però encara porta tots els comptes. Ningú no s'ha atrevit a desendollar-lo.",
@@ -17868,7 +18696,7 @@
       "dlg.tomas.wifi": "Està al rètol. Sempre ho ha estat. Llegeix, que per això el vaig penjar.",
       "dlg.soler.adeu": "Bon viatge.",
       "dlg.soler.busca1": "Samarreta vermella, set anys. El busco. No es mogui.",
-      "dlg.soler.busca2": "En Soler deixa la porta de personal i se'n va a mirar darrere de cada columna.",
+      "dlg.soler.busca2": "El vigilant deixa la porta de personal i se'n va a buscar-lo per la terminal.",
       "dlg.soler.buscant": "Encara no l'he trobat, senyora. Però el trobarem.",
       "dlg.soler.edat": "Quants anys té?",
       "dlg.soler.fill1": "Un nen perdut? Tranquil·la, senyora. El trobarem.",
@@ -17894,7 +18722,7 @@
       "dlg.trucada.hola": "Iri? Soc jo.",
       "dlg.trucada.hola2": "Digues.",
       "dlg.trucada.opt.adeu": "Res, ja et trucaré.",
-      "dlg.trucada.opt.contrasenya": "La contrasenya és «exceptosinopaga». Tot junt.",
+      "dlg.trucada.opt.contrasenya": "La contrasenya és «demasi». Tot junt, sense accents.",
       "dlg.trucada.opt.pany": "Saps obrir un pany intel·ligent?",
       "dlg.trucada.opt.resum": "Ho tinc tot. Apunta.",
       "dlg.trucada.opt.robot": "I el robot de neteja: si li dius «NETA, descansa», s'atura.",
@@ -18133,18 +18961,23 @@
       "dlg.llibre.ok1": "CONTRASENYA CORRECTA. PER ATURAR, CAL EL CODI DE CONFIRMACIÓ QUE ARRIBARÀ AL MÒBIL DEL DIRECTOR.",
       "dlg.llibre.ok2": "Vet: quan demani el codi, li arribarà al mòbil. Si el Director el mira, ho cancel·larà. Tingues-lo entretingut.",
       "dlg.llibre.ok3": "Entretenir un director. És el que faig millor, després de mentir.",
-      "dlg.aturada.pregunta": "ATURAR ROBIN HOOD 2.0. QUÈ FEM AMB EL QUE QUEDA AL COMPTE ZERO?",
-      "dlg.aturada.rius": "El paper de la Rius! El compte de les nòmines. Si les pago primer, avui cobra tothom.",
-      "dlg.aturada.ballester": "El compte 0001, el d'en Ballester. Si pago primer les nòmines, avui cobra tothom.",
-      "dlg.aturada.opt.tornar": "Tornar-ho tot als comptes d'origen.",
-      "dlg.aturada.opt.pagar": "Pagar primer les pensions, els ajuts i les nòmines del mes. I tornar la resta.",
-      "dlg.aturada.tornar1": "ROBIN HOOD 2.0: ATURAT. EL QUE QUEDAVA AL COMPTE ZERO TORNA ALS COMPTES D'ORIGEN.",
+      "dlg.aturada.pregunta": "ROBIN HOOD 2.0: ATURAT. AL COMPTE ZERO HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?",
+      "dlg.aturada.rius": "El paper de la Rius! El compte de les nòmines: per aquí, els diners arriben a tothom alhora. Sense rondes de tres hores.",
+      "dlg.aturada.ballester": "El compte 0001, el d'en Ballester. Per aquí, els diners arriben a tothom alhora. Sense rondes de tres hores.",
+      "dlg.aturada.opt.tornar": "Tornar-ho al banc. Als comptes d'origen.",
+      "dlg.aturada.tornar1": "TRANSFERÈNCIA: COMPTE ZERO → COMPTES D'ORIGEN. COMPLETADA.",
       "dlg.aturada.tornar2": "El que ja s'ha repartit, es queda repartit. Dotze euros per persona. Una cervesa a tot el món.",
-      "dlg.aturada.pagar1": "ROBIN HOOD 2.0: ATURAT. PRIMER: PENSIONS, AJUTS I NÒMINES DEL MES. DESPRÉS, LA RESTA ALS COMPTES D'ORIGEN.",
-      "dlg.aturada.pagar2": "Per primera vegada en la història, totes les nòmines del món surten alhora. Fins i tot les de la subcontracta.",
-      "dlg.aturada.pagar3": "Avui, a les dotze, cobra tothom.",
+      "dlg.aturada.repartir1": "TRANSFERÈNCIA: COMPTE ZERO → TOTS ELS COMPTES DEL MÓN, A PARTS IGUALS, PEL COMPTE 0001. COMPLETADA.",
+      "dlg.aturada.repartir2": "Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta.",
+      "dlg.aturada.repartir3": "Avui, a les dotze, cobra tothom. I cobra el mateix.",
       "dlg.aturada.fi1": "Iri... ho has fet?",
-      "dlg.aturada.fi2": "Ho hem fet. I ara, a fugir.",
+      "dlg.aturada.fi2": "Ho hem fet. Espera...",
+      "dlg.aturada.zero1": "La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. No n'ha sortit ni un euro.",
+      "dlg.aturada.zero2": "Això no pot ser. Els diners han sortit. I continuen aquí.",
+      "dlg.aturada.zero3": "COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.",
+      "dlg.aturada.zero4": "Prova Rockefeller.",
+      "dlg.aturada.zero5": "Ja ho he provat. Aquest compte no és del Director. És d'algú que té més que el Director.",
+      "dlg.aturada.zero6": "Ja hi pensarem. Ara, a fugir.",
       "dlg.aturada.fi3": "Al despatx, el Director mira la gravació de l'ascensor de servei: «Una tècnica... amb dessuadora?»",
       "dlg.aturada.fi4": "Megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuadora.»",
       "dlg.aturada.fi5": "La noia amb dessuadora soc jo.",
@@ -18161,9 +18994,11 @@
       "dlg.recepcionista.dessuadora": "La de la dessuadora la busquen a dalt. Vostè va de jaqueta.",
       "dlg.recepcionista.altra": "No confonc mai ningú. És la meva feina, i no me la paguen prou per equivocar-me.",
       "dlg.recepcionista.adeu2": "Que vagi bé. I insisteixi amb la font.",
+      "dlg.aturada.opt.repartir": "Repartir-ho tot a parts iguals, pel compte de les nòmines.",
       "final.bar1": "Una setmana després. Bar La Propina.",
       "final.tele1": "A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.",
-      "final.tele2": "...i avui, per primera vegada, totes les pensions del món han arribat el mateix dia.",
+      "final.tele3": "Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.",
+      "final.tele2": "...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix.",
       "final.iri1": "No hem canviat el món.",
       "final.vet1": "No. Però el Director ara agafa el metro. Diu que és més sostenible.",
       "final.taula": "Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom.",
@@ -18182,7 +19017,7 @@
       "final.iri3": "Diu, et mato.",
       "final.vet4": "Deixa'l. Ell també és un treballador explotat.",
       "final.post1": "De nit, al pis. En Diu mossega el cable del router.",
-      "final.post2": "A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»",
+      "final.post2": "A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»",
       "final.post3": "En Diu li porta un tros de pizza. Amb respecte.",
       "final.text": "Tot torna a començar.",
       "final.taula.titol": "Final · La taula llarga",
@@ -18197,7 +19032,7 @@
       "joc.titol": "Suma Zero",
       "sync.aeroport.queden": "L'Ortega fa una pipada llarga. Li queden {torns} pipades.",
       "sync.aeroport.reinici1": "L'Ortega llença la burilla i torna a entrar.",
-      "sync.aeroport.reinici2": "En Soler torna a la porta de personal: «No l'he trobat, senyora. Potser ja és a casa.»",
+      "sync.aeroport.reinici2": "El vigilant torna a la porta de personal: «No l'he trobat, senyora. Potser ja és a casa.»",
       "sync.aeroport.reinici3": "Una hora i una cigarreta més tard...",
       "sync.aeroport.ultima": "L'Ortega mira la cigarreta. L'última pipada.",
       "sync.collaret.reinici1": "En Ballester agafa la ràdio: «Seguretat? Aquí Ballester. Algú sent bips?»",
@@ -18240,7 +19075,7 @@
       "sync.mobil.ultima": "El Director ja té la mà damunt del mòbil.",
       "sync.mobil.mira1": "El Director gira el mòbil.",
       "sync.mobil.mira2": "Intent d'aturada no autoritzat. El protocol diu: cancel·lar. Sempre he seguit el protocol.",
-      "sync.mobil.mira3": "Però si és per tornar-li els diners!",
+      "sync.mobil.mira3": "Però si és per aturar-ho! Vostè també ho vol!",
       "sync.mobil.mira4": "No ho he autoritzat jo. Per tant, no és segur.",
       "sync.mobil.caducat": "El codi ha caducat. En caldrà un de nou.",
       "sync.mobil.reinici1": "Bé. Tornem-hi?",
@@ -18274,6 +19109,7 @@
       "ui.verb.talkTo.boto": "Parla",
       "ui.menu.pista": "Pista",
       "ui.canvia.encara_no": "Encara no: de moment, això és cosa de l'Iri.",
+      "ui.portada.continua": "Continua",
       "ui.portada.comenca": "Comença",
       "ui.portada.carrega": "Carrega una partida",
       "ui.menu.historial": "Historial",
@@ -18401,15 +19237,15 @@
       "pj.ortega.nom": "Ortega",
       "pj.tomas.nom": "Tomàs",
       "pj.rius.nom": "Rius",
-      "pj.soler.nom": "Soler",
+      "pj.soler.nom": "Vigilant",
       "pj.vet.nom": "Vet",
       "pj.ballester.nom": "Ballester",
       "pj.neta.nom": "NETA-3",
       "pj.pons.nom": "Pons",
       "pj.recepcionista.nom": "Recepcionista",
-      "pista.iri_aeroport_espera.1": "Amb en Soler aquí davant no puc fer res.",
-      "pista.iri_aeroport_espera.2": "La Vet ha de fer que en Soler se'n vagi.",
-      "pista.iri_aeroport_espera.3": "Canvio a la Vet: que distregui en Soler.",
+      "pista.iri_aeroport_espera.1": "Amb el vigilant aquí davant no puc fer res.",
+      "pista.iri_aeroport_espera.2": "La Vet ha de fer que el vigilant se'n vagi.",
+      "pista.iri_aeroport_espera.3": "Canvio a la Vet: que distregui el vigilant.",
       "pista.iri_ara_vet.1": "La Vet coneix algú que sap on és el servidor.",
       "pista.iri_ara_vet.2": "Ara li toca a la Vet: ha d'anar al bar a parlar amb en Marcel.",
       "pista.iri_ara_vet.3": "Canvio a la Vet, i que surti per la porta de la cuina cap al bar.",
@@ -18481,10 +19317,13 @@
       "pista.iri_robot_codi.3": "Parlo amb NETA-3 i li dic: «NETA, descansa».",
       "pista.iri_sortir.1": "Ja les tinc. Fora d'aquí.",
       "pista.iri_sortir.2": "La porta de l'oficina.",
-      "pista.iri_sortir.3": "Surto per la porta (amb en Soler distret).",
+      "pista.iri_sortir.3": "Surto per la porta (amb el vigilant distret).",
       "pista.iri_teclejar.1": "Ara no em sent ningú.",
       "pista.iri_teclejar.2": "La Vet ja l'entreté. És el moment.",
       "pista.iri_teclejar.3": "Faig servir el Llibre Major: teclejo el codi.",
+      "pista.iri_teclejar_primer.1": "El primer codi. Fa bip, però en Ballester encara no sospita res.",
+      "pista.iri_teclejar_primer.2": "El primer bip s'escapa sol. Els altres, la Vet els haurà de tapar.",
+      "pista.iri_teclejar_primer.3": "Faig servir el Llibre Major: teclejo el primer codi.",
       "pista.iri_trucar.1": "La Vet vol que truqui al bar i faci de dona d'en Tomàs. Jo.",
       "pista.iri_trucar.2": "Amb una veu sintètica, des de l'ordinador, ho puc fer.",
       "pista.iri_trucar.3": "Faig servir els ordinadors per trucar al bar.",
@@ -18507,20 +19346,26 @@
       "pista.vet_cobrir.2": "Cantar, un acudit, un got que cau... o una cosa que li agradi molt.",
       "pista.vet_cobrir.3": "Parlo amb en Ballester: canto, li explico un acudit o trenco el got. Si li parlo del capítol de La Comissària Bassols que li agrada, en tapo dos.",
       "pista.vet_codi.1": "La porta de personal té un codi. Els codis sempre són a prop.",
-      "pista.vet_codi.2": "Ara que en Soler no hi és, puc mirar el taulell de facturació.",
+      "pista.vet_codi.2": "Ara que el vigilant no hi és, puc mirar el taulell de facturació.",
       "pista.vet_codi.3": "Miro el taulell: sota hi ha el codi.",
       "pista.vet_collaret.1": "En Ballester mira cap a una altra banda. Molt fixament.",
       "pista.vet_collaret.2": "El collaret és damunt la taula.",
       "pista.vet_collaret.3": "Agafo el collaret de la taula.",
       "pista.vet_comandament.1": "En Tomàs no deixa el comandament per res del món. Per res?",
       "pista.vet_comandament.2": "Només el deixaria per una trucada de la seva dona. Que no existeix. L'Iri podria fer de dona.",
-      "pista.vet_comandament.3": "Demano el comandament a en Tomàs, truco a l'Iri perquè truqui al bar, i agafo el comandament de la barra.",
-      "pista.vet_distreure.1": "En Soler vigila la porta de personal. Necessito que la deixi.",
+      "pista.vet_comandament.3": "Demano el comandament a en Tomàs. Si només el deixaria per la seva dona, truco a l'Iri perquè faci de dona.",
+      "pista.vet_esperar_trucada.1": "L'Iri ha de trucar al bar i fer de dona d'en Tomàs.",
+      "pista.vet_esperar_trucada.2": "Fins que no soni el telèfon, en Tomàs no deixa el comandament.",
+      "pista.vet_esperar_trucada.3": "Canvio a l'Iri: que truqui al bar des de l'ordinador.",
+      "pista.vet_agafar_comandament.1": "En Tomàs ha anat al rebost a parlar amb la «dona».",
+      "pista.vet_agafar_comandament.2": "El comandament s'ha quedat a la barra. Ara o mai.",
+      "pista.vet_agafar_comandament.3": "Agafo el comandament de la barra.",
+      "pista.vet_distreure.1": "El vigilant no es mou de la porta de personal. Necessito que la deixi.",
       "pista.vet_distreure.2": "Un guàrdia de cor tendre no deixaria sola una mare desesperada.",
-      "pista.vet_distreure.3": "Parlo amb en Soler: he perdut el meu fill.",
+      "pista.vet_distreure.3": "Parlo amb el vigilant: he perdut el meu fill.",
       "pista.vet_donar.1": "En Marcel vol les tres coses.",
       "pista.vet_donar.2": "Li he de donar el que tinc.",
-      "pista.vet_donar.3": "Dono a en Marcel el tap, la recepta i el comandament.",
+      "pista.vet_donar.3": "Dono a en Marcel el que porto: el tap, la recepta o el comandament.",
       "pista.vet_enviar_clau.1": "Aquesta clau no és per a mi.",
       "pista.vet_enviar_clau.2": "L'Iri és tres pisos més amunt. Per sort, en aquest edifici hi ha un tub.",
       "pista.vet_enviar_clau.3": "Envio la clau a l'Iri pel tub.",
@@ -18545,9 +19390,9 @@
       "pista.vet_plegar.1": "Ja ho tenim. Hora de plegar.",
       "pista.vet_plegar.2": "(I potser tornar-li el tap a en Tomàs.)",
       "pista.vet_plegar.3": "Surto per la porta del bar.",
-      "pista.vet_plorar.1": "La porta ha xiulat. En Soler ho ha sentit.",
+      "pista.vet_plorar.1": "La porta ha xiulat. El vigilant ho ha sentit.",
       "pista.vet_plorar.2": "Cal tapar-ho amb un drama més gran.",
-      "pista.vet_plorar.3": "Parlo amb en Soler i ploro més fort.",
+      "pista.vet_plorar.3": "Parlo amb el vigilant i ploro més fort.",
       "pista.vet_preguntar.1": "En Marcel ja em fia. Ara, preguntes.",
       "pista.vet_preguntar.2": "Vull saber on és el servidor, com s'hi entra, com es passen coses i com arribem a Ginebra.",
       "pista.vet_preguntar.3": "Parlo amb en Marcel i li pregunto tot.",
@@ -18556,13 +19401,25 @@
       "pista.vet_preparar.3": "Miro el maletí i el reclamo a objectes perduts. Agafo les ulleres de la cafeteria.",
       "pista.vet_recepta.1": "La recepta de la llimonada és al calaix del rebost.",
       "pista.vet_recepta.2": "El calaix té un pany amb aplicació. L'Iri el podria obrir des de casa, amb la contrasenya de la wifi.",
-      "pista.vet_recepta.3": "Miro el calaix, truco a l'Iri, llegeixo el rètol, li dic la contrasenya, i quan l'hagi obert agafo la recepta.",
+      "pista.vet_recepta.3": "Miro el calaix del rebost i truco a l'Iri perquè l'obri.",
+      "pista.vet_dir_contrasenya.1": "L'Iri necessita la contrasenya de la wifi del bar.",
+      "pista.vet_dir_contrasenya.2": "Als bars, la contrasenya de la wifi sempre és en un rètol.",
+      "pista.vet_dir_contrasenya.3": "Llegeixo el rètol de la wifi i truco a l'Iri per dir-li la contrasenya.",
+      "pista.vet_esperar_pany.1": "L'Iri ja té la contrasenya. Ara li toca a ella.",
+      "pista.vet_esperar_pany.2": "Des de l'ordinador pot obrir el pany del calaix.",
+      "pista.vet_esperar_pany.3": "Canvio a l'Iri: que obri el calaix des de l'ordinador.",
+      "pista.vet_agafar_recepta.1": "El calaix del rebost ja és obert.",
+      "pista.vet_agafar_recepta.2": "La recepta de la llimonada és a dins.",
+      "pista.vet_agafar_recepta.3": "Obro el calaix del rebost i agafo la recepta.",
       "pista.vet_resum.1": "L'Iri ha de saber el que m'ha dit en Marcel.",
       "pista.vet_resum.2": "El telèfon de paret.",
       "pista.vet_resum.3": "Truco a l'Iri des del telèfon i li ho explico tot.",
       "pista.vet_tap.1": "El tap del clauer d'en Tomàs. El porta penjat al cinturó.",
       "pista.vet_tap.2": "En Tomàs es treu el clauer quan fa cafè, perquè li molesta.",
-      "pista.vet_tap.3": "Demano a en Tomàs un cafè amb llet per a en Marcel i agafo el clauer de la barra.",
+      "pista.vet_tap.3": "Demano a en Tomàs un cafè amb llet per a en Marcel.",
+      "pista.vet_agafar_tap.1": "En Tomàs s'ha tret el clauer per fer el cafè.",
+      "pista.vet_agafar_tap.2": "El clauer és a la barra, amb el tap penjat.",
+      "pista.vet_agafar_tap.3": "Agafo el clauer de la barra.",
       "pista.vet_trobat.1": "L'Iri ja és fora. Cal acabar la funció.",
       "pista.vet_trobat.2": "Un nen perdut s'acaba quan es troba.",
       "pista.vet_trobat.3": "Assenyalo el nen de la samarreta vermella: l'he trobat!",
@@ -18591,7 +19448,7 @@
       "pista.vet_espera_teclejar.2": "Que el tecleji abans que el Director torni a mirar el mòbil.",
       "pista.vet_espera_teclejar.3": "Canvio a l'Iri: que tecleji el codi.",
       "pista.vet_decidir.1": "El codi ha entrat. Ara, l'Iri decideix.",
-      "pista.vet_decidir.2": "El Llibre Major li pregunta què fa amb el que queda.",
+      "pista.vet_decidir.2": "El Llibre Major li pregunta què fa amb els diners del compte zero.",
       "pista.vet_decidir.3": "Canvio a l'Iri.",
       "pista.vet_baixar.1": "Ara, sortir com he entrat: per la porta gran.",
       "pista.vet_baixar.2": "L'ascensor de l'avantdespatx baixa al vestíbul.",
@@ -18616,7 +19473,10 @@
       "pista.iri_gos.3": "Canvio a la Vet: que esbrini com es diu el gos.",
       "pista.iri_demanar.1": "El codi arriba al mòbil del Director. Si el mira, ho cancel·la.",
       "pista.iri_demanar.2": "Primer, que la Vet l'entretingui. Després, demano el codi.",
-      "pista.iri_demanar.3": "Quan la Vet tingui el Director distret, faig servir el Llibre Major per demanar el codi.",
+      "pista.iri_demanar.3": "Canvio a la Vet: que distregui el Director abans que jo demani el codi.",
+      "pista.iri_demanar_ara.1": "La Vet té el Director entretingut. És el moment.",
+      "pista.iri_demanar_ara.2": "Ara el codi pot arribar al mòbil sense que ell el miri.",
+      "pista.iri_demanar_ara.3": "Faig servir el Llibre Major per demanar el codi.",
       "pista.iri_esperar_codi.1": "El codi ja és al mòbil del Director.",
       "pista.iri_esperar_codi.2": "La Vet l'ha de llegir mentre ell no mira.",
       "pista.iri_esperar_codi.3": "Canvio a la Vet: que llegeixi el codi.",
@@ -18624,7 +19484,7 @@
       "pista.iri_teclejar_codi.2": "Abans que el Director torni a mirar el mòbil.",
       "pista.iri_teclejar_codi.3": "Faig servir el Llibre Major i teclejo el codi.",
       "pista.iri_decidir.1": "El codi ha entrat. Ara, la pregunta difícil.",
-      "pista.iri_decidir.2": "Què fem amb el que queda al compte zero?",
+      "pista.iri_decidir.2": "Tots els diners del món, al compte zero. Els torno al banc o els reparteixo?",
       "pista.iri_decidir.3": "Faig servir el Llibre Major i decideixo.",
       "pista.iri_escala.1": "Ara, sortir. Per on?",
       "pista.iri_escala.2": "La porta de l'escala té un pany antic, de clau grossa. I jo tinc una clau grossa.",
@@ -18640,7 +19500,7 @@
       "pista.iri_saltar.3": "Canvio a la Vet: que surti del banc i obri el contenidor.",
       "pista.vet_entretenir.1": "Si el Director gira el mòbil quan hi ha el codi, ho cancel·la tot.",
       "pista.vet_entretenir.2": "L'he de tenir entretingut abans que l'Iri demani el codi: la sostenibilitat, el gos... o algú que m'ajudi.",
-      "pista.vet_entretenir.3": "Parlo amb el Director: una reunió sobre sostenibilitat el tapa dos torns; el gos, un. Si la senyora Pons o en Ballester són amb mi, ho resolen sols.",
+      "pista.vet_entretenir.3": "Parlo amb el Director: una reunió sobre sostenibilitat el tapa dos torns (la segona vegada, un); el gos, un. Si la senyora Pons o en Ballester són amb mi, ho resolen sols.",
       "proleg.1": "Ginebra. Seu del Banc Central Mundial Unificat.",
       "proleg.2": "Aquest banc custodia més diners que cent vuitanta països junts.",
       "proleg.3": "Al BCMU construïm el futur de tothom.",
@@ -18655,10 +19515,10 @@
       "sala.aeroport_oficina.impressora.surt": "La impressora rumia, grinyola i, finalment, treu dos cartons plastificats.",
       "sala.aeroport_oficina.impressora.va": "Va, va, va...",
       "sala.aeroport_oficina.nom": "L'oficina de facturació",
-      "sala.aeroport_oficina.porta.look": "La sortida. A l'altra banda, en Soler. O no, si la Vet plora prou.",
+      "sala.aeroport_oficina.porta.look": "La sortida. A l'altra banda, el vigilant. O no, si la Vet plora prou.",
       "sala.aeroport_oficina.porta.no": "Sense les acreditacions no me'n vaig.",
       "sala.aeroport_oficina.porta.nom": "porta",
-      "sala.aeroport_oficina.porta.soler": "En Soler em veuria sortir. Espero que la Vet el torni a entretenir.",
+      "sala.aeroport_oficina.porta.soler": "El vigilant em veuria sortir. Espero que la Vet el torni a entretenir.",
       "sala.aeroport_oficina.porta.surt": "Fora. Vet, ja les tinc!",
       "sala.aeroport_oficina.terminal.ja": "Ja som a la llista. La resta és cosa de la impressora.",
       "sala.aeroport_oficina.terminal.llista1": "Vol BCMU-07, llista de tripulació. Afegeixo: «I. i V., tècniques de manteniment de caixes fortes».",
@@ -18666,8 +19526,8 @@
       "sala.aeroport_oficina.terminal.look": "El terminal de facturació. Contrasenya: «facturacio1». La gent és meravellosa.",
       "sala.aeroport_oficina.terminal.nom": "terminal",
       "sala.aeroport_oficina.terminal.reimprimir": "Ja som a la llista. Torno a imprimir les acreditacions.",
-      "sala.aeroport_oficina.terminal.soler": "En Soler torna a ser a la porta. Si teclejo ara, ho sentirà.",
-      "sala.aeroport_personal.intro1": "La porta de personal. Teclat numèric, quatre xifres. I en Soler, a tres metres.",
+      "sala.aeroport_oficina.terminal.soler": "El vigilant torna a ser a la porta. Si teclejo ara, ho sentirà.",
+      "sala.aeroport_personal.intro1": "La porta de personal. Teclat numèric, quatre xifres. I el vigilant, a tres metres.",
       "sala.aeroport_personal.nom": "La porta de personal",
       "sala.aeroport_personal.porta.look": "«Només personal autoritzat.» Avui, jo.",
       "sala.aeroport_personal.porta.nom": "porta de personal",
@@ -18680,7 +19540,7 @@
       "sala.aeroport_personal.teclat.nom": "teclat",
       "sala.aeroport_personal.teclat.oberta": "Ja la sé obrir.",
       "sala.aeroport_personal.teclat.plora": "Vet! Plora més fort!",
-      "sala.aeroport_personal.teclat.soler": "En Soler mira cap aquí. Ara no.",
+      "sala.aeroport_personal.teclat.soler": "El vigilant mira cap aquí. Ara no.",
       "sala.aeroport_personal.teclat.sort": "Provo sort: 1-2-3-4.",
       "sala.aeroport_personal.teclat.xiula": "La porta xiula.",
       "sala.aeroport_terminal.empleat.look": "L'oficina d'objectes perduts. L'empleat té cara d'haver-ho perdut tot, també la il·lusió.",
@@ -18704,13 +19564,13 @@
       "sala.aeroport_terminal.nen.trobat4": "...",
       "sala.aeroport_terminal.nen.trobat5": "Mentrestant, l'Iri ja és a la porta d'embarcament amb dues acreditacions calentes.",
       "sala.aeroport_terminal.nom": "La terminal",
-      "sala.aeroport_terminal.soler.look": "L'agent Soler, segons la placa. Vigila la porta de personal amb cara de no vigilar res. Té cara de bona persona.",
-      "sala.aeroport_terminal.soler.look_busca": "En Soler busca un nen que no existeix. Amb molta dedicació.",
-      "sala.aeroport_terminal.soler.nom": "agent Soler",
+      "sala.aeroport_terminal.soler.look": "El vigilant de l'aeroport. Guarda la porta de personal amb cara de no vigilar res. Té cara de bona persona.",
+      "sala.aeroport_terminal.soler.look_busca": "El vigilant busca un nen que no existeix. Amb molta dedicació.",
+      "sala.aeroport_terminal.soler.nom": "vigilant",
       "sala.aeroport_terminal.taulell.codi1": "Sota el taulell hi ha un pòsit enganxat. «Porta personal: 8426.»",
       "sala.aeroport_terminal.taulell.codi2": "Iri: 8-4-2-6.",
       "sala.aeroport_terminal.taulell.ja": "El pòsit: 8-4-2-6. L'Iri ja ho sap.",
-      "sala.aeroport_terminal.taulell.look": "El taulell de facturació. Si hi remeno ara, en Soler em veurà.",
+      "sala.aeroport_terminal.taulell.look": "El taulell de facturació. Si hi remeno ara, el vigilant em veurà.",
       "sala.aeroport_terminal.taulell.nom": "taulell",
       "sala.aeroport_terminal.ulleres.agafa": "Unes ulleres de pasta oblidades. Me les poso. Ara semblo que llegeixi directives per gust.",
       "sala.aeroport_terminal.ulleres.look": "Unes ulleres de pasta en una taula de la cafeteria. Sense graduació. Amb autoritat.",
@@ -18773,9 +19633,9 @@
       "sala.bar_sala.rebost.look": "El rebost. I el despatx d'en Tomàs, que és el mateix amb una cadira.",
       "sala.bar_sala.rebost.tomas": "En Tomàs és a dins, divorciant-se d'una persona que no existeix. Millor no entrar.",
       "sala.bar_sala.recepta": "La recepta secreta... «1. Obrir el pot. 2. Abocar.» Vint anys guardant un secret de pot.",
-      "sala.bar_sala.retol.contrasenya1": "«El cliente siempre tiene razón (excepto si no paga)».",
-      "sala.bar_sala.retol.contrasenya2": "«Exceptosinopaga». Tot junt. És la contrasenya de la wifi. Sempre ho ha estat.",
-      "sala.bar_sala.retol.look": "«El cliente siempre tiene razón (excepto si no paga)». La filosofia d'en Tomàs. I la de la banca mundial.",
+      "sala.bar_sala.retol.contrasenya1": "«Avui no es fia, demà sí».",
+      "sala.bar_sala.retol.contrasenya2": "«Demasí». Tot junt, sense accents. És la contrasenya de la wifi. Sempre ho ha estat.",
+      "sala.bar_sala.retol.look": "«Avui no es fia, demà sí». La filosofia d'en Tomàs. I la de la banca mundial.",
       "sala.bar_sala.retol.nom": "rètol",
       "sala.bar_sala.tap": "El tap del clauer d'en Tomàs! Ni se n'ha adonat, oi?",
       "sala.bar_sala.tap.agafa": "Al davantal. Ni se n'ha adonat.",
@@ -18890,7 +19750,7 @@
       "sala.pis_estudi.ordinadors.look": "Tres pantalles. Una pel codi, una per la documentació i una per mirar el codi amb angoixa.",
       "sala.pis_estudi.ordinadors.nom": "ordinadors",
       "sala.pis_estudi.ordinadors.sense": "Sense internet, només puc mirar el codi amb angoixa.",
-      "sala.pis_estudi.pany1": "Xarxa del bar. Contrasenya: «exceptosinopaga». Dins.",
+      "sala.pis_estudi.pany1": "Xarxa del bar. Contrasenya: «demasi». Dins.",
       "sala.pis_estudi.pany2": "Un pany intel·ligent de 19,99 €. Obrir. Fet.",
       "sala.pis_estudi.pany3": "Vet, el calaix és obert.",
       "sala.pis_estudi.passaplats.ja_obert": "Ja és obert. Més obert, seria un forat a la paret.",
@@ -18924,6 +19784,13 @@
       "sala.pis_estudi.router.look_n": "{cables} cables de tres. Ens mirem i ens entenem.",
       "sala.pis_estudi.router.look_ok": "Connectat. Hola, preciós.",
       "sala.pis_estudi.router.nom": "router",
+      "sala.pis_estudi.router.repas": "A veure. Repàs de cables.",
+      "sala.pis_estudi.router.estat.fibra_ok": "Fibra: endollada. Llumeta verda.",
+      "sala.pis_estudi.router.estat.fibra_falta": "Fibra: res. Encara penja de la paret.",
+      "sala.pis_estudi.router.estat.xarxa_ok": "Xarxa: endollat. Llumeta verda.",
+      "sala.pis_estudi.router.estat.xarxa_falta": "Xarxa: res. Llumeta apagada.",
+      "sala.pis_estudi.router.estat.alimentacio_ok": "Alimentació: endollat. Llumeta verda.",
+      "sala.pis_estudi.router.estat.alimentacio_falta": "Alimentació: res. Llumeta apagada.",
       "sala.pis_estudi.router.sense": "Sense els tres cables, és un pisapapers amb antenes.",
       "sala.pis_estudi.router.xarxa": "Cable de xarxa: dins.",
       "sala.pis_estudi.trucada1": "Veu sintètica: activada. Accent: dona enfadada. Ho puc fer.",

@@ -49,8 +49,8 @@
           "next": "tornar"
         },
         {
-          "id": "pagar",
-          "text": "dlg.aturada.opt.pagar",
+          "id": "repartir",
+          "text": "dlg.aturada.opt.repartir",
           "if": {
             "any": [
               {
@@ -62,10 +62,10 @@
               }
             ]
           },
-          "next": "pagar",
+          "next": "repartir",
           "effects": [
             {
-              "setFlag": "pagar_primer"
+              "setFlag": "repartit"
             }
           ]
         }
@@ -85,20 +85,20 @@
       ],
       "goto": "fi"
     },
-    "pagar": {
+    "repartir": {
       "lines": [
         {
           "who": "narrator",
-          "text": "dlg.aturada.pagar1",
+          "text": "dlg.aturada.repartir1",
           "sound": "aturada"
         },
         {
           "who": "narrator",
-          "text": "dlg.aturada.pagar2"
+          "text": "dlg.aturada.repartir2"
         },
         {
           "who": "player",
-          "text": "dlg.aturada.pagar3"
+          "text": "dlg.aturada.repartir3"
         }
       ],
       "goto": "fi"
@@ -112,6 +112,30 @@
         {
           "who": "player",
           "text": "dlg.aturada.fi2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.zero1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.zero2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.aturada.zero3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.aturada.zero4"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.zero5"
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.zero6"
         },
         {
           "who": "narrator",

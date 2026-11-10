@@ -417,6 +417,34 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "neo",
+      "tag": "neo",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "neo": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "disc_dur",
+      "tag": "disc_dur",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "disc_dur": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
     }
   ],
   "characters": [

@@ -57,10 +57,11 @@ def logo(cv, cx, y, k=1, lvl=4.0, lit=1.0):
                     cv.put(xx, yy, BRASS, lvl + (0.8 if small else 0) - d / r * 0.8, lit)
 
 
-def tub_station(cv, x0, y0, x1, y1, vell=False):
+def tub_station(cv, x0, y0, x1, y1, vell=False, capsule=None):
     """L'estació del tub pneumàtic: placa de llautó, el tub de vidre que puja pel sostre i la comporta amb la palanca.
 
-    Mida pensada per a uns 20×44 px (les zones de room_designs.py). Amb `vell`, pols i llautó apagat (la de 1958)."""
+    Mida pensada per a uns 20×44 px (les zones de room_designs.py). Amb `vell`, pols i llautó apagat (la de 1958).
+    `capsule`: y de dalt d'una càpsula que puja pel tub (per a les animacions)."""
     lv = 2.4 if vell else 3.4
     cx = (x0 + x1) // 2
     # el tub de vidre, des del sostre fins a la comporta
@@ -68,6 +69,13 @@ def tub_station(cv, x0, y0, x1, y1, vell=False):
         for x in range(cx - 3, cx + 4):
             edge = x in (cx - 3, cx + 3)
             cv.put(x, y, GLASSB, (2.0 if edge else 3.4) - (1.0 if vell else 0) + (0.8 if x == cx - 1 else 0))
+    if capsule is not None:                                              # la càpsula, vista a través del vidre
+        cy0, cy1 = max(0, capsule), min(y0 + 5, capsule + 8)
+        for y in range(cy0, cy1 + 1):
+            for x in range(cx - 2, cx + 3):
+                cap = y - capsule in (0, 8)                              # les tapes de llautó
+                cv.put(x, y, BRASS if cap else MAHOG, (4.4 if cap else 3.6) + (1.0 if x == cx - 1 else 0) - (0.8 if x == cx + 2 else 0))
+        cv.tint(cx - 2, cy0, cx + 2, cy1, (200, 230, 228), 0.18)           # el vidre per davant
     for yy in range(4, y0, 22):                                          # les abraçadores
         cv.rect(cx - 4, yy, cx + 4, yy + 1, BRASS, lv)
     # la placa i la comporta

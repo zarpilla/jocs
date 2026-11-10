@@ -68,6 +68,27 @@
     "TalkU": {
       "loop": true,
       "frameDuration": 140
+    },
+    "TaulaIdleD": {
+      "loop": true
+    },
+    "TaulaTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TaulaIdleL": {
+      "loop": true
+    },
+    "TaulaTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TaulaIdleU": {
+      "loop": true
+    },
+    "TaulaTalkU": {
+      "loop": true,
+      "frameDuration": 140
     }
   },
   "defaultVerb": "talkTo"

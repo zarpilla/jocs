@@ -199,14 +199,24 @@ VET_OUTFITS = tuple(personatges.VET_ROBA) + tuple(f'{o}Ulleres' for o in persona
 
 
 def secundari(cid):
-    """Un secundari dret (hd/personatges.py, NPCS): Idle i Talk en D, L i U."""
+    """Un secundari (hd/personatges.py, NPCS): Idle i Talk en D, L i U, i Walk si no és assegut (en
+    Soler deixa la porta per buscar el nen: sense Walk, Benne el faria lliscar de cara)."""
+    seated = personatges.NPCS[cid].get('seated') is not None
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', [personatges.npc(cid, f)]))
         tags.append((f'Talk{f}', [personatges.npc(cid, f), personatges.npc(cid, f, talk=True)]))
-    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else {})} for t, _ in tags}
+        if not seated:
+            tags.append((f'Walk{f}', [personatges.npc(cid, f, walk=k) for k in range(6)]))
+    if cid == 'marcel':                                       # roba «Taula»: al bar del final, de cara
+        for f in 'DLU':
+            tags.append((f'TaulaIdle{f}', [personatges.marcel_taula(f)]))
+            tags.append((f'TaulaTalk{f}', [personatges.marcel_taula(f), personatges.marcel_taula(f, talk=True)]))
+    anims = {t: {'loop': True, **({'frameDuration': 140} if 'Talk' in t else
+                                  {'frameDuration': 90 if t == 'WalkL' else 80} if t.startswith('Walk') else {})}
+             for t, _ in tags}
     # assegut, amb les cames endavant: qui hi parla s'hi atura una mica més enllà dels genolls
-    walk_to = {'x': 66, 'y': 90} if personatges.NPCS[cid].get('seated') is not None else {'x': 44, 'y': 83}
+    walk_to = {'x': 66, 'y': 90} if seated else {'x': 44, 'y': 83}
     write(cid, tags, (49, 87), {
         'walkSpeed': 70, 'walkToPoint': walk_to, 'talkPoint': {'x': 25, 'y': -2}, 'feet': {'x': 25, 'y': 83},
         'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},
@@ -260,7 +270,8 @@ def secundari2(cid):
 
 
 def robot(cid='neta'):
-    """NETA-3: Idle (el llum de l'antena parpelleja i els raspalls giren) i Talk en D, L i U; 'Descansa' i 'Molles'."""
+    """NETA-3: Idle (el llum de l'antena parpelleja i els raspalls giren) i Talk en D, L i U; 'Descansa' i 'Molles';
+    i la roba «Davantal» (el bar del final)."""
     N = personatges.neta
     tags = []
     for f in 'DLU':
@@ -268,8 +279,11 @@ def robot(cid='neta'):
         tags.append((f'Talk{f}', [N(f, k=0), N(f, talk=True, k=1)]))
     tags.append(('Descansa', [N('D', estat='descansa', k=k) for k in range(2)]))
     tags.append(('Molles', [N('D', estat='molles', k=k) for k in range(4)]))
+    for f in 'DLU':                                           # roba «Davantal»: serveix al bar del final
+        tags.append((f'DavantalIdle{f}', [N(f, k=k, davantal=True) for k in range(8)]))
+        tags.append((f'DavantalTalk{f}', [N(f, k=0, davantal=True), N(f, talk=True, k=1, davantal=True)]))
     dur = {'Descansa': 900, 'Molles': 220}
-    anims = {t: {'loop': True, 'frameDuration': dur.get(t, 160 if t.startswith('Talk') else 180)} for t, _ in tags}
+    anims = {t: {'loop': True, 'frameDuration': dur.get(t, 160 if 'Talk' in t else 180)} for t, _ in tags}
     write(cid, tags, (personatges.NW, personatges.NH), {
         'walkSpeed': 50, 'walkToPoint': {'x': 44, 'y': 42}, 'talkPoint': {'x': 20, 'y': -2}, 'feet': {'x': 20, 'y': 42},
         'collider': {'points': [{'x': 6, 'y': 4}, {'x': 34, 'y': 4}, {'x': 36, 'y': 43}, {'x': 4, 'y': 43}]},

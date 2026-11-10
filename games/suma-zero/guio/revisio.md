@@ -14,7 +14,7 @@ DECORAT acreditacions_llestes — es veu si acreditacions_llestes
 
 TERMINAL «terminal»
     • use — si NO soler_distret
-        JUGADORA: En Soler torna a ser a la porta. Si teclejo ara, ho sentirà.
+        JUGADORA: El vigilant torna a ser a la porta. Si teclejo ara, ho sentirà.
     • use — si NO llista_feta
         [SO: teclat] JUGADORA: Vol BCMU-07, llista de tripulació. Afegeixo: «I. i V., tècniques de manteniment de caixes fortes».
         [SO: impressora] JUGADORA: I imprimeixo dues acreditacions.
@@ -48,12 +48,12 @@ PORTA «porta»
     • use/open/walkTo — si no té acreditacions
         JUGADORA: Sense les acreditacions no me'n vaig.
     • use/open/walkTo — si NO soler_distret
-        JUGADORA: En Soler em veuria sortir. Espero que la Vet el torni a entretenir.
+        JUGADORA: El vigilant em veuria sortir. Espero que la Vet el torni a entretenir.
     • use/open/walkTo — SEMPRE
         JUGADORA: Fora. Vet, ja les tinc!
         ⇒ +iri_fora, → aeroport_personal
     • look — SEMPRE
-        JUGADORA: La sortida. A l'altra banda, en Soler. O no, si la Vet plora prou.
+        JUGADORA: La sortida. A l'altra banda, el vigilant. O no, si la Vet plora prou.
 
 ```
 
@@ -62,7 +62,7 @@ PORTA «porta»
 ```
 EN ENTRAR
     • * (una vegada) — SEMPRE
-        JUGADORA: La porta de personal. Teclat numèric, quatre xifres. I en Soler, a tres metres.
+        JUGADORA: La porta de personal. Teclat numèric, quatre xifres. I el vigilant, a tres metres.
 
 DECORAT soler_vidre — es veu si NO soler_distret
 DECORAT porta_oberta — es veu si porta_oberta
@@ -75,7 +75,7 @@ TECLAT «teclat»
         JUGADORA: Ja la sé obrir.
         ⇒ → aeroport_oficina
     • use/push — si NO soler_distret
-        JUGADORA: En Soler mira cap aquí. Ara no.
+        JUGADORA: El vigilant mira cap aquí. Ara no.
     • use/push — si alarma_porta
         JUGADORA: La porta encara xiula! Vet, plora!
     • use/push — si codi_porta_llegit
@@ -116,13 +116,13 @@ EN ENTRAR
 DECORAT cigarreta_mitja — es veu si sync_aeroport i cigarreta ≤ 8 i cigarreta > 4
 DECORAT cigarreta_curta — es veu si sync_aeroport i cigarreta ≤ 4
 
-SOLER «agent Soler»
+SOLER «vigilant»
     • talkTo — SEMPRE
         ⇒ diàleg soler
     • look — si soler_distret
-        JUGADORA: En Soler busca un nen que no existeix. Amb molta dedicació.
+        JUGADORA: El vigilant busca un nen que no existeix. Amb molta dedicació.
     • look — SEMPRE
-        JUGADORA: L'agent Soler, segons la placa. Vigila la porta de personal amb cara de no vigilar res. Té cara de bona persona.
+        JUGADORA: El vigilant de l'aeroport. Guarda la porta de personal amb cara de no vigilar res. Té cara de bona persona.
 
 TAULELL «taulell»
     • look — si codi_porta_llegit
@@ -132,7 +132,7 @@ TAULELL «taulell»
         JUGADORA: Iri: 8-4-2-6.
         ⇒ +codi_porta_llegit
     • look — SEMPRE
-        JUGADORA: El taulell de facturació. Si hi remeno ara, en Soler em veurà.
+        JUGADORA: El taulell de facturació. Si hi remeno ara, el vigilant em veurà.
 
 VIDRIERA «vidriera»
     • look — si sync_aeroport
@@ -167,7 +167,7 @@ ULLERES «ulleres» — hi és si no té ulleres (vet)
 NEN «nen»
     • talkTo/use/pickUp — si sync_aeroport i iri_fora
         JUGADORA: L'HE TROBAT! El meu fill!
-        SOLER: Senyora... aquest nen és d'una altra família.
+        VIGILANT: Senyora... aquest nen és d'una altra família.
         JUGADORA: ...Tots els nens s'assemblen tant.
         NEN: ...
         NARRADOR: Mentrestant, l'Iri ja és a la porta d'embarcament amb dues acreditacions calentes.
@@ -269,7 +269,7 @@ MARCEL «Marcel»
         MARCEL: Pregunta. ⟨si donats ≥ 3⟩
     • give + comandament — SEMPRE
         MARCEL: El comandament! A veure... Ah! El capítol del violí!
-          ⇒ perd comandament, +marcel_comandament, donats += 1
+          ⇒ perd comandament, +marcel_comandament, +bassols, donats += 1
         NARRADOR: En Tomàs surt del rebost amb el telèfon a la mà.
           ⇒ −tomas_rebost
         TOMÀS: Ja està. Som lliures. Tots dos.
@@ -326,11 +326,11 @@ TELE «tele»
 
 RETOL «rètol»
     • look — si cal_contrasenya
-        JUGADORA: «El cliente siempre tiene razón (excepto si no paga)».
-        JUGADORA: «Exceptosinopaga». Tot junt. És la contrasenya de la wifi. Sempre ho ha estat.
+        JUGADORA: «Avui no es fia, demà sí».
+        JUGADORA: «Demasí». Tot junt, sense accents. És la contrasenya de la wifi. Sempre ho ha estat.
         ⇒ +contrasenya_llegida
     • look — SEMPRE
-        JUGADORA: «El cliente siempre tiene razón (excepto si no paga)». La filosofia d'en Tomàs. I la de la banca mundial.
+        JUGADORA: «Avui no es fia, demà sí». La filosofia d'en Tomàs. I la de la banca mundial.
 
 TELEFON «telèfon»
     • talkTo/use — si tomas_rebost
@@ -438,7 +438,7 @@ EN ENTRAR
 CONTENIDOR «contenidor»
     • open/use — si NO iri_llesta
         JUGADORA: Encara no. L'Iri ha de fer el coixí, i jo no la vull recollir a trossos.
-    • open/use — si pagar_primer i aliats ≥ 3
+    • open/use — si repartit i aliats ≥ 3
         [SO: contenidor] NARRADOR: La Vet aixeca la tapa. Tres pisos més amunt, algú crida «Ara!».
         NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'una muntanya de secrets bancaris triturats. ⟨si coixi = "bosses"⟩
         NARRADOR: L'Iri baixa pel conducte i cau dins el contenidor, damunt d'un coixí d'escuma d'extintor. ⟨si coixi = "escuma"⟩
@@ -1102,9 +1102,25 @@ EN ENTRAR
         JUGADORA: Doncs avui vull auditar la seguretat.
 
 DECORAT sospita — es veu si auditoria
+DECORAT sospita_5 — es veu si auditoria i sospita ≥ 5
+DECORAT sospita_10 — es veu si auditoria i sospita ≥ 10
+DECORAT sospita_15 — es veu si auditoria i sospita ≥ 15
+DECORAT sospita_20 — es veu si auditoria i sospita ≥ 20
 DECORAT sospita_25 — es veu si auditoria i sospita ≥ 25
+DECORAT sospita_30 — es veu si auditoria i sospita ≥ 30
+DECORAT sospita_35 — es veu si auditoria i sospita ≥ 35
+DECORAT sospita_40 — es veu si auditoria i sospita ≥ 40
+DECORAT sospita_45 — es veu si auditoria i sospita ≥ 45
 DECORAT sospita_50 — es veu si auditoria i sospita ≥ 50
+DECORAT sospita_55 — es veu si auditoria i sospita ≥ 55
+DECORAT sospita_60 — es veu si auditoria i sospita ≥ 60
+DECORAT sospita_65 — es veu si auditoria i sospita ≥ 65
+DECORAT sospita_70 — es veu si auditoria i sospita ≥ 70
 DECORAT sospita_75 — es veu si auditoria i sospita ≥ 75
+DECORAT sospita_80 — es veu si auditoria i sospita ≥ 80
+DECORAT sospita_85 — es veu si auditoria i sospita ≥ 85
+DECORAT sospita_90 — es veu si auditoria i sospita ≥ 90
+DECORAT sospita_95 — es veu si auditoria i sospita ≥ 95
 DECORAT planta_retallada — es veu si planta_retallada
 DECORAT maquina_forat — es veu si entrepa_comprat
 
@@ -1402,7 +1418,7 @@ ORDINADORS «ordinadors»
         JUGADORA: He parlat amb una persona. Bé, ho ha fet el portàtil. Compta igual.
         ⇒ +trucada_feta, +tomas_rebost
     • use — si contrasenya_dita i NO calaix_obert
-        [SO: teclat] JUGADORA: Xarxa del bar. Contrasenya: «exceptosinopaga». Dins.
+        [SO: teclat] JUGADORA: Xarxa del bar. Contrasenya: «demasi». Dins.
         [SO: pany_clic] JUGADORA: Un pany intel·ligent de 19,99 €. Obrir. Fet.
         JUGADORA: Vet, el calaix és obert.
         ⇒ +calaix_obert
@@ -1466,7 +1482,16 @@ ROUTER «router»
         JUGADORA: {cables} cables de tres. Ens mirem i ens entenem.
     • use/push/pull/pickUp — si router_connectat
         JUGADORA: Funciona. No el toquis. No el miris gaire.
-    • use/push/pull/pickUp — SEMPRE
+    • use — SEMPRE
+        JUGADORA: A veure. Repàs de cables.
+        JUGADORA: Fibra: endollada. Llumeta verda. ⟨si fibra_connectada⟩
+        JUGADORA: Fibra: res. Encara penja de la paret. ⟨si no (fibra_connectada)⟩
+        JUGADORA: Xarxa: endollat. Llumeta verda. ⟨si xarxa_connectada⟩
+        JUGADORA: Xarxa: res. Llumeta apagada. ⟨si no (xarxa_connectada)⟩
+        JUGADORA: Alimentació: endollat. Llumeta verda. ⟨si alimentacio_connectada⟩
+        JUGADORA: Alimentació: res. Llumeta apagada. ⟨si no (alimentacio_connectada)⟩
+        JUGADORA: Sense els tres cables, és un pisapapers amb antenes.
+    • push/pull/pickUp — SEMPRE
         JUGADORA: Sense els tres cables, és un pisapapers amb antenes.
 
 FIBRA «presa de la fibra»
@@ -1806,30 +1831,36 @@ EN ENTRAR
 COMENÇA A: pregunta
 
 [pregunta]
-    NARRADOR: ATURAR ROBIN HOOD 2.0. QUÈ FEM AMB EL QUE QUEDA AL COMPTE ZERO?
-    JUGADORA: El paper de la Rius! El compte de les nòmines. Si les pago primer, avui cobra tothom. ⟨si té compte_nomines (iri)⟩
-    JUGADORA: El compte 0001, el d'en Ballester. Si pago primer les nòmines, avui cobra tothom. ⟨si ballester_compte i no té compte_nomines (iri)⟩
+    NARRADOR: ROBIN HOOD 2.0: ATURAT. AL COMPTE ZERO HI HA TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?
+    JUGADORA: El paper de la Rius! El compte de les nòmines: per aquí, els diners arriben a tothom alhora. Sense rondes de tres hores. ⟨si té compte_nomines (iri)⟩
+    JUGADORA: El compte 0001, el d'en Ballester. Per aquí, els diners arriben a tothom alhora. Sense rondes de tres hores. ⟨si ballester_compte i no té compte_nomines (iri)⟩
     ↪ tria
 
 [tria]
-    ▸ Tornar-ho tot als comptes d'origen. → tornar
-    ▸ Pagar primer les pensions, els ajuts i les nòmines del mes. I tornar la resta. ⟨si té compte_nomines (iri) o ballester_compte⟩ → pagar
-        ⇒ +pagar_primer
+    ▸ Tornar-ho al banc. Als comptes d'origen. → tornar
+    ▸ Repartir-ho tot a parts iguals, pel compte de les nòmines. ⟨si té compte_nomines (iri) o ballester_compte⟩ → repartir
+        ⇒ +repartit
 
 [tornar]
-    [SO: aturada] NARRADOR: ROBIN HOOD 2.0: ATURAT. EL QUE QUEDAVA AL COMPTE ZERO TORNA ALS COMPTES D'ORIGEN.
+    [SO: aturada] NARRADOR: TRANSFERÈNCIA: COMPTE ZERO → COMPTES D'ORIGEN. COMPLETADA.
     NARRADOR: El que ja s'ha repartit, es queda repartit. Dotze euros per persona. Una cervesa a tot el món.
     ↪ fi
 
-[pagar]
-    [SO: aturada] NARRADOR: ROBIN HOOD 2.0: ATURAT. PRIMER: PENSIONS, AJUTS I NÒMINES DEL MES. DESPRÉS, LA RESTA ALS COMPTES D'ORIGEN.
-    NARRADOR: Per primera vegada en la història, totes les nòmines del món surten alhora. Fins i tot les de la subcontracta.
-    JUGADORA: Avui, a les dotze, cobra tothom.
+[repartir]
+    [SO: aturada] NARRADOR: TRANSFERÈNCIA: COMPTE ZERO → TOTS ELS COMPTES DEL MÓN, A PARTS IGUALS, PEL COMPTE 0001. COMPLETADA.
+    NARRADOR: Per primera vegada en la història, tothom té el mateix. El bilionari, el Director, la Rius i la subcontracta.
+    JUGADORA: Avui, a les dotze, cobra tothom. I cobra el mateix.
     ↪ fi
 
 [fi]
     VET: Iri... ho has fet?
-    JUGADORA: Ho hem fet. I ara, a fugir.
+    JUGADORA: Ho hem fet. Espera...
+    NARRADOR: La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. No n'ha sortit ni un euro.
+    JUGADORA: Això no pot ser. Els diners han sortit. I continuen aquí.
+    NARRADOR: COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.
+    VET: Prova Rockefeller.
+    JUGADORA: Ja ho he provat. Aquest compte no és del Director. És d'algú que té més que el Director.
+    JUGADORA: Ja hi pensarem. Ara, a fugir.
     NARRADOR: Al despatx, el Director mira la gravació de l'ascensor de servei: «Una tècnica... amb dessuadora?»
     [SO: megafonia_bcmu] NARRADOR: Megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuadora.»
     JUGADORA: La noia amb dessuadora soc jo.
@@ -2374,9 +2405,9 @@ COMENÇA A: hola (si ha vist marcel.intro) · intro
 
 [menu]
     ▸ Què em falta? ⟨si donats < 3⟩ → falten
-    ▸ On és el servidor antic? ⟨una vegada, si donats ≥ 3⟩ → servidor
-    ▸ I com s'hi entra? ⟨una vegada, si donats ≥ 3⟩ → clau
-    ▸ Com es passen coses d'un pis a l'altre, allà dins? ⟨una vegada, si donats ≥ 3⟩ → tub
+    ▸ Doncs ara sí: on és el servidor antic? ⟨una vegada, si donats ≥ 3⟩ → servidor
+    ▸ I un cop hi sigui, com el faig anar? ⟨una vegada, si donats ≥ 3 i marcel_servidor⟩ → clau
+    ▸ El servidor en un pis i la clau al coll d'un altre. Com ho ajunto? ⟨una vegada, si donats ≥ 3 i marcel_clau⟩ → tub
     ▸ I com arribem a Ginebra, si no tenim ni per pizzes? ⟨una vegada, si donats ≥ 3⟩ → vol
     ▸ I el Cap de Seguretat, com és? ⟨una vegada, si donats ≥ 3 i marcel_clau⟩ → ballester
     ▸ Hi ha algú més pel mig, al tercer pis? ⟨una vegada, si donats ≥ 3 i marcel_servidor⟩ → neta
@@ -2661,13 +2692,13 @@ COMENÇA A: aliada (si aliada_rius) · targeta_feta (si té targeta i NO rius_ho
 
 ```
 
-## Diàleg `soler` amb Soler
+## Diàleg `soler` amb Vigilant
 
 ```
 COMENÇA A: xiulet (si alarma_porta) · buscant (si soler_distret) · hola
 
 [hola]
-    SOLER: Bon dia. Si busca la cua, és allà.
+    VIGILANT: Bon dia. Si busca la cua, és allà.
     ↪ menu
 
 [menu]
@@ -2676,9 +2707,9 @@ COMENÇA A: xiulet (si alarma_porta) · buscant (si soler_distret) · hola
 
 [fill]
     TÍTOL: Ara necessites les dues.
-    SOLER: Un nen perdut? Tranquil·la, senyora. El trobarem.
-    SOLER: Com es diu?
-    ⇒ +sync_aeroport, +soler_distret, cigarreta := 12
+    VIGILANT: Un nen perdut? Tranquil·la, senyora. El trobarem.
+    VIGILANT: Com es diu?
+    ⇒ +sync_aeroport, cigarreta := 12
     ↪ nom
 
 [nom]
@@ -2687,39 +2718,40 @@ COMENÇA A: xiulet (si alarma_porta) · buscant (si soler_distret) · hola
         ⇒ cigarreta −= 1
 
 [edat]
-    SOLER: Quants anys té?
+    VIGILANT: Quants anys té?
     ▸ Set. → roba
     ▸ Set i mig. Bé, set i tres quarts, si comptem el temps que va passar a la incubadora, que va ser molt, perquè... → roba
         ⇒ cigarreta −= 1
 
 [roba]
-    SOLER: Com va vestit?
+    VIGILANT: Com va vestit?
     ▸ Samarreta vermella. → busca
     ▸ Samarreta vermella amb un dinosaure que fa de dentista, perquè ell vol ser dentista, i el dinosaure... → busca
         ⇒ cigarreta −= 1
 
 [busca]
-    SOLER: Samarreta vermella, set anys. El busco. No es mogui.
-    NARRADOR: En Soler deixa la porta de personal i se'n va a mirar darrere de cada columna.
+    VIGILANT: Samarreta vermella, set anys. El busco. No es mogui.
+    NARRADOR: El vigilant deixa la porta de personal i se'n va a buscar-lo per la terminal.
+    ⇒ +soler_distret
 
 [buscant]
-    SOLER: Encara no l'he trobat, senyora. Però el trobarem.
+    VIGILANT: Encara no l'he trobat, senyora. Però el trobarem.
 
 [xiulet]
-    SOLER: Què ha estat això? Ha xiulat alguna cosa allà darrere...
+    VIGILANT: Què ha estat això? Ha xiulat alguna cosa allà darrere...
     ▸ BUAAAAA! EL MEU FILL! → plorat
         ⇒ −alarma_porta
     ▸ Res, res. Jo no he sentit res. → res
 
 [plorat]
     [SO: plor] NARRADOR: La Vet plora com una sirena d'ambulància.
-    SOLER: Ja, ja, senyora, no pateixi! El trobarem!
+    VIGILANT: Ja, ja, senyora, no pateixi! El trobarem!
 
 [res]
-    SOLER: Doncs a mi m'ha semblat... Vaig a mirar.
+    VIGILANT: Doncs a mi m'ha semblat... Vaig a mirar.
 
 [adeu]
-    SOLER: Bon viatge.
+    VIGILANT: Bon viatge.
 
 ```
 
@@ -2779,7 +2811,7 @@ COMENÇA A: hola
 
 [menu]
     ▸ Saps obrir un pany intel·ligent? ⟨si sap_pany i NO cal_contrasenya⟩ → pany
-    ▸ La contrasenya és «exceptosinopaga». Tot junt. ⟨si contrasenya_llegida i NO contrasenya_dita⟩ → contrasenya
+    ▸ La contrasenya és «demasi». Tot junt, sense accents. ⟨si contrasenya_llegida i NO contrasenya_dita⟩ → contrasenya
     ▸ Necessito que truquis al bar i facis de dona d'en Tomàs. ⟨si sap_dona i NO trucada_demanada⟩ → trucada
     ▸ Ho tinc tot. Apunta. ⟨si marcel_fet i NO resum_fet⟩ → resum
     ▸ I el robot de neteja: si li dius «NETA, descansa», s'atura. ⟨si resum_fet i marcel_neta i NO iri_sap_neta⟩ → robot
@@ -2886,22 +2918,46 @@ vet_marcel — quan juga vet i vet_marxa i NO prova_marcel · fins que prova_mar
     1. He vingut a parlar amb en Marcel.
     2. En Marcel és a la barra, amb el seu cafè amb llet.
     3. Parlo amb en Marcel.
-vet_tap — quan juga vet i prova_marcel i no té tap i NO marcel_tap i NO tap_tornat · fins que té tap o marcel_tap
+vet_tap — quan juga vet i prova_marcel i no té tap i NO marcel_tap i NO tap_tornat i NO tap_barra · fins que té tap o marcel_tap o tap_barra
     1. El tap del clauer d'en Tomàs. El porta penjat al cinturó.
     2. En Tomàs es treu el clauer quan fa cafè, perquè li molesta.
-    3. Demano a en Tomàs un cafè amb llet per a en Marcel i agafo el clauer de la barra.
-vet_recepta — quan juga vet i prova_marcel i no té recepta i NO marcel_recepta · fins que té recepta o marcel_recepta
+    3. Demano a en Tomàs un cafè amb llet per a en Marcel.
+vet_agafar_tap — quan juga vet i tap_barra i no té tap i NO marcel_tap · fins que té tap o marcel_tap o NO tap_barra
+    1. En Tomàs s'ha tret el clauer per fer el cafè.
+    2. El clauer és a la barra, amb el tap penjat.
+    3. Agafo el clauer de la barra.
+vet_recepta — quan juga vet i prova_marcel i no té recepta i NO marcel_recepta i NO cal_contrasenya · fins que té recepta o marcel_recepta o cal_contrasenya
     1. La recepta de la llimonada és al calaix del rebost.
     2. El calaix té un pany amb aplicació. L'Iri el podria obrir des de casa, amb la contrasenya de la wifi.
-    3. Miro el calaix, truco a l'Iri, llegeixo el rètol, li dic la contrasenya, i quan l'hagi obert agafo la recepta.
-vet_comandament — quan juga vet i prova_marcel i no té comandament i NO marcel_comandament · fins que té comandament o marcel_comandament
+    3. Miro el calaix del rebost i truco a l'Iri perquè l'obri.
+vet_dir_contrasenya — quan juga vet i cal_contrasenya i NO contrasenya_dita i no té recepta i NO marcel_recepta · fins que contrasenya_dita o té recepta o marcel_recepta
+    1. L'Iri necessita la contrasenya de la wifi del bar.
+    2. Als bars, la contrasenya de la wifi sempre és en un rètol.
+    3. Llegeixo el rètol de la wifi i truco a l'Iri per dir-li la contrasenya.
+vet_esperar_pany — quan juga vet i contrasenya_dita i NO calaix_obert i no té recepta i NO marcel_recepta · fins que calaix_obert o té recepta o marcel_recepta
+    1. L'Iri ja té la contrasenya. Ara li toca a ella.
+    2. Des de l'ordinador pot obrir el pany del calaix.
+    3. Canvio a l'Iri: que obri el calaix des de l'ordinador.
+vet_agafar_recepta — quan juga vet i calaix_obert i no té recepta i NO marcel_recepta · fins que té recepta o marcel_recepta
+    1. El calaix del rebost ja és obert.
+    2. La recepta de la llimonada és a dins.
+    3. Obro el calaix del rebost i agafo la recepta.
+vet_comandament — quan juga vet i prova_marcel i no té comandament i NO marcel_comandament i NO trucada_demanada · fins que té comandament o marcel_comandament o trucada_demanada
     1. En Tomàs no deixa el comandament per res del món. Per res?
     2. Només el deixaria per una trucada de la seva dona. Que no existeix. L'Iri podria fer de dona.
-    3. Demano el comandament a en Tomàs, truco a l'Iri perquè truqui al bar, i agafo el comandament de la barra.
+    3. Demano el comandament a en Tomàs. Si només el deixaria per la seva dona, truco a l'Iri perquè faci de dona.
+vet_esperar_trucada — quan juga vet i trucada_demanada i NO trucada_feta i no té comandament i NO marcel_comandament · fins que trucada_feta o té comandament o marcel_comandament
+    1. L'Iri ha de trucar al bar i fer de dona d'en Tomàs.
+    2. Fins que no soni el telèfon, en Tomàs no deixa el comandament.
+    3. Canvio a l'Iri: que truqui al bar des de l'ordinador.
+vet_agafar_comandament — quan juga vet i tomas_rebost i no té comandament i NO marcel_comandament · fins que té comandament o marcel_comandament
+    1. En Tomàs ha anat al rebost a parlar amb la «dona».
+    2. El comandament s'ha quedat a la barra. Ara o mai.
+    3. Agafo el comandament de la barra.
 vet_donar — quan juga vet i (té tap o té recepta o té comandament) i donats < 3 · fins que donats ≥ 3
     1. En Marcel vol les tres coses.
     2. Li he de donar el que tinc.
-    3. Dono a en Marcel el tap, la recepta i el comandament.
+    3. Dono a en Marcel el que porto: el tap, la recepta o el comandament.
 vet_preguntar — quan juga vet i donats ≥ 3 i NO marcel_fet · fins que marcel_fet
     1. En Marcel ja em fia. Ara, preguntes.
     2. Vull saber on és el servidor, com s'hi entra, com es passen coses i com arribem a Ginebra.
@@ -2919,17 +2975,17 @@ vet_preparar — quan juga vet i bar_fet i NO sync_aeroport i NO aeroport_fet i 
     2. A objectes perduts hi ha un maletí; a la cafeteria, unes ulleres.
     3. Miro el maletí i el reclamo a objectes perduts. Agafo les ulleres de la cafeteria.
 vet_distreure — quan juga vet i bar_fet i NO sync_aeroport i NO aeroport_fet · fins que sync_aeroport o aeroport_fet
-    1. En Soler vigila la porta de personal. Necessito que la deixi.
+    1. El vigilant no es mou de la porta de personal. Necessito que la deixi.
     2. Un guàrdia de cor tendre no deixaria sola una mare desesperada.
-    3. Parlo amb en Soler: he perdut el meu fill.
+    3. Parlo amb el vigilant: he perdut el meu fill.
 vet_codi — quan juga vet i soler_distret i NO codi_porta_llegit · fins que codi_porta_llegit
     1. La porta de personal té un codi. Els codis sempre són a prop.
-    2. Ara que en Soler no hi és, puc mirar el taulell de facturació.
+    2. Ara que el vigilant no hi és, puc mirar el taulell de facturació.
     3. Miro el taulell: sota hi ha el codi.
 vet_plorar — quan juga vet i alarma_porta · fins que NO alarma_porta
-    1. La porta ha xiulat. En Soler ho ha sentit.
+    1. La porta ha xiulat. El vigilant ho ha sentit.
     2. Cal tapar-ho amb un drama més gran.
-    3. Parlo amb en Soler i ploro més fort.
+    3. Parlo amb el vigilant i ploro més fort.
 vet_trobat — quan juga vet i iri_fora i NO aeroport_fet · fins que aeroport_fet
     1. L'Iri ja és fora. Cal acabar la funció.
     2. Un nen perdut s'acaba quan es troba.
@@ -2939,9 +2995,9 @@ vet_espera_iri — quan juga vet i (acte1_fet i NO acte2_fet) i vet_a_seguretat 
     2. Iri, com ho portes?
     3. Canvio a l'Iri: quan sigui al Llibre Major i comenci a teclejar, em necessitarà.
 iri_aeroport_espera — quan juga iri i bar_fet i NO soler_distret i NO aeroport_fet · fins que soler_distret o aeroport_fet
-    1. Amb en Soler aquí davant no puc fer res.
-    2. La Vet ha de fer que en Soler se'n vagi.
-    3. Canvio a la Vet: que distregui en Soler.
+    1. Amb el vigilant aquí davant no puc fer res.
+    2. La Vet ha de fer que el vigilant se'n vagi.
+    3. Canvio a la Vet: que distregui el vigilant.
 iri_codi — quan juga iri i soler_distret i NO porta_oberta · fins que porta_oberta
     1. Necessito el codi de la porta.
     2. La Vet és al taulell. Potser el veu.
@@ -2953,7 +3009,7 @@ iri_imprimir — quan juga iri i soler_distret i porta_oberta i no té acreditac
 iri_sortir — quan juga iri i té acreditacions i NO iri_fora · fins que iri_fora
     1. Ja les tinc. Fora d'aquí.
     2. La porta de l'oficina.
-    3. Surto per la porta (amb en Soler distret).
+    3. Surto per la porta (amb el vigilant distret).
 iri_fora — quan juga iri i iri_fora i NO aeroport_fet · fins que aeroport_fet
     1. Ja soc fora. Ara, que la Vet acabi la funció.
     2. Canvio a la Vet.
@@ -3022,10 +3078,14 @@ iri_llibre — quan juga iri i iri_a_llibre i vet_a_seguretat i NO sync_collaret
     1. Hola, preciós. Què em demanes?
     2. La Vet ja és a seguretat.
     3. Faig servir el Llibre Major.
-iri_teclejar — quan juga iri i sync_collaret i (coberta ≥ 1 o codis = 0) · fins que cal_clau
+iri_teclejar — quan juga iri i sync_collaret i coberta ≥ 1 · fins que cal_clau o coberta < 1
     1. Ara no em sent ningú.
     2. La Vet ja l'entreté. És el moment.
     3. Faig servir el Llibre Major: teclejo el codi.
+iri_teclejar_primer — quan juga iri i sync_collaret i codis = 0 · fins que codis ≥ 1 o cal_clau
+    1. El primer codi. Fa bip, però en Ballester encara no sospita res.
+    2. El primer bip s'escapa sol. Els altres, la Vet els haurà de tapar.
+    3. Faig servir el Llibre Major: teclejo el primer codi.
 iri_esperar — quan juga iri i sync_collaret i coberta < 1 i codis ≥ 1 · fins que coberta ≥ 1 o cal_clau
     1. Si teclejo sense que la Vet el tapi, en Ballester el sentirà.
     2. Vet, avisa'm quan l'hagis distret.
@@ -3072,7 +3132,7 @@ vet_espera_teclejar — quan juga vet i sync_mobil i codi_llegit · fins que cod
     3. Canvio a l'Iri: que tecleji el codi.
 vet_decidir — quan juga vet i codi_teclejat i NO virus_aturat · fins que virus_aturat
     1. El codi ha entrat. Ara, l'Iri decideix.
-    2. El Llibre Major li pregunta què fa amb el que queda.
+    2. El Llibre Major li pregunta què fa amb els diners del compte zero.
     3. Canvio a l'Iri.
 vet_baixar — quan juga vet i virus_aturat i NO vet_al_carrer i sospita_max < 50 · fins que vet_al_carrer
     1. Ara, sortir com he entrat: per la porta gran.
@@ -3102,10 +3162,14 @@ iri_gos — quan juga iri i pista_contrasenya i NO sap_rockefeller · fins que s
     1. El millor amic del Director deu ser el gos. Però no sé com es diu.
     2. La Vet és al despatx. Allà segur que hi ha alguna cosa del gos.
     3. Canvio a la Vet: que esbrini com es diu el gos.
-iri_demanar — quan juga iri i sync_mobil i NO codi_demanat · fins que codi_demanat
+iri_demanar — quan juga iri i sync_mobil i NO codi_demanat i coberta_mobil ≤ 0 i NO mobil_resolt · fins que codi_demanat o coberta_mobil > 0 o mobil_resolt
     1. El codi arriba al mòbil del Director. Si el mira, ho cancel·la.
     2. Primer, que la Vet l'entretingui. Després, demano el codi.
-    3. Quan la Vet tingui el Director distret, faig servir el Llibre Major per demanar el codi.
+    3. Canvio a la Vet: que distregui el Director abans que jo demani el codi.
+iri_demanar_ara — quan juga iri i sync_mobil i NO codi_demanat i (coberta_mobil > 0 o mobil_resolt) · fins que codi_demanat
+    1. La Vet té el Director entretingut. És el moment.
+    2. Ara el codi pot arribar al mòbil sense que ell el miri.
+    3. Faig servir el Llibre Major per demanar el codi.
 iri_esperar_codi — quan juga iri i sync_mobil i codi_demanat i NO codi_llegit · fins que codi_llegit
     1. El codi ja és al mòbil del Director.
     2. La Vet l'ha de llegir mentre ell no mira.
@@ -3116,7 +3180,7 @@ iri_teclejar_codi — quan juga iri i sync_mobil i codi_llegit · fins que codi_
     3. Faig servir el Llibre Major i teclejo el codi.
 iri_decidir — quan juga iri i codi_teclejat i NO virus_aturat · fins que virus_aturat
     1. El codi ha entrat. Ara, la pregunta difícil.
-    2. Què fem amb el que queda al compte zero?
+    2. Tots els diners del món, al compte zero. Els torno al banc o els reparteixo?
     3. Faig servir el Llibre Major i decideixo.
 iri_escala — quan juga iri i virus_aturat i NO escala_provada · fins que escala_provada
     1. Ara, sortir. Per on?
@@ -3134,22 +3198,23 @@ iri_saltar — quan juga iri i iri_llesta · fins que escapada
     1. Coixí fet. Ara, la Vet.
     2. La Vet ha de ser al carrer i obrir el contenidor.
     3. Canvio a la Vet: que surti del banc i obri el contenidor.
-vet_entretenir — quan juga vet i sync_mobil i NO mobil_resolt i coberta_mobil ≤ 0 i NO codi_teclejat · fins que coberta_mobil > 0 o mobil_resolt o codi_teclejat
+vet_entretenir — quan juga vet i sync_mobil i NO mobil_resolt i coberta_mobil ≤ 0 i NO codi_llegit i NO codi_teclejat · fins que coberta_mobil > 0 o mobil_resolt o codi_llegit o codi_teclejat
     1. Si el Director gira el mòbil quan hi ha el codi, ho cancel·la tot.
     2. L'he de tenir entretingut abans que l'Iri demani el codi: la sostenibilitat, el gos... o algú que m'ajudi.
-    3. Parlo amb el Director: una reunió sobre sostenibilitat el tapa dos torns; el gos, un. Si la senyora Pons o en Ballester són amb mi, ho resolen sols.
+    3. Parlo amb el Director: una reunió sobre sostenibilitat el tapa dos torns (la segona vegada, un); el gos, un. Si la senyora Pons o en Ballester són amb mi, ho resolen sols.
 ```
 
 ## Finals
 
 ```
-final_taula «Final · La taula llarga» — quan escapada i (pagar_primer i aliats ≥ 3)
+final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats ≥ 3)
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: ...i avui, per primera vegada, totes les pensions del món han arribat el mateix dia. ⟨si pagar_primer⟩
+    NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
+    NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
     IRI: No hem canviat el món.
     VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
-    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si pagar_primer i aliats ≥ 3⟩
+    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
     NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
     RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
@@ -3168,16 +3233,17 @@ final_taula «Final · La taula llarga» — quan escapada i (pagar_primer i ali
     NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
-    NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
+    NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
 final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: ...i avui, per primera vegada, totes les pensions del món han arribat el mateix dia. ⟨si pagar_primer⟩
+    NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
+    NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
     IRI: No hem canviat el món.
     VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
-    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si pagar_primer i aliats ≥ 3⟩
+    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
     NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
     RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
@@ -3196,16 +3262,17 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
-    NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
+    NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
 final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
-    NARRADOR: ...i avui, per primera vegada, totes les pensions del món han arribat el mateix dia. ⟨si pagar_primer⟩
+    NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
+    NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
     IRI: No hem canviat el món.
     VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
-    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si pagar_primer i aliats ≥ 3⟩
+    NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
     NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
     RIUS: Avui hem fitxat a l'hora. Tota la colla. ⟨si aliada_rius⟩
@@ -3224,7 +3291,7 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
-    NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
+    NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
     Tot torna a començar.
 ```

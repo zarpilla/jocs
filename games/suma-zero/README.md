@@ -139,7 +139,7 @@ npm run benne:create -- --from <checkout de Benne>   # crea suma-zero/ (amb --mo
   collaret (els bips del Llibre Major i en Ballester).
 - **Acte 3 jugable de cap a peus** (en mode text, als tests i a Benne): el muntatge del virus,
   la planta noble (la senyora Pons i el Director, la contrasenya i la sincronia del mòbil, amb la regla del
-  Director que mira el mòbil), la decisió de l'Iri (tornar-ho tot o pagar primer les nòmines) i la sortida (l'escala
+  Director que mira el mòbil), la decisió de l'Iri (tornar els diners al banc o repartir-los tots a parts iguals; i el compte zero, que continua ple i amb contrasenya) i la sortida (l'escala
   plena, el conducte amb NETA-3 o l'extintor, la recepcionista i el contenidor). Tres finals segons els aliats.
 - **Regles en codi:** la sincronia (`game/logic/sincronia.ts`: per torns a l'aeroport, per sospita al collaret),
   el tub pneumàtic (`tub.ts`) i la sospita del Director (`sospita.ts`), sobre dues novetats del nucli:

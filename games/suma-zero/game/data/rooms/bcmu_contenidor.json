@@ -62,7 +62,7 @@
           "if": {
             "all": [
               {
-                "flag": "pagar_primer"
+                "flag": "repartit"
               },
               {
                 "var": "aliats",

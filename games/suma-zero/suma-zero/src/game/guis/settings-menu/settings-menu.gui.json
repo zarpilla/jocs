@@ -285,6 +285,18 @@
         "offsetY": 1
       },
       "zIndex": 103
+    },
+    {
+      "type": "text",
+      "id": "version",
+      "x": 110,
+      "y": 187,
+      "text": "",
+      "font": "suma-regular",
+      "fontSize": 8,
+      "color": "#6f9c94",
+      "align": "left",
+      "zIndex": 103
     }
   ],
   "modal": true,

@@ -419,6 +419,216 @@
         "h": 270
       },
       "duration": 100
+    },
+    "aeroport_personal 20.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 21.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 22.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 23.aseprite": {
+      "frame": {
+        "x": 3360,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 24.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 25.aseprite": {
+      "frame": {
+        "x": 480,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 26.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 27.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 28.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "aeroport_personal 29.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -428,7 +638,7 @@
     "format": "RGBA8888",
     "size": {
       "w": 3840,
-      "h": 810
+      "h": 1080
     },
     "scale": "1",
     "frameTags": [
@@ -464,6 +674,13 @@
         "name": "fluorescent",
         "from": 4,
         "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "avio",
+        "from": 20,
+        "to": 29,
         "direction": "forward",
         "color": "#000000ff"
       }

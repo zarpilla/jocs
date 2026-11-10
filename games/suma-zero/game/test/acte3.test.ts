@@ -16,21 +16,34 @@ describe('Acte 3 · camins', () => {
     expect(p.room).toBe('bcmu_escombraries');
     jugarActe3(p);
     expect(n.flag('virus_aturat')).toBe(true);
-    expect(n.flag('pagar_primer')).toBe(false);
+    expect(n.flag('repartit')).toBe(false);
     expect(n.getVar('reinicis_mobil')).toBe(0);
     expect(n.resolveEnding()).toBe('final_base');
+    // al bar del final, sense aliats, cap dels quatre (la colla de sempre no té condició: hi és sempre)
+    const alBar = n.hotspotsIn('final_bar');
+    expect(alBar.map((h) => h.id).sort()).toEqual(['ballester', 'neta', 'pons', 'rius', 'tele_apagada']);
+    expect(alBar.some((h) => h.visible)).toBe(false);
+    // en Diu, a la cistella; quan mossega el cable (una línia del final), damunt la barra i la tele s'apaga
+    expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 430 });
+    const mossegada = n.ending('final_base').scene.find((l) => l.key === 'final.diu1')!;
+    n.apply(mossegada.effects!);
+    expect(n.placeOf('diu', 'final_bar')).toMatchObject({ x: 404 });
+    expect(n.hotspotsIn('final_bar').find((h) => h.id === 'tele_apagada')?.visible).toBe(true);
+    expect(n.outfitOf('vet')).toBe('');
     const estat = Object.fromEntries(n.quests().map((q) => [q.id, q.status]));
     expect(estat).toMatchObject({ acte3: 'completed', senyora_pons: 'failed' });
   });
 
-  it('amb tots quatre aliats i les nòmines primer: «La taula llarga»', () => {
+  it('amb tots quatre aliats i repartint-ho tot: «La taula llarga»', () => {
     const { n, p } = ambElVirus({ aliats: true });
-    jugarActe3(p, { pons: true, mobil: 'pons', pagar: true, neta: true });
+    jugarActe3(p, { pons: true, mobil: 'pons', repartir: true, neta: true });
     expect(n.getVar('aliats')).toBe(4);
-    expect(n.flag('pagar_primer')).toBe(true);
+    expect(n.flag('repartit')).toBe(true);
     expect(n.resolveEnding()).toBe('final_taula');
+    // i al bar, tots quatre aliats a la taula
+    expect(n.hotspotsIn('final_bar').filter((h) => h.id !== 'tele_apagada').every((h) => h.visible)).toBe(true);
     const escena = texts(n.ending('final_taula').scene);
-    for (const t of ['taula llarga', 'Un tallat', 'Taula tres', 'fitxat a l\'hora', 'augment', 'pensions del món']) expect(escena).toContain(t);
+    for (const t of ['taula llarga', 'Un tallat', 'Taula tres', 'fitxat a l\'hora', 'augment', 'tothom té el mateix', 'Contrasenya?']) expect(escena).toContain(t);
     // el bar, els crèdits i els postcrèdits, en aquest ordre; i el so de la mossegada d'en Diu
     const final = n.ending('final_taula');
     expect(final.scene.filter((l) => l.room).map((l) => l.room)).toEqual(['final_bar', 'credits', 'postcredits']);
@@ -40,7 +53,7 @@ describe('Acte 3 · camins', () => {
 
   it('en Ballester immobilitza el Director i diu el compte de les nòmines', () => {
     const { n, p } = ambElVirus({ aliats: true });
-    jugarActe3(p, { mobil: 'ballester', pagar: true, neta: true });
+    jugarActe3(p, { mobil: 'ballester', repartir: true, neta: true });
     expect(n.flag('ballester_compte')).toBe(true);
     expect(n.flag('aliada_pons')).toBe(false);
     expect(n.resolveEnding()).toBe('final_taula');

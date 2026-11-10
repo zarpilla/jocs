@@ -461,6 +461,10 @@
         {
           "flag": "tap_tornat",
           "is": false
+        },
+        {
+          "flag": "tap_barra",
+          "is": false
         }
       ]
     },
@@ -471,6 +475,9 @@
         },
         {
           "flag": "marcel_tap"
+        },
+        {
+          "flag": "tap_barra"
         }
       ]
     },
@@ -478,6 +485,46 @@
       "pista.vet_tap.1",
       "pista.vet_tap.2",
       "pista.vet_tap.3"
+    ]
+  },
+  "vet_agafar_tap": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "tap_barra"
+        },
+        {
+          "hasItem": "tap",
+          "is": false
+        },
+        {
+          "flag": "marcel_tap",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "tap"
+        },
+        {
+          "flag": "marcel_tap"
+        },
+        {
+          "flag": "tap_barra",
+          "is": false
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_agafar_tap.1",
+      "pista.vet_agafar_tap.2",
+      "pista.vet_agafar_tap.3"
     ]
   },
   "vet_recepta": {
@@ -489,6 +536,135 @@
         },
         {
           "flag": "prova_marcel"
+        },
+        {
+          "hasItem": "recepta",
+          "is": false
+        },
+        {
+          "flag": "marcel_recepta",
+          "is": false
+        },
+        {
+          "flag": "cal_contrasenya",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "recepta"
+        },
+        {
+          "flag": "marcel_recepta"
+        },
+        {
+          "flag": "cal_contrasenya"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_recepta.1",
+      "pista.vet_recepta.2",
+      "pista.vet_recepta.3"
+    ]
+  },
+  "vet_dir_contrasenya": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "cal_contrasenya"
+        },
+        {
+          "flag": "contrasenya_dita",
+          "is": false
+        },
+        {
+          "hasItem": "recepta",
+          "is": false
+        },
+        {
+          "flag": "marcel_recepta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "contrasenya_dita"
+        },
+        {
+          "hasItem": "recepta"
+        },
+        {
+          "flag": "marcel_recepta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_dir_contrasenya.1",
+      "pista.vet_dir_contrasenya.2",
+      "pista.vet_dir_contrasenya.3"
+    ]
+  },
+  "vet_esperar_pany": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "contrasenya_dita"
+        },
+        {
+          "flag": "calaix_obert",
+          "is": false
+        },
+        {
+          "hasItem": "recepta",
+          "is": false
+        },
+        {
+          "flag": "marcel_recepta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "calaix_obert"
+        },
+        {
+          "hasItem": "recepta"
+        },
+        {
+          "flag": "marcel_recepta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_esperar_pany.1",
+      "pista.vet_esperar_pany.2",
+      "pista.vet_esperar_pany.3"
+    ]
+  },
+  "vet_agafar_recepta": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "calaix_obert"
         },
         {
           "hasItem": "recepta",
@@ -511,9 +687,9 @@
       ]
     },
     "levels": [
-      "pista.vet_recepta.1",
-      "pista.vet_recepta.2",
-      "pista.vet_recepta.3"
+      "pista.vet_agafar_recepta.1",
+      "pista.vet_agafar_recepta.2",
+      "pista.vet_agafar_recepta.3"
     ]
   },
   "vet_comandament": {
@@ -525,6 +701,92 @@
         },
         {
           "flag": "prova_marcel"
+        },
+        {
+          "hasItem": "comandament",
+          "is": false
+        },
+        {
+          "flag": "marcel_comandament",
+          "is": false
+        },
+        {
+          "flag": "trucada_demanada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "comandament"
+        },
+        {
+          "flag": "marcel_comandament"
+        },
+        {
+          "flag": "trucada_demanada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_comandament.1",
+      "pista.vet_comandament.2",
+      "pista.vet_comandament.3"
+    ]
+  },
+  "vet_esperar_trucada": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "trucada_demanada"
+        },
+        {
+          "flag": "trucada_feta",
+          "is": false
+        },
+        {
+          "hasItem": "comandament",
+          "is": false
+        },
+        {
+          "flag": "marcel_comandament",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "trucada_feta"
+        },
+        {
+          "hasItem": "comandament"
+        },
+        {
+          "flag": "marcel_comandament"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_esperar_trucada.1",
+      "pista.vet_esperar_trucada.2",
+      "pista.vet_esperar_trucada.3"
+    ]
+  },
+  "vet_agafar_comandament": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "tomas_rebost"
         },
         {
           "hasItem": "comandament",
@@ -547,9 +809,9 @@
       ]
     },
     "levels": [
-      "pista.vet_comandament.1",
-      "pista.vet_comandament.2",
-      "pista.vet_comandament.3"
+      "pista.vet_agafar_comandament.1",
+      "pista.vet_agafar_comandament.2",
+      "pista.vet_agafar_comandament.3"
     ]
   },
   "vet_donar": {
@@ -1687,28 +1949,63 @@
           "flag": "sync_collaret"
         },
         {
-          "any": [
-            {
-              "var": "coberta",
-              "op": ">=",
-              "value": 1
-            },
-            {
-              "var": "codis",
-              "op": "==",
-              "value": 0
-            }
-          ]
+          "var": "coberta",
+          "op": ">=",
+          "value": 1
         }
       ]
     },
     "doneWhen": {
-      "flag": "cal_clau"
+      "any": [
+        {
+          "flag": "cal_clau"
+        },
+        {
+          "var": "coberta",
+          "op": "<",
+          "value": 1
+        }
+      ]
     },
     "levels": [
       "pista.iri_teclejar.1",
       "pista.iri_teclejar.2",
       "pista.iri_teclejar.3"
+    ]
+  },
+  "iri_teclejar_primer": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "sync_collaret"
+        },
+        {
+          "var": "codis",
+          "op": "==",
+          "value": 0
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "var": "codis",
+          "op": ">=",
+          "value": 1
+        },
+        {
+          "flag": "cal_clau"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_teclejar_primer.1",
+      "pista.iri_teclejar_primer.2",
+      "pista.iri_teclejar_primer.3"
     ]
   },
   "iri_esperar": {
@@ -2285,6 +2582,64 @@
         {
           "flag": "codi_demanat",
           "is": false
+        },
+        {
+          "var": "coberta_mobil",
+          "op": "<=",
+          "value": 0
+        },
+        {
+          "flag": "mobil_resolt",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "codi_demanat"
+        },
+        {
+          "var": "coberta_mobil",
+          "op": ">",
+          "value": 0
+        },
+        {
+          "flag": "mobil_resolt"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_demanar.1",
+      "pista.iri_demanar.2",
+      "pista.iri_demanar.3"
+    ]
+  },
+  "iri_demanar_ara": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "sync_mobil"
+        },
+        {
+          "flag": "codi_demanat",
+          "is": false
+        },
+        {
+          "any": [
+            {
+              "var": "coberta_mobil",
+              "op": ">",
+              "value": 0
+            },
+            {
+              "flag": "mobil_resolt"
+            }
+          ]
         }
       ]
     },
@@ -2292,9 +2647,9 @@
       "flag": "codi_demanat"
     },
     "levels": [
-      "pista.iri_demanar.1",
-      "pista.iri_demanar.2",
-      "pista.iri_demanar.3"
+      "pista.iri_demanar_ara.1",
+      "pista.iri_demanar_ara.2",
+      "pista.iri_demanar_ara.3"
     ]
   },
   "iri_esperar_codi": {
@@ -2497,6 +2852,10 @@
           "value": 0
         },
         {
+          "flag": "codi_llegit",
+          "is": false
+        },
+        {
           "flag": "codi_teclejat",
           "is": false
         }
@@ -2511,6 +2870,9 @@
         },
         {
           "flag": "mobil_resolt"
+        },
+        {
+          "flag": "codi_llegit"
         },
         {
           "flag": "codi_teclejat"

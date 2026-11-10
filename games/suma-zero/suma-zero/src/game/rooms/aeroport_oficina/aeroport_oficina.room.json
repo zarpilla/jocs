@@ -196,6 +196,34 @@
           "frameDuration": 70
         }
       }
+    },
+    {
+      "id": "persiana",
+      "tag": "persiana",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "persiana": {
+          "loop": true,
+          "frameDuration": 180
+        }
+      }
+    },
+    {
+      "id": "segons",
+      "tag": "segons",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "segons": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
     }
   ],
   "characters": [

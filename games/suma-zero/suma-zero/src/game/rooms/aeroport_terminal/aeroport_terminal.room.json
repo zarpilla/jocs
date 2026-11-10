@@ -244,6 +244,34 @@
       },
       "zIndex": 20,
       "baseline": 160
+    },
+    {
+      "id": "panell",
+      "tag": "panell",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "panell": {
+          "loop": true,
+          "frameDuration": 650
+        }
+      }
+    },
+    {
+      "id": "cafe",
+      "tag": "cafe",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cafe": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
     }
   ],
   "characters": [

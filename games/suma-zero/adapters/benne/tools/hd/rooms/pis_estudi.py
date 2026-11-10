@@ -76,7 +76,7 @@ def floor(cv):
     cv.tint(200, FLOOR_Y + 12, 370, 200, (60, 180, 170), lambda x, y: 0.18 * max(0, 1 - abs(x - 283) / 90) * max(0, 1 - (y - 162) / 40))
 
 
-def window(cv, rain=0):
+def window(cv, rain=0, neon=True):
     x0, y0, x1, y1 = 34, 30, 124, 112
     for y in range(y0 + 3, y1 - 2):
         for x in range(x0 + 3, x1 - 2):
@@ -92,8 +92,8 @@ def window(cv, rain=0):
     for j in range(5):
         for x in (68, 70, 72, 76, 80, 82, 84, 88, 90, 92):
             if hr(x, j) > 0.35:
-                cv.put(x, 84 + j, NEON, 3.6, lit=0)
-    cv.glow(80, 86, 18, (255, 90, 200), 0.4)
+                cv.put(x, 84 + j, NEON, 3.6 if neon or x < 76 else 0.7, lit=0)   # neon=False: la meitat dreta, fosa
+    cv.glow(80, 86, 18, (255, 90, 200), 0.4 if neon else 0.22)
     # pluja: regalims al vidre
     for i in range(26):
         rx = x0 + 4 + int(hr(i, 9) * (x1 - x0 - 8))
@@ -339,3 +339,45 @@ def _frames():
 
 
 ANIMS = {'pantalles': {'frames': _frames, 'frameDuration': 200}}
+
+
+# ─── Animacions de més: el neó que falla i el disc dur ─────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+# la meitat dreta del rètol de la pizzeria: encès (1) o fos (0), un fotograma per pas
+NEON_SEQ = [1] * 14 + [0, 1, 0, 0, 1, 1, 0, 0, 0, 1]
+
+
+def _frames_neo():
+    """El rètol de neó del carrer, a la finestra: de tant en tant la meitat dreta parpelleja i es fon."""
+    base = _base()
+    cv = Canvas(light=LIGHT, img=base.copy())
+    window(cv, neon=False)
+    off = _diff(cv.img, base)
+    on = _diff(base, base)
+    return [on if k else off for k in NEON_SEQ]
+
+
+# el llum del disc dur de la torre: activitat irregular (1 encès, 0 apagat)
+DISK_SEQ = [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0]
+
+
+def _frames_disc():
+    """El llumet ambre del disc dur de la torre, sota la taula, que parpelleja mentre l'script de l'Iri treballa."""
+    base = _base()
+    cv = Canvas(light=LIGHT, img=base.copy())
+    cv.flat(218, 132, (255, 170, 60))
+    cv.flat(219, 132, (200, 110, 30))
+    cv.glow(218, 132, 3, (255, 160, 60), 0.35)
+    lit = _diff(cv.img, base)
+    dark = _diff(base, base)
+    return [lit if k else dark for k in DISK_SEQ]
+
+
+ANIMS['neo'] = {'frames': _frames_neo, 'frameDuration': 110}
+ANIMS['disc_dur'] = {'frames': _frames_disc, 'frameDuration': 90}

@@ -106,8 +106,10 @@ def floor(cv):
 
 # ─── L'ascensor ────────────────────────────────────────────────────────────
 
-def elevator(cv):
-    """Portes daurades art déco (com al vestíbul), amb l'indicador d'agulla al màxim: la planta noble."""
+def elevator(cv, needle=0):
+    """Portes daurades art déco (com al vestíbul), amb l'indicador d'agulla al màxim: la planta noble.
+
+    `needle`: quants graus recula l'agulla des del màxim (per a l'animació: tremola, però no baixa mai)."""
     x0, y0, x1, y1 = 17, 44, 63, FLOOR_Y - 1
     obox(cv, x0 - 3, y0 - 3, x1 + 3, y1, MARBLE, 3.0)
     for lx0, lx1 in ((x0, (x0 + x1) // 2), ((x0 + x1) // 2 + 1, x1)):
@@ -129,7 +131,8 @@ def elevator(cv):
     for k in range(5):
         a = math.radians(180 + k * 45)
         cv.flat(round(cx + math.cos(a) * 6), round(cy + math.sin(a) * 4.6), (60, 40, 20))
-    cv.line(cx, cy - 1, cx + 6, cy - 1, [(150, 20, 20)], 0, lit=0)
+    a = math.radians(-needle)
+    cv.line(cx, cy - 1, round(cx + math.cos(a) * 6), round(cy - 1 + math.sin(a) * 6), [(150, 20, 20)], 0, lit=0)
     # el botó
     obox(cv, x1 + 5, 94, x1 + 8, 106, BRASS, 3.4)
     cv.disc(x1 + 6.5, 100, 1.2, 1.2, [(255, 220, 140)], 0, lit=0)
@@ -229,8 +232,10 @@ def waiting_chair(cv):
     cv.darken(x0 - 4, 151, x1 + 6, 154, 0.5)
 
 
-def ficus(cv, cx, top=96):
-    """Un ficus en un test de llautó: un tronc prim i una copa atapeïda de fulles."""
+def ficus(cv, cx, top=96, sway=None):
+    """Un ficus en un test de llautó: un tronc prim i una copa atapeïda de fulles.
+
+    `sway`: fase (radiants) del corrent de l'aire condicionat que en gronxa les fulles (animació `ficus`)."""
     cv.line(cx, 134, cx - 1, top + 14, MAHOG, 3.0)
     cv.line(cx - 1, top + 22, cx - 6, top + 14, MAHOG, 2.6)
     cv.line(cx, top + 18, cx + 5, top + 10, MAHOG, 2.6)
@@ -239,6 +244,10 @@ def ficus(cv, cx, top=96):
         r = math.sqrt(hr(i, 12))
         lx = cx + math.cos(a) * r * 11
         ly = top + 12 + math.sin(a) * r * 10
+        if sway is not None:                                          # les de dalt es mouen més
+            h = min(1.0, max(0.0, (top + 20 - ly) / 16))
+            lx += h * (0.8 * math.sin(sway) + 0.25 * math.sin(2 * sway + i * 0.3))
+            ly += h * 0.3 * math.cos(sway + i * 0.3)
         shade = 3.6 - math.sin(a) * r * 0.9 - (lx - cx) * 0.04 + (hr(i, 13) - 0.5) * 0.8
         cv.disc(lx, ly, 2.2, 1.5, LEAF, lambda nx, ny, v=shade: v - ny * 0.6)
     obox(cv, cx - 6, 134, cx + 6, 151, BRASS, 3.4)
@@ -405,19 +414,19 @@ def door(cv):
 
 # ─── Composició ────────────────────────────────────────────────────────────
 
-def bg(cv):
+def bg(cv, capsule=None, needle=0, sway=None):
     wall(cv)
     floor(cv)
     for sx in (100, 186, 314, 372):
         sconce(cv, sx)
-    elevator(cv)
-    tub_station(cv, 80, 66, 98, 110)
+    elevator(cv, needle)
+    tub_station(cv, 80, 66, 98, 110, capsule=capsule)
     paintings(cv)
     employee(cv)
     waiting_chair(cv)
-    ficus(cv, 162)
+    ficus(cv, 162, sway=sway)
     door(cv)
-    ficus(cv, 462, top=92)
+    ficus(cv, 462, top=92, sway=None if sway is None else sway + 2.2)
     desk(cv)
     bankers_lamp(cv)
     pen_holder(cv)
@@ -427,3 +436,77 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+# ─── Animació: una càpsula que puja pel tub ───────────────────────────────
+# El banc no para: de tant en tant, una càpsula surt disparada cap als pisos de dalt.
+
+ANIM_N = 30
+CAPSULE = (66, 50, 34, 18, 2, -14)          # la y de la càpsula als primers fotogrames; la resta, buit
+
+
+def _frames():
+    from hd.pix import Canvas
+    from hd.rooms.comu import _diff
+    base = Canvas(light=LIGHT)
+    bg(base)
+    empty = None
+    frames = []
+    for i in range(ANIM_N):
+        if i < len(CAPSULE):
+            cv = Canvas(light=LIGHT)
+            bg(cv, capsule=CAPSULE[i])
+            frames.append(_diff(cv.img, base.img))
+        else:
+            empty = empty or _diff(base.img, base.img)
+            frames.append(empty)
+    return frames
+
+
+ANIMS = {'tub': {'frames': _frames, 'frameDuration': 150}}
+
+
+# ─── Animació: l'agulla de l'ascensor ─────────────────────────────────────
+# Clavada a dalt de tot, però de tant en tant fa un tremolor (l'ascensor vol baixar i no el deixen).
+
+NEEDLE = (0,) * 12 + (9, 16, 6, 12, 3, 0, 5, 0)   # graus que recula a cada fotograma
+
+
+def _needle_frames():
+    from hd.pix import Canvas
+    from hd.rooms.comu import _diff
+    base = Canvas(light=LIGHT)
+    bg(base)
+    empty = None
+    frames = []
+    for d in NEEDLE:
+        if d:
+            cv = Canvas(light=LIGHT)
+            bg(cv, needle=d)
+            frames.append(_diff(cv.img, base.img))
+        else:
+            empty = empty or _diff(base.img, base.img)
+            frames.append(empty)
+    return frames
+
+
+ANIMS['agulla'] = {'frames': _needle_frames, 'frameDuration': 120}
+
+
+# ─── Animació: els ficus, a l'aire condicionat ────────────────────────────
+# L'únic que es mou a la planta noble quan no passa cap càpsula: les fulles dels dos ficus, cadascun al seu ritme.
+
+def _ficus_frames():
+    from hd.pix import Canvas
+    from hd.rooms.comu import _diff
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(8):
+        cv = Canvas(light=LIGHT)
+        bg(cv, sway=i * math.tau / 8)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS['ficus'] = {'frames': _ficus_frames, 'frameDuration': 230}
