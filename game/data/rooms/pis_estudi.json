@@ -35,7 +35,11 @@
         },
         {
           "who": "player",
-          "text": "sala.pis_estudi.intro7",
+          "text": "sala.pis_estudi.intro7"
+        },
+        {
+          "who": "player",
+          "text": "sala.pis_estudi.intro8",
           "sound": "miol"
         }
       ],
@@ -43,7 +47,8 @@
         {
           "startQuest": "acte1"
         }
-      ]
+      ],
+      "walkIn": "left"
     }
   ],
   "hotspots": {
@@ -310,6 +315,24 @@
               }
             },
             {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev3b",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev3c",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
               "who": "player",
               "text": "sala.pis_estudi.rev4",
               "if": {
@@ -440,6 +463,24 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.rev3",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev3b",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev3c",
               "if": {
                 "var": "cables",
                 "op": "==",
@@ -677,6 +718,24 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.rev3",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev3b",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev3c",
               "if": {
                 "var": "cables",
                 "op": "==",

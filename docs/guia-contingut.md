@@ -106,6 +106,8 @@ i què passa quan el jugador hi fa un verb.
   `action` (una regla del joc en codi, vegeu més avall) i `once` (amb `id`).
 - `visibleIf` a una cosa: si no es compleix, no es veu ni es pot tocar.
 - `onEnter`: s'executa la primera que encaixi en entrar a la sala.
+  Amb `"walkIn": "left"` (o `"right"`), la protagonista entra caminant des de fora de la pantalla, per
+  aquest costat, fins al seu lloc, i després diu les línies (com l'Iri en arribar a casa).
 - Si cap interacció no encaixa, la protagonista diu la frase per defecte: `ui.defecte.<verb>.<protagonista>`,
   o si no n'hi ha, `ui.defecte.<verb>`, o `ui.defecte`. Excepció: **mirar un objecte de l'inventari**
   sense `look` propi diu la seva `description` (`items.json`). Per a una frase diferent segons qui

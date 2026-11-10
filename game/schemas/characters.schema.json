@@ -161,6 +161,14 @@
         "goTo": {
           "$ref": "#/definitions/Id",
           "description": "Va a aquesta sala al final."
+        },
+        "walkIn": {
+          "type": "string",
+          "enum": [
+            "left",
+            "right"
+          ],
+          "description": "Només a l'`onEnter`: la protagonista entra caminant des de fora de la pantalla, per aquest costat, fins al seu lloc de la sala, i després diu les línies."
         }
       },
       "required": [

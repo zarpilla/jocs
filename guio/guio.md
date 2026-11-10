@@ -11,7 +11,7 @@ L'**Iri** és hacker autodidacta i parla amb les màquines com si fossin persone
 bar La Propina i mentidera professional. Viuen juntes en un pis ple de cables, pizzes i un gat que es diu
 **Diu**. No tenen ni per pizzes.
 
-Un dilluns al vespre, l'Iri troba l'escletxa amb les dades del mòbil (li queda un 3 %): a la seu de Ginebra
+Un dilluns al vespre, l'Iri troba l'escletxa amb les dades del mòbil, tornant a casa (li queda un 3 %, i s'apaga en arribar): a la seu de Ginebra
 del **Banc Central Mundial Unificat (BCMU)** hi ha un servidor de 1984 (com la novel·la d'Orwell: el Gran Germà, aquí, és un comptable) que tothom anomena **el Llibre Major**,
 perquè encara porta el registre de tots els comptes del sistema. Ningú no s'ha atrevit a apagar-lo («si
 funciona, no ho toquis»). No està connectat a internet: per això no l'ha hackejat mai ningú. Cal entrar-hi
@@ -228,13 +228,16 @@ personal de manteniment.
 
 **Entrada:**
 
+*(L'Iri entra per l'esquerra, de tornada a casa, sense apartar els ulls del mòbil.)*
+
 > IRI (al mòbil): Ho tinc. Ho tinc ho tinc ho tinc. Amb un 3 % de bateria, però ho tinc. [SO: teclat]
 > IRI: Vet? VET! Ho he trobat! Podem entrar a la banca mundial!
 > VET (des de la cuina): Jo també he trobat una cosa: que no has rentat els plats en nou dies.
 > IRI: Saps què és el més divertit? Que el BCMU té més diners que 180 països junts. I no són seus. Són dels altres.
 > VET: I nosaltres no en tenim ni per pizzes.
 > IRI: Per això robem. Perquè no ens queda pizza.
-> IRI: Però primer necessito internet de debò. El router nou encara és a la caixa. [SO: miol]
+> IRI: Però primer... No. No, no, no. S'ha mort.
+> IRI: Necessito internet de debò. I el router nou encara és a la caixa. [SO: miol]
 
 **Trencaclosques 1.1 — Els tres cables (Iri).** El router nou necessita tres cables: la **fibra** (penja de la
 paret), el **cable de xarxa** (dins la caixa del router) i l'**alimentació**. Si en Diu no està distret, cada
@@ -264,7 +267,13 @@ A la nevera hi ha la pizza, pa, tonyina i un iogurt que «ja vota». Si la Vet e
 (Així l'Iri sap que existeix.) És el que el primer guió deia «no preguntis d'on surt».
 
 **La revelació.** Amb el router connectat, l'Iri ho confirma: el Llibre Major és **«en algun lloc físic de la
-seu de Ginebra»**. No sap on. Ho diu en veu alta, i la Vet, des de la cuina:
+seu de Ginebra»**. No té internet: cal entrar-hi en persona. La Vet hi veu el joc de paraules de l'entrada:
+
+> IRI: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona.
+> VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames?
+> IRI: Ara sí.
+
+L'Iri no sap on és. Ho diu en veu alta, i la Vet, des de la cuina:
 
 > VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot.
 > IRI: Qui?

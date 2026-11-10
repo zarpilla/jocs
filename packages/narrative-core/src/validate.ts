@@ -119,10 +119,11 @@ export function validateContent(
     if (!options.sounds.some((s) => pattern.test(s))) err(where, `So desconegut "${name}": no hi és a game/audio/sfx/.`);
   };
 
-  const interactions = (where: string, list: InteractionDef[] | undefined) => {
+  const interactions = (where: string, list: InteractionDef[] | undefined, onEnter = false) => {
     (list ?? []).forEach((i, n) => {
       const w = `${where}[${n}]`;
       if (i.id) id(w, i.id);
+      if (i.walkIn && !onEnter) err(w, `"walkIn" només té sentit a l'onEnter d'una sala.`);
       if (i.once && !i.id) {
         issues.push({ level: 'warning', where: w, message: `Interacció "once" sense "id": si canvia l'ordre de la llista, les partides desades ho notaran.` });
       }
@@ -185,7 +186,7 @@ export function validateContent(
     id(w, rid);
     text(`${w}.name`, r.name);
     if (r.protagonist && !manifest.protagonists.includes(r.protagonist)) err(w, `"${r.protagonist}" no és cap protagonista.`);
-    interactions(`${w}.onEnter`, r.onEnter);
+    interactions(`${w}.onEnter`, r.onEnter, true);
     for (const [hid, h] of Object.entries(r.hotspots)) {
       id(`${w}.hotspots.${hid}`, hid);
       text(`${w}.hotspots.${hid}.name`, h.name);

@@ -153,6 +153,11 @@ export interface InteractionDef {
   dialogue?: Id;
   /** Va a aquesta sala al final. */
   goTo?: Id;
+  /**
+   * Només a l'`onEnter`: la protagonista entra caminant des de fora de la pantalla, per aquest costat,
+   * fins al seu lloc de la sala, i després diu les línies.
+   */
+  walkIn?: 'left' | 'right';
 }
 
 export interface HotspotDef {

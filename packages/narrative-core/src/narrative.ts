@@ -26,6 +26,8 @@ export interface InteractionResult {
   dialogue?: Id;
   /** Sala on anar al final. */
   goTo?: Id;
+  /** Entrada caminant des d'un costat (només a l'`onEnter`). */
+  walkIn?: 'left' | 'right';
 }
 
 /** Una cosa sobre la qual es pot fer un verb. */
@@ -521,7 +523,7 @@ export class Narrative {
       );
       lines.push(...this.callAction(i.action.name, args, req));
     }
-    return { lines, dialogue: i.dialogue, goTo: i.goTo };
+    return { lines, dialogue: i.dialogue, goTo: i.goTo, ...(i.walkIn ? { walkIn: i.walkIn } : {}) };
   }
 
   private callAction(name: string, args: Record<string, Scalar>, request?: InteractionRequest): ResolvedLine[] {
