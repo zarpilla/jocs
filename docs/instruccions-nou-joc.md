@@ -3,7 +3,7 @@
 > Per a l'agent d'IA que començarà el segon joc. Amb aquest document reps un `.txt` amb el primer
 > guió, que encara s'ha d'afinar.
 >
-> El joc anterior, **Ferro-9**, és a `/home/jordi/Documents/work/benne` (repositori git, 105 commits).
+> El joc anterior, **Ferro-9**, és a `/home/jordi/Documents/work/benne/ferro-9` (repositori git, 106 commits; el projecte Benne és a `ferro-9/ferro-9/`).
 > Funciona, s'ha jugat de cap a peus i n'estem contents. Aquí hi ha **com es va fer, què va anar bé i
 > què hem de fer millor**. Llegeix-lo sencer abans de començar.
 
@@ -43,7 +43,7 @@ tools/                    validate, jugar (mode text), fitxes, schemas, sons, mu
 
 ### Com començar el repositori nou
 
-Crea un **repositori nou** (no una carpeta dins de Ferro-9) i copia-hi:
+Crea un **repositori nou** a una carpeta germana, `/home/jordi/Documents/work/benne/<joc-nou>/` (cada joc té la seva carpeta i el seu git), i copia-hi:
 
 - **Tal qual:** `packages/narrative-core/`, `tools/*.ts`, `tools/sons.py`, `tools/musica.py`,
   `tsconfig.json`, `vitest.config.ts`, `package.json` (canvia'n el nom), `.gitignore`.
