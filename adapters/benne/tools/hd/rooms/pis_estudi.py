@@ -296,7 +296,32 @@ def alimentacio_connectada(cv):
     obox(cv, 444, 166, 452, 172, PLASTIC, 2.4)
 
 
-PROPS = {'caixa': caixa, 'router_connectat': router_connectat, 'fibra_connectada': fibra_connectada,
+def passaplats_obert(cv):
+    """El passaplats obert (les portetes s'obren cap a la cuina): es veu la cuina, càlida, amb les rajoles
+    verdes, la cantonada d'un armari i el llum penjant."""
+    x0, y0, x1, y1 = 436, 58, 474, 100
+    plaster = [(30, 18, 18), (44, 28, 24), (60, 40, 30), (78, 54, 38), (98, 70, 46), (120, 88, 56), (144, 108, 68), (170, 132, 86)]
+    tiles = [(18, 30, 28), (30, 46, 40), (46, 64, 54), (64, 84, 70), (86, 106, 86), (112, 130, 104)]
+    for y in range(y0 + 3, y1 - 2):
+        for x in range(x0 + 3, x1 - 2):
+            glow = max(0, 1 - math.hypot(x - 446, y - 64) / 40) * 2.4
+            if y >= 84:
+                grout = (y - 84) % 6 == 5 or (x - x0) % 6 == 5
+                cv.put(x, y, tiles, (1.2 if grout else 2.4) + glow * 0.6, lit=0)
+            else:
+                cv.put(x, y, plaster, 2.4 + glow + (hr(x // 3, y // 3) - 0.5) * 0.4, lit=0)
+    cv.rect(456, y0 + 3, x1 - 3, 74, plaster, 4.0, lit=0)                 # la cantonada d'un armari crema
+    cv.vline(456, y0 + 3, 74, plaster, 1.0, lit=0)
+    cv.hline(456, x1 - 3, 74, plaster, 1.0, lit=0)
+    cv.vline(444, y0 + 3, 63, [(10, 6, 6), (30, 20, 16)], 1.0, lit=0)    # el fil del llum
+    cv.poly([(441, 63), (447, 63), (450, 68), (438, 68)], [(120, 60, 14), (214, 140, 40), (255, 230, 150)], 1.6, lit=0)
+    cv.hline(439, 449, 68, [(255, 230, 150), (255, 246, 200)], 1.0, lit=0)
+    for (a, b, c, d) in ((x0, y0, x1, y0 + 2), (x0, y1 - 2, x1, y1), (x0, y0, x0 + 2, y1), (x1 - 2, y0, x1, y1)):
+        cv.rect(a, b, c, d, DESKB, 2.6)
+    cv.glow(456, 92, 34, (240, 170, 100), 0.2)
+
+
+PROPS = {'passaplats_obert': passaplats_obert, 'caixa': caixa, 'router_connectat': router_connectat, 'fibra_connectada': fibra_connectada,
          'xarxa_connectada': xarxa_connectada, 'alimentacio_connectada': alimentacio_connectada}
 
 

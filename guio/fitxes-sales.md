@@ -32,7 +32,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `ordinadors` | ordinadors | hotspot / prop | sempre | use, look |
 | `router` | router | hotspot / prop | sempre | use + cable_xarxa, use + cable_alimentacio, use + objecte, look, use, push, pull, pickUp |
 | `fibra` | presa de la fibra | hotspot / prop | sempre | pickUp, use, pull, look |
-| `passaplats` | passaplats | hotspot / prop | sempre | talkTo, use, open, use + objecte, look |
+| `passaplats` | passaplats | hotspot / prop | sempre | open, close, talkTo, use, use + objecte, look |
 | `caixa` | caixa | prop | `{"all":[{"hasItem":"caixa_cartro","is":false,"who":"iri"},{"not":{"var":"sacrifici","op":"==","value":"caixa"}}]}` | look, open, pickUp |
 | `diu` | Diu | personatge | sempre | use + objecte, use + caixa_cartro, use + auriculars, use + pizza, talkTo, look, pickUp |
 
@@ -80,7 +80,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `nevera` | nevera | hotspot / prop | sempre | open, close, look, pickUp |
 | `pizza_nevera` | pizza | prop | `{"all":[{"flag":"nevera_oberta"},{"hasItem":"pizza","is":false,"who":"vet"},{"hasItem":"pizza","is":false,"who":"iri"},{"var":"sacrifici","op":"!=","value":"pizza"}]}` | pickUp, look |
 | `tonyina` | pa i tonyina | prop | `{"all":[{"flag":"nevera_oberta"},{"flag":"te_entrepa","is":false}]}` | pickUp, look |
-| `passaplats` | passaplats | hotspot / prop | sempre | use + cable_alimentacio, use + pizza, use + objecte, talkTo, use, open, look |
+| `passaplats` | passaplats | hotspot / prop | sempre | open, close, use + cable_alimentacio, use + pizza, use + objecte, talkTo, use, look |
 | `plats` | plats | hotspot / prop | sempre | look, use, pickUp |
 | `porta` | porta | hotspot / prop → `bar_sala` | sempre | use, open, walkTo, look |
 

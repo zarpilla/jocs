@@ -68,6 +68,7 @@
         "marcel_tub": false,
         "marcel_vol": false,
         "nevera_oberta": false,
+        "passaplats_obert": false,
         "pizza_demanada": false,
         "porta_oberta": false,
         "propines": false,
@@ -2604,6 +2605,62 @@
             "name": "sala.pis_cuina.passaplats.nom",
             "interactions": [
               {
+                "verb": "open",
+                "if": {
+                  "flag": "passaplats_obert",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.passaplats.obre",
+                    "sound": "passaplats"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "passaplats_obert"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.passaplats.ja_obert"
+                  }
+                ]
+              },
+              {
+                "verb": "close",
+                "if": {
+                  "flag": "passaplats_obert"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.passaplats.tanca",
+                    "sound": "passaplats"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "passaplats_obert",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "verb": "close",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.passaplats.ja_tancat"
+                  }
+                ]
+              },
+              {
                 "verb": "use",
                 "item": "cable_alimentacio",
                 "lines": [
@@ -2625,7 +2682,10 @@
                     "giveItem": "cable_alimentacio",
                     "who": "iri"
                   }
-                ]
+                ],
+                "if": {
+                  "flag": "passaplats_obert"
+                }
               },
               {
                 "verb": "use",
@@ -2649,6 +2709,23 @@
                     "giveItem": "pizza",
                     "who": "iri"
                   }
+                ],
+                "if": {
+                  "flag": "passaplats_obert"
+                }
+              },
+              {
+                "verb": "use",
+                "item": "*",
+                "if": {
+                  "flag": "passaplats_obert",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.passaplats.tancat_objecte"
+                  }
                 ]
               },
               {
@@ -2664,13 +2741,27 @@
               {
                 "verb": [
                   "talkTo",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "lines": [
                   {
                     "who": "player",
                     "text": "sala.pis_cuina.passaplats.parla"
+                  }
+                ],
+                "if": {
+                  "flag": "passaplats_obert"
+                }
+              },
+              {
+                "verb": [
+                  "talkTo",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.passaplats.tancat"
                   }
                 ]
               },
@@ -2785,6 +2876,11 @@
               "flag": "nevera_oberta"
             },
             "sota": true
+          },
+          "passaplats_obert": {
+            "visibleIf": {
+              "flag": "passaplats_obert"
+            }
           }
         }
       },
@@ -3592,12 +3688,96 @@
             "name": "sala.pis_estudi.passaplats.nom",
             "interactions": [
               {
+                "verb": "open",
+                "if": {
+                  "flag": "passaplats_obert",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.passaplats.obre",
+                    "sound": "passaplats"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "passaplats_obert"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.passaplats.ja_obert"
+                  }
+                ]
+              },
+              {
+                "verb": "close",
+                "if": {
+                  "flag": "passaplats_obert"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.passaplats.tanca",
+                    "sound": "passaplats"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "passaplats_obert",
+                    "value": false
+                  }
+                ]
+              },
+              {
+                "verb": "close",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.passaplats.ja_tancat"
+                  }
+                ]
+              },
+              {
                 "verb": [
                   "talkTo",
-                  "use",
-                  "open"
+                  "use"
                 ],
+                "if": {
+                  "flag": "passaplats_obert"
+                },
                 "dialogue": "passaplats"
+              },
+              {
+                "verb": [
+                  "talkTo",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.passaplats.tancat"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "item": "*",
+                "if": {
+                  "flag": "passaplats_obert",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.passaplats.tancat_objecte"
+                  }
+                ]
               },
               {
                 "verb": "use",
@@ -3919,6 +4099,11 @@
           "alimentacio_connectada": {
             "visibleIf": {
               "flag": "alimentacio_connectada"
+            }
+          },
+          "passaplats_obert": {
+            "visibleIf": {
+              "flag": "passaplats_obert"
             }
           }
         }
@@ -6644,7 +6829,7 @@
       "pista.iri_bar.3": "Canvio a la Vet i miro com va al bar.",
       "pista.iri_cable_cafetera.1": "El cable d'alimentació... on n'hi ha un, en aquesta casa?",
       "pista.iri_cable_cafetera.2": "La cafetera de la cuina en té un. La Vet és a la cuina.",
-      "pista.iri_cable_cafetera.3": "Parlo amb la Vet pel passaplats i li demano el cable de la cafetera.",
+      "pista.iri_cable_cafetera.3": "Obro el passaplats i hi demano a la Vet el cable de la cafetera.",
       "pista.iri_caixa.1": "Calen tres cables. Un deu ser a la caixa del router.",
       "pista.iri_caixa.2": "Si obro la caixa del router, hi trobaré el cable de xarxa.",
       "pista.iri_caixa.3": "Obro la caixa del router i n'agafo el cable de xarxa.",
@@ -6680,7 +6865,7 @@
       "pista.iri_trucar.3": "Faig servir els ordinadors per trucar al bar.",
       "pista.vet_cable.1": "L'Iri vol el cable de la cafetera. Adeu, cafè.",
       "pista.vet_cable.2": "Agafo el cable de la cafetera.",
-      "pista.vet_cable.3": "Agafo el cable de la cafetera i el faig servir amb el passaplats.",
+      "pista.vet_cable.3": "Agafo el cable de la cafetera i el faig servir amb el passaplats (obert).",
       "pista.vet_codi.1": "La porta de personal té un codi. Els codis sempre són a prop.",
       "pista.vet_codi.2": "Ara que en Soler no hi és, puc mirar el taulell de facturació.",
       "pista.vet_codi.3": "Miro el taulell: sota hi ha el codi.",
@@ -6707,7 +6892,7 @@
       "pista.vet_marxar.3": "Surto per la porta de la cuina. (I, si vull, abans em faig un entrepà.)",
       "pista.vet_pizza.1": "L'Iri vol la pizza de demà. Pel gat. Quin món.",
       "pista.vet_pizza.2": "La pizza és a la nevera.",
-      "pista.vet_pizza.3": "Obro la nevera, agafo la pizza i la passo pel passaplats.",
+      "pista.vet_pizza.3": "Obro la nevera, agafo la pizza i la passo pel passaplats (obert).",
       "pista.vet_plegar.1": "Ja ho tenim. Hora de plegar.",
       "pista.vet_plegar.2": "(I potser tornar-li el tap a en Puig.)",
       "pista.vet_plegar.3": "Surto per la porta del bar.",
@@ -6900,12 +7085,18 @@
       "sala.pis_cuina.nom": "La cuina",
       "sala.pis_cuina.passaplats.cable": "Té. El cable de la cafetera. Que consti en acta.",
       "sala.pis_cuina.passaplats.cable2": "Gràcies!",
+      "sala.pis_cuina.passaplats.ja_obert": "Ja és obert.",
+      "sala.pis_cuina.passaplats.ja_tancat": "Ja és tancat. L'Iri, en canvi, no tanca mai.",
       "sala.pis_cuina.passaplats.look": "El passaplats. Per aquí l'Iri em demana coses que després no torna.",
       "sala.pis_cuina.passaplats.nom": "passaplats",
+      "sala.pis_cuina.passaplats.obre": "Obert. Ja em pots dir coses, Iri.",
       "sala.pis_cuina.passaplats.parla": "Iri? Si em necessites, crida. Ja ho fas.",
       "sala.pis_cuina.passaplats.pizza": "La pizza. Que el gat sàpiga el que val.",
       "sala.pis_cuina.passaplats.pizza2": "La tracto com a una reina.",
       "sala.pis_cuina.passaplats.res": "L'Iri no ho necessita. I jo, potser sí.",
+      "sala.pis_cuina.passaplats.tanca": "Tancat. Una mica de pau.",
+      "sala.pis_cuina.passaplats.tancat": "Està tancat. Primer l'hauria d'obrir.",
+      "sala.pis_cuina.passaplats.tancat_objecte": "Pel vidre no passa. Primer l'hauria d'obrir.",
       "sala.pis_cuina.pizza.agafa": "Perdona'm, pizza. És per una bona causa. Crec.",
       "sala.pis_cuina.pizza.look": "Quatre formatges. L'únic pla que sempre surt bé.",
       "sala.pis_cuina.pizza.no": "És la pizza de demà. Demà és sagrat.",
@@ -6977,9 +7168,15 @@
       "sala.pis_estudi.pany1": "Xarxa del bar. Contrasenya: «exceptosinopaga». Dins.",
       "sala.pis_estudi.pany2": "Un pany intel·ligent de 19,99 €. Obrir. Fet.",
       "sala.pis_estudi.pany3": "Vet, el calaix és obert.",
+      "sala.pis_estudi.passaplats.ja_obert": "Ja és obert. Més obert, seria un forat a la paret.",
+      "sala.pis_estudi.passaplats.ja_tancat": "Ja és tancat.",
       "sala.pis_estudi.passaplats.look": "El passaplats de la cuina. Per aquí passen plats, pizzes i ordres de la Vet.",
       "sala.pis_estudi.passaplats.nom": "passaplats",
+      "sala.pis_estudi.passaplats.obre": "Obert. Ja fa olor de cafè.",
       "sala.pis_estudi.passaplats.res": "La Vet no ho necessita. I jo, potser sí.",
+      "sala.pis_estudi.passaplats.tanca": "Tancat. Privacitat.",
+      "sala.pis_estudi.passaplats.tancat": "Primer l'he d'obrir. Pel vidre, la Vet només em sent si crido, i ja crido prou.",
+      "sala.pis_estudi.passaplats.tancat_objecte": "Tancat. Primer l'hauria d'obrir.",
       "sala.pis_estudi.pizzes.look": "Quatre caixes. Totes buides. Les he comprovat dues vegades.",
       "sala.pis_estudi.pizzes.nom": "caixes de pizza",
       "sala.pis_estudi.pizzes.obre": "Buida. Com les altres tres. Com el meu compte corrent.",

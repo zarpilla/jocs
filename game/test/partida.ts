@@ -65,6 +65,7 @@ export interface OpcionsActe1 {
 export function jugarPis(p: Jugador, o: OpcionsActe1 = {}) {
   p.do('open', 'caixa');
   p.use('cable_xarxa', 'router'); // en Diu el mossega
+  p.do('open', 'passaplats');
   p.talk('passaplats', 'cable');
   p.switchTo('vet');
   p.do('pickUp', 'cafetera');

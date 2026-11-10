@@ -8,6 +8,10 @@
 ## Sala L'oficina de facturació · `aeroport_oficina` (iri)
 
 ```
+DECORAT llista_feta — es veu si llista_feta
+DECORAT imprimint — es veu si imprimint
+DECORAT acreditacions_llestes — es veu si acreditacions_llestes
+
 TERMINAL «terminal»
     • use — si NO soler_distret
         JUGADORA: En Soler torna a ser a la porta. Si tecleja ara, ho sentirà.
@@ -60,6 +64,9 @@ EN ENTRAR
     • * (una vegada) — SEMPRE
         JUGADORA: La porta de personal. Teclat numèric, quatre xifres. I en Soler, a tres metres.
 
+DECORAT porta_oberta — es veu si porta_oberta
+DECORAT alarma — es veu si alarma_porta
+
 TECLAT «teclat»
     • use/push — si iri_fora
         JUGADORA: Ja tinc les acreditacions. Ara, que la Vet acabi la funció.
@@ -103,6 +110,9 @@ EN ENTRAR
         IRI: Això encara no. Jo vaig a la porta de personal. Tu fes que el guàrdia se'n vagi.
         JUGADORA: Un guàrdia que vigila una porta. Necessitarà un motiu per deixar-la.
         ⇒ +auricular_compartit
+
+DECORAT cigarreta_mitja — es veu si sync_aeroport i cigarreta ≤ 8 i cigarreta > 4
+DECORAT cigarreta_curta — es veu si sync_aeroport i cigarreta ≤ 4
 
 SOLER «agent Soler»
     • talkTo — SEMPRE
@@ -178,6 +188,9 @@ EN ENTRAR
         IRI: Té, la teva. Amb la teva cara, que costa d'imprimir.
         RIUS: Sou noves? Doncs benvingudes a la subcontracta. Aquí ningú no cobra el viatge.
         VET: Ni el viatge ni res, pel que veig.
+        IRI: I aquest vestit? Fa una hora anaves amb la bomber.
+        VET: Objectes perduts. Algú s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.
+        IRI: Era d'un altre.
         NARRADOR: L'avió s'enlaira cap a Ginebra.
         TÍTOL: Fi de l'Acte 1
         ⇒ perd acreditacions (iri), rep acreditacio (iri), rep acreditacio (vet), +acte1_fet, FINAL continuara
@@ -187,6 +200,8 @@ EN ENTRAR
 ## Sala El rebost · `bar_rebost` (vet)
 
 ```
+DECORAT calaix_obert — es veu si calaix_obert
+
 CALAIX «calaix»
     • open/pickUp — si calaix_obert i NO recepta_agafada
         JUGADORA: La recepta secreta de llimonada. En una servilleta, com els grans secrets.
@@ -221,6 +236,9 @@ EN ENTRAR
     • * (una vegada) — SEMPRE
         [SO: porta_bar] NARRADOR: Dilluns, nit. Bar La Propina, a la sortida de l'autopista.
         JUGADORA: Bona nit, Puig. Bona nit, Marcel. Bona nit, gent que no paga.
+
+DECORAT tele_bassols — es veu si bassols
+DECORAT rebost_tancat — es veu si puig_rebost
 
 MARCEL «Marcel»
     • give + tap — SEMPRE
@@ -342,6 +360,10 @@ EN ENTRAR
     • * (una vegada) — SEMPRE
         JUGADORA: Torn de nit al bar d'aquí a mitja hora. Abans, sobreviure a l'Iri.
 
+DECORAT cable_cafetera — es veu si NO cable_tret
+DECORAT nevera_oberta — es veu si nevera_oberta
+DECORAT passaplats_obert — es veu si passaplats_obert
+
 CAFETERA «cafetera»
     • pickUp/pull/use — si cable_tret
         JUGADORA: Ja no té cable. Ja no té sentit.
@@ -358,16 +380,21 @@ CAFETERA «cafetera»
 NEVERA «nevera»
     • open — si NO nevera_oberta
         [SO: nevera] JUGADORA: A veure què hi ha.
+        JUGADORA: Hi ha una pizza per a demà. ⟨si NO pizza_demanada i no té pizza⟩
+        JUGADORA: Pa i tonyina. ⟨si NO te_entrepa⟩
+        JUGADORA: I un iogurt que ja vota.
         ⇒ +nevera_oberta
     • open — SEMPRE
         JUGADORA: Ja és oberta. Se m'escapa el fred.
     • close — si nevera_oberta
         JUGADORA: Tancada.
         ⇒ −nevera_oberta
-    • look — SEMPRE
+    • look — si nevera_oberta
         JUGADORA: Hi ha una pizza per a demà. ⟨si NO pizza_demanada i no té pizza⟩
         JUGADORA: Pa i tonyina. ⟨si NO te_entrepa⟩
         JUGADORA: I un iogurt que ja vota.
+    • look — SEMPRE
+        JUGADORA: La nevera. Brunzeix com si es queixés. Té motius.
     • pickUp — si NO nevera_oberta
         JUGADORA: Primer l'hauria d'obrir.
 
@@ -390,18 +417,32 @@ TONYINA «pa i tonyina» — hi és si nevera_oberta i NO te_entrepa
         JUGADORA: Pa i tonyina. Un entrepà en potència.
 
 PASSAPLATS «passaplats»
-    • use + cable_alimentacio — SEMPRE
+    • open — si NO passaplats_obert
+        [SO: passaplats] JUGADORA: Obert. Ja em pots dir coses, Iri.
+        ⇒ +passaplats_obert
+    • open — SEMPRE
+        JUGADORA: Ja és obert.
+    • close — si passaplats_obert
+        [SO: passaplats] JUGADORA: Tancat. Una mica de pau.
+        ⇒ −passaplats_obert
+    • close — SEMPRE
+        JUGADORA: Ja és tancat. L'Iri, en canvi, no tanca mai.
+    • use + cable_alimentacio — si passaplats_obert
         [SO: passaplats] JUGADORA: Té. El cable de la cafetera. Que consti en acta.
         IRI: Gràcies!
         ⇒ perd cable_alimentacio, rep cable_alimentacio (iri)
-    • use + pizza — SEMPRE
+    • use + pizza — si passaplats_obert
         [SO: passaplats] JUGADORA: La pizza. Que el gat sàpiga el que val.
         IRI: La tracto com a una reina.
         ⇒ perd pizza, rep pizza (iri)
+    • use + qualsevol objecte — si NO passaplats_obert
+        JUGADORA: Pel vidre no passa. Primer l'hauria d'obrir.
     • use + qualsevol objecte — SEMPRE
         JUGADORA: L'Iri no ho necessita. I jo, potser sí.
-    • talkTo/use/open — SEMPRE
+    • talkTo/use — si passaplats_obert
         JUGADORA: Iri? Si em necessites, crida. Ja ho fas.
+    • talkTo/use — SEMPRE
+        JUGADORA: Està tancat. Primer l'hauria d'obrir.
     • look — SEMPRE
         JUGADORA: El passaplats. Per aquí l'Iri em demana coses que després no torna.
 
@@ -439,6 +480,10 @@ EN ENTRAR
         ⇒ comença acte1
 
 DECORAT router_connectat — es veu si router_connectat
+DECORAT fibra_connectada — es veu si fibra_connectada
+DECORAT xarxa_connectada — es veu si xarxa_connectada
+DECORAT alimentacio_connectada — es veu si alimentacio_connectada
+DECORAT passaplats_obert — es veu si passaplats_obert
 
 FINESTRA «finestra»
     • look — SEMPRE
@@ -490,7 +535,7 @@ ROUTER «router»
         JUGADORA: Cable de xarxa: dins.
         [SO: router] JUGADORA: Llums verdes. Internet de debò. ⟨si cables = 2⟩
           ⇒ +router_connectat
-        JUGADORA: Ja hi som. El Llibre Major: un servidor de 1987 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
+        JUGADORA: Ja hi som. El Llibre Major: un servidor de 1984 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
         JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
         VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
@@ -508,7 +553,7 @@ ROUTER «router»
         JUGADORA: El cable de la cafetera, al router. Que el cafè ens perdoni.
         [SO: router] JUGADORA: Llums verdes. Internet de debò. ⟨si cables = 2⟩
           ⇒ +router_connectat
-        JUGADORA: Ja hi som. El Llibre Major: un servidor de 1987 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
+        JUGADORA: Ja hi som. El Llibre Major: un servidor de 1984 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
         JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
         VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
@@ -542,7 +587,7 @@ FIBRA «presa de la fibra»
         JUGADORA: La fibra, al router. Amb cura: és llum.
         [SO: router] JUGADORA: Llums verdes. Internet de debò. ⟨si cables = 2⟩
           ⇒ +router_connectat
-        JUGADORA: Ja hi som. El Llibre Major: un servidor de 1987 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
+        JUGADORA: Ja hi som. El Llibre Major: un servidor de 1984 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
         JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
         VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
@@ -562,8 +607,22 @@ FIBRA «presa de la fibra»
         JUGADORA: La presa de la fibra, amb el cable enrotllat. En Diu se'l mira com si fos un sopar.
 
 PASSAPLATS «passaplats»
-    • talkTo/use/open — SEMPRE
+    • open — si NO passaplats_obert
+        [SO: passaplats] JUGADORA: Obert. Ja fa olor de cafè.
+        ⇒ +passaplats_obert
+    • open — SEMPRE
+        JUGADORA: Ja és obert. Més obert, seria un forat a la paret.
+    • close — si passaplats_obert
+        [SO: passaplats] JUGADORA: Tancat. Privacitat.
+        ⇒ −passaplats_obert
+    • close — SEMPRE
+        JUGADORA: Ja és tancat.
+    • talkTo/use — si passaplats_obert
         ⇒ diàleg passaplats
+    • talkTo/use — SEMPRE
+        JUGADORA: Primer l'he d'obrir. Pel vidre, la Vet només em sent si crido, i ja crido prou.
+    • use + qualsevol objecte — si NO passaplats_obert
+        JUGADORA: Tancat. Primer l'hauria d'obrir.
     • use + qualsevol objecte — SEMPRE
         JUGADORA: La Vet no ho necessita. I jo, potser sí.
     • look — SEMPRE
@@ -1102,7 +1161,7 @@ iri_caixa — quan juga iri i NO cable_xarxa_tret · fins que cable_xarxa_tret
 iri_cable_cafetera — quan juga iri i NO cable_demanat i NO alimentacio_connectada · fins que cable_demanat
     1. El cable d'alimentació... on n'hi ha un, en aquesta casa?
     2. La cafetera de la cuina en té un. La Vet és a la cuina.
-    3. Parlo amb la Vet pel passaplats i li demano el cable de la cafetera.
+    3. Obro el passaplats i hi demano a la Vet el cable de la cafetera.
 iri_espera_cable — quan juga iri i cable_demanat i no té cable_alimentacio (iri) i NO alimentacio_connectada · fins que té cable_alimentacio (iri) o alimentacio_connectada
     1. La Vet té el cable. Ara li toca a ella.
     2. Canvio a la Vet: ella pot treure el cable de la cafetera.
@@ -1130,11 +1189,11 @@ vet_espera — quan juga vet i NO cable_demanat i NO llibre_trobat · fins que c
 vet_cable — quan juga vet i cable_demanat i no té cable_alimentacio (iri) i NO alimentacio_connectada · fins que té cable_alimentacio (iri) o alimentacio_connectada
     1. L'Iri vol el cable de la cafetera. Adeu, cafè.
     2. Agafo el cable de la cafetera.
-    3. Agafo el cable de la cafetera i el faig servir amb el passaplats.
+    3. Agafo el cable de la cafetera i el faig servir amb el passaplats (obert).
 vet_pizza — quan juga vet i pizza_demanada i no té pizza (iri) i no (sacrifici = "pizza") · fins que té pizza (iri) o sacrifici = "pizza" o diu_distret
     1. L'Iri vol la pizza de demà. Pel gat. Quin món.
     2. La pizza és a la nevera.
-    3. Obro la nevera, agafo la pizza i la passo pel passaplats.
+    3. Obro la nevera, agafo la pizza i la passo pel passaplats (obert).
 vet_marxar — quan juga vet i llibre_trobat i NO vet_marxa · fins que vet_marxa
     1. He d'anar al bar. En Marcel sabrà on és el servidor.
     2. La porta del pis és a la cuina.

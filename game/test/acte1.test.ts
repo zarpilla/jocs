@@ -107,13 +107,33 @@ describe('Acte 1 · coherència', () => {
     const { n, p } = partida();
     expect(n.canSwitch()).toBe(false);
     p.do('open', 'caixa');
+    p.do('open', 'passaplats');
     p.talk('passaplats', 'cable');
     expect(n.canSwitch()).toBe(true);
+  });
+
+  it('el passaplats tancat: no s\'hi parla ni s\'hi passa res; obert des d\'un costat, és obert per a les dues', () => {
+    const { n, p, world } = partida();
+    p.do('open', 'caixa');
+    expect(texts(p.do('talkTo', 'passaplats'))).toContain("Primer l'he d'obrir");
+    expect(n.flag('cable_demanat')).toBe(false);
+    p.do('open', 'passaplats');
+    expect(n.flag('passaplats_obert')).toBe(true);
+    p.talk('passaplats', 'cable');
+    p.switchTo('vet');
+    p.do('pickUp', 'cafetera');
+    p.do('close', 'passaplats');
+    expect(texts(p.use('cable_alimentacio', 'passaplats'))).toContain("Primer l'hauria d'obrir");
+    expect(world.hasItem('cable_alimentacio', 'vet')).toBe(true);
+    p.do('open', 'passaplats');
+    p.use('cable_alimentacio', 'passaplats');
+    expect(world.hasItem('cable_alimentacio', 'iri')).toBe(true);
   });
 
   it("la Vet no pot marxar del pis fins que l'Iri ha trobat el servidor", () => {
     const { n, p } = partida();
     p.do('open', 'caixa');
+    p.do('open', 'passaplats');
     p.talk('passaplats', 'cable');
     p.switchTo('vet');
     expect(texts(p.do('use', 'porta'))).toContain('Encara no');

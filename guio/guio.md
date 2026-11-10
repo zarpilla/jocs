@@ -910,7 +910,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | Caixa del router | `pis_estudi` | amb el cable de xarxa · buida · amb en Diu a dins | Agafar el cable; donar-la a en Diu | — | «Hi ha un cable» / «Buida. Per al gat, és un palau» / «Ara és seva» |
 | Iri (sprite) | totes | amb dos auriculars · amb un · amb un de mossegat | Esc. 1 i 3 | Detall al cap | — |
 | Cafetera | `pis_cuina` | endollada · sense cable | La Vet desendolla | Llum vermell / apagada | «Cafè: el combustible del pla» / «Sense cafè no hi ha pla» |
-| Passaplats | `pis_cuina` / `pis_estudi` | tancat · obert amb un objecte | Usar un objecte amb el passaplats | Porteta tancada / oberta | — |
+| Passaplats | `pis_cuina` / `pis_estudi` | tancat · obert (`passaplats_obert`, el mateix als dos costats) | Obre / Tanca, des de qualsevol costat. Per parlar-hi o passar-hi coses ha d'estar obert | Portetes de vidre glaçat / obertes (es veu l'altra habitació) | «Primer l'he d'obrir» |
 | Nevera | `pis_cuina` | amb pizza i entrepà possible · sense pizza · sense entrepà · sense res | Agafar | Interior en mirar-la | «Una pizza per a demà, pa, tonyina i un iogurt que ja vota» (i les variants) |
 | Plats bruts | `pis_cuina` | sempre (gag) | — | Pila | «Nou dies. Els he comptat» |
 | Puig | `bar_sala` | a la barra · fent cafè · fora (rebost) · de tornada, «lliure» | Cafè; trucada | Quatre poses | Línies segons l'estat |

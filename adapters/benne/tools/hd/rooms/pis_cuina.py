@@ -321,10 +321,10 @@ def fridge(cv):
 
 def hatch(cv, frame=0):
     """El passaplats, tancat (com es veu des de l'estudi): dues portetes de vidre glaçat, una a sobre de
-    l'altra, que deixen passar el resplendor cian de les pantalles de l'Iri (parpelleja una mica)."""
+    l'altra, que deixen passar el resplendor cian de les pantalles de l'Iri. Obert: el prop passaplats_obert."""
     x0, y0, x1, y1 = HATCH
     mid = (y0 + y1) // 2
-    flick = 0.25 if frame % 3 == 0 else 0
+    flick = 0
     for y in range(y0 + 3, y1 - 2):
         for x in range(x0 + 3, x1 - 2):
             d = math.hypot(x - x0 - 16, (y - y1 + 12) * 1.2) / 50          # les pantalles són avall a l'esquerra
@@ -546,7 +546,30 @@ def tonyina(cv):
         cv.hline(cx - 4, cx + 4, cy + 1, [(220, 180, 60)], 0, lit=0)
 
 
-PROPS = {'cable_cafetera': cable_cafetera, 'nevera_oberta': nevera_oberta, 'pizza_nevera': pizza_nevera, 'tonyina': tonyina}
+def passaplats_obert(cv):
+    """El passaplats obert: les portetes de vidre, girades cap a la cuina, i per dins l'estudi (maó lila, la
+    vora d'un monitor i el resplendor cian)."""
+    x0, y0, x1, y1 = HATCH
+    for y in range(y0 + 3, y1 - 2):
+        for x in range(x0 + 3, x1 - 2):
+            row = (y - y0) // 7
+            off = 9 if row % 2 else 0
+            mortar = (y - y0) % 7 == 6 or (x + off) % 18 == 0
+            cv.put(x, y, BRICKL, (1.0 if mortar else 2.0) + (hr((x + off) // 18, row) - 0.5) * 0.6, lit=0)
+    cv.rect(x0 + 6, y1 - 20, x0 + 22, y1 - 6, PLASTIC, 1.0, lit=0)
+    cv.rect(x0 + 8, y1 - 18, x0 + 20, y1 - 8, SCREEN, 2.8, lit=0)
+    for j in range(3):
+        cv.hline(x0 + 10, x0 + 12 + (j * 5) % 7, y1 - 16 + j * 3, SCREEN, 4.6, lit=0)
+    cv.tint(x0 + 3, y0 + 3, x1 - 3, y1 - 3, (60, 200, 200), lambda x, y: 0.3 * max(0, 1 - math.hypot(x - x0 - 14, y - y1 + 10) / 40))
+    # les portetes, obertes contra la paret (amb el vidre glaçat)
+    for (a, b) in ((x0 - 12, x0 - 1), (x1 + 1, x1 + 12)):
+        for (c, d) in ((y0 + 1, (y0 + y1) // 2 - 1), ((y0 + y1) // 2 + 1, y1 - 1)):
+            obox(cv, a, c, b, d, WOOD, 3.0)
+            cv.rect(a + 2, c + 2, b - 2, d - 2, CYANL, 1.8, lit=0)
+    cv.glow((x0 + x1) // 2, y1 + 6, 40, (70, 200, 210), 0.12)
+
+
+PROPS = {'passaplats_obert': passaplats_obert, 'cable_cafetera': cable_cafetera, 'nevera_oberta': nevera_oberta, 'pizza_nevera': pizza_nevera, 'tonyina': tonyina}
 
 
 def _frames():
@@ -556,7 +579,6 @@ def _frames():
     for i in range(8):
         cv = Canvas(light=LIGHT, img=base.img.copy())
         window(cv, rain=i)
-        hatch(cv, i)
         frames.append(_diff(cv.img, base.img))
     return frames
 

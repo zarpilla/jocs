@@ -329,6 +329,17 @@
           "frameDuration": 200
         }
       }
+    },
+    {
+      "id": "passaplats_obert",
+      "tag": "passaplats_obert",
+      "animations": {
+        "passaplats_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

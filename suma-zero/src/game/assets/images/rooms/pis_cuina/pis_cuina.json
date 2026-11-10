@@ -272,6 +272,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "pis_cuina 13.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -321,9 +342,16 @@
         "color": "#000000ff"
       },
       {
-        "name": "pluja",
+        "name": "passaplats_obert",
         "from": 5,
-        "to": 12,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pluja",
+        "from": 6,
+        "to": 13,
         "direction": "forward",
         "color": "#000000ff"
       }

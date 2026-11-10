@@ -803,12 +803,96 @@
       "name": "sala.pis_estudi.passaplats.nom",
       "interactions": [
         {
+          "verb": "open",
+          "if": {
+            "flag": "passaplats_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.obre",
+              "sound": "passaplats"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "passaplats_obert"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.ja_obert"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "flag": "passaplats_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.tanca",
+              "sound": "passaplats"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "passaplats_obert",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.ja_tancat"
+            }
+          ]
+        },
+        {
           "verb": [
             "talkTo",
-            "use",
-            "open"
+            "use"
           ],
+          "if": {
+            "flag": "passaplats_obert"
+          },
           "dialogue": "passaplats"
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.tancat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "passaplats_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.tancat_objecte"
+            }
+          ]
         },
         {
           "verb": "use",
@@ -1130,6 +1214,11 @@
     "alimentacio_connectada": {
       "visibleIf": {
         "flag": "alimentacio_connectada"
+      }
+    },
+    "passaplats_obert": {
+      "visibleIf": {
+        "flag": "passaplats_obert"
       }
     }
   }

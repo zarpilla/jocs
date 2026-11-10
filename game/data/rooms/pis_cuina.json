@@ -348,6 +348,62 @@
       "name": "sala.pis_cuina.passaplats.nom",
       "interactions": [
         {
+          "verb": "open",
+          "if": {
+            "flag": "passaplats_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.obre",
+              "sound": "passaplats"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "passaplats_obert"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.ja_obert"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "flag": "passaplats_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.tanca",
+              "sound": "passaplats"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "passaplats_obert",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.ja_tancat"
+            }
+          ]
+        },
+        {
           "verb": "use",
           "item": "cable_alimentacio",
           "lines": [
@@ -369,7 +425,10 @@
               "giveItem": "cable_alimentacio",
               "who": "iri"
             }
-          ]
+          ],
+          "if": {
+            "flag": "passaplats_obert"
+          }
         },
         {
           "verb": "use",
@@ -393,6 +452,23 @@
               "giveItem": "pizza",
               "who": "iri"
             }
+          ],
+          "if": {
+            "flag": "passaplats_obert"
+          }
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "passaplats_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.tancat_objecte"
+            }
           ]
         },
         {
@@ -408,13 +484,27 @@
         {
           "verb": [
             "talkTo",
-            "use",
-            "open"
+            "use"
           ],
           "lines": [
             {
               "who": "player",
               "text": "sala.pis_cuina.passaplats.parla"
+            }
+          ],
+          "if": {
+            "flag": "passaplats_obert"
+          }
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.tancat"
             }
           ]
         },
@@ -529,6 +619,11 @@
         "flag": "nevera_oberta"
       },
       "sota": true
+    },
+    "passaplats_obert": {
+      "visibleIf": {
+        "flag": "passaplats_obert"
+      }
     }
   }
 }

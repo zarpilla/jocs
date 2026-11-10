@@ -293,6 +293,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "pis_estudi 14.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -349,9 +370,16 @@
         "color": "#000000ff"
       },
       {
-        "name": "pantalles",
+        "name": "passaplats_obert",
         "from": 6,
-        "to": 13,
+        "to": 6,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pantalles",
+        "from": 7,
+        "to": 14,
         "direction": "forward",
         "color": "#000000ff"
       }
