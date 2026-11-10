@@ -31,6 +31,11 @@ describe('Acte 3 · camins', () => {
     expect(n.resolveEnding()).toBe('final_taula');
     const escena = texts(n.ending('final_taula').scene);
     for (const t of ['taula llarga', 'Un tallat', 'Taula tres', 'fitxat a l\'hora', 'augment', 'pensions del món']) expect(escena).toContain(t);
+    // el bar, els crèdits i els postcrèdits, en aquest ordre; i el so de la mossegada d'en Diu
+    const final = n.ending('final_taula');
+    expect(final.scene.filter((l) => l.room).map((l) => l.room)).toEqual(['final_bar', 'credits', 'postcredits']);
+    expect(final.scene.some((l) => l.sound === 'mossegada')).toBe(true);
+    expect(final.text).toBe('Tot torna a començar.');
   });
 
   it('en Ballester immobilitza el Director i diu el compte de les nòmines', () => {

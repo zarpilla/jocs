@@ -780,7 +780,8 @@ Pausa. El gat Diu entra (l'han portat de casa en un cistell) i mossega el cable 
 > IRI: Diu, et mato.
 > VET: Deixa'l. Ell també és un treballador explotat.
 
-Fosc a negre. Crèdits amb música de sintetitzador, i un text final:
+Fosc a negre. Crèdits (sala `credits`: la Ginebra de nit del pròleg, amb la pantalla del Director «FORA DE SERVEI» i
+menys finestres enceses), amb la música del tema, i un text final:
 
 > *Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.*
 

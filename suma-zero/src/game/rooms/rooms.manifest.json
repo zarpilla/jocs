@@ -84,6 +84,10 @@
     {
       "id": "postcredits",
       "definition": "postcredits/postcredits.room.json"
+    },
+    {
+      "id": "credits",
+      "definition": "credits/credits.room.json"
     }
   ]
 }

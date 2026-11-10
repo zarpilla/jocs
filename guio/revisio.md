@@ -590,11 +590,11 @@ LLIBRE «Llibre Major»
         JUGADORA: Codi, vine.
         [SO: mobil_vibra] NARRADOR: ENVIANT CODI DE CONFIRMACIÓ AL MÒBIL DEL DIRECTOR...
         VET: Ha vibrat. ⟨si NO mobil_resolt⟩
-        PONS: Senyor Director, li ha arribat un codi: 4-1-9-7. Ho dic en veu alta, que avui no hi veig gaire. ⟨si pons_mobil i codi_n = 0⟩
+        PONS: Senyor Director, li ha arribat un codi: 4-1-9-7. Ho dic en veu alta, per si algú l'ha d'apuntar. ⟨si pons_mobil i codi_n = 0⟩
           ⇒ +codi_llegit
-        PONS: Senyor Director, li ha arribat un codi: 2-8-0-5. Ho dic en veu alta, que avui no hi veig gaire. ⟨si pons_mobil i codi_n = 1⟩
+        PONS: Senyor Director, li ha arribat un codi: 2-8-0-5. Ho dic en veu alta, per si algú l'ha d'apuntar. ⟨si pons_mobil i codi_n = 1⟩
           ⇒ +codi_llegit
-        PONS: Senyor Director, li ha arribat un codi: 6-6-3-1. Ho dic en veu alta, que avui no hi veig gaire. ⟨si pons_mobil i codi_n ≥ 2⟩
+        PONS: Senyor Director, li ha arribat un codi: 6-6-3-1. Ho dic en veu alta, per si algú l'ha d'apuntar. ⟨si pons_mobil i codi_n ≥ 2⟩
           ⇒ +codi_llegit
         BALLESTER: Ha arribat un codi. 4-1-9-7. Jo no he vist res, però l'he llegit. ⟨si mobil_resolt i NO pons_mobil i codi_n = 0⟩
           ⇒ +codi_llegit
@@ -681,7 +681,7 @@ TUB «estació del tub»
 
 PANELL «panell de NETA-3»
     • use/open — si sync_mobil
-        JUGADORA: Ara no, NETA. Estic teclejant, i cada tecla del panell fa bip.
+        JUGADORA: Ara no, NETA. El Director té el mòbil a tocar, i cada segon compta.
     • use/open — si sync_collaret
         JUGADORA: Ara no. Cada tecla d'aquest panell també fa bip.
     • use/open — si aliat_neta
@@ -1204,6 +1204,11 @@ RECEPCIONISTA «recepcionista» — hi és si virus_aturat
     • look — SEMPRE
         JUGADORA: La recepcionista, de tornada de la reunió de benestar laboral. Fa cara de no haver-hi trobat el benestar.
 
+```
+
+## Sala Crèdits · `credits` — cinemàtica
+
+```
 ```
 
 ## Sala La Propina, una setmana després · `final_bar` — cinemàtica
@@ -2221,11 +2226,11 @@ COMENÇA A: despres (si virus_aturat) · sync (si sync_mobil) · hola
     PONS: Senyor Director, li carrego el mòbil?
     EL DIRECTOR: Sí... sí. Gràcies, Pons. Sempre pensa en tot.
     NARRADOR: La senyora Pons s'emporta el mòbil a l'avantdespatx, i el Director no el torna a veure.
-    PONS: Ha arribat un codi: 4-1-9-7. Ho dic des de la porta, que avui tinc la veu clara. ⟨si codi_demanat i codi_n = 0⟩
+    PONS: Ha arribat un codi: 4-1-9-7. Ho dic en veu alta, per si algú l'ha d'apuntar. ⟨si codi_demanat i codi_n = 0⟩
       ⇒ +codi_llegit
-    PONS: Ha arribat un codi: 2-8-0-5. Ho dic des de la porta, que avui tinc la veu clara. ⟨si codi_demanat i codi_n = 1⟩
+    PONS: Ha arribat un codi: 2-8-0-5. Ho dic en veu alta, per si algú l'ha d'apuntar. ⟨si codi_demanat i codi_n = 1⟩
       ⇒ +codi_llegit
-    PONS: Ha arribat un codi: 6-6-3-1. Ho dic des de la porta, que avui tinc la veu clara. ⟨si codi_demanat i codi_n ≥ 2⟩
+    PONS: Ha arribat un codi: 6-6-3-1. Ho dic en veu alta, per si algú l'ha d'apuntar. ⟨si codi_demanat i codi_n ≥ 2⟩
       ⇒ +codi_llegit
     ⇒ +mobil_resolt, +pons_mobil
 
@@ -2233,7 +2238,7 @@ COMENÇA A: despres (si virus_aturat) · sync (si sync_mobil) · hola
     BALLESTER: Ho sento, senyor. Tinc una hipoteca, però també tinc vergonya.
     NARRADOR: En Ballester immobilitza el Director amb molta delicadesa, com qui abraça un armari.
     EL DIRECTOR: Ballester! Això no és el protocol!
-    BALLESTER: No, senyor. Això és un abraçada. El mòbil, el miro jo.
+    BALLESTER: No, senyor. Això és una abraçada. El mòbil, el miro jo.
     BALLESTER: Hi ha un codi. 4-1-9-7. Jo no he vist res, però l'he llegit. ⟨si codi_demanat i codi_n = 0⟩
       ⇒ +codi_llegit
     BALLESTER: Hi ha un codi. 2-8-0-5. Jo no he vist res, però l'he llegit. ⟨si codi_demanat i codi_n = 1⟩
@@ -2319,7 +2324,7 @@ COMENÇA A: pista
 [pista]
     NARRADOR: CONTRASENYA DEL DIRECTOR. PISTA: «EL MEU MILLOR AMIC».
     JUGADORA: El seu millor amic. Un home així només en té un: el gos. Però com es diu? Vet, ho pots esbrinar? ⟨si NO sap_rockefeller⟩
-    JUGADORA: El seu millor amic. Rockefeller. Ho va dir la Vet. ⟨si sap_rockefeller⟩
+    JUGADORA: El seu millor amic: el gos. Es diu Rockefeller. ⟨si sap_rockefeller⟩
     ⇒ +pista_contrasenya
     ↪ menu
 
@@ -3159,10 +3164,13 @@ final_taula «Final · La taula llarga» — quan escapada i (pagar_primer i ali
     [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
     IRI: Diu, et mato.
     VET: Deixa'l. Ell també és un treballador explotat.
+    TÍTOL: Suma Zero
+    NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
+    NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
     NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
-    Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+    Tot torna a començar.
 final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
@@ -3184,10 +3192,13 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
     IRI: Diu, et mato.
     VET: Deixa'l. Ell també és un treballador explotat.
+    TÍTOL: Suma Zero
+    NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
+    NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
     NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
-    Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+    Tot torna a començar.
 final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: Una setmana després. Bar La Propina.
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
@@ -3209,8 +3220,11 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
     IRI: Diu, et mato.
     VET: Deixa'l. Ell també és un treballador explotat.
+    TÍTOL: Suma Zero
+    NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
+    NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
     NARRADOR: A la pantalla de l'Iri, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
-    Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+    Tot torna a començar.
 ```

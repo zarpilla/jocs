@@ -848,4 +848,5 @@ DESIGNS = {
     'muntatge': cinematica(avio_bg),
     'final_bar': cinematica(avio_bg),
     'postcredits': cinematica(avio_bg),
+    'credits': cinematica(ginebra_bg),
 }

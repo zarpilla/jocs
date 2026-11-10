@@ -563,9 +563,9 @@
   "sala.bcmu_escombraries.demana1": "Codi, vine.",
   "sala.bcmu_escombraries.demana2": "ENVIANT CODI DE CONFIRMACIÓ AL MÒBIL DEL DIRECTOR...",
   "sala.bcmu_escombraries.demana3": "Ha vibrat.",
-  "sala.bcmu_escombraries.pons_llegeix1": "Senyor Director, li ha arribat un codi: 4-1-9-7. Ho dic en veu alta, que avui no hi veig gaire.",
-  "sala.bcmu_escombraries.pons_llegeix2": "Senyor Director, li ha arribat un codi: 2-8-0-5. Ho dic en veu alta, que avui no hi veig gaire.",
-  "sala.bcmu_escombraries.pons_llegeix3": "Senyor Director, li ha arribat un codi: 6-6-3-1. Ho dic en veu alta, que avui no hi veig gaire.",
+  "sala.bcmu_escombraries.pons_llegeix1": "Senyor Director, li ha arribat un codi: 4-1-9-7. Ho dic en veu alta, per si algú l'ha d'apuntar.",
+  "sala.bcmu_escombraries.pons_llegeix2": "Senyor Director, li ha arribat un codi: 2-8-0-5. Ho dic en veu alta, per si algú l'ha d'apuntar.",
+  "sala.bcmu_escombraries.pons_llegeix3": "Senyor Director, li ha arribat un codi: 6-6-3-1. Ho dic en veu alta, per si algú l'ha d'apuntar.",
   "sala.bcmu_escombraries.ballester_llegeix1": "Ha arribat un codi. 4-1-9-7. Jo no he vist res, però l'he llegit.",
   "sala.bcmu_escombraries.ballester_llegeix2": "Ha arribat un codi. 2-8-0-5. Jo no he vist res, però l'he llegit.",
   "sala.bcmu_escombraries.ballester_llegeix3": "Ha arribat un codi. 6-6-3-1. Jo no he vist res, però l'he llegit.",
@@ -580,7 +580,7 @@
   "sala.bcmu_escombraries.tecleja_ok2": "Ja no ho pot desfer ningú. Ni ell. Ara, la pregunta difícil.",
   "sala.bcmu_escombraries.llibre.look_aturat": "La pantalla diu «ATURAT». Per primera vegada en quaranta-dos anys, el Llibre Major no compta res.",
   "sala.bcmu_escombraries.llibre.look_virus": "Els comptadors del virus: dotze euros per persona. La ronda següent, d'aquí a tres hores. Rellotge: les onze i vint.",
-  "sala.bcmu_escombraries.panell.mobil": "Ara no, NETA. Estic teclejant, i cada tecla del panell fa bip.",
+  "sala.bcmu_escombraries.panell.mobil": "Ara no, NETA. El Director té el mòbil a tocar, i cada segon compta.",
   "sala.bcmu_escombraries.conducte.llesta": "Coixí fet. Vet, quan obris el contenidor, salto.",
   "sala.bcmu_escombraries.conducte.escala": "Pel conducte? Tres pisos avall? Primer provaré la sortida de la gent normal: l'escala.",
   "sala.bcmu_escombraries.conducte.neta1": "NETA-3 entra a la sala, agafa les bosses de paper triturat i les llença pel conducte, una rere l'altra.",
@@ -697,5 +697,6 @@
   "sala.bcmu_contenidor.carrer.look": "Ginebra: neta, ordenada i plena de bancs. Avui, una mica menys plena.",
   "sala.bcmu_contenidor.carrer.no": "Sense l'Iri, no me'n vaig enlloc.",
   "sala.final_bar.nom": "La Propina, una setmana després",
-  "sala.postcredits.nom": "El pis, de nit"
+  "sala.postcredits.nom": "El pis, de nit",
+  "sala.credits.nom": "Crèdits"
 }

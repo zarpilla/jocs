@@ -369,7 +369,7 @@ export class Narrative {
     if (!def) throw new Error(`Final desconegut: ${id}`);
     const scene = (def.scene ?? [])
       .filter((line) => this.check(line.if))
-      .map((line) => ({ who: line.who, key: line.text, text: this.t(line.text), ...(line.room ? { room: line.room } : {}) }));
+      .map((line) => ({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound ? { sound: line.sound } : {}), ...(line.room ? { room: line.room } : {}) }));
     return { id, title: this.t(def.title), scene, text: this.t(def.text), ...(def.textRoom ? { textRoom: def.textRoom } : {}) };
   }
 

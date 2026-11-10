@@ -267,7 +267,8 @@ export function switchProtagonist() {
 }
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
-function displayEndingLine(line: { who: string; text: string }) {
+function displayEndingLine(line: { who: string; text: string; sound?: string }) {
+  if (line.sound) new SfxHandle(line.sound).play()
   if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') display(line.text)
   else display(`${narrative.characterName(line.who)}: ${line.text}`)
 }
@@ -276,7 +277,7 @@ function displayEndingLine(line: { who: string; text: string }) {
  * Un final amb imatges (`room` a les línies de l'escena): les línies que van damunt de cada sala.
  * Es reprodueixen en entrar-hi (`enterNarrativeRoom`), com el pròleg, i després es passa a la següent.
  */
-let finale: { room: string; lines: { who: string; text: string }[] }[] = []
+let finale: { room: string; lines: { who: string; text: string; sound?: string }[] }[] = []
 
 /** Mostra el final que toca (o el que li diguis). */
 export function playEnding(id?: string) {
@@ -284,7 +285,7 @@ export function playEnding(id?: string) {
   if (!endingId) return
   const ending = narrative.ending(endingId)
   // Trossos de l'escena: el que va sobre negre (abans de la primera sala) i el que va damunt de cada sala.
-  const negre: { who: string; text: string }[] = []
+  const negre: { who: string; text: string; sound?: string }[] = []
   const trossos: typeof finale = []
   for (const line of ending.scene) {
     const actual = trossos[trossos.length - 1]
