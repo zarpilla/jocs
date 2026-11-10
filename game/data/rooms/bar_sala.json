@@ -1,0 +1,662 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bar_sala.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bar_sala.intro1",
+          "sound": "porta_bar"
+        },
+        {
+          "who": "player",
+          "text": "sala.bar_sala.intro2"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "marcel": {
+      "name": "sala.bar_sala.marcel.nom",
+      "interactions": [
+        {
+          "verb": "give",
+          "item": "tap",
+          "lines": [
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.tap",
+              "effects": [
+                {
+                  "takeItem": "tap"
+                },
+                {
+                  "setFlag": "marcel_tap"
+                },
+                {
+                  "addVar": "donats",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.falten",
+              "if": {
+                "var": "donats",
+                "op": "<",
+                "value": 3
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet1",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet2",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bar_sala.fet3",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              },
+              "effects": [
+                {
+                  "giveItem": "tap"
+                },
+                {
+                  "giveItem": "recepta"
+                }
+              ]
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet4",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "recepta",
+          "lines": [
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.recepta",
+              "effects": [
+                {
+                  "takeItem": "recepta"
+                },
+                {
+                  "setFlag": "marcel_recepta"
+                },
+                {
+                  "addVar": "donats",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.falten",
+              "if": {
+                "var": "donats",
+                "op": "<",
+                "value": 3
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet1",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet2",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bar_sala.fet3",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              },
+              "effects": [
+                {
+                  "giveItem": "tap"
+                },
+                {
+                  "giveItem": "recepta"
+                }
+              ]
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet4",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "comandament",
+          "lines": [
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.comandament",
+              "effects": [
+                {
+                  "takeItem": "comandament"
+                },
+                {
+                  "setFlag": "marcel_comandament"
+                },
+                {
+                  "addVar": "donats",
+                  "amount": 1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bar_sala.comandament2",
+              "effects": [
+                {
+                  "setFlag": "puig_rebost",
+                  "value": false
+                }
+              ]
+            },
+            {
+              "who": "puig",
+              "text": "sala.bar_sala.comandament3"
+            },
+            {
+              "who": "puig",
+              "text": "sala.bar_sala.comandament4"
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.falten",
+              "if": {
+                "var": "donats",
+                "op": "<",
+                "value": 3
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet1",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet2",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bar_sala.fet3",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              },
+              "effects": [
+                {
+                  "giveItem": "tap"
+                },
+                {
+                  "giveItem": "recepta"
+                }
+              ]
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.fet4",
+              "if": {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              }
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.altre"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "marcel"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.marcel.look"
+            }
+          ]
+        }
+      ]
+    },
+    "puig": {
+      "name": "sala.bar_sala.puig.nom",
+      "visibleIf": {
+        "flag": "puig_rebost",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "give",
+          "item": "tap",
+          "lines": [
+            {
+              "who": "puig",
+              "text": "sala.bar_sala.tap1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tap2"
+            },
+            {
+              "who": "puig",
+              "text": "sala.bar_sala.tap3"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "tap"
+            },
+            {
+              "setFlag": "tap_tornat"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "*",
+          "lines": [
+            {
+              "who": "puig",
+              "text": "sala.bar_sala.dona"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "puig"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.puig.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tap_barra": {
+      "name": "sala.bar_sala.tap_barra.nom",
+      "visibleIf": {
+        "flag": "tap_barra"
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tap.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "tap"
+            },
+            {
+              "setFlag": "tap_barra",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tap.look"
+            }
+          ]
+        }
+      ]
+    },
+    "comandament_barra": {
+      "name": "sala.bar_sala.comandament_barra.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "puig_rebost"
+          },
+          {
+            "hasItem": "comandament",
+            "is": false
+          },
+          {
+            "flag": "marcel_comandament",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.comandament.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "comandament"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.comandament.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tele": {
+      "name": "sala.bar_sala.tele.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "comandament",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tele.comandament"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "bassols"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tele.bassols"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tele.futbol"
+            }
+          ]
+        }
+      ]
+    },
+    "retol": {
+      "name": "sala.bar_sala.retol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "cal_contrasenya"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.retol.contrasenya1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bar_sala.retol.contrasenya2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "contrasenya_llegida"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.retol.look"
+            }
+          ]
+        }
+      ]
+    },
+    "telefon": {
+      "name": "sala.bar_sala.telefon.nom",
+      "interactions": [
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "dialogue": "trucada"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.telefon.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_rebost": {
+      "name": "sala.bar_sala.porta_rebost.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "puig_rebost"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.rebost.puig"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "bar_rebost"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.rebost.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.bar_sala.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "marcel_fet",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.porta.marcel"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "resum_fet",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.porta.trucar"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bar_sala.porta.propines1",
+              "effects": [
+                {
+                  "setFlag": "propines"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.bar_sala.porta.propines2"
+            },
+            {
+              "who": "puig",
+              "text": "sala.bar_sala.porta.tap",
+              "sound": "porta_bar",
+              "if": {
+                "flag": "tap_tornat",
+                "is": false
+              }
+            },
+            {
+              "who": "puig",
+              "text": "sala.bar_sala.porta.adeu",
+              "sound": "porta_bar",
+              "if": {
+                "flag": "tap_tornat"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "bar_fet"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "aeroport_personal"
+              }
+            }
+          ],
+          "goTo": "aeroport_terminal"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.porta.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,9 +1,11 @@
 {
   "$schema": "../schemas/endings.schema.json",
-  "prova": {
-    "title": "final.prova.titol",
-    "text": "final.prova.text",
+  "continuara": {
+    "title": "final.continuara.titol",
+    "text": "final.continuara.text",
     "priority": 1,
-    "when": { "flag": "router_connectat" }
+    "when": {
+      "flag": "acte1_fet"
+    }
   }
 }

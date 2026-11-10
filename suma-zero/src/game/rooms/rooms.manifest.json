@@ -12,6 +12,34 @@
     {
       "id": "portada",
       "definition": "portada/portada.room.json"
+    },
+    {
+      "id": "aeroport_oficina",
+      "definition": "aeroport_oficina/aeroport_oficina.room.json"
+    },
+    {
+      "id": "aeroport_personal",
+      "definition": "aeroport_personal/aeroport_personal.room.json"
+    },
+    {
+      "id": "aeroport_terminal",
+      "definition": "aeroport_terminal/aeroport_terminal.room.json"
+    },
+    {
+      "id": "avio",
+      "definition": "avio/avio.room.json"
+    },
+    {
+      "id": "bar_rebost",
+      "definition": "bar_rebost/bar_rebost.room.json"
+    },
+    {
+      "id": "bar_sala",
+      "definition": "bar_sala/bar_sala.room.json"
+    },
+    {
+      "id": "proleg_ginebra",
+      "definition": "proleg_ginebra/proleg_ginebra.room.json"
     }
   ]
 }

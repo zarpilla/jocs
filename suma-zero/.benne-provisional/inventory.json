@@ -1,8 +1,60 @@
 {
   "items": [
     {
+      "id": "auriculars",
+      "label": "auriculars"
+    },
+    {
+      "id": "cable_xarxa",
+      "label": "cable de xarxa"
+    },
+    {
+      "id": "cable_alimentacio",
+      "label": "cable d'alimentació"
+    },
+    {
       "id": "caixa_cartro",
       "label": "caixa de cartró"
+    },
+    {
+      "id": "pizza",
+      "label": "pizza"
+    },
+    {
+      "id": "entrepa",
+      "label": "entrepà"
+    },
+    {
+      "id": "clau_casa",
+      "label": "clau de casa"
+    },
+    {
+      "id": "tap",
+      "label": "tap de la cervesera"
+    },
+    {
+      "id": "recepta",
+      "label": "recepta de la llimonada"
+    },
+    {
+      "id": "comandament",
+      "label": "comandament"
+    },
+    {
+      "id": "maleti",
+      "label": "maletí"
+    },
+    {
+      "id": "ulleres",
+      "label": "ulleres"
+    },
+    {
+      "id": "acreditacions",
+      "label": "acreditacions"
+    },
+    {
+      "id": "acreditacio",
+      "label": "acreditació"
     }
   ]
 }

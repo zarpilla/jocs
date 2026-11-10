@@ -1,0 +1,135 @@
+{
+  "id": "aeroport_personal",
+  "name": "La porta de personal",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "teclat",
+      "active": true,
+      "description": "teclat",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 161
+        },
+        {
+          "x": 8,
+          "y": 161
+        }
+      ],
+      "walkToPoint": {
+        "x": 31,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 161
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta de personal",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 425,
+          "y": 71
+        },
+        {
+          "x": 471,
+          "y": 71
+        },
+        {
+          "x": 471,
+          "y": 161
+        },
+        {
+          "x": 425,
+          "y": 161
+        }
+      ],
+      "walkToPoint": {
+        "x": 448,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 448,
+        "y": 161
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 240,
+      "y": 185,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

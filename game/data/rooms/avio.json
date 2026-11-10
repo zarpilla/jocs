@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.avio.nom",
+  "cutscene": {},
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.avio.1"
+        },
+        {
+          "who": "iri",
+          "text": "sala.avio.2"
+        },
+        {
+          "who": "rius",
+          "text": "sala.avio.3"
+        },
+        {
+          "who": "vet",
+          "text": "sala.avio.4"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.avio.5"
+        },
+        {
+          "who": "title",
+          "text": "acte.fi1"
+        }
+      ],
+      "effects": [
+        {
+          "takeItem": "acreditacions",
+          "who": "iri"
+        },
+        {
+          "giveItem": "acreditacio",
+          "who": "iri"
+        },
+        {
+          "giveItem": "acreditacio",
+          "who": "vet"
+        },
+        {
+          "setFlag": "acte1_fet"
+        },
+        {
+          "ending": "continuara"
+        }
+      ]
+    }
+  ],
+  "hotspots": {}
+}

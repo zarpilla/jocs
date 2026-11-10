@@ -2,6 +2,50 @@
   "$schema": "../../schemas/room.schema.json",
   "name": "sala.pis_estudi.nom",
   "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.pis_estudi.intro1",
+          "sound": "teclat"
+        },
+        {
+          "who": "player",
+          "text": "sala.pis_estudi.intro2"
+        },
+        {
+          "who": "vet",
+          "text": "sala.pis_estudi.intro3"
+        },
+        {
+          "who": "player",
+          "text": "sala.pis_estudi.intro4"
+        },
+        {
+          "who": "vet",
+          "text": "sala.pis_estudi.intro5"
+        },
+        {
+          "who": "player",
+          "text": "sala.pis_estudi.intro6"
+        },
+        {
+          "who": "player",
+          "text": "sala.pis_estudi.intro7",
+          "sound": "miol"
+        }
+      ],
+      "effects": [
+        {
+          "startQuest": "acte1"
+        }
+      ]
+    }
+  ],
   "hotspots": {
     "finestra": {
       "name": "sala.pis_estudi.finestra.nom",
@@ -81,6 +125,133 @@
       "name": "sala.pis_estudi.ordinadors.nom",
       "interactions": [
         {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "flag": "trucada_demanada"
+              },
+              {
+                "flag": "trucada_feta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.trucada1",
+              "sound": "teclat"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_estudi.trucada2",
+              "sound": "telefon_bar"
+            },
+            {
+              "who": "puig",
+              "text": "sala.pis_estudi.trucada3"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.trucada4"
+            },
+            {
+              "who": "puig",
+              "text": "sala.pis_estudi.trucada5"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.trucada6"
+            },
+            {
+              "who": "puig",
+              "text": "sala.pis_estudi.trucada7"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.trucada8"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "trucada_feta"
+            },
+            {
+              "setFlag": "puig_rebost"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "flag": "contrasenya_dita"
+              },
+              {
+                "flag": "calaix_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.pany1",
+              "sound": "teclat"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.pany2",
+              "sound": "pany_clic"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.pany3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "calaix_obert"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "flag": "router_connectat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.ordinadors.sense"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "flag": "vet_marxa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.ordinadors.espera"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.ordinadors.ja"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
@@ -96,22 +267,311 @@
       "interactions": [
         {
           "verb": "use",
-          "item": "caixa_cartro",
+          "item": "cable_xarxa",
+          "if": {
+            "flag": "diu_distret"
+          },
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.router.connecta"
+              "text": "sala.pis_estudi.router.xarxa"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.xarxa.rev1",
+              "sound": "router",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              },
+              "effects": [
+                {
+                  "setFlag": "router_connectat"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev2",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev3",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev4",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev5",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev6",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev7",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev8",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              },
+              "effects": [
+                {
+                  "setFlag": "llibre_trobat"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev9",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
             }
           ],
           "effects": [
             {
-              "takeItem": "caixa_cartro"
+              "takeItem": "cable_xarxa"
             },
             {
-              "setFlag": "router_connectat"
+              "setFlag": "xarxa_connectada"
             },
             {
-              "ending": "prova"
+              "addVar": "cables",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_xarxa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.mossega.xarxa",
+              "sound": "mossegada"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_estudi.mossega.narr"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "diu_ha_mossegat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_alimentacio",
+          "if": {
+            "flag": "diu_distret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.alimentacio"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.alimentacio.rev1",
+              "sound": "router",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              },
+              "effects": [
+                {
+                  "setFlag": "router_connectat"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev2",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev3",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev4",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev5",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev6",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev7",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev8",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              },
+              "effects": [
+                {
+                  "setFlag": "llibre_trobat"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev9",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "cable_alimentacio"
+            },
+            {
+              "setFlag": "alimentacio_connectada"
+            },
+            {
+              "addVar": "cables",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_alimentacio",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.mossega.alimentacio",
+              "sound": "mossegada"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_estudi.mossega.narr"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "diu_ha_mossegat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.altre"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "router_connectat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.look_ok"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "cables",
+            "op": "==",
+            "value": 0
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.look0"
             }
           ]
         },
@@ -120,7 +580,38 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.router.look"
+              "text": "sala.pis_estudi.router.look_n"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "router_connectat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.sense"
             }
           ]
         }
@@ -129,6 +620,174 @@
     "fibra": {
       "name": "sala.pis_estudi.fibra.nom",
       "interactions": [
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "flag": "fibra_connectada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.fibra.ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "flag": "diu_distret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.fibra.connecta"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.fibra.rev1",
+              "sound": "router",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              },
+              "effects": [
+                {
+                  "setFlag": "router_connectat"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev2",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev3",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev4",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev5",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev6",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev7",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.rev8",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              },
+              "effects": [
+                {
+                  "setFlag": "llibre_trobat"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev9",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "fibra_connectada"
+            },
+            {
+              "addVar": "cables",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.mossega.fibra",
+              "sound": "mossegada"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_estudi.mossega.narr"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "diu_ha_mossegat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "fibra_connectada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.fibra.look_ok"
+            }
+          ]
+        },
         {
           "verb": "look",
           "lines": [
@@ -144,6 +803,24 @@
       "name": "sala.pis_estudi.passaplats.nom",
       "interactions": [
         {
+          "verb": [
+            "talkTo",
+            "use",
+            "open"
+          ],
+          "dialogue": "passaplats"
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.res"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {
@@ -157,16 +834,65 @@
     "caixa": {
       "name": "sala.pis_estudi.caixa.nom",
       "visibleIf": {
-        "flag": "router_connectat",
-        "is": false
+        "all": [
+          {
+            "hasItem": "caixa_cartro",
+            "is": false,
+            "who": "iri"
+          },
+          {
+            "not": {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "caixa"
+            }
+          }
+        ]
       },
       "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "cable_xarxa_tret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.caixa.look"
+            }
+          ]
+        },
         {
           "verb": "look",
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.caixa.look"
+              "text": "sala.pis_estudi.caixa.look_buida"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "cable_xarxa_tret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.caixa.cable"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cable_xarxa"
+            },
+            {
+              "setFlag": "cable_xarxa_tret"
             }
           ]
         },
@@ -183,6 +909,15 @@
               "giveItem": "caixa_cartro"
             }
           ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.caixa.oberta"
+            }
+          ]
         }
       ]
     },
@@ -190,8 +925,170 @@
       "name": "sala.pis_estudi.diu.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "diu_distret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.ocupat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "caixa_cartro",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.caixa1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_estudi.diu.caixa2",
+              "sound": "miol"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "caixa_cartro"
+            },
+            {
+              "setVar": "sacrifici",
+              "value": "caixa"
+            },
+            {
+              "setFlag": "diu_distret"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "auriculars",
+          "if": {
+            "flag": "auricular_pensat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.auricular_no"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "auricular_pensat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "auriculars",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.auricular1",
+              "sound": "auricular"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_estudi.diu.auricular2"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "sacrifici",
+              "value": "auricular"
+            },
+            {
+              "setFlag": "diu_distret"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pizza",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.pizza1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_estudi.diu.pizza2",
+              "sound": "miol"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pizza"
+            },
+            {
+              "setVar": "sacrifici",
+              "value": "pizza"
+            },
+            {
+              "setFlag": "diu_distret"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.res"
+            }
+          ]
+        },
+        {
           "verb": "talkTo",
           "dialogue": "diu"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "sacrifici",
+            "op": "==",
+            "value": "caixa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.look_caixa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "sacrifici",
+            "op": "==",
+            "value": "auricular"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.look_auricular"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "sacrifici",
+            "op": "==",
+            "value": "pizza"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.look_pizza"
+            }
+          ]
         },
         {
           "verb": "look",
@@ -199,6 +1096,15 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.diu.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.agafa"
             }
           ]
         }

@@ -1,0 +1,166 @@
+{
+  "id": "aeroport_oficina",
+  "name": "L'oficina de facturació",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 161
+        },
+        {
+          "x": 8,
+          "y": 161
+        }
+      ],
+      "walkToPoint": {
+        "x": 31,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 161
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "terminal",
+      "active": true,
+      "description": "terminal",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 117,
+          "y": 57
+        },
+        {
+          "x": 191,
+          "y": 57
+        },
+        {
+          "x": 191,
+          "y": 90
+        },
+        {
+          "x": 117,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 154,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 154,
+        "y": 90
+      }
+    },
+    {
+      "id": "impressora",
+      "active": true,
+      "description": "impressora",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 289,
+          "y": 19
+        },
+        {
+          "x": 363,
+          "y": 19
+        },
+        {
+          "x": 363,
+          "y": 52
+        },
+        {
+          "x": 289,
+          "y": 52
+        }
+      ],
+      "walkToPoint": {
+        "x": 326,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 326,
+        "y": 52
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 240,
+      "y": 185,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

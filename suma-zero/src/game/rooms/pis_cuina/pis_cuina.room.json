@@ -70,6 +70,135 @@
         "x": 240,
         "y": 90
       }
+    },
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 71
+        },
+        {
+          "x": 54,
+          "y": 161
+        },
+        {
+          "x": 8,
+          "y": 161
+        }
+      ],
+      "walkToPoint": {
+        "x": 31,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 161
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cafetera",
+      "active": true,
+      "description": "cafetera",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 72,
+          "y": 57
+        },
+        {
+          "x": 121,
+          "y": 57
+        },
+        {
+          "x": 121,
+          "y": 90
+        },
+        {
+          "x": 72,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 97,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 97,
+        "y": 90
+      }
+    },
+    {
+      "id": "nevera",
+      "active": true,
+      "description": "nevera",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 130,
+          "y": 19
+        },
+        {
+          "x": 179,
+          "y": 19
+        },
+        {
+          "x": 179,
+          "y": 52
+        },
+        {
+          "x": 130,
+          "y": 52
+        }
+      ],
+      "walkToPoint": {
+        "x": 155,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 155,
+        "y": 52
+      }
+    },
+    {
+      "id": "passaplats",
+      "active": true,
+      "description": "passaplats",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 302,
+          "y": 57
+        },
+        {
+          "x": 351,
+          "y": 57
+        },
+        {
+          "x": 351,
+          "y": 90
+        },
+        {
+          "x": 302,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 327,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 327,
+        "y": 90
+      }
     }
   ],
   "points": [],
@@ -84,6 +213,86 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "pizza_nevera",
+      "tag": "pizza_nevera",
+      "animations": {
+        "pizza_nevera": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 187,
+            "y": 57
+          },
+          {
+            "x": 236,
+            "y": 57
+          },
+          {
+            "x": 236,
+            "y": 90
+          },
+          {
+            "x": 187,
+            "y": 90
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 212,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 212,
+        "y": 90
+      },
+      "description": "pizza"
+    },
+    {
+      "id": "tonyina",
+      "tag": "tonyina",
+      "animations": {
+        "tonyina": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 244,
+            "y": 19
+          },
+          {
+            "x": 293,
+            "y": 19
+          },
+          {
+            "x": 293,
+            "y": 52
+          },
+          {
+            "x": 244,
+            "y": 52
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 269,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 269,
+        "y": 52
+      },
+      "description": "pa i tonyina"
     }
   ],
   "characters": [
@@ -96,6 +305,17 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 10
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
     }
   ]
 }

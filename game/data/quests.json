@@ -1,3 +1,31 @@
 {
-  "$schema": "../schemas/quests.schema.json"
+  "$schema": "../schemas/quests.schema.json",
+  "acte1": {
+    "kind": "main",
+    "title": "mis.acte1.titol",
+    "description": "mis.acte1.desc",
+    "objectives": [
+      {
+        "id": "router",
+        "text": "mis.acte1.obj.router",
+        "completeWhen": {
+          "flag": "router_connectat"
+        }
+      },
+      {
+        "id": "marcel",
+        "text": "mis.acte1.obj.marcel",
+        "completeWhen": {
+          "flag": "marcel_fet"
+        }
+      },
+      {
+        "id": "aeroport",
+        "text": "mis.acte1.obj.aeroport",
+        "completeWhen": {
+          "flag": "aeroport_fet"
+        }
+      }
+    ]
+  }
 }

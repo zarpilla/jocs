@@ -1,9 +1,282 @@
 {
   "$schema": "../schemas/items.schema.json",
+  "auriculars": {
+    "name": "obj.auriculars.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "auricular"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.auriculars.look.mono"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.auriculars.look.iri"
+          }
+        ]
+      }
+    ]
+  },
+  "cable_xarxa": {
+    "name": "obj.cable_xarxa.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cable_xarxa.look"
+          }
+        ]
+      }
+    ]
+  },
+  "cable_alimentacio": {
+    "name": "obj.cable_alimentacio.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cable_alimentacio.look.iri"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cable_alimentacio.look.vet"
+          }
+        ]
+      }
+    ]
+  },
   "caixa_cartro": {
     "name": "obj.caixa_cartro.nom",
     "interactions": [
-      { "verb": "look", "lines": [{ "who": "player", "text": "obj.caixa_cartro.look" }] }
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.caixa_cartro.look"
+          }
+        ]
+      }
+    ]
+  },
+  "pizza": {
+    "name": "obj.pizza.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.pizza.look.iri"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.pizza.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "entrepa": {
+    "name": "obj.entrepa.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.entrepa.look.vet"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.entrepa.look.iri"
+          }
+        ]
+      }
+    ]
+  },
+  "clau_casa": {
+    "name": "obj.clau_casa.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.clau_casa.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "tap": {
+    "name": "obj.tap.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tap.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "recepta": {
+    "name": "obj.recepta.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.recepta.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "comandament": {
+    "name": "obj.comandament.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.comandament.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "maleti": {
+    "name": "obj.maleti.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.maleti.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "ulleres": {
+    "name": "obj.ulleres.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.ulleres.look.vet"
+          }
+        ]
+      }
+    ]
+  },
+  "acreditacions": {
+    "name": "obj.acreditacions.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.acreditacions.look.iri"
+          }
+        ]
+      }
+    ]
+  },
+  "acreditacio": {
+    "name": "obj.acreditacio.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.acreditacio.look"
+          }
+        ]
+      }
     ]
   }
 }

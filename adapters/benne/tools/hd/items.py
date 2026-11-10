@@ -392,6 +392,7 @@ def auricular(f):
 ICONS = {fn.__name__: fn for fn in (
     caixa_cartro, cable_alimentacio, pizza, auricular,
 )}
+ICONS['auriculars'] = auricular   # l'objecte de l'Iri es diu «auriculars»
 
 
 def render(item_id):

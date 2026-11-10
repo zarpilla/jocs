@@ -10,6 +10,10 @@ options.menu__cables.onChoose(() => {
   chooseNarrativeOption('diu', dialog, 'menu', 'cables')
 })
 
+options.menu__gracies.onChoose(() => {
+  chooseNarrativeOption('diu', dialog, 'menu', 'gracies')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('diu', dialog, 'menu', 'adeu')
 })

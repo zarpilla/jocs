@@ -397,9 +397,8 @@ function voicesIn(room: RoomDef, content: GameContent): string[] {
   };
   scan(room.onEnter);
   for (const h of Object.values(room.hotspots)) scan(h.interactions);
-  return [...who].filter(
-    (w) => content.characters[w] && !content.manifest.protagonists.includes(w) && !(w in room.hotspots),
-  );
+  // Una protagonista també pot ser una veu a la sala de l'altra (la Vet des de la cuina, l'Iri per telèfon).
+  return [...who].filter((w) => content.characters[w] && w !== room.protagonist && !(w in room.hotspots));
 }
 
 function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: string, d?: string) => string) {

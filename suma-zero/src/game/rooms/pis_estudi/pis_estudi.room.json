@@ -395,6 +395,28 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
+    },
+    {
+      "instanceId": "puig-veu",
+      "definition": "puig/puig.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "vet-veu",
+      "definition": "vet/vet.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
     }
   ]
 }

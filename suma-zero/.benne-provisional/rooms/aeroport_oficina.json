@@ -1,0 +1,38 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "L'oficina de facturació",
+  "era": "iri",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "porta",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "terminal",
+      "label": "terminal",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 117,
+      "y": 57
+    },
+    {
+      "id": "impressora",
+      "label": "impressora",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 289,
+      "y": 19
+    }
+  ],
+  "characters": []
+}

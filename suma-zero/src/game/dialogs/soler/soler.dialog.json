@@ -1,0 +1,76 @@
+{
+  "id": "soler",
+  "displayName": "soler",
+  "options": [
+    {
+      "id": "menu__fill",
+      "scriptName": "menu__fill",
+      "text": "He perdut el meu fill!",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, gràcies.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "nom__nom_curt",
+      "scriptName": "nom__nom_curt",
+      "text": "Jordi.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "nom__nom_llarg",
+      "scriptName": "nom__nom_llarg",
+      "text": "Jordi Bartomeu Puigdollers i Reixac, com el seu avi, que era notari, i el notari de l'avi, que també era notari...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "edat__edat_curt",
+      "scriptName": "edat__edat_curt",
+      "text": "Set.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "edat__edat_llarg",
+      "scriptName": "edat__edat_llarg",
+      "text": "Set i mig. Bé, set i tres quarts, si comptem el temps que va passar a la incubadora, que va ser molt, perquè...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "roba__roba_curt",
+      "scriptName": "roba__roba_curt",
+      "text": "Samarreta vermella.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "roba__roba_llarg",
+      "scriptName": "roba__roba_llarg",
+      "text": "Samarreta vermella amb un dinosaure que fa de dentista, perquè ell vol ser dentista, i el dinosaure...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "xiulet__plorar",
+      "scriptName": "xiulet__plorar",
+      "text": "BUAAAAA! EL MEU FILL!",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "xiulet__res",
+      "scriptName": "xiulet__res",
+      "text": "Res, res. Jo no he sentit res.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "soler",
+  "with": "soler",
+  "start": [
+    {
+      "if": {
+        "flag": "alarma_porta"
+      },
+      "node": "xiulet"
+    },
+    {
+      "if": {
+        "flag": "soler_distret"
+      },
+      "node": "buscant"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "fill",
+          "text": "dlg.soler.opt.fill",
+          "if": {
+            "flag": "aeroport_fet",
+            "is": false
+          },
+          "next": "fill"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.soler.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "fill": {
+      "effects": [
+        {
+          "setFlag": "sync_aeroport"
+        },
+        {
+          "setFlag": "soler_distret"
+        },
+        {
+          "setVar": "cigarreta",
+          "value": 12
+        }
+      ],
+      "lines": [
+        {
+          "who": "title",
+          "text": "sync.titol"
+        },
+        {
+          "who": "soler",
+          "text": "dlg.soler.fill1"
+        },
+        {
+          "who": "soler",
+          "text": "dlg.soler.fill2"
+        }
+      ],
+      "goto": "nom"
+    },
+    "nom": {
+      "choices": [
+        {
+          "id": "nom_curt",
+          "text": "dlg.soler.opt.nom_curt",
+          "next": "edat"
+        },
+        {
+          "id": "nom_llarg",
+          "text": "dlg.soler.opt.nom_llarg",
+          "effects": [
+            {
+              "addVar": "cigarreta",
+              "amount": -1
+            }
+          ],
+          "next": "edat"
+        }
+      ]
+    },
+    "edat": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.edat"
+        }
+      ],
+      "choices": [
+        {
+          "id": "edat_curt",
+          "text": "dlg.soler.opt.edat_curt",
+          "next": "roba"
+        },
+        {
+          "id": "edat_llarg",
+          "text": "dlg.soler.opt.edat_llarg",
+          "effects": [
+            {
+              "addVar": "cigarreta",
+              "amount": -1
+            }
+          ],
+          "next": "roba"
+        }
+      ]
+    },
+    "roba": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.roba"
+        }
+      ],
+      "choices": [
+        {
+          "id": "roba_curt",
+          "text": "dlg.soler.opt.roba_curt",
+          "next": "busca"
+        },
+        {
+          "id": "roba_llarg",
+          "text": "dlg.soler.opt.roba_llarg",
+          "effects": [
+            {
+              "addVar": "cigarreta",
+              "amount": -1
+            }
+          ],
+          "next": "busca"
+        }
+      ]
+    },
+    "busca": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.busca1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.soler.busca2"
+        }
+      ]
+    },
+    "buscant": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.buscant"
+        }
+      ]
+    },
+    "xiulet": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.xiulet"
+        }
+      ],
+      "choices": [
+        {
+          "id": "plorar",
+          "text": "dlg.soler.opt.plorar",
+          "effects": [
+            {
+              "setFlag": "alarma_porta",
+              "value": false
+            }
+          ],
+          "next": "plorat"
+        },
+        {
+          "id": "res",
+          "text": "dlg.soler.opt.res",
+          "next": "res"
+        }
+      ]
+    },
+    "plorat": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.soler.plorat0",
+          "sound": "plor"
+        },
+        {
+          "who": "soler",
+          "text": "dlg.soler.plorat"
+        }
+      ]
+    },
+    "res": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.res"
+        }
+      ]
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.adeu"
+        }
+      ]
+    }
+  }
+}

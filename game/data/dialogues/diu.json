@@ -22,7 +22,19 @@
         {
           "id": "cables",
           "text": "dlg.diu.opt.cables",
+          "if": {
+            "flag": "diu_distret",
+            "is": false
+          },
           "next": "cables"
+        },
+        {
+          "id": "gracies",
+          "text": "dlg.diu.opt.gracies",
+          "if": {
+            "flag": "diu_distret"
+          },
+          "next": "gracies"
         },
         {
           "id": "adeu",
@@ -35,12 +47,22 @@
     "cables": {
       "lines": [
         {
-          "who": "player",
-          "text": "dlg.diu.cables1"
+          "who": "diu",
+          "text": "dlg.diu.cables",
+          "sound": "miol"
         },
         {
-          "who": "diu",
+          "who": "player",
           "text": "dlg.diu.cables2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "gracies": {
+      "lines": [
+        {
+          "who": "diu",
+          "text": "dlg.diu.gracies"
         }
       ],
       "goto": "menu"
@@ -49,7 +71,7 @@
       "lines": [
         {
           "who": "diu",
-          "text": "dlg.diu.hola"
+          "text": "dlg.diu.adeu"
         }
       ]
     }

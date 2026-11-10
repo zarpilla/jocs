@@ -1,0 +1,185 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "puig",
+  "with": "puig",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "puig",
+          "text": "dlg.puig.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "cafe",
+          "text": "dlg.puig.opt.cafe",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_marcel"
+              },
+              {
+                "flag": "tap_barra",
+                "is": false
+              },
+              {
+                "hasItem": "tap",
+                "is": false
+              },
+              {
+                "flag": "marcel_tap",
+                "is": false
+              },
+              {
+                "flag": "tap_tornat",
+                "is": false
+              }
+            ]
+          },
+          "next": "cafe"
+        },
+        {
+          "id": "cafe2",
+          "text": "dlg.puig.opt.cafe2",
+          "if": {
+            "any": [
+              {
+                "hasItem": "tap"
+              },
+              {
+                "flag": "marcel_tap"
+              },
+              {
+                "flag": "tap_tornat"
+              }
+            ]
+          },
+          "next": "cafe2"
+        },
+        {
+          "id": "comandament",
+          "text": "dlg.puig.opt.comandament",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_marcel"
+              },
+              {
+                "flag": "sap_dona",
+                "is": false
+              }
+            ]
+          },
+          "next": "comandament"
+        },
+        {
+          "id": "wifi",
+          "text": "dlg.puig.opt.wifi",
+          "if": {
+            "all": [
+              {
+                "flag": "cal_contrasenya"
+              },
+              {
+                "flag": "contrasenya_llegida",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "wifi"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.puig.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "cafe": {
+      "effects": [
+        {
+          "setFlag": "tap_barra"
+        }
+      ],
+      "lines": [
+        {
+          "who": "puig",
+          "text": "dlg.puig.cafe1"
+        },
+        {
+          "who": "puig",
+          "text": "dlg.puig.cafe2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.puig.cafe3",
+          "sound": "vaporitzador"
+        }
+      ],
+      "goto": "menu"
+    },
+    "cafe2": {
+      "lines": [
+        {
+          "who": "puig",
+          "text": "dlg.puig.cafe2_1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "comandament": {
+      "effects": [
+        {
+          "setFlag": "sap_dona"
+        }
+      ],
+      "lines": [
+        {
+          "who": "puig",
+          "text": "dlg.puig.comandament1"
+        },
+        {
+          "who": "puig",
+          "text": "dlg.puig.comandament2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.puig.comandament3"
+        },
+        {
+          "who": "puig",
+          "text": "dlg.puig.comandament4"
+        }
+      ],
+      "goto": "menu"
+    },
+    "wifi": {
+      "lines": [
+        {
+          "who": "puig",
+          "text": "dlg.puig.wifi"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "puig",
+          "text": "dlg.puig.adeu"
+        }
+      ]
+    }
+  }
+}

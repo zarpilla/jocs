@@ -13,14 +13,17 @@
   "start": {
     "iri": {
       "room": "pis_estudi",
-      "items": []
+      "items": [
+        "auriculars"
+      ]
     },
     "vet": {
       "room": "pis_cuina"
     }
   },
   "switchWhen": {
-    "flag": "router_connectat"
+    "flag": "cable_demanat"
   },
-  "cover": "portada"
+  "cover": "portada",
+  "intro": "proleg_ginebra"
 }

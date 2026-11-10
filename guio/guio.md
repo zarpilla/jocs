@@ -104,8 +104,8 @@ mòbil del Director (Escena 8). El joc les anuncia amb un títol: **«Ara necess
 1. **No hi ha pantalla dividida ni rellotge real.** Cada protagonista és a la seva sala, i el jugador canvia
    entre elles amb el botó «Canvia», com sempre. **Canviar no costa res.**
 2. **Un torn és una acció de qualsevol de les dues**: usar, empènyer, agafar, triar una opció de la conversa
-   de sincronia, o **«Espera»** (un botó que només surt durant una sincronia, per deixar passar un torn).
-   **Mirar i parlar per l'auricular no compten.** El jugador pot mirar-ho tot i llegir codis amb calma.
+   de sincronia. **Mirar, caminar, obrir una conversa i parlar per l'auricular no compten.** Si cal esperar,
+   l'escena té una acció que ho fa (a l'aeroport, empènyer la impressora). El jugador pot mirar-ho tot i llegir codis amb calma.
 3. **Cada sincronia té un rellotge que es veu i es diu**: la cigarreta de l'Ortega que s'escurça, la
    sospita d'en Ballester (la mà que va cap a la ràdio), el mòbil del Director que s'il·lumina.
 4. **El que fa una afecta el que pot fer l'altra**: una distracció de la Vet dura uns torns, i només mentre
@@ -237,8 +237,8 @@ cable que l'Iri connecta, ell el mossega i el desendolla («Diu! Això és fibra
   - l'**auricular esquerre** de l'Iri (difícil: «No me'ls trec mai. Mai.». L'Iri l'ha de mirar, se l'ha de
     treure i l'ha d'usar amb en Diu, i diu adeu a l'estèreo);
   - la **pizza de demà**, que és a la nevera de la Vet (tràgic: la Vet la passa pel passaplats protestant).
-    Si es tria la pizza, en Diu mira l'Iri **amb respecte**. Si l'Iri té la pizza però tria una altra cosa, se
-    la menja: «Era de demà. Ara és d'avui.»
+    Si es tria la pizza, en Diu mira l'Iri **amb respecte**. La Vet només la passa si l'Iri l'hi demana (després
+    que en Diu hagi mossegat algun cable).
 - Amb en Diu distret, els tres cables es connecten. [SO: router]
 
 **Trencaclosques 1.2 — L'entrepà (Vet, opcional però recomanat).** La Vet ha de marxar al torn de nit del bar.
@@ -266,8 +266,9 @@ damunt la taula de l'Iri, ple de forats de dent.
 ### Escena 2 — El bar La Propina
 
 **Sales:** `bar_sala` (Vet) i `bar_rebost` (Vet: el rebost i despatx d'en Puig). L'Iri continua a
-`pis_estudi` (en Diu dorm dins el que li han donat) i s'hi pot canviar. Es parlen per **telèfon** (la Vet té el
-mòbil a la butxaca del davantal). Dilluns, nit: a la tele hi ha futbol, i a les deu fan *La Comissària Bassols*.
+`pis_estudi` (en Diu dorm dins el que li han donat) i s'hi pot canviar. Es parlen pel **telèfon de paret** del
+bar; l'Iri fa la seva part des de l'ordinador. Dilluns, nit: a la tele hi ha futbol, i a les deu fan *La
+Comissària Bassols*.
 
 **En Marcel no parla si no li guanyes una cosa.** Primer, la crítica en petit (línies curtes):
 
@@ -303,9 +304,9 @@ un desastre parlant amb la gent, truca al bar amb **una veu sintètica** del por
 > PUIG: ...Un moment.
 
 En Puig s'endú el telèfon al rebost (que es tanca: «Està discutint amb la seva dona inexistent. Millor no
-entrar») i deixa el comandament a la barra. La Vet l'agafa i posa *La Comissària Bassols* (en Marcel: «Ah! El
-capítol del violí!»). En Puig torna al cap de dues accions de la Vet: «Ja està. Som lliures. Tots dos.» Si
-es torna a trucar: «IRI: No contesta. Diu que està de dol.»
+entrar») i deixa el comandament a la barra. La Vet l'agafa i el dona a en Marcel, que posa *La Comissària
+Bassols* («Ah! El capítol del violí!»). Aleshores en Puig surt del rebost: «Ja està. Som lliures. Tots dos.», i
+recupera el comandament.
 
 **La recompensa: el que sap en Marcel.** Amb les tres coses, en Marcel les mira i les torna: «No les vull.
 Volia saber si ho faries.» (El comandament, en Puig el recupera sol en tornar; la recepta, en Marcel la llegeix:
@@ -320,9 +321,9 @@ poden fer en qualsevol ordre:
    un entrepà, si no te l'estimes gaire.»
 4. **Com arribar a Ginebra** (cal): «El BCMU té un vol propi cada dimarts al matí per als tècnics de manteniment
    de caixes fortes. Ningú comprova res: qui vol robar una caixa forta?»
-5. **El Cap de Seguretat** (opcional): «Es diu Ballester. Miràvem *La Comissària Bassols* cada dilluns. El seu
+5. **El Cap de Seguretat** (opcional; surt després de preguntar per la clau): «Es diu Ballester. Miràvem *La Comissària Bassols* cada dilluns. El seu
    capítol preferit és *El violí mut*. El que odia és *La vídua del Liceu*: diu que és inversemblant.»
-6. **El robot** (opcional): «El robot de neteja el vaig programar jo. Si li dius "NETA, descansa", s'atura. Mai
+6. **El robot** (opcional; surt després de preguntar pel servidor): «El robot de neteja el vaig programar jo. Si li dius "NETA, descansa", s'atura. Mai
    ningú li ho ha dit.»
 
 Mentre no s'hagin fet les quatre que calen, la conversa no s'acaba: «Encara no m'has preguntat el més
@@ -356,38 +357,41 @@ fortes» i imprimir-se les acreditacions.
 - A **objectes perduts** hi ha un **maletí** amb un adhesiu: «AGENDA 2019 — COMPTE, LLIMONA». Si la Vet el mira
   i després el reclama, l'empleat li pregunta què hi ha. «Una agenda de 2019 i una llimona.» I el recupera. Si
   respon una altra cosa, l'empleat diu «No» i s'hi pot tornar.
-- A la cafeteria hi ha unes **ulleres** de pasta oblidades. Amb les ulleres posades, «sembla que llegeixi
-  directives per gust».
+- A la cafeteria hi ha unes **ulleres** de pasta oblidades. Se les posa en agafar-les: «Ara semblo que
+  llegeixi directives per gust».
 
 Sense res d'això, l'Escena 4 és més difícil (sospita inicial), no impossible.
 
-**La sincronia (10 torns). El rellotge és la cigarreta de l'Ortega**, que fuma darrere la vidriera i mira cap a
+**La sincronia (12 torns). El rellotge és la cigarreta de l'Ortega**, que fuma darrere la vidriera i mira cap a
 dins de tant en tant. Comença quan la Vet diu «He perdut el meu fill!»; abans, si l'Iri prova el teclat: «En
 Soler mira cap aquí. Ara no.»
 
 1. **Vet:** «He perdut el meu fill!» (que no existeix). L'agent Soler la segueix per la terminal i deixa la
    porta de personal sense vigilància. [SO: megafonia] Mentrestant, en Soler li fa preguntes (el nom del nen,
-   l'edat, la roba). **Si la Vet parla massa** (tria les respostes llargues, que són més divertides), en Soler
-   arrufa les celles i l'Ortega mira per la vidriera: la cigarreta perd un torn.
+   l'edat, la roba), i cada resposta és un torn. **Si la Vet parla massa** (tria les respostes llargues, que són
+   més divertides), l'Ortega mira per la vidriera: la cigarreta perd un torn més per resposta.
 2. **Vet** (mirar, sense torn): sota el taulell hi ha un pòsit amb el codi: **8-4-2-6**. El llegeix en veu alta.
 3. **Iri:** tecleja el codi i entra a l'oficina. [SO: teclat_porta] **Si s'equivoca**, la porta xiula, i la Vet
-   ha de **plorar més fort** (un torn) perquè en Soler no s'hi giri. [SO: alarma_porta] [SO: plor]
-4. **Iri:** al terminal, afegeix «I. i V., tècniques» a la llista del vol BCMU-07 i imprimeix dues
-   **acreditacions de manteniment**. La impressora és lenta: un torn d'espera («Espera» o una acció de la Vet).
-   [SO: impressora]
-5. **Iri:** agafa les acreditacions i surt.
-6. **Vet:** «L'he trobat!» (assenyala un nen qualsevol, que és d'una altra família). En Soler s'hi acosta, i el
-   nen el mira. Fi de la distracció.
+   ha de **plorar més fort** (parlant amb en Soler: un torn) abans de l'acció següent, perquè en Soler no s'hi
+   giri. Si no ho fa, es torna a començar el pas. [SO: alarma_porta] [SO: plor]
+4. **Iri, a dins** (`aeroport_oficina`): al terminal, afegeix «I. i V., tècniques» a la llista del vol BCMU-07 i
+   manda imprimir dues **acreditacions de manteniment**. La impressora és lenta: l'Iri l'ha d'empènyer («Va, va,
+   va...», un torn) abans que en surtin. [SO: impressora]
+5. **Iri:** agafa les acreditacions i surt per la porta.
+6. **Vet:** «L'he trobat!» (assenyala el nen de la samarreta vermella, que és d'una altra família). En Soler s'hi
+   acosta, i el nen el mira. Fi de la distracció (no gasta torn).
 
-**Si s'acaba la cigarreta** abans que l'Iri surti: l'Ortega torna, l'Iri es queda quieta darrere la porta i la
-Vet diu «Ah, aquí hi ha el lavabo de personal? Perdoni». NARRADOR: «Una hora i una cigarreta més tard...». Es
-torna al principi del pas: el codi ja se sap; el que s'havia imprès, la impressora ho ha esborrat.
+**Si s'acaba la cigarreta** (o la porta xiula i ningú no ho tapa): l'Ortega torna a entrar i en Soler torna a la
+porta de personal («No l'he trobat, senyora. Potser ja és a casa.»). NARRADOR: «Una hora i una cigarreta més
+tard...». Es torna al principi del pas: el codi ja se sap, la llista ja està feta, i el que tingui l'Iri ho
+conserva; però mentre en Soler vigila, l'Iri no pot fer soroll ni sortir de l'oficina.
 
 Durant la sincronia, objectes perduts i la cafeteria no s'hi poden fer servir: «Ara no: he perdut un fill.»
 
 **Final de l'acte (cinemàtica `avio`):** a l'avió, entre tècnics de debò. L'Iri dona l'acreditació a la Vet.
-La Rius les mira: «Sou noves? Doncs benvingudes a la subcontracta. Aquí ningú cobra el viatge.» L'avió
-aterra. **Acte 2 · La seu del mal.**
+La Rius les mira: «Sou noves? Doncs benvingudes a la subcontracta. Aquí ningú no cobra el viatge.» L'avió
+s'enlaira. **Fi de l'Acte 1.** (Mentre no hi hagi l'Acte 2, aquí s'acaba la demostració, amb el final
+provisional «Continuarà».)
 
 ---
 
@@ -770,7 +774,7 @@ Un torn és una acció de qualsevol de les dues (regla 1.2). El camí mínim, i 
 
 | Sincronia | Rellotge | Camí mínim | Marge | Errors que hi caben |
 |---|---|---|---|---|
-| **3 · Aeroport** | 10 torns | Vet: fill (1) · Iri: codi (2) · Iri: terminal (3) · espera de la impressora (4) · Iri: agafa i surt (5) · Vet: «L'he trobat!» (6) | 4 | Parlar massa (−1 cada vegada) · un codi dolent (plorar +1, tornar a teclejar +1) |
+| **3 · Aeroport** | 12 torns | Vet: fill (1) i tres respostes (2–4) · Iri: codi (5) · terminal (6) · empènyer la impressora (7) · agafar (8) · sortir (9) · Vet: «L'he trobat!» (no gasta) | 3 | Un codi dolent (+1) i plorar (+1); o fins a tres respostes llargues (+1 cada una). Totes tres llargues i una acció perduda: es reinicia |
 | **6 · Collaret** | sospita 3 | 1r bip lliure · Vet cobreix (sèrie: 2 bips) · Iri: codi 2 · Iri: codi 3 · clau | 2 de sospita | Dos bips descoberts, o dos gots, o un capítol dolent i un got |
 | **8 · Mòbil** (sense aliats) | 9 torns | Vet: reunió (1, cobreix 2–3) · Iri: demana codi (2) · Vet: agafa el mòbil (3) · Vet: gos (4, cobreix 5) · Iri: tecleja codi (5) · Vet: reunió (6, cobreix 7) · Iri: confirma (7) | 2 | Un torn mal gastat (si queda sense cobrir un torn després del codi, es reinicia) |
 | **8 · Mòbil** (amb la Pons o en Ballester) | — | El pas sencer es resol amb una acció | — | — |
@@ -964,7 +968,7 @@ enviada, la contrasenya ja posada, el panell de NETA i el conducte.
 | Sacrifici del tutorial | `vars.sacrifici` = `caixa` / `auricular` / `pizza` |
 | El passaplats i el tub pneumàtic | `game/logic/tub.ts`: «usar objecte amb el tub» comprova si hi cap (`props.cap_al_tub` a `items.json`), si es pot enviar (`props.no_enviar`) i si l'altra el necessita; si tot va bé, `takeItem` + `giveItem` amb `who`. Si l'altra no és a una sala amb estació, l'objecte espera a l'estació de la planta |
 | L'auricular | `flags.auricular_compartit`. Les línies de l'altra protagonista surten com a veu (personatge invisible a la sala, com la MARE de Ferro-9) |
-| Sincronia per torns | `game/logic/sincronia.ts`: cada pas declara el rellotge (`vars.torn_<pas>` o `vars.sospita_<pas>`), el màxim i les eines; després de cada acció en una sala de sincronia suma el torn, aplica la regla (p. ex. el Director mira el mòbil si no hi ha cobertura) i, al màxim, reinicia el pas (línies i efectes del contingut, i torna les eines `once`). El botó «Espera» només surt durant una sincronia |
+| Sincronia per torns | `game/logic/sincronia.ts`: cada pas declara el rellotge (`vars.torn_<pas>` o `vars.sospita_<pas>`), el màxim i les eines; després de cada acció en una sala de sincronia suma el torn, aplica la regla (p. ex. el Director mira el mòbil si no hi ha cobertura) i, al màxim, reinicia el pas (línies i efectes del contingut, i torna les eines `once`). Fet per a l'aeroport (`PASSOS.aeroport`); el nucli hi crida amb `onAfterAction` |
 | Cobertures | `vars.coberta_vet` (torns o bips coberts que queden) |
 | Sospita del vestíbul | `vars.sospita` (0–100) i `vars.sospita_max`; condicions `var >= 25/50/75` per a les cares del Director (`appearance`) i per a la barra (`decor` amb `visibleIf`) |
 | Dia de la Marmota | Efecte de reinici: `sospita` al valor inicial, `addVar marmota`, i `goTo bcmu_vestibul`; les opcions noves, amb `var marmota >= 1` |
@@ -976,7 +980,8 @@ enviada, la contrasenya ja posada, el panell de NETA i el conducte.
 | Títols d'acte i «Ara necessites les dues» | Línies `title` |
 | Gramàtica | `obj.<id>.amb_article` (ja hi és) i `obj.<id>.plural` per a les ulleres; els textos amb variables eviten les contraccions («de l'entrepà», «pel tub») o en tenen una clau pròpia |
 
-**Què caldrà afegir:** `game/logic/sincronia.ts`, `game/logic/tub.ts` i el botó «Espera» al pont de Benne. La
+**Què caldrà afegir:** `game/logic/tub.ts` (els límits del tub), i els passos de sincronia de les escenes 6 i 8.
+Ja fet: `game/logic/sincronia.ts` i, al nucli, `onAfterAction` i l'esdeveniment `situar` (moure l'altra protagonista). La
 resta ja ho fa el nucli de Ferro-9. Cap altre canvi a Benne: la «pantalla dividida» és el botó Canvia.
 
 ## Abast (producció)

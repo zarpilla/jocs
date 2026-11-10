@@ -5,7 +5,14 @@
     {
       "id": "menu__cables",
       "scriptName": "menu__cables",
-      "text": "Deixa els cables, sisplau.",
+      "text": "Diu, deixa els cables, sisplau.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__gracies",
+      "scriptName": "menu__gracies",
+      "text": "Gràcies per deixar-me treballar.",
       "enabled": false,
       "say": false
     },

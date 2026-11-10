@@ -1,0 +1,386 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "marcel",
+  "with": "marcel",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "marcel",
+          "node": "intro"
+        }
+      },
+      "node": "hola"
+    },
+    {
+      "node": "intro"
+    }
+  ],
+  "nodes": {
+    "intro": {
+      "effects": [
+        {
+          "setFlag": "prova_marcel"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.intro1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.marcel.intro2"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.intro3"
+        },
+        {
+          "who": "player",
+          "text": "dlg.marcel.intro4"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.intro5"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.intro6"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.intro7"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.intro8"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.intro9"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.hola_falta",
+          "if": {
+            "var": "donats",
+            "op": "<",
+            "value": 3
+          }
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.hola_pregunta",
+          "if": {
+            "var": "donats",
+            "op": ">=",
+            "value": 3
+          }
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "falten",
+          "text": "dlg.marcel.opt.falten",
+          "if": {
+            "var": "donats",
+            "op": "<",
+            "value": 3
+          },
+          "next": "falten"
+        },
+        {
+          "id": "servidor",
+          "text": "dlg.marcel.opt.servidor",
+          "if": {
+            "var": "donats",
+            "op": ">=",
+            "value": 3
+          },
+          "once": true,
+          "next": "servidor"
+        },
+        {
+          "id": "clau",
+          "text": "dlg.marcel.opt.clau",
+          "if": {
+            "var": "donats",
+            "op": ">=",
+            "value": 3
+          },
+          "once": true,
+          "next": "clau"
+        },
+        {
+          "id": "tub",
+          "text": "dlg.marcel.opt.tub",
+          "if": {
+            "var": "donats",
+            "op": ">=",
+            "value": 3
+          },
+          "once": true,
+          "next": "tub"
+        },
+        {
+          "id": "vol",
+          "text": "dlg.marcel.opt.vol",
+          "if": {
+            "var": "donats",
+            "op": ">=",
+            "value": 3
+          },
+          "once": true,
+          "next": "vol"
+        },
+        {
+          "id": "ballester",
+          "text": "dlg.marcel.opt.ballester",
+          "if": {
+            "all": [
+              {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              },
+              {
+                "flag": "marcel_clau"
+              }
+            ]
+          },
+          "once": true,
+          "next": "ballester"
+        },
+        {
+          "id": "neta",
+          "text": "dlg.marcel.opt.neta",
+          "if": {
+            "all": [
+              {
+                "var": "donats",
+                "op": ">=",
+                "value": 3
+              },
+              {
+                "flag": "marcel_servidor"
+              }
+            ]
+          },
+          "once": true,
+          "next": "neta"
+        },
+        {
+          "id": "gracies",
+          "text": "dlg.marcel.opt.gracies",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "marcel_servidor"
+                  },
+                  {
+                    "flag": "marcel_clau"
+                  },
+                  {
+                    "flag": "marcel_tub"
+                  },
+                  {
+                    "flag": "marcel_vol"
+                  }
+                ]
+              },
+              {
+                "flag": "marcel_fet",
+                "is": false
+              }
+            ]
+          },
+          "next": "gracies",
+          "end": true
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.marcel.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "falten": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.falta_tap",
+          "if": {
+            "flag": "marcel_tap",
+            "is": false
+          }
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.falta_recepta",
+          "if": {
+            "flag": "marcel_recepta",
+            "is": false
+          }
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.falta_comandament",
+          "if": {
+            "flag": "marcel_comandament",
+            "is": false
+          }
+        }
+      ],
+      "goto": "menu"
+    },
+    "servidor": {
+      "effects": [
+        {
+          "setFlag": "marcel_servidor"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.servidor1"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.servidor2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "clau": {
+      "effects": [
+        {
+          "setFlag": "marcel_clau"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.clau1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.marcel.clau2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "tub": {
+      "effects": [
+        {
+          "setFlag": "marcel_tub"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.tub1"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.tub2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "vol": {
+      "effects": [
+        {
+          "setFlag": "marcel_vol"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.vol1"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.vol2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "ballester": {
+      "effects": [
+        {
+          "setFlag": "marcel_ballester"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.ballester1"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.ballester2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.marcel.ballester3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "neta": {
+      "effects": [
+        {
+          "setFlag": "marcel_neta"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.neta1"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.neta2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "gracies": {
+      "effects": [
+        {
+          "setFlag": "marcel_fet"
+        }
+      ],
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.gracies1"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.gracies2"
+        }
+      ]
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.adeu"
+        }
+      ]
+    }
+  }
+}

@@ -120,13 +120,16 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
 
 ## Estat actual
 
-- Repositori muntat amb el nucli narratiu, les eines i l'adaptador de Ferro-9, nets del contingut de
-  Ferro-9.
-- **Contingut mínim** per comprovar que tot funciona: el pis (l'estudi de l'Iri i la cuina de la Vet),
-  una caixa de cartró i un final de prova.
-- Projecte Benne a `suma-zero/` creat amb `npm run benne:create`, amb els pegats propis al motor
-  (`adapters/benne/patches/`) i la font pròpia.
 - **Guió** complet i revisat ([guio/guio.md](guio/guio.md)), amb la primera revisió de coherència aplicada.
-- **Sala de mostra amb l'art definitiu** (proposta B): l'estudi de l'Iri, l'Iri i en Diu, i quatre icones.
-  Provada al navegador: s'hi camina i s'hi parla.
-- **Següent pas:** l'Acte 1 (contingut, mode text, tests de tots els camins, sync, art provisional).
+- **Acte 1 jugable de cap a peus** (en mode text, als tests i a Benne): pròleg, el pis (els tres cables,
+  en Diu i el passaplats), el bar (les tres coses per a en Marcel, el pany intel·ligent, la trucada de la «dona»
+  d'en Puig) i l'aeroport (la primera sincronia per torns, amb la cigarreta de l'Ortega). Acaba amb un final
+  provisional, «Continuarà».
+- **Regles en codi:** la sincronia per torns (`game/logic/sincronia.ts`), sobre dues novetats del nucli:
+  `onAfterAction` (una regla després de cada acció) i l'esdeveniment `situar` (moure l'altra protagonista).
+- **Tests:** l'Acte 1 per tots els camins (els tres sacrificis per a en Diu, amb i sense entrepà, tap i
+  preparació, el codi dolent, els reinicis de la sincronia), amb una pista a cada pas, i proves de coherència.
+- **Sala de mostra amb l'art definitiu** (l'estudi de l'Iri, l'Iri i en Diu). Les altres sales de l'Acte 1 són
+  caixes provisionals; els sons són provisionals (`npm run sons`).
+- **Següent pas:** l'art provisional de l'Acte 1 amb tots els estats (taula d'estats del guió), i jugar-lo
+  sencer al navegador. Després, l'Acte 2.

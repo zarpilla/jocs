@@ -1,0 +1,353 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.aeroport_terminal.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.aeroport_terminal.intro1",
+          "sound": "megafonia"
+        },
+        {
+          "who": "iri",
+          "text": "sala.aeroport_terminal.intro2",
+          "sound": "auricular"
+        },
+        {
+          "who": "player",
+          "text": "sala.aeroport_terminal.intro3"
+        },
+        {
+          "who": "iri",
+          "text": "sala.aeroport_terminal.intro4"
+        },
+        {
+          "who": "player",
+          "text": "sala.aeroport_terminal.intro5"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "auricular_compartit"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "soler": {
+      "name": "sala.aeroport_terminal.soler.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "soler"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "soler_distret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.soler.look_busca"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.soler.look"
+            }
+          ]
+        }
+      ]
+    },
+    "taulell": {
+      "name": "sala.aeroport_terminal.taulell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "codi_porta_llegit"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.taulell.ja"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "soler_distret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.taulell.codi1"
+            },
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.taulell.codi2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "codi_porta_llegit"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.taulell.look"
+            }
+          ]
+        }
+      ]
+    },
+    "vidriera": {
+      "name": "sala.aeroport_terminal.vidriera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "sync_aeroport"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.vidriera.sync"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.vidriera.look"
+            }
+          ]
+        }
+      ]
+    },
+    "empleat": {
+      "name": "sala.aeroport_terminal.empleat.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "sync_aeroport"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.empleat.sync"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "empleat"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.empleat.look"
+            }
+          ]
+        }
+      ]
+    },
+    "maleti": {
+      "name": "sala.aeroport_terminal.maleti.nom",
+      "visibleIf": {
+        "hasItem": "maleti",
+        "is": false,
+        "who": "vet"
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.maleti.look"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "maleti_vist"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.maleti.no"
+            }
+          ]
+        }
+      ]
+    },
+    "ulleres": {
+      "name": "sala.aeroport_terminal.ulleres.nom",
+      "visibleIf": {
+        "hasItem": "ulleres",
+        "is": false,
+        "who": "vet"
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "sync_aeroport"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.ulleres.sync"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.ulleres.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "ulleres"
+            },
+            {
+              "setFlag": "ulleres_posades"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.ulleres.look"
+            }
+          ]
+        }
+      ]
+    },
+    "nen": {
+      "name": "sala.aeroport_terminal.nen.nom",
+      "interactions": [
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "sync_aeroport"
+              },
+              {
+                "flag": "iri_fora"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.nen.trobat1"
+            },
+            {
+              "who": "soler",
+              "text": "sala.aeroport_terminal.nen.trobat2"
+            },
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.nen.trobat3"
+            },
+            {
+              "who": "nen",
+              "text": "sala.aeroport_terminal.nen.trobat4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.aeroport_terminal.nen.trobat5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "aeroport_fet"
+            },
+            {
+              "setFlag": "sync_aeroport",
+              "value": false
+            },
+            {
+              "setFlag": "soler_distret",
+              "value": false
+            }
+          ],
+          "goTo": "avio"
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "sync_aeroport"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.nen.encara"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.nen.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_terminal.nen.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
