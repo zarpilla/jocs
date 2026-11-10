@@ -44,6 +44,8 @@ function print(lines: ResolvedLine[]) {
       console.log(`\n${c.bold}${c.cyan}═══ ${l.text} ═══${c.off}\n`);
       continue;
     }
+    // El so sona quan comença la línia: s'escriu abans, per revisar el ritme llegint.
+    if (l.sound) console.log(`${c.dim}[so: ${l.sound}]${c.off}`);
     const who = name(l.who);
     console.log(who ? `${c.bold}${who}:${c.off} ${l.text}` : `${c.dim}${l.text}${c.off}`);
   }
