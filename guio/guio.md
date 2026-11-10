@@ -12,7 +12,7 @@ bar La Propina i mentidera professional. Viuen juntes en un pis ple de cables, p
 **Diu**. No tenen ni per pizzes.
 
 Un dilluns al vespre, l'Iri troba l'escletxa amb les dades del mòbil (li queda un 3 %): a la seu de Ginebra
-del **Banc Central Mundial Unificat (BCMU)** hi ha un servidor de 1987 que tothom anomena **el Llibre Major**,
+del **Banc Central Mundial Unificat (BCMU)** hi ha un servidor de 1984 (com la novel·la d'Orwell: el Gran Germà, aquí, és un comptable) que tothom anomena **el Llibre Major**,
 perquè encara porta el registre de tots els comptes del sistema. Ningú no s'ha atrevit a apagar-lo («si
 funciona, no ho toquis»). No està connectat a internet: per això no l'ha hackejat mai ningú. Cal entrar-hi
 en persona.
@@ -174,13 +174,13 @@ mòbil del Director (Escena 8). El joc les anuncia amb un títol: **«Ara necess
 
 ### 5. El Llibre Major i ROBIN HOOD 2.0
 
-- El Llibre Major (1987) porta el registre de tots els comptes del sistema. Per **autoritzar** una operació
+- El Llibre Major (1984) porta el registre de tots els comptes del sistema. Per **autoritzar** una operació
   necessita la **clau física** d'en Ballester (es gira i es pot treure: «Autoritzat. Ja la pots treure»). Per
   **aturar** una operació en curs necessita la **contrasenya personal del Director** i un codi que li arriba al
   mòbil. «El Llibre Major no sap desfer. Només el Director pot dir prou.»
 - ROBIN HOOD 2.0 té dues fases: **buidar** (porta tots els diners del sistema a un sol compte, el **compte
   zero**) i **repartir** (en dona una part igual a cada persona, ronda a ronda). Buidar és instantani.
-  Repartir, en un servidor de 1987, és lentíssim: **cada ronda tarda tres hores**.
+  Repartir, en un servidor de 1984, és lentíssim: **cada ronda tarda tres hores**.
 - **Per això surt malament** (Acte 3): després de la primera ronda, tothom té 12 €. El bilionari, el Director,
   i també les pensions, els ajuts i les nòmines que s'han de pagar avui **a les dotze**. Són les onze i quart.
 - **Aturar-lo** retorna als comptes d'origen el que encara és al compte zero. El que ja s'ha repartit, es
@@ -530,7 +530,7 @@ Llibre Major, no tecleja: «Si tecleja ara, ho sentirà tot el banc. Vet, on ets
 les dues hi són.**
 
 **Iri:** el Llibre Major demana **tres codis de confirmació** que surten a la pantalla, un rere l'altre. Cada
-codi fa un **bip** fortíssim («És de 1987. Aleshores la gent volia que les màquines fessin soroll»).
+codi fa un **bip** fortíssim («És de 1984. Aleshores la gent volia que les màquines fessin soroll»).
 [SO: bip_llibre]
 
 **El primer bip** sempre s'escapa, sense sospita, i ensenya la regla:
