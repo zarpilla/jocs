@@ -92,12 +92,66 @@ function resolveSliderTags(
   return { track: trackDefault, handle: handleDefault };
 }
 
-function getHandleTravelBounds(hitWidth: number): { minX: number; maxX: number } {
-  const minX = 0;
-  const maxX = Math.max(minX, hitWidth);
-  return { minX, maxX };
+interface FrameOpaqueBounds {
+  readonly left: number;
+  readonly top: number;
+  readonly right: number;
+  readonly bottom: number;
 }
 
+const frameOpaqueBoundsCache = new Map<string, FrameOpaqueBounds | null>();
+
+/**
+ * Bounding box of the non-transparent pixels of a frame, in the frame's visible (cut) bitmap
+ * coordinates. Untrimmed Aseprite cels keep the whole sheet canvas (e.g. a 3px handle painted in
+ * the corner of a 70×20 cel), so the slider must measure the pixels to place them correctly.
+ * Returns `null` when the pixels can't be read; callers then fall back to the full frame.
+ */
+function getFrameOpaqueBounds(frame: Phaser.Textures.Frame): FrameOpaqueBounds | null {
+  const cacheKey = `${frame.texture.key}::${String(frame.name)}`;
+  if (frameOpaqueBoundsCache.has(cacheKey)) {
+    return frameOpaqueBoundsCache.get(cacheKey) ?? null;
+  }
+  let result: FrameOpaqueBounds | null = null;
+  try {
+    const image = frame.source.image as CanvasImageSource | undefined;
+    const cw = Math.round(frame.cutWidth);
+    const ch = Math.round(frame.cutHeight);
+    if (image && cw > 0 && ch > 0 && typeof document !== 'undefined') {
+      const canvas = document.createElement('canvas');
+      canvas.width = cw;
+      canvas.height = ch;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      if (ctx) {
+        ctx.drawImage(image, frame.cutX, frame.cutY, cw, ch, 0, 0, cw, ch);
+        const data = ctx.getImageData(0, 0, cw, ch).data;
+        let left = cw;
+        let top = ch;
+        let right = -1;
+        let bottom = -1;
+        for (let y = 0; y < ch; y++) {
+          for (let x = 0; x < cw; x++) {
+            if (data[(y * cw + x) * 4 + 3] > 0) {
+              if (x < left) left = x;
+              if (x > right) right = x;
+              if (y < top) top = y;
+              if (y > bottom) bottom = y;
+            }
+          }
+        }
+        if (right >= left && bottom >= top) {
+          result = { left, top, right: right + 1, bottom: bottom + 1 };
+        }
+      }
+    }
+  } catch {
+    result = null;
+  }
+  frameOpaqueBoundsCache.set(cacheKey, result);
+  return result;
+}
+
+/** Visible-pixel bounds of `sprite` in its parent's local space (sprite origin taken into account). */
 function getVisibleSpriteLocalBounds(sprite: Phaser.GameObjects.Sprite): {
   left: number;
   top: number;
@@ -106,47 +160,69 @@ function getVisibleSpriteLocalBounds(sprite: Phaser.GameObjects.Sprite): {
 } {
   const inset = getAsepriteSpriteSourceInset(sprite.frame);
   const visible = getAsepriteVisibleFrameSize(sprite.frame);
-  const left = sprite.x - sprite.displayOriginX + inset.x;
-  const top = sprite.y - sprite.displayOriginY + inset.y;
+  const opaque = getFrameOpaqueBounds(sprite.frame) ?? {
+    left: 0,
+    top: 0,
+    right: visible.w,
+    bottom: visible.h,
+  };
+  const originLeft = sprite.x - sprite.displayOriginX + inset.x;
+  const originTop = sprite.y - sprite.displayOriginY + inset.y;
   return {
-    left,
-    top,
-    right: left + visible.w,
-    bottom: top + visible.h,
+    left: originLeft + opaque.left,
+    top: originTop + opaque.top,
+    right: originLeft + opaque.right,
+    bottom: originTop + opaque.bottom,
   };
 }
 
+/**
+ * Horizontal range for the handle's visible centre: the track's visible pixels, shrunk by half
+ * the handle width so the handle never sticks out past either end.
+ */
 function resolveSliderTravelBounds(
   hitWidth: number,
   hitHeight: number,
   trackSprite: Phaser.GameObjects.Sprite | null,
+  handleSprite: Phaser.GameObjects.Sprite | null,
 ): { minX: number; maxX: number; centerY: number } {
-  const fallback = getHandleTravelBounds(hitWidth);
-  const fallbackY = hitHeight / 2;
   const b = trackSprite != null ? getVisibleSpriteLocalBounds(trackSprite) : null;
-  const rawMinX = b && Number.isFinite(b.left) ? b.left : fallback.minX;
-  const rawMaxX = b && Number.isFinite(b.right) ? b.right : fallback.maxX;
+  const trackLeft = b && Number.isFinite(b.left) ? b.left : 0;
+  const trackRight = b && Number.isFinite(b.right) ? b.right : Math.max(0, hitWidth);
   const centerY =
-    b && Number.isFinite(b.top) && Number.isFinite(b.bottom) ? (b.top + b.bottom) / 2 : fallbackY;
-  return {
-    minX: Math.min(rawMinX, rawMaxX),
-    maxX: Math.max(rawMinX, rawMaxX),
-    centerY,
-  };
+    b && Number.isFinite(b.top) && Number.isFinite(b.bottom)
+      ? (b.top + b.bottom) / 2
+      : hitHeight / 2;
+  const left = Math.min(trackLeft, trackRight);
+  const right = Math.max(trackLeft, trackRight);
+  const handleHalfW = handleSprite ? getHandleOpaqueBox(handleSprite).w / 2 : 0;
+  if (right - left > handleHalfW * 2) {
+    return { minX: left + handleHalfW, maxX: right - handleHalfW, centerY };
+  }
+  return { minX: left, maxX: right, centerY };
 }
 
-function resolveHandlePlacementOffsetX(
-  hitWidth: number,
-  handleSprite: Phaser.GameObjects.Sprite | null,
-): number {
-  if (!handleSprite) {
-    return 0;
-  }
-  const frameData = (handleSprite.frame as unknown as { data?: { trim?: boolean } }).data;
-  const isTrimmed = frameData?.trim === true;
-  const handleVisibleW = getAsepriteVisibleFrameSize(handleSprite.frame).w;
-  const isFullWidthCanvasHandle = !isTrimmed && handleVisibleW >= Math.max(1, hitWidth) * 0.9;
-  return isFullWidthCanvasHandle ? handleVisibleW / 2 : 0;
+/** Handle's visible pixel box relative to the sprite's top-left with origin (0, 0). */
+function getHandleOpaqueBox(handleSprite: Phaser.GameObjects.Sprite): {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+} {
+  const inset = getAsepriteSpriteSourceInset(handleSprite.frame);
+  const visible = getAsepriteVisibleFrameSize(handleSprite.frame);
+  const opaque = getFrameOpaqueBounds(handleSprite.frame) ?? {
+    left: 0,
+    top: 0,
+    right: visible.w,
+    bottom: visible.h,
+  };
+  return {
+    x: inset.x + opaque.left,
+    y: inset.y + opaque.top,
+    w: opaque.right - opaque.left,
+    h: opaque.bottom - opaque.top,
+  };
 }
 
 function valueToHandleLocalX(
@@ -279,12 +355,15 @@ export function buildGuiSlider(
     if (!handleSprite) {
       return;
     }
-    const { minX, maxX, centerY } = resolveSliderTravelBounds(w, h, trackSprite);
-    const handleOffsetX = resolveHandlePlacementOffsetX(w, handleSprite);
+    const { minX, maxX, centerY } = resolveSliderTravelBounds(w, h, trackSprite, handleSprite);
     const hx = valueToHandleLocalX(value, range, minX, maxX);
-    const hy = centerY;
-    handleSprite.setOrigin(0.5, 0.5);
-    handleSprite.setPosition(Math.round(hx + handleOffsetX), Math.round(hy));
+    // Put the centre of the handle's visible pixels on (hx, centerY), whatever its cel padding.
+    const box = getHandleOpaqueBox(handleSprite);
+    handleSprite.setOrigin(0, 0);
+    handleSprite.setPosition(
+      Math.round(hx - box.x - box.w / 2),
+      Math.round(centerY - box.y - box.h / 2),
+    );
   };
 
   const repositionTrack = (): void => {
@@ -385,7 +464,7 @@ export function buildGuiSlider(
     }
     const matrix = hitTarget.getWorldTransformMatrix();
     const local = matrix.applyInverse(pointer.worldX, pointer.worldY);
-    const { minX, maxX } = resolveSliderTravelBounds(w, h, trackSprite);
+    const { minX, maxX } = resolveSliderTravelBounds(w, h, trackSprite, handleSprite);
     const next = localXToValue(local.x, range, minX, maxX);
     setValueInternal(next, true);
   };
