@@ -156,6 +156,12 @@ npm run benne:create -- --from <checkout de Benne>   # crea suma-zero/ (amb --mo
   portada, el pis, el bar, l'aeroport, el banc i el rellotge de l'Acte 3, el mateix tema amb instruments diferents que s'encadena al mateix punt
   en canviar de sala.
 - **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botons «Pista» i «Historial»; la tecla H també obre l'historial).
+- **Per veure els finals sense jugar** (només amb `npm run dev`): obre el joc amb `?final=<id>` a l'adreça i prem
+  «Comença». La condició del final es compleix sola; amb `flags=` (i `vars=`) s'hi afegeix la resta de l'estat:
+  - `?final=final_base` (sense aliats; l'Iri ho torna al banc)
+  - `?final=final_hores&flags=aliat_ballester,aliada_rius` (dos aliats; afegeix `repartit` perquè ho hagi repartit)
+  - `?final=final_taula&flags=aliat_ballester,aliat_neta,aliada_rius,aliada_pons,tap_tornat,mentida_corporativa`
+    (tothom a la taula; `tap_tornat` i `mentida_corporativa` o `dignitat` canvien les línies d'en Tomàs i en Marcel)
 - **Art de l'Acte 2, definitiu:** les cinc sales del BCMU (`hd/rooms/bcmu_*.py`, amb la paleta i l'estació del tub
   comunes a `hd/rooms/bcmu.py`), el Director, la Rius, en Ballester i NETA-3 amb les seves animacions d'estat, i les
   icones dels objectes nous. Els sons de l'Acte 2 són sintetitzats, i la música del banc (`banc`) sona a les cinc sales.

@@ -13205,7 +13205,18 @@
           },
           {
             "who": "iri",
-            "text": "final.iri1"
+            "text": "final.iri1",
+            "if": {
+              "flag": "repartit",
+              "is": false
+            }
+          },
+          {
+            "who": "iri",
+            "text": "final.iri1_repartit",
+            "if": {
+              "flag": "repartit"
+            }
           },
           {
             "who": "vet",
@@ -13397,7 +13408,18 @@
           },
           {
             "who": "iri",
-            "text": "final.iri1"
+            "text": "final.iri1",
+            "if": {
+              "flag": "repartit",
+              "is": false
+            }
+          },
+          {
+            "who": "iri",
+            "text": "final.iri1_repartit",
+            "if": {
+              "flag": "repartit"
+            }
           },
           {
             "who": "vet",
@@ -13582,7 +13604,18 @@
           },
           {
             "who": "iri",
-            "text": "final.iri1"
+            "text": "final.iri1",
+            "if": {
+              "flag": "repartit",
+              "is": false
+            }
+          },
+          {
+            "who": "iri",
+            "text": "final.iri1_repartit",
+            "if": {
+              "flag": "repartit"
+            }
           },
           {
             "who": "vet",
@@ -18813,7 +18846,7 @@
       "dlg.rius.arreglar5": "Ha fitxat. Tota la colla ha fitxat!",
       "dlg.rius.arreglar6": "Ja l'havies agafada, oi, la targeta? ...Bé. Ara te la deixo.",
       "dlg.rius.arreglar7": "Té. La targeta de l'ascensor. Si et pregunten, ets la de l'ascensor.",
-      "dlg.rius.arreglar8": "I això. El compte de les nòmines de la subcontracta. Me'l sé de memòria, perquè sempre arriben tard.",
+      "dlg.rius.arreglar8": "I això. El compte per on passen les nòmines, totes, les de la subcontracta també: el 0001. Me'l sé de memòria, perquè sempre arriben tard.",
       "dlg.rius.arreglar9": "Si mai pots fer que arribin a l'hora...",
       "dlg.rius.targeta_no1": "Ni parlar-ne. Si et pillen al tercer pis, la que plega soc jo.",
       "dlg.rius.targeta_no2": "I amb aquest mòbil penjat, ja tinc prou problemes.",
@@ -18972,7 +19005,7 @@
       "dlg.aturada.repartir3": "Avui, a les dotze, cobra tothom. I cobra el mateix.",
       "dlg.aturada.fi1": "Iri... ho has fet?",
       "dlg.aturada.fi2": "Ho hem fet. Espera...",
-      "dlg.aturada.zero1": "La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. No n'ha sortit ni un euro.",
+      "dlg.aturada.zero1": "La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. Com si no n'hagués sortit ni un euro.",
       "dlg.aturada.zero2": "Això no pot ser. Els diners han sortit. I continuen aquí.",
       "dlg.aturada.zero3": "COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.",
       "dlg.aturada.zero4": "Prova Rockefeller.",
@@ -19000,7 +19033,8 @@
       "final.tele3": "Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.",
       "final.tele2": "...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix.",
       "final.iri1": "No hem canviat el món.",
-      "final.vet1": "No. Però el Director ara agafa el metro. Diu que és més sostenible.",
+      "final.iri1_repartit": "Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no?",
+      "final.vet1": "No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.",
       "final.taula": "Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom.",
       "final.ballester": "Un tallat, sisplau. I aquest el pago jo.",
       "final.neta": "Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga.",
@@ -19180,7 +19214,7 @@
       "obj.comandament.look.vet": "El comandament de la tele. El ceptre d'en Tomàs.",
       "obj.comandament.nom": "comandament",
       "obj.compte_nomines.amb_article": "el paper del compte de nòmines",
-      "obj.compte_nomines.look.iri": "El compte de les nòmines de la subcontracta, escrit a mà per la Rius. Sempre arriben tard.",
+      "obj.compte_nomines.look.iri": "El compte 0001, escrit a mà per la Rius: per aquí passen totes les nòmines. Sempre arriben tard.",
       "obj.compte_nomines.look.vet": "Un número de compte escrit a mà. Lletra d'algú que cobra tard.",
       "obj.compte_nomines.nom": "compte de nòmines",
       "obj.entrepa.amb_article": "l'entrepà",

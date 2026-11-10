@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  AUTOSAVE, adoptLoadedState, applyAppearances, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AUTOSAVE, adoptLoadedState, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -190,9 +190,11 @@ function playerActed() {
 
 /** El botó «Comença» de la portada: el pròleg, si n'hi ha, o la sala de la primera protagonista. */
 export function startFromCover() {
-  // Per provar els finals (només en desenvolupament): `?final=fugida` a l'adreça.
-  const provar = import.meta.env.DEV ? new URLSearchParams(location.search).get('final') : null
+  // Per provar els finals (només en desenvolupament): `?final=<id>` a l'adreça (vegeu `prepareEndingPreview`).
+  const query = import.meta.env.DEV ? new URLSearchParams(location.search) : null
+  const provar = query?.get('final')
   if (provar && narrative.content.endings[provar]) {
+    prepareEndingPreview(provar, query!)
     playEnding(provar)
     return
   }

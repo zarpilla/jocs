@@ -26,7 +26,18 @@
       },
       {
         "who": "iri",
-        "text": "final.iri1"
+        "text": "final.iri1",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.iri1_repartit",
+        "if": {
+          "flag": "repartit"
+        }
       },
       {
         "who": "vet",
@@ -218,7 +229,18 @@
       },
       {
         "who": "iri",
-        "text": "final.iri1"
+        "text": "final.iri1",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.iri1_repartit",
+        "if": {
+          "flag": "repartit"
+        }
       },
       {
         "who": "vet",
@@ -403,7 +425,18 @@
       },
       {
         "who": "iri",
-        "text": "final.iri1"
+        "text": "final.iri1",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.iri1_repartit",
+        "if": {
+          "flag": "repartit"
+        }
       },
       {
         "who": "vet",

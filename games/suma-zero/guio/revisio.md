@@ -1230,6 +1230,26 @@ RECEPCIONISTA «recepcionista» — hi és si virus_aturat
 ## Sala La Propina, una setmana després · `final_bar` — cinemàtica
 
 ```
+DECORAT tele_apagada — es veu si diu_cable
+
+RIUS «Rius» — hi és si aliada_rius
+
+BALLESTER «Ballester» — hi és si aliat_ballester
+
+MARCEL «Marcel»
+
+IRI «Iri»
+
+VET «Vet»
+
+TOMAS «Tomàs»
+
+PONS «Pons» — hi és si aliada_pons
+
+NETA «NETA-3» — hi és si aliat_neta
+
+DIU «Diu»
+
 ```
 
 ## Sala ROBIN HOOD 2.0 · `muntatge` — cinemàtica
@@ -1783,7 +1803,7 @@ EN ENTRAR
 
 ```
 • look — si juga iri
-    JUGADORA: El compte de les nòmines de la subcontracta, escrit a mà per la Rius. Sempre arriben tard.
+    JUGADORA: El compte 0001, escrit a mà per la Rius: per aquí passen totes les nòmines. Sempre arriben tard.
 • look — si juga vet
     JUGADORA: Un número de compte escrit a mà. Lletra d'algú que cobra tard.
 ```
@@ -1855,7 +1875,7 @@ COMENÇA A: pregunta
 [fi]
     VET: Iri... ho has fet?
     JUGADORA: Ho hem fet. Espera...
-    NARRADOR: La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. No n'ha sortit ni un euro.
+    NARRADOR: La pantalla parpelleja. COMPTE ZERO: SALDO... el mateix d'abans. Com si no n'hagués sortit ni un euro.
     JUGADORA: Això no pot ser. Els diners han sortit. I continuen aquí.
     NARRADOR: COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.
     VET: Prova Rockefeller.
@@ -2670,7 +2690,7 @@ COMENÇA A: aliada (si aliada_rius) · targeta_feta (si té targeta i NO rius_ho
     RIUS: Ja l'havies agafada, oi, la targeta? ...Bé. Ara te la deixo. ⟨si té targeta⟩
     RIUS: Té. La targeta de l'ascensor. Si et pregunten, ets la de l'ascensor. ⟨si no té targeta⟩
       ⇒ rep targeta
-    RIUS: I això. El compte de les nòmines de la subcontracta. Me'l sé de memòria, perquè sempre arriben tard.
+    RIUS: I això. El compte per on passen les nòmines, totes, les de la subcontracta també: el 0001. Me'l sé de memòria, perquè sempre arriben tard.
     RIUS: Si mai pots fer que arribin a l'hora...
     ⇒ +aliada_rius, aliats += 1, rep compte_nomines
 
@@ -3212,8 +3232,9 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
     NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
-    IRI: No hem canviat el món.
-    VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+    IRI: No hem canviat el món. ⟨si NO repartit⟩
+    IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
+    VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
     NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
@@ -3227,6 +3248,7 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
     TOMÀS: On és el meu tap? ⟨si NO tap_tornat⟩
     TOMÀS: Avui convida la casa. Un cop. ⟨si tap_tornat⟩
     [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
+      ⇒ +diu_cable
     IRI: Diu, et mato.
     VET: Deixa'l. Ell també és un treballador explotat.
     TÍTOL: Suma Zero
@@ -3241,8 +3263,9 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
     NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
-    IRI: No hem canviat el món.
-    VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+    IRI: No hem canviat el món. ⟨si NO repartit⟩
+    IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
+    VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
     NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
@@ -3256,6 +3279,7 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     TOMÀS: On és el meu tap? ⟨si NO tap_tornat⟩
     TOMÀS: Avui convida la casa. Un cop. ⟨si tap_tornat⟩
     [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
+      ⇒ +diu_cable
     IRI: Diu, et mato.
     VET: Deixa'l. Ell també és un treballador explotat.
     TÍTOL: Suma Zero
@@ -3270,8 +3294,9 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     NARRADOR: A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
     NARRADOR: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
     NARRADOR: ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix. ⟨si repartit⟩
-    IRI: No hem canviat el món.
-    VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+    IRI: No hem canviat el món. ⟨si NO repartit⟩
+    IRI: Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no? ⟨si repartit⟩
+    VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.
     NARRADOR: Al fons del bar, algú ha ajuntat totes les taules. És una taula llarga, i hi cap tothom. ⟨si repartit i aliats ≥ 3⟩
     BALLESTER: Un tallat, sisplau. I aquest el pago jo. ⟨si aliat_ballester⟩
     NETA-3: Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga. ⟨si aliat_neta⟩
@@ -3285,6 +3310,7 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     TOMÀS: On és el meu tap? ⟨si NO tap_tornat⟩
     TOMÀS: Avui convida la casa. Un cop. ⟨si tap_tornat⟩
     [SO: mossegada] NARRADOR: En Diu, que ha vingut en un cistell, se n'escapa i mossega el cable de la tele.
+      ⇒ +diu_cable
     IRI: Diu, et mato.
     VET: Deixa'l. Ell també és un treballador explotat.
     TÍTOL: Suma Zero

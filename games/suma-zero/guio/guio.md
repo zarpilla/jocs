@@ -489,8 +489,8 @@ passen al lavabo, i avui s'ha penjat. Si no fitxen, no cobren el dia.
 
 - **Solució amb cor (aliada):** l'Iri li arregla l'aplicació (parla amb el mòbil com si fos una persona:
   «Tranquil. Respira. Ningú no et vol mal») i, de passada, li esborra el comptador del lavabo. La Rius li deixa
-  la targeta («Si et pregunten, ets la de l'ascensor») i un paper: «El compte de les nòmines de la
-  subcontracta. Me'l sé de memòria perquè sempre arriben tard. Si mai pots fer que arribin a l'hora...»
+  la targeta («Si et pregunten, ets la de l'ascensor») i un paper: «El compte per on passen les nòmines,
+  totes, les de la subcontracta també: el 0001. Me'l sé de memòria perquè sempre arriben tard. Si mai pots fer que arribin a l'hora...»
   (`compte_nomines`). `aliada_rius`. [SO: mobil_ok]
 - **Solució ràpida:** «Rius, em convides a un cafè?» La màquina del moll s'empassa la moneda, la Rius li dona
   un cop i s'ajup a recollir-la, i l'Iri agafa la targeta del cinturó. Funciona, però la Rius no serà aliada.
@@ -721,7 +721,8 @@ TOTS ELS DINERS DEL MÓN. QUÈ EN FEM?»
 
 [SO: aturada]
 
-**El gir.** Triï el que triï, la pantalla parpelleja: el compte zero té el mateix saldo d'abans.
+**El gir.** Triï el que triï, la pantalla parpelleja: el compte zero té el mateix saldo d'abans, com si no n'hagués
+sortit ni un euro.
 
 > IRI: Això no pot ser. Els diners han sortit. I continuen aquí.
 > LLIBRE MAJOR: COMPTE ZERO. TITULAR: CLASSIFICAT. CONTRASENYA: ********.
@@ -781,7 +782,8 @@ porta a ROBIN HOOD 3.0.
 > TELE: Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.
 > TELE (si repartit): ...i, per primera vegada en la història, tothom té el mateix. Els economistes diuen que no pot durar. Els economistes també en tenen el mateix.
 > IRI: No hem canviat el món.
-> VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+> IRI (si repartit, en lloc de l'anterior): Tothom té el mateix. I el compte zero, ple. Hem canviat el món o no?
+> VET: No ho sé. Però el Director, per si de cas, ara agafa el metro. Diu que és més sostenible.
 > BALLESTER (si aliat_ballester): Un tallat, sisplau. I aquest el pago jo.
 > NETA-3 (si aliat_neta, amb un davantal): Taula tres, servida. En Tomàs em paga les hores extres. Per primer cop, algú me les paga.
 > RIUS (si aliada_rius): Avui hem fitxat a l'hora. Tota la colla.
