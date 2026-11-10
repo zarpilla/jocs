@@ -373,6 +373,39 @@
           "frameDuration": 200
         }
       }
+    },
+    {
+      "id": "fibra_connectada",
+      "tag": "fibra_connectada",
+      "animations": {
+        "fibra_connectada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "xarxa_connectada",
+      "tag": "xarxa_connectada",
+      "animations": {
+        "xarxa_connectada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "alimentacio_connectada",
+      "tag": "alimentacio_connectada",
+      "animations": {
+        "alimentacio_connectada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

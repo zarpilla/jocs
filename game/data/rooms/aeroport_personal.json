@@ -193,5 +193,17 @@
         }
       ]
     }
+  },
+  "decor": {
+    "porta_oberta": {
+      "visibleIf": {
+        "flag": "porta_oberta"
+      }
+    },
+    "alarma": {
+      "visibleIf": {
+        "flag": "alarma_porta"
+      }
+    }
   }
 }

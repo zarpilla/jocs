@@ -190,3 +190,201 @@ def diu(cua=0, parpelleja=False):
             fg.px(ex, 9, CAT, 0)
     fg.px(12, 11, (190, 110, 120), 0)
     return fg.render()
+
+
+# ─── Secundaris de l'Acte 1 (provisionals: el mateix dibuix, sense els detalls finals) ──────────────
+
+from hd.characters import (SKIN_OLD, SKIN_RUDDY, SKIN_PALE, SKIN_VET, WHITE, TROUSER, GRAY_SHOE, BOOT, SUIT_D, TRENCH,  # noqa: E402
+                           CREAM, NAVY_U, FELT, HAIR_WHITE, HAIR_BROWN, HAIR_COPPER, RED, BRASS, STEELB, DENIM)
+from PIL import Image  # noqa: E402
+
+APRON = M((10, 8, 12), (20, 18, 24), (34, 30, 38), (50, 46, 54), (70, 64, 72))
+
+
+def hair_cap(mat, top=-8.0, sides=True, bald=False, fringe=0.0):
+    """Cabell curt genèric: un casc (o només els costats, si és calb)."""
+    def hook(fg, p, spec):
+        hx, hy = p.head
+        if bald:
+            for sx in (-6.6, 6.6):
+                if p.f == 'L' and sx < 0:
+                    continue
+                fg.ell(hx + sx * (0.4 if p.f == 'L' else 1), hy + 0.5, 1.8, 3.2, mat, 2.4, amp=1.4)
+            if p.f == 'U':
+                fg.ell(hx, hy + 2.5, 6.6, 3.4, mat, 2.4, amp=1.4)
+            return
+        if p.f == 'D':
+            line = lambda x, y: y <= hy - 3.2 + fringe + ((x - hx) / 7) ** 2 * 4.0
+            fg.ell(hx, hy - 1.0, 7.4, 7.4, mat, 2.4, amp=1.6, clip=line)
+        elif p.f == 'L':
+            line = lambda x, y: (x >= hx - 2.5 or y <= hy - 4.6) and not (x < hx + 2.5 and y > hy - 1.0)
+            fg.ell(hx + 1.2, hy - 1.0, 7.2, 7.6, mat, 2.4, amp=1.6, clip=line)
+        else:
+            fg.ell(hx, hy - 0.6, 7.4, 8.0, mat, 2.4, amp=1.6)
+    return hook
+
+
+def moustache(fg, p, spec):
+    hx, hy = p.head
+    if p.f == 'D':
+        fg.ell(hx - 2.0, hy + 3.6, 2.6, 1.2, HAIR_BROWN, 1.2, amp=1.0)
+        fg.ell(hx + 2.0, hy + 3.6, 2.6, 1.2, HAIR_BROWN, 1.2, amp=1.0)
+    elif p.f == 'L':
+        fg.ell(hx - 4.4, hy + 3.4, 2.4, 1.2, HAIR_BROWN, 1.2, amp=1.0)
+
+
+def apron(fg, p, spec):
+    b = p.bob
+    if p.f in ('D', 'L'):
+        x0, x1 = (17, 32) if p.f == 'D' else (18, 26)
+        fg.poly([(x0, 40 + b), (x1, 40 + b), (x1 + 1, 66 + b), (x0 - 1, 66 + b)], APRON, 2.2, cont=(0.2, 0.8))
+
+
+def police_cap(fg, p, spec):
+    hx, hy = p.head
+    fg.ell(hx + (1.0 if p.f == 'L' else 0), hy - 6.2, 7.6, 3.4, NAVY_U, 2.6, amp=1.6, cont=(0.2, 1.0))
+    fg.ell(hx - (3.0 if p.f == 'L' else 0), hy - 3.6, 7.8 if p.f != 'L' else 5.0, 1.4, FELT, 1.6, amp=1.0)
+    if p.f == 'D':
+        fg.ell(hx, hy - 6.4, 1.4, 1.2, BRASS, 3.4, amp=1.0)
+
+
+def badge(fg, p, spec):
+    if p.f == 'D':
+        fg.ell(29, 34 + p.bob, 1.6, 1.4, BRASS, 3.4, amp=1.0)
+
+
+def glasses(fg, p, spec):
+    hx, hy = p.head
+    if p.f == 'D':
+        for gx in (hx - 3.0, hx + 3.0):
+            fg.ell(gx, hy + 0.6, 2.2, 1.8, STEELB, 1.6, amp=0.6)
+            fg.ell(gx, hy + 0.6, 1.4, 1.0, CREAM, 3.6, amp=0.4)
+    elif p.f == 'L':
+        fg.ell(hx - 4.0, hy + 0.6, 1.4, 1.8, STEELB, 1.6, amp=0.6)
+
+
+def hooks(*fns):
+    def run(fg, p, spec):
+        for f in fns:
+            f(fg, p, spec)
+    return run
+
+
+NPCS = {
+    # en Marcel: gran, calb amb cabells blancs als costats, ulleres, jersei de punt marró i camisa crema
+    'marcel': {'skin': SKIN_OLD, 'legs': TROUSER, 'top': TRENCH, 'shoes': BOOT, 'brow': (190, 186, 190), 'stoop': 1,
+               'hooks': {'hair': hooks(hair_cap(HAIR_WHITE, bald=True), glasses)}},
+    # en Puig: vermellós, bigoti, camisa blanca i davantal negre
+    'puig': {'skin': SKIN_RUDDY, 'legs': TROUSER, 'top': WHITE, 'shoes': BOOT, 'thin': -1,
+             'hooks': {'hair': hooks(hair_cap(HAIR_BROWN, fringe=1.0), moustache), 'over': apron}},
+    # l'agent Soler: uniforme blau marí, gorra i placa
+    'soler': {'skin': SKIN_PALE, 'legs': NAVY_U, 'top': NAVY_U, 'shoes': GRAY_SHOE,
+              'hooks': {'hair': hooks(hair_cap(HAIR_COPPER), police_cap), 'over': badge}},
+    # l'empleat d'objectes perduts: vestit gris, cansat
+    'empleat': {'skin': SKIN_VET, 'legs': SUIT_D, 'top': SUIT_D, 'shoes': GRAY_SHOE, 'closed': False, 'brow_dy': 1,
+                'hooks': {'hair': hair_cap(HAIR_BROWN)}},
+    # el nen: samarreta vermella (amb un dinosaure, en teoria) i texans
+    'nen': {'skin': SKIN_PALE, 'legs': DENIM, 'top': RED, 'shoes': GRAY_SHOE,
+            'hooks': {'hair': hair_cap(HAIR_COPPER, fringe=1.5)}},
+}
+
+
+def npc(cid, facing, talk=False):
+    img = person(NPCS[cid], facing, talk=talk)
+    if cid == 'nen':
+        # un nen de set anys: el mateix dibuix a mida petita, amb els peus al mateix lloc
+        w, h = img.size
+        small = img.resize((round(w * 0.62), round(h * 0.62)), Image.NEAREST)
+        out = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+        out.alpha_composite(small, (25 - round(25 * 0.62), 83 - round(83 * 0.62)))
+        return out
+    return img
+
+
+def diu_estat(estat, cua=0):
+    """En Diu segons el que se li ha donat: dins la caixa, amb l'auricular o davant la pizza."""
+    base = diu(cua=cua)
+    fg = Fig(GW, GH)
+    if estat == 'caixa':
+        out = Image.new('RGBA', (GW, GH), (0, 0, 0, 0))
+        out.alpha_composite(base, (0, -4))
+        fg.poly([(2, 14), (26, 14), (26, 25), (2, 25)], M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108)), 2.6, cont=(0.2, 0.8))
+        box = fg.render()
+        out.alpha_composite(box)
+        return out
+    if estat == 'auricular':
+        fg.ell(21, 21, 3.0, 3.6, M((50, 6, 14), (110, 16, 26), (170, 30, 36), (220, 60, 54)), 2.6, amp=1.4)
+    if estat == 'pizza':
+        fg.ell(22, 23, 6.0, 2.2, M((70, 30, 14), (150, 80, 30), (210, 130, 50), (240, 190, 90)), 2.8, amp=1.0)
+    base.alpha_composite(fg.render())
+    return base
+
+
+# ─── Vet ───────────────────────────────────────────────────────────────────
+# 26 anys, cambrera i mentidera professional. Cabell castany vermellós fins a les espatlles, amb clenxa al
+# costat; jaqueta granat oberta (el seu accent) sobre una samarreta negra; texans foscos i botins; llavis pintats.
+
+JACKET = M((30, 6, 14), (58, 12, 26), (90, 22, 38), (124, 34, 50), (160, 52, 64), (196, 86, 92), dith=0.0)
+TOP_BLACK = M((6, 6, 10), (14, 12, 18), (24, 22, 30), (36, 34, 44), (52, 50, 60))
+HAIR_AUBURN = M((26, 8, 10), (56, 18, 16), (90, 34, 24), (126, 54, 34), (162, 80, 50), (196, 116, 76))
+
+
+def vet_hair_back(fg, p, spec):
+    """La melena per darrere del cap i de les espatlles."""
+    hx, hy = p.head
+    tex = hair_lvl(hx - 1, hy - 2, 5.4, k=1.1, strands=0.5, freq=1.9)
+    if p.f == 'D':
+        fg.poly([(hx - 8.0, hy - 1), (hx + 8.0, hy - 1), (hx + 9.0, hy + 11), (hx - 9.0, hy + 11)], HAIR_AUBURN, 1.6, lvlfn=tex)
+    elif p.f == 'L':
+        fg.poly([(hx - 1, hy - 2), (hx + 8.0, hy - 2), (hx + 8.6, hy + 12), (hx + 1, hy + 11)], HAIR_AUBURN, 1.8, lvlfn=tex)
+
+
+def vet_hair(fg, p, spec):
+    """Cap de cabell amb clenxa al costat esquerre i un floc que li cau a la cara."""
+    hx, hy = p.head
+    H = HAIR_AUBURN
+    tex = hair_lvl(hx - 1, hy - 2, 5.4, k=1.2, strands=0.5, freq=1.9)
+    if p.f == 'D':
+        line = lambda x, y: y <= hy - 3.0 + ((x - hx) / 7.2) ** 2 * 3.2 or abs(x - hx) > 5.6
+        fg.ell(hx, hy - 0.6, 7.8, 8.2, H, 2.2, amp=1.6, clip=lambda x, y: line(x, y) and y <= hy + 9, lvlfn=tex)
+        fg.poly([(hx - 3.0, hy - 7.6), (hx + 6.4, hy - 4.6), (hx + 5.6, hy + 1.0), (hx + 2.0, hy - 3.2)], H, 2.6, lvlfn=tex)
+        fg.px(hx - 3, hy - 7, H, 0.6)                                               # la clenxa
+    elif p.f == 'L':
+        line = lambda x, y: (x >= hx - 3.0 + max(0, y - (hy - 5)) * 0.25 or y <= hy - 4.6) and not (x < hx + 2.0 and y > hy - 1.5)
+        fg.ell(hx + 1.0, hy - 0.8, 7.6, 8.0, H, 2.2, amp=1.6, clip=line, lvlfn=tex)
+        fg.poly([(hx - 5.4, hy - 4.6), (hx + 1.0, hy - 7.4), (hx - 1.0, hy - 2.0), (hx - 5.0, hy - 1.2)], H, 2.6)
+    else:
+        fg.ell(hx, hy - 0.4, 7.8, 8.4, H, 2.2, amp=1.6, lvlfn=tex)
+        fg.poly([(hx - 8.0, hy + 2), (hx + 8.0, hy + 2), (hx + 8.6, hy + 12), (hx - 8.6, hy + 12)], H, 2.0, lvlfn=tex)
+
+
+def vet_jacket(fg, p, spec):
+    """Jaqueta granat oberta: es veu la samarreta negra al mig."""
+    b = p.bob
+    hx = 24.5
+    if p.f == 'D':
+        for y in range(28 + b, 50 + b):                                              # obertura
+            for x in range(int(hx - 2), int(hx + 3)):
+                fg.px(x, y, TOP_BLACK, 2.0 if x != int(hx - 2) else 1.0)
+        for y in range(30 + b, 38 + b):                                              # solapes
+            fg.shade(hx - 3, y, 1.0, JACKET)
+            fg.shade(hx + 3, y, -0.8, JACKET)
+        for x in range(int(hx - 9), int(hx + 10)):                                   # vora de baix
+            fg.shade(x, 49 + b, -0.9, JACKET)
+    elif p.f == 'L':
+        for y in range(29 + b, 49 + b):
+            fg.px(19.5, y, TOP_BLACK, 1.6)
+    else:
+        for x in range(int(hx - 6), int(hx + 7)):
+            fg.shade(x, 36 + b, -0.6, JACKET)
+
+
+VET = {
+    'skin': SKIN_VET, 'legs': JEANS_BLACK, 'top': JACKET, 'shoes': BOOT, 'lashes': True, 'lip': (150, 40, 52),
+    'iris': (60, 36, 26), 'brow': (44, 18, 16),
+    'hooks': {'hair_back': vet_hair_back, 'hair': vet_hair, 'torso': vet_jacket},
+}
+
+
+def vet(facing, walk=None, talk=False):
+    return person(VET, facing, walk=walk, talk=talk)

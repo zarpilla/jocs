@@ -179,6 +179,11 @@ export interface RoomDef {
 
 export interface DecorDef {
   visibleIf: Condition;
+  /**
+   * Es dibuixa per sota de les coses clicables, no per sobre (p. ex. l'interior d'una nevera oberta,
+   * amb els objectes de dins com a props). Per defecte, per sobre: un decorat canvia l'aspecte d'una cosa.
+   */
+  sota?: boolean;
 }
 
 // ─── Diàlegs ─────────────────────────────────────────────────────────────────

@@ -349,5 +349,40 @@
         }
       ]
     }
+  },
+  "decor": {
+    "cigarreta_mitja": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_aeroport"
+          },
+          {
+            "var": "cigarreta",
+            "op": "<=",
+            "value": 8
+          },
+          {
+            "var": "cigarreta",
+            "op": ">",
+            "value": 4
+          }
+        ]
+      }
+    },
+    "cigarreta_curta": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sync_aeroport"
+          },
+          {
+            "var": "cigarreta",
+            "op": "<=",
+            "value": 4
+          }
+        ]
+      }
+    }
   }
 }

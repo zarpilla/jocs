@@ -106,7 +106,33 @@
         "name": "pj.vet.nom"
       },
       "diu": {
-        "name": "pj.diu.nom"
+        "name": "pj.diu.nom",
+        "appearance": [
+          {
+            "if": {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "caixa"
+            },
+            "anim": "Caixa"
+          },
+          {
+            "if": {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "auricular"
+            },
+            "anim": "Auricular"
+          },
+          {
+            "if": {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "pizza"
+            },
+            "anim": "Pizza"
+          }
+        ]
       },
       "marcel": {
         "name": "pj.marcel.nom"
@@ -681,6 +707,23 @@
               }
             ]
           }
+        },
+        "decor": {
+          "llista_feta": {
+            "visibleIf": {
+              "flag": "llista_feta"
+            }
+          },
+          "imprimint": {
+            "visibleIf": {
+              "flag": "imprimint"
+            }
+          },
+          "acreditacions_llestes": {
+            "visibleIf": {
+              "flag": "acreditacions_llestes"
+            }
+          }
         }
       },
       "aeroport_personal": {
@@ -876,6 +919,18 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "porta_oberta": {
+            "visibleIf": {
+              "flag": "porta_oberta"
+            }
+          },
+          "alarma": {
+            "visibleIf": {
+              "flag": "alarma_porta"
+            }
           }
         }
       },
@@ -1229,6 +1284,41 @@
               }
             ]
           }
+        },
+        "decor": {
+          "cigarreta_mitja": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_aeroport"
+                },
+                {
+                  "var": "cigarreta",
+                  "op": "<=",
+                  "value": 8
+                },
+                {
+                  "var": "cigarreta",
+                  "op": ">",
+                  "value": 4
+                }
+              ]
+            }
+          },
+          "cigarreta_curta": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "sync_aeroport"
+                },
+                {
+                  "var": "cigarreta",
+                  "op": "<=",
+                  "value": 4
+                }
+              ]
+            }
+          }
         }
       },
       "avio": {
@@ -1424,6 +1514,13 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "calaix_obert": {
+            "visibleIf": {
+              "flag": "calaix_obert"
+            }
           }
         }
       },
@@ -2086,6 +2183,18 @@
               }
             ]
           }
+        },
+        "decor": {
+          "tele_bassols": {
+            "visibleIf": {
+              "flag": "bassols"
+            }
+          },
+          "rebost_tancat": {
+            "visibleIf": {
+              "flag": "puig_rebost"
+            }
+          }
         }
       },
       "pis_cuina": {
@@ -2564,6 +2673,20 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "cable_cafetera": {
+            "visibleIf": {
+              "flag": "cable_tret",
+              "is": false
+            }
+          },
+          "nevera_oberta": {
+            "visibleIf": {
+              "flag": "nevera_oberta"
+            },
+            "sota": true
           }
         }
       },
@@ -3683,6 +3806,21 @@
           "router_connectat": {
             "visibleIf": {
               "flag": "router_connectat"
+            }
+          },
+          "fibra_connectada": {
+            "visibleIf": {
+              "flag": "fibra_connectada"
+            }
+          },
+          "xarxa_connectada": {
+            "visibleIf": {
+              "flag": "xarxa_connectada"
+            }
+          },
+          "alimentacio_connectada": {
+            "visibleIf": {
+              "flag": "alimentacio_connectada"
             }
           }
         }

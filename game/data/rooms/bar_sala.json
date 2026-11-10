@@ -658,5 +658,17 @@
         }
       ]
     }
+  },
+  "decor": {
+    "tele_bassols": {
+      "visibleIf": {
+        "flag": "bassols"
+      }
+    },
+    "rebost_tancat": {
+      "visibleIf": {
+        "flag": "puig_rebost"
+      }
+    }
   }
 }

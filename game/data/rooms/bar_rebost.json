@@ -137,5 +137,12 @@
         }
       ]
     }
+  },
+  "decor": {
+    "calaix_obert": {
+      "visibleIf": {
+        "flag": "calaix_obert"
+      }
+    }
   }
 }

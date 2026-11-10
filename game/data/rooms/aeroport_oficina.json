@@ -265,5 +265,22 @@
         }
       ]
     }
+  },
+  "decor": {
+    "llista_feta": {
+      "visibleIf": {
+        "flag": "llista_feta"
+      }
+    },
+    "imprimint": {
+      "visibleIf": {
+        "flag": "imprimint"
+      }
+    },
+    "acreditacions_llestes": {
+      "visibleIf": {
+        "flag": "acreditacions_llestes"
+      }
+    }
   }
 }

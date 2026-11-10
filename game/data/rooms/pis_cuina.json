@@ -476,5 +476,19 @@
         }
       ]
     }
+  },
+  "decor": {
+    "cable_cafetera": {
+      "visibleIf": {
+        "flag": "cable_tret",
+        "is": false
+      }
+    },
+    "nevera_oberta": {
+      "visibleIf": {
+        "flag": "nevera_oberta"
+      },
+      "sota": true
+    }
   }
 }

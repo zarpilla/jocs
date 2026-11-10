@@ -279,7 +279,25 @@ def router_connectat(cv):
     cv.glow(392, 117, 10, (120, 255, 160), 0.4)
 
 
-PROPS = {'caixa': caixa, 'router_connectat': router_connectat}
+def fibra_connectada(cv):
+    """La fibra, de la presa al router (groc)."""
+    cable(cv, [(425, 126), (420, 128), (412, 124), (404, 122)], [(10, 10, 20), (180, 140, 20), (232, 196, 50), (252, 236, 130)], 2.2, thick=1)
+    cv.rect(403, 121, 405, 123, PLASTIC, 3.0)
+
+
+def xarxa_connectada(cv):
+    """El cable de xarxa, del router a la torre de sota la taula (blau)."""
+    cable(cv, [(386, 124), (380, 150), (300, 168), (236, 150)], [(4, 4, 8), (20, 40, 70), (50, 100, 170), (110, 170, 230)], 2.2, thick=1)
+
+
+def alimentacio_connectada(cv):
+    """El cable d'alimentació, del router a l'endoll de terra (negre amb el transformador)."""
+    cable(cv, [(398, 124), (404, 150), (420, 166), (446, 170)], [(4, 4, 8), (24, 24, 30), (50, 50, 60), (90, 90, 100)], 2.0, thick=1)
+    obox(cv, 444, 166, 452, 172, PLASTIC, 2.4)
+
+
+PROPS = {'caixa': caixa, 'router_connectat': router_connectat, 'fibra_connectada': fibra_connectada,
+         'xarxa_connectada': xarxa_connectada, 'alimentacio_connectada': alimentacio_connectada}
 
 
 def _frames():

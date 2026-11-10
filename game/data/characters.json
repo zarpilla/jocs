@@ -7,7 +7,33 @@
     "name": "pj.vet.nom"
   },
   "diu": {
-    "name": "pj.diu.nom"
+    "name": "pj.diu.nom",
+    "appearance": [
+      {
+        "if": {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "caixa"
+        },
+        "anim": "Caixa"
+      },
+      {
+        "if": {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "auricular"
+        },
+        "anim": "Auricular"
+      },
+      {
+        "if": {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "pizza"
+        },
+        "anim": "Pizza"
+      }
+    ]
   },
   "marcel": {
     "name": "pj.marcel.nom"

@@ -180,14 +180,30 @@ def protagonist(cid, draw, feet=(25, 83)):
     })
 
 
+def secundari(cid):
+    """Un secundari dret (hd/personatges.py, NPCS): Idle i Talk en D, L i U."""
+    tags = []
+    for f in 'DLU':
+        tags.append((f'Idle{f}', [personatges.npc(cid, f)]))
+        tags.append((f'Talk{f}', [personatges.npc(cid, f), personatges.npc(cid, f, talk=True)]))
+    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else {})} for t, _ in tags}
+    write(cid, tags, (49, 87), {
+        'walkSpeed': 70, 'walkToPoint': {'x': 44, 'y': 83}, 'talkPoint': {'x': 25, 'y': -2}, 'feet': {'x': 25, 'y': 83},
+        'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},
+        'animations': anims, 'defaultVerb': 'talkTo',
+    })
+
+
 def gat(cid='diu'):
-    """En Diu: sempre assegut de cara (un gat no es gira per ningú)."""
+    """En Diu: sempre assegut de cara (un gat no es gira per ningú). Animacions d'aspecte: Caixa, Auricular, Pizza."""
     idle = [personatges.diu(cua=k % 4, parpelleja=(k == 7)) for k in range(8)]
     talk = [personatges.diu(cua=0), personatges.diu(cua=1)]
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', idle))
         tags.append((f'Talk{f}', talk))
+    for estat in ('caixa', 'auricular', 'pizza'):
+        tags.append((estat.capitalize(), [personatges.diu_estat(estat, cua=k % 4) for k in range(4)]))
     anims = {t: {'loop': True, 'frameDuration': 300 if t.startswith('Idle') else 160} for t, _ in tags}
     write(cid, tags, (personatges.GW, personatges.GH), {
         'walkSpeed': 60, 'walkToPoint': {'x': 36, 'y': 25}, 'talkPoint': {'x': 13, 'y': -2}, 'feet': {'x': 13, 'y': 25},
@@ -199,7 +215,10 @@ def gat(cid='diu'):
 def main():
     """Els personatges de Suma Zero amb art definitiu (els altres surten amb la plantilla de Benne)."""
     protagonist('iri', personatges.iri)
+    protagonist('vet', personatges.vet)
     gat('diu')
+    for cid in personatges.NPCS:
+        secundari(cid)
 
 
 if __name__ == '__main__':

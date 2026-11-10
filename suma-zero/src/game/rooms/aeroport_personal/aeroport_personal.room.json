@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 19,
-            "y": 161
+            "x": 14,
+            "y": 177
           },
           {
-            "x": 461,
-            "y": 161
+            "x": 466,
+            "y": 177
           },
           {
-            "x": 472,
-            "y": 202
+            "x": 474,
+            "y": 203
           },
           {
-            "x": 8,
-            "y": 202
+            "x": 6,
+            "y": 203
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 8,
-          "y": 71
+          "x": 224,
+          "y": 84
         },
         {
-          "x": 54,
-          "y": 71
+          "x": 248,
+          "y": 84
         },
         {
-          "x": 54,
-          "y": 161
+          "x": 248,
+          "y": 114
         },
         {
-          "x": 8,
-          "y": 161
+          "x": 224,
+          "y": 114
         }
       ],
       "walkToPoint": {
-        "x": 31,
-        "y": 180
+        "x": 236,
+        "y": 188
       },
       "lookAtPoint": {
-        "x": 31,
-        "y": 161
+        "x": 236,
+        "y": 114
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 425,
-          "y": 71
+          "x": 250,
+          "y": 44
         },
         {
-          "x": 471,
-          "y": 71
+          "x": 312,
+          "y": 44
         },
         {
-          "x": 471,
-          "y": 161
+          "x": 312,
+          "y": 160
         },
         {
-          "x": 425,
-          "y": 161
+          "x": 250,
+          "y": 160
         }
       ],
       "walkToPoint": {
-        "x": 448,
-        "y": 180
+        "x": 280,
+        "y": 186
       },
       "lookAtPoint": {
-        "x": 448,
-        "y": 161
+        "x": 281,
+        "y": 160
       },
       "defaultVerb": "open"
     }
@@ -118,14 +118,36 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "porta_oberta",
+      "tag": "porta_oberta",
+      "animations": {
+        "porta_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "alarma",
+      "tag": "alarma",
+      "animations": {
+        "alarma": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 240,
-      "y": 185,
+      "x": 160,
+      "y": 194,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

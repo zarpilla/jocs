@@ -211,6 +211,14 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     else:
         bg = Image.new('RGBA', (w, h), (0, 0, 0, 255))
         design['bg'](C(bg))
+        # Art provisional: el nom de cada cosa clicable, a sobre, perquè es pugui jugar sense dubtes.
+        if LABELS['font'] and design.get('etiquetes', True):
+            names = {hs['id']: hs.get('description') or hs['id'] for hs in room.get('hotspots', []) + room.get('props', [])}
+            for tid, t in design['things'].items():
+                if tid not in names or tid in design.get('sense_etiqueta', ()):
+                    continue
+                x0, y0, x1, _ = box(*t['rect'], k)
+                LABELS['font'].draw_centered(bg, (x0 + x1) / 2, max(1, y0 - 9), names[tid], (255, 240, 200), x1 - x0 + 40)
     frames, tags = [bg], ['BG']
     for prop in room['props']:
         if prop['id'] == 'BG' or (hd and prop['id'] in hd_anims):
@@ -427,12 +435,16 @@ def draw_cover_gui(game_dir: Path):
     print('✔ portada: caselles dels botons')
 
 
+LABELS = {'font': None}
+
+
 def main(game_dir: Path):
     draw_cover_gui(game_dir)
     add_switch_button(game_dir)
     fonts = game_dir / 'assets/fonts'
     font = BitmapFont(fonts / 'suma-negreta.xml')
     small = BitmapFont(fonts / 'suma-regular.xml')
+    LABELS['font'] = small
     requests = game_dir / '../../.benne-provisional'
     for req_path in sorted((requests / 'rooms').glob('*.json')):
         dir_ = game_dir / 'assets/images/rooms' / req_path.stem

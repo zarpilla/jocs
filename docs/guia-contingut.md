@@ -304,6 +304,9 @@ damunt quan es compleix `visibleIf` i que no es poden clicar (el clic arriba a l
 `npm run benne:sync` els afegeix a la sala de Benne com a props no clicables. Cada decorat necessita un
 fotograma amb el seu id a l'art de la sala (a l'art provisional, una funció a `room_designs.py`).
 
+Un decorat es dibuixa per sobre de les coses clicables. Amb `"sota": true`, per sota: per a un fons que en té
+d'altres al davant (l'interior de la nevera oberta, amb la pizza com a prop clicable).
+
 ## Finals: `data/endings.json`
 
 ```json

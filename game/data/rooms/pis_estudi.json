@@ -1116,6 +1116,21 @@
       "visibleIf": {
         "flag": "router_connectat"
       }
+    },
+    "fibra_connectada": {
+      "visibleIf": {
+        "flag": "fibra_connectada"
+      }
+    },
+    "xarxa_connectada": {
+      "visibleIf": {
+        "flag": "xarxa_connectada"
+      }
+    },
+    "alimentacio_connectada": {
+      "visibleIf": {
+        "flag": "alimentacio_connectada"
+      }
     }
   }
 }

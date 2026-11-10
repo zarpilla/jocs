@@ -1,581 +1,581 @@
 {
   "frames": {
-    "hank 0.aseprite": {
+    "vet 0.aseprite": {
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 130
+      "duration": 100
     },
-    "hank 1.aseprite": {
+    "vet 1.aseprite": {
       "frame": {
-        "x": 36,
+        "x": 49,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 130
+      "duration": 100
     },
-    "hank 2.aseprite": {
+    "vet 2.aseprite": {
       "frame": {
-        "x": 72,
+        "x": 98,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 130
+      "duration": 100
     },
-    "hank 3.aseprite": {
+    "vet 3.aseprite": {
       "frame": {
-        "x": 108,
+        "x": 147,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 4.aseprite": {
+    "vet 4.aseprite": {
       "frame": {
-        "x": 144,
+        "x": 196,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 5.aseprite": {
+    "vet 5.aseprite": {
       "frame": {
-        "x": 180,
+        "x": 245,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 6.aseprite": {
+    "vet 6.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 64,
-        "w": 36,
-        "h": 64
+        "x": 294,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 7.aseprite": {
+    "vet 7.aseprite": {
       "frame": {
-        "x": 36,
-        "y": 64,
-        "w": 36,
-        "h": 64
+        "x": 343,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 8.aseprite": {
+    "vet 8.aseprite": {
       "frame": {
-        "x": 72,
-        "y": 64,
-        "w": 36,
-        "h": 64
+        "x": 392,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 9.aseprite": {
+    "vet 9.aseprite": {
       "frame": {
-        "x": 108,
-        "y": 64,
-        "w": 36,
-        "h": 64
+        "x": 441,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 10.aseprite": {
+    "vet 10.aseprite": {
       "frame": {
-        "x": 144,
-        "y": 64,
-        "w": 36,
-        "h": 64
+        "x": 490,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 11.aseprite": {
+    "vet 11.aseprite": {
       "frame": {
-        "x": 180,
-        "y": 64,
-        "w": 36,
-        "h": 64
+        "x": 539,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 12.aseprite": {
+    "vet 12.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 128,
-        "w": 36,
-        "h": 64
+        "x": 588,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 13.aseprite": {
+    "vet 13.aseprite": {
       "frame": {
-        "x": 36,
-        "y": 128,
-        "w": 36,
-        "h": 64
+        "x": 637,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 14.aseprite": {
+    "vet 14.aseprite": {
       "frame": {
-        "x": 72,
-        "y": 128,
-        "w": 36,
-        "h": 64
+        "x": 686,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 15.aseprite": {
+    "vet 15.aseprite": {
       "frame": {
-        "x": 108,
-        "y": 128,
-        "w": 36,
-        "h": 64
+        "x": 735,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 16.aseprite": {
+    "vet 16.aseprite": {
       "frame": {
-        "x": 144,
-        "y": 128,
-        "w": 36,
-        "h": 64
+        "x": 784,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 17.aseprite": {
+    "vet 17.aseprite": {
       "frame": {
-        "x": 180,
-        "y": 128,
-        "w": 36,
-        "h": 64
+        "x": 833,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 18.aseprite": {
+    "vet 18.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 192,
-        "w": 36,
-        "h": 64
+        "x": 882,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 19.aseprite": {
+    "vet 19.aseprite": {
       "frame": {
-        "x": 36,
-        "y": 192,
-        "w": 36,
-        "h": 64
+        "x": 931,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 20.aseprite": {
+    "vet 20.aseprite": {
       "frame": {
-        "x": 72,
-        "y": 192,
-        "w": 36,
-        "h": 64
+        "x": 980,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 21.aseprite": {
+    "vet 21.aseprite": {
       "frame": {
-        "x": 108,
-        "y": 192,
-        "w": 36,
-        "h": 64
+        "x": 1029,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 22.aseprite": {
+    "vet 22.aseprite": {
       "frame": {
-        "x": 144,
-        "y": 192,
-        "w": 36,
-        "h": 64
+        "x": 1078,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 23.aseprite": {
+    "vet 23.aseprite": {
       "frame": {
-        "x": 180,
-        "y": 192,
-        "w": 36,
-        "h": 64
+        "x": 1127,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 24.aseprite": {
+    "vet 24.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 256,
-        "w": 36,
-        "h": 64
+        "x": 1176,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 25.aseprite": {
+    "vet 25.aseprite": {
       "frame": {
-        "x": 72,
+        "x": 1225,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     },
-    "hank 26.aseprite": {
+    "vet 26.aseprite": {
       "frame": {
-        "x": 36,
-        "y": 256,
-        "w": 36,
-        "h": 64
+        "x": 1274,
+        "y": 0,
+        "w": 49,
+        "h": 87
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
       "sourceSize": {
-        "w": 36,
-        "h": 64
+        "w": 49,
+        "h": 87
       },
-      "duration": 180
+      "duration": 100
     }
   },
   "meta": {
     "app": "https://www.aseprite.org/",
-    "version": "1.3.18-beta2-x64",
+    "version": "provisional (draw_characters.py)",
     "image": "vet.png",
     "format": "RGBA8888",
     "size": {
-      "w": 216,
-      "h": 320
+      "w": 1323,
+      "h": 87
     },
     "scale": "1",
     "frameTags": [
@@ -643,13 +643,7 @@
         "color": "#000000ff"
       }
     ],
-    "layers": [
-      {
-        "name": "Layer 2",
-        "opacity": 255,
-        "blendMode": "normal"
-      }
-    ],
+    "layers": [],
     "slices": []
   }
 }

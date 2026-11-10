@@ -629,6 +629,258 @@
         "h": 26
       },
       "duration": 100
+    },
+    "diu 30.aseprite": {
+      "frame": {
+        "x": 900,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 31.aseprite": {
+      "frame": {
+        "x": 930,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 32.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 33.aseprite": {
+      "frame": {
+        "x": 990,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 34.aseprite": {
+      "frame": {
+        "x": 1020,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 35.aseprite": {
+      "frame": {
+        "x": 1050,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 36.aseprite": {
+      "frame": {
+        "x": 1080,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 37.aseprite": {
+      "frame": {
+        "x": 1110,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 38.aseprite": {
+      "frame": {
+        "x": 1140,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 39.aseprite": {
+      "frame": {
+        "x": 1170,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 40.aseprite": {
+      "frame": {
+        "x": 1200,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
+    },
+    "diu 41.aseprite": {
+      "frame": {
+        "x": 1230,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 30,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 30,
+        "h": 26
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -637,7 +889,7 @@
     "image": "diu.png",
     "format": "RGBA8888",
     "size": {
-      "w": 900,
+      "w": 1260,
       "h": 26
     },
     "scale": "1",
@@ -681,6 +933,27 @@
         "name": "TalkU",
         "from": 28,
         "to": 29,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "Caixa",
+        "from": 30,
+        "to": 33,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "Auricular",
+        "from": 34,
+        "to": 37,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "Pizza",
+        "from": 38,
+        "to": 41,
         "direction": "forward",
         "color": "#000000ff"
       }

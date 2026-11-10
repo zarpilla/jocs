@@ -63,6 +63,18 @@
     "TalkU": {
       "loop": true,
       "frameDuration": 160
+    },
+    "Caixa": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "Auricular": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "Pizza": {
+      "loop": true,
+      "frameDuration": 160
     }
   },
   "defaultVerb": "look"

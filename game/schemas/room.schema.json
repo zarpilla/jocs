@@ -801,6 +801,10 @@
       "properties": {
         "visibleIf": {
           "$ref": "#/definitions/Condition"
+        },
+        "sota": {
+          "type": "boolean",
+          "description": "Es dibuixa per sota de les coses clicables, no per sobre (p. ex. l'interior d'una nevera oberta, amb els objectes de dins com a props). Per defecte, per sobre: un decorat canvia l'aspecte d'una cosa."
         }
       },
       "required": [
