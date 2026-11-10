@@ -646,7 +646,7 @@ Director. Pista de la pantalla: *«El meu millor amic»*. L'Iri ho diu per l'aur
 - Si la Vet va llegir la placa del retrat (Escena 4), totes dues ho saben: **Rockefeller**. L'Iri: «Rockefeller.
   Ho va dir la Vet.»
 - Si no, al despatx hi ha una **foto del gos** a la taula i un **bol d'aigua** amb el nom gravat. Cap atzucac.
-- Una contrasenya dolenta: «Contrasenya incorrecta. Li queden infinits intents: el Llibre Major és de 1987.»
+- Una contrasenya dolenta: «Contrasenya incorrecta. Li queden infinits intents: el Llibre Major és de 1984.»
 
 **Trencaclosques 8.2 — El mòbil (sincronia, 9 torns).** Després de la contrasenya, el Llibre Major envia un
 **codi al mòbil del Director**. El mòbil és el terminal d'accés: si el Director el mira quan el codi ja ha
