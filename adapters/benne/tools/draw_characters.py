@@ -215,7 +215,7 @@ def secundari(cid):
 
 
 def gat(cid='diu'):
-    """En Diu: sempre assegut de cara (un gat no es gira per ningú). Animacions d'aspecte: Caixa, Auricular, Pizza."""
+    """En Diu: sempre assegut de cara (un gat no es gira per ningú). Animacions d'aspecte: Caixa, Auricular, Pizza, i dormint: CaixaDorm, PizzaDorm, Dorm."""
     idle = [personatges.diu(cua=k % 4, parpelleja=(k == 7)) for k in range(8)]
     talk = [personatges.diu(cua=0), personatges.diu(cua=1)]
     tags = []
@@ -224,7 +224,10 @@ def gat(cid='diu'):
         tags.append((f'Talk{f}', talk))
     for estat in ('caixa', 'auricular', 'pizza'):
         tags.append((estat.capitalize(), [personatges.diu_estat(estat, cua=k % 4) for k in range(4)]))
-    anims = {t: {'loop': True, 'frameDuration': 300 if t.startswith('Idle') else 160} for t, _ in tags}
+    # Escena 2: dorm dins el que li han donat (l'auricular ja l'ha tornat)
+    for estat, tag in (('caixa', 'CaixaDorm'), ('pizza', 'PizzaDorm'), (None, 'Dorm')):
+        tags.append((tag, [personatges.diu_estat(estat, cua=k, dorm=True) for k in range(4)]))
+    anims = {t: {'loop': True, 'frameDuration': 300 if t.startswith('Idle') else 500 if t.endswith('Dorm') else 160} for t, _ in tags}
     write(cid, tags, (personatges.GW, personatges.GH), {
         'walkSpeed': 60, 'walkToPoint': {'x': 36, 'y': 25}, 'talkPoint': {'x': 13, 'y': -2}, 'feet': {'x': 13, 'y': 25},
         'collider': {'points': [{'x': 4, 'y': 0}, {'x': 28, 'y': 0}, {'x': 28, 'y': 25}, {'x': 4, 'y': 25}]},
@@ -276,7 +279,7 @@ def robot(cid='neta'):
 
 def main():
     """Els personatges de Suma Zero amb art definitiu (els altres surten amb la plantilla de Benne)."""
-    protagonist('iri', personatges.iri)
+    protagonist('iri', personatges.iri, outfits=('', 'SenseAuriculars'))
     protagonist('vet', vet, outfits=VET_OUTFITS)
     gat('diu')
     for cid in personatges.NPCS:

@@ -6,6 +6,39 @@
       {
         "verb": "look",
         "if": {
+          "all": [
+            {
+              "flag": "auricular_compartit"
+            },
+            {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "auricular"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.auriculars.look.compartit_mossegat"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "auricular_compartit"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.auriculars.look.compartit"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
           "var": "sacrifici",
           "op": "==",
           "value": "auricular"
@@ -13,7 +46,7 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.auriculars.look.mono"
+            "text": "obj.auriculars.look.mossegat"
           }
         ]
       },
@@ -32,6 +65,38 @@
     ],
     "props": {
       "no_enviar": "tub.auriculars"
+    }
+  },
+  "auriculars_boto": {
+    "name": "obj.auriculars_boto.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "auricular_compartit"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.auriculars_boto.look.queda"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.auriculars_boto.look"
+          }
+        ]
+      }
+    ],
+    "props": {
+      "no_enviar": "tub.auriculars_boto"
     }
   },
   "cable_xarxa": {

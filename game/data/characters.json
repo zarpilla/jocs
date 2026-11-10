@@ -1,7 +1,25 @@
 {
   "$schema": "../schemas/characters.schema.json",
   "iri": {
-    "name": "pj.iri.nom"
+    "name": "pj.iri.nom",
+    "outfit": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "auricular"
+            },
+            {
+              "flag": "vet_marxa",
+              "is": false
+            }
+          ]
+        },
+        "name": "SenseAuriculars"
+      }
+    ]
   },
   "vet": {
     "name": "pj.vet.nom",
@@ -55,6 +73,42 @@
   "diu": {
     "name": "pj.diu.nom",
     "appearance": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "vet_marxa"
+            },
+            {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "caixa"
+            }
+          ]
+        },
+        "anim": "CaixaDorm"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "vet_marxa"
+            },
+            {
+              "var": "sacrifici",
+              "op": "==",
+              "value": "pizza"
+            }
+          ]
+        },
+        "anim": "PizzaDorm"
+      },
+      {
+        "if": {
+          "flag": "vet_marxa"
+        },
+        "anim": "Dorm"
+      },
       {
         "if": {
           "var": "sacrifici",

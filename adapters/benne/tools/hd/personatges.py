@@ -132,14 +132,16 @@ IRI = {
 }
 
 
-def iri(facing, walk=None, talk=False):
+def iri(facing, walk=None, talk=False, roba=''):
+    """L'Iri. `roba` = 'SenseAuriculars' quan els auriculars els té en Diu (Escena 1)."""
     spec = dict(IRI)
     hooks = dict(spec['hooks'])
     hair = hooks['hair']
 
     def hair_and_phones(fg, p, s):
         hair(fg, p, s)
-        iri_phones(fg, p, s)
+        if roba != 'SenseAuriculars':
+            iri_phones(fg, p, s)
     hooks['hair'] = hair_and_phones
     del hooks['over']
     spec['hooks'] = hooks
@@ -309,9 +311,25 @@ def npc(cid, facing, talk=False):
     return img
 
 
-def diu_estat(estat, cua=0):
-    """En Diu segons el que se li ha donat: dins la caixa, amb l'auricular o davant la pizza."""
-    base = diu(cua=cua)
+def zzz(img, k):
+    """Una «z» petita que puja per sobre del cap d'en Diu quan dorm (k: fotograma, 0-3)."""
+    P = img.load()
+    x0, y0 = 19 + (k % 2), 3 - k
+    if y0 < 0:
+        return img
+    for dx, dy in ((0, 0), (1, 0), (2, 0), (3, 0), (2, 1), (1, 2), (0, 3), (1, 3), (2, 3), (3, 3)):
+        x, y = x0 + dx, y0 + dy
+        if 0 <= x < img.width and 0 <= y < img.height:
+            P[x, y] = (226, 220, 236, 255)
+    return img
+
+
+def diu_estat(estat, cua=0, dorm=False):
+    """En Diu segons el que se li ha donat: dins la caixa, amb l'auricular o davant la pizza.
+    Amb `dorm`, dorm (Escena 2): ulls tancats, la cua quieta i una «z» que puja; `estat` None = sol."""
+    base = diu(cua=0 if dorm else cua, parpelleja=dorm)
+    if dorm and estat is None:
+        return zzz(base, cua)
     fg = Fig(GW, GH)
     if estat == 'caixa':
         out = Image.new('RGBA', (GW, GH), (0, 0, 0, 0))
@@ -319,13 +337,18 @@ def diu_estat(estat, cua=0):
         fg.poly([(2, 14), (26, 14), (26, 25), (2, 25)], M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108)), 2.6, cont=(0.2, 0.8))
         box = fg.render()
         out.alpha_composite(box)
-        return out
+        return zzz(out, cua) if dorm else out
     if estat == 'auricular':
-        fg.ell(21, 21, 3.0, 3.6, M((50, 6, 14), (110, 16, 26), (170, 30, 36), (220, 60, 54)), 2.6, amp=1.4)
+        # els auriculars de diadema de l'Iri, entre les potes: la diadema negra i les dues copes vermelles
+        for i in range(30):
+            a = math.pi * i / 29
+            fg.px(13 - 5.5 * math.cos(a), 22 - 4.0 * math.sin(a), PHONES, 2.4)
+        for cx in (7.5, 18.5):
+            fg.ell(cx, 23, 1.8, 2.4, PHONES_RED, 2.6, amp=1.4)
     if estat == 'pizza':
         fg.ell(22, 23, 6.0, 2.2, M((70, 30, 14), (150, 80, 30), (210, 130, 50), (240, 190, 90)), 2.8, amp=1.0)
     base.alpha_composite(fg.render())
-    return base
+    return zzz(base, cua) if dorm else base
 
 
 # ─── Vet ───────────────────────────────────────────────────────────────────

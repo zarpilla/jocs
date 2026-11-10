@@ -9,7 +9,7 @@
  * - `cap_al_tub: true`: hi cap (claus, papers, l'entrepà...). Sense la marca, no hi cap.
  * - `tub_per: "iri"`: a qui li fa falta. Si no és l'altra, «No li fa cap falta».
  * - `tub_fins: "<flag>"`: li fa falta fins que el flag és cert (l'entrepà, fins que el robot s'atura).
- * - `no_enviar: "<clau de text>"`: no s'envia mai, i aquesta és la raó (l'auricular, la clau de casa).
+ * - `no_enviar: "<clau de text>"`: no s'envia mai, i aquesta és la raó (els auriculars, la clau de casa).
  *
  * Al moll de càrrega no hi ha estació: mentre l'Iri hi és, no li arriba res.
  */
@@ -17,7 +17,7 @@ import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
 export const TUB_TEXTS = [
   'tub.envia', 'tub.rep', 'tub.no_hi_cap', 'tub.no_cal', 'tub.moll',
-  'tub.entrepa_ballester.rep', 'tub.entrepa_ballester.rep2', 'tub.clau_llibre.rep', 'tub.auriculars', 'tub.clau_casa',
+  'tub.entrepa_ballester.rep', 'tub.entrepa_ballester.rep2', 'tub.clau_llibre.rep', 'tub.auriculars', 'tub.auriculars_boto', 'tub.clau_casa',
 ];
 
 /** Qui rep el que envia `who`. */

@@ -509,6 +509,21 @@
             "use",
             "open"
           ],
+          "if": {
+            "flag": "iri_sap_neta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_escombraries.panell.molles"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
           "lines": [
             {
               "who": "player",

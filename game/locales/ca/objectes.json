@@ -7,7 +7,6 @@
   "obj.acreditacions.nom": "acreditacions",
   "obj.auriculars.amb_article": "els auriculars",
   "obj.auriculars.look.iri": "Els meus auriculars. No me'ls trec mai.",
-  "obj.auriculars.look.mono": "Ara només en tinc un. Tot sona en mono. En Diu té l'altra meitat de la meva vida.",
   "obj.auriculars.nom": "auriculars",
   "obj.cable_alimentacio.amb_article": "el cable d'alimentació",
   "obj.cable_alimentacio.look.iri": "El cable de la cafetera. La Vet m'odia una mica.",
@@ -40,7 +39,7 @@
   "obj.compte_nomines.look.vet": "Un número de compte escrit a mà. Lletra d'algú que cobra tard.",
   "obj.compte_nomines.nom": "compte de nòmines",
   "obj.entrepa.amb_article": "l'entrepà",
-  "obj.entrepa.look.iri": "L'entrepà de la Vet. No preguntis d'on surt.",
+  "obj.entrepa.look.iri": "L'entrepà de tonyina de la Vet. «Per si de cas.» Doncs era aquest cas.",
   "obj.entrepa.look.vet": "Un entrepà de tonyina. Per si de cas.",
   "obj.entrepa.nom": "entrepà",
   "obj.entrepa_ballester.amb_article": "l'entrepà d'en Ballester",
@@ -76,5 +75,12 @@
   "obj.targeta.nom": "targeta de planta",
   "obj.ulleres.amb_article": "les ulleres",
   "obj.ulleres.look.vet": "Unes ulleres de pasta. No tenen graduació, però donen autoritat.",
-  "obj.ulleres.nom": "ulleres"
+  "obj.ulleres.nom": "ulleres",
+  "obj.auriculars.look.compartit": "Els meus auriculars. Ara, a més de música, hi sento la Vet. No sé si és una millora.",
+  "obj.auriculars.look.compartit_mossegat": "Els meus auriculars, amb forats de dent al coixinet. S'hi sent. I la Vet, també.",
+  "obj.auriculars.look.mossegat": "Han tornat amb forats de dent al coixinet. S'hi sent. Més o menys.",
+  "obj.auriculars_boto.nom": "auriculars de botó",
+  "obj.auriculars_boto.amb_article": "els auriculars de botó",
+  "obj.auriculars_boto.look": "Dos auriculars de botó, de recanvi. Van connectats als meus. Per si un dia algú m'ha de parlar a l'orella.",
+  "obj.auriculars_boto.look.queda": "En queda un, de recanvi. L'altre el porta la Vet, connectat als meus."
 }

@@ -482,6 +482,27 @@
         "h": 27
       },
       "duration": 100
+    },
+    "inventory 23.aseprite": {
+      "frame": {
+        "x": 1127,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -490,7 +511,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1127,
+      "w": 1176,
       "h": 27
     },
     "scale": "1",
@@ -503,156 +524,163 @@
         "color": "#000000ff"
       },
       {
-        "name": "cable_xarxa",
+        "name": "auriculars_boto",
         "from": 1,
         "to": 1,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "cable_alimentacio",
+        "name": "cable_xarxa",
         "from": 2,
         "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "caixa_cartro",
+        "name": "cable_alimentacio",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "pizza",
+        "name": "caixa_cartro",
         "from": 4,
         "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "entrepa",
+        "name": "pizza",
         "from": 5,
         "to": 5,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "clau_casa",
+        "name": "entrepa",
         "from": 6,
         "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "tap",
+        "name": "clau_casa",
         "from": 7,
         "to": 7,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "recepta",
+        "name": "tap",
         "from": 8,
         "to": 8,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "comandament",
+        "name": "recepta",
         "from": 9,
         "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "maleti",
+        "name": "comandament",
         "from": 10,
         "to": 10,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "ulleres",
+        "name": "maleti",
         "from": 11,
         "to": 11,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "acreditacions",
+        "name": "ulleres",
         "from": 12,
         "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "acreditacio",
+        "name": "acreditacions",
         "from": 13,
         "to": 13,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "entrepa_suis",
+        "name": "acreditacio",
         "from": 14,
         "to": 14,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "entrepa_ballester",
+        "name": "entrepa_suis",
         "from": 15,
         "to": 15,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "targeta",
+        "name": "entrepa_ballester",
         "from": 16,
         "to": 16,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "compte_nomines",
+        "name": "targeta",
         "from": 17,
         "to": 17,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "galleda",
+        "name": "compte_nomines",
         "from": 18,
         "to": 18,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "cartell",
+        "name": "galleda",
         "from": 19,
         "to": 19,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "extintor",
+        "name": "cartell",
         "from": 20,
         "to": 20,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "clau_llibre",
+        "name": "extintor",
         "from": 21,
         "to": 21,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "clauer",
+        "name": "clau_llibre",
         "from": 22,
         "to": 22,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "clauer",
+        "from": 23,
+        "to": 23,
         "direction": "forward",
         "color": "#000000ff"
       }

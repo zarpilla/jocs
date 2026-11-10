@@ -25,6 +25,10 @@
       ],
       "lines": [
         {
+          "who": "player",
+          "text": "dlg.marcel.intro0"
+        },
+        {
           "who": "marcel",
           "text": "dlg.marcel.intro1"
         },

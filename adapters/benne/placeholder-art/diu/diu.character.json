@@ -75,6 +75,18 @@
     "Pizza": {
       "loop": true,
       "frameDuration": 160
+    },
+    "CaixaDorm": {
+      "loop": true,
+      "frameDuration": 500
+    },
+    "PizzaDorm": {
+      "loop": true,
+      "frameDuration": 500
+    },
+    "Dorm": {
+      "loop": true,
+      "frameDuration": 500
     }
   },
   "defaultVerb": "look"

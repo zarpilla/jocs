@@ -14,7 +14,7 @@ DECORAT acreditacions_llestes — es veu si acreditacions_llestes
 
 TERMINAL «terminal»
     • use — si NO soler_distret
-        JUGADORA: En Soler torna a ser a la porta. Si tecleja ara, ho sentirà.
+        JUGADORA: En Soler torna a ser a la porta. Si teclejo ara, ho sentirà.
     • use — si NO llista_feta
         [SO: teclat] JUGADORA: Vol BCMU-07, llista de tripulació. Afegeixo: «I. i V., tècniques de manteniment de caixes fortes».
         [SO: impressora] JUGADORA: I imprimeixo dues acreditacions.
@@ -106,7 +106,8 @@ PORTA «porta de personal»
 EN ENTRAR
     • * (una vegada) — SEMPRE
         [SO: megafonia] NARRADOR: Dimarts, de matinada. L'aeroport.
-        [SO: auricular] IRI: Té. L'auricular dret. Ara el que diguis, ho sento.
+        [SO: auricular] IRI: Té. Un auricular de botó, el de recanvi. Va connectat als meus. Ara el que diguis, ho sento. ⟨si sacrifici ≠ "auricular"⟩
+        [SO: auricular] IRI: Té. Un auricular de botó, el de recanvi. Va connectat als meus, que fan olor de gat i tenen forats de dent. Però s'hi sent. ⟨si sacrifici = "auricular"⟩
         JUGADORA: I el que pensi?
         IRI: Això encara no. Jo vaig a la porta de personal. Tu fes que el guàrdia se'n vagi.
         JUGADORA: Un guàrdia que vigila una porta. Necessitarà un motiu per deixar-la.
@@ -187,7 +188,7 @@ EN ENTRAR
     • * — SEMPRE
         NARRADOR: A l'avió del BCMU, entre tècnics de debò.
         IRI: Té, la teva. Amb la teva cara, que costa d'imprimir.
-        RIUS: Sou noves? Doncs benvingudes a la subcontracta. Aquí ningú no cobra el viatge.
+        RIUS: Sou noves? Soc la Rius, l'encarregada. Benvingudes a la subcontracta. Aquí ningú no cobra el viatge.
         VET: Ni el viatge ni res, pel que veig.
         IRI: I aquest vestit? Fa una hora anaves amb la bomber.
         VET: Objectes perduts. Algú s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.
@@ -244,6 +245,10 @@ DECORAT tele_bassols — es veu si bassols
 DECORAT rebost_tancat — es veu si tomas_rebost
 
 MARCEL «Marcel»
+    • give + tap — si donats ≥ 3
+        MARCEL: Ja les he vistes, ja. Guarda-te-les i pregunta, que el cafè es refreda.
+    • give + recepta — si donats ≥ 3
+        MARCEL: Ja les he vistes, ja. Guarda-te-les i pregunta, que el cafè es refreda.
     • give + tap — SEMPRE
         MARCEL: El tap del clauer d'en Tomàs! Ni se n'ha adonat, oi?
           ⇒ perd tap, +marcel_tap, donats += 1
@@ -283,6 +288,8 @@ MARCEL «Marcel»
         JUGADORA: En Marcel. Vint anys al BCMU, ara un cafè amb llet. Diu que és més feliç.
 
 TOMAS «Tomàs» — hi és si NO tomas_rebost
+    • give + tap — si NO marcel_tap
+        JUGADORA: Encara no. Primer l'ha de veure en Marcel.
     • give + tap — SEMPRE
         TOMÀS: ...El meu tap? On era?
         JUGADORA: A la barra. Allà on el deixes sempre.
@@ -326,10 +333,12 @@ RETOL «rètol»
         JUGADORA: «El cliente siempre tiene razón (excepto si no paga)». La filosofia d'en Tomàs. I la de la banca mundial.
 
 TELEFON «telèfon»
+    • talkTo/use — si tomas_rebost
+        JUGADORA: En Tomàs s'ha endut el telèfon al rebost. Ara la línia és d'una dona que no existeix.
     • talkTo/use — SEMPRE
         ⇒ diàleg trucada
     • look — SEMPRE
-        JUGADORA: El telèfon de paret del bar. Amb fil i tot. Per trucar a l'Iri.
+        JUGADORA: El telèfon del bar: la base a la paret i un inalàmbric que en Tomàs no deixa mai lluny. Per trucar a l'Iri.
 
 PORTA_REBOST «rebost»
     • use/open/walkTo — si tomas_rebost
@@ -439,6 +448,8 @@ PANELL «panell de NETA-3»
         NETA-3: ...Diumenge? Què és un diumenge?
         JUGADORA: Ja ho descobriràs.
         ⇒ +aliat_neta, aliats += 1
+    • use/open — si iri_sap_neta
+        JUGADORA: El codi d'en Marcel obre el panell, però NETA-3 no m'escolta: és al passadís, comptant molles. Ara ja no descansarà.
     • use/open — SEMPRE
         JUGADORA: Demana el codi de manteniment de NETA-3. No el tinc.
     • look — si aliat_neta
@@ -472,7 +483,7 @@ PORTA «porta»
 EN ENTRAR
     • * (una vegada) — SEMPRE
         NARRADOR: El moll de càrrega del BCMU. Furgonetes blindades, caixes i una màquina de cafè amb mala reputació.
-        RIUS: Rius. Encarregada. No em diguis senyora.
+        RIUS: Rius. Encarregada. Ho repeteixo perquè a l'avió dormíeu. I no em diguis senyora.
         RIUS: Tothom al soterrani, a les caixes fortes. I la teva companya?
         JUGADORA: Al lavabo.
         RIUS: No l'hi comptis.
@@ -487,7 +498,7 @@ RIUS «Rius»
     • look — si aliada_rius
         JUGADORA: La Rius mira el mòbil com qui mira un gos que ha tornat a casa.
     • look — SEMPRE
-        JUGADORA: La Rius discuteix amb el mòbil. De moment, guanya el mòbil.
+        JUGADORA: La Rius discuteix amb el mòbil. De moment, guanya el mòbil. Al cinturó li penja una targeta.
 
 MAQUINA «màquina de cafè»
     • use/push/pickUp — si té targeta
@@ -905,7 +916,7 @@ CAFETERA «cafetera»
 NEVERA «nevera»
     • open — si NO nevera_oberta
         [SO: nevera] JUGADORA: A veure què hi ha.
-        JUGADORA: Hi ha una pizza per a demà. ⟨si NO pizza_demanada i no té pizza⟩
+        JUGADORA: Hi ha una pizza per a demà. ⟨si no té pizza (vet) i no té pizza (iri) i sacrifici ≠ "pizza"⟩
         JUGADORA: Pa i tonyina. ⟨si NO te_entrepa⟩
         JUGADORA: I un iogurt que ja vota.
         ⇒ +nevera_oberta
@@ -915,7 +926,7 @@ NEVERA «nevera»
         JUGADORA: Tancada.
         ⇒ −nevera_oberta
     • look — si nevera_oberta
-        JUGADORA: Hi ha una pizza per a demà. ⟨si NO pizza_demanada i no té pizza⟩
+        JUGADORA: Hi ha una pizza per a demà. ⟨si no té pizza (vet) i no té pizza (iri) i sacrifici ≠ "pizza"⟩
         JUGADORA: Pa i tonyina. ⟨si NO te_entrepa⟩
         JUGADORA: I un iogurt que ja vota.
     • look — SEMPRE
@@ -982,6 +993,9 @@ PORTA «porta»
         [SO: porta_pis] JUGADORA: Claus, mòbil, davantal. Me'n vaig.
         IRI: Pregunta-li on és el servidor!
         JUGADORA: I tu renta els plats!
+        NARRADOR: A l'estudi, en Diu deixa els auriculars de l'Iri damunt la taula. Amb forats de dent al coixinet. ⟨si sacrifici = "auricular"⟩
+          ⇒ rep auriculars (iri)
+        IRI: Tenen forats, però s'hi sent. Gràcies, Diu. Crec. ⟨si sacrifici = "auricular"⟩
         ⇒ rep clau_casa, +vet_marxa, → bar_sala
     • use/open/walkTo — SEMPRE
         JUGADORA: Encara no. L'Iri està a punt de trobar alguna cosa, i després m'ho explicarà igualment.
@@ -1037,8 +1051,8 @@ ORDINADORS «ordinadors»
         [SO: telefon_bar] NARRADOR: L'Iri truca al bar.
         TOMÀS: Digui? Bar La Propina.
         JUGADORA: (Veu sintètica) Soc la teva dona.
-        TOMÀS: ...La meva dona? Jo no estic casat.
-        JUGADORA: (Veu sintètica) Doncs ja ho saps. Vull el divorci.
+        TOMÀS: ...La meva dona? Ah. Sí. La meva dona. Hola... amor.
+        JUGADORA: (Veu sintètica) Vint anys de viatge són molts. Vull el divorci.
         TOMÀS: ...Un moment.
         JUGADORA: He parlat amb una persona. Bé, ho ha fet el portàtil. Compta igual.
         ⇒ +trucada_feta, +tomas_rebost
@@ -1052,7 +1066,7 @@ ORDINADORS «ordinadors»
     • use — si vet_marxa
         JUGADORA: Ara no puc fer res més des d'aquí. Si la Vet em necessita, trucarà.
     • use — SEMPRE
-        JUGADORA: Ja tinc el servidor. Ara cal saber on és. I això ho sap la Vet.
+        JUGADORA: Ja tinc el servidor. Ara cal saber on és. I la Vet sap qui ho sap.
     • look — SEMPRE
         JUGADORA: Tres pantalles. Una pel codi, una per la documentació i una per mirar el codi amb angoixa.
 
@@ -1139,6 +1153,10 @@ FIBRA «presa de la fibra»
         JUGADORA: La presa de la fibra, amb el cable enrotllat. En Diu se'l mira com si fos un sopar.
 
 PASSAPLATS «passaplats»
+    • talkTo/use — si vet_marxa
+        JUGADORA: La Vet és al bar. El passaplats no arriba tan lluny.
+    • use + qualsevol objecte — si vet_marxa
+        JUGADORA: La Vet és al bar. El passaplats no arriba tan lluny.
     • open — si NO passaplats_obert
         [SO: passaplats] JUGADORA: Obert. Ja fa olor de cafè.
         ⇒ +passaplats_obert
@@ -1177,6 +1195,8 @@ CAIXA «caixa» — hi és si no té caixa_cartro (iri) i no (sacrifici = "caixa
 DIU «Diu»
     • use + qualsevol objecte — si diu_distret
         JUGADORA: Ja està ocupat. No li prenguis la il·lusió.
+    • use + auriculars_boto — SEMPRE
+        JUGADORA: Aquests no. Són els de recanvi, i el recanvi és sagrat.
     • use + caixa_cartro — SEMPRE
         JUGADORA: Diu. Mira. Una caixa.
         [SO: miol] NARRADOR: En Diu s'hi fica de cap. Ja no existeix res més.
@@ -1185,21 +1205,29 @@ DIU «Diu»
         JUGADORA: Els auriculars? No me'ls trec mai. Mai.
         ⇒ +auricular_pensat
     • use + auriculars — SEMPRE
-        [SO: auricular] JUGADORA: ...Està bé. L'esquerre. Adeu, estèreo.
-        NARRADOR: En Diu agafa l'auricular i se'l mira com si fos un ratolí car.
-        ⇒ sacrifici := "auricular", +diu_distret
+        [SO: auricular] JUGADORA: ...Està bé. Te'ls deixo. Una estona. Adeu, música.
+        NARRADOR: En Diu s'abraça als auriculars i mossega el coixinet com si fos un ratolí car.
+        ⇒ perd auriculars, sacrifici := "auricular", +diu_distret
     • use + pizza — SEMPRE
         JUGADORA: Diu. La pizza de demà. És teva.
         [SO: miol] NARRADOR: En Diu mira la pizza. Després mira l'Iri. Amb respecte.
         ⇒ perd pizza, sacrifici := "pizza", +diu_distret
     • use + qualsevol objecte — SEMPRE
         JUGADORA: No crec que l'interessi. Li interessen els cables. I la pizza. I les caixes.
+    • talkTo — si vet_marxa
+        JUGADORA: Dorm. No el despertaré: és l'únic de la casa amb l'horari en ordre.
     • talkTo — SEMPRE
         ⇒ diàleg diu
+    • look — si vet_marxa i sacrifici = "caixa"
+        JUGADORA: Dorm dins la caixa. Ronca com un router vell.
+    • look — si vet_marxa i sacrifici = "auricular"
+        JUGADORA: Dorm. M'ha tornat els auriculars, plens de forats. És la seva manera de demanar perdó.
+    • look — si vet_marxa i sacrifici = "pizza"
+        JUGADORA: Dorm enroscat al voltant de la pizza. Fins i tot en somnis, em respecta.
     • look — si sacrifici = "caixa"
         JUGADORA: Dins la caixa. Feliç. Els cables ja no existeixen.
     • look — si sacrifici = "auricular"
-        JUGADORA: Mossegant el meu auricular. Feliç. Jo, no tant.
+        JUGADORA: Mossegant els meus auriculars. Feliç. Jo, no tant.
     • look — si sacrifici = "pizza"
         JUGADORA: Assegut davant la pizza, solemne. Em mira amb respecte. No sé si m'agrada.
     • look — SEMPRE
@@ -1233,10 +1261,23 @@ EN ENTRAR
 ## Objecte auriculars · `auriculars`
 
 ```
+• look — si auricular_compartit i sacrifici = "auricular"
+    JUGADORA: Els meus auriculars, amb forats de dent al coixinet. S'hi sent. I la Vet, també.
+• look — si auricular_compartit
+    JUGADORA: Els meus auriculars. Ara, a més de música, hi sento la Vet. No sé si és una millora.
 • look — si sacrifici = "auricular"
-    JUGADORA: Ara només en tinc un. Tot sona en mono. En Diu té l'altra meitat de la meva vida.
+    JUGADORA: Han tornat amb forats de dent al coixinet. S'hi sent. Més o menys.
 • look — si juga iri
     JUGADORA: Els meus auriculars. No me'ls trec mai.
+```
+
+## Objecte auriculars de botó · `auriculars_boto`
+
+```
+• look — si auricular_compartit
+    JUGADORA: En queda un, de recanvi. L'altre el porta la Vet, connectat als meus.
+• look — si juga iri
+    JUGADORA: Dos auriculars de botó, de recanvi. Van connectats als meus. Per si un dia algú m'ha de parlar a l'orella.
 ```
 
 ## Objecte cable de xarxa · `cable_xarxa`
@@ -1277,7 +1318,7 @@ EN ENTRAR
 • look — si juga vet
     JUGADORA: Un entrepà de tonyina. Per si de cas.
 • look — si juga iri
-    JUGADORA: L'entrepà de la Vet. No preguntis d'on surt.
+    JUGADORA: L'entrepà de tonyina de la Vet. «Per si de cas.» Doncs era aquest cas.
 ```
 
 ## Objecte clau de casa · `clau_casa`
@@ -1558,7 +1599,7 @@ COMENÇA A: hola_marmota (si marmota ≥ 1) · hola
     EL DIRECTOR: Bon dia. Qui és vostè?
     JUGADORA: Auditora de la Unió Europea. Inspecció sorpresa.
     EL DIRECTOR: Una sorpresa! M'encanten les sorpreses. Bonfill. Director. I amic de les auditories.
-    EL DIRECTOR: Maletí de pell, ulleres de muntura fina... Una auditora de les de debò. ⟨si té maleti i ulleres_posades⟩
+    EL DIRECTOR: Maletí de pell, ulleres de pasta... Una auditora de les de debò. ⟨si té maleti i ulleres_posades⟩
       ⇒ sospita −= 30, sospita_nivell := 0
     EL DIRECTOR: Un maletí de pell. Això és seriós. ⟨si té maleti i NO ulleres_posades⟩
       ⇒ sospita −= 15, sospita_nivell := 0
@@ -1571,7 +1612,7 @@ COMENÇA A: hola_marmota (si marmota ≥ 1) · hola
     EL DIRECTOR: Bon dia. Una auditora?
     JUGADORA: De la Unió Europea. Per primera vegada. Molt primera.
     EL DIRECTOR: Una sorpresa! M'encanten les sorpreses. Bonfill. Director. I amic de les auditories.
-    EL DIRECTOR: Maletí de pell, ulleres de muntura fina... Una auditora de les de debò. ⟨si té maleti i ulleres_posades⟩
+    EL DIRECTOR: Maletí de pell, ulleres de pasta... Una auditora de les de debò. ⟨si té maleti i ulleres_posades⟩
       ⇒ sospita −= 30, sospita_nivell := 0
     EL DIRECTOR: Un maletí de pell. Això és seriós. ⟨si té maleti i NO ulleres_posades⟩
       ⇒ sospita −= 15, sospita_nivell := 0
@@ -1614,7 +1655,7 @@ COMENÇA A: hola_marmota (si marmota ≥ 1) · hola
       ⇒ sospita_nivell := 2
     NARRADOR: El Director arqueja una cella. ⟨si sospita ≥ 25 i sospita_nivell < 1 i sospita < 100⟩
       ⇒ sospita_nivell := 1
-    EL DIRECTOR: Vostè té cara de... jove. ⟨si NO ulleres_posades i sospita < 100⟩
+    EL DIRECTOR: Vostè té cara de... jove. Porta alguna acreditació? ⟨si NO ulleres_posades i sospita < 100⟩
     ▸ La UE no fa acreditacions: fa directives. ⟨si NO ulleres_posades i sospita < 100⟩ → r_directives
         ⇒ sospita += 5
     ▸ (Ensenyar-li l'acreditació.) Aquí ho diu tot. ⟨si (NO ulleres_posades i sospita < 100) i té acreditacio⟩ → r_acreditacio
@@ -1812,9 +1853,10 @@ COMENÇA A: hola
 COMENÇA A: hola (si ha vist marcel.intro) · intro
 
 [intro]
-    MARCEL: Voleu robar el banc? Tothom ho vol. Ho porteu escrit a la cara.
+    JUGADORA: Marcel, tu vas treballar al BCMU. On guarden el servidor antic? El que en diuen el Llibre Major.
+    MARCEL: Vols robar el banc? Tothom ho vol. Ho portes escrit a la cara.
     JUGADORA: Qui ha parlat de robar?
-    MARCEL: Jo vaig construir el sistema que voleu robar. Sabeu què vaig aprendre? Que el diner és confiança. I la confiança la tenen quatre.
+    MARCEL: Jo vaig construir el sistema que vols robar. Saps què vaig aprendre? Que el diner és confiança. I la confiança la tenen quatre.
     JUGADORA: Marcel, m'estàs posant trist i he de tornar a la feina.
     MARCEL: Jo treballava dotze hores perquè un senyor a Ginebra tingués una casa a tres països.
     MARCEL: Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.
@@ -2190,7 +2232,7 @@ COMENÇA A: hola
     ↪ menu
 
 [adeu]
-    IRI: Vale. Ah, i no et deixis cap cable a la cafetera.
+    IRI: D'acord. Si em necessites, ja saps on soc: amb el router.
 
 ```
 
@@ -2212,7 +2254,7 @@ iri_espera_cable — quan juga iri i cable_demanat i no té cable_alimentacio (i
 iri_diu — quan juga iri i diu_ha_mossegat i NO diu_distret · fins que diu_distret
     1. Mentre en Diu vigili els cables, no en connectaré cap. Cal distreure'l.
     2. Als gats els agraden les caixes. I les coses cares. I la pizza.
-    3. Li dono a en Diu la caixa del router. O un auricular. O la pizza de demà, que té la Vet.
+    3. Li dono a en Diu la caixa del router. O els meus auriculars. O la pizza de demà, que té la Vet.
 iri_connectar — quan juga iri i diu_distret i NO router_connectat · fins que router_connectat
     1. En Diu està distret. Ara és el moment dels cables.
     2. Connecto al router la fibra, el cable de xarxa i el d'alimentació.
@@ -2286,8 +2328,8 @@ vet_plegar — quan juga vet i resum_fet i NO bar_fet · fins que bar_fet
     2. (I potser tornar-li el tap a en Tomàs.)
     3. Surto per la porta del bar.
 vet_preparar — quan juga vet i bar_fet i NO sync_aeroport i NO aeroport_fet i (no té maleti o no té ulleres) · fins que sync_aeroport o aeroport_fet o (té maleti i té ulleres)
-    1. A Ginebra hauré de semblar algú important. Una auditora, per exemple.
-    2. Una auditora porta maletí i ulleres. A objectes perduts hi ha un maletí; a la cafeteria, unes ulleres.
+    1. A Ginebra hauré de semblar algú que mana. Algú amb maletí i ulleres.
+    2. A objectes perduts hi ha un maletí; a la cafeteria, unes ulleres.
     3. Miro el maletí i el reclamo a objectes perduts. Agafo les ulleres de la cafeteria.
 vet_distreure — quan juga vet i bar_fet i NO sync_aeroport i NO aeroport_fet · fins que sync_aeroport o aeroport_fet
     1. En Soler vigila la porta de personal. Necessito que la deixi.
@@ -2308,7 +2350,7 @@ vet_trobat — quan juga vet i iri_fora i NO aeroport_fet · fins que aeroport_f
 vet_espera_iri — quan juga vet i (acte1_fet i NO acte2_fet) i vet_a_seguretat i NO sync_collaret i NO cal_clau · fins que sync_collaret o cal_clau
     1. L'Iri encara no és al Llibre Major. En Ballester no se'n va enlloc.
     2. Iri, com ho portes?
-    3. Canvia a l'Iri: quan sigui al Llibre Major i comenci a teclejar, et necessitarà.
+    3. Canvio a l'Iri: quan sigui al Llibre Major i comenci a teclejar, em necessitarà.
 iri_aeroport_espera — quan juga iri i bar_fet i NO soler_distret i NO aeroport_fet · fins que soler_distret o aeroport_fet
     1. Amb en Soler aquí davant no puc fer res.
     2. La Vet ha de fer que en Soler se'n vagi.
@@ -2332,51 +2374,51 @@ iri_fora — quan juga iri i iri_fora i NO aeroport_fet · fins que aeroport_fet
 vet_auditora — quan juga vet i (acte1_fet i NO acte2_fet) i NO auditoria_acceptada · fins que auditoria_acceptada
     1. Vet, pensa com una mentidera. Ah, si ja ho ets.
     2. Una auditora necessita algú a qui auditar. I aquí el que mana és el Director.
-    3. Parla amb el Director. Al final, demana-li veure la seguretat. Si s'escama, el que aprenguis et servirà a la propera.
+    3. Parlo amb el Director i, al final, li demano veure la seguretat. Si s'escama, la propera vegada ja sabré què no he de dir.
 vet_ascensor — quan juga vet i (acte1_fet i NO acte2_fet) i auditoria_acceptada i NO vet_a_seguretat · fins que vet_a_seguretat
     1. El Director m'espera.
     2. On m'espera? A l'ascensor.
-    3. Agafa l'ascensor cap a la sala de seguretat.
+    3. Agafo l'ascensor cap a la sala de seguretat.
 vet_enviar_menjar — quan juga vet i (acte1_fet i NO acte2_fet) i (iri_al_tercer i NO robot_aturat i no té entrepa (iri) i no té entrepa_suis (iri) i no té entrepa_ballester (iri)) i NO iri_sap_neta i (té entrepa o té entrepa_suis o té entrepa_ballester) · fins que robot_aturat o no (té entrepa o té entrepa_suis o té entrepa_ballester)
     1. Iri: «Vet, aquest robot no para. Tens res que faci molles?»
     2. Un entrepà fa moltes molles. I un robot de neteja no pot deixar una molla a terra.
-    3. Envia l'entrepà a l'Iri pel tub.
+    3. Envio l'entrepà a l'Iri pel tub.
 vet_buscar_menjar — quan juga vet i (acte1_fet i NO acte2_fet) i (iri_al_tercer i NO robot_aturat i no té entrepa (iri) i no té entrepa_suis (iri) i no té entrepa_ballester (iri)) i NO iri_sap_neta i no (té entrepa o té entrepa_suis o té entrepa_ballester) · fins que robot_aturat o (té entrepa o té entrepa_suis o té entrepa_ballester)
     1. Iri: «Vet, aquest robot no para. Tens res que faci molles?»
     2. No tinc res de menjar. Però en aquest edifici sí que n'hi ha.
-    3. La màquina del vestíbul fa entrepans. I en Ballester en té un damunt la taula.
+    3. La màquina del vestíbul fa entrepans, i tinc les propines. I els guardes de seguretat sempre tenen un entrepà a la taula.
 vet_cobrir — quan juga vet i sync_collaret i coberta < 1 i codis ≥ 1 · fins que coberta ≥ 1 o cal_clau
     1. Cada bip, en Ballester el sent per la ràdio. Abans que l'Iri tecleji, l'he de tapar.
     2. Cantar, un acudit, un got que cau... o una cosa que li agradi molt.
-    3. Parla amb en Ballester: canta, explica-li un acudit o trenca el got. Si saps quin capítol de La Comissària Bassols li agrada, en tapa dos.
+    3. Parlo amb en Ballester: canto, li explico un acudit o trenco el got. Si li parlo del capítol de La Comissària Bassols que li agrada, en tapo dos.
 vet_clau — quan juga vet i cal_clau i NO aliat_ballester i NO clau_canviada · fins que aliat_ballester o clau_canviada
     1. Ara la clau. La porta al coll.
     2. Quan en Ballester parla de la sèrie, s'obre. Potser llavors m'escoltaria. I si no, té un collaret molt bonic.
-    3. Parla amb en Ballester. Si està relaxat, digues-li la veritat. Si no, canvia-li la clau per la de casa.
+    3. Parlo amb en Ballester. Si està relaxat, li dic la veritat. Si no, li canvio la clau per la de casa.
 vet_collaret — quan juga vet i aliat_ballester i NO clau_agafada · fins que clau_agafada
     1. En Ballester mira cap a una altra banda. Molt fixament.
     2. El collaret és damunt la taula.
-    3. Agafa el collaret de la taula.
+    3. Agafo el collaret de la taula.
 vet_enviar_clau — quan juga vet i té clau_llibre (vet) · fins que no té clau_llibre (vet)
     1. Aquesta clau no és per a mi.
     2. L'Iri és tres pisos més amunt. Per sort, en aquest edifici hi ha un tub.
-    3. Envia la clau a l'Iri pel tub.
+    3. Envio la clau a l'Iri pel tub.
 iri_rius — quan juga iri i (acte1_fet i NO acte2_fet) i NO iri_al_tercer i no té targeta · fins que té targeta
     1. Què faries tu, ascensor? Sense targeta, res.
     2. La targeta la porta la Rius al cinturó. I la Rius té un problema amb el mòbil.
-    3. Parla amb la Rius: arregla-li l'aplicació, o demana-li un cafè.
+    3. Parlo amb la Rius: li arreglo l'aplicació, o li demano un cafè.
 iri_ascensor — quan juga iri i (acte1_fet i NO acte2_fet) i té targeta i NO iri_al_tercer · fins que iri_al_tercer
     1. Tercer pis. Sala d'escombraries.
     2. Ja tinc la targeta.
-    3. Agafa l'ascensor de servei.
+    3. Agafo l'ascensor de servei.
 iri_robot_codi — quan juga iri i iri_al_tercer i NO robot_aturat i iri_sap_neta · fins que robot_aturat
     1. Primer el robot: si tapo una càmera, me la destapa.
     2. En Marcel el va programar. I tenia una frase per aturar-lo.
-    3. Parla amb NETA-3 i digues-li: «NETA, descansa».
+    3. Parlo amb NETA-3 i li dic: «NETA, descansa».
 iri_robot — quan juga iri i iri_al_tercer i NO robot_aturat i NO iri_sap_neta · fins que robot_aturat
     1. Primer el robot: si tapo una càmera, me la destapa. Què faries tu, robot? Netejar.
     2. Si li dono feina, potser s'atura. Molta feina. Molles, per exemple. Vet?
-    3. Fes servir un entrepà amb NETA-3. Si no en tens, la Vet te'n pot enviar un pel tub.
+    3. Faig servir un entrepà amb NETA-3. Si no en tinc, la Vet me'n pot enviar un pel tub.
 iri_cameres — quan juga iri i robot_aturat i no (camera1_tapada i camera2_tapada) · fins que camera1_tapada i camera2_tapada
     1. Les dues càmeres miren la porta de neteja.
     2. Al passadís hi ha un cartell de «Neteja en curs» i una galleda. Una càmera és a la zona de neteja i l'altra, en un racó.
@@ -2384,31 +2426,31 @@ iri_cameres — quan juga iri i robot_aturat i no (camera1_tapada i camera2_tapa
 iri_porta_neteja — quan juga iri i camera1_tapada i camera2_tapada i NO iri_a_llibre · fins que iri_a_llibre
     1. Ningú no mira.
     2. La porta de neteja.
-    3. Entra per la porta de neteja.
+    3. Entro per la porta de neteja.
 iri_llibre_espera — quan juga iri i iri_a_llibre i NO vet_a_seguretat i NO sync_collaret i NO cal_clau · fins que vet_a_seguretat
     1. Si teclejo ara, em sentirà tot el banc.
     2. La Vet ha de ser a la sala de seguretat, amb en Ballester.
-    3. Canvia a la Vet i porta-la a la sala de seguretat.
+    3. Canvio a la Vet i la porto a la sala de seguretat.
 iri_llibre — quan juga iri i iri_a_llibre i vet_a_seguretat i NO sync_collaret i NO cal_clau · fins que sync_collaret o cal_clau
     1. Hola, preciós. Què em demanes?
     2. La Vet ja és a seguretat.
-    3. Fes servir el Llibre Major.
+    3. Faig servir el Llibre Major.
 iri_teclejar — quan juga iri i sync_collaret i (coberta ≥ 1 o codis = 0) · fins que cal_clau
     1. Ara no em sent ningú.
     2. La Vet ja l'entreté. És el moment.
-    3. Fes servir el Llibre Major: tecleja el codi.
+    3. Faig servir el Llibre Major: teclejo el codi.
 iri_esperar — quan juga iri i sync_collaret i coberta < 1 i codis ≥ 1 · fins que coberta ≥ 1 o cal_clau
     1. Si teclejo sense que la Vet el tapi, en Ballester el sentirà.
     2. Vet, avisa'm quan l'hagis distret.
-    3. Canvia a la Vet: que distregui en Ballester abans de cada bip.
+    3. Canvio a la Vet: que distregui en Ballester abans de cada bip.
 iri_clau_espera — quan juga iri i cal_clau i no té clau_llibre (iri) · fins que té clau_llibre (iri)
     1. Ara demana la clau física.
-    2. La té en Ballester, al coll. I la Vet és amb ell.
-    3. Canvia a la Vet: que aconsegueixi la clau i te l'enviï pel tub.
+    2. La porta el Cap de Seguretat, al coll. I la Vet és amb ell.
+    3. Canvio a la Vet: que aconsegueixi la clau i me l'enviï pel tub.
 iri_girar — quan juga iri i té clau_llibre (iri) i NO clau_girada · fins que clau_girada
     1. Hola, preciosa.
     2. El Llibre Major té un pany.
-    3. Fes servir la clau amb el Llibre Major.
+    3. Faig servir la clau amb el Llibre Major.
 ```
 
 ## Finals

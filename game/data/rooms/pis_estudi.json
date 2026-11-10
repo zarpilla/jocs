@@ -861,6 +861,34 @@
       "name": "sala.pis_estudi.passaplats.nom",
       "interactions": [
         {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "vet_marxa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.vet_fora"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "vet_marxa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.passaplats.vet_fora"
+            }
+          ]
+        },
+        {
           "verb": "open",
           "if": {
             "flag": "passaplats_obert",
@@ -1081,6 +1109,16 @@
         },
         {
           "verb": "use",
+          "item": "auriculars_boto",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.boto"
+            }
+          ]
+        },
+        {
+          "verb": "use",
           "item": "caixa_cartro",
           "lines": [
             {
@@ -1141,6 +1179,9 @@
           ],
           "effects": [
             {
+              "takeItem": "auriculars"
+            },
+            {
               "setVar": "sacrifici",
               "value": "auricular"
             },
@@ -1188,7 +1229,82 @@
         },
         {
           "verb": "talkTo",
+          "if": {
+            "flag": "vet_marxa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.dorm_parla"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
           "dialogue": "diu"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "vet_marxa"
+              },
+              {
+                "var": "sacrifici",
+                "op": "==",
+                "value": "caixa"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.look_dorm_caixa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "vet_marxa"
+              },
+              {
+                "var": "sacrifici",
+                "op": "==",
+                "value": "auricular"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.look_dorm_auricular"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "vet_marxa"
+              },
+              {
+                "var": "sacrifici",
+                "op": "==",
+                "value": "pizza"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.look_dorm_pizza"
+            }
+          ]
         },
         {
           "verb": "look",

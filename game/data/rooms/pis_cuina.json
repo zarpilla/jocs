@@ -116,12 +116,19 @@
               "if": {
                 "all": [
                   {
-                    "flag": "pizza_demanada",
+                    "hasItem": "pizza",
+                    "who": "vet",
                     "is": false
                   },
                   {
                     "hasItem": "pizza",
+                    "who": "iri",
                     "is": false
+                  },
+                  {
+                    "var": "sacrifici",
+                    "op": "!=",
+                    "value": "pizza"
                   }
                 ]
               }
@@ -181,12 +188,19 @@
               "if": {
                 "all": [
                   {
-                    "flag": "pizza_demanada",
+                    "hasItem": "pizza",
+                    "who": "vet",
                     "is": false
                   },
                   {
                     "hasItem": "pizza",
+                    "who": "iri",
                     "is": false
+                  },
+                  {
+                    "var": "sacrifici",
+                    "op": "!=",
+                    "value": "pizza"
                   }
                 ]
               }
@@ -570,6 +584,30 @@
             {
               "who": "player",
               "text": "sala.pis_cuina.porta.surt3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_cuina.porta.auricular1",
+              "if": {
+                "var": "sacrifici",
+                "op": "==",
+                "value": "auricular"
+              },
+              "effects": [
+                {
+                  "giveItem": "auriculars",
+                  "who": "iri"
+                }
+              ]
+            },
+            {
+              "who": "iri",
+              "text": "sala.pis_cuina.porta.auricular2",
+              "if": {
+                "var": "sacrifici",
+                "op": "==",
+                "value": "auricular"
+              }
             }
           ],
           "effects": [

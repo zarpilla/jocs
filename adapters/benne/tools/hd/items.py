@@ -380,16 +380,29 @@ def pizza(f):
 
 
 def auricular(f):
-    """L'auricular esquerre de l'Iri: la copa vermella i un tros de diadema."""
-    for i in range(14):
-        a = math.pi * (0.45 + 0.5 * i / 13)
-        f.px(30 + 13 * math.cos(a), 20 - 15 * math.sin(a), PLAST, 4.4)
-        f.px(30 + 13 * math.cos(a), 21 - 15 * math.sin(a), PLAST, 2.6)
-    S = f.E(19, 15, 7.5, 10)
-    f.drop(S)
-    f.fill(S, PLAST, 3.0, rim=(0.8, -1.2))
-    f.fill(f.E(20, 15, 5.6, 8.4), RED, lambda x, y: 4.8 - (x - 15) * 0.25 - (y - 7) * 0.08, rim=(0.8, -1.0))
-    f.fill(f.E(17.6, 15, 2.4, 5.0), DARK, 2.0, rim=None)
+    """Els auriculars de diadema de l'Iri: la diadema negra i les dues copes vermelles."""
+    for i in range(72):
+        a = math.pi * i / 71
+        f.px(24 - 12 * math.cos(a), 17 - 14 * math.sin(a), PLAST, 4.4)
+        f.px(24 - 12 * math.cos(a), 18 - 14 * math.sin(a), PLAST, 2.6)
+    for cx, sx in ((12, 1), (36, -1)):
+        S = f.E(cx, 18, 4.6, 6.6)
+        f.drop(S)
+        f.fill(S, PLAST, 3.0, rim=(0.8, -1.2))
+        f.fill(f.E(cx + sx * 1.2, 18, 3.0, 5.0), RED, lambda x, y: 4.8 - (y - 13) * 0.2, rim=(0.8, -1.0))
+
+
+def auriculars_boto(f):
+    """Dos auriculars de botó de recanvi, negres amb un punt vermell, units per un fil."""
+    for x in range(17, 32):
+        f.px(x, 20 + round(2.5 * math.sin(math.pi * (x - 17) / 14)), PLAST, 2.4)
+    for cx in (14, 34):
+        S = f.E(cx, 13, 4.2, 4.2)
+        f.drop(S)
+        f.fill(S, PLAST, lambda x, y: 3.6 - (y - 9) * 0.15, rim=(0.8, -1.2))
+        f.fill(f.E(cx, 13, 1.6, 1.6), RED, 4.6, rim=None)
+        for y in range(16, 21):
+            f.px(cx + (2 if cx < 24 else -2), y, PLAST, 3.0)
 
 
 # Materials de l'Acte 1
@@ -763,7 +776,7 @@ def clauer(f):
 
 
 ICONS = {fn.__name__: fn for fn in (
-    caixa_cartro, cable_alimentacio, pizza, auricular,
+    caixa_cartro, cable_alimentacio, pizza, auricular, auriculars_boto,
     cable_xarxa, entrepa, clau_casa, tap, recepta, comandament, maleti, ulleres, acreditacions, acreditacio,
     entrepa_suis, entrepa_ballester, targeta, compte_nomines, galleda, cartell, extintor, clau_llibre, clauer,
 )}

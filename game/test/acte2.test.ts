@@ -177,7 +177,7 @@ describe('Acte 2 · el tercer pis', () => {
     p.do('pickUp', 'galleda');
     p.use('galleda', 'camera2');
     p.do('use', 'porta_neteja');
-    expect(texts(p.do('use', 'panell'))).toContain('No el tinc');
+    expect(texts(p.do('use', 'panell'))).toContain('comptant molles');
     expect(n.flag('aliat_neta')).toBe(false);
     expect(n.quests().find((q) => q.id === 'hores_neta')?.status).toBe('inactive');
   });

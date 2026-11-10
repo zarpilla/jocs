@@ -80,6 +80,39 @@
     "TalkU": {
       "loop": true,
       "frameDuration": 140
+    },
+    "SenseAuricularsIdleL": {
+      "loop": true
+    },
+    "SenseAuricularsIdleD": {
+      "loop": true
+    },
+    "SenseAuricularsIdleU": {
+      "loop": true
+    },
+    "SenseAuricularsWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "SenseAuricularsWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "SenseAuricularsWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "SenseAuricularsTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "SenseAuricularsTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "SenseAuricularsTalkU": {
+      "loop": true,
+      "frameDuration": 140
     }
   },
   "defaultVerb": "look",

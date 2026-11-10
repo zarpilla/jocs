@@ -16,7 +16,22 @@
         {
           "who": "iri",
           "text": "sala.aeroport_terminal.intro2",
-          "sound": "auricular"
+          "sound": "auricular",
+          "if": {
+            "var": "sacrifici",
+            "op": "!=",
+            "value": "auricular"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "sala.aeroport_terminal.intro2_mossegat",
+          "sound": "auricular",
+          "if": {
+            "var": "sacrifici",
+            "op": "==",
+            "value": "auricular"
+          }
         },
         {
           "who": "player",

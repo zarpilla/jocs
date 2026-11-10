@@ -13,7 +13,7 @@
   "sync.collaret.reinici2": "La ràdio diu que no. En Ballester torna a la sèrie, mosca, amb la mà a prop de la ràdio.",
   "sync.collaret.reinici3": "El Llibre Major, ofès, torna a començar pel primer codi.",
   "sync.titol": "Ara necessites les dues.",
-  "tub.auriculars": "Si me'l trec, no et sento.",
+  "tub.auriculars": "Si me'ls trec, no et sento.",
   "tub.clau_casa": "Si la perdo, dormim al replà.",
   "tub.clau_llibre.rep": "La clau del Llibre Major. Pesa com trenta anys de guàrdia.",
   "tub.entrepa_ballester.rep": "Ha arribat {objecte}. Vet, d'on surt això?",
@@ -43,5 +43,6 @@
   "ui.missio.completada": "Missió completada: {titol}",
   "ui.missio.fallida": "Missió fallida: {titol}",
   "ui.missio.nova": "Nova missió: {titol}",
-  "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal explorar una mica més."
+  "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal explorar una mica més.",
+  "tub.auriculars_boto": "La Vet ja en porta un. L'altre és el meu recanvi."
 }

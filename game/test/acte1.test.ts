@@ -204,3 +204,68 @@ describe('Acte 1 · la roba de la Vet', () => {
     expect(n.outfitOf('vet')).toBe('AuditoraUlleres');
   });
 });
+
+describe('Acte 1 · revisió de coherència', () => {
+  it("el tap no es pot tornar a en Tomàs abans que en Marcel l'hagi vist (si no, atzucac)", () => {
+    const { n, p, world } = partida();
+    jugarPis(p);
+    p.talk('marcel');
+    p.talk('tomas', 'cafe', 'adeu');
+    p.do('pickUp', 'tap_barra');
+    expect(texts(p.do('give', 'tomas', 'tap'))).toContain("Primer l'ha de veure en Marcel");
+    expect(n.flag('tap_tornat')).toBe(false);
+    expect(world.items('vet')).toContain('tap');
+  });
+
+  it('en Marcel no torna a comptar el que ja ha vist', () => {
+    const { n, p } = partida();
+    jugarPis(p);
+    jugarBar(p);
+    p.do('give', 'marcel', 'recepta');
+    expect(n.getVar('donats')).toBe(3);
+  });
+
+  it('amb la Vet al bar, el passaplats ja no la porta', () => {
+    const { p } = partida();
+    jugarPis(p);
+    p.switchTo('iri');
+    expect(texts(p.do('talkTo', 'passaplats'))).toContain('La Vet és al bar');
+  });
+
+  it("si en Diu es queda els auriculars, els torna mossegats quan la Vet marxa; a l'aeroport, la Vet porta un dels de botó", () => {
+    const { n, p, world } = partida();
+    expect(world.items('iri')).toEqual(expect.arrayContaining(['auriculars', 'auriculars_boto']));
+    const pis = texts(jugarPisAmbLinies(p));
+    expect(pis).toContain('forats de dent');
+    expect(world.items('iri')).toContain('auriculars');
+    jugarBar(p);
+    expect(n.flag('auricular_compartit')).toBe(true);
+    p.switchTo('iri');
+    expect(texts(p.do('look', item('auriculars')))).toContain('forats de dent');
+    expect(texts(p.do('look', item('auriculars_boto')))).toContain("L'altre el porta la Vet");
+  });
+
+  it('mentre en Diu té els auriculars, l\'Iri no els porta (ni al sprite)', () => {
+    const { n, p, world } = partida();
+    p.do('open', 'caixa');
+    p.use('cable_xarxa', 'router');
+    expect(texts(p.use('auriculars_boto', 'diu'))).toContain('recanvi');
+    p.use('auriculars', 'diu');
+    p.use('auriculars', 'diu');
+    expect(world.items('iri')).not.toContain('auriculars');
+    expect(n.outfitOf('iri')).toBe('SenseAuriculars');
+  });
+});
+
+function jugarPisAmbLinies(p: Parameters<typeof jugarPis>[0]) {
+  const lines: { text: string }[] = [];
+  const original = p.do.bind(p);
+  p.do = ((...args: Parameters<typeof original>) => {
+    const r = original(...args);
+    lines.push(...r);
+    return r;
+  }) as typeof p.do;
+  jugarPis(p, { sacrifici: 'auricular' });
+  p.do = original;
+  return lines;
+}

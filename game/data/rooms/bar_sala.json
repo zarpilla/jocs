@@ -27,6 +27,36 @@
         {
           "verb": "give",
           "item": "tap",
+          "if": {
+            "var": "donats",
+            "op": ">=",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.ja_les_he_vist"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "recepta",
+          "if": {
+            "var": "donats",
+            "op": ">=",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.ja_les_he_vist"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "tap",
           "lines": [
             {
               "who": "marcel",
@@ -302,6 +332,20 @@
         {
           "verb": "give",
           "item": "tap",
+          "if": {
+            "flag": "marcel_tap",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tomas.tap_aviat"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "tap",
           "lines": [
             {
               "who": "tomas",
@@ -502,6 +546,21 @@
     "telefon": {
       "name": "sala.bar_sala.telefon.nom",
       "interactions": [
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "tomas_rebost"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.telefon.ocupat"
+            }
+          ]
+        },
         {
           "verb": [
             "talkTo",
