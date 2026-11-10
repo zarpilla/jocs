@@ -86,6 +86,9 @@ FONT = {
     'U': ('#.#', '#.#', '#.#', '#.#', '.#.'), 'V': ('#.#', '#.#', '#.#', '.#.', '.#.'),
     'D': ('##.', '#.#', '#.#', '#.#', '##.'), '?': ('##.', '..#', '.#.', '...', '.#.'),
     '!': ('#', '#', '#', '.', '#'), '.': ('.', '.', '.', '.', '#'), ' ': ('.', '.', '.', '.', '.'),
+    'J': ('..#', '..#', '..#', '#.#', '.#.'), 'H': ('#.#', '#.#', '###', '#.#', '#.#'),
+    '4': ('#.#', '#.#', '###', '..#', '..#'), '5': ('###', '#..', '##.', '..#', '##.'),
+    '8': ('###', '#.#', '###', '#.#', '###'),
 }
 # Lletres grosses, a mà (per a les notes que són sobretot un nom o una xifra)
 BIG = {
@@ -574,9 +577,195 @@ def acreditacio(f):
     _badge(f, 15, 4, SKIN, HAIR)
 
 
+# ─── Acte 2: el BCMU ────────────────────────────────────────────────────────
+CHEESE = M((70, 50, 10), (136, 104, 26), (196, 160, 50), (232, 204, 92), (248, 230, 150), (255, 246, 200))
+HAM = M((70, 20, 30), (130, 44, 56), (186, 84, 92), (222, 130, 134), (244, 178, 176))
+MORT = M((90, 40, 50), (150, 76, 86), (200, 120, 126), (230, 164, 166), (246, 204, 204))
+WRAP = M((20, 30, 50), (40, 64, 104), (70, 110, 170), (120, 160, 214), (190, 216, 244))          # embolcall de màquina, blau
+BUCKET = M((6, 22, 60), (12, 44, 110), (24, 76, 170), (50, 114, 220), (110, 166, 248), (190, 220, 255))
+WARNY = M((60, 40, 6), (130, 92, 10), (200, 150, 20), (240, 196, 40), (255, 228, 100), (255, 248, 190))
+FIRE = M((40, 6, 8), (90, 14, 16), (150, 24, 24), (200, 40, 36), (236, 76, 62), (252, 140, 120))
+CARDW = M((40, 44, 56), (100, 106, 120), (170, 176, 188), (220, 224, 230), (246, 248, 250), (255, 255, 255))
+
+
+def entrepa_suis(f):
+    """L'entrepà de la màquina: mig sandvitx triangular de pa de motlle, de tres quarts: per dalt el pa amb la crosta,
+    i al tall de davant les capes (pa, pernil, formatge amb forats, pa). Amb l'etiqueta del preu."""
+    top = f.P([(6, 14), (30, 3), (42, 14)])                               # la cara de dalt
+    cut = f.R(6, 15, 42, 22)                                              # el tall, de cara
+    f.drop(top | cut)
+    f.fill(top, PAP_C, lambda x, y: 4.6 - (y - 3) * 0.05, rim=None)
+    for (x, y) in top:                                                    # la crosta
+        if (x - 1, y) not in top or (x + 1, y) not in top or (x, y - 1) not in top:
+            f.px(x, y, BREAD, 3.2)
+    rows = [(BREAD, 3.0), (PAP_C, 4.2), (HAM, 3.8), (HAM, 3.0), (CHEESE, 4.4), (CHEESE, 3.6), (PAP_C, 3.8), (BREAD, 2.4)]
+    for i, (mat, l) in enumerate(rows):
+        f.rect(6, 15 + i, 42, 15 + i, mat, lambda x, y, l=l: l - (x - 6) * 0.03)
+    for x in (13, 24, 34):                                                # els forats del formatge
+        f.px(x, 19, CHEESE, 1.8)
+        f.px(x + 1, 20, CHEESE, 2.2)
+    f.rect(6, 15, 6, 22, BREAD, 2.0)
+    f.rect(42, 15, 42, 22, BREAD, 1.6)
+    S = f.R(30, 4, 46, 10)                                                # l'etiqueta del preu de la màquina
+    f.drop(S)
+    f.fill(S, WRAP, 3.0, rim=(0.6, -1.0))
+    f.text(32, 5, '8.50', CARDW, 5.6)
+
+
+def entrepa_ballester(f):
+    """L'entrepà d'en Ballester: una barra embolicada en paper d'alumini, oberta per un cap (mortadel·la)."""
+    S = f.P([(5, 12), (9, 7), (42, 6), (46, 11), (43, 20), (8, 21)])
+    f.drop(S)
+    f.fill(S, FOIL, lambda x, y: 4.6 - (y - 6) * 0.14 + (0.8 if y == 8 else 0), rim=(0.8, -1.4))
+    for (a, b) in (((16, 8), (20, 19)), ((30, 7), (27, 20)), ((38, 8), (41, 18))):   # els plecs, en diagonal
+        n = max(abs(b[0] - a[0]), abs(b[1] - a[1]))
+        for i in range(n + 1):
+            x = round(a[0] + (b[0] - a[0]) * i / n)
+            y = round(a[1] + (b[1] - a[1]) * i / n)
+            f.shade(x, y, -1.4)
+            f.shade(x + 1, y, 1.2)
+    S2 = f.E(9, 14, 4, 6.5)                                              # el cap obert: pa i mortadel·la
+    f.fill(S2, BREAD, lambda x, y: 4.0 - (x - 5) * 0.1, rim=(0.6, -1.0))
+    f.fill(f.E(9, 14, 2.4, 4.6), MORT, lambda x, y: 3.6 - (y - 10) * 0.1, rim=None)
+    f.dots([(8, 12), (10, 15), (9, 17)], PAP_C, 4.6)                     # els daus de greix
+
+
+def targeta(f):
+    """La targeta de planta de la Rius: plàstic blanc, banda blau marí del banc, la foto (enfadada) i el xip."""
+    S = f.P([(8, 6), (41, 4), (42, 22), (9, 24)])
+    f.drop(S)
+    f.fill(S, CARDW, lambda x, y: 4.6 - (x - 8) * 0.02 - (y - 4) * 0.03, rim=(0.8, -1.2))
+    f.fill(f.P([(8, 7), (41, 5), (41, 9), (8, 11)]), NAVY, 3.0, rim=None)   # la banda
+    f.dots([(12 + i, 8 - i // 9) for i in range(0, 26, 3)], SUNY, 4.2)
+    f.rect(11, 13, 18, 21, CYAN, 3.4)                                    # la foto
+    f.fill(f.E(14, 18, 2.2, 2.6), SKIN, 3.6, rim=None)
+    f.rect(12, 14, 17, 15, HAIR, 2.4)
+    f.dots([(13, 17), (15, 17)], DARK, 1.0)                              # les celles arrufades
+    f.rect(13, 20, 15, 20, DARK, 1.6)
+    f.rect(31, 13, 37, 18, GOLDK, 4.0, rim=(0.6, -1.0))                  # el xip
+    f.rect(34, 13, 34, 18, GOLDK, 2.4)
+    f.rect(31, 15, 37, 15, GOLDK, 2.4)
+    for k in range(2):
+        f.rect(21, 14 + k * 3, 28 - k * 2, 14 + k * 3, INKG, 1.4)
+    f.text(21, 19, '3', RED, 3.4)                                        # el tercer pis
+    f.shade(10, 12, 1.6)
+
+
+def compte_nomines(f):
+    """El compte de les nòmines: un full de llibreta arrencat, amb el número escrit a mà i subratllat dues vegades."""
+    S = torn(f.P([(9, 3), (40, 5), (39, 25), (8, 23)]), 't', seed=4, depth=1)
+    paper(f, S, PAP_C, 4.4, w=32, h=22)
+    for y in range(8, 25, 3):                                            # el ratllat
+        for x in range(10, 39):
+            if (x, y) in S:
+                f.px(x, y, RULE, 1.4)
+    f.text(11, 7, 'ES76', INKB, 1.4)
+    f.text(11, 13, '2100', INKB, 1.4)
+    f.text(30, 13, '48', INKB, 1.4)
+    f.text(11, 19, '0099', INKB, 1.4)
+    f.text(28, 19, '!', STAMP, 2.0)
+    f.scrib(11, 34, 25, INKB, 1.6, seed=6, dens=1.0, tall=0)
+    f.fill(f.P([(33, 3), (40, 5), (38, 10)]), PAP_C, 2.6, rim=(0.4, -1.0))   # el cantó doblegat
+
+
+def galleda(f):
+    """La galleda blava de fregar: un tronc de con amb la nansa d'acer i l'escorredor."""
+    S = f.P([(11, 8), (37, 8), (34, 25), (14, 25)])
+    f.drop(S)
+    f.fill(S, BUCKET, lambda x, y: 3.6 + 1.6 * math.cos((x - 19) / 11) - 1.0 - (y - 8) * 0.03, rim=(0.6, -1.4))
+    f.fill(f.E(24, 8, 13.5, 2.6), BUCKET, 4.4, rim=(0.6, -0.8))           # la vora
+    f.fill(f.E(24, 8, 11.5, 1.6), BUCKET, 1.4, rim=None)                  # per dins, fosc
+    f.rect(12, 12, 36, 12, BUCKET, 2.4)                                   # les nervadures
+    f.rect(14, 21, 34, 21, BUCKET, 2.4)
+    for i in range(29):                                                   # la nansa
+        x = 10 + i
+        y = round(8 - 6 * math.sin(math.pi * i / 28))
+        f.px(x, y, ACER, 4.4 if i < 14 else 3.2)
+    f.dots([(10, 8), (38, 8)], ACER, 2.4)
+    f.rect(32, 4, 40, 7, PLAST, 3.4, rim=(0.6, -1.0))                     # l'escorredor groc
+    f.rect(33, 5, 39, 6, WARNY, 3.6)
+
+
+def cartell(f):
+    """El cartell de «Neteja en curs», plegat: dues ales grogues en forma de A, amb el ninot que rellisca."""
+    L = f.P([(8, 24), (20, 3), (24, 3), (16, 24)])                       # l'ala del darrere
+    f.fill(L, WARNY, lambda x, y: 2.6 - (y - 3) * 0.02, rim=(0.4, -1.0))
+    S = f.P([(15, 25), (23, 2), (33, 2), (43, 25)])                      # l'ala del davant
+    f.drop(S)
+    f.fill(S, WARNY, lambda x, y: 4.4 - (x - 16) * 0.03, rim=(0.8, -1.4))
+    f.rect(23, 1, 33, 2, PLAST, 2.6, rim=(0.6, -0.8))                    # la nansa
+    f.fill(f.E(31, 7, 1.6, 1.6), DARK, 1.0, rim=None)                    # el ninot que rellisca, ben gros
+    for a, b in (((30, 9), (27, 14)), ((27, 14), (31, 17)), ((31, 17), (34, 15)), ((27, 14), (23, 17)),
+                 ((29, 11), (34, 10)), ((29, 11), (25, 10))):
+        n = max(abs(b[0] - a[0]), abs(b[1] - a[1]))
+        for i in range(n + 1):
+            f.px(round(a[0] + (b[0] - a[0]) * i / n), round(a[1] + (b[1] - a[1]) * i / n), DARK, 1.0)
+    f.rect(21, 19, 37, 19, DARK, 1.2)                                    # el terra mullat
+    f.dots([(23, 21), (27, 21), (31, 21), (35, 21), (25, 22), (33, 22)], CYAN, 3.0)
+
+
+def extintor(f):
+    """L'extintor vermell, ajagut: el cos, la vàlvula d'acer amb la maneta i la mànega negra."""
+    f.drop(f.R(8, 8, 37, 21))
+    f.hcyl(10, 36, 14.5, 6.5, FIRE, 3.0, amp=2.6, spec=1.6)
+    f.fill(f.E(9, 14.5, 2.4, 6.5), FIRE, 2.0, rim=None)                   # el cul arrodonit
+    f.fill(f.E(37, 14.5, 2, 6.3), FIRE, 3.4, rim=None)
+    f.rect(17, 10, 27, 18, CARDW, 4.2, rim=(0.4, -0.8))                   # l'etiqueta
+    f.rect(18, 11, 26, 12, FIRE, 3.0)
+    f.dots([(19 + i, 15) for i in range(0, 8, 2)] + [(19 + i, 17) for i in range(0, 6, 2)], INKG, 1.4)
+    f.hcyl(39, 43, 14.5, 2.4, ACER, 4.0)                                  # la vàlvula
+    f.rect(40, 9, 46, 10, ACER, 4.4, rim=(0.6, -1.0))                     # la maneta
+    f.px(45, 11, ACER, 2.4)
+    f.dots([(42, 12)], SUNY, 4.4)                                         # el passador groc
+    for i in range(16):                                                   # la mànega
+        f.px(42 - i, 20 + round(math.sin(i / 3) * 1.6), DARK, 2.6)
+        f.px(42 - i, 21 + round(math.sin(i / 3) * 1.6), DARK, 1.6)
+
+
+def clau_llibre(f):
+    """La clau del Llibre Major: grossa, antiga, de llautó, amb l'ull treballat i la cadena del collaret."""
+    for i in range(12):                                                   # la cadena
+        x, y = 3 + i * 1.5, 3 + round(math.sin(i / 2.2) * 2) + i * 0.4
+        f.ring(x, y, 1.2, 1.0, BRASS, 4.0 if i % 2 else 2.8, th=0.8)
+    S = f.E(14, 14, 6.5, 6.5)                                             # l'ull
+    f.drop(S)
+    f.fill(S, GOLDK, lambda x, y: 4.4 - (x - 8) * 0.12 - (y - 8) * 0.12, rim=(0.8, -1.2))
+    f.fill(f.E(14, 14, 3.4, 3.4), DARK, 0.4, rim=None)
+    f.fill(f.E(14, 14, 1.4, 1.4), GOLDK, 3.6, rim=None)                   # el trèvol del mig
+    for (x, y) in ((14, 10), (10, 14), (18, 14), (14, 18)):
+        f.px(x, y, GOLDK, 2.4)
+    S = f.R(20, 12, 44, 16)                                               # la tija, rodona
+    f.drop(S)
+    f.hcyl(20, 44, 14, 2.4, GOLDK, 3.4)
+    f.rect(21, 11, 23, 17, GOLDK, 3.0, rim=(0.6, -1.0))                   # l'anell del coll
+    S = f.R(36, 17, 44, 24)                                               # el paletó, amb les guardes
+    f.drop(S)
+    f.fill(S, GOLDK, lambda x, y: 3.6 - (y - 17) * 0.1, rim=(0.6, -1.2))
+    for (x, y) in ((38, 19), (38, 20), (41, 22), (41, 23), (43, 19)):
+        f.px(x, y, DARK, 0.6)
+
+
+def clauer(f):
+    """El clauer turístic «Visiteu Ginebra»: una anella sense cap clau i una placa d'esmalt amb la creu suïssa."""
+    f.ring(10, 11, 6, 6, ACER, 4.2, th=1.4)                               # l'anella, buida
+    f.limb((15, 14), (19, 15), 0.8, 0.8, ACER, 3.4, amp=1.4)             # la cadeneta
+    S = f.R(19, 5, 47, 23)                                                # la placa
+    f.drop(S)
+    f.fill(S, NAVY, lambda x, y: 3.2 - (y - 5) * 0.04, rim=(0.8, -1.2))
+    f.rect(20, 6, 46, 6, SUNY, 3.6)                                       # el filet daurat
+    f.rect(20, 22, 46, 22, SUNY, 2.8)
+    f.text(20, 8, 'GINEBRA', CARDW, 5.0)
+    S = f.R(29, 14, 37, 20)                                               # l'escut vermell amb la creu
+    f.fill(S, RED, 3.6, rim=(0.6, -0.8))
+    f.rect(32, 15, 34, 19, CARDW, 5.0)
+    f.rect(30, 16, 36, 18, CARDW, 5.0)
+    f.shade(20, 7, 1.6)
+
+
 ICONS = {fn.__name__: fn for fn in (
     caixa_cartro, cable_alimentacio, pizza, auricular,
     cable_xarxa, entrepa, clau_casa, tap, recepta, comandament, maleti, ulleres, acreditacions, acreditacio,
+    entrepa_suis, entrepa_ballester, targeta, compte_nomines, galleda, cartell, extintor, clau_llibre, clauer,
 )}
 ICONS['auriculars'] = auricular   # l'objecte de l'Iri es diu «auriculars»
 

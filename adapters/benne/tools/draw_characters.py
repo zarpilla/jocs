@@ -232,6 +232,48 @@ def gat(cid='diu'):
     })
 
 
+def secundari2(cid):
+    """Un secundari de l'Acte 2 (hd/personatges.py, NPCS2): Idle i Talk en D, L i U, i una etiqueta per a cada
+    variant d'estat (`appearance` a characters.json), de cara, amb la boca que es mou."""
+    variants = personatges.NPCS2[cid]
+    tags = []
+    for f in 'DLU':
+        tags.append((f'Idle{f}', [personatges.npc2(cid, f)]))
+        tags.append((f'Talk{f}', [personatges.npc2(cid, f), personatges.npc2(cid, f, talk=True)]))
+    for v in variants:
+        if v:
+            tags.append((v, [personatges.npc2(cid, 'D', variant=v)] * 3 + [personatges.npc2(cid, 'D', variant=v, talk=True)]))
+    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else {'frameDuration': 400} if t in variants else {})}
+             for t, _ in tags}
+    w, h = tags[0][1][0].size
+    fx, fy = personatges.big2_feet(cid) if cid in personatges.BIG else (25, 83)
+    dx = fx - 25
+    write(cid, tags, (w, h), {
+        'walkSpeed': 70, 'walkToPoint': {'x': 44 + dx, 'y': fy}, 'talkPoint': {'x': fx, 'y': -2}, 'feet': {'x': fx, 'y': fy},
+        'collider': {'points': [{'x': 15 + dx, 'y': 2}, {'x': 35 + dx, 'y': 2}, {'x': 37 + dx, 'y': 50}, {'x': 33 + dx, 'y': fy + 2},
+                                {'x': 16 + dx, 'y': fy + 2}, {'x': 12 + dx, 'y': 50}]},
+        'animations': anims, 'defaultVerb': 'talkTo',
+    })
+
+
+def robot(cid='neta'):
+    """NETA-3: Idle (el llum de l'antena parpelleja i els raspalls giren) i Talk en D, L i U; 'Descansa' i 'Molles'."""
+    N = personatges.neta
+    tags = []
+    for f in 'DLU':
+        tags.append((f'Idle{f}', [N(f, k=k) for k in range(8)]))
+        tags.append((f'Talk{f}', [N(f, k=0), N(f, talk=True, k=1)]))
+    tags.append(('Descansa', [N('D', estat='descansa', k=k) for k in range(2)]))
+    tags.append(('Molles', [N('D', estat='molles', k=k) for k in range(4)]))
+    dur = {'Descansa': 900, 'Molles': 220}
+    anims = {t: {'loop': True, 'frameDuration': dur.get(t, 160 if t.startswith('Talk') else 180)} for t, _ in tags}
+    write(cid, tags, (personatges.NW, personatges.NH), {
+        'walkSpeed': 50, 'walkToPoint': {'x': 44, 'y': 42}, 'talkPoint': {'x': 20, 'y': -2}, 'feet': {'x': 20, 'y': 42},
+        'collider': {'points': [{'x': 6, 'y': 4}, {'x': 34, 'y': 4}, {'x': 36, 'y': 43}, {'x': 4, 'y': 43}]},
+        'animations': anims, 'defaultVerb': 'talkTo',
+    })
+
+
 def main():
     """Els personatges de Suma Zero amb art definitiu (els altres surten amb la plantilla de Benne)."""
     protagonist('iri', personatges.iri)
@@ -239,6 +281,9 @@ def main():
     gat('diu')
     for cid in personatges.NPCS:
         secundari(cid)
+    for cid in personatges.NPCS2:
+        secundari2(cid)
+    robot('neta')
 
 
 if __name__ == '__main__':

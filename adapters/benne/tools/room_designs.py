@@ -684,6 +684,101 @@ def cinematica(bg):
             'bg': bg, 'props': {}, 'etiquetes': False}
 
 
+# ─── Acte 2: la seu del BCMU ───────────────────────────────────────────────
+# Geometria definitiva (l'art és a hd/rooms/bcmu_*.py, amb la paleta comuna de hd/rooms/bcmu.py).
+
+def bcmu_bg(c):
+    room_base(c, (200, 194, 180), (170, 160, 146), (150, 140, 130), base=(120, 110, 100))
+
+
+BCMU_VESTIBUL = {
+    'era': 'vet',
+    'things': {
+        'sortida': {'rect': (6, 40, 56, 150), 'walk': (40, 186)},
+        'plantes': {'rect': (62, 98, 86, 150), 'walk': (74, 186)},
+        'font': {'rect': (96, 104, 170, 156), 'walk': (134, 190)},
+        'retrat': {'rect': (184, 26, 236, 92), 'walk': (210, 186)},
+        'cartell': {'rect': (250, 18, 360, 34), 'walk': (300, 186)},
+        'recepcio': {'rect': (262, 100, 350, 150), 'walk': (306, 188)},
+        'tub': {'rect': (354, 70, 372, 112), 'walk': (362, 186)},
+        'maquina': {'rect': (380, 64, 414, 150), 'walk': (396, 188)},
+        'ascensor': {'rect': (424, 38, 472, 150), 'walk': (448, 186)},
+    },
+    'spawns': {'vet': (150, 194), 'bonfill': (236, 182)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+BCMU_MOLL = {
+    'era': 'iri',
+    'things': {
+        'furgonetes': {'rect': (20, 70, 170, 156), 'walk': (100, 190)},
+        'tecnics': {'rect': (180, 96, 250, 150), 'walk': (214, 188)},
+        'maquina': {'rect': (300, 70, 334, 150), 'walk': (316, 188)},
+        'ascensor': {'rect': (400, 40, 460, 150), 'walk': (430, 186)},
+    },
+    'spawns': {'iri': (120, 196), 'rius': (362, 186)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+BCMU_PASSADIS = {
+    'era': 'iri',
+    'things': {
+        'porta_escala': {'rect': (14, 50, 60, 150), 'walk': (38, 186)},
+        'camera1': {'rect': (110, 20, 132, 38), 'walk': (122, 186)},
+        'porta_neteja': {'rect': (150, 56, 200, 150), 'walk': (176, 186)},
+        'cartell': {'rect': (212, 120, 232, 152), 'walk': (222, 188)},
+        'galleda': {'rect': (238, 134, 256, 152), 'walk': (248, 190)},
+        'extintor': {'rect': (266, 96, 280, 130), 'walk': (274, 186)},
+        'tub': {'rect': (294, 70, 312, 112), 'walk': (304, 186)},
+        'porta_vip': {'rect': (326, 46, 390, 150), 'walk': (358, 188)},
+        'ascensor': {'rect': (402, 50, 438, 150), 'walk': (420, 186)},
+        'camera2': {'rect': (446, 20, 468, 38), 'walk': (452, 186)},
+    },
+    'spawns': {'iri': (100, 196), 'neta': (196, 190)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+BCMU_ESCOMBRARIES = {
+    'era': 'iri',
+    'things': {
+        'porta': {'rect': (14, 50, 60, 150), 'walk': (40, 186)},
+        'bosses': {'rect': (70, 118, 150, 156), 'walk': (110, 190)},
+        'conducte': {'rect': (160, 50, 210, 130), 'walk': (186, 186)},
+        'llibre': {'rect': (236, 36, 340, 152), 'walk': (290, 188)},
+        'tub': {'rect': (352, 60, 372, 110), 'walk': (362, 186)},
+        'panell': {'rect': (392, 70, 422, 110), 'walk': (406, 186)},
+    },
+    'spawns': {'iri': (120, 196)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+BCMU_SEGURETAT = {
+    'era': 'vet',
+    'things': {
+        'tub': {'rect': (24, 64, 44, 108), 'walk': (36, 186)},
+        'ascensor': {'rect': (56, 40, 108, 150), 'walk': (84, 186)},
+        'monitors': {'rect': (130, 18, 340, 92), 'walk': (236, 186)},
+        'got': {'rect': (174, 106, 184, 118), 'walk': (180, 188)},
+        'entrepa': {'rect': (196, 110, 216, 118), 'walk': (206, 188)},
+        'clauer': {'rect': (226, 111, 238, 118), 'walk': (232, 188)},
+        'collaret': {'rect': (252, 110, 268, 118), 'walk': (260, 188)},
+        'radio': {'rect': (392, 92, 406, 112), 'walk': (396, 188)},
+    },
+    'spawns': {'vet': (150, 196), 'ballester': (372, 186)},
+    'walkable': WALK_STD,
+    'bg': bcmu_bg,
+    'props': {},
+}
+
+
 # Cada sala amb disseny propi: id de la sala → disseny (vegeu el principi del fitxer).
 DESIGNS = {
     'pis_estudi': PIS_ESTUDI,
@@ -696,4 +791,9 @@ DESIGNS = {
     'proleg_ginebra': cinematica(ginebra_bg),
     'avio': cinematica(avio_bg),
     'portada': cinematica(portada_bg),
+    'bcmu_vestibul': BCMU_VESTIBUL,
+    'bcmu_moll': BCMU_MOLL,
+    'bcmu_passadis': BCMU_PASSADIS,
+    'bcmu_escombraries': BCMU_ESCOMBRARIES,
+    'bcmu_seguretat': BCMU_SEGURETAT,
 }

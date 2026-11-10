@@ -1,0 +1,471 @@
+{
+  "id": "bcmu_passadis",
+  "name": "El passadís del tercer pis",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_neteja",
+      "active": true,
+      "description": "porta de neteja",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 150,
+          "y": 56
+        },
+        {
+          "x": 200,
+          "y": 56
+        },
+        {
+          "x": 200,
+          "y": 150
+        },
+        {
+          "x": 150,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 176,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 175,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "camera1",
+      "active": true,
+      "description": "càmera",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 110,
+          "y": 20
+        },
+        {
+          "x": 132,
+          "y": 20
+        },
+        {
+          "x": 132,
+          "y": 38
+        },
+        {
+          "x": 110,
+          "y": 38
+        }
+      ],
+      "walkToPoint": {
+        "x": 122,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 121,
+        "y": 38
+      }
+    },
+    {
+      "id": "camera2",
+      "active": true,
+      "description": "càmera del racó",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 446,
+          "y": 20
+        },
+        {
+          "x": 468,
+          "y": 20
+        },
+        {
+          "x": 468,
+          "y": 38
+        },
+        {
+          "x": 446,
+          "y": 38
+        }
+      ],
+      "walkToPoint": {
+        "x": 452,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 457,
+        "y": 38
+      }
+    },
+    {
+      "id": "porta_escala",
+      "active": true,
+      "description": "porta de l'escala",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 14,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 150
+        },
+        {
+          "x": 14,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 38,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 37,
+        "y": 150
+      }
+    },
+    {
+      "id": "porta_vip",
+      "active": true,
+      "description": "porta VIP",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 326,
+          "y": 46
+        },
+        {
+          "x": 390,
+          "y": 46
+        },
+        {
+          "x": 390,
+          "y": 150
+        },
+        {
+          "x": 326,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 358,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 358,
+        "y": 150
+      }
+    },
+    {
+      "id": "tub",
+      "active": true,
+      "description": "estació del tub",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 294,
+          "y": 70
+        },
+        {
+          "x": 312,
+          "y": 70
+        },
+        {
+          "x": 312,
+          "y": 112
+        },
+        {
+          "x": 294,
+          "y": 112
+        }
+      ],
+      "walkToPoint": {
+        "x": 304,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 303,
+        "y": 112
+      }
+    },
+    {
+      "id": "ascensor",
+      "active": true,
+      "description": "ascensor de servei",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 402,
+          "y": 50
+        },
+        {
+          "x": 438,
+          "y": 50
+        },
+        {
+          "x": 438,
+          "y": 150
+        },
+        {
+          "x": 402,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 420,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 420,
+        "y": 150
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "galleda",
+      "tag": "galleda",
+      "animations": {
+        "galleda": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 238,
+            "y": 134
+          },
+          {
+            "x": 256,
+            "y": 134
+          },
+          {
+            "x": 256,
+            "y": 152
+          },
+          {
+            "x": 238,
+            "y": 152
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 248,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 247,
+        "y": 152
+      },
+      "description": "galleda"
+    },
+    {
+      "id": "cartell",
+      "tag": "cartell",
+      "animations": {
+        "cartell": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 212,
+            "y": 120
+          },
+          {
+            "x": 232,
+            "y": 120
+          },
+          {
+            "x": 232,
+            "y": 152
+          },
+          {
+            "x": 212,
+            "y": 152
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 222,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 222,
+        "y": 152
+      },
+      "description": "cartell"
+    },
+    {
+      "id": "extintor",
+      "tag": "extintor",
+      "animations": {
+        "extintor": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 266,
+            "y": 96
+          },
+          {
+            "x": 280,
+            "y": 96
+          },
+          {
+            "x": 280,
+            "y": 130
+          },
+          {
+            "x": 266,
+            "y": 130
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 274,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 273,
+        "y": 130
+      },
+      "description": "extintor"
+    },
+    {
+      "id": "camera1_tapada",
+      "tag": "camera1_tapada",
+      "animations": {
+        "camera1_tapada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "camera2_tapada",
+      "tag": "camera2_tapada",
+      "animations": {
+        "camera2_tapada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cameres",
+      "tag": "cameres",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cameres": {
+          "loop": true,
+          "frameDuration": 320
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 100,
+      "y": 196,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "neta-1",
+      "definition": "neta/neta.character.json",
+      "x": 196,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-veu",
+      "definition": "vet/vet.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

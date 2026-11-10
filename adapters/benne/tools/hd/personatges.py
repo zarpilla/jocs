@@ -579,3 +579,430 @@ def vet(facing, walk=None, talk=False, roba='', ulleres=False):
         for pattern, x, y, col in prints:
             stamp(img, pattern, x, y + b, col)
     return img
+
+
+# ─── Secundaris de l'Acte 2: la seu del BCMU ───────────────────────────────
+# Cada un té una espec de base i les variants d'estat (`appearance` a game/data/characters.json): el nom de
+# l'etiqueta és el de la variant. Les postures (mòbil a la mà, mà a la corbata o a la ràdio) es fan amb el
+# ganxo `pose` de `person`, que mou els braços abans de dibuixar.
+
+from hd.characters import HAIR_PLAT, SKIN_PALE as _SKIN_PALE, EYE_W, MOUTH, front_face, side_face  # noqa: E402
+
+PHONE = M((6, 6, 10), (16, 16, 22), (30, 30, 38), (48, 48, 58))
+PHONE_LIT = (110, 210, 240)
+TIE = M((30, 6, 12), (60, 12, 20), (96, 20, 28), (134, 32, 36), (170, 52, 48))
+SUIT_DIR = M((6, 6, 12), (12, 12, 22), (20, 20, 34), (30, 30, 48), (44, 44, 64), (62, 62, 84), dith=0.0)
+HIVIS = M((60, 70, 6), (120, 140, 10), (180, 210, 20), (220, 244, 60), (244, 255, 140), dith=0.0)
+OVERALL = M((14, 22, 40), (24, 38, 64), (36, 56, 90), (52, 76, 116), (72, 100, 142), (98, 128, 166), dith=0.0)
+RADIO = M((4, 4, 6), (12, 12, 16), (24, 24, 30), (40, 40, 48))
+CHAIN = M((60, 40, 14), (120, 86, 28), (190, 148, 56), (240, 210, 120))
+
+
+def _arm_front(p, i, elbow, wrist):
+    """Mou el braç `i` de cara (0 = el de l'esquerra de la imatge)."""
+    b = p.bob
+    p.elbow[i] = (elbow[0], elbow[1] + b)
+    p.wrist[i] = (wrist[0], wrist[1] + b)
+
+
+def _arm_side(p, elbow, wrist):
+    """Mou el braç del davant de perfil."""
+    b = p.bob
+    s = p.arms[0][0]
+    p.arms[0] = (s, (elbow[0], elbow[1] + b), (wrist[0], wrist[1] + b))
+
+
+def pose_phone(p):
+    """El mòbil a la mà, davant del pit, mirant-lo."""
+    if p.f == 'D':
+        _arm_front(p, 1, (34.5, 42), (29.0, 41.5))
+    elif p.f == 'L':
+        _arm_side(p, (25.0, 41), (19.5, 38.5))
+
+
+def pose_collar(p):
+    """La mà a la corbata (o al coll)."""
+    if p.f == 'D':
+        _arm_front(p, 1, (33.5, 39), (26.5, 31.5))
+    elif p.f == 'L':
+        _arm_side(p, (24.0, 39), (20.0, 31.0))
+
+
+def pose_radio(p):
+    """La mà a la ràdio de l'espatlla (l'esquerra de la imatge, de cara; la del davant, de perfil)."""
+    if p.f == 'D':
+        _arm_front(p, 0, (12.0, 38), (16.5, 30.0))
+    elif p.f == 'L':
+        _arm_side(p, (23.0, 38), (25.0, 29.0))
+
+
+def phone_in_hand(fg, p, spec):
+    """El mòbil, a la mà moguda per `pose_phone`, amb la pantalla encesa (la llum li puja a la cara de qui el mira)."""
+    if p.f == 'D':
+        wx, wy = p.wrist[1]
+        x0, y0 = round(wx - 3), round(wy - 4)
+        fg.poly([(x0, y0), (x0 + 5, y0), (x0 + 5, y0 + 8), (x0, y0 + 8)], PHONE, 1.2)
+        for y in range(y0 + 1, y0 + 6):
+            for x in range(x0 + 1, x0 + 4):
+                fg.px(x, y, PHONE_LIT if (x + y) % 3 else (200, 240, 255), 0)
+        fg.ell(wx - 0.5, wy + 4.0, 2.2, 1.8, spec['skin'], 2.8, amp=1.4)        # els dits, a sota
+    elif p.f == 'L':
+        wx, wy = p.arms[0][2]
+        x0, y0 = round(wx - 4), round(wy - 4)
+        fg.poly([(x0, y0), (x0 + 3, y0), (x0 + 3, y0 + 7), (x0, y0 + 7)], PHONE, 1.2)
+        for y in range(y0 + 1, y0 + 5):
+            fg.px(x0 + 1, y, PHONE_LIT, 0)
+        fg.ell(wx - 0.4, wy + 2.4, 2.0, 2.0, spec['skin'], 2.8, amp=1.4)
+
+
+def brow_raised(fg, p, spec):
+    """Una cella arquejada (la de la dreta de la imatge): la cella ben amunt i l'ull, obert de cop."""
+    hx, hy = p.head
+    ey = int(hy + 0.5)
+    brow = (120, 116, 126)
+    S = spec['skin']
+    if p.f == 'D':
+        xr = int(hx + 2.5)
+        for x in (xr - 1, xr, xr + 1, xr + 2):
+            fg.px(x, ey - 3, S, 3.0)
+        fg.px(xr - 1, ey - 4, brow, 0); fg.px(xr, ey - 5, brow, 0); fg.px(xr + 1, ey - 5, brow, 0); fg.px(xr + 2, ey - 4, brow, 0)
+        fg.px(xr, ey - 1, (34, 22, 30), 0); fg.px(xr + 1, ey - 1, (34, 22, 30), 0)
+        fg.px(xr, ey, (70, 90, 120), 0); fg.px(xr + 1, ey, EYE_W, 0)
+    elif p.f == 'L':
+        ex = int(hx - 3.5)
+        fg.px(ex - 1, ey - 3, S, 3.0); fg.px(ex, ey - 3, S, 3.0)
+        fg.px(ex - 1, ey - 4, brow, 0); fg.px(ex, ey - 5, brow, 0); fg.px(ex + 1, ey - 4, brow, 0)
+        fg.px(ex, ey, (70, 90, 120), 0); fg.px(ex - 1, ey, EYE_W, 0)
+
+
+def wide_smile(fg, p, spec):
+    """El somriure del Director: massa ample, amb dents."""
+    hx, hy = p.head
+    my = int(hy + 0.5) + 5
+    nx = int(hx)
+    if p.f == 'D':
+        for x in range(nx - 3, nx + 4):
+            fg.px(x, my, EYE_W if abs(x - nx) < 3 else MOUTH, 0)
+        fg.px(nx - 3, my - 1, MOUTH, 0); fg.px(nx + 3, my - 1, MOUTH, 0)
+        fg.px(nx - 2, my + 1, MOUTH, 0); fg.px(nx + 2, my + 1, MOUTH, 0)
+        for x in range(nx - 1, nx + 2):
+            fg.px(x, my + 1, MOUTH, 0)
+    elif p.f == 'L':
+        mx = int(hx - 5.5)
+        fg.px(mx, my, EYE_W, 0); fg.px(mx + 1, my, EYE_W, 0); fg.px(mx + 2, my - 1, MOUTH, 0)
+        fg.px(mx, my + 1, MOUTH, 0); fg.px(mx + 1, my + 1, MOUTH, 0)
+
+
+def frown(fg, p, spec):
+    """Celles avall cap al nas (mal humor) i la boca tensa."""
+    hx, hy = p.head
+    ey = int(hy + 0.5)
+    brow = spec.get('brow', (40, 24, 28))
+    S = spec['skin']
+    if p.f == 'D':
+        xl, xr = int(hx - 3.5), int(hx + 2.5)
+        for x, y in ((xl - 1, ey - 3), (xl, ey - 3), (xl + 1, ey - 2), (xr, ey - 2), (xr + 1, ey - 3), (xr + 2, ey - 3)):
+            fg.px(x, y, brow, 0)
+        fg.px(xl - 1, ey - 2, S, 3.0); fg.px(xr + 2, ey - 2, S, 3.0)
+        if not p.talk:
+            nx = int(hx)
+            for x in (nx - 1, nx, nx + 1):
+                fg.px(x, ey + 5, MOUTH, 0)
+    elif p.f == 'L':
+        ex = int(hx - 3.5)
+        fg.px(ex - 1, ey - 2, brow, 0); fg.px(ex, ey - 3, brow, 0); fg.px(ex + 1, ey - 3, brow, 0)
+
+
+def smile(fg, p, spec):
+    hx, hy = p.head
+    my = int(hy + 0.5) + 5
+    nx = int(hx)
+    if p.f == 'D' and not p.talk:
+        fg.px(nx - 2, my - 1, MOUTH, 0); fg.px(nx + 2, my - 1, MOUTH, 0)
+        for x in (nx - 1, nx, nx + 1):
+            fg.px(x, my, MOUTH, 0)
+    elif p.f == 'L' and not p.talk:
+        mx = int(hx - 5.5)
+        fg.px(mx, my, MOUTH, 0); fg.px(mx + 1, my, MOUTH, 0); fg.px(mx + 2, my - 1, MOUTH, 0)
+
+
+def dir_torso(fg, p, spec):
+    """L'americana del Director: camisa blanca, corbata granat i un pin d'or a la solapa."""
+    b = p.bob
+    hx = 24.5
+    if p.f == 'D':
+        for y in range(28 + b, 37 + b):
+            half = (37 + b - y) * 0.45
+            for x in range(int(round(hx - half)), int(round(hx + half)) + 1):
+                fg.px(x, y, SHIRT, 2.6 if abs(x - hx) < half - 0.5 else 1.8)
+        for y in range(29 + b, 38 + b):
+            d = (38 + b - y) * 0.45 + 1
+            fg.shade(hx - d, y, 1.0, SUIT_DIR)
+            fg.shade(hx + d, y, -0.8, SUIT_DIR)
+        fg.px(hx - 0.5, 28 + b, TIE, 3.0); fg.px(hx + 0.5, 28 + b, TIE, 2.4)
+        for y in range(29 + b, 37 + b):
+            fg.px(hx, y, TIE, 2.6 if y < 34 + b else 2.0)
+        fg.px(hx - 6, 32 + b, (230, 190, 80), 0)                                  # el pin del banc
+        fg.px(hx, 39 + b, SHOE_BLACK, 3.0)
+        for y in range(40 + b, 48 + b):
+            fg.shade(hx, y, -1.0, SUIT_DIR)
+    elif p.f == 'L':
+        for y in range(28 + b, 33 + b):
+            fg.px(19.5, y, SHIRT, 2.4)
+        fg.px(19.5, 30 + b, TIE, 2.4); fg.px(19.5, 31 + b, TIE, 2.4)
+
+
+def slick_hair(fg, p, spec):
+    """Cabell platí pentinat enrere, amb brillantina (una franja de llum)."""
+    hair_cap(HAIR_PLAT, fringe=0.4)(fg, p, spec)
+    hx, hy = p.head
+    if p.f == 'D':
+        for x in range(int(hx - 4), int(hx + 3)):
+            fg.shade(x, hy - 6.5 + abs(x - hx) * 0.2, 1.2, HAIR_PLAT)
+    elif p.f == 'L':
+        for x in range(int(hx - 3), int(hx + 5)):
+            fg.shade(x, hy - 6.8, 1.2, HAIR_PLAT)
+
+
+def _director(extra=None, pose=None, over=None):
+    hk = {'hair': hooks(slick_hair, wide_smile, *([extra] if extra else [])), 'torso': dir_torso}
+    if over:
+        hk['over'] = over
+    spec = {'skin': _SKIN_PALE, 'legs': SUIT_DIR, 'top': SUIT_DIR, 'shoes': SHOE_BLACK, 'closed': True,
+            'brow': (150, 148, 160), 'hooks': hk}
+    if pose:
+        spec['pose'] = pose
+    return spec
+
+
+def rius_vest(fg, p, spec):
+    """L'armilla reflectant de la subcontracta: les dues franges grises i el logotip a l'esquena."""
+    b = p.bob
+    if p.f in ('D', 'U'):
+        for y in (40 + b, 45 + b):
+            for x in range(15, 35):
+                fg.shade(x, y, 2.2, HIVIS)
+                fg.shade(x, y + 1, 2.2, HIVIS)
+        if p.f == 'D':
+            for y in range(28 + b, 50 + b):
+                fg.shade(24.5, y, -1.6, HIVIS)                                     # la cremallera
+    elif p.f == 'L':
+        for y in (40 + b, 45 + b):
+            for x in range(19, 32):
+                fg.shade(x, y, 2.2, HIVIS)
+
+
+def _rius(contenta=False):
+    face = smile if contenta else frown
+    return {'skin': SKIN_VET, 'legs': OVERALL, 'top': HIVIS, 'sleeve': OVERALL, 'shoes': BOOT, 'thin': 1,
+            'pose': pose_phone,
+            'hooks': {'hair': hooks(hair_cap(HAIR_BROWN, fringe=1.4), face), 'torso': rius_vest, 'over': phone_in_hand}}
+
+
+def shoulder_radio(fg, p, spec):
+    """La ràdio a l'espatlla (l'esquerra de la imatge), amb l'antena."""
+    b = p.bob
+    if p.f == 'D':
+        fg.poly([(14, 27 + b), (18, 27 + b), (18, 32 + b), (14, 32 + b)], RADIO, 1.6, cont=(0.2, 0.6))
+        fg.line(15, 26 + b, 15, 22 + b, RADIO, 1.0)
+        fg.px(17, 28 + b, (220, 40, 40), 0)
+    elif p.f == 'L':
+        fg.poly([(24, 27 + b), (28, 27 + b), (28, 32 + b), (24, 32 + b)], RADIO, 1.6, cont=(0.2, 0.6))
+        fg.line(27, 26 + b, 27, 22 + b, RADIO, 1.0)
+    elif p.f == 'U':
+        fg.poly([(31, 27 + b), (35, 27 + b), (35, 32 + b), (31, 32 + b)], RADIO, 1.6, cont=(0.2, 0.6))
+
+
+def key_collar(fg, p, spec):
+    """El collaret: una cadena de llautó i la clau grossa del Llibre Major al pit."""
+    b = p.bob
+    hx = 24.5
+    if p.f == 'D':
+        for t in range(0, 13):
+            a = math.pi * t / 12
+            fg.px(hx - 5.5 * math.cos(a), 28 + b + 7 * math.sin(a), CHAIN, 2.6 if t % 2 else 1.8)
+        kx, ky = hx, 36 + b
+        fg.ell(kx, ky, 1.8, 1.8, CHAIN, 2.8, amp=1.2)
+        fg.px(kx, ky, CHAIN, 0.6)
+        for y in range(ky + 2, ky + 7):
+            fg.px(kx, y, CHAIN, 2.6)
+        fg.px(kx + 1, ky + 5, CHAIN, 2.2); fg.px(kx + 1, ky + 6, CHAIN, 2.2)
+    elif p.f == 'L':
+        for y in range(29 + b, 36 + b):
+            fg.px(19.0, y, CHAIN, 2.4 if y % 2 else 1.6)
+        fg.ell(18.5, 37 + b, 1.4, 1.6, CHAIN, 2.8, amp=1.0)
+
+
+def big_jaw(fg, p, spec):
+    """Mandíbula ampla i el clatell rapat (en Ballester)."""
+    hx, hy = p.head
+    S = spec['skin']
+    if p.f == 'D':
+        fg.ell(hx, hy + 5.0, 6.0, 3.6, S, 3.0, amp=1.4)
+        front_face(fg, p, spec)
+    elif p.f == 'L':
+        fg.ell(hx - 1.0, hy + 5.0, 5.0, 3.4, S, 3.0, amp=1.4)
+        side_face(fg, p, spec)
+
+
+def _ballester(estat=''):
+    over = [shoulder_radio, phone_in_hand]
+    if estat != 'SenseCollaret':
+        over.insert(0, key_collar)
+    face = [big_jaw, hair_cap(HAIR_BROWN, top=-9, fringe=-1.5)]
+    if estat == 'Relaxat':
+        face.append(smile)
+    if estat == 'Alerta':
+        face.append(frown)
+        over = [o for o in over if o is not phone_in_hand]
+    spec = {'skin': SKIN_RUDDY, 'legs': NAVY_U, 'top': NAVY_U, 'shoes': BOOT, 'thin': -2.6, 'brow_dy': 1,
+            'pose': pose_radio if estat == 'Alerta' else pose_phone,
+            'hooks': {'hair': hooks(*face), 'over': hooks(*over), 'torso': badge}}
+    return spec
+
+
+# Tots els de l'Acte 2: id → {variant: espec}; la variant '' és la normal.
+NPCS2 = {
+    'bonfill': {'': _director(), 'Cella': _director(extra=brow_raised), 'Corbata': _director(pose=pose_collar),
+                'Telefon': _director(pose=pose_phone, over=phone_in_hand)},
+    'rius': {'': _rius(), 'Contenta': _rius(contenta=True)},
+    'ballester': {'': _ballester(), 'Relaxat': _ballester('Relaxat'), 'Alerta': _ballester('Alerta'),
+                  'SenseCollaret': _ballester('SenseCollaret')},
+}
+# en Ballester és enorme: el mateix dibuix, ampliat (i el fotograma, més gran)
+BIG = {'ballester': 1.14}
+
+
+def npc2(cid, facing, talk=False, variant=''):
+    spec = NPCS2[cid][variant]
+    img = person(spec, facing, talk=talk)
+    k = BIG.get(cid)
+    if not k:
+        return img
+    w, h = img.size
+    big = img.resize((round(w * k), round(h * k)), Image.NEAREST)
+    W2, H2 = big2_size(cid)
+    out = Image.new('RGBA', (W2, H2), (0, 0, 0, 0))
+    fx, fy = big2_feet(cid)
+    out.alpha_composite(big, (fx - round(25 * k), fy - round(83 * k)))
+    return out
+
+
+def big2_size(cid):
+    k = BIG[cid]
+    return (round(49 * k) + 2, round(87 * k) + 1)
+
+
+def big2_feet(cid):
+    w, h = big2_size(cid)
+    return (w // 2, h - 4)
+
+
+# ─── NETA-3, el robot de neteja ────────────────────────────────────────────
+# Un cilindre baixet de plàstic blanc amb faldilla grisa, dos raspalls rodons a sota, un braç amb un
+# raspallet i una pantalleta-cara a dalt. Fotograma de 40×44, «peus» (el terra) a (20, 42).
+
+NW, NH = 40, 44
+ROBO = M((60, 64, 78), (110, 114, 126), (160, 164, 172), (204, 206, 210), (232, 232, 234), (250, 250, 250))
+ROBO_D = M((14, 16, 22), (30, 32, 40), (50, 54, 62), (76, 80, 88), (104, 108, 116))
+BRUSH = M((40, 30, 10), (90, 70, 20), (150, 120, 40), (210, 180, 80))
+HAZ = M((50, 36, 4), (130, 100, 10), (210, 170, 30), (250, 220, 90))
+SCR_ON = (90, 230, 240)
+SCR_DIM = (30, 90, 100)
+
+
+def neta(facing='D', talk=False, estat='', k=0):
+    """`estat`: '' (fent la volta), 'descansa' (abaixat, llums baixos) o 'molles' (ajupit, netejant). `k`: fotograma."""
+    fg = Fig(NW, NH)
+    low = 4 if estat == 'descansa' else 0
+    lean = estat == 'molles'
+    gy = 42                                                    # el terra
+    # raspalls rodons de sota (giren: el pèl canvia de lloc a cada fotograma)
+    for bx in ((12, 28) if facing != 'L' else (14, 26)):
+        fg.ell(bx, gy - 1, 5, 1.6, BRUSH, 2.0, amp=1.0,
+               lvlfn=lambda x, y, k=k: 0.8 if (x + k) % 3 == 0 else 0)
+    # la faldilla grisa i el cos blanc
+    top = 14 + low
+    fg.lathe(gy - 8, gy - 3, lambda y: (6, 34), ROBO_D, 2.6, amp=1.4, cont=(0.2, 0.8))
+    def body(y):
+        t = (y - top) / (gy - 8 - top)
+        half = 11 + 2.5 * t
+        if lean:
+            c = 20 - 2 * (1 - t) if facing == 'L' else 20
+        else:
+            c = 20
+        return (c - half, c + half)
+    fg.lathe(top + 4, gy - 8, body, ROBO, 3.0, amp=1.6, cont=(0.3, 1.0))
+    fg.ell(20 - (2 if lean and facing == 'L' else 0), top + 4, 11, 4, ROBO, 3.6, amp=1.6, cont=(0.2, 0.8))   # la tapa
+    if facing in ('D', 'U'):
+        for x in range(10, 31):                                 # franja de perill
+            for y in (gy - 12, gy - 11):
+                fg.px(x, y, HAZ, 2.4 if (x + y) % 4 < 2 else 0.6)
+    else:
+        for x in range(8, 33):
+            for y in (gy - 12, gy - 11):
+                fg.px(x, y, HAZ, 2.4 if (x + y) % 4 < 2 else 0.6)
+    # el cap: una pantalleta en un coll curt
+    hx = 20 - (4 if lean and facing == 'L' else 0)
+    hy = top - 3 + (3 if lean else 0)
+    fg.limb((20, top + 2), (hx, hy + 3), 2.0, 2.0, ROBO_D, 2.2)
+    if facing == 'L':
+        fg.poly([(hx - 7, hy - 4), (hx + 4, hy - 4), (hx + 4, hy + 4), (hx - 7, hy + 4)], ROBO, 3.0, cont=(0.2, 0.8))
+        fg.poly([(hx - 7, hy - 3), (hx - 4, hy - 3), (hx - 4, hy + 3), (hx - 7, hy + 3)], ROBO_D, 1.0)
+        on = SCR_DIM if estat == 'descansa' else SCR_ON
+        fg.px(hx - 6, hy - 1, on, 0)
+        if talk:
+            fg.px(hx - 6, hy + 1, on, 0); fg.px(hx - 5, hy + 1, on, 0)
+    else:
+        fg.poly([(hx - 7, hy - 4), (hx + 7, hy - 4), (hx + 7, hy + 4), (hx - 7, hy + 4)], ROBO, 3.0, cont=(0.2, 0.8))
+        if facing == 'D':
+            fg.poly([(hx - 5, hy - 3), (hx + 5, hy - 3), (hx + 5, hy + 3), (hx - 5, hy + 3)], ROBO_D, 0.6)
+            on = SCR_DIM if estat == 'descansa' else SCR_ON
+            if estat == 'descansa':
+                for x in (hx - 3, hx - 2, hx + 2, hx + 3):          # ulls tancats: dues ratlletes
+                    fg.px(x, hy, on, 0)
+            else:
+                blink = k == 5
+                for ex in (hx - 3, hx + 2):
+                    fg.px(ex, hy - 1, on, 0); fg.px(ex + 1, hy - 1, on, 0)
+                    if not blink:
+                        fg.px(ex, hy, on, 0); fg.px(ex + 1, hy, on, 0)
+            if talk:
+                for x in range(int(hx - 2), int(hx + 3)):
+                    fg.px(x, hy + 2, on, 0)
+                fg.px(hx - 1, hy + 1, on, 0); fg.px(hx + 1, hy + 1, on, 0)
+            elif estat != 'descansa':
+                fg.px(hx - 1, hy + 2, on, 0); fg.px(hx, hy + 2, on, 0); fg.px(hx + 1, hy + 2, on, 0)
+        else:                                                   # d'esquena: la reixeta de ventilació
+            for y in range(int(hy - 2), int(hy + 3), 2):
+                fg.line(hx - 4, y, hx + 4, y, ROBO_D, 1.6)
+    # l'antena amb el llum (parpelleja)
+    led = (240, 80, 60) if k % 4 < 2 else (120, 30, 30)
+    if estat == 'descansa':
+        led = (90, 40, 40)
+    fg.line(hx + 4, hy - 4, hx + 5, hy - 8, ROBO_D, 2.0)
+    fg.px(hx + 5, hy - 9, led, 0)
+    # el braç, amb el raspallet
+    if facing == 'U':
+        return fg.render()
+    sx = 9 if facing == 'D' else 13
+    sy = top + 10
+    if estat == 'molles':
+        ex, ey = sx - 4, sy + 8
+        wx, wy = sx - 6 + (k % 2), gy - 4
+    elif estat == 'descansa':
+        ex, ey = sx - 1, sy + 7
+        wx, wy = sx, sy + 13
+    else:
+        ex, ey = sx - 4, sy + 4
+        wx, wy = sx - 5, sy + 10 - (1 if talk else 0)
+    fg.limb((sx, sy), (ex, ey), 1.4, 1.3, ROBO_D, 2.4)
+    fg.limb((ex, ey), (wx, wy), 1.3, 1.2, ROBO_D, 2.4)
+    fg.ell(wx, wy + 1.5, 2.6, 1.6, BRUSH, 2.4, amp=1.0)
+    img = fg.render()
+    if estat == 'molles':                                       # les molles, a terra
+        P = img.load()
+        for i, (mx, my) in enumerate(((2, 42), (5, 43), (8, 42), (3, 41), (34, 43), (37, 42))):
+            if (i + k) % 3 != 0:
+                P[mx, my] = (214, 170, 100, 255)
+    return img

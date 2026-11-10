@@ -1,0 +1,338 @@
+{
+  "id": "bcmu_escombraries",
+  "name": "La sala d'escombraries",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 177
+          },
+          {
+            "x": 466,
+            "y": 177
+          },
+          {
+            "x": 474,
+            "y": 203
+          },
+          {
+            "x": 6,
+            "y": 203
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 14,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 150
+        },
+        {
+          "x": 14,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 40,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 37,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "llibre",
+      "active": true,
+      "description": "Llibre Major",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 236,
+          "y": 36
+        },
+        {
+          "x": 340,
+          "y": 36
+        },
+        {
+          "x": 340,
+          "y": 152
+        },
+        {
+          "x": 236,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 290,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 288,
+        "y": 152
+      }
+    },
+    {
+      "id": "tub",
+      "active": true,
+      "description": "estació del tub",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 352,
+          "y": 60
+        },
+        {
+          "x": 372,
+          "y": 60
+        },
+        {
+          "x": 372,
+          "y": 110
+        },
+        {
+          "x": 352,
+          "y": 110
+        }
+      ],
+      "walkToPoint": {
+        "x": 362,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 362,
+        "y": 110
+      }
+    },
+    {
+      "id": "panell",
+      "active": true,
+      "description": "panell de NETA-3",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 392,
+          "y": 70
+        },
+        {
+          "x": 422,
+          "y": 70
+        },
+        {
+          "x": 422,
+          "y": 110
+        },
+        {
+          "x": 392,
+          "y": 110
+        }
+      ],
+      "walkToPoint": {
+        "x": 406,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 407,
+        "y": 110
+      }
+    },
+    {
+      "id": "conducte",
+      "active": true,
+      "description": "conducte",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 160,
+          "y": 50
+        },
+        {
+          "x": 210,
+          "y": 50
+        },
+        {
+          "x": 210,
+          "y": 130
+        },
+        {
+          "x": 160,
+          "y": 130
+        }
+      ],
+      "walkToPoint": {
+        "x": 186,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 185,
+        "y": 130
+      }
+    },
+    {
+      "id": "bosses",
+      "active": true,
+      "description": "bosses",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 70,
+          "y": 118
+        },
+        {
+          "x": 150,
+          "y": 118
+        },
+        {
+          "x": 150,
+          "y": 156
+        },
+        {
+          "x": 70,
+          "y": 156
+        }
+      ],
+      "walkToPoint": {
+        "x": 110,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 110,
+        "y": 156
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llibre",
+      "tag": "llibre",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llibre": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      },
+      "collider": {
+        "points": [
+          {
+            "x": 236,
+            "y": 36
+          },
+          {
+            "x": 340,
+            "y": 36
+          },
+          {
+            "x": 340,
+            "y": 152
+          },
+          {
+            "x": 236,
+            "y": 152
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 290,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 288,
+        "y": 152
+      },
+      "description": "Llibre Major"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 120,
+      "y": 196,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-veu",
+      "definition": "vet/vet.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "ballester-veu",
+      "definition": "ballester/ballester.character.json",
+      "x": 95,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "neta-veu",
+      "definition": "neta/neta.character.json",
+      "x": 136,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

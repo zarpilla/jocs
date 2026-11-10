@@ -1,0 +1,85 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "La sala de seguretat",
+  "era": "vet",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "ascensor",
+      "label": "ascensor",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "monitors",
+      "label": "monitors",
+      "kind": "hotspot",
+      "w": 41,
+      "h": 33,
+      "x": 72,
+      "y": 57
+    },
+    {
+      "id": "radio",
+      "label": "ràdio",
+      "kind": "hotspot",
+      "w": 41,
+      "h": 33,
+      "x": 121,
+      "y": 19
+    },
+    {
+      "id": "got",
+      "label": "got",
+      "kind": "hotspot",
+      "w": 41,
+      "h": 33,
+      "x": 170,
+      "y": 57
+    },
+    {
+      "id": "entrepa",
+      "label": "entrepà d'en Ballester",
+      "kind": "prop",
+      "w": 41,
+      "h": 33,
+      "x": 220,
+      "y": 19
+    },
+    {
+      "id": "clauer",
+      "label": "clauer",
+      "kind": "prop",
+      "w": 41,
+      "h": 33,
+      "x": 269,
+      "y": 57
+    },
+    {
+      "id": "collaret",
+      "label": "collaret",
+      "kind": "prop",
+      "w": 41,
+      "h": 33,
+      "x": 318,
+      "y": 19
+    },
+    {
+      "id": "tub",
+      "label": "estació del tub",
+      "kind": "hotspot",
+      "w": 41,
+      "h": 33,
+      "x": 367,
+      "y": 57
+    }
+  ],
+  "characters": [
+    "Ballester"
+  ]
+}

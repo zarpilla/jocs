@@ -127,7 +127,7 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
 - **Acte 1 jugable de cap a peus** (en mode text, als tests i a Benne): pròleg, el pis (els tres cables,
   en Diu i el passaplats), el bar (les tres coses per a en Marcel, el pany intel·ligent, la trucada de la «dona»
   d'en Tomàs) i l'aeroport (la primera sincronia per torns, amb la cigarreta de l'Ortega).
-- **Acte 2 jugable en mode text i als tests** (encara no a Benne): el vestíbul (el Director i la sospita, amb el
+- **Acte 2 jugable de cap a peus** (en mode text, als tests i a Benne, amb l'art definitiu): el vestíbul (el Director i la sospita, amb el
   Dia de la Marmota), el moll (la Rius i la targeta), el tercer pis (NETA-3 i les càmeres) i la sincronia del
   collaret (els bips del Llibre Major i en Ballester). Acaba amb un final provisional, «Continuarà».
 - **Regles en codi:** la sincronia (`game/logic/sincronia.ts`: per torns a l'aeroport, per sospita al collaret),
@@ -144,5 +144,7 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   portada, el pis, el bar i l'aeroport, el mateix tema amb instruments diferents que s'encadena al mateix punt
   en canviar de sala.
 - **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botons «Pista» i «Historial»; la tecla H també obre l'historial).
-- **Següent pas:** l'Acte 2 a Benne: les cinc sales del BCMU amb art provisional (`room_designs.py`) i els
-  sprites d'en Ballester, NETA-3, la Rius i el Director amb les seves animacions d'estat; després, l'art definitiu.
+- **Art de l'Acte 2, definitiu:** les cinc sales del BCMU (`hd/rooms/bcmu_*.py`, amb la paleta i l'estació del tub
+  comunes a `hd/rooms/bcmu.py`), el Director, la Rius, en Ballester i NETA-3 amb les seves animacions d'estat, i les
+  icones dels objectes nous. Els sons de l'Acte 2 són sintetitzats; encara no té música pròpia.
+- **Següent pas:** les impressions de la primera partida a l'Acte 2. Després, l'Acte 3.

@@ -550,6 +550,8 @@ def person(spec, facing, walk=None, talk=False):
     fg = Fig(49, 87)
     p = Pose(facing, walk, talk, thin=spec.get('thin', 0), stoop=spec.get('stoop', 0), seated=spec.get('seated'))
     p.spec = spec
+    if 'pose' in spec:
+        spec['pose'](p)          # una postura pròpia (p. ex. el mòbil a la mà): canvia les articulacions
     S = spec['skin']
     if p.f == 'L':
         _person_side(fg, p, spec, S)

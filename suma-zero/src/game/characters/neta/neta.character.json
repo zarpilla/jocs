@@ -1,0 +1,78 @@
+{
+  "id": "neta",
+  "name": "NETA-3",
+  "description": "NETA-3",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 50,
+  "walkToPoint": {
+    "x": 44,
+    "y": 42
+  },
+  "talkPoint": {
+    "x": 20,
+    "y": -2
+  },
+  "feet": {
+    "x": 20,
+    "y": 42
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 6,
+        "y": 4
+      },
+      {
+        "x": 34,
+        "y": 4
+      },
+      {
+        "x": 36,
+        "y": 43
+      },
+      {
+        "x": 4,
+        "y": 43
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "Descansa": {
+      "loop": true,
+      "frameDuration": 900
+    },
+    "Molles": {
+      "loop": true,
+      "frameDuration": 220
+    }
+  },
+  "defaultVerb": "talkTo",
+  "speechColor": "#90d890"
+}

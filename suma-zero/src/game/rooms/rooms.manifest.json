@@ -40,6 +40,26 @@
     {
       "id": "proleg_ginebra",
       "definition": "proleg_ginebra/proleg_ginebra.room.json"
+    },
+    {
+      "id": "bcmu_escombraries",
+      "definition": "bcmu_escombraries/bcmu_escombraries.room.json"
+    },
+    {
+      "id": "bcmu_moll",
+      "definition": "bcmu_moll/bcmu_moll.room.json"
+    },
+    {
+      "id": "bcmu_passadis",
+      "definition": "bcmu_passadis/bcmu_passadis.room.json"
+    },
+    {
+      "id": "bcmu_seguretat",
+      "definition": "bcmu_seguretat/bcmu_seguretat.room.json"
+    },
+    {
+      "id": "bcmu_vestibul",
+      "definition": "bcmu_vestibul/bcmu_vestibul.room.json"
     }
   ]
 }
