@@ -74,10 +74,11 @@ Pendents de fixar abans de la sala de mostra: alçada dels personatges en píxel
 
 ```bash
 npm install
-npm run jugar          # juga en mode text, al terminal (sense art ni Benne)
+npm run jugar          # juga en mode text, al terminal (sense art ni Benne), amb [so: nom] abans de cada so
 npm test               # tests: el nucli i les partides jugades de cap a peus
 npm run validate       # comprova el contingut: forma, referències, textos que falten
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
+npm run revisio        # genera guio/revisio.md: totes les variants de text amb la seva condició [-- <sala>]
 npm run typecheck
 npm run schemas        # regenera game/schemas/ si canvien els tipus del nucli
 npm run font           # regenera la font pròpia (suma-regular i suma-negreta) al projecte Benne
