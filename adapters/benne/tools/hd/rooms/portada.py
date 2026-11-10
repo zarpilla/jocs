@@ -158,8 +158,9 @@ def glint(cv, M, t):
             cv.flat(x, y, mix(cv.get(x, y), (255, 255, 255), min(1.0, k)))
 
 
-def bg(cv, t=0.0):
-    """`t` (0..1): moment del bucle de l'animació de fons (amb 0, el fons quiet)."""
+def bg(cv, t=0.0, titol=True):
+    """`t` (0..1): moment del bucle de l'animació de fons (amb 0, el fons quiet). Amb `titol=False`, sense el títol
+    ni la zona fosca dels botons (els crèdits)."""
     # el present: l'espai, la Terra i La Gavina
     espai(cv, x0=180, t=t)
     terra(cv, 500, 384, 186, x0=180, t=t)
@@ -184,6 +185,9 @@ def bg(cv, t=0.0):
         cv.glow(sx - 3, y, 7, (255, 170, 90), 0.12)
         cv.glow(sx + 3, y, 7, (110, 190, 255), 0.12)
 
+    if not titol:
+        vinyeta(cv, 0.5)
+        return
     # fosc a dalt (on va el títol) i a baix al mig (on van els botons)
     cv.darken(0, 0, W - 1, 90, lambda x, y: 0.45 * (1 - y / 90), dither=False)
     cv.darken(130, 180, 350, H - 1, lambda x, y: 0.5 * max(0.0, 1 - math.hypot((x - 240) / 110, (y - 222) / 44) ** 2), dither=False)

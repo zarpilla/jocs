@@ -456,6 +456,10 @@ la victòria**, i depèn del que s'ha fet a les missions secundàries.
 Com que sempre és la mateixa història amb més o menys coses arreglades, el jugador que acabi el final 1
 **entendrà què li ha faltat** per arribar al 2 o al 3, i tindrà ganes de tornar-hi.
 
+Tots tres acaben amb els **crèdits**, damunt la imatge de la portada sense el títol (la fàbrica i La Gavina): el
+títol, *«Una aventura gràfica feta amb males herbes - malaherbasoft.cat»* i *«Durant la producció d'aquest joc no es
+va segellar cap formulari 27-B. Bé, tres: eren per triplicat.»*
+
 ---
 
 ## Missions secundàries

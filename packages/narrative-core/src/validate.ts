@@ -267,13 +267,16 @@ export function validateContent(
     id(`endings.${eid}`, eid);
     text(`endings.${eid}.title`, e.title);
     text(`endings.${eid}.text`, e.text);
-    e.scene?.forEach((l, k) => {
-      if (!speakers.has(l.who)) err(`endings.${eid}.scene[${k}]`, `Qui parla? "${l.who}" no és cap personatge.`);
-      text(`endings.${eid}.scene[${k}]`, l.text);
-      cond(`endings.${eid}.scene[${k}].if`, l.if);
-      if (l.room && !rooms[l.room]) err(`endings.${eid}.scene[${k}].room`, `Sala desconeguda "${l.room}".`);
-      else if (l.room && !rooms[l.room]!.cutscene) err(`endings.${eid}.scene[${k}].room`, `"${l.room}" ha de ser una cinemàtica (\`cutscene\`).`);
-    });
+    for (const part of ['scene', 'credits'] as const) {
+      e[part]?.forEach((l, k) => {
+        const w = `endings.${eid}.${part}[${k}]`;
+        if (!speakers.has(l.who)) err(w, `Qui parla? "${l.who}" no és cap personatge.`);
+        text(w, l.text);
+        cond(`${w}.if`, l.if);
+        if (l.room && !rooms[l.room]) err(`${w}.room`, `Sala desconeguda "${l.room}".`);
+        else if (l.room && !rooms[l.room]!.cutscene) err(`${w}.room`, `"${l.room}" ha de ser una cinemàtica (\`cutscene\`).`);
+      });
+    }
     if (e.textRoom && !rooms[e.textRoom]?.cutscene) err(`endings.${eid}.textRoom`, `"${e.textRoom}" ha de ser una cinemàtica (\`cutscene\`).`);
     cond(`endings.${eid}.when`, e.when);
   }

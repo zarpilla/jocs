@@ -306,6 +306,11 @@ export interface EndingDef {
   scene?: EndingLineDef[];
   /** Sala de fons per a `text` (si no, la de l'última línia de l'escena que en tingui). */
   textRoom?: Id;
+  /**
+   * Crèdits: línies que van després de `text`, amb `room` com a l'escena (si no, continuen sobre la
+   * sala del text). Acaben amb el «Fi».
+   */
+  credits?: EndingLineDef[];
   /** Per triar-ne un automàticament amb `resolveEnding()`. */
   when?: Condition;
   priority?: number;

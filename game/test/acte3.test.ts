@@ -210,6 +210,9 @@ describe('Ferro-9 · Acte 3 · Els finals', () => {
     // Les imatges de fons, com al pròleg: la llançadora, l'estació, el Cargol i, per acabar, la nota.
     expect(final.scene.map((l) => l.room).filter(Boolean)).toEqual(['final_llancadora', 'final_estacio', 'final_cargol']);
     expect(final.textRoom).toBe('final_nota');
+    // Després del text final, els crèdits: damunt la portada sense títol, amb el segell.
+    expect(final.credits.map((l) => l.room).filter(Boolean)).toEqual(['credits']);
+    expect(texts(final.credits)).toContain('malaherbasoft.cat');
   });
 
   it("amb la Mira salvada però sense la memòria del Cargol, el final 2; la placa sense nom no li diu res", () => {

@@ -1463,6 +1463,7 @@ def final_bg(c):
 
 
 FINALS = {f'final_{nom}': _proleg(final_bg, 'vet') for nom in ('llancadora', 'museu', 'anell', 'estacio', 'cargol', 'nota')}
+FINALS['credits'] = _proleg(final_bg, 'vet')                     # els crèdits (art: hd/rooms/credits.py)
 
 
 # ─── Portada: la fàbrica i La Gavina, partides en diagonal, i el títol ──────

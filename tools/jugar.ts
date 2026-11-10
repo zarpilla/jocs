@@ -192,7 +192,9 @@ async function main() {
           const f = n.ending(id);
           console.log(`\n${c.bold}${f.title}${c.off}\n`);
           print(f.scene);
-          console.log(`\n${f.text}\n\n${n.t('ui.fi')}`);
+          console.log(`\n${f.text}\n`);
+          print(f.credits);
+          console.log(`\n${n.t('ui.fi')}`);
         }
         break;
       }

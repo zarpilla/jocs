@@ -9,6 +9,7 @@ import type {
   DialogueChoiceDef,
   DialogueDef,
   Effect,
+  EndingLineDef,
   GameContent,
   Id,
   InteractionDef,
@@ -91,6 +92,8 @@ export interface EndingView {
   text: string;
   /** Sala de fons per al text final, si en canvia. */
   textRoom?: Id;
+  /** Els crèdits, després del text final (filtrats com l'escena). */
+  credits: (ResolvedLine & { room?: Id })[];
 }
 
 /**
@@ -334,10 +337,13 @@ export class Narrative {
   ending(id: Id): EndingView {
     const def = this.content.endings[id];
     if (!def) throw new Error(`Final desconegut: ${id}`);
-    const scene = (def.scene ?? [])
+    const lines = (defs: EndingLineDef[] = []) => defs
       .filter((line) => this.check(line.if))
       .map((line) => ({ who: line.who, key: line.text, text: this.t(line.text), ...(line.room ? { room: line.room } : {}) }));
-    return { id, title: this.t(def.title), scene, text: this.t(def.text), ...(def.textRoom ? { textRoom: def.textRoom } : {}) };
+    return {
+      id, title: this.t(def.title), scene: lines(def.scene), text: this.t(def.text),
+      ...(def.textRoom ? { textRoom: def.textRoom } : {}), credits: lines(def.credits),
+    };
   }
 
   // ─── Sales, coses i interaccions ──────────────────────────────────────────

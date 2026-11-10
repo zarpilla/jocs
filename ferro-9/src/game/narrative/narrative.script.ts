@@ -272,6 +272,12 @@ export function playEnding(id?: string) {
   const ultim = trossos[trossos.length - 1]
   if (ending.textRoom && ending.textRoom !== ultim?.room) trossos.push({ room: ending.textRoom, lines: [tancament] })
   else (ultim ? ultim.lines : negre).push(tancament)
+  // Els crèdits, després del text final: amb `room`, a la seva sala; si no, damunt de la que hi hagi.
+  for (const line of ending.credits) {
+    const actual = trossos[trossos.length - 1]
+    if (line.room && line.room !== actual?.room) trossos.push({ room: line.room, lines: [line] })
+    else (actual ? actual.lines : negre).push(line)
+  }
 
   fadeOut(1.5)
   display(ending.title)

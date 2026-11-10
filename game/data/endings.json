@@ -52,7 +52,22 @@
         }
       }
     ],
-    "textRoom": "final_anell"
+    "textRoom": "final_anell",
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits2"
+      }
+    ]
   },
   "veritat": {
     "title": "final.veritat.titol",
@@ -97,6 +112,21 @@
       {
         "who": "narrator",
         "text": "final.oris.mos"
+      }
+    ],
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits2"
       }
     ]
   },
@@ -165,6 +195,21 @@
         "text": "final.correspondencia.4"
       }
     ],
-    "textRoom": "final_nota"
+    "textRoom": "final_nota",
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits2"
+      }
+    ]
   }
 }

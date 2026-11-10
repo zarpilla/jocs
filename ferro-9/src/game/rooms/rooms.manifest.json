@@ -84,6 +84,10 @@
     {
       "id": "final_nota",
       "definition": "final_nota/final_nota.room.json"
+    },
+    {
+      "id": "credits",
+      "definition": "credits/credits.room.json"
     }
   ]
 }
