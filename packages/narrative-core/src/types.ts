@@ -110,6 +110,12 @@ export interface CharacterDef {
    * Ex.: el capatàs deixa anar el segell → `{ "if": { "flag": "segell_caigut" }, "anim": "DormSenseSegell" }`.
    */
   appearance?: { if?: Condition; anim: string }[];
+  /**
+   * Vestuari segons l'estat: la primera entrada que es compleixi diu quina roba porta (el prefix de les
+   * etiquetes del sprite: `Bar` → `BarIdleD`, `BarWalkL`...). Si no se'n compleix cap, la normal.
+   * A diferència d'`appearance`, no és una animació fixa: el personatge camina i parla igual.
+   */
+  outfit?: { if?: Condition; name: string }[];
 }
 
 // ─── Objectes ────────────────────────────────────────────────────────────────

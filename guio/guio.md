@@ -68,6 +68,19 @@ Comèdia caòtica amb rerefons polític clar però no panfletari, per a adolesce
 - **Arc:** comença fent el pla «per vigilar l'Iri» i acaba dient la veritat a en Ballester, que és l'única
   vegada al joc que no menteix (i és l'opció que funciona millor).
 - **Joc:** parla, enganya, distreu i treu coses de les butxaques dels altres. Les converses d'arbre són seves.
+- **Aspecte:** cabell castany fosc fins a les espatlles, amb clenxa al costat, i llavis pintats. **Canvia de roba a
+  cada escena** (és cambrera d'un bar cutre i té l'armari que toca), i el canvi sempre té un motiu:
+
+  | Quan | Roba | Per què | Al joc (`outfit` de `vet`) |
+  |---|---|---|---|
+  | Escena 1, al pis | Dessuadora lila amb un alien verd, texans negres | És a casa | la normal (sense `vet_marxa`) |
+  | Escena 2, al bar | Camisa de franel·la vermella oberta, samarreta d'un grup, texans negres estripats | És el seu torn de nit | `Franela` (`vet_marxa`) |
+  | Escena 3, a l'aeroport | Bomber verda amb pegats, texans blaus | De viatge | `Bomber` (`bar_fet`) |
+  | Actes 2 i 3, a Ginebra | Vestit jaqueta blau marí, camisa blanca, cabell recollit en un monyo | Fa d'auditora. El treu d'objectes perduts (ho explica a l'avió) | `Auditora` (`aeroport_fet`) |
+  | Final, al bar | Dessuadora negra amb una calavera, texans blaus estripats, bambes | Ja no ha de fingir res | `Calavera` (quan hi hagi el final) |
+
+  Les **ulleres** de l'aeroport es veuen al sprite quan les porta posades (`ulleres_posades`): `BomberUlleres`,
+  `AuditoraUlleres`.
 
 ### Com es comuniquen
 
@@ -389,8 +402,9 @@ conserva; però mentre en Soler vigila, l'Iri no pot fer soroll ni sortir de l'o
 Durant la sincronia, objectes perduts i la cafeteria no s'hi poden fer servir: «Ara no: he perdut un fill.»
 
 **Final de l'acte (cinemàtica `avio`):** a l'avió, entre tècnics de debò. L'Iri dona l'acreditació a la Vet.
-La Rius les mira: «Sou noves? Doncs benvingudes a la subcontracta. Aquí ningú no cobra el viatge.» L'avió
-s'enlaira. **Fi de l'Acte 1.** (Mentre no hi hagi l'Acte 2, aquí s'acaba la demostració, amb el final
+La Rius les mira: «Sou noves? Doncs benvingudes a la subcontracta. Aquí ningú no cobra el viatge.» La Vet ja
+porta el vestit d'auditora. IRI: «I aquest vestit? Fa una hora anaves amb la bomber.» VET: «Objectes perduts. Algú
+s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.» IRI: «Era d'un altre.» L'avió s'enlaira. **Fi de l'Acte 1.** (Mentre no hi hagi l'Acte 2, aquí s'acaba la demostració, amb el final
 provisional «Continuarà».)
 
 ---
@@ -996,11 +1010,12 @@ resta ja ho fa el nucli de Ferro-9. Cap altre canvi a Benne: la «pantalla divid
 ## Decisions preses
 
 1. **Resolució:** 480×270 des del primer dia. -> fixada
-2. **Art:** pixel art caricaturesc, estil LucasArts clàssic. -> fixat (falta l'alçada dels personatges i la paleta)
+2. **Art:** pixel art sense caricatura, a l'estil de Ferro-9 (proposta B): persones de ≈83 px, to urbà de hacker i espies. -> fixat
 3. **Sincronia:** per torns, sense pantalla dividida ni rellotge real. -> fixat
 4. **Idiomes:** només català. -> fixat
 5. **Títol:** Suma Zero. -> fixat
 6. **Protagonistes:** dues, amb canvi lliure excepte a les sincronies. -> del primer guió
+7. **La roba de la Vet:** canvia a cada escena, sempre amb un motiu (vegeu «Vet — la cara dura»). -> fixat
 
 ## Preguntes obertes
 

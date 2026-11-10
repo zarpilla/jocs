@@ -1,6 +1,6 @@
 /** L'Acte 1 jugat sencer, per tots els camins, amb una pista disponible a cada pas. */
 import { describe, expect, it } from 'vitest';
-import { item, jugarActe1, jugarBar, jugarPis, partida, texts } from './partida.js';
+import { item, jugarActe1, jugarAeroport, jugarBar, jugarPis, partida, texts } from './partida.js';
 
 describe('Acte 1 · camins', () => {
   for (const sacrifici of ['caixa', 'auricular', 'pizza'] as const) {
@@ -157,5 +157,27 @@ describe('Acte 1 · coherència', () => {
       expect(n.t(`obj.${id}.amb_article`)).not.toMatch(/^⟦/);
     }
     void item;
+  });
+});
+
+describe('Acte 1 · la roba de la Vet', () => {
+  it('canvia a cada escena: casa, bar, aeroport i, a Ginebra, auditora', () => {
+    const { n, p } = partida({ checkHints: true });
+    expect(n.outfitOf('vet')).toBe('');
+    jugarPis(p);
+    expect(n.outfitOf('vet')).toBe('Franela');
+    jugarBar(p);
+    expect(n.outfitOf('vet')).toBe('Bomber');
+    jugarAeroport(p);
+    expect(n.outfitOf('vet')).toBe('Auditora');
+    expect(n.outfitOf('iri')).toBe('');
+  });
+
+  it('amb les ulleres posades, se li veuen', () => {
+    const { n, p } = partida({ checkHints: true });
+    jugarPis(p);
+    jugarBar(p);
+    jugarAeroport(p, { preparacio: true });
+    expect(n.outfitOf('vet')).toBe('AuditoraUlleres');
   });
 });

@@ -98,9 +98,12 @@ def write(cid, tags, size, extra):
     frames = [img for _, imgs in tags for img in imgs]
     w, h = frames[0].size
     extra = scaled_extra(extra)
-    sheet = Image.new('RGBA', (w * len(frames), h), CLEAR)
+    # en graella: una sola fila de molts fotogrames passaria de l'amplada màxima d'una textura (4096)
+    cols = min(len(frames), 4096 // w)
+    rows = -(-len(frames) // cols)
+    sheet = Image.new('RGBA', (w * cols, h * rows), CLEAR)
     for i, img in enumerate(frames):
-        sheet.paste(img, (i * w, 0))
+        sheet.paste(img, ((i % cols) * w, (i // cols) * h))
     d = OUT / cid
     d.mkdir(parents=True, exist_ok=True)
     sheet.save(d / f'{cid}.png')
@@ -110,11 +113,11 @@ def write(cid, tags, size, extra):
         i += len(imgs)
     meta = {
         'frames': {f'{cid} {n}.aseprite': {
-            'frame': {'x': n * w, 'y': 0, 'w': w, 'h': h}, 'rotated': False, 'trimmed': False,
+            'frame': {'x': (n % cols) * w, 'y': (n // cols) * h, 'w': w, 'h': h}, 'rotated': False, 'trimmed': False,
             'spriteSourceSize': {'x': 0, 'y': 0, 'w': w, 'h': h}, 'sourceSize': {'w': w, 'h': h}, 'duration': 100,
         } for n in range(len(frames))},
         'meta': {'app': 'https://www.aseprite.org/', 'version': 'provisional (draw_characters.py)', 'image': f'{cid}.png',
-                 'format': 'RGBA8888', 'size': {'w': sheet.width, 'h': h}, 'scale': '1',
+                 'format': 'RGBA8888', 'size': {'w': sheet.width, 'h': sheet.height}, 'scale': '1',
                  'frameTags': frame_tags, 'layers': [], 'slices': []},
     }
     (d / f'{cid}.json').write_text(json.dumps(meta, indent=2) + '\n')
@@ -158,19 +161,25 @@ def standing(cid, p, thin=False):
     })
 
 
-def protagonist(cid, draw, feet=(25, 83)):
-    """Protagonista de Suma Zero (hd/personatges.py): 49×87, peus a (25, 83), com a Ferro-9."""
+def protagonist(cid, draw, feet=(25, 83), outfits=('',)):
+    """Protagonista de Suma Zero (hd/personatges.py): 49×87, peus a (25, 83), com a Ferro-9.
+    `outfits`: les robes (prefix de les etiquetes: `BarIdleD`...); `draw(f, walk, talk, roba)` les dibuixa."""
     tags = []
-    for f in 'LDU':
-        tags.append((f'Idle{f}', [draw(f)]))
-    for f in 'LDU':
-        tags.append((f'Walk{f}', [draw(f, walk=k) for k in range(6)]))
-    for f in 'LDU':
-        tags.append((f'Talk{f}', [draw(f, talk=False), draw(f, talk=True)]))
+    for o in outfits:
+        d = (lambda f, walk=None, talk=False: draw(f, walk=walk, talk=talk)) if not o else \
+            (lambda f, walk=None, talk=False, o=o: draw(f, walk=walk, talk=talk, roba=o))
+        for f in 'LDU':
+            tags.append((f'{o}Idle{f}', [d(f)]))
+        for f in 'LDU':
+            tags.append((f'{o}Walk{f}', [d(f, walk=k) for k in range(6)]))
+        for f in 'LDU':
+            tags.append((f'{o}Talk{f}', [d(f, talk=False), d(f, talk=True)]))
     anims = {t: {'loop': True} for t, _ in tags}
-    for f in 'LDU':
-        anims[f'Walk{f}']['frameDuration'] = 90 if f == 'L' else 100
-        anims[f'Talk{f}']['frameDuration'] = 140
+    for t in anims:
+        if 'Walk' in t:
+            anims[t]['frameDuration'] = 90 if t.endswith('L') else 100
+        elif 'Talk' in t:
+            anims[t]['frameDuration'] = 140
     w, h = tags[0][1][0].size
     fx, fy = feet
     write(cid, tags, (w, h), {
@@ -178,6 +187,15 @@ def protagonist(cid, draw, feet=(25, 83)):
         'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},
         'animations': anims, 'defaultVerb': 'look',
     })
+
+
+def vet(f, walk=None, talk=False, roba=''):
+    """La Vet amb una de les seves robes; `…Ulleres` hi afegeix les ulleres."""
+    ulleres = roba.endswith('Ulleres')
+    return personatges.vet(f, walk=walk, talk=talk, roba=roba.removesuffix('Ulleres'), ulleres=ulleres)
+
+
+VET_OUTFITS = tuple(personatges.VET_ROBA) + tuple(f'{o}Ulleres' for o in personatges.VET_ULLERES)
 
 
 def secundari(cid):
@@ -215,7 +233,7 @@ def gat(cid='diu'):
 def main():
     """Els personatges de Suma Zero amb art definitiu (els altres surten amb la plantilla de Benne)."""
     protagonist('iri', personatges.iri)
-    protagonist('vet', personatges.vet)
+    protagonist('vet', vet, outfits=VET_OUTFITS)
     gat('diu')
     for cid in personatges.NPCS:
         secundari(cid)

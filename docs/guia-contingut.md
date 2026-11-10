@@ -196,6 +196,17 @@ personatge, surt amb el nom al davant.
 "capatas": { "appearance": [ { "if": { "flag": "segell_caigut" }, "anim": "DormSenseSegell" } ] }
 ```
 
+`outfit` canvia la **roba**: no és una animació fixa, sinó el prefix de totes les etiquetes del sprite, i el
+personatge continua caminant i parlant (`Bar` → `BarIdleD`, `BarWalkL`, `BarTalkU`...). Si una etiqueta amb
+prefix no hi és, es fa servir la normal. La primera que es compleixi; si no se'n compleix cap, la normal:
+
+```json
+"vet": { "outfit": [ { "if": { "flag": "bar_fet" }, "name": "Bomber" }, { "if": { "flag": "vet_marxa" }, "name": "Franela" } ] }
+```
+
+Les robes es dibuixen a `adapters/benne/tools/hd/personatges.py` (`VET_ROBA`) i `draw_characters.py` en
+fa les etiquetes. Al motor ho fa `setOutfit()`, del pegat de Benne.
+
 El Cargol és a les dues èpoques amb **el mateix id**: el que recorda de l'Iri al passat ho continua
 recordant 120 anys després, quan el troba la Vet.
 

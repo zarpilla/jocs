@@ -1,7 +1,23 @@
 diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
---- src/engine/bennescript/actions.ts	2026-11-10 07:43:04.035247025 +0100
-+++ src/engine/bennescript/actions.ts	2026-11-09 16:55:36.494816905 +0100
-@@ -311,6 +311,15 @@
+--- src/engine/bennescript/actions.ts
++++ src/engine/bennescript/actions.ts
+@@ -1,5 +1,6 @@
+ import {
+   clearSavedCharacterSpeechPosition,
++  getCharacterAnimationOverrideTag,
+   readSavedCharacterAlpha,
+   readSavedCharacterFollowingTarget,
+   readSavedCharacterSpeechOffset,
+@@ -9,7 +10,7 @@
+   writeSavedCharacterSpeechPosition,
+ } from '../benneAnimationRuntime.js';
+ import { getCharacterWorldFeet } from '../characterFeet.js';
+-import { resolveInitialIdleFacing } from '../directionalCharacterAnimation.js';
++import { playDirectionalAnimation, resolveInitialIdleFacing } from '../directionalCharacterAnimation.js';
+ import type { GameStateManager } from '../gameState/GameStateManager.js';
+ import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManager.js';
+ import { BENNE_SCREEN_FADE_DEFAULT_COLOR, BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC } from '../scenes/roomScreenFadeConstants.js';
+@@ -311,6 +312,30 @@
    );
  }
  
@@ -14,23 +30,39 @@ diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
 +  if (scene) scene.holdScreenFadeOnEnter = true;
 +}
 +
++/**
++ * Changes a character's outfit (Suma Zero patch): directional clips are looked up as
++ * `<outfit><Base><dir>` first (e.g. `BarWalkL`), then the plain ones. `''` is the default outfit.
++ * Instant; not saved (the game sets it again from its own state on every room enter).
++ */
++export function setOutfit(characterId: string, outfit: string): void {
++  const sprite = activeRoomScene()?.getCharacterSprite(characterId);
++  if (!(sprite instanceof Phaser.GameObjects.Sprite) || !sprite.anims) return;
++  if (((sprite.getData('outfit') as string | undefined) ?? '') === outfit) return;
++  sprite.setData('outfit', outfit);
++  if (getCharacterAnimationOverrideTag(sprite)) return;
++  const base = (sprite.getData('facingBase') as string | undefined) ?? 'Idle';
++  playDirectionalAnimation(sprite, base, sprite.getData('facing') ?? resolveInitialIdleFacing(sprite));
++}
++
  /** Fades the screen to `color` (black by default) over `seconds`. Waits. */
  export const fadeOut = timed((seconds?: number, color?: number): Task => screenFade(1, seconds, color));
  
 diff -ruN src/engine/bennescript/index.ts src/engine/bennescript/index.ts
---- src/engine/bennescript/index.ts	2026-11-10 07:43:04.035481703 +0100
-+++ src/engine/bennescript/index.ts	2026-11-09 16:55:36.495457010 +0100
-@@ -14,6 +14,7 @@
+--- src/engine/bennescript/index.ts
++++ src/engine/bennescript/index.ts
+@@ -14,6 +14,8 @@
    inventory,
    player,
    say,
++  setOutfit,
 +  stayBlackOnEnter,
    wait,
    waitForClick,
    walkToClicked,
 diff -ruN src/engine/ConfigManager.ts src/engine/ConfigManager.ts
---- src/engine/ConfigManager.ts	2026-11-10 07:43:04.034534597 +0100
-+++ src/engine/ConfigManager.ts	2026-11-08 18:07:27.880092473 +0100
+--- src/engine/ConfigManager.ts
++++ src/engine/ConfigManager.ts
 @@ -332,6 +332,10 @@
    if (data.defaultFallbackLine !== undefined && typeof data.defaultFallbackLine !== 'string') {
      throw new Error('game-config defaultFallbackLine must be a string when present');
@@ -43,8 +75,8 @@ diff -ruN src/engine/ConfigManager.ts src/engine/ConfigManager.ts
  
  function assertInitialGameState(data: GameSettings): void {
 diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
---- src/engine/scenes/RoomScene.ts	2026-11-10 07:43:04.038441556 +0100
-+++ src/engine/scenes/RoomScene.ts	2026-11-09 16:55:36.484130297 +0100
+--- src/engine/scenes/RoomScene.ts
++++ src/engine/scenes/RoomScene.ts
 @@ -230,6 +230,7 @@
    BENNE_SCREEN_FADE_DEFAULT_COLOR,
    BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
@@ -76,8 +108,8 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
     */
 diff -ruN src/engine/scenes/roomScreenFadeConstants.ts src/engine/scenes/roomScreenFadeConstants.ts
---- src/engine/scenes/roomScreenFadeConstants.ts	2026-11-10 07:43:04.038441556 +0100
-+++ src/engine/scenes/roomScreenFadeConstants.ts	2026-11-09 13:07:54.761002195 +0100
+--- src/engine/scenes/roomScreenFadeConstants.ts
++++ src/engine/scenes/roomScreenFadeConstants.ts
 @@ -4,7 +4,7 @@
  export const BENNE_SCREEN_FADE_DEFAULT_COLOR = 0x000000;
  
@@ -98,8 +130,8 @@ diff -ruN src/engine/scenes/roomScreenFadeConstants.ts src/engine/scenes/roomScr
 + */
 +export const DISPLAY_TEXT_OVERLAY_DEPTH = 455_000;
 diff -ruN src/engine/scenes/RoomTransitionOrchestrator.ts src/engine/scenes/RoomTransitionOrchestrator.ts
---- src/engine/scenes/RoomTransitionOrchestrator.ts	2026-11-10 07:43:04.038441556 +0100
-+++ src/engine/scenes/RoomTransitionOrchestrator.ts	2026-11-09 16:55:36.494738677 +0100
+--- src/engine/scenes/RoomTransitionOrchestrator.ts
++++ src/engine/scenes/RoomTransitionOrchestrator.ts
 @@ -406,7 +406,11 @@
          await entranceSound.prepareForPlayback();
        }
@@ -114,8 +146,8 @@ diff -ruN src/engine/scenes/RoomTransitionOrchestrator.ts src/engine/scenes/Room
        } else {
          syncBenneRuntimeHiDpiSceneMainCameras(this.game);
 diff -ruN src/engine/verbs/verbConfig.ts src/engine/verbs/verbConfig.ts
---- src/engine/verbs/verbConfig.ts	2026-11-10 07:43:04.039671841 +0100
-+++ src/engine/verbs/verbConfig.ts	2026-11-08 18:11:55.283521618 +0100
+--- src/engine/verbs/verbConfig.ts
++++ src/engine/verbs/verbConfig.ts
 @@ -13,6 +13,12 @@
   */
  export const WALK_TO_VERB_DISPLAY_LABEL = 'Walk to';
@@ -157,8 +189,8 @@ diff -ruN src/engine/verbs/verbConfig.ts src/engine/verbs/verbConfig.ts
    if (useInventoryPrepLine) {
      const verbWord = resolveVerbLineLeadingVerbWord(settings, trimmedVerb);
 diff -ruN src/types/game.ts src/types/game.ts
---- src/types/game.ts	2026-11-10 07:43:04.040033919 +0100
-+++ src/types/game.ts	2026-11-08 18:07:27.879821336 +0100
+--- src/types/game.ts
++++ src/types/game.ts
 @@ -213,6 +213,10 @@
     */
    defaultFallbackLine?: string;
@@ -170,3 +202,32 @@ diff -ruN src/types/game.ts src/types/game.ts
     * Global default policy for whether the **active inventory item** is "dropped" (active inventory +
     * active verb both cleared) after it is used on a clickable target (prop / hotspot / character).
     *
+diff -ruN src/engine/directionalCharacterAnimation.ts src/engine/directionalCharacterAnimation.ts
+--- src/engine/directionalCharacterAnimation.ts
++++ src/engine/directionalCharacterAnimation.ts
+@@ -166,13 +166,18 @@
+     return true;
+   };
+ 
+-  for (const d of facingFallbackOrder(direction)) {
+-    if (tryPlay(`${baseName}${d}`, false)) {
+-      return;
+-    }
+-    const m = mirrorHorizontalFacing(d);
+-    if (m !== null && tryPlay(`${baseName}${m}`, true)) {
+-      return;
++  // Vestuari (pegat de Suma Zero): si el sprite té `outfit`, primer prova `<outfit><base><dir>` (p. ex.
++  // `BarWalkL`) i, si no existeix, la normal. Així un personatge pot canviar de roba sense canviar de sprite.
++  const outfit = (sprite.getData('outfit') as string | undefined) ?? '';
++  for (const prefix of outfit ? [outfit, ''] : ['']) {
++    for (const d of facingFallbackOrder(direction)) {
++      if (tryPlay(`${prefix}${baseName}${d}`, false)) {
++        return;
++      }
++      const m = mirrorHorizontalFacing(d);
++      if (m !== null && tryPlay(`${prefix}${baseName}${m}`, true)) {
++        return;
++      }
+     }
+   }
+ }

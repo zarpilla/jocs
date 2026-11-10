@@ -237,6 +237,11 @@ export class Narrative {
     return this.content.characters[id]?.appearance?.find((a) => this.check(a.if))?.anim ?? null;
   }
 
+  /** La roba que porta un personatge segons l'estat (`outfit`), o `''` per a la normal. */
+  outfitOf(id: Id): string {
+    return this.content.characters[id]?.outfit?.find((o) => this.check(o.if))?.name ?? '';
+  }
+
   itemName(id: Id): string {
     const def = this.content.items[id];
     return def ? this.t(def.name) : id;

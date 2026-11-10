@@ -58,6 +58,25 @@
             "additionalProperties": false
           },
           "description": "Aspecte segons l'estat: la primera entrada que es compleixi diu quina animació (etiqueta del sprite) ha de fer el personatge. Si no se'n compleix cap, la normal. Ex.: el capatàs deixa anar el segell → `{ \"if\": { \"flag\": \"segell_caigut\" }, \"anim\": \"DormSenseSegell\" }`."
+        },
+        "outfit": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "if": {
+                "$ref": "#/definitions/Condition"
+              },
+              "name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "name"
+            ],
+            "additionalProperties": false
+          },
+          "description": "Vestuari segons l'estat: la primera entrada que es compleixi diu quina roba porta (el prefix de les etiquetes del sprite: `Bar` → `BarIdleD`, `BarWalkL`...). Si no se'n compleix cap, la normal. A diferència d'`appearance`, no és una animació fixa: el personatge camina i parla igual."
         }
       },
       "required": [

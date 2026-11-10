@@ -4,7 +4,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, defineVars, events, game, inventory, player, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -315,6 +315,8 @@ export function applyHotspotVisibility() {
 
 export function applyAppearances() {
   for (const [id, def] of Object.entries(content.characters)) {
+    // La roba (`outfit`): el motor (pegat) busca `<roba><Idle|Walk|Talk><dir>` abans que les normals.
+    if (def.outfit?.length) setOutfit(toBenne('characters', id), narrative.outfitOf(id));
     if (!def.appearance?.length) continue;
     // Les animacions del JSON són text; Benne les tipa amb les etiquetes del sprite.
     const handle = benneCharacter(id) as { animation: string; stopAnimation(): void } | undefined;

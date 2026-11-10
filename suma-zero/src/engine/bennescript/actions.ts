@@ -1,5 +1,6 @@
 import {
   clearSavedCharacterSpeechPosition,
+  getCharacterAnimationOverrideTag,
   readSavedCharacterAlpha,
   readSavedCharacterFollowingTarget,
   readSavedCharacterSpeechOffset,
@@ -9,7 +10,7 @@ import {
   writeSavedCharacterSpeechPosition,
 } from '../benneAnimationRuntime.js';
 import { getCharacterWorldFeet } from '../characterFeet.js';
-import { resolveInitialIdleFacing } from '../directionalCharacterAnimation.js';
+import { playDirectionalAnimation, resolveInitialIdleFacing } from '../directionalCharacterAnimation.js';
 import type { GameStateManager } from '../gameState/GameStateManager.js';
 import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManager.js';
 import { BENNE_SCREEN_FADE_DEFAULT_COLOR, BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC } from '../scenes/roomScreenFadeConstants.js';
@@ -318,6 +319,21 @@ function screenFade(toAlpha: number, seconds?: number, color?: number): Task {
 export function stayBlackOnEnter(): void {
   const scene = roomFor('stayBlackOnEnter');
   if (scene) scene.holdScreenFadeOnEnter = true;
+}
+
+/**
+ * Changes a character's outfit (Suma Zero patch): directional clips are looked up as
+ * `<outfit><Base><dir>` first (e.g. `BarWalkL`), then the plain ones. `''` is the default outfit.
+ * Instant; not saved (the game sets it again from its own state on every room enter).
+ */
+export function setOutfit(characterId: string, outfit: string): void {
+  const sprite = activeRoomScene()?.getCharacterSprite(characterId);
+  if (!(sprite instanceof Phaser.GameObjects.Sprite) || !sprite.anims) return;
+  if (((sprite.getData('outfit') as string | undefined) ?? '') === outfit) return;
+  sprite.setData('outfit', outfit);
+  if (getCharacterAnimationOverrideTag(sprite)) return;
+  const base = (sprite.getData('facingBase') as string | undefined) ?? 'Idle';
+  playDirectionalAnimation(sprite, base, sprite.getData('facing') ?? resolveInitialIdleFacing(sprite));
 }
 
 /** Fades the screen to `color` (black by default) over `seconds`. Waits. */

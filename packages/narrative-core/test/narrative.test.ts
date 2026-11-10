@@ -194,4 +194,19 @@ describe('regles després de cada acció i situar', () => {
     p.switchTo('bo');
     expect(p.room).toBe('moll');
   });
+
+  it('outfitOf tria la primera roba que es compleix, o la normal', () => {
+    const c: GameContent = structuredClone(content);
+    c.characters.ana!.outfit = [
+      { if: { all: [{ flag: 'far_ences' }, { var: 'monedes', op: '>', value: 0 }] }, name: 'FestaRica' },
+      { if: { flag: 'far_ences' }, name: 'Festa' },
+    ];
+    const { n } = setup(c);
+    expect(n.outfitOf('ana')).toBe('');
+    n.apply({ setFlag: 'far_ences' });
+    expect(n.outfitOf('ana')).toBe('Festa');
+    n.apply({ addVar: 'monedes', amount: 1 });
+    expect(n.outfitOf('ana')).toBe('FestaRica');
+    expect(n.outfitOf('bo')).toBe('');
+  });
 });

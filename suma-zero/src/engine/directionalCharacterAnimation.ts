@@ -166,13 +166,18 @@ export function playDirectionalAnimation(
     return true;
   };
 
-  for (const d of facingFallbackOrder(direction)) {
-    if (tryPlay(`${baseName}${d}`, false)) {
-      return;
-    }
-    const m = mirrorHorizontalFacing(d);
-    if (m !== null && tryPlay(`${baseName}${m}`, true)) {
-      return;
+  // Vestuari (pegat de Suma Zero): si el sprite té `outfit`, primer prova `<outfit><base><dir>` (p. ex.
+  // `BarWalkL`) i, si no existeix, la normal. Així un personatge pot canviar de roba sense canviar de sprite.
+  const outfit = (sprite.getData('outfit') as string | undefined) ?? '';
+  for (const prefix of outfit ? [outfit, ''] : ['']) {
+    for (const d of facingFallbackOrder(direction)) {
+      if (tryPlay(`${prefix}${baseName}${d}`, false)) {
+        return;
+      }
+      const m = mirrorHorizontalFacing(d);
+      if (m !== null && tryPlay(`${prefix}${baseName}${m}`, true)) {
+        return;
+      }
     }
   }
 }

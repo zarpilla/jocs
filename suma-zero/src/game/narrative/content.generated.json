@@ -103,7 +103,53 @@
         "name": "pj.iri.nom"
       },
       "vet": {
-        "name": "pj.vet.nom"
+        "name": "pj.vet.nom",
+        "outfit": [
+          {
+            "if": {
+              "all": [
+                {
+                  "flag": "aeroport_fet"
+                },
+                {
+                  "flag": "ulleres_posades"
+                }
+              ]
+            },
+            "name": "AuditoraUlleres"
+          },
+          {
+            "if": {
+              "flag": "aeroport_fet"
+            },
+            "name": "Auditora"
+          },
+          {
+            "if": {
+              "all": [
+                {
+                  "flag": "bar_fet"
+                },
+                {
+                  "flag": "ulleres_posades"
+                }
+              ]
+            },
+            "name": "BomberUlleres"
+          },
+          {
+            "if": {
+              "flag": "bar_fet"
+            },
+            "name": "Bomber"
+          },
+          {
+            "if": {
+              "flag": "vet_marxa"
+            },
+            "name": "Franela"
+          }
+        ]
       },
       "diu": {
         "name": "pj.diu.nom",
@@ -1343,6 +1389,18 @@
               {
                 "who": "vet",
                 "text": "sala.avio.4"
+              },
+              {
+                "who": "iri",
+                "text": "sala.avio.vestit1"
+              },
+              {
+                "who": "vet",
+                "text": "sala.avio.vestit2"
+              },
+              {
+                "who": "iri",
+                "text": "sala.avio.vestit3"
               },
               {
                 "who": "narrator",
@@ -6715,6 +6773,9 @@
       "sala.avio.4": "Ni el viatge ni res, pel que veig.",
       "sala.avio.5": "L'avió s'enlaira cap a Ginebra.",
       "sala.avio.nom": "L'avió",
+      "sala.avio.vestit1": "I aquest vestit? Fa una hora anaves amb la bomber.",
+      "sala.avio.vestit2": "Objectes perduts. Algú s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.",
+      "sala.avio.vestit3": "Era d'un altre.",
       "sala.bar_rebost.caixes.look": "Caixes de cervesa, tovallons i un cartell de «Prohibit fumar» ple de cremades.",
       "sala.bar_rebost.caixes.nom": "caixes",
       "sala.bar_rebost.calaix.buit": "Buit. Com el pot de les propines a les deu.",

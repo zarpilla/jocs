@@ -118,7 +118,8 @@ tots els caràcters catalans. Cap font amb llicència no comercial. Si mai cal u
 
 `patches/motor-benne.patch` són els canvis propis al motor (heretats de Ferro-9): `stayBlackOnEnter()`
 per mostrar títols sobre negre abans d'una sala, el text de pantalla per sobre del fos a negre, i
-`walkToLabel` a `game-config.json` per traduir «Walk to». `benne:create` l'aplica cada vegada que
+`walkToLabel` a `game-config.json` per traduir «Walk to», i `setOutfit()` per canviar la roba d'un personatge
+(prova les etiquetes `<roba>IdleD`, `<roba>WalkL`... abans que les normals). `benne:create` l'aplica cada vegada que
 copia el motor.
 
 Per a la GUI: `switchProtagonist()` (botó de canviar entre l'Iri i la Vet), `sayHint()` (botó de
