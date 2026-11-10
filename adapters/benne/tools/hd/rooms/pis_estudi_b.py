@@ -176,8 +176,19 @@ def monitors(cv, frame=0):
         mx = (x0 + x1) // 2
         cv.rect(mx - 1, y1, mx + 1, DESK_Y, STEELB, 2.4)
         cv.rect(mx - 7, DESK_Y - 1, mx + 7, DESK_Y, STEELB, 3.0)
-    # el mapa de xarxa del BCMU a la del mig: nodes i línies
-    nodes = ((262, 70), (284, 66), (302, 74), (272, 88), (296, 92), (284, 100))
+    # a la del mig, el rètol «BCMU» (com a la proposta A) i, a sota, el mapa de xarxa del banc
+    cv.rect(266, 64, 300, 74, SCREEN, 2.4, lit=0)
+    outline(cv, 266, 64, 300, 74, SCREEN)
+    font = {'B': ['110', '101', '110', '101', '110'], 'C': ['011', '100', '100', '100', '011'],
+            'M': ['10001', '11011', '10101', '10001', '10001'], 'U': ['101', '101', '101', '101', '111']}
+    x = 270
+    for ch in 'BCMU':
+        for j, row in enumerate(font[ch]):
+            for i, bit in enumerate(row):
+                if bit == '1':
+                    cv.put(x + i, 67 + j, SCREEN, 5.4, lit=0)
+        x += len(font[ch][0]) + 2
+    nodes = ((262, 82), (284, 79), (302, 84), (272, 94), (296, 97), (284, 103))
     for (ax, ay), (bx, by) in ((nodes[0], nodes[1]), (nodes[1], nodes[2]), (nodes[0], nodes[3]), (nodes[3], nodes[4]),
                                (nodes[2], nodes[4]), (nodes[4], nodes[5]), (nodes[3], nodes[5])):
         cv.line(ax, ay, bx, by, SCREEN, 3.4, lit=0)
