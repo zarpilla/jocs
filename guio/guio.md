@@ -230,12 +230,12 @@ personal de manteniment.
 
 *(L'Iri entra per l'esquerra, de tornada a casa, sense apartar els ulls del mòbil.)*
 
-> IRI (al mòbil): Ho tinc. Ho tinc ho tinc ho tinc. Amb un 3 % de bateria, però ho tinc. [SO: teclat]
+> IRI (al mòbil): Ho tinc. Ho tinc ho tinc ho tinc. Amb un 3 % de bateria, però ho tinc.
 > IRI: Vet? VET! Ho he trobat! Podem entrar a la banca mundial!
 > VET (des de la cuina): Jo també he trobat una cosa: que no has rentat els plats en nou dies.
 > IRI: Saps què és el més divertit? Que el BCMU té més diners que 180 països junts. I no són seus. Són dels altres.
 > VET: I nosaltres no en tenim ni per pizzes.
-> IRI: Per això robem. Perquè no ens queda pizza.
+> IRI: Doncs per això ho repartirem. Pizza per a tothom.
 > IRI: Però primer... No. No, no, no. S'ha mort.
 > IRI: Necessito internet de debò. I el router nou encara és a la caixa. [SO: miol]
 

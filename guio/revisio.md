@@ -472,13 +472,14 @@ PORTA «porta»
 ```
 EN ENTRAR
     • * (una vegada) — SEMPRE
-        [SO: teclat] JUGADORA: Ho tinc. Ho tinc ho tinc ho tinc. Amb un tres per cent de bateria, però ho tinc.
+        JUGADORA: Ho tinc. Ho tinc ho tinc ho tinc. Amb un tres per cent de bateria, però ho tinc.
         JUGADORA: Vet? VET! Ho he trobat! Podem entrar a la banca mundial!
         VET: Jo també he trobat una cosa: que no has rentat els plats en nou dies.
         JUGADORA: Saps què és el més divertit? Que el BCMU té més diners que cent vuitanta països junts. I no són seus. Són dels altres.
         VET: I nosaltres no en tenim ni per pizzes.
-        JUGADORA: Per això robem. Perquè no ens queda pizza.
-        [SO: miol] JUGADORA: Però primer necessito internet de debò. El router nou encara és a la caixa.
+        JUGADORA: Doncs per això ho repartirem. Pizza per a tothom.
+        JUGADORA: Però primer... No. No, no, no. S'ha mort.
+        [SO: miol] JUGADORA: Necessito internet de debò. I el router nou encara és a la caixa.
         ⇒ comença acte1
 
 DECORAT router_connectat — es veu si router_connectat
@@ -539,6 +540,8 @@ ROUTER «router»
           ⇒ +router_connectat
         JUGADORA: Ja hi som. El Llibre Major: un servidor de 1984 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
+        VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames? ⟨si cables = 2⟩
+        JUGADORA: Ara sí. ⟨si cables = 2⟩
         JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
         VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
         JUGADORA: Qui? ⟨si cables = 2⟩
@@ -557,6 +560,8 @@ ROUTER «router»
           ⇒ +router_connectat
         JUGADORA: Ja hi som. El Llibre Major: un servidor de 1984 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
+        VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames? ⟨si cables = 2⟩
+        JUGADORA: Ara sí. ⟨si cables = 2⟩
         JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
         VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
         JUGADORA: Qui? ⟨si cables = 2⟩
@@ -591,6 +596,8 @@ FIBRA «presa de la fibra»
           ⇒ +router_connectat
         JUGADORA: Ja hi som. El Llibre Major: un servidor de 1984 que porta els comptes de tot el sistema. ⟨si cables = 2⟩
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
+        VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames? ⟨si cables = 2⟩
+        JUGADORA: Ara sí. ⟨si cables = 2⟩
         JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
         VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
         JUGADORA: Qui? ⟨si cables = 2⟩
