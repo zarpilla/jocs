@@ -41,6 +41,10 @@ export default defineConfig({
       '@game': path.join(dir, 'src/game/game.ids.ts'),
     },
   },
+  // Namespace for localStorage saves, so games on the same origin don't share them.
+  define: {
+    'import.meta.env.VITE_BENNE_GAME_ID': JSON.stringify(slug),
+  },
   build: {
     chunkSizeWarningLimit: 2000,
   },

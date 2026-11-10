@@ -157,12 +157,20 @@ function formatActiveInventoryItemState(itemId: string | null): string {
   return name ? `"${itemId}" (${name})` : `"${itemId}"`;
 }
 
+/**
+ * Each game gets its own key namespace, so two BENNE games on the same origin
+ * (localhost, itch.io…) never see each other's saves. The id comes from package.json.
+ */
+const GAME_STORAGE_ID: string =
+  (import.meta.env.VITE_BENNE_GAME_ID as string | undefined)?.trim() || 'benne-game';
+const STORAGE_KEY_PREFIX = `${GAME_STORAGE_ID}:`;
+
 function localStorageKey(slot: number): string {
-  return `benne-save-${slot}`;
+  return `${STORAGE_KEY_PREFIX}save-${slot}`;
 }
 
-const SAVE_MANIFEST_STORAGE_KEY = 'benne-saves-manifest-v1';
-const NAMED_SAVE_STORAGE_KEY_PREFIX = 'benne-save-v1-';
+const SAVE_MANIFEST_STORAGE_KEY = `${STORAGE_KEY_PREFIX}saves-manifest-v1`;
+const NAMED_SAVE_STORAGE_KEY_PREFIX = `${STORAGE_KEY_PREFIX}save-v1-`;
 
 function normalizeSaveName(raw: string): string {
   return raw.trim();
@@ -181,7 +189,10 @@ function namedSaveStorageKey(name: string): string {
 }
 
 function parseLegacySlotFromStorageKey(storageKey: string): number | null {
-  const m = /^benne-save-(\d+)$/.exec(storageKey);
+  if (!storageKey.startsWith(STORAGE_KEY_PREFIX)) {
+    return null;
+  }
+  const m = /^save-(\d+)$/.exec(storageKey.slice(STORAGE_KEY_PREFIX.length));
   if (!m) {
     return null;
   }
