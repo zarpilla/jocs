@@ -1,0 +1,57 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "diu",
+  "with": "diu",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "diu",
+          "text": "dlg.diu.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "cables",
+          "text": "dlg.diu.opt.cables",
+          "next": "cables"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.diu.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "cables": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.diu.cables1"
+        },
+        {
+          "who": "diu",
+          "text": "dlg.diu.cables2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "diu",
+          "text": "dlg.diu.hola"
+        }
+      ]
+    }
+  }
+}

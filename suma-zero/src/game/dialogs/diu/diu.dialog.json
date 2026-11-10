@@ -1,0 +1,20 @@
+{
+  "id": "diu",
+  "displayName": "diu",
+  "options": [
+    {
+      "id": "menu__cables",
+      "scriptName": "menu__cables",
+      "text": "Deixa els cables, sisplau.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, res.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

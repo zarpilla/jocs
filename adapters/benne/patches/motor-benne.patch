@@ -1,0 +1,172 @@
+diff -ruN src/engine/bennescript/actions.ts src/engine/bennescript/actions.ts
+--- src/engine/bennescript/actions.ts	2026-11-10 07:43:04.035247025 +0100
++++ src/engine/bennescript/actions.ts	2026-11-09 16:55:36.494816905 +0100
+@@ -311,6 +311,15 @@
+   );
+ }
+ 
++/**
++ * Called from a room-enter handler (`onEnter`, `game.onEnterAnyRoom`): the room is not revealed —
++ * the screen stays black until a later `fadeIn()`. For title cards shown before a room appears.
++ */
++export function stayBlackOnEnter(): void {
++  const scene = roomFor('stayBlackOnEnter');
++  if (scene) scene.holdScreenFadeOnEnter = true;
++}
++
+ /** Fades the screen to `color` (black by default) over `seconds`. Waits. */
+ export const fadeOut = timed((seconds?: number, color?: number): Task => screenFade(1, seconds, color));
+ 
+diff -ruN src/engine/bennescript/index.ts src/engine/bennescript/index.ts
+--- src/engine/bennescript/index.ts	2026-11-10 07:43:04.035481703 +0100
++++ src/engine/bennescript/index.ts	2026-11-09 16:55:36.495457010 +0100
+@@ -14,6 +14,7 @@
+   inventory,
+   player,
+   say,
++  stayBlackOnEnter,
+   wait,
+   waitForClick,
+   walkToClicked,
+diff -ruN src/engine/ConfigManager.ts src/engine/ConfigManager.ts
+--- src/engine/ConfigManager.ts	2026-11-10 07:43:04.034534597 +0100
++++ src/engine/ConfigManager.ts	2026-11-08 18:07:27.880092473 +0100
+@@ -332,6 +332,10 @@
+   if (data.defaultFallbackLine !== undefined && typeof data.defaultFallbackLine !== 'string') {
+     throw new Error('game-config defaultFallbackLine must be a string when present');
+   }
++
++  if (data.walkToLabel !== undefined && typeof data.walkToLabel !== 'string') {
++    throw new Error('game-config walkToLabel must be a string when present');
++  }
+ }
+ 
+ function assertInitialGameState(data: GameSettings): void {
+diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
+--- src/engine/scenes/RoomScene.ts	2026-11-10 07:43:04.038441556 +0100
++++ src/engine/scenes/RoomScene.ts	2026-11-09 16:55:36.484130297 +0100
+@@ -230,6 +230,7 @@
+   BENNE_SCREEN_FADE_DEFAULT_COLOR,
+   BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
+   BENNE_SCREEN_FADE_OVERLAY_DEPTH,
++  DISPLAY_TEXT_OVERLAY_DEPTH,
+   SPEAKING_TEXT_OVERLAY_DEPTH,
+ } from './roomScreenFadeConstants';
+ import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
+@@ -874,7 +875,7 @@
+       const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
+ 
+       const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
+-      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : stackDepth;
++      const guiDepth = isSpeakingText ? SPEAKING_TEXT_OVERLAY_DEPTH : isDisplayText ? DISPLAY_TEXT_OVERLAY_DEPTH : stackDepth;
+       const guiStartVisible =
+         isSpeakingText || isDisplayText || isChoiceDialog
+           ? false
+@@ -1866,6 +1867,12 @@
+   }
+ 
+   /**
++   * Set during a room's enter handlers (Bennescript `stayBlackOnEnter()`): the room transition skips
++   * its fade-in and leaves the screen black, so a title can be shown before the room is revealed.
++   */
++  holdScreenFadeOnEnter = false;
++
++  /**
+    * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
+    * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
+    */
+diff -ruN src/engine/scenes/roomScreenFadeConstants.ts src/engine/scenes/roomScreenFadeConstants.ts
+--- src/engine/scenes/roomScreenFadeConstants.ts	2026-11-10 07:43:04.038441556 +0100
++++ src/engine/scenes/roomScreenFadeConstants.ts	2026-11-09 13:07:54.761002195 +0100
+@@ -4,7 +4,7 @@
+ export const BENNE_SCREEN_FADE_DEFAULT_COLOR = 0x000000;
+ 
+ /**
+- * Renders above HUD, choice-dialog, and display-text GUI overlays; below Speaking Text
++ * Renders above HUD and choice-dialog GUI overlays; below Display Text, Speaking Text
+  * ({@link SPEAKING_TEXT_OVERLAY_DEPTH}) and the {@link RoomScene} custom game cursor
+  * (see `CUSTOM_CURSOR_DEPTH` in `RoomScene.ts`).
+  */
+@@ -15,3 +15,9 @@
+  * stay readable during `fadeOut()`, and below the custom cursor (`CUSTOM_CURSOR_DEPTH`).
+  */
+ export const SPEAKING_TEXT_OVERLAY_DEPTH = 460_000;
++
++/**
++ * Display Text (`display-text`, Bennescript `display`) also draws above the screen fade, so a
++ * title or an ending can be shown over black (`fadeOut()` then `display()`).
++ */
++export const DISPLAY_TEXT_OVERLAY_DEPTH = 455_000;
+diff -ruN src/engine/scenes/RoomTransitionOrchestrator.ts src/engine/scenes/RoomTransitionOrchestrator.ts
+--- src/engine/scenes/RoomTransitionOrchestrator.ts	2026-11-10 07:43:04.038441556 +0100
++++ src/engine/scenes/RoomTransitionOrchestrator.ts	2026-11-09 16:55:36.494738677 +0100
+@@ -406,7 +406,11 @@
+         await entranceSound.prepareForPlayback();
+       }
+ 
+-      if (skipEnterFadeIn) {
++      if (roomScene.holdScreenFadeOnEnter) {
++        // The script wants to start on black (e.g. a title card); it fades in itself later.
++        roomScene.holdScreenFadeOnEnter = false;
++        roomScene.screenFadeLayer?.setAlpha(1);
++      } else if (skipEnterFadeIn) {
+         roomScene.screenFadeLayer?.setAlpha(0);
+       } else {
+         syncBenneRuntimeHiDpiSceneMainCameras(this.game);
+diff -ruN src/engine/verbs/verbConfig.ts src/engine/verbs/verbConfig.ts
+--- src/engine/verbs/verbConfig.ts	2026-11-10 07:43:04.039671841 +0100
++++ src/engine/verbs/verbConfig.ts	2026-11-08 18:11:55.283521618 +0100
+@@ -13,6 +13,12 @@
+  */
+ export const WALK_TO_VERB_DISPLAY_LABEL = 'Walk to';
+ 
++/** Walk-mode label: `game-config.json` `walkToLabel` when set, else {@link WALK_TO_VERB_DISPLAY_LABEL}. */
++export function resolveWalkToLabel(settings: GameSettings): string {
++  const custom = settings.walkToLabel?.trim();
++  return custom && custom.length > 0 ? custom : WALK_TO_VERB_DISPLAY_LABEL;
++}
++
+ function titleCaseVerbId(id: string): string {
+   if (id.length === 0) {
+     return id;
+@@ -28,7 +34,7 @@
+ export function resolveVerbLineDisplayLabel(settings: GameSettings, activeVerbId: string | null): string {
+   const trimmed = activeVerbId?.trim() ?? '';
+   if (trimmed.length === 0 || trimmed === WALK_TO_VERB_ID) {
+-    return WALK_TO_VERB_DISPLAY_LABEL;
++    return resolveWalkToLabel(settings);
+   }
+   const defs = getEffectiveVerbDefinitions(settings);
+   const def = defs.find((v) => v.id === trimmed);
+@@ -53,7 +59,7 @@
+ export function resolveVerbLineLeadingVerbWord(settings: GameSettings, activeVerbId: string): string {
+   const trimmed = activeVerbId.trim();
+   if (trimmed.length === 0 || trimmed === WALK_TO_VERB_ID) {
+-    return WALK_TO_VERB_DISPLAY_LABEL;
++    return resolveWalkToLabel(settings);
+   }
+   const defs = getEffectiveVerbDefinitions(settings);
+   const def = defs.find((v) => v.id === trimmed);
+@@ -97,7 +103,7 @@
+   }
+ 
+   if (walkMode) {
+-    return `${WALK_TO_VERB_DISPLAY_LABEL} ${desc}`;
++    return `${resolveWalkToLabel(settings)} ${desc}`;
+   }
+   if (useInventoryPrepLine) {
+     const verbWord = resolveVerbLineLeadingVerbWord(settings, trimmedVerb);
+diff -ruN src/types/game.ts src/types/game.ts
+--- src/types/game.ts	2026-11-10 07:43:04.040033919 +0100
++++ src/types/game.ts	2026-11-08 18:07:27.879821336 +0100
+@@ -213,6 +213,10 @@
+    */
+   defaultFallbackLine?: string;
+   /**
++   * Verb-line label for the built-in walk mode (no verb armed). Defaults to **`"Walk to"`**.
++   */
++  walkToLabel?: string;
++  /**
+    * Global default policy for whether the **active inventory item** is "dropped" (active inventory +
+    * active verb both cleared) after it is used on a clickable target (prop / hotspot / character).
+    *

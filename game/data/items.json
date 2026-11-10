@@ -1,0 +1,9 @@
+{
+  "$schema": "../schemas/items.schema.json",
+  "caixa_cartro": {
+    "name": "obj.caixa_cartro.nom",
+    "interactions": [
+      { "verb": "look", "lines": [{ "who": "player", "text": "obj.caixa_cartro.look" }] }
+    ]
+  }
+}

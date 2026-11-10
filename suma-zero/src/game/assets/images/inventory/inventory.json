@@ -1,0 +1,47 @@
+{
+  "frames": {
+    "inventory 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 36,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 36,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 36,
+        "h": 20
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py)",
+    "image": "inventory.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 36,
+      "h": 20
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "caixa_cartro",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

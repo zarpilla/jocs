@@ -1,0 +1,12 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "iri": {
+    "name": "pj.iri.nom"
+  },
+  "vet": {
+    "name": "pj.vet.nom"
+  },
+  "diu": {
+    "name": "pj.diu.nom"
+  }
+}

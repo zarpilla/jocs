@@ -1,0 +1,13 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.pis_cuina.nom",
+  "protagonist": "vet",
+  "hotspots": {
+    "plats": {
+      "name": "sala.pis_cuina.plats.nom",
+      "interactions": [
+        { "verb": "look", "lines": [{ "who": "player", "text": "sala.pis_cuina.plats.look" }] }
+      ]
+    }
+  }
+}

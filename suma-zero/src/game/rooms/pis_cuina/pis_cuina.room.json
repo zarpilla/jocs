@@ -1,0 +1,101 @@
+{
+  "id": "pis_cuina",
+  "name": "La cuina",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 161
+          },
+          {
+            "x": 461,
+            "y": 161
+          },
+          {
+            "x": 472,
+            "y": 202
+          },
+          {
+            "x": 8,
+            "y": 202
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "plats",
+      "active": true,
+      "description": "plats",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 203,
+          "y": 57
+        },
+        {
+          "x": 277,
+          "y": 57
+        },
+        {
+          "x": 277,
+          "y": 90
+        },
+        {
+          "x": 203,
+          "y": 90
+        }
+      ],
+      "walkToPoint": {
+        "x": 240,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 240,
+        "y": 90
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 240,
+      "y": 185,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

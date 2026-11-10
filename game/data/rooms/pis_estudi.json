@@ -1,0 +1,92 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.pis_estudi.nom",
+  "protagonist": "iri",
+  "hotspots": {
+    "caixa": {
+      "name": "sala.pis_estudi.caixa.nom",
+      "visibleIf": {
+        "flag": "router_connectat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.caixa.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.caixa.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "caixa_cartro"
+            }
+          ]
+        }
+      ]
+    },
+    "router": {
+      "name": "sala.pis_estudi.router.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "caixa_cartro",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.connecta"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "caixa_cartro"
+            },
+            {
+              "setFlag": "router_connectat"
+            },
+            {
+              "ending": "prova"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.look"
+            }
+          ]
+        }
+      ]
+    },
+    "diu": {
+      "name": "sala.pis_estudi.diu.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "diu"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.diu.look"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

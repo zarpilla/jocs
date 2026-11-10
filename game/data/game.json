@@ -1,0 +1,26 @@
+{
+  "$schema": "../schemas/game.schema.json",
+  "id": "sumazero",
+  "title": "joc.titol",
+  "defaultLocale": "ca",
+  "locales": [
+    "ca"
+  ],
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "start": {
+    "iri": {
+      "room": "pis_estudi",
+      "items": []
+    },
+    "vet": {
+      "room": "pis_cuina"
+    }
+  },
+  "switchWhen": {
+    "flag": "router_connectat"
+  },
+  "cover": "portada"
+}

@@ -1,0 +1,32 @@
+{
+  "name": "suma-zero",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*",
+    "game"
+  ],
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit",
+    "validate": "tsx tools/validate.ts",
+    "jugar": "tsx tools/jugar.ts",
+    "fitxes": "tsx tools/fitxes.ts",
+    "schemas": "tsx tools/generate-schemas.ts",
+    "sons": "python3 tools/sons.py",
+    "musica": "python3 tools/musica.py",
+    "font": "python3 tools/font/suma_font.py",
+    "benne:create": "tsx adapters/benne/create-project.ts",
+    "benne:sync": "tsx adapters/benne/sync.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "ajv": "^8.20.0",
+    "ts-json-schema-generator": "^2.3.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.8.0",
+    "vitest": "^3.2.0"
+  }
+}

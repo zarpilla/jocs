@@ -1,0 +1,7 @@
+{
+  "$schema": "../schemas/state.schema.json",
+  "flags": {
+    "router_connectat": false
+  },
+  "vars": {}
+}

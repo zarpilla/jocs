@@ -1,0 +1,9 @@
+{
+  "$schema": "../schemas/hints.schema.json",
+  "iri_router": {
+    "priority": 1,
+    "when": { "protagonist": "iri" },
+    "doneWhen": { "flag": "router_connectat" },
+    "levels": ["pista.iri_router.1", "pista.iri_router.2", "pista.iri_router.3"]
+  }
+}

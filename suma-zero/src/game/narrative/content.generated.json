@@ -1,0 +1,348 @@
+{
+  "$comment": "GENERAT per adapters/benne/sync.ts",
+  "content": {
+    "manifest": {
+      "id": "sumazero",
+      "title": "joc.titol",
+      "defaultLocale": "ca",
+      "locales": [
+        "ca"
+      ],
+      "protagonists": [
+        "iri",
+        "vet"
+      ],
+      "start": {
+        "iri": {
+          "room": "pis_estudi",
+          "items": []
+        },
+        "vet": {
+          "room": "pis_cuina"
+        }
+      },
+      "switchWhen": {
+        "flag": "router_connectat"
+      },
+      "cover": "portada"
+    },
+    "state": {
+      "flags": {
+        "router_connectat": false
+      },
+      "vars": {}
+    },
+    "characters": {
+      "iri": {
+        "name": "pj.iri.nom"
+      },
+      "vet": {
+        "name": "pj.vet.nom"
+      },
+      "diu": {
+        "name": "pj.diu.nom"
+      }
+    },
+    "items": {
+      "caixa_cartro": {
+        "name": "obj.caixa_cartro.nom",
+        "interactions": [
+          {
+            "verb": "look",
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.caixa_cartro.look"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "rooms": {
+      "pis_cuina": {
+        "name": "sala.pis_cuina.nom",
+        "protagonist": "vet",
+        "hotspots": {
+          "plats": {
+            "name": "sala.pis_cuina.plats.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_cuina.plats.look"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "pis_estudi": {
+        "name": "sala.pis_estudi.nom",
+        "protagonist": "iri",
+        "hotspots": {
+          "caixa": {
+            "name": "sala.pis_estudi.caixa.nom",
+            "visibleIf": {
+              "flag": "router_connectat",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.caixa.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.caixa.agafa"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "caixa_cartro"
+                  }
+                ]
+              }
+            ]
+          },
+          "router": {
+            "name": "sala.pis_estudi.router.nom",
+            "interactions": [
+              {
+                "verb": "use",
+                "item": "caixa_cartro",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.connecta"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "caixa_cartro"
+                  },
+                  {
+                    "setFlag": "router_connectat"
+                  },
+                  {
+                    "ending": "prova"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.router.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "diu": {
+            "name": "sala.pis_estudi.diu.nom",
+            "interactions": [
+              {
+                "verb": "talkTo",
+                "dialogue": "diu"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.diu.look"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      },
+      "portada": {
+        "name": "sala.portada.nom",
+        "hotspots": {}
+      }
+    },
+    "quests": {},
+    "hints": {
+      "iri_router": {
+        "priority": 1,
+        "when": {
+          "protagonist": "iri"
+        },
+        "doneWhen": {
+          "flag": "router_connectat"
+        },
+        "levels": [
+          "pista.iri_router.1",
+          "pista.iri_router.2",
+          "pista.iri_router.3"
+        ]
+      }
+    },
+    "endings": {
+      "prova": {
+        "title": "final.prova.titol",
+        "text": "final.prova.text",
+        "priority": 1,
+        "when": {
+          "flag": "router_connectat"
+        }
+      }
+    },
+    "dialogues": {
+      "diu": {
+        "id": "diu",
+        "with": "diu",
+        "start": [
+          {
+            "node": "hola"
+          }
+        ],
+        "nodes": {
+          "hola": {
+            "lines": [
+              {
+                "who": "diu",
+                "text": "dlg.diu.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "menu": {
+            "choices": [
+              {
+                "id": "cables",
+                "text": "dlg.diu.opt.cables",
+                "next": "cables"
+              },
+              {
+                "id": "adeu",
+                "text": "dlg.diu.opt.adeu",
+                "next": "adeu",
+                "end": true
+              }
+            ]
+          },
+          "cables": {
+            "lines": [
+              {
+                "who": "player",
+                "text": "dlg.diu.cables1"
+              },
+              {
+                "who": "diu",
+                "text": "dlg.diu.cables2"
+              }
+            ],
+            "goto": "menu"
+          },
+          "adeu": {
+            "lines": [
+              {
+                "who": "diu",
+                "text": "dlg.diu.hola"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "locales": {
+    "ca": {
+      "dlg.diu.hola": "Miau.",
+      "dlg.diu.opt.cables": "Deixa els cables, sisplau.",
+      "dlg.diu.opt.adeu": "Res, res.",
+      "dlg.diu.cables1": "Diu, els cables no es mengen.",
+      "dlg.diu.cables2": "Miau.",
+      "final.prova.titol": "Prova",
+      "final.prova.text": "Contingut mínim: el repositori funciona.",
+      "joc.titol": "Suma Zero",
+      "ui.defecte": "Això no funciona.",
+      "ui.defecte.look": "Res d'especial.",
+      "ui.defecte.pickUp": "Millor ho deixo on és.",
+      "ui.defecte.use": "No veig com.",
+      "ui.defecte.talkTo": "No crec que em respongui.",
+      "ui.defecte.open": "No s'obre.",
+      "ui.defecte.close": "No cal tancar-ho.",
+      "ui.defecte.push": "No es mou.",
+      "ui.defecte.pull": "No es mou.",
+      "ui.defecte.give": "No crec que ho vulgui.",
+      "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal explorar una mica més.",
+      "ui.missio.nova": "Nova missió: {titol}",
+      "ui.missio.completada": "Missió completada: {titol}",
+      "ui.missio.fallida": "Missió fallida: {titol}",
+      "ui.fi": "FI",
+      "ui.verb.give": "Dona",
+      "ui.verb.give.prep": "a",
+      "ui.verb.pickUp": "Agafa",
+      "ui.verb.use": "Usa",
+      "ui.verb.use.prep": "amb",
+      "ui.verb.open": "Obre",
+      "ui.verb.look": "Mira",
+      "ui.verb.push": "Empeny",
+      "ui.verb.close": "Tanca",
+      "ui.verb.talkTo": "Parla amb",
+      "ui.verb.pull": "Estira",
+      "ui.verb.walkTo": "Ves a",
+      "ui.menu.titol": "Menú",
+      "ui.menu.desar": "Desa",
+      "ui.menu.carregar": "Carrega",
+      "ui.menu.opcions": "Opcions",
+      "ui.menu.sortir": "Surt",
+      "ui.menu.continuar": "Continua",
+      "ui.menu.inici": "Pantalla inicial",
+      "ui.menu.tornar": "Torna",
+      "ui.carregar.instruccions": "Tria una partida per carregar.",
+      "ui.desar.instruccions": "Tria una posició i escriu un nom per desar.",
+      "ui.opcions.clic_salta": "clic per saltar el diàleg",
+      "ui.opcions.volum_efectes": "volum dels efectes",
+      "ui.opcions.volum_musica": "volum de la música",
+      "ui.opcions.velocitat_text": "velocitat del text",
+      "ui.verb.talkTo.boto": "Parla",
+      "ui.menu.canviar": "Canvia",
+      "ui.menu.pista": "Pista",
+      "ui.canvia.encara_no": "Encara no: de moment, això és cosa de l'Iri.",
+      "ui.portada.comenca": "Comença",
+      "ui.portada.carrega": "Carrega una partida",
+      "obj.caixa_cartro.nom": "caixa de cartró",
+      "obj.caixa_cartro.amb_article": "la caixa de cartró",
+      "obj.caixa_cartro.look": "Una caixa de cartró. Per al gat, és un palau.",
+      "pj.iri.nom": "Iri",
+      "pj.vet.nom": "Vet",
+      "pj.diu.nom": "Diu",
+      "pista.iri_router.1": "El router no es connectarà sol.",
+      "pista.iri_router.2": "Si el gat tingués alguna cosa millor a fer...",
+      "pista.iri_router.3": "Agafo la caixa i la faig servir amb el router.",
+      "sala.pis_estudi.nom": "L'estudi",
+      "sala.pis_estudi.caixa.nom": "caixa",
+      "sala.pis_estudi.caixa.look": "La caixa del router nou. El gat ja l'ha reclamat.",
+      "sala.pis_estudi.caixa.agafa": "Me l'emporto. Ho sento, Diu.",
+      "sala.pis_estudi.router.nom": "router",
+      "sala.pis_estudi.router.look": "Tres cables i cap a lloc.",
+      "sala.pis_estudi.router.connecta": "Caixa per al gat, cables per a mi. Connectat.",
+      "sala.pis_cuina.nom": "La cuina",
+      "sala.pis_cuina.plats.nom": "plats",
+      "sala.pis_cuina.plats.look": "Nou dies. Els he comptat.",
+      "sala.portada.nom": "Suma Zero",
+      "sala.pis_estudi.diu.nom": "Diu",
+      "sala.pis_estudi.diu.look": "El gat. Té els ullals posats en el cable de xarxa."
+    }
+  },
+  "locale": "ca",
+  "zones": {}
+}

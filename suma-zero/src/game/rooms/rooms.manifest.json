@@ -1,0 +1,17 @@
+{
+  "startRoomId": "portada",
+  "rooms": [
+    {
+      "id": "pis_cuina",
+      "definition": "pis_cuina/pis_cuina.room.json"
+    },
+    {
+      "id": "pis_estudi",
+      "definition": "pis_estudi/pis_estudi.room.json"
+    },
+    {
+      "id": "portada",
+      "definition": "portada/portada.room.json"
+    }
+  ]
+}

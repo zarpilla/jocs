@@ -1,0 +1,20 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "La cuina",
+  "era": "vet",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "plats",
+      "label": "plats",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 203,
+      "y": 57
+    }
+  ],
+  "characters": []
+}
