@@ -405,8 +405,16 @@
               "who": "iri"
             },
             {
-              "hasItem": "imant_ferro9",
-              "who": "iri"
+              "all": [
+                {
+                  "hasItem": "imant_ferro9",
+                  "who": "iri"
+                },
+                {
+                  "flag": "porta_cella_oberta",
+                  "is": false
+                }
+              ]
             }
           ]
         }
@@ -420,9 +428,16 @@
           "is": false
         },
         {
-          "hasItem": "imant_ferro9",
-          "who": "iri",
-          "is": false
+          "any": [
+            {
+              "hasItem": "imant_ferro9",
+              "who": "iri",
+              "is": false
+            },
+            {
+              "flag": "porta_cella_oberta"
+            }
+          ]
         }
       ]
     },
@@ -2508,6 +2523,19 @@
         {
           "flag": "planols_robats",
           "is": false
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "hasItem": "imant_ferro9",
+                "who": "iri"
+              },
+              {
+                "flag": "porta_cella_oberta"
+              }
+            ]
+          }
         }
       ]
     },
@@ -2518,6 +2546,46 @@
       "pista.iri_planols.1",
       "pista.iri_planols.2",
       "pista.iri_planols.3"
+    ]
+  },
+  "iri_calaix": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "motor_engegat"
+        },
+        {
+          "flag": "planols_robats",
+          "is": false
+        },
+        {
+          "hasItem": "imant_ferro9",
+          "who": "iri"
+        },
+        {
+          "flag": "porta_cella_oberta"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "planols_robats"
+        },
+        {
+          "hasItem": "imant_ferro9",
+          "who": "iri",
+          "is": false
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_calaix.1",
+      "pista.iri_calaix.2"
     ]
   },
   "iri_expedient": {

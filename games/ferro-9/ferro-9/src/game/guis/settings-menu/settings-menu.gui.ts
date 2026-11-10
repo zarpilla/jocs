@@ -1,6 +1,6 @@
-import { settings } from '@benne/script';
+import { game, settings } from '@benne/script';
 import { guis } from '@game';
-import { gui, back, musicEnabled, musicVolume, sfxVolume, textSpeedSlider } from './settings-menu.ids';
+import { gui, back, musicEnabled, musicVolume, sfxVolume, textSpeedSlider, version } from './settings-menu.ids';
 
 // The text speed slider runs from slow (0.1) to fast (2), the opposite way to the speech
 // duration multiplier, so it maps across the same range.
@@ -8,6 +8,7 @@ const TEXT_SPEED_MIN = 0.1
 const TEXT_SPEED_MAX = 2
 
 gui.onBuilt(() => {
+  version.text = `v${game.version}`
   sfxVolume.value = settings.sfxVolume * 100
   musicVolume.value = settings.musicVolume * 100
   textSpeedSlider.value = TEXT_SPEED_MIN + TEXT_SPEED_MAX - settings.textSpeed

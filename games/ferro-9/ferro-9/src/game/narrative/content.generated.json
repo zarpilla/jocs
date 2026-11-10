@@ -10308,8 +10308,16 @@
                   "who": "iri"
                 },
                 {
-                  "hasItem": "imant_ferro9",
-                  "who": "iri"
+                  "all": [
+                    {
+                      "hasItem": "imant_ferro9",
+                      "who": "iri"
+                    },
+                    {
+                      "flag": "porta_cella_oberta",
+                      "is": false
+                    }
+                  ]
                 }
               ]
             }
@@ -10323,9 +10331,16 @@
               "is": false
             },
             {
-              "hasItem": "imant_ferro9",
-              "who": "iri",
-              "is": false
+              "any": [
+                {
+                  "hasItem": "imant_ferro9",
+                  "who": "iri",
+                  "is": false
+                },
+                {
+                  "flag": "porta_cella_oberta"
+                }
+              ]
             }
           ]
         },
@@ -12411,6 +12426,19 @@
             {
               "flag": "planols_robats",
               "is": false
+            },
+            {
+              "not": {
+                "all": [
+                  {
+                    "hasItem": "imant_ferro9",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "porta_cella_oberta"
+                  }
+                ]
+              }
             }
           ]
         },
@@ -12421,6 +12449,46 @@
           "pista.iri_planols.1",
           "pista.iri_planols.2",
           "pista.iri_planols.3"
+        ]
+      },
+      "iri_calaix": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "motor_engegat"
+            },
+            {
+              "flag": "planols_robats",
+              "is": false
+            },
+            {
+              "hasItem": "imant_ferro9",
+              "who": "iri"
+            },
+            {
+              "flag": "porta_cella_oberta"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "planols_robats"
+            },
+            {
+              "hasItem": "imant_ferro9",
+              "who": "iri",
+              "is": false
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_calaix.1",
+          "pista.iri_calaix.2"
         ]
       },
       "iri_expedient": {
@@ -16114,6 +16182,7 @@
       "ui.menu.historial": "Historial",
       "ui.historial.buit": "Encara no s'ha dit res.",
       "ui.canvia.encara_no": "Encara no: de moment, això és cosa de l'Iri.",
+      "ui.portada.continua": "Continua",
       "ui.portada.comenca": "Comença",
       "ui.portada.carrega": "Carrega una partida",
       "mis.acte1.titol": "Acte 1 · La descoberta",
@@ -16626,6 +16695,8 @@
       "pista.iri_planols.1": "El despatx del director és al costat del magatzem. Què hi deu guardar?",
       "pista.iri_planols.2": "El calaix del despatx té un pany M-3: s'obre amb un imant de ferro-9.",
       "pista.iri_planols.3": "Demana un altre imant al Cargol (amb un formulari per triplicat) i obre el calaix del despatx.",
+      "pista.iri_calaix.1": "Ja tens l'imant. El calaix del despatx té un pany M-3.",
+      "pista.iri_calaix.2": "Fes servir l'imant amb el calaix del despatx.",
       "pista.iri_expedient.1": "Massa robatoris. Què deu haver apuntat el Sic?",
       "pista.iri_expedient.2": "Mira l'expedient del despatx del director.",
       "pista.iri_mira.1": "La Mira pagarà per mi. No pot ser.",

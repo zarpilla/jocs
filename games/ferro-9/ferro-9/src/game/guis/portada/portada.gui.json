@@ -9,6 +9,34 @@
   "controls": [
     {
       "type": "button",
+      "id": "continua",
+      "x": 165,
+      "y": 168,
+      "width": 150,
+      "height": 22,
+      "backgroundAnchor": "screen",
+      "text": "Continua",
+      "font": "ferro-negreta",
+      "fontSize": 8,
+      "textColor": "#10908e",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#28c074"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#132243",
+        "sides": "bottomRight"
+      },
+      "backgroundTag": "continua",
+      "states": {
+        "hover": "continua-hover"
+      }
+    },
+    {
+      "type": "button",
       "id": "comenca",
       "x": 165,
       "y": 196,
@@ -61,6 +89,22 @@
       "backgroundTag": "carrega",
       "states": {
         "hover": "carrega-hover"
+      }
+    },
+    {
+      "type": "text",
+      "id": "version",
+      "x": 474,
+      "y": 259,
+      "text": "",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#10908e",
+      "align": "right",
+      "textOutline": {
+        "enabled": true,
+        "color": "#132243",
+        "sides": "bottomRight"
       }
     }
   ]

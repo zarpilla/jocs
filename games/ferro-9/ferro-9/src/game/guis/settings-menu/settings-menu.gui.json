@@ -276,6 +276,18 @@
         "offsetY": 1
       },
       "zIndex": 103
+    },
+    {
+      "type": "text",
+      "id": "version",
+      "x": 110,
+      "y": 187,
+      "text": "",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#8a94a8",
+      "align": "left",
+      "zIndex": 103
     }
   ],
   "modal": true,
