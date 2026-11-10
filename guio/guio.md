@@ -1,19 +1,21 @@
 # Suma Zero — guió
 
 > Document únic del guió: premissa, regles del món, actes, finals i encaix amb el motor. Ve de
-> [primer-guio.txt](../primer-guio.txt) (les dues versions i les notes de l'usuari), revisat i ampliat.
+> [primer-guio.txt](../primer-guio.txt) (les dues versions i les notes de l'usuari), revisat i ampliat, i
+> corregit amb la primera revisió de coherència (annex B).
 > **Cap derrota i cap atzucac**: si alguna cosa surt malament, es torna a provar el pas, amb gràcia.
 
 ## Premissa
 
-L'**Iri** és hacker autodidacta i parla amb les màquines com si fossin persones. La **Vet** és cambrera en
-un bar de carretera i mentidera professional. Viuen juntes en un pis ple de cables, pizzes i un gat que es diu
+L'**Iri** és hacker autodidacta i parla amb les màquines com si fossin persones. La **Vet** és cambrera al
+bar La Propina i mentidera professional. Viuen juntes en un pis ple de cables, pizzes i un gat que es diu
 **Diu**. No tenen ni per pizzes.
 
-Una nit, l'Iri troba l'escletxa: a la seu de Ginebra del **Banc Central Mundial Unificat (BCMU)** hi ha un
-servidor de 1987, el **Llibre Major**, que encara porta la comptabilitat de tot el sistema i que ningú no
-s'ha atrevit a apagar («si funciona, no ho toquis»). No està connectat a internet: per això no l'ha hackejat
-mai ningú. Cal entrar-hi en persona.
+Un dilluns al vespre, l'Iri troba l'escletxa amb les dades del mòbil (li queda un 3 %): a la seu de Ginebra
+del **Banc Central Mundial Unificat (BCMU)** hi ha un servidor de 1987 que tothom anomena **el Llibre Major**,
+perquè encara porta el registre de tots els comptes del sistema. Ningú no s'ha atrevit a apagar-lo («si
+funciona, no ho toquis»). No està connectat a internet: per això no l'ha hackejat mai ningú. Cal entrar-hi
+en persona.
 
 L'Iri ha escrit un virus, **ROBIN HOOD 2.0**, que reparteix tots els diners del sistema a parts iguals entre
 tota la població. (El ROBIN HOOD 1.0 repartia la factura del mòbil entre ella i la Vet. No va funcionar.)
@@ -29,15 +31,16 @@ El pla és un desastre. Funciona massa bé.
 Comèdia caòtica amb rerefons polític clar però no panfletari, per a adolescents i adults.
 
 - **Regla d'or: els personatges no fan discursos.** Fan bromes que, si hi penses dos segons, són crítiques.
-  Cap monòleg de més de tres línies sobre el sistema.
+  Cap personatge diu més de tres línies seguides sobre el sistema.
 - **La crítica és a les coses**: els cartells («Aquí construïm el futur de tothom»), la font de marbre tancada
-  «per estalvi de costos», la porta VIP, el robot que no cobra les hores extres. El jugador hi clica i ho troba.
+  «per estalvi de costos», la porta VIP, el robot que no cobra les hores extres, el protocol del Director. El
+  jugador hi clica i ho troba.
 - **Els rics són persones, no monstres.** El Director creu de veritat que fa el bé. Això és més crític que un
   dolent de cartró.
 - **Els pobres no són herois.** L'Iri i la Vet roben per egoisme i per pizza. No són Robin Hood: són dues
   persones que han decidit que el sistema no les representa i fan una cosa estúpida i gran alhora.
-- **Els treballadors del banc també en són víctimes**: en Marcel, el Cap de Seguretat, el robot de neteja, els
-  tècnics subcontractats, la secretària. Ajudar-los és el que millora el final.
+- **Els treballadors del banc també en són víctimes**: en Marcel, en Ballester, NETA-3, la Rius, la senyora
+  Pons. Ajudar-los és el que millora el final.
 - **El gat Diu és intocable.** És l'únic personatge que no rep cap crítica. Ell no té culpa de res.
 
 ---
@@ -53,107 +56,123 @@ Comèdia caòtica amb rerefons polític clar però no panfletari, per a adolesce
 - **Arc:** comença dient «el problema és tècnic» i acaba aturant el seu propi virus perquè fa mal a qui no
   havia de fer mal, i fent-ho millor gràcies a la gent que ha escoltat pel camí.
 - **Joc:** manipula màquines (router, teclats, el robot, el servidor). Parla amb les màquines amb la mateixa
-  veu amb què parla amb les persones, i li funciona millor amb les màquines. Llegeix codis, cables i pantalles.
+  veu amb què parla amb les persones, i li funciona millor amb les màquines.
 
 ### Vet — la cara dura
 
 - **Qui és:** 26 anys. Germana gran de fet: no són família, però l'Iri hi viu des dels divuit. Encantadora,
-  mentidera professional, sap obrir qualsevol porta, literal i figurada. Cambrera al bar La Propina. Té
-  contactes a tot arreu.
+  mentidera professional, sap obrir qualsevol porta, literal i figurada. Cambrera a La Propina. Té contactes
+  a tot arreu.
 - **Què vol:** que l'Iri no es fiqui en problemes. (Ja és tard.)
 - **Què necessita:** deixar de dir que tot li és igual.
-- **Arc:** comença fent el pla «per vigilar l'Iri» i acaba dient la veritat al Cap de Seguretat, que és l'única
+- **Arc:** comença fent el pla «per vigilar l'Iri» i acaba dient la veritat a en Ballester, que és l'única
   vegada al joc que no menteix (i és l'opció que funciona millor).
 - **Joc:** parla, enganya, distreu i treu coses de les butxaques dels altres. Les converses d'arbre són seves.
 
 ### Com es comuniquen
 
-Al pis, per la porta i pel **passaplats** de la cuina. Al bar, per telèfon. Des de l'aeroport, per
-l'**auricular** (l'Iri li dona el dret a la Vet: ella es queda l'esquerre). Al banc, la veu va per l'auricular
-i els objectes, pel **tub pneumàtic** (vegeu «Regles del món»).
+Al pis, en veu alta i pel **passaplats** de la cuina. Al bar, per **telèfon**. Des de l'aeroport, per
+l'**auricular**: l'Iri li dona el dret a la Vet i es queda l'esquerre (si en Diu el va mossegar a l'Escena 1,
+«té forats de dent, però s'hi sent»). Al banc, la veu va per l'auricular i els objectes, pel **tub
+pneumàtic** (vegeu «Regles del món»).
 
 ## Secundaris
 
 | Personatge | Qui és | Per a què serveix |
 |---|---|---|
-| **Diu** | El gat. Mossega cables. | Tutorial (Acte 1), gag recurrent i escena postcrèdits. Intocable. |
-| **Marcel** | Ex-enginyer del BCMU, acomiadat per «reestructuració» després de vint anys. Va dissenyar el tub pneumàtic de la seu i va programar el robot de neteja. Beu cafè amb llet al bar. No té dentista. | **La informació.** Sap on és el Llibre Major, qui té la clau, els gustos del Cap i el codi del robot. També fa de veu de la crítica, en frases curtes. |
-| **Senyor Puig** | L'amo del bar La Propina. Bigoti i ràbia. Rètol: *«El cliente siempre tiene razón (excepto si no paga)»*. Parla sempre de «la seva dona», que tothom sap que no existeix. | L'obstacle de l'Escena 2, i un final petit: torna a obrir el bar. |
-| **La supervisora Ortega** | Supervisora de facturació de l'aeroport. Surt a fumar cada hora en punt. | El rellotge de la sincronització de l'aeroport (la cigarreta). |
-| **L'agent Soler** | Guàrdia de l'aeroport, de cor tendre. | El que la Vet ha de distreure amb el nen que no existeix. |
-| **El Director Bonfill** | Director de la seu del BCMU. Educat, impecable, somriu massa. Parla de «sostenibilitat» i «inclusió financera». Té un retrat seu al vestíbul, amb el seu gos **Rockefeller**. No crida mai. | L'antagonista. Creu que fa el bé. Al final, agafa el metro. |
-| **En Ballester** | El Cap de Seguretat. Gran i enorme, trenta anys a la casa, «reestructurat» tres cops. Porta la clau del Llibre Major en un collaret perquè «el banc no es fia de ningú, ni dels seus». Fan de la sèrie *La Comissària Bassols*. Té una hipoteca. | L'Escena 6. Si la Vet li diu la veritat, és un aliat a l'Acte 3. |
-| **NETA-3** | El robot de neteja del tercer pis. Porta catorze hores seguides. No li paguen les hores extres. | L'obstacle de l'Escena 5. Si l'Iri l'atura amb el codi d'en Marcel, en lloc de l'entrepà, és un aliat. |
+| **Diu** | El gat. Mossega cables. | Tutorial (Acte 1), gag recurrent i escena final. Intocable. |
+| **Marcel** | Ex-enginyer del BCMU, acomiadat per «reestructuració» després de vint anys. Va modernitzar el tub pneumàtic de la seu i va programar el robot de neteja. Beu cafè amb llet a La Propina. No té dentista. | **La informació.** Sap on és el Llibre Major, qui té la clau, els gustos d'en Ballester i el codi del robot. Fa de veu de la crítica, en frases curtes. |
+| **En Puig** | L'amo de La Propina. Bigoti i ràbia. Rètol: *«El cliente siempre tiene razón (excepto si no paga)»*. Parla sempre de «la seva dona», que tothom sap que no existeix. | L'obstacle de l'Escena 2, i un final petit: tanca el bar el dia del virus i el torna a obrir. |
+| **La supervisora Ortega** | Supervisora de facturació de l'aeroport. Surt a fumar cada hora en punt, davant la vidriera. | El rellotge de la sincronia de l'aeroport (la cigarreta). |
+| **L'agent Soler** | Guàrdia de l'aeroport, de cor tendre. | El que la Vet ha de distreure amb el fill que no existeix. |
+| **El Director Bonfill** | Director de la seu del BCMU. Educat, impecable, somriu massa. Parla de «sostenibilitat» i «inclusió financera». Té un retrat seu al vestíbul, amb el seu gos **Rockefeller**. No crida mai. Segueix el protocol. | L'antagonista. Creu que fa el bé. Al final, agafa el metro. |
+| **En Ballester** | Cap de Seguretat. Enorme, trenta anys a la casa, «reestructurat» tres cops. Porta la clau del Llibre Major en un collaret perquè «el banc no es fia de ningú, ni dels seus». Fan de la sèrie *La Comissària Bassols*. Té una hipoteca. | L'Escena 6. Si la Vet li diu la veritat, és un aliat a l'Acte 3. |
+| **NETA-3** | El robot de neteja del tercer pis. Porta catorze hores seguides. No li paguen les hores extres. | L'obstacle de l'Escena 5. Si l'Iri l'atura amb el codi d'en Marcel i li arregla l'horari, és un aliat. |
 | **La Rius** | Encarregada dels tècnics de manteniment de caixes fortes. Subcontractada d'una subcontracta. Una aplicació li descompta el temps que passa al lavabo. | L'entrada de l'Iri al banc. Si l'Iri l'ajuda, és una aliada. |
 | **La senyora Pons** | Secretària del Director. Cobra menys que el pressupost de perruqueria de Rockefeller. | L'Acte 3. Si la Vet l'escolta, és una aliada. |
+| **Figurants** | El nen de l'aeroport, l'empleat d'objectes perduts, els tècnics de la Rius, la recepcionista del BCMU. | Una o dues línies cadascun. |
 
 ---
 
 ## Regles del món
 
-### 1. La sincronització (per torns)
+### 1. La sincronia (per torns)
 
-Hi ha escenes en què cal **controlar les dues alhora**: l'aeroport (Escena 3), el collaret (Escena 6) i la
-contrasenya (Escena 8). El joc les anuncia amb un títol: **«Ara necessites les dues.»**
+Hi ha escenes en què cal **controlar les dues alhora**: l'aeroport (Escena 3), el collaret (Escena 6) i el
+mòbil del Director (Escena 8). El joc les anuncia amb un títol: **«Ara necessites les dues.»**
 
 1. **No hi ha pantalla dividida ni rellotge real.** Cada protagonista és a la seva sala, i el jugador canvia
    entre elles amb el botó «Canvia», com sempre. **Canviar no costa res.**
-2. **Cada acció que fa alguna cosa avança un torn** (usar, empènyer, dir una frase en una conversa de
-   sincronia). Mirar no avança el torn: el jugador pot mirar-ho tot amb calma.
-3. **El rellotge és una cosa de l'escena, i es veu**: la cigarreta de la supervisora que s'escurça, l'atenció
-   d'en Ballester (la mà que va cap a la ràdio), el mòbil del Director que s'il·lumina. També es diu en veu alta.
-4. **El que fa una afecta el que pot fer l'altra**: una distracció de la Vet dura un nombre de torns, i només
-   mentre dura l'Iri pot fer soroll sense que la sentin.
+2. **Un torn és una acció de qualsevol de les dues**: usar, empènyer, agafar, triar una opció de la conversa
+   de sincronia, o **«Espera»** (un botó que només surt durant una sincronia, per deixar passar un torn).
+   **Mirar i parlar per l'auricular no compten.** El jugador pot mirar-ho tot i llegir codis amb calma.
+3. **Cada sincronia té un rellotge que es veu i es diu**: la cigarreta de l'Ortega que s'escurça, la
+   sospita d'en Ballester (la mà que va cap a la ràdio), el mòbil del Director que s'il·lumina.
+4. **El que fa una afecta el que pot fer l'altra**: una distracció de la Vet dura uns torns, i només mentre
+   dura l'Iri pot fer soroll sense que la sentin.
 5. **Si s'acaba el rellotge o la sospita arriba al màxim, es torna a començar el pas** (no l'escena sencera),
-   amb una línia de gràcia. Mai no hi ha derrota.
-6. **Mai més de 8 torns per pas.** Els torns substitueixen els «60 segons» del primer guió.
-7. Fora de les escenes de sincronia, canviar de protagonista és lliure i no hi ha rellotge.
+   amb una línia de gràcia. **En reiniciar, totes les eines tornen**: el que es pot fer «una vegada» es pot
+   tornar a fer. El que ja s'ha après (un codi, un nom) es recorda. Mai no hi ha derrota.
+6. **Una sincronia comença quan les dues són al seu lloc**, mai abans; si el jugador hi prova abans, la
+   protagonista diu per què no.
+7. **Mai més de 10 torns per pas**, i sempre amb marge (vegeu «Comptes de les sincronies»).
+8. Fora de les sincronies, canviar de protagonista és lliure i no hi ha rellotge.
 
-### 2. La sospita (Escena 4, i ressò a l'Escena 8)
+### 2. La sospita (Escena 4)
 
 - Una barra de 0 a 100 a dalt de la pantalla mentre la Vet parla amb el Director. Cada resposta la puja o la
-  baixa. Es veu i es diu: el Director arqueja una cella (25), es posa bé la corbata (50), toca el telèfon (75).
-- **Si arriba a 100**, el Director truca molt educadament a seguretat i el joc fa **el Dia de la Marmota**:
-  la Vet torna a entrar pel vestíbul, i el Director: *«Bon dia. Una auditora?»*. La sospita torna al valor
-  inicial. **La Vet recorda tot el que ha après** (i el jugador ho veu: hi ha opcions noves que abans no hi
-  eren). «Amb menys pressupost» vol dir que la segona vegada el decorat és el mateix però amb una planta menys.
-- **La sospita inicial depèn de la preparació**: sense maletí ni acreditació, comença a 30; amb un dels dos,
-  a 15; amb tots dos, a 0. La preparació és opcional (vegeu l'Escena 3).
+  baixa (mai per sota de 0). Es veu i es diu: el Director arqueja una cella (25), es posa bé la corbata (50),
+  toca el telèfon (75).
+- **Si arriba a 100**, el Director truca molt educadament a seguretat i el joc fa **el Dia de la Marmota**: la
+  Vet torna a entrar pel vestíbul («amb menys pressupost»: una planta menys al decorat), i el Director: *«Bon
+  dia. Una auditora?»*. La sospita torna al valor inicial. **La Vet recorda el que ha après**, i el jugador ho
+  veu: cada pregunta té una opció nova que abans no hi era.
+- **La sospita inicial depèn de la preparació opcional** de l'Escena 3: sense maletí ni ulleres, comença a 30;
+  amb un dels dos, a 15; amb tots dos, a 0. Les ulleres compten si la Vet les **porta posades** (usar-les).
+- El valor més alt al qual arriba (`sospita_max`) es recorda per a l'Escena 9.
 
 ### 3. El tub pneumàtic
 
-- La seu del BCMU és un edifici de 1958 amb **tub pneumàtic** a totes les plantes. El banc el fa servir encara
-  per als documents secrets, perquè «el paper no es pot hackejar».
+- La seu del BCMU és un edifici de 1958 amb **tub pneumàtic**. El banc el fa servir encara per als documents
+  secrets, perquè «el paper no es pot hackejar».
 - **És l'única via per passar objectes** entre l'Iri i la Vet dins del banc. Hi ha estacions al vestíbul
-  (recepció), al passadís del tercer pis, a la sala de seguretat i al despatx del Director.
-- **Hi cap el que cap en una càpsula**: una clau, un paper, un entrepà (aixafat). No hi cap un extintor, ni
-  un gat.
+  (recepció), al passadís del tercer pis, a la sala d'escombraries (la de 1958, plena de pols), a la sala de
+  seguretat i a l'avantdespatx. **Al moll de càrrega no n'hi ha.**
 - Enviar és «usar objecte amb el tub». L'objecte passa a l'inventari de l'altra i el joc **no** canvia de
-  protagonista: la que rep ho diu per l'auricular.
-- Al pis, el **passaplats** de la cuina fa el mateix paper i serveix de tutorial.
+  protagonista: la que rep ho diu per l'auricular. Si l'altra no és en una sala amb estació, la càpsula
+  l'espera a l'estació de la seva planta («Ja t'ho he enviat; mira al tub quan hi siguis»). Si l'Iri encara és
+  al moll: «La càpsula és al tercer pis. Primer hi he de pujar.»
+- **Què hi cap:** el que cap en una càpsula. **Hi caben:** l'entrepà (aixafat), les claus, papers, la targeta,
+  les ulleres, el tap. **No hi caben:** el maletí, la galleda, el cartell, l'extintor, un gat.
+- **Què no s'envia:** l'auricular («Si me'l trec, no et sento»), la clau de casa («Si la perdo, dormim al
+  replà»), i el que l'altra no necessita («No li fa cap falta. I el tub fa un soroll horrible»). No es gasta res.
+- Enviar durant una sincronia compta com un torn.
+- Al pis, el **passaplats** de la cuina fa el mateix paper (sense límits de mida) i serveix de tutorial. Fora
+  del pis no hi és («La Vet és al bar. El passaplats no arriba tan lluny»).
 
 ### 4. L'auricular
 
-- Des de l'Escena 3, la Vet porta l'auricular dret de l'Iri. **El que una diu en veu alta, l'altra ho sent.**
-  Les converses de la Vet arriben a l'Iri en directe.
-- Això vol dir que **el que la Vet aprèn parlant, l'Iri també ho sap** (i al revés), però només des que
-  porten l'auricular, i només el que s'ha dit en veu alta (vegeu la «Línia de temps del coneixement»).
-- Les protagonistes es poden parlar per l'auricular en qualsevol moment: és el sistema de pistes compartit.
+- Des del principi de l'Escena 3, la Vet porta l'auricular dret de l'Iri. **El que una diu en veu alta,
+  l'altra ho sent**, en qualsevol sala.
+- Per tant, **el que la Vet aprèn parlant, l'Iri també ho sap** (i al revés), però només des que porten
+  l'auricular i només el que s'ha dit en veu alta. A l'Escena 2 es parlen per telèfon i només se sap el que es
+  diuen (vegeu la «Línia de temps del coneixement»).
+- Parlar per l'auricular no costa cap torn.
 
 ### 5. El Llibre Major i ROBIN HOOD 2.0
 
-- El Llibre Major (1987) porta el registre de tots els comptes del sistema. Funciona amb la **clau física**
-  del Cap de Seguretat (per autoritzar operacions) i, per aturar una operació en curs, amb la **contrasenya
-  personal del Director** i un codi que li arriba al mòbil. «El Llibre Major no sap desfer. Només el Director
-  pot dir prou.»
+- El Llibre Major (1987) porta el registre de tots els comptes del sistema. Per **autoritzar** una operació
+  necessita la **clau física** d'en Ballester (es gira i es pot treure: «Autoritzat. Ja la pots treure»). Per
+  **aturar** una operació en curs necessita la **contrasenya personal del Director** i un codi que li arriba al
+  mòbil. «El Llibre Major no sap desfer. Només el Director pot dir prou.»
 - ROBIN HOOD 2.0 té dues fases: **buidar** (porta tots els diners del sistema a un sol compte, el **compte
   zero**) i **repartir** (en dona una part igual a cada persona, ronda a ronda). Buidar és instantani.
-  Repartir, en un servidor de 1987, va a 40 comptes per segon: cada ronda tarda hores.
-- **Per això surt malament** (Acte 3): després de la primera ronda, tothom té 12 €. El bilionari, el
-  Director i també les pensions, els ajuts i les nòmines que s'havien de pagar avui a les dotze.
+  Repartir, en un servidor de 1987, és lentíssim: **cada ronda tarda tres hores**.
+- **Per això surt malament** (Acte 3): després de la primera ronda, tothom té 12 €. El bilionari, el Director,
+  i també les pensions, els ajuts i les nòmines que s'han de pagar avui **a les dotze**. Són les onze i quart.
 - **Aturar-lo** retorna als comptes d'origen el que encara és al compte zero. El que ja s'ha repartit, es
-  queda repartit. Amb ajuda (els aliats), l'Iri pot aturar-lo **millor**: que abans de tornar res, el compte
-  zero pagui les pensions, els ajuts i les nòmines del mes de tot el món.
+  queda repartit. Amb el **compte de nòmines** (que dona un aliat), l'Iri pot aturar-lo **millor**: que abans
+  de tornar res, el compte zero pagui les pensions, els ajuts i les nòmines del mes de tot el món.
 
 ---
 
@@ -162,25 +181,24 @@ contrasenya (Escena 8). El joc les anuncia amb un títol: **«Ara necessites les
 | Acte | Escenes | Sales | Protagonista |
 |---|---|---|---|
 | Pròleg | La seu del BCMU, de nit | `proleg_ginebra` | cinemàtica |
-| 1 · «El pla és un desastre» | 1. El pis · 2. El bar · 3. L'aeroport | `pis_estudi`, `pis_cuina`, `bar_sala`, `bar_rebost`, `aeroport_terminal`, `aeroport_personal` | Iri · Vet · les dues |
+| 1 · «El pla és un desastre» | 1. El pis · 2. El bar · 3. L'aeroport | `pis_estudi`, `pis_cuina`, `bar_sala`, `bar_rebost`, `aeroport_terminal`, `aeroport_personal`, `aeroport_oficina`, `avio` (cinemàtica) | Iri · Vet · les dues |
 | 2 · «La seu del mal» | 4. El vestíbul · 4b. El moll de càrrega · 5. El tercer pis · 6. El collaret | `bcmu_vestibul`, `bcmu_moll`, `bcmu_passadis`, `bcmu_escombraries`, `bcmu_seguretat` | Vet · Iri · Iri · les dues |
-| 3 · «Robin Hood 2.0» | 7. L'execució · 8. El despatx · 9. La sortida | `bcmu_escombraries`, `bcmu_despatx`, `bcmu_contenidor` | Iri · les dues · les dues |
-| Final | El bar La Propina, mirant les notícies | `final_bar` | cinemàtica |
+| 3 · «Robin Hood 2.0» | 7. L'execució · 8. El despatx · 9. La sortida | `bcmu_escombraries`, `bcmu_seguretat`, `bcmu_avantdespatx`, `bcmu_despatx`, `bcmu_vestibul`, `bcmu_passadis`, `bcmu_contenidor` | les dues |
+| Final | La Propina, mirant les notícies | `final_bar` | cinemàtica |
 
-**Escenes noves** respecte del primer guió (a petició de l'usuari: «afegeix més escenes amb nous puzles»):
-el passaplats i l'entrepà (dins l'Escena 1), el telèfon i el rebost del bar (2), els objectes perduts de
-l'aeroport (3), **el moll de càrrega** (4b), **la sortida per les escombraries** (9), i les missions dels
-aliats.
+**Escenes noves** respecte del primer guió (a petició de l'usuari): el passaplats i l'entrepà (Escena 1), el
+telèfon i el rebost del bar (2), els objectes perduts de l'aeroport (3), el moll de càrrega (4b), la senyora
+Pons (8) i la sortida per les escombraries (9).
 
 ### Pròleg
 
 Cinemàtica sobre negre i imatges, sala `proleg_ginebra`.
 
 > NARRADOR: Ginebra. Seu del Banc Central Mundial Unificat.
-> NARRADOR: Aquest banc custodia més diners que cent vuitanta països junts. No els ha guanyat: els custodia.
+> NARRADOR: Aquest banc custodia més diners que cent vuitanta països junts.
 > DIRECTOR (gravant un anunci, somriu massa): Al BCMU construïm el futur de tothom.
 > DIRECTOR: ...Una altra? Amb més «tothom»?
-> NARRADOR: A 1.100 quilòmetres, en un pis ple de cables, algú acaba de trobar una porta oberta. [SO: teclat]
+> NARRADOR: Lluny. Prou lluny. En un pis ple de cables, algú acaba de trobar una porta oberta. [SO: teclat]
 > TÍTOL: Suma Zero
 > TÍTOL: Acte 1 · El pla és un desastre
 
@@ -193,41 +211,47 @@ personal de manteniment.
 
 ### Escena 1 — El pis (tutorial)
 
-**Sales:** `pis_estudi` (Iri) i `pis_cuina` (Vet), unides per una porta (que no es travessa: cada sala és d'una
-protagonista) i pel **passaplats**. Nit.
+**Sales:** `pis_estudi` (Iri) i `pis_cuina` (Vet), unides pel **passaplats**. Dilluns, vespre.
 
 **Entrada:**
 
-> IRI (als monitors): Ho tinc. Ho tinc ho tinc ho tinc. [SO: teclat]
+> IRI (al mòbil): Ho tinc. Ho tinc ho tinc ho tinc. Amb un 3 % de bateria, però ho tinc. [SO: teclat]
 > IRI: Vet? VET! Ho he trobat! Podem entrar a la banca mundial!
 > VET (des de la cuina): Jo també he trobat una cosa: que no has rentat els plats en nou dies.
-> IRI: Saps què és el més divertit? Que el BCMU té més diners que 180 països junts. I no els ha guanyat: els custodia. Els diners dels altres.
+> IRI: Saps què és el més divertit? Que el BCMU té més diners que 180 països junts. I no són seus. Són dels altres.
 > VET: I nosaltres no en tenim ni per pizzes.
 > IRI: Per això robem. Perquè no ens queda pizza.
-> IRI: Però primer necessito internet de debò. El router és nou i encara és a la caixa. [SO: miol]
+> IRI: Però primer necessito internet de debò. El router nou encara és a la caixa. [SO: miol]
 
 **Trencaclosques 1.1 — Els tres cables (Iri).** El router nou necessita tres cables: la **fibra** (penja de la
-paret), el **cable de xarxa** (dins la caixa del router) i l'**alimentació**. Cada vegada que l'Iri en connecta
-un, en Diu el mossega i el desendolla, si no està distret. [SO: mossegada]
+paret), el **cable de xarxa** (dins la caixa del router) i l'**alimentació**. Si en Diu no està distret, cada
+cable que l'Iri connecta, ell el mossega i el desendolla («Diu! Això és fibra òptica, no espaguetis»).
+[SO: mossegada]
 
-- **L'alimentació no hi és**: la fa servir la cafetera de la cuina. L'Iri l'ha de demanar a la Vet pel
-  passaplats; la Vet la desendolla («Sense cafè no hi ha pla»). Primer ús del passaplats. [SO: passaplats]
-- **Distreure en Diu**: el joc deixa triar què se sacrifica, i se'n recorda (`var sacrifici`):
-  - la **caixa de cartró** del router (fàcil: és buida quan se'n treu el cable de xarxa);
-  - l'**auricular esquerre** de l'Iri (difícil: «No me'ls trec mai. Mai.». L'ha de mirar, després usar amb en
-    Diu, i diu adeu a l'estèreo);
-  - la **pizza de demà**, que és a la nevera de la Vet (tràgic: la Vet l'ha de donar pel passaplats, i la Vet
-    protesta). Si es tria la pizza, en Diu mira l'Iri **amb respecte**.
+- **L'alimentació no hi és**: la fa servir la cafetera de la cuina. L'Iri l'ha de demanar en veu alta («Vet,
+  em cal el cable de la cafetera»); la Vet el desendolla («Sense cafè no hi ha pla») i el passa pel passaplats.
+  Primer ús del passaplats. [SO: passaplats]
+- **Distreure en Diu**: el joc deixa triar què se sacrifica i se'n recorda (`var sacrifici`). Un cop distret,
+  els altres objectes ja no es fan servir amb ell («Ja està ocupat. No li prenguis la il·lusió»):
+  - la **caixa de cartró** del router (fàcil: cal treure'n primer el cable de xarxa);
+  - l'**auricular esquerre** de l'Iri (difícil: «No me'ls trec mai. Mai.». L'Iri l'ha de mirar, se l'ha de
+    treure i l'ha d'usar amb en Diu, i diu adeu a l'estèreo);
+  - la **pizza de demà**, que és a la nevera de la Vet (tràgic: la Vet la passa pel passaplats protestant).
+    Si es tria la pizza, en Diu mira l'Iri **amb respecte**. Si l'Iri té la pizza però tria una altra cosa, se
+    la menja: «Era de demà. Ara és d'avui.»
 - Amb en Diu distret, els tres cables es connecten. [SO: router]
 
 **Trencaclosques 1.2 — L'entrepà (Vet, opcional però recomanat).** La Vet ha de marxar al torn de nit del bar.
-A la nevera hi ha pa, una llimona, tonyina i un iogurt caducat. Si la Vet es fa un **entrepà** «per si de cas»,
-el guarda a la bossa. Si no, la pista de l'Acte 2 ho resol d'una altra manera (vegeu l'Escena 5). L'entrepà
-és el que el primer guió deia «no preguntis d'on surt». [SO: nevera]
+A la nevera hi ha la pizza, pa, tonyina i un iogurt que «ja vota». Si la Vet es fa l'**entrepà**:
 
-**La revelació.** Amb el router connectat, l'Iri entra al sistema del BCMU i troba el Llibre Major: un servidor
-de 1987, sense internet, **«en algun lloc físic de la seu de Ginebra»**. No sap on. Ho diu en veu alta, i la
-Vet, des de la cuina:
+> VET: M'emporto un entrepà de tonyina, per si de cas.
+> IRI: Per si de cas què?
+> VET: Per si de cas tinc gana. [SO: nevera]
+
+(Així l'Iri sap que existeix.) És el que el primer guió deia «no preguntis d'on surt».
+
+**La revelació.** Amb el router connectat, l'Iri ho confirma: el Llibre Major és **«en algun lloc físic de la
+seu de Ginebra»**. No sap on. Ho diu en veu alta, i la Vet, des de la cuina:
 
 > VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot.
 > IRI: Qui?
@@ -235,105 +259,135 @@ Vet, des de la cuina:
 
 **Motivació:** la Vet no diu «sí» al pla, diu «vaig a treballar». L'Iri hi sent un sí.
 
-**Final de l'escena:** la Vet agafa les claus de casa (`clau_casa`, important a l'Escena 6) i marxa.
-[SO: porta_pis]
+**Final de l'escena:** la Vet agafa sempre la **clau de casa** (en sortir de la cuina, sense que calgui
+clicar-la; és important a l'Escena 6) i marxa. [SO: porta_pis] Si en Diu va mossegar l'auricular, el deixa
+damunt la taula de l'Iri, ple de forats de dent.
 
 ### Escena 2 — El bar La Propina
 
-**Sales:** `bar_sala` (Vet) i `bar_rebost` (Vet: el rebost i despatx del Puig). L'Iri continua a `pis_estudi`
-i s'hi pot canviar; parlen per **telèfon** (la Vet té el mòbil a la butxaca del davantal).
+**Sales:** `bar_sala` (Vet) i `bar_rebost` (Vet: el rebost i despatx d'en Puig). L'Iri continua a
+`pis_estudi` (en Diu dorm dins el que li han donat) i s'hi pot canviar. Es parlen per **telèfon** (la Vet té el
+mòbil a la butxaca del davantal). Dilluns, nit: a la tele hi ha futbol, i a les deu fan *La Comissària Bassols*.
 
-**Marcel no parla si no li guanyes una cosa.** Primer, la crítica en petit:
+**En Marcel no parla si no li guanyes una cosa.** Primer, la crítica en petit (línies curtes):
 
-> MARCEL: Jo vaig construir el sistema que voleu robar. Sabeu què vaig aprendre? Que el diner no és paper. És confiança. I la confiança la tenen quatre.
+> MARCEL: Voleu robar el banc? Tothom ho vol. Ho porteu escrit a la cara.
+> MARCEL: Jo vaig construir el sistema que voleu robar. Sabeu què vaig aprendre? Que el diner és confiança. I la confiança la tenen quatre.
 > VET: Marcel, m'estàs posant trist i he de tornar a la feina.
-> MARCEL: És que la feina és el problema. Jo treballava dotze hores perquè un senyor a Ginebra pogués tenir una casa a tres països. Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.
+> MARCEL: Jo treballava dotze hores perquè un senyor a Ginebra tingués una casa a tres països.
+> MARCEL: Ara tinc un cafè amb llet i soc més feliç. Però no tinc dentista.
+> MARCEL: Al BCMU, la propina se la queda el banc.
 
-Després, la prova: **«Porta'm tres coses del bar sense que el Puig se n'adoni. Si robes al teu cap per mi, et
-fiaré.»**
+Després, la prova: **«Porta'm tres coses del bar sense que en Puig se n'adoni. Si robes al teu cap per mi, et
+fiaré.»** En Marcel diu quines (el tap, la recepta, el comandament) i, cada vegada que la Vet torna, quantes en
+falten i quines. Les tres es poden fer **en qualsevol ordre**.
 
-**Trencaclosques 2.1 — El tap de la cervesera (Vet).** El Puig fa servir un tap de la cervesera de clauer, i
-el porta penjat al cinturó. Quan fa cafè, se'l treu perquè xoca amb el vaporitzador i el deixa damunt la
-barra. La Vet li ha de demanar **un cafè amb llet** (per en Marcel, «que no se'l pot pagar») i, mentre el Puig
-fa escuma, agafa el tap. [SO: vaporitzador] El Puig no ho nota fins al final de l'acte (gag: «On és el meu
-tap?»).
+**Trencaclosques 2.1 — El tap de la cervesera (Vet).** En Puig fa servir un tap de la cervesera de clauer, penjat
+al cinturó. Quan fa cafè, se'l treu perquè xoca amb el vaporitzador, i el deixa damunt la barra. La Vet li
+demana **un cafè amb llet per a en Marcel** («El paga en Puig, però no ho sap») i, mentre en Puig fa escuma,
+agafa el tap. [SO: vaporitzador] Després: «Un altre cafè? En Marcel ja va prou excitat.»
 
-**Trencaclosques 2.2 — La recepta de la llimonada (Vet + Iri).** La servilleta amb la recepta secreta del Puig
-és al calaix del rebost, tancat amb un **pany intel·ligent** de 19,99 €. L'Iri el pot obrir des de casa si
-entra a la xarxa del bar. La contrasenya de la wifi és al rètol: la Vet la llegeix en veu alta per telèfon
-(«excepto si no paga», sense espais). [SO: pany_clic] Cooperació a distància, sense rellotge: prepara la
+**Trencaclosques 2.2 — La recepta de la llimonada (Vet + Iri).** La servilleta amb la recepta secreta d'en Puig
+és al calaix del rebost, tancat amb un **pany intel·ligent** de 19,99 €, «al núvol». La Vet el mira i ho diu
+per telèfon: «Un pany amb aplicació. D'aquests que obres tu des de casa.» L'Iri: «Necessito la contrasenya
+d'administrador. Que segur que és la mateixa que la de la wifi.» La contrasenya és al rètol: la Vet la llegeix
+(«excepto si no paga», sense espais) [SO: pany_clic]. Cooperació a distància, sense rellotge: prepara la
 sincronia.
 
-**Trencaclosques 2.3 — El comandament de la tele (Iri + Vet).** El Puig no deixa el comandament (hi ha partit).
-Només el deixaria per una cosa: una trucada de «la seva dona». La Vet ho demana a l'Iri, i l'Iri, que és un
-desastre parlant amb la gent, truca al bar amb **una veu sintètica** del portàtil. [SO: telefon_bar]
+**Trencaclosques 2.3 — El comandament de la tele (Vet + Iri).** En Puig no deixa el comandament (hi ha partit).
+La Vet ho explica a l'Iri: «Només el deixaria per una trucada de la seva dona. Que no existeix.» L'Iri, que és
+un desastre parlant amb la gent, truca al bar amb **una veu sintètica** del portàtil. [SO: telefon_bar]
 
 > PUIG: Digui? ...La meva dona? Jo no estic casat.
 > IRI (veu sintètica): Doncs ja ho saps. Vull el divorci.
 > PUIG: ...Un moment.
 
-El Puig s'endú el telèfon al rebost per discutir amb la seva dona inexistent, i deixa el comandament a la
-barra. La Vet l'agafa i canvia el partit a *La Comissària Bassols* (en Marcel ho agraeix: setup de l'Escena 6).
+En Puig s'endú el telèfon al rebost (que es tanca: «Està discutint amb la seva dona inexistent. Millor no
+entrar») i deixa el comandament a la barra. La Vet l'agafa i posa *La Comissària Bassols* (en Marcel: «Ah! El
+capítol del violí!»). En Puig torna al cap de dues accions de la Vet: «Ja està. Som lliures. Tots dos.» Si
+es torna a trucar: «IRI: No contesta. Diu que està de dol.»
 
-**La recompensa: el que sap en Marcel.** Amb els tres objectes, en Marcel explica (en una conversa d'arbre,
-amb opcions que el jugador pot fer en qualsevol ordre):
+**La recompensa: el que sap en Marcel.** Amb les tres coses, en Marcel les mira i les torna: «No les vull.
+Volia saber si ho faries.» (El comandament, en Puig el recupera sol en tornar; la recepta, en Marcel la llegeix:
+«Llimonada de pot. Vint anys guardant un secret de pot.») Després explica, en una conversa amb opcions que es
+poden fer en qualsevol ordre:
 
-1. **On és el Llibre Major:** «A la sala d'escombraries del tercer pis. El van posar allà quan el van
-   jubilar, però encara és el que porta el Llibre Major. Ningú s'ha atrevit a desendollar-lo.»
-2. **La clau:** «La porta el Cap de Seguretat al coll. Literalment. És un collaret.»
+1. **On és el Llibre Major** (cal): «A la sala d'escombraries del tercer pis. El van posar allà quan el van
+   jubilar, però encara porta tots els comptes. Ningú s'ha atrevit a desendollar-lo.»
+2. **La clau** (cal): «La porta el Cap de Seguretat al coll. Literalment. És un collaret.»
    > VET: Perfecte. M'agraden els reptes estúpids.
-3. **En Ballester:** «Es diu Ballester. Miràvem *La Comissària Bassols* cada dilluns. El seu capítol
-   preferit és *El violí mut*. El que odia és *La vídua del Liceu*: diu que és inversemblant.» (**Pista per a
-   l'Escena 6.**)
-4. **El robot:** «El robot de neteja el vaig programar jo. Si li dius "NETA, descansa", s'atura. Mai ningú li
-   ho ha dit.» (**Solució alternativa de l'Escena 5.**)
-5. **El tub pneumàtic:** «El vaig modernitzar jo. Cada planta té una estació. Hi cap una clau. Hi cap un
-   entrepà, si no te l'estimes gaire.»
-6. **Com arribar a Ginebra:** «El BCMU té un vol propi cada dimarts per als tècnics de manteniment de caixes
-   fortes. Ningú comprova res: qui vol robar una caixa forta?»
+3. **El tub pneumàtic** (cal): «El vaig modernitzar jo. Cada planta té una estació. Hi cap una clau. Hi cap
+   un entrepà, si no te l'estimes gaire.»
+4. **Com arribar a Ginebra** (cal): «El BCMU té un vol propi cada dimarts al matí per als tècnics de manteniment
+   de caixes fortes. Ningú comprova res: qui vol robar una caixa forta?»
+5. **El Cap de Seguretat** (opcional): «Es diu Ballester. Miràvem *La Comissària Bassols* cada dilluns. El seu
+   capítol preferit és *El violí mut*. El que odia és *La vídua del Liceu*: diu que és inversemblant.»
+6. **El robot** (opcional): «El robot de neteja el vaig programar jo. Si li dius "NETA, descansa", s'atura. Mai
+   ningú li ho ha dit.»
 
-**Motivació:** la Vet ho repeteix per telèfon a l'Iri en veu alta (així l'Iri ho sap: línia de temps del
-coneixement). L'Iri: «Un vol de tècnics. Si soc a la llista, soc tècnica.»
+Mentre no s'hagin fet les quatre que calen, la conversa no s'acaba: «Encara no m'has preguntat el més
+important.»
 
-**Final de l'escena:** el Puig torna del rebost, es mira la barra i diu: «On és el meu tap?». Tall.
-[SO: porta_bar]
+**Motivació i el que sap l'Iri:** la Vet truca a l'Iri i li resumeix en veu alta el servidor, la clau, el tub i
+el vol (sempre). Si ha preguntat pel robot, el joc li ofereix «Explica-li el del robot» (l'Iri ho sap). D'en
+Ballester, només: «I una cosa d'un tal Ballester i una sèrie. Això és cosa meva.» L'Iri: «Un vol de tècnics.
+Si soc a la llista, soc tècnica.»
 
-### Escena 3 — L'aeroport (primera sincronització)
+**Les propines.** En plegar, la Vet buida el pot de les propines: 9,20 € (`propines`). «Les propines d'una
+nit. A Ginebra, potser un entrepà.»
 
-**Sales:** `aeroport_terminal` (Vet) i `aeroport_personal` (Iri: el passadís de personal, darrere la porta de
-facturació). Títol: **«Ara necessites les dues.»**
+**El tap.** Abans de sortir, la Vet pot **tornar el tap a en Puig** (`tap_tornat`): «...Gràcies? Mai ningú
+m'havia tornat res.» Si no, en sortir: «On és el meu tap?». [SO: porta_bar]
+
+### Escena 3 — L'aeroport (primera sincronia)
+
+**Sales:** `aeroport_terminal` (Vet: el taulell de facturació, la vidriera on fuma l'Ortega, la cafeteria i
+objectes perduts), `aeroport_personal` (Iri: el racó de servei, davant la porta de personal, amb el teclat) i
+`aeroport_oficina` (Iri: a dins, amb el terminal i la impressora). Dimarts, de matinada.
+
+**Entrada:** l'Iri es treu l'auricular dret i l'hi dona a la Vet. «Ara el que diguis, ho sento. Intenta no
+dir gaire res.» `auricular_compartit`. [SO: auricular]
 
 **Objectiu:** posar-se a la llista de tripulació del vol del BCMU com a «tècniques de manteniment de caixes
 fortes» i imprimir-se les acreditacions.
 
-**Preparació (Vet, opcional, sense rellotge).** Abans de començar la sincronia, la Vet pot passar per
-**objectes perduts**. Hi ha un **maletí** («És meu. Hi ha... papers.» El de l'oficina li pregunta què hi ha.
-Si la Vet ha mirat el maletí des de lluny i ha vist l'adhesiu, respon «Una agenda de 2019 i una llimona»
-i el recupera). També pot agafar unes **ulleres** de pasta oblidades a la cafeteria. Sense això, l'Escena 4 és
-més difícil (sospita inicial), no impossible.
+**Preparació (Vet, opcional, sense rellotge).** Abans de començar la sincronia:
 
-**La sincronia (8 torns, el rellotge és la cigarreta de la supervisora Ortega, que fuma a fora).**
+- A **objectes perduts** hi ha un **maletí** amb un adhesiu: «AGENDA 2019 — COMPTE, LLIMONA». Si la Vet el mira
+  i després el reclama, l'empleat li pregunta què hi ha. «Una agenda de 2019 i una llimona.» I el recupera. Si
+  respon una altra cosa, l'empleat diu «No» i s'hi pot tornar.
+- A la cafeteria hi ha unes **ulleres** de pasta oblidades. Amb les ulleres posades, «sembla que llegeixi
+  directives per gust».
 
-1. **Vet:** «He perdut el meu fill!» (que no existeix). L'agent Soler la segueix per la terminal. Mentre la
-   segueix, la porta de personal queda sense vigilància. La Vet ha de mantenir la mentida amb respostes
-   curtes: **si parla massa** (tria les opcions llargues, que són més divertides), la supervisora sospita
-   i la cigarreta s'acaba dos torns abans. [SO: megafonia]
-2. **Iri:** a la porta de personal hi ha un teclat. El codi és en un pòsit enganxat sota el taulell de
-   facturació, al costat de la Vet. La Vet el llegeix en veu alta: **8-4-2-6**. [SO: teclat_porta]
-3. **Si l'Iri s'equivoca de codi**, la porta xiula, i la Vet ha de **plorar més fort** perquè l'agent Soler no
-   se'n giri (una acció de la Vet, que costa un torn). [SO: alarma_porta] [SO: plor]
-4. **Iri, a dins:** el terminal de facturació. Afegeix «I. i V., tècniques» a la llista del vol BCMU-07 i
-   imprimeix dues **acreditacions de manteniment**. La impressora és lenta (dos torns) i fa soroll: la Vet ha
-   de tenir l'agent Soler lluny. [SO: impressora]
-5. **Vet:** «L'he trobat!» (assenyala un nen qualsevol, que és d'una altra família). L'agent Soler s'hi
-   acosta, i el nen el mira. Comèdia. Fi de la distracció.
+Sense res d'això, l'Escena 4 és més difícil (sospita inicial), no impossible.
 
-**Si s'acaba la cigarreta** abans que l'Iri surti: la supervisora torna, l'Iri es queda quieta darrere la
-porta i la Vet diu «Ah, aquí hi ha el lavabo de personal? Perdoni». Es torna al principi del pas (el codi ja se
-sap, la impressora no).
+**La sincronia (10 torns). El rellotge és la cigarreta de l'Ortega**, que fuma darrere la vidriera i mira cap a
+dins de tant en tant. Comença quan la Vet diu «He perdut el meu fill!»; abans, si l'Iri prova el teclat: «En
+Soler mira cap aquí. Ara no.»
 
-**Final de l'acte:** a l'avió, entre tècnics de debò. La Rius les mira i diu: «Sou noves? Doncs benvingudes a
-la subcontracta. Aquí ningú cobra el viatge.» Cinemàtica de l'avió aterrant. **Acte 2 · La seu del mal.**
+1. **Vet:** «He perdut el meu fill!» (que no existeix). L'agent Soler la segueix per la terminal i deixa la
+   porta de personal sense vigilància. [SO: megafonia] Mentrestant, en Soler li fa preguntes (el nom del nen,
+   l'edat, la roba). **Si la Vet parla massa** (tria les respostes llargues, que són més divertides), en Soler
+   arrufa les celles i l'Ortega mira per la vidriera: la cigarreta perd un torn.
+2. **Vet** (mirar, sense torn): sota el taulell hi ha un pòsit amb el codi: **8-4-2-6**. El llegeix en veu alta.
+3. **Iri:** tecleja el codi i entra a l'oficina. [SO: teclat_porta] **Si s'equivoca**, la porta xiula, i la Vet
+   ha de **plorar més fort** (un torn) perquè en Soler no s'hi giri. [SO: alarma_porta] [SO: plor]
+4. **Iri:** al terminal, afegeix «I. i V., tècniques» a la llista del vol BCMU-07 i imprimeix dues
+   **acreditacions de manteniment**. La impressora és lenta: un torn d'espera («Espera» o una acció de la Vet).
+   [SO: impressora]
+5. **Iri:** agafa les acreditacions i surt.
+6. **Vet:** «L'he trobat!» (assenyala un nen qualsevol, que és d'una altra família). En Soler s'hi acosta, i el
+   nen el mira. Fi de la distracció.
+
+**Si s'acaba la cigarreta** abans que l'Iri surti: l'Ortega torna, l'Iri es queda quieta darrere la porta i la
+Vet diu «Ah, aquí hi ha el lavabo de personal? Perdoni». NARRADOR: «Una hora i una cigarreta més tard...». Es
+torna al principi del pas: el codi ja se sap; el que s'havia imprès, la impressora ho ha esborrat.
+
+Durant la sincronia, objectes perduts i la cafeteria no s'hi poden fer servir: «Ara no: he perdut un fill.»
+
+**Final de l'acte (cinemàtica `avio`):** a l'avió, entre tècnics de debò. L'Iri dona l'acreditació a la Vet.
+La Rius les mira: «Sou noves? Doncs benvingudes a la subcontracta. Aquí ningú cobra el viatge.» L'avió
+aterra. **Acte 2 · La seu del mal.**
 
 ---
 
@@ -347,116 +401,142 @@ Les dues obertures es poden fer **en qualsevol ordre** (4 i 4b); la 5 depèn de 
 ### Escena 4 — El vestíbul (Vet)
 
 **Sala:** `bcmu_vestibul`. Marbre, quadres de banquers importants, el retrat del Director amb el seu gos, una
-font de marbre amb l'aigua tancada («Per estalvi de costos»), un cartell («Aquí construïm el futur de tothom»)
-i la recepció amb l'estació del tub pneumàtic.
+font de marbre seca, un cartell, una màquina d'entrepans, plantes, i la recepció amb l'estació del tub. El
+Director hi és fins que acaba l'escena.
 
 **Detalls que es cliquen** (sense rellotge):
 
-- **La font:** *«Aquí construïm el futur de tothom»*. Vet: «"Tothom" deu ser una paraula molt gran per a tan
-  poca gent.»
-- **El retrat del Director:** amb un gos de raça a la falda. La placa diu «El Director i en Rockefeller».
-  Vet: «El gos té millor perruqueria que jo.» (**La Vet aprèn el nom del gos.**)
+- **La font:** seca, amb un rètol, «Tancada per estalvi de costos».
+- **El cartell:** *«Aquí construïm el futur de tothom»*. Vet: «"Tothom" deu ser una paraula molt gran per a
+  tan poca gent.»
+- **El retrat del Director:** amb un gos de raça a la falda. La Vet llegeix la placa en veu alta: «"El Director
+  Bonfill i en Rockefeller". El gos té millor perruqueria que jo.» (**La Vet aprèn el nom del gos, i l'Iri ho
+  sent.**)
 - **La recepció:** l'estació del tub. La recepcionista no hi és («a la reunió de benestar laboral»).
+- **La màquina d'entrepans:** 8,50 € («A Ginebra fins i tot l'entrepà cotitza»). La Vet hi pot pagar amb les
+  propines de la nit (`propines`, de l'Escena 2: «Les propines d'una nit. Un entrepà suís»).
 
 **Trencaclosques 4.1 — L'auditora (conversa d'arbre amb sospita).** La Vet es fa passar per **auditora de la
-Unió Europea** que ve a fer una inspecció sorpresa. Ha de convèncer el Director perquè l'acompanyi a fer la
-visita **fins a la sala de seguretat** («Vull auditar el protocol de seguretat física»).
+Unió Europea** que ve a fer una inspecció sorpresa. Abans de començar, pensa en veu alta: «La clau la porta el
+Cap de Seguretat. On és un Cap de Seguretat? A la sala de seguretat. Doncs vull auditar la seguretat.»
 
-Les preguntes del Director surten en un ordre fix, i cada una té 3 o 4 respostes:
+La primera vegada, el Director: «Bon dia. Qui és vostè?» (es presenta: «Bonfill. Director. I amic de les
+auditories»). Les preguntes surten en aquest ordre, i cada una té 3 o 4 respostes:
 
 | Pregunta del Director | Respostes (sospita) |
 |---|---|
-| «Una auditora sense maletí?» (només si no té el maletí) | «És que els meus documents són tan secrets que no existeixen.» (0) · «Ups, me'l dec haver deixat a l'avió.» (+40) |
-| «Una acreditació?» (si no porta ulleres: «Té cara de... jove») | L'acreditació de manteniment (+30: «Diu "caixes fortes"») · «La UE no fa acreditacions: fa directives.» (+5) |
+| «Una auditora sense maletí?» (només si no té el maletí) | «És que els meus documents són tan secrets que no existeixen.» (0) · «Ups, me'l dec haver deixat a l'avió.» (+40) · *Després d'un reinici:* «La UE ja no fa servir maletins. Ara fem servir núvols.» (−5) |
+| «Vostè té cara de... jove.» (només sense ulleres) | «La UE no fa acreditacions: fa directives.» (+5) · Ensenyar l'acreditació de manteniment (+30: «Aquí diu "caixes fortes"») · *Després d'un reinici:* «Gràcies. És la crema antiedat de la Comissió.» (0) |
 | «La banca és el cor de la societat. Sense nosaltres, el món s'aturaria.» | «I sense nosaltres, vostè no tindria cordons de sabates.» (+10, `dignitat`) · «Quin cor més car, oi? El meu no cobra comissions.» (+5, el Director somriu) · «Totalment d'acord. La banca és imprescindible.» (−5, `mentida_corporativa`) |
-| «I què vol veure, exactament?» | «La seguretat física.» (0, i el Director la hi porta) · «Les caixes fortes.» (+20: «Ja hi ha tècnics avui») · «Els comptes del Director.» (+50) |
-| (opcional) «Li agrada el meu gos?» (si ha mirat el retrat) | «Es diu Rockefeller, oi? Quin nom més... humil.» (−5, al Director li agrada que li ho preguntin) |
+| «Li agrada el meu gos?» (només si ha mirat el retrat) | «Rockefeller, oi? Quin nom més... humil.» (−5: al Director li agrada que li ho preguntin) · «Prefereixo els gats.» (+5) |
+| «I què vol veure, exactament?» | «La seguretat física.» (0, i el Director la hi porta) · «Les caixes fortes.» (+20: «Ja hi ha tècnics avui. Doncs què vol veure, de debò?», i la pregunta es repeteix) · «Els comptes del Director.» (+50, i es repeteix) · *Després d'un reinici:* «El que no ensenyen als tècnics: la seguretat.» (−10) |
 
 **Si la sospita arriba a 100:** Dia de la Marmota (vegeu «Regles del món»). [SO: rebobinar]
 
-**Final de l'escena:** el Director l'acompanya a l'ascensor, i a la sala de seguretat la deixa amb en
-Ballester: «Jo tinc una reunió sobre sostenibilitat. Ballester, atengui la senyora.» [SO: ascensor]
+**Final de l'escena:** el Director l'acompanya amb l'ascensor a la sala de seguretat i la deixa amb en
+Ballester: «Jo tinc una reunió sobre sostenibilitat, dalt al despatx. Ballester, atengui la senyora.»
+`vet_a_seguretat`. [SO: ascensor]
 
-### Escena 4b — El moll de càrrega (Iri) — nova
+### Escena 4b — El moll de càrrega (Iri)
 
-**Sala:** `bcmu_moll`. L'Iri arriba amb els tècnics de manteniment. La Rius reparteix la feina: tothom al
-soterrani, a les caixes fortes. L'Iri ha d'anar al tercer pis.
+**Sala:** `bcmu_moll`. L'Iri arriba amb els tècnics de manteniment. La Rius es presenta («Rius. Encarregada. No
+em diguis senyora») i reparteix la feina: tothom al soterrani, a les caixes fortes. «I la teva companya?»
+«Al lavabo.» «No l'hi comptis.» L'Iri ha d'anar al tercer pis.
 
 **Trencaclosques 4b.1 — La targeta de planta.** L'ascensor de servei només va al tercer pis amb la targeta de
-la Rius. La Rius està de mal humor: l'**aplicació de la subcontracta** al seu mòbil els descompta els minuts
-que passen al lavabo i avui s'ha penjat, i si no fitxen, no cobren el dia.
+la Rius. La Rius està de mal humor: l'**aplicació de la subcontracta** al seu mòbil els descompta els minuts que
+passen al lavabo, i avui s'ha penjat. Si no fitxen, no cobren el dia.
 
 - **Solució amb cor (aliada):** l'Iri li arregla l'aplicació (parla amb el mòbil com si fos una persona:
-  «Tranquil. Respira. Ningú no et vol mal») i, de passada, li esborra el comptador del lavabo. La Rius li
-  deixa la targeta: «Si et pregunten, ets la de l'ascensor.» `aliat_rius`. [SO: mobil_ok]
-- **Solució ràpida:** la targeta penja del cinturó de la Rius. Si l'Iri li **demana un cafè a la màquina**
-  del moll (la màquina s'empassa la moneda, la Rius li dona un cop i s'ajup a recollir-la), l'Iri agafa la
-  targeta. Funciona, però la Rius no serà aliada. [SO: maquina_cafe]
+  «Tranquil. Respira. Ningú no et vol mal») i, de passada, li esborra el comptador del lavabo. La Rius li deixa
+  la targeta («Si et pregunten, ets la de l'ascensor») i un paper: «El compte de les nòmines de la
+  subcontracta. Me'l sé de memòria perquè sempre arriben tard. Si mai pots fer que arribin a l'hora...»
+  (`compte_nomines`). `aliat_rius`. [SO: mobil_ok]
+- **Solució ràpida:** «Rius, em convides a un cafè?» La màquina del moll s'empassa la moneda, la Rius li dona
+  un cop i s'ajup a recollir-la, i l'Iri agafa la targeta del cinturó. Funciona, però la Rius no serà aliada.
+  [SO: maquina_cafe]
+- **En tots dos ordres:** si l'Iri ja té la targeta i després li arregla l'aplicació, la Rius és aliada igual:
+  «Ja l'havies agafada, oi? ...Bé. Ara te la deixo.» I li dona el paper. Si ja té la targeta, la màquina de
+  cafè: «Ja tinc el que volia. I el cafè d'aquí fa por.»
 
-**Motivació:** l'Iri diu en veu alta (per l'auricular) «Tercer pis. Sala d'escombraries. Ho va dir en
-Marcel», i la Vet, si és al vestíbul, ho sent.
+**Motivació:** l'Iri diu en veu alta «Tercer pis. Sala d'escombraries. Ho va dir en Marcel», i la Vet ho sent.
 
 ### Escena 5 — El tercer pis (Iri)
 
 **Sales:** `bcmu_passadis` i, darrere la porta de neteja, `bcmu_escombraries` (el Llibre Major).
 
-El passadís té **dues càmeres que giren**, el **robot NETA-3** que fa la volta i **tres portes**:
+El passadís té **dues càmeres que giren**, el **robot NETA-3**, **tres portes** i l'estació del tub:
 
-- **Porta del personal:** tancada. Cal la clau del collaret («Més tard», diu l'Iri). S'obre a l'Acte 3.
+- **Porta de l'escala:** tancada. «Pany antic, de clau grossa.» (S'obre a l'Acte 3.)
 - **Porta de neteja:** oberta. D'aquí surt el robot. Darrere hi ha la sala d'escombraries i el Llibre Major.
-- **Porta VIP:** oberta, amb catifa, «només per a clients premium». Iri hi pot provar d'entrar. El joc:
-  «L'Iri no és premium. L'Iri és una hacker amb una dessuadora.»
+- **Porta VIP:** oberta, amb catifa, «només per a clients premium». L'Iri hi pot provar d'entrar: «L'Iri no és
+  premium. L'Iri és una hacker amb una dessuadora.»
 
-Objectes del passadís: una **galleda**, un **extintor**, un **cartell de «Neteja en curs»** i l'estació del
-tub pneumàtic.
+Objectes del passadís: una **galleda**, un **extintor** i un **cartell de «Neteja en curs»** (els tres es poden
+agafar; cap no cap al tub).
 
-**Trencaclosques 5.1 — El robot.** NETA-3 recorre el passadís i retorna cada objecte al seu lloc (desfà el
-que l'Iri posa per a les càmeres). Primer cal aturar-lo:
+**Trencaclosques 5.1 — El robot.** NETA-3 recorre el passadís i torna cada objecte al seu lloc: si l'Iri tapa
+una càmera abans d'aturar-lo, el robot ho desfà («Desfà més ràpid que jo»). Primer cal aturar-lo:
 
-- **L'entrepà:** si la Vet el té, el pot enviar pel tub des de la recepció del vestíbul o des de la sala de
-  seguretat («No preguntis d'on surt.»). L'Iri el posa davant del robot, i NETA-3 s'atura a netejar-lo, amb
-  molta cura, una molla rere l'altra. [SO: robot_neteja]
-- **El codi d'en Marcel:** «NETA, descansa.» El robot s'atura i diu: «Gràcies. Portava catorze hores
-  seguides. No em paguen les hores extres.» Aquesta línia és important per al to: el robot és un treballador
-  més. Obre la missió **«Les hores extres de NETA-3»**. [SO: robot_atura]
-- Si no hi ha entrepà (la Vet no se'l va fer), la Vet en compra un a la màquina del vestíbul (8,50 €; «A
-  Ginebra fins i tot l'entrepà cotitza»). **Cap atzucac.**
+- **L'entrepà:** la Vet l'envia pel tub des de la recepció o des de la sala de seguretat («No preguntis d'on
+  surt»). La Vet pensa per què: «Un robot de neteja? Doncs que netegi.» L'Iri el posa davant del robot, i NETA-3
+  s'atura a netejar-lo, amb molta cura, molla a molla: té feina per a hores. [SO: robot_neteja]
+- **El codi d'en Marcel** (si l'Iri el sap): «NETA, descansa.» El robot s'atura i diu: «Gràcies. Portava catorze
+  hores seguides. No em paguen les hores extres.» Aquesta línia és important per al to: el robot és un
+  treballador més. Obre la missió **«Les hores extres de NETA-3»**. [SO: robot_atura]
+- **Si la Vet no es va fer l'entrepà:** en compra un a la màquina del vestíbul (amb les propines) o, des de
+  seguretat, li pren el d'en Ballester: «Senyor Ballester, que té gana? No? Doncs me'l quedo.» **Cap atzucac.**
+- Un cop aturat, l'altra solució: «Ja descansa» o «Ja està ocupat amb les molles».
 
 **Trencaclosques 5.2 — Les càmeres.** Les dues càmeres giren i cobreixen la porta de neteja. Cal tapar-les:
 
-- **Càmera 1:** el **cartell de «Neteja en curs»** davant seu. El programari de seguretat no grava les zones
-  en neteja: «Per protegir la intimitat del personal de neteja. El personal de neteja és subcontractat, i la
-  subcontracta no té contracte de cessió d'imatge.» L'Iri: «Els han fet invisibles per estalviar-se un
-  paper.»
-- **Càmera 2:** la **galleda**, posada al cap de la càmera com un barret. [SO: galleda]
-- L'**extintor** no serveix (l'Iri ho prova: «Massa dramàtic»), però és un gag i, a l'Acte 3, un pla B.
+- **Càmera 1:** el **cartell de «Neteja en curs»** al davant. L'Iri mira la càmera i ho entén: el programari de
+  seguretat no grava les zones en neteja, «per protegir la intimitat del personal de neteja. El personal de
+  neteja és subcontractat, i la subcontracta no té contracte de cessió d'imatge». L'Iri: «Els han fet invisibles
+  per estalviar-se un paper.»
+- **Càmera 2:** la **galleda**, posada a la càmera com un barret. [SO: galleda] Al revés no va: la galleda a la
+  càmera 1 «és massa alta per a un barret»; el cartell a la càmera 2 «no és una zona de neteja: és un racó».
+- L'**extintor** no serveix («Massa dramàtic»), però a l'Acte 3 és el pla B.
 
 Amb les dues càmeres tapades, l'Iri entra a la sala d'escombraries. [SO: porta_neteja]
 
-### Escena 6 — El collaret (les dues, sincronització)
+### Escena 6 — El collaret (les dues, sincronia)
 
 **Sales:** `bcmu_escombraries` (Iri, al Llibre Major) i `bcmu_seguretat` (Vet, amb en Ballester). Títol:
 **«Ara necessites les dues.»** És **el moment central del joc.**
 
+**Abans.** Si la Vet arriba a seguretat abans que l'Iri sigui al Llibre Major, en Ballester fa xerrada de guàrdia
+avorrit, que no gasta res («Ara no, senyora, estic de servei»), mira la sèrie al mòbil i no fa cas dels monitors
+(si la Vet hi veu l'Iri: «Aquella de la dessuadora... Ballester, quin capítol mira?»). Si l'Iri arriba primer al
+Llibre Major, no tecleja: «Si tecleja ara, ho sentirà tot el banc. Vet, on ets?» **La sincronia comença quan
+les dues hi són.**
+
 **Iri:** el Llibre Major demana **tres codis de confirmació** que surten a la pantalla, un rere l'altre. Cada
-codi que l'Iri tecleja fa un **bip** fortíssim («És de 1987. Aleshores la gent volia que les màquines fessin
-soroll»). [SO: bip_llibre] Al passadís hi ha micròfons, i en Ballester ho sent per la ràdio de seguretat.
+codi fa un **bip** fortíssim («És de 1987. Aleshores la gent volia que les màquines fessin soroll»).
+[SO: bip_llibre]
+
+**El primer bip** sempre s'escapa, sense sospita, i ensenya la regla:
+
+> BALLESTER: Què ha estat això? ...Bah. La canonada.
+> VET: Iri, cada bip el sent per la ràdio. Avisa'm i el tapo.
 
 **Vet:** a la sala de seguretat, amb en Ballester i els monitors (en dos s'hi veuen un cartell de «Neteja en
-curs» i una galleda; ell no s'hi fixa). Ha de **cobrir cada bip**. Té quatre eines:
+curs» i una galleda; ell no s'hi fixa). Ha de **cobrir cada bip** dels altres dos codis. Té quatre eines, que
+només surten durant la sincronia:
 
 | Eina | Cobreix | Cost |
 |---|---|---|
-| **Cantar** (malament) | 1 bip | Una vegada: després en Ballester li demana que pari |
-| **Explicar un acudit** | 1 bip | Cada acudit, una vegada (n'hi ha tres; un és dolent i no cobreix res) |
-| **Trencar un got** | 1 bip | Soroll fort: +1 sospita d'en Ballester (a la 3, es torna a començar el pas) |
-| **Parlar de *La Comissària Bassols*** | 2 bips | Només amb el capítol bo (*El violí mut*). Amb *La vídua del Liceu*: «Inversemblant», +1 sospita |
+| **Cantar** (malament) | el bip següent | Una vegada: després en Ballester li demana que pari |
+| **Explicar un acudit** | el bip següent | Cada acudit, una vegada (n'hi ha tres; un és dolent i no cobreix res) |
+| **Trencar un got** | el bip següent | +1 sospita d'en Ballester |
+| **Parlar de *La Comissària Bassols*** | els dos bips següents | Només si la Vet sap el capítol bo (*El violí mut*). *La vídua del Liceu*: «Inversemblant», +1 sospita |
 
-Una distracció dura **fins al bip següent** (o dos, la sèrie). Si l'Iri tecleja sense cobertura: en
-Ballester: «Què ha estat això?», +1 sospita, i ha de passar el torn mirant la ràdio.
+Si l'Iri tecleja sense cobertura: «Què ha estat això?», +1 sospita. **A la sospita 3, es torna a començar el
+pas** (el codi primer torna a sortir; totes les eines tornen; en Ballester: «Ah, vostè canta? Doncs canti,
+canti»).
 
-**La clau.** Després del tercer codi, el Llibre Major demana **la clau física**. En Ballester, si està
-relaxat per la sèrie, s'obre:
+**La clau.** Després del tercer codi, el Llibre Major demana **la clau física**. La Vet pensa en veu alta:
+«Ara la clau. La porta al coll.» Si en Ballester està **relaxat** (se li ha parlat de la sèrie), s'obre:
 
 > BALLESTER: Jo soc el que més temps porta aquí. I soc el que menys guanya dels que porten corbata.
 > VET: I per què no se'n va?
@@ -466,14 +546,16 @@ Aquí el jugador **tria**:
 
 - **La veritat:** «Venim a robar el banc. Bé: a repartir-lo.» En Ballester es queda quiet molta estona. Es treu
   el collaret i el deixa damunt la taula. «Jo no he vist res. Fa trenta anys que no veig res.» `aliat_ballester`.
-  Desbloqueja l'ajuda de l'Acte 3 i un final millor.
-- **La mentida:** «Vingui amb nosaltres. A la UE paguem millor.» El puzle continua: en Ballester es treu el
-  collaret per ensenyar-li la clau, orgullós («L'únic que el banc m'ha confiat en trenta anys»), i la Vet li
-  **canvia la clau per la clau de casa seva** (`clau_casa`, de l'Escena 1). Si no la té (cap atzucac): la clau
-  del maletí, o una clau de la cafeteria del vestíbul.
+- **La mentida:** «Vingui amb nosaltres. A la UE paguem millor.» En Ballester riu i es treu el collaret per
+  ensenyar-li la clau, orgullós («L'únic que el banc m'ha confiat en trenta anys»), i la Vet li **canvia la clau
+  per la clau de casa**.
 
-La Vet envia la clau del Llibre Major **pel tub** a l'Iri. [SO: tub_envia] [SO: tub_rep] L'Iri la gira.
-[SO: clau_gira]
+Si en Ballester **no** està relaxat, només hi ha la mentida, i la Vet l'ha de provocar: «Quin collaret més bonic.
+És d'or?» (Una pista de la Vet diu que «amb la sèrie s'obriria», només si sap el capítol.) La Vet té sempre la
+clau de casa; si mai no la tingués, a la taula d'en Ballester hi ha un clauer de «Visiteu Ginebra».
+
+La Vet envia **la clau del Llibre Major** pel tub a l'Iri. [SO: tub_envia] [SO: tub_rep] L'Iri la gira.
+[SO: clau_gira] «Autoritzat. Ja la pots treure.» La clau queda a l'inventari de l'Iri.
 
 **Fi de l'Acte 2:** «Executar ROBIN HOOD 2.0? S/N». L'Iri prem S. **Acte 3 · Robin Hood 2.0.**
 
@@ -481,127 +563,166 @@ La Vet envia la clau del Llibre Major **pel tub** a l'Iri. [SO: tub_envia] [SO: 
 
 ## Acte 3 — «Robin Hood 2.0»
 
-**Objectiu:** aturar el virus abans de les dotze (quan s'han de pagar les pensions i les nòmines) i sortir del
+**Objectiu:** aturar el virus abans de les dotze, quan s'han de pagar les pensions i les nòmines, i sortir del
 banc.
 
-### Escena 7 — L'execució (Iri)
+### Escena 7 — L'execució (Iri, i els monitors de la Vet)
 
-**Sala:** `bcmu_escombraries`, i un **muntatge** als monitors de la sala de seguretat (la Vet i en Ballester
-ho veuen; l'Iri ho veu a la pantalla del Llibre Major).
+**Sales:** `bcmu_escombraries` (Iri) i un **muntatge** als monitors de la sala de seguretat (la Vet i en
+Ballester ho veuen; l'Iri ho veu a la pantalla del Llibre Major).
 
 L'Iri executa el virus. **No falla. Funciona massa bé.** [SO: virus]
 
 - Fase 1, buidar: tots els comptes del món passen al compte zero. Els monitors es posen a zero, un rere l'altre.
-- Fase 2, repartir: primera ronda, **12 € per persona**. I la ronda següent tardarà tres hores.
+- Fase 2, repartir: primera ronda, **12 € per persona**. La ronda següent, d'aquí a tres hores.
 
 Muntatge (línies del narrador amb imatges):
 
 - Un bilionari a Mònaco mira el mòbil: 12 €. La seva dona el deixa.
 - Un fons d'inversió de Nova York es troba amb el sou d'un becari. El becari plora d'alegria.
-- Un senyor a Ginebra (el Director) es troba amb el mateix que la seva secretària. Per primera vegada, ha de
-  decidir si agafa el bus o el metro.
-- **I la gent normal no ho nota... fins a les dotze, quan no arriben les pensions, ni els ajuts, ni les
-  nòmines.** Una àvia al caixer. Un cambrer cobrant. El Puig, al bar, mirant la tele.
+- Un senyor a Ginebra (el Director) es troba amb gairebé el mateix que la seva secretària. Per primera vegada,
+  ha de decidir si agafa el bus o el metro.
+- En Puig, a La Propina, mira la tele i abaixa la persiana: ningú no pot pagar.
+- NARRADOR: Són les onze i quart. **A les dotze, això:** una àvia davant d'un caixer. Un cambrer esperant la
+  nòmina. Pensions, ajuts i nòmines de tot el món, a 12 €.
 
 > IRI: No. No no no. Això no era el pla.
 > VET (per l'auricular): Quin era el pla?
 > IRI: Que els rics perdessin. No que tothom quedés a zero esperant tres hores.
-> IRI: L'he d'aturar. I només el Director pot aturar el Llibre Major.
+> IRI: L'he d'aturar abans de les dotze. I només el Director pot aturar el Llibre Major.
 
-**Motivació:** l'Iri ho diu clar, i la Vet ja sap on és el Director (reunió de sostenibilitat, al seu
-despatx). La porta del personal del tercer pis s'obre amb la clau del collaret (l'Iri la té): dona a
-l'escala del despatx. Però l'Iri no hi pot anar (a l'escala hi ha seguretat); hi va la Vet.
+**Motivació i camí:** la Vet ja sap on és el Director: «Dalt, al seu despatx. Ho va dir ell.» En Ballester:
+«L'ascensor és aquí. Planta noble.» Si en Ballester és aliat, l'hi acompanya («Jo també vull veure-li la cara»);
+si no, la Vet s'hi envia sola: «Auditaré el Director.» L'Iri es queda al Llibre Major: per aturar-lo cal
+teclejar aquí.
 
-### Escena 8 — El despatx (les dues, sincronització final)
+**NETA-3 (si se'l va aturar amb el codi).** Des del principi de l'Escena 5 fins a l'Escena 9, excepte durant les
+sincronies, l'Iri pot obrir el **panell de NETA-3** (a la sala d'escombraries, on es carrega) i arreglar-li
+l'horari: «Descans cada quatre hores. I el diumenge.» `aliat_neta`. Durant una sincronia: «Ara no, NETA, estic
+teclejant.»
 
-**Sales:** `bcmu_despatx` (Vet, amb el Director i, a l'avantdespatx, la senyora Pons) i `bcmu_escombraries`
-(Iri, al Llibre Major). Títol: **«Ara necessites les dues.»**
+### Escena 8 — El despatx (les dues, sincronia final)
 
-El Director ja no és una amenaça: està en xoc, mirant el mòbil, amb **14,32 €** al compte (els 12 € del
-repartiment i 2,32 € d'interessos que el banc no ha sabut no cobrar-se).
+**Sales:** `bcmu_avantdespatx` (Vet, amb la senyora Pons), `bcmu_despatx` (Vet, amb el Director) i
+`bcmu_escombraries` (Iri, al Llibre Major).
+
+**L'avantdespatx (sense rellotge).** La senyora Pons (placa a la taula) barra el pas: «El Director no rep.» A la
+taula hi ha una **factura de la perruqueria de Rockefeller** i la **nòmina de la Pons**. La Vet ho veu i en
+pensa una cosa:
+
+- **Escoltar-la (aliada):** la Vet llegeix en veu alta la factura, al costat de la nòmina. La Pons no diu res.
+  Després: «Passi. I si necessita alguna cosa, soc aquí. Fa vint anys que soc aquí.» `aliat_pons`.
+- **Enredar-la:** «Soc de la UE.» La Pons la deixa passar, però no serà aliada.
+
+**El despatx.** El Director ja no és una amenaça: està en xoc, mirant el mòbil, amb **14,32 €** al compte (els
+12 € del repartiment i 2,32 € d'interessos: «Al Director, el banc sempre li paga»).
 
 > DIRECTOR (tremolant): Això... això és un delicte.
-> VET: Tècnicament, sí. Però també ho és el que vostè feia amb els diners dels altres. I això no ho perseguia ningú.
+> VET: Tècnicament, sí. Però també ho és el que vostè feia amb els diners dels altres.
 > DIRECTOR: Jo no robava.
-> VET: No. Vostè prestava. A interès. És més net, però el resultat és el mateix per a qui no pot pagar.
+> VET: No. Vostè cobrava comissió.
 
-**Trencaclosques 8.1 — La contrasenya.** El Llibre Major, per aturar, demana la contrasenya del Director. La
-pista de la pantalla: *«El meu millor amic»*. L'Iri ho diu per l'auricular.
+**Trencaclosques 8.1 — La contrasenya (sense rellotge).** El Llibre Major, per aturar, demana la contrasenya del
+Director. Pista de la pantalla: *«El meu millor amic»*. L'Iri ho diu per l'auricular.
 
-- Si la Vet ha mirat el retrat del vestíbul o ha preguntat pel gos, ho sap: **Rockefeller**. Ho diu en veu alta
-  (ella sola: «El seu millor amic... és un gos amb millor perruqueria que jo»).
+- Si la Vet va llegir la placa del retrat (Escena 4), totes dues ho saben: **Rockefeller**. L'Iri: «Rockefeller.
+  Ho va dir la Vet.»
 - Si no, al despatx hi ha una **foto del gos** a la taula i un **bol d'aigua** amb el nom gravat. Cap atzucac.
+- Una contrasenya dolenta: «Contrasenya incorrecta. Li queden infinits intents: el Llibre Major és de 1987.»
 
-**Trencaclosques 8.2 — El mòbil (sincronia, 8 torns).** Després de la contrasenya, el Llibre Major envia un
-**codi al mòbil del Director**, i el mòbil és el terminal d'accés: si el Director el mira, veu «Intent
-d'aturada» i el cancel·la. **Cada vegada que el mira, l'Iri perd un torn.** [SO: mobil_vibra]
+**Trencaclosques 8.2 — El mòbil (sincronia, 9 torns).** Després de la contrasenya, el Llibre Major envia un
+**codi al mòbil del Director**. El mòbil és el terminal d'accés: si el Director el mira quan el codi ja ha
+arribat, hi veu «Intent d'aturada no autoritzat» i el cancel·la. No per diners: per protocol.
 
-- **Iri:** tecleja la contrasenya (1 torn), demana el codi (1 torn), tecleja el codi que li dicti la Vet
-  (1 torn) i confirma l'aturada (1 torn).
-- **Vet:** ha de fer que el Director no miri el mòbil i, alhora, llegir-ne el codi. Eines:
+> DIRECTOR: Intent d'aturada no autoritzat. El protocol diu: cancel·lar. Sempre he seguit el protocol.
+> VET: Però si és per tornar-li els diners!
+> DIRECTOR: No ho he autoritzat jo. Per tant, no és segur.
+
+**La regla:** al final de cada torn en què **no** està distret, el Director mira el mòbil. Abans que l'Iri demani el
+codi, no passa res. Després, cancel·la, i es torna a començar el pas (amb un codi nou: si l'Iri tecleja el vell,
+«Codi caducat»). [SO: mobil_vibra]
+
+- **Iri:** demana el codi (1 torn), tecleja el codi que li dicti la Vet (1 torn) i confirma l'aturada (1 torn).
+- **Vet:**
   - **«Una reunió urgent sobre la sostenibilitat dels bancs»**: el Director parla de la seva visió amb els ulls
-    tancats (2 torns). Mentre parla, la Vet pot agafar el mòbil i llegir el codi.
-  - **Preguntar-li pel gos**: 1 torn (només una vegada).
-  - **La senyora Pons** (si és aliada): «Senyor Director, li carrego el mòbil?» i se l'emporta a l'avantdespatx;
-    la Vet llegeix el codi allà. Resol el pas sencer.
-  - **En Ballester** (si és aliat): entra, i immobilitza el Director amb molta delicadesa. «Ho sento, senyor.
-    Tinc una hipoteca, però també tinc vergonya.» Resol el pas sencer. **El joc recompensa la solidaritat.**
-- **Si s'acaben els torns**, el Director cancel·la l'aturada i diu, molt educat, «Tornem-hi?». Es torna a
-  començar el pas.
+    tancats. Cobreix els **2 torns següents**. Una segona vegada («Ja n'hem parlat... però sí, sí»), només 1.
+  - **Preguntar-li pel gos**: cobreix el torn següent (una vegada).
+  - **Agafar el mòbil i llegir el codi** (1 torn, només mentre està distret i quan el codi ja ha arribat; si encara
+    no: «Encara no ha arribat res»). La Vet el llegeix en veu alta i el torna a deixar cap per avall.
+  - **La senyora Pons** (si és aliada): «Senyor Director, li carrego el mòbil?» Se l'emporta a l'avantdespatx i
+    llegeix el codi en veu alta des de la porta. **Resol el pas sencer.**
+  - **En Ballester** (si és aliat i l'ha acompanyat): immobilitza el Director amb molta delicadesa. «Ho sento,
+    senyor. Tinc una hipoteca, però també tinc vergonya.» **Resol el pas sencer. El joc recompensa la
+    solidaritat.**
+- **Si s'acaben els torns**: el Director, molt educat, «Tornem-hi?». Es torna a començar el pas.
 
-**La decisió de l'Iri (segons els aliats).** Abans de confirmar, el Llibre Major pregunta què fa amb el que
-queda al compte zero:
+**La decisió de l'Iri.** Abans de confirmar, el Llibre Major pregunta què fa amb el que queda al compte zero:
 
 - **Tornar-ho tot** als comptes d'origen (sempre disponible).
 - **Pagar primer les pensions, els ajuts i les nòmines** del mes de tot el món i tornar la resta: només si
-  l'Iri té els **codis de nòmina** (els hi dona en Ballester, si és aliat, o la Rius, si és aliada: «Les
-  nòmines de la subcontracta van per un compte a part, i el sé de memòria perquè sempre arriben tard»).
+  l'Iri té el **compte de nòmines** (el paper de la Rius, si és aliada, o el que en Ballester diu en veu alta al
+  despatx, si és aliat: «Les nòmines van totes pel compte 0001. Sempre ho han fet. Per això sempre arriben
+  tard»). L'Iri: «El paper de la Rius!» / «Ho he sentit, Ballester.» `pagar_primer`.
 
 [SO: aturada]
 
-### Escena 9 — La sortida (les dues) — nova
+### Escena 9 — La sortida (les dues)
 
-**Sales:** `bcmu_escombraries` (Iri) i `bcmu_despatx` (Vet). Ara tot el banc busca «una hacker amb una
-dessuadora».
+**Sales:** `bcmu_escombraries` i `bcmu_passadis` (Iri); `bcmu_despatx`, `bcmu_vestibul` i `bcmu_contenidor` (Vet).
 
-- **Vet:** surt per la porta principal, com a auditora. El Director, mirant el bus i el metro al mòbil, no la
-  para. Si la sospita del vestíbul va acabar molt alta, la recepcionista la reconeix i la Vet l'ha d'enredar
-  («Soc de la UE. Venia per la font.»). Sense rellotge.
-- **Iri:** l'escala és plena de seguretat. Surt pel **conducte d'escombraries** de la sala, cap al contenidor
-  del carrer (`bcmu_contenidor`). Cal esmorteir la caiguda:
-  - **NETA-3** (si se'l va aturar amb el codi i se li va arreglar l'horari): omple el contenidor de bosses
-    de paper. «Vés. Jo plego a les sis. Per primera vegada.» [SO: robot_atura]
-  - Si no, l'Iri llença pel conducte el **cartell de «Neteja en curs»** i la **galleda**... i l'**extintor**,
-    que fa un coixí d'escuma. «Massa dramàtic. Perfecte.» [SO: extintor]
-- Al contenidor, la Vet obre la tapa. «Ets una heroïna.» «Faig pudor de banc.» [SO: contenidor]
+Quan s'atura el virus, el Director mira la gravació de l'ascensor de servei: «Una tècnica... amb dessuadora?».
+Per megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuadora.» [SO: megafonia_bcmu]
+
+- **Iri:** primer prova la **porta de l'escala** del passadís, amb la clau del Llibre Major: s'obre (era la
+  mateixa clau; «Més tard era ara»). L'escala és plena de seguretat. La tanca. «Pla B: escombraries.» Al
+  **conducte d'escombraries** de la sala, cal esmorteir la caiguda abans de saltar:
+  - **NETA-3** (si és aliat) llença bosses de paper pel conducte. «Vés. Jo plego a les sis. Per primera vegada.»
+    [SO: robot_atura]
+  - Si no, l'Iri llença l'**extintor** pel conducte, que fa un coixí d'escuma al contenidor. «Massa dramàtic.
+    Perfecte.» [SO: extintor]
+  - Saltar sense coixí: «Tres pisos? No, gràcies. Primer, coixí.»
+- **Vet:** baixa amb l'ascensor al vestíbul i surt per la porta principal, com a auditora. Si `sospita_max` va
+  arribar a 50 o més, la recepcionista, que ha vist la gravació del vestíbul, la reconeix: «Vostè és l'auditora
+  que ha fet suar el Director.» La Vet l'ha d'enredar («Soc de la UE. Venia per la font.»). Sense rellotge.
+- **Al carrer** (`bcmu_contenidor`, sala de la Vet): la Vet obre la tapa del contenidor. Cinemàtica: l'Iri cau a
+  dins. [SO: contenidor]
+
+> VET: Ets una heroïna.
+> IRI: Faig pudor de banc.
 
 ---
 
 ## Finals
 
-Tots els finals són **la mateixa escena** al bar La Propina, mirant les notícies. Canvia **fins on arriba
-la victòria**, segons els **aliats** (`var aliats`, de 0 a 4: en Ballester, NETA-3, la Rius, la senyora Pons) i
-la decisió de l'Iri a l'Escena 8.
+Tots els finals són **la mateixa escena** a La Propina, mirant les notícies. Canvia **fins on arriba la
+victòria**, segons els **aliats** (`var aliats`, de 0 a 4: en Ballester, NETA-3, la Rius i la senyora Pons) i la
+decisió de l'Iri a l'Escena 8.
 
 | Final | Què passa | Què cal |
 |---|---|---|
-| **1 · Ni caos ni paradís** | El virus s'atura a temps i ho torna gairebé tot; el que s'ha repartit es queda repartit. Els rics perden una part i alguns entren en pànic (un fons fa fallida, un bilionari es compra un iot més petit). Els pobres reben una mica: no prou per canviar la vida, però prou per notar-ho. | Aturar el virus. És el final base. |
-| **2 · Hores extres** | Com l'1, i al bar hi ha algú més: en Ballester fent un cafè amb elles, NETA-3 fent de cambrer (el Puig li paga les hores extres; «Per primer cop, algú me les paga»), la Rius amb tota la colla de tècnics... Cada aliat té la seva línia. | 1 o 2 aliats. |
-| **3 · La taula llarga** | L'Iri ha fet pagar primer les pensions, els ajuts i les nòmines del mes de tot el món. Al bar hi ha una taula llarga amb tots els aliats. La tele diu que és el primer mes de la història que totes les pensions del món han arribat el mateix dia. | 3 o més aliats, i l'opció «pagar primer» a l'Escena 8. |
+| **1 · Ni caos ni paradís** | El virus s'atura a temps i ho torna gairebé tot; el que s'ha repartit es queda repartit. Els rics perden una part i alguns entren en pànic (un fons fa fallida, un bilionari es compra un iot més petit). Els pobres reben una mica: no prou per canviar la vida, però prou per notar-ho. | `aliats == 0`. És el final base. |
+| **2 · Hores extres** | Com l'1, i al bar hi ha algú més: cada aliat té la seva línia. Si l'Iri ha fet pagar primer les nòmines, la tele diu que avui les pensions han arribat a l'hora. | `aliats >= 1` (i tots els casos que no són el 3). |
+| **3 · La taula llarga** | L'Iri ha fet pagar primer les pensions, els ajuts i les nòmines del mes de tot el món. Al bar hi ha una taula llarga amb tots els aliats. La tele diu que és el primer mes de la història que totes les pensions del món han arribat el mateix dia. | `pagar_primer` i `aliats >= 3`. |
 
 **L'escena del bar (comuna, amb línies condicionals):**
 
 > TELE: Els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.
+> TELE (si pagar_primer): ...i avui, per primera vegada, totes les pensions han arribat a l'hora.
 > IRI: No hem canviat el món.
-> VET: No. Però el Director ara agafa el metro.
-> VET (si aliat_ballester): I en Ballester ha vingut a fer un cafè amb nosaltres.
+> VET: No. Però el Director ara agafa el metro. Diu que és més sostenible.
+> BALLESTER (si aliat_ballester): Un tallat, sisplau. I aquest el pago jo.
+> NETA-3 (si aliat_neta, amb un davantal): Taula tres, servida. En Puig em paga les hores extres. Per primer cop, algú me les paga.
+> RIUS (si aliada_rius): Avui hem fitxat a l'hora. Tota la colla.
+> PONS (si aliada_pons): He demanat un augment. M'han dit que sí. Encara no m'ho crec.
 > IRI: Això és un final feliç?
-> VET: És un final. I el Puig ha tornat a obrir el bar. I en Marcel s'ha comprat un cotxe. I nosaltres... tenim pizza.
-> MARCEL (si mentida_corporativa): Em van dir que algú va dir al Director que la banca és imprescindible.
+> VET: És un final. I en Puig ha tornat a obrir el bar. I en Marcel ha anat al dentista. I nosaltres... tenim pizza.
+> MARCEL (si mentida_corporativa): Em van dir que una auditora va dir al Director que la banca és imprescindible.
 > VET: Era una auditora molt convincent.
-> PUIG: On és el meu tap?
+> MARCEL (si dignitat): Diuen que una auditora li va parlar de cordons de sabates.
+> PUIG (si no tap_tornat): On és el meu tap?
+> PUIG (si tap_tornat): Avui convida la casa. Un cop.
 
-Pausa. El gat Diu entra i mossega el cable del router. [SO: mossegada]
+Pausa. El gat Diu entra (l'han portat de casa en un cistell) i mossega el cable de la tele del bar. [SO: mossegada]
 
 > IRI: Diu, et mato.
 > VET: Deixa'l. Ell també és un treballador explotat.
@@ -610,9 +731,9 @@ Fosc a negre. Crèdits amb música de sintetitzador, i un text final:
 
 > *Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.*
 
-**Postcrèdits:** el gat Diu mossega el cable del router. A la pantalla de l'Iri: «ROBIN HOOD 3.0?». Tot torna a
-començar. (Variant: si l'Iri va sacrificar la pizza a l'Escena 1, en Diu li porta un tros de pizza, amb
-respecte.)
+**Postcrèdits (sala `pis_estudi`, cinemàtica):** de nit, al pis. En Diu mossega el cable del router. A la pantalla
+de l'Iri: «ROBIN HOOD 3.0?». Tot torna a començar. (Si a l'Escena 1 l'Iri va sacrificar la pizza, en Diu li porta
+un tros de pizza, amb respecte.)
 
 Com que sempre és la mateixa història amb més o menys gent a la taula, el jugador que acabi el final 1
 **veurà qui falta**, i tindrà ganes de tornar-hi.
@@ -623,11 +744,11 @@ Com que sempre és la mateixa història amb més o menys gent a la taula, el jug
 
 | Missió | Qui | Què | Conseqüència |
 |---|---|---|---|
-| **La veritat d'en Ballester** | Vet | A l'Escena 6, dir-li la veritat (cal haver-lo relaxat amb la sèrie). | Aliat. A l'Escena 8 immobilitza el Director i dona els codis de nòmina. Final 2/3. |
-| **Les hores extres de NETA-3** | Iri | Aturar-lo amb el codi d'en Marcel (no amb l'entrepà) i, a la sala d'escombraries, arreglar-li l'horari al seu panell («Descans cada quatre hores. I el diumenge.»). | Aliat. A l'Escena 9 esmorteeix la caiguda. Final 2/3. |
-| **Subcontractats** | Iri | A l'Escena 4b, arreglar l'aplicació de la Rius en lloc de prendre-li la targeta. | Aliada. A l'Escena 8 dona els codis de nòmina. Final 2/3. |
-| **La senyora Pons** | Vet | A l'avantdespatx (Acte 3, abans d'entrar), escoltar-la: llegir-li en veu alta la factura de la perruqueria de Rockefeller, al costat de la seva nòmina. Ella no diu res. Després, sí. | Aliada. A l'Escena 8 s'emporta el mòbil. Final 2/3. |
-| **On és el meu tap?** | Vet | Gag: tornar-li el tap al Puig al final. | Una línia diferent al final. |
+| **La veritat d'en Ballester** | Vet | A l'Escena 6, dir-li la veritat (cal haver-lo relaxat amb la sèrie). | Aliat. A l'Escena 8 immobilitza el Director i diu el compte de nòmines. |
+| **Les hores extres de NETA-3** | Iri | Aturar-lo amb el codi d'en Marcel (no amb l'entrepà) i arreglar-li l'horari al panell de la sala d'escombraries. | Aliat. A l'Escena 9 esmorteeix la caiguda. |
+| **Subcontractats** | Iri | A l'Escena 4b, arreglar l'aplicació de la Rius. | Aliada. Dona el compte de nòmines. |
+| **La senyora Pons** | Vet | A l'avantdespatx, llegir en veu alta la factura de la perruqueria de Rockefeller al costat de la nòmina de la Pons. | Aliada. A l'Escena 8 s'emporta el mòbil i llegeix el codi. |
+| **On és el meu tap?** (petita, sense missió al diari) | Vet | Tornar el tap a en Puig abans de sortir del bar (Escena 2). | Una línia diferent al final. |
 
 ## Sistema de pistes
 
@@ -637,7 +758,22 @@ Com que sempre és la mateixa història amb més o menys gent a la taula, el jug
 - **Des de l'auricular** (Escena 3 en endavant), una pista pot ser de l'altra: «Iri, prova de...». Només quan
   l'altra ho sap (línia de temps del coneixement).
 - Mai no surt una pista sobre un trencaclosques que encara no és obert (`when`) o que ja està resolt
-  (`doneWhen`), ni d'un personatge que no hi és (presència).
+  (`doneWhen`), ni d'un objecte que no existeix (l'entrepà, si la Vet no se'l va fer; el codi de NETA, si l'Iri
+  no el sap), ni d'un personatge que no hi és.
+- La pista de la preparació de l'aeroport s'acaba quan comença la sincronia.
+
+---
+
+## Comptes de les sincronies
+
+Un torn és una acció de qualsevol de les dues (regla 1.2). El camí mínim, i el marge que queda:
+
+| Sincronia | Rellotge | Camí mínim | Marge | Errors que hi caben |
+|---|---|---|---|---|
+| **3 · Aeroport** | 10 torns | Vet: fill (1) · Iri: codi (2) · Iri: terminal (3) · espera de la impressora (4) · Iri: agafa i surt (5) · Vet: «L'he trobat!» (6) | 4 | Parlar massa (−1 cada vegada) · un codi dolent (plorar +1, tornar a teclejar +1) |
+| **6 · Collaret** | sospita 3 | 1r bip lliure · Vet cobreix (sèrie: 2 bips) · Iri: codi 2 · Iri: codi 3 · clau | 2 de sospita | Dos bips descoberts, o dos gots, o un capítol dolent i un got |
+| **8 · Mòbil** (sense aliats) | 9 torns | Vet: reunió (1, cobreix 2–3) · Iri: demana codi (2) · Vet: agafa el mòbil (3) · Vet: gos (4, cobreix 5) · Iri: tecleja codi (5) · Vet: reunió (6, cobreix 7) · Iri: confirma (7) | 2 | Un torn mal gastat (si queda sense cobrir un torn després del codi, es reinicia) |
+| **8 · Mòbil** (amb la Pons o en Ballester) | — | El pas sencer es resol amb una acció | — | — |
 
 ---
 
@@ -645,30 +781,36 @@ Com que sempre és la mateixa història amb més o menys gent a la taula, el jug
 
 ```
 ACTE 1
-  [cafetera → passaplats] → (alimentació → Iri)
-  [caixa | auricular | pizza → Diu] + 3 cables → [router] → [Iri troba el Llibre Major] → «En Marcel»
+  [cable de la cafetera → passaplats] → (alimentació → Iri)
+  [caixa (sense cable) | auricular | pizza (passaplats) → Diu] + 3 cables → [router] → «En Marcel»
   [entrepà] (opcional) ··········································· → Escena 5
-  [clau de casa] ················································· → Escena 6 (camí de la mentida)
-  Bar:  [cafè → tap] · [rètol → wifi → Iri obre el pany → recepta] · [Iri truca → comandament]
-        (en qualsevol ordre) → [Marcel explica] → server · clau · Ballester/sèrie · NETA · tub · vol
-  Aeroport:  [objectes perduts: maletí, ulleres] (opcional) ·········· → sospita inicial (Escena 4)
-             [Vet distreu] → [Vet llegeix codi] → [Iri entra] → [Iri imprimeix] → [Vet acaba]
+  [clau de casa] (sempre, en sortir) ······························ → Escena 6 (camí de la mentida)
+  Bar:  [cafè → tap] · [pany al núvol + rètol → Iri → recepta] · [Iri truca → comandament]
+        (en qualsevol ordre) → [Marcel: servidor, clau, tub, vol (calen); Ballester, robot (opcionals)]
+        → [trucada a l'Iri] · [tornar el tap] (opcional) ··········· → final
+  Aeroport:  [auricular compartit] → [objectes perduts: maletí, ulleres] (opcional) ··· → sospita inicial
+             [Vet: fill] → [Vet llegeix el codi] → [Iri entra] → [terminal + impressora] → [Vet: «L'he trobat!»]
+             → (avió: acreditació → Vet)
 
 ACTE 2  (4 i 4b en qualsevol ordre)
-  4:  [retrat → Rockefeller] (opcional) ····························· → Escena 8
-      [conversa amb sospita] → [Director porta la Vet a seguretat]
-  4b: [arreglar app (aliada) | màquina de cafè] → (targeta) → [ascensor al 3r]
-  5:  [entrepà pel tub | codi de Marcel (missió NETA)] → [robot aturat]
+  4:  [placa del retrat → Rockefeller] (opcional) ··················· → Escena 8
+      [conversa amb sospita] → vet_a_seguretat
+  4b: [arreglar l'app (aliada + compte de nòmines) | cafè] → (targeta) → [ascensor al 3r]
+  5:  [entrepà pel tub | màquina del vestíbul | entrepà d'en Ballester | codi d'en Marcel] → [robot aturat]
       [cartell → càmera 1] + [galleda → càmera 2] → [sala d'escombraries]
-  6:  (cal 4 i 5)  3 × {Vet cobreix → Iri tecleja} → [veritat (aliat) | mentida + clau de casa]
+      [codi → panell de NETA: horari] (aliat; fins a l'Escena 9, no durant sincronies)
+  6:  (cal vet_a_seguretat i l'Iri al Llibre Major)
+      1r bip lliure → 2 × {Vet cobreix → Iri tecleja} → [veritat (aliat) | mentida + clau de casa]
       → (clau pel tub → Iri) → [gira la clau] → ROBIN HOOD 2.0
 
 ACTE 3
-  7:  [virus] → [muntatge] → «Només el Director el pot aturar»
-  8:  [Pons] (opcional, aliada) → [contrasenya: Rockefeller] → [mòbil: 4 torns de l'Iri, Vet distreu]
-      → [tornar-ho tot | pagar primer (cal Ballester o Rius)]
-  9:  [Vet surt per la porta] ∥ [Iri pel conducte: NETA | cartell + galleda + extintor] → contenidor
-  Final: 1 / 2 / 3 segons aliats i la decisió de l'Escena 8
+  7:  [virus] → [muntatge] → «Abans de les dotze, només el Director»
+      → Vet a l'ascensor (amb en Ballester, si és aliat)
+  8:  [avantdespatx: Pons (aliada | enredada)] → [contrasenya: Rockefeller | foto | bol]
+      → [mòbil: sincronia] → [tornar-ho tot | pagar primer (cal paper de la Rius o en Ballester)]
+  9:  Iri: [porta de l'escala (clau) → plena] → [conducte: NETA | extintor] → contenidor
+      Vet: [ascensor → vestíbul (recepcionista si sospita_max ≥ 50)] → [contenidor]
+  Final: 1 / 2 / 3 segons aliats i pagar_primer
 ```
 
 ---
@@ -681,52 +823,62 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 | Fet | Qui l'aprèn | Quan (flag que ho marca) | Notes |
 |---|---|---|---|
 | El Llibre Major existeix i és a Ginebra | Iri, Vet (ho sent des de la cuina) | Escena 1, `llibre_trobat` | Abans, cap línia en parla |
+| La Vet s'ha fet un entrepà | Iri | Escena 1, `te_entrepa` | Si no, cap pista de l'Iri en parla |
 | En Marcel va treballar al BCMU | Vet (ja ho sabia), Iri | Escena 1, `llibre_trobat` | L'Iri no coneix en Marcel en persona |
-| El Llibre Major és a la sala d'escombraries del 3r pis | Vet; Iri (per telèfon) | Escena 2, `marcel_servidor` | L'Iri no ho pot dir abans |
-| La clau és al collaret del Cap de Seguretat | Vet; Iri (per telèfon) | Escena 2, `marcel_clau` | |
-| El Cap es diu Ballester i és fan de *La Comissària Bassols* (*El violí mut* sí, *La vídua del Liceu* no) | Vet | Escena 2, `marcel_ballester` | L'Iri no l'ha de saber: no és ella qui hi parla |
-| El codi de NETA-3 («NETA, descansa») | Vet; Iri (per telèfon) | Escena 2, `marcel_neta` | Si la Vet no l'hi diu (opció de diàleg), l'Iri no el pot fer servir: pista per a la Vet |
-| El tub pneumàtic existeix | Vet, Iri | Escena 2, `marcel_tub` | |
-| El vol del BCMU per als tècnics | Vet, Iri | Escena 2, `marcel_vol` | |
-| El codi de la porta de personal (8426) | Vet (el llegeix), Iri (l'hi diu) | Escena 3, `codi_porta_llegit` | |
-| L'auricular: el que una diu, l'altra ho sent | Les dues | Escena 3, `auricular_compartit` | Abans no, només per telèfon (Escena 2) |
-| El gos del Director es diu Rockefeller | Vet (i l'Iri, si ho diu en veu alta) | Escena 4, `sap_rockefeller` | O a l'Escena 8 (foto, bol) |
+| En Puig «té» una dona | Vet (ja ho sabia), Iri | Escena 2, en demanar el comandament | |
+| El Llibre Major és a la sala d'escombraries del 3r pis | Vet; Iri (trucada) | Escena 2, `marcel_servidor` | |
+| La clau és al collaret del Cap de Seguretat | Vet; Iri (trucada) | Escena 2, `marcel_clau` | |
+| El tub pneumàtic existeix | Vet; Iri (trucada) | Escena 2, `marcel_tub` | |
+| El vol del BCMU per als tècnics | Vet; Iri (trucada) | Escena 2, `marcel_vol` | |
+| El Cap es diu Ballester i li agrada una sèrie | Vet; Iri només el nom («un tal Ballester i una sèrie») | Escena 2, `marcel_ballester` | Els capítols, només la Vet |
+| Els capítols (*El violí mut* sí, *La vídua del Liceu* no) | Vet | Escena 2, `marcel_ballester` | |
+| El codi de NETA-3 («NETA, descansa») | Vet; Iri només si la Vet l'hi explica | Escena 2, `marcel_neta`, `iri_sap_neta` | Si no, és una pista de la Vet per l'auricular a l'Escena 5 |
+| El codi de la porta de personal (8426) | Vet (el llegeix), Iri (auricular) | Escena 3, `codi_porta_llegit` | |
+| L'auricular: el que una diu, l'altra ho sent | Les dues | Escena 3, `auricular_compartit` | Abans, només per telèfon (Escena 2) |
+| El nom de la Rius | Iri | Escena 4b (es presenta) | Abans, «l'encarregada» |
+| El nom del Director (Bonfill) | Vet, Iri (auricular) | Escena 4 (es presenta; la placa del retrat) | Abans, «el Director» |
+| El gos del Director es diu Rockefeller | Vet, Iri (la Vet llegeix la placa en veu alta) | Escena 4, `sap_rockefeller` | O a l'Escena 8 (foto, bol) |
 | La Vet és auditora (la mentida) | Director | Escena 4 | Al Dia de la Marmota, ell ho oblida; la Vet, no |
-| Els subcontractats no surten a les càmeres | Iri | Escena 5, `sap_cartell` (en mirar el cartell o la càmera) | |
-| La Vet i l'Iri volen robar el banc | Ballester | Escena 6, `aliat_ballester` (només la veritat) | Si li menteixen, ell no ho sap mai |
-| El virus deixa tothom a zero fins a la ronda següent | Iri, Vet (monitors), Ballester | Escena 7, `virus_executat` | |
-| Només el Director pot aturar el Llibre Major | Iri; Vet (auricular) | Escena 7, `cal_director` | |
-| La contrasenya és el nom del millor amic del Director | Iri (pantalla); Vet (auricular) | Escena 8, `pista_contrasenya` | |
-| Els codis de nòmina | Iri | Escena 8, `codis_nomina` (Ballester o Rius aliats) | |
+| Els subcontractats no surten a les càmeres | Iri | Escena 5, `sap_cartell` (en mirar la càmera 1) | |
+| En Ballester sent els bips per la ràdio | Vet, Iri | Escena 6, primer bip, `regla_bips` | |
+| La Vet i l'Iri volen robar el banc | Ballester | Escena 6, `aliat_ballester` (només la veritat) | Si li menteixen, no ho sap mai |
+| El virus deixa tothom a 12 € fins a la ronda següent, i a les dotze no cobren | Iri, Vet (monitors), Ballester | Escena 7, `virus_executat` | |
+| Només el Director pot aturar el Llibre Major; és al seu despatx | Iri; Vet | Escena 7, `cal_director` | |
+| El nom de la senyora Pons | Vet | Escena 8 (placa) | |
+| La contrasenya és «el meu millor amic» | Iri (pantalla); Vet (auricular) | Escena 8, `pista_contrasenya` | |
+| El compte de nòmines | Iri | Escena 4b (paper de la Rius) o 8 (en Ballester), `compte_nomines` | |
+| La seguretat busca «una noia amb dessuadora» | Tothom | Escena 9 (megafonia) | Abans, ningú no busca l'Iri |
+| L'Ortega, en Soler | Vet | Escena 3 (la placa del Soler; «la supervisora» fins que la Vet llegeix el gafet de l'Ortega per la vidriera) | |
 
-**Diu, en Marcel, el Puig:** no saben res del pla fins al final (excepte en Marcel, que ho dedueix a l'Escena 2:
-«Voleu robar el banc? Tothom ho vol.»).
+**Diu, en Marcel, en Puig:** no saben res del pla fins al final, excepte en Marcel, que ho dedueix a l'Escena 2
+(«Voleu robar el banc? Tothom ho vol»).
 
 ## Presència dels personatges
 
 | Personatge | Pròleg | Esc. 1 | Esc. 2 | Esc. 3 | Esc. 4 / 4b | Esc. 5 | Esc. 6 | Esc. 7 | Esc. 8 | Esc. 9 | Final |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| Iri | — | estudi | estudi (telèfon) | personal | moll | passadís | escombraries | escombraries | escombraries | escombraries → contenidor | bar |
-| Vet | — | cuina | bar | terminal | vestíbul | (vestíbul o seguretat) | seguretat | seguretat | despatx | despatx → contenidor | bar |
-| Diu | — | estudi | — | — | — | — | — | — | — | — | bar (postcrèdits) |
+| Iri | — | estudi | estudi (telèfon) | personal → oficina | moll | passadís | escombraries | escombraries | escombraries | escombraries, passadís → (cinemàtica) | bar |
+| Vet | — | cuina | bar | terminal | vestíbul | vestíbul o seguretat | seguretat | seguretat | avantdespatx → despatx | despatx → vestíbul → contenidor | bar |
+| Diu | — | estudi | estudi (dorm) | — | — | — | — | — | — | — | bar (cistell); postcrèdits (pis) |
 | Marcel | — | — | bar | — | — | — | — | — | — | — | bar |
-| Puig | — | — | bar (al rebost durant la trucada) | — | — | — | — | muntatge (tele) | — | — | bar |
-| Ortega | — | — | — | fora (fumant) → torna | — | — | — | — | — | — | — |
-| Soler | — | — | — | terminal | — | — | — | — | — | — | — |
-| Director | anunci | — | — | — | vestíbul → ascensor | — | **fora** (reunió) | muntatge | despatx | despatx | tele (metro) |
-| Ballester | — | — | — | — | seguretat | — | seguretat | seguretat | despatx (si aliat) | — | bar (si aliat) |
-| NETA-3 | — | — | — | — | — | passadís | passadís (aturat) | — | — | conducte (si aliat) | bar (si aliat) |
-| Rius | — | — | — | avió | moll | — | — | — | — | — | bar (si aliada) |
+| Puig | — | — | bar (rebost durant la trucada) | — | — | — | — | muntatge (tanca) | — | — | bar |
+| Ortega | — | — | — | fora, darrere la vidriera | — | — | — | — | — | — | — |
+| Soler, nen, empleat d'objectes perduts | — | — | — | terminal | — | — | — | — | — | — | — |
+| Director | anunci | — | — | — | vestíbul (fins que acaba la 4) → despatx | despatx (o vestíbul, si la 4 no és feta) | despatx (**fora** de seguretat) | muntatge | despatx | despatx | — (tele) |
+| Ballester | — | — | — | — | seguretat | seguretat | seguretat | seguretat | despatx (si aliat) | — | bar (si aliat) |
+| NETA-3 | — | — | — | — | — | passadís | passadís / escombraries (carregant) | escombraries | escombraries | conducte (si aliat) | bar (si aliat) |
+| Rius i tècnics | — | — | — | — (avió) | moll | soterrani | soterrani | soterrani | soterrani | — | bar (si aliada) |
 | Pons | — | — | — | — | — | — | — | — | avantdespatx | — | bar (si aliada) |
+| Recepcionista | — | — | — | — | — (reunió) | — | — | — | — | vestíbul | — |
 
 **Conseqüències per al guió** (el que no pot passar):
 
-- A l'Escena 6 el Director **no hi és**: cap línia d'en Ballester el pot fer present («el Director ens
-  vigila» és prohibit; «el Director és a la reunió de sostenibilitat», sí).
-- A l'Escena 2 el Puig és al rebost durant la trucada: la Vet no hi pot entrar mentre ell hi és (el rebost es
-  tanca, «Està discutint amb la seva dona inexistent»). La recepta s'ha d'agafar abans o després.
-- A l'Escena 8, si en Ballester no és aliat, no surt al despatx; si la Pons no és aliada, és a l'avantdespatx
-  però no ajuda.
+- A l'Escena 6 el Director **no hi és**: cap línia d'en Ballester el pot fer present («el Director ens vigila»
+  és prohibit; «el Director és dalt, a la reunió de sostenibilitat», sí).
+- A l'Escena 2, durant la trucada, en Puig és al rebost: la Vet no hi pot entrar ni demanar cafè («En Puig és al
+  rebost divorciant-se d'una persona que no existeix. Esperaré»).
+- A l'Escena 8, si en Ballester no és aliat, no surt al despatx; si la Pons no és aliada, és a l'avantdespatx però
+  no ajuda.
 - La Rius és al moll fins que l'Iri puja. Després, al soterrani: cap línia del passadís la pot fer present.
 
 ## Estats dels objectes i de les coses de la sala
@@ -735,43 +887,73 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 
 | Cosa | Sala | Estats | Què el fa canviar | Com es veu | Què se'n diu |
 |---|---|---|---|---|---|
-| Router | `pis_estudi` | a la caixa · amb 1/2/3 cables · connectat | Usar cables; Diu desendolla | Llums apagats / 1, 2, 3 llums / tots verds i parpellejant | Iri: «Tres cables i cap a lloc» / «Un. Falta...» / «Connectat. Hola, preciós» |
-| Diu | `pis_estudi` | vigilant · distret amb la caixa · amb l'auricular · amb la pizza (respecte) | Usar l'objecte triat amb ell | Mira els cables / dins la caixa / mossegant l'auricular / assegut davant la pizza, solemne | Iri: segons l'estat; amb la pizza: «Em mira amb respecte. No sé si m'agrada» |
-| Caixa del router | `pis_estudi` | amb el cable de xarxa · buida · amb en Diu a dins | Agafar el cable; donar-la a en Diu | — | «La caixa del router. Hi ha un cable» / «Buida. Per al gat, és un palau» |
-| Cafetera | `pis_cuina` | endollada · sense cable | La Vet desendolla el cable | Llum vermell / apagada | Vet: «Cafè: el combustible del pla» / «Sense cafè no hi ha pla» |
-| Passaplats | `pis_cuina`/`pis_estudi` | tancat · obert amb un objecte | Usar un objecte amb el passaplats | Porteta tancada / oberta | — |
-| Nevera | `pis_cuina` | plena · sense pizza · sense ingredients de l'entrepà | Agafar | Interior diferent (porta oberta en mirar) | Vet: «Una llimona, tonyina i un iogurt que ja vota» |
-| Plats bruts | `pis_cuina` | sempre (gag) | — | Pila | Vet: «Nou dies. Els he comptat» |
-| Tap de la cervesera | `bar_sala` | al cinturó del Puig · a la barra · agafat | Demanar el cafè | Al Puig / a la barra | — |
-| Rètol del Puig | `bar_sala` | sempre | — | — | «El cliente siempre tiene razón (excepto si no paga)». Vet: «És la contrasenya de la wifi. Sempre ho ha estat» (només després de saber que cal la wifi) |
-| Calaix del rebost | `bar_rebost` | tancat · obert · buit | L'Iri obre el pany; la Vet agafa la recepta | Llum vermell / verd / obert | — |
-| Comandament | `bar_sala` | a la mà del Puig · a la barra · agafat | La trucada | — | — |
-| Tele del bar | `bar_sala` | partit · *La Comissària Bassols* · notícies (final) | Comandament; final | Tres pantalles | Marcel: comentaris |
-| Cigarreta d'Ortega | `aeroport_terminal` (finestra) | 8 → 0 | Cada torn | La cigarreta s'escurça (5 dibuixos) | Vet: «Li queden tres pipades» |
+| Router | `pis_estudi` | a la caixa · amb 1/2/3 cables · connectat | Usar cables; Diu desendolla | Llums apagats / 1, 2, 3 llums / tots verds | Iri: «Tres cables i cap a lloc» / «Un. Falta...» / «Connectat. Hola, preciós» |
+| Diu | `pis_estudi` | vigilant · a la caixa · amb l'auricular · davant la pizza · dormint (Esc. 2) | Usar l'objecte triat amb ell | Mira els cables / dins la caixa / mossegant l'auricular / assegut, solemne / dormint | Segons l'estat; amb la pizza: «Em mira amb respecte. No sé si m'agrada» |
+| Caixa del router | `pis_estudi` | amb el cable de xarxa · buida · amb en Diu a dins | Agafar el cable; donar-la a en Diu | — | «Hi ha un cable» / «Buida. Per al gat, és un palau» / «Ara és seva» |
+| Iri (sprite) | totes | amb dos auriculars · amb un · amb un de mossegat | Esc. 1 i 3 | Detall al cap | — |
+| Cafetera | `pis_cuina` | endollada · sense cable | La Vet desendolla | Llum vermell / apagada | «Cafè: el combustible del pla» / «Sense cafè no hi ha pla» |
+| Passaplats | `pis_cuina` / `pis_estudi` | tancat · obert amb un objecte | Usar un objecte amb el passaplats | Porteta tancada / oberta | — |
+| Nevera | `pis_cuina` | amb pizza i entrepà possible · sense pizza · sense entrepà · sense res | Agafar | Interior en mirar-la | «Una pizza per a demà, pa, tonyina i un iogurt que ja vota» (i les variants) |
+| Plats bruts | `pis_cuina` | sempre (gag) | — | Pila | «Nou dies. Els he comptat» |
+| Puig | `bar_sala` | a la barra · fent cafè · fora (rebost) · de tornada, «lliure» | Cafè; trucada | Quatre poses | Línies segons l'estat |
+| Tap de la cervesera | `bar_sala` | al cinturó · a la barra · agafat · tornat | Demanar el cafè; tornar-lo | Al Puig / a la barra | — |
+| Rètol d'en Puig | `bar_sala` | sempre | — | — | «El cliente siempre tiene razón (excepto si no paga)». Vet: «És la contrasenya de la wifi. Sempre ho ha estat» (només quan cal la contrasenya) |
+| Porta del rebost | `bar_sala` | oberta · tancada (trucada) | Trucada | — | «Està discutint amb la seva dona inexistent» |
+| Calaix del rebost | `bar_rebost` | tancat · obert · buit | L'Iri obre el pany; la Vet agafa la recepta | Llum vermell / verd / obert | «Un pany amb aplicació» |
+| Comandament | `bar_sala` | a la mà d'en Puig · a la barra · agafat · tornat | Trucada; en tornar en Puig | — | — |
+| Tele del bar | `bar_sala`, `final_bar` | partit · *La Comissària Bassols* · notícies (final) | Comandament; final | Tres pantalles | Marcel: comentaris |
+| Maletí | `aeroport_terminal` | a objectes perduts · de la Vet | Reclamar-lo | Adhesiu «AGENDA 2019 — COMPTE, LLIMONA» | — |
+| Ulleres | `aeroport_terminal` | a la cafeteria · a l'inventari · posades | Agafar; usar | Al sprite de la Vet | — |
+| Soler | `aeroport_terminal` | vigilant · seguint la Vet · amb el nen | Sincronia | Tres poses | — |
+| Pòsit | `aeroport_terminal` | sota el taulell | — | — | «8-4-2-6» |
+| Cigarreta de l'Ortega | `aeroport_terminal` (vidriera) | 10 → 0 | Cada torn | La cigarreta s'escurça (5 dibuixos); l'Ortega mira cap a dins | Vet: «Li queden tres pipades» |
 | Porta de personal | `aeroport_personal` | tancada · xiulant · oberta | Codi | Llum vermell / parpelleja / verd | — |
-| Impressora | `aeroport_personal` | parada · imprimint · amb acreditacions | Terminal | — | — |
-| Barra de sospita | `bcmu_vestibul`, `bcmu_despatx` | 0 / 25 / 50 / 75 / 100 | Respostes | Barra a dalt; el Director: cella, corbata, telèfon | — |
-| Font de marbre | `bcmu_vestibul` | tancada (sempre) | — | Seca, amb cartell | La línia de «tothom» |
-| Estació del tub | totes les del BCMU | buida · amb càpsula | Enviar / rebre | Llum verd quan arriba | — |
-| Targeta de planta | `bcmu_moll` | al cinturó de la Rius · a l'Iri | 4b | — | — |
-| NETA-3 | `bcmu_passadis` | fent la volta · netejant l'entrepà · aturat (descansant) · amb horari nou | Entrepà / codi / panell | Movent-se / ajupit sobre les molles / assegut amb els llums baixos / amb un rellotge al pit | Les línies del robot |
-| Càmera 1 | `bcmu_passadis` | girant · tapada pel cartell | Cartell | Llum vermell / cartell al davant | Iri: «Els han fet invisibles per estalviar-se un paper» |
+| Terminal | `aeroport_oficina` | llista sense els noms · amb els noms | Usar | Pantalla | — |
+| Impressora | `aeroport_oficina` | parada · imprimint · amb acreditacions | Terminal; espera | — | — |
+| Barra de sospita | `bcmu_vestibul` | 0 / 25 / 50 / 75 / 100 | Respostes | Barra a dalt; el Director: cella, corbata, telèfon | — |
+| Plantes del vestíbul | `bcmu_vestibul` | totes · una menys (després d'un Dia de la Marmota) | Reinici | — | «Han retallat una planta» |
+| Font de marbre | `bcmu_vestibul` | seca (sempre) | — | Seca, amb rètol | «Tancada per estalvi de costos» |
+| Retrat del Director | `bcmu_vestibul` | sempre | — | El Director i en Rockefeller | La placa |
+| Màquina d'entrepans | `bcmu_vestibul` | plena · amb un forat | Comprar | — | «A Ginebra fins i tot l'entrepà cotitza» |
+| Estació del tub | vestíbul, passadís, escombraries, seguretat, avantdespatx | buida · amb càpsula | Enviar / rebre | Llum verd quan arriba | — |
+| Rius | `bcmu_moll` | enfadada amb el mòbil · ajupida (moneda) · contenta | 4b | Tres poses | — |
+| Màquina de cafè del moll | `bcmu_moll` | normal · s'ha empassat la moneda | Cafè | — | «El cafè d'aquí fa por» |
+| NETA-3 | `bcmu_passadis` / `bcmu_escombraries` | fent la volta · netejant l'entrepà · aturat (descansant) · carregant · amb horari nou · amb davantal (final) | Entrepà / codi / panell | Movent-se / ajupit sobre les molles / assegut amb els llums baixos / a la base / amb un rellotge al pit | Les línies del robot |
+| Panell de NETA-3 | `bcmu_escombraries` | tancat · obert · amb horari nou | Codi i panell | — | «Descans cada quatre hores. I el diumenge» |
+| Càmera 1 | `bcmu_passadis` | girant · tapada pel cartell | Cartell | Llum vermell / cartell al davant | «Els han fet invisibles per estalviar-se un paper» |
 | Càmera 2 | `bcmu_passadis` | girant · amb la galleda de barret | Galleda | — | — |
-| Galleda, cartell, extintor | `bcmu_passadis` | al seu lloc · a la càmera · (Acte 3) al conducte | Usar | Desapareixen del lloc | — |
-| Porta del personal | `bcmu_passadis` | tancada · oberta | Clau del collaret (Acte 3) | — | Iri: «Més tard» / (Acte 3) «Ara sí» |
+| Galleda, cartell, extintor | `bcmu_passadis` | al seu lloc · a la càmera · a l'inventari · al conducte (extintor) | Usar; robot | Desapareixen del lloc | — |
+| Porta de l'escala | `bcmu_passadis` | tancada · oberta (escala plena) · tancada de nou | Clau del Llibre Major (Esc. 9) | Darrere, guardes | «Pany antic, de clau grossa» / «Pla B: escombraries» |
 | Porta VIP | `bcmu_passadis` | sempre oberta | — | Catifa vermella | «L'Iri no és premium...» |
-| Llibre Major | `bcmu_escombraries` | apagat · codi 1/2/3 · demana clau · virus · aturada | Escenes 6–8 | Pantalla verda amb text, ROBIN HOOD, comptadors | Iri parlant amb la màquina |
+| Llibre Major | `bcmu_escombraries` | en espera · codi 1/2/3 · demana clau · virus (comptadors) · demana contrasenya · demana codi · pregunta (tornar / pagar primer) · aturat | Escenes 6–8 | Pantalla verda amb text | L'Iri parlant amb la màquina |
+| Conducte d'escombraries | `bcmu_escombraries` | tancat · obert · amb coixí (bosses / escuma) | Escena 9 | — | «Tres pisos? Primer, coixí» |
+| Ballester | `bcmu_seguretat` | mirant la sèrie · alerta (mà a la ràdio) · relaxat · sospita 1/2/3 · sense collaret | Escena 6 | Poses | — |
+| Got | `bcmu_seguretat` | sencer · trencat | Trencar-lo | Vidres a terra | — |
 | Collaret d'en Ballester | `bcmu_seguretat` | al coll · a la taula (veritat) · a la mà (mentida) | Escena 6 | — | — |
-| Monitors de seguretat | `bcmu_seguretat` | càmeres · tapades (cartell, galleda) · muntatge del virus | Escenes 5–7 | — | Ballester no ho veu; la Vet sí |
-| Mòbil del Director | `bcmu_despatx` | a la taula · a la mà del Director · a la Vet · amb la Pons | Escena 8 | S'il·lumina quan vibra | — |
-| Conducte d'escombraries | `bcmu_escombraries` | tancat · obert · amb coixí (bosses / escuma) | Escena 9 | — | — |
-| Contenidor | `bcmu_contenidor` | tancat · obert amb la Vet | Escena 9 | — | — |
+| Entrepà d'en Ballester | `bcmu_seguretat` | a la taula · agafat | Agafar | — | — |
+| Clauer «Visiteu Ginebra» | `bcmu_seguretat` | a la taula · agafat | Agafar | — | — |
+| Monitors de seguretat | `bcmu_seguretat` | càmeres · l'Iri visible · tapades · muntatge del virus | Escenes 5–7 | — | En Ballester no hi mira; la Vet sí |
+| Factura i nòmina | `bcmu_avantdespatx` | a la taula · llegides | Llegir-les | — | — |
+| Pons | `bcmu_avantdespatx` | barrant el pas · aliada · amb el mòbil | Escena 8 | Poses | — |
+| Foto i bol del gos | `bcmu_despatx` | sempre | — | — | «Rockefeller» gravat |
+| Mòbil del Director | `bcmu_despatx` | a la mà del Director · cap per avall a la taula · s'il·lumina (codi) · amb la Pons | Escena 8 | S'il·lumina quan vibra | — |
+| Director | `bcmu_despatx` | en xoc mirant el mòbil · parlant amb els ulls tancats · cancel·lant · immobilitzat (Ballester) | Escena 8 | Poses | — |
+| Contenidor | `bcmu_contenidor` | tancat · obert · amb bosses o escuma | Escena 9 | — | — |
 
-**Objectes d'inventari** (amb `amb_article`): cable d'alimentació, caixa de cartró, auricular esquerre, pizza,
-entrepà, clau de casa, tap de la cervesera, recepta de la llimonada, comandament, maletí, ulleres,
-acreditació de manteniment, targeta de planta, clau del Llibre Major, codi de nòmina (paper).
-**Qui mira**: tots els que poden passar d'una a l'altra (entrepà, clau, auricular, pizza) tenen un `look` per a
-cada protagonista, amb la seva veu.
+**Objectes d'inventari** (cadascun amb `amb_article`): cable de xarxa, cable d'alimentació, caixa de cartró,
+auricular esquerre (no es pot enviar), pizza, entrepà, clau de casa (no es pot enviar), tap de la cervesera,
+recepta de la llimonada, comandament, maletí, ulleres, acreditació de manteniment (n'hi ha dues, una per a cada
+una), targeta de planta, compte de nòmines (paper), galleda, cartell, extintor, clau del Llibre Major, clauer
+«Visiteu Ginebra», entrepà d'en Ballester.
+
+**Qui mira:** tot objecte que pot passar d'una a l'altra (cable d'alimentació, pizza, entrepà, acreditació,
+clau del Llibre Major, targeta, ulleres, tap, compte de nòmines) té un `look` per a cada protagonista, amb la
+seva veu. La resta en té un per defecte.
+
+**Ja està fet:** cada acció repetible té resposta: els cables connectats, en Diu ja distret, la cafetera sense
+cable, el cafè, la trucada, el pany obert, les opcions d'en Marcel ja fetes («Ja t'ho he dit»), el codi de la
+porta i la impressora, la Rius i la targeta, el robot aturat, les càmeres tapades, la sèrie repetida, la clau ja
+enviada, la contrasenya ja posada, el panell de NETA i el conducte.
 
 ---
 
@@ -780,33 +962,37 @@ cada protagonista, amb la seva veu.
 | Element | Al nostre JSON / codi |
 |---|---|
 | Sacrifici del tutorial | `vars.sacrifici` = `caixa` / `auricular` / `pizza` |
-| El passaplats i el tub pneumàtic | Interaccions «usar objecte amb el passaplats / el tub» amb `takeItem` + `giveItem` amb `who` (l'altra protagonista). Una sola regla a `game/logic/tub.ts` si cal reaccionar a «aquest objecte no hi cap» |
+| El passaplats i el tub pneumàtic | `game/logic/tub.ts`: «usar objecte amb el tub» comprova si hi cap (`props.cap_al_tub` a `items.json`), si es pot enviar (`props.no_enviar`) i si l'altra el necessita; si tot va bé, `takeItem` + `giveItem` amb `who`. Si l'altra no és a una sala amb estació, l'objecte espera a l'estació de la planta |
 | L'auricular | `flags.auricular_compartit`. Les línies de l'altra protagonista surten com a veu (personatge invisible a la sala, com la MARE de Ferro-9) |
-| Sincronització per torns | `game/logic/sincronia.ts`: per a cada pas de sincronia, `vars.torn_<escena>`, `vars.sospita_<escena>` i `vars.coberta` (bips coberts). Després de cada acció en una sala de sincronia, la lògica suma el torn i, si s'arriba al màxim, reinicia el pas (efectes i línies del contingut) |
-| Sospita del vestíbul | `vars.sospita` (0–100), condicions `var >= 25/50/75` per a les cares del Director (`appearance`) i per a la barra (`decor` amb `visibleIf`) |
-| Dia de la Marmota | Efecte de reinici: `setVar sospita` al valor inicial i `goTo bcmu_vestibul`; les opcions noves, amb `seen`/`chosen` (la Vet recorda) |
-| El que sap en Marcel | Diàleg amb opcions `once`, i `flags` `marcel_*` en cada una |
-| Aliats | `characters.json`: `relation` i fets (`remember`) per a Ballester, NETA-3, Rius i Pons; `vars.aliats` |
-| Finals | `endings.json` amb `when` per `vars.aliats` i `flags.pagar_primer`; escena amb línies `if` |
-| Missions | `quests.json`: les quatre dels aliats (`kind: side`) i les tres de cada acte (`main`) |
+| Sincronia per torns | `game/logic/sincronia.ts`: cada pas declara el rellotge (`vars.torn_<pas>` o `vars.sospita_<pas>`), el màxim i les eines; després de cada acció en una sala de sincronia suma el torn, aplica la regla (p. ex. el Director mira el mòbil si no hi ha cobertura) i, al màxim, reinicia el pas (línies i efectes del contingut, i torna les eines `once`). El botó «Espera» només surt durant una sincronia |
+| Cobertures | `vars.coberta_vet` (torns o bips coberts que queden) |
+| Sospita del vestíbul | `vars.sospita` (0–100) i `vars.sospita_max`; condicions `var >= 25/50/75` per a les cares del Director (`appearance`) i per a la barra (`decor` amb `visibleIf`) |
+| Dia de la Marmota | Efecte de reinici: `sospita` al valor inicial, `addVar marmota`, i `goTo bcmu_vestibul`; les opcions noves, amb `var marmota >= 1` |
+| El que sap en Marcel | Diàleg amb opcions `once` i `flags` `marcel_*`; el final de la conversa, amb `all` dels quatre que calen |
+| Aliats | `characters.json`: fets (`remember`) per a Ballester, NETA-3, Rius i Pons; `vars.aliats` |
+| Finals | `endings.json`: el 3 amb `all: [pagar_primer, aliats >= 3]` (prioritat alta), el 2 amb `aliats >= 1`, l'1 sense condició; escena amb línies `if` |
+| Missions | `quests.json`: una `main` per acte i les quatre dels aliats (`side`) |
 | Pistes | `hints.json`, tres nivells, per protagonista, amb `doneWhen` |
 | Títols d'acte i «Ara necessites les dues» | Línies `title` |
+| Gramàtica | `obj.<id>.amb_article` (ja hi és) i `obj.<id>.plural` per a les ulleres; els textos amb variables eviten les contraccions («de l'entrepà», «pel tub») o en tenen una clau pròpia |
 
-**Què caldrà afegir:** `game/logic/sincronia.ts` (els torns), i potser `game/logic/tub.ts` (els límits del
-tub). La resta ja ho fa el nucli de Ferro-9. Cap canvi a Benne: la «pantalla dividida» és el botó Canvia.
+**Què caldrà afegir:** `game/logic/sincronia.ts`, `game/logic/tub.ts` i el botó «Espera» al pont de Benne. La
+resta ja ho fa el nucli de Ferro-9. Cap altre canvi a Benne: la «pantalla dividida» és el botó Canvia.
 
 ## Abast (producció)
 
-- **16 sales**: portada, pròleg, 2 del pis, 2 del bar, 2 de l'aeroport, 6 del BCMU, el contenidor i el bar
-  final (que pot reaprofitar `bar_sala`).
-- **13 personatges** amb sprite (l'Iri i la Vet amb totes les animacions).
+- **19 sales**: portada, pròleg, 2 del pis, 2 del bar, 3 de l'aeroport, l'avió (cinemàtica), 7 del BCMU, el
+  contenidor i el bar final (que reaprofita `bar_sala`).
+- **16 personatges** amb sprite: l'Iri i la Vet (amb totes les animacions), en Diu, en Marcel, en Puig, l'Ortega,
+  en Soler, el nen, l'empleat d'objectes perduts, el Director, en Ballester, NETA-3, la Rius (i un tècnic genèric),
+  la recepcionista i la senyora Pons. En Rockefeller només surt en el retrat i la foto.
 - **L'Acte 1 sol ja és jugable** com a demostració.
 
 ## Decisions preses
 
 1. **Resolució:** 480×270 des del primer dia. -> fixada
 2. **Art:** pixel art caricaturesc, estil LucasArts clàssic. -> fixat (falta l'alçada dels personatges i la paleta)
-3. **Sincronització:** per torns, sense pantalla dividida ni rellotge real. -> fixat
+3. **Sincronia:** per torns, sense pantalla dividida ni rellotge real. -> fixat
 4. **Idiomes:** només català. -> fixat
 5. **Títol:** Suma Zero. -> fixat
 6. **Protagonistes:** dues, amb canvi lliure excepte a les sincronies. -> del primer guió
@@ -820,35 +1006,70 @@ tub). La resta ja ho fa el nucli de Ferro-9. Cap canvi a Benne: la «pantalla di
 4. **Escenes noves** (el moll de càrrega, els objectes perduts, la sortida per les escombraries, la senyora
    Pons). -> s'hi queden totes
 5. **La ciutat de l'Iri i la Vet:** no es diu mai (proposta) o és una de concreta? -> proposta: no es diu
-6. **El nom del bar** (el primer guió deia «El Último Peaje»). -> **Bar La Propina**. El rètol del Puig continua
+6. **El nom del bar** (el primer guió deia «El Último Peaje»). -> **Bar La Propina**. El rètol d'en Puig continua
    en castellà («El cliente siempre tiene razón (excepto si no paga)»)
 7. **La sèrie *La Comissària Bassols*** i els capítols (*El violí mut*, *La vídua del Liceu*): inventats, per no
    referenciar cap sèrie real. -> proposta
 8. **Alçada dels personatges** (caricaturesc: caps grans): proposta de 64 px per a les protagonistes (a Ferro-9
    en feien 87), perquè els caps hi càpiguen amb expressió i les sales tinguin aire. -> es decideix amb la sala
    de mostra
+9. **En Marcel, al final:** el primer guió deia que «s'ha comprat un cotxe»; amb una mica de diners, proposo que
+   «ha anat al dentista», que tanca la seva història. -> proposta
+10. **L'intercanvi Vet–Director de l'Escena 8** («Vostè prestava. A interès...») s'ha escurçat a «Vostè cobrava
+    comissió», perquè era el més discursiu del joc. -> proposta
 
 ---
 
-## Annex: decisions de disseny
+## Annex A: decisions de disseny
 
 Canvis respecte del primer guió (`primer-guio.txt`), i per què.
 
 | # | Problema del primer guió | Canvi |
 |---|---|---|
-| 1 | Pantalla dividida i temps real: Benne mostra una sala alhora, i el temps real trenca «cap derrota». | **Sincronització per torns** (decisió de l'usuari): canviar no costa, cada acció és un torn, el rellotge es veu a l'escena. |
-| 2 | Escena 5: la porta del personal necessita la clau del collaret «més tard», però a l'Escena 6 l'Iri ja és al servidor. Si el servidor és darrere d'aquella porta, és impossible. | El servidor és darrere la **porta de neteja** (oberta). La clau serveix per autoritzar el virus al Llibre Major, i la porta del personal s'obre a l'Acte 3. |
-| 3 | Escena 7: «la gent normal no nota res» i, a l'Escena 8, el virus deixa a zero pensions i nòmines. Es contradiu. | **Dues fases**: buidar (instantani) i repartir (ronda a ronda, lentíssim). Després de la primera ronda, tothom té 12 €, i a les dotze no arriben les pensions. |
+| 1 | Pantalla dividida i temps real: Benne mostra una sala alhora, i el temps real trenca «cap derrota». | **Sincronia per torns** (decisió de l'usuari): canviar no costa, cada acció és un torn, el rellotge es veu a l'escena. |
+| 2 | Escena 5: la porta del personal necessita la clau del collaret «més tard», però a l'Escena 6 l'Iri ja és al servidor. | El servidor és darrere la **porta de neteja** (oberta). La clau autoritza el virus al Llibre Major; la porta (ara **de l'escala**) s'obre amb la mateixa clau a l'Escena 9, i és plena de seguretat: per això el conducte. |
+| 3 | Escena 7: «la gent normal no nota res» i, a l'Escena 8, el virus deixa a zero pensions i nòmines. | **Dues fases**: buidar (instantani) i repartir (tres hores per ronda). Després de la primera ronda, tothom té 12 €, i a les dotze no cobrarà ningú. Són les onze i quart. |
 | 4 | Com es passen informació i objectes, si són a llocs diferents? | **Auricular** per a la veu, **tub pneumàtic** per als objectes (i el passaplats, al pis, com a tutorial). |
-| 5 | Per què el bilionari té exactament 12 € i el Director 14,32 €? | La primera ronda del repartiment són 12 €; els 2,32 € són interessos que el banc no ha sabut no cobrar-se. |
-| 6 | L'entrepà de la Vet «no preguntis d'on surt». | Surt de l'Escena 1 (la Vet se'l fa) i arriba pel tub. Es manté el gag («No preguntis d'on surt.») i té lògica. |
-| 7 | Com paguen el viatge, si no tenen ni per pizzes? | El **vol propi del BCMU** per als tècnics de caixes fortes (ho diu en Marcel). L'aeroport és colar-se a la llista. |
-| 8 | La contrasenya «Rockefeller» surt del no-res («ha estat flirtejant tota l'estona»). | Es planta a l'Escena 4 (el retrat i la pregunta del gos) i hi ha alternatives al despatx. |
-| 9 | La «dona que no existeix» del Puig: si no existeix, ell ho sap. | És el gag: «Jo no estic casat.» «Doncs ja ho saps. Vull el divorci.» I fa la trucada l'Iri, que és un desastre parlant amb la gent. |
+| 5 | Per què el bilionari té exactament 12 € i el Director 14,32 €? | La primera ronda són 12 €; els 2,32 € són interessos: «Al Director, el banc sempre li paga». |
+| 6 | L'entrepà de la Vet «no preguntis d'on surt». | Surt de l'Escena 1 i arriba pel tub. Es manté el gag i té lògica. |
+| 7 | Com paguen el viatge, si no tenen ni per pizzes? | El **vol propi del BCMU** per als tècnics de caixes fortes. L'aeroport és colar-se a la llista. |
+| 8 | La contrasenya «Rockefeller» surt del no-res. | Es planta a l'Escena 4 (la placa del retrat) i hi ha alternatives al despatx. |
+| 9 | La «dona que no existeix» d'en Puig: si no existeix, ell ho sap. | És el gag: «Jo no estic casat.» «Doncs ja ho saps. Vull el divorci.» I truca l'Iri, que és un desastre parlant amb la gent. |
 | 10 | La flag «mentida corporativa» desbloqueja un diàleg amb en Marcel, però en Marcel és lluny. | El diàleg és al final, al bar. |
-| 11 | «+1 respecte del jugador» no és cap mecànica. | Flag `dignitat`, que canvia una línia del final. |
+| 11 | «+1 respecte del jugador» no és cap mecànica. | Flag `dignitat`, que canvia una línia d'en Marcel al final. |
 | 12 | El primer puzle del bar (tres coses) i el revisat (el comandament) eren alternatius. | Són el mateix: tres coses, i el comandament és la tercera, amb la trucada. |
 | 13 | El Dia de la Marmota: si es reinicia tot, el jugador repeteix el mateix. | La Vet **recorda** el que ha après i té opcions noves; la sospita torna al valor inicial. |
-| 14 | El codi del robot el sap en Marcel, que només parla amb la Vet. | La Vet l'ha de dir a l'Iri per telèfon (línia de temps del coneixement); si no, és una pista de la Vet. |
+| 14 | El codi del robot el sap en Marcel, que només parla amb la Vet. | La Vet l'ha de dir a l'Iri per telèfon; si no, és una pista de la Vet per l'auricular. |
 | 15 | Hi havia un sol final. | **Tres finals**, la mateixa escena amb més o menys aliats a la taula, com a Ferro-9. |
-| 16 | «Afegeix més escenes amb nous puzles» (usuari). | El passaplats, el telèfon del bar, els objectes perduts, el moll de càrrega, la sortida per les escombraries i les missions dels aliats. |
+| 16 | «Afegeix més escenes amb nous puzles» (usuari). | El passaplats, el telèfon del bar, els objectes perduts, el moll de càrrega, la senyora Pons, la sortida per les escombraries i les missions dels aliats. |
+| 17 | El Director, a l'Escena 8, cancel·la l'aturada que li tornaria els diners. | No ho fa per diners: **per protocol**. «No ho he autoritzat jo. Per tant, no és segur.» |
+
+## Annex B: primera revisió de coherència
+
+Revisió adversarial de tot el guió (secció 4 de les instruccions), feta abans d'implementar. Va trobar 61
+problemes (22 greus, 26 mitjans, 13 menors); tots s'han resolt en aquesta versió. Els greus, i com s'han resolt:
+
+| # | Problema | Resolució |
+|---|---|---|
+| G1 | Si en Diu es queda l'auricular esquerre i la Vet el dret, l'Iri no en té cap. | En Diu el torna mossegat: «Té forats de dent, però s'hi sent.» |
+| G2 | La porta de l'escala: l'Iri sabia que «més tard» s'obriria; obrir-la no servia de res. | Descripció neutra; la clau queda a l'inventari; a l'Escena 9 la porta s'obre, l'escala és plena i motiva el conducte. |
+| G3 | La Rius donava els codis a l'Escena 8 sense ser-hi. | Dona el paper del compte de nòmines a l'Escena 4b. En Ballester el diu en veu alta al despatx. |
+| G4 | L'Escena 6 es podia començar amb la Vet al vestíbul (o amb la Vet sola). | La sincronia comença quan les dues hi són; abans, línies que ho expliquen. |
+| G5 | En reiniciar l'Escena 6, les eines «una vegada» s'havien gastat: atzucac. | Regla general: en reiniciar un pas, totes les eines tornen. |
+| G6 | L'entrepà alternatiu era inaccessible des de seguretat, i no tenien diners. | Propines de la nit, i l'entrepà d'en Ballester a seguretat. |
+| G7 | La conversa d'en Marcel es podia tancar sense la informació necessària. | Quatre preguntes calen; dues són opcionals; fins aleshores, «encara no m'has preguntat el més important». |
+| G8 | Contradicció sobre què explica la Vet a l'Iri per telèfon. | El resum diu exactament què passa (servidor, clau, tub i vol sempre; robot si es tria; Ballester, només el nom). |
+| G9 | La sospita inicial comptava l'acreditació, que és obligatòria. | Compta el maletí i les ulleres (posades). |
+| G10 | El Director cancel·lava l'aturada contra el seu propi interès. | Per protocol (annex A, 17). |
+| G11 | L'Iri era alhora davant i darrere la porta de l'aeroport. | Dues sales: `aeroport_personal` (davant) i `aeroport_oficina` (dins). |
+| G12 | Què és un torn, i els comptes de 8 no quadraven. | Definició de torn i botó «Espera»; aeroport a 10 torns; Escena 8 amb regla del mòbil i 9 torns; taula «Comptes de les sincronies». |
+| G13 | El muntatge passava ja de les dotze. | «Són les onze i quart. A les dotze, això:». |
+| G14 | La recepcionista reconeixia la Vet sense haver-la vista. | Ha vist la gravació del vestíbul; només si `sospita_max ≥ 50`. |
+| G15 | Les claus alternatives del camí de la mentida no existien. | La clau de casa s'agafa sempre i no es pot enviar; un clauer a la taula d'en Ballester, per si de cas. |
+| G16 | El final del bar xocava amb l'ordre lliure. | En Puig torna sol de la trucada; l'escena s'acaba amb en Marcel. |
+| G17 | La missió del tap era impossible (el final és cinemàtic). | En Marcel torna les coses; el tap es torna a l'Escena 2; la línia final depèn de `tap_tornat`. |
+| G18 | Casos de finals sense cobrir. | Condicions noves (vegeu «Finals»). |
+| G19 | 14,32 € «amb interessos que no ha sabut no cobrar-se» volia dir menys, no més. | «Al Director, el banc sempre li paga.» |
+| G20 | El contenidor tenia les dues protagonistes en una sala. | És sala de la Vet; l'Iri hi cau en una cinemàtica. |
+| G21 | El tub portava objectes a sales sense estació. | Estació a la sala d'escombraries; la càpsula espera a l'estació de la planta; al moll no n'hi ha. |
+| G22 | El primer bip no s'explicava, i la tria de la clau no tenia disparador. | El primer bip s'escapa i ensenya la regla; sense la sèrie, només hi ha la mentida. |
