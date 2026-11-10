@@ -218,6 +218,32 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "terminal",
+      "tag": "terminal",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "terminal": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 160
     }
   ],
   "characters": [
