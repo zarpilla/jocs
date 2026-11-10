@@ -19,7 +19,7 @@ from hd import items  # noqa: E402
 
 W, H = items.W, items.H   # la casella (49×27)
 
-ICONS = items.ICONS
+ICONS = {**items.ICONS, **items.CARTOON}
 
 
 def icon(item_id):

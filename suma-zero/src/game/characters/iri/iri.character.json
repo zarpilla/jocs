@@ -2,83 +2,89 @@
   "id": "iri",
   "name": "Iri",
   "description": "Iri",
-  "walkSpeed": 88,
-  "walkToPoint": {
-    "x": 40,
-    "y": 61
-  },
-  "talkPoint": {
-    "x": 18,
-    "y": -1
-  },
   "clickable": true,
   "display": {
     "aseprite": true
   },
-  "feet": {
-    "x": 18,
-    "y": 61
+  "walkSpeed": 110,
+  "walkToPoint": {
+    "x": 42,
+    "y": 65
   },
-  "animations": {
-    "IdleL": {
-      "loop": true
-    },
-    "IdleD": {
-      "loop": true
-    },
-    "IdleU": {
-      "loop": true
-    },
-    "WalkL": {
-      "loop": true,
-      "frameDuration": 80
-    },
-    "WalkD": {
-      "loop": true,
-      "frameDuration": 60
-    },
-    "WalkU": {
-      "loop": true,
-      "frameDuration": 60
-    },
-    "TalkL": {
-      "loop": true
-    },
-    "TalkD": {
-      "loop": true
-    },
-    "TalkU": {
-      "loop": true
-    }
+  "talkPoint": {
+    "x": 24,
+    "y": -2
+  },
+  "feet": {
+    "x": 24,
+    "y": 65
   },
   "collider": {
     "points": [
       {
-        "x": 31,
-        "y": 28
-      },
-      {
-        "x": 26,
-        "y": 0
-      },
-      {
         "x": 11,
-        "y": 0
+        "y": 2
       },
       {
-        "x": 5,
+        "x": 37,
+        "y": 2
+      },
+      {
+        "x": 37,
         "y": 30
       },
       {
-        "x": 7,
-        "y": 64
+        "x": 33,
+        "y": 66
       },
       {
-        "x": 28,
-        "y": 64
+        "x": 15,
+        "y": 66
+      },
+      {
+        "x": 11,
+        "y": 30
       }
     ]
   },
-  "speechColor": "#f0a050",
-  "defaultVerb": "look"
+  "animations": {
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 120
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 120
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "look",
+  "speechColor": "#f0a050"
 }

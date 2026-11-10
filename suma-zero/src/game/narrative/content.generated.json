@@ -84,33 +84,103 @@
         "name": "sala.pis_estudi.nom",
         "protagonist": "iri",
         "hotspots": {
-          "caixa": {
-            "name": "sala.pis_estudi.caixa.nom",
-            "visibleIf": {
-              "flag": "router_connectat",
-              "is": false
-            },
+          "finestra": {
+            "name": "sala.pis_estudi.finestra.nom",
             "interactions": [
               {
                 "verb": "look",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pis_estudi.caixa.look"
+                    "text": "sala.pis_estudi.finestra.look"
                   }
                 ]
               },
               {
-                "verb": "pickUp",
+                "verb": "open",
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.pis_estudi.caixa.agafa"
+                    "text": "sala.pis_estudi.finestra.obre"
                   }
-                ],
-                "effects": [
+                ]
+              }
+            ]
+          },
+          "poster": {
+            "name": "sala.pis_estudi.poster.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
                   {
-                    "giveItem": "caixa_cartro"
+                    "who": "player",
+                    "text": "sala.pis_estudi.poster.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "matalas": {
+            "name": "sala.pis_estudi.matalas.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.matalas.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "pizzes": {
+            "name": "sala.pis_estudi.pizzes.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.pizzes.look"
+                  }
+                ]
+              },
+              {
+                "verb": "open",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.pizzes.obre"
+                  }
+                ]
+              }
+            ]
+          },
+          "prestatge": {
+            "name": "sala.pis_estudi.prestatge.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.prestatge.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "ordinadors": {
+            "name": "sala.pis_estudi.ordinadors.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.ordinadors.look"
                   }
                 ]
               }
@@ -151,6 +221,66 @@
               }
             ]
           },
+          "fibra": {
+            "name": "sala.pis_estudi.fibra.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.fibra.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "passaplats": {
+            "name": "sala.pis_estudi.passaplats.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.passaplats.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "caixa": {
+            "name": "sala.pis_estudi.caixa.nom",
+            "visibleIf": {
+              "flag": "router_connectat",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.caixa.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pis_estudi.caixa.agafa"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "caixa_cartro"
+                  }
+                ]
+              }
+            ]
+          },
           "diu": {
             "name": "sala.pis_estudi.diu.nom",
             "interactions": [
@@ -168,6 +298,13 @@
                 ]
               }
             ]
+          }
+        },
+        "decor": {
+          "router_connectat": {
+            "visibleIf": {
+              "flag": "router_connectat"
+            }
           }
         }
       },
@@ -333,14 +470,32 @@
       "sala.pis_estudi.caixa.look": "La caixa del router nou. El gat ja l'ha reclamat.",
       "sala.pis_estudi.caixa.agafa": "Me l'emporto. Ho sento, Diu.",
       "sala.pis_estudi.router.nom": "router",
-      "sala.pis_estudi.router.look": "Tres cables i cap a lloc.",
+      "sala.pis_estudi.router.look": "El router nou. Encara sense cables. Ens mirem i ens entenem.",
       "sala.pis_estudi.router.connecta": "Caixa per al gat, cables per a mi. Connectat.",
       "sala.pis_cuina.nom": "La cuina",
       "sala.pis_cuina.plats.nom": "plats",
       "sala.pis_cuina.plats.look": "Nou dies. Els he comptat.",
       "sala.portada.nom": "Suma Zero",
       "sala.pis_estudi.diu.nom": "Diu",
-      "sala.pis_estudi.diu.look": "El gat. Té els ullals posats en el cable de xarxa."
+      "sala.pis_estudi.diu.look": "El gat. Té els ullals posats en el cable de xarxa.",
+      "sala.pis_estudi.finestra.nom": "finestra",
+      "sala.pis_estudi.finestra.look": "La ciutat dorm. La pizzeria del davant, no.",
+      "sala.pis_estudi.finestra.obre": "Si l'obro, entra el fred i surt la wifi del veí.",
+      "sala.pis_estudi.poster.nom": "pòster",
+      "sala.pis_estudi.poster.look": "Un gat amb ulleres de sol i un 404. Error: motivació no trobada.",
+      "sala.pis_estudi.matalas.nom": "matalàs",
+      "sala.pis_estudi.matalas.look": "El llit. Bé, el matalàs. El somier és una idea que encara no he implementat.",
+      "sala.pis_estudi.pizzes.nom": "caixes de pizza",
+      "sala.pis_estudi.pizzes.look": "Cinc caixes. Totes buides. Les he comprovat dues vegades.",
+      "sala.pis_estudi.pizzes.obre": "Buida. Com les altres quatre. Com el meu compte corrent.",
+      "sala.pis_estudi.ordinadors.nom": "ordinadors",
+      "sala.pis_estudi.ordinadors.look": "Tres pantalles. Una pel codi, una per la documentació i una per mirar el codi amb angoixa.",
+      "sala.pis_estudi.fibra.nom": "presa de la fibra",
+      "sala.pis_estudi.fibra.look": "La fibra òptica. Llum dins d'un fil. I en Diu se la vol menjar.",
+      "sala.pis_estudi.passaplats.nom": "passaplats",
+      "sala.pis_estudi.passaplats.look": "El passaplats de la cuina. Per aquí passen plats, pizzes i ordres de la Vet.",
+      "sala.pis_estudi.prestatge.nom": "prestatge",
+      "sala.pis_estudi.prestatge.look": "Llibres de programació, un disc dur obert, un cactus que no ha sobreviscut a la meva atenció i un gat de la sort. De moment, el gat no funciona."
     }
   },
   "locale": "ca",

@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 19,
-            "y": 161
+            "x": 14,
+            "y": 177
           },
           {
-            "x": 461,
-            "y": 161
+            "x": 466,
+            "y": 177
           },
           {
-            "x": 472,
-            "y": 202
+            "x": 474,
+            "y": 203
           },
           {
-            "x": 8,
-            "y": 202
+            "x": 6,
+            "y": 203
           }
         ],
         "holes": []
@@ -46,29 +46,285 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 289,
-          "y": 19
+          "x": 372,
+          "y": 122
         },
         {
-          "x": 363,
-          "y": 19
+          "x": 410,
+          "y": 122
         },
         {
-          "x": 363,
-          "y": 52
+          "x": 410,
+          "y": 147
         },
         {
-          "x": 289,
-          "y": 52
+          "x": 372,
+          "y": 147
         }
       ],
       "walkToPoint": {
-        "x": 326,
-        "y": 172
+        "x": 392,
+        "y": 184
       },
       "lookAtPoint": {
-        "x": 326,
-        "y": 52
+        "x": 391,
+        "y": 147
+      }
+    },
+    {
+      "id": "finestra",
+      "active": true,
+      "description": "finestra",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 34,
+          "y": 30
+        },
+        {
+          "x": 124,
+          "y": 30
+        },
+        {
+          "x": 124,
+          "y": 112
+        },
+        {
+          "x": 34,
+          "y": 112
+        }
+      ],
+      "walkToPoint": {
+        "x": 80,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 79,
+        "y": 112
+      }
+    },
+    {
+      "id": "poster",
+      "active": true,
+      "description": "pòster",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 150,
+          "y": 36
+        },
+        {
+          "x": 190,
+          "y": 36
+        },
+        {
+          "x": 190,
+          "y": 92
+        },
+        {
+          "x": 150,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 170,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 170,
+        "y": 92
+      }
+    },
+    {
+      "id": "matalas",
+      "active": true,
+      "description": "matalàs",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 12,
+          "y": 140
+        },
+        {
+          "x": 152,
+          "y": 140
+        },
+        {
+          "x": 152,
+          "y": 176
+        },
+        {
+          "x": 12,
+          "y": 176
+        }
+      ],
+      "walkToPoint": {
+        "x": 90,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 82,
+        "y": 176
+      }
+    },
+    {
+      "id": "pizzes",
+      "active": true,
+      "description": "caixes de pizza",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 148,
+          "y": 140
+        },
+        {
+          "x": 192,
+          "y": 140
+        },
+        {
+          "x": 192,
+          "y": 172
+        },
+        {
+          "x": 148,
+          "y": 172
+        }
+      ],
+      "walkToPoint": {
+        "x": 176,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 170,
+        "y": 172
+      }
+    },
+    {
+      "id": "ordinadors",
+      "active": true,
+      "description": "ordinadors",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 206,
+          "y": 84
+        },
+        {
+          "x": 356,
+          "y": 84
+        },
+        {
+          "x": 356,
+          "y": 132
+        },
+        {
+          "x": 206,
+          "y": 132
+        }
+      ],
+      "walkToPoint": {
+        "x": 270,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 281,
+        "y": 132
+      }
+    },
+    {
+      "id": "fibra",
+      "active": true,
+      "description": "presa de la fibra",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 414,
+          "y": 130
+        },
+        {
+          "x": 438,
+          "y": 130
+        },
+        {
+          "x": 438,
+          "y": 168
+        },
+        {
+          "x": 414,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 428,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 426,
+        "y": 168
+      }
+    },
+    {
+      "id": "passaplats",
+      "active": true,
+      "description": "passaplats",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 428,
+          "y": 86
+        },
+        {
+          "x": 476,
+          "y": 86
+        },
+        {
+          "x": 476,
+          "y": 128
+        },
+        {
+          "x": 428,
+          "y": 128
+        }
+      ],
+      "walkToPoint": {
+        "x": 454,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 452,
+        "y": 128
+      }
+    },
+    {
+      "id": "prestatge",
+      "active": true,
+      "description": "prestatge",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 214,
+          "y": 30
+        },
+        {
+          "x": 350,
+          "y": 30
+        },
+        {
+          "x": 350,
+          "y": 62
+        },
+        {
+          "x": 214,
+          "y": 62
+        }
+      ],
+      "walkToPoint": {
+        "x": 282,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 282,
+        "y": 62
       }
     }
   ],
@@ -98,40 +354,65 @@
       "collider": {
         "points": [
           {
-            "x": 117,
-            "y": 57
+            "x": 300,
+            "y": 163
           },
           {
-            "x": 191,
-            "y": 57
+            "x": 342,
+            "y": 163
           },
           {
-            "x": 191,
-            "y": 90
+            "x": 342,
+            "y": 190
           },
           {
-            "x": 117,
-            "y": 90
+            "x": 300,
+            "y": 190
           }
         ]
       },
       "walkToPoint": {
-        "x": 154,
-        "y": 172
+        "x": 322,
+        "y": 197
       },
       "lookAtPoint": {
-        "x": 154,
-        "y": 90
+        "x": 321,
+        "y": 190
       },
       "description": "caixa"
+    },
+    {
+      "id": "router_connectat",
+      "tag": "router_connectat",
+      "animations": {
+        "router_connectat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pantalles",
+      "tag": "pantalles",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pantalles": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 240,
-      "y": 185,
+      "x": 120,
+      "y": 192,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -140,8 +421,8 @@
     {
       "instanceId": "diu-1",
       "definition": "diu/diu.character.json",
-      "x": 368,
-      "y": 177,
+      "x": 262,
+      "y": 192,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

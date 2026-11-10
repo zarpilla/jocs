@@ -67,8 +67,22 @@ Regles:
 | Títol | **Suma Zero**; projecte Benne `suma-zero` |
 | Font | Pròpia (`suma-regular`, `suma-negreta`), mai fonts amb llicència no comercial |
 
-Pendents de fixar abans de la sala de mostra: alçada dels personatges en píxels, mida de les icones
-(la casella de l'inventari de Benne és de 49×27) i paleta.
+## Art
+
+**En comparació: dues propostes** amb la mateixa sala de mostra (`pis_estudi`, l'estudi de l'Iri). Vegeu
+[guio/art/](guio/art/).
+
+| | Proposta A · caricatura | Proposta B · urbà, sense caricatura |
+|---|---|---|
+| Personatges | **64 px**, cap gran (≈26 px), fotograma 48×68, peus a (24, 65) | Proporcions de Ferro-9 (≈83 px), fotograma 49×87 |
+| Dibuix | `hd/cartoon.py`: contorn fosc del color de cada peça, dos o tres tons per color | `hd/characters.py` (de Ferro-9): volum, llum i trama |
+| Mobles | Escriptori a mig cos (≈30 px de terra a taulell) | Escala real (≈46 px) |
+| Fons | `hd/rooms/pis_estudi.py` | `hd/rooms/pis_estudi_b.py` |
+
+Comú: 480×270, la sala es veu fins a y≈205 (a sota, la barra de verbs); casella d'inventari de 49×27; fons amb
+`hd/pix.py` (rampes, trama ordenada, llums de sala). Previsualitzacions: `python3 adapters/benne/tools/hd/render.py
+<sala> <carpeta>` (amb una de depuració: zones, terra i personatges a escala). La barra de verbs i els menús
+encara són els de la plantilla, ampliats.
 
 ## Ordres
 
@@ -101,4 +115,7 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   una caixa de cartró i un final de prova.
 - Projecte Benne a `suma-zero/` creat amb `npm run benne:create`, amb els pegats propis al motor
   (`adapters/benne/patches/`) i la font pròpia.
-- **Següent pas:** el guió (`guio/guio.md`) i la revisió de coherència, abans d'escriure cap JSON.
+- **Guió** complet i revisat ([guio/guio.md](guio/guio.md)), amb la primera revisió de coherència aplicada.
+- **Sala de mostra** (l'estudi de l'Iri) en dues propostes d'art, per triar-ne una. La A (caricatura) s'ha
+  provat al navegador: s'hi camina i s'hi parla.
+- **Següent pas:** triar l'estil i començar l'Acte 1.

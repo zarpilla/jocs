@@ -2,61 +2,67 @@
   "id": "diu",
   "name": "Diu",
   "description": "Diu",
-  "walkSpeed": 88,
-  "walkToPoint": {
-    "x": 44,
-    "y": 50
-  },
-  "talkPoint": {
-    "x": 18,
-    "y": 5
-  },
   "clickable": true,
   "display": {
     "aseprite": true
   },
+  "walkSpeed": 60,
+  "walkToPoint": {
+    "x": 34,
+    "y": 23
+  },
+  "talkPoint": {
+    "x": 13,
+    "y": -2
+  },
   "feet": {
-    "x": 19,
-    "y": 50
+    "x": 13,
+    "y": 23
   },
   "collider": {
     "points": [
       {
+        "x": 4,
+        "y": 0
+      },
+      {
         "x": 24,
-        "y": 4
+        "y": 0
       },
       {
-        "x": 28,
-        "y": 51
+        "x": 24,
+        "y": 23
       },
       {
-        "x": 10,
-        "y": 51
-      },
-      {
-        "x": 10,
-        "y": 4
+        "x": 4,
+        "y": 23
       }
     ]
   },
   "animations": {
     "IdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "TalkD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 160
     },
     "IdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "TalkL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 160
     },
     "IdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 300
     },
     "TalkU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 160
     }
   },
   "defaultVerb": "talkTo",

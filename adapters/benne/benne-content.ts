@@ -92,6 +92,8 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   // Els inventaris inicials els reparteix el nucli (game.json → start).
   config.initialGameState = { flags: {}, variables: {}, inventory: [] };
   config.defaultFallbackLine = t('ui.defecte', String(config.defaultFallbackLine ?? ''));
+  // «Walk to» de la línia de verbs (pegat del motor: walkToLabel).
+  config.walkToLabel = t('ui.verb.walkTo', String(config.walkToLabel ?? 'Walk to'));
   for (const verb of (config.verbs as Json[]) ?? []) {
     verb.label = t(`ui.verb.${verb.id}`, String(verb.label));
     if (verb.preposition !== undefined) verb.preposition = t(`ui.verb.${verb.id}.prep`, String(verb.preposition));

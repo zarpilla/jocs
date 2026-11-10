@@ -255,6 +255,31 @@ def titol(c, text, cx, y, mida):
                         c.px(x, yy, (255, 255, 255))
 
 
+# ─── Sales de Suma Zero ─────────────────────────────────────────────────────
+# Les que tenen art definitiu (hd/rooms/<sala>.py) només fan servir d'aquí la geometria; `bg` és
+# el dibuix provisional per si mai no hi hagués art HD.
+
+PIS_ESTUDI = {
+    'era': 'iri',
+    'things': {
+        'finestra': {'rect': (34, 30, 124, 112), 'walk': (80, 184)},
+        'poster': {'rect': (150, 36, 190, 92), 'walk': (170, 184)},
+        'matalas': {'rect': (12, 140, 152, 176), 'walk': (90, 186)},
+        'pizzes': {'rect': (148, 140, 192, 172), 'walk': (176, 186)},
+        'prestatge': {'rect': (214, 30, 350, 62), 'walk': (282, 184)},
+        'ordinadors': {'rect': (206, 84, 356, 132), 'walk': (270, 184)},
+        'router': {'rect': (372, 122, 410, 147), 'walk': (392, 184)},
+        'fibra': {'rect': (414, 130, 438, 168), 'walk': (428, 184)},
+        'passaplats': {'rect': (428, 86, 476, 128), 'walk': (454, 184)},
+        'caixa': {'rect': (300, 163, 342, 190), 'walk': (322, 197)},
+    },
+    'spawns': {'iri': (120, 192), 'diu': (262, 192)},
+    'walkable': [(14, 177), (466, 177), (474, 203), (6, 203)],
+    'bg': lambda c: c.rect(0, 0, W, H, (60, 44, 78)),
+    'props': {},
+}
+
 # Cada sala amb disseny propi: id de la sala → disseny (vegeu el principi del fitxer).
-# Les sales de Suma Zero s'hi afegeixen a mesura que el guió de cada acte es tanca.
-DESIGNS = {}
+DESIGNS = {
+    'pis_estudi': PIS_ESTUDI,
+}
