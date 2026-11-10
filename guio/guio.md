@@ -58,7 +58,7 @@ Comèdia caòtica amb rerefons polític clar però no panfletari, per a adolesce
 ### Vet — la cara dura
 
 - **Qui és:** 26 anys. Germana gran de fet: no són família, però l'Iri hi viu des dels divuit. Encantadora,
-  mentidera professional, sap obrir qualsevol porta, literal i figurada. Cambrera a El Último Peaje. Té
+  mentidera professional, sap obrir qualsevol porta, literal i figurada. Cambrera al bar La Propina. Té
   contactes a tot arreu.
 - **Què vol:** que l'Iri no es fiqui en problemes. (Ja és tard.)
 - **Què necessita:** deixar de dir que tot li és igual.
@@ -78,7 +78,7 @@ i els objectes, pel **tub pneumàtic** (vegeu «Regles del món»).
 |---|---|---|
 | **Diu** | El gat. Mossega cables. | Tutorial (Acte 1), gag recurrent i escena postcrèdits. Intocable. |
 | **Marcel** | Ex-enginyer del BCMU, acomiadat per «reestructuració» després de vint anys. Va dissenyar el tub pneumàtic de la seu i va programar el robot de neteja. Beu cafè amb llet al bar. No té dentista. | **La informació.** Sap on és el Llibre Major, qui té la clau, els gustos del Cap i el codi del robot. També fa de veu de la crítica, en frases curtes. |
-| **Senyor Puig** | L'amo d'El Último Peaje. Bigoti i ràbia. Rètol: *«El cliente siempre tiene razón (excepto si no paga)»*. Parla sempre de «la seva dona», que tothom sap que no existeix. | L'obstacle de l'Escena 2, i un final petit: torna a obrir el bar. |
+| **Senyor Puig** | L'amo del bar La Propina. Bigoti i ràbia. Rètol: *«El cliente siempre tiene razón (excepto si no paga)»*. Parla sempre de «la seva dona», que tothom sap que no existeix. | L'obstacle de l'Escena 2, i un final petit: torna a obrir el bar. |
 | **La supervisora Ortega** | Supervisora de facturació de l'aeroport. Surt a fumar cada hora en punt. | El rellotge de la sincronització de l'aeroport (la cigarreta). |
 | **L'agent Soler** | Guàrdia de l'aeroport, de cor tendre. | El que la Vet ha de distreure amb el nen que no existeix. |
 | **El Director Bonfill** | Director de la seu del BCMU. Educat, impecable, somriu massa. Parla de «sostenibilitat» i «inclusió financera». Té un retrat seu al vestíbul, amb el seu gos **Rockefeller**. No crida mai. | L'antagonista. Creu que fa el bé. Al final, agafa el metro. |
@@ -165,7 +165,7 @@ contrasenya (Escena 8). El joc les anuncia amb un títol: **«Ara necessites les
 | 1 · «El pla és un desastre» | 1. El pis · 2. El bar · 3. L'aeroport | `pis_estudi`, `pis_cuina`, `bar_sala`, `bar_rebost`, `aeroport_terminal`, `aeroport_personal` | Iri · Vet · les dues |
 | 2 · «La seu del mal» | 4. El vestíbul · 4b. El moll de càrrega · 5. El tercer pis · 6. El collaret | `bcmu_vestibul`, `bcmu_moll`, `bcmu_passadis`, `bcmu_escombraries`, `bcmu_seguretat` | Vet · Iri · Iri · les dues |
 | 3 · «Robin Hood 2.0» | 7. L'execució · 8. El despatx · 9. La sortida | `bcmu_escombraries`, `bcmu_despatx`, `bcmu_contenidor` | Iri · les dues · les dues |
-| Final | El Último Peaje, mirant les notícies | `final_bar` | cinemàtica |
+| Final | El bar La Propina, mirant les notícies | `final_bar` | cinemàtica |
 
 **Escenes noves** respecte del primer guió (a petició de l'usuari: «afegeix més escenes amb nous puzles»):
 el passaplats i l'entrepà (dins l'Escena 1), el telèfon i el rebost del bar (2), els objectes perduts de
@@ -238,7 +238,7 @@ Vet, des de la cuina:
 **Final de l'escena:** la Vet agafa les claus de casa (`clau_casa`, important a l'Escena 6) i marxa.
 [SO: porta_pis]
 
-### Escena 2 — El bar «El Último Peaje»
+### Escena 2 — El bar La Propina
 
 **Sales:** `bar_sala` (Vet) i `bar_rebost` (Vet: el rebost i despatx del Puig). L'Iri continua a `pis_estudi`
 i s'hi pot canviar; parlen per **telèfon** (la Vet té el mòbil a la butxaca del davantal).
@@ -579,7 +579,7 @@ dessuadora».
 
 ## Finals
 
-Tots els finals són **la mateixa escena** al bar El Último Peaje, mirant les notícies. Canvia **fins on arriba
+Tots els finals són **la mateixa escena** al bar La Propina, mirant les notícies. Canvia **fins on arriba
 la victòria**, segons els **aliats** (`var aliats`, de 0 a 4: en Ballester, NETA-3, la Rius, la senyora Pons) i
 la decisió de l'Iri a l'Escena 8.
 
@@ -820,8 +820,8 @@ tub). La resta ja ho fa el nucli de Ferro-9. Cap canvi a Benne: la «pantalla di
 4. **Escenes noves** (el moll de càrrega, els objectes perduts, la sortida per les escombraries, la senyora
    Pons). -> s'hi queden totes
 5. **La ciutat de l'Iri i la Vet:** no es diu mai (proposta) o és una de concreta? -> proposta: no es diu
-6. **El bar es diu «El Último Peaje»** i el rètol del Puig és en castellà. Es manté (és realista i té gràcia)?
-   -> proposta: es manté
+6. **El nom del bar** (el primer guió deia «El Último Peaje»). -> **Bar La Propina**. El rètol del Puig continua
+   en castellà («El cliente siempre tiene razón (excepto si no paga)»)
 7. **La sèrie *La Comissària Bassols*** i els capítols (*El violí mut*, *La vídua del Liceu*): inventats, per no
    referenciar cap sèrie real. -> proposta
 8. **Alçada dels personatges** (caricaturesc: caps grans): proposta de 64 px per a les protagonistes (a Ferro-9
