@@ -1663,9 +1663,17 @@
       {
         "verb": "look",
         "if": {
-          "var": "sospita_sic",
-          "op": ">=",
-          "value": 2
+          "all": [
+            {
+              "var": "sospita_sic",
+              "op": ">=",
+              "value": 2
+            },
+            {
+              "flag": "mira_salvada",
+              "is": false
+            }
+          ]
         },
         "lines": [
           {

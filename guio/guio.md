@@ -140,7 +140,7 @@ Quatre pantalles sense res per clicar, abans de l'Acte 1 (es poden saltar amb Es
    per què.»
 3. **«Cent vint anys abans...»:** la fàbrica de ferro-9 de nit, amb xemeneies, fum i el canal. «Un dia,
    l'Aldaia s'endurà les restes d'aquesta fàbrica a l'òrbita, i en farà La Gavina.»
-4. **La cambra de ressonància**, tenyida de vermell: «I salta una alarma que no havia sonat mai.»
+4. **La cambra de ressonància**, tenyida de vermell: «I torna a saltar aquella alarma. Ningú no sap per què.»
 
 Després, «Ferro-9» i «Acte 1 · La descoberta».
 

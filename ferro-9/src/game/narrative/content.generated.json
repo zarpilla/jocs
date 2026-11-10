@@ -1913,9 +1913,17 @@
           {
             "verb": "look",
             "if": {
-              "var": "sospita_sic",
-              "op": ">=",
-              "value": 2
+              "all": [
+                {
+                  "var": "sospita_sic",
+                  "op": ">=",
+                  "value": 2
+                },
+                {
+                  "flag": "mira_salvada",
+                  "is": false
+                }
+              ]
             },
             "lines": [
               {
@@ -15882,7 +15890,7 @@
       "dlg.sic.enganyar2": "No es mogui d'aquí, operària. I no toqui res.",
       "dlg.directora.primera4": "Ah, i he fet treure el tub de la vàlvula de la teva llançadora. Per si et venien ganes de viatjar.",
       "dlg.cargol.opt.tub": "Necessito un tub de vàlvula de ferro-9.",
-      "dlg.cargol.tub1": "Un tub de ferro-9, senyora Iri? El Director diu per megafonia que vostè és una fugitiva.",
+      "dlg.cargol.tub1": "Un tub de ferro-9, senyora Iri? El Director l'ha anomenada per megafonia. Segons el meu manual, això la converteix en fugitiva.",
       "dlg.cargol.tub2": "I els fugitius no omplen formularis. No hi ha casella.",
       "dlg.cargol.tub3": "Té. Que no em vegi ningú donant-l'hi. M'agradaria continuar arxivant.",
       "dlg.cargol.opt.memoria": "Cargol, què recordes de l'any passat?",
@@ -16265,7 +16273,7 @@
       "obj.llapis_ulls.nom2": "Em dic Vet. Et faran desaparèixer d'aquí a tres dies. Ho sento.",
       "obj.llapis.nom1": "Si ella m'ha dit el seu nom, jo li dic el meu.",
       "obj.llapis.nom2": "Em dic Iri. Ja ho sospitava. No penso desaparèixer.",
-      "obj.nota_iri_nom.mare1": "Bon dia, interna 9! Bones notícies: el teu reciclatge s'avança a avui!",
+      "obj.nota_iri_nom.mare1": "Bon dia, interna 9! Bones notícies: el seu reciclatge s'avança a avui!",
       "obj.nota_iri_nom.mare2": "I abans, visita de reeducació obligatòria a la Sala de la Memòria. Hi ha galetes!",
       "obj.nota_iri_nom.directora": "No tan de pressa, MARE. Abans, la interna i jo hem de parlar.",
       "obj.fullet_memoria.nom": "fullet de la Sala de la Memòria",
@@ -16760,7 +16768,7 @@
       "sala.gavina_cella.safata.agafar": "M'emporto la sopa. Com a arma, no com a menjar.",
       "sala.gavina_cella.safata.nom": "safata de sopar",
       "sala.gavina_cella.porta.imant1": "Acosto l'imant al pany...",
-      "sala.gavina_cella.porta.imant2": "Clac! Oberta! Qui sigui que siguis, I., t'estimo.",
+      "sala.gavina_cella.porta.imant2": "Clac! Oberta! Siguis qui siguis, I., t'estimo.",
       "sala.gavina_cella.porta.look": "Un pany magnètic. Hi posa «Aldaia M-3». És més vell que en Mos.",
       "sala.gavina_cella.porta.aldaia1": "Aldaia... Com el segell de la clau anglesa. Com la fàbrica de la I.!",
       "sala.gavina_cella.porta.aldaia2": "Si aquest pany el van fer a la seva fàbrica, potser ella sap com obrir-lo. Li en faré un dibuix.",
@@ -16981,7 +16989,7 @@
       "sala.gavina_memoria.holograma.parla3": "Un accident. Ja.",
       "sala.gavina_memoria.holograma.look": "El Director Aldaia, en holograma. Té el mateix somriure que la Directora.",
       "sala.gavina_memoria.foto.nom": "foto del torn de nit",
-      "sala.gavina_memoria.foto.text": "Una foto del torn de nit de la fàbrica. Hi ha el Cargol, nou de trinca. I una cara ratllada, amb un nom mig esborrat: «I... (desapareguda)».",
+      "sala.gavina_memoria.foto.text": "Una foto del torn de nit de la fàbrica. Hi ha un robot de manteniment, nou de trinca. I una cara ratllada, amb un nom mig esborrat: «I... (desapareguda)».",
       "sala.gavina_memoria.foto.mira": "Al costat, una noia somrient. A sota hi diu: «M. d'Orís».",
       "sala.gavina_memoria.foto.vet1": "És ella. La I. Algú li va ratllar la cara.",
       "sala.gavina_memoria.foto.vet2": "I la noia del costat, la M. d'Orís, somriu al costat de la I. Com una amiga.",
@@ -17168,7 +17176,7 @@
       "proleg.fabrica1": "Aquí, la Corporació Aldaia fabrica el ferro-9: el metall que no s'oxida mai.",
       "proleg.fabrica2": "Un dia, l'Aldaia s'endurà les restes d'aquesta fàbrica a l'òrbita, i en farà La Gavina.",
       "proleg.cambra1": "Una nit qualsevol. Al fons de la sala de calderes, una cambra que ningú no fa servir.",
-      "proleg.cambra2": "I salta una alarma que no havia sonat mai.",
+      "proleg.cambra2": "I torna a saltar aquella alarma. Ningú no sap per què.",
       "sala.portada.nom": "Ferro-9",
       "sala.final_llancadora.nom": "La llançadora",
       "sala.final_museu.nom": "El museu",
