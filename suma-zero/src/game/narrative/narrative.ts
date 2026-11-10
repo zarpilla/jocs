@@ -215,8 +215,8 @@ export function ensureStarted() {
 /** La protagonista d'una sala (`protagonist` al JSON de la sala). */
 export const roomProtagonist = (room: string) => content.rooms[room]?.protagonist ?? null;
 
-/** La música d'ambient de les sales d'una protagonista (`music` a `adapters/benne/mapping.json`). */
-export const protagonistMusic = (who: string) => (mapping as { music?: Record<string, string> }).music?.[who] ?? null;
+/** La música d'ambient d'una sala (`music` a `adapters/benne/mapping.json`), o `null` si continua la que sonava. */
+export const roomMusic = (room: string) => (mapping as { music?: Record<string, string> }).music?.[room] ?? null;
 
 /** On és (o era) cada protagonista. */
 export function protagonistRoom(who: string): string | null {

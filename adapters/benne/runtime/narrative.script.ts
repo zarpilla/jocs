@@ -8,11 +8,11 @@
  */
 import { MusicHandle, SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
-import { guis, music } from '@game';
+import { guis } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  protagonistMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
+  roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
 /**
@@ -108,7 +108,7 @@ export function onRoomEntered() {
   else guis.portada.hide()
   applySwitchButton()
   const who = roomProtagonist(room)
-  applyAmbientMusic(portada, who)
+  applyAmbientMusic(room)
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
       const character = benneCharacter(who)
@@ -136,18 +136,15 @@ export function onRoomEntered() {
 const FORA = 24
 
 /**
- * Música d'ambient: cada protagonista té la del seu espai i, en canviar d'una a l'altra, s'encadenen.
- * A la portada no en sona cap; a les cinemàtiques (pròleg, finals) continua la que sonava.
+ * Música d'ambient: cada lloc té la seva peça. Totes són el mateix tema amb instruments diferents i
+ * duren el mateix, així que en canviar de lloc s'encadenen al mateix punt. Les sales sense peça (les
+ * cinemàtiques, com l'avió) continuen amb la que sonava.
  */
-function applyAmbientMusic(portada: boolean, who: string | null) {
-  if (portada) {
-    if (music.isPlaying) music.stop()
-    return
-  }
-  const track = who ? protagonistMusic(who) : null
+function applyAmbientMusic(room: string) {
+  const track = roomMusic(room)
   if (!track) return
   const handle = new MusicHandle(track)
-  if (!handle.isPlaying) handle.play({ fadeSeconds: 2.5 })
+  if (!handle.isPlaying) handle.play({ fadeSeconds: 2.5, sync: true })
 }
 
 /** L'onEnter de la sala on acabem d'entrar, resolt abans del fos (vegeu `onRoomEntered`). */

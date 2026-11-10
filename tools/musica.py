@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """
-`npm run musica`: genera la música d'ambient de cada espai a `game/audio/music/` (.ogg, estèreo).
+`npm run musica`: genera la música d'ambient de Suma Zero a `game/audio/music/` (.ogg, estèreo).
 
-- `fabrica`: la fàbrica de ferro-9 (l'Iri). Re menor, 72 ppm: un pols de màquina llunyà, un baix
-  que no para, acords de metall calent i, a la segona meitat, una melodia de campanes de tub.
-- `gavina`: La Gavina, la presó en òrbita (la Vet). La menor, sense ritme: acords freds que
-  s'obren a poc a poc, gotes de vidre a l'atzar, el brunzit del suport vital i l'aire dels conductes.
+Totes les peces són el mateix tema (La menor, 84 ppm, 24 compassos) amb instruments diferents, per lloc:
 
-Les peces són bucles perfectes: cada so que passa del final torna a sonar al principi, les
-oscil·lacions lentes fan voltes senceres i la reverberació és circular. Tot sintetitzat, i sempre igual.
+- `tema`: portada i pròleg. De nit: acords llargs, piano elèctric amb eco i un rellotge.
+- `pis`: el pis. Lo-fi de hacker: ritme mandrós, piano apagat i vinil.
+- `bar`: La Propina. Jazz de tarda: contrabaix caminant, escombretes i vibràfon.
+- `aeroport`: l'aeroport. Espies: baix obstinat, cops d'aro, cordes en tremolo i guitarra seca.
+
+Com que tenen la mateixa durada, el joc les encadena al mateix punt (`sync`) en canviar de lloc.
+Les peces són bucles perfectes: cada so que passa del final torna a sonar al principi i la
+reverberació és circular. Tot sintetitzat, i sempre igual.
 
 Cal python3 amb numpy, i ffmpeg.
 """
@@ -110,195 +113,286 @@ def reverb(lr, durada, cua, humit, rng, fosc=4000):
     return out
 
 
-# ─── La fàbrica ─────────────────────────────────────────────────────────────
+# ─── El tema de Suma Zero ───────────────────────────────────────────────────
+#
+# Totes les peces comparteixen tempo, acords, melodia i durada: només canvien els instruments.
+# Així, en passar d'un lloc a un altre, la música s'encadena al mateix punt (`sync`) i sona com
+# un sol tema que canvia de roba.
 
-FAB_PPM = 72
-FAB_TEMPS = 60 / FAB_PPM
-FAB_COMPAS = 4 * FAB_TEMPS
+PPM = 84
+TEMPS = 60 / PPM
+COMPAS = 4 * TEMPS
 
-# Un acord cada dos compassos (24 compassos, 80 s). Notes MIDI: baix + veus.
-FAB_ACORDS = [
-    (38, [62, 65, 69]),      # Re m
-    (34, [62, 65, 70]),      # Si♭
-    (41, [60, 65, 69]),      # Fa
-    (36, [60, 64, 67]),      # Do
-    (38, [62, 65, 69]),      # Re m
-    (34, [62, 65, 70]),      # Si♭
-    (43, [62, 67, 70]),      # Sol m
-    (45, [61, 64, 69]),      # La
-    (38, [62, 65, 69]),      # Re m
-    (41, [60, 65, 69]),      # Fa
-    (43, [62, 67, 70]),      # Sol m
-    (45, [61, 64, 69]),      # La
+# Un acord cada dos compassos (24 compassos, uns 69 s). La menor: baix + veus (notes MIDI).
+ACORDS = [
+    (45, [60, 64, 67, 71]),  # La m9
+    (41, [57, 60, 64, 67]),  # Fa maj7
+    (38, [60, 64, 65, 69]),  # Re m9
+    (40, [59, 62, 65, 68]),  # Mi 7(♭9)
+    (45, [60, 64, 67, 71]),  # La m9
+    (41, [57, 60, 64, 67]),  # Fa maj7
+    (47, [57, 59, 62, 65]),  # Si m7(♭5)
+    (40, [56, 59, 62, 64]),  # Mi 7
+    (41, [57, 60, 64, 67]),  # Fa maj7
+    (40, [59, 62, 64, 67]),  # Mi m7
+    (38, [60, 64, 65, 69]),  # Re m9
+    (40, [59, 62, 65, 68]),  # Mi 7(♭9)
 ]
+COMPASSOS = 2 * len(ACORDS)
 
-# (compàs, temps, nota, durada en temps). Silenci els primers 8 compassos: la sala respira.
-FAB_MELODIA = [
-    (8, 0, 81, 2), (8, 2, 79, 1), (8, 3, 77, 1),
-    (9, 0, 74, 4),
-    (10, 0, 77, 2), (10, 2, 74, 2),
-    (11, 0, 70, 1.5), (11, 1.5, 72, 0.5), (11, 2, 74, 2),
-    (12, 0, 79, 3), (12, 3, 77, 1),
-    (13, 0, 74, 2), (13, 2, 70, 2),
-    (14, 0, 69, 1), (14, 1, 73, 1), (14, 2, 76, 2),
-    (15, 0, 79, 2), (15, 2, 76, 2),
-    (16, 0, 77, 3), (16, 3, 76, 1),
-    (17, 0, 74, 4),
-    (18, 0, 72, 2), (18, 2, 69, 2),
-    (19, 0, 72, 1), (19, 1, 74, 1), (19, 2, 77, 2),
-    (20, 0, 79, 2), (20, 2, 82, 1), (20, 3, 81, 1),
-    (21, 0, 79, 2), (21, 2, 74, 2),
-    (22, 0, 76, 2), (22, 2, 73, 2),
-    (23, 0, 69, 4),
+# (compàs, temps, nota, durada en temps). Els darrers 8 compassos, sense melodia: la sala respira.
+MELODIA = [
+    (0, 0, 76, 1), (0, 1, 72, 1), (0, 2, 69, 2), (1, 0, 71, 1), (1, 1, 72, 1), (1, 2, 76, 2),
+    (2, 0, 77, 1.5), (2, 1.5, 76, 0.5), (2, 2, 72, 2), (3, 0, 69, 4),
+    (4, 0, 74, 1), (4, 1, 72, 1), (4, 2, 69, 1), (4, 3, 65, 1), (5, 0, 64, 1), (5, 1, 65, 1), (5, 2, 69, 2),
+    (6, 0, 68, 2), (6, 2, 71, 1), (6, 3, 74, 1), (7, 0, 77, 3), (7, 3, 76, 1),
+    (8, 0, 76, 1), (8, 1, 72, 1), (8, 2, 69, 2), (9, 0, 71, 1), (9, 1, 72, 1), (9, 2, 79, 2),
+    (10, 0, 81, 1.5), (10, 1.5, 79, 0.5), (10, 2, 76, 2), (11, 0, 72, 4),
+    (12, 0, 74, 1), (12, 1, 77, 1), (12, 2, 81, 2), (13, 0, 77, 1), (13, 1, 74, 1), (13, 2, 71, 2),
+    (14, 0, 68, 1), (14, 1, 71, 1), (14, 2, 74, 1), (14, 3, 76, 1), (15, 0, 80, 3), (15, 3, 76, 1),
 ]
 
 
-def campana_tub(f, d=3.0):
-    """Campana de tub: parcials gairebé harmònics que s'apaguen de pressa els aguts."""
-    parts = [(1, 1.0, 1.8), (2.0, 0.5, 0.9), (3.01, 0.3, 0.5), (4.07, 0.2, 0.25), (5.2, 0.1, 0.12)]
-    return sum(a * osc(f * r, d) * env(d, 0.004, 0.3, dec) for r, a, dec in parts)
+def acord(c):
+    """L'acord que sona al compàs `c`."""
+    return ACORDS[(c // 2) % len(ACORDS)]
 
 
-def cop_maquina(fort):
-    """El pols de la fàbrica: un cop sord, de lluny, amb una mica de ferro."""
-    d = 0.5
+def quan(c, b, swing=0.5):
+    """Segons del compàs `c`, temps `b`. Amb `swing` > 0.5, les corxeres a contratemps arriben tard."""
+    sencer = int(b)
+    frac = b - sencer
+    if abs(frac - 0.5) < 1e-6:
+        frac = swing
+    return (c * 4 + sencer + frac) * TEMPS
+
+
+def mix(p, x, inici, pan=0.0, vol=1.0):
+    p.posa(x, inici, pan=pan, vol=vol)
+
+
+# ─── Instruments ─────────────────────────────────────────────────────────────
+
+def epiano(f, d):
+    """Piano elèctric (FM): l'atac brilla i s'apaga de seguida; queda el cos rodó."""
     x = t(d)
-    cos = osc(60 * (1 - 0.25 * np.minimum(1, x / 0.12)), d) * env(d, 0.003, 0.05, 0.14)
-    rng = np.random.default_rng(int(fort * 100))
-    aire = band(rng.uniform(-1, 1, len(x)), 60, 300) * env(d, 0.002, 0.05, 0.05)
-    return fort * (cos + 0.6 * aire)
+    idx = 1.8 * np.exp(-x / 0.25)
+    cos = np.sin(2 * np.pi * f * x + idx * np.sin(2 * np.pi * f * x))
+    campaneta = 0.15 * osc(f * 7.1, d) * env(d, 0.001, 0.05, 0.04)
+    return (cos + campaneta) * env(d, 0.004, 0.3, 1.6)
 
 
-def clanc(f=180):
+def vibrafon(f, d):
+    x = t(d)
+    tremolo = 0.8 + 0.2 * np.sin(2 * np.pi * 5.2 * x)
+    so = osc(f, d) + 0.25 * osc(f * 4, d) * env(d, 0.001, 0.1, 0.4)
+    return so * tremolo * env(d, 0.002, 0.4, 2.2)
+
+
+def punteig(f, d, fosc=2500):
+    """Corda puntejada i esmorteïda (la guitarra d'espies)."""
+    so = osc(f, d, 'saw') * env(d, 0.002, 0.05, 0.18)
+    return band(so, 80, fosc)
+
+
+def baix_suau(f, d):
+    return (osc(f, d) + 0.15 * osc(f * 2, d)) * env(d, 0.01, 0.15)
+
+
+def contrabaix(f, d):
+    x = t(d)
+    so = osc(f * (1 + 0.01 * np.exp(-x / 0.03)), d) + 0.3 * osc(f * 2, d) * env(d, 0.002, 0.1, 0.15)
+    return so * env(d, 0.004, 0.1, 0.5)
+
+
+def pad(f, d, rng):
+    """Tres sinusoides gairebé a l'uníson i l'octava fluixa."""
+    x = sum(osc(f * 2 ** (c / 1200), d, phase=rng.uniform(0, 6.28)) for c in (-6, 0, 6)) / 3
+    return x + 0.08 * osc(f * 2, d)
+
+
+def bombo():
+    d = 0.4
+    x = t(d)
+    f = 45 + 70 * np.exp(-x / 0.03)
+    return osc(f, d) * env(d, 0.002, 0.05, 0.18)
+
+
+def caixa(rng):
+    d = 0.3
+    return 0.7 * band(rng.uniform(-1, 1, int(SR * d)), 900, 5000) * env(d, 0.001, 0.05, 0.08) \
+        + 0.5 * osc(185, d) * env(d, 0.001, 0.05, 0.05)
+
+
+def charles(rng, obert=False):
+    d = 0.4 if obert else 0.1
+    return band(rng.uniform(-1, 1, int(SR * d)), 7000) * env(d, 0.001, 0.02, 0.12 if obert else 0.025)
+
+
+def escombreta(rng):
+    """Escombretes de jazz: un fregament curt."""
+    d = 0.35
+    return band(rng.uniform(-1, 1, int(SR * d)), 2000, 8000) * env(d, 0.06, 0.15, 0.15)
+
+
+def plat_ride(rng):
     d = 1.2
-    return sum(a * osc(f * r, d) * env(d, 0.001, 0.2, dec) for r, a, dec in
-               [(1, 0.5, 0.4), (2.71, 0.4, 0.25), (5.13, 0.3, 0.12), (8.27, 0.2, 0.06)])
+    metall = sum(a * osc(f, d) for f, a in ((3150, 0.4), (4270, 0.3), (5530, 0.25), (6980, 0.2)))
+    return (0.5 * metall + band(rng.uniform(-1, 1, int(SR * d)), 5000)) * env(d, 0.001, 0.2, 0.35)
 
 
-def vapor(rng):
-    d = 2.5
-    return band(rng.uniform(-1, 1, int(SR * d)), 1800, 6000) * env(d, 0.6, 1.2) * np.linspace(1, 0.4, int(SR * d))
+def aro(rng):
+    """Cop d'aro (rimshot): un clic sec i de fusta."""
+    d = 0.08
+    return (osc(1750, d) + 0.6 * band(rng.uniform(-1, 1, int(SR * d)), 1500, 6000)) * env(d, 0.0005, 0.02, 0.012)
 
 
-def fabrica():
-    rng = np.random.default_rng(9)
-    p = Pista(len(FAB_ACORDS) * 2 * FAB_COMPAS)
-
-    # Acords: serres desafinades, filtrades amb una obertura que va i ve (dues voltes per bucle).
-    pad = Pista(p.durada)
-    llarg = 2 * FAB_COMPAS
-    for i, (baix, veus) in enumerate(FAB_ACORDS):
-        inici = i * llarg
-        d = llarg + 1.5
-        for j, v in enumerate(veus):
-            for des, costat in ((-0.0012, -0.4), (0.0012, 0.4)):
-                pan = costat + 0.25 * (j - 1)
-                pad.posa(osc(midi(v) * (1 + des), d, 'saw') * env(d, 1.2, 1.5), inici, pan=pan, vol=0.16)
-        # El baix: sinusoide amb una mica de serra, que entra suau.
-        b = osc(midi(baix), d) + 0.25 * osc(midi(baix), d, 'saw')
-        p.posa(b * env(d, 0.3, 1.5), inici, vol=0.35)
-    obre = p.lfo(2, -np.pi / 2)
+def espetecs(p, rng, quants):
+    """El vinil: espetecs a l'atzar i un fregament molt fluix."""
+    for _ in range(quants):
+        d = 0.01
+        clic = band(rng.uniform(-1, 1, int(SR * d)), 1500) * env(d, 0.0002, 0.002, 0.002)
+        p.posa(clic, rng.uniform(0, p.durada), pan=rng.uniform(-0.6, 0.6), vol=rng.uniform(0.1, 0.4))
     for ch in range(2):
-        tancat = band(pad.lr[ch], 80, 500)
-        obert = band(pad.lr[ch], 80, 1500)
-        p.lr[ch] += tancat * (1 - obre) + obert * obre
-
-    # El brunzit de la fàbrica: un re greu que no s'atura mai.
-    drone = osc(midi(26), p.durada) + 0.3 * osc(midi(38), p.durada) + 0.1 * osc(midi(26) * 3.003, p.durada)
-    p.posa(drone * (0.7 + 0.3 * p.lfo(3)), 0, vol=0.12)
-
-    # Les màquines: un cop a cada temps (més fort al primer), un clanc a la contra cada dos compassos
-    # i una alenada de vapor cada quatre.
-    compassos = len(FAB_ACORDS) * 2
-    for c in range(compassos):
-        for b in range(4):
-            p.posa(cop_maquina(1.0 if b == 0 else 0.45), (c * 4 + b) * FAB_TEMPS, vol=0.55)
-        if c % 2 == 1:
-            p.posa(clanc(180 if c % 4 == 1 else 151), (c * 4 + 3.5) * FAB_TEMPS, pan=0.6 if c % 4 == 1 else -0.6, vol=0.10)
-        if c % 4 == 2:
-            p.posa(vapor(rng), (c * 4 + 2) * FAB_TEMPS, pan=-0.7, vol=0.06)
-
-    # La melodia: campanes de tub, una mica a la dreta.
-    for c, b, nota, dur in FAB_MELODIA:
-        d = max(3.0, dur * FAB_TEMPS + 2)
-        p.posa(campana_tub(midi(nota), d), (c * 4 + b) * FAB_TEMPS, pan=0.25, vol=0.20)
-        # I el seu eco a l'altre costat, un temps i mig més tard i més fluix.
-        p.posa(campana_tub(midi(nota), d), (c * 4 + b + 1.5) * FAB_TEMPS, pan=-0.5, vol=0.06)
-
-    return reverb(p.lr, durada=0.6, cua=3.0, humit=0.35, rng=rng, fosc=3500)
+        p.lr[ch] += 0.012 * band(p.soroll(rng), 300, 4000)
 
 
-# ─── La Gavina ──────────────────────────────────────────────────────────────
-
-GAV_ACORD = 16.0  # segons per acord: quatre acords, 64 s
-GAV_ACORDS = [
-    [45, 52, 57, 59, 60, 64],  # La m (add9)
-    [41, 53, 57, 60, 64, 71],  # Fa maj7 (#11)
-    [36, 55, 59, 62, 64, 67],  # Do maj9
-    [40, 55, 59, 62, 66, 67],  # Mi m9
-]
-
-
-def veu_pad(f, d, rng):
-    """Tres sinusoides gairebé a l'uníson (un cor fred) i l'octava, molt fluixa."""
-    x = sum(osc(f * 2 ** (c / 1200), d, phase=rng.uniform(0, 6.28)) for c in (-5, 0, 5)) / 3
-    return x + 0.08 * osc(f * 2, d) + 0.03 * osc(f * 3, d)
+def melodia(p, instrument, pan=0.0, vol=0.2, octava=0, eco=0.0, staccato=None):
+    for c, b, nota, dur in MELODIA:
+        d = (min(dur, staccato) if staccato else dur) * TEMPS + 1.5
+        x = instrument(midi(nota + 12 * octava), d)
+        p.posa(x, quan(c, b), pan=pan, vol=vol)
+        if eco:
+            # Eco a corxera amb punt, a l'altre costat.
+            p.posa(x, quan(c, b) + 0.75 * TEMPS, pan=-pan, vol=vol * eco)
 
 
-def vidre(f, d=4.0):
-    return (osc(f, d) * env(d, 0.003, 0.5, 1.6)
-            + 0.25 * osc(f * 2.76, d) * env(d, 0.002, 0.3, 0.3)
-            + 0.08 * osc(f * 5.4, d) * env(d, 0.001, 0.2, 0.08))
+def baix_a_terra(p, so, vol, ritme=(0,)):
+    """Fonamental de cada acord, als temps de `ritme` de cada compàs."""
+    for c in range(COMPASSOS):
+        baix = acord(c)[0]
+        for b in ritme:
+            p.posa(so(midi(baix), TEMPS * 1.2), quan(c, b), vol=vol)
 
 
-def gavina():
-    rng = np.random.default_rng(1609)
-    p = Pista(len(GAV_ACORDS) * GAV_ACORD)
+# ─── Les peces ───────────────────────────────────────────────────────────────
 
-    # Acords: entren a poc a poc (6 s) i se'n van encara més a poc a poc, damunt del següent.
-    for i, veus in enumerate(GAV_ACORDS):
-        inici = i * GAV_ACORD
-        d = GAV_ACORD + 7
+def tema():
+    """Portada i pròleg: de nit, a la seu del banc. Acords llargs, el piano elèctric i un rellotge."""
+    rng = np.random.default_rng(1)
+    p = Pista(COMPASSOS * COMPAS)
+    for i, (baix, veus) in enumerate(ACORDS):
+        inici = 2 * i * COMPAS
+        d = 2 * COMPAS + 3
         for j, v in enumerate(veus):
-            pan = -0.6 + 1.2 * j / (len(veus) - 1)
-            vol = 0.22 if j == 0 else 0.13
-            p.posa(veu_pad(midi(v), d, rng) * env(d, 6.0, 7.0), inici + 0.4 * j, pan=pan, vol=vol)
+            p.posa(pad(midi(v), d, rng) * env(d, 2.0, 3.0), inici, pan=-0.5 + j / 3, vol=0.09)
+        p.posa(osc(midi(baix - 12), d) * env(d, 1.0, 3.0), inici, vol=0.25)
+    melodia(p, epiano, pan=0.2, vol=0.16, eco=0.35)
+    # El rellotge: un tic fluix a cada temps.
+    for c in range(COMPASSOS):
+        for b in range(4):
+            p.posa(aro(rng), quan(c, b), pan=0.5, vol=0.05 if b else 0.08)
+    return reverb(p.lr, durada=1.6, cua=5.0, humit=0.6, rng=rng, fosc=5000)
 
-    # Les veus pugen i baixen de brillantor amb una ona lenta per a cada canal.
-    for ch, fase in ((0, 0.0), (1, 2.0)):
-        brill = band(p.lr[ch], 900, None)
-        p.lr[ch] += 0.6 * brill * p.lfo(3, fase)
 
-    # Gotes de vidre: notes de l'acord que sona, a l'atzar però sempre les mateixes.
-    temps = 1.5
-    while temps < p.durada:
-        acord = GAV_ACORDS[int(temps // GAV_ACORD) % len(GAV_ACORDS)]
-        nota = rng.choice([v for v in acord[1:]]) + rng.choice([12, 24])
-        p.posa(vidre(midi(nota)), temps, pan=rng.uniform(-0.8, 0.8), vol=rng.uniform(0.05, 0.11))
-        temps += rng.uniform(2.5, 6.5)
+def pis():
+    """El pis de l'Iri: lo-fi de hacker a casa. Ritme mandrós, piano elèctric apagat i vinil."""
+    rng = np.random.default_rng(2)
+    p = Pista(COMPASSOS * COMPAS)
+    sw = 0.62
+    for c in range(COMPASSOS):
+        baix, veus = acord(c)
+        # Piano: l'acord al primer temps i un cop curt a l'«i» del segon.
+        for b, d, vol in ((0, 2.2 * TEMPS, 0.07), (1.5, 0.8 * TEMPS, 0.05)):
+            for j, v in enumerate(veus):
+                p.posa(epiano(midi(v), d + 0.8), quan(c, b, sw) + 0.012 * j, pan=-0.3 + 0.2 * j, vol=vol)
+        p.posa(baix_suau(midi(baix), 1.6 * TEMPS), quan(c, 0, sw), vol=0.3)
+        p.posa(baix_suau(midi(baix), 0.8 * TEMPS), quan(c, 2.5, sw), vol=0.22)
+        # Bateria: bombo a l'1 i a l'«i» del 2, caixa al 2 i al 4, charles a corxeres amb swing.
+        for b in (0, 1.5):
+            p.posa(bombo(), quan(c, b, sw), vol=0.4)
+        for b in (1, 3):
+            p.posa(caixa(rng), quan(c, b, sw), vol=0.18)
+        for k in range(8):
+            p.posa(charles(rng), quan(c, k / 2, sw), pan=0.3, vol=0.06 if k % 2 else 0.09)
+    melodia(p, epiano, pan=-0.15, vol=0.09, octava=-1)
+    espetecs(p, rng, 160)
+    lr = reverb(p.lr, durada=0.5, cua=2.0, humit=0.25, rng=rng, fosc=3000)
+    # Tot plegat, fosc: com si sonés per un altaveu de portàtil.
+    return np.stack([band(ch, 50, 3200) for ch in lr])
 
-    # El suport vital: un brunzit a 50 Hz que respira, i l'aire dels conductes.
-    hum = osc(50, p.durada) + 0.5 * osc(100, p.durada) + 0.2 * osc(150.3, p.durada)
-    p.posa(hum * (0.6 + 0.4 * p.lfo(4)), 0, vol=0.06)
-    for ch, fase in ((0, 0.0), (1, 1.3)):
-        aire = band(p.soroll(rng), 150, 900)
-        p.lr[ch] += 0.05 * aire * (0.3 + 0.7 * p.lfo(8, fase))
 
-    # Un sonar, de molt lluny, cada 32 s.
-    for s in (8.0, 40.0):
-        d = 2.0
-        ping = osc(1318.5, d) * env(d, 0.002, 0.5, 0.35) + 0.3 * osc(1318.5 * 2.01, d) * env(d, 0.002, 0.3, 0.1)
-        p.posa(ping, s, pan=0.7 if s < 20 else -0.7, vol=0.05)
+def walking():
+    """Línia de contrabaix a negres: notes de l'acord i, abans del canvi, un semitò per sota del següent."""
+    notes = []
+    for i, (baix, veus) in enumerate(ACORDS):
+        rel = {(v - baix) % 12 for v in veus}
+        tercera = 3 if 3 in rel else 4
+        quinta = 7 if 7 in rel else 6
+        setena = 10 if 10 in rel else 11
+        seguent = ACORDS[(i + 1) % len(ACORDS)][0]
+        aprop = seguent - 1 if seguent - 1 > baix - 4 else seguent + 1
+        for r in (0, tercera, quinta, tercera, 12, setena, quinta):
+            notes.append(baix + r)
+        notes.append(aprop)
+    return notes
 
-    return reverb(p.lr, durada=2.2, cua=7.0, humit=0.8, rng=rng, fosc=6000)
 
+def bar():
+    """El bar La Propina: jazz de tarda. Contrabaix caminant, escombretes, plat i vibràfon."""
+    rng = np.random.default_rng(3)
+    p = Pista(COMPASSOS * COMPAS)
+    sw = 0.66
+    for k, nota in enumerate(walking()):
+        p.posa(contrabaix(midi(nota), TEMPS * 1.1), k * TEMPS, pan=-0.1, vol=0.42)
+    for c in range(COMPASSOS):
+        baix, veus = acord(c)
+        # Piano: acords curts a contratemps, com un pianista que acompanya sense molestar.
+        cops = ((1.5, 0.6), (3, 1.0)) if c % 2 == 0 else ((0.5, 0.6), (2.5, 1.2))
+        for b, dur in cops:
+            for j, v in enumerate(veus):
+                p.posa(epiano(midi(v), dur * TEMPS + 0.6), quan(c, b, sw) + 0.01 * j, pan=0.35, vol=0.045)
+        # Bateria: ride «ding, ding-a ding», charles amb el peu al 2 i al 4, escombreta a cada temps.
+        for b in (0, 1, 1.5, 2, 3, 3.5):
+            p.posa(plat_ride(rng), quan(c, b, sw), pan=0.45, vol=0.05 if b in (0, 2) else 0.035)
+        for b in (1, 3):
+            p.posa(charles(rng), quan(c, b, sw), pan=-0.3, vol=0.08)
+        for b in range(4):
+            p.posa(escombreta(rng), quan(c, b, sw), pan=-0.2, vol=0.05)
+    melodia(p, vibrafon, pan=-0.25, vol=0.13)
+    return reverb(p.lr, durada=0.8, cua=3.0, humit=0.35, rng=rng, fosc=4500)
+
+
+def aeroport():
+    """L'aeroport: espies. Baix obstinat a corxeres, cops d'aro, cordes en tremolo i guitarra seca."""
+    rng = np.random.default_rng(4)
+    p = Pista(COMPASSOS * COMPAS)
+    figura = (0, 0, 12, 0, 7, 0, 12, 10)
+    for c in range(COMPASSOS):
+        baix, veus = acord(c)
+        for k, r in enumerate(figura):
+            p.posa(punteig(midi(baix + r), 0.4, fosc=900) * 1.4, quan(c, k / 2), vol=0.22 if k % 4 == 0 else 0.15)
+        for b in (0, 1.5, 2.5):
+            p.posa(bombo(), quan(c, b), vol=0.25)
+        for b in (1, 3, 3.75):
+            p.posa(aro(rng), quan(c, b), pan=0.3, vol=0.1 if b != 3.75 else 0.05)
+        for k in range(16):
+            p.posa(charles(rng), quan(c, k / 4), pan=0.5, vol=0.035 if k % 2 else 0.05)
+        # Cordes: l'acord en tremolo, cada dos compassos.
+        if c % 2 == 0:
+            d = 2 * COMPAS + 1
+            tremolo = 0.6 + 0.4 * np.sin(2 * np.pi * (4 / TEMPS) * t(d))
+            for j, v in enumerate(veus):
+                p.posa(pad(midi(v), d, rng) * tremolo * env(d, 0.8, 1.0), quan(c, 0), pan=-0.6 + 0.4 * j, vol=0.05)
+    melodia(p, lambda f, d: punteig(f, d, 3500), pan=0.2, vol=0.2, eco=0.4, staccato=0.6)
+    return reverb(p.lr, durada=0.7, cua=2.5, humit=0.3, rng=rng, fosc=5000)
 
 # ─── Sortida ────────────────────────────────────────────────────────────────
 
-MUSICA = {'fabrica': fabrica, 'gavina': gavina}
+MUSICA = {'tema': tema, 'pis': pis, 'bar': bar, 'aeroport': aeroport}
 
 # Volum eficaç (RMS) de cada peça: fluix, que és ambient i no ha de tapar les veus ni els sons.
-RMS = {'fabrica': 0.09, 'gavina': 0.08}
+RMS = {'tema': 0.08, 'pis': 0.08, 'bar': 0.08, 'aeroport': 0.08}
 
 
 def write(name, lr):
