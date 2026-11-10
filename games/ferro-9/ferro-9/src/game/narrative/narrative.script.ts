@@ -12,23 +12,31 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom, recordLine,
-  protagonistMusic, rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
+  adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  musicSync, roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
+/**
+ * Què hi ha just abans i just després d'aquestes línies, quan es diuen a trossos (les cinemàtiques en diuen
+ * una cada vegada): `before`/`after` són el `who` de la línia del costat; `after: 'negre'` vol dir que tot
+ * seguit es canvia de sala o ve un final, i la pantalla s'ha de quedar a negre.
+ */
+type Around = { before?: string; after?: string }
+
 /** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
-export function playLines(lines: ResolvedLine[]) {
+export function playLines(lines: ResolvedLine[], around: Around = {}) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
-    if (line.sound) new SfxHandle(line.sound).play()
     recordLine(line.who, line.text)
+    if (line.sound) new SfxHandle(line.sound).play()
     if (line.who === 'title') {
-      // Pantalla de títol: les línies `title` seguides es mostren juntes sobre negre.
-      const first = i === 0 || lines[i - 1]!.who !== 'title'
-      const last = i === lines.length - 1 || lines[i + 1]!.who !== 'title'
-      if (first) fadeOut(1)
+      // Pantalla de títol: les línies `title` seguides es mostren juntes sobre negre. Si després es canvia
+      // de sala (o ve un final), no es torna a la sala d'ara: la següent ja entrarà des del negre.
+      const before = i === 0 ? around.before : lines[i - 1]!.who
+      const after = i === lines.length - 1 ? around.after : lines[i + 1]!.who
+      if (before !== 'title') fadeOut(1)
       display(line.text)
-      if (last) fadeIn(1)
+      if (after !== 'title' && after !== 'negre') fadeIn(1)
     } else if (line.who === 'narrator') {
       display(line.text)
     } else if (line.who === 'player') {
@@ -43,7 +51,7 @@ export function playLines(lines: ResolvedLine[]) {
 
 /** Fa el que diu el resultat d'una interacció: línies, diàleg, canvi de protagonista o de sala. */
 export function playResult(result: InteractionResult) {
-  playLines(result.lines)
+  playLines(result.lines, { after: result.goTo || hasPendingEnding() ? 'negre' : undefined })
   if (takePendingEnding()) {
     takePendingSwitch()
     playEnding()
@@ -101,7 +109,7 @@ export function onRoomEntered() {
   else guis.portada.hide()
   applySwitchButton()
   const who = roomProtagonist(room)
-  applyAmbientMusic(portada, who)
+  applyAmbientMusic(room, portada)
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
       const character = benneCharacter(who)
@@ -117,25 +125,34 @@ export function onRoomEntered() {
   const result = narrative.enterRoom(room)
   entrada = { room, result }
   if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
+  // Entrada caminant: abans del fos, la protagonista es posa fora de la pantalla, a la mateixa alçada.
+  if (result?.walkIn) {
+    const lloc = player.position
+    entrada.walkTo = lloc
+    player.moveTo({ x: result.walkIn === 'left' ? -FORA : 480 + FORA, y: lloc.y })
+  }
 }
 
+/** Quants píxels fora de la pantalla (de 480 d'ample) comença una entrada caminant (`walkIn`). */
+const FORA = 24
+
 /**
- * Música d'ambient: cada protagonista té la del seu espai i, en canviar d'una a l'altra, s'encadenen.
- * A la portada no en sona cap; a les cinemàtiques (pròleg, finals) continua la que sonava.
+ * Música d'ambient (`music` al mapping.json del joc): cada sala, o cada protagonista, té la seva peça, i
+ * en canviar d'una a l'altra s'encadenen (amb `musicSync`, al mateix punt del tema). Les sales sense
+ * peça (les cinemàtiques) continuen amb la que sonava; la portada sense peça és en silenci.
  */
-function applyAmbientMusic(portada: boolean, who: string | null) {
-  if (portada) {
-    if (music.isPlaying) music.stop()
+function applyAmbientMusic(room: string, portada: boolean) {
+  const track = roomMusic(room)
+  if (!track) {
+    if (portada && music.isPlaying) music.stop()
     return
   }
-  const track = who ? protagonistMusic(who) : null
-  if (!track) return
   const handle = new MusicHandle(track)
-  if (!handle.isPlaying) handle.play({ fadeSeconds: 2.5 })
+  if (!handle.isPlaying) handle.play({ fadeSeconds: 2.5, ...(musicSync ? { sync: true } : {}) })
 }
 
 /** L'onEnter de la sala on acabem d'entrar, resolt abans del fos (vegeu `onRoomEntered`). */
-let entrada: { room: string; result: InteractionResult | null } | null = null
+let entrada: { room: string; result: InteractionResult | null; walkTo?: { x: number; y: number } } | null = null
 
 /** El botó «Comença» de la portada: el pròleg, si n'hi ha, o la sala de la primera protagonista. */
 export function startFromCover() {
@@ -165,8 +182,10 @@ export function enterNarrativeRoom() {
   const room = narrative.world.currentRoom()
   if (!room) return
   let result: InteractionResult | null
+  let walkTo: { x: number; y: number } | undefined
   if (entrada?.room === room) {
     result = entrada.result
+    walkTo = entrada.walkTo
   } else {
     narrative.worldChanged()
     result = narrative.enterRoom(room)
@@ -179,14 +198,17 @@ export function enterNarrativeRoom() {
   if (!result) return
   const cutscene = narrative.content.rooms[room]?.cutscene
   if (!cutscene) {
+    if (walkTo) player.walkTo(walkTo)
     playResult(result)
     return
   }
   // Cinemàtica: Benne ja embolica aquest moment en una cutscene, i amb Esc la resta s'acaba de cop.
   // Si l'han saltada, anem directament al final (`skipTo`) en lloc de passar per les altres pantalles.
+  const final = takePendingEnding()
+  const negre = result.goTo || final ? 'negre' : undefined
   let saltada = false
-  for (const line of result.lines) {
-    playLines([line])
+  for (let k = 0; k < result.lines.length; k++) {
+    playLines([result.lines[k]!], { before: result.lines[k - 1]?.who, after: result.lines[k + 1]?.who ?? negre })
     // Mentre se salta una cinemàtica, `wait` acaba a l'instant: així sabem si han premut Esc.
     const inici = Date.now()
     wait(0.1)
@@ -194,6 +216,12 @@ export function enterNarrativeRoom() {
       saltada = true
       break
     }
+  }
+  if (final) {
+    // La cinemàtica acaba el joc (l'avió: «Continuarà»).
+    takePendingSwitch()
+    playEnding()
+    return
   }
   const desti = saltada && cutscene.skipTo ? cutscene.skipTo : result.goTo
   const sala = desti ? benneRoom(desti) : undefined
@@ -243,8 +271,9 @@ export function switchProtagonist() {
 }
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
-function displayEndingLine(line: { who: string; text: string }) {
+function displayEndingLine(line: { who: string; text: string; sound?: string }) {
   recordLine(line.who, line.text)
+  if (line.sound) new SfxHandle(line.sound).play()
   if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') display(line.text)
   else display(`${narrative.characterName(line.who)}: ${line.text}`)
 }
@@ -253,7 +282,7 @@ function displayEndingLine(line: { who: string; text: string }) {
  * Un final amb imatges (`room` a les línies de l'escena): les línies que van damunt de cada sala.
  * Es reprodueixen en entrar-hi (`enterNarrativeRoom`), com el pròleg, i després es passa a la següent.
  */
-let finale: { room: string; lines: { who: string; text: string }[] }[] = []
+let finale: { room: string; lines: { who: string; text: string; sound?: string }[] }[] = []
 
 /** Mostra el final que toca (o el que li diguis). */
 export function playEnding(id?: string) {
@@ -261,7 +290,7 @@ export function playEnding(id?: string) {
   if (!endingId) return
   const ending = narrative.ending(endingId)
   // Trossos de l'escena: el que va sobre negre (abans de la primera sala) i el que va damunt de cada sala.
-  const negre: { who: string; text: string }[] = []
+  const negre: { who: string; text: string; sound?: string }[] = []
   const trossos: typeof finale = []
   for (const line of ending.scene) {
     const actual = trossos[trossos.length - 1]

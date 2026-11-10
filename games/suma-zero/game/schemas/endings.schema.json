@@ -21,6 +21,13 @@
           "$ref": "#/definitions/Id",
           "description": "Sala de fons per a `text` (si no, la de l'última línia de l'escena que en tingui)."
         },
+        "credits": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/EndingLineDef"
+          },
+          "description": "Crèdits: línies que van després de `text`, amb `room` com a l'escena (si no, continuen sobre la sala del text). Acaben amb el «Fi»."
+        },
         "when": {
           "$ref": "#/definitions/Condition",
           "description": "Per triar-ne un automàticament amb `resolveEnding()`."

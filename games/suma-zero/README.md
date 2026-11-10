@@ -10,6 +10,13 @@ Guió: [guio/guio.md](guio/guio.md) (primera versió, a partir de [primer-guio.t
 La base tècnica (nucli narratiu, adaptador de Benne, eines) ve de Ferro-9
 (`../ferro-9`), amb la història separada del motor.
 
+> **Aquest joc és dins del repositori dels jocs de Mala Herba Soft** (`games/suma-zero/`). El nucli narratiu
+> (`packages/narrative-core/`), l'adaptador de Benne (`adapters/benne/`), el motor de Benne
+> (`packages/benne/`) i les eines (`tools/`) són a l'arrel i **els comparteixen tots els jocs**. Aquí hi
+> ha el que és només d'aquest joc: el contingut (`game/`), el guió, l'art, la música i el projecte Benne
+> (`suma-zero/`). Les ordres d'aquí sota s'executen des d'aquesta carpeta, o des de l'arrel amb `-w suma-zero`
+> (`npm run validate -w suma-zero`). Vegeu el [README de l'arrel](../../README.md).
+
 ## Les tres capes
 
 ```
@@ -101,25 +108,25 @@ per sala quan el guió de l'acte està tancat i jugat. L'Acte 1 ja és tot defin
 ## Ordres
 
 ```bash
-npm install
+npm install            # a l'arrel del repositori, la primera vegada
 npm run jugar          # juga en mode text, al terminal (sense art ni Benne), amb [so: nom] abans de cada so
 npm test               # tests: el nucli i les partides jugades de cap a peus
 npm run validate       # comprova el contingut: forma, referències, textos que falten
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
 npm run revisio        # genera guio/revisio.md: totes les variants de text amb la seva condició [-- <sala>]
-npm run typecheck
+npm run typecheck      # tipus de tot el repositori (tots els jocs)
 npm run schemas        # regenera game/schemas/ si canvien els tipus del nucli
 npm run font           # regenera la font pròpia (suma-regular i suma-negreta) al projecte Benne
 npm run sons           # regenera els efectes de so sintetitzats (game/audio/sfx/; cal numpy i ffmpeg)
 npm run musica         # regenera la música (game/audio/music/)
 npm run benne:sync     # porta el contingut a suma-zero/ (sales noves, textos, diàlegs, sons...) [--watch]
-npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'actualitza el motor
+npm run benne:create -- --from <checkout de Benne>   # crea suma-zero/ (amb --motor, actualitza el motor compartit)
 ```
 
 ## Documentació
 
-- [docs/guia-contingut.md](docs/guia-contingut.md): com escriure diàlegs, missions, pistes, finals...
-- [adapters/benne/README.md](adapters/benne/README.md): com connectar-ho amb el projecte Benne.
+- [docs/guia-contingut.md](../../docs/guia-contingut.md): com escriure diàlegs, missions, pistes, finals...
+- [adapters/benne/README.md](../../adapters/benne/README.md): com connectar-ho amb el projecte Benne.
 
 ## Estat actual
 

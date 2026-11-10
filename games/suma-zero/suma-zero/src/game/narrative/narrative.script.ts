@@ -9,11 +9,11 @@
  */
 import { MusicHandle, SfxHandle, display, fadeIn, fadeOut, player, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
-import { guis } from '@game';
+import { guis, music } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
+  musicSync, roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
 /**
@@ -109,7 +109,7 @@ export function onRoomEntered() {
   else guis.portada.hide()
   applySwitchButton()
   const who = roomProtagonist(room)
-  applyAmbientMusic(room)
+  applyAmbientMusic(room, portada)
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
       const character = benneCharacter(who)
@@ -137,15 +137,18 @@ export function onRoomEntered() {
 const FORA = 24
 
 /**
- * Música d'ambient: cada lloc té la seva peça. Totes són el mateix tema amb instruments diferents i
- * duren el mateix, així que en canviar de lloc s'encadenen al mateix punt. Les sales sense peça (les
- * cinemàtiques, com l'avió) continuen amb la que sonava.
+ * Música d'ambient (`music` al mapping.json del joc): cada sala, o cada protagonista, té la seva peça, i
+ * en canviar d'una a l'altra s'encadenen (amb `musicSync`, al mateix punt del tema). Les sales sense
+ * peça (les cinemàtiques) continuen amb la que sonava; la portada sense peça és en silenci.
  */
-function applyAmbientMusic(room: string) {
+function applyAmbientMusic(room: string, portada: boolean) {
   const track = roomMusic(room)
-  if (!track) return
+  if (!track) {
+    if (portada && music.isPlaying) music.stop()
+    return
+  }
   const handle = new MusicHandle(track)
-  if (!handle.isPlaying) handle.play({ fadeSeconds: 2.5, sync: true })
+  if (!handle.isPlaying) handle.play({ fadeSeconds: 2.5, ...(musicSync ? { sync: true } : {}) })
 }
 
 /** L'onEnter de la sala on acabem d'entrar, resolt abans del fos (vegeu `onRoomEntered`). */
@@ -269,6 +272,7 @@ export function switchProtagonist() {
 
 /** Una línia d'un final: els personatges ja no hi són, i el que diuen surt amb el nom al davant. */
 function displayEndingLine(line: { who: string; text: string; sound?: string }) {
+  recordLine(line.who, line.text)
   if (line.sound) new SfxHandle(line.sound).play()
   if (line.who === 'narrator' || line.who === 'title' || line.who === 'player') display(line.text)
   else display(`${narrative.characterName(line.who)}: ${line.text}`)
@@ -297,6 +301,12 @@ export function playEnding(id?: string) {
   const ultim = trossos[trossos.length - 1]
   if (ending.textRoom && ending.textRoom !== ultim?.room) trossos.push({ room: ending.textRoom, lines: [tancament] })
   else (ultim ? ultim.lines : negre).push(tancament)
+  // Els crèdits, després del text final: amb `room`, a la seva sala; si no, damunt de la que hi hagi.
+  for (const line of ending.credits) {
+    const actual = trossos[trossos.length - 1]
+    if (line.room && line.room !== actual?.room) trossos.push({ room: line.room, lines: [line] })
+    else (actual ? actual.lines : negre).push(line)
+  }
 
   fadeOut(1.5)
   display(ending.title)

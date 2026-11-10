@@ -7,6 +7,13 @@ Dues protagonistes separades per 120 anys: l'**Iri**, enginyera de la fàbrica d
 presonera de La Gavina, la presó que l'Aldaia va construir en òrbita amb les restes de la fàbrica. Es comuniquen amb la finestra de fase.
 Guió: [guio/guio.md](guio/guio.md).
 
+> **Aquest joc és dins del repositori dels jocs de Mala Herba Soft** (`games/ferro-9/`). El nucli narratiu
+> (`packages/narrative-core/`), l'adaptador de Benne (`adapters/benne/`), el motor de Benne
+> (`packages/benne/`) i les eines (`tools/`) són a l'arrel i **els comparteixen tots els jocs**. Aquí hi
+> ha el que és només d'aquest joc: el contingut (`game/`), el guió, l'art, la música i el projecte Benne
+> (`ferro-9/`). Les ordres d'aquí sota s'executen des d'aquesta carpeta, o des de l'arrel amb `-w ferro-9`
+> (`npm run validate -w ferro-9`). Vegeu el [README de l'arrel](../../README.md).
+
 ## Les tres capes
 
 ```
@@ -69,23 +76,23 @@ Regles:
 ## Ordres
 
 ```bash
-npm install
+npm install            # a l'arrel del repositori, la primera vegada
 npm run jugar          # juga en mode text, al terminal (sense art ni Benne)
 npm test               # tests: el nucli i els tres actes jugats de cap a peus, amb els tres finals
 npm run validate       # comprova el contingut: forma, referències, textos que falten
 npm run fitxes         # genera guio/fitxes-sales.md: què cal crear a l'editor per a cada sala
-npm run typecheck
+npm run typecheck      # tipus de tot el repositori (tots els jocs)
 npm run schemas        # regenera game/schemas/ si canvien els tipus del nucli
 npm run sons           # regenera els efectes de so sintetitzats (game/audio/sfx/; cal numpy i ffmpeg)
 npm run musica         # regenera la música d'ambient de la fàbrica i de La Gavina (game/audio/music/)
 npm run benne:sync     # porta el contingut a ferro-9/ (sales noves, textos, diàlegs, sons...) [--watch]
-npm run benne:create -- --from <checkout de Benne>   # (re)crea ferro-9/ o n'actualitza el motor
+npm run benne:create -- --from <checkout de Benne>   # crea ferro-9/ (amb --motor, actualitza el motor compartit)
 ```
 
 ## Documentació
 
-- [docs/guia-contingut.md](docs/guia-contingut.md): com escriure diàlegs, missions, pistes, finals...
-- [adapters/benne/README.md](adapters/benne/README.md): com connectar-ho amb el projecte Benne.
+- [docs/guia-contingut.md](../../docs/guia-contingut.md): com escriure diàlegs, missions, pistes, finals...
+- [adapters/benne/README.md](../../adapters/benne/README.md): com connectar-ho amb el projecte Benne.
 
 ## Estat actual
 

@@ -5,12 +5,19 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, defineVars, events, game, inventory, player, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
 import mapping from './mapping.generated.json';
+import { resetHistory } from './historial';
+
+// L'historial de línies és de cada joc (runtime/historial.ts del joc, o el buit per defecte).
+export * from './historial';
+
+/** El nom del joc, per als missatges de la consola. */
+const JOC = (mapping as { nom?: string }).nom ?? 'Joc';
 
 // ─── Correspondència d'identificadors (nostres ↔ Benne) ─────────────────────
 // Per defecte són iguals. Les excepcions es posen a `adapters/benne/mapping.json`.
@@ -76,6 +83,10 @@ export function takePendingSwitch() {
 /** Esdeveniment de contingut que acaba el joc amb el final que toca (`{ "event": "final" }`). */
 export const ENDING_EVENT = 'final';
 let pendingEnding = false;
+/** Si l'última interacció ha acabat el joc (sense esborrar-ho). */
+export function hasPendingEnding() {
+  return pendingEnding;
+}
 /** Si l'última interacció ha acabat el joc (i ho esborra). */
 export function takePendingEnding() {
   const yes = pendingEnding;
@@ -119,10 +130,10 @@ export function adoptLoadedState() {
   if (!saved) return;
   const json = JSON.stringify(saved);
   if (json === persisted) return;
-  console.info('[Ferro-9] Estat narratiu adoptat de la partida', describeState(saved));
+  console.info(`[${JOC}] Estat narratiu adoptat de la partida`, describeState(saved));
   persisted = json;
   narrative.load(saved);
-  historial.length = 0;
+  resetHistory();
 }
 
 /** Resum curt d'un estat narratiu per als missatges de la consola. */
@@ -133,6 +144,10 @@ function describeState(state: unknown) {
 
 narrative.on((e) => {
   switch (e.type) {
+    case 'ending':
+      // Un efecte `{ "ending": ... }` (p. ex. l'avió, al final de l'Acte 1) també acaba el joc.
+      pendingEnding = true;
+      break;
     case 'stateChanged':
       persist();
       applySwitchButton();
@@ -148,6 +163,10 @@ narrative.on((e) => {
     case 'custom':
       if (e.name === SWITCH_EVENT) pendingSwitch = String(e.args.id);
       if (e.name === ENDING_EVENT) pendingEnding = true;
+      // `situar`: l'altra protagonista passa a ser en una altra sala (s'hi anirà en canviar-hi).
+      if (e.name === 'situar' && String(e.args.who) !== narrative.world.activeProtagonist()) {
+        rememberProtagonistRoom(String(e.args.who), String(e.args.room));
+      }
       events.emit(`narrative:${e.name}`, e.args);
       break;
     default:
@@ -188,7 +207,7 @@ events.on('gameState:replaced', () => {
 /** Partida nova: reparteix els inventaris inicials (game.json → start). Només la primera vegada. */
 export function ensureStarted() {
   if (store.started) return;
-  console.info('[Ferro-9] Partida nova: estat narratiu inicial i inventaris inicials');
+  console.info(`[${JOC}] Partida nova: estat narratiu inicial i inventaris inicials`);
   store.started = true;
   store.resolucio = RESOLUCIO;
   narrative.newGame();
@@ -203,8 +222,17 @@ export function ensureStarted() {
 /** La protagonista d'una sala (`protagonist` al JSON de la sala). */
 export const roomProtagonist = (room: string) => content.rooms[room]?.protagonist ?? null;
 
-/** La música d'ambient de les sales d'una protagonista (`music` a `adapters/benne/mapping.json`). */
-export const protagonistMusic = (who: string) => (mapping as { music?: Record<string, string> }).music?.[who] ?? null;
+const music = (mapping as { music?: Record<string, string> }).music ?? {};
+/**
+ * La música d'ambient d'una sala (`music` al mapping.json del joc): la de la sala, o si no en té, la de
+ * la seva protagonista. `null`: continua la que sonava (p. ex. a les cinemàtiques).
+ */
+export function roomMusic(room: string): string | null {
+  const who = roomProtagonist(room);
+  return music[room] ?? (who ? music[who] : undefined) ?? null;
+}
+/** Si totes les pistes duren el mateix i, en canviar-ne, la nova continua al mateix punt (`musicSync`). */
+export const musicSync = (mapping as { musicSync?: boolean }).musicSync === true;
 
 /** On és (o era) cada protagonista. */
 export function protagonistRoom(who: string): string | null {
@@ -287,13 +315,14 @@ export function bindHotspots(handles: Record<string, Showable>) {
 }
 
 /**
- * El botó «Canvia» (a la barra de verbs i al menú) només hi és quan el jugador pot canviar de
- * protagonista (`switchWhen` a game.json).
+ * El botó «Canvia» (a la barra de verbs i, si el joc el té, al menú) només hi és quan el jugador pot
+ * canviar de protagonista (`switchWhen` a game.json).
  */
 export function applySwitchButton() {
   const pot = narrative.canSwitch();
   guis.verbs.controls.canviaBtn.visible = pot;
-  guis.gameMenu.controls.canviar.visible = pot;
+  const menu = guis.gameMenu.controls as unknown as Record<string, { visible: boolean } | undefined>;
+  if (menu.canviar) menu.canviar.visible = pot;
 }
 
 export function applyHotspotVisibility() {
@@ -313,6 +342,8 @@ export function applyHotspotVisibility() {
 
 export function applyAppearances() {
   for (const [id, def] of Object.entries(content.characters)) {
+    // La roba (`outfit`): el motor (pegat) busca `<roba><Idle|Walk|Talk><dir>` abans que les normals.
+    if (def.outfit?.length) setOutfit(toBenne('characters', id), narrative.outfitOf(id));
     if (!def.appearance?.length) continue;
     // Les animacions del JSON són text; Benne les tipa amb les etiquetes del sprite.
     const handle = benneCharacter(id) as { animation: string; stopAnimation(): void } | undefined;
@@ -345,33 +376,3 @@ export function setLanguage(locale: string) {
   applyLocalizedNames();
 }
 
-// ─── Historial: les últimes línies dites, per tornar a llegir les que han passat massa de pressa ──
-
-const HISTORIAL_MAX = 80;
-const historial: { who: string | null; text: string }[] = [];
-
-/** Apunta una línia a l'historial (els títols no). `who`: un personatge, `player` o `narrator`. */
-export function recordLine(who: string, text: string) {
-  if (who === 'title') return;
-  const id = who === 'player' ? narrative.world.activeProtagonist() : who;
-  historial.push({ who: who === 'narrator' ? null : narrative.characterName(id), text });
-  if (historial.length > HISTORIAL_MAX) historial.shift();
-}
-
-/**
- * Les últimes línies de l'historial que caben en `rows` files de `perRow` caràcters, la més nova
- * a baix. Si no n'hi ha cap, `empty`.
- */
-export function historyText(empty: string, rows: number, perRow: number) {
-  const out: string[] = [];
-  let used = 0;
-  for (let i = historial.length - 1; i >= 0; i--) {
-    const { who, text } = historial[i]!;
-    const line = who ? `${who}: ${text}` : text;
-    const n = Math.ceil(line.length / perRow);
-    if (used + n > rows && out.length) break;
-    out.unshift(line);
-    used += n;
-  }
-  return out.length ? out.join('\n') : empty;
-}

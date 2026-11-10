@@ -8,23 +8,24 @@
     "displayName": "Suma Zero"
   },
   "scripts": {
+    "motor": "node ../../../packages/benne/copia.mjs",
     "generate:game-ids": "node scripts/generate-game-ids.mjs",
-    "predev": "npm run generate:game-ids",
+    "predev": "npm run motor && npm run generate:game-ids",
     "dev": "vite",
-    "prebuild": "npm run generate:game-ids",
+    "prebuild": "npm run motor && npm run generate:game-ids",
     "build": "tsc && vite build",
     "build:itch": "npm run build && node scripts/package-itch.mjs",
     "desktop": "npm run build && electron .",
     "build:windows": "npm run build && node scripts/prepare-desktop.mjs && electron-builder --config electron-builder.config.cjs --win --x64",
-    "prebuild:room-preview": "npm run generate:game-ids",
+    "prebuild:room-preview": "npm run motor && npm run generate:game-ids",
     "build:room-preview": "tsc && vite build --config vite.room-preview.config.ts",
-    "prebuild:character-preview": "npm run generate:game-ids",
+    "prebuild:character-preview": "npm run motor && npm run generate:game-ids",
     "build:character-preview": "tsc && vite build --config vite.character-preview.config.ts",
-    "prebuild:gui-preview": "npm run generate:game-ids",
+    "prebuild:gui-preview": "npm run motor && npm run generate:game-ids",
     "build:gui-preview": "tsc && vite build --config vite.gui-preview.config.ts",
-    "prebuild:inventory-preview": "npm run generate:game-ids",
+    "prebuild:inventory-preview": "npm run motor && npm run generate:game-ids",
     "build:inventory-preview": "tsc && vite build --config vite.inventory-preview.config.ts",
-    "prebuild:benne-play": "npm run generate:game-ids",
+    "prebuild:benne-play": "npm run motor && npm run generate:game-ids",
     "build:benne-play": "tsc && vite build --config vite.benne-play.config.ts",
     "preview": "vite preview"
   },
@@ -41,7 +42,7 @@
   },
   "dependencies": {
     "phaser": "4.0.0-rc.7",
-    "@aventura/narrative-core": "file:../packages/narrative-core",
+    "@aventura/narrative-core": "file:../../../packages/narrative-core",
     "@aventura/game": "file:../game"
   }
 }

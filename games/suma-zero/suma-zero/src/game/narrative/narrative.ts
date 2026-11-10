@@ -11,7 +11,13 @@ import { Narrative, type GameContent, type InteractionTarget, type LocaleTable, 
 import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
 import mapping from './mapping.generated.json';
-import fontXml from '../assets/fonts/suma-regular.xml?raw';
+import { resetHistory } from './historial';
+
+// L'historial de línies és de cada joc (runtime/historial.ts del joc, o el buit per defecte).
+export * from './historial';
+
+/** El nom del joc, per als missatges de la consola. */
+const JOC = (mapping as { nom?: string }).nom ?? 'Joc';
 
 // ─── Correspondència d'identificadors (nostres ↔ Benne) ─────────────────────
 // Per defecte són iguals. Les excepcions es posen a `adapters/benne/mapping.json`.
@@ -124,9 +130,10 @@ export function adoptLoadedState() {
   if (!saved) return;
   const json = JSON.stringify(saved);
   if (json === persisted) return;
-  console.info('[Suma Zero] Estat narratiu adoptat de la partida', describeState(saved));
+  console.info(`[${JOC}] Estat narratiu adoptat de la partida`, describeState(saved));
   persisted = json;
   narrative.load(saved);
+  resetHistory();
 }
 
 /** Resum curt d'un estat narratiu per als missatges de la consola. */
@@ -200,7 +207,7 @@ events.on('gameState:replaced', () => {
 /** Partida nova: reparteix els inventaris inicials (game.json → start). Només la primera vegada. */
 export function ensureStarted() {
   if (store.started) return;
-  console.info('[Suma Zero] Partida nova: estat narratiu inicial i inventaris inicials');
+  console.info(`[${JOC}] Partida nova: estat narratiu inicial i inventaris inicials`);
   store.started = true;
   store.resolucio = RESOLUCIO;
   narrative.newGame();
@@ -215,8 +222,17 @@ export function ensureStarted() {
 /** La protagonista d'una sala (`protagonist` al JSON de la sala). */
 export const roomProtagonist = (room: string) => content.rooms[room]?.protagonist ?? null;
 
-/** La música d'ambient d'una sala (`music` a `adapters/benne/mapping.json`), o `null` si continua la que sonava. */
-export const roomMusic = (room: string) => (mapping as { music?: Record<string, string> }).music?.[room] ?? null;
+const music = (mapping as { music?: Record<string, string> }).music ?? {};
+/**
+ * La música d'ambient d'una sala (`music` al mapping.json del joc): la de la sala, o si no en té, la de
+ * la seva protagonista. `null`: continua la que sonava (p. ex. a les cinemàtiques).
+ */
+export function roomMusic(room: string): string | null {
+  const who = roomProtagonist(room);
+  return music[room] ?? (who ? music[who] : undefined) ?? null;
+}
+/** Si totes les pistes duren el mateix i, en canviar-ne, la nova continua al mateix punt (`musicSync`). */
+export const musicSync = (mapping as { musicSync?: boolean }).musicSync === true;
 
 /** On és (o era) cada protagonista. */
 export function protagonistRoom(who: string): string | null {
@@ -299,11 +315,14 @@ export function bindHotspots(handles: Record<string, Showable>) {
 }
 
 /**
- * El botó «Canvia» de la barra de verbs només hi és quan el jugador pot canviar de protagonista
- * (`switchWhen` a game.json).
+ * El botó «Canvia» (a la barra de verbs i, si el joc el té, al menú) només hi és quan el jugador pot
+ * canviar de protagonista (`switchWhen` a game.json).
  */
 export function applySwitchButton() {
-  guis.verbs.controls.canviaBtn.visible = narrative.canSwitch();
+  const pot = narrative.canSwitch();
+  guis.verbs.controls.canviaBtn.visible = pot;
+  const menu = guis.gameMenu.controls as unknown as Record<string, { visible: boolean } | undefined>;
+  if (menu.canviar) menu.canviar.visible = pot;
 }
 
 export function applyHotspotVisibility() {
@@ -357,94 +376,3 @@ export function setLanguage(locale: string) {
   applyLocalizedNames();
 }
 
-// ─── Historial: les últimes línies dites, per tornar-les a llegir ───────────
-
-/** Les línies dites des que s'ha obert el joc (no es desa: és per a les que t'acabes de perdre). */
-const historial: { name: string; text: string }[] = [];
-const HISTORIAL_MAX = 200;
-
-/** Apunta una línia a l'historial (es crida en començar-la). Els títols no hi van. */
-export function recordLine(who: string, text: string) {
-  if (who === 'title' || !text) return;
-  const id = who === 'player' ? narrative.world.activeProtagonist() : who;
-  historial.push({ name: who === 'narrator' ? '' : narrative.characterName(id), text });
-  if (historial.length > HISTORIAL_MAX) historial.splice(0, historial.length - HISTORIAL_MAX);
-}
-
-// Amplada de cada lletra de la font de les línies (xadvance del .xml), per partir-les com les pinta Benne.
-const ADVANCE = new Map<number, number>();
-for (const m of fontXml.matchAll(/<char id="(\d+)"[^>]*xadvance="(-?\d+)"/g)) ADVANCE.set(Number(m[1]), Number(m[2]));
-const textWidth = (text: string) => [...text].reduce((w, ch) => w + (ADVANCE.get(ch.codePointAt(0)!) ?? 6), 0);
-
-/** Parteix un text en línies que no passin de `max` píxels (per paraules). */
-function wrap(text: string, max: number): string[] {
-  const lines: string[] = [];
-  let line = '';
-  for (const word of text.split(/\s+/)) {
-    const next = line ? `${line} ${word}` : word;
-    if (line && textWidth(next) > max) {
-      lines.push(line);
-      line = word;
-    } else {
-      line = next;
-    }
-  }
-  if (line) lines.push(line);
-  return lines;
-}
-
-// Mides de la GUI `historial` (adapters/benne/benne-content.ts, addHistoryGui).
-const HISTORIAL_AMPLE = 480 - 28;
-const HISTORIAL_FILES = Math.floor((270 - 15 - 4 - 24) / 12);
-let historialEnrere = 0;
-
-/** Omple la GUI de l'historial: les últimes línies a baix; `historialEnrere` files més amunt. */
-function renderHistory() {
-  const files: { nom: string; text: string }[] = [];
-  for (const e of historial) {
-    if (e.name) files.push({ nom: e.name, text: '' });
-    for (const l of wrap(e.text, HISTORIAL_AMPLE)) files.push({ nom: '', text: l });
-  }
-  historialEnrere = Math.max(0, Math.min(historialEnrere, files.length - HISTORIAL_FILES));
-  const fi = files.length - historialEnrere;
-  const visibles = files.slice(Math.max(0, fi - HISTORIAL_FILES), fi);
-  const c = guis.historial.controls;
-  c.titol.text = narrative.t('ui.historial.titol');
-  c.peu.text = narrative.t('ui.historial.peu');
-  c.noms.text = visibles.map((f) => f.nom).join('\n');
-  c.linies.text = files.length ? visibles.map((f) => f.text).join('\n') : narrative.t('ui.historial.buit');
-}
-
-/** Obre l'historial (botó del menú o tecla H). */
-export function showHistory() {
-  historialEnrere = 0;
-  renderHistory();
-  guis.historial.show();
-}
-
-const historyOpen = () => guis.historial.visible;
-const hideHistory = () => guis.historial.hide();
-guis.historial.controls.fons.onClick(hideHistory);
-
-// La tecla H obre i tanca l'historial, si no hi ha cap menú obert (al de desar s'hi escriu). Obert, la
-// roda i les fletxes van enrere i endavant, i Esc el tanca.
-const MENUS = ['gameMenu', 'saveMenu', 'loadMenu', 'settingsMenu', 'portada'] as const;
-if (typeof window !== 'undefined') {
-  window.addEventListener('keydown', (ev) => {
-    if (historyOpen()) {
-      if (ev.key === 'h' || ev.key === 'H' || ev.key === 'Escape') hideHistory();
-      else if (ev.key === 'ArrowUp' || ev.key === 'PageUp') { historialEnrere += ev.key === 'PageUp' ? HISTORIAL_FILES - 1 : 1; renderHistory(); }
-      else if (ev.key === 'ArrowDown' || ev.key === 'PageDown') { historialEnrere -= ev.key === 'PageDown' ? HISTORIAL_FILES - 1 : 1; renderHistory(); }
-      return;
-    }
-    if (ev.key !== 'h' && ev.key !== 'H') return;
-    const all = guis as unknown as Record<string, { visible: boolean } | undefined>;
-    if (MENUS.some((m) => all[m]?.visible)) return;
-    showHistory();
-  });
-  window.addEventListener('wheel', (ev) => {
-    if (!historyOpen()) return;
-    historialEnrere += ev.deltaY < 0 ? 2 : -2;
-    renderHistory();
-  });
-}
