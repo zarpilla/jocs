@@ -7,7 +7,7 @@
  */
 import { HotspotHandle, PropHandle, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
-import { Narrative, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
+import { Narrative, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
 import mapping from './mapping.generated.json';
@@ -435,3 +435,41 @@ export function setLanguage(locale: string) {
   applyLocalizedNames();
 }
 
+// ─── Provar els finals (`?final=` a l'adreça, només en desenvolupament) ──────
+
+/**
+ * Per veure un final sense jugar-lo: una partida nova amb l'estat que el fa sortir. Es compleix sola la
+ * condició del final (`when`), i a l'adreça s'hi pot afegir més estat, per a les línies i els personatges
+ * que depenen d'altres coses:
+ *   `flags=a,b,!c`         marques (amb `!`, a fals)
+ *   `vars=aliats:4,x:text`  variables (si és un número, com a número)
+ * Ex.: `?final=final_taula&flags=aliat_ballester,aliat_neta,aliada_rius,aliada_pons,tap_tornat`
+ */
+export function prepareEndingPreview(id: string, query: URLSearchParams) {
+  ensureStarted()
+  const effects: Effect[] = [...satisfy(content.endings[id]?.when)]
+  for (const f of (query.get('flags') ?? '').split(',').map((x) => x.trim()).filter(Boolean)) {
+    effects.push(f.startsWith('!') ? { setFlag: f.slice(1), value: false } : { setFlag: f })
+  }
+  for (const pair of (query.get('vars') ?? '').split(',').map((x) => x.trim()).filter(Boolean)) {
+    const [k, v = ''] = pair.split(':')
+    if (k) effects.push({ setVar: k, value: v !== '' && !Number.isNaN(Number(v)) ? Number(v) : v })
+  }
+  if (effects.length) narrative.apply(effects)
+  console.info(`[final] ${id}:`, effects)
+}
+
+/** Els efectes que fan complir una condició (els casos senzills: marques, variables, `all`, `any`). */
+function satisfy(c: Condition | undefined): Effect[] {
+  if (!c) return []
+  if ('all' in c) return c.all.flatMap(satisfy)
+  if ('any' in c) return satisfy(c.any[0])
+  if ('flag' in c) return [{ setFlag: c.flag, value: c.is ?? true }]
+  if ('var' in c) {
+    const n = typeof c.value === 'number' ? c.value : null
+    if (c.op === '>' && n !== null) return [{ setVar: c.var, value: n + 1 }]
+    if (c.op === '<' && n !== null) return [{ setVar: c.var, value: n - 1 }]
+    if (c.op === '==' || c.op === '>=' || c.op === '<=') return [{ setVar: c.var, value: c.value }]
+  }
+  return []
+}
