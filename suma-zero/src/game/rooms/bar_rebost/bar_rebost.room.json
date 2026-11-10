@@ -160,6 +160,31 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "arna",
+      "tag": "arna",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "arna": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "recepta_calaix",
+      "tag": "recepta_calaix",
+      "animations": {
+        "recepta_calaix": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

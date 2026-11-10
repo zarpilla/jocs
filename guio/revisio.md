@@ -201,6 +201,7 @@ EN ENTRAR
 
 ```
 DECORAT calaix_obert — es veu si calaix_obert
+DECORAT recepta_calaix — es veu si calaix_obert i NO recepta_agafada
 
 CALAIX «calaix»
     • open/pickUp — si calaix_obert i NO recepta_agafada

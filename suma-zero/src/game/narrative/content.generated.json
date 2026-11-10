@@ -1580,6 +1580,19 @@
             "visibleIf": {
               "flag": "calaix_obert"
             }
+          },
+          "recepta_calaix": {
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "calaix_obert"
+                },
+                {
+                  "flag": "recepta_agafada",
+                  "is": false
+                }
+              ]
+            }
           }
         }
       },
