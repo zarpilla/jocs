@@ -312,9 +312,9 @@ sincronia.
 La Vet ho explica a l'Iri: «Només el deixaria per una trucada de la seva dona. Que no existeix.» L'Iri, que és
 un desastre parlant amb la gent, truca al bar amb **una veu sintètica** del portàtil. [SO: telefon_bar]
 
-> PUIG: Digui? ...La meva dona? Jo no estic casat.
+> TOMÀS: Digui? ...La meva dona? Jo no estic casat.
 > IRI (veu sintètica): Doncs ja ho saps. Vull el divorci.
-> PUIG: ...Un moment.
+> TOMÀS: ...Un moment.
 
 En Tomàs s'endú el telèfon al rebost (que es tanca: «Està discutint amb la seva dona inexistent. Millor no
 entrar») i deixa el comandament a la barra. La Vet l'agafa i el dona a en Marcel, que posa *La Comissària
@@ -737,8 +737,8 @@ decisió de l'Iri a l'Escena 8.
 > MARCEL (si mentida_corporativa): Em van dir que una auditora va dir al Director que la banca és imprescindible.
 > VET: Era una auditora molt convincent.
 > MARCEL (si dignitat): Diuen que una auditora li va parlar de cordons de sabates.
-> PUIG (si no tap_tornat): On és el meu tap?
-> PUIG (si tap_tornat): Avui convida la casa. Un cop.
+> TOMÀS (si no tap_tornat): On és el meu tap?
+> TOMÀS (si tap_tornat): Avui convida la casa. Un cop.
 
 Pausa. El gat Diu entra (l'han portat de casa en un cistell) i mossega el cable de la tele del bar. [SO: mossegada]
 
