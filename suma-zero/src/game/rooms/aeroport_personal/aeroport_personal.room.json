@@ -140,6 +140,31 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "soler_vidre",
+      "tag": "soler_vidre",
+      "animations": {
+        "soler_vidre": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "fluorescent",
+      "tag": "fluorescent",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fluorescent": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
     }
   ],
   "characters": [

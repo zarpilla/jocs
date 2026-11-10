@@ -195,6 +195,12 @@
     }
   },
   "decor": {
+    "soler_vidre": {
+      "visibleIf": {
+        "flag": "soler_distret",
+        "is": false
+      }
+    },
     "porta_oberta": {
       "visibleIf": {
         "flag": "porta_oberta"

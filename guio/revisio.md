@@ -64,6 +64,7 @@ EN ENTRAR
     • * (una vegada) — SEMPRE
         JUGADORA: La porta de personal. Teclat numèric, quatre xifres. I en Soler, a tres metres.
 
+DECORAT soler_vidre — es veu si NO soler_distret
 DECORAT porta_oberta — es veu si porta_oberta
 DECORAT alarma — es veu si alarma_porta
 
