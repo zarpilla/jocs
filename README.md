@@ -129,7 +129,9 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   `onAfterAction` (una regla després de cada acció) i l'esdeveniment `situar` (moure l'altra protagonista).
 - **Tests:** l'Acte 1 per tots els camins (els tres sacrificis per a en Diu, amb i sense entrepà, tap i
   preparació, el codi dolent, els reinicis de la sincronia), amb una pista a cada pas, i proves de coherència.
-- **Sala de mostra amb l'art definitiu** (l'estudi de l'Iri, l'Iri i en Diu). Les altres sales de l'Acte 1 són
-  caixes provisionals; els sons són provisionals (`npm run sons`).
-- **Següent pas:** l'art provisional de l'Acte 1 amb tots els estats (taula d'estats del guió), i jugar-lo
-  sencer al navegador. Després, l'Acte 2.
+- **Art:** la sala de mostra (l'estudi de l'Iri) és definitiva; les altres sales de l'Acte 1 són provisionals,
+  amb la geometria definitiva, el nom de cada cosa i un fotograma per a cada estat. L'Iri, la Vet, en Diu i els
+  secundaris tenen sprite (els secundaris, provisionals). Els sons són provisionals (`npm run sons`); la barra
+  de verbs i els menús són els de la plantilla; la majoria d'icones encara són etiquetes.
+- **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botó «Pista»).
+- **Següent pas:** les impressions de la primera partida a l'Acte 1. Després, l'Acte 2.
