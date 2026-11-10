@@ -41,7 +41,7 @@ export type SerializableBenneGameState = SerializableBenneGameStateV1 | Serializ
 export interface SaveMetadata {
   /** Player-facing save name. */
   name: string;
-  /** Slot id when the entry maps to fixed-slot storage (`benne-save-<slot>`). */
+  /** Slot id when the entry maps to fixed-slot storage (`<gameId>:save-<slot>`). */
   slot?: number;
   /** Last write/load touch time in epoch milliseconds. */
   timestamp: number;
@@ -50,13 +50,13 @@ export interface SaveMetadata {
 /** Internal manifest row persisted in localStorage for named saves. */
 export interface SaveManifestEntry extends SaveMetadata {
   /**
-   * Storage key for the snapshot payload. For legacy slots this is `benne-save-<slot>`,
-   * for named saves this is `benne-save-v1-<sanitized-name>`.
+   * Storage key for the snapshot payload. For legacy slots this is `<gameId>:save-<slot>`,
+   * for named saves this is `<gameId>:save-v1-<sanitized-name>`.
    */
   storageKey: string;
 }
 
-/** Internal manifest payload persisted under `benne-saves-manifest-v1`. */
+/** Internal manifest payload persisted under `<gameId>:saves-manifest-v1`. */
 export interface SaveManifest {
   version: 1;
   saves: SaveManifestEntry[];

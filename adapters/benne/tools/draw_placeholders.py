@@ -246,6 +246,10 @@ def draw_designed(dir_: Path, game_dir: Path, design):
             prop = {'id': aid, 'tag': aid, 'zIndex': 1, 'visible': True, 'alpha': 1, 'clickable': False}
             room['props'].append(prop)
         prop['animations'] = {aid: {'loop': True, 'frameDuration': ms}}
+        # Si un hotspot té el mateix id, el prop necessita un altre nom a BenneScript.
+        if 'scriptName' not in prop and any(h['id'] == aid for h in room.get('hotspots', [])):
+            head, *rest = aid.split('_')
+            prop['scriptName'] = head + ''.join(s.capitalize() for s in rest) + 'Anim'
 
     # Capa del davant (hd FRONT): un retall del fons que tapa els personatges que hi ha darrere.
     fr = render_hd_front(name, bg) if hd else None
