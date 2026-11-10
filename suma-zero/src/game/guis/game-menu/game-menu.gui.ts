@@ -1,6 +1,7 @@
 import { guis } from '@game';
-import { gui, load, resume, save, settingsBtn, canviar, pista } from './game-menu.ids';
-import { sayHint, switchProtagonist } from '../../narrative/narrative.script';
+import { gui, load, resume, save, settingsBtn, historial, pista } from './game-menu.ids';
+import { sayHint } from '../../narrative/narrative.script';
+import { showHistory } from '../../narrative/narrative';
 
 resume.onClick(() => gui.hide())
 
@@ -19,10 +20,10 @@ load.onClick(() => {
   gui.hide()
 })
 
-// Afegit per adapters/benne (benne-content.ts): canviar de protagonista i demanar una pista.
-canviar.onClick(() => {
+// Afegit per adapters/benne (benne-content.ts): l'historial de línies i demanar una pista.
+historial.onClick(() => {
   gui.hide()
-  switchProtagonist()
+  showHistory()
 })
 
 pista.onClick(() => {

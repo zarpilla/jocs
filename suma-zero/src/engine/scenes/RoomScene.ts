@@ -346,6 +346,9 @@ function verbHoverDefaultVerbPatch(def: PointerVerbTarget): Pick<VerbHoverTarget
   return v && v.length > 0 ? { defaultVerb: v } : {};
 }
 
+/** Suma Zero patch: a line can't be clicked away during its first half second. */
+const SCRIPTED_SKIP_GUARD_MS = 500;
+
 export class RoomScene extends Phaser.Scene {
   private roomData!: RoomData;
 
@@ -685,6 +688,11 @@ export class RoomScene extends Phaser.Scene {
    * before the room's own `pointerdown` handler sees the same click.
    */
   private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
+  /**
+   * Suma Zero patch: when the current click-to-skip hook was armed (scene time, ms). Clicks in the first
+   * {@link SCRIPTED_SKIP_GUARD_MS} are swallowed, so a double click or a stray click doesn't eat a line unread.
+   */
+  private scriptedDialogClickToSkipSince = 0;
 
   /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
   private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
@@ -2321,6 +2329,7 @@ export class RoomScene extends Phaser.Scene {
    */
   setScriptedDialogClickToSkip(fn: (() => void) | null): void {
     this.scriptedDialogClickToSkip = fn;
+    this.scriptedDialogClickToSkipSince = this.time?.now ?? 0;
     const pointer = this.input?.activePointer;
     this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
   }
@@ -2348,6 +2357,9 @@ export class RoomScene extends Phaser.Scene {
     }
     if (this.scriptedDialogClickToSkipArmedDuringDown != null && pointer.downTime === this.scriptedDialogClickToSkipArmedDuringDown) {
       return false;
+    }
+    if (this.time.now - this.scriptedDialogClickToSkipSince < SCRIPTED_SKIP_GUARD_MS) {
+      return true;
     }
     const fn = this.scriptedDialogClickToSkip;
     this.scriptedDialogClickToSkip = null;

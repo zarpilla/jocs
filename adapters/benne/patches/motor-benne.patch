@@ -85,7 +85,29 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    SPEAKING_TEXT_OVERLAY_DEPTH,
  } from './roomScreenFadeConstants';
  import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
-@@ -874,7 +875,7 @@
+@@ -345,6 +346,9 @@
+   return v && v.length > 0 ? { defaultVerb: v } : {};
+ }
+ 
++/** Suma Zero patch: a line can't be clicked away during its first half second. */
++const SCRIPTED_SKIP_GUARD_MS = 500;
++
+ export class RoomScene extends Phaser.Scene {
+   private roomData!: RoomData;
+ 
+@@ -684,6 +688,11 @@
+    * before the room's own `pointerdown` handler sees the same click.
+    */
+   private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
++  /**
++   * Suma Zero patch: when the current click-to-skip hook was armed (scene time, ms). Clicks in the first
++   * {@link SCRIPTED_SKIP_GUARD_MS} are swallowed, so a double click or a stray click doesn't eat a line unread.
++   */
++  private scriptedDialogClickToSkipSince = 0;
+ 
+   /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
+   private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
+@@ -874,7 +883,7 @@
        const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
  
        const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
@@ -94,7 +116,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const guiStartVisible =
          isSpeakingText || isDisplayText || isChoiceDialog
            ? false
-@@ -1866,6 +1867,12 @@
+@@ -1866,6 +1875,12 @@
    }
  
    /**
@@ -107,6 +129,24 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
     * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
     */
+@@ -2314,6 +2329,7 @@
+    */
+   setScriptedDialogClickToSkip(fn: (() => void) | null): void {
+     this.scriptedDialogClickToSkip = fn;
++    this.scriptedDialogClickToSkipSince = this.time?.now ?? 0;
+     const pointer = this.input?.activePointer;
+     this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
+   }
+@@ -2342,6 +2358,9 @@
+     if (this.scriptedDialogClickToSkipArmedDuringDown != null && pointer.downTime === this.scriptedDialogClickToSkipArmedDuringDown) {
+       return false;
+     }
++    if (this.time.now - this.scriptedDialogClickToSkipSince < SCRIPTED_SKIP_GUARD_MS) {
++      return true;
++    }
+     const fn = this.scriptedDialogClickToSkip;
+     this.scriptedDialogClickToSkip = null;
+     fn();
 diff -ruN src/engine/scenes/roomScreenFadeConstants.ts src/engine/scenes/roomScreenFadeConstants.ts
 --- src/engine/scenes/roomScreenFadeConstants.ts
 +++ src/engine/scenes/roomScreenFadeConstants.ts

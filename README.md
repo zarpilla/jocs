@@ -133,5 +133,5 @@ npm run benne:create -- --from <checkout de Benne>   # (re)crea suma-zero/ o n'a
   amb la geometria definitiva, el nom de cada cosa i un fotograma per a cada estat. L'Iri, la Vet, en Diu i els
   secundaris tenen sprite (els secundaris, provisionals). Els sons són provisionals (`npm run sons`); la barra
   de verbs i els menús són els de la plantilla; la majoria d'icones encara són etiquetes.
-- **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botó «Pista»).
+- **Per jugar:** `cd suma-zero && npm run dev` (al menú del joc, botons «Pista» i «Historial»; la tecla H també obre l'historial).
 - **Següent pas:** les impressions de la primera partida a l'Acte 1. Després, l'Acte 2.

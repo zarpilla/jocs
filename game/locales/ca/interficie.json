@@ -26,9 +26,12 @@
   "ui.opcions.volum_musica": "volum de la música",
   "ui.opcions.velocitat_text": "velocitat del text",
   "ui.verb.talkTo.boto": "Parla",
-  "ui.menu.canviar": "Canvia",
   "ui.menu.pista": "Pista",
   "ui.canvia.encara_no": "Encara no: de moment, això és cosa de l'Iri.",
   "ui.portada.comenca": "Comença",
-  "ui.portada.carrega": "Carrega una partida"
+  "ui.portada.carrega": "Carrega una partida",
+  "ui.menu.historial": "Historial",
+  "ui.historial.titol": "Historial",
+  "ui.historial.peu": "Roda o fletxes: enrere · Clic, Esc o H: tanca",
+  "ui.historial.buit": "Encara no ha parlat ningú."
 }

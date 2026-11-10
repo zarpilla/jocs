@@ -13,13 +13,14 @@ import { guis, music } from '@game';
 import type { InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   adoptLoadedState, applyAppearances, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  protagonistMusic, rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
+  protagonistMusic, recordLine, rememberProtagonistRoom, roomProtagonist, takePendingEnding, takePendingSwitch, targetFromBenne,
 } from './narrative';
 
 /** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
 export function playLines(lines: ResolvedLine[]) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
+    recordLine(line.who, line.text)
     if (line.sound) new SfxHandle(line.sound).play()
     if (line.who === 'title') {
       // Pantalla de títol: les línies `title` seguides es mostren juntes sobre negre.
@@ -229,6 +230,7 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
 export function sayHint() {
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.t('ui.pista.cap')
+  recordLine('player', text)
   player.say(text)
 }
 

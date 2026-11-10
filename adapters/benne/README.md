@@ -119,11 +119,17 @@ tots els caràcters catalans. Cap font amb llicència no comercial. Si mai cal u
 `patches/motor-benne.patch` són els canvis propis al motor (heretats de Ferro-9): `stayBlackOnEnter()`
 per mostrar títols sobre negre abans d'una sala, el text de pantalla per sobre del fos a negre, i
 `walkToLabel` a `game-config.json` per traduir «Walk to», i `setOutfit()` per canviar la roba d'un personatge
-(prova les etiquetes `<roba>IdleD`, `<roba>WalkL`... abans que les normals). `benne:create` l'aplica cada vegada que
+(prova les etiquetes `<roba>IdleD`, `<roba>WalkL`... abans que les normals).
+A més, durant el primer mig segon d'una línia un clic no la salta (`SCRIPTED_SKIP_GUARD_MS` a
+`RoomScene.ts`): un doble clic o un clic de més no se'n menja cap sense llegir. `benne:create` l'aplica cada vegada que
 copia el motor.
 
 Per a la GUI: `switchProtagonist()` (botó de canviar entre l'Iri i la Vet), `sayHint()` (botó de
 pista) i `playEnding()`.
+
+L'**historial** (botó del menú o tecla H): `runtime/narrative.ts` apunta cada línia que es diu
+(`recordLine`) i `showHistory()` l'ensenya a la GUI `historial`, que crea el sync (`addHistoryGui`).
+El text es parteix amb les amplades de la font, i es llisca amb la roda o les fletxes.
 
 Els esdeveniments del nucli arriben com a esdeveniments de Benne `narrative:<tipus>` (per exemple,
 `events.on('narrative:questStarted', …)`).
