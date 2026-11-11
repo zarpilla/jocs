@@ -146,6 +146,66 @@ def aseprite_sheet(name, frames, tags, frame_w, frame_h, spans=None):
     }
 
 
+def packed_sheet(name, frames, tags, frame_w, frame_h, spans=None):
+    """
+    Com paste_grid + aseprite_sheet, però el full és molt més petit: cada fotograma es retalla a la part que té
+    píxels (`trimmed`, amb `spriteSourceSize`: Benne el torna a posar al seu lloc) i els fotogrames iguals (p. ex. els
+    buits de les pauses d'una animació) comparteixen el mateix tros del full. Sense això, a 640×360 els fulls de les
+    sales amb moltes animacions passaven de 8192 px, que moltes GPU no carreguen (el fons surt negre).
+    """
+    spans = spans or {}
+    uniques, index_of, ref = [], {}, []
+    for f in frames:
+        bbox = f.getchannel('A').getbbox() or (0, 0, 1, 1)
+        crop = f.crop(bbox)
+        key = (bbox, crop.tobytes())
+        if key not in index_of:
+            index_of[key] = len(uniques)
+            uniques.append((bbox, crop))
+        ref.append(index_of[key])
+    # Prestatges: dels més alts als més baixos, d'esquerra a dreta, fins a MAX_SHEET_W.
+    order = sorted(range(len(uniques)), key=lambda i: -uniques[i][1].height)
+    place, x, y, shelf_h, width = {}, 0, 0, 0, 0
+    for i in order:
+        cw, ch = uniques[i][1].size
+        if x + cw > MAX_SHEET_W:
+            x, y, shelf_h = 0, y + shelf_h, 0
+        place[i] = (x, y)
+        x += cw
+        shelf_h = max(shelf_h, ch)
+        width = max(width, x)
+    height = y + shelf_h
+    sheet = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    for i, (bbox, crop) in enumerate(uniques):
+        sheet.paste(crop, place[i])
+    ranges, i = [], 0
+    for tag in tags:
+        n = spans.get(tag, 1)
+        ranges.append((tag, i, i + n - 1))
+        i += n
+    out_frames = {}
+    for k, u in enumerate(ref):
+        (bx0, by0, bx1, by1), crop = uniques[u]
+        px, py = place[u]
+        out_frames[f'{name} {k}.aseprite'] = {
+            'frame': {'x': px, 'y': py, 'w': bx1 - bx0, 'h': by1 - by0},
+            'rotated': False, 'trimmed': (bx0, by0, bx1, by1) != (0, 0, frame_w, frame_h),
+            'spriteSourceSize': {'x': bx0, 'y': by0, 'w': bx1 - bx0, 'h': by1 - by0},
+            'sourceSize': {'w': frame_w, 'h': frame_h}, 'duration': 100,
+        }
+    meta = {
+        'frames': out_frames,
+        'meta': {
+            'app': 'https://www.aseprite.org/', 'version': 'provisional (draw_placeholders.py, retallat)',
+            'image': f'{name}.png', 'format': 'RGBA8888',
+            'size': {'w': width, 'h': height}, 'scale': '1',
+            'frameTags': [{'name': tag, 'from': a, 'to': b, 'direction': 'forward', 'color': '#000000ff'} for tag, a, b in ranges],
+            'layers': [], 'slices': [],
+        },
+    }
+    return sheet, meta
+
+
 def draw_room(dir_: Path, req, font, small):
     name = dir_.name
     w, h = req['width'], req['height']
@@ -274,9 +334,9 @@ def draw_designed(dir_: Path, game_dir: Path, design):
             elif p['id'] in f.get('props', ()):
                 p['zIndex'], p['baseline'] = z + 1, f['baseline']
 
-    sheet = paste_grid(frames, w, h)
+    sheet, meta = packed_sheet(name, frames, tags, w, h, spans)
     sheet.save(dir_ / f'{name}.png')
-    (dir_ / f'{name}.json').write_text(json.dumps(aseprite_sheet(name, len(frames), tags, w, h, spans), indent=2) + '\n')
+    (dir_ / f'{name}.json').write_text(json.dumps(meta, indent=2) + '\n')
     (dir_ / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
 
     # Geometria: el que es pot clicar ha de coincidir amb el que es veu.

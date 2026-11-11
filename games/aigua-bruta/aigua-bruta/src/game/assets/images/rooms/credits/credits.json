@@ -23,18 +23,18 @@
     },
     "credits 1.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 2560,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 83,
+        "h": 41
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 102,
+        "y": 204,
+        "w": 83,
+        "h": 41
       },
       "sourceSize": {
         "w": 640,
@@ -44,18 +44,18 @@
     },
     "credits 2.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 0,
         "w": 640,
-        "h": 360
+        "h": 156
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 204,
         "w": 640,
-        "h": 360
+        "h": 156
       },
       "sourceSize": {
         "w": 640,
@@ -65,18 +65,18 @@
     },
     "credits 3.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 1280,
         "y": 0,
         "w": 640,
-        "h": 360
+        "h": 156
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 204,
         "w": 640,
-        "h": 360
+        "h": 156
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "credits 4.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1920,
         "y": 0,
         "w": 640,
-        "h": 360
+        "h": 156
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 204,
         "w": 640,
-        "h": 360
+        "h": 156
       },
       "sourceSize": {
         "w": 640,
@@ -108,11 +108,11 @@
   },
   "meta": {
     "app": "https://www.aseprite.org/",
-    "version": "provisional (draw_placeholders.py)",
+    "version": "provisional (draw_placeholders.py, retallat)",
     "image": "credits.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3200,
+      "w": 2643,
       "h": 360
     },
     "scale": "1",

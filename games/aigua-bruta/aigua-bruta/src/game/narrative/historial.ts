@@ -1,3 +1,4 @@
+// GENERAT per adapters/benne/sync.ts. No l'editis aquí.
 /**
  * L'historial d'Aigua bruta: una pantalla sencera amb les línies dites, que es pot recórrer amb la
  * roda i les fletxes (GUI `historial`, la crea games/aigua-bruta/adapters/benne/joc.ts).

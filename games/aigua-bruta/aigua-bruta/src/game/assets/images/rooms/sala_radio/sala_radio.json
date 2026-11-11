@@ -23,18 +23,18 @@
     },
     "sala_radio 1.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1430,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 8,
+        "h": 38
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 477,
+        "y": 102,
+        "w": 8,
+        "h": 38
       },
       "sourceSize": {
         "w": 640,
@@ -46,16 +46,16 @@
       "frame": {
         "x": 1280,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 150,
+        "h": 129
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 440,
+        "y": 80,
+        "w": 150,
+        "h": 129
       },
       "sourceSize": {
         "w": 640,
@@ -65,7 +65,7 @@
     },
     "sala_radio 3.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 640,
         "y": 0,
         "w": 640,
         "h": 360
@@ -86,18 +86,18 @@
     },
     "sala_radio 4.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 1438,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 9,
+        "h": 38
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 476,
+        "y": 102,
+        "w": 9,
+        "h": 38
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "sala_radio 5.aseprite": {
       "frame": {
-        "x": 3200,
+        "x": 2348,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "sala_radio 6.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 2103,
+        "y": 0,
+        "w": 41,
+        "h": 13
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 13
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "sala_radio 7.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 2144,
+        "y": 0,
+        "w": 41,
+        "h": 13
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 13
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "sala_radio 8.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 1447,
+        "y": 0,
+        "w": 41,
+        "h": 34
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "sala_radio 9.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 1488,
+        "y": 0,
+        "w": 41,
+        "h": 34
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "sala_radio 10.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 1529,
+        "y": 0,
+        "w": 41,
+        "h": 34
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "sala_radio 11.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 2185,
+        "y": 0,
+        "w": 41,
+        "h": 13
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 13
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "sala_radio 12.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 1693,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "sala_radio 13.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 1734,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "sala_radio 14.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 1570,
+        "y": 0,
+        "w": 41,
+        "h": 34
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "sala_radio 15.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 1611,
+        "y": 0,
+        "w": 41,
+        "h": 34
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "sala_radio 16.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 1652,
+        "y": 0,
+        "w": 41,
+        "h": 34
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 118,
+        "w": 41,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "sala_radio 17.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 2348,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "sala_radio 18.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 2226,
+        "y": 0,
+        "w": 40,
+        "h": 12
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 40,
+        "h": 12
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "sala_radio 19.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 2266,
+        "y": 0,
+        "w": 41,
+        "h": 12
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 12
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "sala_radio 20.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 1775,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -443,18 +443,18 @@
     },
     "sala_radio 21.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 1816,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -464,18 +464,18 @@
     },
     "sala_radio 22.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 1857,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -485,18 +485,18 @@
     },
     "sala_radio 23.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 2307,
+        "y": 0,
+        "w": 41,
+        "h": 12
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 12
       },
       "sourceSize": {
         "w": 640,
@@ -506,18 +506,18 @@
     },
     "sala_radio 24.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 2021,
+        "y": 0,
+        "w": 41,
+        "h": 32
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 32
       },
       "sourceSize": {
         "w": 640,
@@ -527,18 +527,18 @@
     },
     "sala_radio 25.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 2062,
+        "y": 0,
+        "w": 41,
+        "h": 32
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 32
       },
       "sourceSize": {
         "w": 640,
@@ -548,18 +548,18 @@
     },
     "sala_radio 26.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 1898,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -569,18 +569,18 @@
     },
     "sala_radio 27.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 1939,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -590,18 +590,18 @@
     },
     "sala_radio 28.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 1980,
+        "y": 0,
+        "w": 41,
+        "h": 33
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 24,
+        "y": 119,
+        "w": 41,
+        "h": 33
       },
       "sourceSize": {
         "w": 640,
@@ -612,12 +612,12 @@
   },
   "meta": {
     "app": "https://www.aseprite.org/",
-    "version": "provisional (draw_placeholders.py)",
+    "version": "provisional (draw_placeholders.py, retallat)",
     "image": "sala_radio.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
-      "h": 1800
+      "w": 2349,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [

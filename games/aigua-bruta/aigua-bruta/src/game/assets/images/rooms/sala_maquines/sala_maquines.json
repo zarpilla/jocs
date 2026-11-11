@@ -23,18 +23,18 @@
     },
     "sala_maquines 1.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 3578,
+        "y": 360,
+        "w": 61,
+        "h": 9
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 285,
+        "y": 181,
+        "w": 61,
+        "h": 9
       },
       "sourceSize": {
         "w": 640,
@@ -44,18 +44,18 @@
     },
     "sala_maquines 2.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 3495,
+        "y": 360,
+        "w": 23,
+        "h": 18
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 447,
+        "y": 160,
+        "w": 23,
+        "h": 18
       },
       "sourceSize": {
         "w": 640,
@@ -65,7 +65,7 @@
     },
     "sala_maquines 3.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 640,
         "y": 0,
         "w": 640,
         "h": 360
@@ -86,18 +86,18 @@
     },
     "sala_maquines 4.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 3200,
+        "y": 360,
+        "w": 65,
+        "h": 42
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 126,
+        "y": 210,
+        "w": 65,
+        "h": 42
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "sala_maquines 5.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 3664,
+        "y": 360,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "sala_maquines 6.aseprite": {
       "frame": {
-        "x": 0,
+        "x": 3656,
         "y": 360,
-        "w": 640,
-        "h": 360
+        "w": 8,
+        "h": 7
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 544,
+        "y": 160,
+        "w": 8,
+        "h": 7
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "sala_maquines 7.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 3665,
         "y": 360,
-        "w": 640,
-        "h": 360
+        "w": 11,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 438,
+        "y": 77,
+        "w": 11,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "sala_maquines 8.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 1507,
+        "y": 0,
+        "w": 116,
+        "h": 92
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 441,
+        "y": 51,
+        "w": 116,
+        "h": 92
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "sala_maquines 9.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 3639,
         "y": 360,
-        "w": 640,
-        "h": 360
+        "w": 9,
+        "h": 9
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 439,
+        "y": 73,
+        "w": 9,
+        "h": 9
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "sala_maquines 10.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 1280,
+        "y": 0,
+        "w": 111,
+        "h": 94
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 446,
+        "y": 51,
+        "w": 111,
+        "h": 94
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "sala_maquines 11.aseprite": {
       "frame": {
-        "x": 3200,
+        "x": 3577,
         "y": 360,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 11
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 443,
+        "y": 72,
+        "w": 1,
+        "h": 11
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "sala_maquines 12.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 1623,
+        "y": 0,
+        "w": 119,
+        "h": 92
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 438,
+        "y": 51,
+        "w": 119,
+        "h": 92
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "sala_maquines 13.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 3648,
+        "y": 360,
+        "w": 8,
+        "h": 8
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 440,
+        "y": 74,
+        "w": 8,
+        "h": 8
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "sala_maquines 14.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 1391,
+        "y": 0,
+        "w": 116,
+        "h": 94
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 441,
+        "y": 51,
+        "w": 116,
+        "h": 94
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "sala_maquines 15.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 3676,
+        "y": 360,
+        "w": 7,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 498,
+        "y": 224,
+        "w": 7,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "sala_maquines 16.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 3265,
+        "y": 360,
+        "w": 58,
+        "h": 23
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 446,
+        "y": 213,
+        "w": 58,
+        "h": 23
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "sala_maquines 17.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 3323,
+        "y": 360,
+        "w": 56,
+        "h": 23
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 447,
+        "y": 213,
+        "w": 56,
+        "h": 23
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "sala_maquines 18.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 3518,
+        "y": 360,
+        "w": 59,
+        "h": 15
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 446,
+        "y": 213,
+        "w": 59,
+        "h": 15
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "sala_maquines 19.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 3379,
+        "y": 360,
+        "w": 58,
+        "h": 23
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 446,
+        "y": 213,
+        "w": 58,
+        "h": 23
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "sala_maquines 20.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 3437,
+        "y": 360,
+        "w": 58,
+        "h": 23
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 446,
+        "y": 213,
+        "w": 58,
+        "h": 23
       },
       "sourceSize": {
         "w": 640,
@@ -443,18 +443,18 @@
     },
     "sala_maquines 21.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1080,
-        "w": 640,
-        "h": 360
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
+        "x": 1742,
         "y": 0,
         "w": 640,
-        "h": 360
+        "h": 73
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 203,
+        "w": 640,
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -464,18 +464,18 @@
     },
     "sala_maquines 22.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 1080,
-        "w": 640,
-        "h": 360
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
+        "x": 2382,
         "y": 0,
         "w": 640,
-        "h": 360
+        "h": 73
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 203,
+        "w": 640,
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -485,18 +485,18 @@
     },
     "sala_maquines 23.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 1080,
-        "w": 640,
-        "h": 360
-      },
-      "rotated": false,
-      "trimmed": false,
-      "spriteSourceSize": {
-        "x": 0,
+        "x": 3022,
         "y": 0,
         "w": 640,
-        "h": 360
+        "h": 73
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 203,
+        "w": 640,
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -507,17 +507,17 @@
     "sala_maquines 24.aseprite": {
       "frame": {
         "x": 0,
-        "y": 1440,
+        "y": 360,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 203,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -528,17 +528,17 @@
     "sala_maquines 25.aseprite": {
       "frame": {
         "x": 640,
-        "y": 1440,
+        "y": 360,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 203,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -549,17 +549,17 @@
     "sala_maquines 26.aseprite": {
       "frame": {
         "x": 1280,
-        "y": 1440,
+        "y": 360,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 203,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -570,17 +570,17 @@
     "sala_maquines 27.aseprite": {
       "frame": {
         "x": 1920,
-        "y": 1440,
+        "y": 360,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 203,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -591,17 +591,17 @@
     "sala_maquines 28.aseprite": {
       "frame": {
         "x": 2560,
-        "y": 1440,
+        "y": 360,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 0,
+        "y": 203,
         "w": 640,
-        "h": 360
+        "h": 73
       },
       "sourceSize": {
         "w": 640,
@@ -612,12 +612,12 @@
   },
   "meta": {
     "app": "https://www.aseprite.org/",
-    "version": "provisional (draw_placeholders.py)",
+    "version": "provisional (draw_placeholders.py, retallat)",
     "image": "sala_maquines.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
-      "h": 1800
+      "w": 3683,
+      "h": 433
     },
     "scale": "1",
     "frameTags": [

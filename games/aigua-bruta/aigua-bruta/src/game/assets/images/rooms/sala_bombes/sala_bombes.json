@@ -23,18 +23,18 @@
     },
     "sala_bombes 1.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 825,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 49,
+        "h": 23
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 200,
+        "y": 232,
+        "w": 49,
+        "h": 23
       },
       "sourceSize": {
         "w": 640,
@@ -44,18 +44,18 @@
     },
     "sala_bombes 2.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 185,
+        "h": 77
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 272,
+        "y": 184,
+        "w": 185,
+        "h": 77
       },
       "sourceSize": {
         "w": 640,
@@ -65,18 +65,18 @@
     },
     "sala_bombes 3.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 935,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "sala_bombes 4.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 928,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 3,
+        "h": 2
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 184,
+        "y": 100,
+        "w": 3,
+        "h": 2
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "sala_bombes 5.aseprite": {
       "frame": {
-        "x": 3200,
+        "x": 935,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "sala_bombes 6.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "sala_bombes 7.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 875,
+        "y": 0,
+        "w": 4,
+        "h": 5
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 77,
+        "y": 98,
+        "w": 4,
+        "h": 5
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "sala_bombes 8.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 879,
+        "y": 0,
+        "w": 4,
+        "h": 5
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 184,
+        "y": 98,
+        "w": 4,
+        "h": 5
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "sala_bombes 9.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "sala_bombes 10.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "sala_bombes 11.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 360,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "sala_bombes 12.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "sala_bombes 13.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 936,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 133,
+        "y": 131,
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "sala_bombes 14.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 937,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 133,
+        "y": 131,
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "sala_bombes 15.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 931,
+        "y": 0,
+        "w": 2,
+        "h": 2
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 132,
+        "y": 131,
+        "w": 2,
+        "h": 2
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "sala_bombes 16.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 933,
+        "y": 0,
+        "w": 2,
+        "h": 2
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 132,
+        "y": 131,
+        "w": 2,
+        "h": 2
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "sala_bombes 17.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 720,
-        "w": 640,
-        "h": 360
+        "x": 893,
+        "y": 0,
+        "w": 2,
+        "h": 3
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 132,
+        "y": 131,
+        "w": 2,
+        "h": 3
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "sala_bombes 18.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 883,
+        "y": 0,
+        "w": 1,
+        "h": 4
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 133,
+        "y": 149,
+        "w": 1,
+        "h": 4
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "sala_bombes 19.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 874,
+        "y": 0,
+        "w": 1,
+        "h": 7
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 133,
+        "y": 180,
+        "w": 1,
+        "h": 7
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "sala_bombes 20.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 884,
+        "y": 0,
+        "w": 9,
+        "h": 4
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 129,
+        "y": 207,
+        "w": 9,
+        "h": 4
       },
       "sourceSize": {
         "w": 640,
@@ -443,18 +443,18 @@
     },
     "sala_bombes 21.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 895,
+        "y": 0,
+        "w": 7,
+        "h": 3
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 130,
+        "y": 210,
+        "w": 7,
+        "h": 3
       },
       "sourceSize": {
         "w": 640,
@@ -464,18 +464,18 @@
     },
     "sala_bombes 22.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 902,
+        "y": 0,
+        "w": 11,
+        "h": 3
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 128,
+        "y": 210,
+        "w": 11,
+        "h": 3
       },
       "sourceSize": {
         "w": 640,
@@ -485,18 +485,18 @@
     },
     "sala_bombes 23.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 1080,
-        "w": 640,
-        "h": 360
+        "x": 913,
+        "y": 0,
+        "w": 15,
+        "h": 3
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 640,
-        "h": 360
+        "x": 126,
+        "y": 210,
+        "w": 15,
+        "h": 3
       },
       "sourceSize": {
         "w": 640,
@@ -506,18 +506,18 @@
     },
     "sala_bombes 24.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -527,18 +527,18 @@
     },
     "sala_bombes 25.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -548,18 +548,18 @@
     },
     "sala_bombes 26.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -569,18 +569,18 @@
     },
     "sala_bombes 27.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -590,18 +590,18 @@
     },
     "sala_bombes 28.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 1440,
-        "w": 640,
-        "h": 360
+        "x": 935,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
         "w": 640,
@@ -612,12 +612,12 @@
   },
   "meta": {
     "app": "https://www.aseprite.org/",
-    "version": "provisional (draw_placeholders.py)",
+    "version": "provisional (draw_placeholders.py, retallat)",
     "image": "sala_bombes.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
-      "h": 1800
+      "w": 938,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [
