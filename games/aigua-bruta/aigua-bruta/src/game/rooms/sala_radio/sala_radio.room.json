@@ -211,6 +211,34 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "dia_mar",
+      "tag": "dia_mar",
+      "animations": {
+        "dia_mar": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
     }
   ],
   "characters": [

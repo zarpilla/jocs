@@ -7,13 +7,17 @@ La sala de ràdio, rere el pont: petita, blau grisós com el pont però amb un l
   - el panell de la paret per on baixa el cable de l'antena, amb els cargols de pintura saltada;
   - el rellotge de ràdio (amb els sectors de silenci), el prestatge dels llibres de registre i un ull de bou.
 Props: `dia` (Escenes 2 i 3, de dia), `panell_obert` (el panell sense la xapa, amb el cable de malla d'acer) i `cable` (el tram tallat).
+ANIMS: `mar` (de nit) i `dia_mar` (de dia, amb el decorat `dia_mar`, per sobre de `dia`): el mar pel vidre del pont, que
+es veu per la porta, i els pilots de la consola del pont. La ràdio no es mou: és morta fins que l'Iri l'arregla.
 """
+import functools
 import math
 
 from hd.pix import Canvas, Light, W, H, hr, mix
 from hd.rooms.arenga import CAB, ENG, DARK, WHITEP, REDP, YELL, BRASS, WARM, box, rrect, bolt, vpipe, hpipe, glow
-from hd.rooms.comu import text
-from hd.rooms.pont import (BRI, AMB, SCRG, WOOD, FLOOR_Y, wall, floor, door_frame, outside, _MODE)
+from hd.rooms.comu import _diff, text
+from hd.rooms.exterior import day_sky, day_sea
+from hd.rooms.pont import (BRI, AMB, SCRG, WOOD, FLOOR_Y, wall, floor, door_frame, outside, _MODE, HORIZON)
 
 LAMP = (226, 30)
 
@@ -51,6 +55,46 @@ def ceiling(cv):
     cv.disc(LAMP[0], LAMP[1] + 1, 7, 2, [(160, 120, 60), (250, 220, 150), (255, 246, 220)], 2.0, lit=0)
 
 
+# ─── Animació: fotograma actual (0 = el fons quiet) ────────────────────────
+ANIM_N = 12
+_ANIM = {'f': 0}
+SEA_FADE, SEA_STEP = 4, 0.32
+
+
+@functools.lru_cache(maxsize=None)
+def _day_view(f):
+    """El cel i el mar de dia per al fotograma f (com pont._day_outside, que és el f = 0). Perquè el bucle no
+    salti, els darrers SEA_FADE fotogrames es fonen (a quadres) amb el principi."""
+    def view(phase):
+        cv = Canvas()
+        day_sky(cv, 4, HORIZON - 1, seed=13)
+        day_sea(cv, HORIZON, H - 1, seed=6, phase=phase)
+        return cv.img
+    if f == 0:
+        return view(0.0)
+    a, b = view(f * SEA_STEP), view((f - ANIM_N) * SEA_STEP)
+    w = max(0, f - (ANIM_N - SEA_FADE)) / SEA_FADE
+    out = a.copy()
+    o, bp = out.load(), b.load()
+    for y in range(HORIZON, H):
+        for x in range(W):
+            if hr(x, y, 90) < w:
+                o[x, y] = bp[x, y]
+    return out
+
+
+def _outside(cv, x0, y0, x1, y1):
+    """Com pont.outside, però amb el mar del fotograma actual (_ANIM)."""
+    f = _ANIM['f']
+    if _MODE['dia']:
+        src, dst = _day_view(f).load(), cv.P
+        for y in range(max(0, y0), min(H - 1, y1) + 1):
+            for x in range(max(0, x0), min(W - 1, x1) + 1):
+                dst[x, y] = src[x, y]
+        return
+    outside(cv, x0, y0, x1, y1, t=f * 2 * math.pi / 0.8 / ANIM_N)   # les onades de pont.outside: sin(... + t * 0.8)
+
+
 # ─── La porta del pont, oberta ──────────────────────────────────────────────
 
 def door(cv):
@@ -59,14 +103,17 @@ def door(cv):
     for y in range(y0, y1):
         for x in range(x0, x1 + 1):
             cv.put(x, y, BRI, 1.8 - (y - y0) * 0.004, lit=0.3)
-    outside(cv, x0 + 6, y0 + 8, x1 - 4, y0 + 40)
+    _outside(cv, x0 + 6, y0 + 8, x1 - 4, y0 + 40)
     cv.rect(x0 + 4, y0 + 6, x1 - 2, y0 + 7, BRI, 3.0, lit=0.3)
     cv.rect(x0 + 4, y0 + 41, x1 - 2, y0 + 44, BRI, 3.0, lit=0.3)
     box(cv, x0, 110, x1, 150, ENG, 1.6, edge=False)                   # la consola, al fons
     cv.hline(x0, x1, 110, ENG, 3.0)
+    f = _ANIM['f']
     for x in range(x0 + 4, x1, 6):
-        if hr(x, 1) > 0.5:
+        if hr(x, 1) > 0.5 and not (x == x0 + 34 and f in (7, 8)):     # un pilot verd que fa un pampallugueig
             cv.flat(x, 113, (90, 240, 140))
+    if (f // 3) % 2:                                                   # el d'alarma de la sentina, ambre, a poc a poc
+        cv.flat(x0 + 16, 113, (240, 170, 60))
     cv.rect(x0 + 1, y1 - 5, x1 - 1, y1, BRI, 2.6)                      # el llindar alt
     cv.hline(x0 + 1, x1 - 1, y1 - 5, BRI, 4.0)
     door_frame(cv, x0, y0, x1, y1, BRI)
@@ -373,6 +420,26 @@ def dia(cv):
 
 
 PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': cable}
+
+
+# ─── Animacions ────────────────────────────────────────────────────────────
+
+def _frames(draw):
+    """Fotogrames: la sala sencera a cada fotograma, menys el fons quiet (només el que canvia)."""
+    def render(f):
+        _ANIM['f'] = f
+        try:
+            cv = Canvas(light=LIGHT)
+            draw(cv)
+            return cv.img
+        finally:
+            _ANIM['f'] = 0
+    base = render(0)
+    return [_diff(render(f), base) for f in range(ANIM_N)]
+
+
+ANIMS = {'mar': {'frames': lambda: _frames(bg), 'frameDuration': 260},
+         'dia_mar': {'frames': lambda: _frames(dia), 'frameDuration': 260}}
 
 
 # ─── Geometria ─────────────────────────────────────────────────────────────
