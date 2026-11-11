@@ -1,0 +1,297 @@
+{
+  "id": "coberta_proa",
+  "name": "Coberta de proa",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 166
+          },
+          {
+            "x": 140,
+            "y": 162
+          },
+          {
+            "x": 216,
+            "y": 162
+          },
+          {
+            "x": 440,
+            "y": 160
+          },
+          {
+            "x": 479,
+            "y": 166
+          },
+          {
+            "x": 479,
+            "y": 196
+          },
+          {
+            "x": 0,
+            "y": 196
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "popa",
+      "active": true,
+      "description": "cap a popa",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 24
+        },
+        {
+          "x": 28,
+          "y": 24
+        },
+        {
+          "x": 28,
+          "y": 168
+        },
+        {
+          "x": 0,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 12,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 14,
+        "y": 168
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 44,
+          "y": 66
+        },
+        {
+          "x": 90,
+          "y": 66
+        },
+        {
+          "x": 90,
+          "y": 152
+        },
+        {
+          "x": 44,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 67,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 67,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "escotilla",
+      "active": true,
+      "description": "escotilla de la caixa de cadenes",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 220,
+          "y": 160
+        },
+        {
+          "x": 284,
+          "y": 160
+        },
+        {
+          "x": 284,
+          "y": 188
+        },
+        {
+          "x": 220,
+          "y": 188
+        }
+      ],
+      "walkToPoint": {
+        "x": 252,
+        "y": 192
+      },
+      "lookAtPoint": {
+        "x": 252,
+        "y": 188
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "balsa",
+      "active": true,
+      "description": "balsa salvavides",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 312,
+          "y": 66
+        },
+        {
+          "x": 406,
+          "y": 66
+        },
+        {
+          "x": 406,
+          "y": 112
+        },
+        {
+          "x": 312,
+          "y": 112
+        }
+      ],
+      "walkToPoint": {
+        "x": 334,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 359,
+        "y": 112
+      }
+    },
+    {
+      "id": "molinet",
+      "active": true,
+      "description": "molinet de l'àncora",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 144,
+          "y": 108
+        },
+        {
+          "x": 210,
+          "y": 108
+        },
+        {
+          "x": 210,
+          "y": 160
+        },
+        {
+          "x": 144,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 178,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 177,
+        "y": 160
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "dia",
+      "tag": "dia",
+      "animations": {
+        "dia": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cadenat",
+      "tag": "cadenat",
+      "animations": {
+        "cadenat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 296,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 204,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "juana-1",
+      "definition": "juana/juana.character.json",
+      "x": 372,
+      "y": 168,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "capitana-veu",
+      "definition": "capitana/capitana.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

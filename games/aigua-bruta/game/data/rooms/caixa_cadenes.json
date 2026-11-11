@@ -1,0 +1,256 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.caixa_cadenes.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "juana",
+      "verb": "*",
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 6
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.caixa_cadenes.1"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.2"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.3"
+        },
+        {
+          "who": "vet",
+          "text": "sala.caixa_cadenes.4"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.5"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.caixa_cadenes.6"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.7"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.8"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.caixa_cadenes.9"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.10"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.11"
+        },
+        {
+          "who": "iri",
+          "text": "sala.caixa_cadenes.12"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.caixa_cadenes.13"
+        },
+        {
+          "who": "iri",
+          "text": "sala.caixa_cadenes.14"
+        },
+        {
+          "who": "juana",
+          "text": "sala.caixa_cadenes.15"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "juana_trobada"
+        },
+        {
+          "setFlag": "prova_pipa"
+        },
+        {
+          "setFlag": "juana_entrepa"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "escotilla": {
+      "name": "sala.caixa_cadenes.escotilla.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "juana_trobada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.caixa_cadenes.escotilla.1"
+            },
+            {
+              "who": "title",
+              "text": "esc.una"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "escena",
+              "value": 7
+            },
+            {
+              "takeItem": "cisalla",
+              "who": "iri"
+            },
+            {
+              "setFlag": "cisalla_fora",
+              "value": false
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "infermeria"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "sala_maquines"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "coberta_proa"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caixa_cadenes.escotilla.2"
+            }
+          ]
+        }
+      ]
+    },
+    "cadenes": {
+      "name": "sala.caixa_cadenes.cadenes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caixa_cadenes.cadenes.1"
+            }
+          ]
+        }
+      ]
+    },
+    "juana": {
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": 6
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "juana",
+              "text": "sala.caixa_cadenes.juana.1"
+            },
+            {
+              "who": "iri",
+              "text": "sala.caixa_cadenes.juana.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caixa_cadenes.juana.3"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "juana",
+              "text": "sala.caixa_cadenes.juana.4"
+            }
+          ]
+        }
+      ]
+    },
+    "manta": {
+      "name": "sala.caixa_cadenes.manta.nom",
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": 6
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caixa_cadenes.manta.1"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

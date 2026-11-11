@@ -7,6 +7,7 @@ motor i la història separada del motor.
 |---|---|
 | **Ferro-9**: l'Iri i la Vet, separades per 120 anys, es comuniquen amb la finestra de fase. | [games/ferro-9](games/ferro-9/README.md) |
 | **Suma Zero**: dues germanes de fet volen repartir tots els diners del món a parts iguals. | [games/suma-zero](games/suma-zero/README.md) |
+| **Aigua bruta**: a bord d'un vaixell d'una ONG, algú sabota les màquines perquè una mostra de fang no arribi a terra. | [games/aigua-bruta](games/aigua-bruta/README.md) |
 
 ## Què és compartit i què és de cada joc
 

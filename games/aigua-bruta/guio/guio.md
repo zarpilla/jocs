@@ -185,7 +185,7 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
 - Abans dels sabotatges, l'Arenga anava a **Galway** (Irlanda), a tres dies. Després de la vàlvula, la Capitana
   posa rumb a **Port Hallen** (Valmark): l'Arenga salpa del Punt 7 a les nou del matí i entra a aigües de Valmark
   a les set del matí de l'endemà, 22 hores després.
-- **Entre escenes, un títol diu quant falta** per entrar a aigües de Valmark: «Falten 22 hores», «Falten 18
+- **Entre escenes, un títol diu quant falta** per entrar a aigües de Valmark: «Falten 22 hores», «Falten 10
   hores», «Falten 6 hores». És un rellotge narratiu, no de joc: no es pot perdre per culpa seva.
 
 ### 6. El quadern
@@ -201,7 +201,7 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
 | Dia 1, 03:00 | Pròleg | |
 | Dia 1, 03:40 | 1. La vàlvula | |
 | Dia 1, 08:00 | 2. Les revisions (l'Arenga salpa a les 09:00) | **Falten 22 hores** (en salpar) |
-| Dia 1, 11:00 | 3. La ràdio | **Falten 18 hores. Acte 2** |
+| Dia 1, 11:00 | 3. La ràdio | **Falten 10 hores. Acte 2** (en acabar, a les 21:00) |
 | Dia 1, 15:10 | (la Juana desapareix: no es juga) | |
 | Dia 1, 21:00 | 4. El portàtil | |
 | Dia 1, 22:00 | 5. El parany | |
@@ -473,7 +473,7 @@ feta. Mira el panell, mira l'Iri.
 > BASTIDA: Sí. *(se'n va)* Massa bona.
 
 **Fi de l'Acte 1.** IRI: «La vàlvula, la ràdio... Ho ha fet algú de bord. Algú que té una cisalla mellada.» Títol:
-**Falten 18 hores. Acte 2 · Algú escolta.**
+**Falten 10 hores. Acte 2 · Algú escolta.**
 
 ---
 
@@ -817,7 +817,7 @@ Opcions (cada una, una vegada; cada una és un torn):
 | **El cafè:** «A la revisió em vas dir que el cafè de la infermeria era el pitjor del vaixell. Que algun dia me'n faries un de bo.» | −1 | «Algun dia.» |
 | **Les arengades:** «Em vas dir que de jove el mar en bullia. Al Punt 7 encara n'hi havia, Ernest. Fins que hi van tirar el fang.» (només si la Vet va parlar amb ell a coberta a l'Escena 2) | −1 | «...Encara n'hi havia.» |
 | **La mentida:** «Ja ho hem enviat. Això que fas no serveix de res.» | +1 | «Doncs per què has baixat?» (La Vet: «...Bona pregunta.») |
-| **Els diners:** «Quant pagaries tu, ara, per tornar a ser l'Ernest Bastida del temporal?» | −1 | Silenci llarg. |
+| **Els diners:** «Quant pagaries tu, ara, per tornar a ser l'Ernest Bastida del temporal?» | −2 | Silenci llarg. |
 
 Quan el dubte arriba a 0: en Bastida posa el relé ell mateix. [SO: generador_engega] Si `bastida_veritat`, a
 més: «Si cal declarar, declararé.» `aliat_bastida`.
@@ -1090,7 +1090,7 @@ quaranta-vuit hores sense parlar amb ningú, el filtre de l'aigua, el cafè que 
 | 13 | Comprar el metge per alliberar una llitera no tenia lògica si sense metge no es pot salpar. | El Ferran els coneixia a tots i hauria vist coses. Esperaven un substitut que no veiés res. |
 | 14 | La conspiració comença abans de la mostra, però la premissa deia «a partir d'aquella nit». | Skarn sabia que el Punt 7 era a la ruta i s'hi va preparar abans de salpar. |
 | 15 | En Bastida a Osca «tres dies després». | El bar és dues setmanes després. |
-| 16 | El diàleg final («No ho sé. I això és el pitjor.») deixava l'Iri dubtant si s'hauria venut. | Cap de les dues es ven: el que les fa felices no es compra. La Vet diu que sí a la campanya del març. |
+| 16 | El diàleg final («No ho sé. I això és el pitjor.») deixava l'Iri dubtant si s'hauria venut. | Cap de les dues es ven: el que les fa felices no es compra. La Vet diu que sí a la campanya de l'abril. |
 | 17 | Gairebé tot passava a dins (només el pròleg, la coberta de popa i el pal eren exteriors). | Esmorzar a coberta davant del Punt 7 de dia, la Juana llegint a proa, en Bastida fumant a la borda (les arengades passen aquí) i el final a la terrassa del port. |
 
 **Ecologia afegida:** el Punt 7 és un fondal d'arengada (pròleg, Escena 2), i a l'Escena 2 se'n veu la taca de dia; Skarn ven els «metalls de la transició

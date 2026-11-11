@@ -1,0 +1,271 @@
+{
+  "id": "rebost",
+  "name": "Rebost",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 170
+          },
+          {
+            "x": 474,
+            "y": 170
+          },
+          {
+            "x": 478,
+            "y": 196
+          },
+          {
+            "x": 2,
+            "y": 196
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sala de màquines",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 2,
+          "y": 46
+        },
+        {
+          "x": 60,
+          "y": 46
+        },
+        {
+          "x": 60,
+          "y": 152
+        },
+        {
+          "x": 2,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 34,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "registre",
+      "active": true,
+      "description": "registre del dipòsit 2",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 82,
+          "y": 160
+        },
+        {
+          "x": 164,
+          "y": 160
+        },
+        {
+          "x": 164,
+          "y": 190
+        },
+        {
+          "x": 82,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 176,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 123,
+        "y": 190
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "munta",
+      "active": true,
+      "description": "muntacàrregues",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 190,
+          "y": 42
+        },
+        {
+          "x": 268,
+          "y": 42
+        },
+        {
+          "x": 268,
+          "y": 94
+        },
+        {
+          "x": 190,
+          "y": 94
+        }
+      ],
+      "walkToPoint": {
+        "x": 222,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 229,
+        "y": 94
+      }
+    },
+    {
+      "id": "prestatges",
+      "active": true,
+      "description": "prestatges",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 284,
+          "y": 38
+        },
+        {
+          "x": 472,
+          "y": 38
+        },
+        {
+          "x": 472,
+          "y": 152
+        },
+        {
+          "x": 284,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 378,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 378,
+        "y": 152
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "safata",
+      "tag": "safata",
+      "animations": {
+        "safata": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 192,
+            "y": 95
+          },
+          {
+            "x": 250,
+            "y": 95
+          },
+          {
+            "x": 250,
+            "y": 110
+          },
+          {
+            "x": 192,
+            "y": 110
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 222,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 221,
+        "y": 110
+      },
+      "description": "safata del muntacàrregues"
+    },
+    {
+      "id": "rascades",
+      "tag": "rascades",
+      "animations": {
+        "rascades": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "registre_obert",
+      "tag": "registre_obert",
+      "animations": {
+        "registre_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 250,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 320,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "id": "juana",
+  "displayName": "juana",
+  "options": [
+    {
+      "id": "menu__valvula",
+      "scriptName": "menu__valvula",
+      "text": "Aquesta nit algú ha obert una vàlvula. Ens volen portar a Port Hallen.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__revisio",
+      "scriptName": "menu__revisio",
+      "text": "Revisió mèdica. Cinc minuts.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res. Continua descansant.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

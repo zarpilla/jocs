@@ -1,0 +1,72 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.proleg_punt7.nom",
+  "cutscene": {
+    "skipTo": "camarot_iri"
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "proleg.1"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.2"
+        },
+        {
+          "who": "juana",
+          "text": "proleg.3"
+        },
+        {
+          "who": "bastida",
+          "text": "proleg.4"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.5"
+        },
+        {
+          "who": "juana",
+          "text": "proleg.6"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.7"
+        },
+        {
+          "who": "juana",
+          "text": "proleg.8"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.9"
+        },
+        {
+          "who": "juana",
+          "text": "proleg.10"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.11"
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.12"
+        },
+        {
+          "who": "title",
+          "text": "joc.titol"
+        },
+        {
+          "who": "title",
+          "text": "acte.1"
+        }
+      ],
+      "goTo": "camarot_iri"
+    }
+  ],
+  "hotspots": {}
+}

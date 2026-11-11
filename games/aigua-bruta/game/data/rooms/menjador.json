@@ -1,0 +1,620 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.menjador.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta_passadis": {
+      "name": "sala.menjador.porta_passadis.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "passadis"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.porta_passadis.1"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_cuina": {
+      "name": "sala.menjador.porta_cuina.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 5
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.porta_cuina.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.porta_cuina.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "cuina"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.porta_cuina.3"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_popa": {
+      "name": "sala.menjador.porta_popa.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.porta_popa.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "any": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  }
+                ]
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.nit"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "coberta_popa"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.porta_popa.2"
+            }
+          ]
+        }
+      ]
+    },
+    "passaplats": {
+      "name": "sala.menjador.passaplats.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.passaplats.1"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "tub_de_veu"
+          },
+          "effects": [
+            {
+              "setFlag": "cara_a_cara",
+              "value": false
+            }
+          ],
+          "dialogue": "tub"
+        }
+      ]
+    },
+    "poster": {
+      "name": "sala.menjador.poster.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.poster.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.menjador.poster.2"
+            }
+          ]
+        }
+      ]
+    },
+    "taula": {
+      "name": "sala.menjador.taula.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "talkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "reunio_comencada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.taula.1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reunio_comencada"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "menjador"
+              }
+            }
+          ],
+          "dialogue": "reunio"
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
+          },
+          "dialogue": "reunio"
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.taula.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.menjador.taula.3"
+            }
+          ]
+        }
+      ]
+    },
+    "capitana": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 8
+          },
+          {
+            "flag": "reunio_comencada"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.espera"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "capitana"
+        }
+      ]
+    },
+    "bastida": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 8
+          },
+          {
+            "flag": "reunio_comencada"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.espera"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "bastida"
+        }
+      ]
+    },
+    "marcel": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 8
+          },
+          {
+            "flag": "reunio_comencada"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.espera"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "marcel"
+        }
+      ]
+    },
+    "tomas": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 8
+          },
+          {
+            "flag": "reunio_comencada"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.espera"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "tomas"
+        }
+      ]
+    },
+    "juana": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 8
+          },
+          {
+            "flag": "reunio_comencada"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.espera"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "juana"
+        }
+      ]
+    },
+    "nadia": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 4
+          },
+          {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "aliada_nadia"
+              }
+            ]
+          },
+          {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 8
+                  },
+                  {
+                    "flag": "reunio_comencada"
+                  }
+                ]
+              },
+              {
+                "flag": "aliada_nadia"
+              }
+            ]
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.espera"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "nadia"
+        }
+      ]
+    }
+  },
+  "decor": {
+    "ulls_dia": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    }
+  }
+}

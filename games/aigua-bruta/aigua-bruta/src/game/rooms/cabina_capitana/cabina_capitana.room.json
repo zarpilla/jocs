@@ -1,0 +1,229 @@
+{
+  "id": "cabina_capitana",
+  "name": "Cabina de la Capitana",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 12,
+            "y": 168
+          },
+          {
+            "x": 468,
+            "y": 168
+          },
+          {
+            "x": 476,
+            "y": 198
+          },
+          {
+            "x": 4,
+            "y": 198
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 4,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 152
+        },
+        {
+          "x": 4,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 36,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 32,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "contracte",
+      "active": true,
+      "description": "contracte",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 192,
+          "y": 99
+        },
+        {
+          "x": 234,
+          "y": 99
+        },
+        {
+          "x": 234,
+          "y": 114
+        },
+        {
+          "x": 192,
+          "y": 114
+        }
+      ],
+      "walkToPoint": {
+        "x": 214,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 213,
+        "y": 114
+      }
+    },
+    {
+      "id": "novella",
+      "active": true,
+      "description": "novel·la",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 246,
+          "y": 100
+        },
+        {
+          "x": 272,
+          "y": 100
+        },
+        {
+          "x": 272,
+          "y": 115
+        },
+        {
+          "x": 246,
+          "y": 115
+        }
+      ],
+      "walkToPoint": {
+        "x": 260,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 259,
+        "y": 115
+      }
+    },
+    {
+      "id": "carta",
+      "active": true,
+      "description": "carta nàutica",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 326,
+          "y": 32
+        },
+        {
+          "x": 456,
+          "y": 32
+        },
+        {
+          "x": 456,
+          "y": 104
+        },
+        {
+          "x": 326,
+          "y": 104
+        }
+      ],
+      "walkToPoint": {
+        "x": 390,
+        "y": 180
+      },
+      "lookAtPoint": {
+        "x": 391,
+        "y": 104
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "ulls_dia",
+      "tag": "ulls_dia",
+      "animations": {
+        "ulls_dia": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 150,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 200,
+      "y": 196,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "capitana-1",
+      "definition": "capitana/capitana.character.json",
+      "x": 330,
+      "y": 184,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

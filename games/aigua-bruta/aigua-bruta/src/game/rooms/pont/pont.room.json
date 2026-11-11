@@ -1,0 +1,558 @@
+{
+  "id": "pont",
+  "name": "Pont",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 10,
+            "y": 164
+          },
+          {
+            "x": 470,
+            "y": 164
+          },
+          {
+            "x": 476,
+            "y": 200
+          },
+          {
+            "x": 4,
+            "y": 200
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "escala",
+      "active": true,
+      "description": "escala",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 64
+        },
+        {
+          "x": 52,
+          "y": 64
+        },
+        {
+          "x": 52,
+          "y": 150
+        },
+        {
+          "x": 8,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 32,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 30,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_radio",
+      "active": true,
+      "description": "sala de ràdio",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 64,
+          "y": 62
+        },
+        {
+          "x": 108,
+          "y": 62
+        },
+        {
+          "x": 108,
+          "y": 150
+        },
+        {
+          "x": 64,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 86,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 86,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "escala_pal",
+      "active": true,
+      "description": "escala del pal",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 440,
+          "y": 58
+        },
+        {
+          "x": 478,
+          "y": 58
+        },
+        {
+          "x": 478,
+          "y": 150
+        },
+        {
+          "x": 440,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 462,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 459,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "terminal",
+      "active": true,
+      "description": "terminal de satèl·lit",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 252,
+          "y": 76
+        },
+        {
+          "x": 300,
+          "y": 76
+        },
+        {
+          "x": 300,
+          "y": 126
+        },
+        {
+          "x": 252,
+          "y": 126
+        }
+      ],
+      "walkToPoint": {
+        "x": 276,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 276,
+        "y": 126
+      }
+    },
+    {
+      "id": "impressora",
+      "active": true,
+      "description": "impressora",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 306,
+          "y": 82
+        },
+        {
+          "x": 348,
+          "y": 82
+        },
+        {
+          "x": 348,
+          "y": 106
+        },
+        {
+          "x": 306,
+          "y": 106
+        }
+      ],
+      "walkToPoint": {
+        "x": 326,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 327,
+        "y": 106
+      }
+    },
+    {
+      "id": "munta",
+      "active": true,
+      "description": "muntacàrregues",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 372,
+          "y": 60
+        },
+        {
+          "x": 414,
+          "y": 60
+        },
+        {
+          "x": 414,
+          "y": 110
+        },
+        {
+          "x": 372,
+          "y": 110
+        }
+      ],
+      "walkToPoint": {
+        "x": 392,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 393,
+        "y": 110
+      }
+    },
+    {
+      "id": "boca",
+      "active": true,
+      "description": "boca del tub de veu",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 418,
+          "y": 78
+        },
+        {
+          "x": 434,
+          "y": 78
+        },
+        {
+          "x": 434,
+          "y": 104
+        },
+        {
+          "x": 418,
+          "y": 104
+        }
+      ],
+      "walkToPoint": {
+        "x": 424,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 426,
+        "y": 104
+      }
+    },
+    {
+      "id": "timo",
+      "active": true,
+      "description": "timó",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 186,
+          "y": 104
+        },
+        {
+          "x": 218,
+          "y": 104
+        },
+        {
+          "x": 218,
+          "y": 156
+        },
+        {
+          "x": 186,
+          "y": 156
+        }
+      ],
+      "walkToPoint": {
+        "x": 204,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 202,
+        "y": 156
+      }
+    },
+    {
+      "id": "vidre",
+      "active": true,
+      "description": "vidre",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 118,
+          "y": 24
+        },
+        {
+          "x": 362,
+          "y": 24
+        },
+        {
+          "x": 362,
+          "y": 96
+        },
+        {
+          "x": 118,
+          "y": 96
+        }
+      ],
+      "walkToPoint": {
+        "x": 250,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 240,
+        "y": 96
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "safata",
+      "tag": "safata",
+      "animations": {
+        "safata": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 376,
+            "y": 96
+          },
+          {
+            "x": 410,
+            "y": 96
+          },
+          {
+            "x": 410,
+            "y": 107
+          },
+          {
+            "x": 376,
+            "y": 107
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 392,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 393,
+        "y": 107
+      },
+      "description": "safata del muntacàrregues"
+    },
+    {
+      "id": "guardacostes",
+      "tag": "guardacostes",
+      "animations": {
+        "guardacostes": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "fosc",
+      "tag": "fosc",
+      "animations": {
+        "fosc": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "radar",
+      "tag": "radar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "radar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "terminal",
+      "tag": "terminal",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "terminal": {
+          "loop": true,
+          "frameDuration": 530
+        }
+      },
+      "scriptName": "terminalAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 252,
+            "y": 76
+          },
+          {
+            "x": 300,
+            "y": 76
+          },
+          {
+            "x": 300,
+            "y": 126
+          },
+          {
+            "x": 252,
+            "y": 126
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 276,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 276,
+        "y": 126
+      },
+      "description": "terminal de satèl·lit"
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
+    },
+    {
+      "id": "dia",
+      "tag": "dia",
+      "animations": {
+        "dia": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 300,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 150,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "capitana-1",
+      "definition": "capitana/capitana.character.json",
+      "x": 236,
+      "y": 184,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "nadia-veu",
+      "definition": "nadia/nadia.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "bastida-veu",
+      "definition": "bastida/bastida.character.json",
+      "x": 95,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "juana-veu",
+      "definition": "juana/juana.character.json",
+      "x": 136,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

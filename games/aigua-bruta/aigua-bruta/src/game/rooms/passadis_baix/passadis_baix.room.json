@@ -1,0 +1,244 @@
+{
+  "id": "passadis_baix",
+  "name": "Passadís de baix",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 164
+          },
+          {
+            "x": 474,
+            "y": 164
+          },
+          {
+            "x": 478,
+            "y": 197
+          },
+          {
+            "x": 2,
+            "y": 197
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_camarot",
+      "active": true,
+      "description": "camarot de l'Iri",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 18,
+          "y": 58
+        },
+        {
+          "x": 72,
+          "y": 58
+        },
+        {
+          "x": 72,
+          "y": 152
+        },
+        {
+          "x": 18,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 45,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 45,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_maquines",
+      "active": true,
+      "description": "sala de màquines",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 106,
+          "y": 46
+        },
+        {
+          "x": 174,
+          "y": 46
+        },
+        {
+          "x": 174,
+          "y": 152
+        },
+        {
+          "x": 106,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 140,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 140,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_pallol",
+      "active": true,
+      "description": "pallol",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 208,
+          "y": 48
+        },
+        {
+          "x": 262,
+          "y": 48
+        },
+        {
+          "x": 262,
+          "y": 152
+        },
+        {
+          "x": 208,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 235,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 235,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "escotilla",
+      "active": true,
+      "description": "escotilla de la sala de bombes",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 290,
+          "y": 164
+        },
+        {
+          "x": 370,
+          "y": 164
+        },
+        {
+          "x": 370,
+          "y": 189
+        },
+        {
+          "x": 290,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 330,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 330,
+        "y": 189
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "escala",
+      "active": true,
+      "description": "escala",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 392,
+          "y": 0
+        },
+        {
+          "x": 479,
+          "y": 0
+        },
+        {
+          "x": 479,
+          "y": 152
+        },
+        {
+          "x": 392,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 410,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 435,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 240,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 400,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

@@ -1,0 +1,190 @@
+{
+  "id": "diposit2",
+  "name": "Dipòsit 2",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 10,
+            "y": 170
+          },
+          {
+            "x": 470,
+            "y": 170
+          },
+          {
+            "x": 476,
+            "y": 196
+          },
+          {
+            "x": 4,
+            "y": 196
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "registre",
+      "active": true,
+      "description": "registre",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 196,
+          "y": 0
+        },
+        {
+          "x": 248,
+          "y": 0
+        },
+        {
+          "x": 248,
+          "y": 158
+        },
+        {
+          "x": 196,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 222,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 222,
+        "y": 158
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "filtre",
+      "active": true,
+      "description": "carcassa del filtre",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 310,
+          "y": 86
+        },
+        {
+          "x": 364,
+          "y": 86
+        },
+        {
+          "x": 364,
+          "y": 160
+        },
+        {
+          "x": 310,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 336,
+        "y": 178
+      },
+      "lookAtPoint": {
+        "x": 337,
+        "y": 160
+      }
+    },
+    {
+      "id": "cartell",
+      "active": true,
+      "description": "cartell",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 58,
+          "y": 72
+        },
+        {
+          "x": 148,
+          "y": 72
+        },
+        {
+          "x": 148,
+          "y": 106
+        },
+        {
+          "x": 58,
+          "y": 106
+        }
+      ],
+      "walkToPoint": {
+        "x": 104,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 103,
+        "y": 106
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 196,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 256,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

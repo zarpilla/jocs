@@ -1,0 +1,1387 @@
+{
+  "$schema": "../schemas/endings.schema.json",
+  "final_primera": {
+    "title": "final.final_primera.titol",
+    "text": "final.text",
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.1",
+        "room": "final_galway"
+      },
+      {
+        "who": "narrator",
+        "text": "final.2"
+      },
+      {
+        "who": "iri",
+        "text": "final.3"
+      },
+      {
+        "who": "vet",
+        "text": "final.4"
+      },
+      {
+        "who": "iri",
+        "text": "final.5"
+      },
+      {
+        "who": "vet",
+        "text": "final.6"
+      },
+      {
+        "who": "tele",
+        "text": "final.7",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.8",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.9",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.10",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.11",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.12",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.13",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.14",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.15",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.16",
+        "if": {
+          "all": [
+            {
+              "all": [
+                {
+                  "flag": "aliada_nadia"
+                },
+                {
+                  "var": "aliats",
+                  "op": ">=",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "flag": "aliada_capitana"
+            }
+          ]
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.17"
+      },
+      {
+        "who": "vet",
+        "text": "final.18"
+      },
+      {
+        "who": "narrator",
+        "text": "final.19"
+      },
+      {
+        "who": "vet",
+        "text": "final.20"
+      },
+      {
+        "who": "iri",
+        "text": "final.21"
+      },
+      {
+        "who": "nadia",
+        "text": "final.22",
+        "if": {
+          "flag": "aliada_nadia"
+        }
+      },
+      {
+        "who": "capitana",
+        "text": "final.23",
+        "if": {
+          "flag": "aliada_capitana"
+        }
+      },
+      {
+        "who": "marcel",
+        "text": "final.24",
+        "if": {
+          "flag": "aliat_marcel"
+        }
+      },
+      {
+        "who": "tomas",
+        "text": "final.25",
+        "if": {
+          "flag": "tomas_content"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.26",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.27",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.28",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.29",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.30",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.31",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.32",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.33",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.34",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.35",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.36",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.37"
+      },
+      {
+        "who": "vet",
+        "text": "final.38"
+      },
+      {
+        "who": "iri",
+        "text": "final.39"
+      },
+      {
+        "who": "narrator",
+        "text": "final.40"
+      },
+      {
+        "who": "iri",
+        "text": "final.41"
+      },
+      {
+        "who": "vet",
+        "text": "final.42"
+      },
+      {
+        "who": "iri",
+        "text": "final.43"
+      },
+      {
+        "who": "vet",
+        "text": "final.44"
+      },
+      {
+        "who": "narrator",
+        "text": "final.45"
+      },
+      {
+        "who": "vet",
+        "text": "final.46"
+      },
+      {
+        "who": "iri",
+        "text": "final.47"
+      },
+      {
+        "who": "narrator",
+        "text": "final.48"
+      },
+      {
+        "who": "iri",
+        "text": "final.49"
+      },
+      {
+        "who": "vet",
+        "text": "final.50"
+      },
+      {
+        "who": "vet",
+        "text": "final.51"
+      },
+      {
+        "who": "narrator",
+        "text": "final.52",
+        "sound": "mossegada",
+        "effects": [
+          {
+            "setFlag": "tele_apagada"
+          }
+        ]
+      },
+      {
+        "who": "iri",
+        "text": "final.53"
+      },
+      {
+        "who": "vet",
+        "text": "final.54"
+      },
+      {
+        "who": "narrator",
+        "text": "final.55"
+      }
+    ],
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.56"
+      },
+      {
+        "who": "narrator",
+        "text": "final.57"
+      },
+      {
+        "who": "narrator",
+        "text": "final.58",
+        "room": "postcredits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.59"
+      },
+      {
+        "who": "narrator",
+        "text": "final.60"
+      },
+      {
+        "who": "narrator",
+        "text": "final.61"
+      }
+    ],
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "flag": "enviat"
+        },
+        {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "final_testimonis": {
+    "title": "final.final_testimonis.titol",
+    "text": "final.text",
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.1",
+        "room": "final_galway"
+      },
+      {
+        "who": "narrator",
+        "text": "final.2"
+      },
+      {
+        "who": "iri",
+        "text": "final.3"
+      },
+      {
+        "who": "vet",
+        "text": "final.4"
+      },
+      {
+        "who": "iri",
+        "text": "final.5"
+      },
+      {
+        "who": "vet",
+        "text": "final.6"
+      },
+      {
+        "who": "tele",
+        "text": "final.7",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.8",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.9",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.10",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.11",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.12",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.13",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.14",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.15",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.16",
+        "if": {
+          "all": [
+            {
+              "all": [
+                {
+                  "flag": "aliada_nadia"
+                },
+                {
+                  "var": "aliats",
+                  "op": ">=",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "flag": "aliada_capitana"
+            }
+          ]
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.17"
+      },
+      {
+        "who": "vet",
+        "text": "final.18"
+      },
+      {
+        "who": "narrator",
+        "text": "final.19"
+      },
+      {
+        "who": "vet",
+        "text": "final.20"
+      },
+      {
+        "who": "iri",
+        "text": "final.21"
+      },
+      {
+        "who": "nadia",
+        "text": "final.22",
+        "if": {
+          "flag": "aliada_nadia"
+        }
+      },
+      {
+        "who": "capitana",
+        "text": "final.23",
+        "if": {
+          "flag": "aliada_capitana"
+        }
+      },
+      {
+        "who": "marcel",
+        "text": "final.24",
+        "if": {
+          "flag": "aliat_marcel"
+        }
+      },
+      {
+        "who": "tomas",
+        "text": "final.25",
+        "if": {
+          "flag": "tomas_content"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.26",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.27",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.28",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.29",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.30",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.31",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.32",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.33",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.34",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.35",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.36",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.37"
+      },
+      {
+        "who": "vet",
+        "text": "final.38"
+      },
+      {
+        "who": "iri",
+        "text": "final.39"
+      },
+      {
+        "who": "narrator",
+        "text": "final.40"
+      },
+      {
+        "who": "iri",
+        "text": "final.41"
+      },
+      {
+        "who": "vet",
+        "text": "final.42"
+      },
+      {
+        "who": "iri",
+        "text": "final.43"
+      },
+      {
+        "who": "vet",
+        "text": "final.44"
+      },
+      {
+        "who": "narrator",
+        "text": "final.45"
+      },
+      {
+        "who": "vet",
+        "text": "final.46"
+      },
+      {
+        "who": "iri",
+        "text": "final.47"
+      },
+      {
+        "who": "narrator",
+        "text": "final.48"
+      },
+      {
+        "who": "iri",
+        "text": "final.49"
+      },
+      {
+        "who": "vet",
+        "text": "final.50"
+      },
+      {
+        "who": "vet",
+        "text": "final.51"
+      },
+      {
+        "who": "narrator",
+        "text": "final.52",
+        "sound": "mossegada",
+        "effects": [
+          {
+            "setFlag": "tele_apagada"
+          }
+        ]
+      },
+      {
+        "who": "iri",
+        "text": "final.53"
+      },
+      {
+        "who": "vet",
+        "text": "final.54"
+      },
+      {
+        "who": "narrator",
+        "text": "final.55"
+      }
+    ],
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.56"
+      },
+      {
+        "who": "narrator",
+        "text": "final.57"
+      },
+      {
+        "who": "narrator",
+        "text": "final.58",
+        "room": "postcredits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.59"
+      },
+      {
+        "who": "narrator",
+        "text": "final.60"
+      },
+      {
+        "who": "narrator",
+        "text": "final.61"
+      }
+    ],
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "flag": "enviat"
+        },
+        {
+          "var": "aliats",
+          "op": ">=",
+          "value": 1
+        }
+      ]
+    }
+  },
+  "final_pagina4": {
+    "title": "final.final_pagina4.titol",
+    "text": "final.text",
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.1",
+        "room": "final_galway"
+      },
+      {
+        "who": "narrator",
+        "text": "final.2"
+      },
+      {
+        "who": "iri",
+        "text": "final.3"
+      },
+      {
+        "who": "vet",
+        "text": "final.4"
+      },
+      {
+        "who": "iri",
+        "text": "final.5"
+      },
+      {
+        "who": "vet",
+        "text": "final.6"
+      },
+      {
+        "who": "tele",
+        "text": "final.7",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.8",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.9",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.10",
+        "if": {
+          "not": {
+            "all": [
+              {
+                "flag": "aliada_nadia"
+              },
+              {
+                "var": "aliats",
+                "op": ">=",
+                "value": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.11",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.12",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "tele",
+        "text": "final.13",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.14",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.15",
+        "if": {
+          "all": [
+            {
+              "flag": "aliada_nadia"
+            },
+            {
+              "var": "aliats",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.16",
+        "if": {
+          "all": [
+            {
+              "all": [
+                {
+                  "flag": "aliada_nadia"
+                },
+                {
+                  "var": "aliats",
+                  "op": ">=",
+                  "value": 3
+                }
+              ]
+            },
+            {
+              "flag": "aliada_capitana"
+            }
+          ]
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.17"
+      },
+      {
+        "who": "vet",
+        "text": "final.18"
+      },
+      {
+        "who": "narrator",
+        "text": "final.19"
+      },
+      {
+        "who": "vet",
+        "text": "final.20"
+      },
+      {
+        "who": "iri",
+        "text": "final.21"
+      },
+      {
+        "who": "nadia",
+        "text": "final.22",
+        "if": {
+          "flag": "aliada_nadia"
+        }
+      },
+      {
+        "who": "capitana",
+        "text": "final.23",
+        "if": {
+          "flag": "aliada_capitana"
+        }
+      },
+      {
+        "who": "marcel",
+        "text": "final.24",
+        "if": {
+          "flag": "aliat_marcel"
+        }
+      },
+      {
+        "who": "tomas",
+        "text": "final.25",
+        "if": {
+          "flag": "tomas_content"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.26",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.27",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.28",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.29",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.30",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.31",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.32",
+        "if": {
+          "flag": "aliat_bastida"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.33",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.34",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.35",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.36",
+        "if": {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.37"
+      },
+      {
+        "who": "vet",
+        "text": "final.38"
+      },
+      {
+        "who": "iri",
+        "text": "final.39"
+      },
+      {
+        "who": "narrator",
+        "text": "final.40"
+      },
+      {
+        "who": "iri",
+        "text": "final.41"
+      },
+      {
+        "who": "vet",
+        "text": "final.42"
+      },
+      {
+        "who": "iri",
+        "text": "final.43"
+      },
+      {
+        "who": "vet",
+        "text": "final.44"
+      },
+      {
+        "who": "narrator",
+        "text": "final.45"
+      },
+      {
+        "who": "vet",
+        "text": "final.46"
+      },
+      {
+        "who": "iri",
+        "text": "final.47"
+      },
+      {
+        "who": "narrator",
+        "text": "final.48"
+      },
+      {
+        "who": "iri",
+        "text": "final.49"
+      },
+      {
+        "who": "vet",
+        "text": "final.50"
+      },
+      {
+        "who": "vet",
+        "text": "final.51"
+      },
+      {
+        "who": "narrator",
+        "text": "final.52",
+        "sound": "mossegada",
+        "effects": [
+          {
+            "setFlag": "tele_apagada"
+          }
+        ]
+      },
+      {
+        "who": "iri",
+        "text": "final.53"
+      },
+      {
+        "who": "vet",
+        "text": "final.54"
+      },
+      {
+        "who": "narrator",
+        "text": "final.55"
+      }
+    ],
+    "credits": [
+      {
+        "who": "title",
+        "text": "joc.titol",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.56"
+      },
+      {
+        "who": "narrator",
+        "text": "final.57"
+      },
+      {
+        "who": "narrator",
+        "text": "final.58",
+        "room": "postcredits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.59"
+      },
+      {
+        "who": "narrator",
+        "text": "final.60"
+      },
+      {
+        "who": "narrator",
+        "text": "final.61"
+      }
+    ],
+    "priority": 1,
+    "when": {
+      "flag": "enviat"
+    }
+  }
+}

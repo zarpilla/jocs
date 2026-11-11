@@ -1,0 +1,55 @@
+{
+  "id": "tomas",
+  "displayName": "tomas",
+  "options": [
+    {
+      "id": "revisio__juana",
+      "scriptName": "revisio__juana",
+      "text": "Has vist la Juana?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio__clau",
+      "scriptName": "revisio__clau",
+      "text": "Alguna cosa més? Al·lèrgies, manies, secrets?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio__nit",
+      "scriptName": "revisio__nit",
+      "text": "Has dormit, aquesta nit?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio__fi",
+      "scriptName": "revisio__fi",
+      "text": "Ja està. Pots tornar al pa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc7__clau7",
+      "scriptName": "esc7__clau7",
+      "text": "Tomàs. La clau del dipòsit 2. Algú la té?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc7__entrepa7",
+      "scriptName": "esc7__entrepa7",
+      "text": "L'entrepà se'l va menjar la Juana. Diu que ha estat el millor dia de la campanya.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc7__adeu",
+      "scriptName": "esc7__adeu",
+      "text": "Res. Fins després.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

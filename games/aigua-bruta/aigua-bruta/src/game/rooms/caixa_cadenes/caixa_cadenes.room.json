@@ -1,0 +1,198 @@
+{
+  "id": "caixa_cadenes",
+  "name": "Caixa de cadenes",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 188,
+            "y": 164
+          },
+          {
+            "x": 402,
+            "y": 164
+          },
+          {
+            "x": 418,
+            "y": 197
+          },
+          {
+            "x": 164,
+            "y": 197
+          },
+          {
+            "x": 182,
+            "y": 184
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "escotilla",
+      "active": true,
+      "description": "escotilla",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 204,
+          "y": 0
+        },
+        {
+          "x": 276,
+          "y": 0
+        },
+        {
+          "x": 276,
+          "y": 150
+        },
+        {
+          "x": 204,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 240,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 240,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cadenes",
+      "active": true,
+      "description": "cadenes",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 48,
+          "y": 0
+        },
+        {
+          "x": 186,
+          "y": 0
+        },
+        {
+          "x": 186,
+          "y": 182
+        },
+        {
+          "x": 48,
+          "y": 182
+        }
+      ],
+      "walkToPoint": {
+        "x": 196,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 117,
+        "y": 182
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "manta",
+      "tag": "manta",
+      "animations": {
+        "manta": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 260,
+            "y": 168
+          },
+          {
+            "x": 356,
+            "y": 168
+          },
+          {
+            "x": 356,
+            "y": 190
+          },
+          {
+            "x": 260,
+            "y": 190
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 250,
+        "y": 192
+      },
+      "lookAtPoint": {
+        "x": 308,
+        "y": 190
+      },
+      "description": "manta"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 232,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 196,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "juana-1",
+      "definition": "juana/juana.character.json",
+      "x": 302,
+      "y": 182,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

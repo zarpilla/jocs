@@ -1,0 +1,165 @@
+{
+  "id": "final_galway",
+  "name": "Galway",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 100,
+            "y": 186
+          },
+          {
+            "x": 380,
+            "y": 186
+          },
+          {
+            "x": 380,
+            "y": 200
+          },
+          {
+            "x": 100,
+            "y": 200
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "tele_apagada",
+      "tag": "tele_apagada",
+      "animations": {
+        "tele_apagada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "tele",
+      "tag": "tele",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "tele": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 182
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 124,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 360,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 318,
+      "y": 146,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "nadia-1",
+      "definition": "nadia/nadia.character.json",
+      "x": 218,
+      "y": 170,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "capitana-1",
+      "definition": "capitana/capitana.character.json",
+      "x": 176,
+      "y": 170,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 262,
+      "y": 170,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "tomas-1",
+      "definition": "tomas/tomas.character.json",
+      "x": 304,
+      "y": 170,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

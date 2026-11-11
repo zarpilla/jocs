@@ -1,0 +1,644 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.cuina.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "fosc",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "protagonist": "vet"
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          }
+        ]
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.cuina.1"
+        }
+      ]
+    },
+    {
+      "id": "torn",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "protagonist": "vet"
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 5
+          }
+        ]
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.cuina.2"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.cuina.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 5
+              },
+              {
+                "flag": "nadia_decidida",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.porta.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "menjador"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.porta.2"
+            }
+          ]
+        }
+      ]
+    },
+    "munta": {
+      "name": "sala.cuina.munta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.munta.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.cuina.munta.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.munta.3"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "action": {
+            "name": "munta.enviar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "var": "munta_cuina",
+            "op": "==",
+            "value": "nota_iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.nota1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.nota2"
+            },
+            {
+              "who": "player",
+              "text": "sala.cuina.nota3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.nota4"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "munta_cuina",
+              "value": ""
+            },
+            {
+              "setFlag": "nota_llegida"
+            }
+          ],
+          "action": {
+            "name": "munta.nota",
+            "args": {
+              "item": "nota_vet",
+              "parada": "rebost"
+            }
+          }
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "action": {
+            "name": "munta.recollir"
+          }
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.munta.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.munta.5"
+            }
+          ]
+        }
+      ]
+    },
+    "safata": {
+      "name": "sala.cuina.safata.nom",
+      "visibleIf": {
+        "var": "munta_cuina",
+        "op": "!=",
+        "value": ""
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.safata.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "var": "munta_cuina",
+            "op": "==",
+            "value": "nota_iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.nota1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.nota2"
+            },
+            {
+              "who": "player",
+              "text": "sala.cuina.nota3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.nota4"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "munta_cuina",
+              "value": ""
+            },
+            {
+              "setFlag": "nota_llegida"
+            }
+          ],
+          "action": {
+            "name": "munta.nota",
+            "args": {
+              "item": "nota_vet",
+              "parada": "rebost"
+            }
+          }
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "action": {
+            "name": "munta.recollir"
+          }
+        }
+      ]
+    },
+    "boca": {
+      "name": "sala.cuina.boca.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tub_de_veu",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.boca.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.boca.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "tub_de_veu",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.boca.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "effects": [
+            {
+              "setFlag": "cara_a_cara",
+              "value": false
+            }
+          ],
+          "dialogue": "tub"
+        }
+      ]
+    },
+    "cambra_freda": {
+      "name": "sala.cuina.cambra_freda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.cambra_freda.1"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "any": [
+              {
+                "var": "escena",
+                "op": ">",
+                "value": 5
+              },
+              {
+                "flag": "nota_llegida"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.cambra_freda.2"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.cambra_freda.3"
+            }
+          ]
+        }
+      ]
+    },
+    "armari": {
+      "name": "sala.cuina.armari.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 5
+              },
+              {
+                "flag": "mentida_dita"
+              },
+              {
+                "flag": "vet_amagada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.cuina.armari.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.armari.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cuina.armari.3"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cuina.armari.4"
+            },
+            {
+              "who": "nadia",
+              "text": "sala.cuina.armari.5"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cuina.armari.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_amagada"
+            }
+          ],
+          "dialogue": "nadia"
+        },
+        {
+          "verb": [
+            "open",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 5
+              },
+              {
+                "flag": "nota_llegida"
+              },
+              {
+                "flag": "nadia_decidida",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.armari.7"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.armari.8"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.armari.9"
+            }
+          ]
+        }
+      ]
+    },
+    "forn": {
+      "name": "sala.cuina.forn.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 6
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.forn.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cuina.forn.2"
+            }
+          ]
+        }
+      ]
+    },
+    "tomas": {
+      "visibleIf": {
+        "any": [
+          {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 2
+              },
+              {
+                "var": "pacient",
+                "op": "!=",
+                "value": "tomas"
+              }
+            ]
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 6
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 7
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "tomas"
+        }
+      ]
+    },
+    "nadia": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 5
+          },
+          {
+            "flag": "vet_amagada"
+          },
+          {
+            "flag": "nadia_decidida",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "nadia"
+        }
+      ]
+    }
+  },
+  "decor": {
+    "armari_obert": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 5
+          },
+          {
+            "flag": "vet_amagada"
+          },
+          {
+            "flag": "nadia_decidida",
+            "is": false
+          }
+        ]
+      }
+    },
+    "ulls_dia": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "id": "paperets",
+  "displayName": "paperets",
+  "options": [
+    {
+      "id": "proposta__flam",
+      "scriptName": "proposta__flam",
+      "text": "«La Mostra 7 és dins un flam, a la cambra freda.»",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "proposta__ernest",
+      "scriptName": "proposta__ernest",
+      "text": "«Ho va dir l'Ernest: a la cambra freda estaria més segura.»",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "proposta__postres",
+      "scriptName": "proposta__postres",
+      "text": "«La Juana va deixar la mostra a la cambra freda de la cuina, darrere les postres. Diu que allà sempre hi fa fred.»",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "proposta__adeu",
+      "scriptName": "proposta__adeu",
+      "text": "(Pensar-hi una mica més)",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

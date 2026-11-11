@@ -1,0 +1,69 @@
+{
+  "id": "marcel",
+  "displayName": "marcel",
+  "options": [
+    {
+      "id": "revisio__valvula",
+      "scriptName": "revisio__valvula",
+      "text": "Qui ha obert la vàlvula, aquesta nit?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio__nit",
+      "scriptName": "revisio__nit",
+      "text": "Què feies a les tres de la matinada?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio__fi",
+      "scriptName": "revisio__fi",
+      "text": "Ja està. Pots marxar.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc6__gat",
+      "scriptName": "esc6__gat",
+      "text": "Aquest gat...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc6__gat_vet",
+      "scriptName": "esc6__gat_vet",
+      "text": "I aquest gat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc6__adeu",
+      "scriptName": "esc6__adeu",
+      "text": "Res. Bona nit.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "secret__guardar",
+      "scriptName": "secret__guardar",
+      "text": "No ho sabrà ningú. Ni que eres a màquines, ni el gat.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "secret__veritat",
+      "scriptName": "secret__veritat",
+      "text": "Hauries d'haver dit la veritat. Ara tothom sospita de tu.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "secret__capitana",
+      "scriptName": "secret__capitana",
+      "text": "Ho diré jo a la Capitana. El gat i tot.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

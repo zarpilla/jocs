@@ -1,0 +1,364 @@
+{
+  "id": "laboratori",
+  "name": "Laboratori",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 12,
+            "y": 168
+          },
+          {
+            "x": 468,
+            "y": 168
+          },
+          {
+            "x": 476,
+            "y": 198
+          },
+          {
+            "x": 4,
+            "y": 198
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 4,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 50
+        },
+        {
+          "x": 60,
+          "y": 152
+        },
+        {
+          "x": 4,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 36,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 32,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "llibre",
+      "active": true,
+      "description": "llibre de peixos",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 138,
+          "y": 98
+        },
+        {
+          "x": 178,
+          "y": 98
+        },
+        {
+          "x": 178,
+          "y": 113
+        },
+        {
+          "x": 138,
+          "y": 113
+        }
+      ],
+      "walkToPoint": {
+        "x": 158,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 158,
+        "y": 113
+      }
+    },
+    {
+      "id": "nevera",
+      "active": true,
+      "description": "nevera de mostres",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 362,
+          "y": 52
+        },
+        {
+          "x": 440,
+          "y": 52
+        },
+        {
+          "x": 440,
+          "y": 158
+        },
+        {
+          "x": 362,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 400,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 401,
+        "y": 158
+      }
+    },
+    {
+      "id": "taulell",
+      "active": true,
+      "description": "taulell",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 104,
+          "y": 114
+        },
+        {
+          "x": 344,
+          "y": 114
+        },
+        {
+          "x": 344,
+          "y": 160
+        },
+        {
+          "x": 104,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 290,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 224,
+        "y": 160
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "portatil",
+      "tag": "portatil",
+      "animations": {
+        "portatil": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 196,
+            "y": 83
+          },
+          {
+            "x": 240,
+            "y": 83
+          },
+          {
+            "x": 240,
+            "y": 113
+          },
+          {
+            "x": 196,
+            "y": 113
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 218,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 218,
+        "y": 113
+      },
+      "description": "portàtil"
+    },
+    {
+      "id": "nota",
+      "tag": "nota",
+      "animations": {
+        "nota": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 241,
+            "y": 98
+          },
+          {
+            "x": 257,
+            "y": 98
+          },
+          {
+            "x": 257,
+            "y": 113
+          },
+          {
+            "x": 241,
+            "y": 113
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 248,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 249,
+        "y": 113
+      },
+      "description": "nota"
+    },
+    {
+      "id": "remenat",
+      "tag": "remenat",
+      "animations": {
+        "remenat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "nevera",
+      "tag": "nevera",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "nevera": {
+          "loop": true,
+          "frameDuration": 900
+        }
+      },
+      "scriptName": "neveraAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 362,
+            "y": 52
+          },
+          {
+            "x": 440,
+            "y": 52
+          },
+          {
+            "x": 440,
+            "y": 158
+          },
+          {
+            "x": 362,
+            "y": 158
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 400,
+        "y": 182
+      },
+      "lookAtPoint": {
+        "x": 401,
+        "y": 158
+      },
+      "description": "nevera de mostres"
+    },
+    {
+      "id": "ulls_dia",
+      "tag": "ulls_dia",
+      "animations": {
+        "ulls_dia": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 230,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 300,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "juana-1",
+      "definition": "juana/juana.character.json",
+      "x": 176,
+      "y": 180,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.pallol.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.pallol.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "passadis_baix"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.porta.1"
+            }
+          ]
+        }
+      ]
+    },
+    "prestatges": {
+      "name": "sala.pallol.prestatges.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.prestatges.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.prestatges.2"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              },
+              {
+                "flag": "sync_radio"
+              },
+              {
+                "hasItem": "cable_nou",
+                "who": "iri",
+                "is": false
+              },
+              {
+                "var": "empalmat",
+                "op": "<",
+                "value": 2
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.prestatges.3"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cable_nou"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              },
+              {
+                "hasItem": "cable_nou",
+                "who": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.prestatges.4"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.prestatges.5"
+            }
+          ]
+        }
+      ]
+    },
+    "inventari": {
+      "name": "sala.pallol.inventari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": ">=",
+            "value": 4
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.inventari.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.pallol.inventari.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cadenat_falta"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.inventari.3"
+            }
+          ]
+        }
+      ]
+    },
+    "marcel": {
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": 6
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.marcel.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pallol.marcel.2"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "marcel"
+        }
+      ]
+    },
+    "diu": {
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": 6
+      },
+      "interactions": []
+    }
+  },
+  "decor": {
+    "cadenat_sise": {
+      "visibleIf": {
+        "var": "escena",
+        "op": "<",
+        "value": 4
+      }
+    }
+  }
+}

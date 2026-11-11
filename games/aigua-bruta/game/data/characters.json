@@ -1,0 +1,288 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "iri": {
+    "name": "pj.iri.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.iri.look"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "if": {
+          "protagonist": "vet"
+        },
+        "action": {
+          "name": "donar",
+          "args": {
+            "item": "$item"
+          }
+        }
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "effects": [
+          {
+            "setFlag": "cara_a_cara"
+          }
+        ],
+        "dialogue": "tub"
+      }
+    ]
+  },
+  "vet": {
+    "name": "pj.vet.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.vet.look"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "if": {
+          "protagonist": "iri"
+        },
+        "action": {
+          "name": "donar",
+          "args": {
+            "item": "$item"
+          }
+        }
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "iri"
+        },
+        "effects": [
+          {
+            "setFlag": "cara_a_cara"
+          }
+        ],
+        "dialogue": "tub"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "flag": "enviat"
+        },
+        "name": "SenseBata"
+      }
+    ]
+  },
+  "diu": {
+    "name": "pj.diu.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.diu.look_vet"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.diu.look"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.diu.parla"
+          },
+          {
+            "who": "diu",
+            "text": "pj.diu.miol"
+          }
+        ]
+      },
+      {
+        "verb": "pickUp",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.diu.agafa"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.diu.dona"
+          }
+        ]
+      }
+    ]
+  },
+  "bastida": {
+    "name": "pj.bastida.nom",
+    "outfit": [
+      {
+        "if": {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        "name": "Pijama"
+      }
+    ],
+    "appearance": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            },
+            {
+              "inRoom": "sala_maquines"
+            }
+          ]
+        },
+        "anim": "Seu"
+      },
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 3
+            },
+            {
+              "inRoom": "infermeria"
+            }
+          ]
+        },
+        "anim": "Seu"
+      }
+    ]
+  },
+  "marcel": {
+    "name": "pj.marcel.nom",
+    "appearance": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 6
+            },
+            {
+              "inRoom": "pallol"
+            }
+          ]
+        },
+        "anim": "Seu"
+      }
+    ]
+  },
+  "juana": {
+    "name": "pj.juana.nom",
+    "appearance": [
+      {
+        "if": {
+          "any": [
+            {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 2
+                },
+                {
+                  "inRoom": "coberta_proa"
+                }
+              ]
+            },
+            {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 6
+                },
+                {
+                  "inRoom": "caixa_cadenes"
+                }
+              ]
+            },
+            {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 7
+                },
+                {
+                  "inRoom": "infermeria"
+                }
+              ]
+            }
+          ]
+        },
+        "anim": "Seu"
+      }
+    ]
+  },
+  "capitana": {
+    "name": "pj.capitana.nom"
+  },
+  "nadia": {
+    "name": "pj.nadia.nom"
+  },
+  "tomas": {
+    "name": "pj.tomas.nom"
+  },
+  "lind": {
+    "name": "pj.lind.nom"
+  },
+  "rut": {
+    "name": "pj.rut.nom"
+  },
+  "tele": {
+    "name": "pj.tele.nom"
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "id": "pal",
+  "name": "Pal",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 178,
+            "y": 164
+          },
+          {
+            "x": 470,
+            "y": 164
+          },
+          {
+            "x": 476,
+            "y": 198
+          },
+          {
+            "x": 168,
+            "y": 198
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "escala",
+      "active": true,
+      "description": "escala",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 388,
+          "y": 138
+        },
+        {
+          "x": 452,
+          "y": 138
+        },
+        {
+          "x": 452,
+          "y": 192
+        },
+        {
+          "x": 388,
+          "y": 192
+        }
+      ],
+      "walkToPoint": {
+        "x": 420,
+        "y": 192
+      },
+      "lookAtPoint": {
+        "x": 420,
+        "y": 192
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "antena",
+      "active": true,
+      "description": "antena",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 205,
+          "y": 60
+        },
+        {
+          "x": 267,
+          "y": 60
+        },
+        {
+          "x": 267,
+          "y": 150
+        },
+        {
+          "x": 205,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 236,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 236,
+        "y": 150
+      }
+    },
+    {
+      "id": "mar",
+      "active": true,
+      "description": "mar",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 2,
+          "y": 96
+        },
+        {
+          "x": 150,
+          "y": 96
+        },
+        {
+          "x": 150,
+          "y": 192
+        },
+        {
+          "x": 2,
+          "y": 192
+        }
+      ],
+      "walkToPoint": {
+        "x": 182,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 76,
+        "y": 192
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "vent",
+      "tag": "vent",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "vent": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      },
+      "scriptName": "marAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 2,
+            "y": 96
+          },
+          {
+            "x": 150,
+            "y": 96
+          },
+          {
+            "x": 150,
+            "y": 192
+          },
+          {
+            "x": 2,
+            "y": 192
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 182,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 76,
+        "y": 192
+      },
+      "description": "mar"
+    },
+    {
+      "id": "fosc",
+      "tag": "fosc",
+      "animations": {
+        "fosc": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 262,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 300,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 339,
+      "y": 166,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

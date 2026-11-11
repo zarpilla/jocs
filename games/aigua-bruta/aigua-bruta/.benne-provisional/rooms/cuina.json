@@ -1,0 +1,77 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "Cuina",
+  "era": "iri",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "menjador",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "munta",
+      "label": "muntacàrregues",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 72,
+      "y": 57
+    },
+    {
+      "id": "safata",
+      "label": "safata del muntacàrregues",
+      "kind": "prop",
+      "w": 49,
+      "h": 33,
+      "x": 130,
+      "y": 19
+    },
+    {
+      "id": "boca",
+      "label": "boca del tub de veu",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 187,
+      "y": 57
+    },
+    {
+      "id": "cambra_freda",
+      "label": "cambra freda",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 244,
+      "y": 19
+    },
+    {
+      "id": "armari",
+      "label": "armari de les olles",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 302,
+      "y": 57
+    },
+    {
+      "id": "forn",
+      "label": "forn",
+      "kind": "hotspot",
+      "w": 49,
+      "h": 33,
+      "x": 359,
+      "y": 19
+    }
+  ],
+  "characters": [
+    "Tomàs",
+    "Nadia Vidal"
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "id": "camarot_iri",
+  "name": "Camarot de l'Iri",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 8,
+            "y": 166
+          },
+          {
+            "x": 472,
+            "y": 166
+          },
+          {
+            "x": 476,
+            "y": 196
+          },
+          {
+            "x": 4,
+            "y": 196
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 404,
+          "y": 56
+        },
+        {
+          "x": 458,
+          "y": 56
+        },
+        {
+          "x": 458,
+          "y": 152
+        },
+        {
+          "x": 404,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 432,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 431,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "carregador",
+      "active": true,
+      "description": "carregador",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 174,
+          "y": 110
+        },
+        {
+          "x": 206,
+          "y": 110
+        },
+        {
+          "x": 206,
+          "y": 136
+        },
+        {
+          "x": 174,
+          "y": 136
+        }
+      ],
+      "walkToPoint": {
+        "x": 192,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 190,
+        "y": 136
+      }
+    },
+    {
+      "id": "llitera",
+      "active": true,
+      "description": "llitera",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 14,
+          "y": 106
+        },
+        {
+          "x": 172,
+          "y": 106
+        },
+        {
+          "x": 172,
+          "y": 158
+        },
+        {
+          "x": 14,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 110,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 93,
+        "y": 158
+      }
+    },
+    {
+      "id": "motxilla",
+      "active": true,
+      "description": "motxilla",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 220,
+          "y": 120
+        },
+        {
+          "x": 266,
+          "y": 120
+        },
+        {
+          "x": 266,
+          "y": 160
+        },
+        {
+          "x": 220,
+          "y": 160
+        }
+      ],
+      "walkToPoint": {
+        "x": 244,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 243,
+        "y": 160
+      }
+    },
+    {
+      "id": "ull_de_bou",
+      "active": true,
+      "description": "ull de bou",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 288,
+          "y": 48
+        },
+        {
+          "x": 332,
+          "y": 48
+        },
+        {
+          "x": 332,
+          "y": 92
+        },
+        {
+          "x": 288,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 310,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 310,
+        "y": 92
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "ulls_dia",
+      "tag": "ulls_dia",
+      "animations": {
+        "ulls_dia": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 300,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 360,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

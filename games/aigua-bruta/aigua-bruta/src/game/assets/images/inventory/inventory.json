@@ -1,0 +1,411 @@
+{
+  "frames": {
+    "inventory 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 1.aseprite": {
+      "frame": {
+        "x": 49,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 2.aseprite": {
+      "frame": {
+        "x": 98,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 3.aseprite": {
+      "frame": {
+        "x": 147,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 4.aseprite": {
+      "frame": {
+        "x": 196,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 5.aseprite": {
+      "frame": {
+        "x": 245,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 6.aseprite": {
+      "frame": {
+        "x": 294,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 7.aseprite": {
+      "frame": {
+        "x": 343,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 8.aseprite": {
+      "frame": {
+        "x": 392,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 9.aseprite": {
+      "frame": {
+        "x": 441,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 10.aseprite": {
+      "frame": {
+        "x": 490,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 11.aseprite": {
+      "frame": {
+        "x": 539,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 12.aseprite": {
+      "frame": {
+        "x": 588,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    },
+    "inventory 13.aseprite": {
+      "frame": {
+        "x": 637,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 49,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 49,
+        "h": 27
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py)",
+    "image": "inventory.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 686,
+      "h": 27
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "walkie",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "quadern",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "llibreta",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "cisalla",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "travesser",
+        "from": 4,
+        "to": 4,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tram",
+        "from": 5,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "cable_nou",
+        "from": 6,
+        "to": 6,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "usb",
+        "from": 7,
+        "to": 7,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_iri",
+        "from": 8,
+        "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "nota_vet",
+        "from": 9,
+        "to": 9,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "clau_tomas",
+        "from": 10,
+        "to": 10,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "clau_tubs",
+        "from": 11,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mostra7",
+        "from": 12,
+        "to": 12,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "registre",
+        "from": 13,
+        "to": 13,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

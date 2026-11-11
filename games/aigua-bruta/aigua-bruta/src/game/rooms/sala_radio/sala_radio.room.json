@@ -1,0 +1,259 @@
+{
+  "id": "sala_radio",
+  "name": "Sala de ràdio",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 10,
+            "y": 164
+          },
+          {
+            "x": 470,
+            "y": 164
+          },
+          {
+            "x": 476,
+            "y": 200
+          },
+          {
+            "x": 4,
+            "y": 200
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "pont",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 4,
+          "y": 62
+        },
+        {
+          "x": 54,
+          "y": 62
+        },
+        {
+          "x": 54,
+          "y": 150
+        },
+        {
+          "x": 4,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 34,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 29,
+        "y": 150
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "radio",
+      "active": true,
+      "description": "ràdio de llarg abast",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 150,
+          "y": 58
+        },
+        {
+          "x": 314,
+          "y": 58
+        },
+        {
+          "x": 314,
+          "y": 108
+        },
+        {
+          "x": 150,
+          "y": 108
+        }
+      ],
+      "walkToPoint": {
+        "x": 226,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 232,
+        "y": 108
+      }
+    },
+    {
+      "id": "panell",
+      "active": true,
+      "description": "panell",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 328,
+          "y": 58
+        },
+        {
+          "x": 392,
+          "y": 58
+        },
+        {
+          "x": 392,
+          "y": 122
+        },
+        {
+          "x": 328,
+          "y": 122
+        }
+      ],
+      "walkToPoint": {
+        "x": 318,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 122
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "cable",
+      "tag": "cable",
+      "animations": {
+        "cable": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 344,
+            "y": 74
+          },
+          {
+            "x": 376,
+            "y": 74
+          },
+          {
+            "x": 376,
+            "y": 106
+          },
+          {
+            "x": 344,
+            "y": 106
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 318,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 360,
+        "y": 106
+      },
+      "description": "cable tallat"
+    },
+    {
+      "id": "panell_obert",
+      "tag": "panell_obert",
+      "animations": {
+        "panell_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "dia",
+      "tag": "dia",
+      "animations": {
+        "dia": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 318,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 200,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bastida-1",
+      "definition": "bastida/bastida.character.json",
+      "x": 34,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "rut-veu",
+      "definition": "rut/rut.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

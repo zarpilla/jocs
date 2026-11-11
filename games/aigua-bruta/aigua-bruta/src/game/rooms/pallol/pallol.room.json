@@ -1,0 +1,223 @@
+{
+  "id": "pallol",
+  "name": "Pallol",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 164
+          },
+          {
+            "x": 250,
+            "y": 164
+          },
+          {
+            "x": 252,
+            "y": 176
+          },
+          {
+            "x": 330,
+            "y": 176
+          },
+          {
+            "x": 332,
+            "y": 164
+          },
+          {
+            "x": 474,
+            "y": 164
+          },
+          {
+            "x": 478,
+            "y": 197
+          },
+          {
+            "x": 2,
+            "y": 197
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 6,
+          "y": 62
+        },
+        {
+          "x": 56,
+          "y": 62
+        },
+        {
+          "x": 56,
+          "y": 152
+        },
+        {
+          "x": 6,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 34,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "prestatges",
+      "active": true,
+      "description": "prestatges",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 76,
+          "y": 32
+        },
+        {
+          "x": 264,
+          "y": 32
+        },
+        {
+          "x": 264,
+          "y": 154
+        },
+        {
+          "x": 76,
+          "y": 154
+        }
+      ],
+      "walkToPoint": {
+        "x": 170,
+        "y": 170
+      },
+      "lookAtPoint": {
+        "x": 170,
+        "y": 154
+      }
+    },
+    {
+      "id": "inventari",
+      "active": true,
+      "description": "inventari",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 14,
+          "y": 34
+        },
+        {
+          "x": 50,
+          "y": 34
+        },
+        {
+          "x": 50,
+          "y": 62
+        },
+        {
+          "x": 14,
+          "y": 62
+        }
+      ],
+      "walkToPoint": {
+        "x": 40,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 32,
+        "y": 62
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "cadenat_sise",
+      "tag": "cadenat_sise",
+      "animations": {
+        "cadenat_sise": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 200,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 150,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 400,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 379,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

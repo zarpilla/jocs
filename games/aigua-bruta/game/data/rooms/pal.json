@@ -1,0 +1,296 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.pal.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "marcel",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 9
+          },
+          {
+            "protagonist": "iri"
+          },
+          {
+            "flag": "aliat_marcel"
+          }
+        ]
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.pal.1"
+        },
+        {
+          "who": "marcel",
+          "text": "sala.pal.2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "antena_desbloquejada"
+        },
+        {
+          "setFlag": "iri_al_pal"
+        }
+      ]
+    },
+    {
+      "id": "pujada",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 9
+          },
+          {
+            "protagonist": "iri"
+          },
+          {
+            "flag": "iri_al_pal",
+            "is": false
+          }
+        ]
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.pal.3"
+        },
+        {
+          "who": "player",
+          "text": "sala.pal.4"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "iri_al_pal"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "escala": {
+      "name": "sala.pal.escala.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "pont"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.escala.1"
+            }
+          ]
+        }
+      ]
+    },
+    "antena": {
+      "name": "sala.pal.antena.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "antena_desbloquejada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "antena_ok",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull",
+            "push"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull",
+            "push"
+          ],
+          "if": {
+            "flag": "antena_desbloquejada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.5",
+              "sound": "clau_tubs"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "antena_desbloquejada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull",
+            "push"
+          ],
+          "if": {
+            "flag": "antena_ok",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.6",
+              "sound": "antena"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "antena_ok"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.antena.7"
+            }
+          ]
+        }
+      ]
+    },
+    "marcel": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 9
+          },
+          {
+            "flag": "aliat_marcel"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.marcel.1"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.marcel.2"
+            },
+            {
+              "who": "marcel",
+              "text": "sala.pal.marcel.3"
+            }
+          ]
+        }
+      ]
+    },
+    "mar": {
+      "name": "sala.pal.mar.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pal.mar.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.pal.mar.2"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "fosc": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 9
+          },
+          {
+            "flag": "rele_posat",
+            "is": false
+          }
+        ]
+      }
+    }
+  }
+}

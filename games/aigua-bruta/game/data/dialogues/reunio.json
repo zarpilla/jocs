@@ -1,0 +1,772 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "reunio",
+  "with": "bastida",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "reunio",
+          "node": "inici"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "inici"
+    }
+  ],
+  "nodes": {
+    "inici": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.inici.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.inici.2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.inici.3"
+        }
+      ],
+      "goto": "qui"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.torna.1"
+        }
+      ],
+      "goto": "qui"
+    },
+    "qui": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.qui.1"
+        }
+      ],
+      "choices": [
+        {
+          "id": "bastida",
+          "text": "dlg.reunio.opt.bastida",
+          "next": "bastida"
+        },
+        {
+          "id": "marcel",
+          "text": "dlg.reunio.opt.marcel",
+          "next": "marcel"
+        },
+        {
+          "id": "nadia",
+          "text": "dlg.reunio.opt.nadia",
+          "if": {
+            "flag": "aliada_nadia"
+          },
+          "next": "nadia"
+        },
+        {
+          "id": "tomas",
+          "text": "dlg.reunio.opt.tomas",
+          "next": "tomas"
+        },
+        {
+          "id": "capitana",
+          "text": "dlg.reunio.opt.capitana",
+          "next": "capitana"
+        },
+        {
+          "id": "pensar",
+          "text": "dlg.reunio.opt.pensar",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "marcel": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.reunio.marcel.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.marcel.2",
+          "if": {
+            "flag": "aliat_marcel"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.marcel.3"
+        }
+      ],
+      "goto": "qui"
+    },
+    "nadia": {
+      "lines": [
+        {
+          "who": "nadia",
+          "text": "dlg.reunio.nadia.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.nadia.2"
+        }
+      ],
+      "goto": "qui"
+    },
+    "tomas": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.reunio.tomas.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.tomas.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.tomas.3"
+        }
+      ],
+      "goto": "qui"
+    },
+    "capitana": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.reunio.capitana.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.capitana.2"
+        }
+      ],
+      "goto": "qui"
+    },
+    "bastida": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.bastida.1"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.bastida.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.bastida.3"
+        }
+      ],
+      "goto": "proves"
+    },
+    "proves": {
+      "choices": [
+        {
+          "id": "cisalla",
+          "text": "dlg.reunio.opt.cisalla",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_cisalla"
+              },
+              {
+                "flag": "prova_osca"
+              }
+            ]
+          },
+          "once": true,
+          "next": "p_cisalla"
+        },
+        {
+          "id": "ma",
+          "text": "dlg.reunio.opt.ma",
+          "if": {
+            "flag": "prova_tall_ma"
+          },
+          "once": true,
+          "next": "p_ma"
+        },
+        {
+          "id": "pipa",
+          "text": "dlg.reunio.opt.pipa",
+          "if": {
+            "flag": "prova_pipa"
+          },
+          "once": true,
+          "next": "p_pipa"
+        },
+        {
+          "id": "nus",
+          "text": "dlg.reunio.opt.nus",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_nus_brida"
+              },
+              {
+                "flag": "prova_volta"
+              }
+            ]
+          },
+          "once": true,
+          "next": "p_nus"
+        },
+        {
+          "id": "correu",
+          "text": "dlg.reunio.opt.correu",
+          "if": {
+            "flag": "prova_correu"
+          },
+          "once": true,
+          "next": "p_correu"
+        },
+        {
+          "id": "cambra",
+          "text": "dlg.reunio.opt.cambra",
+          "if": {
+            "flag": "prova_cambra"
+          },
+          "once": true,
+          "next": "p_cambra"
+        },
+        {
+          "id": "gat",
+          "text": "dlg.reunio.opt.gat",
+          "if": {
+            "flag": "marcel_gat"
+          },
+          "once": true,
+          "next": "p_gat"
+        },
+        {
+          "id": "croissant",
+          "text": "dlg.reunio.opt.croissant",
+          "if": {
+            "flag": "nadia_croissant"
+          },
+          "once": true,
+          "next": "p_croissant"
+        },
+        {
+          "id": "escaner",
+          "text": "dlg.reunio.opt.escaner",
+          "if": {
+            "flag": "nadia_escolta"
+          },
+          "once": true,
+          "next": "p_escaner"
+        },
+        {
+          "id": "clau",
+          "text": "dlg.reunio.opt.clau",
+          "if": {
+            "flag": "tomas_clau"
+          },
+          "once": true,
+          "next": "p_clau"
+        },
+        {
+          "id": "blaunet",
+          "text": "dlg.reunio.opt.blaunet",
+          "if": {
+            "flag": "prova_blaunet"
+          },
+          "once": true,
+          "next": "p_blaunet"
+        },
+        {
+          "id": "enrere",
+          "text": "dlg.reunio.opt.enrere",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "p_cisalla": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_cisalla.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_cisalla.2"
+        }
+      ],
+      "effects": [
+        {
+          "addVar": "proves",
+          "amount": 1
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_ma": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_ma.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_ma.2",
+          "if": {
+            "flag": "prova_sang"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "addVar": "proves",
+          "amount": 1
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_pipa": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_pipa.1"
+        }
+      ],
+      "effects": [
+        {
+          "addVar": "proves",
+          "amount": 1
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_nus": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_nus.1"
+        }
+      ],
+      "effects": [
+        {
+          "addVar": "proves",
+          "amount": 1
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_correu": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_correu.1"
+        }
+      ],
+      "effects": [
+        {
+          "addVar": "proves",
+          "amount": 1
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_cambra": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_cambra.1"
+        }
+      ],
+      "effects": [
+        {
+          "addVar": "proves",
+          "amount": 1
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_gat": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_gat.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.no_es_dell"
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_croissant": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_croissant.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.no_es_dell"
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_escaner": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_escaner.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.no_es_dell"
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_clau": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_clau.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.no_es_dell"
+        }
+      ],
+      "goto": "compta"
+    },
+    "p_blaunet": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.reunio.p_blaunet.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.no_es_dell"
+        }
+      ],
+      "goto": "compta"
+    },
+    "compta": {
+      "lines": [
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.compta.1",
+          "if": {
+            "var": "proves",
+            "op": ">=",
+            "value": 3
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.compta.2",
+          "if": {
+            "var": "proves",
+            "op": ">=",
+            "value": 3
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "iri",
+          "text": "dlg.reunio.opt.iri",
+          "if": {
+            "var": "proves",
+            "op": ">=",
+            "value": 3
+          },
+          "silent": true,
+          "next": "iri"
+        }
+      ],
+      "goto": "proves"
+    },
+    "iri": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.reunio.iri.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.reunio.iri.2"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.reunio.iri.3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.iri.4"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.iri.5"
+        }
+      ],
+      "goto": "confessio"
+    },
+    "confessio": {
+      "lines": [
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.confessio.2"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.3"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.4"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.5"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.6"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.7"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.8"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.9"
+        },
+        {
+          "who": "juana",
+          "text": "dlg.reunio.confessio.10"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.reunio.confessio.11"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.12"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.13"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.14"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.15"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.16"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.17"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.18"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.19"
+        },
+        {
+          "who": "juana",
+          "text": "dlg.reunio.confessio.20"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.21"
+        },
+        {
+          "who": "juana",
+          "text": "dlg.reunio.confessio.22"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.23",
+          "sound": "telefon_satellit"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.24",
+          "if": {
+            "flag": "aliada_nadia"
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.25",
+          "if": {
+            "flag": "aliada_nadia",
+            "is": false
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.26"
+        },
+        {
+          "who": "lind",
+          "text": "dlg.reunio.confessio.27"
+        },
+        {
+          "who": "lind",
+          "text": "dlg.reunio.confessio.28"
+        },
+        {
+          "who": "lind",
+          "text": "dlg.reunio.confessio.29"
+        },
+        {
+          "who": "lind",
+          "text": "dlg.reunio.confessio.30"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.confessio.31"
+        },
+        {
+          "who": "lind",
+          "text": "dlg.reunio.confessio.32"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.33"
+        },
+        {
+          "who": "nadia",
+          "text": "dlg.reunio.confessio.34",
+          "if": {
+            "flag": "aliada_nadia"
+          },
+          "effects": [
+            {
+              "setFlag": "lind_gravada"
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.35",
+          "if": {
+            "flag": "aliada_nadia"
+          }
+        },
+        {
+          "who": "nadia",
+          "text": "dlg.reunio.confessio.36",
+          "if": {
+            "flag": "aliada_nadia"
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.37"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.reunio.confessio.38",
+          "sound": "generador_para"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.reunio.confessio.39"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.reunio.confessio.40"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.reunio.confessio.41"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.reunio.confessio.42"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.reunio.confessio.43"
+        },
+        {
+          "who": "title",
+          "text": "esc.tres"
+        },
+        {
+          "who": "title",
+          "text": "sync.titol"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "bastida_confessa"
+        },
+        {
+          "setVar": "escena",
+          "value": 9
+        },
+        {
+          "event": "situar",
+          "args": {
+            "who": "iri",
+            "room": "pont"
+          }
+        },
+        {
+          "event": "situar",
+          "args": {
+            "who": "vet",
+            "room": "sala_maquines"
+          }
+        },
+        {
+          "setFlag": "sync_satellit"
+        },
+        {
+          "setVar": "senyal",
+          "value": 12
+        },
+        {
+          "setVar": "sai",
+          "value": 2
+        },
+        {
+          "setVar": "paquets",
+          "value": 0
+        },
+        {
+          "event": "anar",
+          "args": {
+            "room": "sala_maquines"
+          }
+        }
+      ]
+    }
+  }
+}

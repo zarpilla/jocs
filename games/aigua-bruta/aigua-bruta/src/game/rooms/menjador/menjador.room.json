@@ -1,0 +1,395 @@
+{
+  "id": "menjador",
+  "name": "Menjador",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 166
+          },
+          {
+            "x": 142,
+            "y": 166
+          },
+          {
+            "x": 142,
+            "y": 174
+          },
+          {
+            "x": 386,
+            "y": 174
+          },
+          {
+            "x": 386,
+            "y": 166
+          },
+          {
+            "x": 476,
+            "y": 166
+          },
+          {
+            "x": 476,
+            "y": 197
+          },
+          {
+            "x": 6,
+            "y": 197
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_passadis",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 428,
+          "y": 46
+        },
+        {
+          "x": 474,
+          "y": 46
+        },
+        {
+          "x": 474,
+          "y": 152
+        },
+        {
+          "x": 428,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 450,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 451,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_cuina",
+      "active": true,
+      "description": "cuina",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 62,
+          "y": 46
+        },
+        {
+          "x": 108,
+          "y": 46
+        },
+        {
+          "x": 108,
+          "y": 152
+        },
+        {
+          "x": 62,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 85,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 85,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_popa",
+      "active": true,
+      "description": "coberta de popa",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 6,
+          "y": 44
+        },
+        {
+          "x": 54,
+          "y": 44
+        },
+        {
+          "x": 54,
+          "y": 152
+        },
+        {
+          "x": 6,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 30,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 30,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "passaplats",
+      "active": true,
+      "description": "passaplats",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 108,
+          "y": 76
+        },
+        {
+          "x": 156,
+          "y": 76
+        },
+        {
+          "x": 156,
+          "y": 120
+        },
+        {
+          "x": 108,
+          "y": 120
+        }
+      ],
+      "walkToPoint": {
+        "x": 131,
+        "y": 178
+      },
+      "lookAtPoint": {
+        "x": 132,
+        "y": 120
+      }
+    },
+    {
+      "id": "poster",
+      "active": true,
+      "description": "pòster",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 232,
+          "y": 24
+        },
+        {
+          "x": 294,
+          "y": 24
+        },
+        {
+          "x": 294,
+          "y": 76
+        },
+        {
+          "x": 232,
+          "y": 76
+        }
+      ],
+      "walkToPoint": {
+        "x": 262,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 263,
+        "y": 76
+      }
+    },
+    {
+      "id": "taula",
+      "active": true,
+      "description": "taula",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 148,
+          "y": 120
+        },
+        {
+          "x": 380,
+          "y": 120
+        },
+        {
+          "x": 380,
+          "y": 168
+        },
+        {
+          "x": 148,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 262,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 264,
+        "y": 168
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 162
+    },
+    {
+      "id": "ulls_dia",
+      "tag": "ulls_dia",
+      "animations": {
+        "ulls_dia": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 420,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 110,
+      "y": 192,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "capitana-1",
+      "definition": "capitana/capitana.character.json",
+      "x": 176,
+      "y": 156,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bastida-1",
+      "definition": "bastida/bastida.character.json",
+      "x": 210,
+      "y": 156,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 244,
+      "y": 156,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "tomas-1",
+      "definition": "tomas/tomas.character.json",
+      "x": 280,
+      "y": 156,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "juana-1",
+      "definition": "juana/juana.character.json",
+      "x": 314,
+      "y": 156,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "nadia-1",
+      "definition": "nadia/nadia.character.json",
+      "x": 348,
+      "y": 156,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "lind-veu",
+      "definition": "lind/lind.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "diu-veu",
+      "definition": "diu/diu.character.json",
+      "x": 95,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

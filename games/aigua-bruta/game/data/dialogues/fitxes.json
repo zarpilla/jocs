@@ -1,0 +1,187 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "fitxes",
+  "with": "vet",
+  "start": "tria",
+  "nodes": {
+    "tria": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.fitxes.tria.1"
+        }
+      ],
+      "choices": [
+        {
+          "id": "capitana",
+          "text": "dlg.fitxes.opt.capitana",
+          "if": {
+            "flag": "revisio_capitana",
+            "is": false
+          },
+          "next": "capitana"
+        },
+        {
+          "id": "tomas",
+          "text": "dlg.fitxes.opt.tomas",
+          "if": {
+            "flag": "revisio_tomas",
+            "is": false
+          },
+          "next": "tomas"
+        },
+        {
+          "id": "nadia",
+          "text": "dlg.fitxes.opt.nadia",
+          "if": {
+            "flag": "revisio_nadia",
+            "is": false
+          },
+          "next": "nadia"
+        },
+        {
+          "id": "marcel",
+          "text": "dlg.fitxes.opt.marcel",
+          "if": {
+            "flag": "revisio_marcel",
+            "is": false
+          },
+          "next": "marcel"
+        },
+        {
+          "id": "bastida",
+          "text": "dlg.fitxes.opt.bastida",
+          "next": "bastida"
+        },
+        {
+          "id": "juana",
+          "text": "dlg.fitxes.opt.juana",
+          "if": {
+            "flag": "juana_explica",
+            "is": false
+          },
+          "next": "juana"
+        },
+        {
+          "id": "cap",
+          "text": "dlg.fitxes.opt.cap",
+          "end": true
+        }
+      ]
+    },
+    "capitana": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.capitana.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.capitana.2"
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "pacient",
+          "value": "capitana"
+        }
+      ]
+    },
+    "tomas": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.tomas.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.tomas.2"
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "pacient",
+          "value": "tomas"
+        }
+      ]
+    },
+    "nadia": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.nadia.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.nadia.2"
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "pacient",
+          "value": "nadia"
+        }
+      ]
+    },
+    "marcel": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.marcel.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.marcel.2"
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "pacient",
+          "value": "marcel"
+        }
+      ]
+    },
+    "bastida": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.bastida.1"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.fitxes.bastida.2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "bastida_ara_no"
+        }
+      ]
+    },
+    "juana": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.juana.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.fitxes.juana.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.fitxes.juana.3",
+          "if": {
+            "flag": "juana_laboratori",
+            "is": false
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "juana_no_contesta"
+        }
+      ]
+    }
+  }
+}

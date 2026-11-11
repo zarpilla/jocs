@@ -1,0 +1,41 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "Pallol",
+  "era": "iri",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "passadís",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "prestatges",
+      "label": "prestatges",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 117,
+      "y": 57
+    },
+    {
+      "id": "inventari",
+      "label": "inventari",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 289,
+      "y": 19
+    }
+  ],
+  "characters": [
+    "Marcel",
+    "Diu"
+  ]
+}

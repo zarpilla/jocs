@@ -1,0 +1,37 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.final_galway.nom",
+  "cutscene": {},
+  "hotspots": {
+    "iri": {},
+    "vet": {},
+    "diu": {},
+    "nadia": {
+      "visibleIf": {
+        "flag": "aliada_nadia"
+      }
+    },
+    "capitana": {
+      "visibleIf": {
+        "flag": "aliada_capitana"
+      }
+    },
+    "marcel": {
+      "visibleIf": {
+        "flag": "aliat_marcel"
+      }
+    },
+    "tomas": {
+      "visibleIf": {
+        "flag": "tomas_content"
+      }
+    }
+  },
+  "decor": {
+    "tele_apagada": {
+      "visibleIf": {
+        "flag": "tele_apagada"
+      }
+    }
+  }
+}

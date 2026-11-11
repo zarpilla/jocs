@@ -1,0 +1,234 @@
+{
+  "id": "sala_bombes",
+  "name": "Sala de bombes",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 164
+          },
+          {
+            "x": 474,
+            "y": 164
+          },
+          {
+            "x": 478,
+            "y": 197
+          },
+          {
+            "x": 2,
+            "y": 197
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "escotilla",
+      "active": true,
+      "description": "escotilla",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 200,
+          "y": 0
+        },
+        {
+          "x": 260,
+          "y": 0
+        },
+        {
+          "x": 260,
+          "y": 152
+        },
+        {
+          "x": 200,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 230,
+        "y": 168
+      },
+      "lookAtPoint": {
+        "x": 230,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "bombes",
+      "active": true,
+      "description": "bombes",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 282,
+          "y": 40
+        },
+        {
+          "x": 476,
+          "y": 40
+        },
+        {
+          "x": 476,
+          "y": 156
+        },
+        {
+          "x": 282,
+          "y": 156
+        }
+      ],
+      "walkToPoint": {
+        "x": 376,
+        "y": 172
+      },
+      "lookAtPoint": {
+        "x": 379,
+        "y": 156
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llibre",
+      "tag": "llibre",
+      "animations": {
+        "llibre": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 148,
+            "y": 170
+          },
+          {
+            "x": 188,
+            "y": 170
+          },
+          {
+            "x": 188,
+            "y": 190
+          },
+          {
+            "x": 148,
+            "y": 190
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 166,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 168,
+        "y": 190
+      },
+      "description": "llibre"
+    },
+    {
+      "id": "llanterna",
+      "tag": "llanterna",
+      "animations": {
+        "llanterna": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 206,
+            "y": 172
+          },
+          {
+            "x": 242,
+            "y": 172
+          },
+          {
+            "x": 242,
+            "y": 190
+          },
+          {
+            "x": 206,
+            "y": 190
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 224,
+        "y": 194
+      },
+      "lookAtPoint": {
+        "x": 224,
+        "y": 190
+      },
+      "description": "llanterna"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 300,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 360,
+      "y": 194,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bastida-1",
+      "definition": "bastida/bastida.character.json",
+      "x": 110,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

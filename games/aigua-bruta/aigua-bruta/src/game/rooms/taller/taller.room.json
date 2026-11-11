@@ -1,0 +1,256 @@
+{
+  "id": "taller",
+  "name": "Taller",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 170
+          },
+          {
+            "x": 474,
+            "y": 170
+          },
+          {
+            "x": 478,
+            "y": 196
+          },
+          {
+            "x": 2,
+            "y": 196
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sala de màquines",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 2,
+          "y": 46
+        },
+        {
+          "x": 60,
+          "y": 46
+        },
+        {
+          "x": 60,
+          "y": 152
+        },
+        {
+          "x": 2,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 34,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "tauler",
+      "active": true,
+      "description": "tauler d'eines",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 81,
+          "y": 27
+        },
+        {
+          "x": 313,
+          "y": 27
+        },
+        {
+          "x": 313,
+          "y": 92
+        },
+        {
+          "x": 81,
+          "y": 92
+        }
+      ],
+      "walkToPoint": {
+        "x": 198,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 197,
+        "y": 92
+      }
+    },
+    {
+      "id": "banc",
+      "active": true,
+      "description": "banc de treball",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 322,
+          "y": 92
+        },
+        {
+          "x": 470,
+          "y": 92
+        },
+        {
+          "x": 470,
+          "y": 154
+        },
+        {
+          "x": 322,
+          "y": 154
+        }
+      ],
+      "walkToPoint": {
+        "x": 396,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 396,
+        "y": 154
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "cisalla",
+      "tag": "cisalla",
+      "animations": {
+        "cisalla": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 103,
+            "y": 94
+          },
+          {
+            "x": 159,
+            "y": 94
+          },
+          {
+            "x": 159,
+            "y": 109
+          },
+          {
+            "x": 103,
+            "y": 109
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 130,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 131,
+        "y": 109
+      },
+      "description": "cisalla"
+    },
+    {
+      "id": "clau_tubs",
+      "tag": "clau_tubs",
+      "animations": {
+        "clau_tubs": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 168,
+            "y": 94
+          },
+          {
+            "x": 184,
+            "y": 94
+          },
+          {
+            "x": 184,
+            "y": 119
+          },
+          {
+            "x": 168,
+            "y": 119
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 176,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 176,
+        "y": 119
+      },
+      "description": "clau de tubs"
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 220,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 290,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

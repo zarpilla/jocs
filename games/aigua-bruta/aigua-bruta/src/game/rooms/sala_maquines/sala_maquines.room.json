@@ -1,0 +1,628 @@
+{
+  "id": "sala_maquines",
+  "name": "Sala de màquines",
+  "size": {
+    "width": 480,
+    "height": 270
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 480,
+    "height": 270
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 172
+          },
+          {
+            "x": 198,
+            "y": 172
+          },
+          {
+            "x": 208,
+            "y": 189
+          },
+          {
+            "x": 268,
+            "y": 189
+          },
+          {
+            "x": 276,
+            "y": 172
+          },
+          {
+            "x": 324,
+            "y": 172
+          },
+          {
+            "x": 328,
+            "y": 185
+          },
+          {
+            "x": 396,
+            "y": 185
+          },
+          {
+            "x": 400,
+            "y": 172
+          },
+          {
+            "x": 474,
+            "y": 172
+          },
+          {
+            "x": 478,
+            "y": 196
+          },
+          {
+            "x": 2,
+            "y": 196
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_passadis",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 2,
+          "y": 44
+        },
+        {
+          "x": 60,
+          "y": 44
+        },
+        {
+          "x": 60,
+          "y": 152
+        },
+        {
+          "x": 2,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 34,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_taller",
+      "active": true,
+      "description": "taller",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 428,
+          "y": 50
+        },
+        {
+          "x": 479,
+          "y": 50
+        },
+        {
+          "x": 479,
+          "y": 152
+        },
+        {
+          "x": 428,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 449,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 453,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_rebost",
+      "active": true,
+      "description": "rebost",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 274,
+          "y": 54
+        },
+        {
+          "x": 320,
+          "y": 54
+        },
+        {
+          "x": 320,
+          "y": 152
+        },
+        {
+          "x": 274,
+          "y": 152
+        }
+      ],
+      "walkToPoint": {
+        "x": 297,
+        "y": 174
+      },
+      "lookAtPoint": {
+        "x": 297,
+        "y": 152
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "valvula",
+      "active": true,
+      "description": "vàlvula de presa de mar",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 222,
+          "y": 136
+        },
+        {
+          "x": 250,
+          "y": 136
+        },
+        {
+          "x": 250,
+          "y": 186
+        },
+        {
+          "x": 222,
+          "y": 186
+        }
+      ],
+      "walkToPoint": {
+        "x": 266,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 236,
+        "y": 186
+      }
+    },
+    {
+      "id": "quadre",
+      "active": true,
+      "description": "quadre de la bomba",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 322,
+          "y": 84
+        },
+        {
+          "x": 368,
+          "y": 84
+        },
+        {
+          "x": 368,
+          "y": 154
+        },
+        {
+          "x": 322,
+          "y": 154
+        }
+      ],
+      "walkToPoint": {
+        "x": 346,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 345,
+        "y": 154
+      }
+    },
+    {
+      "id": "vies",
+      "active": true,
+      "description": "vàlvula de tres vies",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 382,
+          "y": 132
+        },
+        {
+          "x": 396,
+          "y": 132
+        },
+        {
+          "x": 396,
+          "y": 150
+        },
+        {
+          "x": 382,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 392,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 389,
+        "y": 150
+      }
+    },
+    {
+      "id": "separador",
+      "active": true,
+      "description": "separador d'aigües oleoses",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 398,
+          "y": 84
+        },
+        {
+          "x": 426,
+          "y": 84
+        },
+        {
+          "x": 426,
+          "y": 154
+        },
+        {
+          "x": 398,
+          "y": 154
+        }
+      ],
+      "walkToPoint": {
+        "x": 410,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 412,
+        "y": 154
+      }
+    },
+    {
+      "id": "sensor",
+      "active": true,
+      "description": "sensor de sentina",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 370,
+          "y": 82
+        },
+        {
+          "x": 386,
+          "y": 82
+        },
+        {
+          "x": 386,
+          "y": 150
+        },
+        {
+          "x": 370,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 378,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 378,
+        "y": 150
+      }
+    },
+    {
+      "id": "motor",
+      "active": true,
+      "description": "motor principal",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 122,
+          "y": 62
+        },
+        {
+          "x": 272,
+          "y": 62
+        },
+        {
+          "x": 272,
+          "y": 154
+        },
+        {
+          "x": 122,
+          "y": 154
+        }
+      ],
+      "walkToPoint": {
+        "x": 190,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 197,
+        "y": 154
+      }
+    },
+    {
+      "id": "boca",
+      "active": true,
+      "description": "boca del tub de veu",
+      "zIndex": 9,
+      "points": [
+        {
+          "x": 96,
+          "y": 98
+        },
+        {
+          "x": 116,
+          "y": 98
+        },
+        {
+          "x": 116,
+          "y": 132
+        },
+        {
+          "x": 96,
+          "y": 132
+        }
+      ],
+      "walkToPoint": {
+        "x": 106,
+        "y": 176
+      },
+      "lookAtPoint": {
+        "x": 106,
+        "y": 132
+      }
+    },
+    {
+      "id": "generador",
+      "active": true,
+      "description": "generador",
+      "zIndex": 10,
+      "points": [
+        {
+          "x": 328,
+          "y": 28
+        },
+        {
+          "x": 416,
+          "y": 28
+        },
+        {
+          "x": 416,
+          "y": 74
+        },
+        {
+          "x": 328,
+          "y": 74
+        }
+      ],
+      "walkToPoint": {
+        "x": 372,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 372,
+        "y": 74
+      }
+    },
+    {
+      "id": "sentina",
+      "active": true,
+      "description": "registre de la sentina",
+      "zIndex": 11,
+      "points": [
+        {
+          "x": 96,
+          "y": 170
+        },
+        {
+          "x": 142,
+          "y": 170
+        },
+        {
+          "x": 142,
+          "y": 188
+        },
+        {
+          "x": 96,
+          "y": 188
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 188
+      },
+      "lookAtPoint": {
+        "x": 119,
+        "y": 188
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "animations": {
+        "aigua": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "valvula_tancada",
+      "tag": "valvula_tancada",
+      "animations": {
+        "valvula_tancada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "brida",
+      "tag": "brida",
+      "animations": {
+        "brida": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "fosc",
+      "tag": "fosc",
+      "animations": {
+        "fosc": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "separador",
+      "tag": "separador",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "separador": {
+          "loop": true,
+          "frameDuration": 700
+        }
+      },
+      "scriptName": "separadorAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 398,
+            "y": 84
+          },
+          {
+            "x": 426,
+            "y": 84
+          },
+          {
+            "x": 426,
+            "y": 154
+          },
+          {
+            "x": 398,
+            "y": 154
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 410,
+        "y": 186
+      },
+      "lookAtPoint": {
+        "x": 412,
+        "y": 154
+      },
+      "description": "separador d'aigües oleoses"
+    },
+    {
+      "id": "sentina_oberta",
+      "tag": "sentina_oberta",
+      "animations": {
+        "sentina_oberta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 176,
+      "y": 188,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 292,
+      "y": 190,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 200,
+      "y": 62,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bastida-1",
+      "definition": "bastida/bastida.character.json",
+      "x": 80,
+      "y": 180,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "juana-veu",
+      "definition": "juana/juana.character.json",
+      "x": 55,
+      "y": 95,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}
