@@ -7,14 +7,17 @@ La coberta de proa de l'Arenga. Mirem a estribord, com a popa: la popa és a l'e
     Juana), el pal de proa amb la campana, i la borda que s'enfila cap a la proa;
   - de nit per defecte; de dia (decorat `dia`, Escenes 2 i 3), amb el racó de la Juana sota la balsa: una caixa
     per seure-hi (hi seu, animació asseguda) amb la manta.
+ANIMS: `mar` (les onades i el cap de la campana, que es gronxa; de nit) i `dia_mar` (el mateix de dia, amb dues
+gavines; va amb el decorat `dia_mar`, per sobre de `dia`).
 """
 import math
 
-from hd.pix import Light, W, hr, mix
+from hd.pix import Canvas, Light, W, hr, mix
 from hd.pix import GOLD
 from hd.rooms.arenga import YELL, REDP
+from hd.rooms.comu import _diff
 from hd.rooms.exterior import (night_sky, night_sea, day_sky, day_sea, deck_floor, bulwark, wt_door, deck_lamp,
-                               lifebuoy, coil, bitts, smooth, fbm, HULLN, STEELX, CABX, DECKX, ORANGEB, ROPE,
+                               lifebuoy, coil, bitts, smooth, fbm, gull, HULLN, STEELX, CABX, DECKX, ORANGEB, ROPE,
                                LAMP, WINDOW, GLOW_WARM, REDH)
 
 HOR = 86
@@ -125,6 +128,8 @@ def windlass(cv):
         for t in range(1, 6):
             cv.put(196 + round(math.cos(math.radians(a)) * t), 108 + round(math.sin(math.radians(a)) * t), REDH, 4.2)
 
+
+_SWING = {'dx': 0}
 
 CHAIN = [(20, 16, 14), (40, 30, 24), (64, 48, 34), (92, 70, 48), (122, 96, 68), (150, 126, 96)]
 
@@ -250,8 +255,10 @@ def mast(cv, day):
             u = (x - (mx + 8)) / (w + 0.5)
             cv.put(x, y, GOLD, 3.6 - u * 1.6 - u * u)
     cv.hline(mx + 1, mx + 15, 92, GOLD, 2.6)
-    cv.vline(mx + 8, 92, 98, ROPE, 3.0)
-    cv.put(mx + 8, 99, ROPE, 2.0)
+    sw = _SWING['dx']                                            # el cap del batall, que es gronxa amb el balanç
+    for y in range(92, 99):
+        cv.put(mx + 8 + round(sw * (y - 92) / 7), y, ROPE, 3.0)
+    cv.put(mx + 8 + sw, 99, ROPE, 2.0)
 
 
 # ─── La caseta i el pas lateral (a l'esquerra) ─────────────────────────────
@@ -409,6 +416,59 @@ def cadenat(cv):
 
 
 PROPS = {'dia': dia, 'cadenat': cadenat}
+
+
+# ─── Animacions ────────────────────────────────────────────────────────────
+# El mar es mou amb `phase`; perquè el bucle no salti, els darrers SEA_FADE fotogrames es fonen (a quadres) amb el
+# principi (com a coberta_popa). El cap de la campana es gronxa d'un píxel a cada banda.
+SEA_N, SEA_FADE, SEA_STEP = 12, 4, 0.32
+SWING = (0, 0, 1, 1, 1, 0, 0, 0, -1, -1, -1, 0)
+ROPE_BOX = (433, 90, 441, 101)                                   # el mar del darrere del cap no es toca
+
+
+def _scene(day, dx):
+    _SWING['dx'] = dx
+    try:
+        cv = Canvas(light=LIGHT)
+        dia(cv) if day else bg(cv)
+    finally:
+        _SWING['dx'] = 0
+    return cv.img
+
+
+def _frames(day):
+    sea = (lambda cv, ph: day_sea(cv, HOR, RAIL + 4, sun_x=50, seed=5, phase=ph)) if day else \
+          (lambda cv, ph: night_sea(cv, HOR, RAIL + 4, moon_x=196, seed=5, phase=ph))
+    scenes = {dx: _scene(day, dx) for dx in set(SWING)}
+    base = scenes[0]
+    ref = Canvas(light=LIGHT)
+    sea(ref, 0.0)
+    rp, bp = ref.img.load(), base.load()
+    bx0, by0, bx1, by1 = ROPE_BOX
+    open_ = [(x, y) for y in range(HOR + 1, RAIL + 5) for x in range(W)
+             if bp[x, y] == rp[x, y] and not (bx0 <= x <= bx1 and by0 <= y <= by1)]
+    frames = []
+    for i in range(SEA_N):
+        a, b = Canvas(light=LIGHT), Canvas(light=LIGHT)
+        sea(a, i * SEA_STEP)
+        sea(b, (i - SEA_N) * SEA_STEP)
+        w = max(0, i - (SEA_N - SEA_FADE)) / SEA_FADE
+        out = scenes[SWING[i]].copy()
+        o, ap, bpp = out.load(), a.img.load(), b.img.load()
+        for x, y in open_:
+            o[x, y] = bpp[x, y] if hr(x, y, 90) < w else ap[x, y]
+        if day:                                                  # dues gavines que planen en cercle, lluny
+            t = i / SEA_N * 2 * math.pi
+            cv = Canvas(light=LIGHT, img=out)
+            gull(cv, round(262 + math.cos(t) * 14), round(44 + math.sin(t) * 4), (226, 228, 224), 1 if i % 4 else 0)
+            gull(cv, round(292 - math.cos(t + 1.3) * 10), round(34 + math.sin(t + 1.3) * 3), (214, 216, 212),
+                 0 if i % 3 == 1 else 1)
+        frames.append(_diff(out, base))
+    return frames
+
+
+ANIMS = {'mar': {'frames': lambda: _frames(False), 'frameDuration': 260},
+         'dia_mar': {'frames': lambda: _frames(True), 'frameDuration': 260}}
 
 GEOMETRIA = {
     'things': {
