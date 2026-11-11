@@ -2,6 +2,8 @@
 La sala de bombes: neta, pintada i callada. S'hi baixa per una escotilla del sostre i una escala de mà. A la dreta,
 les bombes (contraincendis, vermella, i dues de llast, verdes) amb els motors a sobre; a l'esquerra, el
 col·lector de vàlvules. Props: el llibre de la Juana, obert de cara avall a terra, i la seva llanterna encesa.
+ANIMS (la sala és callada: les bombes no van): `manometres` (les agulles tremolen amb la vibració del vaixell)
+i `gota` (una gota que cau de tant en tant del col·lector a un tollet de terra).
 """
 import math
 
@@ -295,9 +297,88 @@ def bg(cv):
     for lx in LAMPS:
         sota.lamp_glow(cv, lx)
     glow(cv, 230, 6, 30, (190, 220, 190), 0.3)
+    puddle(cv)
+
+
+DRIP = (100, 98)            # on es forma la gota: sota el tub del col·lector
+SPLASH_Y = FLOOR_Y + 6      # on cau, a terra
+WATER = (196, 222, 214)
+
+
+def puddle(cv):
+    """El tollet que fa la gota a terra: una mica més fosc i amb un reflex."""
+    x0, y0 = DRIP[0], SPLASH_Y
+    for y in range(y0 - 1, y0 + 2):
+        for x in range(x0 - 5, x0 + 6):
+            if ((x - x0) / 5.5) ** 2 + ((y - y0) / 1.6) ** 2 <= 1:
+                cv.flat(x, y, mix(cv.get(x, y), (10, 16, 16), 0.35))
+    cv.flat(x0 - 2, y0, mix(cv.get(x0 - 2, y0), WATER, 0.35))
+    cv.flat(x0 - 1, y0, mix(cv.get(x0 - 1, y0), WATER, 0.25))
 
 
 PROPS = {'llibre': book, 'llanterna': prop_llanterna}
+
+# ─── Animacions ────────────────────────────────────────────────────────────
+
+def _frame_base():
+    cv = Canvas(light=LIGHT)
+    _base(cv)
+    return cv
+
+
+def _frames_manometres():
+    """Les agulles dels dos manòmetres tremolen una mica (el motor principal es nota a tot el vaixell)."""
+    from hd.rooms.comu import _diff
+    base = _frame_base().img
+    jitter = (0.0, 0.14, -0.06, 0.1, -0.14, 0.04)
+    frames = []
+    for i, j in enumerate(jitter):
+        cv = _frame_base()
+        for k, gx in enumerate((60, 140)):
+            a = math.atan2(3, -2) + (j if k == 0 else -jitter[(i + 2) % len(jitter)])
+            cv.disc(gx, 74, 5, 5, WHITEP, 4.6)
+            cv.line(gx, 74, gx + round(math.cos(a) * 3.8), 74 + round(math.sin(a) * 3.8), DARK, 0)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+def _frames_gota():
+    """Una gota que s'infla sota el tub, cau i esquitxa el tollet; després, una estona de res."""
+    from hd.rooms.comu import _diff
+    base = _frame_base().img
+    x, y0 = DRIP
+    frames = []
+    for i in range(20):
+        cv = _frame_base()
+
+        def w(px, py, k):
+            cv.flat(px, py, mix(cv.get(px, py), WATER, k))
+        if 4 <= i <= 8:                                   # la gota que es forma
+            w(x, y0, 0.55 + 0.08 * (i - 4))
+            if i >= 6:
+                w(x, y0 + 1, 0.65 + 0.1 * (i - 6))
+        elif i in (9, 10):                                # cau (s'estira)
+            yy = (112, 134)[i - 9]
+            for d in range(3 + (i - 9) * 2):
+                w(x, yy - d, 0.9 - d * 0.18)
+        elif i == 11:                                     # esquitx
+            w(x, SPLASH_Y - 1, 0.8)
+            for dx, dy in ((-2, -2), (2, -2), (-3, -1), (3, -1), (0, -3)):
+                w(x + dx, SPLASH_Y + dy, 0.6)
+        elif i in (12, 13):                               # l'anell que s'obre al tollet
+            r = 3 + (i - 12) * 2
+            for dx in range(-r, r + 1):
+                if abs(dx) >= r - 1:
+                    w(x + dx, SPLASH_Y, 0.5 - (i - 12) * 0.2)
+            w(x - r + 1, SPLASH_Y - 1, 0.3)
+            w(x + r - 1, SPLASH_Y - 1, 0.3)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+ANIMS = {'manometres': {'frames': _frames_manometres, 'frameDuration': 140},
+         'gota': {'frames': _frames_gota, 'frameDuration': 110}}
+
 
 GEOMETRIA = {
     'things': {

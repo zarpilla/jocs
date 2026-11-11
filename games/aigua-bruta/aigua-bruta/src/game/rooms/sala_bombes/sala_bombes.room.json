@@ -197,6 +197,34 @@
         "y": 190
       },
       "description": "llanterna"
+    },
+    {
+      "id": "manometres",
+      "tag": "manometres",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "manometres": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
     }
   ],
   "characters": [
