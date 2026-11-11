@@ -2100,7 +2100,21 @@
         "lines": [
           {
             "who": "player",
-            "text": "obj.notes_perdudes.look"
+            "text": "obj.notes_perdudes.look_una",
+            "if": {
+              "var": "notes_trobades",
+              "op": "==",
+              "value": 1
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.notes_perdudes.look",
+            "if": {
+              "var": "notes_trobades",
+              "op": ">=",
+              "value": 2
+            }
           },
           {
             "who": "narrator",
