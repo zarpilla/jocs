@@ -4,7 +4,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, ambient, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -419,6 +419,8 @@ export function stagePoint(to: string | Point): Point | null {
 
 /** El que una indicació fa de cop (tot menys caminar i esperar). */
 export function applyStageNow(cue: StageCue) {
+  // Una sacsejada suau: ~2 píxels a 640 (la sala és tota la pantalla, i més es veurien les vores).
+  if (cue.shake) camera.shake(0.004, cue.shake, true);
   if (cue.prop !== undefined) {
     // Una capa del decorat (un prop de l'art, que el joc no coneix): es mostra o s'amaga i canvia d'animació.
     const room = world.currentRoom();

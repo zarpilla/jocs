@@ -11,7 +11,13 @@
         {
           "who": "narrator",
           "text": "proleg.gavina1",
-          "sound": "vibracio"
+          "sound": "vibracio",
+          "stage": [
+            {
+              "prop": "llancadora",
+              "anim": "llancadora_puja"
+            }
+          ]
         },
         {
           "who": "narrator",

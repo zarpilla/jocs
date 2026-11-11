@@ -10,12 +10,29 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "proleg.cambra1"
+          "text": "proleg.cambra1",
+          "stage": [
+            {
+              "prop": "iri_cambra",
+              "anim": "iri_entra"
+            }
+          ]
         },
         {
           "who": "narrator",
           "text": "proleg.cambra2",
-          "sound": "alarma"
+          "sound": "alarma",
+          "stageAfter": [
+            {
+              "prop": "iri_cambra",
+              "anim": "iri_camp"
+            },
+            {
+              "prop": "camp",
+              "anim": "camp_desperta",
+              "hold": 4.8
+            }
+          ]
         }
       ],
       "goTo": "fabrica_calderes"

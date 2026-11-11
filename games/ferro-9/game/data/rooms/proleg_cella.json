@@ -11,11 +11,26 @@
         {
           "who": "narrator",
           "text": "proleg.cella1",
-          "sound": "vibracio"
+          "sound": "vibracio",
+          "stage": [
+            {
+              "shake": 0.6
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "proleg.cella2"
+          "text": "proleg.cella2",
+          "sound": "vibracio",
+          "stage": [
+            {
+              "shake": 0.9
+            },
+            {
+              "prop": "vet_ulls",
+              "anim": "vet_desperta"
+            }
+          ]
         }
       ],
       "goTo": "proleg_fabrica"

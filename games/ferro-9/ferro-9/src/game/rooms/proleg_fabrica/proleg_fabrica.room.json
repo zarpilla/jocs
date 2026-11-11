@@ -65,6 +65,24 @@
           "frameDuration": 130
         }
       }
+    },
+    {
+      "id": "iri_moll",
+      "tag": "iri_moll",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "iri_moll": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "iri_torn": {
+          "loop": false,
+          "frameDuration": 100
+        }
+      }
     }
   ],
   "characters": []

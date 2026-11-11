@@ -629,4 +629,79 @@ def ambient_frames(bg_fn, light, n=24, mask=None):
     return frames
 
 
-ANIMS = {'ambient': {'frames': lambda: ambient_frames(bg, LIGHT), 'frameDuration': 130}}
+# ─── La llançadora (capa del pròleg) ─────────────────────────────────────────
+# Mentre la narració presenta La Gavina, una llançadora petita surt de darrere la Terra i puja fins al moll de càrrega
+# («llancadora_puja», 7 s, sense bucle: es queda atracada). Fins llavors, la capa és buida («llancadora»).
+# La intro en vídeo (intro_animada.py) fa servir el mateix dibuix.
+
+def llancadora(cv, x, y, t):
+    """Una llançadora petita (de cara a l'esquerra, cap amunt) amb el motor encès i la llum que parpelleja; `t` en
+    segons (per al parpelleig). Sense motor si `t` és None (atracada)."""
+    hull = [(84, 90, 104), (130, 136, 150), (186, 192, 204)]
+    for dx in range(-5, 5):
+        cv.flat(x + dx, y, hull[1])
+        cv.flat(x + dx, y - 1, hull[2] if dx < 2 else hull[1])
+        cv.flat(x + dx, y + 1, hull[0])
+    for dx in (-6, -7):
+        cv.flat(x + dx, y, hull[1] if dx == -6 else hull[0])
+    cv.flat(x - 3, y - 2, hull[1])                            # la cabina
+    cv.flat(x - 2, y - 2, hull[2])
+    cv.flat(x - 4, y - 1, (140, 200, 255))
+    cv.flat(x + 1, y + 2, hull[0])                            # l'aleta
+    cv.flat(x + 2, y + 2, hull[0])
+    if t is None:
+        cv.flat(x + 3, y - 2, (255, 70, 60))
+        return
+    fl = 0.7 + 0.3 * math.sin(t * 31)
+    cv.flat(x + 5, y, (255, 230, 170))
+    cv.flat(x + 6, y, (255, 160, 80))
+    cv.flat(x + 7, y, mix((255, 120, 50), cv.get(x + 7, y), 1 - fl))
+    cv.glow(x + 6, y, 7, (255, 150, 70), 0.5 * fl)
+    if int(t / 0.5) % 2:
+        cv.flat(x + 3, y - 2, (255, 70, 60))
+        cv.glow(x + 3, y - 2, 4, (255, 60, 50), 0.4)
+
+
+def llancadora_pos(k, gx=GX, gy=GY):
+    """On és la llançadora (0..1 del viatge) per a La Gavina a (gx, gy): de darrere la Terra fins sota el moll."""
+    dock = (gx + 2, gy + round(46 * GS) + 4)
+    return (round(470 + (dock[0] + 26 - 470) * k),
+            round(268 + (dock[1] + 10 - 268) * k - math.sin(k * math.pi) * 18))
+
+
+LL_DT, LL_LEN = 0.1, 7.0
+
+
+@lru_cache(maxsize=None)
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+def _layer(draw):
+    """Capa transparent amb el que `draw(cv)` canvia sobre el fons quiet."""
+    from hd640.rooms.fabrica_cambra import frame_diff
+    cv = Canvas(light=LIGHT, img=_base().copy())
+    cv.P = cv.img.load()
+    draw(cv)
+    return frame_diff(_base(), cv.img)
+
+
+def _llancadora_frames():
+    out = []
+    for i in range(round(LL_LEN / LL_DT) + 1):
+        t = i * LL_DT
+        u = min(1.0, t / LL_LEN)
+        k = (u * u * (3 - 2 * u)) ** 0.9
+        x, y = llancadora_pos(k)
+        out.append(_layer(lambda cv: llancadora(cv, x, y, t if u < 1 else None)))
+    return out
+
+
+ANIMS = {
+    'ambient': {'frames': lambda: ambient_frames(bg, LIGHT), 'frameDuration': 130},
+    'llancadora': {'frames': lambda: [Canvas(transparent=True).img], 'frameDuration': 1000, 'loop': False, 'zIndex': 2},
+    'llancadora_puja': {'frames': _llancadora_frames, 'frameDuration': round(LL_DT * 1000), 'loop': False,
+                        'prop': 'llancadora'},
+}

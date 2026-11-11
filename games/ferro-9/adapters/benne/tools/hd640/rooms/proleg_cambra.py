@@ -162,4 +162,177 @@ def _ambient_frames(n=24):
     return frames
 
 
-ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 70}}
+# ─── L'Iri i el camp (capes del pròleg) ──────────────────────────────────────
+# «iri_entra»: l'Iri (el seu sprite, tenyit amb el vermell de la sala) entra per l'esquerra i s'atura davant de la
+# cambra, de cara al vidre. «camp_desperta»: el camp es desperta, amb arcs violeta entre les bobines cada cop més
+# sovint. Alhora, «iri_camp»: l'Iri, quieta, cada cop més il·luminada pel violeta, i al final un flaix blanc ho tapa
+# tot (es queda blanc: la sala següent hi entra amb la fosa). Sense bucle; fins que la narració les engega, les capes són
+# buides («iri_cambra», «camp»). La intro en vídeo (intro_animada.py) fa servir els mateixos dibuixos.
+
+from pathlib import Path  # noqa: E402
+from hd.pix import hr  # noqa: E402
+from hd640.rooms.fabrica_cambra import GLASS  # noqa: E402
+
+IRI_ART = Path(__file__).resolve().parents[3] / 'placeholder-art' / 'iri'
+IRI_FEET = 244
+IRI_STOP = 214
+WALK_LEN = 4.2                   # de fora de la pantalla fins davant de la cambra
+FIELD_LEN = 4.2                  # el camp, fins al flaix
+FIELD_DT = 1 / 12
+
+
+@lru_cache(maxsize=None)
+def iri_frames():
+    import json
+    from PIL import Image
+    d = json.loads((IRI_ART / 'iri.json').read_text())
+    sheet = Image.open(IRI_ART / 'iri.png').convert('RGBA')
+    out = []
+    for i in range(len(d['frames'])):
+        f = d['frames'][f'iri {i}.aseprite']['frame']
+        out.append(sheet.crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h'])))
+    return out
+
+
+def iri_sprite(t, walk=(0.0, WALK_LEN), x0=-50):
+    """→ (imatge, x de l'esquerra, y de dalt) al segon `t`: camina cap a la dreta (WalkL de mirall) i s'atura de cara
+    a la cambra (IdleL de mirall)."""
+    from PIL import Image
+    fr = iri_frames()
+    if t < walk[1]:
+        u = max(0.0, (t - walk[0]) / (walk[1] - walk[0]))
+        x = x0 + (IRI_STOP - x0) * u
+        im = fr[3 + int(t * 10) % 6]
+    else:
+        x, im = IRI_STOP, fr[0]
+    im = im.transpose(Image.FLIP_LEFT_RIGHT)
+    return im, round(x - im.width / 2), IRI_FEET - im.height
+
+
+def redden(rgb, x, y, beams=None, k_field=0.0):
+    """El color d'un píxel de l'Iri amb la llum de la sala (el vermell de `bg`; amb `beams`, també els feixos) i,
+    amb `k_field`, el violeta del camp."""
+    r, g, b = rgb
+    L = (0.34 * r + 0.5 * g + 0.16 * b) * 0.62
+    red = (min(255, L * 1.35 + 8), L * 0.36 + 2, L * 0.38 + 6)
+    hot = beam(x, y, beams=beams) if beams else 0.0
+    if hot > 0.05:
+        red = mix(red, (min(255, L * 1.5 + 60), L * 0.72 + 20, L * 0.5 + 12), min(1.0, hot))
+    o = mix(red, (r, g, b), 0.08)
+    if k_field > 0:
+        o = mix(o, (min(255, L * 1.1 + 70), L * 0.8 + 40, min(255, L * 1.4 + 90)), 0.55 * k_field)
+    d = math.hypot((x - 267) / 400, (y - 133) / 227)
+    f = max(0.0, 1 - max(0.0, d - 0.55) * 1.3)
+    return (int(o[0] * f), int(o[1] * f), int(o[2] * f))
+
+
+def draw_iri(cv, t, beams=None, k_field=0.0, **kw):
+    im, x0, y0 = iri_sprite(t, **kw)
+    A = im.load()
+    for y in range(im.height):
+        for x in range(im.width):
+            p = A[x, y]
+            if p[3] > 0 and 0 <= x0 + x < W and 0 <= y0 + y < H:
+                side = k_field * (0.4 + 0.6 * x / im.width)
+                cv.flat(x0 + x, y0 + y, redden(p[:3], x0 + x, y0 + y, beams, side))
+    cv.darken(x0 + 14, IRI_FEET - 2, x0 + im.width - 14, IRI_FEET + 1, 0.4)        # l'ombra als peus
+
+
+def field_level(u):
+    """Com de despert és el camp (0..1) a la fracció `u` del seu tros."""
+    u = max(0.0, min(1.0, u))
+    return (u * u * (3 - 2 * u)) ** 1.4
+
+
+def arc(cv, x0, y0, x1, y1, seed, k):
+    """Un arc elèctric en ziga-zaga de (x0, y0) a (x1, y1)."""
+    n = max(3, round(abs(x1 - x0) / 5))
+    pts = [(x0, y0)]
+    for i in range(1, n):
+        u = i / n
+        pts.append((x0 + (x1 - x0) * u + (hr(i, seed, 1) - 0.5) * 3, y0 + (y1 - y0) * u + (hr(i, seed, 2) - 0.5) * 9))
+    pts.append((x1, y1))
+    for (ax, ay), (bx, by) in zip(pts, pts[1:]):
+        steps = max(1, round(max(abs(bx - ax), abs(by - ay))))
+        for s_ in range(steps + 1):
+            px, py = round(ax + (bx - ax) * s_ / steps), round(ay + (by - ay) * s_ / steps)
+            if 0 <= px < W and 0 <= py < H:
+                cv.flat(px, py, (250, 236, 255))
+                for dx, dy in ((0, -1), (0, 1)):
+                    cv.flat(px + dx, py + dy, mix(cv.get(px + dx, py + dy), (190, 120, 255), 0.55 * k))
+    cv.glow((x0 + x1) / 2, (y0 + y1) / 2, 10 + 8 * k, (190, 120, 255), 0.35 + 0.3 * k)
+
+
+def field(cv, k, f):
+    """El camp despert `k` (0..1), al fotograma `f` (els arcs canvien a cada fotograma)."""
+    if k <= 0:
+        return
+    gx0, gx1, gy0, gy1 = GLASS
+    cv.tint(gx0, gy0, gx1, gy1, (170, 110, 255), lambda x, y: 0.42 * k * (1 - abs(x - 345) / 70))
+    n = int(k * 7 + hr(f, 3) * 2 * k)                     # de tant en tant al principi, a dojo al final
+    for i in range(n):
+        side = hr(f, i, 4)
+        y = round(60 + hr(f, i, 5) * 110)
+        dy = round((hr(f, i, 6) - 0.5) * 10)
+        if side < 0.45:
+            arc(cv, 323, y, 337, y + dy, f * 13 + i, k)
+        elif side < 0.9:
+            arc(cv, 353, y, 368, y + dy, f * 13 + i, k)
+        elif k > 0.5:                                      # i, al final, fins al vidre
+            if hr(f, i, 7) < 0.5:
+                arc(cv, gx0 + 2, y, 308, y + 6, f * 13 + i, k)
+            else:
+                arc(cv, 383, y, gx1 - 2, y - 6, f * 13 + i, k)
+    cv.glow(345, 112, 60 + 40 * k, (190, 130, 255), 0.25 * k)
+
+
+def _layer(draw):
+    cv = Canvas(light=LIGHT, img=_base().copy())
+    cv.P = cv.img.load()
+    draw(cv)
+    return frame_diff(_base(), cv.img)
+
+
+def _empty():
+    return [Canvas(transparent=True).img]
+
+
+def _iri_entra():
+    return [_layer(lambda cv: draw_iri(cv, i * 0.1)) for i in range(round(WALK_LEN / 0.1) + 2)]
+
+
+def _flash():
+    """El flaix: blanc tramat (B4) cada cop més ple, i blanc del tot."""
+    from PIL import Image
+    out = []
+    for k in (0.25, 0.5, 0.75):
+        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        P = img.load()
+        for y in range(H):
+            for x in range(W):
+                if B4[y & 3][x & 3] < k:
+                    P[x, y] = (255, 255, 255, 255)
+        out.append(img)
+    out.append(Image.new('RGBA', (W, H), (255, 255, 255, 255)))
+    return out
+
+
+def _iri_camp():
+    # (la capa de l'Iri és la de dalt: el flaix hi va al final, perquè ho tapi tot)
+    n = round(FIELD_LEN / FIELD_DT) + 1
+    return [_layer(lambda cv: draw_iri(cv, WALK_LEN + 1, k_field=field_level(i / (n - 1)))) for i in range(n)] + _flash()
+
+
+def _camp():
+    n = round(FIELD_LEN / FIELD_DT) + 1
+    return [_layer(lambda cv: field(cv, field_level(i / (n - 1)), i)) for i in range(n)]
+
+
+ANIMS = {
+    'ambient': {'frames': _ambient_frames, 'frameDuration': 70},
+    'iri_cambra': {'frames': _empty, 'frameDuration': 1000, 'loop': False, 'zIndex': 3},
+    'iri_entra': {'frames': _iri_entra, 'frameDuration': 100, 'loop': False, 'prop': 'iri_cambra'},
+    'iri_camp': {'frames': _iri_camp, 'frameDuration': round(FIELD_DT * 1000), 'loop': False, 'prop': 'iri_cambra'},
+    'camp': {'frames': _empty, 'frameDuration': 1000, 'loop': False, 'zIndex': 2},
+    'camp_desperta': {'frames': _camp, 'frameDuration': round(FIELD_DT * 1000), 'loop': False, 'prop': 'camp'},
+}

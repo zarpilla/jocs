@@ -65,6 +65,46 @@
           "frameDuration": 70
         }
       }
+    },
+    {
+      "id": "camp",
+      "tag": "camp",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "camp": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "camp_desperta": {
+          "loop": false,
+          "frameDuration": 83
+        }
+      }
+    },
+    {
+      "id": "iri_cambra",
+      "tag": "iri_cambra",
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "iri_cambra": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "iri_entra": {
+          "loop": false,
+          "frameDuration": 100
+        },
+        "iri_camp": {
+          "loop": false,
+          "frameDuration": 83
+        }
+      }
     }
   ],
   "characters": []

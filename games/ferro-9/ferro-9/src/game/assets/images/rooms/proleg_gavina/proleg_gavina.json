@@ -23,8 +23,8 @@
     },
     "proleg_gavina 1.aseprite": {
       "frame": {
-        "x": 3834,
-        "y": 1080,
+        "x": 1022,
+        "y": 1440,
         "w": 1,
         "h": 1
       },
@@ -524,6 +524,1518 @@
         "h": 360
       },
       "duration": 100
+    },
+    "proleg_gavina 25.aseprite": {
+      "frame": {
+        "x": 1022,
+        "y": 1440,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 26.aseprite": {
+      "frame": {
+        "x": 4018,
+        "y": 1080,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 463,
+        "y": 264,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 27.aseprite": {
+      "frame": {
+        "x": 4036,
+        "y": 1080,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 463,
+        "y": 264,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 28.aseprite": {
+      "frame": {
+        "x": 4054,
+        "y": 1080,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 462,
+        "y": 264,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 29.aseprite": {
+      "frame": {
+        "x": 4073,
+        "y": 1080,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 461,
+        "y": 264,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 30.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 460,
+        "y": 262,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 31.aseprite": {
+      "frame": {
+        "x": 17,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 459,
+        "y": 262,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 32.aseprite": {
+      "frame": {
+        "x": 35,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 457,
+        "y": 260,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 33.aseprite": {
+      "frame": {
+        "x": 53,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 455,
+        "y": 260,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 34.aseprite": {
+      "frame": {
+        "x": 71,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 453,
+        "y": 258,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 35.aseprite": {
+      "frame": {
+        "x": 89,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 451,
+        "y": 256,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 36.aseprite": {
+      "frame": {
+        "x": 107,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 449,
+        "y": 256,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 37.aseprite": {
+      "frame": {
+        "x": 125,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 446,
+        "y": 254,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 38.aseprite": {
+      "frame": {
+        "x": 144,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 444,
+        "y": 252,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 39.aseprite": {
+      "frame": {
+        "x": 3834,
+        "y": 1080,
+        "w": 18,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 441,
+        "y": 250,
+        "w": 18,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 40.aseprite": {
+      "frame": {
+        "x": 161,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 438,
+        "y": 250,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 41.aseprite": {
+      "frame": {
+        "x": 180,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 435,
+        "y": 248,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 42.aseprite": {
+      "frame": {
+        "x": 198,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 432,
+        "y": 246,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 43.aseprite": {
+      "frame": {
+        "x": 3852,
+        "y": 1080,
+        "w": 18,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 429,
+        "y": 244,
+        "w": 18,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 44.aseprite": {
+      "frame": {
+        "x": 215,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 425,
+        "y": 244,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 45.aseprite": {
+      "frame": {
+        "x": 3870,
+        "y": 1080,
+        "w": 19,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 422,
+        "y": 240,
+        "w": 19,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 46.aseprite": {
+      "frame": {
+        "x": 233,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 418,
+        "y": 240,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 47.aseprite": {
+      "frame": {
+        "x": 252,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 415,
+        "y": 238,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 48.aseprite": {
+      "frame": {
+        "x": 270,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 411,
+        "y": 236,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 49.aseprite": {
+      "frame": {
+        "x": 288,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 408,
+        "y": 234,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 50.aseprite": {
+      "frame": {
+        "x": 307,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 404,
+        "y": 232,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 51.aseprite": {
+      "frame": {
+        "x": 3889,
+        "y": 1080,
+        "w": 19,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 400,
+        "y": 230,
+        "w": 19,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 52.aseprite": {
+      "frame": {
+        "x": 324,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 396,
+        "y": 228,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 53.aseprite": {
+      "frame": {
+        "x": 3908,
+        "y": 1080,
+        "w": 19,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 392,
+        "y": 226,
+        "w": 19,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 54.aseprite": {
+      "frame": {
+        "x": 341,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 388,
+        "y": 226,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 55.aseprite": {
+      "frame": {
+        "x": 358,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 384,
+        "y": 224,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 56.aseprite": {
+      "frame": {
+        "x": 375,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 380,
+        "y": 224,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 57.aseprite": {
+      "frame": {
+        "x": 392,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 377,
+        "y": 222,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 58.aseprite": {
+      "frame": {
+        "x": 410,
+        "y": 1440,
+        "w": 16,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 373,
+        "y": 220,
+        "w": 16,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 59.aseprite": {
+      "frame": {
+        "x": 3927,
+        "y": 1080,
+        "w": 18,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 369,
+        "y": 218,
+        "w": 18,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 60.aseprite": {
+      "frame": {
+        "x": 426,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 365,
+        "y": 218,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 61.aseprite": {
+      "frame": {
+        "x": 3945,
+        "y": 1080,
+        "w": 18,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 361,
+        "y": 216,
+        "w": 18,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 62.aseprite": {
+      "frame": {
+        "x": 444,
+        "y": 1440,
+        "w": 16,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 357,
+        "y": 216,
+        "w": 16,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 63.aseprite": {
+      "frame": {
+        "x": 3963,
+        "y": 1080,
+        "w": 18,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 353,
+        "y": 214,
+        "w": 18,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 64.aseprite": {
+      "frame": {
+        "x": 956,
+        "y": 1440,
+        "w": 18,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 349,
+        "y": 216,
+        "w": 18,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 65.aseprite": {
+      "frame": {
+        "x": 460,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 345,
+        "y": 214,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 66.aseprite": {
+      "frame": {
+        "x": 974,
+        "y": 1440,
+        "w": 18,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 341,
+        "y": 214,
+        "w": 18,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 67.aseprite": {
+      "frame": {
+        "x": 3981,
+        "y": 1080,
+        "w": 18,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 337,
+        "y": 212,
+        "w": 18,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 68.aseprite": {
+      "frame": {
+        "x": 478,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 334,
+        "y": 212,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 69.aseprite": {
+      "frame": {
+        "x": 497,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 330,
+        "y": 212,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 70.aseprite": {
+      "frame": {
+        "x": 516,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 326,
+        "y": 212,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 71.aseprite": {
+      "frame": {
+        "x": 535,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 323,
+        "y": 212,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 72.aseprite": {
+      "frame": {
+        "x": 553,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 319,
+        "y": 212,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 73.aseprite": {
+      "frame": {
+        "x": 3999,
+        "y": 1080,
+        "w": 19,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 316,
+        "y": 210,
+        "w": 19,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 74.aseprite": {
+      "frame": {
+        "x": 571,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 313,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 75.aseprite": {
+      "frame": {
+        "x": 589,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 310,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 76.aseprite": {
+      "frame": {
+        "x": 608,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 306,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 77.aseprite": {
+      "frame": {
+        "x": 627,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 303,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 78.aseprite": {
+      "frame": {
+        "x": 645,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 301,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 79.aseprite": {
+      "frame": {
+        "x": 663,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 298,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 80.aseprite": {
+      "frame": {
+        "x": 992,
+        "y": 1440,
+        "w": 18,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 295,
+        "y": 212,
+        "w": 18,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 81.aseprite": {
+      "frame": {
+        "x": 682,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 292,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 82.aseprite": {
+      "frame": {
+        "x": 701,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 290,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 83.aseprite": {
+      "frame": {
+        "x": 720,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 288,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 84.aseprite": {
+      "frame": {
+        "x": 739,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 285,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 85.aseprite": {
+      "frame": {
+        "x": 757,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 283,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 86.aseprite": {
+      "frame": {
+        "x": 775,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 282,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 87.aseprite": {
+      "frame": {
+        "x": 794,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 88.aseprite": {
+      "frame": {
+        "x": 813,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 89.aseprite": {
+      "frame": {
+        "x": 832,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 277,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 90.aseprite": {
+      "frame": {
+        "x": 850,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 210,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 91.aseprite": {
+      "frame": {
+        "x": 867,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 275,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 92.aseprite": {
+      "frame": {
+        "x": 885,
+        "y": 1440,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 274,
+        "y": 210,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 93.aseprite": {
+      "frame": {
+        "x": 904,
+        "y": 1440,
+        "w": 18,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 273,
+        "y": 210,
+        "w": 18,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 94.aseprite": {
+      "frame": {
+        "x": 922,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 272,
+        "y": 210,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 95.aseprite": {
+      "frame": {
+        "x": 939,
+        "y": 1440,
+        "w": 17,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 272,
+        "y": 210,
+        "w": 17,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "proleg_gavina 96.aseprite": {
+      "frame": {
+        "x": 1010,
+        "y": 1440,
+        "w": 12,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 272,
+        "y": 212,
+        "w": 12,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -532,8 +2044,8 @@
     "image": "proleg_gavina.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3835,
-      "h": 1440
+      "w": 4091,
+      "h": 1449
     },
     "scale": "1",
     "frameTags": [
@@ -548,6 +2060,20 @@
         "name": "ambient",
         "from": 1,
         "to": 24,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "llancadora",
+        "from": 25,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "llancadora_puja",
+        "from": 26,
+        "to": 96,
         "direction": "forward",
         "color": "#000000ff"
       }

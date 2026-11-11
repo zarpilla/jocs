@@ -17,6 +17,8 @@ import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×36
 import math
 import random
 
+from PIL import Image
+
 from hd.pix import (Light, B4, W, H, hr, mix, ramp, BRICK, IRON, SMOKE, GLASS, FIRE, GOLD,
                     NAVY, SIL, PAPER, WALNUT, RUST, COPPER)
 from hd640.rooms.proleg_gavina import Noise, vinyeta, ambient_frames
@@ -704,4 +706,126 @@ def bg(cv, retol=True, t=0.0):
 
 PROPS = {}
 
-ANIMS = {'ambient': {'frames': lambda: ambient_frames(bg, LIGHT), 'frameDuration': 130}}
+# ─── L'Iri entra al torn de nit (capa del pròleg) ────────────────────────────
+# Mentre la narració presenta la fàbrica, l'Iri (petita, 28 píxels) passa pel moll sota el fanal, s'atura davant del
+# portal dels forns, es gira i entra a la llum («iri_torn», sense bucle: es queda buida). Fins llavors, la capa és
+# buida («iri_moll»). Sense el reflex al canal: el faria quiet damunt de l'aigua que es mou.
+# La intro en vídeo (intro_animada.py) fa servir el mateix dibuix.
+
+LAMP, PORTAL_C = (315, 197), (476, 214)
+FEET_Y = 246
+IRI_WALK = (0.0, 5.4)             # del fanal al portal
+IRI_ENTER = (5.4, 6.5)            # es gira i s'endinsa a la llum
+IRI_X0 = 282
+
+
+def warm_at(x, y):
+    """Quanta llum càlida hi ha a (x, y): la del fanal i la del portal (0..1)."""
+    lamp = max(0.0, 1 - math.hypot(x - LAMP[0], (y - LAMP[1]) * 1.3) / 46)
+    port = max(0.0, 1 - math.hypot(x - PORTAL_C[0], (y - PORTAL_C[1]) * 0.8) / 60)
+    return min(1.0, lamp * 1.2 + port * 1.1)
+
+
+def iri_petita(cv, fx, fy, t, facing, walking):
+    """L'Iri petita (28 píxels), de nit: la bata blanca, la trena fosca. `facing`: 1 cap a la dreta, 0 d'esquena (a
+    contrallum: silueta amb la vora encesa). `t`, en segons, mou les cames si `walking`."""
+    HAIR, BRAID, SKN, LEG, SHOE = (46, 28, 22), (36, 22, 18), (196, 150, 120), (72, 68, 84), (26, 20, 22)
+    COAT_N, COAT_W = (78, 80, 98), (250, 214, 160)
+    ph = int(t * 10) % 4 if walking else 0                        # 4 passos per cicle
+    bob = 1 if ph in (1, 3) else 0
+    y0 = fy - 27 + bob
+
+    def coat(x, y, edge=0.0):
+        w = warm_at(x, y)
+        if not facing:
+            return (255, 196, 120) if edge else mix((34, 24, 28), (90, 50, 34), w * 0.5)
+        c = mix(COAT_N, COAT_W, w * 0.85)
+        return mix(c, (20, 18, 26), edge)
+
+    def leg(x, y):
+        return mix(LEG, (120, 80, 60), warm_at(x, y) * 0.5) if facing else (22, 16, 18)
+
+    # les cames: obertes (0, 2) o juntes (1, 3)
+    spread = (3, -3) if ph == 0 else ((-3, 3) if ph == 2 else (0, 0))
+    for i, s in enumerate(spread):
+        lx = fx - 1 + i * 2
+        for y in range(fy - 8, fy):
+            xx = lx + (round(s * (y - (fy - 8)) / 7) if facing else 0)
+            cv.flat(xx, y, leg(xx, y))
+        if facing:
+            cv.flat(lx + s + 1, fy - 1, SHOE)
+            cv.flat(lx + s, fy - 1, SHOE)
+    # la bata: de les espatlles als genolls, s'eixampla una mica
+    for y in range(y0 + 7, fy - 7 + bob):
+        half = 3 if y < y0 + 15 else 4
+        for x in range(fx - half, fx + half):
+            if facing:
+                edge = 0.45 if x == fx - half else (0.2 if x == fx + half - 1 else 0.0)
+            else:
+                edge = 1 if x in (fx - half, fx + half - 1) and hr(x, y, 8) > 0.3 else 0
+            cv.flat(x, y, coat(x, y, edge))
+    # el braç, que es balanceja
+    if facing:
+        sw = (1 if ph == 0 else -1 if ph == 2 else 0)
+        for k in range(8):
+            cv.flat(fx + round(sw * k / 7), y0 + 8 + k, coat(fx, y0 + 8 + k, 0.3))
+        cv.flat(fx + sw, y0 + 16, SKN)
+    # el cap i els cabells
+    for y in range(y0, y0 + 6):
+        for x in range(fx - 2, fx + 3):
+            face = facing and x >= fx + 1 and y >= y0 + 2
+            hair = HAIR if facing else ((150, 90, 60) if x in (fx - 2, fx + 2) else (24, 16, 14))
+            cv.flat(x, y, mix(SKN, (40, 30, 40), 0.35 * (1 - warm_at(x, y))) if face else hair)
+    if facing:
+        cv.flat(fx + 3, y0 + 3, mix(SKN, (40, 30, 40), 0.3))                     # el nas
+        cv.flat(fx, y0, (110, 180, 180))                                          # les ulleres a la diadema
+        cv.flat(fx + 1, y0, (70, 120, 120))
+    # la trena, a l'esquena
+    bx = fx - 3 if facing else fx
+    for y in range(y0 + 4, y0 + 15):
+        cv.flat(bx, y, BRAID)
+    cv.flat(bx, y0 + 15, (150, 30, 30))                                           # la goma vermella
+
+
+def iri_torn(cv, t):
+    """L'Iri al moll al segon `t` del seu tros: → quant s'ha fos ja amb la llum (0..1), per a la fosa tramada."""
+    if t < IRI_WALK[1]:
+        u = max(0.0, (t - IRI_WALK[0]) / (IRI_WALK[1] - IRI_WALK[0]))
+        iri_petita(cv, round(IRI_X0 + (PORTAL_C[0] - IRI_X0) * u), FEET_Y, t, 1, True)
+        return 0.0
+    u = min(1.0, (t - IRI_ENTER[0]) / (IRI_ENTER[1] - IRI_ENTER[0]))
+    iri_petita(cv, PORTAL_C[0], FEET_Y - round(u * 2), t, 0, u < 1)
+    return max(0.0, (u - 0.35) / 0.65)
+
+
+def _base():
+    from hd.pix import Canvas
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+def _iri_frames():
+    import numpy as np
+    from hd.pix import Canvas
+    from hd640.rooms.fabrica_cambra import frame_diff
+    base = _base()
+    bayer = np.array([[(B4[y & 3][x & 3]) for x in range(W)] for y in range(H)])
+    out = []
+    for i in range(round(IRI_ENTER[1] / 0.1) + 2):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        cv.P = cv.img.load()
+        gone = iri_torn(cv, i * 0.1)
+        d = np.array(frame_diff(base, cv.img))
+        if gone > 0:
+            d[bayer < gone, 3] = 0
+        out.append(Image.fromarray(d, 'RGBA'))
+    out.append(Canvas(transparent=True).img)                                       # ja és a dins
+    return out
+
+
+ANIMS = {
+    'ambient': {'frames': lambda: ambient_frames(bg, LIGHT), 'frameDuration': 130},
+    'iri_moll': {'frames': lambda: [Image.new('RGBA', (W, H))], 'frameDuration': 1000, 'loop': False, 'zIndex': 2},
+    'iri_torn': {'frames': _iri_frames, 'frameDuration': 100, 'loop': False, 'prop': 'iri_moll'},
+}

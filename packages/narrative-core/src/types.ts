@@ -263,6 +263,8 @@ export interface DialogueLineDef {
  *
  * En lloc de `who`, `prop`: una capa del decorat de la sala que no és al JSON del joc (l'art del motor, p. ex. la
  * zòdiac del pròleg de Ni un ou), que només es mostra o s'amaga (`visible`) i canvia d'animació (`anim`).
+ *
+ * `shake` sacseja la pantalla (p. ex. la paret que vibra al pròleg de Ferro-9); pot anar sol, sense `who` ni `prop`.
  */
 export interface StageCue {
   who?: Id | 'player';
@@ -273,6 +275,8 @@ export interface StageCue {
    * En saltar la cinemàtica, no s'espera.
    */
   hold?: number;
+  /** Sacseja la pantalla aquests segons (no s'espera). */
+  shake?: number;
   /** S'hi posa de cop. */
   at?: Id | StagePoint;
   /** Hi camina. */

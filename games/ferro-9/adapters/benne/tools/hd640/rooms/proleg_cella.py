@@ -14,7 +14,7 @@ import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×36
 
 import math
 
-from hd.pix import Light, hr, mix, ramp, CYAN, SKIN, PAPER, GRAY, ORANGE
+from hd.pix import Canvas, Light, hr, mix, ramp, CYAN, SKIN, PAPER, GRAY, ORANGE
 from hd640.rooms.gavina_cella import (_static as cella_static, _dyn as cella_dyn, COVER, p_escarabat, p_safata,
                                       Ambient, GRIME, MATT)  # noqa: F401
 
@@ -172,6 +172,45 @@ def _ambient_frames(n=24):
     return AMB.frames(n)
 
 
-ANIMS = {'ambient': {'frames': _ambient_frames, 'frameDuration': 125}}
+# ─── La Vet obre els ulls (capa del pròleg) ──────────────────────────────────
+# A la segona sacsejada de la paret, la Vet es desperta: obre els ulls (el tancat és la ratlla de 596..598, 165),
+# parpelleja un cop i es queda mirant («vet_desperta», sense bucle). Fins llavors, la capa és buida («vet_ulls»).
+
+def ulls_vet(cv, mig=False):
+    skin = cv.get(599, 166)
+    cv.flat(596, 165, (190, 206, 214))                        # el blanc de l'ull, amb la llum freda del panell
+    cv.flat(597, 165, mix(skin, (26, 14, 14), 0.6) if mig else (60, 36, 26))   # l'iris (a mig obrir, la parpella)
+    cv.flat(598, 165, mix(skin, (26, 14, 14), 0.5))
+    for x in (596, 597, 598):                                 # la parpella i les pestanyes, a sobre
+        cv.flat(x, 164, (26, 14, 14) if x < 598 else mix(skin, (26, 14, 14), 0.6))
+
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+def _ulls_frames():
+    from hd640.rooms.fabrica_cambra import frame_diff
+    base = _base()
+
+    def layer(state):
+        if state is None:
+            return Canvas(transparent=True).img
+        cv = Canvas(light=LIGHT, img=base.copy())
+        cv.P = cv.img.load()
+        ulls_vet(cv, mig=state == 'mig')
+        return frame_diff(base, cv.img)
+    closed, half, opened = layer(None), layer('mig'), layer('obert')
+    # (fotogrames de 150 ms) tancats, a mig obrir, oberts... un parpelleig... oberts
+    return [closed, closed, half, opened, opened, opened, opened, opened, closed, half, opened]
+
+
+ANIMS = {
+    'ambient': {'frames': _ambient_frames, 'frameDuration': 125},
+    'vet_ulls': {'frames': lambda: [Canvas(transparent=True).img], 'frameDuration': 1000, 'loop': False, 'zIndex': 2},
+    'vet_desperta': {'frames': _ulls_frames, 'frameDuration': 150, 'loop': False, 'prop': 'vet_ulls'},
+}
 
 PROPS = {}

@@ -14,7 +14,13 @@
         },
         {
           "who": "narrator",
-          "text": "proleg.fabrica1"
+          "text": "proleg.fabrica1",
+          "stage": [
+            {
+              "prop": "iri_moll",
+              "anim": "iri_torn"
+            }
+          ]
         },
         {
           "who": "narrator",
