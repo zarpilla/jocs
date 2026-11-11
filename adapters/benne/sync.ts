@@ -134,7 +134,7 @@ function sync() {
   }
   for (const [file, from] of runtime) writeGenerated(join(narrativeDir, file), readFileSync(from, 'utf8'), 'ts');
   const { $comment: _c, ...mapping } = JSON.parse(readFileSync(join(JOC_ADAPTER, 'mapping.json'), 'utf8'));
-  // La resolució, perquè el runtime no doni per fet que la pantalla fa 480 d'ample (Aigua bruta és a 640×360).
+  // La resolució, perquè el runtime no doni per fet que la pantalla fa 480 d'ample (Ni un ou és a 640×360).
   const gameConfigPath = join(gameDir, 'game-config.json');
   const resolucio = existsSync(gameConfigPath) ? JSON.parse(readFileSync(gameConfigPath, 'utf8')).resolution : undefined;
   writeGenerated(join(narrativeDir, 'mapping.generated.json'), json({ id: basename(jocDir()), nom: joc.nom, musicSync: joc.musicaSincronitzada === true, resolucio, ...mapping }), 'json');

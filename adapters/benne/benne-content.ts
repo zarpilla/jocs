@@ -18,7 +18,7 @@ import { jocAdapterDir, type JocBenne } from './joc-benne.js';
 /** Art provisional dels personatges del joc (games/<joc>/adapters/benne/placeholder-art/). */
 const placeholderArt = (...parts: string[]) => join(jocAdapterDir(), 'placeholder-art', ...parts);
 /**
- * Resolució del joc: la de game-config.json del projecte (480×270 si no en té; Aigua bruta és a 640×360). La fixa
+ * Resolució del joc: la de game-config.json del projecte (480×270 si no en té; Ni un ou és a 640×360). La fixa
  * writeBenneContent. La disposició automàtica de les sales noves es va escriure en mides de 352×198 (Ferro-9) i
  * s'escala amb `s()`.
  */

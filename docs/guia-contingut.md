@@ -76,7 +76,7 @@ Cada protagonista té el seu inventari i la seva sala. La primera de la llista �
 
 **Sales compartides.** Una sala amb `"protagonists": ["iri", "vet"]` (en lloc de `"protagonist"`) és de totes dues:
 hi entra qui juga, i si l'altra també hi és, es veu (i s'hi pot parlar o donar-li coses). En canviar de protagonista
-dins la mateixa sala no es torna a entrar a la sala. A Aigua bruta totes les sales jugables són compartides.
+dins la mateixa sala no es torna a entrar a la sala. A Ni un ou totes les sales jugables són compartides.
 `"who": "player"` a les línies és sempre la protagonista que juga en aquell moment.
 
 ## Sales i interaccions: `data/rooms/<sala>.json`

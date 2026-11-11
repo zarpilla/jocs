@@ -1,0 +1,459 @@
+{
+  "$comment": "GENERAT per adapters/benne/sync.ts",
+  "id": "ni-un-ou",
+  "nom": "Ni un ou",
+  "musicSync": true,
+  "resolucio": {
+    "width": 640,
+    "height": 360
+  },
+  "characters": {},
+  "items": {},
+  "rooms": {},
+  "hotspots": {},
+  "music": {
+    "$comment": "Música d'ambient de cada sala: sala → pista (game/audio/music/<pista>.ogg, la genera `npm run musica`). Les sales que no hi són continuen amb la que sonava. Totes les pistes duren el mateix i s'encadenen al mateix punt. `tensio` (per a les sincronies) encara no la fa servir cap sala.",
+    "portada": "tema",
+    "proleg_punt7": "tema",
+    "camarot_iri": "maquines",
+    "passadis_baix": "maquines",
+    "sala_maquines": "maquines",
+    "taller": "maquines",
+    "rebost": "maquines",
+    "diposit2": "maquines",
+    "pallol": "maquines",
+    "sala_bombes": "maquines",
+    "passadis": "coberta",
+    "menjador": "coberta",
+    "cuina": "coberta",
+    "infermeria": "coberta",
+    "laboratori": "coberta",
+    "cabina_capitana": "coberta",
+    "pont": "pont",
+    "sala_radio": "pont",
+    "pal": "pont",
+    "coberta_popa": "fora",
+    "coberta_proa": "fora",
+    "caixa_cadenes": "fora",
+    "final_galway": "galway",
+    "credits": "galway",
+    "postcredits": "tema"
+  },
+  "ambient": {
+    "$comment": "So de fons en bucle de cada sala (game/audio/sfx/amb_*.ogg, els genera `npm run sons`), sota la música. Una llista: el primer cas que es compleix. A l'Escena 9, amb el generador parat, a dins només se sent el casc (amb_fosc).",
+    "sala_maquines": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 1
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 1
+      }
+    ],
+    "sala_bombes": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 0.8
+      }
+    ],
+    "taller": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 0.7
+      }
+    ],
+    "rebost": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 0.6
+      }
+    ],
+    "pallol": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 0.6
+      }
+    ],
+    "diposit2": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 0.5
+      }
+    ],
+    "passadis_baix": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 0.6
+      }
+    ],
+    "camarot_iri": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_maquines",
+        "volume": 0.4
+      }
+    ],
+    "passadis": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_coberta",
+        "volume": 1
+      }
+    ],
+    "menjador": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_coberta",
+        "volume": 0.8
+      }
+    ],
+    "cuina": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_coberta",
+        "volume": 0.8
+      }
+    ],
+    "infermeria": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_coberta",
+        "volume": 0.8
+      }
+    ],
+    "laboratori": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_coberta",
+        "volume": 0.8
+      }
+    ],
+    "cabina_capitana": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_coberta",
+        "volume": 0.8
+      }
+    ],
+    "pont": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_pont",
+        "volume": 1
+      }
+    ],
+    "sala_radio": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "rele_posat",
+              "is": false
+            }
+          ]
+        },
+        "sound": "amb_fosc",
+        "volume": 0.8
+      },
+      {
+        "sound": "amb_pont",
+        "volume": 0.7
+      }
+    ],
+    "coberta_popa": "amb_mar",
+    "coberta_proa": "amb_mar",
+    "proleg_punt7": "amb_mar",
+    "pal": "amb_pal",
+    "caixa_cadenes": "amb_caixa"
+  },
+  "doors": {
+    "$comment": "So de cada sortida (`sala.cosa`): sona en arribar a la sala nova (game/audio/sfx/, `npm run sons`).",
+    "cabina_capitana.porta": "porta",
+    "caixa_cadenes.escotilla": "escotilla",
+    "camarot_iri.porta": "porta",
+    "coberta_popa.porta": "porta_estanca",
+    "coberta_proa.porta": "porta_estanca",
+    "coberta_proa.escotilla": "escotilla",
+    "cuina.porta": "porta",
+    "diposit2.registre": "escotilla",
+    "infermeria.porta": "porta",
+    "laboratori.porta": "porta",
+    "menjador.porta_passadis": "porta",
+    "menjador.porta_cuina": "porta",
+    "menjador.porta_popa": "porta_estanca",
+    "pal.escala": "escala",
+    "pallol.porta": "porta",
+    "passadis.porta_menjador": "porta",
+    "passadis.porta_infermeria": "porta",
+    "passadis.porta_laboratori": "porta",
+    "passadis.porta_capitana": "porta",
+    "passadis.escala_amunt": "escala",
+    "passadis.escala_avall": "escala",
+    "passadis.porta_proa": "porta_estanca",
+    "passadis_baix.porta_camarot": "porta",
+    "passadis_baix.porta_maquines": "porta_estanca",
+    "passadis_baix.porta_pallol": "porta",
+    "passadis_baix.escotilla": "escotilla",
+    "passadis_baix.escala": "escala",
+    "pont.escala": "escala",
+    "pont.porta_radio": "porta",
+    "pont.escala_pal": "escala",
+    "rebost.porta": "porta_estanca",
+    "rebost.registre": "escotilla",
+    "sala_bombes.escotilla": "escotilla",
+    "sala_maquines.porta_passadis": "porta_estanca",
+    "sala_maquines.porta_taller": "porta_estanca",
+    "sala_maquines.porta_rebost": "porta_estanca",
+    "sala_radio.porta": "porta",
+    "taller.porta": "porta_estanca"
+  }
+}

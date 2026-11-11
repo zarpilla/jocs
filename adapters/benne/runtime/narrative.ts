@@ -208,7 +208,7 @@ narrative.on((e) => {
 
 // ─── Partides desades a una altra resolució ─────────────────────────────────
 // Benne desa dins la partida la posició de cada personatge a cada sala, i en tornar-hi la fa servir.
-// Les partides d'una resolució anterior (352×198 a Ferro-9; 480×270 a Aigua bruta abans de passar a 640×360) les
+// Les partides d'una resolució anterior (352×198 a Ferro-9; 480×270 a Ni un ou abans de passar a 640×360) les
 // tenen en coordenades velles: els personatges quedarien fora de lloc. S'escalen una vegada. `store.resolucio`
 // és l'amplada amb què es va desar (les de 352 no en tenien).
 const RESOLUCIO = AMPLADA;
