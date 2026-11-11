@@ -7,12 +7,12 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, display, fadeIn, fadeOut, player, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, display, fadeIn, fadeOut, game, player, saves, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
-import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
+import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -24,10 +24,37 @@ import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
  */
 type Around = { before?: string; after?: string }
 
-/** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
+/**
+ * Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). Si n'hi ha amb moviment
+ * (`stage`, `stageAfter`), és una petita cinemàtica: els clics al món no la tallen, i la tecla de saltar l'acaba de cop.
+ */
 export function playLines(lines: ResolvedLine[], around: Around = {}) {
+  if (lines.some((l) => l.stage || l.stageAfter)) {
+    cutscene(() => {
+      sayLines(lines, around)
+      // I en acabar, cadascú torna a l'animació que diu l'estat (p. ex. en Bastida, assegut).
+      applyAppearances()
+    })
+  } else sayLines(lines, around)
+}
+
+/** Les indicacions d'escena d'una línia, per ordre: el que és de cop, i caminar (esperant-hi o no). */
+function playStage(cues: StageCue[]) {
+  for (const cue of cues) {
+    applyStageNow(cue)
+    if (cue.walk === undefined) continue
+    const to = stagePoint(cue.walk)
+    const actor = stageActor(cue.who) as unknown as { walkTo: ((p: { x: number; y: number }) => void) & { now(p: { x: number; y: number }): unknown } } | undefined
+    if (!to || !actor) continue
+    if (cue.wait === false) actor.walkTo.now(to)
+    else actor.walkTo(to)
+  }
+}
+
+function sayLines(lines: ResolvedLine[], around: Around) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
+    if (line.stage) playStage(line.stage)
     recordLine(line.who, line.text)
     if (line.sound) new SfxHandle(line.sound).play()
     if (line.who === 'title') {
@@ -52,6 +79,7 @@ export function playLines(lines: ResolvedLine[], around: Around = {}) {
         speaker.say(line.text)
       } else display(line.text)
     }
+    if (line.stageAfter) playStage(line.stageAfter)
   }
   // Qui s'ha de moure (`place`) hi camina ara, quan ja s'ha dit tot: els efectes s'apliquen abans de les
   // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
@@ -128,6 +156,7 @@ export function onRoomLoaded() {
   applyHotspotVisibility()
   applyAppearances()
   applyPlaces(false)
+  startPatrols()
 }
 
 /**
@@ -170,6 +199,8 @@ export function onRoomEntered() {
   const result = narrative.enterRoom(room)
   entrada = { room, result }
   if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
+  // Com comença l'escena (qui hi ha, on, assegut o dret) ja es veu en sortir del fos: el moviment, després.
+  for (const cue of result?.lines[0]?.stage ?? []) applyStageNow(cue)
   // Entrada caminant: abans del fos, la protagonista es posa fora de la pantalla, a la mateixa alçada.
   if (result?.walkIn) {
     const lloc = player.position
@@ -273,6 +304,7 @@ export function enterNarrativeRoom() {
     result = narrative.enterRoom(room)
   }
   entrada = null
+  startPatrols()
   if (finale[0]?.room === room) {
     playFinaleRoom()
     return
@@ -465,4 +497,60 @@ function playFinaleRoom() {
   finale = []
   fadeOut(1.5)
   display(narrative.t('ui.fi'))
+}
+
+// ─── Rondes (`patrol` a characters.json) ─────────────────────────────────────
+
+type PatrolActor = {
+  position: { x: number; y: number }; visible: boolean; stopWalking(): void;
+  walkTo: { now(p: { x: number; y: number }): unknown }; face: (d: 'L' | 'R' | 'U' | 'D') => void;
+}
+
+/** En entrar a una sala (o carregar-hi una partida): qui hi pot fer ronda la fa en segon pla. */
+function startPatrols() {
+  const room = narrative.world.currentRoom()
+  if (!room) return
+  for (const [id, def] of Object.entries(narrative.content.characters)) {
+    if (def.patrol?.some((p) => p.room === room)) background(() => { patrol(id, room) })
+  }
+}
+
+/**
+ * La ronda d'un personatge: mentre l'estat la demani, va de punt en punt i s'hi atura una estona. Si passa
+ * alguna cosa (una línia, una conversa, una cinemàtica), s'atura on és, i després continua cap al mateix
+ * punt. S'acaba en sortir de la sala (Benne atura els blocs de segon pla).
+ */
+function patrol(id: string, room: string) {
+  const actor = benneCharacter(id) as unknown as PatrolActor | undefined
+  if (!actor) return
+  let next = 0
+  let walking = false
+  let still = 0
+  let last = { x: -1, y: -1 }
+  while (narrative.world.currentRoom() === room) {
+    const route = narrative.patrolOf(id, room)
+    if (!route || !actor.visible || game.isBusy || narrative.world.activeProtagonist() === id) {
+      if (walking) actor.stopWalking()
+      walking = false
+      wait(0.25)
+      continue
+    }
+    const to = route.path[next % route.path.length]!
+    if (!walking) {
+      actor.walkTo.now({ x: to.x, y: to.y })
+      walking = true
+      still = 0
+    }
+    wait(0.2)
+    const at = actor.position
+    still = Math.hypot(at.x - last.x, at.y - last.y) < 0.5 ? still + 1 : 0
+    last = { x: at.x, y: at.y }
+    // Hi ha arribat (o no s'hi pot acostar més: el punt és fora de la zona on es camina).
+    if (Math.hypot(at.x - to.x, at.y - to.y) < 3 || still >= 3) {
+      walking = false
+      next++
+      if (to.face) actor.face(to.face)
+      wait(route.pause ?? 1.5)
+    }
+  }
 }

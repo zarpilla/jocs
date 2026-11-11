@@ -11,7 +11,21 @@
         {
           "who": "narrator",
           "text": "sala.gavina_memoria.intro1",
-          "sound": "holograma"
+          "sound": "holograma",
+          "stage": [
+            {
+              "who": "vet",
+              "at": "porta_passadis",
+              "face": "R"
+            },
+            {
+              "who": "vet",
+              "walk": {
+                "x": 200,
+                "y": 252
+              }
+            }
+          ]
         },
         {
           "who": "player",

@@ -257,7 +257,21 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.gavina_passadis.fi1"
+          "text": "sala.gavina_passadis.fi1",
+          "stage": [
+            {
+              "who": "vet",
+              "at": "porta_cella",
+              "face": "R"
+            },
+            {
+              "who": "vet",
+              "walk": {
+                "x": 200,
+                "y": 252
+              }
+            }
+          ]
         },
         {
           "who": "player",

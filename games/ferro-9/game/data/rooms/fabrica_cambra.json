@@ -542,7 +542,17 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.fabrica.descoberta1"
+          "text": "sala.fabrica.descoberta1",
+          "stage": [
+            {
+              "who": "iri",
+              "at": {
+                "x": 330,
+                "y": 251
+              },
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -554,7 +564,33 @@
         },
         {
           "who": "player",
-          "text": "sala.fabrica.descoberta_cambra"
+          "text": "sala.fabrica.descoberta_cambra",
+          "stage": [
+            {
+              "who": "sic",
+              "at": "porta",
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "sic",
+              "walk": {
+                "x": 230,
+                "y": 250
+              }
+            }
+          ],
+          "stageAfter": [
+            {
+              "who": "sic",
+              "walk": "porta",
+              "wait": false
+            },
+            {
+              "who": "iri",
+              "walk": "porta"
+            }
+          ]
         }
       ],
       "effects": [

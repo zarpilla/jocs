@@ -162,6 +162,9 @@ punt `{ "x": …, "y": … }`.
   l'acaba de cop.
 - Qui parla s'atura. Si la protagonista ha de caminar i parlar, fes que camini abans (a la seva línia,
   esperant) i no amb `"wait": false`.
+- Un personatge que no és a la sala (ni com a cosa ni com a veu) i surt en un `stage`, el sync l'hi posa
+  amagat, com una veu. Per fer-lo aparèixer, `"visible": true`. En acabar, torna a quedar amagat (p. ex. en
+  Sic, que entra a la cambra a buscar l'Iri).
 - `"stageAfter"` és el mateix, però en acabar de dir la línia. Serveix per a qui diu «me'n vaig» i després
   marxa, sobretot si és l'última línia i no n'hi ha cap més on posar-ho.
 

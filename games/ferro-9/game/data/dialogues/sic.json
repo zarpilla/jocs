@@ -126,7 +126,17 @@
         },
         {
           "who": "sic",
-          "text": "dlg.sic.enganyar2"
+          "text": "dlg.sic.enganyar2",
+          "stageAfter": [
+            {
+              "who": "sic",
+              "walk": "porta_magatzem"
+            },
+            {
+              "who": "sic",
+              "visible": false
+            }
+          ]
         }
       ],
       "effects": [

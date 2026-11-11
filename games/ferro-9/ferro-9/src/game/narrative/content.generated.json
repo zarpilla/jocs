@@ -3549,7 +3549,17 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.fabrica.descoberta1"
+                "text": "sala.fabrica.descoberta1",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "at": {
+                      "x": 330,
+                      "y": 251
+                    },
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -3561,7 +3571,33 @@
               },
               {
                 "who": "player",
-                "text": "sala.fabrica.descoberta_cambra"
+                "text": "sala.fabrica.descoberta_cambra",
+                "stage": [
+                  {
+                    "who": "sic",
+                    "at": "porta",
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "sic",
+                    "walk": {
+                      "x": 230,
+                      "y": 250
+                    }
+                  }
+                ],
+                "stageAfter": [
+                  {
+                    "who": "sic",
+                    "walk": "porta",
+                    "wait": false
+                  },
+                  {
+                    "who": "iri",
+                    "walk": "porta"
+                  }
+                ]
               }
             ],
             "effects": [
@@ -5730,12 +5766,35 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.gavina_cella.panell.mos4"
+                    "text": "sala.gavina_cella.panell.mos4",
+                    "stage": [
+                      {
+                        "who": "directora",
+                        "walk": {
+                          "x": 505,
+                          "y": 255
+                        }
+                      },
+                      {
+                        "who": "directora",
+                        "face": "R"
+                      }
+                    ]
                   },
                   {
                     "who": "directora",
                     "text": "sala.gavina_cella.panell.mos5",
-                    "sound": "porta_preso"
+                    "sound": "porta_preso",
+                    "stageAfter": [
+                      {
+                        "who": "directora",
+                        "walk": "porta"
+                      },
+                      {
+                        "who": "directora",
+                        "visible": false
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -5782,7 +5841,17 @@
                   {
                     "who": "directora",
                     "text": "sala.gavina_cella.panell.mapa4",
-                    "sound": "porta_preso"
+                    "sound": "porta_preso",
+                    "stageAfter": [
+                      {
+                        "who": "directora",
+                        "walk": "porta"
+                      },
+                      {
+                        "who": "directora",
+                        "visible": false
+                      }
+                    ]
                   }
                 ],
                 "effects": [
@@ -7235,7 +7304,22 @@
               {
                 "who": "narrator",
                 "text": "sala.gavina_cella.tub0",
-                "sound": "porta_preso"
+                "sound": "porta_preso",
+                "stage": [
+                  {
+                    "who": "directora",
+                    "at": "porta",
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "directora",
+                    "walk": {
+                      "x": 190,
+                      "y": 251
+                    }
+                  }
+                ]
               },
               {
                 "who": "directora",
@@ -8652,7 +8736,21 @@
               {
                 "who": "narrator",
                 "text": "sala.gavina_memoria.intro1",
-                "sound": "holograma"
+                "sound": "holograma",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "at": "porta_passadis",
+                    "face": "R"
+                  },
+                  {
+                    "who": "vet",
+                    "walk": {
+                      "x": 200,
+                      "y": 252
+                    }
+                  }
+                ]
               },
               {
                 "who": "player",
@@ -9416,7 +9514,21 @@
             "lines": [
               {
                 "who": "player",
-                "text": "sala.gavina_passadis.fi1"
+                "text": "sala.gavina_passadis.fi1",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "at": "porta_cella",
+                    "face": "R"
+                  },
+                  {
+                    "who": "vet",
+                    "walk": {
+                      "x": 200,
+                      "y": 252
+                    }
+                  }
+                ]
               },
               {
                 "who": "player",
@@ -15912,7 +16024,17 @@
               },
               {
                 "who": "sic",
-                "text": "dlg.sic.enganyar2"
+                "text": "dlg.sic.enganyar2",
+                "stageAfter": [
+                  {
+                    "who": "sic",
+                    "walk": "porta_magatzem"
+                  },
+                  {
+                    "who": "sic",
+                    "visible": false
+                  }
+                ]
               }
             ],
             "effects": [

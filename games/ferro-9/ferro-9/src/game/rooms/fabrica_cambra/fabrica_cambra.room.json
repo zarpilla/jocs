@@ -280,6 +280,17 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 10
+    },
+    {
+      "instanceId": "sic-veu",
+      "definition": "sic/sic.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
     }
   ]
 }

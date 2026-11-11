@@ -12,7 +12,7 @@
  */
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
-import type { GameContent, InteractionDef, LocaleTable, RoomDef } from '@aventura/narrative-core';
+import type { DialogueLineDef, GameContent, InteractionDef, LocaleTable, RoomDef } from '@aventura/narrative-core';
 import { jocAdapterDir, type JocBenne } from './joc-benne.js';
 
 /** Art provisional dels personatges del joc (games/<joc>/adapters/benne/placeholder-art/). */
@@ -377,17 +377,24 @@ const rect = (b: { x: number; y: number; w: number; h: number }) => [
   { x: b.x, y: b.y }, { x: b.x + b.w, y: b.y }, { x: b.x + b.w, y: b.y + b.h }, { x: b.x, y: b.y + b.h },
 ];
 
-/** Personatges que parlen en una sala sense ser-hi com a cosa (p. ex. la MARE per l'altaveu). */
+/**
+ * Personatges que parlen en una sala sense ser-hi com a cosa (p. ex. la MARE per l'altaveu), o que hi
+ * apareixen només en una indicació d'escena (`stage`: en Sic, que entra a buscar l'Iri i se l'emporta).
+ */
 function voicesIn(room: RoomDef, content: GameContent, joc: JocBenne): string[] {
   const who = new Set<string>();
+  const line = (l: DialogueLineDef) => {
+    who.add(l.who);
+    for (const c of [...(l.stage ?? []), ...(l.stageAfter ?? [])]) who.add(c.who);
+  };
   const scan = (list: InteractionDef[] = []) => {
     for (const i of list) {
-      for (const l of i.lines ?? []) who.add(l.who);
+      for (const l of i.lines ?? []) line(l);
       if (i.dialogue) {
         const d = content.dialogues[i.dialogue];
         if (d) {
           who.add(d.with);
-          for (const n of Object.values(d.nodes)) for (const l of n.lines ?? []) who.add(l.who);
+          for (const n of Object.values(d.nodes)) for (const l of n.lines ?? []) line(l);
         }
       }
     }

@@ -42,12 +42,35 @@
             },
             {
               "who": "narrator",
-              "text": "sala.gavina_cella.panell.mos4"
+              "text": "sala.gavina_cella.panell.mos4",
+              "stage": [
+                {
+                  "who": "directora",
+                  "walk": {
+                    "x": 505,
+                    "y": 255
+                  }
+                },
+                {
+                  "who": "directora",
+                  "face": "R"
+                }
+              ]
             },
             {
               "who": "directora",
               "text": "sala.gavina_cella.panell.mos5",
-              "sound": "porta_preso"
+              "sound": "porta_preso",
+              "stageAfter": [
+                {
+                  "who": "directora",
+                  "walk": "porta"
+                },
+                {
+                  "who": "directora",
+                  "visible": false
+                }
+              ]
             }
           ],
           "effects": [
@@ -94,7 +117,17 @@
             {
               "who": "directora",
               "text": "sala.gavina_cella.panell.mapa4",
-              "sound": "porta_preso"
+              "sound": "porta_preso",
+              "stageAfter": [
+                {
+                  "who": "directora",
+                  "walk": "porta"
+                },
+                {
+                  "who": "directora",
+                  "visible": false
+                }
+              ]
             }
           ],
           "effects": [
@@ -1547,7 +1580,22 @@
         {
           "who": "narrator",
           "text": "sala.gavina_cella.tub0",
-          "sound": "porta_preso"
+          "sound": "porta_preso",
+          "stage": [
+            {
+              "who": "directora",
+              "at": "porta",
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "directora",
+              "walk": {
+                "x": 190,
+                "y": 251
+              }
+            }
+          ]
         },
         {
           "who": "directora",
