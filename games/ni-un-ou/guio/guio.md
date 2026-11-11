@@ -35,8 +35,8 @@ mostres.
 
 > *Un pot de fang. Ni un ou. Cap avaria casual.*
 
-L'antic, «L'aigua no es taca. La taquen.», queda com a frase de tancament dels tres finals (`final.text`): després
-de jugar és una reflexió, no una lliçó.
+Els tres finals tanquen amb «Ni un ou. Encara.» (`final.text`): la frase de la Juana al pròleg, ara que guanyar
+no ha netejat el fang. Substitueix l'antic lema, «L'aigua no es taca. La taquen.».
 
 ## To
 
