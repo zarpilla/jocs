@@ -2,6 +2,8 @@
 La caixa de cadenes, a proa (Escena 6, onze de la nit): fosca, estreta i rovellada. El buc es tanca cap a baix,
 la cadena de l'àncora baixa pel tub de l'escobén i s'apila a l'esquerra; l'escotilla, oberta a dalt, deixa
 entrar la llum groga de coberta. Prop: la manta i el paper de l'entrepà de la Juana (que és un sprite), i el rotllo de cap on seu.
+ANIMS: `pols` (motes que suren al con de llum de l'escotilla) i `gota` (una gota que es forma al sostre, cau al
+bassal i hi fa rodones).
 """
 import math
 
@@ -9,6 +11,7 @@ from hd.pix import Canvas, Light, W, H, hr, mix, B4, RUST, PAPER
 from hd.rooms.arenga import (WALL, ENG, DECK, CAB, DARK, WHITEP, YELL, REDP, BRASS, WARM, FLOOR_Y, BOTTOM,
                              box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms import sota
+from hd.rooms.comu import _diff
 
 HX0, HX1 = 212, 268          # l'escotilla
 
@@ -262,6 +265,96 @@ def bg(cv):
 
 
 PROPS = {'manta': blanket}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _cone(y):
+    """Centre i mitja amplada del con de llum de l'escotilla a l'alçada y."""
+    return 240 + (y - 30) * 0.25, 24 + y * 0.45
+
+
+def _frames_pols():
+    """Pols que sura al con de llum (cada mota fa un llaç tancat: el bucle no salta)."""
+    base = _base()
+    motes = []
+    for k in range(34):
+        y = 34 + hr(k, 11) * 140
+        cx, hw = _cone(y)
+        motes.append((cx + (hr(k, 12) - 0.5) * hw * 1.4, y, 4 + hr(k, 13) * 8, 3 + hr(k, 14) * 7,
+                      hr(k, 15), 1 + int(hr(k, 16) * 2)))
+    n = 48
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        t = i / n
+        for (cx, cy, ax, ay, ph, fx) in motes:
+            a = 2 * math.pi * (t + ph)
+            x = round(cx + ax * math.sin(fx * a))
+            y = round(cy + ay * math.sin(a + ph * 3) - t * 0)
+            ccx, hw = _cone(y)
+            inside = max(0.0, 1 - abs(x - ccx) / hw)                   # només es veu dins la llum
+            tw = 0.5 + 0.5 * math.sin(a * 2 + ph * 7)                  # i fa pampallugues
+            alpha = inside ** 0.7 * (0.35 + 0.45 * tw) * (1 - y / 260)
+            if alpha > 0.08 and 0 <= x < W and 14 <= y < BOTTOM:
+                cv.flat(x, y, mix(cv.get(x, y), (255, 232, 180), alpha))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+DRIP = (182, 15)       # on es forma la gota (sota el bao), just damunt del bassal
+PUDDLE = (182, 190)
+WATER = (196, 178, 132)
+
+
+def _frames_gota():
+    """Una gota: es forma al sostre, cau, esquitxa al bassal i en surten dues rodones que s'esvaeixen."""
+    base = _base()
+    dx, dy = DRIP
+    px, py = PUDDLE
+    n = 40
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        if i < 16:                                                      # la gota s'infla
+            g = i / 15
+            cv.flat(dx, dy, mix(cv.get(dx, dy), WATER, 0.4 + 0.4 * g))
+            if g > 0.45:
+                cv.flat(dx, dy + 1, mix(cv.get(dx, dy + 1), WATER, 0.3 + 0.6 * g))
+            if g > 0.85:
+                cv.flat(dx, dy + 2, mix(cv.get(dx, dy + 2), (240, 226, 190), 0.8))
+        elif i < 22:                                                    # cau, cada cop més de pressa
+            k = (i - 15) / 6
+            y = round(dy + 2 + (py - 4 - dy - 2) * k * k)
+            tail = 1 + int(k * 4)
+            for j in range(tail):
+                cv.flat(dx, y - j, mix(cv.get(dx, y - j), (240, 226, 190), 0.85 - j * 0.15))
+        else:                                                           # l'esquitx i les rodones
+            k = i - 22
+            if k < 3:
+                for sx, sy in ((-2, -2 - k), (2, -2 - k), (0, -3 - k)):
+                    cv.flat(px + sx * (1 + k // 2), py + sy, mix(cv.get(px + sx, py + sy), (240, 226, 190), 0.7 - k * 0.2))
+            for r0 in (0, 5):
+                r = (k - r0) * 1.4
+                if 1 <= r <= 15:
+                    fade = 1 - r / 16
+                    for a in range(0, 360, 6):
+                        x = round(px + math.cos(math.radians(a)) * r * 1.8)
+                        y = round(py + math.sin(math.radians(a)) * r * 0.42)
+                        if ((x - 182) / 32) ** 2 + ((y - 190) / 6) ** 2 <= 1 and hr(x, y, k) < 0.4 + fade * 0.6:
+                            cv.flat(x, y, mix(cv.get(x, y), (200, 168, 104), 0.25 + 0.4 * fade))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'pols': {'frames': _frames_pols, 'frameDuration': 130},
+         'gota': {'frames': _frames_gota, 'frameDuration': 80}}
 
 GEOMETRIA = {
     'things': {
