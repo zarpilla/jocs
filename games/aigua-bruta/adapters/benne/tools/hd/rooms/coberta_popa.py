@@ -6,14 +6,17 @@ La coberta de popa de l'Arenga. Mirem a estribord: la popa és a l'esquerra, la 
     coberta de botes, el pas lateral cap a proa;
   - de nit (per defecte), focus de coberta grocs; de dia (decorat `dia`, Escenes 2 i 3), sol fred de febrer.
 Props: `plataforma` (de dia, a una milla), `taula` (l'esmorzar), `horitzo` (l'estela, de l'Escena 3 en endavant).
+ANIMS: `mar` (les onades, de nit), `dia_mar` (les onades, de dia: va amb el decorat `dia_mar`, per sobre de `dia`)
+i `plataforma` (les gavines que volten la plataforma; el mar de sota el mou `dia_mar`).
 """
 import math
 
-from hd.pix import Light, W, hr, mix
+from hd.pix import Canvas, Light, W, H, hr, mix, B4
 from hd.rooms.arenga import YELL, REDP
+from hd.rooms.comu import _diff
 from hd.rooms.exterior import (night_sky, night_sea, day_sky, day_sea, platform, stain, gull, deck_floor,
                                bulwark, wt_door, deck_lamp, lifebuoy, coil, bitts, smooth, fbm,
-                               HULLN, STEELX, CABX, DECKX, ORANGEB, ROPE, LAMP, WINDOW, GLOW_WARM, TAPE)
+                               HULLN, STEELX, CABX, DECKX, ORANGEB, ROPE, LAMP, WINDOW, GLOW_WARM, TAPE, TURBID)
 
 HOR = 86            # l'horitzó
 RAIL = 106          # la regala de la borda
@@ -300,26 +303,32 @@ def dia(cv):
 
 # ─── Props ──────────────────────────────────────────────────────────────────
 
-def plataforma(cv):
-    """A una milla, a estribord: la plataforma, la taca tèrbola i les gavines que no s'hi posen."""
+GULLS = ((240, 30, 26, 7, 0.0), (248, 26, 18, 5, 2.1), (236, 34, 34, 9, 4.0), (252, 32, 22, 6, 5.2))
+
+
+def plataforma(cv, t=0.0):
+    """A una milla, a estribord: la plataforma, la taca tèrbola i les gavines que la volten sense posar-s'hi.
+    El mar no hi és: la taca és mig transparent i deixa veure les onades de sota (`dia_mar`). `t`: 0..1 del bucle."""
     keep = cv.light
     cv.light = LIGHT_DAY
-    # el tros de mar al voltant (per poder-hi pintar la taca)
-    day_sea(cv, HOR, 100, x0=150, x1=330)
-    stain(cv, 240, HOR + 5, 90, 7, k=1.0)
-    for x in range(150, 331):                                         # tornem a posar l'horitzó net a les vores
-        if abs(x - 240) > 70:
-            cv.P[x, HOR] = cv.P[x, HOR]
-    # la vora del mar retallat: barreja suau amb transparència a les vores
-    for y in range(HOR, 101):
-        for x in range(150, 331):
-            e = min(x - 150, 330 - x)
-            if e < 12 and hr(x, y, 7) > e / 12:
-                cv.P[x, y] = (0, 0, 0, 0)
+    _stain(cv, 240, HOR + 5, 90, 7)
     platform(cv, 240, HOR + 3, 1.9, 'day')
-    for gx, gy in ((214, 34), (232, 28), (262, 38), (250, 24), (276, 30)):
-        gull(cv, gx, gy, (226, 228, 224))
+    for i, (gx, gy, rx, ry, ph) in enumerate(GULLS):
+        a = ph + t * 2 * math.pi * (1 if i % 2 else -1)
+        wing = (1, 1, 0, -1, 0, 1)[int(t * 24 + i * 2) % 6] if i != 2 else 1   # una plana, que només plana
+        gull(cv, round(gx + math.cos(a) * rx), round(gy + math.sin(a) * ry), (226, 228, 224), wing)
     cv.light = keep
+
+
+def _stain(cv, cx, ywl, rx, ry, k=1.0, seed=21):
+    """La taca d'aigua tèrbola (com exterior.stain), però amb transparència en lloc de barrejar-la amb el mar."""
+    for y in range(int(ywl - ry), int(ywl + ry) + 1):
+        for x in range(int(cx - rx), int(cx + rx) + 1):
+            nx, ny = (x - cx) / rx, (y - ywl) / ry
+            d = nx * nx + ny * ny + (fbm(x / 9, y / 2, seed) - 0.5) * 0.9
+            a = k * smooth(0.0, 0.45, 1 - d)
+            if a > B4[y & 3][x & 3] * 0.9 and y > HOR:
+                cv.P[x, y] = TURBID[3 if hr(x // 4, y) > 0.3 else 4] + (int(min(0.6, a) * 255),)
 
 
 def taula(cv):
@@ -383,6 +392,57 @@ def horitzo(cv):
 
 
 PROPS = {'dia': dia, 'plataforma': plataforma, 'taula': taula, 'horitzo': horitzo}
+
+
+# ─── Animacions ────────────────────────────────────────────────────────────
+# El mar es mou amb `phase`; perquè el bucle no salti, els darrers SEA_FADE fotogrames es fonen (a quadres) amb el principi.
+SEA_N, SEA_FADE, SEA_STEP = 12, 4, 0.32
+
+
+def _sea_frames(base, sea):
+    """Fotogrames del mar sobre `base`: només els píxels on es veu el mar (on `base` és igual que el mar quiet)."""
+    ref = Canvas(light=LIGHT)
+    sea(ref, 0.0)
+    rp, bp = ref.img.load(), base.load()
+    open_ = [(x, y) for y in range(HOR + 1, RAIL + 5) for x in range(W) if bp[x, y] == rp[x, y]]
+    frames = []
+    for i in range(SEA_N):
+        a, b = Canvas(light=LIGHT), Canvas(light=LIGHT)
+        sea(a, i * SEA_STEP)
+        sea(b, (i - SEA_N) * SEA_STEP)
+        w = max(0, i - (SEA_N - SEA_FADE)) / SEA_FADE                    # quant pesa el «tornar a començar»
+        out = base.copy()
+        o, ap, bpp = out.load(), a.img.load(), b.img.load()
+        for x, y in open_:
+            o[x, y] = bpp[x, y] if hr(x, y, 90) < w else ap[x, y]
+        frames.append(_diff(out, base))
+    return frames
+
+
+def _frames_mar():
+    base = Canvas(light=LIGHT)
+    bg(base)
+    return _sea_frames(base.img, lambda cv, ph: night_sea(cv, HOR, RAIL + 4, moon_x=300, phase=ph))
+
+
+def _frames_dia_mar():
+    base = Canvas(light=LIGHT)
+    dia(base)
+    return _sea_frames(base.img, lambda cv, ph: day_sea(cv, HOR, RAIL + 4, sun_x=60, phase=ph))
+
+
+def _frames_plataforma():
+    frames = []
+    for i in range(16):
+        cv = Canvas(light=LIGHT, transparent=True)
+        plataforma(cv, i / 16)
+        frames.append(cv.img)
+    return frames
+
+
+ANIMS = {'mar': {'frames': _frames_mar, 'frameDuration': 260},
+         'dia_mar': {'frames': _frames_dia_mar, 'frameDuration': 260},
+         'plataforma': {'frames': _frames_plataforma, 'frameDuration': 180}}
 
 # La taula de l'esmorzar tapa les cames de qui hi ha al darrere (la Capitana i en Tomàs).
 FRONT = {'mask': lambda x, y: False, 'baseline': 176, 'zIndex': 20, 'props': ('taula',)}

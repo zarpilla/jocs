@@ -125,6 +125,825 @@
         "h": 270
       },
       "duration": 100
+    },
+    "coberta_popa 6.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 7.aseprite": {
+      "frame": {
+        "x": 3360,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 8.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 9.aseprite": {
+      "frame": {
+        "x": 480,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 10.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 11.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 12.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 13.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 14.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 15.aseprite": {
+      "frame": {
+        "x": 3360,
+        "y": 270,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 16.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 17.aseprite": {
+      "frame": {
+        "x": 480,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 18.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 19.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 20.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 21.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 22.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 23.aseprite": {
+      "frame": {
+        "x": 3360,
+        "y": 540,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 24.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 25.aseprite": {
+      "frame": {
+        "x": 480,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 26.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 27.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 28.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 29.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 30.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 31.aseprite": {
+      "frame": {
+        "x": 3360,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 32.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 33.aseprite": {
+      "frame": {
+        "x": 480,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 34.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 35.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 36.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 37.aseprite": {
+      "frame": {
+        "x": 2400,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 38.aseprite": {
+      "frame": {
+        "x": 2880,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 39.aseprite": {
+      "frame": {
+        "x": 3360,
+        "y": 1080,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 40.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1350,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 41.aseprite": {
+      "frame": {
+        "x": 480,
+        "y": 1350,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 42.aseprite": {
+      "frame": {
+        "x": 960,
+        "y": 1350,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 43.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 1350,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
+    },
+    "coberta_popa 44.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 1350,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -133,8 +952,8 @@
     "image": "coberta_popa.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2880,
-      "h": 270
+      "w": 3840,
+      "h": 1620
     },
     "scale": "1",
     "frameTags": [
@@ -146,37 +965,51 @@
         "color": "#000000ff"
       },
       {
-        "name": "plataforma",
+        "name": "taula",
         "from": 1,
         "to": 1,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "taula",
+        "name": "horitzo",
         "from": 2,
         "to": 2,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "horitzo",
+        "name": "dia",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "dia",
+        "name": "mar",
         "from": 4,
-        "to": 4,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dia_mar",
+        "from": 16,
+        "to": 27,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "plataforma",
+        "from": 28,
+        "to": 43,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "davant",
-        "from": 5,
-        "to": 5,
+        "from": 44,
+        "to": 44,
         "direction": "forward",
         "color": "#000000ff"
       }
