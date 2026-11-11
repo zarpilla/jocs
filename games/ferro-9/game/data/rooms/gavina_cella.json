@@ -1249,7 +1249,23 @@
             },
             {
               "who": "player",
-              "text": "sala.gavina_cella.reixa.obrir2"
+              "text": "sala.gavina_cella.reixa.obrir2",
+              "if": {
+                "flag": "ruta_marcada"
+              },
+              "effects": [
+                {
+                  "setFlag": "vet_veu_fletxes"
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.obrir2_fosc",
+              "if": {
+                "flag": "ruta_marcada",
+                "is": false
+              }
             },
             {
               "who": "player",
@@ -1296,7 +1312,19 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.reixa.fugir2",
-              "sound": "conducte"
+              "sound": "conducte",
+              "if": {
+                "flag": "ruta_marcada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.fugir2_mapa",
+              "sound": "conducte",
+              "if": {
+                "flag": "ruta_marcada",
+                "is": false
+              }
             }
           ],
           "goTo": "gavina_hangar"
@@ -1315,7 +1343,19 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.reixa.entrar",
-              "sound": "conducte"
+              "sound": "conducte",
+              "if": {
+                "flag": "ruta_marcada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.entrar_mapa",
+              "sound": "conducte",
+              "if": {
+                "flag": "ruta_marcada",
+                "is": false
+              }
             }
           ],
           "goTo": "gavina_hangar"
@@ -1328,7 +1368,18 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_cella.reixa.look_oberta"
+              "text": "sala.gavina_cella.reixa.look_oberta",
+              "if": {
+                "flag": "ruta_marcada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.look_oberta_fosc",
+              "if": {
+                "flag": "ruta_marcada",
+                "is": false
+              }
             }
           ]
         },
@@ -1639,6 +1690,40 @@
       "effects": [
         {
           "setFlag": "vet_veu_reixa"
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "id": "fletxes_reajust",
+      "once": true,
+      "if": {
+        "all": [
+          {
+            "flag": "ruta_marcada"
+          },
+          {
+            "flag": "reixa_oberta"
+          },
+          {
+            "flag": "vet_veu_fletxes",
+            "is": false
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.gavina_cella.reixa.reajust1"
+        },
+        {
+          "who": "player",
+          "text": "sala.gavina_cella.reixa.fletxes"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "vet_veu_fletxes"
         }
       ]
     },

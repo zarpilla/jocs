@@ -1,0 +1,92 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "Conducte de servei",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "esquerra",
+      "label": "passadís de l'esquerra",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "recte",
+      "label": "passadís del fons",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 567,
+      "y": 95
+    },
+    {
+      "id": "dreta",
+      "label": "passadís de la dreta",
+      "kind": "exit",
+      "w": 62,
+      "h": 105,
+      "x": 84,
+      "y": 109
+    },
+    {
+      "id": "enrere",
+      "label": "cap a la reixa",
+      "kind": "exit",
+      "w": 62,
+      "h": 105,
+      "x": 495,
+      "y": 109
+    },
+    {
+      "id": "cartell",
+      "label": "cartell",
+      "kind": "prop",
+      "w": 80,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "guant",
+      "label": "guant",
+      "kind": "prop",
+      "w": 80,
+      "h": 44,
+      "x": 188,
+      "y": 25
+    },
+    {
+      "id": "aixeta",
+      "label": "aixeta",
+      "kind": "prop",
+      "w": 80,
+      "h": 44,
+      "x": 280,
+      "y": 76
+    },
+    {
+      "id": "tassa",
+      "label": "tassa",
+      "kind": "prop",
+      "w": 80,
+      "h": 44,
+      "x": 372,
+      "y": 25
+    },
+    {
+      "id": "formulari",
+      "label": "formulari",
+      "kind": "prop",
+      "w": 80,
+      "h": 44,
+      "x": 463,
+      "y": 76
+    }
+  ],
+  "characters": []
+}

@@ -354,8 +354,10 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
 
 1. **Primera encesa, de la Vet a l'Iri: el mapa de fuga.** La Vet coneix la presó, que està feta damunt la
    fàbrica, i sap per on es pot arribar a l'hangar sense passar per on vigila el Director: el conducte de
-   servei de l'antiga fàbrica, que comença a la cambra de l'Iri (al present, la cel·la 9) i baixa fins al moll. Hi dibuixa la ruta al dors d'un fullet de la Sala de
-   la Memòria.
+   servei de l'antiga fàbrica, que comença a la cambra de l'Iri (al present, la cel·la 9) i baixa fins al moll. El
+   conducte és un laberint de revolts, però el mapa de la paret de la Sala de la Memòria, que no es pot endur, el dibuixa
+   sencer: entre el mòdul C i l'hangar fa **cinc revolts**, i la Vet els tradueix a cinc signes (per exemple, ↑ → ← ← ↑).
+   Els copia, amb la ruta, al dors d'un fullet de la Sala de la Memòria (vegeu «La ruta del conducte», més avall).
 2. **La Vet ha d'arribar a la cambra**, que ara té la Directora. Trencaclosques: **fa veure que accepta el
    seu pacte** ("Ho faré per vosaltres") per poder entrar-hi. La Directora no sap que l'Iri també ho sap.
    Envia el mapa dient que és propaganda («que vegi que m'he reformat»), i la Directora fa tancar la cel·la.
@@ -364,18 +366,54 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
    la Vet hi ha de sortir tant com l'Iri. Per això el mapa porta una postdata: «fes que s'obri d'aquí a cent vint
    anys». L'Iri no pot fer res per la finestra (el Sic li ha pres la cambra i n'ha de tornar a entrar d'amagat),
    però pot canviar el món: amb la llima, deixa els cargols de la reixa a punt de rompre's, sense res que el rovell
-   pugui soldar, i grava una I. i una fletxa a cada revolt del conducte. Reajust: a la cel·la, la Vet hi troba la
-   reixa amb els cargols serrats, i a dins, la mateixa marca que al pilar 7. **Cadascuna obre el camí de l'altra**:
+   pugui soldar. Després **prova la ruta de la Vet**: entra al conducte i, a cada revolt, tria per on va seguint els
+   signes del fullet. Si s'equivoca, surt per la mateixa reixa per on ha entrat («m'he perdut») i ho torna a provar.
+   Quan arriba al moll, torna pel mateix camí i grava una I. i una fletxa a cada revolt. Reajust: a la cel·la, la Vet
+   hi troba la reixa amb els cargols serrats, i a dins, la mateixa marca que al pilar 7. **Cadascuna obre el camí de l'altra**:
    la Vet li dona la ruta, l'Iri la hi deixa oberta, i les dues fugen pel mateix conducte amb cent vint anys de
    diferència.
 3. **Segona encesa, de l'Iri a la Vet: l'últim component.** Només pot passar un objecte, però l'Iri també vol
    enviar la llibreta amb les proves. Trencaclosques d'inventari: **enrotlla la llibreta dins el tub de la
    vàlvula**, i així és un sol objecte de menys de 2 kg.
-4. L'Iri **fuig per la ruta de la Vet**: obre la seva reixa, segueix les seves pròpies fletxes fins al moll i
+4. L'Iri **fuig per la ruta de la Vet**: obre la seva reixa, segueix les seves pròpies fletxes fins al moll (si encara
+   no l'havia recorreguda, la fa ara, revolt per revolt, i en surt directament al moll) i
    s'emporta la llançadora nova. La Vet surt de la cel·la tancada per la reixa que l'Iri li va deixar oberta, munta
    el tub a la llançadora vella i fuig. És la mateixa nau: la corporació la va recuperar després de la fugida de
    l'Iri i la va desballestar, i per això li faltaven els tres components de ferro-9. Al joc ho diu l'Iri quan hi
    puja («És la mateixa que la V. ha arreglat al seu hangar»).
+
+#### La ruta del conducte (trencaclosques)
+
+Omple el que abans era un sol text («grava una fletxa a cada revolt»): el recorregut de l'Iri pel conducte es juga.
+
+- **La informació la troba la Vet i la fa servir l'Iri.** El mapa de La Gavina és a la paret del museu (no es pot
+  agafar ni enviar): la línia discontínua del conducte fa cinc revolts entre el mòdul C i l'hangar, i la Vet els llegeix
+  com a cinc signes: ← (esquerra), ↑ (recte) i → (dreta). La Vet els copia al fullet amb la ruta (el mapa de fuga),
+  però **a l'Iri li arriben correguts**: el llapis d'ulls no és tinta, i dels cinc signes només en queda una taca. La
+  resta del fullet es llegeix. **El jugador fa de pont**: o se'ls ha apuntat quan la Vet ha mirat el mapa, o torna a la
+  Vet perquè els hi torni a mirar. Quan l'Iri ja ha llimat la reixa, la Vet pot sortir de la cel·la tancada pel
+  conducte i anar al museu. Els signes només surten al mapa del museu (i al que la Vet en diu); les pistes de l'Iri
+  diuen d'on els va treure la V., i les de la Vet, on són.
+- **Els signes són a l'atzar**, triats una vegada per partida: no es pot jugar de memòria d'una partida a l'altra.
+- **Una escena que es repeteix.** Cada revolt és el mateix lloc: un tram de conducte de planxa reblonada, amb la
+  làmpada de gàbia, i tres passadissos (esquerra, recte, dreta). A dins s'eixampla prou perquè hi caminin els robots de
+  manteniment (i l'Iri). Només canvia un detall per revolt, que es pot mirar: un cartell de «no fumar» (1r), un guant
+  de treball oblidat (2n), una aixeta que degota (3r), una tassa amb un dit de cafè fred (4t) i un formulari 27-B
+  clavat a la paret, «Sol·licitud de senyals al conducte de servei», denegat per triplicat (5è). La làmpada es
+  gronxa amb el corrent d'aire i parpelleja, la pols sura dins la llum, i la gota de l'aixeta cau i fa onades. En arribar a cada
+  revolt, l'Iri el compta («Tercer revolt. O el segon un altre cop?»): així el jugador sap quin signe toca.
+- **Cinc decisions, i cap avís a mig camí.** L'Iri tria per on va a cada revolt. Si les cinc són les del fullet, arriba
+  al moll («el pilar del 7 és allà mateix»), torna pel mateix camí gravant una I. i una fletxa a cada revolt, i surt a
+  la cambra. Si se n'ha equivocat alguna, al cinquè revolt veu llum al fons... i és la reixa de la seva cambra: «He
+  sortit per on he entrat. M'he perdut.» No es diu quin revolt ha fallat. Es pot tornar enrere en qualsevol revolt.
+- **Sense atzucacs ni càstig**: perdre's no gasta cap encesa ni fa res al Sic. Es torna a provar tantes vegades com
+  calgui. Pistes: «abans de dir-ho a la V., vull provar la seva ruta», «els signes del fullet s'han corregut; ella els
+  va treure d'algun lloc» i «canvia a la Vet i que els torni a mirar al mapa de la Sala de la Memòria».
+- **El present ho reflecteix.** Amb els cargols llimats però el camí encara sense marcar, la Vet ja pot obrir la reixa
+  i passar-hi amb els revolts del mapa al cap («a dins, fosc i revolts»). Quan l'Iri hi grava les fletxes, un altre
+  reajust: «Al conducte, a cada revolt, hi ha una I. gravada i una fletxa. Fa un moment no hi eren.»
+- **La fugida.** Si l'Iri fuig sense haver recorregut el conducte abans (p. ex. si envia el tub primer), el recorre
+  aleshores, i quan l'encerta surt directament al moll, gravant les fletxes de passada.
 
 **El gir final:** la "desaparició" de l'Iri que explica el museu **va ser, de fet, la seva fugida**. La
 història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia ajudada.
@@ -392,8 +430,11 @@ història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia 
 2. **El mapa de fuga i la reixa**: fet. La Vet troba la reixa rovellada de la cel·la, dibuixa la ruta al fullet
    (amb la postdata de la reixa) i fa veure que accepta el pacte de la Directora per arribar al panell; el panell no
    vibra si l'Iri no és a la seva cambra. L'Iri distreu el Sic («he vist algú al magatzem del ferro-9») i hi torna.
-   Primera encesa. L'Iri llima els cargols de la reixa i grava les fletxes. Reajust: la Vet obre la reixa i el
-   conducte la porta fins a l'hangar, i en torna (la cel·la és tancada).
+   Primera encesa. L'Iri llima els cargols de la reixa i recorre el conducte: cinc revolts a triar amb els signes
+   del fullet (el mapa del museu en dona cinc a l'atzar a cada partida); si s'equivoca, surt per la reixa per on ha
+   entrat, i si l'encerta, torna gravant les fletxes (al fullet, els signes li arriben correguts: el jugador els ha
+   d'haver apuntat o els ha de tornar a mirar amb la Vet). Reajust: la Vet obre la reixa i el conducte la porta fins a
+   l'hangar, i en torna (la cel·la és tancada).
 3. **L'últim component**: fet. La Directora avisa que ha fet treure el tub de la vàlvula de la llançadora (també
    ho diu una etiqueta a l'hangar), i la Vet ho afegeix al mapa com a segona postdata: així l'Acte 3 gasta
    exactament dues enceses. El Cargol dona a l'Iri un tub de ferro-9 sense formulari («els fugitius no omplen
@@ -504,7 +545,8 @@ ACTE 2  (els tres components, en qualsevol ordre)
 
 ACTE 3
   [Directora pren la cambra] ∥ [Director descobreix l'Iri]
-  (mapa de fuga → Iri)  ·  [Vet fa veure que pacta] → [Vet arriba a la cambra]
+  [Vet llegeix els 5 revolts al mapa del museu] → (mapa de fuga → Iri)  ·  [Vet fa veure que pacta] → [Vet arriba a la cambra]
+  [Iri llima la reixa] → [Iri recorre el conducte: 5 revolts] ⇄ [s'ha perdut: torna a la cambra] → [fletxes gravades]
   [Iri combina component + llibreta] → (últim enviament → Vet) → [Iri fuig per la ruta de la Vet]
   [Vet munta la llançadora] → [les dues fugen amb la mateixa nau] → Final 1 / 2 / 3
 ```
@@ -518,6 +560,7 @@ ACTE 3
 | El Cargol recorda l'Iri | Flags `cargol_reparat`, `cargol_gravat` i `cargol_memoria` (la placa retornada) |
 | La Mira i la Guàrdia d'Orís | Missió `salvar_mira`. La Guàrdia d'Orís és un objecte o personatge condicional (`visibleIf`) |
 | Inundació, caixa que sura | Objectes condicionals segons `conducte_segellat` |
+| La ruta del conducte | `vars`: `ruta_conducte` (cinc signes a l'atzar, p. ex. «↑ → ← ← ↑»; es mostra als textos amb `{ruta_conducte}`), `conducte_pas`, `conducte_errades` i `conducte_vista` (el detall de cada revolt). Flags `reixa_preparada` (cargols llimats), `ruta_marcada` (fletxes gravades) i `vet_veu_fletxes`. Regla del joc a `game/logic/conducte.ts`; sales `fabrica_conducte` (el revolt) i `fabrica_conducte_revolt` (el pas d'un revolt a l'altre, que decideix on se surt) |
 | Tres finals | `endings.json` amb `when` i `priority` (el 3 és el de més prioritat) |
 | Pistes de la llibreta i del diari | `hints.json`, amb nivells |
 | Dues protagonistes | `player.switchTo(...)` de Benne. Canviar de protagonista dispara el reajust |

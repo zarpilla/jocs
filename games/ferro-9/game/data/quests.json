@@ -218,6 +218,13 @@
         }
       },
       {
+        "id": "conducte",
+        "text": "mis.acte3.obj.conducte",
+        "completeWhen": {
+          "flag": "ruta_marcada"
+        }
+      },
+      {
         "id": "component",
         "text": "mis.acte3.obj.component",
         "completeWhen": {

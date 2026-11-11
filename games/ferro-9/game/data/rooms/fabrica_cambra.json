@@ -373,13 +373,23 @@
             "push"
           ],
           "if": {
-            "any": [
+            "all": [
               {
-                "hasItem": "tub_amb_llibreta",
-                "who": "vet"
+                "any": [
+                  {
+                    "hasItem": "tub_amb_llibreta",
+                    "who": "vet"
+                  },
+                  {
+                    "flag": "tub_muntat"
+                  }
+                ]
               },
               {
-                "flag": "tub_muntat"
+                "flag": "reixa_preparada"
+              },
+              {
+                "flag": "ruta_marcada"
               }
             ]
           },
@@ -396,6 +406,54 @@
             }
           ],
           "goTo": "fabrica_moll"
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "pull",
+            "pickUp",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "reixa_preparada"
+              },
+              {
+                "flag": "ruta_marcada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.entrar1",
+              "sound": "reixa"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.entrar2",
+              "sound": "conducte"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "conducte_pas",
+              "value": 0
+            },
+            {
+              "setVar": "conducte_errades",
+              "value": 0
+            },
+            {
+              "setVar": "conducte_vista",
+              "value": 0
+            }
+          ],
+          "goTo": "fabrica_conducte"
         },
         {
           "verb": "use",
@@ -419,12 +477,7 @@
             },
             {
               "who": "player",
-              "text": "sala.fabrica_cambra.reixa.llimar2",
-              "sound": "conducte"
-            },
-            {
-              "who": "player",
-              "text": "sala.fabrica_cambra.reixa.llimar3"
+              "text": "sala.fabrica_cambra.reixa.llimar2"
             }
           ],
           "effects": [

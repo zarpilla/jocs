@@ -2,8 +2,8 @@
  * Ferro-9, Acte 3 («La finestra»), jugat sense gràfics.
  */
 import { describe, expect, it } from 'vitest';
-import { estatFinestra } from '../logic/index.js';
-import { jugarActe1, jugarActe2, jugarActe3, keys, partida, texts } from './partida.js';
+import { REVOLTS, estatFinestra, rutaConducte, type Direccio } from '../logic/index.js';
+import { jugarActe1, jugarActe2, jugarActe3, keys, partida, recorrerConducte, texts } from './partida.js';
 
 const item = (id: string) => ({ kind: 'item' as const, id });
 
@@ -40,7 +40,11 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(p.room).toBe('gavina_memoria');
     expect(texts(p.do('look', 'foto'))).toContain('desapareguda');
     expect(texts(p.do('look', 'vitrina'))).toContain('Lot 1');
-    expect(texts(p.do('look', 'mapa'))).toContain('Conducte de servei');
+    const ruta = String(n.getVar('ruta_conducte'));
+    expect(rutaConducte(n)).toHaveLength(REVOLTS);
+    const mapa = texts(p.do('look', 'mapa'));
+    expect(mapa).toContain('Conducte de servei');
+    expect(mapa).toContain(ruta);
     p.do('pickUp', 'fullets');
     expect(p.inventory()).toContain('fullet_memoria');
     expect(n.state.quests.acte3!.objectives.memoria).toBe(true);
@@ -56,6 +60,7 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     p.use('llapis_ulls', item('fullet_memoria'));
     expect(p.inventory()).toContain('mapa_fuga');
     expect(texts(p.do('look', item('mapa_fuga')))).toContain("d'aquí a cent vint anys");
+    expect(texts(p.do('look', item('mapa_fuga')))).toContain(ruta);
 
     // ── Vet: fa veure que accepta el pacte, però a l'altra banda no hi ha ningú ──
     expect(texts(p.use('mapa_fuga', 'panell'))).toContain('Ara és meu');
@@ -87,9 +92,30 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
 
     // ── Iri: llegeix la postdata i deixa la reixa a punt per a d'aquí a cent vint anys ──
     expect(texts(p.do('look', item('mapa_fuga')))).toContain('llimo');
-    expect(texts(p.use('llima', 'reixa'))).toContain('meva marca');
+    // A l'Iri, els signes li arriben corregut: els ha de saber el jugador (o tornar-los a mirar amb la Vet).
+    expect(texts(p.do('look', item('mapa_fuga')))).not.toContain(ruta);
+    expect(texts(p.do('look', item('mapa_fuga')))).toContain('corregut');
+    expect(texts(p.use('llima', 'reixa'))).toContain('provar la ruta');
     expect(n.flag('reixa_preparada')).toBe(true);
     expect(n.state.quests.acte3!.objectives.reixa).toBe(true);
+
+    // ── Iri: segueix pel conducte els cinc revolts del fullet fins al moll, i torna marcant-los ──
+    expect(texts(p.do('open', 'reixa'))).toContain('Cinc revolts');
+    expect(p.room).toBe('fabrica_conducte');
+    expect(n.isHotspotVisible('fabrica_conducte', 'cartell')).toBe(true);
+    const [primer, ...resta] = rutaConducte(n);
+    p.do('walkTo', primer!);
+    expect(p.room).toBe('fabrica_conducte');
+    // Cada revolt és igual, però amb un detall diferent.
+    expect(n.isHotspotVisible('fabrica_conducte', 'cartell')).toBe(false);
+    expect(n.isHotspotVisible('fabrica_conducte', 'guant')).toBe(true);
+    let sortida = '';
+    for (const dir of resta) sortida = texts(p.do('walkTo', dir));
+    expect(sortida).toContain('El moll!');
+    expect(sortida).toContain('gravo una I.');
+    expect(p.room).toBe('fabrica_cambra');
+    expect(n.flag('ruta_marcada')).toBe(true);
+    expect(n.state.quests.acte3!.objectives.conducte).toBe(true);
 
     // ── Vet: reajust. La porta és tancada, però la reixa s'obre i el conducte porta a l'hangar ──
     expect(texts(p.switchTo('vet'))).toContain('reajust');
@@ -155,6 +181,110 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     n.apply({ giveItem: 'nota_vet', who: 'iri' });
     expect(keys(p.use('nota_vet', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri']);
     expect(estatFinestra(n).enceses).toBe(enceses);
+  });
+});
+
+describe('Ferro-9 · Acte 3 · El conducte', () => {
+  /** Fins que l'Iri ha llimat la reixa (la Vet ja ha enviat el mapa). */
+  function finsALaReixa() {
+    const r = partida({ fins: 'fugida_completada' });
+    jugarActe1(r.p);
+    jugarActe2(r.p);
+    const { p } = r;
+    p.do('push', 'panell');
+    p.talk('directora', 'que_vol', 'iri');
+    p.switchTo('iri');
+    p.talk('sic', 'que_passa');
+    p.switchTo('vet');
+    p.do('open', 'porta');
+    p.do('open', 'porta_memoria');
+    p.do('look', 'mapa');
+    p.do('pickUp', 'fullets');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    p.do('look', 'reixa');
+    p.use('llapis_ulls', item('fullet_memoria'));
+    p.talk('directora', 'pacte');
+    p.switchTo('iri');
+    p.talk('sic', 'enganyar');
+    p.do('open', 'porta_cambra');
+    p.switchTo('vet');
+    p.use('mapa_fuga', 'panell');
+    p.do('look', item('mapa_fuga'));
+    p.use('llima', 'reixa');
+    return r;
+  }
+
+  const altra = (d: Direccio): Direccio => (d === 'recte' ? 'esquerra' : 'recte');
+
+  it("la ruta són cinc signes a l'atzar, i cada partida té la seva", () => {
+    const rutes = new Set(Array.from({ length: 20 }, () => {
+      const { n } = partida();
+      return String(n.getVar('ruta_conducte'));
+    }));
+    for (const r of rutes) expect(r).toMatch(/^[←↑→]( [←↑→]){4}$/);
+    expect(rutes.size).toBeGreaterThan(1);
+  });
+
+  it("si l'Iri s'equivoca en algun revolt, al cinquè surt per la reixa per on ha entrat: s'ha perdut", () => {
+    const { p, n } = finsALaReixa();
+    const ruta = rutaConducte(n);
+    // L'errada al primer revolt: els quatre següents, bé. No se sap fins al final.
+    const malament = [altra(ruta[0]!), ...ruta.slice(1)];
+    p.do('open', 'reixa');
+    for (const dir of malament.slice(0, -1)) {
+      p.do('walkTo', dir);
+      expect(p.room).toBe('fabrica_conducte');
+    }
+    const sortida = texts(p.do('walkTo', malament.at(-1)!));
+    expect(sortida).toContain("M'he perdut");
+    expect(p.room).toBe('fabrica_cambra');
+    expect(n.flag('ruta_marcada')).toBe(false);
+    expect(n.getVar('conducte_pas')).toBe(0);
+    expect(n.getVar('conducte_errades')).toBe(0);
+    expect(n.activeHints()).toContain('iri_conducte');
+
+    // La Vet surt pel conducte, i al mapa del museu hi torna a llegir els signes.
+    p.switchTo('vet');
+    p.do('open', 'reixa');
+    expect(n.activeHints()).toContain('vet_signes');
+    p.do('open', 'reixa');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_memoria');
+    expect(texts(p.do('look', 'mapa'))).toContain(String(n.getVar('ruta_conducte')));
+    p.switchTo('iri');
+
+    // Es pot tornar enrere a mig camí, i tornar-ho a provar de cap.
+    p.do('open', 'reixa');
+    p.do('walkTo', ruta[0]!);
+    p.do('walkTo', 'enrere');
+    expect(p.room).toBe('fabrica_cambra');
+    expect(texts(recorrerConducte(p))).toContain('El moll!');
+    expect(n.flag('ruta_marcada')).toBe(true);
+  });
+
+  it("amb la reixa llimada però sense les fletxes, la Vet hi passa amb els revolts del mapa, i les fletxes apareixen després", () => {
+    const { p, n } = finsALaReixa();
+    expect(texts(p.switchTo('vet'))).toContain('reajust');
+    const obrir = texts(p.do('open', 'reixa'));
+    expect(obrir).toContain('fosc i revolts');
+    expect(obrir).not.toContain('fletxa');
+    expect(texts(p.do('open', 'reixa'))).toContain('revolts del mapa');
+    expect(p.room).toBe('gavina_hangar');
+    p.do('open', 'sortida_conducte');
+    p.switchTo('iri');
+    recorrerConducte(p);
+    expect(n.flag('ruta_marcada')).toBe(true);
+    expect(texts(p.switchTo('vet'))).toContain('Fa un moment no hi eren');
+    expect(texts(p.do('look', 'reixa'))).toContain('la fletxa');
+  });
+
+  it("si l'Iri fuig abans d'haver marcat el camí, l'encerta i surt directament al moll", () => {
+    const { p, n } = finsALaReixa();
+    n.apply({ setFlag: 'tub_muntat' });
+    expect(texts(recorrerConducte(p))).toContain('si la V. passa per aquí');
+    expect(p.room).toBe('fabrica_moll');
+    expect(n.flag('ruta_marcada')).toBe(true);
   });
 });
 

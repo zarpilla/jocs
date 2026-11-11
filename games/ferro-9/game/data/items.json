@@ -1893,7 +1893,11 @@
         "lines": [
           {
             "who": "narrator",
-            "text": "obj.mapa_fuga.text"
+            "text": "obj.mapa_fuga.text_iri"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri_taca"
           },
           {
             "who": "player",

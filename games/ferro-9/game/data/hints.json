@@ -3219,6 +3219,56 @@
       "pista.iri_reixa.3"
     ]
   },
+  "iri_conducte": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "reixa_preparada"
+        },
+        {
+          "flag": "ruta_marcada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "ruta_marcada"
+    },
+    "levels": [
+      "pista.iri_conducte.1",
+      "pista.iri_conducte.2",
+      "pista.iri_conducte.3"
+    ]
+  },
+  "vet_signes": {
+    "priority": 0,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "reixa_preparada"
+        },
+        {
+          "flag": "ruta_marcada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "ruta_marcada"
+    },
+    "levels": [
+      "pista.vet_signes.1",
+      "pista.vet_signes.2",
+      "pista.vet_signes.3"
+    ]
+  },
   "iri_esperar_reixa": {
     "priority": 1,
     "when": {
@@ -3227,7 +3277,7 @@
           "protagonist": "iri"
         },
         {
-          "flag": "reixa_preparada"
+          "flag": "ruta_marcada"
         },
         {
           "flag": "reixa_oberta",

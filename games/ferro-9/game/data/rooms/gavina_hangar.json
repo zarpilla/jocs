@@ -1226,7 +1226,19 @@
             {
               "who": "player",
               "text": "sala.gavina_hangar.sortida_conducte.entrar",
-              "sound": "conducte"
+              "sound": "conducte",
+              "if": {
+                "flag": "ruta_marcada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.sortida_conducte.entrar_mapa",
+              "sound": "conducte",
+              "if": {
+                "flag": "ruta_marcada",
+                "is": false
+              }
             }
           ],
           "goTo": "gavina_cella"
@@ -1236,7 +1248,18 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.gavina_hangar.sortida_conducte.look"
+              "text": "sala.gavina_hangar.sortida_conducte.look",
+              "if": {
+                "flag": "ruta_marcada"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.sortida_conducte.look_mapa",
+              "if": {
+                "flag": "ruta_marcada",
+                "is": false
+              }
             }
           ]
         }

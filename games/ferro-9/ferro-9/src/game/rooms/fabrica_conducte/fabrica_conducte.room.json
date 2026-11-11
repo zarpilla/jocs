@@ -1,0 +1,418 @@
+{
+  "id": "fabrica_conducte",
+  "name": "Conducte de servei",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 164,
+            "y": 222
+          },
+          {
+            "x": 477,
+            "y": 222
+          },
+          {
+            "x": 586,
+            "y": 266
+          },
+          {
+            "x": 55,
+            "y": 266
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "esquerra",
+      "active": true,
+      "description": "passadís de l'esquerra",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 90,
+          "y": 54
+        },
+        {
+          "x": 189,
+          "y": 54
+        },
+        {
+          "x": 189,
+          "y": 244
+        },
+        {
+          "x": 90,
+          "y": 244
+        }
+      ],
+      "walkToPoint": {
+        "x": 171,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 140,
+        "y": 244
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "recte",
+      "active": true,
+      "description": "passadís del fons",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 283,
+          "y": 90
+        },
+        {
+          "x": 357,
+          "y": 90
+        },
+        {
+          "x": 357,
+          "y": 204
+        },
+        {
+          "x": 283,
+          "y": 204
+        }
+      ],
+      "walkToPoint": {
+        "x": 320,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 320,
+        "y": 204
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "dreta",
+      "active": true,
+      "description": "passadís de la dreta",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 450,
+          "y": 54
+        },
+        {
+          "x": 549,
+          "y": 54
+        },
+        {
+          "x": 549,
+          "y": 244
+        },
+        {
+          "x": 450,
+          "y": 244
+        }
+      ],
+      "walkToPoint": {
+        "x": 470,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 500,
+        "y": 244
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "enrere",
+      "active": true,
+      "description": "cap a la reixa",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 14,
+          "y": 232
+        },
+        {
+          "x": 88,
+          "y": 232
+        },
+        {
+          "x": 88,
+          "y": 257
+        },
+        {
+          "x": 14,
+          "y": 257
+        }
+      ],
+      "walkToPoint": {
+        "x": 95,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 51,
+        "y": 257
+      },
+      "defaultVerb": "open"
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "cartell",
+      "tag": "cartell",
+      "animations": {
+        "cartell": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 240,
+            "y": 94
+          },
+          {
+            "x": 277,
+            "y": 94
+          },
+          {
+            "x": 277,
+            "y": 120
+          },
+          {
+            "x": 240,
+            "y": 120
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 273,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 259,
+        "y": 120
+      },
+      "description": "cartell"
+    },
+    {
+      "id": "guant",
+      "tag": "guant",
+      "animations": {
+        "guant": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 378,
+            "y": 227
+          },
+          {
+            "x": 408,
+            "y": 227
+          },
+          {
+            "x": 408,
+            "y": 242
+          },
+          {
+            "x": 378,
+            "y": 242
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 364,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 393,
+        "y": 242
+      },
+      "description": "guant"
+    },
+    {
+      "id": "aixeta",
+      "tag": "aixeta",
+      "animations": {
+        "aixeta": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 363,
+            "y": 101
+          },
+          {
+            "x": 397,
+            "y": 101
+          },
+          {
+            "x": 397,
+            "y": 168
+          },
+          {
+            "x": 363,
+            "y": 168
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 371,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 380,
+        "y": 168
+      },
+      "description": "aixeta"
+    },
+    {
+      "id": "tassa",
+      "tag": "tassa",
+      "animations": {
+        "tassa": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 221,
+            "y": 223
+          },
+          {
+            "x": 244,
+            "y": 223
+          },
+          {
+            "x": 244,
+            "y": 240
+          },
+          {
+            "x": 221,
+            "y": 240
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 255,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 233,
+        "y": 240
+      },
+      "description": "tassa"
+    },
+    {
+      "id": "formulari",
+      "tag": "formulari",
+      "animations": {
+        "formulari": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 363,
+            "y": 90
+          },
+          {
+            "x": 400,
+            "y": 90
+          },
+          {
+            "x": 400,
+            "y": 135
+          },
+          {
+            "x": 363,
+            "y": 135
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 371,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 382,
+        "y": 135
+      },
+      "description": "formulari"
+    },
+    {
+      "id": "ambient",
+      "tag": "ambient",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ambient": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 255,
+      "y": 250,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

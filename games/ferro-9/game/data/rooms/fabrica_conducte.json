@@ -1,0 +1,390 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_conducte.nom",
+  "protagonist": "iri",
+  "hotspots": {
+    "esquerra": {
+      "name": "sala.fabrica_conducte.esquerra.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.esquerra.anar",
+              "sound": "conducte"
+            }
+          ],
+          "action": {
+            "name": "conducte.tria",
+            "args": {
+              "dir": "esquerra"
+            }
+          },
+          "goTo": "fabrica_conducte_revolt"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.esquerra.look"
+            }
+          ]
+        }
+      ]
+    },
+    "recte": {
+      "name": "sala.fabrica_conducte.recte.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.recte.anar",
+              "sound": "conducte"
+            }
+          ],
+          "action": {
+            "name": "conducte.tria",
+            "args": {
+              "dir": "recte"
+            }
+          },
+          "goTo": "fabrica_conducte_revolt"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.recte.look"
+            }
+          ]
+        }
+      ]
+    },
+    "dreta": {
+      "name": "sala.fabrica_conducte.dreta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.dreta.anar",
+              "sound": "conducte"
+            }
+          ],
+          "action": {
+            "name": "conducte.tria",
+            "args": {
+              "dir": "dreta"
+            }
+          },
+          "goTo": "fabrica_conducte_revolt"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.dreta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "enrere": {
+      "name": "sala.fabrica_conducte.enrere.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.enrere.anar",
+              "sound": "reixa"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "conducte_pas",
+              "value": 0
+            },
+            {
+              "setVar": "conducte_errades",
+              "value": 0
+            },
+            {
+              "setVar": "conducte_vista",
+              "value": 0
+            }
+          ],
+          "goTo": "fabrica_cambra"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.enrere.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cartell": {
+      "name": "sala.fabrica_conducte.cartell.nom",
+      "visibleIf": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 0
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.cartell.look"
+            }
+          ]
+        }
+      ]
+    },
+    "guant": {
+      "name": "sala.fabrica_conducte.guant.nom",
+      "visibleIf": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 1
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.guant.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.guant.agafar"
+            }
+          ]
+        }
+      ]
+    },
+    "aixeta": {
+      "name": "sala.fabrica_conducte.aixeta.nom",
+      "visibleIf": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 2
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.aixeta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tassa": {
+      "name": "sala.fabrica_conducte.tassa.nom",
+      "visibleIf": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 3
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.tassa.look"
+            }
+          ]
+        }
+      ]
+    },
+    "formulari": {
+      "name": "sala.fabrica_conducte.formulari.nom",
+      "visibleIf": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 4
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.formulari.look"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_conducte.formulari.agafar"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 0
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte.revolt1",
+          "stage": [
+            {
+              "who": "player",
+              "at": {
+                "x": 256,
+                "y": 250
+              },
+              "face": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 1
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte.revolt2",
+          "stage": [
+            {
+              "who": "player",
+              "at": {
+                "x": 256,
+                "y": 250
+              },
+              "face": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 2
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte.revolt3",
+          "stage": [
+            {
+              "who": "player",
+              "at": {
+                "x": 256,
+                "y": 250
+              },
+              "face": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 3
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte.revolt4",
+          "stage": [
+            {
+              "who": "player",
+              "at": {
+                "x": 256,
+                "y": 250
+              },
+              "face": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "verb": "*",
+      "if": {
+        "var": "conducte_vista",
+        "op": "==",
+        "value": 4
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte.revolt5",
+          "stage": [
+            {
+              "who": "player",
+              "at": {
+                "x": 256,
+                "y": 250
+              },
+              "face": "U"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

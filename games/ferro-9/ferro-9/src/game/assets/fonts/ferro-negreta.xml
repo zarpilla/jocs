@@ -5,7 +5,7 @@
   <pages>
     <page id="0" file="ferro-negreta_0.png" />
   </pages>
-  <chars count="119">
+  <chars count="121">
     <char id="32" x="0" y="0" width="4" height="16" xoffset="0" yoffset="0" xadvance="4" page="0" chnl="15" />
     <char id="33" x="10" y="0" width="2" height="16" xoffset="0" yoffset="0" xadvance="3" page="0" chnl="15" />
     <char id="34" x="20" y="0" width="3" height="16" xoffset="0" yoffset="0" xadvance="4" page="0" chnl="15" />
@@ -124,6 +124,8 @@
     <char id="8212" x="30" y="112" width="9" height="16" xoffset="0" yoffset="0" xadvance="10" page="0" chnl="15" />
     <char id="8217" x="40" y="112" width="2" height="16" xoffset="0" yoffset="0" xadvance="3" page="0" chnl="15" />
     <char id="8230" x="50" y="112" width="8" height="16" xoffset="0" yoffset="0" xadvance="9" page="0" chnl="15" />
-    <char id="8594" x="60" y="112" width="6" height="16" xoffset="0" yoffset="0" xadvance="7" page="0" chnl="15" />
+    <char id="8592" x="60" y="112" width="6" height="16" xoffset="0" yoffset="0" xadvance="7" page="0" chnl="15" />
+    <char id="8593" x="70" y="112" width="5" height="16" xoffset="0" yoffset="0" xadvance="6" page="0" chnl="15" />
+    <char id="8594" x="80" y="112" width="6" height="16" xoffset="0" yoffset="0" xadvance="7" page="0" chnl="15" />
   </chars>
 </font>

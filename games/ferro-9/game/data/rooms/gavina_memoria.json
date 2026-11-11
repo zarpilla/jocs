@@ -295,6 +295,21 @@
             {
               "who": "player",
               "text": "sala.gavina_memoria.mapa.vet2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.mapa.ruta",
+              "if": {
+                "flag": "mapa_fuga_escrit",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_memoria.mapa.ruta_copiada",
+              "if": {
+                "flag": "mapa_fuga_escrit"
+              }
             }
           ],
           "effects": [

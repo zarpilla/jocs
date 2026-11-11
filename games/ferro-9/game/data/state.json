@@ -91,6 +91,8 @@
     "cella_tancada": false,
     "iri_sap_reixa": false,
     "reixa_preparada": false,
+    "ruta_marcada": false,
+    "vet_veu_fletxes": false,
     "vet_veu_reixa": false,
     "reixa_oberta": false,
     "vet_sap_tub": false,
@@ -127,6 +129,10 @@
     "diapaso_to": 0,
     "valvula": "oberta",
     "formularis_arxivats": 0,
-    "notes_trobades": 0
+    "notes_trobades": 0,
+    "ruta_conducte": "",
+    "conducte_pas": 0,
+    "conducte_errades": 0,
+    "conducte_vista": 0
   }
 }

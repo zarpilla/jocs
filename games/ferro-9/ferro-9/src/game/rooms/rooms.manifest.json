@@ -88,6 +88,14 @@
     {
       "id": "credits",
       "definition": "credits/credits.room.json"
+    },
+    {
+      "id": "fabrica_conducte",
+      "definition": "fabrica_conducte/fabrica_conducte.room.json"
+    },
+    {
+      "id": "fabrica_conducte_revolt",
+      "definition": "fabrica_conducte_revolt/fabrica_conducte_revolt.room.json"
     }
   ]
 }

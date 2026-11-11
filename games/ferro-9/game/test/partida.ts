@@ -4,7 +4,7 @@
 import { expect } from 'vitest';
 import { HeadlessPlayer, MemoryWorld, Narrative } from '@aventura/narrative-core';
 import { content, locales } from '../index.js';
-import { installGameLogic } from '../logic/index.js';
+import { installGameLogic, rutaConducte, type Direccio } from '../logic/index.js';
 
 export const keys = (lines: { key: string }[]) => lines.map((l) => l.key);
 export const texts = (lines: { text: string }[]) => lines.map((l) => l.text).join(' ');
@@ -236,6 +236,17 @@ export function jugarActe2(p: Jugador, opts: { mira?: boolean; cargol?: boolean 
  * l'hangar, quan ja pot anar al passadís pel conducte; `iri`, amb l'Iri al magatzem, abans de fugir.
  * `inici`, amb la Vet a la cel·la just en començar l'acte; `mos`: en Mos distreu la Directora en lloc del pacte.
  */
+/**
+ * L'Iri entra al conducte per la reixa de la cambra i, a cada revolt, va per on diu `ruta` (per defecte, la del
+ * fullet de la Vet). Torna les línies de l'últim revolt (on surt).
+ */
+export function recorrerConducte(p: Jugador, ruta: Direccio[] = rutaConducte(p.narrative)) {
+  p.do('open', 'reixa');
+  let lines: { key: string; text: string }[] = [];
+  for (const dir of ruta) lines = p.do('walkTo', dir);
+  return lines;
+}
+
 export function jugarActe3(p: Jugador, extra: { inici?: () => void; vet?: () => void; iri?: () => void; mos?: boolean } = {}) {
   extra.inici?.();
   p.do('push', 'panell');
@@ -264,6 +275,7 @@ export function jugarActe3(p: Jugador, extra: { inici?: () => void; vet?: () => 
   p.use('mapa_fuga', 'panell');
   p.do('look', item('mapa_fuga'));
   p.use('llima', 'reixa');
+  recorrerConducte(p);
   p.switchTo('vet');
   p.do('open', 'reixa');
   p.do('open', 'reixa');

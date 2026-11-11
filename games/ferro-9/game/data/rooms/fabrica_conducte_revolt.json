@@ -1,0 +1,147 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.fabrica_conducte_revolt.nom",
+  "onEnter": [
+    {
+      "verb": "*",
+      "if": {
+        "var": "conducte_pas",
+        "op": "<",
+        "value": 5
+      },
+      "action": {
+        "name": "conducte.revolt"
+      },
+      "goTo": "fabrica_conducte"
+    },
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "var": "conducte_errades",
+            "op": "==",
+            "value": 0
+          },
+          {
+            "any": [
+              {
+                "hasItem": "tub_amb_llibreta",
+                "who": "vet"
+              },
+              {
+                "flag": "tub_muntat"
+              }
+            ]
+          }
+        ]
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.arribada",
+          "sound": "conducte"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.fugir",
+          "sound": "llima"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "ruta_marcada"
+        },
+        {
+          "setVar": "conducte_pas",
+          "value": 0
+        },
+        {
+          "setVar": "conducte_errades",
+          "value": 0
+        },
+        {
+          "setVar": "conducte_vista",
+          "value": 0
+        }
+      ],
+      "goTo": "fabrica_moll"
+    },
+    {
+      "verb": "*",
+      "if": {
+        "var": "conducte_errades",
+        "op": "==",
+        "value": 0
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.arribada",
+          "sound": "conducte"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.gravar",
+          "sound": "llima"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.tornar"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "ruta_marcada"
+        },
+        {
+          "setVar": "conducte_pas",
+          "value": 0
+        },
+        {
+          "setVar": "conducte_errades",
+          "value": 0
+        },
+        {
+          "setVar": "conducte_vista",
+          "value": 0
+        }
+      ],
+      "goTo": "fabrica_cambra"
+    },
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.perdut1",
+          "sound": "conducte"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.perdut2"
+        },
+        {
+          "who": "player",
+          "text": "sala.fabrica_conducte_revolt.perdut3"
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "conducte_pas",
+          "value": 0
+        },
+        {
+          "setVar": "conducte_errades",
+          "value": 0
+        },
+        {
+          "setVar": "conducte_vista",
+          "value": 0
+        }
+      ],
+      "goTo": "fabrica_cambra"
+    }
+  ],
+  "hotspots": {}
+}

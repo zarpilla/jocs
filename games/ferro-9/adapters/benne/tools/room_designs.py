@@ -1466,6 +1466,39 @@ FINALS = {f'final_{nom}': _proleg(final_bg, 'vet') for nom in ('llancadora', 'mu
 FINALS['credits'] = _proleg(final_bg, 'vet')                     # els crèdits (art: hd/rooms/credits.py)
 
 
+# ─── Fàbrica: el conducte de servei (un revolt; l'art és a hd640/rooms/fabrica_conducte.py) ───────────────
+
+def conducte_bg(c):
+    c.rect(0, 0, W, H, (24, 20, 22))
+    c.d.polygon([(0, 0), (128, 34), (128, 112), (0, 150)], fill=(60, 50, 48))
+    c.d.polygon([(W, 0), (224, 34), (224, 112), (W, 150)], fill=(60, 50, 48))
+    c.d.polygon([(0, 150), (128, 112), (224, 112), (W, 150), (W, H), (0, H)], fill=(44, 38, 36))
+    c.rect(128, 34, 224, 112, (70, 58, 54))
+    for r in ((50, 30, 104, 134), (248, 30, 302, 134), (156, 50, 196, 112)):
+        c.rect(*r, (8, 6, 8))
+
+
+CONDUCTE = {
+    'era': 'iri',
+    'things': {
+        'esquerra': {'rect': (50, 30, 104, 134), 'walk': (94, 130)},
+        'recte': {'rect': (156, 50, 196, 112), 'walk': (176, 122)},
+        'dreta': {'rect': (248, 30, 302, 134), 'walk': (258, 130)},
+        'enrere': {'rect': (8, 128, 48, 141), 'walk': (52, 138)},
+        'cartell': {'rect': (132, 52, 152, 66), 'walk': (150, 124)},
+        'guant': {'rect': (208, 125, 224, 133), 'walk': (200, 132)},
+        'aixeta': {'rect': (200, 56, 218, 92), 'walk': (204, 124)},
+        'tassa': {'rect': (122, 123, 134, 132), 'walk': (140, 132)},
+        'formulari': {'rect': (200, 50, 220, 74), 'walk': (204, 124)},
+    },
+    'spawns': {'iri': (140, 137)},
+    'walkable': [(90, 122), (262, 122), (322, 146), (30, 146)],
+    'bg': conducte_bg,
+    'props': {},
+}
+CONDUCTE_REVOLT = _proleg(final_bg, "iri")
+
+
 # ─── Portada: la fàbrica i La Gavina, partides en diagonal, i el títol ──────
 
 # Lletres de 5×7 per al títol (1 = píxel ple).
@@ -1530,6 +1563,8 @@ DESIGNS = {
     'fabrica_despatx': DESPATX,
     'gavina_arxiu': ARXIU,
     'gavina_memoria': MEMORIA,
+    'fabrica_conducte': CONDUCTE,
+    'fabrica_conducte_revolt': CONDUCTE_REVOLT,
     'proleg_gavina': PROLEG_GAVINA,
     'proleg_cella': PROLEG_CELLA,
     'proleg_fabrica': PROLEG_FABRICA,

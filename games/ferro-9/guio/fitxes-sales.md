@@ -4,6 +4,73 @@
 
 Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la sala a l'editor del motor, amb **aquest id** (o un id del tipus `<sala>-hotspot-<id>`). Les que tenen condició s'han de lligar amb `bindHotspots`.
 
+## Sense protagonista
+
+### Crèdits · `credits`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### Conducte de servei · `fabrica_conducte_revolt`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### L'Anell de Baix · `final_anell`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### El Cargol · `final_cargol`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### L'Estació d'Orís · `final_estacio`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### La llançadora · `final_llancadora`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### El museu · `final_museu`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### La nota · `final_nota`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### Ferro-9 · `portada`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### La cambra · `proleg_cambra`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### Cel·la 9 · `proleg_cella`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### La fàbrica · `proleg_fabrica`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
+### La Gavina · `proleg_gavina`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+
 ## Iri
 
 ### Sala de calderes · `fabrica_calderes`
@@ -28,6 +95,20 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `boto` | botó de sincronia | prop | `{"flag":"alarma_apagada"}` | push, use, look |
 | `porta` | sala de calderes | hotspot / prop → `fabrica_calderes` | sempre | open, use, walkTo |
 | `reixa` | reixa | hotspot / prop → `fabrica_moll` | sempre | open, use, walkTo, pull, pickUp, push, use + llima, look |
+
+### Conducte de servei · `fabrica_conducte`
+
+| Id | Nom | Tipus | Apareix | Verbs |
+|---|---|---|---|---|
+| `esquerra` | passadís de l'esquerra | hotspot / prop → `fabrica_conducte_revolt` | sempre | walkTo, open, use, look |
+| `recte` | passadís del fons | hotspot / prop → `fabrica_conducte_revolt` | sempre | walkTo, open, use, look |
+| `dreta` | passadís de la dreta | hotspot / prop → `fabrica_conducte_revolt` | sempre | walkTo, open, use, look |
+| `enrere` | cap a la reixa | hotspot / prop → `fabrica_cambra` | sempre | walkTo, open, use, look |
+| `cartell` | cartell | prop | `{"var":"conducte_vista","op":"==","value":0}` | look |
+| `guant` | guant | prop | `{"var":"conducte_vista","op":"==","value":1}` | look, pickUp |
+| `aixeta` | aixeta | prop | `{"var":"conducte_vista","op":"==","value":2}` | look |
+| `tassa` | tassa | prop | `{"var":"conducte_vista","op":"==","value":3}` | look |
+| `formulari` | formulari | prop | `{"var":"conducte_vista","op":"==","value":4}` | look, pickUp |
 
 ### Despatx del director · `fabrica_despatx`
 
@@ -92,7 +173,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `safata` | safata de sopar | prop | `{"flag":"sopa_agafada","is":false}` | look, pickUp |
 | `porta` | porta de la cel·la | hotspot / prop → `gavina_passadis` | sempre | open, use, walkTo, push, pull, use + objecte, look, use + imant_ferro9 |
 | `finestreta` | finestreta | hotspot / prop | sempre | look |
-| `directora` | Directora Aldaia | personatge | `{"flag":"acte3_iniciat"}` | talkTo, look |
+| `directora` | Directora Aldaia | personatge | `{"all":[{"flag":"acte3_iniciat"},{"any":[{"flag":"cella_tancada","is":false},{"hasItem":"tub_amb_llibreta","who":"vet"}]}]}` | talkTo, look |
 | `reixa` | reixa | hotspot / prop → `gavina_hangar` | sempre | open, pull, pickUp, use, push, walkTo, look, use + clau_anglesa |
 | `esquerda` | esquerda | prop | `{"flag":"nota_perduda_1","is":false}` | open, pickUp, pull, push, use, look |
 
@@ -136,33 +217,6 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `porta_memoria` | Sala de la Memòria | hotspot / prop → `gavina_memoria` | sempre | open, use, walkTo, look |
 | `guardia` | Guàrdia d'Orís | personatge | `{"flag":"mira_salvada"}` | talkTo, look |
 | `rajola` | rajola solta | prop | `{"flag":"nota_perduda_2","is":false}` | open, pickUp, pull, push, use, look |
-
-## Sense protagonista
-
-### Ferro-9 · `portada`
-
-| Id | Nom | Tipus | Apareix | Verbs |
-|---|---|---|---|---|
-
-### La cambra · `proleg_cambra`
-
-| Id | Nom | Tipus | Apareix | Verbs |
-|---|---|---|---|---|
-
-### Cel·la 9 · `proleg_cella`
-
-| Id | Nom | Tipus | Apareix | Verbs |
-|---|---|---|---|---|
-
-### La fàbrica · `proleg_fabrica`
-
-| Id | Nom | Tipus | Apareix | Verbs |
-|---|---|---|---|---|
-
-### La Gavina · `proleg_gavina`
-
-| Id | Nom | Tipus | Apareix | Verbs |
-|---|---|---|---|---|
 
 ## Objectes d'inventari
 
@@ -219,4 +273,4 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `formulari_27be_signat` | formulari 27-B/E signat | 0.01 |  |
 | `carnet_exemplar` | carnet d'usuària exemplar | 0.01 |  |
 | `notes_perdudes` | notes perdudes | 0.05 |  |
-| `nota_mos` | nota de la cel·la 9 | 0.01 |  |
+| `nota_mos` | nota vella | 0.01 |  |

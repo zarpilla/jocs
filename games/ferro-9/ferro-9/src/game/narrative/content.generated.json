@@ -137,6 +137,8 @@
         "cella_tancada": false,
         "iri_sap_reixa": false,
         "reixa_preparada": false,
+        "ruta_marcada": false,
+        "vet_veu_fletxes": false,
         "vet_veu_reixa": false,
         "reixa_oberta": false,
         "vet_sap_tub": false,
@@ -173,7 +175,11 @@
         "diapaso_to": 0,
         "valvula": "oberta",
         "formularis_arxivats": 0,
-        "notes_trobades": 0
+        "notes_trobades": 0,
+        "ruta_conducte": "",
+        "conducte_pas": 0,
+        "conducte_errades": 0,
+        "conducte_vista": 0
       }
     },
     "characters": {
@@ -2143,7 +2149,11 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "obj.mapa_fuga.text"
+                "text": "obj.mapa_fuga.text_iri"
+              },
+              {
+                "who": "player",
+                "text": "obj.mapa_fuga.iri_taca"
               },
               {
                 "who": "player",
@@ -3380,13 +3390,23 @@
                   "push"
                 ],
                 "if": {
-                  "any": [
+                  "all": [
                     {
-                      "hasItem": "tub_amb_llibreta",
-                      "who": "vet"
+                      "any": [
+                        {
+                          "hasItem": "tub_amb_llibreta",
+                          "who": "vet"
+                        },
+                        {
+                          "flag": "tub_muntat"
+                        }
+                      ]
                     },
                     {
-                      "flag": "tub_muntat"
+                      "flag": "reixa_preparada"
+                    },
+                    {
+                      "flag": "ruta_marcada"
                     }
                   ]
                 },
@@ -3403,6 +3423,54 @@
                   }
                 ],
                 "goTo": "fabrica_moll"
+              },
+              {
+                "verb": [
+                  "open",
+                  "use",
+                  "walkTo",
+                  "pull",
+                  "pickUp",
+                  "push"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "reixa_preparada"
+                    },
+                    {
+                      "flag": "ruta_marcada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.reixa.entrar1",
+                    "sound": "reixa"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_cambra.reixa.entrar2",
+                    "sound": "conducte"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setVar": "conducte_pas",
+                    "value": 0
+                  },
+                  {
+                    "setVar": "conducte_errades",
+                    "value": 0
+                  },
+                  {
+                    "setVar": "conducte_vista",
+                    "value": 0
+                  }
+                ],
+                "goTo": "fabrica_conducte"
               },
               {
                 "verb": "use",
@@ -3426,12 +3494,7 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.fabrica_cambra.reixa.llimar2",
-                    "sound": "conducte"
-                  },
-                  {
-                    "who": "player",
-                    "text": "sala.fabrica_cambra.reixa.llimar3"
+                    "text": "sala.fabrica_cambra.reixa.llimar2"
                   }
                 ],
                 "effects": [
@@ -3685,6 +3748,541 @@
             }
           }
         }
+      },
+      "fabrica_conducte": {
+        "name": "sala.fabrica_conducte.nom",
+        "protagonist": "iri",
+        "hotspots": {
+          "esquerra": {
+            "name": "sala.fabrica_conducte.esquerra.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "open",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.esquerra.anar",
+                    "sound": "conducte"
+                  }
+                ],
+                "action": {
+                  "name": "conducte.tria",
+                  "args": {
+                    "dir": "esquerra"
+                  }
+                },
+                "goTo": "fabrica_conducte_revolt"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.esquerra.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "recte": {
+            "name": "sala.fabrica_conducte.recte.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "open",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.recte.anar",
+                    "sound": "conducte"
+                  }
+                ],
+                "action": {
+                  "name": "conducte.tria",
+                  "args": {
+                    "dir": "recte"
+                  }
+                },
+                "goTo": "fabrica_conducte_revolt"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.recte.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "dreta": {
+            "name": "sala.fabrica_conducte.dreta.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "open",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.dreta.anar",
+                    "sound": "conducte"
+                  }
+                ],
+                "action": {
+                  "name": "conducte.tria",
+                  "args": {
+                    "dir": "dreta"
+                  }
+                },
+                "goTo": "fabrica_conducte_revolt"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.dreta.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "enrere": {
+            "name": "sala.fabrica_conducte.enrere.nom",
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "open",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.enrere.anar",
+                    "sound": "reixa"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setVar": "conducte_pas",
+                    "value": 0
+                  },
+                  {
+                    "setVar": "conducte_errades",
+                    "value": 0
+                  },
+                  {
+                    "setVar": "conducte_vista",
+                    "value": 0
+                  }
+                ],
+                "goTo": "fabrica_cambra"
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.enrere.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "cartell": {
+            "name": "sala.fabrica_conducte.cartell.nom",
+            "visibleIf": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 0
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.cartell.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "guant": {
+            "name": "sala.fabrica_conducte.guant.nom",
+            "visibleIf": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 1
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.guant.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.guant.agafar"
+                  }
+                ]
+              }
+            ]
+          },
+          "aixeta": {
+            "name": "sala.fabrica_conducte.aixeta.nom",
+            "visibleIf": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 2
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.aixeta.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "tassa": {
+            "name": "sala.fabrica_conducte.tassa.nom",
+            "visibleIf": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 3
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.tassa.look"
+                  }
+                ]
+              }
+            ]
+          },
+          "formulari": {
+            "name": "sala.fabrica_conducte.formulari.nom",
+            "visibleIf": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 4
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.formulari.look"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_conducte.formulari.agafar"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "onEnter": [
+          {
+            "verb": "*",
+            "if": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 0
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte.revolt1",
+                "stage": [
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 256,
+                      "y": 250
+                    },
+                    "face": "U"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "if": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 1
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte.revolt2",
+                "stage": [
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 256,
+                      "y": 250
+                    },
+                    "face": "U"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "if": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 2
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte.revolt3",
+                "stage": [
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 256,
+                      "y": 250
+                    },
+                    "face": "U"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "if": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 3
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte.revolt4",
+                "stage": [
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 256,
+                      "y": 250
+                    },
+                    "face": "U"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "if": {
+              "var": "conducte_vista",
+              "op": "==",
+              "value": 4
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte.revolt5",
+                "stage": [
+                  {
+                    "who": "player",
+                    "at": {
+                      "x": 256,
+                      "y": 250
+                    },
+                    "face": "U"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "fabrica_conducte_revolt": {
+        "name": "sala.fabrica_conducte_revolt.nom",
+        "onEnter": [
+          {
+            "verb": "*",
+            "if": {
+              "var": "conducte_pas",
+              "op": "<",
+              "value": 5
+            },
+            "action": {
+              "name": "conducte.revolt"
+            },
+            "goTo": "fabrica_conducte"
+          },
+          {
+            "verb": "*",
+            "if": {
+              "all": [
+                {
+                  "var": "conducte_errades",
+                  "op": "==",
+                  "value": 0
+                },
+                {
+                  "any": [
+                    {
+                      "hasItem": "tub_amb_llibreta",
+                      "who": "vet"
+                    },
+                    {
+                      "flag": "tub_muntat"
+                    }
+                  ]
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.arribada",
+                "sound": "conducte"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.fugir",
+                "sound": "llima"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "ruta_marcada"
+              },
+              {
+                "setVar": "conducte_pas",
+                "value": 0
+              },
+              {
+                "setVar": "conducte_errades",
+                "value": 0
+              },
+              {
+                "setVar": "conducte_vista",
+                "value": 0
+              }
+            ],
+            "goTo": "fabrica_moll"
+          },
+          {
+            "verb": "*",
+            "if": {
+              "var": "conducte_errades",
+              "op": "==",
+              "value": 0
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.arribada",
+                "sound": "conducte"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.gravar",
+                "sound": "llima"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.tornar"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "ruta_marcada"
+              },
+              {
+                "setVar": "conducte_pas",
+                "value": 0
+              },
+              {
+                "setVar": "conducte_errades",
+                "value": 0
+              },
+              {
+                "setVar": "conducte_vista",
+                "value": 0
+              }
+            ],
+            "goTo": "fabrica_cambra"
+          },
+          {
+            "verb": "*",
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.perdut1",
+                "sound": "conducte"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.perdut2"
+              },
+              {
+                "who": "player",
+                "text": "sala.fabrica_conducte_revolt.perdut3"
+              }
+            ],
+            "effects": [
+              {
+                "setVar": "conducte_pas",
+                "value": 0
+              },
+              {
+                "setVar": "conducte_errades",
+                "value": 0
+              },
+              {
+                "setVar": "conducte_vista",
+                "value": 0
+              }
+            ],
+            "goTo": "fabrica_cambra"
+          }
+        ],
+        "hotspots": {}
       },
       "fabrica_despatx": {
         "name": "sala.fabrica_despatx.nom",
@@ -6973,7 +7571,23 @@
                   },
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.obrir2"
+                    "text": "sala.gavina_cella.reixa.obrir2",
+                    "if": {
+                      "flag": "ruta_marcada"
+                    },
+                    "effects": [
+                      {
+                        "setFlag": "vet_veu_fletxes"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.reixa.obrir2_fosc",
+                    "if": {
+                      "flag": "ruta_marcada",
+                      "is": false
+                    }
                   },
                   {
                     "who": "player",
@@ -7020,7 +7634,19 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.reixa.fugir2",
-                    "sound": "conducte"
+                    "sound": "conducte",
+                    "if": {
+                      "flag": "ruta_marcada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.reixa.fugir2_mapa",
+                    "sound": "conducte",
+                    "if": {
+                      "flag": "ruta_marcada",
+                      "is": false
+                    }
                   }
                 ],
                 "goTo": "gavina_hangar"
@@ -7039,7 +7665,19 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.reixa.entrar",
-                    "sound": "conducte"
+                    "sound": "conducte",
+                    "if": {
+                      "flag": "ruta_marcada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.reixa.entrar_mapa",
+                    "sound": "conducte",
+                    "if": {
+                      "flag": "ruta_marcada",
+                      "is": false
+                    }
                   }
                 ],
                 "goTo": "gavina_hangar"
@@ -7052,7 +7690,18 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_cella.reixa.look_oberta"
+                    "text": "sala.gavina_cella.reixa.look_oberta",
+                    "if": {
+                      "flag": "ruta_marcada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.reixa.look_oberta_fosc",
+                    "if": {
+                      "flag": "ruta_marcada",
+                      "is": false
+                    }
                   }
                 ]
               },
@@ -7363,6 +8012,40 @@
             "effects": [
               {
                 "setFlag": "vet_veu_reixa"
+              }
+            ]
+          },
+          {
+            "verb": "*",
+            "id": "fletxes_reajust",
+            "once": true,
+            "if": {
+              "all": [
+                {
+                  "flag": "ruta_marcada"
+                },
+                {
+                  "flag": "reixa_oberta"
+                },
+                {
+                  "flag": "vet_veu_fletxes",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.gavina_cella.reixa.reajust1"
+              },
+              {
+                "who": "player",
+                "text": "sala.gavina_cella.reixa.fletxes"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "vet_veu_fletxes"
               }
             ]
           },
@@ -8620,7 +9303,19 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.sortida_conducte.entrar",
-                    "sound": "conducte"
+                    "sound": "conducte",
+                    "if": {
+                      "flag": "ruta_marcada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.sortida_conducte.entrar_mapa",
+                    "sound": "conducte",
+                    "if": {
+                      "flag": "ruta_marcada",
+                      "is": false
+                    }
                   }
                 ],
                 "goTo": "gavina_cella"
@@ -8630,7 +9325,18 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.gavina_hangar.sortida_conducte.look"
+                    "text": "sala.gavina_hangar.sortida_conducte.look",
+                    "if": {
+                      "flag": "ruta_marcada"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.sortida_conducte.look_mapa",
+                    "if": {
+                      "flag": "ruta_marcada",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -9020,6 +9726,21 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_memoria.mapa.vet2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.mapa.ruta",
+                    "if": {
+                      "flag": "mapa_fuga_escrit",
+                      "is": false
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.mapa.ruta_copiada",
+                    "if": {
+                      "flag": "mapa_fuga_escrit"
+                    }
                   }
                 ],
                 "effects": [
@@ -9927,6 +10648,13 @@
             "text": "mis.acte3.obj.reixa",
             "completeWhen": {
               "flag": "reixa_preparada"
+            }
+          },
+          {
+            "id": "conducte",
+            "text": "mis.acte3.obj.conducte",
+            "completeWhen": {
+              "flag": "ruta_marcada"
             }
           },
           {
@@ -13292,6 +14020,56 @@
           "pista.iri_reixa.3"
         ]
       },
+      "iri_conducte": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "reixa_preparada"
+            },
+            {
+              "flag": "ruta_marcada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "ruta_marcada"
+        },
+        "levels": [
+          "pista.iri_conducte.1",
+          "pista.iri_conducte.2",
+          "pista.iri_conducte.3"
+        ]
+      },
+      "vet_signes": {
+        "priority": 0,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "reixa_preparada"
+            },
+            {
+              "flag": "ruta_marcada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "ruta_marcada"
+        },
+        "levels": [
+          "pista.vet_signes.1",
+          "pista.vet_signes.2",
+          "pista.vet_signes.3"
+        ]
+      },
       "iri_esperar_reixa": {
         "priority": 1,
         "when": {
@@ -13300,7 +14078,7 @@
               "protagonist": "iri"
             },
             {
-              "flag": "reixa_preparada"
+              "flag": "ruta_marcada"
             },
             {
               "flag": "reixa_oberta",
@@ -16399,6 +17177,7 @@
       "mis.acte3.obj.fugida": "Totes dues: fugiu",
       "mis.acte3.obj.mapa": "Vet: fes arribar el mapa de fuga a l'Iri",
       "mis.acte3.obj.reixa": "Iri: deixa la reixa del conducte a punt per a la Vet",
+      "mis.acte3.obj.conducte": "Iri: segueix la ruta de la Vet pel conducte fins al moll",
       "mis.acte3.obj.component": "Totes dues: el tub de la vàlvula, a la llançadora",
       "mis.veritat.titol": "La veritat a temps",
       "mis.veritat.desc": "La Mira pot fer públics els plànols del Director quan l'Iri ja no hi sigui.",
@@ -16596,13 +17375,15 @@
       "obj.nota_mida.iri3": "Un pilar amb un 7 pintat. Al meu moll n'hi ha un. La V. és aquí mateix, cent vint anys més tard.",
       "obj.nota_mida.iri4": "La biga no passarà mai per la finestra. Però si la V. és al meu moll, el que hi deixi ella ho trobarà... d'aquí a cent vint anys.",
       "obj.nota_mida.iri5": "Abans de jugar-m'hi una biga, ho provo amb una cosa petita: una marca al pilar. I així de pas sabrà que ho he rebut.",
-      "obj.llapis_ulls.mapa1": "Hi dibuixo la ruta: de la reixa de la cambra fins al moll, pel conducte.",
+      "obj.llapis_ulls.mapa1": "Hi dibuixo la ruta: de la reixa de la cambra fins al moll, pel conducte. I els cinc revolts del mapa, un signe per revolt.",
       "obj.llapis_ulls.mapa2": "I una postdata. La més important.",
       "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
       "obj.mapa_fuga.nom": "mapa de fuga",
       "obj.mapa_fuga.desc": "El fullet de la Sala de la Memòria, amb la ruta dibuixada per darrere amb llapis d'ulls.",
-      "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
+      "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts: {ruta_conducte} (↑ vol dir recte). El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
+      "obj.mapa_fuga.text_iri": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts: [una taca de llapis d'ulls] (↑ vol dir recte). El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
       "obj.mapa_fuga.iri1": "Una ruta per fugir. I la V. també la necessita.",
+      "obj.mapa_fuga.iri_taca": "Els signes dels revolts s'han corregut: el llapis d'ulls no és tinta. Cinc revolts, i ni idea de cap a on.",
       "obj.mapa_fuga.iri2": "La reixa té quatre cargols d'acer. En cent vint anys, el rovell els soldarà.",
       "obj.mapa_fuga.iri3": "Si els llimo fins que s'aguantin per un fil, no hi quedarà res per soldar.",
       "obj.llapis_ulls.mapa_tub": "Abans de dibuixar res, vull saber què em vol la Directora.",
@@ -16928,6 +17709,12 @@
       "pista.iri_reixa.1": "La reixa del conducte és aquí, a la cambra.",
       "pista.iri_reixa.2": "Si els cargols no hi són, el rovell no té res per soldar.",
       "pista.iri_reixa.3": "Fes servir la llima amb la reixa.",
+      "pista.iri_conducte.1": "La reixa ja cedeix. Abans de dir-ho a la V., vull provar la seva ruta fins al moll.",
+      "pista.iri_conducte.2": "Al fullet de la V. hi havia cinc signes, un per revolt, però s'han corregut. Ella els va treure d'algun lloc.",
+      "pista.iri_conducte.3": "La V. va copiar els signes del mapa de la Sala de la Memòria. Canvia a la Vet i que els hi torni a mirar.",
+      "pista.vet_signes.1": "Els signes que vaig copiar al fullet... La I. els deu necessitar per als revolts del conducte.",
+      "pista.vet_signes.2": "Són al mapa de la Sala de la Memòria. La reixa ja s'obre: puc sortir pel conducte i anar-hi.",
+      "pista.vet_signes.3": "Mira el mapa de la Sala de la Memòria, apunta't els cinc signes i canvia a l'Iri.",
       "pista.iri_esperar_reixa.1": "La reixa ja està. La V. ho hauria de notar.",
       "pista.iri_esperar_reixa.2": "Canvia a la Vet.",
       "pista.vet_esperar_reixa.1": "La I. ja té el mapa. Què farà amb la reixa?",
@@ -17320,6 +18107,8 @@
       "sala.gavina_memoria.mapa.text": "Un mapa de La Gavina, amb una estrella: «Vostè és aquí». Per sota del mòdul C hi passa una línia discontínua: «Conducte de servei de l'antiga fàbrica (en desús)».",
       "sala.gavina_memoria.mapa.vet1": "Un conducte de servei de la fàbrica, que arriba fins a l'hangar.",
       "sala.gavina_memoria.mapa.vet2": "Al temps de la I. encara s'hi deu poder passar. Per allà no la veuria ningú.",
+      "sala.gavina_memoria.mapa.ruta": "La línia fa cinc revolts entre el mòdul C i l'hangar: {ruta_conducte}. Els copiaré al fullet, amb la ruta.",
+      "sala.gavina_memoria.mapa.ruta_copiada": "Els cinc revolts: {ruta_conducte}. Els mateixos que vaig copiar al fullet. Aquests no se'm correran: me'ls apunto.",
       "sala.gavina_memoria.fullets.nom": "fullets",
       "sala.gavina_memoria.fullets.agafar": "N'agafo un. Per darrere és en blanc: hi cap un mapa.",
       "sala.gavina_memoria.fullets.prou": "Ja en tinc un.",
@@ -17350,15 +18139,21 @@
       "sala.gavina_hangar.pilar.look_marca": "El pilar 7. Una I. i una clau anglesa, gravades fa cent vint anys. La I. ha fet servir la paret de bústia.",
       "sala.gavina_hangar.sortida_conducte.nom": "sortida del conducte",
       "sala.gavina_hangar.sortida_conducte.entrar": "Torno a la cel·la pel conducte, seguint les fletxes de la I. al revés.",
+      "sala.gavina_hangar.sortida_conducte.entrar_mapa": "Torno a la cel·la pel conducte, amb els revolts del mapa al revés.",
       "sala.gavina_hangar.sortida_conducte.look": "La reixa del terra per on surt el conducte de servei. Les fletxes de la I. arriben fins aquí.",
+      "sala.gavina_hangar.sortida_conducte.look_mapa": "La reixa del terra per on surt el conducte de servei.",
       "sala.gavina_cella.reixa.nom": "reixa",
       "sala.gavina_cella.reixa.reajust1": "Ai. Mal de cap. Un altre reajust.",
       "sala.gavina_cella.reixa.reajust2": "La reixa de la paret... Fa un moment era una sola peça de rovell.",
+      "sala.gavina_cella.reixa.fletxes": "Al conducte, a cada revolt, hi ha una I. gravada i una fletxa. Fa un moment no hi eren.",
       "sala.gavina_cella.reixa.obrir1": "Els cargols cedeixen com si fossin de galeta.",
       "sala.gavina_cella.reixa.obrir2": "A dins, a la paret del conducte, una I. gravada i una fletxa. La mateixa marca que al pilar 7.",
+      "sala.gavina_cella.reixa.obrir2_fosc": "A dins, fosc i revolts. Però el camí me'l sé: el del mapa de la Sala de la Memòria.",
       "sala.gavina_cella.reixa.obrir3": "M'has obert la porta des de fa cent vint anys, I.",
       "sala.gavina_cella.reixa.entrar": "M'hi fico de quatre grapes i segueixo les fletxes de la I. fins a l'hangar.",
+      "sala.gavina_cella.reixa.entrar_mapa": "M'hi fico de quatre grapes i segueixo els revolts del mapa fins a l'hangar: {ruta_conducte}.",
       "sala.gavina_cella.reixa.look_oberta": "La reixa del conducte, oberta. A dins, la I. i la fletxa.",
+      "sala.gavina_cella.reixa.look_oberta_fosc": "La reixa del conducte, oberta. A dins, fosc i revolts.",
       "sala.gavina_cella.reixa.look_llimada": "La reixa. Els quatre cargols, llimats fins a quedar en un fil. Fa cent vint anys.",
       "sala.gavina_cella.reixa.look_conducte1": "Una reixa arran de terra... El conducte de servei del mapa comença al mòdul C. Comença aquí!",
       "sala.gavina_cella.reixa.look_conducte2": "Però el rovell l'ha soldada a la paret. Per aquí no surt ningú.",
@@ -17377,14 +18172,15 @@
       "sala.fabrica_cambra.tornar2": "V., si m'has d'enviar alguna cosa, ara és el moment.",
       "sala.fabrica_cambra.reixa.nom": "reixa",
       "sala.fabrica_cambra.reixa.llimar1": "Llimo els quatre cargols fins que la reixa s'aguanta per costum. No quedarà res que el rovell pugui soldar.",
-      "sala.fabrica_cambra.reixa.llimar2": "M'hi fico i, a cada revolt del conducte, hi gravo una I. i una fletxa. La V. ja coneix la meva marca.",
-      "sala.fabrica_cambra.reixa.llimar3": "Fins al moll i tornar, abans que el Sic trobi el seu lladre. Ja està, V.",
+      "sala.fabrica_cambra.reixa.llimar2": "Ara, a provar la ruta de la V. abans que el Sic trobi el seu lladre. Si arribo al moll, li marcaré el camí.",
+      "sala.fabrica_cambra.reixa.entrar1": "Aparto la reixa, que surt com si res, i m'hi fico.",
+      "sala.fabrica_cambra.reixa.entrar2": "A dins s'eixampla: hi caben els robots de manteniment. Cinc revolts fins al moll, diu el fullet de la V. Cap a on, ja no ho diu.",
       "sala.fabrica_cambra.reixa.ja_llimada": "Ja està. Una passada més i em quedo amb la reixa a la mà.",
       "sala.fabrica_cambra.reixa.per_que": "Fer malbé una reixa nova? El capatàs ho veuria i em faria omplir un formulari per cada cargol.",
       "sala.fabrica_cambra.reixa.look_llimada": "La reixa del conducte, amb els cargols llimats. Sembla ben cargolada. No ho està.",
       "sala.fabrica_cambra.reixa.look_mapa": "La reixa del conducte de servei: quatre cargols d'acer. D'aquí a cent vint anys, el rovell els soldarà.",
       "sala.fabrica_cambra.reixa.look": "Una reixa de ventilació arran de terra, amb quatre cargols d'acer. Darrere, el conducte de servei.",
-      "sala.fabrica_cambra.reixa.encara_no": "Encara no. Per aquí fugiré, però no fins que la V. estigui a punt.",
+      "sala.fabrica_cambra.reixa.encara_no": "Encara no. El camí ja està marcat, però no fugiré fins que la V. estigui a punt.",
       "sala.fabrica_cambra.reixa.cargolada": "Ben cargolada. Quatre cargols d'acer, nous de trinca. La meva clau anglesa aniria de primera, però és a cent vint anys d'aquí.",
       "sala.gavina_cella.panell.molla_no": "Encara no sona com el pany. Si l'envio així, la I. afinarà una nota equivocada.",
       "sala.gavina_cella.tub0": "La porta de la cel·la s'obre. La Directora torna a fer la ronda.",
@@ -17393,11 +18189,50 @@
       "sala.gavina_cella.tub3": "MARE, avisa els guàrdies. La interna 9 ja no és reeducable.",
       "sala.gavina_cella.reixa.fugir1": "On vas? Atureu-la!",
       "sala.gavina_cella.reixa.fugir2": "Massa tard. Ja soc dins el conducte, seguint les fletxes de la I.",
+      "sala.gavina_cella.reixa.fugir2_mapa": "Massa tard. Ja soc dins el conducte, comptant els revolts del mapa.",
       "sala.fabrica_cambra.cambra.diapaso_no": "Encara no sona com la molla. Si l'envio així, a la V. no li servirà de res.",
       "sala.fabrica_cambra.cambra.imant_no": "Un altre imant per a la V.? Ja és fora de la cel·la. Me'l quedo, que aquí també hi ha panys M-3.",
       "sala.fabrica_cambra.cambra.tub_sol": "Si envio el tub sol, la llibreta amb les proves es queda aquí. Ha de ser tot en un sol enviament.",
       "sala.fabrica_cambra.reixa.fugir1": "Ara sí. Aparto la reixa, que surt com si res, i m'hi fico.",
       "sala.fabrica_cambra.reixa.fugir2": "Segueixo les meves pròpies fletxes fins al moll. Qui m'ho havia de dir.",
+      "sala.fabrica_conducte.nom": "Conducte de servei",
+      "sala.fabrica_conducte.revolt1": "Primer revolt. Tres camins, i tots fan la mateixa cara.",
+      "sala.fabrica_conducte.revolt2": "Segon revolt. Igual que el primer.",
+      "sala.fabrica_conducte.revolt3": "Tercer revolt. O el segon un altre cop?",
+      "sala.fabrica_conducte.revolt4": "Quart revolt. Crec.",
+      "sala.fabrica_conducte.revolt5": "Cinquè revolt. L'últim, si la V. ha comptat bé.",
+      "sala.fabrica_conducte.esquerra.nom": "passadís de l'esquerra",
+      "sala.fabrica_conducte.esquerra.anar": "Giro a l'esquerra.",
+      "sala.fabrica_conducte.esquerra.look": "Un passadís que gira a l'esquerra. Igual que el de la dreta. I que el del fons.",
+      "sala.fabrica_conducte.recte.nom": "passadís del fons",
+      "sala.fabrica_conducte.recte.anar": "Tiro recte.",
+      "sala.fabrica_conducte.recte.look": "El conducte continua recte, fosc i igual que els altres dos.",
+      "sala.fabrica_conducte.dreta.nom": "passadís de la dreta",
+      "sala.fabrica_conducte.dreta.anar": "Giro a la dreta.",
+      "sala.fabrica_conducte.dreta.look": "Un passadís cap a la dreta. Si n'hi hagués dos, ho jugaria a cara o creu.",
+      "sala.fabrica_conducte.enrere.nom": "cap a la reixa",
+      "sala.fabrica_conducte.enrere.anar": "Desfaig el camí fins a la reixa de la cambra. Ja hi tornaré.",
+      "sala.fabrica_conducte.enrere.look": "Per allà es torna a la reixa de la cambra.",
+      "sala.fabrica_conducte.cartell.nom": "cartell",
+      "sala.fabrica_conducte.cartell.look": "«Conducte de servei. Prohibit fumar.» Ni fumar ni perdre's, suposo.",
+      "sala.fabrica_conducte.guant.nom": "guant",
+      "sala.fabrica_conducte.guant.look": "Un guant de treball, tot sol. L'altre deu ser en un altre revolt. O el seu amo.",
+      "sala.fabrica_conducte.guant.agafar": "Que s'hi quedi. Si el seu amo torna a buscar-lo, almenys trobarà alguna cosa.",
+      "sala.fabrica_conducte.aixeta.nom": "aixeta",
+      "sala.fabrica_conducte.aixeta.look": "Una aixeta que degota. Plic. Plic. Segur que d'aquí a cent vint anys encara degota.",
+      "sala.fabrica_conducte.tassa.nom": "tassa",
+      "sala.fabrica_conducte.tassa.look": "Una tassa de llauna amb un dit de cafè fred. Algú del torn de dia ve a fer la becaina aquí dins.",
+      "sala.fabrica_conducte.formulari.nom": "formulari",
+      "sala.fabrica_conducte.formulari.look": "Un formulari 27-B clavat a la paret: «Sol·licitud de senyals al conducte de servei». Denegada. Per triplicat.",
+      "sala.fabrica_conducte.formulari.agafar": "És un document oficial. Si el toco, el capatàs ho sabrà. No sé com, però ho sabrà.",
+      "sala.fabrica_conducte_revolt.nom": "Conducte de servei",
+      "sala.fabrica_conducte_revolt.arribada": "Cinquè revolt... i llum al fons. El moll! El pilar del 7 és allà mateix.",
+      "sala.fabrica_conducte_revolt.gravar": "Torno pel mateix camí i, a cada revolt, hi gravo una I. i una fletxa. La V. ja coneix la meva marca.",
+      "sala.fabrica_conducte_revolt.tornar": "I soc a la cambra abans que el Sic trobi el seu lladre. Ja està, V.",
+      "sala.fabrica_conducte_revolt.fugir": "A cada revolt hi he gravat una I. i una fletxa: si la V. passa per aquí, que sàpiga que hi vaig passar jo.",
+      "sala.fabrica_conducte_revolt.perdut1": "Cinquè revolt... i llum al fons. Una reixa.",
+      "sala.fabrica_conducte_revolt.perdut2": "La reixa de la meva cambra. He sortit per on he entrat. M'he perdut.",
+      "sala.fabrica_conducte_revolt.perdut3": "Algun revolt no era el bo. Sense els signes de la V., això és la loteria.",
       "sala.fabrica_moll.llancadora.look_fugir": "La llançadora, nova de trinca. I avui ningú no la vigila.",
       "sala.fabrica_moll.llancadora.fugir1": "Pujo a la llançadora. És la mateixa que la V. ha arreglat al seu hangar, cent vint anys més tard. Que ens porti a totes dues.",
       "sala.fabrica_moll.llancadora.fugir2": "Adeu, Director. Adeu, formulari 27-B.",
