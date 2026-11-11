@@ -7,6 +7,7 @@ Els finals (cinemàtica): la terrassa d'un bar del port de Galway, a trenc d'alb
     ajuntades) amb cafès i el diari. Els personatges hi són com a sprites: els del darrere queden tapats per
     la taula (FRONT);
   - la tele, penjada sota el tendal, amb les notícies (ANIMS) i el cable que baixa fins a la taula;
+  - ANIMS: `tele` (les notícies), `badia` (l'aigua de la badia, que es mou) i `vapor` (el fum dels cafès i de la tetera);
     `tele_apagada`: la pantalla negra (en Diu ha mossegat el cable).
 """
 import math
@@ -74,15 +75,17 @@ def shore(cv):
     cv.glow(453, HOR - 13, 4, (255, 220, 160), 0.6)
 
 
-def bay(cv):
+def bay(cv, phase=0.0, boat=True):
     for y in range(HOR + 2, QUAY + 4):
         d = y - HOR
         for x in range(W):
             sy = HOR - d * 2                                      # reflex del cel
             lvl = 0.6 + 8.6 * max(0, sy / HOR) ** 1.7 - 1.2
-            n = fbm(x / (4 + d * 0.4), y / 1.2, 54)
+            n = fbm(x / (4 + d * 0.4) + phase, y / 1.2, 54)
             lvl += (n - 0.5) * 2.0
             cv.put(x, y, DAWN, lvl, lit=0)
+    if not boat:
+        return
     # una barqueta de pesca, lluny
     cv.rect(60, HOR + 6, 72, HOR + 8, CREAM, 2.0, lit=0)
     cv.rect(64, HOR + 2, 67, HOR + 5, CREAM, 2.6, lit=0)
@@ -340,7 +343,60 @@ def _frames():
     return frames
 
 
-ANIMS = {'tele': {'frames': _frames, 'frameDuration': 220}}
+# L'aigua de la badia: el soroll corre de costat; els darrers BAY_FADE fotogrames es fonen amb el principi
+# perquè el bucle no salti. Només es toquen els píxels on es veu l'aigua (no el vaixell, el moll ni la barqueta).
+BAY_N, BAY_FADE, BAY_STEP = 12, 4, 0.09
+
+
+def _frames_badia():
+    base = Canvas(light=LIGHT)
+    bg(base)
+    ref = Canvas(light=LIGHT)
+    bay(ref, 0.0, boat=False)
+    rp, bp = ref.img.load(), base.img.load()
+    open_ = [(x, y) for y in range(HOR + 3, QUAY + 4) for x in range(W) if bp[x, y] == rp[x, y]]
+    frames = []
+    for i in range(BAY_N):
+        a, b = Canvas(light=LIGHT), Canvas(light=LIGHT)
+        bay(a, i * BAY_STEP, boat=False)
+        bay(b, (i - BAY_N) * BAY_STEP, boat=False)
+        w = max(0, i - (BAY_N - BAY_FADE)) / BAY_FADE
+        out = base.img.copy()
+        o, ap, bpp = out.load(), a.img.load(), b.img.load()
+        for x, y in open_:
+            o[x, y] = bpp[x, y] if hr(x, y, 91) < w else ap[x, y]
+        frames.append(_diff(out, base.img))
+    return frames
+
+
+# El vapor: tres o quatre bufs per tassa que pugen, es tremolen i s'esvaeixen.
+STEAM = [(mx + 2.5, TOP - 9) for mx in (168, 206, 252, 292, 322)] + [(243, TOP - 13)]
+STEAM_N = 32
+
+
+def _frames_vapor():
+    base = Canvas(light=LIGHT)
+    bg(base)
+    frames = []
+    for i in range(STEAM_N):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        for j, (sx, sy) in enumerate(STEAM):
+            for k in range(3):
+                t = (i / STEAM_N + k / 3 + hr(j, 92)) % 1.0         # 0: surt de la tassa, 1: s'ha esvaït
+                x = sx + math.sin(t * 5 + j * 1.7) * (0.5 + 2.0 * t)
+                y = sy - t * 14
+                a = 0.45 * (1 - t) ** 1.2
+                for dx, dy in ((0, 0), (1, 0), (0, -1)) if t < 0.6 else ((0, 0),):
+                    px, py = round(x + dx), round(y + dy)
+                    o = cv.get(px, py)
+                    cv.flat(px, py, mix(o[:3], (236, 232, 226), a))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'tele': {'frames': _frames, 'frameDuration': 220},
+         'badia': {'frames': _frames_badia, 'frameDuration': 240},
+         'vapor': {'frames': _frames_vapor, 'frameDuration': 150}}
 
 GEOMETRIA = {
     'things': {},

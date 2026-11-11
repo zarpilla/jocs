@@ -88,6 +88,34 @@
       },
       "zIndex": 20,
       "baseline": 182
+    },
+    {
+      "id": "badia",
+      "tag": "badia",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "badia": {
+          "loop": true,
+          "frameDuration": 240
+        }
+      }
+    },
+    {
+      "id": "vapor",
+      "tag": "vapor",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "vapor": {
+          "loop": true,
+          "frameDuration": 150
+        }
+      }
     }
   ],
   "characters": [
