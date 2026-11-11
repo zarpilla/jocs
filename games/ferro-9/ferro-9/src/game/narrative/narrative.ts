@@ -181,7 +181,7 @@ narrative.on((e) => {
       persist();
       applySwitchButton();
       // Els efectes s'apliquen abans de dir les línies: qui marxa (p. ex. el Director a «acceptada») ha
-      // d'acabar de parlar. `playLines` l'amaga quan ja s'ha dit tot.
+      // d'acabar de parlar, i qui arriba no ha de sortir abans. `playLines` ho posa al dia en acabar.
       applyHotspotVisibility({ keepSpeakers: true });
       applyAppearances();
       break;
@@ -410,14 +410,18 @@ export function applySwitchButton() {
   if (menu.canviar) menu.canviar.visible = pot;
 }
 
-/** `keepSpeakers`: els personatges que s'han d'amagar es queden fins que `playLines` acabi (poden parlar). */
+/**
+ * `keepSpeakers`: els personatges amb `visibleIf` no canvien fins que `playLines` acabi. Qui s'ha d'amagar
+ * encara pot parlar, i qui ha d'aparèixer no surt abans del que s'hi diu («truquen a la porta»); si és ell
+ * qui parla, `showSpeaker` el mostra just abans.
+ */
 export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   const room = world.currentRoom();
   if (!room) return;
   for (const { id, visible } of narrative.hotspotsIn(room)) {
     // Un personatge amb `visibleIf` (p. ex. la Directora a la cel·la a l'Acte 3) s'amaga o es mostra sencer.
     const character = content.characters[id] ? (benneCharacter(id) as Showable | undefined) : undefined;
-    if (keepSpeakers && character && !visible) continue;
+    if (keepSpeakers && character) continue;
     const zone = zones[room]?.includes(id) ? new HotspotHandle(toBenne('rooms', room), toBenne('hotspots', id)) : undefined;
     const handle = boundHotspots[id] ?? character ?? zone ?? new PropHandle(toBenne('rooms', room), toBenne('hotspots', id));
     if ('visible' in handle) handle.visible = visible;
@@ -426,6 +430,17 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   applyCharacterVisibility(room, keepSpeakers);
   // El so de fons també depèn de l'estat (p. ex. el generador parat).
   applyAmbientSound();
+}
+
+/** Abans que parli un personatge que ha d'aparèixer però encara no es veu (vegeu `keepSpeakers`). */
+export function showSpeaker(who: string) {
+  const room = world.currentRoom();
+  if (!room || !content.rooms[room]?.hotspots[who]?.visibleIf) return;
+  if (!narrative.hotspotsIn(room).some((h) => h.id === who && h.visible)) return;
+  const handle = (boundHotspots[who] ?? benneCharacter(who)) as Showable | undefined;
+  if (!handle) return;
+  if ('visible' in handle) handle.visible = true;
+  else handle.active = true;
 }
 
 /**

@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -44,12 +44,14 @@ export function playLines(lines: ResolvedLine[], around: Around = {}) {
       player.say(line.text)
     } else {
       const speaker = benneCharacter(line.who)
-      if (speaker) speaker.say(line.text)
-      else display(line.text)
+      if (speaker) {
+        showSpeaker(line.who)
+        speaker.say(line.text)
+      } else display(line.text)
     }
   }
   // Qui s'ha de moure (`place`) hi camina ara, quan ja s'ha dit tot: els efectes s'apliquen abans de les
-  // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix.
+  // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
   applyHotspotVisibility()
   applyPlaces(true)
 }
