@@ -163,6 +163,34 @@
           "frameDuration": 90
         }
       }
+    },
+    {
+      "id": "bassal",
+      "tag": "bassal",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bassal": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 130
+        }
+      }
     }
   ],
   "characters": [

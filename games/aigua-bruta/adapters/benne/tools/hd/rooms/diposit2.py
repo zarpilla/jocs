@@ -6,7 +6,8 @@ El dipòsit d'aigua 2 de l'Arenga (Escena 7), fora de servei des de fa anys. Art
   - l'escala de mà que baixa del registre;
   - la carcassa del filtre (un cilindre amb la tapa cargolada, entre dos tubs);
   - el cartell de 1984: «AIGUA NO POTABLE», amb una gota que somriu.
-Animació: una gota que cau del sostre al bassal.
+Animacions: `gota` (cau del sostre al bassal), `bassal` (el reflex del registre tremola a l'aigua) i `pols`
+(motes que suren dins el feix de llum).
 """
 import math
 
@@ -17,6 +18,7 @@ from hd.rooms.sota import vladder, rust_streaks
 from hd.rooms.comu import _diff, text, text_width
 
 HATCH = (222, 18)                       # el centre del registre, al sostre
+_PH = {'t': 0.0}                        # fase de l'aigua del bassal (animació `bassal`)
 EPOXY = [(10, 12, 14), (20, 24, 26), (34, 38, 40), (52, 58, 58), (74, 80, 78), (100, 106, 102), (130, 134, 128),
          (164, 166, 158), (198, 198, 188)]
 BOTTOMR = [(6, 7, 8), (12, 14, 15), (20, 23, 24), (30, 34, 34), (42, 47, 46), (58, 63, 60), (78, 82, 78)]
@@ -136,9 +138,9 @@ def floor(cv):
             if e <= 1:
                 c = mix(src[x, y][:3], WATER[2], 0.7)
                 rx_ = 9 - abs(y - pcy) * 0.5
-                if abs(x - HATCH[0] - round(math.sin(y * 1.3))) < rx_ and (y % 2 == 0 or abs(x - HATCH[0]) < 3):
+                if abs(x - HATCH[0] - round(math.sin(y * 1.3 + _PH['t']) * 1.4)) < rx_ and (y % 2 == 0 or abs(x - HATCH[0]) < 3):
                     c = mix(c, WARM, 0.45 * (1 - abs(x - HATCH[0]) / max(rx_, 1)))   # el registre, reflectit
-                if math.sin(x * 0.3 + y * 2.1) > 0.94:
+                if math.sin(x * 0.3 + y * 2.1 - _PH['t']) > 0.94:
                     c = mix(c, (120, 150, 140), 0.25)
                 cv.flat(x, y, c)
     return mask
@@ -276,7 +278,50 @@ def _frames_gota():
     return frames
 
 
-ANIMS = {'gota': {'frames': _frames_gota, 'frameDuration': 90}}
+def _frames_bassal():
+    """L'aigua del bassal: el reflex del registre ondula i les ratlles de llum corren (bucle de 12)."""
+    base = Canvas(light=LIGHT)
+    _base(base)
+    frames = []
+    try:
+        for i in range(12):
+            _PH['t'] = 2 * math.pi * i / 12
+            cv = Canvas(light=LIGHT)
+            _base(cv)
+            frames.append(_diff(cv.img, base.img))
+    finally:
+        _PH['t'] = 0.0
+    return frames
+
+
+def _frames_pols():
+    """Motes de pols que suren lentament dins el feix del registre i fan pampallugues."""
+    base = Canvas(light=LIGHT)
+    _base(base)
+    n, motes = 48, []
+    for k in range(30):
+        y = 34 + hr(k, 1, 88) * (FLOOR_Y - 30)
+        t = (y - 24) / (FLOOR_Y + 20 - 24)
+        x = HATCH[0] + (hr(k, 2, 88) - 0.5) * (30 + t * 70)
+        motes.append((x, y, 2 + hr(k, 3, 88) * 5, 3 + hr(k, 4, 88) * 6, hr(k, 5, 88) * 6.283, 1 + int(hr(k, 6, 88) * 2)))
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        a = 2 * math.pi * i / n
+        for k, (x0, y0, ax, ay, ph, sp) in enumerate(motes):
+            x = round(x0 + math.sin(a * sp + ph) * ax)
+            y = round(y0 + math.sin(a + ph * 1.7) * ay)
+            b = _beam(x, y)
+            tw = 0.5 + 0.5 * math.sin(a * 3 + ph * 2)
+            if b > 0.15 and tw > 0.25:
+                cv.flat(x, y, mix(cv.get(x, y), (255, 236, 190), min(0.75, 0.35 + b * 0.5 * tw)))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'gota': {'frames': _frames_gota, 'frameDuration': 90},
+         'bassal': {'frames': _frames_bassal, 'frameDuration': 200},
+         'pols': {'frames': _frames_pols, 'frameDuration': 130}}
 
 PROPS = {}
 
