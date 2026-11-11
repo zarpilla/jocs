@@ -7,12 +7,15 @@ Cabina de la Capitana (coberta principal): sòbria, endreçada, de fusta i crema
     una tassa i una foto; a sobre, un prestatge amb barana amb els llibres de navegació;
   - la carta nàutica a la paret (`carta`), amb Galway i Port Hallen encerclats (Port Hallen, en vermell i més fort);
   - la llitera de teca amb la manta blava, sota la carta; una catifa al linòleum.
+ANIMS: `mar` (l'ull de bou de nit: el vaixell balanceja i passen ratlles d'onada), `ulls_dia_mar` (el mateix de dia,
+damunt del decorat `ulls_dia`: va amb el decorat del mateix nom) i `rellotge` (l'agulla dels segons).
 """
 import math
 
 from hd.pix import Canvas, Light, W, H, hr, mix  # noqa: F401
 from hd.rooms.arenga import box, rrect, bolt, glow, CAB, DARK, WHITEP, REDP, YELL, BRASS, FLOOR_Y
-from hd.rooms.principal import day_porthole
+from hd.rooms.principal import day_porthole, second_hand, NIGHT, DAYSKY, DAYSEA
+from hd.rooms.comu import _diff
 from hd.rooms.laboratori import (cream_wall, ceiling, lamps, lamp_glow, watertight_door, porthole, linoleum,
                                  CREAM, LINO_RED, TEAK, PAPERC, BLUEB, SEA)
 
@@ -362,3 +365,71 @@ GEOMETRIA = {
     'spawns': {'iri': (150, 192), 'vet': (200, 196), 'capitana': (330, 184)},
     'walkable': [(12, 168), (468, 168), (476, 198), (4, 198)],
 }
+
+
+# ─── Animacions ────────────────────────────────────────────────────────────
+PORT = (106, 76, 11)             # l'ull de bou: centre i radi del vidre
+
+
+def _glass(cv, t, day):
+    """El vidre de l'ull de bou (com principal.night_sea / day_sea), amb `t` (0..1 del bucle): l'horitzó puja i
+    baixa amb el balanceig i les ratlles d'onada corren."""
+    cx, cy, r = PORT
+    ph = t * 2 * math.pi
+    hz = cy + r * 0.15 + math.sin(ph) * 1.6
+    for y in range(cy - r, cy + r + 1):
+        for x in range(cx - r, cx + r + 1):
+            if math.hypot(x - cx, y - cy) > r:
+                continue
+            crest = math.sin(x * 0.7 + y * 2.3 - ph * 2)
+            if day:
+                if y < hz:
+                    cl = hr(int(x // 5), int(y // 2), 0)
+                    cv.put(x, y, DAYSKY, 4.2 + (y - (cy - r)) / (r * 2.2) * 1.4 - (0.7 if cl > 0.75 else 0), lit=0.08)
+                else:
+                    cv.put(x, y, DAYSEA, 4.4 - (y - hz) / (r * 0.9) + (1.2 if crest > 0.8 else 0), lit=0.08)
+            else:
+                if y < hz:
+                    cl = hr(int(x // 4), int(y // 2), 0)
+                    cv.put(x, y, NIGHT, 2.0 + (hz - y) / (r * 2) + (0.8 if cl > 0.72 else 0), lit=0.1)
+                else:
+                    cv.put(x, y, NIGHT, 1.6 - (y - hz) / (r * 1.6) + (1.6 if crest > 0.85 else 0), lit=0.1)
+    shine = (236, 240, 244) if day else (200, 210, 230)                 # el reflex del vidre
+    for i in range(-r // 2, r // 3):
+        x, y = cx - r // 3 + i, cy - r // 2 - i // 2
+        cv.flat(x, y, mix(cv.get(x, y), shine, 0.35))
+
+
+def _base(day):
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    if day:
+        top = Canvas(light=LIGHT, transparent=True)
+        PROPS['ulls_dia'](top)
+        cv.img.alpha_composite(top.img)
+    return cv.img
+
+
+def _frames_port(day):
+    base = _base(day)
+    frames = []
+    for i in range(12):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        _glass(cv, i / 12, day)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+def _frames_rellotge():
+    base = _base(False)
+    frames = []
+    for sec in range(60):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        second_hand(cv, 143, 51, sec, r=5)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+ANIMS = {'mar': {'frames': lambda: _frames_port(False), 'frameDuration': 220},
+         'ulls_dia_mar': {'frames': lambda: _frames_port(True), 'frameDuration': 220},
+         'rellotge': {'frames': _frames_rellotge, 'frameDuration': 1000}}

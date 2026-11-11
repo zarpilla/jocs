@@ -192,6 +192,48 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "ulls_dia_mar",
+      "tag": "ulls_dia_mar",
+      "animations": {
+        "ulls_dia_mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "rellotge",
+      "tag": "rellotge",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "rellotge": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      }
     }
   ],
   "characters": [
