@@ -63,6 +63,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      # D'un en un: rrsync no deixa que dues pujades accedeixin alhora a public_html
+      max-parallel: 1
       matrix:
         joc: ${{ fromJSON(needs.tests.outputs.jocs) }}
     steps:
