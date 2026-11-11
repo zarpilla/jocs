@@ -16,7 +16,7 @@ from hd.rooms.arenga import (WALL, ENG_LIGHT as ENG, DECK, CAB, REDP, YELL, SEAG
                              FLOOR_Y, box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms.sota import (plate_wall, ceiling, checker_floor, door_frame, in_door, hinge_leaf, sill, sign,
                            cage_lamp, lamp_glow, floor_shadow)
-from hd.rooms.comu import text, text_width
+from hd.rooms.comu import _diff, text, text_width
 
 LAMP_X = (150, 372)
 SHELF = [(18, 20, 22), (34, 38, 42), (54, 60, 64), (78, 84, 88), (104, 110, 112), (134, 140, 140), (170, 174, 172)]
@@ -368,6 +368,75 @@ def safata(cv):
 
 
 PROPS = {'safata': safata, 'rascades': rascades, 'registre_obert': registre_obert}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_pols():
+    """Pols que sura a la llum dels dos llums de gàbia (cada mota fa un llaç tancat: el bucle no salta)."""
+    base = _base()
+    motes = []
+    for lx in LAMP_X:
+        for k in range(14):
+            motes.append((lx + (hr(k, lx, 1) - 0.5) * 70, 44 + hr(k, lx, 2) * 80,
+                          6 + hr(k, lx, 3) * 10, 4 + hr(k, lx, 4) * 8, hr(k, lx, 5), 1 + int(hr(k, lx, 6) * 2), lx))
+    n = 48
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        t = i / n
+        for (cx, cy, ax, ay, ph, fx, lx) in motes:
+            a = 2 * math.pi * (t + ph)
+            x = round(cx + ax * math.sin(fx * a))
+            y = round(cy + ay * math.sin(a + ph * 3))
+            near = max(0.0, 1 - math.hypot(x - lx, (y - 26) * 0.9) / 140)       # només es veu a prop del llum
+            tw = 0.5 + 0.5 * math.sin(a * 2 + ph * 7)                              # i fa pampallugues
+            alpha = near * (0.5 + 0.5 * tw)
+            if alpha > 0.08 and 0 <= x < W and 0 <= y < FLOOR_Y:
+                cv.flat(x, y, mix(cv.get(x, y), (255, 236, 196), alpha))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+MOUSE = [(70, 62, 60), (104, 94, 90), (138, 128, 120)]
+
+
+def _mouse(cv, x, y, out, sniff):
+    """El cap del ratolí que treu el morro d'entre dos sacs (x, y: l'espatlla, a terra; out: quant surt)."""
+    for dx in range(out):
+        top = y - 3 + (1 if dx == out - 1 else 0)
+        for yy in range(top, y + 1):
+            cv.flat(x + dx, yy, MOUSE[1] if yy > top else MOUSE[2])
+    if out >= 3:
+        cv.flat(x + 1, y - 4, (150, 104, 104))                     # l'orella
+        cv.flat(x + out - 2, y - 2, (12, 10, 12))                  # l'ull
+        cv.flat(x + out, y - 1 - sniff, (190, 120, 120))           # el nas, que olora
+        cv.flat(x + out + 1, y - 2 - sniff, mix(cv.get(x + out + 1, y - 2 - sniff), (200, 200, 190), 0.5))  # bigotis
+
+
+def _frames_ratoli():
+    """Un ratolí treu el cap d'entre els sacs d'arròs, olora i s'hi torna a amagar."""
+    base = _base()
+    mx, my = 352, FLOOR_Y - 4                                       # entre el segon sac i el tercer
+    seq = [(0, 0)] * 20 + [(1, 0), (2, 0), (3, 0), (4, 0)] + [(5, i % 2) for i in range(10)] + \
+          [(5, 0)] * 6 + [(5, i % 2) for i in range(6)] + [(3, 0), (1, 0)] + [(0, 0)] * 10
+    frames = []
+    for out, sniff in seq:
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        if out:
+            _mouse(cv, mx, my, out, sniff)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'pols': {'frames': _frames_pols, 'frameDuration': 130},
+         'ratoli': {'frames': _frames_ratoli, 'frameDuration': 110}}
 
 
 GEOMETRIA = {

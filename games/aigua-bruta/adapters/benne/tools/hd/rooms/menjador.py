@@ -9,12 +9,12 @@ La taula és FRONT: qui seu a la banqueta (Escena 8) hi queda darrere, i la taul
 """
 import math
 
-from hd.pix import Light, W, H, hr, mix
+from hd.pix import Canvas, Light, W, H, hr, mix
 from hd.rooms.arenga import CAB, DARK, WHITEP, REDP, YELL, BRASS, SEAG, FLOOR_Y, BOTTOM, box, rrect, bolt, hpipe, vpipe, glow
 from hd.rooms.principal import (CREAM, TEAK, LINO, DOORP, NIGHT, CEIL_H, wall, ceiling, lamp, lamp_glow, lino, shine,
                                 unmask, foot_shadow, floor_shadow, in_door, door_frame, sill, leaf, plaque, porthole,
-                                sign_box, wear, voice_tube, day_porthole)
-from hd.rooms.comu import text, text_width
+                                sign_box, wear, voice_tube, day_porthole, second_hand)
+from hd.rooms.comu import _diff, text, text_width
 
 LAMPS = (84, 196, 334, 434)
 VINYL = [(20, 6, 6), (40, 10, 10), (64, 16, 14), (92, 24, 20), (120, 34, 26), (148, 48, 34), (176, 68, 48)]
@@ -30,6 +30,7 @@ CARG = [(10, 40, 20), (20, 80, 40), (40, 130, 66), (80, 180, 100), (150, 230, 16
 MUGS = ([(30, 8, 8), (90, 20, 20), (160, 40, 34), (210, 90, 70)], [(10, 20, 40), (20, 50, 100), (50, 90, 160), (110, 150, 210)],
         [(40, 40, 40), (110, 110, 104), (190, 188, 176), (236, 234, 222)], [(40, 30, 6), (120, 90, 14), (200, 160, 40), (240, 210, 100)])
 
+_MUG_DX = 0                           # quant es gronxen les tasses penjades (l'anima `tasses`)
 LIGHT = Light(ambient=-0.3, vignette=(46, 24), floor_fade=(188, 40))
 for _x in LAMPS:
     LIGHT.point(_x, CEIL_H + 4, r=112, k=2.2, squash=1.1, down=True, power=1.5)
@@ -212,7 +213,8 @@ def sideboard(cv):
     for i, mx in enumerate(range(x0 + 3, x1 - 3, 8)):
         cv.vline(mx + 2, 81, 83, BRASS, 3.2)
         m = MUGS[i % 4]
-        cv.rect(mx, 84, mx + 4, 89, m, lambda x, y: 3.2 - (x - mx) * 0.2)
+        mx += _MUG_DX
+        cv.rect(mx, 84, mx + 4, 89, m, lambda x, y, mx=mx: 3.2 - (x - mx) * 0.2)
         cv.vline(mx + 5, 85, 87, m, 2.4)
     # prestatge: llibres, jocs de taula, una caixa de cartes
     box(cv, x0 - 2, 72, x1 + 2, 74, TEAK, 4.0)
@@ -348,6 +350,46 @@ def ulls_dia(cv):
 
 
 PROPS = {'ulls_dia': ulls_dia}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_rellotge():
+    """El rellotge del menjador: l'agulla dels segons (un fotograma per segon)."""
+    base = _base()
+    frames = []
+    for s in range(60):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        second_hand(cv, 196, 46, s)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _frames_tasses():
+    """Les tasses penjades es gronxen una mica amb el balanceig del vaixell."""
+    global _MUG_DX
+    base = _base()
+    shifted = {}
+    for dx in (-1, 1):
+        _MUG_DX = dx
+        shifted[dx] = _diff(_base().img, base.img)
+    _MUG_DX = 0
+    empty = _diff(base.img, base.img)
+    frames = []
+    for i in range(24):
+        dx = round(1.3 * math.sin(2 * math.pi * i / 24))
+        frames.append(shifted[dx] if dx else empty)
+    return frames
+
+
+ANIMS = {'rellotge': {'frames': _frames_rellotge, 'frameDuration': 1000},
+         'tasses': {'frames': _frames_tasses, 'frameDuration': 160}}
 
 GEOMETRIA = {
     'things': {

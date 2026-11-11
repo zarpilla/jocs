@@ -310,6 +310,34 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "rellotge",
+      "tag": "rellotge",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "rellotge": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      }
+    },
+    {
+      "id": "maquines",
+      "tag": "maquines",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "maquines": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
     }
   ],
   "characters": [

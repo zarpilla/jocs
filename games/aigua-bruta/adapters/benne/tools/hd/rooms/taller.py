@@ -14,6 +14,7 @@ from hd.rooms.arenga import (WALL, ENG_LIGHT as ENG, DECK, CAB, REDP, YELL, SEAG
                              box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms.sota import (plate_wall, ceiling, checker_floor, door_frame, in_door, hinge_leaf, sill, sign,
                            floor_shadow)
+from hd.rooms.comu import _diff
 
 TUBE = (240, 16)                       # el fluorescent
 COOL = (220, 236, 230)
@@ -350,6 +351,67 @@ def clau_tubs(cv):
 
 
 PROPS = {'cisalla': cisalla, 'clau_tubs': clau_tubs}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_fluorescent():
+    """El fluorescent té la reactància cansada: de tant en tant fa pampallugues, com quan s'encén."""
+    base = _base()
+    tx, ty = TUBE[0], 22
+    dims = {44: 0.8, 45: 0.15, 46: 0.85, 47: 0.85, 48: 0.4, 50: 0.25}   # fotograma → quant s'apaga
+    frames = []
+    for i in range(56):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        k = dims.get(i, 0)
+        if k:
+            cv.darken(0, 0, W - 1, FLOOR_Y + 44,
+                      lambda x, y: k * max(0.0, 1 - math.hypot(x - tx, (y - ty) * 1.2) / 300), dither=False)
+            if k > 0.5:                                               # el tub, gairebé apagat (els extrems roents)
+                cv.rect(tx - 37, 21, tx + 37, 23, [(70, 76, 74), (96, 104, 100), (120, 128, 124)], 1.4, lit=0)
+                for ex in (tx - 37, tx - 36, tx + 36, tx + 37):
+                    cv.vline(ex, 21, 23, [(150, 120, 110), (200, 160, 140)], 1.4, lit=0)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _frames_mosca():
+    """Una mosca que no deixa en pau l'entrepà vell: s'aixeca, fa voltes i hi torna a parar."""
+    base = _base()
+    lx, ly = 384, 102                                                # on es para (damunt del pa)
+    fly_n, rest_n = 34, 22
+    frames = []
+    for i in range(fly_n + rest_n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        if i < fly_n:
+            s = i / fly_n
+            x = lx + 16 * math.sin(2 * math.pi * s) + 7 * math.sin(6 * math.pi * s)
+            y = ly - 14 * math.sin(math.pi * s) - 5 * math.sin(4 * math.pi * s)
+            x, y = round(x), round(y)
+            cv.flat(x, y, (16, 14, 18))
+            cv.flat(x + 1, y, (30, 26, 30))
+            wy = y - 1 if i % 2 else y + 1                           # les ales, que vibren
+            cv.flat(x, wy, mix(cv.get(x, wy), (200, 210, 220), 0.55))
+            cv.flat(x + 1, wy, mix(cv.get(x + 1, wy), (200, 210, 220), 0.4))
+        else:
+            j = i - fly_n
+            dx = 1 if (j // 6) % 2 else 0                            # camina una mica per l'entrepà
+            cv.flat(lx + dx, ly, (16, 14, 18))
+            cv.flat(lx + dx + 1, ly, (30, 26, 30))
+            if j % 7 in (2, 3):                                      # es frega les potes
+                cv.flat(lx + dx - 1, ly, (40, 34, 30))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'fluorescent': {'frames': _frames_fluorescent, 'frameDuration': 100},
+         'mosca': {'frames': _frames_mosca, 'frameDuration': 70}}
 
 
 # ─── Geometria ─────────────────────────────────────────────────────────────

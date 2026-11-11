@@ -9,12 +9,12 @@ La infermeria de l'Arenga: petita i ordenada, pintada de blanc, amb el linòleum
 """
 import math
 
-from hd.pix import Light, W, H, hr, mix
+from hd.pix import Canvas, Light, W, H, hr, mix
 from hd.rooms.arenga import CAB, DARK, WHITEP, REDP, YELL, BRASS, SEAG, FLOOR_Y, BOTTOM, box, rrect, bolt, hpipe, vpipe, glow
 from hd.rooms.principal import (CREAM, TEAK, DOORP, CEIL_H, wall, ceiling, lamp, lamp_glow, lino, shine, unmask,
                                 foot_shadow, floor_shadow, in_door, door_frame, sill, leaf, plaque, porthole, wear,
                                 voice_tube, day_porthole)
-from hd.rooms.comu import text, text_width
+from hd.rooms.comu import _diff, text, text_width
 
 LAMPS = (112, 296, 430)
 STEEL = [(10, 12, 14), (22, 25, 28), (38, 42, 46), (58, 63, 68), (82, 88, 93), (110, 116, 120), (142, 148, 150),
@@ -403,6 +403,66 @@ def bg(cv):
 
 PROPS = {'sense_travesser': sense_travesser, 'mantes': mantes,
          'ulls_dia': lambda cv: day_porthole(cv, 178, 54, 9, seed=4)}  # Escenes 2 i 3: de dia
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_cafe():
+    """La cafetera dolenta, sempre encesa: el vapor puja per davant del mirall i cau una gota a la gerra."""
+    base = _base()
+    cx0, cy0, cx1, cy1 = CAFE
+    gx, top, surf = (cx0 + cx1 - 6) // 2, cy0 + 9, cy0 + 18                # on goteja i on és el cafè
+    n, wisps = 64, 12
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        t = i / n
+        for p in range(wisps):                                             # cada fil de vapor torna a sortir quan s'esvaeix
+            age = (t * 2 + p / wisps) % 1
+            y = cy0 + 10 - age * 40
+            x = cx0 + 1 - age * 16 + 2.2 * math.sin(age * 9 + p * 1.7)
+            a = 0.75 * (1 - age) * min(1.0, age * 5)
+            for dx in (0, 1):
+                xx, yy = round(x) + dx, round(y)
+                cv.flat(xx, yy, mix(cv.get(xx, yy), (236, 240, 240), a * (1 if dx == 0 else 0.6)))
+        k = i % 32                                                         # la gota: es forma, cau i fa una rodoneta
+        if k < 4:
+            cv.flat(gx, top, mix(cv.get(gx, top), (90, 50, 26), 0.4 + k * 0.15))
+        elif k < 9:
+            y = top + (k - 3) * 2
+            if y < surf:
+                cv.flat(gx, y, (70, 38, 18))
+        elif k < 12:
+            r = k - 8
+            for dx in (-r - 1, r + 1):
+                cv.flat(gx + dx, surf, mix(cv.get(gx + dx, surf), (120, 76, 44), 0.6))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _frames_walkie():
+    """El walkie es carrega: el llum verd fa pampallugues."""
+    base = _base()
+    x, y = FITXES[2] + 5, DESK[1] - 7
+    frames = []
+    for on in (True, False):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        if on:
+            cv.glow(x, y, 3, (90, 255, 120), 0.6)
+        else:
+            cv.flat(x, y, (30, 80, 44))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'cafe': {'frames': _frames_cafe, 'frameDuration': 90},
+         'walkie': {'frames': _frames_walkie, 'frameDuration': 800}}
 
 # Qui seu a la llitera (la Juana, en Bastida) hi queda darrere; el travesser que falta i les mantes van a la
 # mateixa capa (són damunt del que tapa).

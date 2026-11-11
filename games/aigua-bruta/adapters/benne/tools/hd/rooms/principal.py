@@ -331,6 +331,16 @@ def day_porthole(cv, cx, cy, r, seed=0):
         cv.flat(x, y, mix(cv.get(x, y), (236, 240, 244), 0.35))
 
 
+# ─── Rellotge ───────────────────────────────────────────────────────────────
+
+def second_hand(cv, cx, cy, s, r=4):
+    """L'agulla vermella dels segons d'un rellotge de paret (s = 0..59)."""
+    a = math.radians(s * 6)
+    for d in range(1, r + 1):
+        cv.flat(round(cx + math.sin(a) * d), round(cy - math.cos(a) * d), (196, 40, 32))
+    cv.flat(cx, cy, (90, 70, 40))
+
+
 # ─── Tub de veu ─────────────────────────────────────────────────────────────
 
 def voice_tube(cv, cx, y, top=0, label=True):

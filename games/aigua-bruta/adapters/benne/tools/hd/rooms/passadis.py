@@ -10,17 +10,18 @@ Paret crema de planxa, passamans de fusta, sòcol envernissat i linòleum.
 """
 import math
 
-from hd.pix import Light, W, H, hr, mix
+from hd.pix import Canvas, Light, W, H, hr, mix
 from hd.rooms.arenga import CAB, DARK, WHITEP, REDP, YELL, BRASS, SEAG, FLOOR_Y, BOTTOM, box, bolt, hpipe, vpipe, glow
 from hd.rooms.principal import (CREAM, TEAK, LINO, DOORP, NIGHT, CEIL_H, wall, ceiling, lamp, lamp_glow, lino, shine,
                                 unmask, foot_shadow, in_door, door_frame, sill, leaf, plaque, porthole, extinguisher,
-                                sign_box, wear, day_porthole)
-from hd.rooms.comu import text
+                                sign_box, wear, day_porthole, second_hand)
+from hd.rooms.comu import _diff, text
 
 LAMPS = (110, 246, 400)
 BLUEL = [(6, 10, 18), (12, 20, 34), (20, 32, 52), (32, 48, 72), (48, 68, 96), (70, 92, 122), (100, 122, 150)]
 INWARM = [(20, 12, 8), (40, 26, 16), (66, 44, 28), (96, 68, 42), (130, 96, 62), (168, 128, 86), (204, 164, 116),
           (232, 200, 150)]
+_ENG_GLOW = 0.35                      # la llum verda de la sala de màquines (l'anima `maquines`)
 ENGG = [(4, 10, 8), (8, 18, 14), (12, 28, 22), (18, 42, 32), (28, 60, 46), (42, 84, 64)]
 
 LIGHT = Light(ambient=-0.35, vignette=(48, 24), floor_fade=(188, 40))
@@ -223,7 +224,7 @@ def stairs_down(cv, mask):
     for i, y in enumerate(range(hy0 + 3, hy1 - 1, 4)):
         cv.hline(hx0 + 8 + i, hx1 - 8 - i, y, CAB, 2.6 - i * 0.4, lit=0.3)
         cv.hline(hx0 + 8 + i, hx1 - 8 - i, y, YELL, 2.0 - i * 0.5, lit=0.3)
-    glow(cv, (hx0 + hx1) // 2, hy1 - 2, 18, (90, 200, 140), 0.35)
+    glow(cv, (hx0 + hx1) // 2, hy1 - 2, 18, (90, 200, 140), _ENG_GLOW)
     # el cantell (brazola) del forat
     cv.line(hx0, hy1, hx1, hy1, CAB, 4.0)
     cv.line(hx0, hy1 + 1, hx1, hy1 + 1, CAB, 2.0)
@@ -279,6 +280,41 @@ def bg(cv):
 
 # Escenes 2 i 3: de dia, l'ull de bou de la porta de coberta clar
 PROPS = {'ulls_dia': lambda cv: day_porthole(cv, (D_PROA[0] + D_PROA[2]) // 2 + 2, 86, 7)}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_rellotge():
+    """El rellotge del passadís: l'agulla dels segons (un fotograma per segon)."""
+    base = _base()
+    frames = []
+    for s in range(60):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        second_hand(cv, 209, 80, s)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _frames_maquines():
+    """La llum verda de la sala de màquines, pel forat de l'escala, respira amb el motor."""
+    global _ENG_GLOW
+    base = _base()
+    frames = []
+    for i in range(12):
+        _ENG_GLOW = 0.35 + 0.14 * math.sin(2 * math.pi * i / 12)
+        frames.append(_diff(_base().img, base.img))
+    _ENG_GLOW = 0.35
+    return frames
+
+
+ANIMS = {'rellotge': {'frames': _frames_rellotge, 'frameDuration': 1000},
+         'maquines': {'frames': _frames_maquines, 'frameDuration': 200}}
 
 GEOMETRIA = {
     'things': {

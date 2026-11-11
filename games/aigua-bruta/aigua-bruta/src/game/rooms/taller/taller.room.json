@@ -229,6 +229,34 @@
         "y": 119
       },
       "description": "clau de tubs"
+    },
+    {
+      "id": "fluorescent",
+      "tag": "fluorescent",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fluorescent": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      }
+    },
+    {
+      "id": "mosca",
+      "tag": "mosca",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mosca": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
     }
   ],
   "characters": [

@@ -307,6 +307,78 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "vapor",
+      "tag": "vapor",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "vapor": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      }
+    },
+    {
+      "id": "forn",
+      "tag": "forn",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "forn": {
+          "loop": true,
+          "frameDuration": 150
+        }
+      },
+      "scriptName": "fornAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 362,
+            "y": 86
+          },
+          {
+            "x": 416,
+            "y": 86
+          },
+          {
+            "x": 416,
+            "y": 152
+          },
+          {
+            "x": 362,
+            "y": 152
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 389,
+        "y": 178
+      },
+      "lookAtPoint": {
+        "x": 389,
+        "y": 152
+      },
+      "description": "forn"
+    },
+    {
+      "id": "fred",
+      "tag": "fred",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fred": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
     }
   ],
   "characters": [

@@ -292,6 +292,34 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "cafe",
+      "tag": "cafe",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cafe": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "walkie",
+      "tag": "walkie",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "walkie": {
+          "loop": true,
+          "frameDuration": 800
+        }
+      }
     }
   ],
   "characters": [

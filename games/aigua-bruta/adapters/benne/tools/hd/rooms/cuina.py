@@ -15,7 +15,7 @@ from hd.rooms.arenga import CAB, DARK, WHITEP, REDP, YELL, BRASS, SEAG, FLOOR_Y,
 from hd.rooms.principal import (CREAM, TEAK, DOORP, CEIL_H, wall, ceiling, lamp, lamp_glow, lino, shine, unmask,
                                 foot_shadow, floor_shadow, in_door, door_frame, sill, leaf, plaque, porthole, wear,
                                 voice_tube, day_porthole)
-from hd.rooms.comu import text, text_width
+from hd.rooms.comu import _diff, text, text_width
 
 LAMPS = (96, 206, 330, 442)
 STEEL = [(10, 12, 14), (22, 25, 28), (38, 42, 46), (58, 63, 68), (82, 88, 93), (110, 116, 120), (142, 148, 150),
@@ -31,6 +31,7 @@ FLOUR = [(90, 86, 78), (150, 146, 134), (200, 196, 182), (232, 230, 218), (248, 
 COPPERP = [(40, 18, 14), (76, 34, 20), (118, 56, 30), (160, 84, 44), (200, 120, 66), (232, 162, 104), (250, 210, 160)]
 ICE = [(20, 30, 40), (50, 70, 86), (100, 126, 140), (160, 186, 196), (210, 228, 234), (240, 248, 250)]
 
+_OVEN_K = 0.0                         # el resplendor del forn (l'anima `forn`)
 LIGHT = Light(ambient=-0.25, vignette=(44, 24), floor_fade=(188, 40))
 for _x in LAMPS:
     LIGHT.point(_x, CEIL_H + 4, r=112, k=2.2, squash=1.1, down=True, power=1.5)
@@ -193,11 +194,7 @@ def stove(cv):
     cv.line(kx + 6, top - 10, kx + 11, top - 14, COPPERP, 3.4)
     cv.disc(kx, top - 15, 2, 1, DARK, 2.0)
     cv.line(x0 + 12, top - 8, x0 + 12, top - 5, DARK, 1.0)
-    # vapor de l'olla
-    for i in range(10):
-        sx = ox - 4 + int(hr(i, 1) * 9)
-        sy = top - 30 - int(hr(i, 2) * 14)
-        cv.flat(sx, sy, mix(cv.get(sx, sy), (240, 240, 236), 0.35))
+    # (el vapor de l'olla és l'animació `vapor`)
     # la campana
     cv.poly([(x0 - 6, 52), (x1 + 6, 52), (x1 - 2, 40), (x0 + 2, 40)], STEEL, lambda x, y: 4.2 + (y - 40) * 0.06)
     cv.rect(x0 + 2, 26, x1 - 2, 39, STEEL, 3.4)
@@ -333,12 +330,12 @@ def oven(cv):
     wx0, wy0, wx1, wy1 = x0 + 9, y0 + 24, x1 - 9, y1 - 22
     for y in range(wy0, wy1 + 1):
         for x in range(wx0, wx1 + 1):
-            cv.put(x, y, FIRE, 2.6 - abs(y - (wy0 + wy1) / 2) * 0.12 - abs(x - (wx0 + wx1) / 2) * 0.04, lit=0)
+            cv.put(x, y, FIRE, 2.6 + _OVEN_K - abs(y - (wy0 + wy1) / 2) * 0.12 - abs(x - (wx0 + wx1) / 2) * 0.04, lit=0)
     cv.hline(wx0, wx1, wy1 - 6, STEEL, 2.0, lit=0)                          # la reixa
     for bx in (wx0 + 6, wx0 + 20, wx0 + 32):                             # pans
         cv.disc(bx, wy1 - 10, 5, 3, BREAD, lambda nx, ny: 3.6 - ny * 1.2, lit=0)
         cv.line(bx - 2, wy1 - 11, bx + 1, wy1 - 12, BREAD, 4.8, lit=0)
-    glow(cv, (wx0 + wx1) // 2, (wy0 + wy1) // 2, 26, (255, 170, 80), 0.35)
+    glow(cv, (wx0 + wx1) // 2, (wy0 + wy1) // 2, 26, (255, 170, 80), 0.35 + _OVEN_K * 0.2)
     hpipe(cv, x0 + 6, x1 - 6, y0 + 20, 1, STEEL, 6.0)                    # la nansa
     # el drap de cuina penjat (quadres blancs i vermells)
     for y in range(y0 + 21, y0 + 40):
@@ -421,6 +418,76 @@ def bg(cv):
 
 PROPS = {'safata': tray, 'armari_obert': cupboard_open,
          'ulls_dia': lambda cv: day_porthole(cv, 452, 82, 9, seed=3)}   # Escenes 2 i 3: de dia
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_vapor():
+    """El vapor de l'olla gran puja cap a la campana (cada fil torna a sortir quan s'esvaeix)."""
+    base = _base()
+    ox, lid = 192, COUNTER_Y - 4 - 26
+    n, wisps = 48, 18
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        t = i / n
+        for p in range(wisps):
+            age = (t * 2 + p / wisps) % 1
+            y = lid - 1 - age * 26
+            x = ox - 3 + (hr(p, 1) - 0.5) * 8 + 2 * math.sin(age * 8 + p * 2.1)
+            a = 0.85 * (1 - age) * min(1.0, age * 5)
+            xx, yy = round(x), round(y)
+            for dx, dy, k in ((0, 0, 1.0), (1, 0, 0.7), (0, -1, 0.5)):        # una bufada de tres píxels
+                cv.flat(xx + dx, yy + dy, mix(cv.get(xx + dx, yy + dy), (252, 252, 250), a * k))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _frames_forn():
+    """El forn encès: la llum de dins tremola una mica."""
+    global _OVEN_K
+    base = _base()
+    frames = []
+    for k in (0.0, 0.2, 0.1, 0.3, 0.15, -0.1, 0.05, 0.25, 0.1, -0.05):
+        _OVEN_K = k
+        frames.append(_diff(_base().img, base.img))
+    _OVEN_K = 0.0
+    return frames
+
+
+def _frames_fred():
+    """Boira freda que s'escapa per sota la porta de la cambra i s'arrossega per terra."""
+    base = _base()
+    x0, _, x1, y1 = CFREDA
+    n, wisps = 48, 16
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        t = i / n
+        for p in range(wisps):
+            age = (t + p / wisps) % 1
+            sx = x0 + 4 + hr(p, 3) * (x1 - x0 - 8)
+            side = 1 if hr(p, 4) > 0.5 else -1
+            x = sx + side * age * 20 + math.sin(age * 6 + p) * 1.5
+            y = y1 + 1 + age * 8
+            a = 0.7 * (1 - age) * min(1.0, age * 6)
+            for dx, k in ((-1, 0.5), (0, 1.0), (1, 1.0), (2, 0.5)):
+                xx, yy = round(x) + dx, round(y)
+                if yy < H:
+                    cv.flat(xx, yy, mix(cv.get(xx, yy), (214, 232, 244), a * k))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'vapor': {'frames': _frames_vapor, 'frameDuration': 100},
+         'forn': {'frames': _frames_forn, 'frameDuration': 150},
+         'fred': {'frames': _frames_fred, 'frameDuration': 110}}
 
 GEOMETRIA = {
     'things': {
