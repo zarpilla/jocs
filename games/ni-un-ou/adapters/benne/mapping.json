@@ -408,6 +408,44 @@
     "pal": "amb_pal",
     "caixa_cadenes": "amb_caixa"
   },
+  "fosc": [
+    {
+      "$comment": "Escena 9: en Bastida ha tret el relé del generador. A dins, sense llum fins que el torna a posar (les mateixes sales que amb_fosc).",
+      "rooms": [
+        "sala_maquines",
+        "sala_bombes",
+        "taller",
+        "rebost",
+        "pallol",
+        "diposit2",
+        "passadis_baix",
+        "camarot_iri",
+        "passadis",
+        "menjador",
+        "cuina",
+        "infermeria",
+        "laboratori",
+        "cabina_capitana",
+        "pont",
+        "sala_radio"
+      ],
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 9
+          },
+          {
+            "flag": "rele_posat",
+            "is": false
+          }
+        ]
+      },
+      "alpha": 0.5,
+      "color": "#04070f"
+    }
+  ],
   "doors": {
     "$comment": "So de cada sortida (`sala.cosa`): sona en arribar a la sala nova (game/audio/sfx/, `npm run sons`).",
     "cabina_capitana.porta": "porta",

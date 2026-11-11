@@ -30,6 +30,8 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 - `stayBlackOnEnter()`: la sala no es mostra fins a un `fadeIn()` (títols sobre negre abans d'una sala);
 - el text de pantalla (Display Text) per sobre del fos a negre;
 - `walkToLabel` a `game-config.json`, per traduir «Walk to»;
+- `shade.set(alpha, { color, seconds })`: una capa de color damunt de la sala i dels personatges, per sota de la
+  interfície i del text (una sala sense llum); passa d'una sala a l'altra fins que es canvia;
 - `setOutfit()`: la roba d'un personatge (prova `<roba>IdleD`, `<roba>WalkL`... abans que les normals);
 - `speech.clickProtectMs` a `game-config.json`: els primers mil·lisegons d'una línia, un clic no la salta;
 - `game.isBusy`: si ara mateix es diu una línia, hi ha una conversa oberta, una cinemàtica o un vídeo (les rondes

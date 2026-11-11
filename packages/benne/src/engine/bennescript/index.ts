@@ -26,6 +26,7 @@ export {
 } from './actions.js';
 export { background, cutscene, input, together, withInputDisabled } from './blocks.js';
 export { camera } from './camera.js';
+export { shade, type ShadeOptions } from './shade.js';
 export { events, type EngineEventName, type EventName } from './events.js';
 export { game, pointer, settings, type PointerHover } from './game.js';
 export { onUpdate } from './globalHandlers.js';

@@ -4,7 +4,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -306,6 +306,29 @@ export function applyAmbientSound() {
 }
 
 /**
+ * La foscor de les sales (`fosc` al mapping.json del joc): una capa de color damunt de la sala i dels personatges,
+ * per sota de la interfície i del text. Una llista de casos `{ "rooms": [sales], "if": condició, "alpha": 0–1,
+ * "color": "#rrggbb" }`: el primer que inclou la sala d'ara i es compleix. Cap: sense foscor.
+ * En entrar a una sala es posa de cop; si canvia l'estat dins la sala (es treu o es posa un relé), es fon.
+ */
+type ShadeCase = { rooms: string[]; if?: Condition; alpha: number; color?: string };
+const shades = (mapping as { fosc?: ShadeCase[] }).fosc ?? [];
+let shadeRoom: string | null = null;
+export function roomShade(room: string): { alpha: number; color: number } | null {
+  const match = shades.find((c) => c.rooms.includes(room) && (!c.if || narrative.check(c.if)));
+  return match ? { alpha: match.alpha, color: parseInt((match.color ?? '#000000').slice(1), 16) } : null;
+}
+export function applyRoomShade() {
+  if (!shades.length) return;
+  const room = world.currentRoom();
+  const now = room ? roomShade(room) : null;
+  const seconds = room === shadeRoom ? 1.5 : 0;
+  shadeRoom = room;
+  if (now) shade.set(now.alpha, { color: now.color, seconds });
+  else shade.set(0, { seconds });
+}
+
+/**
  * El so de cada sortida (`doors` al mapping.json del joc): `"sala.cosa": so`. Sona en arribar a la sala
  * nova, mentre s'hi entra (si sonés en sortir, el canvi de sala el tallaria).
  */
@@ -486,6 +509,8 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
   applyCharacterVisibility(room, keepSpeakers);
   // El so de fons també depèn de l'estat (p. ex. el generador parat).
   applyAmbientSound();
+  // I la llum.
+  applyRoomShade();
 }
 
 /** Abans que parli un personatge que ha d'aparèixer però encara no es veu (vegeu `keepSpeakers`). */

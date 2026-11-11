@@ -236,6 +236,7 @@ import {
   PAUSE_GUI_OVERLAY_DEPTH,
 } from './roomScreenFadeConstants';
 import { ROOM_VIDEO_LAYER_DEPTH } from './roomVideoConstants';
+import { ROOM_SHADE_LAYER_DEPTH, getRoomShade } from './roomShade';
 import { benneVideoCacheKey } from '../video/benneVideoCacheKeys.js';
 import { BENNE_VIDEO_ENDED_EVENT } from '../video/benneVideoEvents.js';
 import type { VideoPlayOptions } from '../video/benneVideoTypes.js';
@@ -536,6 +537,9 @@ export class RoomScene extends Phaser.Scene {
    * Null only before `create` or after shutdown.
    */
   private screenFadeRect: Phaser.GameObjects.Rectangle | null = null;
+
+  /** Room shade (Bennescript `shade.set()`, see `roomShade.ts`): above the room art, below every GUI. */
+  private roomShadeRect: Phaser.GameObjects.Rectangle | null = null;
 
   /**
    * Single-slot cinematic video layer (`video.x.play()`). Created hidden in {@link create} (no source) and
@@ -951,6 +955,7 @@ export class RoomScene extends Phaser.Scene {
     this.wireDialogChoiceUi();
 
     this.createRoomVideoLayer();
+    this.createRoomShadeLayer();
     this.createScreenFadeOverlay();
     const startKind: BenneRoomStartKind =
       (this.game.registry.get(BENNE_ROOM_START_KIND_KEY) as BenneRoomStartKind | undefined) ?? 'boot';
@@ -1046,6 +1051,11 @@ export class RoomScene extends Phaser.Scene {
         this.tweens.killTweensOf(this.screenFadeRect);
         this.screenFadeRect.destroy();
         this.screenFadeRect = null;
+      }
+      if (this.roomShadeRect) {
+        this.tweens.killTweensOf(this.roomShadeRect);
+        this.roomShadeRect.destroy();
+        this.roomShadeRect = null;
       }
       this.teardownRoomVideoLayer();
       this.missingVideoKeysWarned.clear();
@@ -1644,6 +1654,40 @@ export class RoomScene extends Phaser.Scene {
       true,
     );
     this.refreshDialogChoiceOverlay();
+  }
+
+  private createRoomShadeLayer(): void {
+    const { alpha, color } = getRoomShade();
+    this.roomShadeRect = this.add
+      .rectangle(0, 0, getInternalWidth(), getInternalHeight(), color, 1)
+      .setOrigin(0, 0)
+      .setScrollFactor(0, 0)
+      .setDepth(ROOM_SHADE_LAYER_DEPTH)
+      .setAlpha(alpha)
+      .setVisible(alpha > 0);
+  }
+
+  /** Brings the shade layer to the current {@link getRoomShade} state over `seconds` (0: now). */
+  applyRoomShade(seconds = 0): void {
+    const rect = this.roomShadeRect;
+    if (!rect) {
+      return;
+    }
+    const { alpha, color } = getRoomShade();
+    this.tweens.killTweensOf(rect);
+    rect.setFillStyle(color, 1);
+    if (seconds <= 0 || rect.alpha === alpha) {
+      rect.setAlpha(alpha).setVisible(alpha > 0);
+      return;
+    }
+    rect.setVisible(true);
+    this.tweens.add({
+      targets: rect,
+      alpha,
+      duration: seconds * 1000,
+      ease: 'Sine.easeInOut',
+      onComplete: () => rect.setVisible(alpha > 0),
+    });
   }
 
   private createScreenFadeOverlay(): void {
