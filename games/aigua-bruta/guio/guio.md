@@ -386,7 +386,7 @@ vàlvula, s'ho pensa i n'explica una part: el Punt 7, la plataforma, el marcador
 
 > JUANA: L'any passat, al Punt 7, vaig comptar dos mil ous d'arengada per metre quadrat. Aquest any, cap.
 > VET: I a la gent? Què fa, aquest marcador?
-> JUANA: A la gent, no ho sé. Als peixos s'hi queda. I a qui se'ls menja.
+> JUANA: A la gent, no ho sé. Als peixos s'hi queda. Hi ha qui se'ls menja.
 
 El portàtil té les dades, xifrades: «La contrasenya és el nom de la meva mare.
 No us diré quin és. Encara no us conec.»
