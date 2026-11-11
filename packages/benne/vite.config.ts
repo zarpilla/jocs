@@ -82,6 +82,7 @@ export default defineConfig({
       // La descripció només a la pàgina del joc (no als editors ni a les previsualitzacions)
       const meta = path.basename(ctx.filename) === 'index.html' ? pageMeta() : '';
       return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
+        .replace('<!--benne:nom-->', attr(displayName))                  // la pantalla de càrrega
         // Sense icona pròpia del joc, es queda el favicon de Mala Herba Soft (public/favicon.*)
         .replace(/<link rel="icon"[^>]*\/>(\s*<link rel="icon"[^>]*\/>)*/, (m) => iconExists
           ? '<link rel="icon" type="image/png" href="./src/game/assets/images/icon.png" />'

@@ -1,5 +1,6 @@
 import * as Phaser from 'phaser';
 import { applyBootAudioSettings } from '../applyAudioFromSettings';
+import { hideBootLoadingScreen, setBootLoadingProgress } from '../bootLoadingScreen';
 import {
   getAsepriteFrameTagNames,
   getCursorAsepriteFrameTagNames,
@@ -215,7 +216,12 @@ export class BootScene extends Phaser.Scene {
       queueBenneVideoForBootLoader(this.load);
     }
 
+    // La pantalla de càrrega de l'index.html: segueix el loader i s'esvaeix quan la primera sala ja és creada
+    this.load.on(Phaser.Loader.Events.PROGRESS, setBootLoadingProgress);
+    this.game.scene.getScene(SCENE_ROOM)?.events.once(Phaser.Scenes.Events.CREATE, hideBootLoadingScreen);
+
     this.load.once(Phaser.Loader.Events.COMPLETE, () => {
+      this.load.off(Phaser.Loader.Events.PROGRESS, setBootLoadingProgress);
       void (async () => {
         await ensureRoomScriptLoaded(startData.room.id);
         const orch = tryGetRoomTransitionOrchestrator();
