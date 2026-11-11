@@ -777,8 +777,8 @@ def iri_sleeve_cuff(fg, p, spec, i):
 
 
 IRI = {
-    'skin': SKIN_IRI, 'legs': TROUSER, 'top': SHIRT_BLUE, 'sleeve': WHITE, 'shoes': BOOT, 'lashes': True, 'blush': True,
-    'iris': (64, 46, 34), 'brow': (36, 20, 26),
+    'skin': SKIN_IRI, 'legs': TROUSER, 'top': SHIRT_BLUE, 'sleeve': WHITE, 'shoes': BOOT, 'lashes': True,
+    'iris': (52, 38, 30), 'brow': (24, 16, 22),   # la cara de l'Iri, la mateixa a tots els jocs
     'hooks': {'hair': iri_hair, 'torso': iri_coat, 'over': iri_braid_hook, 'arm': iri_sleeve_cuff},
 }
 
@@ -892,7 +892,7 @@ def vet_cuff(fg, p, spec, i):
 
 VET = {
     'skin': SKIN_VET, 'legs': ORANGE, 'top': ORANGE, 'forearm': SKIN_VET, 'shoes': SNEAKER, 'shoe_lvl': 3.4, 'lashes': True,
-    'iris': (44, 28, 24), 'brow': (190, 180, 168), 'lip': (110, 48, 54), 'eye': (24, 14, 20),
+    'iris': (60, 36, 26), 'brow': (190, 180, 168), 'lip': (150, 40, 52),   # la cara de la Vet (les celles, decolorades)
     'hooks': {'hair_back': vet_hair_back, 'hair': vet_hair, 'torso': vet_suit, 'leg_deco': vet_leg_front,
               'leg_deco_side': vet_leg_side, 'arm': vet_cuff},
 }

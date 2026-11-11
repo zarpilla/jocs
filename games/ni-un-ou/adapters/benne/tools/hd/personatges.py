@@ -18,11 +18,10 @@ import math
 
 from PIL import Image
 
-from hd.characters import (M, Fig, person, SKIN_OLD, SKIN_PALE, SKIN_VET, SKIN_RUDDY, BOOT, WHITE, HAIR_WHITE, HAIR_COPPER,
+from hd.characters import (M, Fig, person, SKIN_OLD, SKIN_PALE, SKIN_VET, SKIN_IRI, SKIN_RUDDY, BOOT, WHITE, HAIR_WHITE, HAIR_COPPER,
                            HAIR_BROWN, STEELB, TROUSER, DENIM, RED, ORANGE, NAVY_U, CREAM, GRAY_SHOE, SNEAKER)
 
 # ─── Materials ─────────────────────────────────────────────────────────────
-SKIN_IRI_AB = M((40, 20, 22), (78, 44, 36), (118, 72, 52), (156, 104, 72), (190, 138, 98), (218, 174, 132))
 HAIR_DARK = M((8, 6, 8), (18, 12, 14), (32, 22, 22), (50, 34, 30), (72, 52, 44), (98, 74, 60))
 OCHRE = M((44, 22, 8), (88, 48, 14), (140, 80, 22), (184, 112, 32), (214, 146, 52), (238, 190, 100))
 BOILER = M((6, 10, 22), (12, 20, 38), (20, 32, 58), (30, 48, 82), (44, 66, 106), (62, 88, 130), (88, 116, 156), dith=0.0)
@@ -149,8 +148,8 @@ def iri_leg_front(fg, p, spec, i):
 
 
 IRI = {
-    'skin': SKIN_IRI_AB, 'legs': BOILER, 'top': BOILER, 'forearm': SKIN_IRI_AB, 'shoes': BOOT,
-    'iris': (40, 26, 20), 'brow': (14, 10, 12), 'lip': (120, 58, 54), 'stoop': 0,
+    'skin': SKIN_IRI, 'legs': BOILER, 'top': BOILER, 'forearm': SKIN_IRI, 'shoes': BOOT, 'lashes': True,
+    'iris': (52, 38, 30), 'brow': (24, 16, 22), 'stoop': 0,   # la cara de l'Iri, la mateixa a tots els jocs
     'hooks': {'hair_back': iri_hair_back, 'hair': iri_hair, 'over': iri_over, 'arm': iri_arm,
               'leg_deco_side': iri_leg_side, 'leg_deco': iri_leg_front},
 }
@@ -161,10 +160,10 @@ IRI = {
 TIE = M((10, 14, 34), (20, 30, 70), (36, 54, 120), (70, 96, 170))
 
 
-HAIR_BLONDE = M((60, 40, 20), (110, 80, 40), (160, 124, 66), (200, 166, 98), (228, 202, 140), (246, 232, 186))
+HAIR_CASTANY = M((20, 12, 12), (44, 28, 22), (72, 46, 32), (102, 68, 46), (134, 94, 64), (166, 124, 88))
 
 # El cabell de la Vet: color, serrell, on és la clenxa ('mig' o 'costat'), gruix i llargada de les trenes.
-VET_PEL = {'mat': HAIR_BLONDE, 'serrell': False, 'clenxa': 'costat', 'gruix': 1.9, 'llarg': 22.0}
+VET_PEL = {'mat': HAIR_CASTANY, 'serrell': False, 'clenxa': 'costat', 'gruix': 1.9, 'llarg': 22.0}
 
 
 def _braid(fg, pts, lvl, H=HAIR_COPPER, r=1.9):
@@ -315,8 +314,8 @@ def vet_arm(fg, p, spec, i):
 
 
 VET = {
-    'skin': SKIN_PALE, 'legs': TROUSER_V, 'top': WHITE, 'shoes': BOOT, 'lashes': True,
-    'iris': (60, 90, 70), 'brow': (140, 104, 56), 'lip': (176, 76, 78), 'thin': 0.5,
+    'skin': SKIN_VET, 'legs': TROUSER_V, 'top': WHITE, 'shoes': BOOT, 'lashes': True,
+    'iris': (60, 36, 26), 'brow': (26, 14, 14), 'lip': (150, 40, 52), 'thin': 0.5,   # la cara de la Vet, la mateixa a tots els jocs
     'hooks': {'hair_back': vet_hair_back, 'hair': vet_hair, 'torso': vet_torso, 'collar': vet_collar,
               'arm': vet_arm},
 }
