@@ -153,26 +153,38 @@ def porthole(cv, hover=False):
         cv.put(bx + 1, by + 1, BRASS, 0.6, lit=0)
 
 
+FACE_C, FACE_R = (32.5, 22.5), 13      # el centre de la cara al fotograma de 640 (65×116) i el radi del vidre
+
+
 def face(who='vet'):
-    """La cara de l'altra protagonista dins el vidre (provisional: la de 480 ampliada ×4/3)."""
-    from hd.gui import face_porthole
-    f = face_porthole(who)
-    return f.resize((round(f.width * 4 / 3), round(f.height * 4 / 3)), Image.NEAREST)
+    """La cara de l'altra protagonista dins el vidre: el personatge de 640 de cara (hd640/characters, IdleD),
+    retallat en rodó, una mica blavós darrere el vidre i amb el reflex (com hd.gui.face_porthole a 480)."""
+    from hd.pix import mix
+    d = Path(__file__).resolve().parent / 'characters' / who
+    sheet = json.loads((d / f'{who}.json').read_text())
+    tags = {t['name']: t['from'] for t in sheet['meta']['frameTags']}
+    fr = list(sheet['frames'].values())[tags['IdleD']]['frame']
+    src = Image.open(d / f'{who}.png').convert('RGBA').crop((fr['x'], fr['y'], fr['x'] + fr['w'], fr['y'] + fr['h']))
+    n = 2 * FACE_R + 1
+    out = Image.new('RGBA', (n, n + 1), (0, 0, 0, 0))
+    S, P = src.load(), out.load()
+    x0, y0 = round(FACE_C[0] - FACE_R), round(FACE_C[1] - FACE_R)
+    for y in range(n + 1):
+        for x in range(n):
+            if (x - FACE_R) ** 2 + (y - FACE_R) ** 2 <= FACE_R ** 2 and 0 <= y0 + y < src.height:
+                r, g, b, a = S[x0 + x, y0 + y]
+                if a:
+                    P[x, y] = (int(r * 0.92), int(g * 0.95), int(b), a)
+    for (x, y) in ((7, 10), (8, 9), (9, 8), (10, 7), (11, 6), (7, 12)):    # el reflex del vidre
+        if P[x, y][3]:
+            P[x, y] = mix(P[x, y], (210, 230, 240), 0.45) + (255,)
+    return out
 
 
 def inv_icons(ids):
-    """Icones d'inventari (provisional: les de 480, 49×27, ampliades ×4/3 a 65×36)."""
-    d = GAME / 'assets/images/inventory'
-    meta = json.loads((d / 'inventory.json').read_text())
-    sheet = Image.open(d / 'inventory.png').convert('RGBA')
-    frames = list(meta['frames'].values())
-    tags = {t['name']: t['from'] for t in meta['meta']['frameTags']}
-    out = []
-    for i in ids:
-        f = frames[tags[i]]['frame']
-        ic = sheet.crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h']))
-        out.append(ic.resize((SLOT_W, SLOT_H), Image.NEAREST))
-    return out
+    """Icones d'inventari de 640 (65×36, hd640/items.py)."""
+    from hd640 import items
+    return [items.render(i) for i in ids]
 
 
 # ─── La barra ──────────────────────────────────────────────────────────────
