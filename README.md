@@ -45,13 +45,26 @@ npm run dev -w suma-zero         # juga al navegador (cal `npm install` dins gam
 Totes les ordres d'un joc: el `package.json` de `games/<joc>/`. Les eines saben de quin joc parles per
 la carpeta des d'on s'executen (o per la variable `JOC=<joc>`): vegeu `tools/joc.ts`.
 
+## Publicació
+
+Cada push a `main` que toqui els jocs o el motor passa els tests, compila els jocs i els puja a
+`malaherbasoft.cat/<joc>/` ([.github/workflows/publica.yml](.github/workflows/publica.yml)), per rsync, cadascun
+a la seva carpeta. Amb `[skip deploy]` al missatge del commit, no es publica. També es pot llançar a mà des
+de la pestanya Actions (*Run workflow*), per a un joc o per a tots.
+
+És independent de la CI del web (repo `malaherbasoft`), que publica l'arrel i deixa estar les carpetes dels
+jocs. Fan servir els mateixos secrets: `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS` i `DEPLOY_TARGET`.
+
 ## Un joc nou
 
 1. `games/<joc>/` amb `game/` (copiat d'un altre joc i buidat), `package.json` (com el dels altres) i
    `adapters/benne/joc.ts` + `mapping.json`.
 2. `npm run benne:create -w <joc> -- --from <checkout de Benne>` crea el projecte Benne.
 3. `npm run benne:sync -w <joc> -- --init`.
-4. Estadístiques: anomena les missions principals `acte1`, `acte2`, `acte3`… i afegeix el joc a `JOCS`
+4. Publicació: `description` i `url` al bloc `benne` del `package.json` del projecte Benne, una
+   `public/portada.png`, el joc a la llista de [publica.yml](.github/workflows/publica.yml) i la carpeta a
+   les exclusions del `deploy.yml` del web.
+5. Estadístiques: anomena les missions principals `acte1`, `acte2`, `acte3`… i afegeix el joc a `JOCS`
    del servidor (vegeu [Estadístiques](adapters/benne/README.md#estadístiques)).
 
 Més detalls a [adapters/benne/README.md](adapters/benne/README.md) i

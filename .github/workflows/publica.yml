@@ -1,0 +1,101 @@
+name: Publica els jocs
+
+# Compila els jocs i els puja a malaherbasoft.cat/<joc>/ (rsync, com la CI del web).
+# Cada joc va a la seva carpeta i només toca aquella carpeta: el web i els altres jocs no es toquen.
+# La CI del web (repo malaherbasoft) exclou aquestes carpetes del seu rsync --delete.
+#
+# - Cada push a main que toqui els jocs o el motor els publica tots (rsync només puja el que ha canviat).
+#   Si el missatge del commit conté [skip deploy], no es publica.
+# - A mà (pestanya Actions, «Run workflow»): un joc o tots.
+#
+# Secrets (els mateixos que al repo del web): DEPLOY_SSH_KEY, DEPLOY_KNOWN_HOSTS i DEPLOY_TARGET
+# (usuari@servidor; els jocs van a <carpeta per defecte de l'usuari>/<joc>/, igual que el web a l'arrel).
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'games/**'
+      - 'packages/**'
+      - 'adapters/**'
+      - 'package-lock.json'
+      - '.github/workflows/publica.yml'
+  workflow_dispatch:
+    inputs:
+      joc:
+        description: Quin joc es publica
+        type: choice
+        options: [tots, aigua-bruta, ferro-9, suma-zero]
+        default: tots
+
+concurrency:
+  group: publica-jocs
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    if: github.event_name == 'workflow_dispatch' || !contains(github.event.head_commit.message, '[skip deploy]')
+    runs-on: ubuntu-latest
+    outputs:
+      jocs: ${{ steps.jocs.outputs.jocs }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Tests (les partides senceres de cada joc)
+        run: npx vitest run
+      - name: Quins jocs es publiquen
+        id: jocs
+        env:
+          JOC: ${{ inputs.joc }}
+        run: |
+          if [ -z "$JOC" ] || [ "$JOC" = tots ]; then
+            echo 'jocs=["aigua-bruta","ferro-9","suma-zero"]' >> "$GITHUB_OUTPUT"
+          else
+            echo "jocs=[\"$JOC\"]" >> "$GITHUB_OUTPUT"
+          fi
+
+  publica:
+    needs: tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        joc: ${{ fromJSON(needs.tests.outputs.jocs) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: games/${{ matrix.joc }}/${{ matrix.joc }}/package-lock.json
+
+      - name: Compila
+        working-directory: games/${{ matrix.joc }}/${{ matrix.joc }}
+        run: |
+          npm ci --no-audit --no-fund
+          npm run build
+
+      - name: Configura SSH
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+
+      # --delay-updates: tots els fitxers nous es posen al seu lloc al final, de cop, perquè ningú carregui
+      # un index.html nou amb els fitxers vells (o al revés).
+      - name: Puja el joc
+        env:
+          DEPLOY_TARGET: ${{ secrets.DEPLOY_TARGET }}
+          JOC: ${{ matrix.joc }}
+        run: |
+          rsync -rlz --delete --delay-updates --checksum --chmod=D755,F644 \
+            -e "ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes" \
+            "games/$JOC/$JOC/dist/" "$DEPLOY_TARGET:$JOC/"
