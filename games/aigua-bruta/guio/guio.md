@@ -556,6 +556,7 @@ fet).
 La Vet s'amaga dins l'armari de les olles, a la cuina, i mira per l'escletxa. Al cap d'un moment, entra **la
 Nadia**, amb el mòbil a la mà, i obre la cambra freda.
 
+> NADIA *(al mòbil)*: Sí. Ja hi soc.
 > VET *(sortint de l'armari)*: Bon vespre.
 > NADIA: ...Tenia gana de postres.
 > VET: Les postres d'avui són una mentida. L'hem dita per la ràdio.
