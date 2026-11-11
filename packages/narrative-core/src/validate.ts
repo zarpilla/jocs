@@ -189,6 +189,11 @@ export function validateContent(
     interactions(`characters.${cid}.interactions`, c.interactions);
     c.appearance?.forEach((a, i) => cond(`characters.${cid}.appearance[${i}].if`, a.if));
     c.outfit?.forEach((o, i) => cond(`characters.${cid}.outfit[${i}].if`, o.if));
+    c.patrol?.forEach((p, i) => {
+      cond(`characters.${cid}.patrol[${i}].if`, p.if);
+      if (!rooms[p.room]) err(`characters.${cid}.patrol[${i}].room`, `Sala desconeguda "${p.room}".`);
+      if (p.path.length < 2) err(`characters.${cid}.patrol[${i}].path`, `Una ronda necessita almenys dos punts.`);
+    });
     c.place?.forEach((p, i) => {
       cond(`characters.${cid}.place[${i}].if`, p.if);
       if (!rooms[p.room]) err(`characters.${cid}.place[${i}].room`, `Sala desconeguda "${p.room}".`);

@@ -408,6 +408,37 @@
             },
             "anim": "Seu"
           }
+        ],
+        "patrol": [
+          {
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 6
+                },
+                {
+                  "flag": "bastida_baixa",
+                  "is": false
+                }
+              ]
+            },
+            "room": "coberta_popa",
+            "path": [
+              {
+                "x": 170,
+                "y": 226,
+                "face": "U"
+              },
+              {
+                "x": 450,
+                "y": 226,
+                "face": "U"
+              }
+            ],
+            "pause": 2.5
+          }
         ]
       },
       "marcel": {
@@ -10760,11 +10791,23 @@
                   },
                   {
                     "who": "narrator",
-                    "text": "sala.sala_radio.panell.28"
+                    "text": "sala.sala_radio.panell.28",
+                    "stage": [
+                      {
+                        "who": "bastida",
+                        "walk": "porta"
+                      }
+                    ]
                   },
                   {
                     "who": "bastida",
-                    "text": "sala.sala_radio.panell.29"
+                    "text": "sala.sala_radio.panell.29",
+                    "stageAfter": [
+                      {
+                        "who": "bastida",
+                        "visible": false
+                      }
+                    ]
                   },
                   {
                     "who": "player",

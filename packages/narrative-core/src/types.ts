@@ -124,6 +124,22 @@ export interface CharacterDef {
    * i una última entrada sense `if` amb el seu lloc de sempre.
    */
   place?: { if?: Condition; room: Id; x: number; y: number }[];
+  /**
+   * Ronda dins una sala segons l'estat: mentre es compleixi, el personatge va i ve pels punts de `path`, per
+   * ordre i tornant a començar, i s'atura `pause` segons a cada punt (per defecte, 1,5). Mentre passa alguna
+   * cosa (una línia, una conversa, una cinemàtica), s'atura on és, i després continua.
+   * Ex.: en Bastida fa la ronda a popa → `{ "if": { "var": "escena", "op": "==", "value": 6 }, "room": "coberta_popa",
+   * "path": [{ "x": 150, "y": 228 }, { "x": 470, "y": 228, "face": "U" }] }`.
+   */
+  patrol?: PatrolDef[];
+}
+
+export interface PatrolDef {
+  if?: Condition;
+  room: Id;
+  /** Els punts (peus, en píxels de la sala). `face`: cap on es gira en arribar-hi. */
+  path: (StagePoint & { face?: 'L' | 'R' | 'U' | 'D' })[];
+  pause?: number;
 }
 
 // ─── Objectes ────────────────────────────────────────────────────────────────

@@ -277,6 +277,7 @@ def robot(cid='neta'):
     for f in 'DLU':
         tags.append((f'Idle{f}', [N(f, k=k) for k in range(8)]))
         tags.append((f'Talk{f}', [N(f, k=0), N(f, talk=True, k=1)]))
+        tags.append((f'Walk{f}', [N(f, k=k) for k in range(8)]))   # fa la volta: rodola amb els raspalls girant
     tags.append(('Descansa', [N('D', estat='descansa', k=k) for k in range(2)]))
     tags.append(('Molles', [N('D', estat='molles', k=k) for k in range(4)]))
     for f in 'DLU':                                           # roba «Davantal»: serveix al bar del final

@@ -2082,6 +2082,14 @@ export class RoomScene extends Phaser.Scene {
     );
   }
 
+  /**
+   * Public view of {@link isInputSuppressed} for scripts (`game.isBusy`): a line being said, a
+   * conversation open, a cutscene or a room video. (Own change: patrols pause while it is true.)
+   */
+  isScriptBusy(): boolean {
+    return this.isInputSuppressed();
+  }
+
   /** True while `input.disabled` is set. Survives room changes; not part of save snapshots. */
   private isUserInputDisabled(): boolean {
     return this.game.registry.get(BENNE_USER_INPUT_DISABLED_REGISTRY_KEY) === true;

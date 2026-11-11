@@ -32,6 +32,8 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 - `walkToLabel` a `game-config.json`, per traduir «Walk to»;
 - `setOutfit()`: la roba d'un personatge (prova `<roba>IdleD`, `<roba>WalkL`... abans que les normals);
 - `speech.clickProtectMs` a `game-config.json`: els primers mil·lisegons d'una línia, un clic no la salta;
+- `game.isBusy`: si ara mateix es diu una línia, hi ha una conversa oberta, una cinemàtica o un vídeo (les rondes
+  dels personatges s'hi aturen);
 - `pauseGame` a una GUI modal: mentre és oberta, el joc s'atura (temporitzadors, tweens, caminades), i Esc la tanca;
 - les partides desades al `localStorage` amb una clau per joc (`VITE_BENNE_GAME_ID`, del nom del
   `package.json` del projecte), perquè dos jocs al mateix origen no comparteixin partides.

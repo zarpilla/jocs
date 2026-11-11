@@ -104,6 +104,13 @@
             "additionalProperties": false
           },
           "description": "On és dins una sala segons l'estat: la primera entrada d'aquella sala que es compleixi diu on ha de ser (peus, en píxels de la sala). Si l'estat canvia mentre s'hi és, hi camina; en entrar-hi, ja hi és. Ex.: el vigilant deixa la porta per buscar el nen → `{ \"if\": { \"flag\": \"soler_distret\" }, \"room\": \"aeroport_terminal\", \"x\": 430, \"y\": 190 }`, i una última entrada sense `if` amb el seu lloc de sempre."
+        },
+        "patrol": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PatrolDef"
+          },
+          "description": "Ronda dins una sala segons l'estat: mentre es compleixi, el personatge va i ve pels punts de `path`, per ordre i tornant a començar, i s'atura `pause` segons a cada punt (per defecte, 1,5). Mentre passa alguna cosa (una línia, una conversa, una cinemàtica), s'atura on és, i després continua. Ex.: en Bastida fa la ronda a popa → `{ \"if\": { \"var\": \"escena\", \"op\": \"==\", \"value\": 6 }, \"room\": \"coberta_popa\", \"path\": [{ \"x\": 150, \"y\": 228 }, { \"x\": 470, \"y\": 228, \"face\": \"U\" }] }`."
         }
       },
       "required": [
@@ -949,6 +956,54 @@
       "required": [
         "x",
         "y"
+      ],
+      "additionalProperties": false
+    },
+    "PatrolDef": {
+      "type": "object",
+      "properties": {
+        "if": {
+          "$ref": "#/definitions/Condition"
+        },
+        "room": {
+          "$ref": "#/definitions/Id"
+        },
+        "path": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "face": {
+                "type": "string",
+                "enum": [
+                  "L",
+                  "R",
+                  "U",
+                  "D"
+                ]
+              },
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "x",
+              "y"
+            ]
+          },
+          "description": "Els punts (peus, en píxels de la sala). `face`: cap on es gira en arribar-hi."
+        },
+        "pause": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "room",
+        "path"
       ],
       "additionalProperties": false
     }

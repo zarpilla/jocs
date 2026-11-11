@@ -514,6 +514,35 @@
             },
             "name": "Davantal"
           }
+        ],
+        "patrol": [
+          {
+            "if": {
+              "all": [
+                {
+                  "var": "robot",
+                  "op": "==",
+                  "value": ""
+                },
+                {
+                  "flag": "escapada",
+                  "is": false
+                }
+              ]
+            },
+            "room": "bcmu_passadis",
+            "path": [
+              {
+                "x": 130,
+                "y": 253
+              },
+              {
+                "x": 520,
+                "y": 253
+              }
+            ],
+            "pause": 1
+          }
         ]
       },
       "pons": {

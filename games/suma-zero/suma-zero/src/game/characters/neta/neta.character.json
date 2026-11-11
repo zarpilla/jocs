@@ -48,6 +48,10 @@
       "loop": true,
       "frameDuration": 160
     },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 180
+    },
     "IdleL": {
       "loop": true,
       "frameDuration": 180
@@ -56,6 +60,10 @@
       "loop": true,
       "frameDuration": 160
     },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 180
+    },
     "IdleU": {
       "loop": true,
       "frameDuration": 180
@@ -63,6 +71,10 @@
     "TalkU": {
       "loop": true,
       "frameDuration": 160
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 180
     },
     "Descansa": {
       "loop": true,

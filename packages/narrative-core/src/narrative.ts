@@ -10,6 +10,7 @@ import type {
   DialogueDef,
   Effect,
   EndingLineDef,
+  PatrolDef,
   GameContent,
   Id,
   InteractionDef,
@@ -254,6 +255,11 @@ export class Narrative {
   placeOf(id: Id, room: Id): { x: number; y: number } | null {
     const p = this.content.characters[id]?.place?.find((e) => e.room === room && this.check(e.if));
     return p ? { x: p.x, y: p.y } : null;
+  }
+
+  /** La ronda que fa un personatge en una sala segons l'estat (`patrol`), o `null` si no en fa cap. */
+  patrolOf(id: Id, room: Id): PatrolDef | null {
+    return this.content.characters[id]?.patrol?.find((e) => e.room === room && this.check(e.if)) ?? null;
   }
 
   /** La roba que porta un personatge segons l'estat (`outfit`), o `''` per a la normal. */

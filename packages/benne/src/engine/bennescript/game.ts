@@ -129,6 +129,11 @@ export const game = {
     return activeRoomScene()?.isCutsceneActive() ?? false;
   },
 
+  /** True while the world takes no clicks: a line being said, a conversation open, a cutscene or a room video. */
+  get isBusy(): boolean {
+    return activeRoomScene()?.isScriptBusy() ?? false;
+  },
+
   /** Every room change, before the room is left. */
   onLeaveAnyRoom(handler: () => void): void {
     registerAnyRoomHandler('leave', handler);

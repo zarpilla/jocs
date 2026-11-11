@@ -6,7 +6,7 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, cutscene, display, fadeIn, fadeOut, player, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, background, cutscene, display, fadeIn, fadeOut, game, player, saves, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
@@ -155,6 +155,7 @@ export function onRoomLoaded() {
   applyHotspotVisibility()
   applyAppearances()
   applyPlaces(false)
+  startPatrols()
 }
 
 /**
@@ -302,6 +303,7 @@ export function enterNarrativeRoom() {
     result = narrative.enterRoom(room)
   }
   entrada = null
+  startPatrols()
   if (finale[0]?.room === room) {
     playFinaleRoom()
     return
@@ -494,4 +496,60 @@ function playFinaleRoom() {
   finale = []
   fadeOut(1.5)
   display(narrative.t('ui.fi'))
+}
+
+// ─── Rondes (`patrol` a characters.json) ─────────────────────────────────────
+
+type PatrolActor = {
+  position: { x: number; y: number }; visible: boolean; stopWalking(): void;
+  walkTo: { now(p: { x: number; y: number }): unknown }; face: (d: 'L' | 'R' | 'U' | 'D') => void;
+}
+
+/** En entrar a una sala (o carregar-hi una partida): qui hi pot fer ronda la fa en segon pla. */
+function startPatrols() {
+  const room = narrative.world.currentRoom()
+  if (!room) return
+  for (const [id, def] of Object.entries(narrative.content.characters)) {
+    if (def.patrol?.some((p) => p.room === room)) background(() => { patrol(id, room) })
+  }
+}
+
+/**
+ * La ronda d'un personatge: mentre l'estat la demani, va de punt en punt i s'hi atura una estona. Si passa
+ * alguna cosa (una línia, una conversa, una cinemàtica), s'atura on és, i després continua cap al mateix
+ * punt. S'acaba en sortir de la sala (Benne atura els blocs de segon pla).
+ */
+function patrol(id: string, room: string) {
+  const actor = benneCharacter(id) as unknown as PatrolActor | undefined
+  if (!actor) return
+  let next = 0
+  let walking = false
+  let still = 0
+  let last = { x: -1, y: -1 }
+  while (narrative.world.currentRoom() === room) {
+    const route = narrative.patrolOf(id, room)
+    if (!route || !actor.visible || game.isBusy || narrative.world.activeProtagonist() === id) {
+      if (walking) actor.stopWalking()
+      walking = false
+      wait(0.25)
+      continue
+    }
+    const to = route.path[next % route.path.length]!
+    if (!walking) {
+      actor.walkTo.now({ x: to.x, y: to.y })
+      walking = true
+      still = 0
+    }
+    wait(0.2)
+    const at = actor.position
+    still = Math.hypot(at.x - last.x, at.y - last.y) < 0.5 ? still + 1 : 0
+    last = { x: at.x, y: at.y }
+    // Hi ha arribat (o no s'hi pot acostar més: el punt és fora de la zona on es camina).
+    if (Math.hypot(at.x - to.x, at.y - to.y) < 3 || still >= 3) {
+      walking = false
+      next++
+      if (to.face) actor.face(to.face)
+      wait(route.pause ?? 1.5)
+    }
+  }
 }

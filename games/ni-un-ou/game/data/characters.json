@@ -197,6 +197,37 @@
         },
         "anim": "Seu"
       }
+    ],
+    "patrol": [
+      {
+        "if": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 6
+            },
+            {
+              "flag": "bastida_baixa",
+              "is": false
+            }
+          ]
+        },
+        "room": "coberta_popa",
+        "path": [
+          {
+            "x": 170,
+            "y": 226,
+            "face": "U"
+          },
+          {
+            "x": 450,
+            "y": 226,
+            "face": "U"
+          }
+        ],
+        "pause": 2.5
+      }
     ]
   },
   "marcel": {
