@@ -194,32 +194,6 @@
             "open",
             "walkTo"
           ],
-          "if": {
-            "all": [
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 4
-              },
-              {
-                "flag": "satellit_provat",
-                "is": false
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.passadis_baix.escotilla.2"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "use",
-            "open",
-            "walkTo"
-          ],
           "goTo": "sala_bombes"
         },
         {

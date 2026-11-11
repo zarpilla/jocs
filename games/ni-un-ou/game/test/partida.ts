@@ -178,9 +178,7 @@ export function escena4(p: Jugador) {
   p.do('look', 'llibre');
   p.do('talkTo', item('walkie'));
   p.talk('portatil', 'pili', 'pilar');
-  anar(p, 'pont');
-  p.use('usb', 'terminal');
-  anar(p, 'sala_bombes');
+  anar(p, 'sala_bombes'); // el satèl·lit del pont és opcional
   p.do('look', 'llibre'); // Escena 5
 }
 

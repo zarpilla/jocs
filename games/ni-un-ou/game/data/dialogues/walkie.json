@@ -1152,7 +1152,7 @@
           "who": "vet",
           "text": "dlg.walkie.esc4.8",
           "if": {
-            "flag": "satellit_provat"
+            "flag": "portatil_obert"
           }
         }
       ]

@@ -934,33 +934,6 @@
       "pista.iri_obrir.3"
     ]
   },
-  "iri_satellit": {
-    "priority": 3,
-    "when": {
-      "all": [
-        {
-          "var": "escena",
-          "op": "==",
-          "value": 4
-        },
-        {
-          "flag": "portatil_obert"
-        },
-        {
-          "flag": "satellit_provat",
-          "is": false
-        }
-      ]
-    },
-    "doneWhen": {
-      "flag": "satellit_provat"
-    },
-    "levels": [
-      "pista.iri_satellit.1",
-      "pista.iri_satellit.2",
-      "pista.iri_satellit.3"
-    ]
-  },
   "iri_bombes": {
     "priority": 3,
     "when": {
@@ -971,7 +944,7 @@
           "value": 4
         },
         {
-          "flag": "satellit_provat"
+          "flag": "portatil_obert"
         }
       ]
     },

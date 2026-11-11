@@ -535,6 +535,8 @@ L'Iri en fa una còpia en un USB («Sempre faig còpia. Les màquines m'han ense
 enviar-ho tot per satèl·lit des del pont. El terminal diu **«Sense senyal»**: l'antena del pal està desorientada.
 IRI: «De nit i amb aquest vent, al pal no s'hi puja. Només si no hi ha més remei.»
 
+(Provar el terminal és opcional: la sala de bombes ja és oberta des que el portàtil diu on és la Juana.)
+
 L'Iri ho diu pel walkie («He obert el portàtil. Diu "on ningú no beu".») i baixa a la sala de bombes. La Juana
 no hi és. Hi ha el llibre a terra, obert de cara avall. I la llanterna encesa.
 
