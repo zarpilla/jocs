@@ -455,8 +455,9 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
     spawn.push({ instanceId: `${c}-1`, definition: `${c}/${c}.character.json`, x: Math.round(x), y: s(130), initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 9 });
   });
   voicesIn(room, content, joc).forEach((c, n) => {
-    // Una veu: hi és perquè pugui parlar, però no es veu ni es pot clicar.
-    spawn.push({ instanceId: `${c}-veu`, definition: `${c}/${c}.character.json`, x: s(40 + n * 30), y: s(70), initialFacing: 'D', initialAnimation: 'Idle', visible: false, clickable: false, zIndex: 1 });
+    // Una veu: hi és perquè pugui parlar, però no es veu ni es pot clicar. Té el zIndex dels
+    // personatges perquè, si un `stage` la fa entrar, les baselines (el que tapa) li funcionin igual.
+    spawn.push({ instanceId: `${c}-veu`, definition: `${c}/${c}.character.json`, x: s(40 + n * 30), y: s(70), initialFacing: 'D', initialAnimation: 'Idle', visible: false, clickable: false, zIndex: 9 });
   });
 
   const benneRoom = {
