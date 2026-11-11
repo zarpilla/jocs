@@ -6,7 +6,7 @@
   "display": {
     "aseprite": true
   },
-  "walkSpeed": 80,
+  "walkSpeed": 160,
   "walkToPoint": {
     "x": 48,
     "y": 34
@@ -48,6 +48,10 @@
       "loop": true,
       "frameDuration": 160
     },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 90
+    },
     "IdleL": {
       "loop": true,
       "frameDuration": 300
@@ -56,6 +60,10 @@
       "loop": true,
       "frameDuration": 160
     },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
     "IdleU": {
       "loop": true,
       "frameDuration": 300
@@ -63,6 +71,10 @@
     "TalkU": {
       "loop": true,
       "frameDuration": 160
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 90
     }
   },
   "defaultVerb": "look",

@@ -133,6 +133,38 @@ amb el valor que tenen en acabar la interacció:
 { "who": "player", "text": "obj.molla.estirar", "sound": "molla_{molla_tensio}" }
 ```
 
+### Moviment a mitja escena (`stage`)
+
+Qualsevol línia pot dur `"stage"`: el que passa just abans de dir-la. És una llista d'indicacions que es fan
+per ordre. Cada indicació té `who` (un personatge, o `player`) i, per aquest ordre:
+
+- `at`: s'hi posa de cop;
+- `visible`: `true` el mostra i `false` l'amaga;
+- `anim`: una animació del sprite (p. ex. `"Seu"`), o `null` per tornar a estar dret;
+- `face`: es gira (`L`, `R`, `U` o `D`);
+- `walk`: hi camina. Per defecte, s'espera que hi arribi. Amb `"wait": false` camina mentre es diu la línia.
+
+Els llocs (`at`, `walk`) són una cosa de la sala (es fa servir el seu punt d'arribada), un personatge o un
+punt `{ "x": …, "y": … }`.
+
+```json
+{ "who": "narrator", "text": "sala.infermeria.24", "stage": [
+  { "who": "bastida", "walk": { "x": 451, "y": 226 } },
+  { "who": "bastida", "at": { "x": 451, "y": 200 }, "anim": "Seu" }
+] }
+```
+
+- **Només és visual.** L'estat no en sap res. En acabar les línies, cada personatge torna a ser com diu
+  l'estat (`visibleIf`, `appearance`, `place`): qui marxa ha de tenir un `visibleIf` que l'amagui.
+- A l'`onEnter`, el que fa de cop la primera línia (tot menys `walk`) ja es veu abans que acabi el fos. Així
+  pots amagar algú que ha d'entrar més tard, o posar algú al seu lloc.
+- Les línies amb `stage` són una petita cinemàtica: els clics al món no la tallen, i la tecla de saltar
+  l'acaba de cop.
+- Qui parla s'atura. Si la protagonista ha de caminar i parlar, fes que camini abans (a la seva línia,
+  esperant) i no amb `"wait": false`.
+- `"stageAfter"` és el mateix, però en acabar de dir la línia. Serveix per a qui diu «me'n vaig» i després
+  marxa, sobretot si és l'última línia i no n'hi ha cap més on posar-ho.
+
 Els sons els genera `npm run sons` (`tools/sons.py`, sintetitzats). Per posar-hi un so fet a mà, deixa
 el fitxer a `game/audio/sfx/` i treu-lo de la llista `SONS` del generador. `npm run validate` avisa si una
 línia demana un so que no existeix, i `npm run benne:sync` els copia al projecte Benne.

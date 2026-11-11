@@ -1628,7 +1628,22 @@
               {
                 "who": "narrator",
                 "text": "sala.aeroport_terminal.intro1",
-                "sound": "megafonia"
+                "sound": "megafonia",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "at": {
+                      "x": 360,
+                      "y": 260
+                    },
+                    "visible": true,
+                    "face": "L"
+                  },
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "iri",
@@ -1656,7 +1671,20 @@
               },
               {
                 "who": "iri",
-                "text": "sala.aeroport_terminal.intro4"
+                "text": "sala.aeroport_terminal.intro4",
+                "stageAfter": [
+                  {
+                    "who": "iri",
+                    "walk": {
+                      "x": 628,
+                      "y": 258
+                    }
+                  },
+                  {
+                    "who": "iri",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "player",
@@ -2283,7 +2311,8 @@
                 "who": "player",
                 "text": "sala.bar_sala.intro2"
               }
-            ]
+            ],
+            "walkIn": "right"
           }
         ],
         "hotspots": {
@@ -3514,7 +3543,26 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.bcmu_despatx.intro1"
+                "text": "sala.bcmu_despatx.intro1",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "at": "porta",
+                    "face": "R"
+                  },
+                  {
+                    "who": "ballester",
+                    "at": {
+                      "x": 24,
+                      "y": 250
+                    },
+                    "face": "R"
+                  },
+                  {
+                    "who": "bonfill",
+                    "face": "U"
+                  }
+                ]
               },
               {
                 "who": "bonfill",
@@ -3522,11 +3570,34 @@
               },
               {
                 "who": "player",
-                "text": "sala.bcmu_despatx.intro2"
+                "text": "sala.bcmu_despatx.intro2",
+                "stage": [
+                  {
+                    "who": "ballester",
+                    "walk": {
+                      "x": 115,
+                      "y": 248
+                    },
+                    "wait": false
+                  },
+                  {
+                    "who": "vet",
+                    "walk": {
+                      "x": 250,
+                      "y": 261
+                    }
+                  }
+                ]
               },
               {
                 "who": "bonfill",
-                "text": "sala.bcmu_despatx.intro_d2"
+                "text": "sala.bcmu_despatx.intro_d2",
+                "stage": [
+                  {
+                    "who": "bonfill",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "bonfill",
@@ -6460,7 +6531,38 @@
             "lines": [
               {
                 "who": "bonfill",
-                "text": "sala.bcmu_seguretat.arribada1"
+                "text": "sala.bcmu_seguretat.arribada1",
+                "stage": [
+                  {
+                    "who": "bonfill",
+                    "at": "ascensor",
+                    "visible": true,
+                    "face": "R"
+                  },
+                  {
+                    "who": "vet",
+                    "at": {
+                      "x": 90,
+                      "y": 262
+                    },
+                    "face": "R"
+                  },
+                  {
+                    "who": "vet",
+                    "walk": {
+                      "x": 200,
+                      "y": 261
+                    },
+                    "wait": false
+                  },
+                  {
+                    "who": "bonfill",
+                    "walk": {
+                      "x": 330,
+                      "y": 250
+                    }
+                  }
+                ]
               },
               {
                 "who": "ballester",
@@ -6472,11 +6574,27 @@
               },
               {
                 "who": "narrator",
-                "text": "sala.bcmu_seguretat.arribada4"
+                "text": "sala.bcmu_seguretat.arribada4",
+                "stage": [
+                  {
+                    "who": "bonfill",
+                    "walk": "ascensor"
+                  },
+                  {
+                    "who": "bonfill",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "player",
-                "text": "sala.bcmu_seguretat.arribada5"
+                "text": "sala.bcmu_seguretat.arribada5",
+                "stage": [
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               }
             ]
           }
@@ -16016,7 +16134,17 @@
               },
               {
                 "who": "bonfill",
-                "text": "dlg.bonfill.acceptada2"
+                "text": "dlg.bonfill.acceptada2",
+                "stageAfter": [
+                  {
+                    "who": "bonfill",
+                    "walk": "ascensor"
+                  },
+                  {
+                    "who": "bonfill",
+                    "visible": false
+                  }
+                ]
               }
             ]
           },

@@ -49,7 +49,13 @@
       "lines": [
         {
           "who": "iri",
-          "text": "sala.infermeria.15"
+          "text": "sala.infermeria.15",
+          "stage": [
+            {
+              "who": "bastida",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "vet",
@@ -69,7 +75,20 @@
         },
         {
           "who": "narrator",
-          "text": "sala.infermeria.20"
+          "text": "sala.infermeria.20",
+          "stage": [
+            {
+              "who": "bastida",
+              "at": "porta",
+              "anim": null,
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "bastida",
@@ -85,7 +104,28 @@
         },
         {
           "who": "narrator",
-          "text": "sala.infermeria.24"
+          "text": "sala.infermeria.24",
+          "stage": [
+            {
+              "who": "bastida",
+              "walk": {
+                "x": 451,
+                "y": 226
+              }
+            },
+            {
+              "who": "bastida",
+              "at": {
+                "x": 451,
+                "y": 200
+              },
+              "anim": "Seu"
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "bastida",

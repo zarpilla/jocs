@@ -6,7 +6,7 @@
  */
 import { HotspotHandle, PropHandle, ambient, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
-import { Narrative, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
+import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
 import bundle from './content.generated.json';
 import mapping from './mapping.generated.json';
@@ -358,7 +358,7 @@ export function targetFromBenne(kind: 'prop' | 'hotspot' | 'character' | 'item',
 // ─── Girar-se cap a la cosa clicada ─────────────────────────────────────────
 
 type Point = { x: number; y: number };
-type RoomThing = { id: string; lookAtPoint?: Point; points?: Point[]; collider?: { points: Point[] } };
+type RoomThing = { id: string; lookAtPoint?: Point; walkToPoint?: Point; points?: Point[]; collider?: { points: Point[] } };
 type RoomFile = { id: string; hotspots: RoomThing[]; props: RoomThing[] };
 const roomFiles = Object.values(import.meta.glob<RoomFile>('../rooms/*/*.room.json', { eager: true, import: 'default' }));
 
@@ -387,6 +387,40 @@ export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', be
   const dy = to.y - from.y;
   if (Math.hypot(dx, dy) < 2) return null;
   return Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'L' : 'R') : dy < 0 ? 'U' : 'D';
+}
+
+// ─── Indicacions d'escena (`stage` a les línies) ─────────────────────────────
+
+type Actor = {
+  position: Point; visible: boolean; animation: string; stopAnimation(): void; moveTo(p: Point): void;
+  face: { now(d: 'L' | 'R' | 'U' | 'D'): unknown };
+};
+
+/** Qui fa una indicació: un personatge, o la protagonista que juga (`player`). */
+export function stageActor(who: string): Actor | undefined {
+  return (who === 'player' ? player : benneCharacter(who)) as unknown as Actor | undefined;
+}
+
+/** On és un lloc d'una indicació: un punt, o el punt d'arribada d'una cosa de la sala (o on és un personatge). */
+export function stagePoint(to: string | Point): Point | null {
+  if (typeof to === 'object') return to;
+  if (content.characters[to]) return stageActor(to)?.position ?? null;
+  const room = roomFiles.find((r) => r.id === toBenne('rooms', world.currentRoom() ?? ''));
+  const id = toBenne('hotspots', to);
+  const thing = room?.hotspots.find((t) => t.id === id) ?? room?.props.find((t) => t.id === id);
+  return thing?.walkToPoint ?? null;
+}
+
+/** El que una indicació fa de cop (tot menys caminar). */
+export function applyStageNow(cue: StageCue) {
+  const actor = stageActor(cue.who);
+  if (!actor) return;
+  const at = cue.at !== undefined ? stagePoint(cue.at) : null;
+  if (at) actor.moveTo(at);
+  if (cue.visible !== undefined) actor.visible = cue.visible;
+  if (cue.anim === null) actor.stopAnimation();
+  else if (cue.anim !== undefined && actor.animation !== cue.anim) actor.animation = cue.anim;
+  if (cue.face) actor.face.now(cue.face);
 }
 
 // ─── Coses condicionals ─────────────────────────────────────────────────────

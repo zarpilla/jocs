@@ -223,16 +223,19 @@ def person_seated(spec, talk=False):
 
 
 def gat(cid='diu'):
-    """En Diu: sempre assegut de cara (un gat no es gira per ningú)."""
+    """En Diu: assegut, sempre de cara (un gat no es gira per ningú); quan camina, de perfil."""
     idle = [personatges.diu(cua=k % 4, parpelleja=(k == 7)) for k in range(8)]
     talk = [personatges.diu(cua=0), personatges.diu(cua=1)]
+    walk = [personatges.diu_camina(k) for k in range(6)]
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', idle))
         tags.append((f'Talk{f}', talk))
-    anims = {t: {'loop': True, 'frameDuration': 300 if t.startswith('Idle') else 160} for t, _ in tags}
+        tags.append((f'Walk{f}', walk))
+    anims = {t: {'loop': True, 'frameDuration': 90 if t.startswith('Walk') else 300 if t.startswith('Idle') else 160}
+             for t, _ in tags}
     write(cid, tags, (personatges.GW, personatges.GH), {
-        'walkSpeed': 60, 'walkToPoint': {'x': 36, 'y': 25}, 'talkPoint': {'x': 13, 'y': -2}, 'feet': {'x': 13, 'y': 25},
+        'walkSpeed': 120, 'walkToPoint': {'x': 36, 'y': 25}, 'talkPoint': {'x': 13, 'y': -2}, 'feet': {'x': 13, 'y': 25},
         'collider': {'points': [{'x': 4, 'y': 0}, {'x': 28, 'y': 0}, {'x': 28, 'y': 25}, {'x': 4, 'y': 25}]},
         'animations': anims, 'defaultVerb': 'look',
     })

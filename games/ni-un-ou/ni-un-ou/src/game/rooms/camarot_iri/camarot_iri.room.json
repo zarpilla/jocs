@@ -260,6 +260,16 @@
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 10
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 268,
+      "y": 234,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
     }
   ]
 }

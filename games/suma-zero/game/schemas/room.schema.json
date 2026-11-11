@@ -526,6 +526,20 @@
         "sound": {
           "$ref": "#/definitions/SoundId",
           "description": "So que fa en dir la línia: un fitxer de `game/audio/sfx/` sense extensió. Pot dur variables entre claus, que es posen en acabar la interacció: `\"molla_{molla_tensio}\"` → `molla_3`."
+        },
+        "stage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StageCue"
+          },
+          "description": "Moviment abans de dir la línia (qui camina, s'asseu, apareix o marxa), per ordre. Només és visual: l'estat no en sap res, i en acabar les línies el motor torna a posar cada personatge com diu l'estat. A l'`onEnter`, el de la primera línia (menys el que camina) ja es fa abans que es vegi la sala."
+        },
+        "stageAfter": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StageCue"
+          },
+          "description": "Moviment en acabar de dir la línia (p. ex. qui diu «me'n vaig» i després marxa), com `stage`."
         }
       },
       "required": [
@@ -804,6 +818,88 @@
     "SoundId": {
       "type": "string",
       "description": "Nom d'un so de `game/audio/sfx/` (sense extensió), amb `{variable}` opcionals."
+    },
+    "StageCue": {
+      "type": "object",
+      "properties": {
+        "who": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Id"
+            },
+            {
+              "type": "string",
+              "const": "player"
+            }
+          ]
+        },
+        "at": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Id"
+            },
+            {
+              "$ref": "#/definitions/StagePoint"
+            }
+          ],
+          "description": "S'hi posa de cop."
+        },
+        "walk": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Id"
+            },
+            {
+              "$ref": "#/definitions/StagePoint"
+            }
+          ],
+          "description": "Hi camina."
+        },
+        "wait": {
+          "type": "boolean",
+          "description": "Amb `walk`: `false` = no s'espera que hi arribi (camina mentre es diu la línia). Per defecte, s'espera."
+        },
+        "face": {
+          "type": "string",
+          "enum": [
+            "L",
+            "R",
+            "U",
+            "D"
+          ]
+        },
+        "anim": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Animació del sprite (p. ex. `Seu`); `null` la treu (torna a estar dret)."
+        },
+        "visible": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "who"
+      ],
+      "additionalProperties": false,
+      "description": "Una indicació d'escena: `who` (un personatge, o `player` per a la protagonista que juga) i què fa, en aquest ordre: es posa a `at`, es mostra o s'amaga (`visible`), canvia d'animació (`anim`), es gira (`face`) i camina fins a `walk`. Els llocs són una cosa o un personatge de la sala (hi va al seu punt d'arribada) o un punt."
+    },
+    "StagePoint": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additionalProperties": false
     },
     "HotspotDef": {
       "type": "object",

@@ -539,7 +539,7 @@ export class Narrative {
     for (const line of i.lines ?? []) {
       if (!this.check(line.if)) continue;
       applyEffects(line.effects, this.effectCtx());
-      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: line.sound }) });
+      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: line.sound }), ...(line.stage && { stage: line.stage }), ...(line.stageAfter && { stageAfter: line.stageAfter }) });
     }
     applyEffects(i.effects, this.effectCtx());
     // Les variables del so es posen al final: «estira la molla» ha de sonar amb la tensió nova.
@@ -581,7 +581,7 @@ export class Narrative {
     for (const line of node.lines ?? []) {
       if (!this.check(line.if)) continue;
       applyEffects(line.effects, this.effectCtx());
-      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: this.soundName(line.sound) }) });
+      lines.push({ who: line.who, key: line.text, text: this.t(line.text), ...(line.sound && { sound: this.soundName(line.sound) }), ...(line.stage && { stage: line.stage }), ...(line.stageAfter && { stageAfter: line.stageAfter }) });
     }
 
     // Es marca després de les línies: dins el node, `seen` vol dir "en una visita anterior".

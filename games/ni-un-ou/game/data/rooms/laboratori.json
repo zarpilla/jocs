@@ -18,15 +18,41 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.laboratori.1"
+          "text": "sala.laboratori.1",
+          "stage": [
+            {
+              "who": "iri",
+              "at": "porta",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "player",
-          "text": "sala.laboratori.2"
+          "text": "sala.laboratori.2",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": {
+                "x": 230,
+                "y": 245
+              }
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "sala.laboratori.3"
+          "text": "sala.laboratori.3",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": "nota"
+            },
+            {
+              "who": "iri",
+              "face": "U"
+            }
+          ]
         }
       ]
     },
@@ -42,7 +68,22 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.laboratori.4"
+          "text": "sala.laboratori.4",
+          "stage": [
+            {
+              "who": "iri",
+              "at": "porta",
+              "face": "R"
+            },
+            {
+              "who": "iri",
+              "walk": "portatil"
+            },
+            {
+              "who": "iri",
+              "face": "U"
+            }
+          ]
         },
         {
           "who": "player",
@@ -70,7 +111,13 @@
         },
         {
           "who": "player",
-          "text": "sala.laboratori.11"
+          "text": "sala.laboratori.11",
+          "stage": [
+            {
+              "who": "iri",
+              "face": "D"
+            }
+          ]
         }
       ],
       "effects": [

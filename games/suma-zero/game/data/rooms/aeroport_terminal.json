@@ -11,7 +11,22 @@
         {
           "who": "narrator",
           "text": "sala.aeroport_terminal.intro1",
-          "sound": "megafonia"
+          "sound": "megafonia",
+          "stage": [
+            {
+              "who": "iri",
+              "at": {
+                "x": 360,
+                "y": 260
+              },
+              "visible": true,
+              "face": "L"
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "iri",
@@ -39,7 +54,20 @@
         },
         {
           "who": "iri",
-          "text": "sala.aeroport_terminal.intro4"
+          "text": "sala.aeroport_terminal.intro4",
+          "stageAfter": [
+            {
+              "who": "iri",
+              "walk": {
+                "x": 628,
+                "y": 258
+              }
+            },
+            {
+              "who": "iri",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "player",

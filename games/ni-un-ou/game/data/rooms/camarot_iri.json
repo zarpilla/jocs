@@ -18,7 +18,17 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.camarot_iri.1"
+          "text": "sala.camarot_iri.1",
+          "stage": [
+            {
+              "who": "iri",
+              "at": {
+                "x": 118,
+                "y": 242
+              },
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "narrator",
@@ -27,15 +37,46 @@
         },
         {
           "who": "narrator",
-          "text": "sala.camarot_iri.3"
+          "text": "sala.camarot_iri.3",
+          "stage": [
+            {
+              "who": "diu",
+              "walk": "porta",
+              "wait": false
+            }
+          ]
         },
         {
           "who": "player",
-          "text": "sala.camarot_iri.4"
+          "text": "sala.camarot_iri.4",
+          "stage": [
+            {
+              "who": "diu",
+              "walk": "porta"
+            },
+            {
+              "who": "diu",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "player",
-          "text": "sala.camarot_iri.5"
+          "text": "sala.camarot_iri.5",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": {
+                "x": 330,
+                "y": 242
+              }
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "diu_fora"
         }
       ]
     }
@@ -249,6 +290,22 @@
           ]
         }
       ]
+    },
+    "diu": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "flag": "diu_fora",
+            "is": false
+          }
+        ]
+      },
+      "interactions": []
     }
   },
   "decor": {

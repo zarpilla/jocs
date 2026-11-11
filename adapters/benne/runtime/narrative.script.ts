@@ -6,12 +6,12 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, ambient, display, fadeIn, fadeOut, player, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, cutscene, display, fadeIn, fadeOut, player, saves, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
-import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
+import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -23,10 +23,37 @@ import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
  */
 type Around = { before?: string; after?: string }
 
-/** Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). */
+/**
+ * Diu les línies una darrere l'altra (i fa sonar el so de cada una en començar-la). Si n'hi ha amb moviment
+ * (`stage`, `stageAfter`), és una petita cinemàtica: els clics al món no la tallen, i la tecla de saltar l'acaba de cop.
+ */
 export function playLines(lines: ResolvedLine[], around: Around = {}) {
+  if (lines.some((l) => l.stage || l.stageAfter)) {
+    cutscene(() => {
+      sayLines(lines, around)
+      // I en acabar, cadascú torna a l'animació que diu l'estat (p. ex. en Bastida, assegut).
+      applyAppearances()
+    })
+  } else sayLines(lines, around)
+}
+
+/** Les indicacions d'escena d'una línia, per ordre: el que és de cop, i caminar (esperant-hi o no). */
+function playStage(cues: StageCue[]) {
+  for (const cue of cues) {
+    applyStageNow(cue)
+    if (cue.walk === undefined) continue
+    const to = stagePoint(cue.walk)
+    const actor = stageActor(cue.who) as unknown as { walkTo: ((p: { x: number; y: number }) => void) & { now(p: { x: number; y: number }): unknown } } | undefined
+    if (!to || !actor) continue
+    if (cue.wait === false) actor.walkTo.now(to)
+    else actor.walkTo(to)
+  }
+}
+
+function sayLines(lines: ResolvedLine[], around: Around) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i]!
+    if (line.stage) playStage(line.stage)
     recordLine(line.who, line.text)
     if (line.sound) new SfxHandle(line.sound).play()
     if (line.who === 'title') {
@@ -51,6 +78,7 @@ export function playLines(lines: ResolvedLine[], around: Around = {}) {
         speaker.say(line.text)
       } else display(line.text)
     }
+    if (line.stageAfter) playStage(line.stageAfter)
   }
   // Qui s'ha de moure (`place`) hi camina ara, quan ja s'ha dit tot: els efectes s'apliquen abans de les
   // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
@@ -169,6 +197,8 @@ export function onRoomEntered() {
   const result = narrative.enterRoom(room)
   entrada = { room, result }
   if (result?.lines[0]?.who === 'title') stayBlackOnEnter()
+  // Com comença l'escena (qui hi ha, on, assegut o dret) ja es veu en sortir del fos: el moviment, després.
+  for (const cue of result?.lines[0]?.stage ?? []) applyStageNow(cue)
   // Entrada caminant: abans del fos, la protagonista es posa fora de la pantalla, a la mateixa alçada.
   if (result?.walkIn) {
     const lloc = player.position

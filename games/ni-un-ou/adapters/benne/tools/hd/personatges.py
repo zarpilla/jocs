@@ -615,6 +615,39 @@ def diu(cua=0, parpelleja=False):
     return fg.render()
 
 
+def diu_camina(k=0):
+    """Caminant de perfil, cap a l'esquerra (el motor el gira per anar a la dreta). Sis fotogrames, 30×26."""
+    fg = Fig(GW, GH)
+    fase = k * math.pi / 3
+    bob = 0.5 if k % 3 == 0 else 0
+    # potes: les del costat de lluny, més fosques i per darrere
+    for x0, ph, near in ((10, 0, False), (21, math.pi, False), (12, math.pi, True), (23, 0, True)):
+        sw = math.sin(fase + ph)
+        lift = max(0.0, math.cos(fase + ph)) * 1.2
+        fg.limb((x0, 18 + bob), (x0 - 2.2 * sw, 24.5 - lift), 1.4, 1.1, CAT, 2.6 if near else 1.6, cont=(0.2, 0.8))
+        fg.ell(x0 - 2.2 * sw - 0.4, 25 - lift, 1.3, 0.8, CAT_WHITE if near else CAT, 2.4 if near else 1.4, amp=1.0)
+    # cua alta, que es gronxa
+    tx = 29 + 0.8 * math.sin(fase)
+    fg.limb((25, 15 + bob), (28, 10 + bob), 1.4, 1.2, CAT, 2.2, cont=(0.2, 0.8))
+    fg.limb((28, 10 + bob), (tx, 5 + bob), 1.2, 1.0, CAT, 2.4, cont=(0.2, 0.8))
+    # cos tigrat, amb el ventre i el pit blancs
+    fg.ell(17, 16 + bob, 9.0, 4.6, CAT, 2.6, amp=1.6, cont=(0.2, 1.0),
+           lvlfn=lambda x, y: -0.8 if (int(x) + int(y) // 2) % 4 == 0 else 0)
+    fg.ell(16, 19 + bob, 6.0, 1.6, CAT_WHITE, 2.6, amp=1.2)
+    fg.ell(9, 17 + bob, 2.6, 3.0, CAT_WHITE, 2.8, amp=1.4)
+    # cap, de perfil
+    hy = 11 + bob
+    fg.ell(7, hy, 4.6, 4.2, CAT, 2.8, amp=1.6, cont=(0.2, 1.0),
+           lvlfn=lambda x, y: -0.8 if int(y) == int(hy) - 3 and int(x) % 3 == 0 else 0)
+    fg.poly([(5, hy - 3), (5, hy - 8), (8, hy - 4)], CAT, 2.6)
+    fg.poly([(8, hy - 3), (10, hy - 7), (11, hy - 2)], CAT, 2.2)
+    fg.ell(3.6, hy + 1.6, 2.0, 1.4, CAT_WHITE, 3.0, amp=1.0)
+    fg.ell(5.5, hy - 0.5, 1.2, 1.2, CAT_EYE, 2.6, amp=1.0)
+    fg.px(5, hy - 0.5, CAT, 0)
+    fg.px(2.5, hy + 1, (190, 110, 120), 0)
+    return fg.render()
+
+
 # ─── Sprites ───────────────────────────────────────────────────────────────
 
 def iri(facing='L', walk=None, talk=False, roba=''):

@@ -42,15 +42,51 @@
         },
         {
           "who": "narrator",
-          "text": "sala.coberta_popa.9"
+          "text": "sala.coberta_popa.9",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": "porta",
+              "wait": false
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "sala.coberta_popa.10"
+          "text": "sala.coberta_popa.10",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": "porta"
+            },
+            {
+              "who": "iri",
+              "visible": false
+            },
+            {
+              "who": "bastida",
+              "walk": "grua",
+              "wait": false
+            }
+          ]
         },
         {
           "who": "vet",
-          "text": "sala.coberta_popa.11"
+          "text": "sala.coberta_popa.11",
+          "stage": [
+            {
+              "who": "bastida",
+              "walk": "grua"
+            },
+            {
+              "who": "bastida",
+              "face": "U"
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "marcel",
@@ -66,11 +102,67 @@
         },
         {
           "who": "narrator",
-          "text": "sala.coberta_popa.15"
+          "text": "sala.coberta_popa.15",
+          "stage": [
+            {
+              "who": "capitana",
+              "walk": "porta",
+              "wait": false
+            },
+            {
+              "who": "tomas",
+              "walk": "porta",
+              "wait": false
+            },
+            {
+              "who": "nadia",
+              "walk": "proa",
+              "wait": false
+            },
+            {
+              "who": "marcel",
+              "walk": "proa",
+              "wait": false
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "sala.coberta_popa.16"
+          "text": "sala.coberta_popa.16",
+          "stage": [
+            {
+              "who": "nadia",
+              "walk": "proa"
+            },
+            {
+              "who": "nadia",
+              "visible": false
+            },
+            {
+              "who": "marcel",
+              "walk": "proa"
+            },
+            {
+              "who": "marcel",
+              "visible": false
+            },
+            {
+              "who": "capitana",
+              "walk": "porta"
+            },
+            {
+              "who": "capitana",
+              "visible": false
+            },
+            {
+              "who": "tomas",
+              "walk": "porta"
+            },
+            {
+              "who": "tomas",
+              "visible": false
+            }
+          ]
         },
         {
           "who": "iri",

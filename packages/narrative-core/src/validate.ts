@@ -1,4 +1,4 @@
-import type { Condition, Effect, GameContent, InteractionDef, LocaleTable, TextKey } from './types.js';
+import type { Condition, Effect, GameContent, InteractionDef, LocaleTable, StageCue, TextKey } from './types.js';
 
 export interface ValidationIssue {
   level: 'error' | 'warning';
@@ -123,6 +123,15 @@ export function validateContent(
     if (!options.sounds.some((s) => pattern.test(s))) err(where, `So desconegut "${name}": no hi és a game/audio/sfx/.`);
   };
 
+  const stage = (where: string, cues: StageCue[] | undefined) => {
+    cues?.forEach((c, n) => {
+      const w = `${where}[${n}]`;
+      if (c.who !== 'player' && !characters[c.who]) err(w, `Personatge desconegut "${c.who}".`);
+      if (c.wait !== undefined && c.walk === undefined) err(w, `"wait" només té sentit amb "walk".`);
+      if ([c.at, c.walk, c.face, c.anim, c.visible].every((v) => v === undefined)) err(w, `Indicació buida: no hi ha res a fer.`);
+    });
+  };
+
   const interactions = (where: string, list: InteractionDef[] | undefined, onEnter = false) => {
     (list ?? []).forEach((i, n) => {
       const w = `${where}[${n}]`;
@@ -145,6 +154,8 @@ export function validateContent(
         cond(`${w}.lines[${k}].if`, l.if);
         effects(`${w}.lines[${k}].effects`, l.effects);
         sound(`${w}.lines[${k}].sound`, l.sound);
+        stage(`${w}.lines[${k}].stage`, l.stage);
+        stage(`${w}.lines[${k}].stageAfter`, l.stageAfter);
       });
     });
   };
@@ -234,6 +245,8 @@ export function validateContent(
         cond(`${nw}.lines[${i}].if`, l.if);
         effects(`${nw}.lines[${i}].effects`, l.effects);
         sound(`${nw}.lines[${i}].sound`, l.sound);
+        stage(`${nw}.lines[${i}].stage`, l.stage);
+        stage(`${nw}.lines[${i}].stageAfter`, l.stageAfter);
       });
       const seen = new Set<string>();
       n.choices?.forEach((c, i) => {

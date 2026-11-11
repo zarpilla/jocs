@@ -1393,7 +1393,17 @@
         },
         {
           "who": "bonfill",
-          "text": "dlg.bonfill.acceptada2"
+          "text": "dlg.bonfill.acceptada2",
+          "stageAfter": [
+            {
+              "who": "bonfill",
+              "walk": "ascensor"
+            },
+            {
+              "who": "bonfill",
+              "visible": false
+            }
+          ]
         }
       ]
     },

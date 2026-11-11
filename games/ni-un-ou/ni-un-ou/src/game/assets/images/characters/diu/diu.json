@@ -629,6 +629,384 @@
         "h": 35
       },
       "duration": 100
+    },
+    "diu 30.aseprite": {
+      "frame": {
+        "x": 1200,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 31.aseprite": {
+      "frame": {
+        "x": 1240,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 32.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 33.aseprite": {
+      "frame": {
+        "x": 1320,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 34.aseprite": {
+      "frame": {
+        "x": 1360,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 35.aseprite": {
+      "frame": {
+        "x": 1400,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 36.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 37.aseprite": {
+      "frame": {
+        "x": 1480,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 38.aseprite": {
+      "frame": {
+        "x": 1520,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 39.aseprite": {
+      "frame": {
+        "x": 1560,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 40.aseprite": {
+      "frame": {
+        "x": 1600,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 41.aseprite": {
+      "frame": {
+        "x": 1640,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 42.aseprite": {
+      "frame": {
+        "x": 1680,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 43.aseprite": {
+      "frame": {
+        "x": 1720,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 44.aseprite": {
+      "frame": {
+        "x": 1760,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 45.aseprite": {
+      "frame": {
+        "x": 1800,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 46.aseprite": {
+      "frame": {
+        "x": 1840,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
+    },
+    "diu 47.aseprite": {
+      "frame": {
+        "x": 1880,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 40,
+        "h": 35
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -637,7 +1015,7 @@
     "image": "diu.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1200,
+      "w": 1920,
       "h": 35
     },
     "scale": "1",
@@ -657,30 +1035,51 @@
         "color": "#000000ff"
       },
       {
-        "name": "IdleL",
+        "name": "WalkD",
         "from": 10,
-        "to": 17,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleL",
+        "from": 16,
+        "to": 23,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "TalkL",
-        "from": 18,
-        "to": 19,
+        "from": 24,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "WalkL",
+        "from": 26,
+        "to": 31,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "IdleU",
-        "from": 20,
-        "to": 27,
+        "from": 32,
+        "to": 39,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "TalkU",
-        "from": 28,
-        "to": 29,
+        "from": 40,
+        "to": 41,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "WalkU",
+        "from": 42,
+        "to": 47,
         "direction": "forward",
         "color": "#000000ff"
       }

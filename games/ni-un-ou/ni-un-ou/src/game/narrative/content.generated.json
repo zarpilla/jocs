@@ -91,6 +91,7 @@
         "contracte_vist": false,
         "cops_marcel": false,
         "cops_sentits": false,
+        "diu_fora": false,
         "dubte_arengades": false,
         "dubte_cafe": false,
         "dubte_diners": false,
@@ -1223,7 +1224,17 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.camarot_iri.1"
+                "text": "sala.camarot_iri.1",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "at": {
+                      "x": 118,
+                      "y": 242
+                    },
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "narrator",
@@ -1232,15 +1243,46 @@
               },
               {
                 "who": "narrator",
-                "text": "sala.camarot_iri.3"
+                "text": "sala.camarot_iri.3",
+                "stage": [
+                  {
+                    "who": "diu",
+                    "walk": "porta",
+                    "wait": false
+                  }
+                ]
               },
               {
                 "who": "player",
-                "text": "sala.camarot_iri.4"
+                "text": "sala.camarot_iri.4",
+                "stage": [
+                  {
+                    "who": "diu",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "diu",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "player",
-                "text": "sala.camarot_iri.5"
+                "text": "sala.camarot_iri.5",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "walk": {
+                      "x": 330,
+                      "y": 242
+                    }
+                  }
+                ]
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "diu_fora"
               }
             ]
           }
@@ -1454,6 +1496,22 @@
                 ]
               }
             ]
+          },
+          "diu": {
+            "visibleIf": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 1
+                },
+                {
+                  "flag": "diu_fora",
+                  "is": false
+                }
+              ]
+            },
+            "interactions": []
           }
         },
         "decor": {
@@ -1518,15 +1576,51 @@
               },
               {
                 "who": "narrator",
-                "text": "sala.coberta_popa.9"
+                "text": "sala.coberta_popa.9",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "walk": "porta",
+                    "wait": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "sala.coberta_popa.10"
+                "text": "sala.coberta_popa.10",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "iri",
+                    "visible": false
+                  },
+                  {
+                    "who": "bastida",
+                    "walk": "grua",
+                    "wait": false
+                  }
+                ]
               },
               {
                 "who": "vet",
-                "text": "sala.coberta_popa.11"
+                "text": "sala.coberta_popa.11",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "walk": "grua"
+                  },
+                  {
+                    "who": "bastida",
+                    "face": "U"
+                  },
+                  {
+                    "who": "vet",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "marcel",
@@ -1542,11 +1636,67 @@
               },
               {
                 "who": "narrator",
-                "text": "sala.coberta_popa.15"
+                "text": "sala.coberta_popa.15",
+                "stage": [
+                  {
+                    "who": "capitana",
+                    "walk": "porta",
+                    "wait": false
+                  },
+                  {
+                    "who": "tomas",
+                    "walk": "porta",
+                    "wait": false
+                  },
+                  {
+                    "who": "nadia",
+                    "walk": "proa",
+                    "wait": false
+                  },
+                  {
+                    "who": "marcel",
+                    "walk": "proa",
+                    "wait": false
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "sala.coberta_popa.16"
+                "text": "sala.coberta_popa.16",
+                "stage": [
+                  {
+                    "who": "nadia",
+                    "walk": "proa"
+                  },
+                  {
+                    "who": "nadia",
+                    "visible": false
+                  },
+                  {
+                    "who": "marcel",
+                    "walk": "proa"
+                  },
+                  {
+                    "who": "marcel",
+                    "visible": false
+                  },
+                  {
+                    "who": "capitana",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "capitana",
+                    "visible": false
+                  },
+                  {
+                    "who": "tomas",
+                    "walk": "porta"
+                  },
+                  {
+                    "who": "tomas",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "iri",
@@ -3269,7 +3419,13 @@
             "lines": [
               {
                 "who": "iri",
-                "text": "sala.infermeria.15"
+                "text": "sala.infermeria.15",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "visible": false
+                  }
+                ]
               },
               {
                 "who": "vet",
@@ -3289,7 +3445,20 @@
               },
               {
                 "who": "narrator",
-                "text": "sala.infermeria.20"
+                "text": "sala.infermeria.20",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "at": "porta",
+                    "anim": null,
+                    "face": "R",
+                    "visible": true
+                  },
+                  {
+                    "who": "vet",
+                    "face": "L"
+                  }
+                ]
               },
               {
                 "who": "bastida",
@@ -3305,7 +3474,28 @@
               },
               {
                 "who": "narrator",
-                "text": "sala.infermeria.24"
+                "text": "sala.infermeria.24",
+                "stage": [
+                  {
+                    "who": "bastida",
+                    "walk": {
+                      "x": 451,
+                      "y": 226
+                    }
+                  },
+                  {
+                    "who": "bastida",
+                    "at": {
+                      "x": 451,
+                      "y": 200
+                    },
+                    "anim": "Seu"
+                  },
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "bastida",
@@ -4146,15 +4336,41 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.laboratori.1"
+                "text": "sala.laboratori.1",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "at": "porta",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "player",
-                "text": "sala.laboratori.2"
+                "text": "sala.laboratori.2",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "walk": {
+                      "x": 230,
+                      "y": 245
+                    }
+                  }
+                ]
               },
               {
                 "who": "narrator",
-                "text": "sala.laboratori.3"
+                "text": "sala.laboratori.3",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "walk": "nota"
+                  },
+                  {
+                    "who": "iri",
+                    "face": "U"
+                  }
+                ]
               }
             ]
           },
@@ -4170,7 +4386,22 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.laboratori.4"
+                "text": "sala.laboratori.4",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "at": "porta",
+                    "face": "R"
+                  },
+                  {
+                    "who": "iri",
+                    "walk": "portatil"
+                  },
+                  {
+                    "who": "iri",
+                    "face": "U"
+                  }
+                ]
               },
               {
                 "who": "player",
@@ -4198,7 +4429,13 @@
               },
               {
                 "who": "player",
-                "text": "sala.laboratori.11"
+                "text": "sala.laboratori.11",
+                "stage": [
+                  {
+                    "who": "iri",
+                    "face": "D"
+                  }
+                ]
               }
             ],
             "effects": [

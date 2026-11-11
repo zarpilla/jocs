@@ -10,7 +10,26 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.bcmu_despatx.intro1"
+          "text": "sala.bcmu_despatx.intro1",
+          "stage": [
+            {
+              "who": "vet",
+              "at": "porta",
+              "face": "R"
+            },
+            {
+              "who": "ballester",
+              "at": {
+                "x": 24,
+                "y": 250
+              },
+              "face": "R"
+            },
+            {
+              "who": "bonfill",
+              "face": "U"
+            }
+          ]
         },
         {
           "who": "bonfill",
@@ -18,11 +37,34 @@
         },
         {
           "who": "player",
-          "text": "sala.bcmu_despatx.intro2"
+          "text": "sala.bcmu_despatx.intro2",
+          "stage": [
+            {
+              "who": "ballester",
+              "walk": {
+                "x": 115,
+                "y": 248
+              },
+              "wait": false
+            },
+            {
+              "who": "vet",
+              "walk": {
+                "x": 250,
+                "y": 261
+              }
+            }
+          ]
         },
         {
           "who": "bonfill",
-          "text": "sala.bcmu_despatx.intro_d2"
+          "text": "sala.bcmu_despatx.intro_d2",
+          "stage": [
+            {
+              "who": "bonfill",
+              "face": "L"
+            }
+          ]
         },
         {
           "who": "bonfill",

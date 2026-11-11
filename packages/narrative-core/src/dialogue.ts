@@ -1,4 +1,4 @@
-import type { Id, SpeakerId, TextKey } from './types.js';
+import type { Id, SpeakerId, StageCue, TextKey } from './types.js';
 
 /** Una línia ja resolta: condicions avaluades, efectes aplicats, text traduït. */
 export interface ResolvedLine {
@@ -7,6 +7,10 @@ export interface ResolvedLine {
   text: string;
   /** So que ha de fer el motor en dir la línia (ja amb les variables posades). */
   sound?: string;
+  /** Moviment abans de dir-la (vegeu `DialogueLineDef.stage`). */
+  stage?: StageCue[];
+  /** Moviment en acabar de dir-la (vegeu `DialogueLineDef.stageAfter`). */
+  stageAfter?: StageCue[];
 }
 
 export interface ResolvedChoice {

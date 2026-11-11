@@ -229,6 +229,39 @@ export interface DialogueLineDef {
    * entre claus, que es posen en acabar la interacció: `"molla_{molla_tensio}"` → `molla_3`.
    */
   sound?: SoundId;
+  /**
+   * Moviment abans de dir la línia (qui camina, s'asseu, apareix o marxa), per ordre. Només és visual:
+   * l'estat no en sap res, i en acabar les línies el motor torna a posar cada personatge com diu l'estat.
+   * A l'`onEnter`, el de la primera línia (menys el que camina) ja es fa abans que es vegi la sala.
+   */
+  stage?: StageCue[];
+  /** Moviment en acabar de dir la línia (p. ex. qui diu «me'n vaig» i després marxa), com `stage`. */
+  stageAfter?: StageCue[];
+}
+
+/**
+ * Una indicació d'escena: `who` (un personatge, o `player` per a la protagonista que juga) i què fa,
+ * en aquest ordre: es posa a `at`, es mostra o s'amaga (`visible`), canvia d'animació (`anim`), es gira
+ * (`face`) i camina fins a `walk`. Els llocs són una cosa o un personatge de la sala (hi va al seu punt
+ * d'arribada) o un punt.
+ */
+export interface StageCue {
+  who: Id | 'player';
+  /** S'hi posa de cop. */
+  at?: Id | StagePoint;
+  /** Hi camina. */
+  walk?: Id | StagePoint;
+  /** Amb `walk`: `false` = no s'espera que hi arribi (camina mentre es diu la línia). Per defecte, s'espera. */
+  wait?: boolean;
+  face?: 'L' | 'R' | 'U' | 'D';
+  /** Animació del sprite (p. ex. `Seu`); `null` la treu (torna a estar dret). */
+  anim?: string | null;
+  visible?: boolean;
+}
+
+export interface StagePoint {
+  x: number;
+  y: number;
 }
 
 /** Nom d'un so de `game/audio/sfx/` (sense extensió), amb `{variable}` opcionals. */
