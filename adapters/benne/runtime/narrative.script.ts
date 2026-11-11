@@ -11,7 +11,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -37,11 +37,12 @@ export function playLines(lines: ResolvedLine[], around: Around = {}) {
   } else sayLines(lines, around)
 }
 
-/** Les indicacions d'escena d'una línia, per ordre: el que és de cop, i caminar (esperant-hi o no). */
+/** Les indicacions d'escena d'una línia, per ordre: el que és de cop, caminar (esperant-hi o no) i esperar (`hold`). */
 function playStage(cues: StageCue[]) {
   for (const cue of cues) {
     applyStageNow(cue)
-    if (cue.walk === undefined) continue
+    if (cue.hold) wait(cue.hold)
+    if (cue.walk === undefined || cue.who === undefined) continue
     const to = stagePoint(cue.walk)
     const actor = stageActor(cue.who) as unknown as { walkTo: ((p: { x: number; y: number }) => void) & { now(p: { x: number; y: number }): unknown } } | undefined
     if (!to || !actor) continue
@@ -173,8 +174,12 @@ export function onRoomEntered() {
   const portada = room === narrative.content.manifest.cover
   if (portada || narrative.content.rooms[room]?.cutscene) guis.verbs.hide()
   else guis.verbs.show()
-  if (portada) guis.portada.show()
-  else guis.portada.hide()
+  if (portada) {
+    guis.portada.show()
+    // «Comença» esvaeix el títol (vegeu `startFromCover`), i l'alfa queda desada: en tornar-hi, torna a ser-hi.
+    const titol = roomProp(room, 'titol')
+    if (titol) titol.alpha = 1
+  } else guis.portada.hide()
   applySwitchButton()
   // A una sala compartida hi entra qui juga, o l'altra si s'hi va per canviar de protagonista.
   const entering = takeEnteringProtagonist()
@@ -255,10 +260,17 @@ export function startFromCover() {
   untouchedNewGame = true
   statsNewGame()
   const manifest = narrative.content.manifest
+  // Si la portada té el títol en una capa a part (`titol`), els botons se'n van i el títol s'esvaeix: el pròleg
+  // comença al mateix pla (Ni un ou), i s'hi passa amb un tall net, sense fosa a negre.
+  const titol = manifest.cover ? roomProp(manifest.cover, 'titol') : undefined
+  if (titol) {
+    guis.portada.hide()
+    titol.fade(0, 1.5)
+  }
   const first = manifest.protagonists[0]!
   const desti = manifest.intro ?? manifest.start?.[first]?.room
   const sala = desti ? benneRoom(desti) : undefined
-  if (sala) sala.goTo()
+  if (sala) sala.goTo({ cut: !!titol })
 }
 
 /** Provar una situació (vegeu `prepareSituation`): hi posa la partida i hi va, amb qui juga. */

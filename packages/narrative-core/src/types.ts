@@ -260,9 +260,19 @@ export interface DialogueLineDef {
  * en aquest ordre: es posa a `at`, es mostra o s'amaga (`visible`), canvia d'animació (`anim`), es gira
  * (`face`) i camina fins a `walk`. Els llocs són una cosa o un personatge de la sala (hi va al seu punt
  * d'arribada) o un punt.
+ *
+ * En lloc de `who`, `prop`: una capa del decorat de la sala que no és al JSON del joc (l'art del motor, p. ex. la
+ * zòdiac del pròleg de Ni un ou), que només es mostra o s'amaga (`visible`) i canvia d'animació (`anim`).
  */
 export interface StageCue {
-  who: Id | 'player';
+  who?: Id | 'player';
+  /** Una capa del decorat (un prop del motor), en lloc d'un personatge. */
+  prop?: Id;
+  /**
+   * Després de la indicació, s'espera aquests segons sense text (p. ex. mentre dura l'animació d'un prop).
+   * En saltar la cinemàtica, no s'espera.
+   */
+  hold?: number;
   /** S'hi posa de cop. */
   at?: Id | StagePoint;
   /** Hi camina. */

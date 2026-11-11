@@ -385,7 +385,7 @@ function voicesIn(room: RoomDef, content: GameContent, joc: JocBenne): string[] 
   const who = new Set<string>();
   const line = (l: DialogueLineDef) => {
     who.add(l.who);
-    for (const c of [...(l.stage ?? []), ...(l.stageAfter ?? [])]) who.add(c.who);
+    for (const c of [...(l.stage ?? []), ...(l.stageAfter ?? [])]) if (c.who) who.add(c.who);
   };
   const scan = (list: InteractionDef[] = []) => {
     for (const i of list) {

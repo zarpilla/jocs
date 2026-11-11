@@ -237,8 +237,8 @@ Cinemàtica, sala `proleg_punt7`.
 > *(La zòdiac. Una llanterna. La Juana treu un pot de fang gris de l'aigua i el mira a contrallum. No s'hi mou
 > res.)*
 > JUANA: Ni un ou. *(Hi escriu amb retolador.)*
-> JUANA: Mostra set. *(Mira la plataforma, que té el logotip tapat amb cinta americana.)* Bona nit a tu també.
-> *(Als llums de la plataforma, una silueta la mira amb uns prismàtics.)*
+> JUANA: Mostra 7. *(Mira la plataforma, que té el logotip tapat amb cinta americana. Als llums de la plataforma,
+> una silueta la mira amb uns prismàtics.)* Bona nit a tu també.
 > *(A popa, en Bastida també la mira. Quan la Juana aixeca el pot, ell treu de la butxaca una cosa petita amb una
 > pantalla que fa llum, i escriu.)*
 > TÍTOL: Ni un ou

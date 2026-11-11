@@ -966,11 +966,15 @@ export class RoomHandle {
     return tryGetActiveGameStateManager()?.getLastRoom() === room.id;
   }
 
-  /** Starts the transition to this room and ends the handler (§4.4). */
-  goTo(): never {
+  /**
+   * Starts the transition to this room and ends the handler (§4.4). With `{ cut: true }` there is no fade
+   * and no black: a straight cut, for a room that continues the same shot (a title screen that becomes the
+   * intro).
+   */
+  goTo(options?: { cut?: boolean }): never {
     const orch = tryGetRoomTransitionOrchestrator();
     if (orch) {
-      void orch.changeTo(this.id, false);
+      void orch.changeTo(this.id, options?.cut ? 'cut' : false);
     } else {
       warnOnce('goTo:no-orchestrator', `rooms.${this.id}.goTo(): no room transitions here (preview?) — ignored.`);
     }

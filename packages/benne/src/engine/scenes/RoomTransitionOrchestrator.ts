@@ -44,7 +44,7 @@ export class RoomTransitionOrchestrator {
    * `changeTo` requested from those scripts. Started after the current run finishes so the
    * script queue is not awaiting the same transition that is awaiting the queue.
    */
-  private deferredReentrantChange: { id: string; immediate: boolean; freshStart: boolean } | null =
+  private deferredReentrantChange: { id: string; immediate: boolean | 'cut'; freshStart: boolean } | null =
     null;
   private readonly hooks: RoomTransitionHookRegistry;
 
@@ -82,7 +82,7 @@ export class RoomTransitionOrchestrator {
   /**
    * Main transition.
    */
-  async changeTo(targetRoomId: string, immediate: boolean): Promise<void> {
+  async changeTo(targetRoomId: string, immediate: boolean | 'cut'): Promise<void> {
     const id = String(targetRoomId);
     const freshStart = this.pendingFreshStart;
     this.pendingFreshStart = false;
@@ -96,7 +96,7 @@ export class RoomTransitionOrchestrator {
     return this.transitionChain;
   }
 
-  private enqueueChange(id: string, immediate: boolean, freshStart: boolean): void {
+  private enqueueChange(id: string, immediate: boolean | 'cut', freshStart: boolean): void {
     this.transitionChain = this.transitionChain
       .then(() =>
         this.runChangeToImpl(id, immediate, {
@@ -151,7 +151,7 @@ export class RoomTransitionOrchestrator {
 
   private async runChangeToImpl(
     targetRoomId: string,
-    immediate: boolean,
+    immediate: boolean | 'cut',
     options: {
       startKind: BenneRoomStartKind;
       forceRestart: boolean;
@@ -175,7 +175,8 @@ export class RoomTransitionOrchestrator {
 
   private async runChangeToImplBody(
     targetRoomId: string,
-    immediate: boolean,
+    /** `true`: to black at once, no fade in. `'cut'`: no black at all (the next room continues the same shot). */
+    immediate: boolean | 'cut',
     options: {
       startKind: BenneRoomStartKind;
       forceRestart: boolean;
@@ -194,7 +195,7 @@ export class RoomTransitionOrchestrator {
       return;
     }
 
-    this.lastChangeImmediate = immediate;
+    this.lastChangeImmediate = immediate !== false;
     setRoomTransitionInProgress(this.game, true);
     const manager = resolveGameStateManager(this.game);
     try {
@@ -231,7 +232,7 @@ export class RoomTransitionOrchestrator {
           BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
           BENNE_SCREEN_FADE_DEFAULT_COLOR,
         );
-      } else {
+      } else if (immediate !== 'cut') {
         fromScene.screenFadeLayer?.setAlpha(1);
       }
 

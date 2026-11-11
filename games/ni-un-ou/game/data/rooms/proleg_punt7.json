@@ -14,7 +14,13 @@
         },
         {
           "who": "narrator",
-          "text": "proleg.2"
+          "text": "proleg.2",
+          "stage": [
+            {
+              "prop": "zodiac",
+              "anim": "z_baixa"
+            }
+          ]
         },
         {
           "who": "juana",
@@ -22,11 +28,31 @@
         },
         {
           "who": "bastida",
-          "text": "proleg.4"
+          "text": "proleg.4",
+          "stageAfter": [
+            {
+              "prop": "zodiac",
+              "anim": "z_travessa",
+              "hold": 18
+            },
+            {
+              "who": "juana",
+              "at": {
+                "x": 468,
+                "y": 186
+              }
+            }
+          ]
         },
         {
           "who": "narrator",
-          "text": "proleg.5"
+          "text": "proleg.5",
+          "stage": [
+            {
+              "prop": "zodiac",
+              "anim": "z_mostra"
+            }
+          ]
         },
         {
           "who": "juana",
@@ -34,7 +60,13 @@
         },
         {
           "who": "narrator",
-          "text": "proleg.7"
+          "text": "proleg.7",
+          "stage": [
+            {
+              "prop": "zodiac",
+              "anim": "z_escriu"
+            }
+          ]
         },
         {
           "who": "juana",
@@ -45,16 +77,28 @@
           "text": "proleg.9"
         },
         {
+          "who": "narrator",
+          "text": "proleg.11",
+          "stage": [
+            {
+              "prop": "vigia",
+              "anim": "vigia_on"
+            }
+          ]
+        },
+        {
           "who": "juana",
           "text": "proleg.10"
         },
         {
           "who": "narrator",
-          "text": "proleg.11"
-        },
-        {
-          "who": "narrator",
-          "text": "proleg.12"
+          "text": "proleg.12",
+          "stage": [
+            {
+              "prop": "bastida_popa",
+              "anim": "bastida_escriu"
+            }
+          ]
         },
         {
           "who": "title",
