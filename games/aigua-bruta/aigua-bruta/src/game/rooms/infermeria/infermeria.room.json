@@ -317,7 +317,49 @@
       "animations": {
         "walkie": {
           "loop": true,
-          "frameDuration": 800
+          "frameDuration": 150
+        }
+      }
+    },
+    {
+      "id": "ulls_dia_mar",
+      "tag": "ulls_dia_mar",
+      "animations": {
+        "ulls_dia_mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cadeneta",
+      "tag": "cadeneta",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cadeneta": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 220
         }
       }
     }

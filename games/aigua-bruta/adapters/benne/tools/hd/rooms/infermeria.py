@@ -6,6 +6,8 @@ La infermeria de l'Arenga: petita i ordenada, pintada de blanc, amb el linòleum
     un bastidor fix, amb el llum d'examen plegat a sobre; és FRONT: qui hi seu (en Bastida a l'Escena 3, la Juana a la 7)
     hi queda darrere;
   - el marbre amb la pica, el mirall i la cafetera dolenta (el pilot vermell encès), i una bombona d'oxigen.
+ANIMS: `cafe` (vapor i gota), `walkie` (el llum de càrrega que respira), `cadeneta` (la tapa del tub de veu es gronxa
+amb el balanceig), `mar` (l'ull de bou, de nit) i `ulls_dia_mar` (el mateix de dia, damunt del decorat `ulls_dia`).
 """
 import math
 
@@ -13,7 +15,7 @@ from hd.pix import Canvas, Light, W, H, hr, mix
 from hd.rooms.arenga import CAB, DARK, WHITEP, REDP, YELL, BRASS, SEAG, FLOOR_Y, BOTTOM, box, rrect, bolt, hpipe, vpipe, glow
 from hd.rooms.principal import (CREAM, TEAK, DOORP, CEIL_H, wall, ceiling, lamp, lamp_glow, lino, shine, unmask,
                                 foot_shadow, floor_shadow, in_door, door_frame, sill, leaf, plaque, porthole, wear,
-                                voice_tube, day_porthole)
+                                voice_tube, day_porthole, NIGHT, DAYSKY, DAYSEA)
 from hd.rooms.comu import _diff, text, text_width
 
 LAMPS = (112, 296, 430)
@@ -407,9 +409,17 @@ PROPS = {'sense_travesser': sense_travesser, 'mantes': mantes,
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
 
-def _base():
+VOICE = (62, 76)                      # la boca del tub de veu (voice_tube(cv, 62, 76))
+PORT = (178, 54, 9)                   # l'ull de bou: centre i radi del vidre
+
+
+def _base(day=False):
     cv = Canvas(light=LIGHT)
     bg(cv)
+    if day:
+        top = Canvas(light=LIGHT, transparent=True)
+        PROPS['ulls_dia'](top)
+        cv.img.alpha_composite(top.img)
     return cv
 
 
@@ -447,22 +457,114 @@ def _frames_cafe():
 
 
 def _frames_walkie():
-    """El walkie es carrega: el llum verd fa pampallugues."""
+    """El walkie es carrega: el llum verd respira (s'encén i s'apaga a poc a poc)."""
     base = _base()
     x, y = FITXES[2] + 5, DESK[1] - 7
     frames = []
-    for on in (True, False):
+    for i in range(12):
+        k = 0.5 - 0.5 * math.cos(i / 12 * 2 * math.pi)                    # 0 → 1 → 0
         cv = Canvas(light=LIGHT, img=base.img.copy())
-        if on:
-            cv.glow(x, y, 3, (90, 255, 120), 0.6)
-        else:
-            cv.flat(x, y, (30, 80, 44))
+        cv.flat(x, y, mix((30, 80, 44), (170, 255, 180), k))
+        if k > 0.15:
+            cv.glow(x, y, 6, (90, 255, 120), 0.55 * k)
         frames.append(_diff(cv.img, base.img))
     return frames
 
 
+_VOICE_TUBE = voice_tube                                                 # l'original (bg el pot canviar)
+
+
+def _voice_tube_bare(cv, cx, y, top=0, label=True):
+    """El tub de veu sense la cadeneta ni la tapa (les dibuixa l'animació)."""
+    keep = cv.put
+
+    def put(xx, yy, ramp, lvl, lit=1.0):
+        if not (cx + 3 <= xx <= cx + 9 and y + 11 <= yy <= y + 22):
+            keep(xx, yy, ramp, lvl, lit)
+    cv.put = put
+    try:
+        _VOICE_TUBE(cv, cx, y, top, label)
+    finally:
+        del cv.put
+
+
+def _chain(cv, cx, y, ang):
+    """La cadeneta i la tapa, penjades de (cx + 4, y + 11) i girades `ang` graus (+ cap a la dreta)."""
+    px, py = cx + 4.5, y + 11
+    a = math.radians(ang)
+
+    def at(dx, dy):                                                      # gira al voltant del ganxo
+        return px + dx * math.cos(a) - dy * math.sin(a), py + dx * math.sin(a) + dy * math.cos(a)
+    for i in range(7):
+        x, yy = at((i % 2) - 0.5, i)
+        cv.put(round(x), round(yy), BRASS, 3.0)
+    tx, ty = at(1.5, 9)
+    cv.disc(tx, ty, 3, 2, BRASS, 3.8)
+
+
+def _frames_cadeneta():
+    """La tapa del tub de veu es gronxa amb el balanceig (com les defenses del pallol, més poc)."""
+    base = _base()
+    cx, y = VOICE
+    clean = Canvas(light=LIGHT)
+    keep = globals()['voice_tube']
+    globals()['voice_tube'] = lambda c, *a, **k: _voice_tube_bare(c, *a, **k)
+    try:
+        bg(clean)
+    finally:
+        globals()['voice_tube'] = keep
+    frames = []
+    for i in range(32):
+        cv = Canvas(light=LIGHT, img=clean.img.copy())
+        _chain(cv, cx, y, 9 * math.sin(i / 32 * 2 * math.pi))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _glass(cv, t, day):
+    """El vidre de l'ull de bou (com principal.night_sea / day_sea), amb `t` (0..1 del bucle): l'horitzó puja i
+    baixa amb el balanceig i les ratlles d'onada corren."""
+    cx, cy, r = PORT
+    ph = t * 2 * math.pi
+    hz = cy + r * 0.15 + math.sin(ph) * 1.4
+    for y in range(cy - r, cy + r + 1):
+        for x in range(cx - r, cx + r + 1):
+            if math.hypot(x - cx, y - cy) > r:
+                continue
+            crest = math.sin(x * 0.7 + y * 2.3 - ph * 2)
+            if day:
+                if y < hz:
+                    cl = hr(int((x + 28) // 5), int(y // 2), 4)
+                    cv.put(x, y, DAYSKY, 4.2 + (y - (cy - r)) / (r * 2.2) * 1.4 - (0.7 if cl > 0.75 else 0), lit=0.08)
+                else:
+                    cv.put(x, y, DAYSEA, 4.4 - (y - hz) / (r * 0.9) + (1.2 if crest > 0.8 else 0), lit=0.08)
+            else:
+                if y < hz:
+                    cl = hr(int(x // 4), int(y // 2), 4)
+                    cv.put(x, y, NIGHT, 2.6 + (hz - y) / (r * 2) + (1.2 if cl > 0.72 else 0), lit=0.1)
+                else:
+                    cv.put(x, y, NIGHT, 2.4 - (y - hz) / (r * 1.6) + (3.0 if crest > 0.75 else 0), lit=0.1)
+    shine = (236, 240, 244) if day else (200, 210, 230)                 # el reflex del vidre
+    for i in range(-r // 2, r // 3):
+        x, y = cx - r // 3 + i, cy - r // 2 - i // 2
+        cv.flat(x, y, mix(cv.get(x, y), shine, 0.35))
+
+
+def _frames_port(day):
+    base = _base(day).img
+    frames = []
+    for i in range(12):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        _glass(cv, i / 12, day)
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
 ANIMS = {'cafe': {'frames': _frames_cafe, 'frameDuration': 90},
-         'walkie': {'frames': _frames_walkie, 'frameDuration': 800}}
+         'walkie': {'frames': _frames_walkie, 'frameDuration': 150},
+         'cadeneta': {'frames': _frames_cadeneta, 'frameDuration': 140},
+         'mar': {'frames': lambda: _frames_port(False), 'frameDuration': 220},
+         'ulls_dia_mar': {'frames': lambda: _frames_port(True), 'frameDuration': 220}}
 
 # Qui seu a la llitera (la Juana, en Bastida) hi queda darrere; el travesser que falta i les mantes van a la
 # mateixa capa (són damunt del que tapa).
