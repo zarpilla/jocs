@@ -17,13 +17,25 @@ import { jocAdapterDir, type JocBenne } from './joc-benne.js';
 
 /** Art provisional dels personatges del joc (games/<joc>/adapters/benne/placeholder-art/). */
 const placeholderArt = (...parts: string[]) => join(jocAdapterDir(), 'placeholder-art', ...parts);
-/** Resolució del joc. La disposició automàtica de les sales noves es va escriure en mides de 352×198 (Ferro-9) i s'escala amb `s()`. */
-export const W = 480;
-export const H = 270;
-const S = W / 352;
+/**
+ * Resolució del joc: la de game-config.json del projecte (480×270 si no en té; Aigua bruta és a 640×360). La fixa
+ * writeBenneContent. La disposició automàtica de les sales noves es va escriure en mides de 352×198 (Ferro-9) i
+ * s'escala amb `s()`.
+ */
+export let W = 480;
+export let H = 270;
+let S = W / 352;
 const s = (v: number) => Math.round(v * S);
 /** Per sota d'aquesta línia hi ha la barra de verbs. */
-const FLOOR_BOTTOM = s(148);
+let FLOOR_BOTTOM = s(148);
+
+function setResolution(config: Json) {
+  const r = config.resolution as { width?: number; height?: number } | undefined;
+  W = r?.width ?? 480;
+  H = r?.height ?? 270;
+  S = W / 352;
+  FLOOR_BOTTOM = s(148);
+}
 
 export type Json = Record<string, unknown>;
 /** Peticions d'art provisional per a draw_placeholders.py (fora d'assets/, perquè Benne no les llegeixi). */
@@ -82,6 +94,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   // ── game-config.json ────────────────────────────────────────────────────
   const configPath = join(gameDir, 'game-config.json');
   const config = readJson(configPath);
+  setResolution(config);
   config.name = content.manifest.id;
   config.startingPlayerCharacter = first;
   config.startingRoomId = content.manifest.cover ?? content.manifest.intro ?? content.manifest.start?.[first]?.room ?? config.startingRoomId;
@@ -283,7 +296,7 @@ canviaBtn.onClick(() => switchProtagonist())
 
 // ─── Portada: «Continua», «Comença» i «Carrega» ─────────────────────────────
 
-/** Els botons de la portada (coordenades de pantalla, 480×270). Els dibuixa draw_placeholders.py. */
+/** Els botons de la portada (coordenades de pantalla a 480×270; s'escalen a la resolució del joc). Els dibuixa draw_placeholders.py. */
 const COVER_BUTTONS = [
   // Només es veu si hi ha una partida desada sola (vegeu portada.gui.ts).
   { id: 'continua', x: 165, y: 168, width: 150, height: 22 },
@@ -295,6 +308,12 @@ const COVER_BUTTONS = [
  * Una GUI `portada` amb els botons de la portada, si encara no hi és. Es mostra només a la sala
  * `cover` (ho fa el runtime). Retorna si cal dibuixar-ne l'art.
  */
+/** Una caixa de la disposició de 480×270 a la resolució del joc. */
+function scaled480<T extends { x: number; y: number; width: number; height: number }>(b: T): T {
+  const k = W / 480;
+  return { ...b, x: Math.round(b.x * k), y: Math.round(b.y * k), width: Math.round(b.width * k), height: Math.round(b.height * k) };
+}
+
 function addCoverGui(gameDir: string, joc: JocBenne): boolean {
   const dir = join(gameDir, 'guis/portada');
   const jsonPath = join(dir, 'portada.gui.json');
@@ -304,14 +323,14 @@ function addCoverGui(gameDir: string, joc: JocBenne): boolean {
     writeJson(jsonPath, {
       id: 'portada', name: 'Portada', description: 'Botons de la portada (adapters/benne).', visible: false,
       display: { aseprite: true },
-      controls: COVER_BUTTONS.map((b) => ({
+      controls: COVER_BUTTONS.map((b) => scaled480(b)).map((b) => ({
         type: 'button', ...b, backgroundAnchor: 'screen', text: b.id,
         font: joc.fonts.negreta, fontSize: 8, textColor: '#10908e', textAlign: 'center', textOffsetX: 0, textOffsetY: 0,
         textColorStates: { hover: '#28c074' }, textOutline: { enabled: true, color: '#132243', sides: 'bottomRight' },
         backgroundTag: `${b.id}`, states: { hover: `${b.id}-hover` },
       } as Record<string, unknown>)).concat([{
         // La versió del joc, a la cantonada de baix a la dreta (el text el posa portada.gui.ts).
-        type: 'text', id: 'version', x: 474, y: 259, text: '', font: joc.fonts.regular, fontSize: 8,
+        type: 'text', id: 'version', x: W - 6, y: H - 11, text: '', font: joc.fonts.regular, fontSize: 8,
         color: '#10908e', align: 'right', textOutline: { enabled: true, color: '#132243', sides: 'bottomRight' },
       }]),
     });
