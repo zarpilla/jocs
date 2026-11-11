@@ -14,6 +14,7 @@ import math
 from hd.pix import Canvas, Light, W, H, hr, mix, GOLD
 from hd.rooms.arenga import REDP
 from hd.rooms.comu import _diff, text
+from hd.rooms.arenga import YELL
 from hd.rooms.exterior import smooth, HULLN, REDH, STEELX, CABX, ORANGEB, ROPE, WINDOW, GLOW_WARM
 from hd640.rooms.coberta_popa import (night_sky, day_sky, night_sea, day_sea, bulwark, deck_floor, bitts, coil,
                                       wt_door, deck_lamp, gull)
@@ -159,16 +160,37 @@ def windlass(cv):
             cv.put(x, y, CHAIN, 0.6)
         else:
             cv.rect(x - 2, y, x + 2, y, CHAIN, 2.4)
-    # el fre: volant vermell de cara, damunt
-    cv.rect(259, 147, 262, 165, STEELX, 3.0)
-    cv.vline(259, 147, 165, STEELX, 4.2)
-    for a in range(0, 360, 6):
-        cv.put(261 + round(math.cos(math.radians(a)) * 8), 144 + round(math.sin(math.radians(a)) * 8), REDH,
-               5.4 - (0.8 if 0 < a < 180 else 0))
-    for a in (0, 90, 180, 270):
-        for t in range(1, 8):
-            cv.put(261 + round(math.cos(math.radians(a)) * t), 144 + round(math.sin(math.radians(a)) * t), REDH, 4.2)
-    cv.disc(261, 144, 1.6, 1.6, STEELX, 4.6)
+    # el fre: volant groc de seguretat, de cara, damunt de la caixa (per sota de la regala, que és vermella)
+    cv.rect(259, 160, 262, 165, STEELX, 3.0)
+    cv.vline(259, 160, 165, STEELX, 4.2)
+    brake_wheel(cv, 261, 155, 7, YELL)
+
+
+def brake_wheel(cv, cx, cy, r, ramp):
+    """Volant de fre de cara: vora fosca, llanta de 2 px amb llum a dalt a l'esquerra, tres radis, boixa i maneta."""
+    dark = [(10, 8, 6), (20, 16, 10)]
+    for a in range(0, 360, 4):                                         # la vora fosca, que el separa del fons
+        ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+        cv.put(cx + round(ca * (r + 1)), cy + round(sa * (r + 1)), dark, 0.6, lit=0)
+    for k in range(3):                                                 # tres radis, de la boixa a la llanta
+        a = math.radians(-90 + 30 + k * 120)
+        for t in range(1, r):
+            cv.put(cx + round(math.cos(a) * t), cy + round(math.sin(a) * t), ramp, 2.6 - t * 0.1)
+    for a in range(0, 360, 3):                                         # la llanta, 2 px
+        ca, sa = math.cos(math.radians(a)), math.sin(math.radians(a))
+        lit = -(ca * 0.7 + sa * 0.7)                                   # llum de dalt a l'esquerra
+        cv.put(cx + round(ca * r), cy + round(sa * r), ramp, 3.6 + lit * 1.4)
+        cv.put(cx + round(ca * (r - 1)), cy + round(sa * (r - 1)), ramp, 2.6 + lit * 1.0)
+    hr_ = max(1.2, r / 4)                                              # la boixa
+    cv.disc(cx, cy, hr_ + 0.6, hr_ + 0.6, dark, 0.8, lit=0)
+    cv.disc(cx, cy, hr_, hr_, ramp, lambda nx, ny: 3.4 - nx - ny)
+    a = math.radians(-20)                                              # la maneta, a la llanta
+    mx, my = cx + round(math.cos(a) * r), cy + round(math.sin(a) * r)
+    cv.put(mx + 1, my - 1, dark, 0.6, lit=0)
+    cv.put(mx + 1, my, ramp, 4.4)
+    if r >= 7:
+        cv.put(mx + 2, my - 1, ramp, 4.0)
+        cv.put(mx + 2, my, ramp, 2.4)
 
 
 def chain_run(cv):
