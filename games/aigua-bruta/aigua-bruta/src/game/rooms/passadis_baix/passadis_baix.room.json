@@ -217,6 +217,34 @@
       "zIndex": 0,
       "visible": true,
       "alpha": 1
+    },
+    {
+      "id": "llum",
+      "tag": "llum",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 80
+        }
+      }
     }
   ],
   "characters": [

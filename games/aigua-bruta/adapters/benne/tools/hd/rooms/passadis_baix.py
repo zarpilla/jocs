@@ -8,7 +8,7 @@ import math
 from hd.pix import Canvas, Light, W, H, hr, mix, B4, WALNUT
 from hd.rooms.arenga import (WALL, ENG, DECK, CAB, DARK, WHITEP, YELL, REDP, SEAG, FUEL, BRASS, WARM, FLOOR_Y,
                              BOTTOM, box, rrect, bolt, hpipe, vpipe, glow)
-from hd.rooms.comu import text, text_width
+from hd.rooms.comu import _diff, text, text_width
 from hd.rooms import sota
 from hd.rooms.camarot_iri import PAINT
 
@@ -250,6 +250,63 @@ def bg(cv):
 
 
 PROPS = {}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_llum():
+    """El llum de gàbia de la dreta fa mal contacte: de tant en tant baixa dues vegades i torna."""
+    base = _base()
+    lx, ly = LAMPS[1], 26
+    dims = {38: 0.55, 39: 0.25, 41: 0.6, 42: 0.35}              # fotograma → quant s'apaga
+    frames = []
+    for i in range(48):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        k = dims.get(i, 0)
+        if k:
+            cv.darken(lx - 120, 0, lx + 120, FLOOR_Y + 30,
+                      lambda x, y: k * max(0.0, 1 - math.hypot(x - lx, (y - ly) * 1.1) / 130), dither=False)
+            cv.darken(lx - 8, ly - 4, lx + 8, ly + 12, min(0.85, k * 1.4), dither=False)
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _frames_gota():
+    """Una gota de condensació que es forma sota el tub de gasoil, cau a terra i hi fa una rodoneta."""
+    base = _base()
+    gx, top, ground = 292, 50, 158
+    seq = [('f', 0)] * 3 + [('f', 1)] * 3 + [('f', 2)] * 2
+    y, v = top + 3, 1.0
+    while y < ground:
+        seq.append(('c', int(y)))
+        y, v = y + v, v + 1.6
+    seq += [('r', 1), ('r', 2), ('r', 3), ('r', 4)] + [('n', 0)] * 40
+    frames = []
+    for kind, v in seq:
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        if kind == 'f':
+            for k in range(v + 1):
+                cv.flat(gx, top + k, mix(cv.get(gx, top + k), (150, 190, 185), 0.7))
+        elif kind == 'c':
+            cv.flat(gx, v, (170, 205, 200))
+            cv.flat(gx, v + 1, mix(cv.get(gx, v + 1), (130, 170, 165), 0.6))
+        elif kind == 'r':
+            for a in range(0, 360, 24):
+                x = gx + round(math.cos(math.radians(a)) * v * 1.8)
+                yy = ground + round(math.sin(math.radians(a)) * v * 0.45)
+                cv.flat(x, yy, mix(cv.get(x, yy), (150, 190, 185), 0.55 - v * 0.08))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'llum': {'frames': _frames_llum, 'frameDuration': 110},
+         'gota': {'frames': _frames_gota, 'frameDuration': 80}}
 
 GEOMETRIA = {
     'things': {
