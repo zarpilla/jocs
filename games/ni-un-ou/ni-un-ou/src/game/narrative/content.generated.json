@@ -18171,6 +18171,14 @@
               {
                 "who": "vet",
                 "text": "dlg.radio.trucada.14"
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.radio.trucada.15"
+              },
+              {
+                "who": "iri",
+                "text": "dlg.radio.trucada.16"
               }
             ],
             "effects": [
@@ -21505,6 +21513,8 @@
       "dlg.radio.trucada.12": "I aquesta soc jo.",
       "dlg.radio.trucada.13": "Ets un error de càlcul.",
       "dlg.radio.trucada.14": "Soc el millor error de càlcul que tindran mai.",
+      "dlg.radio.trucada.15": "Passos a la porta. En Bastida, amb la revisió feta, s'atura a mirar.",
+      "dlg.radio.trucada.16": "La tapa del panell de l'antena, encara oberta. L'he de tancar ara mateix.",
       "dlg.portatil.opt.esperanca": "Esperança",
       "dlg.portatil.opt.pili": "Pili65",
       "dlg.portatil.opt.pilar": "Pilar",
@@ -22081,8 +22091,8 @@
       "pista.iri_provar.2": "Usa la ràdio.",
       "pista.iri_provar.3": "Usa la ràdio.",
       "pista.iri_tancar.1": "Com si no hagués passat res.",
-      "pista.iri_tancar.2": "Tanca el panell de la ràdio.",
-      "pista.iri_tancar.3": "Amb l'Iri, tanca el panell de la ràdio.",
+      "pista.iri_tancar.2": "Tanca la tapa del panell de l'antena, a la paret, a la dreta de la ràdio.",
+      "pista.iri_tancar.3": "Amb l'Iri, fes «Tanca» sobre la tapa del panell d'ANTENA / PERILL, a la paret a la dreta de la ràdio.",
       "pista.iri_postal.1": "La Juana va dir a la Vet que la contrasenya és el nom de la seva mare. Què hi ha al laboratori que en parli?",
       "pista.iri_postal.2": "Els llibres de la Juana. Algú hi guarda records.",
       "pista.iri_postal.3": "Mira el llibre de peixos del laboratori.",
@@ -22692,7 +22702,7 @@
       "sala.sala_radio.panell.19": "Primer he de treure el tram tallat.",
       "sala.sala_radio.panell.20": "Primer, obrir el panell.",
       "sala.sala_radio.panell.21": "Tancat. Com si no hagués passat res.",
-      "sala.sala_radio.panell.22": "A la porta, en Bastida, amb la revisió feta. Mira el panell. Mira l'Iri.",
+      "sala.sala_radio.panell.22": "En Bastida mira el panell. Mira l'Iri.",
       "sala.sala_radio.panell.23": "Ja l'has arreglada?",
       "sala.sala_radio.panell.24": "Una pausa.",
       "sala.sala_radio.panell.25": "Ets massa bona, noia.",
@@ -22872,7 +22882,7 @@
       "sala.cuina.munta.5": "Buit no l'envio. En Tomàs s'enfada.",
       "sala.cabina_capitana.contracte.4": "És de la Capitana. I la Capitana és a dos pams.",
       "sala.pont.terminal.25": "Paquet 2 de 3. Amb el SAI.",
-      "sala.sala_radio.bastida.1": "En Bastida, a la porta, amb la revisió feta. Mira el panell obert.",
+      "sala.sala_radio.bastida.1": "En Bastida, a la porta. Mira el panell obert.",
       "sala.sala_radio.bastida.2": "Tu acaba, noia. Tanca-ho, que no hi entri humitat.",
       "sala.taller.cisalla.7": "La cisalla. Per a una brida, sobra.",
       "sala.taller.cisalla.8": "Ara no em cal.",
