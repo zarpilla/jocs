@@ -308,6 +308,21 @@ export function enterNarrativeRoom() {
   if (sala) sala.goTo()
 }
 
+/**
+ * Tanca el diàleg i fa el que s'hagi demanat (canvi de protagonista, de sala, final). A Benne, `dialog.end()`
+ * acaba el handler (llança): sense aturar-ho, el que ve després no es faria mai i, si el diàleg acabava amb
+ * un títol, la pantalla es quedaria a negre.
+ */
+function endDialog(dialog: DialogHandle) {
+  try {
+    dialog.end()
+  } catch (e) {
+    // Les maneres d'acabar de Benne són símbols; un error de debò, no.
+    if (typeof e !== 'symbol') throw e
+  }
+  followUp()
+}
+
 function refreshOptions(dialog: DialogHandle, choices: ResolvedChoice[]) {
   const available = new Set(choices.map((c) => optionName(c.node, c.id)));
   for (const [name, option] of Object.entries(dialog.options)) {
@@ -323,10 +338,7 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
   const step = narrative.startDialogue(id)
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
-  if (step.ended) {
-    dialog.end()
-    followUp()
-  }
+  if (step.ended) endDialog(dialog)
 }
 
 /** Des de cada `options.x.onChoose` (generat). */
@@ -335,10 +347,7 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
   const step = narrative.choose(id, choice, { node })
   refreshOptions(dialog, step.choices)
   playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
-  if (step.ended) {
-    dialog.end()
-    followUp()
-  }
+  if (step.ended) endDialog(dialog)
 }
 
 /** Botó o verb de "pista": cada vegada una mica més explícita. */
