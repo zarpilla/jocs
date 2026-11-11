@@ -186,7 +186,10 @@
       "id": "portatil",
       "tag": "portatil",
       "animations": {
-        "portatil": {}
+        "portatil": {
+          "loop": true,
+          "frameDuration": 265
+        }
       },
       "zIndex": 3,
       "visible": true,
@@ -283,7 +286,7 @@
       "animations": {
         "nevera": {
           "loop": true,
-          "frameDuration": 900
+          "frameDuration": 250
         }
       },
       "scriptName": "neveraAnim",
@@ -327,6 +330,48 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "ulls_dia_mar",
+      "tag": "ulls_dia_mar",
+      "animations": {
+        "ulls_dia_mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "bombolla",
+      "tag": "bombolla",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bombolla": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
     }
   ],
   "characters": [

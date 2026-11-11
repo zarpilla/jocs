@@ -383,6 +383,22 @@
           }
         ]
       }
+    },
+    "ulls_dia_mar": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
     }
   }
 }

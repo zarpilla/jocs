@@ -9,6 +9,10 @@ Laboratori de l'Arenga (coberta principal): un laboratori de biologia marina pet
     i la pica petita del racó;
   - el decorat `remenat`: calaixos mal tancats, papers girats, un pot tombat.
 
+ANIMS: `mar` (l'ull de bou de nit: balanceig i ratlles d'onada), `ulls_dia_mar` (el mateix de dia, va amb el decorat
+del mateix nom, damunt d'`ulls_dia`), `portatil` (el prop: el cursor de la contrasenya i el llum de repòs),
+`nevera` (el visor de la temperatura i el pilot) i `bombolla` (un pot de la gradeta amb una mostra viva).
+
 També hi ha les peces comunes de la coberta principal (paret crema, sostre, llums, porta estanca, ull de bou,
 linòleum), que fa servir la cabina de la Capitana.
 """
@@ -20,7 +24,7 @@ from hd.rooms.arenga import (box, rrect, bolt, hpipe, vpipe, glow, CAB, DARK, WH
 
 from hd.rooms.principal import (CREAM, TEAK, LINO, DOORP, wall, ceiling as _ceiling, lamp as _lamp,
                                lamp_glow as _lamp_glow, lino, shine, foot_shadow, door_frame, sill,
-                               porthole as _porthole, day_porthole)
+                               porthole as _porthole, day_porthole, NIGHT, DAYSKY, DAYSEA)
 
 # ─── Rampes (les de paret, fusta i terra vénen de principal.py, com la resta de la coberta) ─────
 LINO_RED = LINO
@@ -457,22 +461,125 @@ PROPS = {'portatil': portatil, 'nota': nota, 'remenat': remenat,
          'ulls_dia': lambda cv: day_porthole(cv, 84, 76, 11)}            # Escenes 2 i 3: de dia
 
 
-# ─── Animació: el llum verd de la nevera respira ────────────────
+# ─── Animacions ────────────────────────────────────────────────────────────
+from hd.rooms.comu import _diff  # noqa: E402
 
-def _frames():
-    from hd.rooms.comu import _diff
-    base = Canvas(light=LIGHT)
-    bg(base)
+PORT = (84, 76, 11)              # l'ull de bou: centre i radi del vidre
+
+
+def _glass(cv, t, day):
+    """El vidre de l'ull de bou (com principal.night_sea / day_sea) amb `t` (0..1 del bucle): l'horitzó puja i baixa
+    amb el balanceig i les ratlles d'onada corren (el mateix que a la cabina de la Capitana)."""
+    cx, cy, r = PORT
+    ph = t * 2 * math.pi
+    hz = cy + r * 0.15 + math.sin(ph) * 1.6
+    for y in range(cy - r, cy + r + 1):
+        for x in range(cx - r, cx + r + 1):
+            if math.hypot(x - cx, y - cy) > r:
+                continue
+            crest = math.sin(x * 0.7 + y * 2.3 - ph * 2)
+            if day:
+                if y < hz:
+                    cl = hr(int(x // 5), int(y // 2), 0)
+                    cv.put(x, y, DAYSKY, 4.2 + (y - (cy - r)) / (r * 2.2) * 1.4 - (0.7 if cl > 0.75 else 0), lit=0.08)
+                else:
+                    cv.put(x, y, DAYSEA, 4.4 - (y - hz) / (r * 0.9) + (1.2 if crest > 0.8 else 0), lit=0.08)
+            else:
+                if y < hz:
+                    cl = hr(int(x // 4), int(y // 2), 0)
+                    cv.put(x, y, NIGHT, 2.0 + (hz - y) / (r * 2) + (0.8 if cl > 0.72 else 0), lit=0.1)
+                else:
+                    cv.put(x, y, NIGHT, 1.6 - (y - hz) / (r * 1.6) + (1.6 if crest > 0.85 else 0), lit=0.1)
+    shine = (236, 240, 244) if day else (200, 210, 230)                 # el reflex del vidre
+    for i in range(-r // 2, r // 3):
+        x, y = cx - r // 3 + i, cy - r // 2 - i // 2
+        cv.flat(x, y, mix(cv.get(x, y), shine, 0.35))
+
+
+def _base(day=False):
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    if day:
+        top = Canvas(light=LIGHT, transparent=True)
+        PROPS['ulls_dia'](top)
+        cv.img.alpha_composite(top.img)
+    return cv.img
+
+
+def _frames_port(day):
+    base = _base(day)
     frames = []
-    for i in range(2):
-        cv = Canvas(light=LIGHT, img=base.img.copy())
-        if i == 0:                                                   # el llum verd de la nevera respira
-            cv.glow(368, 58, 5, (90, 255, 120), 0.5)
-        frames.append(_diff(cv.img, base.img))
+    for i in range(12):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        _glass(cv, i / 12, day)
+        frames.append(_diff(cv.img, base))
     return frames
 
 
-ANIMS = {'nevera': {'frames': _frames, 'frameDuration': 900}}
+def _frames_portatil():
+    """El prop sencer a cada fotograma: el cursor del camp de la contrasenya parpelleja i el llum de repòs respira."""
+    frames = []
+    for i in range(8):
+        cv = Canvas(light=LIGHT, transparent=True)
+        laptop(cv)
+        if i < 4:
+            cv.rect(222, 93, 222, 95, [(30, 50, 80)], 0, lit=0)
+        led = 0.5 + 0.5 * math.cos(i / 8 * 2 * math.pi)
+        cv.flat(236, 111, mix((20, 60, 34), (90, 255, 120), led))
+        frames.append(cv.img)
+    return frames
+
+
+DIGITS = {'3': ['111', '011', '001', '111'], '4': ['101', '111', '001', '001'], 'C': ['111', '100', '100', '111']}
+
+
+def _frames_nevera():
+    """El visor de la nevera: 4 °C que de tant en tant baixa a 3 (el compressor) i el pilot verd que parpelleja."""
+    base = _base()
+    x0, y0 = 362, 52
+    frames = []
+    for i in range(16):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        cv.rect(x0 + 51, y0 + 3, x0 + 65, y0 + 8, [(4, 14, 8), (8, 30, 16)], 1.0, lit=0)
+        temp = '3' if 9 <= i <= 12 else '4'
+        for dx, ch in ((53, temp), (59, 'C')):
+            for j, row in enumerate(DIGITS[ch]):
+                for m, bit in enumerate(row):
+                    if bit == '1':
+                        cv.put(x0 + dx + m, y0 + 4 + j, GREENS, 3.6, lit=0)
+        cv.flat(x0 + 57, y0 + 4, GREENS[3])                           # el grau, entre la xifra i la C
+        glow(cv, x0 + 58, y0 + 5, 8, (90, 255, 140), 0.45)
+        if i % 8 < 1:                                                # el pilot, un cop cada dues voltes del visor
+            cv.flat(x0 + 6, y0 + 6, (210, 255, 220))
+            glow(cv, x0 + 6, y0 + 6, 4, (90, 255, 120), 0.6)
+        else:
+            cv.flat(x0 + 6, y0 + 6, (40, 140, 70))
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+def _frames_bombolla():
+    """Un pot de la gradeta amb una mostra viva: una bombolla puja pel líquid i esclata a la superfície."""
+    base = _base()
+    frames = []
+    path = [(279, 103), (279, 102), (280, 101), (280, 100), (279, 99)]
+    for i in range(14):
+        cv = Canvas(light=LIGHT, img=base.copy())
+        if i < len(path):
+            x, y = path[i]
+            cv.flat(x, y, mix(cv.get(x, y)[:3], (220, 236, 230), 0.7))
+        elif i == len(path):
+            cv.flat(279, 98, (200, 220, 214))
+            cv.flat(281, 98, (200, 220, 214))
+        frames.append(_diff(cv.img, base))
+    return frames
+
+
+ANIMS = {'mar': {'frames': lambda: _frames_port(False), 'frameDuration': 220},
+         'ulls_dia_mar': {'frames': lambda: _frames_port(True), 'frameDuration': 220},
+         'portatil': {'frames': _frames_portatil, 'frameDuration': 265},
+         'nevera': {'frames': _frames_nevera, 'frameDuration': 250},
+         'bombolla': {'frames': _frames_bombolla, 'frameDuration': 140}}
 
 
 # ─── Geometria ──────────────────────────────────────────────────────────────
