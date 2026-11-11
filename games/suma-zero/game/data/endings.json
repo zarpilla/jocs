@@ -164,6 +164,10 @@
       },
       {
         "who": "narrator",
+        "text": "final.recompte.3"
+      },
+      {
+        "who": "narrator",
         "text": "final.post1",
         "sound": "mossegada",
         "room": "postcredits"
@@ -367,6 +371,30 @@
       },
       {
         "who": "narrator",
+        "text": "final.recompte.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.pista",
+        "if": {
+          "var": "aliats",
+          "op": "<",
+          "value": 3
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.pista_repartir",
+        "if": {
+          "not": {
+            "var": "aliats",
+            "op": "<",
+            "value": 3
+          }
+        }
+      },
+      {
+        "who": "narrator",
         "text": "final.post1",
         "sound": "mossegada",
         "room": "postcredits"
@@ -560,6 +588,14 @@
       {
         "who": "narrator",
         "text": "final.credits2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.pista"
       },
       {
         "who": "narrator",

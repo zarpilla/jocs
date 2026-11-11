@@ -727,6 +727,20 @@
               "amount": 1
             }
           ]
+        },
+        {
+          "who": "narrator",
+          "text": "aliat.bastida",
+          "if": {
+            "all": [
+              {
+                "flag": "rele_ara"
+              },
+              {
+                "flag": "bastida_veritat"
+              }
+            ]
+          }
         }
       ],
       "goto": "dubte"

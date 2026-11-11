@@ -939,15 +939,19 @@
             {
               "who": "player",
               "text": "sala.bcmu_escombraries.panell.horari4"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "aliat_neta"
             },
             {
-              "addVar": "aliats",
-              "amount": 1
+              "who": "narrator",
+              "text": "aliat.neta",
+              "effects": [
+                {
+                  "setFlag": "aliat_neta"
+                },
+                {
+                  "addVar": "aliats",
+                  "amount": 1
+                }
+              ]
             }
           ]
         },

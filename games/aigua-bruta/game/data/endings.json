@@ -432,6 +432,10 @@
       },
       {
         "who": "narrator",
+        "text": "final.recompte.3"
+      },
+      {
+        "who": "narrator",
         "text": "final.58",
         "room": "postcredits"
       },
@@ -901,6 +905,30 @@
       },
       {
         "who": "narrator",
+        "text": "final.recompte.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.pista",
+        "if": {
+          "var": "aliats",
+          "op": "<",
+          "value": 3
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.pista_nadia",
+        "if": {
+          "not": {
+            "var": "aliats",
+            "op": "<",
+            "value": 3
+          }
+        }
+      },
+      {
+        "who": "narrator",
         "text": "final.58",
         "room": "postcredits"
       },
@@ -1360,6 +1388,14 @@
       {
         "who": "narrator",
         "text": "final.57"
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.recompte.pista"
       },
       {
         "who": "narrator",

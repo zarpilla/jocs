@@ -10418,6 +10418,14 @@
                     "text": "sala.sala_radio.panell.30"
                   },
                   {
+                    "who": "vet",
+                    "text": "sala.sala_radio.aliats.1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.sala_radio.aliats.2"
+                  },
+                  {
                     "who": "title",
                     "text": "esc.falten10"
                   },
@@ -13702,6 +13710,10 @@
           },
           {
             "who": "narrator",
+            "text": "final.recompte.3"
+          },
+          {
+            "who": "narrator",
             "text": "final.58",
             "room": "postcredits"
           },
@@ -14171,6 +14183,30 @@
           },
           {
             "who": "narrator",
+            "text": "final.recompte.2"
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.pista",
+            "if": {
+              "var": "aliats",
+              "op": "<",
+              "value": 3
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.pista_nadia",
+            "if": {
+              "not": {
+                "var": "aliats",
+                "op": "<",
+                "value": 3
+              }
+            }
+          },
+          {
+            "who": "narrator",
             "text": "final.58",
             "room": "postcredits"
           },
@@ -14630,6 +14666,14 @@
           {
             "who": "narrator",
             "text": "final.57"
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.1"
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.pista"
           },
           {
             "who": "narrator",
@@ -15384,6 +15428,20 @@
                     "amount": 1
                   }
                 ]
+              },
+              {
+                "who": "narrator",
+                "text": "aliat.bastida",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "rele_ara"
+                    },
+                    {
+                      "flag": "bastida_veritat"
+                    }
+                  ]
+                }
               }
             ],
             "goto": "dubte"
@@ -15810,6 +15868,10 @@
               {
                 "who": "capitana",
                 "text": "dlg.capitana.registre.5"
+              },
+              {
+                "who": "narrator",
+                "text": "aliat.capitana"
               }
             ],
             "effects": [
@@ -16746,6 +16808,10 @@
               {
                 "who": "marcel",
                 "text": "dlg.marcel.aliat.1"
+              },
+              {
+                "who": "narrator",
+                "text": "aliat.marcel"
               }
             ],
             "effects": [
@@ -17165,6 +17231,10 @@
               {
                 "who": "nadia",
                 "text": "dlg.nadia.aliada.4"
+              },
+              {
+                "who": "narrator",
+                "text": "aliat.nadia"
               }
             ],
             "effects": [
@@ -21445,6 +21515,10 @@
       "dlg.bastida1.arriba.10": "Aquesta vàlvula té quaranta anys. Els volants cauen.",
       "dlg.bastida1.arriba.11": "Demà en parlem amb la Capitana. Ves a dormir.",
       "dlg.bastida1.arriba.12": "En Diu, assegut damunt d'un tub calent, mira en Bastida molta estona.",
+      "aliat.capitana": "La Capitana està amb vosaltres. Aliats: {aliats} de 4.",
+      "aliat.nadia": "La Nadia està amb vosaltres. Aliats: {aliats} de 4.",
+      "aliat.marcel": "En Marcel està amb vosaltres. Aliats: {aliats} de 4.",
+      "aliat.bastida": "En Bastida està amb vosaltres. Aliats: {aliats} de 4.",
       "dlg.walkie.esc1_vet.7": "Iri? Tinc una barra. Un travesser de la llitera.",
       "dlg.walkie.esc1_vet.8": "Perfecte. Al muntacàrregues de la cuina, i avall.",
       "dlg.walkie.esc1_vet.9": "Iri? Ha servit, la barra?",
@@ -21549,6 +21623,11 @@
       "final.final_primera.titol": "Primera plana",
       "final.final_testimonis.titol": "Testimonis",
       "final.final_pagina4.titol": "Pàgina 4",
+      "final.recompte.1": "Final 1 de 3 · Aliats: {aliats} de 4",
+      "final.recompte.2": "Final 2 de 3 · Aliats: {aliats} de 4",
+      "final.recompte.3": "Final 3 de 3 · Aliats: {aliats} de 4",
+      "final.recompte.pista": "Amb més gent al costat, potser hauria acabat d'una altra manera.",
+      "final.recompte.pista_nadia": "Teníeu gent al costat. Però faltava qui ho expliqués amb la seva firma.",
       "joc.titol": "Aigua bruta",
       "esc.vuit": "Vuit del matí.",
       "esc.deu": "Deu del vespre.",
@@ -22627,7 +22706,9 @@
       "sala.taller.cisalla.8": "Ara no em cal.",
       "sala.taller.cisalla.9": "La cisalla.",
       "sala.cabina_capitana.contracte.5": "És de la Capitana. No el toco.",
-      "sala.coberta_popa.horitzo.2": "Els llums de popa, l'estela blanca i, a l'horitzó, cap a on anem, res."
+      "sala.coberta_popa.horitzo.2": "Els llums de popa, l'estela blanca i, a l'horitzó, cap a on anem, res.",
+      "sala.sala_radio.aliats.1": "Doncs soles no en sortirem. Ens cal gent de bord al nostre costat: com més en siguin, més lluny arribarà la història.",
+      "sala.sala_radio.aliats.2": "Gent de bord. Que no tingui una cisalla."
     }
   },
   "locale": "ca",

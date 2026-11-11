@@ -2056,6 +2056,14 @@
                 "text": "sala.avio.vestit3"
               },
               {
+                "who": "vet",
+                "text": "sala.avio.aliats1"
+              },
+              {
+                "who": "iri",
+                "text": "sala.avio.aliats2"
+              },
+              {
                 "who": "narrator",
                 "text": "sala.avio.5"
               },
@@ -4856,15 +4864,19 @@
                   {
                     "who": "player",
                     "text": "sala.bcmu_escombraries.panell.horari4"
-                  }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "aliat_neta"
                   },
                   {
-                    "addVar": "aliats",
-                    "amount": 1
+                    "who": "narrator",
+                    "text": "aliat.neta",
+                    "effects": [
+                      {
+                        "setFlag": "aliat_neta"
+                      },
+                      {
+                        "addVar": "aliats",
+                        "amount": 1
+                      }
+                    ]
                   }
                 ]
               },
@@ -13343,6 +13355,10 @@
           },
           {
             "who": "narrator",
+            "text": "final.recompte.3"
+          },
+          {
+            "who": "narrator",
             "text": "final.post1",
             "sound": "mossegada",
             "room": "postcredits"
@@ -13546,6 +13562,30 @@
           },
           {
             "who": "narrator",
+            "text": "final.recompte.2"
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.pista",
+            "if": {
+              "var": "aliats",
+              "op": "<",
+              "value": 3
+            }
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.pista_repartir",
+            "if": {
+              "not": {
+                "var": "aliats",
+                "op": "<",
+                "value": 3
+              }
+            }
+          },
+          {
+            "who": "narrator",
             "text": "final.post1",
             "sound": "mossegada",
             "room": "postcredits"
@@ -13739,6 +13779,14 @@
           {
             "who": "narrator",
             "text": "final.credits2"
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.1"
+          },
+          {
+            "who": "narrator",
+            "text": "final.recompte.pista"
           },
           {
             "who": "narrator",
@@ -14421,6 +14469,10 @@
               {
                 "who": "ballester",
                 "text": "dlg.ballester.veritat3"
+              },
+              {
+                "who": "narrator",
+                "text": "aliat.ballester"
               }
             ]
           },
@@ -17552,6 +17604,10 @@
               {
                 "who": "pons",
                 "text": "dlg.pons.escoltar3"
+              },
+              {
+                "who": "narrator",
+                "text": "aliat.pons"
               }
             ],
             "effects": [
@@ -17933,6 +17989,10 @@
               {
                 "who": "rius",
                 "text": "dlg.rius.arreglar9"
+              },
+              {
+                "who": "narrator",
+                "text": "aliat.rius"
               }
             ]
           },
@@ -19028,6 +19088,9 @@
       "dlg.recepcionista.altra": "No confonc mai ningú. És la meva feina, i no me la paguen prou per equivocar-me.",
       "dlg.recepcionista.adeu2": "Que vagi bé. I insisteixi amb la font.",
       "dlg.aturada.opt.repartir": "Repartir-ho tot a parts iguals, pel compte de les nòmines.",
+      "aliat.rius": "La Rius és de la colla. Aliats: {aliats} de 4.",
+      "aliat.pons": "La senyora Pons és de la colla. Aliats: {aliats} de 4.",
+      "aliat.ballester": "En Ballester és de la colla. Aliats: {aliats} de 4.",
       "final.bar1": "Una setmana després. Bar La Propina.",
       "final.tele1": "A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.",
       "final.tele3": "Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.",
@@ -19059,6 +19122,11 @@
       "final.base.titol": "Final · Ni caos ni paradís",
       "final.credits1": "Una aventura gràfica feta amb males herbes - malaherbasoft.cat",
       "final.credits2": "Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.",
+      "final.recompte.1": "Final 1 de 3 · Aliats: {aliats} de 4",
+      "final.recompte.2": "Final 2 de 3 · Aliats: {aliats} de 4",
+      "final.recompte.3": "Final 3 de 3 · Aliats: {aliats} de 4",
+      "final.recompte.pista": "Amb més gent al costat, potser hauria acabat d'una altra manera.",
+      "final.recompte.pista_repartir": "Teníeu la colla. I si els diners haguessin anat a tothom, a parts iguals?",
       "acte.1": "Acte 1 · El pla és un desastre",
       "acte.2": "Acte 2 · La seu del mal",
       "acte.fi1": "Fi de l'Acte 1",
@@ -20241,7 +20309,10 @@
       "sala.bcmu_contenidor.carrer.no": "Sense l'Iri, no me'n vaig enlloc.",
       "sala.final_bar.nom": "La Propina, una setmana després",
       "sala.postcredits.nom": "El pis, de nit",
-      "sala.credits.nom": "Crèdits"
+      "sala.credits.nom": "Crèdits",
+      "aliat.neta": "NETA-3 és de la colla. Aliats: {aliats} de 4.",
+      "sala.avio.aliats1": "Al banc hi deu haver més gent com la Rius. Si en posem prou al nostre costat, això acabarà molt millor.",
+      "sala.avio.aliats2": "Ho apunto. A la llista de coses que dius abans d'un desastre."
     }
   },
   "locale": "ca",
