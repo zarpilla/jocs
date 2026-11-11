@@ -9,7 +9,7 @@ const dir = path.dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8')) as {
   name?: string;
   version?: string;
-  benne?: { displayName?: string; description?: string; url?: string };
+  benne?: { displayName?: string; description?: string; url?: string; colors?: Record<string, string> };
 };
 const slug = (pkg.name || 'benne-game').replace(/[^a-zA-Z0-9-]+/g, '-').replace(/^-|-$/g, '');
 const displayName = pkg.benne?.displayName?.trim() || slug.split('-').map(
@@ -41,6 +41,17 @@ function pageMeta(): string {
     }
   }
   return tags.map((t) => `\n    ${t}`).join('');
+}
+
+/**
+ * Els colors de la pantalla de càrrega (`colors` al bloc `benne` del package.json: fons, text, nom, nom2, barra,
+ * vora), com a variables CSS. Sense, es queden els d'index.html.
+ */
+function loadingColors(): string {
+  const vars = Object.entries(pkg.benne?.colors ?? {})
+    .filter(([k, v]) => /^[a-z0-9]+$/.test(k) && /^#[0-9a-fA-F]{3,8}$/.test(v))
+    .map(([k, v]) => `--${k}: ${v};`).join(' ');
+  return vars ? `<style>:root { ${vars} }</style>` : '';
 }
 
 /**
@@ -83,6 +94,7 @@ export default defineConfig({
       const meta = path.basename(ctx.filename) === 'index.html' ? pageMeta() : '';
       return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
         .replace('<!--benne:nom-->', attr(displayName))                  // la pantalla de càrrega
+        .replace('<!--benne:colors-->', loadingColors())
         // Sense icona pròpia del joc, es queda el favicon de Mala Herba Soft (public/favicon.*)
         .replace(/<link rel="icon"[^>]*\/>(\s*<link rel="icon"[^>]*\/>)*/, (m) => iconExists
           ? '<link rel="icon" type="image/png" href="./src/game/assets/images/icon.png" />'

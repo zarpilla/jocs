@@ -7,7 +7,15 @@
   "benne": {
     "displayName": "Ferro-9",
     "description": "L'Iri fa el torn de nit en una fàbrica; la Vet és presonera en una presó en òrbita. Una finestra de fase les connecta. Aventura gràfica en català, gratuïta.",
-    "url": "https://malaherbasoft.cat/ferro-9/"
+    "url": "https://malaherbasoft.cat/ferro-9/",
+    "colors": {
+      "fons": "#060713",
+      "text": "#82a2c8",
+      "nom": "#afc9e3",
+      "nom2": "#e08e46",
+      "barra": "#e08e46",
+      "vora": "#374e74"
+    }
   },
   "scripts": {
     "motor": "node ../../../packages/benne/copia.mjs",

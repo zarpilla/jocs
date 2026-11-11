@@ -40,7 +40,7 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 - la descripció i la targeta per compartir l'enllaç (`description` i `url` al bloc `benne` del `package.json`
   del joc, i `public/portada.png`), i `lang="ca"`.
 - una pantalla de càrrega a `index.html` (el nom del joc i una barra que segueix el loader de la `BootScene`;
-  vegeu `src/engine/bootLoadingScreen.ts`).
+  vegeu `src/engine/bootLoadingScreen.ts`), amb els colors de cada joc (`colors` al bloc `benne` del `package.json`).
 
 `adapters/benne/patches/motor-benne.patch` en recull una part. Si mai s'actualitza el motor des d'un
 Benne nou (`npm run benne:create -- --from <benne> --motor`), revisa `git diff packages/benne` i torna a

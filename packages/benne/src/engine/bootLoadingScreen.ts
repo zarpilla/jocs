@@ -11,7 +11,8 @@ export function setBootLoadingProgress(value: number): void {
   const el = element();
   if (!el) return;
   el.classList.add('amb-progres');
-  el.style.setProperty('--progres', String(Math.max(0, Math.min(1, value))));
+  // A blocs sencers (n'hi ha 16, vegeu .barra a index.html)
+  el.style.setProperty('--progres', String(Math.floor(Math.max(0, Math.min(1, value)) * 16) / 16));
 }
 
 export function hideBootLoadingScreen(): void {
