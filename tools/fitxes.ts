@@ -29,12 +29,12 @@ md += `amb **aquest id** (o un id del tipus \`<sala>-hotspot-<id>\`). Les que te
 
 const byProtagonist = new Map<string, string[]>();
 for (const [id, r] of Object.entries(content.rooms)) {
-  const who = r.protagonist ?? '—';
+  const who = r.protagonist ?? (r.protagonists ? '*' : '—');
   byProtagonist.set(who, [...(byProtagonist.get(who) ?? []), id]);
 }
 
 for (const [who, rooms] of byProtagonist) {
-  md += `## ${who === '—' ? 'Sense protagonista' : t.t(content.characters[who]!.name)}\n\n`;
+  md += `## ${who === '—' ? 'Sense protagonista' : who === '*' ? 'Compartides' : t.t(content.characters[who]!.name)}\n\n`;
   for (const id of rooms) {
     const r = content.rooms[id]!;
     md += `### ${t.t(r.name)} · \`${id}\`\n\n| Id | Nom | Tipus | Apareix | Verbs |\n|---|---|---|---|---|\n`;

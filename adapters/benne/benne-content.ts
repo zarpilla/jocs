@@ -378,7 +378,8 @@ function voicesIn(room: RoomDef, content: GameContent, joc: JocBenne): string[] 
   // Si el joc ho vol, una protagonista també pot ser una veu a la sala de l'altra (la Vet des de la cuina).
   const protagonists = content.manifest.protagonists;
   return [...who].filter((w) =>
-    content.characters[w] && !(w in room.hotspots) && (joc.veusProtagonistes ? w !== room.protagonist : !protagonists.includes(w)));
+    content.characters[w] && !(w in room.hotspots) && !room.protagonists?.includes(w)
+    && (joc.veusProtagonistes ? w !== room.protagonist : !protagonists.includes(w)));
 }
 
 function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: string, d?: string) => string, joc: JocBenne) {
@@ -419,9 +420,10 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
 
   const spawn: Json[] = [];
   const protagonist = room.protagonist;
-  if (protagonist) {
-    spawn.push({ instanceId: `${protagonist}-1`, definition: `${protagonist}/${protagonist}.character.json`, x: W / 2, y: s(136), initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 10 });
-  }
+  // Una sala compartida té totes les seves protagonistes (el pont mostra només les que hi són).
+  (room.protagonists ?? (protagonist ? [protagonist] : [])).forEach((p, n) => {
+    spawn.push({ instanceId: `${p}-1`, definition: `${p}/${p}.character.json`, x: W / 2 + n * s(40), y: s(136), initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 10 });
+  });
   characters.forEach((c, n) => {
     const x = characters.length === 1 ? s(270) : s(70) + n * ((W - s(140)) / Math.max(1, characters.length - 1));
     spawn.push({ instanceId: `${c}-1`, definition: `${c}/${c}.character.json`, x: Math.round(x), y: s(130), initialFacing: 'D', initialAnimation: 'Idle', visible: true, zIndex: 9 });
@@ -449,7 +451,7 @@ function layoutRoom(id: string, room: RoomDef, content: GameContent, t: (k?: str
     width: W,
     height: H,
     title: t(room.name, id),
-    era: protagonist ?? '',
+    era: protagonist ?? room.protagonists?.[0] ?? '',
     floorTop: s(112),
     floorBottom: FLOOR_BOTTOM,
     boxes,

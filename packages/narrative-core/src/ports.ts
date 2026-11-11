@@ -10,6 +10,8 @@ export interface WorldPort {
   hasVisited(room: Id): boolean;
   currentRoom(): Id | null;
   activeProtagonist(): Id;
+  /** On és (o era, l'última vegada) una protagonista, encara que ara no jugui. */
+  protagonistRoom?(who: Id): Id | null;
 }
 
 /**
@@ -62,6 +64,9 @@ export class MemoryWorld implements WorldPort {
   }
   activeProtagonist() {
     return this.active;
+  }
+  protagonistRoom(who: Id) {
+    return who === this.active ? this.room : this.rooms.get(who) ?? null;
   }
   items(who?: Id) {
     return [...this.bag(who)];

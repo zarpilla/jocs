@@ -67,6 +67,7 @@ const world: WorldPort = {
     return id ? fromBenne('rooms', id) : null;
   },
   activeProtagonist: () => fromBenne('characters', player.id),
+  protagonistRoom: (who) => protagonistRoom(who),
 };
 
 const { content, locales, locale, zones } = bundle as unknown as {
@@ -89,6 +90,23 @@ export function takePendingSwitch() {
   const who = pendingSwitch;
   pendingSwitch = null;
   return who;
+}
+
+/** Esdeveniment de contingut que porta la protagonista activa a una sala (`{ "event": "anar", "args": { "room": "pont" } }`). */
+let pendingGoTo: string | null = null;
+/** La sala on ha d'anar la protagonista per l'última interacció o diàleg (i l'esborra). */
+export function takePendingGoTo() {
+  const room = pendingGoTo;
+  pendingGoTo = null;
+  return room;
+}
+/**
+ * Si, en acabar el que s'està dient, es canviarà de sala (una sala nova, un canvi de protagonista cap a una
+ * altra sala o un final): llavors un títol al final s'ha de quedar a negre.
+ */
+export function leavesRoom(goTo?: string) {
+  if (pendingEnding || goTo || pendingGoTo) return true;
+  return pendingSwitch !== null && protagonistRoom(pendingSwitch) !== world.currentRoom();
 }
 
 /** Esdeveniment de contingut que acaba el joc amb el final que toca (`{ "event": "final" }`). */
@@ -175,11 +193,11 @@ narrative.on((e) => {
       break;
     case 'custom':
       if (e.name === SWITCH_EVENT) pendingSwitch = String(e.args.id);
+      if (e.name === 'anar') pendingGoTo = String(e.args.room);
       if (e.name === ENDING_EVENT) pendingEnding = true;
-      // `situar`: l'altra protagonista passa a ser en una altra sala (s'hi anirà en canviar-hi).
-      if (e.name === 'situar' && String(e.args.who) !== narrative.world.activeProtagonist()) {
-        rememberProtagonistRoom(String(e.args.who), String(e.args.room));
-      }
+      // `situar`: una protagonista passa a ser en una altra sala (s'hi anirà en canviar-hi). Per a la que juga,
+      // només té sentit si tot seguit es canvia a l'altra (en entrar a una sala, se'n torna a apuntar la sala).
+      if (e.name === 'situar') rememberProtagonistRoom(String(e.args.who), String(e.args.room));
       events.emit(`narrative:${e.name}`, e.args);
       break;
     default:
@@ -232,8 +250,24 @@ export function ensureStarted() {
 // no coincideixen mai (120 anys!). Per això, canviar de protagonista = anar a la seva sala; en
 // entrar-hi, prenem el control de la protagonista d'aquella sala.
 
-/** La protagonista d'una sala (`protagonist` al JSON de la sala). */
+/** La protagonista d'una sala (`protagonist` al JSON de la sala). Les sales compartides no en tenen cap de fixa. */
 export const roomProtagonist = (room: string) => content.rooms[room]?.protagonist ?? null;
+/** Si hi poden ser les dues protagonistes (`protagonists` al JSON de la sala). */
+export const isSharedRoom = (room: string) => (content.rooms[room]?.protagonists?.length ?? 0) > 0;
+
+/**
+ * Qui entrarà a la sala següent, quan es canvia de protagonista cap a una sala compartida: en entrar-hi
+ * no es pot saber per la sala (hi pot ser qualsevol de les dues). Ho posa `goToProtagonist`.
+ */
+let entering: string | null = null;
+export function setEnteringProtagonist(who: string | null) {
+  entering = who;
+}
+export function takeEnteringProtagonist() {
+  const who = entering;
+  entering = null;
+  return who;
+}
 
 const music = (mapping as { music?: Record<string, string> }).music ?? {};
 /**
@@ -351,7 +385,7 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
     if ('visible' in handle) handle.visible = visible;
     else handle.active = visible;
   }
-  applyCharacterVisibility(room);
+  applyCharacterVisibility(room, keepSpeakers);
 }
 
 /**
@@ -359,7 +393,7 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
  * veu (invisible) a l'estudi també sortiria. Per això, a cada sala es torna a decidir qui es veu: els
  * personatges que hi són com a cosa i la protagonista, sí; la resta (les veus), no.
  */
-function applyCharacterVisibility(room: string) {
+function applyCharacterVisibility(room: string, keepSpeakers = false) {
   const def = content.rooms[room];
   if (!def) return;
   for (const id of Object.keys(content.characters)) {
@@ -368,8 +402,12 @@ function applyCharacterVisibility(room: string) {
     // La protagonista de la sala, no la que juga ara: en entrar, el canvi de protagonista encara no s'ha fet
     // i l'altra (que aquí és una veu) sortiria. A les sales sense protagonista (cinemàtiques, finals) les
     // protagonistes només hi són com a veus: no s'hi veu ningú que no sigui a `hotspots`.
-    const visible = id in def.hotspots || id === def.protagonist;
+    let visible = id in def.hotspots || id === def.protagonist;
+    // A una sala compartida, l'altra protagonista es veu si també hi és.
+    if (def.protagonists?.includes(id)) visible = id === world.activeProtagonist() || protagonistRoom(id) === room;
     const handle = benneCharacter(id) as { visible: boolean } | undefined;
+    // L'altra protagonista se'n va (`situar`) mentre parla: s'amaga quan acabi (`playLines`).
+    if (keepSpeakers && !visible && handle?.visible && def.protagonists?.includes(id)) continue;
     if (handle && handle.visible !== visible) handle.visible = visible;
   }
 }
@@ -428,6 +466,33 @@ export function applyLocalizedNames() {
     const handle = byId<WithId & { description: string }>(items, toBenne('items', id));
     if (handle) handle.description = narrative.itemName(id);
   }
+}
+
+// ─── Provar una situació (només en desenvolupament) ───────────────────────────
+
+/** Una situació de partida: l'estat narratiu, on és cada protagonista, què porta i qui juga. */
+export interface Situacio {
+  state: unknown;
+  rooms: Record<string, string>;
+  items: Record<string, string[]>;
+  active: string;
+}
+
+/**
+ * Posa la partida en una situació concreta (la que deixa un test de partida a mig jugar), per veure-la sense
+ * jugar-la. La fa servir `window.__aventura.provar(...)` (només amb `npm run dev`); torna la sala on s'ha d'anar.
+ */
+export function prepareSituation(s: Situacio): string {
+  ensureStarted();
+  narrative.load(s.state);
+  persist();
+  store.protagonistRooms = { ...s.rooms } as VarValue;
+  for (const who of content.manifest.protagonists) {
+    const bag = bagOf(who);
+    for (const id of Object.keys(content.items)) if (bag.has(itemRef(id))) bag.remove(itemRef(id));
+    for (const id of s.items[who] ?? []) bag.add(itemRef(id));
+  }
+  return s.rooms[s.active] ?? '';
 }
 
 export function setLanguage(locale: string) {

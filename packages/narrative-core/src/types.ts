@@ -30,7 +30,8 @@ export type Condition =
   | { quest: Id; status: QuestStatus | QuestStatus[] }
   | { objective: { quest: Id; objective: Id }; is?: boolean }
   | { visited: Id; is?: boolean }
-  | { inRoom: Id }
+  /** La sala d'ara (o una de la llista). Amb `who`, on és aquella protagonista, encara que no jugui. */
+  | { inRoom: Id | Id[]; who?: Id }
   | { seen: { dialogue: Id; node: Id }; is?: boolean }
   | { chosen: { dialogue: Id; node: Id; choice: Id }; is?: boolean }
   | { all: Condition[] }
@@ -178,6 +179,12 @@ export interface RoomDef {
   name: TextKey;
   /** De quina protagonista és la sala (informatiu, i per validar). */
   protagonist?: Id;
+  /**
+   * Sala compartida: hi pot entrar qualsevol d'aquestes protagonistes, i les dues hi poden ser alhora (es
+   * veuen l'una a l'altra). Qui hi entra és qui juga; en canviar de protagonista, es va on és l'altra.
+   * Substitueix `protagonist`.
+   */
+  protagonists?: Id[];
   /** En entrar-hi, s'executa la primera que encaixi (el `verb` s'ignora: posa `*`). */
   onEnter?: InteractionDef[];
   /** Coses de la sala: props, zones i personatges, amb l'id que tenen al motor. */

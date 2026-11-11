@@ -48,7 +48,11 @@ export function evaluate(cond: Condition | undefined, ctx: ConditionContext): bo
     return expect(state.quests[quest]?.objectives[objective] === true, cond.is);
   }
   if ('visited' in cond) return expect(world.hasVisited(cond.visited), cond.is);
-  if ('inRoom' in cond) return world.currentRoom() === cond.inRoom;
+  if ('inRoom' in cond) {
+    // Amb `who`, on és aquella protagonista (activa o no); sense, la sala d'ara.
+    const room = cond.who ? (cond.who === world.activeProtagonist() ? world.currentRoom() : world.protagonistRoom?.(cond.who) ?? null) : world.currentRoom();
+    return Array.isArray(cond.inRoom) ? cond.inRoom.includes(room ?? '') : room === cond.inRoom;
+  }
   if ('seen' in cond) {
     const { dialogue, node } = cond.seen;
     return expect((state.dialogue.seen[seenKey(dialogue, node)] ?? 0) > 0, cond.is);

@@ -13,6 +13,13 @@
           "$ref": "#/definitions/Id",
           "description": "De quina protagonista és la sala (informatiu, i per validar)."
         },
+        "protagonists": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Id"
+          },
+          "description": "Sala compartida: hi pot entrar qualsevol d'aquestes protagonistes, i les dues hi poden ser alhora (es veuen l'una a l'altra). Qui hi entra és qui juga; en canviar de protagonista, es va on és l'altra. Substitueix `protagonist`."
+        },
         "onEnter": {
           "type": "array",
           "items": {
@@ -346,6 +353,19 @@
           "type": "object",
           "properties": {
             "inRoom": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Id"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Id"
+                  }
+                }
+              ]
+            },
+            "who": {
               "$ref": "#/definitions/Id"
             }
           },

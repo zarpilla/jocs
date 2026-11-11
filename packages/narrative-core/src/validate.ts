@@ -82,7 +82,11 @@ export function validateContent(
       return;
     }
     if ('visited' in c) { if (!rooms[c.visited]) err(where, `Sala desconeguda "${c.visited}".`); return; }
-    if ('inRoom' in c) { if (!rooms[c.inRoom]) err(where, `Sala desconeguda "${c.inRoom}".`); return; }
+    if ('inRoom' in c) {
+      for (const r of Array.isArray(c.inRoom) ? c.inRoom : [c.inRoom]) if (!rooms[r]) err(where, `Sala desconeguda "${r}".`);
+      if (c.who && !manifest.protagonists.includes(c.who)) err(where, `"${c.who}" no és cap protagonista.`);
+      return;
+    }
     err(where, `Condició desconeguda: ${JSON.stringify(c)}`);
   };
 
@@ -190,6 +194,8 @@ export function validateContent(
     id(w, rid);
     text(`${w}.name`, r.name);
     if (r.protagonist && !manifest.protagonists.includes(r.protagonist)) err(w, `"${r.protagonist}" no és cap protagonista.`);
+    for (const p of r.protagonists ?? []) if (!manifest.protagonists.includes(p)) err(w, `"${p}" no és cap protagonista.`);
+    if (r.protagonist && r.protagonists) err(w, `Una sala té "protagonist" o "protagonists", no tots dos.`);
     interactions(`${w}.onEnter`, r.onEnter, true);
     for (const [hid, h] of Object.entries(r.hotspots)) {
       id(`${w}.hotspots.${hid}`, hid);

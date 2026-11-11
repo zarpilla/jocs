@@ -11,8 +11,8 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  AUTOSAVE, adoptLoadedState, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  musicSync, roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, hasPendingEnding, takePendingEnding, takePendingSwitch, targetFromBenne,
+  AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  musicSync, roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -55,23 +55,34 @@ export function playLines(lines: ResolvedLine[], around: Around = {}) {
 
 /** Fa el que diu el resultat d'una interacció: línies, diàleg, canvi de protagonista o de sala. */
 export function playResult(result: InteractionResult) {
-  playLines(result.lines, { after: result.goTo || hasPendingEnding() ? 'negre' : undefined })
+  playLines(result.lines, { after: !result.dialogue && leavesRoom(result.goTo) ? 'negre' : undefined })
+  if (result.dialogue) {
+    // El que demanen els efectes (canvi de protagonista, de sala, final) es fa en acabar el diàleg.
+    const dialog = benneDialog(result.dialogue)
+    if (dialog) {
+      dialog.start()
+      return
+    }
+  }
+  followUp(result.goTo)
+}
+
+/** Després d'una interacció o d'un diàleg: el final, el canvi de protagonista o la sala nova que s'hagin demanat. */
+function followUp(goTo?: string) {
   if (takePendingEnding()) {
     takePendingSwitch()
+    takePendingGoTo()
     playEnding()
     return
   }
-  if (result.dialogue) {
-    const dialog = benneDialog(result.dialogue)
-    if (dialog) dialog.start()
-  }
   const who = takePendingSwitch()
+  const anar = takePendingGoTo() ?? goTo
   if (who) {
     goToProtagonist(who)
     return
   }
-  if (result.goTo) {
-    const room = benneRoom(result.goTo)
+  if (anar) {
+    const room = benneRoom(anar)
     if (room) room.goTo()
   }
 }
@@ -116,6 +127,8 @@ export function onRoomLoaded() {
  * nova, pren el control de la protagonista de la sala i mostra o amaga les coses condicionals.
  */
 export function onRoomEntered() {
+  // En desenvolupament, `window.__aventura.provar(situació)` porta la partida a una situació (vegeu `prepareSituation`).
+  if (import.meta.env.DEV) (window as unknown as { __aventura?: unknown }).__aventura = { provar: provarSituacio, narrative }
   adoptLoadedState()
   ensureStarted()
   const room = narrative.world.currentRoom()
@@ -127,7 +140,9 @@ export function onRoomEntered() {
   if (portada) guis.portada.show()
   else guis.portada.hide()
   applySwitchButton()
-  const who = roomProtagonist(room)
+  // A una sala compartida hi entra qui juga, o l'altra si s'hi va per canviar de protagonista.
+  const entering = takeEnteringProtagonist()
+  const who = isSharedRoom(room) ? (entering ?? narrative.world.activeProtagonist()) : roomProtagonist(room)
   applyAmbientMusic(room, portada)
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
@@ -206,11 +221,31 @@ export function startFromCover() {
   if (sala) sala.goTo()
 }
 
+/** Provar una situació (vegeu `prepareSituation`): hi posa la partida i hi va, amb qui juga. */
+export function provarSituacio(s: Situacio) {
+  const sala = prepareSituation(s)
+  setEnteringProtagonist(s.active)
+  const room = benneRoom(sala)
+  if (room) room.goTo()
+}
+
 /** Va a la sala on és una protagonista (i, en entrar-hi, se'n pren el control). */
 export function goToProtagonist(who: string) {
   const roomId = protagonistRoom(who)
   const room = roomId ? benneRoom(roomId) : undefined
-  if (room) room.goTo()
+  if (!room) return
+  // Si és a la mateixa sala (una sala compartida), es canvia sense sortir-ne.
+  if (roomId === narrative.world.currentRoom()) {
+    const character = benneCharacter(who)
+    if (character) player.switchTo(character)
+    narrative.worldChanged()
+    applySwitchButton()
+    applyHotspotVisibility()
+    applyAppearances()
+    return
+  }
+  setEnteringProtagonist(who)
+  room.goTo()
 }
 
 /** En entrar a una sala (després del fos): l'`onEnter` del JSON. */
@@ -283,8 +318,11 @@ export function startNarrativeDialog(id: string, dialog: DialogHandle) {
   playerActed()
   const step = narrative.startDialogue(id)
   refreshOptions(dialog, step.choices)
-  playLines(step.lines)
-  if (step.ended) dialog.end()
+  playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
+  if (step.ended) {
+    dialog.end()
+    followUp()
+  }
 }
 
 /** Des de cada `options.x.onChoose` (generat). */
@@ -292,8 +330,11 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
   adoptLoadedState()
   const step = narrative.choose(id, choice, { node })
   refreshOptions(dialog, step.choices)
-  playLines(step.lines)
-  if (step.ended) dialog.end()
+  playLines(step.lines, { after: step.ended && leavesRoom() ? 'negre' : undefined })
+  if (step.ended) {
+    dialog.end()
+    followUp()
+  }
 }
 
 /** Botó o verb de "pista": cada vegada una mica més explícita. */

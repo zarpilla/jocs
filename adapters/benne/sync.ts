@@ -97,8 +97,10 @@ function benneDialogScript(d: DialogueDef) {
       (c) => `options.${node}__${c.id}.onChoose(() => {\n  chooseNarrativeOption('${d.id}', dialog, '${node}', '${c.id}')\n})`,
     ),
   );
-  return `import { dialog, options } from './${d.id}.ids';
-import { chooseNarrativeOption, startNarrativeDialog } from '../../narrative/narrative.script';
+  // Un diàleg sense opcions (només línies) no fa servir ni `options` ni `chooseNarrativeOption`.
+  const some = handlers.length > 0;
+  return `import { dialog${some ? ', options' : ''} } from './${d.id}.ids';
+import { ${some ? 'chooseNarrativeOption, ' : ''}startNarrativeDialog } from '../../narrative/narrative.script';
 
 dialog.onStart(() => {
   startNarrativeDialog('${d.id}', dialog)

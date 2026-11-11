@@ -18,6 +18,7 @@ export class HeadlessPlayer {
   /** Tot el que s'ha dit, en ordre (per depurar o per a una transcripció). */
   readonly transcript: string[] = [];
   private pendingSwitch: Id | null = null;
+  private pendingGoTo: Id | null = null;
   /**
    * Si és cert, els diàlegs que obre una interacció no es juguen sols: queden a
    * `pendingDialogue` perquè els condueixi qui fa servir el jugador (p. ex. un terminal).
@@ -35,8 +36,11 @@ export class HeadlessPlayer {
     narrative.on((e) => {
       if (e.type !== 'custom') return;
       if (e.name === (opts.switchEvent ?? 'protagonista')) this.pendingSwitch = String(e.args.id);
-      // `situar`: l'altra protagonista passa a ser en una altra sala (hi entrarà quan s'hi canviï).
-      if (e.name === 'situar' && String(e.args.who) !== this.world.active) this.world.rooms.set(String(e.args.who), String(e.args.room));
+      // `anar`: la protagonista activa va a una sala (com `goTo`, però des d'un efecte: diàlegs i regles del joc).
+      if (e.name === 'anar') this.pendingGoTo = String(e.args.room);
+      // `situar`: una protagonista passa a ser en una altra sala (s'hi anirà quan s'hi canviï). Per a la que
+      // juga, només té sentit si tot seguit es canvia a l'altra (p. ex. el canvi d'escena).
+      if (e.name === 'situar') this.world.rooms.set(String(e.args.who), String(e.args.room));
     });
   }
 
@@ -67,8 +71,11 @@ export class HeadlessPlayer {
   /** Canvia de protagonista; si és la primera vegada que hi és, entra a la seva sala. */
   switchTo(who: Id): ResolvedLine[] {
     const firstTime = !this.world.rooms.has(who) || !this.world.visited.has(this.world.rooms.get(who)!);
+    // Les dues a la mateixa sala (una sala compartida): es canvia sense tornar-hi a entrar.
+    const sameRoom = this.world.room !== null && this.world.rooms.get(who) === this.world.room;
     this.world.switchTo(who);
     this.narrative.worldChanged();
+    if (sameRoom) return [];
     if (firstTime && this.world.room) return this.goTo(this.world.room);
     return this.play(this.world.room ? this.narrative.enterRoom(this.world.room) : null);
   }
@@ -91,6 +98,13 @@ export class HeadlessPlayer {
 
   /** Tria opcions en ordre dins el diàleg que estigui obert (o l'obre). */
   talk(dialogue: Id, ...choices: Id[]): ResolvedLine[] {
+    const lines = this.converse(dialogue, choices);
+    // Un diàleg també pot acabar canviant de protagonista o de sala (efectes `protagonista` i `anar`).
+    lines.push(...this.followUp());
+    return lines;
+  }
+
+  private converse(dialogue: Id, choices: Id[]): ResolvedLine[] {
     let step = this.narrative.startDialogue(dialogue);
     const lines = this.say(step.lines);
     for (const choice of choices) {
@@ -102,6 +116,17 @@ export class HeadlessPlayer {
     }
     if (!step.ended) this.narrative.endDialogue(dialogue);
     return lines;
+  }
+
+  /** El canvi de protagonista o de sala que han demanat els efectes (`protagonista`, `anar`), si n'hi ha. */
+  private followUp(goTo?: Id): ResolvedLine[] {
+    const who = this.pendingSwitch;
+    const room = this.pendingGoTo ?? goTo;
+    this.pendingSwitch = null;
+    this.pendingGoTo = null;
+    if (who) return this.switchTo(who);
+    if (room) return this.goTo(room);
+    return [];
   }
 
   inventory(who?: Id) {
@@ -117,15 +142,9 @@ export class HeadlessPlayer {
     const lines = this.say(result.lines);
     if (result.dialogue) {
       if (this.deferDialogues) this.pendingDialogue = result.dialogue;
-      else lines.push(...this.talk(result.dialogue));
+      else lines.push(...this.converse(result.dialogue, []));
     }
-    if (this.pendingSwitch) {
-      const who = this.pendingSwitch;
-      this.pendingSwitch = null;
-      lines.push(...this.switchTo(who));
-    } else if (result.goTo) {
-      lines.push(...this.goTo(result.goTo));
-    }
+    lines.push(...this.followUp(result.goTo));
     return lines;
   }
 

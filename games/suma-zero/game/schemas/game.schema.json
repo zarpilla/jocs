@@ -281,6 +281,19 @@
           "type": "object",
           "properties": {
             "inRoom": {
+              "anyOf": [
+                {
+                  "$ref": "#/definitions/Id"
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/Id"
+                  }
+                }
+              ]
+            },
+            "who": {
               "$ref": "#/definitions/Id"
             }
           },

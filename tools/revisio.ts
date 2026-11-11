@@ -32,7 +32,7 @@ export function cond(c: Condition): string {
   if ('quest' in c) return `missió ${c.quest}: ${[c.status].flat().join('/')}`;
   if ('objective' in c) return `${c.is === false ? 'pendent' : 'fet'} ${c.objective.quest}.${c.objective.objective}`;
   if ('visited' in c) return `${c.is === false ? 'no ha estat a' : 'ha estat a'} ${c.visited}`;
-  if ('inRoom' in c) return `a ${c.inRoom}`;
+  if ('inRoom' in c) return `${c.who ? `${c.who} ` : ''}a ${[c.inRoom].flat().join('/')}`;
   if ('seen' in c) return `${c.is === false ? 'no ha vist' : 'ha vist'} ${c.seen.dialogue}.${c.seen.node}`;
   if ('chosen' in c) return `${c.is === false ? 'no ha triat' : 'ha triat'} ${c.chosen.dialogue}.${c.chosen.node}.${c.chosen.choice}`;
   return JSON.stringify(c);
@@ -104,7 +104,7 @@ const parts: string[] = [];
 
 for (const [id, r] of Object.entries(content.rooms)) {
   if (filtre && filtre !== id) continue;
-  let s = `## Sala ${t.t(r.name)} · \`${id}\`${r.protagonist ? ` (${r.protagonist})` : ''}${r.cutscene ? ' — cinemàtica' : ''}\n\n\`\`\`\n`;
+  let s = `## Sala ${t.t(r.name)} · \`${id}\`${r.protagonist ? ` (${r.protagonist})` : r.protagonists ? ` (${r.protagonists.join(', ')})` : ''}${r.cutscene ? ' — cinemàtica' : ''}\n\n\`\`\`\n`;
   if (r.onEnter?.length) {
     s += `EN ENTRAR\n`;
     for (const i of r.onEnter) s += interaction(i);

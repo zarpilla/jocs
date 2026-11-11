@@ -5,6 +5,11 @@ Tot el joc és a `game/`. Els fitxers de `data/` diuen **què passa**; els de `l
 
 VS Code autocompleta i marca errors als JSON (gràcies a `game/schemas/`).
 
+## Escriure de pressa: `npm run textos`
+
+A qualsevol camp de text de `data/` es pot posar la clau i el text alhora (`"text": "sala.taller.tauler.look=Hi falta la
+clau."`). `npm run textos` hi deixa la clau i mou el text al fitxer de l'idioma per defecte que toca pel prefix.
+
 ## Identificadors i claus de text
 
 - **Identificadors** (personatges, nodes, opcions, missions, flags...): `minuscules_i_xifres`, sense
@@ -36,7 +41,7 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 | Relació amb un personatge | `{ "relation": { "who": "mos", "op": ">=", "value": 1 } }` |
 | Estat d'una missió | `{ "quest": "encendre_far", "status": "active" }` (o una llista d'estats) |
 | Objectiu fet | `{ "objective": { "quest": "q", "objective": "o" } }` |
-| Sala visitada / sala actual | `{ "visited": "moll" }` · `{ "inRoom": "moll" }` |
+| Sala visitada / sala actual | `{ "visited": "moll" }` · `{ "inRoom": "moll" }` · `{ "inRoom": ["cuina", "pont"], "who": "vet" }` (on és una protagonista, encara que no jugui) |
 | Node de diàleg vist abans | `{ "seen": { "dialogue": "mos", "node": "primera" } }` |
 | Opció triada abans | `{ "chosen": { "dialogue": "mos", "node": "convencer", "choice": "insultar" } }` |
 | Combinacions | `{ "all": [...] }` · `{ "any": [...] }` · `{ "not": {...} }` |
@@ -54,7 +59,8 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 | Final | `{ "ending": "fugida" }` |
 | Esdeveniment per al motor | `{ "event": "obrir_porta", "args": { "porta": "taverna" } }` |
 | Canviar de protagonista | `{ "event": "protagonista", "args": { "id": "vet" } }` |
-| Moure l'altra protagonista | `{ "event": "situar", "args": { "who": "iri", "room": "aeroport_personal" } }` (hi és quan s'hi canviï; no serveix per a la protagonista activa, que va amb `goTo`) |
+| Moure una protagonista | `{ "event": "situar", "args": { "who": "iri", "room": "aeroport_personal" } }` (hi és quan s'hi canviï; per a la protagonista activa, només té sentit si tot seguit es canvia a l'altra, com en un canvi d'escena) |
+| Anar a una sala | `{ "event": "anar", "args": { "room": "pont" } }` (com `goTo`, però és un efecte: també serveix al final d'un diàleg o en una regla del joc) |
 
 ## Joc i protagonistes: `data/game.json`
 
@@ -67,6 +73,10 @@ Es poden posar a qualsevol camp `if`, `when`, `visibleIf`, `startWhen`...
 ```
 
 Cada protagonista té el seu inventari i la seva sala. La primera de la llista és la que comença.
+
+**Sales compartides.** Una sala amb `"protagonists": ["iri", "vet"]` (en lloc de `"protagonist"`) és de totes dues:
+hi entra qui juga, i si l'altra també hi és, es veu (i s'hi pot parlar o donar-li coses). En canviar de protagonista
+dins la mateixa sala no es torna a entrar a la sala. A Aigua bruta totes les sales jugables són compartides.
 `"who": "player"` a les línies és sempre la protagonista que juga en aquell moment.
 
 ## Sales i interaccions: `data/rooms/<sala>.json`
@@ -258,6 +268,8 @@ respondre).
   no la diu en veu alta), `effects`, `next` (a quin node va), `end` (acaba la conversa).
 - `goto`: quan un node no té opcions, salta a un altre (típicament, tornar al `menu`).
 - Una opció sense `next` torna al mateix node.
+- Si els efectes d'un diàleg canvien de protagonista (`protagonista`), de sala (`anar`) o acaben el joc (`final`),
+  es fa quan s'acaba el diàleg.
 - El protagonista diu el text de l'opció abans de la resposta.
 
 ## Missions: `data/quests.json`

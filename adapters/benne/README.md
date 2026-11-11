@@ -101,6 +101,13 @@ A Benne, `player.switchTo` només funciona amb personatges de la mateixa sala. P
 canviar de protagonista vol dir anar a la sala on és l'altra, i en entrar-hi el pont en pren el
 control. L'última sala de cada protagonista es desa amb la partida.
 
+Les **sales compartides** (`"protagonists": ["iri", "vet"]`) tenen totes dues protagonistes: hi entra qui juga (o,
+en canviar de protagonista, l'altra), i la que no juga només es veu si també hi és. Si les dues són a la mateixa sala,
+canviar de protagonista no surt de la sala.
+
+**Provar una situació** (només amb `npm run dev`): `window.__aventura.provar({ state, rooms, items, active })` posa la
+partida en l'estat que deixa un test de partida a mig jugar i hi va. Serveix per fer captures de cada escena.
+
 ## Escenes provisionals
 
 `tools/room_designs.py` (a l'adaptador de cada joc) pot tenir un disseny per a cada sala: el fons en pixel art (o, si és

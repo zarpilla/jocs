@@ -65,11 +65,16 @@ export type GameAction = (ctx: ActionContext) => ActionResult | void;
  * sincronia per torns, on cada acció gasta un torn): una interacció que ha encaixat, o una opció de diàleg.
  */
 export type PlayerAction =
-  | { kind: 'interaction'; room: Id | null; verb: Id; target: InteractionTarget; item?: Id }
+  /**
+   * `inert`: la interacció només diu línies (no té efectes, ni acció, ni diàleg, ni canvi de sala): un «encara no» o un
+   * «no funciona». Les regles que compten accions (una sincronia) la poden deixar passar.
+   */
+  | { kind: 'interaction'; room: Id | null; verb: Id; target: InteractionTarget; item?: Id; inert?: boolean }
   | { kind: 'choice'; room: Id | null; dialogue: Id; choice: Id };
 
 /** El que torna una regla d'«acció feta»: línies per afegir i, en un diàleg, si cal tancar-lo. */
 export interface AfterActionResult extends ActionResult {
+  /** Talla el que ve després: el diàleg en curs o, després d'una interacció, el diàleg o el canvi de sala que havia d'obrir. */
   endDialogue?: boolean;
 }
 
@@ -474,7 +479,11 @@ export class Narrative {
       if (found) {
         return this.batch(() => {
           const result = this.runInteraction(scope, list, found, { ...req, item });
-          const after = this.runAfterHooks({ kind: 'interaction', room, verb: req.verb, target: req.target, item: req.item });
+          const inert = !found.effects?.length && !found.action && !found.dialogue && !found.goTo
+            && !(found.lines ?? []).some((l) => l.effects?.length);
+          const after = this.runAfterHooks({ kind: 'interaction', room, verb: req.verb, target: req.target, item: req.item, inert });
+          // Una regla que talla l'acció (p. ex. el reinici d'una sincronia) també talla el que havia de venir després.
+          if (after.end) return { lines: [...result.lines, ...after.lines] };
           return after.lines.length ? { ...result, lines: [...result.lines, ...after.lines] } : result;
         });
       }
