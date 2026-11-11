@@ -862,3 +862,52 @@ DESIGNS = {
     'postcredits': cinematica(avio_bg),
     'credits': cinematica(ginebra_bg),
 }
+
+
+# ─── A 640×360 ──────────────────────────────────────────────────────────────
+# Els dissenys d'aquí són a 480×270. A 640 (escala.RESOLUCIO) es passen a ×4/3, i cada sala de hd640/rooms hi posa
+# la seva geometria exacta (`GEOMETRIA`: `things`, `spawns`, `walkable`), que substitueix la d'aquí: així el dibuix i
+# el que es clica són al mateix fitxer.
+
+def _escala_disseny(d, k):
+    """Passa la geometria d'un disseny fet a 480×270 a k vegades (×4/3 a 640×360)."""
+    r = lambda v: round(v * k)  # noqa: E731
+    things = {}
+    for tid, t in d.get('things', {}).items():
+        t = dict(t)                       # (els dissenys poden compartir objectes: no es toquen)
+        if 'rect' in t:
+            x0, y0, x1, y1 = t['rect']
+            t['rect'] = (r(x0), r(y0), r(x1 + 1) - 1, r(y1 + 1) - 1)
+        if 'walk' in t:
+            t['walk'] = tuple(r(v) for v in t['walk'])
+        things[tid] = t
+    if 'things' in d:
+        d['things'] = things
+    if 'spawns' in d:
+        d['spawns'] = {c: tuple(r(v) for v in xy) for c, xy in d['spawns'].items()}
+    if 'walkable' in d:
+        d['walkable'] = [tuple(r(v) for v in xy) for xy in d['walkable']]
+
+
+def _amb_geometria():
+    import importlib
+    from pathlib import Path as _P
+    from escala import RESOLUCIO
+    if RESOLUCIO != 640:
+        return
+    import hd640  # noqa: F401  (posa hd.pix a 640×360 abans de cap sala)
+    rooms = _P(__file__).resolve().parent / 'hd640' / 'rooms'
+    for name in list(DESIGNS):
+        d = DESIGNS[name] = dict(DESIGNS[name])
+        _escala_disseny(d, 640 / 480)
+        if not (rooms / f'{name}.py').exists():
+            continue
+        geo = getattr(importlib.import_module(f'hd640.rooms.{name}'), 'GEOMETRIA', None)
+        if not geo:
+            continue
+        for key in ('things', 'spawns', 'walkable'):
+            if key in geo:
+                d[key] = {**d.get(key, {}), **geo[key]} if isinstance(geo[key], dict) else geo[key]
+
+
+_amb_geometria()

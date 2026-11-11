@@ -2,14 +2,14 @@
   "id": "bar_sala",
   "name": "Bar La Propina",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 14,
-            "y": 177
+            "x": 19,
+            "y": 236
           },
           {
-            "x": 466,
-            "y": 177
+            "x": 621,
+            "y": 236
           },
           {
-            "x": 474,
-            "y": 203
+            "x": 632,
+            "y": 271
           },
           {
-            "x": 6,
-            "y": 203
+            "x": 8,
+            "y": 271
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 18,
-          "y": 54
+          "x": 24,
+          "y": 72
         },
         {
-          "x": 64,
-          "y": 54
+          "x": 85,
+          "y": 72
         },
         {
-          "x": 64,
-          "y": 150
+          "x": 85,
+          "y": 200
         },
         {
-          "x": 18,
-          "y": 150
+          "x": 24,
+          "y": 200
         }
       ],
       "walkToPoint": {
-        "x": 42,
-        "y": 184
+        "x": 56,
+        "y": 245
       },
       "lookAtPoint": {
-        "x": 41,
-        "y": 150
+        "x": 54,
+        "y": 200
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 456,
-          "y": 48
+          "x": 608,
+          "y": 64
         },
         {
-          "x": 478,
-          "y": 48
+          "x": 639,
+          "y": 64
         },
         {
-          "x": 478,
-          "y": 160
+          "x": 639,
+          "y": 213
         },
         {
-          "x": 456,
-          "y": 160
+          "x": 608,
+          "y": 213
         }
       ],
       "walkToPoint": {
-        "x": 462,
-        "y": 186
+        "x": 616,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 467,
-        "y": 160
+        "x": 623,
+        "y": 213
       },
       "defaultVerb": "open"
     },
@@ -112,29 +112,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 326,
-          "y": 40
+          "x": 435,
+          "y": 53
         },
         {
-          "x": 404,
-          "y": 40
+          "x": 539,
+          "y": 53
         },
         {
-          "x": 404,
-          "y": 86
+          "x": 539,
+          "y": 115
         },
         {
-          "x": 326,
-          "y": 86
+          "x": 435,
+          "y": 115
         }
       ],
       "walkToPoint": {
-        "x": 360,
-        "y": 186
+        "x": 480,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 365,
-        "y": 86
+        "x": 487,
+        "y": 115
       }
     },
     {
@@ -144,29 +144,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 150,
-          "y": 18
+          "x": 200,
+          "y": 22
         },
         {
-          "x": 310,
-          "y": 18
+          "x": 414,
+          "y": 22
         },
         {
-          "x": 310,
-          "y": 48
+          "x": 414,
+          "y": 66
         },
         {
-          "x": 150,
-          "y": 48
+          "x": 200,
+          "y": 66
         }
       ],
       "walkToPoint": {
-        "x": 230,
-        "y": 186
+        "x": 307,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 230,
-        "y": 48
+        "x": 307,
+        "y": 66
       }
     },
     {
@@ -176,29 +176,29 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 430,
-          "y": 68
+          "x": 573,
+          "y": 91
         },
         {
-          "x": 452,
-          "y": 68
+          "x": 603,
+          "y": 91
         },
         {
-          "x": 452,
-          "y": 100
+          "x": 603,
+          "y": 134
         },
         {
-          "x": 430,
-          "y": 100
+          "x": 573,
+          "y": 134
         }
       ],
       "walkToPoint": {
-        "x": 440,
-        "y": 186
+        "x": 587,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 441,
-        "y": 100
+        "x": 588,
+        "y": 134
       }
     }
   ],
@@ -228,33 +228,33 @@
       "collider": {
         "points": [
           {
-            "x": 248,
-            "y": 108
+            "x": 331,
+            "y": 143
           },
           {
-            "x": 266,
-            "y": 108
+            "x": 357,
+            "y": 143
           },
           {
-            "x": 266,
-            "y": 120
+            "x": 357,
+            "y": 160
           },
           {
-            "x": 248,
-            "y": 120
+            "x": 331,
+            "y": 160
           }
         ]
       },
       "walkToPoint": {
-        "x": 256,
-        "y": 186
+        "x": 341,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 257,
-        "y": 120
+        "x": 344,
+        "y": 160
       },
       "description": "clauer",
-      "baseline": 160
+      "baseline": 213
     },
     {
       "id": "comandament_barra",
@@ -269,33 +269,33 @@
       "collider": {
         "points": [
           {
-            "x": 280,
-            "y": 108
+            "x": 373,
+            "y": 144
           },
           {
-            "x": 302,
-            "y": 108
+            "x": 403,
+            "y": 144
           },
           {
-            "x": 302,
-            "y": 120
+            "x": 403,
+            "y": 160
           },
           {
-            "x": 280,
-            "y": 120
+            "x": 373,
+            "y": 160
           }
         ]
       },
       "walkToPoint": {
-        "x": 290,
-        "y": 186
+        "x": 387,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 291,
-        "y": 120
+        "x": 388,
+        "y": 160
       },
       "description": "comandament",
-      "baseline": 160
+      "baseline": 213
     },
     {
       "id": "tele_bassols",
@@ -343,15 +343,15 @@
         "davant": {}
       },
       "zIndex": 20,
-      "baseline": 160
+      "baseline": 213
     }
   ],
   "characters": [
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 226,
-      "y": 196,
+      "x": 301,
+      "y": 261,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -360,8 +360,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 132,
-      "y": 172,
+      "x": 176,
+      "y": 229,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -370,8 +370,8 @@
     {
       "instanceId": "iri-veu",
       "definition": "iri/iri.character.json",
-      "x": 55,
-      "y": 95,
+      "x": 73,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
@@ -381,8 +381,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 300,
-      "y": 138,
+      "x": 400,
+      "y": 184,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

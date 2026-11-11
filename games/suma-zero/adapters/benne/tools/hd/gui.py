@@ -561,6 +561,9 @@ def apply_text_colors(game):
 
 
 def main(game):
+    from escala import RESOLUCIO
+    if RESOLUCIO == 640:
+        sys.exit('Suma Zero és a 640×360: la GUI la fa hd640/gui_rest.py i la posa al joc hd640/aplica.py.')
     build_verbs(game)
     build_dialog(game)
     build_menus(game)

@@ -4,305 +4,305 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 1.aseprite": {
       "frame": {
-        "x": 480,
+        "x": 2440,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 25,
+        "h": 9
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 263,
+        "y": 148,
+        "w": 25,
+        "h": 9
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 2.aseprite": {
       "frame": {
-        "x": 960,
+        "x": 2487,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 17,
+        "h": 8
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 302,
+        "y": 149,
+        "w": 17,
+        "h": 8
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 3.aseprite": {
       "frame": {
-        "x": 1440,
+        "x": 2465,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 22,
+        "h": 9
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 337,
+        "y": 148,
+        "w": 22,
+        "h": 9
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 4.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 2405,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 35,
+        "h": 75
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 227,
+        "y": 141,
+        "w": 35,
+        "h": 75
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 5.aseprite": {
       "frame": {
-        "x": 2400,
+        "x": 2465,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 22,
+        "h": 9
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 337,
+        "y": 148,
+        "w": 22,
+        "h": 9
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 6.aseprite": {
       "frame": {
-        "x": 2880,
+        "x": 2504,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 7.aseprite": {
       "frame": {
-        "x": 3360,
+        "x": 1665,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 255,
+        "h": 92
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 194,
+        "y": 29,
+        "w": 255,
+        "h": 92
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 8.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 0,
+        "w": 255,
+        "h": 92
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 194,
+        "y": 29,
+        "w": 255,
+        "h": 92
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 9.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 2175,
+        "y": 0,
+        "w": 230,
+        "h": 79
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 197,
+        "y": 42,
+        "w": 230,
+        "h": 79
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 10.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 0,
+        "w": 257,
+        "h": 94
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 194,
+        "y": 27,
+        "w": 257,
+        "h": 94
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 11.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 897,
+        "y": 0,
+        "w": 257,
+        "h": 94
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 194,
+        "y": 27,
+        "w": 257,
+        "h": 94
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 12.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1154,
+        "y": 0,
+        "w": 254,
+        "h": 94
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 197,
+        "y": 27,
+        "w": 254,
+        "h": 94
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 13.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1408,
+        "y": 0,
+        "w": 257,
+        "h": 94
       },
       "rotated": false,
-      "trimmed": false,
+      "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 194,
+        "y": 27,
+        "w": 257,
+        "h": 94
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
   },
   "meta": {
     "app": "https://www.aseprite.org/",
-    "version": "provisional (draw_placeholders.py)",
+    "version": "provisional (draw_placeholders.py, retallat)",
     "image": "bcmu_seguretat.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
-      "h": 540
+      "w": 2505,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [

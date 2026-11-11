@@ -2,14 +2,14 @@
   "id": "final_bar",
   "name": "La Propina, una setmana després",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 150,
-            "y": 190
+            "x": 200,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 261
           },
           {
             "x": 200,
-            "y": 190
-          },
-          {
-            "x": 200,
-            "y": 196
-          },
-          {
-            "x": 150,
-            "y": 196
+            "y": 261
           }
         ],
         "holes": []
@@ -76,7 +76,7 @@
         "davant": {}
       },
       "zIndex": 20,
-      "baseline": 200
+      "baseline": 267
     },
     {
       "id": "tele_apagada",
@@ -94,8 +94,8 @@
     {
       "instanceId": "rius-1",
       "definition": "rius/rius.character.json",
-      "x": 136,
-      "y": 194,
+      "x": 181,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -104,8 +104,8 @@
     {
       "instanceId": "ballester-1",
       "definition": "ballester/ballester.character.json",
-      "x": 176,
-      "y": 194,
+      "x": 235,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -114,8 +114,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 214,
-      "y": 194,
+      "x": 285,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -124,8 +124,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 252,
-      "y": 194,
+      "x": 336,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -134,8 +134,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 290,
-      "y": 194,
+      "x": 387,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -144,8 +144,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 328,
-      "y": 194,
+      "x": 437,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -154,8 +154,8 @@
     {
       "instanceId": "pons-1",
       "definition": "pons/pons.character.json",
-      "x": 368,
-      "y": 194,
+      "x": 491,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -164,8 +164,8 @@
     {
       "instanceId": "neta-1",
       "definition": "neta/neta.character.json",
-      "x": 94,
-      "y": 202,
+      "x": 125,
+      "y": 269,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -174,8 +174,8 @@
     {
       "instanceId": "diu-1",
       "definition": "diu/diu.character.json",
-      "x": 430,
-      "y": 170,
+      "x": 573,
+      "y": 227,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

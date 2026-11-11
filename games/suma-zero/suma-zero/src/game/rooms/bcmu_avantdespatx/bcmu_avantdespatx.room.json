@@ -2,14 +2,14 @@
   "id": "bcmu_avantdespatx",
   "name": "L'avantdespatx",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 14,
-            "y": 177
+            "x": 19,
+            "y": 236
           },
           {
-            "x": 466,
-            "y": 177
+            "x": 621,
+            "y": 236
           },
           {
-            "x": 474,
-            "y": 203
+            "x": 632,
+            "y": 271
           },
           {
-            "x": 6,
-            "y": 203
+            "x": 8,
+            "y": 271
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 380,
-          "y": 36
+          "x": 504,
+          "y": 48
         },
         {
-          "x": 444,
-          "y": 36
+          "x": 595,
+          "y": 48
         },
         {
-          "x": 444,
-          "y": 150
+          "x": 595,
+          "y": 200
         },
         {
-          "x": 380,
-          "y": 150
+          "x": 504,
+          "y": 200
         }
       ],
       "walkToPoint": {
-        "x": 412,
-        "y": 186
+        "x": 549,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 412,
-        "y": 150
+        "x": 549,
+        "y": 200
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 14,
-          "y": 40
+          "x": 19,
+          "y": 31
         },
         {
-          "x": 66,
-          "y": 40
+          "x": 95,
+          "y": 31
         },
         {
-          "x": 66,
-          "y": 150
+          "x": 95,
+          "y": 200
         },
         {
-          "x": 14,
-          "y": 150
+          "x": 19,
+          "y": 200
         }
       ],
       "walkToPoint": {
-        "x": 40,
-        "y": 186
+        "x": 53,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 40,
-        "y": 150
+        "x": 57,
+        "y": 200
       },
       "defaultVerb": "open"
     },
@@ -112,29 +112,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 214,
-          "y": 109
+          "x": 285,
+          "y": 145
         },
         {
-          "x": 232,
-          "y": 109
+          "x": 310,
+          "y": 145
         },
         {
-          "x": 232,
-          "y": 118
+          "x": 310,
+          "y": 158
         },
         {
-          "x": 214,
-          "y": 118
+          "x": 285,
+          "y": 158
         }
       ],
       "walkToPoint": {
-        "x": 222,
-        "y": 188
+        "x": 296,
+        "y": 251
       },
       "lookAtPoint": {
-        "x": 223,
-        "y": 118
+        "x": 297,
+        "y": 158
       }
     },
     {
@@ -144,29 +144,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 246,
-          "y": 109
+          "x": 327,
+          "y": 145
         },
         {
-          "x": 264,
-          "y": 109
+          "x": 353,
+          "y": 145
         },
         {
-          "x": 264,
-          "y": 118
+          "x": 353,
+          "y": 158
         },
         {
-          "x": 246,
-          "y": 118
+          "x": 327,
+          "y": 158
         }
       ],
       "walkToPoint": {
-        "x": 256,
-        "y": 188
+        "x": 341,
+        "y": 251
       },
       "lookAtPoint": {
-        "x": 255,
-        "y": 118
+        "x": 340,
+        "y": 158
       }
     },
     {
@@ -176,29 +176,29 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 80,
-          "y": 66
+          "x": 106,
+          "y": 88
         },
         {
-          "x": 98,
-          "y": 66
+          "x": 138,
+          "y": 88
         },
         {
-          "x": 98,
-          "y": 110
+          "x": 138,
+          "y": 147
         },
         {
-          "x": 80,
-          "y": 110
+          "x": 106,
+          "y": 147
         }
       ],
       "walkToPoint": {
-        "x": 90,
-        "y": 186
+        "x": 120,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 89,
-        "y": 110
+        "x": 122,
+        "y": 147
       }
     }
   ],
@@ -225,37 +225,37 @@
       "animations": {
         "tub": {
           "loop": true,
-          "frameDuration": 150
+          "frameDuration": 75
         }
       },
       "scriptName": "tubAnim",
       "collider": {
         "points": [
           {
-            "x": 80,
-            "y": 66
+            "x": 106,
+            "y": 88
           },
           {
-            "x": 98,
-            "y": 66
+            "x": 138,
+            "y": 88
           },
           {
-            "x": 98,
-            "y": 110
+            "x": 138,
+            "y": 147
           },
           {
-            "x": 80,
-            "y": 110
+            "x": 106,
+            "y": 147
           }
         ]
       },
       "walkToPoint": {
-        "x": 90,
-        "y": 186
+        "x": 120,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 89,
-        "y": 110
+        "x": 122,
+        "y": 147
       },
       "description": "estació del tub"
     },
@@ -269,7 +269,7 @@
       "animations": {
         "agulla": {
           "loop": true,
-          "frameDuration": 120
+          "frameDuration": 60
         }
       }
     },
@@ -283,7 +283,7 @@
       "animations": {
         "ficus": {
           "loop": true,
-          "frameDuration": 230
+          "frameDuration": 153
         }
       }
     }
@@ -292,8 +292,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 150,
-      "y": 194,
+      "x": 200,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -302,8 +302,8 @@
     {
       "instanceId": "pons-1",
       "definition": "pons/pons.character.json",
-      "x": 350,
-      "y": 184,
+      "x": 467,
+      "y": 245,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

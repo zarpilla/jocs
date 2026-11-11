@@ -31,17 +31,23 @@ from PIL import Image, ImageDraw
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
 
+from escala import RESOLUCIO  # noqa: E402
+if RESOLUCIO == 640:
+    import hd640  # noqa: E402,F401  (posa hd.pix a 640×360 abans de cap sala)
 from hd.pix import Canvas, W, H, R, Pt  # noqa: E402
 
-VISIBLE_H = 205  # per sota hi ha la barra de verbs
+VISIBLE_H = round(205 * H / 270)  # per sota hi ha la barra de verbs
+# Les sales: hd640/rooms a 640×360, hd/rooms a 480×270 (escala.RESOLUCIO).
+PKG = 'hd640' if RESOLUCIO == 640 else 'hd'
+ROOMS = HERE.parent / PKG / 'rooms'
 
 
 def load(name):
-    return importlib.import_module(f'hd.rooms.{name}')
+    return importlib.import_module(f'{PKG}.rooms.{name}')
 
 
 def has_hd(name):
-    return (HERE / 'rooms' / f'{name}.py').exists()
+    return (ROOMS / f'{name}.py').exists()
 
 
 def render(name, prop_ids=None):
@@ -86,28 +92,32 @@ CACHE = HERE / '.cache'
 
 
 def _code_key(name):
-    """Hash del codi que dibuixa la sala: pix.py i els mòduls de sala que fa servir (vegeu _deps)."""
+    """Hash del codi que dibuixa la sala: pix.py (i hd640/__init__.py) i els mòduls de sala que fa servir (vegeu _deps)."""
     import hashlib
-    files = [HERE / 'pix.py'] + sorted(HERE / 'rooms' / f"{m.split('.')[-1]}.py" for m in _deps(name))
+    tools = HERE.parent
+    files = [HERE / 'pix.py', tools / 'hd640' / '__init__.py'] + sorted(_deps(name))
     h = hashlib.sha256()
     for f in files:
-        h.update(f.relative_to(HERE).as_posix().encode())
-        h.update(f.read_bytes())
+        if f.exists():
+            h.update(f.relative_to(tools).as_posix().encode())
+            h.update(f.read_bytes())
     return h.hexdigest()[:16]
 
 
 def _deps(name):
-    """Mòduls de sala que fa servir una sala (imports al principi o dins funcions), mirant el codi."""
+    """Fitxers de sala que fa servir una sala (imports al principi o dins funcions), mirant el codi: tant de hd/rooms
+    com de hd640/rooms."""
     import re
-    seen, todo = set(), [name]
+    tools = HERE.parent
+    seen, todo = set(), [ROOMS / f'{name}.py']
     while todo:
-        n = todo.pop()
-        if n in seen:
+        f = todo.pop()
+        if f in seen or not f.exists():
             continue
-        seen.add(n)
-        src = (HERE / 'rooms' / f'{n}.py').read_text()
-        todo += [m for m in re.findall(r'hd\.rooms\.(\w+)', src) if (HERE / 'rooms' / f'{m}.py').exists()]
-    return {f'hd.rooms.{n}' for n in seen}
+        seen.add(f)
+        for pkg, mod in re.findall(r'\b(hd640|hd)\.rooms\.(\w+)', f.read_text()):
+            todo.append(tools / pkg / 'rooms' / f'{mod}.py')
+    return seen
 
 
 def render_anims(name):

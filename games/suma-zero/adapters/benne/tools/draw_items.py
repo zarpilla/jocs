@@ -15,9 +15,13 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from hd import items  # noqa: E402
+from escala import RESOLUCIO  # noqa: E402
+if RESOLUCIO == 640:
+    from hd640 import items  # noqa: E402   (65×36)
+else:
+    from hd import items  # noqa: E402
 
-W, H = items.W, items.H   # la casella (49×27)
+W, H = items.W, items.H   # la casella (49×27 a 480; 65×36 a 640)
 
 ICONS = items.ICONS
 

@@ -1,0 +1,187 @@
+{
+ "frames": {
+  "portada 0.aseprite": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "portada 1.aseprite": {
+   "frame": {
+    "x": 640,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "portada 2.aseprite": {
+   "frame": {
+    "x": 1280,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "portada 3.aseprite": {
+   "frame": {
+    "x": 0,
+    "y": 360,
+    "w": 640,
+    "h": 360
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "portada 4.aseprite": {
+   "frame": {
+    "x": 640,
+    "y": 360,
+    "w": 640,
+    "h": 360
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "portada 5.aseprite": {
+   "frame": {
+    "x": 1280,
+    "y": 360,
+    "w": 640,
+    "h": 360
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "hd640/gui_rest.py",
+  "image": "portada.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 1920,
+   "h": 720
+  },
+  "scale": "1",
+  "frameTags": [
+   {
+    "name": "continua",
+    "from": 0,
+    "to": 0,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "continua-hover",
+    "from": 1,
+    "to": 1,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "comenca",
+    "from": 2,
+    "to": 2,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "comenca-hover",
+    "from": 3,
+    "to": 3,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "carrega",
+    "from": 4,
+    "to": 4,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "carrega-hover",
+    "from": 5,
+    "to": 5,
+    "direction": "forward",
+    "color": "#000000ff"
+   }
+  ],
+  "layers": [],
+  "slices": []
+ }
+}

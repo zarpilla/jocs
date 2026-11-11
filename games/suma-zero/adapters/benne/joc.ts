@@ -100,6 +100,7 @@ function addHistoryGui(gameDir: string) {
   const dir = join(gameDir, 'guis/historial');
   mkdirSync(dir, { recursive: true });
   const { width: W, height: H } = (readJson(join(gameDir, 'game-config.json')).resolution as { width: number; height: number });
+  const k = (v: number) => Math.round(v * W / 480);   // els marges es van fer a 480×270
   const text = (id: string, x: number, y: number, font: string, color: string, align = 'left') =>
     ({ type: 'text', id, x, y, text: '', font, fontSize: 8, color, align, zIndex: 2 });
   writeJson(join(dir, 'historial.gui.json'), {
@@ -111,10 +112,10 @@ function addHistoryGui(gameDir: string) {
         font: 'suma-regular', fontSize: 8, textColor: '#ffffff', backgroundTag: '', backgroundColor: '#0b0a12',
         backgroundColorStates: { hover: '#0b0a12', pressed: '#0b0a12', disabled: '#0b0a12' }, zIndex: 1,
       },
-      text('titol', 14, 8, 'suma-negreta', '#f0dc8c'),
-      text('noms', 14, HISTORIAL_TOP, 'suma-negreta', '#7fd6c4'),
-      text('linies', 14, HISTORIAL_TOP, 'suma-regular', '#e6e2ee'),
-      text('peu', W - 14, H - 15, 'suma-regular', '#8a8598', 'right'),
+      text('titol', k(14), k(8), 'suma-negreta', '#f0dc8c'),
+      text('noms', k(14), k(HISTORIAL_TOP), 'suma-negreta', '#7fd6c4'),
+      text('linies', k(14), k(HISTORIAL_TOP), 'suma-regular', '#e6e2ee'),
+      text('peu', W - k(14), H - k(15), 'suma-regular', '#8a8598', 'right'),
     ],
   });
 }

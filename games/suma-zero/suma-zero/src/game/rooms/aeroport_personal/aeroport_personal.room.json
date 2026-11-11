@@ -2,14 +2,14 @@
   "id": "aeroport_personal",
   "name": "La porta de personal",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 14,
-            "y": 177
+            "x": 19,
+            "y": 236
           },
           {
-            "x": 466,
-            "y": 177
+            "x": 621,
+            "y": 236
           },
           {
-            "x": 474,
-            "y": 203
+            "x": 632,
+            "y": 271
           },
           {
-            "x": 6,
-            "y": 203
+            "x": 8,
+            "y": 271
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 224,
-          "y": 84
+          "x": 299,
+          "y": 112
         },
         {
-          "x": 248,
-          "y": 84
+          "x": 331,
+          "y": 112
         },
         {
-          "x": 248,
-          "y": 114
+          "x": 331,
+          "y": 152
         },
         {
-          "x": 224,
-          "y": 114
+          "x": 299,
+          "y": 152
         }
       ],
       "walkToPoint": {
-        "x": 236,
-        "y": 188
+        "x": 315,
+        "y": 251
       },
       "lookAtPoint": {
-        "x": 236,
-        "y": 114
+        "x": 315,
+        "y": 152
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 250,
-          "y": 44
+          "x": 333,
+          "y": 59
         },
         {
-          "x": 312,
-          "y": 44
+          "x": 416,
+          "y": 59
         },
         {
-          "x": 312,
-          "y": 160
+          "x": 416,
+          "y": 214
         },
         {
-          "x": 250,
-          "y": 160
+          "x": 333,
+          "y": 214
         }
       ],
       "walkToPoint": {
-        "x": 280,
-        "y": 186
+        "x": 373,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 281,
-        "y": 160
+        "x": 374,
+        "y": 214
       },
       "defaultVerb": "open"
     }
@@ -185,8 +185,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 160,
-      "y": 194,
+      "x": 213,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

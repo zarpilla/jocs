@@ -2,14 +2,14 @@
   "id": "bcmu_contenidor",
   "name": "Darrere del banc",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 14,
-            "y": 177
+            "x": 19,
+            "y": 236
           },
           {
-            "x": 466,
-            "y": 177
+            "x": 621,
+            "y": 236
           },
           {
-            "x": 474,
-            "y": 203
+            "x": 632,
+            "y": 271
           },
           {
-            "x": 6,
-            "y": 203
+            "x": 8,
+            "y": 271
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 240,
-          "y": 104
+          "x": 320,
+          "y": 135
         },
         {
-          "x": 344,
-          "y": 104
+          "x": 461,
+          "y": 135
         },
         {
-          "x": 344,
-          "y": 162
+          "x": 461,
+          "y": 216
         },
         {
-          "x": 240,
-          "y": 162
+          "x": 320,
+          "y": 216
         }
       ],
       "walkToPoint": {
-        "x": 292,
-        "y": 194
+        "x": 389,
+        "y": 259
       },
       "lookAtPoint": {
-        "x": 292,
-        "y": 162
+        "x": 390,
+        "y": 216
       }
     },
     {
@@ -78,29 +78,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 400,
-          "y": 40
+          "x": 533,
+          "y": 53
         },
         {
-          "x": 472,
-          "y": 40
+          "x": 630,
+          "y": 53
         },
         {
-          "x": 472,
-          "y": 160
+          "x": 630,
+          "y": 214
         },
         {
-          "x": 400,
-          "y": 160
+          "x": 533,
+          "y": 214
         }
       ],
       "walkToPoint": {
-        "x": 432,
-        "y": 192
+        "x": 576,
+        "y": 256
       },
       "lookAtPoint": {
-        "x": 436,
-        "y": 160
+        "x": 581,
+        "y": 214
       }
     }
   ],
@@ -155,7 +155,7 @@
       "animations": {
         "paperet": {
           "loop": true,
-          "frameDuration": 70
+          "frameDuration": 52
         }
       }
     }
@@ -164,8 +164,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 150,
-      "y": 196,
+      "x": 200,
+      "y": 261,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -174,8 +174,8 @@
     {
       "instanceId": "iri-veu",
       "definition": "iri/iri.character.json",
-      "x": 55,
-      "y": 95,
+      "x": 73,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,

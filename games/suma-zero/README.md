@@ -65,7 +65,7 @@ Regles:
 
 | Decisió | Valor |
 |---|---|
-| Resolució | **480×270**, fixa. L'art es dissenya directament en píxels del joc (escala 1) |
+| Resolució | **640×360**, fixa (fins a l'11/2026, 480×270). L'art es dissenya directament en píxels del joc (escala 1) |
 | Direcció d'art | Pixel art **caricaturesc**, estil LucasArts clàssic: personatges cabuts i exagerats, colors vius |
 | Protagonistes | Dues, l'Iri i la Vet, amb canvi lliure entre elles (excepte a les escenes de sincronització) |
 | Sincronització | **Per torns**: sense pantalla dividida ni rellotge real. Cada acció avança un comptador; si s'acaba, es repeteix el pas |
@@ -82,14 +82,16 @@ caricatura**, amb la calidesa lila de la A. Captura al joc: [guio/art/sala-mostr
 
 | Què | Mida i regla |
 |---|---|
-| Pantalla | 480×270; la sala es veu fins a y≈205 (a sota hi ha la barra de verbs) |
-| Personatges | Proporcions de Ferro-9: ≈83 px, fotograma de 49×87, peus a (25, 83). Direccions L, D, U (Benne fa el mirall de R). Dibuix amb volum, llum i trama (`hd/characters.py`) |
-| Mobles | Escala real: un escriptori arriba al maluc (≈46 px de terra a taulell) |
-| Icones | La casella de l'inventari: 49×27, amb el mateix dibuix de volum (`hd/items.py`) |
+| Pantalla | 640×360; la sala es veu fins a y≈260 (a sota hi ha la barra de verbs) |
+| Personatges | ≈110 px, fotograma de 65×116, peus a (34, 111) (les de Ferro-9 ×4/3). Direccions L, D, U (Benne fa el mirall de R). Dibuix amb volum, llum i trama (`hd/characters.py`, a ×4/3 amb `hd640/draw_characters.py`) |
+| Mobles | Escala real: un escriptori arriba al maluc (≈61 px de terra a taulell) |
+| Icones | La casella de l'inventari: 65×36, amb el mateix dibuix de volum (`hd640/items.py`) |
 | Fons | `hd/pix.py`: rampes de color amb trama ordenada i llums de sala; contorns només on cal |
 | To | Urbà, de hacker i d'espies: colors apagats, llum de pantalles (cian) i de neó (magenta). Un accent fort per personatge (l'Iri: dessuadora verd petroli amb «</>» i auriculars vermells) |
 
-On és cada cosa (a `adapters/benne/tools/`):
+On és cada cosa (a `adapters/benne/tools/`). L'art del joc és el de `hd640/` (640×360); el de `hd/` és l'original
+a 480×270, del qual surt (`escala.RESOLUCIO` tria quin fan servir les eines; `hd640/aplica.py` va passar el
+projecte Benne a 640, i `python3 hd640/preview.py --res 640|480 <sala> <sortida>` els compara):
 
 - `hd/personatges.py`: l'Iri, la Vet (amb la roba de cada escena), en Diu i els secundaris;
   `draw_characters.py` en genera els fulls (el sync els copia).

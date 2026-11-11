@@ -2,14 +2,14 @@
   "id": "avio",
   "name": "L'avió",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 150,
-            "y": 190
+            "x": 200,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 261
           },
           {
             "x": 200,
-            "y": 190
-          },
-          {
-            "x": 200,
-            "y": 196
-          },
-          {
-            "x": 150,
-            "y": 196
+            "y": 261
           }
         ],
         "holes": []
@@ -71,8 +71,8 @@
     {
       "instanceId": "rius-veu",
       "definition": "rius/rius.character.json",
-      "x": 55,
-      "y": 95,
+      "x": 73,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
@@ -82,8 +82,8 @@
     {
       "instanceId": "iri-veu",
       "definition": "iri/iri.character.json",
-      "x": 55,
-      "y": 95,
+      "x": 73,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
@@ -93,8 +93,8 @@
     {
       "instanceId": "vet-veu",
       "definition": "vet/vet.character.json",
-      "x": 136,
-      "y": 95,
+      "x": 181,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
