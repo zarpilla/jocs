@@ -6,28 +6,28 @@ dialog.onStart(() => {
   startNarrativeDialog('marcel', dialog)
 })
 
-options.revisio__valvula.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'revisio', 'valvula')
+options.revisio_menu__valvula.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'revisio_menu', 'valvula')
 })
 
-options.revisio__nit.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'revisio', 'nit')
+options.revisio_menu__nit.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'revisio_menu', 'nit')
 })
 
-options.revisio__fi.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'revisio', 'fi')
+options.revisio_menu__fi.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'revisio_menu', 'fi')
 })
 
-options.esc6__gat.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'esc6', 'gat')
+options.esc6_menu__gat.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'esc6_menu', 'gat')
 })
 
-options.esc6__gat_vet.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'esc6', 'gat_vet')
+options.esc6_menu__gat_vet.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'esc6_menu', 'gat_vet')
 })
 
-options.esc6__adeu.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'esc6', 'adeu')
+options.esc6_menu__adeu.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'esc6_menu', 'adeu')
 })
 
 options.secret__guardar.onChoose(() => {

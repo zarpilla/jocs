@@ -110,6 +110,9 @@
           "text": "dlg.capitana.revisio.1"
         }
       ],
+      "goto": "revisio_menu"
+    },
+    "revisio_menu": {
       "choices": [
         {
           "id": "juana",
@@ -154,7 +157,7 @@
           "setFlag": "juana_laboratori"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "gasoil": {
       "lines": [
@@ -172,7 +175,7 @@
           "setFlag": "sap_blaunet"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "nadia": {
       "lines": [
@@ -185,7 +188,7 @@
           "text": "dlg.capitana.nadia.2"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "valvula": {
       "lines": [
@@ -198,7 +201,7 @@
           "text": "dlg.capitana.valvula.2"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "fi": {
       "lines": [

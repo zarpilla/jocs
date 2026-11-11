@@ -6,40 +6,40 @@ dialog.onStart(() => {
   startNarrativeDialog('bastida', dialog)
 })
 
-options.esc2__revisio.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc2', 'revisio')
+options.esc2_menu__revisio.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'revisio')
 })
 
-options.esc2__mar.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc2', 'mar')
+options.esc2_menu__mar.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'mar')
 })
 
-options.esc2__pipa.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc2', 'pipa')
+options.esc2_menu__pipa.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'pipa')
 })
 
-options.esc2__plataforma.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc2', 'plataforma')
+options.esc2_menu__plataforma.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'plataforma')
 })
 
-options.esc2__adeu.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc2', 'adeu')
+options.esc2_menu__adeu.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'adeu')
 })
 
-options.esc3__temporal.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc3', 'temporal')
+options.esc3_menu__temporal.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc3_menu', 'temporal')
 })
 
-options.esc3__tensio.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc3', 'tensio')
+options.esc3_menu__tensio.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc3_menu', 'tensio')
 })
 
-options.esc3__mans.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc3', 'mans')
+options.esc3_menu__mans.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc3_menu', 'mans')
 })
 
-options.esc3__adeu.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc3', 'adeu')
+options.esc3_menu__adeu.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc3_menu', 'adeu')
 })
 
 options.esc6__nus.onChoose(() => {

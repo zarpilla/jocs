@@ -52,6 +52,9 @@
           "text": "dlg.marcel.revisio.1"
         }
       ],
+      "goto": "revisio_menu"
+    },
+    "revisio_menu": {
       "choices": [
         {
           "id": "valvula",
@@ -79,7 +82,7 @@
           "text": "dlg.marcel.valvula.1"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "nit": {
       "lines": [
@@ -88,7 +91,7 @@
           "text": "dlg.marcel.nit.1"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "fi": {
       "lines": [
@@ -123,6 +126,9 @@
           "setFlag": "cops_marcel"
         }
       ],
+      "goto": "esc6_menu"
+    },
+    "esc6_menu": {
       "choices": [
         {
           "id": "gat",
@@ -166,7 +172,7 @@
           "text": "dlg.marcel.gat_vet.2"
         }
       ],
-      "goto": "esc6"
+      "goto": "esc6_menu"
     },
     "secret": {
       "lines": [

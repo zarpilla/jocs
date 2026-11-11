@@ -3,29 +3,29 @@
   "displayName": "nadia",
   "options": [
     {
-      "id": "revisio__juana",
-      "scriptName": "revisio__juana",
+      "id": "revisio_menu__juana",
+      "scriptName": "revisio_menu__juana",
       "text": "Has vist la Juana?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "revisio__mareig",
-      "scriptName": "revisio__mareig",
+      "id": "revisio_menu__mareig",
+      "scriptName": "revisio_menu__mareig",
       "text": "Com estàs?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "revisio__feina",
-      "scriptName": "revisio__feina",
+      "id": "revisio_menu__feina",
+      "scriptName": "revisio_menu__feina",
       "text": "Què fas a bord, exactament?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "revisio__fi",
-      "scriptName": "revisio__fi",
+      "id": "revisio_menu__fi",
+      "scriptName": "revisio_menu__fi",
       "text": "Ja està. Beu aigua.",
       "enabled": false,
       "say": false

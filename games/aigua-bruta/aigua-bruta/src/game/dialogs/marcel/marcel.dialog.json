@@ -3,43 +3,43 @@
   "displayName": "marcel",
   "options": [
     {
-      "id": "revisio__valvula",
-      "scriptName": "revisio__valvula",
+      "id": "revisio_menu__valvula",
+      "scriptName": "revisio_menu__valvula",
       "text": "Qui ha obert la vàlvula, aquesta nit?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "revisio__nit",
-      "scriptName": "revisio__nit",
+      "id": "revisio_menu__nit",
+      "scriptName": "revisio_menu__nit",
       "text": "Què feies a les tres de la matinada?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "revisio__fi",
-      "scriptName": "revisio__fi",
+      "id": "revisio_menu__fi",
+      "scriptName": "revisio_menu__fi",
       "text": "Ja està. Pots marxar.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "esc6__gat",
-      "scriptName": "esc6__gat",
+      "id": "esc6_menu__gat",
+      "scriptName": "esc6_menu__gat",
       "text": "Aquest gat...",
       "enabled": false,
       "say": false
     },
     {
-      "id": "esc6__gat_vet",
-      "scriptName": "esc6__gat_vet",
+      "id": "esc6_menu__gat_vet",
+      "scriptName": "esc6_menu__gat_vet",
       "text": "I aquest gat?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "esc6__adeu",
-      "scriptName": "esc6__adeu",
+      "id": "esc6_menu__adeu",
+      "scriptName": "esc6_menu__adeu",
       "text": "Res. Bona nit.",
       "enabled": false,
       "say": false

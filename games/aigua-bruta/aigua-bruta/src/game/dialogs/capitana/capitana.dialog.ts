@@ -6,22 +6,22 @@ dialog.onStart(() => {
   startNarrativeDialog('capitana', dialog)
 })
 
-options.revisio__juana.onChoose(() => {
-  chooseNarrativeOption('capitana', dialog, 'revisio', 'juana')
+options.revisio_menu__juana.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'juana')
 })
 
-options.revisio__gasoil.onChoose(() => {
-  chooseNarrativeOption('capitana', dialog, 'revisio', 'gasoil')
+options.revisio_menu__gasoil.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'gasoil')
 })
 
-options.revisio__nadia.onChoose(() => {
-  chooseNarrativeOption('capitana', dialog, 'revisio', 'nadia')
+options.revisio_menu__nadia.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'nadia')
 })
 
-options.revisio__valvula.onChoose(() => {
-  chooseNarrativeOption('capitana', dialog, 'revisio', 'valvula')
+options.revisio_menu__valvula.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'valvula')
 })
 
-options.revisio__fi.onChoose(() => {
-  chooseNarrativeOption('capitana', dialog, 'revisio', 'fi')
+options.revisio_menu__fi.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'fi')
 })

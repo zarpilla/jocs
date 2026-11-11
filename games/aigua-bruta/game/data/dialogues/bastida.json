@@ -105,6 +105,9 @@
           "text": "dlg.bastida.esc2.1"
         }
       ],
+      "goto": "esc2_menu"
+    },
+    "esc2_menu": {
       "choices": [
         {
           "id": "revisio",
@@ -154,7 +157,7 @@
           "setFlag": "bastida_ara_no"
         }
       ],
-      "goto": "esc2"
+      "goto": "esc2_menu"
     },
     "mar": {
       "lines": [
@@ -184,7 +187,7 @@
           "setFlag": "bastida_arengades"
         }
       ],
-      "goto": "esc2"
+      "goto": "esc2_menu"
     },
     "pipa": {
       "lines": [
@@ -193,7 +196,7 @@
           "text": "dlg.bastida.pipa.1"
         }
       ],
-      "goto": "esc2"
+      "goto": "esc2_menu"
     },
     "plataforma": {
       "lines": [
@@ -202,7 +205,7 @@
           "text": "dlg.bastida.plataforma.1"
         }
       ],
-      "goto": "esc2"
+      "goto": "esc2_menu"
     },
     "esc3": {
       "lines": [
@@ -211,6 +214,9 @@
           "text": "dlg.bastida.esc3.1"
         }
       ],
+      "goto": "esc3_menu"
+    },
+    "esc3_menu": {
       "choices": [
         {
           "id": "temporal",
@@ -275,7 +281,7 @@
           "value": 3
         }
       ],
-      "goto": "esc3"
+      "goto": "esc3_menu"
     },
     "tensio": {
       "lines": [
@@ -301,7 +307,7 @@
           "value": 2
         }
       ],
-      "goto": "esc3"
+      "goto": "esc3_menu"
     },
     "mans": {
       "lines": [
@@ -322,7 +328,7 @@
           "setFlag": "prova_tall_ma"
         }
       ],
-      "goto": "esc3"
+      "goto": "esc3_menu"
     },
     "esc6": {
       "lines": [

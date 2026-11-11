@@ -6,20 +6,20 @@ dialog.onStart(() => {
   startNarrativeDialog('nadia', dialog)
 })
 
-options.revisio__juana.onChoose(() => {
-  chooseNarrativeOption('nadia', dialog, 'revisio', 'juana')
+options.revisio_menu__juana.onChoose(() => {
+  chooseNarrativeOption('nadia', dialog, 'revisio_menu', 'juana')
 })
 
-options.revisio__mareig.onChoose(() => {
-  chooseNarrativeOption('nadia', dialog, 'revisio', 'mareig')
+options.revisio_menu__mareig.onChoose(() => {
+  chooseNarrativeOption('nadia', dialog, 'revisio_menu', 'mareig')
 })
 
-options.revisio__feina.onChoose(() => {
-  chooseNarrativeOption('nadia', dialog, 'revisio', 'feina')
+options.revisio_menu__feina.onChoose(() => {
+  chooseNarrativeOption('nadia', dialog, 'revisio_menu', 'feina')
 })
 
-options.revisio__fi.onChoose(() => {
-  chooseNarrativeOption('nadia', dialog, 'revisio', 'fi')
+options.revisio_menu__fi.onChoose(() => {
+  chooseNarrativeOption('nadia', dialog, 'revisio_menu', 'fi')
 })
 
 options.esc4__contrasenya.onChoose(() => {

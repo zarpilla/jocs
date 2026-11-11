@@ -72,6 +72,9 @@
           "text": "dlg.tomas.revisio.1"
         }
       ],
+      "goto": "revisio_menu"
+    },
+    "revisio_menu": {
       "choices": [
         {
           "id": "juana",
@@ -118,7 +121,7 @@
           "setFlag": "sap_raco"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "clau": {
       "lines": [
@@ -136,7 +139,7 @@
           "setFlag": "tomas_clau"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "nit": {
       "lines": [
@@ -154,7 +157,7 @@
           "setFlag": "marcel_vist"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "fi": {
       "lines": [
@@ -257,6 +260,9 @@
           }
         }
       ],
+      "goto": "esc7_menu"
+    },
+    "esc7_menu": {
       "choices": [
         {
           "id": "clau7",
@@ -330,7 +336,7 @@
           "setFlag": "tomas_clau"
         }
       ],
-      "goto": "esc7"
+      "goto": "esc7_menu"
     },
     "entrepa7": {
       "lines": [

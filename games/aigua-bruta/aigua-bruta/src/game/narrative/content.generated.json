@@ -14806,6 +14806,9 @@
                 "text": "dlg.bastida.esc2.1"
               }
             ],
+            "goto": "esc2_menu"
+          },
+          "esc2_menu": {
             "choices": [
               {
                 "id": "revisio",
@@ -14855,7 +14858,7 @@
                 "setFlag": "bastida_ara_no"
               }
             ],
-            "goto": "esc2"
+            "goto": "esc2_menu"
           },
           "mar": {
             "lines": [
@@ -14885,7 +14888,7 @@
                 "setFlag": "bastida_arengades"
               }
             ],
-            "goto": "esc2"
+            "goto": "esc2_menu"
           },
           "pipa": {
             "lines": [
@@ -14894,7 +14897,7 @@
                 "text": "dlg.bastida.pipa.1"
               }
             ],
-            "goto": "esc2"
+            "goto": "esc2_menu"
           },
           "plataforma": {
             "lines": [
@@ -14903,7 +14906,7 @@
                 "text": "dlg.bastida.plataforma.1"
               }
             ],
-            "goto": "esc2"
+            "goto": "esc2_menu"
           },
           "esc3": {
             "lines": [
@@ -14912,6 +14915,9 @@
                 "text": "dlg.bastida.esc3.1"
               }
             ],
+            "goto": "esc3_menu"
+          },
+          "esc3_menu": {
             "choices": [
               {
                 "id": "temporal",
@@ -14976,7 +14982,7 @@
                 "value": 3
               }
             ],
-            "goto": "esc3"
+            "goto": "esc3_menu"
           },
           "tensio": {
             "lines": [
@@ -15002,7 +15008,7 @@
                 "value": 2
               }
             ],
-            "goto": "esc3"
+            "goto": "esc3_menu"
           },
           "mans": {
             "lines": [
@@ -15023,7 +15029,7 @@
                 "setFlag": "prova_tall_ma"
               }
             ],
-            "goto": "esc3"
+            "goto": "esc3_menu"
           },
           "esc6": {
             "lines": [
@@ -15691,6 +15697,9 @@
                 "text": "dlg.capitana.revisio.1"
               }
             ],
+            "goto": "revisio_menu"
+          },
+          "revisio_menu": {
             "choices": [
               {
                 "id": "juana",
@@ -15735,7 +15744,7 @@
                 "setFlag": "juana_laboratori"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "gasoil": {
             "lines": [
@@ -15753,7 +15762,7 @@
                 "setFlag": "sap_blaunet"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "nadia": {
             "lines": [
@@ -15766,7 +15775,7 @@
                 "text": "dlg.capitana.nadia.2"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "valvula": {
             "lines": [
@@ -15779,7 +15788,7 @@
                 "text": "dlg.capitana.valvula.2"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "fi": {
             "lines": [
@@ -16605,6 +16614,9 @@
                 "text": "dlg.marcel.revisio.1"
               }
             ],
+            "goto": "revisio_menu"
+          },
+          "revisio_menu": {
             "choices": [
               {
                 "id": "valvula",
@@ -16632,7 +16644,7 @@
                 "text": "dlg.marcel.valvula.1"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "nit": {
             "lines": [
@@ -16641,7 +16653,7 @@
                 "text": "dlg.marcel.nit.1"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "fi": {
             "lines": [
@@ -16676,6 +16688,9 @@
                 "setFlag": "cops_marcel"
               }
             ],
+            "goto": "esc6_menu"
+          },
+          "esc6_menu": {
             "choices": [
               {
                 "id": "gat",
@@ -16719,7 +16734,7 @@
                 "text": "dlg.marcel.gat_vet.2"
               }
             ],
-            "goto": "esc6"
+            "goto": "esc6_menu"
           },
           "secret": {
             "lines": [
@@ -16980,6 +16995,9 @@
                 "text": "dlg.nadia.revisio.1"
               }
             ],
+            "goto": "revisio_menu"
+          },
+          "revisio_menu": {
             "choices": [
               {
                 "id": "juana",
@@ -17021,7 +17039,7 @@
                 "text": "dlg.nadia.juana.3"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "mareig": {
             "lines": [
@@ -17035,7 +17053,7 @@
                 "setFlag": "nadia_mareig"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "feina": {
             "lines": [
@@ -17048,7 +17066,7 @@
                 "text": "dlg.nadia.feina.2"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "fi": {
             "lines": [
@@ -18870,6 +18888,9 @@
                 "text": "dlg.tomas.revisio.1"
               }
             ],
+            "goto": "revisio_menu"
+          },
+          "revisio_menu": {
             "choices": [
               {
                 "id": "juana",
@@ -18916,7 +18937,7 @@
                 "setFlag": "sap_raco"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "clau": {
             "lines": [
@@ -18934,7 +18955,7 @@
                 "setFlag": "tomas_clau"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "nit": {
             "lines": [
@@ -18952,7 +18973,7 @@
                 "setFlag": "marcel_vist"
               }
             ],
-            "goto": "revisio"
+            "goto": "revisio_menu"
           },
           "fi": {
             "lines": [
@@ -19055,6 +19076,9 @@
                 }
               }
             ],
+            "goto": "esc7_menu"
+          },
+          "esc7_menu": {
             "choices": [
               {
                 "id": "clau7",
@@ -19128,7 +19152,7 @@
                 "setFlag": "tomas_clau"
               }
             ],
-            "goto": "esc7"
+            "goto": "esc7_menu"
           },
           "entrepa7": {
             "lines": [

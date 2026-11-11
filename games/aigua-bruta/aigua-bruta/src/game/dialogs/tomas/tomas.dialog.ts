@@ -6,30 +6,30 @@ dialog.onStart(() => {
   startNarrativeDialog('tomas', dialog)
 })
 
-options.revisio__juana.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'revisio', 'juana')
+options.revisio_menu__juana.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'juana')
 })
 
-options.revisio__clau.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'revisio', 'clau')
+options.revisio_menu__clau.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'clau')
 })
 
-options.revisio__nit.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'revisio', 'nit')
+options.revisio_menu__nit.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'nit')
 })
 
-options.revisio__fi.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'revisio', 'fi')
+options.revisio_menu__fi.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'revisio_menu', 'fi')
 })
 
-options.esc7__clau7.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'esc7', 'clau7')
+options.esc7_menu__clau7.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'esc7_menu', 'clau7')
 })
 
-options.esc7__entrepa7.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'esc7', 'entrepa7')
+options.esc7_menu__entrepa7.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'esc7_menu', 'entrepa7')
 })
 
-options.esc7__adeu.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'esc7', 'adeu')
+options.esc7_menu__adeu.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'esc7_menu', 'adeu')
 })

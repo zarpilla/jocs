@@ -99,6 +99,9 @@
           "text": "dlg.nadia.revisio.1"
         }
       ],
+      "goto": "revisio_menu"
+    },
+    "revisio_menu": {
       "choices": [
         {
           "id": "juana",
@@ -140,7 +143,7 @@
           "text": "dlg.nadia.juana.3"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "mareig": {
       "lines": [
@@ -154,7 +157,7 @@
           "setFlag": "nadia_mareig"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "feina": {
       "lines": [
@@ -167,7 +170,7 @@
           "text": "dlg.nadia.feina.2"
         }
       ],
-      "goto": "revisio"
+      "goto": "revisio_menu"
     },
     "fi": {
       "lines": [
