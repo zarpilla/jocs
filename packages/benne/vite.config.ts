@@ -54,9 +54,10 @@ export default defineConfig({
     name: 'benne-game-page',
     transformIndexHtml(html: string) {
       return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>`)
-        .replace(/<link rel="icon"[^>]*\/>/, iconExists
+        // Sense icona pròpia del joc, es queda el favicon de Mala Herba Soft (public/favicon.*)
+        .replace(/<link rel="icon"[^>]*\/>(\s*<link rel="icon"[^>]*\/>)*/, (m) => iconExists
           ? '<link rel="icon" type="image/png" href="./src/game/assets/images/icon.png" />'
-          : '');
+          : m);
     },
   }],
   resolve: {

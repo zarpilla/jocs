@@ -35,6 +35,8 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 - `pauseGame` a una GUI modal: mentre és oberta, el joc s'atura (temporitzadors, tweens, caminades), i Esc la tanca;
 - les partides desades al `localStorage` amb una clau per joc (`VITE_BENNE_GAME_ID`, del nom del
   `package.json` del projecte), perquè dos jocs al mateix origen no comparteixin partides.
+- el favicon de Mala Herba Soft (`favicon.ico` i `favicon.svg`), a `index.html`; els fitxers són al `public/` de
+  cada joc.
 
 `adapters/benne/patches/motor-benne.patch` en recull una part. Si mai s'actualitza el motor des d'un
 Benne nou (`npm run benne:create -- --from <benne> --motor`), revisa `git diff packages/benne` i torna a
