@@ -342,7 +342,8 @@
       "y": 0,
       "tag": "CaraIri",
       "backgroundAnchor": "screen",
-      "visible": false
+      "visible": false,
+      "clickable": false
     },
     {
       "type": "image",
@@ -351,7 +352,8 @@
       "y": 0,
       "tag": "CaraVet",
       "backgroundAnchor": "screen",
-      "visible": false
+      "visible": false,
+      "clickable": false
     },
     {
       "type": "button",

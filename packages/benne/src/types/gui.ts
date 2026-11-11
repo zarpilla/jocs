@@ -287,6 +287,11 @@ export interface GuiImageControl {
   /** Optional extra clips from the GUI sheet (Aseprite tags). */
   animations?: GuiSpriteAnimationsMap;
   gridPlacement?: GuiGridPlacement;
+  /**
+   * Default `true`: opaque pixels catch the pointer (so the room behind is not clicked). `false` for a
+   * decoration drawn over another control (a face inside a button): clicks go through to what is below.
+   */
+  clickable?: boolean;
 }
 
 /** Per-interaction sheet tags; values are Aseprite tag names on this GUI’s sheet. */

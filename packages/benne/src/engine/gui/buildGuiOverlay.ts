@@ -1368,10 +1368,12 @@ export function addGuiImageSprite(
     wireBenneGuiAsepriteTrimmedPlacementAfterFrameChanges(sprite);
   }
   /** Opaque pixels block room input unless a higher-priority GUI widget occupies the pointer (see defer list). */
-  sprite.setInteractive({
-    hitArea: {},
-    hitAreaCallback: makeBenneGuiImagePixelPerfectHitCallback(scene, 8, imageInputDeferBelow),
-  });
+  if (c.clickable !== false) {
+    sprite.setInteractive({
+      hitArea: {},
+      hitAreaCallback: makeBenneGuiImagePixelPerfectHitCallback(scene, 8, imageInputDeferBelow),
+    });
+  }
   sprite.setData('benneGuiControl', true);
   const cid = c.id?.trim();
   if (cid) {

@@ -572,7 +572,9 @@ def apply_text_colors(game):
             at = [c.get('id') for c in controls].index('CanviaBtn') + 1
             for k, cid in enumerate(FACE_CONTROLS):
                 controls.insert(at + k, {'type': 'image', 'id': cid, 'x': 0, 'y': 0, 'tag': cid,
-                                         'backgroundAnchor': 'screen', 'visible': False})
+                                         'backgroundAnchor': 'screen', 'visible': False,
+                                         # Damunt del botó: no han de prendre-li el clic.
+                                         'clickable': False})
         vp.write_text(json.dumps(d, indent=2, ensure_ascii=False) + '\n')
     dp = guis / 'dialog/dialog.gui.json'
     if dp.exists():
