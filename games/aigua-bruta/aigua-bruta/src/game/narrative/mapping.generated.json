@@ -3,6 +3,10 @@
   "id": "aigua-bruta",
   "nom": "Aigua bruta",
   "musicSync": true,
+  "resolucio": {
+    "width": 640,
+    "height": 360
+  },
   "characters": {},
   "items": {},
   "rooms": {},

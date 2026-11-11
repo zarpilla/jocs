@@ -1,7 +1,7 @@
 {
   "id": "load-menu",
   "name": "Load Menu",
-  "description": "",
+  "description": " [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -10,10 +10,10 @@
     {
       "type": "nineSliceImage",
       "id": "load-bg",
-      "x": 63,
-      "y": 45,
-      "width": 355,
-      "height": 180,
+      "x": 84,
+      "y": 60,
+      "width": 473,
+      "height": 240,
       "tag": "9-slice-BG",
       "sliceNames": {
         "topLeft": "TopLeft",
@@ -30,8 +30,8 @@
     {
       "type": "text",
       "id": "title",
-      "x": 240,
-      "y": 57,
+      "x": 320,
+      "y": 76,
       "text": "Carrega",
       "font": "aigua-negreta",
       "fontSize": 8,
@@ -41,12 +41,12 @@
     {
       "type": "listBox",
       "id": "load-list",
-      "x": 82,
-      "y": 95,
-      "width": 215,
-      "height": 109,
+      "x": 109,
+      "y": 127,
+      "width": 287,
+      "height": 145,
       "rowCount": 5,
-      "rowPadding": 3,
+      "rowPadding": 4,
       "normalBackgroundColor": "#0d1526",
       "hoverBackgroundColor": "#192840",
       "selectedBackgroundColor": "#5a3e14",
@@ -59,21 +59,21 @@
     {
       "type": "text",
       "id": "instructions",
-      "x": 82,
-      "y": 74,
+      "x": 109,
+      "y": 99,
       "text": "Tria una partida per carregar.",
       "font": "aigua-regular",
       "fontSize": 8,
       "color": "#e2d6b4",
-      "wordWrapWidth": 305
+      "wordWrapWidth": 407
     },
     {
       "type": "button",
       "id": "load-btn",
-      "x": 311,
-      "y": 121,
-      "width": 85,
-      "height": 20,
+      "x": 415,
+      "y": 161,
+      "width": 113,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Carrega",
       "font": "aigua-regular",
@@ -82,11 +82,11 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-85x20",
+      "backgroundTag": "key-113x27",
       "states": {
-        "hover": "key-85x20-hover",
-        "pressed": "key-85x20-pressed",
-        "disabled": "key-85x20-disabled"
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -102,10 +102,10 @@
     {
       "type": "button",
       "id": "back-btn",
-      "x": 311,
-      "y": 145,
-      "width": 85,
-      "height": 20,
+      "x": 415,
+      "y": 193,
+      "width": 113,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Torna",
       "font": "aigua-regular",
@@ -114,11 +114,11 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-85x20",
+      "backgroundTag": "key-113x27",
       "states": {
-        "hover": "key-85x20-hover",
-        "pressed": "key-85x20-pressed",
-        "disabled": "key-85x20-disabled"
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",

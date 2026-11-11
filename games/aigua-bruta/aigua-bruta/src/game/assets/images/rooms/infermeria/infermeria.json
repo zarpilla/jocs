@@ -4,2876 +4,2876 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 1.aseprite": {
       "frame": {
-        "x": 480,
+        "x": 640,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 2.aseprite": {
       "frame": {
-        "x": 960,
+        "x": 1280,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 3.aseprite": {
       "frame": {
-        "x": 1440,
+        "x": 1920,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 4.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 2560,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 5.aseprite": {
       "frame": {
-        "x": 2400,
+        "x": 3200,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 6.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 7.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 8.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 9.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 10.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 11.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 12.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 13.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 14.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 15.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 16.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 17.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 18.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 19.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 20.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 21.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 22.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 23.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 24.aseprite": {
       "frame": {
         "x": 0,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 25.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 26.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 27.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 28.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 29.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 30.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 31.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 32.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 33.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 34.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 35.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 36.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 37.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 38.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 39.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 40.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 41.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 42.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 43.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 44.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 45.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 46.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 47.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 48.aseprite": {
       "frame": {
         "x": 0,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 49.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 50.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 51.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 52.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 53.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 54.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 55.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 56.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 57.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 58.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 59.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 60.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 61.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 62.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 63.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 64.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 65.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 66.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 67.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 68.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 69.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 70.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 71.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 72.aseprite": {
       "frame": {
         "x": 0,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 73.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 74.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 75.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 76.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 77.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 78.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 4680,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 79.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 4680,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 80.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 4680,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 81.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 4680,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 82.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 4680,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 83.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 4680,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 84.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 5040,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 85.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 5040,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 86.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 5040,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 87.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 2700,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 5040,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 88.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 5040,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 89.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 5040,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 90.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 5400,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 91.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 5400,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 92.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 5400,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 93.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 5400,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 94.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 5400,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 95.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 2970,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 5400,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 96.aseprite": {
       "frame": {
         "x": 0,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "y": 5760,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 97.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 5760,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 98.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 5760,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 99.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 5760,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 100.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 5760,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 101.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 5760,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 102.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 6120,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 103.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 3240,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 6120,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 104.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 6120,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 105.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 6120,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 106.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 6120,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 107.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 6120,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 108.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 6480,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 109.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 6480,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 110.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 6480,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 111.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 3510,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 6480,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 112.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 6480,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 113.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 6480,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 114.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 6840,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 115.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 6840,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 116.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 6840,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 117.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 6840,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 118.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 6840,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 119.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 3780,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 6840,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 120.aseprite": {
       "frame": {
         "x": 0,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "y": 7200,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 121.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 7200,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 122.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 7200,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 123.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 7200,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 124.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 7200,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 125.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 7200,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 126.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 7560,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 127.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 4050,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 7560,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 128.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 7560,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 129.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 7560,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 130.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 7560,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 131.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 7560,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 132.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 7920,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 133.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 7920,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 134.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 7920,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 135.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 4320,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 7920,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "infermeria 136.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 4590,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 7920,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -2885,7 +2885,7 @@
     "format": "RGBA8888",
     "size": {
       "w": 3840,
-      "h": 4860
+      "h": 8280
     },
     "scale": "1",
     "frameTags": [

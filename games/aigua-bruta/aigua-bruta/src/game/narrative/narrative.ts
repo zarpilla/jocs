@@ -21,6 +21,8 @@ export * from './historial';
 const JOC = (mapping as { nom?: string }).nom ?? 'Joc';
 /** La carpeta del joc (`games/<id>`), per a les estadístiques. */
 const JOC_ID = (mapping as { id?: string }).id ?? '';
+/** Amplada de la pantalla del joc (game-config.json, via el sync). */
+export const AMPLADA = (mapping as { resolucio?: { width?: number } }).resolucio?.width ?? 480;
 
 // ─── Correspondència d'identificadors (nostres ↔ Benne) ─────────────────────
 // Per defecte són iguals. Les excepcions es posen a `adapters/benne/mapping.json`.
@@ -205,24 +207,27 @@ narrative.on((e) => {
   }
 });
 
-// ─── Partides desades a 352×198 ─────────────────────────────────────────────
+// ─── Partides desades a una altra resolució ─────────────────────────────────
 // Benne desa dins la partida la posició de cada personatge a cada sala, i en tornar-hi la fa servir.
-// Les partides d'abans de passar a 480×270 les tenen en coordenades velles: els personatges quedarien
-// enlairats (i els que no es mouen, com el capatàs, les arrossegarien per sempre). S'escalen una vegada.
-const RESOLUCIO = 480;
-const ESCALA_ANTIGA = RESOLUCIO / 352;
-/** Per sota d'aquesta alçada no hi ha cap peu a 480×270 (el terra comença més avall). */
-const TERRA_MINIM = 155;
+// Les partides d'una resolució anterior (352×198 a Ferro-9; 480×270 a Aigua bruta abans de passar a 640×360) les
+// tenen en coordenades velles: els personatges quedarien fora de lloc. S'escalen una vegada. `store.resolucio`
+// és l'amplada amb què es va desar (les de 352 no en tenien).
+const RESOLUCIO = AMPLADA;
+/** Les de 352×198: per sota d'aquesta alçada (a 480×270) no hi ha cap peu; les que ja hi són, ja estaven escalades. */
+const TERRA_MINIM_352 = 155;
 
 function migrateOldPositions() {
-  if (store.resolucio === RESOLUCIO) return;
+  const abans = typeof store.resolucio === 'number' ? store.resolucio : 352;
+  if (abans === RESOLUCIO) return;
+  const k = RESOLUCIO / abans;
   for (const room of Object.keys(content.rooms)) {
     for (const id of Object.keys(content.characters)) {
       const key = `room:${toBenne('rooms', room)}:character:${toBenne('characters', id)}:position`;
       const saved = defineVars({ [key]: null as VarValue });
       const pos = saved[key] as { x?: number; y?: number } | null;
-      if (!pos || typeof pos.x !== 'number' || typeof pos.y !== 'number' || pos.y >= TERRA_MINIM) continue;
-      saved[key] = { x: Math.round(pos.x * ESCALA_ANTIGA), y: Math.round(pos.y * ESCALA_ANTIGA) };
+      if (!pos || typeof pos.x !== 'number' || typeof pos.y !== 'number') continue;
+      if (abans === 352 && pos.y >= TERRA_MINIM_352 * (RESOLUCIO / 480)) continue;
+      saved[key] = { x: Math.round(pos.x * k), y: Math.round(pos.y * k) };
     }
   }
   store.resolucio = RESOLUCIO;

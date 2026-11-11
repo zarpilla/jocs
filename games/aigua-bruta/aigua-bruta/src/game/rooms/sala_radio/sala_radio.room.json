@@ -2,14 +2,14 @@
   "id": "sala_radio",
   "name": "Sala de ràdio",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 10,
-            "y": 164
+            "x": 13,
+            "y": 219
           },
           {
-            "x": 470,
-            "y": 164
+            "x": 627,
+            "y": 219
           },
           {
-            "x": 476,
-            "y": 200
+            "x": 635,
+            "y": 267
           },
           {
-            "x": 4,
-            "y": 200
+            "x": 5,
+            "y": 267
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 4,
-          "y": 62
+          "x": 5,
+          "y": 83
         },
         {
-          "x": 54,
-          "y": 62
+          "x": 73,
+          "y": 83
         },
         {
-          "x": 54,
-          "y": 150
+          "x": 73,
+          "y": 201
         },
         {
-          "x": 4,
-          "y": 150
+          "x": 5,
+          "y": 201
         }
       ],
       "walkToPoint": {
-        "x": 34,
-        "y": 172
+        "x": 45,
+        "y": 229
       },
       "lookAtPoint": {
-        "x": 29,
-        "y": 150
+        "x": 39,
+        "y": 201
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 150,
-          "y": 58
+          "x": 200,
+          "y": 77
         },
         {
-          "x": 314,
-          "y": 58
+          "x": 419,
+          "y": 77
         },
         {
-          "x": 314,
-          "y": 108
+          "x": 419,
+          "y": 145
         },
         {
-          "x": 150,
-          "y": 108
+          "x": 200,
+          "y": 145
         }
       ],
       "walkToPoint": {
-        "x": 226,
-        "y": 174
+        "x": 301,
+        "y": 232
       },
       "lookAtPoint": {
-        "x": 232,
-        "y": 108
+        "x": 309,
+        "y": 145
       }
     },
     {
@@ -111,29 +111,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 328,
-          "y": 58
+          "x": 437,
+          "y": 77
         },
         {
-          "x": 392,
-          "y": 58
+          "x": 523,
+          "y": 77
         },
         {
-          "x": 392,
-          "y": 122
+          "x": 523,
+          "y": 163
         },
         {
-          "x": 328,
-          "y": 122
+          "x": 437,
+          "y": 163
         }
       ],
       "walkToPoint": {
-        "x": 318,
-        "y": 176
+        "x": 424,
+        "y": 235
       },
       "lookAtPoint": {
-        "x": 360,
-        "y": 122
+        "x": 480,
+        "y": 163
       }
     }
   ],
@@ -163,30 +163,30 @@
       "collider": {
         "points": [
           {
-            "x": 344,
-            "y": 74
+            "x": 459,
+            "y": 99
           },
           {
-            "x": 376,
-            "y": 74
+            "x": 502,
+            "y": 99
           },
           {
-            "x": 376,
-            "y": 106
+            "x": 502,
+            "y": 142
           },
           {
-            "x": 344,
-            "y": 106
+            "x": 459,
+            "y": 142
           }
         ]
       },
       "walkToPoint": {
-        "x": 318,
-        "y": 176
+        "x": 424,
+        "y": 235
       },
       "lookAtPoint": {
-        "x": 360,
-        "y": 106
+        "x": 480,
+        "y": 142
       },
       "description": "cable tallat"
     },
@@ -256,8 +256,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 318,
-      "y": 188,
+      "x": 424,
+      "y": 251,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -266,8 +266,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 200,
-      "y": 192,
+      "x": 267,
+      "y": 256,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -276,8 +276,8 @@
     {
       "instanceId": "bastida-1",
       "definition": "bastida/bastida.character.json",
-      "x": 34,
-      "y": 186,
+      "x": 45,
+      "y": 248,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -286,8 +286,8 @@
     {
       "instanceId": "rut-veu",
       "definition": "rut/rut.character.json",
-      "x": 55,
-      "y": 95,
+      "x": 73,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,

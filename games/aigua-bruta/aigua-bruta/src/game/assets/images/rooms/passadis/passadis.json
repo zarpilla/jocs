@@ -4,1553 +4,1553 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 1.aseprite": {
       "frame": {
-        "x": 480,
+        "x": 640,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 2.aseprite": {
       "frame": {
-        "x": 960,
+        "x": 1280,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 3.aseprite": {
       "frame": {
-        "x": 1440,
+        "x": 1920,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 4.aseprite": {
       "frame": {
-        "x": 1920,
+        "x": 2560,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 5.aseprite": {
       "frame": {
-        "x": 2400,
+        "x": 3200,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 6.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 7.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 0,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 8.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 9.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 10.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 11.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 360,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 12.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 13.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 14.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 15.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 270,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 16.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 17.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 720,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 18.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 19.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 20.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 21.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 22.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 23.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 540,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 1080,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 24.aseprite": {
       "frame": {
         "x": 0,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 25.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 26.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 27.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 28.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 29.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 1440,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 30.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 31.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 810,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 32.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 33.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 34.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 35.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 1800,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 36.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 37.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 38.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 39.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1080,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 40.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 41.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 2160,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 42.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 43.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 44.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 45.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 46.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 47.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1350,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 2520,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 48.aseprite": {
       "frame": {
         "x": 0,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 49.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 50.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 51.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 52.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 53.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 2880,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 54.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 55.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1620,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 56.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 57.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 58.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 59.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 3240,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 60.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 61.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 62.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 63.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 1890,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 64.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 65.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 3600,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 66.aseprite": {
       "frame": {
-        "x": 960,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 0,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 67.aseprite": {
       "frame": {
-        "x": 1440,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 68.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 1280,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 69.aseprite": {
       "frame": {
-        "x": 2400,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 1920,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 70.aseprite": {
       "frame": {
-        "x": 2880,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 2560,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 71.aseprite": {
       "frame": {
-        "x": 3360,
-        "y": 2160,
-        "w": 480,
-        "h": 270
+        "x": 3200,
+        "y": 3960,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 72.aseprite": {
       "frame": {
         "x": 0,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "passadis 73.aseprite": {
       "frame": {
-        "x": 480,
-        "y": 2430,
-        "w": 480,
-        "h": 270
+        "x": 640,
+        "y": 4320,
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 480,
-        "h": 270
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -1562,7 +1562,7 @@
     "format": "RGBA8888",
     "size": {
       "w": 3840,
-      "h": 2700
+      "h": 4680
     },
     "scale": "1",
     "frameTags": [

@@ -1,7 +1,7 @@
 {
   "id": "save-menu",
   "name": "Save Menu",
-  "description": "",
+  "description": " [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -10,10 +10,10 @@
     {
       "type": "nineSliceImage",
       "id": "save-bg",
-      "x": 63,
-      "y": 34,
-      "width": 355,
-      "height": 202,
+      "x": 84,
+      "y": 45,
+      "width": 473,
+      "height": 269,
       "tag": "9-slice-BG",
       "sliceNames": {
         "topLeft": "TopLeft",
@@ -30,8 +30,8 @@
     {
       "type": "text",
       "id": "title",
-      "x": 240,
-      "y": 46,
+      "x": 320,
+      "y": 61,
       "text": "Desa",
       "font": "aigua-negreta",
       "fontSize": 8,
@@ -41,10 +41,10 @@
     {
       "type": "textInput",
       "id": "save-name",
-      "x": 82,
-      "y": 202,
-      "width": 215,
-      "height": 19,
+      "x": 109,
+      "y": 269,
+      "width": 287,
+      "height": 25,
       "font": "aigua-regular",
       "fontSize": 8,
       "text": "",
@@ -61,12 +61,12 @@
     {
       "type": "listBox",
       "id": "saved-list",
-      "x": 82,
-      "y": 87,
-      "width": 215,
-      "height": 109,
+      "x": 109,
+      "y": 116,
+      "width": 287,
+      "height": 145,
       "rowCount": 5,
-      "rowPadding": 3,
+      "rowPadding": 4,
       "normalBackgroundColor": "#0d1526",
       "hoverBackgroundColor": "#192840",
       "selectedBackgroundColor": "#5a3e14",
@@ -79,21 +79,21 @@
     {
       "type": "text",
       "id": "instructions",
-      "x": 82,
-      "y": 65,
+      "x": 109,
+      "y": 87,
       "text": "Tria una posició i escriu un nom per desar.",
       "font": "aigua-regular",
       "fontSize": 8,
       "color": "#e2d6b4",
-      "wordWrapWidth": 305
+      "wordWrapWidth": 407
     },
     {
       "type": "button",
       "id": "save-btn",
-      "x": 311,
-      "y": 136,
-      "width": 85,
-      "height": 20,
+      "x": 415,
+      "y": 181,
+      "width": 113,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Desa",
       "font": "aigua-regular",
@@ -102,11 +102,11 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-85x20",
+      "backgroundTag": "key-113x27",
       "states": {
-        "hover": "key-85x20-hover",
-        "pressed": "key-85x20-pressed",
-        "disabled": "key-85x20-disabled"
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -122,10 +122,10 @@
     {
       "type": "button",
       "id": "back-btn",
-      "x": 311,
-      "y": 160,
-      "width": 85,
-      "height": 20,
+      "x": 415,
+      "y": 213,
+      "width": 113,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Torna",
       "font": "aigua-regular",
@@ -134,11 +134,11 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-85x20",
+      "backgroundTag": "key-113x27",
       "states": {
-        "hover": "key-85x20-hover",
-        "pressed": "key-85x20-pressed",
-        "disabled": "key-85x20-disabled"
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",

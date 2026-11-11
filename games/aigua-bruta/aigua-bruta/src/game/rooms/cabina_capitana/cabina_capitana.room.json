@@ -2,14 +2,14 @@
   "id": "cabina_capitana",
   "name": "Cabina de la Capitana",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 12,
-            "y": 168
+            "x": 16,
+            "y": 224
           },
           {
-            "x": 468,
-            "y": 168
+            "x": 624,
+            "y": 224
           },
           {
-            "x": 476,
-            "y": 198
+            "x": 635,
+            "y": 264
           },
           {
-            "x": 4,
-            "y": 198
+            "x": 5,
+            "y": 264
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 4,
-          "y": 50
+          "x": 5,
+          "y": 67
         },
         {
-          "x": 60,
-          "y": 50
+          "x": 80,
+          "y": 67
         },
         {
-          "x": 60,
-          "y": 152
+          "x": 80,
+          "y": 203
         },
         {
-          "x": 4,
-          "y": 152
+          "x": 5,
+          "y": 203
         }
       ],
       "walkToPoint": {
-        "x": 36,
-        "y": 182
+        "x": 48,
+        "y": 243
       },
       "lookAtPoint": {
-        "x": 32,
-        "y": 152
+        "x": 42,
+        "y": 203
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 192,
-          "y": 99
+          "x": 256,
+          "y": 132
         },
         {
-          "x": 234,
-          "y": 99
+          "x": 312,
+          "y": 132
         },
         {
-          "x": 234,
-          "y": 114
+          "x": 312,
+          "y": 152
         },
         {
-          "x": 192,
-          "y": 114
+          "x": 256,
+          "y": 152
         }
       ],
       "walkToPoint": {
-        "x": 214,
-        "y": 180
+        "x": 285,
+        "y": 240
       },
       "lookAtPoint": {
-        "x": 213,
-        "y": 114
+        "x": 284,
+        "y": 152
       }
     },
     {
@@ -111,29 +111,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 246,
-          "y": 100
+          "x": 328,
+          "y": 133
         },
         {
-          "x": 272,
-          "y": 100
+          "x": 363,
+          "y": 133
         },
         {
-          "x": 272,
-          "y": 115
+          "x": 363,
+          "y": 153
         },
         {
-          "x": 246,
-          "y": 115
+          "x": 328,
+          "y": 153
         }
       ],
       "walkToPoint": {
-        "x": 260,
-        "y": 180
+        "x": 347,
+        "y": 240
       },
       "lookAtPoint": {
-        "x": 259,
-        "y": 115
+        "x": 345,
+        "y": 153
       }
     },
     {
@@ -143,29 +143,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 326,
-          "y": 32
+          "x": 435,
+          "y": 43
         },
         {
-          "x": 456,
-          "y": 32
+          "x": 608,
+          "y": 43
         },
         {
-          "x": 456,
-          "y": 104
+          "x": 608,
+          "y": 139
         },
         {
-          "x": 326,
-          "y": 104
+          "x": 435,
+          "y": 139
         }
       ],
       "walkToPoint": {
-        "x": 390,
-        "y": 180
+        "x": 520,
+        "y": 240
       },
       "lookAtPoint": {
-        "x": 391,
-        "y": 104
+        "x": 521,
+        "y": 139
       }
     }
   ],
@@ -240,8 +240,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 150,
-      "y": 192,
+      "x": 200,
+      "y": 256,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -250,8 +250,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 200,
-      "y": 196,
+      "x": 267,
+      "y": 261,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -260,8 +260,8 @@
     {
       "instanceId": "capitana-1",
       "definition": "capitana/capitana.character.json",
-      "x": 330,
-      "y": 184,
+      "x": 440,
+      "y": 245,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

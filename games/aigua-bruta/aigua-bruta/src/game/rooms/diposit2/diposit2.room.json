@@ -2,14 +2,14 @@
   "id": "diposit2",
   "name": "Dipòsit 2",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 10,
-            "y": 170
+            "x": 13,
+            "y": 227
           },
           {
-            "x": 470,
-            "y": 170
+            "x": 627,
+            "y": 227
           },
           {
-            "x": 476,
-            "y": 196
+            "x": 635,
+            "y": 261
           },
           {
-            "x": 4,
-            "y": 196
+            "x": 5,
+            "y": 261
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 196,
+          "x": 261,
           "y": 0
         },
         {
-          "x": 248,
+          "x": 331,
           "y": 0
         },
         {
-          "x": 248,
-          "y": 158
+          "x": 331,
+          "y": 211
         },
         {
-          "x": 196,
-          "y": 158
+          "x": 261,
+          "y": 211
         }
       ],
       "walkToPoint": {
-        "x": 222,
-        "y": 174
+        "x": 296,
+        "y": 232
       },
       "lookAtPoint": {
-        "x": 222,
-        "y": 158
+        "x": 296,
+        "y": 211
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 310,
-          "y": 86
+          "x": 413,
+          "y": 115
         },
         {
-          "x": 364,
-          "y": 86
+          "x": 485,
+          "y": 115
         },
         {
-          "x": 364,
-          "y": 160
+          "x": 485,
+          "y": 213
         },
         {
-          "x": 310,
-          "y": 160
+          "x": 413,
+          "y": 213
         }
       ],
       "walkToPoint": {
-        "x": 336,
-        "y": 178
+        "x": 448,
+        "y": 237
       },
       "lookAtPoint": {
-        "x": 337,
-        "y": 160
+        "x": 449,
+        "y": 213
       }
     },
     {
@@ -111,29 +111,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 58,
-          "y": 72
+          "x": 72,
+          "y": 94
         },
         {
-          "x": 148,
-          "y": 72
+          "x": 206,
+          "y": 94
         },
         {
-          "x": 148,
-          "y": 106
+          "x": 206,
+          "y": 143
         },
         {
-          "x": 58,
-          "y": 106
+          "x": 72,
+          "y": 143
         }
       ],
       "walkToPoint": {
-        "x": 104,
-        "y": 176
+        "x": 139,
+        "y": 235
       },
       "lookAtPoint": {
-        "x": 103,
-        "y": 106
+        "x": 139,
+        "y": 143
       }
     }
   ],
@@ -197,8 +197,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 196,
-      "y": 186,
+      "x": 261,
+      "y": 248,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -207,8 +207,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 256,
-      "y": 188,
+      "x": 341,
+      "y": 251,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

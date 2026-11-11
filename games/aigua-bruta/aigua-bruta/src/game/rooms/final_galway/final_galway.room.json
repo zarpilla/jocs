@@ -2,14 +2,14 @@
   "id": "final_galway",
   "name": "Galway",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 100,
-            "y": 186
+            "x": 133,
+            "y": 248
           },
           {
-            "x": 380,
-            "y": 186
+            "x": 507,
+            "y": 248
           },
           {
-            "x": 380,
-            "y": 200
+            "x": 507,
+            "y": 267
           },
           {
-            "x": 100,
-            "y": 200
+            "x": 133,
+            "y": 267
           }
         ],
         "holes": []
@@ -87,7 +87,7 @@
         "davant": {}
       },
       "zIndex": 20,
-      "baseline": 182
+      "baseline": 243
     },
     {
       "id": "badia",
@@ -122,8 +122,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 124,
-      "y": 192,
+      "x": 165,
+      "y": 256,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -132,8 +132,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 360,
-      "y": 192,
+      "x": 480,
+      "y": 256,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -142,8 +142,8 @@
     {
       "instanceId": "diu-1",
       "definition": "diu/diu.character.json",
-      "x": 318,
-      "y": 146,
+      "x": 424,
+      "y": 195,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -152,8 +152,8 @@
     {
       "instanceId": "nadia-1",
       "definition": "nadia/nadia.character.json",
-      "x": 218,
-      "y": 170,
+      "x": 291,
+      "y": 227,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -162,8 +162,8 @@
     {
       "instanceId": "capitana-1",
       "definition": "capitana/capitana.character.json",
-      "x": 176,
-      "y": 170,
+      "x": 235,
+      "y": 227,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -172,8 +172,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 262,
-      "y": 170,
+      "x": 349,
+      "y": 227,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -182,8 +182,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 304,
-      "y": 170,
+      "x": 405,
+      "y": 227,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

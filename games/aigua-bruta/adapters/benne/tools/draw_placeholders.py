@@ -21,6 +21,9 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from escala import RESOLUCIO  # noqa: E402
+if RESOLUCIO == 640:
+    import hd640  # noqa: E402,F401  (posa hd.pix a 640×360 abans de cap sala)
 import room_designs  # noqa: E402
 from room_designs import DESIGNS, C  # noqa: E402
 from draw_items import icon  # noqa: E402
@@ -28,8 +31,8 @@ from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
 from hd.pix import W as HD_W, H as HD_H  # noqa: E402
 from hd.render import has_hd, render as render_hd, render_anims as render_hd_anims, front as render_hd_front  # noqa: E402
 
-# La casella de l'inventari de la plantilla 9-verb (36×20) passada a 480×270.
-INV_W, INV_H = 49, 27
+# La casella de l'inventari: la de la plantilla 9-verb (36×20) passada a la resolució del joc.
+from draw_items import W as INV_W, H as INV_H  # noqa: E402
 
 PALETTE = {
     # Iri: el pis i els ordinadors (càlid, nit, pantalles)
@@ -400,7 +403,8 @@ def draw_cover_gui(game_dir: Path):
         return
     d.mkdir(parents=True, exist_ok=True)
     buttons = [ctl for ctl in json.loads(gui.read_text())['controls'] if ctl.get('type') == 'button']
-    w, h = 480, 270
+    res = json.loads((game_dir / 'game-config.json').read_text()).get('resolution', {})
+    w, h = res.get('width', 480), res.get('height', 270)
     frames, tags = [], []
     for b in buttons:
         for tag, fill, vora, llum in ((b['id'], (10, 16, 34, 225), (16, 120, 118), (20, 70, 80)),

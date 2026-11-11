@@ -2,14 +2,14 @@
   "id": "caixa_cadenes",
   "name": "Caixa de cadenes",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,24 +18,24 @@
         "active": true,
         "points": [
           {
-            "x": 188,
-            "y": 164
+            "x": 251,
+            "y": 219
           },
           {
-            "x": 402,
-            "y": 164
+            "x": 536,
+            "y": 219
           },
           {
-            "x": 418,
-            "y": 197
+            "x": 557,
+            "y": 263
           },
           {
-            "x": 164,
-            "y": 197
+            "x": 219,
+            "y": 263
           },
           {
-            "x": 182,
-            "y": 184
+            "x": 243,
+            "y": 245
           }
         ],
         "holes": []
@@ -50,29 +50,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 204,
+          "x": 272,
           "y": 0
         },
         {
-          "x": 276,
+          "x": 368,
           "y": 0
         },
         {
-          "x": 276,
-          "y": 150
+          "x": 368,
+          "y": 200
         },
         {
-          "x": 204,
-          "y": 150
+          "x": 272,
+          "y": 200
         }
       ],
       "walkToPoint": {
-        "x": 240,
-        "y": 168
+        "x": 320,
+        "y": 224
       },
       "lookAtPoint": {
-        "x": 240,
-        "y": 150
+        "x": 320,
+        "y": 200
       },
       "defaultVerb": "open"
     },
@@ -83,29 +83,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 48,
+          "x": 64,
           "y": 0
         },
         {
-          "x": 186,
+          "x": 248,
           "y": 0
         },
         {
-          "x": 186,
-          "y": 182
+          "x": 248,
+          "y": 243
         },
         {
-          "x": 48,
-          "y": 182
+          "x": 64,
+          "y": 243
         }
       ],
       "walkToPoint": {
-        "x": 196,
-        "y": 186
+        "x": 261,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 117,
-        "y": 182
+        "x": 156,
+        "y": 243
       }
     }
   ],
@@ -135,30 +135,30 @@
       "collider": {
         "points": [
           {
-            "x": 260,
-            "y": 168
+            "x": 347,
+            "y": 224
           },
           {
-            "x": 356,
-            "y": 168
+            "x": 475,
+            "y": 224
           },
           {
-            "x": 356,
-            "y": 190
+            "x": 475,
+            "y": 253
           },
           {
-            "x": 260,
-            "y": 190
+            "x": 347,
+            "y": 253
           }
         ]
       },
       "walkToPoint": {
-        "x": 250,
-        "y": 192
+        "x": 333,
+        "y": 256
       },
       "lookAtPoint": {
-        "x": 308,
-        "y": 190
+        "x": 411,
+        "y": 253
       },
       "description": "manta"
     },
@@ -195,8 +195,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 232,
-      "y": 190,
+      "x": 309,
+      "y": 253,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -205,8 +205,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 196,
-      "y": 194,
+      "x": 261,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -215,8 +215,8 @@
     {
       "instanceId": "juana-1",
       "definition": "juana/juana.character.json",
-      "x": 302,
-      "y": 182,
+      "x": 403,
+      "y": 243,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

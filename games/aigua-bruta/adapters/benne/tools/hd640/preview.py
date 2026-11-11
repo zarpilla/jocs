@@ -59,6 +59,8 @@ def main():
         anims = {aid: (an['frames'](), an.get('frameDuration', 150)) for aid, an in getattr(mod, 'ANIMS', {}).items()}
     else:
         W, H, bar_y, scale, art = 480, 270, 195, 4, ART
+        import escala
+        escala.RESOLUCIO = 480          # el render de 480 (hd/rooms), encara que el joc sigui a 640
         from hd.render import render, render_anims, load
         mod = load(a.sala)
         bg, props = render(a.sala)

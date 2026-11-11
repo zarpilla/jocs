@@ -1,10 +1,14 @@
 """
-Escala de l'art. A Suma Zero es dissenya directament a la resolució del joc (480×270, escala 1);
-a Ferro-9 es dissenyava a 352×198. Si mai es canvia la resolució, només cal tocar això
-(i les constants de benne-content.ts).
+Escala de l'art. Aigua bruta es dissenya directament a la resolució del joc, 640×360 (escala 1): l'art és a
+hd640/ (sales, personatges, inventari, GUI, font). Fins a l'11/2026 era a 480×270 (hd/), i a Ferro-9 es dissenyava
+a 352×198.
+
+RESOLUCIO tria quin art fan servir les eines (draw_placeholders, draw_characters, draw_items, room_designs):
+640 → hd640/, 480 → hd/. La resolució del projecte Benne és la de game-config.json (hd640/aplica.py la posa).
 """
-DESIGN_W, DESIGN_H = 480, 270
-GAME_W, GAME_H = 480, 270
+RESOLUCIO = 640
+DESIGN_W, DESIGN_H = (640, 360) if RESOLUCIO == 640 else (480, 270)
+GAME_W, GAME_H = DESIGN_W, DESIGN_H
 SCALE = GAME_W / DESIGN_W  # 1
 
 

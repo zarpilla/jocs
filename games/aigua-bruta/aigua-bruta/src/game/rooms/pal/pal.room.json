@@ -2,14 +2,14 @@
   "id": "pal",
   "name": "Pal",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 178,
-            "y": 164
+            "x": 237,
+            "y": 219
           },
           {
-            "x": 470,
-            "y": 164
+            "x": 627,
+            "y": 219
           },
           {
-            "x": 476,
-            "y": 198
+            "x": 635,
+            "y": 264
           },
           {
-            "x": 168,
-            "y": 198
+            "x": 224,
+            "y": 264
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 388,
-          "y": 138
+          "x": 517,
+          "y": 184
         },
         {
-          "x": 452,
-          "y": 138
+          "x": 603,
+          "y": 184
         },
         {
-          "x": 452,
-          "y": 192
+          "x": 603,
+          "y": 256
         },
         {
-          "x": 388,
-          "y": 192
+          "x": 517,
+          "y": 256
         }
       ],
       "walkToPoint": {
-        "x": 420,
-        "y": 192
+        "x": 560,
+        "y": 256
       },
       "lookAtPoint": {
-        "x": 420,
-        "y": 192
+        "x": 560,
+        "y": 256
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 205,
-          "y": 60
+          "x": 273,
+          "y": 80
         },
         {
-          "x": 267,
-          "y": 60
+          "x": 356,
+          "y": 80
         },
         {
-          "x": 267,
-          "y": 150
+          "x": 356,
+          "y": 200
         },
         {
-          "x": 205,
-          "y": 150
+          "x": 273,
+          "y": 200
         }
       ],
       "walkToPoint": {
-        "x": 236,
-        "y": 172
+        "x": 315,
+        "y": 229
       },
       "lookAtPoint": {
-        "x": 236,
-        "y": 150
+        "x": 314,
+        "y": 200
       }
     },
     {
@@ -111,29 +111,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 2,
-          "y": 96
+          "x": 3,
+          "y": 128
         },
         {
-          "x": 150,
-          "y": 96
+          "x": 200,
+          "y": 128
         },
         {
-          "x": 150,
-          "y": 192
+          "x": 200,
+          "y": 256
         },
         {
-          "x": 2,
-          "y": 192
+          "x": 3,
+          "y": 256
         }
       ],
       "walkToPoint": {
-        "x": 182,
-        "y": 184
+        "x": 243,
+        "y": 245
       },
       "lookAtPoint": {
-        "x": 76,
-        "y": 192
+        "x": 101,
+        "y": 256
       }
     }
   ],
@@ -181,30 +181,30 @@
       "collider": {
         "points": [
           {
-            "x": 2,
-            "y": 96
+            "x": 3,
+            "y": 128
           },
           {
-            "x": 150,
-            "y": 96
+            "x": 200,
+            "y": 128
           },
           {
-            "x": 150,
-            "y": 192
+            "x": 200,
+            "y": 256
           },
           {
-            "x": 2,
-            "y": 192
+            "x": 3,
+            "y": 256
           }
         ]
       },
       "walkToPoint": {
-        "x": 182,
-        "y": 184
+        "x": 243,
+        "y": 245
       },
       "lookAtPoint": {
-        "x": 76,
-        "y": 192
+        "x": 101,
+        "y": 256
       },
       "description": "mar"
     },
@@ -224,8 +224,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 262,
-      "y": 188,
+      "x": 349,
+      "y": 251,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -234,8 +234,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 300,
-      "y": 192,
+      "x": 400,
+      "y": 256,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -244,8 +244,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 339,
-      "y": 166,
+      "x": 452,
+      "y": 221,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

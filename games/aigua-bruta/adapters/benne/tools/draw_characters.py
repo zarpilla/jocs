@@ -249,4 +249,11 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    from escala import RESOLUCIO
+    if RESOLUCIO == 640:
+        # A 640×360 les figures les dibuixa hd640/draw_characters.py (×4/3), al mateix lloc.
+        import runpy
+        sys.argv = [sys.argv[0], str(OUT)]
+        runpy.run_path(str(Path(__file__).resolve().parent / 'hd640' / 'draw_characters.py'), run_name='__main__')
+    else:
+        main()

@@ -1,7 +1,7 @@
 {
   "id": "game-menu",
   "name": "Game Menu",
-  "description": "",
+  "description": " [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -10,10 +10,10 @@
     {
       "type": "nineSliceImage",
       "id": "menu-bg",
-      "x": 161,
-      "y": 57,
-      "width": 158,
-      "height": 155,
+      "x": 215,
+      "y": 76,
+      "width": 211,
+      "height": 207,
       "tag": "9-slice-BG",
       "sliceNames": {
         "topLeft": "TopLeft",
@@ -31,10 +31,10 @@
     {
       "type": "grid",
       "id": "menu-layout",
-      "x": 170,
-      "y": 63,
-      "width": 139,
-      "height": 139,
+      "x": 227,
+      "y": 84,
+      "width": 185,
+      "height": 185,
       "rows": 6,
       "columns": 1,
       "zIndex": 2
@@ -61,8 +61,8 @@
       "id": "save",
       "x": 0,
       "y": 0,
-      "width": 68,
-      "height": 20,
+      "width": 91,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Desa",
       "font": "aigua-regular",
@@ -71,7 +71,7 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-68x20",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -80,9 +80,9 @@
         "align": "center-left"
       },
       "states": {
-        "hover": "key-68x20-hover",
-        "pressed": "key-68x20-pressed",
-        "disabled": "key-68x20-disabled"
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -100,8 +100,8 @@
       "id": "load",
       "x": 0,
       "y": 0,
-      "width": 68,
-      "height": 20,
+      "width": 91,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Carrega",
       "font": "aigua-regular",
@@ -110,7 +110,7 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-68x20",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -119,9 +119,9 @@
         "align": "center-right"
       },
       "states": {
-        "hover": "key-68x20-hover",
-        "pressed": "key-68x20-pressed",
-        "disabled": "key-68x20-disabled"
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -140,8 +140,8 @@
       "scriptName": "settingsBtn",
       "x": 0,
       "y": 0,
-      "width": 139,
-      "height": 20,
+      "width": 185,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Opcions",
       "font": "aigua-regular",
@@ -150,7 +150,7 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-139x20",
+      "backgroundTag": "key-185x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -159,9 +159,9 @@
         "align": "center"
       },
       "states": {
-        "hover": "key-139x20-hover",
-        "pressed": "key-139x20-pressed",
-        "disabled": "key-139x20-disabled"
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -179,8 +179,8 @@
       "id": "quit",
       "x": 0,
       "y": 0,
-      "width": 139,
-      "height": 20,
+      "width": 185,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Surt",
       "font": "aigua-regular",
@@ -189,7 +189,7 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-139x20",
+      "backgroundTag": "key-185x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -198,9 +198,9 @@
         "align": "center"
       },
       "states": {
-        "hover": "key-139x20-hover",
-        "pressed": "key-139x20-pressed",
-        "disabled": "key-139x20-disabled"
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -218,8 +218,8 @@
       "id": "resume",
       "x": 0,
       "y": 0,
-      "width": 139,
-      "height": 20,
+      "width": 185,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Continua",
       "font": "aigua-regular",
@@ -228,7 +228,7 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-139x20",
+      "backgroundTag": "key-185x27",
       "gridPlacement": {
         "gridControlId": "menu-layout",
         "row": 1,
@@ -236,9 +236,9 @@
         "align": "center"
       },
       "states": {
-        "hover": "key-139x20-hover",
-        "pressed": "key-139x20-pressed",
-        "disabled": "key-139x20-disabled"
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -256,8 +256,8 @@
       "id": "historial",
       "x": 0,
       "y": 0,
-      "width": 68,
-      "height": 20,
+      "width": 91,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Historial",
       "font": "aigua-regular",
@@ -266,7 +266,7 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-68x20",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -275,9 +275,9 @@
         "align": "center-left"
       },
       "states": {
-        "hover": "key-68x20-hover",
-        "pressed": "key-68x20-pressed",
-        "disabled": "key-68x20-disabled"
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",
@@ -295,8 +295,8 @@
       "id": "pista",
       "x": 0,
       "y": 0,
-      "width": 68,
-      "height": 20,
+      "width": 91,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Pista",
       "font": "aigua-regular",
@@ -305,7 +305,7 @@
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "key-68x20",
+      "backgroundTag": "key-91x27",
       "zIndex": 5,
       "gridPlacement": {
         "gridControlId": "menu-layout",
@@ -314,9 +314,9 @@
         "align": "center-right"
       },
       "states": {
-        "hover": "key-68x20-hover",
-        "pressed": "key-68x20-pressed",
-        "disabled": "key-68x20-disabled"
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
       },
       "textColorStates": {
         "hover": "#ff963c",

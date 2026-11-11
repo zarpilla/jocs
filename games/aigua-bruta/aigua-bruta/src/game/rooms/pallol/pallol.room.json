@@ -2,14 +2,14 @@
   "id": "pallol",
   "name": "Pallol",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,36 +18,36 @@
         "active": true,
         "points": [
           {
-            "x": 6,
-            "y": 164
+            "x": 8,
+            "y": 219
           },
           {
-            "x": 250,
-            "y": 164
+            "x": 333,
+            "y": 219
           },
           {
-            "x": 252,
-            "y": 176
+            "x": 336,
+            "y": 235
           },
           {
-            "x": 330,
-            "y": 176
+            "x": 440,
+            "y": 235
           },
           {
-            "x": 332,
-            "y": 164
+            "x": 443,
+            "y": 219
           },
           {
-            "x": 474,
-            "y": 164
+            "x": 632,
+            "y": 219
           },
           {
-            "x": 478,
-            "y": 197
+            "x": 637,
+            "y": 263
           },
           {
-            "x": 2,
-            "y": 197
+            "x": 3,
+            "y": 263
           }
         ],
         "holes": []
@@ -62,29 +62,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 6,
-          "y": 62
+          "x": 8,
+          "y": 83
         },
         {
-          "x": 56,
-          "y": 62
+          "x": 75,
+          "y": 83
         },
         {
-          "x": 56,
-          "y": 152
+          "x": 75,
+          "y": 203
         },
         {
-          "x": 6,
-          "y": 152
+          "x": 8,
+          "y": 203
         }
       ],
       "walkToPoint": {
-        "x": 34,
-        "y": 168
+        "x": 45,
+        "y": 224
       },
       "lookAtPoint": {
-        "x": 31,
-        "y": 152
+        "x": 41,
+        "y": 203
       },
       "defaultVerb": "open"
     },
@@ -95,29 +95,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 76,
-          "y": 32
+          "x": 101,
+          "y": 43
         },
         {
-          "x": 264,
-          "y": 32
+          "x": 352,
+          "y": 43
         },
         {
-          "x": 264,
-          "y": 154
+          "x": 352,
+          "y": 205
         },
         {
-          "x": 76,
-          "y": 154
+          "x": 101,
+          "y": 205
         }
       ],
       "walkToPoint": {
-        "x": 170,
-        "y": 170
+        "x": 227,
+        "y": 227
       },
       "lookAtPoint": {
-        "x": 170,
-        "y": 154
+        "x": 226,
+        "y": 205
       }
     },
     {
@@ -127,29 +127,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 14,
-          "y": 34
+          "x": 19,
+          "y": 45
         },
         {
-          "x": 50,
-          "y": 34
+          "x": 67,
+          "y": 45
         },
         {
-          "x": 50,
-          "y": 62
+          "x": 67,
+          "y": 83
         },
         {
-          "x": 14,
-          "y": 62
+          "x": 19,
+          "y": 83
         }
       ],
       "walkToPoint": {
-        "x": 40,
-        "y": 168
+        "x": 53,
+        "y": 224
       },
       "lookAtPoint": {
-        "x": 32,
-        "y": 62
+        "x": 43,
+        "y": 83
       }
     }
   ],
@@ -210,8 +210,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 200,
-      "y": 190,
+      "x": 267,
+      "y": 253,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -220,8 +220,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 150,
-      "y": 194,
+      "x": 200,
+      "y": 259,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -230,8 +230,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 400,
-      "y": 186,
+      "x": 533,
+      "y": 248,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -240,8 +240,8 @@
     {
       "instanceId": "diu-1",
       "definition": "diu/diu.character.json",
-      "x": 379,
-      "y": 190,
+      "x": 505,
+      "y": 253,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

@@ -2,14 +2,14 @@
   "id": "menjador",
   "name": "Menjador",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,36 +18,36 @@
         "active": true,
         "points": [
           {
-            "x": 6,
-            "y": 166
+            "x": 8,
+            "y": 221
           },
           {
-            "x": 142,
-            "y": 166
+            "x": 189,
+            "y": 221
           },
           {
-            "x": 142,
-            "y": 174
+            "x": 189,
+            "y": 232
           },
           {
-            "x": 386,
-            "y": 174
+            "x": 515,
+            "y": 232
           },
           {
-            "x": 386,
-            "y": 166
+            "x": 515,
+            "y": 221
           },
           {
-            "x": 476,
-            "y": 166
+            "x": 635,
+            "y": 221
           },
           {
-            "x": 476,
-            "y": 197
+            "x": 635,
+            "y": 263
           },
           {
-            "x": 6,
-            "y": 197
+            "x": 8,
+            "y": 263
           }
         ],
         "holes": []
@@ -62,29 +62,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 428,
-          "y": 46
+          "x": 571,
+          "y": 61
         },
         {
-          "x": 474,
-          "y": 46
+          "x": 632,
+          "y": 61
         },
         {
-          "x": 474,
-          "y": 152
+          "x": 632,
+          "y": 203
         },
         {
-          "x": 428,
-          "y": 152
+          "x": 571,
+          "y": 203
         }
       ],
       "walkToPoint": {
-        "x": 450,
-        "y": 176
+        "x": 600,
+        "y": 235
       },
       "lookAtPoint": {
-        "x": 451,
-        "y": 152
+        "x": 601,
+        "y": 203
       },
       "defaultVerb": "open"
     },
@@ -95,29 +95,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 62,
-          "y": 46
+          "x": 83,
+          "y": 61
         },
         {
-          "x": 108,
-          "y": 46
+          "x": 144,
+          "y": 61
         },
         {
-          "x": 108,
-          "y": 152
+          "x": 144,
+          "y": 203
         },
         {
-          "x": 62,
-          "y": 152
+          "x": 83,
+          "y": 203
         }
       ],
       "walkToPoint": {
-        "x": 85,
-        "y": 176
+        "x": 113,
+        "y": 235
       },
       "lookAtPoint": {
-        "x": 85,
-        "y": 152
+        "x": 113,
+        "y": 203
       },
       "defaultVerb": "open"
     },
@@ -128,29 +128,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 6,
-          "y": 44
+          "x": 8,
+          "y": 59
         },
         {
-          "x": 54,
-          "y": 44
+          "x": 72,
+          "y": 59
         },
         {
-          "x": 54,
-          "y": 152
+          "x": 72,
+          "y": 203
         },
         {
-          "x": 6,
-          "y": 152
+          "x": 8,
+          "y": 203
         }
       ],
       "walkToPoint": {
-        "x": 30,
-        "y": 176
+        "x": 40,
+        "y": 235
       },
       "lookAtPoint": {
-        "x": 30,
-        "y": 152
+        "x": 40,
+        "y": 203
       },
       "defaultVerb": "open"
     },
@@ -161,29 +161,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 108,
-          "y": 76
+          "x": 144,
+          "y": 101
         },
         {
-          "x": 156,
-          "y": 76
+          "x": 208,
+          "y": 101
         },
         {
-          "x": 156,
-          "y": 120
+          "x": 208,
+          "y": 160
         },
         {
-          "x": 108,
-          "y": 120
+          "x": 144,
+          "y": 160
         }
       ],
       "walkToPoint": {
-        "x": 131,
-        "y": 178
+        "x": 175,
+        "y": 237
       },
       "lookAtPoint": {
-        "x": 132,
-        "y": 120
+        "x": 176,
+        "y": 160
       }
     },
     {
@@ -193,29 +193,29 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 232,
-          "y": 24
+          "x": 309,
+          "y": 32
         },
         {
-          "x": 294,
-          "y": 24
+          "x": 392,
+          "y": 32
         },
         {
-          "x": 294,
-          "y": 76
+          "x": 392,
+          "y": 101
         },
         {
-          "x": 232,
-          "y": 76
+          "x": 309,
+          "y": 101
         }
       ],
       "walkToPoint": {
-        "x": 262,
-        "y": 186
+        "x": 349,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 263,
-        "y": 76
+        "x": 350,
+        "y": 101
       }
     },
     {
@@ -225,29 +225,29 @@
       "zIndex": 5,
       "points": [
         {
-          "x": 148,
-          "y": 120
+          "x": 197,
+          "y": 160
         },
         {
-          "x": 380,
-          "y": 120
+          "x": 507,
+          "y": 160
         },
         {
-          "x": 380,
-          "y": 168
+          "x": 507,
+          "y": 224
         },
         {
-          "x": 148,
-          "y": 168
+          "x": 197,
+          "y": 224
         }
       ],
       "walkToPoint": {
-        "x": 262,
-        "y": 186
+        "x": 349,
+        "y": 248
       },
       "lookAtPoint": {
-        "x": 264,
-        "y": 168
+        "x": 352,
+        "y": 224
       }
     }
   ],
@@ -274,7 +274,7 @@
         "davant": {}
       },
       "zIndex": 20,
-      "baseline": 162
+      "baseline": 216
     },
     {
       "id": "ulls_dia",
@@ -320,8 +320,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 420,
-      "y": 190,
+      "x": 560,
+      "y": 253,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -330,8 +330,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 110,
-      "y": 192,
+      "x": 147,
+      "y": 256,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -340,8 +340,8 @@
     {
       "instanceId": "capitana-1",
       "definition": "capitana/capitana.character.json",
-      "x": 176,
-      "y": 156,
+      "x": 235,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -350,8 +350,8 @@
     {
       "instanceId": "bastida-1",
       "definition": "bastida/bastida.character.json",
-      "x": 210,
-      "y": 156,
+      "x": 280,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -360,8 +360,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 244,
-      "y": 156,
+      "x": 325,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -370,8 +370,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 280,
-      "y": 156,
+      "x": 373,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -380,8 +380,8 @@
     {
       "instanceId": "juana-1",
       "definition": "juana/juana.character.json",
-      "x": 314,
-      "y": 156,
+      "x": 419,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -390,8 +390,8 @@
     {
       "instanceId": "nadia-1",
       "definition": "nadia/nadia.character.json",
-      "x": 348,
-      "y": 156,
+      "x": 464,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -400,8 +400,8 @@
     {
       "instanceId": "lind-veu",
       "definition": "lind/lind.character.json",
-      "x": 55,
-      "y": 95,
+      "x": 73,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,
@@ -411,8 +411,8 @@
     {
       "instanceId": "diu-veu",
       "definition": "diu/diu.character.json",
-      "x": 95,
-      "y": 95,
+      "x": 127,
+      "y": 127,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": false,

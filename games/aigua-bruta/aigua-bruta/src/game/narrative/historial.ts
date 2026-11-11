@@ -1,4 +1,3 @@
-// GENERAT per adapters/benne/sync.ts. No l'editis aquí.
 /**
  * L'historial d'Aigua bruta: una pantalla sencera amb les línies dites, que es pot recórrer amb la
  * roda i les fletxes (GUI `historial`, la crea games/aigua-bruta/adapters/benne/joc.ts).
@@ -8,6 +7,7 @@
  */
 import { guis } from '@game';
 import { narrative } from './narrative';
+import mapping from './mapping.generated.json';
 import fontXml from '../assets/fonts/aigua-regular.xml?raw';
 
 // ─── Historial: les últimes línies dites, per tornar-les a llegir ───────────
@@ -46,9 +46,14 @@ function wrap(text: string, max: number): string[] {
   return lines;
 }
 
-// Mides de la GUI `historial` (adapters/benne/benne-content.ts, addHistoryGui).
-const HISTORIAL_AMPLE = 480 - 28;
-const HISTORIAL_FILES = Math.floor((270 - 15 - 4 - 24) / 12);
+// Mides de la GUI `historial` (joc.ts): pantalla sencera, amb marges ×AMPLADA/480. L'alçada de línia és la de la font.
+// L'amplada, del mapping (no de narrative.ts: s'importen l'un a l'altre i encara no hi seria).
+const AMPLADA = (mapping as { resolucio?: { width?: number } }).resolucio?.width ?? 480;
+const K = AMPLADA / 480;
+const ALT = Math.round(AMPLADA * 9 / 16);
+const LINIA = Number(fontXml.match(/lineHeight="(\d+)"/)?.[1] ?? 12);
+const HISTORIAL_AMPLE = AMPLADA - Math.round(28 * K);
+const HISTORIAL_FILES = Math.floor((ALT - Math.round((15 + 4 + 24) * K)) / LINIA);
 let historialEnrere = 0;
 
 /** Omple la GUI de l'historial: les últimes línies a baix; `historialEnrere` files més amunt. */

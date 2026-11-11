@@ -1,7 +1,7 @@
 {
   "id": "display-text",
   "name": "Display Text",
-  "description": "",
+  "description": " [640×360: hd640/gui_rest.py]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -10,10 +10,10 @@
     {
       "type": "nineSliceImage",
       "id": "displayTextBg",
-      "x": 240,
-      "y": 142,
-      "width": 273,
-      "height": 109,
+      "x": 320,
+      "y": 189,
+      "width": 364,
+      "height": 145,
       "tag": "9-slice-BG",
       "sliceNames": {
         "topLeft": "TopLeft",
@@ -32,14 +32,14 @@
     {
       "type": "text",
       "id": "text",
-      "x": 240,
-      "y": 95,
+      "x": 320,
+      "y": 127,
       "text": "Even if a woodchuck could chuck wood and even if a woodchuck would chuck wood, should a woodchuck chuck wood?",
       "font": "aigua-regular",
       "fontSize": 8,
       "color": "#ffffff",
       "zIndex": 2,
-      "wordWrapWidth": 215,
+      "wordWrapWidth": 287,
       "align": "center"
     }
   ]

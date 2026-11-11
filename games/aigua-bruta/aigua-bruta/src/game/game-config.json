@@ -1,8 +1,8 @@
 {
   "name": "aiguabruta",
   "resolution": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "verbs": [
     {
@@ -87,7 +87,7 @@
     "clickProtectMs": 350
   },
   "dialog": {
-    "choiceOptionsViewportHeightPx": 63,
+    "choiceOptionsViewportHeightPx": 84,
     "usedColor": "#888888"
   },
   "perspective": {
