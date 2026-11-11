@@ -7,7 +7,7 @@ import {
 import { tryGetActiveGameStateManager } from '../gameState/resolveGameStateManager.js';
 import { writePersistedCurrentMusicId } from './audioGameState.js';
 import { BENNE_AUDIO_SCRIPT_DISABLED_KEY } from './benneSoundRegistry.js';
-import type { MusicPlayOptions, SoundPlayOptions } from './benneSoundTypes.js';
+import type { AmbientPlayOptions, MusicPlayOptions, SoundPlayOptions } from './benneSoundTypes.js';
 import { benneMusicCacheKey, benneSfxCacheKey, benneVoiceCacheKey } from './benneAudioCacheKeys.js';
 
 /** Author basename — must stay under `audio/sfx`, `audio/music`, or `audio/voice`. */
@@ -130,6 +130,17 @@ export class SoundManager {
   private readonly deferredSfxStarts = new Set<() => void>();
   /** Music starts held until the context is running. Cleared on {@link stopMusic}. */
   private readonly deferredMusicStarts = new Set<() => void>();
+
+  /**
+   * Background loop of the current place (`ambient.play()`): one at a time, uses the SFX volume, and
+   * unlike SFX it is not stopped by room changes or dialog ends.
+   */
+  private ambientSound: Phaser.Sound.BaseSound | null = null;
+  private ambientId: string | null = null;
+  private ambientVolume = 1;
+  /** Volume ramps in progress (timer per sound): fade-ins, fade-outs and volume changes. */
+  private readonly ambientRamps = new Map<Phaser.Sound.BaseSound, ReturnType<typeof setTimeout>>();
+  private readonly deferredAmbientStarts = new Set<() => void>();
 
   constructor(game: Phaser.Game) {
     this.game = game;
@@ -543,6 +554,9 @@ export class SoundManager {
         continue;
       }
       this.setInstanceVolume(sound, voiceVol);
+    }
+    if (this.ambientSound && !this.ambientRamps.has(this.ambientSound)) {
+      this.setInstanceVolume(this.ambientSound, this.ambientTarget());
     }
     // Crossfade tweens own music volumes until the fade completes.
     if (this.musicFadeOutSound != null) {
@@ -1008,6 +1022,95 @@ export class SoundManager {
     }
   }
 
+  /**
+   * Plays `id` (from `assets/audio/sfx/`) as the looping background sound, crossfading from the one
+   * before. Same `id`: only the volume changes. `null` fades the background sound out.
+   */
+  playAmbient(id: string | null, options?: AmbientPlayOptions): void {
+    const fade = Math.max(0, options?.fadeSeconds ?? 1.5);
+    const volume = clamp01(options?.volume ?? 1);
+    if (id === this.ambientId) {
+      this.ambientVolume = volume;
+      if (this.ambientSound) this.rampAmbient(this.ambientSound, this.ambientTarget(), fade, false);
+      return;
+    }
+    this.cancelDeferred(this.deferredAmbientStarts);
+    const old = this.ambientSound;
+    this.ambientSound = null;
+    this.ambientId = id;
+    this.ambientVolume = volume;
+    if (old) this.rampAmbient(old, 0, fade, true);
+    if (id === null || this.isScriptAudioDisabled() || !validateAudioId(id)) {
+      return;
+    }
+    const key = benneSfxCacheKey(id);
+    if (!this.game.cache.audio.has(key)) {
+      if (import.meta.env.DEV) {
+        console.warn(`[Benne] ambient.play("${id}"): missing audio (expected assets/audio/sfx/${id}.*).`);
+      }
+      return;
+    }
+    const start = (): void => {
+      if (this.ambientId !== id || this.ambientSound) {
+        return;
+      }
+      const sound = this.game.sound.add(key, { volume: 0, loop: true });
+      let started = false;
+      try {
+        started = sound.play();
+      } catch {
+        started = false;
+      }
+      if (!started) {
+        this.stopAndRemoveSound(sound);
+        return;
+      }
+      this.ambientSound = sound;
+      this.rampAmbient(sound, this.ambientTarget(), fade, false);
+    };
+    const ctx = this.audioContext();
+    if (ctx && ctx.state !== 'running') {
+      this.deferUntilRunning(ctx, this.deferredAmbientStarts, start);
+      void this.prepareForPlayback();
+      return;
+    }
+    start();
+  }
+
+  /** The background sound playing now (or about to start), or `null`. */
+  getCurrentAmbientId(): string | null {
+    return this.ambientId;
+  }
+
+  private ambientTarget(): number {
+    return this.effectiveSfxVolume({ volume: this.ambientVolume });
+  }
+
+  /** Takes `sound` to `target` volume in `seconds` (with timers, so it also ends in a hidden tab). */
+  private rampAmbient(sound: Phaser.Sound.BaseSound, target: number, seconds: number, thenStop: boolean): void {
+    const pending = this.ambientRamps.get(sound);
+    if (pending !== undefined) clearTimeout(pending);
+    this.ambientRamps.delete(sound);
+    const from = (sound as Phaser.Sound.WebAudioSound).volume ?? 0;
+    const ms = seconds * 1000;
+    const t0 = performance.now();
+    const tick = (): void => {
+      const u = ms > 0 ? Math.min(1, (performance.now() - t0) / ms) : 1;
+      try {
+        this.setInstanceVolume(sound, from + (target - from) * u);
+      } catch {
+        /* the sound may be gone */
+      }
+      if (u < 1) {
+        this.ambientRamps.set(sound, setTimeout(tick, 30));
+        return;
+      }
+      this.ambientRamps.delete(sound);
+      if (thenStop) this.stopAndRemoveSound(sound);
+    };
+    tick();
+  }
+
   stopMusic(): void {
     this.cancelDeferred(this.deferredMusicStarts);
     if (this.isScriptAudioDisabled()) {
@@ -1065,5 +1168,7 @@ export class SoundManager {
     this.stopAllSfx();
     this.stopAllVoice();
     this.stopMusic();
+    this.cancelDeferred(this.deferredAmbientStarts);
+    this.playAmbient(null, { fadeSeconds: 0 });
   }
 }

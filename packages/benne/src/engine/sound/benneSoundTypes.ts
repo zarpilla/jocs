@@ -20,3 +20,11 @@ export interface MusicPlayOptions {
    */
   sync?: boolean;
 }
+
+/** Options for `ambient.play()`: the looping background sound of a place. */
+export interface AmbientPlayOptions {
+  /** Extra multiplier (0–1) on top of effective SFX volume. Default 1. */
+  volume?: number;
+  /** Crossfade from the background sound before (or to the new volume) over this many seconds. Default 1.5. */
+  fadeSeconds?: number;
+}

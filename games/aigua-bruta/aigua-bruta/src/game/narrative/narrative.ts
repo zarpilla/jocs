@@ -5,7 +5,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, ambient, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -278,6 +278,44 @@ export function roomMusic(room: string): string | null {
   const who = roomProtagonist(room);
   return music[room] ?? (who ? music[who] : undefined) ?? null;
 }
+/**
+ * El so de fons de cada sala (`ambient` al mapping.json del joc, fitxers a game/audio/sfx/): un so en bucle
+ * (mar, motor, vent) que sona sota la música. Cada sala té un nom de so o una llista de casos
+ * `{ "if": condició, "sound": so, "volume": 0–1 }` (el primer que es compleix; sense `if`, sempre).
+ * `sound: null` o una sala que no hi és: silenci.
+ */
+type AmbientCase = { if?: Condition; sound: string | null; volume?: number };
+const ambients = (mapping as { ambient?: Record<string, string | AmbientCase[]> }).ambient ?? {};
+export function roomAmbient(room: string): { sound: string; volume: number } | null {
+  const def = ambients[room];
+  if (!def || typeof def === 'string') return def ? { sound: def, volume: 1 } : null;
+  const match = def.find((c) => !c.if || narrative.check(c.if));
+  return match?.sound ? { sound: match.sound, volume: match.volume ?? 1 } : null;
+}
+/** Posa el so de fons que toca a la sala d'ara (o el treu): en entrar-hi i quan l'estat canvia. */
+export function applyAmbientSound() {
+  if (!('ambient' in mapping)) return;
+  const room = world.currentRoom();
+  const now = room ? roomAmbient(room) : null;
+  if (now) ambient.play(now.sound, { volume: now.volume, fadeSeconds: 1.5 });
+  else if (ambient.current) ambient.stop();
+}
+
+/**
+ * El so de cada sortida (`doors` al mapping.json del joc): `"sala.cosa": so`. Sona en arribar a la sala
+ * nova, mentre s'hi entra (si sonés en sortir, el canvi de sala el tallaria).
+ */
+const doors = (mapping as { doors?: Record<string, string> }).doors ?? {};
+let pendingDoor: string | null = null;
+export function setDoorSound(room: string | null, hotspot: string) {
+  pendingDoor = (room && doors[`${room}.${hotspot}`]) || null;
+}
+export function takeDoorSound() {
+  const sound = pendingDoor;
+  pendingDoor = null;
+  return sound;
+}
+
 /** Si totes les pistes duren el mateix i, en canviar-ne, la nova continua al mateix punt (`musicSync`). */
 export const musicSync = (mapping as { musicSync?: boolean }).musicSync === true;
 
@@ -386,6 +424,8 @@ export function applyHotspotVisibility({ keepSpeakers = false } = {}) {
     else handle.active = visible;
   }
   applyCharacterVisibility(room, keepSpeakers);
+  // El so de fons també depèn de l'estat (p. ex. el generador parat).
+  applyAmbientSound();
 }
 
 /**

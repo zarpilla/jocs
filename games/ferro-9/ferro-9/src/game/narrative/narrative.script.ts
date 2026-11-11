@@ -7,13 +7,13 @@
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
  */
-import { MusicHandle, SfxHandle, display, fadeIn, fadeOut, player, saves, stayBlackOnEnter, wait } from '@benne/script';
+import { MusicHandle, SfxHandle, ambient, display, fadeIn, fadeOut, player, saves, stayBlackOnEnter, wait } from '@benne/script';
 import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
   AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  musicSync, roomMusic, recordLine, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
+  musicSync, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -105,6 +105,8 @@ export function routeInteraction(verb: string, target: FallbackTarget, item?: st
   playerActed()
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const result = narrative.interact(request)
+  // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
+  setDoorSound(result?.goTo && !result.dialogue && target.kind !== 'item' ? narrative.world.currentRoom() : null, fromBenne('hotspots', target.id))
   if (result) playResult(result)
   else playLines([narrative.defaultLine(verb)])
 }
@@ -129,7 +131,7 @@ export function onRoomLoaded() {
  */
 export function onRoomEntered() {
   // En desenvolupament, `window.__aventura.provar(situació)` porta la partida a una situació (vegeu `prepareSituation`).
-  if (import.meta.env.DEV) (window as unknown as { __aventura?: unknown }).__aventura = { provar: provarSituacio, narrative }
+  if (import.meta.env.DEV) (window as unknown as { __aventura?: unknown }).__aventura = { provar: provarSituacio, narrative, ambient }
   adoptLoadedState()
   ensureStarted()
   const room = narrative.world.currentRoom()
@@ -145,6 +147,8 @@ export function onRoomEntered() {
   const entering = takeEnteringProtagonist()
   const who = isSharedRoom(room) ? (entering ?? narrative.world.activeProtagonist()) : roomProtagonist(room)
   applyAmbientMusic(room, portada)
+  const porta = takeDoorSound()
+  if (porta) new SfxHandle(porta).play()
   if (who) {
     if (narrative.world.activeProtagonist() !== who) {
       const character = benneCharacter(who)

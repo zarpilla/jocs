@@ -28,7 +28,7 @@ Les ordres s'executen per a un joc: des de `games/<joc>/` (`npm run benne:sync`)
 |---|---|
 | `joc.ts` | Nom, carpeta del projecte Benne, fonts, colors de les veus, retocs a `game-config.json`, GUI pròpies (botons del menú, historial). Tipus: `JocBenne` a `joc-benne.ts`. |
 | `runtime/` | Fitxers del pont propis del joc. Es copien damunt dels comuns: p. ex. `historial.ts`, que cada joc fa a la seva manera. |
-| `mapping.json` | Identificadors que no coincideixen entre el nostre JSON i Benne (`characters`, `items`, `rooms`, `hotspots`), i la música (`music`: sala o protagonista → pista). |
+| `mapping.json` | Identificadors que no coincideixen entre el nostre JSON i Benne (`characters`, `items`, `rooms`, `hotspots`), la música (`music`: sala o protagonista → pista), el so de fons en bucle de cada sala (`ambient`: sala → so, o una llista de casos `{ "if": condició, "sound": so, "volume": 0–1 }`; sona sota la música, no el tallen ni els canvis de sala ni els diàlegs, i es fon d'un a l'altre) i el so de cada sortida (`doors`: `"sala.cosa": so`, sona en arribar a la sala nova). |
 | `placeholder-art/` | Sprites provisionals dels personatges. |
 | `tools/` | Les eines d'art del joc (Python): sales, personatges, objectes, GUI. |
 

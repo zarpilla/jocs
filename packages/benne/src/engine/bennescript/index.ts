@@ -48,6 +48,7 @@ export {
   VerbHandle,
   VideoHandle,
   WalkableHandle,
+  ambient,
   defineFlags,
   defineVars,
   flag,

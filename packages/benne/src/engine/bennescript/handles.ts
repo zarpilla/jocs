@@ -41,7 +41,7 @@ import type { CutsceneOptions } from '../../types/cutscene.js';
 import type { CharacterFollowOptions } from '../../types/characterFollow.js';
 import type { Point2 } from '../../types/room.js';
 import { tryGetBenneSoundManager } from '../sound/benneSoundRegistry.js';
-import type { MusicPlayOptions, SoundPlayOptions } from '../sound/benneSoundTypes.js';
+import type { AmbientPlayOptions, MusicPlayOptions, SoundPlayOptions } from '../sound/benneSoundTypes.js';
 import type { VideoPlayOptions } from '../video/benneVideoTypes.js';
 import {
   activeRoomScene,
@@ -1605,6 +1605,26 @@ export function withMusicControls<T extends Record<string, MusicHandle>>(tracks:
   return Object.defineProperties({ ...tracks }, Object.getOwnPropertyDescriptors(controls)) as T &
     MusicControls<T[keyof T]>;
 }
+
+/**
+ * The looping background sound of the place (`ambient.play('mar')`, from `assets/audio/sfx/`): one at a
+ * time, at the SFX volume, crossfading from the one before. Unlike `sfx`, room changes and dialog ends
+ * do not stop it.
+ */
+export const ambient = {
+  /** Plays this background sound (or only changes its volume, if it already plays). */
+  play(id: string, options?: AmbientPlayOptions): void {
+    soundManager()?.playAmbient(id, options);
+  },
+  /** Fades the background sound out. */
+  stop(fadeSeconds = 1.5): void {
+    soundManager()?.playAmbient(null, { fadeSeconds });
+  },
+  /** The background sound playing now, or `null`. */
+  get current(): string | null {
+    return soundManager()?.getCurrentAmbientId() ?? null;
+  },
+};
 
 /**
  * A video under `assets/videos/` (`video.x`). `VideoPlayOptions`: `loop`, `volume` (0–1),
