@@ -322,6 +322,19 @@
           "who": "capitana",
           "text": "dlg.capitana.esc8g.2"
         }
+      ],
+      "choices": [
+        {
+          "id": "reunir",
+          "text": "dlg.capitana.opt.reunir",
+          "next": "reunir"
+        },
+        {
+          "id": "encara",
+          "text": "dlg.capitana.opt.encara",
+          "silent": true,
+          "end": true
+        }
       ]
     },
     "esc8": {
@@ -333,6 +346,19 @@
         {
           "who": "capitana",
           "text": "dlg.capitana.esc8.2"
+        }
+      ],
+      "choices": [
+        {
+          "id": "reunir",
+          "text": "dlg.capitana.opt.reunir",
+          "next": "reunir"
+        },
+        {
+          "id": "encara",
+          "text": "dlg.capitana.opt.encara",
+          "silent": true,
+          "end": true
         }
       ]
     },
@@ -350,6 +376,32 @@
           "text": "dlg.capitana.res.2",
           "if": {
             "protagonist": "iri"
+          }
+        }
+      ]
+    },
+    "reunir": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.reunir.1"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "reunio_comencada"
+        },
+        {
+          "event": "situar",
+          "args": {
+            "who": "iri",
+            "room": "menjador"
+          }
+        },
+        {
+          "event": "anar",
+          "args": {
+            "room": "menjador"
           }
         }
       ]

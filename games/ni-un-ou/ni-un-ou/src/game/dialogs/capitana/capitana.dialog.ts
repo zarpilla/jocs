@@ -25,3 +25,19 @@ options.revisio_menu__valvula.onChoose(() => {
 options.revisio_menu__fi.onChoose(() => {
   chooseNarrativeOption('capitana', dialog, 'revisio_menu', 'fi')
 })
+
+options.esc8g__reunir.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'esc8g', 'reunir')
+})
+
+options.esc8g__encara.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'esc8g', 'encara')
+})
+
+options.esc8__reunir.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'esc8', 'reunir')
+})
+
+options.esc8__encara.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'esc8', 'encara')
+})

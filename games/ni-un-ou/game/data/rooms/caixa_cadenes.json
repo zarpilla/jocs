@@ -128,14 +128,6 @@
               "value": 7
             },
             {
-              "takeItem": "cisalla",
-              "who": "iri"
-            },
-            {
-              "setFlag": "cisalla_fora",
-              "value": false
-            },
-            {
               "event": "situar",
               "args": {
                 "who": "vet",

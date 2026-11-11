@@ -5,6 +5,29 @@
     "iri",
     "vet"
   ],
+  "onEnter": [
+    {
+      "id": "reunio",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 8
+          },
+          {
+            "flag": "reunio_comencada"
+          },
+          {
+            "protagonist": "vet"
+          }
+        ]
+      },
+      "once": true,
+      "dialogue": "reunio"
+    }
+  ],
   "hotspots": {
     "porta_passadis": {
       "name": "sala.menjador.porta_passadis.nom",
@@ -252,29 +275,13 @@
           },
           "lines": [
             {
-              "who": "narrator",
+              "who": "player",
               "text": "sala.menjador.taula.1"
             }
-          ],
-          "effects": [
-            {
-              "setFlag": "reunio_comencada"
-            },
-            {
-              "event": "situar",
-              "args": {
-                "who": "iri",
-                "room": "menjador"
-              }
-            }
-          ],
-          "dialogue": "reunio"
+          ]
         },
         {
-          "verb": [
-            "use",
-            "talkTo"
-          ],
+          "verb": "talkTo",
           "if": {
             "all": [
               {
@@ -283,11 +290,38 @@
                 "value": 8
               },
               {
+                "flag": "reunio_comencada"
+              },
+              {
                 "protagonist": "vet"
               }
             ]
           },
           "dialogue": "reunio"
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.menjador.espera"
+            }
+          ]
         },
         {
           "verb": [
@@ -338,6 +372,25 @@
         ]
       },
       "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada"
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
+          },
+          "dialogue": "reunio"
+        },
         {
           "verb": "talkTo",
           "if": {

@@ -1132,14 +1132,6 @@
                     "value": 7
                   },
                   {
-                    "takeItem": "cisalla",
-                    "who": "iri"
-                  },
-                  {
-                    "setFlag": "cisalla_fora",
-                    "value": false
-                  },
-                  {
                     "event": "situar",
                     "args": {
                       "who": "vet",
@@ -4826,6 +4818,29 @@
           "iri",
           "vet"
         ],
+        "onEnter": [
+          {
+            "id": "reunio",
+            "verb": "*",
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 8
+                },
+                {
+                  "flag": "reunio_comencada"
+                },
+                {
+                  "protagonist": "vet"
+                }
+              ]
+            },
+            "once": true,
+            "dialogue": "reunio"
+          }
+        ],
         "hotspots": {
           "porta_passadis": {
             "name": "sala.menjador.porta_passadis.nom",
@@ -5073,29 +5088,13 @@
                 },
                 "lines": [
                   {
-                    "who": "narrator",
+                    "who": "player",
                     "text": "sala.menjador.taula.1"
                   }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "reunio_comencada"
-                  },
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "iri",
-                      "room": "menjador"
-                    }
-                  }
-                ],
-                "dialogue": "reunio"
+                ]
               },
               {
-                "verb": [
-                  "use",
-                  "talkTo"
-                ],
+                "verb": "talkTo",
                 "if": {
                   "all": [
                     {
@@ -5104,11 +5103,38 @@
                       "value": 8
                     },
                     {
+                      "flag": "reunio_comencada"
+                    },
+                    {
                       "protagonist": "vet"
                     }
                   ]
                 },
                 "dialogue": "reunio"
+              },
+              {
+                "verb": "use",
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 8
+                    },
+                    {
+                      "flag": "reunio_comencada"
+                    },
+                    {
+                      "protagonist": "vet"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "sala.menjador.espera"
+                  }
+                ]
               },
               {
                 "verb": [
@@ -5159,6 +5185,25 @@
               ]
             },
             "interactions": [
+              {
+                "verb": "talkTo",
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 8
+                    },
+                    {
+                      "flag": "reunio_comencada"
+                    },
+                    {
+                      "protagonist": "vet"
+                    }
+                  ]
+                },
+                "dialogue": "reunio"
+              },
               {
                 "verb": "talkTo",
                 "if": {
@@ -7000,32 +7045,6 @@
                   {
                     "who": "player",
                     "text": "sala.passadis_baix.escotilla.1"
-                  }
-                ]
-              },
-              {
-                "verb": [
-                  "use",
-                  "open",
-                  "walkTo"
-                ],
-                "if": {
-                  "all": [
-                    {
-                      "var": "escena",
-                      "op": "==",
-                      "value": 4
-                    },
-                    {
-                      "flag": "satellit_provat",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.passadis_baix.escotilla.2"
                   }
                 ]
               },
@@ -12861,33 +12880,6 @@
           "pista.iri_obrir.3"
         ]
       },
-      "iri_satellit": {
-        "priority": 3,
-        "when": {
-          "all": [
-            {
-              "var": "escena",
-              "op": "==",
-              "value": 4
-            },
-            {
-              "flag": "portatil_obert"
-            },
-            {
-              "flag": "satellit_provat",
-              "is": false
-            }
-          ]
-        },
-        "doneWhen": {
-          "flag": "satellit_provat"
-        },
-        "levels": [
-          "pista.iri_satellit.1",
-          "pista.iri_satellit.2",
-          "pista.iri_satellit.3"
-        ]
-      },
       "iri_bombes": {
         "priority": 3,
         "when": {
@@ -12898,7 +12890,7 @@
               "value": 4
             },
             {
-              "flag": "satellit_provat"
+              "flag": "portatil_obert"
             }
           ]
         },
@@ -16243,6 +16235,10 @@
                 "text": "dlg.bastida1.arriba.11"
               },
               {
+                "who": "bastida",
+                "text": "dlg.bastida1.arriba.13"
+              },
+              {
                 "who": "narrator",
                 "text": "dlg.bastida1.arriba.12"
               },
@@ -16611,6 +16607,19 @@
                 "who": "capitana",
                 "text": "dlg.capitana.esc8g.2"
               }
+            ],
+            "choices": [
+              {
+                "id": "reunir",
+                "text": "dlg.capitana.opt.reunir",
+                "next": "reunir"
+              },
+              {
+                "id": "encara",
+                "text": "dlg.capitana.opt.encara",
+                "silent": true,
+                "end": true
+              }
             ]
           },
           "esc8": {
@@ -16622,6 +16631,19 @@
               {
                 "who": "capitana",
                 "text": "dlg.capitana.esc8.2"
+              }
+            ],
+            "choices": [
+              {
+                "id": "reunir",
+                "text": "dlg.capitana.opt.reunir",
+                "next": "reunir"
+              },
+              {
+                "id": "encara",
+                "text": "dlg.capitana.opt.encara",
+                "silent": true,
+                "end": true
               }
             ]
           },
@@ -16639,6 +16661,32 @@
                 "text": "dlg.capitana.res.2",
                 "if": {
                   "protagonist": "iri"
+                }
+              }
+            ]
+          },
+          "reunir": {
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.reunir.1"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "reunio_comencada"
+              },
+              {
+                "event": "situar",
+                "args": {
+                  "who": "iri",
+                  "room": "menjador"
+                }
+              },
+              {
+                "event": "anar",
+                "args": {
+                  "room": "menjador"
                 }
               }
             ]
@@ -21488,7 +21536,7 @@
                 "who": "vet",
                 "text": "dlg.walkie.esc4.8",
                 "if": {
-                  "flag": "satellit_provat"
+                  "flag": "portatil_obert"
                 }
               }
             ]
@@ -21827,6 +21875,9 @@
       "dlg.capitana.registre.5": "Galway. I que el guardacostes ens vingui a buscar nedant.",
       "dlg.capitana.esc8.1": "Doctora. Port Hallen és a cinc hores. Si tens alguna cosa a dir, digues-la a tothom.",
       "dlg.capitana.esc8.2": "Al menjador. Jo hi baixo quan em diguis.",
+      "dlg.capitana.opt.reunir": "Reuneix tothom, Capitana. Ara.",
+      "dlg.capitana.opt.encara": "Encara no.",
+      "dlg.capitana.reunir.1": "Al menjador, doncs. Tothom. I que la maquinista baixi del pont.",
       "dlg.capitana.res.1": "Ara no, doctora.",
       "dlg.capitana.res.2": "Ara no, Iri.",
       "dlg.tomas.opt.juana": "Has vist la Juana?",
@@ -22251,6 +22302,7 @@
       "dlg.bastida1.arriba.10": "Aquesta vàlvula té quaranta anys. Els volants cauen.",
       "dlg.bastida1.arriba.11": "Demà en parlem amb la Capitana. Ves a dormir.",
       "dlg.bastida1.arriba.12": "En Diu, assegut damunt d'un tub calent, mira en Bastida molta estona.",
+      "dlg.bastida1.arriba.13": "I la cisalla, al taller. Que no és teva.",
       "aliat.capitana": "La Capitana està amb vosaltres. Aliats: {aliats} de 4.",
       "aliat.nadia": "La Nadia està amb vosaltres. Aliats: {aliats} de 4.",
       "aliat.marcel": "En Marcel està amb vosaltres. Aliats: {aliats} de 4.",
@@ -22687,9 +22739,6 @@
       "pista.iri_obrir.1": "Pilar.",
       "pista.iri_obrir.2": "Usa el portàtil del laboratori i escriu Pilar.",
       "pista.iri_obrir.3": "Usa el portàtil del laboratori i escriu Pilar.",
-      "pista.iri_satellit.1": "Les dades, cap a terra. Per satèl·lit.",
-      "pista.iri_satellit.2": "El terminal de satèl·lit és al pont.",
-      "pista.iri_satellit.3": "Usa l'USB amb el terminal del pont.",
       "pista.iri_bombes.1": "La sala de bombes. «Allà no hi ve ningú.»",
       "pista.iri_bombes.2": "L'escotilla de la sala de bombes és al passadís de baix.",
       "pista.iri_bombes.3": "Baixa a la sala de bombes, per l'escotilla del passadís de baix, i mira-hi bé.",
@@ -22754,8 +22803,8 @@
       "pista.tornar.2": "Porta la Mostra 7 a la infermeria.",
       "pista.tornar.3": "Porta la Mostra 7 a la infermeria.",
       "pista.reunio.1": "Diagnòstic: algú menteix. Tractament: dir-ho davant de tothom.",
-      "pista.reunio.2": "Al menjador. La Vet pot començar la reunió des de la taula.",
-      "pista.reunio.3": "Amb la Vet, ves al menjador i usa la taula. (Abans, si vols, ensenya a la Capitana qui paga el gasoil.)",
+      "pista.reunio.2": "La reunió, la convoca la Capitana. A la seva cabina.",
+      "pista.reunio.3": "Amb la Vet, parla amb la Capitana i demana-li que reuneixi tothom. (Abans, si vols, ensenya-li qui paga el gasoil.)",
       "pista.imprimir.1": "La Capitana no sap qui paga el gasoil. L'USB, sí.",
       "pista.imprimir.2": "Imprimeix la pàgina del registre a la impressora del pont.",
       "pista.imprimir.3": "Usa l'USB amb la impressora del pont i envia la pàgina a la Vet pel muntacàrregues.",
@@ -22824,7 +22873,6 @@
       "sala.passadis_baix.porta_pallol.1": "El pallol: caps, cadenats, pintura i tot el que algun dia pot fer falta.",
       "sala.passadis_baix.porta_pallol.nom": "pallol",
       "sala.passadis_baix.escotilla.1": "La sala de bombes. Allà no hi baixa ningú. Ni jo, si puc.",
-      "sala.passadis_baix.escotilla.2": "Primer, les dades. Si li ha passat res, les dades són el que buscaven.",
       "sala.passadis_baix.escotilla.3": "L'escotilla de la sala de bombes. Allà no hi baixa mai ningú.",
       "sala.passadis_baix.escotilla.nom": "escotilla de la sala de bombes",
       "sala.passadis_baix.escala.1": "L'escala cap a la coberta principal.",
@@ -23055,7 +23103,7 @@
       "sala.menjador.poster.1": "«CIMERA DELS OCEANS · PORT HALLEN». A sota: «Patrocinada per Skarn. Els metalls de la transició verda.»",
       "sala.menjador.poster.2": "Una balena somriu al costat d'un cotxe elèctric.",
       "sala.menjador.poster.nom": "pòster",
-      "sala.menjador.taula.1": "La Vet demana a la Capitana que reuneixi tothom al menjador. I que la maquinista baixi del pont.",
+      "sala.menjador.taula.1": "La reunió, la convoca la Capitana. És el seu vaixell.",
       "sala.menjador.taula.2": "Ho ha de dir la Vet. És ella qui ha fet les revisions.",
       "sala.menjador.taula.3": "La taula llarga del menjador. Quaranta anys de cafès, de cartes i de mapes.",
       "sala.menjador.taula.nom": "taula",

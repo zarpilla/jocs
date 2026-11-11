@@ -260,8 +260,9 @@ export function escena8(p: Jugador, o: Opcions = {}) {
     anar(p, 'cabina_capitana');
     p.use('registre', 'contracte');
   }
-  amb(p, 'vet', 'menjador');
-  p.do('use', 'taula');
+  amb(p, 'vet', 'cabina_capitana');
+  p.talk('capitana', 'reunir');
+  expect(p.room).toBe('menjador');
   p.talk('reunio', 'marcel', 'bastida', 'gat', 'cisalla', 'pipa', 'correu', 'iri'); // Escena 9
 }
 

@@ -36,6 +36,34 @@
       "text": "Ja està. Tensió perfecta.",
       "enabled": false,
       "say": false
+    },
+    {
+      "id": "esc8g__reunir",
+      "scriptName": "esc8g__reunir",
+      "text": "Reuneix tothom, Capitana. Ara.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc8g__encara",
+      "scriptName": "esc8g__encara",
+      "text": "Encara no.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc8__reunir",
+      "scriptName": "esc8__reunir",
+      "text": "Reuneix tothom, Capitana. Ara.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc8__encara",
+      "scriptName": "esc8__encara",
+      "text": "Encara no.",
+      "enabled": false,
+      "say": false
     }
   ]
 }
