@@ -333,20 +333,6 @@
           }
         },
         {
-          "who": "vet",
-          "text": "dlg.walkie.esc1_vet.3",
-          "if": {
-            "flag": "travesser_tret"
-          }
-        },
-        {
-          "who": "iri",
-          "text": "dlg.walkie.esc1_vet.4",
-          "if": {
-            "flag": "travesser_tret"
-          }
-        },
-        {
           "who": "iri",
           "text": "dlg.walkie.esc1_vet.5",
           "if": {
@@ -360,6 +346,86 @@
           "if": {
             "flag": "travesser_tret",
             "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc1_vet.7",
+          "if": {
+            "hasItem": "travesser",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc1_vet.8",
+          "if": {
+            "hasItem": "travesser",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc1_vet.3",
+          "if": {
+            "var": "munta_rebost",
+            "op": "==",
+            "value": "travesser"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc1_vet.4",
+          "if": {
+            "var": "munta_rebost",
+            "op": "==",
+            "value": "travesser"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc1_vet.9",
+          "if": {
+            "all": [
+              {
+                "hasItem": "travesser",
+                "who": "iri"
+              },
+              {
+                "flag": "valvula_tancada",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc1_vet.10",
+          "if": {
+            "all": [
+              {
+                "hasItem": "travesser",
+                "who": "iri"
+              },
+              {
+                "flag": "valvula_tancada",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc1_vet.11",
+          "if": {
+            "flag": "valvula_tancada"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc1_vet.12",
+          "if": {
+            "flag": "valvula_tancada"
           }
         }
       ]
@@ -380,6 +446,14 @@
         },
         {
           "who": "vet",
+          "text": "dlg.walkie.esc1_iri.4",
+          "if": {
+            "hasItem": "travesser",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "vet",
           "text": "dlg.walkie.esc1_iri.3",
           "if": {
             "var": "munta_rebost",
@@ -389,31 +463,32 @@
         },
         {
           "who": "vet",
-          "text": "dlg.walkie.esc1_iri.4",
-          "if": {
-            "hasItem": "travesser",
-            "who": "vet"
-          }
-        },
-        {
-          "who": "vet",
           "text": "dlg.walkie.esc1_iri.5",
           "if": {
             "all": [
               {
-                "flag": "travesser_tret"
-              },
-              {
                 "hasItem": "travesser",
-                "who": "vet",
-                "is": false
+                "who": "iri"
               },
               {
-                "var": "munta_rebost",
-                "op": "!=",
-                "value": "travesser"
+                "flag": "valvula_tancada",
+                "is": false
               }
             ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc1_iri.6",
+          "if": {
+            "flag": "valvula_tancada"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc1_iri.7",
+          "if": {
+            "flag": "valvula_tancada"
           }
         }
       ]
@@ -426,14 +501,138 @@
         },
         {
           "who": "iri",
-          "text": "dlg.walkie.esc2.2"
+          "text": "dlg.walkie.esc2.2",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "flag": "revisio_capitana"
+                },
+                {
+                  "var": "revisions",
+                  "op": ">=",
+                  "value": 3
+                }
+              ]
+            }
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc2.5",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "all": [
+                    {
+                      "flag": "revisio_capitana"
+                    },
+                    {
+                      "var": "revisions",
+                      "op": ">=",
+                      "value": 3
+                    }
+                  ]
+                }
+              },
+              {
+                "flag": "revisio_capitana",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc2.6",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "all": [
+                    {
+                      "flag": "revisio_capitana"
+                    },
+                    {
+                      "var": "revisions",
+                      "op": ">=",
+                      "value": 3
+                    }
+                  ]
+                }
+              },
+              {
+                "flag": "revisio_capitana"
+              }
+            ]
+          }
         },
         {
           "who": "iri",
           "text": "dlg.walkie.esc2.3",
           "if": {
-            "flag": "juana_explica",
-            "is": false
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "revisio_capitana"
+                  },
+                  {
+                    "var": "revisions",
+                    "op": ">=",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "flag": "juana_explica",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc2.7",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "revisio_capitana"
+                  },
+                  {
+                    "var": "revisions",
+                    "op": ">=",
+                    "value": 3
+                  }
+                ]
+              },
+              {
+                "flag": "juana_explica",
+                "is": false
+              },
+              {
+                "flag": "sap_raco",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc2.8",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_raco"
+              },
+              {
+                "flag": "juana_explica",
+                "is": false
+              }
+            ]
           }
         },
         {
@@ -449,16 +648,319 @@
       "lines": [
         {
           "who": "iri",
+          "text": "dlg.walkie.esc3.5",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_radio",
+                    "is": false
+                  },
+                  {
+                    "flag": "radio_feta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc3.6",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_radio",
+                    "is": false
+                  },
+                  {
+                    "flag": "radio_feta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
           "text": "dlg.walkie.esc3.1",
           "if": {
-            "protagonist": "iri"
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "sync_radio"
+              },
+              {
+                "flag": "panell_obert",
+                "is": false
+              },
+              {
+                "flag": "radio_feta",
+                "is": false
+              }
+            ]
           }
         },
         {
           "who": "vet",
           "text": "dlg.walkie.esc3.2",
           "if": {
-            "protagonist": "iri"
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "sync_radio"
+              },
+              {
+                "flag": "panell_obert",
+                "is": false
+              },
+              {
+                "flag": "radio_feta",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc3.7",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "panell_obert"
+                  },
+                  {
+                    "flag": "tram_tret",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc3.9",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "tram_tret"
+                  },
+                  {
+                    "hasItem": "cable_nou",
+                    "who": "iri",
+                    "is": false
+                  },
+                  {
+                    "var": "empalmat",
+                    "op": "<",
+                    "value": 2
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc3.10",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "cable_nou",
+                    "who": "iri"
+                  },
+                  {
+                    "var": "empalmat",
+                    "op": "<",
+                    "value": 2
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc3.11",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "empalmat",
+                    "op": ">=",
+                    "value": 2
+                  },
+                  {
+                    "flag": "radio_feta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc3.8",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "any": [
+                  {
+                    "all": [
+                      {
+                        "flag": "panell_obert"
+                      },
+                      {
+                        "flag": "tram_tret",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "tram_tret"
+                      },
+                      {
+                        "hasItem": "cable_nou",
+                        "who": "iri",
+                        "is": false
+                      },
+                      {
+                        "var": "empalmat",
+                        "op": "<",
+                        "value": 2
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "hasItem": "cable_nou",
+                        "who": "iri"
+                      },
+                      {
+                        "var": "empalmat",
+                        "op": "<",
+                        "value": 2
+                      }
+                    ]
+                  },
+                  {
+                    "all": [
+                      {
+                        "var": "empalmat",
+                        "op": ">=",
+                        "value": 2
+                      },
+                      {
+                        "flag": "radio_feta",
+                        "is": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc3.12",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "radio_feta"
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc3.14",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_radio",
+                    "is": false
+                  },
+                  {
+                    "flag": "radio_feta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc3.15",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_radio",
+                    "is": false
+                  },
+                  {
+                    "flag": "radio_feta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
           }
         },
         {
@@ -470,6 +972,27 @@
                 "protagonist": "vet"
               },
               {
+                "flag": "sync_radio"
+              },
+              {
+                "flag": "radio_feta",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.walkie.esc3.13",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "sync_radio"
+              },
+              {
                 "flag": "radio_feta",
                 "is": false
               }
@@ -479,6 +1002,20 @@
         {
           "who": "vet",
           "text": "dlg.walkie.esc3.4",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "radio_feta"
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc3.16",
           "if": {
             "all": [
               {
@@ -537,7 +1074,86 @@
         },
         {
           "who": "vet",
-          "text": "dlg.walkie.esc4.2"
+          "text": "dlg.walkie.esc4.2",
+          "if": {
+            "flag": "sap_pilar",
+            "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc4.3",
+          "if": {
+            "all": [
+              {
+                "flag": "postal_vista",
+                "is": false
+              },
+              {
+                "flag": "portatil_obert",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc4.4",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_pilar"
+              },
+              {
+                "flag": "portatil_obert",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc4.5",
+          "if": {
+            "all": [
+              {
+                "flag": "portatil_obert"
+              },
+              {
+                "flag": "satellit_provat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc4.6",
+          "if": {
+            "all": [
+              {
+                "flag": "portatil_obert"
+              },
+              {
+                "flag": "satellit_provat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc4.7",
+          "if": {
+            "flag": "satellit_provat"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc4.8",
+          "if": {
+            "flag": "satellit_provat"
+          }
         }
       ]
     },
@@ -546,6 +1162,63 @@
         {
           "who": "player",
           "text": "dlg.walkie.escolten.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.escolten.2",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "nota_enviada",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.escolten.3",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "nota_enviada"
+              },
+              {
+                "var": "munta_rebost",
+                "op": "!=",
+                "value": "nota_vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.escolten.4",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "munta_rebost",
+                "op": "==",
+                "value": "nota_vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.escolten.5",
+          "if": {
+            "protagonist": "vet"
+          }
         }
       ]
     },
@@ -558,6 +1231,15 @@
         {
           "who": "narrator",
           "text": "dlg.walkie.esc5_vet.2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.walkie.esc5_vet.3",
+          "if": {
+            "var": "munta_cuina",
+            "op": "==",
+            "value": "nota_iri"
+          }
         }
       ]
     },
@@ -591,6 +1273,53 @@
         {
           "who": "player",
           "text": "dlg.walkie.esc5.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.esc5.2",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "mentida_triada",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc5.3",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "mentida_dita"
+              },
+              {
+                "flag": "vet_amagada",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.esc5.4",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "vet_amagada"
+              }
+            ]
+          }
         }
       ]
     },
@@ -599,6 +1328,15 @@
         {
           "who": "player",
           "text": "dlg.walkie.res.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.res.2",
+          "if": {
+            "var": "escena",
+            "op": ">=",
+            "value": 6
+          }
         }
       ]
     }
