@@ -21,9 +21,11 @@ K = 4 / 3
 HOR = 171
 TITLE_Y = 21
 S = 10                                    # mida del «píxel» de les lletres
-SHIP = (19, 203, 4.0 * K)
+SHIP = (104, 203, 4.0 * K)              # popa a x=104: sencer, i el camí de la lluna li queda a l'esquerra
 PLAT = (539, HOR + 3, 2.2 * K)
-MOON = (59, 109)
+MOON = (46, 100)
+N = 8                                     # fotogrames del bucle
+BOB = (0, 0, 0, 1, 1, 1, 1, 0)           # el vaixell puja i baixa un píxel amb l'onada
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 
@@ -80,8 +82,9 @@ def _wave(x, y, hor, seed, phase):
     return vnoise((x / K + phase * sx * 0.6) / sx, ((y - hor) / K) / sy, seed)
 
 
-def night_sea(cv, hor, y1, moon_x=None, seed=2, phase=0.0, calm=1.0):
-    """Com exterior.night_sea, calculat a 640: onades, el camí de la lluna; `calm` < 1, mar més plana."""
+def night_sea(cv, hor, y1, moon_x=None, seed=2, phase=0.0, calm=1.0, path=(6, 0.9), twinkle=0):
+    """Com exterior.night_sea, calculat a 640: onades, el camí de la lluna; `calm` < 1, mar més plana.
+    `path`: amplada del camí de la lluna (a l'horitzó i com s'eixampla); `twinkle`: canvia les guspires."""
     for y in range(hor, y1 + 1):
         d = (y - hor) / K
         for x in range(W):
@@ -89,10 +92,10 @@ def night_sea(cv, hor, y1, moon_x=None, seed=2, phase=0.0, calm=1.0):
             n = _wave(x, y, hor, seed, phase)
             lvl += (n - 0.5) * 1.6 * calm + (1.2 * calm if n > 0.78 else 0)
             if moon_x is not None:
-                m = max(0.0, 1 - abs(x - moon_x) / ((6 + d * 0.9) * K))
+                m = max(0.0, 1 - abs(x - moon_x) / ((path[0] + d * path[1]) * K))
                 if m > 0:
                     lvl += m * 1.2
-                    if n > 0.62 and hr(x // 2, y, seed) > 0.25:
+                    if n > 0.62 and hr(x // 2, y, seed + twinkle) > 0.25:
                         lvl += 3.6 * m
             cv.put(x, y, NSEA, lvl, lit=0)
     for x in range(W):
@@ -172,10 +175,12 @@ def title(cv):
 
 def bg(cv, frame=0):
     night_sky(cv, 0, HOR, moon=MOON, seed=31, clouds=0.55)
-    night_sea(cv, HOR, H - 1, moon_x=MOON[0], seed=32, phase=frame * 0.8)
+    phase = 1.4 * math.sin(2 * math.pi * frame / N)       # l'onada va i ve: el bucle no salta
+    night_sea(cv, HOR, H - 1, moon_x=MOON[0], seed=32, phase=phase, path=(2.5, 0.27), twinkle=frame)
     platform(cv, PLAT[0], PLAT[1], PLAT[2], 'night')
     reflection(cv, PLAT[0] - 67, PLAT[0] + 67, PLAT[1], 40, k=0.45, seed=33 + frame)
     xs, ywl, s = SHIP
+    ywl -= BOB[frame % N]
     arenga(cv, xs, ywl, s, 'night', facing=1)
     reflection(cv, xs - 11, xs + 224, ywl, 40, k=0.3, seed=35 + frame)
     if frame % 4 == 3:                                     # el llum vermell de la plataforma, que fa pampallugues
@@ -191,13 +196,13 @@ def _frames():
     base = Canvas(light=LIGHT)
     bg(base)
     frames = []
-    for i in range(4):
+    for i in range(N):
         cv = Canvas(light=LIGHT)
         bg(cv, i)
         frames.append(_diff(cv.img, base.img))
     return frames
 
 
-ANIMS = {'mar': {'frames': _frames, 'frameDuration': 360}}
+ANIMS = {'mar': {'frames': _frames, 'frameDuration': 300}}
 
 GEOMETRIA = {'things': {}, 'spawns': {}}
