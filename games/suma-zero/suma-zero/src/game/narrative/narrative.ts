@@ -444,6 +444,16 @@ export function showSpeaker(who: string) {
 }
 
 /**
+ * Mentre la pantalla és a negre per un títol («Onze de la nit»): qui ha d'aparèixer ja hi és quan torna la
+ * imatge, en lloc de sortir-hi de cop. Qui ha de marxar es queda fins al final (encara pot parlar).
+ */
+export function showDueCharacters() {
+  const room = world.currentRoom();
+  if (!room) return;
+  for (const { id, visible } of narrative.hotspotsIn(room)) if (visible && content.characters[id]) showSpeaker(id);
+}
+
+/**
  * Benne desa si un personatge es veu per personatge, no per sala: si en Tomàs es mostra al bar, la seva
  * veu (invisible) a l'estudi també sortiria. Per això, a cada sala es torna a decidir qui es veu: els
  * personatges que hi són com a cosa i la protagonista, sí; la resta (les veus), no.
