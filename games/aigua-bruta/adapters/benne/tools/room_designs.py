@@ -479,7 +479,8 @@ DESIGNS = {
         'porta': T(6, 64, 50, 150), 'radio': T(150, 60, 300, 130), 'panell': T(320, 60, 400, 140), 'cable': T(334, 90, 386, 120)},
         {'iri': (300, 192), 'vet': (200, 196), 'bastida': (30, 190)},
         colors={'radio': (60, 64, 70), 'panell': COL['metall'], 'cable': COL['taronja']},
-        decor={'panell_obert': lambda c: obj(c, 324, 64, 396, 136, (30, 30, 34))}),
+        decor={'panell_obert': lambda c: obj(c, 324, 64, 396, 136, (30, 30, 34)),
+               'panell_reparat': lambda c: obj(c, 356, 76, 364, 104, (150, 152, 156))}),
     'pal': design(NIT, {
         'escala': T(200, 172, 260, 200, wy=196), 'antena': T(190, 30, 300, 110), 'mar': T(20, 40, 150, 140)},
         {'iri': (240, 190), 'vet': (280, 194), 'marcel': (330, 190)}, exterior=True,

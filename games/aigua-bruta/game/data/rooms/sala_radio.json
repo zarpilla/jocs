@@ -780,6 +780,20 @@
       "visibleIf": {
         "flag": "panell_obert"
       }
+    },
+    "panell_reparat": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "panell_obert"
+          },
+          {
+            "var": "empalmat",
+            "op": ">=",
+            "value": 2
+          }
+        ]
+      }
     }
   }
 }

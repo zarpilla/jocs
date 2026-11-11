@@ -590,6 +590,29 @@ def cable(cv):
     cv.put(CX - 2, 121, DARK, 0)
 
 
+def panell_reparat(cv):
+    """Decorat `panell_reparat` (connector crimpat, panell encara obert): el tram nou al forat del tallat, amb la
+    funda més lluent, i una virolla crimpada a cada empalmament, tapant la malla esfilagarsada."""
+    _cable(cv, CX, 102, 139)
+    for y in range(105, 137):                                         # funda nova: una lluentor que la deixa veure
+        cv.put(CX - 1, y, CABLE, 4.4, lit=0.5)
+    _virolla(cv, CX, 102, 110)
+    _virolla(cv, CX, 131, 139)
+
+
+def _virolla(cv, cx, y0, y1):
+    """Virolla de metall (9 px d'ample) crimpada: un cilindre lluent amb les marques de la crimpadora."""
+    for y in range(y0, y1 + 1):
+        for x in range(cx - 4, cx + 5):
+            u = (x - cx) / 4.5
+            lvl = 2.4 + 1.2 * (-0.3 - u) - 0.7 * u * u
+            if y in (y0 + 2, y0 + 3, y1 - 3, y1 - 2):                 # les dues marques del crimpat
+                lvl -= 1.1
+            cv.put(x, y, MESH, lvl, lit=0.5)
+    cv.hline(cx - 3, cx + 3, y0, MESH, 1.2, lit=0.3)                  # les vores
+    cv.hline(cx - 3, cx + 3, y1, MESH, 1.0, lit=0.3)
+
+
 def dia(cv):
     """Decorat `dia` (sota, Escenes 2 i 3): la sala sencera de dia, amb el cel gris a l'ull de bou i al vidre
     del pont, que es veu per la porta."""
@@ -603,7 +626,7 @@ def dia(cv):
     cv.img.paste(day.img)
 
 
-PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': cable}
+PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': cable, 'panell_reparat': panell_reparat}
 
 
 # ─── Animacions ────────────────────────────────────────────────────────────

@@ -6,7 +6,8 @@ La sala de ràdio, rere el pont: petita, blau grisós com el pont però amb un l
     l'altaveu i el micròfon de mà penjat;
   - el panell de la paret per on baixa el cable de l'antena, amb els cargols de pintura saltada;
   - el rellotge de ràdio (amb els sectors de silenci), el prestatge dels llibres de registre i un ull de bou.
-Props: `dia` (Escenes 2 i 3, de dia), `panell_obert` (el panell sense la xapa, amb el cable de malla d'acer) i `cable` (el tram tallat).
+Props: `dia` (Escenes 2 i 3, de dia), `panell_obert` (el panell sense la xapa, amb el cable de malla d'acer) , `cable` (el tram tallat) i
+`panell_reparat` (el tram nou, amb les virolles crimpades).
 ANIMS: `mar` (de nit) i `dia_mar` (de dia, amb el decorat `dia_mar`, per sobre de `dia`): el mar pel vidre del pont, que
 es veu per la porta, i els pilots de la consola del pont. La ràdio no es mou: és morta fins que l'Iri l'arregla.
 """
@@ -406,6 +407,30 @@ def cable(cv):
     cv.put(cx - 1, 91, DARK, 0)
 
 
+def panell_reparat(cv):
+    """Decorat `panell_reparat` (connector crimpat, panell encara obert): el tram nou al forat del tallat, amb la
+    funda més lluent, i una virolla crimpada a cada empalmament, tapant la malla esfilagarsada."""
+    cx = 360
+    _cable(cv, cx, 77, 104)
+    for y in range(79, 103):                                          # funda nova: una lluentor que la deixa veure
+        cv.put(cx - 1, y, CABLE, 4.4, lit=0.5)
+    _virolla(cv, cx, 77, 83)
+    _virolla(cv, cx, 98, 104)
+
+
+def _virolla(cv, cx, y0, y1):
+    """Virolla de metall (7 px d'ample) crimpada: un cilindre lluent amb les marques de la crimpadora."""
+    for y in range(y0, y1 + 1):
+        for x in range(cx - 3, cx + 4):
+            u = (x - cx) / 3.5
+            lvl = 2.4 + 1.2 * (-0.3 - u) - 0.7 * u * u
+            if y in (y0 + 2, y1 - 2):                                 # les dues marques del crimpat
+                lvl -= 1.1
+            cv.put(x, y, MESH, lvl, lit=0.5)
+    cv.hline(cx - 2, cx + 2, y0, MESH, 1.2, lit=0.3)                  # les vores
+    cv.hline(cx - 2, cx + 2, y1, MESH, 1.0, lit=0.3)
+
+
 def dia(cv):
     """Decorat `dia` (sota, Escenes 2 i 3): la sala sencera de dia, amb el cel gris a l'ull de bou i al vidre
     del pont, que es veu per la porta."""
@@ -419,7 +444,7 @@ def dia(cv):
     cv.img.paste(day.img)
 
 
-PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': cable}
+PROPS = {'dia': dia, 'panell_obert': panell_obert, 'cable': cable, 'panell_reparat': panell_reparat}
 
 
 # ─── Animacions ────────────────────────────────────────────────────────────

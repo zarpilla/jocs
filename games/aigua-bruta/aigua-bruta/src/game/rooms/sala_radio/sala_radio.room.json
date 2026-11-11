@@ -239,6 +239,17 @@
           "frameDuration": 260
         }
       }
+    },
+    {
+      "id": "panell_reparat",
+      "tag": "panell_reparat",
+      "animations": {
+        "panell_reparat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
     }
   ],
   "characters": [

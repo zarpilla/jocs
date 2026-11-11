@@ -587,6 +587,27 @@
         "h": 270
       },
       "duration": 100
+    },
+    "sala_radio 28.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 810,
+        "w": 480,
+        "h": 270
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 480,
+        "h": 270
+      },
+      "sourceSize": {
+        "w": 480,
+        "h": 270
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -629,16 +650,23 @@
         "color": "#000000ff"
       },
       {
-        "name": "mar",
+        "name": "panell_reparat",
         "from": 4,
-        "to": 15,
+        "to": 4,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mar",
+        "from": 5,
+        "to": 16,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "dia_mar",
-        "from": 16,
-        "to": 27,
+        "from": 17,
+        "to": 28,
         "direction": "forward",
         "color": "#000000ff"
       }
