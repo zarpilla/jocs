@@ -476,7 +476,10 @@
       "id": "aigua",
       "tag": "aigua",
       "animations": {
-        "aigua": {}
+        "aigua": {
+          "loop": true,
+          "frameDuration": 200
+        }
       },
       "zIndex": 4,
       "visible": false,
@@ -570,6 +573,34 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "generador_marxa",
+      "tag": "generador_marxa",
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "generador_marxa": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "bomba_marxa",
+      "tag": "bomba_marxa",
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bomba_marxa": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      }
     }
   ],
   "characters": [

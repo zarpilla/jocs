@@ -1209,6 +1209,36 @@
           }
         ]
       }
+    },
+    "generador_marxa": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "!=",
+            "value": 9
+          },
+          {
+            "flag": "rele_posat"
+          }
+        ]
+      },
+      "sota": true
+    },
+    "bomba_marxa": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "flag": "bomba_engegada"
+          }
+        ]
+      },
+      "sota": true
     }
   }
 }

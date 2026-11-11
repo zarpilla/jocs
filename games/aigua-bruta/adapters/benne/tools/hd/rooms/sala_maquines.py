@@ -11,6 +11,8 @@ La sala de màquines de l'Arenga (Escenes 1 i 9). Art definitiu, a partir de la 
   - a terra, la vàlvula de presa de mar sense volant (amb la planxa del terra aixecada) i la bomba de sentina.
 Decorats: `aigua` (dos dits d'aigua), `valvula_tancada` (el travesser fa de volant), `brida` (a l'interruptor),
 `fosc` (el generador parat: només els llums d'emergència).
+Animacions: `separador` (el pilot verd, sempre), `generador_marxa` (el generador en marxa: decorat que s'amaga quan
+és parat), `bomba_marxa` (la bomba de sentina en marxa, Escena 1) i `aigua` (el decorat de l'aigua, amb les ones).
 """
 import math
 from functools import lru_cache
@@ -25,6 +27,9 @@ LAMPS = ((186, 22), (372, 22))
 MEZZ_Y = 74                     # el pis de reixa de l'altell
 BRIDA = [(70, 70, 66), (150, 150, 142), (214, 214, 204), (246, 246, 238)]
 STEELG = [(14, 16, 18), (26, 30, 32), (40, 46, 48), (58, 66, 68), (80, 90, 90), (108, 118, 116), (140, 150, 146)]
+
+# Estat de les animacions mentre es dibuixa un fotograma (None = quiet, com el fons).
+_ST = {'gen': None, 'pump': None, 'wt': 0.0}
 
 LIGHT = Light(ambient=-0.5, vignette=(56, 30), floor_fade=None)
 LIGHT.point(186, 26, r=158, k=2.6, squash=1.05, down=True, power=1.5)
@@ -411,15 +416,22 @@ def generator(cv):
     box(cv, 330, y1 - 4, 414, y1, ENG, 2.2)                           # bancada
     # el dièsel
     box(cv, 334, 46, 370, y1 - 5, ENG, 3.1, grad=0.8)
+    g = _ST['gen']
+    sh = 0 if g is None else (0, 1, 0, -1)[g % 4]                     # en marxa, les culates vibren
     for i in range(3):
-        rrect(cv, 336 + i * 11, 38, 345 + i * 11, 48, 3, ENG, lambda x, y: 4.0 - (y - 38) * 0.08)
+        rrect(cv, 336 + i * 11 + sh, 38, 345 + i * 11 + sh, 48, 3, ENG, lambda x, y: 4.0 - (y - 38) * 0.08)
     for i in range(3):
-        bolt(cv, 340 + i * 11, 43, ENG, 4.2)
+        bolt(cv, 340 + i * 11 + sh, 43, ENG, 4.2)
     cv.rect(338, 54, 366, 60, ENG, 2.4)
     for x in range(339, 366, 3):
         cv.vline(x, 54, 60, ENG, 3.4)
     # la corretja i el volant (a l'esquerra)
     cv.disc(332, 58, 5, 5, ENG, lambda nx, ny: 3.4 - nx - ny)
+    if g is not None:                                                 # el radi del volant, que gira
+        a = math.radians(g * 67.5)
+        for r in (3, 4):
+            cv.put(332 + round(math.cos(a) * r), 58 + round(math.sin(a) * r), CAB, 0.8)
+            cv.put(332 - round(math.cos(a) * r), 58 - round(math.sin(a) * r), ENG, 5.0)
     cv.disc(332, 58, 2, 2, CAB, 4.0)
     # l'alternador: cilindre ajagut amb aletes
     for y in range(44, y1 - 4):
@@ -464,7 +476,9 @@ def panel(cv):
     cv.disc(358, 108, 5, 5, WHITEP, 4.4)
     for a in range(200, 341, 28):
         cv.put(358 + round(math.cos(math.radians(a)) * 4), 108 + round(math.sin(math.radians(a)) * 4), DARK, 0)
-    cv.line(358, 109, 360, 105, REDP, 4.0)
+    g = _ST['gen']
+    tip = (360, 105) if g is None else ((360, 105), (361, 105), (360, 105), (359, 105))[g % 4]
+    cv.line(358, 109, tip[0], tip[1], REDP, 4.0)
     # l'interruptor de la bomba de sentina (la maneta en OFF)
     box(cv, 330, 116, 346, 136, CAB, 2.6)
     cv.disc(338, 125, 5, 5, DARK, 1.6)
@@ -516,7 +530,8 @@ def separator(cv):
     cv.hline(399, 400, 108, YELL, 4.0, lit=0)
     cv.disc(415, 98, 4, 4, CAB, 2.0)                                  # manòmetre
     cv.disc(415, 98, 3, 3, WHITEP, 4.6)
-    cv.line(415, 98, 417, 96, DARK, 0)
+    g = _ST['gen']
+    cv.line(415, 98, 417, 96 + (0 if g is None or g % 2 == 0 else 1), DARK, 0)
     box(cv, 405, 112, 421, 126, CAB, 2.8)                             # caixa de control
     cv.rect(407, 114, 419, 117, [(6, 30, 14), (12, 70, 30), (40, 150, 70), (120, 240, 140)], 1.6, lit=0)
     for x in range(408, 418, 2):
@@ -575,11 +590,11 @@ def water(cv, mask):
                 continue
             c = mix(cv.get(x, y), WC, 0.38)
             sy = 2 * FLOOR_Y - y - 1
-            sx = x + round(math.sin(y * 0.9 + x * 0.05) * 1.4)
+            sx = x + round(math.sin(y * 0.9 + x * 0.05 + _ST['wt']) * 1.4)
             if 0 <= sy < FLOOR_Y and 0 <= sx < W:
                 c = mix(c, src[sx, sy][:3], 0.55 * max(0.0, 1 - depth * 1.3))
             lit = LIGHT(x, y)
-            if math.sin(x * 0.21 + y * 1.9 + math.sin(y * 0.37) * 4) > 0.93 and lit > 0.2 and hr(x // 4, y) > 0.3:
+            if math.sin(x * 0.21 + y * 1.9 + math.sin(y * 0.37) * 4 - _ST['wt']) > 0.93 and lit > 0.2 and hr(x // 4, y) > 0.3:
                 c = mix(c, (140, 190, 180), min(0.5, 0.18 + lit * 0.12))
             cv.flat(x, y, c)
     for x in range(W):
@@ -593,7 +608,7 @@ def water(cv, mask):
                 if not (0 <= x < W) or not mask[y][x]:
                     continue
                 g = math.exp(-((x - lx) / wdt) ** 2) * (1 - t * 0.55)
-                seg = hr(x // (2 + int(t * 4)), y, lx)
+                seg = hr(x // (2 + int(t * 4)), y, lx, round(_ST['wt'] * 4 / math.pi) % 8)
                 if seg < g * 0.55:
                     cv.flat(x, y, mix(cv.get(x, y), WARM, min(0.8, 0.35 + g * 0.5)))
                 elif seg < g * 0.9:
@@ -608,7 +623,7 @@ def reflect_obj(cv, mask, x0, x1, top, base, k=0.4):
         for x in range(x0, x1 + 1):
             if not mask[y][x]:
                 continue
-            sx = x + round(math.sin(y * 0.9) * 1.2)
+            sx = x + round(math.sin(y * 0.9 + _ST['wt']) * 1.2)
             if x0 <= sx <= x1 and top <= sy <= base and src[sx, sy][3] and not mask[sy][sx]:
                 cv.flat(x, y, mix(cv.get(x, y), src[sx, sy][:3], f))
 
@@ -654,15 +669,21 @@ def bilge_pump(cv):
     """La bomba de sentina: motor elèctric i bomba vermella, amb el tub cap a la vàlvula de tres vies."""
     vpipe(cv, 388, 152, 164, 2, CAB, 2.8)
     box(cv, 330, 176, 392, 182, ENG, 2.0)
+    pp = _ST['pump']
+    ph = 0 if pp is None else pp % 3                                  # en marxa, les aletes brunzeixen
     for y in range(160, 177):
         u = (y - 168) / 9
         for x in range(334, 366):
-            cv.put(x, y, ENG, 3.4 + 1.5 * (-0.3 - u) - 0.8 * u * u + (0.6 if x % 3 == 0 else 0))
+            cv.put(x, y, ENG, 3.4 + 1.5 * (-0.3 - u) - 0.8 * u * u + (0.6 if (x + ph) % 3 == 0 else 0))
     cv.disc(334, 168, 3, 8, ENG, 2.0)
     box(cv, 346, 156, 356, 161, CAB, 3.0)
     cv.disc(376, 168, 9, 9, REDP, lambda nx, ny: 3.8 - nx * 1.2 - ny * 1.2)
     cv.disc(376, 168, 3, 3, REDP, 2.0)
-    box(cv, 366, 166, 369, 170, CAB, 3.6)
+    if pp is not None:                                                # l'eix de la bomba, que gira
+        a = math.radians(pp * 60)
+        cv.put(376 + round(math.cos(a) * 2), 168 + round(math.sin(a) * 2), REDP, 5.4)
+        cv.put(376 - round(math.cos(a) * 2), 168 - round(math.sin(a) * 2), REDP, 0.6)
+    box(cv, 366 + (0 if pp is None else pp % 2), 166, 369 + (0 if pp is None else pp % 2), 170, CAB, 3.6)
     hpipe(cv, 380, 388, 164, 2, CAB, 2.8)
 
 
@@ -670,6 +691,19 @@ def bilge_pump(cv):
 
 @lru_cache(maxsize=2)
 def _render(wet):
+    return _draw(wet)
+
+
+def _draw(wet, gen=None, pump=None, wt=0.0):
+    """La sala sencera; `gen`, `pump` i `wt` són el fotograma de cada animació (None/0 = quiet)."""
+    _ST.update(gen=gen, pump=pump, wt=wt)
+    try:
+        return _draw_room(wet)
+    finally:
+        _ST.update(gen=None, pump=None, wt=0.0)
+
+
+def _draw_room(wet):
     cv = Canvas(light=LIGHT)
     wall(cv)
     ceiling(cv)
@@ -780,7 +814,29 @@ def _frames_separador():
     return [_diff(base, base), _diff(cv.img, base)]
 
 
-ANIMS = {'separador': {'frames': _frames_separador, 'frameDuration': 700}}
+def _frames_generador():
+    """El generador en marxa: les culates vibren, el volant gira i les agulles de l'amperímetre i del
+    manòmetre del separador tremolen. Va amb un decorat que s'amaga quan el generador és parat (`fosc`)."""
+    base = _render(False)
+    return [_diff(_draw(False, gen=i), base) for i in range(8)]
+
+
+def _frames_bomba():
+    """La bomba de sentina en marxa (Escena 1, un cop engegada): el motor brunzeix i l'eix gira."""
+    base = _render(False)
+    return [_diff(_draw(False, pump=i), base) for i in range(6)]
+
+
+def _frames_aigua():
+    """El decorat `aigua`, amb les ones: el reflex de la paret es gronxa i les espurnes dels llums corren."""
+    dry = _render(False)
+    return [_diff(_draw(True, wt=i * 2 * math.pi / 8), dry) for i in range(8)]
+
+
+ANIMS = {'separador': {'frames': _frames_separador, 'frameDuration': 700},
+         'generador_marxa': {'frames': _frames_generador, 'frameDuration': 90},
+         'bomba_marxa': {'frames': _frames_bomba, 'frameDuration': 100},
+         'aigua': {'frames': _frames_aigua, 'frameDuration': 200}}
 
 
 # ─── Geometria ─────────────────────────────────────────────────────────────
