@@ -37,6 +37,8 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
   `package.json` del projecte), perquè dos jocs al mateix origen no comparteixin partides.
 - el favicon de Mala Herba Soft (`favicon.ico` i `favicon.svg`), a `index.html`; els fitxers són al `public/` de
   cada joc.
+- la descripció i la targeta per compartir l'enllaç (`description` i `url` al bloc `benne` del `package.json`
+  del joc, i `public/portada.png`), i `lang="ca"`.
 
 `adapters/benne/patches/motor-benne.patch` en recull una part. Si mai s'actualitza el motor des d'un
 Benne nou (`npm run benne:create -- --from <benne> --motor`), revisa `git diff packages/benne` i torna a

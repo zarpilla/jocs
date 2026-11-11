@@ -5,7 +5,9 @@
   "type": "module",
   "main": "electron/main.cjs",
   "benne": {
-    "displayName": "Ferro-9"
+    "displayName": "Ferro-9",
+    "description": "L'Iri fa el torn de nit en una fàbrica; la Vet és presonera en una presó en òrbita. Una finestra de fase les connecta. Aventura gràfica en català, gratuïta.",
+    "url": "https://malaherbasoft.cat/ferro-9/"
   },
   "scripts": {
     "motor": "node ../../../packages/benne/copia.mjs",

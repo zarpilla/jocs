@@ -9,13 +9,39 @@ const dir = path.dirname(fileURLToPath(import.meta.url));
 const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json'), 'utf8')) as {
   name?: string;
   version?: string;
-  benne?: { displayName?: string };
+  benne?: { displayName?: string; description?: string; url?: string };
 };
 const slug = (pkg.name || 'benne-game').replace(/[^a-zA-Z0-9-]+/g, '-').replace(/^-|-$/g, '');
 const displayName = pkg.benne?.displayName?.trim() || slug.split('-').map(
   (part: string) => part.slice(0, 1).toUpperCase() + part.slice(1),
 ).join(' ');
 const iconExists = fs.existsSync(path.join(dir, 'src/game/assets/images/icon.png'));
+const attr = (s: string) => s.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;');
+
+/**
+ * Descripció i targeta per compartir l'enllaç (Google, Open Graph), del bloc `benne` del package.json:
+ * `description` i `url` (l'adreça pública del joc, amb la barra final). La imatge és `public/portada.png`.
+ */
+function pageMeta(): string {
+  const { description, url } = pkg.benne ?? {};
+  if (!description) return '';
+  const tags = [
+    `<meta name="description" content="${attr(description)}" />`,
+    `<meta property="og:type" content="website" />`,
+    `<meta property="og:title" content="${attr(displayName)}" />`,
+    `<meta property="og:description" content="${attr(description)}" />`,
+    `<meta property="og:locale" content="ca_ES" />`,
+  ];
+  if (url) {
+    tags.push(`<link rel="canonical" href="${attr(url)}" />`, `<meta property="og:url" content="${attr(url)}" />`);
+    if (fs.existsSync(path.join(dir, 'public/portada.png'))) {
+      tags.push(`<meta property="og:image" content="${attr(new URL('portada.png', url).href)}" />`,
+        `<meta property="og:image:width" content="1440" />`, `<meta property="og:image:height" content="810" />`,
+        `<meta name="twitter:card" content="summary_large_image" />`);
+    }
+  }
+  return tags.map((t) => `\n    ${t}`).join('');
+}
 
 /**
  * El motor és compartit (packages/benne) i aquí n'hi ha una còpia (`npm run motor`). Amb `npm run dev`,
@@ -52,8 +78,10 @@ export default defineConfig({
   // BENNE Play and the editor previews merge this config, so they get the BenneScript transform too.
   plugins: [benneMotorSyncPlugin(), benneGenerateGameIdsPlugin(), benneScriptPlugin(), {
     name: 'benne-game-page',
-    transformIndexHtml(html: string) {
-      return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>`)
+    transformIndexHtml(html: string, ctx) {
+      // La descripció només a la pàgina del joc (no als editors ni a les previsualitzacions)
+      const meta = path.basename(ctx.filename) === 'index.html' ? pageMeta() : '';
+      return html.replace(/<title>[^<]*<\/title>/, `<title>${displayName.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</title>${meta}`)
         // Sense icona pròpia del joc, es queda el favicon de Mala Herba Soft (public/favicon.*)
         .replace(/<link rel="icon"[^>]*\/>(\s*<link rel="icon"[^>]*\/>)*/, (m) => iconExists
           ? '<link rel="icon" type="image/png" href="./src/game/assets/images/icon.png" />'

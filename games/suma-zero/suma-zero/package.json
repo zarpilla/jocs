@@ -5,7 +5,9 @@
   "type": "module",
   "main": "electron/main.cjs",
   "benne": {
-    "displayName": "Suma Zero"
+    "displayName": "Suma Zero",
+    "description": "Una hacker i una cambrera sense un duro volen buidar el Banc Central Mundial i repartir-ho tot. El pla és un desastre. Aventura gràfica en català, gratuïta.",
+    "url": "https://malaherbasoft.cat/suma-zero/"
   },
   "scripts": {
     "motor": "node ../../../packages/benne/copia.mjs",

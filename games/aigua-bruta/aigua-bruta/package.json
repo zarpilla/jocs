@@ -5,7 +5,9 @@
   "type": "module",
   "main": "electron/main.cjs",
   "benne": {
-    "displayName": "Aigua bruta"
+    "displayName": "Aigua bruta",
+    "description": "Thriller amb humor a bord d'un vaixell d'una ONG a l'Atlàntic Nord: algú el sabota i tot gira al voltant d'un pot de fang. Aventura gràfica en català, gratuïta.",
+    "url": "https://malaherbasoft.cat/aigua-bruta/"
   },
   "scripts": {
     "motor": "node ../../../packages/benne/copia.mjs",
