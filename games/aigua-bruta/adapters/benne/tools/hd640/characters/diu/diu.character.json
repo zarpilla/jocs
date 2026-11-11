@@ -1,0 +1,69 @@
+{
+  "id": "diu",
+  "name": "diu",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 80,
+  "walkToPoint": {
+    "x": 48,
+    "y": 34
+  },
+  "talkPoint": {
+    "x": 18,
+    "y": -2
+  },
+  "feet": {
+    "x": 18,
+    "y": 34
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 6,
+        "y": 0
+      },
+      {
+        "x": 38,
+        "y": 0
+      },
+      {
+        "x": 38,
+        "y": 34
+      },
+      {
+        "x": 6,
+        "y": 34
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 300
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 160
+    }
+  },
+  "defaultVerb": "look"
+}

@@ -5,8 +5,10 @@ Previsualització animada d'una sala, a 480×270 (hd/rooms) o a 640×360 (hd640/
   python3 hd640/preview.py --res 640 laboratori sortida/laboratori_640 --layers "mar,nevera,bombolla,portatil,nota,@"
 
 `--layers`: les capes per sobre del fons, de darrere a davant. Cada id és una animació (ANIMS) o un prop (PROPS);
-`@` són els personatges (GEOMETRIA['spawns']). Surt <prefix>.gif a pantalla de 1920×1080 (480 ×4, 640 ×3),
-amb la barra de verbs, i <prefix>.png (el primer fotograma).
+`@` són els personatges (GEOMETRIA['spawns']); si la sala té capa del davant (FRONT), qui té els peus per sobre
+de la `baseline` queda darrere. Surt <prefix>.gif a pantalla de 1920×1080 (480 ×4, 640 ×3), amb la barra de
+verbs amb textos (la de 480 la reprodueix hd640/gui.bar480), i <prefix>.png (el primer fotograma).
+A 640 els personatges són els de hd640/characters/ (hd640/draw_characters.py) i la barra, hd640/gui.verb_bar.
 """
 import argparse
 import importlib
@@ -18,19 +20,16 @@ from PIL import Image
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
-VERBS = TOOLS.parents[2] / 'aigua-bruta/src/game/assets/images/guis/verbs/verbs.png'
 ART = TOOLS.parent / 'placeholder-art'
 
 
-def sprite(cid, k):
-    sheet = json.loads((ART / cid / f'{cid}.json').read_text())
-    ch = json.loads((ART / cid / f'{cid}.character.json').read_text())
+def sprite(cid, art):
+    sheet = json.loads((art / cid / f'{cid}.json').read_text())
+    ch = json.loads((art / cid / f'{cid}.character.json').read_text())
     tags = {t['name']: t['from'] for t in sheet['meta']['frameTags']}
     f = list(sheet['frames'].values())[tags.get('IdleD', 0)]['frame']
-    img = Image.open(ART / cid / f'{cid}.png').convert('RGBA').crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h']))
-    if k != 1:
-        img = img.resize((round(img.width * k), round(img.height * k)), Image.NEAREST)
-    return img, (round(ch['feet']['x'] * k), round(ch['feet']['y'] * k))
+    img = Image.open(art / cid / f'{cid}.png').convert('RGBA').crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h']))
+    return img, (ch['feet']['x'], ch['feet']['y'])
 
 
 def main():
@@ -45,7 +44,7 @@ def main():
 
     if a.res == '640':
         import hd640
-        W, H, bar_y, k, scale = hd640.W, hd640.H, hd640.BAR_Y, 4 / 3, 3
+        W, H, bar_y, scale, art = hd640.W, hd640.H, hd640.BAR_Y, 3, Path(hd640.__file__).parent / 'characters'
         mod = importlib.import_module(f'hd640.rooms.{a.sala}')
         from hd.pix import Canvas
         light = getattr(mod, 'LIGHT', None)
@@ -59,7 +58,7 @@ def main():
             props[pid] = pc.img
         anims = {aid: (an['frames'](), an.get('frameDuration', 150)) for aid, an in getattr(mod, 'ANIMS', {}).items()}
     else:
-        W, H, bar_y, k, scale = 480, 270, 195, 1, 4
+        W, H, bar_y, scale, art = 480, 270, 195, 4, ART
         from hd.render import render, render_anims, load
         mod = load(a.sala)
         bg, props = render(a.sala)
@@ -70,15 +69,25 @@ def main():
     for lid in layers:
         if lid != '@' and lid not in anims and lid not in props:
             sys.exit(f'capa desconeguda: {lid}')
-    bar = Image.open(VERBS).convert('RGBA').crop((0, 195, 480, 270))
-    if k != 1:
-        bar = bar.resize((W, H - bar_y), Image.NEAREST)
+    # la barra, amb els textos (s'importa després de dibuixar la sala: importar hd640 posa pix a 640)
+    import hd640.gui as gui
+    bar = gui.verb_bar() if a.res == '640' else gui.bar480()
     chars = []
     for cid, (x, y) in spawns.items():
-        if (ART / cid / f'{cid}.png').exists():
-            spr, (fx, fy) = sprite(cid, k)
+        if (art / cid / f'{cid}.png').exists():
+            spr, (fx, fy) = sprite(cid, art)
             chars.append((y, spr, (x - fx, y - fy)))
     chars.sort(key=lambda c: c[0])
+    front = None
+    if getattr(mod, 'FRONT', None):
+        f = mod.FRONT
+        front = Image.new('RGBA', bg.size, (0, 0, 0, 0))
+        src, dst = bg.load(), front.load()
+        for y in range(H):
+            for x in range(W):
+                if f['mask'](x, y):
+                    dst[x, y] = src[x, y]
+        front = (front, f['baseline'])
 
     frames = []
     n = max(1, round(a.seconds * 1000 / a.ms))
@@ -87,8 +96,12 @@ def main():
         im = bg.copy()
         for lid in layers:
             if lid == '@':
-                for _, spr, pos in chars:
-                    im.alpha_composite(spr, pos)
+                for behind in (True, False):
+                    for y, spr, pos in chars:
+                        if front is None or (y <= front[1]) == behind:
+                            im.alpha_composite(spr, pos)
+                    if behind and front:
+                        im.alpha_composite(front[0])
             elif lid in anims:
                 fr, ms = anims[lid]
                 im.alpha_composite(fr[(t // ms) % len(fr)])
