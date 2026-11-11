@@ -114,19 +114,20 @@ historial.onClick(() => {
   const jsonPath = join(dir, 'historial.gui.json');
   const tsPath = join(dir, 'historial.gui.ts');
   const bg = controls.find((c) => c.type === 'nineSliceImage');
+  const HISTORIAL = historialPanel();
   if (!existsSync(jsonPath) && half && bg) {
     writeJson(jsonPath, {
       id: 'historial', name: 'Historial', description: "Les últimes línies dites (adapters/benne).", visible: false,
       display: { aseprite: true }, modal: true, pauseGame: true, zIndex: 102,
       controls: [
         { ...structuredClone(bg), id: 'fons', x: HISTORIAL.x, y: HISTORIAL.y, width: HISTORIAL.width, height: HISTORIAL.height },
-        { type: 'text', id: 'titol', x: W / 2, y: HISTORIAL.y + 9, text: 'Historial', font: 'ferro-negreta', fontSize: 8, color: '#d8b46a', align: 'center', zIndex: 2 },
+        { type: 'text', id: 'titol', x: W / 2, y: HISTORIAL.y + k(9), text: 'Historial', font: 'ferro-negreta', fontSize: 8, color: '#d8b46a', align: 'center', zIndex: 2 },
         {
-          type: 'text', id: 'linies', x: HISTORIAL.x + 16, y: HISTORIAL.y + 27, text: '', font: 'ferro-regular', fontSize: 8,
-          color: '#ffffff', align: 'left', wordWrapWidth: HISTORIAL.width - 32, zIndex: 2,
+          type: 'text', id: 'linies', x: HISTORIAL.x + k(16), y: HISTORIAL.y + k(27), text: '', font: 'ferro-regular', fontSize: 8,
+          color: '#ffffff', align: 'left', wordWrapWidth: HISTORIAL.width - k(32), zIndex: 2,
         },
         {
-          ...structuredClone(half), id: 'tanca', x: W / 2 - Number(half.width) / 2, y: HISTORIAL.y + HISTORIAL.height - 28,
+          ...structuredClone(half), id: 'tanca', x: W / 2 - Number(half.width) / 2, y: HISTORIAL.y + HISTORIAL.height - k(28),
           gridPlacement: undefined, text: 'Torna',
         },
       ],
@@ -174,6 +175,14 @@ window.addEventListener('keydown', w.__ferroHistorialKey);
   }
 }
 
-/** Panell de l'historial (coordenades de pantalla, 480×270) i quant text hi cap. */
-const HISTORIAL = { x: 16, y: 8, width: 448, height: 254, rows: 15, perRow: 72 };
+/** Una mida de pantalla feta a 480×270, a la resolució del joc (×4/3 a 640×360). */
+const k = (v: number) => Math.round(v * W / 480);
+
+/**
+ * Panell de l'historial (coordenades de pantalla) i quant text hi cap. Fet a 480×270 i escalat: a 640×360 la lletra
+ * també és un terç més gran (16 px de línia), així que hi caben les mateixes files i caràcters.
+ */
+function historialPanel() {
+  return { x: k(16), y: k(8), width: W - k(32), height: k(254), rows: 15, perRow: 72 };
+}
 

@@ -1,0 +1,73 @@
+{
+  "id": "capatas",
+  "name": "capatas",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 73,
+  "walkToPoint": {
+    "x": 95,
+    "y": 106
+  },
+  "talkPoint": {
+    "x": 44,
+    "y": 0
+  },
+  "feet": {
+    "x": 44,
+    "y": 106
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 15,
+        "y": 8
+      },
+      {
+        "x": 70,
+        "y": 8
+      },
+      {
+        "x": 70,
+        "y": 108
+      },
+      {
+        "x": 15,
+        "y": 108
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 600
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 600
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 600
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 160
+    },
+    "DormSenseSegell": {
+      "loop": true,
+      "frameDuration": 600
+    }
+  },
+  "defaultVerb": "look"
+}

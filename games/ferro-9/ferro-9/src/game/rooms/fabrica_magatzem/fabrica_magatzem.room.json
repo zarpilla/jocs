@@ -2,14 +2,14 @@
   "id": "fabrica_magatzem",
   "name": "Magatzem d'eines",
   "size": {
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "scrollBounds": {
     "x": 0,
     "y": 0,
-    "width": 480,
-    "height": 270
+    "width": 640,
+    "height": 360
   },
   "walkable": {
     "polygons": [
@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 19,
-            "y": 161
+            "x": 26,
+            "y": 215
           },
           {
-            "x": 461,
-            "y": 161
+            "x": 615,
+            "y": 215
           },
           {
-            "x": 472,
-            "y": 202
+            "x": 630,
+            "y": 270
           },
           {
-            "x": 8,
-            "y": 202
+            "x": 11,
+            "y": 270
           }
         ],
         "holes": []
@@ -46,29 +46,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 8,
-          "y": 65
+          "x": 10,
+          "y": 87
         },
         {
-          "x": 57,
-          "y": 65
+          "x": 77,
+          "y": 87
         },
         {
-          "x": 57,
-          "y": 155
+          "x": 77,
+          "y": 208
         },
         {
-          "x": 8,
-          "y": 155
+          "x": 10,
+          "y": 208
         }
       ],
       "walkToPoint": {
-        "x": 41,
-        "y": 183
+        "x": 55,
+        "y": 244
       },
       "lookAtPoint": {
-        "x": 33,
-        "y": 156
+        "x": 44,
+        "y": 208
       },
       "defaultVerb": "open"
     },
@@ -79,29 +79,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 152,
-          "y": 21
+          "x": 203,
+          "y": 29
         },
         {
-          "x": 322,
-          "y": 21
+          "x": 429,
+          "y": 29
         },
         {
-          "x": 322,
-          "y": 150
+          "x": 429,
+          "y": 200
         },
         {
-          "x": 152,
-          "y": 150
+          "x": 203,
+          "y": 200
         }
       ],
       "walkToPoint": {
-        "x": 237,
-        "y": 172
+        "x": 317,
+        "y": 230
       },
       "lookAtPoint": {
-        "x": 237,
-        "y": 150
+        "x": 317,
+        "y": 200
       }
     },
     {
@@ -111,29 +111,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 65,
-          "y": 59
+          "x": 87,
+          "y": 80
         },
         {
-          "x": 109,
-          "y": 59
+          "x": 146,
+          "y": 80
         },
         {
-          "x": 109,
-          "y": 155
+          "x": 146,
+          "y": 208
         },
         {
-          "x": 65,
-          "y": 155
+          "x": 87,
+          "y": 208
         }
       ],
       "walkToPoint": {
-        "x": 87,
-        "y": 180
+        "x": 117,
+        "y": 240
       },
       "lookAtPoint": {
-        "x": 87,
-        "y": 156
+        "x": 117,
+        "y": 208
       },
       "defaultVerb": "open"
     }
@@ -164,30 +164,30 @@
       "collider": {
         "points": [
           {
-            "x": 111,
-            "y": 59
+            "x": 149,
+            "y": 80
           },
           {
-            "x": 136,
-            "y": 59
+            "x": 182,
+            "y": 80
           },
           {
-            "x": 136,
-            "y": 136
+            "x": 182,
+            "y": 182
           },
           {
-            "x": 111,
-            "y": 136
+            "x": 149,
+            "y": 182
           }
         ]
       },
       "walkToPoint": {
-        "x": 126,
-        "y": 175
+        "x": 168,
+        "y": 233
       },
       "lookAtPoint": {
-        "x": 124,
-        "y": 137
+        "x": 166,
+        "y": 182
       },
       "description": "plomall"
     },
@@ -204,30 +204,30 @@
       "collider": {
         "points": [
           {
-            "x": 360,
-            "y": 152
+            "x": 480,
+            "y": 203
           },
           {
-            "x": 417,
-            "y": 152
+            "x": 557,
+            "y": 203
           },
           {
-            "x": 417,
-            "y": 188
+            "x": 557,
+            "y": 251
           },
           {
-            "x": 360,
-            "y": 188
+            "x": 480,
+            "y": 251
           }
         ]
       },
       "walkToPoint": {
-        "x": 349,
-        "y": 191
+        "x": 466,
+        "y": 255
       },
       "lookAtPoint": {
-        "x": 389,
-        "y": 188
+        "x": 519,
+        "y": 251
       },
       "description": "caixa d'eines"
     },
@@ -250,8 +250,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 96,
-      "y": 188,
+      "x": 128,
+      "y": 251,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -260,8 +260,8 @@
     {
       "instanceId": "cargol-1",
       "definition": "cargol/cargol.character.json",
-      "x": 287,
-      "y": 180,
+      "x": 382,
+      "y": 240,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -270,8 +270,8 @@
     {
       "instanceId": "mira-1",
       "definition": "mira/mira.character.json",
-      "x": 409,
-      "y": 191,
+      "x": 546,
+      "y": 255,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,

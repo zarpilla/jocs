@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine } from '@aventura/narrative-core';
 import {
-  AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -174,11 +174,11 @@ export function onRoomEntered() {
   if (result?.walkIn) {
     const lloc = player.position
     entrada.walkTo = lloc
-    player.moveTo({ x: result.walkIn === 'left' ? -FORA : 480 + FORA, y: lloc.y })
+    player.moveTo({ x: result.walkIn === 'left' ? -FORA : AMPLADA + FORA, y: lloc.y })
   }
 }
 
-/** Quants píxels fora de la pantalla (de 480 d'ample) comença una entrada caminant (`walkIn`). */
+/** Quants píxels fora de la pantalla comença una entrada caminant (`walkIn`). */
 const FORA = 24
 
 /**

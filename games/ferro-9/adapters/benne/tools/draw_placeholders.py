@@ -21,12 +21,18 @@ from pathlib import Path
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from escala import RESOLUCIO  # noqa: E402
+if RESOLUCIO == 640:
+    import hd640  # noqa: E402,F401  (posa hd.pix a 640×360 abans de cap sala)
 import room_designs  # noqa: E402
 from room_designs import DESIGNS, C  # noqa: E402
 from draw_items import icon  # noqa: E402
 from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
 from hd.pix import W as HD_W, H as HD_H  # noqa: E402
 from hd.render import has_hd, render as render_hd, render_anims as render_hd_anims  # noqa: E402
+
+# La casella de l'inventari: la de la plantilla 9-verb (36×20) passada a la resolució del joc (49×27, 65×36).
+from draw_items import W as INV_W, H as INV_H  # noqa: E402
 
 PALETTE = {
     # passat: fàbrica de ferro-9 (calent, rovell, vapor)
@@ -140,6 +146,66 @@ def aseprite_sheet(name, frames, tags, frame_w, frame_h, spans=None):
     }
 
 
+def packed_sheet(name, frames, tags, frame_w, frame_h, spans=None):
+    """
+    Com paste_grid + aseprite_sheet, però el full és molt més petit: cada fotograma es retalla a la part que té
+    píxels (`trimmed`, amb `spriteSourceSize`: Benne el torna a posar al seu lloc) i els fotogrames iguals (p. ex. els
+    buits de les pauses d'una animació) comparteixen el mateix tros del full. Sense això, a 640×360 els fulls de les
+    sales amb moltes animacions passaven de 8192 px, que moltes GPU no carreguen (el fons surt negre).
+    """
+    spans = spans or {}
+    uniques, index_of, ref = [], {}, []
+    for f in frames:
+        bbox = f.getchannel('A').getbbox() or (0, 0, 1, 1)
+        crop = f.crop(bbox)
+        key = (bbox, crop.tobytes())
+        if key not in index_of:
+            index_of[key] = len(uniques)
+            uniques.append((bbox, crop))
+        ref.append(index_of[key])
+    # Prestatges: dels més alts als més baixos, d'esquerra a dreta, fins a MAX_SHEET_W.
+    order = sorted(range(len(uniques)), key=lambda i: -uniques[i][1].height)
+    place, x, y, shelf_h, width = {}, 0, 0, 0, 0
+    for i in order:
+        cw, ch = uniques[i][1].size
+        if x + cw > MAX_SHEET_W:
+            x, y, shelf_h = 0, y + shelf_h, 0
+        place[i] = (x, y)
+        x += cw
+        shelf_h = max(shelf_h, ch)
+        width = max(width, x)
+    height = y + shelf_h
+    sheet = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    for i, (bbox, crop) in enumerate(uniques):
+        sheet.paste(crop, place[i])
+    ranges, i = [], 0
+    for tag in tags:
+        n = spans.get(tag, 1)
+        ranges.append((tag, i, i + n - 1))
+        i += n
+    out_frames = {}
+    for k, u in enumerate(ref):
+        (bx0, by0, bx1, by1), crop = uniques[u]
+        px, py = place[u]
+        out_frames[f'{name} {k}.aseprite'] = {
+            'frame': {'x': px, 'y': py, 'w': bx1 - bx0, 'h': by1 - by0},
+            'rotated': False, 'trimmed': (bx0, by0, bx1, by1) != (0, 0, frame_w, frame_h),
+            'spriteSourceSize': {'x': bx0, 'y': by0, 'w': bx1 - bx0, 'h': by1 - by0},
+            'sourceSize': {'w': frame_w, 'h': frame_h}, 'duration': 100,
+        }
+    meta = {
+        'frames': out_frames,
+        'meta': {
+            'app': 'https://www.aseprite.org/', 'version': 'provisional (draw_placeholders.py, retallat)',
+            'image': f'{name}.png', 'format': 'RGBA8888',
+            'size': {'w': width, 'h': height}, 'scale': '1',
+            'frameTags': [{'name': tag, 'from': a, 'to': b, 'direction': 'forward', 'color': '#000000ff'} for tag, a, b in ranges],
+            'layers': [], 'slices': [],
+        },
+    }
+    return sheet, meta
+
+
 def draw_room(dir_: Path, req, font, small):
     name = dir_.name
     w, h = req['width'], req['height']
@@ -236,9 +302,9 @@ def draw_designed(dir_: Path, game_dir: Path, design):
             room['props'].append(prop)
         prop['animations'] = {aid: {'loop': True, 'frameDuration': ms}}
 
-    sheet = paste_grid(frames, w, h)
+    sheet, meta = packed_sheet(name, frames, tags, w, h, spans)
     sheet.save(dir_ / f'{name}.png')
-    (dir_ / f'{name}.json').write_text(json.dumps(aseprite_sheet(name, len(frames), tags, w, h, spans), indent=2) + '\n')
+    (dir_ / f'{name}.json').write_text(json.dumps(meta, indent=2) + '\n')
     (dir_ / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
 
     # Geometria: el que es pot clicar ha de coincidir amb el que es veu.
@@ -273,7 +339,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
 
 
 def draw_inventory(dir_: Path, req, small):
-    fw, fh = scaled(36), scaled(20)  # la casella de l'inventari
+    fw, fh = INV_W, INV_H  # la casella de l'inventari
     items = req['items']
     labels = short_labels(items)
     frames = []
@@ -405,7 +471,8 @@ def draw_cover_gui(game_dir: Path):
         return
     d.mkdir(parents=True, exist_ok=True)
     buttons = [ctl for ctl in json.loads(gui.read_text())['controls'] if ctl.get('type') == 'button']
-    w, h = 480, 270
+    res = json.loads((game_dir / 'game-config.json').read_text()).get('resolution', {})
+    w, h = res.get('width', 480), res.get('height', 270)
     frames, tags = [], []
     for b in buttons:
         for tag, fill, vora in ((b['id'], (26, 70, 107), (60, 110, 150)), (f"{b['id']}-hover", (40, 96, 140), (150, 230, 190))):

@@ -1,0 +1,295 @@
+{
+  "id": "settings-menu",
+  "name": "Settings Menu",
+  "description": "",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "controls": [
+    {
+      "type": "nineSliceImage",
+      "id": "settings-BG",
+      "x": 131,
+      "y": 75,
+      "width": 379,
+      "height": 211,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      },
+      "zIndex": 101
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 320,
+      "y": 91,
+      "text": "Opcions",
+      "font": "ferro-negreta",
+      "fontSize": 8,
+      "color": "#d8b46a",
+      "align": "center",
+      "zIndex": 102
+    },
+    {
+      "type": "checkbox",
+      "id": "musicEnabled",
+      "x": 0,
+      "y": 0,
+      "width": 21,
+      "height": 21,
+      "backgroundAnchor": "top-left",
+      "tag": "checkbox",
+      "states": {
+        "uncheckedHover": "checkbox-hover",
+        "checked": "checkbox-checked",
+        "checkedHover": "checkbox-checked-hover",
+        "disabled": "checkbox-disabled",
+        "disabledChecked": "checkbox-checked-disabled"
+      },
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 0,
+        "col": 1,
+        "align": "top-left",
+        "offsetX": 1,
+        "offsetY": 1
+      },
+      "checked": true,
+      "zIndex": 103
+    },
+    {
+      "type": "slider",
+      "id": "sfxVolume",
+      "x": 215,
+      "y": 160,
+      "width": 127,
+      "height": 20,
+      "trackTag": "slider-track",
+      "handleTag": "slider-handle",
+      "states": {
+        "hover": {
+          "handle": "slider-handle-hover"
+        },
+        "disabled": {
+          "track": "slider-track-disabled",
+          "handle": "slider-handle-disabled"
+        }
+      },
+      "min": 0,
+      "max": 100,
+      "defaultValue": 100,
+      "step": 1,
+      "backgroundAnchor": "top-left",
+      "backgroundOffsetY": 0,
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 2,
+        "col": 1,
+        "align": "center-left",
+        "offsetX": 1,
+        "offsetY": -4
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "slider",
+      "id": "musicVolume",
+      "x": 215,
+      "y": 204,
+      "width": 127,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "trackTag": "slider-track",
+      "handleTag": "slider-handle",
+      "states": {
+        "hover": {
+          "handle": "slider-handle-hover"
+        },
+        "disabled": {
+          "track": "slider-track-disabled",
+          "handle": "slider-handle-disabled"
+        }
+      },
+      "min": 0,
+      "max": 100,
+      "defaultValue": 100,
+      "step": 1,
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 3,
+        "col": 1,
+        "align": "center-left",
+        "offsetX": 1,
+        "offsetY": -4
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "text",
+      "id": "click-to-skip",
+      "x": 135,
+      "y": 115,
+      "text": "clic per saltar el diàleg",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#ffffff",
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 0,
+        "col": 0,
+        "align": "top-right",
+        "offsetX": -5
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "grid",
+      "id": "settings-layout",
+      "x": 139,
+      "y": 119,
+      "height": 116,
+      "rows": 4,
+      "columns": 2,
+      "colWidths": [
+        219,
+        145
+      ],
+      "zIndex": 102
+    },
+    {
+      "type": "text",
+      "id": "sound-effects-volume",
+      "x": 0,
+      "y": 0,
+      "text": "volum dels efectes",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#ffffff",
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 2,
+        "col": 0,
+        "align": "top-right",
+        "offsetX": -5
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "text",
+      "id": "music-volume",
+      "scriptName": "musicVolumeLabel",
+      "x": 0,
+      "y": 0,
+      "text": "volum de la música",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#ffffff",
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 3,
+        "col": 0,
+        "align": "top-right",
+        "offsetX": -5
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "button",
+      "id": "back",
+      "x": 275,
+      "y": 241,
+      "width": 91,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Torna",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -1,
+      "backgroundTag": "",
+      "backgroundColor": "#132243",
+      "backgroundColorStates": {
+        "hover": "#1a466b",
+        "pressed": "#10908e",
+        "disabled": "#636363"
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "text",
+      "id": "dialog-text-speed",
+      "x": 0,
+      "y": 0,
+      "text": "velocitat del text",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#ffffff",
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 1,
+        "col": 0,
+        "align": "top-right",
+        "offsetX": -5
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "slider",
+      "id": "text-speed-slider",
+      "x": 0,
+      "y": 0,
+      "width": 127,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "trackTag": "slider-track",
+      "handleTag": "slider-handle",
+      "min": 0.1,
+      "max": 2,
+      "defaultValue": 1,
+      "step": 0.1,
+      "states": {
+        "hover": {
+          "handle": "slider-handle-hover"
+        },
+        "disabled": {
+          "track": "slider-track-disabled",
+          "handle": "slider-handle-disabled"
+        }
+      },
+      "gridPlacement": {
+        "gridControlId": "settings-layout",
+        "row": 1,
+        "col": 1,
+        "offsetX": 1,
+        "offsetY": 1
+      },
+      "zIndex": 103
+    },
+    {
+      "type": "text",
+      "id": "version",
+      "x": 147,
+      "y": 249,
+      "text": "",
+      "font": "ferro-regular",
+      "fontSize": 8,
+      "color": "#8a94a8",
+      "align": "left",
+      "zIndex": 103
+    }
+  ],
+  "modal": true,
+  "zIndex": 101
+}

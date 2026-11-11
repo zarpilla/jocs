@@ -6,18 +6,18 @@
   "display": {
     "aseprite": true
   },
-  "walkSpeed": 1,
+  "walkSpeed": 2,
   "walkToPoint": {
     "x": 0,
-    "y": 41
+    "y": 55
   },
   "talkPoint": {
-    "x": 11,
-    "y": -3
+    "x": 15,
+    "y": -4
   },
   "feet": {
-    "x": 11,
-    "y": 21
+    "x": 15,
+    "y": 28
   },
   "collider": {
     "points": [
@@ -26,16 +26,16 @@
         "y": 0
       },
       {
-        "x": 21,
+        "x": 28,
         "y": 0
       },
       {
-        "x": 21,
-        "y": 21
+        "x": 28,
+        "y": 28
       },
       {
         "x": 0,
-        "y": 21
+        "y": 28
       }
     ]
   },

@@ -1,0 +1,74 @@
+{
+  "id": "mos",
+  "name": "mos",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 109,
+  "walkToPoint": {
+    "x": 80,
+    "y": 111
+  },
+  "talkPoint": {
+    "x": 34,
+    "y": -4
+  },
+  "feet": {
+    "x": 34,
+    "y": 111
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 20,
+        "y": 4
+      },
+      {
+        "x": 46,
+        "y": 4
+      },
+      {
+        "x": 50,
+        "y": 74
+      },
+      {
+        "x": 44,
+        "y": 115
+      },
+      {
+        "x": 20,
+        "y": 115
+      },
+      {
+        "x": 15,
+        "y": 74
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleL": {
+      "loop": true
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "talkTo"
+}

@@ -1429,6 +1429,13 @@
           "lines": [
             {
               "who": "player",
+              "text": "nota_perduda.una_mes",
+              "if": {
+                "hasItem": "notes_perdudes"
+              }
+            },
+            {
+              "who": "player",
               "text": "nota_perduda.trobada",
               "if": {
                 "hasItem": "notes_perdudes",
@@ -1439,13 +1446,6 @@
                   "giveItem": "notes_perdudes"
                 }
               ]
-            },
-            {
-              "who": "player",
-              "text": "nota_perduda.una_mes",
-              "if": {
-                "hasItem": "notes_perdudes"
-              }
             },
             {
               "who": "narrator",

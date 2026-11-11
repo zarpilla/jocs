@@ -77,8 +77,10 @@ objecte, un final) **abans d'escriure la història**. Primer commit.
 A Ferro-9 algunes es van decidir tard i van costar caríssim. Pregunta-les a l'usuari abans de dibuixar res:
 
 1. **Resolució.** Ferro-9 va començar a 352×198 i es va passar a **480×270** a mitja feina: va caldre un
-   script de migració (`migra_resolucio.py`), reescalar partides desades i redibuixar-ho tot. **Fixa
-   480×270 des del primer dia** si no hi ha cap motiu per a una altra.
+   script de migració (`migra_resolucio.py`), reescalar partides desades i redibuixar-ho tot. L'11/2026 va
+   passar a **640×360**, com Ni un ou i Suma Zero: tot l'art redibuixat a `adapters/benne/tools/hd640/`
+   (`escala.RESOLUCIO` tria hd640/ o hd/, i `hd640/aplica.py` va passar el projecte Benne). **Fixa
+   640×360 des del primer dia** si no hi ha cap motiu per a una altra.
 2. **Direcció d'art**: estil, paleta, mida dels personatges en píxels. Vegeu la secció 6.
 3. **Quantes protagonistes** i si es canvia entre elles.
 4. **Idiomes.** Les opcions de diàleg de Benne són estàtiques (una compilació per idioma).

@@ -4,188 +4,188 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 1.aseprite": {
       "frame": {
-        "x": 49,
+        "x": 65,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 2.aseprite": {
       "frame": {
-        "x": 98,
+        "x": 130,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 3.aseprite": {
       "frame": {
-        "x": 147,
+        "x": 195,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 4.aseprite": {
       "frame": {
-        "x": 196,
+        "x": 260,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 5.aseprite": {
       "frame": {
-        "x": 245,
+        "x": 325,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 6.aseprite": {
       "frame": {
-        "x": 294,
+        "x": 390,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 7.aseprite": {
       "frame": {
-        "x": 343,
+        "x": 455,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     },
     "mira 8.aseprite": {
       "frame": {
-        "x": 392,
+        "x": 520,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "sourceSize": {
-        "w": 49,
-        "h": 87
+        "w": 65,
+        "h": 116
       },
       "duration": 100
     }
@@ -196,8 +196,8 @@
     "image": "mira.png",
     "format": "RGBA8888",
     "size": {
-      "w": 441,
-      "h": 87
+      "w": 585,
+      "h": 116
     },
     "scale": "1",
     "frameTags": [

@@ -13,10 +13,10 @@
     {
       "type": "nineSliceImage",
       "id": "fons",
-      "x": 16,
-      "y": 8,
-      "width": 448,
-      "height": 254,
+      "x": 21,
+      "y": 11,
+      "width": 597,
+      "height": 339,
       "tag": "9-slice-BG",
       "sliceNames": {
         "topLeft": "TopLeft",
@@ -34,8 +34,8 @@
     {
       "type": "text",
       "id": "titol",
-      "x": 240,
-      "y": 17,
+      "x": 320,
+      "y": 23,
       "text": "Historial",
       "font": "ferro-negreta",
       "fontSize": 8,
@@ -46,38 +46,45 @@
     {
       "type": "text",
       "id": "linies",
-      "x": 32,
-      "y": 35,
+      "x": 42,
+      "y": 47,
       "text": "",
       "font": "ferro-regular",
       "fontSize": 8,
       "color": "#ffffff",
       "align": "left",
-      "wordWrapWidth": 416,
+      "wordWrapWidth": 554,
       "zIndex": 2
     },
     {
       "type": "button",
       "id": "tanca",
-      "x": 206,
-      "y": 234,
-      "width": 68,
-      "height": 20,
+      "x": 274.5,
+      "y": 313,
+      "width": 91,
+      "height": 27,
       "backgroundAnchor": "top-left",
       "text": "Torna",
       "font": "ferro-regular",
       "fontSize": 8,
-      "textColor": "#ffffff",
+      "textColor": "#e6dcc8",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": -1,
-      "backgroundTag": "",
+      "backgroundTag": "btn-mig",
       "zIndex": 5,
-      "backgroundColor": "#132243",
-      "backgroundColorStates": {
-        "hover": "#1a466b",
-        "pressed": "#10908e",
-        "disabled": "#636363"
+      "states": {
+        "hover": "btn-mig-hover",
+        "pressed": "btn-mig-pressed"
+      },
+      "textColorStates": {
+        "hover": "#f0d48a",
+        "pressed": "#f0d48a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#07090e",
+        "sides": "bottomRight"
       }
     }
   ]

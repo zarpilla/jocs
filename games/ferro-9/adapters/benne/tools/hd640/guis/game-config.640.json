@@ -1,0 +1,10 @@
+{
+  "resolution": {
+    "width": 640,
+    "height": 360
+  },
+  "dialog": {
+    "choiceOptionsViewportHeightPx": 84
+  },
+  "_nota": "Només el que canvia respecte de game-config.json del joc (hd640/gui_rest.py)."
+}

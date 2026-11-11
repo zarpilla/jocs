@@ -1,0 +1,86 @@
+{
+  "id": "iri",
+  "name": "iri",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 153,
+  "walkToPoint": {
+    "x": 74,
+    "y": 111
+  },
+  "talkPoint": {
+    "x": 34,
+    "y": -4
+  },
+  "feet": {
+    "x": 34,
+    "y": 111
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 20,
+        "y": 4
+      },
+      {
+        "x": 46,
+        "y": 4
+      },
+      {
+        "x": 50,
+        "y": 74
+      },
+      {
+        "x": 44,
+        "y": 115
+      },
+      {
+        "x": 20,
+        "y": 115
+      },
+      {
+        "x": 15,
+        "y": 74
+      }
+    ]
+  },
+  "animations": {
+    "IdleL": {
+      "loop": true
+    },
+    "IdleD": {
+      "loop": true
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "look"
+}

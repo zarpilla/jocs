@@ -1,0 +1,439 @@
+{
+  "frames": {
+    "cargol_vell 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 1.aseprite": {
+      "frame": {
+        "x": 73,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 2.aseprite": {
+      "frame": {
+        "x": 146,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 3.aseprite": {
+      "frame": {
+        "x": 219,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 4.aseprite": {
+      "frame": {
+        "x": 292,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 5.aseprite": {
+      "frame": {
+        "x": 365,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 6.aseprite": {
+      "frame": {
+        "x": 438,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 7.aseprite": {
+      "frame": {
+        "x": 511,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 8.aseprite": {
+      "frame": {
+        "x": 584,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 9.aseprite": {
+      "frame": {
+        "x": 657,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 10.aseprite": {
+      "frame": {
+        "x": 730,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 11.aseprite": {
+      "frame": {
+        "x": 803,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 12.aseprite": {
+      "frame": {
+        "x": 876,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 13.aseprite": {
+      "frame": {
+        "x": 949,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 14.aseprite": {
+      "frame": {
+        "x": 1022,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 15.aseprite": {
+      "frame": {
+        "x": 1095,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 16.aseprite": {
+      "frame": {
+        "x": 1168,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    },
+    "cargol_vell 17.aseprite": {
+      "frame": {
+        "x": 1241,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 73,
+        "h": 84
+      },
+      "sourceSize": {
+        "w": 73,
+        "h": 84
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_characters.py)",
+    "image": "cargol_vell.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1314,
+      "h": 84
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "IdleD",
+        "from": 0,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkD",
+        "from": 4,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleL",
+        "from": 6,
+        "to": 9,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkL",
+        "from": 10,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleU",
+        "from": 12,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkU",
+        "from": 16,
+        "to": 17,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

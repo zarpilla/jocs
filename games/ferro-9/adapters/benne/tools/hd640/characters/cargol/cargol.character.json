@@ -1,0 +1,69 @@
+{
+  "id": "cargol",
+  "name": "cargol",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 91,
+  "walkToPoint": {
+    "x": 84,
+    "y": 80
+  },
+  "talkPoint": {
+    "x": 36,
+    "y": 0
+  },
+  "feet": {
+    "x": 36,
+    "y": 80
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 11,
+        "y": 8
+      },
+      {
+        "x": 63,
+        "y": 8
+      },
+      {
+        "x": 63,
+        "y": 83
+      },
+      {
+        "x": 11,
+        "y": 83
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 250
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "talkTo"
+}
