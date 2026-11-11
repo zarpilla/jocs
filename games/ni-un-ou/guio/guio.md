@@ -33,7 +33,10 @@ mostres.
 
 ### Lema
 
-> *L'aigua no es taca. La taquen.*
+> *Un pot de fang. Ni un ou. Cap avaria casual.*
+
+L'antic, «L'aigua no es taca. La taquen.», queda com a frase de tancament dels tres finals (`final.text`): després
+de jugar és una reflexió, no una lliçó.
 
 ## To
 
