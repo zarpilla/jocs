@@ -19596,6 +19596,28 @@
                 {
                   "flag": "vet_desperta",
                   "is": false
+                },
+                {
+                  "flag": "silueta_vista"
+                }
+              ]
+            },
+            "node": "sala_maquines"
+          },
+          {
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 1
+                },
+                {
+                  "protagonist": "iri"
+                },
+                {
+                  "flag": "vet_desperta",
+                  "is": false
                 }
               ]
             },
@@ -19813,6 +19835,14 @@
               {
                 "who": "player",
                 "text": "dlg.walkie.taller.1"
+              }
+            ]
+          },
+          "sala_maquines": {
+            "lines": [
+              {
+                "who": "player",
+                "text": "dlg.walkie.sala_maquines.1"
               }
             ]
           },
@@ -20122,8 +20152,9 @@
       "dlg.walkie.trucada.10": "A la cuina hi ha un muntacàrregues. Posa-hi la barra i que baixi al rebost.",
       "dlg.walkie.trucada.11": "La cuina. I la proa és la punxeguda, oi?",
       "dlg.walkie.trucada.12": "La cuina és al fons del menjador. Surt al passadís.",
-      "dlg.walkie.aviat.1": "A qui truco, i per demanar què? Primer he de saber què em cal.",
+      "dlg.walkie.aviat.1": "A qui truco, i per demanar què? Primer, mirar com està la sala de màquines.",
       "dlg.walkie.taller.1": "Abans de despertar ningú, miro el taller. Hi ha d'haver la clau de vàlvules.",
+      "dlg.walkie.sala_maquines.1": "Falta la clau de vàlvules. Abans de trucar, vull saber per a què la volien: la sala de màquines.",
       "dlg.walkie.esc1_vet.1": "Iri? On era la cuina?",
       "dlg.walkie.esc1_vet.2": "Al fons del menjador. Surt al passadís, primera porta.",
       "dlg.walkie.esc1_vet.3": "Iri? Ja t'ha arribat?",
