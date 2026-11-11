@@ -5,7 +5,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, ambient, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -390,6 +390,12 @@ export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', be
   return Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'L' : 'R') : dy < 0 ? 'U' : 'D';
 }
 
+/** La capa `id` del decorat d'una sala (un prop de l'art, p. ex. el títol de la portada), si la sala la té. */
+export function roomProp(room: string, id: string): PropHandle | undefined {
+  const file = roomFiles.find((r) => r.id === toBenne('rooms', room));
+  return file?.props.some((p) => p.id === id) ? new PropHandle(toBenne('rooms', room), id) : undefined;
+}
+
 // ─── Indicacions d'escena (`stage` a les línies) ─────────────────────────────
 
 type Actor = {
@@ -412,8 +418,20 @@ export function stagePoint(to: string | Point): Point | null {
   return thing?.walkToPoint ?? null;
 }
 
-/** El que una indicació fa de cop (tot menys caminar). */
+/** El que una indicació fa de cop (tot menys caminar i esperar). */
 export function applyStageNow(cue: StageCue) {
+  // Una sacsejada suau: ~2 píxels a 640 (la sala és tota la pantalla, i més es veurien les vores).
+  if (cue.shake) camera.shake(0.004, cue.shake, true);
+  if (cue.prop !== undefined) {
+    // Una capa del decorat (un prop de l'art, que el joc no coneix): es mostra o s'amaga i canvia d'animació.
+    const room = world.currentRoom();
+    if (!room) return;
+    const prop = new PropHandle(toBenne('rooms', room), cue.prop);
+    if (cue.visible !== undefined) prop.visible = cue.visible;
+    if (typeof cue.anim === 'string' && prop.animation !== cue.anim) prop.animation = cue.anim;
+    return;
+  }
+  if (cue.who === undefined) return;
   const actor = stageActor(cue.who);
   if (!actor) return;
   const at = cue.at !== undefined ? stagePoint(cue.at) : null;

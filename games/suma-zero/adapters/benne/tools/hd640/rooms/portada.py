@@ -8,10 +8,17 @@ La portada, a 640×360 (vegeu hd/rooms/portada.py, la de 480×270): «SUMA ZERO�
   - el títol en lletres grosses (cel·les de 7 px en lloc de 5), verd blavós com els botons, amb bisell a cada
     cel·la, un reflex a dalt, vora fosca i ombra magenta.
 Els botons de la GUI `portada` van a 220..420 × 261..328 (×4/3 de 165..315 × 196..246): allà només hi ha terrats.
-Animació: `senyal`.
+
+Capes (com la portada de Ni un ou): el fons no té el títol, que és la capa `titol` («Comença» l'esvaeix i el pròleg
+comença al mateix pla). `pis_vida` és el bucle d'espera: l'Iri tecleja (el codi corre al monitor), el neó de La
+Propina fa pampallugues, la tele del veí, el led de la parabòlica, el llum de la torre i alguna estrella.
+El pròleg (proleg_ginebra.py) fa servir aquest mateix pla, i les animacions que hi passen són aquí:
+  - `senyal_va`: un pols de llum surt de la parabòlica i arriba a la torre del BCMU, que s'il·lumina;
+  - `pis_porta`: el monitor fa un flaix, hi surt una porta oberta i l'Iri aixeca els braços; `pis_festa`, el bucle.
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
+import functools
 import math
 
 from hd.pix import Light, Canvas, W, H, hr
@@ -36,21 +43,23 @@ N = 12                                    # fotogrames del bucle (els 10 primers
 LIGHT = Light(ambient=0.0)
 
 
-def sky(cv):
+def sky(cv, frame=0):
     for y in range(0, 267):
         for x in range(W):
             cv.put(x, y, SKYP, 0.6 + y / 40 + (hr(x // 3, y // 3) - 0.5) * 0.2, lit=0)
     for i in range(160):
         x, y = int(hr(i, 11) * W), int(hr(i, 12) * 147)
         b = hr(i, 13)
+        if b > 0.75 and hr(i, 14) > 0.6 and (frame + i) % N_VIDA in (3, 4):   # algunes fan pampallugues
+            b = 0.5
         cv.flat(x, y, (210, 200, 240) if b > 0.75 else (110, 100, 150) if b > 0.3 else (70, 60, 104))
         if b > 0.96:
             for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
                 cv.flat(x + dx, y + dy, (96, 84, 136))
 
 
-def tower(cv):
-    """La torre del BCMU, petita i daurada, a l'horitzó."""
+def tower(cv, frame=0, flash=0.0):
+    """La torre del BCMU, petita i daurada, a l'horitzó. `flash`: el senyal de l'Iri hi acaba d'arribar."""
     x0, x1 = TOWER_X
     top = TOWER_TOP[1]
     for y in range(top, 253):
@@ -64,10 +73,14 @@ def tower(cv):
     cv.rect(x0 - 1, top - 3, x1 + 1, top - 1, GOLD, 2.6, lit=0)        # el coronament
     cx = (x0 + x1) // 2
     cv.vline(cx, top - 16, top - 4, GOLD, 2.0, lit=0)                    # l'antena
-    cv.flat(cx, top - 17, (255, 90, 70))
+    cv.flat(cx, top - 17, (110, 30, 30) if frame % N_VIDA == 6 else (255, 90, 70))
     w = text_width('BCMU')
     text(cv, 'BCMU', cx - w // 2, top - 11, GOLD, 4, lit=0)
     cv.glow(cx, top + 27, 61, (255, 200, 90), 0.22)
+    if flash:
+        cv.glow(cx, top - 17, 6 + 10 * flash, (150, 255, 220), 0.9 * flash)
+        cv.flat(cx, top - 17, (230, 255, 244))
+        cv.glow(cx, top + 40, 40, (120, 255, 220), 0.25 * flash)
 
 
 def roofs(cv):
@@ -107,9 +120,83 @@ def roofs(cv):
             x += w
             i += 1
 
+WIN = (53, 187, 117, 243)                 # la finestra del pis
+SIL = [(4, 10, 12)]
+RAISE = (0, 0, 0, 0, 1, 2, 2, 2, 2, 2, 2, 2)   # 'porta': els braços (0 avall, 1 a mitges, 2 enlaire)
 
-def block(cv):
-    """El bloc del pis, a primer terme: la finestra encesa i els cables fins a la parabòlica."""
+
+def door_icon(cv, on=True):
+    """Al monitor: una porta oberta, amb llum a dins i la fulla girada cap a fora."""
+    cv.rect(88, 203, 104, 213, TEAL, 5.0, lit=0)
+    cv.rect(95, 204, 101, 213, TEAL, 1.0, lit=0)                         # el marc
+    cv.rect(96, 205, 100, 213, [(230, 255, 244)] if on else TEAL, 0 if on else 5.6, lit=0)   # la llum de l'altra banda
+    for x in range(90, 96):                                              # la fulla, oberta cap a nosaltres
+        d = 95 - x
+        cv.vline(x, 205 - d // 2, 213 + d // 3, TEAL, 2.0 + (0.6 if x == 90 else 0), lit=0)
+    cv.flat(91, 209, TEAL[6])                                            # el pom
+    if on:
+        cv.line(100, 213, 104, 213, TEAL, 6.4, lit=0)                    # la llum que surt per terra
+
+
+def window(cv, frame=0, mode='espera', k=0):
+    """La finestra del pis: verd de pantalla, i l'Iri retallada a contrallum."""
+    wx0, wy0, wx1, wy1 = WIN
+    flash = (1.0, 0.6, 0.3, 0.15)[k] if mode == 'porta' and k < 4 else 0.0
+    arms = 2 if mode == 'festa' else RAISE[min(k, len(RAISE) - 1)] if mode == 'porta' else 0
+    lean = 1 if mode == 'porta' and 2 <= k < 4 else 0                    # se n'aparta, de la sorpresa
+    for y in range(wy0, wy1 + 1):
+        for x in range(wx0, wx1 + 1):
+            cv.put(x, y, TEAL, 2.6 + flash * 2.2 + (1.2 * max(0, 1 - math.hypot(x - 93, y - 213) / 29)), lit=0)
+    sil = SIL
+    cv.rect(85, 200, 107, 216, TEAL, 6.0, lit=0)                         # el monitor
+    if mode == 'espera':
+        cv.rect(88, 203, 104, 213, TEAL, lambda x, y: 4.4 + (0.6 if (y - 203) % 3 == 0 else 0), lit=0)   # línies de codi
+        for j in range(4):                                               # el codi corre, i l'última ratlla s'escriu
+            n = int(hr(j + frame // 2, 21) * 12)
+            if j == 3:
+                n = n * (1 + frame % 2) // 2
+            cv.hline(89, 89 + n, 204 + j * 3, TEAL, 6.0, lit=0)
+    elif flash > 0.5:
+        cv.rect(86, 201, 106, 215, [(230, 255, 244)], 0, lit=0)
+    else:
+        door_icon(cv, on=mode == 'festa' or k % 2 == 0 or k > 8)
+    cv.rect(93, 216, 99, 221, sil, 0, lit=0)                             # el peu
+    cv.rect(109, 208, 114, 221, TEAL, 3.6, lit=0)                        # el segon monitor, de cantó
+    outline(cv, 109, 208, 114, 221, [(4, 10, 12)])
+    hx, hy = 75 - lean, 208 - (1 if arms == 2 and (frame + k) % 2 else 0)
+    cv.disc(hx, hy, 6.5, 8, sil, 0, lit=0)                               # el cap, amb la cua
+    cv.line(hx - 7, hy, hx - 12, hy + 13, sil, 0, lit=0)
+    cv.line(hx - 6, hy + 1, hx - 11, hy + 14, sil, 0, lit=0)
+    cv.line(hx - 5, hy + 1, hx - 10, hy + 14, sil, 0, lit=0)
+    cv.rect(65, 216, 84, wy1, sil, 0, lit=0)                             # les espatlles i la cadira
+    cv.vline(64, 222, wy1, sil, 0, lit=0)
+    if arms:                                                             # els braços enlaire, amb els punys
+        up = arms == 2
+        bob = (frame + k) % 2 if up and mode == 'festa' else 0
+        for side, (sx, ex, ey) in enumerate(((66, 61 if up else 58, 199 if up else 209), (83, 89 if up else 92, 199 if up else 209))):
+            ey += bob if side == 0 else 1 - bob if mode == 'festa' else 0
+            for d in range(3):
+                cv.line(sx + d - 1, 218, ex + d - 1, ey + 2, sil, 0, lit=0)
+            cv.rect(ex - 1, ey - 1, ex + 2, ey + 2, sil, 0, lit=0)
+    cv.disc(hx + 6, hy - 3, 2, 3, [(200, 30, 40)], 0, lit=0)             # l'auricular vermell
+    cv.line(hx + 6, hy - 6, hx + 1, hy - 9, [(200, 30, 40)], 0, lit=0)   # la diadema de l'auricular
+    for dx, col in enumerate(((220, 50, 50), (230, 200, 60), (60, 190, 90))):
+        cv.flat(hx - 4 + dx * 2, hy - 8 + (1 if dx == 1 else 0), col)    # la diadema de l'Iri, de tres colors
+    cv.rect(wx0, 228, wx1, 229, sil, 0, lit=0)                           # la taula
+    cv.rect(88, 225, 102, 227, TEAL, 3.2, lit=0)                         # el teclat
+    cv.rect(105, 222, 108, 227, [(8, 20, 22), (40, 60, 60)], 1, lit=0)   # la tassa
+    cv.vline(85, 230, wy1, sil, 0, lit=0)                                # la pota de la taula
+    for x in range(wx0, wx1 + 1, 2):                                     # el reflex al vidre
+        cv.tint(x, wy0, x, wy0 + 1, (230, 255, 244), 0.15)
+    cv.vline((wx0 + wx1) // 2 - 12, wy0, wy1, BLOCK, 1.0, lit=0)        # el muntant
+    outline(cv, wx0 - 1, wy0 - 1, wx1 + 1, wy1 + 1, BLOCK)
+    cv.rect(wx0 - 4, wy1 + 1, wx1 + 4, wy1 + 4, BLOCK, lambda x, y: 3.4 + (0.6 if y == wy1 + 1 else 0), lit=0)
+    cv.glow(85, 213, 80, (60, 230, 190), 0.16 + 0.3 * flash)
+
+
+def block(cv, frame=0, mode='espera', k=0):
+    """El bloc del pis, a primer terme: la finestra encesa i els cables fins a la parabòlica.
+    `mode`: 'espera' (l'Iri tecleja), 'porta' (fotograma `k` de la porta oberta) o 'festa' (els braços enlaire)."""
     x0, x1, top = 0, 187, 128
     for y in range(top, H):
         for x in range(x0, x1 + 1):
@@ -124,48 +211,18 @@ def block(cv):
         cv.vline(wx + 14, wy, wy + 35, BLOCK, 1.4, lit=0)                # el muntant
         outline(cv, wx - 1, wy - 1, wx + 30, wy + 36, BLOCK)
         cv.rect(wx - 3, wy + 36, wx + 32, wy + 38, BLOCK, lambda x, y: 3.4 if y == wy + 36 else 2.2, lit=0)   # l'ampit
-    cv.rect(129, 268, 156, 300, [(20, 30, 70), (40, 60, 130)], 0.6, lit=0)   # algú mira la tele
-    cv.glow(140, 284, 14, (90, 120, 230), 0.25)
+    tv = (0.6, 0.6, 1.0, 0.6, 0.3, 0.6, 0.8, 0.6)[frame % N_VIDA]          # algú mira la tele, que fa pampallugues
+    cv.rect(129, 268, 156, 300, [(20, 30, 70), (40, 60, 130)], tv, lit=0)
+    cv.glow(140, 284, 14, (90, 120, 230), 0.15 + 0.15 * tv)
     cv.disc(147, 296, 4, 5, [(8, 10, 20)], 0, lit=0)                     # el cap de qui mira, a contrallum
     cv.vline(142, 268, 302, BLOCK, 1.4, lit=0)
-    for k in range(4):                                                   # una persiana mig abaixada al pis de dalt
-        cv.hline(129, 156, 150 + k * 3, BLOCK, 1.6, lit=0)
-    # la finestra del pis: verd de pantalla, i l'Iri retallada a contrallum
-    wx0, wy0, wx1, wy1 = 53, 187, 117, 243
-    for y in range(wy0, wy1 + 1):
-        for x in range(wx0, wx1 + 1):
-            cv.put(x, y, TEAL, 2.6 + (1.2 * max(0, 1 - math.hypot(x - 93, y - 213) / 29)), lit=0)
-    sil = [(4, 10, 12)]
-    cv.rect(85, 200, 107, 216, TEAL, 6.0, lit=0)                         # el monitor
-    cv.rect(88, 203, 104, 213, TEAL, lambda x, y: 4.4 + (0.6 if (y - 203) % 3 == 0 else 0), lit=0)   # línies de codi
-    for k in range(4):
-        cv.hline(89, 89 + int(hr(k, 21) * 12), 204 + k * 3, TEAL, 6.0, lit=0)
-    cv.rect(93, 216, 99, 221, sil, 0, lit=0)                             # el peu
-    cv.rect(109, 208, 114, 221, TEAL, 3.6, lit=0)                        # el segon monitor, de cantó
-    outline(cv, 109, 208, 114, 221, [(4, 10, 12)])
-    cv.disc(75, 208, 6.5, 8, sil, 0, lit=0)                              # el cap, amb la cua
-    cv.line(68, 208, 63, 221, sil, 0, lit=0)
-    cv.line(69, 209, 64, 222, sil, 0, lit=0)
-    cv.line(70, 209, 65, 222, sil, 0, lit=0)
-    cv.rect(65, 216, 84, wy1, sil, 0, lit=0)                             # les espatlles i la cadira
-    cv.vline(64, 222, wy1, sil, 0, lit=0)
-    cv.disc(81, 205, 2, 3, [(200, 30, 40)], 0, lit=0)                    # l'auricular vermell
-    cv.line(81, 202, 76, 199, [(200, 30, 40)], 0, lit=0)                 # la diadema de l'auricular
-    for k, (dx, col) in enumerate(((0, (220, 50, 50)), (1, (230, 200, 60)), (2, (60, 190, 90)))):
-        cv.flat(71 + dx * 2, 200 + (1 if dx == 1 else 0), col)           # la diadema de l'Iri, de tres colors
-    cv.rect(wx0, 228, wx1, 229, sil, 0, lit=0)                           # la taula
-    cv.rect(88, 225, 102, 227, TEAL, 3.2, lit=0)                         # el teclat
-    cv.rect(105, 222, 108, 227, [(8, 20, 22), (40, 60, 60)], 1, lit=0)   # la tassa
-    cv.vline(85, 230, wy1, sil, 0, lit=0)                                # la pota de la taula
-    for x in range(wx0, wx1 + 1, 2):                                     # el reflex al vidre
-        cv.tint(x, wy0, x, wy0 + 1, (230, 255, 244), 0.15)
-    cv.vline((wx0 + wx1) // 2 - 12, wy0, wy1, BLOCK, 1.0, lit=0)        # el muntant
-    outline(cv, wx0 - 1, wy0 - 1, wx1 + 1, wy1 + 1, BLOCK)
-    cv.rect(wx0 - 4, wy1 + 1, wx1 + 4, wy1 + 4, BLOCK, lambda x, y: 3.4 + (0.6 if y == wy1 + 1 else 0), lit=0)
-    cv.glow(85, 213, 80, (60, 230, 190), 0.16)
+    for j in range(4):                                                   # una persiana mig abaixada al pis de dalt
+        cv.hline(129, 156, 150 + j * 3, BLOCK, 1.6, lit=0)
+    wx0, wy0, wx1, wy1 = WIN
+    window(cv, frame, mode, k)
     # els cables: surten per la finestra i pugen per la façana fins a la parabòlica
-    for k, col in enumerate(([(20, 20, 26), (60, 60, 70)], [(60, 10, 14), (150, 30, 30)], [(10, 30, 50), (30, 80, 120)])):
-        cable(cv, [(wx1 + 1, wy0 + 11 + k * 4), (wx1 + 40, wy0 + 27), (157 + k * 3, 173), (DISH[0] - 3 + k * 3, DISH[1] + 11)], col, 1.0)
+    for j, col in enumerate(([(20, 20, 26), (60, 60, 70)], [(60, 10, 14), (150, 30, 30)], [(10, 30, 50), (30, 80, 120)])):
+        cable(cv, [(wx1 + 1, wy0 + 11 + j * 4), (wx1 + 40, wy0 + 27), (157 + j * 3, 173), (DISH[0] - 3 + j * 3, DISH[1] + 11)], col, 1.0)
     # la parabòlica, que apunta a la torre
     dx, dy = DISH
     cv.rect(dx - 1, dy + 3, dx + 1, top, ROOF, lambda x, y: 2.6 + (0.6 if x == dx - 1 else 0), lit=0)
@@ -176,8 +233,11 @@ def block(cv):
                [(40, 44, 54), (90, 96, 110)], 0.6, lit=0)
     cv.line(dx + 4, dy - 3, dx + 16, dy - 8, [(200, 206, 214)], 0, lit=0)
     cv.line(dx + 4, dy + 3, dx + 16, dy - 8, [(150, 156, 170)], 0, lit=0)   # el segon braç del LNB
-    cv.rect(dx + 15, dy - 9, dx + 17, dy - 7, [(250, 60, 60)], 0, lit=0)
-    cv.flat(dx + 16, dy - 8, (255, 160, 150))
+    if frame % 4 == 0:                                                   # el led del LNB, que parpelleja
+        cv.rect(dx + 15, dy - 9, dx + 17, dy - 7, [(90, 20, 20)], 0, lit=0)
+    else:
+        cv.rect(dx + 15, dy - 9, dx + 17, dy - 7, [(250, 60, 60)], 0, lit=0)
+        cv.flat(dx + 16, dy - 8, (255, 160, 150))
 
 
 def bar_sign(cv, on=True):
@@ -264,37 +324,70 @@ def signal(cv, frame):
             cv.flat(px, py, (120, 220, 200))
 
 
-def bg(cv):
-    sky(cv)
-    tower(cv)
+def bg(cv, frame=0, mode='espera', k=0, flash=0.0):
+    """L'escena sense el títol (el títol és la capa `titol`; el pròleg fa servir aquest mateix fons)."""
+    sky(cv, frame)
+    tower(cv, frame, flash)
     roofs(cv)
-    block(cv)
-    bar_sign(cv)
-    title(cv)
+    block(cv, frame, mode, k)
+    bar_sign(cv, on=frame % N_VIDA != 5)
 
 
 PROPS = {}
 
+N_VIDA = 8                                # fotogrames del bucle d'espera
+VIDA_MS = 220
 
-def _frames():
-    base = Canvas(light=LIGHT)
-    bg(base)
+
+@functools.lru_cache(maxsize=1)
+def base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
+
+
+def _layer(**kw):
+    """Un fotograma de capa: només el que canvia respecte del fons."""
+    cv = Canvas(light=LIGHT)
+    bg(cv, **kw)
+    return _diff(cv.img, base())
+
+
+def _empty():
+    return Canvas(light=LIGHT, transparent=True).img
+
+
+def _title_frames():
+    cv = Canvas(light=LIGHT, transparent=True)
+    title(cv)
+    return [cv.img]
+
+
+def _signal_frames():
+    """El pols va de la parabòlica a la torre (10 fotogrames), la torre s'il·lumina i s'apaga; acaba buit."""
     frames = []
-    for i in range(N):
-        cv = Canvas(light=LIGHT, img=base.img.copy())
-        if i < 10:
-            signal(cv, i)
-        if i == 7:
-            bar_sign(cv, on=False)
-        if i == 10:                                                      # la torre ha rebut el senyal: l'antena s'encén
-            cx = sum(TOWER_X) // 2
-            cv.glow(cx, TOWER_TOP[1] - 17, 7, (255, 120, 90), 0.8)
-        if i % 4 == 0:
-            cv.rect(DISH[0] + 15, DISH[1] - 9, DISH[0] + 17, DISH[1] - 7, [(90, 20, 20)], 0, lit=0)
-        frames.append(_diff(cv.img, base.img))
-    return frames
+    for i in range(10):
+        cv = Canvas(light=LIGHT)
+        bg(cv)
+        signal(cv, i)
+        frames.append(_diff(cv.img, base()))
+    frames += [_layer(flash=f) for f in (1.0, 0.8, 0.6, 0.4, 0.2)]
+    return frames + [_empty()]
 
 
-ANIMS = {'senyal': {'frames': _frames, 'frameDuration': 140}}
+# Totes dues sales: `pis_vida` és la capa del bucle d'espera (a la portada, damunt del fons; al pròleg, damunt de la
+# capa opaca `pis`), i les altres són etiquetes d'aquesta capa o de `senyal`, que les indicacions d'escena hi posen.
+PIS_VIDA = {'frames': lambda: [_layer(frame=i) for i in range(N_VIDA)], 'frameDuration': VIDA_MS, 'zIndex': 6}
+PIS_PORTA = {'frames': lambda: [_layer(frame=i % N_VIDA, mode='porta', k=i) for i in range(len(RAISE))],
+             'frameDuration': 120, 'loop': False, 'prop': 'pis_vida'}
+PIS_FESTA = {'frames': lambda: [_layer(frame=i, mode='festa') for i in range(2)], 'frameDuration': 260,
+             'prop': 'pis_vida'}
+SENYAL = {'frames': lambda: [_empty()], 'frameDuration': 1000, 'loop': False, 'zIndex': 6}
+SENYAL_VA = {'frames': _signal_frames, 'frameDuration': 110, 'loop': False, 'prop': 'senyal'}
+
+ANIMS = {
+    'pis_vida': {**PIS_VIDA, 'zIndex': 1},
+    'titol': {'frames': _title_frames, 'frameDuration': 1000, 'loop': False, 'zIndex': 3},
+}
 
 GEOMETRIA = {'things': {}, 'spawns': {}, 'walkable': [(200, 253), (267, 253), (267, 261), (200, 261)]}

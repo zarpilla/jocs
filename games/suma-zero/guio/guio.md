@@ -212,7 +212,10 @@ Pons (8) i la sortida per les escombraries (9).
 
 ### Pròleg
 
-Cinemàtica sobre negre i imatges, sala `proleg_ginebra`.
+Cinemàtica, sala `proleg_ginebra`. Comença al pla de la portada, que «Comença» deixa sense títol: un pols de llum
+surt de la parabòlica de l'Iri cap a la torre del BCMU, i el pla es fon cap a Ginebra. Cada frase engega el seu
+tros d'animació (la pantalla de la façana s'encén, el Director perd el somriure i el torna a posar). A «Lluny.
+Prou lluny» tornem al pis: al monitor de l'Iri s'obre una porta, i ella aixeca els braços.
 
 > NARRADOR: Ginebra. Seu del Banc Central Mundial Unificat.
 > NARRADOR: Aquest banc custodia més diners que cent vuitanta països junts.
