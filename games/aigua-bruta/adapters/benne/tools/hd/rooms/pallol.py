@@ -2,6 +2,8 @@
 El pallol: el magatzem del contramestre. Prestatges amb caps, cable apantallat i connectors, pintura i cinta;
 el tauler dels cadenats (cinc, i un ganxo buit), l'inventari clavat damunt la porta, defenses, un salvavides i
 un rotllo de cap d'amarrar. A l'Escena 6 el Marcel hi seu a terra amb en Diu (són sprites).
+ANIMS: `defenses` (les defenses i el salvavides es gronxen amb el balanceig) i `pols` (pols a la llum del llum
+de l'esquerra, damunt dels prestatges).
 """
 import math
 
@@ -9,6 +11,7 @@ from hd.pix import Canvas, Light, W, H, hr, mix, B4, WALNUT, PAPER, ORANGE
 from hd.rooms.arenga import (WALL, ENG, DECK, CAB, DARK, WHITEP, YELL, REDP, SEAG, FUEL, BRASS, WARM, FLOOR_Y,
                              BOTTOM, box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms import sota
+from hd.rooms.comu import _diff
 
 LAMPS = (170, 372)
 
@@ -200,33 +203,65 @@ def cadenat_sise(cv):
 
 # ─── Defenses, salvavides, galledes, rotllo d'amarrar ──────────────────────
 
-def fenders(cv):
-    """Dues defenses penjades d'un cap, i el salvavides."""
-    cv.hline(318, 470, 46, CAB, 3.6)
-    cv.hline(318, 470, 47, CAB, 2.0)
-    for fx, col in ((334, ORANGE), (358, WHITEP)):
-        cv.vline(fx, 48, 60, ROPEW, 3.4)
-        for y in range(60, 112):
-            t = (y - 60) / 52
-            rx = 9 * math.sin(math.pi * min(1, max(0, t * 1.08 + 0.02))) ** 0.5
-            for x in range(int(fx - rx), int(fx + rx) + 1):
-                u = (x - fx) / (rx + 0.5)
-                cv.put(x, y, col, 3.4 + 1.4 * (-0.3 - u) - 0.8 * u * u)
-        cv.vline(fx, 112, 116, ROPEW, 3.0)
-    # el salvavides, amb les bandes blanques i el cap al voltant
-    cx, cy = 410, 84
-    for y in range(cy - 19, cy + 20):
-        for x in range(cx - 19, cx + 20):
-            d = math.hypot(x - cx, y - cy)
+FENDERS = ((334, ORANGE), (358, WHITEP))
+BUOY = (410, 84)
+_SWING = {'a': 0.0}                       # angle (graus) del gronxament: el canvien els fotogrames de `defenses`
+
+
+def _rot(x, y, px, py, deg):
+    """Punt (x, y) girat `-deg` al voltant de (px, py): on cau dins l'objecte quiet."""
+    c, s_ = math.cos(math.radians(deg)), math.sin(math.radians(deg))
+    dx, dy = x - px, y - py
+    return px + dx * c + dy * s_, py - dx * s_ + dy * c
+
+
+def _fender_px(cv, fx, col, deg):
+    """Una defensa penjada del cap a (fx, 48), girada `deg` graus (positiu: el peu cap a la dreta)."""
+    pad = 12
+    for y in range(46, 120):
+        for x in range(fx - pad - 8, fx + pad + 8):
+            lx, ly = _rot(x, y, fx, 48, -deg)
+            if ly < 48 or ly > 116.5:
+                continue
+            if 60 <= ly < 112:
+                t = (ly - 60) / 52
+                rx = 9 * math.sin(math.pi * min(1, max(0, t * 1.08 + 0.02))) ** 0.5
+                if abs(lx - fx) <= rx + 0.5:
+                    u = (lx - fx) / (rx + 0.5)
+                    cv.put(x, y, col, 3.4 + 1.4 * (-0.3 - u) - 0.8 * u * u)
+            elif abs(lx - fx) < 0.6:
+                cv.put(x, y, ROPEW, 3.4 if ly < 60 else 3.0)
+
+
+def _buoy_px(cv, deg):
+    """El salvavides, penjat d'un cap del mateix bastidor, girat `deg` graus al voltant del nus de dalt."""
+    cx0, cy0 = BUOY
+    py = 48
+    for y in range(py, cy0 + 22):
+        for x in range(cx0 - 24, cx0 + 25):
+            lx, ly = _rot(x, y, cx0, py, -deg)
+            d = math.hypot(lx - cx0, ly - cy0)
             if 10 <= d <= 18.5:
-                a = math.degrees(math.atan2(y - cy, x - cx)) % 90
+                a = math.degrees(math.atan2(ly - cy0, lx - cx0)) % 90
                 band = 35 <= a <= 55
                 u = (d - 14.25) / 4.5
-                cv.put(x, y, WHITEP if band else ORANGE, 3.6 - u * 1.2 - (y - cy) * 0.03 - u * u)
-    for a in range(0, 360, 6):
-        if (a // 45) % 2 == 0:
-            cv.put(cx + round(math.cos(math.radians(a)) * 19), cy + round(math.sin(math.radians(a)) * 19), ROPEW, 3.6)
-    cv.vline(cx, 48, cy - 19, ROPEW, 3.0)
+                cv.put(x, y, WHITEP if band else ORANGE, 3.6 - u * 1.2 - (ly - cy0) * 0.03 - u * u)
+            elif 18.5 < d <= 19.5:
+                a = math.degrees(math.atan2(ly - cy0, lx - cx0)) % 360
+                if (int(a) // 45) % 2 == 0 and int(a) % 6 < 2:
+                    cv.put(x, y, ROPEW, 3.6)
+            elif abs(lx - cx0) < 0.6 and py <= ly < cy0 - 19:
+                cv.put(x, y, ROPEW, 3.0)
+
+
+def fenders(cv):
+    """Dues defenses penjades d'un cap, i el salvavides (es gronxen amb el balanceig: vegeu _SWING)."""
+    cv.hline(318, 470, 46, CAB, 3.6)
+    cv.hline(318, 470, 47, CAB, 2.0)
+    a = _SWING['a']
+    for i, (fx, col) in enumerate(FENDERS):
+        _fender_px(cv, fx, col, a * (1.0 if i == 0 else 0.85))       # la blanca, més lleugera, va una mica enrere
+    _buoy_px(cv, a * 0.5)                                               # el salvavides frega la paret: es mou menys
     sota.sign(cv, 394, 108, 'ARENGA', ramp=WHITEP, lvl=3.8, pad=1)
 
 
@@ -298,6 +333,56 @@ def bg(cv):
 
 
 PROPS = {'cadenat_sise': cadenat_sise}
+
+
+# ─── Animacions ────────────────────────────────────────────────────────────
+
+def _base():
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv
+
+
+def _frames_defenses():
+    """El balanceig: les defenses i el salvavides fan un vaivé lent (sinus: el bucle no salta)."""
+    base = _base()
+    frames = []
+    n = 32
+    for i in range(n):
+        _SWING['a'] = 3.5 * math.sin(2 * math.pi * i / n)
+        try:
+            cv = _base()
+        finally:
+            _SWING['a'] = 0.0
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+def _frames_pols():
+    """Pols que sura a la llum del llum de l'esquerra (cada mota fa un llaç tancat: el bucle no salta)."""
+    base = _base()
+    lx = LAMPS[0]
+    motes = [(lx + (hr(k, 7) - 0.5) * 80, 40 + hr(k, 8) * 90, 6 + hr(k, 9) * 10, 4 + hr(k, 10) * 8, hr(k, 11),
+              1 + int(hr(k, 12) * 2)) for k in range(18)]
+    n = 48
+    frames = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, img=base.img.copy())
+        t = i / n
+        for (cx, cy, ax, ay, ph, fx) in motes:
+            a = 2 * math.pi * (t + ph)
+            x = round(cx + ax * math.sin(fx * a))
+            y = round(cy + ay * math.sin(a + ph * 3))
+            near = max(0.0, 1 - math.hypot(x - lx, (y - 26) * 0.9) / 130)
+            alpha = near * (0.5 + 0.25 * (1 + math.sin(a * 2 + ph * 7)))
+            if alpha > 0.08 and 0 <= x < W and 30 <= y < FLOOR_Y:
+                cv.flat(x, y, mix(cv.get(x, y), (255, 236, 196), alpha))
+        frames.append(_diff(cv.img, base.img))
+    return frames
+
+
+ANIMS = {'defenses': {'frames': _frames_defenses, 'frameDuration': 200},
+         'pols': {'frames': _frames_pols, 'frameDuration': 130}}
 
 GEOMETRIA = {
     'things': {

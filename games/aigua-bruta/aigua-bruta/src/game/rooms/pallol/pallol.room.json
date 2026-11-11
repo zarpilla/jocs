@@ -176,6 +176,34 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "defenses",
+      "tag": "defenses",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "defenses": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 130
+        }
+      }
     }
   ],
   "characters": [
