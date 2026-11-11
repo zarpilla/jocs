@@ -5,10 +5,12 @@
 import type { GameContent, Narrative } from '@aventura/narrative-core';
 import { DONAR_TEXTS, installDonar } from './donar.js';
 import { ESCENES_TEXTS, installEscenes } from './escenes.js';
+import { MAPA_TEXTS } from './mapa.js';
 import { MUNTA_TEXTS, installMuntacarregues } from './muntacarregues.js';
 import { SINCRONIA_TEXTS, installSincronia } from './sincronia.js';
 
 export * from './escenes.js';
+export * from './mapa.js';
 export * from './muntacarregues.js';
 export * from './sincronia.js';
 
@@ -16,7 +18,7 @@ export * from './sincronia.js';
 export const GAME_ACTIONS: string[] = ['munta.enviar', 'munta.recollir', 'munta.nota', 'donar'];
 
 /** Claus de text que fa servir el codi del joc. */
-export const GAME_TEXT_KEYS: string[] = [...SINCRONIA_TEXTS, ...MUNTA_TEXTS, ...DONAR_TEXTS, ...ESCENES_TEXTS];
+export const GAME_TEXT_KEYS: string[] = [...SINCRONIA_TEXTS, ...MUNTA_TEXTS, ...DONAR_TEXTS, ...ESCENES_TEXTS, ...MAPA_TEXTS];
 
 /** Les de `GAME_TEXT_KEYS` més les que depenen del contingut: el nom amb article de cada objecte. */
 export function gameTextKeys(content: GameContent) {

@@ -510,6 +510,20 @@ export class Narrative {
   }
 
   /**
+   * La interacció que faria un verb sobre una cosa d'una sala (sense objecte), però sense fer-la: ni efectes,
+   * ni línies, ni `once` gastat. Serveix per saber per on es pot passar (p. ex. el mapa de Ni un ou).
+   */
+  peekInteraction(room: Id, hotspot: Id, verb: Id): InteractionDef | undefined {
+    const list = this.content.rooms[room]?.hotspots[hotspot]?.interactions ?? [];
+    return this.findInteraction(`${room}/${hotspot}`, list, verb);
+  }
+
+  /** L'entrada d'`onEnter` que es faria en entrar a una sala ara mateix, sense fer-la. */
+  peekEnter(room: Id): InteractionDef | undefined {
+    return this.findInteraction(`${room}/@enter`, this.content.rooms[room]?.onEnter ?? [], '*');
+  }
+
+  /**
    * Frase quan una interacció no està prevista. Busca, per ordre:
    * `ui.defecte.<verb>.<protagonista>`, `ui.defecte.<verb>`, `ui.defecte`.
    */

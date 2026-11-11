@@ -214,6 +214,22 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
 | Dia 2, 03:00 | 9. La finestra del satèl·lit | |
 | Dues setmanes després, a trenc d'alba | Final, a Galway | |
 
+
+### 8. El plànol
+
+- Al passadís de la coberta principal hi ha el **plànol d'emergència** emmarcat, i a sota, còpies plastificades.
+  Des de l'**Escena 6**, quan la cerca de la Juana obre tot el vaixell, se n'agafa una (una sola: «Amb un n'hi ha
+  prou»). VET: «Quaranta metres de vaixell. I em cal un plànol.» Si l'agafa l'Iri: «Jo no el necessito. Però així no
+  camino.» Abans de l'Escena 6: «Ara no tinc temps ni de perdre'm» / «Me'l sé de memòria».
+- **Fer servir el plànol** obre una pantalla amb les tres cobertes vistes de dalt: es clica la sala i s'hi va. És
+  paper: es pot donar a l'altra o enviar pel muntacàrregues.
+- **El plànol no obre cap porta que no s'obri caminant.** El camí passa per les mateixes portes, amb les mateixes
+  condicions: de nit no se surt a coberta, a l'Escena 5 l'Iri no arriba a la cuina, la Vet no deixa en Bastida a
+  mig nus, la caixa de cadenes i el dipòsit 2 demanen la cisalla i la clau, i a les escenes 8 i 9 ningú no es mou
+  d'on ha de ser. Les sales on ara no es pot anar surten ratllades; si se'n clica una, la protagonista diu la frase
+  de la porta que la tanca.
+- Si el camí passa per una sala on, en entrar-hi, ha de passar alguna cosa, el viatge s'hi atura.
+- Fer servir el plànol és caminar: no gasta torn a les sincronies.
 ---
 
 ## Estructura
@@ -594,7 +610,9 @@ biòloga. No sé què vol dir. No m'agrada com ho ha dit.»
 
 ### Escena 6 — On és la Juana (les dues, exploració)
 
-**Sales:** les dues es mouen lliurement per tot el vaixell. Onze de la nit. No hi ha rellotge. Cinc llocs, en
+**Sales:** les dues es mouen lliurement per tot el vaixell. Onze de la nit. No hi ha rellotge. Al passadís hi ha
+el plànol d'emergència (vegeu «Regles del món · 8»): la primera que hi passa se n'adona, i amb una còpia es pot anar
+a qualsevol sala sense caminar-hi porta a porta. Cinc llocs, en
 l'ordre que es vulgui; a cadascun hi ha algú (o alguna cosa) i una pista:
 
 | Lloc | Qui hi ha | Què passa |

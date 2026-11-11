@@ -331,6 +331,22 @@ def plan_board(cv):
                 cv.flat(x, y, (110, 110, 116))
     for bx, by in ((x0 + 1, y0 + 1), (x1 - 1, y0 + 1), (x0 + 1, y1 - 1), (x1 - 1, y1 - 1)):
         cv.put(bx, by, CAB, 5.2)
+    copies(cv)
+
+
+COPIES = (500, 119, 528, 131)
+
+
+def copies(cv):
+    """Sota el plànol, el portafulls de plàstic amb les còpies plastificades (des de l'Escena 6, se n'agafa una)."""
+    x0, y0, x1, y1 = COPIES
+    for i, dy in enumerate((0, 1, 2)):                                     # tres còpies, una mica desplaçades
+        cv.rect(x0 + 2 + i, y0 + dy, x1 - 2 - (2 - i), y0 + 5 + dy, WHITEP, 4.4 - i * 0.3)
+        cv.hline(x0 + 2 + i, x1 - 2 - (2 - i), y0 + dy, SEAG, 3.0)
+    box(cv, x0, y0 + 4, x1, y1, CAB, 2.4)                                   # la butxaca, fosca i transparent
+    cv.rect(x0 + 2, y0 + 6, x1 - 2, y1 - 2, WHITEP, 3.2)
+    cv.hline(x0 + 3, x1 - 3, y0 + 7, SEAG, 2.6)
+    cv.line(x0 + 4, y1 - 3, x0 + 10, y0 + 6, WHITEP, 5.6)                  # el reflex del plàstic
 
 
 def stairs_down(cv):
@@ -480,6 +496,7 @@ GEOMETRIA = {
         'escala_amunt': {'rect': (376, 5, 459, FLOOR_Y), 'walk': (429, 237)},
         'escala_avall': {'rect': (467, 165, 557, 232), 'walk': (512, 245)},
         'porta_proa': {'rect': (573, 59, 632, FLOOR_Y), 'walk': (603, 237)},
+        'planol': {'rect': (474, 64, 554, 132), 'walk': (514, 237)},
     },
     'spawns': {'iri': (309, 251), 'vet': (387, 256)},
     'walkable': [(8, 224), (461, 224), (461, 237), (560, 237), (560, 224), (635, 224), (635, 263), (8, 263)],

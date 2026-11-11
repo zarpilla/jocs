@@ -31,6 +31,7 @@ export default {
   guis(gameDir) {
     addGameMenuButtons(gameDir);
     addHistoryGui(gameDir);
+    addMapaScript(gameDir);
   },
 } satisfies JocBenne;
 
@@ -126,3 +127,37 @@ function addHistoryGui(gameDir: string) {
 /** On comencen les línies de l'historial (y), i quantes n'hi caben: ho fa servir el runtime. */
 const HISTORIAL_TOP = 24; // ha de coincidir amb runtime/narrative.ts (HISTORIAL_FILES)
 
+// ─── El plànol de l'Arenga ──────────────────────────────────────────────────
+
+/**
+ * El script de la GUI `mapa` (el plànol d'emergència): cada sala del plànol, en clicar-la, hi va (o la protagonista
+ * diu per què no); en passar-hi per sobre, el peu en diu el nom. La GUI i l'art els fa tools/hd640/mapa.py, i la
+ * lògica és a runtime/mapa.ts i runtime/mapa.script.ts. Les sales surten dels botons de la GUI (la seva etiqueta
+ * de fons és l'id de la sala).
+ */
+function addMapaScript(gameDir: string) {
+  const dir = join(gameDir, 'guis/mapa');
+  const jsonPath = join(dir, 'mapa.gui.json');
+  if (!existsSync(jsonPath)) {
+    console.warn('⚠ Falta la GUI del plànol: python3 adapters/benne/tools/hd640/mapa.py');
+    return;
+  }
+  const sales = ((readJson(jsonPath).controls as Json[]) ?? [])
+    .filter((c) => c.type === 'button' && typeof c.backgroundTag === 'string' && c.backgroundTag)
+    .map((c) => ({ id: String(c.id), sala: String(c.backgroundTag) }));
+  const handlers = sales.map(({ id, sala }) => [
+    `${id}.onClick(() => viatjaAmbMapa('${sala}'))`,
+    `${id}.onMouseEnter(() => peuMapa('${sala}'))`,
+    `${id}.onMouseLeave(() => peuMapa(null))`,
+  ].join('\n'));
+  writeFileSync(join(dir, 'mapa.gui.ts'), `// Creat per games/ni-un-ou/adapters/benne/joc.ts: el plànol de l'Arenga. No l'editis aquí.
+// La lògica és a narrative/mapa.ts i narrative/mapa.script.ts (games/ni-un-ou/adapters/benne/runtime/).
+import { tanca, ${sales.map((s) => s.id).join(', ')} } from './mapa.ids';
+import { peuMapa, tancaMapa } from '../../narrative/mapa';
+import { viatjaAmbMapa } from '../../narrative/mapa.script';
+
+tanca.onClick(() => tancaMapa())
+
+${handlers.join('\n\n')}
+`);
+}

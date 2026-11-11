@@ -293,6 +293,27 @@
         "h": 36
       },
       "duration": 100
+    },
+    "inventory 14.aseprite": {
+      "frame": {
+        "x": 910,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 36
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -301,7 +322,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 910,
+      "w": 975,
       "h": 36
     },
     "scale": "1",
@@ -401,6 +422,13 @@
         "name": "registre",
         "from": 13,
         "to": 13,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mapa",
+        "from": 14,
+        "to": 14,
         "direction": "forward",
         "color": "#000000ff"
       }

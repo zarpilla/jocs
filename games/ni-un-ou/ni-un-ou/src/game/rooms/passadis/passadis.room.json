@@ -285,6 +285,38 @@
         "y": 203
       },
       "defaultVerb": "open"
+    },
+    {
+      "id": "planol",
+      "active": true,
+      "description": "plànol d'emergència",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 474,
+          "y": 64
+        },
+        {
+          "x": 554,
+          "y": 64
+        },
+        {
+          "x": 554,
+          "y": 132
+        },
+        {
+          "x": 474,
+          "y": 132
+        }
+      ],
+      "walkToPoint": {
+        "x": 514,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 514,
+        "y": 132
+      }
     }
   ],
   "points": [],

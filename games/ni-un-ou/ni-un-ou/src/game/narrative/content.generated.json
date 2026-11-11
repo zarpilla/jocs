@@ -117,6 +117,7 @@
         "juana_parla": false,
         "juana_trobada": false,
         "lind_gravada": false,
+        "mapa_agafat": false,
         "marcel_enfadat": false,
         "marcel_gat": false,
         "marcel_secret": false,
@@ -137,6 +138,7 @@
         "nus_lico": false,
         "panell_obert": false,
         "pla_fet": false,
+        "planol_vist": false,
         "plataforma_vista": false,
         "portatil_obert": false,
         "portatil_robat": false,
@@ -736,6 +738,26 @@
               {
                 "who": "player",
                 "text": "obj.registre.1"
+              }
+            ]
+          }
+        ]
+      },
+      "mapa": {
+        "name": "obj.mapa.nom",
+        "description": "obj.mapa.desc",
+        "props": {
+          "munta": true
+        },
+        "interactions": [
+          {
+            "verb": [
+              "use",
+              "open"
+            ],
+            "effects": [
+              {
+                "event": "mapa"
               }
             ]
           }
@@ -6562,6 +6584,139 @@
                 ]
               }
             ]
+          },
+          "planol": {
+            "name": "sala.passadis.planol.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.2"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.4"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "if": {
+                  "flag": "mapa_agafat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.5"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": ">=",
+                      "value": 6
+                    },
+                    {
+                      "protagonist": "iri"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.6"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "mapa"
+                  },
+                  {
+                    "setFlag": "mapa_agafat"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "if": {
+                  "var": "escena",
+                  "op": ">=",
+                  "value": 6
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.7"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "mapa"
+                  },
+                  {
+                    "setFlag": "mapa_agafat"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.8"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis.planol.9"
+                  }
+                ]
+              }
+            ]
           }
         },
         "decor": {
@@ -6581,7 +6736,83 @@
               ]
             }
           }
-        }
+        },
+        "onEnter": [
+          {
+            "id": "planol6",
+            "verb": "*",
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 6
+                },
+                {
+                  "flag": "planol_vist",
+                  "is": false
+                },
+                {
+                  "flag": "mapa_agafat",
+                  "is": false
+                },
+                {
+                  "protagonist": "vet"
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.passadis.esc6.1"
+              },
+              {
+                "who": "player",
+                "text": "sala.passadis.esc6.2"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "planol_vist"
+              }
+            ]
+          },
+          {
+            "id": "planol6i",
+            "verb": "*",
+            "if": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 6
+                },
+                {
+                  "flag": "planol_vist",
+                  "is": false
+                },
+                {
+                  "flag": "mapa_agafat",
+                  "is": false
+                },
+                {
+                  "protagonist": "iri"
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "sala.passadis.esc6.3"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "planol_vist"
+              }
+            ]
+          }
+        ]
       },
       "passadis_baix": {
         "name": "sala.passadis_baix.nom",
@@ -22191,6 +22422,8 @@
       "esc.onze": "Onze del matí.",
       "esc.falten10": "Falten 10 hores.",
       "munta.retorna": "Abans, el muntacàrregues torna amb {objecte}, que encara hi era.",
+      "mapa.aqui": "Ja hi soc.",
+      "mapa.tancat": "Per aquí, ara, no hi puc passar.",
       "ui.verb.give": "Dona",
       "ui.verb.give.prep": "a",
       "ui.verb.pickUp": "Agafa",
@@ -22248,6 +22481,31 @@
       "ui.missio.completada": "Missió completada: {titol}",
       "ui.missio.fallida": "Missió fallida: {titol}",
       "ui.missio.nova": "Nova missió: {titol}",
+      "ui.mapa.titol": "PLÀNOL D'EMERGÈNCIA · ARENGA",
+      "ui.mapa.tanca": "Tanca",
+      "ui.mapa.aqui": "Sou aquí",
+      "ui.mapa.peu": "Clica on vols anar.",
+      "ui.mapa.sala.pont": "Pont",
+      "ui.mapa.sala.sala_radio": "Ràdio",
+      "ui.mapa.sala.pal": "Pal",
+      "ui.mapa.sala.coberta_popa": "Popa",
+      "ui.mapa.sala.cuina": "Cuina",
+      "ui.mapa.sala.menjador": "Menjador",
+      "ui.mapa.sala.passadis": "Passadís",
+      "ui.mapa.sala.infermeria": "Infermeria",
+      "ui.mapa.sala.laboratori": "Laboratori",
+      "ui.mapa.sala.cabina_capitana": "Capitana",
+      "ui.mapa.sala.coberta_proa": "Proa",
+      "ui.mapa.sala.rebost": "Rebost",
+      "ui.mapa.sala.diposit2": "Dipòsit 2",
+      "ui.mapa.sala.sala_maquines": "Màquines",
+      "ui.mapa.sala.taller": "Taller",
+      "ui.mapa.sala.camarot_iri": "Camarot",
+      "ui.mapa.sala.pallol": "Pallol",
+      "ui.mapa.sala.passadis_baix": "Passadís de baix",
+      "ui.mapa.sala.sala_bombes": "Bombes",
+      "ui.mapa.sala.caixa_cadenes": "Cadenes",
+      "ui.mapa.tancada": "{sala}: ara no s'hi pot anar.",
       "mis.acte1.obj.valvula": "Buidar la sentina",
       "mis.acte1.obj.revisions": "Fer les revisions",
       "mis.acte1.obj.juana": "Trobar la Juana",
@@ -22328,6 +22586,9 @@
       "obj.cisalla.no": "Les eines del taller no surten de les meves mans.",
       "obj.clau_tubs.no": "Les eines del taller no surten de les meves mans.",
       "obj.cisalla.3": "La cisalla del taller.",
+      "obj.mapa.nom": "plànol",
+      "obj.mapa.desc": "El plànol d'emergència de l'Arenga, plastificat. Les tres cobertes, les sortides i un punt vermell que ja no diu on soc.",
+      "obj.mapa.amb_article": "el plànol",
       "pj.iri.nom": "Iri",
       "pj.iri.look": "La maquinista. Té les mans més netes que jo, i viu ficada en una sentina.",
       "pj.vet.nom": "Vet",
@@ -23214,7 +23475,20 @@
       "sala.cabina_capitana.contracte.5": "És de la Capitana. No el toco.",
       "sala.coberta_popa.horitzo.2": "Els llums de popa, l'estela blanca i, a l'horitzó, cap a on anem, res.",
       "sala.sala_radio.aliats.1": "Doncs soles no en sortirem. Ens cal gent de bord al nostre costat: com més en siguin, més lluny arribarà la història.",
-      "sala.sala_radio.aliats.2": "Gent de bord. Que no tingui una cisalla."
+      "sala.sala_radio.aliats.2": "Gent de bord. Que no tingui una cisalla.",
+      "sala.passadis.planol.nom": "plànol d'emergència",
+      "sala.passadis.planol.1": "El plànol d'emergència. Me'l sé de memòria: tres campanyes.",
+      "sala.passadis.planol.2": "A sota hi ha còpies plastificades, per a qui no se'l sap.",
+      "sala.passadis.planol.3": "El plànol d'emergència. Un punt vermell: «Sou aquí». Gràcies.",
+      "sala.passadis.planol.4": "A sota hi ha còpies plastificades. Per a qui no sap on és la proa, suposo.",
+      "sala.passadis.planol.5": "Ja en tenim un. Amb un n'hi ha prou.",
+      "sala.passadis.planol.6": "Jo no el necessito. Però així no camino.",
+      "sala.passadis.planol.7": "Quaranta metres de vaixell. I em cal un plànol.",
+      "sala.passadis.planol.8": "No el necessito. Me'l sé de memòria.",
+      "sala.passadis.planol.9": "Ara no tinc temps ni de perdre'm.",
+      "sala.passadis.esc6.1": "Cinc llocs on mirar, i jo encara confonc babord amb estribord.",
+      "sala.passadis.esc6.2": "Aquell plànol de la paret m'aniria bé.",
+      "sala.passadis.esc6.3": "Ara cal mirar per tot el vaixell. La Vet, amb el plànol de la paret, ho faria més de pressa."
     }
   },
   "locale": "ca",

@@ -211,5 +211,25 @@
         ]
       }
     ]
+  },
+  "mapa": {
+    "name": "obj.mapa.nom",
+    "description": "obj.mapa.desc",
+    "props": {
+      "munta": true
+    },
+    "interactions": [
+      {
+        "verb": [
+          "use",
+          "open"
+        ],
+        "effects": [
+          {
+            "event": "mapa"
+          }
+        ]
+      }
+    ]
   }
 }

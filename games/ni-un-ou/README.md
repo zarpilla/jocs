@@ -29,6 +29,8 @@ Guió: [guio/guio.md](guio/guio.md). Art de mostra (la guia d'estil): [guio/art/
 - `muntacarregues.ts`: les tres parades i les safates (una variable per safata).
 - `escenes.ts`: canvis d'escena automàtics quan es compleix una condició (el final de l'Escena 2).
 - `donar.ts`: donar un objecte a l'altra protagonista quan són a la mateixa sala.
+- `mapa.ts`: el plànol d'emergència (des de l'Escena 6): on es pot anar ara, i per on, amb les mateixes portes que
+  caminant. La pantalla és la GUI `mapa` (`adapters/benne/tools/hd640/mapa.py` i `adapters/benne/runtime/mapa*.ts`).
 
 ## Ordres
 

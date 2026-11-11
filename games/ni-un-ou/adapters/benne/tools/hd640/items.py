@@ -397,9 +397,38 @@ def registre(f):
     f.rect(30, 25, 41, 25, INKG, 0.4)
 
 
+SEAGP = M((12, 38, 26), (24, 70, 48), (40, 108, 74), (70, 148, 102), (124, 196, 152))      # el verd del plànol
+
+
+def mapa(f):
+    """El plànol d'emergència, plastificat (el de la paret del passadís): capçalera verda, les tres cobertes de
+    l'Arenga vistes de dalt, la ruta d'evacuació en verd, el punt vermell i un reflex del plàstic."""
+    S = f.R(11, 5, 53, 31)
+    paper(f, S, PAPV, 4.4, w=43, h=27)
+    f.rect(12, 6, 52, 9, SEAGP, 2.6)                                       # la capçalera
+    f.rect(22, 7, 42, 8, PAPV, 4.8)                                        # el títol, en blanc
+    for y0, y1, x1 in ((11, 14, 40), (16, 21, 48), (23, 28, 46)):          # les tres cobertes (casc i proa)
+        f.rect(14, y0, x1, y0, INKG, 1.0)
+        f.rect(14, y1, x1, y1, INKG, 1.0)
+        f.rect(14, y0, 14, y1, INKG, 1.0)
+        for y in range(y0, y1 + 1):                                        # la proa, en punta
+            d = abs(y - (y0 + y1) / 2)
+            f.px(x1 + round(((y1 - y0) / 2 - d) * 1.4), y, INKG, 1.0)
+    for x in (20, 26, 33):                                                 # envans
+        f.rect(x, 17, x, 20, INKG, 2.0)
+        f.rect(x, 24, x, 27, INKG, 2.0)
+    for x in range(16, 46, 3):                                             # la ruta d'evacuació
+        f.px(x, 19, SEAGP, 3.2)
+        f.px(x + 1, 19, SEAGP, 3.2)
+    f.rect(28, 17, 29, 18, REDP, 4.0)                                      # «sou aquí»
+    for i in range(9):                                                     # el reflex del plàstic
+        f.shade(40 + i, 30 - i * 3, 1.2)
+        f.shade(41 + i, 30 - i * 3, 0.8)
+
+
 ICONS = {fn.__name__: fn for fn in (
     walkie, quadern, llibreta, cisalla, travesser, tram, cable_nou, usb, nota_iri, nota_vet,
-    clau_tomas, clau_tubs, mostra7, registre,
+    clau_tomas, clau_tubs, mostra7, registre, mapa,
 )}
 
 
