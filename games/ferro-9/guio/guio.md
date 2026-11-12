@@ -102,6 +102,11 @@ Ciència-ficció retrofuturista amb cor i humor. La premissa és fosca, però l'
    deixa la cambra sincronitzada ("no penso anar amunt i avall cada vegada"). Des d'aleshores, **posar un
    objecte a la cambra ho fa tot**: s'envia, el joc canvia a l'altra protagonista i l'objecte apareix al seu
    inventari. El que costa és decidir què s'envia, no el gest; cada enviament continua gastant una encesa.
+8. **Cal algú a l'altra banda.** L'objecte només passa de seguida si l'altra protagonista és a la seva cambra
+   (l'Iri a la cambra de ressonància; la Vet a la cel·la 9). Si no hi és, la protagonista ho diu ("a l'altra banda
+   no hi ha ningú"), el camp queda armat amb l'objecte a dins i no es canvia de protagonista. L'objecte arriba
+   (i gasta l'encesa) quan l'altra entra a la seva cambra; mentrestant, una pista li ho recorda. Amb la cambra
+   sincronitzada, el botó no arma el camp buit: n'hi ha prou de posar-hi l'objecte.
 
 ### El camí llarg
 
@@ -221,8 +226,8 @@ a les dues èpoques (la van pujar a l'òrbita amb la resta): el **pilar amb un 7
 3. L'Iri ho tradueix: una clau Lot 1 fa trenta centímetres, uns dos metres de biga.
 3b. **La marca del pilar 7.** Al moll de l'Iri també hi ha un pilar amb un 7 pintat: la V. és al seu moll. La biga no
    passarà mai per la finestra, però si és el mateix lloc, el que l'Iri hi deixi la Vet ho trobarà cent vint anys
-   després. Abans de jugar-s'hi una biga, ho prova amb una cosa petita: amb la llima, grava al pilar una I. i una
-   clau anglesa (que de pas vol dir «rebut», sense gastar cap encesa). Quan la Vet torna
+   després. Primer, però, li vol dir que ha rebut la nota: amb la llima, grava al pilar una I. i una clau anglesa,
+   que vol dir «rebut, soc aquí» sense gastar cap encesa. Quan la Vet torna
    a l'hangar, té mal de cap i hi troba la marca, que abans no hi era: **el primer cop que el passat canvia el
    present sense passar per la finestra**. Ensenya la regla que fan servir la vàlvula (Acte 2) i la reixa del conducte
    (Acte 3), i dona sentit al camí llarg: el moll és una bústia que triga cent vint anys.
@@ -374,7 +379,12 @@ fugen amb la mateixa nau, amb 120 anys de diferència.**
    diferència.
 3. **Segona encesa, de l'Iri a la Vet: l'últim component.** Només pot passar un objecte, però l'Iri també vol
    enviar la llibreta amb les proves. Trencaclosques d'inventari: **enrotlla la llibreta dins el tub de la
-   vàlvula**, i així és un sol objecte de menys de 2 kg.
+   vàlvula**, i així és un sol objecte de menys de 2 kg. **Per què la llibreta:** l'Iri sap que desapareixerà i que,
+   al passat, el Director explicarà el que vulgui. La llibreta de torn és l'únic testimoni (nit per nit, amb la seva
+   lletra) que la cambra no va ser cap accident, i només sobreviurà si arriba intacta a la Vet. Ho diu en llegir la
+   PD 2 del mapa i en mirar la llibreta. Al present, la Corporació Aldaia s'aguanta sobre la història de l'accident i
+   la lliçó (l'holograma): la llibreta la desmunta, i la Vet, l'única sincronitzadora que n'ha sortit viva, hi afegeix
+   el reciclatge. Per això La Gavina tanca al final 1.
 4. L'Iri **fuig per la ruta de la Vet**: obre la seva reixa, segueix les seves pròpies fletxes fins al moll (si encara
    no l'havia recorreguda, la fa ara, revolt per revolt, i en surt directament al moll) i
    s'emporta la llançadora nova. La Vet surt de la cel·la tancada per la reixa que l'Iri li va deixar oberta, munta
@@ -389,11 +399,8 @@ Omple el que abans era un sol text («grava una fletxa a cada revolt»): el reco
 - **La informació la troba la Vet i la fa servir l'Iri.** El mapa de La Gavina és a la paret del museu (no es pot
   agafar ni enviar): la línia discontínua del conducte fa cinc revolts entre el mòdul C i l'hangar, i la Vet els llegeix
   com a cinc signes: ← (esquerra), ↑ (recte) i → (dreta). La Vet els copia al fullet amb la ruta (el mapa de fuga),
-  però **a l'Iri li arriben correguts**: el llapis d'ulls no és tinta, i dels cinc signes només en queda una taca. La
-  resta del fullet es llegeix. **El jugador fa de pont**: o se'ls ha apuntat quan la Vet ha mirat el mapa, o torna a la
-  Vet perquè els hi torni a mirar. Quan l'Iri ja ha llimat la reixa, la Vet pot sortir de la cel·la tancada pel
-  conducte i anar al museu. Els signes només surten al mapa del museu (i al que la Vet en diu); les pistes de l'Iri
-  diuen d'on els va treure la V., i les de la Vet, on són.
+  i l'Iri els hi llegeix tal com la Vet els va escriure. El trencaclosques és seguir-los: dins el conducte, el
+  jugador ha de saber quin revolt és i quin signe toca (els pot tornar a mirar al fullet sempre que vulgui).
 - **Els signes són a l'atzar**, triats una vegada per partida: no es pot jugar de memòria d'una partida a l'altra.
 - **Una escena que es repeteix.** Cada revolt és el mateix lloc: un tram de conducte de planxa reblonada, amb la
   làmpada de gàbia, i tres passadissos (esquerra, recte, dreta). A dins s'eixampla prou perquè hi caminin els robots de
@@ -407,8 +414,8 @@ Omple el que abans era un sol text («grava una fletxa a cada revolt»): el reco
   la cambra. Si se n'ha equivocat alguna, al cinquè revolt veu llum al fons... i és la reixa de la seva cambra: «He
   sortit per on he entrat. M'he perdut.» No es diu quin revolt ha fallat. Es pot tornar enrere en qualsevol revolt.
 - **Sense atzucacs ni càstig**: perdre's no gasta cap encesa ni fa res al Sic. Es torna a provar tantes vegades com
-  calgui. Pistes: «abans de dir-ho a la V., vull provar la seva ruta», «els signes del fullet s'han corregut; ella els
-  va treure d'algun lloc» i «canvia a la Vet i que els torni a mirar al mapa de la Sala de la Memòria».
+  calgui. Pistes: «abans de dir-ho a la V., vull provar la seva ruta», «al fullet de la V. hi ha cinc signes, un per
+  revolt» i «tria el passadís del signe que toca, per ordre; si t'hi perds, torna a mirar el fullet».
 - **El present ho reflecteix.** Amb els cargols llimats però el camí encara sense marcar, la Vet ja pot obrir la reixa
   i passar-hi amb els revolts del mapa al cap («a dins, fosc i revolts»). Quan l'Iri hi grava les fletxes, un altre
   reajust: «Al conducte, a cada revolt, hi ha una I. gravada i una fletxa. Fa un moment no hi eren.»
@@ -432,8 +439,7 @@ història sempre l'havia dit bé; el que ningú no sabia és que la Vet l'havia 
    vibra si l'Iri no és a la seva cambra. L'Iri distreu el Sic («he vist algú al magatzem del ferro-9») i hi torna.
    Primera encesa. L'Iri llima els cargols de la reixa i recorre el conducte: cinc revolts a triar amb els signes
    del fullet (el mapa del museu en dona cinc a l'atzar a cada partida); si s'equivoca, surt per la reixa per on ha
-   entrat, i si l'encerta, torna gravant les fletxes (al fullet, els signes li arriben correguts: el jugador els ha
-   d'haver apuntat o els ha de tornar a mirar amb la Vet). Reajust: la Vet obre la reixa i el conducte la porta fins a
+   entrat, i si l'encerta, torna gravant les fletxes. Reajust: la Vet obre la reixa i el conducte la porta fins a
    l'hangar, i en torna (la cel·la és tancada).
 3. **L'últim component**: fet. La Directora avisa que ha fet treure el tub de la vàlvula de la llançadora (també
    ho diu una etiqueta a l'hangar), i la Vet ho afegeix al mapa com a segona postdata: així l'Acte 3 gasta

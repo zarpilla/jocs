@@ -169,6 +169,7 @@ Cada cosa de la llista és un **prop**, un **hotspot** o un **personatge** de la
 | `avis` | avís | prop | `{"flag":"avis_agafat","is":false}` | look, pickUp |
 | `llitera` | llitera | hotspot / prop | sempre | pickUp, pull, look |
 | `fullet` | fullet de reeducació | prop | `{"all":[{"flag":"fullet_vist"},{"flag":"fullet_agafat","is":false}]}` | look, pickUp |
+| `molla` | molla | prop | `{"all":[{"flag":"molla_vista"},{"flag":"molla_agafada","is":false}]}` | look, pickUp, pull |
 | `escarabat` | Senyor Bigotis | prop | `{"flag":"escarabat_agafat","is":false}` | look, pickUp |
 | `safata` | safata de sopar | prop | `{"flag":"sopa_agafada","is":false}` | look, pickUp |
 | `porta` | porta de la cel·la | hotspot / prop → `gavina_passadis` | sempre | open, use, walkTo, push, pull, use + objecte, look, use + imant_ferro9 |

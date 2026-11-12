@@ -262,6 +262,37 @@
             "text": "obj.llibreta_torn.vet2"
           }
         ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri1",
+            "sound": "paper"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri2"
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri_planols",
+            "if": {
+              "flag": "planols_robats"
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri3",
+            "if": {
+              "flag": "iri_sap_tub"
+            }
+          }
+        ]
       }
     ]
   },
@@ -550,7 +581,7 @@
         "if": {
           "all": [
             {
-              "flag": "pany_sonic_obert"
+              "flag": "vet_sap_pressio"
             },
             {
               "flag": "nota_pressio_escrita",
@@ -1888,16 +1919,24 @@
       {
         "verb": "look",
         "if": {
+          "inRoom": "fabrica_conducte"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.conducte"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
           "protagonist": "iri"
         },
         "lines": [
           {
             "who": "narrator",
-            "text": "obj.mapa_fuga.text_iri"
-          },
-          {
-            "who": "player",
-            "text": "obj.mapa_fuga.iri_taca"
+            "text": "obj.mapa_fuga.text"
           },
           {
             "who": "player",
@@ -1914,6 +1953,14 @@
           {
             "who": "player",
             "text": "obj.mapa_fuga.iri4"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri5"
+          },
+          {
+            "who": "player",
+            "text": "obj.mapa_fuga.iri6"
           }
         ],
         "effects": [

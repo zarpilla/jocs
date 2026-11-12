@@ -849,6 +849,74 @@
         },
         {
           "who": "cargol",
+          "text": "dlg.cargol.fabrica.molla",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "all": [
+                      {
+                        "hasItem": "molla",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_sap_diapaso",
+                        "is": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.2",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "all": [
+                      {
+                        "hasItem": "nota_pressio",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_sap_pressio",
+                        "is": false
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
           "text": "dlg.cargol.fabrica.4",
           "if": {
             "all": [
@@ -866,7 +934,59 @@
                   },
                   {
                     "not": {
-                      "flag": "molla_afinada"
+                      "any": [
+                        {
+                          "all": [
+                            {
+                              "flag": "iri_sap_diapaso"
+                            },
+                            {
+                              "not": {
+                                "flag": "pany_sonic_obert"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "all": [
+                            {
+                              "flag": "pany_sonic_obert"
+                            },
+                            {
+                              "flag": "iri_sap_pressio"
+                            }
+                          ]
+                        },
+                        {
+                          "var": "valvula",
+                          "op": "==",
+                          "value": "mig"
+                        },
+                        {
+                          "all": [
+                            {
+                              "hasItem": "molla",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "iri_sap_diapaso",
+                              "is": false
+                            }
+                          ]
+                        },
+                        {
+                          "all": [
+                            {
+                              "hasItem": "nota_pressio",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "iri_sap_pressio",
+                              "is": false
+                            }
+                          ]
+                        }
+                      ]
                     }
                   }
                 ]
@@ -892,12 +1012,16 @@
                     "flag": "comporta_oberta"
                   },
                   {
-                    "flag": "molla_afinada"
-                  },
-                  {
-                    "not": {
-                      "flag": "pany_sonic_obert"
-                    }
+                    "all": [
+                      {
+                        "flag": "iri_sap_diapaso"
+                      },
+                      {
+                        "not": {
+                          "flag": "pany_sonic_obert"
+                        }
+                      }
+                    ]
                   }
                 ]
               }
@@ -922,10 +1046,14 @@
                     "flag": "comporta_oberta"
                   },
                   {
-                    "flag": "molla_afinada"
-                  },
-                  {
-                    "flag": "pany_sonic_obert"
+                    "all": [
+                      {
+                        "flag": "pany_sonic_obert"
+                      },
+                      {
+                        "flag": "iri_sap_pressio"
+                      }
+                    ]
                   },
                   {
                     "not": {
@@ -955,12 +1083,6 @@
                   },
                   {
                     "flag": "comporta_oberta"
-                  },
-                  {
-                    "flag": "molla_afinada"
-                  },
-                  {
-                    "flag": "pany_sonic_obert"
                   },
                   {
                     "var": "valvula",

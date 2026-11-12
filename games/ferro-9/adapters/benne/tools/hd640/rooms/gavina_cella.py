@@ -1243,6 +1243,20 @@ def p_fullet(cv):
     cv.darken(587, 167, 596, 169, 0.6)
 
 
+def p_molla(cv):
+    """Una molla del somier de la Vet, mig deslligada, que penja per sota el travesser de la llitera de baix."""
+    cx, y0 = 548, 185
+    cv.darken(cx - 5, y0, cx + 6, y0 + 2, 0.7)                             # el forat que deixa al somier
+    for k in range(7):                                                      # les espires, cada cop més obertes
+        y = y0 + 1 + k * 2 + k // 3
+        w = 3 + (k > 1)
+        cv.line(cx - w, y, cx + w, y + 1, STEEL, 4.6 - k * 0.15)
+        cv.put(cx + w, y + 2, STEEL, 1.8)
+        cv.put(cx - w + 1, y, STEEL, 5.2)                                   # el reflex
+    cv.line(cx + 1, y0 + 17, cx + 3, y0 + 21, STEEL, 3.6)                    # la punta, estirada
+    cv.put(cx + 3, y0 + 21, STEEL, 5.0)
+
+
 # ─── Animació ─────────────────────────────────────────────────────────────────
 
 def _ambient_frames(n=24):
@@ -1263,4 +1277,5 @@ PROPS = {
     'reixa_oberta': p_reixa_oberta,
     'esquerda': p_esquerda,
     'fullet': p_fullet,
+    'molla': p_molla,
 }

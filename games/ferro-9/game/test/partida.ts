@@ -96,13 +96,20 @@ export function jugarActe1(p: Jugador) {
   p.use('imant_ferro9', 'porta');
 }
 
-/** La Vet escriu en un tros nou del cartell i ho envia des de la cel·la (acaba amb l'Iri). */
+/**
+ * La Vet escriu en un tros nou del cartell i ho envia des de la cel·la (acaba amb l'Iri). Si l'Iri no és a la
+ * cambra, la nota queda armada: l'Iri hi va i la rep en entrar-hi.
+ */
 function escriureIEnviar(p: Jugador, nota: string) {
   p.do('open', 'porta_passadis');
   p.do('pickUp', 'cartell');
   p.use('llapis_ulls', item('tros_cartell'));
   p.do('open', 'porta_cella');
   p.use(nota, 'panell');
+  if (p.active === 'vet') {
+    p.switchTo('iri');
+    p.goTo('fabrica_cambra');
+  }
 }
 
 /**
@@ -173,6 +180,7 @@ export function jugarActe2(p: Jugador, opts: { mira?: boolean; cargol?: boolean 
   p.do('open', 'porta_hangar');
   p.use('diapaso', 'pany');
   // La vàlvula
+  p.do('push', 'llancadora');
   escriureIEnviar(p, 'nota_pressio');
   p.do('look', item('nota_pressio'));
   p.goTo('fabrica_calderes');

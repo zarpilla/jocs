@@ -523,6 +523,46 @@
           "frameDuration": 125
         }
       }
+    },
+    {
+      "id": "molla",
+      "tag": "molla",
+      "animations": {
+        "molla": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 534,
+            "y": 180
+          },
+          {
+            "x": 560,
+            "y": 180
+          },
+          {
+            "x": 560,
+            "y": 206
+          },
+          {
+            "x": 534,
+            "y": 206
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 528,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 548,
+        "y": 206
+      },
+      "description": "molla"
     }
   ],
   "characters": [

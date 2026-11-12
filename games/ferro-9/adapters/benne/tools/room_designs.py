@@ -677,6 +677,13 @@ def cella_fullet(c):
     c.line([(324, 95), (330, 95)], (150, 140, 130))
 
 
+def cella_molla(c):
+    """Una molla del somier de la Vet, mig deslligada, que penja per sota el matalàs."""
+    for k in range(5):
+        c.line([(299, 101 + k * 2), (304, 102 + k * 2)], (170, 180, 195))
+    c.px(301, 111, (200, 210, 225))
+
+
 def cella_escarabat(c):
     c.ellipse(92, 119, 100, 124, (40, 30, 26))
     c.px(91, 121, (40, 30, 26))
@@ -760,6 +767,7 @@ CELLA = {
         'altaveu': {'rect': (116, 10, 142, 32), 'walk': (130, 126)},
         'llitera': {'rect': (270, 46, 346, 126), 'walk': (262, 134)},
         'fullet': {'rect': (312, 88, 334, 102), 'walk': (296, 138)},
+        'molla': {'rect': (294, 99, 308, 113), 'walk': (290, 138)},
         'finestreta': {'rect': (226, 16, 268, 58), 'walk': (240, 126)},
         'avis': {'rect': (54, 126, 76, 140), 'walk': (82, 140)},
         'escarabat': {'rect': (88, 114, 104, 128), 'walk': (110, 134)},
@@ -772,7 +780,8 @@ CELLA = {
     'bg': amb(cella_bg, esquerda),
     'props': {'avis': cella_avis, 'fullet': cella_fullet, 'escarabat': cella_escarabat, 'safata': cella_safata,
               'panell_afluixat': cella_panell_afluixat, 'panell_obert': cella_panell_obert,
-              'panell_reparat': cella_panell_reparat, 'reixa_oberta': cella_reixa_oberta, 'esquerda': nota_esquerda},
+              'panell_reparat': cella_panell_reparat, 'reixa_oberta': cella_reixa_oberta, 'esquerda': nota_esquerda,
+              'molla': cella_molla},
 }
 
 

@@ -188,6 +188,21 @@ function demanarDiapaso(p: ReturnType<typeof partida>['p']) {
 }
 
 describe('Ferro-9 · Acte 2 · El diapasó', () => {
+  it('després de sentir el pany, mirar la llitera hi fa veure una molla que es pot agafar', () => {
+    const { p, n } = finsComporta();
+    p.do('look', 'llancadora');
+    p.do('push', 'pany');
+    p.do('open', 'porta_passadis');
+    p.do('open', 'porta_cella');
+    expect(n.isHotspotVisible('gavina_cella', 'molla')).toBe(false);
+    expect(texts(p.do('look', 'llitera'))).toContain('mig deslligada');
+    expect(n.isHotspotVisible('gavina_cella', 'molla')).toBe(true);
+    expect(texts(p.do('look', 'llitera'))).not.toContain('mig deslligada');
+    p.do('pickUp', 'molla');
+    expect(p.inventory()).toContain('molla');
+    expect(n.isHotspotVisible('gavina_cella', 'molla')).toBe(false);
+  });
+
   it('la nota del pany viatja dins una molla i torna dins un diapasó (sempre amb alguna pista)', () => {
     const { p, n } = finsComporta();
     // ── Vet: el pany sònic ──
@@ -216,6 +231,11 @@ describe('Ferro-9 · Acte 2 · El diapasó', () => {
     p.do('open', 'porta_cella');
     p.use('molla', 'panell');
     expect(p.active).toBe('iri');
+    // Si encara no l'ha mirada, el Cargol l'hi recorda.
+    const sala = p.room!;
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.talk('cargol', 'fabrica'))).toContain('molla');
+    p.goTo(sala);
     expect(texts(p.do('look', item('molla')))).toContain('diapasó');
     // ── Iri: el diapasó, amb paperassa ──
     expect(texts(demanarDiapaso(p))).toContain('Diapasó de ferro-9');
@@ -310,17 +330,38 @@ function escriureIEnviar(p: ReturnType<typeof partida>['p'], nota: string) {
   expect(p.inventory()).toContain(nota);
   p.do('open', 'porta_cella');
   p.use(nota, 'panell');
+  // Si l'Iri no és a la cambra, la nota queda armada i li arriba quan hi entra.
+  if (p.active === 'vet') {
+    p.switchTo('iri');
+    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut');
+  }
   expect(p.active).toBe('iri');
+  expect(p.inventory()).toContain(nota);
 }
 
 describe('Ferro-9 · Acte 2 · La vàlvula', () => {
   it('massa pressió inunda el present, i el reajust ho arregla (sempre amb alguna pista)', () => {
     const { p, n } = finsDiapaso();
-    expect(texts(p.do('push', 'llancadora'))).toContain('no té pressió');
+    // Fins que no prova d'engegar el motor, la Vet no sap res de la pressió (i no ho pot escriure).
+    expect(n.flag('vet_sap_pressio')).toBe(false);
+    const motor = texts(p.do('push', 'llancadora'));
+    expect(motor).toContain('no té pressió');
+    expect(motor).toContain('paret del moll');
+    expect(n.flag('vet_sap_pressio')).toBe(true);
     expect(texts(p.do('look', 'conducte'))).toContain('zero');
+    // El Cargol no parla del conducte del moll fins que l'Iri no sap res de la pressió.
+    p.switchTo('iri');
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.talk('cargol', 'fabrica'))).not.toContain('conducte del moll');
+    p.switchTo('vet');
     // ── Vet → Iri: el conducte ──
+    p.do('push', 'llancadora');
     escriureIEnviar(p, 'nota_pressio');
+    // Si encara no l'ha llegida, el Cargol l'hi recorda.
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.talk('cargol', 'fabrica'))).toContain('Jo el llegiria');
     expect(texts(p.do('look', item('nota_pressio')))).toContain('cent vint anys');
+    expect(texts(p.talk('cargol', 'fabrica'))).toContain('conducte del moll');
     p.goTo('fabrica_calderes');
     p.do('open', 'porta_moll');
     expect(texts(p.do('close', 'conducte'))).toContain('del tot');
@@ -356,6 +397,7 @@ describe('Ferro-9 · Acte 2 · La vàlvula', () => {
 
   it('la fitxa de la Mira depèn del passat: si el Sic sospita, diu que la van acomiadar', () => {
     const { p, n } = finsDiapaso();
+    p.do('push', 'llancadora');
     escriureIEnviar(p, 'nota_pressio');
     p.do('look', item('nota_pressio'));
     p.goTo('fabrica_calderes');
@@ -371,6 +413,7 @@ describe('Ferro-9 · Acte 2 · La vàlvula', () => {
 
   it("sense tocar la vàlvula, o tornant-la a obrir del tot, la llançadora no engega", () => {
     const { p, n } = finsDiapaso();
+    p.do('push', 'llancadora');
     escriureIEnviar(p, 'nota_pressio');
     p.do('look', item('nota_pressio'));
     p.goTo('fabrica_calderes');
@@ -391,6 +434,7 @@ describe('Ferro-9 · Acte 2 · La vàlvula', () => {
 function finsMotor(fins = 'acte2_acabat') {
   const s = finsDiapaso(fins);
   const { p } = s;
+  p.do('push', 'llancadora');
   escriureIEnviar(p, 'nota_pressio');
   p.do('look', item('nota_pressio'));
   p.goTo('fabrica_calderes');
@@ -464,8 +508,11 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     p.do('pickUp', 'cartell');
     p.use('llapis_ulls', item('tros_cartell'));
     p.do('open', 'porta_cella');
-    p.use('nota_vet_nom', 'panell');
-    expect(p.active).toBe('iri');
+    // L'Iri és al moll: a l'altra banda no hi ha ningú, i la nota l'espera a la cambra.
+    expect(keys(p.use('nota_vet_nom', 'panell'))).toEqual(['finestra.espera.vet']);
+    expect(p.active).toBe('vet');
+    p.switchTo('iri');
+    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut');
     expect(texts(p.do('look', item('nota_vet_nom')))).toContain('Es diu Vet');
     p.use('llapis', item('llibreta_torn'));
     p.goTo('fabrica_calderes');
@@ -512,5 +559,20 @@ describe("Ferro-9 · Acte 2 · L'arxiu i el despatx", () => {
     p.switchTo('vet');
     expect(texts(p.do('look', 'expedient_iri'))).toContain('confessió');
     expect(texts(p.do('look', 'arxivador'))).toContain('besneta');
+  });
+});
+
+describe('Ferro-9 · La memòria del Cargol', () => {
+  it('el paper de la revisió, el segell del capatàs i la placa «C-1» porten cap a la missió', () => {
+    const { p, n } = partida();
+    jugarActe1(p);
+    p.switchTo('iri');
+    p.goTo('fabrica_magatzem');
+    expect(texts(p.do('look', 'cargol'))).toContain('Revisió anual');
+    expect(texts(p.talk('cargol', 'memoria'))).toContain('segellat pel capatàs');
+    const segell = texts(p.use('segell', 'cargol'));
+    expect(n.flag('cargol_reparat')).toBe(true);
+    expect(segell).toContain('C-1');
+    expect(texts(p.do('look', 'cargol'))).not.toContain('Revisió anual');
   });
 });

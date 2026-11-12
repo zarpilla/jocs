@@ -92,6 +92,7 @@
         "comporta_oberta": false,
         "components_complets": false,
         "pany_sonic_sentit": false,
+        "molla_vista": false,
         "molla_agafada": false,
         "molla_afinada": false,
         "iri_sap_diapaso": false,
@@ -148,6 +149,7 @@
         "iri_fugida": false,
         "director_fora": false,
         "cargol_sap_revisio": false,
+        "vet_sap_pressio": false,
         "cargol_reparat": false,
         "cargol_gravat": false,
         "planols_lliurats": false,
@@ -518,6 +520,37 @@
                 "text": "obj.llibreta_torn.vet2"
               }
             ]
+          },
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.iri1",
+                "sound": "paper"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.iri2"
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.iri_planols",
+                "if": {
+                  "flag": "planols_robats"
+                }
+              },
+              {
+                "who": "player",
+                "text": "obj.llibreta_torn.iri3",
+                "if": {
+                  "flag": "iri_sap_tub"
+                }
+              }
+            ]
           }
         ]
       },
@@ -806,7 +839,7 @@
             "if": {
               "all": [
                 {
-                  "flag": "pany_sonic_obert"
+                  "flag": "vet_sap_pressio"
                 },
                 {
                   "flag": "nota_pressio_escrita",
@@ -2144,16 +2177,24 @@
           {
             "verb": "look",
             "if": {
+              "inRoom": "fabrica_conducte"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.mapa_fuga.conducte"
+              }
+            ]
+          },
+          {
+            "verb": "look",
+            "if": {
               "protagonist": "iri"
             },
             "lines": [
               {
                 "who": "narrator",
-                "text": "obj.mapa_fuga.text_iri"
-              },
-              {
-                "who": "player",
-                "text": "obj.mapa_fuga.iri_taca"
+                "text": "obj.mapa_fuga.text"
               },
               {
                 "who": "player",
@@ -2170,6 +2211,14 @@
               {
                 "who": "player",
                 "text": "obj.mapa_fuga.iri4"
+              },
+              {
+                "who": "player",
+                "text": "obj.mapa_fuga.iri5"
+              },
+              {
+                "who": "player",
+                "text": "obj.mapa_fuga.iri6"
               }
             ],
             "effects": [
@@ -3690,7 +3739,12 @@
               },
               {
                 "who": "player",
-                "text": "sala.fabrica_cambra.tornar2"
+                "text": "sala.fabrica_cambra.tornar2",
+                "if": {
+                  "hasItem": "mapa_fuga",
+                  "who": "iri",
+                  "is": false
+                }
               }
             ],
             "effects": [
@@ -4660,6 +4714,10 @@
                   {
                     "who": "cargol",
                     "text": "sala.fabrica_magatzem.cargol.segell3"
+                  },
+                  {
+                    "who": "cargol",
+                    "text": "sala.fabrica_magatzem.cargol.segell4"
                   }
                 ],
                 "effects": [
@@ -4741,6 +4799,21 @@
                   {
                     "who": "player",
                     "text": "sala.fabrica_magatzem.cargol.look"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fabrica_magatzem.cargol.look_revisio",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "acte1_acabat"
+                        },
+                        {
+                          "flag": "cargol_reparat",
+                          "is": false
+                        }
+                      ]
+                    }
                   }
                 ]
               },
@@ -6342,9 +6415,6 @@
                     {
                       "flag": "pacte_acceptat",
                       "is": false
-                    },
-                    {
-                      "flag": "iri_a_la_cambra"
                     }
                   ]
                 },
@@ -6417,9 +6487,6 @@
                     },
                     {
                       "flag": "pacte_acceptat"
-                    },
-                    {
-                      "flag": "iri_a_la_cambra"
                     }
                   ]
                 },
@@ -6470,7 +6537,6 @@
                   "push",
                   "look"
                 ],
-                "item": "*",
                 "if": {
                   "all": [
                     {
@@ -6487,42 +6553,10 @@
                       ]
                     },
                     {
-                      "flag": "iri_a_la_cambra",
-                      "is": false
-                    }
-                  ]
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.gavina_cella.panell.no_vibra"
-                  }
-                ]
-              },
-              {
-                "verb": [
-                  "use",
-                  "push",
-                  "look"
-                ],
-                "if": {
-                  "all": [
-                    {
-                      "flag": "acte3_iniciat"
-                    },
-                    {
-                      "any": [
-                        {
-                          "flag": "pacte_acceptat"
-                        },
-                        {
-                          "flag": "mos_distreu"
-                        }
-                      ]
-                    },
-                    {
-                      "flag": "iri_a_la_cambra",
-                      "is": false
+                      "not": {
+                        "inRoom": "fabrica_cambra",
+                        "who": "iri"
+                      }
                     }
                   ]
                 },
@@ -7219,6 +7253,19 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_cella.llitera.look_molles"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.llitera.look_molles2",
+                    "if": {
+                      "flag": "molla_vista",
+                      "is": false
+                    }
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "molla_vista"
                   }
                 ]
               },
@@ -7270,6 +7317,52 @@
                   },
                   {
                     "setFlag": "fullet_agafat"
+                  }
+                ]
+              }
+            ]
+          },
+          "molla": {
+            "name": "sala.gavina_cella.molla.nom",
+            "visibleIf": {
+              "all": [
+                {
+                  "flag": "molla_vista"
+                },
+                {
+                  "flag": "molla_agafada",
+                  "is": false
+                }
+              ]
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.molla.look"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "pull"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_cella.llitera.molla",
+                    "sound": "ronc"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "molla_agafada"
+                  },
+                  {
+                    "giveItem": "molla"
                   }
                 ]
               }
@@ -8369,6 +8462,14 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.comporta.look"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.comporta.look_mesurar",
+                    "if": {
+                      "flag": "comporta_mesurada",
+                      "is": false
+                    }
                   }
                 ]
               }
@@ -8556,6 +8657,10 @@
                   {
                     "who": "player",
                     "text": "sala.gavina_hangar.llancadora.tub2"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.tub2b"
                   },
                   {
                     "who": "player",
@@ -8831,6 +8936,15 @@
                     "who": "player",
                     "text": "sala.gavina_hangar.llancadora.sense_pressio",
                     "sound": "boto"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_hangar.llancadora.sense_pressio2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "vet_sap_pressio"
                   }
                 ]
               },
@@ -9661,6 +9775,10 @@
                   {
                     "who": "narrator",
                     "text": "sala.gavina_memoria.vitrina.placa"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.gavina_memoria.vitrina.placa_c1"
                   },
                   {
                     "who": "player",
@@ -11073,11 +11191,14 @@
         ]
       },
       "iri_rebre": {
-        "priority": 8,
+        "priority": 9,
         "when": {
           "all": [
             {
               "protagonist": "iri"
+            },
+            {
+              "flag": "sincronia_automatica"
             },
             {
               "var": "finestra_armada",
@@ -11620,7 +11741,7 @@
           "pista.vet_nota_mida.3"
         ]
       },
-      "vet_enviar_a2": {
+      "vet_enviar_mida": {
         "priority": 6,
         "when": {
           "all": [
@@ -11628,36 +11749,42 @@
               "protagonist": "vet"
             },
             {
-              "any": [
-                {
-                  "hasItem": "nota_mida",
-                  "who": "vet"
-                },
-                {
-                  "hasItem": "pols_rovell",
-                  "who": "vet"
-                }
-              ]
+              "hasItem": "nota_mida",
+              "who": "vet"
             }
           ]
         },
         "doneWhen": {
+          "hasItem": "nota_mida",
+          "who": "vet",
+          "is": false
+        },
+        "levels": [
+          "pista.vet_enviar_mida.1",
+          "pista.vet_enviar_mida.2"
+        ]
+      },
+      "vet_enviar_rovell": {
+        "priority": 6,
+        "when": {
           "all": [
             {
-              "hasItem": "nota_mida",
-              "who": "vet",
-              "is": false
+              "protagonist": "vet"
             },
             {
               "hasItem": "pols_rovell",
-              "who": "vet",
-              "is": false
+              "who": "vet"
             }
           ]
         },
+        "doneWhen": {
+          "hasItem": "pols_rovell",
+          "who": "vet",
+          "is": false
+        },
         "levels": [
-          "pista.vet_enviar_a2.1",
-          "pista.vet_enviar_a2.2"
+          "pista.vet_enviar_rovell.1",
+          "pista.vet_enviar_rovell.2"
         ]
       },
       "iri_llegir_a2": {
@@ -12552,6 +12679,30 @@
           "pista.iri_esperar_diapaso.2"
         ]
       },
+      "vet_provar_motor": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "pany_sonic_obert"
+            },
+            {
+              "flag": "vet_sap_pressio",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "vet_sap_pressio"
+        },
+        "levels": [
+          "pista.vet_provar_motor.1",
+          "pista.vet_provar_motor.2"
+        ]
+      },
       "vet_pressio": {
         "priority": 3,
         "when": {
@@ -12569,6 +12720,9 @@
             {
               "flag": "nota_pressio_escrita",
               "is": false
+            },
+            {
+              "flag": "vet_sap_pressio"
             }
           ]
         },
@@ -13816,41 +13970,6 @@
           "pista.vet_pacte.2"
         ]
       },
-      "vet_panell_buit": {
-        "priority": 3,
-        "when": {
-          "all": [
-            {
-              "protagonist": "vet"
-            },
-            {
-              "hasItem": "mapa_fuga",
-              "who": "vet"
-            },
-            {
-              "any": [
-                {
-                  "flag": "pacte_acceptat"
-                },
-                {
-                  "flag": "mos_distreu"
-                }
-              ]
-            },
-            {
-              "flag": "iri_a_la_cambra",
-              "is": false
-            }
-          ]
-        },
-        "doneWhen": {
-          "flag": "iri_a_la_cambra"
-        },
-        "levels": [
-          "pista.vet_panell_buit.1",
-          "pista.vet_panell_buit.2"
-        ]
-      },
       "vet_enviar_mapa": {
         "priority": 4,
         "when": {
@@ -13871,9 +13990,6 @@
                   "flag": "mos_distreu"
                 }
               ]
-            },
-            {
-              "flag": "iri_a_la_cambra"
             }
           ]
         },
@@ -14045,7 +14161,7 @@
           "pista.iri_conducte.3"
         ]
       },
-      "vet_signes": {
+      "vet_esperar_ruta": {
         "priority": 0,
         "when": {
           "all": [
@@ -14065,9 +14181,8 @@
           "flag": "ruta_marcada"
         },
         "levels": [
-          "pista.vet_signes.1",
-          "pista.vet_signes.2",
-          "pista.vet_signes.3"
+          "pista.vet_esperar_ruta.1",
+          "pista.vet_esperar_ruta.2"
         ]
       },
       "iri_esperar_reixa": {
@@ -14663,6 +14778,33 @@
           "pista.vet_nota_mos.1",
           "pista.vet_nota_mos.2"
         ]
+      },
+      "vet_rebre": {
+        "priority": 9,
+        "when": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "sincronia_automatica"
+            },
+            {
+              "var": "finestra_armada",
+              "op": "==",
+              "value": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "finestra_armada",
+          "op": "!=",
+          "value": "iri"
+        },
+        "levels": [
+          "pista.vet_rebre.1",
+          "pista.vet_rebre.2"
+        ]
       }
     },
     "endings": {
@@ -15101,6 +15243,22 @@
                 "text": "dlg.cargol.opt.alarma",
                 "once": true,
                 "next": "per_que"
+              },
+              {
+                "id": "fabrica",
+                "text": "dlg.cargol.opt.fabrica",
+                "next": "fabrica",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte1_acabat"
+                    },
+                    {
+                      "flag": "iri_fugida",
+                      "is": false
+                    }
+                  ]
+                }
               },
               {
                 "id": "adeu",
@@ -15633,6 +15791,485 @@
               }
             ],
             "goto": "menu"
+          },
+          "fabrica": {
+            "lines": [
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.1",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "not": {
+                            "flag": "iri_sap_mida"
+                          }
+                        },
+                        {
+                          "not": {
+                            "hasItem": "nota_mida",
+                            "who": "iri"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.2",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "not": {
+                            "flag": "iri_sap_mida"
+                          }
+                        },
+                        {
+                          "hasItem": "nota_mida",
+                          "who": "iri"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.3",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "not": {
+                            "flag": "comporta_oberta"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.molla",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "all": [
+                            {
+                              "hasItem": "molla",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "iri_sap_diapaso",
+                              "is": false
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.2",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "all": [
+                            {
+                              "hasItem": "nota_pressio",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "iri_sap_pressio",
+                              "is": false
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.4",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "not": {
+                            "any": [
+                              {
+                                "all": [
+                                  {
+                                    "flag": "iri_sap_diapaso"
+                                  },
+                                  {
+                                    "not": {
+                                      "flag": "pany_sonic_obert"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "all": [
+                                  {
+                                    "flag": "pany_sonic_obert"
+                                  },
+                                  {
+                                    "flag": "iri_sap_pressio"
+                                  }
+                                ]
+                              },
+                              {
+                                "var": "valvula",
+                                "op": "==",
+                                "value": "mig"
+                              },
+                              {
+                                "all": [
+                                  {
+                                    "hasItem": "molla",
+                                    "who": "iri"
+                                  },
+                                  {
+                                    "flag": "iri_sap_diapaso",
+                                    "is": false
+                                  }
+                                ]
+                              },
+                              {
+                                "all": [
+                                  {
+                                    "hasItem": "nota_pressio",
+                                    "who": "iri"
+                                  },
+                                  {
+                                    "flag": "iri_sap_pressio",
+                                    "is": false
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.5",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "all": [
+                            {
+                              "flag": "iri_sap_diapaso"
+                            },
+                            {
+                              "not": {
+                                "flag": "pany_sonic_obert"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.6",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "all": [
+                            {
+                              "flag": "pany_sonic_obert"
+                            },
+                            {
+                              "flag": "iri_sap_pressio"
+                            }
+                          ]
+                        },
+                        {
+                          "not": {
+                            "var": "valvula",
+                            "op": "==",
+                            "value": "mig"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica.7",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "var": "valvula",
+                          "op": "==",
+                          "value": "mig"
+                        },
+                        {
+                          "not": {
+                            "flag": "acte2_acabat"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica3.1",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "not": {
+                            "hasItem": "mapa_fuga",
+                            "who": "iri"
+                          }
+                        },
+                        {
+                          "flag": "sic_distret",
+                          "is": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica3.2",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "not": {
+                            "hasItem": "mapa_fuga",
+                            "who": "iri"
+                          }
+                        },
+                        {
+                          "flag": "sic_distret"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica3.3",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "hasItem": "mapa_fuga",
+                          "who": "iri"
+                        },
+                        {
+                          "not": {
+                            "flag": "reixa_preparada"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica3.4",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "hasItem": "mapa_fuga",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "reixa_preparada"
+                        },
+                        {
+                          "not": {
+                            "any": [
+                              {
+                                "hasItem": "tub_amb_llibreta",
+                                "who": "vet"
+                              },
+                              {
+                                "flag": "tub_muntat"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "cargol",
+                "text": "dlg.cargol.fabrica3.5",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "hasItem": "mapa_fuga",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "reixa_preparada"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "tub_amb_llibreta",
+                              "who": "vet"
+                            },
+                            {
+                              "flag": "tub_muntat"
+                            }
+                          ]
+                        },
+                        {
+                          "not": {
+                            "flag": "iri_fugida"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "goto": "menu"
           }
         }
       },
@@ -15788,8 +16425,7 @@
               {
                 "id": "que_vol",
                 "text": "dlg.directora.opt.que_vol",
-                "next": "que_vol",
-                "once": true
+                "next": "que_vol"
               },
               {
                 "id": "iri",
@@ -15830,6 +16466,14 @@
               {
                 "who": "directora",
                 "text": "dlg.directora.que_vol2"
+              },
+              {
+                "who": "directora",
+                "text": "dlg.directora.que_vol.3",
+                "if": {
+                  "flag": "tub_muntat",
+                  "is": false
+                }
               }
             ],
             "goto": "menu"
@@ -16475,6 +17119,22 @@
                 }
               },
               {
+                "id": "veus",
+                "text": "dlg.mos.opt.veus",
+                "next": "veus",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte1_acabat"
+                    },
+                    {
+                      "flag": "vet_fugida",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
                 "id": "adeu",
                 "text": "dlg.mos.opt.adeu",
                 "next": "adeu",
@@ -16716,6 +17376,618 @@
               }
             ],
             "goto": "menu"
+          },
+          "veus": {
+            "lines": [
+              {
+                "who": "narrator",
+                "text": "dlg.mos.veus3.0",
+                "if": {
+                  "flag": "acte3_iniciat"
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.1",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "visited": "gavina_hangar"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.2",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "not": {
+                            "flag": "iri_sap_mida"
+                          }
+                        },
+                        {
+                          "not": {
+                            "hasItem": "nota_mida",
+                            "who": "iri"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.3",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "not": {
+                            "flag": "iri_sap_mida"
+                          }
+                        },
+                        {
+                          "hasItem": "nota_mida",
+                          "who": "iri"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.4",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "not": {
+                            "flag": "comporta_oberta"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.5",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "not": {
+                            "flag": "molla_afinada"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.6",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "flag": "molla_afinada"
+                        },
+                        {
+                          "not": {
+                            "flag": "pany_sonic_obert"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.7",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "flag": "molla_afinada"
+                        },
+                        {
+                          "flag": "pany_sonic_obert"
+                        },
+                        {
+                          "not": {
+                            "var": "valvula",
+                            "op": "==",
+                            "value": "mig"
+                          }
+                        },
+                        {
+                          "not": {
+                            "var": "valvula",
+                            "op": "==",
+                            "value": "tancada"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.8",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "flag": "molla_afinada"
+                        },
+                        {
+                          "flag": "pany_sonic_obert"
+                        },
+                        {
+                          "not": {
+                            "var": "valvula",
+                            "op": "==",
+                            "value": "mig"
+                          }
+                        },
+                        {
+                          "var": "valvula",
+                          "op": "==",
+                          "value": "tancada"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.9",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "flag": "molla_afinada"
+                        },
+                        {
+                          "flag": "pany_sonic_obert"
+                        },
+                        {
+                          "var": "valvula",
+                          "op": "==",
+                          "value": "mig"
+                        },
+                        {
+                          "not": {
+                            "flag": "components_complets"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.10",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "flag": "molla_afinada"
+                        },
+                        {
+                          "flag": "pany_sonic_obert"
+                        },
+                        {
+                          "var": "valvula",
+                          "op": "==",
+                          "value": "mig"
+                        },
+                        {
+                          "flag": "components_complets"
+                        },
+                        {
+                          "not": {
+                            "flag": "arxiu_explorat"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus.11",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_hangar"
+                        },
+                        {
+                          "flag": "iri_sap_mida"
+                        },
+                        {
+                          "flag": "comporta_oberta"
+                        },
+                        {
+                          "flag": "molla_afinada"
+                        },
+                        {
+                          "flag": "pany_sonic_obert"
+                        },
+                        {
+                          "var": "valvula",
+                          "op": "==",
+                          "value": "mig"
+                        },
+                        {
+                          "flag": "components_complets"
+                        },
+                        {
+                          "flag": "arxiu_explorat"
+                        },
+                        {
+                          "not": {
+                            "flag": "acte2_acabat"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus3.1",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "not": {
+                        "visited": "gavina_memoria"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus3.2",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_memoria"
+                        },
+                        {
+                          "not": {
+                            "flag": "vet_sap_conducte"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus3.3",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_memoria"
+                        },
+                        {
+                          "flag": "vet_sap_conducte"
+                        },
+                        {
+                          "not": {
+                            "hasItem": "mapa_fuga",
+                            "who": "iri"
+                          }
+                        },
+                        {
+                          "flag": "carta_mos_lliurada",
+                          "is": false
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus3.4",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_memoria"
+                        },
+                        {
+                          "flag": "vet_sap_conducte"
+                        },
+                        {
+                          "not": {
+                            "hasItem": "mapa_fuga",
+                            "who": "iri"
+                          }
+                        },
+                        {
+                          "flag": "carta_mos_lliurada"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus3.5",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_memoria"
+                        },
+                        {
+                          "flag": "vet_sap_conducte"
+                        },
+                        {
+                          "hasItem": "mapa_fuga",
+                          "who": "iri"
+                        },
+                        {
+                          "not": {
+                            "flag": "reixa_preparada"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus3.6",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_memoria"
+                        },
+                        {
+                          "flag": "vet_sap_conducte"
+                        },
+                        {
+                          "hasItem": "mapa_fuga",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "reixa_preparada"
+                        },
+                        {
+                          "not": {
+                            "any": [
+                              {
+                                "hasItem": "tub_amb_llibreta",
+                                "who": "vet"
+                              },
+                              {
+                                "flag": "tub_muntat"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "mos",
+                "text": "dlg.mos.veus3.7",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "acte3_iniciat"
+                    },
+                    {
+                      "all": [
+                        {
+                          "visited": "gavina_memoria"
+                        },
+                        {
+                          "flag": "vet_sap_conducte"
+                        },
+                        {
+                          "hasItem": "mapa_fuga",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "reixa_preparada"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "tub_amb_llibreta",
+                              "who": "vet"
+                            },
+                            {
+                              "flag": "tub_muntat"
+                            }
+                          ]
+                        },
+                        {
+                          "not": {
+                            "flag": "vet_fugida"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "goto": "menu"
           }
         }
       },
@@ -16760,8 +18032,7 @@
               {
                 "id": "que_passa",
                 "text": "dlg.sic.opt.que_passa",
-                "next": "que_passa",
-                "once": true
+                "next": "que_passa"
               },
               {
                 "id": "passar",
@@ -16921,7 +18192,7 @@
       "dlg.mos.reciclatge1": "Ningú no ho sap. Els que se'n van no tornen.",
       "dlg.mos.reciclatge2": "I cap no ha tornat a queixar-se, que és el més sospitós de tot.",
       "dlg.mos.reciclatge3": "Això sí: diuen que els porten a la part vella de l'estació. On hi havia la fàbrica.",
-      "dlg.mos.maquillatge1": "Per estar presentable per al reciclatge. Si m'han de reciclar, que sigui guapo.",
+      "dlg.mos.maquillatge1": "Per estar presentable per al reciclatge. Si m'han de reciclar, que estigui guapo.",
       "dlg.mos.familia1": "Una filla. La Nura. Li vaig escriure una carta quan em van tancar.",
       "dlg.mos.familia2": "Mai no he sabut si la va rebre. Aquí les cartes se les menja l'arxiu.",
       "dlg.mos.llapis_ok": "Té, el meu llapis d'ulls. Torna-me'l abans del reciclatge, eh?",
@@ -16981,11 +18252,11 @@
       "dlg.cargol.tub1": "Un tub de ferro-9, senyora Iri? El Director l'ha anomenada per megafonia. Segons el meu manual, això la converteix en fugitiva.",
       "dlg.cargol.tub2": "I els fugitius no omplen formularis. No hi ha casella.",
       "dlg.cargol.tub3": "Té. Que no em vegi ningú donant-l'hi. M'agradaria continuar arxivant.",
-      "dlg.cargol.opt.memoria": "Cargol, què recordes de l'any passat?",
-      "dlg.cargol.memoria1": "Res, senyora Iri. A cada revisió anual m'esborren la memòria. Norma 4-C: un robot no ha de tenir records.",
+      "dlg.cargol.opt.memoria": "Què et fan, a la revisió anual?",
+      "dlg.cargol.memoria1": "M'esborren la memòria, senyora Iri. Cada any. Norma 4-C: un robot no ha de tenir records.",
       "dlg.cargol.memoria2": "La propera revisió és la setmana que ve. El formulari diu: «Memòria: esborrar». Segellat i tot.",
       "dlg.cargol.memoria3": "Així que, tècnicament, la meva memòria permanent dura fins dilluns.",
-      "dlg.cargol.memoria_iri": "Fins dilluns. Ja ho veurem.",
+      "dlg.cargol.memoria_iri": "Un formulari segellat pel capatàs... Fins dilluns. Ja ho veurem.",
       "dlg.mira.planols1": "Mira. Els plànols de la cambra. El Director la va fer per obrir una finestra, i va fer servir el meu torn per provar-la.",
       "dlg.mira.planols2": "Ho sabia. Ho sabia que no havia estat un accident.",
       "dlg.mira.planols3": "Jo me'n vaig. Quan jo ja no hi sigui, fes-los públics.",
@@ -17038,6 +18309,41 @@
       "dlg.mos.distreure1": "Per tu, nouvinguda? El millor desmai de la història de La Gavina. Fa vint anys que l'assajo.",
       "dlg.mos.distreure2": "Quan siguis al panell, tus dues vegades. I no em miris, que se m'escapa el riure.",
       "dlg.mos.distreure3": "Gràcies, Mos.",
+      "dlg.mos.veus.1": "Ja ets fora i encara tornes? Al fons del passadís hi ha l'hangar. Diuen que allà s'acaba el reciclatge. O que hi comença.",
+      "dlg.mos.veus.2": "Una comporta sense palanca. Doncs demana-la a la de la paret. Però digues-li la mida, nena: el que tu en dius un pam, ella no ho ha vist mai.",
+      "dlg.mos.veus.3": "Ja li has escrit? Doncs ara li toca a ella. La paret té el seu ritme.",
+      "dlg.mos.veus.4": "La palanca, ara, és cosa seva. Tu, ulls oberts: amb cent vint anys pel mig, les coses no sempre arriben per la paret.",
+      "dlg.mos.veus.5": "Un pany que canta? I el so no passa per la paret: això t'ho dic jo, que m'hi vaig passar anys cridant. Li hauràs de fer arribar la nota d'una altra manera. Dins d'alguna cosa que soni.",
+      "dlg.mos.veus.6": "Una molla afinada. Ara l'ha de copiar ella, en ferro del bo, i fer-te-la arribar.",
+      "dlg.mos.veus.7": "Al motor no li arriba pressió? A la fàbrica tot anava per canonades. Pregunta-li a ella què hi pot fer, des d'allà.",
+      "dlg.mos.veus.8": "Diuen a la galeria que el nivell de sota és una piscina. Jo no hi he vist mai aigua. Tu sí, oi? Doncs digues-li que afluixi.",
+      "dlg.mos.veus.9": "Si el conducte ja vibra, prova d'engegar aquesta andròmina. Que se senti a tota La Gavina.",
+      "dlg.mos.veus.10": "Tens nau. Però abans de marxar, baixa a l'arxiu: l'escala del moll hi porta. Allà hi ha totes les respostes que la MARE no dona.",
+      "dlg.mos.veus.11": "Has vist alguna cosa a l'arxiu que no m'expliques. Si és d'ella, digues-l'hi. I digues-li com et dius: ja va sent hora.",
+      "dlg.mos.veus3.1": "La MARE diu que t'esperen a la Sala de la Memòria. Hi ha galetes. I a la paret, un mapa de tota l'estació, fàbrica inclosa.",
+      "dlg.mos.veus3.2": "Si la de la paret ha de fugir, li cal un camí. El mapa de la Sala de la Memòria el té, si saps mirar-lo.",
+      "dlg.mos.veus3.3": "Ja saps per on? Doncs dibuixa-ho i envia-ho. Amb la Directora davant, això sí. Digues-li que sí a tot: no costa res.",
+      "dlg.mos.veus3.4": "Ja saps per on? Doncs dibuixa-ho i envia-ho. Amb la Directora davant, això sí. O em desmaio jo, que ho tinc assajat.",
+      "dlg.mos.veus3.5": "Ara li toca a ella. Tu, mira la reixa de tant en tant. Cent vint anys són molts per a un cargol.",
+      "dlg.mos.veus3.6": "Per on sortir ja ho tens. Però la Directora va fer treure el tub de la llançadora, i sense tub no surt de l'hangar. Te l'ha d'enviar ella. L'últim.",
+      "dlg.mos.veus3.7": "Ja tens el tub? Doncs vés-te'n, nena: a l'hangar, i que no et vegi la Directora. I no em miris, que em poso sentimental.",
+      "dlg.mos.veus3.0": "En Mos abaixa la veu i mira de reüll la Directora.",
+      "dlg.mos.opt.veus": "Com ho veus, Mos?",
+      "dlg.cargol.fabrica.1": "La cambra fa estona que calla, senyora Iri. Quan una cambra calla, és que a l'altra banda algú encara no ha acabat d'escriure.",
+      "dlg.cargol.fabrica.2": "Porta un paper a la butxaca que fa olor de no reglamentari, senyora Iri. Jo el llegiria.",
+      "dlg.cargol.fabrica.3": "Bigues, al moll, n'hi ha de sobres. Però totes pesen més de dos quilos, i la cambra no n'admet ni un gram més. Les seves normes són gairebé tan estrictes com les meves.",
+      "dlg.cargol.fabrica.4": "La cambra no ha fet «zing» des de fa una estona. Deu ser que a l'altra banda algú està ocupat.",
+      "dlg.cargol.fabrica.molla": "Li ha arribat una molla per la cambra, senyora Iri? No consta a cap inventari. Jo, abans d'arxivar-la, la miraria bé.",
+      "dlg.cargol.fabrica.5": "Si li cal una peça de ferro-9 que soni d'una manera concreta, ja sap el procediment: formulari 27-B, segellat per triplicat. I una llima, i paciència.",
+      "dlg.cargol.fabrica.6": "El conducte del moll té cent vint anys de servei previst, segons el manual. El que vostè hi faci avui, algú ho notarà d'aquí a molt de temps.",
+      "dlg.cargol.fabrica.7": "Tot en ordre, senyora Iri. Massa en ordre. El Director ha cridat l'Inspector Sic dues vegades aquesta setmana.",
+      "dlg.cargol.fabrica3.1": "Senyora Iri, el Director l'ha anomenada per megafonia. L'Inspector Sic vigila la cambra i diu que no es mourà fins que atrapi el lladre del ferro-9.",
+      "dlg.cargol.fabrica3.2": "L'Inspector Sic ha passat corrent pel meu magatzem buscant un lladre. No l'ha trobat. La cambra és lliure, senyora Iri.",
+      "dlg.cargol.fabrica3.3": "Un fullet del futur? No el puc arxivar: no tinc carpeta per al futur. Però vostè té una llima, i una reixa a la cambra.",
+      "dlg.cargol.fabrica3.4": "Si marxa, senyora Iri, que no sigui amb les mans buides. Algú, a l'altra banda, encara espera una peça.",
+      "dlg.cargol.fabrica3.5": "La peça ja ha arribat on havia d'arribar, oi? Doncs vostè, senyora Iri, també hauria de ser lluny. El moll, diuen, és molt bonic a aquesta hora.",
+      "dlg.cargol.opt.fabrica": "Com va la fàbrica, Cargol?",
+      "dlg.directora.que_vol.3": "I no pensis en la teva llançadora: sense el tub de la vàlvula, no surt de l'hangar.",
       "final.fugida.titol": "Final · La fugida",
       "final.fugida.text": "La Vet somriu. Ella sap on va anar la I. Després pren el camí de l'Anell de Baix, on encara respiren amb els seus filtres.",
       "final.veritat.titol": "Final · La veritat a temps",
@@ -17045,8 +18351,8 @@
       "final.correspondencia.titol": "Final · Correspondència",
       "final.correspondencia.text": "La finestra torna a funcionar. Dins la cambra, una nota nova: «Hola, V. Tinc tantes coses per explicar-te. —I.»",
       "final.fugida.1": "La llançadora vella travessa la nit. A dins, una presonera, un tub de ferro-9 nou i una llibreta de torn de fa cent vint anys.",
-      "final.fugida.2": "La Vet fa pública la llibreta. La cambra, el Director, els sincronitzadors, el reciclatge: ho llegeix tothom.",
-      "final.fugida.3": "Uns mesos després, La Gavina tanca. La Corporació Aldaia, també.",
+      "final.fugida.2": "La Vet fa pública la llibreta. Una operària desapareguda fa cent vint anys explica, amb la seva lletra, que la cambra no va ser cap accident. I la Vet, l'única sincronitzadora que n'ha sortit viva, explica la resta: el reciclatge.",
+      "final.fugida.3": "La Corporació Aldaia s'aguantava sobre una sola història: l'accident i la lliçó. Sense la història, uns mesos després La Gavina tanca. La corporació, també.",
       "final.fugida.4": "La Sala de la Memòria es converteix en un museu de veritat. L'holograma del Director, apagat per sempre.",
       "final.fugida.5": "A la foto del torn de nit ja no hi ha cap cara ratllada. Sota l'Iri, un cartell nou: «Desapareguda».",
       "final.fugida.mira": "Al seu costat, la Mira d'Orís somriu. Ella no va perdre mai la feina.",
@@ -17103,6 +18409,9 @@
       "finestra.rebuig.no_cal_vet": "Una encesa per enviar {objecte}? La I. no en treuria res, i jo potser sí.",
       "finestra.enviat": "Poso {objecte} dins la cambra. Un brunzit, un espetec... i ja és a l'altra banda.",
       "finestra.automatica": "Si hi ha algú a l'altra banda, no penso anar amunt i avall cada vegada. Deixo la cambra sincronitzada: el que s'hi posi, passarà sol.",
+      "finestra.boto_automatic": "No cal tocar res: la cambra està sincronitzada. N'hi ha prou de posar-hi el que vulgui enviar.",
+      "finestra.espera.iri": "Poso {objecte} dins la cambra i el camp s'arma. Però la cambra no fa l'espetec: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
+      "finestra.espera.vet": "Poso {objecte} al panell i el camp s'arma. Però el panell no vibra: a l'altra banda no hi ha ningú. Passarà quan hi torni algú.",
       "acte.1": "Acte 1 · La descoberta",
       "acte.fi1": "Fi de l'Acte 1",
       "acte.2": "Acte 2 · El camí llarg",
@@ -17139,6 +18448,8 @@
       "ui.menu.pista": "Pista",
       "ui.menu.historial": "Historial",
       "ui.historial.buit": "Encara no s'ha dit res.",
+      "ui.historial.amunt": "… (roda del ratolí o fletxes: més enrere)",
+      "ui.historial.avall": "… (més avall, el més recent)",
       "ui.canvia.encara_no": "Encara no: de moment, això és cosa de l'Iri.",
       "ui.portada.continua": "Continua",
       "ui.portada.comenca": "Comença",
@@ -17218,6 +18529,10 @@
       "obj.llibreta_torn.desc": "Hi apuntem tot el que passa al torn de nit, la Mira i jo. Normalment, res.",
       "obj.llibreta_torn.vet1": "La llibreta de torn de la I. Les primeres pàgines: «Torn de nit. Res.» «Torn de nit. Res.» «Torn de nit. Una alarma.»",
       "obj.llibreta_torn.vet2": "Després ja no hi ha cap «res»: la cambra, el Director, la Mira... i jo.",
+      "obj.llibreta_torn.iri1": "La meva llibreta de torn. Fins fa tres nits: «Torn de nit. Res.»",
+      "obj.llibreta_torn.iri2": "Ara hi ha l'alarma, la cambra, les notes de la V., el Director. Tot amb data i amb la meva lletra.",
+      "obj.llibreta_torn.iri_planols": "I hi he copiat els plànols: «Prova de camp: torn de nit, operària I.»",
+      "obj.llibreta_torn.iri3": "Si jo desaparec, això és l'única cosa que dirà la veritat. Ha d'arribar a la V.",
       "obj.caixa_eines.nom": "caixa d'eines",
       "obj.caixa_eines.desc": "Pesa una tona. Bé, nou quilos.",
       "obj.imant_ferro9.nom": "imant de ferro-9",
@@ -17372,22 +18687,23 @@
       "obj.nota_iri_nom.directora": "No tan de pressa, MARE. Abans, la interna i jo hem de parlar.",
       "obj.fullet_memoria.nom": "fullet de la Sala de la Memòria",
       "obj.fullet_memoria.desc": "«La Gavina: aquí va començar tot!» Per darrere, en blanc.",
-      "obj.nota_mida.iri3": "Un pilar amb un 7 pintat. Al meu moll n'hi ha un. La V. és aquí mateix, cent vint anys més tard.",
-      "obj.nota_mida.iri4": "La biga no passarà mai per la finestra. Però si la V. és al meu moll, el que hi deixi ella ho trobarà... d'aquí a cent vint anys.",
-      "obj.nota_mida.iri5": "Abans de jugar-m'hi una biga, ho provo amb una cosa petita: una marca al pilar. I així de pas sabrà que ho he rebut.",
+      "obj.nota_mida.iri3": "Un pilar amb un 7 pintat. Al moll de la fàbrica, els pilars van numerats així.",
+      "obj.nota_mida.iri4": "Si la V. és al costat del meu pilar 7, cent vint anys més tard, el que jo hi deixi ella ho podria trobar. La biga, per exemple.",
+      "obj.nota_mida.iri5": "Però primer, que sàpiga que l'he rebuda. Una marca al pilar, gravada ben fonda: si dura cent vint anys, la V. la veurà. Vol dir: rebut, soc aquí.",
       "obj.llapis_ulls.mapa1": "Hi dibuixo la ruta: de la reixa de la cambra fins al moll, pel conducte. I els cinc revolts del mapa, un signe per revolt.",
       "obj.llapis_ulls.mapa2": "I una postdata. La més important.",
       "obj.llapis_ulls.mapa_on": "El conducte comença al mòdul C. Però on, exactament? Abans de dibuixar-lo, el vull veure.",
       "obj.mapa_fuga.nom": "mapa de fuga",
       "obj.mapa_fuga.desc": "El fullet de la Sala de la Memòria, amb la ruta dibuixada per darrere amb llapis d'ulls.",
       "obj.mapa_fuga.text": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts: {ruta_conducte} (↑ vol dir recte). El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
-      "obj.mapa_fuga.text_iri": "«I.: per fugir, el conducte de servei. Comença a la reixa de la paret de la teva cambra i baixa fins al moll. Cinc revolts: [una taca de llapis d'ulls] (↑ vol dir recte). El Director no hi vigila. PD: al meu temps, aquesta reixa és una sola peça de rovell, i jo també n'he de sortir. Fes que s'obri d'aquí a cent vint anys. PD 2: la Directora ha fet treure el tub de la vàlvula de la llançadora, i sense no engega. Si me'n fas un, que sigui l'últim enviament. —V.»",
+      "obj.mapa_fuga.conducte": "Cinc revolts: {ruta_conducte}. ↑ vol dir recte.",
       "obj.mapa_fuga.iri1": "Una ruta per fugir. I la V. també la necessita.",
-      "obj.mapa_fuga.iri_taca": "Els signes dels revolts s'han corregut: el llapis d'ulls no és tinta. Cinc revolts, i ni idea de cap a on.",
       "obj.mapa_fuga.iri2": "La reixa té quatre cargols d'acer. En cent vint anys, el rovell els soldarà.",
       "obj.mapa_fuga.iri3": "Si els llimo fins que s'aguantin per un fil, no hi quedarà res per soldar.",
       "obj.llapis_ulls.mapa_tub": "Abans de dibuixar res, vull saber què em vol la Directora.",
       "obj.mapa_fuga.iri4": "I un tub de vàlvula per a la llançadora. De ferro-9, com les peces que li van arrencar.",
+      "obj.mapa_fuga.iri5": "L'últim enviament. Després jo desapareixeré, d'una manera o d'una altra, i aquí el Director explicarà el que vulgui. Ningú no el contradirà.",
+      "obj.mapa_fuga.iri6": "Però el que passa per la cambra arriba intacte a l'altra banda. La meva llibreta de torn ho té tot apuntat: si l'envio amb el tub, la V. tindrà les proves, i allà no les podrà fer desaparèixer ningú.",
       "obj.tub_ferro9.nom": "tub de ferro-9",
       "obj.tub_ferro9.desc": "Un tub de vàlvula de ferro-9. Buit per dins.",
       "obj.tub_ferro9.enrotllar1": "Enrotllo la llibreta de torn i la fico dins el tub. Hi he apuntat tot: la cambra, el Director, la Mira.",
@@ -17515,8 +18831,8 @@
       "pista.vet_enviar_pany.2": "Fes servir el dibuix del pany amb el panell.",
       "pista.vet_esperar.1": "He enviat el que podia. Ara ho ha de recollir algú.",
       "pista.vet_esperar.2": "Canvia a l'Iri.",
-      "pista.iri_rebre.1": "La consola parpelleja. Hi ha algú a l'altra banda?",
-      "pista.iri_rebre.2": "Prem el botó de sincronia de la cambra.",
+      "pista.iri_rebre.1": "A l'altra banda han armat el camp. A la cambra m'hi espera alguna cosa.",
+      "pista.iri_rebre.2": "Vés a la cambra: el que t'han enviat hi arribarà en entrar-hi.",
       "pista.iri_llegir.1": "Hauria de llegir el que m'ha arribat.",
       "pista.iri_llegir.2": "Mira la nota de l'inventari.",
       "pista.iri_respondre.1": "Algú m'ha escrit. Li podria respondre.",
@@ -17547,8 +18863,10 @@
       "pista.vet_nota_mida.1": "He d'enviar la mida a la I.",
       "pista.vet_nota_mida.2": "Em cal paper. El cartell del passadís, per exemple.",
       "pista.vet_nota_mida.3": "Agafa un tros del cartell i fes-hi servir el llapis d'ulls.",
-      "pista.vet_enviar_a2.1": "Això ho ha de veure la I. Pel mateix camí de sempre.",
-      "pista.vet_enviar_a2.2": "Fes-ho servir amb el panell de la cel·la.",
+      "pista.vet_enviar_mida.1": "La mida l'ha de saber la I. Pel mateix camí de sempre.",
+      "pista.vet_enviar_mida.2": "Fes servir la nota de la mida amb el panell de la cel·la.",
+      "pista.vet_enviar_rovell.1": "Aquesta pols l'ha de veure la I. Pel mateix camí de sempre.",
+      "pista.vet_enviar_rovell.2": "Fes servir la pols de rovell amb el panell de la cel·la.",
       "pista.iri_llegir_a2.1": "M'ha arribat alguna cosa de la V.",
       "pista.iri_llegir_a2.2": "Mira-ho a l'inventari.",
       "pista.iri_biga.1": "Dos metres de biga per una finestra on no hi passa res de més de dos quilos...",
@@ -17604,6 +18922,8 @@
       "pista.iri_esperar_diapaso.2": "Canvia a la Vet.",
       "pista.vet_pany_sonic.1": "La llançadora té un pany ben estrany.",
       "pista.vet_pany_sonic.2": "Toca el pany sònic de la porta de la llançadora.",
+      "pista.vet_provar_motor.1": "La porta de la llançadora és oberta. A veure si aquesta andròmina engega.",
+      "pista.vet_provar_motor.2": "Prova d'engegar la llançadora.",
       "pista.vet_pressio.1": "El motor no té pressió. D'on li ha de venir?",
       "pista.vet_pressio.2": "Hi ha un conducte vell a la paret del moll de l'hangar. Potser la I. hi pot fer alguna cosa al passat.",
       "pista.vet_pressio.3": "Escriu-li a la I.: un altre tros de cartell i el llapis d'ulls.",
@@ -17685,7 +19005,7 @@
       "pista.vet_mirar_llancadora.1": "La llançadora té una porta. Com s'obre?",
       "pista.vet_mirar_llancadora.2": "Mira la llançadora.",
       "pista.iri_marca.1": "La V. és al costat d'un pilar amb un 7 pintat. Al meu moll n'hi ha un.",
-      "pista.iri_marca.2": "La biga no hi cap, per la finestra. Si deixo una marca al pilar i la V. la troba, el moll ens pot fer de bústia.",
+      "pista.iri_marca.2": "La V. m'ha dit on és. Una marca al pilar, si dura cent vint anys, li dirà: rebut, soc aquí.",
       "pista.iri_marca.3": "Agafa la llima del moll i fes-la servir amb el pilar.",
       "pista.vet_reixa.1": "El conducte comença al mòdul C. On hi ha una entrada?",
       "pista.vet_reixa.2": "Mira la reixa de la paret de la cel·la.",
@@ -17693,9 +19013,9 @@
       "pista.vet_dibuixar.2": "Fes servir el llapis d'ulls amb el fullet.",
       "pista.vet_pacte.1": "La Directora no em deixa tocar el panell. Potser, si li dic que sí... O si algú la distreu.",
       "pista.vet_pacte.2": "Parla amb la Directora i accepta el pacte. De mentida.",
-      "pista.vet_panell_buit.1": "El panell no vibra: la I. no és a la cambra.",
-      "pista.vet_panell_buit.2": "Canvia a l'Iri.",
-      "pista.vet_enviar_mapa.1": "La I. és a la cambra i la Directora em deixa fer. Ara!",
+      "pista.vet_rebre.1": "A l'altra banda han armat el camp. Al panell de la cel·la m'hi espera alguna cosa.",
+      "pista.vet_rebre.2": "Torna a la cel·la: el que t'han enviat hi arribarà en entrar-hi.",
+      "pista.vet_enviar_mapa.1": "La Directora em deixa fer. Ara!",
       "pista.vet_enviar_mapa.2": "Fes servir el mapa de fuga amb el panell.",
       "pista.iri_enganyar.1": "El Sic només pensa en una cosa: els robatoris.",
       "pista.iri_enganyar.2": "Potser, si li dic que he vist el lladre...",
@@ -17710,11 +19030,10 @@
       "pista.iri_reixa.2": "Si els cargols no hi són, el rovell no té res per soldar.",
       "pista.iri_reixa.3": "Fes servir la llima amb la reixa.",
       "pista.iri_conducte.1": "La reixa ja cedeix. Abans de dir-ho a la V., vull provar la seva ruta fins al moll.",
-      "pista.iri_conducte.2": "Al fullet de la V. hi havia cinc signes, un per revolt, però s'han corregut. Ella els va treure d'algun lloc.",
-      "pista.iri_conducte.3": "La V. va copiar els signes del mapa de la Sala de la Memòria. Canvia a la Vet i que els hi torni a mirar.",
-      "pista.vet_signes.1": "Els signes que vaig copiar al fullet... La I. els deu necessitar per als revolts del conducte.",
-      "pista.vet_signes.2": "Són al mapa de la Sala de la Memòria. La reixa ja s'obre: puc sortir pel conducte i anar-hi.",
-      "pista.vet_signes.3": "Mira el mapa de la Sala de la Memòria, apunta't els cinc signes i canvia a l'Iri.",
+      "pista.iri_conducte.2": "Al fullet de la V. hi ha cinc signes, un per revolt: ← esquerra, ↑ recte, → dreta.",
+      "pista.iri_conducte.3": "Mira el mapa de fuga i, a cada revolt, tria el passadís del signe que toca, per ordre. Si t'hi perds, torna a mirar el fullet.",
+      "pista.vet_esperar_ruta.1": "La reixa ja s'obre: la I. ha llimat els cargols. Ara deu estar provant la ruta del fullet.",
+      "pista.vet_esperar_ruta.2": "El conducte l'ha de recórrer la I., amb els signes del fullet. Canvia a l'Iri.",
       "pista.iri_esperar_reixa.1": "La reixa ja està. La V. ho hauria de notar.",
       "pista.iri_esperar_reixa.2": "Canvia a la Vet.",
       "pista.vet_esperar_reixa.1": "La I. ja té el mapa. Què farà amb la reixa?",
@@ -17791,6 +19110,7 @@
       "sala.fabrica_calderes.intro3": "La clau la té el Cargol. I el Cargol només dona coses amb paperassa.",
       "sala.fabrica_calderes.nom": "Sala de calderes",
       "sala.fabrica_magatzem.cargol.look": "El Cargol, robot de manteniment model C-1. Acabat d'estrenar. Brilla tant que fa mal als ulls.",
+      "sala.fabrica_magatzem.cargol.look_revisio": "Porta un paper enganxat a la carcassa: «Revisió anual C-1. Dilluns.» I el segell del capatàs. Revisió de què?",
       "sala.fabrica_magatzem.cargol.donar": "Millor que li ho expliqui parlant. Li agraden els procediments.",
       "sala.fabrica_magatzem.cargol.empenyer1": "Senyora Iri, el contacte físic no autoritzat requereix el formulari 12-F.",
       "sala.fabrica_magatzem.cargol.nom": "Cargol",
@@ -17814,7 +19134,7 @@
       "sala.fabrica_cambra.boto.accident1": "Ningú no ho ha d'autoritzar si ningú no ho veu. Premo el botó.",
       "sala.fabrica_cambra.boto.accident2": "El vidre baixa de cop! La clau s'ha quedat a dins.",
       "sala.fabrica_cambra.boto.accident3": "I ara no s'obre. Fantàstic.",
-      "sala.fabrica_cambra.boto.accident4": "Ja la recuperaré demà. Ara mateix, el meu llit em reclama.",
+      "sala.fabrica_cambra.boto.accident4": "Ja la recuperaré demà. Uf, de cop em fa mal el cap.",
       "sala.fabrica_cambra.boto.accident5": "Mentrestant, cent vint anys després...",
       "sala.fabrica_cambra.cambra.clau_dins": "La clau anglesa és a dins, i la cambra brunzeix. El botó vermell fa pampallugues.",
       "sala.fabrica_cambra.cambra.deixar_clau": "La deixo a dins una estona. Vull veure què passa.",
@@ -17831,7 +19151,7 @@
       "sala.fabrica_cambra.boto.nom": "botó de sincronia",
       "sala.fabrica_cambra.porta.nom": "sala de calderes",
       "sala.fabrica_cambra.intro1": "La cambra de ressonància. L'alarma ve de la consola.",
-      "sala.fabrica_cambra.intro2": "Una palanca, un botó vermell i un vidre gruixut. Res que em faci confiança.",
+      "sala.fabrica_cambra.intro2": "Una palanca, un botó vermell i un vidre gruixut. Què podria anar malament?",
       "sala.fabrica_cambra.parpelleja": "La consola parpelleja. Això abans no ho feia.",
       "sala.fabrica_cambra.nom": "Cambra de ressonància",
       "sala.gavina_cella.panell.vibra": "Un panell rovellat a la paret. Vibra. Com si tingués son. O ganes de molestar.",
@@ -17945,6 +19265,7 @@
       "sala.gavina_hangar.comporta.mesurada": "Sis claus i mitja. No ha canviat.",
       "sala.gavina_hangar.comporta.encallada": "No es mou ni un mil·límetre. Sense palanca, res.",
       "sala.gavina_hangar.comporta.look": "Una comporta enorme, encallada. Té un encaix per a una palanca molt llarga, però la palanca fa anys que no hi és.",
+      "sala.gavina_hangar.comporta.look_mesurar": "Si la I. m'ha de fer una palanca, li hauré de dir quina mida fa l'encaix. I mesurar-lo amb alguna cosa que ella també conegui, que aquí no hi ha cap cinta mètrica.",
       "sala.gavina_hangar.pilar.nom": "pilar",
       "sala.gavina_hangar.pilar.look": "Un pilar amb un 7 pintat. Pintura de fàbrica: d'abans de la presó.",
       "sala.gavina_hangar.placa.ferro9_1": "Aixeco la reixa i... una biga!",
@@ -17980,6 +19301,9 @@
       "sala.gavina_hangar.llancadora.tocar2": "Un pany sònic: s'obre amb la mateixa nota. I jo no sé ni què és una nota.",
       "sala.gavina_cella.llitera.molla": "Arrenco una molla de la llitera. En Mos ni se n'adona: ronca.",
       "sala.gavina_cella.llitera.look_molles": "La meva llitera. Cada cop que m'hi assec, les molles fan «nnng». Com el pany de la llançadora.",
+      "sala.gavina_cella.llitera.look_molles2": "I n'hi ha una que ja penja per sota el matalàs, mig deslligada.",
+      "sala.gavina_cella.molla.nom": "molla",
+      "sala.gavina_cella.molla.look": "Una molla que penja per sota el meu matalàs. Si la toco, fa «nnng».",
       "sala.fabrica_moll.llima.nom": "llima",
       "sala.fabrica_moll.llima.agafar": "Una llima fina. Per afinar coses.",
       "sala.fabrica_moll.llima.look": "Una llima fina, al tauler d'eines.",
@@ -18021,6 +19345,7 @@
       "sala.gavina_hangar.llancadora.en_marxa": "Ja està engegada. No la toquem, que s'ofega.",
       "sala.gavina_hangar.llancadora.escapa": "Premo el botó d'engegada. La pressió s'escapa pel forat del conducte. Res.",
       "sala.gavina_hangar.llancadora.sense_pressio": "Premo el botó d'engegada. Res. L'agulla del manòmetre ni es mou: el motor no té pressió.",
+      "sala.gavina_hangar.llancadora.sense_pressio2": "Del motor surt un tub que es fica dins la paret del moll. Ve de la part vella: la de la fàbrica.",
       "sala.gavina_passadis.cartell.altre": "N'arrenco un altre tros. El somriure del cartell cada vegada és més petit.",
       "sala.fabrica_despatx.nom": "Despatx del director",
       "sala.fabrica_despatx.intro": "El despatx del Director Aldaia. De nit, sense ell, fa menys por. Una mica menys.",
@@ -18108,7 +19433,7 @@
       "sala.gavina_memoria.mapa.vet1": "Un conducte de servei de la fàbrica, que arriba fins a l'hangar.",
       "sala.gavina_memoria.mapa.vet2": "Al temps de la I. encara s'hi deu poder passar. Per allà no la veuria ningú.",
       "sala.gavina_memoria.mapa.ruta": "La línia fa cinc revolts entre el mòdul C i l'hangar: {ruta_conducte}. Els copiaré al fullet, amb la ruta.",
-      "sala.gavina_memoria.mapa.ruta_copiada": "Els cinc revolts: {ruta_conducte}. Els mateixos que vaig copiar al fullet. Aquests no se'm correran: me'ls apunto.",
+      "sala.gavina_memoria.mapa.ruta_copiada": "Els cinc revolts: {ruta_conducte}. Els mateixos que vaig copiar al fullet.",
       "sala.gavina_memoria.fullets.nom": "fullets",
       "sala.gavina_memoria.fullets.agafar": "N'agafo un. Per darrere és en blanc: hi cap un mapa.",
       "sala.gavina_memoria.fullets.prou": "Ja en tinc un.",
@@ -18124,10 +19449,10 @@
       "sala.gavina_hangar.pany.nom": "pany sònic",
       "sala.gavina_hangar.pany.obert": "El pany sònic. Ara la porta és oberta.",
       "sala.gavina_hangar.pany.look": "Un pany rodó, com un ressonador. Sense forat per a cap clau.",
-      "sala.fabrica_moll.primer_marca": "Abans, el pilar 7. Si la V. troba la meva marca, sabré que el moll ens fa de bústia.",
+      "sala.fabrica_moll.primer_marca": "Abans, el pilar 7. Que la V. sàpiga que he rebut la nota i que soc aquí mateix.",
       "sala.fabrica_moll.pilar.nom": "pilar",
       "sala.fabrica_moll.pilar.gravar1": "Amb la llima, hi gravo una I. i una clau anglesa. Ben fondo.",
-      "sala.fabrica_moll.pilar.gravar2": "Si el teu hangar és el meu moll, V., d'aquí a cent vint anys encara hi serà. Vol dir: rebut. I: aquí hi podem deixar coses.",
+      "sala.fabrica_moll.pilar.gravar2": "Si el teu hangar és el meu moll, V., d'aquí a cent vint anys encara hi serà. Vol dir: rebut, soc aquí.",
       "sala.fabrica_moll.pilar.ja_gravat": "Ja hi ha la marca. Si n'hi faig més, el capatàs pensarà que és art.",
       "sala.fabrica_moll.pilar.res_a_dir": "Gravar-hi què? Encara no tinc res a dir a ningú.",
       "sala.fabrica_moll.pilar.look_marca": "El pilar 7, amb la meva marca: una I. i una clau anglesa. Que duri.",
@@ -18174,7 +19499,7 @@
       "sala.fabrica_cambra.reixa.llimar1": "Llimo els quatre cargols fins que la reixa s'aguanta per costum. No quedarà res que el rovell pugui soldar.",
       "sala.fabrica_cambra.reixa.llimar2": "Ara, a provar la ruta de la V. abans que el Sic trobi el seu lladre. Si arribo al moll, li marcaré el camí.",
       "sala.fabrica_cambra.reixa.entrar1": "Aparto la reixa, que surt com si res, i m'hi fico.",
-      "sala.fabrica_cambra.reixa.entrar2": "A dins s'eixampla: hi caben els robots de manteniment. Cinc revolts fins al moll, diu el fullet de la V. Cap a on, ja no ho diu.",
+      "sala.fabrica_cambra.reixa.entrar2": "A dins s'eixampla: hi caben els robots de manteniment. Cinc revolts fins al moll, i al fullet de la V. hi ha un signe per a cada un.",
       "sala.fabrica_cambra.reixa.ja_llimada": "Ja està. Una passada més i em quedo amb la reixa a la mà.",
       "sala.fabrica_cambra.reixa.per_que": "Fer malbé una reixa nova? El capatàs ho veuria i em faria omplir un formulari per cada cargol.",
       "sala.fabrica_cambra.reixa.look_llimada": "La reixa del conducte, amb els cargols llimats. Sembla ben cargolada. No ho està.",
@@ -18232,14 +19557,15 @@
       "sala.fabrica_conducte_revolt.fugir": "A cada revolt hi he gravat una I. i una fletxa: si la V. passa per aquí, que sàpiga que hi vaig passar jo.",
       "sala.fabrica_conducte_revolt.perdut1": "Cinquè revolt... i llum al fons. Una reixa.",
       "sala.fabrica_conducte_revolt.perdut2": "La reixa de la meva cambra. He sortit per on he entrat. M'he perdut.",
-      "sala.fabrica_conducte_revolt.perdut3": "Algun revolt no era el bo. Sense els signes de la V., això és la loteria.",
+      "sala.fabrica_conducte_revolt.perdut3": "Algun revolt no era el bo. Hauré de tornar a mirar els signes del fullet de la V.",
       "sala.fabrica_moll.llancadora.look_fugir": "La llançadora, nova de trinca. I avui ningú no la vigila.",
       "sala.fabrica_moll.llancadora.fugir1": "Pujo a la llançadora. És la mateixa que la V. ha arreglat al seu hangar, cent vint anys més tard. Que ens porti a totes dues.",
       "sala.fabrica_moll.llancadora.fugir2": "Adeu, Director. Adeu, formulari 27-B.",
       "sala.fabrica_moll.llancadora.fugir3": "La comporta s'obre i la fàbrica es fa petita. Desapareguda, diran. Que ho diguin.",
       "sala.fabrica_moll.llancadora.mentrestant": "Mentrestant, cent vint anys després...",
       "sala.gavina_hangar.llancadora.tub1": "Desenrotllo la llibreta de dins el tub. És la llibreta de torn de la I.: la cambra, el Director, les proves. Tot.",
-      "sala.gavina_hangar.llancadora.tub2": "Me la guardo. Algú l'haurà de llegir.",
+      "sala.gavina_hangar.llancadora.tub2": "Cent vint anys d'holograma dient que va ser un accident. I aquí ho tinc, nit per nit, amb la lletra de la I. Això no ho ratllarà ningú.",
+      "sala.gavina_hangar.llancadora.tub2b": "Me la guardo. Quan sigui lluny, ho llegirà tothom.",
       "sala.gavina_hangar.llancadora.tub3": "I munto el tub on hi havia l'altre. Ferro-9 de fa cent vint anys, nou de trinca.",
       "sala.gavina_hangar.llancadora.look_tub": "La llançadora, amb el tub nou. A punt per marxar.",
       "sala.gavina_hangar.llancadora.fugir1": "Premo el botó d'engegada. El motor arrenca a la primera.",
@@ -18253,6 +19579,7 @@
       "sala.fabrica_magatzem.cargol.segell1": "Agafo el seu formulari de revisió, ratllo «esborrar» i hi escric «permanent». I hi planto el segell oficial.",
       "sala.fabrica_magatzem.cargol.segell2": "Un canvi segellat pel capatàs! Doncs és oficial: no m'esborraran res.",
       "sala.fabrica_magatzem.cargol.segell3": "Senyora Iri... ara ho recordaré tot. També aquest moment. Sobretot aquest moment.",
+      "sala.fabrica_magatzem.cargol.segell4": "Encara que, si algun dia em pregunten qui soc, només sabré dir el que diu la placa: «C-1».",
       "sala.fabrica_magatzem.cargol.llima1": "Si ho ha de recordar tot, que recordi com es diu. Li gravo el nom a la placa: C-A-R-G-O-L.",
       "sala.fabrica_magatzem.cargol.llima2": "Un nom gravat. A la placa. Això no surt a cap norma.",
       "sala.fabrica_magatzem.cargol.llima3": "...M'agrada. Cargol. Ho arxivaré a la memòria permanent. La de debò.",
@@ -18263,6 +19590,7 @@
       "sala.gavina_passadis.guardia.look": "Una guàrdia jove, amb el cabell coure. Em mira com si em conegués.",
       "sala.gavina_cella.reixa.fugir_guardia": "Al passadís, la Guàrdia d'Orís busca la clau de la cel·la amb una calma admirable.",
       "sala.gavina_memoria.vitrina.placa": "Al costat, una placa de metall: «Placa d'identificació, robot C-1. Donació anònima».",
+      "sala.gavina_memoria.vitrina.placa_c1": "C-1. Com el conserge, que no recorda ni com es diu.",
       "sala.gavina_memoria.vitrina.placa_gravada": "Hi ha un nom gravat a mà: «CARGOL».",
       "sala.gavina_memoria.vitrina.sense_placa": "Ara ja no hi ha ni la clau ni la placa. Un museu cada vegada més honest.",
       "sala.gavina_memoria.vitrina.tancada": "Tancada amb clau. Algú del personal en deu tenir la clau.",

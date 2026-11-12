@@ -673,7 +673,12 @@
         },
         {
           "who": "player",
-          "text": "sala.fabrica_cambra.tornar2"
+          "text": "sala.fabrica_cambra.tornar2",
+          "if": {
+            "hasItem": "mapa_fuga",
+            "who": "iri",
+            "is": false
+          }
         }
       ],
       "effects": [

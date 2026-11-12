@@ -40,6 +40,10 @@
             {
               "who": "cargol",
               "text": "sala.fabrica_magatzem.cargol.segell3"
+            },
+            {
+              "who": "cargol",
+              "text": "sala.fabrica_magatzem.cargol.segell4"
             }
           ],
           "effects": [
@@ -121,6 +125,21 @@
             {
               "who": "player",
               "text": "sala.fabrica_magatzem.cargol.look"
+            },
+            {
+              "who": "player",
+              "text": "sala.fabrica_magatzem.cargol.look_revisio",
+              "if": {
+                "all": [
+                  {
+                    "flag": "acte1_acabat"
+                  },
+                  {
+                    "flag": "cargol_reparat",
+                    "is": false
+                  }
+                ]
+              }
             }
           ]
         },

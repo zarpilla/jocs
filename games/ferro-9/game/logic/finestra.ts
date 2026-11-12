@@ -15,6 +15,8 @@
  *    rep el primer enviament fet a mà (la segona transferència; la primera és l'accident), deixa
  *    la cambra sincronitzada (flag `sincronia_automatica`). Des d'aleshores, posar un objecte a la
  *    cambra ho fa tot: l'envia, canvia de protagonista i l'objecte apareix a l'inventari de l'altra.
+ *  - Però només si l'altra és a la seva cambra (`CAMBRES`). Si no hi és, a l'altra banda no hi ha ningú: el camp
+ *    queda armat amb l'objecte a dins, i l'objecte li arriba quan hi entri.
  */
 import type { ActionResult, Narrative } from '@aventura/narrative-core';
 
@@ -27,8 +29,11 @@ export const FINESTRA_TEXTS = [
   'finestra.posat', 'finestra.ple', 'finestra.ja_armat', 'finestra.tancada', 'finestra.buida', 'finestra.tret',
   'finestra.armat', 'finestra.armat_buit', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
   'finestra.enviat', 'finestra.automatica', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
-  'finestra.rebuig.no_cal_iri', 'finestra.rebuig.no_cal_vet',
+  'finestra.rebuig.no_cal_iri', 'finestra.rebuig.no_cal_vet', 'finestra.espera.iri', 'finestra.espera.vet', 'finestra.boto_automatic',
 ];
+
+/** La sala de la cambra de cada protagonista: a l'altra banda hi ha algú si hi és. */
+export const CAMBRES: Record<string, string> = { iri: 'fabrica_cambra', vet: 'gavina_cella' };
 
 const v = {
   automatica: 'sincronia_automatica',
@@ -61,6 +66,35 @@ export function estatFinestra(n: Narrative) {
   };
 }
 
+/** Si una protagonista (la que juga o l'altra) és ara mateix a la sala de la seva cambra. */
+export function aLaCambra(n: Narrative, who: string): boolean {
+  const room = who === n.world.activeProtagonist() ? n.world.currentRoom() : n.world.protagonistRoom?.(who) ?? null;
+  return room !== null && room === CAMBRES[who];
+}
+
+/**
+ * Sincronia: l'objecte de la cambra de qui ha armat arriba a `costat`. Gasta una encesa. La segona transferència
+ * deixa la sincronia automàtica.
+ */
+function rebre(n: Narrative, costat: string) {
+  const emissora = estatFinestra(n).armada;
+  const item = estatFinestra(n).objecte(emissora);
+  n.apply([
+    { setVar: v.armada, value: '' },
+    { setVar: v.objecte(emissora), value: '' },
+    { addVar: v.enceses, amount: -1 },
+    { addVar: v.transferencies, amount: 1 },
+    ...(item ? [{ giveItem: item, who: costat }] : []),
+    { event: 'finestra.transferencia', args: { de: emissora, a: costat, objecte: item } },
+  ]);
+  const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', item ? nomObjecte(n, item) : { objecte: '' }, SONS_FINESTRA.fase)];
+  if (!n.flag(v.automatica) && Number(n.getVar(v.transferencies)) >= TRANSFERENCIES_RITUAL) {
+    n.apply({ setFlag: v.automatica });
+    lines.push(line('finestra.automatica'));
+  }
+  return lines;
+}
+
 /** Per què un objecte no pot passar (clau de text), o `null` si pot. `costat`: qui l'envia. */
 export function motiuRebuig(n: Narrative, item: string, costat: string): string | null {
   const props = n.content.items[item]?.props ?? {};
@@ -83,10 +117,16 @@ export function installFinestra(n: Narrative) {
     const rebuig = motiuRebuig(n, item, costat);
     if (rebuig) return { lines: [line(rebuig, nomObjecte(n, item))] };
     if (n.flag(v.automatica)) {
-      // Un sol pas: posar-lo ja és enviar-lo.
-      if (estat.armada) return { lines: [line('finestra.ja_armat')] };
+      // Un sol pas: posar-lo ja és enviar-lo. Un camp armat buit (partides d'abans) no ha d'encallar res.
+      if (estat.armada && !estat.objecte(estat.armada)) n.apply({ setVar: v.armada, value: '' });
+      if (estatFinestra(n).armada) return { lines: [line('finestra.ja_armat')] };
       if (estat.enceses <= 0) return { lines: [line('finestra.esgotada')] };
       const altra = n.content.manifest.protagonists.find((p) => p !== costat)!;
+      if (!aLaCambra(n, altra)) {
+        // A l'altra banda no hi ha ningú: queda armat, i passarà quan hi entri (vegeu `onEnterRoom`, a sota).
+        n.apply([{ takeItem: item, who: costat }, { setVar: v.objecte(costat), value: item }, { setVar: v.armada, value: costat }]);
+        return { lines: [line(`finestra.espera.${costat}`, nomObjecte(n, item), SONS_FINESTRA.armar)] };
+      }
       n.apply([
         { takeItem: item, who: costat },
         { giveItem: item, who: altra },
@@ -123,27 +163,28 @@ export function installFinestra(n: Narrative) {
     if (estat.armada === costat) return { lines: [line('finestra.ja_armat')] };
 
     if (!estat.armada) {
+      // Amb la sincronia automàtica, armar el camp buit només encallaria el següent enviament.
+      if (n.flag(v.automatica)) return { lines: [line('finestra.boto_automatic')] };
       if (estat.enceses <= 0) return { lines: [line('finestra.esgotada')] };
       n.apply({ setVar: v.armada, value: costat });
       return { lines: [line(estat.objecte(costat) ? 'finestra.armat' : 'finestra.armat_buit', undefined, SONS_FINESTRA.armar)] };
     }
 
     // Sincronia: l'objecte de la cambra de qui ha armat arriba aquí.
-    const emissora = estat.armada;
-    const item = estat.objecte(emissora);
-    n.apply([
-      { setVar: v.armada, value: '' },
-      { setVar: v.objecte(emissora), value: '' },
-      { addVar: v.enceses, amount: -1 },
-      { addVar: v.transferencies, amount: 1 },
-      ...(item ? [{ giveItem: item, who: costat }] : []),
-      { event: 'finestra.transferencia', args: { de: emissora, a: costat, objecte: item } },
-    ]);
-    const lines = [line(item ? 'finestra.rebut' : 'finestra.rebut_res', item ? nomObjecte(n, item) : { objecte: '' }, SONS_FINESTRA.fase)];
-    if (!n.flag(v.automatica) && Number(n.getVar(v.transferencies)) >= TRANSFERENCIES_RITUAL) {
-      n.apply({ setFlag: v.automatica });
-      lines.push(line('finestra.automatica'));
-    }
-    return { lines };
+    return { lines: rebre(n, costat) };
+  });
+
+  /**
+   * Amb la sincronia automàtica, el que l'altra ha deixat armat (perquè aquí no hi havia ningú) arriba en entrar a
+   * la cambra. No si l'`onEnter` se l'emporta tot seguit a una altra sala (p. ex. l'Iri descoberta a l'Acte 3), ni
+   * si el camp és buit: una encesa per rebre aire seria una trampa.
+   */
+  n.onEnterRoom((room): ActionResult | void => {
+    const costat = n.world.activeProtagonist();
+    const estat = estatFinestra(n);
+    if (!n.flag(v.automatica) || CAMBRES[costat] !== room) return;
+    if (!estat.armada || estat.armada === costat || !estat.objecte(estat.armada)) return;
+    if (n.peekEnter(room)?.goTo) return;
+    return { lines: rebre(n, costat) };
   });
 }

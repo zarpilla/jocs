@@ -20,9 +20,6 @@
               {
                 "flag": "pacte_acceptat",
                 "is": false
-              },
-              {
-                "flag": "iri_a_la_cambra"
               }
             ]
           },
@@ -95,9 +92,6 @@
               },
               {
                 "flag": "pacte_acceptat"
-              },
-              {
-                "flag": "iri_a_la_cambra"
               }
             ]
           },
@@ -148,7 +142,6 @@
             "push",
             "look"
           ],
-          "item": "*",
           "if": {
             "all": [
               {
@@ -165,42 +158,10 @@
                 ]
               },
               {
-                "flag": "iri_a_la_cambra",
-                "is": false
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.gavina_cella.panell.no_vibra"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "use",
-            "push",
-            "look"
-          ],
-          "if": {
-            "all": [
-              {
-                "flag": "acte3_iniciat"
-              },
-              {
-                "any": [
-                  {
-                    "flag": "pacte_acceptat"
-                  },
-                  {
-                    "flag": "mos_distreu"
-                  }
-                ]
-              },
-              {
-                "flag": "iri_a_la_cambra",
-                "is": false
+                "not": {
+                  "inRoom": "fabrica_cambra",
+                  "who": "iri"
+                }
               }
             ]
           },
@@ -897,6 +858,19 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.llitera.look_molles"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.llitera.look_molles2",
+              "if": {
+                "flag": "molla_vista",
+                "is": false
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "molla_vista"
             }
           ]
         },
@@ -948,6 +922,52 @@
             },
             {
               "setFlag": "fullet_agafat"
+            }
+          ]
+        }
+      ]
+    },
+    "molla": {
+      "name": "sala.gavina_cella.molla.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "molla_vista"
+          },
+          {
+            "flag": "molla_agafada",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.molla.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.llitera.molla",
+              "sound": "ronc"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "molla_agafada"
+            },
+            {
+              "giveItem": "molla"
             }
           ]
         }

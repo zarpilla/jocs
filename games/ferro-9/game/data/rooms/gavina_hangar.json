@@ -292,6 +292,14 @@
             {
               "who": "player",
               "text": "sala.gavina_hangar.comporta.look"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.comporta.look_mesurar",
+              "if": {
+                "flag": "comporta_mesurada",
+                "is": false
+              }
             }
           ]
         }
@@ -479,6 +487,10 @@
             {
               "who": "player",
               "text": "sala.gavina_hangar.llancadora.tub2"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.tub2b"
             },
             {
               "who": "player",
@@ -754,6 +766,15 @@
               "who": "player",
               "text": "sala.gavina_hangar.llancadora.sense_pressio",
               "sound": "boto"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.sense_pressio2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_pressio"
             }
           ]
         },

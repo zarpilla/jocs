@@ -251,6 +251,56 @@ describe('Ferro-9 · Acte 1', () => {
     expect(keys(p.use('escarabat', 'panell'))).toEqual(['finestra.rebuig.viu']);
   });
 
+  it("si a l'altra banda no hi ha ningú, el camp queda armat i l'objecte arriba quan l'altra entra a la seva cambra", () => {
+    const { p, n } = finsPanellReparat();
+    n.apply({ setFlag: 'sincronia_automatica' });
+    const abans = estatFinestra(n).enceses;
+
+    // ── De la Vet a l'Iri, amb l'Iri a la sala de calderes ──
+    p.switchTo('iri');
+    p.goTo('fabrica_calderes');
+    p.switchTo('vet');
+    // Amb la sincronia automàtica, el botó no arma el camp buit (encallaria el següent enviament).
+    expect(keys(p.do('push', 'panell'))).toEqual(['finestra.boto_automatic']);
+    expect(estatFinestra(n).armada).toBe('');
+    n.apply([{ giveItem: 'nota_vet', who: 'vet' }, { giveItem: 'nota_pany', who: 'vet' }]);
+    expect(keys(p.use('nota_vet', 'panell'))).toEqual(['finestra.espera.vet']);
+    expect(p.active).toBe('vet');
+    expect(p.inventory()).not.toContain('nota_vet');
+    expect(estatFinestra(n).armada).toBe('vet');
+    expect(estatFinestra(n).enceses).toBe(abans);
+    // Hi cap una cosa cada vegada.
+    expect(keys(p.use('nota_pany', 'panell'))).toEqual(['finestra.ple']);
+    // L'Iri no ho rep fins que entra a la cambra, i una pista l'hi diu.
+    p.switchTo('iri');
+    expect(p.inventory()).not.toContain('nota_vet');
+    expect(n.activeHints()[0]).toBe('iri_rebre');
+    expect(keys(p.goTo('fabrica_cambra'))).toContain('finestra.rebut');
+    expect(p.inventory()).toContain('nota_vet');
+    expect(estatFinestra(n).armada).toBe('');
+    expect(estatFinestra(n).enceses).toBe(abans - 1);
+    expect(n.activeHints()).not.toContain('iri_rebre');
+
+    // ── De l'Iri a la Vet, amb la Vet al passadís ──
+    // (A l'Acte 1 la porta de la cel·la encara és tancada: s'hi porta directament.)
+    p.switchTo('vet');
+    p.goTo('gavina_passadis');
+    p.switchTo('iri');
+    n.apply({ giveItem: 'nota_iri', who: 'iri' });
+    expect(keys(p.use('nota_iri', 'cambra'))).toEqual(['finestra.espera.iri']);
+    expect(p.active).toBe('iri');
+    p.switchTo('vet');
+    expect(p.inventory()).not.toContain('nota_iri');
+    expect(keys(p.goTo('gavina_cella'))).toContain('finestra.rebut');
+    expect(p.inventory()).toContain('nota_iri');
+    expect(estatFinestra(n).enceses).toBe(abans - 2);
+
+    // ── I amb l'altra a la cambra, passa de seguida ──
+    expect(keys(p.use('nota_pany', 'panell'))).toEqual(['finestra.enviat']);
+    expect(p.active).toBe('iri');
+    expect(p.inventory()).toContain('nota_pany');
+  });
+
   it('si insultes en Mos, no et deixa el llapis fins que li demanis perdó', () => {
     const { p, n } = finsPanellReparat();
     p.talk('mos', 'llapis_demanar', 'insultar');

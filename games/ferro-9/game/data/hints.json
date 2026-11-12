@@ -272,11 +272,14 @@
     ]
   },
   "iri_rebre": {
-    "priority": 8,
+    "priority": 9,
     "when": {
       "all": [
         {
           "protagonist": "iri"
+        },
+        {
+          "flag": "sincronia_automatica"
         },
         {
           "var": "finestra_armada",
@@ -819,7 +822,7 @@
       "pista.vet_nota_mida.3"
     ]
   },
-  "vet_enviar_a2": {
+  "vet_enviar_mida": {
     "priority": 6,
     "when": {
       "all": [
@@ -827,36 +830,42 @@
           "protagonist": "vet"
         },
         {
-          "any": [
-            {
-              "hasItem": "nota_mida",
-              "who": "vet"
-            },
-            {
-              "hasItem": "pols_rovell",
-              "who": "vet"
-            }
-          ]
+          "hasItem": "nota_mida",
+          "who": "vet"
         }
       ]
     },
     "doneWhen": {
+      "hasItem": "nota_mida",
+      "who": "vet",
+      "is": false
+    },
+    "levels": [
+      "pista.vet_enviar_mida.1",
+      "pista.vet_enviar_mida.2"
+    ]
+  },
+  "vet_enviar_rovell": {
+    "priority": 6,
+    "when": {
       "all": [
         {
-          "hasItem": "nota_mida",
-          "who": "vet",
-          "is": false
+          "protagonist": "vet"
         },
         {
           "hasItem": "pols_rovell",
-          "who": "vet",
-          "is": false
+          "who": "vet"
         }
       ]
     },
+    "doneWhen": {
+      "hasItem": "pols_rovell",
+      "who": "vet",
+      "is": false
+    },
     "levels": [
-      "pista.vet_enviar_a2.1",
-      "pista.vet_enviar_a2.2"
+      "pista.vet_enviar_rovell.1",
+      "pista.vet_enviar_rovell.2"
     ]
   },
   "iri_llegir_a2": {
@@ -1751,6 +1760,30 @@
       "pista.iri_esperar_diapaso.2"
     ]
   },
+  "vet_provar_motor": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "pany_sonic_obert"
+        },
+        {
+          "flag": "vet_sap_pressio",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_sap_pressio"
+    },
+    "levels": [
+      "pista.vet_provar_motor.1",
+      "pista.vet_provar_motor.2"
+    ]
+  },
   "vet_pressio": {
     "priority": 3,
     "when": {
@@ -1768,6 +1801,9 @@
         {
           "flag": "nota_pressio_escrita",
           "is": false
+        },
+        {
+          "flag": "vet_sap_pressio"
         }
       ]
     },
@@ -3015,41 +3051,6 @@
       "pista.vet_pacte.2"
     ]
   },
-  "vet_panell_buit": {
-    "priority": 3,
-    "when": {
-      "all": [
-        {
-          "protagonist": "vet"
-        },
-        {
-          "hasItem": "mapa_fuga",
-          "who": "vet"
-        },
-        {
-          "any": [
-            {
-              "flag": "pacte_acceptat"
-            },
-            {
-              "flag": "mos_distreu"
-            }
-          ]
-        },
-        {
-          "flag": "iri_a_la_cambra",
-          "is": false
-        }
-      ]
-    },
-    "doneWhen": {
-      "flag": "iri_a_la_cambra"
-    },
-    "levels": [
-      "pista.vet_panell_buit.1",
-      "pista.vet_panell_buit.2"
-    ]
-  },
   "vet_enviar_mapa": {
     "priority": 4,
     "when": {
@@ -3070,9 +3071,6 @@
               "flag": "mos_distreu"
             }
           ]
-        },
-        {
-          "flag": "iri_a_la_cambra"
         }
       ]
     },
@@ -3244,7 +3242,7 @@
       "pista.iri_conducte.3"
     ]
   },
-  "vet_signes": {
+  "vet_esperar_ruta": {
     "priority": 0,
     "when": {
       "all": [
@@ -3264,9 +3262,8 @@
       "flag": "ruta_marcada"
     },
     "levels": [
-      "pista.vet_signes.1",
-      "pista.vet_signes.2",
-      "pista.vet_signes.3"
+      "pista.vet_esperar_ruta.1",
+      "pista.vet_esperar_ruta.2"
     ]
   },
   "iri_esperar_reixa": {
@@ -3861,6 +3858,33 @@
     "levels": [
       "pista.vet_nota_mos.1",
       "pista.vet_nota_mos.2"
+    ]
+  },
+  "vet_rebre": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "sincronia_automatica"
+        },
+        {
+          "var": "finestra_armada",
+          "op": "==",
+          "value": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "finestra_armada",
+      "op": "!=",
+      "value": "iri"
+    },
+    "levels": [
+      "pista.vet_rebre.1",
+      "pista.vet_rebre.2"
     ]
   }
 }

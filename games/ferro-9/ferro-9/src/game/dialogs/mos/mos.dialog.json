@@ -59,6 +59,13 @@
       "say": false
     },
     {
+      "id": "menu__veus",
+      "scriptName": "menu__veus",
+      "text": "Com ho veus, Mos?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__adeu",
       "scriptName": "menu__adeu",
       "text": "Res, res.",

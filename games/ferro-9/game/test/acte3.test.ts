@@ -62,39 +62,42 @@ describe('Ferro-9 · Acte 3 · Acorralades', () => {
     expect(texts(p.do('look', item('mapa_fuga')))).toContain("d'aquí a cent vint anys");
     expect(texts(p.do('look', item('mapa_fuga')))).toContain(ruta);
 
-    // ── Vet: fa veure que accepta el pacte, però a l'altra banda no hi ha ningú ──
+    // ── Vet: fa veure que accepta el pacte i envia el mapa, però a l'altra banda no hi ha ningú ──
     expect(texts(p.use('mapa_fuga', 'panell'))).toContain('Ara és meu');
+    expect(texts(p.do('push', 'panell'))).toContain('Ara és meu');
     p.talk('directora', 'pacte');
     expect(n.flag('pacte_acceptat')).toBe(true);
-    expect(texts(p.use('mapa_fuga', 'panell'))).toContain('no vibra');
+    expect(texts(p.do('push', 'panell'))).toContain('no vibra');
+    const enceses = estatFinestra(n).enceses;
+    const envia = p.use('mapa_fuga', 'panell');
+    expect(texts(envia)).toContain('reformat');
+    expect(texts(envia)).toContain('tanca la cel·la');
+    expect(keys(envia)).toContain('finestra.espera.vet');
+    expect(p.active).toBe('vet');
+    expect(estatFinestra(n).armada).toBe('vet');
+    expect(estatFinestra(n).enceses).toBe(enceses);
+    // La Directora marxa: ja no hi és quan la Vet obre la reixa.
+    expect(n.isHotspotVisible('gavina_cella', 'directora')).toBe(false);
 
-    // ── Iri: enganya el Sic i torna a la cambra ──
+    // ── Iri: enganya el Sic, torna a la cambra i hi troba el mapa ──
     p.switchTo('iri');
     expect(p.room).toBe('fabrica_calderes');
     p.talk('sic', 'enganyar');
     expect(n.flag('sic_distret')).toBe(true);
     expect(n.isHotspotVisible('fabrica_calderes', 'sic')).toBe(false);
-    expect(texts(p.do('open', 'porta_cambra'))).toContain('molts racons');
+    const torna = p.do('open', 'porta_cambra');
+    expect(keys(torna)).toContain('finestra.rebut');
+    expect(texts(torna)).toContain('molts racons');
+    expect(keys(torna)).not.toContain('sala.fabrica_cambra.tornar2');
     expect(p.room).toBe('fabrica_cambra');
-    expect(texts(p.use('llima', 'reixa'))).toContain('formulari');
-
-    // ── Vet: envia el mapa, i la Directora fa tancar la cel·la ──
-    p.switchTo('vet');
-    const enceses = estatFinestra(n).enceses;
-    const envia = texts(p.use('mapa_fuga', 'panell'));
-    expect(envia).toContain('reformat');
-    expect(envia).toContain('tanca la cel·la');
+    expect(p.inventory()).toContain('mapa_fuga');
     expect(estatFinestra(n).enceses).toBe(enceses - 1);
-    expect(p.active).toBe('iri');
     expect(n.state.quests.acte3!.objectives.mapa).toBe(true);
-    // La Directora marxa: ja no hi és quan la Vet obre la reixa.
-    expect(n.isHotspotVisible('gavina_cella', 'directora')).toBe(false);
 
     // ── Iri: llegeix la postdata i deixa la reixa a punt per a d'aquí a cent vint anys ──
     expect(texts(p.do('look', item('mapa_fuga')))).toContain('llimo');
-    // A l'Iri, els signes li arriben corregut: els ha de saber el jugador (o tornar-los a mirar amb la Vet).
-    expect(texts(p.do('look', item('mapa_fuga')))).not.toContain(ruta);
-    expect(texts(p.do('look', item('mapa_fuga')))).toContain('corregut');
+    // Al fullet, l'Iri hi llegeix els cinc signes de la ruta, els mateixos que la Vet va copiar del mapa.
+    expect(texts(p.do('look', item('mapa_fuga')))).toContain(ruta);
     expect(texts(p.use('llima', 'reixa'))).toContain('provar la ruta');
     expect(n.flag('reixa_preparada')).toBe(true);
     expect(n.state.quests.acte3!.objectives.reixa).toBe(true);
@@ -244,19 +247,18 @@ describe('Ferro-9 · Acte 3 · El conducte', () => {
     expect(n.getVar('conducte_errades')).toBe(0);
     expect(n.activeHints()).toContain('iri_conducte');
 
-    // La Vet surt pel conducte, i al mapa del museu hi torna a llegir els signes.
+    // L'Iri torna a mirar el fullet; la Vet, mentrestant, només pot esperar que la I. ho encerti.
+    expect(texts(p.do('look', item('mapa_fuga')))).toContain(String(n.getVar('ruta_conducte')));
     p.switchTo('vet');
-    p.do('open', 'reixa');
-    expect(n.activeHints()).toContain('vet_signes');
-    p.do('open', 'reixa');
-    p.do('open', 'porta_passadis');
-    p.do('open', 'porta_memoria');
-    expect(texts(p.do('look', 'mapa'))).toContain(String(n.getVar('ruta_conducte')));
+    expect(n.activeHints()).toContain('vet_esperar_ruta');
     p.switchTo('iri');
 
     // Es pot tornar enrere a mig camí, i tornar-ho a provar de cap.
     p.do('open', 'reixa');
     p.do('walkTo', ruta[0]!);
+    // Dins el conducte, el mapa només recorda els revolts.
+    const dins = texts(p.do('look', item('mapa_fuga')));
+    expect(dins).toBe(`Cinc revolts: ${String(n.getVar('ruta_conducte'))}. ↑ vol dir recte.`);
     p.do('walkTo', 'enrere');
     expect(p.room).toBe('fabrica_cambra');
     expect(texts(recorrerConducte(p))).toContain('El moll!');

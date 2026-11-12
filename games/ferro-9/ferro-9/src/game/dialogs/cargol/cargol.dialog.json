@@ -61,7 +61,7 @@
     {
       "id": "menu__memoria",
       "scriptName": "menu__memoria",
-      "text": "Cargol, què recordes de l'any passat?",
+      "text": "Què et fan, a la revisió anual?",
       "enabled": false,
       "say": false
     },
@@ -69,6 +69,13 @@
       "id": "menu__alarma",
       "scriptName": "menu__alarma",
       "text": "Per què es va construir la cambra?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__fabrica",
+      "scriptName": "menu__fabrica",
+      "text": "Com va la fàbrica, Cargol?",
       "enabled": false,
       "say": false
     },

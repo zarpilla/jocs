@@ -46,6 +46,10 @@ options.menu__alarma.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'alarma')
 })
 
+options.menu__fabrica.onChoose(() => {
+  chooseNarrativeOption('cargol', dialog, 'menu', 'fabrica')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('cargol', dialog, 'menu', 'adeu')
 })

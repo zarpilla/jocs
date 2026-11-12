@@ -38,6 +38,10 @@ options.menu__distreure.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'distreure')
 })
 
+options.menu__veus.onChoose(() => {
+  chooseNarrativeOption('mos', dialog, 'menu', 'veus')
+})
+
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'adeu')
 })
