@@ -1447,6 +1447,7 @@ ORDINADORS «ordinadors»
         ⇒ +calaix_obert
     • use — si NO router_connectat
         JUGADORA: Sense internet, només puc mirar el codi amb angoixa.
+        JUGADORA: Primer, el router. Si me'l miro bé, sabré què li falta.
     • use — si vet_marxa
         JUGADORA: Ara no puc fer res més des d'aquí. Si la Vet em necessita, trucarà.
     • use — SEMPRE
@@ -1501,10 +1502,18 @@ ROUTER «router»
         JUGADORA: Això no s'endolla enlloc. Ho he comprovat.
     • look — si router_connectat
         JUGADORA: Connectat. Hola, preciós.
-    • look — si cables = 0
-        JUGADORA: El router nou. Li calen tres cables: la fibra, el de xarxa i el d'alimentació.
     • look — SEMPRE
-        JUGADORA: {cables} cables de tres. Ens mirem i ens entenem.
+        JUGADORA: El router nou. Sense internet no hi ha pla, i sense tres cables no hi ha internet. Ara mateix en té zero. ⟨si cables = 0⟩
+        JUGADORA: {cables} cables de tres. Ens mirem i ens entenem. A veure què falta. ⟨si cables > 0⟩
+        JUGADORA: La fibra: penja de la paret, aquí mateix. Només cal endollar-la al router. ⟨si NO fibra_connectada⟩
+        JUGADORA: El cable de xarxa: és dins la caixa del router. Primer l'he de treure. ⟨si NO xarxa_connectada i no té cable_xarxa⟩
+        JUGADORA: El cable de xarxa: ja el porto a sobre. Només cal endollar-lo. ⟨si NO xarxa_connectada i té cable_xarxa⟩
+        JUGADORA: I l'alimentació... el cable el fa servir la cafetera de la Vet. Li hauré de demanar pel passaplats. ⟨si NO alimentacio_connectada i no té cable_alimentacio⟩
+        JUGADORA: L'alimentació: el cable de la cafetera ja és meu. Que el cafè ens perdoni. ⟨si NO alimentacio_connectada i té cable_alimentacio⟩
+        JUGADORA: I en Diu mira els cables amb una gana que no m'agrada gens. ⟨si NO diu_ha_mossegat i NO diu_distret⟩
+        JUGADORA: I en Diu. Mentre el tingui a sobre, cada cable que endolli, se'l menjarà. ⟨si diu_ha_mossegat i NO diu_distret⟩
+        JUGADORA: L'he de distreure amb alguna cosa que li agradi més que un cable. Una caixa? Uns auriculars? Una cosa de menjar? ⟨si diu_ha_mossegat i NO diu_distret⟩
+        JUGADORA: En Diu està entretingut. Ara és el moment: tot endollat, i ràpid. ⟨si diu_distret⟩
     • use/push/pull/pickUp — si router_connectat
         JUGADORA: Funciona. No el toquis. No el miris gaire.
     • use — SEMPRE

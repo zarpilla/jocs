@@ -254,6 +254,12 @@ paret), el **cable de xarxa** (dins la caixa del router) i l'**alimentació**. S
 cable que l'Iri connecta, ell el mossega i el desendolla («Diu! Això és fibra òptica, no espaguetis»).
 [SO: mossegada]
 
+**Mirar el router fa de guia del tutorial.** L'Iri hi explica què falta i on és cada cable, segons l'estat:
+la fibra penja de la paret, el de xarxa és a la caixa (o ja el porta), l'alimentació la té la cafetera (o ja
+la té ella). Després hi afegeix en Diu: abans que mossegui, el mira amb gana; quan ja ha mossegat, diu que
+l'ha de distreure amb una caixa, uns auriculars o menjar; quan ja està distret, que és el moment. Usar els
+ordinadors sense router hi remet: «Primer, el router. Si me'l miro bé, sabré què li falta.»
+
 - **L'alimentació no hi és**: la fa servir la cafetera de la cuina. L'Iri l'ha de demanar en veu alta («Vet,
   em cal el cable de la cafetera»); la Vet el desendolla («Sense cafè no hi ha pla») i el passa pel passaplats.
   Primer ús del passaplats. [SO: passaplats]

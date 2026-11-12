@@ -231,6 +231,10 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.ordinadors.sense"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.ordinadors.sense2"
             }
           ]
         },
@@ -621,24 +625,147 @@
         },
         {
           "verb": "look",
-          "if": {
-            "var": "cables",
-            "op": "==",
-            "value": 0
-          },
           "lines": [
             {
               "who": "player",
-              "text": "sala.pis_estudi.router.look0"
-            }
-          ]
-        },
-        {
-          "verb": "look",
-          "lines": [
+              "text": "sala.pis_estudi.router.look0",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 0
+              }
+            },
             {
               "who": "player",
-              "text": "sala.pis_estudi.router.look_n"
+              "text": "sala.pis_estudi.router.look_n",
+              "if": {
+                "var": "cables",
+                "op": ">",
+                "value": 0
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.fibra",
+              "if": {
+                "flag": "fibra_connectada",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.xarxa_caixa",
+              "if": {
+                "all": [
+                  {
+                    "flag": "xarxa_connectada",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "cable_xarxa",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.xarxa_tinc",
+              "if": {
+                "all": [
+                  {
+                    "flag": "xarxa_connectada",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "cable_xarxa"
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.alimentacio_cafetera",
+              "if": {
+                "all": [
+                  {
+                    "flag": "alimentacio_connectada",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "cable_alimentacio",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.alimentacio_tinc",
+              "if": {
+                "all": [
+                  {
+                    "flag": "alimentacio_connectada",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "cable_alimentacio"
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.diu_lliure",
+              "if": {
+                "all": [
+                  {
+                    "flag": "diu_ha_mossegat",
+                    "is": false
+                  },
+                  {
+                    "flag": "diu_distret",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.diu_mossega",
+              "if": {
+                "all": [
+                  {
+                    "flag": "diu_ha_mossegat"
+                  },
+                  {
+                    "flag": "diu_distret",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.diu_mossega2",
+              "if": {
+                "all": [
+                  {
+                    "flag": "diu_ha_mossegat"
+                  },
+                  {
+                    "flag": "diu_distret",
+                    "is": false
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.router.on.diu_distret",
+              "if": {
+                "flag": "diu_distret"
+              }
             }
           ]
         },
