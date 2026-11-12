@@ -111,6 +111,69 @@
           }
         },
         {
+          "who": "player",
+          "text": "dlg.tub.esc6.8",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "seen": {
+                  "dialogue": "bastida",
+                  "node": "esc6"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.9",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.10",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cadenat_falta"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.11",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "entrepa_robat"
+              }
+            ]
+          }
+        },
+        {
           "who": "iri",
           "text": "dlg.tub.esc6.2",
           "if": {
@@ -120,6 +183,10 @@
               },
               {
                 "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel",
                 "is": false
               }
             ]
@@ -136,6 +203,46 @@
               {
                 "flag": "cops_sentits",
                 "is": false
+              },
+              {
+                "flag": "cops_marcel",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc6.12",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel"
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc6.13",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel"
               }
             ]
           }
@@ -170,6 +277,10 @@
               {
                 "flag": "bastida_baixa",
                 "is": false
+              },
+              {
+                "flag": "nus_lico",
+                "is": false
               }
             ]
           }
@@ -189,6 +300,50 @@
               {
                 "flag": "bastida_baixa",
                 "is": false
+              },
+              {
+                "flag": "nus_lico",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc6.14",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits"
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              },
+              {
+                "flag": "nus_lico"
+              },
+              {
+                "flag": "bastida_baixa",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc6.15",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits"
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              },
+              {
+                "flag": "bastida_baixa"
               }
             ]
           }
@@ -225,6 +380,40 @@
           "if": {
             "flag": "mostra_trobada",
             "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc7.6",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_pany"
+              },
+              {
+                "flag": "mostra_trobada",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc7.7",
+          "if": {
+            "all": [
+              {
+                "flag": "tomas_clau"
+              },
+              {
+                "flag": "clau_donada",
+                "is": false
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
           }
         },
         {

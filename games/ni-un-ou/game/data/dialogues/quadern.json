@@ -148,6 +148,13 @@
           "who": "player",
           "text": "dlg.quadern.llegir.20",
           "if": {
+            "flag": "portatil_obert"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.quadern.llegir.28",
+          "if": {
             "flag": "satellit_provat"
           }
         },
@@ -296,6 +303,10 @@
               },
               {
                 "flag": "cops_marcel",
+                "is": false
+              },
+              {
+                "flag": "portatil_obert",
                 "is": false
               }
             ]

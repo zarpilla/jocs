@@ -256,6 +256,82 @@
         {
           "who": "juana",
           "text": "dlg.juana.esc7b.1"
+        },
+        {
+          "who": "juana",
+          "text": "dlg.juana.esc7b.2",
+          "if": {
+            "flag": "registre_obert",
+            "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.juana.esc7b.3",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_pany"
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "juana",
+          "text": "dlg.juana.esc7b.4",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_pany"
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.juana.esc7b.5",
+          "if": {
+            "all": [
+              {
+                "flag": "tomas_ofes"
+              },
+              {
+                "flag": "clau_donada",
+                "is": false
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "juana",
+          "text": "dlg.juana.esc7b.6",
+          "if": {
+            "all": [
+              {
+                "flag": "tomas_ofes"
+              },
+              {
+                "flag": "clau_donada",
+                "is": false
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
+          }
         }
       ]
     },
@@ -316,6 +392,34 @@
         {
           "who": "title",
           "text": "esc.dues"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.juana.mostra.20"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.juana.mostra.21"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.juana.mostra.22"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.juana.mostra.23"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.juana.mostra.24"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.juana.mostra.25"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.juana.mostra.26"
         }
       ],
       "effects": [
@@ -354,6 +458,10 @@
     },
     "esc8": {
       "lines": [
+        {
+          "who": "juana",
+          "text": "dlg.juana.esc8.2"
+        },
         {
           "who": "juana",
           "text": "dlg.juana.esc8.1"

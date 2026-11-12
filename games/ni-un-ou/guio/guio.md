@@ -537,7 +537,10 @@ IRI: «De nit i amb aquest vent, al pal no s'hi puja. Només si no hi ha més re
 
 (Provar el terminal és opcional: la sala de bombes ja és oberta des que el portàtil diu on és la Juana.)
 
-L'Iri ho diu pel walkie («He obert el portàtil. Diu "on ningú no beu".») i baixa a la sala de bombes. La Juana
+L'Iri fa el compte en veu alta: «Però la Juana ho va escriure a les tres i deu. I ara són les nou passades. Sis hores
+a la sala de bombes? Ningú no s'hi està sis hores.» Ho diu pel walkie en acabar de llegir el portàtil, no al
+terminal («He obert el portàtil. Diu "on ningú no beu".» VET: «I fa sis hores que hi és? Ves-hi, Iri.») i baixa a la
+sala de bombes. La Juana
 no hi és. Hi ha el llibre a terra, obert de cara avall. I la llanterna encesa.
 
 > IRI: Vet. El llibre de la Juana és a terra de la sala de bombes. I la llanterna, encesa. La Juana no descansa.
@@ -610,6 +613,15 @@ biòloga. No sé què vol dir. No m'agrada com ho ha dit.»
 **Des d'aquí, el tub de veu.** IRI (per la boca del tub, a la sala de màquines): «Em sents?» VET (a la cuina):
 «Sembla que parlis des de dins d'una trompeta.» IRI: «És un tub de llautó de 1984. Respecte.»
 
+I es fan el compte del que saben, perquè el jugador surti de l'escena sabent què busca:
+
+> VET: Iri. Ja sé qui escolta: la Nadia, amb un escàner. I la Lind diu que «el tècnic» s'encarrega de la Juana.
+> IRI: El llibre a terra. La llanterna encesa. La Juana no descansa.
+> IRI: La busquem. Ara.
+> VET: On? D'aquest vaixell, jo només conec la infermeria i la cuina.
+> IRI: Per tot arreu. Pregunta a tothom: aquí tothom sent coses. Al passadís hi ha el plànol d'emergència.
+> IRI: I ens parlem pel tub. El walkie, només per dir mentides.
+
 ### Escena 6 — On és la Juana (les dues, exploració)
 
 **Sales:** les dues es mouen lliurement per tot el vaixell. Onze de la nit. No hi ha rellotge. Al passadís hi ha
@@ -624,6 +636,14 @@ l'ordre que es vulgui; a cadascun hi ha algú (o alguna cosa) i una pista:
 | **Cuina** | En Tomàs, fent pa. | «Algú m'ha robat un entrepà de truita de la safata del berenar. Si és la Juana, li perdono.» |
 | **Cabina de la Capitana** | La Capitana, llegint una novel·la romàntica. | «La Juana sempre torna.» Damunt la taula, el contracte de Blau Net, amb el lema a la capçalera («Per un mar més net, junts»): «Condició 4: embarcar N. Vidal.» |
 | **Caixa de cadenes** (proa) | Un cadenat nou a la porta. | Cops a dins. |
+
+**El tub fa el compte.** Cada vegada que una parla pel tub (o cara a cara), diu en veu alta les pistes que ja té, i
+només aquestes: «En Bastida diu que deu ser a popa... Però quan la Juana vol estar sola, va a proa.» · «El Marcel
+diu que aquesta tarda va sentir cops a proa.» · «I al pallol falta un cadenat.» · «A en Tomàs li han robat un
+entrepà de truita. Algú alimenta algú que no pot venir a sopar.» Si encara no se sap res de proa, l'altra respon
+«Pregunta. Algú haurà sentit alguna cosa.»; si el Marcel ja ha parlat dels cops, «Cops a proa. On no hi passa
+ningú.» Un cop trobat el cadenat, el tub diu on és la cisalla i on és en Bastida (a popa, a la sala de bombes o
+ensenyant el nus a la Vet).
 
 **El secret del Marcel.** La nit de la vàlvula, el Marcel era a la sala de màquines perquè hi dona sardines a en Diu,
 que va trobar fa una setmana. Va mentir per protegir-lo. «Si la Capitana el veu, el desembarca. I jo no tinc ningú
@@ -697,6 +717,11 @@ al quadern.
 - **L'Iri** pot desmuntar les frontisses del registre amb la clau de tubs, com la Juana (dues accions a la sala de
   màquines i el rebost; ho diu la Vet pel tub si no troba la clau). IRI: «Cargols nous. La Juana no menteix.»
 
+Si la Vet torna a parlar amb la Juana, la Juana ho repeteix (el registre és al rebost, la clau no la té ningú, ella
+hi va entrar per les frontisses) i respon al que la Vet ha vist: al pany forçat, «Doncs ja saben on és. Afanya't,
+doctora.»; a en Tomàs ofès, «Un entrepà de truita? Me'l vaig menjar jo, a la caixa de cadenes.» Pel tub, l'Iri lliga
+la clau que no té ningú amb la que té en Tomàs, si la Vet li va fer la revisió.
+
 Dins la carcassa del filtre, en una bossa segellada: **«Mostra 7 — Punt 7 — SK-4»**. [SO: pot]
 
 Quan la Vet torna a la infermeria amb la mostra, la Juana la mira i diu una sola cosa:
@@ -709,6 +734,14 @@ Quan la Vet torna a la infermeria amb la mostra, la Juana la mira i diu una sola
 
 **Fi de l'Acte 2.** La Capitana, per la megafonia: «Falten sis hores per entrar a aigües de Valmark. Valmark ens
 ofereix l'escorta d'un guardacostes. Per la nostra seguretat.» Títol: **Falten 6 hores. Acte 3 · Mostra 7.**
+
+Just després del títol, pel tub (l'Iri és al pont, de guàrdia; la Vet, a la infermeria), el pla de l'Acte 3:
+
+> IRI: Sis hores. Si entrem a Valmark, la mostra es perd a la duana. I sense l'antena, les dades no surten.
+> VET: Doncs abans d'arribar-hi, ho diem. Davant de tothom: qui ha estat, i per què ho sabem.
+> IRI: Al menjador. La Capitana pot reunir tothom. Jo no em puc moure del pont fins que ens cridi.
+> VET: I la Capitana encara es pensa que Blau Net és una fundació.
+> IRI: El registre és a l'USB. Si l'imprimeixo aquí, te'l puc enviar pel muntacàrregues, a la cuina.
 
 ---
 
@@ -1157,3 +1190,20 @@ de sang de pescadors.
 | 27 | El pòster de la Cimera i el lema de Blau Net no eren a cap sala. | Menjador (Escena 8) i capçalera del contracte (Escena 6). |
 | 28 | Trencaclosques fluixos: la postal ho deia tot; el cadenat només demanava anar a buscar la cisalla. | Postal «Pili 65» + fitxa mèdica de la Vet. El cadenat fa soroll i cal allunyar en Bastida. |
 | 29 | Anàlisis de sang «de Port Hallen», on no han atracat mai. | De Galway: pescadors de la zona del Punt 7. |
+
+## Annex D: seguir la història (novembre de 2026)
+
+Jugant-lo, a partir de l'Acte 2 no quedava clar què calia fer, i s'havien de demanar pistes l'una darrere l'altra.
+**La regla:** qui ho sap, ho torna a dir. Les converses que es poden repetir (el walkie, el tub, la Juana) diuen
+l'objectiu del moment i les pistes que ja es tenen, en boca dels personatges. No donen cap solució nova: el que és
+més fàcil és recordar, no resoldre.
+
+| # | On es perdia el fil | Arreglo |
+|---|---|---|
+| 1 | El portàtil acabava amb «tot cap a terra, per satèl·lit», i el que tocava era la sala de bombes. El walkie de «on ningú no beu» només sortia si es provava el terminal, que és opcional. | L'Iri fa el compte (15:10 → les nou: sis hores) i ho diu pel walkie en llegir el portàtil. El terminal només diu que no hi ha senyal. |
+| 2 | La nota de la Juana no recordava la contrasenya. | «Si no torno. I no ha tornat.» i el nom de la mare. |
+| 3 | El quadern només apuntava «on ningú no beu» si s'havia provat el satèl·lit. | Una línia per a cada cosa. |
+| 4 | L'Escena 6 començava amb «La busquem. Ara.» i prou. | El tub, en estrenar-se, fa el compte: qui escolta, el tècnic, el llibre a terra, i com buscar. |
+| 5 | Durant la cerca, el tub només deia «Pregunta». | El tub repeteix les pistes que ja es tenen (popa/proa, els cops, el cadenat, l'entrepà) i on és en Bastida. |
+| 6 | A l'Escena 7, la Juana repetia «El dipòsit 2. Pel rebost.» | Repeteix els dos camins i respon al pany forçat i a l'entrepà d'en Tomàs. |
+| 7 | L'Acte 3 començava sense que ningú digués què calia fer, i la Juana parlava d'«a la reunió». | El pla pel tub en acabar el títol; la Juana diu que la reunió la convoca la Capitana. |
