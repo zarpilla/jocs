@@ -81,6 +81,9 @@ export interface AfterActionResult extends ActionResult {
 
 export type AfterActionHook = (action: PlayerAction, narrative: Narrative) => AfterActionResult | void;
 
+/** Regla que s'executa en entrar a una sala, abans de l'`onEnter` del contingut (p. ex. rebre el que esperava). */
+export type EnterRoomHook = (room: Id, narrative: Narrative) => ActionResult | void;
+
 export interface NarrativeOptions {
   content: GameContent;
   locales: Record<string, LocaleTable>;
@@ -136,6 +139,7 @@ export class Narrative {
   private sessions = new DialogueSessions();
   private actions = new Map<string, GameAction>();
   private afterHooks: AfterActionHook[] = [];
+  private enterHooks: EnterRoomHook[] = [];
   /** Dins un lot d'efectes: es retarda `stateChanged` fins al final. */
   private batchDepth = 0;
 
@@ -421,6 +425,17 @@ export class Narrative {
     };
   }
 
+  /**
+   * Regla que s'executa cada vegada que s'entra a una sala, abans de triar-ne l'`onEnter`: els seus efectes ja
+   * compten per a les condicions de l'`onEnter`, i les seves línies es diuen primer.
+   */
+  onEnterRoom(hook: EnterRoomHook): () => void {
+    this.enterHooks.push(hook);
+    return () => {
+      this.enterHooks = this.enterHooks.filter((h) => h !== hook);
+    };
+  }
+
   private runAfterHooks(action: PlayerAction): { lines: ResolvedLine[]; end: boolean } {
     const lines: ResolvedLine[] = [];
     let end = false;
@@ -505,8 +520,21 @@ export class Narrative {
   /** En entrar a una sala: la primera entrada d'`onEnter` que encaixi. */
   enterRoom(room: Id): InteractionResult | null {
     const list = this.content.rooms[room]?.onEnter ?? [];
-    const found = this.findInteraction(`${room}/@enter`, list, '*');
-    return found ? this.batch(() => this.runInteraction(`${room}/@enter`, list, found)) : null;
+    if (!this.enterHooks.length) {
+      const found = this.findInteraction(`${room}/@enter`, list, '*');
+      return found ? this.batch(() => this.runInteraction(`${room}/@enter`, list, found)) : null;
+    }
+    return this.batch(() => {
+      const before: ResolvedLine[] = [];
+      for (const hook of this.enterHooks) {
+        for (const l of hook(room, this)?.lines ?? []) before.push({ who: l.who, key: l.text, text: this.t(l.text, l.params), ...(l.sound && { sound: l.sound }) });
+      }
+      // L'`onEnter` es tria després de les regles: el que acaben de fer ja hi compta.
+      const found = this.findInteraction(`${room}/@enter`, list, '*');
+      const result = found ? this.runInteraction(`${room}/@enter`, list, found) : null;
+      if (!before.length) return result;
+      return result ? { ...result, lines: [...before, ...result.lines] } : { lines: before };
+    });
   }
 
   /**
