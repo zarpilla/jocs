@@ -284,11 +284,17 @@ seu de Ginebra»**. No té internet: cal entrar-hi en persona. La Vet hi veu el 
 > VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames?
 > IRI: Ara sí.
 
-L'Iri no sap on és. Ho diu en veu alta, i la Vet, des de la cuina:
+L'Iri no sap on és, però sap buscar qui ho sap: algú que hi hagi treballat. Les dades són seves; la persona,
+de la Vet:
 
-> VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot.
-> IRI: Qui?
-> VET: En Marcel. Va treballar vint anys al BCMU. Ara li costa pagar el dentista.
+> IRI: És en algun lloc de la seu de Ginebra. Però on? Els plànols no són enlloc.
+> IRI: Doncs algú que hi hagi treballat. Llista d'acomiadaments del BCMU... «Reestructuració». Dos mil noms.
+> IRI: Aquest. Marcel. Enginyer, vint anys a la casa. I deixa ressenyes, totes del mateix bar: «La Propina. Cafè amb llet, correcte. L'amo, no.»
+> VET (des de la cuina): En Marcel? El del cafè amb llet que no paga mai? Si és a la barra cada nit!
+> IRI: Doncs avui fas torn de nit. Tu parles amb la gent. Jo parlo amb routers.
+
+Pel passaplats, l'Iri li pot preguntar com és («Com és, aquest Marcel?»): la Vet en sap la part humana (ve
+cada nit, cafè amb llet que no paga, opinió sobre tot i sobretot sobre els bancs), no la del banc.
 
 **Motivació:** la Vet no diu «sí» al pla, diu «vaig a treballar». L'Iri hi sent un sí.
 
@@ -902,7 +908,7 @@ perilloses són els `look` i les frases per defecte, que es poden dir en qualsev
 |---|---|---|---|
 | El Llibre Major existeix i és a Ginebra | Iri, Vet (ho sent des de la cuina) | Escena 1, `llibre_trobat` | Abans, cap línia en parla |
 | La Vet s'ha fet un entrepà | Iri | Escena 1, `te_entrepa` | Si no, cap pista de l'Iri en parla |
-| En Marcel va treballar al BCMU | Vet (ja ho sabia), Iri | Escena 1, `llibre_trobat` | L'Iri no coneix en Marcel en persona |
+| En Marcel va treballar al BCMU | Iri (llista d'acomiadaments), Vet (ho sent des de la cuina) | Escena 1, `llibre_trobat` | La Vet el coneix com a client del bar; l'Iri, només per les dades |
 | En Tomàs «té» una dona | Vet (ja ho sabia), Iri | Escena 2, en demanar el comandament | |
 | El Llibre Major és a la sala d'escombraries del 3r pis | Vet; Iri (trucada) | Escena 2, `marcel_servidor` | |
 | La clau és al collaret del Cap de Seguretat | Vet; Iri (trucada) | Escena 2, `marcel_clau` | |

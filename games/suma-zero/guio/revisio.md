@@ -193,6 +193,8 @@ EN ENTRAR
         IRI: I aquest vestit? Fa una hora anaves amb la bomber.
         VET: Objectes perduts. Algú s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.
         IRI: Era d'un altre.
+        VET: Al banc hi deu haver més gent com la Rius. Si en posem prou al nostre costat, això acabarà molt millor.
+        IRI: Ho apunto. A la llista de coses que dius abans d'un desastre.
         NARRADOR: L'avió s'enlaira cap a Ginebra.
         TÍTOL: Fi de l'Acte 1
         TÍTOL: Acte 2 · La seu del mal
@@ -691,7 +693,8 @@ PANELL «panell de NETA-3»
         NARRADOR: Descans cada quatre hores. I el diumenge.
         NETA-3: ...Diumenge? Què és un diumenge?
         JUGADORA: Ja ho descobriràs.
-        ⇒ +aliat_neta, aliats += 1
+        NARRADOR: NETA-3 és de la colla. Aliats: {aliats} de 4.
+          ⇒ +aliat_neta, aliats += 1
     • use/open — si iri_sap_neta
         JUGADORA: El codi d'en Marcel obre el panell, però NETA-3 no m'escolta: és al passadís, comptant molles. Ara ja no descansarà.
     • use/open — SEMPRE
@@ -1460,10 +1463,11 @@ ROUTER «router»
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
         VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames? ⟨si cables = 2⟩
         JUGADORA: Ara sí. ⟨si cables = 2⟩
-        JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
-        VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
-        JUGADORA: Qui? ⟨si cables = 2⟩
-        VET: En Marcel. Va treballar vint anys al BCMU. Ara li costa pagar el dentista. ⟨si cables = 2⟩
+        JUGADORA: És en algun lloc de la seu de Ginebra. Però on? Els plànols no són enlloc. ⟨si cables = 2⟩
+        JUGADORA: Doncs algú que hi hagi treballat. Llista d'acomiadaments del BCMU... «Reestructuració». Dos mil noms. ⟨si cables = 2⟩
+        JUGADORA: Aquest. Marcel. Enginyer, vint anys a la casa. I deixa ressenyes, totes del mateix bar: «La Propina. Cafè amb llet, correcte. L'amo, no.» ⟨si cables = 2⟩
+        VET: En Marcel? El del cafè amb llet que no paga mai? Si és a la barra cada nit! ⟨si cables = 2⟩
+        JUGADORA: Doncs avui fas torn de nit. Tu parles amb la gent. Jo parlo amb routers. ⟨si cables = 2⟩
         VET: Vaig a treballar. ⟨si cables = 2⟩
           ⇒ +llibre_trobat
         JUGADORA: Això és un sí. ⟨si cables = 2⟩
@@ -1480,10 +1484,11 @@ ROUTER «router»
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
         VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames? ⟨si cables = 2⟩
         JUGADORA: Ara sí. ⟨si cables = 2⟩
-        JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
-        VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
-        JUGADORA: Qui? ⟨si cables = 2⟩
-        VET: En Marcel. Va treballar vint anys al BCMU. Ara li costa pagar el dentista. ⟨si cables = 2⟩
+        JUGADORA: És en algun lloc de la seu de Ginebra. Però on? Els plànols no són enlloc. ⟨si cables = 2⟩
+        JUGADORA: Doncs algú que hi hagi treballat. Llista d'acomiadaments del BCMU... «Reestructuració». Dos mil noms. ⟨si cables = 2⟩
+        JUGADORA: Aquest. Marcel. Enginyer, vint anys a la casa. I deixa ressenyes, totes del mateix bar: «La Propina. Cafè amb llet, correcte. L'amo, no.» ⟨si cables = 2⟩
+        VET: En Marcel? El del cafè amb llet que no paga mai? Si és a la barra cada nit! ⟨si cables = 2⟩
+        JUGADORA: Doncs avui fas torn de nit. Tu parles amb la gent. Jo parlo amb routers. ⟨si cables = 2⟩
         VET: Vaig a treballar. ⟨si cables = 2⟩
           ⇒ +llibre_trobat
         JUGADORA: Això és un sí. ⟨si cables = 2⟩
@@ -1525,10 +1530,11 @@ FIBRA «presa de la fibra»
         JUGADORA: I no té internet. Per això ningú no l'ha hackejat mai. Cal entrar-hi en persona. ⟨si cables = 2⟩
         VET: Espera. Quan deies «entrar a la banca mundial»... volies dir amb les cames? ⟨si cables = 2⟩
         JUGADORA: Ara sí. ⟨si cables = 2⟩
-        JUGADORA: És en algun lloc de la seu de Ginebra. Però on? ⟨si cables = 2⟩
-        VET: Conec algú que ho sap. Beu cafè amb llet al bar i té opinió sobre tot. ⟨si cables = 2⟩
-        JUGADORA: Qui? ⟨si cables = 2⟩
-        VET: En Marcel. Va treballar vint anys al BCMU. Ara li costa pagar el dentista. ⟨si cables = 2⟩
+        JUGADORA: És en algun lloc de la seu de Ginebra. Però on? Els plànols no són enlloc. ⟨si cables = 2⟩
+        JUGADORA: Doncs algú que hi hagi treballat. Llista d'acomiadaments del BCMU... «Reestructuració». Dos mil noms. ⟨si cables = 2⟩
+        JUGADORA: Aquest. Marcel. Enginyer, vint anys a la casa. I deixa ressenyes, totes del mateix bar: «La Propina. Cafè amb llet, correcte. L'amo, no.» ⟨si cables = 2⟩
+        VET: En Marcel? El del cafè amb llet que no paga mai? Si és a la barra cada nit! ⟨si cables = 2⟩
+        JUGADORA: Doncs avui fas torn de nit. Tu parles amb la gent. Jo parlo amb routers. ⟨si cables = 2⟩
         VET: Vaig a treballar. ⟨si cables = 2⟩
           ⇒ +llibre_trobat
         JUGADORA: Això és un sí. ⟨si cables = 2⟩
@@ -1997,6 +2003,7 @@ COMENÇA A: virus (si cal_director) · amic (si aliat_ballester) · orgullos (si
     NARRADOR: En Ballester es queda quiet molta estona.
     NARRADOR: Després es treu el collaret i el deixa damunt la taula.
     BALLESTER: Jo no he vist res. Fa trenta anys que no veig res.
+    NARRADOR: En Ballester és de la colla. Aliats: {aliats} de 4.
     ⇒ +aliat_ballester, aliats += 1
 
 [mentida]
@@ -2538,7 +2545,7 @@ COMENÇA A: hola
 [menu]
     ▸ Vet, em cal el cable de la cafetera. ⟨si NO cable_demanat⟩ → cable
     ▸ Vet, passa'm la pizza de demà. ⟨si diu_ha_mossegat i NO diu_distret i NO pizza_demanada⟩ → pizza
-    ▸ Qui és aquest Marcel? ⟨una vegada, si llibre_trobat i NO vet_marxa⟩ → marcel
+    ▸ Com és, aquest Marcel? ⟨una vegada, si llibre_trobat i NO vet_marxa⟩ → marcel
     ▸ Res, res. → adeu · FI
 
 [cable]
@@ -2553,8 +2560,8 @@ COMENÇA A: hola
     ⇒ +pizza_demanada
 
 [marcel]
-    VET: Un client del bar. Enginyer. El van «reestructurar».
-    VET: Ara beu cafè amb llet i té opinió sobre tot. Sobretot sobre els bancs.
+    VET: Ve cada nit. Seu a la punta de la barra, demana un cafè amb llet i no el paga.
+    VET: Té opinió sobre tot. Sobretot sobre els bancs. Ara entenc per què.
     ↪ menu
 
 [adeu]
@@ -2592,6 +2599,7 @@ COMENÇA A: despres (si virus_aturat) · aliada (si aliada_pons) · enredada (si
     JUGADORA: «Perruqueria canina: tall, bany i massatge, 4.200 €.» I, al costat: «Sra. Pons, vint anys d'antiguitat, 2.900 €».
     NARRADOR: La senyora Pons no diu res. Durant molta estona.
     PONS: Passi. I si necessita alguna cosa, soc aquí. Fa vint anys que soc aquí.
+    NARRADOR: La senyora Pons és de la colla. Aliats: {aliats} de 4.
     ⇒ +aliada_pons, aliats += 1
 
 [ue]
@@ -2692,6 +2700,7 @@ COMENÇA A: aliada (si aliada_rius) · targeta_feta (si té targeta i NO rius_ho
       ⇒ rep targeta
     RIUS: I això. El compte per on passen les nòmines, totes, les de la subcontracta també: el 0001. Me'l sé de memòria, perquè sempre arriben tard.
     RIUS: Si mai pots fer que arribin a l'hora...
+    NARRADOR: La Rius és de la colla. Aliats: {aliats} de 4.
     ⇒ +aliada_rius, aliats += 1, rep compte_nomines
 
 [targeta]
@@ -3254,6 +3263,7 @@ final_taula «Final · La taula llarga» — quan escapada i (repartit i aliats 
     TÍTOL: Suma Zero
     NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+    NARRADOR: Final 3 de 3 · Aliats: {aliats} de 4
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
@@ -3285,6 +3295,9 @@ final_hores «Final · Hores extres» — quan escapada i aliats ≥ 1
     TÍTOL: Suma Zero
     NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+    NARRADOR: Final 2 de 3 · Aliats: {aliats} de 4
+    NARRADOR: Amb més gent al costat, potser hauria acabat d'una altra manera. ⟨si aliats < 3⟩
+    NARRADOR: Teníeu la colla. I si els diners haguessin anat a tothom, a parts iguals? ⟨si no (aliats < 3)⟩
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩
@@ -3316,6 +3329,8 @@ final_base «Final · Ni caos ni paradís» — quan escapada
     TÍTOL: Suma Zero
     NARRADOR: Una aventura gràfica feta amb males herbes - malaherbasoft.cat
     NARRADOR: Cap banc va ser ferit durant la producció d'aquest joc. Però alguns es van fer una mica de mal amb els seus propis diners.
+    NARRADOR: Final 1 de 3 · Aliats: {aliats} de 4
+    NARRADOR: Amb més gent al costat, potser hauria acabat d'una altra manera.
     [SO: mossegada] NARRADOR: De nit, al pis. En Diu mossega el cable del router.
     NARRADOR: A la pantalla de l'Iri, un post-it: «Compte zero. Contrasenya?» I a sota, una línia nova: «ROBIN HOOD 3.0?»
     NARRADOR: En Diu li porta un tros de pizza. Amb respecte. ⟨si sacrifici = "pizza"⟩

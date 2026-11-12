@@ -341,7 +341,7 @@
               }
             },
             {
-              "who": "vet",
+              "who": "player",
               "text": "sala.pis_estudi.rev5",
               "if": {
                 "var": "cables",
@@ -361,6 +361,15 @@
             {
               "who": "vet",
               "text": "sala.pis_estudi.rev7",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev7b",
               "if": {
                 "var": "cables",
                 "op": "==",
@@ -496,7 +505,7 @@
               }
             },
             {
-              "who": "vet",
+              "who": "player",
               "text": "sala.pis_estudi.rev5",
               "if": {
                 "var": "cables",
@@ -516,6 +525,15 @@
             {
               "who": "vet",
               "text": "sala.pis_estudi.rev7",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev7b",
               "if": {
                 "var": "cables",
                 "op": "==",
@@ -811,7 +829,7 @@
               }
             },
             {
-              "who": "vet",
+              "who": "player",
               "text": "sala.pis_estudi.rev5",
               "if": {
                 "var": "cables",
@@ -831,6 +849,15 @@
             {
               "who": "vet",
               "text": "sala.pis_estudi.rev7",
+              "if": {
+                "var": "cables",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_estudi.rev7b",
               "if": {
                 "var": "cables",
                 "op": "==",
