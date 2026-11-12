@@ -174,6 +174,12 @@ mòbil del Director (Escena 8). El joc les anuncia amb un títol: **«Ara necess
   l'auricular i només el que s'ha dit en veu alta. A l'Escena 2 es parlen per telèfon i només se sap el que es
   diuen (vegeu la «Línia de temps del coneixement»).
 - Parlar per l'auricular no costa cap torn.
+- **Es pot parlar per l'auricular tantes vegades com calgui** (l'Iri, amb els seus auriculars; la Vet, amb
+  l'auricular de botó, que passa al seu inventari a l'aeroport). Cadascuna diu on és i què li toca, i l'altra
+  també: «Soc al moll de càrrega. L'ascensor de servei només puja amb la targeta de la Rius» · «Soc a seguretat,
+  amb en Ballester. Mira una sèrie al mòbil i porta el collaret al coll». No són pistes noves: és el que cadascuna
+  ja sap, dit en veu alta, perquè el jugador no perdi el fil quan canvia de protagonista. Una frase per etapa, de
+  l'aeroport a la fugida (`dialogues/auricular.json`).
 
 ### 5. El Llibre Major i ROBIN HOOD 2.0
 

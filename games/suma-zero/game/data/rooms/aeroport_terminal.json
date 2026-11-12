@@ -77,6 +77,10 @@
       "effects": [
         {
           "setFlag": "auricular_compartit"
+        },
+        {
+          "giveItem": "auricular_boto",
+          "who": "vet"
         }
       ]
     }

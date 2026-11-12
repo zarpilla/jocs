@@ -4,6 +4,16 @@
     "name": "obj.auriculars.nom",
     "interactions": [
       {
+        "verb": [
+          "talkTo",
+          "use"
+        ],
+        "if": {
+          "flag": "auricular_compartit"
+        },
+        "dialogue": "auricular"
+      },
+      {
         "verb": "look",
         "if": {
           "all": [
@@ -590,5 +600,32 @@
         ]
       }
     ]
+  },
+  "auricular_boto": {
+    "name": "obj.auricular_boto.nom",
+    "interactions": [
+      {
+        "verb": [
+          "talkTo",
+          "use"
+        ],
+        "if": {
+          "flag": "auricular_compartit"
+        },
+        "dialogue": "auricular"
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.auricular_boto.look"
+          }
+        ]
+      }
+    ],
+    "props": {
+      "no_enviar": "tub.auricular_boto"
+    }
   }
 }

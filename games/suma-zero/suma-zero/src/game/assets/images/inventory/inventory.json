@@ -503,6 +503,27 @@
         "h": 36
       },
       "duration": 100
+    },
+    "inventory 24.aseprite": {
+      "frame": {
+        "x": 1560,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 36
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -511,7 +532,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1560,
+      "w": 1625,
       "h": 36
     },
     "scale": "1",
@@ -681,6 +702,13 @@
         "name": "clauer",
         "from": 23,
         "to": 23,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "auricular_boto",
+        "from": 24,
+        "to": 24,
         "direction": "forward",
         "color": "#000000ff"
       }

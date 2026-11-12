@@ -1,0 +1,4388 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "auricular",
+  "with": "iri",
+  "start": "parla",
+  "nodes": {
+    "parla": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.auricular.43",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.44",
+          "if": {
+            "protagonist": "vet"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.1",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.2",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret"
+                  },
+                  {
+                    "flag": "iri_fora",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.3",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_fora"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.4",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "targeta",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "iri_al_tercer"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.5",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_al_tercer"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.6",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "not": {
+                      "flag": "robot_aturat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.7",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "not": {
+                      "flag": "robot_aturat"
+                    }
+                  },
+                  {
+                    "flag": "iri_sap_neta"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.8",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "not": {
+                      "flag": "robot_aturat"
+                    }
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "iri_sap_neta",
+                        "is": false
+                      },
+                      {
+                        "not": {
+                          "any": [
+                            {
+                              "hasItem": "entrepa",
+                              "who": "iri"
+                            },
+                            {
+                              "hasItem": "entrepa_suis",
+                              "who": "iri"
+                            },
+                            {
+                              "hasItem": "entrepa_ballester",
+                              "who": "iri"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.9",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "not": {
+                      "all": [
+                        {
+                          "flag": "camera1_tapada"
+                        },
+                        {
+                          "flag": "camera2_tapada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.10",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_a_llibre"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.11",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_collaret"
+                        },
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "flag": "vet_a_seguretat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.12",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_collaret"
+                        },
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.13",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.14",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "clau_llibre",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "clau_girada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.15",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "clau_llibre",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "clau_girada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "clau_girada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.16",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_al_despatx"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.17",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "flag": "contrasenya_ok"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.18",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "flag": "contrasenya_ok"
+                    }
+                  },
+                  {
+                    "flag": "pista_contrasenya"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.19",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "flag": "contrasenya_ok"
+                    }
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "pista_contrasenya"
+                      },
+                      {
+                        "flag": "sap_rockefeller"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.20",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "codi_teclejat"
+                        },
+                        {
+                          "flag": "virus_aturat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.21",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "virus_aturat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.22",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "not": {
+                      "flag": "escala_provada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.23",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "escala_provada"
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_llesta"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.24",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "escala_provada"
+                  },
+                  {
+                    "flag": "iri_llesta"
+                  },
+                  {
+                    "not": {
+                      "flag": "escapada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.25",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.26",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret"
+                  },
+                  {
+                    "flag": "iri_fora",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.27",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_fora"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.28",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "auditoria_acceptada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.29",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_a_seguretat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.30",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_collaret"
+                        },
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.31",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.32",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "clau_llibre",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "clau_girada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.33",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "clau_llibre",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "clau_girada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "clau_girada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.34",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "not": {
+                      "flag": "a_planta_noble"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.35",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "aliada_pons"
+                        },
+                        {
+                          "flag": "pons_enredada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.36",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_al_despatx"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.37",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_mobil"
+                        },
+                        {
+                          "flag": "codi_teclejat"
+                        },
+                        {
+                          "flag": "virus_aturat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.38",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "codi_teclejat"
+                        },
+                        {
+                          "flag": "virus_aturat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.39",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "virus_aturat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.40",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_al_carrer"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.41",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "vet_al_carrer"
+                  },
+                  {
+                    "not": {
+                      "flag": "escapada"
+                    }
+                  },
+                  {
+                    "flag": "iri_llesta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.42",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "vet_al_carrer"
+                  },
+                  {
+                    "not": {
+                      "flag": "escapada"
+                    }
+                  },
+                  {
+                    "flag": "iri_llesta"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.25",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.26",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret"
+                  },
+                  {
+                    "flag": "iri_fora",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.27",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_fora"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.28",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "auditoria_acceptada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.29",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_a_seguretat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.30",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_collaret"
+                        },
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.31",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.32",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "clau_llibre",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "clau_girada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.33",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "auditoria_acceptada"
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "clau_llibre",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "clau_girada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "clau_girada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.34",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "not": {
+                      "flag": "a_planta_noble"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.35",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "aliada_pons"
+                        },
+                        {
+                          "flag": "pons_enredada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.36",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_al_despatx"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.37",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_mobil"
+                        },
+                        {
+                          "flag": "codi_teclejat"
+                        },
+                        {
+                          "flag": "virus_aturat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.38",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "codi_teclejat"
+                        },
+                        {
+                          "flag": "virus_aturat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.39",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "virus_aturat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.40",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_al_carrer"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.41",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "vet_al_carrer"
+                  },
+                  {
+                    "not": {
+                      "flag": "escapada"
+                    }
+                  },
+                  {
+                    "flag": "iri_llesta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.auricular.42",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "a_planta_noble"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "aliada_pons"
+                      },
+                      {
+                        "flag": "pons_enredada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_mobil"
+                      },
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "vet_al_carrer"
+                  },
+                  {
+                    "not": {
+                      "flag": "escapada"
+                    }
+                  },
+                  {
+                    "flag": "iri_llesta"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.1",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.2",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "soler_distret"
+                  },
+                  {
+                    "flag": "iri_fora",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.3",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "auricular_compartit"
+                      },
+                      {
+                        "flag": "acte1_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_fora"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.4",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "targeta",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "iri_al_tercer"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.5",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_al_tercer"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.6",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "not": {
+                      "flag": "robot_aturat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.7",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "not": {
+                      "flag": "robot_aturat"
+                    }
+                  },
+                  {
+                    "flag": "iri_sap_neta"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.8",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "not": {
+                      "flag": "robot_aturat"
+                    }
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "iri_sap_neta",
+                        "is": false
+                      },
+                      {
+                        "not": {
+                          "any": [
+                            {
+                              "hasItem": "entrepa",
+                              "who": "iri"
+                            },
+                            {
+                              "hasItem": "entrepa_suis",
+                              "who": "iri"
+                            },
+                            {
+                              "hasItem": "entrepa_ballester",
+                              "who": "iri"
+                            }
+                          ]
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.9",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "not": {
+                      "all": [
+                        {
+                          "flag": "camera1_tapada"
+                        },
+                        {
+                          "flag": "camera2_tapada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.10",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_a_llibre"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.11",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_collaret"
+                        },
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "flag": "vet_a_seguretat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.12",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "sync_collaret"
+                        },
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "flag": "vet_a_seguretat"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.13",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "cal_clau"
+                        },
+                        {
+                          "any": [
+                            {
+                              "hasItem": "clau_llibre",
+                              "who": "iri"
+                            },
+                            {
+                              "flag": "clau_girada"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.14",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "clau_llibre",
+                          "who": "iri"
+                        },
+                        {
+                          "flag": "clau_girada"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.15",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "all": [
+                      {
+                        "flag": "acte1_fet"
+                      },
+                      {
+                        "flag": "acte2_fet",
+                        "is": false
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "targeta",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "iri_al_tercer"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_al_tercer"
+                  },
+                  {
+                    "flag": "robot_aturat"
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "camera1_tapada"
+                      },
+                      {
+                        "flag": "camera2_tapada"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "iri_a_llibre"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "sync_collaret"
+                      },
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "cal_clau"
+                      },
+                      {
+                        "any": [
+                          {
+                            "hasItem": "clau_llibre",
+                            "who": "iri"
+                          },
+                          {
+                            "flag": "clau_girada"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "clau_llibre",
+                        "who": "iri"
+                      },
+                      {
+                        "flag": "clau_girada"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "clau_girada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.16",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_al_despatx"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.17",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "flag": "contrasenya_ok"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.18",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "flag": "contrasenya_ok"
+                    }
+                  },
+                  {
+                    "flag": "pista_contrasenya"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.19",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "not": {
+                      "flag": "contrasenya_ok"
+                    }
+                  },
+                  {
+                    "all": [
+                      {
+                        "flag": "pista_contrasenya"
+                      },
+                      {
+                        "flag": "sap_rockefeller"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.20",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "flag": "codi_teclejat"
+                        },
+                        {
+                          "flag": "virus_aturat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.21",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "virus_aturat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.22",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "not": {
+                      "flag": "escala_provada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.23",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "escala_provada"
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_llesta"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.24",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "acte2_fet"
+                  },
+                  {
+                    "flag": "vet_al_despatx"
+                  },
+                  {
+                    "flag": "contrasenya_ok"
+                  },
+                  {
+                    "any": [
+                      {
+                        "flag": "codi_teclejat"
+                      },
+                      {
+                        "flag": "virus_aturat"
+                      }
+                    ]
+                  },
+                  {
+                    "flag": "virus_aturat"
+                  },
+                  {
+                    "flag": "escala_provada"
+                  },
+                  {
+                    "flag": "iri_llesta"
+                  },
+                  {
+                    "not": {
+                      "flag": "escapada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

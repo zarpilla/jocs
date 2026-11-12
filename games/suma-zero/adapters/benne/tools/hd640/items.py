@@ -154,6 +154,22 @@ def auriculars_boto(f):
         f.shade(cx - 3, 14, 1.6)
 
 
+def auricular_boto(f):
+    """L'auricular de botó que l'Iri dona a la Vet: un de sol, negre amb el punt vermell, amb un tros de fil."""
+    for x in range(36, 50):
+        f.px(x, 25 + round(2.4 * math.sin(math.pi * (x - 36) / 13)), PLAST, 2.4)
+    cx = 30
+    S = f.E(cx, 17, 6.4, 6.4)
+    f.drop(S)
+    f.fill(S, PLAST, lambda x, y: 3.6 - (y - 11) * 0.12, rim=(0.8, -1.2))
+    f.fill(f.E(cx, 17, 2.2, 2.2), RED, 4.6, rim=None)
+    f.px(cx - 1, 16, RED, 6.0)
+    for y in range(22, 27):
+        f.px(cx + 4 + (y - 22), y, PLAST, 3.0)
+        f.px(cx + 5 + (y - 22), y, PLAST, 1.8)
+    f.shade(cx - 3, 14, 1.6)
+
+
 def cable_xarxa(f):
     """El cable de xarxa blau, enrotllat, amb el connector transparent (els vuit contactes i la pestanya) i una
     mossegada d'en Diu."""
@@ -583,7 +599,7 @@ def clauer(f):
 
 
 ICONS = {fn.__name__: fn for fn in (
-    caixa_cartro, cable_alimentacio, pizza, auricular, auriculars_boto,
+    caixa_cartro, cable_alimentacio, pizza, auricular, auriculars_boto, auricular_boto,
     cable_xarxa, entrepa, clau_casa, tap, recepta, comandament, maleti, ulleres, acreditacions, acreditacio,
     entrepa_suis, entrepa_ballester, targeta, compte_nomines, galleda, cartell, extintor, clau_llibre, clauer,
 )}
