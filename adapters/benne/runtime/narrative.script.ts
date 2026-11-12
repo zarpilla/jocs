@@ -165,7 +165,8 @@ export function onRoomLoaded() {
  */
 export function onRoomEntered() {
   // En desenvolupament, `window.__aventura.provar(situació)` porta la partida a una situació (vegeu `prepareSituation`).
-  if (import.meta.env.DEV) (window as unknown as { __aventura?: unknown }).__aventura = { provar: provarSituacio, narrative, ambient }
+  // `goTo` acaba el handler llançant un símbol; des de la consola no hi ha handler que el reculli: s'ignora.
+  if (import.meta.env.DEV) (window as unknown as { __aventura?: unknown }).__aventura = { provar: provarDesDeLaConsola, narrative, ambient }
   adoptLoadedState()
   ensureStarted()
   const room = narrative.world.currentRoom()
@@ -279,6 +280,13 @@ export function provarSituacio(s: Situacio) {
   setEnteringProtagonist(s.active)
   const room = benneRoom(sala)
   if (room) room.goTo()
+}
+
+/** `provarSituacio` des de la consola del navegador, sense l'avís de «Uncaught (in promise)» del final del handler. */
+function provarDesDeLaConsola(s: Situacio) {
+  Promise.resolve().then(() => provarSituacio(s)).catch((e: unknown) => {
+    if (typeof e !== 'symbol') console.error(e)
+  })
 }
 
 /** Va a la sala on és una protagonista (i, en entrar-hi, se'n pren el control). */
