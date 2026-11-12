@@ -143,6 +143,8 @@ per ordre. Cada indicació té `who` (un personatge, o `player`) i, per aquest o
 - `anim`: una animació del sprite (p. ex. `"Seu"`), o `null` per tornar a estar dret;
 - `face`: es gira (`L`, `R`, `U` o `D`);
 - `walk`: hi camina. Per defecte, s'espera que hi arribi. Amb `"wait": false` camina mentre es diu la línia.
+  El sprite ha de tenir animacions `WalkL`/`WalkD`/`WalkU` (a `draw_characters.py`); si no, llisca dret, i el
+  sync avisa (`⚠ characters/<id>: camina en un stage però el sprite no té animacions Walk`).
 
 Els llocs (`at`, `walk`) són una cosa de la sala (es fa servir el seu punt d'arribada), un personatge o un
 punt `{ "x": …, "y": … }`.

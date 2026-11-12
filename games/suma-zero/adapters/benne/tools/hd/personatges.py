@@ -1129,9 +1129,9 @@ NPCS2 = {
 BIG = {'ballester': 1.14}
 
 
-def npc2(cid, facing, talk=False, variant=''):
+def npc2(cid, facing, talk=False, variant='', walk=None):
     spec = NPCS2[cid][variant]
-    img = person(spec, facing, talk=talk)
+    img = person(spec, facing, walk=walk, talk=talk)
     k = BIG.get(cid)
     if not k:
         return img

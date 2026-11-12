@@ -1098,14 +1098,14 @@ def install():
             return out
         return C.person(spec, facing, walk=walk, talk=talk)
 
-    def npc2(cid, facing, talk=False, variant=''):
+    def npc2(cid, facing, talk=False, variant='', walk=None):
         spec = P.NPCS2[cid][variant]
         k = P.BIG.get(cid)
         if not k:
-            return C.person(spec, facing, talk=talk)
+            return C.person(spec, facing, walk=walk, talk=talk)
         # en Ballester: dibuixat directament a ×k (no ampliat), en un fotograma de 77×133 amb els peus a big2_feet ×4/3
         with escala(K * k):
-            big = C.person(spec, facing, talk=talk)
+            big = C.person(spec, facing, walk=walk, talk=talk)
         w, h = P.big2_size(cid)
         fx, fy = P.big2_feet(cid)
         out = Image.new('RGBA', (round(w * K), round(h * K)), (0, 0, 0, 0))

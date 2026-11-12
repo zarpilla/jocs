@@ -246,17 +246,21 @@ def gat(cid='diu'):
 
 
 def secundari2(cid):
-    """Un secundari de l'Acte 2 (hd/personatges.py, NPCS2): Idle i Talk en D, L i U, i una etiqueta per a cada
-    variant d'estat (`appearance` a characters.json), de cara, amb la boca que es mou."""
+    """Un secundari de l'Acte 2 (hd/personatges.py, NPCS2): Idle, Talk i Walk en D, L i U (sense Walk, Benne el
+    faria lliscar quan un `stage` el fa caminar), i una etiqueta per a cada variant d'estat (`appearance` a
+    characters.json), de cara, amb la boca que es mou."""
     variants = personatges.NPCS2[cid]
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', [personatges.npc2(cid, f)]))
         tags.append((f'Talk{f}', [personatges.npc2(cid, f), personatges.npc2(cid, f, talk=True)]))
+        tags.append((f'Walk{f}', [personatges.npc2(cid, f, walk=k) for k in range(6)]))
     for v in variants:
         if v:
             tags.append((v, [personatges.npc2(cid, 'D', variant=v)] * 3 + [personatges.npc2(cid, 'D', variant=v, talk=True)]))
-    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else {'frameDuration': 400} if t in variants else {})}
+    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else
+                                  {'frameDuration': 90 if t == 'WalkL' else 80} if t.startswith('Walk') else
+                                  {'frameDuration': 400} if t in variants else {})}
              for t, _ in tags}
     w, h = tags[0][1][0].size
     fx, fy = personatges.big2_feet(cid) if cid in personatges.BIG else (25, 83)

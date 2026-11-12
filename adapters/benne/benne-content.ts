@@ -63,6 +63,34 @@ function placeholderSprite(id: string, protagonist: boolean) {
   if (existsSync(placeholderArt(id, `${id}.png`))) return id;
   return protagonist ? 'hank' : 'penny';
 }
+/**
+ * Qui camina en un `stage`/`stageAfter` (`walk`) i no té cap animació `Walk…` al sprite: Benne el faria lliscar
+ * dret, sense moure les cames. Les protagonistes (i `player`) ja caminen sempre.
+ */
+function warnWalkersWithoutWalk(gameDir: string, content: GameContent, protagonists: string[]) {
+  const walkers = new Set<string>();
+  const visit = (o: unknown): void => {
+    if (Array.isArray(o)) return o.forEach(visit);
+    if (!o || typeof o !== 'object') return;
+    for (const key of ['stage', 'stageAfter']) {
+      const cues = (o as Json)[key];
+      if (!Array.isArray(cues)) continue;
+      for (const c of cues as Json[]) if (c?.walk !== undefined && typeof c.who === 'string') walkers.add(c.who);
+    }
+    Object.values(o).forEach(visit);
+  };
+  visit(content);
+  for (const id of walkers) {
+    if (id === 'player' || protagonists.includes(id)) continue;
+    const path = join(gameDir, 'characters', id, `${id}.character.json`);
+    if (!existsSync(path)) continue;
+    const anims = Object.keys((readJson(path).animations as Json | undefined) ?? {});
+    if (!anims.some((a) => a.includes('Walk'))) {
+      console.warn(`⚠ characters/${id}: camina en un stage però el sprite no té animacions Walk (lliscarà sense moure les cames).`);
+    }
+  }
+}
+
 const NPC_COLORS = ['#c8c8c8', '#c89060', '#b8a8e0', '#ff90c8', '#90d890', '#e8e070'];
 
 /** Textos de les GUI de la plantilla 9-verb: GUI → control → clau de text (cada joc n'hi pot afegir). */
@@ -161,6 +189,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
     character.description = t(def.description ?? def.name, id);
     writeJson(path, character);
   }
+  warnWalkersWithoutWalk(gameDir, content, protagonists);
 
   // ── Objectes d'inventari ────────────────────────────────────────────────
   for (const [id, def] of Object.entries(content.items)) {

@@ -10,7 +10,7 @@ que espera Benne (full d'Aseprite PNG + JSON amb etiquetes, i el .character.json
   mos      presoner vell i prim, maquillat: granota taronja descolorida
   mare     l'altaveu en forma de cor de la IA (normalment invisible)
 
-  directora, sic, mira, guardia: secundaris de peu (Idle/Talk en D, L, U)
+  directora, sic, mira, guardia: secundaris de peu (Idle/Talk en D, L, U; la directora i en Sic, també Walk)
 
 Les protagonistes tenen Idle/Walk/Talk en tres direccions (L, D, U; Benne fa el mirall per a R).
 El dibuix és a hd/characters.py (pixel art a la mida real, amb volum i llum); aquí només es munten
@@ -155,12 +155,18 @@ def walker(cid, p):
     })
 
 
-def standing(cid, p, thin=False):
+def standing(cid, p, thin=False, walks=False):
+    """Un secundari de peu: Idle i Talk en D, L i U; amb `walks`, també Walk (qui camina en un `stage`: sense
+    Walk, Benne el faria lliscar)."""
     tags = []
     for f in 'DLU':
         tags.append((f'Idle{f}', [person(p, f, thin=thin)]))
         tags.append((f'Talk{f}', [person(p, f, thin=thin), person(p, f, talk=True, thin=thin)]))
-    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else {})} for t, _ in tags}
+        if walks:
+            tags.append((f'Walk{f}', [person(p, f, walk=k, thin=thin) for k in range(6)]))
+    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else
+                                  {'frameDuration': 90 if t == 'WalkL' else 80} if t.startswith('Walk') else {})}
+             for t, _ in tags}
     write(cid, tags, (36, 64), {
         'walkSpeed': 60, 'walkToPoint': {'x': 44, 'y': 61}, 'talkPoint': {'x': 18, 'y': -2}, 'feet': {'x': 18, 'y': 61},
         'collider': {'points': [{'x': 11, 'y': 2}, {'x': 25, 'y': 2}, {'x': 27, 'y': 40}, {'x': 24, 'y': 63}, {'x': 11, 'y': 63}, {'x': 8, 'y': 40}]},
@@ -172,8 +178,8 @@ def main():
     walker('iri', IRI)
     walker('vet', VET)
     standing('mos', MOS, thin=True)
-    standing('directora', DIRECTORA)
-    standing('sic', SIC)
+    standing('directora', DIRECTORA, walks=True)
+    standing('sic', SIC, walks=True)
     standing('mira', MIRA)
     standing('guardia', GUARDIA)
 
