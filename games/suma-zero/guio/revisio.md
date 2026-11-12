@@ -1508,7 +1508,7 @@ ROUTER «router»
         JUGADORA: La fibra: penja de la paret, aquí mateix. Només cal endollar-la al router. ⟨si NO fibra_connectada⟩
         JUGADORA: El cable de xarxa: és dins la caixa del router. Primer l'he de treure. ⟨si NO xarxa_connectada i no té cable_xarxa⟩
         JUGADORA: El cable de xarxa: ja el porto a sobre. Només cal endollar-lo. ⟨si NO xarxa_connectada i té cable_xarxa⟩
-        JUGADORA: I l'alimentació... el cable el fa servir la cafetera de la Vet. Li hauré de demanar pel passaplats. ⟨si NO alimentacio_connectada i no té cable_alimentacio⟩
+        JUGADORA: I l'alimentació... el cable el fa servir la cafetera de la Vet. Li hauré de demanar. ⟨si NO alimentacio_connectada i no té cable_alimentacio⟩
         JUGADORA: L'alimentació: el cable de la cafetera ja és meu. Que el cafè ens perdoni. ⟨si NO alimentacio_connectada i té cable_alimentacio⟩
         JUGADORA: I en Diu mira els cables amb una gana que no m'agrada gens. ⟨si NO diu_ha_mossegat i NO diu_distret⟩
         JUGADORA: I en Diu. Mentre el tingui a sobre, cada cable que endolli, se'l menjarà. ⟨si diu_ha_mossegat i NO diu_distret⟩
