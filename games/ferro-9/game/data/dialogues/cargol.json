@@ -222,6 +222,22 @@
           "next": "per_que"
         },
         {
+          "id": "fabrica",
+          "text": "dlg.cargol.opt.fabrica",
+          "next": "fabrica",
+          "if": {
+            "all": [
+              {
+                "flag": "acte1_acabat"
+              },
+              {
+                "flag": "iri_fugida",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
           "id": "adeu",
           "text": "dlg.cargol.opt.adeu",
           "next": "adeu",
@@ -748,6 +764,363 @@
           "relation": {
             "who": "cargol",
             "change": 1
+          }
+        }
+      ],
+      "goto": "menu"
+    },
+    "fabrica": {
+      "lines": [
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.1",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "not": {
+                      "flag": "iri_sap_mida"
+                    }
+                  },
+                  {
+                    "not": {
+                      "hasItem": "nota_mida",
+                      "who": "iri"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.2",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "not": {
+                      "flag": "iri_sap_mida"
+                    }
+                  },
+                  {
+                    "hasItem": "nota_mida",
+                    "who": "iri"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.3",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "not": {
+                      "flag": "comporta_oberta"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.4",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "not": {
+                      "flag": "molla_afinada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.5",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "not": {
+                      "flag": "pany_sonic_obert"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.6",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "flag": "pany_sonic_obert"
+                  },
+                  {
+                    "not": {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "mig"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica.7",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "flag": "pany_sonic_obert"
+                  },
+                  {
+                    "var": "valvula",
+                    "op": "==",
+                    "value": "mig"
+                  },
+                  {
+                    "not": {
+                      "flag": "acte2_acabat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica3.1",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "not": {
+                      "hasItem": "mapa_fuga",
+                      "who": "iri"
+                    }
+                  },
+                  {
+                    "flag": "sic_distret",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica3.2",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "not": {
+                      "hasItem": "mapa_fuga",
+                      "who": "iri"
+                    }
+                  },
+                  {
+                    "flag": "sic_distret"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica3.3",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "mapa_fuga",
+                    "who": "iri"
+                  },
+                  {
+                    "not": {
+                      "flag": "reixa_preparada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica3.4",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "mapa_fuga",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "reixa_preparada"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "tub_amb_llibreta",
+                          "who": "vet"
+                        },
+                        {
+                          "flag": "tub_muntat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "cargol",
+          "text": "dlg.cargol.fabrica3.5",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "hasItem": "mapa_fuga",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "reixa_preparada"
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "tub_amb_llibreta",
+                        "who": "vet"
+                      },
+                      {
+                        "flag": "tub_muntat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_fugida"
+                    }
+                  }
+                ]
+              }
+            ]
           }
         }
       ],

@@ -40,8 +40,7 @@
         {
           "id": "que_passa",
           "text": "dlg.sic.opt.que_passa",
-          "next": "que_passa",
-          "once": true
+          "next": "que_passa"
         },
         {
           "id": "passar",

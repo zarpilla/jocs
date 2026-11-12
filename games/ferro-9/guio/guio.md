@@ -524,6 +524,18 @@ Les pistes formen part de la història:
 - Mai no surt una pista sobre un trencaclosques que encara no és obert (`when`) o que ja està resolt
   (`doneWhen`).
 
+**Qui torna a explicar on som** (des de l'Acte 2, es pot preguntar tantes vegades com calgui). No són pistes: són
+personatges que recorden el que ja se sap, i que diuen de qui és el torn quan li toca a l'altra.
+
+- **En Mos** («Com ho veus, Mos?»), a la cel·la. Vell sincronitzador: sap que el so no passa per la paret, que «la
+  paret té el seu ritme» i que amb cent vint anys pel mig les coses no sempre hi arriben per la paret. Una frase per
+  etapa: l'hangar, la mida de la palanca, la molla, la pressió (o la inundació), l'arxiu, el nom; a l'Acte 3, en veu
+  baixa per la Directora: la Sala de la Memòria, el mapa, el pacte (o el seu desmai), la reixa i el tub.
+- **El Cargol** («Com va la fàbrica, Cargol?»), al magatzem. Ho diu tot en clau de normes: la cambra que calla, els
+  dos quilos que no admet, el formulari per triplicat per a una peça de ferro-9, els cent vint anys de servei del
+  conducte; a l'Acte 3, el Sic a la porta de la cambra, la reixa i la peça que algú encara espera.
+- El Sic («Què ha passat?») i la Directora («Què vol de mi?», que recorda el tub tret) també es poden repetir.
+
 ---
 
 ## Mapa de dependències

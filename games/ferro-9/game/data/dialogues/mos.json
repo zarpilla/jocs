@@ -206,6 +206,22 @@
           }
         },
         {
+          "id": "veus",
+          "text": "dlg.mos.opt.veus",
+          "next": "veus",
+          "if": {
+            "all": [
+              {
+                "flag": "acte1_acabat"
+              },
+              {
+                "flag": "vet_fugida",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
           "id": "adeu",
           "text": "dlg.mos.opt.adeu",
           "next": "adeu",
@@ -444,6 +460,618 @@
       "effects": [
         {
           "setFlag": "mos_distreu"
+        }
+      ],
+      "goto": "menu"
+    },
+    "veus": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.mos.veus3.0",
+          "if": {
+            "flag": "acte3_iniciat"
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.1",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "not": {
+                  "visited": "gavina_hangar"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.2",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_sap_mida"
+                    }
+                  },
+                  {
+                    "not": {
+                      "hasItem": "nota_mida",
+                      "who": "iri"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.3",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "not": {
+                      "flag": "iri_sap_mida"
+                    }
+                  },
+                  {
+                    "hasItem": "nota_mida",
+                    "who": "iri"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.4",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "not": {
+                      "flag": "comporta_oberta"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.5",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "not": {
+                      "flag": "molla_afinada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.6",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "not": {
+                      "flag": "pany_sonic_obert"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.7",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "flag": "pany_sonic_obert"
+                  },
+                  {
+                    "not": {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "mig"
+                    }
+                  },
+                  {
+                    "not": {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "tancada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.8",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "flag": "pany_sonic_obert"
+                  },
+                  {
+                    "not": {
+                      "var": "valvula",
+                      "op": "==",
+                      "value": "mig"
+                    }
+                  },
+                  {
+                    "var": "valvula",
+                    "op": "==",
+                    "value": "tancada"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.9",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "flag": "pany_sonic_obert"
+                  },
+                  {
+                    "var": "valvula",
+                    "op": "==",
+                    "value": "mig"
+                  },
+                  {
+                    "not": {
+                      "flag": "components_complets"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.10",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "flag": "pany_sonic_obert"
+                  },
+                  {
+                    "var": "valvula",
+                    "op": "==",
+                    "value": "mig"
+                  },
+                  {
+                    "flag": "components_complets"
+                  },
+                  {
+                    "not": {
+                      "flag": "arxiu_explorat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus.11",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_hangar"
+                  },
+                  {
+                    "flag": "iri_sap_mida"
+                  },
+                  {
+                    "flag": "comporta_oberta"
+                  },
+                  {
+                    "flag": "molla_afinada"
+                  },
+                  {
+                    "flag": "pany_sonic_obert"
+                  },
+                  {
+                    "var": "valvula",
+                    "op": "==",
+                    "value": "mig"
+                  },
+                  {
+                    "flag": "components_complets"
+                  },
+                  {
+                    "flag": "arxiu_explorat"
+                  },
+                  {
+                    "not": {
+                      "flag": "acte2_acabat"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus3.1",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "not": {
+                  "visited": "gavina_memoria"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus3.2",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_memoria"
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_sap_conducte"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus3.3",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_memoria"
+                  },
+                  {
+                    "flag": "vet_sap_conducte"
+                  },
+                  {
+                    "not": {
+                      "hasItem": "mapa_fuga",
+                      "who": "iri"
+                    }
+                  },
+                  {
+                    "flag": "carta_mos_lliurada",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus3.4",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_memoria"
+                  },
+                  {
+                    "flag": "vet_sap_conducte"
+                  },
+                  {
+                    "not": {
+                      "hasItem": "mapa_fuga",
+                      "who": "iri"
+                    }
+                  },
+                  {
+                    "flag": "carta_mos_lliurada"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus3.5",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_memoria"
+                  },
+                  {
+                    "flag": "vet_sap_conducte"
+                  },
+                  {
+                    "hasItem": "mapa_fuga",
+                    "who": "iri"
+                  },
+                  {
+                    "not": {
+                      "flag": "reixa_preparada"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus3.6",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_memoria"
+                  },
+                  {
+                    "flag": "vet_sap_conducte"
+                  },
+                  {
+                    "hasItem": "mapa_fuga",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "reixa_preparada"
+                  },
+                  {
+                    "not": {
+                      "any": [
+                        {
+                          "hasItem": "tub_amb_llibreta",
+                          "who": "vet"
+                        },
+                        {
+                          "flag": "tub_muntat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "mos",
+          "text": "dlg.mos.veus3.7",
+          "if": {
+            "all": [
+              {
+                "flag": "acte3_iniciat"
+              },
+              {
+                "all": [
+                  {
+                    "visited": "gavina_memoria"
+                  },
+                  {
+                    "flag": "vet_sap_conducte"
+                  },
+                  {
+                    "hasItem": "mapa_fuga",
+                    "who": "iri"
+                  },
+                  {
+                    "flag": "reixa_preparada"
+                  },
+                  {
+                    "any": [
+                      {
+                        "hasItem": "tub_amb_llibreta",
+                        "who": "vet"
+                      },
+                      {
+                        "flag": "tub_muntat"
+                      }
+                    ]
+                  },
+                  {
+                    "not": {
+                      "flag": "vet_fugida"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
         }
       ],
       "goto": "menu"

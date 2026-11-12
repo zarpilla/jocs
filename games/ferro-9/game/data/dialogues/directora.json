@@ -57,8 +57,7 @@
         {
           "id": "que_vol",
           "text": "dlg.directora.opt.que_vol",
-          "next": "que_vol",
-          "once": true
+          "next": "que_vol"
         },
         {
           "id": "iri",
@@ -99,6 +98,14 @@
         {
           "who": "directora",
           "text": "dlg.directora.que_vol2"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.que_vol.3",
+          "if": {
+            "flag": "tub_muntat",
+            "is": false
+          }
         }
       ],
       "goto": "menu"
