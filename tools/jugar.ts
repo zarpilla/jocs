@@ -169,6 +169,7 @@ async function main() {
       // «usar X amb Y» / «donar X a Y»
       const before = p.room;
       const activeBefore = p.active;
+      const thingsBefore = new Set(visibleThings().map(([id]) => id));
       const [a = '', b] = args.split(/\s+(?:amb|a)\s+/);
       let lines: ResolvedLine[];
       if (b) {
@@ -203,6 +204,13 @@ async function main() {
         break;
       }
       if (p.room !== before || p.active !== activeBefore) describeRoom();
+      else {
+        // Al joc, el que apareix es veu; aquí cal dir-ho.
+        const nous = visibleThings().filter(([id]) => !thingsBefore.has(id));
+        if (nous.length) {
+          console.log(`${c.dim}Ara també hi ha: ${nous.map(([id, h]) => `${h.name ? n.t(h.name) : id} [${id}]`).join(', ')}${c.off}`);
+        }
+      }
     } catch (e) {
       console.log(`${c.red}${(e as Error).message}${c.off}`);
     }

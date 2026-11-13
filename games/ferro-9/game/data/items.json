@@ -276,7 +276,18 @@
           },
           {
             "who": "player",
-            "text": "obj.llibreta_torn.iri2"
+            "text": "obj.llibreta_torn.iri2_abans",
+            "if": {
+              "flag": "iri_sap_pany",
+              "is": false
+            }
+          },
+          {
+            "who": "player",
+            "text": "obj.llibreta_torn.iri2",
+            "if": {
+              "flag": "iri_sap_pany"
+            }
           },
           {
             "who": "player",
@@ -1719,6 +1730,48 @@
         "effects": [
           {
             "setFlag": "vet_coneix_mira"
+          },
+          {
+            "setFlag": "vet_va_veure_mira_acusada"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "flag": "vet_va_veure_mira_acusada"
+            },
+            {
+              "flag": "mira_salvada"
+            },
+            {
+              "flag": "vet_veu_mira_salvada",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "narrator",
+            "text": "obj.fitxa_mira.text"
+          },
+          {
+            "who": "player",
+            "text": "obj.fitxa_mira.vet_canvi1"
+          },
+          {
+            "who": "player",
+            "text": "obj.fitxa_mira.vet_canvi2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "vet_coneix_mira"
+          },
+          {
+            "setFlag": "vet_veu_mira_salvada"
           }
         ]
       },

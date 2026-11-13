@@ -234,6 +234,9 @@ describe('Ferro-9 · Acte 1', () => {
     const abans = estatFinestra(n).enceses;
     // El que l'altra no necessita no passa, i no gasta cap encesa.
     p.do('pickUp', 'avis');
+    // Encara no sap qui hi ha a l'altra banda: no en pot parlar com «la I.».
+    expect(keys(p.use('avis_reciclatge', 'panell'))).toEqual(['finestra.rebuig.no_cal_vet_abans']);
+    n.apply({ setFlag: 'sap_que_es_temps' });
     expect(keys(p.use('avis_reciclatge', 'panell'))).toEqual(['finestra.rebuig.no_cal_vet']);
     expect(estatFinestra(n).enceses).toBe(abans);
     expect(p.inventory()).toContain('avis_reciclatge');
@@ -244,6 +247,8 @@ describe('Ferro-9 · Acte 1', () => {
     // Canvi automàtic a l'altra banda, amb l'objecte a l'inventari.
     expect(p.active).toBe('iri');
     expect(p.inventory()).toContain('nota_vet');
+    expect(keys(p.use('llapis', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri_abans']);
+    n.apply({ setFlag: 'iri_sap_pany' });
     expect(keys(p.use('llapis', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri']);
     // Les regles de la finestra continuen valent.
     p.switchTo('vet');

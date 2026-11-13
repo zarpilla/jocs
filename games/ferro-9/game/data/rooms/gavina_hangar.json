@@ -787,6 +787,15 @@
             {
               "who": "player",
               "text": "sala.gavina_hangar.llancadora.oberta"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.llancadora.sense_pressio2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_pressio"
             }
           ]
         },
@@ -1037,6 +1046,27 @@
             {
               "who": "player",
               "text": "sala.gavina_hangar.conducte.look_ple"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "pany_sonic_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.conducte.look"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_hangar.conducte.look_pressio"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_sap_pressio"
             }
           ]
         },

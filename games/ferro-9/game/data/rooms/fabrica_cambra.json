@@ -561,6 +561,35 @@
           ]
         },
         {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.cargolada_clau"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull",
+            "pickUp",
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.fabrica_cambra.reixa.cargolada_clau"
+            }
+          ],
+          "if": {
+            "hasItem": "clau_anglesa",
+            "who": "iri"
+          }
+        },
+        {
           "verb": [
             "open",
             "pull",

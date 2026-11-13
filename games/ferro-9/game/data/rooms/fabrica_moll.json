@@ -211,6 +211,10 @@
             "var": "biga_amagada",
             "op": "!=",
             "value": "acer"
+          },
+          {
+            "flag": "biga_acer_enterrada",
+            "is": false
           }
         ]
       }
@@ -359,6 +363,9 @@
             {
               "setVar": "biga_amagada",
               "value": "acer"
+            },
+            {
+              "setFlag": "biga_acer_enterrada"
             }
           ]
         },
@@ -410,6 +417,10 @@
             },
             {
               "giveItem": "biga_acer"
+            },
+            {
+              "setFlag": "biga_acer_enterrada",
+              "value": false
             }
           ]
         },

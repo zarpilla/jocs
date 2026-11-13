@@ -5,6 +5,12 @@
   "start": [
     {
       "if": {
+        "flag": "vet_fugida_cella"
+      },
+      "node": "tornada"
+    },
+    {
+      "if": {
         "seen": {
           "dialogue": "directora",
           "node": "primera"
@@ -156,6 +162,22 @@
         }
       ],
       "goto": "menu"
+    },
+    "tornada": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.tornada1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.directora.tornada2"
+        },
+        {
+          "who": "directora",
+          "text": "dlg.directora.tornada3"
+        }
+      ]
     }
   }
 }

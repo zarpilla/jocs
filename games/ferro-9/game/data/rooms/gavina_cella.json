@@ -1295,8 +1295,45 @@
           "effects": [
             {
               "setFlag": "reixa_oberta"
+            },
+            {
+              "setFlag": "vet_veu_reixa"
             }
           ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "reixa_oberta"
+              },
+              {
+                "hasItem": "tub_amb_llibreta",
+                "who": "vet"
+              },
+              {
+                "flag": "vet_fugida_cella"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "directora",
+              "text": "sala.gavina_cella.reixa.fugir_altra1"
+            },
+            {
+              "who": "player",
+              "text": "sala.gavina_cella.reixa.fugir_altra2",
+              "sound": "conducte"
+            }
+          ],
+          "goTo": "gavina_hangar"
         },
         {
           "verb": [
@@ -1347,7 +1384,12 @@
               }
             }
           ],
-          "goTo": "gavina_hangar"
+          "goTo": "gavina_hangar",
+          "effects": [
+            {
+              "setFlag": "vet_fugida_cella"
+            }
+          ]
         },
         {
           "verb": [
@@ -1401,6 +1443,11 @@
                 "is": false
               }
             }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_veu_reixa"
+            }
           ]
         },
         {
@@ -1412,6 +1459,11 @@
             {
               "who": "player",
               "text": "sala.gavina_cella.reixa.look_llimada"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "vet_veu_reixa"
             }
           ]
         },

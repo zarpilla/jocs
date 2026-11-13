@@ -29,7 +29,7 @@ export const FINESTRA_TEXTS = [
   'finestra.posat', 'finestra.ple', 'finestra.ja_armat', 'finestra.tancada', 'finestra.buida', 'finestra.tret',
   'finestra.armat', 'finestra.armat_buit', 'finestra.esgotada', 'finestra.rebut', 'finestra.rebut_res',
   'finestra.enviat', 'finestra.automatica', 'finestra.rebuig.massa_pesat', 'finestra.rebuig.viu', 'finestra.rebuig.liquid', 'finestra.rebuig.no_hi_cap',
-  'finestra.rebuig.no_cal_iri', 'finestra.rebuig.no_cal_vet', 'finestra.espera.iri', 'finestra.espera.vet', 'finestra.boto_automatic',
+  'finestra.rebuig.no_cal_iri', 'finestra.rebuig.no_cal_vet', 'finestra.rebuig.no_cal_vet_abans', 'finestra.rebuig.no_cal_iri_abans', 'finestra.espera.iri', 'finestra.espera.vet', 'finestra.boto_automatic',
 ];
 
 /** La sala de la cambra de cada protagonista: a l'altra banda hi ha algú si hi és. */
@@ -102,7 +102,13 @@ export function motiuRebuig(n: Narrative, item: string, costat: string): string 
   if (props.liquid === true) return 'finestra.rebuig.liquid';
   if (typeof props.pes !== 'number') return 'finestra.rebuig.no_hi_cap';
   if (props.pes >= PES_MAXIM) return 'finestra.rebuig.massa_pesat';
-  if (props.finestra !== true && props.finestra !== costat) return `finestra.rebuig.no_cal_${costat}`;
+  if (props.finestra !== true && props.finestra !== costat) {
+    // Abans de saber qui hi ha a l'altra banda, la Vet no pot parlar de «la I.»...
+    if (costat === 'vet' && !n.flag('sap_que_es_temps')) return 'finestra.rebuig.no_cal_vet_abans';
+    // I l'Iri no sap que es diu «V.» fins que no rep el dibuix del pany, que ja va signat.
+    if (costat === 'iri' && !n.flag('iri_sap_pany')) return 'finestra.rebuig.no_cal_iri_abans';
+    return `finestra.rebuig.no_cal_${costat}`;
+  }
   return null;
 }
 
