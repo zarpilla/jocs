@@ -97,3 +97,42 @@ describe('Atzucacs (primera repassada)', () => {
     expect(n.getVar('escena')).toBe(9);
   });
 });
+
+describe('Coherència (segona repassada)', () => {
+  it("Escena 2: sense la revisió del Marcel, l'Arenga no salpa", () => {
+    const { n, p } = partida();
+    escena1(p);
+    anar(p, 'infermeria');
+    p.talk('fitxes', 'capitana');
+    p.talk('capitana', 'gasoil', 'fi');
+    p.talk('fitxes', 'tomas');
+    p.talk('tomas', 'fi');
+    p.talk('fitxes', 'nadia');
+    p.talk('nadia', 'fi');
+    anar(p, 'coberta_proa');
+    p.talk('juana', 'valvula');
+    expect(n.getVar('escena')).toBe(2);
+    anar(p, 'infermeria');
+    p.talk('fitxes', 'marcel');
+    p.talk('marcel', 'fi');
+    expect(n.getVar('escena')).toBe(3);
+  });
+
+  it("Escena 7: si l'Iri no ha passat pel pallol, el secret del Marcel encara hi és", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p);
+    amb(p, 'iri', 'taller');
+    p.do('pickUp', 'cisalla');
+    anar(p, 'coberta_proa');
+    p.do('look', 'escotilla');
+    amb(p, 'vet', 'coberta_popa');
+    p.talk('bastida', 'nus');
+    amb(p, 'iri');
+    p.use('cisalla', 'escotilla');
+    p.do('use', 'escotilla');
+    expect(n.getVar('escena')).toBe(7);
+    amb(p, 'iri', 'pallol');
+    p.talk('marcel', 'gat', 'guardar');
+    expect(n.flag('aliat_marcel')).toBe(true);
+  });
+});

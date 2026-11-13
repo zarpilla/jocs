@@ -80,7 +80,11 @@
           "id": "juana",
           "text": "dlg.tomas.opt.juana",
           "once": true,
-          "next": "juana"
+          "next": "juana",
+          "if": {
+            "flag": "juana_explica",
+            "is": false
+          }
         },
         {
           "id": "clau",

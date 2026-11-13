@@ -484,6 +484,31 @@
             "pull"
           ],
           "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "<",
+                "value": 7
+              },
+              {
+                "flag": "tomas_clau"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.registre.20"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "pull"
+          ],
+          "if": {
             "var": "escena",
             "op": "<",
             "value": 7

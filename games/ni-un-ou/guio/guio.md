@@ -359,8 +359,12 @@ de la nit, que encara penja de la grua. Hi fa el nus Bastida, a poc a poc, i la 
 
 Queda al quadern (la volta de més). A l'Escena 8, el jugador que se'n recordi entendrà l'Iri abans que parli.
 
-L'Iri, després, a la Vet (pel walkie):
+L'Iri, després, a la Vet (pel walkie). Aquí és on el jugador sap que en Bastida va treure l'Iri de l'aigua: ho
+necessita per entendre la confessió de l'Escena 8.
 
+> VET: En Bastida diu que la vàlvula és vella. I la Capitana se'l creu.
+> IRI: Tothom se'l creu. Fa dues campanyes, en un temporal, vaig caure per la borda. Em va treure ell. Tot el que sé
+> de mar, m'ho ha ensenyat ell.
 > IRI: Tu ets nova. No sé si em puc fiar de tu. *(pausa)* Però a tu no et mentiran per costum.
 > VET: No és problema meu. Jo faig de metgessa, no de detectiu.
 > IRI: Doncs fes revisions.
@@ -387,8 +391,8 @@ En Bastida no hi és: «Ara no puc, doctora. Més tard.» (La seva revisió és 
 
 Queda al quadern. A l'Escena 9, la Vet hi té una opció més amb ell.
 
-Per avançar n'hi ha prou amb tres revisions de quatre (la de la Capitana és obligatòria: dona Blau Net). Les altres,
-si es fan, donen pistes que serviran a l'Acte 3.
+Per avançar cal fer les quatre revisions (en Bastida diu «ara no»; la seva és a l'Escena 3). Així el Marcel surt
+sempre en escena abans de l'Acte 2: menteix («Dormia»), i té pèls de gat i olor de sardina.
 
 **Trencaclosques 2.2 — On és la Juana.** La Juana no ha vingut a esmorzar. Al laboratori no hi és. En Tomàs (o la
 pista): «Quan vol estar sola, va on hi ha sol i no hi ha gent.» A **proa**, sota la balsa salvavides, on no passa
@@ -400,7 +404,8 @@ ningú, la Juana llegeix al sol estirada damunt d'una manta, amb el vent que li 
 > l'Ernest no compta: només diu «deu minuts». Ha estat meravellós.
 
 La Juana no es fia de la Vet («El metge d'abans va plegar de cop. Tu vas arribar de cop.»). Si la Vet li explica la
-vàlvula, s'ho pensa i n'explica una part: el Punt 7, la plataforma, el marcador de Skarn i que la Mostra 7 és
+vàlvula, s'ho pensa i n'explica una part: el Punt 7, la plataforma, el marcador de Skarn, que Skarn és mig de
+Valmark i que Port Hallen és a Valmark (és la primera vegada que el jugador sent aquest nom), i que la Mostra 7 és
 **«on ningú no la buscarà»**. I una cosa que no surt a l'anàlisi:
 
 > JUANA: L'any passat, al Punt 7, vaig comptar dos mil ous d'arengada per metre quadrat. Aquest any, cap.
@@ -412,7 +417,7 @@ No us diré quin és. Encara no us conec.»
 
 La Vet ho entén abans que ningú:
 
-> VET: Iri. No volen enfonsar el vaixell. Volen que arribem a Valmark. Amb la mostra a bord.
+> VET: Iri. No volen enfonsar el vaixell. Volen que arribem a Port Hallen, a Valmark. Amb la mostra a bord.
 
 (Ho diu pel walkie.)
 
@@ -443,9 +448,9 @@ puja 1, si no està cobert per una distracció de la Vet.
 
 | Eina | Efecte |
 |---|---|
-| **El temporal** («Expliqui'm això del temporal. Per la història clínica.») | Cobreix 3 torns. Li encanta explicar-ho. |
+| **El temporal** («Diuen que ets una llegenda. Explica'm això del temporal. Per la història clínica.») | Cobreix 3 torns. Li encanta explicar-ho: el pesquer gallec del 2003 i, fa dues campanyes, l'Iri. |
 | **La tensió** | Cobreix 2 torns: el maniguet triga. |
-| **Les mans** («Ensenyi'm les mans.») | No cobreix res: el torn suma 1, com qualsevol torn sense cobrir. Però la Vet hi veu **un tall fresc al palmell**. BASTIDA: «Un cap. En tallo deu cada dia.» Opcional; és una pista. |
+| **Les mans** («Ensenya'm les mans.») | No cobreix res: el torn suma 1, com qualsevol torn sense cobrir. Però la Vet hi veu **un tall fresc al palmell**. BASTIDA: «Un cap. En tallo deu cada dia.» Opcional; és una pista. |
 
 **Iri:** obrir el panell (fa soroll), treure el tram tallat, **mirar el tall** (no és un torn), anar al pallol a
 buscar cable i connector, empalmar (2 torns) i provar. Si mira la vora del panell (no és un torn): «Una gota de
@@ -631,7 +636,7 @@ l'ordre que es vulgui; a cadascun hi ha algú (o alguna cosa) i una pista:
 
 | Lloc | Qui hi ha | Què passa |
 |---|---|---|
-| **Coberta de popa** | En Bastida, amb una llanterna, «ajudant a buscar». | «Deu ser a popa. Li agrada el vent.» No hi és. (Pista a l'inrevés: ell envia les dues lluny de proa. I el racó de la Juana, des de l'Escena 2, se sap que és a proa.) Exterior, de nit: els llums de popa, l'estela blanca i, a l'horitzó, cap a on van, res. |
+| **Coberta de popa** | En Bastida, amb una llanterna, «ajudant a buscar». | «A proa ja hi he mirat jo. Deu ser per aquí, a popa: li agrada el vent.» No hi és. (Pista a l'inrevés: ell envia les dues lluny de proa. I el racó de la Juana, des de l'Escena 2, se sap que és a proa.) Exterior, de nit: els llums de popa, l'estela blanca i, a l'horitzó, cap a on van, res. |
 | **Pallol** | El Marcel, assegut a terra, i **en Diu**, menjant sardines. | El secret del Marcel (vegeu sota). «Aquesta tarda he sentit cops a proa. Pensava que eren fantasmes. Jo crec en fantasmes.» A l'inventari, sobre la porta: falta un **cadenat**. |
 | **Cuina** | En Tomàs, fent pa. | «Algú m'ha robat un entrepà de truita de la safata del berenar. Si és la Juana, li perdono.» |
 | **Cabina de la Capitana** | La Capitana, llegint una novel·la romàntica. | «La Juana sempre torna.» Damunt la taula, el contracte de Blau Net, amb el lema a la capçalera («Per un mar més net, junts»): «Condició 4: embarcar N. Vidal.» |
@@ -645,7 +650,9 @@ entrepà de truita. Algú alimenta algú que no pot venir a sopar.» Si encara n
 ningú.» Un cop trobat el cadenat, el tub diu on és la cisalla i on és en Bastida (a popa, a la sala de bombes o
 ensenyant el nus a la Vet).
 
-**El secret del Marcel.** La nit de la vàlvula, el Marcel era a la sala de màquines perquè hi dona sardines a en Diu,
+**El secret del Marcel.** (El Marcel i en Diu són al pallol a l'Escena 6 i també a la 7: qui va directa a proa encara
+el pot trobar mentre busca la mostra. Si no, a l'Escena 7 la Vet no pregunta per «les sardines del Marcel», sinó per
+«el gat que corre per màquines».) La nit de la vàlvula, el Marcel era a la sala de màquines perquè hi dona sardines a en Diu,
 que va trobar fa una setmana. Va mentir per protegir-lo. «Si la Capitana el veu, el desembarca. I jo no tinc ningú
 més a bord que m'escolti.»
 
@@ -677,8 +684,10 @@ camins:
 Talla el cadenat. [SO: cisalla] Quan la mira:
 
 > IRI: ...Té una dent mellada. *(pausa)* Aquesta matinada, quan vaig tallar la brida, no la tenia.
-> VET (quan arriba): La del tall de la ràdio?
-> IRI: És la cisalla del taller. Hi pot entrar tothom. *(pausa)* Tothom que estigués despert després de les quatre.
+> IRI: La mateixa que va tallar el cable de la ràdio. És la cisalla del taller. Hi pot entrar tothom. *(pausa)* Tothom que estigués despert després de les quatre.
+
+Si la Vet no era a proa, arriba corrents: ha sentit la cisalla. (Si és la Vet qui la vol fer servir: «Les eines, a
+l'Iri. Jo tallo punts, no cadenats.»)
 
 Dins la caixa de cadenes, a les fosques, hi ha la **Juana**, amb una manta i un paper d'entrepà.
 
@@ -1014,7 +1023,7 @@ Perquè el culpable sigui just, el jugador ha de poder endevinar-lo abans de la 
 | «Ja l'has arreglada? Massa bona.» | Esc. 3 | Bastida | Sembla orgull de mestre. |
 | La cisalla mellada després de les quatre | Esc. 1, 3 i 6 | Qui era despert aquella nit | Hi entra tothom. |
 | El correu de les dades | Esc. 4 | Bastida | «Per seguretat.» |
-| «Deu ser a popa» | Esc. 6 | Bastida | Ho diu ajudant. |
+| «A proa ja hi he mirat jo» | Esc. 6 | Bastida | Ho diu ajudant. |
 | L'olor de pipa | Esc. 6 | Bastida | «Molta gent fuma pipa.» |
 | El pany forçat del dipòsit 2 | Esc. 7 | Qui escolta el walkie (i el seu «tècnic») | No hi ha cap nom. |
 

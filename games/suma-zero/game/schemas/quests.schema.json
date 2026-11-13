@@ -428,6 +428,10 @@
         },
         "optional": {
           "type": "boolean"
+        },
+        "showWhen": {
+          "$ref": "#/definitions/Condition",
+          "description": "Només surt a la llista quan es compleix (o quan ja és fet). Sense, surt sempre. Per no anunciar coses que les protagonistes encara no saben (p. ex. «Trobar la Juana» abans que la Juana falti)."
         }
       },
       "required": [

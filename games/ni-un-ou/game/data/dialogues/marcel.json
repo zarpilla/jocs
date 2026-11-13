@@ -34,9 +34,18 @@
     },
     {
       "if": {
-        "var": "escena",
-        "op": "==",
-        "value": 6
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 6
+          },
+          {
+            "var": "escena",
+            "op": "<=",
+            "value": 7
+          }
+        ]
       },
       "node": "esc6"
     },
@@ -118,7 +127,18 @@
       "lines": [
         {
           "who": "marcel",
-          "text": "dlg.marcel.esc6.1"
+          "text": "dlg.marcel.esc6.1",
+          "if": {
+            "flag": "juana_trobada",
+            "is": false
+          }
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.esc6.2",
+          "if": {
+            "flag": "juana_trobada"
+          }
         }
       ],
       "effects": [

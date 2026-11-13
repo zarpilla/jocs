@@ -360,7 +360,7 @@
     "esc7": {
       "lines": [
         {
-          "who": "vet",
+          "who": "player",
           "text": "dlg.tub.esc7.1",
           "if": {
             "flag": "mostra_trobada"

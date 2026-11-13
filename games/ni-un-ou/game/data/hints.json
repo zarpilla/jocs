@@ -461,7 +461,7 @@
             {
               "var": "revisions",
               "op": "<",
-              "value": 3
+              "value": 4
             }
           ]
         },
@@ -480,7 +480,7 @@
         {
           "var": "revisions",
           "op": ">=",
-          "value": 3
+          "value": 4
         }
       ]
     },

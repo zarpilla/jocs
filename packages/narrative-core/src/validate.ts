@@ -288,6 +288,7 @@ export function validateContent(
       id(`${w}.objectives[${i}]`, o.id);
       text(`${w}.objectives[${i}]`, o.text);
       cond(`${w}.objectives[${i}].completeWhen`, o.completeWhen);
+      cond(`${w}.objectives[${i}].showWhen`, o.showWhen);
     });
   }
 

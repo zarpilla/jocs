@@ -8,6 +8,30 @@
     },
     "interactions": [
       {
+        "verb": "look",
+        "if": {
+          "flag": "nadia_escolta"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.walkie.desc3"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "portatil_robat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.walkie.desc2"
+          }
+        ]
+      },
+      {
         "verb": "talkTo",
         "dialogue": "walkie"
       },

@@ -118,7 +118,11 @@
           "id": "juana",
           "text": "dlg.capitana.opt.juana",
           "once": true,
-          "next": "juana"
+          "next": "juana",
+          "if": {
+            "flag": "juana_explica",
+            "is": false
+          }
         },
         {
           "id": "gasoil",

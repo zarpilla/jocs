@@ -144,6 +144,28 @@
           "if": {
             "all": [
               {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.escotilla.18"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cisalla",
+          "if": {
+            "all": [
+              {
                 "var": "escena",
                 "op": "==",
                 "value": 6
@@ -200,7 +222,7 @@
               "text": "sala.coberta_proa.escotilla.10"
             },
             {
-              "who": "vet",
+              "who": "player",
               "text": "sala.coberta_proa.escotilla.11"
             },
             {
@@ -214,6 +236,16 @@
             {
               "who": "player",
               "text": "sala.coberta_proa.escotilla.14"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.coberta_proa.escotilla.17",
+              "if": {
+                "not": {
+                  "inRoom": "coberta_proa",
+                  "who": "vet"
+                }
+              }
             }
           ],
           "effects": [

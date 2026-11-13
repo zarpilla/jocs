@@ -136,6 +136,17 @@ describe('missions, objectes condicionals, pistes i finals', () => {
     expect(n.resolveEnding()).toBe('sol');
   });
 
+  it('un objectiu amb showWhen no surt fins que es compleix (o fins que és fet)', () => {
+    const c = structuredClone(content);
+    c.quests.esquer!.objectives[1]!.showWhen = { flag: 'sap_donar' };
+    const { p, n } = setup(c);
+    p.talk('pescador', 'far');
+    const ids = () => n.quests()[0]!.objectives.map((o) => o.id);
+    expect(ids()).toEqual(['trobar']);
+    n.apply({ setFlag: 'sap_donar' });
+    expect(ids()).toEqual(['trobar', 'donar']);
+  });
+
   it('un final forçat per efecte té prioritat', () => {
     const { n } = setup();
     n.apply({ ending: 'fugida' });

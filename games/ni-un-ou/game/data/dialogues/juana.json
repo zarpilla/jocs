@@ -164,6 +164,18 @@
         },
         {
           "who": "juana",
+          "text": "dlg.juana.valvula.17"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.juana.valvula.18"
+        },
+        {
+          "who": "juana",
+          "text": "dlg.juana.valvula.19"
+        },
+        {
+          "who": "juana",
           "text": "dlg.juana.valvula.7"
         },
         {
@@ -351,11 +363,33 @@
         },
         {
           "who": "vet",
-          "text": "dlg.juana.mostra.4"
+          "text": "dlg.juana.mostra.4",
+          "if": {
+            "flag": "marcel_secret"
+          }
         },
         {
           "who": "iri",
-          "text": "dlg.juana.mostra.5"
+          "text": "dlg.juana.mostra.5",
+          "if": {
+            "flag": "marcel_secret"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.juana.mostra.27",
+          "if": {
+            "flag": "marcel_secret",
+            "is": false
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.juana.mostra.28",
+          "if": {
+            "flag": "marcel_secret",
+            "is": false
+          }
         },
         {
           "who": "vet",
@@ -419,7 +453,20 @@
         },
         {
           "who": "iri",
-          "text": "dlg.juana.mostra.26"
+          "text": "dlg.juana.mostra.26",
+          "if": {
+            "hasItem": "usb",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.juana.mostra.29",
+          "if": {
+            "hasItem": "usb",
+            "who": "iri",
+            "is": false
+          }
         }
       ],
       "effects": [

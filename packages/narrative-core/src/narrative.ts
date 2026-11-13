@@ -344,12 +344,14 @@ export class Narrative {
           status: qs.status,
           title: this.t(def.title),
           description: def.description ? this.t(def.description) : undefined,
-          objectives: def.objectives.map((o) => ({
-            id: o.id,
-            text: this.t(o.text),
-            done: qs.objectives[o.id] === true,
-            optional: o.optional === true,
-          })),
+          objectives: def.objectives
+            .filter((o) => !o.showWhen || qs.objectives[o.id] === true || this.check(o.showWhen))
+            .map((o) => ({
+              id: o.id,
+              text: this.t(o.text),
+              done: qs.objectives[o.id] === true,
+              optional: o.optional === true,
+            })),
         };
       })
       .filter((q) => !filter?.status || filter.status.includes(q.status));

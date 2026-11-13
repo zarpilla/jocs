@@ -118,7 +118,8 @@ async function main() {
   console.log(`${c.bold}${n.t(content.manifest.title)}${c.off} — mode text`);
   help();
   let acabat = false;
-  n.on((e) => { if (e.type === 'custom' && e.name === 'final') acabat = true; });
+  // Com a l'adaptador de Benne: un `{ "event": "final" }` o un efecte `{ "ending": ... }` acaben el joc.
+  n.on((e) => { if (e.type === 'ending' || (e.type === 'custom' && e.name === 'final')) acabat = true; });
   // El pròleg: les sales de cinemàtica, l'una darrere l'altra (amb el `goTo` de cada una).
   for (let r = content.manifest.intro; r && content.rooms[r]?.cutscene;) {
     const res = n.enterRoom(r);
@@ -186,10 +187,12 @@ async function main() {
         lines = p.do(verb, thing ? thing : { kind: 'item', id: item! });
       }
       print(lines);
-      if (p.pendingDialogue) {
+      // Un diàleg pot acabar canviant de sala, i la sala nova pot obrir-ne un altre.
+      while (p.pendingDialogue) {
         const d = p.pendingDialogue;
         p.pendingDialogue = null;
         await runDialogue(d);
+        print(p.afterDialogue());
       }
       if (acabat) {
         const id = n.resolveEnding();

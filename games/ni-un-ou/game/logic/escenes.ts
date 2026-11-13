@@ -25,7 +25,7 @@ export const TRANSICIONS: Transicio[] = [
     when: {
       all: [
         escena(2), { flag: 'juana_explica' }, { flag: 'revisio_capitana' },
-        { var: 'revisions', op: '>=', value: 3 }, { var: 'pacient', op: '==', value: '' },
+        { var: 'revisions', op: '>=', value: 4 }, { var: 'pacient', op: '==', value: '' },
       ],
     },
     linies: [

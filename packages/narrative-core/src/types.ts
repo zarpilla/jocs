@@ -349,6 +349,11 @@ export interface QuestObjectiveDef {
   /** Es marca sol quan es compleix (es revisa després de cada canvi d'estat). */
   completeWhen?: Condition;
   optional?: boolean;
+  /**
+   * Només surt a la llista quan es compleix (o quan ja és fet). Sense, surt sempre. Per no anunciar coses que
+   * les protagonistes encara no saben (p. ex. «Trobar la Juana» abans que la Juana falti).
+   */
+  showWhen?: Condition;
 }
 
 export interface QuestDef {

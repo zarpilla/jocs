@@ -28,9 +28,12 @@
             {
               "var": "revisions",
               "op": ">=",
-              "value": 3
+              "value": 4
             }
           ]
+        },
+        "showWhen": {
+          "flag": "esmorzar_fet"
         }
       },
       {
@@ -38,6 +41,9 @@
         "text": "mis.acte1.obj.juana",
         "completeWhen": {
           "flag": "juana_explica"
+        },
+        "showWhen": {
+          "flag": "esmorzar_fet"
         }
       },
       {
@@ -45,6 +51,11 @@
         "text": "mis.acte1.obj.radio",
         "completeWhen": {
           "flag": "radio_feta"
+        },
+        "showWhen": {
+          "var": "escena",
+          "op": ">=",
+          "value": 3
         }
       }
     ]
@@ -71,6 +82,9 @@
         "text": "mis.acte2.obj.escolta",
         "completeWhen": {
           "flag": "nadia_decidida"
+        },
+        "showWhen": {
+          "flag": "portatil_robat"
         }
       },
       {
@@ -85,6 +99,9 @@
         "text": "mis.acte2.obj.mostra",
         "completeWhen": {
           "flag": "mostra_trobada"
+        },
+        "showWhen": {
+          "flag": "portatil_obert"
         }
       }
     ]

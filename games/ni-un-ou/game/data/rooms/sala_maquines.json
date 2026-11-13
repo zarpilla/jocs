@@ -378,6 +378,36 @@
         },
         {
           "verb": [
+            "close",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "valvula_tancada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.valvula.12"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "if": {
+            "flag": "valvula_tancada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.valvula.14"
+            }
+          ]
+        },
+        {
+          "verb": [
             "use",
             "push",
             "pull",

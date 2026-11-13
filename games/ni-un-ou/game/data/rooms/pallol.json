@@ -169,9 +169,18 @@
     },
     "marcel": {
       "visibleIf": {
-        "var": "escena",
-        "op": "==",
-        "value": 6
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 6
+          },
+          {
+            "var": "escena",
+            "op": "<=",
+            "value": 7
+          }
+        ]
       },
       "interactions": [
         {
@@ -203,9 +212,18 @@
     },
     "diu": {
       "visibleIf": {
-        "var": "escena",
-        "op": "==",
-        "value": 6
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 6
+          },
+          {
+            "var": "escena",
+            "op": "<=",
+            "value": 7
+          }
+        ]
       },
       "interactions": []
     }

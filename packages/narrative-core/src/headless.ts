@@ -118,6 +118,14 @@ export class HeadlessPlayer {
     return lines;
   }
 
+  /**
+   * Amb `deferDialogues`, qui condueix el diàleg el crida quan s'acaba: fa el canvi de protagonista o de sala que
+   * hagin demanat els efectes del diàleg.
+   */
+  afterDialogue(): ResolvedLine[] {
+    return this.followUp();
+  }
+
   /** El canvi de protagonista o de sala que han demanat els efectes (`protagonista`, `anar`), si n'hi ha. */
   private followUp(goTo?: Id): ResolvedLine[] {
     const who = this.pendingSwitch;

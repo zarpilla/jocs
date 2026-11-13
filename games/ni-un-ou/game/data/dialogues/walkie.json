@@ -501,6 +501,13 @@
         },
         {
           "who": "iri",
+          "text": "dlg.walkie.esc2.4",
+          "if": {
+            "flag": "juana_explica"
+          }
+        },
+        {
+          "who": "iri",
           "text": "dlg.walkie.esc2.2",
           "if": {
             "not": {
@@ -511,7 +518,7 @@
                 {
                   "var": "revisions",
                   "op": ">=",
-                  "value": 3
+                  "value": 4
                 }
               ]
             }
@@ -531,7 +538,7 @@
                     {
                       "var": "revisions",
                       "op": ">=",
-                      "value": 3
+                      "value": 4
                     }
                   ]
                 }
@@ -557,7 +564,7 @@
                     {
                       "var": "revisions",
                       "op": ">=",
-                      "value": 3
+                      "value": 4
                     }
                   ]
                 }
@@ -581,7 +588,7 @@
                   {
                     "var": "revisions",
                     "op": ">=",
-                    "value": 3
+                    "value": 4
                   }
                 ]
               },
@@ -605,7 +612,7 @@
                   {
                     "var": "revisions",
                     "op": ">=",
-                    "value": 3
+                    "value": 4
                   }
                 ]
               },
@@ -633,13 +640,6 @@
                 "is": false
               }
             ]
-          }
-        },
-        {
-          "who": "iri",
-          "text": "dlg.walkie.esc2.4",
-          "if": {
-            "flag": "juana_explica"
           }
         }
       ]

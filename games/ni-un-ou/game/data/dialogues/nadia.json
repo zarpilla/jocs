@@ -107,7 +107,11 @@
           "id": "juana",
           "text": "dlg.nadia.opt.juana",
           "once": true,
-          "next": "juana"
+          "next": "juana",
+          "if": {
+            "flag": "juana_explica",
+            "is": false
+          }
         },
         {
           "id": "mareig",
