@@ -1,0 +1,178 @@
+{
+  "$comment": "Identificadors nostres → identificadors de Benne, només quan no coincideixen.",
+  "characters": {},
+  "items": {},
+  "rooms": {},
+  "hotspots": {},
+  "music": {
+    "$comment": "Música d'ambient de cada sala: sala → pista (game/audio/music/<pista>.ogg, `npm run musica`).",
+    "portada": "tema",
+    "proleg_palau": "tema",
+    "granja_pati": "terra2",
+    "granja_casa": "terra2",
+    "granja_graner": "terra2",
+    "port_terra2": "terra2",
+    "cantimplora_pont": "nau",
+    "cantimplora_bodega": "nau",
+    "aqua_port": "aqua",
+    "aqua_fons": "aqua",
+    "casa_juana": "aqua",
+    "ferrum_carrer": "ferrum",
+    "ferrum_sindicat": "ferrum",
+    "fosa_forn": "ferrum",
+    "fosa_colada": "ferrum",
+    "verdant_jardi": "verdant",
+    "verdant_cobert": "verdant",
+    "verdant_residencia": "verdant",
+    "palau_galeria": "palau",
+    "palau_salo": "palau",
+    "palau_servei": "palau",
+    "palau_control": "palau",
+    "final_palau": "final",
+    "final_pluja": "final",
+    "credits": "final",
+    "postcredits": "final"
+  },
+  "ambient": {
+    "$comment": "So de fons en bucle de cada sala (game/audio/sfx/amb_*.ogg, `npm run sons`).",
+    "granja_pati": [
+      {
+        "sound": "amb_vent",
+        "volume": 1
+      }
+    ],
+    "port_terra2": [
+      {
+        "sound": "amb_vent",
+        "volume": 1
+      }
+    ],
+    "granja_casa": [
+      {
+        "sound": "amb_vent",
+        "volume": 0.5
+      }
+    ],
+    "granja_graner": [
+      {
+        "sound": "amb_vent",
+        "volume": 0.5
+      }
+    ],
+    "cantimplora_pont": [
+      {
+        "sound": "amb_nau",
+        "volume": 1
+      }
+    ],
+    "cantimplora_bodega": [
+      {
+        "sound": "amb_nau",
+        "volume": 1
+      }
+    ],
+    "aqua_port": [
+      {
+        "sound": "amb_aqua",
+        "volume": 1
+      }
+    ],
+    "aqua_fons": [
+      {
+        "sound": "amb_aqua",
+        "volume": 1
+      }
+    ],
+    "casa_juana": [
+      {
+        "sound": "amb_aqua",
+        "volume": 0.4
+      }
+    ],
+    "ferrum_carrer": [
+      {
+        "sound": "amb_ferrum",
+        "volume": 1
+      }
+    ],
+    "ferrum_sindicat": [
+      {
+        "sound": "amb_ferrum",
+        "volume": 0.4
+      }
+    ],
+    "fosa_forn": [
+      {
+        "sound": "amb_fosa",
+        "volume": 1
+      }
+    ],
+    "fosa_colada": [
+      {
+        "sound": "amb_fosa",
+        "volume": 1
+      }
+    ],
+    "verdant_jardi": [
+      {
+        "sound": "amb_verdant",
+        "volume": 1
+      }
+    ],
+    "palau_galeria": [
+      {
+        "sound": "amb_palau",
+        "volume": 1
+      }
+    ],
+    "palau_servei": [
+      {
+        "sound": "amb_palau",
+        "volume": 1
+      }
+    ],
+    "palau_control": [
+      {
+        "sound": "amb_palau",
+        "volume": 1
+      }
+    ],
+    "palau_salo": [
+      {
+        "sound": "amb_subhasta",
+        "volume": 1
+      }
+    ],
+    "final_pluja": [
+      {
+        "sound": "amb_pluja",
+        "volume": 1
+      }
+    ]
+  },
+  "fosc": [],
+  "doors": {
+    "$comment": "So de cada sortida (`sala.cosa`): sona en arribar a la sala nova.",
+    "granja_pati.porta_casa": "porta",
+    "granja_pati.porta_graner": "porta",
+    "granja_casa.porta": "porta",
+    "granja_graner.porta": "porta",
+    "ferrum_sindicat.porta": "porta",
+    "ferrum_carrer.porta_sindicat": "porta",
+    "verdant_cobert.porta": "porta",
+    "verdant_jardi.porta_cobert": "porta",
+    "verdant_residencia.porta": "porta",
+    "verdant_jardi.porta_residencia": "porta",
+    "aqua_fons.porta_juana": "porta",
+    "casa_juana.porta": "porta",
+    "port_terra2.rampa": "rampa",
+    "aqua_port.rampa": "rampa",
+    "ferrum_carrer.rampa": "rampa",
+    "verdant_jardi.rampa": "rampa",
+    "cantimplora_bodega.rampa": "rampa",
+    "cantimplora_bodega.escala": "porta_metall",
+    "cantimplora_pont.escala": "porta_metall",
+    "ferrum_carrer.porta_fosa": "porta_metall",
+    "fosa_forn.porta": "porta_metall"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "trucada",
+  "with": "verne",
+  "start": "inici",
+  "nodes": {
+    "inici": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.trucada.inici.1"
+        },
+        {
+          "who": "verne",
+          "text": "dlg.trucada.inici.2"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.inici.3"
+        },
+        {
+          "who": "verne",
+          "text": "dlg.trucada.inici.4"
+        },
+        {
+          "who": "verne",
+          "text": "dlg.trucada.inici.5"
+        },
+        {
+          "who": "verne",
+          "text": "dlg.trucada.inici.6"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.trucada.inici.7"
+        }
+      ],
+      "choices": [
+        {
+          "id": "si",
+          "text": "dlg.trucada.opt.si",
+          "next": "si"
+        },
+        {
+          "id": "no",
+          "text": "dlg.trucada.opt.no",
+          "next": "no"
+        },
+        {
+          "id": "pou",
+          "text": "dlg.trucada.opt.pou",
+          "next": "no"
+        }
+      ]
+    },
+    "si": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.trucada.si.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.trucada.si.2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.trucada.si.3"
+        }
+      ],
+      "goto": "no"
+    },
+    "no": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.trucada.no.1"
+        },
+        {
+          "who": "verne",
+          "text": "dlg.trucada.no.2",
+          "effects": [
+            {
+              "setVar": "preu_aigua",
+              "value": 97
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.trucada.no.3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.trucada.no.4",
+          "sound": "videotelefon"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.trucada.no.5"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.trucada.no.6"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.no.7"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.trucada.no.8"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.trucada.no.9"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.no.10"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.trucada.no.11"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.trucada.no.12"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "trucada_feta"
+        },
+        {
+          "setFlag": "trucada_activa",
+          "value": false
+        },
+        {
+          "setFlag": "cal_espia"
+        },
+        {
+          "setFlag": "cal_gala"
+        }
+      ]
+    }
+  }
+}

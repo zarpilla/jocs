@@ -1,0 +1,41 @@
+{
+  "id": "subhasta",
+  "displayName": "subhasta",
+  "options": [
+    {
+      "id": "inici__oferta",
+      "scriptName": "inici__oferta",
+      "text": "(Pujar l'oferta) Dos milions!",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__contracte",
+      "scriptName": "inici__contracte",
+      "text": "Demano que es llegeixi el contracte del lot. Sencer.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__cava",
+      "scriptName": "inici__cava",
+      "text": "(Vessar el cava damunt del martell.)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__peixos",
+      "scriptName": "inici__peixos",
+      "text": "I els peixos, quin preu de sortida tenen?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__adeu",
+      "scriptName": "inici__adeu",
+      "text": "(Esperar.)",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

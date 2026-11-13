@@ -1,0 +1,30 @@
+{
+  "$schema": "../schemas/game.schema.json",
+  "id": "aiguaverne",
+  "title": "joc.titol",
+  "defaultLocale": "ca",
+  "locales": [
+    "ca"
+  ],
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "start": {
+    "iri": {
+      "room": "granja_pati",
+      "items": [
+        "comunicador"
+      ]
+    },
+    "vet": {
+      "room": "granja_pati",
+      "items": [
+        "comunicador",
+        "punta_flor"
+      ]
+    }
+  },
+  "cover": "portada",
+  "intro": "proleg_palau"
+}

@@ -1,0 +1,303 @@
+{
+  "id": "fosa_colada",
+  "name": "Fosa: la colada",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 214
+          },
+          {
+            "x": 310,
+            "y": 212
+          },
+          {
+            "x": 300,
+            "y": 244
+          },
+          {
+            "x": 492,
+            "y": 244
+          },
+          {
+            "x": 488,
+            "y": 236
+          },
+          {
+            "x": 640,
+            "y": 238
+          },
+          {
+            "x": 640,
+            "y": 257
+          },
+          {
+            "x": 0,
+            "y": 257
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "pas",
+      "active": true,
+      "description": "forn",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 58
+        },
+        {
+          "x": 78,
+          "y": 58
+        },
+        {
+          "x": 78,
+          "y": 206
+        },
+        {
+          "x": 0,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 40,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 39,
+        "y": 206
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "gresol",
+      "active": true,
+      "description": "gresol",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 330,
+          "y": 96
+        },
+        {
+          "x": 406,
+          "y": 96
+        },
+        {
+          "x": 406,
+          "y": 168
+        },
+        {
+          "x": 330,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 360,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 368,
+        "y": 168
+      }
+    },
+    {
+      "id": "grua_pont",
+      "active": true,
+      "description": "comandaments de la grua",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 214,
+          "y": 40
+        },
+        {
+          "x": 240,
+          "y": 40
+        },
+        {
+          "x": 240,
+          "y": 180
+        },
+        {
+          "x": 214,
+          "y": 180
+        }
+      ],
+      "walkToPoint": {
+        "x": 228,
+        "y": 228
+      },
+      "lookAtPoint": {
+        "x": 227,
+        "y": 180
+      }
+    },
+    {
+      "id": "llit",
+      "active": true,
+      "description": "llit de colada",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 314,
+          "y": 204
+        },
+        {
+          "x": 482,
+          "y": 204
+        },
+        {
+          "x": 482,
+          "y": 240
+        },
+        {
+          "x": 314,
+          "y": 240
+        }
+      ],
+      "walkToPoint": {
+        "x": 300,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 398,
+        "y": 240
+      }
+    },
+    {
+      "id": "sorra_pedra",
+      "active": true,
+      "description": "sacs de sorra",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 484,
+          "y": 162
+        },
+        {
+          "x": 640,
+          "y": 162
+        },
+        {
+          "x": 640,
+          "y": 236
+        },
+        {
+          "x": 484,
+          "y": 236
+        }
+      ],
+      "walkToPoint": {
+        "x": 500,
+        "y": 246
+      },
+      "lookAtPoint": {
+        "x": 562,
+        "y": 236
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "motlle_preparat",
+      "tag": "motlle_preparat",
+      "animations": {
+        "motlle_preparat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "gresol_ple",
+      "tag": "gresol_ple",
+      "animations": {
+        "gresol_ple": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "claus_fetes",
+      "tag": "claus_fetes",
+      "animations": {
+        "claus_fetes": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "fum_gresol",
+      "tag": "fum_gresol",
+      "animations": {
+        "fum_gresol": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 250,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 150,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

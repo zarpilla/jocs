@@ -1,0 +1,429 @@
+{
+  "$schema": "../schemas/items.schema.json",
+  "comunicador": {
+    "name": "obj.comunicador.nom",
+    "description": "obj.comunicador.desc",
+    "props": {
+      "no_mosca": "obj.comunicador.no"
+    },
+    "interactions": [
+      {
+        "verb": [
+          "use",
+          "talkTo"
+        ],
+        "dialogue": "comunicador"
+      }
+    ]
+  },
+  "mosca": {
+    "name": "obj.mosca.nom",
+    "description": "obj.mosca.desc",
+    "props": {
+      "no_mosca": "obj.mosca.no"
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "*",
+        "action": {
+          "name": "mosca.enviar",
+          "args": {
+            "item": "$item"
+          }
+        }
+      },
+      {
+        "verb": [
+          "use",
+          "talkTo"
+        ],
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.mosca.1"
+          }
+        ]
+      }
+    ]
+  },
+  "punta_flor": {
+    "name": "obj.punta_flor.nom",
+    "description": "obj.punta_flor.desc",
+    "props": {
+      "mosca": true
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "tornavis",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.punta_flor.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "punta_flor"
+          },
+          {
+            "takeItem": "tornavis"
+          },
+          {
+            "giveItem": "tornavis_flor"
+          }
+        ]
+      }
+    ]
+  },
+  "tornavis": {
+    "name": "obj.tornavis.nom",
+    "description": "obj.tornavis.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "tornavis_flor": {
+    "name": "obj.tornavis_flor.nom",
+    "description": "obj.tornavis_flor.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "escriptura": {
+    "name": "obj.escriptura.nom",
+    "description": "obj.escriptura.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "contracte_7788": {
+    "name": "obj.contracte_7788.nom",
+    "description": "obj.contracte_7788.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "sacs_llavors": {
+    "name": "obj.sacs_llavors.nom",
+    "description": "obj.sacs_llavors.desc",
+    "props": {
+      "no_mosca": "obj.sacs_llavors.no"
+    }
+  },
+  "sac_llavors": {
+    "name": "obj.sac_llavors.nom",
+    "description": "obj.sac_llavors.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "albara": {
+    "name": "obj.albara.nom",
+    "description": "obj.albara.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "oli": {
+    "name": "obj.oli.nom",
+    "description": "obj.oli.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "clau_anglesa": {
+    "name": "obj.clau_anglesa.nom",
+    "description": "obj.clau_anglesa.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "injector": {
+    "name": "obj.injector.nom",
+    "description": "obj.injector.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "fusible": {
+    "name": "obj.fusible.nom",
+    "description": "obj.fusible.desc",
+    "props": {
+      "mosca": true
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "paper_plata",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.fusible.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "fusible"
+          },
+          {
+            "takeItem": "paper_plata"
+          },
+          {
+            "giveItem": "fusible_apanyat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "paper_plata",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.fusible.2"
+          }
+        ]
+      }
+    ]
+  },
+  "paper_plata": {
+    "name": "obj.paper_plata.nom",
+    "description": "obj.paper_plata.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "fusible_apanyat": {
+    "name": "obj.fusible_apanyat.nom",
+    "description": "obj.fusible_apanyat.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "carta_juana": {
+    "name": "obj.carta_juana.nom",
+    "description": "obj.carta_juana.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "nota_lia": {
+    "name": "obj.nota_lia.nom",
+    "description": "obj.nota_lia.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "motlle": {
+    "name": "obj.motlle.nom",
+    "description": "obj.motlle.desc",
+    "props": {
+      "no_mosca": "obj.motlle.no"
+    }
+  },
+  "sorra": {
+    "name": "obj.sorra.nom",
+    "description": "obj.sorra.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "claus": {
+    "name": "obj.claus.nom",
+    "description": "obj.claus.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "corretja": {
+    "name": "obj.corretja.nom",
+    "description": "obj.corretja.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "filtre": {
+    "name": "obj.filtre.nom",
+    "description": "obj.filtre.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "reg": {
+    "name": "obj.reg.nom",
+    "description": "obj.reg.desc",
+    "props": {
+      "mosca": true
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "agulla",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.reg.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "reg"
+          },
+          {
+            "giveItem": "reg_foradat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "agulla",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.reg.2"
+          }
+        ]
+      }
+    ]
+  },
+  "reg_foradat": {
+    "name": "obj.reg_foradat.nom",
+    "description": "obj.reg_foradat.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "agulla": {
+    "name": "obj.agulla.nom",
+    "description": "obj.agulla.desc",
+    "props": {
+      "mosca": true
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "vestit",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.agulla.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "vestit"
+          },
+          {
+            "giveItem": "vestit_arreglat"
+          }
+        ]
+      },
+      {
+        "verb": "use",
+        "item": "vestit",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.agulla.2"
+          }
+        ]
+      }
+    ]
+  },
+  "galleda": {
+    "name": "obj.galleda.nom",
+    "description": "obj.galleda.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "galleda_plena": {
+    "name": "obj.galleda_plena.nom",
+    "description": "obj.galleda_plena.desc",
+    "props": {
+      "no_mosca": "obj.galleda_plena.no"
+    }
+  },
+  "carta_banc": {
+    "name": "obj.carta_banc.nom",
+    "description": "obj.carta_banc.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "invitacio": {
+    "name": "obj.invitacio.nom",
+    "description": "obj.invitacio.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "contracte_capitana": {
+    "name": "obj.contracte_capitana.nom",
+    "description": "obj.contracte_capitana.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "pernil": {
+    "name": "obj.pernil.nom",
+    "description": "obj.pernil.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "vestit": {
+    "name": "obj.vestit.nom",
+    "description": "obj.vestit.desc",
+    "props": {
+      "mosca": true
+    },
+    "interactions": [
+      {
+        "verb": "use",
+        "item": "agulla",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.vestit.1"
+          }
+        ],
+        "effects": [
+          {
+            "takeItem": "vestit"
+          },
+          {
+            "giveItem": "vestit_arreglat"
+          }
+        ]
+      }
+    ]
+  },
+  "vestit_arreglat": {
+    "name": "obj.vestit_arreglat.nom",
+    "description": "obj.vestit_arreglat.desc",
+    "props": {
+      "mosca": true
+    }
+  },
+  "targeta": {
+    "name": "obj.targeta.nom",
+    "description": "obj.targeta.desc",
+    "props": {
+      "mosca": true
+    }
+  }
+}

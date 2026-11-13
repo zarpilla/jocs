@@ -1,0 +1,754 @@
+{
+  "frames": {
+    "ferrum_carrer 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 1.aseprite": {
+      "frame": {
+        "x": 844,
+        "y": 0,
+        "w": 40,
+        "h": 35
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 312,
+        "y": 200,
+        "w": 40,
+        "h": 35
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 2.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 60,
+        "h": 75
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 573,
+        "y": 158,
+        "w": 60,
+        "h": 75
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 3.aseprite": {
+      "frame": {
+        "x": 825,
+        "y": 0,
+        "w": 19,
+        "h": 42
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 159,
+        "w": 19,
+        "h": 42
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 4.aseprite": {
+      "frame": {
+        "x": 774,
+        "y": 0,
+        "w": 17,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 155,
+        "w": 17,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 5.aseprite": {
+      "frame": {
+        "x": 721,
+        "y": 0,
+        "w": 17,
+        "h": 51
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 150,
+        "w": 17,
+        "h": 51
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 6.aseprite": {
+      "frame": {
+        "x": 808,
+        "y": 0,
+        "w": 17,
+        "h": 44
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 157,
+        "w": 17,
+        "h": 44
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 7.aseprite": {
+      "frame": {
+        "x": 755,
+        "y": 0,
+        "w": 19,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 153,
+        "w": 19,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 8.aseprite": {
+      "frame": {
+        "x": 700,
+        "y": 0,
+        "w": 21,
+        "h": 52
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 149,
+        "w": 21,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 9.aseprite": {
+      "frame": {
+        "x": 791,
+        "y": 0,
+        "w": 17,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 156,
+        "w": 17,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 10.aseprite": {
+      "frame": {
+        "x": 738,
+        "y": 0,
+        "w": 17,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 152,
+        "w": 17,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 11.aseprite": {
+      "frame": {
+        "x": 884,
+        "y": 0,
+        "w": 135,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 135,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 12.aseprite": {
+      "frame": {
+        "x": 2105,
+        "y": 0,
+        "w": 135,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 30,
+        "w": 135,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 13.aseprite": {
+      "frame": {
+        "x": 1019,
+        "y": 0,
+        "w": 137,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 137,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 14.aseprite": {
+      "frame": {
+        "x": 1156,
+        "y": 0,
+        "w": 137,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 137,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 15.aseprite": {
+      "frame": {
+        "x": 1293,
+        "y": 0,
+        "w": 135,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 135,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 16.aseprite": {
+      "frame": {
+        "x": 1428,
+        "y": 0,
+        "w": 135,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 135,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 17.aseprite": {
+      "frame": {
+        "x": 1563,
+        "y": 0,
+        "w": 135,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 135,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 18.aseprite": {
+      "frame": {
+        "x": 2377,
+        "y": 0,
+        "w": 137,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 32,
+        "w": 137,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 19.aseprite": {
+      "frame": {
+        "x": 2240,
+        "y": 0,
+        "w": 137,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 30,
+        "w": 137,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 20.aseprite": {
+      "frame": {
+        "x": 1698,
+        "y": 0,
+        "w": 137,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 137,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 21.aseprite": {
+      "frame": {
+        "x": 1835,
+        "y": 0,
+        "w": 135,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 135,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 22.aseprite": {
+      "frame": {
+        "x": 1970,
+        "y": 0,
+        "w": 135,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 314,
+        "y": 28,
+        "w": 135,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 23.aseprite": {
+      "frame": {
+        "x": 2516,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 584,
+        "y": 221,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 24.aseprite": {
+      "frame": {
+        "x": 2516,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 584,
+        "y": 221,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 25.aseprite": {
+      "frame": {
+        "x": 2516,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 584,
+        "y": 221,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 26.aseprite": {
+      "frame": {
+        "x": 2514,
+        "y": 0,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 584,
+        "y": 221,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 27.aseprite": {
+      "frame": {
+        "x": 2514,
+        "y": 0,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 584,
+        "y": 221,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 28.aseprite": {
+      "frame": {
+        "x": 2515,
+        "y": 0,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 584,
+        "y": 223,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 29.aseprite": {
+      "frame": {
+        "x": 2517,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 30.aseprite": {
+      "frame": {
+        "x": 2517,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 31.aseprite": {
+      "frame": {
+        "x": 2518,
+        "y": 0,
+        "w": 5,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 582,
+        "y": 230,
+        "w": 5,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_carrer 32.aseprite": {
+      "frame": {
+        "x": 2523,
+        "y": 0,
+        "w": 7,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 581,
+        "y": 230,
+        "w": 7,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "ferrum_carrer.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2530,
+      "h": 360
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "barril_piquet",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "condensador_arreglat",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "foc",
+        "from": 3,
+        "to": 10,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "fum",
+        "from": 11,
+        "to": 22,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "goteig",
+        "from": 23,
+        "to": 32,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

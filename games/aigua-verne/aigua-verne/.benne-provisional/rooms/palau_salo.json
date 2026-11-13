@@ -1,0 +1,69 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "Saló de la subhasta",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "porta_galeria",
+      "label": "galeria",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "escenari",
+      "label": "escenari",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "pantalla",
+      "label": "pantalla",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 188,
+      "y": 25
+    },
+    {
+      "id": "safata",
+      "label": "safata de les copes",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 280,
+      "y": 76
+    },
+    {
+      "id": "cava",
+      "label": "cava",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 372,
+      "y": 25
+    },
+    {
+      "id": "martell",
+      "label": "martell",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 463,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Magnat Verne",
+    "Holm",
+    "Kessel"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "Port de Terra-2",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "cami_granja",
+      "label": "camí de la granja",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "rampa",
+      "label": "Cantimplora",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 567,
+      "y": 95
+    },
+    {
+      "id": "tauler",
+      "label": "tauler d'anuncis",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 118,
+      "y": 76
+    },
+    {
+      "id": "panell_preu",
+      "label": "panell del preu",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 25
+    },
+    {
+      "id": "canonada",
+      "label": "Canonada",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 424,
+      "y": 76
+    }
+  ],
+  "characters": []
+}

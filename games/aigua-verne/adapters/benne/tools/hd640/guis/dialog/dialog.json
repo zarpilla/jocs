@@ -1,0 +1,152 @@
+{
+ "frames": {
+  "dialog 0.aseprite": {
+   "frame": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 360
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 379
+   },
+   "duration": 100
+  },
+  "dialog 1.aseprite": {
+   "frame": {
+    "x": 640,
+    "y": 0,
+    "w": 640,
+    "h": 145
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 233,
+    "w": 640,
+    "h": 145
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "dialog 2.aseprite": {
+   "frame": {
+    "x": 1280,
+    "y": 0,
+    "w": 29,
+    "h": 59
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 261,
+    "w": 29,
+    "h": 59
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "dialog 3.aseprite": {
+   "frame": {
+    "x": 1309,
+    "y": 0,
+    "w": 29,
+    "h": 59
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 291,
+    "w": 29,
+    "h": 59
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  },
+  "dialog 4.aseprite": {
+   "frame": {
+    "x": 1338,
+    "y": 0,
+    "w": 59,
+    "h": 29
+   },
+   "rotated": false,
+   "trimmed": true,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 261,
+    "w": 59,
+    "h": 29
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 360
+   },
+   "duration": 100
+  }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "hd640/gui_rest.py",
+  "image": "dialog.png",
+  "format": "RGBA8888",
+  "size": {
+   "w": 1397,
+   "h": 360
+  },
+  "scale": "1",
+  "frameTags": [
+   {
+    "name": "VerbsBG",
+    "from": 1,
+    "to": 1,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "UpBtn",
+    "from": 2,
+    "to": 2,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "DownBtn",
+    "from": 3,
+    "to": 3,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "Bullet",
+    "from": 4,
+    "to": 4,
+    "direction": "forward",
+    "color": "#000000ff"
+   }
+  ],
+  "layers": [],
+  "slices": []
+ }
+}

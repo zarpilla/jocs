@@ -1,0 +1,299 @@
+{
+  "id": "ferrum_sindicat",
+  "name": "Sindicat de Ferrum",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 8,
+            "y": 230
+          },
+          {
+            "x": 112,
+            "y": 230
+          },
+          {
+            "x": 112,
+            "y": 246
+          },
+          {
+            "x": 370,
+            "y": 246
+          },
+          {
+            "x": 370,
+            "y": 236
+          },
+          {
+            "x": 480,
+            "y": 236
+          },
+          {
+            "x": 480,
+            "y": 230
+          },
+          {
+            "x": 632,
+            "y": 230
+          },
+          {
+            "x": 636,
+            "y": 257
+          },
+          {
+            "x": 4,
+            "y": 257
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "carrer",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 20,
+          "y": 82
+        },
+        {
+          "x": 92,
+          "y": 82
+        },
+        {
+          "x": 92,
+          "y": 214
+        },
+        {
+          "x": 20,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 56,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 56,
+        "y": 214
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "bagul",
+      "active": true,
+      "description": "bagul",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 372,
+          "y": 146
+        },
+        {
+          "x": 474,
+          "y": 146
+        },
+        {
+          "x": 474,
+          "y": 230
+        },
+        {
+          "x": 372,
+          "y": 230
+        }
+      ],
+      "walkToPoint": {
+        "x": 424,
+        "y": 244
+      },
+      "lookAtPoint": {
+        "x": 423,
+        "y": 230
+      }
+    },
+    {
+      "id": "pissarra",
+      "active": true,
+      "description": "pissarra",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 248,
+          "y": 36
+        },
+        {
+          "x": 358,
+          "y": 36
+        },
+        {
+          "x": 358,
+          "y": 124
+        },
+        {
+          "x": 248,
+          "y": 124
+        }
+      ],
+      "walkToPoint": {
+        "x": 302,
+        "y": 250
+      },
+      "lookAtPoint": {
+        "x": 303,
+        "y": 124
+      }
+    },
+    {
+      "id": "motlles",
+      "active": true,
+      "description": "motlles",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 474,
+          "y": 34
+        },
+        {
+          "x": 570,
+          "y": 34
+        },
+        {
+          "x": 570,
+          "y": 216
+        },
+        {
+          "x": 474,
+          "y": 216
+        }
+      ],
+      "walkToPoint": {
+        "x": 522,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 522,
+        "y": 216
+      }
+    },
+    {
+      "id": "cartells",
+      "active": true,
+      "description": "cartells",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 120,
+          "y": 30
+        },
+        {
+          "x": 220,
+          "y": 30
+        },
+        {
+          "x": 220,
+          "y": 144
+        },
+        {
+          "x": 120,
+          "y": 144
+        }
+      ],
+      "walkToPoint": {
+        "x": 170,
+        "y": 250
+      },
+      "lookAtPoint": {
+        "x": 170,
+        "y": 144
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "vestit",
+      "tag": "vestit",
+      "animations": {
+        "vestit": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "estufa",
+      "tag": "estufa",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "estufa": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 256,
+      "y": 252,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 530,
+      "y": 250,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bru-1",
+      "definition": "bru/bru.character.json",
+      "x": 350,
+      "y": 238,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

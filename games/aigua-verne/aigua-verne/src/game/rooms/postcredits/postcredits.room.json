@@ -1,0 +1,116 @@
+{
+  "id": "postcredits",
+  "name": "Ferrum, la font",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 238
+          },
+          {
+            "x": 640,
+            "y": 238
+          },
+          {
+            "x": 640,
+            "y": 257
+          },
+          {
+            "x": 0,
+            "y": 257
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "aigua": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "fum",
+      "tag": "fum",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fum": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "verne-1",
+      "definition": "verne/verne.character.json",
+      "x": 522,
+      "y": 244,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "dividend-1",
+      "definition": "dividend/dividend.character.json",
+      "x": 320,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "rosa-1",
+      "definition": "rosa/rosa.character.json",
+      "x": 478,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

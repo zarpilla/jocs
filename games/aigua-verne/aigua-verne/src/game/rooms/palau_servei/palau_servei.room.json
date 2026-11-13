@@ -1,0 +1,232 @@
+{
+  "id": "palau_servei",
+  "name": "Passadissos de servei",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 6,
+            "y": 234
+          },
+          {
+            "x": 634,
+            "y": 234
+          },
+          {
+            "x": 634,
+            "y": 257
+          },
+          {
+            "x": 6,
+            "y": 257
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "ascensor",
+      "active": true,
+      "description": "ascensor de servei",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 86,
+          "y": 78
+        },
+        {
+          "x": 214,
+          "y": 78
+        },
+        {
+          "x": 214,
+          "y": 226
+        },
+        {
+          "x": 86,
+          "y": 226
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 150,
+        "y": 226
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "safates",
+      "active": true,
+      "description": "safates",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 258,
+          "y": 150
+        },
+        {
+          "x": 368,
+          "y": 150
+        },
+        {
+          "x": 368,
+          "y": 188
+        },
+        {
+          "x": 258,
+          "y": 188
+        }
+      ],
+      "walkToPoint": {
+        "x": 312,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 313,
+        "y": 188
+      }
+    },
+    {
+      "id": "carro",
+      "active": true,
+      "description": "carro de flors",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 414,
+          "y": 132
+        },
+        {
+          "x": 508,
+          "y": 132
+        },
+        {
+          "x": 508,
+          "y": 234
+        },
+        {
+          "x": 414,
+          "y": 234
+        }
+      ],
+      "walkToPoint": {
+        "x": 462,
+        "y": 246
+      },
+      "lookAtPoint": {
+        "x": 461,
+        "y": 234
+      }
+    },
+    {
+      "id": "canonades",
+      "active": true,
+      "description": "canonades",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 0,
+          "y": 26
+        },
+        {
+          "x": 639,
+          "y": 26
+        },
+        {
+          "x": 639,
+          "y": 64
+        },
+        {
+          "x": 0,
+          "y": 64
+        }
+      ],
+      "walkToPoint": {
+        "x": 330,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 319,
+        "y": 64
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "estrelles",
+      "tag": "estrelles",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "estrelles": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 250,
+      "y": 250,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "lia-1",
+      "definition": "lia/lia.character.json",
+      "x": 384,
+      "y": 244,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "nil-1",
+      "definition": "nil/nil.character.json",
+      "x": 524,
+      "y": 250,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "barril",
+  "with": "vet",
+  "start": "inici",
+  "nodes": {
+    "inici": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.barril.inici.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.barril.inici.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.barril.inici.3"
+        }
+      ],
+      "choices": [
+        {
+          "id": "cas",
+          "text": "dlg.barril.opt.cas",
+          "if": {
+            "protagonist": "iri"
+          },
+          "next": "iri"
+        },
+        {
+          "id": "mirar",
+          "text": "dlg.barril.opt.mirar",
+          "if": {
+            "protagonist": "vet"
+          },
+          "silent": true,
+          "next": "vet"
+        },
+        {
+          "id": "no",
+          "text": "dlg.barril.opt.no",
+          "end": true
+        }
+      ]
+    },
+    "iri": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.barril.iri.1"
+        }
+      ],
+      "goto": "baixar"
+    },
+    "vet": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.barril.vet.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.barril.vet.2"
+        }
+      ],
+      "goto": "baixar"
+    },
+    "baixar": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.barril.baixar.1"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "barril_donat"
+        },
+        {
+          "setFlag": "canalla_beu"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.verdant_cobert.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.verdant_cobert.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "verdant_jardi"
+        }
+      ]
+    },
+    "tomaquera": {
+      "name": "sala.verdant_cobert.tomaquera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tomaquera_regada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tomaquera_vista"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "reg",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cal_agulla"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "reg_foradat",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "reg_muntat"
+            },
+            {
+              "takeItem": "reg_foradat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "reg_foradat",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.7"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "galleda_plena",
+          "if": {
+            "flag": "reg_muntat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.8",
+              "sound": "regar"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.verdant_cobert.tomaquera.9"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tomaquera_regada"
+            },
+            {
+              "takeItem": "galleda_plena"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "galleda_plena",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.10"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cal_reg"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.11"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.tomaquera.12"
+            }
+          ]
+        }
+      ]
+    },
+    "galleda": {
+      "name": "sala.verdant_cobert.galleda.nom",
+      "visibleIf": {
+        "flag": "galleda_agafada",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.galleda.1"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.galleda.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "galleda_agafada"
+            },
+            {
+              "giveItem": "galleda"
+            }
+          ]
+        }
+      ]
+    },
+    "sacs": {
+      "name": "sala.verdant_cobert.sacs.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.sacs.1"
+            }
+          ]
+        }
+      ]
+    },
+    "eines": {
+      "name": "sala.verdant_cobert.eines.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_cobert.eines.1"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "reg_muntat": {
+      "visibleIf": {
+        "flag": "reg_muntat"
+      }
+    },
+    "tomaquera_viva": {
+      "visibleIf": {
+        "flag": "tomaquera_regada"
+      }
+    }
+  }
+}

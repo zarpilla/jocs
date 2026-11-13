@@ -1,0 +1,1719 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "comunicador",
+  "with": "vet",
+  "start": "inici",
+  "nodes": {
+    "inici": {
+      "choices": [
+        {
+          "id": "fem",
+          "text": "dlg.comunicador.opt.fem",
+          "next": "fem"
+        },
+        {
+          "id": "preu",
+          "text": "dlg.comunicador.opt.preu",
+          "next": "preu"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.comunicador.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "fem": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.1",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 1
+                  },
+                  {
+                    "flag": "caixa_oberta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.2",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 1
+                  },
+                  {
+                    "flag": "caixa_oberta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.3",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 1
+                  },
+                  {
+                    "flag": "bomba_llegida",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.4",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 1
+                  },
+                  {
+                    "flag": "bomba_llegida",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.5",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "cap_condicions",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.6",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "cap_condicions",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.7",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "cap_condicions"
+                  },
+                  {
+                    "not": {
+                      "hasItem": "albara"
+                    }
+                  },
+                  {
+                    "flag": "capitana_accepta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.8",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "cap_condicions"
+                  },
+                  {
+                    "not": {
+                      "hasItem": "albara"
+                    }
+                  },
+                  {
+                    "flag": "capitana_accepta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.9",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "juana_llavors"
+                  },
+                  {
+                    "flag": "sacs_carregats",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.10",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "juana_llavors"
+                  },
+                  {
+                    "flag": "sacs_carregats",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.11",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "sacs_carregats"
+                  },
+                  {
+                    "flag": "albara_fet",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.12",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "sacs_carregats"
+                  },
+                  {
+                    "flag": "albara_fet",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.13",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "cap_condicions"
+                  },
+                  {
+                    "flag": "injector_vist",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.14",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "cap_condicions"
+                  },
+                  {
+                    "flag": "injector_vist",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.15",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "injector_vist"
+                  },
+                  {
+                    "flag": "injector_posat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.16",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "injector_vist"
+                  },
+                  {
+                    "flag": "injector_posat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.17",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "hasItem": "albara"
+                  },
+                  {
+                    "flag": "injector_posat"
+                  },
+                  {
+                    "flag": "capitana_accepta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.18",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "hasItem": "albara"
+                  },
+                  {
+                    "flag": "injector_posat"
+                  },
+                  {
+                    "flag": "capitana_accepta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.19",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "capitana_accepta"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.20",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 2
+                  },
+                  {
+                    "flag": "capitana_accepta"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.21",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "baixada_feta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.22",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "baixada_feta",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.23",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "baixada_feta"
+                  },
+                  {
+                    "flag": "juana_fet",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.24",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "baixada_feta"
+                  },
+                  {
+                    "flag": "juana_fet",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.25",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "bru_set",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.26",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "bru_set",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.27",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "bru_set"
+                  },
+                  {
+                    "flag": "canalla_beu",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.28",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "bru_set"
+                  },
+                  {
+                    "flag": "canalla_beu",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.29",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "canalla_beu"
+                  },
+                  {
+                    "flag": "promesa_lia",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.30",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "canalla_beu"
+                  },
+                  {
+                    "flag": "promesa_lia",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.31",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "promesa_lia"
+                  },
+                  {
+                    "flag": "motlle_preparat",
+                    "is": false
+                  },
+                  {
+                    "flag": "cal_sorra",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.32",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "promesa_lia"
+                  },
+                  {
+                    "flag": "motlle_preparat",
+                    "is": false
+                  },
+                  {
+                    "flag": "cal_sorra",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.33",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "cal_sorra"
+                  },
+                  {
+                    "flag": "motlle_preparat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.34",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "cal_sorra"
+                  },
+                  {
+                    "flag": "motlle_preparat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.35",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "motlle_preparat"
+                  },
+                  {
+                    "flag": "claus_fetes",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.36",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 4
+                  },
+                  {
+                    "flag": "motlle_preparat"
+                  },
+                  {
+                    "flag": "claus_fetes",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.37",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "nil_palau",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.38",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "nil_palau",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.39",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "fidel_admet",
+                    "is": false
+                  },
+                  {
+                    "not": {
+                      "seen": {
+                        "dialogue": "fidel",
+                        "node": "hola"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.40",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "fidel_admet",
+                    "is": false
+                  },
+                  {
+                    "not": {
+                      "seen": {
+                        "dialogue": "fidel",
+                        "node": "hola"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.41",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "fidel_admet",
+                    "is": false
+                  },
+                  {
+                    "seen": {
+                      "dialogue": "fidel",
+                      "node": "hola"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.42",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "fidel_admet",
+                    "is": false
+                  },
+                  {
+                    "seen": {
+                      "dialogue": "fidel",
+                      "node": "hola"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.43",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "fidel_admet"
+                  },
+                  {
+                    "not": {
+                      "all": [
+                        {
+                          "flag": "carta_banc"
+                        },
+                        {
+                          "flag": "invitacio_agafada"
+                        },
+                        {
+                          "flag": "contracte_agafat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.44",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "fidel_admet"
+                  },
+                  {
+                    "not": {
+                      "all": [
+                        {
+                          "flag": "carta_banc"
+                        },
+                        {
+                          "flag": "invitacio_agafada"
+                        },
+                        {
+                          "flag": "contracte_agafat"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.45",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "nil_palau"
+                  },
+                  {
+                    "flag": "nil_ajuda",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.46",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 5
+                  },
+                  {
+                    "flag": "nil_palau"
+                  },
+                  {
+                    "flag": "nil_ajuda",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.47",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 6
+                  },
+                  {
+                    "flag": "cal_espia"
+                  },
+                  {
+                    "flag": "tomas_girat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.48",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 6
+                  },
+                  {
+                    "flag": "cal_espia"
+                  },
+                  {
+                    "flag": "tomas_girat",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.49",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 6
+                  },
+                  {
+                    "flag": "capitana_si",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.50",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 6
+                  },
+                  {
+                    "flag": "capitana_si",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.51",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 6
+                  },
+                  {
+                    "flag": "cal_gala"
+                  },
+                  {
+                    "not": {
+                      "hasItem": "vestit_arreglat",
+                      "who": "iri"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.52",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 6
+                  },
+                  {
+                    "flag": "cal_gala"
+                  },
+                  {
+                    "not": {
+                      "hasItem": "vestit_arreglat",
+                      "who": "iri"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.53",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "flag": "lia_avisada",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.54",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "flag": "lia_avisada",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.55",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "not": {
+                      "hasItem": "claus",
+                      "who": "vet"
+                    }
+                  },
+                  {
+                    "flag": "subhasta_comencada",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.56",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "not": {
+                      "hasItem": "claus",
+                      "who": "vet"
+                    }
+                  },
+                  {
+                    "flag": "subhasta_comencada",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.57",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "flag": "subhasta_comencada",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.58",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 7
+                  },
+                  {
+                    "flag": "subhasta_comencada",
+                    "is": false
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.59",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_subhasta"
+                  },
+                  {
+                    "var": "valvules",
+                    "op": "<",
+                    "value": 3
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.60",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_subhasta"
+                  },
+                  {
+                    "var": "valvules",
+                    "op": "<",
+                    "value": 3
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.fem.61",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_subhasta"
+                  },
+                  {
+                    "var": "valvules",
+                    "op": ">=",
+                    "value": 3
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.fem.62",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sync_subhasta"
+                  },
+                  {
+                    "var": "valvules",
+                    "op": ">=",
+                    "value": 3
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "goto": "inici"
+    },
+    "preu": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.comunicador.preu.1",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.comunicador.preu.2",
+          "if": {
+            "protagonist": "vet"
+          }
+        }
+      ],
+      "goto": "inici"
+    }
+  }
+}

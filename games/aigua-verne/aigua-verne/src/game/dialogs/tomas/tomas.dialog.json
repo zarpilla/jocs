@@ -1,0 +1,125 @@
+{
+  "id": "tomas",
+  "displayName": "tomas",
+  "options": [
+    {
+      "id": "menu__clau",
+      "scriptName": "menu__clau",
+      "text": "Em deixes la clau anglesa?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__paper",
+      "scriptName": "menu__paper",
+      "text": "Em dones el paper de plata del teu entrepà?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__contracte",
+      "scriptName": "menu__contracte",
+      "text": "Per què et va contractar la Capitana?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__pilot",
+      "scriptName": "menu__pilot",
+      "text": "On has après mecànica?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, Tomàs.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat__venut",
+      "scriptName": "enxampat__venut",
+      "text": "Ens has venut!",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat__capitana",
+      "scriptName": "enxampat__capitana",
+      "text": "Ho diré a la Capitana.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat__per_que",
+      "scriptName": "enxampat__per_que",
+      "text": "Per què?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat__volar",
+      "scriptName": "enxampat__volar",
+      "text": "Jo t'ensenyo a volar. De franc. Però des d'ara, al Magnat li expliques el que jo et digui.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat__iri",
+      "scriptName": "enxampat__iri",
+      "text": "(Això ho ha d'arreglar l'Iri. És amb ella que en Tomàs vol volar.)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat2__venut",
+      "scriptName": "enxampat2__venut",
+      "text": "Ens has venut!",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat2__capitana",
+      "scriptName": "enxampat2__capitana",
+      "text": "Ho diré a la Capitana.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat2__per_que",
+      "scriptName": "enxampat2__per_que",
+      "text": "Per què?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat2__volar",
+      "scriptName": "enxampat2__volar",
+      "text": "Jo t'ensenyo a volar. De franc. Però des d'ara, al Magnat li expliques el que jo et digui.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "enxampat2__iri",
+      "scriptName": "enxampat2__iri",
+      "text": "(Això ho ha d'arreglar l'Iri. És amb ella que en Tomàs vol volar.)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "girat__informe",
+      "scriptName": "girat__informe",
+      "text": "Què li has dit, al Magnat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "girat__adeu2",
+      "scriptName": "girat__adeu2",
+      "text": "Res, Tomàs.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

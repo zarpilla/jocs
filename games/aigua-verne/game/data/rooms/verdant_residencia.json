@@ -1,0 +1,243 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.verdant_residencia.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.verdant_residencia.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "verdant_jardi"
+        }
+      ]
+    },
+    "calaixera": {
+      "name": "sala.verdant_residencia.calaixera.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "look",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "flag": "carta_banc",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.calaixera.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.calaixera.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.calaixera.3"
+            },
+            {
+              "who": "vet",
+              "text": "sala.verdant_residencia.calaixera.4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "carta_banc"
+            },
+            {
+              "giveItem": "carta_banc"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "look",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.calaixera.5"
+            }
+          ]
+        }
+      ]
+    },
+    "paperera": {
+      "name": "sala.verdant_residencia.paperera.nom",
+      "interactions": [
+        {
+          "verb": [
+            "look",
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "invitacio_agafada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.paperera.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.paperera.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.paperera.3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "invitacio_agafada"
+            },
+            {
+              "giveItem": "invitacio"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "look",
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.paperera.4"
+            }
+          ]
+        }
+      ]
+    },
+    "arxivador": {
+      "name": "sala.verdant_residencia.arxivador.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "look",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "flag": "contracte_agafat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.arxivador.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.arxivador.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.arxivador.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.arxivador.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.arxivador.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.arxivador.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "contracte_agafat"
+            },
+            {
+              "giveItem": "contracte_capitana"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "look",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.arxivador.7"
+            }
+          ]
+        }
+      ]
+    },
+    "quadre": {
+      "name": "sala.verdant_residencia.quadre.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.quadre.1"
+            }
+          ]
+        }
+      ]
+    },
+    "finestral": {
+      "name": "sala.verdant_residencia.finestral.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.finestral.1"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "onEnter": [
+    {
+      "id": "arribada",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "fidel",
+          "text": "sala.verdant_residencia.entra.1"
+        },
+        {
+          "who": "player",
+          "text": "sala.verdant_residencia.entra.2"
+        }
+      ]
+    }
+  ]
+}

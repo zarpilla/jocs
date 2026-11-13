@@ -1,0 +1,1793 @@
+{
+  "$schema": "../schemas/hints.schema.json",
+  "escriptura": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "pista_quadre",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "pista_quadre"
+        },
+        {
+          "flag": "caixa_oberta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.escriptura.1",
+      "pista.escriptura.2",
+      "pista.escriptura.3"
+    ]
+  },
+  "quadre": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "pista_quadre"
+        },
+        {
+          "flag": "quadre_apartat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "quadre_apartat"
+    },
+    "levels": [
+      "pista.quadre.1",
+      "pista.quadre.2",
+      "pista.quadre.3"
+    ]
+  },
+  "caixa": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "quadre_apartat"
+        },
+        {
+          "flag": "caixa_oberta",
+          "is": false
+        },
+        {
+          "flag": "pare_porta",
+          "is": false
+        },
+        {
+          "flag": "bol_vist",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "pare_porta"
+        },
+        {
+          "flag": "bol_vist"
+        },
+        {
+          "flag": "caixa_oberta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.caixa.1",
+      "pista.caixa.2",
+      "pista.caixa.3"
+    ]
+  },
+  "titus": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "quadre_apartat"
+        },
+        {
+          "flag": "pare_porta"
+        },
+        {
+          "flag": "bol_vist",
+          "is": false
+        },
+        {
+          "flag": "caixa_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "bol_vist"
+        },
+        {
+          "flag": "caixa_oberta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.titus.1",
+      "pista.titus.2",
+      "pista.titus.3"
+    ]
+  },
+  "teclat": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "quadre_apartat"
+        },
+        {
+          "flag": "bol_vist"
+        },
+        {
+          "flag": "caixa_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "caixa_oberta"
+    },
+    "levels": [
+      "pista.teclat.1",
+      "pista.teclat.2",
+      "pista.teclat.3"
+    ]
+  },
+  "bomba": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "bomba_llegida",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "bomba_llegida"
+    },
+    "levels": [
+      "pista.bomba.1",
+      "pista.bomba.2",
+      "pista.bomba.3"
+    ]
+  },
+  "capitana": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "cap_condicions",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cap_condicions"
+    },
+    "levels": [
+      "pista.capitana.1",
+      "pista.capitana.2",
+      "pista.capitana.3"
+    ]
+  },
+  "radio": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "cap_condicions"
+        },
+        {
+          "flag": "juana_llavors",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "juana_llavors"
+    },
+    "levels": [
+      "pista.radio.1",
+      "pista.radio.2",
+      "pista.radio.3"
+    ]
+  },
+  "permis": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "juana_llavors"
+        },
+        {
+          "flag": "permis_pare",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "permis_pare"
+    },
+    "levels": [
+      "pista.permis.1",
+      "pista.permis.2",
+      "pista.permis.3"
+    ]
+  },
+  "sacs": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "permis_pare"
+        },
+        {
+          "flag": "sacs_agafats",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sacs_agafats"
+    },
+    "levels": [
+      "pista.sacs.1",
+      "pista.sacs.2",
+      "pista.sacs.3"
+    ]
+  },
+  "carrega": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sacs_agafats"
+        },
+        {
+          "flag": "sacs_carregats",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sacs_carregats"
+    },
+    "levels": [
+      "pista.carrega.1",
+      "pista.carrega.2",
+      "pista.carrega.3"
+    ]
+  },
+  "albara": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sacs_carregats"
+        },
+        {
+          "flag": "albara_fet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "albara_fet"
+    },
+    "levels": [
+      "pista.albara.1",
+      "pista.albara.2",
+      "pista.albara.3"
+    ]
+  },
+  "injector": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "cap_condicions"
+        },
+        {
+          "flag": "injector_vist",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "injector_vist"
+    },
+    "levels": [
+      "pista.injector.1",
+      "pista.injector.2",
+      "pista.injector.3"
+    ]
+  },
+  "tractor": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "injector_vist"
+        },
+        {
+          "flag": "injector_tret",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "injector_tret"
+    },
+    "levels": [
+      "pista.tractor.1",
+      "pista.tractor.2",
+      "pista.tractor.3"
+    ]
+  },
+  "injector2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "injector_tret"
+        },
+        {
+          "flag": "injector_posat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "injector_posat"
+    },
+    "levels": [
+      "pista.injector2.1",
+      "pista.injector2.2",
+      "pista.injector2.3"
+    ]
+  },
+  "entrega": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "albara"
+        },
+        {
+          "flag": "injector_posat"
+        },
+        {
+          "flag": "capitana_accepta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "capitana_accepta"
+    },
+    "levels": [
+      "pista.entrega.1",
+      "pista.entrega.2",
+      "pista.entrega.3"
+    ]
+  },
+  "aqua": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "capitana_accepta"
+        },
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 2
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 3
+    },
+    "levels": [
+      "pista.aqua.1",
+      "pista.aqua.2",
+      "pista.aqua.3"
+    ]
+  },
+  "grua": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "grua_vista",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "grua_vista"
+    },
+    "levels": [
+      "pista.grua.1",
+      "pista.grua.2",
+      "pista.grua.3"
+    ]
+  },
+  "fusible": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "grua_vista"
+        },
+        {
+          "flag": "grua_arreglada",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "fusible_apanyat"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "fusible_apanyat"
+        },
+        {
+          "flag": "grua_arreglada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.fusible.1",
+      "pista.fusible.2",
+      "pista.fusible.3"
+    ]
+  },
+  "fusible2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "fusible_apanyat"
+        },
+        {
+          "flag": "grua_arreglada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "grua_arreglada"
+    },
+    "levels": [
+      "pista.fusible2.1",
+      "pista.fusible2.2",
+      "pista.fusible2.3"
+    ]
+  },
+  "baixar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "grua_arreglada"
+        },
+        {
+          "flag": "baixada_feta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "baixada_feta"
+    },
+    "levels": [
+      "pista.baixar.1",
+      "pista.baixar.2",
+      "pista.baixar.3"
+    ]
+  },
+  "juana": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "baixada_feta"
+        },
+        {
+          "flag": "juana_fet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "juana_fet"
+    },
+    "levels": [
+      "pista.juana.1",
+      "pista.juana.2",
+      "pista.juana.3"
+    ]
+  },
+  "bru": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 4
+        },
+        {
+          "flag": "bru_set",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "bru_set"
+    },
+    "levels": [
+      "pista.bru.1",
+      "pista.bru.2",
+      "pista.bru.3"
+    ]
+  },
+  "canalla": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "bru_set"
+        },
+        {
+          "flag": "canalla_beu",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "canalla_beu"
+    },
+    "levels": [
+      "pista.canalla.1",
+      "pista.canalla.2",
+      "pista.canalla.3"
+    ]
+  },
+  "bru2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "canalla_beu"
+        },
+        {
+          "flag": "bru_lia",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "bru_lia"
+    },
+    "levels": [
+      "pista.bru2.1",
+      "pista.bru2.2",
+      "pista.bru2.3"
+    ]
+  },
+  "promesa": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "bru_lia"
+        },
+        {
+          "flag": "promesa_lia",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "promesa_lia"
+    },
+    "levels": [
+      "pista.promesa.1",
+      "pista.promesa.2",
+      "pista.promesa.3"
+    ]
+  },
+  "motlle": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "promesa_lia"
+        },
+        {
+          "flag": "motlle_preparat",
+          "is": false
+        },
+        {
+          "flag": "cal_sorra",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "cal_sorra"
+        },
+        {
+          "flag": "motlle_preparat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.motlle.1",
+      "pista.motlle.2",
+      "pista.motlle.3"
+    ]
+  },
+  "sorra": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_sorra"
+        },
+        {
+          "flag": "sorra_agafada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "sorra_agafada"
+    },
+    "levels": [
+      "pista.sorra.1",
+      "pista.sorra.2",
+      "pista.sorra.3"
+    ]
+  },
+  "motlle2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sorra_agafada"
+        },
+        {
+          "flag": "motlle_preparat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "motlle_preparat"
+    },
+    "levels": [
+      "pista.motlle2.1",
+      "pista.motlle2.2",
+      "pista.motlle2.3"
+    ]
+  },
+  "colada_lloc": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "motlle_preparat"
+        },
+        {
+          "flag": "sync_colada",
+          "is": false
+        },
+        {
+          "flag": "claus_fetes",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "claus_fetes"
+        }
+      ]
+    },
+    "levels": [
+      "pista.colada_lloc.1",
+      "pista.colada_lloc.2",
+      "pista.colada_lloc.3"
+    ]
+  },
+  "c_manxa": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "manxa_oberta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "manxa_oberta"
+    },
+    "levels": [
+      "pista.c_manxa.1"
+    ]
+  },
+  "c_metall": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "manxa_oberta"
+        },
+        {
+          "flag": "metall_carregat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "metall_carregat"
+    },
+    "levels": [
+      "pista.c_metall.1"
+    ]
+  },
+  "c_escoria": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "metall_carregat"
+        },
+        {
+          "flag": "escoria_treta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "escoria_treta"
+    },
+    "levels": [
+      "pista.c_escoria.1"
+    ]
+  },
+  "c_gresol": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "escoria_treta"
+        },
+        {
+          "flag": "colat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "colat"
+    },
+    "levels": [
+      "pista.c_gresol.1"
+    ]
+  },
+  "c_sorra": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_colada"
+        },
+        {
+          "flag": "colat"
+        },
+        {
+          "flag": "claus_fetes",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "claus_fetes"
+    },
+    "levels": [
+      "pista.c_sorra.1"
+    ]
+  },
+  "verdant": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "nil_palau",
+          "is": false
+        },
+        {
+          "flag": "fidel_admet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "nil_palau"
+        },
+        {
+          "flag": "fidel_admet"
+        }
+      ]
+    },
+    "levels": [
+      "pista.verdant.1",
+      "pista.verdant.2",
+      "pista.verdant.3"
+    ]
+  },
+  "nil": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "nil_palau",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "nil_palau"
+    },
+    "levels": [
+      "pista.nil.1",
+      "pista.nil.2"
+    ]
+  },
+  "tomaquera": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "nil_palau"
+        },
+        {
+          "flag": "tomaquera_vista",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tomaquera_vista"
+    },
+    "levels": [
+      "pista.tomaquera.1",
+      "pista.tomaquera.2",
+      "pista.tomaquera.3"
+    ]
+  },
+  "tomaquera2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "tomaquera_vista"
+        },
+        {
+          "flag": "cal_reg",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cal_reg"
+    },
+    "levels": [
+      "pista.tomaquera2.1",
+      "pista.tomaquera2.2",
+      "pista.tomaquera2.3"
+    ]
+  },
+  "reg": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_reg"
+        },
+        {
+          "flag": "reg_agafat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reg_agafat"
+    },
+    "levels": [
+      "pista.reg.1",
+      "pista.reg.2",
+      "pista.reg.3"
+    ]
+  },
+  "reg2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "reg"
+        },
+        {
+          "flag": "cal_agulla",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cal_agulla"
+    },
+    "levels": [
+      "pista.reg2.1",
+      "pista.reg2.2",
+      "pista.reg2.3"
+    ]
+  },
+  "agulla": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_agulla"
+        },
+        {
+          "not": {
+            "hasItem": "agulla"
+          }
+        },
+        {
+          "flag": "reg_muntat",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "reg_foradat"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "agulla"
+        },
+        {
+          "flag": "reg_muntat"
+        },
+        {
+          "hasItem": "reg_foradat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.agulla.1",
+      "pista.agulla.2",
+      "pista.agulla.3"
+    ]
+  },
+  "foradar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "agulla"
+        },
+        {
+          "hasItem": "reg"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "reg_foradat"
+    },
+    "levels": [
+      "pista.foradar.1",
+      "pista.foradar.2",
+      "pista.foradar.3"
+    ]
+  },
+  "muntar": {
+    "priority": 5,
+    "when": {
+      "hasItem": "reg_foradat"
+    },
+    "doneWhen": {
+      "flag": "reg_muntat"
+    },
+    "levels": [
+      "pista.muntar.1",
+      "pista.muntar.2"
+    ]
+  },
+  "galleda": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "reg_muntat"
+        },
+        {
+          "flag": "tomaquera_regada",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "galleda_plena"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "galleda_plena"
+        },
+        {
+          "flag": "tomaquera_regada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.galleda.1",
+      "pista.galleda.2",
+      "pista.galleda.3"
+    ]
+  },
+  "regar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "galleda_plena"
+        },
+        {
+          "flag": "tomaquera_regada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tomaquera_regada"
+    },
+    "levels": [
+      "pista.regar.1",
+      "pista.regar.2",
+      "pista.regar.3"
+    ]
+  },
+  "nil2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "tomaquera_regada"
+        },
+        {
+          "flag": "nil_ajuda",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "nil_ajuda"
+    },
+    "levels": [
+      "pista.nil2.1",
+      "pista.nil2.2"
+    ]
+  },
+  "fidel": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "fidel_admet",
+          "is": false
+        },
+        {
+          "flag": "cal_aval",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "fidel_admet"
+        },
+        {
+          "flag": "cal_aval"
+        }
+      ]
+    },
+    "levels": [
+      "pista.fidel.1",
+      "pista.fidel.2",
+      "pista.fidel.3"
+    ]
+  },
+  "aval": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_aval"
+        },
+        {
+          "not": {
+            "hasItem": "sac_llavors"
+          }
+        },
+        {
+          "flag": "fidel_admet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "sac_llavors"
+        },
+        {
+          "flag": "fidel_admet"
+        }
+      ]
+    },
+    "levels": [
+      "pista.aval.1",
+      "pista.aval.2",
+      "pista.aval.3"
+    ]
+  },
+  "aval2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "sac_llavors"
+        },
+        {
+          "flag": "fidel_admet",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "fidel_admet"
+    },
+    "levels": [
+      "pista.aval2.1",
+      "pista.aval2.2",
+      "pista.aval2.3"
+    ]
+  },
+  "despatx": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "fidel_admet"
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "flag": "carta_banc"
+              },
+              {
+                "flag": "invitacio_agafada"
+              },
+              {
+                "flag": "contracte_agafat"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "all": [
+        {
+          "flag": "carta_banc"
+        },
+        {
+          "flag": "invitacio_agafada"
+        },
+        {
+          "flag": "contracte_agafat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.despatx.1",
+      "pista.despatx.2",
+      "pista.despatx.3"
+    ]
+  },
+  "espia": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_espia"
+        },
+        {
+          "flag": "diu_carmanyola_vist",
+          "is": false
+        },
+        {
+          "flag": "tomas_descobert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "diu_carmanyola_vist"
+        },
+        {
+          "flag": "tomas_descobert"
+        }
+      ]
+    },
+    "levels": [
+      "pista.espia.1",
+      "pista.espia.2",
+      "pista.espia.3"
+    ]
+  },
+  "diu": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "diu_carmanyola_vist"
+        },
+        {
+          "flag": "diu_aparta",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "pernil"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "pernil"
+        },
+        {
+          "flag": "diu_aparta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.diu.1",
+      "pista.diu.2",
+      "pista.diu.3"
+    ]
+  },
+  "diu2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "pernil"
+        },
+        {
+          "flag": "diu_aparta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "diu_aparta"
+    },
+    "levels": [
+      "pista.diu2.1",
+      "pista.diu2.2"
+    ]
+  },
+  "carmanyola": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "diu_aparta"
+        },
+        {
+          "flag": "tomas_descobert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tomas_descobert"
+    },
+    "levels": [
+      "pista.carmanyola.1",
+      "pista.carmanyola.2"
+    ]
+  },
+  "girar": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "tomas_descobert"
+        },
+        {
+          "flag": "tomas_girat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tomas_girat"
+    },
+    "levels": [
+      "pista.girar.1",
+      "pista.girar.2",
+      "pista.girar.3"
+    ]
+  },
+  "contracte": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "flag": "capitana_si",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "capitana_si"
+    },
+    "levels": [
+      "pista.contracte.1",
+      "pista.contracte.2",
+      "pista.contracte.3"
+    ]
+  },
+  "gala": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_gala"
+        },
+        {
+          "flag": "rosa_permis",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "rosa_permis"
+    },
+    "levels": [
+      "pista.gala.1",
+      "pista.gala.2",
+      "pista.gala.3"
+    ]
+  },
+  "gala2": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "rosa_permis"
+        },
+        {
+          "flag": "vestit_agafat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vestit_agafat"
+    },
+    "levels": [
+      "pista.gala2.1",
+      "pista.gala2.2"
+    ]
+  },
+  "gala3": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "vestit_agafat"
+        },
+        {
+          "not": {
+            "any": [
+              {
+                "hasItem": "vestit_arreglat",
+                "who": "iri"
+              },
+              {
+                "hasItem": "vestit_arreglat",
+                "who": "vet"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "vestit_arreglat",
+          "who": "iri"
+        },
+        {
+          "hasItem": "vestit_arreglat",
+          "who": "vet"
+        }
+      ]
+    },
+    "levels": [
+      "pista.gala3.1",
+      "pista.gala3.2",
+      "pista.gala3.3"
+    ]
+  },
+  "gala4": {
+    "priority": 5,
+    "when": {
+      "hasItem": "vestit_arreglat",
+      "who": "vet"
+    },
+    "doneWhen": {
+      "hasItem": "vestit_arreglat",
+      "who": "iri"
+    },
+    "levels": [
+      "pista.gala4.1",
+      "pista.gala4.2"
+    ]
+  },
+  "lia": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "lia_prova",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "lia_prova"
+    },
+    "levels": [
+      "pista.lia.1",
+      "pista.lia.2",
+      "pista.lia.3"
+    ]
+  },
+  "holm": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "holm_parlat",
+          "is": false
+        },
+        {
+          "any": [
+            {
+              "flag": "lia_prova"
+            },
+            {
+              "not": {
+                "hasItem": "claus",
+                "who": "vet"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "holm_parlat"
+    },
+    "levels": [
+      "pista.holm.1",
+      "pista.holm.2",
+      "pista.holm.3"
+    ]
+  },
+  "safata_nota": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "holm_parlat"
+        },
+        {
+          "flag": "lia_prova"
+        },
+        {
+          "hasItem": "nota_lia",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "nota_lia",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.safata_nota.1",
+      "pista.safata_nota.2",
+      "pista.safata_nota.3"
+    ]
+  },
+  "safata_claus": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "holm_parlat"
+        },
+        {
+          "hasItem": "claus",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "claus",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.safata_claus.1",
+      "pista.safata_claus.2",
+      "pista.safata_claus.3"
+    ]
+  },
+  "recollir": {
+    "priority": 5,
+    "when": {
+      "not": {
+        "var": "safata",
+        "op": "==",
+        "value": ""
+      }
+    },
+    "doneWhen": {
+      "var": "safata",
+      "op": "==",
+      "value": ""
+    },
+    "levels": [
+      "pista.recollir.1",
+      "pista.recollir.2"
+    ]
+  },
+  "nota_lia": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "nota_lia",
+          "who": "vet"
+        },
+        {
+          "flag": "lia_avisada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "lia_avisada"
+    },
+    "levels": [
+      "pista.nota_lia.1",
+      "pista.nota_lia.2"
+    ]
+  },
+  "control": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "lia_avisada"
+        },
+        {
+          "hasItem": "claus",
+          "who": "vet"
+        },
+        {
+          "flag": "subhasta_comencada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "subhasta_comencada"
+    },
+    "levels": [
+      "pista.control.1",
+      "pista.control.2",
+      "pista.control.3"
+    ]
+  },
+  "valvules": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_subhasta"
+        },
+        {
+          "var": "valvules",
+          "op": "<",
+          "value": 3
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "valvules",
+      "op": ">=",
+      "value": 3
+    },
+    "levels": [
+      "pista.valvules.1",
+      "pista.valvules.2",
+      "pista.valvules.3"
+    ]
+  },
+  "reserva": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_subhasta"
+        },
+        {
+          "var": "valvules",
+          "op": ">=",
+          "value": 3
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reserva_oberta"
+    },
+    "levels": [
+      "pista.reserva.1",
+      "pista.reserva.2",
+      "pista.reserva.3"
+    ]
+  }
+}

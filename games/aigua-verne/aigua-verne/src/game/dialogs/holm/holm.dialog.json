@@ -1,0 +1,27 @@
+{
+  "id": "holm",
+  "displayName": "holm",
+  "options": [
+    {
+      "id": "q__llavors",
+      "scriptName": "q__llavors",
+      "text": "Inverteixo en llavors resistents a la secada. Són el futur.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q__vestit",
+      "scriptName": "q__vestit",
+      "text": "La llista es va fer abans que decidís venir. Com aquest vestit.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q__magnat",
+      "scriptName": "q__magnat",
+      "text": "En Verne m'ha convidat en persona.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

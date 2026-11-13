@@ -1,0 +1,109 @@
+{
+  "startRoomId": "portada",
+  "rooms": [
+    {
+      "id": "aqua_fons",
+      "definition": "aqua_fons/aqua_fons.room.json"
+    },
+    {
+      "id": "aqua_port",
+      "definition": "aqua_port/aqua_port.room.json"
+    },
+    {
+      "id": "cantimplora_bodega",
+      "definition": "cantimplora_bodega/cantimplora_bodega.room.json"
+    },
+    {
+      "id": "cantimplora_pont",
+      "definition": "cantimplora_pont/cantimplora_pont.room.json"
+    },
+    {
+      "id": "casa_juana",
+      "definition": "casa_juana/casa_juana.room.json"
+    },
+    {
+      "id": "credits",
+      "definition": "credits/credits.room.json"
+    },
+    {
+      "id": "ferrum_carrer",
+      "definition": "ferrum_carrer/ferrum_carrer.room.json"
+    },
+    {
+      "id": "ferrum_sindicat",
+      "definition": "ferrum_sindicat/ferrum_sindicat.room.json"
+    },
+    {
+      "id": "final_palau",
+      "definition": "final_palau/final_palau.room.json"
+    },
+    {
+      "id": "final_pluja",
+      "definition": "final_pluja/final_pluja.room.json"
+    },
+    {
+      "id": "fosa_colada",
+      "definition": "fosa_colada/fosa_colada.room.json"
+    },
+    {
+      "id": "fosa_forn",
+      "definition": "fosa_forn/fosa_forn.room.json"
+    },
+    {
+      "id": "granja_casa",
+      "definition": "granja_casa/granja_casa.room.json"
+    },
+    {
+      "id": "granja_graner",
+      "definition": "granja_graner/granja_graner.room.json"
+    },
+    {
+      "id": "granja_pati",
+      "definition": "granja_pati/granja_pati.room.json"
+    },
+    {
+      "id": "palau_control",
+      "definition": "palau_control/palau_control.room.json"
+    },
+    {
+      "id": "palau_galeria",
+      "definition": "palau_galeria/palau_galeria.room.json"
+    },
+    {
+      "id": "palau_salo",
+      "definition": "palau_salo/palau_salo.room.json"
+    },
+    {
+      "id": "palau_servei",
+      "definition": "palau_servei/palau_servei.room.json"
+    },
+    {
+      "id": "port_terra2",
+      "definition": "port_terra2/port_terra2.room.json"
+    },
+    {
+      "id": "portada",
+      "definition": "portada/portada.room.json"
+    },
+    {
+      "id": "postcredits",
+      "definition": "postcredits/postcredits.room.json"
+    },
+    {
+      "id": "proleg_palau",
+      "definition": "proleg_palau/proleg_palau.room.json"
+    },
+    {
+      "id": "verdant_cobert",
+      "definition": "verdant_cobert/verdant_cobert.room.json"
+    },
+    {
+      "id": "verdant_jardi",
+      "definition": "verdant_jardi/verdant_jardi.room.json"
+    },
+    {
+      "id": "verdant_residencia",
+      "definition": "verdant_residencia/verdant_residencia.room.json"
+    }
+  ]
+}

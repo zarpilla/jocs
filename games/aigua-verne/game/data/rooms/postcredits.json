@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.postcredits.nom",
+  "cutscene": {},
+  "hotspots": {
+    "verne": {},
+    "dividend": {},
+    "rosa": {}
+  }
+}

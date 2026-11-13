@@ -1,0 +1,24 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.final_pluja.nom",
+  "cutscene": {},
+  "hotspots": {
+    "iri": {},
+    "vet": {},
+    "diu": {},
+    "quim": {}
+  },
+  "decor": {
+    "barril_pou": {
+      "visibleIf": {
+        "flag": "barril_donat",
+        "is": false
+      }
+    },
+    "caixa_ferrum": {
+      "visibleIf": {
+        "flag": "barril_donat"
+      }
+    }
+  }
+}

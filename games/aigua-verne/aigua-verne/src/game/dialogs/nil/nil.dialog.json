@@ -1,0 +1,55 @@
+{
+  "id": "nil",
+  "displayName": "nil",
+  "options": [
+    {
+      "id": "menu__flors",
+      "scriptName": "menu__flors",
+      "text": "Són de plàstic, oi?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__palau",
+      "scriptName": "menu__palau",
+      "text": "Vostè puja al palau del Magnat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__magnat",
+      "scriptName": "menu__magnat",
+      "text": "Com és, el Magnat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__tomaquera",
+      "scriptName": "menu__tomaquera",
+      "text": "He vist la tomaquera del cobert.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__regada",
+      "scriptName": "menu__regada",
+      "text": "La tomaquera ja beu. Gota a gota.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__quan",
+      "scriptName": "menu__quan",
+      "text": "Quan pugem?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Que vagi bé, Nil.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

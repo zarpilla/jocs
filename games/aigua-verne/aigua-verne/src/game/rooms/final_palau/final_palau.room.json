@@ -1,0 +1,172 @@
+{
+  "id": "final_palau",
+  "name": "El palau, al final",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 4,
+            "y": 256
+          },
+          {
+            "x": 26,
+            "y": 238
+          },
+          {
+            "x": 66,
+            "y": 204
+          },
+          {
+            "x": 66,
+            "y": 192
+          },
+          {
+            "x": 222,
+            "y": 192
+          },
+          {
+            "x": 208,
+            "y": 240
+          },
+          {
+            "x": 432,
+            "y": 240
+          },
+          {
+            "x": 418,
+            "y": 192
+          },
+          {
+            "x": 530,
+            "y": 192
+          },
+          {
+            "x": 530,
+            "y": 220
+          },
+          {
+            "x": 626,
+            "y": 220
+          },
+          {
+            "x": 634,
+            "y": 256
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "peixos",
+      "tag": "peixos",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "peixos": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "estrelles",
+      "tag": "estrelles",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "estrelles": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "aigua": {
+          "loop": true,
+          "frameDuration": 180
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 300,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "verne-1",
+      "definition": "verne/verne.character.json",
+      "x": 190,
+      "y": 214,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "dividend-1",
+      "definition": "dividend/dividend.character.json",
+      "x": 444,
+      "y": 214,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "holm-1",
+      "definition": "holm/holm.character.json",
+      "x": 250,
+      "y": 232,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

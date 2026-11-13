@@ -1,0 +1,284 @@
+{
+  "id": "verdant_cobert",
+  "name": "Cobert del jardiner",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 14,
+            "y": 228
+          },
+          {
+            "x": 608,
+            "y": 228
+          },
+          {
+            "x": 632,
+            "y": 256
+          },
+          {
+            "x": 6,
+            "y": 256
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "jardí",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 18,
+          "y": 82
+        },
+        {
+          "x": 100,
+          "y": 82
+        },
+        {
+          "x": 100,
+          "y": 216
+        },
+        {
+          "x": 18,
+          "y": 216
+        }
+      ],
+      "walkToPoint": {
+        "x": 66,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 59,
+        "y": 216
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "tomaquera",
+      "active": true,
+      "description": "tomaquera",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 512,
+          "y": 90
+        },
+        {
+          "x": 608,
+          "y": 90
+        },
+        {
+          "x": 608,
+          "y": 226
+        },
+        {
+          "x": 512,
+          "y": 226
+        }
+      ],
+      "walkToPoint": {
+        "x": 530,
+        "y": 244
+      },
+      "lookAtPoint": {
+        "x": 560,
+        "y": 226
+      }
+    },
+    {
+      "id": "sacs",
+      "active": true,
+      "description": "sacs d'adob",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 390,
+          "y": 146
+        },
+        {
+          "x": 512,
+          "y": 146
+        },
+        {
+          "x": 512,
+          "y": 224
+        },
+        {
+          "x": 390,
+          "y": 224
+        }
+      ],
+      "walkToPoint": {
+        "x": 446,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 451,
+        "y": 224
+      }
+    },
+    {
+      "id": "eines",
+      "active": true,
+      "description": "eines",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 128,
+          "y": 40
+        },
+        {
+          "x": 262,
+          "y": 40
+        },
+        {
+          "x": 262,
+          "y": 200
+        },
+        {
+          "x": 128,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 196,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 195,
+        "y": 200
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "galleda",
+      "tag": "galleda",
+      "animations": {
+        "galleda": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 246,
+            "y": 218
+          },
+          {
+            "x": 280,
+            "y": 218
+          },
+          {
+            "x": 280,
+            "y": 248
+          },
+          {
+            "x": 246,
+            "y": 248
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 236,
+        "y": 252
+      },
+      "lookAtPoint": {
+        "x": 263,
+        "y": 248
+      },
+      "description": "galleda"
+    },
+    {
+      "id": "reg_muntat",
+      "tag": "reg_muntat",
+      "animations": {
+        "reg_muntat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "tomaquera_viva",
+      "tag": "tomaquera_viva",
+      "animations": {
+        "tomaquera_viva": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 180
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 150,
+      "y": 248,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 380,
+      "y": 246,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

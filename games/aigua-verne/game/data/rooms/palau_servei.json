@@ -1,0 +1,138 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.palau_servei.nom",
+  "protagonist": "vet",
+  "hotspots": {
+    "ascensor": {
+      "name": "sala.palau_servei.ascensor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_servei.ascensor.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "not": {
+              "hasItem": "targeta"
+            }
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_servei.ascensor.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.palau_servei.ascensor.3",
+              "sound": "ascensor"
+            }
+          ],
+          "goTo": "palau_control"
+        }
+      ]
+    },
+    "safates": {
+      "name": "sala.palau_servei.safates.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_servei.safates.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "open"
+          ],
+          "action": {
+            "name": "safata.recollir"
+          }
+        }
+      ]
+    },
+    "carro": {
+      "name": "sala.palau_servei.carro.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_servei.carro.1"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_servei.carro.2"
+            }
+          ]
+        }
+      ]
+    },
+    "canonades": {
+      "name": "sala.palau_servei.canonades.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.palau_servei.canonades.1"
+            }
+          ]
+        }
+      ]
+    },
+    "lia": {},
+    "nil": {}
+  },
+  "onEnter": [
+    {
+      "id": "arribada",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.palau_servei.entra.1"
+        },
+        {
+          "who": "nil",
+          "text": "sala.palau_servei.entra.2"
+        },
+        {
+          "who": "vet",
+          "text": "sala.palau_servei.entra.3"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "id": "verdant_residencia",
+  "name": "Despatx d'estiu del Magnat",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 10,
+            "y": 226
+          },
+          {
+            "x": 630,
+            "y": 226
+          },
+          {
+            "x": 636,
+            "y": 257
+          },
+          {
+            "x": 4,
+            "y": 257
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "jardí",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 14,
+          "y": 70
+        },
+        {
+          "x": 100,
+          "y": 70
+        },
+        {
+          "x": 100,
+          "y": 216
+        },
+        {
+          "x": 14,
+          "y": 216
+        }
+      ],
+      "walkToPoint": {
+        "x": 60,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 57,
+        "y": 216
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "calaixera",
+      "active": true,
+      "description": "calaixera",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 202,
+          "y": 142
+        },
+        {
+          "x": 340,
+          "y": 142
+        },
+        {
+          "x": 340,
+          "y": 216
+        },
+        {
+          "x": 202,
+          "y": 216
+        }
+      ],
+      "walkToPoint": {
+        "x": 270,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 271,
+        "y": 216
+      }
+    },
+    {
+      "id": "paperera",
+      "active": true,
+      "description": "paperera daurada",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 348,
+          "y": 186
+        },
+        {
+          "x": 376,
+          "y": 186
+        },
+        {
+          "x": 376,
+          "y": 220
+        },
+        {
+          "x": 348,
+          "y": 220
+        }
+      ],
+      "walkToPoint": {
+        "x": 360,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 362,
+        "y": 220
+      }
+    },
+    {
+      "id": "arxivador",
+      "active": true,
+      "description": "arxivador",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 104,
+          "y": 62
+        },
+        {
+          "x": 168,
+          "y": 62
+        },
+        {
+          "x": 168,
+          "y": 216
+        },
+        {
+          "x": 104,
+          "y": 216
+        }
+      ],
+      "walkToPoint": {
+        "x": 136,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 136,
+        "y": 216
+      }
+    },
+    {
+      "id": "quadre",
+      "active": true,
+      "description": "retrat",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 182,
+          "y": 18
+        },
+        {
+          "x": 360,
+          "y": 18
+        },
+        {
+          "x": 360,
+          "y": 141
+        },
+        {
+          "x": 182,
+          "y": 141
+        }
+      ],
+      "walkToPoint": {
+        "x": 270,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 271,
+        "y": 141
+      }
+    },
+    {
+      "id": "finestral",
+      "active": true,
+      "description": "finestral",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 414,
+          "y": 18
+        },
+        {
+          "x": 622,
+          "y": 18
+        },
+        {
+          "x": 622,
+          "y": 216
+        },
+        {
+          "x": 414,
+          "y": 216
+        }
+      ],
+      "walkToPoint": {
+        "x": 518,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 518,
+        "y": 216
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 200,
+      "y": 246,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 440,
+      "y": 248,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "fidel-veu",
+      "definition": "fidel/fidel.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ]
+}

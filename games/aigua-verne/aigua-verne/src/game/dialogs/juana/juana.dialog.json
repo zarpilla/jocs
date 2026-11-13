@@ -1,0 +1,118 @@
+{
+  "id": "juana",
+  "displayName": "juana",
+  "options": [
+    {
+      "id": "menu__mar",
+      "scriptName": "menu__mar",
+      "text": "On és el mar d'Aqua?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__on",
+      "scriptName": "menu__on",
+      "text": "I on va a parar, l'aigua?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__tornar",
+      "scriptName": "menu__tornar",
+      "text": "Es pot fer tornar?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__bru",
+      "scriptName": "menu__bru",
+      "text": "Com convencem en Bru perquè ens doni les claus?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__peixos",
+      "scriptName": "menu__peixos",
+      "text": "I els peixos d'Aqua?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__llavors",
+      "scriptName": "menu__llavors",
+      "text": "Les llavors són a la nau.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__preguntes",
+      "scriptName": "menu__preguntes",
+      "text": "Tu també ens vols preguntar alguna cosa?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__recorda",
+      "scriptName": "menu__recorda",
+      "text": "Recorda'm el que ens has explicat.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Adeu, Juana.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q1__vendre",
+      "scriptName": "q1__vendre",
+      "text": "La vendria. A bon preu.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q1__regalar",
+      "scriptName": "q1__regalar",
+      "text": "La regalaria. Però només a qui m'agrada.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q1__beure",
+      "scriptName": "q1__beure",
+      "text": "Me la beuria tota.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q2__agafar",
+      "scriptName": "q2__agafar",
+      "text": "L'agafaria. I després faria alguna cosa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q2__res",
+      "scriptName": "q2__res",
+      "text": "L'agafaria i no faria res. Però em sentiria fatal.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q3__pou",
+      "scriptName": "q3__pou",
+      "text": "No vull salvar el món. Vull el meu pou.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "q3__mon",
+      "scriptName": "q3__mon",
+      "text": "Vull salvar el món. Però el meu pou, primer.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

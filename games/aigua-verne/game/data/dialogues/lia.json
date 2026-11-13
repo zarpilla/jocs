@@ -1,0 +1,173 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "lia",
+  "with": "lia",
+  "start": [
+    {
+      "if": {
+        "flag": "lia_avisada"
+      },
+      "node": "aliada"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "lia",
+          "node": "hola"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "lia",
+          "text": "dlg.lia.hola.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "lia",
+          "text": "dlg.lia.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "pare",
+          "text": "dlg.lia.opt.pare",
+          "if": {
+            "flag": "lia_prova",
+            "is": false
+          },
+          "next": "pare"
+        },
+        {
+          "id": "nota",
+          "text": "dlg.lia.opt.nota",
+          "if": {
+            "hasItem": "nota_lia"
+          },
+          "next": "nota"
+        },
+        {
+          "id": "feina",
+          "text": "dlg.lia.opt.feina",
+          "once": true,
+          "next": "feina"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.lia.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "pare": {
+      "lines": [
+        {
+          "who": "lia",
+          "text": "dlg.lia.pare.1"
+        },
+        {
+          "who": "lia",
+          "text": "dlg.lia.pare.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.lia.pare.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "lia_prova"
+        }
+      ],
+      "goto": "menu"
+    },
+    "feina": {
+      "lines": [
+        {
+          "who": "lia",
+          "text": "dlg.lia.feina.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "nota": {
+      "lines": [
+        {
+          "who": "lia",
+          "text": "dlg.lia.nota.1"
+        },
+        {
+          "who": "lia",
+          "text": "dlg.lia.nota.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.lia.nota.3"
+        },
+        {
+          "who": "lia",
+          "text": "dlg.lia.nota.4"
+        },
+        {
+          "who": "lia",
+          "text": "dlg.lia.nota.5"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "lia_avisada"
+        },
+        {
+          "setFlag": "lia_prova"
+        },
+        {
+          "setFlag": "lia_reserva"
+        },
+        {
+          "takeItem": "nota_lia"
+        },
+        {
+          "giveItem": "targeta"
+        }
+      ],
+      "goto": "aliada"
+    },
+    "aliada": {
+      "choices": [
+        {
+          "id": "control",
+          "text": "dlg.lia.opt.control",
+          "next": "control"
+        },
+        {
+          "id": "adeu2",
+          "text": "dlg.lia.opt.adeu2",
+          "end": true
+        }
+      ]
+    },
+    "control": {
+      "lines": [
+        {
+          "who": "lia",
+          "text": "dlg.lia.control.1"
+        }
+      ],
+      "goto": "aliada"
+    }
+  }
+}

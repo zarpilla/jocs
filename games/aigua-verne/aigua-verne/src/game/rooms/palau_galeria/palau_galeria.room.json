@@ -1,0 +1,335 @@
+{
+  "id": "palau_galeria",
+  "name": "Galeria de les piscines",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 4,
+            "y": 256
+          },
+          {
+            "x": 26,
+            "y": 238
+          },
+          {
+            "x": 66,
+            "y": 204
+          },
+          {
+            "x": 66,
+            "y": 192
+          },
+          {
+            "x": 222,
+            "y": 192
+          },
+          {
+            "x": 208,
+            "y": 240
+          },
+          {
+            "x": 432,
+            "y": 240
+          },
+          {
+            "x": 418,
+            "y": 192
+          },
+          {
+            "x": 530,
+            "y": 192
+          },
+          {
+            "x": 530,
+            "y": 220
+          },
+          {
+            "x": 626,
+            "y": 220
+          },
+          {
+            "x": 634,
+            "y": 256
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_salo",
+      "active": true,
+      "description": "saló",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 6,
+          "y": 100
+        },
+        {
+          "x": 56,
+          "y": 100
+        },
+        {
+          "x": 56,
+          "y": 240
+        },
+        {
+          "x": 6,
+          "y": 240
+        }
+      ],
+      "walkToPoint": {
+        "x": 44,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 31,
+        "y": 240
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "piscines",
+      "active": true,
+      "description": "piscines",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 118,
+          "y": 84
+        },
+        {
+          "x": 582,
+          "y": 84
+        },
+        {
+          "x": 582,
+          "y": 185
+        },
+        {
+          "x": 118,
+          "y": 185
+        }
+      ],
+      "walkToPoint": {
+        "x": 480,
+        "y": 206
+      },
+      "lookAtPoint": {
+        "x": 350,
+        "y": 185
+      }
+    },
+    {
+      "id": "aquari",
+      "active": true,
+      "description": "aquari",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 536,
+          "y": 84
+        },
+        {
+          "x": 622,
+          "y": 84
+        },
+        {
+          "x": 622,
+          "y": 214
+        },
+        {
+          "x": 536,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 560,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 579,
+        "y": 214
+      }
+    },
+    {
+      "id": "finestral",
+      "active": true,
+      "description": "finestral",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 70,
+          "y": 16
+        },
+        {
+          "x": 570,
+          "y": 16
+        },
+        {
+          "x": 570,
+          "y": 83
+        },
+        {
+          "x": 70,
+          "y": 83
+        }
+      ],
+      "walkToPoint": {
+        "x": 170,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 320,
+        "y": 83
+      }
+    },
+    {
+      "id": "escales",
+      "active": true,
+      "description": "escales cromades",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 62,
+          "y": 84
+        },
+        {
+          "x": 118,
+          "y": 84
+        },
+        {
+          "x": 118,
+          "y": 190
+        },
+        {
+          "x": 62,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 96,
+        "y": 206
+      },
+      "lookAtPoint": {
+        "x": 90,
+        "y": 190
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "piscines_plenes",
+      "tag": "piscines_plenes",
+      "animations": {
+        "piscines_plenes": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "peixos",
+      "tag": "peixos",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "peixos": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "estrelles",
+      "tag": "estrelles",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "estrelles": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "aigua": {
+          "loop": true,
+          "frameDuration": 180
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 130,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "verne-1",
+      "definition": "verne/verne.character.json",
+      "x": 190,
+      "y": 214,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "dividend-1",
+      "definition": "dividend/dividend.character.json",
+      "x": 444,
+      "y": 214,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

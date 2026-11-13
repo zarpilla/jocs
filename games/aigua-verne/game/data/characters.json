@@ -1,0 +1,1058 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "iri": {
+    "name": "pj.iri.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.iri.1"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "if": {
+          "protagonist": "vet"
+        },
+        "action": {
+          "name": "donar",
+          "args": {
+            "item": "$item"
+          }
+        }
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "dialogue": "comunicador"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "iri_gala"
+            },
+            {
+              "any": [
+                {
+                  "inRoom": [
+                    "granja_pati",
+                    "port_terra2",
+                    "aqua_port",
+                    "aqua_fons",
+                    "ferrum_carrer",
+                    "fosa_forn",
+                    "fosa_colada",
+                    "verdant_jardi",
+                    "palau_galeria",
+                    "palau_salo",
+                    "final_palau",
+                    "final_pluja",
+                    "postcredits",
+                    "credits",
+                    "portada"
+                  ],
+                  "who": "iri"
+                },
+                {
+                  "flag": "al_final_lluny"
+                }
+              ]
+            }
+          ]
+        },
+        "name": "LlunyGala"
+      },
+      {
+        "if": {
+          "flag": "iri_gala"
+        },
+        "name": "Gala"
+      },
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ],
+              "who": "iri"
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "vet": {
+    "name": "pj.vet.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.vet.1"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "if": {
+          "protagonist": "iri"
+        },
+        "action": {
+          "name": "donar",
+          "args": {
+            "item": "$item"
+          }
+        }
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "iri"
+        },
+        "dialogue": "comunicador"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ],
+              "who": "vet"
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "diu": {
+    "name": "pj.diu.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.diu.1"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.diu.2"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.diu.3"
+          },
+          {
+            "who": "diu",
+            "text": "pj.diu.4",
+            "sound": "gat"
+          }
+        ]
+      },
+      {
+        "verb": "pickUp",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.diu.5"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "*",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.diu.6"
+          }
+        ]
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "capitana": {
+    "name": "pj.capitana.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.capitana.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "capitana"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "tomas": {
+    "name": "pj.tomas.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.tomas.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "tomas"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "juana": {
+    "name": "pj.juana.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.juana.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "juana"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ],
+    "appearance": [
+      {
+        "if": {
+          "inRoom": "casa_juana"
+        },
+        "anim": "Seu"
+      }
+    ]
+  },
+  "bru": {
+    "name": "pj.bru.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.bru.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "bru"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "rosa": {
+    "name": "pj.rosa.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.rosa.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "rosa"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "nil": {
+    "name": "pj.nil.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.nil.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "inRoom": "palau_servei"
+        },
+        "dialogue": "nil_palau"
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "nil"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "lia": {
+    "name": "pj.lia.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.lia.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "lia"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "verne": {
+    "name": "pj.verne.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.verne.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "flag": "sync_subhasta"
+        },
+        "dialogue": "subhasta"
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "inRoom": "palau_galeria"
+        },
+        "dialogue": "verne_galeria"
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.verne.2"
+          }
+        ]
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "verne_brut"
+            },
+            {
+              "any": [
+                {
+                  "inRoom": [
+                    "granja_pati",
+                    "port_terra2",
+                    "aqua_port",
+                    "aqua_fons",
+                    "ferrum_carrer",
+                    "fosa_forn",
+                    "fosa_colada",
+                    "verdant_jardi",
+                    "palau_galeria",
+                    "palau_salo",
+                    "final_palau",
+                    "final_pluja",
+                    "postcredits",
+                    "credits",
+                    "portada"
+                  ]
+                },
+                {
+                  "flag": "al_final_lluny"
+                }
+              ]
+            }
+          ]
+        },
+        "name": "LlunyBrut"
+      },
+      {
+        "if": {
+          "flag": "verne_brut"
+        },
+        "name": "Brut"
+      },
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "dividend": {
+    "name": "pj.dividend.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.dividend.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.dividend.2"
+          },
+          {
+            "who": "dividend",
+            "text": "pj.dividend.3",
+            "sound": "gos"
+          }
+        ]
+      },
+      {
+        "verb": "pickUp",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.dividend.4"
+          }
+        ]
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "all": [
+            {
+              "flag": "reserva_oberta"
+            },
+            {
+              "any": [
+                {
+                  "inRoom": [
+                    "granja_pati",
+                    "port_terra2",
+                    "aqua_port",
+                    "aqua_fons",
+                    "ferrum_carrer",
+                    "fosa_forn",
+                    "fosa_colada",
+                    "verdant_jardi",
+                    "palau_galeria",
+                    "palau_salo",
+                    "final_palau",
+                    "final_pluja",
+                    "postcredits",
+                    "credits",
+                    "portada"
+                  ]
+                },
+                {
+                  "flag": "al_final_lluny"
+                }
+              ]
+            }
+          ]
+        },
+        "name": "LlunyMoll"
+      },
+      {
+        "if": {
+          "flag": "reserva_oberta"
+        },
+        "name": "Moll"
+      },
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "fidel": {
+    "name": "pj.fidel.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.fidel.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "fidel"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "holm": {
+    "name": "pj.holm.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.holm.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "flag": "sync_subhasta"
+        },
+        "dialogue": "subhasta"
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "holm"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "kessel": {
+    "name": "pj.kessel.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.kessel.1"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "flag": "sync_subhasta"
+        },
+        "dialogue": "subhasta"
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "kessel"
+      }
+    ],
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ]
+  },
+  "quim": {
+    "name": "pj.quim.nom",
+    "outfit": [
+      {
+        "if": {
+          "any": [
+            {
+              "inRoom": [
+                "granja_pati",
+                "port_terra2",
+                "aqua_port",
+                "aqua_fons",
+                "ferrum_carrer",
+                "fosa_forn",
+                "fosa_colada",
+                "verdant_jardi",
+                "palau_galeria",
+                "palau_salo",
+                "final_palau",
+                "final_pluja",
+                "postcredits",
+                "credits",
+                "portada"
+              ]
+            },
+            {
+              "flag": "al_final_lluny"
+            }
+          ]
+        },
+        "name": "Lluny"
+      }
+    ],
+    "appearance": [
+      {
+        "if": {
+          "inRoom": "final_pluja"
+        },
+        "anim": "Seu"
+      }
+    ]
+  },
+  "pell": {
+    "name": "pj.pell.nom"
+  }
+}

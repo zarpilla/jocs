@@ -1,0 +1,389 @@
+{
+  "id": "fosa_forn",
+  "name": "Fosa: el forn",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 214
+          },
+          {
+            "x": 90,
+            "y": 212
+          },
+          {
+            "x": 90,
+            "y": 230
+          },
+          {
+            "x": 64,
+            "y": 242
+          },
+          {
+            "x": 166,
+            "y": 242
+          },
+          {
+            "x": 166,
+            "y": 214
+          },
+          {
+            "x": 640,
+            "y": 214
+          },
+          {
+            "x": 640,
+            "y": 257
+          },
+          {
+            "x": 0,
+            "y": 257
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "carrer",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 100
+        },
+        {
+          "x": 82,
+          "y": 100
+        },
+        {
+          "x": 82,
+          "y": 206
+        },
+        {
+          "x": 8,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 44,
+        "y": 220
+      },
+      "lookAtPoint": {
+        "x": 45,
+        "y": 206
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "pas",
+      "active": true,
+      "description": "colada",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 562,
+          "y": 58
+        },
+        {
+          "x": 640,
+          "y": 58
+        },
+        {
+          "x": 640,
+          "y": 214
+        },
+        {
+          "x": 562,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 602,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 601,
+        "y": 214
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "manxa",
+      "active": true,
+      "description": "manxa",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 340,
+          "y": 96
+        },
+        {
+          "x": 512,
+          "y": 96
+        },
+        {
+          "x": 512,
+          "y": 214
+        },
+        {
+          "x": 340,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 404,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 426,
+        "y": 214
+      }
+    },
+    {
+      "id": "metall",
+      "active": true,
+      "description": "comptadors per fondre",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 66,
+          "y": 196
+        },
+        {
+          "x": 160,
+          "y": 196
+        },
+        {
+          "x": 160,
+          "y": 238
+        },
+        {
+          "x": 66,
+          "y": 238
+        }
+      ],
+      "walkToPoint": {
+        "x": 114,
+        "y": 246
+      },
+      "lookAtPoint": {
+        "x": 113,
+        "y": 238
+      }
+    },
+    {
+      "id": "rascle",
+      "active": true,
+      "description": "rascle",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 510,
+          "y": 98
+        },
+        {
+          "x": 548,
+          "y": 98
+        },
+        {
+          "x": 548,
+          "y": 220
+        },
+        {
+          "x": 510,
+          "y": 220
+        }
+      ],
+      "walkToPoint": {
+        "x": 530,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 529,
+        "y": 220
+      }
+    },
+    {
+      "id": "forn",
+      "active": true,
+      "description": "forn",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 166,
+          "y": 40
+        },
+        {
+          "x": 344,
+          "y": 40
+        },
+        {
+          "x": 344,
+          "y": 206
+        },
+        {
+          "x": 166,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 256,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 255,
+        "y": 206
+      }
+    },
+    {
+      "id": "termometre",
+      "active": true,
+      "description": "termòmetre",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 130,
+          "y": 106
+        },
+        {
+          "x": 170,
+          "y": 106
+        },
+        {
+          "x": 170,
+          "y": 146
+        },
+        {
+          "x": 130,
+          "y": 146
+        }
+      ],
+      "walkToPoint": {
+        "x": 176,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 150,
+        "y": 146
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "forn_ences",
+      "tag": "forn_ences",
+      "animations": {
+        "forn_ences": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "forn_fort",
+      "tag": "forn_fort",
+      "animations": {
+        "forn_fort": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "foc",
+      "tag": "foc",
+      "animations": {
+        "foc": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "foc_fort",
+      "tag": "foc_fort",
+      "animations": {
+        "foc_fort": {
+          "loop": true,
+          "frameDuration": 80
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "guspires",
+      "tag": "guspires",
+      "animations": {
+        "guspires": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 300,
+      "y": 242,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 380,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

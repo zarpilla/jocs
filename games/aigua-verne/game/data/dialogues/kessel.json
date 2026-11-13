@@ -1,0 +1,20 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "kessel",
+  "with": "kessel",
+  "start": "hola",
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "kessel",
+          "text": "dlg.kessel.hola.1"
+        },
+        {
+          "who": "kessel",
+          "text": "dlg.kessel.hola.2"
+        }
+      ]
+    }
+  }
+}

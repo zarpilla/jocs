@@ -1,0 +1,265 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "pare",
+  "with": "quim",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "pare",
+          "node": "hola"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.hola.1"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.hola.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "escriptura",
+          "text": "dlg.pare.opt.escriptura",
+          "if": {
+            "flag": "caixa_oberta",
+            "is": false
+          },
+          "next": "escriptura"
+        },
+        {
+          "id": "contrasenya",
+          "text": "dlg.pare.opt.contrasenya",
+          "if": {
+            "all": [
+              {
+                "flag": "quadre_apartat"
+              },
+              {
+                "flag": "caixa_oberta",
+                "is": false
+              }
+            ]
+          },
+          "next": "contrasenya"
+        },
+        {
+          "id": "verne",
+          "text": "dlg.pare.opt.verne",
+          "if": {
+            "flag": "caixa_oberta"
+          },
+          "once": true,
+          "next": "verne"
+        },
+        {
+          "id": "llavors",
+          "text": "dlg.pare.opt.llavors",
+          "if": {
+            "all": [
+              {
+                "flag": "juana_llavors"
+              },
+              {
+                "flag": "permis_pare",
+                "is": false
+              }
+            ]
+          },
+          "next": "llavors"
+        },
+        {
+          "id": "reg",
+          "text": "dlg.pare.opt.reg",
+          "if": {
+            "all": [
+              {
+                "flag": "cal_reg"
+              },
+              {
+                "flag": "permis_reg",
+                "is": false
+              }
+            ]
+          },
+          "next": "reg"
+        },
+        {
+          "id": "com",
+          "text": "dlg.pare.opt.com",
+          "once": true,
+          "next": "com"
+        },
+        {
+          "id": "temporal",
+          "text": "dlg.pare.opt.temporal",
+          "next": "temporal"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.pare.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "escriptura": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.escriptura.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.pare.escriptura.2"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.escriptura.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "pista_quadre"
+        }
+      ],
+      "goto": "menu"
+    },
+    "contrasenya": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.contrasenya.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.pare.contrasenya.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.pare.contrasenya.3",
+          "if": {
+            "flag": "bol_vist",
+            "is": false
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "pare_porta"
+        }
+      ],
+      "goto": "menu"
+    },
+    "verne": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.verne.1"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.verne.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "llavors": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.llavors.1"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.llavors.2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "permis_pare"
+        }
+      ],
+      "goto": "menu"
+    },
+    "reg": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.reg.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.pare.reg.2"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.reg.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "permis_reg"
+        }
+      ],
+      "goto": "menu"
+    },
+    "com": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.com.1"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.com.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "temporal": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.temporal.1"
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.temporal.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "quim",
+          "text": "dlg.pare.adeu.1"
+        }
+      ]
+    }
+  }
+}

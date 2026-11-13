@@ -1,0 +1,56 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "Cobert del jardiner",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "porta",
+      "label": "jardí",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "tomaquera",
+      "label": "tomaquera",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 99,
+      "y": 76
+    },
+    {
+      "id": "galleda",
+      "label": "galleda",
+      "kind": "prop",
+      "w": 98,
+      "h": 44,
+      "x": 214,
+      "y": 25
+    },
+    {
+      "id": "sacs",
+      "label": "sacs d'adob",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 328,
+      "y": 76
+    },
+    {
+      "id": "eines",
+      "label": "eines",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 443,
+      "y": 25
+    }
+  ],
+  "characters": []
+}

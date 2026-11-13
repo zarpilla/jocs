@@ -8,6 +8,7 @@ motor i la història separada del motor.
 | **Ferro-9**: l'Iri i la Vet, separades per 120 anys, es comuniquen amb la finestra de fase. | [games/ferro-9](games/ferro-9/README.md) |
 | **Suma Zero**: dues germanes de fet volen repartir tots els diners del món a parts iguals. | [games/suma-zero](games/suma-zero/README.md) |
 | **Ni un ou**: a bord d'un vaixell d'una ONG, algú sabota les màquines perquè una mostra de fang no arribi a terra. | [games/ni-un-ou](games/ni-un-ou/README.md) |
+| **Aigua Verne**: l'Iri i la Vet volen el pou de la granja; el Magnat Verne s'ha endut l'aigua de tot un sistema planetari. | [games/aigua-verne](games/aigua-verne/README.md) |
 
 ## Què és compartit i què és de cada joc
 

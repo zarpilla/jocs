@@ -1,0 +1,299 @@
+{
+  "id": "port_terra2",
+  "name": "Port de Terra-2",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 200
+          },
+          {
+            "x": 140,
+            "y": 206
+          },
+          {
+            "x": 360,
+            "y": 206
+          },
+          {
+            "x": 392,
+            "y": 226
+          },
+          {
+            "x": 470,
+            "y": 228
+          },
+          {
+            "x": 639,
+            "y": 224
+          },
+          {
+            "x": 639,
+            "y": 258
+          },
+          {
+            "x": 0,
+            "y": 258
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "cami_granja",
+      "active": true,
+      "description": "camí de la granja",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 198
+        },
+        {
+          "x": 40,
+          "y": 198
+        },
+        {
+          "x": 40,
+          "y": 258
+        },
+        {
+          "x": 0,
+          "y": 258
+        }
+      ],
+      "walkToPoint": {
+        "x": 14,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 20,
+        "y": 258
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "rampa",
+      "active": true,
+      "description": "Cantimplora",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 396,
+          "y": 116
+        },
+        {
+          "x": 464,
+          "y": 116
+        },
+        {
+          "x": 464,
+          "y": 226
+        },
+        {
+          "x": 396,
+          "y": 226
+        }
+      ],
+      "walkToPoint": {
+        "x": 428,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 430,
+        "y": 226
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "tauler",
+      "active": true,
+      "description": "tauler d'anuncis",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 42,
+          "y": 94
+        },
+        {
+          "x": 130,
+          "y": 94
+        },
+        {
+          "x": 130,
+          "y": 205
+        },
+        {
+          "x": 42,
+          "y": 205
+        }
+      ],
+      "walkToPoint": {
+        "x": 88,
+        "y": 216
+      },
+      "lookAtPoint": {
+        "x": 86,
+        "y": 205
+      }
+    },
+    {
+      "id": "panell_preu",
+      "active": true,
+      "description": "panell del preu",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 283,
+          "y": 117
+        },
+        {
+          "x": 346,
+          "y": 117
+        },
+        {
+          "x": 346,
+          "y": 170
+        },
+        {
+          "x": 283,
+          "y": 170
+        }
+      ],
+      "walkToPoint": {
+        "x": 312,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 314,
+        "y": 170
+      }
+    },
+    {
+      "id": "canonada",
+      "active": true,
+      "description": "Canonada",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 353,
+          "y": 0
+        },
+        {
+          "x": 375,
+          "y": 0
+        },
+        {
+          "x": 375,
+          "y": 121
+        },
+        {
+          "x": 353,
+          "y": 121
+        }
+      ],
+      "walkToPoint": {
+        "x": 360,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 364,
+        "y": 121
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "llum_canonada",
+      "tag": "llum_canonada",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_canonada": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "balisa",
+      "tag": "balisa",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "balisa": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 246,
+      "y": 232,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 190,
+      "y": 238,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

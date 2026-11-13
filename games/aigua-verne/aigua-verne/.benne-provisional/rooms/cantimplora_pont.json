@@ -1,0 +1,67 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "Pont de la Cantimplora",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "escala",
+      "label": "bodega",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "mapa",
+      "label": "mapa de navegació",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 97,
+      "y": 76
+    },
+    {
+      "id": "radio",
+      "label": "ràdio",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 188,
+      "y": 25
+    },
+    {
+      "id": "pantalla",
+      "label": "pantalla",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 280,
+      "y": 76
+    },
+    {
+      "id": "finestral",
+      "label": "finestral",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 372,
+      "y": 25
+    },
+    {
+      "id": "seient",
+      "label": "seient de la Capitana",
+      "kind": "hotspot",
+      "w": 80,
+      "h": 44,
+      "x": 463,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Capitana Or"
+  ]
+}

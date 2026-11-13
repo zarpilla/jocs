@@ -1,0 +1,298 @@
+{
+  "$schema": "../schemas/endings.schema.json",
+  "plou": {
+    "title": "final.plou.titol",
+    "text": "final.text",
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.plou.1",
+        "room": "final_palau",
+        "effects": [
+          {
+            "setFlag": "al_final_lluny"
+          }
+        ]
+      },
+      {
+        "who": "holm",
+        "text": "final.plou.2"
+      },
+      {
+        "who": "verne",
+        "text": "final.plou.3"
+      },
+      {
+        "who": "holm",
+        "text": "final.plou.4"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.5"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.6"
+      },
+      {
+        "who": "verne",
+        "text": "final.plou.7"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.8"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.9"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.10"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.11",
+        "room": "final_pluja",
+        "effects": [
+          {
+            "setFlag": "iri_gala",
+            "value": false
+          }
+        ]
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.12"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.13"
+      },
+      {
+        "who": "quim",
+        "text": "final.plou.14"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.15"
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.16"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.17"
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.18"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.19"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.20",
+        "if": {
+          "flag": "barril_donat",
+          "is": false
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.21",
+        "if": {
+          "flag": "barril_donat",
+          "is": false
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.22",
+        "if": {
+          "flag": "barril_donat",
+          "is": false
+        }
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.23",
+        "if": {
+          "flag": "barril_donat",
+          "is": false
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.24",
+        "if": {
+          "flag": "barril_donat",
+          "is": false
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.25",
+        "if": {
+          "flag": "barril_donat"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.26",
+        "if": {
+          "flag": "barril_donat"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.27"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.28"
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.29"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.30"
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.31"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.32"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.33"
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.34"
+      },
+      {
+        "who": "iri",
+        "text": "final.plou.35"
+      },
+      {
+        "who": "vet",
+        "text": "final.plou.36"
+      }
+    ],
+    "credits": [
+      {
+        "who": "narrator",
+        "text": "final.plou.37",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.38"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.39"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.40"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.41"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.42"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.43"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.44",
+        "if": {
+          "chosen": {
+            "dialogue": "juana",
+            "node": "q1",
+            "choice": "vendre"
+          }
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.45",
+        "if": {
+          "chosen": {
+            "dialogue": "juana",
+            "node": "q1",
+            "choice": "regalar"
+          }
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.46",
+        "if": {
+          "chosen": {
+            "dialogue": "juana",
+            "node": "q1",
+            "choice": "beure"
+          }
+        }
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.47",
+        "room": "postcredits",
+        "effects": [
+          {
+            "setFlag": "verne_brut"
+          }
+        ]
+      },
+      {
+        "who": "verne",
+        "text": "final.plou.48"
+      },
+      {
+        "who": "rosa",
+        "text": "final.plou.49"
+      },
+      {
+        "who": "verne",
+        "text": "final.plou.50"
+      },
+      {
+        "who": "rosa",
+        "text": "final.plou.51"
+      },
+      {
+        "who": "verne",
+        "text": "final.plou.52"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.53"
+      },
+      {
+        "who": "narrator",
+        "text": "final.plou.54"
+      }
+    ],
+    "when": {
+      "flag": "reserva_oberta"
+    },
+    "priority": 1
+  }
+}

@@ -1,0 +1,474 @@
+{
+  "frames": {
+    "verdant_cobert 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 1.aseprite": {
+      "frame": {
+        "x": 2734,
+        "y": 0,
+        "w": 27,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 249,
+        "y": 219,
+        "w": 27,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 2.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 61,
+        "h": 135
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 548,
+        "y": 64,
+        "w": 61,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 3.aseprite": {
+      "frame": {
+        "x": 1210,
+        "y": 0,
+        "w": 60,
+        "h": 96
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 532,
+        "y": 101,
+        "w": 60,
+        "h": 96
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 4.aseprite": {
+      "frame": {
+        "x": 1484,
+        "y": 0,
+        "w": 139,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 436,
+        "y": 121,
+        "w": 139,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 5.aseprite": {
+      "frame": {
+        "x": 980,
+        "y": 0,
+        "w": 139,
+        "h": 97
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 439,
+        "y": 116,
+        "w": 139,
+        "h": 97
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 6.aseprite": {
+      "frame": {
+        "x": 701,
+        "y": 0,
+        "w": 139,
+        "h": 99
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 441,
+        "y": 114,
+        "w": 139,
+        "h": 99
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 7.aseprite": {
+      "frame": {
+        "x": 840,
+        "y": 0,
+        "w": 140,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 442,
+        "y": 116,
+        "w": 140,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 8.aseprite": {
+      "frame": {
+        "x": 1623,
+        "y": 0,
+        "w": 144,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 434,
+        "y": 114,
+        "w": 144,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 9.aseprite": {
+      "frame": {
+        "x": 1919,
+        "y": 0,
+        "w": 148,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 435,
+        "y": 118,
+        "w": 148,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 10.aseprite": {
+      "frame": {
+        "x": 1767,
+        "y": 0,
+        "w": 152,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 436,
+        "y": 121,
+        "w": 152,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 11.aseprite": {
+      "frame": {
+        "x": 1270,
+        "y": 0,
+        "w": 125,
+        "h": 95
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 438,
+        "y": 117,
+        "w": 125,
+        "h": 95
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 12.aseprite": {
+      "frame": {
+        "x": 2241,
+        "y": 0,
+        "w": 123,
+        "h": 87
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 446,
+        "y": 115,
+        "w": 123,
+        "h": 87
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 13.aseprite": {
+      "frame": {
+        "x": 2364,
+        "y": 0,
+        "w": 123,
+        "h": 87
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 449,
+        "y": 118,
+        "w": 123,
+        "h": 87
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 14.aseprite": {
+      "frame": {
+        "x": 2487,
+        "y": 0,
+        "w": 124,
+        "h": 87
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 452,
+        "y": 122,
+        "w": 124,
+        "h": 87
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 15.aseprite": {
+      "frame": {
+        "x": 2611,
+        "y": 0,
+        "w": 123,
+        "h": 87
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 456,
+        "y": 125,
+        "w": 123,
+        "h": 87
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 16.aseprite": {
+      "frame": {
+        "x": 1119,
+        "y": 0,
+        "w": 91,
+        "h": 97
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 460,
+        "y": 114,
+        "w": 91,
+        "h": 97
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 17.aseprite": {
+      "frame": {
+        "x": 1395,
+        "y": 0,
+        "w": 89,
+        "h": 95
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 464,
+        "y": 118,
+        "w": 89,
+        "h": 95
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 18.aseprite": {
+      "frame": {
+        "x": 2155,
+        "y": 0,
+        "w": 86,
+        "h": 91
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 455,
+        "y": 114,
+        "w": 86,
+        "h": 91
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "verdant_cobert 19.aseprite": {
+      "frame": {
+        "x": 2067,
+        "y": 0,
+        "w": 88,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 456,
+        "y": 116,
+        "w": 88,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "verdant_cobert.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2761,
+      "h": 360
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "galleda",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "reg_muntat",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tomaquera_viva",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pols",
+        "from": 4,
+        "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

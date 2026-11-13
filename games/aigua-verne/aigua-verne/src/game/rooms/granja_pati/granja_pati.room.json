@@ -1,0 +1,432 @@
+{
+  "id": "granja_pati",
+  "name": "Pati de la granja",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 198
+          },
+          {
+            "x": 130,
+            "y": 197
+          },
+          {
+            "x": 250,
+            "y": 199
+          },
+          {
+            "x": 268,
+            "y": 214
+          },
+          {
+            "x": 334,
+            "y": 216
+          },
+          {
+            "x": 370,
+            "y": 211
+          },
+          {
+            "x": 472,
+            "y": 198
+          },
+          {
+            "x": 639,
+            "y": 199
+          },
+          {
+            "x": 639,
+            "y": 258
+          },
+          {
+            "x": 0,
+            "y": 258
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_casa",
+      "active": true,
+      "description": "casa",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 78,
+          "y": 104
+        },
+        {
+          "x": 128,
+          "y": 104
+        },
+        {
+          "x": 128,
+          "y": 185
+        },
+        {
+          "x": 78,
+          "y": 185
+        }
+      ],
+      "walkToPoint": {
+        "x": 104,
+        "y": 204
+      },
+      "lookAtPoint": {
+        "x": 103,
+        "y": 185
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_graner",
+      "active": true,
+      "description": "graner",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 516,
+          "y": 116
+        },
+        {
+          "x": 602,
+          "y": 116
+        },
+        {
+          "x": 602,
+          "y": 191
+        },
+        {
+          "x": 516,
+          "y": 191
+        }
+      ],
+      "walkToPoint": {
+        "x": 556,
+        "y": 206
+      },
+      "lookAtPoint": {
+        "x": 559,
+        "y": 191
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cami_port",
+      "active": true,
+      "description": "camí del port",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 606,
+          "y": 192
+        },
+        {
+          "x": 639,
+          "y": 192
+        },
+        {
+          "x": 639,
+          "y": 258
+        },
+        {
+          "x": 606,
+          "y": 258
+        }
+      ],
+      "walkToPoint": {
+        "x": 630,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 622,
+        "y": 258
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "pou",
+      "active": true,
+      "description": "pou",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 272,
+          "y": 124
+        },
+        {
+          "x": 328,
+          "y": 124
+        },
+        {
+          "x": 328,
+          "y": 214
+        },
+        {
+          "x": 272,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 296,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 300,
+        "y": 214
+      }
+    },
+    {
+      "id": "bomba",
+      "active": true,
+      "description": "bomba de Verne",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 330,
+          "y": 166
+        },
+        {
+          "x": 366,
+          "y": 166
+        },
+        {
+          "x": 366,
+          "y": 210
+        },
+        {
+          "x": 330,
+          "y": 210
+        }
+      ],
+      "walkToPoint": {
+        "x": 354,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 348,
+        "y": 210
+      }
+    },
+    {
+      "id": "canonada",
+      "active": true,
+      "description": "Canonada",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 390,
+          "y": 0
+        },
+        {
+          "x": 414,
+          "y": 0
+        },
+        {
+          "x": 414,
+          "y": 117
+        },
+        {
+          "x": 390,
+          "y": 117
+        }
+      ],
+      "walkToPoint": {
+        "x": 402,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 402,
+        "y": 117
+      }
+    },
+    {
+      "id": "panell_preu",
+      "active": true,
+      "description": "panell del preu",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 410,
+          "y": 122
+        },
+        {
+          "x": 471,
+          "y": 122
+        },
+        {
+          "x": 471,
+          "y": 158
+        },
+        {
+          "x": 410,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 444,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 440,
+        "y": 158
+      }
+    },
+    {
+      "id": "arbre",
+      "active": true,
+      "description": "olivera",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 204,
+          "y": 112
+        },
+        {
+          "x": 264,
+          "y": 112
+        },
+        {
+          "x": 264,
+          "y": 190
+        },
+        {
+          "x": 204,
+          "y": 190
+        }
+      ],
+      "walkToPoint": {
+        "x": 236,
+        "y": 206
+      },
+      "lookAtPoint": {
+        "x": 234,
+        "y": 190
+      }
+    },
+    {
+      "id": "tanca",
+      "active": true,
+      "description": "tanca",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 368,
+          "y": 159
+        },
+        {
+          "x": 470,
+          "y": 159
+        },
+        {
+          "x": 470,
+          "y": 189
+        },
+        {
+          "x": 368,
+          "y": 189
+        }
+      ],
+      "walkToPoint": {
+        "x": 420,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 419,
+        "y": 189
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "llum_canonada",
+      "tag": "llum_canonada",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_canonada": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 442,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 384,
+      "y": 242,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 284,
+      "y": 180,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

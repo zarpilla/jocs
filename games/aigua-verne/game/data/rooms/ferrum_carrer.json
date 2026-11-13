@@ -1,0 +1,473 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.ferrum_carrer.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "rampa": {
+      "name": "sala.ferrum_carrer.rampa.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "cantimplora_bodega"
+        }
+      ]
+    },
+    "porta_sindicat": {
+      "name": "sala.ferrum_carrer.porta_sindicat.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.porta_sindicat.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "ferrum_sindicat"
+        }
+      ]
+    },
+    "porta_fosa": {
+      "name": "sala.ferrum_carrer.porta_fosa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.porta_fosa.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "promesa_lia",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.porta_fosa.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "claus_fetes"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.porta_fosa.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "fosa_forn"
+        }
+      ]
+    },
+    "font": {
+      "name": "sala.ferrum_carrer.font.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.1"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_anglesa",
+          "if": {
+            "all": [
+              {
+                "flag": "cal_corretja"
+              },
+              {
+                "flag": "corretja_agafada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "corretja_agafada"
+            },
+            {
+              "giveItem": "corretja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.font.3"
+            }
+          ]
+        }
+      ]
+    },
+    "condensador": {
+      "name": "sala.ferrum_carrer.condensador.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "condensador_arreglat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cal_corretja"
+            },
+            {
+              "setFlag": "cal_filtre"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.4"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "corretja",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "corretja_posada"
+            },
+            {
+              "takeItem": "corretja"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "filtre",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "filtre_posat"
+            },
+            {
+              "takeItem": "filtre"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "corretja_posada"
+              },
+              {
+                "flag": "filtre_posat"
+              },
+              {
+                "flag": "condensador_arreglat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.8",
+              "sound": "condensador"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.ferrum_carrer.condensador.9"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.ferrum_carrer.condensador.10"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "condensador_arreglat"
+            },
+            {
+              "setFlag": "canalla_beu"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "condensador_arreglat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.11"
+            }
+          ]
+        }
+      ]
+    },
+    "piquet": {
+      "name": "sala.ferrum_carrer.piquet.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "canalla_beu",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.piquet.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.piquet.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.piquet.3"
+            }
+          ]
+        }
+      ]
+    },
+    "comptadors": {
+      "name": "sala.ferrum_carrer.comptadors.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.comptadors.1"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.comptadors.2"
+            }
+          ]
+        }
+      ]
+    },
+    "panell_preu": {
+      "name": "sala.ferrum_carrer.panell_preu.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.panell_preu.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.panell_preu.2"
+            }
+          ]
+        }
+      ]
+    },
+    "canonada": {
+      "name": "sala.ferrum_carrer.canonada.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.canonada.1"
+            }
+          ]
+        }
+      ]
+    },
+    "rosa": {
+      "visibleIf": {
+        "var": "escena",
+        "op": ">=",
+        "value": 4
+      }
+    }
+  },
+  "onEnter": [
+    {
+      "id": "arribada",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.ferrum_carrer.entra.1"
+        },
+        {
+          "who": "iri",
+          "text": "sala.ferrum_carrer.entra.2",
+          "effects": [
+            {
+              "setVar": "preu_aigua",
+              "value": 64
+            }
+          ]
+        },
+        {
+          "who": "vet",
+          "text": "sala.ferrum_carrer.entra.3"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.ferrum_carrer.entra.4"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "barril_piquet": {
+      "visibleIf": {
+        "flag": "barril_donat"
+      }
+    },
+    "condensador_arreglat": {
+      "visibleIf": {
+        "flag": "condensador_arreglat"
+      }
+    },
+    "goteig": {
+      "visibleIf": {
+        "flag": "condensador_arreglat"
+      }
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.granja_casa.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.granja_casa.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "granja_pati"
+        }
+      ]
+    },
+    "calaix": {
+      "name": "sala.granja_casa.calaix.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "look",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "flag": "oferta_vista",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.calaix.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_casa.calaix.2"
+            },
+            {
+              "who": "iri",
+              "text": "sala.granja_casa.calaix.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_casa.calaix.4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "oferta_vista"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "look",
+            "use",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.calaix.5"
+            }
+          ]
+        }
+      ]
+    },
+    "videotelefon": {
+      "name": "sala.granja_casa.videotelefon.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.videotelefon.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.videotelefon.2",
+              "sound": "videotelefon"
+            }
+          ],
+          "dialogue": "pare"
+        }
+      ]
+    },
+    "quadre": {
+      "name": "sala.granja_casa.quadre.nom",
+      "visibleIf": {
+        "flag": "quadre_apartat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.quadre.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "pickUp",
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "pista_quadre"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.quadre.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "quadre_apartat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "pickUp",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.quadre.3"
+            }
+          ]
+        }
+      ]
+    },
+    "caixa_forta": {
+      "name": "sala.granja_casa.caixa_forta.nom",
+      "visibleIf": {
+        "flag": "quadre_apartat"
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "caixa_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.caixa_forta.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.caixa_forta.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push"
+          ],
+          "if": {
+            "flag": "caixa_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.caixa_forta.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push"
+          ],
+          "dialogue": "teclat"
+        }
+      ]
+    },
+    "bol": {
+      "name": "sala.granja_casa.bol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.bol.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_casa.bol.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "bol_vist"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.bol.3"
+            }
+          ]
+        }
+      ]
+    },
+    "pots": {
+      "name": "sala.granja_casa.pots.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.pots.1"
+            },
+            {
+              "who": "vet",
+              "text": "sala.granja_casa.pots.2",
+              "if": {
+                "protagonist": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.pots.3"
+            }
+          ]
+        }
+      ]
+    },
+    "pica": {
+      "name": "sala.granja_casa.pica.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.pica.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.granja_casa.pica.2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
