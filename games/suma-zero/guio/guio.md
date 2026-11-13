@@ -360,7 +360,8 @@ sintètica** del portàtil. [SO: telefon_bar]
 
 En Tomàs s'endú l'inalàmbric al rebost (mentrestant, la Vet no pot trucar: «Ara la línia és d'una dona que no
 existeix») (que es tanca: «Està discutint amb la seva dona inexistent. Millor no
-entrar») i deixa el comandament a la barra. La Vet l'agafa i el dona a en Marcel, que posa *La Comissària
+entrar») i deixa el comandament a la barra (en tornar a la Vet: «En Tomàs s'ha tancat al rebost amb el telèfon. Ha deixat el
+comandament a la barra.»). La Vet l'agafa i el dona a en Marcel, que posa *La Comissària
 Bassols* («Ah! El capítol del violí!»). Aleshores en Tomàs surt del rebost: «Ja està. Som lliures. Tots dos.», i
 recupera el comandament.
 
@@ -423,13 +424,14 @@ Sense res d'això, l'Escena 4 és més difícil (sospita inicial), no impossible
 dins de tant en tant. Comença quan la Vet diu «He perdut el meu fill!»; abans, si l'Iri prova el teclat: «El
 vigilant mira cap aquí. Ara no.»
 
-1. **Vet:** «He perdut el meu fill!» (que no existeix). El vigilant la segueix per la terminal i deixa la
+1. **Vet:** «He perdut el meu fill!» (que no existeix; després d'un reinici, el vigilant: «Un altre cop, senyora?
+   ...Aquest nen s'escapa molt.»). El vigilant la segueix per la terminal i deixa la
    porta de personal sense vigilància. [SO: megafonia] Mentrestant, el vigilant li fa preguntes (el nom del nen,
    l'edat, la roba), i cada resposta és un torn. **Si la Vet parla massa** (tria les respostes llargues, que són
    més divertides), l'Ortega mira per la vidriera: la cigarreta perd un torn més per resposta.
 2. **Vet** (mirar, sense torn): sota el taulell hi ha un pòsit amb el codi: **8-4-2-6**. El llegeix en veu alta.
 3. **Iri:** tecleja el codi i entra a l'oficina. [SO: teclat_porta] **Si s'equivoca**, la porta xiula, i la Vet
-   ha de **plorar més fort** (parlant amb el vigilant: un torn) abans de l'acció següent, perquè el vigilant no s'hi
+   ha de **plorar** (parlant amb el vigilant: un torn) abans de l'acció següent, perquè el vigilant no s'hi
    giri. Si no ho fa, es torna a començar el pas. [SO: alarma_porta] [SO: plor]
 4. **Iri, a dins** (`aeroport_oficina`): al terminal, afegeix «I. i V., tècniques» a la llista del vol BCMU-07 i
    manda imprimir dues **acreditacions de manteniment**. La impressora és lenta: l'Iri l'ha d'empènyer («Va, va,
@@ -438,7 +440,8 @@ vigilant mira cap aquí. Ara no.»
 6. **Vet:** «L'he trobat!» (assenyala el nen de la samarreta vermella, que és d'una altra família). El vigilant s'hi
    acosta, i el nen el mira. Fi de la distracció (no gasta torn).
 
-**Si s'acaba la cigarreta** (o la porta xiula i ningú no ho tapa): l'Ortega torna a entrar i el vigilant torna a la
+**Si s'acaba la cigarreta**, l'Ortega torna a entrar; **si la porta xiula i ningú no ho tapa**, el vigilant ho sent
+i torna corrents (l'Iri, just a temps, fa veure que llegeix un cartell). En tots dos casos, el vigilant torna a la
 porta de personal («No l'he trobat, senyora. Potser ja és a casa.»). NARRADOR: «Una hora i una cigarreta més
 tard...». Es torna al principi del pas: el codi ja se sap, la llista ja està feta, i el que tingui l'Iri ho
 conserva; però mentre el vigilant vigila, l'Iri no pot fer soroll ni sortir de l'oficina.
@@ -447,8 +450,9 @@ Durant la sincronia, objectes perduts i la cafeteria no s'hi poden fer servir: �
 
 **Final de l'acte (cinemàtica `avio`):** a l'avió, entre tècnics de debò. L'Iri dona l'acreditació a la Vet.
 La Rius les mira: «Sou noves? Soc la Rius, l'encarregada. Benvingudes a la subcontracta. Aquí ningú no cobra el viatge.» (Al moll s'hi torna a presentar: «Ho repeteixo perquè a l'avió dormíeu.») La Vet ja
-porta el vestit d'auditora. IRI: «I aquest vestit? Fa una hora anaves amb la bomber.» VET: «Objectes perduts. Algú
-s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.» IRI: «Era d'un altre.» L'avió s'enlaira. **Fi de l'Acte 1.**
+porta el vestit d'auditora. IRI: «I aquest vestit? Fa una hora anaves amb la jaqueta bomber.» VET: «Objectes perduts. Algú
+s'hi va deixar un vestit jaqueta de la meva talla. Era el destí.» (Si té el maletí: «Objectes perduts. Ja que hi era pel
+maletí, també m'he endut un vestit jaqueta de la meva talla. Era el destí.») IRI: «Era d'un altre.» L'avió s'enlaira. **Fi de l'Acte 1.**
 
 ---
 
@@ -502,7 +506,7 @@ Ballester: «Jo tinc una reunió sobre sostenibilitat, dalt al despatx. Balleste
 
 **Sala:** `bcmu_moll`. L'Iri arriba amb els tècnics de manteniment. La Rius es presenta («Rius. Encarregada. No
 em diguis senyora») i reparteix la feina: tothom al soterrani, a les caixes fortes. «I la teva companya?»
-«Al lavabo.» «No l'hi comptis.» L'Iri ha d'anar al tercer pis.
+«Al lavabo.» «Doncs no li descomptaré els minuts.» L'Iri ha d'anar al tercer pis.
 
 **Trencaclosques 4b.1 — La targeta de planta.** L'ascensor de servei només va al tercer pis amb la targeta de
 la Rius. La Rius està de mal humor: l'**aplicació de la subcontracta** al seu mòbil els descompta els minuts que
@@ -590,7 +594,7 @@ només surten durant la sincronia:
 | **Cantar** (malament) | el bip següent | Una vegada: després en Ballester li demana que pari |
 | **Explicar un acudit** | el bip següent | Cada acudit, una vegada (n'hi ha tres; un és dolent i no cobreix res) |
 | **Trencar un got** | el bip següent | +1 sospita d'en Ballester |
-| **Parlar de *La Comissària Bassols*** | els dos bips següents | Només si la Vet sap el capítol bo (*El violí mut*). *La vídua del Liceu*: «Inversemblant», +1 sospita |
+| **Parlar de *La Comissària Bassols*** | el bip següent, i relaxa en Ballester | Només si la Vet sap el capítol bo (*El violí mut*). *La vídua del Liceu*: «Inversemblant», +1 sospita |
 
 Si l'Iri tecleja sense cobertura: «Què ha estat això?», +1 sospita. **A la sospita 3, es torna a començar el
 pas** (el codi primer torna a sortir; totes les eines tornen; en Ballester: «Ah, vostè canta? Doncs canti,
@@ -759,7 +763,7 @@ Quan s'atura el virus, el Director mira la gravació de l'ascensor de servei: «
 Per megafonia: «Atenció, personal de seguretat: busquem una noia amb dessuadora.» [SO: megafonia_bcmu]
 
 - **Iri:** primer prova la **porta de l'escala** del passadís, amb la clau del Llibre Major: s'obre (era la
-  mateixa clau; «Més tard era ara»). L'escala és plena de seguretat. La tanca. «Pla B: escombraries.» Al
+  mateixa clau; «Ja deia jo que aquest pany em sonava. Però no esperava visites.»). L'escala és plena de seguretat. La tanca. «Pla B: escombraries.» Al
   **conducte d'escombraries** de la sala, cal esmorteir la caiguda abans de saltar:
   - **NETA-3** (si és aliat) llença bosses de paper pel conducte. «Vés. Jo plego a les sis. Per primera vegada.»
     [SO: robot_atura]

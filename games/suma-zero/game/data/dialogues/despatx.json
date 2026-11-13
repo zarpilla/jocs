@@ -417,7 +417,18 @@
         },
         {
           "who": "bonfill",
-          "text": "dlg.despatx.despres2"
+          "text": "dlg.despatx.despres2",
+          "if": {
+            "flag": "repartit",
+            "is": false
+          }
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.despatx.despres2_repartit",
+          "if": {
+            "flag": "repartit"
+          }
         },
         {
           "who": "player",

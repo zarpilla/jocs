@@ -55,6 +55,10 @@ export interface OpcionsActe1 {
   entrepa?: boolean;
   /** La Vet li torna el tap a en Tomàs. */
   tap?: boolean;
+  /** La Vet li torna la recepta a en Tomàs. */
+  recepta?: boolean;
+  /** La Vet no pregunta a en Marcel pel robot: ni ella ni l'Iri saben «NETA, descansa». */
+  sensNeta?: boolean;
   /** La Vet recupera el maletí i les ulleres a l'aeroport. */
   preparacio?: boolean;
   /** L'Iri prova un codi a l'atzar abans que la Vet llegeixi el pòsit (i la Vet ha de plorar). */
@@ -97,14 +101,15 @@ export function jugarPis(p: Jugador, o: OpcionsActe1 = {}) {
   p.do('use', 'porta');
 }
 
-/** L'escena 2: del bar fins a l'aeroport. */
-export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
-  p.talk('marcel');
-  // el tap
+/** Al bar: el tap del clauer d'en Tomàs, fins a en Marcel. */
+export function barTap(p: Jugador) {
   p.talk('tomas', 'cafe', 'adeu');
   p.do('pickUp', 'tap_barra');
   p.do('give', 'marcel', 'tap');
-  // la recepta
+}
+
+/** Al bar: la recepta del calaix (l'Iri l'obre amb la contrasenya de la wifi), fins a en Marcel. */
+export function barRecepta(p: Jugador) {
   p.do('use', 'porta_rebost');
   p.do('look', 'calaix');
   p.do('use', 'porta');
@@ -118,7 +123,10 @@ export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
   p.do('open', 'calaix');
   p.do('use', 'porta');
   p.do('give', 'marcel', 'recepta');
-  // el comandament
+}
+
+/** Al bar: el comandament (l'Iri fa de dona d'en Tomàs), fins a en Marcel. */
+export function barComandament(p: Jugador) {
   p.talk('tomas', 'comandament', 'adeu');
   p.talk('trucada', 'trucada', 'adeu');
   p.switchTo('iri');
@@ -126,10 +134,19 @@ export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
   p.switchTo('vet');
   p.do('pickUp', 'comandament_barra');
   p.do('give', 'marcel', 'comandament');
+}
+
+/** L'escena 2: del bar fins a l'aeroport. */
+export function jugarBar(p: Jugador, o: OpcionsActe1 = {}) {
+  p.talk('marcel');
+  barTap(p);
+  barRecepta(p);
+  barComandament(p);
   // el que sap en Marcel, i la trucada a l'Iri
-  p.talk('marcel', 'servidor', 'clau', 'tub', 'vol', 'ballester', 'neta', 'gracies');
-  p.talk('trucada', 'resum', 'robot', 'adeu');
+  p.talk('marcel', 'servidor', 'clau', 'tub', 'vol', 'ballester', ...(o.sensNeta ? [] : ['neta']), 'gracies');
+  p.talk('trucada', 'resum', ...(o.sensNeta ? [] : ['robot']), 'adeu');
   if (o.tap) p.do('give', 'tomas', 'tap');
+  if (o.recepta) p.do('give', 'tomas', 'recepta');
   p.do('use', 'porta');
 }
 
@@ -222,7 +239,7 @@ export function jugarCollaret(p: Jugador, o: OpcionsActe2 = {}) {
   p.do('use', 'llibre'); // el primer bip, lliure
   p.switchTo('vet');
   if (o.aliats) {
-    p.talk('ballester', 'violi', 'adeu'); // tapa dos bips
+    p.talk('ballester', 'violi', 'cantar', 'adeu'); // cada cosa tapa un bip
     p.switchTo('iri');
     p.do('use', 'llibre');
     p.do('use', 'llibre');

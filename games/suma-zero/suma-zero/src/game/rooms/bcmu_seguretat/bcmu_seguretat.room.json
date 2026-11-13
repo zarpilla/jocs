@@ -432,6 +432,17 @@
       "visible": false,
       "clickable": false,
       "zIndex": 1
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 127,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
     }
   ]
 }

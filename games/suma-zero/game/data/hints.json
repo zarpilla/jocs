@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/hints.schema.json",
   "iri_caixa": {
-    "priority": 1,
+    "priority": 6,
     "when": {
       "all": [
         {
@@ -23,7 +23,7 @@
     ]
   },
   "iri_cable_cafetera": {
-    "priority": 2,
+    "priority": 7,
     "when": {
       "all": [
         {
@@ -49,7 +49,7 @@
     ]
   },
   "iri_espera_cable": {
-    "priority": 3,
+    "priority": 8,
     "when": {
       "all": [
         {
@@ -87,7 +87,7 @@
     ]
   },
   "iri_diu": {
-    "priority": 4,
+    "priority": 5,
     "when": {
       "all": [
         {
@@ -112,7 +112,7 @@
     ]
   },
   "iri_connectar": {
-    "priority": 5,
+    "priority": 4,
     "when": {
       "all": [
         {
@@ -137,7 +137,7 @@
     ]
   },
   "iri_mossegar": {
-    "priority": 6,
+    "priority": 9,
     "when": {
       "all": [
         {
@@ -174,7 +174,7 @@
     ]
   },
   "iri_ara_vet": {
-    "priority": 7,
+    "priority": 10,
     "when": {
       "all": [
         {
@@ -917,6 +917,10 @@
         {
           "flag": "bar_fet",
           "is": false
+        },
+        {
+          "hasItem": "tap",
+          "is": false
         }
       ]
     },
@@ -927,6 +931,34 @@
       "pista.vet_plegar.1",
       "pista.vet_plegar.2",
       "pista.vet_plegar.3"
+    ]
+  },
+  "vet_plegar_tap": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "resum_fet"
+        },
+        {
+          "flag": "bar_fet",
+          "is": false
+        },
+        {
+          "hasItem": "tap"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "bar_fet"
+    },
+    "levels": [
+      "pista.vet_plegar.1",
+      "pista.vet_plegar_tap.2",
+      "pista.vet_plegar_tap.3"
     ]
   },
   "vet_preparar": {
@@ -1123,6 +1155,10 @@
         {
           "flag": "cal_clau",
           "is": false
+        },
+        {
+          "flag": "iri_a_llibre",
+          "is": false
         }
       ]
     },
@@ -1140,6 +1176,56 @@
       "pista.vet_espera_iri.1",
       "pista.vet_espera_iri.2",
       "pista.vet_espera_iri.3"
+    ]
+  },
+  "vet_comencar": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "all": [
+            {
+              "flag": "acte1_fet"
+            },
+            {
+              "flag": "acte2_fet",
+              "is": false
+            }
+          ]
+        },
+        {
+          "flag": "vet_a_seguretat"
+        },
+        {
+          "flag": "sync_collaret",
+          "is": false
+        },
+        {
+          "flag": "cal_clau",
+          "is": false
+        },
+        {
+          "flag": "iri_a_llibre"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "sync_collaret"
+        },
+        {
+          "flag": "cal_clau"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_comencar.1",
+      "pista.vet_comencar.2",
+      "pista.vet_comencar.3"
     ]
   },
   "iri_aeroport_espera": {
@@ -2508,6 +2594,42 @@
       "pista.iri_virus_espera.3"
     ]
   },
+  "iri_contrasenya_mirar": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "vet_al_despatx"
+        },
+        {
+          "flag": "contrasenya_ok",
+          "is": false
+        },
+        {
+          "flag": "pista_contrasenya",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "pista_contrasenya"
+        },
+        {
+          "flag": "contrasenya_ok"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_contrasenya_mirar.1",
+      "pista.iri_contrasenya_mirar.2",
+      "pista.iri_contrasenya_mirar.3"
+    ]
+  },
   "iri_contrasenya": {
     "priority": 8,
     "when": {
@@ -2523,15 +2645,10 @@
           "is": false
         },
         {
-          "any": [
-            {
-              "flag": "sap_rockefeller"
-            },
-            {
-              "flag": "pista_contrasenya",
-              "is": false
-            }
-          ]
+          "flag": "pista_contrasenya"
+        },
+        {
+          "flag": "sap_rockefeller"
         }
       ]
     },

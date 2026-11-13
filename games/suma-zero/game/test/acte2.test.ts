@@ -205,6 +205,38 @@ describe('Acte 2 · el tercer pis', () => {
   });
 });
 
+describe("Acte 2 · sense el codi de NETA-3 (la Vet no ho va preguntar a en Marcel)", () => {
+  for (const entrepa of [true, false]) {
+    it(entrepa ? "la Vet porta l'entrepà de casa: la pista és enviar-lo pel tub" : "la Vet no té menjar: la pista és buscar-ne (l'entrepà d'en Ballester)", () => {
+      const { n, p } = partida({ checkHints: true, fins: 'acte2_fet' });
+      jugarActe1(p, { sensNeta: true, entrepa });
+      expect(n.flag('iri_sap_neta')).toBe(false);
+      jugarVestibul(p);
+      p.switchTo('iri');
+      p.talk('rius', 'cafe');
+      p.do('use', 'ascensor');
+      expect(n.flag('iri_sap_neta')).toBe(false);
+      expect(n.activeHints()[0]).toBe('iri_robot');
+      p.switchTo('vet');
+      expect(n.activeHints()[0]).toBe(entrepa ? 'vet_enviar_menjar' : 'vet_buscar_menjar');
+      if (!entrepa) p.do('pickUp', 'entrepa');
+      const menjar = entrepa ? 'entrepa' : 'entrepa_ballester';
+      p.use(menjar, 'tub');
+      p.switchTo('iri');
+      p.use(menjar, 'neta');
+      expect(n.flag('robot_aturat')).toBe(true);
+      // i la resta de l'acte, igual
+      p.do('pickUp', 'cartell');
+      p.use('cartell', 'camera1');
+      p.do('pickUp', 'galleda');
+      p.use('galleda', 'camera2');
+      p.do('use', 'porta_neteja');
+      jugarCollaret(p);
+      expect(n.flag('acte2_fet')).toBe(true);
+    });
+  }
+});
+
 describe('Acte 2 · la sincronia del collaret', () => {
   function finsAlLlibre() {
     const r = aGinebra();
@@ -263,6 +295,14 @@ describe('Acte 2 · la sincronia del collaret', () => {
     expect(texts(p.do('use', 'got'))).toContain('Ja és trencat');
   });
 
+  it("«El violí mut» tapa un sol bip: el tercer codi necessita una altra eina", () => {
+    const { n, p } = finsAlLlibre();
+    p.switchTo('vet');
+    p.talk('ballester', 'violi', 'adeu');
+    expect(n.getVar('coberta')).toBe(1);
+    expect(n.flag('ballester_relaxat')).toBe(true);
+  });
+
   it("sense haver-lo relaxat amb la sèrie, en Ballester no s'obre: només hi ha la mentida", () => {
     const { n, p } = finsAlLlibre();
     p.switchTo('vet');
@@ -280,7 +320,7 @@ describe('Acte 2 · la sincronia del collaret', () => {
   it('relaxat i amb la mentida: la missió d\'en Ballester falla', () => {
     const { n, p } = finsAlLlibre();
     p.switchTo('vet');
-    p.talk('ballester', 'violi', 'adeu');
+    p.talk('ballester', 'violi', 'cantar', 'adeu');
     p.switchTo('iri');
     p.do('use', 'llibre');
     p.do('use', 'llibre');
@@ -308,6 +348,18 @@ describe('Acte 2 · coherència', () => {
     p.talk('rius', 'cafe');
     expect(texts(p.do('use', 'ascensor'))).toContain('NETA, descansa');
     expect(n.flag('iri_sap_neta')).toBe(true);
+  });
+
+  it("amb l'Iri al Llibre Major abans que la Vet arribi a seguretat: l'Iri l'avisa, i la pista de la Vet no diu que l'Iri no hi és", () => {
+    const { n, p } = aGinebra();
+    jugarTercerPis(p, { aliats: true });
+    expect(n.flag('iri_a_llibre')).toBe(true);
+    const abans = p.transcript.length;
+    jugarVestibul(p);
+    expect(p.transcript.slice(abans).join(' ')).toContain('Jo ja soc al Llibre Major');
+    const pistes = n.activeHints();
+    expect(pistes).toContain('vet_comencar');
+    expect(pistes).not.toContain('vet_espera_iri');
   });
 
   it('la roba: la Vet continua d\'auditora a tot l\'acte', () => {

@@ -1322,7 +1322,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "auriculars_boto",
           "lines": [
             {
@@ -1332,7 +1335,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "caixa_cartro",
           "lines": [
             {
@@ -1359,7 +1365,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "auriculars",
           "if": {
             "flag": "auricular_pensat",
@@ -1378,7 +1387,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "auriculars",
           "lines": [
             {
@@ -1405,7 +1417,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "pizza",
           "lines": [
             {

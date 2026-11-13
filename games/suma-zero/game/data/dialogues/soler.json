@@ -65,7 +65,21 @@
         },
         {
           "who": "soler",
-          "text": "dlg.soler.fill1"
+          "text": "dlg.soler.fill1",
+          "if": {
+            "var": "reinicis_aeroport",
+            "op": "<",
+            "value": 1
+          }
+        },
+        {
+          "who": "soler",
+          "text": "dlg.soler.fill1_altra",
+          "if": {
+            "var": "reinicis_aeroport",
+            "op": ">=",
+            "value": 1
+          }
         },
         {
           "who": "soler",

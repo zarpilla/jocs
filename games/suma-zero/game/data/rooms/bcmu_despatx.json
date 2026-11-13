@@ -148,6 +148,10 @@
     },
     "mobil": {
       "name": "sala.bcmu_despatx.mobil.nom",
+      "visibleIf": {
+        "flag": "pons_mobil",
+        "is": false
+      },
       "interactions": [
         {
           "verb": [

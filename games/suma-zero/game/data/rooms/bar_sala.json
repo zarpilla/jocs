@@ -19,6 +19,20 @@
         }
       ],
       "walkIn": "right"
+    },
+    {
+      "id": "tomas_rebost",
+      "verb": "*",
+      "once": true,
+      "if": {
+        "flag": "tomas_rebost"
+      },
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bar_sala.tomas_rebost"
+        }
+      ]
     }
   ],
   "hotspots": {
@@ -370,6 +384,39 @@
             },
             {
               "setFlag": "tap_tornat"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "recepta",
+          "if": {
+            "flag": "marcel_recepta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.tomas.tap_aviat"
+            }
+          ]
+        },
+        {
+          "verb": "give",
+          "item": "recepta",
+          "lines": [
+            {
+              "who": "tomas",
+              "text": "sala.bar_sala.recepta_tornada1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bar_sala.recepta_tornada2"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "recepta"
             }
           ]
         },

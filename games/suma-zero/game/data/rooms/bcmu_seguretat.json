@@ -116,6 +116,14 @@
               "face": "R"
             }
           ]
+        },
+        {
+          "who": "iri",
+          "text": "sala.bcmu_seguretat.arribada_iri",
+          "if": {
+            "flag": "iri_a_llibre"
+          },
+          "sound": "auricular"
         }
       ]
     }

@@ -53,7 +53,10 @@
           "dialogue": "neta"
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa",
           "if": {
             "var": "robot",
@@ -68,7 +71,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa",
           "if": {
             "flag": "robot_aturat"
@@ -81,7 +87,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa",
           "lines": [
             {
@@ -116,7 +125,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa_suis",
           "if": {
             "var": "robot",
@@ -131,7 +143,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa_suis",
           "if": {
             "flag": "robot_aturat"
@@ -144,7 +159,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa_suis",
           "lines": [
             {
@@ -179,7 +197,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa_ballester",
           "if": {
             "var": "robot",
@@ -194,7 +215,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa_ballester",
           "if": {
             "flag": "robot_aturat"
@@ -207,7 +231,10 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "give"
+          ],
           "item": "entrepa_ballester",
           "lines": [
             {

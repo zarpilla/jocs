@@ -10,7 +10,18 @@
       "lines": [
         {
           "who": "player",
-          "text": "sala.aeroport_personal.intro1"
+          "text": "sala.aeroport_personal.intro1",
+          "if": {
+            "flag": "soler_distret",
+            "is": false
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.aeroport_personal.intro1_buscant",
+          "if": {
+            "flag": "soler_distret"
+          }
         }
       ]
     }

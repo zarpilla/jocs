@@ -1,6 +1,8 @@
 /** L'Acte 1 jugat sencer, per tots els camins, amb una pista disponible a cada pas. */
 import { describe, expect, it } from 'vitest';
-import { item, jugarActe1, jugarAeroport, jugarBar, jugarPis, partida, texts } from './partida.js';
+import {
+  barComandament, barRecepta, barTap, item, jugarActe1, jugarAeroport, jugarBar, jugarPis, partida, texts,
+} from './partida.js';
 
 describe('Acte 1 · camins', () => {
   for (const sacrifici of ['caixa', 'auricular', 'pizza'] as const) {
@@ -25,7 +27,21 @@ describe('Acte 1 · camins', () => {
     for (const i of ['entrepa', 'clau_casa', 'maleti', 'ulleres', 'recepta']) expect(world.items('vet')).toContain(i);
     expect(world.items('vet')).not.toContain('tap');
     expect(n.flag('ulleres_posades')).toBe(true);
-    expect(n.flag('iri_sap_neta')).toBe(true);
+    expect(n.flag('iri_sap_neta')).toBe(true);    // a l'avió, el vestit surt d'objectes perduts «ja que hi era pel maletí»
+    expect(p.transcript.join(' ')).toContain('Ja que hi era pel maletí');
+  });
+
+  it("al bar, en un altre ordre (el comandament primer): les pistes porten a la recepta i després al tap", () => {
+    const { n, p } = partida({ checkHints: true });
+    jugarPis(p);
+    p.talk('marcel');
+    expect(n.activeHints()[0]).toBe('vet_comandament');
+    barComandament(p);
+    expect(n.activeHints()[0]).toBe('vet_recepta');
+    barRecepta(p);
+    expect(n.activeHints()[0]).toBe('vet_tap');
+    barTap(p);
+    expect(n.getVar('donats')).toBe(3);
   });
 
   it('amb un codi dolent: la porta xiula i la Vet plora més fort', () => {
@@ -51,11 +67,15 @@ describe("Acte 1 · la sincronia de l'aeroport", () => {
     p.do('use', 'teclat'); // xiula
     const lines = texts(p.do('look', 'teclat').concat(p.do('use', 'teclat'))); // mirar no compta; tornar-hi (sense que la Vet plori), sí
     expect(lines).toContain('Una hora i una cigarreta més tard');
+    // el reinici ve del xiulet, no de la cigarreta
+    expect(lines).toContain('El vigilant sent el xiulet');
+    expect(lines).not.toContain('llença la burilla');
     expect(n.flag('sync_aeroport')).toBe(false);
     expect(n.getVar('cigarreta')).toBe(12);
     expect(n.getVar('reinicis_aeroport')).toBe(1);
     p.switchTo('vet');
-    p.talk('soler', 'fill', 'nom_curt', 'edat_curt', 'roba_curt');
+    // el vigilant recorda que ja l'havia buscat
+    expect(texts(p.talk('soler', 'fill', 'nom_curt', 'edat_curt', 'roba_curt'))).toContain("Aquest nen s'escapa molt");
     p.do('look', 'taulell');
     p.switchTo('iri');
     p.do('use', 'teclat');
@@ -215,6 +235,59 @@ describe('Acte 1 · revisió de coherència', () => {
     expect(texts(p.do('give', 'tomas', 'tap'))).toContain("Primer l'ha de veure en Marcel");
     expect(n.flag('tap_tornat')).toBe(false);
     expect(world.items('vet')).toContain('tap');
+  });
+
+  it("a en Diu se li poden donar les coses, no només fer-les servir amb ell (la pizza és «per al gat»)", () => {
+    const { n, p } = partida();
+    p.do('open', 'caixa');
+    p.use('cable_xarxa', 'router'); // en Diu el mossega
+    p.do('open', 'passaplats');
+    p.talk('passaplats', 'pizza');
+    p.switchTo('vet');
+    p.do('open', 'nevera');
+    p.do('pickUp', 'pizza_nevera');
+    p.use('pizza', 'passaplats');
+    p.switchTo('iri');
+    expect(texts(p.do('give', 'diu', 'pizza'))).toContain('La pizza de demà');
+    expect(n.getVar('sacrifici')).toBe('pizza');
+  });
+
+  it("la recepta es pot tornar a en Tomàs (després que en Marcel l'hagi vista)", () => {
+    const { p, world } = partida();
+    jugarPis(p);
+    const abans = p.transcript.length;
+    jugarBar(p, { recepta: true });
+    // en tornar a la Vet després de la trucada, es diu on és en Tomàs
+    expect(p.transcript.slice(abans).join(' ')).toContain("En Tomàs s'ha tancat al rebost");
+    expect(p.transcript.slice(abans).join(' ')).toContain('Com ha sortit del calaix');
+    expect(world.items('vet')).not.toContain('recepta');
+  });
+
+  it("pistes del pis: amb en Diu distret però sense el cable d'alimentació, la pista diu d'on treure'l", () => {
+    const { n, p } = partida();
+    p.do('pickUp', 'fibra'); // en Diu la mossega
+    expect(n.activeHints()[0]).toBe('iri_cable_cafetera'); // abans que en Diu: primer, els cables
+    p.do('open', 'passaplats');
+    p.talk('passaplats', 'pizza');
+    p.switchTo('vet');
+    p.do('open', 'nevera');
+    p.do('pickUp', 'pizza_nevera');
+    p.use('pizza', 'passaplats');
+    p.switchTo('iri');
+    p.do('give', 'diu', 'pizza');
+    expect(n.flag('diu_distret')).toBe(true);
+    expect(n.activeHints()[0]).toBe('iri_cable_cafetera');
+    expect(n.t('pista.iri_cable_cafetera.2')).toContain('cafetera');
+  });
+
+  it("la pista de plegar del bar només parla del tap si la Vet el porta", () => {
+    const { n, p } = partida();
+    jugarPis(p);
+    n.apply([{ setFlag: 'resum_fet' }]);
+    n.apply({ giveItem: 'tap', who: 'vet' });
+    expect(n.activeHints()[0]).toBe('vet_plegar_tap');
+    n.apply({ takeItem: 'tap', who: 'vet' });
+    expect(n.activeHints()[0]).toBe('vet_plegar');
   });
 
   it('en Marcel no torna a comptar el que ja ha vist', () => {

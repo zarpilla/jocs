@@ -30,7 +30,20 @@
         },
         {
           "who": "vet",
-          "text": "sala.avio.vestit2"
+          "text": "sala.avio.vestit2",
+          "if": {
+            "hasItem": "maleti",
+            "who": "vet",
+            "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "sala.avio.vestit2_maleti",
+          "if": {
+            "hasItem": "maleti",
+            "who": "vet"
+          }
         },
         {
           "who": "iri",

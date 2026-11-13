@@ -59,11 +59,37 @@ describe('Acte 3 · camins', () => {
     expect(n.resolveEnding()).toBe('final_taula');
   });
 
+  it("el Director, després: «tornen a ser on eren» si es torna al banc; si es reparteix, «tothom té el mateix que jo»", () => {
+    for (const repartir of [false, true]) {
+      const { p } = ambElVirus({ aliats: true });
+      jugarDespatx(p, { pons: true, mobil: 'pons', repartir });
+      p.switchTo('vet');
+      const dit = texts(p.do('talkTo', 'bonfill'));
+      expect(dit).toContain(repartir ? 'Tothom té el mateix que jo' : 'tornen a ser on eren');
+      expect(dit).not.toContain(repartir ? 'tornen a ser on eren' : 'Tothom té el mateix que jo');
+    }
+  });
+
   it('amb aliats però tornant-ho tot: «Hores extres»', () => {
     const { n, p } = ambElVirus({ aliats: true });
     jugarActe3(p, { neta: true });
     expect(n.resolveEnding()).toBe('final_hores');
     expect(texts(n.ending('final_hores').scene)).not.toContain('pensions del món');
+  });
+});
+
+describe('Acte 3 · pistes', () => {
+  it("la pista de la contrasenya no parla de «el meu millor amic» fins que l'Iri ho ha vist al Llibre Major", () => {
+    const { n, p } = ambElVirus({ aliats: true });
+    p.switchTo('vet');
+    p.do('use', 'ascensor');
+    p.talk('pons', 'ue');
+    p.do('use', 'porta');
+    p.switchTo('iri');
+    expect(n.activeHints()[0]).toBe('iri_contrasenya_mirar');
+    p.talk('llibre');
+    expect(n.flag('pista_contrasenya')).toBe(true);
+    expect(n.activeHints()[0]).toBe(n.flag('sap_rockefeller') ? 'iri_contrasenya' : 'iri_gos');
   });
 });
 

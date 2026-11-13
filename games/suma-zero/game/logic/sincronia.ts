@@ -30,7 +30,7 @@ export interface PasSincronia {
    * Una alarma que s'ha de tapar: mentre el `flag` és cert, cada torn resta 1 a `var`; si arriba a
    * zero, es reinicia el pas. El contingut l'encén (flag + var) i la tapa (flag a fals).
    */
-  alarma?: { flag: string; var: string };
+  alarma?: { flag: string; var: string; /** Si el reinici ve de l'alarma: aquestes línies en lloc de les del reinici. */ linies?: Linia[] };
   /** Avisos del rellotge: quan queden aquests torns, la línia (amb `{torns}`). */
   avisos?: Record<number, string>;
   /**
@@ -52,7 +52,11 @@ export const PASSOS: Record<string, PasSincronia> = {
     sales: ['aeroport_terminal', 'aeroport_personal', 'aeroport_oficina'],
     rellotge: 'cigarreta',
     torns: 12,
-    alarma: { flag: 'alarma_porta', var: 'alarma' },
+    alarma: {
+      flag: 'alarma_porta',
+      var: 'alarma',
+      linies: ['sync.aeroport.xiulet_reinici1', 'sync.aeroport.reinici2', 'sync.aeroport.reinici3'],
+    },
     avisos: { 6: 'sync.aeroport.queden', 3: 'sync.aeroport.queden', 1: 'sync.aeroport.ultima' },
     reinici: {
       linies: ['sync.aeroport.reinici1', 'sync.aeroport.reinici2', 'sync.aeroport.reinici3'],
@@ -124,6 +128,7 @@ const LLIURES = new Set(['look', 'walkTo', 'talkTo']);
 
 export const SINCRONIA_TEXTS = [
   'sync.aeroport.queden', 'sync.aeroport.ultima', 'sync.aeroport.reinici1', 'sync.aeroport.reinici2', 'sync.aeroport.reinici3',
+  'sync.aeroport.xiulet_reinici1',
   'sync.collaret.reinici1', 'sync.collaret.reinici2', 'sync.collaret.reinici3',
   'sync.mobil.queden', 'sync.mobil.ultima', 'sync.mobil.mira1', 'sync.mobil.mira2', 'sync.mobil.mira3', 'sync.mobil.mira4',
   'sync.mobil.caducat', 'sync.mobil.reinici1',
@@ -166,7 +171,9 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
       ...(pas.rellotge ? [{ setVar: pas.rellotge, value: pas.torns ?? 0 }] as Effect[] : []),
       ...(pas.alarma ? [{ setFlag: pas.alarma.flag, value: false }, { setVar: pas.alarma.var, value: 0 }] as Effect[] : []),
     ]);
-    const linies = reglaTrencada ? pas.regla!.linies : pas.reinici.linies;
+    const linies = reglaTrencada ? pas.regla!.linies
+      : alarmaEsgotada && pas.alarma?.linies ? pas.alarma.linies
+      : pas.reinici.linies;
     return { lines: linies.map(linia), endDialogue: true };
   }
   const avis = pas.avisos?.[queden];
