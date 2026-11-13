@@ -36,6 +36,13 @@
       "text": "Ja m'ho pensaré.",
       "enabled": false,
       "say": false
+    },
+    {
+      "id": "menu__adeu_pacte",
+      "scriptName": "menu__adeu_pacte",
+      "text": "Vaig a reformar-me una mica més.",
+      "enabled": false,
+      "say": false
     }
   ]
 }

@@ -249,6 +249,9 @@ describe('Ferro-9 · Acte 1', () => {
     // Canvi automàtic a l'altra banda, amb l'objecte a l'inventari.
     expect(p.active).toBe('iri');
     expect(p.inventory()).toContain('nota_vet');
+    // Encara no ha llegit la nota: no sap que hi ha algú a l'altra banda.
+    expect(keys(p.use('llapis', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri_res']);
+    n.apply({ setFlag: 'nota_vet_llegida' });
     expect(keys(p.use('llapis', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri_abans']);
     n.apply({ setFlag: 'iri_sap_pany' });
     expect(keys(p.use('llapis', 'cambra'))).toEqual(['finestra.rebuig.no_cal_iri']);

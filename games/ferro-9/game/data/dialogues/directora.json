@@ -11,6 +11,19 @@
     },
     {
       "if": {
+        "hasItem": "tub_amb_llibreta",
+        "who": "vet"
+      },
+      "node": "tub"
+    },
+    {
+      "if": {
+        "flag": "pacte_acceptat"
+      },
+      "node": "hola_pacte"
+    },
+    {
+      "if": {
         "seen": {
           "dialogue": "directora",
           "node": "primera"
@@ -85,13 +98,30 @@
         {
           "id": "no",
           "text": "dlg.directora.opt.no",
-          "next": "no"
+          "next": "no",
+          "if": {
+            "flag": "pacte_acceptat",
+            "is": false
+          }
         },
         {
           "id": "adeu",
           "text": "dlg.directora.opt.adeu",
           "next": "adeu",
-          "end": true
+          "end": true,
+          "if": {
+            "flag": "pacte_acceptat",
+            "is": false
+          }
+        },
+        {
+          "id": "adeu_pacte",
+          "text": "dlg.directora.opt.adeu_pacte",
+          "next": "adeu_pacte",
+          "end": true,
+          "if": {
+            "flag": "pacte_acceptat"
+          }
         }
       ]
     },
@@ -176,6 +206,35 @@
         {
           "who": "directora",
           "text": "dlg.directora.tornada3"
+        }
+      ]
+    },
+    "tub": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.tub1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.directora.tub2"
+        }
+      ]
+    },
+    "hola_pacte": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.hola_pacte"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu_pacte": {
+      "lines": [
+        {
+          "who": "directora",
+          "text": "dlg.directora.adeu_pacte"
         }
       ]
     }

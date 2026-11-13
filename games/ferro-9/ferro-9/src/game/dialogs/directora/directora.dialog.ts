@@ -25,3 +25,7 @@ options.menu__no.onChoose(() => {
 options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('directora', dialog, 'menu', 'adeu')
 })
+
+options.menu__adeu_pacte.onChoose(() => {
+  chooseNarrativeOption('directora', dialog, 'menu', 'adeu_pacte')
+})

@@ -176,6 +176,41 @@
       "pista.vet_reparar.2"
     ]
   },
+  "vet_mos_perdo": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "panell_vet_reparat"
+        },
+        {
+          "flag": "llapis_donat",
+          "is": false
+        },
+        {
+          "remembers": {
+            "who": "mos",
+            "fact": "insultat"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "remembers": {
+          "who": "mos",
+          "fact": "insultat"
+        }
+      }
+    },
+    "levels": [
+      "pista.vet_mos_perdo.1",
+      "pista.vet_mos_perdo.2"
+    ]
+  },
   "vet_nota": {
     "priority": 4,
     "when": {

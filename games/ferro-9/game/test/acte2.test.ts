@@ -78,7 +78,7 @@ describe('Ferro-9 · Acte 2 · La comporta', () => {
     const s = finsMida();
     const { p, n } = s;
     p.do('pickUp', 'serra');
-    expect(texts(p.do('pickUp', 'biga_acer'))).toContain('capatàs'); // també la podria amagar...
+    expect(texts(p.do('pickUp', 'biga_acer'))).toContain('nosa'); // també la podria amagar...
     p.use('biga_acer', 'trapa');
     p.do('open', 'trapa'); // ...però s'ho repensa
     p.use('serra', item('biga_acer'));
