@@ -1,6 +1,6 @@
 /** El joc sencer, jugat de cap a peus, amb una pista disponible a cada pas. */
 import { describe, expect, it } from 'vitest';
-import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, jugarTot, partida } from './partida.js';
+import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, escena8, jugarTot, partida } from './partida.js';
 
 describe('Partida sencera', () => {
   it('amb tots els aliats: primera plana', () => {
@@ -134,5 +134,57 @@ describe('Coherència (segona repassada)', () => {
     amb(p, 'iri', 'pallol');
     p.talk('marcel', 'gat', 'guardar');
     expect(n.flag('aliat_marcel')).toBe(true);
+  });
+});
+
+describe('Que no us vegin juntes (logic/separades.ts)', () => {
+  it("abans que les escoltin, poden ser a la mateixa sala", () => {
+    const { p } = partida();
+    escena1(p);
+    amb(p, 'iri', 'menjador');
+    amb(p, 'vet', 'menjador');
+    expect(p.room).toBe('menjador');
+  });
+
+  it("de l'Escena 4 a la reunió, cap no entra on és l'altra; pels passadissos, sí que es creuen", () => {
+    const { p, world } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p);
+    amb(p, 'iri', 'laboratori');
+    amb(p, 'vet', 'passadis');
+    const linies = p.do('use', 'porta_laboratori');
+    expect(p.room).toBe('passadis');
+    expect(linies.map((l) => l.key)).toEqual(['separades.vet', 'separades.1', 'separades.tub']);
+    amb(p, 'iri', 'passadis');
+    expect(world.protagonistRoom?.('vet')).toBe('passadis');
+  });
+
+  it("a l'Escena 7, la Vet no baixa a màquines si hi ha l'Iri", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
+    expect(n.getVar('escena')).toBe(7);
+    amb(p, 'vet', 'passadis_baix');
+    p.do('use', 'porta_maquines');
+    expect(p.room).toBe('passadis_baix');
+  });
+
+  it('quan la Capitana les reuneix, tornen a estar juntes: al menjador, i després a tot arreu', () => {
+    const { n, p, world } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p); escena7(p);
+    amb(p, 'vet', 'cabina_capitana');
+    p.talk('capitana', 'reunir');
+    expect(p.room).toBe('menjador');
+    expect(world.protagonistRoom?.('iri')).toBe('menjador');
+    // Si la Vet surt de la reunió, hi pot tornar encara que hi hagi l'Iri.
+    anar(p, 'passadis');
+    anar(p, 'menjador');
+    expect(p.room).toBe('menjador');
+    expect(n.flag('reunio_comencada')).toBe(true);
+  });
+
+  it('el joc sencer acaba amb les dues juntes', () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p); escena7(p); escena8(p);
+    expect(n.getVar('escena')).toBe(9);
+    expect(n.check({ flag: 'reunio_comencada' })).toBe(true);
   });
 });

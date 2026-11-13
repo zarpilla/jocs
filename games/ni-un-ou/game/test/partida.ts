@@ -222,7 +222,10 @@ export function escena6(p: Jugador, o: Opcions & { nadia?: boolean } = {}) {
   p.do('use', 'escotilla'); // Escena 7
 }
 
-/** Escena 7: on ningú no beu. */
+/**
+ * Escena 7: on ningú no beu. Encara van separades (logic/separades.ts): la clau d'en Tomàs baixa de la cuina al
+ * rebost, i la mostra hi puja, pel muntacàrregues.
+ */
 export function escena7(p: Jugador, o: { frontisses?: boolean } = {}) {
   expect(p.active).toBe('vet');
   expect(p.room).toBe('infermeria');
@@ -233,17 +236,21 @@ export function escena7(p: Jugador, o: { frontisses?: boolean } = {}) {
     p.use('clau_tubs', 'registre');
     p.use('clau_tubs', 'registre');
     anar(p, 'diposit2');
-    p.do('open', 'filtre');
-    anar(p, 'infermeria');
-    return;
+  } else {
+    anar(p, 'cuina');
+    p.talk('tomas', 'clau7', 'entrepa7');
+    p.use('clau_tomas', 'munta');
+    amb(p, 'iri', 'rebost');
+    p.do('pickUp', 'safata');
+    p.do('look', 'registre');
+    p.use('clau_tomas', 'registre');
+    expect(p.room).toBe('diposit2');
   }
-  anar(p, 'cuina');
-  p.talk('tomas', 'clau7', 'entrepa7');
-  anar(p, 'rebost');
-  p.do('look', 'registre');
-  p.use('clau_tomas', 'registre');
-  expect(p.room).toBe('diposit2');
   p.do('open', 'filtre');
+  anar(p, 'rebost');
+  p.use('mostra7', 'munta');
+  amb(p, 'vet', 'cuina');
+  p.do('pickUp', 'safata');
   anar(p, 'infermeria'); // Acte 3
 }
 

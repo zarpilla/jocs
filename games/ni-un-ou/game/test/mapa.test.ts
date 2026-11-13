@@ -61,8 +61,11 @@ describe('El plànol', () => {
 
   it("Escena 6: s'hi pot anar a tot arreu menys a la caixa de cadenes, el dipòsit 2 i el pal", () => {
     const { n, p } = finsEscena6();
+    amb(p, 'iri', 'laboratori');
     amb(p, 'vet', 'passadis');
     const totes = accessibles(n);
+    // On és l'Iri, no: no les han de veure juntes (logic/separades.ts).
+    expect(totes.has('laboratori')).toBe(false);
     for (const s of ['coberta_popa', 'coberta_proa', 'pallol', 'taller', 'sala_bombes', 'cabina_capitana', 'pont', 'sala_radio', 'camarot_iri', 'rebost']) {
       expect(totes.has(s), s).toBe(true);
     }
@@ -137,11 +140,14 @@ function escena6AmbPlanol(p: Jugador) {
   amb(p, 'vet', 'passadis');
   p.do('pickUp', 'planol');
   ambPlanol(p, 'coberta_popa');
-  // la Vet va a màquines amb el plànol i el dona a l'Iri
-  ambPlanol(p, 'sala_maquines');
-  p.do('give', 'iri', 'mapa');
+  // a màquines hi ha l'Iri: no les han de veure juntes (logic/separades.ts)
+  expect(viatge(p.narrative, 'sala_maquines').sala).toBeNull();
+  // la Vet li envia el plànol pel muntacàrregues
+  ambPlanol(p, 'cuina');
+  p.use('mapa', 'munta');
+  amb(p, 'iri', 'rebost');
+  p.do('pickUp', 'safata');
   expect(p.inventory('iri')).toContain('mapa');
-  amb(p, 'iri');
   ambPlanol(p, 'taller');
   p.do('pickUp', 'cisalla');
   ambPlanol(p, 'pallol');
