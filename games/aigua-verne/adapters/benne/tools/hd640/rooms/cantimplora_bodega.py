@@ -819,6 +819,6 @@ GEOMETRIA = {
         'nevera': _t(FRIDGE[0] - 1, FRIDGE[1], FRIDGE[2] + 1, FRIDGE[3], wx=559, wy=232),
         'carmanyola': _t(LUNCH[0] - 2, LUNCH[1] - 6, LUNCH[2] + 2, LUNCH[3] + 2, wx=596, wy=234),
     },
-    'spawns': {'tomas': (628, 246), 'diu': (HATCH[0], HATCH[1] + 14), 'iri': (250, 244), 'vet': (418, 250)},
+    'spawns': {'tomas': (592, 246), 'diu': (HATCH[0], HATCH[1] + 14), 'iri': (250, 244), 'vet': (418, 250)},
     'walkable': [(8, 226), (632, 226), (636, 257), (4, 257)],
 }

@@ -516,7 +516,7 @@ def bg(cv):
     gespa(cv)
     cami(cv)
     llancadora(cv)
-    panell_preu(cv, 186, 112, '64', post=46, w=44)
+    panell_preu(cv, 186, 112, '', post=46, w=44)
     residencia(cv)
     climatitzador(cv)
     reixa(cv)

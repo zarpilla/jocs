@@ -77,7 +77,7 @@ def gota(cv, cx, cy, s=1.0, lit=0):
     cv.flat(cx - max(1, round(r * 0.4)), cy - max(0, round(r * 0.2)), BLUEG[5])
 
 
-def panell_preu(cv, x0, y0, num='64', post=40, w=46):
+def panell_preu(cv, x0, y0, num='', post=40, w=46):
     """El panell del preu: pantalla negra amb la gota, «VERNE», el preu en taronja amb la fletxa i una barra
     que s'omple. Damunt d'un pal blanc de Verdant (polit, com tot)."""
     h = 26
@@ -89,7 +89,7 @@ def panell_preu(cv, x0, y0, num='64', post=40, w=46):
     cv.hline(x0, x0 + w, y0, BLACKT, 3.0, lit=0)
     gota(cv, x0 + 6, y0 + 8, 0.9)
     text(cv, 'VERNE', x0 + 12, y0 + 3, None, 0, flat=(210, 224, 240))
-    x = x0 + 13
+    x = x0 + 13 if num else x0 + 14
     for ch in num:                                                     # el preu, xifres de 3×5 a doble alçada
         g = DIGITS[ch]
         for j, row in enumerate(g):
