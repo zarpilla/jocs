@@ -26,6 +26,50 @@ export function readGameFiles(dir = gameDir()) {
   return files;
 }
 
+/**
+ * Claus repetides dins d'un mateix objecte JSON. `JSON.parse` es queda amb l'última sense dir res,
+ * i un text o una pista poden desaparèixer sense que se'n adoni ningú.
+ */
+export function duplicateKeys(text: string): string[] {
+  const found: string[] = [];
+  const stack: (Set<string> | null)[] = []; // un Set per objecte, null per llista
+  let i = 0;
+  while (i < text.length) {
+    const ch = text[i]!;
+    if (ch === '"') {
+      let j = i + 1;
+      while (text[j] !== '"') j += text[j] === '\\' ? 2 : 1;
+      const str = JSON.parse(text.slice(i, j + 1)) as string;
+      let k = j + 1;
+      while (/\s/.test(text[k] ?? '')) k++;
+      const keys = stack[stack.length - 1];
+      if (text[k] === ':' && keys) {
+        if (keys.has(str)) found.push(str);
+        keys.add(str);
+      }
+      i = j + 1;
+      continue;
+    }
+    if (ch === '{') stack.push(new Set());
+    else if (ch === '[') stack.push(null);
+    else if (ch === '}' || ch === ']') stack.pop();
+    i++;
+  }
+  return found;
+}
+
+/** Fitxers del joc amb claus repetides: camí relatiu a `game/` → claus. */
+export function gameDuplicateKeys(dir = gameDir()) {
+  const out: Record<string, string[]> = {};
+  for (const sub of ['data', 'locales']) {
+    for (const full of walk(join(dir, sub))) {
+      const dups = duplicateKeys(readFileSync(full, 'utf8'));
+      if (dups.length) out[relative(dir, full).split(sep).join('/')] = dups;
+    }
+  }
+  return out;
+}
+
 /** Llegeix el contingut del joc des del disc (per a eines de Node). */
 export function loadGameFromDisk(dir = gameDir()) {
   return assembleGame(readGameFiles(dir));

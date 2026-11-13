@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { Ajv } from 'ajv';
 import { assembleGame, validateContent, type ValidationIssue } from '@aventura/narrative-core';
 import { gameDir, loadGameLogic } from './joc.js';
-import { gameSounds, readGameFiles } from './load-game.js';
+import { gameDuplicateKeys, gameSounds, readGameFiles } from './load-game.js';
 
 const { GAME_ACTIONS, gameTextKeys } = await loadGameLogic();
 
@@ -32,6 +32,11 @@ for (const [path, json] of Object.entries(files)) {
       shapeIssues.push({ level: 'error', where: `game/${path}${e.instancePath}`, message: `${e.message} ${JSON.stringify(e.params)}` });
     }
   }
+}
+
+// Claus repetides: el JSON es queda amb l'última i l'altra desapareix sense avís.
+for (const [path, keys] of Object.entries(gameDuplicateKeys())) {
+  for (const k of keys) shapeIssues.push({ level: 'error', where: `game/${path}`, message: `clau repetida: «${k}» (només compta l'última)` });
 }
 
 // 2. Coherència del contingut (només si la forma és correcta).

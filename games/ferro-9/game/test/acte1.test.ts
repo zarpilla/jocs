@@ -161,6 +161,8 @@ describe('Ferro-9 · Acte 1', () => {
     // ── Iri: rep la nota, la llegeix i respon ──
     const tornada = p.switchTo('iri');
     expect(texts(tornada)).toContain('parpelleja');
+    // Encara no hi ha sincronia automàtica: la pista l'envia a prémer el botó.
+    expect(n.activeHints()[0]).toBe('iri_rebre_ritual');
     const rebuda = p.do('push', 'boto');
     expect(p.inventory()).toContain('nota_vet');
     // Primer enviament fet a mà: l'Iri deixa la cambra sincronitzada.

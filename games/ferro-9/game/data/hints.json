@@ -271,6 +271,34 @@
       "pista.vet_esperar.2"
     ]
   },
+  "iri_rebre_ritual": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "sincronia_automatica",
+          "is": false
+        },
+        {
+          "var": "finestra_armada",
+          "op": "==",
+          "value": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "finestra_armada",
+      "op": "!=",
+      "value": "vet"
+    },
+    "levels": [
+      "pista.iri_rebre_ritual.1",
+      "pista.iri_rebre_ritual.2"
+    ]
+  },
   "iri_rebre": {
     "priority": 9,
     "when": {
@@ -1279,7 +1307,7 @@
     ]
   },
   "iri_rovell": {
-    "priority": 4,
+    "priority": 5,
     "when": {
       "all": [
         {
