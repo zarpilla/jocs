@@ -341,6 +341,8 @@ treu el gasoil de l'aigua abans de tornar-la al mar, però va a poc a poc). Si l
 
 En Diu, assegut damunt d'un tub calent, mira en Bastida molta estona. (Ningú no ho entén. El jugador, a l'Acte 3, sí.)
 
+Quan la sentina és buida, l'Iri torna a connectar el sensor. Calla, com ha de fer.
+
 ### Escena 2 — Les revisions (Vet)
 
 **Sales:** `coberta_popa`, `coberta_proa` (exteriors) · `cuina`, `infermeria`, `cabina_capitana`, `laboratori`.
@@ -408,7 +410,7 @@ Per avançar cal fer les quatre revisions (en Bastida diu «ara no»; la seva é
 sempre en escena abans de l'Acte 2: menteix («Dormia»), i té pèls de gat i olor de sardina.
 
 **Trencaclosques 2.2 — On és la Juana.** La Juana no ha vingut a esmorzar. Al laboratori no hi és. En Tomàs (o la
-pista): «Quan vol estar sola, va on hi ha sol i no hi ha gent.» A **proa**, sota la balsa salvavides, on no passa
+pista; si a la revisió no se li ha preguntat, a la cuina): «Quan vol estar sola, va on hi ha sol i no hi ha gent.» A **proa**, sota la balsa salvavides, on no passa
 ningú, la Juana llegeix al sol estirada damunt d'una manta, amb el vent que li gira les pàgines.
 
 > JUANA: Ah. M'heu trobat.
@@ -653,7 +655,7 @@ l'ordre que es vulgui; a cadascun hi ha algú (o alguna cosa) i una pista:
 | **Pallol** | El Marcel, assegut a terra, i **en Diu**, menjant sardines. | El secret del Marcel (vegeu sota). «Aquesta tarda he sentit cops a proa. Pensava que eren fantasmes. Jo crec en fantasmes.» A l'inventari, sobre la porta: falta un **cadenat**. |
 | **Cuina** | En Tomàs, fent pa. | «Algú m'ha robat un entrepà de truita de la safata del berenar. Si és la Juana, li perdono.» |
 | **Cabina de la Capitana** | La Capitana, llegint una novel·la romàntica. | «La Juana sempre torna.» Damunt la taula, el contracte de Blau Net, amb el lema a la capçalera («Per un mar més net, junts»): «Condició 4: embarcar N. Vidal.» |
-| **Caixa de cadenes** (proa) | Un cadenat nou a la porta. | Cops a dins. |
+| **Caixa de cadenes** (proa) | Un cadenat nou a la porta. | Cops a dins. «Juana? Juana, ets tu?» Tres cops, més forts. «Aguanta.» |
 
 **El tub fa el compte.** Cada vegada que una parla pel tub (o cara a cara), diu en veu alta les pistes que ja té, i
 només aquestes: «En Bastida diu que deu ser a popa... Però quan la Juana vol estar sola, va a proa.» · «El Marcel

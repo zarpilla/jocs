@@ -121,6 +121,29 @@
               "who": "narrator",
               "text": "sala.coberta_proa.escotilla.2",
               "sound": "cops"
+            },
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.escotilla.19"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.coberta_proa.escotilla.20"
+            },
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.escotilla.21",
+              "if": {
+                "hasItem": "cisalla",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.coberta_proa.escotilla.22",
+              "if": {
+                "hasItem": "cisalla"
+              }
             }
           ],
           "effects": [

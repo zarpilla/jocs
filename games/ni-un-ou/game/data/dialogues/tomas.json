@@ -218,6 +218,14 @@
           }
         },
         {
+          "who": "player",
+          "text": "dlg.tomas.cuina2.3",
+          "if": {
+            "flag": "juana_explica",
+            "is": false
+          }
+        },
+        {
           "who": "tomas",
           "text": "dlg.tomas.cuina2.2",
           "if": {
