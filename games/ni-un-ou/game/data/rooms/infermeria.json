@@ -425,6 +425,23 @@
             "pull",
             "open"
           ],
+          "if": {
+            "flag": "travesser_tret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull",
+            "open"
+          ],
           "lines": [
             {
               "who": "player",

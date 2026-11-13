@@ -1099,6 +1099,19 @@
         },
         {
           "verb": "look",
+          "if": {
+            "flag": "rele_posat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_maquines.generador.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",

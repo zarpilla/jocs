@@ -834,7 +834,7 @@ Així, el moment de l'Iri no depèn del camí que hagi fet la Vet: tant se val q
 > BASTIDA: I ara t'hi he tornat a tirar. Ja ho sé.
 > BASTIDA: La vàlvula era la de popa. No us hauríeu enfonsat. Només volia que tornéssim a port.
 > BASTIDA: La ràdio, perquè ningú de terra us expliqués res. *(mira l'Iri)* T'ho va explicar igualment la Rut.
-> BASTIDA: El volant i el portàtil són al fons del mar. *(pausa)* Al fons del mar hi ha moltes coses, últimament.
+> BASTIDA: El volant, la clau de vàlvules del taller i el portàtil són al fons del mar. *(pausa)* Al fons del mar hi ha moltes coses, últimament.
 > JUANA: I a mi em vas tancar en una caixa.
 > BASTIDA: Amb una manta.
 > JUANA: L'entrepà era bo. La resta, no.

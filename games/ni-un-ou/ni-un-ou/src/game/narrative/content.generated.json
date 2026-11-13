@@ -3908,6 +3908,23 @@
                   "pull",
                   "open"
                 ],
+                "if": {
+                  "flag": "travesser_tret"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.infermeria.llitera.7"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use",
+                  "pull",
+                  "open"
+                ],
                 "lines": [
                   {
                     "who": "player",
@@ -10504,6 +10521,19 @@
                   {
                     "who": "player",
                     "text": "sala.sala_maquines.generador.1"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "flag": "rele_posat",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.sala_maquines.generador.4"
                   }
                 ]
               },
@@ -22999,7 +23029,7 @@
       "dlg.reunio.confessio.14": "La ràdio, perquè ningú de terra us expliqués res.",
       "dlg.reunio.confessio.15": "Mira l'Iri.",
       "dlg.reunio.confessio.16": "T'ho va explicar igualment la Rut.",
-      "dlg.reunio.confessio.17": "El volant i el portàtil són al fons del mar.",
+      "dlg.reunio.confessio.17": "El volant, la clau de vàlvules del taller i el portàtil són al fons del mar.",
       "dlg.reunio.confessio.18": "Una pausa.",
       "dlg.reunio.confessio.19": "Al fons del mar hi ha moltes coses, últimament.",
       "dlg.reunio.confessio.20": "I a mi em vas tancar en una caixa.",
@@ -23651,10 +23681,10 @@
       "pista.enviar_registre.1": "La pàgina ha d'arribar a la Vet.",
       "pista.enviar_registre.2": "Pel muntacàrregues del pont, cap a la cuina.",
       "pista.enviar_registre.3": "Usa la pàgina amb el muntacàrregues del pont.",
-      "pista.clau_safata.1": "Ha baixat alguna cosa pel muntacàrregues.",
+      "pista.clau_safata.1": "La clau espera a la safata del rebost. Ara és cosa de l'Iri.",
       "pista.clau_safata.2": "La clau d'en Tomàs és a la safata del rebost.",
       "pista.clau_safata.3": "Amb l'Iri, ves al rebost i agafa la clau de la safata.",
-      "pista.mostra_safata.1": "La Mostra 7 ha pujat a la cuina.",
+      "pista.mostra_safata.1": "La Mostra 7 espera a la safata de la cuina. Ara és cosa de la Vet.",
       "pista.mostra_safata.2": "Amb la Vet, agafa-la de la safata de la cuina.",
       "pista.mostra_safata.3": "Amb la Vet, agafa la Mostra 7 de la safata de la cuina i porta-la a la infermeria.",
       "pista.usb_amunt.1": "La Capitana no sap qui paga el gasoil. L'USB, sí. Però la impressora és al pont, amb l'Iri.",
@@ -23956,7 +23986,7 @@
       "sala.cuina.armari.3": "Entra la Nadia, amb el mòbil a la mà, i obre la cambra freda.",
       "sala.cuina.armari.4": "Bon vespre.",
       "sala.cuina.armari.5": "...Tenia gana de postres.",
-      "sala.cuina.armari.6": "Les postres d'avui són una mentida. L'hem dita per la ràdio.",
+      "sala.cuina.armari.6": "Les postres d'avui són una mentida. L'hem dita pel walkie.",
       "sala.cuina.armari.7": "Amagar-me per què? Encara no hem dit res.",
       "sala.cuina.armari.8": "L'armari de les olles. Hi cabria una persona. Una persona petita, que no tingui por de les paelles.",
       "sala.cuina.armari.9": "Olles, paelles i una cassola que sembla un casc.",
@@ -24042,7 +24072,7 @@
       "sala.laboratori.llibre.6": "«Peixos de l'Atlàntic Nord». No és meu.",
       "sala.laboratori.llibre.nom": "llibre de peixos",
       "sala.laboratori.nota.1": "«Si no torno, el portàtil. J.»",
-      "sala.laboratori.nota.2": "Era per a la Vet.",
+      "sala.laboratori.nota.2": "És per a la Vet: és a qui va dir el de la contrasenya.",
       "sala.laboratori.nota.nom": "nota",
       "sala.laboratori.nevera.1": "La nevera de mostres. Pots etiquetats: Punt 3, Punt 4, Punt 5, Punt 6...",
       "sala.laboratori.nevera.2": "El 7 no hi és.",
@@ -24055,7 +24085,7 @@
       "sala.laboratori.1": "La Juana no ha vingut a sopar. Tothom diu el mateix: «Està descansant. Ja la coneixeu.»",
       "sala.laboratori.2": "La conec. No es perd mai un sopar.",
       "sala.laboratori.3": "Al costat del portàtil hi ha una nota.",
-      "sala.laboratori.4": "El portàtil no hi és.",
+      "sala.laboratori.4": "L'Iri torna al laboratori. El portàtil no hi és.",
       "sala.laboratori.5": "Se l'han endut.",
       "sala.laboratori.6": "Sort de la còpia.",
       "sala.laboratori.7": "El laboratori, remenat aquesta tarda, després que la Vet digués «amb la mostra a bord».",
@@ -24370,7 +24400,9 @@
       "sala.coberta_proa.escotilla.18": "Les eines, a l'Iri. Jo tallo punts, no cadenats.",
       "sala.sala_maquines.valvula.14": "Més oberta no pot ser. Aquest és el problema.",
       "sala.rebost.registre.20": "Tancat amb clau. Una clau antiga... Com la que guarda en Tomàs, que no sap què obre?",
-      "sala.pont.munta.nota": "Des del pont? Aquí sempre hi ha algú de guàrdia. Millor des del rebost: allà no hi baixa ningú."
+      "sala.pont.munta.nota": "Des del pont? Aquí hi puja tothom a buscar cafè. Millor des del rebost: allà no hi baixa ningú.",
+      "sala.sala_maquines.generador.4": "El generador. Gira, amb la remor de sempre.",
+      "sala.infermeria.llitera.7": "Ja li falta un travesser. Amb un n'hi ha prou."
     }
   },
   "locale": "ca",
