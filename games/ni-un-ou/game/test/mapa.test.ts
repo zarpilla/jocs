@@ -137,32 +137,30 @@ describe('El plànol', () => {
 
 /** L'Escena 6 feta amb el plànol: la Vet l'agafa i el dona a l'Iri, que va amb el plànol a tot arreu. */
 function escena6AmbPlanol(p: Jugador) {
+  // El plànol és per a la Vet, que no coneix el vaixell; l'Iri se'l sap de memòria i camina.
   amb(p, 'vet', 'passadis');
   p.do('pickUp', 'planol');
-  ambPlanol(p, 'coberta_popa');
-  // a màquines hi ha l'Iri: no les han de veure juntes (logic/separades.ts)
+  ambPlanol(p, 'cabina_capitana');
+  // a màquines hi ha l'Iri: no les han de veure juntes (logic/separades.ts), ni amb el plànol
   expect(viatge(p.narrative, 'sala_maquines').sala).toBeNull();
-  // la Vet li envia el plànol pel muntacàrregues
-  ambPlanol(p, 'cuina');
-  p.use('mapa', 'munta');
-  amb(p, 'iri', 'rebost');
-  p.do('pickUp', 'safata');
-  expect(p.inventory('iri')).toContain('mapa');
-  ambPlanol(p, 'taller');
+  amb(p, 'iri', 'taller');
   p.do('pickUp', 'cisalla');
-  ambPlanol(p, 'pallol');
+  anar(p, 'pallol');
   p.do('look', 'inventari');
   p.talk('marcel', 'gat', 'guardar');
-  ambPlanol(p, 'coberta_proa');
+  anar(p, 'coberta_proa');
   p.do('look', 'escotilla');
-  amb(p, 'vet', 'coberta_popa');
+  amb(p, 'vet');
+  ambPlanol(p, 'coberta_popa');
   p.talk('bastida', 'nus');
   amb(p, 'iri');
   p.use('cisalla', 'escotilla');
   expect(p.room).toBe('caixa_cadenes');
   p.do('look', 'juana');
   // per sortir de la caixa cal l'escotilla (Escena 7), no el plànol
+  amb(p, 'vet');
   expect(viatge(p.narrative, 'passadis').sala).toBeNull();
+  amb(p, 'iri');
   p.do('use', 'escotilla');
 }
 

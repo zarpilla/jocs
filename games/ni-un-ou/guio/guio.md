@@ -222,7 +222,7 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
   prou»). VET: «Quaranta metres de vaixell. I em cal un plànol.» Si l'agafa l'Iri: «Jo no el necessito. Però així no
   camino.» Abans de l'Escena 6: «Ara no tinc temps ni de perdre'm» / «Me'l sé de memòria».
 - **Fer servir el plànol** obre una pantalla amb les tres cobertes vistes de dalt: es clica la sala i s'hi va. És
-  paper: es pot enviar pel muntacàrregues (donar-lo en mà, a l'Escena 6, no: vegeu «Regles del món · 9»).
+  paper. És per a la Vet, que no coneix el vaixell; l'Iri se'l sap de memòria i camina.
 - **El plànol no obre cap porta que no s'obri caminant.** El camí passa per les mateixes portes, amb les mateixes
   condicions: de nit no se surt a coberta, a l'Escena 5 l'Iri no arriba a la cuina, la Vet no deixa en Bastida a
   mig nus, la caixa de cadenes i el dipòsit 2 demanen la cisalla i la clau, i a les escenes 8 i 9 ningú no es mou
@@ -237,9 +237,9 @@ Com a Suma Zero. Hi ha dues escenes en què cal **controlar les dues alhora**: l
   menjador (Escena 8), l'Iri i la Vet **no entren a la sala on és l'altra**: «La Vet és aquí dins. Si ens veuen
   juntes, sabran que tramem alguna cosa. Millor pel tub. I el que s'hagi de passar, pel muntacàrregues.»
 - Els passadissos no compten: s'hi passa, no s'hi està. El plànol també ho respecta (és caminar).
-- Per això, en aquestes escenes, el tub i el muntacàrregues són la manera de treballar juntes: el plànol de
-  l'Escena 6 i la clau d'en Tomàs de l'Escena 7 baixen de la cuina al rebost, i la Mostra 7 hi puja si la Vet és a
-  la infermeria amb la Juana.
+- Per això, en aquestes escenes, el tub i el muntacàrregues són la manera de treballar juntes: a l'Escena 7, la
+  clau d'en Tomàs baixa de la cuina al rebost (on és l'Iri), i la Mostra 7 hi puja si la Vet és a la infermeria amb
+  la Juana.
 - Les escenes de guió que les ajunten (la caixa de cadenes, la reunió) les hi porten soles. A partir de la reunió
   ja no s'amaguen: ho diuen tot davant de tothom.
 - Al motor: `logic/separades.ts`.
