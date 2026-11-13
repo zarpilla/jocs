@@ -29,8 +29,24 @@
             "value": 2
           },
           {
-            "flag": "revisio_tomas",
-            "is": false
+            "any": [
+              {
+                "flag": "revisio_tomas",
+                "is": false
+              },
+              {
+                "all": [
+                  {
+                    "flag": "sap_raco",
+                    "is": false
+                  },
+                  {
+                    "flag": "juana_explica",
+                    "is": false
+                  }
+                ]
+              }
+            ]
           }
         ]
       },
@@ -190,7 +206,15 @@
           "who": "tomas",
           "text": "dlg.tomas.cuina2.1",
           "if": {
-            "protagonist": "vet"
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "revisio_tomas",
+                "is": false
+              }
+            ]
           }
         },
         {

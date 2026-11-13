@@ -1015,6 +1015,10 @@ treballs de la Juana amb l'institut de pesca d'Irlanda: són els que hi pesquen.
 - **De l'altra**, pel walkie o pel tub, només quan l'altra ho sap.
 - **Mai no surt cap pista** sobre un trencaclosques que encara no és obert o ja s'ha resolt, ni d'una prova que la
   Vet no ha vist.
+- **El muntacàrregues avisa**: si a una safata hi espera alguna cosa (el travesser, la nota, la clau d'en Tomàs, la
+  Mostra 7, l'USB, la pàgina del registre), la pista més prioritària és anar-la a buscar.
+- **Les pistes saben qui porta què**: si l'USB o la clau els té l'altra, la pista diu com fer-los arribar, no què
+  fer-ne.
 
 ## El misteri: pistes i falses pistes
 

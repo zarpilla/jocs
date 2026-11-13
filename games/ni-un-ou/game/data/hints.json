@@ -1524,8 +1524,16 @@
           "value": 7
         },
         {
-          "hasItem": "clau_tomas",
-          "who": "vet"
+          "any": [
+            {
+              "hasItem": "clau_tomas",
+              "who": "vet"
+            },
+            {
+              "hasItem": "clau_tomas",
+              "who": "iri"
+            }
+          ]
         },
         {
           "flag": "registre_obert",
@@ -1671,6 +1679,10 @@
         {
           "flag": "reunio_comencada",
           "is": false
+        },
+        {
+          "hasItem": "usb",
+          "who": "iri"
         }
       ]
     },
@@ -2022,6 +2034,141 @@
       "pista.vet_espera9.1",
       "pista.vet_espera9.2",
       "pista.vet_espera9.3"
+    ]
+  },
+  "clau_safata": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "var": "munta_rebost",
+          "op": "==",
+          "value": "clau_tomas"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "munta_rebost",
+      "op": "!=",
+      "value": "clau_tomas"
+    },
+    "levels": [
+      "pista.clau_safata.1",
+      "pista.clau_safata.2",
+      "pista.clau_safata.3"
+    ]
+  },
+  "mostra_safata": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "var": "munta_cuina",
+          "op": "==",
+          "value": "mostra7"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "munta_cuina",
+      "op": "!=",
+      "value": "mostra7"
+    },
+    "levels": [
+      "pista.mostra_safata.1",
+      "pista.mostra_safata.2",
+      "pista.mostra_safata.3"
+    ]
+  },
+  "usb_amunt": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "usb",
+          "who": "vet"
+        },
+        {
+          "flag": "registre_impres",
+          "is": false
+        },
+        {
+          "flag": "aliada_capitana",
+          "is": false
+        },
+        {
+          "flag": "reunio_comencada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "usb",
+          "who": "vet",
+          "is": false
+        },
+        {
+          "flag": "registre_impres"
+        },
+        {
+          "flag": "aliada_capitana"
+        },
+        {
+          "flag": "reunio_comencada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.usb_amunt.1",
+      "pista.usb_amunt.2",
+      "pista.usb_amunt.3"
+    ]
+  },
+  "usb_safata": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 8
+        },
+        {
+          "var": "munta_pont",
+          "op": "==",
+          "value": "usb"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "munta_pont",
+      "op": "!=",
+      "value": "usb"
+    },
+    "levels": [
+      "pista.usb_safata.1",
+      "pista.usb_safata.2",
+      "pista.usb_safata.3"
     ]
   }
 }

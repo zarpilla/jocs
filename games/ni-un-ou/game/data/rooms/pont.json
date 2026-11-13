@@ -970,6 +970,21 @@
       "name": "sala.pont.munta.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "llibreta",
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 5
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont.munta.nota"
+            }
+          ]
+        },
+        {
           "verb": "look",
           "lines": [
             {

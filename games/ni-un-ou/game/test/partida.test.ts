@@ -188,3 +188,56 @@ describe('Que no us vegin juntes (logic/separades.ts)', () => {
     expect(n.check({ flag: 'reunio_comencada' })).toBe(true);
   });
 });
+
+describe('Pistes (revisió)', () => {
+  it("Escena 2: si a la revisió no se li ha preguntat per la Juana, en Tomàs ho diu a la cuina", () => {
+    const { n, p } = partida();
+    escena1(p);
+    anar(p, 'infermeria');
+    p.talk('fitxes', 'tomas');
+    p.talk('tomas', 'fi');
+    expect(n.flag('sap_raco')).toBe(false);
+    anar(p, 'cuina');
+    p.talk('tomas');
+    expect(n.flag('sap_raco')).toBe(true);
+  });
+
+  it("Escena 5: la llibreta pel muntacàrregues del pont diu que millor des del rebost", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p);
+    amb(p, 'iri', 'pont');
+    const linies = p.use('llibreta', 'munta');
+    expect(linies.map((l) => l.key)).toEqual(['sala.pont.munta.nota']);
+    expect(n.flag('nota_enviada')).toBe(false);
+  });
+
+  it("Escena 7: la clau i la mostra que esperen a la safata tenen pista", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
+    anar(p, 'cuina');
+    p.talk('tomas', 'clau7', 'entrepa7');
+    p.use('clau_tomas', 'munta');
+    expect(n.activeHints()[0]).toBe('clau_safata');
+    amb(p, 'iri', 'rebost');
+    p.do('pickUp', 'safata');
+    expect(n.activeHints()[0]).toBe('obrir');
+    p.use('clau_tomas', 'registre');
+    p.do('open', 'filtre');
+    anar(p, 'rebost');
+    p.use('mostra7', 'munta');
+    expect(n.activeHints()[0]).toBe('mostra_safata');
+  });
+
+  it("Escena 8: si l'USB el té la Vet, la pista li diu que el pugi al pont", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p); escena7(p);
+    amb(p, 'iri');
+    n.apply([{ takeItem: 'usb', who: 'iri' }, { giveItem: 'usb', who: 'vet' }]);
+    expect(n.activeHints()).not.toContain('imprimir');
+    amb(p, 'vet', 'cuina');
+    expect(n.activeHints()[0]).toBe('usb_amunt');
+    p.use('usb', 'munta');
+    amb(p, 'iri');
+    expect(n.activeHints()[0]).toBe('usb_safata');
+  });
+});

@@ -8181,6 +8181,21 @@
             "name": "sala.pont.munta.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "llibreta",
+                "if": {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 5
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.pont.munta.nota"
+                  }
+                ]
+              },
+              {
                 "verb": "look",
                 "lines": [
                   {
@@ -13620,8 +13635,16 @@
               "value": 7
             },
             {
-              "hasItem": "clau_tomas",
-              "who": "vet"
+              "any": [
+                {
+                  "hasItem": "clau_tomas",
+                  "who": "vet"
+                },
+                {
+                  "hasItem": "clau_tomas",
+                  "who": "iri"
+                }
+              ]
             },
             {
               "flag": "registre_obert",
@@ -13767,6 +13790,10 @@
             {
               "flag": "reunio_comencada",
               "is": false
+            },
+            {
+              "hasItem": "usb",
+              "who": "iri"
             }
           ]
         },
@@ -14118,6 +14145,141 @@
           "pista.vet_espera9.1",
           "pista.vet_espera9.2",
           "pista.vet_espera9.3"
+        ]
+      },
+      "clau_safata": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "var": "munta_rebost",
+              "op": "==",
+              "value": "clau_tomas"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "munta_rebost",
+          "op": "!=",
+          "value": "clau_tomas"
+        },
+        "levels": [
+          "pista.clau_safata.1",
+          "pista.clau_safata.2",
+          "pista.clau_safata.3"
+        ]
+      },
+      "mostra_safata": {
+        "priority": 6,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "var": "munta_cuina",
+              "op": "==",
+              "value": "mostra7"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "munta_cuina",
+          "op": "!=",
+          "value": "mostra7"
+        },
+        "levels": [
+          "pista.mostra_safata.1",
+          "pista.mostra_safata.2",
+          "pista.mostra_safata.3"
+        ]
+      },
+      "usb_amunt": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 8
+            },
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "usb",
+              "who": "vet"
+            },
+            {
+              "flag": "registre_impres",
+              "is": false
+            },
+            {
+              "flag": "aliada_capitana",
+              "is": false
+            },
+            {
+              "flag": "reunio_comencada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "usb",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "flag": "registre_impres"
+            },
+            {
+              "flag": "aliada_capitana"
+            },
+            {
+              "flag": "reunio_comencada"
+            }
+          ]
+        },
+        "levels": [
+          "pista.usb_amunt.1",
+          "pista.usb_amunt.2",
+          "pista.usb_amunt.3"
+        ]
+      },
+      "usb_safata": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 8
+            },
+            {
+              "var": "munta_pont",
+              "op": "==",
+              "value": "usb"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "munta_pont",
+          "op": "!=",
+          "value": "usb"
+        },
+        "levels": [
+          "pista.usb_safata.1",
+          "pista.usb_safata.2",
+          "pista.usb_safata.3"
         ]
       }
     },
@@ -19991,8 +20153,24 @@
                   "value": 2
                 },
                 {
-                  "flag": "revisio_tomas",
-                  "is": false
+                  "any": [
+                    {
+                      "flag": "revisio_tomas",
+                      "is": false
+                    },
+                    {
+                      "all": [
+                        {
+                          "flag": "sap_raco",
+                          "is": false
+                        },
+                        {
+                          "flag": "juana_explica",
+                          "is": false
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             },
@@ -20152,7 +20330,15 @@
                 "who": "tomas",
                 "text": "dlg.tomas.cuina2.1",
                 "if": {
-                  "protagonist": "vet"
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "flag": "revisio_tomas",
+                      "is": false
+                    }
+                  ]
                 }
               },
               {
@@ -23293,7 +23479,7 @@
       "pista.iri_diu.3": "Surt al passadís i entra a la sala de màquines. Després, mira la vàlvula de presa de mar.",
       "pista.iri_brida.1": "Què em diries tu, bomba? Per què no arrenques?",
       "pista.iri_brida.2": "L'interruptor és lligat amb una brida. Cal tallar-la.",
-      "pista.iri_brida.3": "Agafa la cisalla del tauler del taller i usa-la amb el quadre de la bomba.",
+      "pista.iri_brida.3": "Agafa la cisalla del taller i usa-la amb el quadre de la bomba.",
       "pista.iri_quadre.1": "Què em diries tu, sentina? Algú ha callat l'alarma. I la bomba?",
       "pista.iri_quadre.2": "Mira el quadre de la bomba de sentina.",
       "pista.iri_quadre.3": "Mira el quadre de la bomba, a la sala de màquines.",
@@ -23363,14 +23549,14 @@
       "pista.iri_fitxa.1": "«Pili 65». Pili de què? La Vet té les fitxes mèdiques de tothom.",
       "pista.iri_fitxa.2": "Pregunta a la Vet pel walkie: el contacte d'emergència de la Juana.",
       "pista.iri_fitxa.3": "Parla amb el walkie.",
-      "pista.iri_obrir.1": "Pilar.",
-      "pista.iri_obrir.2": "Usa el portàtil del laboratori i escriu Pilar.",
+      "pista.iri_obrir.1": "«El nom de la meva mare.» El nom: ni el diminutiu ni l'edat.",
+      "pista.iri_obrir.2": "Usa el portàtil del laboratori i escriu el nom de la mare de la Juana, sencer.",
       "pista.iri_obrir.3": "Usa el portàtil del laboratori i escriu Pilar.",
       "pista.iri_bombes.1": "La sala de bombes. «Allà no hi ve ningú.»",
       "pista.iri_bombes.2": "L'escotilla de la sala de bombes és al passadís de baix.",
       "pista.iri_bombes.3": "Baixa a la sala de bombes, per l'escotilla del passadís de baix, i mira-hi bé.",
-      "pista.iri_nota.1": "Què em diries tu, muntacàrregues? Tu no xerres.",
-      "pista.iri_nota.2": "Un paper, del rebost a la cuina, sense que el vegi ningú.",
+      "pista.iri_nota.1": "Què em diries tu, muntacàrregues? Tu no xerres, i puges fins a la cuina.",
+      "pista.iri_nota.2": "El muntacàrregues: del rebost, puja a la cuina, on és la Vet.",
       "pista.iri_nota.3": "Al rebost, usa la llibreta amb el muntacàrregues.",
       "pista.vet_espera.1": "Torn de cuina. Si l'Iri té res a dir, ja ho dirà.",
       "pista.vet_espera.2": "La que s'ha de moure és l'Iri.",
@@ -23383,7 +23569,7 @@
       "pista.iri_resposta.3": "Amb l'Iri, agafa el paper de la safata del rebost.",
       "pista.iri_mentida.1": "Una mentida que s'empassin. Primer, per paper.",
       "pista.iri_mentida.2": "Al rebost, usa la llibreta amb el muntacàrregues i proposa una mentida creïble.",
-      "pista.iri_mentida.3": "Proposa la de les postres.",
+      "pista.iri_mentida.3": "Proposa la de la Juana, que la va deixar a la cambra freda, darrere les postres.",
       "pista.iri_dir.1": "Ara, pel walkie. Que ho sentin.",
       "pista.iri_dir.2": "Amb l'Iri, parla amb el walkie.",
       "pista.iri_dir.3": "Amb l'Iri, parla amb el walkie.",
@@ -23418,8 +23604,8 @@
       "pista.entrepa.2": "La Juana: «Ha estat el millor dia de la campanya.»",
       "pista.entrepa.3": "Amb la Vet, explica a en Tomàs que la Juana es va menjar l'entrepà.",
       "pista.obrir.1": "La clau antiga.",
-      "pista.obrir.2": "Usa la clau amb el registre del dipòsit 2, al rebost.",
-      "pista.obrir.3": "Usa la clau amb el registre del dipòsit 2, al rebost. Si la té la Vet i l'Iri és a màquines, que li arribi pel muntacàrregues: de la cuina, va al rebost.",
+      "pista.obrir.2": "La clau va al registre del dipòsit 2, al rebost. Si la té la Vet i l'Iri és a màquines, que ho faci l'Iri: la clau li arriba pel muntacàrregues.",
+      "pista.obrir.3": "Amb l'Iri, usa la clau amb el registre del rebost. Si la té la Vet: a la cuina, usa-la amb el muntacàrregues, i l'Iri l'agafarà de la safata del rebost.",
       "pista.frontisses.1": "Què em diries tu, frontissa?",
       "pista.frontisses.2": "La clau de tubs és al taller. Les frontisses del registre, al rebost.",
       "pista.frontisses.3": "Amb l'Iri, agafa la clau de tubs del taller i usa-la amb el registre del rebost, dues vegades.",
@@ -23465,6 +23651,18 @@
       "pista.enviar_registre.1": "La pàgina ha d'arribar a la Vet.",
       "pista.enviar_registre.2": "Pel muntacàrregues del pont, cap a la cuina.",
       "pista.enviar_registre.3": "Usa la pàgina amb el muntacàrregues del pont.",
+      "pista.clau_safata.1": "Ha baixat alguna cosa pel muntacàrregues.",
+      "pista.clau_safata.2": "La clau d'en Tomàs és a la safata del rebost.",
+      "pista.clau_safata.3": "Amb l'Iri, ves al rebost i agafa la clau de la safata.",
+      "pista.mostra_safata.1": "La Mostra 7 ha pujat a la cuina.",
+      "pista.mostra_safata.2": "Amb la Vet, agafa-la de la safata de la cuina.",
+      "pista.mostra_safata.3": "Amb la Vet, agafa la Mostra 7 de la safata de la cuina i porta-la a la infermeria.",
+      "pista.usb_amunt.1": "La Capitana no sap qui paga el gasoil. L'USB, sí. Però la impressora és al pont, amb l'Iri.",
+      "pista.usb_amunt.2": "Envia l'USB a l'Iri pel muntacàrregues: de la cuina, puja al pont si ella hi és.",
+      "pista.usb_amunt.3": "A la cuina, usa l'USB amb el muntacàrregues. Després, amb l'Iri, agafa'l i imprimeix el registre.",
+      "pista.usb_safata.1": "Ha pujat l'USB.",
+      "pista.usb_safata.2": "Amb l'Iri, agafa l'USB de la safata del pont.",
+      "pista.usb_safata.3": "Amb l'Iri, agafa l'USB de la safata del pont i usa'l amb la impressora.",
       "sala.camarot_iri.porta.1": "La porta del camarot. Entreoberta. Aquest gat sap obrir portes, però no sap tancar-les.",
       "sala.camarot_iri.porta.nom": "porta",
       "sala.camarot_iri.carregador.1": "El cable del carregador. Mossegat de punta a punta. Té la forma exacta de les dents d'en Diu.",
@@ -24171,7 +24369,8 @@
       "sala.coberta_proa.escotilla.17": "La Vet arriba corrents per coberta: ha sentit la cisalla.",
       "sala.coberta_proa.escotilla.18": "Les eines, a l'Iri. Jo tallo punts, no cadenats.",
       "sala.sala_maquines.valvula.14": "Més oberta no pot ser. Aquest és el problema.",
-      "sala.rebost.registre.20": "Tancat amb clau. Una clau antiga... Com la que guarda en Tomàs, que no sap què obre?"
+      "sala.rebost.registre.20": "Tancat amb clau. Una clau antiga... Com la que guarda en Tomàs, que no sap què obre?",
+      "sala.pont.munta.nota": "Des del pont? Aquí sempre hi ha algú de guàrdia. Millor des del rebost: allà no hi baixa ningú."
     }
   },
   "locale": "ca",
