@@ -5,7 +5,15 @@
   "type": "module",
   "main": "electron/main.cjs",
   "benne": {
-    "displayName": "Aigua Verne"
+    "displayName": "Aigua Verne",
+    "colors": {
+      "fons": "#060a14",
+      "text": "#7ea6d8",
+      "nom": "#cfe0f5",
+      "nom2": "#4a86c8",
+      "barra": "#4a9ae0",
+      "vora": "#2a4470"
+    }
   },
   "scripts": {
     "motor": "node ../../../packages/benne/copia.mjs",
