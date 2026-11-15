@@ -2915,12 +2915,54 @@
                     "text": "sala.cantimplora_bodega.carmanyola.8"
                   },
                   {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.carmanyola.9",
+                    "if": {
+                      "not": {
+                        "all": [
+                          {
+                            "inRoom": "cantimplora_bodega",
+                            "who": "iri"
+                          },
+                          {
+                            "inRoom": "cantimplora_bodega",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
                     "who": "iri",
-                    "text": "sala.cantimplora_bodega.carmanyola.9"
+                    "text": "sala.cantimplora_bodega.carmanyola.9",
+                    "if": {
+                      "all": [
+                        {
+                          "inRoom": "cantimplora_bodega",
+                          "who": "iri"
+                        },
+                        {
+                          "inRoom": "cantimplora_bodega",
+                          "who": "vet"
+                        }
+                      ]
+                    }
                   },
                   {
                     "who": "vet",
-                    "text": "sala.cantimplora_bodega.carmanyola.10"
+                    "text": "sala.cantimplora_bodega.carmanyola.10",
+                    "if": {
+                      "all": [
+                        {
+                          "inRoom": "cantimplora_bodega",
+                          "who": "iri"
+                        },
+                        {
+                          "inRoom": "cantimplora_bodega",
+                          "who": "vet"
+                        }
+                      ]
+                    }
                   }
                 ],
                 "effects": [
@@ -4317,7 +4359,11 @@
                   },
                   {
                     "who": "iri",
-                    "text": "sala.ferrum_sindicat.bagul.3"
+                    "text": "sala.ferrum_sindicat.bagul.3",
+                    "if": {
+                      "inRoom": "ferrum_sindicat",
+                      "who": "iri"
+                    }
                   }
                 ]
               },
@@ -5871,7 +5917,11 @@
                   },
                   {
                     "who": "iri",
-                    "text": "sala.granja_casa.calaix.3"
+                    "text": "sala.granja_casa.calaix.3",
+                    "if": {
+                      "inRoom": "granja_casa",
+                      "who": "iri"
+                    }
                   },
                   {
                     "who": "player",
@@ -6084,7 +6134,8 @@
                     "who": "vet",
                     "text": "sala.granja_casa.pots.2",
                     "if": {
-                      "protagonist": "vet"
+                      "inRoom": "granja_casa",
+                      "who": "vet"
                     }
                   }
                 ]
@@ -6264,11 +6315,27 @@
                   },
                   {
                     "who": "vet",
-                    "text": "sala.granja_graner.tractor.8"
+                    "text": "sala.granja_graner.tractor.8",
+                    "if": {
+                      "inRoom": "granja_graner",
+                      "who": "vet"
+                    }
                   },
                   {
                     "who": "iri",
-                    "text": "sala.granja_graner.tractor.9"
+                    "text": "sala.granja_graner.tractor.9",
+                    "if": {
+                      "all": [
+                        {
+                          "inRoom": "granja_graner",
+                          "who": "iri"
+                        },
+                        {
+                          "inRoom": "granja_graner",
+                          "who": "vet"
+                        }
+                      ]
+                    }
                   }
                 ],
                 "effects": [
@@ -6737,11 +6804,35 @@
                   },
                   {
                     "who": "iri",
-                    "text": "sala.granja_pati.bomba.5"
+                    "text": "sala.granja_pati.bomba.5",
+                    "if": {
+                      "all": [
+                        {
+                          "inRoom": "granja_pati",
+                          "who": "iri"
+                        },
+                        {
+                          "inRoom": "granja_pati",
+                          "who": "vet"
+                        }
+                      ]
+                    }
                   },
                   {
                     "who": "vet",
-                    "text": "sala.granja_pati.bomba.6"
+                    "text": "sala.granja_pati.bomba.6",
+                    "if": {
+                      "all": [
+                        {
+                          "inRoom": "granja_pati",
+                          "who": "iri"
+                        },
+                        {
+                          "inRoom": "granja_pati",
+                          "who": "vet"
+                        }
+                      ]
+                    }
                   }
                 ],
                 "effects": [
@@ -6989,7 +7080,17 @@
             "lines": [
               {
                 "who": "vet",
-                "text": "sala.granja_pati.entra.1"
+                "text": "sala.granja_pati.entra.1",
+                "stage": [
+                  {
+                    "who": "player",
+                    "face": "L"
+                  },
+                  {
+                    "who": "vet",
+                    "face": "R"
+                  }
+                ]
               },
               {
                 "who": "iri",

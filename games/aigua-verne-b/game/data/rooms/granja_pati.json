@@ -161,11 +161,35 @@
             },
             {
               "who": "iri",
-              "text": "sala.granja_pati.bomba.5"
+              "text": "sala.granja_pati.bomba.5",
+              "if": {
+                "all": [
+                  {
+                    "inRoom": "granja_pati",
+                    "who": "iri"
+                  },
+                  {
+                    "inRoom": "granja_pati",
+                    "who": "vet"
+                  }
+                ]
+              }
             },
             {
               "who": "vet",
-              "text": "sala.granja_pati.bomba.6"
+              "text": "sala.granja_pati.bomba.6",
+              "if": {
+                "all": [
+                  {
+                    "inRoom": "granja_pati",
+                    "who": "iri"
+                  },
+                  {
+                    "inRoom": "granja_pati",
+                    "who": "vet"
+                  }
+                ]
+              }
             }
           ],
           "effects": [

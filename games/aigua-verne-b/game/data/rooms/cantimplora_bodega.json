@@ -594,12 +594,54 @@
               "text": "sala.cantimplora_bodega.carmanyola.8"
             },
             {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.9",
+              "if": {
+                "not": {
+                  "all": [
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            },
+            {
               "who": "iri",
-              "text": "sala.cantimplora_bodega.carmanyola.9"
+              "text": "sala.cantimplora_bodega.carmanyola.9",
+              "if": {
+                "all": [
+                  {
+                    "inRoom": "cantimplora_bodega",
+                    "who": "iri"
+                  },
+                  {
+                    "inRoom": "cantimplora_bodega",
+                    "who": "vet"
+                  }
+                ]
+              }
             },
             {
               "who": "vet",
-              "text": "sala.cantimplora_bodega.carmanyola.10"
+              "text": "sala.cantimplora_bodega.carmanyola.10",
+              "if": {
+                "all": [
+                  {
+                    "inRoom": "cantimplora_bodega",
+                    "who": "iri"
+                  },
+                  {
+                    "inRoom": "cantimplora_bodega",
+                    "who": "vet"
+                  }
+                ]
+              }
             }
           ],
           "effects": [

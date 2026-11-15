@@ -133,11 +133,27 @@
             },
             {
               "who": "vet",
-              "text": "sala.granja_graner.tractor.8"
+              "text": "sala.granja_graner.tractor.8",
+              "if": {
+                "inRoom": "granja_graner",
+                "who": "vet"
+              }
             },
             {
               "who": "iri",
-              "text": "sala.granja_graner.tractor.9"
+              "text": "sala.granja_graner.tractor.9",
+              "if": {
+                "all": [
+                  {
+                    "inRoom": "granja_graner",
+                    "who": "iri"
+                  },
+                  {
+                    "inRoom": "granja_graner",
+                    "who": "vet"
+                  }
+                ]
+              }
             }
           ],
           "effects": [
