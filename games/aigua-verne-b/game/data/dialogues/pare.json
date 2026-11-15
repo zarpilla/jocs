@@ -21,7 +21,69 @@
       "lines": [
         {
           "who": "quim",
-          "text": "dlg.pare.hola.1"
+          "text": "dlg.pare.hola.1",
+          "if": {
+            "all": [
+              {
+                "inRoom": "granja_casa",
+                "who": "iri"
+              },
+              {
+                "inRoom": "granja_casa",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.hola.1.iri",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "all": [
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          }
+        },
+        {
+          "who": "quim",
+          "text": "dlg.pare.hola.1.vet",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "all": [
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "quim",

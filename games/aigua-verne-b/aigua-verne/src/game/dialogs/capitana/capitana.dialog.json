@@ -45,6 +45,13 @@
       "say": false
     },
     {
+      "id": "menu__contracte_vet",
+      "scriptName": "menu__contracte_vet",
+      "text": "Capitana, això és el teu contracte. L'Iri el va trobar al despatx del Magnat.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__pla",
       "scriptName": "menu__pla",
       "text": "Què farem demà, Capitana?",

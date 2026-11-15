@@ -11,8 +11,16 @@
     },
     {
       "if": {
-        "hasItem": "carta_juana",
-        "who": "iri"
+        "all": [
+          {
+            "hasItem": "carta_juana",
+            "who": "iri"
+          },
+          {
+            "inRoom": "ferrum_sindicat",
+            "who": "iri"
+          }
+        ]
       },
       "node": "carta"
     },
@@ -25,7 +33,69 @@
       "lines": [
         {
           "who": "bru",
-          "text": "dlg.bru.estrany.1"
+          "text": "dlg.bru.estrany.1",
+          "if": {
+            "all": [
+              {
+                "inRoom": "ferrum_sindicat",
+                "who": "iri"
+              },
+              {
+                "inRoom": "ferrum_sindicat",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "bru",
+          "text": "dlg.bru.estrany.1.iri",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "all": [
+                    {
+                      "inRoom": "ferrum_sindicat",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "ferrum_sindicat",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          }
+        },
+        {
+          "who": "bru",
+          "text": "dlg.bru.estrany.1.vet",
+          "if": {
+            "all": [
+              {
+                "not": {
+                  "all": [
+                    {
+                      "inRoom": "ferrum_sindicat",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "ferrum_sindicat",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "bru",
@@ -35,7 +105,39 @@
           "who": "player",
           "text": "dlg.bru.estrany.3",
           "if": {
-            "flag": "juana_claus"
+            "all": [
+              {
+                "flag": "juana_claus"
+              },
+              {
+                "not": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "hasItem": "carta_juana",
+                      "who": "iri"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.bru.estrany.3.vet",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "hasItem": "carta_juana",
+                "who": "iri"
+              }
+            ]
           }
         }
       ]
@@ -44,7 +146,21 @@
       "lines": [
         {
           "who": "bru",
-          "text": "dlg.bru.carta.1"
+          "text": "dlg.bru.carta.1",
+          "if": {
+            "inRoom": "ferrum_sindicat",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "bru",
+          "text": "dlg.bru.carta.1.iri",
+          "if": {
+            "not": {
+              "inRoom": "ferrum_sindicat",
+              "who": "vet"
+            }
+          }
         },
         {
           "who": "iri",
@@ -60,7 +176,21 @@
         },
         {
           "who": "vet",
-          "text": "dlg.bru.carta.5"
+          "text": "dlg.bru.carta.5",
+          "if": {
+            "inRoom": "ferrum_sindicat",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.bru.carta.5",
+          "if": {
+            "not": {
+              "inRoom": "ferrum_sindicat",
+              "who": "vet"
+            }
+          }
         },
         {
           "who": "bru",

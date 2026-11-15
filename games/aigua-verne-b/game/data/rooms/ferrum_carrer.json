@@ -430,11 +430,7 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "sala.ferrum_carrer.entra.1"
-        },
-        {
-          "who": "iri",
-          "text": "sala.ferrum_carrer.entra.2",
+          "text": "sala.ferrum_carrer.entra.1",
           "effects": [
             {
               "setVar": "preu_aigua",
@@ -443,8 +439,54 @@
           ]
         },
         {
+          "who": "player",
+          "text": "sala.ferrum_carrer.entra.2",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "inRoom": "ferrum_carrer",
+                  "who": "iri"
+                },
+                {
+                  "inRoom": "ferrum_carrer",
+                  "who": "vet"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "who": "iri",
+          "text": "sala.ferrum_carrer.entra.2",
+          "if": {
+            "all": [
+              {
+                "inRoom": "ferrum_carrer",
+                "who": "iri"
+              },
+              {
+                "inRoom": "ferrum_carrer",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
           "who": "vet",
-          "text": "sala.ferrum_carrer.entra.3"
+          "text": "sala.ferrum_carrer.entra.3",
+          "if": {
+            "all": [
+              {
+                "inRoom": "ferrum_carrer",
+                "who": "iri"
+              },
+              {
+                "inRoom": "ferrum_carrer",
+                "who": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "narrator",

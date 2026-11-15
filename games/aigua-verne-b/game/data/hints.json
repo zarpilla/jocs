@@ -332,6 +332,9 @@
         {
           "flag": "injector_vist",
           "is": false
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -342,6 +345,36 @@
       "pista.injector.1",
       "pista.injector.2",
       "pista.injector.3"
+    ]
+  },
+  "injector_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "cap_condicions"
+        },
+        {
+          "flag": "injector_vist",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "injector_vist"
+    },
+    "levels": [
+      "pista.injector.1",
+      "pista.injector.2.vet",
+      "pista.injector.3.vet"
     ]
   },
   "tractor": {
@@ -376,6 +409,9 @@
         {
           "flag": "injector_posat",
           "is": false
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -386,6 +422,31 @@
       "pista.injector2.1",
       "pista.injector2.2",
       "pista.injector2.3"
+    ]
+  },
+  "injector2_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "injector_tret"
+        },
+        {
+          "flag": "injector_posat",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "injector_posat"
+    },
+    "levels": [
+      "pista.injector2.1",
+      "pista.injector2.2.vet",
+      "pista.injector2.3.vet"
     ]
   },
   "entrega": {
@@ -424,6 +485,9 @@
           "var": "escena",
           "op": "==",
           "value": 2
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -436,6 +500,34 @@
       "pista.aqua.1",
       "pista.aqua.2",
       "pista.aqua.3"
+    ]
+  },
+  "aqua_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "capitana_accepta"
+        },
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 3
+    },
+    "levels": [
+      "pista.aqua.1",
+      "pista.aqua.2.iri",
+      "pista.aqua.3.iri"
     ]
   },
   "grua": {
@@ -477,6 +569,9 @@
           "not": {
             "hasItem": "fusible_apanyat"
           }
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -496,6 +591,43 @@
       "pista.fusible.3"
     ]
   },
+  "fusible_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "grua_vista"
+        },
+        {
+          "flag": "grua_arreglada",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "fusible_apanyat"
+          }
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "fusible_apanyat"
+        },
+        {
+          "flag": "grua_arreglada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.fusible.1",
+      "pista.fusible.2",
+      "pista.fusible.3.vet"
+    ]
+  },
   "fusible2": {
     "priority": 5,
     "when": {
@@ -506,6 +638,9 @@
         {
           "flag": "grua_arreglada",
           "is": false
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -516,6 +651,31 @@
       "pista.fusible2.1",
       "pista.fusible2.2",
       "pista.fusible2.3"
+    ]
+  },
+  "fusible2_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "fusible_apanyat"
+        },
+        {
+          "flag": "grua_arreglada",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "grua_arreglada"
+    },
+    "levels": [
+      "pista.fusible2.1",
+      "pista.fusible2.2.vet",
+      "pista.fusible2.3.vet"
     ]
   },
   "baixar": {
@@ -640,6 +800,9 @@
         {
           "flag": "promesa_lia",
           "is": false
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -650,6 +813,31 @@
       "pista.promesa.1",
       "pista.promesa.2",
       "pista.promesa.3"
+    ]
+  },
+  "promesa_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "bru_lia"
+        },
+        {
+          "flag": "promesa_lia",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "promesa_lia"
+    },
+    "levels": [
+      "pista.promesa.1",
+      "pista.promesa.2.iri",
+      "pista.promesa.3.iri"
     ]
   },
   "motlle": {
@@ -1008,6 +1196,9 @@
         {
           "flag": "cal_agulla",
           "is": false
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1018,6 +1209,31 @@
       "pista.reg2.1",
       "pista.reg2.2",
       "pista.reg2.3"
+    ]
+  },
+  "reg2_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "reg"
+        },
+        {
+          "flag": "cal_agulla",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cal_agulla"
+    },
+    "levels": [
+      "pista.reg2.1",
+      "pista.reg2.2",
+      "pista.reg2.3.vet"
     ]
   },
   "agulla": {
@@ -1040,6 +1256,9 @@
           "not": {
             "hasItem": "reg_foradat"
           }
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1062,6 +1281,51 @@
       "pista.agulla.3"
     ]
   },
+  "agulla_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "cal_agulla"
+        },
+        {
+          "not": {
+            "hasItem": "agulla"
+          }
+        },
+        {
+          "flag": "reg_muntat",
+          "is": false
+        },
+        {
+          "not": {
+            "hasItem": "reg_foradat"
+          }
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "agulla"
+        },
+        {
+          "flag": "reg_muntat"
+        },
+        {
+          "hasItem": "reg_foradat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.agulla.1",
+      "pista.agulla.2.vet",
+      "pista.agulla.3.vet"
+    ]
+  },
   "foradar": {
     "priority": 5,
     "when": {
@@ -1071,6 +1335,9 @@
         },
         {
           "hasItem": "reg"
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1083,10 +1350,41 @@
       "pista.foradar.3"
     ]
   },
+  "foradar_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "agulla"
+        },
+        {
+          "hasItem": "reg"
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "reg_foradat"
+    },
+    "levels": [
+      "pista.foradar.1",
+      "pista.foradar.2.vet",
+      "pista.foradar.3.vet"
+    ]
+  },
   "muntar": {
     "priority": 5,
     "when": {
-      "hasItem": "reg_foradat"
+      "all": [
+        {
+          "hasItem": "reg_foradat"
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
     },
     "doneWhen": {
       "flag": "reg_muntat"
@@ -1094,6 +1392,26 @@
     "levels": [
       "pista.muntar.1",
       "pista.muntar.2"
+    ]
+  },
+  "muntar_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "reg_foradat"
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reg_muntat"
+    },
+    "levels": [
+      "pista.muntar.1",
+      "pista.muntar.2.vet"
     ]
   },
   "galleda": {
@@ -1189,6 +1507,9 @@
         {
           "flag": "cal_aval",
           "is": false
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -1206,6 +1527,44 @@
       "pista.fidel.1",
       "pista.fidel.2",
       "pista.fidel.3"
+    ]
+  },
+  "fidel_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "fidel_admet",
+          "is": false
+        },
+        {
+          "flag": "cal_aval",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "fidel_admet"
+        },
+        {
+          "flag": "cal_aval"
+        }
+      ]
+    },
+    "levels": [
+      "pista.fidel.1",
+      "pista.fidel.2.iri",
+      "pista.fidel.3.iri"
     ]
   },
   "aval": {
@@ -1252,6 +1611,9 @@
         {
           "flag": "fidel_admet",
           "is": false
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -1262,6 +1624,31 @@
       "pista.aval2.1",
       "pista.aval2.2",
       "pista.aval2.3"
+    ]
+  },
+  "aval2_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "sac_llavors"
+        },
+        {
+          "flag": "fidel_admet",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "fidel_admet"
+    },
+    "levels": [
+      "pista.aval2.1",
+      "pista.aval2.2",
+      "pista.aval2.3.iri"
     ]
   },
   "despatx": {
@@ -1426,6 +1813,9 @@
         {
           "flag": "tomas_girat",
           "is": false
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -1436,6 +1826,31 @@
       "pista.girar.1",
       "pista.girar.2",
       "pista.girar.3"
+    ]
+  },
+  "girar_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "tomas_descobert"
+        },
+        {
+          "flag": "tomas_girat",
+          "is": false
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tomas_girat"
+    },
+    "levels": [
+      "pista.girar.1",
+      "pista.girar.2.iri",
+      "pista.girar.3.iri"
     ]
   },
   "contracte": {
@@ -1525,6 +1940,53 @@
               }
             ]
           }
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "vestit_arreglat",
+          "who": "iri"
+        },
+        {
+          "hasItem": "vestit_arreglat",
+          "who": "vet"
+        }
+      ]
+    },
+    "levels": [
+      "pista.gala3.1.iri",
+      "pista.gala3.2",
+      "pista.gala3.3"
+    ]
+  },
+  "gala3_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "vestit_agafat"
+        },
+        {
+          "not": {
+            "any": [
+              {
+                "hasItem": "vestit_arreglat",
+                "who": "iri"
+              },
+              {
+                "hasItem": "vestit_arreglat",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -1542,15 +2004,22 @@
     },
     "levels": [
       "pista.gala3.1",
-      "pista.gala3.2",
-      "pista.gala3.3"
+      "pista.gala3.2.vet",
+      "pista.gala3.3.vet"
     ]
   },
   "gala4": {
     "priority": 5,
     "when": {
-      "hasItem": "vestit_arreglat",
-      "who": "vet"
+      "all": [
+        {
+          "hasItem": "vestit_arreglat",
+          "who": "vet"
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
     },
     "doneWhen": {
       "hasItem": "vestit_arreglat",
@@ -1559,6 +2028,28 @@
     "levels": [
       "pista.gala4.1",
       "pista.gala4.2"
+    ]
+  },
+  "gala4_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "vestit_arreglat",
+          "who": "vet"
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "hasItem": "vestit_arreglat",
+      "who": "iri"
+    },
+    "levels": [
+      "pista.gala4.1.iri",
+      "pista.gala4.2.iri"
     ]
   },
   "lia": {
@@ -1573,6 +2064,9 @@
         {
           "flag": "lia_prova",
           "is": false
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1583,6 +2077,33 @@
       "pista.lia.1",
       "pista.lia.2",
       "pista.lia.3"
+    ]
+  },
+  "lia_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "lia_prova",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "lia_prova"
+    },
+    "levels": [
+      "pista.lia.1.vet",
+      "pista.lia.2",
+      "pista.lia.3.vet"
     ]
   },
   "holm": {
@@ -1610,6 +2131,9 @@
               }
             }
           ]
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -1620,6 +2144,46 @@
       "pista.holm.1",
       "pista.holm.2",
       "pista.holm.3"
+    ]
+  },
+  "holm_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "flag": "holm_parlat",
+          "is": false
+        },
+        {
+          "any": [
+            {
+              "flag": "lia_prova"
+            },
+            {
+              "not": {
+                "hasItem": "claus",
+                "who": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "holm_parlat"
+    },
+    "levels": [
+      "pista.holm.1.iri",
+      "pista.holm.2.iri",
+      "pista.holm.3.iri"
     ]
   },
   "safata_nota": {
@@ -1635,6 +2199,9 @@
         {
           "hasItem": "nota_lia",
           "who": "iri"
+        },
+        {
+          "protagonist": "vet"
         }
       ]
     },
@@ -1650,6 +2217,37 @@
       "pista.safata_nota.3"
     ]
   },
+  "safata_nota_iri": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "holm_parlat"
+        },
+        {
+          "flag": "lia_prova"
+        },
+        {
+          "hasItem": "nota_lia",
+          "who": "iri"
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "nota_lia",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.safata_nota.1",
+      "pista.safata_nota.2",
+      "pista.safata_nota.3.iri"
+    ]
+  },
   "safata_claus": {
     "priority": 5,
     "when": {
@@ -1660,6 +2258,9 @@
         {
           "hasItem": "claus",
           "who": "iri"
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1672,17 +2273,52 @@
     "levels": [
       "pista.safata_claus.1",
       "pista.safata_claus.2",
+      "pista.safata_claus.3.iri"
+    ]
+  },
+  "safata_claus_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "holm_parlat"
+        },
+        {
+          "hasItem": "claus",
+          "who": "iri"
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "not": {
+        "hasItem": "claus",
+        "who": "iri"
+      }
+    },
+    "levels": [
+      "pista.safata_claus.1.vet",
+      "pista.safata_claus.2",
       "pista.safata_claus.3"
     ]
   },
   "recollir": {
     "priority": 5,
     "when": {
-      "not": {
-        "var": "safata",
-        "op": "==",
-        "value": ""
-      }
+      "all": [
+        {
+          "not": {
+            "var": "safata",
+            "op": "==",
+            "value": ""
+          }
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
     },
     "doneWhen": {
       "var": "safata",
@@ -1692,6 +2328,32 @@
     "levels": [
       "pista.recollir.1",
       "pista.recollir.2"
+    ]
+  },
+  "recollir_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "not": {
+            "var": "safata",
+            "op": "==",
+            "value": ""
+          }
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "safata",
+      "op": "==",
+      "value": ""
+    },
+    "levels": [
+      "pista.recollir.1",
+      "pista.recollir.2.vet"
     ]
   },
   "nota_lia": {
@@ -1705,6 +2367,9 @@
         {
           "flag": "lia_avisada",
           "is": false
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1714,6 +2379,31 @@
     "levels": [
       "pista.nota_lia.1",
       "pista.nota_lia.2"
+    ]
+  },
+  "nota_lia_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "hasItem": "nota_lia",
+          "who": "vet"
+        },
+        {
+          "flag": "lia_avisada",
+          "is": false
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "lia_avisada"
+    },
+    "levels": [
+      "pista.nota_lia.1",
+      "pista.nota_lia.2.vet"
     ]
   },
   "control": {
@@ -1778,6 +2468,9 @@
           "var": "valvules",
           "op": ">=",
           "value": 3
+        },
+        {
+          "protagonist": "iri"
         }
       ]
     },
@@ -1788,6 +2481,32 @@
       "pista.reserva.1",
       "pista.reserva.2",
       "pista.reserva.3"
+    ]
+  },
+  "reserva_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_subhasta"
+        },
+        {
+          "var": "valvules",
+          "op": ">=",
+          "value": 3
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "reserva_oberta"
+    },
+    "levels": [
+      "pista.reserva.1",
+      "pista.reserva.2",
+      "pista.reserva.3.vet"
     ]
   }
 }

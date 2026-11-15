@@ -1530,6 +1530,18 @@
         },
         "interactions": [
           {
+            "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.agulla.desc.iri"
+              }
+            ]
+          },
+          {
             "verb": "use",
             "item": "vestit",
             "if": {
@@ -1612,6 +1624,18 @@
         },
         "interactions": [
           {
+            "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.vestit.desc.iri"
+              }
+            ]
+          },
+          {
             "verb": "use",
             "item": "agulla",
             "if": {
@@ -1639,7 +1663,21 @@
         "description": "obj.vestit_arreglat.desc",
         "props": {
           "mosca": true
-        }
+        },
+        "interactions": [
+          {
+            "verb": "look",
+            "if": {
+              "protagonist": "iri"
+            },
+            "lines": [
+              {
+                "who": "player",
+                "text": "obj.vestit_arreglat.desc.iri"
+              }
+            ]
+          }
+        ]
       },
       "targeta": {
         "name": "obj.targeta.nom",
@@ -2303,11 +2341,71 @@
               },
               {
                 "who": "iri",
-                "text": "sala.aqua_port.entra.2"
+                "text": "sala.aqua_port.entra.2",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "aqua_port",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "aqua_port",
+                      "who": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "vet",
-                "text": "sala.aqua_port.entra.3"
+                "text": "sala.aqua_port.entra.3",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "aqua_port",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "aqua_port",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.aqua_port.entra.2",
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "inRoom": "aqua_port",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "aqua_port",
+                        "who": "vet"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.aqua_port.entra.3.sola",
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "inRoom": "aqua_port",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "aqua_port",
+                        "who": "vet"
+                      }
+                    ]
+                  }
+                }
               }
             ]
           }
@@ -4274,11 +4372,7 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "sala.ferrum_carrer.entra.1"
-              },
-              {
-                "who": "iri",
-                "text": "sala.ferrum_carrer.entra.2",
+                "text": "sala.ferrum_carrer.entra.1",
                 "effects": [
                   {
                     "setVar": "preu_aigua",
@@ -4287,8 +4381,54 @@
                 ]
               },
               {
+                "who": "player",
+                "text": "sala.ferrum_carrer.entra.2",
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "inRoom": "ferrum_carrer",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "ferrum_carrer",
+                        "who": "vet"
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "who": "iri",
+                "text": "sala.ferrum_carrer.entra.2",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "ferrum_carrer",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "ferrum_carrer",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
                 "who": "vet",
-                "text": "sala.ferrum_carrer.entra.3"
+                "text": "sala.ferrum_carrer.entra.3",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "ferrum_carrer",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "ferrum_carrer",
+                      "who": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "narrator",
@@ -5696,7 +5836,17 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.fosa_forn.forn.4"
+                    "text": "sala.fosa_forn.forn.4",
+                    "if": {
+                      "protagonist": "vet"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.fosa_forn.forn.4.iri",
+                    "if": {
+                      "protagonist": "iri"
+                    }
                   }
                 ]
               }
@@ -6615,7 +6765,17 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.granja_graner.caixa_eines.3"
+                    "text": "sala.granja_graner.caixa_eines.3",
+                    "if": {
+                      "protagonist": "iri"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.granja_graner.caixa_eines.3.vet",
+                    "if": {
+                      "protagonist": "vet"
+                    }
                   }
                 ]
               }
@@ -10161,11 +10321,85 @@
               },
               {
                 "who": "iri",
-                "text": "sala.verdant_jardi.entra.2"
+                "text": "sala.verdant_jardi.entra.2",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "vet",
-                "text": "sala.verdant_jardi.entra.3"
+                "text": "sala.verdant_jardi.entra.3",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.verdant_jardi.entra.2.iri",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "inRoom": "verdant_jardi",
+                            "who": "iri"
+                          },
+                          {
+                            "inRoom": "verdant_jardi",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "sala.verdant_jardi.entra.2.vet",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "inRoom": "verdant_jardi",
+                            "who": "iri"
+                          },
+                          {
+                            "inRoom": "verdant_jardi",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
               }
             ]
           }
@@ -10389,7 +10623,21 @@
                 "lines": [
                   {
                     "who": "player",
-                    "text": "sala.verdant_residencia.finestral.1"
+                    "text": "sala.verdant_residencia.finestral.1",
+                    "if": {
+                      "inRoom": "verdant_jardi",
+                      "who": "vet"
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.verdant_residencia.finestral.2",
+                    "if": {
+                      "not": {
+                        "inRoom": "verdant_jardi",
+                        "who": "vet"
+                      }
+                    }
                   }
                 ]
               }
@@ -10901,6 +11149,9 @@
             {
               "flag": "injector_vist",
               "is": false
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -10911,6 +11162,36 @@
           "pista.injector.1",
           "pista.injector.2",
           "pista.injector.3"
+        ]
+      },
+      "injector_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 2
+            },
+            {
+              "flag": "cap_condicions"
+            },
+            {
+              "flag": "injector_vist",
+              "is": false
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "injector_vist"
+        },
+        "levels": [
+          "pista.injector.1",
+          "pista.injector.2.vet",
+          "pista.injector.3.vet"
         ]
       },
       "tractor": {
@@ -10945,6 +11226,9 @@
             {
               "flag": "injector_posat",
               "is": false
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -10955,6 +11239,31 @@
           "pista.injector2.1",
           "pista.injector2.2",
           "pista.injector2.3"
+        ]
+      },
+      "injector2_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "injector_tret"
+            },
+            {
+              "flag": "injector_posat",
+              "is": false
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "injector_posat"
+        },
+        "levels": [
+          "pista.injector2.1",
+          "pista.injector2.2.vet",
+          "pista.injector2.3.vet"
         ]
       },
       "entrega": {
@@ -10993,6 +11302,9 @@
               "var": "escena",
               "op": "==",
               "value": 2
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -11005,6 +11317,34 @@
           "pista.aqua.1",
           "pista.aqua.2",
           "pista.aqua.3"
+        ]
+      },
+      "aqua_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "capitana_accepta"
+            },
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 2
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "escena",
+          "op": ">=",
+          "value": 3
+        },
+        "levels": [
+          "pista.aqua.1",
+          "pista.aqua.2.iri",
+          "pista.aqua.3.iri"
         ]
       },
       "grua": {
@@ -11046,6 +11386,9 @@
               "not": {
                 "hasItem": "fusible_apanyat"
               }
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -11065,6 +11408,43 @@
           "pista.fusible.3"
         ]
       },
+      "fusible_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "grua_vista"
+            },
+            {
+              "flag": "grua_arreglada",
+              "is": false
+            },
+            {
+              "not": {
+                "hasItem": "fusible_apanyat"
+              }
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "fusible_apanyat"
+            },
+            {
+              "flag": "grua_arreglada"
+            }
+          ]
+        },
+        "levels": [
+          "pista.fusible.1",
+          "pista.fusible.2",
+          "pista.fusible.3.vet"
+        ]
+      },
       "fusible2": {
         "priority": 5,
         "when": {
@@ -11075,6 +11455,9 @@
             {
               "flag": "grua_arreglada",
               "is": false
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -11085,6 +11468,31 @@
           "pista.fusible2.1",
           "pista.fusible2.2",
           "pista.fusible2.3"
+        ]
+      },
+      "fusible2_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "hasItem": "fusible_apanyat"
+            },
+            {
+              "flag": "grua_arreglada",
+              "is": false
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "grua_arreglada"
+        },
+        "levels": [
+          "pista.fusible2.1",
+          "pista.fusible2.2.vet",
+          "pista.fusible2.3.vet"
         ]
       },
       "baixar": {
@@ -11209,6 +11617,9 @@
             {
               "flag": "promesa_lia",
               "is": false
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -11219,6 +11630,31 @@
           "pista.promesa.1",
           "pista.promesa.2",
           "pista.promesa.3"
+        ]
+      },
+      "promesa_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "bru_lia"
+            },
+            {
+              "flag": "promesa_lia",
+              "is": false
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "promesa_lia"
+        },
+        "levels": [
+          "pista.promesa.1",
+          "pista.promesa.2.iri",
+          "pista.promesa.3.iri"
         ]
       },
       "motlle": {
@@ -11577,6 +12013,9 @@
             {
               "flag": "cal_agulla",
               "is": false
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -11587,6 +12026,31 @@
           "pista.reg2.1",
           "pista.reg2.2",
           "pista.reg2.3"
+        ]
+      },
+      "reg2_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "hasItem": "reg"
+            },
+            {
+              "flag": "cal_agulla",
+              "is": false
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "cal_agulla"
+        },
+        "levels": [
+          "pista.reg2.1",
+          "pista.reg2.2",
+          "pista.reg2.3.vet"
         ]
       },
       "agulla": {
@@ -11609,6 +12073,9 @@
               "not": {
                 "hasItem": "reg_foradat"
               }
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -11631,6 +12098,51 @@
           "pista.agulla.3"
         ]
       },
+      "agulla_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "cal_agulla"
+            },
+            {
+              "not": {
+                "hasItem": "agulla"
+              }
+            },
+            {
+              "flag": "reg_muntat",
+              "is": false
+            },
+            {
+              "not": {
+                "hasItem": "reg_foradat"
+              }
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "agulla"
+            },
+            {
+              "flag": "reg_muntat"
+            },
+            {
+              "hasItem": "reg_foradat"
+            }
+          ]
+        },
+        "levels": [
+          "pista.agulla.1",
+          "pista.agulla.2.vet",
+          "pista.agulla.3.vet"
+        ]
+      },
       "foradar": {
         "priority": 5,
         "when": {
@@ -11640,6 +12152,9 @@
             },
             {
               "hasItem": "reg"
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -11652,10 +12167,41 @@
           "pista.foradar.3"
         ]
       },
+      "foradar_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "hasItem": "agulla"
+            },
+            {
+              "hasItem": "reg"
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "reg_foradat"
+        },
+        "levels": [
+          "pista.foradar.1",
+          "pista.foradar.2.vet",
+          "pista.foradar.3.vet"
+        ]
+      },
       "muntar": {
         "priority": 5,
         "when": {
-          "hasItem": "reg_foradat"
+          "all": [
+            {
+              "hasItem": "reg_foradat"
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
         },
         "doneWhen": {
           "flag": "reg_muntat"
@@ -11663,6 +12209,26 @@
         "levels": [
           "pista.muntar.1",
           "pista.muntar.2"
+        ]
+      },
+      "muntar_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "hasItem": "reg_foradat"
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "reg_muntat"
+        },
+        "levels": [
+          "pista.muntar.1",
+          "pista.muntar.2.vet"
         ]
       },
       "galleda": {
@@ -11758,6 +12324,9 @@
             {
               "flag": "cal_aval",
               "is": false
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -11775,6 +12344,44 @@
           "pista.fidel.1",
           "pista.fidel.2",
           "pista.fidel.3"
+        ]
+      },
+      "fidel_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 5
+            },
+            {
+              "flag": "fidel_admet",
+              "is": false
+            },
+            {
+              "flag": "cal_aval",
+              "is": false
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "fidel_admet"
+            },
+            {
+              "flag": "cal_aval"
+            }
+          ]
+        },
+        "levels": [
+          "pista.fidel.1",
+          "pista.fidel.2.iri",
+          "pista.fidel.3.iri"
         ]
       },
       "aval": {
@@ -11821,6 +12428,9 @@
             {
               "flag": "fidel_admet",
               "is": false
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -11831,6 +12441,31 @@
           "pista.aval2.1",
           "pista.aval2.2",
           "pista.aval2.3"
+        ]
+      },
+      "aval2_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "hasItem": "sac_llavors"
+            },
+            {
+              "flag": "fidel_admet",
+              "is": false
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "fidel_admet"
+        },
+        "levels": [
+          "pista.aval2.1",
+          "pista.aval2.2",
+          "pista.aval2.3.iri"
         ]
       },
       "despatx": {
@@ -11995,6 +12630,9 @@
             {
               "flag": "tomas_girat",
               "is": false
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -12005,6 +12643,31 @@
           "pista.girar.1",
           "pista.girar.2",
           "pista.girar.3"
+        ]
+      },
+      "girar_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "tomas_descobert"
+            },
+            {
+              "flag": "tomas_girat",
+              "is": false
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "tomas_girat"
+        },
+        "levels": [
+          "pista.girar.1",
+          "pista.girar.2.iri",
+          "pista.girar.3.iri"
         ]
       },
       "contracte": {
@@ -12094,6 +12757,53 @@
                   }
                 ]
               }
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "vestit_arreglat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "vestit_arreglat",
+              "who": "vet"
+            }
+          ]
+        },
+        "levels": [
+          "pista.gala3.1.iri",
+          "pista.gala3.2",
+          "pista.gala3.3"
+        ]
+      },
+      "gala3_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "vestit_agafat"
+            },
+            {
+              "not": {
+                "any": [
+                  {
+                    "hasItem": "vestit_arreglat",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "vestit_arreglat",
+                    "who": "vet"
+                  }
+                ]
+              }
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -12111,15 +12821,22 @@
         },
         "levels": [
           "pista.gala3.1",
-          "pista.gala3.2",
-          "pista.gala3.3"
+          "pista.gala3.2.vet",
+          "pista.gala3.3.vet"
         ]
       },
       "gala4": {
         "priority": 5,
         "when": {
-          "hasItem": "vestit_arreglat",
-          "who": "vet"
+          "all": [
+            {
+              "hasItem": "vestit_arreglat",
+              "who": "vet"
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
         },
         "doneWhen": {
           "hasItem": "vestit_arreglat",
@@ -12128,6 +12845,28 @@
         "levels": [
           "pista.gala4.1",
           "pista.gala4.2"
+        ]
+      },
+      "gala4_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "hasItem": "vestit_arreglat",
+              "who": "vet"
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "hasItem": "vestit_arreglat",
+          "who": "iri"
+        },
+        "levels": [
+          "pista.gala4.1.iri",
+          "pista.gala4.2.iri"
         ]
       },
       "lia": {
@@ -12142,6 +12881,9 @@
             {
               "flag": "lia_prova",
               "is": false
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -12152,6 +12894,33 @@
           "pista.lia.1",
           "pista.lia.2",
           "pista.lia.3"
+        ]
+      },
+      "lia_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "flag": "lia_prova",
+              "is": false
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "lia_prova"
+        },
+        "levels": [
+          "pista.lia.1.vet",
+          "pista.lia.2",
+          "pista.lia.3.vet"
         ]
       },
       "holm": {
@@ -12179,6 +12948,9 @@
                   }
                 }
               ]
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -12189,6 +12961,46 @@
           "pista.holm.1",
           "pista.holm.2",
           "pista.holm.3"
+        ]
+      },
+      "holm_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "flag": "holm_parlat",
+              "is": false
+            },
+            {
+              "any": [
+                {
+                  "flag": "lia_prova"
+                },
+                {
+                  "not": {
+                    "hasItem": "claus",
+                    "who": "vet"
+                  }
+                }
+              ]
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "holm_parlat"
+        },
+        "levels": [
+          "pista.holm.1.iri",
+          "pista.holm.2.iri",
+          "pista.holm.3.iri"
         ]
       },
       "safata_nota": {
@@ -12204,6 +13016,9 @@
             {
               "hasItem": "nota_lia",
               "who": "iri"
+            },
+            {
+              "protagonist": "vet"
             }
           ]
         },
@@ -12219,6 +13034,37 @@
           "pista.safata_nota.3"
         ]
       },
+      "safata_nota_iri": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "holm_parlat"
+            },
+            {
+              "flag": "lia_prova"
+            },
+            {
+              "hasItem": "nota_lia",
+              "who": "iri"
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "hasItem": "nota_lia",
+            "who": "iri"
+          }
+        },
+        "levels": [
+          "pista.safata_nota.1",
+          "pista.safata_nota.2",
+          "pista.safata_nota.3.iri"
+        ]
+      },
       "safata_claus": {
         "priority": 5,
         "when": {
@@ -12229,6 +13075,9 @@
             {
               "hasItem": "claus",
               "who": "iri"
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -12241,17 +13090,52 @@
         "levels": [
           "pista.safata_claus.1",
           "pista.safata_claus.2",
+          "pista.safata_claus.3.iri"
+        ]
+      },
+      "safata_claus_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "holm_parlat"
+            },
+            {
+              "hasItem": "claus",
+              "who": "iri"
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "not": {
+            "hasItem": "claus",
+            "who": "iri"
+          }
+        },
+        "levels": [
+          "pista.safata_claus.1.vet",
+          "pista.safata_claus.2",
           "pista.safata_claus.3"
         ]
       },
       "recollir": {
         "priority": 5,
         "when": {
-          "not": {
-            "var": "safata",
-            "op": "==",
-            "value": ""
-          }
+          "all": [
+            {
+              "not": {
+                "var": "safata",
+                "op": "==",
+                "value": ""
+              }
+            },
+            {
+              "protagonist": "iri"
+            }
+          ]
         },
         "doneWhen": {
           "var": "safata",
@@ -12261,6 +13145,32 @@
         "levels": [
           "pista.recollir.1",
           "pista.recollir.2"
+        ]
+      },
+      "recollir_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "not": {
+                "var": "safata",
+                "op": "==",
+                "value": ""
+              }
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "safata",
+          "op": "==",
+          "value": ""
+        },
+        "levels": [
+          "pista.recollir.1",
+          "pista.recollir.2.vet"
         ]
       },
       "nota_lia": {
@@ -12274,6 +13184,9 @@
             {
               "flag": "lia_avisada",
               "is": false
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -12283,6 +13196,31 @@
         "levels": [
           "pista.nota_lia.1",
           "pista.nota_lia.2"
+        ]
+      },
+      "nota_lia_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "hasItem": "nota_lia",
+              "who": "vet"
+            },
+            {
+              "flag": "lia_avisada",
+              "is": false
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "lia_avisada"
+        },
+        "levels": [
+          "pista.nota_lia.1",
+          "pista.nota_lia.2.vet"
         ]
       },
       "control": {
@@ -12347,6 +13285,9 @@
               "var": "valvules",
               "op": ">=",
               "value": 3
+            },
+            {
+              "protagonist": "iri"
             }
           ]
         },
@@ -12357,6 +13298,32 @@
           "pista.reserva.1",
           "pista.reserva.2",
           "pista.reserva.3"
+        ]
+      },
+      "reserva_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "sync_subhasta"
+            },
+            {
+              "var": "valvules",
+              "op": ">=",
+              "value": 3
+            },
+            {
+              "protagonist": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "reserva_oberta"
+        },
+        "levels": [
+          "pista.reserva.1",
+          "pista.reserva.2",
+          "pista.reserva.3.vet"
         ]
       }
     },
@@ -12667,15 +13634,85 @@
             "lines": [
               {
                 "who": "vet",
-                "text": "dlg.barril.inici.1"
+                "text": "dlg.barril.inici.1",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "iri",
-                "text": "dlg.barril.inici.2"
+                "text": "dlg.barril.inici.2",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "vet",
-                "text": "dlg.barril.inici.3"
+                "text": "dlg.barril.inici.3",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.barril.inici.sola.iri",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "not": {
+                        "inRoom": "cantimplora_bodega",
+                        "who": "vet"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.barril.inici.sola.vet",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "not": {
+                        "inRoom": "cantimplora_bodega",
+                        "who": "iri"
+                      }
+                    }
+                  ]
+                }
               }
             ],
             "choices": [
@@ -12707,7 +13744,21 @@
             "lines": [
               {
                 "who": "vet",
-                "text": "dlg.barril.iri.1"
+                "text": "dlg.barril.iri.1",
+                "if": {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.barril.iri.1.sola",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_bodega",
+                    "who": "vet"
+                  }
+                }
               }
             ],
             "goto": "baixar"
@@ -12716,11 +13767,29 @@
             "lines": [
               {
                 "who": "vet",
-                "text": "dlg.barril.vet.1"
+                "text": "dlg.barril.vet.1",
+                "if": {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "iri"
+                }
               },
               {
                 "who": "iri",
-                "text": "dlg.barril.vet.2"
+                "text": "dlg.barril.vet.2",
+                "if": {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.barril.vet.1.sola",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_bodega",
+                    "who": "iri"
+                  }
+                }
               }
             ],
             "goto": "baixar"
@@ -12729,7 +13798,37 @@
             "lines": [
               {
                 "who": "narrator",
-                "text": "dlg.barril.baixar.1"
+                "text": "dlg.barril.baixar.1",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "narrator",
+                "text": "dlg.barril.baixar.1.sola",
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "inRoom": "cantimplora_bodega",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "cantimplora_bodega",
+                        "who": "vet"
+                      }
+                    ]
+                  }
+                }
               }
             ],
             "effects": [
@@ -12755,8 +13854,16 @@
           },
           {
             "if": {
-              "hasItem": "carta_juana",
-              "who": "iri"
+              "all": [
+                {
+                  "hasItem": "carta_juana",
+                  "who": "iri"
+                },
+                {
+                  "inRoom": "ferrum_sindicat",
+                  "who": "iri"
+                }
+              ]
             },
             "node": "carta"
           },
@@ -12769,7 +13876,69 @@
             "lines": [
               {
                 "who": "bru",
-                "text": "dlg.bru.estrany.1"
+                "text": "dlg.bru.estrany.1",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "ferrum_sindicat",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "ferrum_sindicat",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "bru",
+                "text": "dlg.bru.estrany.1.iri",
+                "if": {
+                  "all": [
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "inRoom": "ferrum_sindicat",
+                            "who": "iri"
+                          },
+                          {
+                            "inRoom": "ferrum_sindicat",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "protagonist": "iri"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "bru",
+                "text": "dlg.bru.estrany.1.vet",
+                "if": {
+                  "all": [
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "inRoom": "ferrum_sindicat",
+                            "who": "iri"
+                          },
+                          {
+                            "inRoom": "ferrum_sindicat",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "protagonist": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "bru",
@@ -12779,7 +13948,39 @@
                 "who": "player",
                 "text": "dlg.bru.estrany.3",
                 "if": {
-                  "flag": "juana_claus"
+                  "all": [
+                    {
+                      "flag": "juana_claus"
+                    },
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "protagonist": "vet"
+                          },
+                          {
+                            "hasItem": "carta_juana",
+                            "who": "iri"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.bru.estrany.3.vet",
+                "if": {
+                  "all": [
+                    {
+                      "protagonist": "vet"
+                    },
+                    {
+                      "hasItem": "carta_juana",
+                      "who": "iri"
+                    }
+                  ]
                 }
               }
             ]
@@ -12788,7 +13989,21 @@
             "lines": [
               {
                 "who": "bru",
-                "text": "dlg.bru.carta.1"
+                "text": "dlg.bru.carta.1",
+                "if": {
+                  "inRoom": "ferrum_sindicat",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "bru",
+                "text": "dlg.bru.carta.1.iri",
+                "if": {
+                  "not": {
+                    "inRoom": "ferrum_sindicat",
+                    "who": "vet"
+                  }
+                }
               },
               {
                 "who": "iri",
@@ -12804,7 +14019,21 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.bru.carta.5"
+                "text": "dlg.bru.carta.5",
+                "if": {
+                  "inRoom": "ferrum_sindicat",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.bru.carta.5",
+                "if": {
+                  "not": {
+                    "inRoom": "ferrum_sindicat",
+                    "who": "vet"
+                  }
+                }
               },
               {
                 "who": "bru",
@@ -13194,23 +14423,61 @@
             "lines": [
               {
                 "who": "capitana",
-                "text": "dlg.capitana.primera.1"
+                "text": "dlg.capitana.primera.1",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
               },
               {
                 "who": "iri",
-                "text": "dlg.capitana.primera.2"
+                "text": "dlg.capitana.primera.2",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
               },
               {
                 "who": "capitana",
-                "text": "dlg.capitana.primera.3"
+                "text": "dlg.capitana.primera.3",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
               },
               {
                 "who": "vet",
-                "text": "dlg.capitana.primera.4"
+                "text": "dlg.capitana.primera.4",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "vet"
+                }
               },
               {
                 "who": "capitana",
-                "text": "dlg.capitana.primera.5"
+                "text": "dlg.capitana.primera.5",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "cantimplora_pont",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "cantimplora_pont",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.primera.5.vet",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                }
               }
             ],
             "goto": "menu"
@@ -13318,11 +14585,41 @@
                 "if": {
                   "all": [
                     {
-                      "hasItem": "contracte_capitana"
+                      "all": [
+                        {
+                          "hasItem": "contracte_capitana"
+                        },
+                        {
+                          "flag": "capitana_si",
+                          "is": false
+                        }
+                      ]
                     },
                     {
-                      "flag": "capitana_si",
-                      "is": false
+                      "protagonist": "iri"
+                    }
+                  ]
+                },
+                "next": "contracte"
+              },
+              {
+                "id": "contracte_vet",
+                "text": "dlg.capitana.opt.contracte.vet",
+                "if": {
+                  "all": [
+                    {
+                      "all": [
+                        {
+                          "hasItem": "contracte_capitana"
+                        },
+                        {
+                          "flag": "capitana_si",
+                          "is": false
+                        }
+                      ]
+                    },
+                    {
+                      "protagonist": "vet"
                     }
                   ]
                 },
@@ -13390,7 +14687,21 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.capitana.aigua.3"
+                "text": "dlg.capitana.aigua.3",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.capitana.aigua.3",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "vet"
+                  }
+                }
               },
               {
                 "who": "capitana",
@@ -13420,7 +14731,21 @@
               },
               {
                 "who": "iri",
-                "text": "dlg.capitana.portar.3"
+                "text": "dlg.capitana.portar.3",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.capitana.portar.3",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                }
               },
               {
                 "who": "capitana",
@@ -13428,7 +14753,17 @@
               },
               {
                 "who": "capitana",
-                "text": "dlg.capitana.portar.5"
+                "text": "dlg.capitana.portar.5",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.portar.5.vet",
+                "if": {
+                  "protagonist": "vet"
+                }
               },
               {
                 "who": "capitana",
@@ -13475,8 +14810,30 @@
                 "who": "capitana",
                 "text": "dlg.capitana.recorda.5",
                 "if": {
-                  "flag": "injector_posat",
-                  "is": false
+                  "all": [
+                    {
+                      "flag": "injector_posat",
+                      "is": false
+                    },
+                    {
+                      "protagonist": "iri"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.recorda.5.vet",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "injector_posat",
+                      "is": false
+                    },
+                    {
+                      "protagonist": "vet"
+                    }
+                  ]
                 }
               }
             ],
@@ -13498,11 +14855,35 @@
               },
               {
                 "who": "capitana",
-                "text": "dlg.capitana.entrego.4"
+                "text": "dlg.capitana.entrego.4",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.4.vet",
+                "if": {
+                  "protagonist": "vet"
+                }
               },
               {
                 "who": "iri",
-                "text": "dlg.capitana.entrego.5"
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                }
               },
               {
                 "who": "capitana",
@@ -13568,7 +14949,21 @@
               },
               {
                 "who": "iri",
-                "text": "dlg.capitana.contracte.5"
+                "text": "dlg.capitana.contracte.5",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.capitana.contracte.5",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                }
               },
               {
                 "who": "capitana",
@@ -15385,7 +16780,17 @@
             "lines": [
               {
                 "who": "fidel",
-                "text": "dlg.fidel.admesa.1"
+                "text": "dlg.fidel.admesa.1",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "fidel",
+                "text": "dlg.fidel.admesa.1.vet",
+                "if": {
+                  "protagonist": "vet"
+                }
               }
             ]
           },
@@ -15739,7 +17144,21 @@
               },
               {
                 "who": "iri",
-                "text": "dlg.juana.hola.3"
+                "text": "dlg.juana.hola.3",
+                "if": {
+                  "inRoom": "casa_juana",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.juana.hola.3",
+                "if": {
+                  "not": {
+                    "inRoom": "casa_juana",
+                    "who": "iri"
+                  }
+                }
               },
               {
                 "who": "juana",
@@ -15894,7 +17313,21 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.juana.on.3"
+                "text": "dlg.juana.on.3",
+                "if": {
+                  "inRoom": "casa_juana",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.juana.on.3",
+                "if": {
+                  "not": {
+                    "inRoom": "casa_juana",
+                    "who": "vet"
+                  }
+                }
               },
               {
                 "who": "juana",
@@ -15920,7 +17353,21 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.juana.tornar.3"
+                "text": "dlg.juana.tornar.3",
+                "if": {
+                  "inRoom": "casa_juana",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.juana.tornar.3",
+                "if": {
+                  "not": {
+                    "inRoom": "casa_juana",
+                    "who": "vet"
+                  }
+                }
               },
               {
                 "who": "juana",
@@ -15928,7 +17375,21 @@
               },
               {
                 "who": "iri",
-                "text": "dlg.juana.tornar.5"
+                "text": "dlg.juana.tornar.5",
+                "if": {
+                  "inRoom": "casa_juana",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.juana.tornar.5",
+                "if": {
+                  "not": {
+                    "inRoom": "casa_juana",
+                    "who": "iri"
+                  }
+                }
               },
               {
                 "who": "juana",
@@ -15950,7 +17411,21 @@
             "lines": [
               {
                 "who": "juana",
-                "text": "dlg.juana.bru.1"
+                "text": "dlg.juana.bru.1",
+                "if": {
+                  "inRoom": "casa_juana",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "juana",
+                "text": "dlg.juana.bru.1.vet",
+                "if": {
+                  "not": {
+                    "inRoom": "casa_juana",
+                    "who": "iri"
+                  }
+                }
               },
               {
                 "who": "narrator",
@@ -15983,7 +17458,21 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.juana.peixos.3"
+                "text": "dlg.juana.peixos.3",
+                "if": {
+                  "inRoom": "casa_juana",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.juana.peixos.3",
+                "if": {
+                  "not": {
+                    "inRoom": "casa_juana",
+                    "who": "vet"
+                  }
+                }
               },
               {
                 "who": "juana",
@@ -16272,7 +17761,12 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.lia.pare.3"
+                "text": "dlg.lia.pare.3",
+                "if": {
+                  "not": {
+                    "hasItem": "nota_lia"
+                  }
+                }
               }
             ],
             "effects": [
@@ -16843,7 +18337,21 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.nil.tomaquera.3"
+                "text": "dlg.nil.tomaquera.3",
+                "if": {
+                  "inRoom": "verdant_jardi",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.nil.tomaquera.3",
+                "if": {
+                  "not": {
+                    "inRoom": "verdant_jardi",
+                    "who": "vet"
+                  }
+                }
               },
               {
                 "who": "nil",
@@ -16851,7 +18359,21 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.nil.tomaquera.5"
+                "text": "dlg.nil.tomaquera.5",
+                "if": {
+                  "inRoom": "verdant_jardi",
+                  "who": "vet"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.nil.tomaquera.5",
+                "if": {
+                  "not": {
+                    "inRoom": "verdant_jardi",
+                    "who": "vet"
+                  }
+                }
               }
             ],
             "effects": [
@@ -16943,7 +18465,69 @@
             "lines": [
               {
                 "who": "quim",
-                "text": "dlg.pare.hola.1"
+                "text": "dlg.pare.hola.1",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "quim",
+                "text": "dlg.pare.hola.1.iri",
+                "if": {
+                  "all": [
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "inRoom": "granja_casa",
+                            "who": "iri"
+                          },
+                          {
+                            "inRoom": "granja_casa",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "protagonist": "iri"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "quim",
+                "text": "dlg.pare.hola.1.vet",
+                "if": {
+                  "all": [
+                    {
+                      "not": {
+                        "all": [
+                          {
+                            "inRoom": "granja_casa",
+                            "who": "iri"
+                          },
+                          {
+                            "inRoom": "granja_casa",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "protagonist": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "quim",
@@ -18363,15 +19947,69 @@
               },
               {
                 "who": "vet",
-                "text": "dlg.teclat.titus.4"
+                "text": "dlg.teclat.titus.4",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "iri",
-                "text": "dlg.teclat.titus.5"
+                "text": "dlg.teclat.titus.5",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "vet"
+                    }
+                  ]
+                }
               },
               {
                 "who": "vet",
-                "text": "dlg.teclat.titus.6"
+                "text": "dlg.teclat.titus.6",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "granja_casa",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.teclat.titus.4.sola",
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "inRoom": "granja_casa",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "granja_casa",
+                        "who": "vet"
+                      }
+                    ]
+                  }
+                }
               }
             ],
             "effects": [
@@ -18748,7 +20386,21 @@
             "lines": [
               {
                 "who": "vet",
-                "text": "dlg.tomas.vet_no.1"
+                "text": "dlg.tomas.vet_no.1",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_bodega",
+                    "who": "iri"
+                  }
+                }
+              },
+              {
+                "who": "vet",
+                "text": "dlg.tomas.vet_no.1.aqui",
+                "if": {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "iri"
+                }
               }
             ]
           },
@@ -19102,6 +20754,8 @@
       "dlg.tomas.opt.adeu2": "Res, Tomàs.",
       "dlg.lia.opt.adeu2": "Fins ara, Lia.",
       "dlg.pare.hola.1": "Qui és? Ah! Les meves noies! Ja era hora.",
+      "dlg.pare.hola.1.iri": "Qui és? Ah! La meva Iri! Ja era hora.",
+      "dlg.pare.hola.1.vet": "Qui és? Ah! La meva Vet! Ja era hora.",
       "dlg.pare.hola.2": "Aquí ens donen un got d'aigua al dia, i diuen que és un luxe. El luxe el pago jo.",
       "dlg.pare.torna.1": "Altra vegada? Que no tinc res al foc. Ni aigua per bullir-lo.",
       "dlg.pare.opt.escriptura": "Papa, on és l'escriptura de la granja?",
@@ -19145,6 +20799,7 @@
       "dlg.teclat.titus.4": "L'avi va vendre el pou per un tractor.",
       "dlg.teclat.titus.5": "El tractor que hi ha al graner. Que no ha arrencat mai.",
       "dlg.teclat.titus.6": "Un pou per un tractor que no arrenca. Ens l'han venut dues vegades.",
+      "dlg.teclat.titus.4.sola": "L'avi va vendre el pou per un tractor. El del graner, que no ha arrencat mai.",
       "dlg.juana.hola.1": "Sou les de la Cantimplora. Les de les llavors.",
       "dlg.juana.hola.2": "Diu la Capitana que voleu salvar el món.",
       "dlg.juana.hola.3": "No. Volem salvar el nostre pou.",
@@ -19175,6 +20830,7 @@
       "dlg.juana.tornar.6": "Les va fondre en Bru, a Ferrum, quan van fer els dipòsits. Ell m'ho va explicar. Encara en té els motlles.",
       "dlg.juana.tornar.7": "Ara en Bru és el cap de la vaga de Ferrum. I no es fia de ningú.",
       "dlg.juana.bru.1": "No es fia de ningú. De mi, una mica. Us escric una carta. Té, Iri: tu que parles.",
+      "dlg.juana.bru.1.vet": "No es fia de ningú. De mi, una mica. Us escric una carta. Per a l'Iri: ella és la que parla.",
       "dlg.juana.bru.2": "La Juana escriu una carta, la plega i la tanca amb un segell de cera amb un peix.",
       "dlg.juana.bru.3": "Aneu a Ferrum. I si veieu en Bru, digueu-li que encara li dec una cervesa. D'aigua.",
       "dlg.juana.peixos.1": "Els últims peixos d'Aqua se'ls va endur el Magnat. Trenta-tres. En un aquari, al seu palau.",
@@ -19231,6 +20887,7 @@
       "dlg.capitana.primera.3": "Sense el carburador.",
       "dlg.capitana.primera.4": "Hola, Capitana.",
       "dlg.capitana.primera.5": "Hola, Vet. Tu sí que pots pujar.",
+      "dlg.capitana.primera.5.vet": "Hola, Vet. Tu sí que pots pujar. La teva germana encara em deu un carburador.",
       "dlg.capitana.torna.1": "Digues, que tinc un solitari a mitges.",
       "dlg.capitana.nit.1": "...No tinc ganes de parlar, noia.",
       "dlg.capitana.opt.aigua": "On és l'aigua, Capitana?",
@@ -19239,6 +20896,7 @@
       "dlg.capitana.opt.entrego": "Albarà i injector. Anem a Aqua?",
       "dlg.capitana.opt.por": "Per què li tens tanta por, al Magnat?",
       "dlg.capitana.opt.contracte": "Capitana, això és el teu contracte. El vaig trobar al despatx del Magnat.",
+      "dlg.capitana.opt.contracte.vet": "Capitana, això és el teu contracte. L'Iri el va trobar al despatx del Magnat.",
       "dlg.capitana.opt.pla": "Què farem demà, Capitana?",
       "dlg.capitana.opt.magnat": "Què saps del Magnat?",
       "dlg.capitana.opt.pare": "Saps que el pare és en una residència?",
@@ -19254,16 +20912,19 @@
       "dlg.capitana.portar.3": "I si...?",
       "dlg.capitana.portar.4": "Si volo, ha de ser una feina de veritat, amb albarà: si m'aturen, que hi hagi una càrrega i algú que la pagui.",
       "dlg.capitana.portar.5": "I la nau no vola des que es va esquerdar l'injector. Això, pregunta-ho a la Vet.",
+      "dlg.capitana.portar.5.vet": "I la nau no vola des que es va esquerdar l'injector. Això és cosa teva, enginyera.",
       "dlg.capitana.portar.6": "La Juana té ràdio. La freqüència és aquí, al marc, amb retolador: «Juana, fons del mar».",
       "dlg.capitana.recorda.1": "Dues coses. Un albarà i un injector.",
       "dlg.capitana.recorda.2": "Albarà: ja el tens.",
       "dlg.capitana.recorda.3": "Albarà: encara no. Una feina de veritat, amb algú que pagui a l'altra banda. La Juana és a la ràdio.",
       "dlg.capitana.recorda.4": "Injector: posat. Sento el motor des d'aquí.",
       "dlg.capitana.recorda.5": "Injector: esquerdat. Pregunta a la Vet.",
+      "dlg.capitana.recorda.5.vet": "Injector: esquerdat. Això és cosa teva.",
       "dlg.capitana.entrego.1": "A veure aquest albarà...",
       "dlg.capitana.entrego.2": "«Tres sacs de llavors per a la Doctora Juana. Pagament: en espècie.»",
       "dlg.capitana.entrego.3": "És una feina de veritat. Ridícula, però de veritat.",
       "dlg.capitana.entrego.4": "Vola tu. I si ens atura el Magnat, jo no hi era.",
+      "dlg.capitana.entrego.4.vet": "Que voli la pilot. I si ens atura el Magnat, jo no hi era.",
       "dlg.capitana.entrego.5": "El mapa és teu, Capitana.",
       "dlg.capitana.entrego.6": "El mapa és de qui sap llegir-lo. Vinga.",
       "dlg.capitana.por.1": "No en tinc por. Li tinc... respecte. Molt de respecte. Com a les tempestes.",
@@ -19334,6 +20995,7 @@
       "dlg.tomas.per_que.3": "Jo no sabia que tallaria l'aigua als vaguistes. La meva mare és al piquet.",
       "dlg.tomas.per_que.4": "...No m'hi vaig atrevir, a parlar-hi. Des de la rampa la vaig veure.",
       "dlg.tomas.vet_no.1": "Iri, vine a la bodega. Tenim un mecànic que vol ser pilot. I un problema.",
+      "dlg.tomas.vet_no.1.aqui": "Iri. Tenim un mecànic que vol ser pilot. I un problema. És cosa teva.",
       "dlg.tomas.girar.1": "...De franc? Per què ho faríeu de franc?",
       "dlg.tomas.girar.2": "No ho sé. És nou per a mi també.",
       "dlg.tomas.girar.3": "...D'acord. D'acord! Què li dic, al Magnat?",
@@ -19349,10 +21011,15 @@
       "dlg.barril.inici.1": "Ni ho pensis.",
       "dlg.barril.inici.2": "La canalla del piquet té tres garrafes per a quaranta.",
       "dlg.barril.inici.3": "És el nostre. Per si de cas.",
+      "dlg.barril.inici.sola.iri": "L'últim barril. «Per si de cas», diu la Vet. I la canalla del piquet té tres garrafes per a quaranta.",
+      "dlg.barril.inici.sola.vet": "L'últim barril. És el nostre. Per si de cas.",
       "dlg.barril.iri.1": "...Fes-ho. Abans que m'ho pensi.",
+      "dlg.barril.iri.1.sola": "La Vet m'ho perdonarà. Algun dia.",
       "dlg.barril.vet.1": "Per si de cas. *(sospira)* Això és el cas, oi?",
       "dlg.barril.vet.2": "Ho és.",
+      "dlg.barril.vet.1.sola": "Per si de cas. *(sospira)* La canalla del piquet té tres garrafes per a quaranta. Això és el cas.",
       "dlg.barril.baixar.1": "Baixen el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
+      "dlg.barril.baixar.1.sola": "Baixa el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
       "dlg.tauler.inici.1": "Els paperets del tauler, amb la lletra de la Vet:",
       "dlg.tauler.inici.2": "Trobar l'escriptura de la granja (el pare ho sap; el videotelèfon és a la casa).",
       "dlg.tauler.inici.3": "Què fa una bomba de Verne al nostre pou?",
@@ -19386,9 +21053,13 @@
       "dlg.tauler.inici.31": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots. L'Iri pot fer durar la subhasta.",
       "dlg.tauler.inici.32": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
       "dlg.bru.estrany.1": "Una pilot i una enginyera. Que us envia el Magnat?",
+      "dlg.bru.estrany.1.iri": "Una pilot. Que t'envia el Magnat?",
+      "dlg.bru.estrany.1.vet": "Una enginyera. Que t'envia el Magnat?",
       "dlg.bru.estrany.2": "No parlo amb desconegudes. I menys amb desconegudes de nau.",
       "dlg.bru.estrany.3": "(Sense alguna cosa que digui qui som, en Bru no ens escoltarà. La Juana el coneix.)",
+      "dlg.bru.estrany.3.vet": "(La carta de la Juana la porta l'Iri. Sense ella, en Bru no m'escoltarà.)",
       "dlg.bru.carta.1": "Una pilot i una enginyera. Que us envia el Magnat?",
+      "dlg.bru.carta.1.iri": "Una pilot. Que t'envia el Magnat?",
       "dlg.bru.carta.2": "Ens envia la Juana. Té.",
       "dlg.bru.carta.3": "En Bru llegeix la carta de la Juana. Dues vegades. Somriu, gairebé.",
       "dlg.bru.carta.4": "La Juana diu que sou de fiar. La Juana també diu que les pedres tenen memòria.",
@@ -19448,6 +21119,7 @@
       "dlg.rosa.tomas.1": "Ja ho sé. Per això em fa tanta ràbia.",
       "dlg.fidel.hola.1": "Benvinguda a la residència d'estiu del senyor Verne. Només persones solvents. Actiu mínim: un milió de crèdits.",
       "dlg.fidel.admesa.1": "Senyora Inversora. Passi.",
+      "dlg.fidel.admesa.1.vet": "El servei entra pel darrere. La senyora Inversora ja és a dins.",
       "dlg.fidel.opt.inversora": "Soc inversora. Vinc a comprar Aqua.",
       "dlg.fidel.opt.servei": "Soc... del servei.",
       "dlg.fidel.opt.qui": "Qui ets?",
@@ -19601,8 +21273,8 @@
       "dlg.comunicador.fem.10": "Llavors per a la Juana: el banc del pare, al graner (demanar-li permís pel videotelèfon).",
       "dlg.comunicador.fem.11": "Llavors carregades: avisar la Juana per ràdio.",
       "dlg.comunicador.fem.12": "Llavors carregades: avisar la Juana per ràdio.",
-      "dlg.comunicador.fem.13": "L'injector de la nau està esquerdat: que el miri la Vet (el motor, a la bodega).",
-      "dlg.comunicador.fem.14": "L'injector de la nau està esquerdat: que el miri la Vet (el motor, a la bodega).",
+      "dlg.comunicador.fem.13": "L'injector de la nau està esquerdat: l'he de mirar jo (el motor, a la bodega).",
+      "dlg.comunicador.fem.14": "L'injector de la nau està esquerdat: que el miris tu (el motor, a la bodega).",
       "dlg.comunicador.fem.15": "Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa).",
       "dlg.comunicador.fem.16": "Un injector nou: el tractor de l'avi en té un d'igual (oli i una clau anglesa).",
       "dlg.comunicador.fem.17": "Albarà i injector: tornar a la Capitana.",
@@ -19639,16 +21311,16 @@
       "dlg.comunicador.fem.48": "Qui informa el Magnat? Algú de la nau.",
       "dlg.comunicador.fem.49": "Ensenyar el contracte a la Capitana.",
       "dlg.comunicador.fem.50": "Ensenyar el contracte a la Capitana.",
-      "dlg.comunicador.fem.51": "Un vestit de gala per a l'Iri (al sindicat de Ferrum n'hi havia un).",
-      "dlg.comunicador.fem.52": "Un vestit de gala per a l'Iri (al sindicat de Ferrum n'hi havia un).",
-      "dlg.comunicador.fem.53": "Palau: la Vet ha de trobar la Lia (passadissos de servei).",
-      "dlg.comunicador.fem.54": "Palau: la Vet ha de trobar la Lia (passadissos de servei).",
-      "dlg.comunicador.fem.55": "Fer arribar les claus a la Vet (la safata de les copes, al saló).",
-      "dlg.comunicador.fem.56": "Fer arribar les claus a la Vet (la safata de les copes, al saló).",
-      "dlg.comunicador.fem.57": "La Vet a la sala de control, l'Iri al saló de la subhasta.",
-      "dlg.comunicador.fem.58": "La Vet a la sala de control, l'Iri al saló de la subhasta.",
-      "dlg.comunicador.fem.59": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots. L'Iri pot fer durar la subhasta.",
-      "dlg.comunicador.fem.60": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots. L'Iri pot fer durar la subhasta.",
+      "dlg.comunicador.fem.51": "Un vestit de gala per a tu (al sindicat de Ferrum n'hi havia un).",
+      "dlg.comunicador.fem.52": "Un vestit de gala per a mi (al sindicat de Ferrum n'hi havia un).",
+      "dlg.comunicador.fem.53": "Palau: he de trobar la Lia (passadissos de servei).",
+      "dlg.comunicador.fem.54": "Palau: has de trobar la Lia (passadissos de servei).",
+      "dlg.comunicador.fem.55": "Fer-me arribar les claus (la safata de les copes, al saló).",
+      "dlg.comunicador.fem.56": "Fer-te arribar les claus (la safata de les copes, al saló).",
+      "dlg.comunicador.fem.57": "Jo a la sala de control, tu al saló de la subhasta.",
+      "dlg.comunicador.fem.58": "Tu a la sala de control, jo al saló de la subhasta.",
+      "dlg.comunicador.fem.59": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots. Tu pots fer durar la subhasta.",
+      "dlg.comunicador.fem.60": "Obrir les tres vàlvules (la clau al pany, i girar) abans que s'acabin els lots. Jo puc fer durar la subhasta.",
       "dlg.comunicador.fem.61": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
       "dlg.comunicador.fem.62": "31: el Magnat s'aguanta amb la seva reserva. La palanca vermella.",
       "dlg.comunicador.preu.1": "{preu_aigua} crèdits el litre. I pujant.",
@@ -19906,6 +21578,7 @@
       "obj.reg_foradat.desc": "El reg del pare, amb els goters destapats.",
       "obj.agulla.nom": "agulla",
       "obj.agulla.desc": "Una agulla de cosir grossa, amb fil. La guardava per si de cas.",
+      "obj.agulla.desc.iri": "L'agulla de cosir de la Vet, amb fil. La guardava per si de cas. Com tot.",
       "obj.galleda.nom": "galleda",
       "obj.galleda.desc": "Una galleda de zinc, buida.",
       "obj.galleda_plena.nom": "galleda plena",
@@ -19921,8 +21594,10 @@
       "obj.pernil.desc": "Una llesca de pernil d'en Tomàs. Per a una bona causa.",
       "obj.vestit.nom": "vestit de reina",
       "obj.vestit.desc": "El vestit de reina de la Rosa, amb la corona d'engranatge. A l'Iri li va gran.",
+      "obj.vestit.desc.iri": "El vestit de reina de la Rosa, amb la corona d'engranatge. Em va gran.",
       "obj.vestit_arreglat.nom": "vestit arreglat",
       "obj.vestit_arreglat.desc": "El vestit de reina, a mida de l'Iri. Horrible. Perfecte.",
+      "obj.vestit_arreglat.desc.iri": "El vestit de reina, a la meva mida. Horrible. Perfecte.",
       "obj.targeta.nom": "targeta de servei",
       "obj.targeta.desc": "La targeta d'accés de la Lia. Obre l'ascensor de servei.",
       "obj.comunicador.amb_article": "el comunicador",
@@ -19967,7 +21642,7 @@
       "obj.reg.1": "Forado els goters un per un amb l'agulla. Ara sí que regarà.",
       "obj.reg.2": "Els forats, els fa la Vet. Jo ho faria tot alhora i amb el dit.",
       "obj.agulla.1": "Una mica d'aquí, una mica d'allà... Ja està: ara li anirà a mida.",
-      "obj.agulla.2": "Si cuso jo, l'Iri entrarà al palau amb una màniga al cap.",
+      "obj.agulla.2": "Si cuso jo, entraré al palau amb una màniga al cap.",
       "obj.vestit.1": "Una mica d'aquí, una mica d'allà... Ja està: ara li anirà a mida.",
       "pj.iri.nom": "Iri",
       "pj.vet.nom": "Vet",
@@ -20026,8 +21701,8 @@
       "pista.teclat.2": "La caixa forta, darrere el quadre.",
       "pista.teclat.3": "Obre la caixa forta i tria T-I-T-U-S.",
       "pista.bomba.1": "Hi ha una bomba de Verne al nostre pou. Què hi fa?",
-      "pista.bomba.2": "El panell de la bomba té cargols de cap de flor. La Vet porta una punta de flor, però li cal un mànec.",
-      "pista.bomba.3": "Agafa el tornavís de la caixa d'eines del graner, ajunta'l amb la punta de flor de la Vet (si cal, doneu-vos-els) i fes-lo servir amb la bomba.",
+      "pista.bomba.2": "El panell de la bomba té cargols de cap de flor. Tenim una punta de flor, però li cal un mànec.",
+      "pista.bomba.3": "Agafa el tornavís de la caixa d'eines del graner, ajunta'l amb la punta de flor (si la porta l'altra, doneu-vos-els) i fes-lo servir amb la bomba.",
       "pista.capitana.1": "Ens cal algú que voli a tot arreu i ho sàpiga tot.",
       "pista.capitana.2": "La Capitana, al pont de la Cantimplora, al port.",
       "pista.capitana.3": "Ves al port pel camí del pati, puja a la Cantimplora, ves al pont i parla amb la Capitana.",
@@ -20049,27 +21724,36 @@
       "pista.injector.1": "La Cantimplora no vola: l'injector està esquerdat.",
       "pista.injector.2": "El motor és a la bodega. La Vet en sap.",
       "pista.injector.3": "Mira el motor de la bodega amb la Vet.",
+      "pista.injector.2.vet": "El motor és a la bodega. I de motors, en sé jo.",
+      "pista.injector.3.vet": "Mira el motor de la bodega.",
       "pista.tractor.1": "El tractor de l'avi té el mateix injector que la Cantimplora.",
       "pista.tractor.2": "El cargol està rovellat: cal oli (hi ha una llauna al motor de la bodega) i una clau anglesa grossa (la porta en Tomàs).",
       "pista.tractor.3": "Agafa l'oli del motor, demana la clau anglesa a en Tomàs, posa oli al tractor del graner i treu-ne l'injector amb la clau.",
       "pista.injector2.1": "L'injector va al motor de la Cantimplora.",
       "pista.injector2.2": "El munta la Vet.",
-      "pista.injector2.3": "La Vet ha de fer servir l'injector amb el motor de la bodega (si el porta l'Iri, que l'hi doni, o per la Mosca).",
+      "pista.injector2.3": "La Vet ha de fer servir l'injector amb el motor de la bodega (si el porto jo, l'hi dono o l'hi envio amb la Mosca).",
+      "pista.injector2.2.vet": "El munto jo.",
+      "pista.injector2.3.vet": "Fes servir l'injector amb el motor de la bodega (si el porta l'Iri, que me'l doni o me l'enviï amb la Mosca).",
       "pista.entrega.1": "Ja tenim albarà i injector.",
       "pista.entrega.2": "La Capitana és al pont.",
       "pista.entrega.3": "Parla amb la Capitana.",
       "pista.aqua.1": "Rumb a Aqua.",
       "pista.aqua.2": "El mapa de navegació, al pont. El fa servir l'Iri.",
       "pista.aqua.3": "Amb l'Iri, fes servir el mapa del pont i tria Aqua.",
+      "pista.aqua.2.iri": "El mapa de navegació, al pont. Pilotar és cosa meva.",
+      "pista.aqua.3.iri": "Fes servir el mapa del pont i tria Aqua.",
       "pista.grua.1": "El mar d'Aqua és quaranta metres més avall. Com s'hi baixa?",
       "pista.grua.2": "Al port hi ha una grua amb una cistella.",
       "pista.grua.3": "Mira la grua del port.",
       "pista.fusible.1": "A la grua li falta un fusible de trenta. A la nau només n'hi ha de deu.",
       "pista.fusible.2": "Un fusible de deu embolicat amb alguna cosa que condueixi... com el paper de plata. En Tomàs sempre dina amb entrepà embolicat.",
       "pista.fusible.3": "Agafa un fusible del quadre de la bodega, demana a en Tomàs el paper de plata del seu entrepà i que la Vet els ajunti.",
+      "pista.fusible.3.vet": "Agafa un fusible del quadre de la bodega, demana a en Tomàs el paper de plata del seu entrepà i ajunta'ls.",
       "pista.fusible2.1": "Ja tenim el fusible apanyat.",
       "pista.fusible2.2": "El munta la Vet.",
       "pista.fusible2.3": "La Vet ha de fer servir el fusible apanyat amb la grua del port.",
+      "pista.fusible2.2.vet": "El munto jo.",
+      "pista.fusible2.3.vet": "Fes servir el fusible apanyat amb la grua del port.",
       "pista.baixar.1": "Una a la cistella i l'altra als comandaments de la grua.",
       "pista.baixar.2": "Cal que siguin totes dues al port.",
       "pista.baixar.3": "Porta les dues protagonistes al port d'Aqua i fes servir la cistella.",
@@ -20081,13 +21765,15 @@
       "pista.bru.3": "Viatja a Ferrum amb el mapa del pont, entra al sindicat i parla amb en Bru.",
       "pista.canalla.1": "La canalla del piquet té set. Hi ha dues maneres d'ajudar-la.",
       "pista.canalla.2": "L'últim barril de la Cantimplora... o el condensador vell del carrer, que treu aigua de l'aire i està espatllat.",
-      "pista.canalla.3": "Empeny el barril de la bodega (i parla-ho amb la Vet), o arregla el condensador: corretja (de la font de Verne, amb la clau anglesa) i filtre (el de la cafetera de la nau).",
+      "pista.canalla.3": "Empeny el barril de la bodega, o arregla el condensador: corretja (de la font de Verne, amb la clau anglesa) i filtre (el de la cafetera de la nau).",
       "pista.bru2.1": "La canalla ja beu.",
       "pista.bru2.2": "En Bru volia veure-ho.",
       "pista.bru2.3": "Torna a parlar amb en Bru.",
       "pista.promesa.1": "En Bru té por per la seva filla, la Lia, que treballa al palau.",
       "pista.promesa.2": "Algú li ha de fer una promesa. La que negocia és l'Iri.",
       "pista.promesa.3": "Parla amb en Bru amb l'Iri i promet-li que li portareu la Lia a casa.",
+      "pista.promesa.2.iri": "Algú li ha de fer una promesa. I negociar és cosa meva.",
+      "pista.promesa.3.iri": "Parla amb en Bru i promet-li que li portareu la Lia a casa.",
       "pista.motlle.1": "En Bru ens ha donat el motlle de les claus.",
       "pista.motlle.2": "El motlle va al llit de colada, a la fosa.",
       "pista.motlle.3": "Entra a la fosa, passa a la colada i fes servir el motlle amb el llit de colada.",
@@ -20122,14 +21808,20 @@
       "pista.reg2.1": "Ja tenim el reg.",
       "pista.reg2.2": "Ara, a la tomaquera.",
       "pista.reg2.3": "La Vet ha de fer servir el reg amb la tomaquera del cobert.",
+      "pista.reg2.3.vet": "Fes servir el reg amb la tomaquera del cobert.",
       "pista.agulla.1": "Els goters del reg són tapats. Cal foradar-los.",
       "pista.agulla.2": "La Vet té una agulla al seu calaix.",
       "pista.agulla.3": "Agafa l'agulla del calaix de la Vet, a la bodega de la nau.",
+      "pista.agulla.2.vet": "Tinc una agulla al meu calaix.",
+      "pista.agulla.3.vet": "Agafa l'agulla del meu calaix, a la bodega de la nau.",
       "pista.foradar.1": "Agulla i reg.",
       "pista.foradar.2": "La Vet ho ha de fer.",
       "pista.foradar.3": "Amb la Vet, fes servir l'agulla amb el reg.",
+      "pista.foradar.2.vet": "Ho he de fer jo.",
+      "pista.foradar.3.vet": "Fes servir l'agulla amb el reg.",
       "pista.muntar.1": "El reg ja és a punt.",
       "pista.muntar.2": "La Vet ha de fer servir el reg amb la tomaquera.",
+      "pista.muntar.2.vet": "Fes servir el reg amb la tomaquera.",
       "pista.galleda.1": "Falta l'aigua. La que llença el Magnat.",
       "pista.galleda.2": "Al jardí hi ha una reixa on degota l'aire condicionat. I al cobert, una galleda.",
       "pista.galleda.3": "Agafa la galleda del cobert i fes-la servir amb la reixa del jardí.",
@@ -20141,12 +21833,15 @@
       "pista.fidel.1": "Al despatx del Magnat, a la residència, hi pot haver coses que ens convinguin.",
       "pista.fidel.2": "El robot de la porta només deixa passar gent «solvent». Una inversora, per exemple. L'Iri sap fer-ne.",
       "pista.fidel.3": "Amb l'Iri, parla amb en Fidel i digues-li que ets inversora.",
+      "pista.fidel.2.iri": "El robot de la porta només deixa passar gent «solvent». Una inversora, per exemple. D'això, en sé fer.",
+      "pista.fidel.3.iri": "Parla amb en Fidel i digues-li que ets inversora.",
       "pista.aval.1": "Què val, a Vesper, més que una granja sense aigua? El que hi creix sense aigua.",
       "pista.aval.2": "El quart sac de llavors del pare, al graner de Terra-2.",
       "pista.aval.3": "Viatja a Terra-2 i agafa el quart sac del banc de llavors del graner.",
       "pista.aval2.1": "Ja tenim un aval.",
       "pista.aval2.2": "En Fidel.",
       "pista.aval2.3": "Amb l'Iri, parla amb en Fidel i ofereix-li el sac de llavors.",
+      "pista.aval2.3.iri": "Parla amb en Fidel i ofereix-li el sac de llavors.",
       "pista.despatx.1": "Som al despatx del Magnat. Remenem.",
       "pista.despatx.2": "La calaixera, la paperera, l'arxivador.",
       "pista.despatx.3": "Obre la calaixera, mira la paperera i obre l'arxivador del despatx.",
@@ -20163,6 +21858,8 @@
       "pista.girar.1": "En Tomàs informa el Magnat. Per què ho fa?",
       "pista.girar.2": "El Magnat li va prometre una llicència de pilot. L'Iri li pot oferir una cosa millor.",
       "pista.girar.3": "Amb l'Iri, parla amb en Tomàs i ofereix-te a ensenyar-lo a volar.",
+      "pista.girar.2.iri": "El Magnat li va prometre una llicència de pilot. Jo li puc oferir una cosa millor.",
+      "pista.girar.3.iri": "Parla amb en Tomàs i ofereix-te a ensenyar-lo a volar.",
       "pista.contracte.1": "La Capitana té por del Magnat. Ara sabem per què.",
       "pista.contracte.2": "El contracte del despatx de Verdant.",
       "pista.contracte.3": "Parla amb la Capitana, al pont, amb el contracte a l'inventari.",
@@ -20174,33 +21871,49 @@
       "pista.gala3.1": "A l'Iri, el vestit li va gran.",
       "pista.gala3.2": "La Vet té agulla i fil.",
       "pista.gala3.3": "Amb la Vet, fes servir l'agulla amb el vestit.",
+      "pista.gala3.1.iri": "El vestit em va gran.",
+      "pista.gala3.2.vet": "Tinc agulla i fil.",
+      "pista.gala3.3.vet": "Fes servir l'agulla amb el vestit.",
       "pista.gala4.1": "El vestit és per a l'Iri.",
       "pista.gala4.2": "Dona-l'hi o envia-l'hi amb la Mosca.",
+      "pista.gala4.1.iri": "El vestit és per a mi, però el té la Vet.",
+      "pista.gala4.2.iri": "Que me'l doni o que me l'enviï amb la Mosca.",
       "pista.lia.1": "Al palau, la Vet ha de trobar la Lia, la filla d'en Bru.",
       "pista.lia.2": "És als passadissos de servei, amb una fregona.",
       "pista.lia.3": "Amb la Vet, parla amb la Lia.",
-      "pista.holm.1": "L'Iri porta les claus i la nota d'en Bru. La Vet les necessita.",
+      "pista.lia.1.vet": "Al palau, he de trobar la Lia, la filla d'en Bru.",
+      "pista.lia.3.vet": "Parla amb la Lia.",
+      "pista.holm.1": "L'Iri porta les claus i la nota d'en Bru. I jo les necessito.",
       "pista.holm.2": "La safata de les copes del saló baixa al servei. Però en Holm, el del banc, no treu els ulls de sobre a l'Iri.",
       "pista.holm.3": "Amb l'Iri, parla amb en Holm al saló.",
+      "pista.holm.1.iri": "Porto les claus i la nota d'en Bru. La Vet les necessita.",
+      "pista.holm.2.iri": "La safata de les copes del saló baixa al servei. Però en Holm, el del banc, no em treu els ulls de sobre.",
+      "pista.holm.3.iri": "Parla amb en Holm, al saló.",
       "pista.safata_nota.1": "La Lia vol la nota d'en Bru.",
       "pista.safata_nota.2": "La safata de les copes.",
       "pista.safata_nota.3": "Amb l'Iri, fes servir la nota amb la safata del saló.",
+      "pista.safata_nota.3.iri": "Fes servir la nota amb la safata del saló.",
       "pista.safata_claus.1": "Les claus, a la Vet.",
+      "pista.safata_claus.1.vet": "Les claus m'han d'arribar aquí baix.",
       "pista.safata_claus.2": "La safata de les copes.",
       "pista.safata_claus.3": "Amb l'Iri, fes servir les claus amb la safata del saló.",
+      "pista.safata_claus.3.iri": "Fes servir les claus amb la safata del saló.",
       "pista.recollir.1": "Hi ha alguna cosa a les safates del servei.",
       "pista.recollir.2": "Amb la Vet, agafa-ho de les safates.",
+      "pista.recollir.2.vet": "Agafa-ho de les safates.",
       "pista.nota_lia.1": "Dona la nota a la Lia.",
       "pista.nota_lia.2": "Amb la Vet, parla amb la Lia.",
-      "pista.control.1": "La Vet a la sala de control, l'Iri al saló.",
-      "pista.control.2": "La Vet hi baixa amb l'ascensor de servei i la targeta de la Lia.",
+      "pista.nota_lia.2.vet": "Parla amb la Lia.",
+      "pista.control.1": "Una a la sala de control i l'altra al saló.",
+      "pista.control.2": "A la sala de control s'hi baixa amb l'ascensor de servei i la targeta de la Lia.",
       "pista.control.3": "Porta la Vet a la sala de control i l'Iri al saló de la subhasta.",
       "pista.valvules.1": "Obre les tres vàlvules abans que s'acabin els lots. A cada pany: la clau, i girar.",
-      "pista.valvules.2": "El Magnat corre més a cada vàlvula. L'Iri, al saló, pot allargar la subhasta (l'escenari, en Holm).",
+      "pista.valvules.2": "El Magnat corre més a cada vàlvula. Qui és al saló pot allargar la subhasta (l'escenari, en Holm).",
       "pista.valvules.3": "Vet: fes servir les claus amb un pany i empeny-lo; així tres vegades. Iri: parla amb en Holm i fes-li perdre temps.",
       "pista.reserva.1": "31. Per sobre de la ratlla, per culpa de la reserva del Magnat.",
       "pista.reserva.2": "La palanca vermella.",
       "pista.reserva.3": "Amb la Vet, estira la palanca de la reserva.",
+      "pista.reserva.3.vet": "Estira la palanca de la reserva.",
       "sala.granja_pati.nom": "Pati de la granja",
       "sala.granja_pati.porta_casa.nom": "casa",
       "sala.granja_pati.porta_graner.nom": "graner",
@@ -20443,6 +22156,7 @@
       "sala.granja_graner.caixa_eines.1": "Un tornavís vell. Fa de tornavís.",
       "sala.granja_graner.caixa_eines.2": "La caixa d'eines de l'avi. Hi ha un tornavís.",
       "sala.granja_graner.caixa_eines.3": "Eines que no reconec. L'avi les devia inventar.",
+      "sala.granja_graner.caixa_eines.3.vet": "Eines que ni jo reconec. L'avi les devia inventar.",
       "sala.port_terra2.entra.1": "El port de Terra-2. Fa tres mesos que no surt cap nau de càrrega.",
       "sala.port_terra2.entra.2": "La Cantimplora és on la vam deixar: rovellant-se. La Capitana deu ser al pont.",
       "sala.port_terra2.rampa.1": "La Cantimplora. Nou dipòsits buits, un motor tossut i la Capitana. Casa.",
@@ -20455,6 +22169,7 @@
       "sala.aqua_port.entra.1": "Aqua. Era el mar més gran de Vesper. Ara és un desert de sal amb un port al mig.",
       "sala.aqua_port.entra.2": "On és el mar?",
       "sala.aqua_port.entra.3": "A baix. Molt a baix.",
+      "sala.aqua_port.entra.3.sola": "...Ah. A baix. Molt a baix.",
       "sala.aqua_port.escala_port.1": "L'escala del port. Baixa, baixa... i s'acaba a l'aire, quaranta metres per sobre del fons.",
       "sala.aqua_port.escala_port.2": "No. Els últims quaranta esglaons són d'aire.",
       "sala.aqua_port.grua.1": "Fusible de trenta, al seu lloc...",
@@ -20638,6 +22353,7 @@
       "sala.fosa_forn.forn.2": "El forn de la fosa. Fred, de moment.",
       "sala.fosa_forn.forn.3": "El forn, apagat. Ja ha fet la seva feina.",
       "sala.fosa_forn.forn.4": "No hi poso la mà. Ni la de l'Iri.",
+      "sala.fosa_forn.forn.4.iri": "No hi poso la mà. Ni la de la Vet.",
       "sala.fosa_forn.termometre.1": "El termòmetre del forn: {temperatura}. El metall aguanta fos fins a zero.",
       "sala.fosa_forn.termometre.2": "Un termòmetre de rellotge, gros com una roda.",
       "sala.fosa_colada.entra.1": "El forn és a vuit. Cada acció el refreda un grau. Si arriba a zero, el metall s'endureix al gresol.",
@@ -20672,6 +22388,8 @@
       "sala.verdant_jardi.entra.1": "Verdant. On viuen els que poden pagar l'aigua. La gespa és de plàstic, les flors són de plàstic, i l'olor de gespa és d'esprai.",
       "sala.verdant_jardi.entra.2": "A Verdant, la gent no saluda la gent amb granota.",
       "sala.verdant_jardi.entra.3": "Doncs no saludaré.",
+      "sala.verdant_jardi.entra.2.iri": "A Verdant, la gent no saluda la gent amb granota. La Vet hi farà molts amics.",
+      "sala.verdant_jardi.entra.2.vet": "A Verdant, la gent no saluda la gent amb granota. Doncs no saludaré.",
       "sala.verdant_jardi.porta_residencia.1": "La residència d'estiu del Magnat. Una porta de vidre i, davant, un robot amb llacet.",
       "sala.verdant_jardi.porta_residencia.2": "En Fidel em mira la granota. «El servei, pel darrere.» La casa no té darrere.",
       "sala.verdant_jardi.porta_residencia.3": "El robot es posa al mig de la porta. Molt educadament. Molt al mig.",
@@ -20725,6 +22443,7 @@
       "sala.verdant_residencia.arxivador.7": "DEUTORS, DRETS, PEIXOS. Ja he vist prou.",
       "sala.verdant_residencia.quadre.1": "Un retrat enorme del Magnat amb en Dividend, el seu gos. Tots dos somriuen. Només un de debò.",
       "sala.verdant_residencia.finestral.1": "El jardí de plàstic. Hi veig la Vet, parlant amb el jardiner. O amb les flors.",
+      "sala.verdant_residencia.finestral.2": "El jardí de plàstic. Des d'aquí sembla de debò. Només des d'aquí.",
       "sala.palau_galeria.entra.1": "El palau orbital del Magnat. Vint-i-tres piscines. Ni una gota.",
       "sala.palau_galeria.entra.2": "Senyora Pruna! Verdant Holdings. Quin honor. Quin... vestit.",
       "sala.palau_galeria.entra.3": "És avantguardista.",

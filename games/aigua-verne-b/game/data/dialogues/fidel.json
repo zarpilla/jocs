@@ -28,7 +28,17 @@
       "lines": [
         {
           "who": "fidel",
-          "text": "dlg.fidel.admesa.1"
+          "text": "dlg.fidel.admesa.1",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "fidel",
+          "text": "dlg.fidel.admesa.1.vet",
+          "if": {
+            "protagonist": "vet"
+          }
         }
       ]
     },

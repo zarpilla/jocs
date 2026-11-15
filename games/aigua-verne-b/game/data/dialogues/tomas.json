@@ -359,7 +359,21 @@
       "lines": [
         {
           "who": "vet",
-          "text": "dlg.tomas.vet_no.1"
+          "text": "dlg.tomas.vet_no.1",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_bodega",
+              "who": "iri"
+            }
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tomas.vet_no.1.aqui",
+          "if": {
+            "inRoom": "cantimplora_bodega",
+            "who": "iri"
+          }
         }
       ]
     },

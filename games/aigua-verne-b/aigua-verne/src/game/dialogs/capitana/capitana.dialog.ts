@@ -30,6 +30,10 @@ options.menu__contracte.onChoose(() => {
   chooseNarrativeOption('capitana', dialog, 'menu', 'contracte')
 })
 
+options.menu__contracte_vet.onChoose(() => {
+  chooseNarrativeOption('capitana', dialog, 'menu', 'contracte_vet')
+})
+
 options.menu__pla.onChoose(() => {
   chooseNarrativeOption('capitana', dialog, 'menu', 'pla')
 })

@@ -433,7 +433,17 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.granja_graner.caixa_eines.3"
+              "text": "sala.granja_graner.caixa_eines.3",
+              "if": {
+                "protagonist": "iri"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.granja_graner.caixa_eines.3.vet",
+              "if": {
+                "protagonist": "vet"
+              }
             }
           ]
         }

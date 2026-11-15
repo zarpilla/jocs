@@ -40,23 +40,61 @@
       "lines": [
         {
           "who": "capitana",
-          "text": "dlg.capitana.primera.1"
+          "text": "dlg.capitana.primera.1",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
         },
         {
           "who": "iri",
-          "text": "dlg.capitana.primera.2"
+          "text": "dlg.capitana.primera.2",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
         },
         {
           "who": "capitana",
-          "text": "dlg.capitana.primera.3"
+          "text": "dlg.capitana.primera.3",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
         },
         {
           "who": "vet",
-          "text": "dlg.capitana.primera.4"
+          "text": "dlg.capitana.primera.4",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "vet"
+          }
         },
         {
           "who": "capitana",
-          "text": "dlg.capitana.primera.5"
+          "text": "dlg.capitana.primera.5",
+          "if": {
+            "all": [
+              {
+                "inRoom": "cantimplora_pont",
+                "who": "iri"
+              },
+              {
+                "inRoom": "cantimplora_pont",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.primera.5.vet",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_pont",
+              "who": "iri"
+            }
+          }
         }
       ],
       "goto": "menu"
@@ -164,11 +202,41 @@
           "if": {
             "all": [
               {
-                "hasItem": "contracte_capitana"
+                "all": [
+                  {
+                    "hasItem": "contracte_capitana"
+                  },
+                  {
+                    "flag": "capitana_si",
+                    "is": false
+                  }
+                ]
               },
               {
-                "flag": "capitana_si",
-                "is": false
+                "protagonist": "iri"
+              }
+            ]
+          },
+          "next": "contracte"
+        },
+        {
+          "id": "contracte_vet",
+          "text": "dlg.capitana.opt.contracte.vet",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "hasItem": "contracte_capitana"
+                  },
+                  {
+                    "flag": "capitana_si",
+                    "is": false
+                  }
+                ]
+              },
+              {
+                "protagonist": "vet"
               }
             ]
           },
@@ -236,7 +304,21 @@
         },
         {
           "who": "vet",
-          "text": "dlg.capitana.aigua.3"
+          "text": "dlg.capitana.aigua.3",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.capitana.aigua.3",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_pont",
+              "who": "vet"
+            }
+          }
         },
         {
           "who": "capitana",
@@ -266,7 +348,21 @@
         },
         {
           "who": "iri",
-          "text": "dlg.capitana.portar.3"
+          "text": "dlg.capitana.portar.3",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.capitana.portar.3",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_pont",
+              "who": "iri"
+            }
+          }
         },
         {
           "who": "capitana",
@@ -274,7 +370,17 @@
         },
         {
           "who": "capitana",
-          "text": "dlg.capitana.portar.5"
+          "text": "dlg.capitana.portar.5",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.portar.5.vet",
+          "if": {
+            "protagonist": "vet"
+          }
         },
         {
           "who": "capitana",
@@ -321,8 +427,30 @@
           "who": "capitana",
           "text": "dlg.capitana.recorda.5",
           "if": {
-            "flag": "injector_posat",
-            "is": false
+            "all": [
+              {
+                "flag": "injector_posat",
+                "is": false
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.recorda.5.vet",
+          "if": {
+            "all": [
+              {
+                "flag": "injector_posat",
+                "is": false
+              },
+              {
+                "protagonist": "vet"
+              }
+            ]
           }
         }
       ],
@@ -344,11 +472,35 @@
         },
         {
           "who": "capitana",
-          "text": "dlg.capitana.entrego.4"
+          "text": "dlg.capitana.entrego.4",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.4.vet",
+          "if": {
+            "protagonist": "vet"
+          }
         },
         {
           "who": "iri",
-          "text": "dlg.capitana.entrego.5"
+          "text": "dlg.capitana.entrego.5",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.capitana.entrego.5",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_pont",
+              "who": "iri"
+            }
+          }
         },
         {
           "who": "capitana",
@@ -414,7 +566,21 @@
         },
         {
           "who": "iri",
-          "text": "dlg.capitana.contracte.5"
+          "text": "dlg.capitana.contracte.5",
+          "if": {
+            "inRoom": "cantimplora_pont",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.capitana.contracte.5",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_pont",
+              "who": "iri"
+            }
+          }
         },
         {
           "who": "capitana",
