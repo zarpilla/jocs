@@ -12,6 +12,7 @@ import { setActiveGameStateManager } from './gameState/resolveGameStateManager.j
 import { wireBenneRuntimeHiDpiCanvasScale } from './benneRuntimeHiDpiScale.js';
 import { getBennePhaserGameConfigBase } from './gameConfig.js';
 import { applyAdaptiveResolution } from './ConfigManager.js';
+import { wireAdaptiveResolutionResize } from './adaptiveResize.js';
 import {
   BENNE_SOUND_MANAGER_KEY,
   setBenneSoundManager,
@@ -46,6 +47,7 @@ export function createBenneGame(parent: HTMLElement | string): Phaser.Game {
   }
   const game = new Phaser.Game(createGameConfig(parent));
   wireBenneRuntimeHiDpiCanvasScale(game);
+  wireAdaptiveResolutionResize(game);
   const gameState = new GameStateManager(gameEvents, buildBootGameStateSlice());
   game.registry.set(BENNE_GAME_STATE_REGISTRY_KEY, gameState);
   setActiveGameStateManager(gameState);

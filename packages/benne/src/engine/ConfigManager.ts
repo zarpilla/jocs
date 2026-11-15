@@ -596,15 +596,24 @@ export function getGuiDesignHeight(): number {
  * `resolution.height`.
  */
 export function applyAdaptiveResolution(viewW: number, viewH: number): void {
+  const next = adaptiveHeightFor(viewW, viewH);
+  if (next !== null) {
+    settings.resolution.height = next;
+  }
+}
+
+/** The tallest the game gets (`resolution.height` as authored, before {@link applyAdaptiveResolution}). */
+const maxHeight = settings.resolution.height;
+
+/** The adaptive height for a `viewW`×`viewH` screen, or `null` when the game has no `resolution.minHeight`. */
+export function adaptiveHeightFor(viewW: number, viewH: number): number | null {
   const r = settings.resolution;
   if (r.minHeight === undefined || viewW <= 0 || viewH <= 0) {
-    return;
+    return null;
   }
-  const max = (settings as { __maxHeight?: number }).__maxHeight ?? r.height;
-  (settings as { __maxHeight?: number }).__maxHeight = max;
   const long = Math.max(viewW, viewH);
   const short = Math.min(viewW, viewH);
-  r.height = Math.min(max, Math.max(r.minHeight, Math.round((r.width * short) / long)));
+  return Math.min(maxHeight, Math.max(r.minHeight, Math.round((r.width * short) / long)));
 }
 
 /**

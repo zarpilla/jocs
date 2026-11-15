@@ -1905,6 +1905,19 @@ export class RoomScene extends Phaser.Scene {
   }
 
   /** True while a cinematic video is loaded and playing/paused. */
+  /**
+   * Whether the room can be rebuilt without anyone noticing (adaptive height after a window resize): no modal GUI
+   * (menu, save list) open, no cutscene, video or blocked input. The caller also checks for running interactions.
+   */
+  isQuietForRebuild(): boolean {
+    return (
+      !hasAnyVisibleModal(this.modalGuiEntries) &&
+      !this.isCutsceneActive() &&
+      !this.isRoomVideoPlaying() &&
+      !this.isUserInputDisabled()
+    );
+  }
+
   isRoomVideoPlaying(): boolean {
     return this.roomVideoActiveKey !== null;
   }

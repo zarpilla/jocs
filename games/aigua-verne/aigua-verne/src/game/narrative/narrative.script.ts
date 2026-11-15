@@ -13,7 +13,7 @@ import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
   AMPLADA, AUTOSAVE, applyStageNow, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  musicSync, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
+  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -127,6 +127,16 @@ function followUp(goTo?: string) {
  * (des de `globalScript.ts`) i les resol el JSON del joc.
  */
 export function routeInteraction(verb: string, target: FallbackTarget, item?: string) {
+  const router = touchRouter()
+  if (router?.takes(verb, target, item)) {
+    router.route(verb, target, item)
+    return
+  }
+  performInteraction(verb, target, item)
+}
+
+/** Fa la interacció del JSON: hi va caminant, s'hi gira, i el nucli la resol. */
+export function performInteraction(verb: string, target: FallbackTarget, item?: string) {
   // Primer hi va caminant (al `walkToPoint` de la cosa o del personatge) i s'hi gira, com a les
   // aventures clàssiques. Ha de ser el primer pas: així, si el jugador clica una altra cosa pel camí,
   // el motor atura aquesta acció i fa la nova. (`walkToClicked` no serveix: als fallbacks no hi ha clic.)

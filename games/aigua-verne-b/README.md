@@ -25,7 +25,8 @@ iguals mana l'ordre anar-hi, parlar, agafar, obrir, tancar, empènyer, estirar, 
 ## Què ha calgut
 
 - **Pantalla que s'adapta a l'aparell**: de 640×288 en un mòbil (20:9) a 640×360 en un monitor (16:9), sense
-  franges. L'alçada la tria el motor en arrencar (`resolution.minHeight`). Les GUI es dissenyen a 288 i s'enganxen a
+  franges. L'alçada la tria el motor en arrencar (`resolution.minHeight`), i la torna a triar si la finestra canvia de
+  forma (la sala es refà en un moment quiet, sense perdre res). Les GUI es dissenyen a 288 i s'enganxen a
   dalt, al mig o a baix (`anchorY`). [tools/hd640/pantalla.py](adapters/benne/tools/hd640/pantalla.py) prepara les GUI
   i la càmera de cada sala.
 - **L'art no canvia.** El de les sales és pintat fins a y = 260 (la resta era sota la barra), i el HUD té dos modes

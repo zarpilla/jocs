@@ -51,7 +51,10 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
   entre aquesta i `resolution.height` segons la proporció de la pantalla (presa en apaïsat), perquè un mòbil 20:9 i un
   monitor 16:9 quedin plens. Les GUI es dissenyen a l'alçada mínima i `anchorY` (a la GUI o a cada control: `top`,
   `center`, `bottom`, `stretch`) diu on van si la pantalla és més alta; a les sales, `viewAnchorY` (0 dalt … 1 baix)
-  fixa la càmera quan la sala és més alta que la pantalla. `pointer.screen` i `game.screenSize` en BenneScript;
+  fixa la càmera quan la sala és més alta que la pantalla. `pointer.screen` i `game.screenSize` en BenneScript. Si la
+  finestra canvia de forma (mida, pantalla completa, mòbil girat), es torna a triar l'alçada i, en un moment quiet
+  (sense interacció, diàleg, cinemàtica ni menú obert), la sala es refà com en carregar una partida, amb l'estat
+  passat a JSON i tornat a entrar (`src/engine/adaptiveResize.ts`; no toca cap partida desada);
 - una pantalla de càrrega a `index.html` (el nom del joc i una barra que segueix el loader de la `BootScene`;
   vegeu `src/engine/bootLoadingScreen.ts`), amb els colors de cada joc (`colors` al bloc `benne` del `package.json`).
 
