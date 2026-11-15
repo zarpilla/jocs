@@ -11,8 +11,12 @@
 //    tot: una fila de 7 (tauler baix) o, des de 94 px, dues (tauler alt, un monitor 16:9 a pantalla completa).
 //    Amb dues files, «Canvia» a dalt i, a sota, el menú i els punts l'un al costat de l'altre; amb una (no hi caben
 //    l'un sobre l'altre), «Canvia» i, al costat, el menú a sobre dels punts petits.
+//
+// A una cinemàtica amb coses per tocar (la carta de navegació d'Aigua Verne), només la frase i els punts: no hi ha
+// protagonista, ni inventari, ni «Canvia».
 import { game, player, pointer } from '@benne/script';
 import { verbs } from '@game';
+import { clickablePrompt, isClickableCutscene, narrative } from '../../narrative/narrative';
 import {
   bossaBtn, canviaBtn, caraIri, caraVet, downBtn, downBtn2, downBtn3, inventoryPanel, inventoryPanel2, inventoryPanel3,
   menuBtn, puntsBtn, puntsPetitBtn, safata, safata2, safata3, tauler, upBtn, upBtn2, upBtn3, verbLineText,
@@ -49,21 +53,30 @@ const mostra = (cs: Visible[], on: boolean) => {
   for (const c of cs) if (c.visible !== on) c.visible = on;
 };
 
+const cartaOberta = () => isClickableCutscene(narrative.world.currentRoom());
+
 /** Posa cada cosa on va en el mode d'ara (els controls es tornen a fer a cada sala: es crida a cada fotograma). */
 export function layoutHud() {
   // (els controls amagats al .gui.json surten visibles en construir-se la GUI: per això es diu sempre què es veu)
   const gran = [safata2, inventoryPanel2, upBtn2, downBtn2];
   const petita = [safata3, inventoryPanel3, upBtn3, downBtn3];
   const h = alt();
+  const carta = cartaOberta();
+  if (carta) refreshLine();
+  // («Canvia» el torna a mostrar narrative.ts en entrar a la sala següent, si es pot canviar)
+  if (carta) mostra([canviaBtn], false);
+  mostra([menuBtn], !carta);
   if (!modeTauler()) {
     mostra([tauler, puntsPetitBtn, ...gran, ...petita], false);
-    mostra([bossaBtn, puntsBtn], true);
+    mostra([bossaBtn], !carta);
+    mostra([puntsBtn], true);
+    if (carta) safataOberta = false;
     showTray(safataOberta);
   } else {
     const dues = franja() >= TAULER_ALT;
     mostra([tauler], true);
-    mostra(gran, dues);
-    mostra(petita, !dues);
+    mostra(gran, dues && !carta);
+    mostra(petita, !dues && !carta);
     mostra([bossaBtn, safata, inventoryPanel, upBtn, downBtn], false);
     posa(verbLineText, 320, ESCENA + 1);
     mostra([puntsBtn], dues);
@@ -91,10 +104,16 @@ export function layoutHud() {
   if (caraVet.visible !== vet) caraVet.visible = vet;
 }
 
-/** La frase: el nom de la cosa; amb un objecte a la mà, «Usa la clau amb la porta». */
+/**
+ * La frase: el nom de la cosa; amb un objecte a la mà, «Usa la clau amb la porta». A la carta de navegació, sense res a
+ * sota, el text d'entrada («On anem?»).
+ */
 export function refreshLine() {
   const item = pointer.item;
   const hover = pointer.hover;
   const sobre = hover && !(item && hover.kind === 'item' && hover.id === item.id) ? (hover.description ?? '') : '';
-  verbLineText.text = item ? `${verbs.use.label} ${item.name} ${verbs.use.preposition ?? ''} ${sobre}`.trim() : sobre;
+  const text = item
+    ? `${verbs.use.label} ${item.name} ${verbs.use.preposition ?? ''} ${sobre}`.trim()
+    : sobre || (cartaOberta() ? clickablePrompt() : '');
+  if (verbLineText.text !== text) verbLineText.text = text;
 }

@@ -12,7 +12,7 @@ import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
   AMPLADA, AUTOSAVE, applyStageNow, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
-  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
+  musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
 
@@ -69,7 +69,8 @@ function sayLines(lines: ResolvedLine[], around: Around) {
         fadeIn(1)
       }
     } else if (line.who === 'narrator') {
-      display(line.text)
+      if (isClickableCutscene(narrative.world.currentRoom())) narrate(line.text)
+      else display(line.text)
     } else if (line.who === 'player') {
       player.say(line.text)
     } else {
@@ -85,6 +86,17 @@ function sayLines(lines: ResolvedLine[], around: Around) {
   // línies, i si caminés abans, marxaria mentre parla. El mateix amb qui desapareix i amb qui apareix.
   applyHotspotVisibility()
   applyPlaces(true)
+}
+
+/**
+ * A una cinemàtica amb coses per tocar (el viatge de la carta de navegació), la narració passa sola, quan s'ha pogut
+ * llegir: el que s'ha triat ja s'ha triat, i no s'ha de clicar per veure com hi arriba. Un clic l'avança igualment.
+ */
+function narrate(text: string) {
+  const shown = display.now(text)
+  const fins = Date.now() + Math.max(1.8, 1 + text.length * 0.06) * 1000
+  while (!shown.done && Date.now() < fins) wait(0.1)
+  shown.finishNow()
 }
 
 /** Fa el que diu el resultat d'una interacció: línies, diàleg, canvi de protagonista o de sala. */
@@ -139,13 +151,16 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
   // Primer hi va caminant (al `walkToPoint` de la cosa o del personatge) i s'hi gira, com a les
   // aventures clàssiques. Ha de ser el primer pas: així, si el jugador clica una altra cosa pel camí,
   // el motor atura aquesta acció i fa la nova. (`walkToClicked` no serveix: als fallbacks no hi ha clic.)
-  if (target.kind !== 'item') {
+  // A una cinemàtica amb coses per tocar (la carta de navegació) no hi ha ningú que hi vagi.
+  if (target.kind !== 'item' && !isClickableCutscene(narrative.world.currentRoom())) {
     player.walkTo(target.id)
     const facing = facingToward(target.kind, target.id)
     if (facing) player.face(facing)
   }
   adoptLoadedState()
   playerActed()
+  // A la carta, un cop triat on anar, la frase ja no diu «On anem?».
+  if (isClickableCutscene(narrative.world.currentRoom())) setClickablePrompt('')
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const result = narrative.interact(request)
   // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
@@ -181,9 +196,11 @@ export function onRoomEntered() {
   ensureStarted()
   const room = narrative.world.currentRoom()
   if (!room) return
-  // A la portada i a les cinemàtiques (el pròleg) no hi ha res per clicar: fora la barra de verbs.
+  // A la portada i a les cinemàtiques (el pròleg) no hi ha res per clicar: fora la barra de verbs. Una cinemàtica
+  // amb coses per tocar (la carta de navegació), amb la interfície tàctil, deixa la frase (el HUD només hi posa això).
   const portada = room === narrative.content.manifest.cover
-  if (portada || narrative.content.rooms[room]?.cutscene) guis.verbs.hide()
+  const ambFrase = isClickableCutscene(room) && touchRouter() !== null
+  if (portada || (narrative.content.rooms[room]?.cutscene && !ambFrase)) guis.verbs.hide()
   else guis.verbs.show()
   if (portada) {
     guis.portada.show()
@@ -344,13 +361,20 @@ export function enterNarrativeRoom() {
   // nova, no fins que s'hi faci alguna cosa (`playerActed`).
   if (room !== narrative.content.manifest.cover && !cutscene && !untouchedNewGame) saves.autosave(AUTOSAVE)
   if (!result) return
+  // Cinemàtica amb coses per tocar (la carta de navegació): l'onEnter no s'atura a cada línia ni espera cap clic. Es
+  // fa el moviment (on és la nau) i el text queda a la frase del HUD («On anem?») fins que hi ha alguna cosa a sota.
+  if (cutscene && isClickableCutscene(room)) {
+    for (const line of result.lines) for (const cue of [...(line.stage ?? []), ...(line.stageAfter ?? [])]) applyStageNow(cue)
+    setClickablePrompt(result.lines.map((l) => l.text).join(' '))
+    return
+  }
   if (!cutscene) {
     if (walkTo) player.walkTo(walkTo)
     playResult(result)
     return
   }
-  // Cinemàtica que obre un diàleg (p. ex. la carta de navegació d'Aigua Verne): sense protagonista ni barra de
-  // verbs, però amb les opcions del diàleg. On anar després ho diu el diàleg (`anar`).
+  // Cinemàtica que obre un diàleg: sense protagonista ni barra de verbs, però amb les opcions del diàleg. On anar
+  // després ho diu el diàleg (`anar`).
   if (result.dialogue) {
     playResult(result)
     return

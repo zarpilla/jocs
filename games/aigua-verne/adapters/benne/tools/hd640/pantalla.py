@@ -38,7 +38,7 @@ PUJA = {
 # sales pintades fins a baix: què en mostra la càmera en un mòbil (y de dalt; per defecte, el mig)
 MIG = (H0 - H) // 2
 # el títol de la portada és a dalt de tot; el pròleg de Terra-2 té el mateix fons i no ha de saltar en començar
-CAMERA_Y = {'portada': 12, 'proleg_terra2': 12}
+CAMERA_Y = {'portada': 12, 'proleg_terra2': 12, 'cantimplora_mapa': 0}  # la carta: tots els planetes es poden tocar
 
 
 def puja_gui(name, dy, anchor):

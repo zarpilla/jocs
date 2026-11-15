@@ -115,7 +115,7 @@ Compte: `hd640/gui_rest.py` torna a fer la barra de verbs; no s'ha d'executar (o
 |---|---|
 | Estructura | Pròleg, 3 actes i 8 escenes, un final amb variacions (l'últim barril, les respostes a la Juana) |
 | Protagonistes | L'Iri i la Vet, amb canvi lliure; les sales són compartides |
-| Viatges | La Cantimplora: el mapa del pont (només el fa servir l'Iri) porta a qualsevol planeta obert; alguns trencaclosques demanen tornar a un planeta |
+| Viatges | La Cantimplora: el mapa del pont (només el fa servir l'Iri) obre la carta de navegació, on es toca el planeta on es vol anar (només hi surt «Navega a...» si és obert) i la nau hi vola; alguns trencaclosques demanen tornar a un planeta |
 | Comunicació | El comunicador de canell (repeteix què toca fer) i la Mosca, el dron que porta objectes a l'altra si són al mateix planeta |
 | Sincronies | Per torns: la colada de les claus (la temperatura del forn) i la subhasta (els lots) |
 | Resolució | 640×360, amb **dues mides de personatge**: ≈83 px a les sales de lluny i ≈100 px a les de prop (roba `Lluny` a `characters.json`) |

@@ -2,7 +2,643 @@
   "$schema": "../../schemas/room.schema.json",
   "name": "sala.cantimplora_mapa.nom",
   "cutscene": {},
-  "hotspots": {},
+  "hotspots": {
+    "terra2": {
+      "name": "sala.cantimplora_mapa.terra2.nom",
+      "visibleIf": {
+        "not": {
+          "var": "planeta",
+          "op": "==",
+          "value": "terra2"
+        }
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.terra2.1"
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.terra2.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "aqua"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_aqua"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_aqua_terra2",
+                  "hold": 3.9
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.terra2.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "ferrum"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_ferrum"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_ferrum_terra2",
+                  "hold": 4.2
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.terra2.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "verdant"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_verdant"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_verdant_terra2",
+                  "hold": 2.9
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.terra2.3",
+              "effects": [
+                {
+                  "setVar": "planeta",
+                  "value": "terra2"
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.terra2.4",
+              "effects": [
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "vet",
+                    "room": "cantimplora_bodega"
+                  }
+                }
+              ],
+              "if": {
+                "not": {
+                  "any": [
+                    {
+                      "inRoom": "cantimplora_pont",
+                      "who": "vet"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "aqua": {
+      "name": "sala.cantimplora_mapa.aqua.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "not": {
+              "var": "planeta",
+              "op": "==",
+              "value": "aqua"
+            }
+          },
+          {
+            "flag": "aqua_oberta"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.1"
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "terra2"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_terra2"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_terra2_aqua",
+                  "hold": 3.9
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "ferrum"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_ferrum"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_ferrum_aqua",
+                  "hold": 3.1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "verdant"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_verdant"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_verdant_aqua",
+                  "hold": 3.7
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.3",
+              "effects": [
+                {
+                  "setVar": "planeta",
+                  "value": "aqua"
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.aqua.4",
+              "effects": [
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "vet",
+                    "room": "cantimplora_bodega"
+                  }
+                }
+              ],
+              "if": {
+                "not": {
+                  "any": [
+                    {
+                      "inRoom": "cantimplora_pont",
+                      "who": "vet"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "ferrum": {
+      "name": "sala.cantimplora_mapa.ferrum.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "not": {
+              "var": "planeta",
+              "op": "==",
+              "value": "ferrum"
+            }
+          },
+          {
+            "flag": "ferrum_oberta"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.ferrum.1"
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.ferrum.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "terra2"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_terra2"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_terra2_ferrum",
+                  "hold": 4.2
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.ferrum.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "aqua"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_aqua"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_aqua_ferrum",
+                  "hold": 3.1
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.ferrum.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "verdant"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_verdant"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_verdant_ferrum",
+                  "hold": 4.2
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.ferrum.3",
+              "effects": [
+                {
+                  "setVar": "planeta",
+                  "value": "ferrum"
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.ferrum.4",
+              "effects": [
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "vet",
+                    "room": "cantimplora_bodega"
+                  }
+                }
+              ],
+              "if": {
+                "not": {
+                  "any": [
+                    {
+                      "inRoom": "cantimplora_pont",
+                      "who": "vet"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "verdant": {
+      "name": "sala.cantimplora_mapa.verdant.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "not": {
+              "var": "planeta",
+              "op": "==",
+              "value": "verdant"
+            }
+          },
+          {
+            "flag": "verdant_oberta"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.verdant.1"
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.verdant.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "terra2"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_terra2"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_terra2_verdant",
+                  "hold": 2.9
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.verdant.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "aqua"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_aqua"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_aqua_verdant",
+                  "hold": 3.7
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.verdant.2",
+              "sound": "motor_nau",
+              "if": {
+                "var": "planeta",
+                "op": "==",
+                "value": "ferrum"
+              },
+              "stage": [
+                {
+                  "prop": "nau",
+                  "anim": "tremola_ferrum"
+                }
+              ],
+              "stageAfter": [
+                {
+                  "prop": "nau",
+                  "anim": "vol_ferrum_verdant",
+                  "hold": 4.2
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.verdant.3",
+              "effects": [
+                {
+                  "setVar": "planeta",
+                  "value": "verdant"
+                }
+              ]
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.mapa.verdant.4",
+              "effects": [
+                {
+                  "event": "situar",
+                  "args": {
+                    "who": "vet",
+                    "room": "cantimplora_bodega"
+                  }
+                }
+              ],
+              "if": {
+                "not": {
+                  "any": [
+                    {
+                      "inRoom": "cantimplora_pont",
+                      "who": "vet"
+                    },
+                    {
+                      "inRoom": "cantimplora_bodega",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            }
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "palau": {
+      "name": "sala.cantimplora_mapa.palau.nom",
+      "visibleIf": {
+        "var": "escena",
+        "op": ">=",
+        "value": 6
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "effects": [
+            {
+              "setFlag": "palau_tancat"
+            }
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "aqui_terra2": {
+      "name": "sala.cantimplora_mapa.aqui.nom",
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "terra2"
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "aqui_aqua": {
+      "name": "sala.cantimplora_mapa.aqui.nom",
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "aqua"
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "aqui_ferrum": {
+      "name": "sala.cantimplora_mapa.aqui.nom",
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "ferrum"
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "aqui_verdant": {
+      "name": "sala.cantimplora_mapa.aqui.nom",
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "verdant"
+      },
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    }
+  },
   "onEnter": [
     {
       "verb": "*",
@@ -67,8 +703,7 @@
             }
           ]
         }
-      ],
-      "dialogue": "mapa"
+      ]
     }
   ]
 }
