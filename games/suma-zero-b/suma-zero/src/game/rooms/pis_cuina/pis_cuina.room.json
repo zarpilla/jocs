@@ -1,0 +1,397 @@
+{
+  "id": "pis_cuina",
+  "name": "La cuina",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 236
+          },
+          {
+            "x": 621,
+            "y": 236
+          },
+          {
+            "x": 632,
+            "y": 271
+          },
+          {
+            "x": 8,
+            "y": 271
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "plats",
+      "active": true,
+      "description": "plats",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 139,
+          "y": 120
+        },
+        {
+          "x": 240,
+          "y": 120
+        },
+        {
+          "x": 240,
+          "y": 163
+        },
+        {
+          "x": 139,
+          "y": 163
+        }
+      ],
+      "walkToPoint": {
+        "x": 187,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 189,
+        "y": 163
+      }
+    },
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 552,
+          "y": 51
+        },
+        {
+          "x": 626,
+          "y": 51
+        },
+        {
+          "x": 626,
+          "y": 214
+        },
+        {
+          "x": 552,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 589,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 589,
+        "y": 214
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cafetera",
+      "active": true,
+      "description": "cafetera",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 75,
+          "y": 115
+        },
+        {
+          "x": 115,
+          "y": 115
+        },
+        {
+          "x": 115,
+          "y": 158
+        },
+        {
+          "x": 75,
+          "y": 158
+        }
+      ],
+      "walkToPoint": {
+        "x": 107,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 95,
+        "y": 158
+      }
+    },
+    {
+      "id": "nevera",
+      "active": true,
+      "description": "nevera",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 293,
+          "y": 67
+        },
+        {
+          "x": 376,
+          "y": 67
+        },
+        {
+          "x": 376,
+          "y": 214
+        },
+        {
+          "x": 293,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 333,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 334,
+        "y": 214
+      }
+    },
+    {
+      "id": "passaplats",
+      "active": true,
+      "description": "passaplats",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 400,
+          "y": 88
+        },
+        {
+          "x": 470,
+          "y": 88
+        },
+        {
+          "x": 470,
+          "y": 147
+        },
+        {
+          "x": 400,
+          "y": 147
+        }
+      ],
+      "walkToPoint": {
+        "x": 435,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 435,
+        "y": 147
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "pizza_nevera",
+      "tag": "pizza_nevera",
+      "animations": {
+        "pizza_nevera": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 304,
+            "y": 107
+          },
+          {
+            "x": 355,
+            "y": 107
+          },
+          {
+            "x": 355,
+            "y": 123
+          },
+          {
+            "x": 304,
+            "y": 123
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 333,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 329,
+        "y": 123
+      },
+      "description": "pizza"
+    },
+    {
+      "id": "tonyina",
+      "tag": "tonyina",
+      "animations": {
+        "tonyina": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 307,
+            "y": 133
+          },
+          {
+            "x": 355,
+            "y": 133
+          },
+          {
+            "x": 355,
+            "y": 153
+          },
+          {
+            "x": 307,
+            "y": 153
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 333,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 331,
+        "y": 153
+      },
+      "description": "pa i tonyina"
+    },
+    {
+      "id": "cable_cafetera",
+      "tag": "cable_cafetera",
+      "animations": {
+        "cable_cafetera": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "nevera_oberta",
+      "tag": "nevera_oberta",
+      "animations": {
+        "nevera_oberta": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pluja",
+      "tag": "pluja",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pluja": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "passaplats_obert",
+      "tag": "passaplats_obert",
+      "animations": {
+        "passaplats_obert": {}
+      },
+      "zIndex": 1,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "tele",
+      "tag": "tele",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "tele": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
+    },
+    {
+      "id": "rellotge",
+      "tag": "rellotge",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "rellotge": {
+          "loop": true,
+          "frameDuration": 550
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 240,
+      "y": 259,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "iri-veu",
+      "definition": "iri/iri.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ],
+  "viewAnchorY": 0
+}

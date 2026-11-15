@@ -1,0 +1,27 @@
+{
+  "id": "neta",
+  "displayName": "neta",
+  "options": [
+    {
+      "id": "menu__descansa",
+      "scriptName": "menu__descansa",
+      "text": "NETA, descansa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__hores",
+      "scriptName": "menu__hores",
+      "text": "Quantes hores fa que treballes?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, res. Continua.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

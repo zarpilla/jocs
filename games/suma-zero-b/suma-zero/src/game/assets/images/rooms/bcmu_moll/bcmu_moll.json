@@ -1,0 +1,222 @@
+{
+  "frames": {
+    "bcmu_moll 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 1.aseprite": {
+      "frame": {
+        "x": 873,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 2.aseprite": {
+      "frame": {
+        "x": 753,
+        "y": 0,
+        "w": 41,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 340,
+        "y": 104,
+        "w": 41,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 3.aseprite": {
+      "frame": {
+        "x": 794,
+        "y": 0,
+        "w": 49,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 340,
+        "y": 108,
+        "w": 49,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 4.aseprite": {
+      "frame": {
+        "x": 843,
+        "y": 0,
+        "w": 30,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 340,
+        "y": 108,
+        "w": 30,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 5.aseprite": {
+      "frame": {
+        "x": 873,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 6.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 113,
+        "h": 109
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 268,
+        "y": 24,
+        "w": 113,
+        "h": 109
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 7.aseprite": {
+      "frame": {
+        "x": 794,
+        "y": 0,
+        "w": 49,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 340,
+        "y": 108,
+        "w": 49,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 8.aseprite": {
+      "frame": {
+        "x": 843,
+        "y": 0,
+        "w": 30,
+        "h": 21
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 340,
+        "y": 108,
+        "w": 30,
+        "h": 21
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "bcmu_moll.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 874,
+      "h": 360
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "llum_toro",
+        "from": 1,
+        "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

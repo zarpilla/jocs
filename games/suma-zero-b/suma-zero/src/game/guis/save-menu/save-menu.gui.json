@@ -1,0 +1,158 @@
+{
+  "id": "save-menu",
+  "name": "Save Menu",
+  "description": " [288]",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "controls": [
+    {
+      "type": "nineSliceImage",
+      "id": "save-bg",
+      "x": 84,
+      "y": 9,
+      "width": 473,
+      "height": 269,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 320,
+      "y": 25,
+      "text": "Desa",
+      "font": "suma-negreta",
+      "fontSize": 8,
+      "color": "#4fd3bf",
+      "align": "center"
+    },
+    {
+      "type": "textInput",
+      "id": "save-name",
+      "x": 109,
+      "y": 233,
+      "width": 287,
+      "height": 25,
+      "font": "suma-regular",
+      "fontSize": 8,
+      "text": "",
+      "maxLength": 26,
+      "placeholder": "Nom de la partida...",
+      "color": "#bfeee4",
+      "backgroundColor": "#090c17",
+      "outlineColor": "#0a4e50",
+      "caretColor": "#ff78d2",
+      "hoverBackgroundColor": "#0d1222",
+      "focusedOutlineColor": "#4fd3bf",
+      "textAlign": "left"
+    },
+    {
+      "type": "listBox",
+      "id": "saved-list",
+      "x": 109,
+      "y": 80,
+      "width": 287,
+      "height": 145,
+      "rowCount": 5,
+      "rowPadding": 4,
+      "normalBackgroundColor": "#0d1222",
+      "hoverBackgroundColor": "#18203a",
+      "selectedBackgroundColor": "#0a4e50",
+      "textColor": "#bfeee4",
+      "selectedTextColor": "#ffffff",
+      "placeholderTextColor": "#4a5670",
+      "font": "suma-regular",
+      "fontSize": 8
+    },
+    {
+      "type": "text",
+      "id": "instructions",
+      "x": 109,
+      "y": 51,
+      "text": "Tria una posició i escriu un nom per desar.",
+      "font": "suma-regular",
+      "fontSize": 8,
+      "color": "#bfeee4",
+      "wordWrapWidth": 407
+    },
+    {
+      "type": "button",
+      "id": "save-btn",
+      "x": 415,
+      "y": 145,
+      "width": 113,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Desa",
+      "font": "suma-regular",
+      "fontSize": 8,
+      "textColor": "#bfeee4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -1,
+      "backgroundTag": "key-113x27",
+      "states": {
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff78d2",
+        "pressed": "#ff78d2",
+        "disabled": "#4a5670"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#03040a",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "back-btn",
+      "x": 415,
+      "y": 177,
+      "width": 113,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Torna",
+      "font": "suma-regular",
+      "fontSize": 8,
+      "textColor": "#bfeee4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -1,
+      "backgroundTag": "key-113x27",
+      "states": {
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff78d2",
+        "pressed": "#ff78d2",
+        "disabled": "#4a5670"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#03040a",
+        "sides": "bottomRight"
+      }
+    }
+  ],
+  "modal": true,
+  "zIndex": 101,
+  "anchorY": "center"
+}

@@ -1,0 +1,39 @@
+{
+  "$comment": "GENERAT per adapters/benne/sync.ts",
+  "id": "suma-zero-b",
+  "nom": "Suma Zero B",
+  "musicSync": true,
+  "resolucio": {
+    "width": 640,
+    "height": 360,
+    "minHeight": 288
+  },
+  "characters": {},
+  "items": {},
+  "rooms": {},
+  "hotspots": {},
+  "music": {
+    "$comment": "Música d'ambient de cada sala: sala → pista (game/audio/music/<pista>.ogg, la genera `npm run musica`). Les sales que no hi són (les cinemàtiques, com l'avió) continuen amb la que sonava. Totes les pistes duren el mateix i s'encadenen al mateix punt.",
+    "portada": "tema",
+    "proleg_ginebra": "tema",
+    "pis_estudi": "pis",
+    "pis_cuina": "pis",
+    "bar_sala": "bar",
+    "bar_rebost": "bar",
+    "aeroport_terminal": "aeroport",
+    "aeroport_personal": "aeroport",
+    "aeroport_oficina": "aeroport",
+    "bcmu_vestibul": "banc",
+    "bcmu_moll": "banc",
+    "bcmu_passadis": "banc",
+    "bcmu_escombraries": "banc",
+    "bcmu_seguretat": "banc",
+    "bcmu_avantdespatx": "rellotge",
+    "bcmu_despatx": "rellotge",
+    "bcmu_contenidor": "aeroport",
+    "final_bar": "bar",
+    "postcredits": "pis",
+    "muntatge": "rellotge",
+    "credits": "tema"
+  }
+}

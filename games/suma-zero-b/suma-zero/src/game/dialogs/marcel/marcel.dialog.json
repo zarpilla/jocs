@@ -1,0 +1,69 @@
+{
+  "id": "marcel",
+  "displayName": "marcel",
+  "options": [
+    {
+      "id": "menu__falten",
+      "scriptName": "menu__falten",
+      "text": "Què em falta?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__servidor",
+      "scriptName": "menu__servidor",
+      "text": "Doncs ara sí: on és el servidor antic?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__clau",
+      "scriptName": "menu__clau",
+      "text": "I un cop hi sigui, com el faig anar?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__tub",
+      "scriptName": "menu__tub",
+      "text": "El servidor en un pis i la clau al coll d'un altre. Com ho ajunto?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__vol",
+      "scriptName": "menu__vol",
+      "text": "I com arribem a Ginebra, si no tenim ni per pizzes?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__ballester",
+      "scriptName": "menu__ballester",
+      "text": "I el Cap de Seguretat, com és?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__neta",
+      "scriptName": "menu__neta",
+      "text": "Hi ha algú més pel mig, al tercer pis?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__gracies",
+      "scriptName": "menu__gracies",
+      "text": "Gràcies, Marcel. Te'n dec una.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Ja tornaré.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

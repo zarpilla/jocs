@@ -1,0 +1,1453 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "bonfill",
+  "with": "bonfill",
+  "start": [
+    {
+      "if": {
+        "var": "marmota",
+        "op": ">=",
+        "value": 1
+      },
+      "node": "hola_marmota"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "effects": [
+        {
+          "setFlag": "auditoria"
+        },
+        {
+          "setVar": "sospita",
+          "value": 30
+        },
+        {
+          "setVar": "sospita_nivell",
+          "value": 1
+        }
+      ],
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.hola1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bonfill.hola2"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.hola3"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.prep_tot",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti"
+              },
+              {
+                "flag": "ulleres_posades"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -30
+            },
+            {
+              "setVar": "sospita_nivell",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.prep_maleti",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti"
+              },
+              {
+                "flag": "ulleres_posades",
+                "is": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -15
+            },
+            {
+              "setVar": "sospita_nivell",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.prep_ulleres",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti",
+                "is": false
+              },
+              {
+                "flag": "ulleres_posades"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -15
+            },
+            {
+              "setVar": "sospita_nivell",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "goto": "q_maleti"
+    },
+    "hola_marmota": {
+      "effects": [
+        {
+          "setFlag": "auditoria"
+        },
+        {
+          "setVar": "sospita",
+          "value": 30
+        },
+        {
+          "setVar": "sospita_nivell",
+          "value": 1
+        }
+      ],
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.marmota1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bonfill.marmota2"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.hola3"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.prep_tot",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti"
+              },
+              {
+                "flag": "ulleres_posades"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -30
+            },
+            {
+              "setVar": "sospita_nivell",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.prep_maleti",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti"
+              },
+              {
+                "flag": "ulleres_posades",
+                "is": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -15
+            },
+            {
+              "setVar": "sospita_nivell",
+              "value": 0
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.prep_ulleres",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti",
+                "is": false
+              },
+              {
+                "flag": "ulleres_posades"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -15
+            },
+            {
+              "setVar": "sospita_nivell",
+              "value": 0
+            }
+          ]
+        }
+      ],
+      "goto": "q_maleti"
+    },
+    "q_maleti": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest75",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 75
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 3
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest50",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 2
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest25",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 25
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 1
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.q_maleti",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti",
+                "is": false
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "secrets",
+          "text": "dlg.bonfill.opt.secrets",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti",
+                "is": false
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "next": "r_secrets"
+        },
+        {
+          "id": "avio",
+          "text": "dlg.bonfill.opt.avio",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti",
+                "is": false
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 40
+            }
+          ],
+          "next": "r_avio"
+        },
+        {
+          "id": "nuvols",
+          "text": "dlg.bonfill.opt.nuvols",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "hasItem": "maleti",
+                    "is": false
+                  },
+                  {
+                    "var": "sospita",
+                    "op": "<",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "var": "marmota",
+                "op": ">=",
+                "value": 1
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -5
+            }
+          ],
+          "next": "r_nuvols"
+        }
+      ],
+      "goto": "q_jove"
+    },
+    "r_secrets": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_secrets1"
+        }
+      ],
+      "goto": "q_jove"
+    },
+    "r_avio": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_avio1"
+        }
+      ],
+      "goto": "q_jove"
+    },
+    "r_nuvols": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_nuvols1"
+        }
+      ],
+      "goto": "q_jove"
+    },
+    "q_jove": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest75",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 75
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 3
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest50",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 2
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest25",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 25
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 1
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.q_jove",
+          "if": {
+            "all": [
+              {
+                "flag": "ulleres_posades",
+                "is": false
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "directives",
+          "text": "dlg.bonfill.opt.directives",
+          "if": {
+            "all": [
+              {
+                "flag": "ulleres_posades",
+                "is": false
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 5
+            }
+          ],
+          "next": "r_directives"
+        },
+        {
+          "id": "acreditacio",
+          "text": "dlg.bonfill.opt.acreditacio",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "ulleres_posades",
+                    "is": false
+                  },
+                  {
+                    "var": "sospita",
+                    "op": "<",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "hasItem": "acreditacio"
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 30
+            }
+          ],
+          "next": "r_acreditacio"
+        },
+        {
+          "id": "crema",
+          "text": "dlg.bonfill.opt.crema",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "ulleres_posades",
+                    "is": false
+                  },
+                  {
+                    "var": "sospita",
+                    "op": "<",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "var": "marmota",
+                "op": ">=",
+                "value": 1
+              }
+            ]
+          },
+          "next": "r_crema"
+        }
+      ],
+      "goto": "q_banca"
+    },
+    "r_directives": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_directives1"
+        }
+      ],
+      "goto": "q_banca"
+    },
+    "r_acreditacio": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_acreditacio1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bonfill.r_acreditacio2"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_acreditacio3"
+        }
+      ],
+      "goto": "q_banca"
+    },
+    "r_crema": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_crema1"
+        }
+      ],
+      "goto": "q_banca"
+    },
+    "q_banca": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest75",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 75
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 3
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest50",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 2
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest25",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 25
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 1
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.q_banca",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "cordons",
+          "text": "dlg.bonfill.opt.cordons",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 10
+            },
+            {
+              "setFlag": "dignitat"
+            }
+          ],
+          "next": "r_cordons"
+        },
+        {
+          "id": "cor",
+          "text": "dlg.bonfill.opt.cor",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 5
+            }
+          ],
+          "next": "r_cor"
+        },
+        {
+          "id": "dacord",
+          "text": "dlg.bonfill.opt.dacord",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -5
+            },
+            {
+              "setFlag": "mentida_corporativa"
+            }
+          ],
+          "next": "r_dacord"
+        }
+      ],
+      "goto": "q_gos"
+    },
+    "r_cordons": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_cordons1"
+        }
+      ],
+      "goto": "q_gos"
+    },
+    "r_cor": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.r_cor1"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_cor2"
+        }
+      ],
+      "goto": "q_gos"
+    },
+    "r_dacord": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_dacord1"
+        }
+      ],
+      "goto": "q_gos"
+    },
+    "q_gos": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest75",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 75
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 3
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest50",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 2
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest25",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 25
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 1
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.q_gos",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_rockefeller"
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "rockefeller",
+          "text": "dlg.bonfill.opt.rockefeller",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_rockefeller"
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -5
+            }
+          ],
+          "next": "r_rockefeller"
+        },
+        {
+          "id": "gats",
+          "text": "dlg.bonfill.opt.gats",
+          "if": {
+            "all": [
+              {
+                "flag": "sap_rockefeller"
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 5
+            }
+          ],
+          "next": "r_gats"
+        }
+      ],
+      "goto": "q_veure"
+    },
+    "r_rockefeller": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_rockefeller1"
+        }
+      ],
+      "goto": "q_veure"
+    },
+    "r_gats": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_gats1"
+        }
+      ],
+      "goto": "q_veure"
+    },
+    "q_veure": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest75",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 75
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 3
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest50",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 2
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest25",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 25
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 1
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.q_veure",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "seguretat",
+          "text": "dlg.bonfill.opt.seguretat",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "next": "acceptada"
+        },
+        {
+          "id": "caixes",
+          "text": "dlg.bonfill.opt.caixes",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 20
+            }
+          ],
+          "next": "r_caixes"
+        },
+        {
+          "id": "comptes",
+          "text": "dlg.bonfill.opt.comptes",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 50
+            }
+          ],
+          "next": "r_comptes"
+        },
+        {
+          "id": "tecnics",
+          "text": "dlg.bonfill.opt.tecnics",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              },
+              {
+                "var": "marmota",
+                "op": ">=",
+                "value": 1
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -10
+            }
+          ],
+          "next": "acceptada"
+        }
+      ],
+      "goto": "trucada"
+    },
+    "q_veure2": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest75",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 75
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 3
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest50",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 50
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 2
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.gest25",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": ">=",
+                "value": 25
+              },
+              {
+                "var": "sospita_nivell",
+                "op": "<",
+                "value": 1
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setVar": "sospita_nivell",
+              "value": 1
+            }
+          ]
+        }
+      ],
+      "choices": [
+        {
+          "id": "seguretat",
+          "text": "dlg.bonfill.opt.seguretat",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "next": "acceptada"
+        },
+        {
+          "id": "caixes",
+          "text": "dlg.bonfill.opt.caixes",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 20
+            }
+          ],
+          "next": "r_caixes"
+        },
+        {
+          "id": "comptes",
+          "text": "dlg.bonfill.opt.comptes",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 50
+            }
+          ],
+          "next": "r_comptes"
+        },
+        {
+          "id": "tecnics",
+          "text": "dlg.bonfill.opt.tecnics",
+          "if": {
+            "all": [
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              },
+              {
+                "var": "marmota",
+                "op": ">=",
+                "value": 1
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": -10
+            }
+          ],
+          "next": "acceptada"
+        }
+      ],
+      "goto": "trucada"
+    },
+    "r_caixes": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_caixes1"
+        }
+      ],
+      "goto": "q_veure2"
+    },
+    "r_comptes": {
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.r_comptes1"
+        }
+      ],
+      "goto": "q_veure2"
+    },
+    "acceptada": {
+      "effects": [
+        {
+          "setFlag": "auditoria",
+          "value": false
+        },
+        {
+          "setFlag": "auditoria_acceptada"
+        }
+      ],
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.acceptada1"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.acceptada2",
+          "stageAfter": [
+            {
+              "who": "bonfill",
+              "walk": "ascensor"
+            },
+            {
+              "who": "bonfill",
+              "visible": false
+            }
+          ]
+        }
+      ]
+    },
+    "trucada": {
+      "effects": [
+        {
+          "setFlag": "auditoria",
+          "value": false
+        },
+        {
+          "addVar": "marmota",
+          "amount": 1
+        },
+        {
+          "setFlag": "planta_retallada"
+        }
+      ],
+      "lines": [
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.trucada1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.trucada2"
+        },
+        {
+          "who": "bonfill",
+          "text": "dlg.bonfill.trucada3"
+        },
+        {
+          "who": "title",
+          "text": "dlg.bonfill.trucada4",
+          "sound": "rebobinar"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bonfill.trucada5"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bonfill.trucada6"
+        }
+      ]
+    }
+  }
+}

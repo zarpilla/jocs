@@ -1,0 +1,79 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "diu",
+  "with": "diu",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "diu",
+          "text": "dlg.diu.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "cables",
+          "text": "dlg.diu.opt.cables",
+          "if": {
+            "flag": "diu_distret",
+            "is": false
+          },
+          "next": "cables"
+        },
+        {
+          "id": "gracies",
+          "text": "dlg.diu.opt.gracies",
+          "if": {
+            "flag": "diu_distret"
+          },
+          "next": "gracies"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.diu.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "cables": {
+      "lines": [
+        {
+          "who": "diu",
+          "text": "dlg.diu.cables",
+          "sound": "miol"
+        },
+        {
+          "who": "player",
+          "text": "dlg.diu.cables2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "gracies": {
+      "lines": [
+        {
+          "who": "diu",
+          "text": "dlg.diu.gracies"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "diu",
+          "text": "dlg.diu.adeu"
+        }
+      ]
+    }
+  }
+}

@@ -1,4 +1,5 @@
-// Aigua Verne B: el HUD, sense barra de verbs (la GUI es diu `verbs` perquè el pont compartit la mostra, l'amaga i
+// GENERAT per adapters/benne/sync.ts. No l'editis aquí.
+// La interfície tàctil: el HUD, sense barra de verbs (la GUI es diu `verbs` perquè el pont compartit la mostra, l'amaga i
 // hi busca el botó «Canvia»). Els dos modes (mòbil i tauler) i on va cada cosa: hud.ts.
 import { game, onUpdate, pointer } from '@benne/script';
 import { guis } from '@game';

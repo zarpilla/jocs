@@ -1,0 +1,115 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "recepcionista",
+  "with": "recepcionista",
+  "start": [
+    {
+      "if": {
+        "flag": "recepcionista_enredada"
+      },
+      "node": "adeu2"
+    },
+    {
+      "if": {
+        "var": "sospita_max",
+        "op": ">=",
+        "value": 50
+      },
+      "node": "reconeix"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "recepcionista",
+          "text": "dlg.recepcionista.hola"
+        }
+      ]
+    },
+    "reconeix": {
+      "lines": [
+        {
+          "who": "recepcionista",
+          "text": "dlg.recepcionista.reconeix"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "font",
+          "text": "dlg.recepcionista.opt.font",
+          "next": "font"
+        },
+        {
+          "id": "dessuadora",
+          "text": "dlg.recepcionista.opt.dessuadora",
+          "next": "dessuadora"
+        },
+        {
+          "id": "altra",
+          "text": "dlg.recepcionista.opt.altra",
+          "next": "altra"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.recepcionista.opt.adeu",
+          "silent": true,
+          "end": true
+        }
+      ]
+    },
+    "font": {
+      "lines": [
+        {
+          "who": "recepcionista",
+          "text": "dlg.recepcionista.font1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.recepcionista.font2"
+        },
+        {
+          "who": "recepcionista",
+          "text": "dlg.recepcionista.font3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "recepcionista_enredada"
+        }
+      ]
+    },
+    "dessuadora": {
+      "lines": [
+        {
+          "who": "recepcionista",
+          "text": "dlg.recepcionista.dessuadora"
+        }
+      ],
+      "goto": "menu"
+    },
+    "altra": {
+      "lines": [
+        {
+          "who": "recepcionista",
+          "text": "dlg.recepcionista.altra"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu2": {
+      "lines": [
+        {
+          "who": "recepcionista",
+          "text": "dlg.recepcionista.adeu2"
+        }
+      ]
+    }
+  }
+}

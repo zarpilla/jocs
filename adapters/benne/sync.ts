@@ -5,6 +5,7 @@
  * se'n pot triar un altre amb `--project`):
  *  1. Valida el contingut (si hi ha errors, no escriu res).
  *  2. Copia el pont (runtime/, més el runtime/ propi del joc) a `src/game/narrative/`, i els sons i
+ *     (als jocs amb `tactil: true`, també la interfície tàctil: tactil/runtime/ i els scripts de tactil/guis/)
  *     la música de `game/audio/` als de Benne.
  *  3. Empaqueta dades + textos a `src/game/narrative/content.generated.json`.
  *  4. Genera un diàleg de Benne per cada diàleg nostre (`src/game/dialogs/<id>/`).
@@ -24,6 +25,7 @@ import { parseArgs } from 'node:util';
 import { validateContent, type DialogueDef, type GameContent, type LocaleTable } from '@aventura/narrative-core';
 import { writeBenneContent } from './benne-content.js';
 import { jocAdapterDir, loadJocBenne } from './joc-benne.js';
+import { GLOBAL_SCRIPT, TACTIL_DIR, TACTIL_GUIS, TACTIL_RUNTIME } from './tactil/index.js';
 import { gameDir as contentDir, jocDir, loadGameLogic } from '../../tools/joc.js';
 import { gameMusicFiles, gameSoundFiles, gameSounds, loadGameFromDisk } from '../../tools/load-game.js';
 
@@ -125,14 +127,19 @@ function sync() {
   if (!table) throw new Error(`No hi ha textos per a "${locale}".`);
   const fallback = locales[content.manifest.defaultLocale]!;
 
-  // 1. Pont: el comú i, al damunt, el del joc (que pot substituir fitxers del comú, p. ex. historial.ts).
+  // 1. Pont: el comú, la interfície tàctil (si el joc la fa servir) i, al damunt, el del joc (que pot substituir
+  // fitxers dels altres, p. ex. historial.ts).
   const narrativeDir = join(gameDir, 'narrative');
   const runtime = new Map<string, string>();
-  for (const dir of [join(HERE, 'runtime'), join(JOC_ADAPTER, 'runtime')]) {
+  for (const dir of [join(HERE, 'runtime'), ...(joc.tactil ? [TACTIL_RUNTIME] : []), join(JOC_ADAPTER, 'runtime')]) {
     if (!existsSync(dir)) continue;
     for (const file of readdirSync(dir)) runtime.set(file, join(dir, file));
   }
   for (const [file, from] of runtime) writeGenerated(join(narrativeDir, file), readFileSync(from, 'utf8'), 'ts');
+  // Els scripts del HUD i del menú d'accions (l'art i els .gui.json els fa el hud.py del joc).
+  if (joc.tactil) {
+    for (const rel of TACTIL_GUIS) writeGenerated(join(gameDir, rel), readFileSync(join(TACTIL_DIR, rel), 'utf8'), 'ts');
+  }
   const { $comment: _c, ...mapping } = JSON.parse(readFileSync(join(JOC_ADAPTER, 'mapping.json'), 'utf8'));
   // La resolució, perquè el runtime no doni per fet que la pantalla fa 480 d'ample (Ni un ou és a 640×360).
   const gameConfigPath = join(gameDir, 'game-config.json');
@@ -178,7 +185,8 @@ function sync() {
   const global = join(gameDir, 'globalScript.ts');
   const BEGIN = `// ── ${MARK}: inici. No l'editis. ──`;
   const END = `// ── ${MARK}: fi. Pots afegir codi a sota. ──`;
-  const block = `${BEGIN}\n${readFileSync(join(HERE, 'templates/globalScript.ts'), 'utf8').trimEnd()}\n${END}\n`;
+  const template = readFileSync(join(HERE, 'templates/globalScript.ts'), 'utf8').trimEnd() + (joc.tactil ? `\n${GLOBAL_SCRIPT.trimEnd()}` : '');
+  const block = `${BEGIN}\n${template}\n${END}\n`;
   const current = existsSync(global) ? readFileSync(global, 'utf8') : '';
   if (current.includes(BEGIN) && current.includes(END)) {
     writeFileSync(global, block + current.slice(current.indexOf(END) + END.length).replace(/^\n/, ''));

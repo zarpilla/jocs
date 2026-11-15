@@ -1,6 +1,6 @@
 // GENERAT per adapters/benne/sync.ts. No l'editis aquí.
 /**
- * Aigua Verne B: la interfície sense barra de verbs, part instantània (l'estat del menú d'accions, on s'ha premut,
+ * La interfície tàctil (sense barra de verbs), part instantània (l'estat del menú d'accions, on s'ha premut,
  * l'encaminador). Les funcions amb temps (fer la interacció, obrir i triar al menú) són a `tactil.script.ts`.
  *
  *  - Tocar (clic) una cosa (`queFaElToc`, runtime/accions.ts): la primera vegada, la mira; després, si té una sola
@@ -10,15 +10,16 @@
  *    tocar una cosa el fa servir amb ella, o li dona si és un personatge. Tocar el mateix objecte o el terra, el deixa.
  *
  * Els clics arriben al pont compartit (`routeInteraction`, narrative.script.ts) i aquest encaminador (que registra
- * globalScript.ts) se'ls queda; la interacció del JSON la fa `performInteraction`, com sempre.
- * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
+ * el bloc generat de globalScript.ts) se'ls queda; la interacció del JSON la fa `performInteraction`, com sempre.
+ * Compartida (adapters/benne/tactil/runtime/): `npm run benne:sync` la copia a `src/game/narrative/` dels jocs amb
+ * `tactil: true`. No l'editis allà.
  */
 import type { FallbackTarget } from '@benne/script';
 import type { TouchRouter } from './narrative';
 import { narrative } from './narrative';
 import { routeTouch } from './tactil.script';
 
-/** Els dos verbs de la interfície (game-config.json, els posa adapters/benne/joc.ts). */
+/** Els dos verbs de la interfície (game-config.json, els posa adapters/benne/tactil/index.ts). */
 export const TOCA = 'toca';
 export const MENU = 'accions';
 

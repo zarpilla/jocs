@@ -1,0 +1,29 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "Darrere del banc",
+  "era": "vet",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "contenidor",
+      "label": "contenidor",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 117,
+      "y": 57
+    },
+    {
+      "id": "carrer",
+      "label": "carrer",
+      "kind": "hotspot",
+      "w": 74,
+      "h": 33,
+      "x": 289,
+      "y": 19
+    }
+  ],
+  "characters": []
+}

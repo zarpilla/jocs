@@ -1,0 +1,136 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "passaplats",
+  "with": "vet",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "cable",
+          "text": "dlg.passaplats.opt.cable",
+          "if": {
+            "flag": "cable_demanat",
+            "is": false
+          },
+          "next": "cable"
+        },
+        {
+          "id": "pizza",
+          "text": "dlg.passaplats.opt.pizza",
+          "if": {
+            "all": [
+              {
+                "flag": "diu_ha_mossegat"
+              },
+              {
+                "flag": "diu_distret",
+                "is": false
+              },
+              {
+                "flag": "pizza_demanada",
+                "is": false
+              }
+            ]
+          },
+          "next": "pizza"
+        },
+        {
+          "id": "marcel",
+          "text": "dlg.passaplats.opt.marcel",
+          "if": {
+            "all": [
+              {
+                "flag": "llibre_trobat"
+              },
+              {
+                "flag": "vet_marxa",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "marcel"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.passaplats.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "cable": {
+      "effects": [
+        {
+          "setFlag": "cable_demanat"
+        }
+      ],
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.cable1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.cable2"
+        }
+      ]
+    },
+    "pizza": {
+      "effects": [
+        {
+          "setFlag": "pizza_demanada"
+        }
+      ],
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.pizza1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.passaplats.pizza2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.pizza3"
+        }
+      ]
+    },
+    "marcel": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.marcel1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.marcel2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.passaplats.adeu"
+        }
+      ]
+    }
+  }
+}

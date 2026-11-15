@@ -1,0 +1,242 @@
+{
+  "id": "aeroport_oficina",
+  "name": "L'oficina de facturació",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 236
+          },
+          {
+            "x": 621,
+            "y": 236
+          },
+          {
+            "x": 632,
+            "y": 271
+          },
+          {
+            "x": 8,
+            "y": 271
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "porta",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 533,
+          "y": 67
+        },
+        {
+          "x": 600,
+          "y": 67
+        },
+        {
+          "x": 600,
+          "y": 214
+        },
+        {
+          "x": 533,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 565,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 566,
+        "y": 214
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "terminal",
+      "active": true,
+      "description": "terminal",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 157,
+          "y": 112
+        },
+        {
+          "x": 243,
+          "y": 112
+        },
+        {
+          "x": 243,
+          "y": 166
+        },
+        {
+          "x": 157,
+          "y": 166
+        }
+      ],
+      "walkToPoint": {
+        "x": 200,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 200,
+        "y": 166
+      }
+    },
+    {
+      "id": "impressora",
+      "active": true,
+      "description": "impressora",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 341,
+          "y": 120
+        },
+        {
+          "x": 408,
+          "y": 120
+        },
+        {
+          "x": 408,
+          "y": 166
+        },
+        {
+          "x": 341,
+          "y": 166
+        }
+      ],
+      "walkToPoint": {
+        "x": 373,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 374,
+        "y": 166
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llista_feta",
+      "tag": "llista_feta",
+      "animations": {
+        "llista_feta": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "imprimint",
+      "tag": "imprimint",
+      "animations": {
+        "imprimint": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "acreditacions_llestes",
+      "tag": "acreditacions_llestes",
+      "animations": {
+        "acreditacions_llestes": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ventilador",
+      "tag": "ventilador",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ventilador": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
+    },
+    {
+      "id": "persiana",
+      "tag": "persiana",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "persiana": {
+          "loop": true,
+          "frameDuration": 180
+        }
+      }
+    },
+    {
+      "id": "segons",
+      "tag": "segons",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "segons": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 267,
+      "y": 259,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ],
+  "viewAnchorY": 0
+}

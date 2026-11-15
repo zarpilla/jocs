@@ -1,0 +1,194 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "pons",
+  "with": "pons",
+  "start": [
+    {
+      "if": {
+        "flag": "virus_aturat"
+      },
+      "node": "despres"
+    },
+    {
+      "if": {
+        "flag": "aliada_pons"
+      },
+      "node": "aliada"
+    },
+    {
+      "if": {
+        "flag": "pons_enredada"
+      },
+      "node": "enredada"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "pons",
+          "node": "hola"
+        }
+      },
+      "node": "altra"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.hola1"
+        },
+        {
+          "who": "pons",
+          "text": "dlg.pons.hola2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sap_pons"
+        }
+      ],
+      "goto": "menu"
+    },
+    "altra": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.altra"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "escoltar",
+          "text": "dlg.pons.opt.escoltar",
+          "silent": true,
+          "if": {
+            "all": [
+              {
+                "flag": "factura_vista"
+              },
+              {
+                "flag": "nomina_vista"
+              },
+              {
+                "flag": "aliada_pons",
+                "is": false
+              }
+            ]
+          },
+          "next": "escoltar"
+        },
+        {
+          "id": "ue",
+          "text": "dlg.pons.opt.ue",
+          "if": {
+            "flag": "pons_enredada",
+            "is": false
+          },
+          "next": "ue"
+        },
+        {
+          "id": "per_que",
+          "text": "dlg.pons.opt.per_que",
+          "once": true,
+          "next": "per_que"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.pons.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "per_que": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.per_que1"
+        },
+        {
+          "who": "pons",
+          "text": "dlg.pons.per_que2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "escoltar": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.pons.escoltar1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.pons.escoltar2"
+        },
+        {
+          "who": "pons",
+          "text": "dlg.pons.escoltar3"
+        },
+        {
+          "who": "narrator",
+          "text": "aliat.pons"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "aliada_pons"
+        },
+        {
+          "addVar": "aliats",
+          "amount": 1
+        }
+      ]
+    },
+    "ue": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.ue1"
+        },
+        {
+          "who": "pons",
+          "text": "dlg.pons.ue2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "pons_enredada"
+        }
+      ]
+    },
+    "aliada": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.aliada"
+        }
+      ]
+    },
+    "enredada": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.enredada"
+        }
+      ],
+      "goto": "menu"
+    },
+    "despres": {
+      "lines": [
+        {
+          "who": "pons",
+          "text": "dlg.pons.despres"
+        }
+      ]
+    }
+  }
+}

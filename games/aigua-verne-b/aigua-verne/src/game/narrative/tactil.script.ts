@@ -1,7 +1,8 @@
 // GENERAT per adapters/benne/sync.ts. No l'editis aquí.
 /**
- * Aigua Verne B: la interfície sense barra de verbs, part amb temps (BenneScript). Què fa cada gest: `tactil.ts`.
- * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
+ * La interfície tàctil (sense barra de verbs), part amb temps (BenneScript). Què fa cada gest: `tactil.ts`.
+ * Compartida (adapters/benne/tactil/runtime/): `npm run benne:sync` la copia a `src/game/narrative/` dels jocs amb
+ * `tactil: true`. No l'editis allà.
  */
 import { guis } from '@game';
 import { pointer } from '@benne/script';

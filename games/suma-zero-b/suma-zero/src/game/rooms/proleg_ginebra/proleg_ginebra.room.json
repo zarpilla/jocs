@@ -1,0 +1,201 @@
+{
+  "id": "proleg_ginebra",
+  "name": "Ginebra",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 200,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 261
+          },
+          {
+            "x": 200,
+            "y": 261
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "nit",
+      "tag": "nit",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "nit": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
+    },
+    {
+      "id": "pantalla",
+      "tag": "pantalla",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pantalla": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "pantalla_entra": {
+          "loop": false,
+          "frameDuration": 100
+        },
+        "pantalla_parla": {
+          "loop": true,
+          "frameDuration": 170
+        },
+        "pantalla_quiet": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "pantalla_talla": {
+          "loop": false,
+          "frameDuration": 140
+        },
+        "pantalla_queixa": {
+          "loop": true,
+          "frameDuration": 170
+        },
+        "pantalla_somriu": {
+          "loop": false,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "lletres",
+      "tag": "lletres",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "lletres": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "lletres_brilla": {
+          "loop": false,
+          "frameDuration": 70
+        }
+      }
+    },
+    {
+      "id": "pis",
+      "tag": "pis",
+      "zIndex": 5,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pis": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "pis_fon": {
+          "loop": false,
+          "frameDuration": 80
+        },
+        "pis_torna": {
+          "loop": false,
+          "frameDuration": 80
+        }
+      }
+    },
+    {
+      "id": "pis_vida",
+      "tag": "pis_vida",
+      "zIndex": 6,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pis_vida": {
+          "loop": true,
+          "frameDuration": 220
+        },
+        "pis_porta": {
+          "loop": false,
+          "frameDuration": 120
+        },
+        "pis_festa": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
+    },
+    {
+      "id": "senyal",
+      "tag": "senyal",
+      "zIndex": 6,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "senyal": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "senyal_va": {
+          "loop": false,
+          "frameDuration": 110
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "bonfill-veu",
+      "definition": "bonfill/bonfill.character.json",
+      "x": 320,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

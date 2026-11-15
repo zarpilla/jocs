@@ -1,0 +1,481 @@
+{
+  "frames": {
+    "marcel 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 1.aseprite": {
+      "frame": {
+        "x": 65,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 2.aseprite": {
+      "frame": {
+        "x": 130,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 3.aseprite": {
+      "frame": {
+        "x": 195,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 4.aseprite": {
+      "frame": {
+        "x": 260,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 5.aseprite": {
+      "frame": {
+        "x": 325,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 6.aseprite": {
+      "frame": {
+        "x": 390,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 7.aseprite": {
+      "frame": {
+        "x": 455,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 8.aseprite": {
+      "frame": {
+        "x": 520,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 9.aseprite": {
+      "frame": {
+        "x": 585,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 10.aseprite": {
+      "frame": {
+        "x": 650,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 11.aseprite": {
+      "frame": {
+        "x": 715,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 12.aseprite": {
+      "frame": {
+        "x": 780,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 13.aseprite": {
+      "frame": {
+        "x": 845,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 14.aseprite": {
+      "frame": {
+        "x": 910,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 15.aseprite": {
+      "frame": {
+        "x": 975,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 16.aseprite": {
+      "frame": {
+        "x": 1040,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    },
+    "marcel 17.aseprite": {
+      "frame": {
+        "x": 1105,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 116
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_characters.py)",
+    "image": "marcel.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1170,
+      "h": 116
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "IdleD",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkD",
+        "from": 1,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleL",
+        "from": 3,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkL",
+        "from": 4,
+        "to": 5,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleU",
+        "from": 6,
+        "to": 6,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkU",
+        "from": 7,
+        "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TaulaIdleD",
+        "from": 9,
+        "to": 9,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TaulaTalkD",
+        "from": 10,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TaulaIdleL",
+        "from": 12,
+        "to": 12,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TaulaTalkL",
+        "from": 13,
+        "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TaulaIdleU",
+        "from": 15,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TaulaTalkU",
+        "from": 16,
+        "to": 17,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

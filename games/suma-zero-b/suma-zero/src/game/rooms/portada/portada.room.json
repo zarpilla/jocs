@@ -1,0 +1,86 @@
+{
+  "id": "portada",
+  "name": "Suma Zero",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 200,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 261
+          },
+          {
+            "x": 200,
+            "y": 261
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "pis_vida",
+      "tag": "pis_vida",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pis_vida": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "titol",
+      "tag": "titol",
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "titol": {
+          "loop": false,
+          "frameDuration": 1000
+        }
+      }
+    }
+  ],
+  "characters": [],
+  "viewAnchorY": 0
+}

@@ -1,0 +1,41 @@
+{
+  "id": "rius",
+  "displayName": "rius",
+  "options": [
+    {
+      "id": "menu__mobil",
+      "scriptName": "menu__mobil",
+      "text": "Què li passa al mòbil?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__arreglar",
+      "scriptName": "menu__arreglar",
+      "text": "Deixa'm el mòbil. Les màquines i jo ens entenem.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__targeta",
+      "scriptName": "menu__targeta",
+      "text": "Em deixes la targeta de l'ascensor?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__cafe",
+      "scriptName": "menu__cafe",
+      "text": "Rius, em convides a un cafè?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res. Ja et deixo treballar.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

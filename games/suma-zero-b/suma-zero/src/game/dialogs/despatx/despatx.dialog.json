@@ -1,0 +1,69 @@
+{
+  "id": "despatx",
+  "displayName": "despatx",
+  "options": [
+    {
+      "id": "menu__gos",
+      "scriptName": "menu__gos",
+      "text": "I el seu gos, com està?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, res. Continuï comptant.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "eines__reunio",
+      "scriptName": "eines__reunio",
+      "text": "Necessito una reunió urgent sobre la sostenibilitat dels bancs.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "eines__reunio2",
+      "scriptName": "eines__reunio2",
+      "text": "I de la sostenibilitat, què més em pot dir?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "eines__gos",
+      "scriptName": "eines__gos",
+      "text": "I en Rockefeller, com està?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "eines__gos_nom",
+      "scriptName": "eines__gos_nom",
+      "text": "I el seu gos, com està?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "eines__pons",
+      "scriptName": "eines__pons",
+      "text": "(Cridar la senyora Pons.)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "eines__ballester",
+      "scriptName": "eines__ballester",
+      "text": "(Fer un senyal a en Ballester.)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "eines__adeu",
+      "scriptName": "eines__adeu",
+      "text": "Res. Continuï.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

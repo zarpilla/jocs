@@ -1,9 +1,10 @@
 // GENERAT per adapters/benne/sync.ts. No l'editis aquí.
 /**
- * Aigua Verne B, sense barra de verbs: què vol dir tocar una cosa, i quines accions té el menú de mantenir premut.
+ * La interfície tàctil (sense barra de verbs): què vol dir tocar una cosa, i quines accions té el menú de mantenir
+ * premut.
  *
- * TS pur (només el nucli): el fan servir el runtime de Benne (`tactil.script.ts`) i els tests
- * (`game/test/accions.test.ts`). El contingut no canvia: els JSON continuen dient `verb: ["use", "open"]`;
+ * TS pur (només el nucli): el fan servir el runtime de Benne (`tactil.script.ts`) i el mesurador dels tests
+ * (`adapters/benne/tactil/mesura.ts`). El contingut no canvia: els JSON continuen dient `verb: ["use", "open"]`;
  * aquí es decideix, en cada moment, quins d'aquests verbs fan alguna cosa i quin és el principal.
  */
 import type { InteractionDef, InteractionTarget, Narrative } from '@aventura/narrative-core';
@@ -71,11 +72,12 @@ export type Toc = { fa: 'mira' } | { fa: 'accio'; verb: string } | { fa: 'menu' 
  */
 export function queFaElToc(narrative: Narrative, target: InteractionTarget, room?: string): Toc {
   const totes = accions(narrative, target, room);
-  const sortida = totes.length === 1 && totes[0].verbs.includes('walkTo');
+  const unica = totes.length === 1 ? totes[0] : undefined;
+  const sortida = unica?.verbs.includes('walkTo') === true;
   const teMira = narrative.peek({ verb: 'look', target, room }) !== undefined;
   if (teMira && !sortida && !isMirat(narrative, target, room)) return { fa: 'mira' };
+  if (unica) return { fa: 'accio', verb: unica.verb };
   if (totes.length === 0) return { fa: 'mira' };
-  if (totes.length === 1) return { fa: 'accio', verb: totes[0].verb };
   return { fa: 'menu' };
 }
 

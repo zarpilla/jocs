@@ -1,0 +1,230 @@
+{
+  "id": "bar_rebost",
+  "name": "El rebost",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 236
+          },
+          {
+            "x": 621,
+            "y": 236
+          },
+          {
+            "x": 632,
+            "y": 271
+          },
+          {
+            "x": 8,
+            "y": 271
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "bar",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 35,
+          "y": 62
+        },
+        {
+          "x": 106,
+          "y": 62
+        },
+        {
+          "x": 106,
+          "y": 213
+        },
+        {
+          "x": 35,
+          "y": 213
+        }
+      ],
+      "walkToPoint": {
+        "x": 72,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 70,
+        "y": 213
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "calaix",
+      "active": true,
+      "description": "calaix",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 261,
+          "y": 155
+        },
+        {
+          "x": 336,
+          "y": 155
+        },
+        {
+          "x": 336,
+          "y": 195
+        },
+        {
+          "x": 261,
+          "y": 195
+        }
+      ],
+      "walkToPoint": {
+        "x": 299,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 298,
+        "y": 195
+      }
+    },
+    {
+      "id": "caixes",
+      "active": true,
+      "description": "caixes",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 400,
+          "y": 97
+        },
+        {
+          "x": 555,
+          "y": 97
+        },
+        {
+          "x": 555,
+          "y": 200
+        },
+        {
+          "x": 400,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 480,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 477,
+        "y": 200
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "calaix_obert",
+      "tag": "calaix_obert",
+      "animations": {
+        "calaix_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "arna",
+      "tag": "arna",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "arna": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
+    },
+    {
+      "id": "recepta_calaix",
+      "tag": "recepta_calaix",
+      "animations": {
+        "recepta_calaix": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "passos",
+      "tag": "passos",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "passos": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 200,
+      "y": 259,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "tomas",
+  "with": "tomas",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "cafe",
+          "text": "dlg.tomas.opt.cafe",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_marcel"
+              },
+              {
+                "flag": "tap_barra",
+                "is": false
+              },
+              {
+                "hasItem": "tap",
+                "is": false
+              },
+              {
+                "flag": "marcel_tap",
+                "is": false
+              },
+              {
+                "flag": "tap_tornat",
+                "is": false
+              }
+            ]
+          },
+          "next": "cafe"
+        },
+        {
+          "id": "cafe2",
+          "text": "dlg.tomas.opt.cafe2",
+          "if": {
+            "any": [
+              {
+                "hasItem": "tap"
+              },
+              {
+                "flag": "marcel_tap"
+              },
+              {
+                "flag": "tap_tornat"
+              }
+            ]
+          },
+          "next": "cafe2"
+        },
+        {
+          "id": "comandament",
+          "text": "dlg.tomas.opt.comandament",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_marcel"
+              },
+              {
+                "flag": "sap_dona",
+                "is": false
+              }
+            ]
+          },
+          "next": "comandament"
+        },
+        {
+          "id": "wifi",
+          "text": "dlg.tomas.opt.wifi",
+          "if": {
+            "all": [
+              {
+                "flag": "cal_contrasenya"
+              },
+              {
+                "flag": "contrasenya_llegida",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "wifi"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.tomas.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "cafe": {
+      "effects": [
+        {
+          "setFlag": "tap_barra"
+        }
+      ],
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.cafe1"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.cafe2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.tomas.cafe3",
+          "sound": "vaporitzador"
+        }
+      ],
+      "goto": "menu"
+    },
+    "cafe2": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.cafe2_1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "comandament": {
+      "effects": [
+        {
+          "setFlag": "sap_dona"
+        }
+      ],
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.comandament1"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.comandament2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.tomas.comandament3"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.comandament4"
+        }
+      ],
+      "goto": "menu"
+    },
+    "wifi": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.wifi"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.adeu"
+        }
+      ]
+    }
+  }
+}

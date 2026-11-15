@@ -1,0 +1,286 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.aeroport_oficina.nom",
+  "protagonist": "iri",
+  "hotspots": {
+    "terminal": {
+      "name": "sala.aeroport_oficina.terminal.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "if": {
+            "flag": "soler_distret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.terminal.soler"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "flag": "llista_feta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.terminal.llista1",
+              "sound": "teclat"
+            },
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.terminal.llista2",
+              "sound": "impressora"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "llista_feta"
+            },
+            {
+              "setFlag": "imprimint"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "flag": "imprimint",
+                "is": false
+              },
+              {
+                "flag": "acreditacions_llestes",
+                "is": false
+              },
+              {
+                "hasItem": "acreditacions",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.terminal.reimprimir",
+              "sound": "impressora"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "imprimint"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.terminal.ja"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.terminal.look"
+            }
+          ]
+        }
+      ]
+    },
+    "impressora": {
+      "name": "sala.aeroport_oficina.impressora.nom",
+      "interactions": [
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "imprimint"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.impressora.va"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.aeroport_oficina.impressora.surt",
+              "sound": "impressora"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "imprimint",
+              "value": false
+            },
+            {
+              "setFlag": "acreditacions_llestes"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "acreditacions_llestes"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.impressora.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "acreditacions"
+            },
+            {
+              "setFlag": "acreditacions_llestes",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "imprimint"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.impressora.encara"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.impressora.res"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "imprimint"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.impressora.look_imp"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.impressora.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.aeroport_oficina.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "hasItem": "acreditacions",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.porta.no"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "soler_distret",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.porta.soler"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.porta.surt"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "iri_fora"
+            }
+          ],
+          "goTo": "aeroport_personal"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aeroport_oficina.porta.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "llista_feta": {
+      "visibleIf": {
+        "flag": "llista_feta"
+      }
+    },
+    "imprimint": {
+      "visibleIf": {
+        "flag": "imprimint"
+      }
+    },
+    "acreditacions_llestes": {
+      "visibleIf": {
+        "flag": "acreditacions_llestes"
+      }
+    }
+  }
+}

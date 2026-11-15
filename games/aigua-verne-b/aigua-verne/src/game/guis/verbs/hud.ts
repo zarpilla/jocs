@@ -1,6 +1,8 @@
-// Aigua Verne B: el HUD (GUI `verbs`), part instantània: on va cada cosa i la frase. Els esdeveniments són a
-// verbs.gui.ts. Art i posicions de partida: adapters/benne/tools/hd640/hud.py. L'escena acaba a y = 260; segons quanta
-// pantalla queda a sota (el motor tria l'alçada en arrencar, de 288 a 360):
+// GENERAT per adapters/benne/sync.ts. No l'editis aquí.
+// La interfície tàctil: el HUD (GUI `verbs`), part instantània: on va cada cosa i la frase. Els esdeveniments són a
+// verbs.gui.ts. Compartit (adapters/benne/tactil/guis/); l'art, el .gui.json i les posicions de partida els fa el
+// hud.py de cada joc (games/<joc>/adapters/benne/tools/hd640/hud.py), amb aquests mateixos ids i mides. L'escena acaba
+// a y = 260; segons quanta pantalla queda a sota (el motor tria l'alçada en arrencar, de 288 a 360):
 //
 //  - mòbil (menys de 56 px, un mòbil 20:9): sobre l'escena. A dalt, «Canvia» (la cara de l'altra protagonista) i el
 //    menú; a les cantonades de baix, els punts (què es pot tocar) i la bossa, que desplega la safata de l'inventari; a

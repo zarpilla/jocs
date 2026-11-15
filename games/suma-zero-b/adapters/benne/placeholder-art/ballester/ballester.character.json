@@ -1,0 +1,98 @@
+{
+  "id": "ballester",
+  "name": "ballester",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 93,
+  "walkToPoint": {
+    "x": 64,
+    "y": 128
+  },
+  "talkPoint": {
+    "x": 39,
+    "y": -2
+  },
+  "feet": {
+    "x": 39,
+    "y": 128
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 26,
+        "y": 3
+      },
+      {
+        "x": 52,
+        "y": 3
+      },
+      {
+        "x": 55,
+        "y": 67
+      },
+      {
+        "x": 50,
+        "y": 131
+      },
+      {
+        "x": 27,
+        "y": 131
+      },
+      {
+        "x": 22,
+        "y": 67
+      }
+    ]
+  },
+  "animations": {
+    "IdleD": {
+      "loop": true
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "IdleL": {
+      "loop": true
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "Relaxat": {
+      "loop": true,
+      "frameDuration": 400
+    },
+    "Alerta": {
+      "loop": true,
+      "frameDuration": 400
+    },
+    "SenseCollaret": {
+      "loop": true,
+      "frameDuration": 400
+    }
+  },
+  "defaultVerb": "talkTo"
+}

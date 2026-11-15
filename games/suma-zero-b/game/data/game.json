@@ -1,0 +1,30 @@
+{
+  "$schema": "../schemas/game.schema.json",
+  "id": "sumazero",
+  "title": "joc.titol",
+  "defaultLocale": "ca",
+  "locales": [
+    "ca"
+  ],
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "start": {
+    "iri": {
+      "room": "pis_estudi",
+      "items": [
+        "auriculars",
+        "auriculars_boto"
+      ]
+    },
+    "vet": {
+      "room": "pis_cuina"
+    }
+  },
+  "switchWhen": {
+    "flag": "cable_demanat"
+  },
+  "cover": "portada",
+  "intro": "proleg_ginebra"
+}

@@ -1,0 +1,103 @@
+{
+  "width": 480,
+  "height": 270,
+  "title": "El passadís del tercer pis",
+  "era": "iri",
+  "floorTop": 153,
+  "floorBottom": 202,
+  "boxes": [
+    {
+      "id": "porta_neteja",
+      "label": "porta de neteja",
+      "kind": "exit",
+      "w": 46,
+      "h": 90,
+      "x": 8,
+      "y": 71
+    },
+    {
+      "id": "camera1",
+      "label": "càmera",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 33,
+      "x": 72,
+      "y": 57
+    },
+    {
+      "id": "camera2",
+      "label": "càmera del racó",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 33,
+      "x": 110,
+      "y": 19
+    },
+    {
+      "id": "galleda",
+      "label": "galleda",
+      "kind": "prop",
+      "w": 30,
+      "h": 33,
+      "x": 149,
+      "y": 57
+    },
+    {
+      "id": "cartell",
+      "label": "cartell",
+      "kind": "prop",
+      "w": 30,
+      "h": 33,
+      "x": 187,
+      "y": 19
+    },
+    {
+      "id": "extintor",
+      "label": "extintor",
+      "kind": "prop",
+      "w": 30,
+      "h": 33,
+      "x": 225,
+      "y": 57
+    },
+    {
+      "id": "porta_escala",
+      "label": "porta de l'escala",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 33,
+      "x": 263,
+      "y": 19
+    },
+    {
+      "id": "porta_vip",
+      "label": "porta VIP",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 33,
+      "x": 301,
+      "y": 57
+    },
+    {
+      "id": "tub",
+      "label": "estació del tub",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 33,
+      "x": 340,
+      "y": 19
+    },
+    {
+      "id": "ascensor",
+      "label": "ascensor de servei",
+      "kind": "hotspot",
+      "w": 30,
+      "h": 33,
+      "x": 378,
+      "y": 57
+    }
+  ],
+  "characters": [
+    "NETA-3"
+  ]
+}

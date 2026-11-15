@@ -1,0 +1,974 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bcmu_passadis.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.bcmu_passadis.intro1"
+        },
+        {
+          "who": "neta",
+          "text": "sala.bcmu_passadis.intro2"
+        },
+        {
+          "who": "player",
+          "text": "sala.bcmu_passadis.intro3"
+        },
+        {
+          "who": "vet",
+          "text": "sala.bcmu_passadis.intro4",
+          "if": {
+            "all": [
+              {
+                "flag": "marcel_neta"
+              },
+              {
+                "flag": "iri_sap_neta",
+                "is": false
+              }
+            ]
+          },
+          "effects": [
+            {
+              "setFlag": "iri_sap_neta"
+            }
+          ],
+          "sound": "auricular"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "neta": {
+      "name": "sala.bcmu_passadis.neta.nom",
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "dialogue": "neta"
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa",
+          "if": {
+            "var": "robot",
+            "op": "==",
+            "value": "codi"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.ja_descansa"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa",
+          "if": {
+            "flag": "robot_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.ja_molles"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.menjar1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.neta.menjar2"
+            },
+            {
+              "who": "neta",
+              "text": "sala.bcmu_passadis.neta.menjar3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.neta.menjar4",
+              "sound": "robot_neteja"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "entrepa"
+            },
+            {
+              "setVar": "robot",
+              "value": "entrepa"
+            },
+            {
+              "setFlag": "robot_aturat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa_suis",
+          "if": {
+            "var": "robot",
+            "op": "==",
+            "value": "codi"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.ja_descansa"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa_suis",
+          "if": {
+            "flag": "robot_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.ja_molles"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa_suis",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.menjar1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.neta.menjar2"
+            },
+            {
+              "who": "neta",
+              "text": "sala.bcmu_passadis.neta.menjar3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.neta.menjar4",
+              "sound": "robot_neteja"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "entrepa_suis"
+            },
+            {
+              "setVar": "robot",
+              "value": "entrepa"
+            },
+            {
+              "setFlag": "robot_aturat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa_ballester",
+          "if": {
+            "var": "robot",
+            "op": "==",
+            "value": "codi"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.ja_descansa"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa_ballester",
+          "if": {
+            "flag": "robot_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.ja_molles"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "give"
+          ],
+          "item": "entrepa_ballester",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.menjar1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.neta.menjar2"
+            },
+            {
+              "who": "neta",
+              "text": "sala.bcmu_passadis.neta.menjar3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.neta.menjar4",
+              "sound": "robot_neteja"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "entrepa_ballester"
+            },
+            {
+              "setVar": "robot",
+              "value": "entrepa"
+            },
+            {
+              "setFlag": "robot_aturat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "robot",
+            "op": "==",
+            "value": "codi"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.look_codi"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "robot_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.look_molles"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.neta.look"
+            }
+          ]
+        }
+      ]
+    },
+    "camera1": {
+      "name": "sala.bcmu_passadis.camera1.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "galleda",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.galleda"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "extintor",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.extintor"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cartell",
+          "if": {
+            "flag": "robot_aturat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.camera1.posa_cartell"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.camera1.desfa1"
+            },
+            {
+              "who": "neta",
+              "text": "sala.bcmu_passadis.camera1.desfa2"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.desfa3"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "cartell"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cartell",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.camera1.cartell1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.cartell2",
+              "if": {
+                "flag": "sap_cartell",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.cartell3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "camera1_tapada"
+            },
+            {
+              "setFlag": "sap_cartell"
+            },
+            {
+              "takeItem": "cartell"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "camera1_tapada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.look_tapada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.look1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.look2"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera1.look3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sap_cartell"
+            }
+          ]
+        }
+      ]
+    },
+    "camera2": {
+      "name": "sala.bcmu_passadis.camera2.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "cartell",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera2.cartell"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "extintor",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera2.extintor"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "galleda",
+          "if": {
+            "flag": "robot_aturat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.camera2.posa_galleda"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.camera2.desfa1"
+            },
+            {
+              "who": "neta",
+              "text": "sala.bcmu_passadis.camera2.desfa2"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera2.desfa3"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "galleda"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "galleda",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.camera2.galleda1",
+              "sound": "galleda"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera2.galleda2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "camera2_tapada"
+            },
+            {
+              "takeItem": "galleda"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "camera2_tapada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera2.look_tapada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.camera2.look"
+            }
+          ]
+        }
+      ]
+    },
+    "galleda": {
+      "name": "sala.bcmu_passadis.galleda.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "hasItem": "galleda",
+            "who": "iri",
+            "is": false
+          },
+          {
+            "flag": "camera2_tapada",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.galleda.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "galleda"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.galleda.look"
+            }
+          ]
+        }
+      ]
+    },
+    "cartell": {
+      "name": "sala.bcmu_passadis.cartell.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "hasItem": "cartell",
+            "who": "iri",
+            "is": false
+          },
+          {
+            "flag": "camera1_tapada",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.cartell.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cartell"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.cartell.look"
+            }
+          ]
+        }
+      ]
+    },
+    "extintor": {
+      "name": "sala.bcmu_passadis.extintor.nom",
+      "visibleIf": {
+        "hasItem": "extintor",
+        "who": "iri",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.extintor.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "extintor"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.extintor.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_neteja": {
+      "name": "sala.bcmu_passadis.porta_neteja.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "camera1_tapada"
+              },
+              {
+                "flag": "camera2_tapada"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.porta_neteja.entra",
+              "sound": "porta_neteja"
+            }
+          ],
+          "goTo": "bcmu_escombraries"
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "robot_aturat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.porta_neteja.robot"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.porta_neteja.cameres"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.porta_neteja.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_escala": {
+      "name": "sala.bcmu_passadis.porta_escala.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "clau_llibre",
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre2",
+              "sound": "clau_gira"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre4"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "escala_provada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "virus_aturat"
+              },
+              {
+                "flag": "escala_provada",
+                "is": false
+              },
+              {
+                "hasItem": "clau_llibre",
+                "who": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre2",
+              "sound": "clau_gira"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.escala.obre4"
+            },
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.obre5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "escala_provada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "escala_provada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.plena"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_llibre",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.escala.encara"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.porta_escala.tancada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.porta_escala.look"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_vip": {
+      "name": "sala.bcmu_passadis.porta_vip.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bcmu_passadis.porta_vip.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.porta_vip.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tub": {
+      "name": "sala.bcmu_passadis.tub.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "*",
+          "action": {
+            "name": "tub.enviar",
+            "args": {
+              "item": "$item"
+            }
+          }
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.tub.obre"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.tub.look"
+            }
+          ]
+        }
+      ]
+    },
+    "ascensor": {
+      "name": "sala.bcmu_passadis.ascensor.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "if": {
+            "flag": "virus_aturat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.ascensor.buscada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.ascensor.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bcmu_passadis.ascensor.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "camera1_tapada": {
+      "visibleIf": {
+        "flag": "camera1_tapada"
+      }
+    },
+    "camera2_tapada": {
+      "visibleIf": {
+        "flag": "camera2_tapada"
+      }
+    }
+  }
+}

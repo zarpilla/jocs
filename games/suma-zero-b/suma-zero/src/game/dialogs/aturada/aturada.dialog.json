@@ -1,0 +1,20 @@
+{
+  "id": "aturada",
+  "displayName": "aturada",
+  "options": [
+    {
+      "id": "tria__tornar",
+      "scriptName": "tria__tornar",
+      "text": "Tornar-ho al banc. Als comptes d'origen.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__repartir",
+      "scriptName": "tria__repartir",
+      "text": "Repartir-ho tot a parts iguals, pel compte de les nòmines.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

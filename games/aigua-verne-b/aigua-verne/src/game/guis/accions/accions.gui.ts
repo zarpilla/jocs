@@ -1,5 +1,6 @@
-// Aigua Verne B: el menú d'accions (mantenir premut o clic dret sobre una cosa). El contingut el decideix
-// narrative/tactil.script.ts (`openMenu`); aquí només es pinta al costat d'on s'ha premut. Art: hud.py.
+// GENERAT per adapters/benne/sync.ts. No l'editis aquí.
+// La interfície tàctil: el menú d'accions (mantenir premut o clic dret sobre una cosa). El contingut el decideix
+// narrative/tactil.script.ts (`openMenu`); aquí només es pinta al costat d'on s'ha premut. Art i .gui.json: el hud.py de cada joc.
 import { game, onUpdate } from '@benne/script';
 import {
   gui, fons, titol, accio0, accio1, accio2, accio3, accio4, accio5, text0, text1, text2, text3, text4, text5,

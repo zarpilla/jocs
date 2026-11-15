@@ -17,10 +17,15 @@ La versió original no es toca: aquesta és una còpia (del commit «pròleg ani
 | Radar (a baix a l'esquerra) | Marca un moment tot el que es pot tocar (al mòbil no hi ha «passar per sobre») |
 | La cara (a dalt a l'esquerra), el menú (a dalt a la dreta) | Canviar de protagonista; desar, carregar, opcions, pista, historial |
 
-L'acció principal es decideix en el moment, a partir del JSON de sempre ([adapters/benne/runtime/accions.ts](adapters/benne/runtime/accions.ts)):
-dels verbs que tenen una interacció que encaixa ara mateix, els que porten a la mateixa interacció compten com una sola
-acció; la que canvia alguna cosa (efectes, diàleg, canvi de sala) passa davant de la que només diu una frase, i entre
-iguals mana l'ordre anar-hi, parlar, agafar, obrir, tancar, empènyer, estirar, fer servir. El contingut no ha canviat.
+Què fa el toc es decideix en el moment, a partir del JSON de sempre (`queFaElToc`,
+[adapters/benne/tactil/runtime/accions.ts](../../adapters/benne/tactil/runtime/accions.ts)): dels verbs que tenen una
+interacció que encaixa ara mateix, els que porten a la mateixa interacció compten com una sola acció; si en queda una,
+el toc la fa, i si en queden més, obre el menú. El que ja s'ha mirat es recorda (va amb la partida desada). El
+contingut no ha canviat.
+
+La interfície tàctil és compartida ([adapters/benne/tactil/](../../adapters/benne/tactil/index.ts)): la fa servir
+qualsevol joc amb `tactil: true` al seu `joc.ts`, posant-hi l'art. [Suma Zero B](../suma-zero-b/README.md) és el
+segon.
 
 ## Què ha calgut
 
@@ -40,11 +45,13 @@ iguals mana l'ordre anar-hi, parlar, agafar, obrir, tancar, empènyer, estirar, 
   El motor també permet pintar una sala fins a 360 i fixar-ne la càmera al mòbil (`viewAnchorY`), però sense coses
   per tocar a la part de baix no val la pena en aquest joc; en un de nou, seria primer pla decoratiu.
 - **HUD i menú d'accions** nous, amb la planxa oliva de la barra: [tools/hd640/hud.py](adapters/benne/tools/hd640/hud.py)
-  (art i `.gui.json`), i els scripts `guis/verbs/verbs.gui.ts` i `guis/accions/accions.gui.ts` del projecte Benne.
+  (art i `.gui.json`). Els scripts (`hud.ts`, `verbs.gui.ts`, `accions.gui.ts`) són compartits
+  ([adapters/benne/tactil/guis/](../../adapters/benne/tactil/guis/verbs/hud.ts)) i el `benne:sync` els copia.
   La GUI del HUD es diu `verbs` perquè el pont compartit la mostra, l'amaga i hi busca el botó «Canvia».
-- **Dos verbs de la interfície**, `toca` i `accions`, que no surten mai al contingut ([adapters/benne/joc.ts](adapters/benne/joc.ts)),
-  i el runtime que els resol: [runtime/tactil.ts](adapters/benne/runtime/tactil.ts) i
-  [runtime/tactil.script.ts](adapters/benne/runtime/tactil.script.ts), enganxat al pont amb `setTouchRouter` (globalScript.ts).
+- **Dos verbs de la interfície**, `toca` i `accions`, que no surten mai al contingut, i el runtime que els resol
+  ([adapters/benne/tactil/runtime/](../../adapters/benne/tactil/runtime/tactil.ts)), enganxat al pont amb
+  `setTouchRouter` (al bloc generat de globalScript.ts). Tot ho posa el `benne:sync` perquè
+  [adapters/benne/joc.ts](adapters/benne/joc.ts) diu `tactil: true`.
 - **Canvis compartits**, opcionals (els altres jocs no canvien de comportament):
   - motor: `inputProfile.holdVerb` / `holdMs` (mantenir premut, `engine/verbs/holdGesture.ts`), un verb d'objecte com a
     botó principal fa «Usa X amb...» quan hi ha un objecte a la mà, `game.showClickables()` (els marcadors), l'alçada
@@ -55,12 +62,11 @@ iguals mana l'ordre anar-hi, parlar, agafar, obrir, tancar, empènyer, estirar, 
 
 ## Resultat de la prova
 
-`game/test/tactil.test.ts` juga la partida sencera (els dos camins de `cami.ts`) amb el mesurador de
-`game/test/tactil.ts`, que mira què hauria fet el jugador a cada pas (`TACTIL=1 npm test` en fa la llista). El
+`game/test/tactil.test.ts` juga la partida sencera (els dos camins de `cami.ts`) amb el mesurador compartit
+([adapters/benne/tactil/mesura.ts](../../adapters/benne/tactil/mesura.ts)), que mira què hauria fet el jugador a cada pas (`TACTIL=1 npm test` en fa la llista). El
 mesurador només fa servir el nucli: s'ha passat també pels altres jocs.
 
-Regla del toc: la primera vegada mira; després, una sola acció la fa i més d'una obre el menú (`queFaElToc`,
-[runtime/accions.ts](adapters/benne/runtime/accions.ts)). Així el joc no tria per tu el verb que resol un trencaclosques
+Regla del toc: la primera vegada mira; després, una sola acció la fa i més d'una obre el menú (`queFaElToc`). Així el joc no tria per tu el verb que resol un trencaclosques
 (empènyer o estirar), i les descripcions es llegeixen sense gestos de més.
 
 | Joc | Passos | Un toc | Toc + menú | Mantenir premut | Toc de més (mira primer) | Gestos per pas |

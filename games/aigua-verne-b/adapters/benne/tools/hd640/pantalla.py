@@ -50,12 +50,12 @@ def puja_gui(name, dy, anchor):
         for c in gui['controls']:
             if 'gridPlacement' in c:
                 continue                                   # va amb la seva graella
-            if 'y' in c:
+            if name == 'portada' and c.get('id') == 'version':
+                c['y'] = H - (H0 - c['y'])                 # a la mateixa distància de baix que abans
+            elif 'y' in c:
                 c['y'] -= dy
             if c.get('backgroundAnchor') == 'screen':
                 c['backgroundOffsetY'] = c.get('backgroundOffsetY', 0) - dy
-            if name == 'portada' and c.get('id') == 'version':
-                c['y'] = min(c['y'], H - 8)
         gui['description'] = (gui.get('description') or '') + f' {MARCA}'
         print(f'  GUI {name}: puja {dy} px')
     gui['anchorY'] = anchor

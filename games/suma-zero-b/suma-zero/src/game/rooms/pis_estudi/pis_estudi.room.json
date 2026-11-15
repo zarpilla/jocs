@@ -1,0 +1,494 @@
+{
+  "id": "pis_estudi",
+  "name": "L'estudi",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 236
+          },
+          {
+            "x": 621,
+            "y": 236
+          },
+          {
+            "x": 632,
+            "y": 271
+          },
+          {
+            "x": 8,
+            "y": 271
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "router",
+      "active": true,
+      "description": "router",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 496,
+          "y": 133
+        },
+        {
+          "x": 547,
+          "y": 133
+        },
+        {
+          "x": 547,
+          "y": 168
+        },
+        {
+          "x": 496,
+          "y": 168
+        }
+      ],
+      "walkToPoint": {
+        "x": 523,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 521,
+        "y": 168
+      }
+    },
+    {
+      "id": "finestra",
+      "active": true,
+      "description": "finestra",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 45,
+          "y": 40
+        },
+        {
+          "x": 166,
+          "y": 40
+        },
+        {
+          "x": 166,
+          "y": 153
+        },
+        {
+          "x": 45,
+          "y": 153
+        }
+      ],
+      "walkToPoint": {
+        "x": 107,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 105,
+        "y": 153
+      }
+    },
+    {
+      "id": "poster",
+      "active": true,
+      "description": "pòster",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 196,
+          "y": 47
+        },
+        {
+          "x": 257,
+          "y": 47
+        },
+        {
+          "x": 257,
+          "y": 123
+        },
+        {
+          "x": 196,
+          "y": 123
+        }
+      ],
+      "walkToPoint": {
+        "x": 227,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 226,
+        "y": 123
+      }
+    },
+    {
+      "id": "matalas",
+      "active": true,
+      "description": "matalàs",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 16,
+          "y": 187
+        },
+        {
+          "x": 203,
+          "y": 187
+        },
+        {
+          "x": 203,
+          "y": 234
+        },
+        {
+          "x": 16,
+          "y": 234
+        }
+      ],
+      "walkToPoint": {
+        "x": 120,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 109,
+        "y": 234
+      }
+    },
+    {
+      "id": "pizzes",
+      "active": true,
+      "description": "caixes de pizza",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 197,
+          "y": 195
+        },
+        {
+          "x": 256,
+          "y": 195
+        },
+        {
+          "x": 256,
+          "y": 230
+        },
+        {
+          "x": 197,
+          "y": 230
+        }
+      ],
+      "walkToPoint": {
+        "x": 235,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 226,
+        "y": 230
+      }
+    },
+    {
+      "id": "ordinadors",
+      "active": true,
+      "description": "ordinadors",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 275,
+          "y": 80
+        },
+        {
+          "x": 481,
+          "y": 80
+        },
+        {
+          "x": 481,
+          "y": 155
+        },
+        {
+          "x": 275,
+          "y": 155
+        }
+      ],
+      "walkToPoint": {
+        "x": 360,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 378,
+        "y": 155
+      }
+    },
+    {
+      "id": "fibra",
+      "active": true,
+      "description": "presa de la fibra",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 552,
+          "y": 144
+        },
+        {
+          "x": 584,
+          "y": 144
+        },
+        {
+          "x": 584,
+          "y": 213
+        },
+        {
+          "x": 552,
+          "y": 213
+        }
+      ],
+      "walkToPoint": {
+        "x": 571,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 568,
+        "y": 213
+      }
+    },
+    {
+      "id": "passaplats",
+      "active": true,
+      "description": "passaplats",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 573,
+          "y": 75
+        },
+        {
+          "x": 635,
+          "y": 75
+        },
+        {
+          "x": 635,
+          "y": 136
+        },
+        {
+          "x": 573,
+          "y": 136
+        }
+      ],
+      "walkToPoint": {
+        "x": 605,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 604,
+        "y": 136
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "caixa",
+      "tag": "caixa",
+      "animations": {
+        "caixa": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 400,
+            "y": 217
+          },
+          {
+            "x": 456,
+            "y": 217
+          },
+          {
+            "x": 456,
+            "y": 254
+          },
+          {
+            "x": 400,
+            "y": 254
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 429,
+        "y": 263
+      },
+      "lookAtPoint": {
+        "x": 428,
+        "y": 254
+      },
+      "description": "caixa"
+    },
+    {
+      "id": "router_connectat",
+      "tag": "router_connectat",
+      "animations": {
+        "router_connectat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pantalles",
+      "tag": "pantalles",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pantalles": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "fibra_connectada",
+      "tag": "fibra_connectada",
+      "animations": {
+        "fibra_connectada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "xarxa_connectada",
+      "tag": "xarxa_connectada",
+      "animations": {
+        "xarxa_connectada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "alimentacio_connectada",
+      "tag": "alimentacio_connectada",
+      "animations": {
+        "alimentacio_connectada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "passaplats_obert",
+      "tag": "passaplats_obert",
+      "animations": {
+        "passaplats_obert": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "neo",
+      "tag": "neo",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "neo": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "disc_dur",
+      "tag": "disc_dur",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "disc_dur": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 200,
+      "y": 256,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 349,
+      "y": 256,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-veu",
+      "definition": "vet/vet.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "tomas-veu",
+      "definition": "tomas/tomas.character.json",
+      "x": 127,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

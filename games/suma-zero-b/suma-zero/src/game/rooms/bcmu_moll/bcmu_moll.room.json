@@ -1,0 +1,234 @@
+{
+  "id": "bcmu_moll",
+  "name": "El moll de càrrega",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 19,
+            "y": 236
+          },
+          {
+            "x": 621,
+            "y": 236
+          },
+          {
+            "x": 632,
+            "y": 271
+          },
+          {
+            "x": 8,
+            "y": 271
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "ascensor",
+      "active": true,
+      "description": "ascensor de servei",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 533,
+          "y": 53
+        },
+        {
+          "x": 613,
+          "y": 53
+        },
+        {
+          "x": 613,
+          "y": 200
+        },
+        {
+          "x": 533,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 573,
+        "y": 248
+      },
+      "lookAtPoint": {
+        "x": 573,
+        "y": 200
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "maquina",
+      "active": true,
+      "description": "màquina de cafè",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 400,
+          "y": 93
+        },
+        {
+          "x": 446,
+          "y": 93
+        },
+        {
+          "x": 446,
+          "y": 200
+        },
+        {
+          "x": 400,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 421,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 423,
+        "y": 200
+      }
+    },
+    {
+      "id": "tecnics",
+      "active": true,
+      "description": "tècnics",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 240,
+          "y": 128
+        },
+        {
+          "x": 334,
+          "y": 128
+        },
+        {
+          "x": 334,
+          "y": 200
+        },
+        {
+          "x": 240,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 285,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 287,
+        "y": 200
+      }
+    },
+    {
+      "id": "furgonetes",
+      "active": true,
+      "description": "furgonetes",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 27,
+          "y": 93
+        },
+        {
+          "x": 227,
+          "y": 93
+        },
+        {
+          "x": 227,
+          "y": 208
+        },
+        {
+          "x": 27,
+          "y": 208
+        }
+      ],
+      "walkToPoint": {
+        "x": 133,
+        "y": 253
+      },
+      "lookAtPoint": {
+        "x": 127,
+        "y": 208
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "llum_toro",
+      "tag": "llum_toro",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_toro": {
+          "loop": true,
+          "frameDuration": 180
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 160,
+      "y": 261,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "rius-1",
+      "definition": "rius/rius.character.json",
+      "x": 483,
+      "y": 248,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-veu",
+      "definition": "vet/vet.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ],
+  "viewAnchorY": 0
+}

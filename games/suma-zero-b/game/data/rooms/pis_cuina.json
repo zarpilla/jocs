@@ -1,0 +1,667 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.pis_cuina.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "player",
+          "text": "sala.pis_cuina.intro1"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "cafetera": {
+      "name": "sala.pis_cuina.cafetera.nom",
+      "interactions": [
+        {
+          "verb": [
+            "pickUp",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "flag": "cable_tret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.cafetera.ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "flag": "cable_demanat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.cafetera.cable"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cable_alimentacio"
+            },
+            {
+              "setFlag": "cable_tret"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.cafetera.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "cable_tret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.cafetera.look_sense"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.cafetera.look"
+            }
+          ]
+        }
+      ]
+    },
+    "nevera": {
+      "name": "sala.pis_cuina.nevera.nom",
+      "interactions": [
+        {
+          "verb": "open",
+          "if": {
+            "flag": "nevera_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.obre",
+              "sound": "nevera"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_pizza",
+              "if": {
+                "all": [
+                  {
+                    "hasItem": "pizza",
+                    "who": "vet",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "pizza",
+                    "who": "iri",
+                    "is": false
+                  },
+                  {
+                    "var": "sacrifici",
+                    "op": "!=",
+                    "value": "pizza"
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_pa",
+              "if": {
+                "flag": "te_entrepa",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_iogurt"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nevera_oberta"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.ja"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "flag": "nevera_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.tanca"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nevera_oberta",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_pizza",
+              "if": {
+                "all": [
+                  {
+                    "hasItem": "pizza",
+                    "who": "vet",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "pizza",
+                    "who": "iri",
+                    "is": false
+                  },
+                  {
+                    "var": "sacrifici",
+                    "op": "!=",
+                    "value": "pizza"
+                  }
+                ]
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_pa",
+              "if": {
+                "flag": "te_entrepa",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_iogurt"
+            }
+          ],
+          "if": {
+            "flag": "nevera_oberta"
+          }
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.look_tancada"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "nevera_oberta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.nevera.tancada"
+            }
+          ]
+        }
+      ]
+    },
+    "pizza_nevera": {
+      "name": "sala.pis_cuina.pizza_nevera.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "nevera_oberta"
+          },
+          {
+            "hasItem": "pizza",
+            "is": false,
+            "who": "vet"
+          },
+          {
+            "hasItem": "pizza",
+            "is": false,
+            "who": "iri"
+          },
+          {
+            "var": "sacrifici",
+            "op": "!=",
+            "value": "pizza"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "pizza_demanada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.pizza.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "pizza"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.pizza.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.pizza.look"
+            }
+          ]
+        }
+      ]
+    },
+    "tonyina": {
+      "name": "sala.pis_cuina.tonyina.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "nevera_oberta"
+          },
+          {
+            "flag": "te_entrepa",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.tonyina.1"
+            },
+            {
+              "who": "iri",
+              "text": "sala.pis_cuina.tonyina.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.tonyina.3"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "entrepa"
+            },
+            {
+              "setFlag": "te_entrepa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.tonyina.look"
+            }
+          ]
+        }
+      ]
+    },
+    "passaplats": {
+      "name": "sala.pis_cuina.passaplats.nom",
+      "interactions": [
+        {
+          "verb": "open",
+          "if": {
+            "flag": "passaplats_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.obre",
+              "sound": "passaplats"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "passaplats_obert"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.ja_obert"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "flag": "passaplats_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.tanca",
+              "sound": "passaplats"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "passaplats_obert",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.ja_tancat"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_alimentacio",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.cable",
+              "sound": "passaplats"
+            },
+            {
+              "who": "iri",
+              "text": "sala.pis_cuina.passaplats.cable2"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "cable_alimentacio"
+            },
+            {
+              "giveItem": "cable_alimentacio",
+              "who": "iri"
+            }
+          ],
+          "if": {
+            "flag": "passaplats_obert"
+          }
+        },
+        {
+          "verb": "use",
+          "item": "pizza",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.pizza",
+              "sound": "passaplats"
+            },
+            {
+              "who": "iri",
+              "text": "sala.pis_cuina.passaplats.pizza2"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pizza"
+            },
+            {
+              "giveItem": "pizza",
+              "who": "iri"
+            }
+          ],
+          "if": {
+            "flag": "passaplats_obert"
+          }
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "if": {
+            "flag": "passaplats_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.tancat_objecte"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "*",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.res"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.parla"
+            }
+          ],
+          "if": {
+            "flag": "passaplats_obert"
+          }
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.tancat"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.passaplats.look"
+            }
+          ]
+        }
+      ]
+    },
+    "plats": {
+      "name": "sala.pis_cuina.plats.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.plats.look"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.plats.no"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.pis_cuina.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "flag": "llibre_trobat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.porta.surt1",
+              "sound": "porta_pis"
+            },
+            {
+              "who": "iri",
+              "text": "sala.pis_cuina.porta.surt2"
+            },
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.porta.surt3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.pis_cuina.porta.auricular1",
+              "if": {
+                "var": "sacrifici",
+                "op": "==",
+                "value": "auricular"
+              },
+              "effects": [
+                {
+                  "giveItem": "auriculars",
+                  "who": "iri"
+                }
+              ]
+            },
+            {
+              "who": "iri",
+              "text": "sala.pis_cuina.porta.auricular2",
+              "if": {
+                "var": "sacrifici",
+                "op": "==",
+                "value": "auricular"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "clau_casa"
+            },
+            {
+              "setFlag": "vet_marxa"
+            }
+          ],
+          "goTo": "bar_sala"
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.porta.encara"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pis_cuina.porta.look"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "cable_cafetera": {
+      "visibleIf": {
+        "flag": "cable_tret",
+        "is": false
+      }
+    },
+    "nevera_oberta": {
+      "visibleIf": {
+        "flag": "nevera_oberta"
+      },
+      "sota": true
+    },
+    "passaplats_obert": {
+      "visibleIf": {
+        "flag": "passaplats_obert"
+      }
+    }
+  }
+}

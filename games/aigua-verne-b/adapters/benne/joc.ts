@@ -18,6 +18,9 @@ export default {
   },
   veusProtagonistes: true,
   musicaSincronitzada: true,
+  // Versió B: sense barra de verbs, pensada per al mòbil (adapters/benne/tactil). L'art del HUD i del menú d'accions:
+  // tools/hd640/hud.py; les sales i les GUI a l'alçada adaptable: tools/hd640/pantalla.py.
+  tactil: true,
   textosGui: {
     'game-menu': { historial: 'ui.menu.historial', pista: 'ui.menu.pista' },
   },
@@ -28,19 +31,6 @@ export default {
     config.speech = { ...(config.speech as Json), clickToSkip: true, minDurationMs: 1500, msPerCharacter: 75, maxDurationMs: 14000, clickProtectMs: 350 };
     // «Walk to» de la línia de verbs (walkToLabel).
     config.walkToLabel = t('ui.verb.walkTo', String(config.walkToLabel ?? 'Walk to'));
-
-    // ── Versió B: sense barra de verbs, pensada per al mòbil ──
-    // L'alçada s'adapta a la pantalla (motor: `resolution.minHeight`): 640×288 en un mòbil (20:9), fins a 640×360
-    // en un monitor (16:9). Les GUI es dissenyen a 288 i s'enganxen a dalt, al mig o a baix (`anchorY`); les sales
-    // pintades fins a 360 col·loquen la càmera amb `viewAnchorY` (tools/hd640/pantalla.py, hud.py).
-    config.resolution = { width: 640, height: 360, minHeight: 288 };
-    // Dos verbs de la interfície, que no surten mai al contingut: `toca` (un toc o clic: el runtime tria l'acció,
-    // vegeu runtime/accions.ts; és d'objecte, perquè tocar un objecte de l'inventari l'agafa a la mà) i
-    // `accions` (mantenir premut o clic dret: el menú d'accions). Els nou verbs de sempre es queden: són els del
-    // contingut i els del menú.
-    const verbs = ((config.verbs as Json[]) ?? []).filter((v) => v.id !== 'toca' && v.id !== 'accions');
-    config.verbs = [{ id: 'toca', label: 'Toca', usesItem: true }, { id: 'accions', label: 'Accions' }, ...verbs];
-    config.inputProfile = { primaryButtonVerb: 'toca', secondaryButtonVerb: 'accions', holdVerb: 'accions', holdMs: 450 };
   },
   guis(gameDir) {
     addGameMenuButtons(gameDir);

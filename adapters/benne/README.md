@@ -164,9 +164,20 @@ pista) i `playEnding()`.
 L'**historial** (botó del menú o tecla H) és de cada joc: el `runtime/historial.ts` del joc apunta
 cada línia que es diu (`recordLine`) i la GUI `historial` (que crea el seu `joc.ts`) l'ensenya.
 
-Una interfície pròpia d'un joc (la tàctil d'Aigua Verne B) es pot quedar alguns clics abans que vagin al JSON:
-`setTouchRouter({ takes, route })` (a `runtime/narrative.ts`, i es crida des del `globalScript.ts` del joc). `route`
-fa la interacció del JSON amb `performInteraction`. Sense encaminador, tot va com sempre.
+Una interfície pròpia es pot quedar alguns clics abans que vagin al JSON: `setTouchRouter({ takes, route })` (a
+`runtime/narrative.ts`, i es crida des del `globalScript.ts`). `route` fa la interacció del JSON amb
+`performInteraction`. Sense encaminador, tot va com sempre.
+
+### La interfície tàctil (`tactil/`)
+
+Sense barra de verbs, pensada per al mòbil: tocar una cosa la mira la primera vegada i després en fa l'acció (o
+obre el menú d'accions si en té més d'una), mantenir premut obre el menú, i l'alçada de la pantalla s'adapta a
+l'aparell. Un joc la fa servir amb `tactil: true` al seu `joc.ts` (Aigua Verne B, Suma Zero B), i llavors el
+`benne:sync` hi posa el runtime (`tactil/runtime/`), els scripts del HUD i del menú (`tactil/guis/`), l'encaminador al
+`globalScript.ts` i la configuració (`configuraTactil`). El joc hi posa l'art i els `.gui.json` (el seu
+`tools/hd640/hud.py`, amb els ids i les mides que esperen els scripts), la pantalla adaptable de sales i GUI
+(`tools/hd640/pantalla.py`) i els textos `ui.accio.*`. Per als tests, `tactil/mesura.ts` diu com es juga un camí
+sencer amb el toc. Detalls: [tactil/index.ts](tactil/index.ts).
 
 Els esdeveniments del nucli arriben com a esdeveniments de Benne `narrative:<tipus>` (per exemple,
 `events.on('narrative:questStarted', …)`).

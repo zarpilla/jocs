@@ -1,0 +1,190 @@
+{
+  "$schema": "../schemas/quests.schema.json",
+  "acte1": {
+    "kind": "main",
+    "title": "mis.acte1.titol",
+    "description": "mis.acte1.desc",
+    "objectives": [
+      {
+        "id": "router",
+        "text": "mis.acte1.obj.router",
+        "completeWhen": {
+          "flag": "router_connectat"
+        }
+      },
+      {
+        "id": "marcel",
+        "text": "mis.acte1.obj.marcel",
+        "completeWhen": {
+          "flag": "marcel_fet"
+        }
+      },
+      {
+        "id": "aeroport",
+        "text": "mis.acte1.obj.aeroport",
+        "completeWhen": {
+          "flag": "aeroport_fet"
+        }
+      }
+    ]
+  },
+  "acte2": {
+    "kind": "main",
+    "title": "mis.acte2.titol",
+    "description": "mis.acte2.desc",
+    "startWhen": {
+      "flag": "acte1_fet"
+    },
+    "objectives": [
+      {
+        "id": "seguretat",
+        "text": "mis.acte2.obj.seguretat",
+        "completeWhen": {
+          "flag": "auditoria_acceptada"
+        }
+      },
+      {
+        "id": "tercer",
+        "text": "mis.acte2.obj.tercer",
+        "completeWhen": {
+          "flag": "iri_al_tercer"
+        }
+      },
+      {
+        "id": "llibre",
+        "text": "mis.acte2.obj.llibre",
+        "completeWhen": {
+          "flag": "iri_a_llibre"
+        }
+      },
+      {
+        "id": "clau",
+        "text": "mis.acte2.obj.clau",
+        "completeWhen": {
+          "flag": "clau_girada"
+        }
+      }
+    ]
+  },
+  "subcontractats": {
+    "kind": "side",
+    "title": "mis.subcontractats.titol",
+    "description": "mis.subcontractats.desc",
+    "startWhen": {
+      "flag": "sap_app"
+    },
+    "objectives": [
+      {
+        "id": "app",
+        "text": "mis.subcontractats.obj.app",
+        "completeWhen": {
+          "flag": "aliada_rius"
+        }
+      }
+    ],
+    "failWhen": {
+      "all": [
+        {
+          "flag": "iri_al_tercer"
+        },
+        {
+          "flag": "aliada_rius",
+          "is": false
+        }
+      ]
+    }
+  },
+  "hores_neta": {
+    "kind": "side",
+    "title": "mis.hores_neta.titol",
+    "description": "mis.hores_neta.desc",
+    "objectives": [
+      {
+        "id": "horari",
+        "text": "mis.hores_neta.obj.horari",
+        "completeWhen": {
+          "flag": "aliat_neta"
+        }
+      }
+    ]
+  },
+  "veritat_ballester": {
+    "kind": "side",
+    "title": "mis.veritat_ballester.titol",
+    "description": "mis.veritat_ballester.desc",
+    "startWhen": {
+      "flag": "ballester_relaxat"
+    },
+    "objectives": [
+      {
+        "id": "veritat",
+        "text": "mis.veritat_ballester.obj.veritat",
+        "completeWhen": {
+          "flag": "aliat_ballester"
+        }
+      }
+    ],
+    "failWhen": {
+      "flag": "clau_canviada"
+    }
+  },
+  "acte3": {
+    "kind": "main",
+    "title": "mis.acte3.titol",
+    "description": "mis.acte3.desc",
+    "startWhen": {
+      "flag": "acte2_fet"
+    },
+    "objectives": [
+      {
+        "id": "director",
+        "text": "mis.acte3.obj.director",
+        "completeWhen": {
+          "flag": "vet_al_despatx"
+        }
+      },
+      {
+        "id": "aturar",
+        "text": "mis.acte3.obj.aturar",
+        "completeWhen": {
+          "flag": "virus_aturat"
+        }
+      },
+      {
+        "id": "sortir",
+        "text": "mis.acte3.obj.sortir",
+        "completeWhen": {
+          "flag": "escapada"
+        }
+      }
+    ]
+  },
+  "senyora_pons": {
+    "kind": "side",
+    "title": "mis.senyora_pons.titol",
+    "description": "mis.senyora_pons.desc",
+    "startWhen": {
+      "flag": "sap_pons"
+    },
+    "objectives": [
+      {
+        "id": "escoltar",
+        "text": "mis.senyora_pons.obj.escoltar",
+        "completeWhen": {
+          "flag": "aliada_pons"
+        }
+      }
+    ],
+    "failWhen": {
+      "all": [
+        {
+          "flag": "virus_aturat"
+        },
+        {
+          "flag": "aliada_pons",
+          "is": false
+        }
+      ]
+    }
+  }
+}

@@ -32,6 +32,11 @@ export interface JocBenne {
   musicaSincronitzada?: boolean;
   /** Textos de més per a les GUI (GUI → control → clau de text), a més dels comuns. */
   textosGui?: Record<string, Record<string, string>>;
+  /**
+   * La interfície tàctil, sense barra de verbs (adapters/benne/tactil): tocar mira o fa l'acció, mantenir premut obre
+   * el menú d'accions, i l'alçada de la pantalla s'adapta a l'aparell. El joc hi posa l'art (tools/hd640/hud.py).
+   */
+  tactil?: boolean;
   /** Retocs propis a game-config.json, cada vegada que se sincronitza. */
   configura?(config: Json, t: Translate): void;
   /** GUI pròpies del joc (menú, historial...), cada vegada que se sincronitza. */

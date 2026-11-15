@@ -14,6 +14,7 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import { dirname, join } from 'node:path';
 import type { DialogueLineDef, GameContent, InteractionDef, LocaleTable, RoomDef } from '@aventura/narrative-core';
 import { jocAdapterDir, type JocBenne } from './joc-benne.js';
+import { configuraTactil } from './tactil/index.js';
 
 /** Art provisional dels personatges del joc (games/<joc>/adapters/benne/placeholder-art/). */
 const placeholderArt = (...parts: string[]) => join(jocAdapterDir(), 'placeholder-art', ...parts);
@@ -129,6 +130,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   // Els inventaris inicials els reparteix el nucli (game.json → start).
   config.initialGameState = { flags: {}, variables: {}, inventory: [] };
   config.defaultFallbackLine = t('ui.defecte', String(config.defaultFallbackLine ?? ''));
+  if (joc.tactil) configuraTactil(config, t);
   joc.configura?.(config, t);
   for (const verb of (config.verbs as Json[]) ?? []) {
     verb.label = t(`ui.verb.${verb.id}`, String(verb.label));

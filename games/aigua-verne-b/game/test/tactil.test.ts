@@ -1,13 +1,13 @@
 /**
  * Aigua Verne B, sense barra de verbs: el joc sencer (els dos camins de cami.ts) jugat amb la interfície tàctil.
- * Què es compta: tactil.ts. Si alguna interacció del camí no es pot fer de cap manera, falla. Amb TACTIL=1 escriu
+ * Què es compta: adapters/benne/tactil/mesura.ts. Si alguna interacció del camí no es pot fer de cap manera, falla. Amb TACTIL=1 escriu
  * el recompte i la llista dels passos que no són un toc.
  */
 import { describe, expect, it } from 'vitest';
 import type { Narrative } from '@aventura/narrative-core';
 import { partida } from './partida.js';
 import { acte1, acte2, acte3 } from './cami.js';
-import { mesura } from './tactil.js';
+import { mesura } from '../../../../adapters/benne/tactil/mesura.js';
 
 describe('Aigua Verne B: el camí, sense barra de verbs', () => {
   for (const barril of [true, false]) {

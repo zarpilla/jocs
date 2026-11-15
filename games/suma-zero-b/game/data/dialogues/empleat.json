@@ -1,0 +1,103 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "empleat",
+  "with": "empleat",
+  "start": [
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "empleat",
+          "text": "dlg.empleat.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "maleti",
+          "text": "dlg.empleat.opt.maleti",
+          "if": {
+            "hasItem": "maleti",
+            "is": false
+          },
+          "next": "maleti"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.empleat.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "maleti": {
+      "lines": [
+        {
+          "who": "empleat",
+          "text": "dlg.empleat.maleti"
+        }
+      ],
+      "choices": [
+        {
+          "id": "llimona",
+          "text": "dlg.empleat.opt.llimona",
+          "if": {
+            "flag": "maleti_vist"
+          },
+          "next": "llimona"
+        },
+        {
+          "id": "papers",
+          "text": "dlg.empleat.opt.papers",
+          "next": "no"
+        },
+        {
+          "id": "oblit",
+          "text": "dlg.empleat.opt.oblit",
+          "next": "no"
+        }
+      ]
+    },
+    "llimona": {
+      "effects": [
+        {
+          "giveItem": "maleti"
+        }
+      ],
+      "lines": [
+        {
+          "who": "empleat",
+          "text": "dlg.empleat.llimona1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.empleat.llimona2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "no": {
+      "lines": [
+        {
+          "who": "empleat",
+          "text": "dlg.empleat.no"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "empleat",
+          "text": "dlg.empleat.adeu"
+        }
+      ]
+    }
+  }
+}

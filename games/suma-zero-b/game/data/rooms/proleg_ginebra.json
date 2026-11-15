@@ -1,0 +1,126 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.proleg_ginebra.nom",
+  "cutscene": {
+    "skipTo": "pis_estudi"
+  },
+  "onEnter": [
+    {
+      "verb": "*",
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "proleg.1",
+          "stage": [
+            {
+              "prop": "senyal",
+              "anim": "senyal_va",
+              "hold": 1.9
+            },
+            {
+              "prop": "pis_vida",
+              "visible": false
+            },
+            {
+              "prop": "pis",
+              "anim": "pis_fon",
+              "hold": 0.9
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.2",
+          "stage": [
+            {
+              "prop": "lletres",
+              "anim": "lletres_brilla"
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "proleg.3",
+          "stage": [
+            {
+              "prop": "pantalla",
+              "anim": "pantalla_entra",
+              "hold": 0.9
+            },
+            {
+              "prop": "pantalla",
+              "anim": "pantalla_parla"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "pantalla",
+              "anim": "pantalla_quiet"
+            }
+          ]
+        },
+        {
+          "who": "bonfill",
+          "text": "proleg.4",
+          "stage": [
+            {
+              "prop": "pantalla",
+              "anim": "pantalla_talla",
+              "hold": 0.6
+            },
+            {
+              "prop": "pantalla",
+              "anim": "pantalla_queixa"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "pantalla",
+              "anim": "pantalla_somriu",
+              "hold": 0.8
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "proleg.5",
+          "sound": "teclat",
+          "stage": [
+            {
+              "prop": "pis",
+              "anim": "pis_torna",
+              "hold": 0.8
+            },
+            {
+              "prop": "pis_vida",
+              "visible": true,
+              "anim": "pis_vida"
+            }
+          ],
+          "stageAfter": [
+            {
+              "prop": "pis_vida",
+              "anim": "pis_porta",
+              "hold": 1.6
+            },
+            {
+              "prop": "pis_vida",
+              "anim": "pis_festa",
+              "hold": 0.8
+            }
+          ]
+        },
+        {
+          "who": "title",
+          "text": "joc.titol"
+        },
+        {
+          "who": "title",
+          "text": "acte.1"
+        }
+      ],
+      "goTo": "pis_estudi"
+    }
+  ],
+  "hotspots": {}
+}
