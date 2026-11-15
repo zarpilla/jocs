@@ -23,7 +23,7 @@
     },
     "camarot_iri 1.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 667,
         "y": 0,
         "w": 41,
         "h": 41
@@ -44,7 +44,28 @@
     },
     "camarot_iri 2.aseprite": {
       "frame": {
-        "x": 943,
+        "x": 640,
+        "y": 0,
+        "w": 27,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 400,
+        "y": 140,
+        "w": 27,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "camarot_iri 3.aseprite": {
+      "frame": {
+        "x": 970,
         "y": 0,
         "w": 1,
         "h": 1
@@ -63,9 +84,9 @@
       },
       "duration": 100
     },
-    "camarot_iri 3.aseprite": {
+    "camarot_iri 4.aseprite": {
       "frame": {
-        "x": 681,
+        "x": 708,
         "y": 0,
         "w": 32,
         "h": 35
@@ -84,9 +105,9 @@
       },
       "duration": 100
     },
-    "camarot_iri 4.aseprite": {
+    "camarot_iri 5.aseprite": {
       "frame": {
-        "x": 713,
+        "x": 740,
         "y": 0,
         "w": 39,
         "h": 34
@@ -105,9 +126,9 @@
       },
       "duration": 100
     },
-    "camarot_iri 5.aseprite": {
+    "camarot_iri 6.aseprite": {
       "frame": {
-        "x": 752,
+        "x": 779,
         "y": 0,
         "w": 39,
         "h": 33
@@ -126,9 +147,9 @@
       },
       "duration": 100
     },
-    "camarot_iri 6.aseprite": {
+    "camarot_iri 7.aseprite": {
       "frame": {
-        "x": 791,
+        "x": 818,
         "y": 0,
         "w": 39,
         "h": 30
@@ -147,9 +168,9 @@
       },
       "duration": 100
     },
-    "camarot_iri 7.aseprite": {
+    "camarot_iri 8.aseprite": {
       "frame": {
-        "x": 830,
+        "x": 857,
         "y": 0,
         "w": 39,
         "h": 28
@@ -168,9 +189,9 @@
       },
       "duration": 100
     },
-    "camarot_iri 8.aseprite": {
+    "camarot_iri 9.aseprite": {
       "frame": {
-        "x": 869,
+        "x": 896,
         "y": 0,
         "w": 39,
         "h": 27
@@ -189,9 +210,9 @@
       },
       "duration": 100
     },
-    "camarot_iri 9.aseprite": {
+    "camarot_iri 10.aseprite": {
       "frame": {
-        "x": 908,
+        "x": 935,
         "y": 0,
         "w": 35,
         "h": 25
@@ -217,7 +238,7 @@
     "image": "camarot_iri.png",
     "format": "RGBA8888",
     "size": {
-      "w": 944,
+      "w": 971,
       "h": 360
     },
     "scale": "1",
@@ -237,9 +258,16 @@
         "color": "#000000ff"
       },
       {
-        "name": "mar",
+        "name": "maceta",
         "from": 2,
-        "to": 9,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mar",
+        "from": 3,
+        "to": 10,
         "direction": "forward",
         "color": "#000000ff"
       }

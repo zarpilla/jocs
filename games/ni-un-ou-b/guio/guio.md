@@ -289,8 +289,24 @@ treballa.
 el gat no hi és.
 
 > IRI: Diu? Diu! Si et troba la Capitana, ets sopa de peix.
+> IRI: Un moment. El terra fa pendent. Poquet. Però fa tres campanyes que dormo amb aquest vaixell, i l'Arenga no
+> dorm mai torçada.
 
-L'Iri el segueix (miols) fins a la sala de màquines. Al terra, dos dits d'aigua.
+Això és el que l'ha despertat: la maquinista nota el vaixell amb els peus. El gat és l'excusa per sortir.
+
+**El camarot (tutorial de mirar i agafar).** Al cap del prestatge hi ha un **got d'aigua**, i l'aigua no és plana:
+«L'Arenga s'ha assegut de cul. I a popa, a sota de la línia de flotació, hi ha la meva sala de màquines.» Fins que
+no l'ha mirat, l'Iri no surt («El got del prestatge no s'imagina res»). Sota l'ull de bou hi ha penjada la
+**maceta** de goma: és per a la falca de baix de la porta de màquines, que s'encalla des de l'agost.
+
+**El passadís de baix (tutorial de fer servir un objecte).** Un miol darrere la porta de màquines. A terra, les
+**petjades mullades** d'en Diu van i vénen entre el camarot i la porta: «En Diu ha trepitjat aigua. I dins del
+vaixell, l'aigua no hi ha de ser.» El **repetidor d'alarmes** de les màquines és tot verd: «Tot verd, i el vaixell
+assegut de popa. Un dels dos menteix.» (És el sensor desconnectat: el primer sabotatge, abans de veure'l.) La porta
+estanca no s'obre: la **falca de baix** s'ha tornat a encallar. L'Iri hi fa servir la maceta [SO: cops] [SO:
+porta_estanca], la deixa penjada al costat de la porta («Tornarà a fer falta») i entra.
+
+A la sala de màquines, al terra, dos dits d'aigua.
 
 > IRI: La sentina de popa és plena. I l'alarma no ha sonat. *(mira el sensor: desconnectat)* Les alarmes no callen
 > soles.
@@ -1235,3 +1251,4 @@ més fàcil és recordar, no resoldre.
 | 5 | Durant la cerca, el tub només deia «Pregunta». | El tub repeteix les pistes que ja es tenen (popa/proa, els cops, el cadenat, l'entrepà) i on és en Bastida. |
 | 6 | A l'Escena 7, la Juana repetia «El dipòsit 2. Pel rebost.» | Repeteix els dos camins i respon al pany forçat i a l'entrepà d'en Tomàs. |
 | 7 | L'Acte 3 començava sense que ningú digués què calia fer, i la Juana parlava d'«a la reunió». | El pla pel tub en acabar el títol; la Juana diu que la reunió la convoca la Capitana. |
+| 8 | L'inici no explicava per què l'Iri és desperta a les 3:40 ni per què va a màquines, i al camarot i al passadís no hi havia res a fer. | La nota amb els peus que el vaixell fa pendent; el got d'aigua torçat, les petjades mullades d'en Diu, el repetidor tot verd i la falca encallada de la porta de màquines (la maceta del camarot). |

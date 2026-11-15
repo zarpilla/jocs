@@ -106,7 +106,12 @@ export interface Opcions {
 
 /** Escena 1: la vàlvula. */
 export function escena1(p: Jugador) {
-  anar(p, 'sala_maquines');
+  p.do('look', 'got'); // el vaixell s'ha assegut de popa: ara ja pot sortir
+  p.do('pickUp', 'maceta');
+  anar(p, 'passadis_baix');
+  p.do('look', 'repetidor');
+  p.use('maceta', 'porta_maquines'); // la falca de baix, i cap a dins
+  expect(p.room).toBe('sala_maquines');
   p.do('look', 'valvula');
   p.do('look', 'quadre');
   anar(p, 'taller');

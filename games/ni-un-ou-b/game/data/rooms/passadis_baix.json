@@ -63,6 +63,94 @@
       "name": "sala.passadis_baix.porta_maquines.nom",
       "interactions": [
         {
+          "verb": "use",
+          "item": "maceta",
+          "if": {
+            "flag": "falca_desencallada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_maquines.6",
+              "sound": "cops"
+            },
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_maquines.7",
+              "sound": "porta_estanca"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "maceta"
+            },
+            {
+              "setFlag": "falca_desencallada"
+            }
+          ],
+          "goTo": "sala_maquines"
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "falca_desencallada",
+                "is": false
+              },
+              {
+                "hasItem": "maceta"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_maquines.5"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "falca_desencallada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_maquines.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_maquines.4"
+            }
+          ]
+        },
+        {
           "verb": [
             "use",
             "open",
@@ -90,6 +178,116 @@
             {
               "who": "player",
               "text": "sala.passadis_baix.porta_maquines.2"
+            }
+          ]
+        }
+      ]
+    },
+    "repetidor": {
+      "name": "sala.passadis_baix.repetidor.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.repetidor.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.repetidor.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.repetidor.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.repetidor.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.repetidor.5"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.repetidor.6"
+            }
+          ]
+        }
+      ]
+    },
+    "petjades": {
+      "name": "sala.passadis_baix.petjades.nom",
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": 1
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.petjades.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.petjades.2"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.petjades.3"
             }
           ]
         }

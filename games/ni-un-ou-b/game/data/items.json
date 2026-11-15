@@ -64,6 +64,13 @@
       "no_munta": "obj.llibreta.no"
     }
   },
+  "maceta": {
+    "name": "obj.maceta.nom",
+    "description": "obj.maceta.desc",
+    "props": {
+      "no_munta": "obj.maceta.no"
+    }
+  },
   "cisalla": {
     "name": "obj.cisalla.nom",
     "props": {

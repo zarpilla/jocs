@@ -199,6 +199,38 @@
         "x": 413,
         "y": 123
       }
+    },
+    {
+      "id": "got",
+      "active": true,
+      "description": "got d'aigua",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 198,
+          "y": 88
+        },
+        {
+          "x": 217,
+          "y": 88
+        },
+        {
+          "x": 217,
+          "y": 110
+        },
+        {
+          "x": 198,
+          "y": 110
+        }
+      ],
+      "walkToPoint": {
+        "x": 207,
+        "y": 229
+      },
+      "lookAtPoint": {
+        "x": 207,
+        "y": 110
+      }
     }
   ],
   "points": [],
@@ -238,6 +270,46 @@
       "visible": false,
       "alpha": 1,
       "clickable": false
+    },
+    {
+      "id": "maceta",
+      "tag": "maceta",
+      "animations": {
+        "maceta": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 397,
+            "y": 136
+          },
+          {
+            "x": 429,
+            "y": 136
+          },
+          {
+            "x": 429,
+            "y": 190
+          },
+          {
+            "x": 397,
+            "y": 190
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 413,
+        "y": 229
+      },
+      "lookAtPoint": {
+        "x": 413,
+        "y": 190
+      },
+      "description": "maceta"
     }
   ],
   "characters": [
