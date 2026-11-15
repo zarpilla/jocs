@@ -79,7 +79,7 @@ i es barallen com a tals.
   coneix (portar-li la filla a casa), i complint-la.
 - **Joc:** parla, negocia i fa veure que és qui no és (una inversora, una compradora). Pilota la Cantimplora: és
   l'única que pot fer servir el mapa de navegació. Les converses d'arbre amb els poderosos són seves.
-- **Aspecte (proposta):** cabell curt, coure tenyit, rapat d'un costat; jaqueta de vol marró amb pegats; guants
+- **Aspecte (proposta):** cabell marró fosc estirat enrere en una trena llarga; jaqueta de vol marró amb pegats; guants
   sense dits. Cara de sempre (la de Suma Zero).
 
 ### Vet — l'enginyera
@@ -94,7 +94,7 @@ i es barallen com a tals.
   casa: «Ja no cal per si de cas.»
 - **Joc:** repara, desmunta i combina. Llegeix màquines com qui llegeix una carta: qui les ha fet, per a què, i què
   amaguen. Els trencaclosques d'objectes són seus.
-- **Aspecte (proposta):** cabell negre en un monyo alt amb una clau de tub clavada; granota blava d'enginyera amb
+- **Aspecte (proposta):** cabell negre amb ratlla al mig i dos monyos, un a cada costat; granota blava d'enginyera amb
   massa butxaques; ulleres de soldar al front. Cara de sempre (la de Suma Zero).
 
 > Vegeu la memòria del projecte: rols, roba i cabell nous a cada joc; cara fixa. Cal provar l'aspecte sobre l'art

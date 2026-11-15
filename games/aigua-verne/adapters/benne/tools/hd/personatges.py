@@ -24,7 +24,7 @@ from PIL import Image
 
 import hd.characters as C
 from hd.characters import (M, person, SKIN_IRI, SKIN_VET, SKIN_PALE, SKIN_OLD, SKIN_RUDDY, BOOT, STEELB, BRASS, LENS,
-                           HAIR_COPPER, HAIR_WHITE, WHITE, TROUSER, SUIT_D, CREAM, ORANGE, GRAY_SHOE, BELT, GOLDPIN,
+                           HAIR_WHITE, WHITE, TROUSER, SUIT_D, CREAM, ORANGE, GRAY_SHOE, BELT, GOLDPIN,
                            shoe_front, shoe_side, hair_lvl)
 from hd.pix import mix
 
@@ -386,47 +386,45 @@ VELVET = M((24, 4, 12), (48, 8, 20), (78, 14, 30), (110, 22, 40), (146, 34, 52),
 SEQUIN = M((84, 54, 22), (190, 144, 54), (252, 234, 160), (255, 252, 230))
 
 
-def _stubble(fg, x, y, S):
-    """Rapat: la pell, una mica més fosca i amb gra."""
-    v = fg.get(x, y)
-    if v and v[0] is S:
-        fg.shade(x, y, -0.7 - (0.4 if (int(x) + int(y)) % 2 else 0.0), S)
-
-
 # ═══════════════════════════════════════════════════════════════════════════
 #  L'Iri, la pilot
 # ═══════════════════════════════════════════════════════════════════════════
 
-def _copper(x, y):
-    return 0.45 * math.sin(x * 1.3 - y * 0.9) + 0.3 * math.sin(y * 2.1)
+HAIR_IRI_AV = M((10, 6, 6), (22, 14, 12), (36, 24, 18), (52, 36, 26), (72, 52, 38), (98, 74, 54))
+
+
+def _sleek_iri(x, y):
+    return 0.5 * math.sin(x * 0.6 + y * 1.7)
+
+
+def _braid(fg, x0, y0, x1, y1, H, base):
+    """Una trena: nusos alternats que s'aprimen, el lligam de cuir i el floc de la punta."""
+    n = int(abs(y1 - y0) / 1.8)
+    for k in range(n + 1):
+        t = k / n
+        x = x0 + (x1 - x0) * t + (0.5 if k % 2 else -0.5)
+        y = y0 + (y1 - y0) * t
+        fg.ell(x, y, 1.9 - 0.5 * t, 1.3, H, base + (0.3 if k % 2 else 0), amp=1.2, cont=(0.2, 0.8))
+    fg.ell(x1, y1 + 0.8, 1.2, 0.7, LEATHER, 2.6, amp=0.6)
+    fg.ell(x1, y1 + 2.2, 1.1, 1.3, H, base, amp=1.0)
 
 
 def iri_hair(fg, p, spec):
-    """Curt i coure, tirat cap a l'esquerra amb un floc al front; el costat dret, rapat."""
+    """Marró fosc, estirat enrere en una trena llarga (de cara, sobre l'espatlla), amb un floc solt al front."""
     hx, hy = p.head
-    H, S = HAIR_COPPER, spec['skin']
+    H = HAIR_IRI_AV
     if p.f == 'D':
-        for y in range(int(hy - 6), int(hy + 2)):                                   # el costat rapat (dreta)
-            for x in range(int(hx + 3), int(hx + 8)):
-                _stubble(fg, x, y, S)
-        fg.ell(hx - 0.8, hy - 2.2, 7.2, 6.6, H, 2.8, amp=1.6, cont=(0.2, 0.8), lvlfn=_copper,
-               clip=lambda x, y: (y <= hy - 4.0 + ((x - hx + 1) / 7.0) ** 2 * 3.0) and (x <= hx + 3.5 or y <= hy - 5.5))
-        fg.poly([(hx - 6.5, hy - 5.5), (hx - 1.0, hy - 6.5), (hx - 3.0, hy - 2.6), (hx - 6.8, hy - 1.0)], H, 3.2,
-                lvlfn=_copper)                                                      # el floc
+        fg.ell(hx, hy - 1.4, 7.2, 7.2, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek_iri,
+               clip=lambda x, y: y <= hy - 4.2 + ((x - hx) / 7.0) ** 2 * 4.4 or abs(x - hx) > 6.2)
+        fg.line(hx - 5.6, hy - 3, hx - 6.0, hy + 3, H, 2.0)                           # el floc solt
+        _braid(fg, hx + 5.4, hy + 6.0, hx + 7.0, hy + 19.0, H, 2.6)
     elif p.f == 'L':
-        for y in range(int(hy - 4), int(hy + 3)):                                   # rapat sobre l'orella i el clatell
-            for x in range(int(hx - 1), int(hx + 8)):
-                _stubble(fg, x, y, S)
-        fg.ell(hx + 0.6, hy - 2.6, 7.4, 6.2, H, 2.8, amp=1.6, cont=(0.2, 0.8), lvlfn=_copper,
-               clip=lambda x, y: y <= hy - 3.6 or (x < hx - 3 and y <= hy - 1.6))
-        fg.poly([(hx - 7.2, hy - 6.0), (hx - 2.0, hy - 8.0), (hx - 4.0, hy - 2.6), (hx - 7.6, hy - 2.0)], H, 3.2,
-                lvlfn=_copper)
+        fg.ell(hx + 1.0, hy - 1.4, 7.2, 7.2, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek_iri,
+               clip=lambda x, y: (x >= hx - 1.0 or y <= hy - 4.6) and not (x < hx + 2.6 and y > hy - 1.0))
+        _braid(fg, hx + 6.0, hy + 3.0, hx + 6.6, hy + 18.0, H, 2.4)
     else:
-        for y in range(int(hy - 4), int(hy + 6)):                                   # d'esquena, el rapat queda a la dreta
-            for x in range(int(hx + 2), int(hx + 8)):
-                _stubble(fg, x, y, S)
-        fg.ell(hx - 0.4, hy - 0.6, 7.4, 8.0, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_copper,
-               clip=lambda x, y: y <= hy - 4.0 or (x <= hx + 2 and y <= hy + 5.0))
+        fg.ell(hx, hy - 0.8, 7.4, 7.8, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek_iri)
+        _braid(fg, hx, hy + 5.0, hx + 0.4, hy + 20.0, H, 2.6)
 
 
 def iri_collar(fg, p, spec):
@@ -622,22 +620,26 @@ def _sleek(x, y):
     return 0.6 * math.sin(x * 0.5 + y * 1.8)
 
 
-def _wrench(fg, x0, y0, x1, y1):
-    fg.line(x0, y0, x1, y1, STEELB, 2.6)
-    fg.px(x0, y0 - 1, STEELB, 3.4)
-    fg.px(x0 - 1, y0, STEELB, 3.4)
-    fg.px(x1 + 1, y1, STEELB, 1.6)
+def _bun(x, y):
+    """El cabell enrotllat del monyo: espirals."""
+    return 0.55 * math.sin(x * 1.6 + y * 1.6) + 0.25 * math.sin(x * 3.1 - y * 0.7)
+
+
+def _buns(fg, pts, H):
+    for bx, by in pts:
+        fg.ell(bx, by, 3.3, 3.1, H, 2.8, amp=1.6, cont=(0.2, 0.8), lvlfn=_bun)
 
 
 def vet_hair(fg, p, spec):
-    """Negre, estirat enrere cap a un monyo alt, amb una clau fixa clavada; les ulleres de soldar al front."""
+    """Negre, amb ratlla al mig i dos monyos, un a cada costat del cap; les ulleres de soldar al front."""
     hx, hy = p.head
     H = HAIR_BLACK
     if p.f == 'D':
         fg.ell(hx, hy - 1.4, 7.0, 7.2, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek,
                clip=lambda x, y: y <= hy - 3.4 + ((x - hx) / 7.0) ** 2 * 4.6 or abs(x - hx) > 6.2)
-        fg.ell(hx, hy - 9.6, 3.6, 3.0, H, 2.8, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek)
-        _wrench(fg, hx - 5, hy - 12, hx + 4, hy - 8)
+        for y in range(int(hy - 8), int(hy - 4)):                                  # la ratlla
+            fg.shade(hx, y, -1.0, H)
+        _buns(fg, ((hx - 6.6, hy - 6.4), (hx + 6.6, hy - 6.4)), H)
         fg.line(hx - 7, hy - 4, hx + 7, hy - 4, STRAP, 1.6)                         # ulleres
         for gx in (hx - 2.6, hx + 2.6):
             fg.ell(gx, hy - 4.6, 2.2, 1.8, BRASS, 2.6, amp=0.8)
@@ -645,15 +647,16 @@ def vet_hair(fg, p, spec):
     elif p.f == 'L':
         fg.ell(hx + 1.0, hy - 1.4, 7.2, 7.2, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek,
                clip=lambda x, y: (x >= hx - 1.0 or y <= hy - 4.6) and not (x < hx + 2.6 and y > hy - 1.0))
-        fg.ell(hx + 2.4, hy - 9.4, 3.4, 3.0, H, 2.8, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek)
-        _wrench(fg, hx - 2, hy - 12, hx + 6, hy - 8)
+        fg.ell(hx + 0.4, hy - 8.4, 2.8, 2.6, H, 1.6, amp=1.2, cont=(0.2, 0.8), lvlfn=_bun)  # l'altre, darrere
+        _buns(fg, ((hx + 3.0, hy - 7.2),), H)
         fg.line(hx - 4, hy - 4, hx + 7, hy - 3, STRAP, 1.6)
         fg.ell(hx - 5.0, hy - 4.6, 1.6, 1.9, BRASS, 2.6, amp=0.8)
         fg.px(hx - 5.4, hy - 4.6, LENS, 2.8)
     else:
         fg.ell(hx, hy - 0.8, 7.4, 7.8, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek)
-        fg.ell(hx, hy - 9.4, 3.6, 3.0, H, 2.6, amp=1.6, cont=(0.2, 0.8), lvlfn=_sleek)
-        _wrench(fg, hx + 4, hy - 12, hx - 5, hy - 8)
+        for y in range(int(hy - 8), int(hy + 4)):                                  # la ratlla, fins al clatell
+            fg.shade(hx, y, -1.0, H)
+        _buns(fg, ((hx - 6.6, hy - 6.0), (hx + 6.6, hy - 6.0)), H)
         fg.line(hx - 7, hy - 4, hx + 7, hy - 4, STRAP, 1.6)
 
 
