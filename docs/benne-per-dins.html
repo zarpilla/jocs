@@ -1,0 +1,359 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Benne per dins</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: una columna de lectura (~70ch) amb diagrames de capes a tota amplada; capes codificades per color */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#1b2130; --muted:#5b6476; --line:#d9dde5;
+  --accent:#b8560f;
+  --c-game:#2f7d4f; --c-core:#2c5fa8; --c-adapt:#8a4bb0; --c-benne:#b8560f; --c-art:#7a6a1e;
+  --tint-game:#e6f2ea; --tint-core:#e6edf8; --tint-adapt:#f1e9f6; --tint-benne:#f8ece2; --tint-art:#f3efdc;
+  --code-bg:#eef0f4;
+  --f-display:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12151c; --surface:#1a1e27; --fg:#e4e7ee; --muted:#9aa3b5; --line:#2d3341;
+  --accent:#f0954a;
+  --c-game:#6cc492; --c-core:#7fa9ea; --c-adapt:#c597e3; --c-benne:#f0954a; --c-art:#d6c26a;
+  --tint-game:#18291f; --tint-core:#172337; --tint-adapt:#271c30; --tint-benne:#2e2016; --tint-art:#2a2714;
+  --code-bg:#20252f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12151c; --surface:#1a1e27; --fg:#e4e7ee; --muted:#9aa3b5; --line:#2d3341;
+  --accent:#f0954a;
+  --c-game:#6cc492; --c-core:#7fa9ea; --c-adapt:#c597e3; --c-benne:#f0954a; --c-art:#d6c26a;
+  --tint-game:#18291f; --tint-core:#172337; --tint-adapt:#271c30; --tint-benne:#2e2016; --tint-art:#2a2714;
+  --code-bg:#20252f; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+.prose{max-width:70ch}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:2.4rem;font-weight:700}
+h2{font-size:1.6rem;font-weight:700;padding-top:8px;border-top:2px solid var(--fg)}
+h3{font-size:1.1rem;font-weight:700;margin-top:8px}
+p{margin:0}
+section{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:1.1rem;color:var(--muted);max-width:68ch}
+code,.mono{font-family:var(--f-mono);font-size:.86em}
+code{background:var(--code-bg);padding:1px 5px;border-radius:4px}
+pre{font-family:var(--f-mono);font-size:.82rem;background:var(--code-bg);padding:14px 16px;border-radius:6px;overflow-x:auto;margin:0;line-height:1.5}
+a{color:var(--accent)}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+td:first-child{white-space:nowrap}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(--k)}
+
+/* diagrama de capes */
+.stack{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.layer{border:1.5px solid var(--k);background:var(--t);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.layer h3{margin:0;color:var(--k);font-size:1rem}
+.layer .path{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);word-break:break-all}
+.layer ul{font-size:.85rem;gap:3px}
+.k-game{--k:var(--c-game);--t:var(--tint-game)}
+.k-core{--k:var(--c-core);--t:var(--tint-core)}
+.k-adapt{--k:var(--c-adapt);--t:var(--tint-adapt)}
+.k-benne{--k:var(--c-benne);--t:var(--tint-benne)}
+.k-art{--k:var(--c-art);--t:var(--tint-art)}
+.rule{font-size:.9rem;color:var(--muted);border-left:3px solid var(--line);padding-left:12px}
+
+/* flux numerat */
+.flow{display:flex;flex-direction:column;gap:0;counter-reset:f}
+.step{display:grid;grid-template-columns:34px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)}
+.step:last-child{border-bottom:0}
+.step::before{counter-increment:f;content:counter(f);font-family:var(--f-mono);font-weight:600;width:28px;height:28px;border-radius:50%;
+  display:grid;place-items:center;background:var(--k);color:var(--surface);font-size:.85rem}
+.step .who{font-family:var(--f-mono);font-size:.74rem;color:var(--k);text-transform:uppercase;letter-spacing:.05em}
+.step p{font-size:.93rem}
+
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card h3{margin:0}
+.verdict{background:var(--surface);border-left:4px solid var(--accent);padding:16px 18px;border-radius:0 8px 8px 0;display:flex;flex-direction:column;gap:8px}
+.verdict strong{font-family:var(--f-display)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.72rem;padding:1px 8px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
+.yes{color:var(--c-game)} .part{color:var(--c-art)} .no{color:var(--accent)}
+svg text{font-family:var(--f-mono)}
+.figure{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px;overflow-x:auto}
+.cap{font-size:.85rem;color:var(--muted)}
+@media (max-width:820px){.stack{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+@media (max-width:560px){.stack,.two{grid-template-columns:minmax(0,1fr)} h1{font-size:1.9rem} td:first-child{white-space:normal}}
+</style>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:14px">
+  <div class="eyebrow">Mala Herba Soft · jocs/ · per a programadors</div>
+  <h1>Benne per dins</h1>
+  <p class="lede">Com s'acoblen els JSON de cada joc amb el motor Benne, què fa cada fitxer TypeScript, i fins on podem portar l'aspecte visual: escenaris pintats a l'estil de les reedicions dels clàssics de LucasArts i camins amb pujades i baixades.</p>
+  <div class="legend">
+    <span style="--k:var(--c-game)">Contingut del joc (JSON + lògica)</span>
+    <span style="--k:var(--c-core)">Nucli narratiu (TS pur)</span>
+    <span style="--k:var(--c-adapt)">Adaptador Benne</span>
+    <span style="--k:var(--c-benne)">Motor Benne (Phaser)</span>
+    <span style="--k:var(--c-art)">Art (Python)</span>
+  </div>
+</header>
+
+<!-- ───────────────────────── 1 ───────────────────────── -->
+<section>
+  <div class="eyebrow">Part 1 · Arquitectura</div>
+  <h2>Quatre capes, i només una sap que existeix Benne</h2>
+  <p class="prose">La regla de disseny del repo: <strong>la història no sap res del motor gràfic</strong>. Tot el que és Benne viu a <code>adapters/benne/</code> i al projecte Benne de cada joc. Si demà canviéssim de motor, <code>game/</code> i <code>packages/narrative-core/</code> no es tocarien.</p>
+
+  <div class="stack">
+    <div class="layer k-game">
+      <h3>Contingut</h3>
+      <div class="path">games/&lt;joc&gt;/game/</div>
+      <ul>
+        <li><code>data/*.json</code>: sales, objectes, personatges, diàlegs, missions, pistes, finals, estat inicial</li>
+        <li><code>locales/ca/</code>: tots els textos (el JSON només porta claus)</li>
+        <li><code>logic/*.ts</code>: regles pròpies del joc (accions amb nom)</li>
+        <li><code>test/</code>: partides senceres en mode text</li>
+      </ul>
+    </div>
+    <div class="layer k-core">
+      <h3>Nucli narratiu</h3>
+      <div class="path">packages/narrative-core/</div>
+      <ul>
+        <li>Estat (flags, vars, memòria, relacions)</li>
+        <li>Avalua condicions i aplica efectes</li>
+        <li>Resol interaccions i diàlegs</li>
+        <li>No toca pantalla ni inventari: <em>emet esdeveniments</em></li>
+      </ul>
+    </div>
+    <div class="layer k-adapt">
+      <h3>Adaptador</h3>
+      <div class="path">adapters/benne/ + games/&lt;joc&gt;/adapters/benne/</div>
+      <ul>
+        <li><strong>En compilar</strong> (<code>sync</code>): genera fitxers Benne a partir del JSON</li>
+        <li><strong>En jugar</strong> (<code>runtime/</code>): el pont entre els clics de Benne i el nucli</li>
+      </ul>
+    </div>
+    <div class="layer k-benne">
+      <h3>Motor Benne</h3>
+      <div class="path">packages/benne/ → còpia RO a games/&lt;joc&gt;/&lt;joc&gt;/src/engine</div>
+      <ul>
+        <li>Phaser + WebGL, Vite</li>
+        <li>Sales, caminar, pathfinding, verbs, GUI, so, partides desades</li>
+        <li>BenneScript: l'API que fan servir els scripts</li>
+      </ul>
+    </div>
+  </div>
+  <p class="rule">Dependències només cap avall: <span class="mono">game → core</span>, <span class="mono">adaptador → core + game + Benne</span>. El nucli no importa res de Benne; Benne no importa res del nucli (només hi arriba el pont, copiat dins <code>src/game/narrative/</code>).</p>
+</section>
+
+<!-- ───────────────────────── 2 ───────────────────────── -->
+<section>
+  <div class="eyebrow">Part 1 · Dos JSON per a cada sala</div>
+  <h2>El JSON nostre diu què passa; el de Benne diu on és</h2>
+  <p class="prose">Cada sala té dos fitxers que no es trepitgen. El nostre és lògica i textos; el de Benne és geometria i art. Els uneix l'<strong>identificador</strong> (i, quan no coincideix, <code>mapping.json</code>).</p>
+  <div class="two">
+    <div class="card" style="border-color:var(--c-game)">
+      <h3 style="color:var(--c-game)">game/data/rooms/granja_pati.json</h3>
+      <pre>{
+  "protagonists": ["iri", "vet"],
+  "hotspots": {
+    "pou": {
+      "name": "sala.granja_pati.pou.nom",
+      "interactions": [
+        { "verb": "look",
+          "if": { "flag": "bomba_llegida", "is": false },
+          "lines": [{ "who": "player",
+                      "text": "sala.granja_pati.pou.1" }] },
+        { "verb": ["walkTo","use","open"],
+          "goTo": "granja_casa" } ] } } }</pre>
+      <p class="cap">Verbs, condicions (<code>if</code>), línies (claus de text), efectes, <code>goTo</code>, diàlegs, accions. Validat amb <code>game/schemas/*.schema.json</code>.</p>
+    </div>
+    <div class="card" style="border-color:var(--c-benne)">
+      <h3 style="color:var(--c-benne)">&lt;joc&gt;/src/game/rooms/granja_pati/granja_pati.room.json</h3>
+      <pre>{
+  "size": { "width": 640, "height": 360 },
+  "scrollBounds": { "x":0,"y":0,"width":640,"height":360 },
+  "walkable": { "polygons": [{ "points": [...] }] },
+  "hotspots": [{ "id": "pou", "points": [...],
+                 "walkToPoint": {...}, "baseline": 204 }],
+  "props":   [{ "id": "BG", "zIndex": 0 }, ...],
+  "regions": [],
+  "characters": [{ "definition": "iri/iri.character.json",
+                   "x": 442, "y": 236 }] }</pre>
+      <p class="cap">Polígons (caminable, clicable), props de l'atles Aseprite, personatges, <em>regions</em> (escala, tint), càmera. S'edita amb l'editor de sales de Benne o el genera <code>room_designs.py</code>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────── 3 ───────────────────────── -->
+<section>
+  <div class="eyebrow">Part 1 · En compilar</div>
+  <h2><code>npm run benne:sync</code>: del JSON al projecte Benne</h2>
+  <div class="flow">
+    <div class="step k-adapt"><div><div class="who">sync.ts</div><p>Carrega el contingut del joc (<code>tools/load-game.ts</code>) i el valida amb el nucli (<code>validate.ts</code>). Si falla, no escriu res.</p></div></div>
+    <div class="step k-adapt"><div><div class="who">sync.ts → src/game/narrative/</div><p>Copia el pont (<code>adapters/benne/runtime/*</code>, i a sobre els fitxers de <code>games/&lt;joc&gt;/adapters/benne/runtime/</code>) i escriu <code>content.generated.json</code> (dades + textos) i <code>mapping.generated.json</code>.</p></div></div>
+    <div class="step k-adapt"><div><div class="who">benne-content.ts</div><p>Per cada diàleg nostre, un diàleg Benne amb <em>totes</em> les opcions aplanades (<code>&lt;node&gt;__&lt;opció&gt;</code>); el pont encén les que toquen. Textos de verbs i menús, botó <em>Canvia</em>, portada, GUI pròpies del <code>joc.ts</code>.</p></div></div>
+    <div class="step k-adapt"><div><div class="who">benne-content.ts → rooms/, characters/, inventory</div><p>Crea les sales, personatges i objectes que encara no existeixen, amb disposició automàtica. Afegeix coses noves a sales existents. Les coses amb <code>visibleIf</code> es fan <em>props</em>; els <code>decor</code>, props no clicables.</p></div></div>
+    <div class="step k-art"><div><div class="who">tools/*.py (Pillow)</div><p>Mentre hi ha la marca <code>.provisional</code>: dibuixa fons (<code>tools/hd640/rooms/&lt;sala&gt;.py</code>), sprites i icones, i ajusta la geometria del <code>.room.json</code> perquè el que es veu i el que es clica coincideixin.</p></div></div>
+    <div class="step k-adapt"><div><div class="who">templates/globalScript.ts</div><p>Regenera el bloc marcat de <code>src/game/globalScript.ts</code>: tota interacció sense gestor propi i tota entrada a sala van al pont. El que hi ha a sota de les marques es conserva.</p></div></div>
+  </div>
+  <p class="rule">Tot el que genera porta la marca <code>GENERAT</code>. El sync es nega a sobreescriure un fitxer sense la marca: el que un artista o programador toca a mà no es perd.</p>
+</section>
+
+<!-- ───────────────────────── 4 ───────────────────────── -->
+<section>
+  <div class="eyebrow">Part 1 · En jugar</div>
+  <h2>Un clic, de punta a punta</h2>
+  <p class="prose">Exemple: el jugador fa «Usa clau anglesa amb palanca».</p>
+  <div class="flow">
+    <div class="step k-benne"><div><div class="who">Benne · RoomScene</div><p>Hit-test del polígon del hotspot, camina fins al <code>walkToPoint</code> (pathfinding sobre el polígon caminable), resol el verb.</p></div></div>
+    <div class="step k-benne"><div><div class="who">Benne · globalScript.ts</div><p>Cap script de sala no la gestiona → <code>fallbacks.onUseItem</code>.</p></div></div>
+    <div class="step k-adapt"><div><div class="who">runtime/narrative.script.ts · routeInteraction</div><p>Tradueix ids de Benne als nostres amb el mapping (<code>fabrica_cambra-hotspot-palanca</code> → <code>palanca</code>) i crida el nucli.</p></div></div>
+    <div class="step k-core"><div><div class="who">narrative-core · Narrative</div><p>Busca la interacció al JSON de la sala, avalua els <code>if</code> (consulta el món via <code>WorldPort</code>: inventari, sala, protagonista), aplica efectes, executa accions de <code>game/logic</code>. Retorna un <code>InteractionResult</code> (línies, diàleg, sala, canvi de protagonista) i emet <code>NarrativeEvent</code>s.</p></div></div>
+    <div class="step k-adapt"><div><div class="who">runtime/narrative.ts</div><p>Escolta els esdeveniments: <code>giveItem</code>/<code>takeItem</code> → inventari Benne; <code>stateChanged</code> → desa l'estat dins la partida de Benne i mostra/amaga props condicionals; la resta → esdeveniments Benne <code>narrative:&lt;tipus&gt;</code>.</p></div></div>
+    <div class="step k-adapt"><div><div class="who">runtime/narrative.script.ts · playResult</div><p>Executa el resultat a Benne al llarg del temps: <code>player.say</code>, <code>dialogs.x.start()</code>, <code>player.switchTo</code>, <code>rooms.x.goTo()</code>.</p></div></div>
+  </div>
+  <p class="rule">Els scripts de sala de Benne (<code>*.room.ts</code>) només calen per a coses visuals: animacions, moviments, càmera. La lògica és sempre al JSON o a <code>game/logic/</code>, i per això els tests de partida corren sense navegador (<code>headless.ts</code> + <code>MemoryWorld</code>).</p>
+</section>
+
+<!-- ───────────────────────── 5 ───────────────────────── -->
+<section>
+  <div class="eyebrow">Part 1 · Referència</div>
+  <h2>Què fa cada fitxer TypeScript</h2>
+
+  <h3 style="color:var(--c-core)">packages/narrative-core/src/</h3>
+  <div class="scroll"><table>
+    <tr><th>Fitxer</th><th>Què fa</th></tr>
+    <tr><td><code>types.ts</code></td><td>Tipus de tot el contingut: <code>Condition</code>, efectes, sales, diàlegs, missions, pistes, finals. És el contracte del JSON.</td></tr>
+    <tr><td><code>narrative.ts</code></td><td>La classe <code>Narrative</code>: interaccions, diàlegs, missions, pistes, finals, hooks (<code>GameAction</code>, <code>AfterActionHook</code>, <code>EnterRoomHook</code>) on s'enganxa <code>game/logic</code>.</td></tr>
+    <tr><td><code>ports.ts</code></td><td><code>WorldPort</code> (el que el nucli pregunta al motor) i <code>NarrativeEvent</code> (el que li demana fer). <code>MemoryWorld</code> per a tests.</td></tr>
+    <tr><td><code>state.ts</code> · <code>conditions.ts</code> · <code>effects.ts</code></td><td>Estat serialitzable; avaluació de condicions; aplicació d'efectes.</td></tr>
+    <tr><td><code>dialogue.ts</code></td><td>Navegació per nodes i opcions de diàleg.</td></tr>
+    <tr><td><code>assemble.ts</code> · <code>i18n.ts</code></td><td>Ajunta els JSON en un <code>GameContent</code>; resol claus de text.</td></tr>
+    <tr><td><code>validate.ts</code></td><td>Referències trencades, textos que falten, accions desconegudes.</td></tr>
+    <tr><td><code>headless.ts</code></td><td>Juga sense motor gràfic: el fan servir els tests i <code>npm run jugar</code>.</td></tr>
+  </table></div>
+
+  <h3 style="color:var(--c-adapt)">adapters/benne/</h3>
+  <div class="scroll"><table>
+    <tr><th>Fitxer</th><th>Quan</th><th>Què fa</th></tr>
+    <tr><td><code>sync.ts</code></td><td>compilar</td><td>Valida i porta el contingut al projecte Benne. <code>--watch</code>, <code>--init</code>.</td></tr>
+    <tr><td><code>benne-content.ts</code></td><td>compilar</td><td>Genera sales, personatges, objectes, diàlegs, config i GUI de Benne a partir del JSON.</td></tr>
+    <tr><td><code>create-project.ts</code></td><td>un cop</td><td>Projecte Benne nou d'un joc; amb <code>--motor</code>, actualitza <code>packages/benne</code> des d'un Benne nou.</td></tr>
+    <tr><td><code>joc-benne.ts</code></td><td>tipus</td><td><code>JocBenne</code>: el que cada joc pot configurar al seu <code>joc.ts</code> (fonts, colors de veus, GUI, retocs de config).</td></tr>
+    <tr><td><code>templates/globalScript.ts</code></td><td>compilar</td><td>Plantilla del bloc generat del <code>globalScript.ts</code>.</td></tr>
+    <tr><td><code>runtime/narrative.ts</code></td><td>jugar</td><td>Crea el <code>Narrative</code>, implementa el <code>WorldPort</code> sobre Benne, desa l'estat a les partides, aplica visibilitat, aparença i noms.</td></tr>
+    <tr><td><code>runtime/narrative.script.ts</code></td><td>jugar</td><td>BenneScript amb temps: dir línies, conduir diàlegs, canviar de protagonista, pistes, finals.</td></tr>
+    <tr><td><code>runtime/historial.ts</code></td><td>jugar</td><td>Historial buit per defecte; cada joc el pot substituir.</td></tr>
+    <tr><td><code>runtime/estadistiques.ts</code></td><td>jugar</td><td>Comptadors anònims (partida nova, actes, finals, temps).</td></tr>
+  </table></div>
+
+  <h3 style="color:var(--c-game)">games/&lt;joc&gt;/ i tools/</h3>
+  <div class="scroll"><table>
+    <tr><th>Fitxer</th><th>Què fa</th></tr>
+    <tr><td><code>game/logic/*.ts</code></td><td>Regles pròpies (p. ex. <code>sincronia.ts</code>, <code>mosca.ts</code> a Aigua Verne). <code>installGameLogic(n)</code> les registra; el JSON les crida amb <code>"action": { "name": "mosca.enviar" }</code>.</td></tr>
+    <tr><td><code>game/test/*.ts</code></td><td>Partides senceres amb Vitest, sense navegador.</td></tr>
+    <tr><td><code>adapters/benne/joc.ts</code></td><td>Tot el que aquest joc fa diferent a Benne.</td></tr>
+    <tr><td><code>adapters/benne/mapping.json</code></td><td>Ids que no coincideixen; música, ambients, foscor i so de portes per sala.</td></tr>
+    <tr><td><code>tools/validate.ts</code> · <code>jugar.ts</code> · <code>revisio.ts</code> · <code>fitxes.ts</code></td><td>Validar, jugar en mode text, revisar textos, fitxes de personatges. <code>joc.ts</code> dedueix de quin joc parles per la carpeta.</td></tr>
+  </table></div>
+</section>
+
+<!-- ───────────────────────── 6 ───────────────────────── -->
+<section>
+  <div class="eyebrow">Part 2 · Aspecte</div>
+  <h2>Podem arribar a l'estil de les reedicions?</h2>
+  <p class="prose">Comparant les dues captures, la diferència no és només de pinzell. He mirat què fa servir avui Aigua Verne (27 sales) i què ofereix el motor.</p>
+  <div class="scroll"><table>
+    <tr><th>Què es nota</th><th>Benne ho té?</th><th>Ho fem servir?</th></tr>
+    <tr><td>Fons pintats, amb llum i volum</td><td><span class="pill yes">sí</span> un PNG és un PNG</td><td>No: els fons els pinta codi Python (<code>tools/hd640/rooms/*.py</code>), pixel art procedural</td></tr>
+    <tr><td>Personatges que s'encongeixen al fons</td><td><span class="pill yes">sí</span> <code>regions[].scaleEnabled</code>, <code>scaleTop/scaleBottom</code></td><td><strong>0 de 27 sales</strong></td></tr>
+    <tr><td>Sales més amples que la pantalla, amb scroll</td><td><span class="pill yes">sí</span> <code>size</code> &gt; resolució, <code>scrollBounds</code></td><td>No: totes fan 640×360</td></tr>
+    <tr><td>Parallax (primer pla i fons a velocitats diferents)</td><td><span class="pill yes">sí</span> <code>props[].parallaxDepth</code></td><td>No</td></tr>
+    <tr><td>Personatges tenyits per la llum de la zona</td><td><span class="pill yes">sí</span> <code>regions[].tint</code>, <code>tintAlpha</code>; <code>shade</code> per a la sala</td><td>Només <code>shade</code> (foscor de <code>mapping.json</code>)</td></tr>
+    <tr><td>Animació d'ambient (fum, aigua, banderes)</td><td><span class="pill yes">sí</span> props animats de l'atles</td><td>Una mica (<code>pols</code>, <code>llum_canonada</code>…)</td></tr>
+    <tr><td>Pantalla sencera per a l'escena, sense barra de verbs</td><td><span class="pill part">en part</span> GUI configurable, <code>inputProfile</code>, <code>defaultVerb</code></td><td>Plantilla de 9 verbs, que ocupa el terç de baix</td></tr>
+    <tr><td>Resolució alta i art suau (no píxel)</td><td><span class="pill part">en part</span> Phaser ho permet; el shader de personatges escalats està pensat per a pixel art</td><td>640×360 i fonts de mapa de bits</td></tr>
+    <tr><td>Animació de personatges dibuixada a mà, molts fotogrames</td><td><span class="pill yes">sí</span> atles Aseprite</td><td>Sprites generats per Python, poques poses</td></tr>
+  </table></div>
+
+  <div class="verdict">
+    <strong>Resposta curta: el motor no és el límit. L'art sí, però no és l'únic que cal.</strong>
+    <p>Només millorant l'art (fons pintats a 640×360) guanyaríem molt, però el joc continuaria semblant pla: la sensació de la primera captura ve igualment de <em>l'escala per profunditat, l'scroll, el parallax i el tint per zones</em>, que Benne ja té i no fem servir. Això és feina de disseny de sala, no de motor, i es pot començar ja amb l'art actual.</p>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3>Pas 1 · Sense tocar el motor</h3>
+      <ul>
+        <li>Regions d'escala a totes les sales exteriors (i <code>scaleWalkSpeed</code>).</li>
+        <li>Alguna sala ampla (p. ex. 1280×360) amb scroll i 2–3 capes de parallax.</li>
+        <li>Regions de tint: ombra sota els arbres, llum càlida a prop del foc.</li>
+        <li>Més props d'ambient animats per sala.</li>
+        <li>Afegir-ho a <code>room_designs.py</code> perquè el sync ho generi.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Pas 2 · Art pintat</h3>
+      <ul>
+        <li>Fons pintats per una persona (o pintats sobre la base que genera Python). El pipeline procedural no arriba a aquest acabat.</li>
+        <li>Pujar la resolució (1280×720 o 1920×1080) és possible: ja hi ha precedent (<code>migra_resolucio.py</code>, 480→640). Toca coordenades, GUI i fonts.</li>
+        <li>Revisar el filtre del shader de perspectiva (ajusta a la graella de píxels; amb art suau cal filtre lineal).</li>
+        <li><strong>El cost gros són els personatges</strong>: a alta resolució, cada animació (caminar ×4 direccions, parlar, agafar) es dibuixa a mà. Això, més que els fons, decideix si és viable.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────────────── 7 ───────────────────────── -->
+<section>
+  <div class="eyebrow">Part 3 · Relleu</div>
+  <h2>Pujades i baixades</h2>
+  <p class="prose">En una aventura 2D no hi ha alçada real: la pujada és una il·lusió que fan tres coses juntes. Benne en té dues de sèrie; la tercera és un canvi petit.</p>
+
+  <div class="figure">
+    <svg viewBox="0 0 640 300" width="100%" style="min-width:520px;display:block" role="img" aria-label="Sala d'exemple: camí que puja un turó, amb tres regions d'escala">
+      <rect x="0" y="0" width="640" height="300" fill="var(--tint-core)"/>
+      <path d="M0 210 C120 200 220 120 330 90 C430 64 520 70 640 80 L640 300 L0 300 Z" fill="var(--tint-game)" stroke="var(--c-game)" stroke-width="1.5"/>
+      <!-- camí caminable -->
+      <path d="M20 280 L120 262 C200 240 250 180 320 140 C380 108 470 98 620 100 L620 116 C470 114 390 124 336 156 C270 196 220 260 140 288 L20 296 Z" fill="var(--tint-benne)" stroke="var(--c-benne)" stroke-width="2" stroke-dasharray="6 4"/>
+      <!-- regions -->
+      <rect x="10" y="230" width="210" height="68" fill="none" stroke="var(--c-adapt)" stroke-width="1.5"/>
+      <text x="16" y="246" font-size="11" fill="var(--c-adapt)">regió A · scale 1.0 → 1.0</text>
+      <rect x="220" y="120" width="160" height="160" fill="none" stroke="var(--c-adapt)" stroke-width="1.5"/>
+      <text x="226" y="136" font-size="11" fill="var(--c-adapt)">regió B · 0.75 → 1.0</text>
+      <rect x="380" y="88" width="250" height="40" fill="none" stroke="var(--c-adapt)" stroke-width="1.5"/>
+      <text x="386" y="84" font-size="11" fill="var(--c-adapt)">regió C · 0.6 → 0.6 · velocitat ×0.8</text>
+      <!-- personatges -->
+      <g fill="var(--fg)">
+        <rect x="80" y="214" width="14" height="52" rx="5"/><circle cx="87" cy="208" r="7"/>
+        <rect x="292" y="122" width="11" height="40" rx="4"/><circle cx="297.5" cy="117" r="5.5"/>
+        <rect x="520" y="80" width="9" height="30" rx="3"/><circle cx="524.5" cy="76" r="4.2"/>
+      </g>
+      <text x="22" y="20" font-size="12" fill="var(--fg)">polígon caminable (taronja) = el camí dibuixat al fons</text>
+      <text x="22" y="38" font-size="12" fill="var(--muted)">regions (lila) = escala per Y dels peus; l'última que conté els peus guanya</text>
+    </svg>
+  </div>
+
+  <div class="scroll"><table>
+    <tr><th>Peça</th><th>Estat</th><th>Com</th></tr>
+    <tr><td>Camí que puja per la pantalla</td><td><span class="pill yes">ja hi és</span></td><td>El polígon caminable pot tenir qualsevol forma. Una franja estreta que segueix el camí pintat obliga el pathfinding a pujar per on toca, fent ziga-zaga si cal. <code>baseline</code> als props perquè el turó tapi el personatge quan és darrere.</td></tr>
+    <tr><td>Escala segons la distància</td><td><span class="pill yes">ja hi és</span></td><td><code>regions[]</code> amb <code>scaleTop</code>/<code>scaleBottom</code>. <strong>Compte:</strong> l'escala només depèn de la Y dels peus. Un turó vist de costat (pujar sense allunyar-se) necessita una regió amb <code>scaleTop = scaleBottom</code>; un camí que s'allunya, una regió que encongeix. Diverses regions encadenades fan un turó que primer puja i després s'allunya.</td></tr>
+    <tr><td>Anar més a poc a poc pujant</td><td><span class="pill no">cal un canvi petit</span></td><td><code>scaleWalkSpeed</code> lliga la velocitat a l'escala, no al pendent. Proposta: un camp <code>walkSpeed</code> (multiplicador) a <code>RoomRegionData</code>, llegit on ja es llegeix <code>scaleWalkSpeed</code>. Va a <code>packages/benne</code> i val per a tots els jocs.</td></tr>
+    <tr><td>Sales altes amb càmera vertical</td><td><span class="pill yes">ja hi és</span></td><td><code>size.height</code> &gt; 360 i <code>scrollBounds</code>: la càmera segueix la protagonista amunt i avall (un penya-segat, una escala llarga).</td></tr>
+    <tr><td>Postura de pujada (cos inclinat)</td><td><span class="pill part">opcional</span></td><td>Amb <code>setOutfit()</code> (canvi nostre al motor) es poden tenir animacions <code>pujaWalkL</code>… i activar-les en entrar a la regió (esdeveniments d'entrada/sortida de regió). Les reedicions gairebé mai ho fan.</td></tr>
+  </table></div>
+
+  <div class="verdict">
+    <strong>El que dona més sensació de relleu, per ordre</strong>
+    <p>1) que el fons dibuixi el pendent i el camí, 2) que el polígon caminable el segueixi exactament, 3) l'escala per regions, 4) les oclusions amb <code>baseline</code>. La velocitat és la cirereta. Les tres primeres ja es poden fer avui amb <code>room_designs.py</code>: el que falta és afegir-hi un camp <code>regions</code> perquè el sync les escrigui al <code>.room.json</code>.</p>
+  </div>
+</section>
+
+</div>
+
+</body></html>

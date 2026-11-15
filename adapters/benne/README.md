@@ -7,6 +7,9 @@ carpeta (i el projecte Benne de cada joc) és l'única que cal substituir: `game
 Les ordres s'executen per a un joc: des de `games/<joc>/` (`npm run benne:sync`) o des de l'arrel amb
 `-w <joc>` (`npm run benne:sync -w suma-zero`). Vegeu `tools/joc.ts`.
 
+Un esquema visual de tot plegat (capes, sync, un clic de punta a punta, i les possibilitats visuals del motor):
+[docs/benne-per-dins.html](../../docs/benne-per-dins.html).
+
 ## Què hi ha
 
 | Fitxer | Què fa |

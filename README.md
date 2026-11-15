@@ -70,3 +70,12 @@ jocs. Fan servir els mateixos secrets: `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS` i 
 
 Més detalls a [adapters/benne/README.md](adapters/benne/README.md) i
 [packages/benne/README.md](packages/benne/README.md).
+
+**Benne per dins** ([docs/benne-per-dins.html](docs/benne-per-dins.html), s'obre al navegador): un esquema per a
+programadors de com s'acoblen el contingut, el nucli, l'adaptador i el motor, què fa cada fitxer TypeScript, i què
+ofereix Benne per donar més profunditat a les sales (escala per regions, scroll, parallax, tint, pujades i
+baixades). Les xifres d'ús («0 de 27 sales») són d'Aigua Verne al novembre de 2026.
+
+**Aventures: cap on anem** ([docs/aventures-cap-on-anem.html](docs/aventures-cap-on-anem.html)): com han evolucionat
+les aventures gràfiques (barra de verbs, veus, mòbil) i tres camins per als propers jocs: com ara, modernitzar
+(sense barra, tàctil) o canviar d'estil. Les xifres dels nostres jocs són del novembre de 2026.

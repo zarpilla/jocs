@@ -1,0 +1,232 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Aventures: cap on anem</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: línia de temps vertical amb tres pistes (interfície, veu, plataforma), després tres temes i una taula de decisió */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --fg:#1b2130; --muted:#5b6476; --line:#d9dde5;
+  --accent:#b8560f;
+  --c-ui:#2c5fa8; --c-voice:#8a4bb0; --c-plat:#2f7d4f; --c-us:#b8560f;
+  --tint-ui:#e6edf8; --tint-voice:#f1e9f6; --tint-plat:#e6f2ea; --tint-us:#f8ece2;
+  --code-bg:#eef0f4;
+  --f-display:"Space Grotesk",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12151c; --surface:#1a1e27; --fg:#e4e7ee; --muted:#9aa3b5; --line:#2d3341; --accent:#f0954a;
+  --c-ui:#7fa9ea; --c-voice:#c597e3; --c-plat:#6cc492; --c-us:#f0954a;
+  --tint-ui:#172337; --tint-voice:#271c30; --tint-plat:#18291f; --tint-us:#2e2016; --code-bg:#20252f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12151c; --surface:#1a1e27; --fg:#e4e7ee; --muted:#9aa3b5; --line:#2d3341; --accent:#f0954a;
+  --c-ui:#7fa9ea; --c-voice:#c597e3; --c-plat:#6cc492; --c-us:#f0954a;
+  --tint-ui:#172337; --tint-voice:#271c30; --tint-plat:#18291f; --tint-us:#2e2016; --code-bg:#20252f; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15.5px;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 80px}
+.wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:56px}
+.prose{max-width:70ch}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:2.4rem}
+h2{font-size:1.6rem;padding-top:8px;border-top:2px solid var(--fg)}
+h3{font-size:1.08rem}
+p{margin:0}
+section{display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.lede{font-size:1.1rem;color:var(--muted);max-width:68ch}
+code{font-family:var(--f-mono);font-size:.86em;background:var(--code-bg);padding:1px 5px;border-radius:4px}
+a{color:var(--accent)}
+ul{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.85rem;color:var(--muted)}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;background:var(--k)}
+.k-ui{--k:var(--c-ui);--t:var(--tint-ui)} .k-voice{--k:var(--c-voice);--t:var(--tint-voice)}
+.k-plat{--k:var(--c-plat);--t:var(--tint-plat)} .k-us{--k:var(--c-us);--t:var(--tint-us)}
+
+/* línia de temps */
+.era{display:grid;grid-template-columns:110px minmax(0,1fr);gap:0 20px}
+.era + .era{margin-top:4px}
+.era .yrs{font-family:var(--f-mono);font-weight:600;font-size:.9rem;padding-top:14px;text-align:right;font-variant-numeric:tabular-nums}
+.era .body{border-left:2px solid var(--line);padding:12px 0 18px 20px;display:flex;flex-direction:column;gap:8px;position:relative}
+.era .body::before{content:"";position:absolute;left:-7px;top:18px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--fg)}
+.era h3{margin:0}
+.evs{display:flex;flex-direction:column;gap:6px}
+.ev{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;font-size:.92rem;align-items:baseline}
+.ev .y{font-family:var(--f-mono);font-size:.8rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.tag{font-family:var(--f-mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;padding:0 6px;border-radius:3px;background:var(--t);color:var(--k);margin-right:6px;white-space:nowrap}
+.era.us .body{border-left-color:var(--c-us)}
+.era.us .body::before{border-color:var(--c-us);background:var(--c-us)}
+.era.us .yrs{color:var(--c-us)}
+
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card h3{color:var(--k)}
+.card.k-ui,.card.k-voice,.card.k-plat,.card.k-us{border-top:3px solid var(--k)}
+.stat{font-family:var(--f-display);font-size:1.9rem;font-weight:700;line-height:1;color:var(--k);font-variant-numeric:tabular-nums}
+.statlbl{font-size:.85rem;color:var(--muted)}
+.verdict{background:var(--surface);border-left:4px solid var(--accent);padding:16px 18px;border-radius:0 8px 8px 0;display:flex;flex-direction:column;gap:8px}
+.verdict strong{font-family:var(--f-display)}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.72rem;padding:1px 8px;border-radius:99px;border:1px solid currentColor;white-space:nowrap}
+.good{color:var(--c-plat)} .mid{color:var(--c-voice)} .bad{color:var(--accent)}
+tr.pick td{background:var(--tint-us)}
+.sources{font-size:.85rem;color:var(--muted)}
+.sources ul{gap:2px}
+@media (max-width:760px){.three{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.two{grid-template-columns:minmax(0,1fr)} h1{font-size:1.9rem}
+  .era{grid-template-columns:minmax(0,1fr)} .era .yrs{text-align:left;padding:6px 0 0 0}}
+</style>
+
+<div class="wrap">
+
+<header style="display:flex;flex-direction:column;gap:14px">
+  <div class="eyebrow">Mala Herba Soft · per decidir el proper joc</div>
+  <h1>Aventures: cap on anem</h1>
+  <p class="lede">Com han canviat les aventures de «point &amp; click» en quaranta anys (la interfície, les veus i les plataformes) i què en surt per a nosaltres: seguim fent-les com ara, les modernitzem, o canviem d'estil?</p>
+  <div class="legend">
+    <span style="--k:var(--c-ui)">Interfície</span>
+    <span style="--k:var(--c-voice)">Veu i so</span>
+    <span style="--k:var(--c-plat)">Plataforma</span>
+    <span style="--k:var(--c-us)">Nosaltres</span>
+  </div>
+</header>
+
+<section>
+  <div class="eyebrow">1 · La història</div>
+  <h2>Quaranta anys en sis etapes</h2>
+
+  <div>
+  <div class="era"><div class="yrs">1980–1989</div><div class="body">
+    <h3>Escriure ordres</h3>
+    <div class="evs">
+      <div class="ev"><span class="y">1980</span><span><span class="tag k-ui" style="--t:var(--tint-ui)">interfície</span><strong>Zork</strong> (Infocom) i les aventures de text: el jugador escriu «agafa clau». Endevinar la paraula és part del trencaclosques.</span></div>
+      <div class="ev"><span class="y">1984</span><span><span class="tag k-ui">interfície</span><strong>King's Quest</strong> (Sierra) hi posa gràfics i un personatge que camina, però encara s'escriu.</span></div>
+    </div></div></div>
+
+  <div class="era"><div class="yrs">1987–1993</div><div class="body">
+    <h3>L'edat de la barra de verbs</h3>
+    <div class="evs">
+      <div class="ev"><span class="y">1987</span><span><span class="tag k-ui">interfície</span><strong>Maniac Mansion</strong> (Lucasfilm Games) treu el teclat: els verbs són a la pantalla i es clica. Comença amb 15 verbs.</span></div>
+      <div class="ev"><span class="y">1989–90</span><span><span class="tag k-ui">interfície</span>12 verbs a <strong>Indiana Jones and the Last Crusade</strong> (1989) i <strong>The Secret of Monkey Island</strong> (1990). Sierra fa el mateix camí a la seva manera: a <strong>King's Quest V</strong> (1990) una barra d'icones (caminar, mirar, mà, parlar) substitueix l'analitzador d'ordres.</span></div>
+      <div class="ev"><span class="y">1991–93</span><span><span class="tag k-ui">interfície</span><strong>9 verbs</strong> a <strong>Monkey Island 2: LeChuck's Revenge</strong> (1991), <strong>Indiana Jones and the Fate of Atlantis</strong> (1992) i <strong>Day of the Tentacle</strong> (1993): la forma que fem servir nosaltres. És el punt més alt i l'últim gran moment de la barra.</span></div>
+    </div></div></div>
+
+  <div class="era"><div class="yrs">1991–1995</div><div class="body">
+    <h3>Arriba el CD-ROM i parlen</h3>
+    <div class="evs">
+      <div class="ev"><span class="y">1991–92</span><span><span class="tag k-voice">veu</span><strong>King's Quest V</strong> en CD, la primera aventura de Sierra amb totes les línies dites. Les veus eren de la mateixa plantilla de l'estudi, i la crítica les va trobar de fusta.</span></div>
+      <div class="ev"><span class="y">1993</span><span><span class="tag k-voice">veu</span><strong>Day of the Tentacle</strong> i la versió en CD de <strong>Fate of Atlantis</strong> surten amb doblatge professional complet. La veu passa a ser el que s'espera.</span></div>
+      <div class="ev"><span class="y">1993</span><span><span class="tag k-ui">interfície</span><strong>Sam &amp; Max Hit the Road</strong>, sense barra: el cursor canvia d'acció amb el botó dret i la pantalla sencera és per a l'escena.</span></div>
+      <div class="ev"><span class="y">1995</span><span><span class="tag k-ui">interfície</span><strong>Full Throttle</strong> i la «moneda de verbs»: mantens premut sobre una cosa i surt un menú d'icones (mà, ulls, boca, peu).</span></div>
+    </div></div></div>
+
+  <div class="era"><div class="yrs">1996–2008</div><div class="body">
+    <h3>Dos clics, 3D i declivi</h3>
+    <div class="evs">
+      <div class="ev"><span class="y">1996</span><span><span class="tag k-ui">interfície</span><strong>Broken Sword</strong> (Revolution), amb dos clics: un botó mira i l'altre fa l'acció que toca. Encara és l'estàndard de molts jocs actuals.</span></div>
+      <div class="ev"><span class="y">1997</span><span><span class="tag k-ui">interfície</span><strong>The Curse of Monkey Island</strong>, l'últim gran clàssic en 2D: dibuixat a mà a 640×480, veus completes i una moneda de verbs de 3 icones.</span></div>
+      <div class="ev"><span class="y">1998</span><span><span class="tag k-plat">plataforma</span><strong>Grim Fandango</strong> porta el gènere al 3D i al teclat. Agrada a la crítica però no ven el que s'esperava, i els grans estudis abandonen el gènere.</span></div>
+      <div class="ev"><span class="y">2005</span><span><span class="tag k-plat">plataforma</span><strong>Telltale Games</strong> (<em>Bone</em>, 2005; <em>Sam &amp; Max Save the World</em>, 2006): aventures per episodis, més curtes i amb menys trencaclosques.</span></div>
+    </div></div></div>
+
+  <div class="era"><div class="yrs">2009–2019</div><div class="body">
+    <h3>Remakes, mòbil i indies</h3>
+    <div class="evs">
+      <div class="ev"><span class="y">2009–10</span><span><span class="tag k-plat">plataforma</span><strong>The Secret of Monkey Island: Special Edition</strong> (2009) i <strong>Monkey Island 2 Special Edition</strong> (2010): fons repintats en HD, veus noves, la barra de verbs amagada, i <strong>versió per a iPhone</strong>. Una tecla torna a la versió original.</span></div>
+      <div class="ev"><span class="y">2009</span><span><span class="tag k-ui">interfície</span><strong>Machinarium</strong> (Amanita Design): sense paraules i d'un sol clic; tot el que es pot fer es veu.</span></div>
+      <div class="ev"><span class="y">2012</span><span><span class="tag k-ui">interfície</span><strong>The Walking Dead</strong> (Telltale): menys trencaclosques, més decisions en els diàlegs que canvien la història.</span></div>
+      <div class="ev"><span class="y">2016</span><span><span class="tag k-voice">veu</span><strong>Oxenfree</strong> (Night School Studio), «caminar i parlar»: les converses passen mentre et mous, sense aturar el joc.</span></div>
+      <div class="ev"><span class="y">2017</span><span><span class="tag k-ui">interfície</span><strong>Thimbleweed Park</strong>, de Ron Gilbert i Gary Winnick (els creadors de Maniac Mansion): un joc nou <strong>amb els 9 verbs</strong>, per nostàlgia declarada. Surt també a mòbil.</span></div>
+    </div></div></div>
+
+  <div class="era"><div class="yrs">2022–2023</div><div class="body">
+    <h3>Els mateixos creadors treuen els verbs</h3>
+    <div class="evs">
+      <div class="ev"><span class="y">2022</span><span><span class="tag k-ui">interfície</span><strong>Return to Monkey Island</strong>, de Ron Gilbert i Dave Grossman: <strong>sense barra de verbs</strong>. En passar per sobre d'una cosa surten una o dues accions possibles. Veus completes.</span></div>
+      <div class="ev"><span class="y">2023</span><span><span class="tag k-plat">plataforma</span><strong>Return to Monkey Island</strong> surt a iOS i Android (juliol de 2023).</span></div>
+      <div class="ev"><span class="y">2023</span><span><span class="tag k-plat">plataforma</span><strong>Lost in Play</strong> (Happy Juice Games), una aventura «point &amp; click» sense text que funciona molt bé amb el dit, és el millor joc d'iPad de l'any per a Apple.</span></div>
+    </div></div></div>
+
+  <div class="era us"><div class="yrs">Ara</div><div class="body">
+    <h3>Mala Herba Soft</h3>
+    <div class="evs">
+      <div class="ev"><span class="y">2026</span><span><span class="tag k-us">nosaltres</span>4 jocs amb 9 verbs, sense veus, 640×360, al navegador, amb ratolí.</span></div>
+    </div></div></div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">2 · Els tres temes</div>
+  <h2>La barra, les veus i el mòbil</h2>
+
+  <div class="three">
+    <div class="card k-ui">
+      <h3>La barra de verbs</h3>
+      <p>Va viure de <em>Maniac Mansion</em> (1987) a <em>Day of the Tentacle</em> (1993). Des d'aleshores només ha tornat com a homenatge (<em>Thimbleweed Park</em>, 2017), i els seus propis creadors la van treure a <em>Return to Monkey Island</em> (2022).</p>
+      <p>Als nostres jocs, però, fem poc servir la diferència entre verbs. A la majoria de punts clicables només hi ha «mirar» i una acció, i ja escrivim <code>"verb": ["use", "pull", "pickUp"]</code> per acceptar-ne uns quants alhora.</p>
+      <div><div class="stat">8–21 %</div><div class="statlbl">dels punts clicables tenen més d'una acció diferent (a part de mirar i parlar), segons el joc</div></div>
+    </div>
+    <div class="card k-voice">
+      <h3>Les veus</h3>
+      <p>Des de <em>Day of the Tentacle</em> (1993), és el que s'espera en un joc comercial. Les aventures petites sovint no en tenen, o en tenen només a les escenes clau.</p>
+      <p>Benne ja ho permet: una marca a la línia fa sonar un fitxer de veu del personatge. El cost són les gravacions.</p>
+      <div><div class="stat">≈1.500–1.900</div><div class="statlbl">textos per joc (amb noms i interfície); la majoria són línies dites</div></div>
+    </div>
+    <div class="card k-plat">
+      <h3>El mòbil</h3>
+      <p>Les aventures de «point &amp; click» funcionen bé al mòbil: s'hi juguen en estones curtes i la pantalla tàctil és un clic. Hi han sortit les reedicions de <em>Monkey Island</em>, <em>Thimbleweed Park</em>, <em>Return to Monkey Island</em> i <em>Lost in Play</em>.</p>
+      <p>El que no funciona és el que depèn del ratolí: passar per sobre per saber què és clicable, i una barra que es menja un terç d'una pantalla ja petita.</p>
+      <div><div class="stat">16:9</div><div class="statlbl">la nostra pantalla de 640×360 ja és apaïsada, com la d'un mòbil girat</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">3 · Cap al mòbil</div>
+  <h2>Què caldria canviar perquè es jugui bé amb el dit</h2>
+  <div class="scroll"><table>
+    <tr><th>Problema</th><th>Solució habitual</th><th>Cost per a nosaltres</th></tr>
+    <tr><td>No hi ha «passar per sobre»: no saps què és clicable</td><td>Un botó (o tocar amb dos dits) que ensenya tots els punts clicables</td><td><span class="pill mid">mitjà</span> una GUI i un canvi al motor; val per a tots els jocs</td></tr>
+    <tr><td>9 verbs ocupen un terç de la pantalla</td><td>Tocar = acció per defecte; mantenir premut = menú de 2–3 accions</td><td><span class="pill mid">mitjà</span> Benne ja té <code>defaultVerb</code> i <code>inputProfile</code>; el contingut gairebé no canvia</td></tr>
+    <tr><td>Text petit</td><td>Font més gran, amb vora, i fons darrere els subtítols</td><td><span class="pill good">baix</span> cada joc ja té la seva font</td></tr>
+    <tr><td>Inventari dins la barra</td><td>Inventari plegable en una cantonada</td><td><span class="pill mid">mitjà</span> GUI nova, compartida</td></tr>
+    <tr><td>Instal·lar-lo</td><td>Web al mòbil (ja funciona), i si cal botiga amb un embolcall natiu</td><td><span class="pill good">baix</span> el joc ja és web; l'embolcall és una feina a part</td></tr>
+    <tr><td>Pantalla vertical</td><td>Gairebé ningú no fa aventures en vertical</td><td><span class="pill good">cap</span> demanar de girar el mòbil</td></tr>
+  </table></div>
+</section>
+
+<section>
+  <div class="eyebrow">4 · Decisió</div>
+  <h2>Tres camins</h2>
+  <div class="scroll"><table>
+    <tr><th>Camí</th><th>Com seria</th><th>Què es conserva</th><th>Risc</th></tr>
+    <tr><td><strong>A · Com ara</strong></td><td>9 verbs, ratolí, sense veus (com <em>Monkey Island 2</em> o <em>Thimbleweed Park</em>)</td><td>Tot</td><td>Públic de nostàlgia; al mòbil es juga malament</td></tr>
+    <tr class="pick"><td><strong>B · Modernitzar</strong></td><td>Sense barra: tocar fa l'acció, mantenir premut dona 2–3 opcions. Mostra els punts clicables. Mòbil apaïsat. Veus a les escenes clau o a tot.</td><td>El nucli, el format dels JSON, els trencaclosques, l'art i les eines. Els 9 verbs poden quedar com a opció.</td><td>Revisar les interaccions que depenen del verb (8–21 % dels punts)</td></tr>
+    <tr><td><strong>C · Canviar d'estil</strong></td><td>Aventura narrativa a l'estil de <em>The Walking Dead</em> o <em>Oxenfree</em>: menys trencaclosques, decisions als diàlegs, «caminar i parlar»</td><td>El nucli: ja té relacions, memòria dels personatges i finals diferents</td><td>Un altre tipus de joc; potser no és el que ens agrada fer</td></tr>
+  </table></div>
+
+  <div class="verdict">
+    <strong>Recomanació: B, i provar-ho primer en un joc que ja existeix.</strong>
+    <p>És el mateix pas que van fer els creadors del gènere amb <em>Return to Monkey Island</em> (2022). Ens permet seguir fent aventures de trencaclosques i ens obre el mòbil. A més, el nostre format no canvia: el nucli no sap quina interfície hi ha a sobre, i les interaccions ja accepten diversos verbs alhora.</p>
+    <p>Una prova barata: un mode «sense barra» a Aigua Verne (configuració de Benne i una GUI nova), jugar-lo al mòbil, i comptar quantes interaccions s'han de tocar. Si va bé, el proper joc es dissenya així des del principi.</p>
+    <p>Les veus són una decisió a part, de pressupost més que de tecnologia: es poden afegir després a qualsevol camí.</p>
+  </div>
+</section>
+
+<div class="sources">
+  <p><strong>Fonts per a les dates menys conegudes:</strong></p>
+  <ul>
+    <li><a href="https://www.gematsu.com/2023/07/return-to-monkey-island-coming-to-ios-android-on-july-27">Gematsu: l'aventura de 2022 arriba a iOS i Android el 27 de juliol de 2023</a></li>
+    <li><a href="https://www.mobygames.com/game/kings-quest-v-absence-makes-the-heart-go-yonder">MobyGames: primera aventura de Sierra amb veus en CD-ROM</a></li>
+    <li><a href="https://www.vogons.org/viewtopic.php?p=617953">Vogons: dates de les versions en CD (desembre de 1991 i abril de 1992)</a></li>
+    <li><a href="https://80.lv/articles/lost-in-play-takes-home-the-title-of-2023-s-ipad-game-of-the-year">80.lv: millor joc d'iPad de 2023 per a Apple</a></li>
+  </ul>
+  <p>Les xifres dels nostres jocs surten dels JSON del repo (novembre de 2026).</p>
+</div>
+
+</div>
+
+</body></html>
