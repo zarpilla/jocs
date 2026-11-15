@@ -81,14 +81,14 @@
       }
     },
     {
-      "id": "aigua",
-      "tag": "aigua",
+      "id": "titol",
+      "tag": "titol",
       "zIndex": 3,
       "visible": true,
       "alpha": 1,
       "clickable": false,
       "animations": {
-        "aigua": {
+        "titol": {
           "loop": true,
           "frameDuration": 180
         }

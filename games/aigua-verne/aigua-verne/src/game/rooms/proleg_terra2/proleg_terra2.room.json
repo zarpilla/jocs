@@ -1,0 +1,161 @@
+{
+  "id": "proleg_terra2",
+  "name": "Terra-2",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 250
+          },
+          {
+            "x": 639,
+            "y": 250
+          },
+          {
+            "x": 639,
+            "y": 258
+          },
+          {
+            "x": 0,
+            "y": 258
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "llums",
+      "tag": "llums",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llums": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
+    },
+    {
+      "id": "pou",
+      "tag": "pou",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pou": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "pou_on": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      }
+    },
+    {
+      "id": "canonada",
+      "tag": "canonada",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "canonada": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "canonada_puja": {
+          "loop": false,
+          "frameDuration": 100
+        },
+        "canonada_on": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      }
+    },
+    {
+      "id": "nau",
+      "tag": "nau",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "nau": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "nau_apaga": {
+          "loop": false,
+          "frameDuration": 100
+        }
+      }
+    },
+    {
+      "id": "germanes",
+      "tag": "germanes",
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "germanes": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "germanes_surten": {
+          "loop": false,
+          "frameDuration": 100
+        }
+      }
+    }
+  ],
+  "characters": []
+}

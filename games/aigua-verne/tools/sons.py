@@ -282,6 +282,18 @@ def motor_nau():
     return mix(tos, (brunzit + rugit + xiulet, 0.6))
 
 
+def motor_apaga():
+    """La Cantimplora que s'apaga (el pròleg): el brunzit que cau, tres estossecs del motor (com a l'animació
+    `nau_apaga`: a 0,2, 1,0 i 1,8 s), i els relés dels llums de la cabina i de la rampa."""
+    d = 3.2
+    f = lin(70, 25, d, 0.6)
+    brunzit = (osc(f, d, 'saw') * 0.25 + band(noise(d), 40, 400) * 0.2) * env(d, 0.05, None, 1.4) * lin(1, 0, d, 0.8)
+    tos = [(cop_sord(0.2 if i < 2 else 0.35, 40, 300, 0.05 if i < 2 else 0.1) * a, s)
+           for i, (s, a) in enumerate(((0.2, 0.7), (1.0, 0.6), (1.8, 1.0)))]
+    relés = [(clic(1800, 0.02) * 0.5, s) for s in (0.9, 1.1, 1.3, 2.5, 2.6, 2.7)]
+    return mix(brunzit, *tos, *relés)
+
+
 def mosca():
     """La Mosca, el dron de la Vet (fet d'un aspirador): un brunzit que puja, canvia de to i se'n va."""
     d = 1.8
@@ -677,7 +689,7 @@ AMBIENTS = {
 SONS = {
     'porta': porta, 'porta_metall': porta_metall, 'rampa': rampa, 'caixa_forta': caixa_forta, 'teclat': teclat,
     'bomba': bomba, 'cargols': cargols, 'videotelefon': videotelefon, 'radio': radio, 'motor_nau': motor_nau,
-    'mosca': mosca, 'grua': grua, 'cistella': cistella, 'trampa': trampa, 'sorra': sorra, 'manxa': manxa,
+    'motor_apaga': motor_apaga, 'mosca': mosca, 'grua': grua, 'cistella': cistella, 'trampa': trampa, 'sorra': sorra, 'manxa': manxa,
     'forn': forn, 'colada': colada, 'vapor': vapor, 'cops_ferro': cops_ferro, 'condensador': condensador,
     'aixeta': aixeta, 'robot': robot, 'degoteig': degoteig, 'regar': regar, 'bip': bip, 'pantalla': pantalla,
     'ascensor': ascensor, 'pany': pany, 'valvula': valvula, 'palanca': palanca, 'martell': martell, 'cava': cava,
@@ -688,7 +700,7 @@ SONS = {
 VOLUM = {
     'radio': 0.6, 'videotelefon': 0.28, 'teclat': 0.4, 'bip': 0.5, 'robot': 0.4, 'pantalla': 0.5, 'mosca': 0.6,
     'bomba': 0.7, 'vapor': 0.6, 'piscina': 0.7, 'forn': 0.85, 'colada': 0.85, 'sorra': 0.75, 'regar': 0.6,
-    'ascensor': 0.5, 'motor_nau': 0.8, 'gat': 0.7, 'cops_ferro': 0.8, 'grua': 0.8,
+    'ascensor': 0.5, 'motor_nau': 0.8, 'motor_apaga': 0.8, 'gat': 0.7, 'cops_ferro': 0.8, 'grua': 0.8,
 }
 
 # Els sons que són tot cop i poca cua se senten fluixos: se'ls comprimeix una mica (com més, més cos).

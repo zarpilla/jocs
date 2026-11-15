@@ -229,7 +229,7 @@ Verdant el dimecres, la vigília del dijous que en Nil puja al palau, que és el
 
 | Acte | Escenes | Protagonista |
 |---|---|---|
-| Pròleg | El palau orbital | cinemàtica |
+| Pròleg | Terra-2 de lluny · El palau orbital | cinemàtica |
 | 1 · «L'aigua que no hi és» | 1. La granja · 2. La Cantimplora · 3. Aqua | les dues · les dues · les dues |
 | 2 · «Qui no treballa no beu» | 4. Ferrum · 5. Verdant · 6. La trucada | les dues (sincronia) · Iri i Vet separades · les dues |
 | 3 · «Vint-i-tres piscines» | 7. El palau · 8. La subhasta | les dues, separades · les dues (sincronia final) |
@@ -237,9 +237,28 @@ Verdant el dimecres, la vigília del dijous que en Nil puja al palau, que és el
 
 ### Pròleg
 
-Cinemàtica, sala `proleg_palau`. Un despatx blanc amb una finestra a l'espai. A sota, la piscina central, buida.
+Cinemàtica en dos plans. **Primer pla, sala `proleg_terra2`**: el mateix pla que la portada (Terra-2 de lluny, al
+capvespre de pols), sense el títol. «Comença» l'esvaeix i s'hi entra amb un tall net. Cada frase engega el seu tros
+d'animació, de fons i sense detall:
 
-> *(Un anunci s'està gravant. Llum perfecta. L'Aurelià Verne somriu a càmera.)*
+> NARRADOR: Vesper. Un sistema petit, al voltant d'una estrella taronja.
+> NARRADOR: Terra-2, el planeta pagès. Al pou de cada granja hi ha una bomba amb una gota blava.
+> *(La bomba de Verne del pou comença a cabotejar; a cada cabotada, un glop d'aigua blava corre per la canonada de
+> terra fins a la Canonada.)*
+> *(Sense text: un pols d'aigua puja per la Canonada fins al dipòsit orbital, que s'il·lumina de blau. En venen
+> més, un darrere l'altre.)*
+> NARRADOR: La Canonada puja l'aigua cel amunt, fins als dipòsits de Verne S.A. Allà dalt, es glaça.
+> NARRADOR: La Cantimplora, una nau cisterna, portava aigua d'un planeta a l'altre. Ja no en queda per portar.
+> *(La nau tus pels motors, la cabina parpelleja i s'apaga, i després la llum de la rampa.)*
+> NARRADOR: L'Iri, la pilot, i la Vet, l'enginyera, tornen a la granja on van créixer. A vendre-la.
+> *(Baixen per la rampa i se'n van pel corriol cap a la posta, cada cop més petites. En Diu surt a la rampa i s'hi
+> asseu a mirar-les.)*
+> NARRADOR: L'aigua no s'ha acabat. Està guardada.
+
+**Segon pla, sala `proleg_palau`**: un despatx blanc amb una finestra a l'espai. A sota, la piscina central, buida.
+
+> NARRADOR: Mentrestant, en òrbita, al palau del Magnat, es grava un anunci.
+> *(Llum perfecta. L'Aurelià Verne somriu a càmera.)*
 > VERNE: A Verne S.A. creiem que l'aigua és massa important per deixar-la en mans de la pluja.
 > VERNE: Aigua Verne. Perquè la set no espera.
 > *(La llum s'apaga. Verne deixa de somriure com qui es treu un abric.)*

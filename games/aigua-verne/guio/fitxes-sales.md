@@ -41,9 +41,21 @@
 
 ### `portada` (L)
 La portada. Terra-2 vista de lluny al capvespre de pols, la Canonada al mig fins al cel, i a dalt, en òrbita, un
-dels dipòsits (un cilindre blanc amb la gota blava). A baix, petita, la Cantimplora aparcada. El títol **AIGUA
-VERNE** com una etiqueta d'ampolla d'aigua (blau i blanc), una mica rovellada. Deixar espai a baix per als botons
-«Comença» i «Carrega una partida». ANIMS: la pols que passa, el llum de la Canonada que fa pampallugues.
+dels dipòsits (un cilindre blanc amb la gota blava). A baix, petita, la Cantimplora aparcada, i un corriol que surt
+del peu de la rampa, volta la popa i se'n va cap a la posta. A baix a la dreta, el pou d'una granja amb la bomba
+de Verne (un balancí blanc amb la gota blava), quieta, i la canonada de terra fins a la base de la Canonada. El
+títol **AIGUA VERNE** com una etiqueta d'ampolla d'aigua (blau i blanc), una mica rovellada, en una capa a part
+(`titol`, amb l'aigua de les lletres que es gronxa): «Comença» l'esvaeix. Deixar espai a baix per als botons
+«Comença» i «Carrega una partida». ANIMS: la pols que passa, el llum de la Canonada que fa pampallugues, el títol.
+
+### `proleg_terra2` (L)
+El primer pla del pròleg: el mateix pla que la portada, sense el títol (el fons és `portada.scene`). Tot passa fora
+del quadre del text del narrador (el centre). Capes buides que una indicació d'escena engega: `pou` → `pou_on` (la
+bomba cabeceja i els glops corren per la canonada de terra, en bucle); `canonada` → `canonada_puja` i
+`canonada_on` (els polsos d'aigua pugen fins al dipòsit, que s'il·lumina); `nau` → `nau_apaga` (tos dels motors,
+fum, la cabina i la rampa que s'apaguen); `germanes` → `germanes_surten` (l'Iri i la Vet baixen la rampa i se'n
+van pel corriol fins que la pols se les empassa; en Diu s'asseu al peu de la rampa). ANIMS: com la portada (la
+pols i els llums).
 
 ### `proleg_palau` (P)
 El despatx del Magnat al palau orbital. Paret de vidre amb l'espai i Terra-2 de fons; un focus i una càmera
