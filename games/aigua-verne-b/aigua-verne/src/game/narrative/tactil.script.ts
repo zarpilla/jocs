@@ -8,7 +8,7 @@ import { pointer } from '@benne/script';
 import type { FallbackTarget } from '@benne/script';
 import { fromBenne, narrative, targetFromBenne } from './narrative';
 import { performInteraction } from './narrative.script';
-import { accions, verbAmbObjecte, verbDelToc } from './accions';
+import { accions, marcaMirat, queFaElToc, verbAmbObjecte } from './accions';
 import { MENU, label, openMenu, setMenu, type Opcio } from './tactil';
 
 /** Fa el que vol dir un clic de la interfície tàctil (vegeu tactil.ts). */
@@ -27,8 +27,18 @@ export function routeTouch(verb: string, target: FallbackTarget, item?: string) 
     openActions(target);
     return;
   }
-  const principal = verbDelToc(narrative, targetFromBenne(target.kind, target.id));
-  performInteraction(principal, target);
+  const toc = queFaElToc(narrative, targetFromBenne(target.kind, target.id));
+  if (toc.fa === 'menu') {
+    openActions(target);
+    return;
+  }
+  doVerb(toc.fa === 'mira' ? 'look' : toc.verb, target);
+}
+
+/** Fa un verb sobre una cosa (si és mirar, apunta que ja s'ha mirat). */
+function doVerb(verb: string, target: FallbackTarget) {
+  if (verb === 'look') marcaMirat(narrative, targetFromBenne(target.kind, target.id));
+  performInteraction(verb, target);
 }
 
 /** Obre el menú d'accions d'una cosa: «Mira», «Usa-ho amb...» (si és de l'inventari) i les seves accions d'ara. */
@@ -52,7 +62,7 @@ export function chooseOption(i: number) {
     pointer.item = { id: m.target.id };
     return;
   }
-  performInteraction(opcio.verb, m.target);
+  doVerb(opcio.verb, m.target);
 }
 
 export function closeMenu() {

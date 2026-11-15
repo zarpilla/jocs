@@ -3,7 +3,8 @@
  * Aigua Verne B: la interfície sense barra de verbs, part instantània (l'estat del menú d'accions, on s'ha premut,
  * l'encaminador). Les funcions amb temps (fer la interacció, obrir i triar al menú) són a `tactil.script.ts`.
  *
- *  - Tocar (clic) una cosa: fa la seva acció principal (`verbDelToc`, runtime/accions.ts). Si no en té cap, la mira.
+ *  - Tocar (clic) una cosa (`queFaElToc`, runtime/accions.ts): la primera vegada, la mira; després, si té una sola
+ *    acció la fa, i si en té més d'una obre el menú d'accions (el jugador tria el verb). Les sortides, s'hi va.
  *  - Mantenir premut (o clic dret): el menú d'accions, amb «Mira» i les accions que té la cosa ara mateix.
  *  - Tocar un objecte de l'inventari: el pren a la mà (ho fa el motor: `toca` és un verb d'objecte). Llavors
  *    tocar una cosa el fa servir amb ella, o li dona si és un personatge. Tocar el mateix objecte o el terra, el deixa.

@@ -42,15 +42,41 @@ export function accions(narrative: Narrative, target: InteractionTarget, room?: 
   return out.map(({ def: _def, ...a }) => a);
 }
 
+/** El flag que recorda que ja s'ha mirat una cosa (un personatge, a qualsevol sala; una cosa, a la seva sala). */
+export function flagMirat(narrative: Narrative, target: InteractionTarget, room?: string): string {
+  const on = target.kind === 'character' ? 'personatge' : (room ?? narrative.world.currentRoom() ?? '');
+  return `mirat.${on}.${target.id}`;
+}
+
+export const isMirat = (narrative: Narrative, target: InteractionTarget, room?: string) =>
+  narrative.flag(flagMirat(narrative, target, room));
+
+/** Apunta que s'ha mirat una cosa (va a l'estat del nucli: es desa amb la partida). */
+export function marcaMirat(narrative: Narrative, target: InteractionTarget, room?: string) {
+  const flag = flagMirat(narrative, target, room);
+  if (!narrative.flag(flag)) narrative.apply({ setFlag: flag });
+}
+
+/** Què fa un toc: mirar, fer una acció, o obrir el menú perquè triï el jugador. */
+export type Toc = { fa: 'mira' } | { fa: 'accio'; verb: string } | { fa: 'menu' };
+
 /**
- * El verb d'un toc: l'acció que canvia alguna cosa abans que la que només diu línies (si una cosa es pot
- * empènyer per fer-hi una broma i fer servir per obrir-la, el toc l'obre), i entre iguals, l'ordre de
- * `VERBS_ACCIO` (anar-hi, parlar, agafar, obrir...). Si no n'hi ha cap, mirar.
+ * Què fa tocar una cosa:
+ *  1. Si encara no s'ha mirat mai (i té alguna cosa a dir), la mira: la descripció, amb l'humor i les pistes,
+ *     surt sense cap gest de més. Les sortides (que només es poden travessar) no: anar-hi no ha de costar dos tocs.
+ *  2. Si té una sola acció, la fa.
+ *  3. Si en té més d'una (encara que alguna sigui una broma), obre el menú: el joc no tria per tu quin verb
+ *     resol el trencaclosques (empènyer o estirar).
+ *  Sense cap acció, la mira.
  */
-export function verbDelToc(narrative: Narrative, target: InteractionTarget, room?: string): string {
+export function queFaElToc(narrative: Narrative, target: InteractionTarget, room?: string): Toc {
   const totes = accions(narrative, target, room);
-  const util = totes.find((a) => !a.inert);
-  return (util ?? totes[0])?.verb ?? 'look';
+  const sortida = totes.length === 1 && totes[0].verbs.includes('walkTo');
+  const teMira = narrative.peek({ verb: 'look', target, room }) !== undefined;
+  if (teMira && !sortida && !isMirat(narrative, target, room)) return { fa: 'mira' };
+  if (totes.length === 0) return { fa: 'mira' };
+  if (totes.length === 1) return { fa: 'accio', verb: totes[0].verb };
+  return { fa: 'menu' };
 }
 
 /**

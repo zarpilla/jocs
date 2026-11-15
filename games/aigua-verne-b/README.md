@@ -9,7 +9,7 @@ La versió original no es toca: aquesta és una còpia (del commit «pròleg ani
 
 | Gest | Què fa |
 |---|---|
-| Tocar (clic) una cosa | La seva acció principal: obrir, agafar, parlar, anar-hi... Si no en té cap, mirar-la |
+| Tocar (clic) una cosa | La primera vegada, mirar-la (la descripció, amb la pista). Després: si té una sola acció, la fa (obrir, agafar, parlar...); si en té més d'una, encara que alguna sigui una broma, obre el menú i tries tu. Les sortides no es miren: s'hi va |
 | Mantenir premut (o clic dret) | El menú d'accions: «Mira» i les accions que té ara mateix (2–3 opcions) |
 | Tocar el terra | Caminar |
 | Bossa (a baix a la dreta) | Desplega la safata de l'inventari |
@@ -55,14 +55,24 @@ iguals mana l'ordre anar-hi, parlar, agafar, obrir, tancar, empènyer, estirar, 
 
 ## Resultat de la prova
 
-`game/test/tactil.test.ts` juga la partida sencera (els dos camins de `cami.ts`) mirant què hauria fet un toc a cada pas
-(`TACTIL=1 npm test` en fa la llista):
+`game/test/tactil.test.ts` juga la partida sencera (els dos camins de `cami.ts`) amb el mesurador de
+`game/test/tactil.ts`, que mira què hauria fet el jugador a cada pas (`TACTIL=1 npm test` en fa la llista). El
+mesurador només fa servir el nucli: s'ha passat també pels altres jocs.
 
-- **157 de 163** passos (camí del barril) i **164 de 171** (camí del condensador) es fan amb **un sol toc**. Cap pas
-  necessita triar al menú una acció diferent de la del toc.
-- Els que queden (6–7) són un **«mira» obligatori** sobre una cosa que també té una acció: el bol, el motor, la grua, la
-  tomaquera, la paperera, la carmanyola i, a un camí, el condensador. Sense barra, només s'hi arriba mantenint premut.
-  És el que caldria revisar al contingut (que l'acció també doni la pista, o que la pista digui «mira-ho bé»).
+Regla del toc: la primera vegada mira; després, una sola acció la fa i més d'una obre el menú (`queFaElToc`,
+[runtime/accions.ts](adapters/benne/runtime/accions.ts)). Així el joc no tria per tu el verb que resol un trencaclosques
+(empènyer o estirar), i les descripcions es llegeixen sense gestos de més.
+
+| Joc | Passos | Un toc | Toc + menú | Mantenir premut | Toc de més (mira primer) | Gestos per pas |
+|---|---|---|---|---|---|---|
+| Aigua Verne (barril) | 163 | 163 | 0 | 0 | 27 | 1,17 |
+| Suma Zero | 66 | 61 | 5 | 0 | 20 | 1,38 |
+| Ni un ou | 106 | 102 | 3 | 1 | 12 | 1,15 |
+| Ferro-9 | 149 | 136 | 13 | 0 | 15 | 1,19 |
+
+A Aigua Verne cap cosa del camí té dues accions diferents: el contingut ja agrupa els verbs en una sola interacció
+(`["walkTo", "use", "open"]`). Al Ferro-9, el menú surt just on el verb és el trencaclosques (el panell, la molla, la
+llançadora, el conducte, la reixa).
 
 ## Ordres
 
