@@ -108,6 +108,10 @@
     {
       "id": "proleg_terra2",
       "definition": "proleg_terra2/proleg_terra2.room.json"
+    },
+    {
+      "id": "cantimplora_mapa",
+      "definition": "cantimplora_mapa/cantimplora_mapa.room.json"
     }
   ]
 }

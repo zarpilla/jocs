@@ -70,7 +70,7 @@
             "push",
             "pull"
           ],
-          "dialogue": "mapa"
+          "goTo": "cantimplora_mapa"
         }
       ]
     },
@@ -296,6 +296,32 @@
         }
       ],
       "dialogue": "trucada"
+    },
+    {
+      "id": "palau_tancat",
+      "verb": "*",
+      "if": {
+        "flag": "palau_tancat"
+      },
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.mapa.palau.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.mapa.palau.2",
+          "if": {
+            "flag": "nil_ajuda"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "palau_tancat",
+          "value": false
+        }
+      ]
     }
   ],
   "decor": {

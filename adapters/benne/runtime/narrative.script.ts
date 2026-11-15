@@ -349,6 +349,12 @@ export function enterNarrativeRoom() {
     playResult(result)
     return
   }
+  // Cinemàtica que obre un diàleg (p. ex. la carta de navegació d'Aigua Verne): sense protagonista ni barra de
+  // verbs, però amb les opcions del diàleg. On anar després ho diu el diàleg (`anar`).
+  if (result.dialogue) {
+    playResult(result)
+    return
+  }
   // Cinemàtica: Benne ja embolica aquest moment en una cutscene, i amb Esc la resta s'acaba de cop.
   // Si l'han saltada, anem directament al final (`skipTo`) en lloc de passar per les altres pantalles.
   const final = takePendingEnding()

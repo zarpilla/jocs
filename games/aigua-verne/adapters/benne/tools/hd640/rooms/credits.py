@@ -47,10 +47,12 @@ PLANETS = (
 )
 
 
-def space(cv, tw=None):
+def space(cv, tw=None, star=None, planets=None):
+    star = star or STAR
+    planets = planets or PLANETS
     for y in range(H):
         for x in range(W):
-            d = math.hypot(x - STAR[0], y - STAR[1])
+            d = math.hypot(x - star[0], y - star[1])
             lvl = 0.6 + 3.4 * max(0.0, 1 - d / 420) ** 2.4
             neb = fbm(x / 110, y / 70, 91)
             lvl += smooth(0.5, 0.8, neb) * 1.6 * (0.4 + 0.6 * max(0.0, 1 - d / 600))
@@ -65,28 +67,29 @@ def space(cv, tw=None):
                     for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
                         cv.flat(x + dx, y + dy, mix(cv.get(x + dx, y + dy), (130, 130, 170), 0.5))
     # Vesper: la claror de l'estrella que treu el cap pel cantó
-    cv.glow(STAR[0] + 40, STAR[1] - 40, 190, (255, 150, 70), 0.4)
-    cv.glow(STAR[0] + 30, STAR[1] - 30, 120, (255, 210, 140), 0.5)
+    cv.glow(star[0] + 40, star[1] - 40, 190, (255, 150, 70), 0.4)
+    cv.glow(star[0] + 30, star[1] - 30, 120, (255, 210, 140), 0.5)
     sr = 96
-    for y in range(STAR[1] - sr, H):
-        for x in range(0, STAR[0] + sr + 1):
-            d = math.hypot(x - STAR[0], y - STAR[1])
+    for y in range(star[1] - sr, H):
+        for x in range(0, star[0] + sr + 1):
+            d = math.hypot(x - star[0], y - star[1])
             if d <= sr:
                 cv.put(x, y, [(200, 80, 20), (240, 130, 40), (255, 180, 80), (255, 220, 150), (255, 246, 220)],
                        4.2 - (d / sr) ** 3 * 3.0 + (fbm(x / 8, y / 8, 95) - 0.5) * 0.8, lit=0)
     # les òrbites: punts molt febles
-    for _, (px, py), _, _, _ in PLANETS:
-        R = math.hypot(px - STAR[0], py - STAR[1])
+    for _, (px, py), _, _, _ in planets:
+        R = math.hypot(px - star[0], py - star[1])
         for a in range(0, 900):
             ang = a / 900 * math.pi / 2 * 1.02 - 0.01
-            x, y = STAR[0] + math.cos(ang) * R, STAR[1] - math.sin(ang) * R
+            x, y = star[0] + math.cos(ang) * R, star[1] - math.sin(ang) * R
             if 0 <= x < W and 0 <= y < H and int(ang * R) % 7 == 0:
                 cv.flat(x, y, mix(cv.get(x, y), (90, 70, 110), 0.5))
 
 
-def planet(cv, name, c, r, ramp, rain, drops=None):
+def planet(cv, name, c, r, ramp, rain, drops=None, star=None):
+    star = star or STAR
     cx, cy = c
-    lx, ly = STAR[0] - cx, STAR[1] - cy
+    lx, ly = star[0] - cx, star[1] - cy
     ln = math.hypot(lx, ly)
     lx, ly = lx / ln * 0.98, ly / ln * 0.98
     lz = 0.2
