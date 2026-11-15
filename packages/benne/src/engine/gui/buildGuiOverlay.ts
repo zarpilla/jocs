@@ -8,7 +8,7 @@ import gameFontsManifest from '../content/gameFontsManifest';
 import { getInternalHeight, getInternalWidth } from '../content/constants';
 import { isBenneGameCursorAsepriteEnabled } from '../content/cursorAseprite';
 import { guiPhaserAnimationKey } from '../content/asepritePhaserAnimationKeys';
-import { getGameSettings } from '../ConfigManager';
+import { getGameSettings, getGuiDesignHeight } from '../ConfigManager';
 import { getAsepriteTextureKey, usesAsepriteDisplay } from '../content/guiAseprite';
 import {
   getPerItemInventoryTextureKey,
@@ -30,6 +30,7 @@ import type {
   GuiCheckboxControl,
   GuiSliderControl,
   GuiControl,
+  GuiAnchorY,
   GuiData,
   GuiGridControl,
   GuiGridPlacement,
@@ -117,7 +118,8 @@ import {
   shouldDropActiveInventoryOnUse,
 } from '../verbs/dispatchInventoryVerb';
 import { getEffectiveInputProfile } from '../verbs/verbConfig';
-import { resolvePointerVerbForInventoryItem } from '../verbs/resolvePointerVerb';
+import { resolvePointerVerbForInventoryItem, type PointerSlot } from '../verbs/resolvePointerVerb';
+import { deferPressForHold } from '../verbs/holdGesture';
 import { inventoryItemLabel } from '../verbs/targetLabel';
 import {
   getAsepriteSpriteSourceInset,
@@ -1843,8 +1845,8 @@ function fillInventoryPanelContent(
         }
         slotContainer.setData('benneInventorySlot', true);
         slotContainer.setData('benneInventoryItemId', itemId);
-        slotContainer.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-          if (invPointerCtx.tryConsumeDialogClickToSkip(pointer)) {
+        const onSlotPress = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
+          if (slot === undefined && invPointerCtx.tryConsumeDialogClickToSkip(pointer)) {
             return;
           }
           if (invPointerCtx.isInputSuppressed()) {
@@ -1855,6 +1857,17 @@ function fillInventoryPanelContent(
           }
           const profile = getEffectiveInputProfile(getGameSettings());
           const manager = resolveGameStateManager(scene.game);
+          if (
+            slot === undefined &&
+            deferPressForHold(
+              pointer,
+              profile,
+              manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
+              (pressSlot) => onSlotPress(pointer, pressSlot),
+            )
+          ) {
+            return;
+          }
           const invDef = getInventoryDefinition(itemId) as InventoryItemData | undefined;
           const resolution = resolvePointerVerbForInventoryItem(
             pointer,
@@ -1862,6 +1875,7 @@ function fillInventoryPanelContent(
             { defaultVerb: invDef?.defaultVerb },
             manager.getActiveVerb(),
             manager.getActiveInventoryItemId(),
+            slot,
           );
           if (resolution.kind === 'none') {
             return;
@@ -1917,7 +1931,8 @@ function fillInventoryPanelContent(
               manager.clearActiveVerb();
             });
           }
-        });
+        };
+        slotContainer.on('pointerdown', (pointer: Phaser.Input.Pointer) => onSlotPress(pointer));
       }
 
       panel.add(slotContainer);
@@ -2027,11 +2042,48 @@ function wireDisplayTextOverlayLayout(
   };
 }
 
+/**
+ * Adaptive height (`resolution.minHeight`): moves each control of `gui` for the game's actual height, by its
+ * `anchorY` (or the GUI's). Grid-placed controls follow their grid. Returns `gui` itself when nothing moves.
+ */
+export function anchorGuiForHeight(gui: GuiData, height: number, designHeight: number): GuiData {
+  const extra = height - designHeight;
+  if (extra === 0) {
+    return gui;
+  }
+  const guiAnchor = gui.anchorY;
+  const controls = (gui.controls ?? []).map((control) => {
+    const c = control as typeof control & {
+      anchorY?: GuiAnchorY;
+      y?: number;
+      height?: number;
+      backgroundAnchor?: string;
+      backgroundOffsetY?: number;
+      gridPlacement?: unknown;
+    };
+    const anchor = c.anchorY ?? guiAnchor;
+    if (!anchor || anchor === 'top' || c.gridPlacement) {
+      return control;
+    }
+    if (anchor === 'stretch') {
+      return typeof c.height === 'number' ? { ...c, height: c.height + extra } : control;
+    }
+    const dy = Math.round(anchor === 'bottom' ? extra : extra / 2);
+    const moved = { ...c, y: (c.y ?? 0) + dy };
+    if (c.backgroundAnchor === 'screen') {
+      moved.backgroundOffsetY = (c.backgroundOffsetY ?? 0) + dy;
+    }
+    return moved;
+  });
+  return { ...gui, controls } as GuiData;
+}
+
 export function buildGuiOverlay(
   scene: Phaser.Scene,
-  gui: GuiData,
+  authoredGui: GuiData,
   options?: BuildGuiOverlayOptions,
 ): BuiltGuiOverlay | null {
+  const gui = anchorGuiForHeight(authoredGui, getGameSettings().resolution.height, getGuiDesignHeight());
   const depth = options?.depth ?? GUI_TEXT_OVERLAY_DEPTH;
   const startVisible = options?.startVisible ?? false;
   const placeholder = options?.emptyTextPlaceholder;

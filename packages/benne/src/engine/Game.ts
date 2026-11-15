@@ -11,6 +11,7 @@ import { BENNE_GAME_STATE_REGISTRY_KEY } from './gameState/registryKey.js';
 import { setActiveGameStateManager } from './gameState/resolveGameStateManager.js';
 import { wireBenneRuntimeHiDpiCanvasScale } from './benneRuntimeHiDpiScale.js';
 import { getBennePhaserGameConfigBase } from './gameConfig.js';
+import { applyAdaptiveResolution } from './ConfigManager.js';
 import {
   BENNE_SOUND_MANAGER_KEY,
   setBenneSoundManager,
@@ -40,6 +41,9 @@ function createGameConfig(parent: HTMLElement | string): Phaser.Types.Core.GameC
  * Registers {@link GameStateManager} on `game.registry` for cross-room state.
  */
 export function createBenneGame(parent: HTMLElement | string): Phaser.Game {
+  if (typeof window !== 'undefined') {
+    applyAdaptiveResolution(window.innerWidth, window.innerHeight);
+  }
   const game = new Phaser.Game(createGameConfig(parent));
   wireBenneRuntimeHiDpiCanvasScale(game);
   const gameState = new GameStateManager(gameEvents, buildBootGameStateSlice());

@@ -1,0 +1,125 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "verne_galeria",
+  "with": "verne",
+  "start": "menu",
+  "nodes": {
+    "menu": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.verne_galeria.menu.1",
+          "if": {
+            "not": {
+              "seen": {
+                "dialogue": "verne_galeria",
+                "node": "piscines"
+              }
+            }
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "piscines",
+          "text": "dlg.verne_galeria.opt.piscines",
+          "once": true,
+          "next": "piscines"
+        },
+        {
+          "id": "aigua",
+          "text": "dlg.verne_galeria.opt.aigua",
+          "once": true,
+          "next": "aigua"
+        },
+        {
+          "id": "reserva",
+          "text": "dlg.verne_galeria.opt.reserva",
+          "if": {
+            "flag": "lia_reserva",
+            "is": false
+          },
+          "next": "reserva"
+        },
+        {
+          "id": "gos",
+          "text": "dlg.verne_galeria.opt.gos",
+          "once": true,
+          "next": "gos"
+        },
+        {
+          "id": "subhasta",
+          "text": "dlg.verne_galeria.opt.subhasta",
+          "next": "subhasta"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.verne_galeria.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "piscines": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.verne_galeria.piscines.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "aigua": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.verne_galeria.aigua.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "reserva": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.verne_galeria.reserva.1"
+        },
+        {
+          "who": "verne",
+          "text": "dlg.verne_galeria.reserva.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.verne_galeria.reserva.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "lia_reserva"
+        }
+      ],
+      "goto": "menu"
+    },
+    "gos": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.verne_galeria.gos.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.verne_galeria.gos.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "subhasta": {
+      "lines": [
+        {
+          "who": "verne",
+          "text": "dlg.verne_galeria.subhasta.1"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

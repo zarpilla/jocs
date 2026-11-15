@@ -245,6 +245,12 @@ export interface RoomData {
    * The character can walk beyond scroll bounds but the camera stops panning before reaching the room edge.
    */
   scrollBounds?: { x: number; y: number; width: number; height: number };
+  /**
+   * Adaptive height (`resolution.minHeight`): when the scroll bounds are taller than the screen, the camera
+   * doesn't follow the player up and down but stays here: 0 = top of the bounds, 1 = bottom, 0.5 = middle.
+   * For a room painted for the tallest screen whose playable part fits the shortest.
+   */
+  viewAnchorY?: number;
   walkable: {
     polygons: WalkablePolygon[];
   };

@@ -1,0 +1,34 @@
+{
+  "id": "radio_juana",
+  "displayName": "radio_juana",
+  "options": [
+    {
+      "id": "menu__feina",
+      "scriptName": "menu__feina",
+      "text": "Necessitem una càrrega per portar-te. Qualsevol cosa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__albara",
+      "scriptName": "menu__albara",
+      "text": "Ja tenim les llavors a bord. Tres sacs del banc del pare.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__llavors",
+      "scriptName": "menu__llavors",
+      "text": "Quines llavors volies?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Fins ara.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "teclat",
+  "with": "iri",
+  "start": "inici",
+  "nodes": {
+    "inici": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.inici.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.teclat.inici.2",
+          "if": {
+            "all": [
+              {
+                "flag": "pare_porta"
+              },
+              {
+                "flag": "bol_vist",
+                "is": false
+              }
+            ]
+          }
+        }
+      ],
+      "choices": [
+        {
+          "id": "maria",
+          "text": "dlg.teclat.opt.maria",
+          "once": true,
+          "next": "maria"
+        },
+        {
+          "id": "verne",
+          "text": "dlg.teclat.opt.verne",
+          "if": {
+            "flag": "bomba_llegida"
+          },
+          "once": true,
+          "next": "verne"
+        },
+        {
+          "id": "titus",
+          "text": "dlg.teclat.opt.titus",
+          "if": {
+            "flag": "bol_vist"
+          },
+          "next": "titus"
+        },
+        {
+          "id": "deixa",
+          "text": "dlg.teclat.opt.deixa",
+          "end": true
+        }
+      ]
+    },
+    "maria": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.teclat.maria.1",
+          "sound": "teclat"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.maria.2"
+        }
+      ],
+      "goto": "inici"
+    },
+    "verne": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.teclat.verne.1",
+          "sound": "teclat"
+        }
+      ],
+      "goto": "inici"
+    },
+    "titus": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.teclat.titus.1",
+          "sound": "caixa_forta"
+        },
+        {
+          "who": "player",
+          "text": "dlg.teclat.titus.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.teclat.titus.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.teclat.titus.4"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.teclat.titus.5"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.teclat.titus.6"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "caixa_oberta"
+        },
+        {
+          "giveItem": "escriptura"
+        },
+        {
+          "giveItem": "contracte_7788"
+        }
+      ]
+    }
+  }
+}

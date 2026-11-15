@@ -34,7 +34,15 @@ export interface GameSettingsInitialGameState {
 /** Loaded from `src/game/game-config.json` (authoritative game bootstrap settings). */
 export interface GameSettingsResolution {
   width: number;
+  /** Height; with {@link minHeight}, the tallest the game gets (on a 16:9 screen, for 640 wide: 360). */
   height: number;
+  /**
+   * Optional adaptive height: when set, the game picks its height at boot from the screen's (landscape)
+   * aspect, between this and {@link height}, so a phone (20:9) and a monitor (16:9) are both filled.
+   * GUIs are authored at this height and moved with `anchorY`; rooms painted taller than it place
+   * their camera with `viewAnchorY`.
+   */
+  minHeight?: number;
 }
 
 export interface GameSettingsAudio {
@@ -174,6 +182,15 @@ export interface VerbInputProfile {
   primaryButtonVerb: string;
   /** Verb id / `"walkTo"` / `"defaultVerb"` for the secondary (typically right) mouse button. */
   secondaryButtonVerb: string;
+  /**
+   * Optional **press-and-hold** slot (touch screens have no second button). When set, a primary press
+   * on a clickable target is not dispatched on pointer-down: releasing it within {@link holdMs} runs
+   * {@link primaryButtonVerb} (on pointer-up), and keeping it pressed runs this verb instead. Same
+   * values as the other slots. Not applied while an inventory item or a verb is armed.
+   */
+  holdVerb?: string;
+  /** How long a press must last to count as a hold, in milliseconds (default 450). */
+  holdMs?: number;
 }
 
 /**

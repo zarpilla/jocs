@@ -164,6 +164,10 @@ pista) i `playEnding()`.
 L'**historial** (botó del menú o tecla H) és de cada joc: el `runtime/historial.ts` del joc apunta
 cada línia que es diu (`recordLine`) i la GUI `historial` (que crea el seu `joc.ts`) l'ensenya.
 
+Una interfície pròpia d'un joc (la tàctil d'Aigua Verne B) es pot quedar alguns clics abans que vagin al JSON:
+`setTouchRouter({ takes, route })` (a `runtime/narrative.ts`, i es crida des del `globalScript.ts` del joc). `route`
+fa la interacció del JSON amb `performInteraction`. Sense encaminador, tot va com sempre.
+
 Els esdeveniments del nucli arriben com a esdeveniments de Benne `narrative:<tipus>` (per exemple,
 `events.on('narrative:questStarted', …)`).
 

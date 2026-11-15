@@ -331,6 +331,14 @@ function assertVerbSettings(data: GameSettings): void {
         `game-config inputProfile.secondaryButtonVerb "${ip.secondaryButtonVerb}" must be listed in verbs, or one of "${WALK_TO_VERB_ID}" / "${DEFAULT_VERB_TOKEN}"`,
       );
     }
+    if (ip.holdVerb !== undefined && (typeof ip.holdVerb !== 'string' || !isValidSlotValue(ip.holdVerb))) {
+      throw new Error(
+        `game-config inputProfile.holdVerb "${String(ip.holdVerb)}" must be listed in verbs, or one of "${WALK_TO_VERB_ID}" / "${DEFAULT_VERB_TOKEN}"`,
+      );
+    }
+    if (ip.holdMs !== undefined && (typeof ip.holdMs !== 'number' || !(ip.holdMs > 0))) {
+      throw new Error('game-config inputProfile.holdMs must be a positive number when present');
+    }
   }
 
   if (data.defaultFallbackLine !== undefined && typeof data.defaultFallbackLine !== 'string') {
@@ -459,9 +467,12 @@ function assertInitialGameState(data: GameSettings): void {
 }
 
 function assertGameSettings(data: GameSettings): void {
-  const { width, height } = data.resolution;
+  const { width, height, minHeight } = data.resolution;
   if (!Number.isFinite(width) || width < 1 || !Number.isFinite(height) || height < 1) {
     throw new Error(`Invalid game-config resolution: ${width} x ${height}`);
+  }
+  if (minHeight !== undefined && (!Number.isFinite(minHeight) || minHeight < 1 || minHeight > height)) {
+    throw new Error(`Invalid game-config resolution.minHeight: ${minHeight} (expected 1–${height})`);
   }
   const { masterVolume, sfxVolume, musicVolume, dialogueVolume } = data.audio;
   for (const [key, v] of Object.entries({
@@ -571,6 +582,30 @@ function assertCursorSettings(data: GameSettings): void {
 
 const settings = rawSettings as GameSettings;
 assertGameSettings(settings);
+
+/** The height GUIs are authored at: `resolution.minHeight` when adaptive, else `resolution.height`. */
+const designHeight = settings.resolution.minHeight ?? settings.resolution.height;
+export function getGuiDesignHeight(): number {
+  return designHeight;
+}
+
+/**
+ * Adaptive height (`resolution.minHeight`): picks the game's height for a `viewW`×`viewH` screen, taken as
+ * landscape (a phone held upright still gets the height it will have once turned), between `minHeight` and
+ * `height`. Call once, before the Phaser game is created; everything else reads the result from
+ * `resolution.height`.
+ */
+export function applyAdaptiveResolution(viewW: number, viewH: number): void {
+  const r = settings.resolution;
+  if (r.minHeight === undefined || viewW <= 0 || viewH <= 0) {
+    return;
+  }
+  const max = (settings as { __maxHeight?: number }).__maxHeight ?? r.height;
+  (settings as { __maxHeight?: number }).__maxHeight = max;
+  const long = Math.max(viewW, viewH);
+  const short = Math.min(viewW, viewH);
+  r.height = Math.min(max, Math.max(r.minHeight, Math.round((r.width * short) / long)));
+}
 
 /**
  * Synchronous access to `src/game/game-config.json` (bundled by Vite at build time).

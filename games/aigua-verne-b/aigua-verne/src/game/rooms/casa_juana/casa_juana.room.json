@@ -1,0 +1,278 @@
+{
+  "id": "casa_juana",
+  "name": "Casa de la Juana",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 10,
+            "y": 230
+          },
+          {
+            "x": 600,
+            "y": 230
+          },
+          {
+            "x": 636,
+            "y": 257
+          },
+          {
+            "x": 2,
+            "y": 257
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sortida",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 14,
+          "y": 94
+        },
+        {
+          "x": 110,
+          "y": 94
+        },
+        {
+          "x": 110,
+          "y": 228
+        },
+        {
+          "x": 14,
+          "y": 228
+        }
+      ],
+      "walkToPoint": {
+        "x": 76,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 62,
+        "y": 228
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "mapes",
+      "active": true,
+      "description": "mapes",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 360,
+          "y": 36
+        },
+        {
+          "x": 484,
+          "y": 36
+        },
+        {
+          "x": 484,
+          "y": 148
+        },
+        {
+          "x": 360,
+          "y": 148
+        }
+      ],
+      "walkToPoint": {
+        "x": 418,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 422,
+        "y": 148
+      }
+    },
+    {
+      "id": "llibres",
+      "active": true,
+      "description": "llibres",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 120,
+          "y": 26
+        },
+        {
+          "x": 234,
+          "y": 26
+        },
+        {
+          "x": 234,
+          "y": 226
+        },
+        {
+          "x": 120,
+          "y": 226
+        }
+      ],
+      "walkToPoint": {
+        "x": 180,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 177,
+        "y": 226
+      }
+    },
+    {
+      "id": "aquari",
+      "active": true,
+      "description": "aquari",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 498,
+          "y": 118
+        },
+        {
+          "x": 604,
+          "y": 118
+        },
+        {
+          "x": 604,
+          "y": 226
+        },
+        {
+          "x": 498,
+          "y": 226
+        }
+      ],
+      "walkToPoint": {
+        "x": 550,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 551,
+        "y": 226
+      }
+    },
+    {
+      "id": "finestra",
+      "active": true,
+      "description": "finestra",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 276,
+          "y": 84
+        },
+        {
+          "x": 318,
+          "y": 84
+        },
+        {
+          "x": 318,
+          "y": 124
+        },
+        {
+          "x": 276,
+          "y": 124
+        }
+      ],
+      "walkToPoint": {
+        "x": 296,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 297,
+        "y": 124
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "flama",
+      "tag": "flama",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "flama": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 214,
+      "y": 246,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 276,
+      "y": 252,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "juana-1",
+      "definition": "juana/juana.character.json",
+      "x": 466,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

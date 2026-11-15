@@ -159,7 +159,8 @@ import {
   getPropVerbHandlers,
 } from '../verbs/normalizeHandlers';
 import { getEffectiveInputProfile } from '../verbs/verbConfig';
-import { resolvePointerVerbForTarget, type PointerVerbTarget } from '../verbs/resolvePointerVerb';
+import { resolvePointerVerbForTarget, type PointerSlot, type PointerVerbTarget } from '../verbs/resolvePointerVerb';
+import { deferPressForHold } from '../verbs/holdGesture';
 import { resolveGameStateManager } from '../gameState/resolveGameStateManager';
 import { BENNE_USER_INPUT_DISABLED_REGISTRY_KEY } from '../input/userInputDisabledRegistry';
 import { incrementRoomVisitCount } from '../gameState/roomVisitState';
@@ -4696,6 +4697,30 @@ export class RoomScene extends Phaser.Scene {
       sb?.width ?? roomW,
       sb?.height ?? roomH,
     );
+    this.applyViewAnchorY(roomH);
+  }
+
+  /**
+   * `viewAnchorY`: the camera's fixed height in a room taller than the screen. Returns whether it applies.
+   * Kept every frame (`update`): the hi-DPI layout resets the scroll when the viewport changes.
+   */
+  private applyViewAnchorY(roomH: number): boolean {
+    const anchor = this.roomData?.viewAnchorY;
+    if (anchor === undefined) {
+      return false;
+    }
+    if (this.scriptCameraFocusActive) {
+      return true;
+    }
+    const cam = this.cameras.main;
+    const sb = this.roomData.scrollBounds;
+    const top = (sb?.y ?? 0) + Math.max(0, (sb?.height ?? roomH) - getInternalHeight()) * Math.min(1, Math.max(0, anchor));
+    // With zoom, Phaser's scroll isn't the top of what is seen (`worldView.y`): it is offset by the origin.
+    const scrollY = Math.round(top) - (cam.height - cam.displayHeight) * cam.originY;
+    if (cam.scrollY !== scrollY) {
+      cam.scrollY = scrollY;
+    }
+    return true;
   }
 
   /** Starts follow on the player’s feet (see `CharacterData.feet`). */
@@ -4705,14 +4730,20 @@ export class RoomScene extends Phaser.Scene {
     }
     const vW = getInternalWidth();
     const vH = getInternalHeight();
-    if (!this.player || (roomW <= vW && roomH <= vH)) {
+    const fixedY = this.roomData.viewAnchorY !== undefined;
+    if (!this.player || (roomW <= vW && (roomH <= vH || fixedY))) {
+      this.applyViewAnchorY(roomH);
       return;
     }
     const feet = getFeetFollowOffset(this.player);
-    this.cameras.main.startFollow(this.player, true, 1, 1, feet.x, feet.y);
+    this.cameras.main.startFollow(this.player, true, 1, fixedY ? 0 : 1, feet.x, feet.y);
+    this.applyViewAnchorY(roomH);
   }
 
   update(): void {
+    if (this.roomData?.viewAnchorY !== undefined) {
+      this.applyViewAnchorY(this.roomData.size?.height ?? getInternalHeight());
+    }
     this.snapWalkingSpritesToPixelGrid();
     this.updateCharacterFaceTowardCharacterLocks();
     this.updateCharacterFollowers();
@@ -5812,8 +5843,8 @@ export class RoomScene extends Phaser.Scene {
       useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
     });
 
-    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-      if (this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
+    const onPress = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
+      if (slot === undefined && this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
         return;
       }
       if (this.isPlayerPointerBlocked()) {
@@ -5821,12 +5852,24 @@ export class RoomScene extends Phaser.Scene {
       }
       const profile = getEffectiveInputProfile(getGameSettings());
       const manager = resolveGameStateManager(this.game);
+      if (
+        slot === undefined &&
+        deferPressForHold(
+          pointer,
+          profile,
+          manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
+          (pressSlot) => onPress(pointer, pressSlot),
+        )
+      ) {
+        return;
+      }
       const resolution = resolvePointerVerbForTarget(
         pointer,
         profile,
         { defaultVerb: spawn.data.defaultVerb },
         manager.getActiveVerb(),
         manager.getActiveInventoryItemId(),
+        { slot },
       );
       if (resolution.kind === 'none') {
         return;
@@ -5871,8 +5914,63 @@ export class RoomScene extends Phaser.Scene {
       if (resolution.consumeActive) {
         manager.clearActiveVerb();
       }
-    });
+    };
+    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => onPress(pointer));
     sprite.setData('bennePropInteractionAttached', true);
+  }
+
+  /** Markers drawn by {@link showClickableMarkers}, removed when they fade or the room changes. */
+  private clickableMarkers: Phaser.GameObjects.Graphics | null = null;
+
+  /**
+   * Shows, for a moment, a marker on every thing that can be clicked right now: the visible clickable
+   * props, the active hotspots and the clickable characters other than the player. Touch screens have
+   * no hover, so this is how the player finds what is clickable. Calling it again restarts it.
+   */
+  showClickableMarkers(durationMs = 1600): void {
+    this.clickableMarkers?.destroy();
+    this.clickableMarkers = null;
+    const centers: { x: number; y: number }[] = [];
+    for (const e of this.roomStackEntities) {
+      if (e.kind === 'hotspot') {
+        const area = e.zone.input?.hitArea as Phaser.Geom.Polygon | undefined;
+        if (!e.zone.input?.enabled || !area?.points?.length) continue;
+        const b = Phaser.Geom.Polygon.GetAABB(area);
+        // The middle of the box may fall outside an L-shaped polygon: then the polygon's first point.
+        const mid = { x: b.centerX, y: b.centerY };
+        centers.push(Phaser.Geom.Polygon.Contains(area, mid.x, mid.y) ? mid : { x: area.points[0]!.x, y: area.points[0]!.y });
+        continue;
+      }
+      const sprite = e.sprite as Phaser.GameObjects.Sprite;
+      if (!sprite.input?.enabled || !sprite.visible || sprite.alpha <= 0.05) continue;
+      if (e.kind === 'character' && sprite.getData('isPlayer') === true) continue;
+      const b = sprite.getBounds();
+      centers.push({ x: b.centerX, y: e.kind === 'character' ? b.top + b.height * 0.35 : b.centerY });
+    }
+    if (centers.length === 0) return;
+    const g = this.add.graphics();
+    g.setDepth(1_000_000);
+    for (const c of centers) {
+      g.fillStyle(0x000000, 0.45);
+      g.fillCircle(c.x, c.y, 7);
+      g.lineStyle(2, 0xffffff, 0.95);
+      g.strokeCircle(c.x, c.y, 5);
+      g.fillStyle(0xffffff, 0.95);
+      g.fillCircle(c.x, c.y, 1.5);
+    }
+    this.clickableMarkers = g;
+    g.setAlpha(0);
+    this.tweens.add({ targets: g, alpha: 1, duration: 150 });
+    this.tweens.add({
+      targets: g,
+      alpha: 0,
+      delay: Math.max(0, durationMs - 300),
+      duration: 300,
+      onComplete: () => {
+        if (this.clickableMarkers === g) this.clickableMarkers = null;
+        g.destroy();
+      },
+    });
   }
 
   /**
@@ -5937,8 +6035,8 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
 
-    const onHotspotPointer = (pointer: Phaser.Input.Pointer): void => {
-      if (this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
+    const onHotspotPointer = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
+      if (slot === undefined && this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
         return;
       }
       if (this.isPlayerPointerBlocked()) {
@@ -5947,12 +6045,24 @@ export class RoomScene extends Phaser.Scene {
       const handlers = getHotspotVerbHandlers(hotspot);
       const profile = getEffectiveInputProfile(getGameSettings());
       const manager = resolveGameStateManager(this.game);
+      if (
+        slot === undefined &&
+        deferPressForHold(
+          pointer,
+          profile,
+          manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
+          (pressSlot) => onHotspotPointer(pointer, pressSlot),
+        )
+      ) {
+        return;
+      }
       const resolution = resolvePointerVerbForTarget(
         pointer,
         profile,
         { defaultVerb: hotspot.defaultVerb },
         manager.getActiveVerb(),
         manager.getActiveInventoryItemId(),
+        { slot },
       );
       if (resolution.kind === 'none') {
         return;
@@ -6016,7 +6126,7 @@ export class RoomScene extends Phaser.Scene {
     const geom = new Phaser.Geom.Polygon(flat);
     zone.setInteractive(geom, Phaser.Geom.Polygon.Contains);
     zone.input!.cursor = isBenneGameCursorAsepriteEnabled(getGameSettings()) ? 'none' : 'pointer';
-    zone.on('pointerdown', onHotspotPointer);
+    zone.on('pointerdown', (pointer: Phaser.Input.Pointer) => onHotspotPointer(pointer));
 
     this.roomStackEntities.push({
       kind: 'hotspot',
@@ -6165,8 +6275,8 @@ export class RoomScene extends Phaser.Scene {
     } else {
       sprite.setInteractive({ useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()) });
     }
-    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-      if (this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
+    const onPress = (pointer: Phaser.Input.Pointer, slot?: PointerSlot): void => {
+      if (slot === undefined && this.tryConsumeRoomVideoOrScriptedDialogClickToSkip(pointer)) {
         return;
       }
       if (this.isPlayerPointerBlocked()) {
@@ -6174,12 +6284,24 @@ export class RoomScene extends Phaser.Scene {
       }
       const profile = getEffectiveInputProfile(getGameSettings());
       const manager = resolveGameStateManager(this.game);
+      if (
+        slot === undefined &&
+        deferPressForHold(
+          pointer,
+          profile,
+          manager.getActiveInventoryItemId() !== null || manager.getActiveVerb() !== null,
+          (pressSlot) => onPress(pointer, pressSlot),
+        )
+      ) {
+        return;
+      }
       const resolution = resolvePointerVerbForTarget(
         pointer,
         profile,
         { defaultVerb: spawn.data.defaultVerb },
         manager.getActiveVerb(),
         manager.getActiveInventoryItemId(),
+        { slot },
       );
       if (resolution.kind === 'none') {
         return;
@@ -6247,7 +6369,8 @@ export class RoomScene extends Phaser.Scene {
       if (resolution.consumeActive) {
         manager.clearActiveVerb();
       }
-    });
+    };
+    sprite.on('pointerdown', (pointer: Phaser.Input.Pointer) => onPress(pointer));
     sprite.setData('benneCharacterInteractionAttached', true);
   }
 

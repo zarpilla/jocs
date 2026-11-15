@@ -3,6 +3,7 @@ import type { VerbInputProfile } from '../../types/game';
 import { getGameSettings } from '../ConfigManager';
 import {
   DEFAULT_VERB_TOKEN,
+  isItemVerbId,
   resolveDefaultItemVerbId,
   resolveGameDefaultVerbId,
   WALK_TO_VERB_ID,
@@ -24,7 +25,16 @@ export type ResolvePointerVerbForTargetOptions = {
    * @default true
    */
   coerceWalkToUseWhenArmed?: boolean;
+  /**
+   * Which `inputProfile` slot the press stands for, instead of reading the pointer's buttons. Set by
+   * the press-and-hold gesture ({@link import('./holdGesture.js').deferPressForHold}), which resolves
+   * on pointer-up or after the hold delay, when the buttons no longer say what happened.
+   */
+  slot?: PointerSlot;
 };
+
+/** An `inputProfile` slot: the two buttons and the optional press-and-hold. */
+export type PointerSlot = 'primary' | 'secondary' | 'hold';
 
 /**
  * Outcome of resolving a pointer click over a clickable target.
@@ -72,8 +82,9 @@ export function resolvePointerVerbForTarget(
   activeInventoryItemId: string | null = null,
   options?: ResolvePointerVerbForTargetOptions,
 ): PointerVerbResolution {
-  const left = pointer.leftButtonDown();
-  const right = pointer.rightButtonDown();
+  const slot = options?.slot;
+  const left = slot ? slot !== 'secondary' : pointer.leftButtonDown();
+  const right = slot ? slot === 'secondary' : pointer.rightButtonDown();
   if (!left && !right) {
     return { kind: 'none' };
   }
@@ -90,7 +101,22 @@ export function resolvePointerVerbForTarget(
   }
 
   const coerceWalkToUseWhenArmed = options?.coerceWalkToUseWhenArmed !== false;
-  const slotValue = left ? profile.primaryButtonVerb : profile.secondaryButtonVerb;
+  const slotValue = slot === 'hold' && profile.holdVerb
+    ? profile.holdVerb
+    : left ? profile.primaryButtonVerb : profile.secondaryButtonVerb;
+  // An armed item meets a primary press whose slot is itself an item verb (a "tap" verb on a touch
+  // profile, which arms items from the inventory): use the item on the target.
+  const settings = getGameSettings();
+  const armedItemVerbSlot =
+    activeInventoryItemId !== null &&
+    left &&
+    slotValue !== WALK_TO_VERB_ID &&
+    slotValue !== DEFAULT_VERB_TOKEN &&
+    isItemVerbId(settings, slotValue) &&
+    slotValue !== resolveDefaultItemVerbId(settings);
+  if (armedItemVerbSlot) {
+    return { kind: 'verb', verbId: resolveDefaultItemVerbId(settings), consumeActive: false };
+  }
   if (
     coerceWalkToUseWhenArmed &&
     activeInventoryItemId !== null &&
@@ -99,7 +125,7 @@ export function resolvePointerVerbForTarget(
   ) {
     return {
       kind: 'verb',
-      verbId: resolveDefaultItemVerbId(getGameSettings()),
+      verbId: resolveDefaultItemVerbId(settings),
       consumeActive: false,
     };
   }
@@ -137,6 +163,7 @@ export function resolvePointerVerbForInventoryItem(
   target: PointerVerbTarget,
   activeVerbId: string | null,
   activeInventoryItemId: string | null = null,
+  slot?: PointerSlot,
 ): PointerVerbResolution {
   const base = resolvePointerVerbForTarget(
     pointer,
@@ -144,7 +171,7 @@ export function resolvePointerVerbForInventoryItem(
     target,
     activeVerbId,
     activeInventoryItemId,
-    { coerceWalkToUseWhenArmed: false },
+    { coerceWalkToUseWhenArmed: false, slot },
   );
   if (base.kind === 'verb' && base.consumeActive && activeInventoryItemId !== null) {
     return { kind: 'verb', verbId: base.verbId, consumeActive: false };

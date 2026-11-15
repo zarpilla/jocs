@@ -1,0 +1,127 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "rosa",
+  "with": "rosa",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "rosa",
+          "node": "hola"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.hola.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.rosa.hola.2"
+        },
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.hola.3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "vestit",
+          "text": "dlg.rosa.opt.vestit",
+          "if": {
+            "all": [
+              {
+                "flag": "cal_gala"
+              },
+              {
+                "flag": "rosa_permis",
+                "is": false
+              }
+            ]
+          },
+          "next": "vestit"
+        },
+        {
+          "id": "vaga",
+          "text": "dlg.rosa.opt.vaga",
+          "once": true,
+          "next": "vaga"
+        },
+        {
+          "id": "tomas",
+          "text": "dlg.rosa.opt.tomas",
+          "if": {
+            "flag": "tomas_girat"
+          },
+          "once": true,
+          "next": "tomas"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.rosa.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "vestit": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.vestit.1"
+        },
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.vestit.2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "rosa_permis"
+        }
+      ],
+      "goto": "menu"
+    },
+    "vaga": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.vaga.1"
+        },
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.vaga.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "tomas": {
+      "lines": [
+        {
+          "who": "rosa",
+          "text": "dlg.rosa.tomas.1"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

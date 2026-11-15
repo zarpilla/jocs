@@ -1,0 +1,185 @@
+{
+  "id": "iri",
+  "name": "iri",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 132,
+  "walkToPoint": {
+    "x": 52,
+    "y": 100
+  },
+  "talkPoint": {
+    "x": 30,
+    "y": -2
+  },
+  "feet": {
+    "x": 30,
+    "y": 100
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 18,
+        "y": 3
+      },
+      {
+        "x": 42,
+        "y": 3
+      },
+      {
+        "x": 45,
+        "y": 60
+      },
+      {
+        "x": 40,
+        "y": 102
+      },
+      {
+        "x": 19,
+        "y": 102
+      },
+      {
+        "x": 15,
+        "y": 60
+      }
+    ]
+  },
+  "animations": {
+    "IdleL": {
+      "loop": true
+    },
+    "IdleD": {
+      "loop": true
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyIdleL": {
+      "loop": true
+    },
+    "LlunyIdleD": {
+      "loop": true
+    },
+    "LlunyIdleU": {
+      "loop": true
+    },
+    "LlunyWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GalaIdleL": {
+      "loop": true
+    },
+    "GalaIdleD": {
+      "loop": true
+    },
+    "GalaIdleU": {
+      "loop": true
+    },
+    "GalaWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "GalaWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "GalaWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "GalaTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GalaTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "GalaTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyGalaIdleL": {
+      "loop": true
+    },
+    "LlunyGalaIdleD": {
+      "loop": true
+    },
+    "LlunyGalaIdleU": {
+      "loop": true
+    },
+    "LlunyGalaWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyGalaWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyGalaWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyGalaTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyGalaTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyGalaTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    }
+  },
+  "defaultVerb": "look"
+}

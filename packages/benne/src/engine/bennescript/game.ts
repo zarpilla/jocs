@@ -40,6 +40,7 @@ import { composeVerbLineText, resolveGameDefaultVerbId } from '../verbs/verbConf
 import type { CutsceneOptions } from '../../types/cutscene.js';
 import type { GameSettings } from '../../types/game.js';
 import { activeRoomScene } from './actions.js';
+import { liveRoomScene } from './scene.js';
 import { registerAnyRoomHandler } from './globalHandlers.js';
 import { endHandler, runDetached, warnIfUntransformed } from './interactionContext.js';
 import type { ItemHandle, VerbHandle } from './handles.js';
@@ -72,6 +73,20 @@ export const game = {
   /** Closes the desktop app. Does nothing in a browser. */
   quit(): void {
     quitBenneApplication();
+  },
+
+  /**
+   * Marks, for a moment, everything that can be clicked in the room right now (touch screens have no
+   * hover). Doesn't wait: the game goes on while the markers show.
+   */
+  /** The game's screen size in pixels: with an adaptive height (`resolution.minHeight`), the one chosen at boot. */
+  get screenSize(): { width: number; height: number } {
+    const { width, height } = getGameSettings().resolution;
+    return { width, height };
+  },
+
+  showClickables(seconds = 1.6): void {
+    liveRoomScene()?.showClickableMarkers(Math.round(seconds * 1000));
   },
 
   /**
@@ -385,6 +400,21 @@ export const pointer = {
     } else {
       m.clearActiveInventoryItem();
     }
+  },
+
+  /**
+   * Where the pointer is (or was last), in game screen pixels: what a GUI control's `x` / `y` mean (0..width,
+   * 0..height), whatever the camera scroll or the letterbox around the game.
+   */
+  get screen(): { x: number; y: number } {
+    const scene = liveRoomScene();
+    const p = scene?.input.activePointer;
+    if (!scene || !p) {
+      return { x: 0, y: 0 };
+    }
+    const cam = scene.cameras.main;
+    const w = cam.getWorldPoint(p.x, p.y);
+    return { x: w.x - cam.worldView.x, y: w.y - cam.worldView.y };
   },
 
   /** What the pointer is over (`{ kind, id, description, defaultVerb }`), or `null`. */

@@ -1,0 +1,486 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "capitana",
+  "with": "capitana",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 6
+          },
+          {
+            "flag": "trucada_feta"
+          },
+          {
+            "flag": "capitana_si",
+            "is": false
+          }
+        ]
+      },
+      "node": "nit"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "capitana",
+          "node": "primera"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "primera"
+    }
+  ],
+  "nodes": {
+    "primera": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.primera.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.capitana.primera.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.primera.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.capitana.primera.4"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.primera.5"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "nit": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.nit.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "aigua",
+          "text": "dlg.capitana.opt.aigua",
+          "if": {
+            "flag": "cap_aigua",
+            "is": false
+          },
+          "next": "aigua"
+        },
+        {
+          "id": "portar",
+          "text": "dlg.capitana.opt.portar",
+          "if": {
+            "all": [
+              {
+                "flag": "cap_aigua"
+              },
+              {
+                "flag": "cap_condicions",
+                "is": false
+              }
+            ]
+          },
+          "next": "portar"
+        },
+        {
+          "id": "recorda",
+          "text": "dlg.capitana.opt.recorda",
+          "if": {
+            "all": [
+              {
+                "flag": "cap_condicions"
+              },
+              {
+                "flag": "capitana_accepta",
+                "is": false
+              }
+            ]
+          },
+          "next": "recorda"
+        },
+        {
+          "id": "entrego",
+          "text": "dlg.capitana.opt.entrego",
+          "if": {
+            "all": [
+              {
+                "hasItem": "albara"
+              },
+              {
+                "flag": "injector_posat"
+              },
+              {
+                "flag": "capitana_accepta",
+                "is": false
+              }
+            ]
+          },
+          "next": "entrego"
+        },
+        {
+          "id": "por",
+          "text": "dlg.capitana.opt.por",
+          "if": {
+            "all": [
+              {
+                "flag": "cap_condicions"
+              },
+              {
+                "flag": "capitana_si",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "por"
+        },
+        {
+          "id": "contracte",
+          "text": "dlg.capitana.opt.contracte",
+          "if": {
+            "all": [
+              {
+                "hasItem": "contracte_capitana"
+              },
+              {
+                "flag": "capitana_si",
+                "is": false
+              }
+            ]
+          },
+          "next": "contracte"
+        },
+        {
+          "id": "pla",
+          "text": "dlg.capitana.opt.pla",
+          "if": {
+            "flag": "capitana_si"
+          },
+          "next": "pla"
+        },
+        {
+          "id": "magnat",
+          "text": "dlg.capitana.opt.magnat",
+          "if": {
+            "all": [
+              {
+                "flag": "capitana_accepta"
+              },
+              {
+                "flag": "capitana_si",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "magnat"
+        },
+        {
+          "id": "pare",
+          "text": "dlg.capitana.opt.pare",
+          "once": true,
+          "next": "pare"
+        },
+        {
+          "id": "gat",
+          "text": "dlg.capitana.opt.gat",
+          "if": {
+            "var": "escena",
+            "op": ">=",
+            "value": 3
+          },
+          "once": true,
+          "next": "gat"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.capitana.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "aigua": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.aigua.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.aigua.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.capitana.aigua.3"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.aigua.4"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.aigua.5"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "cap_aigua"
+        }
+      ],
+      "goto": "menu"
+    },
+    "portar": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.portar.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.portar.2"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.capitana.portar.3"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.portar.4"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.portar.5"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.portar.6"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "cap_condicions"
+        }
+      ],
+      "goto": "menu"
+    },
+    "recorda": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.recorda.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.recorda.2",
+          "if": {
+            "hasItem": "albara"
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.recorda.3",
+          "if": {
+            "not": {
+              "hasItem": "albara"
+            }
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.recorda.4",
+          "if": {
+            "flag": "injector_posat"
+          }
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.recorda.5",
+          "if": {
+            "flag": "injector_posat",
+            "is": false
+          }
+        }
+      ],
+      "goto": "menu"
+    },
+    "entrego": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.3"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.4"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.capitana.entrego.5"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.entrego.6"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "capitana_accepta"
+        },
+        {
+          "setFlag": "aqua_oberta"
+        },
+        {
+          "takeItem": "albara"
+        }
+      ],
+      "goto": "menu"
+    },
+    "por": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.por.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.por.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "magnat": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.magnat.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.magnat.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "contracte": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.contracte.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.capitana.contracte.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.contracte.3"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.contracte.4"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.capitana.contracte.5"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.contracte.6"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.contracte.7"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.contracte.8"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "capitana_si"
+        },
+        {
+          "takeItem": "contracte_capitana"
+        }
+      ],
+      "goto": "menu"
+    },
+    "pla": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.pla.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.pla.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "pare": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.pare.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "gat": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.gat.1"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.gat.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "capitana",
+          "text": "dlg.capitana.adeu.1"
+        }
+      ]
+    }
+  }
+}

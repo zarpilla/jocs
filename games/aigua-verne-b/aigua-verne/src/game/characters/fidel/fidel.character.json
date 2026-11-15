@@ -1,0 +1,120 @@
+{
+  "id": "fidel",
+  "name": "Fidel",
+  "description": "Fidel",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 84,
+  "walkToPoint": {
+    "x": 52,
+    "y": 100
+  },
+  "talkPoint": {
+    "x": 30,
+    "y": -2
+  },
+  "feet": {
+    "x": 30,
+    "y": 100
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 18,
+        "y": 3
+      },
+      {
+        "x": 42,
+        "y": 3
+      },
+      {
+        "x": 45,
+        "y": 60
+      },
+      {
+        "x": 40,
+        "y": 102
+      },
+      {
+        "x": 19,
+        "y": 102
+      },
+      {
+        "x": 15,
+        "y": 60
+      }
+    ]
+  },
+  "animations": {
+    "IdleL": {
+      "loop": true
+    },
+    "IdleD": {
+      "loop": true
+    },
+    "IdleU": {
+      "loop": true
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "LlunyIdleL": {
+      "loop": true
+    },
+    "LlunyIdleD": {
+      "loop": true
+    },
+    "LlunyIdleU": {
+      "loop": true
+    },
+    "LlunyWalkL": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "LlunyWalkD": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "LlunyWalkU": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "LlunyTalkL": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "LlunyTalkD": {
+      "loop": true,
+      "frameDuration": 180
+    },
+    "LlunyTalkU": {
+      "loop": true,
+      "frameDuration": 180
+    }
+  },
+  "defaultVerb": "talkTo",
+  "speechColor": "#a0f0f0"
+}

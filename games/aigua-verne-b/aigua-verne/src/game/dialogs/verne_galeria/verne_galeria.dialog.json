@@ -1,0 +1,48 @@
+{
+  "id": "verne_galeria",
+  "displayName": "verne_galeria",
+  "options": [
+    {
+      "id": "menu__piscines",
+      "scriptName": "menu__piscines",
+      "text": "Per què són buides, les piscines?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__aigua",
+      "scriptName": "menu__aigua",
+      "text": "I vostè, quina aigua beu?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__reserva",
+      "scriptName": "menu__reserva",
+      "text": "No té aigua, aquí dalt?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__gos",
+      "scriptName": "menu__gos",
+      "text": "Com es diu el gos?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__subhasta",
+      "scriptName": "menu__subhasta",
+      "text": "Quan comença la subhasta?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Disculpi, vaig per una copa.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

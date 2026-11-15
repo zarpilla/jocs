@@ -1,0 +1,1063 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.cantimplora_bodega.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "rampa": {
+      "name": "sala.cantimplora_bodega.rampa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.rampa.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "terra2"
+          },
+          "goTo": "port_terra2"
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "aqua"
+          },
+          "goTo": "aqua_port"
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "ferrum"
+          },
+          "goTo": "ferrum_carrer"
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "verdant"
+          },
+          "goTo": "verdant_jardi"
+        }
+      ]
+    },
+    "escala": {
+      "name": "sala.cantimplora_bodega.escala.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "cantimplora_pont"
+        }
+      ]
+    },
+    "barril": {
+      "name": "sala.cantimplora_bodega.barril.nom",
+      "visibleIf": {
+        "flag": "barril_donat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.barril.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.barril.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "bru_set"
+              },
+              {
+                "flag": "canalla_beu",
+                "is": false
+              }
+            ]
+          },
+          "dialogue": "barril"
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use",
+            "pickUp"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.barril.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.barril.4"
+            }
+          ]
+        }
+      ]
+    },
+    "calaix": {
+      "name": "sala.cantimplora_bodega.calaix.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "look",
+            "use",
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "mosca_activa",
+                "is": false
+              },
+              {
+                "hasItem": "tornavis_flor"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.calaix.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.calaix.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.calaix.3",
+              "sound": "mosca"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cantimplora_bodega.calaix.4"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cantimplora_bodega.calaix.5"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cantimplora_bodega.calaix.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "mosca_activa"
+            },
+            {
+              "giveItem": "mosca",
+              "who": "iri"
+            },
+            {
+              "giveItem": "mosca",
+              "who": "vet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "look",
+            "use",
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "mosca_activa",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.calaix.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "cal_agulla"
+              },
+              {
+                "flag": "agulla_agafada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.calaix.8"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "agulla_agafada"
+            },
+            {
+              "giveItem": "agulla"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "look",
+            "use",
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.calaix.9"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "look",
+            "use",
+            "pull",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.calaix.10"
+            }
+          ]
+        }
+      ]
+    },
+    "cafetera": {
+      "name": "sala.cantimplora_bodega.cafetera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.cafetera.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "cal_filtre"
+              },
+              {
+                "flag": "filtre_agafat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.cafetera.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "filtre_agafat"
+            },
+            {
+              "giveItem": "filtre"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.cafetera.3"
+            }
+          ]
+        }
+      ]
+    },
+    "nevera": {
+      "name": "sala.cantimplora_bodega.nevera.nom",
+      "interactions": [
+        {
+          "verb": [
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "diu_carmanyola_vist"
+              },
+              {
+                "flag": "pernil_agafat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.nevera.1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pernil_agafat"
+            },
+            {
+              "giveItem": "pernil"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "look",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.nevera.2"
+            }
+          ]
+        }
+      ]
+    },
+    "tauler": {
+      "name": "sala.cantimplora_bodega.tauler.nom",
+      "interactions": [
+        {
+          "verb": [
+            "look",
+            "use"
+          ],
+          "dialogue": "tauler"
+        }
+      ]
+    },
+    "carmanyola": {
+      "name": "sala.cantimplora_bodega.carmanyola.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "pernil",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "diu_aparta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cantimplora_bodega.carmanyola.2",
+              "sound": "gat"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "diu_aparta"
+            },
+            {
+              "takeItem": "pernil"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "diu_aparta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "diu_carmanyola_vist"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "cal_espia"
+              },
+              {
+                "flag": "diu_aparta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "diu_carmanyola_vist"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "cal_espia"
+              },
+              {
+                "flag": "tomas_descobert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.6"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.7"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.8"
+            },
+            {
+              "who": "iri",
+              "text": "sala.cantimplora_bodega.carmanyola.9"
+            },
+            {
+              "who": "vet",
+              "text": "sala.cantimplora_bodega.carmanyola.10"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tomas_descobert"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "tomas_descobert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.11"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "colada_bip"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.12"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.13"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.14"
+            }
+          ]
+        }
+      ]
+    },
+    "motor": {
+      "name": "sala.cantimplora_bodega.motor.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "injector",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "injector_posat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.1",
+              "sound": "cargols"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "injector_posat"
+            },
+            {
+              "takeItem": "injector"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "injector",
+          "if": {
+            "flag": "injector_posat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "injector_posat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "injector_vist"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "cap_condicions"
+              },
+              {
+                "flag": "injector_posat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "injector_vist"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.7"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "flag": "oli_agafat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.8"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "oli_agafat"
+            },
+            {
+              "giveItem": "oli"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.motor.9"
+            }
+          ]
+        }
+      ]
+    },
+    "fusibles": {
+      "name": "sala.cantimplora_bodega.fusibles.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.fusibles.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "grua_vista"
+              },
+              {
+                "flag": "fusible_agafat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.fusibles.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "fusible_agafat"
+            },
+            {
+              "giveItem": "fusible"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.fusibles.3"
+            }
+          ]
+        }
+      ]
+    },
+    "diposit": {
+      "name": "sala.cantimplora_bodega.diposit.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.diposit.1"
+            }
+          ]
+        }
+      ]
+    },
+    "carrega": {
+      "name": "sala.cantimplora_bodega.carrega.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "sacs_llavors",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carrega.1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "sacs_carregats"
+            },
+            {
+              "takeItem": "sacs_llavors"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "sacs_carregats"
+              },
+              {
+                "flag": "juana_coneguda",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carrega.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carrega.3"
+            }
+          ]
+        }
+      ]
+    },
+    "tomas": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "<=",
+            "value": 6
+          }
+        ]
+      }
+    },
+    "diu": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 2
+          },
+          {
+            "not": {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 6
+                },
+                {
+                  "flag": "diu_aparta",
+                  "is": false
+                }
+              ]
+            }
+          }
+        ]
+      }
+    }
+  },
+  "onEnter": [
+    {
+      "id": "arribada",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.cantimplora_bodega.entra.1"
+        }
+      ]
+    }
+  ],
+  "decor": {
+    "llum_terra2": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "terra2"
+      }
+    },
+    "llum_aqua": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "aqua"
+      }
+    },
+    "llum_ferrum": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "ferrum"
+      }
+    },
+    "llum_verdant": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "verdant"
+      }
+    },
+    "motor_obert": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "flag": "injector_posat",
+            "is": false
+          }
+        ]
+      }
+    },
+    "sacs_carregats": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "sacs_carregats"
+          },
+          {
+            "flag": "juana_coneguda",
+            "is": false
+          }
+        ]
+      }
+    },
+    "diu_carmanyola": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 6
+          },
+          {
+            "flag": "diu_aparta",
+            "is": false
+          }
+        ]
+      }
+    }
+  }
+}

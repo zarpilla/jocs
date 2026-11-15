@@ -1,0 +1,374 @@
+{
+  "id": "aqua_port",
+  "name": "Port d'Aqua",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 96,
+            "y": 222
+          },
+          {
+            "x": 120,
+            "y": 208
+          },
+          {
+            "x": 250,
+            "y": 206
+          },
+          {
+            "x": 560,
+            "y": 206
+          },
+          {
+            "x": 639,
+            "y": 212
+          },
+          {
+            "x": 639,
+            "y": 256
+          },
+          {
+            "x": 60,
+            "y": 256
+          },
+          {
+            "x": 40,
+            "y": 238
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "rampa",
+      "active": true,
+      "description": "Cantimplora",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 4,
+          "y": 92
+        },
+        {
+          "x": 116,
+          "y": 92
+        },
+        {
+          "x": 116,
+          "y": 232
+        },
+        {
+          "x": 4,
+          "y": 232
+        }
+      ],
+      "walkToPoint": {
+        "x": 104,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 60,
+        "y": 232
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "cistella",
+      "active": true,
+      "description": "cistella",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 312,
+          "y": 140
+        },
+        {
+          "x": 354,
+          "y": 140
+        },
+        {
+          "x": 354,
+          "y": 196
+        },
+        {
+          "x": 312,
+          "y": 196
+        }
+      ],
+      "walkToPoint": {
+        "x": 332,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 333,
+        "y": 196
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "escala_port",
+      "active": true,
+      "description": "escala del port",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 500,
+          "y": 96
+        },
+        {
+          "x": 604,
+          "y": 96
+        },
+        {
+          "x": 604,
+          "y": 162
+        },
+        {
+          "x": 500,
+          "y": 162
+        }
+      ],
+      "walkToPoint": {
+        "x": 560,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 552,
+        "y": 162
+      }
+    },
+    {
+      "id": "grua",
+      "active": true,
+      "description": "grua",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 146,
+          "y": 8
+        },
+        {
+          "x": 312,
+          "y": 8
+        },
+        {
+          "x": 312,
+          "y": 204
+        },
+        {
+          "x": 146,
+          "y": 204
+        }
+      ],
+      "walkToPoint": {
+        "x": 240,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 229,
+        "y": 204
+      }
+    },
+    {
+      "id": "vaixells",
+      "active": true,
+      "description": "vaixells encallats",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 364,
+          "y": 112
+        },
+        {
+          "x": 468,
+          "y": 112
+        },
+        {
+          "x": 468,
+          "y": 195
+        },
+        {
+          "x": 364,
+          "y": 195
+        }
+      ],
+      "walkToPoint": {
+        "x": 414,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 416,
+        "y": 195
+      }
+    },
+    {
+      "id": "panell_preu",
+      "active": true,
+      "description": "panell del preu",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 586,
+          "y": 110
+        },
+        {
+          "x": 636,
+          "y": 110
+        },
+        {
+          "x": 636,
+          "y": 136
+        },
+        {
+          "x": 586,
+          "y": 136
+        }
+      ],
+      "walkToPoint": {
+        "x": 596,
+        "y": 218
+      },
+      "lookAtPoint": {
+        "x": 611,
+        "y": 136
+      }
+    },
+    {
+      "id": "canonada",
+      "active": true,
+      "description": "Canonada",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 422,
+          "y": 0
+        },
+        {
+          "x": 440,
+          "y": 0
+        },
+        {
+          "x": 440,
+          "y": 104
+        },
+        {
+          "x": 422,
+          "y": 104
+        }
+      ],
+      "walkToPoint": {
+        "x": 432,
+        "y": 210
+      },
+      "lookAtPoint": {
+        "x": 431,
+        "y": 104
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "grua_arreglada",
+      "tag": "grua_arreglada",
+      "animations": {
+        "grua_arreglada": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "calitja",
+      "tag": "calitja",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "calitja": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "llum_canonada",
+      "tag": "llum_canonada",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "llum_canonada": {
+          "loop": true,
+          "frameDuration": 250
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 132,
+      "y": 238,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 172,
+      "y": 246,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

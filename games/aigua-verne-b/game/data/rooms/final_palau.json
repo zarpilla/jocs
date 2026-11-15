@@ -1,0 +1,11 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.final_palau.nom",
+  "cutscene": {},
+  "hotspots": {
+    "iri": {},
+    "verne": {},
+    "dividend": {},
+    "holm": {}
+  }
+}

@@ -1,0 +1,221 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "nil",
+  "with": "nil",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "nil",
+          "node": "hola"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "nil",
+          "text": "dlg.nil.hola.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.nil.hola.2"
+        },
+        {
+          "who": "nil",
+          "text": "dlg.nil.hola.3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "nil",
+          "text": "dlg.nil.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "flors",
+          "text": "dlg.nil.opt.flors",
+          "once": true,
+          "next": "flors"
+        },
+        {
+          "id": "palau",
+          "text": "dlg.nil.opt.palau",
+          "if": {
+            "flag": "nil_palau",
+            "is": false
+          },
+          "next": "palau"
+        },
+        {
+          "id": "magnat",
+          "text": "dlg.nil.opt.magnat",
+          "if": {
+            "flag": "nil_palau"
+          },
+          "once": true,
+          "next": "magnat"
+        },
+        {
+          "id": "tomaquera",
+          "text": "dlg.nil.opt.tomaquera",
+          "if": {
+            "all": [
+              {
+                "flag": "tomaquera_vista"
+              },
+              {
+                "flag": "tomaquera_regada",
+                "is": false
+              }
+            ]
+          },
+          "next": "tomaquera"
+        },
+        {
+          "id": "regada",
+          "text": "dlg.nil.opt.regada",
+          "if": {
+            "all": [
+              {
+                "flag": "tomaquera_regada"
+              },
+              {
+                "flag": "nil_ajuda",
+                "is": false
+              }
+            ]
+          },
+          "next": "regada"
+        },
+        {
+          "id": "quan",
+          "text": "dlg.nil.opt.quan",
+          "if": {
+            "flag": "nil_ajuda"
+          },
+          "next": "quan"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.nil.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "flors": {
+      "lines": [
+        {
+          "who": "nil",
+          "text": "dlg.nil.flors.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "palau": {
+      "lines": [
+        {
+          "who": "nil",
+          "text": "dlg.nil.palau.1"
+        },
+        {
+          "who": "nil",
+          "text": "dlg.nil.palau.2"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "nil_palau"
+        }
+      ],
+      "goto": "menu"
+    },
+    "magnat": {
+      "lines": [
+        {
+          "who": "nil",
+          "text": "dlg.nil.magnat.1"
+        },
+        {
+          "who": "nil",
+          "text": "dlg.nil.magnat.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "tomaquera": {
+      "lines": [
+        {
+          "who": "nil",
+          "text": "dlg.nil.tomaquera.1"
+        },
+        {
+          "who": "nil",
+          "text": "dlg.nil.tomaquera.2"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.nil.tomaquera.3"
+        },
+        {
+          "who": "nil",
+          "text": "dlg.nil.tomaquera.4"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.nil.tomaquera.5"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "cal_reg"
+        }
+      ],
+      "goto": "menu"
+    },
+    "regada": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.nil.regada.1"
+        },
+        {
+          "who": "nil",
+          "text": "dlg.nil.regada.2"
+        },
+        {
+          "who": "nil",
+          "text": "dlg.nil.regada.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "nil_ajuda"
+        }
+      ],
+      "goto": "menu"
+    },
+    "quan": {
+      "lines": [
+        {
+          "who": "nil",
+          "text": "dlg.nil.quan.1"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

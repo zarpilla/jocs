@@ -1,0 +1,48 @@
+{
+  "id": "mapa",
+  "displayName": "mapa",
+  "options": [
+    {
+      "id": "inici__terra2",
+      "scriptName": "inici__terra2",
+      "text": "Terra-2.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__aqua",
+      "scriptName": "inici__aqua",
+      "text": "Aqua.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__ferrum",
+      "scriptName": "inici__ferrum",
+      "text": "Ferrum.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__verdant",
+      "scriptName": "inici__verdant",
+      "text": "Verdant.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__palau",
+      "scriptName": "inici__palau",
+      "text": "El palau orbital.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__res",
+      "scriptName": "inici__res",
+      "text": "Ens quedem on som.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

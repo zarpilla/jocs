@@ -1,0 +1,408 @@
+[
+  {
+    "id": "esc1",
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "flag": "caixa_oberta"
+        },
+        {
+          "flag": "bomba_llegida"
+        }
+      ]
+    },
+    "linies": [
+      {
+        "who": "iri",
+        "text": "esc.esc1.1"
+      },
+      {
+        "who": "vet",
+        "text": "esc.esc1.2"
+      },
+      {
+        "who": "iri",
+        "text": "esc.esc1.3"
+      },
+      {
+        "who": "vet",
+        "text": "esc.esc1.4"
+      },
+      {
+        "who": "iri",
+        "text": "esc.esc1.5"
+      },
+      {
+        "who": "vet",
+        "text": "esc.esc1.6"
+      },
+      {
+        "who": "iri",
+        "text": "esc.esc1.7"
+      },
+      {
+        "who": "narrator",
+        "text": "esc.esc1.8"
+      }
+    ],
+    "efectes": [
+      {
+        "setVar": "escena",
+        "value": 2
+      }
+    ]
+  },
+  {
+    "id": "esc2",
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 2
+        },
+        {
+          "flag": "capitana_accepta"
+        },
+        {
+          "var": "planeta",
+          "op": "==",
+          "value": "aqua"
+        }
+      ]
+    },
+    "linies": [],
+    "efectes": [
+      {
+        "setVar": "escena",
+        "value": 3
+      }
+    ]
+  },
+  {
+    "id": "esc3",
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 3
+        },
+        {
+          "flag": "juana_fet"
+        }
+      ]
+    },
+    "linies": [
+      {
+        "who": "title",
+        "text": "acte.2"
+      }
+    ],
+    "efectes": [
+      {
+        "setVar": "escena",
+        "value": 4
+      },
+      {
+        "setFlag": "ferrum_oberta"
+      }
+    ]
+  },
+  {
+    "id": "colada_fi",
+    "when": {
+      "flag": "claus_fetes"
+    },
+    "linies": [
+      {
+        "who": "narrator",
+        "text": "esc.colada_fi.1"
+      },
+      {
+        "who": "narrator",
+        "text": "esc.colada_fi.2",
+        "sound": "bip"
+      },
+      {
+        "who": "title",
+        "text": "esc.colada_fi.3"
+      },
+      {
+        "who": "bru",
+        "text": "esc.colada_fi.4"
+      },
+      {
+        "who": "bru",
+        "text": "esc.colada_fi.5"
+      },
+      {
+        "who": "bru",
+        "text": "esc.colada_fi.6"
+      }
+    ],
+    "efectes": [
+      {
+        "setFlag": "sync_colada",
+        "value": false
+      },
+      {
+        "setVar": "escena",
+        "value": 5
+      },
+      {
+        "setFlag": "verdant_oberta"
+      },
+      {
+        "setFlag": "colada_bip"
+      }
+    ]
+  },
+  {
+    "id": "esc5",
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 5
+        },
+        {
+          "flag": "nil_ajuda"
+        },
+        {
+          "flag": "carta_banc"
+        },
+        {
+          "flag": "invitacio_agafada"
+        },
+        {
+          "flag": "contracte_agafat"
+        }
+      ]
+    },
+    "linies": [
+      {
+        "who": "iri",
+        "text": "esc.esc5.1"
+      },
+      {
+        "who": "vet",
+        "text": "esc.esc5.2"
+      },
+      {
+        "who": "iri",
+        "text": "esc.esc5.3"
+      },
+      {
+        "who": "vet",
+        "text": "esc.esc5.4"
+      },
+      {
+        "who": "narrator",
+        "text": "esc.esc5.5"
+      }
+    ],
+    "efectes": [
+      {
+        "setVar": "escena",
+        "value": 6
+      },
+      {
+        "event": "situar",
+        "args": {
+          "who": "iri",
+          "room": "cantimplora_pont"
+        }
+      },
+      {
+        "event": "situar",
+        "args": {
+          "who": "vet",
+          "room": "cantimplora_pont"
+        }
+      },
+      {
+        "event": "anar",
+        "args": {
+          "room": "cantimplora_pont"
+        }
+      }
+    ]
+  },
+  {
+    "id": "acte3_iri",
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 6
+            },
+            {
+              "flag": "tomas_girat"
+            },
+            {
+              "flag": "capitana_si"
+            },
+            {
+              "hasItem": "vestit_arreglat",
+              "who": "iri"
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        }
+      ]
+    },
+    "linies": [
+      {
+        "who": "capitana",
+        "text": "esc.acte3_iri.1"
+      },
+      {
+        "who": "narrator",
+        "text": "esc.acte3_iri.2"
+      },
+      {
+        "who": "narrator",
+        "text": "esc.acte3_iri.3"
+      },
+      {
+        "who": "title",
+        "text": "acte.3"
+      }
+    ],
+    "efectes": [
+      {
+        "setVar": "escena",
+        "value": 7
+      },
+      {
+        "setFlag": "iri_gala"
+      },
+      {
+        "takeItem": "vestit_arreglat",
+        "who": "iri"
+      },
+      {
+        "setVar": "preu_aigua",
+        "value": 112
+      },
+      {
+        "event": "situar",
+        "args": {
+          "who": "vet",
+          "room": "palau_servei"
+        }
+      },
+      {
+        "event": "anar",
+        "args": {
+          "room": "palau_galeria"
+        }
+      }
+    ]
+  },
+  {
+    "id": "acte3_vet",
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 6
+            },
+            {
+              "flag": "tomas_girat"
+            },
+            {
+              "flag": "capitana_si"
+            },
+            {
+              "hasItem": "vestit_arreglat",
+              "who": "iri"
+            }
+          ]
+        },
+        {
+          "protagonist": "vet"
+        }
+      ]
+    },
+    "linies": [
+      {
+        "who": "capitana",
+        "text": "esc.acte3_vet.1"
+      },
+      {
+        "who": "narrator",
+        "text": "esc.acte3_vet.2"
+      },
+      {
+        "who": "narrator",
+        "text": "esc.acte3_vet.3"
+      },
+      {
+        "who": "title",
+        "text": "acte.3"
+      }
+    ],
+    "efectes": [
+      {
+        "setVar": "escena",
+        "value": 7
+      },
+      {
+        "setFlag": "iri_gala"
+      },
+      {
+        "takeItem": "vestit_arreglat",
+        "who": "iri"
+      },
+      {
+        "setVar": "preu_aigua",
+        "value": 112
+      },
+      {
+        "event": "situar",
+        "args": {
+          "who": "iri",
+          "room": "palau_galeria"
+        }
+      },
+      {
+        "event": "anar",
+        "args": {
+          "room": "palau_servei"
+        }
+      }
+    ]
+  },
+  {
+    "id": "final",
+    "when": {
+      "flag": "reserva_oberta"
+    },
+    "linies": [],
+    "efectes": [
+      {
+        "setFlag": "sync_subhasta",
+        "value": false
+      },
+      {
+        "event": "final"
+      }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+{
+  "id": "comunicador",
+  "displayName": "comunicador",
+  "options": [
+    {
+      "id": "inici__fem",
+      "scriptName": "inici__fem",
+      "text": "Què hem de fer, ara?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__preu",
+      "scriptName": "inici__preu",
+      "text": "A quant és l'aigua?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__adeu",
+      "scriptName": "inici__adeu",
+      "text": "Res. Només volia sentir-te.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

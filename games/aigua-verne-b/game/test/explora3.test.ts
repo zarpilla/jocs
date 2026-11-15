@@ -1,0 +1,41 @@
+import { it } from 'vitest';
+import { writeFileSync } from 'node:fs';
+import { amb, anar, partida } from './partida.js';
+import { acte1, acte2 } from './cami.js';
+
+it.skipIf(!process.env.EXPLORA)('exploració de l’Acte 3', () => {
+  const { n, p } = partida();
+  acte1(p, n);
+  acte2(p, n, false);
+  const marca = (s: string) => p.transcript.push(`\n=== ${s} ===`);
+  const prova = (f: () => void) => { try { f(); } catch (e) { p.transcript.push(`!! ${(e as Error).message}`); } };
+  marca('Palau: Vet sense targeta, Iri sense Holm');
+  prova(() => p.do('walkTo', 'ascensor'));
+  p.talk('nil_palau');
+  p.talk('comunicador', 'fem');
+  amb(p, 'iri');
+  p.do('look', 'aquari');
+  p.talk('verne_galeria', 'piscines', 'reserva', 'subhasta');
+  anar(p, n, 'palau_salo');
+  p.use('claus', 'safata');
+  p.do('look', 'pantalla');
+  p.talk('comunicador', 'fem');
+  p.talk('holm', 'vestit');
+  p.use('claus', 'safata');
+  p.use('nota_lia', 'safata');
+  amb(p, 'vet');
+  p.talk('lia', 'pare');
+  p.do('pickUp', 'safates');
+  p.do('pickUp', 'safates');
+  amb(p, 'iri');
+  p.use('nota_lia', 'safata');
+  amb(p, 'vet');
+  p.do('pickUp', 'safates');
+  p.talk('lia', 'nota', 'control');
+  anar(p, n, 'palau_control');
+  marca('Subhasta: deixar passar lots');
+  p.do('pull', 'palanca');
+  for (let k = 0; k < 10; k++) { p.use('claus', 'pany_t2'); p.do('push', 'pany_t2'); }
+  p.talk('comunicador', 'fem');
+  writeFileSync(process.env.EXPLORA!, p.transcript.join('\n'));
+});

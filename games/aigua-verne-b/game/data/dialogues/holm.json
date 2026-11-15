@@ -1,0 +1,129 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "holm",
+  "with": "holm",
+  "start": [
+    {
+      "if": {
+        "flag": "sync_subhasta"
+      },
+      "node": "durant"
+    },
+    {
+      "if": {
+        "flag": "holm_parlat"
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "holm",
+          "text": "dlg.holm.hola.1"
+        }
+      ],
+      "goto": "q"
+    },
+    "q": {
+      "choices": [
+        {
+          "id": "llavors",
+          "text": "dlg.holm.opt.llavors",
+          "next": "llavors"
+        },
+        {
+          "id": "vestit",
+          "text": "dlg.holm.opt.vestit",
+          "next": "vestit"
+        },
+        {
+          "id": "magnat",
+          "text": "dlg.holm.opt.magnat",
+          "next": "magnat"
+        }
+      ]
+    },
+    "llavors": {
+      "lines": [
+        {
+          "who": "holm",
+          "text": "dlg.holm.llavors.1"
+        }
+      ],
+      "goto": "parlat"
+    },
+    "vestit": {
+      "lines": [
+        {
+          "who": "holm",
+          "text": "dlg.holm.vestit.1"
+        }
+      ],
+      "goto": "parlat"
+    },
+    "magnat": {
+      "lines": [
+        {
+          "who": "holm",
+          "text": "dlg.holm.magnat.1"
+        }
+      ],
+      "goto": "parlat"
+    },
+    "parlat": {
+      "lines": [
+        {
+          "who": "holm",
+          "text": "dlg.holm.parlat.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.holm.parlat.2"
+        },
+        {
+          "who": "holm",
+          "text": "dlg.holm.parlat.3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.holm.parlat.4"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "holm_parlat"
+        }
+      ]
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "holm",
+          "text": "dlg.holm.torna.1"
+        },
+        {
+          "who": "holm",
+          "text": "dlg.holm.torna.2"
+        }
+      ]
+    },
+    "durant": {
+      "lines": [
+        {
+          "who": "holm",
+          "text": "dlg.holm.durant.1"
+        }
+      ],
+      "goto": "sub"
+    },
+    "sub": {
+      "goto": "subhasta_menu"
+    },
+    "subhasta_menu": {}
+  }
+}

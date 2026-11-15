@@ -1,0 +1,158 @@
+{
+  "id": "final_pluja",
+  "name": "La granja, sota la pluja",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 198
+          },
+          {
+            "x": 130,
+            "y": 197
+          },
+          {
+            "x": 250,
+            "y": 199
+          },
+          {
+            "x": 268,
+            "y": 214
+          },
+          {
+            "x": 334,
+            "y": 216
+          },
+          {
+            "x": 370,
+            "y": 211
+          },
+          {
+            "x": 472,
+            "y": 198
+          },
+          {
+            "x": 639,
+            "y": 199
+          },
+          {
+            "x": 639,
+            "y": 258
+          },
+          {
+            "x": 0,
+            "y": 258
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "barril_pou",
+      "tag": "barril_pou",
+      "animations": {
+        "barril_pou": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "caixa_ferrum",
+      "tag": "caixa_ferrum",
+      "animations": {
+        "caixa_ferrum": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "pluja",
+      "tag": "pluja",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pluja": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 330,
+      "y": 238,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 284,
+      "y": 230,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "diu-1",
+      "definition": "diu/diu.character.json",
+      "x": 470,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "quim-1",
+      "definition": "quim/quim.character.json",
+      "x": 133,
+      "y": 197,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

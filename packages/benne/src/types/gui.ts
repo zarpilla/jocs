@@ -588,8 +588,17 @@ export type GuiControl =
   | GuiTriggerControl
   | GuiGridControl;
 
+/**
+ * Adaptive height (`resolution.minHeight`): GUIs are authored at the minimum height, and when the game is taller
+ * a control moves with the screen's top (default), centre or bottom; `stretch` keeps its `y` and grows its height
+ * (a full-screen backdrop). Set on the GUI (all its controls) or on a control (overrides the GUI's).
+ */
+export type GuiAnchorY = 'top' | 'center' | 'bottom' | 'stretch';
+
 export interface GuiData {
   id: string;
+  /** Adaptive height: where this GUI's controls go when the game is taller than it was authored ({@link GuiAnchorY}). */
+  anchorY?: GuiAnchorY;
   /** BenneScript handle name, when the generated one doesn't fit (docs/bennescript-ergonomics-refactor.md §7.2). */
   scriptName?: string;
   name: string;

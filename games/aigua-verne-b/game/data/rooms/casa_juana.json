@@ -1,0 +1,80 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.casa_juana.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.casa_juana.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "aqua_fons"
+        }
+      ]
+    },
+    "mapes": {
+      "name": "sala.casa_juana.mapes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.casa_juana.mapes.1"
+            }
+          ]
+        }
+      ]
+    },
+    "llibres": {
+      "name": "sala.casa_juana.llibres.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.casa_juana.llibres.1"
+            }
+          ]
+        }
+      ]
+    },
+    "aquari": {
+      "name": "sala.casa_juana.aquari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.casa_juana.aquari.1"
+            }
+          ]
+        }
+      ]
+    },
+    "finestra": {
+      "name": "sala.casa_juana.finestra.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.casa_juana.finestra.1"
+            }
+          ]
+        }
+      ]
+    },
+    "juana": {}
+  }
+}

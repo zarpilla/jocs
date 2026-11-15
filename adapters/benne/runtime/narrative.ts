@@ -4,7 +4,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type FallbackTarget, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -477,6 +477,22 @@ export function bindHotspots(handles: Record<string, Showable>) {
   boundHotspots = { ...boundHotspots, ...handles };
   applyHotspotVisibility();
 }
+
+/**
+ * Una interfície pròpia del joc (p. ex. la tàctil d'Aigua Verne B, sense barra de verbs) pot quedar-se alguns
+ * clics abans que vagin al JSON (`routeInteraction`, narrative.script.ts): verbs seus (tocar, el menú d'accions) o
+ * decidir quin verb fa un objecte. `takes` ha de ser instantània; `route` pot ser una funció de pas, i per fer la
+ * interacció del JSON crida `performInteraction`. Sense encaminador, cada clic va directe al JSON.
+ */
+export interface TouchRouter {
+  takes(verb: string, target: FallbackTarget, item?: string): boolean;
+  route(verb: string, target: FallbackTarget, item?: string): unknown;
+}
+let router: TouchRouter | null = null;
+export function setTouchRouter(r: TouchRouter | null) {
+  router = r;
+}
+export const touchRouter = () => router;
 
 /**
  * El botó «Canvia» (a la barra de verbs i, si el joc el té, al menú) només hi és quan el jugador pot

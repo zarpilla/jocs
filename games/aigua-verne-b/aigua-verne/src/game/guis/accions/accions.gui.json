@@ -1,0 +1,345 @@
+{
+  "id": "accions",
+  "name": "Accions",
+  "description": "Aigua Verne B: el menú d'accions [hd640/hud.py]",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "modal": true,
+  "zIndex": 90,
+  "controls": [
+    {
+      "type": "button",
+      "id": "fons",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 288,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "backgroundTag": "",
+      "backgroundColor": "#000000",
+      "backgroundColorStates": {
+        "hover": "#000000",
+        "pressed": "#000000"
+      },
+      "zIndex": 1,
+      "anchorY": "stretch"
+    },
+    {
+      "type": "text",
+      "id": "titol",
+      "x": 320,
+      "y": 100,
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "color": "#ff9a32",
+      "align": "center",
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "allSides"
+      },
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "accio0",
+      "x": 0,
+      "y": 0,
+      "width": 104,
+      "height": 22,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "Accio",
+      "states": {
+        "hover": "Accio-hover",
+        "pressed": "Accio-pressed"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      },
+      "zIndex": 2,
+      "visible": false
+    },
+    {
+      "type": "button",
+      "id": "accio1",
+      "x": 0,
+      "y": 0,
+      "width": 104,
+      "height": 22,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "Accio",
+      "states": {
+        "hover": "Accio-hover",
+        "pressed": "Accio-pressed"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      },
+      "zIndex": 2,
+      "visible": false
+    },
+    {
+      "type": "button",
+      "id": "accio2",
+      "x": 0,
+      "y": 0,
+      "width": 104,
+      "height": 22,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "Accio",
+      "states": {
+        "hover": "Accio-hover",
+        "pressed": "Accio-pressed"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      },
+      "zIndex": 2,
+      "visible": false
+    },
+    {
+      "type": "button",
+      "id": "accio3",
+      "x": 0,
+      "y": 0,
+      "width": 104,
+      "height": 22,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "Accio",
+      "states": {
+        "hover": "Accio-hover",
+        "pressed": "Accio-pressed"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      },
+      "zIndex": 2,
+      "visible": false
+    },
+    {
+      "type": "button",
+      "id": "accio4",
+      "x": 0,
+      "y": 0,
+      "width": 104,
+      "height": 22,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "Accio",
+      "states": {
+        "hover": "Accio-hover",
+        "pressed": "Accio-pressed"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      },
+      "zIndex": 2,
+      "visible": false
+    },
+    {
+      "type": "button",
+      "id": "accio5",
+      "x": 0,
+      "y": 0,
+      "width": 104,
+      "height": 22,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "Accio",
+      "states": {
+        "hover": "Accio-hover",
+        "pressed": "Accio-pressed"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      },
+      "zIndex": 2,
+      "visible": false
+    },
+    {
+      "type": "text",
+      "id": "text0",
+      "x": 0,
+      "y": 0,
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "center",
+      "zIndex": 3,
+      "visible": false,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "text1",
+      "x": 0,
+      "y": 0,
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "center",
+      "zIndex": 3,
+      "visible": false,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "text2",
+      "x": 0,
+      "y": 0,
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "center",
+      "zIndex": 3,
+      "visible": false,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "text3",
+      "x": 0,
+      "y": 0,
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "center",
+      "zIndex": 3,
+      "visible": false,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "text4",
+      "x": 0,
+      "y": 0,
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "center",
+      "zIndex": 3,
+      "visible": false,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "text5",
+      "x": 0,
+      "y": 0,
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "align": "center",
+      "zIndex": 3,
+      "visible": false,
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    }
+  ]
+}

@@ -481,21 +481,7 @@ export class Narrative {
    */
   interact(req: InteractionRequest): InteractionResult | null {
     const room = req.room ?? this.world.currentRoom() ?? '';
-    const lists: [string, InteractionDef[] | undefined][] = [];
-    if (req.target.kind !== 'item') {
-      lists.push([`${room}/${req.target.id}`, this.content.rooms[room]?.hotspots[req.target.id]?.interactions]);
-    }
-    if (req.target.kind === 'character') {
-      lists.push([`character/${req.target.id}`, this.content.characters[req.target.id]?.interactions]);
-    }
-    if (req.target.kind === 'item') {
-      lists.push([`item/${req.target.id}`, this.content.items[req.target.id]?.interactions]);
-      // Combinar A amb B ha de funcionar en tots dos sentits.
-      if (req.item) {
-        lists.push([`item/${req.item}`, this.content.items[req.item]?.interactions]);
-      }
-    }
-    for (const [scope, list = []] of lists) {
+    for (const [scope, list = []] of this.interactionLists(req, room)) {
       // En combinar A amb B des de B, l'objecte "fet servir" passa a ser A.
       const item = scope === `item/${req.item}` ? req.target.id : req.item;
       const found = this.findInteraction(scope, list, req.verb, item);
@@ -517,6 +503,40 @@ export class Narrative {
       : undefined;
     if (description) return { lines: [{ who: 'player', key: description, text: this.t(description) }] };
     return null;
+  }
+
+  /**
+   * La interacció que faria `interact(req)` ara mateix, però sense fer-la: ni efectes, ni línies, ni `once`
+   * gastat. Busca als mateixos llocs i en el mateix ordre (la sala, i després el personatge o l'objecte).
+   * Serveix a una interfície que vol saber què farà cada verb abans de proposar-lo.
+   */
+  peek(req: InteractionRequest): InteractionDef | undefined {
+    const room = req.room ?? this.world.currentRoom() ?? '';
+    for (const [scope, list = []] of this.interactionLists(req, room)) {
+      const item = scope === `item/${req.item}` ? req.target.id : req.item;
+      const found = this.findInteraction(scope, list, req.verb, item);
+      if (found) return found;
+    }
+    return undefined;
+  }
+
+  /** On es busquen les interaccions d'una petició, per ordre. */
+  private interactionLists(req: InteractionRequest, room: Id): [string, InteractionDef[] | undefined][] {
+    const lists: [string, InteractionDef[] | undefined][] = [];
+    if (req.target.kind !== 'item') {
+      lists.push([`${room}/${req.target.id}`, this.content.rooms[room]?.hotspots[req.target.id]?.interactions]);
+    }
+    if (req.target.kind === 'character') {
+      lists.push([`character/${req.target.id}`, this.content.characters[req.target.id]?.interactions]);
+    }
+    if (req.target.kind === 'item') {
+      lists.push([`item/${req.target.id}`, this.content.items[req.target.id]?.interactions]);
+      // Combinar A amb B ha de funcionar en tots dos sentits.
+      if (req.item) {
+        lists.push([`item/${req.item}`, this.content.items[req.item]?.interactions]);
+      }
+    }
+    return lists;
   }
 
   /** En entrar a una sala: la primera entrada d'`onEnter` que encaixi. */

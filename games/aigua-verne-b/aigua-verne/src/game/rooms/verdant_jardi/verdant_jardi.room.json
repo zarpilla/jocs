@@ -1,0 +1,422 @@
+{
+  "id": "verdant_jardi",
+  "name": "Jardí de la residència",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 34,
+            "y": 238
+          },
+          {
+            "x": 104,
+            "y": 232
+          },
+          {
+            "x": 112,
+            "y": 208
+          },
+          {
+            "x": 300,
+            "y": 210
+          },
+          {
+            "x": 306,
+            "y": 214
+          },
+          {
+            "x": 400,
+            "y": 214
+          },
+          {
+            "x": 408,
+            "y": 210
+          },
+          {
+            "x": 462,
+            "y": 212
+          },
+          {
+            "x": 500,
+            "y": 212
+          },
+          {
+            "x": 636,
+            "y": 208
+          },
+          {
+            "x": 636,
+            "y": 256
+          },
+          {
+            "x": 4,
+            "y": 256
+          },
+          {
+            "x": 4,
+            "y": 242
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "rampa",
+      "active": true,
+      "description": "Cantimplora",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 0,
+          "y": 104
+        },
+        {
+          "x": 96,
+          "y": 104
+        },
+        {
+          "x": 96,
+          "y": 236
+        },
+        {
+          "x": 0,
+          "y": 236
+        }
+      ],
+      "walkToPoint": {
+        "x": 92,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 48,
+        "y": 236
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_residencia",
+      "active": true,
+      "description": "residència",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 330,
+          "y": 96
+        },
+        {
+          "x": 374,
+          "y": 96
+        },
+        {
+          "x": 374,
+          "y": 200
+        },
+        {
+          "x": 330,
+          "y": 200
+        }
+      ],
+      "walkToPoint": {
+        "x": 352,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 352,
+        "y": 200
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_cobert",
+      "active": true,
+      "description": "cobert",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 546,
+          "y": 100
+        },
+        {
+          "x": 594,
+          "y": 100
+        },
+        {
+          "x": 594,
+          "y": 206
+        },
+        {
+          "x": 546,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 570,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 570,
+        "y": 206
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "flors",
+      "active": true,
+      "description": "flors",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 114,
+          "y": 212
+        },
+        {
+          "x": 280,
+          "y": 212
+        },
+        {
+          "x": 280,
+          "y": 252
+        },
+        {
+          "x": 114,
+          "y": 252
+        }
+      ],
+      "walkToPoint": {
+        "x": 196,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 197,
+        "y": 252
+      }
+    },
+    {
+      "id": "aspersors",
+      "active": true,
+      "description": "aspersors",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 508,
+          "y": 214
+        },
+        {
+          "x": 624,
+          "y": 214
+        },
+        {
+          "x": 624,
+          "y": 246
+        },
+        {
+          "x": 508,
+          "y": 246
+        }
+      ],
+      "walkToPoint": {
+        "x": 566,
+        "y": 246
+      },
+      "lookAtPoint": {
+        "x": 566,
+        "y": 246
+      }
+    },
+    {
+      "id": "reixa",
+      "active": true,
+      "description": "reixa",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 462,
+          "y": 142
+        },
+        {
+          "x": 502,
+          "y": 142
+        },
+        {
+          "x": 502,
+          "y": 214
+        },
+        {
+          "x": 462,
+          "y": 214
+        }
+      ],
+      "walkToPoint": {
+        "x": 482,
+        "y": 220
+      },
+      "lookAtPoint": {
+        "x": 482,
+        "y": 214
+      }
+    },
+    {
+      "id": "llancadora",
+      "active": true,
+      "description": "llançadora",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 98,
+          "y": 116
+        },
+        {
+          "x": 190,
+          "y": 116
+        },
+        {
+          "x": 190,
+          "y": 204
+        },
+        {
+          "x": 98,
+          "y": 204
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 212
+      },
+      "lookAtPoint": {
+        "x": 144,
+        "y": 204
+      }
+    },
+    {
+      "id": "panell_preu",
+      "active": true,
+      "description": "panell del preu",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 182,
+          "y": 108
+        },
+        {
+          "x": 234,
+          "y": 108
+        },
+        {
+          "x": 234,
+          "y": 186
+        },
+        {
+          "x": 182,
+          "y": 186
+        }
+      ],
+      "walkToPoint": {
+        "x": 214,
+        "y": 214
+      },
+      "lookAtPoint": {
+        "x": 208,
+        "y": 186
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "boira",
+      "tag": "boira",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "boira": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "degoteig",
+      "tag": "degoteig",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "degoteig": {
+          "loop": true,
+          "frameDuration": 160
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 292,
+      "y": 236,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 110,
+      "y": 244,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "nil-1",
+      "definition": "nil/nil.character.json",
+      "x": 196,
+      "y": 238,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "fidel-1",
+      "definition": "fidel/fidel.character.json",
+      "x": 352,
+      "y": 211,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.cantimplora_pont.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "escala": {
+      "name": "sala.cantimplora_pont.escala.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "goTo": "cantimplora_bodega"
+        }
+      ]
+    },
+    "mapa": {
+      "name": "sala.cantimplora_pont.mapa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.mapa.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.mapa.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "capitana_accepta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.mapa.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "dialogue": "mapa"
+        }
+      ]
+    },
+    "radio": {
+      "name": "sala.cantimplora_pont.radio.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.radio.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "cap_condicions"
+              },
+              {
+                "flag": "albara_fet",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.cantimplora_pont.radio.2",
+              "sound": "radio"
+            }
+          ],
+          "dialogue": "radio_juana"
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.cantimplora_pont.radio.3",
+              "sound": "radio"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.cantimplora_pont.radio.4"
+            }
+          ]
+        }
+      ]
+    },
+    "pantalla": {
+      "name": "sala.cantimplora_pont.pantalla.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "trucada_feta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.pantalla.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.pantalla.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.pantalla.3"
+            }
+          ]
+        }
+      ]
+    },
+    "finestral": {
+      "name": "sala.cantimplora_pont.finestral.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "terra2"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.finestral.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "aqua"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.finestral.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "ferrum"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.finestral.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "planeta",
+            "op": "==",
+            "value": "verdant"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.finestral.4"
+            }
+          ]
+        }
+      ]
+    },
+    "seient": {
+      "name": "sala.cantimplora_pont.seient.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.seient.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_pont.seient.2"
+            }
+          ]
+        }
+      ]
+    },
+    "capitana": {
+      "visibleIf": {
+        "var": "escena",
+        "op": "<=",
+        "value": 6
+      }
+    }
+  },
+  "onEnter": [
+    {
+      "id": "trucada",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 6
+          },
+          {
+            "flag": "trucada_feta",
+            "is": false
+          }
+        ]
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.cantimplora_pont.entra.1",
+          "sound": "pantalla"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "trucada_activa"
+        }
+      ],
+      "dialogue": "trucada"
+    }
+  ],
+  "decor": {
+    "vista_terra2": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "terra2"
+      }
+    },
+    "vista_aqua": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "aqua"
+      }
+    },
+    "vista_ferrum": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "ferrum"
+      }
+    },
+    "vista_verdant": {
+      "visibleIf": {
+        "var": "planeta",
+        "op": "==",
+        "value": "verdant"
+      }
+    },
+    "pantalla_verne": {
+      "visibleIf": {
+        "flag": "trucada_activa"
+      }
+    }
+  }
+}

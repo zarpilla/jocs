@@ -1,0 +1,377 @@
+{
+  "id": "granja_casa",
+  "name": "Casa del pare",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 8,
+            "y": 226
+          },
+          {
+            "x": 632,
+            "y": 226
+          },
+          {
+            "x": 638,
+            "y": 258
+          },
+          {
+            "x": 2,
+            "y": 258
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "pati",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 286,
+          "y": 75
+        },
+        {
+          "x": 358,
+          "y": 75
+        },
+        {
+          "x": 358,
+          "y": 206
+        },
+        {
+          "x": 286,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 322,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 322,
+        "y": 206
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "calaix",
+      "active": true,
+      "description": "calaixos",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 430,
+          "y": 160
+        },
+        {
+          "x": 562,
+          "y": 160
+        },
+        {
+          "x": 562,
+          "y": 220
+        },
+        {
+          "x": 430,
+          "y": 220
+        }
+      ],
+      "walkToPoint": {
+        "x": 494,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 496,
+        "y": 220
+      }
+    },
+    {
+      "id": "videotelefon",
+      "active": true,
+      "description": "videotelèfon",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 360,
+          "y": 92
+        },
+        {
+          "x": 410,
+          "y": 92
+        },
+        {
+          "x": 410,
+          "y": 150
+        },
+        {
+          "x": 360,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 388,
+        "y": 234
+      },
+      "lookAtPoint": {
+        "x": 385,
+        "y": 150
+      }
+    },
+    {
+      "id": "bol",
+      "active": true,
+      "description": "bol del gos",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 137,
+          "y": 209
+        },
+        {
+          "x": 163,
+          "y": 209
+        },
+        {
+          "x": 163,
+          "y": 223
+        },
+        {
+          "x": 137,
+          "y": 223
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 234
+      },
+      "lookAtPoint": {
+        "x": 150,
+        "y": 223
+      }
+    },
+    {
+      "id": "pots",
+      "active": true,
+      "description": "pots",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 150,
+          "y": 36
+        },
+        {
+          "x": 288,
+          "y": 36
+        },
+        {
+          "x": 288,
+          "y": 125
+        },
+        {
+          "x": 150,
+          "y": 125
+        }
+      ],
+      "walkToPoint": {
+        "x": 220,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 219,
+        "y": 125
+      }
+    },
+    {
+      "id": "pica",
+      "active": true,
+      "description": "pica",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 154,
+          "y": 126
+        },
+        {
+          "x": 234,
+          "y": 126
+        },
+        {
+          "x": 234,
+          "y": 206
+        },
+        {
+          "x": 154,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 196,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 194,
+        "y": 206
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "quadre",
+      "tag": "quadre",
+      "animations": {
+        "quadre": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 462,
+            "y": 66
+          },
+          {
+            "x": 514,
+            "y": 66
+          },
+          {
+            "x": 514,
+            "y": 136
+          },
+          {
+            "x": 462,
+            "y": 136
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 488,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 488,
+        "y": 136
+      },
+      "description": "quadre de la mare"
+    },
+    {
+      "id": "caixa_forta",
+      "tag": "caixa_forta",
+      "animations": {
+        "caixa_forta": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 472,
+            "y": 86
+          },
+          {
+            "x": 504,
+            "y": 86
+          },
+          {
+            "x": 504,
+            "y": 122
+          },
+          {
+            "x": 472,
+            "y": 122
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 488,
+        "y": 236
+      },
+      "lookAtPoint": {
+        "x": 488,
+        "y": 122
+      },
+      "description": "caixa forta"
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 250,
+      "y": 246,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 402,
+      "y": 250,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "quim-veu",
+      "definition": "quim/quim.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ]
+}

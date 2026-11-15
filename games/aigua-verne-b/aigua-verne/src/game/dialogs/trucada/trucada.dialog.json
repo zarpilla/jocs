@@ -1,0 +1,27 @@
+{
+  "id": "trucada",
+  "displayName": "trucada",
+  "options": [
+    {
+      "id": "inici__si",
+      "scriptName": "inici__si",
+      "text": "Acceptem.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__no",
+      "scriptName": "inici__no",
+      "text": "No.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "inici__pou",
+      "scriptName": "inici__pou",
+      "text": "El pou ja és nostre.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}
