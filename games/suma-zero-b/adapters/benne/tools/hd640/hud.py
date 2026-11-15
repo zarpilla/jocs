@@ -55,12 +55,13 @@ FLETXA_W = 13
 # i l'inventari sempre a la vista. Coordenades a 360 d'alt.
 H_MAX = 360
 TAULER = (0, FRANJA, W, H_MAX - FRANJA)          # 640×100
-COLS2, ROWS2 = 6, 2
-SAFATA2_W, SAFATA2_H = 450, 82
-SAFATA2 = ((W - SAFATA2_W) // 2 + 8, H_MAX - 4 - SAFATA2_H)
+COLS2, ROWS2 = 7, 2                     # 7 per fila: el tauler té a l'esquerra «Canvia», el menú i els punts
+SAFATA2_W, SAFATA2_H = 520, 82
+SAFATA2 = (94, H_MAX - 4 - SAFATA2_H)           # de la columna de l'esquerra (fins a x = 67) a la dreta
 # Tauler baix (una finestra de navegador, d'uns 320–350 d'alt): una sola fila de 6, amb les fletxes als costats.
-SAFATA3_W, SAFATA3_H = 458, 44
-SAFATA3_X = 126
+SAFATA3_W, SAFATA3_H = 529, 44
+SAFATA3_X = 100                         # de la columna de l'esquerra (fins a x = 90) a la dreta
+PETIT = 25                              # els punts petits del tauler baix (al costat de «Canvia», sota el menú)
 KEY_W, KEY_H = 104, 22                  # botons del menú d'accions
 ACCIONS_MAX = 6
 
@@ -122,8 +123,8 @@ def punts_icon(cv, hover):
         cv.glow(cx, cy, 12, TEAL[4], 0.3)
 
 
-def boto(icon, hover=False, on=False):
-    cv = plate(BOTO, BOTO, hover, on)
+def boto(icon, hover=False, on=False, mida=BOTO):
+    cv = plate(mida, mida, hover, on)
     icon(cv, hover or on)
     return cv.img
 
@@ -229,8 +230,8 @@ def safata3():
 
 
 def tauler():
-    """La consola de la franja de sota l'escena: la franja de la frase, la línia de llum, el cos amb la trama de punts,
-    les juntes i, als extrems, LEDs i reixetes (com la barra, sense tecles)."""
+    """La consola de la franja de sota l'escena: la franja de la frase, la línia de llum i el cos amb la trama de punts
+    (com la barra, sense tecles ni juntes: a sobre hi van «Canvia», el menú, els punts i l'inventari)."""
     _, _, tw, th = TAULER
     cv = Canvas(tw, th, transparent=True)
     for y in range(0, vg.STRIP_H + 1):                          # la franja de la frase: una barra d'estat fosca
@@ -245,15 +246,6 @@ def tauler():
     for y in range(vg.BODY_Y, th - 1):
         cv.put(0, y, SLATE, 4.2, lit=0)
         cv.put(tw - 1, y, SLATE, 1.2, lit=0)
-    for sx in (114, tw - 72):                                   # juntes: «Canvia» | inventari | menú
-        for y in range(vg.BODY_Y + 4, th - 4):
-            cv.put(sx, y, SLATE, 0.3, lit=0)
-            cv.put(sx + 1, y, TEAL, 1.2 if (y // 5) % 3 else 2.0, lit=0)
-    # a la dreta de tot, a dalt (es veu amb una fila o amb dues, i no toca el menú): un vúmetre de LEDs
-    for k in range(5):
-        led(cv, tw - 11, vg.BODY_Y + 6 + k * 8, MAG if k == 0 else TEAL, on=k > 1)
-    # a l'esquerra, sota «Canvia» i els punts (només es veu amb dues files): la reixeta
-    slits(cv, 8, 60, (th - 13, th - 8))
     return cv.img
 
 
@@ -275,6 +267,7 @@ def build_hud():
         (boto(bossa_icon), 'BossaBtn'), (boto(bossa_icon, hover=True), 'BossaBtn-hover'),
         (boto(bossa_icon, on=True), 'BossaBtn-on'),
         (boto(punts_icon), 'PuntsBtn'), (boto(punts_icon, hover=True), 'PuntsBtn-hover'),
+        (boto(punts_icon, mida=PETIT), 'PuntsPetitBtn'), (boto(punts_icon, hover=True, mida=PETIT), 'PuntsPetitBtn-hover'),
         (safata(), 'Safata'),
         (fletxa(True, False), 'UpBtn'), (fletxa(True, True), 'UpBtn-hover'),
         (fletxa(False, False), 'DownBtn'), (fletxa(False, True), 'DownBtn-hover'),
@@ -314,6 +307,8 @@ def build_hud():
          'visible': False, 'clickable': False},
         button('MenuBtn', MENU_BTN, ms, ms, 'MenuBtn'),
         button('PuntsBtn', PUNTS, BOTO, BOTO, 'PuntsBtn', {'hover': 'PuntsBtn-hover'}),
+        # els punts petits del tauler baix (hud.ts els posa i els mostra)
+        button('PuntsPetitBtn', PUNTS, PETIT, PETIT, 'PuntsPetitBtn', {'hover': 'PuntsPetitBtn-hover'}, visible=False),
         button('BossaBtn', BOSSA, BOTO, BOTO, 'BossaBtn', {'hover': 'BossaBtn-hover'}),
         # la safata, plegada: verbs.gui.ts la desplega amb el botó de l'inventari
         {'type': 'image', 'id': 'Safata', 'x': SAFATA[0], 'y': SAFATA[1], 'tag': 'Safata', 'backgroundAnchor': 'top-left',

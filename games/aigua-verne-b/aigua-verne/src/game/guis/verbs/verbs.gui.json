@@ -115,6 +115,27 @@
     },
     {
       "type": "button",
+      "id": "PuntsPetitBtn",
+      "x": 4,
+      "y": 252,
+      "width": 25,
+      "height": 25,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "aiguaverne-negreta",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "PuntsPetitBtn",
+      "states": {
+        "hover": "PuntsPetitBtn-hover"
+      },
+      "visible": false
+    },
+    {
+      "type": "button",
       "id": "BossaBtn",
       "x": 604,
       "y": 252,
@@ -209,7 +230,7 @@
     {
       "type": "image",
       "id": "Safata2",
-      "x": 103,
+      "x": 94,
       "y": 202,
       "tag": "Safata2",
       "backgroundAnchor": "top-left",
@@ -219,10 +240,10 @@
     {
       "type": "inventoryPanel",
       "id": "inventoryPanel2",
-      "x": 113,
+      "x": 105,
       "y": 205,
       "rows": 2,
-      "cols": 6,
+      "cols": 7,
       "slotWidth": 65,
       "slotHeight": 36,
       "showEmptySlots": true,
@@ -237,7 +258,7 @@
     {
       "type": "button",
       "id": "upBtn2",
-      "x": 529,
+      "x": 590,
       "y": 205,
       "width": 13,
       "height": 36,
@@ -259,7 +280,7 @@
     {
       "type": "button",
       "id": "downBtn2",
-      "x": 529,
+      "x": 590,
       "y": 245,
       "width": 13,
       "height": 36,
@@ -281,7 +302,7 @@
     {
       "type": "image",
       "id": "Safata3",
-      "x": 126,
+      "x": 100,
       "y": 240,
       "tag": "Safata3",
       "backgroundAnchor": "top-left",
@@ -291,10 +312,10 @@
     {
       "type": "inventoryPanel",
       "id": "inventoryPanel3",
-      "x": 150,
+      "x": 125,
       "y": 244,
       "rows": 1,
-      "cols": 6,
+      "cols": 7,
       "slotWidth": 65,
       "slotHeight": 36,
       "showEmptySlots": true,
@@ -309,7 +330,7 @@
     {
       "type": "button",
       "id": "upBtn3",
-      "x": 131,
+      "x": 106,
       "y": 244,
       "width": 13,
       "height": 36,
@@ -331,7 +352,7 @@
     {
       "type": "button",
       "id": "downBtn3",
-      "x": 566,
+      "x": 610,
       "y": 244,
       "width": 13,
       "height": 36,

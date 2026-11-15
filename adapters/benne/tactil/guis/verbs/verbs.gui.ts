@@ -2,12 +2,13 @@
 // hi busca el botó «Canvia»). Els dos modes (mòbil i tauler) i on va cada cosa: hud.ts.
 import { game, onUpdate, pointer } from '@benne/script';
 import { guis } from '@game';
-import { gui, bossaBtn, canviaBtn, menuBtn, puntsBtn } from './verbs.ids';
+import { gui, bossaBtn, canviaBtn, menuBtn, puntsBtn, puntsPetitBtn } from './verbs.ids';
 import { isTrayOpen, layoutHud, modeTauler, refreshLine, showTray } from './hud';
 import { switchProtagonist } from '../../narrative/narrative.script';
 
 bossaBtn.onClick(() => showTray(!isTrayOpen()))
 puntsBtn.onClick(() => game.showClickables())
+puntsPetitBtn.onClick(() => game.showClickables())
 menuBtn.onClick(() => guis.gameMenu.show())
 canviaBtn.onClick(() => switchProtagonist())
 

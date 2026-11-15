@@ -172,68 +172,68 @@
    "frame": {
     "x": 299,
     "y": 0,
-    "w": 532,
-    "h": 44
+    "w": 25,
+    "h": 25
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 532,
-    "h": 44
+    "w": 25,
+    "h": 25
    },
    "sourceSize": {
-    "w": 532,
-    "h": 44
+    "w": 25,
+    "h": 25
    },
    "duration": 100
   },
   "verbs 9.aseprite": {
    "frame": {
-    "x": 831,
+    "x": 324,
     "y": 0,
-    "w": 13,
-    "h": 36
+    "w": 25,
+    "h": 25
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 13,
-    "h": 36
+    "w": 25,
+    "h": 25
    },
    "sourceSize": {
-    "w": 13,
-    "h": 36
+    "w": 25,
+    "h": 25
    },
    "duration": 100
   },
   "verbs 10.aseprite": {
    "frame": {
-    "x": 844,
+    "x": 349,
     "y": 0,
-    "w": 13,
-    "h": 36
+    "w": 532,
+    "h": 44
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 13,
-    "h": 36
+    "w": 532,
+    "h": 44
    },
    "sourceSize": {
-    "w": 13,
-    "h": 36
+    "w": 532,
+    "h": 44
    },
    "duration": 100
   },
   "verbs 11.aseprite": {
    "frame": {
-    "x": 857,
+    "x": 881,
     "y": 0,
     "w": 13,
     "h": 36
@@ -254,7 +254,7 @@
   },
   "verbs 12.aseprite": {
    "frame": {
-    "x": 870,
+    "x": 894,
     "y": 0,
     "w": 13,
     "h": 36
@@ -275,93 +275,135 @@
   },
   "verbs 13.aseprite": {
    "frame": {
-    "x": 883,
+    "x": 907,
     "y": 0,
-    "w": 1,
-    "h": 1
+    "w": 13,
+    "h": 36
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 1,
-    "h": 1
+    "w": 13,
+    "h": 36
    },
    "sourceSize": {
-    "w": 1,
-    "h": 1
+    "w": 13,
+    "h": 36
    },
    "duration": 100
   },
   "verbs 14.aseprite": {
    "frame": {
-    "x": 884,
+    "x": 920,
     "y": 0,
-    "w": 1,
-    "h": 1
+    "w": 13,
+    "h": 36
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 1,
-    "h": 1
+    "w": 13,
+    "h": 36
    },
    "sourceSize": {
-    "w": 1,
-    "h": 1
+    "w": 13,
+    "h": 36
    },
    "duration": 100
   },
   "verbs 15.aseprite": {
    "frame": {
-    "x": 885,
+    "x": 933,
     "y": 0,
-    "w": 640,
-    "h": 100
+    "w": 1,
+    "h": 1
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 640,
-    "h": 100
+    "w": 1,
+    "h": 1
    },
    "sourceSize": {
-    "w": 640,
-    "h": 100
+    "w": 1,
+    "h": 1
    },
    "duration": 100
   },
   "verbs 16.aseprite": {
    "frame": {
-    "x": 0,
-    "y": 100,
-    "w": 450,
-    "h": 82
+    "x": 934,
+    "y": 0,
+    "w": 1,
+    "h": 1
    },
    "rotated": false,
    "trimmed": false,
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 450,
-    "h": 82
+    "w": 1,
+    "h": 1
    },
    "sourceSize": {
-    "w": 450,
-    "h": 82
+    "w": 1,
+    "h": 1
    },
    "duration": 100
   },
   "verbs 17.aseprite": {
    "frame": {
-    "x": 450,
+    "x": 935,
+    "y": 0,
+    "w": 640,
+    "h": 100
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 640,
+    "h": 100
+   },
+   "sourceSize": {
+    "w": 640,
+    "h": 100
+   },
+   "duration": 100
+  },
+  "verbs 18.aseprite": {
+   "frame": {
+    "x": 0,
     "y": 100,
-    "w": 458,
+    "w": 520,
+    "h": 82
+   },
+   "rotated": false,
+   "trimmed": false,
+   "spriteSourceSize": {
+    "x": 0,
+    "y": 0,
+    "w": 520,
+    "h": 82
+   },
+   "sourceSize": {
+    "w": 520,
+    "h": 82
+   },
+   "duration": 100
+  },
+  "verbs 19.aseprite": {
+   "frame": {
+    "x": 520,
+    "y": 100,
+    "w": 529,
     "h": 44
    },
    "rotated": false,
@@ -369,11 +411,11 @@
    "spriteSourceSize": {
     "x": 0,
     "y": 0,
-    "w": 458,
+    "w": 529,
     "h": 44
    },
    "sourceSize": {
-    "w": 458,
+    "w": 529,
     "h": 44
    },
    "duration": 100
@@ -385,7 +427,7 @@
   "image": "verbs.png",
   "format": "RGBA8888",
   "size": {
-   "w": 1525,
+   "w": 1575,
    "h": 182
   },
   "scale": "1",
@@ -447,72 +489,86 @@
     "color": "#000000ff"
    },
    {
-    "name": "Safata",
+    "name": "PuntsPetitBtn",
     "from": 8,
     "to": 8,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "UpBtn",
+    "name": "PuntsPetitBtn-hover",
     "from": 9,
     "to": 9,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "UpBtn-hover",
+    "name": "Safata",
     "from": 10,
     "to": 10,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "DownBtn",
+    "name": "UpBtn",
     "from": 11,
     "to": 11,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "DownBtn-hover",
+    "name": "UpBtn-hover",
     "from": 12,
     "to": 12,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "CaraIri",
+    "name": "DownBtn",
     "from": 13,
     "to": 13,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "CaraVet",
+    "name": "DownBtn-hover",
     "from": 14,
     "to": 14,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "Tauler",
+    "name": "CaraIri",
     "from": 15,
     "to": 15,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "Safata2",
+    "name": "CaraVet",
     "from": 16,
     "to": 16,
     "direction": "forward",
     "color": "#000000ff"
    },
    {
-    "name": "Safata3",
+    "name": "Tauler",
     "from": 17,
     "to": 17,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "Safata2",
+    "from": 18,
+    "to": 18,
+    "direction": "forward",
+    "color": "#000000ff"
+   },
+   {
+    "name": "Safata3",
+    "from": 19,
+    "to": 19,
     "direction": "forward",
     "color": "#000000ff"
    }

@@ -7,13 +7,15 @@
 //    menú; a les cantonades de baix, els punts (què es pot tocar) i la bossa, que desplega la safata de l'inventari; a
 //    la franja negra de sota, el nom del que hi ha sota el dit (o «Usa X amb...»).
 //  - tauler (56 px o més: una finestra de navegador, un monitor): la franja de sota l'escena és un tauler amb tot: la
-//    frase a dalt, «Canvia» i els punts a l'esquerra, el menú a la dreta i, al mig, l'inventari sempre a la vista:
-//    una fila de 6 (tauler baix) o, des de 94 px, dues (tauler alt, un monitor 16:9 a pantalla completa).
+//    frase a dalt; a l'esquerra, «Canvia», el menú i els punts; i l'inventari sempre a la vista, fins a la dreta de
+//    tot: una fila de 7 (tauler baix) o, des de 94 px, dues (tauler alt, un monitor 16:9 a pantalla completa).
+//    Amb dues files, «Canvia» a dalt i, a sota, el menú i els punts l'un al costat de l'altre; amb una (no hi caben
+//    l'un sobre l'altre), «Canvia» i, al costat, el menú a sobre dels punts petits.
 import { game, player, pointer } from '@benne/script';
 import { verbs } from '@game';
 import {
   bossaBtn, canviaBtn, caraIri, caraVet, downBtn, downBtn2, downBtn3, inventoryPanel, inventoryPanel2, inventoryPanel3,
-  menuBtn, puntsBtn, safata, safata2, safata3, tauler, upBtn, upBtn2, upBtn3, verbLineText,
+  menuBtn, puntsBtn, puntsPetitBtn, safata, safata2, safata3, tauler, upBtn, upBtn2, upBtn3, verbLineText,
 } from './verbs.ids';
 
 /** On acaba l'escena (l'art de les sales és pintat fins aquí). */
@@ -54,8 +56,8 @@ export function layoutHud() {
   const petita = [safata3, inventoryPanel3, upBtn3, downBtn3];
   const h = alt();
   if (!modeTauler()) {
-    mostra([tauler, ...gran, ...petita], false);
-    mostra([bossaBtn], true);
+    mostra([tauler, puntsPetitBtn, ...gran, ...petita], false);
+    mostra([bossaBtn, puntsBtn], true);
     showTray(safataOberta);
   } else {
     const dues = franja() >= TAULER_ALT;
@@ -64,15 +66,18 @@ export function layoutHud() {
     mostra(petita, !dues);
     mostra([bossaBtn, safata, inventoryPanel, upBtn, downBtn], false);
     posa(verbLineText, 320, ESCENA + 1);
+    mostra([puntsBtn], dues);
+    mostra([puntsPetitBtn], !dues);
     if (dues) {
-      posa(canviaBtn, 22, h - 90);
-      posa(puntsBtn, 34, h - 40);
-      posa(menuBtn, 594, h - 88);
+      // dues files: «Canvia» a dalt a l'esquerra; a sota, el menú i, al costat, els punts
+      posa(canviaBtn, 6, h - 94);
+      posa(menuBtn, 6, h - 32);
+      posa(puntsBtn, 35, h - 36);
     } else {
-      // una fila: «Canvia» i els punts un al costat de l'altre, a l'alçada de la safata (els 44 px de baix)
-      posa(canviaBtn, 6, h - 47);
-      posa(puntsBtn, 70, h - 40);
-      posa(menuBtn, 600, h - 37);
+      // una fila: «Canvia» a baix a l'esquerra i, al costat, el menú a sobre dels punts petits (tot cap en 56 px)
+      posa(canviaBtn, 4, h - 47);
+      posa(menuBtn, 65, h - 56);
+      posa(puntsPetitBtn, 65, h - 29);
     }
     posa(caraIri, canviaBtn.x + CARA.x, canviaBtn.y + CARA.y);
     posa(caraVet, canviaBtn.x + CARA.x, canviaBtn.y + CARA.y);
