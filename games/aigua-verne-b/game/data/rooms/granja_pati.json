@@ -413,7 +413,17 @@
       "lines": [
         {
           "who": "vet",
-          "text": "sala.granja_pati.entra.1"
+          "text": "sala.granja_pati.entra.1",
+          "stage": [
+            {
+              "who": "player",
+              "face": "L"
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
         },
         {
           "who": "iri",
