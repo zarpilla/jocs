@@ -11,6 +11,69 @@ Guió: [guio/guio.md](guio/guio.md). Art de mostra (la guia d'estil): [guio/art/
 > les eines són a l'arrel i els comparteixen tots els jocs (vegeu el [README de l'arrel](../../README.md)). Aquí hi ha
 > el contingut (`game/`), el guió, l'art, la música i el projecte Benne (`ni-un-ou/`).
 
+## Sense barra de verbs
+
+Es juga sense barra de verbs, també amb el dit en un mòbil apaïsat (el camí **B · Modernitzar** de
+[docs/aventures-cap-on-anem.html](../../docs/aventures-cap-on-anem.html)), amb la interfície tàctil compartida.
+
+### Com es juga
+
+| Gest | Què fa |
+|---|---|
+| Tocar (clic) una cosa | La primera vegada (o quan té una descripció nova), mirar-la. Després: si té una sola acció, la fa; si en té més d'una, obre el menú i tries tu. Les sortides no es miren: s'hi va |
+| Mantenir premut (o clic dret) | El menú d'accions: «Mira» i les accions que té ara mateix |
+| Tocar el terra | Caminar |
+| Sac (a baix a la dreta) | Desplega la safata de l'inventari |
+| Tocar un objecte de la safata | El plànol s'obre, el walkie truca, les notes i el quadern es miren (el contingut no els combina mai amb res). La resta es prenen a la mà («Usa X amb...»): tocar una cosa l'hi fa servir, o li dona si és un personatge |
+| Sonar (a baix a l'esquerra) | Marca un moment tot el que es pot tocar |
+| L'ull de bou (a dalt a l'esquerra), el menú (a dalt a la dreta) | Canviar de protagonista (s'hi veu la cara de l'altra); desar, carregar, opcions, pista, historial |
+
+En una finestra d'ordinador o un monitor (si sota l'escena queden 56 px o més), la franja de sota és la planxa amb
+tot el HUD i l'inventari sempre a la vista, com a les altres B.
+
+### Què ha calgut
+
+- **`tactil: true`** al joc.ts: el `benne:sync` hi posa el runtime, els scripts del HUD i del menú d'accions, els verbs
+  de la interfície, l'alçada adaptable (de 640×288 a 640×360) i el `defaultVerb` dels objectes que es fan servir sols.
+- **L'art del HUD i del menú**, amb l'estil de la barra (la planxa blau marí amb reblons, la corda trenada, el llautó,
+  l'ull de bou): [tools/hd640/hud.py](adapters/benne/tools/hd640/hud.py), fet a partir del d'Aigua Verne.
+- **La pantalla adaptable**: [tools/hd640/pantalla.py](adapters/benne/tools/hd640/pantalla.py). Hi ha coses per tocar
+  arran de dalt (escotilles, escales): al mòbil la càmera es queda a dalt.
+- **El plànol a 288 d'alt** ([tools/hd640/mapa.py](adapters/benne/tools/hd640/mapa.py)): la mateixa geometria que
+  l'original, encongida en vertical per trams (les cobertes ≈0,8; els espais dels rètols es queden). En una pantalla més
+  alta va centrat sobre el fons de la planxa.
+- **Dos errors del plànol arreglats** (`runtime/mapa.ts`), que també té l'original amb el motor d'ara: canviava el text
+  dels botons (el motor no ho permet, i el plànol no s'obria) i deia què es veu abans de mostrar-lo (en construir-se, la
+  GUI ho mostrava tot: totes les sales ratllades i un punt de més).
+- L'historial (`runtime/historial.ts`, i la GUI a joc.ts), a l'alçada mínima; els textos `ui.accio.*` i `ui.verb.*` de la
+  interfície (game/locales/ca/interficie.json).
+
+### Resultat
+
+`game/test/tactil.test.ts` juga el joc sencer per dos camins amb el mesurador compartit (`TACTIL=1 npm test` en fa
+la llista). Cap pas és impossible.
+
+| Camí | Passos | Un toc | Toc + menú | Toc de més (mira primer) | Gestos per pas |
+|---|---|---|---|---|---|
+| Amb tots els aliats | 106 | 106 | 0 | 14 | 1,13 |
+| Amb les frontisses de l'Iri | 107 | 106 | 1 | 16 | 1,16 |
+
+L'únic menú és el registre del rebost (s'hi pot fer més d'una cosa). És el joc que millor encaixa amb el toc.
+
+### Ordres de la interfície tàctil
+
+```bash
+npm test                                           # (des de l'arrel) inclou tactil.test.ts
+npm run benne:sync                                 # el contingut i la interfície tàctil al projecte Benne
+python3 adapters/benne/tools/hd640/hud.py          # torna a fer el HUD i el menú d'accions
+python3 adapters/benne/tools/hd640/mapa.py         # torna a fer el plànol (a 288)
+python3 adapters/benne/tools/hd640/pantalla.py     # càmeres de les sales i GUI per a la pantalla adaptable (es pot repetir)
+cd ni-un-ou && npm run dev -- --host               # al navegador, i des del mòbil a la mateixa xarxa
+```
+
+Compte: `hd640/gui_rest.py` torna a fer la barra de verbs; no s'ha d'executar (o cal tornar a passar
+`hud.py` i `pantalla.py` després).
+
 ## Com és
 
 | Què | Com |

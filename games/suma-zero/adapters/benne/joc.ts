@@ -14,6 +14,9 @@ export default {
   colorsVeu: { iri: '#f0a050', vet: '#60d8d8' },
   veusProtagonistes: true,
   musicaSincronitzada: true,
+  // Sense barra de verbs, pensat també per al mòbil (adapters/benne/tactil). L'art del HUD i del menú d'accions:
+  // tools/hd640/hud.py; les sales i les GUI a l'alçada adaptable: tools/hd640/pantalla.py.
+  tactil: true,
   textosGui: {
     'game-menu': { historial: 'ui.menu.historial', pista: 'ui.menu.pista' },
   },
@@ -99,7 +102,10 @@ pista.onClick(() => {
 function addHistoryGui(gameDir: string) {
   const dir = join(gameDir, 'guis/historial');
   mkdirSync(dir, { recursive: true });
-  const { width: W, height: H } = (readJson(join(gameDir, 'game-config.json')).resolution as { width: number; height: number });
+  // A l'alçada mínima (la pantalla pot ser més alta: el fons s'estira i el peu va a baix, amb `anchorY`).
+  const res = readJson(join(gameDir, 'game-config.json')).resolution as { width: number; height: number; minHeight?: number };
+  const W = res.width;
+  const H = res.minHeight ?? res.height;
   const k = (v: number) => Math.round(v * W / 480);   // els marges es van fer a 480×270
   const text = (id: string, x: number, y: number, font: string, color: string, align = 'left') =>
     ({ type: 'text', id, x, y, text: '', font, fontSize: 8, color, align, zIndex: 2 });
@@ -108,14 +114,14 @@ function addHistoryGui(gameDir: string) {
     visible: false, display: { aseprite: false }, modal: true, zIndex: 110,
     controls: [
       {
-        type: 'button', id: 'fons', x: 0, y: 0, width: W, height: H, backgroundAnchor: 'top-left', text: '',
+        type: 'button', id: 'fons', x: 0, y: 0, width: W, height: H, anchorY: 'stretch', backgroundAnchor: 'top-left', text: '',
         font: 'suma-regular', fontSize: 8, textColor: '#ffffff', backgroundTag: '', backgroundColor: '#0b0a12',
         backgroundColorStates: { hover: '#0b0a12', pressed: '#0b0a12', disabled: '#0b0a12' }, zIndex: 1,
       },
       text('titol', k(14), k(8), 'suma-negreta', '#f0dc8c'),
       text('noms', k(14), k(HISTORIAL_TOP), 'suma-negreta', '#7fd6c4'),
       text('linies', k(14), k(HISTORIAL_TOP), 'suma-regular', '#e6e2ee'),
-      text('peu', W - k(14), H - k(15), 'suma-regular', '#8a8598', 'right'),
+      { ...text('peu', W - k(14), H - k(15), 'suma-regular', '#8a8598', 'right'), anchorY: 'bottom' },
     ],
   });
 }

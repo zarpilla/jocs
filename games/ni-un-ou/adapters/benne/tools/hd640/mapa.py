@@ -33,7 +33,7 @@ from hd640.gui_rest import write_sheet  # noqa: E402
 JOC = TOOLS.parents[2]
 GAME = JOC / 'ni-un-ou/src/game'
 LOCALES = JOC / 'game/locales/ca/interficie.json'
-W, H = 640, 360
+W, H = 640, 288                 # Ni un ou: l'alçada mínima de la pantalla adaptable (vegeu Y, a sota)
 
 # ─── Colors (un plànol imprès i plastificat) ────────────────────────────────
 BOARD = (6, 10, 20)
@@ -102,6 +102,30 @@ HEADER = (14, 12, 626, 32)
 FOOTER_Y = 334
 TANCA = (552, 333, 620, 349)
 MARK = 9                    # el punt de «sou aquí»
+
+# ─── Ni un ou: el plànol a 288 d'alt ──────────────────────────────────────
+# La geometria de dalt és la de l'original (a 360). Aquí s'encongeix en vertical, per trams: la capçalera, cada
+# coberta i el peu s'aprimen una mica (≈0,8), i els espais entre cobertes (on van els rètols) es queden prou alts.
+# En una pantalla més alta, la GUI va centrada i un fons del color de la planxa omple la resta.
+_TRAMS = [(0, 0), (6, 4), (12, 8), (32, 24), (48, 28), (104, 75), (124, 89), (230, 177), (244, 191), (330, 258),
+          (334, 262), (349, 277), (360, 288)]
+
+
+def Y(v):
+    """Una y de l'original (360) al plànol de 288."""
+    for (a, fa), (b, fb) in zip(_TRAMS, _TRAMS[1:]):
+        if v <= b:
+            return round(fa + (v - a) * (fb - fa) / (b - a))
+    return H
+
+
+SALES = {k: (x0, Y(y0), x1, Y(y1)) for k, (x0, y0, x1, y1) in SALES.items()}
+DECORS = [(x0, Y(y0), x1, Y(y1), label) for x0, y0, x1, y1, label in DECORS]
+STAIRS = [(x0, Y(y0), x1, Y(y1)) for x0, y0, x1, y1 in STAIRS]
+DECKS = [([(x, Y(y)) for x, y in poly], label, (lx, Y(ly))) for poly, label, (lx, ly) in DECKS]
+HEADER = (HEADER[0], Y(HEADER[1]), HEADER[2], Y(HEADER[3]))
+FOOTER_Y = Y(FOOTER_Y)
+TANCA = (TANCA[0], Y(TANCA[1]), TANCA[2], Y(TANCA[3]))
 
 
 def camel(sala):
@@ -197,12 +221,12 @@ def planol(noms):
     for r in STAIRS:
         stairs(d, r)
     # balses salvavides i extintors
-    raft(d, 60, 132)
-    raft(d, 60, 216)
-    raft(d, 512, 134)
-    extinguisher(d, 240, 182)
-    extinguisher(d, 490, 182)
-    extinguisher(d, 240, 294)
+    raft(d, 60, Y(132))
+    raft(d, 60, Y(216))
+    raft(d, 512, Y(134))
+    extinguisher(d, 240, Y(182))
+    extinguisher(d, 490, Y(182))
+    extinguisher(d, 240, Y(294))
     # la llegenda, al peu
     legend_x = 26
     mark(d, legend_x, FOOTER_Y + 3)
@@ -249,8 +273,15 @@ def marker(fill, letter, glyphs):
 
 
 def gui_json(noms):
-    controls = [{'type': 'image', 'id': 'planol', 'x': 0, 'y': 0, 'tag': 'planol', 'backgroundAnchor': 'screen',
-                 'clickable': False, 'zIndex': 1}]
+    controls = [
+        # Ni un ou: el fons de la planxa, que omple la pantalla si és més alta que el plànol (anchorY: stretch)
+        {'type': 'button', 'id': 'fons', 'x': 0, 'y': 0, 'width': W, 'height': H, 'backgroundAnchor': 'top-left',
+         'text': '', 'font': 'niunou-regular', 'fontSize': 8, 'textColor': '#ffffff', 'backgroundTag': '',
+         'backgroundColor': '#%02x%02x%02x' % BOARD,
+         'backgroundColorStates': {k: '#%02x%02x%02x' % BOARD for k in ('hover', 'pressed', 'disabled')},
+         'zIndex': 0, 'anchorY': 'stretch'},
+        {'type': 'image', 'id': 'planol', 'x': 0, 'y': 0, 'tag': 'planol', 'backgroundAnchor': 'screen',
+         'clickable': False, 'zIndex': 1}]
     for sala, (x0, y0, x1, y1) in SALES.items():
         cid = camel(sala)
         controls.append({
@@ -277,7 +308,8 @@ def gui_json(noms):
                                                                  'disabled': '#2c7852'}, 'zIndex': 4})
     return {'id': 'mapa', 'name': 'Mapa',
             'description': "El plànol d'emergència de l'Arenga (games/ni-un-ou/adapters/benne/tools/hd640/mapa.py).",
-            'visible': False, 'display': {'aseprite': True}, 'modal': True, 'zIndex': 105, 'controls': controls}
+            'visible': False, 'display': {'aseprite': True}, 'modal': True, 'zIndex': 105, 'anchorY': 'center',
+            'controls': controls}
 
 
 def main():

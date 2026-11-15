@@ -35,4 +35,10 @@ game.onEnterAnyRoomAfterFade(() => {
 game.onLoadedAnyRoom(() => {
   onRoomLoaded()
 })
+
+// La interfície tàctil (adapters/benne/tactil): es queda els clics de tocar i del menú d'accions, i tria entre donar
+// i fer servir quan hi ha un objecte a la mà (narrative/tactil.script.ts).
+import { setTouchRouter } from './narrative/narrative'
+import { touchRouter } from './narrative/tactil'
+setTouchRouter(touchRouter)
 // ── GENERAT per adapters/benne/sync.ts: fi. Pots afegir codi a sota. ──

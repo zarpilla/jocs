@@ -15,7 +15,8 @@
       "x": 0,
       "y": 0,
       "width": 640,
-      "height": 360,
+      "height": 288,
+      "anchorY": "stretch",
       "backgroundAnchor": "top-left",
       "text": "",
       "font": "suma-regular",
@@ -70,13 +71,14 @@
       "type": "text",
       "id": "peu",
       "x": 621,
-      "y": 340,
+      "y": 268,
       "text": "",
       "font": "suma-regular",
       "fontSize": 8,
       "color": "#8a8598",
       "align": "right",
-      "zIndex": 2
+      "zIndex": 2,
+      "anchorY": "bottom"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "id": "load-menu",
   "name": "Load Menu",
-  "description": "",
+  "description": " [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -11,7 +11,7 @@
       "type": "nineSliceImage",
       "id": "load-bg",
       "x": 84,
-      "y": 60,
+      "y": 24,
       "width": 473,
       "height": 240,
       "tag": "9-slice-BG",
@@ -31,7 +31,7 @@
       "type": "text",
       "id": "title",
       "x": 320,
-      "y": 76,
+      "y": 40,
       "text": "Carrega",
       "font": "suma-negreta",
       "fontSize": 8,
@@ -42,7 +42,7 @@
       "type": "listBox",
       "id": "load-list",
       "x": 109,
-      "y": 127,
+      "y": 91,
       "width": 287,
       "height": 145,
       "rowCount": 5,
@@ -60,7 +60,7 @@
       "type": "text",
       "id": "instructions",
       "x": 109,
-      "y": 99,
+      "y": 63,
       "text": "Tria una partida per carregar.",
       "font": "suma-regular",
       "fontSize": 8,
@@ -71,7 +71,7 @@
       "type": "button",
       "id": "load-btn",
       "x": 415,
-      "y": 161,
+      "y": 125,
       "width": 113,
       "height": 27,
       "backgroundAnchor": "top-left",
@@ -103,7 +103,7 @@
       "type": "button",
       "id": "back-btn",
       "x": 415,
-      "y": 193,
+      "y": 157,
       "width": 113,
       "height": 27,
       "backgroundAnchor": "top-left",
@@ -133,5 +133,6 @@
     }
   ],
   "modal": true,
-  "zIndex": 101
+  "zIndex": 101,
+  "anchorY": "center"
 }

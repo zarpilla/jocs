@@ -2,9 +2,23 @@
   "name": "aiguaverne",
   "resolution": {
     "width": 640,
-    "height": 360
+    "height": 360,
+    "minHeight": 288
   },
   "verbs": [
+    {
+      "id": "toca",
+      "label": "Toca",
+      "usesItem": true
+    },
+    {
+      "id": "accions",
+      "label": "Accions"
+    },
+    {
+      "id": "fes",
+      "label": "Fes"
+    },
     {
       "id": "give",
       "label": "Dona",
@@ -48,8 +62,10 @@
   ],
   "defaultVerb": "look",
   "inputProfile": {
-    "primaryButtonVerb": "walkTo",
-    "secondaryButtonVerb": "defaultVerb"
+    "primaryButtonVerb": "toca",
+    "secondaryButtonVerb": "accions",
+    "holdVerb": "accions",
+    "holdMs": 450
   },
   "dropWhenInventoryUsed": true,
   "cutscenesSkippable": true,

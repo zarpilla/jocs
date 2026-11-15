@@ -50,7 +50,9 @@ function wrap(text: string, max: number): string[] {
 // L'amplada, del mapping (no de narrative.ts: s'importen l'un a l'altre i encara no hi seria).
 const AMPLADA = (mapping as { resolucio?: { width?: number } }).resolucio?.width ?? 480;
 const K = AMPLADA / 480;
-const ALT = Math.round(AMPLADA * 9 / 16);
+// L'alçada de disseny de la GUI (la mínima, si la pantalla s'adapta: adapters/benne/tactil).
+const RES = (mapping as { resolucio?: { height?: number; minHeight?: number } }).resolucio;
+const ALT = RES?.minHeight ?? RES?.height ?? Math.round(AMPLADA * 9 / 16);
 const LINIA = Number(fontXml.match(/lineHeight="(\d+)"/)?.[1] ?? 12);
 const HISTORIAL_AMPLE = AMPLADA - Math.round(28 * K);
 const HISTORIAL_FILES = Math.floor((ALT - Math.round((15 + 4 + 24) * K)) / LINIA);

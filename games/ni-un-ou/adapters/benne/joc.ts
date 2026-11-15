@@ -17,6 +17,9 @@ export default {
   },
   veusProtagonistes: true,
   musicaSincronitzada: true,
+  // Sense barra de verbs, pensat també per al mòbil (adapters/benne/tactil). L'art del HUD i del menú d'accions:
+  // tools/hd640/hud.py; les sales i les GUI a l'alçada adaptable: tools/hd640/pantalla.py (el plànol, mapa.py).
+  tactil: true,
   textosGui: {
     'game-menu': { historial: 'ui.menu.historial', pista: 'ui.menu.pista' },
   },
@@ -103,7 +106,10 @@ pista.onClick(() => {
 function addHistoryGui(gameDir: string) {
   const dir = join(gameDir, 'guis/historial');
   mkdirSync(dir, { recursive: true });
-  const { width: W, height: H } = (readJson(join(gameDir, 'game-config.json')).resolution as { width: number; height: number });
+  // A l'alçada mínima (la pantalla pot ser més alta: el fons s'estira i el peu va a baix, amb `anchorY`).
+  const res = readJson(join(gameDir, 'game-config.json')).resolution as { width: number; height: number; minHeight?: number };
+  const W = res.width;
+  const H = res.minHeight ?? res.height;
   const k = (v: number) => Math.round(v * W / 480);   // els marges es van fer a 480×270
   const text = (id: string, x: number, y: number, font: string, color: string, align = 'left') =>
     ({ type: 'text', id, x, y, text: '', font, fontSize: 8, color, align, zIndex: 2 });
@@ -112,14 +118,14 @@ function addHistoryGui(gameDir: string) {
     visible: false, display: { aseprite: false }, modal: true, zIndex: 110,
     controls: [
       {
-        type: 'button', id: 'fons', x: 0, y: 0, width: W, height: H, backgroundAnchor: 'top-left', text: '',
+        type: 'button', id: 'fons', x: 0, y: 0, width: W, height: H, anchorY: 'stretch', backgroundAnchor: 'top-left', text: '',
         font: 'niunou-regular', fontSize: 8, textColor: '#ffffff', backgroundTag: '', backgroundColor: '#060a14',
         backgroundColorStates: { hover: '#060a14', pressed: '#060a14', disabled: '#060a14' }, zIndex: 1,
       },
       text('titol', k(14), k(8), 'niunou-negreta', '#e8c260'),
       text('noms', k(14), k(HISTORIAL_TOP), 'niunou-negreta', '#ff963c'),
       text('linies', k(14), k(HISTORIAL_TOP), 'niunou-regular', '#e2d6b4'),
-      text('peu', W - k(14), H - k(15), 'niunou-regular', '#8a9aa8', 'right'),
+      { ...text('peu', W - k(14), H - k(15), 'niunou-regular', '#8a9aa8', 'right'), anchorY: 'bottom' },
     ],
   });
 }

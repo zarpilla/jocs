@@ -5,7 +5,8 @@
   "musicSync": true,
   "resolucio": {
     "width": 640,
-    "height": 360
+    "height": 360,
+    "minHeight": 288
   },
   "characters": {},
   "items": {},

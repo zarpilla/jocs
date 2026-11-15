@@ -1,7 +1,7 @@
 {
   "id": "settings-menu",
   "name": "Settings Menu",
-  "description": "",
+  "description": " [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -11,7 +11,7 @@
       "type": "nineSliceImage",
       "id": "settings-BG",
       "x": 131,
-      "y": 75,
+      "y": 39,
       "width": 379,
       "height": 211,
       "tag": "9-slice-BG",
@@ -32,7 +32,7 @@
       "type": "text",
       "id": "title",
       "x": 320,
-      "y": 91,
+      "y": 55,
       "text": "Opcions",
       "font": "suma-negreta",
       "fontSize": 8,
@@ -156,7 +156,7 @@
       "type": "grid",
       "id": "settings-layout",
       "x": 139,
-      "y": 119,
+      "y": 83,
       "height": 116,
       "rows": 4,
       "columns": 2,
@@ -207,7 +207,7 @@
       "type": "button",
       "id": "back",
       "x": 275,
-      "y": 241,
+      "y": 205,
       "width": 91,
       "height": 27,
       "backgroundAnchor": "top-left",
@@ -290,7 +290,7 @@
       "type": "text",
       "id": "version",
       "x": 147,
-      "y": 249,
+      "y": 213,
       "text": "",
       "font": "suma-regular",
       "fontSize": 8,
@@ -300,5 +300,6 @@
     }
   ],
   "modal": true,
-  "zIndex": 101
+  "zIndex": 101,
+  "anchorY": "center"
 }

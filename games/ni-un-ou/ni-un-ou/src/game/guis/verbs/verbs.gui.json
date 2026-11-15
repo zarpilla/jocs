@@ -1,7 +1,7 @@
 {
   "id": "verbs",
-  "name": "Verbs",
-  "description": " [640×360: hd640/gui_rest.py]",
+  "name": "HUD",
+  "description": "Ni un ou: sense barra de verbs [hd640/hud.py]",
   "visible": true,
   "display": {
     "aseprite": true
@@ -9,328 +9,48 @@
   "controls": [
     {
       "type": "image",
-      "id": "VerbsBG",
+      "id": "Tauler",
       "x": 0,
-      "y": 0,
-      "tag": "VerbsBG",
-      "backgroundAnchor": "screen"
-    },
-    {
-      "type": "inventoryPanel",
-      "id": "inventoryPanel",
-      "x": 336,
-      "y": 280,
-      "rows": 2,
-      "cols": 4,
-      "slotWidth": 65,
-      "slotHeight": 36,
-      "showEmptySlots": true,
-      "spacingX": 4,
-      "spacingY": 4,
-      "scrollDirection": "vertical",
-      "backButton": "upBtn",
-      "forwardButton": "downBtn"
-    },
-    {
-      "type": "button",
-      "id": "upBtn",
-      "x": 320,
-      "y": 280,
-      "width": 13,
-      "height": 36,
-      "backgroundAnchor": "screen",
-      "text": "",
-      "font": "niunou-negreta",
-      "fontSize": 16,
-      "textColor": "#ffffff",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "UpBtn",
-      "states": {
-        "hover": "UpBtn-hover"
-      }
-    },
-    {
-      "type": "button",
-      "id": "downBtn",
-      "x": 320,
-      "y": 320,
-      "width": 13,
-      "height": 36,
-      "backgroundAnchor": "screen",
-      "text": "",
-      "font": "niunou-negreta",
-      "fontSize": 16,
-      "textColor": "#ffffff",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "DownBtn",
-      "states": {
-        "hover": "DownBtn-hover"
-      }
-    },
-    {
-      "type": "button",
-      "id": "GiveBtn",
-      "x": 65,
-      "y": 281,
-      "width": 73,
-      "height": 21,
+      "y": 260,
+      "tag": "Tauler",
       "backgroundAnchor": "top-left",
-      "text": "Dona",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "OpenBtn",
-      "x": 65,
-      "y": 307,
-      "width": 73,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Obre",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "CloseBtn",
-      "x": 65,
-      "y": 333,
-      "width": 73,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Tanca",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "PickUpBtn",
-      "x": 141,
-      "y": 281,
-      "width": 99,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Agafa",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "TalkToBtn",
-      "x": 141,
-      "y": 307,
-      "width": 99,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Parla",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "LookAtBtn",
-      "x": 141,
-      "y": 333,
-      "width": 99,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Mira",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "UseBtn",
-      "x": 244,
-      "y": 281,
-      "width": 73,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Usa",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "PushBtn",
-      "x": 244,
-      "y": 307,
-      "width": 73,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Empeny",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
-    },
-    {
-      "type": "button",
-      "id": "PullBtn",
-      "x": 244,
-      "y": 333,
-      "width": 73,
-      "height": 21,
-      "backgroundAnchor": "top-left",
-      "text": "Estira",
-      "font": "niunou-negreta",
-      "fontSize": 8,
-      "textColor": "#e2d6b4",
-      "textAlign": "center",
-      "textOffsetX": 0,
-      "textOffsetY": 0,
-      "backgroundTag": "",
-      "textColorStates": {
-        "hover": "#ff963c"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#03060c",
-        "sides": "bottomRight"
-      }
+      "visible": false,
+      "clickable": false
     },
     {
       "type": "text",
       "id": "verbLineText",
       "x": 320,
-      "y": 258,
-      "text": "Ves a",
+      "y": 269,
+      "text": "",
       "font": "niunou-regular",
       "fontSize": 8,
       "color": "#cee6de",
-      "align": "center"
+      "align": "center",
+      "textOutline": {
+        "enabled": true,
+        "color": "#03060c",
+        "sides": "allSides"
+      },
+      "zIndex": 5,
+      "anchorY": "bottom"
     },
     {
       "type": "button",
       "id": "CanviaBtn",
       "x": 4,
-      "y": 281,
+      "y": 4,
       "width": 57,
       "height": 43,
-      "backgroundAnchor": "screen",
+      "backgroundAnchor": "top-left",
       "text": "",
       "font": "niunou-negreta",
       "fontSize": 8,
-      "textColor": "#10908e",
+      "textColor": "#e2d6b4",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "CanviaBtn",
-      "textColorStates": {
-        "hover": "#28c074"
-      },
-      "textOutline": {
-        "enabled": true,
-        "color": "#132243",
-        "sides": "bottomRight"
-      },
       "states": {
         "hover": "CanviaBtn-hover"
       }
@@ -338,39 +58,318 @@
     {
       "type": "image",
       "id": "CaraIri",
-      "x": 0,
-      "y": 0,
+      "x": 19,
+      "y": 10,
       "tag": "CaraIri",
-      "backgroundAnchor": "screen",
+      "backgroundAnchor": "top-left",
       "visible": false,
       "clickable": false
     },
     {
       "type": "image",
       "id": "CaraVet",
-      "x": 0,
-      "y": 0,
+      "x": 19,
+      "y": 10,
       "tag": "CaraVet",
-      "backgroundAnchor": "screen",
+      "backgroundAnchor": "top-left",
       "visible": false,
       "clickable": false
     },
     {
       "type": "button",
       "id": "MenuBtn",
-      "x": 36,
-      "y": 329,
+      "x": 611,
+      "y": 4,
       "width": 25,
       "height": 25,
-      "backgroundAnchor": "screen",
-      "text": "Button",
-      "font": "",
-      "fontSize": 16,
-      "textColor": "#ffffff",
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
       "textAlign": "center",
       "textOffsetX": 0,
       "textOffsetY": 0,
       "backgroundTag": "MenuBtn"
+    },
+    {
+      "type": "button",
+      "id": "PuntsBtn",
+      "x": 4,
+      "y": 252,
+      "width": 32,
+      "height": 32,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "PuntsBtn",
+      "states": {
+        "hover": "PuntsBtn-hover"
+      },
+      "anchorY": "bottom"
+    },
+    {
+      "type": "button",
+      "id": "PuntsPetitBtn",
+      "x": 4,
+      "y": 252,
+      "width": 25,
+      "height": 25,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "PuntsPetitBtn",
+      "states": {
+        "hover": "PuntsPetitBtn-hover"
+      },
+      "visible": false
+    },
+    {
+      "type": "button",
+      "id": "BossaBtn",
+      "x": 604,
+      "y": 252,
+      "width": 32,
+      "height": 32,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "BossaBtn",
+      "states": {
+        "hover": "BossaBtn-hover"
+      },
+      "anchorY": "bottom"
+    },
+    {
+      "type": "image",
+      "id": "Safata",
+      "x": 52,
+      "y": 214,
+      "tag": "Safata",
+      "backgroundAnchor": "top-left",
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "inventoryPanel",
+      "id": "inventoryPanel",
+      "x": 78,
+      "y": 218,
+      "rows": 1,
+      "cols": 7,
+      "slotWidth": 65,
+      "slotHeight": 36,
+      "showEmptySlots": true,
+      "spacingX": 4,
+      "spacingY": 4,
+      "scrollDirection": "vertical",
+      "backButton": "upBtn",
+      "forwardButton": "downBtn",
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "button",
+      "id": "upBtn",
+      "x": 59,
+      "y": 218,
+      "width": 13,
+      "height": 36,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "UpBtn",
+      "states": {
+        "hover": "UpBtn-hover"
+      },
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "button",
+      "id": "downBtn",
+      "x": 563,
+      "y": 218,
+      "width": 13,
+      "height": 36,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "DownBtn",
+      "states": {
+        "hover": "DownBtn-hover"
+      },
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "image",
+      "id": "Safata2",
+      "x": 94,
+      "y": 202,
+      "tag": "Safata2",
+      "backgroundAnchor": "top-left",
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "inventoryPanel",
+      "id": "inventoryPanel2",
+      "x": 105,
+      "y": 205,
+      "rows": 2,
+      "cols": 7,
+      "slotWidth": 65,
+      "slotHeight": 36,
+      "showEmptySlots": true,
+      "spacingX": 4,
+      "spacingY": 4,
+      "scrollDirection": "vertical",
+      "backButton": "upBtn2",
+      "forwardButton": "downBtn2",
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "button",
+      "id": "upBtn2",
+      "x": 590,
+      "y": 205,
+      "width": 13,
+      "height": 36,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "UpBtn",
+      "states": {
+        "hover": "UpBtn-hover"
+      },
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "button",
+      "id": "downBtn2",
+      "x": 590,
+      "y": 245,
+      "width": 13,
+      "height": 36,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "DownBtn",
+      "states": {
+        "hover": "DownBtn-hover"
+      },
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "image",
+      "id": "Safata3",
+      "x": 100,
+      "y": 240,
+      "tag": "Safata3",
+      "backgroundAnchor": "top-left",
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "inventoryPanel",
+      "id": "inventoryPanel3",
+      "x": 125,
+      "y": 244,
+      "rows": 1,
+      "cols": 7,
+      "slotWidth": 65,
+      "slotHeight": 36,
+      "showEmptySlots": true,
+      "spacingX": 4,
+      "spacingY": 4,
+      "scrollDirection": "vertical",
+      "backButton": "upBtn3",
+      "forwardButton": "downBtn3",
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "button",
+      "id": "upBtn3",
+      "x": 106,
+      "y": 244,
+      "width": 13,
+      "height": 36,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "UpBtn",
+      "states": {
+        "hover": "UpBtn-hover"
+      },
+      "visible": false,
+      "anchorY": "bottom"
+    },
+    {
+      "type": "button",
+      "id": "downBtn3",
+      "x": 610,
+      "y": 244,
+      "width": 13,
+      "height": 36,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#e2d6b4",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "backgroundTag": "DownBtn",
+      "states": {
+        "hover": "DownBtn-hover"
+      },
+      "visible": false,
+      "anchorY": "bottom"
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "id": "save-menu",
   "name": "Save Menu",
-  "description": " [640×360: hd640/gui_rest.py]",
+  "description": " [640×360: hd640/gui_rest.py] [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -11,7 +11,7 @@
       "type": "nineSliceImage",
       "id": "save-bg",
       "x": 84,
-      "y": 45,
+      "y": 9,
       "width": 473,
       "height": 269,
       "tag": "9-slice-BG",
@@ -31,7 +31,7 @@
       "type": "text",
       "id": "title",
       "x": 320,
-      "y": 61,
+      "y": 25,
       "text": "Desa",
       "font": "niunou-negreta",
       "fontSize": 8,
@@ -42,7 +42,7 @@
       "type": "textInput",
       "id": "save-name",
       "x": 109,
-      "y": 269,
+      "y": 233,
       "width": 287,
       "height": 25,
       "font": "niunou-regular",
@@ -62,7 +62,7 @@
       "type": "listBox",
       "id": "saved-list",
       "x": 109,
-      "y": 116,
+      "y": 80,
       "width": 287,
       "height": 145,
       "rowCount": 5,
@@ -80,7 +80,7 @@
       "type": "text",
       "id": "instructions",
       "x": 109,
-      "y": 87,
+      "y": 51,
       "text": "Tria una posició i escriu un nom per desar.",
       "font": "niunou-regular",
       "fontSize": 8,
@@ -91,7 +91,7 @@
       "type": "button",
       "id": "save-btn",
       "x": 415,
-      "y": 181,
+      "y": 145,
       "width": 113,
       "height": 27,
       "backgroundAnchor": "top-left",
@@ -123,7 +123,7 @@
       "type": "button",
       "id": "back-btn",
       "x": 415,
-      "y": 213,
+      "y": 177,
       "width": 113,
       "height": 27,
       "backgroundAnchor": "top-left",
@@ -153,5 +153,6 @@
     }
   ],
   "modal": true,
-  "zIndex": 101
+  "zIndex": 101,
+  "anchorY": "center"
 }

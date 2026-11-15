@@ -1,38 +1,26 @@
-import { pointer } from '@benne/script';
-import { guis, verbs } from '@game';
-import {
-  gui, closeBtn, giveBtn, lookAtBtn, menuBtn, openBtn, pickUpBtn, pullBtn, pushBtn, talkToBtn, useBtn, verbLineText, canviaBtn,
-} from './verbs.ids';
+// GENERAT per adapters/benne/sync.ts. No l'editis aquí.
+// La interfície tàctil: el HUD, sense barra de verbs (la GUI es diu `verbs` perquè el pont compartit la mostra, l'amaga i
+// hi busca el botó «Canvia»). Els dos modes (mòbil i tauler) i on va cada cosa: hud.ts.
+import { game, onUpdate, pointer } from '@benne/script';
+import { guis } from '@game';
+import { gui, bossaBtn, canviaBtn, menuBtn, puntsBtn, puntsPetitBtn } from './verbs.ids';
+import { isTrayOpen, layoutHud, modeTauler, refreshLine, showTray } from './hud';
 import { switchProtagonist } from '../../narrative/narrative.script';
 
-const buttons = new Map([
-  [verbs.give, giveBtn],
-  [verbs.pickUp, pickUpBtn],
-  [verbs.use, useBtn],
-  [verbs.open, openBtn],
-  [verbs.look, lookAtBtn],
-  [verbs.push, pushBtn],
-  [verbs.close, closeBtn],
-  [verbs.talkTo, talkToBtn],
-  [verbs.pull, pullBtn],
-])
-
-// Clicking a verb button makes it the verb for the next click on the room.
-for (const [verb, button] of buttons) button.onClick(() => verb.select())
-
+bossaBtn.onClick(() => showTray(!isTrayOpen()))
+puntsBtn.onClick(() => game.showClickables())
+puntsPetitBtn.onClick(() => game.showClickables())
 menuBtn.onClick(() => guis.gameMenu.show())
-
-// The verb line ("Use Knife with Bread"), and the hovered thing's default verb lit up.
-function refresh() {
-  verbLineText.text = pointer.sentence
-  const highlighted = pointer.hover?.defaultVerb
-  for (const [verb, button] of buttons) {
-    button.visualState = verb === highlighted ? 'hover' : 'normal'
-  }
-}
-
-gui.onBuilt(refresh)
-pointer.onContextChange(refresh)
-
-// Afegit per adapters/benne (benne-content.ts): canviar de protagonista.
 canviaBtn.onClick(() => switchProtagonist())
+
+gui.onBuilt(() => {
+  layoutHud()
+  refreshLine()
+})
+pointer.onContextChange(() => {
+  refreshLine()
+  // Al mòbil, la safata tapa l'escena: quan prens un objecte a la mà, es plega sola.
+  if (pointer.item && isTrayOpen() && !modeTauler()) showTray(false)
+})
+
+onUpdate(() => layoutHud())

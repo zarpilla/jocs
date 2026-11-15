@@ -9,9 +9,10 @@ motor i la història separada del motor.
 | **Suma Zero**: dues germanes de fet volen repartir tots els diners del món a parts iguals. | [games/suma-zero](games/suma-zero/README.md) |
 | **Ni un ou**: a bord d'un vaixell d'una ONG, algú sabota les màquines perquè una mostra de fang no arribi a terra. | [games/ni-un-ou](games/ni-un-ou/README.md) |
 | **Aigua Verne**: l'Iri i la Vet volen el pou de la granja; el Magnat Verne s'ha endut l'aigua de tot un sistema planetari. | [games/aigua-verne](games/aigua-verne/README.md) |
-| **Aigua Verne B**: prova de concepte del camí «Modernitzar»: el mateix joc sense barra de verbs, per al mòbil. | [games/aigua-verne-b](games/aigua-verne-b/README.md) |
-| **Suma Zero B**: la segona prova del camí «Modernitzar», amb la interfície tàctil compartida (adapters/benne/tactil). | [games/suma-zero-b](games/suma-zero-b/README.md) |
-| **Ni un ou B**: la tercera prova del camí «Modernitzar», amb el plànol del vaixell a 288 i els objectes que es fan servir d'un toc. | [games/ni-un-ou-b](games/ni-un-ou-b/README.md) |
+
+Suma Zero, Ni un ou i Aigua Verne es juguen sense barra de verbs, també amb el dit en un mòbil apaïsat: tocar una cosa
+la mira la primera vegada i després en fa l'acció, i mantenir premut obre el menú d'accions (la interfície tàctil
+compartida, [adapters/benne/tactil](adapters/benne/tactil/index.ts)). Ferro-9 manté la barra de verbs.
 
 ## Què és compartit i què és de cada joc
 

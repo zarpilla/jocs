@@ -30,11 +30,14 @@ function posaPunt(punt: string, sala: string | null, desplaça = 0) {
 
 /** Obre el plànol: les sales on ara no es pot anar, ratllades; on és cadascuna. */
 export function mostraMapa() {
+  // Primer es mostra i després es diu què es veu: en construir-se, la GUI mostra tots els controls (també els
+  // amagats al .gui.json), i el que s'hagués posat abans es perdria.
+  guis.mapa.show();
   const aqui = narrative.world.currentRoom();
   const obertes = accessibles(narrative);
   for (const sala of salesDelPlanol(narrative)) {
-    const boto = control(botoSala(sala));
-    if (boto) boto.text = narrative.t(`ui.mapa.sala.${sala}`);
+    // (el nom de cada sala ja el porta el botó: mapa.py l'hi posa dels locales. El text d'un botó no es pot canviar
+    // des de l'script: el motor no ho permet, i el plànol no s'obria.)
     const off = control(`${botoSala(sala)}Off`);
     if (off) off.visible = !obertes.has(sala);
   }
@@ -49,9 +52,6 @@ export function mostraMapa() {
     }
   }
   peuMapa(null);
-  const tanca = control('tanca');
-  if (tanca) tanca.text = narrative.t('ui.mapa.tanca');
-  guis.mapa.show();
 }
 
 export const mapaObert = () => guis.mapa.visible;

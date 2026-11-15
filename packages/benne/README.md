@@ -43,13 +43,13 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
   cada joc.
 - la descripció i la targeta per compartir l'enllaç (`description` i `url` al bloc `benne` del `package.json`
   del joc, i `public/portada.png`), i `lang="ca"`.
-- per a pantalles tàctils (els fa servir Aigua Verne B): `inputProfile.holdVerb` i `holdMs` a `game-config.json`
+- per a pantalles tàctils (els fa servir Aigua Verne): `inputProfile.holdVerb` i `holdMs` a `game-config.json`
   (mantenir premut una cosa fa aquest verb; un toc curt fa el del botó principal, en aixecar el dit;
   `src/engine/verbs/holdGesture.ts`), un verb d'objecte (`usesItem`) com a botó principal fa «Usa X amb...» quan hi ha
   un objecte a la mà, i tocar un objecte de l'inventari que té `defaultVerb` fa aquest verb en lloc de prendre'l a la
-  mà (el plànol de Ni un ou B s'obre d'un toc), i `game.showClickables(segons)` marca un moment tot el que es pot
+  mà (el plànol de Ni un ou s'obre d'un toc), i `game.showClickables(segons)` marca un moment tot el que es pot
   clicar;
-- alçada adaptable (Aigua Verne B): amb `resolution.minHeight` a `game-config.json`, el joc tria en arrencar una alçada
+- alçada adaptable (Aigua Verne): amb `resolution.minHeight` a `game-config.json`, el joc tria en arrencar una alçada
   entre aquesta i `resolution.height` segons la proporció de la pantalla (presa en apaïsat), perquè un mòbil 20:9 i un
   monitor 16:9 quedin plens. Les GUI es dissenyen a l'alçada mínima i `anchorY` (a la GUI o a cada control: `top`,
   `center`, `bottom`, `stretch`) diu on van si la pantalla és més alta; a les sales, `viewAnchorY` (0 dalt … 1 baix)

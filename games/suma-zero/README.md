@@ -17,6 +17,66 @@ La base tècnica (nucli narratiu, adaptador de Benne, eines) ve de Ferro-9
 > (`suma-zero/`). Les ordres d'aquí sota s'executen des d'aquesta carpeta, o des de l'arrel amb `-w suma-zero`
 > (`npm run validate -w suma-zero`). Vegeu el [README de l'arrel](../../README.md).
 
+## Sense barra de verbs
+
+Es juga sense barra de verbs, també amb el dit en un mòbil apaïsat (el camí **B · Modernitzar** de
+[docs/aventures-cap-on-anem.html](../../docs/aventures-cap-on-anem.html)), amb la interfície tàctil compartida.
+
+### Com es juga
+
+| Gest | Què fa |
+|---|---|
+| Tocar (clic) una cosa | La primera vegada, mirar-la. Després: si té una sola acció, la fa; si en té més d'una (la nevera: obrir o tancar; la impressora: empènyer o agafar), obre el menú i tries tu. Les sortides no es miren: s'hi va |
+| Mantenir premut (o clic dret) | El menú d'accions: «Mira» i les accions que té ara mateix |
+| Tocar el terra | Caminar |
+| Carpeta (a baix a la dreta) | Desplega la safata de l'inventari |
+| Tocar un objecte de la safata | El pren a la mà («Usa X amb...»); tocar una cosa l'hi fa servir, o li dona si és un personatge |
+| Escàner (a baix a l'esquerra) | Marca un moment tot el que es pot tocar |
+| «Canvia» (a dalt a l'esquerra), el menú (a dalt a la dreta) | Canviar de protagonista; desar, carregar, opcions, pista, historial |
+
+En una finestra d'ordinador o un monitor (si sota l'escena queden 56 px o més), la franja de sota és la consola amb
+tot el HUD i l'inventari sempre a la vista, com a Aigua Verne.
+
+### Què ha calgut
+
+- **`tactil: true`** al joc.ts: el `benne:sync` hi posa el runtime, els scripts del HUD i del menú d'accions, els dos
+  verbs de la interfície i l'alçada adaptable (de 640×288 a 640×360).
+- **L'art del HUD i del menú**, amb l'estil de la barra (la consola d'hacker: plàstic blau marí, tecles fosques,
+  pantalletes amb cantoneres de visor, la línia de llum i l'accent magenta):
+  [tools/hd640/hud.py](adapters/benne/tools/hd640/hud.py). Mateixos ids i mides que el d'Aigua Verne. El botó
+  «Canvia» és el de la barra (mitja Iri i mitja Vet).
+- **La pantalla adaptable**: [tools/hd640/pantalla.py](adapters/benne/tools/hd640/pantalla.py), com el d'Aigua Verne.
+  Aquí gairebé totes les sales són pintades fins a baix, però el joc (el que es pot tocar i el terra) va de y = 20 a
+  271: al mòbil la càmera es queda a dalt.
+- L'historial (`runtime/historial.ts`, i la GUI a joc.ts), a l'alçada mínima; els textos `ui.accio.*`,
+  `ui.verb.toca` i `ui.verb.accions` (game/locales/ca/interficie.json).
+
+### Resultat
+
+`game/test/tactil.test.ts` juga el joc sencer per dos camins amb el mesurador compartit (`TACTIL=1 npm test` en fa
+la llista). Cap pas és impossible.
+
+| Camí | Passos | Un toc | Toc + menú | Toc de més (mira primer) | Gestos per pas |
+|---|---|---|---|---|---|
+| Sense aliats | 66 | 61 | 5 | 25 | 1,45 |
+| Amb tots els aliats | 67 | 62 | 5 | 26 | 1,46 |
+
+El menú surt al passaplats, la nevera, la capsa i la impressora: on hi ha més d'una cosa a fer. (Els tocs de més
+per mirar inclouen les coses que tenen una descripció nova: vegeu [Aigua Verne](../aigua-verne/README.md#resultat-de-la-prova).)
+
+### Ordres de la interfície tàctil
+
+```bash
+npm test                                           # (des de l'arrel) inclou tactil.test.ts
+npm run benne:sync                                 # el contingut i la interfície tàctil al projecte Benne
+python3 adapters/benne/tools/hd640/hud.py          # torna a fer el HUD i el menú d'accions
+python3 adapters/benne/tools/hd640/pantalla.py     # càmeres de les sales i GUI per a la pantalla adaptable (es pot repetir)
+cd suma-zero && npm run dev -- --host              # al navegador, i des del mòbil a la mateixa xarxa
+```
+
+Compte: `hd640/gui_rest.py` torna a fer la barra de verbs; no s'ha d'executar (o cal tornar a passar
+`hud.py` i `pantalla.py` després).
+
 ## Les tres capes
 
 ```
@@ -82,7 +142,7 @@ caricatura**, amb la calidesa lila de la A. Captura al joc: [guio/art/sala-mostr
 
 | Què | Mida i regla |
 |---|---|
-| Pantalla | 640×360; la sala es veu fins a y≈260 (a sota hi ha la barra de verbs) |
+| Pantalla | De 640×288 (un mòbil) a 640×360 (un monitor), segons l'aparell; a sota de l'escena (y≈260), el HUD tàctil |
 | Personatges | ≈110 px, fotograma de 65×116, peus a (34, 111) (les de Ferro-9 ×4/3). Direccions L, D, U (Benne fa el mirall de R). Dibuix amb volum, llum i trama (`hd/characters.py`, a ×4/3 amb `hd640/draw_characters.py`) |
 | Mobles | Escala real: un escriptori arriba al maluc (≈61 px de terra a taulell) |
 | Icones | La casella de l'inventari: 65×36, amb el mateix dibuix de volum (`hd640/items.py`) |
@@ -97,8 +157,8 @@ projecte Benne a 640, i `python3 hd640/preview.py --res 640|480 <sala> <sortida>
   `draw_characters.py` en genera els fulls (el sync els copia).
 - `hd/rooms/<sala>.py`: el dibuix de cada sala; `hd/rooms/comu.py`: eines i rampes comunes;
   `room_designs.py`: la geometria (on es clica, on es camina).
-- `hd/items.py`: les icones de l'inventari; `hd/gui.py`: la interfície (barra de verbs, opcions de diàleg i
-  menús), una consola d'hacker on els verbs i els botons són tecles.
+- `hd/items.py`: les icones de l'inventari; `hd/gui.py`: la interfície (la barra de verbs original, opcions de diàleg i
+  menús), una consola d'hacker on els verbs i els botons són tecles. El HUD tàctil d'ara el fa `hd640/hud.py`.
 - `python3 hd/render.py <sala> <carpeta>`: previsualitzacions ampliades, amb una de depuració (zones, terra
   i personatges a escala).
 - `hd/caricatura/`: la proposta A (caricatura, 64 px i cap gran), guardada per a un joc per a públic infantil.

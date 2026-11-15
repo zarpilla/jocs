@@ -1,7 +1,7 @@
 {
   "id": "portada",
   "name": "Portada",
-  "description": "Botons de la portada (adapters/benne). [640×360: hd640/gui_rest.py]",
+  "description": "Botons de la portada (adapters/benne). [640×360: hd640/gui_rest.py] [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -11,7 +11,7 @@
       "type": "button",
       "id": "continua",
       "x": 220,
-      "y": 224,
+      "y": 160,
       "width": 200,
       "height": 29,
       "backgroundAnchor": "screen",
@@ -33,13 +33,14 @@
       "backgroundTag": "continua",
       "states": {
         "hover": "continua-hover"
-      }
+      },
+      "backgroundOffsetY": -64
     },
     {
       "type": "button",
       "id": "comenca",
       "x": 220,
-      "y": 261,
+      "y": 197,
       "width": 200,
       "height": 29,
       "backgroundAnchor": "screen",
@@ -61,13 +62,14 @@
       "backgroundTag": "comenca",
       "states": {
         "hover": "comenca-hover"
-      }
+      },
+      "backgroundOffsetY": -64
     },
     {
       "type": "button",
       "id": "carrega",
       "x": 220,
-      "y": 299,
+      "y": 235,
       "width": 200,
       "height": 29,
       "backgroundAnchor": "screen",
@@ -89,13 +91,14 @@
       "backgroundTag": "carrega",
       "states": {
         "hover": "carrega-hover"
-      }
+      },
+      "backgroundOffsetY": -64
     },
     {
       "type": "text",
       "id": "version",
       "x": 632,
-      "y": 345,
+      "y": 273,
       "text": "",
       "font": "niunou-regular",
       "fontSize": 8,
@@ -107,5 +110,6 @@
         "sides": "bottomRight"
       }
     }
-  ]
+  ],
+  "anchorY": "bottom"
 }

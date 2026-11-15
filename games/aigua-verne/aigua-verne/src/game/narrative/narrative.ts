@@ -480,7 +480,7 @@ export function bindHotspots(handles: Record<string, Showable>) {
 }
 
 /**
- * Una interfície pròpia del joc (p. ex. la tàctil d'Aigua Verne B, sense barra de verbs) pot quedar-se alguns
+ * Una interfície pròpia del joc (p. ex. la tàctil d'Aigua Verne, sense barra de verbs) pot quedar-se alguns
  * clics abans que vagin al JSON (`routeInteraction`, narrative.script.ts): verbs seus (tocar, el menú d'accions) o
  * decidir quin verb fa un objecte. `takes` ha de ser instantània; `route` pot ser una funció de pas, i per fer la
  * interacció del JSON crida `performInteraction`. Sense encaminador, cada clic va directe al JSON.

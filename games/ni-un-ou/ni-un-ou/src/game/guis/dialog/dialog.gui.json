@@ -1,7 +1,7 @@
 {
   "id": "dialog",
   "name": "Dialog",
-  "description": " [640×360: hd640/gui_rest.py]",
+  "description": " [640×360: hd640/gui_rest.py] [288]",
   "visible": false,
   "display": {
     "aseprite": true
@@ -11,17 +11,18 @@
       "type": "image",
       "id": "DialogBG",
       "x": 0,
-      "y": 0,
+      "y": -72,
       "tag": "VerbsBG",
       "zIndex": 1,
       "backgroundAnchor": "screen",
-      "visible": true
+      "visible": true,
+      "backgroundOffsetY": -72
     },
     {
       "type": "button",
       "id": "scrollUp",
       "x": 4,
-      "y": 273,
+      "y": 201,
       "width": 13,
       "height": 33,
       "text": "Button",
@@ -41,7 +42,7 @@
       "type": "button",
       "id": "scrollDown",
       "x": 4,
-      "y": 320,
+      "y": 248,
       "width": 13,
       "height": 33,
       "backgroundAnchor": "top-left",
@@ -75,7 +76,7 @@
       "type": "grid",
       "id": "Option-Grid",
       "x": 22,
-      "y": 270,
+      "y": 198,
       "width": 607,
       "height": 25,
       "rows": 1,
@@ -111,5 +112,6 @@
         "hover": "#ff963c"
       }
     }
-  ]
+  ],
+  "anchorY": "bottom"
 }
