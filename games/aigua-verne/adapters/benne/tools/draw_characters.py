@@ -148,12 +148,18 @@ def person_tags(spec_of):
     return make
 
 
-def person_extra(walk_speed, verb, anims):
+# Qui s'asseu (la Juana a casa seva) mira a l'esquerra: qui hi va a parlar s'atura davant seu, a 1,5 m (uns 90 px
+# a les sales de prop), i no a l'esquena.
+DAVANT_SEU = -90
+
+
+def person_extra(walk_speed, verb, anims, seu=False):
     m = PERSONA
     fx, fy = m.feet
     poly = [(15, 2), (35, 2), (37, 50), (33, 85), (16, 85), (12, 50)]
     return {
-        'walkSpeed': walk_speed, 'walkToPoint': {'x': fx + 22, 'y': fy}, 'talkPoint': {'x': fx, 'y': -2},
+        'walkSpeed': walk_speed, 'walkToPoint': {'x': fx + (DAVANT_SEU if seu else 22), 'y': fy},
+        'talkPoint': {'x': fx, 'y': -2},
         'feet': {'x': fx, 'y': fy}, 'collider': {'points': [m.pt(x, y) for x, y in poly]},
         'animations': anims, 'defaultVerb': verb,
     }
@@ -167,7 +173,7 @@ def persona(cid, robes, walk_speed, verb, seu=None, walk=(90, 90)):
     if seu:
         tags += tags_both(PERSONA, lambda: [('Seu', [seu, seu, seu, lambda: seu(True)])])
     anims = durations(tags, walk=walk, extra={'Seu': 500})
-    return write(cid, tags, person_extra(walk_speed, verb, anims))
+    return write(cid, tags, person_extra(walk_speed, verb, anims, seu=bool(seu)))
 
 
 # ─── En Diu, en Dividend i en Fidel ──────────────────────────────────────────
