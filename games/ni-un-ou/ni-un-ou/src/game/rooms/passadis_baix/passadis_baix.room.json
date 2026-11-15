@@ -203,6 +203,38 @@
         "y": 203
       },
       "defaultVerb": "open"
+    },
+    {
+      "id": "repetidor",
+      "active": true,
+      "description": "repetidor d'alarmes",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 99,
+          "y": 148
+        },
+        {
+          "x": 141,
+          "y": 148
+        },
+        {
+          "x": 141,
+          "y": 185
+        },
+        {
+          "x": 99,
+          "y": 185
+        }
+      ],
+      "walkToPoint": {
+        "x": 120,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 120,
+        "y": 185
+      }
     }
   ],
   "points": [],
@@ -245,6 +277,46 @@
           "frameDuration": 80
         }
       }
+    },
+    {
+      "id": "petjades",
+      "tag": "petjades",
+      "animations": {
+        "petjades": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 74,
+            "y": 205
+          },
+          {
+            "x": 186,
+            "y": 205
+          },
+          {
+            "x": 186,
+            "y": 224
+          },
+          {
+            "x": 74,
+            "y": 224
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 130,
+        "y": 230
+      },
+      "lookAtPoint": {
+        "x": 130,
+        "y": 224
+      },
+      "description": "petjades"
     }
   ],
   "characters": [

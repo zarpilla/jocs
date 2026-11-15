@@ -72,6 +72,14 @@
               }
             }
           ]
+        },
+        {
+          "who": "player",
+          "text": "sala.camarot_iri.6"
+        },
+        {
+          "who": "player",
+          "text": "sala.camarot_iri.7"
         }
       ],
       "effects": [
@@ -85,6 +93,35 @@
     "porta": {
       "name": "sala.camarot_iri.porta.nom",
       "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "escora_vista",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.porta.2"
+            }
+          ]
+        },
         {
           "verb": [
             "use",
@@ -134,6 +171,133 @@
             {
               "who": "player",
               "text": "sala.camarot_iri.carregador.3"
+            }
+          ]
+        }
+      ]
+    },
+    "got": {
+      "name": "sala.camarot_iri.got.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.got.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.got.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "escora_vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.got.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.got.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.got.5"
+            }
+          ]
+        }
+      ]
+    },
+    "maceta": {
+      "name": "sala.camarot_iri.maceta.nom",
+      "visibleIf": {
+        "flag": "maceta_agafada",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.maceta.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.maceta.2"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.maceta.3"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "maceta"
+            },
+            {
+              "setFlag": "maceta_agafada"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.maceta.4"
             }
           ]
         }

@@ -12,7 +12,7 @@ from hd.characters import Fig
 from hd.pix import hr
 from hd.items import (Ic, paper, FONT, M, PAP_W, PAP_C, PAP_O, GRAPH, INKB, INKG, STAMP, RULE, CORPG, SUNY, ACER,
                       IRON, STEEL, CLOTH, DARK, BLK, LCD, LED, BLUEC, LOGB, GRIP, WIRE, CABLE, USBB, GOLDK, REDP,
-                      BAG, MUD, JAR, PAPV, CROSS)
+                      BAG, MUD, JAR, PAPV, CROSS, WOOD)
 
 W, H = 65, 36
 
@@ -151,6 +151,23 @@ def cisalla(f):
     f.fill(f.P([(47, 16), (61, 11), (61, 13), (47, 19)]), ACER, 4.4, rim=(0.4, -1.2))
     for x in range(50, 61, 3):                                             # el tall esmolat
         f.px(x, 10 - (x - 50) * 0.25, ACER, 7.4)
+
+
+def maceta(f):
+    """La maceta de goma de l'Iri: mànec de fusta amb dues voltes de cinta groga i el cap de goma negra."""
+    f.limb((5, 31), (41, 17), 2.0, 2.4, WOOD, 4.2, amp=2.0)               # el mànec
+    for t in (0.18, 0.3):                                                  # la cinta del puny
+        x, y = 5 + 36 * t, 31 - 14 * t
+        for k in (-1, 0, 1):
+            f.px(x, y + k, SUNY, 3.4)
+    f.fill(f.E(6, 31, 1.0, 1.0), DARK, 0.6, rim=None)                     # el forat del cordill
+    S = f.P([(37, 7), (47, 3), (55, 23), (45, 27)])                       # el cap
+    f.drop(S)
+    f.fill(S, BLK, lambda x, y: 3.6 - (x - 37) * 0.08 - (y - 3) * 0.04, rim=(0.8, -1.4))
+    for (a, b) in (((39, 8), (46, 5)), ((46, 25), (53, 22))):              # les cares de picar
+        f.limb(a, b, 0.6, 0.6, BLK, 4.8, amp=0.6)
+    for y in range(8, 22, 3):                                              # el reflex de la goma
+        f.px(45 + (y - 8) * 0.38, y, BLK, 5.4)
 
 
 def travesser(f):
@@ -427,7 +444,7 @@ def mapa(f):
 
 
 ICONS = {fn.__name__: fn for fn in (
-    walkie, quadern, llibreta, cisalla, travesser, tram, cable_nou, usb, nota_iri, nota_vet,
+    walkie, quadern, llibreta, maceta, cisalla, travesser, tram, cable_nou, usb, nota_iri, nota_vet,
     clau_tomas, clau_tubs, mostra7, registre, mapa,
 )}
 

@@ -104,7 +104,9 @@
         "entrepa_robat": false,
         "enviament_iniciat": false,
         "enviat": false,
+        "escora_vista": false,
         "esmorzar_fet": false,
+        "falca_desencallada": false,
         "ferran_pis": false,
         "frontissa1": false,
         "intent_buit": false,
@@ -117,6 +119,7 @@
         "juana_parla": false,
         "juana_trobada": false,
         "lind_gravada": false,
+        "maceta_agafada": false,
         "mapa_agafat": false,
         "marcel_enfadat": false,
         "marcel_gat": false,
@@ -593,6 +596,13 @@
         "description": "obj.llibreta.desc",
         "props": {
           "no_munta": "obj.llibreta.no"
+        }
+      },
+      "maceta": {
+        "name": "obj.maceta.nom",
+        "description": "obj.maceta.desc",
+        "props": {
+          "no_munta": "obj.maceta.no"
         }
       },
       "cisalla": {
@@ -1347,6 +1357,14 @@
                     }
                   }
                 ]
+              },
+              {
+                "who": "player",
+                "text": "sala.camarot_iri.6"
+              },
+              {
+                "who": "player",
+                "text": "sala.camarot_iri.7"
               }
             ],
             "effects": [
@@ -1360,6 +1378,35 @@
           "porta": {
             "name": "sala.camarot_iri.porta.nom",
             "interactions": [
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "walkTo"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "protagonist": "iri"
+                    },
+                    {
+                      "flag": "escora_vista",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.porta.2"
+                  }
+                ]
+              },
               {
                 "verb": [
                   "use",
@@ -1409,6 +1456,133 @@
                   {
                     "who": "player",
                     "text": "sala.camarot_iri.carregador.3"
+                  }
+                ]
+              }
+            ]
+          },
+          "got": {
+            "name": "sala.camarot_iri.got.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "protagonist": "iri"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.got.1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.got.2"
+                  }
+                ],
+                "effects": [
+                  {
+                    "setFlag": "escora_vista"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.got.3"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.got.4"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.got.5"
+                  }
+                ]
+              }
+            ]
+          },
+          "maceta": {
+            "name": "sala.camarot_iri.maceta.nom",
+            "visibleIf": {
+              "flag": "maceta_agafada",
+              "is": false
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.maceta.1"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.maceta.2"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.maceta.3"
+                  }
+                ],
+                "effects": [
+                  {
+                    "giveItem": "maceta"
+                  },
+                  {
+                    "setFlag": "maceta_agafada"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.camarot_iri.maceta.4"
                   }
                 ]
               }
@@ -7057,6 +7231,94 @@
             "name": "sala.passadis_baix.porta_maquines.nom",
             "interactions": [
               {
+                "verb": "use",
+                "item": "maceta",
+                "if": {
+                  "flag": "falca_desencallada",
+                  "is": false
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.porta_maquines.6",
+                    "sound": "cops"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.porta_maquines.7",
+                    "sound": "porta_estanca"
+                  }
+                ],
+                "effects": [
+                  {
+                    "takeItem": "maceta"
+                  },
+                  {
+                    "setFlag": "falca_desencallada"
+                  }
+                ],
+                "goTo": "sala_maquines"
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "walkTo"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "flag": "falca_desencallada",
+                      "is": false
+                    },
+                    {
+                      "hasItem": "maceta"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.porta_maquines.5"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "open",
+                  "walkTo"
+                ],
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "flag": "falca_desencallada",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.porta_maquines.3"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.porta_maquines.4"
+                  }
+                ]
+              },
+              {
                 "verb": [
                   "use",
                   "open",
@@ -7084,6 +7346,116 @@
                   {
                     "who": "player",
                     "text": "sala.passadis_baix.porta_maquines.2"
+                  }
+                ]
+              }
+            ]
+          },
+          "repetidor": {
+            "name": "sala.passadis_baix.repetidor.nom",
+            "interactions": [
+              {
+                "verb": "look",
+                "if": {
+                  "all": [
+                    {
+                      "var": "escena",
+                      "op": "==",
+                      "value": 1
+                    },
+                    {
+                      "protagonist": "iri"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.repetidor.1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.repetidor.2"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.repetidor.3"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.repetidor.4"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "push"
+                ],
+                "if": {
+                  "protagonist": "iri"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.repetidor.5"
+                  }
+                ]
+              },
+              {
+                "verb": [
+                  "use",
+                  "push"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.repetidor.6"
+                  }
+                ]
+              }
+            ]
+          },
+          "petjades": {
+            "name": "sala.passadis_baix.petjades.nom",
+            "visibleIf": {
+              "var": "escena",
+              "op": "==",
+              "value": 1
+            },
+            "interactions": [
+              {
+                "verb": "look",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.petjades.1"
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.petjades.2"
+                  }
+                ]
+              },
+              {
+                "verb": "pickUp",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.passadis_baix.petjades.3"
                   }
                 ]
               }
@@ -12164,6 +12536,63 @@
       }
     },
     "hints": {
+      "iri_escora": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "escora_vista",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "escora_vista"
+        },
+        "levels": [
+          "pista.iri_escora.1",
+          "pista.iri_escora.2",
+          "pista.iri_escora.3"
+        ]
+      },
+      "iri_falca": {
+        "priority": 1,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "escora_vista"
+            },
+            {
+              "flag": "falca_desencallada",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "falca_desencallada"
+        },
+        "levels": [
+          "pista.iri_falca.1",
+          "pista.iri_falca.2",
+          "pista.iri_falca.3"
+        ]
+      },
       "iri_diu": {
         "priority": 1,
         "when": {
@@ -12183,6 +12612,9 @@
             {
               "flag": "brida_vista",
               "is": false
+            },
+            {
+              "flag": "falca_desencallada"
             }
           ]
         },
@@ -23521,6 +23953,10 @@
       "obj.mapa.amb_article": "el plànol",
       "obj.walkie.desc2": "El walkie. Canal 9. Algú l'escolta: tot el que hi diem, algú hi arriba primer.",
       "obj.walkie.desc3": "El walkie. Canal 9. L'escolta la Nadia, i per tant la Lind. Ara només serveix per dir mentides.",
+      "obj.maceta.nom": "maceta",
+      "obj.maceta.desc": "La maceta de goma del camarot. Per a la falca de baix de la porta de màquines, i per a res més.",
+      "obj.maceta.amb_article": "la maceta",
+      "obj.maceta.no": "La maceta no ha de viatjar. Ha de picar.",
       "pj.iri.nom": "Iri",
       "pj.iri.look": "La maquinista. Té les mans més netes que jo, i viu ficada en una sentina.",
       "pj.vet.nom": "Vet",
@@ -23730,6 +24166,12 @@
       "pista.usb_safata.1": "Ha pujat l'USB.",
       "pista.usb_safata.2": "Amb l'Iri, agafa l'USB de la safata del pont.",
       "pista.usb_safata.3": "Amb l'Iri, agafa l'USB de la safata del pont i usa'l amb la impressora.",
+      "pista.iri_escora.1": "Per què t'has despertat? Comprova si el terra fa pendent de debò.",
+      "pista.iri_escora.2": "Al prestatge de damunt la llitera hi ha un got d'aigua.",
+      "pista.iri_escora.3": "Mira el got d'aigua del prestatge del camarot.",
+      "pista.iri_falca.1": "La porta de màquines no s'obre. Però tu saps per què, i tens una eina per a això.",
+      "pista.iri_falca.2": "La falca de baix s'encalla. Al camarot hi ha la maceta de goma.",
+      "pista.iri_falca.3": "Agafa la maceta del camarot i fes-la servir amb la porta de la sala de màquines.",
       "sala.camarot_iri.porta.1": "La porta del camarot. Entreoberta. Aquest gat sap obrir portes, però no sap tancar-les.",
       "sala.camarot_iri.porta.nom": "porta",
       "sala.camarot_iri.carregador.1": "El cable del carregador. Mossegat de punta a punta. Té la forma exacta de les dents d'en Diu.",
@@ -23750,7 +24192,7 @@
       "sala.camarot_iri.ull_de_bou.2": "Fosc. El mar no es veu, però se sent.",
       "sala.camarot_iri.ull_de_bou.nom": "ull de bou",
       "sala.camarot_iri.1": "Tres i quaranta de la matinada. A bord de l'Arenga, tothom dorm.",
-      "sala.camarot_iri.2": "Bé, gairebé tothom.",
+      "sala.camarot_iri.2": "Bé, gairebé tothom. L'Iri s'ha despertat i no sap per què.",
       "sala.camarot_iri.3": "En Diu mossega el cable del carregador. Després, la porta del camarot queda entreoberta, i el gat ja no hi és.",
       "sala.camarot_iri.4": "Diu? Diu!",
       "sala.camarot_iri.5": "Si et troba la Capitana, ets sopa de peix.",
@@ -24443,7 +24885,37 @@
       "sala.coberta_proa.escotilla.19": "Juana? Juana, ets tu?",
       "sala.coberta_proa.escotilla.20": "Tres cops. Més forts.",
       "sala.coberta_proa.escotilla.21": "Aguanta. Vaig a buscar una cisalla.",
-      "sala.coberta_proa.escotilla.22": "Aguanta. Ara ho obro."
+      "sala.coberta_proa.escotilla.22": "Aguanta. Ara ho obro.",
+      "sala.camarot_iri.6": "Un moment.",
+      "sala.camarot_iri.7": "El terra fa pendent. Poquet. Però fa tres campanyes que dormo amb aquest vaixell, i l'Arenga no dorm mai torçada.",
+      "sala.camarot_iri.porta.2": "Si surto a les quatre de la matinada per un pendent que m'he imaginat, en Bastida se'n riurà fins a Galway. El got del prestatge no s'imagina res.",
+      "sala.camarot_iri.got.nom": "got d'aigua",
+      "sala.camarot_iri.got.1": "L'aigua del got no és plana. Fa pendent cap a popa.",
+      "sala.camarot_iri.got.2": "L'Arenga s'ha assegut de cul. I a popa, a sota de la línia de flotació, hi ha la meva sala de màquines.",
+      "sala.camarot_iri.got.3": "L'aigua del got balla, però balla recta. Així m'agrada.",
+      "sala.camarot_iri.got.4": "Un got d'aigua al prestatge, amb barana i tot. Aquí fins i tot els gots porten cinturó.",
+      "sala.camarot_iri.got.5": "Si me l'emporto, qui em dirà com seu el vaixell?",
+      "sala.camarot_iri.maceta.nom": "maceta",
+      "sala.camarot_iri.maceta.1": "La maceta de goma. La tinc aquí per la falca de baix de la porta de màquines, que s'encalla des de l'agost.",
+      "sala.camarot_iri.maceta.2": "Una maceta de goma penjada al costat del llit. No ho preguntaré.",
+      "sala.camarot_iri.maceta.3": "Per si la falca de baix ha tornat a fer de les seves. Sempre en fa.",
+      "sala.camarot_iri.maceta.4": "No és meva. I no sé per a què serveix aquí, cosa que em preocupa.",
+      "sala.passadis_baix.porta_maquines.3": "La falca de baix no es mou. S'encalla des de l'agost, i ningú no l'arregla perquè jo hi baixo cada dia.",
+      "sala.passadis_baix.porta_maquines.4": "Per això tinc una maceta penjada al camarot.",
+      "sala.passadis_baix.porta_maquines.5": "La falca de baix, encallada. Com sempre. Un cop de maceta i va.",
+      "sala.passadis_baix.porta_maquines.6": "Un cop. Dos. Tres. La falca salta.",
+      "sala.passadis_baix.porta_maquines.7": "La maceta, la deixo penjada aquí. Tornarà a fer falta.",
+      "sala.passadis_baix.repetidor.nom": "repetidor d'alarmes",
+      "sala.passadis_baix.repetidor.1": "El repetidor d'alarmes de la sala de màquines: sentina, incendi, gasoil, temperatura. Tot verd.",
+      "sala.passadis_baix.repetidor.2": "Tot verd, i el vaixell assegut de popa. Un dels dos menteix, i el vaixell no sap mentir.",
+      "sala.passadis_baix.repetidor.3": "El repetidor d'alarmes. Des de la nit de la vàlvula, no me'n refio gens.",
+      "sala.passadis_baix.repetidor.4": "Un panell amb llumetes verdes. Si fossin vermelles, m'hi fixaria.",
+      "sala.passadis_baix.repetidor.5": "El botó de prova encén totes les alarmes del vaixell. Despertaria tothom. I la Capitana, la primera.",
+      "sala.passadis_baix.repetidor.6": "No toco res que tingui llumetes.",
+      "sala.passadis_baix.petjades.nom": "petjades",
+      "sala.passadis_baix.petjades.1": "Petjades mullades, petites. Van i vénen entre el meu camarot i la porta de màquines.",
+      "sala.passadis_baix.petjades.2": "En Diu ha trepitjat aigua. I dins del vaixell, l'aigua no hi ha de ser.",
+      "sala.passadis_baix.petjades.3": "Són petjades. No s'agafen. S'interpreten."
     }
   },
   "locale": "ca",

@@ -3,6 +3,8 @@ Prova de resolució: el passadís de la coberta de sota (hd/rooms/passadis_baix.
 dibuixada de nou. Estret, verd i de ferro. D'esquerra a dreta: la porta del camarot de l'Iri, la porta estanca de
 la sala de màquines, la del pallol (amb el cadenat obert), l'escotilla de la sala de bombes (a terra) i l'escala que
 puja a la coberta principal.
+Sota el tauler de suro, el repetidor d'alarmes de les màquines (tot en verd). Prop: `petjades` (Escena 1: les
+petjades mullades d'en Diu, entre el camarot i la porta de màquines).
 Animacions: `llum` (el llum de gàbia de la dreta fa mal contacte) i `gota` (condensació sota el tub de gasoil).
 """
 import math
@@ -210,6 +212,44 @@ def ladder_sign(cv):
     glow(cv, 507, 83, 16, (90, 255, 140), 0.3)
 
 
+def alarms(cv):
+    """El repetidor d'alarmes de la sala de màquines, sota el tauler de suro: quatre llums, tots en verd."""
+    x0, y0, x1, y1 = 101, 150, 139, 183
+    box(cv, x0, y0, x1, y1, ENG, 3.0, grad=0.6)
+    cv.hline(x0 + 1, x1 - 1, y0 + 1, ENG, 4.6)
+    cv.rect(x0 + 3, y0 + 3, x1 - 3, y0 + 8, WHITEP, 3.4)                  # la placa del títol
+    w = text_width('ALARMES')
+    text(cv, 'ALARMES', (x0 + x1) // 2 - w // 2, y0 + 4, None, 0, flat=(40, 30, 30))
+    for i in range(4):                                                  # sentina, incendi, gasoil, temperatura
+        y = y0 + 13 + i * 5
+        cv.flat(x0 + 6, y, (70, 230, 110))
+        cv.flat(x0 + 7, y, (40, 190, 80))
+        glow(cv, x0 + 6, y, 3, (80, 255, 130), 0.35)
+        cv.hline(x0 + 11, x1 - 6 - (i % 2) * 5, y, WHITEP, 2.2)          # l'etiqueta de cada llum
+    cv.disc(x1 - 7, y1 - 5, 2, 2, REDP, lambda nx, ny: 3.8 - nx - ny)     # el botó de prova
+    cv.put(x1 - 7, y1 - 9, WHITEP, 3.0)
+    for bx, by in ((x0 + 2, y0 + 2), (x1 - 2, y0 + 2), (x0 + 2, y1 - 2), (x1 - 2, y1 - 2)):
+        cv.put(bx, by, ENG, 5.4)
+
+
+def petjades(cv):
+    """Escena 1: les petjades mullades d'en Diu, que van i vénen entre la porta del camarot i la de màquines."""
+    def paw(x, y, k):
+        # aigua damunt la planxa fosca: brilla amb la llum dels llums de gàbia
+        for dx, dy in ((0, 0), (1, 0), (2, 0), (0, 1), (1, 1), (2, 1), (-1, -2), (1, -3), (3, -2)):
+            px, py = x + dx, y + dy
+            cv.flat(px, py, mix(cv.get(px, py), (120, 156, 160), k))
+        cv.flat(x + 1, y, mix(cv.get(x + 1, y), (200, 228, 228), k))
+    for i in range(9):                                                   # anada (a prop de la paret)
+        t = i / 8
+        x = round(78 + (180 - 78) * t)
+        paw(x + (0 if i % 2 else 3), 210 + (i % 2) * 3, 0.5 - t * 0.12)
+    for i in range(8):                                                   # tornada (més endavant, més seca)
+        t = i / 7
+        x = round(176 - (176 - 84) * t)
+        paw(x + (2 if i % 2 else 0), 218 + (i % 2) * 3, 0.42 - t * 0.14)
+
+
 # ─── L'escala cap a la coberta principal ───────────────────────────────────
 
 def stair(cv):
@@ -284,6 +324,7 @@ def hatch(cv):
 def bg(cv):
     walls(cv)
     notice(cv)
+    alarms(cv)
     cabin_door(cv)
     engine_door(cv)
     store_door(cv)
@@ -299,7 +340,7 @@ def bg(cv):
     glow(cv, 587, 16, 53, (255, 236, 190), 0.35)
 
 
-PROPS = {}
+PROPS = {'petjades': petjades}
 
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
@@ -385,6 +426,8 @@ GEOMETRIA = {
     'things': {
         'porta_camarot': {'rect': (24, 77, 96, 203), 'walk': (60, 224)},
         'porta_maquines': {'rect': (141, 61, 232, 203), 'walk': (187, 224)},
+        'repetidor': {'rect': (99, 148, 141, 185), 'walk': (120, 224)},
+        'petjades': {'rect': (74, 205, 186, 224), 'walk': (130, 230)},
         'porta_pallol': {'rect': (277, 64, 349, 203), 'walk': (313, 224)},
         'escotilla': {'rect': (387, 219, 493, 252), 'walk': (440, 259)},
         'escala': {'rect': (523, 0, 639, 203), 'walk': (547, 224)},

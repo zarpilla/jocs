@@ -1,5 +1,62 @@
 {
   "$schema": "../schemas/hints.schema.json",
+  "iri_escora": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "escora_vista",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "escora_vista"
+    },
+    "levels": [
+      "pista.iri_escora.1",
+      "pista.iri_escora.2",
+      "pista.iri_escora.3"
+    ]
+  },
+  "iri_falca": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "escora_vista"
+        },
+        {
+          "flag": "falca_desencallada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "falca_desencallada"
+    },
+    "levels": [
+      "pista.iri_falca.1",
+      "pista.iri_falca.2",
+      "pista.iri_falca.3"
+    ]
+  },
   "iri_diu": {
     "priority": 1,
     "when": {
@@ -19,6 +76,9 @@
         {
           "flag": "brida_vista",
           "is": false
+        },
+        {
+          "flag": "falca_desencallada"
         }
       ]
     },

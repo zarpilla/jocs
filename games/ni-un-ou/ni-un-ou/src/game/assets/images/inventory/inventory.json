@@ -314,6 +314,27 @@
         "h": 36
       },
       "duration": 100
+    },
+    "inventory 15.aseprite": {
+      "frame": {
+        "x": 975,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 65,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 65,
+        "h": 36
+      },
+      "duration": 100
     }
   },
   "meta": {
@@ -322,7 +343,7 @@
     "image": "inventory.png",
     "format": "RGBA8888",
     "size": {
-      "w": 975,
+      "w": 1040,
       "h": 36
     },
     "scale": "1",
@@ -349,86 +370,93 @@
         "color": "#000000ff"
       },
       {
-        "name": "cisalla",
+        "name": "maceta",
         "from": 3,
         "to": 3,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "travesser",
+        "name": "cisalla",
         "from": 4,
         "to": 4,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "tram",
+        "name": "travesser",
         "from": 5,
         "to": 5,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "cable_nou",
+        "name": "tram",
         "from": 6,
         "to": 6,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "usb",
+        "name": "cable_nou",
         "from": 7,
         "to": 7,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "nota_iri",
+        "name": "usb",
         "from": 8,
         "to": 8,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "nota_vet",
+        "name": "nota_iri",
         "from": 9,
         "to": 9,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "clau_tomas",
+        "name": "nota_vet",
         "from": 10,
         "to": 10,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "clau_tubs",
+        "name": "clau_tomas",
         "from": 11,
         "to": 11,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "mostra7",
+        "name": "clau_tubs",
         "from": 12,
         "to": 12,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "registre",
+        "name": "mostra7",
         "from": 13,
         "to": 13,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "mapa",
+        "name": "registre",
         "from": 14,
         "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mapa",
+        "from": 15,
+        "to": 15,
         "direction": "forward",
         "color": "#000000ff"
       }

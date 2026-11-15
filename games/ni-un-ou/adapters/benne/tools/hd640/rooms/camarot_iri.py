@@ -4,7 +4,8 @@ El més petit del vaixell, al costat de les màquines, a les 3:40 de la matinada
 llit d'hospital, el carregador mossegat a l'endoll, la motxilla d'en Diu amb forats per respirar, l'ull de bou
 fosc, la porta entreoberta amb el passadís il·luminat, la granota penjada i el pòster d'un dièsel amb la foto de
 l'Iri i en Bastida.
-Prop: `ulls_dia` (Escenes 2 i 3: el vidre de dia). Animació: `mar` (l'ull de bou de nit: onades i esquitxos).
+Al cap del prestatge, el got d'aigua torçat (l'Arenga s'ha assegut de popa).
+Props: `ulls_dia` (Escenes 2 i 3: el vidre de dia) i `maceta` (la maceta de goma, sota l'ull de bou). Animació: `mar` (l'ull de bou de nit: onades i esquitxos).
 """
 import math
 from functools import lru_cache
@@ -189,6 +190,7 @@ def shelf(cv):
         cv.hline(x + 1, x + 5, 108 - h + 4, PAPER, 3.0)
         cv.hline(x + 1, x + 5, 108 - h + 5, PAPER, 2.2)
         cv.hline(x + 1, x + 5, 105, col, 0.8)
+    glass(cv)
     # les claus fixes, penjades de la barana
     for i, x in enumerate((171, 179, 187, 195)):
         ln = 11 + i * 3
@@ -197,6 +199,48 @@ def shelf(cv):
         cv.disc(x, 103 + ln, 3, 3, CAB, 4.0)
         cv.put(x, 103 + ln, DARK, 1.0)
         cv.put(x, 104 + ln, DARK, 1.0)
+
+
+def glass(cv):
+    """El got d'aigua, al cap del prestatge: l'aigua no és plana (l'Arenga s'ha assegut de popa, Escena 1)."""
+    x0, x1, y0, y1 = 202, 212, 94, 108
+    GL = [(40, 52, 58), (90, 110, 116), (150, 170, 172), (210, 222, 220)]
+    WAT = [(14, 34, 44), (30, 64, 78), (56, 100, 112), (110, 160, 168), (190, 226, 228)]
+    for y in range(y0 + 1, y1):
+        for x in range(x0 + 1, x1):
+            s = 99 + (x - x0) * 0.45                                       # més alta a l'esquerra: pendent
+            if y >= s:
+                cv.put(x, y, WAT, 2.2 + (0.6 if x == x0 + 2 else 0) - (y - s) * 0.04, lit=0.6)
+            else:
+                cv.put(x, y, GL, 0.6, lit=0.6)
+    for x in range(x0 + 1, x1):                                            # la línia de l'aigua, torta
+        cv.put(x, round(99 + (x - x0) * 0.45), WAT, 4.4, lit=0.4)
+    for y in range(y0, y1 + 1):                                            # les parets del vidre
+        cv.put(x0, y, GL, 2.6 if y > y0 else 3.4)
+        cv.put(x1, y, GL, 2.0 if y > y0 else 3.4)
+    cv.hline(x0, x1, y1, GL, 2.0)
+    cv.vline(x0 + 1, y0 + 1, y1 - 2, GL, 3.8, lit=0.4)                     # el reflex
+    cv.put(x0 + 1, y0 + 2, GL, 4.6, lit=0.2)
+
+
+def maceta(cv):
+    """La maceta de goma, penjada d'un ganxo sota l'ull de bou, amb el cap avall (l'Iri l'agafa a l'Escena 1)."""
+    RUB = [(10, 10, 12), (24, 24, 28), (42, 42, 46), (66, 66, 70), (96, 96, 100)]
+    box(cv, 410, 140, 416, 143, CAB, 3.6)                                   # el ganxo
+    cv.put(413, 144, CAB, 4.4)
+    cv.line(413, 145, 411, 149, CORD, 2.4)                                  # el cordill del mànec
+    cv.line(413, 145, 415, 149, CORD, 2.0)
+    cv.rect(412, 149, 414, 175, WALNUT, lambda x, y: 3.6 - (x - 412) * 0.6)  # el mànec
+    cv.vline(412, 149, 175, WALNUT, 4.4)
+    for y in (156, 163):                                                    # la cinta del puny
+        cv.hline(412, 414, y, YELL, 2.6)
+    rrect(cv, 400, 175, 426, 187, 4, RUB, lambda x, y: 3.0 - (y - 175) * 0.12)  # el cap, de goma negra
+    cv.hline(403, 423, 177, RUB, 4.0)
+    cv.hline(404, 422, 178, RUB, 3.4)
+    for ex in (400, 426):                                                   # les cares de picar
+        cv.vline(ex, 177, 185, RUB, 1.2)
+    cv.put(413, 186, RUB, 0.6)
+    sota.floor_shadow(cv, 413, 189, 12, 1, 0.25)
 
 
 # ─── Endoll, tauleta, pòster, ull de bou, granota ───────────────────────────
@@ -506,7 +550,7 @@ def ulls_dia(cv):
         cv.flat(x, y + 1, mix(cv.get(x, y + 1), (236, 240, 244), 0.2))
 
 
-PROPS = {'ulls_dia': ulls_dia}
+PROPS = {'ulls_dia': ulls_dia, 'maceta': maceta}
 
 
 # ─── Animació: el mar per l'ull de bou ──────────────────────────────────────
@@ -540,6 +584,8 @@ GEOMETRIA = {
     'things': {
         'porta': {'rect': (539, 75, 611, 203), 'walk': (576, 224)},
         'carregador': {'rect': (232, 147, 275, 181), 'walk': (256, 227)},
+        'got': {'rect': (198, 88, 217, 110), 'walk': (207, 229)},
+        'maceta': {'rect': (397, 136, 429, 190), 'walk': (413, 229)},
         'llitera': {'rect': (19, 141, 229, 211), 'walk': (147, 229)},
         'motxilla': {'rect': (293, 160, 355, 213), 'walk': (325, 229)},
         'ull_de_bou': {'rect': (384, 64, 443, 123), 'walk': (413, 229)},
