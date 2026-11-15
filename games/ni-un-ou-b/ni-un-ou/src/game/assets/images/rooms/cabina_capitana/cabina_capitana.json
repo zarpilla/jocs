@@ -1,0 +1,1860 @@
+{
+  "frames": {
+    "cabina_capitana 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 1.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 31,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 31,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 2.aseprite": {
+      "frame": {
+        "x": 671,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 3.aseprite": {
+      "frame": {
+        "x": 700,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 4.aseprite": {
+      "frame": {
+        "x": 1202,
+        "y": 0,
+        "w": 29,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 5.aseprite": {
+      "frame": {
+        "x": 729,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 6.aseprite": {
+      "frame": {
+        "x": 758,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 7.aseprite": {
+      "frame": {
+        "x": 787,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 8.aseprite": {
+      "frame": {
+        "x": 671,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 9.aseprite": {
+      "frame": {
+        "x": 816,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 10.aseprite": {
+      "frame": {
+        "x": 1231,
+        "y": 0,
+        "w": 29,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 11.aseprite": {
+      "frame": {
+        "x": 845,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 12.aseprite": {
+      "frame": {
+        "x": 874,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 13.aseprite": {
+      "frame": {
+        "x": 903,
+        "y": 0,
+        "w": 29,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 127,
+        "y": 86,
+        "w": 29,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 14.aseprite": {
+      "frame": {
+        "x": 932,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 15.aseprite": {
+      "frame": {
+        "x": 962,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 16.aseprite": {
+      "frame": {
+        "x": 1260,
+        "y": 0,
+        "w": 30,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 17.aseprite": {
+      "frame": {
+        "x": 992,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 18.aseprite": {
+      "frame": {
+        "x": 1022,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 19.aseprite": {
+      "frame": {
+        "x": 1052,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 20.aseprite": {
+      "frame": {
+        "x": 932,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 21.aseprite": {
+      "frame": {
+        "x": 1082,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 22.aseprite": {
+      "frame": {
+        "x": 1290,
+        "y": 0,
+        "w": 30,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 23.aseprite": {
+      "frame": {
+        "x": 1112,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 24.aseprite": {
+      "frame": {
+        "x": 1142,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 25.aseprite": {
+      "frame": {
+        "x": 1172,
+        "y": 0,
+        "w": 30,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 126,
+        "y": 86,
+        "w": 30,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 26.aseprite": {
+      "frame": {
+        "x": 1320,
+        "y": 0,
+        "w": 1,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 61,
+        "w": 1,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 27.aseprite": {
+      "frame": {
+        "x": 1321,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 61,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 28.aseprite": {
+      "frame": {
+        "x": 1323,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 61,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 29.aseprite": {
+      "frame": {
+        "x": 1325,
+        "y": 0,
+        "w": 3,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 61,
+        "w": 3,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 30.aseprite": {
+      "frame": {
+        "x": 1350,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 62,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 31.aseprite": {
+      "frame": {
+        "x": 1354,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 62,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 32.aseprite": {
+      "frame": {
+        "x": 1358,
+        "y": 0,
+        "w": 5,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 62,
+        "w": 5,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 33.aseprite": {
+      "frame": {
+        "x": 1402,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 63,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 34.aseprite": {
+      "frame": {
+        "x": 1408,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 63,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 35.aseprite": {
+      "frame": {
+        "x": 1450,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 64,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 36.aseprite": {
+      "frame": {
+        "x": 1457,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 64,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 37.aseprite": {
+      "frame": {
+        "x": 1506,
+        "y": 0,
+        "w": 7,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 65,
+        "w": 7,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 38.aseprite": {
+      "frame": {
+        "x": 1534,
+        "y": 0,
+        "w": 8,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 66,
+        "w": 8,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 39.aseprite": {
+      "frame": {
+        "x": 1566,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 67,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 40.aseprite": {
+      "frame": {
+        "x": 1574,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 67,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 41.aseprite": {
+      "frame": {
+        "x": 1630,
+        "y": 0,
+        "w": 8,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 8,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 42.aseprite": {
+      "frame": {
+        "x": 1582,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 43.aseprite": {
+      "frame": {
+        "x": 1590,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 44.aseprite": {
+      "frame": {
+        "x": 1542,
+        "y": 0,
+        "w": 8,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 8,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 45.aseprite": {
+      "frame": {
+        "x": 1513,
+        "y": 0,
+        "w": 7,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 7,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 46.aseprite": {
+      "frame": {
+        "x": 1464,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 47.aseprite": {
+      "frame": {
+        "x": 1471,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 48.aseprite": {
+      "frame": {
+        "x": 1414,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 49.aseprite": {
+      "frame": {
+        "x": 1420,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 50.aseprite": {
+      "frame": {
+        "x": 1363,
+        "y": 0,
+        "w": 5,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 5,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 51.aseprite": {
+      "frame": {
+        "x": 1368,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 52.aseprite": {
+      "frame": {
+        "x": 1372,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 53.aseprite": {
+      "frame": {
+        "x": 1328,
+        "y": 0,
+        "w": 3,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 3,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 54.aseprite": {
+      "frame": {
+        "x": 1331,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 55.aseprite": {
+      "frame": {
+        "x": 1333,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 56.aseprite": {
+      "frame": {
+        "x": 1335,
+        "y": 0,
+        "w": 1,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 68,
+        "w": 1,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 57.aseprite": {
+      "frame": {
+        "x": 1336,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 68,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 58.aseprite": {
+      "frame": {
+        "x": 1338,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 68,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 59.aseprite": {
+      "frame": {
+        "x": 1340,
+        "y": 0,
+        "w": 3,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 189,
+        "y": 68,
+        "w": 3,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 60.aseprite": {
+      "frame": {
+        "x": 1376,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 188,
+        "y": 68,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 61.aseprite": {
+      "frame": {
+        "x": 1380,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 188,
+        "y": 68,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 62.aseprite": {
+      "frame": {
+        "x": 1384,
+        "y": 0,
+        "w": 5,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 187,
+        "y": 68,
+        "w": 5,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 63.aseprite": {
+      "frame": {
+        "x": 1426,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 186,
+        "y": 68,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 64.aseprite": {
+      "frame": {
+        "x": 1432,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 186,
+        "y": 68,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 65.aseprite": {
+      "frame": {
+        "x": 1478,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 185,
+        "y": 68,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 66.aseprite": {
+      "frame": {
+        "x": 1485,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 185,
+        "y": 68,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 67.aseprite": {
+      "frame": {
+        "x": 1520,
+        "y": 0,
+        "w": 7,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 185,
+        "y": 68,
+        "w": 7,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 68.aseprite": {
+      "frame": {
+        "x": 1550,
+        "y": 0,
+        "w": 8,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 68,
+        "w": 8,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 69.aseprite": {
+      "frame": {
+        "x": 1598,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 68,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 70.aseprite": {
+      "frame": {
+        "x": 1606,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 68,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 71.aseprite": {
+      "frame": {
+        "x": 1638,
+        "y": 0,
+        "w": 8,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 68,
+        "w": 8,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 72.aseprite": {
+      "frame": {
+        "x": 1614,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 67,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 73.aseprite": {
+      "frame": {
+        "x": 1622,
+        "y": 0,
+        "w": 8,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 67,
+        "w": 8,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 74.aseprite": {
+      "frame": {
+        "x": 1558,
+        "y": 0,
+        "w": 8,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 184,
+        "y": 66,
+        "w": 8,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 75.aseprite": {
+      "frame": {
+        "x": 1527,
+        "y": 0,
+        "w": 7,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 185,
+        "y": 65,
+        "w": 7,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 76.aseprite": {
+      "frame": {
+        "x": 1492,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 185,
+        "y": 64,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 77.aseprite": {
+      "frame": {
+        "x": 1499,
+        "y": 0,
+        "w": 7,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 185,
+        "y": 64,
+        "w": 7,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 78.aseprite": {
+      "frame": {
+        "x": 1438,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 186,
+        "y": 63,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 79.aseprite": {
+      "frame": {
+        "x": 1444,
+        "y": 0,
+        "w": 6,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 186,
+        "y": 63,
+        "w": 6,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 80.aseprite": {
+      "frame": {
+        "x": 1389,
+        "y": 0,
+        "w": 5,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 187,
+        "y": 62,
+        "w": 5,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 81.aseprite": {
+      "frame": {
+        "x": 1394,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 188,
+        "y": 62,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 82.aseprite": {
+      "frame": {
+        "x": 1398,
+        "y": 0,
+        "w": 4,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 188,
+        "y": 62,
+        "w": 4,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 83.aseprite": {
+      "frame": {
+        "x": 1343,
+        "y": 0,
+        "w": 3,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 189,
+        "y": 61,
+        "w": 3,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 84.aseprite": {
+      "frame": {
+        "x": 1346,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 61,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 85.aseprite": {
+      "frame": {
+        "x": 1348,
+        "y": 0,
+        "w": 2,
+        "h": 8
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 61,
+        "w": 2,
+        "h": 8
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "cabina_capitana.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 1646,
+      "h": 360
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "ulls_dia",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "mar",
+        "from": 2,
+        "to": 13,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "ulls_dia_mar",
+        "from": 14,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "rellotge",
+        "from": 26,
+        "to": 85,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

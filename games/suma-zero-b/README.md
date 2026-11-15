@@ -46,10 +46,11 @@ la llista). Cap pas és impossible.
 
 | Camí | Passos | Un toc | Toc + menú | Toc de més (mira primer) | Gestos per pas |
 |---|---|---|---|---|---|
-| Sense aliats | 66 | 61 | 5 | 20 | 1,38 |
-| Amb tots els aliats | 67 | 62 | 5 | 21 | 1,39 |
+| Sense aliats | 66 | 61 | 5 | 25 | 1,45 |
+| Amb tots els aliats | 67 | 62 | 5 | 26 | 1,46 |
 
-El menú surt al passaplats, la nevera, la capsa i la impressora: on hi ha més d'una cosa a fer.
+El menú surt al passaplats, la nevera, la capsa i la impressora: on hi ha més d'una cosa a fer. (Els tocs de més
+per mirar inclouen les coses que tenen una descripció nova: vegeu [Aigua Verne B](../aigua-verne-b/README.md#resultat-de-la-prova).)
 
 ## Ordres
 

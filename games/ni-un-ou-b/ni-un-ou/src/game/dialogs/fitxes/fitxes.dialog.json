@@ -1,0 +1,55 @@
+{
+  "id": "fitxes",
+  "displayName": "fitxes",
+  "options": [
+    {
+      "id": "tria__capitana",
+      "scriptName": "tria__capitana",
+      "text": "La Capitana.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__tomas",
+      "scriptName": "tria__tomas",
+      "text": "En Tomàs, el cuiner.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__nadia",
+      "scriptName": "tria__nadia",
+      "text": "La Nadia, la periodista.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__marcel",
+      "scriptName": "tria__marcel",
+      "text": "El Marcel, el mariner.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__bastida",
+      "scriptName": "tria__bastida",
+      "text": "En Bastida, el contramestre.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__juana",
+      "scriptName": "tria__juana",
+      "text": "La Juana, la biòloga.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "tria__cap",
+      "scriptName": "tria__cap",
+      "text": "Ningú, de moment.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "id": "proleg_punt7",
+  "name": "Punt 7",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 200,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 261
+          },
+          {
+            "x": 200,
+            "y": 261
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    },
+    {
+      "id": "zodiac",
+      "tag": "zodiac",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "zodiac": {
+          "loop": true,
+          "frameDuration": 300
+        },
+        "z_baixa": {
+          "loop": false,
+          "frameDuration": 150
+        },
+        "z_travessa": {
+          "loop": false,
+          "frameDuration": 150
+        },
+        "z_mostra": {
+          "loop": false,
+          "frameDuration": 150
+        },
+        "z_escriu": {
+          "loop": false,
+          "frameDuration": 150
+        }
+      }
+    },
+    {
+      "id": "vigia",
+      "tag": "vigia",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "vigia": {
+          "loop": false,
+          "frameDuration": 1000
+        },
+        "vigia_on": {
+          "loop": false,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "bastida_popa",
+      "tag": "bastida_popa",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bastida_popa": {
+          "loop": true,
+          "frameDuration": 300
+        },
+        "bastida_escriu": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "juana-veu",
+      "definition": "juana/juana.character.json",
+      "x": 106,
+      "y": 205,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "instanceId": "bastida-veu",
+      "definition": "bastida/bastida.character.json",
+      "x": 128,
+      "y": 186,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ]
+}

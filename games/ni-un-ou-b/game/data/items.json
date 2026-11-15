@@ -1,0 +1,259 @@
+{
+  "$schema": "../schemas/items.schema.json",
+  "walkie": {
+    "name": "obj.walkie.nom",
+    "description": "obj.walkie.desc",
+    "props": {
+      "no_munta": "obj.walkie.no"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "nadia_escolta"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.walkie.desc3"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "flag": "portatil_robat"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.walkie.desc2"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "walkie"
+      },
+      {
+        "verb": "use",
+        "dialogue": "walkie"
+      }
+    ]
+  },
+  "quadern": {
+    "name": "obj.quadern.nom",
+    "props": {
+      "no_munta": "obj.quadern.no"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "dialogue": "quadern"
+      },
+      {
+        "verb": "use",
+        "dialogue": "quadern"
+      }
+    ]
+  },
+  "llibreta": {
+    "name": "obj.llibreta.nom",
+    "description": "obj.llibreta.desc",
+    "props": {
+      "no_munta": "obj.llibreta.no"
+    }
+  },
+  "cisalla": {
+    "name": "obj.cisalla.nom",
+    "props": {
+      "no_munta": "obj.cisalla.no"
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "flag": "cisalla_mellada"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cisalla.1"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cisalla.2"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.cisalla.3"
+          }
+        ]
+      }
+    ]
+  },
+  "travesser": {
+    "name": "obj.travesser.nom",
+    "description": "obj.travesser.desc",
+    "props": {
+      "munta": true
+    }
+  },
+  "tram": {
+    "name": "obj.tram.nom",
+    "props": {
+      "munta": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.tram.1"
+          },
+          {
+            "who": "player",
+            "text": "obj.tram.2"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "prova_osca"
+          }
+        ]
+      }
+    ]
+  },
+  "cable_nou": {
+    "name": "obj.cable_nou.nom",
+    "description": "obj.cable_nou.desc",
+    "props": {
+      "munta": true
+    }
+  },
+  "usb": {
+    "name": "obj.usb.nom",
+    "description": "obj.usb.desc",
+    "props": {
+      "munta": true
+    }
+  },
+  "nota_iri": {
+    "name": "obj.nota_iri.nom",
+    "props": {
+      "munta": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.nota_iri.1"
+          }
+        ]
+      }
+    ]
+  },
+  "nota_vet": {
+    "name": "obj.nota_vet.nom",
+    "props": {
+      "munta": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.nota_vet.1"
+          }
+        ]
+      }
+    ]
+  },
+  "clau_tomas": {
+    "name": "obj.clau_tomas.nom",
+    "description": "obj.clau_tomas.desc",
+    "props": {
+      "munta": true
+    }
+  },
+  "clau_tubs": {
+    "name": "obj.clau_tubs.nom",
+    "description": "obj.clau_tubs.desc",
+    "props": {
+      "no_munta": "obj.clau_tubs.no"
+    }
+  },
+  "mostra7": {
+    "name": "obj.mostra7.nom",
+    "props": {
+      "munta": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.mostra7.1"
+          }
+        ]
+      }
+    ]
+  },
+  "registre": {
+    "name": "obj.registre.nom",
+    "props": {
+      "munta": true
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.registre.1"
+          }
+        ]
+      }
+    ]
+  },
+  "mapa": {
+    "name": "obj.mapa.nom",
+    "description": "obj.mapa.desc",
+    "props": {
+      "munta": true
+    },
+    "interactions": [
+      {
+        "verb": [
+          "use",
+          "open"
+        ],
+        "effects": [
+          {
+            "event": "mapa"
+          }
+        ]
+      }
+    ]
+  }
+}

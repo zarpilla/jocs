@@ -176,6 +176,20 @@ export function resolvePointerVerbForInventoryItem(
   if (base.kind === 'verb' && base.consumeActive && activeInventoryItemId !== null) {
     return { kind: 'verb', verbId: base.verbId, consumeActive: false };
   }
+  // An item verb (one that arms the item for "use X with...") on the primary button, over an item that has its own
+  // `defaultVerb`: the item is used on its own, not armed (a map that opens with one tap). Only without an armed
+  // item and without an active verb, so combining two items still works.
+  if (
+    base.kind === 'verb' &&
+    (slot ? slot === 'primary' : pointer.leftButtonDown()) &&
+    activeInventoryItemId === null &&
+    activeVerbId === null &&
+    target.defaultVerb &&
+    target.defaultVerb !== base.verbId &&
+    isItemVerbId(getGameSettings(), base.verbId)
+  ) {
+    return { kind: 'verb', verbId: target.defaultVerb, consumeActive: false };
+  }
   if (base.kind !== 'walkToTarget') {
     return base;
   }

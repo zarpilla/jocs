@@ -1,0 +1,218 @@
+{
+  "id": "diposit2",
+  "name": "Dipòsit 2",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 13,
+            "y": 227
+          },
+          {
+            "x": 627,
+            "y": 227
+          },
+          {
+            "x": 635,
+            "y": 261
+          },
+          {
+            "x": 5,
+            "y": 261
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "registre",
+      "active": true,
+      "description": "registre",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 261,
+          "y": 0
+        },
+        {
+          "x": 331,
+          "y": 0
+        },
+        {
+          "x": 331,
+          "y": 211
+        },
+        {
+          "x": 261,
+          "y": 211
+        }
+      ],
+      "walkToPoint": {
+        "x": 296,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 296,
+        "y": 211
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "filtre",
+      "active": true,
+      "description": "carcassa del filtre",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 413,
+          "y": 115
+        },
+        {
+          "x": 485,
+          "y": 115
+        },
+        {
+          "x": 485,
+          "y": 213
+        },
+        {
+          "x": 413,
+          "y": 213
+        }
+      ],
+      "walkToPoint": {
+        "x": 448,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 449,
+        "y": 213
+      }
+    },
+    {
+      "id": "cartell",
+      "active": true,
+      "description": "cartell",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 72,
+          "y": 94
+        },
+        {
+          "x": 206,
+          "y": 94
+        },
+        {
+          "x": 206,
+          "y": 143
+        },
+        {
+          "x": 72,
+          "y": 143
+        }
+      ],
+      "walkToPoint": {
+        "x": 139,
+        "y": 235
+      },
+      "lookAtPoint": {
+        "x": 139,
+        "y": 143
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "gota",
+      "tag": "gota",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "gota": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "bassal",
+      "tag": "bassal",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bassal": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 130
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 261,
+      "y": 248,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 341,
+      "y": 251,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

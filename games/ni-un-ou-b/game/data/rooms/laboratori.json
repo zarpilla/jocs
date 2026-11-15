@@ -1,0 +1,459 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.laboratori.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "esc4",
+      "verb": "*",
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 4
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.laboratori.1",
+          "stage": [
+            {
+              "who": "iri",
+              "at": "porta",
+              "face": "R"
+            }
+          ]
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.2",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": {
+                "x": 230,
+                "y": 245
+              }
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "sala.laboratori.3",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": "nota"
+            },
+            {
+              "who": "iri",
+              "face": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esc5",
+      "verb": "*",
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 5
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.laboratori.4",
+          "stage": [
+            {
+              "who": "iri",
+              "at": "porta",
+              "face": "R"
+            },
+            {
+              "who": "iri",
+              "walk": "portatil"
+            },
+            {
+              "who": "iri",
+              "face": "U"
+            }
+          ]
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.5"
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.6"
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.7"
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.8"
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.9"
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.10"
+        },
+        {
+          "who": "player",
+          "text": "sala.laboratori.11",
+          "stage": [
+            {
+              "who": "iri",
+              "face": "D"
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "portatil_robat"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.laboratori.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "passadis"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.porta.1"
+            }
+          ]
+        }
+      ]
+    },
+    "portatil": {
+      "name": "sala.laboratori.portatil.nom",
+      "visibleIf": {
+        "var": "escena",
+        "op": "<",
+        "value": 5
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "portatil_obert",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.portatil.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.portatil.2"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.portatil.3"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 4
+              },
+              {
+                "flag": "portatil_obert",
+                "is": false
+              }
+            ]
+          },
+          "dialogue": "portatil"
+        },
+        {
+          "verb": "use",
+          "if": {
+            "flag": "portatil_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.portatil.4"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.portatil.5"
+            }
+          ]
+        }
+      ]
+    },
+    "llibre": {
+      "name": "sala.laboratori.llibre.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.llibre.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": ">=",
+            "value": 4
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.llibre.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.laboratori.llibre.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.laboratori.llibre.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.laboratori.llibre.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "postal_vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.llibre.6"
+            }
+          ]
+        }
+      ]
+    },
+    "nota": {
+      "name": "sala.laboratori.nota.nom",
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": 4
+      },
+      "interactions": [
+        {
+          "verb": [
+            "look",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.laboratori.nota.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.laboratori.nota.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.laboratori.nota.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.laboratori.nota.4"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nota_juana"
+            }
+          ]
+        }
+      ]
+    },
+    "nevera": {
+      "name": "sala.laboratori.nevera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.nevera.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.laboratori.nevera.2"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.nevera.3"
+            }
+          ]
+        }
+      ]
+    },
+    "juana": {
+      "visibleIf": {
+        "var": "escena",
+        "op": "==",
+        "value": 3
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.juana.1"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "juana",
+              "text": "sala.laboratori.juana.2"
+            }
+          ]
+        }
+      ]
+    },
+    "taulell": {
+      "name": "sala.laboratori.taulell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": "<",
+            "value": 4
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.taulell.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.laboratori.taulell.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.laboratori.taulell.3"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "remenat": {
+      "visibleIf": {
+        "var": "escena",
+        "op": ">=",
+        "value": 4
+      }
+    },
+    "ulls_dia": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    },
+    "ulls_dia_mar": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    }
+  }
+}

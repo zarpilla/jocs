@@ -1,0 +1,76 @@
+{
+  "id": "nadia",
+  "displayName": "nadia",
+  "options": [
+    {
+      "id": "revisio_menu__juana",
+      "scriptName": "revisio_menu__juana",
+      "text": "Has vist la Juana?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__mareig",
+      "scriptName": "revisio_menu__mareig",
+      "text": "Com estàs?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__feina",
+      "scriptName": "revisio_menu__feina",
+      "text": "Què fas a bord, exactament?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__fi",
+      "scriptName": "revisio_menu__fi",
+      "text": "Ja està. Beu aigua.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc4__contrasenya",
+      "scriptName": "esc4__contrasenya",
+      "text": "La contrasenya de la Juana. No la sabràs pas?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc4__adeu",
+      "scriptName": "esc4__adeu",
+      "text": "Res. Bon profit.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "pillada__denunciar",
+      "scriptName": "pillada__denunciar",
+      "text": "Ho sabrà la Capitana.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "pillada__aliar",
+      "scriptName": "pillada__aliar",
+      "text": "Continuaràs informant la Lind. Però del que jo et digui. I quan arribem a terra, escriuràs la història de debò. Amb la teva firma.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc6__soroll",
+      "scriptName": "esc6__soroll",
+      "text": "Digues-li que han sentit soroll a la sala de bombes.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc6__adeu",
+      "scriptName": "esc6__adeu",
+      "text": "Res, de moment.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

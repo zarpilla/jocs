@@ -1,0 +1,329 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.camarot_iri.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 1
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.camarot_iri.1",
+          "stage": [
+            {
+              "who": "iri",
+              "at": {
+                "x": 118,
+                "y": 242
+              },
+              "face": "R"
+            }
+          ]
+        },
+        {
+          "who": "narrator",
+          "text": "sala.camarot_iri.2",
+          "sound": "mossegada"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.camarot_iri.3",
+          "stage": [
+            {
+              "who": "diu",
+              "walk": "porta",
+              "wait": false
+            }
+          ]
+        },
+        {
+          "who": "player",
+          "text": "sala.camarot_iri.4",
+          "stage": [
+            {
+              "who": "diu",
+              "walk": "porta"
+            },
+            {
+              "who": "diu",
+              "visible": false
+            }
+          ]
+        },
+        {
+          "who": "player",
+          "text": "sala.camarot_iri.5",
+          "stage": [
+            {
+              "who": "iri",
+              "walk": {
+                "x": 330,
+                "y": 242
+              }
+            }
+          ]
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "diu_fora"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.camarot_iri.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "passadis_baix"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.porta.1"
+            }
+          ]
+        }
+      ]
+    },
+    "carregador": {
+      "name": "sala.camarot_iri.carregador.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.carregador.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.carregador.2"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.carregador.3"
+            }
+          ]
+        }
+      ]
+    },
+    "llitera": {
+      "name": "sala.camarot_iri.llitera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.llitera.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.llitera.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.llitera.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pull",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.llitera.4"
+            }
+          ]
+        }
+      ]
+    },
+    "motxilla": {
+      "name": "sala.camarot_iri.motxilla.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.motxilla.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.motxilla.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open"
+          ],
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.motxilla.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.motxilla.4"
+            }
+          ]
+        }
+      ]
+    },
+    "ull_de_bou": {
+      "name": "sala.camarot_iri.ull_de_bou.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "any": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 2
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.ull_de_bou.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.camarot_iri.ull_de_bou.2"
+            }
+          ]
+        }
+      ]
+    },
+    "diu": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "flag": "diu_fora",
+            "is": false
+          }
+        ]
+      },
+      "interactions": []
+    }
+  },
+  "decor": {
+    "ulls_dia": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    }
+  }
+}

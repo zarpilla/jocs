@@ -1,0 +1,132 @@
+{
+  "id": "bastida",
+  "displayName": "bastida",
+  "options": [
+    {
+      "id": "esc2_menu__revisio",
+      "scriptName": "esc2_menu__revisio",
+      "text": "I la revisió, Ernest?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc2_menu__mar",
+      "scriptName": "esc2_menu__mar",
+      "text": "Bon dia per pescar?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc2_menu__pipa",
+      "scriptName": "esc2_menu__pipa",
+      "text": "Fumes molt?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc2_menu__plataforma",
+      "scriptName": "esc2_menu__plataforma",
+      "text": "Aquella plataforma...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc2_menu__adeu",
+      "scriptName": "esc2_menu__adeu",
+      "text": "Res. Bon vent.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc3_menu__temporal",
+      "scriptName": "esc3_menu__temporal",
+      "text": "Diuen que ets una llegenda. Explica'm això del temporal. Per la història clínica.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc3_menu__tensio",
+      "scriptName": "esc3_menu__tensio",
+      "text": "La tensió. Arremanga't.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc3_menu__mans",
+      "scriptName": "esc3_menu__mans",
+      "text": "Ensenya'm les mans.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc3_menu__adeu",
+      "scriptName": "esc3_menu__adeu",
+      "text": "(Deixar-lo una estona)",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc6__nus",
+      "scriptName": "esc6__nus",
+      "text": "Ensenya'm a fer el nus Bastida. Per si mai he de lligar un pacient.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc6__adeu",
+      "scriptName": "esc6__adeu",
+      "text": "D'acord. Bona nit.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "dubte__veritat",
+      "scriptName": "dubte__veritat",
+      "text": "Si surt, ets un testimoni. Si no surt, ets l'únic culpable. T'ho acaba de dir ella.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "dubte__iri",
+      "scriptName": "dubte__iri",
+      "text": "Saps qui hi ha dalt del pal, amb aquest vent?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "dubte__cafe",
+      "scriptName": "dubte__cafe",
+      "text": "A la revisió em vas dir que el cafè de la infermeria era el pitjor del vaixell. Que algun dia me'n faries un de bo.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "dubte__arengades",
+      "scriptName": "dubte__arengades",
+      "text": "Em vas dir que de jove el mar en bullia. Al Punt 7 encara n'hi havia, Ernest. Fins que hi van tirar el fang.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "dubte__mentida",
+      "scriptName": "dubte__mentida",
+      "text": "Ja ho hem enviat. Això que fas no serveix de res.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "dubte__diners",
+      "scriptName": "dubte__diners",
+      "text": "Quant pagaries tu, ara, per tornar a ser l'Ernest Bastida del temporal?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "dubte__adeu",
+      "scriptName": "dubte__adeu",
+      "text": "(Deixar-lo pensar)",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

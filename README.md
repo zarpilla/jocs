@@ -11,6 +11,7 @@ motor i la història separada del motor.
 | **Aigua Verne**: l'Iri i la Vet volen el pou de la granja; el Magnat Verne s'ha endut l'aigua de tot un sistema planetari. | [games/aigua-verne](games/aigua-verne/README.md) |
 | **Aigua Verne B**: prova de concepte del camí «Modernitzar»: el mateix joc sense barra de verbs, per al mòbil. | [games/aigua-verne-b](games/aigua-verne-b/README.md) |
 | **Suma Zero B**: la segona prova del camí «Modernitzar», amb la interfície tàctil compartida (adapters/benne/tactil). | [games/suma-zero-b](games/suma-zero-b/README.md) |
+| **Ni un ou B**: la tercera prova del camí «Modernitzar», amb el plànol del vaixell a 288 i els objectes que es fan servir d'un toc. | [games/ni-un-ou-b](games/ni-un-ou-b/README.md) |
 
 ## Què és compartit i què és de cada joc
 

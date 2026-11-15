@@ -1,0 +1,148 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.diposit2.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "intro",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.diposit2.1"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "registre": {
+      "name": "sala.diposit2.registre.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "rebost"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.diposit2.registre.1"
+            }
+          ]
+        }
+      ]
+    },
+    "filtre": {
+      "name": "sala.diposit2.filtre.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "mostra_trobada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.diposit2.filtre.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.diposit2.filtre.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "mostra_trobada",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.diposit2.filtre.3",
+              "sound": "pot"
+            },
+            {
+              "who": "player",
+              "text": "sala.diposit2.filtre.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.diposit2.filtre.5",
+              "if": {
+                "protagonist": "vet"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "mostra_trobada"
+            },
+            {
+              "giveItem": "mostra7"
+            },
+            {
+              "takeItem": "clau_tubs",
+              "who": "iri"
+            },
+            {
+              "setFlag": "clau_tubs_fora",
+              "value": false
+            },
+            {
+              "takeItem": "clau_tomas",
+              "who": "vet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.diposit2.filtre.6"
+            }
+          ]
+        }
+      ]
+    },
+    "cartell": {
+      "name": "sala.diposit2.cartell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.diposit2.cartell.1"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

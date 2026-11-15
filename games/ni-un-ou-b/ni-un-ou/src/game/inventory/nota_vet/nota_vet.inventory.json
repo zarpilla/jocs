@@ -1,0 +1,12 @@
+{
+  "id": "nota_vet",
+  "onVerb": {},
+  "stackable": false,
+  "animations": {},
+  "display": {
+    "aseprite": "shared"
+  },
+  "name": "paper de la Vet",
+  "description": "paper de la Vet",
+  "defaultVerb": "fes"
+}

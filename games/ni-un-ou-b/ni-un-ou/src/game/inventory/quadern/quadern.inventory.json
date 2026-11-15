@@ -1,0 +1,12 @@
+{
+  "id": "quadern",
+  "onVerb": {},
+  "stackable": false,
+  "animations": {},
+  "display": {
+    "aseprite": "shared"
+  },
+  "name": "quadern",
+  "description": "quadern",
+  "defaultVerb": "fes"
+}

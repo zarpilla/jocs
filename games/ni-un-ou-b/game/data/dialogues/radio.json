@@ -1,0 +1,91 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "radio",
+  "with": "rut",
+  "start": "trucada",
+  "nodes": {
+    "trucada": {
+      "lines": [
+        {
+          "who": "rut",
+          "text": "dlg.radio.trucada.1"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.radio.trucada.2"
+        },
+        {
+          "who": "rut",
+          "text": "dlg.radio.trucada.3"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.radio.trucada.4"
+        },
+        {
+          "who": "rut",
+          "text": "dlg.radio.trucada.5"
+        },
+        {
+          "who": "rut",
+          "text": "dlg.radio.trucada.6"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.radio.trucada.7"
+        },
+        {
+          "who": "rut",
+          "text": "dlg.radio.trucada.8"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.radio.trucada.9"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.radio.trucada.10"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.radio.trucada.11"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.radio.trucada.12"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.radio.trucada.13"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.radio.trucada.14"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.radio.trucada.15"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.radio.trucada.16"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sync_radio",
+          "value": false
+        },
+        {
+          "setFlag": "rut_parlat"
+        },
+        {
+          "setFlag": "banda_escoltada"
+        },
+        {
+          "setFlag": "ferran_pis"
+        }
+      ]
+    }
+  }
+}

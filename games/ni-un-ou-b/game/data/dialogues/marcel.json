@@ -1,0 +1,355 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "marcel",
+  "with": "marcel",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "pacient",
+            "op": "==",
+            "value": "marcel"
+          }
+        ]
+      },
+      "node": "revisio"
+    },
+    {
+      "if": {
+        "flag": "marcel_enfadat"
+      },
+      "node": "callat"
+    },
+    {
+      "if": {
+        "flag": "aliat_marcel"
+      },
+      "node": "amic"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": ">=",
+            "value": 6
+          },
+          {
+            "var": "escena",
+            "op": "<=",
+            "value": 7
+          }
+        ]
+      },
+      "node": "esc6"
+    },
+    {
+      "node": "res"
+    }
+  ],
+  "nodes": {
+    "revisio": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.revisio.1"
+        }
+      ],
+      "goto": "revisio_menu"
+    },
+    "revisio_menu": {
+      "choices": [
+        {
+          "id": "valvula",
+          "text": "dlg.marcel.opt.valvula",
+          "once": true,
+          "next": "valvula"
+        },
+        {
+          "id": "nit",
+          "text": "dlg.marcel.opt.nit",
+          "once": true,
+          "next": "nit"
+        },
+        {
+          "id": "fi",
+          "text": "dlg.marcel.opt.fi",
+          "next": "fi"
+        }
+      ]
+    },
+    "valvula": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.valvula.1"
+        }
+      ],
+      "goto": "revisio_menu"
+    },
+    "nit": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.nit.1"
+        }
+      ],
+      "goto": "revisio_menu"
+    },
+    "fi": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.fi.1"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "revisio_marcel"
+        },
+        {
+          "addVar": "revisions",
+          "amount": 1
+        },
+        {
+          "setVar": "pacient",
+          "value": ""
+        }
+      ]
+    },
+    "esc6": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.esc6.1",
+          "if": {
+            "flag": "juana_trobada",
+            "is": false
+          }
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.esc6.2",
+          "if": {
+            "flag": "juana_trobada"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "cops_marcel"
+        }
+      ],
+      "goto": "esc6_menu"
+    },
+    "esc6_menu": {
+      "choices": [
+        {
+          "id": "gat",
+          "text": "dlg.marcel.opt.gat",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "marcel_secret",
+                "is": false
+              }
+            ]
+          },
+          "next": "secret"
+        },
+        {
+          "id": "gat_vet",
+          "text": "dlg.marcel.opt.gat_vet",
+          "if": {
+            "protagonist": "vet"
+          },
+          "next": "gat_vet"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.marcel.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "gat_vet": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.gat_vet.1"
+        },
+        {
+          "who": "diu",
+          "text": "dlg.marcel.gat_vet.2"
+        }
+      ],
+      "goto": "esc6_menu"
+    },
+    "secret": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.1"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.2"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.3"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.4"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.marcel.secret.5"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.6"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.marcel.secret.7"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.8"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.marcel.secret.9"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.10"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.marcel.secret.11"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.12"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.marcel.secret.13"
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.secret.14"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "marcel_secret"
+        }
+      ],
+      "choices": [
+        {
+          "id": "guardar",
+          "text": "dlg.marcel.opt.guardar",
+          "next": "aliat"
+        },
+        {
+          "id": "veritat",
+          "text": "dlg.marcel.opt.veritat",
+          "next": "enfadat_veritat"
+        },
+        {
+          "id": "capitana",
+          "text": "dlg.marcel.opt.capitana",
+          "next": "enfadat_capitana"
+        }
+      ]
+    },
+    "aliat": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.aliat.1"
+        },
+        {
+          "who": "narrator",
+          "text": "aliat.marcel"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "aliat_marcel"
+        },
+        {
+          "addVar": "aliats",
+          "amount": 1
+        }
+      ]
+    },
+    "enfadat_veritat": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.enfadat_veritat.1"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "marcel_enfadat"
+        }
+      ]
+    },
+    "enfadat_capitana": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.enfadat_capitana.1"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "marcel_enfadat"
+        }
+      ]
+    },
+    "callat": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.marcel.callat.1"
+        }
+      ]
+    },
+    "amic": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.amic.1"
+        },
+        {
+          "who": "diu",
+          "text": "dlg.marcel.amic.2"
+        }
+      ]
+    },
+    "res": {
+      "lines": [
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.res.1"
+        }
+      ]
+    }
+  }
+}

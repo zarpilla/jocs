@@ -1,0 +1,356 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.taller.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.taller.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "sala_maquines"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.porta.1"
+            }
+          ]
+        }
+      ]
+    },
+    "tauler": {
+      "name": "sala.taller.tauler.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "silueta_vista",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.tauler.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.taller.tauler.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "silueta_vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.tauler.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.tauler.4"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cisalla",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.tauler.5"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "cisalla"
+            },
+            {
+              "setFlag": "cisalla_fora",
+              "value": false
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "clau_tubs",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.tauler.6"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "clau_tubs"
+            },
+            {
+              "setFlag": "clau_tubs_fora",
+              "value": false
+            }
+          ]
+        }
+      ]
+    },
+    "cisalla": {
+      "name": "sala.taller.cisalla.nom",
+      "visibleIf": {
+        "flag": "cisalla_fora",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "prova_osca"
+              },
+              {
+                "flag": "cisalla_mellada",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.3"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "cisalla_mellada"
+            },
+            {
+              "setFlag": "prova_cisalla"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "cisalla_mellada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.5"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.6"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.7"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cisalla"
+            },
+            {
+              "setFlag": "cisalla_fora"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "var": "escena",
+            "op": "<",
+            "value": 6
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.8"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.cisalla.9"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cisalla"
+            },
+            {
+              "setFlag": "cisalla_fora"
+            }
+          ]
+        }
+      ]
+    },
+    "clau_tubs": {
+      "name": "sala.taller.clau_tubs.nom",
+      "visibleIf": {
+        "flag": "clau_tubs_fora",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.clau_tubs.1"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.clau_tubs.2"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 7
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.clau_tubs.3"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "clau_tubs"
+            },
+            {
+              "setFlag": "clau_tubs_fora"
+            }
+          ]
+        },
+        {
+          "verb": "pickUp",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.clau_tubs.4"
+            }
+          ]
+        }
+      ]
+    },
+    "banc": {
+      "name": "sala.taller.banc.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.banc.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.taller.banc.2"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,856 @@
+{
+  "id": "mapa",
+  "name": "Mapa",
+  "description": "El plànol d'emergència de l'Arenga (games/ni-un-ou-b/adapters/benne/tools/hd640/mapa.py).",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "modal": true,
+  "zIndex": 105,
+  "anchorY": "center",
+  "controls": [
+    {
+      "type": "button",
+      "id": "fons",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 288,
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "backgroundTag": "",
+      "backgroundColor": "#060a14",
+      "backgroundColorStates": {
+        "hover": "#060a14",
+        "pressed": "#060a14",
+        "disabled": "#060a14"
+      },
+      "zIndex": 0,
+      "anchorY": "stretch"
+    },
+    {
+      "type": "image",
+      "id": "planol",
+      "x": 0,
+      "y": 0,
+      "tag": "planol",
+      "backgroundAnchor": "screen",
+      "clickable": false,
+      "zIndex": 1
+    },
+    {
+      "type": "button",
+      "id": "salaSalaRadio",
+      "x": 248,
+      "y": 33,
+      "width": 72,
+      "height": 37,
+      "backgroundAnchor": "top-left",
+      "text": "Ràdio",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "sala_radio",
+      "states": {
+        "hover": "sala_radio-hover",
+        "pressed": "sala_radio-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaSalaRadioOff",
+      "x": 248,
+      "y": 33,
+      "tag": "sala_radio-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaPont",
+      "x": 320,
+      "y": 33,
+      "width": 112,
+      "height": 37,
+      "backgroundAnchor": "top-left",
+      "text": "Pont",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "pont",
+      "states": {
+        "hover": "pont-hover",
+        "pressed": "pont-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaPontOff",
+      "x": 320,
+      "y": 33,
+      "tag": "pont-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaPal",
+      "x": 442,
+      "y": 40,
+      "width": 28,
+      "height": 23,
+      "backgroundAnchor": "top-left",
+      "text": "Pal",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "pal",
+      "states": {
+        "hover": "pal-hover",
+        "pressed": "pal-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaPalOff",
+      "x": 442,
+      "y": 40,
+      "tag": "pal-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaCobertaPopa",
+      "x": 50,
+      "y": 92,
+      "width": 68,
+      "height": 82,
+      "backgroundAnchor": "top-left",
+      "text": "Popa",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "coberta_popa",
+      "states": {
+        "hover": "coberta_popa-hover",
+        "pressed": "coberta_popa-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaCobertaPopaOff",
+      "x": 50,
+      "y": 92,
+      "tag": "coberta_popa-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaCuina",
+      "x": 118,
+      "y": 92,
+      "width": 118,
+      "height": 30,
+      "backgroundAnchor": "top-left",
+      "text": "Cuina",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "cuina",
+      "states": {
+        "hover": "cuina-hover",
+        "pressed": "cuina-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaCuinaOff",
+      "x": 118,
+      "y": 92,
+      "tag": "cuina-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaMenjador",
+      "x": 118,
+      "y": 122,
+      "width": 118,
+      "height": 52,
+      "backgroundAnchor": "top-left",
+      "text": "Menjador",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "menjador",
+      "states": {
+        "hover": "menjador-hover",
+        "pressed": "menjador-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaMenjadorOff",
+      "x": 118,
+      "y": 122,
+      "tag": "menjador-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaInfermeria",
+      "x": 236,
+      "y": 92,
+      "width": 70,
+      "height": 30,
+      "backgroundAnchor": "top-left",
+      "text": "Infermeria",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "infermeria",
+      "states": {
+        "hover": "infermeria-hover",
+        "pressed": "infermeria-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaInfermeriaOff",
+      "x": 236,
+      "y": 92,
+      "tag": "infermeria-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaLaboratori",
+      "x": 306,
+      "y": 92,
+      "width": 70,
+      "height": 30,
+      "backgroundAnchor": "top-left",
+      "text": "Laboratori",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "laboratori",
+      "states": {
+        "hover": "laboratori-hover",
+        "pressed": "laboratori-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaLaboratoriOff",
+      "x": 306,
+      "y": 92,
+      "tag": "laboratori-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaCabinaCapitana",
+      "x": 410,
+      "y": 92,
+      "width": 90,
+      "height": 30,
+      "backgroundAnchor": "top-left",
+      "text": "Capitana",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "cabina_capitana",
+      "states": {
+        "hover": "cabina_capitana-hover",
+        "pressed": "cabina_capitana-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaCabinaCapitanaOff",
+      "x": 410,
+      "y": 92,
+      "tag": "cabina_capitana-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaPassadis",
+      "x": 236,
+      "y": 122,
+      "width": 264,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "text": "Passadís",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "passadis",
+      "states": {
+        "hover": "passadis-hover",
+        "pressed": "passadis-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaPassadisOff",
+      "x": 236,
+      "y": 122,
+      "tag": "passadis-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaCobertaProa",
+      "x": 500,
+      "y": 92,
+      "width": 52,
+      "height": 82,
+      "backgroundAnchor": "top-left",
+      "text": "Proa",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "coberta_proa",
+      "states": {
+        "hover": "coberta_proa-hover",
+        "pressed": "coberta_proa-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaCobertaProaOff",
+      "x": 500,
+      "y": 92,
+      "tag": "coberta_proa-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaRebost",
+      "x": 50,
+      "y": 194,
+      "width": 62,
+      "height": 30,
+      "backgroundAnchor": "top-left",
+      "text": "Rebost",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "rebost",
+      "states": {
+        "hover": "rebost-hover",
+        "pressed": "rebost-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaRebostOff",
+      "x": 50,
+      "y": 194,
+      "tag": "rebost-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaDiposit2",
+      "x": 50,
+      "y": 224,
+      "width": 62,
+      "height": 31,
+      "backgroundAnchor": "top-left",
+      "text": "Dipòsit 2",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "diposit2",
+      "states": {
+        "hover": "diposit2-hover",
+        "pressed": "diposit2-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaDiposit2Off",
+      "x": 50,
+      "y": 224,
+      "tag": "diposit2-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaSalaMaquines",
+      "x": 112,
+      "y": 194,
+      "width": 124,
+      "height": 61,
+      "backgroundAnchor": "top-left",
+      "text": "Màquines",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "sala_maquines",
+      "states": {
+        "hover": "sala_maquines-hover",
+        "pressed": "sala_maquines-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaSalaMaquinesOff",
+      "x": 112,
+      "y": 194,
+      "tag": "sala_maquines-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaTaller",
+      "x": 236,
+      "y": 194,
+      "width": 60,
+      "height": 23,
+      "backgroundAnchor": "top-left",
+      "text": "Taller",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "taller",
+      "states": {
+        "hover": "taller-hover",
+        "pressed": "taller-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaTallerOff",
+      "x": 236,
+      "y": 194,
+      "tag": "taller-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaCamarotIri",
+      "x": 296,
+      "y": 194,
+      "width": 60,
+      "height": 23,
+      "backgroundAnchor": "top-left",
+      "text": "Camarot",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "camarot_iri",
+      "states": {
+        "hover": "camarot_iri-hover",
+        "pressed": "camarot_iri-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaCamarotIriOff",
+      "x": 296,
+      "y": 194,
+      "tag": "camarot_iri-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaPallol",
+      "x": 388,
+      "y": 194,
+      "width": 82,
+      "height": 23,
+      "backgroundAnchor": "top-left",
+      "text": "Pallol",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "pallol",
+      "states": {
+        "hover": "pallol-hover",
+        "pressed": "pallol-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaPallolOff",
+      "x": 388,
+      "y": 194,
+      "tag": "pallol-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaPassadisBaix",
+      "x": 236,
+      "y": 217,
+      "width": 234,
+      "height": 18,
+      "backgroundAnchor": "top-left",
+      "text": "Passadís de baix",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "passadis_baix",
+      "states": {
+        "hover": "passadis_baix-hover",
+        "pressed": "passadis_baix-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaPassadisBaixOff",
+      "x": 236,
+      "y": 217,
+      "tag": "passadis_baix-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaSalaBombes",
+      "x": 236,
+      "y": 235,
+      "width": 86,
+      "height": 20,
+      "backgroundAnchor": "top-left",
+      "text": "Bombes",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "sala_bombes",
+      "states": {
+        "hover": "sala_bombes-hover",
+        "pressed": "sala_bombes-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaSalaBombesOff",
+      "x": 236,
+      "y": 235,
+      "tag": "sala_bombes-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "salaCaixaCadenes",
+      "x": 498,
+      "y": 207,
+      "width": 50,
+      "height": 35,
+      "backgroundAnchor": "top-left",
+      "text": "Cadenes",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "textColor": "#282826",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": 0,
+      "textColorStates": {
+        "hover": "#1c5a3a",
+        "pressed": "#1c5a3a"
+      },
+      "backgroundTag": "caixa_cadenes",
+      "states": {
+        "hover": "caixa_cadenes-hover",
+        "pressed": "caixa_cadenes-hover"
+      },
+      "zIndex": 2
+    },
+    {
+      "type": "image",
+      "id": "salaCaixaCadenesOff",
+      "x": 498,
+      "y": 207,
+      "tag": "caixa_cadenes-off",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 3
+    },
+    {
+      "type": "image",
+      "id": "aqui",
+      "x": 0,
+      "y": 0,
+      "tag": "aqui",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 4
+    },
+    {
+      "type": "image",
+      "id": "altraIri",
+      "x": 0,
+      "y": 0,
+      "tag": "altraIri",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 4
+    },
+    {
+      "type": "image",
+      "id": "altraVet",
+      "x": 0,
+      "y": 0,
+      "tag": "altraVet",
+      "backgroundAnchor": "top-left",
+      "clickable": false,
+      "visible": false,
+      "zIndex": 4
+    },
+    {
+      "type": "text",
+      "id": "peu",
+      "x": 320,
+      "y": 262,
+      "text": "",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "color": "#282826",
+      "align": "left",
+      "zIndex": 4
+    },
+    {
+      "type": "button",
+      "id": "tanca",
+      "x": 552,
+      "y": 261,
+      "width": 68,
+      "height": 16,
+      "backgroundAnchor": "top-left",
+      "text": "Tanca",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "textColor": "#ecf6ee",
+      "textAlign": "center",
+      "textColorStates": {
+        "hover": "#ffffff"
+      },
+      "backgroundTag": "",
+      "backgroundColor": "#2c7852",
+      "backgroundColorStates": {
+        "hover": "#3a9a6a",
+        "pressed": "#1c5a3a",
+        "disabled": "#2c7852"
+      },
+      "zIndex": 4
+    }
+  ]
+}

@@ -1,0 +1,258 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.passadis_baix.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "miol",
+      "verb": "*",
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 1
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.passadis_baix.1",
+          "sound": "miol"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "porta_camarot": {
+      "name": "sala.passadis_baix.porta_camarot.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "camarot_iri"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_camarot.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_camarot.2"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_maquines": {
+      "name": "sala.passadis_baix.porta_maquines.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "sala_maquines"
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_maquines.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_maquines.2"
+            }
+          ]
+        }
+      ]
+    },
+    "porta_pallol": {
+      "name": "sala.passadis_baix.porta_pallol.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.esc1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "pallol"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.porta_pallol.1"
+            }
+          ]
+        }
+      ]
+    },
+    "escotilla": {
+      "name": "sala.passadis_baix.escotilla.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.esc1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "var": "escena",
+            "op": "<",
+            "value": 4
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.escotilla.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "sala_bombes"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.escotilla.3"
+            }
+          ]
+        }
+      ]
+    },
+    "escala": {
+      "name": "sala.passadis_baix.escala.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "protagonist": "iri"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.esc1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "passadis"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis_baix.escala.1"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

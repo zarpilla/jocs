@@ -9,7 +9,7 @@ import { pointer } from '@benne/script';
 import type { FallbackTarget } from '@benne/script';
 import { fromBenne, narrative, targetFromBenne } from './narrative';
 import { performInteraction } from './narrative.script';
-import { accions, marcaMirat, queFaElToc, verbAmbObjecte } from './accions';
+import { accions, marcaMirat, objecteSol, queFaElToc, verbAmbObjecte } from './accions';
 import { MENU, label, openMenu, setMenu, type Opcio } from './tactil';
 
 /** Fa el que vol dir un clic de la interfície tàctil (vegeu tactil.ts). */
@@ -42,10 +42,15 @@ function doVerb(verb: string, target: FallbackTarget) {
   performInteraction(verb, target);
 }
 
-/** Obre el menú d'accions d'una cosa: «Mira», «Usa-ho amb...» (si és de l'inventari) i les seves accions d'ara. */
+/**
+ * Obre el menú d'accions d'una cosa: «Mira», «Usa-ho amb...» (si és un objecte de l'inventari que es pot combinar
+ * amb alguna cosa) i les seves accions d'ara.
+ */
 export function openActions(target: FallbackTarget) {
   const opcions: Opcio[] = [{ text: label('look'), verb: 'look' }];
-  if (target.kind === 'item') opcions.push({ text: label('armar'), verb: null });
+  if (target.kind === 'item' && !objecteSol(narrative.content, fromBenne('items', target.id))) {
+    opcions.push({ text: label('armar'), verb: null });
+  }
   const totes = accions(narrative, targetFromBenne(target.kind, target.id));
   for (const a of totes) opcions.push({ text: label(a.verb), verb: a.verb });
   const on = pointer.screen;

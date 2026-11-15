@@ -1,0 +1,410 @@
+{
+  "id": "laboratori",
+  "name": "Laboratori",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 16,
+            "y": 224
+          },
+          {
+            "x": 624,
+            "y": 224
+          },
+          {
+            "x": 635,
+            "y": 264
+          },
+          {
+            "x": 5,
+            "y": 264
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 5,
+          "y": 67
+        },
+        {
+          "x": 80,
+          "y": 67
+        },
+        {
+          "x": 80,
+          "y": 203
+        },
+        {
+          "x": 5,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 48,
+        "y": 243
+      },
+      "lookAtPoint": {
+        "x": 42,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "llibre",
+      "active": true,
+      "description": "llibre de peixos",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 184,
+          "y": 131
+        },
+        {
+          "x": 237,
+          "y": 131
+        },
+        {
+          "x": 237,
+          "y": 151
+        },
+        {
+          "x": 184,
+          "y": 151
+        }
+      ],
+      "walkToPoint": {
+        "x": 211,
+        "y": 243
+      },
+      "lookAtPoint": {
+        "x": 210,
+        "y": 151
+      }
+    },
+    {
+      "id": "nevera",
+      "active": true,
+      "description": "nevera de mostres",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 483,
+          "y": 69
+        },
+        {
+          "x": 587,
+          "y": 69
+        },
+        {
+          "x": 587,
+          "y": 211
+        },
+        {
+          "x": 483,
+          "y": 211
+        }
+      ],
+      "walkToPoint": {
+        "x": 533,
+        "y": 243
+      },
+      "lookAtPoint": {
+        "x": 535,
+        "y": 211
+      }
+    },
+    {
+      "id": "taulell",
+      "active": true,
+      "description": "taulell",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 139,
+          "y": 152
+        },
+        {
+          "x": 459,
+          "y": 152
+        },
+        {
+          "x": 459,
+          "y": 213
+        },
+        {
+          "x": 139,
+          "y": 213
+        }
+      ],
+      "walkToPoint": {
+        "x": 387,
+        "y": 243
+      },
+      "lookAtPoint": {
+        "x": 299,
+        "y": 213
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "portatil",
+      "tag": "portatil",
+      "animations": {
+        "portatil": {
+          "loop": true,
+          "frameDuration": 265
+        }
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 261,
+            "y": 111
+          },
+          {
+            "x": 320,
+            "y": 111
+          },
+          {
+            "x": 320,
+            "y": 151
+          },
+          {
+            "x": 261,
+            "y": 151
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 291,
+        "y": 243
+      },
+      "lookAtPoint": {
+        "x": 290,
+        "y": 151
+      },
+      "description": "portàtil"
+    },
+    {
+      "id": "nota",
+      "tag": "nota",
+      "animations": {
+        "nota": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 321,
+            "y": 131
+          },
+          {
+            "x": 343,
+            "y": 131
+          },
+          {
+            "x": 343,
+            "y": 151
+          },
+          {
+            "x": 321,
+            "y": 151
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 331,
+        "y": 243
+      },
+      "lookAtPoint": {
+        "x": 332,
+        "y": 151
+      },
+      "description": "nota"
+    },
+    {
+      "id": "remenat",
+      "tag": "remenat",
+      "animations": {
+        "remenat": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "nevera",
+      "tag": "nevera",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "nevera": {
+          "loop": true,
+          "frameDuration": 250
+        }
+      },
+      "scriptName": "neveraAnim",
+      "collider": {
+        "points": [
+          {
+            "x": 483,
+            "y": 69
+          },
+          {
+            "x": 587,
+            "y": 69
+          },
+          {
+            "x": 587,
+            "y": 211
+          },
+          {
+            "x": 483,
+            "y": 211
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 533,
+        "y": 243
+      },
+      "lookAtPoint": {
+        "x": 535,
+        "y": 211
+      },
+      "description": "nevera de mostres"
+    },
+    {
+      "id": "ulls_dia",
+      "tag": "ulls_dia",
+      "animations": {
+        "ulls_dia": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "ulls_dia_mar",
+      "tag": "ulls_dia_mar",
+      "animations": {
+        "ulls_dia_mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    },
+    {
+      "id": "bombolla",
+      "tag": "bombolla",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bombolla": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 307,
+      "y": 253,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 400,
+      "y": 259,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "juana-1",
+      "definition": "juana/juana.character.json",
+      "x": 235,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0
+}

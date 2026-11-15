@@ -1,0 +1,966 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.infermeria.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "esc1",
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 1
+          },
+          {
+            "flag": "vet_desperta"
+          }
+        ]
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.infermeria.12"
+        },
+        {
+          "who": "vet",
+          "text": "sala.infermeria.13"
+        },
+        {
+          "who": "vet",
+          "text": "sala.infermeria.14"
+        }
+      ]
+    },
+    {
+      "id": "esc3",
+      "verb": "*",
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 3
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "iri",
+          "text": "sala.infermeria.15",
+          "stage": [
+            {
+              "who": "bastida",
+              "visible": false
+            }
+          ]
+        },
+        {
+          "who": "vet",
+          "text": "sala.infermeria.16"
+        },
+        {
+          "who": "iri",
+          "text": "sala.infermeria.17"
+        },
+        {
+          "who": "vet",
+          "text": "sala.infermeria.18"
+        },
+        {
+          "who": "iri",
+          "text": "sala.infermeria.19"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.infermeria.20",
+          "stage": [
+            {
+              "who": "bastida",
+              "at": "porta",
+              "anim": null,
+              "face": "R",
+              "visible": true
+            },
+            {
+              "who": "vet",
+              "face": "L"
+            }
+          ]
+        },
+        {
+          "who": "bastida",
+          "text": "sala.infermeria.21"
+        },
+        {
+          "who": "vet",
+          "text": "sala.infermeria.22"
+        },
+        {
+          "who": "bastida",
+          "text": "sala.infermeria.23"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.infermeria.24",
+          "stage": [
+            {
+              "who": "bastida",
+              "walk": {
+                "x": 451,
+                "y": 226
+              }
+            },
+            {
+              "who": "bastida",
+              "at": {
+                "x": 451,
+                "y": 200
+              },
+              "anim": "Seu"
+            },
+            {
+              "who": "vet",
+              "face": "R"
+            }
+          ]
+        },
+        {
+          "who": "bastida",
+          "text": "sala.infermeria.25"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.infermeria.26"
+        },
+        {
+          "who": "bastida",
+          "text": "sala.infermeria.27"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "prova_cambra"
+        },
+        {
+          "setFlag": "bastida_cafe"
+        },
+        {
+          "setFlag": "sync_radio"
+        },
+        {
+          "setVar": "paciencia",
+          "value": 0
+        },
+        {
+          "setVar": "coberta",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "esc7",
+      "verb": "*",
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 7
+      },
+      "once": true,
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "sala.infermeria.28"
+        },
+        {
+          "who": "juana",
+          "text": "sala.infermeria.29"
+        },
+        {
+          "who": "vet",
+          "text": "sala.infermeria.30"
+        }
+      ],
+      "dialogue": "juana"
+    },
+    {
+      "verb": "*",
+      "if": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "hasItem": "mostra7"
+          }
+        ]
+      },
+      "dialogue": "juana"
+    }
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.infermeria.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "vet_desperta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.porta.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 2
+              },
+              {
+                "var": "pacient",
+                "op": "!=",
+                "value": ""
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.porta.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              },
+              {
+                "flag": "radio_feta",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.porta.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 7
+              },
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "juana_parla",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.porta.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "passadis"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.porta.5"
+            }
+          ]
+        }
+      ]
+    },
+    "llitera": {
+      "name": "sala.infermeria.llitera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "travesser_tret",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull",
+            "open"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
+              },
+              {
+                "flag": "vet_desperta"
+              },
+              {
+                "flag": "travesser_tret",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.3",
+              "sound": "travesser"
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "travesser_tret"
+            },
+            {
+              "giveItem": "travesser"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull",
+            "open"
+          ],
+          "if": {
+            "flag": "travesser_tret"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.llitera.6"
+            }
+          ]
+        }
+      ]
+    },
+    "armari": {
+      "name": "sala.infermeria.armari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.armari.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.armari.2"
+            }
+          ]
+        },
+        {
+          "verb": "open",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.armari.3"
+            }
+          ]
+        }
+      ]
+    },
+    "fitxes": {
+      "name": "sala.infermeria.fitxes.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": "<",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 2
+              },
+              {
+                "var": "pacient",
+                "op": "==",
+                "value": ""
+              }
+            ]
+          },
+          "dialogue": "fitxes"
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "pickUp"
+          ],
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.4"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.fitxes.5"
+            }
+          ]
+        }
+      ]
+    },
+    "cafetera": {
+      "name": "sala.infermeria.cafetera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.cafetera.1"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.cafetera.2"
+            }
+          ]
+        }
+      ]
+    },
+    "boca": {
+      "name": "sala.infermeria.boca.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "tub_de_veu",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.boca.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.boca.2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
+            "flag": "tub_de_veu",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.boca.3"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "effects": [
+            {
+              "setFlag": "cara_a_cara",
+              "value": false
+            }
+          ],
+          "dialogue": "tub"
+        }
+      ]
+    },
+    "capitana": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "pacient",
+            "op": "==",
+            "value": "capitana"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.7"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "capitana"
+        }
+      ]
+    },
+    "tomas": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "pacient",
+            "op": "==",
+            "value": "tomas"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.8"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "tomas"
+        }
+      ]
+    },
+    "nadia": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "pacient",
+            "op": "==",
+            "value": "nadia"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "nadia_mareig"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "nadia_croissant"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.4"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "nadia"
+        }
+      ]
+    },
+    "marcel": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "pacient",
+            "op": "==",
+            "value": "marcel"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.infermeria.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "marcel_gat"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "marcel"
+        }
+      ]
+    },
+    "bastida": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          },
+          {
+            "flag": "radio_feta",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.9"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "bastida"
+        }
+      ]
+    },
+    "juana": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada",
+                "is": false
+              }
+            ]
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "vet"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.10"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.infermeria.11"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "dialogue": "juana"
+        }
+      ]
+    }
+  },
+  "decor": {
+    "sense_travesser": {
+      "visibleIf": {
+        "flag": "travesser_tret"
+      }
+    },
+    "mantes": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 7
+          },
+          {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 8
+              },
+              {
+                "flag": "reunio_comencada",
+                "is": false
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "ulls_dia": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    },
+    "ulls_dia_mar": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      }
+    }
+  }
+}

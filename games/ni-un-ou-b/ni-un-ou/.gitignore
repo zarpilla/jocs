@@ -1,0 +1,38 @@
+node_modules/
+dist/
+.benne/
+releases/
+
+# Generats per Benne (npm run generate:game-ids)
+src/game/**/*.ids.ts
+
+# >>> motor compartit (packages/benne, npm run motor): no editar
+/.agents
+/.claude
+/.vscode
+/benne-play.html
+/character-editor.html
+/electron
+/electron-builder.config.cjs
+/eslint.config.mjs
+/gui-editor.html
+/index.html
+/inventory-editor.html
+/room-editor.html
+/scripts
+/src/editor
+/src/engine
+/src/main.ts
+/src/style.css
+/src/types
+/tsconfig.json
+/vite-plugin-bennegame-ids.ts
+/vite-plugin-bennescript.ts
+/vite.benne-play.config.ts
+/vite.character-preview.config.ts
+/vite.config.ts
+/vite.gui-preview.config.ts
+/vite.inventory-preview.config.ts
+/vite.room-preview.config.ts
+/.motor-copiat.json
+# <<< motor compartit

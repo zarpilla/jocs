@@ -1,0 +1,451 @@
+{
+  "id": "coberta_popa",
+  "name": "Coberta de popa",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 75,
+            "y": 213
+          },
+          {
+            "x": 587,
+            "y": 213
+          },
+          {
+            "x": 613,
+            "y": 213
+          },
+          {
+            "x": 639,
+            "y": 219
+          },
+          {
+            "x": 639,
+            "y": 261
+          },
+          {
+            "x": 0,
+            "y": 261
+          },
+          {
+            "x": 0,
+            "y": 229
+          },
+          {
+            "x": 27,
+            "y": 219
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "menjador",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 525,
+          "y": 88
+        },
+        {
+          "x": 587,
+          "y": 88
+        },
+        {
+          "x": 587,
+          "y": 203
+        },
+        {
+          "x": 525,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 556,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 556,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "proa",
+      "active": true,
+      "description": "cap a proa",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 603,
+          "y": 32
+        },
+        {
+          "x": 639,
+          "y": 32
+        },
+        {
+          "x": 639,
+          "y": 224
+        },
+        {
+          "x": 603,
+          "y": 224
+        }
+      ],
+      "walkToPoint": {
+        "x": 624,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 621,
+        "y": 224
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "grua",
+      "active": true,
+      "description": "grua",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 29,
+          "y": 27
+        },
+        {
+          "x": 197,
+          "y": 27
+        },
+        {
+          "x": 197,
+          "y": 211
+        },
+        {
+          "x": 29,
+          "y": 211
+        }
+      ],
+      "walkToPoint": {
+        "x": 128,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 113,
+        "y": 211
+      }
+    },
+    {
+      "id": "borda",
+      "active": true,
+      "description": "borda",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 200,
+          "y": 139
+        },
+        {
+          "x": 400,
+          "y": 139
+        },
+        {
+          "x": 400,
+          "y": 205
+        },
+        {
+          "x": 200,
+          "y": 205
+        }
+      ],
+      "walkToPoint": {
+        "x": 301,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 300,
+        "y": 205
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "plataforma",
+      "tag": "plataforma",
+      "animations": {
+        "plataforma": {
+          "loop": true,
+          "frameDuration": 180
+        }
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 272,
+            "y": 35
+          },
+          {
+            "x": 371,
+            "y": 35
+          },
+          {
+            "x": 371,
+            "y": 123
+          },
+          {
+            "x": 272,
+            "y": 123
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 320,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 321,
+        "y": 123
+      },
+      "description": "plataforma"
+    },
+    {
+      "id": "taula",
+      "tag": "taula",
+      "animations": {
+        "taula": {}
+      },
+      "zIndex": 21,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 405,
+            "y": 157
+          },
+          {
+            "x": 507,
+            "y": 157
+          },
+          {
+            "x": 507,
+            "y": 237
+          },
+          {
+            "x": 405,
+            "y": 237
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 456,
+        "y": 251
+      },
+      "lookAtPoint": {
+        "x": 456,
+        "y": 237
+      },
+      "description": "esmorzar",
+      "baseline": 235
+    },
+    {
+      "id": "horitzo",
+      "tag": "horitzo",
+      "animations": {
+        "horitzo": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 200,
+            "y": 117
+          },
+          {
+            "x": 453,
+            "y": 117
+          },
+          {
+            "x": 453,
+            "y": 140
+          },
+          {
+            "x": 200,
+            "y": 140
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 320,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 326,
+        "y": 140
+      },
+      "description": "horitzó"
+    },
+    {
+      "id": "dia",
+      "tag": "dia",
+      "animations": {
+        "dia": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 235
+    },
+    {
+      "id": "dia_mar",
+      "tag": "dia_mar",
+      "animations": {
+        "dia_mar": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 260
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 309,
+      "y": 253,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 200,
+      "y": 256,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bastida-1",
+      "definition": "bastida/bastida.character.json",
+      "x": 253,
+      "y": 224,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "capitana-1",
+      "definition": "capitana/capitana.character.json",
+      "x": 435,
+      "y": 224,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 531,
+      "y": 253,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "nadia-1",
+      "definition": "nadia/nadia.character.json",
+      "x": 384,
+      "y": 248,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "tomas-1",
+      "definition": "tomas/tomas.character.json",
+      "x": 483,
+      "y": 224,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "viewAnchorY": 0
+}

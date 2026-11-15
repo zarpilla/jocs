@@ -1,0 +1,263 @@
+{
+  "$schema": "../schemas/quests.schema.json",
+  "acte1": {
+    "kind": "main",
+    "title": "mis.acte1.titol",
+    "description": "mis.acte1.desc",
+    "startWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 1
+    },
+    "objectives": [
+      {
+        "id": "valvula",
+        "text": "mis.acte1.obj.valvula",
+        "completeWhen": {
+          "flag": "bomba_engegada"
+        }
+      },
+      {
+        "id": "revisions",
+        "text": "mis.acte1.obj.revisions",
+        "completeWhen": {
+          "all": [
+            {
+              "flag": "revisio_capitana"
+            },
+            {
+              "var": "revisions",
+              "op": ">=",
+              "value": 4
+            }
+          ]
+        },
+        "showWhen": {
+          "flag": "esmorzar_fet"
+        }
+      },
+      {
+        "id": "juana",
+        "text": "mis.acte1.obj.juana",
+        "completeWhen": {
+          "flag": "juana_explica"
+        },
+        "showWhen": {
+          "flag": "esmorzar_fet"
+        }
+      },
+      {
+        "id": "radio",
+        "text": "mis.acte1.obj.radio",
+        "completeWhen": {
+          "flag": "radio_feta"
+        },
+        "showWhen": {
+          "var": "escena",
+          "op": ">=",
+          "value": 3
+        }
+      }
+    ]
+  },
+  "acte2": {
+    "kind": "main",
+    "title": "mis.acte2.titol",
+    "description": "mis.acte2.desc",
+    "startWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 4
+    },
+    "objectives": [
+      {
+        "id": "portatil",
+        "text": "mis.acte2.obj.portatil",
+        "completeWhen": {
+          "flag": "portatil_obert"
+        }
+      },
+      {
+        "id": "escolta",
+        "text": "mis.acte2.obj.escolta",
+        "completeWhen": {
+          "flag": "nadia_decidida"
+        },
+        "showWhen": {
+          "flag": "portatil_robat"
+        }
+      },
+      {
+        "id": "juana",
+        "text": "mis.acte2.obj.juana",
+        "completeWhen": {
+          "flag": "juana_trobada"
+        }
+      },
+      {
+        "id": "mostra",
+        "text": "mis.acte2.obj.mostra",
+        "completeWhen": {
+          "flag": "mostra_trobada"
+        },
+        "showWhen": {
+          "flag": "portatil_obert"
+        }
+      }
+    ]
+  },
+  "acte3": {
+    "kind": "main",
+    "title": "mis.acte3.titol",
+    "description": "mis.acte3.desc",
+    "startWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 8
+    },
+    "objectives": [
+      {
+        "id": "reunio",
+        "text": "mis.acte3.obj.reunio",
+        "completeWhen": {
+          "flag": "bastida_confessa"
+        }
+      },
+      {
+        "id": "dades",
+        "text": "mis.acte3.obj.dades",
+        "completeWhen": {
+          "flag": "enviat"
+        }
+      }
+    ]
+  },
+  "gat": {
+    "kind": "side",
+    "title": "mis.gat.titol",
+    "description": "mis.gat.desc",
+    "startWhen": {
+      "flag": "marcel_secret"
+    },
+    "failWhen": {
+      "flag": "marcel_enfadat"
+    },
+    "objectives": [
+      {
+        "id": "secret",
+        "text": "mis.gat.obj.secret",
+        "completeWhen": {
+          "flag": "aliat_marcel"
+        }
+      }
+    ]
+  },
+  "firma": {
+    "kind": "side",
+    "title": "mis.firma.titol",
+    "description": "mis.firma.desc",
+    "startWhen": {
+      "flag": "nadia_escolta"
+    },
+    "failWhen": {
+      "flag": "nadia_denunciada"
+    },
+    "objectives": [
+      {
+        "id": "aliada",
+        "text": "mis.firma.obj.aliada",
+        "completeWhen": {
+          "flag": "aliada_nadia"
+        }
+      }
+    ]
+  },
+  "patro": {
+    "kind": "side",
+    "title": "mis.patro.titol",
+    "description": "mis.patro.desc",
+    "startWhen": {
+      "flag": "prova_blaunet"
+    },
+    "failWhen": {
+      "all": [
+        {
+          "flag": "reunio_comencada"
+        },
+        {
+          "flag": "aliada_capitana",
+          "is": false
+        }
+      ]
+    },
+    "objectives": [
+      {
+        "id": "capitana",
+        "text": "mis.patro.obj.capitana",
+        "completeWhen": {
+          "flag": "aliada_capitana"
+        }
+      }
+    ]
+  },
+  "veritat": {
+    "kind": "side",
+    "title": "mis.veritat.titol",
+    "description": "mis.veritat.desc",
+    "startWhen": {
+      "var": "escena",
+      "op": "==",
+      "value": 9
+    },
+    "failWhen": {
+      "all": [
+        {
+          "flag": "enviat"
+        },
+        {
+          "flag": "aliat_bastida",
+          "is": false
+        }
+      ]
+    },
+    "objectives": [
+      {
+        "id": "declara",
+        "text": "mis.veritat.obj.declara",
+        "completeWhen": {
+          "flag": "aliat_bastida"
+        }
+      }
+    ]
+  },
+  "entrepa": {
+    "kind": "side",
+    "title": "mis.entrepa.titol",
+    "description": "mis.entrepa.desc",
+    "startWhen": {
+      "flag": "tomas_ofes"
+    },
+    "failWhen": {
+      "all": [
+        {
+          "var": "escena",
+          "op": ">=",
+          "value": 8
+        },
+        {
+          "flag": "tomas_content",
+          "is": false
+        }
+      ]
+    },
+    "objectives": [
+      {
+        "id": "tomas",
+        "text": "mis.entrepa.obj.tomas",
+        "completeWhen": {
+          "flag": "tomas_content"
+        }
+      }
+    ]
+  }
+}

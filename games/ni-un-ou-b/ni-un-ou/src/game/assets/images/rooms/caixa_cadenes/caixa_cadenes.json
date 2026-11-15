@@ -1,0 +1,1937 @@
+{
+  "frames": {
+    "caixa_cadenes 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 1.aseprite": {
+      "frame": {
+        "x": 3890,
+        "y": 360,
+        "w": 124,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 349,
+        "y": 195,
+        "w": 124,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 2.aseprite": {
+      "frame": {
+        "x": 2908,
+        "y": 0,
+        "w": 148,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 50,
+        "w": 148,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 3.aseprite": {
+      "frame": {
+        "x": 3787,
+        "y": 0,
+        "w": 149,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 51,
+        "w": 149,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 4.aseprite": {
+      "frame": {
+        "x": 3936,
+        "y": 0,
+        "w": 150,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 51,
+        "w": 150,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 5.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 150,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 282,
+        "y": 50,
+        "w": 150,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 6.aseprite": {
+      "frame": {
+        "x": 1973,
+        "y": 0,
+        "w": 152,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 282,
+        "y": 48,
+        "w": 152,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 7.aseprite": {
+      "frame": {
+        "x": 2125,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 287,
+        "y": 47,
+        "w": 148,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 8.aseprite": {
+      "frame": {
+        "x": 3056,
+        "y": 0,
+        "w": 148,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 289,
+        "y": 47,
+        "w": 148,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 9.aseprite": {
+      "frame": {
+        "x": 3204,
+        "y": 0,
+        "w": 151,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 288,
+        "y": 46,
+        "w": 151,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 10.aseprite": {
+      "frame": {
+        "x": 150,
+        "y": 360,
+        "w": 154,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 287,
+        "y": 46,
+        "w": 154,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 11.aseprite": {
+      "frame": {
+        "x": 1210,
+        "y": 360,
+        "w": 156,
+        "h": 190
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 287,
+        "y": 46,
+        "w": 156,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 12.aseprite": {
+      "frame": {
+        "x": 2792,
+        "y": 360,
+        "w": 159,
+        "h": 188
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 286,
+        "y": 46,
+        "w": 159,
+        "h": 188
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 13.aseprite": {
+      "frame": {
+        "x": 3424,
+        "y": 360,
+        "w": 161,
+        "h": 187
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 285,
+        "y": 46,
+        "w": 161,
+        "h": 187
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 14.aseprite": {
+      "frame": {
+        "x": 2951,
+        "y": 360,
+        "w": 177,
+        "h": 188
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 270,
+        "y": 45,
+        "w": 177,
+        "h": 188
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 15.aseprite": {
+      "frame": {
+        "x": 2328,
+        "y": 360,
+        "w": 177,
+        "h": 189
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 271,
+        "y": 45,
+        "w": 177,
+        "h": 189
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 16.aseprite": {
+      "frame": {
+        "x": 1366,
+        "y": 360,
+        "w": 177,
+        "h": 190
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 272,
+        "y": 45,
+        "w": 177,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 17.aseprite": {
+      "frame": {
+        "x": 2273,
+        "y": 0,
+        "w": 176,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 274,
+        "y": 44,
+        "w": 176,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 18.aseprite": {
+      "frame": {
+        "x": 2449,
+        "y": 0,
+        "w": 174,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 45,
+        "w": 174,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 19.aseprite": {
+      "frame": {
+        "x": 951,
+        "y": 0,
+        "w": 171,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 45,
+        "w": 171,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 20.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 171,
+        "h": 195
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 45,
+        "w": 171,
+        "h": 195
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 21.aseprite": {
+      "frame": {
+        "x": 811,
+        "y": 0,
+        "w": 140,
+        "h": 195
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 46,
+        "w": 140,
+        "h": 195
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 22.aseprite": {
+      "frame": {
+        "x": 1122,
+        "y": 0,
+        "w": 143,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 277,
+        "y": 47,
+        "w": 143,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 23.aseprite": {
+      "frame": {
+        "x": 1265,
+        "y": 0,
+        "w": 145,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 48,
+        "w": 145,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 24.aseprite": {
+      "frame": {
+        "x": 2623,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 49,
+        "w": 146,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 25.aseprite": {
+      "frame": {
+        "x": 3355,
+        "y": 0,
+        "w": 144,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 50,
+        "w": 144,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 26.aseprite": {
+      "frame": {
+        "x": 304,
+        "y": 360,
+        "w": 146,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 51,
+        "w": 146,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 27.aseprite": {
+      "frame": {
+        "x": 3128,
+        "y": 360,
+        "w": 147,
+        "h": 188
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 53,
+        "w": 147,
+        "h": 188
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 28.aseprite": {
+      "frame": {
+        "x": 1543,
+        "y": 360,
+        "w": 166,
+        "h": 190
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 275,
+        "y": 51,
+        "w": 166,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 29.aseprite": {
+      "frame": {
+        "x": 1709,
+        "y": 360,
+        "w": 163,
+        "h": 190
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 50,
+        "w": 163,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 30.aseprite": {
+      "frame": {
+        "x": 1872,
+        "y": 360,
+        "w": 161,
+        "h": 190
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 49,
+        "w": 161,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 31.aseprite": {
+      "frame": {
+        "x": 450,
+        "y": 360,
+        "w": 158,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 277,
+        "y": 47,
+        "w": 158,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 32.aseprite": {
+      "frame": {
+        "x": 608,
+        "y": 360,
+        "w": 155,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 46,
+        "w": 155,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 33.aseprite": {
+      "frame": {
+        "x": 763,
+        "y": 360,
+        "w": 152,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 45,
+        "w": 152,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 34.aseprite": {
+      "frame": {
+        "x": 915,
+        "y": 360,
+        "w": 150,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 280,
+        "y": 44,
+        "w": 150,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 35.aseprite": {
+      "frame": {
+        "x": 2033,
+        "y": 360,
+        "w": 148,
+        "h": 190
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 281,
+        "y": 43,
+        "w": 148,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 36.aseprite": {
+      "frame": {
+        "x": 2505,
+        "y": 360,
+        "w": 145,
+        "h": 189
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 282,
+        "y": 43,
+        "w": 145,
+        "h": 189
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 37.aseprite": {
+      "frame": {
+        "x": 2650,
+        "y": 360,
+        "w": 142,
+        "h": 189
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 283,
+        "y": 42,
+        "w": 142,
+        "h": 189
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 38.aseprite": {
+      "frame": {
+        "x": 3585,
+        "y": 360,
+        "w": 154,
+        "h": 187
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 270,
+        "y": 42,
+        "w": 154,
+        "h": 187
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 39.aseprite": {
+      "frame": {
+        "x": 3739,
+        "y": 360,
+        "w": 151,
+        "h": 187
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 271,
+        "y": 42,
+        "w": 151,
+        "h": 187
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 40.aseprite": {
+      "frame": {
+        "x": 3275,
+        "y": 360,
+        "w": 149,
+        "h": 188
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 272,
+        "y": 42,
+        "w": 149,
+        "h": 188
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 41.aseprite": {
+      "frame": {
+        "x": 2181,
+        "y": 360,
+        "w": 147,
+        "h": 190
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 274,
+        "y": 42,
+        "w": 147,
+        "h": 190
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 42.aseprite": {
+      "frame": {
+        "x": 1065,
+        "y": 360,
+        "w": 145,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 276,
+        "y": 42,
+        "w": 145,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 43.aseprite": {
+      "frame": {
+        "x": 3499,
+        "y": 0,
+        "w": 141,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 43,
+        "w": 141,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 44.aseprite": {
+      "frame": {
+        "x": 2769,
+        "y": 0,
+        "w": 139,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 282,
+        "y": 43,
+        "w": 139,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 45.aseprite": {
+      "frame": {
+        "x": 1410,
+        "y": 0,
+        "w": 138,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 283,
+        "y": 44,
+        "w": 138,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 46.aseprite": {
+      "frame": {
+        "x": 1548,
+        "y": 0,
+        "w": 139,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 283,
+        "y": 45,
+        "w": 139,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 47.aseprite": {
+      "frame": {
+        "x": 1687,
+        "y": 0,
+        "w": 141,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 281,
+        "y": 46,
+        "w": 141,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 48.aseprite": {
+      "frame": {
+        "x": 1828,
+        "y": 0,
+        "w": 145,
+        "h": 194
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 279,
+        "y": 47,
+        "w": 145,
+        "h": 194
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 49.aseprite": {
+      "frame": {
+        "x": 3640,
+        "y": 0,
+        "w": 147,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 278,
+        "y": 49,
+        "w": 147,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 50.aseprite": {
+      "frame": {
+        "x": 629,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 51.aseprite": {
+      "frame": {
+        "x": 630,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 52.aseprite": {
+      "frame": {
+        "x": 631,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 53.aseprite": {
+      "frame": {
+        "x": 632,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 54.aseprite": {
+      "frame": {
+        "x": 633,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 55.aseprite": {
+      "frame": {
+        "x": 623,
+        "y": 551,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 56.aseprite": {
+      "frame": {
+        "x": 624,
+        "y": 551,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 57.aseprite": {
+      "frame": {
+        "x": 625,
+        "y": 551,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 58.aseprite": {
+      "frame": {
+        "x": 626,
+        "y": 551,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 59.aseprite": {
+      "frame": {
+        "x": 627,
+        "y": 551,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 20,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 60.aseprite": {
+      "frame": {
+        "x": 616,
+        "y": 551,
+        "w": 2,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 20,
+        "w": 2,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 61.aseprite": {
+      "frame": {
+        "x": 618,
+        "y": 551,
+        "w": 2,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 20,
+        "w": 2,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 62.aseprite": {
+      "frame": {
+        "x": 620,
+        "y": 551,
+        "w": 2,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 20,
+        "w": 2,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 63.aseprite": {
+      "frame": {
+        "x": 602,
+        "y": 551,
+        "w": 2,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 20,
+        "w": 2,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 64.aseprite": {
+      "frame": {
+        "x": 604,
+        "y": 551,
+        "w": 2,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 20,
+        "w": 2,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 65.aseprite": {
+      "frame": {
+        "x": 606,
+        "y": 551,
+        "w": 2,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 20,
+        "w": 2,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 66.aseprite": {
+      "frame": {
+        "x": 634,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 29,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 67.aseprite": {
+      "frame": {
+        "x": 628,
+        "y": 551,
+        "w": 1,
+        "h": 2
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 47,
+        "w": 1,
+        "h": 2
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 68.aseprite": {
+      "frame": {
+        "x": 622,
+        "y": 551,
+        "w": 1,
+        "h": 3
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 77,
+        "w": 1,
+        "h": 3
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 69.aseprite": {
+      "frame": {
+        "x": 608,
+        "y": 551,
+        "w": 1,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 120,
+        "w": 1,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 70.aseprite": {
+      "frame": {
+        "x": 601,
+        "y": 551,
+        "w": 1,
+        "h": 5
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 175,
+        "w": 1,
+        "h": 5
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 71.aseprite": {
+      "frame": {
+        "x": 600,
+        "y": 551,
+        "w": 1,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 243,
+        "y": 243,
+        "w": 1,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 72.aseprite": {
+      "frame": {
+        "x": 609,
+        "y": 551,
+        "w": 7,
+        "h": 4
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 240,
+        "y": 249,
+        "w": 7,
+        "h": 4
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 73.aseprite": {
+      "frame": {
+        "x": 565,
+        "y": 551,
+        "w": 7,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 240,
+        "y": 248,
+        "w": 7,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 74.aseprite": {
+      "frame": {
+        "x": 515,
+        "y": 551,
+        "w": 15,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 236,
+        "y": 247,
+        "w": 15,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 75.aseprite": {
+      "frame": {
+        "x": 494,
+        "y": 551,
+        "w": 21,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 233,
+        "y": 246,
+        "w": 21,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 76.aseprite": {
+      "frame": {
+        "x": 572,
+        "y": 551,
+        "w": 28,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 230,
+        "y": 250,
+        "w": 28,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 77.aseprite": {
+      "frame": {
+        "x": 530,
+        "y": 551,
+        "w": 35,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 226,
+        "y": 249,
+        "w": 35,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 78.aseprite": {
+      "frame": {
+        "x": 409,
+        "y": 551,
+        "w": 42,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 223,
+        "y": 248,
+        "w": 42,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 79.aseprite": {
+      "frame": {
+        "x": 201,
+        "y": 551,
+        "w": 49,
+        "h": 13
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 219,
+        "y": 247,
+        "w": 49,
+        "h": 13
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 80.aseprite": {
+      "frame": {
+        "x": 250,
+        "y": 551,
+        "w": 55,
+        "h": 13
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 247,
+        "w": 55,
+        "h": 13
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 81.aseprite": {
+      "frame": {
+        "x": 4014,
+        "y": 360,
+        "w": 63,
+        "h": 15
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 212,
+        "y": 246,
+        "w": 63,
+        "h": 15
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 82.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 551,
+        "w": 69,
+        "h": 15
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 246,
+        "w": 69,
+        "h": 15
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 83.aseprite": {
+      "frame": {
+        "x": 451,
+        "y": 551,
+        "w": 43,
+        "h": 11
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 222,
+        "y": 248,
+        "w": 43,
+        "h": 11
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 84.aseprite": {
+      "frame": {
+        "x": 305,
+        "y": 551,
+        "w": 49,
+        "h": 13
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 219,
+        "y": 247,
+        "w": 49,
+        "h": 13
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 85.aseprite": {
+      "frame": {
+        "x": 354,
+        "y": 551,
+        "w": 55,
+        "h": 13
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 216,
+        "y": 247,
+        "w": 55,
+        "h": 13
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 86.aseprite": {
+      "frame": {
+        "x": 69,
+        "y": 551,
+        "w": 63,
+        "h": 15
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 212,
+        "y": 246,
+        "w": 63,
+        "h": 15
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 87.aseprite": {
+      "frame": {
+        "x": 132,
+        "y": 551,
+        "w": 69,
+        "h": 15
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 209,
+        "y": 246,
+        "w": 69,
+        "h": 15
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 88.aseprite": {
+      "frame": {
+        "x": 635,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "caixa_cadenes 89.aseprite": {
+      "frame": {
+        "x": 635,
+        "y": 551,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "caixa_cadenes.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 4086,
+      "h": 566
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "manta",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "pols",
+        "from": 2,
+        "to": 49,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "gota",
+        "from": 50,
+        "to": 89,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

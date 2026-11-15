@@ -14,7 +14,8 @@ import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from
 import { dirname, join } from 'node:path';
 import type { DialogueLineDef, GameContent, InteractionDef, LocaleTable, RoomDef } from '@aventura/narrative-core';
 import { jocAdapterDir, type JocBenne } from './joc-benne.js';
-import { configuraTactil } from './tactil/index.js';
+import { configuraTactil, FES } from './tactil/index.js';
+import { objecteSol } from './tactil/runtime/accions.js';
 
 /** Art provisional dels personatges del joc (games/<joc>/adapters/benne/placeholder-art/). */
 const placeholderArt = (...parts: string[]) => join(jocAdapterDir(), 'placeholder-art', ...parts);
@@ -144,6 +145,8 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
   if (addSwitchButton(gameDir)) report.needsArt.push('guis/verbs');
   if (content.manifest.cover && addCoverGui(gameDir, joc)) report.needsArt.push('guis/portada');
   const guiTexts = structuredClone(GUI_TEXTS);
+  // La interfície tàctil no té barra de verbs: la frase la posa el HUD (tactil/guis/verbs/hud.ts), que comença buida.
+  if (joc.tactil) delete guiTexts.verbs;
   for (const [gui, extra] of Object.entries(joc.textosGui ?? {})) guiTexts[gui] = { ...guiTexts[gui], ...extra };
   for (const [gui, controls] of Object.entries(guiTexts)) {
     const path = join(gameDir, 'guis', gui, `${gui}.gui.json`);
@@ -202,6 +205,11 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
     if (!existsSync(path)) report.created.push(`inventory/${id}`);
     item.name = t(def.name, id);
     item.description = t(def.name, id);
+    // Interfície tàctil: els objectes que es fan servir sols (el plànol) no es prenen a la mà en tocar-los.
+    if (joc.tactil) {
+      if (objecteSol(content, id)) item.defaultVerb = FES;
+      else if (item.defaultVerb === FES) delete item.defaultVerb;
+    }
     writeJson(path, item);
   }
   // Full d'objectes provisional: es redibuixa mentre no hi hagi art de debò.

@@ -1,0 +1,811 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.sala_radio.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "hotspots": {
+    "porta": {
+      "name": "sala.sala_radio.porta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "goTo": "pont"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.porta.1"
+            }
+          ]
+        }
+      ]
+    },
+    "radio": {
+      "name": "sala.sala_radio.radio.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "radio_feta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.1",
+              "sound": "estatica"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.2"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "sync_radio"
+                  }
+                ]
+              },
+              {
+                "var": "empalmat",
+                "op": ">=",
+                "value": 2
+              },
+              {
+                "flag": "panell_obert"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.3",
+              "sound": "estatica_neta"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.sala_radio.radio.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "radio_feta"
+            }
+          ],
+          "dialogue": "radio"
+        },
+        {
+          "verb": "use",
+          "if": {
+            "flag": "radio_feta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.6",
+              "sound": "estatica"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.7"
+            }
+          ]
+        }
+      ]
+    },
+    "panell": {
+      "name": "sala.sala_radio.panell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "flag": "panell_obert"
+              },
+              {
+                "flag": "prova_sang",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "prova_sang"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "empalmat",
+            "op": ">=",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "panell_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "protagonist": "iri"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.5"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.6"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "sync_radio"
+                  }
+                ]
+              },
+              {
+                "flag": "panell_obert",
+                "is": false
+              },
+              {
+                "flag": "soroll_fet",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.7",
+              "sound": "panell"
+            },
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.panell.8"
+            },
+            {
+              "who": "vet",
+              "text": "sala.sala_radio.panell.9"
+            },
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.panell.10"
+            },
+            {
+              "who": "vet",
+              "text": "sala.sala_radio.panell.11"
+            },
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.panell.12"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "panell_obert"
+            },
+            {
+              "setFlag": "soroll_fet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "sync_radio"
+                  }
+                ]
+              },
+              {
+                "flag": "panell_obert",
+                "is": false
+              },
+              {
+                "var": "coberta",
+                "op": "==",
+                "value": 0
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.13",
+              "sound": "panell"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.sala_radio.panell.14"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "panell_obert"
+            },
+            {
+              "addVar": "paciencia",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "sync_radio"
+                  }
+                ]
+              },
+              {
+                "flag": "panell_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.15",
+              "sound": "panell"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "panell_obert"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              },
+              {
+                "flag": "panell_obert",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.16"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_nou",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "sync_radio"
+                  }
+                ]
+              },
+              {
+                "flag": "panell_obert"
+              },
+              {
+                "flag": "tram_tret"
+              },
+              {
+                "var": "empalmat",
+                "op": "==",
+                "value": 0
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.17"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "empalmat",
+              "value": 1
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_nou",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "sync_radio"
+                  }
+                ]
+              },
+              {
+                "flag": "panell_obert"
+              },
+              {
+                "flag": "tram_tret"
+              },
+              {
+                "var": "empalmat",
+                "op": "==",
+                "value": 1
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.18"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "empalmat",
+              "value": 2
+            },
+            {
+              "takeItem": "cable_nou"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_nou",
+          "if": {
+            "flag": "panell_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.19"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cable_nou",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.20"
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              },
+              {
+                "flag": "radio_feta"
+              },
+              {
+                "flag": "rut_parlat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.21",
+              "sound": "panell"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.sala_radio.panell.22"
+            },
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.panell.23"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.sala_radio.panell.24"
+            },
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.panell.25"
+            },
+            {
+              "who": "iri",
+              "text": "sala.sala_radio.panell.26"
+            },
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.panell.27"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.sala_radio.panell.28",
+              "stage": [
+                {
+                  "who": "bastida",
+                  "walk": "porta"
+                }
+              ]
+            },
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.panell.29",
+              "stageAfter": [
+                {
+                  "who": "bastida",
+                  "visible": false
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.30"
+            },
+            {
+              "who": "vet",
+              "text": "sala.sala_radio.aliats.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.aliats.2"
+            },
+            {
+              "who": "title",
+              "text": "esc.falten10"
+            },
+            {
+              "who": "title",
+              "text": "acte.2"
+            },
+            {
+              "who": "title",
+              "text": "esc.nou"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "panell_obert",
+              "value": false
+            },
+            {
+              "setVar": "escena",
+              "value": 4
+            },
+            {
+              "setVar": "hores",
+              "value": 10
+            },
+            {
+              "setFlag": "bastida_passa"
+            },
+            {
+              "takeItem": "tram"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "infermeria"
+              }
+            },
+            {
+              "event": "anar",
+              "args": {
+                "room": "laboratori"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "close",
+          "if": {
+            "flag": "panell_obert"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.panell.31"
+            }
+          ]
+        }
+      ]
+    },
+    "cable": {
+      "name": "sala.sala_radio.cable.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "panell_obert"
+          },
+          {
+            "flag": "tram_tret",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.cable.1"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 3
+              },
+              {
+                "flag": "sync_radio"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.cable.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.cable.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.cable.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.cable.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.sala_radio.cable.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "tram_tret"
+            },
+            {
+              "giveItem": "tram"
+            },
+            {
+              "setFlag": "prova_osca"
+            }
+          ]
+        }
+      ]
+    },
+    "bastida": {
+      "visibleIf": {
+        "all": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          },
+          {
+            "flag": "rut_parlat"
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.bastida.1"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "bastida",
+              "text": "sala.sala_radio.bastida.2"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "dia": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      },
+      "sota": true
+    },
+    "dia_mar": {
+      "visibleIf": {
+        "any": [
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 2
+          },
+          {
+            "var": "escena",
+            "op": "==",
+            "value": 3
+          }
+        ]
+      },
+      "sota": true
+    },
+    "panell_obert": {
+      "visibleIf": {
+        "flag": "panell_obert"
+      }
+    },
+    "panell_reparat": {
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "panell_obert"
+          },
+          {
+            "var": "empalmat",
+            "op": ">=",
+            "value": 2
+          }
+        ]
+      }
+    }
+  }
+}

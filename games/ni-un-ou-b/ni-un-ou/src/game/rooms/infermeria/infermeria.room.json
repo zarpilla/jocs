@@ -1,0 +1,461 @@
+{
+  "id": "infermeria",
+  "name": "Infermeria",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 8,
+            "y": 224
+          },
+          {
+            "x": 635,
+            "y": 224
+          },
+          {
+            "x": 635,
+            "y": 263
+          },
+          {
+            "x": 8,
+            "y": 263
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "passadís",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 8,
+          "y": 61
+        },
+        {
+          "x": 69,
+          "y": 61
+        },
+        {
+          "x": 69,
+          "y": 203
+        },
+        {
+          "x": 8,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 40,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 38,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "llitera",
+      "active": true,
+      "description": "llitera de rescat",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 298,
+          "y": 150
+        },
+        {
+          "x": 502,
+          "y": 150
+        },
+        {
+          "x": 502,
+          "y": 211
+        },
+        {
+          "x": 298,
+          "y": 211
+        }
+      ],
+      "walkToPoint": {
+        "x": 400,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 400,
+        "y": 211
+      }
+    },
+    {
+      "id": "armari",
+      "active": true,
+      "description": "armari",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 109,
+          "y": 53
+        },
+        {
+          "x": 179,
+          "y": 53
+        },
+        {
+          "x": 179,
+          "y": 202
+        },
+        {
+          "x": 109,
+          "y": 202
+        }
+      ],
+      "walkToPoint": {
+        "x": 144,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 144,
+        "y": 202
+      }
+    },
+    {
+      "id": "fitxes",
+      "active": true,
+      "description": "fitxes mèdiques",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 203,
+          "y": 104
+        },
+        {
+          "x": 267,
+          "y": 104
+        },
+        {
+          "x": 267,
+          "y": 148
+        },
+        {
+          "x": 203,
+          "y": 148
+        }
+      ],
+      "walkToPoint": {
+        "x": 235,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 235,
+        "y": 148
+      }
+    },
+    {
+      "id": "cafetera",
+      "active": true,
+      "description": "cafetera",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 554,
+          "y": 112
+        },
+        {
+          "x": 603,
+          "y": 112
+        },
+        {
+          "x": 603,
+          "y": 149
+        },
+        {
+          "x": 554,
+          "y": 149
+        }
+      ],
+      "walkToPoint": {
+        "x": 579,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 578,
+        "y": 149
+      }
+    },
+    {
+      "id": "boca",
+      "active": true,
+      "description": "boca del tub de veu",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 72,
+          "y": 93
+        },
+        {
+          "x": 96,
+          "y": 93
+        },
+        {
+          "x": 96,
+          "y": 139
+        },
+        {
+          "x": 72,
+          "y": 139
+        }
+      ],
+      "walkToPoint": {
+        "x": 85,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 84,
+        "y": 139
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 213
+    },
+    {
+      "id": "sense_travesser",
+      "tag": "sense_travesser",
+      "animations": {
+        "sense_travesser": {}
+      },
+      "zIndex": 21,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 213
+    },
+    {
+      "id": "mantes",
+      "tag": "mantes",
+      "animations": {
+        "mantes": {}
+      },
+      "zIndex": 21,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "baseline": 213
+    },
+    {
+      "id": "ulls_dia",
+      "tag": "ulls_dia",
+      "animations": {
+        "ulls_dia": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cafe",
+      "tag": "cafe",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cafe": {
+          "loop": true,
+          "frameDuration": 90
+        }
+      }
+    },
+    {
+      "id": "walkie",
+      "tag": "walkie",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "walkie": {
+          "loop": true,
+          "frameDuration": 150
+        }
+      }
+    },
+    {
+      "id": "ulls_dia_mar",
+      "tag": "ulls_dia_mar",
+      "animations": {
+        "ulls_dia_mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "cadeneta",
+      "tag": "cadeneta",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cadeneta": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 220
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 565,
+      "y": 259,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 229,
+      "y": 256,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "capitana-1",
+      "definition": "capitana/capitana.character.json",
+      "x": 400,
+      "y": 245,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "tomas-1",
+      "definition": "tomas/tomas.character.json",
+      "x": 400,
+      "y": 245,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "nadia-1",
+      "definition": "nadia/nadia.character.json",
+      "x": 400,
+      "y": 245,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "marcel-1",
+      "definition": "marcel/marcel.character.json",
+      "x": 400,
+      "y": 245,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bastida-1",
+      "definition": "bastida/bastida.character.json",
+      "x": 451,
+      "y": 200,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "juana-1",
+      "definition": "juana/juana.character.json",
+      "x": 424,
+      "y": 200,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "diu-veu",
+      "definition": "diu/diu.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 1
+    }
+  ],
+  "viewAnchorY": 0
+}

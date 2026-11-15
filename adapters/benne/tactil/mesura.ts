@@ -4,14 +4,15 @@
  *
  *  - toc: tocar la cosa fa exactament el que fa el camí (o tocar-la amb l'objecte a la mà);
  *  - menú: el toc obre el menú (la cosa té més d'una acció) i s'hi tria;
- *  - premut: el toc faria una altra cosa (p. ex. ja s'ha mirat i ara faria l'acció): cal mantenir premut i triar;
+ *  - premut: el toc faria una altra cosa (p. ex. ja s'ha mirat i ara faria l'acció, o és un objecte de l'inventari
+ *    que es pot combinar i el toc el pren a la mà): cal mantenir premut i triar;
  *  - mira primer: abans de l'acció, el primer toc ha mirat la cosa (un toc de més, però amb la descripció).
  *
  * Si alguna interacció del camí no es pot fer de cap manera, `impossibles` no és buit. És pur (només el nucli):
  * serveix per a qualsevol joc de narrative-core.
  */
 import type { InteractionTarget, Narrative } from '@aventura/narrative-core';
-import { accions, marcaMirat, queFaElToc, verbAmbObjecte } from './runtime/accions.js';
+import { accions, marcaMirat, objecteSol, queFaElToc, verbAmbObjecte } from './runtime/accions.js';
 
 export type Com = 'toc' | 'menú' | 'premut';
 export interface Pas { com: Com; on: string; miraPrimer: boolean }
@@ -37,6 +38,14 @@ export function mesura(n: Narrative): Mesura {
     if (item) {
       if (n.peek({ verb: verbAmbObjecte(n, t, item), target: t, item }) !== volgut) impossibles.push(on);
       passos.push({ com: 'toc', on, miraPrimer: false });
+      return;
+    }
+    if (t.kind === 'item' && !objecteSol(n.content, t.id)) {
+      // tocar-lo el pren a la mà: per fer-ne alguna altra cosa, cal el menú
+      const menu = [{ verb: 'look' }, ...accions(n, t)].map((a) => n.peek({ verb: a.verb, target: t }));
+      if (!menu.includes(volgut)) impossibles.push(on);
+      if (verb === 'look') marcaMirat(n, t);
+      passos.push({ com: 'premut', on, miraPrimer: false });
       return;
     }
     let toc = queFaElToc(n, t);

@@ -1,0 +1,27 @@
+{
+  "id": "speaking-text",
+  "name": "Speaking Text",
+  "description": " [640×360: hd640/gui_rest.py]",
+  "visible": false,
+  "display": {
+    "aseprite": false
+  },
+  "controls": [
+    {
+      "type": "text",
+      "id": "line",
+      "x": 320,
+      "y": 219,
+      "text": "Even if a woodchuck could chuck wood and even if a woodchuck would chuck wood, should a woodchuck chuck wood?",
+      "font": "niunou-negreta",
+      "fontSize": 8,
+      "color": "#ffffff",
+      "align": "center",
+      "wordWrapWidth": 364,
+      "textOutline": {
+        "enabled": true,
+        "color": "#000000"
+      }
+    }
+  ]
+}

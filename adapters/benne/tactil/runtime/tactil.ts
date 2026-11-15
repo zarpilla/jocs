@@ -7,6 +7,8 @@
  *  - Mantenir premut (o clic dret): el menú d'accions, amb «Mira» i les accions que té la cosa ara mateix.
  *  - Tocar un objecte de l'inventari: el pren a la mà (ho fa el motor: `toca` és un verb d'objecte). Llavors
  *    tocar una cosa el fa servir amb ella, o li dona si és un personatge. Tocar el mateix objecte o el terra, el deixa.
+ *    Si l'objecte es fa servir sol (el contingut no el combina mai amb res: el plànol), el motor fa el seu
+ *    `defaultVerb`, `fes` (el posa el sync), i tocar-lo en fa l'acció (`queFaElTocObjecte`).
  *
  * Els clics arriben al pont compartit (`routeInteraction`, narrative.script.ts) i aquest encaminador (que registra
  * el bloc generat de globalScript.ts) se'ls queda; la interacció del JSON la fa `performInteraction`, com sempre.
@@ -21,6 +23,8 @@ import { routeTouch } from './tactil.script';
 /** Els dos verbs de la interfície (game-config.json, els posa adapters/benne/tactil/index.ts). */
 export const TOCA = 'toca';
 export const MENU = 'accions';
+/** El verb que fa tocar un objecte sol de l'inventari (el seu `defaultVerb`): en fa l'acció en lloc de prendre'l. */
+export const FES = 'fes';
 
 // ─── El dit que ha obert el menú ────────────────────────────────────────────
 
@@ -85,7 +89,7 @@ export const label = (verb: string) => narrative.t(`ui.accio.${verb}`);
 // ─── L'encaminador ──────────────────────────────────────────────────────────
 
 export const touchRouter: TouchRouter = {
-  // `toca` i `accions` són seus; i, amb un objecte a la mà, decideix entre donar i fer servir.
-  takes: (verb, _target, item) => verb === TOCA || verb === MENU || item !== undefined,
+  // `toca`, `fes` i `accions` són seus; i, amb un objecte a la mà, decideix entre donar i fer servir.
+  takes: (verb, _target, item) => verb === TOCA || verb === FES || verb === MENU || item !== undefined,
   route: (verb, target, item) => routeTouch(verb, target, item),
 };

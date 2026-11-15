@@ -1,0 +1,564 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "tub",
+  "with": "vet",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "protagonist": "iri"
+          },
+          {
+            "not": {
+              "inRoom": [
+                "pont",
+                "sala_maquines",
+                "cuina",
+                "infermeria",
+                "menjador"
+              ],
+              "who": "vet"
+            }
+          },
+          {
+            "flag": "cara_a_cara",
+            "is": false
+          }
+        ]
+      },
+      "node": "lluny"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "protagonist": "vet"
+          },
+          {
+            "not": {
+              "inRoom": [
+                "pont",
+                "sala_maquines",
+                "cuina",
+                "infermeria",
+                "menjador"
+              ],
+              "who": "iri"
+            }
+          },
+          {
+            "flag": "cara_a_cara",
+            "is": false
+          }
+        ]
+      },
+      "node": "lluny"
+    },
+    {
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 6
+      },
+      "node": "esc6"
+    },
+    {
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 7
+      },
+      "node": "esc7"
+    },
+    {
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 8
+      },
+      "node": "esc8"
+    },
+    {
+      "if": {
+        "var": "escena",
+        "op": "==",
+        "value": 9
+      },
+      "node": "esc9"
+    },
+    {
+      "node": "res"
+    }
+  ],
+  "nodes": {
+    "lluny": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.tub.lluny.1"
+        }
+      ]
+    },
+    "esc6": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.1",
+          "if": {
+            "flag": "cops_sentits",
+            "is": false
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.8",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "seen": {
+                  "dialogue": "bastida",
+                  "node": "esc6"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.9",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.10",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cadenat_falta"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.11",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "entrepa_robat"
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc6.2",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc6.3",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc6.12",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel"
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc6.13",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "flag": "cops_sentits",
+                "is": false
+              },
+              {
+                "flag": "cops_marcel"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.4",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits"
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc6.5",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits"
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              },
+              {
+                "flag": "bastida_baixa",
+                "is": false
+              },
+              {
+                "flag": "nus_lico",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc6.6",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits"
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              },
+              {
+                "flag": "bastida_baixa",
+                "is": false
+              },
+              {
+                "flag": "nus_lico",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc6.14",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits"
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              },
+              {
+                "flag": "nus_lico"
+              },
+              {
+                "flag": "bastida_baixa",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc6.15",
+          "if": {
+            "all": [
+              {
+                "flag": "cops_sentits"
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              },
+              {
+                "flag": "bastida_baixa"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.tub.esc6.7",
+          "if": {
+            "flag": "cadenat_tallat"
+          }
+        }
+      ]
+    },
+    "esc7": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.tub.esc7.1",
+          "if": {
+            "flag": "mostra_trobada"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc7.2",
+          "if": {
+            "flag": "mostra_trobada",
+            "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc7.3",
+          "if": {
+            "flag": "mostra_trobada",
+            "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc7.6",
+          "if": {
+            "all": [
+              {
+                "flag": "prova_pany"
+              },
+              {
+                "flag": "mostra_trobada",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc7.7",
+          "if": {
+            "all": [
+              {
+                "flag": "tomas_clau"
+              },
+              {
+                "flag": "clau_donada",
+                "is": false
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc7.4",
+          "if": {
+            "flag": "registre_obert",
+            "is": false
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc7.5",
+          "if": {
+            "all": [
+              {
+                "flag": "registre_obert"
+              },
+              {
+                "flag": "mostra_trobada",
+                "is": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "esc8": {
+      "lines": [
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc8.1",
+          "if": {
+            "flag": "aliada_capitana",
+            "is": false
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc8.2",
+          "if": {
+            "all": [
+              {
+                "flag": "aliada_capitana",
+                "is": false
+              },
+              {
+                "flag": "registre_impres",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc8.3",
+          "if": {
+            "all": [
+              {
+                "flag": "aliada_capitana",
+                "is": false
+              },
+              {
+                "flag": "registre_impres"
+              }
+            ]
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc8.4",
+          "if": {
+            "flag": "aliada_capitana"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc8.5",
+          "if": {
+            "protagonist": "vet"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc8.6",
+          "if": {
+            "protagonist": "iri"
+          }
+        }
+      ]
+    },
+    "esc9": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.tub.esc9.1"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc9.2",
+          "if": {
+            "flag": "rele_posat",
+            "is": false
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.esc9.3",
+          "if": {
+            "flag": "rele_posat"
+          }
+        }
+      ]
+    },
+    "res": {
+      "lines": [
+        {
+          "who": "iri",
+          "text": "dlg.tub.res.1",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.res.2",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "vet",
+          "text": "dlg.tub.res.3",
+          "if": {
+            "protagonist": "vet"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.tub.res.4",
+          "if": {
+            "protagonist": "vet"
+          }
+        }
+      ]
+    }
+  }
+}

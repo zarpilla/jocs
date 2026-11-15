@@ -1,0 +1,113 @@
+{
+  "id": "portada",
+  "name": "Ni un ou",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 200,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 253
+          },
+          {
+            "x": 267,
+            "y": 261
+          },
+          {
+            "x": 200,
+            "y": 261
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    },
+    {
+      "id": "zodiac",
+      "tag": "zodiac",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "zodiac": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    },
+    {
+      "id": "titol",
+      "tag": "titol",
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "titol": {
+          "loop": false,
+          "frameDuration": 1000
+        }
+      }
+    },
+    {
+      "id": "bastida_popa",
+      "tag": "bastida_popa",
+      "zIndex": 2,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "bastida_popa": {
+          "loop": true,
+          "frameDuration": 300
+        }
+      }
+    }
+  ],
+  "characters": []
+}

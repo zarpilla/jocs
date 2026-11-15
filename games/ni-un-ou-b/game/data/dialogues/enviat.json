@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "enviat",
+  "with": "bastida",
+  "start": "enviat",
+  "nodes": {
+    "enviat": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.enviat.enviat.1"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.enviat.enviat.2"
+        },
+        {
+          "who": "capitana",
+          "text": "dlg.enviat.enviat.3",
+          "if": {
+            "flag": "rumb_galway",
+            "is": false
+          },
+          "effects": [
+            {
+              "setFlag": "rumb_galway"
+            }
+          ]
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.enviat.enviat.4"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.enviat.enviat.5"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.enviat.enviat.6"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.enviat.enviat.7"
+        },
+        {
+          "who": "bastida",
+          "text": "dlg.enviat.enviat.8"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sync_satellit",
+          "value": false
+        },
+        {
+          "event": "final"
+        }
+      ]
+    }
+  }
+}

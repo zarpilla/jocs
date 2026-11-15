@@ -172,9 +172,11 @@ Una interfície pròpia es pot quedar alguns clics abans que vagin al JSON: `set
 
 Sense barra de verbs, pensada per al mòbil: tocar una cosa la mira la primera vegada i després en fa l'acció (o
 obre el menú d'accions si en té més d'una), mantenir premut obre el menú, i l'alçada de la pantalla s'adapta a
-l'aparell. Un joc la fa servir amb `tactil: true` al seu `joc.ts` (Aigua Verne B, Suma Zero B), i llavors el
+l'aparell. Un joc la fa servir amb `tactil: true` al seu `joc.ts` (Aigua Verne B, Suma Zero B, Ni un ou B), i llavors el
 `benne:sync` hi posa el runtime (`tactil/runtime/`), els scripts del HUD i del menú (`tactil/guis/`), l'encaminador al
-`globalScript.ts` i la configuració (`configuraTactil`). El joc hi posa l'art i els `.gui.json` (el seu
+`globalScript.ts`, la configuració (`configuraTactil`) i, als objectes que el contingut no combina mai amb res
+(`objecteSol`), `defaultVerb: "fes"`: tocar-los a l'inventari en fa l'acció en lloc de prendre'ls a la mà (el motor ho
+fa quan el verb del botó principal és d'objecte i l'objecte té `defaultVerb`). El joc hi posa l'art i els `.gui.json` (el seu
 `tools/hd640/hud.py`, amb els ids i les mides que esperen els scripts), la pantalla adaptable de sales i GUI
 (`tools/hd640/pantalla.py`) i els textos `ui.accio.*`. Per als tests, `tactil/mesura.ts` diu com es juga un camí
 sencer amb el toc. Detalls: [tactil/index.ts](tactil/index.ts).

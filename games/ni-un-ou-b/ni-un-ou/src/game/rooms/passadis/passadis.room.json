@@ -1,0 +1,398 @@
+{
+  "id": "passadis",
+  "name": "Passadís",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 360
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 8,
+            "y": 224
+          },
+          {
+            "x": 461,
+            "y": 224
+          },
+          {
+            "x": 461,
+            "y": 237
+          },
+          {
+            "x": 560,
+            "y": 237
+          },
+          {
+            "x": 560,
+            "y": 224
+          },
+          {
+            "x": 635,
+            "y": 224
+          },
+          {
+            "x": 635,
+            "y": 263
+          },
+          {
+            "x": 8,
+            "y": 263
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta_menjador",
+      "active": true,
+      "description": "menjador",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 11,
+          "y": 61
+        },
+        {
+          "x": 72,
+          "y": 61
+        },
+        {
+          "x": 72,
+          "y": 203
+        },
+        {
+          "x": 11,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 43,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 41,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_infermeria",
+      "active": true,
+      "description": "infermeria",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 107,
+          "y": 61
+        },
+        {
+          "x": 171,
+          "y": 61
+        },
+        {
+          "x": 171,
+          "y": 203
+        },
+        {
+          "x": 107,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 139,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 139,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_laboratori",
+      "active": true,
+      "description": "laboratori",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 203,
+          "y": 61
+        },
+        {
+          "x": 267,
+          "y": 61
+        },
+        {
+          "x": 267,
+          "y": 203
+        },
+        {
+          "x": 203,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 235,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 235,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_capitana",
+      "active": true,
+      "description": "cabina de la Capitana",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 291,
+          "y": 61
+        },
+        {
+          "x": 355,
+          "y": 61
+        },
+        {
+          "x": 355,
+          "y": 203
+        },
+        {
+          "x": 291,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 323,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 323,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "escala_amunt",
+      "active": true,
+      "description": "escala del pont",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 376,
+          "y": 5
+        },
+        {
+          "x": 459,
+          "y": 5
+        },
+        {
+          "x": 459,
+          "y": 203
+        },
+        {
+          "x": 376,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 429,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 417,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "escala_avall",
+      "active": true,
+      "description": "escala de baix",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 467,
+          "y": 165
+        },
+        {
+          "x": 557,
+          "y": 165
+        },
+        {
+          "x": 557,
+          "y": 232
+        },
+        {
+          "x": 467,
+          "y": 232
+        }
+      ],
+      "walkToPoint": {
+        "x": 512,
+        "y": 245
+      },
+      "lookAtPoint": {
+        "x": 512,
+        "y": 232
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "porta_proa",
+      "active": true,
+      "description": "porta de proa",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 573,
+          "y": 59
+        },
+        {
+          "x": 632,
+          "y": 59
+        },
+        {
+          "x": 632,
+          "y": 203
+        },
+        {
+          "x": 573,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 603,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 602,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "planol",
+      "active": true,
+      "description": "plànol d'emergència",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 474,
+          "y": 64
+        },
+        {
+          "x": 554,
+          "y": 64
+        },
+        {
+          "x": 554,
+          "y": 132
+        },
+        {
+          "x": 474,
+          "y": 132
+        }
+      ],
+      "walkToPoint": {
+        "x": 514,
+        "y": 237
+      },
+      "lookAtPoint": {
+        "x": 514,
+        "y": 132
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "ulls_dia",
+      "tag": "ulls_dia",
+      "animations": {
+        "ulls_dia": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "rellotge",
+      "tag": "rellotge",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "rellotge": {
+          "loop": true,
+          "frameDuration": 1000
+        }
+      }
+    },
+    {
+      "id": "maquines",
+      "tag": "maquines",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "maquines": {
+          "loop": true,
+          "frameDuration": 200
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 309,
+      "y": 251,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 387,
+      "y": 256,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ],
+  "viewAnchorY": 0
+}

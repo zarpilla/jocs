@@ -1,0 +1,284 @@
+{
+  "id": "taller",
+  "name": "Taller",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 8,
+            "y": 227
+          },
+          {
+            "x": 632,
+            "y": 227
+          },
+          {
+            "x": 637,
+            "y": 261
+          },
+          {
+            "x": 3,
+            "y": 261
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "porta",
+      "active": true,
+      "description": "sala de màquines",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 3,
+          "y": 61
+        },
+        {
+          "x": 80,
+          "y": 61
+        },
+        {
+          "x": 80,
+          "y": 203
+        },
+        {
+          "x": 3,
+          "y": 203
+        }
+      ],
+      "walkToPoint": {
+        "x": 45,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 41,
+        "y": 203
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "tauler",
+      "active": true,
+      "description": "tauler d'eines",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 108,
+          "y": 36
+        },
+        {
+          "x": 417,
+          "y": 36
+        },
+        {
+          "x": 417,
+          "y": 123
+        },
+        {
+          "x": 108,
+          "y": 123
+        }
+      ],
+      "walkToPoint": {
+        "x": 264,
+        "y": 232
+      },
+      "lookAtPoint": {
+        "x": 262,
+        "y": 123
+      }
+    },
+    {
+      "id": "banc",
+      "active": true,
+      "description": "banc de treball",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 429,
+          "y": 123
+        },
+        {
+          "x": 627,
+          "y": 123
+        },
+        {
+          "x": 627,
+          "y": 205
+        },
+        {
+          "x": 429,
+          "y": 205
+        }
+      ],
+      "walkToPoint": {
+        "x": 528,
+        "y": 235
+      },
+      "lookAtPoint": {
+        "x": 528,
+        "y": 205
+      }
+    }
+  ],
+  "points": [],
+  "regions": [],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "cisalla",
+      "tag": "cisalla",
+      "animations": {
+        "cisalla": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 137,
+            "y": 125
+          },
+          {
+            "x": 212,
+            "y": 125
+          },
+          {
+            "x": 212,
+            "y": 145
+          },
+          {
+            "x": 137,
+            "y": 145
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 173,
+        "y": 235
+      },
+      "lookAtPoint": {
+        "x": 174,
+        "y": 145
+      },
+      "description": "cisalla"
+    },
+    {
+      "id": "clau_tubs",
+      "tag": "clau_tubs",
+      "animations": {
+        "clau_tubs": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 224,
+            "y": 125
+          },
+          {
+            "x": 245,
+            "y": 125
+          },
+          {
+            "x": 245,
+            "y": 159
+          },
+          {
+            "x": 224,
+            "y": 159
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 235,
+        "y": 235
+      },
+      "lookAtPoint": {
+        "x": 234,
+        "y": 159
+      },
+      "description": "clau de tubs"
+    },
+    {
+      "id": "fluorescent",
+      "tag": "fluorescent",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fluorescent": {
+          "loop": true,
+          "frameDuration": 100
+        }
+      }
+    },
+    {
+      "id": "mosca",
+      "tag": "mosca",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mosca": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 293,
+      "y": 251,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 387,
+      "y": 253,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    }
+  ]
+}

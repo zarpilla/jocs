@@ -67,14 +67,21 @@ segon.
 mesurador només fa servir el nucli: s'ha passat també pels altres jocs.
 
 Regla del toc: la primera vegada mira; després, una sola acció la fa i més d'una obre el menú (`queFaElToc`). Així el joc no tria per tu el verb que resol un trencaclosques
-(empènyer o estirar), i les descripcions es llegeixen sense gestos de més.
+(empènyer o estirar), i les descripcions es llegeixen sense gestos de més. A més (des de Ni un ou B):
+
+- es recorda quina **descripció** s'ha vist, no només la cosa: quan en té una de nova, el primer toc la torna a mirar;
+- dos verbs que fan **exactament el mateix** (el walkie: «parla» i «fes servir» obren el mateix diàleg) són una sola
+  acció;
+- un **objecte que el contingut no combina mai amb res** (el plànol, el walkie) no es pren a la mà en tocar-lo a
+  l'inventari: en fa l'acció (el sync li posa `defaultVerb: "fes"`). Els que es combinen es prenen a la mà, i per
+  mirar-los cal mantenir premut.
 
 | Joc | Passos | Un toc | Toc + menú | Mantenir premut | Toc de més (mira primer) | Gestos per pas |
 |---|---|---|---|---|---|---|
-| Aigua Verne (barril) | 163 | 163 | 0 | 0 | 27 | 1,17 |
-| Suma Zero | 66 | 61 | 5 | 0 | 20 | 1,38 |
-| Ni un ou | 106 | 102 | 3 | 1 | 12 | 1,15 |
-| Ferro-9 | 149 | 136 | 13 | 0 | 15 | 1,19 |
+| Aigua Verne (barril) | 163 | 163 | 0 | 0 | 29 | 1,18 |
+| Suma Zero | 66 | 61 | 5 | 0 | 25 | 1,45 |
+| Ni un ou | 106 | 106 | 0 | 0 | 14 | 1,13 |
+| Ferro-9 | 149 | 134 | 11 | 4 | 22 | 1,25 |
 
 A Aigua Verne cap cosa del camí té dues accions diferents: el contingut ja agrupa els verbs en una sola interacció
 (`["walkTo", "use", "open"]`). Al Ferro-9, el menú surt just on el verb és el trencaclosques (el panell, la molla, la
