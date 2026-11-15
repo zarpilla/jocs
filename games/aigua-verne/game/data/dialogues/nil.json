@@ -168,7 +168,21 @@
         },
         {
           "who": "vet",
-          "text": "dlg.nil.tomaquera.3"
+          "text": "dlg.nil.tomaquera.3",
+          "if": {
+            "inRoom": "verdant_jardi",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.nil.tomaquera.3",
+          "if": {
+            "not": {
+              "inRoom": "verdant_jardi",
+              "who": "vet"
+            }
+          }
         },
         {
           "who": "nil",
@@ -176,7 +190,21 @@
         },
         {
           "who": "vet",
-          "text": "dlg.nil.tomaquera.5"
+          "text": "dlg.nil.tomaquera.5",
+          "if": {
+            "inRoom": "verdant_jardi",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.nil.tomaquera.5",
+          "if": {
+            "not": {
+              "inRoom": "verdant_jardi",
+              "who": "vet"
+            }
+          }
         }
       ],
       "effects": [

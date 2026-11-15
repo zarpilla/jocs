@@ -29,7 +29,21 @@
         },
         {
           "who": "iri",
-          "text": "dlg.juana.hola.3"
+          "text": "dlg.juana.hola.3",
+          "if": {
+            "inRoom": "casa_juana",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.juana.hola.3",
+          "if": {
+            "not": {
+              "inRoom": "casa_juana",
+              "who": "iri"
+            }
+          }
         },
         {
           "who": "juana",
@@ -184,7 +198,21 @@
         },
         {
           "who": "vet",
-          "text": "dlg.juana.on.3"
+          "text": "dlg.juana.on.3",
+          "if": {
+            "inRoom": "casa_juana",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.juana.on.3",
+          "if": {
+            "not": {
+              "inRoom": "casa_juana",
+              "who": "vet"
+            }
+          }
         },
         {
           "who": "juana",
@@ -210,7 +238,21 @@
         },
         {
           "who": "vet",
-          "text": "dlg.juana.tornar.3"
+          "text": "dlg.juana.tornar.3",
+          "if": {
+            "inRoom": "casa_juana",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.juana.tornar.3",
+          "if": {
+            "not": {
+              "inRoom": "casa_juana",
+              "who": "vet"
+            }
+          }
         },
         {
           "who": "juana",
@@ -218,7 +260,21 @@
         },
         {
           "who": "iri",
-          "text": "dlg.juana.tornar.5"
+          "text": "dlg.juana.tornar.5",
+          "if": {
+            "inRoom": "casa_juana",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.juana.tornar.5",
+          "if": {
+            "not": {
+              "inRoom": "casa_juana",
+              "who": "iri"
+            }
+          }
         },
         {
           "who": "juana",
@@ -240,7 +296,21 @@
       "lines": [
         {
           "who": "juana",
-          "text": "dlg.juana.bru.1"
+          "text": "dlg.juana.bru.1",
+          "if": {
+            "inRoom": "casa_juana",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "juana",
+          "text": "dlg.juana.bru.1.vet",
+          "if": {
+            "not": {
+              "inRoom": "casa_juana",
+              "who": "iri"
+            }
+          }
         },
         {
           "who": "narrator",
@@ -273,7 +343,21 @@
         },
         {
           "who": "vet",
-          "text": "dlg.juana.peixos.3"
+          "text": "dlg.juana.peixos.3",
+          "if": {
+            "inRoom": "casa_juana",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.juana.peixos.3",
+          "if": {
+            "not": {
+              "inRoom": "casa_juana",
+              "who": "vet"
+            }
+          }
         },
         {
           "who": "juana",

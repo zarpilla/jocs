@@ -44,7 +44,11 @@
             },
             {
               "who": "iri",
-              "text": "sala.granja_casa.calaix.3"
+              "text": "sala.granja_casa.calaix.3",
+              "if": {
+                "inRoom": "granja_casa",
+                "who": "iri"
+              }
             },
             {
               "who": "player",
@@ -257,7 +261,8 @@
               "who": "vet",
               "text": "sala.granja_casa.pots.2",
               "if": {
-                "protagonist": "vet"
+                "inRoom": "granja_casa",
+                "who": "vet"
               }
             }
           ]

@@ -308,6 +308,18 @@
     },
     "interactions": [
       {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.agulla.desc.iri"
+          }
+        ]
+      },
+      {
         "verb": "use",
         "item": "vestit",
         "if": {
@@ -390,6 +402,18 @@
     },
     "interactions": [
       {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.vestit.desc.iri"
+          }
+        ]
+      },
+      {
         "verb": "use",
         "item": "agulla",
         "if": {
@@ -417,7 +441,21 @@
     "description": "obj.vestit_arreglat.desc",
     "props": {
       "mosca": true
-    }
+    },
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "obj.vestit_arreglat.desc.iri"
+          }
+        ]
+      }
+    ]
   },
   "targeta": {
     "name": "obj.targeta.nom",

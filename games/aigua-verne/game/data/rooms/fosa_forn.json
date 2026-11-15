@@ -441,7 +441,17 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.fosa_forn.forn.4"
+              "text": "sala.fosa_forn.forn.4",
+              "if": {
+                "protagonist": "vet"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.fosa_forn.forn.4.iri",
+              "if": {
+                "protagonist": "iri"
+              }
             }
           ]
         }

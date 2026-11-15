@@ -85,7 +85,12 @@
         },
         {
           "who": "vet",
-          "text": "dlg.lia.pare.3"
+          "text": "dlg.lia.pare.3",
+          "if": {
+            "not": {
+              "hasItem": "nota_lia"
+            }
+          }
         }
       ],
       "effects": [

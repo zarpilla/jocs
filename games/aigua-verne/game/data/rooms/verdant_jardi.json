@@ -291,11 +291,85 @@
         },
         {
           "who": "iri",
-          "text": "sala.verdant_jardi.entra.2"
+          "text": "sala.verdant_jardi.entra.2",
+          "if": {
+            "all": [
+              {
+                "inRoom": "verdant_jardi",
+                "who": "iri"
+              },
+              {
+                "inRoom": "verdant_jardi",
+                "who": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "vet",
-          "text": "sala.verdant_jardi.entra.3"
+          "text": "sala.verdant_jardi.entra.3",
+          "if": {
+            "all": [
+              {
+                "inRoom": "verdant_jardi",
+                "who": "iri"
+              },
+              {
+                "inRoom": "verdant_jardi",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.verdant_jardi.entra.2.iri",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "not": {
+                  "all": [
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.verdant_jardi.entra.2.vet",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "not": {
+                  "all": [
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "verdant_jardi",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
         }
       ]
     }

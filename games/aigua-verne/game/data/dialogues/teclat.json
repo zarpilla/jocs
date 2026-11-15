@@ -98,15 +98,69 @@
         },
         {
           "who": "vet",
-          "text": "dlg.teclat.titus.4"
+          "text": "dlg.teclat.titus.4",
+          "if": {
+            "all": [
+              {
+                "inRoom": "granja_casa",
+                "who": "iri"
+              },
+              {
+                "inRoom": "granja_casa",
+                "who": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "iri",
-          "text": "dlg.teclat.titus.5"
+          "text": "dlg.teclat.titus.5",
+          "if": {
+            "all": [
+              {
+                "inRoom": "granja_casa",
+                "who": "iri"
+              },
+              {
+                "inRoom": "granja_casa",
+                "who": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "vet",
-          "text": "dlg.teclat.titus.6"
+          "text": "dlg.teclat.titus.6",
+          "if": {
+            "all": [
+              {
+                "inRoom": "granja_casa",
+                "who": "iri"
+              },
+              {
+                "inRoom": "granja_casa",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.teclat.titus.4.sola",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "inRoom": "granja_casa",
+                  "who": "iri"
+                },
+                {
+                  "inRoom": "granja_casa",
+                  "who": "vet"
+                }
+              ]
+            }
+          }
         }
       ],
       "effects": [

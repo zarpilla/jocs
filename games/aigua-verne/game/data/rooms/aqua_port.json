@@ -416,11 +416,71 @@
         },
         {
           "who": "iri",
-          "text": "sala.aqua_port.entra.2"
+          "text": "sala.aqua_port.entra.2",
+          "if": {
+            "all": [
+              {
+                "inRoom": "aqua_port",
+                "who": "iri"
+              },
+              {
+                "inRoom": "aqua_port",
+                "who": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "vet",
-          "text": "sala.aqua_port.entra.3"
+          "text": "sala.aqua_port.entra.3",
+          "if": {
+            "all": [
+              {
+                "inRoom": "aqua_port",
+                "who": "iri"
+              },
+              {
+                "inRoom": "aqua_port",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.aqua_port.entra.2",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "inRoom": "aqua_port",
+                  "who": "iri"
+                },
+                {
+                  "inRoom": "aqua_port",
+                  "who": "vet"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "who": "player",
+          "text": "sala.aqua_port.entra.3.sola",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "inRoom": "aqua_port",
+                  "who": "iri"
+                },
+                {
+                  "inRoom": "aqua_port",
+                  "who": "vet"
+                }
+              ]
+            }
+          }
         }
       ]
     }

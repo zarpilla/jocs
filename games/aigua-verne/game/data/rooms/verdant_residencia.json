@@ -216,7 +216,21 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.verdant_residencia.finestral.1"
+              "text": "sala.verdant_residencia.finestral.1",
+              "if": {
+                "inRoom": "verdant_jardi",
+                "who": "vet"
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.verdant_residencia.finestral.2",
+              "if": {
+                "not": {
+                  "inRoom": "verdant_jardi",
+                  "who": "vet"
+                }
+              }
             }
           ]
         }

@@ -8,15 +8,85 @@
       "lines": [
         {
           "who": "vet",
-          "text": "dlg.barril.inici.1"
+          "text": "dlg.barril.inici.1",
+          "if": {
+            "all": [
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "iri"
+              },
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "iri",
-          "text": "dlg.barril.inici.2"
+          "text": "dlg.barril.inici.2",
+          "if": {
+            "all": [
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "iri"
+              },
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "vet"
+              }
+            ]
+          }
         },
         {
           "who": "vet",
-          "text": "dlg.barril.inici.3"
+          "text": "dlg.barril.inici.3",
+          "if": {
+            "all": [
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "iri"
+              },
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.barril.inici.sola.iri",
+          "if": {
+            "all": [
+              {
+                "protagonist": "iri"
+              },
+              {
+                "not": {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "vet"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.barril.inici.sola.vet",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "not": {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "iri"
+                }
+              }
+            ]
+          }
         }
       ],
       "choices": [
@@ -48,7 +118,21 @@
       "lines": [
         {
           "who": "vet",
-          "text": "dlg.barril.iri.1"
+          "text": "dlg.barril.iri.1",
+          "if": {
+            "inRoom": "cantimplora_bodega",
+            "who": "vet"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.barril.iri.1.sola",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_bodega",
+              "who": "vet"
+            }
+          }
         }
       ],
       "goto": "baixar"
@@ -57,11 +141,29 @@
       "lines": [
         {
           "who": "vet",
-          "text": "dlg.barril.vet.1"
+          "text": "dlg.barril.vet.1",
+          "if": {
+            "inRoom": "cantimplora_bodega",
+            "who": "iri"
+          }
         },
         {
           "who": "iri",
-          "text": "dlg.barril.vet.2"
+          "text": "dlg.barril.vet.2",
+          "if": {
+            "inRoom": "cantimplora_bodega",
+            "who": "iri"
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.barril.vet.1.sola",
+          "if": {
+            "not": {
+              "inRoom": "cantimplora_bodega",
+              "who": "iri"
+            }
+          }
         }
       ],
       "goto": "baixar"
@@ -70,7 +172,37 @@
       "lines": [
         {
           "who": "narrator",
-          "text": "dlg.barril.baixar.1"
+          "text": "dlg.barril.baixar.1",
+          "if": {
+            "all": [
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "iri"
+              },
+              {
+                "inRoom": "cantimplora_bodega",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.barril.baixar.1.sola",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "iri"
+                },
+                {
+                  "inRoom": "cantimplora_bodega",
+                  "who": "vet"
+                }
+              ]
+            }
+          }
         }
       ],
       "effects": [

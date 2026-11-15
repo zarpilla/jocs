@@ -55,6 +55,7 @@
   "obj.reg_foradat.desc": "El reg del pare, amb els goters destapats.",
   "obj.agulla.nom": "agulla",
   "obj.agulla.desc": "Una agulla de cosir grossa, amb fil. La guardava per si de cas.",
+  "obj.agulla.desc.iri": "L'agulla de cosir de la Vet, amb fil. La guardava per si de cas. Com tot.",
   "obj.galleda.nom": "galleda",
   "obj.galleda.desc": "Una galleda de zinc, buida.",
   "obj.galleda_plena.nom": "galleda plena",
@@ -70,8 +71,10 @@
   "obj.pernil.desc": "Una llesca de pernil d'en Tomàs. Per a una bona causa.",
   "obj.vestit.nom": "vestit de reina",
   "obj.vestit.desc": "El vestit de reina de la Rosa, amb la corona d'engranatge. A l'Iri li va gran.",
+  "obj.vestit.desc.iri": "El vestit de reina de la Rosa, amb la corona d'engranatge. Em va gran.",
   "obj.vestit_arreglat.nom": "vestit arreglat",
   "obj.vestit_arreglat.desc": "El vestit de reina, a mida de l'Iri. Horrible. Perfecte.",
+  "obj.vestit_arreglat.desc.iri": "El vestit de reina, a la meva mida. Horrible. Perfecte.",
   "obj.targeta.nom": "targeta de servei",
   "obj.targeta.desc": "La targeta d'accés de la Lia. Obre l'ascensor de servei.",
   "obj.comunicador.amb_article": "el comunicador",
@@ -116,6 +119,6 @@
   "obj.reg.1": "Forado els goters un per un amb l'agulla. Ara sí que regarà.",
   "obj.reg.2": "Els forats, els fa la Vet. Jo ho faria tot alhora i amb el dit.",
   "obj.agulla.1": "Una mica d'aquí, una mica d'allà... Ja està: ara li anirà a mida.",
-  "obj.agulla.2": "Si cuso jo, l'Iri entrarà al palau amb una màniga al cap.",
+  "obj.agulla.2": "Si cuso jo, entraré al palau amb una màniga al cap.",
   "obj.vestit.1": "Una mica d'aquí, una mica d'allà... Ja està: ara li anirà a mida."
 }

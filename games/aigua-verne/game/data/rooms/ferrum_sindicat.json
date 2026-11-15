@@ -43,7 +43,11 @@
             },
             {
               "who": "iri",
-              "text": "sala.ferrum_sindicat.bagul.3"
+              "text": "sala.ferrum_sindicat.bagul.3",
+              "if": {
+                "inRoom": "ferrum_sindicat",
+                "who": "iri"
+              }
             }
           ]
         },
