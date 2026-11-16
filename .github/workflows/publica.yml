@@ -25,7 +25,7 @@ on:
       joc:
         description: Quin joc es publica
         type: choice
-        options: [tots, ni-un-ou, ferro-9, suma-zero]
+        options: [tots, ni-un-ou, ferro-9, suma-zero, aigua-verne]
         default: tots
 
 concurrency:
@@ -53,7 +53,7 @@ jobs:
           JOC: ${{ inputs.joc }}
         run: |
           if [ -z "$JOC" ] || [ "$JOC" = tots ]; then
-            echo 'jocs=["ni-un-ou","ferro-9","suma-zero"]' >> "$GITHUB_OUTPUT"
+            echo 'jocs=["ni-un-ou","ferro-9","suma-zero","aigua-verne"]' >> "$GITHUB_OUTPUT"
           else
             echo "jocs=[\"$JOC\"]" >> "$GITHUB_OUTPUT"
           fi
