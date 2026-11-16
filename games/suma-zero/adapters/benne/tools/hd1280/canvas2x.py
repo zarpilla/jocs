@@ -25,6 +25,12 @@ def lc(X):
     return (X + 0.5) / S - 0.5
 
 
+def _in(v, a, b):
+    """`v` dins de [a, b]: els píxels reals de la vora d'un rectangle de sala tenen el centre fins a 0.25 a fora, i
+    les funcions de les sales (fetes per a enters de sala) no n'esperen res de fora (p. ex. una base negativa ** 1.5)."""
+    return a if v < a else b if v > b else v
+
+
 class Canvas2x(Canvas):
     def __init__(self, w=W, h=H, light=None, transparent=False, img=None):
         super().__init__(w * S, h * S, light, transparent, img)
@@ -105,8 +111,9 @@ class Canvas2x(Canvas):
         horiz = abs(X1 - X0) >= abs(Y1 - Y0)
         for i in range(int(n) + 1):
             t = i / n
-            # (floor + 0.5, no round(): els punts cauen just a .5 i round() arrodoneix cap al parell)
-            X, Y = math.floor(X0 + (X1 - X0) * t + 0.5), math.floor(Y0 + (Y1 - Y0) * t + 0.5)
+            # (floor + 0.5, no round(): els punts cauen just a .5 i round() arrodoneix cap al parell; + 1e-6: l'error de
+            # coma flotant en tirava alguns avall, i la línia repetia un píxel i en deixava un de buit)
+            X, Y = math.floor(X0 + (X1 - X0) * t + 0.5 + 1e-6), math.floor(Y0 + (Y1 - Y0) * t + 0.5 + 1e-6)
             self.px(X, Y, ramp, lvl, lit)
             if not thin:
                 self.px(X, Y + 1, ramp, lvl, lit) if horiz else self.px(X + 1, Y, ramp, lvl, lit)
@@ -130,7 +137,7 @@ class Canvas2x(Canvas):
             o = self.P[X, Y]
             if not o[3]:
                 continue
-            x, y = lc(X), lc(Y)
+            x, y = _in(lc(X), x0, x1), _in(lc(Y), y0, y1)
             kk = k(x, y) if callable(k) else k
             if mask:
                 kk *= mask(x, y)
@@ -139,7 +146,7 @@ class Canvas2x(Canvas):
 
     def darken(self, x0, y0, x1, y1, amount, dither=True):
         for X, Y in self._each(x0, y0, x1, y1):
-            a = amount(lc(X), lc(Y)) if callable(amount) else amount
+            a = amount(_in(lc(X), x0, x1), _in(lc(Y), y0, y1)) if callable(amount) else amount
             if a <= 0:
                 continue
             o = self.P[X, Y]
