@@ -107,8 +107,16 @@
           "id": "escriptura",
           "text": "dlg.pare.opt.escriptura",
           "if": {
-            "flag": "caixa_oberta",
-            "is": false
+            "all": [
+              {
+                "flag": "caixa_oberta",
+                "is": false
+              },
+              {
+                "flag": "quadre_apartat",
+                "is": false
+              }
+            ]
           },
           "next": "escriptura"
         },
@@ -218,7 +226,18 @@
         },
         {
           "who": "player",
-          "text": "dlg.pare.contrasenya.2"
+          "text": "dlg.pare.contrasenya.2",
+          "if": {
+            "flag": "bol_vist",
+            "is": false
+          }
+        },
+        {
+          "who": "player",
+          "text": "dlg.pare.contrasenya.4",
+          "if": {
+            "flag": "bol_vist"
+          }
         },
         {
           "who": "player",

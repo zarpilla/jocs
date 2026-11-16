@@ -454,7 +454,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "albara"
+          "any": [
+            {
+              "hasItem": "albara",
+              "who": "iri"
+            },
+            {
+              "hasItem": "albara",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "injector_posat"
@@ -567,7 +576,16 @@
         },
         {
           "not": {
-            "hasItem": "fusible_apanyat"
+            "any": [
+              {
+                "hasItem": "fusible_apanyat",
+                "who": "iri"
+              },
+              {
+                "hasItem": "fusible_apanyat",
+                "who": "vet"
+              }
+            ]
           }
         },
         {
@@ -578,7 +596,16 @@
     "doneWhen": {
       "any": [
         {
-          "hasItem": "fusible_apanyat"
+          "any": [
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "grua_arreglada"
@@ -586,6 +613,7 @@
       ]
     },
     "levels": [
+      "pista.fusible.1.iri",
       "pista.fusible.1",
       "pista.fusible.2",
       "pista.fusible.3"
@@ -604,7 +632,16 @@
         },
         {
           "not": {
-            "hasItem": "fusible_apanyat"
+            "any": [
+              {
+                "hasItem": "fusible_apanyat",
+                "who": "iri"
+              },
+              {
+                "hasItem": "fusible_apanyat",
+                "who": "vet"
+              }
+            ]
           }
         },
         {
@@ -615,7 +652,16 @@
     "doneWhen": {
       "any": [
         {
-          "hasItem": "fusible_apanyat"
+          "any": [
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "grua_arreglada"
@@ -633,7 +679,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "fusible_apanyat"
+          "any": [
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "grua_arreglada",
@@ -658,7 +713,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "fusible_apanyat"
+          "any": [
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "fusible_apanyat",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "grua_arreglada",
@@ -1191,7 +1255,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "reg"
+          "any": [
+            {
+              "hasItem": "reg",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "cal_agulla",
@@ -1216,7 +1289,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "reg"
+          "any": [
+            {
+              "hasItem": "reg",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "cal_agulla",
@@ -1245,7 +1327,16 @@
         },
         {
           "not": {
-            "hasItem": "agulla"
+            "any": [
+              {
+                "hasItem": "agulla",
+                "who": "iri"
+              },
+              {
+                "hasItem": "agulla",
+                "who": "vet"
+              }
+            ]
           }
         },
         {
@@ -1254,7 +1345,16 @@
         },
         {
           "not": {
-            "hasItem": "reg_foradat"
+            "any": [
+              {
+                "hasItem": "reg_foradat",
+                "who": "iri"
+              },
+              {
+                "hasItem": "reg_foradat",
+                "who": "vet"
+              }
+            ]
           }
         },
         {
@@ -1265,13 +1365,31 @@
     "doneWhen": {
       "any": [
         {
-          "hasItem": "agulla"
+          "any": [
+            {
+              "hasItem": "agulla",
+              "who": "iri"
+            },
+            {
+              "hasItem": "agulla",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "reg_muntat"
         },
         {
-          "hasItem": "reg_foradat"
+          "any": [
+            {
+              "hasItem": "reg_foradat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg_foradat",
+              "who": "vet"
+            }
+          ]
         }
       ]
     },
@@ -1290,7 +1408,16 @@
         },
         {
           "not": {
-            "hasItem": "agulla"
+            "any": [
+              {
+                "hasItem": "agulla",
+                "who": "iri"
+              },
+              {
+                "hasItem": "agulla",
+                "who": "vet"
+              }
+            ]
           }
         },
         {
@@ -1299,7 +1426,16 @@
         },
         {
           "not": {
-            "hasItem": "reg_foradat"
+            "any": [
+              {
+                "hasItem": "reg_foradat",
+                "who": "iri"
+              },
+              {
+                "hasItem": "reg_foradat",
+                "who": "vet"
+              }
+            ]
           }
         },
         {
@@ -1310,13 +1446,31 @@
     "doneWhen": {
       "any": [
         {
-          "hasItem": "agulla"
+          "any": [
+            {
+              "hasItem": "agulla",
+              "who": "iri"
+            },
+            {
+              "hasItem": "agulla",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "reg_muntat"
         },
         {
-          "hasItem": "reg_foradat"
+          "any": [
+            {
+              "hasItem": "reg_foradat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg_foradat",
+              "who": "vet"
+            }
+          ]
         }
       ]
     },
@@ -1331,10 +1485,28 @@
     "when": {
       "all": [
         {
-          "hasItem": "agulla"
+          "any": [
+            {
+              "hasItem": "agulla",
+              "who": "iri"
+            },
+            {
+              "hasItem": "agulla",
+              "who": "vet"
+            }
+          ]
         },
         {
-          "hasItem": "reg"
+          "any": [
+            {
+              "hasItem": "reg",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg",
+              "who": "vet"
+            }
+          ]
         },
         {
           "protagonist": "iri"
@@ -1342,7 +1514,16 @@
       ]
     },
     "doneWhen": {
-      "hasItem": "reg_foradat"
+      "any": [
+        {
+          "hasItem": "reg_foradat",
+          "who": "iri"
+        },
+        {
+          "hasItem": "reg_foradat",
+          "who": "vet"
+        }
+      ]
     },
     "levels": [
       "pista.foradar.1",
@@ -1355,10 +1536,28 @@
     "when": {
       "all": [
         {
-          "hasItem": "agulla"
+          "any": [
+            {
+              "hasItem": "agulla",
+              "who": "iri"
+            },
+            {
+              "hasItem": "agulla",
+              "who": "vet"
+            }
+          ]
         },
         {
-          "hasItem": "reg"
+          "any": [
+            {
+              "hasItem": "reg",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg",
+              "who": "vet"
+            }
+          ]
         },
         {
           "protagonist": "vet"
@@ -1366,7 +1565,16 @@
       ]
     },
     "doneWhen": {
-      "hasItem": "reg_foradat"
+      "any": [
+        {
+          "hasItem": "reg_foradat",
+          "who": "iri"
+        },
+        {
+          "hasItem": "reg_foradat",
+          "who": "vet"
+        }
+      ]
     },
     "levels": [
       "pista.foradar.1",
@@ -1379,7 +1587,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "reg_foradat"
+          "any": [
+            {
+              "hasItem": "reg_foradat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg_foradat",
+              "who": "vet"
+            }
+          ]
         },
         {
           "protagonist": "iri"
@@ -1399,7 +1616,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "reg_foradat"
+          "any": [
+            {
+              "hasItem": "reg_foradat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg_foradat",
+              "who": "vet"
+            }
+          ]
         },
         {
           "protagonist": "vet"
@@ -1427,7 +1653,16 @@
         },
         {
           "not": {
-            "hasItem": "galleda_plena"
+            "any": [
+              {
+                "hasItem": "galleda_plena",
+                "who": "iri"
+              },
+              {
+                "hasItem": "galleda_plena",
+                "who": "vet"
+              }
+            ]
           }
         }
       ]
@@ -1435,7 +1670,16 @@
     "doneWhen": {
       "any": [
         {
-          "hasItem": "galleda_plena"
+          "any": [
+            {
+              "hasItem": "galleda_plena",
+              "who": "iri"
+            },
+            {
+              "hasItem": "galleda_plena",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "tomaquera_regada"
@@ -1453,7 +1697,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "galleda_plena"
+          "any": [
+            {
+              "hasItem": "galleda_plena",
+              "who": "iri"
+            },
+            {
+              "hasItem": "galleda_plena",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "tomaquera_regada",
@@ -1576,7 +1829,16 @@
         },
         {
           "not": {
-            "hasItem": "sac_llavors"
+            "any": [
+              {
+                "hasItem": "sac_llavors",
+                "who": "iri"
+              },
+              {
+                "hasItem": "sac_llavors",
+                "who": "vet"
+              }
+            ]
           }
         },
         {
@@ -1588,7 +1850,16 @@
     "doneWhen": {
       "any": [
         {
-          "hasItem": "sac_llavors"
+          "any": [
+            {
+              "hasItem": "sac_llavors",
+              "who": "iri"
+            },
+            {
+              "hasItem": "sac_llavors",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "fidel_admet"
@@ -1606,7 +1877,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "sac_llavors"
+          "any": [
+            {
+              "hasItem": "sac_llavors",
+              "who": "iri"
+            },
+            {
+              "hasItem": "sac_llavors",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "fidel_admet",
@@ -1631,7 +1911,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "sac_llavors"
+          "any": [
+            {
+              "hasItem": "sac_llavors",
+              "who": "iri"
+            },
+            {
+              "hasItem": "sac_llavors",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "fidel_admet",
@@ -1740,7 +2029,16 @@
         },
         {
           "not": {
-            "hasItem": "pernil"
+            "any": [
+              {
+                "hasItem": "pernil",
+                "who": "iri"
+              },
+              {
+                "hasItem": "pernil",
+                "who": "vet"
+              }
+            ]
           }
         }
       ]
@@ -1748,7 +2046,16 @@
     "doneWhen": {
       "any": [
         {
-          "hasItem": "pernil"
+          "any": [
+            {
+              "hasItem": "pernil",
+              "who": "iri"
+            },
+            {
+              "hasItem": "pernil",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "diu_aparta"
@@ -1766,7 +2073,16 @@
     "when": {
       "all": [
         {
-          "hasItem": "pernil"
+          "any": [
+            {
+              "hasItem": "pernil",
+              "who": "iri"
+            },
+            {
+              "hasItem": "pernil",
+              "who": "vet"
+            }
+          ]
         },
         {
           "flag": "diu_aparta",

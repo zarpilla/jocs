@@ -22,6 +22,8 @@ interface TextosPas { avisos: Record<string, Linia>; reinici: Linia[] }
 
 export interface PasSincronia {
   actiu: string;
+  /** El flag que diu que el pas ja està resolt: d'aquí en endavant, cap avís. */
+  resolt: string;
   sales: string[];
   /** Què passa a cada torn. Torna cert si s'ha de tornar a començar el pas. */
   torn(n: Narrative): boolean;
@@ -36,6 +38,7 @@ const off = (flags: string[]): Effect[] => flags.map((f) => ({ setFlag: f, value
 export const PASSOS: Record<string, PasSincronia> = {
   colada: {
     actiu: 'sync_colada',
+    resolt: 'claus_fetes',
     sales: ['fosa_forn', 'fosa_colada'],
     torn(n) {
       n.apply({ addVar: 'temperatura', amount: -1 });
@@ -50,6 +53,7 @@ export const PASSOS: Record<string, PasSincronia> = {
   },
   subhasta: {
     actiu: 'sync_subhasta',
+    resolt: 'reserva_oberta',
     sales: ['palau_salo', 'palau_control'],
     torn(n) {
       n.apply({ addVar: 'lots', amount: -1 });
@@ -81,23 +85,38 @@ function gastaTorn(n: Narrative, pas: PasSincronia, action: PlayerAction) {
     if (LLIURES.has(action.verb)) return false;
     if (action.inert) return false;
     if (action.target.kind === 'item' && !action.item) return false;
+    if (action.item) return true;
+    // Obrir un menú (l'escenari de la subhasta) és com obrir una conversa: no gasta torn; en gasta l'opció triada.
+    if (n.peek({ verb: action.verb, target: action.target, room: action.room })?.dialogue) return false;
     const thing = n.content.rooms[action.room]?.hotspots[action.target.id];
-    return !!action.item || !thing?.interactions?.some((i) => i.goTo && !i.item);
+    return !thing?.interactions?.some((i) => i.goTo && !i.item);
   }
   return !DIALEGS_LLIURES.has(action.dialogue) && action.choice !== 'adeu';
 }
 
+/**
+ * El valor del rellotge després de l'últim torn comptat. Una acció pot fer saltar el rellotge més d'un pas (a cada
+ * vàlvula, el Magnat remata un lot de més), i l'avís no s'ha de perdre pel salt: surt si el rellotge ha passat per
+ * sota de la seva marca des de l'últim torn.
+ */
+const darrer = new WeakMap<Narrative, { pas: string; valor: number }>();
+
 export function despresDAccio(n: Narrative, action: PlayerAction) {
   const pas = pasActiu(n);
   if (!pas || !gastaTorn(n, pas, action)) return;
-  const abans = num(n, pas.avisos.var);
+  const prev = darrer.get(n);
+  const abans = Math.max(prev?.pas === pas.actiu ? prev.valor : -Infinity, num(n, pas.avisos.var));
   if (pas.torn(n)) {
     n.apply(pas.reinici.efectes);
+    darrer.delete(n);
     return { lines: pas.reinici.linies.map((l) => ({ ...l })), endDialogue: true };
   }
-  if (n.flag('claus_fetes') || n.flag('reserva_oberta')) return;
   const ara = num(n, pas.avisos.var);
-  const avis = ara !== abans ? pas.avisos.linies[String(ara)] : undefined;
+  darrer.set(n, { pas: pas.actiu, valor: ara });
+  if (n.flag(pas.resolt)) return;
+  // La marca més baixa que s'ha travessat (si se n'han saltat dues, la més urgent).
+  const marques = Object.keys(pas.avisos.linies).map(Number).filter((k) => k >= ara && k < abans).sort((a, b) => a - b);
+  const avis = marques.length ? pas.avisos.linies[String(marques[0])] : undefined;
   return avis ? { lines: [{ ...avis }] } : undefined;
 }
 

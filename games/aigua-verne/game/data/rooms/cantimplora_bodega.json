@@ -332,7 +332,14 @@
           "if": {
             "all": [
               {
-                "flag": "cal_filtre"
+                "any": [
+                  {
+                    "flag": "cal_filtre"
+                  },
+                  {
+                    "flag": "bru_set"
+                  }
+                ]
               },
               {
                 "flag": "filtre_agafat",
@@ -406,6 +413,18 @@
             },
             {
               "giveItem": "pernil"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "pernil_agafat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.nevera.3"
             }
           ]
         },
@@ -647,6 +666,18 @@
             {
               "who": "player",
               "text": "sala.cantimplora_bodega.carmanyola.12"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "paper_donat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.15"
             }
           ]
         },
@@ -930,6 +961,18 @@
             {
               "who": "player",
               "text": "sala.cantimplora_bodega.carrega.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "juana_coneguda"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carrega.4"
             }
           ]
         },

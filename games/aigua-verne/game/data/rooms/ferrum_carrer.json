@@ -114,7 +114,14 @@
           "if": {
             "all": [
               {
-                "flag": "cal_corretja"
+                "any": [
+                  {
+                    "flag": "cal_corretja"
+                  },
+                  {
+                    "flag": "bru_set"
+                  }
+                ]
               },
               {
                 "flag": "corretja_agafada",
@@ -164,6 +171,51 @@
             {
               "who": "player",
               "text": "sala.ferrum_carrer.condensador.1"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "any": [
+              {
+                "flag": "corretja_posada"
+              },
+              {
+                "flag": "filtre_posat"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.12",
+              "if": {
+                "flag": "filtre_posat",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.13",
+              "if": {
+                "flag": "corretja_posada",
+                "is": false
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.14",
+              "if": {
+                "all": [
+                  {
+                    "flag": "corretja_posada"
+                  },
+                  {
+                    "flag": "filtre_posat"
+                  }
+                ]
+              }
             }
           ]
         },
@@ -292,6 +344,46 @@
             },
             {
               "setFlag": "canalla_beu"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "flag": "corretja_posada"
+              },
+              {
+                "flag": "condensador_arreglat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.12"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "flag": "filtre_posat"
+              },
+              {
+                "flag": "condensador_arreglat",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.ferrum_carrer.condensador.13"
             }
           ]
         },

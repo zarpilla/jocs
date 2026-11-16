@@ -91,6 +91,9 @@
         "text": "mis.acte2.obj.espia",
         "completeWhen": {
           "flag": "tomas_girat"
+        },
+        "showWhen": {
+          "flag": "trucada_feta"
         }
       },
       {
@@ -98,6 +101,9 @@
         "text": "mis.acte2.obj.capitana",
         "completeWhen": {
           "flag": "capitana_si"
+        },
+        "showWhen": {
+          "flag": "contracte_agafat"
         }
       },
       {
@@ -107,6 +113,9 @@
           "var": "escena",
           "op": ">=",
           "value": 7
+        },
+        "showWhen": {
+          "flag": "trucada_feta"
         }
       }
     ]

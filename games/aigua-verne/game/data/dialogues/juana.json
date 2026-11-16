@@ -51,7 +51,42 @@
         },
         {
           "who": "juana",
-          "text": "dlg.juana.hola.5"
+          "text": "dlg.juana.hola.5",
+          "if": {
+            "all": [
+              {
+                "inRoom": "casa_juana",
+                "who": "iri"
+              },
+              {
+                "inRoom": "casa_juana",
+                "who": "vet"
+              }
+            ]
+          }
+        },
+        {
+          "who": "juana",
+          "text": "dlg.juana.hola.5.una",
+          "if": {
+            "not": {
+              "all": [
+                {
+                  "inRoom": "casa_juana",
+                  "who": "iri"
+                },
+                {
+                  "inRoom": "casa_juana",
+                  "who": "vet"
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "juana_coneguda"
         }
       ],
       "goto": "menu"

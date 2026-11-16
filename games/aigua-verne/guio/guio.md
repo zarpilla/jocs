@@ -680,7 +680,9 @@ vermella: **RESERVA**. Al saló, el Magnat puja a l'escenari.
   més avall).
 - **L'Iri al saló:** allargar la subhasta. Cada acció seva gasta un torn però **en cobreix més**: pujar una oferta i
   fer-la pujar a la Kessel (+3), demanar de llegir el contracte del lot en veu alta (+3), vessar cava damunt del
-  martell (+1, un cop), preguntar pel preu de sortida dels peixos (+1, i el Magnat s'enfada una mica).
+  martell (+2, un cop), preguntar pel preu de sortida dels peixos (+2, i el Magnat s'enfada una mica). (Les xifres
+  són el que cobreix l'acció, abans de restar-ne el torn que gasta: totes en guanyen almenys un. Obrir el menú de la
+  subhasta no gasta res.)
 - **Rellotge: els lots.** Queden 9. Cada torn es remata un lot. Al lot 0, el Magnat ven els deu anys d'aigua: ha
   cobrat, i el preu ja no el pot arruïnar. (Si passa, es torna a començar el pas: «Lot nou... perdó, m'he descomptat.
   Tornem a començar», diu en Holm, que vol revisar la paperassa.)

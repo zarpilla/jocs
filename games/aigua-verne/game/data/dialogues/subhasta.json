@@ -114,7 +114,7 @@
     "cava": {
       "lines": [
         {
-          "who": "narrator",
+          "who": "iri",
           "text": "dlg.subhasta.cava.1",
           "sound": "cava"
         },
@@ -129,7 +129,7 @@
         },
         {
           "addVar": "lots",
-          "amount": 1
+          "amount": 2
         }
       ]
     },
@@ -150,7 +150,7 @@
         },
         {
           "addVar": "lots",
-          "amount": 1
+          "amount": 2
         }
       ]
     }
