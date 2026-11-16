@@ -158,7 +158,10 @@ const label = (verb: string) => n.t(`ui.accio.${verb}`);
 function fa(verb: string, t: { kind: 'item' | 'character' | 'hotspot'; id: string }) {
   if (verb === 'look') marcaMirat(n, t);
   console.log(`${c.dim}(${label(verb)})${c.off}`);
-  return p.do(verb, t);
+  const lines = p.do(verb, t);
+  // com al runtime (tactil.ts, `looked`): la descripció que queda després de mirar també és vista
+  if (verb === 'look') marcaMirat(n, t);
+  return lines;
 }
 
 /** Les ordres del mode tàctil. `null`: no ha passat res al món (ja s'ha escrit el que calia). */

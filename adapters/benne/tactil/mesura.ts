@@ -89,7 +89,10 @@ export function mesura(n: Narrative, mode: Mode = 'dit'): Mesura {
           const fn = value as (...args: unknown[]) => unknown;
           if (prop === 'do') return (verb: string, t: string | InteractionTarget, item?: string) => {
             mira(verb, target(t), item);
-            return fn.call(obj, verb, t, item);
+            const lines = fn.call(obj, verb, t, item);
+            // com al runtime (`looked`): la descripció que queda després de mirar també és vista
+            if (verb === 'look' && !item) marcaMirat(n, target(t));
+            return lines;
           };
           if (prop === 'use') return (item: string, t: string | InteractionTarget) => {
             mira('use', target(t), item);
