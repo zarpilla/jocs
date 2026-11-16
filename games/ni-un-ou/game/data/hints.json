@@ -45,6 +45,53 @@
         {
           "flag": "falca_desencallada",
           "is": false
+        },
+        {
+          "hasItem": "maceta",
+          "who": "iri",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "falca_desencallada"
+        },
+        {
+          "hasItem": "maceta",
+          "who": "iri"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_falca.1",
+      "pista.iri_falca.2",
+      "pista.iri_falca.3"
+    ]
+  },
+  "iri_maceta": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "escora_vista"
+        },
+        {
+          "flag": "falca_desencallada",
+          "is": false
+        },
+        {
+          "hasItem": "maceta",
+          "who": "iri"
         }
       ]
     },
@@ -52,9 +99,9 @@
       "flag": "falca_desencallada"
     },
     "levels": [
-      "pista.iri_falca.1",
-      "pista.iri_falca.2",
-      "pista.iri_falca.3"
+      "pista.iri_maceta.1",
+      "pista.iri_maceta.2",
+      "pista.iri_maceta.3"
     ]
   },
   "iri_diu": {
@@ -948,8 +995,50 @@
         },
         {
           "var": "empalmat",
-          "op": "<",
-          "value": 2
+          "op": "==",
+          "value": 0
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "empalmat",
+      "op": ">=",
+      "value": 1
+    },
+    "levels": [
+      "pista.iri_empalmar.1",
+      "pista.iri_empalmar.2",
+      "pista.iri_empalmar.3"
+    ]
+  },
+  "iri_crimpar": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 3
+            },
+            {
+              "flag": "radio_feta",
+              "is": false
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "cable_nou",
+          "who": "iri"
+        },
+        {
+          "var": "empalmat",
+          "op": "==",
+          "value": 1
         }
       ]
     },
@@ -959,9 +1048,9 @@
       "value": 2
     },
     "levels": [
-      "pista.iri_empalmar.1",
-      "pista.iri_empalmar.2",
-      "pista.iri_empalmar.3"
+      "pista.iri_crimpar.1",
+      "pista.iri_crimpar.2",
+      "pista.iri_crimpar.3"
     ]
   },
   "iri_provar": {
@@ -1121,6 +1210,11 @@
         },
         {
           "flag": "portatil_obert"
+        },
+        {
+          "not": {
+            "inRoom": "sala_bombes"
+          }
         }
       ]
     },
@@ -1133,6 +1227,34 @@
       "pista.iri_bombes.1",
       "pista.iri_bombes.2",
       "pista.iri_bombes.3"
+    ]
+  },
+  "iri_bombes_dins": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 4
+        },
+        {
+          "flag": "portatil_obert"
+        },
+        {
+          "inRoom": "sala_bombes"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 5
+    },
+    "levels": [
+      "pista.iri_bombes_dins.1",
+      "pista.iri_bombes_dins.2",
+      "pista.iri_bombes_dins.3"
     ]
   },
   "iri_nota": {
@@ -1382,6 +1504,44 @@
         {
           "flag": "cops_sentits",
           "is": false
+        },
+        {
+          "flag": "cops_marcel",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "cops_sentits"
+        },
+        {
+          "flag": "cops_marcel"
+        }
+      ]
+    },
+    "levels": [
+      "pista.buscar.1",
+      "pista.buscar.2",
+      "pista.buscar.3"
+    ]
+  },
+  "buscar_proa": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "flag": "cops_sentits",
+          "is": false
+        },
+        {
+          "flag": "cops_marcel"
         }
       ]
     },
@@ -1389,9 +1549,9 @@
       "flag": "cops_sentits"
     },
     "levels": [
-      "pista.buscar.1",
-      "pista.buscar.2",
-      "pista.buscar.3"
+      "pista.buscar_proa.1",
+      "pista.buscar_proa.2",
+      "pista.buscar_proa.3"
     ]
   },
   "cisalla": {

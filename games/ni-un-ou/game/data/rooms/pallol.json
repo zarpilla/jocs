@@ -11,9 +11,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "passadis_baix"
         },
@@ -116,15 +116,6 @@
             {
               "who": "player",
               "text": "sala.pallol.prestatges.4"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pallol.prestatges.5"
             }
           ]
         }

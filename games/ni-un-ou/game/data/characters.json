@@ -136,6 +136,20 @@
             "who": "player",
             "text": "pj.diu.agafa"
           }
+        ],
+        "if": {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        }
+      },
+      {
+        "verb": "pickUp",
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.diu.agafa2"
+          }
         ]
       },
       {

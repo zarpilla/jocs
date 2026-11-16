@@ -129,9 +129,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -154,9 +154,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -180,9 +180,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "passadis_baix"
         },
@@ -202,9 +202,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "taller"
         },
@@ -224,9 +224,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "rebost"
         },
@@ -360,8 +360,8 @@
         },
         {
           "verb": [
-            "use",
             "close",
+            "use",
             "push",
             "pull"
           ],
@@ -380,24 +380,6 @@
               "setFlag": "valvula_vista"
             }
           ]
-        },
-        {
-          "verb": [
-            "use",
-            "push",
-            "pull",
-            "close",
-            "open"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.valvula.13"
-            }
-          ],
-          "if": {
-            "flag": "valvula_tancada"
-          }
         }
       ]
     },
@@ -786,15 +768,6 @@
               "text": "sala.sala_maquines.sensor.6"
             }
           ]
-        },
-        {
-          "verb": "use",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.sensor.7"
-            }
-          ]
         }
       ]
     },
@@ -887,29 +860,16 @@
             "talkTo",
             "use"
           ],
-          "if": {
-            "flag": "tub_de_veu",
-            "is": false
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.boca.3"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "talkTo",
-            "use"
-          ],
           "effects": [
             {
               "setFlag": "cara_a_cara",
               "value": false
             }
           ],
-          "dialogue": "tub"
+          "dialogue": "tub",
+          "if": {
+            "flag": "tub_de_veu"
+          }
         }
       ]
     },
@@ -1105,15 +1065,20 @@
         },
         {
           "verb": [
-            "use",
-            "pickUp"
+            "pickUp",
+            "use"
           ],
           "lines": [
             {
               "who": "player",
               "text": "sala.sala_maquines.sentina.3"
             }
-          ]
+          ],
+          "if": {
+            "var": "escena",
+            "op": "==",
+            "value": 9
+          }
         }
       ]
     }

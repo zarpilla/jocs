@@ -26,6 +26,8 @@ export interface PasSincronia {
   sales: string[];
   /** Què passa a cada torn. Torna cert si s'ha de tornar a començar el pas. */
   torn(n: Narrative): boolean;
+  /** Si el pas ja s'ha resolt (la ràdio parla, les dades han sortit): llavors cap acció no gasta torn. */
+  resolt(n: Narrative): boolean;
   /** Avisos: després d'un torn, si `var` val una d'aquestes xifres (i ha canviat), la línia. */
   avisos?: { var: string; linies: Record<number, Linia> };
   /** En reiniciar: línies i efectes. */
@@ -49,6 +51,7 @@ export const PASSOS: Record<string, PasSincronia> = {
       if (nova > 0) n.apply([{ addVar: 'coberta', amount: nova }, { setVar: 'coberta_nova', value: 0 }]);
       return num(n, 'paciencia') >= 6;
     },
+    resolt: (n) => n.flag('radio_feta'),
     avisos: {
       var: 'paciencia',
       linies: { 3: 'sync.radio.paciencia3', 4: 'sync.radio.paciencia4', 5: 'sync.radio.paciencia5' },
@@ -77,6 +80,7 @@ export const PASSOS: Record<string, PasSincronia> = {
       n.apply({ addVar: 'senyal', amount: -1 });
       return num(n, 'senyal') <= 0 && !n.flag('enviat');
     },
+    resolt: (n) => n.flag('enviat'),
     avisos: {
       var: 'senyal',
       linies: { 6: 'sync.satellit.queden6', 3: 'sync.satellit.queden3', 1: 'sync.satellit.queden1' },
@@ -108,7 +112,6 @@ const TUB = new Set(['boca', 'passaplats']);
 const DIALEGS_LLIURES = new Set(['walkie', 'tub']);
 
 export const SINCRONIA_TEXTS = [
-  'sync.titol',
   'sync.radio.paciencia3', 'sync.radio.paciencia4', 'sync.radio.paciencia5',
   'sync.radio.reinici1', 'sync.radio.reinici2', 'sync.radio.reinici3',
   'sync.satellit.queden6', 'sync.satellit.queden3', 'sync.satellit.queden1',
@@ -144,6 +147,8 @@ function gastaTorn(n: Narrative, pas: PasSincronia, action: PlayerAction) {
 export function despresDAccio(n: Narrative, action: PlayerAction) {
   const pas = pasActiu(n);
   if (!pas || !gastaTorn(n, pas, action)) return;
+  // L'acció que acaba de resoldre el pas (la ràdio ja parla) no el pot reiniciar: un cop resolt, ja no compta res.
+  if (pas.resolt(n)) return;
   const abans = pas.avisos ? num(n, pas.avisos.var) : 0;
   if (pas.torn(n)) {
     n.apply(pas.reinici.efectes);
@@ -151,8 +156,7 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
     if (pas === PASSOS.satellit && num(n, 'dubte') > 5) n.apply({ setVar: 'dubte', value: 5 });
     return { lines: pas.reinici.linies.map(linia), endDialogue: true };
   }
-  // Si el pas ja s'ha resolt (ràdio feta, dades enviades), no cal avisar de res.
-  if (!pas.avisos || n.flag('radio_feta') || n.flag('enviat')) return;
+  if (!pas.avisos) return;
   const ara = num(n, pas.avisos.var);
   const avis = ara !== abans ? pas.avisos.linies[ara] : undefined;
   return avis ? { lines: [linia(avis)] } : undefined;

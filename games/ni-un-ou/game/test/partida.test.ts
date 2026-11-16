@@ -56,9 +56,12 @@ describe('Acte 1', () => {
     anar(p, 'sala_radio');
     p.use('cable_nou', 'panell');
     p.use('cable_nou', 'panell');
-    p.do('use', 'radio');
+    const linies = p.do('use', 'radio').map((l) => l.key);
     expect(n.getVar('reinicis_radio')).toBe(1);
     expect(n.flag('radio_feta')).toBe(false);
+    // No diu que la ràdio funciona abans de tornar a començar.
+    expect(linies).not.toContain('sala.sala_radio.radio.4');
+    expect(linies).toContain('sala.sala_radio.radio.9');
   });
 });
 
@@ -73,16 +76,16 @@ describe('Atzucacs (primera repassada)', () => {
     expect(p.room).toBe('passadis');
   });
 
-  it('Escena 5: obrir el muntacàrregues en lloc d\'agafar la safata també llegeix la nota', () => {
+  it('Escena 5: obrir la safata en lloc d\'agafar-la també llegeix la nota', () => {
     const { n, p } = partida();
     escena1(p); escena2(p); escena3(p); escena4(p);
     anar(p, 'rebost');
     p.use('llibreta', 'munta');
     amb(p, 'vet');
-    p.do('open', 'munta');
+    p.do('open', 'safata');
     expect(n.flag('nota_llegida')).toBe(true);
     amb(p, 'iri');
-    p.do('open', 'munta');
+    p.do('open', 'safata');
     expect(n.flag('pla_fet')).toBe(true);
   });
 

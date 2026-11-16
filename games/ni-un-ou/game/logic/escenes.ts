@@ -35,8 +35,8 @@ export const TRANSICIONS: Transicio[] = [
       { who: 'capitana', text: 'esc.salpa3' },
       { who: 'bastida', text: 'esc.salpa4' },
       { who: 'capitana', text: 'esc.salpa5' },
+      // Una sola pantalla de títol: l'hora i que ara calen les dues.
       { who: 'title', text: 'esc.onze' },
-      { who: 'title', text: 'sync.titol' },
     ],
     efectes: [
       { setVar: 'escena', value: 3 },

@@ -11,9 +11,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "sala_maquines"
         },
@@ -176,56 +176,6 @@
           }
         },
         {
-          "verb": [
-            "pickUp",
-            "open",
-            "use"
-          ],
-          "if": {
-            "var": "munta_rebost",
-            "op": "==",
-            "value": "nota_vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.rebost.nota1"
-            },
-            {
-              "who": "narrator",
-              "text": "sala.rebost.nota2"
-            },
-            {
-              "who": "player",
-              "text": "sala.rebost.nota3"
-            }
-          ],
-          "effects": [
-            {
-              "setVar": "munta_rebost",
-              "value": ""
-            },
-            {
-              "setFlag": "pla_fet"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "open",
-            "pickUp",
-            "use"
-          ],
-          "action": {
-            "name": "munta.recollir"
-          },
-          "if": {
-            "var": "munta_rebost",
-            "op": "!=",
-            "value": ""
-          }
-        },
-        {
           "verb": "use",
           "lines": [
             {
@@ -249,15 +199,6 @@
         "value": ""
       },
       "interactions": [
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.rebost.safata.1"
-            }
-          ]
-        },
         {
           "verb": [
             "pickUp",
@@ -357,9 +298,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "registre_obert"
@@ -486,8 +427,8 @@
         },
         {
           "verb": [
-            "use",
             "open",
+            "use",
             "pull"
           ],
           "if": {
@@ -515,8 +456,8 @@
         },
         {
           "verb": [
-            "use",
             "open",
+            "use",
             "pull"
           ],
           "if": {
@@ -541,8 +482,8 @@
         },
         {
           "verb": [
-            "use",
             "open",
+            "use",
             "pull"
           ],
           "if": {
@@ -565,8 +506,8 @@
         },
         {
           "verb": [
-            "use",
             "open",
+            "use",
             "pull"
           ],
           "lines": [

@@ -26,6 +26,10 @@ options.esc7_menu__clau7.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'esc7_menu', 'clau7')
 })
 
+options.esc7_menu__passa7.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'esc7_menu', 'passa7')
+})
+
 options.esc7_menu__entrepa7.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'esc7_menu', 'entrepa7')
 })
