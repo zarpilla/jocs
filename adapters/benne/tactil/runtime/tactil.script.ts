@@ -10,6 +10,7 @@ import { fromBenne, narrative, targetFromBenne } from './narrative';
 import { performInteraction } from './narrative.script';
 import { accions, marcaMirat, objecteSol, queFaElToc, verbAmbObjecte } from './accions';
 import { MENU, esClicDret, esDit, label, openMenu, setMenu, type Opcio } from './tactil';
+import { esquerreMira } from './preferencies';
 
 /** Fa el que vol dir un clic de la interfície tàctil (vegeu tactil.ts). */
 export function routeTouch(verb: string, target: FallbackTarget, item?: string) {
@@ -23,12 +24,22 @@ export function routeTouch(verb: string, target: FallbackTarget, item?: string) 
     performInteraction(amb, target, item);
     return;
   }
+  // amb el ratolí, per defecte el clic esquerre fa i el dret mira; amb `esquerreMira` (preferencies.ts), a l'inrevés
+  const esquerrePerMirar = !esDit() && esquerreMira();
   if (verb === MENU) {
-    // el clic dret del ratolí mira; mantenir premut (el dit o el botó esquerre) obre el menú
-    if (esClicDret()) doVerb('look', target);
-    else openActions(target);
+    // el clic dret del ratolí; mantenir premut (el dit o el botó esquerre) obre el menú
+    if (!esClicDret()) openActions(target);
+    else if (esquerrePerMirar) fesElToc(target);
+    else doVerb('look', target);
     return;
   }
+  // el clic esquerre (o el toc)
+  if (esquerrePerMirar) doVerb('look', target);
+  else fesElToc(target);
+}
+
+/** El toc (o el clic que fa): mira primer amb el dit; després, l'acció, o el menú si n'hi ha més d'una. */
+function fesElToc(target: FallbackTarget) {
   const toc = queFaElToc(narrative, targetFromBenne(target.kind, target.id), undefined, { mirarPrimer: esDit() });
   if (toc.fa === 'menu') {
     openActions(target);

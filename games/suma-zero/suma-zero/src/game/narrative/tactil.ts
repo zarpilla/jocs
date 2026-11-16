@@ -5,8 +5,8 @@
  *
  *  - Tocar una cosa amb el dit (`queFaElToc`, runtime/accions.ts): la primera vegada, la mira; després, si té una
  *    sola acció la fa, i si en té més d'una obre el menú d'accions (el jugador tria el verb). Les sortides, s'hi va.
- *  - Amb el ratolí, el clic esquerre és igual però sense mirar primer (fa l'acció o obre el menú), i el clic dret
- *    mira, directament: a l'ordinador mirar no costa res, i qui no ho ha llegit bé ho torna a mirar.
+ *  - Amb el ratolí, per defecte el clic esquerre fa (l'acció, o el menú si n'hi ha més d'una; sense mirar
+ *    primer) i el dret mira. Es pot girar a les opcions i a la targeta «Com es juga» (preferencies.ts: `esquerreMira`).
  *  - Mantenir premut (el dit o el botó esquerre): el menú d'accions, amb «Mira» i les accions que té la cosa ara.
  *  - Tocar un objecte de l'inventari: el pren a la mà (ho fa el motor: `toca` és un verb d'objecte). Llavors
  *    tocar una cosa el fa servir amb ella, o li dona si és un personatge. Tocar el mateix objecte o el terra, el deixa.
@@ -33,9 +33,12 @@ export const FES = 'fes';
 
 /** L'última pulsació: si era un dit (o un llapis) i quin botó (0 esquerre, 2 dret). */
 let darrera = { dit: true, boto: 0 };
+/** Si ja s'ha premut alguna vegada (fins llavors, `esDit` no sap res). */
+let premut = false;
+export const haPremut = () => premut;
 /** Si l'última pulsació ha estat amb el dit (al mòbil, la tauleta): el primer toc mira. */
 export const esDit = () => darrera.dit;
-/** Si l'última pulsació ha estat un clic dret del ratolí: mira. */
+/** Si l'última pulsació ha estat un clic dret del ratolí (sense mantenir premut: llavors és el menú). */
 export const esClicDret = () => !darrera.dit && darrera.boto === 2;
 
 /** Si hi ha un dit (o el botó esquerre) premut ara mateix. */
@@ -48,6 +51,7 @@ let empassaFins = 0;
 if (typeof window !== 'undefined') {
   window.addEventListener('pointerdown', (e) => {
     darrera = { dit: e.pointerType !== 'mouse', boto: e.button };
+    premut = true;
     if (e.button === 0) prement = true;
   }, true);
   const aixeca = (e: PointerEvent) => {

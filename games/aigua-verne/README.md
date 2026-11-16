@@ -22,6 +22,8 @@ d'aquí va sortir la interfície tàctil compartida.
 | Tocar una cosa (amb el dit) | La primera vegada, mirar-la (la descripció, amb la pista). Després: si té una sola acció, la fa (obrir, agafar, parlar...); si en té més d'una, encara que alguna sigui una broma, obre el menú i tries tu. Les sortides no es miren: s'hi va |
 | Amb el ratolí: clic esquerre, clic dret | El clic esquerre fa el mateix que el toc, però sense mirar primer (l'acció, o el menú si n'hi ha més d'una); el clic dret mira |
 | Mantenir premut (el dit o el botó esquerre) | El menú d'accions: «Mira» i les accions que té ara mateix (2–3 opcions) |
+| «Com es juga» | En prémer «Comença», «Continua» o «Carrega una partida» surt una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó), fins que marques «No ho tornis a mostrar». Es torna a veure a Opcions → Controls |
+| Opcions → «clic esquerre per mirar» | Gira els botons del ratolí: l'esquerre mira i el dret fa. Es desa en aquell aparell |
 | Tocar el terra | Caminar |
 | Bossa (a baix a la dreta) | Desplega la safata de l'inventari |
 | Tocar un objecte de la safata | El pren a la mà («Usa X amb...»); tocar una cosa l'hi fa servir, o li dona si és un personatge. Tocar el terra o el mateix objecte, el deixa |

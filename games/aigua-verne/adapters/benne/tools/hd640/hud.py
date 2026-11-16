@@ -384,7 +384,20 @@ def build_accions():
     (d / 'accions.gui.json').write_text(json.dumps(gui, indent=2, ensure_ascii=False) + '\n')
 
 
+def build_targeta():
+    """La targeta «Com es juga» (GUI `controls`): compartida (adapters/benne/tactil/controls.py), amb les peces i els
+    colors d'aquest joc."""
+    sys.path.insert(0, str(TOOLS.parents[4] / 'adapters/benne/tactil'))
+    import hd640.gui_rest as gr
+    from controls import build_controls
+    build_controls(GAME, write_sheet=gr.write_sheet, nine_slice=gr.nine_slice, nine_slices=gr.nine_slices,
+                   checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon), font=FONT, bold=BOLD,
+                   text=gr.LABEL, title=gr.TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
+                   ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE)
+
+
 if __name__ == '__main__':
     build_hud()
     build_accions()
+    build_targeta()
     print(f'✔ HUD i menú d\'accions a {GAME}')

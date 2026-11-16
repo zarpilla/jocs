@@ -34,3 +34,22 @@ back.onClick(() => {
   gui.hide()
   guis.gameMenu.show()
 })
+
+// Afegit per adapters/benne/tactil (index.ts, opcionsTactils): què fa cada botó del ratolí (una preferència
+// de cada joc i de cada aparell) i la targeta «Com es juga».
+import { intercanvia, controls } from './settings-menu.ids'
+import { mostraControls } from '../../narrative/controls'
+import { preferencies, setPreferencia } from '../../narrative/preferencies'
+
+gui.onShow(() => {
+  intercanvia.checked = preferencies().esquerreMira
+})
+
+intercanvia.onChange((on: boolean) => {
+  setPreferencia('esquerreMira', on)
+})
+
+controls.onClick(() => {
+  gui.hide()
+  mostraControls(true)
+})
