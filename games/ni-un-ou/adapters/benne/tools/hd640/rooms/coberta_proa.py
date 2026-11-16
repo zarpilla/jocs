@@ -19,6 +19,12 @@ from hd.rooms.exterior import smooth, HULLN, REDH, STEELX, CABX, ORANGEB, ROPE, 
 from hd640.rooms.coberta_popa import (night_sky, day_sky, night_sea, day_sea, bulwark, deck_floor, bitts, coil,
                                       wt_door, deck_lamp, gull)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 K = 4 / 3
 HOR = 115
 RAIL = 141
@@ -566,9 +572,10 @@ def _frames(day):
     ref = Canvas(light=LIGHT)
     sea(ref, 0.0)
     rp, bp = ref.img.load(), base.load()
+    S = base.width // W                                               # (en píxels reals: art a 2×)
     bx0, by0, bx1, by1 = ROPE_BOX
-    open_ = [(x, y) for y in range(HOR + 1, RAIL + 6) for x in range(W)
-             if bp[x, y] == rp[x, y] and not (bx0 <= x <= bx1 and by0 <= y <= by1)]
+    open_ = [(X, Y) for Y in range((HOR + 1) * S, (RAIL + 6) * S) for X in range(base.width)
+             if bp[X, Y] == rp[X, Y] and not (bx0 <= X // S <= bx1 and by0 <= Y // S <= by1)]
     frames = []
     for i in range(SEA_N):
         a, b = Canvas(light=LIGHT), Canvas(light=LIGHT)
@@ -577,8 +584,8 @@ def _frames(day):
         w = max(0, i - (SEA_N - SEA_FADE)) / SEA_FADE
         out = scenes[SWING[i]].copy()
         o, ap, bpp = out.load(), a.img.load(), b.img.load()
-        for x, y in open_:
-            o[x, y] = bpp[x, y] if hr(x, y, 90) < w else ap[x, y]
+        for X, Y in open_:
+            o[X, Y] = bpp[X, Y] if hr(X // S, Y // S, 90) < w else ap[X, Y]
         if day:                                                          # dues gavines que planen en cercle, lluny
             t = i / SEA_N * 2 * math.pi
             cv = Canvas(light=LIGHT, img=out)

@@ -21,6 +21,12 @@ from hd.rooms.camarot_iri import PAINT
 from hd640.rooms import sota
 from hd640.rooms.sota import FLOOR_Y, BOTTOM
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 LAMPS = (200, 440)
 LAMP_Y = 29
 

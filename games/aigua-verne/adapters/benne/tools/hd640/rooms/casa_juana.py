@@ -23,6 +23,12 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms.aqua_comu import (RH, SKYA, SALT, SAND, STONEA, WOODG, PAINTW, RUSTA, OCHRE, STEELA, BLACKT,
                                    GLASSD, ROPEA, WICKER, BONE, WATERB, diff, amb_contorn)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 224             # on comença el terra
 SPRING = 72               # on les costelles comencen a corbar-se cap al sostre
 RIBS = (14, 116, 238, 356, 482, 602)
@@ -484,9 +490,8 @@ def bg(cv):
     piles(cv)
     lampada(cv)
     raig(cv)
-    for y in range(RH, H):                                                       # la barra de verbs: negre
-        for x in range(W):
-            cv.P[x, y] = (0, 0, 0, 255)
+    for X, Y, _, _ in cv.pixels(0, RH, W - 1, H - 1):                            # la barra de verbs: negre
+        cv.P[X, Y] = (0, 0, 0, 255)
 
 
 PROPS = {}
@@ -505,12 +510,14 @@ def _frames_flama():
         for yy in range(y + 4 - fh, y + 5):
             hw = 1.6 * (1 - (y + 4 - yy) / (fh + 1)) + 0.4
             for xx in range(int(x - hw), int(x + hw) + 1):
-                cv.P[xx, yy] = (255, 250, 220, 255) if abs(xx - x) < 1 else (255, 200, 90, 255)
+                for X, Y, _, _ in cv.pixels(xx, yy, xx, yy):
+                    cv.P[X, Y] = (255, 250, 220, 255) if abs(xx - x) < 1 else (255, 200, 90, 255)
         for yy in range(y - 30, y + 30):
             for xx in range(x - 30, x + 30):
                 d = math.hypot(xx - x, yy - y) / 30
                 if 0.3 < d < 1 and hr(xx, yy, i) < (1 - d) * 0.22 * k:
-                    cv.P[xx, yy] = (255, 214, 140, 70)
+                    for X, Y, _, _ in cv.pixels(xx, yy, xx, yy):
+                        cv.P[X, Y] = (255, 214, 140, 70)
         out.append(cv.img)
     return out
 
@@ -527,7 +534,8 @@ def _frames_pols():
             yy = cy + 4 + t * (FLOOR_Y - cy)
             xx = cx + t * 60 + (hr(k, 2) - 0.5) * 2 * r * (1 + t * 0.5) + math.sin(i / n * 2 * math.pi + k) * 2
             a = int(160 * (1 - abs(hr(k, 2) - 0.5) * 2) * (1 - t * 0.6))
-            cv.P[int(xx), int(yy)] = (255, 250, 230, a)
+            for X, Y, _, _ in cv.pixels(int(xx), int(yy), int(xx), int(yy)):
+                cv.P[X, Y] = (255, 250, 230, a)
         out.append(cv.img)
     return out
 

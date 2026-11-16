@@ -14,6 +14,7 @@ from PIL import Image
 from hd.pix import Canvas, W, H, hr, mix, B4
 from hd.rooms.exterior import fbm, smooth
 from hd.rooms.comu import _diff, text, text_width, _glyph
+from pixels import nearest
 
 RH = 260                         # la sala (la barra de verbs va de 260 a 360)
 
@@ -176,8 +177,9 @@ def canonada(cv, x, hor, wmax=4.4, haze=(230, 214, 180), top=0, station=11):
     cv.flat(x - 1, 22, (120, 40, 34))
 
 
-def llum_canonada_frames(x, y=22, n=12):
-    """El llum d'aviació de dalt de la Canonada: fa pampallugues (dos cops seguits, i espera)."""
+def llum_canonada_frames(x, y=22, n=12, s=1):
+    """El llum d'aviació de dalt de la Canonada: fa pampallugues (dos cops seguits, i espera).
+    `s`: píxels de l'art per píxel de sala (Canvas.S de la sala); el llum es dibuixa a 1× i s'amplia."""
     frames = []
     for i in range(n):
         img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
@@ -186,7 +188,7 @@ def llum_canonada_frames(x, y=22, n=12):
             p[x - 1, y] = (255, 90, 64, 255)                                          # el llum, encès
             for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):                        # i el halo, en creu
                 p[x - 1 + dx, y + dy] = (236, 120, 96, 255)
-        frames.append(img)
+        frames.append(img if s == 1 else nearest(img, (W * s, H * s)))
     return frames
 
 
@@ -269,8 +271,10 @@ def outline(cv, x0, y0, x1, y1, col):
 
 def dust_wind_frames(base, y0, y1, n=64, step=10, seed=51, k=0.5):
     """La pols que passa arran de terra: vels de pols (soroll) que corren cap a l'esquerra, a quadres
-    (dithering), sobre el fons `base`. El patró es repeteix cada n·step píxels: el bucle no salta."""
+    (dithering), sobre el fons `base`. El patró es repeteix cada n·step píxels: el bucle no salta.
+    `base` pot ser a la mida de l'art (2×): el dither es fa per píxel real."""
     period = n * step
+    s = base.width // W
     src = base.load()
     # el camp de densitat, periòdic en x (soroll mostrejat sobre un cercle), es calcula una sola vegada
     dens = {}
@@ -285,23 +289,24 @@ def dust_wind_frames(base, y0, y1, n=64, step=10, seed=51, k=0.5):
         dens[y] = row
     frames = []
     for i in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * s, H * s), (0, 0, 0, 0))
         p = img.load()
         off = i * step
-        for y in range(y0, y1):
-            row = dens[y]
-            b = B4[y & 3]
-            for x in range(W):
-                d = row[(x + off) % period]
-                if d > b[x & 3]:
-                    p[x, y] = mix(src[x, y], DUST, 0.32 + 0.2 * d) + (255,)
+        for Y in range(y0 * s, y1 * s):
+            row = dens[Y // s]
+            b = B4[Y & 3]
+            for X in range(W * s):
+                d = row[(X // s + off) % period]
+                if d > b[X & 3]:
+                    p[X, Y] = mix(src[X, Y], DUST, 0.32 + 0.2 * d) + (255,)
         frames.append(img)
     return frames
 
 
 def motes_frames(base, beams, n=40, count=60, seed=7, col=(255, 240, 200)):
     """Volves de pols que suren dins els raigs de llum. `beams`: funció (x, y) → 0..1 (dins el raig).
-    Cada volva fa una petita òrbita tancada: el bucle no salta."""
+    Cada volva fa una petita òrbita tancada: el bucle no salta. Amb `base` a 2×, cada volva és un bloc de 2×2."""
+    s = base.width // W
     src = base.load()
     pts = []
     rnd = 0
@@ -312,7 +317,7 @@ def motes_frames(base, beams, n=40, count=60, seed=7, col=(255, 240, 200)):
             pts.append((x, y, hr(seed, rnd, 3) * 2 * math.pi, 3 + hr(seed, rnd, 4) * 8, 2 + hr(seed, rnd, 5) * 5))
     frames = []
     for i in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * s, H * s), (0, 0, 0, 0))
         p = img.load()
         a = 2 * math.pi * i / n
         for x0, y0, ph, rx, ry in pts:
@@ -321,6 +326,8 @@ def motes_frames(base, beams, n=40, count=60, seed=7, col=(255, 240, 200)):
             if 0 <= x < W and 0 <= y < RH:
                 b = beams(x, y)
                 if b > 0.15:
-                    p[x, y] = mix(src[x, y], col, 0.35 + 0.45 * b) + (255,)
+                    for Y in range(y * s, y * s + s):
+                        for X in range(x * s, x * s + s):
+                            p[X, Y] = mix(src[X, Y], col, 0.35 + 0.45 * b) + (255,)
         frames.append(img)
     return frames

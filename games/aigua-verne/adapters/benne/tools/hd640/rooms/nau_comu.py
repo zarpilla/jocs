@@ -14,7 +14,7 @@ import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360
 
 import math
 
-from hd.pix import Canvas, hr, mix, RUST, B4
+from hd.pix import hr, mix, RUST, B4
 from hd.rooms.comu import text, text_width
 from hd.rooms.exterior import fbm, smooth
 
@@ -246,7 +246,7 @@ def canonada(cv, x, y0, y1, w0=1.5, w1=4.0, ring=11, haze=(230, 214, 180), haze_
             lvl = 3.4 - u * 1.6 + (0.9 if y % ring == 0 else 0) - (0.7 if y % ring == 1 else 0)
             cv.put(xx, y, COL, lvl, lit)
     if haze:
-        cx0, cy0, cx1, cy1 = clip or (0, 0, cv.w - 1, cv.h - 1)
+        cx0, cy0, cx1, cy1 = clip or (0, 0, cv.w // cv.S - 1, cv.h // cv.S - 1)
         cv.tint(max(cx0, x - w1 - 2), max(cy0, y0), min(cx1, x + w1 + 2), min(cy1, y1), haze,
                 lambda xx, yy: haze_k * (1 - (yy - y0) / max(1, y1 - y0)) * 0.6 + haze_k * 0.25)
     if light_y is not None:
@@ -280,12 +280,23 @@ CLOUD_VE = [(176, 198, 230), (210, 226, 246), (234, 242, 252), (250, 252, 255)]
 
 
 class _Clip:
-    """Un llenç que només pinta dins `rect`: s'hi poden fer servir els mètodes de Canvas (poly, disc, rect...)."""
+    """Un llenç que només pinta dins `rect`: s'hi poden fer servir els mètodes de Canvas (poly, disc, rect...),
+    cridats com a `type(cv).disc(c, ...)` (a 2×, els de Canvas2x pinten per píxel real amb `px`)."""
 
     def __init__(self, cv, rect):
         self.cv, self.r = cv, rect
         self.w, self.h = cv.w, cv.h
         self.P = cv.P
+        self.S = cv.S
+        self.light = cv.light
+
+    def px(self, X, Y, ramp, lvl, lit=1.0):
+        if _in(self.r, X // self.S, Y // self.S):
+            self.cv.px(X, Y, ramp, lvl, lit)
+
+    def pxflat(self, X, Y, col):
+        if _in(self.r, X // self.S, Y // self.S):
+            self.cv.pxflat(X, Y, col)
 
     def put(self, x, y, ramp, lvl, lit=1.0):
         if _in(self.r, int(x), int(y)):
@@ -300,14 +311,14 @@ class _Clip:
 
     def glow(self, cx, cy, r, col, strength):
         x0, y0, x1, y1 = self.r
-        for y in range(max(y0, int(cy - r)), min(y1, int(cy + r)) + 1):
-            for x in range(max(x0, int(cx - r)), min(x1, int(cx + r)) + 1):
-                d = math.hypot(x - cx, y - cy) / r
-                if d < 1:
-                    a = strength * (1 - d) ** 2
-                    o = self.P[x, y]
-                    if o[3] and a > B4[y & 3][x & 3] * 0.35:
-                        self.P[x, y] = mix(o, col, min(1, a)) + (o[3],)
+        for X, Y, x, y in self.cv.pixels(max(x0, int(cx - r)), max(y0, int(cy - r)), min(x1, int(cx + r)),
+                                         min(y1, int(cy + r))):
+            d = math.hypot(x - cx, y - cy) / r
+            if d < 1:
+                a = strength * (1 - d) ** 2
+                o = self.P[X, Y]
+                if o[3] and a > B4[Y & 3][X & 3] * 0.35:
+                    self.P[X, Y] = mix(o, col, min(1, a)) + (o[3],)
 
 
 def _in(rect, x, y):
@@ -390,7 +401,7 @@ def vista(cv, planeta, rect, hor, s=1.0, seed=0, refl=True, canonada_x=None):
         _fill(cv, (x0, y0, x1, hor), sky)
         c = _Clip(cv, rect)
         c.glow(sun[0], sun[1], 22 * s, (255, 250, 228), 0.9)
-        Canvas.disc(c, sun[0], sun[1], 5 * s, 5 * s, SKY_T2, 7.6, lit=0)
+        type(cv).disc(c, sun[0], sun[1], 5 * s, 5 * s, SKY_T2, 7.6, lit=0)
         for x in range(x0, x1 + 1):                                # turons
             h1 = hor - 4 * s - 10 * s * fbm(x / 70, 0.3, 7 + seed)
             for y in range(int(h1), hor + 1):
@@ -424,22 +435,22 @@ def vista(cv, planeta, rect, hor, s=1.0, seed=0, refl=True, canonada_x=None):
             return (bx + px * s * math.cos(ang) - py * s * math.sin(ang), by + px * s * math.sin(ang) + py * s *
                     math.cos(ang))
         hull = [R(0, -14), R(70, -14), R(78, -20), R(80, -14), R(74, 0), R(6, 0)]
-        Canvas.poly(c, hull, HULL_AQ, lambda x, y: 2.6 + (0.6 if (x - bx) % 9 == 0 else 0), lit=0)
-        Canvas.poly(c, [R(4, -5), R(76, -5), R(74, 0), R(6, 0)], REDH, 2.2, lit=0)          # l'obra viva, rovellada
-        Canvas.poly(c, [R(2, -14), R(74, -14), R(74, -13), R(2, -13)], HULL_AQ, 4.2, lit=0)
-        Canvas.poly(c, [R(6, -14), R(20, -14), R(20, -27), R(8, -27)], SALT, 3.8, lit=0)    # el pont, a popa
+        type(cv).poly(c, hull, HULL_AQ, lambda x, y: 2.6 + (0.6 if (x - bx) % 9 == 0 else 0), lit=0)
+        type(cv).poly(c, [R(4, -5), R(76, -5), R(74, 0), R(6, 0)], REDH, 2.2, lit=0)          # l'obra viva, rovellada
+        type(cv).poly(c, [R(2, -14), R(74, -14), R(74, -13), R(2, -13)], HULL_AQ, 4.2, lit=0)
+        type(cv).poly(c, [R(6, -14), R(20, -14), R(20, -27), R(8, -27)], SALT, 3.8, lit=0)    # el pont, a popa
         for i in range(3):
-            Canvas.poly(c, [R(9 + i * 4, -24), R(11 + i * 4, -24), R(11 + i * 4, -22), R(9 + i * 4, -22)],
+            type(cv).poly(c, [R(9 + i * 4, -24), R(11 + i * 4, -24), R(11 + i * 4, -22), R(9 + i * 4, -22)],
                         HULL_AQ, 1.2, lit=0)
-        Canvas.line(c, *R(14, -27), *R(14, -38), HULL_AQ, 2.2, lit=0)                         # el pal
+        type(cv).line(c, *R(14, -27), *R(14, -38), HULL_AQ, 2.2, lit=0)                         # el pal
         for i in range(4):                                                                   # les escotilles
-            Canvas.poly(c, [R(28 + i * 11, -14), R(36 + i * 11, -14), R(36 + i * 11, -17), R(28 + i * 11, -17)],
+            type(cv).poly(c, [R(28 + i * 11, -14), R(36 + i * 11, -14), R(36 + i * 11, -17), R(28 + i * 11, -17)],
                         REDH, 3.4, lit=0)
-        Canvas.disc(c, bx + 40 * s, by + 2 * s, 46 * s, 3 * s, SALT, 6.0, lit=0)             # la sal amuntegada
+        type(cv).disc(c, bx + 40 * s, by + 2 * s, 46 * s, 3 * s, SALT, 6.0, lit=0)             # la sal amuntegada
         sbx, sby = fx(0.66), hor + int(9 * s)                                                  # la barca
-        Canvas.poly(c, [(sbx, sby - 4 * s), (sbx + 22 * s, sby - 7 * s), (sbx + 19 * s, sby), (sbx + 2 * s, sby)],
+        type(cv).poly(c, [(sbx, sby - 4 * s), (sbx + 22 * s, sby - 7 * s), (sbx + 19 * s, sby), (sbx + 2 * s, sby)],
                     [(40, 70, 96), (60, 100, 130), (90, 130, 156), (130, 170, 190)], 1.8, lit=0)
-        Canvas.line(c, sbx, sby - 4 * s, sbx + 22 * s, sby - 7 * s, SALT, 5.0, lit=0)
+        type(cv).line(c, sbx, sby - 4 * s, sbx + 22 * s, sby - 7 * s, SALT, 5.0, lit=0)
         # el moll de pedra blanca, a primer terme
         mh = int(8 * s)
         for x in range(x0, x1 + 1):

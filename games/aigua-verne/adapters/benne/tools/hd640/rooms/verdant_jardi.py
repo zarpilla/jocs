@@ -24,6 +24,12 @@ from hd640.rooms.verdant_comu import (SKYV, CLOUDV, TURF, HILLV, WHITEV, MARBLE,
                                       CYANF, YELLOWF, VIOLETF, ORANGEF, PLANK, WOODG, SHEDG, ZINC, BLACKT, OLIVE, SAFETY,
                                       RUSTV, gota, panell_preu, flor, arbre_rodo, bola_boix, ombra, rotul, galleda)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 RH = 260                    # la sala (per sota, la barra de verbs)
 HOR = 140                   # l'horitzó (darrere els turons)
 LAWN_Y = 180                # on comença la gespa (la base de la bardissa del fons)

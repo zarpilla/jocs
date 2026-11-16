@@ -9,12 +9,19 @@ baix i l'escuma de la roda).
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
 import math
+from functools import lru_cache
 
 from hd.pix import Canvas, Light, W, H, hr, mix, B4
 from hd.rooms.arenga import CAB, DARK, REDP, YELL, WHITEP, box, bolt, vpipe, hpipe, glow
 from hd.rooms.comu import _diff, text, text_width
 from hd.rooms.exterior import fbm, NSEA, REDH, ROPE, DECKX, LAMP, GLOW_WARM
 from hd640.rooms.coberta_popa import night_sky, _wave
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 K = 4 / 3
 
@@ -484,15 +491,11 @@ def bg(cv):
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
 
-_BASE = {}
-
-
+@lru_cache(maxsize=1)
 def _base():
-    if 'img' not in _BASE:
-        cv = Canvas(light=LIGHT)
-        bg(cv)
-        _BASE['img'] = cv.img
-    return _BASE['img']
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
 
 
 FLAG_BOX = (MAST_X - 133, 19, MAST_X - 69, 75)
@@ -521,7 +524,8 @@ def _frames_vent():
     x0, y0, x1, y1 = FLAG_BOX
     for i in range(n):
         cv = Canvas(light=LIGHT, img=base.copy())
-        cv.img.paste(clean.img.crop((x0, y0, x1 + 1, y1 + 1)), (x0, y0))
+        S = cv.S                                                     # (el retall, en píxels reals)
+        cv.img.paste(clean.img.crop((x0 * S, y0 * S, (x1 + 1) * S, (y1 + 1) * S)), (x0 * S, y0 * S))
         cv.P = cv.img.load()
         mast_patch(cv)
         flag(cv, t=i * (2 * math.pi / 1.4) / n)
@@ -546,16 +550,14 @@ def _sea_layer(ph):
     return cv.img
 
 
-_MASK = {}
-
-
+@lru_cache(maxsize=1)
 def _sea_mask():
     """On es veu el mar: on el fons és igual que el mar quiet (ni barana, ni pal, ni la llum del focus).
-    També darrere la barana del fons, entre els tubs."""
-    if 'm' not in _MASK:
-        base, ref = _base().load(), _sea_layer(0.0).load()
-        _MASK['m'] = [(x, y) for y in range(HOR + 1, SEA_Y1 + 1) for x in range(W) if base[x, y] == ref[x, y]]
-    return _MASK['m']
+    També darrere la barana del fons, entre els tubs. En píxels reals (X, Y) de l'art."""
+    img = _base()
+    S = img.width // W
+    base, ref = img.load(), _sea_layer(0.0).load()
+    return [(X, Y) for Y in range((HOR + 1) * S, (SEA_Y1 + 1) * S) for X in range(img.width) if base[X, Y] == ref[X, Y]]
 
 
 def _frames_mar():
@@ -566,8 +568,8 @@ def _frames_mar():
         src = _sea_layer(i * 1.6).load()
         out = base.copy()
         dst = out.load()
-        for x, y in _sea_mask():
-            dst[x, y] = src[x, y]
+        for X, Y in _sea_mask():
+            dst[X, Y] = src[X, Y]
         frames.append(_diff(out, base))
     return frames
 
@@ -596,16 +598,16 @@ def fosc(cv):
     pb, pd, pon, poff, o = base.load(), dark.img.load(), on.img.load(), off.img.load(), cv.P
     fx0, fy0, fx1, fy1 = FLAG_BOX
     seam = set(_sea_mask())
-    for y in range(H):
-        for x in range(W):
-            anim = (fx0 <= x <= fx1 and fy0 <= y <= fy1) or (x, y) in seam
-            if anim and pon[x, y] == poff[x, y]:
-                lb = sum(pb[x, y][:3]) + 1
-                a = max(0.0, min(1.0, 1 - sum(pd[x, y][:3]) / lb))
-                if a > 0.02:
-                    o[x, y] = (0, 0, 0, int(a * 255))
-            elif pd[x, y] != pb[x, y]:
-                o[x, y] = pd[x, y]
+    for X, Y, _, _ in cv.pixels():
+        x, y = X // cv.S, Y // cv.S
+        anim = (fx0 <= x <= fx1 and fy0 <= y <= fy1) or (X, Y) in seam
+        if anim and pon[X, Y] == poff[X, Y]:
+            lb = sum(pb[X, Y][:3]) + 1
+            a = max(0.0, min(1.0, 1 - sum(pd[X, Y][:3]) / lb))
+            if a > 0.02:
+                o[X, Y] = (0, 0, 0, int(a * 255))
+        elif pd[X, Y] != pb[X, Y]:
+            o[X, Y] = pd[X, Y]
 
 
 PROPS = {'fosc': fosc}

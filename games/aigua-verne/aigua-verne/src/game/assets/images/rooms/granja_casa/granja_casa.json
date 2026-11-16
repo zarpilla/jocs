@@ -4,1070 +4,1070 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 1.aseprite": {
       "frame": {
-        "x": 683,
-        "y": 360,
-        "w": 52,
-        "h": 71
+        "x": 1516,
+        "y": 974,
+        "w": 104,
+        "h": 141
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 464,
-        "y": 67,
-        "w": 52,
-        "h": 71
+        "x": 928,
+        "y": 135,
+        "w": 104,
+        "h": 141
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 2.aseprite": {
       "frame": {
-        "x": 735,
-        "y": 360,
-        "w": 33,
-        "h": 37
+        "x": 1620,
+        "y": 974,
+        "w": 66,
+        "h": 74
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 472,
-        "y": 86,
-        "w": 33,
-        "h": 37
+        "x": 944,
+        "y": 172,
+        "w": 66,
+        "h": 74
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 3.aseprite": {
       "frame": {
-        "x": 3438,
-        "y": 0,
-        "w": 84,
-        "h": 124
+        "x": 2938,
+        "y": 720,
+        "w": 168,
+        "h": 248
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 89,
-        "w": 84,
-        "h": 124
+        "x": 1004,
+        "y": 178,
+        "w": 168,
+        "h": 248
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 4.aseprite": {
       "frame": {
-        "x": 2588,
-        "y": 0,
-        "w": 85,
-        "h": 126
+        "x": 1238,
+        "y": 720,
+        "w": 170,
+        "h": 252
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 501,
-        "y": 90,
-        "w": 85,
-        "h": 126
+        "x": 1002,
+        "y": 180,
+        "w": 170,
+        "h": 252
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 5.aseprite": {
       "frame": {
-        "x": 3013,
-        "y": 0,
-        "w": 86,
-        "h": 125
+        "x": 2088,
+        "y": 720,
+        "w": 172,
+        "h": 250
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 501,
-        "y": 91,
-        "w": 86,
-        "h": 125
+        "x": 1002,
+        "y": 182,
+        "w": 172,
+        "h": 250
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 6.aseprite": {
       "frame": {
-        "x": 3522,
-        "y": 0,
-        "w": 87,
-        "h": 124
+        "x": 3106,
+        "y": 720,
+        "w": 174,
+        "h": 248
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 91,
-        "w": 87,
-        "h": 124
+        "x": 1000,
+        "y": 182,
+        "w": 174,
+        "h": 248
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 7.aseprite": {
       "frame": {
-        "x": 3609,
-        "y": 0,
-        "w": 88,
-        "h": 124
+        "x": 3280,
+        "y": 720,
+        "w": 176,
+        "h": 248
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 90,
-        "w": 88,
-        "h": 124
+        "x": 998,
+        "y": 180,
+        "w": 176,
+        "h": 248
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 8.aseprite": {
       "frame": {
-        "x": 3782,
-        "y": 0,
-        "w": 88,
-        "h": 121
+        "x": 3626,
+        "y": 720,
+        "w": 176,
+        "h": 242
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 93,
-        "w": 88,
-        "h": 121
+        "x": 998,
+        "y": 186,
+        "w": 176,
+        "h": 242
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 9.aseprite": {
       "frame": {
-        "x": 3870,
-        "y": 0,
-        "w": 78,
-        "h": 115
+        "x": 3802,
+        "y": 720,
+        "w": 156,
+        "h": 230
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 98,
-        "w": 78,
-        "h": 115
+        "x": 996,
+        "y": 196,
+        "w": 156,
+        "h": 230
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 10.aseprite": {
       "frame": {
-        "x": 3948,
-        "y": 0,
-        "w": 75,
-        "h": 115
+        "x": 0,
+        "y": 974,
+        "w": 150,
+        "h": 230
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 98,
-        "w": 75,
-        "h": 115
+        "x": 1004,
+        "y": 196,
+        "w": 150,
+        "h": 230
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 11.aseprite": {
       "frame": {
-        "x": 78,
-        "y": 360,
-        "w": 76,
-        "h": 114
+        "x": 306,
+        "y": 974,
+        "w": 152,
+        "h": 228
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 99,
-        "w": 76,
-        "h": 114
+        "x": 1004,
+        "y": 198,
+        "w": 152,
+        "h": 228
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 12.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 78,
-        "h": 115
+        "x": 150,
+        "y": 974,
+        "w": 156,
+        "h": 230
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 99,
-        "w": 78,
-        "h": 115
+        "x": 1004,
+        "y": 198,
+        "w": 156,
+        "h": 230
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 13.aseprite": {
       "frame": {
-        "x": 154,
-        "y": 360,
-        "w": 79,
-        "h": 114
+        "x": 458,
+        "y": 974,
+        "w": 158,
+        "h": 228
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 100,
-        "w": 79,
-        "h": 114
+        "x": 1004,
+        "y": 200,
+        "w": 158,
+        "h": 228
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 14.aseprite": {
       "frame": {
-        "x": 233,
-        "y": 360,
-        "w": 80,
-        "h": 113
+        "x": 616,
+        "y": 974,
+        "w": 160,
+        "h": 226
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 101,
-        "w": 80,
-        "h": 113
+        "x": 1004,
+        "y": 202,
+        "w": 160,
+        "h": 226
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 15.aseprite": {
       "frame": {
-        "x": 313,
-        "y": 360,
-        "w": 73,
-        "h": 109
+        "x": 776,
+        "y": 974,
+        "w": 146,
+        "h": 218
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 105,
-        "w": 73,
-        "h": 109
+        "x": 1004,
+        "y": 210,
+        "w": 146,
+        "h": 218
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 16.aseprite": {
       "frame": {
-        "x": 386,
-        "y": 360,
-        "w": 74,
-        "h": 108
+        "x": 922,
+        "y": 974,
+        "w": 148,
+        "h": 216
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 501,
-        "y": 105,
-        "w": 74,
-        "h": 108
+        "x": 1002,
+        "y": 210,
+        "w": 148,
+        "h": 216
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 17.aseprite": {
       "frame": {
-        "x": 460,
-        "y": 360,
-        "w": 74,
-        "h": 108
+        "x": 1070,
+        "y": 974,
+        "w": 148,
+        "h": 216
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 501,
-        "y": 105,
-        "w": 74,
-        "h": 108
+        "x": 1002,
+        "y": 210,
+        "w": 148,
+        "h": 216
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 18.aseprite": {
       "frame": {
-        "x": 534,
-        "y": 360,
-        "w": 75,
-        "h": 108
+        "x": 1218,
+        "y": 974,
+        "w": 150,
+        "h": 216
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 105,
-        "w": 75,
-        "h": 108
+        "x": 1000,
+        "y": 210,
+        "w": 150,
+        "h": 216
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 19.aseprite": {
       "frame": {
-        "x": 609,
-        "y": 360,
-        "w": 74,
-        "h": 108
+        "x": 1368,
+        "y": 974,
+        "w": 148,
+        "h": 216
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 105,
-        "w": 74,
-        "h": 108
+        "x": 1000,
+        "y": 210,
+        "w": 148,
+        "h": 216
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 20.aseprite": {
       "frame": {
-        "x": 917,
+        "x": 1834,
         "y": 0,
-        "w": 76,
-        "h": 128
+        "w": 152,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 86,
-        "w": 76,
-        "h": 128
+        "x": 1000,
+        "y": 172,
+        "w": 152,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 21.aseprite": {
       "frame": {
-        "x": 993,
+        "x": 1986,
         "y": 0,
-        "w": 78,
-        "h": 128
+        "w": 156,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 86,
-        "w": 78,
-        "h": 128
+        "x": 998,
+        "y": 172,
+        "w": 156,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 22.aseprite": {
       "frame": {
-        "x": 1797,
+        "x": 3594,
         "y": 0,
-        "w": 86,
-        "h": 127
+        "w": 172,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 87,
-        "w": 86,
-        "h": 127
+        "x": 998,
+        "y": 174,
+        "w": 172,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 23.aseprite": {
       "frame": {
-        "x": 1071,
+        "x": 2142,
         "y": 0,
-        "w": 87,
-        "h": 128
+        "w": 174,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 87,
-        "w": 87,
-        "h": 128
+        "x": 996,
+        "y": 174,
+        "w": 174,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 24.aseprite": {
       "frame": {
-        "x": 1883,
+        "x": 3766,
         "y": 0,
-        "w": 86,
-        "h": 127
+        "w": 172,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 88,
-        "w": 86,
-        "h": 127
+        "x": 996,
+        "y": 176,
+        "w": 172,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 25.aseprite": {
       "frame": {
-        "x": 1969,
-        "y": 0,
-        "w": 86,
-        "h": 127
+        "x": 0,
+        "y": 720,
+        "w": 172,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 88,
-        "w": 86,
-        "h": 127
+        "x": 996,
+        "y": 176,
+        "w": 172,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 26.aseprite": {
       "frame": {
-        "x": 2055,
-        "y": 0,
-        "w": 86,
-        "h": 127
+        "x": 172,
+        "y": 720,
+        "w": 172,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 88,
-        "w": 86,
-        "h": 127
+        "x": 994,
+        "y": 176,
+        "w": 172,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 27.aseprite": {
       "frame": {
-        "x": 2141,
-        "y": 0,
-        "w": 87,
-        "h": 127
+        "x": 344,
+        "y": 720,
+        "w": 174,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 88,
-        "w": 87,
-        "h": 127
+        "x": 994,
+        "y": 176,
+        "w": 174,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 28.aseprite": {
       "frame": {
-        "x": 2673,
-        "y": 0,
-        "w": 88,
-        "h": 126
+        "x": 1408,
+        "y": 720,
+        "w": 176,
+        "h": 252
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 88,
-        "w": 88,
-        "h": 126
+        "x": 994,
+        "y": 176,
+        "w": 176,
+        "h": 252
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 29.aseprite": {
       "frame": {
-        "x": 2228,
-        "y": 0,
-        "w": 90,
-        "h": 127
+        "x": 518,
+        "y": 720,
+        "w": 180,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 87,
-        "w": 90,
-        "h": 127
+        "x": 992,
+        "y": 174,
+        "w": 180,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 30.aseprite": {
       "frame": {
-        "x": 2318,
-        "y": 0,
-        "w": 90,
-        "h": 127
+        "x": 698,
+        "y": 720,
+        "w": 180,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 87,
-        "w": 90,
-        "h": 127
+        "x": 992,
+        "y": 174,
+        "w": 180,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 31.aseprite": {
       "frame": {
-        "x": 1158,
+        "x": 2316,
         "y": 0,
-        "w": 91,
-        "h": 128
+        "w": 182,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 86,
-        "w": 91,
-        "h": 128
+        "x": 992,
+        "y": 172,
+        "w": 182,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 32.aseprite": {
       "frame": {
-        "x": 1249,
+        "x": 2498,
         "y": 0,
-        "w": 92,
-        "h": 128
+        "w": 184,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 86,
-        "w": 92,
-        "h": 128
+        "x": 992,
+        "y": 172,
+        "w": 184,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 33.aseprite": {
       "frame": {
-        "x": 2408,
-        "y": 0,
-        "w": 92,
-        "h": 127
+        "x": 878,
+        "y": 720,
+        "w": 184,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 86,
-        "w": 92,
-        "h": 127
+        "x": 992,
+        "y": 172,
+        "w": 184,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 34.aseprite": {
       "frame": {
-        "x": 1341,
+        "x": 2682,
         "y": 0,
-        "w": 93,
-        "h": 128
+        "w": 186,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 85,
-        "w": 93,
-        "h": 128
+        "x": 992,
+        "y": 170,
+        "w": 186,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 35.aseprite": {
       "frame": {
-        "x": 1434,
+        "x": 2868,
         "y": 0,
-        "w": 93,
-        "h": 128
+        "w": 186,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 85,
-        "w": 93,
-        "h": 128
+        "x": 992,
+        "y": 170,
+        "w": 186,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 36.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 93,
-        "h": 129
+        "w": 186,
+        "h": 258
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 85,
-        "w": 93,
-        "h": 129
+        "x": 992,
+        "y": 170,
+        "w": 186,
+        "h": 258
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 37.aseprite": {
       "frame": {
-        "x": 733,
+        "x": 1466,
         "y": 0,
-        "w": 93,
-        "h": 129
+        "w": 186,
+        "h": 258
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 85,
-        "w": 93,
-        "h": 129
+        "x": 992,
+        "y": 170,
+        "w": 186,
+        "h": 258
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 38.aseprite": {
       "frame": {
-        "x": 1527,
+        "x": 3054,
         "y": 0,
-        "w": 91,
-        "h": 128
+        "w": 182,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 86,
-        "w": 91,
-        "h": 128
+        "x": 994,
+        "y": 172,
+        "w": 182,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 39.aseprite": {
       "frame": {
-        "x": 826,
+        "x": 1652,
         "y": 0,
-        "w": 91,
-        "h": 129
+        "w": 182,
+        "h": 258
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 86,
-        "w": 91,
-        "h": 129
+        "x": 994,
+        "y": 172,
+        "w": 182,
+        "h": 258
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 40.aseprite": {
       "frame": {
-        "x": 1618,
+        "x": 3236,
         "y": 0,
-        "w": 90,
-        "h": 128
+        "w": 180,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 87,
-        "w": 90,
-        "h": 128
+        "x": 994,
+        "y": 174,
+        "w": 180,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 41.aseprite": {
       "frame": {
-        "x": 1708,
+        "x": 3416,
         "y": 0,
-        "w": 89,
-        "h": 128
+        "w": 178,
+        "h": 256
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 88,
-        "w": 89,
-        "h": 128
+        "x": 996,
+        "y": 176,
+        "w": 178,
+        "h": 256
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 42.aseprite": {
       "frame": {
-        "x": 2500,
-        "y": 0,
-        "w": 88,
-        "h": 127
+        "x": 1062,
+        "y": 720,
+        "w": 176,
+        "h": 254
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 89,
-        "w": 88,
-        "h": 127
+        "x": 996,
+        "y": 178,
+        "w": 176,
+        "h": 254
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 43.aseprite": {
       "frame": {
-        "x": 3099,
-        "y": 0,
-        "w": 87,
-        "h": 125
+        "x": 2260,
+        "y": 720,
+        "w": 174,
+        "h": 250
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 90,
-        "w": 87,
-        "h": 125
+        "x": 996,
+        "y": 180,
+        "w": 174,
+        "h": 250
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 44.aseprite": {
       "frame": {
-        "x": 3697,
-        "y": 0,
-        "w": 85,
-        "h": 124
+        "x": 3456,
+        "y": 720,
+        "w": 170,
+        "h": 248
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 91,
-        "w": 85,
-        "h": 124
+        "x": 998,
+        "y": 182,
+        "w": 170,
+        "h": 248
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 45.aseprite": {
       "frame": {
-        "x": 3186,
-        "y": 0,
-        "w": 84,
-        "h": 125
+        "x": 2434,
+        "y": 720,
+        "w": 168,
+        "h": 250
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 91,
-        "w": 84,
-        "h": 125
+        "x": 998,
+        "y": 182,
+        "w": 168,
+        "h": 250
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 46.aseprite": {
       "frame": {
-        "x": 2761,
-        "y": 0,
-        "w": 84,
-        "h": 126
+        "x": 1584,
+        "y": 720,
+        "w": 168,
+        "h": 252
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 90,
-        "w": 84,
-        "h": 126
+        "x": 1000,
+        "y": 180,
+        "w": 168,
+        "h": 252
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 47.aseprite": {
       "frame": {
-        "x": 2845,
-        "y": 0,
-        "w": 84,
-        "h": 126
+        "x": 1752,
+        "y": 720,
+        "w": 168,
+        "h": 252
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 89,
-        "w": 84,
-        "h": 126
+        "x": 1000,
+        "y": 178,
+        "w": 168,
+        "h": 252
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 48.aseprite": {
       "frame": {
-        "x": 2929,
-        "y": 0,
-        "w": 84,
-        "h": 126
+        "x": 1920,
+        "y": 720,
+        "w": 168,
+        "h": 252
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 89,
-        "w": 84,
-        "h": 126
+        "x": 1000,
+        "y": 178,
+        "w": 168,
+        "h": 252
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 49.aseprite": {
       "frame": {
-        "x": 3270,
-        "y": 0,
-        "w": 84,
-        "h": 125
+        "x": 2602,
+        "y": 720,
+        "w": 168,
+        "h": 250
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 501,
-        "y": 89,
-        "w": 84,
-        "h": 125
+        "x": 1002,
+        "y": 178,
+        "w": 168,
+        "h": 250
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "granja_casa 50.aseprite": {
       "frame": {
-        "x": 3354,
-        "y": 0,
-        "w": 84,
-        "h": 125
+        "x": 2770,
+        "y": 720,
+        "w": 168,
+        "h": 250
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 501,
-        "y": 89,
-        "w": 84,
-        "h": 125
+        "x": 1002,
+        "y": 178,
+        "w": 168,
+        "h": 250
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -1078,8 +1078,8 @@
     "image": "granja_casa.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4023,
-      "h": 475
+      "w": 3958,
+      "h": 1204
     },
     "scale": "1",
     "frameTags": [

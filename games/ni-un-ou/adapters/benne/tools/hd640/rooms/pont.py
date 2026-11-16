@@ -17,6 +17,12 @@ from hd.rooms.exterior import day_sky, day_sea
 from hd.rooms.pont import BRI, AMB, SCRG, WOOD, FLOORB, NSKY, NSEA
 from hd640.rooms.sala_radio import door_frame
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 GREENL = (90, 240, 140)
 PAPERY = [(60, 56, 46), (120, 114, 96), (176, 168, 140), (214, 206, 176), (236, 230, 204)]
 CABLE = [(6, 6, 8), (16, 16, 20), (30, 30, 36), (48, 48, 56), (72, 72, 80)]
@@ -105,9 +111,8 @@ def _day():
 def outside(cv, x0, y0, x1, y1):
     if _MODE['dia']:
         src, dst = _day().load(), cv.P
-        for y in range(max(0, y0), min(H - 1, y1) + 1):
-            for x in range(max(0, x0), min(W - 1, x1) + 1):
-                dst[x, y] = src[x, y]
+        for X, Y, x, y in cv.pixels(x0, y0, x1, y1):
+            dst[X, Y] = src[X, Y]
         return
     _night(cv, x0, y0, x1, y1, t=_ANIM['mar'] * 2 * math.pi / MAR_N)
 
@@ -626,32 +631,27 @@ def fosc(cv):
     """El generador parat: tot fosc, només els llums d'emergència vermells i les pantalles amb el SAI."""
     P = cv.P
     lamps = ((53, 35), (531, 35))
-    for y in range(H):
-        for x in range(W):
-            a = 165
-            r = 0
-            for lx, ly in lamps:
-                d = math.hypot(x - lx, (y - ly) * 1.1)
-                if d < 147:
-                    f = (1 - d / 147) ** 1.6
-                    a -= int(70 * f)
-                    r += int(150 * f)
-            d = math.hypot(x - 368, y - 123)                     # el terminal (SAI) encara fa claror
-            if d < 61:
-                a -= int(80 * (1 - d / 61) ** 1.5)
-            a = max(0, min(255, a))
-            if a > 0:
-                P[x, y] = (min(255, 4 + r // 3), 2, 8, a)
+    for X, Y, x, y in cv.pixels():                               # (X, Y: píxel real; x, y: de sala)
+        a = 165
+        r = 0
+        for lx, ly in lamps:
+            d = math.hypot(x - lx, (y - ly) * 1.1)
+            if d < 147:
+                f = (1 - d / 147) ** 1.6
+                a -= int(70 * f)
+                r += int(150 * f)
+        d = math.hypot(x - 368, y - 123)                         # el terminal (SAI) encara fa claror
+        if d < 61:
+            a -= int(80 * (1 - d / 61) ** 1.5)
+        a = max(0, min(255, a))
+        if a > 0:
+            P[X, Y] = (min(255, 4 + r // 3), 2, 8, a)
     for lx, ly in lamps:                                         # els llums d'emergència
-        for y in range(ly - 4, ly + 4):
-            for x in range(lx - 9, lx + 10):
-                P[x, y] = (40, 40, 46, 255)
-        for x in range(lx - 9, lx + 10):
-            P[x, ly - 4] = (62, 62, 70, 255)
-        for y in range(ly - 1, ly + 4):
-            for x in range(lx - 7, lx + 8):
-                if ((x - lx) / 7.5) ** 2 + ((y - ly - 1) / 3) ** 2 <= 1:
-                    P[x, y] = (255, 110 if y == ly else 40, 30, 255)
+        for X, Y, x, y in cv.pixels(lx - 9, ly - 4, lx + 9, ly + 3):
+            P[X, Y] = (40, 40, 46, 255) if Y // cv.S > ly - 4 else (62, 62, 70, 255)
+        for X, Y, x, y in cv.pixels(lx - 7, ly - 1, lx + 7, ly + 3):
+            if ((x - lx) / 7.5) ** 2 + ((y - ly - 1) / 3) ** 2 <= 1:
+                P[X, Y] = (255, 110 if Y // cv.S == ly else 40, 30, 255)
 
 
 def dia(cv):
@@ -666,11 +666,10 @@ def dia(cv):
     day.tint(0, 0, W - 1, H - 1, (150, 160, 172), 0.1)
     src, o = day.img.load(), cv.P
     x0, y0, x1, y1 = SCREEN
-    for y in range(H):
-        for x in range(W):
-            if math.hypot(x - RADAR[0], y - RADAR[1]) <= 16.5 or (x0 <= x <= x1 and y0 <= y <= y1):
-                continue
-            o[x, y] = src[x, y]
+    for X, Y, x, y in cv.pixels():
+        if math.hypot(x - RADAR[0], y - RADAR[1]) <= 16.5 or (x0 <= X // cv.S <= x1 and y0 <= Y // cv.S <= y1):
+            continue
+        o[X, Y] = src[X, Y]
 
 
 PROPS = {'dia': dia, 'safata': safata, 'guardacostes': guardacostes, 'fosc': fosc}

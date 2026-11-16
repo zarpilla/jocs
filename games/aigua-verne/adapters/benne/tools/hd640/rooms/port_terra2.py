@@ -22,6 +22,12 @@ from hd640.rooms.terra2_comu import (
     PAPER, LED, GRASS, text, text_width, gota, dust_sky, hills, canonada, panell_preu, cracks, shadow, outline,
     dust_wind_frames, llum_canonada_frames, _diff)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 HOR = 122
 CAN_X = 364
 SUN = (556, 22)
@@ -464,7 +470,7 @@ def _frames_pols():
 
 
 def _frames_llum():
-    return llum_canonada_frames(CAN_X)
+    return llum_canonada_frames(CAN_X, s=Canvas.S)
 
 
 def _frames_balisa():
@@ -472,7 +478,7 @@ def _frames_balisa():
     x, y = 521, int(_hull_top(520)) - 32
     frames = []
     for i in range(10):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * Canvas.S, H * Canvas.S), (0, 0, 0, 0))   # (a la mida de l'art)
         k = max(0.0, math.cos(i / 10 * 2 * math.pi))
         if k > 0.1:
             cv = Canvas(img=img)

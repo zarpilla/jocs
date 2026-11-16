@@ -16,6 +16,12 @@ from hd.rooms.exterior import (vnoise, fbm, smooth, platform, lifebuoy,
                                NSKY, NSEA, DSKY, DCLOUD, DSEA, TURBID, HULLN, REDH, STEELX, CABX, DECKX, ORANGEB,
                                ROPE, LAMP, WINDOW, GLOW_WARM, GLOW_MOON, RUST_)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 K = 4 / 3
 HOR = 115           # l'horitzó
 RAIL = 141          # la regala de la borda
@@ -600,13 +606,12 @@ def gull(cv, x, y, wing=1, col=(226, 228, 224)):
 
 
 def _stain(cv, cx, ywl, rx, ry, k=1.0, seed=21):
-    for y in range(int(ywl - ry), int(ywl + ry) + 1):
-        for x in range(int(cx - rx), int(cx + rx) + 1):
-            nx, ny = (x - cx) / rx, (y - ywl) / ry
-            d = nx * nx + ny * ny + (fbm(x / K / 9, y / K / 2, seed) - 0.5) * 0.9
-            a = k * smooth(0.0, 0.45, 1 - d)
-            if a > B4[y & 3][x & 3] * 0.9 and y > HOR:
-                cv.P[x, y] = TURBID[3 if hr(x // 5, y) > 0.3 else 4] + (int(min(0.6, a) * 255),)
+    for X, Y, x, y in cv.pixels(int(cx - rx), int(ywl - ry), int(cx + rx), int(ywl + ry)):
+        nx, ny = (x - cx) / rx, (y - ywl) / ry
+        d = nx * nx + ny * ny + (fbm(x / K / 9, y / K / 2, seed) - 0.5) * 0.9
+        a = k * smooth(0.0, 0.45, 1 - d)
+        if a > B4[Y & 3][X & 3] * 0.9 and Y // cv.S > HOR:
+            cv.P[X, Y] = TURBID[3 if hr(X // cv.S // 5, Y // cv.S) > 0.3 else 4] + (int(min(0.6, a) * 255),)
 
 
 def plataforma(cv, t=0.0):
@@ -692,7 +697,8 @@ def _sea_frames(base, sea):
     ref = Canvas(light=LIGHT)
     sea(ref, 0.0)
     rp, bp = ref.img.load(), base.load()
-    open_ = [(x, y) for y in range(HOR + 1, RAIL + 6) for x in range(W) if bp[x, y] == rp[x, y]]
+    S = base.width // W                                               # (en píxels reals: art a 2×)
+    open_ = [(X, Y) for Y in range((HOR + 1) * S, (RAIL + 6) * S) for X in range(base.width) if bp[X, Y] == rp[X, Y]]
     frames = []
     for i in range(SEA_N):
         a, b = Canvas(light=LIGHT), Canvas(light=LIGHT)
@@ -701,8 +707,8 @@ def _sea_frames(base, sea):
         w = max(0, i - (SEA_N - SEA_FADE)) / SEA_FADE
         out = base.copy()
         o, ap, bpp = out.load(), a.img.load(), b.img.load()
-        for x, y in open_:
-            o[x, y] = bpp[x, y] if hr(x, y, 90) < w else ap[x, y]
+        for X, Y in open_:
+            o[X, Y] = bpp[X, Y] if hr(X // S, Y // S, 90) < w else ap[X, Y]
         frames.append(_diff(out, base))
     return frames
 

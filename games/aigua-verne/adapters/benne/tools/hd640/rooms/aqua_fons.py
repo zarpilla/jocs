@@ -27,6 +27,12 @@ from hd640.rooms.aqua_comu import (RH, SKYA, SALT, SAND, STONEA, ALGA, ALGAS, WO
                                    cel, plana, canonada, canonada_llum, shade, to_screen, text180,
                                    calitja_frames, pols_frames, diff, amb_contorn)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 HOR = 146                 # l'horitzó (a la dreta, on s'acaba la paret)
 WALL_X1 = 420             # on s'acaba la paret del moll
 WTOP = 20                 # el parapet, dalt de tot
@@ -120,7 +126,7 @@ def paret(cv):
             cv.put(x, y, STONEA if f < 0.5 else WETST, lvl)
     # l'ombra al peu de la paret, i la calitja a dalt de tot (és molt amunt)
     cv.darken(0, WBASE, WALL_X1 + 7, WBASE + 2, lambda x, y: 0.9 - (y - WBASE) * 0.3)
-    cv.tint(0, WTOP - 8, WALL_X1 + 7, WBASE, (214, 226, 238), lambda x, y: 0.22 * (1 - (y - WTOP + 8) / (WBASE - WTOP + 8)) ** 1.5)
+    cv.tint(0, WTOP - 8, WALL_X1 + 7, WBASE, (214, 226, 238), lambda x, y: 0.22 * max(0.0, 1 - (y - WTOP + 8) / (WBASE - WTOP + 8)) ** 1.5)
 
 
 def regla(cv, x0=86):
@@ -639,9 +645,8 @@ def bg(cv):
     x0, y0, x1, y1 = BASKET
     cv.darken(x0 - 3, y1 - 1, x1 + 5, y1 + 3, lambda x, y: 0.95 if abs(x - (x0 + x1) / 2 - 1) < (x1 - x0) / 2 + 3 - (y - y1) else 0)
     amb_contorn(cv, cistella)
-    for y in range(RH, H):                                                       # la barra de verbs: negre
-        for x in range(W):
-            cv.P[x, y] = (0, 0, 0, 255)
+    for X, Y, _, _ in cv.pixels(0, RH, W - 1, H - 1):                            # la barra de verbs: negre
+        cv.P[X, Y] = (0, 0, 0, 255)
 
 
 PROPS = {'sorra': sorra}
@@ -660,11 +665,11 @@ def _frames_calitja():
 
 
 def _frames_pols():
-    return pols_frames(24, 30, (0, 180, W - 1, RH - 6), seed=9)
+    return pols_frames(24, 30, (0, 180, W - 1, RH - 6), seed=9, C=Canvas)
 
 
 def _frames_llum():
-    on = canonada_llum(CAN_X, CAN_LY, True)
+    on = canonada_llum(CAN_X, CAN_LY, True, Canvas)
     off = Canvas(transparent=True).img
     return [on, on, off, off, off, off, off, off]
 
@@ -680,7 +685,8 @@ def _frames_llum_juana():
             for x in range(cx - r, cx + r + 1):
                 d = math.hypot(x - cx - 1, y - cy - 1) / r
                 if d < 1 and hr(x, y, i) < (1 - d) * 0.6 * k:
-                    cv.P[x, y] = (255, 236, 180, 255) if d < 0.4 else (250, 206, 120, 255)
+                    for X, Y, _, _ in cv.pixels(x, y, x, y):
+                        cv.P[X, Y] = (255, 236, 180, 255) if d < 0.4 else (250, 206, 120, 255)
         out.append(cv.img)
     return out
 
@@ -699,7 +705,8 @@ def _frames_fum():
             a = int(150 * (1 - t))
             for dx in range(int(1 + t * 3)):
                 if 0 <= y < H:
-                    cv.P[int(x + dx), int(y)] = (236, 238, 240, a)
+                    for X, Y, _, _ in cv.pixels(int(x + dx), int(y), int(x + dx), int(y)):
+                        cv.P[X, Y] = (236, 238, 240, a)
         out.append(cv.img)
     return out
 

@@ -24,6 +24,12 @@ from hd640.rooms.terra2_comu import (
     RH, LIME, TERRA, PLANK, GREYW, STONE, BLACKT, IRONR, RUSTT, GLASSJ, CLOTH, PAPER, STRAW, WHITEP, BLUE, REDT,
     SHUT, WARN, ADOBE, text, text_width, outline, shadow, motes_frames, _diff)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 206                     # on la paret toca a terra
 CEIL_Y = 14                       # on la paret toca al sostre
 VP = (320, 112)                   # el punt de fuga
@@ -435,14 +441,12 @@ def window(cv):
 
 def sunbeam(cv):
     """El raig de sol del finestró, que travessa la pols i fa una taca a terra."""
-    for y in range(56, 252):
-        for x in range(300, W):
-            b = beam(x, y)
-            if b > 0:
-                k = 0.18 * b if y < FLOOR_Y else 0.34 * b
-                if k > B4[y & 3][x & 3] * 0.5:
-                    o = cv.get(x, y)
-                    cv.flat(x, y, mix(o, SUN, k + 0.12))
+    for X, Y, x, y in cv.pixels(300, 56, W - 1, 251):                       # (píxel a píxel, a la resolució real)
+        b = beam(x, y)
+        if b > 0:
+            k = 0.18 * b if y < FLOOR_Y else 0.34 * b
+            if k > B4[Y & 3][X & 3] * 0.5:
+                cv.P[X, Y] = mix(cv.P[X, Y], SUN, k + 0.12) + (255,)
 
 
 def calendari(cv):

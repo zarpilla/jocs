@@ -22,6 +22,12 @@ from hd.rooms.arenga import (WALL, ENG_LIGHT, DECK, CAB, LAG, REDP, YELL, SEAG, 
                              WARM, RED_GLOW, box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms.comu import _diff, text, text_width
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 ENG = ENG_LIGHT
 FLOOR_Y = 203
 BOTTOM = 260                      # per sota hi ha la barra de verbs
@@ -687,7 +693,7 @@ def floor(cv):
 
 def water(cv, mask):
     """Dos dits d'aigua: tint fosc i verdós, reflex de la paret, ones i les espurnes dels llums."""
-    src = cv.img.copy().load()
+    src, S = cv.img.copy().load(), cv.S                               # (src, en píxels reals)
     WC = (10, 34, 40)
     for y in range(FLOOR_Y, BOTTOM + 16):
         depth = (y - FLOOR_Y) / (BOTTOM - FLOOR_Y)
@@ -698,7 +704,7 @@ def water(cv, mask):
             sy = 2 * FLOOR_Y - y - 1
             sx = x + round(math.sin(y * 0.68 + x * 0.04 + _ST['wt']) * 1.9)
             if 0 <= sy < FLOOR_Y and 0 <= sx < W:
-                c = mix(c, src[sx, sy][:3], 0.55 * max(0.0, 1 - depth * 1.3))
+                c = mix(c, src[sx * S, sy * S][:3], 0.55 * max(0.0, 1 - depth * 1.3))
             lit = LIGHT(x, y)
             if (math.sin(x * 0.16 + y * 1.42 + math.sin(y * 0.28) * 4 - _ST['wt']) > 0.93 and lit > 0.2
                     and hr(x // 5, y) > 0.3):
@@ -723,7 +729,7 @@ def water(cv, mask):
 
 
 def reflect_obj(cv, mask, x0, x1, top, base, k=0.4):
-    src = cv.img.copy().load()
+    src, S = cv.img.copy().load(), cv.S
     for y in range(base + 1, min(BOTTOM + 16, base + (base - top) + 1)):
         sy = 2 * base - y
         f = k * (1 - (y - base) / (base - top + 1))
@@ -731,16 +737,15 @@ def reflect_obj(cv, mask, x0, x1, top, base, k=0.4):
             if not mask[y][x]:
                 continue
             sx = x + round(math.sin(y * 0.68 + _ST['wt']) * 1.6)
-            if x0 <= sx <= x1 and top <= sy <= base and src[sx, sy][3] and not mask[sy][sx]:
-                cv.flat(x, y, mix(cv.get(x, y), src[sx, sy][:3], f))
+            if x0 <= sx <= x1 and top <= sy <= base and src[sx * S, sy * S][3] and not mask[sy][sx]:
+                cv.flat(x, y, mix(cv.get(x, y), src[sx * S, sy * S][:3], f))
 
 
 def unmask(mask, cv, x0, y0, x1, y1, before):
     a, b = before.load(), cv.img.load()
-    for y in range(max(0, y0), min(H, y1 + 1)):
-        for x in range(max(0, x0), min(W, x1 + 1)):
-            if a[x, y] != b[x, y]:
-                mask[y][x] = False
+    for X, Y, x, y in cv.pixels(x0, y0, x1, y1):                    # (la màscara és en píxels de sala)
+        if a[X, Y] != b[X, Y]:
+            mask[Y // cv.S][X // cv.S] = False
 
 
 # ─── Objectes a terra ───────────────────────────────────────────────────────
@@ -907,19 +912,17 @@ def fosc(cv):
     """El generador parat: tot a les fosques, menys els llums d'emergència vermells."""
     lights = ((45, 79), (599, 60), (461, 111))
     P = cv.img.load()
-    for y in range(H):
-        for x in range(W):
-            r = min(math.hypot(x - lx, (y - ly) * 1.1) for lx, ly in lights)
-            red = max(0.0, 1 - r / 93) ** 1.6
-            a = 0.84 - 0.42 * red
-            k = 0.5 * red
-            col = mix((2, 4, 10), (120, 14, 10), k)
-            P[x, y] = col + (int(255 * a),)
+    for X, Y, x, y in cv.pixels():
+        r = min(math.hypot(x - lx, (y - ly) * 1.1) for lx, ly in lights)
+        red = max(0.0, 1 - r / 93) ** 1.6
+        a = 0.84 - 0.42 * red
+        k = 0.5 * red
+        col = mix((2, 4, 10), (120, 14, 10), k)
+        P[X, Y] = col + (int(255 * a),)
     for lx, ly in lights:                                             # els llums mateixos
-        for y in range(ly - 3, ly + 4):
-            for x in range(lx - 7, lx + 8):
-                if ((x - lx) / 7) ** 2 + ((y - ly) / 3) ** 2 <= 1:
-                    P[x, y] = (255, 80 + int(60 * hr(x, y)), 60, 255)
+        for X, Y, x, y in cv.pixels(lx - 7, ly - 3, lx + 7, ly + 3):
+            if ((x - lx) / 7) ** 2 + ((y - ly) / 3) ** 2 <= 1:
+                P[X, Y] = (255, 80 + int(60 * hr(X // cv.S, Y // cv.S)), 60, 255)
 
 
 def sentina_oberta(cv):

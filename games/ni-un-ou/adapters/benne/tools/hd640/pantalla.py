@@ -63,8 +63,8 @@ def puja_gui(name, dy, anchor):
     path.write_text(json.dumps(gui, indent=2, ensure_ascii=False) + '\n')
 
 
-def pintada_fins_a_baix(room):
-    """Si el fons de la sala té alguna cosa pintada a sota de y = 270 (no és negre)."""
+def pintada_fins_a_baix(room, s=1):
+    """Si el fons de la sala té alguna cosa pintada a sota de y = 270 (no és negre). `s`: l'artScale del full."""
     d = GAME / 'assets/images/rooms' / room
     js, png = d / f'{room}.json', d / f'{room}.png'
     if not js.exists() or not png.exists():
@@ -73,7 +73,7 @@ def pintada_fins_a_baix(room):
     tags = {t['name']: t['from'] for t in sheet['meta']['frameTags']}
     fr = list(sheet['frames'].values())[tags.get('BG', 0)]
     f, src = fr['frame'], fr['spriteSourceSize']
-    y0 = 270 - src['y']
+    y0 = 270 * s - src['y']
     if y0 >= f['h']:
         return False
     img = Image.open(png).convert('L').crop((f['x'], f['y'] + max(0, y0), f['x'] + f['w'], f['y'] + f['h']))
@@ -87,7 +87,7 @@ def sales():
         room = path.parent.name
         data = json.loads(path.read_text())
         before = (data.get('scrollBounds'), data.get('viewAnchorY'))
-        if pintada_fins_a_baix(room):
+        if pintada_fins_a_baix(room, data.get('artScale', 1)):
             data['scrollBounds'] = {'x': 0, 'y': 0, 'width': W, 'height': H0}
             data['viewAnchorY'] = round(CAMERA_Y.get(room, MIG) / (H0 - H), 3)
             que = f'sencera en un monitor; en un mòbil, des de y={CAMERA_Y.get(room, MIG)}'

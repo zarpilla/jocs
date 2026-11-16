@@ -24,6 +24,12 @@ from hd640.rooms.verdant_comu import (SKYV, TURF, WHITEV, GOLDV, GLASSV, MAGENTA
                                       PLANK, WOODG, ZINC, TERRACOTA, LEAF, DRYLEAF, TOMATO, BLACKT, HOSE, RUSTV,
                                       flor, ombra, galleda)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 RH = 260
 FLOOR_Y = 214                 # on la paret del fons es troba amb el terra
 BEAM_Y = 26                   # el tirant de la teulada
