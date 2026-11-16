@@ -22,6 +22,11 @@ from hd.rooms.pis_cuina import outline_poly
 from hd.rooms.bar_sala import (WALLY, WOOD, FORMICA, STEELB, BRASS, TERRAZ, SLATE, PORC, HAM, ENAMEL,  # noqa: F401
                                TVB, PITCH, GLASSD, BOTTLES)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+
 FLOOR_Y = 200
 BAR_TOP = 149      # el taulell de la barra: cantell del darrere
 BAR_FRONT = 160    # cantell del davant
@@ -42,6 +47,9 @@ def fast_diff(frame, base, box=None):
     out = Image.new('RGBA', frame.size, (0, 0, 0, 0))
     if box is None:
         box = (0, 0) + frame.size
+    else:
+        s = frame.width // W                                   # la caixa és en píxels de sala (art a 2×)
+        box = tuple(v * s for v in box)
     a, b = frame.crop(box), base.crop(box)
     d = ImageChops.difference(a.convert('RGB'), b.convert('RGB')).convert('L').point(lambda v: 255 if v else 0)
     out.paste(a, box[:2], d)

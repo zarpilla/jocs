@@ -138,6 +138,7 @@ import {
   resolveCharacterFeetLocal,
   type CharacterFeetLocal,
 } from '../characterFeet';
+import { applyCharacterLights, compileCharacterLights } from '../room/characterLights';
 import {
   applyCharacterSpriteRegionTintFromWinningRegion,
   computeRoomRegionPerspective,
@@ -348,6 +349,12 @@ function mergeRoomPropAnimationClips(spawns: readonly RoomPropSpawn[], roomId: s
 function verbHoverDefaultVerbPatch(def: PointerVerbTarget): Pick<VerbHoverTarget, 'defaultVerb'> {
   const v = def.defaultVerb;
   return v && v.length > 0 ? { defaultVerb: v } : {};
+}
+
+/** Pixels of the room sheet per room pixel ({@link RoomData.artScale}). */
+function roomArtScale(room: { artScale?: number }): number {
+  const k = room.artScale;
+  return typeof k === 'number' && Number.isFinite(k) && k > 0 ? k : 1;
 }
 
 export class RoomScene extends Phaser.Scene {
@@ -4030,8 +4037,17 @@ export class RoomScene extends Phaser.Scene {
     const s = perspective.characterScale;
     sprite.setScale(s, s);
     placeSpriteByFeet(sprite as Phaser.GameObjects.Sprite, feetLocal, worldFeetX, worldFeetY);
-    applyCharacterSpriteRegionTintFromWinningRegion(sprite, perspective.tintRegion);
+    const lights = compileCharacterLights(this.roomData.characterLights);
+    if (lights) {
+      applyCharacterLights(sprite, lights, this.isPropShownForLights);
+    } else {
+      applyCharacterSpriteRegionTintFromWinningRegion(sprite, perspective.tintRegion);
+    }
   }
+
+  /** For {@link applyCharacterLights}: a light with `whenPropVisible` only shines while that prop is shown. */
+  private readonly isPropShownForLights = (propId: string): boolean =>
+    this.propSpritesById.get(propId)?.visible === true;
 
   /**
    * Applies region perspective scale for characters that are not mid–feet-interpolating walk tween.
@@ -5767,6 +5783,11 @@ export class RoomScene extends Phaser.Scene {
       // sheets (the typical BENNE workflow) each frame already covers the full room width
       // and height, so no explicit setDisplaySize is needed.
       const sprite = this.add.sprite(spawnX, spawnY, textureKey).setOrigin(0, 0);
+      // Room art drawn at `artScale`× (a denser sheet): shown at 1/artScale, so it still covers the room.
+      const artScale = roomArtScale(data.room);
+      if (artScale !== 1) {
+        sprite.setScale(1 / artScale);
+      }
       const jsonVisible = spawn.data.visible !== false;
       const jsonAlpha = spawn.data.alpha ?? 1;
       sprite.setVisible(readSavedPropVisible(manager, data.room.id, spawn.id, jsonVisible));
@@ -5848,7 +5869,9 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
 
-    const flat = pts.flatMap((p) => [p.x - sprite.x, p.y - sprite.y]);
+    // Hit areas are in the sprite's local (texture) space: room pixels × the sprite's inverse scale.
+    const k = 1 / (sprite.scaleX || 1);
+    const flat = pts.flatMap((p) => [(p.x - sprite.x) * k, (p.y - sprite.y) * k]);
     const poly = new Phaser.Geom.Polygon(flat);
     sprite.setInteractive({
       hitArea: poly,

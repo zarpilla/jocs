@@ -59,6 +59,13 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
   passat a JSON i tornat a entrar (`src/engine/adaptiveResize.ts`; no toca cap partida desada);
 - una pantalla de càrrega a `index.html` (el nom del joc i una barra que segueix el loader de la `BootScene`;
   vegeu `src/engine/bootLoadingScreen.ts`), amb els colors de cada joc (`colors` al bloc `benne` del `package.json`).
+- la llum de la sala sobre els personatges (`characterLights` al `.room.json`: un `ambient` i llums puntuals amb
+  `x`, `y`, `radius`, `color`, `intensity` i, si cal, `whenPropVisible`): cada fotograma es mira la llum als quatre
+  cantons del sprite i es posa com a tint en mode overlay (gris 0.5 = com està dibuixat), de manera que un mateix
+  tint enfosqueix i acoloreix. Substitueix el tint de les regions a la sala (`src/engine/room/characterLights.ts`).
+- art de sala més dens (`artScale` al `.room.json`, p. ex. `2`): el full de la sala és a 2× i el motor el mostra a
+  la meitat. La geometria, els scripts i els personatges continuen en píxels de sala; com que el canvas es pinta a la
+  resolució de la pantalla, el detall de l'art es veu tot.
 
 `adapters/benne/patches/motor-benne.patch` en recull una part. Si mai s'actualitza el motor des d'un
 Benne nou (`npm run benne:create -- --from <benne> --motor`), revisa `git diff packages/benne` i torna a

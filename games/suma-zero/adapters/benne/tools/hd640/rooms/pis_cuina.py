@@ -19,6 +19,11 @@ from hd.rooms.comu import obox, outline, cable, text, _diff, PLASTIC, SCREEN, SH
 from hd.rooms.pis_cuina import (PLASTER, TILEW, CREAM, FRIDGEB, WOOD, STEELB, PORC, COFFEE, TILEF, TERRA, SLATE, GLASSA,
                                 LEMON, BOMBER, RIB, CYANL, BRICKL, COURT, CLOTH, FRIDGE_IN, TV_SEQ, outline_poly)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+
 FLOOR_Y = 200
 TOP_Y = 152        # taulell: el cantell del darrere (contra la paret)
 FRONT_Y = 161      # taulell: el cantell del davant
@@ -672,7 +677,9 @@ def _frames_tele():
         d = _diff(cv.img, base)
         only = d.copy()
         only.paste((0, 0, 0, 0), (0, 0) + d.size)
-        only.paste(d.crop(box), box[:2])
+        s = d.width // W
+        bs = (box[0] * s, box[1] * s, box[2] * s, box[3] * s)
+        only.paste(d.crop(bs), bs[:2])
         frames.append(only)
     return frames
 

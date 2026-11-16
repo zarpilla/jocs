@@ -905,7 +905,7 @@ def _amb_geometria():
         geo = getattr(importlib.import_module(f'hd640.rooms.{name}'), 'GEOMETRIA', None)
         if not geo:
             continue
-        for key in ('things', 'spawns', 'walkable'):
+        for key in ('things', 'spawns', 'walkable', 'characterLights'):
             if key in geo:
                 d[key] = {**d.get(key, {}), **geo[key]} if isinstance(geo[key], dict) else geo[key]
 

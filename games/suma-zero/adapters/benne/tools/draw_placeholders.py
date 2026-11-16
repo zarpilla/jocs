@@ -268,9 +268,11 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     k = room_designs.K = h / DESIGN_H  # el disseny és en coordenades de 352×198
 
     hd = (w, h) == (HD_W, HD_H) and has_hd(name)  # art HD (hd/rooms/<sala>.py), si n'hi ha
+    s = 1                                         # píxels de l'art per píxel de sala (ART_SCALE: art a 2×)
     if hd:
         bg, hd_props = render_hd(name)
         hd_anims = render_hd_anims(name)
+        s = bg.width // w
     else:
         bg = Image.new('RGBA', (w, h), (0, 0, 0, 255))
         design['bg'](C(bg))
@@ -286,7 +288,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     for prop in room['props']:
         if prop['id'] == 'BG' or (hd and (prop['id'] in hd_anims or prop['id'] == 'davant')):
             continue
-        frame = Image.new('RGBA', (w, h), (0, 0, 0, 0))
+        frame = Image.new('RGBA', (w * s, h * s), (0, 0, 0, 0))
         if hd:
             if prop['id'] in hd_props:
                 frame = hd_props[prop['id']]
@@ -346,7 +348,11 @@ def draw_designed(dir_: Path, game_dir: Path, design):
             elif p['id'] in f.get('props', ()):
                 p['zIndex'], p['baseline'] = z + 1, f['baseline']
 
-    sheet, meta = packed_sheet(name, frames, tags, w, h, spans)
+    sheet, meta = packed_sheet(name, frames, tags, w * s, h * s, spans)
+    if s != 1:
+        room['artScale'] = s                      # el motor mostra el full a 1/s
+    else:
+        room.pop('artScale', None)
     sheet.save(dir_ / f'{name}.png')
     (dir_ / f'{name}.json').write_text(json.dumps(meta, indent=2) + '\n')
     (dir_ / '.provisional').write_text('Art provisional: esborra aquest fitxer quan el PNG sigui definitiu.\n')
@@ -378,6 +384,15 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         if cid in design['spawns']:
             ch['x'], ch['y'] = pt(*design['spawns'][cid], k)
     room['walkable']['polygons'][0]['points'] = [xy(x, y) for x, y in design['walkable']]
+    # La llum de la sala sobre els personatges (en temps d'execució: characterLights del motor).
+    if design.get('characterLights'):
+        cl = json.loads(json.dumps(design['characterLights']))
+        for light in cl.get('lights', []):
+            light['x'], light['y'] = pt(light['x'], light['y'], k)
+            light['radius'] = pt(light['radius'], 0, k)[0] - pt(0, 0, k)[0]
+        room['characterLights'] = cl
+    else:
+        room.pop('characterLights', None)
     room_path.write_text(json.dumps(room, indent=2, ensure_ascii=False) + '\n')
     print(f'✔ escena provisional: rooms/{name}')
 

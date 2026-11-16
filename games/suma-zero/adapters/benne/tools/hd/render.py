@@ -50,10 +50,24 @@ def has_hd(name):
     return (ROOMS / f'{name}.py').exists()
 
 
+def art_scale(name):
+    """Píxels de l'art per píxel de sala: 2 si la sala té `ART_SCALE = 2` (es dibuixa amb hd1280.Canvas2x)."""
+    return getattr(load(name), 'ART_SCALE', 1)
+
+
+def canvas_class(name):
+    if art_scale(name) == 1:
+        return Canvas
+    from hd1280.canvas2x import Canvas2x, S
+    assert art_scale(name) == S, f'{name}: ART_SCALE només pot ser 1 o {S}'
+    return Canvas2x
+
+
 def render(name, prop_ids=None):
-    """→ (fons RGBA, {id: fotograma RGBA})."""
+    """→ (fons RGBA, {id: fotograma RGBA}), a la mida de l'art (×ART_SCALE)."""
     mod = load(name)
     light = getattr(mod, 'LIGHT', None)
+    Canvas = canvas_class(name)
     cv = Canvas(light=light)
     mod.bg(cv)
     props = {}
@@ -73,9 +87,10 @@ def front(name, bg):
         return None
     img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
     src, dst = bg.load(), img.load()
+    s = bg.size[0] // W                       # la màscara és en píxels de sala
     for y in range(bg.size[1]):
         for x in range(bg.size[0]):
-            if f['mask'](x, y):
+            if f['mask'](x // s, y // s):
                 dst[x, y] = src[x, y]
     return img, f
 
@@ -95,7 +110,8 @@ def _code_key(name):
     """Hash del codi que dibuixa la sala: pix.py (i hd640/__init__.py) i els mòduls de sala que fa servir (vegeu _deps)."""
     import hashlib
     tools = HERE.parent
-    files = [HERE / 'pix.py', tools / 'hd640' / '__init__.py'] + sorted(_deps(name))
+    files = [HERE / 'pix.py', tools / 'hd640' / '__init__.py', tools / 'hd640' / 'llum.py',
+             tools / 'hd1280' / 'canvas2x.py', HERE / 'rooms' / 'comu.py'] + sorted(_deps(name))
     h = hashlib.sha256()
     for f in files:
         if f.exists():

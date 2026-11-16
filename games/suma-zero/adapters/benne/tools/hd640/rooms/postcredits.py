@@ -14,7 +14,7 @@ import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import Light, Canvas, W, H, hr, mix
 from hd.rooms.comu import cable, text, _diff
 from hd.rooms.postcredits import MOON, TERM, DIMSCR, CHEESE, SAUCE, CRUST, NETB
-from hd640.rooms.pis_estudi import bg as estudi_bg, stripes, DESKB, FLOOR_Y, HATCH, PORTS
+from hd640.rooms.pis_estudi import _draw as estudi_bg, stripes, DESKB, FLOOR_Y, HATCH, PORTS
 
 # Llums apagats: només les pantalles i, per la finestra, la lluna i el fanal.
 LIGHT = Light(ambient=-1.2, vignette=(107, 67), floor_fade=(248, 29))
