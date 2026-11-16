@@ -505,6 +505,8 @@ export function bindHotspots(handles: Record<string, Showable>) {
 export interface TouchRouter {
   takes(verb: string, target: FallbackTarget, item?: string): boolean;
   route(verb: string, target: FallbackTarget, item?: string): unknown;
+  /** Just després que el nucli resolgui un «mira» (abans de dir-ne les línies): la tàctil apunta què s'ha vist. */
+  looked?(target: FallbackTarget): void;
 }
 let router: TouchRouter | null = null;
 export function setTouchRouter(r: TouchRouter | null) {

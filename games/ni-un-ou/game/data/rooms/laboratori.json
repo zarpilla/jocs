@@ -220,15 +220,6 @@
               "text": "sala.laboratori.portatil.4"
             }
           ]
-        },
-        {
-          "verb": "pickUp",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.laboratori.portatil.5"
-            }
-          ]
         }
       ]
     },
@@ -298,10 +289,7 @@
       },
       "interactions": [
         {
-          "verb": [
-            "look",
-            "pickUp"
-          ],
+          "verb": "look",
           "lines": [
             {
               "who": "narrator",

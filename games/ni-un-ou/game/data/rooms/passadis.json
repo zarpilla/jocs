@@ -343,6 +343,34 @@
                 "var": "escena",
                 "op": "==",
                 "value": 1
+              },
+              {
+                "flag": "travesser_tret"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.passadis.escala_amunt.7"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "walkTo"
+          ],
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 1
               }
             ]
           },

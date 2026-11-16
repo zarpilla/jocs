@@ -1006,24 +1006,31 @@
         {
           "verb": [
             "open",
-            "pickUp"
+            "pickUp",
+            "use"
           ],
           "action": {
             "name": "munta.recollir"
+          },
+          "if": {
+            "var": "munta_pont",
+            "op": "!=",
+            "value": ""
           }
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
               "text": "sala.pont.munta.2"
             }
-          ]
+          ],
+          "if": {
+            "var": "munta_pont",
+            "op": "==",
+            "value": ""
+          }
         }
       ]
     },
@@ -1150,11 +1157,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "protagonist": "iri"
           },
@@ -1166,11 +1169,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

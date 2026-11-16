@@ -234,15 +234,27 @@
             },
             {
               "who": "player",
-              "text": "sala.coberta_proa.escotilla.8"
+              "text": "sala.coberta_proa.escotilla.8",
+              "if": {
+                "flag": "cisalla_mellada",
+                "is": false
+              }
             },
             {
               "who": "narrator",
-              "text": "sala.coberta_proa.escotilla.9"
+              "text": "sala.coberta_proa.escotilla.9",
+              "if": {
+                "flag": "cisalla_mellada",
+                "is": false
+              }
             },
             {
               "who": "player",
-              "text": "sala.coberta_proa.escotilla.10"
+              "text": "sala.coberta_proa.escotilla.10",
+              "if": {
+                "flag": "cisalla_mellada",
+                "is": false
+              }
             },
             {
               "who": "player",
@@ -302,9 +314,17 @@
             "pull"
           ],
           "if": {
-            "var": "escena",
-            "op": "==",
-            "value": 6
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 6
+              },
+              {
+                "flag": "cadenat_tallat",
+                "is": false
+              }
+            ]
           },
           "lines": [
             {
@@ -324,7 +344,11 @@
               "who": "player",
               "text": "sala.coberta_proa.escotilla.16"
             }
-          ]
+          ],
+          "if": {
+            "flag": "cadenat_tallat",
+            "is": false
+          }
         }
       ]
     },

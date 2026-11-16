@@ -349,11 +349,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pull",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

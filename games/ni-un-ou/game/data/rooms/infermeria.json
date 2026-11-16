@@ -527,11 +527,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "open",
-            "pickUp"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -549,11 +545,7 @@
           "dialogue": "fitxes"
         },
         {
-          "verb": [
-            "use",
-            "open",
-            "pickUp"
-          ],
+          "verb": "use",
           "if": {
             "var": "escena",
             "op": "==",
@@ -577,7 +569,12 @@
               "who": "player",
               "text": "sala.infermeria.fitxes.5"
             }
-          ]
+          ],
+          "if": {
+            "var": "escena",
+            "op": "!=",
+            "value": 2
+          }
         }
       ]
     },

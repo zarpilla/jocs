@@ -192,20 +192,31 @@
         {
           "verb": [
             "open",
-            "pickUp"
+            "pickUp",
+            "use"
           ],
           "action": {
             "name": "munta.recollir"
+          },
+          "if": {
+            "var": "munta_cuina",
+            "op": "!=",
+            "value": ""
           }
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
-            "protagonist": "vet"
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "munta_cuina",
+                "op": "==",
+                "value": ""
+              }
+            ]
           },
           "lines": [
             {
@@ -215,17 +226,18 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
               "text": "sala.cuina.munta.5"
             }
-          ]
+          ],
+          "if": {
+            "var": "munta_cuina",
+            "op": "==",
+            "value": ""
+          }
         }
       ]
     },

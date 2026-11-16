@@ -143,11 +143,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pull",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "protagonist": "vet"
           },
@@ -159,11 +155,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pull",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "antena_desbloquejada",
             "is": false
@@ -182,11 +174,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pull",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "antena_ok",
             "is": false
@@ -205,11 +193,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pull",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

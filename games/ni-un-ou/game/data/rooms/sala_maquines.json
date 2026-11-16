@@ -359,7 +359,12 @@
           ]
         },
         {
-          "verb": "use",
+          "verb": [
+            "use",
+            "close",
+            "push",
+            "pull"
+          ],
           "if": {
             "flag": "valvula_tancada",
             "is": false
@@ -378,36 +383,6 @@
         },
         {
           "verb": [
-            "close",
-            "push",
-            "pull"
-          ],
-          "if": {
-            "flag": "valvula_tancada",
-            "is": false
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.valvula.12"
-            }
-          ]
-        },
-        {
-          "verb": "open",
-          "if": {
-            "flag": "valvula_tancada",
-            "is": false
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.sala_maquines.valvula.14"
-            }
-          ]
-        },
-        {
-          "verb": [
             "use",
             "push",
             "pull",
@@ -419,7 +394,10 @@
               "who": "player",
               "text": "sala.sala_maquines.valvula.13"
             }
-          ]
+          ],
+          "if": {
+            "flag": "valvula_tancada"
+          }
         }
       ]
     },
@@ -472,11 +450,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -544,11 +518,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "brida_tallada",
             "is": false
@@ -561,11 +531,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "valvula_vista",
             "is": false
@@ -578,11 +544,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "valvula_tancada",
             "is": false
@@ -595,11 +557,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "vies_separador",
             "is": false
@@ -612,11 +570,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -649,11 +603,7 @@
           "dialogue": "bastida1"
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "protagonist": "iri"
           },
@@ -665,11 +615,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -705,11 +651,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "vies_separador",
             "is": false
@@ -717,11 +659,7 @@
           "dialogue": "vies"
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -836,11 +774,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "var": "escena",
             "op": "==",
@@ -854,11 +788,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -914,11 +844,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "protagonist": "iri"
           },
@@ -1120,11 +1046,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {

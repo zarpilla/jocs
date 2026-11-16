@@ -286,4 +286,25 @@ describe('Pistes (revisió)', () => {
     amb(p, 'iri');
     expect(n.activeHints()[0]).toBe('usb_safata');
   });
+
+  it("Escena 5: qui envia el seu paper pel muntacàrregues diu «la meva nota» o «la resposta»", () => {
+    const { p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p);
+    anar(p, 'rebost');
+    expect(p.use('llibreta', 'munta').map((l) => l.text)).toContain('Envio la meva nota a la cuina.');
+    amb(p, 'vet');
+    expect(p.do('pickUp', 'safata').map((l) => l.text)).toContain('Envio la resposta al rebost.');
+  });
+
+  it("Escena 7: el registre sense frontisses és una porta, i no diu que és tancat", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
+    amb(p, 'iri', 'taller');
+    p.do('pickUp', 'clau_tubs');
+    anar(p, 'rebost');
+    p.use('clau_tubs', 'registre');
+    expect(p.do('open', 'registre').map((l) => l.key)).toEqual(['sala.rebost.registre.21']);
+    p.use('clau_tubs', 'registre');
+    expect(n.peek({ verb: 'pull', target: { kind: 'hotspot', id: 'registre' } })).toBeUndefined();
+  });
 });

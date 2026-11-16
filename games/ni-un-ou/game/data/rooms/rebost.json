@@ -213,24 +213,31 @@
         {
           "verb": [
             "open",
-            "pickUp"
+            "pickUp",
+            "use"
           ],
           "action": {
             "name": "munta.recollir"
+          },
+          "if": {
+            "var": "munta_rebost",
+            "op": "!=",
+            "value": ""
           }
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
               "text": "sala.rebost.munta.8"
             }
-          ]
+          ],
+          "if": {
+            "var": "munta_rebost",
+            "op": "==",
+            "value": ""
+          }
         }
       ]
     },
@@ -492,6 +499,10 @@
               },
               {
                 "flag": "tomas_clau"
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
               }
             ]
           },
@@ -509,9 +520,17 @@
             "pull"
           ],
           "if": {
-            "var": "escena",
-            "op": "<",
-            "value": 7
+            "all": [
+              {
+                "var": "escena",
+                "op": "<",
+                "value": 7
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
           },
           "lines": [
             {
@@ -526,12 +545,40 @@
             "open",
             "pull"
           ],
+          "if": {
+            "all": [
+              {
+                "flag": "registre_obert",
+                "is": false
+              },
+              {
+                "flag": "frontissa1"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.registre.21"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "open",
+            "pull"
+          ],
           "lines": [
             {
               "who": "player",
               "text": "sala.rebost.registre.12"
             }
-          ]
+          ],
+          "if": {
+            "flag": "registre_obert",
+            "is": false
+          }
         }
       ]
     }

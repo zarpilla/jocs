@@ -300,30 +300,6 @@
           "dialogue": "reunio"
         },
         {
-          "verb": "use",
-          "if": {
-            "all": [
-              {
-                "var": "escena",
-                "op": "==",
-                "value": 8
-              },
-              {
-                "flag": "reunio_comencada"
-              },
-              {
-                "protagonist": "vet"
-              }
-            ]
-          },
-          "lines": [
-            {
-              "who": "narrator",
-              "text": "sala.menjador.espera"
-            }
-          ]
-        },
-        {
           "verb": [
             "use",
             "talkTo"
