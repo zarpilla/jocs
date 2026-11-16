@@ -253,7 +253,7 @@ personal de manteniment.
 > VET: I nosaltres no en tenim ni per pizzes.
 > IRI: Doncs per això ho repartirem. Pizza per a tothom.
 > IRI: Però primer... No. No, no, no. S'ha mort.
-> IRI: Necessito internet de debò. I el router nou encara és a la caixa. [SO: miol]
+> IRI: Necessito internet de debò. I el router nou encara està per muntar. [SO: miol]
 
 **Trencaclosques 1.1 — Els tres cables (Iri).** El router nou necessita tres cables: la **fibra** (penja de la
 paret), el **cable de xarxa** (dins la caixa del router) i l'**alimentació**. Si en Diu no està distret, cada
