@@ -504,8 +504,11 @@ export function bindHotspots(handles: Record<string, Showable>) {
 export interface TouchRouter {
   takes(verb: string, target: FallbackTarget, item?: string): boolean;
   route(verb: string, target: FallbackTarget, item?: string): unknown;
-  /** Just després que el nucli resolgui un «mira» (abans de dir-ne les línies): la tàctil apunta què s'ha vist. */
-  looked?(target: FallbackTarget): void;
+  /**
+   * Just després que el nucli resolgui una interacció (abans de dir-ne les línies): la tàctil apunta què s'ha vist.
+   * `room` és la sala on era la cosa (abans de l'acció, que pot haver canviat de sala).
+   */
+  acted?(verb: string, target: FallbackTarget, room: string | null): void;
 }
 let router: TouchRouter | null = null;
 export function setTouchRouter(r: TouchRouter | null) {

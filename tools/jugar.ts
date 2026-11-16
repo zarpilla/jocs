@@ -10,7 +10,7 @@ import { createInterface } from 'node:readline';
 import { stdin, stdout } from 'node:process';
 import { HeadlessPlayer, MemoryWorld, Narrative, type ResolvedLine } from '@aventura/narrative-core';
 import { loadGameLogic } from './joc.js';
-import { accions, marcaMirat, objecteSol, potAnarALaMa, queFaElToc, verbAmbObjecte } from '../adapters/benne/tactil/runtime/accions.js';
+import { accions, haFet, marcaMirat, objecteSol, potAnarALaMa, queFaElToc, verbAmbObjecte } from '../adapters/benne/tactil/runtime/accions.js';
 import { loadGameFromDisk } from './load-game.js';
 
 const { installGameLogic } = await loadGameLogic();
@@ -71,7 +71,7 @@ function visibleThings() {
 function describeRoom() {
   const room = p.room!;
   console.log(`\n${c.cyan}── ${n.t(content.rooms[room]!.name)} · ${n.characterName(p.active)} ──${c.off}`);
-  const things = visibleThings().map(([id, h]) => `${h.name ? n.t(h.name) : id} ${c.dim}[${id}]${c.off}`);
+  const things = visibleThings().map(([id, h]) => `${h.name ? n.t(h.name) : content.characters[id] ? n.characterName(id) : id} ${c.dim}[${id}]${c.off}`);
   console.log(`Hi ha: ${things.join(', ')}`);
   const altra = altraAqui().map((id) => n.characterName(id));
   if (altra.length) console.log(`També hi és: ${altra.join(', ')}`);
@@ -158,9 +158,9 @@ const label = (verb: string) => n.t(`ui.accio.${verb}`);
 function fa(verb: string, t: { kind: 'item' | 'character' | 'hotspot'; id: string }) {
   if (verb === 'look') marcaMirat(n, t);
   console.log(`${c.dim}(${label(verb)})${c.off}`);
+  const sala = n.world.currentRoom() ?? undefined;
   const lines = p.do(verb, t);
-  // com al runtime (tactil.ts, `looked`): la descripció que queda després de mirar també és vista
-  if (verb === 'look') marcaMirat(n, t);
+  haFet(n, t, sala); // com al runtime (tactil.ts, `acted`): el que en queda ja és vist
   return lines;
 }
 
@@ -180,7 +180,10 @@ async function tactil(cmd: string, args: string): Promise<ResolvedLine[] | null>
     const it = aLaMa;
     console.log(`${c.dim}(${label(verb)} ${n.itemName(it)})${c.off}`);
     aLaMa = null; // al joc, després de fer-lo servir, la mà queda buida
-    return p.do(verb, t, it);
+    const sala = n.world.currentRoom() ?? undefined;
+    const lines = p.do(verb, t, it);
+    haFet(n, t, sala);
+    return lines;
   }
   if (cmd === 'toca') {
     if (t.kind === 'item' && !objecteSol(content, t.id)) {

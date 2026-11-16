@@ -15,7 +15,7 @@
  * serveix per a qualsevol joc de narrative-core.
  */
 import type { InteractionTarget, Narrative } from '@aventura/narrative-core';
-import { accions, marcaMirat, objecteSol, potAnarALaMa, queFaElToc, verbAmbObjecte } from './runtime/accions.js';
+import { accions, haFet, marcaMirat, objecteSol, potAnarALaMa, queFaElToc, verbAmbObjecte } from './runtime/accions.js';
 
 export type Com = 'toc' | 'menú' | 'premut' | 'dret';
 export type Mode = 'dit' | 'ratoli';
@@ -89,14 +89,17 @@ export function mesura(n: Narrative, mode: Mode = 'dit'): Mesura {
           const fn = value as (...args: unknown[]) => unknown;
           if (prop === 'do') return (verb: string, t: string | InteractionTarget, item?: string) => {
             mira(verb, target(t), item);
+            const sala = n.world.currentRoom() ?? undefined;
             const lines = fn.call(obj, verb, t, item);
-            // com al runtime (`looked`): la descripció que queda després de mirar també és vista
-            if (verb === 'look' && !item) marcaMirat(n, target(t));
+            haFet(n, target(t), sala); // com al runtime (`acted`): el que en queda ja és vist
             return lines;
           };
           if (prop === 'use') return (item: string, t: string | InteractionTarget) => {
             mira('use', target(t), item);
-            return fn.call(obj, item, t);
+            const sala = n.world.currentRoom() ?? undefined;
+            const lines = fn.call(obj, item, t);
+            haFet(n, target(t), sala);
+            return lines;
           };
           return typeof value === 'function' ? fn.bind(obj) : value;
         },

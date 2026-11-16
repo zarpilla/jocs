@@ -21,7 +21,7 @@
 import type { FallbackTarget } from '@benne/script';
 import type { TouchRouter } from './narrative';
 import { narrative, targetFromBenne } from './narrative';
-import { marcaMirat } from './accions';
+import { haFet } from './accions';
 import { routeTouch } from './tactil.script';
 
 /** Els dos verbs de la interfície (game-config.json, els posa adapters/benne/tactil/index.ts). */
@@ -108,7 +108,7 @@ export const touchRouter: TouchRouter = {
   // `toca`, `fes` i `accions` són seus; i, amb un objecte a la mà, decideix entre donar i fer servir.
   takes: (verb, _target, item) => verb === TOCA || verb === FES || verb === MENU || item !== undefined,
   route: (verb, target, item) => routeTouch(verb, target, item),
-  // La descripció que queda després de mirar (si la mirada era `once` o tenia efectes) també és vista: el toc
-  // següent fa l'acció en lloc de tornar a mirar.
-  looked: (target) => marcaMirat(narrative, targetFromBenne(target.kind, target.id)),
+  // El que queda d'una cosa després de mirar-la o de fer-hi alguna cosa ja és vist: el toc següent fa l'acció en
+  // lloc de tornar a mirar (`haFet`).
+  acted: (_verb, target, room) => haFet(narrative, targetFromBenne(target.kind, target.id), room ?? undefined),
 };

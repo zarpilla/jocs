@@ -43,6 +43,13 @@ export function accions(narrative: Narrative, target: InteractionTarget, room?: 
     if (same) same.verbs.push(verb);
     else out.push({ verb, verbs: [verb], inert: isInert(def), def, que });
   }
+  // L'etiqueta és el primer verb que l'autor ha escrit a la interacció (`["open", "use", "pickUp"]` → «Obre»), no
+  // el primer de `VERBS_ACCIO`: si no, tot el que també es pot «agafar» diria «Agafa». Una porta (per on es pot
+  // anar), però, sempre diu «Ves-hi».
+  for (const a of out) {
+    const preferit = a.verbs.includes('walkTo') ? 'walkTo' : [a.def.verb].flat().find((v) => a.verbs.includes(v));
+    if (preferit) a.verb = preferit;
+  }
   return out.map(({ def: _def, que: _que, ...a }) => a);
 }
 
@@ -52,14 +59,8 @@ function queFa(def: InteractionDef): string {
   return JSON.stringify(resta);
 }
 
-/** El flag que recorda que ja s'ha mirat una cosa (un personatge, a qualsevol sala; una cosa, a la seva sala). */
-/**
- * Quina de les descripcions d'una cosa toca ara (la posició, a les llistes d'interaccions, del «mira» que faria),
- * o `null` si no en té cap.
- */
-function miraDeAra(narrative: Narrative, target: InteractionTarget, room?: string): number | null {
-  const def = narrative.peek({ verb: 'look', target, room });
-  if (!def) return null;
+/** On és una interacció a les llistes d'una cosa (la sala, el personatge, l'objecte), per anomenar-la en un flag. */
+function posicio(narrative: Narrative, target: InteractionTarget, def: InteractionDef, room?: string): number {
   const sala = room ?? narrative.world.currentRoom() ?? '';
   const { rooms, characters, items } = narrative.content;
   const llistes = [
@@ -74,23 +75,83 @@ function miraDeAra(narrative: Narrative, target: InteractionTarget, room?: strin
   return 0;
 }
 
-/**
- * El flag que recorda que ja s'ha vist la descripció d'ara d'una cosa (un personatge, a qualsevol sala; una cosa, a
- * la seva sala). Va per descripció: quan una cosa en té una de nova (ha canviat alguna cosa), el primer toc la torna
- * a mirar.
- */
-export function flagMirat(narrative: Narrative, target: InteractionTarget, room?: string): string {
-  const on = target.kind === 'character' ? 'personatge' : target.kind === 'item' ? 'objecte' : (room ?? narrative.world.currentRoom() ?? '');
-  return `mirat.${on}.${target.id}.${miraDeAra(narrative, target, room) ?? 0}`;
+/** Quina de les descripcions d'una cosa toca ara, o `null` si no en té cap. */
+function miraDeAra(narrative: Narrative, target: InteractionTarget, room?: string): number | null {
+  const def = narrative.peek({ verb: 'look', target, room });
+  return def ? posicio(narrative, target, def, room) : null;
 }
 
-export const isMirat = (narrative: Narrative, target: InteractionTarget, room?: string) =>
-  narrative.flag(flagMirat(narrative, target, room));
+/** Les accions d'ara d'una cosa, com a text curt (quines interaccions faria): per saber si han canviat. */
+function firmaAccions(narrative: Narrative, target: InteractionTarget, room?: string): string {
+  const defs: InteractionDef[] = [];
+  for (const verb of VERBS_ACCIO) {
+    const def = narrative.peek({ verb, target, room });
+    if (def && !defs.includes(def)) defs.push(def);
+  }
+  return defs.map((d) => posicio(narrative, target, d, room)).join('-');
+}
 
-/** Apunta que s'ha mirat una cosa (va a l'estat del nucli: es desa amb la partida). */
+/**
+ * El prefix dels flags de «ja mirat» d'una cosa: un personatge, a qualsevol sala però per a cada protagonista (cada
+ * germana el veu amb els seus ulls: la seva frase); una cosa, a la seva sala.
+ */
+function prefixMirat(narrative: Narrative, target: InteractionTarget, room?: string): string {
+  const on = target.kind === 'character' ? `personatge.${narrative.world.activeProtagonist()}`
+    : target.kind === 'item' ? 'objecte' : (room ?? narrative.world.currentRoom() ?? '');
+  return `mirat.${on}.${target.id}`;
+}
+
+/**
+ * El flag que recorda que ja s'ha vist la descripció d'ara d'una cosa. Va per descripció: quan una cosa en té una
+ * de nova (ha canviat alguna cosa), pot tornar a tocar mirar-la (`isMirat`).
+ */
+export function flagMirat(narrative: Narrative, target: InteractionTarget, room?: string): string {
+  return `${prefixMirat(narrative, target, room)}.${miraDeAra(narrative, target, room) ?? 0}`;
+}
+
+/** El flag que recorda que ja s'ha vist una cosa amb les accions que té ara. */
+function flagAccions(narrative: Narrative, target: InteractionTarget, room?: string): string {
+  return `${prefixMirat(narrative, target, room)}.a${firmaAccions(narrative, target, room)}`;
+}
+
+/**
+ * Si ja s'ha vist una cosa tal com és ara: se n'ha vist la descripció d'ara, o, si la descripció és nova, la cosa
+ * encara fa el mateix que quan es va veure. Només es torna a mirar quan han canviat totes dues: la descripció i el
+ * que s'hi pot fer (el panell que no es pot tornar a obrir, el Llibre Major d'una fase a l'altra, no).
+ */
+export function isMirat(narrative: Narrative, target: InteractionTarget, room?: string): boolean {
+  if (narrative.flag(flagMirat(narrative, target, room))) return true;
+  // una descripció que fa alguna cosa (la sang del panell: és una prova) s'ha de veure, faci el que faci la cosa
+  return miraInerta(narrative, target, room) && narrative.flag(flagAccions(narrative, target, room));
+}
+
+/** Si la descripció d'ara d'una cosa només diu coses (o no en té). */
+function miraInerta(narrative: Narrative, target: InteractionTarget, room?: string): boolean {
+  const def = narrative.peek({ verb: 'look', target, room });
+  return !def || isInert(def);
+}
+
+/**
+ * Apunta que s'ha vist una cosa tal com és ara (va a l'estat del nucli: es desa amb la partida). Es crida en mirar
+ * (abans i després: la descripció que queda també és vista) i després de fer-hi qualsevol cosa (`haFet`).
+ */
 export function marcaMirat(narrative: Narrative, target: InteractionTarget, room?: string) {
-  const flag = flagMirat(narrative, target, room);
-  if (!narrative.flag(flag)) narrative.apply({ setFlag: flag });
+  for (const flag of [flagMirat(narrative, target, room), flagAccions(narrative, target, room)]) {
+    if (!narrative.flag(flag)) narrative.apply({ setFlag: flag });
+  }
+}
+
+/**
+ * Després de fer una cosa sobre una cosa (mirar-la, obrir-la, fer-hi servir un objecte): el que en queda ja és vist,
+ * perquè el jugador acaba de veure què ha passat. El toc següent no la torna a mirar (el panell que l'Iri «ha de
+ * tancar ara mateix»). `room` és la sala on era la cosa (si l'acció ha canviat de sala, ja no és l'actual).
+ */
+export function haFet(narrative: Narrative, target: InteractionTarget, room?: string) {
+  if (target.kind !== 'item' && room !== undefined && room !== narrative.world.currentRoom()) return;
+  // una descripció que fa alguna cosa no es dona per vista sense haver-la vist (`isMirat`)
+  const flags = [flagAccions(narrative, target, room)];
+  if (miraInerta(narrative, target, room)) flags.push(flagMirat(narrative, target, room));
+  for (const flag of flags) if (!narrative.flag(flag)) narrative.apply({ setFlag: flag });
 }
 
 /** Totes les interaccions del contingut (de les coses de les sales, dels personatges i dels objectes). */

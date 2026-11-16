@@ -162,8 +162,9 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
   // A la carta, un cop triat on anar, la frase ja no diu «On anem?».
   if (isClickableCutscene(narrative.world.currentRoom())) setClickablePrompt('')
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
+  const room = narrative.world.currentRoom()
   const result = narrative.interact(request)
-  if (verb === 'look') touchRouter()?.looked?.(target)
+  touchRouter()?.acted?.(verb, target, room)
   // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
   setDoorSound(result?.goTo && !result.dialogue && target.kind !== 'item' ? narrative.world.currentRoom() : null, fromBenne('hotspots', target.id))
   if (result) playResult(result)
