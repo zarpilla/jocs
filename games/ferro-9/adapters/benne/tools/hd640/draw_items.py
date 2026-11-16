@@ -13,6 +13,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: F401,E402
 from hd import items as items480  # noqa: E402
@@ -35,9 +36,9 @@ def main():
         d.text((x, y - 13), iid, fill=(200, 200, 210, 255))
         a, b = items480.render(iid), items.render(iid)
         if a is not None:
-            sheet.alpha_composite(a.resize((items480.W * 4, items480.H * 4), Image.NEAREST), (x, y))
+            sheet.alpha_composite(nearest(a, (items480.W * 4, items480.H * 4)), (x, y))
         if b is not None:
-            sheet.alpha_composite(b.resize((items.W * 3, items.H * 3), Image.NEAREST), (x + items480.W * 4 + 8, y))
+            sheet.alpha_composite(nearest(b, (items.W * 3, items.H * 3)), (x + items480.W * 4 + 8, y))
         else:
             d.text((x + items480.W * 4 + 30, y + 48), '(falta)', fill=(220, 90, 80, 255))
     sheet.save(out)

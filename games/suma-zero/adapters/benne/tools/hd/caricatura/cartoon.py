@@ -19,6 +19,7 @@ una amb un material (una rampa de `PAL`). En renderitzar:
     img = f.render()
 """
 from PIL import Image
+from pixels import nearest
 
 # ─── Paleta ───────────────────────────────────────────────────────────────
 # Cada material: [contorn, ombra, base, llum]. L'ombra tira cap al lila i la llum cap al groc, com al
@@ -185,6 +186,6 @@ def preview(frames, scale=4, cols=None, bg=(46, 40, 60)):
     rows = (len(frames) + cols - 1) // cols
     out = Image.new('RGBA', (cols * (w + 2) * scale, rows * (h + 2) * scale), bg + (255,))
     for i, f in enumerate(frames):
-        out.alpha_composite(f.resize((w * scale, h * scale), Image.NEAREST),
+        out.alpha_composite(nearest(f, (w * scale, h * scale)),
                             ((i % cols) * (w + 2) * scale + scale, (i // cols) * (h + 2) * scale + scale))
     return out

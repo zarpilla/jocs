@@ -19,10 +19,17 @@ import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×36
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, B4, hr, mix
 from hd.rooms.comu import obox, outline, text, text_width, _diff
 from hd.rooms.muntatge import BEZEL, TERM, CYANT, GREEN_T, CYAN_T, LAND, CITIES
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 
@@ -37,9 +44,9 @@ NF = 8                 # fotogrames de l'animació
 def big_text(cv, s, x, y, col, k=2, bevel=True):
     """Text de la font petita, ampliat k vegades (píxels grossos); `bevel`: cada píxel gros, amb la vora de
     dalt més clara i la de sota més fosca (com els fòsfors d'un terminal)."""
-    tmp = Canvas(w=text_width(s) + 2, h=10, transparent=True)
+    tmp = Canvas1x(w=text_width(s) + 2, h=10, transparent=True)
     text(tmp, s, 0, 3, [col], 0, lit=0, flat=col)
-    img = tmp.img.resize((tmp.img.width * k, tmp.img.height * k), Image.NEAREST)
+    img = nearest(tmp.img, (tmp.img.width * k, tmp.img.height * k))
     if bevel and k >= 3:
         hi, lo = mix(col, (255, 255, 255), 0.35), mix(col, (0, 0, 0), 0.3)
         px = img.load()
@@ -49,7 +56,7 @@ def big_text(cv, s, x, y, col, k=2, bevel=True):
                     px[xx, yy] = hi + (255,)
                 elif px[xx, yy][3] and yy % k == k - 1:
                     px[xx, yy] = lo + (255,)
-    cv.img.alpha_composite(img, (x, y - 3 * k))
+    cv.blit(img, (x, y - 3 * k))
     return text_width(s) * k
 
 

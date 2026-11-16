@@ -9,6 +9,7 @@ El pròleg (cinemàtica): Ginebra de nit, la seu del Banc Central Mundial Unific
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff
@@ -155,7 +156,7 @@ def bcmu(cv):
     tx = (x0 + x1) // 2 - w // 2
     tmp = Canvas(w=60, h=10, transparent=True)
     text(tmp, word, 0, 0, GOLD, 4, lit=0)
-    sm = tmp.img.resize((tmp.img.width * big, tmp.img.height * big), Image.NEAREST)
+    sm = nearest(tmp.img, (tmp.img.width * big, tmp.img.height * big))
     cv.img.alpha_composite(sm, (tx, top - 18))
     cv.glow((x0 + x1) // 2, top - 13, 26, (255, 210, 110), 0.3)
     # el sòcol de pedra, amb l'entrada i les columnes
@@ -187,7 +188,7 @@ def screen(cv, talk=False):
     mouth_y = 21 if not talk else 22
     for x in (23, 24, 25, 26):
         P[x, mouth_y] = (250, 250, 250, 255)
-    bust = fig.crop((8, 3, 41, 36)).resize((66, 66), Image.NEAREST)
+    bust = nearest(fig.crop((8, 3, 41, 36)), (66, 66))
     lay = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     lay.alpha_composite(bust, ((x0 + x1) // 2 - 33, y1 - 62))
     cv.img.alpha_composite(lay.crop((x0, y0, x1 + 1, y1 + 1)), (x0, y0))

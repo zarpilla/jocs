@@ -31,6 +31,12 @@ from hd.rooms.proleg_ginebra import BONFILL
 from hd640.rooms.bcmu import MARBLE, VEIN, BRASS, MAHOG, NAVYB, CARPET, GLASSB, marble, logo, tub_station  # noqa: F401
 from hd640.draw_characters import person
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 
 LIGHT = Light(ambient=0.1, vignette=(85, 40), floor_fade=(259, 40))
@@ -331,7 +337,7 @@ def portrait(cv):
     layer = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     layer.alpha_composite(bust, ((ix0 + ix1) // 2 - 33, iy0 + 3))
     layer = layer.crop((ix0, iy0, ix1 + 1, iy1 + 1))
-    cv.img.alpha_composite(layer, (ix0, iy0))
+    cv.blit(layer, (ix0, iy0))
     # en Rockefeller: un gos petit i pentinat, a la falda, amb llacet
     dx, dy = 280, 85
     cv.disc(dx, dy + 3, 12, 6.7, DOG, lambda nx, ny: 3.4 - ny * 0.8 + (hr(int(nx * 9), int(ny * 6), 2) - 0.5) * 0.7)
@@ -636,9 +642,11 @@ ANIMS = {'ascensor': {'frames': _frames, 'frameDuration': 150}}
 
 def _prop_mask():
     """Els píxels que cobreix algun prop de la sala (planta_retallada, maquina_forat)."""
-    m = Image.new('L', (W, H), 0)
+    m = None
     for kw in ({'plants': (0,)}, {'empty': (EMPTY,)}):
-        m.paste(255, mask=_variant(**kw).getchannel('A').point(lambda a: 255 if a else 0))
+        v = _variant(**kw)
+        m = m or Image.new('L', v.size, 0)                     # (a la mida de l'art: 2× amb ART_SCALE)
+        m.paste(255, mask=v.getchannel('A').point(lambda a: 255 if a else 0))
     return m
 
 

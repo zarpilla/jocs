@@ -25,6 +25,7 @@ from PIL import Image
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 from hd.pix import Canvas, hr  # noqa: E402
@@ -283,8 +284,8 @@ def bar480(line='Usa la cisalla amb el cable', inv=('walkie', 'cisalla', 'mostra
 def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('barra_640.png')
     from PIL import ImageDraw
-    a = bar480(hover='look').resize((1920, 300), Image.NEAREST)
-    b = verb_bar({'hover': 'look'}).resize((1920, 300), Image.NEAREST)
+    a = nearest(bar480(hover='look'), (1920, 300))
+    b = nearest(verb_bar({'hover': 'look'}), (1920, 300))
     gap = 40
     o = Image.new('RGB', (1920, 300 * 2 + gap * 2), (30, 30, 30))
     d = ImageDraw.Draw(o)

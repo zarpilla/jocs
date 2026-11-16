@@ -199,6 +199,7 @@ def diu(cua=0, parpelleja=False):
 from hd.characters import (SKIN_OLD, SKIN_RUDDY, SKIN_PALE, SKIN_VET, WHITE, TROUSER, GRAY_SHOE, BOOT, SUIT_D, TRENCH,  # noqa: E402
                            CREAM, NAVY_U, FELT, HAIR_WHITE, HAIR_BROWN, HAIR_COPPER, RED, BRASS, STEELB, DENIM)
 from PIL import Image  # noqa: E402
+from pixels import nearest  # noqa: E402
 
 APRON = M((10, 8, 12), (20, 18, 24), (34, 30, 38), (50, 46, 54), (70, 64, 72))
 
@@ -310,7 +311,7 @@ def npc(cid, facing, talk=False, walk=None):
     if cid == 'nen':
         # un nen de set anys: el mateix dibuix a mida petita, amb els peus al mateix lloc
         w, h = img.size
-        small = img.resize((round(w * 0.62), round(h * 0.62)), Image.NEAREST)
+        small = nearest(img, (round(w * 0.62), round(h * 0.62)))
         out = Image.new('RGBA', (w, h), (0, 0, 0, 0))
         out.alpha_composite(small, (25 - round(25 * 0.62), 83 - round(83 * 0.62)))
         return out
@@ -1136,7 +1137,7 @@ def npc2(cid, facing, talk=False, variant='', walk=None):
     if not k:
         return img
     w, h = img.size
-    big = img.resize((round(w * k), round(h * k)), Image.NEAREST)
+    big = nearest(img, (round(w * k), round(h * k)))
     W2, H2 = big2_size(cid)
     out = Image.new('RGBA', (W2, H2), (0, 0, 0, 0))
     fx, fy = big2_feet(cid)

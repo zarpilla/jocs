@@ -4,132 +4,132 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 1.aseprite": {
       "frame": {
-        "x": 782,
+        "x": 1564,
         "y": 0,
-        "w": 23,
-        "h": 29
+        "w": 46,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 318,
-        "y": 173,
-        "w": 23,
-        "h": 29
+        "x": 636,
+        "y": 346,
+        "w": 46,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 2.aseprite": {
       "frame": {
-        "x": 686,
+        "x": 1372,
         "y": 0,
-        "w": 27,
-        "h": 44
+        "w": 54,
+        "h": 88
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 283,
-        "y": 158,
-        "w": 27,
-        "h": 44
+        "x": 566,
+        "y": 316,
+        "w": 54,
+        "h": 88
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 3.aseprite": {
       "frame": {
-        "x": 713,
+        "x": 1426,
         "y": 0,
-        "w": 20,
-        "h": 43
+        "w": 40,
+        "h": 86
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 354,
-        "y": 129,
-        "w": 20,
-        "h": 43
+        "x": 708,
+        "y": 258,
+        "w": 40,
+        "h": 86
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 4.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 46,
-        "h": 45
+        "w": 92,
+        "h": 90
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 19,
-        "w": 46,
-        "h": 45
+        "x": 280,
+        "y": 38,
+        "w": 92,
+        "h": 90
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 5.aseprite": {
       "frame": {
-        "x": 733,
+        "x": 1466,
         "y": 0,
-        "w": 49,
-        "h": 38
+        "w": 98,
+        "h": 76
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 585,
-        "y": 24,
-        "w": 49,
-        "h": 38
+        "x": 1170,
+        "y": 48,
+        "w": 98,
+        "h": 76
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 6.aseprite": {
       "frame": {
-        "x": 1904,
-        "y": 360,
+        "x": 3809,
+        "y": 747,
         "w": 1,
         "h": 1
       },
@@ -142,281 +142,281 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 7.aseprite": {
       "frame": {
-        "x": 805,
+        "x": 1610,
         "y": 0,
-        "w": 476,
-        "h": 13
+        "w": 952,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 32,
-        "w": 476,
-        "h": 13
+        "x": 296,
+        "y": 64,
+        "w": 952,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 8.aseprite": {
       "frame": {
-        "x": 1281,
+        "x": 2562,
         "y": 0,
-        "w": 477,
-        "h": 13
+        "w": 954,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 32,
-        "w": 477,
-        "h": 13
+        "x": 296,
+        "y": 64,
+        "w": 954,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 9.aseprite": {
       "frame": {
-        "x": 1758,
-        "y": 0,
-        "w": 478,
-        "h": 13
+        "x": 0,
+        "y": 720,
+        "w": 956,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 32,
-        "w": 478,
-        "h": 13
+        "x": 296,
+        "y": 64,
+        "w": 956,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 10.aseprite": {
       "frame": {
-        "x": 2236,
-        "y": 0,
-        "w": 478,
-        "h": 13
+        "x": 956,
+        "y": 720,
+        "w": 956,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 32,
-        "w": 478,
-        "h": 13
+        "x": 296,
+        "y": 64,
+        "w": 956,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 11.aseprite": {
       "frame": {
-        "x": 2714,
-        "y": 0,
-        "w": 477,
-        "h": 13
+        "x": 1912,
+        "y": 720,
+        "w": 954,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 32,
-        "w": 477,
-        "h": 13
+        "x": 296,
+        "y": 64,
+        "w": 954,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 12.aseprite": {
       "frame": {
-        "x": 3191,
-        "y": 0,
-        "w": 476,
-        "h": 13
+        "x": 2866,
+        "y": 720,
+        "w": 952,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 32,
-        "w": 476,
-        "h": 13
+        "x": 296,
+        "y": 64,
+        "w": 952,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 13.aseprite": {
       "frame": {
-        "x": 1431,
-        "y": 360,
-        "w": 473,
-        "h": 7
+        "x": 2862,
+        "y": 747,
+        "w": 947,
+        "h": 13
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 32,
-        "w": 473,
-        "h": 7
+        "x": 298,
+        "y": 64,
+        "w": 947,
+        "h": 13
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 14.aseprite": {
       "frame": {
         "x": 0,
-        "y": 360,
-        "w": 476,
-        "h": 13
+        "y": 747,
+        "w": 952,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 147,
-        "y": 32,
-        "w": 476,
-        "h": 13
+        "x": 294,
+        "y": 64,
+        "w": 952,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 15.aseprite": {
       "frame": {
-        "x": 476,
-        "y": 360,
-        "w": 477,
-        "h": 13
+        "x": 952,
+        "y": 747,
+        "w": 954,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 146,
-        "y": 32,
-        "w": 477,
-        "h": 13
+        "x": 292,
+        "y": 64,
+        "w": 954,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 16.aseprite": {
       "frame": {
-        "x": 953,
-        "y": 360,
-        "w": 478,
-        "h": 13
+        "x": 1906,
+        "y": 747,
+        "w": 956,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 145,
-        "y": 32,
-        "w": 478,
-        "h": 13
+        "x": 290,
+        "y": 64,
+        "w": 956,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 17.aseprite": {
       "frame": {
-        "x": 953,
-        "y": 360,
-        "w": 478,
-        "h": 13
+        "x": 1906,
+        "y": 747,
+        "w": 956,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 145,
-        "y": 32,
-        "w": 478,
-        "h": 13
+        "x": 290,
+        "y": 64,
+        "w": 956,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 18.aseprite": {
       "frame": {
-        "x": 476,
-        "y": 360,
-        "w": 477,
-        "h": 13
+        "x": 952,
+        "y": 747,
+        "w": 954,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 146,
-        "y": 32,
-        "w": 477,
-        "h": 13
+        "x": 292,
+        "y": 64,
+        "w": 954,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_passadis 19.aseprite": {
       "frame": {
         "x": 0,
-        "y": 360,
-        "w": 476,
-        "h": 13
+        "y": 747,
+        "w": 952,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 147,
-        "y": 32,
-        "w": 476,
-        "h": 13
+        "x": 294,
+        "y": 64,
+        "w": 952,
+        "h": 27
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -427,8 +427,8 @@
     "image": "bcmu_passadis.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3667,
-      "h": 373
+      "w": 3818,
+      "h": 774
     },
     "scale": "1",
     "frameTags": [

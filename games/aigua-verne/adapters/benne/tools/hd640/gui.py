@@ -30,6 +30,7 @@ from PIL import Image
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 from hd.pix import Canvas, hr, mix, RUST, IRON  # noqa: E402
@@ -559,7 +560,7 @@ def main():
     out.parent.mkdir(parents=True, exist_ok=True)
     b = verb_bar({'hover': 'look'})
     b.save(out)
-    b.resize((W * 3, BH * 3), Image.NEAREST).save(out.with_name(out.stem + '_x3.png'))
+    nearest(b, (W * 3, BH * 3)).save(out.with_name(out.stem + '_x3.png'))
     print(f'✔ {out}')
 
 

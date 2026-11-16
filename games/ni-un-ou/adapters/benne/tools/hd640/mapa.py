@@ -26,6 +26,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 from hd640.font import font640, draw_text, text_width  # noqa: E402
 from hd640.gui_rest import write_sheet  # noqa: E402
@@ -357,7 +358,7 @@ def preview(bg, noms, out):
     draw_text(img, font640(True), noms['@tanca'], (x0 + x1) // 2 - text_width(font640(True), noms['@tanca']) // 2, y0 - 2,
               (236, 246, 238), outline=None)
     draw_text(img, reg, 'Clica on vols anar.', 320, FOOTER_Y, (40, 40, 38), outline=None)
-    img.resize((W * 3, H * 3), Image.NEAREST).save(out / 'mapa.png')
+    nearest(img, (W * 3, H * 3)).save(out / 'mapa.png')
     print(f'✔ {out / "mapa.png"}')
 
 

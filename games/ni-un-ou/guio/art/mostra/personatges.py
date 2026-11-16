@@ -21,6 +21,7 @@ from PIL import Image
 HERE = Path(__file__).resolve().parent
 GAMES = HERE.parents[3]
 sys.path.insert(0, str(GAMES / 'suma-zero/adapters/benne/tools'))
+from pixels import nearest  # noqa: E402
 
 from hd.characters import M, person, SKIN_OLD, SKIN_PALE, BOOT, WHITE, HAIR_WHITE, HAIR_COPPER, STEELB  # noqa: E402
 
@@ -411,7 +412,7 @@ def fitxa():
         for c, f in enumerate(frames):
             sheet.alpha_composite(f, (5 + c * cw, 3 + r * ch))
     out = HERE / 'personatges.png'
-    sheet.resize((sheet.width * 3, sheet.height * 3), Image.NEAREST).save(out)
+    nearest(sheet, (sheet.width * 3, sheet.height * 3)).save(out)
     print('✔', out)
 
 

@@ -13,6 +13,7 @@ Animacions: `fluorescent` (el tub parpelleja) i `avio` (per la vidriera del fons
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff, SHEET, CARD, RED
@@ -22,6 +23,12 @@ from hd.rooms.aeroport_terminal import CONC, TILE, CHROME, DESK, BLUE, YELS, DAW
 from hd.rooms.aeroport_personal import BLOCK, LINO, DOOR, REDB, GREENS, TROLLEY  # noqa: F401
 from hd.personatges import NPCS
 from hd640.draw_characters import person
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 FLOOR_Y = 200
 
@@ -156,13 +163,13 @@ def soler(cv):
     """L'agent Soler, de cara a la porta de personal (és a dir, mirant cap aquí)."""
     fig = person(NPCS['soler'], 'D')
     k = 0.82
-    fig = fig.resize((round(fig.width * k), round(fig.height * k)), Image.NEAREST)
+    fig = nearest(fig, (round(fig.width * k), round(fig.height * k)))
     fx, fy = SOLER_AT
     layer = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     layer.alpha_composite(fig, (fx - round(34 * k), fy - round(111 * k)))
     x0, y0, x1, y1 = GLASS
     layer = layer.crop((x0 + 3, y0 + 3, x1 - 2, y1 - 2))
-    cv.img.alpha_composite(layer, (x0 + 3, y0 + 3))
+    cv.blit(layer, (x0 + 3, y0 + 3))
 
 
 def glass_frame(cv):

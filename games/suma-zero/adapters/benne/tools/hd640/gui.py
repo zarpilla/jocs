@@ -26,6 +26,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 import hd.items as items480  # noqa: E402  (abans que res no canviï la Fig de hd.characters)
@@ -371,7 +372,7 @@ def inv_icons(ids):
         from hd640 import items as items640
         return [items640.render(i) for i in ids]
     except ImportError:
-        return [items480.render(i).resize((SLOT_W, SLOT_H), Image.NEAREST) for i in ids]
+        return [nearest(items480.render(i), (SLOT_W, SLOT_H)) for i in ids]
 
 
 # ─── La barra completa ─────────────────────────────────────────────────────
@@ -430,8 +431,8 @@ def bar480(line='Usa el cable de xarxa amb el router', inv=('auriculars', 'cable
 
 def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('barra_640.png')
-    a = bar480(hover='look').resize((1920, 300), Image.NEAREST)
-    b = verb_bar({'hover': 'look'}).resize((1920, 300), Image.NEAREST)
+    a = nearest(bar480(hover='look'), (1920, 300))
+    b = nearest(verb_bar({'hover': 'look'}), (1920, 300))
     gap = 40
     o = Image.new('RGB', (1920, 300 * 2 + gap * 2), (30, 30, 30))
     d = ImageDraw.Draw(o)

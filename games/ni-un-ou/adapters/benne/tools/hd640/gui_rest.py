@@ -29,6 +29,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 from hd.pix import Canvas, hr, mix  # noqa: E402
@@ -553,7 +554,7 @@ def nine(img, slices, w, h):
     for sx, sw, dx, dw in cols:
         for sy, sh, dy, dh in rows:
             if dw > 0 and dh > 0:
-                out.paste(img.crop((sx, sy, sx + sw, sy + sh)).resize((dw, dh), Image.NEAREST), (dx, dy))
+                out.paste(nearest(img.crop((sx, sy, sx + sw, sy + sh)), (dw, dh)), (dx, dy))
     return out
 
 
@@ -740,7 +741,7 @@ def render_gui(name, res, backdrop):
             x, y = place(c, c['width'], c['height'])
             if 'slider-track' in tags:
                 tr = tags['slider-track'][0]
-                img.alpha_composite(tr.crop((0, 0, min(tr.width, c['width']), tr.height)).resize((c['width'], tr.height), Image.NEAREST), (x, y))
+                img.alpha_composite(nearest(tr.crop((0, 0, min(tr.width, c['width']), tr.height)), (c['width'], tr.height)), (x, y))
                 frac = (c.get('defaultValue', 1) - c.get('min', 0)) / max(1e-6, c.get('max', 1) - c.get('min', 0))
                 paste_tag('slider-handle', x + round(frac * (c['width'] - 4)), y)
         elif t == 'listBox':
@@ -765,14 +766,14 @@ def render_gui(name, res, backdrop):
 def contact(out_dir):
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    back480 = Image.open(out_dir / 'laboratori_480.png').convert('RGBA').resize((480, 270), Image.NEAREST)
-    back640 = Image.open(out_dir / 'laboratori_640.png').convert('RGBA').resize((640, 360), Image.NEAREST)
+    back480 = nearest(Image.open(out_dir / 'laboratori_480.png').convert('RGBA'), (480, 270))
+    back640 = nearest(Image.open(out_dir / 'laboratori_640.png').convert('RGBA'), (640, 360))
     names = ('dialog', 'display-text', 'speaking-text', 'game-menu', 'save-menu', 'load-menu', 'settings-menu',
              'portada', 'historial')
     rows = []
     for n in names:
-        a = render_gui(n, 480, back480).resize((1920, 1080), Image.NEAREST)
-        b = render_gui(n, 640, back640).resize((1920, 1080), Image.NEAREST)
+        a = nearest(render_gui(n, 480, back480), (1920, 1080))
+        b = nearest(render_gui(n, 640, back640), (1920, 1080))
         pair = Image.new('RGB', (1920 * 2 + 40, 1080 + 40), (30, 30, 30))
         pair.paste(a, (0, 40))
         pair.paste(b, (1960, 40))
@@ -780,7 +781,7 @@ def contact(out_dir):
         d.text((8, 12), f'{n}: ACTUAL 480x270 (x4)', fill=(255, 255, 255))
         d.text((1968, 12), f'{n}: PROVA 640x360 (x3)', fill=(255, 255, 255))
         pair.save(out_dir / f'gui_{n}_640.png')
-        rows.append(pair.resize((pair.width // 2, pair.height // 2), Image.NEAREST))
+        rows.append(nearest(pair, (pair.width // 2, pair.height // 2)))
     sheet = Image.new('RGB', (rows[0].width, sum(r.height for r in rows)), (30, 30, 30))
     y = 0
     for r in rows:
@@ -791,8 +792,8 @@ def contact(out_dir):
     cur = Image.new('RGB', (1920, 300), (120, 130, 140))
     c480 = Image.open(GAME / 'assets/images/cursor/cursor.png').convert('RGBA')
     c640 = Image.open(OUT / 'cursor/cursor.png').convert('RGBA')
-    cur.paste(c480.resize((256, 256), Image.NEAREST), (40, 20), c480.resize((256, 256), Image.NEAREST))
-    cur.paste(c640.resize((258, 258), Image.NEAREST), (400, 20), c640.resize((258, 258), Image.NEAREST))
+    cur.paste(nearest(c480, (256, 256)), (40, 20), nearest(c480, (256, 256)))
+    cur.paste(nearest(c640, (258, 258)), (400, 20), nearest(c640, (258, 258)))
     cur.save(out_dir / 'gui_cursor_640.png')
 
 

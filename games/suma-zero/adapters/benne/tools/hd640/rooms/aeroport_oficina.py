@@ -23,6 +23,12 @@ from hd.rooms.aeroport_terminal import CONC, CHROME, DESK, BLUE, YELS, DAWN  # n
 from hd.rooms.aeroport_personal import DOOR, REDB, GREENS
 from hd.rooms.aeroport_oficina import PANEL, CARPET, BEIGE, PHOS, CABINET
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 DESK_TOP = 163
 

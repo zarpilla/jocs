@@ -32,6 +32,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 import hd640.gui as vg  # noqa: E402
@@ -611,7 +612,7 @@ def nine(img, slices, w, h):
     for sx, sw, dx, dw in cols:
         for sy, sh, dy, dh in rows:
             if dw > 0 and dh > 0:
-                out.paste(img.crop((sx, sy, sx + sw, sy + sh)).resize((dw, dh), Image.NEAREST), (dx, dy))
+                out.paste(nearest(img.crop((sx, sy, sx + sw, sy + sh)), (dw, dh)), (dx, dy))
     return out
 
 
@@ -779,7 +780,7 @@ def render_gui(name, res, backdrop, hover_ids=('load', 'save-btn', 'load-btn', '
             x, y = place(c, c['width'], c['height'])
             if 'slider-track' in tags:
                 tr = tags['slider-track'][0]
-                img.alpha_composite(tr.crop((0, 0, min(tr.width, c['width']), tr.height)).resize((c['width'], tr.height), Image.NEAREST), (x, y))
+                img.alpha_composite(nearest(tr.crop((0, 0, min(tr.width, c['width']), tr.height)), (c['width'], tr.height)), (x, y))
                 frac = (c.get('defaultValue', 1) - c.get('min', 0)) / max(1e-6, c.get('max', 1) - c.get('min', 0))
                 paste_tag('slider-handle', x + round(frac * (c['width'] - 5)), y)
         elif t == 'listBox':
@@ -836,8 +837,8 @@ def full_screens(out_dir, back):
         shots[(res, 'menu')] = a
         shots[(res, 'dialog')] = render_gui('dialog', res, back[res])
     for kind in ('menu', 'dialog'):
-        a = shots[(480, kind)].resize((1920, 1080), Image.NEAREST)
-        b = shots[(640, kind)].resize((1920, 1080), Image.NEAREST)
+        a = nearest(shots[(480, kind)], (1920, 1080))
+        b = nearest(shots[(640, kind)], (1920, 1080))
         pair = Image.new('RGB', (1920 * 2 + 40, 1080 + 40), (30, 30, 30))
         pair.paste(a, (0, 40))
         pair.paste(b, (1960, 40))
@@ -845,7 +846,7 @@ def full_screens(out_dir, back):
         d.text((8, 12), f'pantalla ({kind}): 480x270 (x4)', fill=(255, 255, 255))
         d.text((1968, 12), f'pantalla ({kind}): 640x360 (x3)', fill=(255, 255, 255))
         pair.save(out_dir / f'pantalla_{kind}.png')
-        shots[(640, kind)].resize((1920, 1080), Image.NEAREST).save(out_dir / f'pantalla_{kind}_640.png')
+        nearest(shots[(640, kind)], (1920, 1080)).save(out_dir / f'pantalla_{kind}_640.png')
 
 
 def contact(out_dir):
@@ -855,8 +856,8 @@ def contact(out_dir):
     names = ('dialog', 'display-text', 'speaking-text', 'game-menu', 'save-menu', 'load-menu', 'settings-menu',
              'portada', 'historial')
     for n in names:
-        a = render_gui(n, 480, back[480]).resize((1920, 1080), Image.NEAREST)
-        b = render_gui(n, 640, back[640]).resize((1920, 1080), Image.NEAREST)
+        a = nearest(render_gui(n, 480, back[480]), (1920, 1080))
+        b = nearest(render_gui(n, 640, back[640]), (1920, 1080))
         pair = Image.new('RGB', (1920 * 2 + 40, 1080 + 40), (30, 30, 30))
         pair.paste(a, (0, 40))
         pair.paste(b, (1960, 40))
@@ -866,8 +867,8 @@ def contact(out_dir):
         pair.save(out_dir / f'gui_{n}_640.png')
     full_screens(out_dir, back)
     cur = Image.new('RGB', (1000, 300), (120, 130, 140))
-    c480 = Image.open(GAME / 'assets/images/cursor/cursor.png').convert('RGBA').resize((256, 256), Image.NEAREST)
-    c640 = Image.open(OUT / 'cursor/cursor.png').convert('RGBA').resize((258, 258), Image.NEAREST)
+    c480 = nearest(Image.open(GAME / 'assets/images/cursor/cursor.png').convert('RGBA'), (256, 256))
+    c640 = nearest(Image.open(OUT / 'cursor/cursor.png').convert('RGBA'), (258, 258))
     cur.paste(c480, (40, 20), c480)
     cur.paste(c640, (400, 20), c640)
     cur.save(out_dir / 'gui_cursor_640.png')

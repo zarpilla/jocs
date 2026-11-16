@@ -30,6 +30,12 @@ from hd640.rooms.bcmu import CONCB, NAVYB, BRASS, logo
 import hd640.draw_characters as DC
 import hd.characters as C
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 
 LIGHT = Light(ambient=-0.25, vignette=(67, 40), floor_fade=(256, 37))
@@ -336,7 +342,7 @@ def tecnics(cv):
     cv.rect(239, 187, 244, 188, STEEL, 3.4)
     cv.vline(239, 188, 190, STEEL, 2.6)
     cv.vline(244, 188, 190, STEEL, 2.6)
-    cv.img.alpha_composite(layer)
+    cv.blit(layer)
     # els mòbils: rectangles de llum blavosa a les mans
     for mx, my in ((281, 165), (288, 165)):
         cv.rect(mx, my, mx + 1, my + 3, [(170, 220, 255)], 0, lit=0)

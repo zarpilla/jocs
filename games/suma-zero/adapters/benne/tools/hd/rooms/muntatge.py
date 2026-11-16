@@ -15,6 +15,7 @@ Animació: el cursor i els dos punts del rellotge parpellegen; els comptadors fa
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, B4, hr, mix
 from hd.rooms.comu import obox, outline, text, text_width, _diff
@@ -39,7 +40,7 @@ def big_text(cv, s, x, y, col, k=2):
     """Text de la font petita, ampliat k vegades (píxels grossos)."""
     tmp = Canvas(w=text_width(s) + 2, h=10, transparent=True)
     text(tmp, s, 0, 3, [col], 0, lit=0, flat=col)
-    img = tmp.img.resize((tmp.img.width * k, tmp.img.height * k), Image.NEAREST)
+    img = nearest(tmp.img, (tmp.img.width * k, tmp.img.height * k))
     cv.img.alpha_composite(img, (x, y - 3 * k))
     return text_width(s) * k
 

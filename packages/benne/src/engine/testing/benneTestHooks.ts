@@ -16,7 +16,8 @@ import { getAllGuiData } from '../content/loadGuiData';
 import { resolveGameStateManager } from '../gameState/resolveGameStateManager';
 import { BENNE_GUI_BUTTON_ID_DATA_KEY, benneGuiButtonReadEnabled, type BenneGuiButtonIdData } from '../gui/guiButtonRuntime';
 import { isInteractionActivityRunning } from '../interaction/interactionActivity';
-import { isRoomTransitionInProgress } from '../scenes/roomTransitionGlobals';
+import { isRoomTransitionInProgress, tryGetRoomTransitionOrchestrator } from '../scenes/roomTransitionGlobals';
+import { getRoomAsepriteTextureKey } from '../content/roomAseprite';
 import type { RoomScene } from '../scenes/RoomScene';
 import { dialogChoiceSyntheticButtonId } from '../events/dialogEvents';
 import { resolveDefaultItemVerbId } from '../verbs/verbConfig';
@@ -60,6 +61,10 @@ export interface BenneTestHooks {
   inventoryVerb(verbId: string, itemId: string): void;
   /** Pick a dialog option by its id in `*.dialog.json`. */
   choose(optionId: string): void;
+  /** Go to a room directly, as `rooms.x.goTo()` with a cut (to test a room without playing up to it). */
+  goToRoom(roomId: string): Promise<void>;
+  /** Room ids whose sheet (`images/rooms/<id>/<id>.png`) is loaded in the texture manager. */
+  roomSheets(): string[];
   /** Click a GUI button by GUI id and control id. */
   clickGui(guiId: string, controlId: string): void;
   /** Left-click to skip the current speech line (or other click-to-skip). Returns false if nothing to skip. */
@@ -454,6 +459,20 @@ export function installBenneTestHooks(game: Phaser.Game): BenneTestHooks {
 
     speech() {
       return [...speechLog];
+    },
+    async goToRoom(roomId) {
+      const orch = tryGetRoomTransitionOrchestrator();
+      if (!orch) {
+        throw new HookError('goToRoom: no room transition orchestrator');
+      }
+      await orch.changeTo(roomId, 'cut');
+    },
+    roomSheets() {
+      const prefix = getRoomAsepriteTextureKey('');
+      return game.textures
+        .getTextureKeys()
+        .filter((k) => k.startsWith(prefix))
+        .map((k) => k.slice(prefix.length));
     },
   };
 
