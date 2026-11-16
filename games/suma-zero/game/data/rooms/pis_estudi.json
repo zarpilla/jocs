@@ -846,19 +846,6 @@
               "text": "sala.pis_estudi.router.sense"
             }
           ]
-        },
-        {
-          "verb": [
-            "push",
-            "pull",
-            "pickUp"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.router.sense"
-            }
-          ]
         }
       ]
     },
@@ -866,11 +853,7 @@
       "name": "sala.pis_estudi.fibra.nom",
       "interactions": [
         {
-          "verb": [
-            "pickUp",
-            "use",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "fibra_connectada"
           },
@@ -882,11 +865,7 @@
           ]
         },
         {
-          "verb": [
-            "pickUp",
-            "use",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "diu_distret"
           },
@@ -1026,11 +1005,7 @@
           ]
         },
         {
-          "verb": [
-            "pickUp",
-            "use",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -1103,7 +1078,11 @@
           ]
         },
         {
-          "verb": "open",
+          "verb": [
+            "open",
+            "talkTo",
+            "use"
+          ],
           "if": {
             "flag": "passaplats_obert",
             "is": false
@@ -1122,43 +1101,6 @@
           ]
         },
         {
-          "verb": "open",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.passaplats.ja_obert"
-            }
-          ]
-        },
-        {
-          "verb": "close",
-          "if": {
-            "flag": "passaplats_obert"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.passaplats.tanca",
-              "sound": "passaplats"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "passaplats_obert",
-              "value": false
-            }
-          ]
-        },
-        {
-          "verb": "close",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.passaplats.ja_tancat"
-            }
-          ]
-        },
-        {
           "verb": [
             "talkTo",
             "use"
@@ -1167,18 +1109,6 @@
             "flag": "passaplats_obert"
           },
           "dialogue": "passaplats"
-        },
-        {
-          "verb": [
-            "talkTo",
-            "use"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.passaplats.tancat"
-            }
-          ]
         },
         {
           "verb": "use",
@@ -1291,15 +1221,6 @@
           "effects": [
             {
               "giveItem": "caixa_cartro"
-            }
-          ]
-        },
-        {
-          "verb": "open",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.caixa.oberta"
             }
           ]
         }
@@ -1583,15 +1504,6 @@
             {
               "who": "player",
               "text": "sala.pis_estudi.diu.look"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_estudi.diu.agafa"
             }
           ]
         }

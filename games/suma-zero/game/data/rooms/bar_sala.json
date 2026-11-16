@@ -91,11 +91,20 @@
             },
             {
               "who": "marcel",
-              "text": "sala.bar_sala.falten",
+              "text": "sala.bar_sala.falten1",
               "if": {
                 "var": "donats",
-                "op": "<",
-                "value": 3
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.falten2",
+              "if": {
+                "var": "donats",
+                "op": "==",
+                "value": 2
               }
             },
             {
@@ -166,11 +175,20 @@
             },
             {
               "who": "marcel",
-              "text": "sala.bar_sala.falten",
+              "text": "sala.bar_sala.falten1",
               "if": {
                 "var": "donats",
-                "op": "<",
-                "value": 3
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.falten2",
+              "if": {
+                "var": "donats",
+                "op": "==",
+                "value": 2
               }
             },
             {
@@ -262,11 +280,20 @@
             },
             {
               "who": "marcel",
-              "text": "sala.bar_sala.falten",
+              "text": "sala.bar_sala.falten1",
               "if": {
                 "var": "donats",
-                "op": "<",
-                "value": 3
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "marcel",
+              "text": "sala.bar_sala.falten2",
+              "if": {
+                "var": "donats",
+                "op": "==",
+                "value": 2
               }
             },
             {

@@ -151,23 +151,23 @@
           ]
         },
         {
-          "verb": "pickUp",
-          "if": {
-            "flag": "imprimint"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.aeroport_oficina.impressora.encara"
-            }
-          ]
-        },
-        {
           "verb": [
             "push",
             "use",
             "pickUp"
           ],
+          "if": {
+            "all": [
+              {
+                "flag": "imprimint",
+                "is": false
+              },
+              {
+                "flag": "acreditacions_llestes",
+                "is": false
+              }
+            ]
+          },
           "lines": [
             {
               "who": "player",

@@ -176,20 +176,17 @@ describe('Acte 1 · coherència', () => {
     expect(n.canSwitch()).toBe(true);
   });
 
-  it('el passaplats tancat: no s\'hi parla ni s\'hi passa res; obert des d\'un costat, és obert per a les dues', () => {
+  it("el passaplats tancat: no s'hi passa res, i parlar-hi l'obre; obert des d'un costat, és obert per a les dues", () => {
     const { n, p, world } = partida();
     p.do('open', 'caixa');
-    expect(texts(p.do('talkTo', 'passaplats'))).toContain("Primer l'he d'obrir");
-    expect(n.flag('cable_demanat')).toBe(false);
-    p.do('open', 'passaplats');
+    expect(texts(p.use('cable_xarxa', 'passaplats'))).toContain("Primer l'hauria d'obrir");
+    expect(world.hasItem('cable_xarxa', 'iri')).toBe(true);
+    expect(texts(p.do('talkTo', 'passaplats'))).toContain('Obert');
     expect(n.flag('passaplats_obert')).toBe(true);
+    expect(n.flag('cable_demanat')).toBe(false);
     p.talk('passaplats', 'cable');
     p.switchTo('vet');
     p.do('pickUp', 'cafetera');
-    p.do('close', 'passaplats');
-    expect(texts(p.use('cable_alimentacio', 'passaplats'))).toContain("Primer l'hauria d'obrir");
-    expect(world.hasItem('cable_alimentacio', 'vet')).toBe(true);
-    p.do('open', 'passaplats');
     p.use('cable_alimentacio', 'passaplats');
     expect(world.hasItem('cable_alimentacio', 'iri')).toBe(true);
   });
@@ -306,7 +303,7 @@ describe('Acte 1 · revisió de coherència', () => {
 
   it("pistes del pis: amb en Diu distret però sense el cable d'alimentació, la pista diu d'on treure'l", () => {
     const { n, p } = partida();
-    p.do('pickUp', 'fibra'); // en Diu la mossega
+    p.do('use', 'fibra'); // en Diu la mossega
     expect(n.activeHints()[0]).toBe('iri_cable_cafetera'); // abans que en Diu: primer, els cables
     p.do('open', 'passaplats');
     p.talk('passaplats', 'pizza');

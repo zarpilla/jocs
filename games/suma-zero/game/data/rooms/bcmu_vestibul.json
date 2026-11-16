@@ -260,11 +260,7 @@
       "name": "sala.bcmu_vestibul.maquina.nom",
       "interactions": [
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "entrepa_comprat"
           },
@@ -276,11 +272,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "propines"
           },
@@ -305,11 +297,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

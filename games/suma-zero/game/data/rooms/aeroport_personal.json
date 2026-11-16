@@ -31,10 +31,7 @@
       "name": "sala.aeroport_personal.teclat.nom",
       "interactions": [
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "iri_fora"
           },
@@ -46,10 +43,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "porta_oberta"
           },
@@ -62,10 +56,7 @@
           "goTo": "aeroport_oficina"
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "soler_distret",
             "is": false
@@ -78,10 +69,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "alarma_porta"
           },
@@ -93,10 +81,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "codi_porta_llegit"
           },
@@ -119,10 +104,7 @@
           "goTo": "aeroport_oficina"
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

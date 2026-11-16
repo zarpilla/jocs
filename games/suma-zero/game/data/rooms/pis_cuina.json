@@ -153,15 +153,6 @@
           ]
         },
         {
-          "verb": "open",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_cuina.nevera.ja"
-            }
-          ]
-        },
-        {
           "verb": "close",
           "if": {
             "flag": "nevera_oberta"
@@ -228,19 +219,6 @@
             {
               "who": "player",
               "text": "sala.pis_cuina.nevera.look_tancada"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "if": {
-            "flag": "nevera_oberta",
-            "is": false
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_cuina.nevera.tancada"
             }
           ]
         }
@@ -362,7 +340,11 @@
       "name": "sala.pis_cuina.passaplats.nom",
       "interactions": [
         {
-          "verb": "open",
+          "verb": [
+            "open",
+            "talkTo",
+            "use"
+          ],
           "if": {
             "flag": "passaplats_obert",
             "is": false
@@ -377,43 +359,6 @@
           "effects": [
             {
               "setFlag": "passaplats_obert"
-            }
-          ]
-        },
-        {
-          "verb": "open",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_cuina.passaplats.ja_obert"
-            }
-          ]
-        },
-        {
-          "verb": "close",
-          "if": {
-            "flag": "passaplats_obert"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_cuina.passaplats.tanca",
-              "sound": "passaplats"
-            }
-          ],
-          "effects": [
-            {
-              "setFlag": "passaplats_obert",
-              "value": false
-            }
-          ]
-        },
-        {
-          "verb": "close",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_cuina.passaplats.ja_tancat"
             }
           ]
         },
@@ -504,21 +449,6 @@
             {
               "who": "player",
               "text": "sala.pis_cuina.passaplats.parla"
-            }
-          ],
-          "if": {
-            "flag": "passaplats_obert"
-          }
-        },
-        {
-          "verb": [
-            "talkTo",
-            "use"
-          ],
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pis_cuina.passaplats.tancat"
             }
           ]
         },

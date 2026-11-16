@@ -164,6 +164,7 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
   if (isClickableCutscene(narrative.world.currentRoom())) setClickablePrompt('')
   const request = { verb, target: targetFromBenne(target.kind, target.id), item: item ? fromBenne('items', item) : undefined }
   const result = narrative.interact(request)
+  if (verb === 'look') touchRouter()?.looked?.(target)
   // Una porta (o escotilla, o escala) que porta a una altra sala: el seu so sonarà en arribar-hi.
   setDoorSound(result?.goTo && !result.dialogue && target.kind !== 'item' ? narrative.world.currentRoom() : null, fromBenne('hotspots', target.id))
   if (result) playResult(result)

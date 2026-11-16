@@ -1335,23 +1335,23 @@
                 ]
               },
               {
-                "verb": "pickUp",
-                "if": {
-                  "flag": "imprimint"
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.aeroport_oficina.impressora.encara"
-                  }
-                ]
-              },
-              {
                 "verb": [
                   "push",
                   "use",
                   "pickUp"
                 ],
+                "if": {
+                  "all": [
+                    {
+                      "flag": "imprimint",
+                      "is": false
+                    },
+                    {
+                      "flag": "acreditacions_llestes",
+                      "is": false
+                    }
+                  ]
+                },
                 "lines": [
                   {
                     "who": "player",
@@ -1500,10 +1500,7 @@
             "name": "sala.aeroport_personal.teclat.nom",
             "interactions": [
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "iri_fora"
                 },
@@ -1515,10 +1512,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "porta_oberta"
                 },
@@ -1531,10 +1525,7 @@
                 "goTo": "aeroport_oficina"
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "soler_distret",
                   "is": false
@@ -1547,10 +1538,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "alarma_porta"
                 },
@@ -1562,10 +1550,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "codi_porta_llegit"
                 },
@@ -1588,10 +1573,7 @@
                 "goTo": "aeroport_oficina"
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -2479,11 +2461,20 @@
                   },
                   {
                     "who": "marcel",
-                    "text": "sala.bar_sala.falten",
+                    "text": "sala.bar_sala.falten1",
                     "if": {
                       "var": "donats",
-                      "op": "<",
-                      "value": 3
+                      "op": "==",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "who": "marcel",
+                    "text": "sala.bar_sala.falten2",
+                    "if": {
+                      "var": "donats",
+                      "op": "==",
+                      "value": 2
                     }
                   },
                   {
@@ -2554,11 +2545,20 @@
                   },
                   {
                     "who": "marcel",
-                    "text": "sala.bar_sala.falten",
+                    "text": "sala.bar_sala.falten1",
                     "if": {
                       "var": "donats",
-                      "op": "<",
-                      "value": 3
+                      "op": "==",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "who": "marcel",
+                    "text": "sala.bar_sala.falten2",
+                    "if": {
+                      "var": "donats",
+                      "op": "==",
+                      "value": 2
                     }
                   },
                   {
@@ -2650,11 +2650,20 @@
                   },
                   {
                     "who": "marcel",
-                    "text": "sala.bar_sala.falten",
+                    "text": "sala.bar_sala.falten1",
                     "if": {
                       "var": "donats",
-                      "op": "<",
-                      "value": 3
+                      "op": "==",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "who": "marcel",
+                    "text": "sala.bar_sala.falten2",
+                    "if": {
+                      "var": "donats",
+                      "op": "==",
+                      "value": 2
                     }
                   },
                   {
@@ -4245,10 +4254,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "virus_aturat"
                 },
@@ -4260,10 +4266,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4283,10 +4286,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4301,10 +4301,7 @@
                 "dialogue": "llibre"
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4480,10 +4477,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4503,10 +4497,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4567,10 +4558,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4681,10 +4669,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4709,10 +4694,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "cal_clau"
                 },
@@ -4724,19 +4706,12 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_collaret",
                   "is": false
                 },
                 "lines": [
-                  {
-                    "who": "title",
-                    "text": "sync.titol"
-                  },
                   {
                     "who": "player",
                     "text": "sala.bcmu_escombraries.llibre.codi1"
@@ -4781,10 +4756,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "var": "codis",
                   "op": "==",
@@ -4813,10 +4785,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "var": "coberta",
                   "op": ">=",
@@ -4890,10 +4859,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -5471,7 +5437,23 @@
                 "who": "vet",
                 "text": "sala.bcmu_moll.intro8",
                 "if": {
-                  "flag": "auditoria_acceptada"
+                  "all": [
+                    {
+                      "flag": "auditoria_acceptada"
+                    },
+                    {
+                      "visited": "bcmu_seguretat",
+                      "is": false
+                    }
+                  ]
+                },
+                "sound": "auricular"
+              },
+              {
+                "who": "vet",
+                "text": "sala.bcmu_moll.intro9",
+                "if": {
+                  "visited": "bcmu_seguretat"
                 },
                 "sound": "auricular"
               }
@@ -6344,7 +6326,11 @@
                   {
                     "who": "player",
                     "text": "sala.bcmu_passadis.porta_neteja.entra",
-                    "sound": "porta_neteja"
+                    "sound": "porta_neteja",
+                    "if": {
+                      "visited": "bcmu_escombraries",
+                      "is": false
+                    }
                   }
                 ],
                 "goTo": "bcmu_escombraries"
@@ -7546,11 +7532,7 @@
             "name": "sala.bcmu_vestibul.maquina.nom",
             "interactions": [
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "entrepa_comprat"
                 },
@@ -7562,11 +7544,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "propines"
                 },
@@ -7591,11 +7569,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -8388,15 +8362,6 @@
                 ]
               },
               {
-                "verb": "open",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_cuina.nevera.ja"
-                  }
-                ]
-              },
-              {
                 "verb": "close",
                 "if": {
                   "flag": "nevera_oberta"
@@ -8463,19 +8428,6 @@
                   {
                     "who": "player",
                     "text": "sala.pis_cuina.nevera.look_tancada"
-                  }
-                ]
-              },
-              {
-                "verb": "pickUp",
-                "if": {
-                  "flag": "nevera_oberta",
-                  "is": false
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_cuina.nevera.tancada"
                   }
                 ]
               }
@@ -8597,7 +8549,11 @@
             "name": "sala.pis_cuina.passaplats.nom",
             "interactions": [
               {
-                "verb": "open",
+                "verb": [
+                  "open",
+                  "talkTo",
+                  "use"
+                ],
                 "if": {
                   "flag": "passaplats_obert",
                   "is": false
@@ -8612,43 +8568,6 @@
                 "effects": [
                   {
                     "setFlag": "passaplats_obert"
-                  }
-                ]
-              },
-              {
-                "verb": "open",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_cuina.passaplats.ja_obert"
-                  }
-                ]
-              },
-              {
-                "verb": "close",
-                "if": {
-                  "flag": "passaplats_obert"
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_cuina.passaplats.tanca",
-                    "sound": "passaplats"
-                  }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "passaplats_obert",
-                    "value": false
-                  }
-                ]
-              },
-              {
-                "verb": "close",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_cuina.passaplats.ja_tancat"
                   }
                 ]
               },
@@ -8739,21 +8658,6 @@
                   {
                     "who": "player",
                     "text": "sala.pis_cuina.passaplats.parla"
-                  }
-                ],
-                "if": {
-                  "flag": "passaplats_obert"
-                }
-              },
-              {
-                "verb": [
-                  "talkTo",
-                  "use"
-                ],
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_cuina.passaplats.tancat"
                   }
                 ]
               },
@@ -9747,19 +9651,6 @@
                     "text": "sala.pis_estudi.router.sense"
                   }
                 ]
-              },
-              {
-                "verb": [
-                  "push",
-                  "pull",
-                  "pickUp"
-                ],
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_estudi.router.sense"
-                  }
-                ]
               }
             ]
           },
@@ -9767,11 +9658,7 @@
             "name": "sala.pis_estudi.fibra.nom",
             "interactions": [
               {
-                "verb": [
-                  "pickUp",
-                  "use",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "fibra_connectada"
                 },
@@ -9783,11 +9670,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pickUp",
-                  "use",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "diu_distret"
                 },
@@ -9927,11 +9810,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pickUp",
-                  "use",
-                  "pull"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -10004,7 +9883,11 @@
                 ]
               },
               {
-                "verb": "open",
+                "verb": [
+                  "open",
+                  "talkTo",
+                  "use"
+                ],
                 "if": {
                   "flag": "passaplats_obert",
                   "is": false
@@ -10023,43 +9906,6 @@
                 ]
               },
               {
-                "verb": "open",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_estudi.passaplats.ja_obert"
-                  }
-                ]
-              },
-              {
-                "verb": "close",
-                "if": {
-                  "flag": "passaplats_obert"
-                },
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_estudi.passaplats.tanca",
-                    "sound": "passaplats"
-                  }
-                ],
-                "effects": [
-                  {
-                    "setFlag": "passaplats_obert",
-                    "value": false
-                  }
-                ]
-              },
-              {
-                "verb": "close",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_estudi.passaplats.ja_tancat"
-                  }
-                ]
-              },
-              {
                 "verb": [
                   "talkTo",
                   "use"
@@ -10068,18 +9914,6 @@
                   "flag": "passaplats_obert"
                 },
                 "dialogue": "passaplats"
-              },
-              {
-                "verb": [
-                  "talkTo",
-                  "use"
-                ],
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_estudi.passaplats.tancat"
-                  }
-                ]
               },
               {
                 "verb": "use",
@@ -10192,15 +10026,6 @@
                 "effects": [
                   {
                     "giveItem": "caixa_cartro"
-                  }
-                ]
-              },
-              {
-                "verb": "open",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_estudi.caixa.oberta"
                   }
                 ]
               }
@@ -10484,15 +10309,6 @@
                   {
                     "who": "player",
                     "text": "sala.pis_estudi.diu.look"
-                  }
-                ]
-              },
-              {
-                "verb": "pickUp",
-                "lines": [
-                  {
-                    "who": "player",
-                    "text": "sala.pis_estudi.diu.agafa"
                   }
                 ]
               }
@@ -22166,10 +21982,6 @@
                 "text": "dlg.llibre.ok1"
               },
               {
-                "who": "title",
-                "text": "sync.titol"
-              },
-              {
                 "who": "player",
                 "text": "dlg.llibre.ok2"
               },
@@ -23476,6 +23288,14 @@
             "node": "buscant"
           },
           {
+            "if": {
+              "var": "reinicis_aeroport",
+              "op": ">=",
+              "value": 1
+            },
+            "node": "hola_altra"
+          },
+          {
             "node": "hola"
           }
         ],
@@ -23485,6 +23305,15 @@
               {
                 "who": "soler",
                 "text": "dlg.soler.hola"
+              }
+            ],
+            "goto": "menu"
+          },
+          "hola_altra": {
+            "lines": [
+              {
+                "who": "soler",
+                "text": "dlg.soler.hola_altra"
               }
             ],
             "goto": "menu"
@@ -23521,7 +23350,12 @@
             "lines": [
               {
                 "who": "title",
-                "text": "sync.titol"
+                "text": "sync.titol",
+                "if": {
+                  "var": "reinicis_aeroport",
+                  "op": "<",
+                  "value": 1
+                }
               },
               {
                 "who": "soler",
@@ -24558,6 +24392,7 @@
       "dlg.auricular.42": "Obro el contenidor. Salta.",
       "dlg.auricular.43": "Vet? Em sents?",
       "dlg.auricular.44": "Iri? Em sents?",
+      "dlg.soler.hola_altra": "Vostè altra vegada, senyora? Què li passa, ara?",
       "final.bar1": "Una setmana després. Bar La Propina.",
       "final.tele1": "A la tele, els bancs fan una roda de premsa: «El sistema ha resistit» i «cal més regulació». La regulació proposada és més poder per als bancs.",
       "final.tele3": "Del compte zero, el banc diu que no existeix. Per si de cas, no en diu la contrasenya.",
@@ -24706,12 +24541,12 @@
       "ui.controls.titol": "Com es juga",
       "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
       "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
-      "ui.controls.dit.2": "Els punts ensenyen un moment tot el que es pot tocar. L'inventari, a baix a la dreta.",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
       "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
       "ui.controls.ratoli.dret": "Clic dret: la mires.",
       "ui.controls.ratoli.esquerre.mira": "Clic esquerre: la mires. Mantingues-lo premut per triar què hi fas.",
       "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
-      "ui.controls.ratoli.punts": "Els punts ensenyen un moment tot el que es pot clicar.",
+      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
       "ui.controls.nomostris": "No ho tornis a mostrar",
       "ui.controls.dacord": "D'acord",
       "ui.opcions.botons": "clic esquerre per mirar",
@@ -25143,7 +24978,6 @@
       "proleg.4": "...Una altra? Amb més «tothom»?",
       "proleg.5": "Lluny. Prou lluny. En un pis ple de cables, algú acaba de trobar una porta oberta.",
       "sala.aeroport_oficina.impressora.agafa": "Dues acreditacions. Encara són calentes.",
-      "sala.aeroport_oficina.impressora.encara": "Encara imprimeix. Li podria donar ànims.",
       "sala.aeroport_oficina.impressora.look": "Una impressora làser del segle passat.",
       "sala.aeroport_oficina.impressora.look_imp": "Imprimint. A la velocitat d'un cargol amb ansietat.",
       "sala.aeroport_oficina.impressora.nom": "impressora",
@@ -25247,7 +25081,6 @@
       "sala.bar_sala.comandament4": "...Qui ha posat aquesta sèrie? Bé, igual. Avui no tinc forces.",
       "sala.bar_sala.comandament_barra.nom": "comandament",
       "sala.bar_sala.dona": "Jo només accepto efectiu. I propines, que també són efectiu.",
-      "sala.bar_sala.falten": "Ja en falten menys.",
       "sala.bar_sala.fet1": "Tres de tres. Ara et fio.",
       "sala.bar_sala.fet2": "No les vull, eh. Volia saber si ho faries.",
       "sala.bar_sala.fet3": "En Marcel li torna el tap i la recepta.",
@@ -25289,7 +25122,7 @@
       "sala.bar_sala.tele.comandament": "No. Que ho faci en Marcel. És el seu premi.",
       "sala.bar_sala.tele.futbol": "Futbol. Un equip que guanya molts diners contra un altre que en guanya més.",
       "sala.bar_sala.tele.nom": "tele",
-      "sala.bar_sala.telefon.look": "El telèfon del bar: la base a la paret i un inalàmbric que en Tomàs no deixa mai lluny. Per trucar a l'Iri.",
+      "sala.bar_sala.telefon.look": "El telèfon del bar: la base a la paret i un aparell sense fil que en Tomàs no deixa mai lluny. Per trucar a l'Iri.",
       "sala.bar_sala.telefon.nom": "telèfon",
       "sala.pis_cuina.cafetera.cable": "Adeu, cafè. Tot sigui per la banca mundial.",
       "sala.pis_cuina.cafetera.ja": "Ja no té cable. Ja no té sentit.",
@@ -25298,7 +25131,6 @@
       "sala.pis_cuina.cafetera.no": "La cafetera. Sense ella, aquesta casa s'apaga. Per què la tocaria?",
       "sala.pis_cuina.cafetera.nom": "cafetera",
       "sala.pis_cuina.intro1": "Torn de nit al bar d'aquí a mitja hora. Abans, sobreviure a l'Iri.",
-      "sala.pis_cuina.nevera.ja": "Ja és oberta. Se m'escapa el fred.",
       "sala.pis_cuina.nevera.look_iogurt": "I un iogurt que ja vota.",
       "sala.pis_cuina.nevera.look_pa": "Pa i tonyina.",
       "sala.pis_cuina.nevera.look_pizza": "Hi ha una pizza per a demà.",
@@ -25306,12 +25138,9 @@
       "sala.pis_cuina.nevera.nom": "nevera",
       "sala.pis_cuina.nevera.obre": "A veure què hi ha.",
       "sala.pis_cuina.nevera.tanca": "Tancada.",
-      "sala.pis_cuina.nevera.tancada": "Primer l'hauria d'obrir.",
       "sala.pis_cuina.nom": "La cuina",
       "sala.pis_cuina.passaplats.cable": "Té. El cable de la cafetera. Que consti en acta.",
       "sala.pis_cuina.passaplats.cable2": "Gràcies!",
-      "sala.pis_cuina.passaplats.ja_obert": "Ja és obert.",
-      "sala.pis_cuina.passaplats.ja_tancat": "Ja és tancat. L'Iri, en canvi, no tanca mai.",
       "sala.pis_cuina.passaplats.look": "El passaplats. Per aquí l'Iri em demana coses que després no torna.",
       "sala.pis_cuina.passaplats.nom": "passaplats",
       "sala.pis_cuina.passaplats.obre": "Obert. Ja em pots dir coses, Iri.",
@@ -25319,8 +25148,6 @@
       "sala.pis_cuina.passaplats.pizza": "La pizza. Que el gat sàpiga el que val.",
       "sala.pis_cuina.passaplats.pizza2": "La tractaré com una reina.",
       "sala.pis_cuina.passaplats.res": "L'Iri no ho necessita. I jo, potser sí.",
-      "sala.pis_cuina.passaplats.tanca": "Tancat. Una mica de pau.",
-      "sala.pis_cuina.passaplats.tancat": "Està tancat. Primer l'hauria d'obrir.",
       "sala.pis_cuina.passaplats.tancat_objecte": "Pel vidre no passa. Primer l'hauria d'obrir.",
       "sala.pis_cuina.pizza.agafa": "Perdona'm, pizza. És per una bona causa. Crec.",
       "sala.pis_cuina.pizza.look": "Quatre formatges. L'únic pla que sempre surt bé.",
@@ -25346,8 +25173,6 @@
       "sala.pis_estudi.caixa.look": "La caixa del router. A dins hi ha el cable de xarxa.",
       "sala.pis_estudi.caixa.look_buida": "Buida. Per al gat, és un palau.",
       "sala.pis_estudi.caixa.nom": "caixa",
-      "sala.pis_estudi.caixa.oberta": "Ja és oberta. I buida.",
-      "sala.pis_estudi.diu.agafa": "En Diu no s'agafa. En Diu t'agafa a tu.",
       "sala.pis_estudi.diu.auricular1": "...Està bé. Te'ls deixo. Una estona. Adeu, música.",
       "sala.pis_estudi.diu.auricular2": "En Diu s'abraça als auriculars i mossega el coixinet com si fos un ratolí car.",
       "sala.pis_estudi.diu.auricular_no": "Els auriculars? No me'ls trec mai. Mai.",
@@ -25395,14 +25220,10 @@
       "sala.pis_estudi.pany1": "Xarxa del bar. Contrasenya: «demasi». Dins.",
       "sala.pis_estudi.pany2": "Un pany intel·ligent de 19,99 €. Obrir. Fet.",
       "sala.pis_estudi.pany3": "Vet, el calaix és obert.",
-      "sala.pis_estudi.passaplats.ja_obert": "Ja és obert. Més obert, seria un forat a la paret.",
-      "sala.pis_estudi.passaplats.ja_tancat": "Ja és tancat.",
       "sala.pis_estudi.passaplats.look": "El passaplats de la cuina. Per aquí passen plats, pizzes i ordres de la Vet.",
       "sala.pis_estudi.passaplats.nom": "passaplats",
       "sala.pis_estudi.passaplats.obre": "Obert. Ja fa olor de cafè.",
       "sala.pis_estudi.passaplats.res": "La Vet no ho necessita. I jo, potser sí.",
-      "sala.pis_estudi.passaplats.tanca": "Tancat. Privacitat.",
-      "sala.pis_estudi.passaplats.tancat": "Primer l'he d'obrir. Pel vidre, la Vet només em sent si crido, i ja crido prou.",
       "sala.pis_estudi.passaplats.tancat_objecte": "Tancat. Primer l'hauria d'obrir.",
       "sala.pis_estudi.pizzes.look": "Quatre caixes. Totes buides. Les he comprovat dues vegades.",
       "sala.pis_estudi.pizzes.nom": "caixes de pizza",
@@ -25863,7 +25684,10 @@
       "sala.credits.nom": "Crèdits",
       "aliat.neta": "NETA-3 és de la colla. Aliats: {aliats} de 4.",
       "sala.avio.aliats1": "Al banc hi deu haver més gent com la Rius. Si en posem prou al nostre costat, això acabarà molt millor.",
-      "sala.avio.aliats2": "Ho apunto. A la llista de coses que dius abans d'un desastre."
+      "sala.avio.aliats2": "Ho apunto. A la llista de coses que dius abans d'un desastre.",
+      "sala.bar_sala.falten1": "Un de tres. En falten dos.",
+      "sala.bar_sala.falten2": "Dos de tres. Ja només en falta un.",
+      "sala.bcmu_moll.intro9": "Doncs amunt. Seguretat ja és cosa meva: hi soc amb en Ballester. Allà hi ha la clau."
     }
   },
   "locale": "ca",

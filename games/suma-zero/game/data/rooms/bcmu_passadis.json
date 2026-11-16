@@ -666,7 +666,11 @@
             {
               "who": "player",
               "text": "sala.bcmu_passadis.porta_neteja.entra",
-              "sound": "porta_neteja"
+              "sound": "porta_neteja",
+              "if": {
+                "visited": "bcmu_escombraries",
+                "is": false
+              }
             }
           ],
           "goTo": "bcmu_escombraries"
