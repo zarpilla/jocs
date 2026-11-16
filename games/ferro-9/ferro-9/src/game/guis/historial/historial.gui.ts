@@ -52,6 +52,11 @@ w.__ferroHistorialKey = (e: KeyboardEvent) => {
       return;
     }
   }
+  // Esc tanca el menú del joc, com el botó Continua.
+  if (e.key === 'Escape' && guis.gameMenu.visible) {
+    guis.gameMenu.hide();
+    return;
+  }
   if (e.repeat || (e.key !== 'h' && e.key !== 'H')) return;
   if (guis.saveMenu.visible) return;
   if (gui.visible) gui.hide();

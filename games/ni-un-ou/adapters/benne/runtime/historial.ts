@@ -97,6 +97,11 @@ if (typeof window !== 'undefined') {
       else if (ev.key === 'ArrowDown' || ev.key === 'PageDown') { historialEnrere -= ev.key === 'PageDown' ? HISTORIAL_FILES - 1 : 1; renderHistory(); }
       return;
     }
+    // Esc tanca el menú del joc, com el botó Continua.
+    if (ev.key === 'Escape' && guis.gameMenu.visible) {
+      guis.gameMenu.hide();
+      return;
+    }
     if (ev.key !== 'h' && ev.key !== 'H') return;
     const all = guis as unknown as Record<string, { visible: boolean } | undefined>;
     if (MENUS.some((m) => all[m]?.visible)) return;
