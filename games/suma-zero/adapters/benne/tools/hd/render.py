@@ -30,6 +30,7 @@ from PIL import Image, ImageDraw
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
+from pixels import nearest  # noqa: E402
 
 from escala import RESOLUCIO  # noqa: E402
 if RESOLUCIO == 640:
@@ -179,7 +180,7 @@ def main():
     bg.save(out / f'{name}.png')
 
     def x3(img, path):
-        img.crop((0, 0, W, VISIBLE_H)).resize((W * 3, VISIBLE_H * 3), Image.NEAREST).save(path)
+        nearest(img.crop((0, 0, W, VISIBLE_H)), (W * 3, VISIBLE_H * 3)).save(path)
 
     x3(bg, out / f'{name}_x3.png')
     full = bg.copy()
@@ -197,7 +198,7 @@ def main():
         for f in frames:
             im = bg.copy()
             im.alpha_composite(f)
-            gif.append(im.crop((0, 0, W, VISIBLE_H)).resize((W * 2, VISIBLE_H * 2), Image.NEAREST).convert('RGB'))
+            gif.append(nearest(im.crop((0, 0, W, VISIBLE_H)), (W * 2, VISIBLE_H * 2)).convert('RGB'))
         gif[0].save(out / f'{name}_{aid}.gif', save_all=True, append_images=gif[1:], duration=ms, loop=0)
 
     # Depuració: zones, terra, personatges
@@ -216,7 +217,7 @@ def main():
                     dbg.alpha_composite(spr, (fx - feet['x'], fy - feet['y']))
             if behind and fr:
                 dbg.alpha_composite(fr[0])
-    big = dbg.resize((W * 3, H * 3), Image.NEAREST)
+    big = nearest(dbg, (W * 3, H * 3))
     d = ImageDraw.Draw(big)
     if design:
         d.polygon([(Pt(x, y)[0] * 3 + 1, Pt(x, y)[1] * 3 + 1) for x, y in design['walkable']], outline=(0, 255, 0))

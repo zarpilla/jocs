@@ -27,6 +27,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 import hd.items as items480  # noqa: E402
@@ -292,7 +293,7 @@ def character_frame(who):
     fr = list(sheet['frames'].values())[tag]['frame']
     src = Image.open(d / f'{who}.png').convert('RGBA').crop((fr['x'], fr['y'], fr['x'] + fr['w'], fr['y'] + fr['h']))
     if src.height < 100:                                  # (placeholder-art encara és de 480)
-        src = src.resize((65, 116), Image.NEAREST)
+        src = nearest(src, (65, 116))
     return src, provisional
 
 
@@ -378,7 +379,7 @@ def inv_icons(ids):
         out = []
         for i in ids:
             ic = items480.render(i)
-            out.append(ic.resize((SLOT_W, SLOT_H), Image.NEAREST) if ic is not None else None)
+            out.append(nearest(ic, (SLOT_W, SLOT_H)) if ic is not None else None)
         return out
 
 
@@ -447,8 +448,8 @@ def main():
     o = Image.new('RGB', (1920, (300 + gap) * 4), (30, 30, 30))
     d = ImageDraw.Draw(o)
     for k, hover in enumerate(('look', 'canvia')):
-        a = bar480(hover=hover).resize((1920, 300), Image.NEAREST)
-        b = verb_bar({'hover': hover}).resize((1920, 300), Image.NEAREST)
+        a = nearest(bar480(hover=hover), (1920, 300))
+        b = nearest(verb_bar({'hover': hover}), (1920, 300))
         y = k * 2 * (300 + gap)
         d.text((8, y + 10), f'ACTUAL 480x270: barra 480x75, x4 (hover: {hover})', fill=(255, 255, 255))
         o.paste(a, (0, y + gap))

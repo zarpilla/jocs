@@ -22,6 +22,7 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pixels import nearest  # noqa: E402
 from hd import personatges as P  # noqa: E402
 from hd.characters import person  # noqa: E402
 
@@ -278,7 +279,7 @@ def fitxa(results, path, bg=(170, 160, 130, 255)):
         for c, im in enumerate(cells):
             x = X0 + c * cw
             sheet.alpha_composite(im, (x + (cw - im.width) // 2, y + ch - im.height - 1))
-    sheet = sheet.resize((sheet.width * 2, sheet.height * 2), Image.NEAREST)
+    sheet = nearest(sheet, (sheet.width * 2, sheet.height * 2))
     sheet.save(path)
     print('✔ fitxa:', path)
 

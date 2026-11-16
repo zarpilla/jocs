@@ -20,6 +20,7 @@ from PIL import Image
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 ART = TOOLS.parent / 'placeholder-art'
 
 
@@ -136,7 +137,7 @@ def main():
             else:
                 im.alpha_composite(props[lid])
         im.paste(bar, (0, bar_y))
-        frames.append(im.resize((W * scale, H * scale), Image.NEAREST).convert('RGB'))
+        frames.append(nearest(im, (W * scale, H * scale)).convert('RGB'))
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     frames[0].save(out.with_suffix('.png'))

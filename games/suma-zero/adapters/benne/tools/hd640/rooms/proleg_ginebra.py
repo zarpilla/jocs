@@ -23,6 +23,7 @@ import math
 
 import numpy as np
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import outline, text, text_width, _diff
@@ -190,7 +191,7 @@ def big_word(cv, word, cx, y, big):
     w = (text_width(word) + 1) * big
     tmp = Canvas(w=60, h=10, transparent=True)
     text(tmp, word, 0, 0, GOLD, 4, lit=0)
-    sm = tmp.img.resize((tmp.img.width * big, tmp.img.height * big), Image.NEAREST)
+    sm = nearest(tmp.img, (tmp.img.width * big, tmp.img.height * big))
     SM = sm.load()
     out = sm.copy()
     O = out.load()
@@ -293,7 +294,7 @@ def _bust(talk, smile=True, look=False):
             P[ex, 21] = P[ex + 1, 21] = P[ex + 2, 21] = (150, 100, 90, 255)       # la parpella, ben amunt
         for x in (34, 35, 36, 37, 38):                                   # una cella aixecada
             P[x, 19] = (200, 200, 210, 255)
-    return fig.crop((11, 4, 55, 48)).resize((88, 88), Image.NEAREST)
+    return nearest(fig.crop((11, 4, 55, 48)), (88, 88))
 
 
 SCREENB = [(10, 20, 50), (20, 40, 90), (40, 70, 140), (80, 120, 190)]

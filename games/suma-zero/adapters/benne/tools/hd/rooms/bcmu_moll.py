@@ -14,6 +14,7 @@ El moll de càrrega del BCMU (Escena 4b, l'Iri). Art definitiu:
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET, CARD, RED, YEL, GRAYC
@@ -219,7 +220,7 @@ def tecnics(cv):
         fig = person(spec, f)
         if mirror:
             fig = fig.transpose(Image.FLIP_LEFT_RIGHT)
-        fig = fig.resize((round(fig.width * TK), round(fig.height * TK)), Image.NEAREST)
+        fig = nearest(fig, (round(fig.width * TK), round(fig.height * TK)))
         layer.alpha_composite(fig, (fx - round(25 * TK), FEET_Y - round(83 * TK)))
     # una mica més foscos: són al fons, lluny del fluorescent
     px = layer.load()

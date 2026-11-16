@@ -22,6 +22,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 ART = TOOLS.parent / 'placeholder-art'
 
 
@@ -33,7 +34,7 @@ def sprite(cid, art, k=1.0):
     img = Image.open(art / cid / f'{cid}.png').convert('RGBA').crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h']))
     fx, fy = ch['feet']['x'], ch['feet']['y']
     if k != 1.0:
-        img = img.resize((round(img.width * k), round(img.height * k)), Image.NEAREST)
+        img = nearest(img, (round(img.width * k), round(img.height * k)))
         fx, fy = round(fx * k), round(fy * k)
     return img, (fx, fy)
 
@@ -122,7 +123,7 @@ def main():
             else:
                 im.alpha_composite(props[lid])
         im.paste(bar, (0, bar_y))
-        big = im.resize((W * scale, H * scale), Image.NEAREST).convert('RGB')
+        big = nearest(im, (W * scale, H * scale)).convert('RGB')
         if a.debug and design:
             d = ImageDraw.Draw(big)
             if design.get('walkable'):

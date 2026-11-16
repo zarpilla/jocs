@@ -13,6 +13,7 @@ Animacions: `fluorescent` (el tub parpelleja) i `avio` (per la vidriera del fons
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff, SHEET, CARD, RED
@@ -156,7 +157,7 @@ def soler(cv):
     """L'agent Soler, de cara a la porta de personal (és a dir, mirant cap aquí)."""
     fig = person(NPCS['soler'], 'D')
     k = 0.82
-    fig = fig.resize((round(fig.width * k), round(fig.height * k)), Image.NEAREST)
+    fig = nearest(fig, (round(fig.width * k), round(fig.height * k)))
     fx, fy = SOLER_AT
     layer = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     layer.alpha_composite(fig, (fx - round(34 * k), fy - round(111 * k)))

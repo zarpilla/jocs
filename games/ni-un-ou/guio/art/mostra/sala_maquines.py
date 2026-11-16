@@ -29,6 +29,7 @@ HERE = Path(__file__).resolve().parent
 GAMES = HERE.parents[3]
 sys.path.insert(0, str(GAMES / 'suma-zero/adapters/benne/tools'))
 sys.path.insert(0, str(GAMES / 'suma-zero/tools/font'))
+from pixels import nearest  # noqa: E402
 
 from hd.pix import Canvas, Light, W, H, hr, mix, GOLD, RUST, B4  # noqa: E402
 from hd.personatges import diu  # noqa: E402
@@ -868,7 +869,7 @@ def main():
         draw_text(scene, BX - text_width(ln) // 2, top + i * 10, ln, BASTIDA_COL)
 
     cursor(scene, 318, 150)
-    scene.convert('RGB').resize((W * 2, H * 2), Image.NEAREST).save(HERE / 'sala-maquines-joc.png')
+    nearest(scene.convert('RGB'), (W * 2, H * 2)).save(HERE / 'sala-maquines-joc.png')
     print('✔', HERE / 'sala-maquines.png', '·', HERE / 'sala-maquines-joc.png')
 
 

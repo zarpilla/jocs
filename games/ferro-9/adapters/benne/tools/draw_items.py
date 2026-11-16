@@ -15,6 +15,7 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pixels import nearest  # noqa: E402
 from escala import RESOLUCIO  # noqa: E402
 if RESOLUCIO == 640:
     from hd640 import items  # noqa: E402   (65×36)
@@ -37,6 +38,6 @@ if __name__ == '__main__':
     rows = (len(ids) + cols - 1) // cols
     out = Image.new('RGBA', (cols * (W + 4) * scale, rows * (H + 4) * scale), (14, 17, 24, 255))
     for i, iid in enumerate(ids):
-        img = icon(iid).resize((W * scale, H * scale), Image.NEAREST)
+        img = nearest(icon(iid), (W * scale, H * scale))
         out.alpha_composite(img, ((i % cols) * (W + 4) * scale + 2 * scale, (i // cols) * (H + 4) * scale + 2 * scale))
     out.save(sys.argv[1] if len(sys.argv) > 1 else 'items.png')
