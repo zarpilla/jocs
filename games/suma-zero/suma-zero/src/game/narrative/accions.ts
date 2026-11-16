@@ -93,22 +93,48 @@ export function marcaMirat(narrative: Narrative, target: InteractionTarget, room
   if (!narrative.flag(flag)) narrative.apply({ setFlag: flag });
 }
 
+/** Totes les interaccions del contingut (de les coses de les sales, dels personatges i dels objectes). */
+function totes(content: GameContent): InteractionDef[] {
+  const out: InteractionDef[] = [];
+  for (const room of Object.values(content.rooms)) {
+    for (const h of Object.values(room.hotspots ?? {})) out.push(...(h.interactions ?? []));
+  }
+  for (const c of Object.values(content.characters)) out.push(...(c.interactions ?? []));
+  for (const it of Object.values(content.items)) out.push(...(it.interactions ?? []));
+  return out;
+}
+
+/**
+ * Si hi ha algun comodí `*` que fa alguna cosa (no una broma de «qualsevol objecte»): un canal que porta objectes
+ * (el muntacàrregues, el tub, la Mosca, la safata) o donar-lo a l'altra protagonista. Llavors qualsevol objecte s'hi
+ * pot voler fer servir.
+ */
+export function hiHaComodi(content: GameContent): boolean {
+  return totes(content).some((i) => i.item === '*' && !isInert(i));
+}
+
 /**
  * Si un objecte es fa servir sol: el contingut no el combina mai amb res (cap interacció el demana, ni ell en
  * demana cap; el comodí `*`, les bromes de «qualsevol objecte», no compta). Llavors tocar-lo a l'inventari no el
  * pren a la mà: en fa l'acció (el plànol s'obre d'un toc). Ho fa servir el sync (`defaultVerb` de l'objecte).
+ *
+ * Un comodí que fa coses (`hiHaComodi`: la mostra al muntacàrregues, la nota a la safata) sí que compta, però
+ * només per als objectes que no tenen cap acció pròpia: un paper es pren a la mà (no té res més a fer), i el
+ * comunicador, que s'obre sol, continua sent sol (es pot prendre a la mà des del menú: `potAnarALaMa`).
  */
 export function objecteSol(content: GameContent, item: string): boolean {
   const demana = (list: InteractionDef[] | undefined) => (list ?? []).some((i) => i.item === item);
-  for (const room of Object.values(content.rooms)) {
-    for (const h of Object.values(room.hotspots ?? {})) if (demana(h.interactions)) return false;
-  }
-  for (const c of Object.values(content.characters)) if (demana(c.interactions)) return false;
-  for (const [id, it] of Object.entries(content.items)) {
-    if (demana(it.interactions)) return false;
-    if (id === item && (it.interactions ?? []).some((i) => i.item !== undefined && i.item !== '*')) return false;
-  }
+  if (demana(totes(content))) return false;
+  const propies = content.items[item]?.interactions ?? [];
+  if (propies.some((i) => i.item !== undefined && i.item !== '*')) return false;
+  const actua = propies.some((i) => i.item === undefined && [i.verb].flat().some((v) => v !== 'look'));
+  if (!actua && hiHaComodi(content)) return false;
   return true;
+}
+
+/** Si un objecte es pot prendre a la mà (per fer-lo servir amb una altra cosa): el toc o, si és sol, el menú. */
+export function potAnarALaMa(content: GameContent, item: string): boolean {
+  return !objecteSol(content, item) || hiHaComodi(content);
 }
 
 /** Què fa un toc: mirar, fer una acció, o obrir el menú perquè triï el jugador. */

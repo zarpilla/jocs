@@ -15,7 +15,7 @@
  * serveix per a qualsevol joc de narrative-core.
  */
 import type { InteractionTarget, Narrative } from '@aventura/narrative-core';
-import { accions, marcaMirat, objecteSol, queFaElToc, verbAmbObjecte } from './runtime/accions.js';
+import { accions, marcaMirat, objecteSol, potAnarALaMa, queFaElToc, verbAmbObjecte } from './runtime/accions.js';
 
 export type Com = 'toc' | 'menú' | 'premut' | 'dret';
 export type Mode = 'dit' | 'ratoli';
@@ -42,7 +42,9 @@ export function mesura(n: Narrative, mode: Mode = 'dit'): Mesura {
     if (!volgut) return; // el camí fa una cosa que no fa res (la frase per defecte): no compta
     if (item) {
       if (n.peek({ verb: verbAmbObjecte(n, t, item), target: t, item }) !== volgut) impossibles.push(on);
-      passos.push({ com: 'toc', on, miraPrimer: false });
+      // l'objecte s'ha de poder prendre a la mà: tocant-lo, o (si es fa servir sol) des del menú
+      if (!potAnarALaMa(n.content, item)) impossibles.push(`${on} (no es pot prendre a la mà)`);
+      passos.push({ com: objecteSol(n.content, item) ? 'premut' : 'toc', on, miraPrimer: false });
       return;
     }
     if (mode === 'ratoli' && verb === 'look') {

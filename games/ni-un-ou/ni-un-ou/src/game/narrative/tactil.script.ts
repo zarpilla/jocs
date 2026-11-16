@@ -9,7 +9,7 @@ import { pointer } from '@benne/script';
 import type { FallbackTarget } from '@benne/script';
 import { fromBenne, narrative, targetFromBenne } from './narrative';
 import { performInteraction } from './narrative.script';
-import { accions, marcaMirat, objecteSol, queFaElToc, verbAmbObjecte } from './accions';
+import { accions, marcaMirat, potAnarALaMa, queFaElToc, verbAmbObjecte } from './accions';
 import { MENU, esClicDret, esDit, label, openMenu, setMenu, type Opcio } from './tactil';
 import { esquerreMira } from './preferencies';
 
@@ -61,7 +61,7 @@ function doVerb(verb: string, target: FallbackTarget) {
  */
 export function openActions(target: FallbackTarget) {
   const opcions: Opcio[] = [{ text: label('look'), verb: 'look' }];
-  if (target.kind === 'item' && !objecteSol(narrative.content, fromBenne('items', target.id))) {
+  if (target.kind === 'item' && potAnarALaMa(narrative.content, fromBenne('items', target.id))) {
     opcions.push({ text: label('armar'), verb: null });
   }
   const totes = accions(narrative, targetFromBenne(target.kind, target.id));
