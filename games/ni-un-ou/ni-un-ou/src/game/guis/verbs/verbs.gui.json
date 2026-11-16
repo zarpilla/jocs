@@ -36,6 +36,24 @@
       "anchorY": "bottom"
     },
     {
+      "type": "text",
+      "id": "verbLineVerb",
+      "x": 320,
+      "y": 269,
+      "text": "",
+      "font": "niunou-regular",
+      "fontSize": 8,
+      "color": "#7c8a85",
+      "align": "left",
+      "textOutline": {
+        "enabled": true,
+        "color": "#03060c",
+        "sides": "allSides"
+      },
+      "zIndex": 5,
+      "anchorY": "bottom"
+    },
+    {
       "type": "button",
       "id": "CanviaBtn",
       "x": 4,

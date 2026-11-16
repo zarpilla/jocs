@@ -35,6 +35,8 @@ from hd640.gui_rest import write_sheet, key_image, GAME  # noqa: E402
 W, H = 640, 288                         # l'alçada mínima (20:9); la pantalla pot ser més alta (pantalla.py)
 FRANJA = 260                            # a sota, la franja: la frase
 FONT, BOLD = 'aiguaverne-regular', 'aiguaverne-negreta'
+# el verb de la frase: el color de la frase, més apagat (el nom és el que compta)
+VERB_DIM = '#' + ''.join(f'{round(int(VERB_LINE[i:i + 2], 16) * 0.6):02x}' for i in (1, 3, 5))
 
 # ─── Disposició (ha de coincidir amb verbs.gui.ts i accions.gui.ts) ─────────
 
@@ -295,6 +297,9 @@ def build_hud():
         # la frase: el nom del que hi ha sota el dit o el ratolí, o «Usa X amb...»
         {'type': 'text', 'id': 'verbLineText', 'x': W // 2, 'y': FRANJA + 9, 'text': '', 'font': FONT, 'fontSize': 8,
          'color': VERB_LINE, 'align': 'center', 'textOutline': text_outline(), 'zIndex': 5},
+        # el verb del clic («Obre»), més apagat que el nom: hud.ts el posa a l'esquerra del nom i centra la frase
+        {'type': 'text', 'id': 'verbLineVerb', 'x': W // 2, 'y': FRANJA + 9, 'text': '', 'font': FONT, 'fontSize': 8,
+         'color': VERB_DIM, 'align': 'left', 'textOutline': text_outline(), 'zIndex': 5},
         button('CanviaBtn', CANVIA, cw, ch, 'CanviaBtn', {'hover': 'CanviaBtn-hover'}),
         {'type': 'image', 'id': 'CaraIri', 'x': fx, 'y': fy, 'tag': 'CaraIri', 'backgroundAnchor': 'top-left',
          'visible': False, 'clickable': False},
@@ -339,7 +344,7 @@ def build_hud():
     # Pantalla adaptable (dissenyada a 288 d'alt): el que és a baix va enganxat a baix. En un monitor (360) la safata,
     # la frase i els botons queden a la franja de sota l'escena.
     for c in controls:
-        if c['id'] in ('verbLineText', 'PuntsBtn', 'BossaBtn', 'Safata', 'inventoryPanel', 'upBtn', 'downBtn'):
+        if c['id'] in ('verbLineText', 'verbLineVerb', 'PuntsBtn', 'BossaBtn', 'Safata', 'inventoryPanel', 'upBtn', 'downBtn'):
             c['anchorY'] = 'bottom'
     gui = {'id': 'verbs', 'name': 'HUD', 'description': 'Aigua Verne: sense barra de verbs [hd640/hud.py]',
            'visible': True, 'display': {'aseprite': True}, 'controls': controls}

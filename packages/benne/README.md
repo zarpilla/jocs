@@ -36,6 +36,8 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 - `speech.clickProtectMs` a `game-config.json`: els primers mil·lisegons d'una línia, un clic no la salta;
 - `game.isBusy`: si ara mateix es diu una línia, hi ha una conversa oberta, una cinemàtica o un vídeo (les rondes
   dels personatges s'hi aturen);
+- `width` als controls de GUI en BenneScript (un text: l'amplada del que mostra ara), per posar dos textos de
+  colors diferents l'un al costat de l'altre (el verb apagat i el nom de la frase del HUD tàctil);
 - `pauseGame` a una GUI modal: mentre és oberta, el joc s'atura (temporitzadors, tweens, caminades), i Esc la tanca;
 - les partides desades al `localStorage` amb una clau per joc (`VITE_BENNE_GAME_ID`, del nom del
   `package.json` del projecte), perquè dos jocs al mateix origen no comparteixin partides.
