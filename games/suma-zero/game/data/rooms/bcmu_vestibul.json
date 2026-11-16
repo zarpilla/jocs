@@ -359,8 +359,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "virus_aturat"
@@ -374,9 +374,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "auditoria_acceptada"
@@ -397,8 +397,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -423,9 +423,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -452,9 +452,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "virus_aturat"
@@ -474,9 +474,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "lines": [
             {

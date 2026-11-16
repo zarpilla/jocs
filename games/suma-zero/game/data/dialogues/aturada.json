@@ -37,6 +37,23 @@
               }
             ]
           }
+        },
+        {
+          "who": "player",
+          "text": "dlg.aturada.sense_compte",
+          "if": {
+            "all": [
+              {
+                "flag": "ballester_compte",
+                "is": false
+              },
+              {
+                "hasItem": "compte_nomines",
+                "who": "iri",
+                "is": false
+              }
+            ]
+          }
         }
       ],
       "goto": "tria"

@@ -121,9 +121,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "any": [
@@ -145,8 +145,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -208,9 +208,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "virus_aturat"
@@ -226,8 +226,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {

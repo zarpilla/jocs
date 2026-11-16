@@ -120,9 +120,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "bar_sala"
         },

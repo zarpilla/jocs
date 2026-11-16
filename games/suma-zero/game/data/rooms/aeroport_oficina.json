@@ -152,8 +152,8 @@
         },
         {
           "verb": [
-            "push",
             "use",
+            "push",
             "pickUp"
           ],
           "if": {
@@ -203,9 +203,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "hasItem": "acreditacions",
@@ -220,9 +220,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "soler_distret",
@@ -237,9 +237,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "lines": [
             {

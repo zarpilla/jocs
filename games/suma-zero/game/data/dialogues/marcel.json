@@ -240,24 +240,89 @@
           "who": "marcel",
           "text": "dlg.marcel.falta_tap",
           "if": {
-            "flag": "marcel_tap",
-            "is": false
+            "all": [
+              {
+                "flag": "marcel_tap",
+                "is": false
+              },
+              {
+                "hasItem": "tap",
+                "is": false
+              }
+            ]
           }
         },
         {
           "who": "marcel",
           "text": "dlg.marcel.falta_recepta",
           "if": {
-            "flag": "marcel_recepta",
-            "is": false
+            "all": [
+              {
+                "flag": "marcel_recepta",
+                "is": false
+              },
+              {
+                "hasItem": "recepta",
+                "is": false
+              }
+            ]
           }
         },
         {
           "who": "marcel",
           "text": "dlg.marcel.falta_comandament",
           "if": {
-            "flag": "marcel_comandament",
-            "is": false
+            "all": [
+              {
+                "flag": "marcel_comandament",
+                "is": false
+              },
+              {
+                "hasItem": "comandament",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "marcel",
+          "text": "dlg.marcel.falta_portes",
+          "if": {
+            "any": [
+              {
+                "all": [
+                  {
+                    "flag": "marcel_tap",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "tap"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "flag": "marcel_recepta",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "recepta"
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "flag": "marcel_comandament",
+                    "is": false
+                  },
+                  {
+                    "hasItem": "comandament"
+                  }
+                ]
+              }
+            ]
           }
         }
       ],

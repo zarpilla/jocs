@@ -77,15 +77,6 @@
       ],
       "lines": [
         {
-          "who": "title",
-          "text": "sync.titol",
-          "if": {
-            "var": "reinicis_aeroport",
-            "op": "<",
-            "value": 1
-          }
-        },
-        {
           "who": "soler",
           "text": "dlg.soler.fill1",
           "if": {
@@ -196,6 +187,15 @@
         {
           "who": "narrator",
           "text": "dlg.soler.busca2"
+        },
+        {
+          "who": "title",
+          "text": "sync.titol",
+          "if": {
+            "var": "reinicis_aeroport",
+            "op": "<",
+            "value": 1
+          }
         }
       ]
     },

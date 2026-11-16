@@ -21,6 +21,20 @@
           }
         },
         {
+          "who": "vet",
+          "text": "dlg.auricular.45",
+          "if": {
+            "protagonist": "iri"
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.auricular.45",
+          "if": {
+            "protagonist": "vet"
+          }
+        },
+        {
           "who": "iri",
           "text": "dlg.auricular.1",
           "if": {

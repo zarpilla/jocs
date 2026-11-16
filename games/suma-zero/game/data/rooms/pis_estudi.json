@@ -1106,6 +1106,66 @@
             "use"
           ],
           "if": {
+            "all": [
+              {
+                "flag": "passaplats_obert"
+              },
+              {
+                "flag": "cable_demanat"
+              },
+              {
+                "not": {
+                  "all": [
+                    {
+                      "flag": "diu_ha_mossegat"
+                    },
+                    {
+                      "flag": "diu_distret",
+                      "is": false
+                    },
+                    {
+                      "flag": "pizza_demanada",
+                      "is": false
+                    }
+                  ]
+                }
+              },
+              {
+                "not": {
+                  "all": [
+                    {
+                      "flag": "llibre_trobat"
+                    },
+                    {
+                      "flag": "vet_marxa",
+                      "is": false
+                    },
+                    {
+                      "not": {
+                        "seen": {
+                          "dialogue": "passaplats",
+                          "node": "marcel"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "vet",
+              "text": "sala.pis_estudi.passaplats.res_parla"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
+          "if": {
             "flag": "passaplats_obert"
           },
           "dialogue": "passaplats"

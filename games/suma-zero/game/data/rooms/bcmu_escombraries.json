@@ -827,8 +827,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "sync_mobil"
@@ -842,8 +842,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "sync_collaret"
@@ -857,8 +857,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "aliat_neta"
@@ -872,8 +872,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "var": "robot",
@@ -914,8 +914,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "iri_sap_neta"
@@ -929,8 +929,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -967,8 +967,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "iri_llesta"
@@ -982,8 +982,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "all": [
@@ -1005,8 +1005,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "all": [
@@ -1057,8 +1057,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "all": [
@@ -1150,8 +1150,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -1173,6 +1173,13 @@
     },
     "bosses": {
       "name": "sala.bcmu_escombraries.bosses.nom",
+      "visibleIf": {
+        "not": {
+          "var": "coixi",
+          "op": "==",
+          "value": "bosses"
+        }
+      },
       "interactions": [
         {
           "verb": "pickUp",
@@ -1222,9 +1229,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "bcmu_passadis"
         },

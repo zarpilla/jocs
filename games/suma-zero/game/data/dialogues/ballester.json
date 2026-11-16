@@ -265,6 +265,10 @@
         {
           "who": "ballester",
           "text": "dlg.ballester.cantar2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.tapat"
         }
       ],
       "goto": "eines"
@@ -287,6 +291,10 @@
         {
           "who": "ballester",
           "text": "dlg.ballester.banquers2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.tapat"
         }
       ],
       "goto": "eines"
@@ -309,6 +317,10 @@
         {
           "who": "ballester",
           "text": "dlg.ballester.euros2"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.tapat"
         }
       ],
       "goto": "eines"
@@ -364,6 +376,10 @@
         {
           "who": "ballester",
           "text": "dlg.ballester.violi3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.ballester.tapat"
         }
       ],
       "goto": "eines"

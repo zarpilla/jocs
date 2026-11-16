@@ -644,6 +644,82 @@
             "talkTo",
             "use"
           ],
+          "if": {
+            "not": {
+              "any": [
+                {
+                  "all": [
+                    {
+                      "flag": "sap_pany"
+                    },
+                    {
+                      "flag": "cal_contrasenya",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "contrasenya_llegida"
+                    },
+                    {
+                      "flag": "contrasenya_dita",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "sap_dona"
+                    },
+                    {
+                      "flag": "trucada_demanada",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "marcel_fet"
+                    },
+                    {
+                      "flag": "resum_fet",
+                      "is": false
+                    }
+                  ]
+                },
+                {
+                  "all": [
+                    {
+                      "flag": "resum_fet"
+                    },
+                    {
+                      "flag": "marcel_neta"
+                    },
+                    {
+                      "flag": "iri_sap_neta",
+                      "is": false
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bar_sala.telefon.res"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "talkTo",
+            "use"
+          ],
           "dialogue": "trucada"
         },
         {
@@ -662,9 +738,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "tomas_rebost"
@@ -678,9 +754,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "bar_rebost"
         },
@@ -700,9 +776,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "marcel_fet",
@@ -717,9 +793,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "resum_fet",
@@ -734,9 +810,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "lines": [
             {

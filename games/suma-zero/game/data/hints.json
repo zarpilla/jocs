@@ -691,6 +691,63 @@
         {
           "flag": "tomas_rebost",
           "is": false
+        },
+        {
+          "flag": "contrasenya_llegida",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "contrasenya_dita"
+        },
+        {
+          "flag": "contrasenya_llegida"
+        },
+        {
+          "hasItem": "recepta"
+        },
+        {
+          "flag": "marcel_recepta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_dir_contrasenya.1",
+      "pista.vet_dir_contrasenya.2",
+      "pista.vet_dir_contrasenya.3"
+    ]
+  },
+  "vet_dir_trucar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "cal_contrasenya"
+        },
+        {
+          "flag": "contrasenya_dita",
+          "is": false
+        },
+        {
+          "hasItem": "recepta",
+          "is": false
+        },
+        {
+          "flag": "marcel_recepta",
+          "is": false
+        },
+        {
+          "flag": "tomas_rebost",
+          "is": false
+        },
+        {
+          "flag": "contrasenya_llegida"
         }
       ]
     },
@@ -708,9 +765,9 @@
       ]
     },
     "levels": [
-      "pista.vet_dir_contrasenya.1",
-      "pista.vet_dir_contrasenya.2",
-      "pista.vet_dir_contrasenya.3"
+      "pista.vet_dir_trucar.1",
+      "pista.vet_dir_trucar.2",
+      "pista.vet_dir_trucar.3"
     ]
   },
   "vet_esperar_pany": {
@@ -1431,6 +1488,49 @@
         {
           "flag": "alarma_porta",
           "is": false
+        },
+        {
+          "flag": "codi_porta_llegit",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "porta_oberta"
+        },
+        {
+          "flag": "codi_porta_llegit"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_codi.1",
+      "pista.iri_codi.2",
+      "pista.iri_codi.3"
+    ]
+  },
+  "iri_marcar_codi": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "soler_distret"
+        },
+        {
+          "flag": "porta_oberta",
+          "is": false
+        },
+        {
+          "flag": "alarma_porta",
+          "is": false
+        },
+        {
+          "flag": "codi_porta_llegit"
         }
       ]
     },
@@ -1438,9 +1538,9 @@
       "flag": "porta_oberta"
     },
     "levels": [
-      "pista.iri_codi.1",
-      "pista.iri_codi.2",
-      "pista.iri_codi.3"
+      "pista.iri_marcar_codi.1",
+      "pista.iri_marcar_codi.2",
+      "pista.iri_marcar_codi.3"
     ]
   },
   "iri_alarma": {
