@@ -172,8 +172,10 @@ describe('Acte 3 · la sortida', () => {
     const { n, p } = ambElVirus();
     jugarDespatx(p);
     p.switchTo('vet');
+    expect(n.activeHints()[0]).toBe('vet_baixar');
     p.do('use', 'porta');
     p.do('use', 'ascensor');
+    expect(n.activeHints()[0]).toBe('vet_sortir'); // ja és al vestíbul: no «la porta gran és al vestíbul»
     p.do('use', 'sortida');
     expect(texts(p.do('open', 'contenidor'))).toContain('Encara no');
     expect(n.flag('escapada')).toBe(false);

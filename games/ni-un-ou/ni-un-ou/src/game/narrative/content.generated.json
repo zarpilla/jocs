@@ -12851,6 +12851,11 @@
             {
               "flag": "valvula_tancada",
               "is": false
+            },
+            {
+              "not": {
+                "inRoom": "cuina"
+              }
             }
           ]
         },
@@ -12872,6 +12877,49 @@
           "pista.vet_munta.3"
         ]
       },
+      "vet_munta_cuina": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 1
+            },
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "travesser",
+              "who": "vet"
+            },
+            {
+              "flag": "valvula_tancada",
+              "is": false
+            },
+            {
+              "inRoom": "cuina"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "travesser",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "flag": "valvula_tancada"
+            }
+          ]
+        },
+        "levels": [
+          "pista.vet_munta_cuina.1",
+          "pista.vet_munta_cuina.2",
+          "pista.vet_munta_cuina.3"
+        ]
+      },
       "iri_rebost": {
         "priority": 6,
         "when": {
@@ -12880,6 +12928,9 @@
               "var": "escena",
               "op": "==",
               "value": 1
+            },
+            {
+              "protagonist": "iri"
             },
             {
               "var": "munta_rebost",
@@ -13323,6 +13374,11 @@
               "var": "empalmat",
               "op": "<",
               "value": 2
+            },
+            {
+              "not": {
+                "inRoom": "pallol"
+              }
             }
           ]
         },
@@ -13343,6 +13399,63 @@
           "pista.iri_cable.1",
           "pista.iri_cable.2",
           "pista.iri_cable.3"
+        ]
+      },
+      "iri_cable_pallol": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 3
+                },
+                {
+                  "flag": "radio_feta",
+                  "is": false
+                }
+              ]
+            },
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "tram_tret"
+            },
+            {
+              "hasItem": "cable_nou",
+              "who": "iri",
+              "is": false
+            },
+            {
+              "var": "empalmat",
+              "op": "<",
+              "value": 2
+            },
+            {
+              "inRoom": "pallol"
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "hasItem": "cable_nou",
+              "who": "iri"
+            },
+            {
+              "var": "empalmat",
+              "op": ">=",
+              "value": 2
+            }
+          ]
+        },
+        "levels": [
+          "pista.iri_cable_pallol.1",
+          "pista.iri_cable_pallol.2",
+          "pista.iri_cable_pallol.3"
         ]
       },
       "iri_empalmar": {
@@ -13431,6 +13544,9 @@
               "var": "escena",
               "op": "==",
               "value": 3
+            },
+            {
+              "protagonist": "iri"
             },
             {
               "flag": "rut_parlat"
@@ -13624,6 +13740,9 @@
               "value": 5
             },
             {
+              "protagonist": "vet"
+            },
+            {
               "var": "munta_cuina",
               "op": "==",
               "value": "nota_iri"
@@ -13647,6 +13766,9 @@
               "var": "escena",
               "op": "==",
               "value": 5
+            },
+            {
+              "protagonist": "iri"
             },
             {
               "var": "munta_rebost",
@@ -13674,6 +13796,9 @@
               "value": 5
             },
             {
+              "protagonist": "iri"
+            },
+            {
               "flag": "pla_fet"
             },
             {
@@ -13699,6 +13824,9 @@
               "var": "escena",
               "op": "==",
               "value": 5
+            },
+            {
+              "protagonist": "iri"
             },
             {
               "flag": "mentida_triada"
@@ -13758,6 +13886,9 @@
               "value": 5
             },
             {
+              "protagonist": "vet"
+            },
+            {
               "flag": "vet_amagada"
             },
             {
@@ -13809,6 +13940,9 @@
               "value": 6
             },
             {
+              "protagonist": "iri"
+            },
+            {
               "flag": "cops_sentits"
             },
             {
@@ -13847,6 +13981,9 @@
               "var": "escena",
               "op": "==",
               "value": 6
+            },
+            {
+              "protagonist": "vet"
             },
             {
               "flag": "cops_sentits"
@@ -13914,6 +14051,9 @@
               "var": "escena",
               "op": "==",
               "value": 6
+            },
+            {
+              "protagonist": "iri"
             },
             {
               "flag": "cops_sentits"
@@ -14120,16 +14260,11 @@
               "value": 7
             },
             {
-              "any": [
-                {
-                  "hasItem": "clau_tomas",
-                  "who": "vet"
-                },
-                {
-                  "hasItem": "clau_tomas",
-                  "who": "iri"
-                }
-              ]
+              "protagonist": "iri"
+            },
+            {
+              "hasItem": "clau_tomas",
+              "who": "iri"
             },
             {
               "flag": "registre_obert",
@@ -14144,6 +14279,37 @@
           "pista.obrir.1",
           "pista.obrir.2",
           "pista.obrir.3"
+        ]
+      },
+      "obrir_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "clau_tomas",
+              "who": "vet"
+            },
+            {
+              "flag": "registre_obert",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "registre_obert"
+        },
+        "levels": [
+          "pista.obrir.1",
+          "pista.obrir_vet.2",
+          "pista.obrir_vet.3"
         ]
       },
       "frontisses": {
@@ -14161,6 +14327,98 @@
             {
               "flag": "registre_obert",
               "is": false
+            },
+            {
+              "hasItem": "clau_tubs",
+              "who": "iri",
+              "is": false
+            },
+            {
+              "flag": "frontissa1",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "registre_obert"
+            },
+            {
+              "hasItem": "clau_tubs",
+              "who": "iri"
+            },
+            {
+              "flag": "frontissa1"
+            }
+          ]
+        },
+        "levels": [
+          "pista.frontisses.1",
+          "pista.frontisses.2",
+          "pista.frontisses.3"
+        ]
+      },
+      "frontisses_clau": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "registre_obert",
+              "is": false
+            },
+            {
+              "hasItem": "clau_tubs",
+              "who": "iri"
+            },
+            {
+              "flag": "frontissa1",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "registre_obert"
+            },
+            {
+              "flag": "frontissa1"
+            }
+          ]
+        },
+        "levels": [
+          "pista.frontisses_clau.1",
+          "pista.frontisses_clau.2",
+          "pista.frontisses_clau.3"
+        ]
+      },
+      "frontissa2": {
+        "priority": 4,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "registre_obert",
+              "is": false
+            },
+            {
+              "flag": "frontissa1"
             }
           ]
         },
@@ -14168,9 +14426,9 @@
           "flag": "registre_obert"
         },
         "levels": [
-          "pista.frontisses.1",
-          "pista.frontisses.2",
-          "pista.frontisses.3"
+          "pista.frontissa2.1",
+          "pista.frontissa2.2",
+          "pista.frontissa2.3"
         ]
       },
       "mostra": {
@@ -14210,7 +14468,20 @@
               "value": 7
             },
             {
+              "protagonist": "iri"
+            },
+            {
               "flag": "mostra_trobada"
+            },
+            {
+              "hasItem": "mostra7",
+              "who": "vet",
+              "is": false
+            },
+            {
+              "var": "munta_cuina",
+              "op": "!=",
+              "value": "mostra7"
             }
           ]
         },
@@ -14223,6 +14494,35 @@
           "pista.tornar.1",
           "pista.tornar.2",
           "pista.tornar.3"
+        ]
+      },
+      "tornar_vet": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 7
+            },
+            {
+              "protagonist": "vet"
+            },
+            {
+              "hasItem": "mostra7",
+              "who": "vet"
+            }
+          ]
+        },
+        "doneWhen": {
+          "var": "escena",
+          "op": ">=",
+          "value": 8
+        },
+        "levels": [
+          "pista.tornar.1",
+          "pista.tornar_vet.2",
+          "pista.tornar_vet.3"
         ]
       },
       "reunio": {
@@ -14352,6 +14652,9 @@
               "value": 8
             },
             {
+              "protagonist": "vet"
+            },
+            {
               "hasItem": "registre",
               "who": "vet"
             },
@@ -14389,6 +14692,9 @@
               "var": "escena",
               "op": "==",
               "value": 8
+            },
+            {
+              "protagonist": "vet"
             },
             {
               "var": "munta_cuina",
@@ -14458,6 +14764,11 @@
             {
               "flag": "antena_ok",
               "is": false
+            },
+            {
+              "not": {
+                "inRoom": "pal"
+              }
             }
           ]
         },
@@ -14468,6 +14779,44 @@
           "pista.pal.1",
           "pista.pal.2",
           "pista.pal.3"
+        ]
+      },
+      "pal_antena": {
+        "priority": 3,
+        "when": {
+          "all": [
+            {
+              "all": [
+                {
+                  "var": "escena",
+                  "op": "==",
+                  "value": 9
+                },
+                {
+                  "flag": "enviat",
+                  "is": false
+                }
+              ]
+            },
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "antena_ok",
+              "is": false
+            },
+            {
+              "inRoom": "pal"
+            }
+          ]
+        },
+        "doneWhen": {
+          "flag": "antena_ok"
+        },
+        "levels": [
+          "pista.pal_antena.1",
+          "pista.pal_antena.2",
+          "pista.pal_antena.3"
         ]
       },
       "terminal": {
@@ -14642,6 +14991,9 @@
               "value": 7
             },
             {
+              "protagonist": "iri"
+            },
+            {
               "var": "munta_rebost",
               "op": "==",
               "value": "clau_tomas"
@@ -14667,6 +15019,9 @@
               "var": "escena",
               "op": "==",
               "value": 7
+            },
+            {
+              "protagonist": "vet"
             },
             {
               "var": "munta_cuina",
@@ -14748,6 +15103,9 @@
               "var": "escena",
               "op": "==",
               "value": 8
+            },
+            {
+              "protagonist": "iri"
             },
             {
               "var": "munta_pont",
@@ -23853,6 +24211,8 @@
       "ui.defecte.use.vet": "No sé ni què és. No ho tocaré.",
       "ui.fi": "Fi",
       "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal mirar al voltant.",
+      "ui.pista.altra.iri": "Jo ara mateix no tinc res a fer. Li toca a l'Iri: canviem.",
+      "ui.pista.altra.vet": "Jo ara mateix no tinc res a fer. Li toca a la Vet: canviem.",
       "ui.canvia.encara_no": "Encara no: ara és cosa d'una sola.",
       "ui.missio.completada": "Missió completada: {titol}",
       "ui.missio.fallida": "Missió fallida: {titol}",
@@ -24010,7 +24370,7 @@
       "pista.iri_diu.3": "Surt al passadís i entra a la sala de màquines. Després, mira la vàlvula de presa de mar.",
       "pista.iri_brida.1": "Què em diries tu, bomba? Per què no arrenques?",
       "pista.iri_brida.2": "L'interruptor és lligat amb una brida. Cal tallar-la.",
-      "pista.iri_brida.3": "Agafa la cisalla del taller i usa-la amb el quadre de la bomba.",
+      "pista.iri_brida.3": "Agafa la cisalla del taller i fes-la servir amb el quadre de la bomba.",
       "pista.iri_quadre.1": "Què em diries tu, sentina? Algú ha callat l'alarma. I la bomba?",
       "pista.iri_quadre.2": "Mira el quadre de la bomba de sentina.",
       "pista.iri_quadre.3": "Mira el quadre de la bomba, a la sala de màquines.",
@@ -24025,25 +24385,28 @@
       "pista.vet_travesser.3": "Agafa la llitera de rescat: en trauràs un travesser.",
       "pista.vet_munta.1": "Diagnòstic: s'ha d'enviar avall. La maquinista ha dit «muntacàrregues».",
       "pista.vet_munta.2": "El muntacàrregues és a la cuina: passadís, menjador, cuina.",
-      "pista.vet_munta.3": "A la cuina, usa el travesser amb el muntacàrregues.",
+      "pista.vet_munta.3": "Ves a la cuina i fes servir el travesser amb el muntacàrregues.",
+      "pista.vet_munta_cuina.1": "Diagnòstic: s'ha d'enviar avall. I el muntacàrregues és aquí mateix.",
+      "pista.vet_munta_cuina.2": "Fes servir el travesser amb el muntacàrregues.",
+      "pista.vet_munta_cuina.3": "Fes servir el travesser amb el muntacàrregues de la cuina.",
       "pista.iri_rebost.1": "Ha baixat alguna cosa pel muntacàrregues.",
       "pista.iri_rebost.2": "El muntacàrregues para al rebost, porta amb porta amb la sala de màquines.",
-      "pista.iri_rebost.3": "Amb l'Iri, ves al rebost i agafa el travesser de la safata.",
+      "pista.iri_rebost.3": "Ves al rebost i agafa el travesser de la safata.",
       "pista.iri_valvula.1": "Un pam i mig d'acer. Una vàlvula sense volant.",
-      "pista.iri_valvula.2": "Usa el travesser amb la vàlvula de presa de mar.",
-      "pista.iri_valvula.3": "Usa el travesser amb la vàlvula de presa de mar.",
+      "pista.iri_valvula.2": "Fes servir el travesser amb la vàlvula de presa de mar.",
+      "pista.iri_valvula.3": "Fes servir el travesser amb la vàlvula de presa de mar.",
       "pista.iri_vies.1": "La bomba ha d'escopir l'aigua a algun lloc.",
       "pista.iri_vies.2": "La vàlvula de tres vies: borda o separador.",
-      "pista.iri_vies.3": "Usa la vàlvula de tres vies i tria SEPARADOR.",
+      "pista.iri_vies.3": "Fes servir la vàlvula de tres vies i tria SEPARADOR.",
       "pista.iri_bomba.1": "Tot a punt. Que treballi la bomba.",
-      "pista.iri_bomba.2": "Usa el quadre de la bomba.",
-      "pista.iri_bomba.3": "Usa el quadre de la bomba.",
+      "pista.iri_bomba.2": "Engega la bomba des del quadre.",
+      "pista.iri_bomba.3": "Fes servir el quadre de la bomba.",
       "pista.iri_espera.1": "La metgessa busca la barra. Ara és cosa seva.",
       "pista.iri_espera.2": "Canvia a la Vet: ella ha de trobar la barra i enviar-la pel muntacàrregues.",
       "pista.iri_espera.3": "Amb el botó «Canvia», passa a la Vet. A la infermeria hi ha la llitera de rescat.",
       "pista.vet_revisions.1": "Diagnòstic: una tripulació sense revisió mèdica. Tractament: revisions.",
       "pista.vet_revisions.2": "A la infermeria hi ha les fitxes. Des d'allà, tothom es crida pel canal 6.",
-      "pista.vet_revisions.3": "Usa les fitxes de la infermeria i crida tothom: la Capitana, en Tomàs, la Nadia i el Marcel.",
+      "pista.vet_revisions.3": "Fes servir les fitxes de la infermeria i crida tothom: la Capitana, en Tomàs, la Nadia i el Marcel.",
       "pista.vet_pacient.1": "Tinc un pacient a la consulta. Escoltar i mirar: el que diu i el que no quadra.",
       "pista.vet_pacient.2": "Parla amb el pacient. I mira'l: sempre hi ha alguna cosa que no quadra.",
       "pista.vet_pacient.3": "Parla amb el pacient i, quan acabis, digues-li que ja està.",
@@ -24065,15 +24428,18 @@
       "pista.iri_cable.1": "Cable apantallat i un connector. Al pallol n'hi ha.",
       "pista.iri_cable.2": "El pallol és al passadís de baix.",
       "pista.iri_cable.3": "Baixa al pallol i agafa cable dels prestatges.",
+      "pista.iri_cable_pallol.1": "Cable apantallat i un connector. Aquí n'hi ha d'haver.",
+      "pista.iri_cable_pallol.2": "Mira els prestatges.",
+      "pista.iri_cable_pallol.3": "Agafa cable dels prestatges.",
       "pista.iri_empalmar.1": "Pelar i crimpar.",
-      "pista.iri_empalmar.2": "Usa el cable nou amb el panell obert. Dues vegades.",
-      "pista.iri_empalmar.3": "Usa el cable nou amb el panell obert. Dues vegades.",
+      "pista.iri_empalmar.2": "Fes servir el cable nou amb el panell obert. Dues vegades.",
+      "pista.iri_empalmar.3": "Fes servir el cable nou amb el panell obert. Dues vegades.",
       "pista.iri_provar.1": "A veure si parla.",
-      "pista.iri_provar.2": "Usa la ràdio.",
-      "pista.iri_provar.3": "Usa la ràdio.",
+      "pista.iri_provar.2": "Prova la ràdio.",
+      "pista.iri_provar.3": "Fes servir la ràdio.",
       "pista.iri_tancar.1": "Com si no hagués passat res.",
       "pista.iri_tancar.2": "Tanca la tapa del panell de l'antena, a la paret, a la dreta de la ràdio.",
-      "pista.iri_tancar.3": "Amb l'Iri, fes «Tanca» sobre la tapa del panell d'ANTENA / PERILL, a la paret a la dreta de la ràdio.",
+      "pista.iri_tancar.3": "Toca la tapa del panell d'ANTENA / PERILL, a la paret a la dreta de la ràdio, fins que la tanquis.",
       "pista.iri_postal.1": "La Juana va dir a la Vet que la contrasenya és el nom de la seva mare. Què hi ha al laboratori que en parli?",
       "pista.iri_postal.2": "Els llibres de la Juana. Algú hi guarda records.",
       "pista.iri_postal.3": "Mira el llibre de peixos del laboratori.",
@@ -24081,32 +24447,32 @@
       "pista.iri_fitxa.2": "Pregunta a la Vet pel walkie: el contacte d'emergència de la Juana.",
       "pista.iri_fitxa.3": "Parla amb el walkie.",
       "pista.iri_obrir.1": "«El nom de la meva mare.» El nom: ni el diminutiu ni l'edat.",
-      "pista.iri_obrir.2": "Usa el portàtil del laboratori i escriu el nom de la mare de la Juana, sencer.",
-      "pista.iri_obrir.3": "Usa el portàtil del laboratori i escriu Pilar.",
+      "pista.iri_obrir.2": "Fes servir el portàtil del laboratori i escriu el nom de la mare de la Juana, sencer.",
+      "pista.iri_obrir.3": "Fes servir el portàtil del laboratori i escriu Pilar.",
       "pista.iri_bombes.1": "La sala de bombes. «Allà no hi ve ningú.»",
       "pista.iri_bombes.2": "L'escotilla de la sala de bombes és al passadís de baix.",
       "pista.iri_bombes.3": "Baixa a la sala de bombes, per l'escotilla del passadís de baix, i mira-hi bé.",
       "pista.iri_nota.1": "Què em diries tu, muntacàrregues? Tu no xerres, i puges fins a la cuina.",
       "pista.iri_nota.2": "El muntacàrregues: del rebost, puja a la cuina, on és la Vet.",
-      "pista.iri_nota.3": "Al rebost, usa la llibreta amb el muntacàrregues.",
+      "pista.iri_nota.3": "Al rebost, fes servir la llibreta amb el muntacàrregues.",
       "pista.vet_espera.1": "Torn de cuina. Si l'Iri té res a dir, ja ho dirà.",
       "pista.vet_espera.2": "La que s'ha de moure és l'Iri.",
       "pista.vet_espera.3": "Canvia a l'Iri.",
       "pista.vet_nota.1": "Hi ha alguna cosa a la safata del muntacàrregues de la cuina.",
-      "pista.vet_nota.2": "Amb la Vet, agafa-ho.",
-      "pista.vet_nota.3": "Amb la Vet, agafa el que hi ha a la safata de la cuina.",
+      "pista.vet_nota.2": "Agafa el que hi ha a la safata.",
+      "pista.vet_nota.3": "A la cuina, agafa el que hi ha a la safata del muntacàrregues.",
       "pista.iri_resposta.1": "Ha baixat la resposta.",
-      "pista.iri_resposta.2": "Amb l'Iri, agafa el paper de la safata del rebost.",
-      "pista.iri_resposta.3": "Amb l'Iri, agafa el paper de la safata del rebost.",
+      "pista.iri_resposta.2": "Agafa el paper de la safata del rebost.",
+      "pista.iri_resposta.3": "Ves al rebost i agafa el paper de la safata.",
       "pista.iri_mentida.1": "Una mentida que s'empassin. Primer, per paper.",
-      "pista.iri_mentida.2": "Al rebost, usa la llibreta amb el muntacàrregues i proposa una mentida creïble.",
+      "pista.iri_mentida.2": "Al rebost, fes servir la llibreta amb el muntacàrregues i proposa una mentida creïble.",
       "pista.iri_mentida.3": "Proposa la de la Juana, que la va deixar a la cambra freda, darrere les postres.",
       "pista.iri_dir.1": "Ara, pel walkie. Que ho sentin.",
-      "pista.iri_dir.2": "Amb l'Iri, parla amb el walkie.",
-      "pista.iri_dir.3": "Amb l'Iri, parla amb el walkie.",
+      "pista.iri_dir.2": "Digues-ho pel walkie.",
+      "pista.iri_dir.3": "Parla amb el walkie.",
       "pista.vet_amagar.1": "Diagnòstic: algú tindrà gana de postres. Tractament: esperar-lo amagada.",
       "pista.vet_amagar.2": "L'armari de les olles de la cuina.",
-      "pista.vet_amagar.3": "Amb la Vet, obre l'armari de les olles.",
+      "pista.vet_amagar.3": "Obre l'armari de les olles de la cuina.",
       "pista.vet_nadia.1": "La Nadia. Ara toca decidir.",
       "pista.vet_nadia.2": "Parla amb la Nadia.",
       "pista.vet_nadia.3": "Parla amb la Nadia.",
@@ -24115,13 +24481,13 @@
       "pista.buscar.3": "Mira l'escotilla de la caixa de cadenes, a la coberta de proa.",
       "pista.cisalla.1": "Un cadenat nou. Per a un cadenat, una cisalla.",
       "pista.cisalla.2": "La cisalla és al taller.",
-      "pista.cisalla.3": "Amb l'Iri, agafa la cisalla del taller.",
+      "pista.cisalla.3": "Agafa la cisalla del taller.",
       "pista.distreure.1": "Si en Bastida sent la cisalla, vindrà. Algú l'ha d'entretenir.",
-      "pista.distreure.2": "La Vet li pot demanar que li ensenyi el nus Bastida. I si la Nadia treballa per a nosaltres, ella també hi pot fer alguna cosa.",
-      "pista.distreure.3": "Amb la Vet, ves a popa, parla amb en Bastida i demana-li que t'ensenyi el nus.",
+      "pista.distreure.2": "Demana a en Bastida que t'ensenyi el nus Bastida. I si la Nadia treballa per a nosaltres, ella també hi pot fer alguna cosa.",
+      "pista.distreure.3": "Ves a popa, parla amb en Bastida i demana-li que t'ensenyi el nus.",
       "pista.tallar.1": "Ara. Ningú no vigila.",
-      "pista.tallar.2": "Amb l'Iri, usa la cisalla amb l'escotilla de la caixa de cadenes.",
-      "pista.tallar.3": "Amb l'Iri, usa la cisalla amb l'escotilla de la caixa de cadenes, a proa.",
+      "pista.tallar.2": "Fes servir la cisalla amb l'escotilla de la caixa de cadenes.",
+      "pista.tallar.3": "Fes servir la cisalla amb l'escotilla de la caixa de cadenes, a proa.",
       "pista.sortir.1": "La Juana té fred. A la infermeria.",
       "pista.sortir.2": "Surt per l'escotilla.",
       "pista.sortir.3": "Surt per l'escotilla.",
@@ -24130,43 +24496,56 @@
       "pista.registre.3": "Ves al rebost i mira el registre del dipòsit 2.",
       "pista.clau.1": "Una clau que no té ningú. O que algú té i no sap què obre.",
       "pista.clau.2": "El cuiner d'abans va deixar coses a la cuina. Potser en Tomàs en sap alguna cosa. I l'Iri sap treure frontisses.",
-      "pista.clau.3": "Amb la Vet, parla amb en Tomàs a la cuina i demana-li la clau del dipòsit 2.",
+      "pista.clau.3": "Parla amb en Tomàs, a la cuina, i demana-li la clau del dipòsit 2.",
       "pista.entrepa.1": "En Tomàs està ofès per un entrepà robat. Qui se'l va menjar?",
       "pista.entrepa.2": "La Juana: «Ha estat el millor dia de la campanya.»",
-      "pista.entrepa.3": "Amb la Vet, explica a en Tomàs que la Juana es va menjar l'entrepà.",
+      "pista.entrepa.3": "Explica a en Tomàs que la Juana es va menjar l'entrepà.",
       "pista.obrir.1": "La clau antiga.",
-      "pista.obrir.2": "La clau va al registre del dipòsit 2, al rebost. Si la té la Vet i l'Iri és a màquines, que ho faci l'Iri: la clau li arriba pel muntacàrregues.",
-      "pista.obrir.3": "Amb l'Iri, usa la clau amb el registre del rebost. Si la té la Vet: a la cuina, usa-la amb el muntacàrregues, i l'Iri l'agafarà de la safata del rebost.",
+      "pista.obrir.2": "La clau va al registre del dipòsit 2, al rebost.",
+      "pista.obrir.3": "Fes servir la clau amb el registre del rebost.",
+      "pista.obrir_vet.2": "La clau va al registre del dipòsit 2, al rebost. O a l'Iri, pel muntacàrregues de la cuina.",
+      "pista.obrir_vet.3": "Ves al rebost i fes servir la clau amb el registre. O, a la cuina, fes-la servir amb el muntacàrregues: l'Iri l'agafarà de la safata del rebost.",
       "pista.frontisses.1": "Què em diries tu, frontissa?",
       "pista.frontisses.2": "La clau de tubs és al taller. Les frontisses del registre, al rebost.",
-      "pista.frontisses.3": "Amb l'Iri, agafa la clau de tubs del taller i usa-la amb el registre del rebost, dues vegades.",
+      "pista.frontisses.3": "Agafa la clau de tubs del taller i fes-la servir amb el registre del rebost, dues vegades.",
+      "pista.frontisses_clau.1": "Una clau de tubs i dues frontisses.",
+      "pista.frontisses_clau.2": "Les frontisses del registre del dipòsit 2, al rebost.",
+      "pista.frontisses_clau.3": "Fes servir la clau de tubs amb el registre del rebost, dues vegades: una per frontissa.",
+      "pista.frontissa2.1": "Una frontissa fora. En queda una.",
+      "pista.frontissa2.2": "Torna a fer servir la clau de tubs amb el registre.",
+      "pista.frontissa2.3": "Fes servir la clau de tubs amb el registre del rebost un altre cop.",
       "pista.mostra.1": "«On ningú no beu.»",
       "pista.mostra.2": "Entra al dipòsit 2 i obre la carcassa del filtre.",
       "pista.mostra.3": "Entra al dipòsit 2 (pel registre del rebost) i obre la carcassa del filtre.",
       "pista.tornar.1": "La Juana l'ha de veure.",
-      "pista.tornar.2": "Porta la Mostra 7 a la infermeria. Si la Vet ja hi és, l'Iri no hi pot entrar: que hi vagi la Vet.",
-      "pista.tornar.3": "Si la Vet és a la infermeria: al rebost, usa la Mostra 7 amb el muntacàrregues; després, amb la Vet, agafa-la a la cuina i porta-la a la infermeria.",
+      "pista.tornar.2": "Porta la Mostra 7 a la infermeria. Si la Vet hi és, no hi pots entrar: envia-la-hi pel muntacàrregues.",
+      "pista.tornar.3": "Si la Vet és a la infermeria: al rebost, fes servir la Mostra 7 amb el muntacàrregues, que puja a la cuina, i la Vet la portarà a la infermeria. Si no, porta-la-hi tu.",
+      "pista.tornar_vet.2": "Porta la Mostra 7 a la infermeria.",
+      "pista.tornar_vet.3": "Porta la Mostra 7 a la infermeria i ensenya-la a la Juana.",
       "pista.reunio.1": "Diagnòstic: algú menteix. Tractament: dir-ho davant de tothom.",
       "pista.reunio.2": "La reunió, la convoca la Capitana. A la seva cabina.",
-      "pista.reunio.3": "Amb la Vet, parla amb la Capitana i demana-li que reuneixi tothom. (Abans, si vols, ensenya-li qui paga el gasoil.)",
+      "pista.reunio.3": "Parla amb la Capitana i demana-li que reuneixi tothom. (Abans, si vols, ensenya-li qui paga el gasoil.)",
       "pista.imprimir.1": "La Capitana no sap qui paga el gasoil. L'USB, sí.",
       "pista.imprimir.2": "Imprimeix la pàgina del registre a la impressora del pont.",
-      "pista.imprimir.3": "Usa l'USB amb la impressora del pont i envia la pàgina a la Vet pel muntacàrregues.",
+      "pista.imprimir.3": "Fes servir l'USB amb la impressora del pont i envia la pàgina a la Vet pel muntacàrregues.",
       "pista.capitana.1": "Blau Net i Skarn. Que ho vegi la Capitana.",
-      "pista.capitana.2": "Usa la pàgina del registre amb el contracte de la cabina de la Capitana.",
-      "pista.capitana.3": "Amb la Vet, ves a la cabina de la Capitana i usa la pàgina amb el contracte.",
+      "pista.capitana.2": "Fes servir la pàgina del registre amb el contracte de la cabina de la Capitana.",
+      "pista.capitana.3": "Ves a la cabina de la Capitana i fes servir la pàgina amb el contracte.",
       "pista.registre_safata.1": "Ha arribat una cosa a la cuina.",
-      "pista.registre_safata.2": "Amb la Vet, agafa la pàgina de la safata de la cuina.",
-      "pista.registre_safata.3": "Amb la Vet, agafa la pàgina de la safata de la cuina.",
+      "pista.registre_safata.2": "Agafa la pàgina de la safata de la cuina.",
+      "pista.registre_safata.3": "Ves a la cuina i agafa la pàgina de la safata.",
       "pista.qui.1": "Qui, i per què ho sabem. Tres proves.",
       "pista.qui.2": "Pensa en qui era despert, qui fuma pipa, qui fa el nus amb una volta de més.",
       "pista.qui.3": "Acusa en Bastida i tria tres proves del quadern: el nus amb la volta de més, el tall a la mà i la pipa.",
       "pista.pal.1": "Ja no hi ha més remei: l'antena del pal.",
-      "pista.pal.2": "Puja al pal per l'escala del pont i usa l'antena.",
-      "pista.pal.3": "Al pal, usa l'antena fins que apunti al satèl·lit (desbloquejar-la, si cal, i girar-la).",
+      "pista.pal.2": "Puja al pal per l'escala del pont.",
+      "pista.pal.3": "Puja al pal per l'escala del pont i fes servir l'antena.",
+      "pista.pal_antena.1": "L'antena ha d'apuntar al satèl·lit.",
+      "pista.pal_antena.2": "Fes servir l'antena.",
+      "pista.pal_antena.3": "Fes servir l'antena fins que apunti al satèl·lit (desbloquejar-la, si cal, i girar-la).",
       "pista.terminal.1": "Ara, avall. Paquet a paquet.",
-      "pista.terminal.2": "Usa el terminal del pont. El SAI aguanta dos torns; després cal el generador.",
-      "pista.terminal.3": "Usa el terminal del pont fins a enviar els tres paquets.",
+      "pista.terminal.2": "Fes servir el terminal del pont. La bateria (el SAI) aguanta dos torns; després cal el generador.",
+      "pista.terminal.3": "Fes servir el terminal del pont fins a enviar els tres paquets.",
       "pista.sense_corrent.1": "Sense corrent. El relé el té en Bastida.",
       "pista.sense_corrent.2": "És cosa de la Vet: ha de convèncer en Bastida.",
       "pista.sense_corrent.3": "Canvia a la Vet i parla amb en Bastida.",
@@ -24175,25 +24554,25 @@
       "pista.vet_rele.3": "Digues-li la veritat: si surt, és un testimoni; si no, l'únic culpable. I quan l'Iri sigui dalt del pal, recorda-l'hi.",
       "pista.vet_espera9.1": "Ja té corrent. Ara és cosa de l'Iri.",
       "pista.vet_espera9.2": "Canvia a l'Iri.",
-      "pista.vet_espera9.3": "Canvia a l'Iri i usa el terminal del pont.",
+      "pista.vet_espera9.3": "Canvia a l'Iri: ha de fer servir el terminal del pont.",
       "pista.iri_mira_valvula.1": "Per on entra l'aigua?",
       "pista.iri_mira_valvula.2": "Mira la vàlvula de presa de mar.",
       "pista.iri_mira_valvula.3": "Mira la vàlvula de presa de mar, a la sala de màquines.",
       "pista.enviar_registre.1": "La pàgina ha d'arribar a la Vet.",
       "pista.enviar_registre.2": "Pel muntacàrregues del pont, cap a la cuina.",
-      "pista.enviar_registre.3": "Usa la pàgina amb el muntacàrregues del pont.",
-      "pista.clau_safata.1": "La clau espera a la safata del rebost. Ara és cosa de l'Iri.",
+      "pista.enviar_registre.3": "Fes servir la pàgina amb el muntacàrregues del pont.",
+      "pista.clau_safata.1": "Ha baixat la clau.",
       "pista.clau_safata.2": "La clau d'en Tomàs és a la safata del rebost.",
-      "pista.clau_safata.3": "Amb l'Iri, ves al rebost i agafa la clau de la safata.",
-      "pista.mostra_safata.1": "La Mostra 7 espera a la safata de la cuina. Ara és cosa de la Vet.",
-      "pista.mostra_safata.2": "Amb la Vet, agafa-la de la safata de la cuina.",
-      "pista.mostra_safata.3": "Amb la Vet, agafa la Mostra 7 de la safata de la cuina i porta-la a la infermeria.",
+      "pista.clau_safata.3": "Ves al rebost i agafa la clau de la safata.",
+      "pista.mostra_safata.1": "Ha pujat la Mostra 7.",
+      "pista.mostra_safata.2": "Agafa-la de la safata de la cuina.",
+      "pista.mostra_safata.3": "Agafa la Mostra 7 de la safata de la cuina i porta-la a la infermeria.",
       "pista.usb_amunt.1": "La Capitana no sap qui paga el gasoil. L'USB, sí. Però la impressora és al pont, amb l'Iri.",
       "pista.usb_amunt.2": "Envia l'USB a l'Iri pel muntacàrregues: de la cuina, puja al pont si ella hi és.",
-      "pista.usb_amunt.3": "A la cuina, usa l'USB amb el muntacàrregues. Després, amb l'Iri, agafa'l i imprimeix el registre.",
+      "pista.usb_amunt.3": "A la cuina, fes servir l'USB amb el muntacàrregues. Després, amb l'Iri, agafa'l i imprimeix el registre.",
       "pista.usb_safata.1": "Ha pujat l'USB.",
-      "pista.usb_safata.2": "Amb l'Iri, agafa l'USB de la safata del pont.",
-      "pista.usb_safata.3": "Amb l'Iri, agafa l'USB de la safata del pont i usa'l amb la impressora.",
+      "pista.usb_safata.2": "Agafa l'USB de la safata del pont.",
+      "pista.usb_safata.3": "Agafa l'USB de la safata del pont i fes-lo servir amb la impressora.",
       "pista.iri_escora.1": "Per què t'has despertat? Comprova si el terra fa pendent de debò.",
       "pista.iri_escora.2": "Al prestatge de damunt la llitera hi ha un got d'aigua.",
       "pista.iri_escora.3": "Mira el got d'aigua del prestatge del camarot.",

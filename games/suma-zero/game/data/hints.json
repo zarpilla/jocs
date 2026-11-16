@@ -249,6 +249,11 @@
         {
           "flag": "alimentacio_connectada",
           "is": false
+        },
+        {
+          "hasItem": "cable_alimentacio",
+          "is": false,
+          "who": "vet"
         }
       ]
     },
@@ -267,6 +272,41 @@
       "pista.vet_cable.1",
       "pista.vet_cable.2",
       "pista.vet_cable.3"
+    ]
+  },
+  "vet_passar_cable": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "cable_alimentacio",
+          "who": "vet"
+        },
+        {
+          "flag": "alimentacio_connectada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "cable_alimentacio",
+          "who": "vet",
+          "is": false
+        },
+        {
+          "flag": "alimentacio_connectada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_passar_cable.1",
+      "pista.vet_passar_cable.2",
+      "pista.vet_passar_cable.3"
     ]
   },
   "vet_pizza": {
@@ -290,6 +330,11 @@
             "op": "==",
             "value": "pizza"
           }
+        },
+        {
+          "hasItem": "pizza",
+          "is": false,
+          "who": "vet"
         }
       ]
     },
@@ -313,6 +358,53 @@
       "pista.vet_pizza.1",
       "pista.vet_pizza.2",
       "pista.vet_pizza.3"
+    ]
+  },
+  "vet_passar_pizza": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "pizza",
+          "who": "vet"
+        },
+        {
+          "flag": "diu_distret",
+          "is": false
+        },
+        {
+          "not": {
+            "var": "sacrifici",
+            "op": "==",
+            "value": "pizza"
+          }
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "pizza",
+          "who": "vet",
+          "is": false
+        },
+        {
+          "flag": "diu_distret"
+        },
+        {
+          "var": "sacrifici",
+          "op": "==",
+          "value": "pizza"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_passar_pizza.1",
+      "pista.vet_passar_pizza.2",
+      "pista.vet_passar_pizza.3"
     ]
   },
   "vet_marxar": {
@@ -548,6 +640,10 @@
         {
           "flag": "cal_contrasenya",
           "is": false
+        },
+        {
+          "flag": "tomas_rebost",
+          "is": false
         }
       ]
     },
@@ -590,6 +686,10 @@
         },
         {
           "flag": "marcel_recepta",
+          "is": false
+        },
+        {
+          "flag": "tomas_rebost",
           "is": false
         }
       ]
@@ -672,6 +772,10 @@
         },
         {
           "flag": "marcel_recepta",
+          "is": false
+        },
+        {
+          "flag": "tomas_rebost",
           "is": false
         }
       ]
@@ -812,6 +916,52 @@
       "pista.vet_agafar_comandament.1",
       "pista.vet_agafar_comandament.2",
       "pista.vet_agafar_comandament.3"
+    ]
+  },
+  "vet_tomas_rebost": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "tomas_rebost"
+        },
+        {
+          "hasItem": "comandament"
+        },
+        {
+          "hasItem": "recepta",
+          "is": false
+        },
+        {
+          "flag": "marcel_recepta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "tomas_rebost",
+          "is": false
+        },
+        {
+          "flag": "marcel_comandament"
+        },
+        {
+          "hasItem": "recepta"
+        },
+        {
+          "flag": "marcel_recepta"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_tomas_rebost.1",
+      "pista.vet_tomas_rebost.2",
+      "pista.vet_tomas_rebost.3"
     ]
   },
   "vet_donar": {
@@ -1277,6 +1427,10 @@
         {
           "flag": "porta_oberta",
           "is": false
+        },
+        {
+          "flag": "alarma_porta",
+          "is": false
         }
       ]
     },
@@ -1287,6 +1441,28 @@
       "pista.iri_codi.1",
       "pista.iri_codi.2",
       "pista.iri_codi.3"
+    ]
+  },
+  "iri_alarma": {
+    "priority": 9,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "alarma_porta"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "alarma_porta",
+      "is": false
+    },
+    "levels": [
+      "pista.iri_alarma.1",
+      "pista.iri_alarma.2",
+      "pista.iri_alarma.3"
     ]
   },
   "iri_imprimir": {
@@ -1309,6 +1485,14 @@
         {
           "flag": "iri_fora",
           "is": false
+        },
+        {
+          "flag": "imprimint",
+          "is": false
+        },
+        {
+          "flag": "acreditacions_llestes",
+          "is": false
         }
       ]
     },
@@ -1326,6 +1510,75 @@
       "pista.iri_imprimir.1",
       "pista.iri_imprimir.2",
       "pista.iri_imprimir.3"
+    ]
+  },
+  "iri_impressora": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "soler_distret"
+        },
+        {
+          "flag": "imprimint"
+        },
+        {
+          "hasItem": "acreditacions",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "imprimint",
+          "is": false
+        },
+        {
+          "hasItem": "acreditacions"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_impressora.1",
+      "pista.iri_impressora.2",
+      "pista.iri_impressora.3"
+    ]
+  },
+  "iri_acreditacions": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "acreditacions_llestes"
+        },
+        {
+          "hasItem": "acreditacions",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "acreditacions_llestes",
+          "is": false
+        },
+        {
+          "hasItem": "acreditacions"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_acreditacions.1",
+      "pista.iri_acreditacions.2",
+      "pista.iri_acreditacions.3"
     ]
   },
   "iri_sortir": {
@@ -1686,6 +1939,10 @@
         {
           "flag": "clau_canviada",
           "is": false
+        },
+        {
+          "flag": "ballester_relaxat",
+          "is": false
         }
       ]
     },
@@ -1703,6 +1960,45 @@
       "pista.vet_clau.1",
       "pista.vet_clau.2",
       "pista.vet_clau.3"
+    ]
+  },
+  "vet_clau_relaxat": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "cal_clau"
+        },
+        {
+          "flag": "aliat_ballester",
+          "is": false
+        },
+        {
+          "flag": "clau_canviada",
+          "is": false
+        },
+        {
+          "flag": "ballester_relaxat"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "aliat_ballester"
+        },
+        {
+          "flag": "clau_canviada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_clau_relaxat.1",
+      "pista.vet_clau_relaxat.2",
+      "pista.vet_clau_relaxat.3"
     ]
   },
   "vet_collaret": {
@@ -2478,6 +2774,11 @@
           "var": "sospita_max",
           "op": "<",
           "value": 50
+        },
+        {
+          "not": {
+            "inRoom": "bcmu_vestibul"
+          }
         }
       ]
     },
@@ -2488,6 +2789,39 @@
       "pista.vet_baixar.1",
       "pista.vet_baixar.2",
       "pista.vet_baixar.3"
+    ]
+  },
+  "vet_sortir": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "flag": "virus_aturat"
+        },
+        {
+          "flag": "vet_al_carrer",
+          "is": false
+        },
+        {
+          "var": "sospita_max",
+          "op": "<",
+          "value": 50
+        },
+        {
+          "inRoom": "bcmu_vestibul"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "vet_al_carrer"
+    },
+    "levels": [
+      "pista.vet_sortir.1",
+      "pista.vet_sortir.2",
+      "pista.vet_sortir.3"
     ]
   },
   "vet_recepcionista": {

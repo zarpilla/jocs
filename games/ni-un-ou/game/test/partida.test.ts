@@ -1,6 +1,6 @@
 /** El joc sencer, jugat de cap a peus, amb una pista disponible a cada pas. */
 import { describe, expect, it } from 'vitest';
-import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, escena8, jugarTot, partida } from './partida.js';
+import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, escena8, item, jugarTot, partida } from './partida.js';
 
 describe('Partida sencera', () => {
   it('amb tots els aliats: primera plana', () => {
@@ -217,15 +217,61 @@ describe('Pistes (revisió)', () => {
     anar(p, 'cuina');
     p.talk('tomas', 'clau7', 'entrepa7');
     p.use('clau_tomas', 'munta');
+    // La safata del rebost és cosa de l'Iri: la Vet no en té cap, i el botó diu «canviem».
+    expect(n.activeHints()).not.toContain('clau_safata');
+    expect(n.hintForOther()).toBe('iri');
+    amb(p, 'iri');
     expect(n.activeHints()[0]).toBe('clau_safata');
-    amb(p, 'iri', 'rebost');
+    anar(p, 'rebost');
     p.do('pickUp', 'safata');
     expect(n.activeHints()[0]).toBe('obrir');
     p.use('clau_tomas', 'registre');
     p.do('open', 'filtre');
+    expect(n.activeHints()[0]).toBe('tornar');
     anar(p, 'rebost');
     p.use('mostra7', 'munta');
+    expect(n.hintForOther()).toBe('vet');
+    amb(p, 'vet');
     expect(n.activeHints()[0]).toBe('mostra_safata');
+  });
+
+  it("Escena 7: la pista de les frontisses segueix la clau de tubs", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
+    amb(p, 'iri', 'taller');
+    expect(n.activeHints()[0]).toBe('frontisses');
+    p.do('pickUp', 'clau_tubs');
+    expect(n.activeHints()[0]).toBe('frontisses_clau');
+    anar(p, 'rebost');
+    p.use('clau_tubs', 'registre');
+    expect(n.activeHints()[0]).toBe('frontissa2');
+  });
+
+  it("Escena 1: a la cuina, la pista del muntacàrregues no explica com s'hi va", () => {
+    const { n, p } = partida();
+    p.do('look', 'got');
+    p.do('pickUp', 'maceta');
+    anar(p, 'passadis_baix');
+    p.do('look', 'repetidor');
+    p.use('maceta', 'porta_maquines');
+    p.do('look', 'valvula');
+    p.do('look', 'quadre');
+    anar(p, 'taller');
+    p.do('look', 'tauler');
+    p.do('talkTo', item('walkie'));
+    p.do('pickUp', 'llitera');
+    expect(n.activeHints()[0]).toBe('vet_munta');
+    anar(p, 'cuina');
+    expect(n.activeHints()[0]).toBe('vet_munta_cuina');
+  });
+
+  it("Escena 9: dalt del pal, la pista ja no diu que hi pugi", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p); escena7(p); escena8(p);
+    amb(p, 'iri');
+    expect(n.activeHints()[0]).toBe('pal');
+    anar(p, 'pal');
+    expect(n.activeHints()[0]).toBe('pal_antena');
   });
 
   it("Escena 8: si l'USB el té la Vet, la pista li diu que el pugi al pont", () => {

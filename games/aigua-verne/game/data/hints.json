@@ -1207,7 +1207,7 @@
     },
     "levels": [
       "pista.reg2.1",
-      "pista.reg2.2",
+      "pista.reg2.2.iri",
       "pista.reg2.3"
     ]
   },
@@ -1943,6 +1943,11 @@
         },
         {
           "protagonist": "iri"
+        },
+        {
+          "var": "escena",
+          "op": "<",
+          "value": 7
         }
       ]
     },
@@ -1987,6 +1992,11 @@
         },
         {
           "protagonist": "vet"
+        },
+        {
+          "var": "escena",
+          "op": "<",
+          "value": 7
         }
       ]
     },
@@ -2432,6 +2442,54 @@
       "pista.control.3"
     ]
   },
+  "valvules_reinici": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "flag": "sync_subhasta"
+        },
+        {
+          "var": "valvules",
+          "op": "<",
+          "value": 3
+        },
+        {
+          "var": "reinicis_subhasta",
+          "op": ">=",
+          "value": 1
+        },
+        {
+          "flag": "oferta_feta",
+          "is": false
+        },
+        {
+          "flag": "contracte_llegit",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "oferta_feta"
+        },
+        {
+          "flag": "contracte_llegit"
+        },
+        {
+          "var": "valvules",
+          "op": ">=",
+          "value": 3
+        }
+      ]
+    },
+    "levels": [
+      "pista.valvules_reinici.1",
+      "pista.valvules_reinici.2",
+      "pista.valvules_reinici.3"
+    ]
+  },
   "valvules": {
     "priority": 5,
     "when": {
@@ -2443,6 +2501,25 @@
           "var": "valvules",
           "op": "<",
           "value": 3
+        },
+        {
+          "not": {
+            "all": [
+              {
+                "var": "reinicis_subhasta",
+                "op": ">=",
+                "value": 1
+              },
+              {
+                "flag": "oferta_feta",
+                "is": false
+              },
+              {
+                "flag": "contracte_llegit",
+                "is": false
+              }
+            ]
+          }
         }
       ]
     },
