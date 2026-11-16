@@ -850,6 +850,9 @@ export function buildGuiButton(
   const z = c.zIndex ?? 0;
   const d = baseDepth + z;
   const overlayVisible = startVisible && c.visible !== false;
+  // El `visible` del JSON el porta el contenidor (`hitTarget`), que és el que canvia `control.visible`; les peces de
+  // dins (fons, text) només segueixen la GUI. Si no, un botó amagat al JSON no es veuria mai en mostrar-lo des de l'script.
+  const partsVisible = startVisible;
   const bgAnchor = guiSpriteAnchorOrDefault(c.backgroundAnchor);
   const bgOffX = c.backgroundOffsetX ?? 0;
   const bgOffY = c.backgroundOffsetY ?? 0;
@@ -874,7 +877,7 @@ export function buildGuiButton(
     const rect = scene.add.rectangle(w / 2, h / 2, w, h, hexStringToTint(defaultBgColor));
     rect.setDepth(GUI_BUTTON_BG_DEPTH);
     rect.setScrollFactor(0, 0);
-    rect.setVisible(overlayVisible);
+    rect.setVisible(partsVisible);
     placeGuiButtonBackgroundRectLocal(rect, bgAnchor, w, h, worldTL, bgOffX, bgOffY);
     hitTarget.add(rect);
     bg = rect;
@@ -886,7 +889,7 @@ export function buildGuiButton(
     if (!tryApplyGuiSheetTag(scene, sprite, guiTextureKey, defaultBgTag, gui.id)) {
       sprite.destroy();
     } else {
-      sprite.setVisible(overlayVisible);
+      sprite.setVisible(partsVisible);
       if (import.meta.env.DEV) {
         warnDevIfAsepriteJsonMissingSpriteSourceSize(
           sprite.frame,
@@ -927,12 +930,12 @@ export function buildGuiButton(
       }
     }
     bt.setScrollFactor(0, 0);
-    bt.setVisible(overlayVisible);
+    bt.setVisible(partsVisible);
     const outs = createGuiBitmapTextOutlines(
       scene,
       bt,
       c.textOutline,
-      overlayVisible,
+      partsVisible,
       GUI_BUTTON_OUTLINE_DEPTH_BELOW_LABEL,
     );
     for (const o of outs) {

@@ -10,8 +10,9 @@
 //  - tauler (56 px o més: una finestra de navegador, un monitor): la franja de sota l'escena és un tauler amb tot: la
 //    frase a dalt; a l'esquerra, «Canvia», el menú i els punts; i l'inventari sempre a la vista, fins a la dreta de
 //    tot: una fila de 7 (tauler baix) o, des de 94 px, dues (tauler alt, un monitor 16:9 a pantalla completa).
-//    Amb dues files, «Canvia» a dalt i, a sota, el menú i els punts l'un al costat de l'altre; amb una (no hi caben
-//    l'un sobre l'altre), «Canvia» i, al costat, el menú a sobre dels punts petits.
+//    «Canvia» fa tant d'alt com el menú i els punts petits l'un sobre l'altre (52 px). Amb dues files, «Canvia» a
+//    dalt i, a sota, el menú i els punts petits l'un al costat de l'altre; amb una, «Canvia» i, al costat, el menú
+//    a sobre dels punts petits.
 //
 // A una cinemàtica amb coses per tocar (la carta de navegació d'Aigua Verne), només la frase i els punts: no hi ha
 // protagonista, ni inventari, ni «Canvia».
@@ -29,7 +30,15 @@ const ESCENA = 260;
 const TAULER_BAIX = 56;
 const TAULER_ALT = 94;
 /** On va la cara dins la pantalla rodona del botó «Canvia» (hud.py). */
-const CARA = { x: 15, y: 6 };
+const CARA = { x: 15, y: 10 };
+/** Les safates del tauler (hud.py): l'alta, de dues files, i la baixa, d'una; totes dues a 4 px de baix. */
+const SAFATA2_H = 82;
+const SAFATA3_H = 44;
+/** La franja de seguretat de dalt del tauler (fins on arriba, des de dalt). */
+const FRANJA_SEGURETAT = 6;
+/** La frase: on comença la lletra respecte a la y del text, i quant fa d'alt. */
+const LLETRA_DALT = 5;
+const LLETRA_H = 10;
 
 const alt = () => game.screenSize.height;
 const franja = () => alt() - ESCENA;
@@ -79,17 +88,20 @@ export function layoutHud() {
     mostra(gran, dues && !carta);
     mostra(petita, !dues && !carta);
     mostra([bossaBtn, safata, inventoryPanel, upBtn, downBtn], false);
-    posa(verbLineText, 320, ESCENA + 1);
-    mostra([puntsBtn], dues);
-    mostra([puntsPetitBtn], !dues);
+    // la frase, centrada entre la franja de seguretat i la safata (si no hi ha lloc, tan amunt com es pot)
+    const safataTop = franja() - (dues ? SAFATA2_H + 4 : SAFATA3_H + 4);
+    const lletra = Math.round((FRANJA_SEGURETAT + safataTop - LLETRA_H) / 2);
+    posa(verbLineText, 320, ESCENA + Math.max(1, lletra - LLETRA_DALT));
+    mostra([puntsBtn], false);
+    mostra([puntsPetitBtn], true);
     if (dues) {
-      // dues files: «Canvia» a dalt a l'esquerra; a sota, el menú i, al costat, els punts
-      posa(canviaBtn, 6, h - 94);
-      posa(menuBtn, 6, h - 32);
-      posa(puntsBtn, 35, h - 36);
+      // dues files: «Canvia» a dalt, arran de dalt de la safata; a sota, el menú i els punts, arran de baix
+      posa(canviaBtn, 6, h - 4 - SAFATA2_H);
+      posa(menuBtn, 8, h - 29);
+      posa(puntsPetitBtn, 36, h - 29);
     } else {
       // una fila: «Canvia» a baix a l'esquerra i, al costat, el menú a sobre dels punts petits (tot cap en 56 px)
-      posa(canviaBtn, 4, h - 47);
+      posa(canviaBtn, 4, h - 56);
       posa(menuBtn, 65, h - 56);
       posa(puntsPetitBtn, 65, h - 29);
     }

@@ -43,7 +43,8 @@ FONT, BOLD = 'suma-regular', 'suma-negreta'
 # ─── Disposició (ha de coincidir amb adapters/benne/tactil/guis: hud.ts i accions.gui.ts) ─────
 
 M = 4                                   # marge de la pantalla
-CANVIA = (M, M)                         # 57×43 (el de la barra)
+CANVIA = (M, M)                         # 57×52: el de la barra, més alt
+CANVIA_H = 52                           # (tan alt com el menú i els punts petits l'un sobre l'altre: hud.ts)
 MENU_BTN = (W - M - 25, M)              # 25×25
 BOTO = 32                               # els botons de baix (inventari, punts), a les cantonades
 PUNTS = (M, H - M - BOTO)
@@ -260,10 +261,10 @@ def text_outline():
 # ─── El HUD (`verbs`) ──────────────────────────────────────────────────────
 
 def build_hud():
-    cw, ch = vg.CANVIA[2], vg.CANVIA[3]
+    cw, ch = vg.CANVIA[2], CANVIA_H
     ms = vg.MENU[2]
     frames = [
-        (vg.canvia_image(False), 'CanviaBtn'), (vg.canvia_image(True), 'CanviaBtn-hover'), (menu_btn(), 'MenuBtn'),
+        (vg.canvia_image(False, ch), 'CanviaBtn'), (vg.canvia_image(True, ch), 'CanviaBtn-hover'), (menu_btn(), 'MenuBtn'),
         (boto(bossa_icon), 'BossaBtn'), (boto(bossa_icon, hover=True), 'BossaBtn-hover'),
         (boto(bossa_icon, on=True), 'BossaBtn-on'),
         (boto(punts_icon), 'PuntsBtn'), (boto(punts_icon, hover=True), 'PuntsBtn-hover'),

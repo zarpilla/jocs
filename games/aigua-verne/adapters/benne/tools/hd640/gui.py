@@ -294,15 +294,15 @@ def menu_button(cv):
     corners(cv, x + 2, y + 2, x + s - 3, y + s - 3, n=3, lvl=3.6)
 
 
-def porthole(cv, hover=False):
+def porthole(cv, hover=False, rect=None, port=None):
     """El botó «Canvia»: una placa amb una pantalla rodona de radar (anella taronja amb marques, fòsfor a dins,
     els cercles i la creu del radar i l'escombrada). La cara hi va a sobre, en un control a part."""
-    x, y, w, h = CANVIA
+    x, y, w, h = rect or CANVIA
     box(cv, x, y, x + w - 1, y + h - 1, OLIVA, 4.4 if hover else 3.8)
     cv.hline(x + 1, x + w - 2, y + 1, OLIVA, 5.2 if hover else 4.8, lit=0)
     for bx, by in ((x + 3, y + 3), (x + w - 5, y + 3), (x + 3, y + h - 5), (x + w - 5, y + h - 5)):
         big_rivet(cv, bx, by, 5.6)
-    cx, cy = PORT
+    cx, cy = port or PORT
     lift = 1.3 if hover else 0.0
     cv.disc(cx + 0.5, cy + 0.8, 18.5, 18.5, OLIVA, 0.8, lit=0)                      # l'ombra de l'anella
     cv.disc(cx, cy, 17.5, 17.5, NEGRE, lambda nx, ny: 2.6 - nx * 0.6 - ny * 0.8, lit=0)   # el marc, de goma

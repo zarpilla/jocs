@@ -44,7 +44,8 @@ FONT, BOLD = 'niunou-regular', 'niunou-negreta'
 # ─── Disposició (ha de coincidir amb verbs.gui.ts i accions.gui.ts) ─────────
 
 M = 4                                   # marge de la pantalla
-CANVIA = (M, M)                         # 57×43 (la pantalla rodona de la barra)
+CANVIA = (M, M)                         # 57×52: la pantalla rodona de la barra, en una placa més alta
+CANVIA_H = 52                           # (tan alta com el menú i els punts petits l'un sobre l'altre: hud.ts)
 MENU_BTN = (W - M - 25, M)              # 25×25
 BOTO = 32                               # els botons de baix (bossa, punts), a les cantonades
 PUNTS = (M, H - M - BOTO)
@@ -248,9 +249,15 @@ def text_outline():
 # ─── El HUD (`verbs`) ──────────────────────────────────────────────────────
 
 def build_hud():
-    cx, cy, cw, ch = vg.CANVIA
-    canvia = crop_bar(lambda cv: vg.porthole(cv, False), cx, cy, cw, ch)
-    canvia_h = crop_bar(lambda cv: vg.porthole(cv, True), cx, cy, cw, ch)
+    cx, cy, cw, _ = vg.CANVIA
+    ch = CANVIA_H
+    port = (vg.PORT[0] - cx, (ch - 1) // 2)                    # la pantalla rodona, al mig de la placa
+
+    def canvia_img(hover):
+        cv = Canvas(cw, ch, transparent=True)
+        vg.porthole(cv, hover, rect=(0, 0, cw, ch), port=port)
+        return cv.img
+    canvia, canvia_h = canvia_img(False), canvia_img(True)
     mx, my, ms = vg.MENU
     menu = crop_bar(vg.menu_button, mx, my, ms, ms)
     cara = {who: vg.face(who) for who in ('iri', 'vet')}
@@ -270,8 +277,8 @@ def build_hud():
     write_sheet(sheet_dir, 'verbs', [(im, tag, (0, 0), im.size) for im, tag in frames])
 
     # la cara, al mig de la pantalla rodona (com a la barra: hd640/gui_rest.py, build_verbs)
-    fx = CANVIA[0] + vg.PORT[0] - cx - cara['iri'].width // 2
-    fy = CANVIA[1] + vg.PORT[1] - cy - cara['iri'].height // 2 - 1
+    fx = CANVIA[0] + port[0] - cara['iri'].width // 2
+    fy = CANVIA[1] + port[1] - cara['iri'].height // 2 - 1
     fx0, slots_x, fx1, top = safata_xy()
 
     def button(cid, xy, w, h, tag, states=None, visible=True):

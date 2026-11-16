@@ -133,13 +133,13 @@ def menu_button(cv):
         cv.hline(x + 6, x + s - 6, yy + 2, NAVYB, 1.6, lit=0)
 
 
-def porthole(cv, hover=False):
-    x, y, w, h = CANVIA
+def porthole(cv, hover=False, rect=None, port=None):
+    x, y, w, h = rect or CANVIA
     box(cv, x, y, x + w - 1, y + h - 1, NAVYB, 4.2 if hover else 3.6)
     cv.hline(x + 1, x + w - 2, y + 1, NAVYB, 5.0 if hover else 4.6, lit=0)
     for bx, by in ((x + 3, y + 3), (x + w - 5, y + 3), (x + 3, y + h - 5), (x + w - 5, y + h - 5)):
         big_rivet(cv, bx, by, 5.6)
-    cx, cy = PORT
+    cx, cy = port or PORT
     lift = 0.8 if hover else 0.0
     cv.disc(cx + 0.5, cy + 0.8, 18.5, 18.5, NAVYB, 1.0, lit=0)
     cv.disc(cx, cy, 17.5, 17.5, BRASS, lambda nx, ny: 3.6 + lift - nx - ny * 1.2, lit=0)
