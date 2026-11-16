@@ -450,7 +450,7 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
 /** Botó o verb de "pista": cada vegada una mica més explícita. */
 export function sayHint() {
   const hint = narrative.requestHint()
-  const text = hint ? hint.text : narrative.t('ui.pista.cap')
+  const text = hint ? hint.text : narrative.noHintText()
   recordLine('player', text)
   player.say(text)
 }

@@ -236,7 +236,7 @@ async function main() {
       }
       if (cmd === 'pista') {
         const h = n.requestHint();
-        console.log(`${c.yellow}${h ? h.text : n.t('ui.pista.cap')}${c.off}`);
+        console.log(`${c.yellow}${h ? h.text : n.noHintText()}${c.off}`);
         continue;
       }
       if (cmd === 'missions') {

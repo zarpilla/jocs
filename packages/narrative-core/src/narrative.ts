@@ -382,6 +382,39 @@ export class Narrative {
     });
   }
 
+  /**
+   * Qui tindria una pista si jugués, quan la que juga no en té cap: l'altra protagonista, si s'hi pot canviar.
+   * Les condicions es miren com si jugués ella (`protagonist`, el seu inventari, la seva sala). `null` si ningú.
+   */
+  hintForOther(): Id | null {
+    if (!this.canSwitch()) return null;
+    const w = this.world;
+    const active = w.activeProtagonist();
+    for (const who of this.content.manifest.protagonists) {
+      if (who === active) continue;
+      const world: WorldPort = {
+        hasItem: (item, of) => w.hasItem(item, of ?? who),
+        hasVisited: (room) => w.hasVisited(room),
+        currentRoom: () => w.protagonistRoom?.(who) ?? null,
+        activeProtagonist: () => who,
+        protagonistRoom: (of) => (of === active ? w.currentRoom() : w.protagonistRoom?.(of) ?? null),
+      };
+      const ctx: ConditionContext = { state: this._state, world };
+      if (Object.values(this.content.hints).some((h) => evaluate(h.when, ctx) && !evaluate(h.doneWhen, ctx))) return who;
+    }
+    return null;
+  }
+
+  /**
+   * El que diu el botó de pista quan no n'hi ha cap: «ara li toca a l'altra» (`ui.pista.altra.<qui>`) si ella sí
+   * que en tindria (`hintForOther`) i el joc té el text; si no, `ui.pista.cap`.
+   */
+  noHintText(): string {
+    const other = this.hintForOther();
+    const key = other ? `ui.pista.altra.${other}` : '';
+    return key && this.i18n.has(key) ? this.t(key) : this.t('ui.pista.cap');
+  }
+
   // ─── Finals ───────────────────────────────────────────────────────────────
 
   /** El final que toca segons l'estat (el de més prioritat que es compleixi). */
