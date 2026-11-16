@@ -48,6 +48,7 @@ def main():
         W, H, bar_y, scale, art = hd640.W, hd640.H, hd640.BAR_Y, 3, Path(hd640.__file__).parent / 'characters'
         mod = importlib.import_module(f'hd640.rooms.{a.sala}')
         from hd.pix import Canvas
+        Canvas = getattr(mod, 'Canvas', Canvas)          # Canvas2x a les sales amb ART_SCALE = 2
         light = getattr(mod, 'LIGHT', None)
         bg = Canvas(light=light)
         mod.bg(bg)
@@ -67,6 +68,10 @@ def main():
         bg, props = render(a.sala)
         anims = render_anims(a.sala)
 
+    # art a 2× (ART_SCALE): tot es compon a la mida de l'art, i el GIF surt a 1280×720
+    s = getattr(mod, 'ART_SCALE', 1) if a.res == '640' else 1
+    if s != 1:
+        W, H, bar_y, scale = W * s, H * s, bar_y * s, max(1, scale // s)
     spawns = mod.GEOMETRIA['spawns']
     layers = [x.strip() for x in a.layers.split(',') if x.strip()]
     for lid in layers:
@@ -75,11 +80,15 @@ def main():
     # la barra, amb els textos (s'importa després de dibuixar la sala: importar hd640 posa pix a 640)
     import hd640.gui as gui
     bar = gui.verb_bar() if a.res == '640' else gui.bar480()
+    if s != 1:
+        bar = nearest(bar, (bar.width * s, bar.height * s))
     chars = []
     for cid, (x, y) in spawns.items():
         if (art / cid / f'{cid}.png').exists():
             spr, (fx, fy) = sprite(cid, art)
-            chars.append((y, spr, (x - fx, y - fy)))
+            if s != 1:
+                spr = nearest(spr, (spr.width * s, spr.height * s))
+            chars.append((y, spr, ((x - fx) * s, (y - fy) * s)))
     chars.sort(key=lambda c: c[0])
     front = None
     if getattr(mod, 'FRONT', None):
@@ -88,7 +97,7 @@ def main():
         src, dst = bg.load(), front.load()
         for y in range(H):
             for x in range(W):
-                if f['mask'](x, y):
+                if f['mask'](x // s, y // s):
                     dst[x, y] = src[x, y]
         front = (front, f['baseline'])
 

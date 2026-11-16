@@ -162,13 +162,14 @@ def canonada(cv, x, hor, top=0, w0=2.4, w1=5.0, base=True, light_y=24):
     cv.flat(x, light_y, (110, 30, 30))
 
 
-def canonada_llum(x, y, on=True):
-    """Un fotograma del llum vermell del cim de la Canonada (transparent)."""
-    cv = Canvas(transparent=True)
+def canonada_llum(x, y, on=True, C=Canvas):
+    """Un fotograma del llum vermell del cim de la Canonada (transparent). `C`: el Canvas de la sala (1× o 2×)."""
+    cv = C(transparent=True)
     if on:
         cv.flat(x, y, (255, 70, 50))
         for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
-            cv.P[x + dx, y + dy] = (255, 110, 90, 150)
+            for X, Y, _, _ in cv.pixels(x + dx, y + dy, x + dx, y + dy):
+                cv.P[X, Y] = (255, 110, 90, 150)
     return cv.img
 
 
@@ -239,39 +240,43 @@ def diff(frame, base):
     """Només els píxels que canvien respecte del fons (la resta, transparent)."""
     out = frame.copy()
     a, b, o = frame.load(), base.load(), out.load()
-    for y in range(H):
-        for x in range(W):
+    for y in range(frame.height):
+        for x in range(frame.width):
             if a[x, y] == b[x, y]:
                 o[x, y] = (0, 0, 0, 0)
     return out
 
 
 def calitja_frames(base, x0, x1, y0, y1, n=8, amp=1.0, seed=0):
-    """La calitja de la sal a l'horitzó: les files tremolen un píxel a banda i banda. → fotogrames transparents."""
+    """La calitja de la sal a l'horitzó: les files tremolen un píxel a banda i banda. → fotogrames transparents.
+    (x0, x1, y0, y1): en coordenades de sala; `base` pot ser l'art a 2× (llavors cada fila de sala en són S)."""
+    S = base.width // W
     src = base.load()
     frames = []
     for i in range(n):
         out = base.copy()
         o = out.load()
-        for y in range(y0, y1 + 1):
-            off = round(amp * math.sin(i / n * 2 * math.pi + y * 1.7 + seed) * (0.6 + 0.4 * hr(y, seed)))
+        for Y in range(y0 * S, (y1 + 1) * S):
+            y = Y // S
+            off = round(amp * math.sin(i / n * 2 * math.pi + y * 1.7 + seed) * (0.6 + 0.4 * hr(y, seed))) * S
             if off == 0:
                 continue
-            for x in range(x0, x1 + 1):
-                sx = min(x1, max(x0, x - off))
-                o[x, y] = src[sx, y]
+            for X in range(x0 * S, (x1 + 1) * S):
+                sx = min((x1 + 1) * S - 1, max(x0 * S, X - off))
+                o[X, Y] = src[sx, Y]
         frames.append(diff(out, base))
     return frames
 
 
-def pols_frames(n, parts, area, seed=0, col=(250, 252, 252)):
+def pols_frames(n, parts, area, seed=0, col=(250, 252, 252), C=Canvas):
     """Pols de sal que passa amb el vent: punts blancs, de vegades parelles, que travessen `area` d'esquerra a
-    dreta. El bucle tanca: cada gra fa una o dues voltes senceres en `n` fotogrames. Transparents."""
+    dreta. El bucle tanca: cada gra fa una o dues voltes senceres en `n` fotogrames. Transparents. `C`: el Canvas
+    de la sala (1× o 2×)."""
     x0, y0, x1, y1 = area
     w = x1 - x0
     frames = []
     for i in range(n):
-        cv = Canvas(transparent=True)
+        cv = C(transparent=True)
         for k in range(parts):
             sx = hr(k, seed) * w
             sy = y0 + hr(k, seed + 1) * (y1 - y0)
@@ -280,9 +285,11 @@ def pols_frames(n, parts, area, seed=0, col=(250, 252, 252)):
             y = sy + math.sin(i / n * 2 * math.pi * sp + k) * 2
             a = int(110 + 130 * hr(k, seed + 3))
             if 0 <= int(y) < H:
-                cv.P[int(x), int(y)] = col + (a,)
+                for X, Y, _, _ in cv.pixels(int(x), int(y), int(x), int(y)):
+                    cv.P[X, Y] = col + (a,)
                 if hr(k, seed + 4) > 0.6 and int(x) + 1 < W:
-                    cv.P[int(x) + 1, int(y)] = col + (a // 2,)
+                    for X, Y, _, _ in cv.pixels(int(x) + 1, int(y), int(x) + 1, int(y)):
+                        cv.P[X, Y] = col + (a // 2,)
         frames.append(cv.img)
     return frames
 
@@ -291,8 +298,9 @@ def pols_frames(n, parts, area, seed=0, col=(250, 252, 252)):
 
 def amb_contorn(cv, draw, k=0.42, diag=False):
     """Dibuixa amb `draw(canvas)` en un llenç a part i hi posa el contorn fosc d'1 px (el color del veí, enfosquit)
-    abans d'enganxar-ho a `cv`. L'estil de dibuix animat de la casa."""
-    tmp = Canvas(cv.w, cv.h, light=cv.light, transparent=True)
+    abans d'enganxar-ho a `cv`. L'estil de dibuix animat de la casa. A 2×, el contorn fa S píxels reals (1 de sala)."""
+    S = cv.S
+    tmp = type(cv)(cv.w // S, cv.h // S, light=cv.light, transparent=True)
     draw(tmp)
     src = tmp.img
     bbox = src.getbbox()
@@ -302,8 +310,9 @@ def amb_contorn(cv, draw, k=0.42, diag=False):
     out = src.copy()
     o = out.load()
     nb = ((-1, 0), (1, 0), (0, -1), (0, 1)) + (((-1, -1), (1, -1), (-1, 1), (1, 1)) if diag else ())
-    for y in range(max(0, bbox[1] - 1), min(cv.h, bbox[3] + 1)):
-        for x in range(max(0, bbox[0] - 1), min(cv.w, bbox[2] + 1)):
+    nb = tuple((dx * k, dy * k) for k in range(1, S + 1) for dx, dy in nb)
+    for y in range(max(0, bbox[1] - S), min(cv.h, bbox[3] + S)):
+        for x in range(max(0, bbox[0] - S), min(cv.w, bbox[2] + S)):
             if px[x, y][3]:
                 continue
             for dx, dy in nb:

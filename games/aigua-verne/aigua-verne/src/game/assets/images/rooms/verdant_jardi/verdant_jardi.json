@@ -4,363 +4,363 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 1.aseprite": {
       "frame": {
-        "x": 1325,
+        "x": 2650,
         "y": 0,
-        "w": 140,
-        "h": 30
+        "w": 280,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 211,
-        "w": 140,
-        "h": 30
+        "x": 992,
+        "y": 422,
+        "w": 280,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 2.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 135,
-        "h": 32
+        "w": 270,
+        "h": 64
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 495,
-        "y": 210,
-        "w": 135,
-        "h": 32
+        "x": 990,
+        "y": 420,
+        "w": 270,
+        "h": 64
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 3.aseprite": {
       "frame": {
-        "x": 775,
+        "x": 1550,
         "y": 0,
-        "w": 139,
-        "h": 32
+        "w": 278,
+        "h": 64
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 210,
-        "w": 139,
-        "h": 32
+        "x": 992,
+        "y": 420,
+        "w": 278,
+        "h": 64
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 4.aseprite": {
       "frame": {
-        "x": 914,
+        "x": 1828,
         "y": 0,
-        "w": 137,
-        "h": 32
+        "w": 274,
+        "h": 64
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 210,
-        "w": 137,
-        "h": 32
+        "x": 998,
+        "y": 420,
+        "w": 274,
+        "h": 64
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 5.aseprite": {
       "frame": {
-        "x": 1051,
+        "x": 2102,
         "y": 0,
-        "w": 135,
-        "h": 32
+        "w": 270,
+        "h": 64
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 500,
-        "y": 210,
-        "w": 135,
-        "h": 32
+        "x": 1000,
+        "y": 420,
+        "w": 270,
+        "h": 64
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 6.aseprite": {
       "frame": {
-        "x": 1186,
+        "x": 2372,
         "y": 0,
-        "w": 139,
-        "h": 31
+        "w": 278,
+        "h": 62
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 499,
-        "y": 211,
-        "w": 139,
-        "h": 31
+        "x": 998,
+        "y": 422,
+        "w": 278,
+        "h": 62
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 7.aseprite": {
       "frame": {
-        "x": 1465,
+        "x": 2930,
         "y": 0,
-        "w": 139,
-        "h": 30
+        "w": 278,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 212,
-        "w": 139,
-        "h": 30
+        "x": 996,
+        "y": 424,
+        "w": 278,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 8.aseprite": {
       "frame": {
-        "x": 1604,
+        "x": 3208,
         "y": 0,
-        "w": 141,
-        "h": 30
+        "w": 282,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 212,
-        "w": 141,
-        "h": 30
+        "x": 994,
+        "y": 424,
+        "w": 282,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 9.aseprite": {
       "frame": {
-        "x": 2319,
-        "y": 0,
-        "w": 141,
-        "h": 29
+        "x": 566,
+        "y": 720,
+        "w": 282,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 213,
-        "w": 141,
-        "h": 29
+        "x": 992,
+        "y": 426,
+        "w": 282,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 10.aseprite": {
       "frame": {
-        "x": 2460,
-        "y": 0,
-        "w": 143,
-        "h": 29
+        "x": 848,
+        "y": 720,
+        "w": 286,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 495,
-        "y": 213,
-        "w": 143,
-        "h": 29
+        "x": 990,
+        "y": 426,
+        "w": 286,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 11.aseprite": {
       "frame": {
-        "x": 2603,
-        "y": 0,
-        "w": 141,
-        "h": 29
+        "x": 1134,
+        "y": 720,
+        "w": 282,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 213,
-        "w": 141,
-        "h": 29
+        "x": 992,
+        "y": 426,
+        "w": 282,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 12.aseprite": {
       "frame": {
-        "x": 2744,
-        "y": 0,
-        "w": 144,
-        "h": 29
+        "x": 1416,
+        "y": 720,
+        "w": 288,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 492,
-        "y": 213,
-        "w": 144,
-        "h": 29
+        "x": 984,
+        "y": 426,
+        "w": 288,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 13.aseprite": {
       "frame": {
-        "x": 1745,
+        "x": 3490,
         "y": 0,
-        "w": 145,
-        "h": 30
+        "w": 290,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 490,
-        "y": 212,
-        "w": 145,
-        "h": 30
+        "x": 980,
+        "y": 424,
+        "w": 290,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 14.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3780,
         "y": 0,
-        "w": 146,
-        "h": 30
+        "w": 292,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 492,
-        "y": 212,
-        "w": 146,
-        "h": 30
+        "x": 984,
+        "y": 424,
+        "w": 292,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 15.aseprite": {
       "frame": {
-        "x": 2036,
-        "y": 0,
-        "w": 140,
-        "h": 30
+        "x": 0,
+        "y": 720,
+        "w": 280,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 498,
-        "y": 212,
-        "w": 140,
-        "h": 30
+        "x": 996,
+        "y": 424,
+        "w": 280,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 16.aseprite": {
       "frame": {
-        "x": 2176,
-        "y": 0,
-        "w": 143,
-        "h": 30
+        "x": 280,
+        "y": 720,
+        "w": 286,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 497,
-        "y": 212,
-        "w": 143,
-        "h": 30
+        "x": 994,
+        "y": 424,
+        "w": 286,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 17.aseprite": {
       "frame": {
-        "x": 2897,
-        "y": 0,
+        "x": 1724,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -373,162 +373,162 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 18.aseprite": {
       "frame": {
-        "x": 2898,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 1722,
+        "y": 720,
+        "w": 2,
+        "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 484,
-        "y": 196,
-        "w": 1,
-        "h": 1
+        "x": 968,
+        "y": 392,
+        "w": 2,
+        "h": 2
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 19.aseprite": {
       "frame": {
-        "x": 2898,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 1722,
+        "y": 720,
+        "w": 2,
+        "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 484,
-        "y": 196,
-        "w": 1,
-        "h": 1
+        "x": 968,
+        "y": 392,
+        "w": 2,
+        "h": 2
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 20.aseprite": {
       "frame": {
-        "x": 2888,
-        "y": 0,
-        "w": 1,
-        "h": 2
+        "x": 1704,
+        "y": 720,
+        "w": 2,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 484,
-        "y": 196,
-        "w": 1,
-        "h": 2
+        "x": 968,
+        "y": 392,
+        "w": 2,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 21.aseprite": {
       "frame": {
-        "x": 2888,
-        "y": 0,
-        "w": 1,
-        "h": 2
+        "x": 1704,
+        "y": 720,
+        "w": 2,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 484,
-        "y": 196,
-        "w": 1,
-        "h": 2
+        "x": 968,
+        "y": 392,
+        "w": 2,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 22.aseprite": {
       "frame": {
-        "x": 2889,
-        "y": 0,
-        "w": 1,
-        "h": 2
+        "x": 1706,
+        "y": 720,
+        "w": 2,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 484,
-        "y": 197,
-        "w": 1,
-        "h": 2
+        "x": 968,
+        "y": 394,
+        "w": 2,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 23.aseprite": {
       "frame": {
-        "x": 2890,
-        "y": 0,
-        "w": 1,
-        "h": 2
+        "x": 1708,
+        "y": 720,
+        "w": 2,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 484,
-        "y": 198,
-        "w": 1,
-        "h": 2
+        "x": 968,
+        "y": 396,
+        "w": 2,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 24.aseprite": {
       "frame": {
-        "x": 2891,
-        "y": 0,
-        "w": 1,
-        "h": 2
+        "x": 1710,
+        "y": 720,
+        "w": 2,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 484,
-        "y": 202,
-        "w": 1,
-        "h": 2
+        "x": 968,
+        "y": 404,
+        "w": 2,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 25.aseprite": {
       "frame": {
-        "x": 2897,
-        "y": 0,
+        "x": 1724,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -541,36 +541,36 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 26.aseprite": {
       "frame": {
-        "x": 2892,
-        "y": 0,
-        "w": 5,
-        "h": 2
+        "x": 1712,
+        "y": 720,
+        "w": 10,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 482,
-        "y": 203,
-        "w": 5,
-        "h": 2
+        "x": 964,
+        "y": 406,
+        "w": 10,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 27.aseprite": {
       "frame": {
-        "x": 2897,
-        "y": 0,
+        "x": 1724,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -583,15 +583,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_jardi 28.aseprite": {
       "frame": {
-        "x": 2897,
-        "y": 0,
+        "x": 1724,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -604,8 +604,8 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -616,8 +616,8 @@
     "image": "verdant_jardi.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2899,
-      "h": 360
+      "w": 4072,
+      "h": 780
     },
     "scale": "1",
     "frameTags": [

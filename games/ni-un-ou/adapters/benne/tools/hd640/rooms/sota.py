@@ -250,10 +250,9 @@ def rust_streaks(cv, x0, y0, x1, y1, n, k=0.5, seed=0, ramp=RUST):
 def unmask(mask, cv, x0, y0, x1, y1, before):
     """Treu del terra els píxels que ha pintat un objecte (comparant amb una còpia d'abans)."""
     a, b = before.load(), cv.img.load()
-    for y in range(max(0, y0), min(H, y1 + 1)):
-        for x in range(max(0, x0), min(W, x1 + 1)):
-            if a[x, y] != b[x, y]:
-                mask[y][x] = False
+    for X, Y, x, y in cv.pixels(x0, y0, x1, y1):
+        if a[X, Y] != b[X, Y]:
+            mask[Y // cv.S][X // cv.S] = False
 
 
 def floor_shadow(cv, cx, cy, rx, ry, k=0.6):
@@ -269,6 +268,9 @@ def fast_diff(frame, base, box=None):
     out = Image.new('RGBA', frame.size, (0, 0, 0, 0))
     if box is None:
         box = (0, 0) + frame.size
+    else:
+        s = frame.width // W                                   # la caixa és en píxels de sala (art a 2×)
+        box = tuple(v * s for v in box)
     a, b = frame.crop(box), base.crop(box)
     m = ImageChops.difference(a, b).convert('L').point(lambda v: 255 if v else 0)
     out.paste(a, box[:2], m)
@@ -277,7 +279,7 @@ def fast_diff(frame, base, box=None):
 
 def diff_prop(cv, base_fn, draw_fn, light):
     """Per a un prop que canvia la llum: dibuixa el fons, hi afegeix el prop i en deixa només el que canvia."""
-    from hd.pix import Canvas
+    Canvas = type(cv)                                          # (Canvas2x a les sales amb ART_SCALE = 2)
     base = Canvas(light=light)
     base_fn(base)
     var = Canvas(light=light, img=base.img.copy())

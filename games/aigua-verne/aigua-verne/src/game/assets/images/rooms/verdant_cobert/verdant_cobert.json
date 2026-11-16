@@ -4,419 +4,419 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 1.aseprite": {
       "frame": {
-        "x": 2734,
-        "y": 0,
-        "w": 27,
-        "h": 26
+        "x": 1630,
+        "y": 720,
+        "w": 54,
+        "h": 52
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 249,
-        "y": 219,
-        "w": 27,
-        "h": 26
+        "x": 498,
+        "y": 438,
+        "w": 54,
+        "h": 52
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 2.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 61,
-        "h": 135
+        "w": 122,
+        "h": 270
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 548,
-        "y": 64,
-        "w": 61,
-        "h": 135
+        "x": 1096,
+        "y": 128,
+        "w": 122,
+        "h": 270
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 3.aseprite": {
       "frame": {
-        "x": 1210,
+        "x": 2420,
         "y": 0,
-        "w": 60,
-        "h": 96
+        "w": 120,
+        "h": 192
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 532,
-        "y": 101,
-        "w": 60,
-        "h": 96
+        "x": 1065,
+        "y": 202,
+        "w": 120,
+        "h": 192
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 4.aseprite": {
       "frame": {
-        "x": 1484,
+        "x": 2968,
         "y": 0,
-        "w": 139,
-        "h": 93
+        "w": 278,
+        "h": 186
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 436,
-        "y": 121,
-        "w": 139,
-        "h": 93
+        "x": 872,
+        "y": 242,
+        "w": 278,
+        "h": 186
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 5.aseprite": {
       "frame": {
-        "x": 980,
+        "x": 1960,
         "y": 0,
-        "w": 139,
-        "h": 97
+        "w": 278,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 439,
-        "y": 116,
-        "w": 139,
-        "h": 97
+        "x": 878,
+        "y": 232,
+        "w": 278,
+        "h": 194
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 6.aseprite": {
       "frame": {
-        "x": 701,
+        "x": 1402,
         "y": 0,
-        "w": 139,
-        "h": 99
+        "w": 278,
+        "h": 198
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 441,
-        "y": 114,
-        "w": 139,
-        "h": 99
+        "x": 882,
+        "y": 228,
+        "w": 278,
+        "h": 198
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 7.aseprite": {
       "frame": {
-        "x": 840,
+        "x": 1680,
         "y": 0,
-        "w": 140,
-        "h": 98
+        "w": 280,
+        "h": 196
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 442,
-        "y": 116,
-        "w": 140,
-        "h": 98
+        "x": 884,
+        "y": 232,
+        "w": 280,
+        "h": 196
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 8.aseprite": {
       "frame": {
-        "x": 1623,
+        "x": 3246,
         "y": 0,
-        "w": 144,
-        "h": 93
+        "w": 288,
+        "h": 186
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 434,
-        "y": 114,
-        "w": 144,
-        "h": 93
+        "x": 868,
+        "y": 228,
+        "w": 288,
+        "h": 186
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 9.aseprite": {
       "frame": {
-        "x": 1919,
-        "y": 0,
-        "w": 148,
-        "h": 92
+        "x": 0,
+        "y": 720,
+        "w": 296,
+        "h": 184
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 435,
-        "y": 118,
-        "w": 148,
-        "h": 92
+        "x": 870,
+        "y": 236,
+        "w": 296,
+        "h": 184
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 10.aseprite": {
       "frame": {
-        "x": 1767,
+        "x": 3534,
         "y": 0,
-        "w": 152,
-        "h": 93
+        "w": 304,
+        "h": 186
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 436,
-        "y": 121,
-        "w": 152,
-        "h": 93
+        "x": 872,
+        "y": 242,
+        "w": 304,
+        "h": 186
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 11.aseprite": {
       "frame": {
-        "x": 1270,
+        "x": 2540,
         "y": 0,
-        "w": 125,
-        "h": 95
+        "w": 250,
+        "h": 190
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 438,
-        "y": 117,
-        "w": 125,
-        "h": 95
+        "x": 876,
+        "y": 234,
+        "w": 250,
+        "h": 190
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 12.aseprite": {
       "frame": {
-        "x": 2241,
-        "y": 0,
-        "w": 123,
-        "h": 87
+        "x": 644,
+        "y": 720,
+        "w": 246,
+        "h": 174
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 446,
-        "y": 115,
-        "w": 123,
-        "h": 87
+        "x": 892,
+        "y": 230,
+        "w": 246,
+        "h": 174
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 13.aseprite": {
       "frame": {
-        "x": 2364,
-        "y": 0,
-        "w": 123,
-        "h": 87
+        "x": 890,
+        "y": 720,
+        "w": 246,
+        "h": 174
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 449,
-        "y": 118,
-        "w": 123,
-        "h": 87
+        "x": 898,
+        "y": 236,
+        "w": 246,
+        "h": 174
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 14.aseprite": {
       "frame": {
-        "x": 2487,
-        "y": 0,
-        "w": 124,
-        "h": 87
+        "x": 1136,
+        "y": 720,
+        "w": 248,
+        "h": 174
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 122,
-        "w": 124,
-        "h": 87
+        "x": 904,
+        "y": 244,
+        "w": 248,
+        "h": 174
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 15.aseprite": {
       "frame": {
-        "x": 2611,
-        "y": 0,
-        "w": 123,
-        "h": 87
+        "x": 1384,
+        "y": 720,
+        "w": 246,
+        "h": 174
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 456,
-        "y": 125,
-        "w": 123,
-        "h": 87
+        "x": 912,
+        "y": 250,
+        "w": 246,
+        "h": 174
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 16.aseprite": {
       "frame": {
-        "x": 1119,
+        "x": 2238,
         "y": 0,
-        "w": 91,
-        "h": 97
+        "w": 182,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 460,
-        "y": 114,
-        "w": 91,
-        "h": 97
+        "x": 920,
+        "y": 228,
+        "w": 182,
+        "h": 194
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 17.aseprite": {
       "frame": {
-        "x": 1395,
+        "x": 2790,
         "y": 0,
-        "w": 89,
-        "h": 95
+        "w": 178,
+        "h": 190
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 464,
-        "y": 118,
-        "w": 89,
-        "h": 95
+        "x": 928,
+        "y": 236,
+        "w": 178,
+        "h": 190
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 18.aseprite": {
       "frame": {
-        "x": 2155,
-        "y": 0,
-        "w": 86,
-        "h": 91
+        "x": 472,
+        "y": 720,
+        "w": 172,
+        "h": 182
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 455,
-        "y": 114,
-        "w": 86,
-        "h": 91
+        "x": 910,
+        "y": 228,
+        "w": 172,
+        "h": 182
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "verdant_cobert 19.aseprite": {
       "frame": {
-        "x": 2067,
-        "y": 0,
-        "w": 88,
-        "h": 92
+        "x": 296,
+        "y": 720,
+        "w": 176,
+        "h": 184
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 456,
-        "y": 116,
-        "w": 88,
-        "h": 92
+        "x": 912,
+        "y": 232,
+        "w": 176,
+        "h": 184
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -427,8 +427,8 @@
     "image": "verdant_cobert.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2761,
-      "h": 360
+      "w": 3838,
+      "h": 904
     },
     "scale": "1",
     "frameTags": [

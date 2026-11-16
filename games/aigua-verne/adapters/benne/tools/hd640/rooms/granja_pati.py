@@ -26,6 +26,12 @@ from hd640.rooms.terra2_comu import (
     text, text_width, gota, dust_sky, rain_sky, hills, canonada, panell_preu, cracks, shadow,
     dust_wind_frames, llum_canonada_frames, _diff)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 HOR = 118
 CAN_X = 402                       # la Canonada
 WX, WTOP, WBASE, WRX = 300, 174, 204, 26          # el pou
@@ -117,11 +123,15 @@ def masia(cv, wet=False):
     cv.poly([(0, 82), apex, (208, 82), (208, base), (0, base)], ADOBE, wall_lvl)
     # teulada: la vora de teules a dues aigües
     tile = STONE if False else TILE
-    for k in range(10):
+    for j in range(9 * cv.S + 1):                                                  # (a 2×, línies cada mig píxel: sense escletxes)
+        k = j / cv.S
         f = k / 9
         lvl = 3.4 - f * 1.4 - (0.8 if wet else 0)
-        cv.line(left[0], left[1] + k * 0.4 - 6 + k, apex[0], apex[1] - 6 + k, tile, lvl - 0.4)
-        cv.line(apex[0], apex[1] - 6 + k, right[0], right[1] - 6 + k + k * 0.4, tile, lvl + 0.2)
+        # (+e: a 2×, amb extrems enters, els punts de cv.line cauen just a la vora del píxel i l'error de coma
+        # flotant hi deixa columnes buides)
+        e = 0.001
+        cv.line(left[0] + e, left[1] + k * 0.4 - 6 + k + e, apex[0] + e, apex[1] - 6 + k + e, tile, lvl - 0.4)
+        cv.line(apex[0] + e, apex[1] - 6 + k + e, right[0] + e, right[1] - 6 + k + k * 0.4 + e, tile, lvl + 0.2)
     for i in range(0, 108, 6):                                                      # els canals de les teules
         t = i / 107
         cv.put(left[0] + (apex[0] - left[0]) * t, left[1] - 5 + (apex[1] - left[1]) * t + 1, tile, 4.6)
@@ -597,7 +607,7 @@ def _frames_pols():
 
 
 def _frames_llum():
-    return llum_canonada_frames(CAN_X)
+    return llum_canonada_frames(CAN_X, s=Canvas.S)
 
 
 ANIMS = {'pols': {'frames': _frames_pols, 'frameDuration': 110},

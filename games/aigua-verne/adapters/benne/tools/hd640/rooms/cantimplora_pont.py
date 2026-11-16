@@ -26,6 +26,12 @@ from hd640.rooms.nau_comu import (OLIVE, SAFETY, STEELN, LEATHER, TAPE, AMBER, G
                                   BLACKT, PAPERN, INK, WARM, box, outline, rivet, vpipe, hpipe, hazard, stencil,
                                   plate_wall, deck, bulb, drop, vista, glass_reflex, cara_verne, _Clip)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200                          # on la paret es troba amb el terra
 BOTTOM = 259                           # la sala acaba aquí (a sota, la barra de verbs)
 WIN = (150, 26, 490, 122)              # el finestral (el marc de fora)
@@ -294,9 +300,8 @@ def vistes_pane(planeta):
         vista(tmp, planeta, (PANES[0][0], PANE_Y[0], PANES[-1][1], PANE_Y[1]), HOR, s=1.0, refl=False)
         src = tmp.img.load()
         for a, b in PANES:
-            for y in range(PANE_Y[0], PANE_Y[1] + 1):
-                for x in range(a, b + 1):
-                    cv.P[x, y] = src[x, y]
+            for X, Y, _, _ in cv.pixels(a, PANE_Y[0], b, PANE_Y[1]):
+                cv.P[X, Y] = src[X, Y]
             glass_reflex(cv, (a, PANE_Y[0], b, PANE_Y[1]))
     return fn
 

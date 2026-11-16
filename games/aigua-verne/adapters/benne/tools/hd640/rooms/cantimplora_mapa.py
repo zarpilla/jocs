@@ -22,6 +22,12 @@ from hd.rooms.comu import _diff, text, text_width
 from hd640.rooms.credits import space, planet, T2, AQ, FE, VE
 from hd640.rooms.nau_comu import OLIVE, SAFETY
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 STAR = (-30, 300)
 ZT = 0.07                                   # segons per fotograma del vol
@@ -158,13 +164,13 @@ def _ship_px(u, v):
 def ship(cv, x, y, ang, thrust=0.0, light=True, seed=0):
     """La nau centrada a (x, y). `thrust` (0–1): la flama dels motors. `light`: el llum de navegació."""
     ca, sa = math.cos(ang), math.sin(ang)
-    for py in range(int(y) - 12, int(y) + 13):
-        for px in range(int(x) - 12, int(x) + 13):
-            dx, dy = px + 0.5 - x, py + 0.5 - y
-            u, v = dx * ca + dy * sa, -dx * sa + dy * ca
-            col = _ship_px(u, v)
-            if col:
-                cv.flat(px, py, col)
+    # (es mostreja a cada píxel real: a 2×, la nau girada surt amb el doble de detall)
+    for X, Y, px, py in cv.pixels(int(x) - 12, int(y) - 12, int(x) + 12, int(y) + 12):
+        dx, dy = px + 0.5 - x, py + 0.5 - y
+        u, v = dx * ca + dy * sa, -dx * sa + dy * ca
+        col = _ship_px(u, v)
+        if col:
+            cv.P[X, Y] = tuple(col[:3]) + (255,)
     tail = (x - ca * 11, y - sa * 11)
     if thrust > 0:
         cv.glow(round(tail[0]), round(tail[1]), round(3 + 4 * thrust), ENGINE, 0.35 + 0.4 * thrust)

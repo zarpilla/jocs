@@ -20,6 +20,12 @@ from hd640.rooms.palau_comu import (GRIS, CROM, BLANC, BLAU, TURQ, VERMELL, VERD
                                     lletres, lletres_c, gota, ombra, negre_barra, fbm, escaleta, diposit)
 from hd640.rooms.palau_servei import PLAST, YELLOW, flor
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 PERSONA = 100
 CEIL_Y = 64                       # on el sostre de vidre toca la paret del fons
 FLOOR_Y = 226
@@ -208,14 +214,13 @@ def pantalletes(cv, oberts=()):
         x0, y0, x1, y1 = x - 34, 72, x + 34, 94
         box(cv, x0 - 3, y0 - 3, x1 + 3, y1 + 3, ACER, 4.2)
         cv.rect(x0, y0, x1, y1, [(4, 14, 18), (8, 26, 30), (14, 44, 46), (24, 70, 68)], 1.0, lit=0)
-        dep = Canvas(transparent=True)
+        dep = type(cv)(transparent=True)
         diposit(dep, x - 6, y0 + 12, 0.26)
         D = dep.img.load()
-        for yy in range(y0 + 1, y1):
-            for xx in range(x0 + 1, x1):
-                if D[xx, yy][3]:
-                    c = D[xx, yy]
-                    cv.flat(xx, yy, (c[0] // 3, min(255, c[1] // 2 + 60), min(255, c[2] // 2 + 50)))
+        for X, Y, _, _ in cv.pixels(x0 + 1, y0 + 1, x1 - 1, y1 - 1):                  # (píxels reals)
+            c = D[X, Y]
+            if c[3]:
+                cv.P[X, Y] = (c[0] // 3, min(255, c[1] // 2 + 60), min(255, c[2] // 2 + 50), 255)
         # la barra del nivell (ple: verd; buidant-se: ...)
         open_ = key in oberts
         for j in range(10):

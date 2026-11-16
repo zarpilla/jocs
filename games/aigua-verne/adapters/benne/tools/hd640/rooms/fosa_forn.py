@@ -13,6 +13,7 @@ boca, amb el forn encès), `foc_fort` (les flames a tota manxa) i `guspires`.
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
+import functools
 import math
 
 from PIL import Image
@@ -24,6 +25,12 @@ from hd640.rooms.ferrum_comu import (
     RH, SMOG, HAZE, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WHITEV, BLACKT, FIREF, GLOWF,
     CLOTH, REDP, HELM, NAVE_FLOOR,
     brick_wall, brick_lvl, cobbles, pila_comptadors, nave_wall, light_shafts, trusses, crane_rail, foundry_floor)
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 BOCA = (255, 176)               # el centre de la boca del forn
 FORN = (172, 338, 92, 206)      # x0, x1, dalt del cos, base
@@ -311,15 +318,11 @@ def bg(cv):
 
 # ─── Decorats ──────────────────────────────────────────────────────────────
 
-_CACHE = {}
-
-
+@functools.lru_cache(maxsize=None)
 def _render(fire):
-    if fire not in _CACHE:
-        cv = Canvas(light=LIGHTS[fire])
-        draw(cv, fire)
-        _CACHE[fire] = cv.img
-    return _CACHE[fire]
+    cv = Canvas(light=LIGHTS[fire])
+    draw(cv, fire)
+    return cv.img
 
 
 def _fire_prop(fire):
@@ -342,7 +345,7 @@ def _flames(fire, n=8):
     frames = []
     hmax = 30 if fire == 1 else 44
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * Canvas.S, H * Canvas.S), (0, 0, 0, 0))
         cv = Canvas(light=LIGHTS[fire], img=img)
         ph = f / n * 2 * math.pi
         for y in range(bbot - hmax, bbot - 2):
@@ -370,8 +373,7 @@ def _frames_guspires():
     frames = []
     n = 16
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        P = img.load()
+        cv = Canvas(transparent=True)
         for k in range(9):
             s = ((f / n) + hr(k, 1)) % 1
             vx = (hr(k, 2) - 0.3) * 70
@@ -380,12 +382,12 @@ def _frames_guspires():
             y = by + vy * s + 90 * s * s
             if s < 0.85 and 0 <= x < W and 0 <= y < RH:
                 c = FIREF[6] if s < 0.25 else FIREF[5] if s < 0.55 else FIREF[3]
-                P[int(x), int(y)] = c + (255,)
+                cv.flat(x, y, c)
                 if s < 0.4:
                     px, py = int(x - vx * 0.02), int(y - (vy + 180 * s) * 0.02)
                     if 0 <= px < W and 0 <= py < RH:
-                        P[px, py] = FIREF[4] + (255,)
-        frames.append(img)
+                        cv.flat(px, py, FIREF[4])
+        frames.append(cv.img)
     return frames
 
 

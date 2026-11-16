@@ -16,6 +16,12 @@ from hd.rooms.comu import _diff, text
 from hd.rooms.exterior import day_sky, day_sea
 from hd.rooms.pont import BRI, AMB, SCRG, WOOD, FLOORB, NSKY, NSEA
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 203                  # 152 × 4/3
 LAMP = (302, 40)
 DESK_TOP = 144                 # 108 × 4/3
@@ -93,10 +99,11 @@ def _day_view(x0, y0, x1, y1, horizon, f):
     a, b = view(f * SEA_STEP), view((f - ANIM_N) * SEA_STEP)
     w = max(0, f - (ANIM_N - SEA_FADE)) / SEA_FADE
     o, bp = a.load(), b.load()
-    for y in range(horizon, y1 + 1):
-        for x in range(x0, x1 + 1):
-            if hr(x, y, 90) < w:
-                o[x, y] = bp[x, y]
+    k = a.width // W                                                 # píxels reals per píxel de sala (art a 2×)
+    for Y in range(horizon * k, (y1 + 1) * k):
+        for X in range(x0 * k, (x1 + 1) * k):
+            if hr(X // k, Y // k, 90) < w:
+                o[X, Y] = bp[X, Y]
     return a
 
 
@@ -105,9 +112,8 @@ def outside(cv, x0, y0, x1, y1, horizon, moon, f=0):
     febrer i mar gris. `f`: fotograma de l'animació (0 = quiet)."""
     if _MODE['dia']:
         src, dst = _day_view(x0, y0, x1, y1, horizon, f).load(), cv.P
-        for y in range(y0, y1 + 1):
-            for x in range(x0, x1 + 1):
-                dst[x, y] = src[x, y]
+        for X, Y, x, y in cv.pixels(x0, y0, x1, y1):
+            dst[X, Y] = src[X, Y]
         return
     _night(cv, x0, y0, x1, y1, horizon, moon, t=f * 2 * math.pi / ANIM_N)
 
@@ -460,10 +466,9 @@ def porthole(cv):
     cv.disc(cx, cy, 14, 14, DARK, 1.0)
     tmp = Canvas(light=LIGHT)
     outside(tmp, cx - 13, cy - 13, cx + 13, cy + 13, horizon=cy + 4, moon=(cx - 5, cy - 6))
-    for y in range(cy - 13, cy + 14):
-        for x in range(cx - 13, cx + 14):
-            if (x - cx) ** 2 + (y - cy) ** 2 <= 169:
-                cv.flat(x, y, tmp.get(x, y))
+    for X, Y, x, y in cv.pixels(cx - 13, cy - 13, cx + 13, cy + 13):
+        if (x - cx) ** 2 + (y - cy) ** 2 <= 169:
+            cv.P[X, Y] = tmp.P[X, Y]
     for a in range(0, 360, 45):
         bolt(cv, cx + round(math.cos(math.radians(a)) * 16), cy + round(math.sin(math.radians(a)) * 16), BRASS, 3.0)
     for i in range(8):

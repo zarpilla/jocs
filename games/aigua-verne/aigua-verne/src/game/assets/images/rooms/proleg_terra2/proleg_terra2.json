@@ -4,615 +4,615 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 1.aseprite": {
       "frame": {
-        "x": 3121,
-        "y": 0,
-        "w": 640,
-        "h": 134
+        "x": 0,
+        "y": 1205,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 2.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 640,
-        "h": 134
+        "x": 1280,
+        "y": 1205,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 3.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 360,
-        "w": 640,
-        "h": 134
+        "x": 2560,
+        "y": 1205,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 4.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 360,
-        "w": 640,
-        "h": 134
+        "x": 0,
+        "y": 1473,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 5.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 360,
-        "w": 640,
-        "h": 134
+        "x": 1280,
+        "y": 1473,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 6.aseprite": {
       "frame": {
         "x": 2560,
-        "y": 360,
-        "w": 640,
-        "h": 134
+        "y": 1473,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 7.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 360,
-        "w": 640,
-        "h": 134
+        "x": 0,
+        "y": 1741,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 8.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 494,
-        "w": 640,
-        "h": 134
+        "x": 1280,
+        "y": 1741,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 9.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 494,
-        "w": 640,
-        "h": 134
+        "x": 2560,
+        "y": 1741,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 10.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 494,
-        "w": 640,
-        "h": 134
+        "x": 0,
+        "y": 2009,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 11.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 494,
-        "w": 640,
-        "h": 134
+        "x": 1280,
+        "y": 2009,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 12.aseprite": {
       "frame": {
         "x": 2560,
-        "y": 494,
-        "w": 640,
-        "h": 134
+        "y": 2009,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 13.aseprite": {
       "frame": {
-        "x": 3200,
-        "y": 494,
-        "w": 640,
-        "h": 134
+        "x": 0,
+        "y": 2277,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 14.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 628,
-        "w": 640,
-        "h": 134
+        "x": 1280,
+        "y": 2277,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 15.aseprite": {
       "frame": {
-        "x": 640,
-        "y": 628,
-        "w": 640,
-        "h": 134
+        "x": 2560,
+        "y": 2277,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 16.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 628,
-        "w": 640,
-        "h": 134
+        "x": 0,
+        "y": 2545,
+        "w": 1280,
+        "h": 268
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 226,
-        "w": 640,
-        "h": 134
+        "y": 452,
+        "w": 1280,
+        "h": 268
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 17.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 444,
-        "h": 268
+        "w": 888,
+        "h": 539
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 138,
-        "y": 21,
-        "w": 444,
-        "h": 268
+        "x": 276,
+        "y": 42,
+        "w": 888,
+        "h": 539
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 18.aseprite": {
       "frame": {
-        "x": 3697,
-        "y": 834,
-        "w": 9,
-        "h": 9
+        "x": 997,
+        "y": 3235,
+        "w": 17,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 544,
-        "y": 148,
-        "w": 9,
-        "h": 9
+        "x": 1088,
+        "y": 296,
+        "w": 17,
+        "h": 17
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 19.aseprite": {
       "frame": {
-        "x": 2165,
-        "y": 628,
-        "w": 67,
-        "h": 84
+        "x": 1532,
+        "y": 2545,
+        "w": 134,
+        "h": 171
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 515,
-        "y": 21,
-        "w": 67,
-        "h": 84
+        "x": 1030,
+        "y": 42,
+        "w": 134,
+        "h": 171
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 20.aseprite": {
       "frame": {
-        "x": 1658,
-        "y": 0,
-        "w": 415,
-        "h": 241
+        "x": 0,
+        "y": 720,
+        "w": 829,
+        "h": 485
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 138,
-        "y": 48,
-        "w": 415,
-        "h": 241
+        "x": 276,
+        "y": 96,
+        "w": 829,
+        "h": 485
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 21.aseprite": {
       "frame": {
-        "x": 2390,
-        "y": 0,
-        "w": 67,
-        "h": 184
+        "x": 1466,
+        "y": 720,
+        "w": 134,
+        "h": 371
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 515,
-        "y": 21,
-        "w": 67,
-        "h": 184
+        "x": 1030,
+        "y": 42,
+        "w": 134,
+        "h": 371
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 22.aseprite": {
       "frame": {
-        "x": 3697,
-        "y": 834,
-        "w": 9,
-        "h": 9
+        "x": 997,
+        "y": 3235,
+        "w": 17,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 544,
-        "y": 148,
-        "w": 9,
-        "h": 9
+        "x": 1088,
+        "y": 296,
+        "w": 17,
+        "h": 17
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 23.aseprite": {
       "frame": {
-        "x": 1084,
+        "x": 2168,
         "y": 0,
-        "w": 444,
-        "h": 268
+        "w": 888,
+        "h": 539
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 138,
-        "y": 21,
-        "w": 444,
-        "h": 268
+        "x": 276,
+        "y": 42,
+        "w": 888,
+        "h": 539
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 24.aseprite": {
       "frame": {
-        "x": 3706,
-        "y": 834,
-        "w": 9,
-        "h": 9
+        "x": 1014,
+        "y": 3235,
+        "w": 17,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 544,
-        "y": 48,
-        "w": 9,
-        "h": 9
+        "x": 1088,
+        "y": 96,
+        "w": 17,
+        "h": 17
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 25.aseprite": {
       "frame": {
-        "x": 2390,
-        "y": 0,
-        "w": 67,
-        "h": 184
+        "x": 1466,
+        "y": 720,
+        "w": 134,
+        "h": 371
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 515,
-        "y": 21,
-        "w": 67,
-        "h": 184
+        "x": 1030,
+        "y": 42,
+        "w": 134,
+        "h": 371
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 26.aseprite": {
       "frame": {
-        "x": 2689,
-        "y": 0,
-        "w": 415,
-        "h": 141
+        "x": 2051,
+        "y": 720,
+        "w": 829,
+        "h": 285
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 138,
-        "y": 148,
-        "w": 415,
-        "h": 141
+        "x": 276,
+        "y": 296,
+        "w": 829,
+        "h": 285
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 27.aseprite": {
       "frame": {
-        "x": 2165,
-        "y": 628,
-        "w": 67,
-        "h": 84
+        "x": 1532,
+        "y": 2545,
+        "w": 134,
+        "h": 171
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 515,
-        "y": 21,
-        "w": 67,
-        "h": 84
+        "x": 1030,
+        "y": 42,
+        "w": 134,
+        "h": 171
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 28.aseprite": {
       "frame": {
-        "x": 3706,
-        "y": 834,
-        "w": 9,
-        "h": 9
+        "x": 1014,
+        "y": 3235,
+        "w": 17,
+        "h": 17
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 544,
-        "y": 48,
-        "w": 9,
-        "h": 9
+        "x": 1088,
+        "y": 96,
+        "w": 17,
+        "h": 17
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 29.aseprite": {
       "frame": {
-        "x": 3791,
-        "y": 834,
+        "x": 1139,
+        "y": 3235,
         "w": 1,
         "h": 1
       },
@@ -625,330 +625,330 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 30.aseprite": {
       "frame": {
-        "x": 3676,
-        "y": 834,
-        "w": 9,
-        "h": 11
+        "x": 904,
+        "y": 3235,
+        "w": 23,
+        "h": 21
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 502,
-        "y": 310,
-        "w": 9,
-        "h": 11
+        "x": 1002,
+        "y": 620,
+        "w": 23,
+        "h": 21
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 31.aseprite": {
       "frame": {
-        "x": 3348,
-        "y": 834,
-        "w": 40,
-        "h": 19
+        "x": 337,
+        "y": 3235,
+        "w": 79,
+        "h": 38
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 475,
-        "y": 296,
-        "w": 40,
-        "h": 19
+        "x": 950,
+        "y": 592,
+        "w": 79,
+        "h": 38
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 32.aseprite": {
       "frame": {
-        "x": 3388,
-        "y": 834,
-        "w": 42,
-        "h": 19
+        "x": 254,
+        "y": 3235,
+        "w": 83,
+        "h": 39
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 475,
-        "y": 295,
-        "w": 42,
-        "h": 19
+        "x": 950,
+        "y": 590,
+        "w": 83,
+        "h": 39
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 33.aseprite": {
       "frame": {
-        "x": 3246,
-        "y": 834,
-        "w": 45,
-        "h": 20
+        "x": 0,
+        "y": 3235,
+        "w": 92,
+        "h": 41
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 474,
-        "y": 294,
-        "w": 45,
-        "h": 20
+        "x": 949,
+        "y": 588,
+        "w": 92,
+        "h": 41
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 34.aseprite": {
       "frame": {
-        "x": 2983,
-        "y": 834,
-        "w": 47,
-        "h": 26
+        "x": 3568,
+        "y": 3169,
+        "w": 96,
+        "h": 53
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 474,
-        "y": 288,
-        "w": 47,
-        "h": 26
+        "x": 949,
+        "y": 576,
+        "w": 96,
+        "h": 53
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 35.aseprite": {
       "frame": {
-        "x": 1856,
-        "y": 834,
-        "w": 50,
-        "h": 32
+        "x": 1308,
+        "y": 3169,
+        "w": 100,
+        "h": 65
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 475,
-        "y": 284,
-        "w": 50,
-        "h": 32
+        "x": 949,
+        "y": 566,
+        "w": 100,
+        "h": 65
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 36.aseprite": {
       "frame": {
-        "x": 147,
-        "y": 834,
-        "w": 50,
-        "h": 37
+        "x": 1746,
+        "y": 3079,
+        "w": 103,
+        "h": 77
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 475,
-        "y": 280,
-        "w": 50,
-        "h": 37
+        "x": 950,
+        "y": 556,
+        "w": 103,
+        "h": 77
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 37.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 834,
-        "w": 54,
-        "h": 43
+        "x": 1543,
+        "y": 3079,
+        "w": 109,
+        "h": 86
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 475,
-        "y": 274,
-        "w": 54,
-        "h": 43
+        "x": 950,
+        "y": 548,
+        "w": 109,
+        "h": 86
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 38.aseprite": {
       "frame": {
-        "x": 1325,
-        "y": 762,
-        "w": 57,
-        "h": 49
+        "x": 180,
+        "y": 2975,
+        "w": 114,
+        "h": 98
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 474,
-        "y": 268,
-        "w": 57,
-        "h": 49
+        "x": 949,
+        "y": 536,
+        "w": 114,
+        "h": 98
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 39.aseprite": {
       "frame": {
-        "x": 1175,
-        "y": 762,
-        "w": 60,
-        "h": 53
+        "x": 3908,
+        "y": 2813,
+        "w": 121,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 473,
-        "y": 264,
-        "w": 60,
-        "h": 53
+        "x": 946,
+        "y": 528,
+        "w": 121,
+        "h": 105
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 40.aseprite": {
       "frame": {
-        "x": 880,
-        "y": 762,
-        "w": 63,
-        "h": 56
+        "x": 3528,
+        "y": 2813,
+        "w": 126,
+        "h": 111
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 472,
-        "y": 260,
-        "w": 63,
-        "h": 56
+        "x": 945,
+        "y": 520,
+        "w": 126,
+        "h": 111
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 41.aseprite": {
       "frame": {
-        "x": 943,
-        "y": 762,
-        "w": 65,
-        "h": 56
+        "x": 3319,
+        "y": 2813,
+        "w": 129,
+        "h": 113
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 472,
-        "y": 258,
-        "w": 65,
-        "h": 56
+        "x": 944,
+        "y": 516,
+        "w": 129,
+        "h": 113
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 42.aseprite": {
       "frame": {
-        "x": 666,
-        "y": 762,
-        "w": 66,
-        "h": 59
+        "x": 2760,
+        "y": 2813,
+        "w": 133,
+        "h": 121
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 472,
-        "y": 255,
-        "w": 66,
-        "h": 59
+        "x": 944,
+        "y": 508,
+        "w": 133,
+        "h": 121
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 43.aseprite": {
       "frame": {
-        "x": 446,
-        "y": 762,
-        "w": 66,
-        "h": 62
+        "x": 2448,
+        "y": 2813,
+        "w": 134,
+        "h": 125
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 473,
-        "y": 252,
-        "w": 66,
-        "h": 62
+        "x": 945,
+        "y": 504,
+        "w": 134,
+        "h": 125
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 44.aseprite": {
       "frame": {
-        "x": 201,
-        "y": 762,
-        "w": 67,
-        "h": 66
+        "x": 1958,
+        "y": 2813,
+        "w": 134,
+        "h": 133
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 474,
-        "y": 248,
-        "w": 67,
-        "h": 66
+        "x": 947,
+        "y": 496,
+        "w": 134,
+        "h": 133
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 45.aseprite": {
       "frame": {
-        "x": 3791,
-        "y": 834,
+        "x": 1139,
+        "y": 3235,
         "w": 1,
         "h": 1
       },
@@ -961,960 +961,960 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 46.aseprite": {
       "frame": {
-        "x": 3070,
-        "y": 834,
-        "w": 21,
-        "h": 25
+        "x": 3744,
+        "y": 3169,
+        "w": 45,
+        "h": 50
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 538,
-        "y": 233,
-        "w": 21,
-        "h": 25
+        "x": 1076,
+        "y": 466,
+        "w": 45,
+        "h": 50
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 47.aseprite": {
       "frame": {
-        "x": 3118,
-        "y": 834,
-        "w": 21,
-        "h": 23
+        "x": 3843,
+        "y": 3169,
+        "w": 45,
+        "h": 47
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 538,
-        "y": 223,
-        "w": 21,
-        "h": 23
+        "x": 1076,
+        "y": 446,
+        "w": 45,
+        "h": 47
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 48.aseprite": {
       "frame": {
-        "x": 3139,
-        "y": 834,
-        "w": 17,
-        "h": 23
+        "x": 3888,
+        "y": 3169,
+        "w": 41,
+        "h": 46
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 213,
-        "w": 17,
-        "h": 23
+        "x": 1076,
+        "y": 426,
+        "w": 41,
+        "h": 46
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 49.aseprite": {
       "frame": {
-        "x": 3184,
-        "y": 834,
-        "w": 17,
-        "h": 22
+        "x": 3985,
+        "y": 3169,
+        "w": 41,
+        "h": 44
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 203,
-        "w": 17,
-        "h": 22
+        "x": 1076,
+        "y": 406,
+        "w": 41,
+        "h": 44
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 50.aseprite": {
       "frame": {
-        "x": 3201,
-        "y": 834,
-        "w": 17,
-        "h": 21
+        "x": 4026,
+        "y": 3169,
+        "w": 41,
+        "h": 42
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 193,
-        "w": 17,
-        "h": 21
+        "x": 1076,
+        "y": 386,
+        "w": 41,
+        "h": 42
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 51.aseprite": {
       "frame": {
-        "x": 3218,
-        "y": 834,
-        "w": 17,
-        "h": 21
+        "x": 92,
+        "y": 3235,
+        "w": 41,
+        "h": 41
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 184,
-        "w": 17,
-        "h": 21
+        "x": 1076,
+        "y": 368,
+        "w": 41,
+        "h": 41
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 52.aseprite": {
       "frame": {
-        "x": 3291,
-        "y": 834,
-        "w": 17,
-        "h": 20
+        "x": 133,
+        "y": 3235,
+        "w": 41,
+        "h": 41
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 174,
-        "w": 17,
-        "h": 20
+        "x": 1076,
+        "y": 348,
+        "w": 41,
+        "h": 41
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 53.aseprite": {
       "frame": {
-        "x": 3430,
-        "y": 834,
-        "w": 17,
-        "h": 19
+        "x": 416,
+        "y": 3235,
+        "w": 33,
+        "h": 38
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 165,
-        "w": 17,
-        "h": 19
+        "x": 1080,
+        "y": 330,
+        "w": 33,
+        "h": 38
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 54.aseprite": {
       "frame": {
-        "x": 3447,
-        "y": 834,
-        "w": 17,
-        "h": 19
+        "x": 449,
+        "y": 3235,
+        "w": 33,
+        "h": 38
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 156,
-        "w": 17,
-        "h": 19
+        "x": 1080,
+        "y": 312,
+        "w": 33,
+        "h": 38
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 55.aseprite": {
       "frame": {
-        "x": 3464,
-        "y": 834,
-        "w": 17,
-        "h": 18
+        "x": 482,
+        "y": 3235,
+        "w": 33,
+        "h": 36
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 147,
-        "w": 17,
-        "h": 18
+        "x": 1080,
+        "y": 294,
+        "w": 33,
+        "h": 36
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 56.aseprite": {
       "frame": {
-        "x": 3525,
-        "y": 834,
-        "w": 17,
-        "h": 17
+        "x": 603,
+        "y": 3235,
+        "w": 33,
+        "h": 34
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 139,
-        "w": 17,
-        "h": 17
+        "x": 1080,
+        "y": 278,
+        "w": 33,
+        "h": 34
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 57.aseprite": {
       "frame": {
-        "x": 3542,
-        "y": 834,
-        "w": 17,
-        "h": 17
+        "x": 636,
+        "y": 3235,
+        "w": 33,
+        "h": 34
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 130,
-        "w": 17,
-        "h": 17
+        "x": 1080,
+        "y": 260,
+        "w": 33,
+        "h": 34
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 58.aseprite": {
       "frame": {
-        "x": 3559,
-        "y": 834,
-        "w": 17,
-        "h": 16
+        "x": 669,
+        "y": 3235,
+        "w": 33,
+        "h": 33
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 122,
-        "w": 17,
-        "h": 16
+        "x": 1080,
+        "y": 244,
+        "w": 33,
+        "h": 33
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 59.aseprite": {
       "frame": {
-        "x": 3576,
-        "y": 834,
-        "w": 13,
-        "h": 16
+        "x": 702,
+        "y": 3235,
+        "w": 27,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 542,
-        "y": 114,
-        "w": 13,
-        "h": 16
+        "x": 1084,
+        "y": 228,
+        "w": 27,
+        "h": 32
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 60.aseprite": {
       "frame": {
-        "x": 3610,
-        "y": 834,
-        "w": 13,
-        "h": 14
+        "x": 771,
+        "y": 3235,
+        "w": 27,
+        "h": 29
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 542,
-        "y": 107,
-        "w": 13,
-        "h": 14
+        "x": 1084,
+        "y": 214,
+        "w": 27,
+        "h": 29
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 61.aseprite": {
       "frame": {
-        "x": 2563,
-        "y": 0,
-        "w": 21,
-        "h": 159
+        "x": 1814,
+        "y": 720,
+        "w": 45,
+        "h": 318
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 538,
-        "y": 99,
-        "w": 21,
-        "h": 159
+        "x": 1076,
+        "y": 198,
+        "w": 45,
+        "h": 318
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 62.aseprite": {
       "frame": {
-        "x": 2617,
-        "y": 0,
-        "w": 21,
-        "h": 154
+        "x": 1924,
+        "y": 720,
+        "w": 45,
+        "h": 309
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 538,
-        "y": 92,
-        "w": 21,
-        "h": 154
+        "x": 1076,
+        "y": 184,
+        "w": 45,
+        "h": 309
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 63.aseprite": {
       "frame": {
-        "x": 2638,
-        "y": 0,
-        "w": 17,
-        "h": 151
+        "x": 1969,
+        "y": 720,
+        "w": 41,
+        "h": 302
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 85,
-        "w": 17,
-        "h": 151
+        "x": 1076,
+        "y": 170,
+        "w": 41,
+        "h": 302
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 64.aseprite": {
       "frame": {
-        "x": 2655,
-        "y": 0,
-        "w": 17,
-        "h": 147
+        "x": 2010,
+        "y": 720,
+        "w": 41,
+        "h": 294
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 78,
-        "w": 17,
-        "h": 147
+        "x": 1076,
+        "y": 156,
+        "w": 41,
+        "h": 294
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 65.aseprite": {
       "frame": {
-        "x": 2672,
-        "y": 0,
-        "w": 17,
-        "h": 142
+        "x": 2880,
+        "y": 720,
+        "w": 41,
+        "h": 284
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 72,
-        "w": 17,
-        "h": 142
+        "x": 1076,
+        "y": 144,
+        "w": 41,
+        "h": 284
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 66.aseprite": {
       "frame": {
-        "x": 3104,
-        "y": 0,
-        "w": 17,
-        "h": 139
+        "x": 2921,
+        "y": 720,
+        "w": 41,
+        "h": 277
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 66,
-        "w": 17,
-        "h": 139
+        "x": 1076,
+        "y": 132,
+        "w": 41,
+        "h": 277
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 67.aseprite": {
       "frame": {
-        "x": 1920,
-        "y": 628,
-        "w": 17,
-        "h": 134
+        "x": 2962,
+        "y": 720,
+        "w": 41,
+        "h": 269
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 60,
-        "w": 17,
-        "h": 134
+        "x": 1076,
+        "y": 120,
+        "w": 41,
+        "h": 269
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 68.aseprite": {
       "frame": {
-        "x": 1937,
-        "y": 628,
-        "w": 17,
-        "h": 129
+        "x": 1280,
+        "y": 2545,
+        "w": 33,
+        "h": 258
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 55,
-        "w": 17,
-        "h": 129
+        "x": 1080,
+        "y": 110,
+        "w": 33,
+        "h": 258
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 69.aseprite": {
       "frame": {
-        "x": 1954,
-        "y": 628,
-        "w": 17,
-        "h": 127
+        "x": 1313,
+        "y": 2545,
+        "w": 33,
+        "h": 252
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 48,
-        "w": 17,
-        "h": 127
+        "x": 1080,
+        "y": 98,
+        "w": 33,
+        "h": 252
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 70.aseprite": {
       "frame": {
-        "x": 1971,
-        "y": 628,
-        "w": 17,
-        "h": 121
+        "x": 1346,
+        "y": 2545,
+        "w": 33,
+        "h": 242
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 44,
-        "w": 17,
-        "h": 121
+        "x": 1080,
+        "y": 88,
+        "w": 33,
+        "h": 242
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 71.aseprite": {
       "frame": {
-        "x": 1988,
-        "y": 628,
-        "w": 17,
-        "h": 116
+        "x": 1379,
+        "y": 2545,
+        "w": 33,
+        "h": 232
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 40,
-        "w": 17,
-        "h": 116
+        "x": 1080,
+        "y": 80,
+        "w": 33,
+        "h": 232
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 72.aseprite": {
       "frame": {
-        "x": 2005,
-        "y": 628,
-        "w": 17,
-        "h": 111
+        "x": 1412,
+        "y": 2545,
+        "w": 33,
+        "h": 222
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 36,
-        "w": 17,
-        "h": 111
+        "x": 1080,
+        "y": 72,
+        "w": 33,
+        "h": 222
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 73.aseprite": {
       "frame": {
-        "x": 2022,
-        "y": 628,
-        "w": 17,
-        "h": 106
+        "x": 1445,
+        "y": 2545,
+        "w": 33,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 32,
-        "w": 17,
-        "h": 106
+        "x": 1080,
+        "y": 66,
+        "w": 33,
+        "h": 211
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 74.aseprite": {
       "frame": {
-        "x": 2039,
-        "y": 628,
-        "w": 13,
-        "h": 100
+        "x": 1478,
+        "y": 2545,
+        "w": 27,
+        "h": 200
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 542,
-        "y": 30,
-        "w": 13,
-        "h": 100
+        "x": 1084,
+        "y": 60,
+        "w": 27,
+        "h": 200
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 75.aseprite": {
       "frame": {
-        "x": 2052,
-        "y": 628,
-        "w": 13,
-        "h": 94
+        "x": 1505,
+        "y": 2545,
+        "w": 27,
+        "h": 189
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 542,
-        "y": 27,
-        "w": 13,
-        "h": 94
+        "x": 1084,
+        "y": 54,
+        "w": 27,
+        "h": 189
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 76.aseprite": {
       "frame": {
-        "x": 1528,
+        "x": 3056,
         "y": 0,
-        "w": 65,
-        "h": 258
+        "w": 137,
+        "h": 516
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 516,
+        "x": 1028,
         "y": 0,
-        "w": 65,
-        "h": 258
+        "w": 137,
+        "h": 516
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 77.aseprite": {
       "frame": {
-        "x": 1593,
+        "x": 3193,
         "y": 0,
-        "w": 65,
-        "h": 246
+        "w": 137,
+        "h": 493
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 516,
+        "x": 1028,
         "y": 0,
-        "w": 65,
-        "h": 246
+        "w": 137,
+        "h": 493
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 78.aseprite": {
       "frame": {
-        "x": 2073,
-        "y": 0,
-        "w": 65,
-        "h": 236
+        "x": 829,
+        "y": 720,
+        "w": 133,
+        "h": 472
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 516,
+        "x": 1032,
         "y": 0,
-        "w": 65,
-        "h": 236
+        "w": 133,
+        "h": 472
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 79.aseprite": {
       "frame": {
-        "x": 2138,
-        "y": 0,
-        "w": 65,
-        "h": 225
+        "x": 962,
+        "y": 720,
+        "w": 129,
+        "h": 450
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 516,
+        "x": 1032,
         "y": 0,
-        "w": 65,
-        "h": 225
+        "w": 129,
+        "h": 450
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 80.aseprite": {
       "frame": {
-        "x": 2203,
-        "y": 0,
-        "w": 65,
-        "h": 214
+        "x": 1091,
+        "y": 720,
+        "w": 129,
+        "h": 428
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 516,
+        "x": 1032,
         "y": 0,
-        "w": 65,
-        "h": 214
+        "w": 129,
+        "h": 428
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 81.aseprite": {
       "frame": {
-        "x": 2268,
-        "y": 0,
-        "w": 65,
-        "h": 205
+        "x": 1220,
+        "y": 720,
+        "w": 125,
+        "h": 409
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 516,
+        "x": 1036,
         "y": 0,
-        "w": 65,
-        "h": 205
+        "w": 125,
+        "h": 409
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 82.aseprite": {
       "frame": {
-        "x": 2333,
-        "y": 0,
-        "w": 57,
-        "h": 194
+        "x": 1345,
+        "y": 720,
+        "w": 121,
+        "h": 389
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 520,
+        "x": 1036,
         "y": 0,
-        "w": 57,
-        "h": 194
+        "w": 121,
+        "h": 389
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 83.aseprite": {
       "frame": {
-        "x": 2457,
-        "y": 0,
-        "w": 57,
-        "h": 184
+        "x": 1600,
+        "y": 720,
+        "w": 113,
+        "h": 368
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 520,
+        "x": 1040,
         "y": 0,
-        "w": 57,
-        "h": 184
+        "w": 113,
+        "h": 368
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 84.aseprite": {
       "frame": {
-        "x": 2514,
-        "y": 0,
-        "w": 49,
-        "h": 175
+        "x": 1713,
+        "y": 720,
+        "w": 101,
+        "h": 350
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 524,
+        "x": 1048,
         "y": 0,
-        "w": 49,
-        "h": 175
+        "w": 101,
+        "h": 350
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 85.aseprite": {
       "frame": {
-        "x": 2584,
-        "y": 0,
-        "w": 33,
-        "h": 157
+        "x": 1859,
+        "y": 720,
+        "w": 65,
+        "h": 318
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 532,
-        "y": 8,
-        "w": 33,
-        "h": 157
+        "x": 1064,
+        "y": 12,
+        "w": 65,
+        "h": 318
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 86.aseprite": {
       "frame": {
-        "x": 1988,
-        "y": 628,
-        "w": 17,
-        "h": 116
+        "x": 1379,
+        "y": 2545,
+        "w": 33,
+        "h": 232
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 40,
-        "w": 17,
-        "h": 116
+        "x": 1080,
+        "y": 80,
+        "w": 33,
+        "h": 232
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 87.aseprite": {
       "frame": {
-        "x": 2005,
-        "y": 628,
-        "w": 17,
-        "h": 111
+        "x": 1412,
+        "y": 2545,
+        "w": 33,
+        "h": 222
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 36,
-        "w": 17,
-        "h": 111
+        "x": 1080,
+        "y": 72,
+        "w": 33,
+        "h": 222
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 88.aseprite": {
       "frame": {
-        "x": 2022,
-        "y": 628,
-        "w": 17,
-        "h": 106
+        "x": 1445,
+        "y": 2545,
+        "w": 33,
+        "h": 211
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 540,
-        "y": 32,
-        "w": 17,
-        "h": 106
+        "x": 1080,
+        "y": 66,
+        "w": 33,
+        "h": 211
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 89.aseprite": {
       "frame": {
-        "x": 2039,
-        "y": 628,
-        "w": 13,
-        "h": 100
+        "x": 1478,
+        "y": 2545,
+        "w": 27,
+        "h": 200
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 542,
-        "y": 30,
-        "w": 13,
-        "h": 100
+        "x": 1084,
+        "y": 60,
+        "w": 27,
+        "h": 200
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 90.aseprite": {
       "frame": {
-        "x": 2052,
-        "y": 628,
-        "w": 13,
-        "h": 94
+        "x": 1505,
+        "y": 2545,
+        "w": 27,
+        "h": 189
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 542,
-        "y": 27,
-        "w": 13,
-        "h": 94
+        "x": 1084,
+        "y": 54,
+        "w": 27,
+        "h": 189
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 91.aseprite": {
       "frame": {
-        "x": 3791,
-        "y": 834,
+        "x": 1139,
+        "y": 3235,
         "w": 1,
         "h": 1
       },
@@ -1927,15 +1927,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 92.aseprite": {
       "frame": {
-        "x": 3791,
-        "y": 834,
+        "x": 1139,
+        "y": 3235,
         "w": 1,
         "h": 1
       },
@@ -1948,15 +1948,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 93.aseprite": {
       "frame": {
-        "x": 3791,
-        "y": 834,
+        "x": 1139,
+        "y": 3235,
         "w": 1,
         "h": 1
       },
@@ -1969,3914 +1969,3914 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 94.aseprite": {
       "frame": {
-        "x": 3759,
-        "y": 834,
-        "w": 9,
-        "h": 5
+        "x": 1074,
+        "y": 3235,
+        "w": 19,
+        "h": 11
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 22,
-        "y": 310,
-        "w": 9,
-        "h": 5
+        "x": 44,
+        "y": 620,
+        "w": 19,
+        "h": 11
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 95.aseprite": {
       "frame": {
-        "x": 3749,
-        "y": 834,
-        "w": 10,
-        "h": 6
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 21,
-        "y": 309,
-        "w": 10,
-        "h": 6
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 96.aseprite": {
-      "frame": {
-        "x": 3768,
-        "y": 834,
-        "w": 9,
-        "h": 5
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 20,
-        "y": 308,
-        "w": 9,
-        "h": 5
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 97.aseprite": {
-      "frame": {
-        "x": 3738,
-        "y": 834,
-        "w": 11,
-        "h": 7
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 306,
-        "w": 11,
-        "h": 7
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 98.aseprite": {
-      "frame": {
-        "x": 3715,
-        "y": 834,
-        "w": 11,
-        "h": 9
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 17,
-        "y": 305,
-        "w": 11,
-        "h": 9
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 99.aseprite": {
-      "frame": {
-        "x": 3726,
-        "y": 834,
-        "w": 12,
-        "h": 9
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 16,
-        "y": 304,
-        "w": 12,
-        "h": 9
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 100.aseprite": {
-      "frame": {
-        "x": 3685,
-        "y": 834,
-        "w": 12,
-        "h": 10
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 15,
-        "y": 303,
-        "w": 12,
-        "h": 10
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 101.aseprite": {
-      "frame": {
-        "x": 1906,
-        "y": 834,
-        "w": 136,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 14,
-        "y": 280,
-        "w": 136,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 102.aseprite": {
-      "frame": {
-        "x": 197,
-        "y": 834,
-        "w": 137,
-        "h": 35
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 13,
-        "y": 280,
-        "w": 137,
-        "h": 35
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 103.aseprite": {
-      "frame": {
-        "x": 334,
-        "y": 834,
-        "w": 135,
-        "h": 35
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 13,
-        "y": 280,
-        "w": 135,
-        "h": 35
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 104.aseprite": {
-      "frame": {
-        "x": 926,
-        "y": 834,
-        "w": 138,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 10,
-        "y": 280,
-        "w": 138,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 105.aseprite": {
-      "frame": {
-        "x": 2042,
-        "y": 834,
-        "w": 140,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 10,
-        "y": 280,
-        "w": 140,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 106.aseprite": {
-      "frame": {
-        "x": 2182,
-        "y": 834,
-        "w": 141,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 9,
-        "y": 280,
-        "w": 141,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 107.aseprite": {
-      "frame": {
-        "x": 2323,
-        "y": 834,
-        "w": 143,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 7,
-        "y": 280,
-        "w": 143,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 108.aseprite": {
-      "frame": {
-        "x": 2466,
-        "y": 834,
-        "w": 141,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 9,
-        "y": 280,
-        "w": 141,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 109.aseprite": {
-      "frame": {
-        "x": 2607,
-        "y": 834,
-        "w": 143,
-        "h": 32
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 7,
-        "y": 280,
-        "w": 143,
-        "h": 32
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 110.aseprite": {
-      "frame": {
-        "x": 469,
-        "y": 834,
-        "w": 136,
-        "h": 35
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 14,
-        "y": 280,
-        "w": 136,
-        "h": 35
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 111.aseprite": {
-      "frame": {
-        "x": 605,
-        "y": 834,
-        "w": 137,
-        "h": 35
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 13,
-        "y": 280,
-        "w": 137,
-        "h": 35
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 112.aseprite": {
-      "frame": {
-        "x": 742,
-        "y": 834,
-        "w": 138,
-        "h": 35
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 12,
-        "y": 280,
-        "w": 138,
-        "h": 35
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 113.aseprite": {
-      "frame": {
-        "x": 1064,
-        "y": 834,
-        "w": 140,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 10,
-        "y": 280,
-        "w": 140,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 114.aseprite": {
-      "frame": {
-        "x": 1204,
-        "y": 834,
-        "w": 140,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 10,
-        "y": 280,
-        "w": 140,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 115.aseprite": {
-      "frame": {
-        "x": 1344,
-        "y": 834,
-        "w": 141,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 9,
-        "y": 280,
-        "w": 141,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 116.aseprite": {
-      "frame": {
-        "x": 1485,
-        "y": 834,
-        "w": 143,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 7,
-        "y": 280,
-        "w": 143,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 117.aseprite": {
-      "frame": {
-        "x": 1522,
-        "y": 762,
-        "w": 142,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 8,
-        "y": 280,
-        "w": 142,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 118.aseprite": {
-      "frame": {
-        "x": 1628,
-        "y": 834,
-        "w": 140,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 10,
-        "y": 280,
-        "w": 140,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 119.aseprite": {
-      "frame": {
-        "x": 1664,
-        "y": 762,
-        "w": 141,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 9,
-        "y": 280,
-        "w": 141,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 120.aseprite": {
-      "frame": {
-        "x": 1805,
-        "y": 762,
-        "w": 143,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 7,
-        "y": 280,
-        "w": 143,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 121.aseprite": {
-      "frame": {
-        "x": 1948,
-        "y": 762,
-        "w": 143,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 7,
-        "y": 280,
-        "w": 143,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 122.aseprite": {
-      "frame": {
-        "x": 2091,
-        "y": 762,
-        "w": 145,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 5,
-        "y": 280,
-        "w": 145,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 123.aseprite": {
-      "frame": {
-        "x": 2236,
-        "y": 762,
-        "w": 146,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 4,
-        "y": 280,
-        "w": 146,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 124.aseprite": {
-      "frame": {
-        "x": 2382,
-        "y": 762,
-        "w": 147,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 3,
-        "y": 280,
-        "w": 147,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 125.aseprite": {
-      "frame": {
-        "x": 2529,
-        "y": 762,
-        "w": 148,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 2,
-        "y": 280,
-        "w": 148,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 126.aseprite": {
-      "frame": {
-        "x": 2677,
-        "y": 762,
-        "w": 150,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 280,
-        "w": 150,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 127.aseprite": {
-      "frame": {
-        "x": 2827,
-        "y": 762,
-        "w": 150,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 280,
-        "w": 150,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 128.aseprite": {
-      "frame": {
-        "x": 2977,
-        "y": 762,
-        "w": 150,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 280,
-        "w": 150,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 129.aseprite": {
-      "frame": {
-        "x": 3127,
-        "y": 762,
-        "w": 150,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 280,
-        "w": 150,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 130.aseprite": {
-      "frame": {
-        "x": 3277,
-        "y": 762,
-        "w": 149,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 1,
-        "y": 280,
-        "w": 149,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 131.aseprite": {
-      "frame": {
-        "x": 3426,
-        "y": 762,
-        "w": 150,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 280,
-        "w": 150,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 132.aseprite": {
-      "frame": {
-        "x": 3576,
-        "y": 762,
-        "w": 150,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 280,
-        "w": 150,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 133.aseprite": {
-      "frame": {
-        "x": 3726,
-        "y": 762,
-        "w": 150,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 280,
-        "w": 150,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 134.aseprite": {
-      "frame": {
-        "x": 3876,
-        "y": 762,
-        "w": 122,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 28,
-        "y": 280,
-        "w": 122,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 135.aseprite": {
-      "frame": {
-        "x": 3876,
-        "y": 762,
-        "w": 122,
-        "h": 45
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 28,
-        "y": 280,
-        "w": 122,
-        "h": 45
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 136.aseprite": {
-      "frame": {
-        "x": 3791,
-        "y": 834,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 137.aseprite": {
-      "frame": {
-        "x": 3791,
-        "y": 834,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 138.aseprite": {
-      "frame": {
-        "x": 3791,
-        "y": 834,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 139.aseprite": {
-      "frame": {
-        "x": 3791,
-        "y": 834,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 140.aseprite": {
-      "frame": {
-        "x": 3791,
-        "y": 834,
-        "w": 1,
-        "h": 1
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 141.aseprite": {
-      "frame": {
-        "x": 3623,
-        "y": 834,
-        "w": 4,
-        "h": 14
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 51,
-        "y": 316,
-        "w": 4,
-        "h": 14
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 142.aseprite": {
-      "frame": {
-        "x": 3660,
-        "y": 834,
-        "w": 4,
-        "h": 13
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 51,
-        "y": 318,
-        "w": 4,
-        "h": 13
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 143.aseprite": {
-      "frame": {
-        "x": 3627,
-        "y": 834,
-        "w": 4,
-        "h": 14
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 52,
-        "y": 319,
-        "w": 4,
-        "h": 14
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 144.aseprite": {
-      "frame": {
-        "x": 3664,
-        "y": 834,
-        "w": 4,
-        "h": 13
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 52,
-        "y": 321,
-        "w": 4,
-        "h": 13
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 145.aseprite": {
-      "frame": {
-        "x": 3668,
-        "y": 834,
-        "w": 4,
-        "h": 13
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 52,
-        "y": 322,
-        "w": 4,
-        "h": 13
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 146.aseprite": {
-      "frame": {
-        "x": 3631,
-        "y": 834,
-        "w": 4,
-        "h": 14
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 52,
-        "y": 323,
-        "w": 4,
-        "h": 14
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 147.aseprite": {
-      "frame": {
-        "x": 3672,
-        "y": 834,
-        "w": 4,
-        "h": 13
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 52,
-        "y": 325,
-        "w": 4,
-        "h": 13
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 148.aseprite": {
-      "frame": {
-        "x": 3635,
-        "y": 834,
-        "w": 4,
-        "h": 14
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 53,
-        "y": 326,
-        "w": 4,
-        "h": 14
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 149.aseprite": {
-      "frame": {
-        "x": 3030,
-        "y": 834,
-        "w": 8,
-        "h": 26
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 49,
-        "y": 315,
-        "w": 8,
-        "h": 26
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 150.aseprite": {
-      "frame": {
-        "x": 3038,
-        "y": 834,
-        "w": 8,
-        "h": 26
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 49,
-        "y": 317,
-        "w": 8,
-        "h": 26
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 151.aseprite": {
-      "frame": {
-        "x": 3091,
-        "y": 834,
-        "w": 4,
-        "h": 25
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 50,
-        "y": 318,
-        "w": 4,
-        "h": 25
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 152.aseprite": {
-      "frame": {
-        "x": 3156,
-        "y": 834,
-        "w": 4,
-        "h": 23
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 50,
-        "y": 320,
-        "w": 4,
-        "h": 23
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 153.aseprite": {
-      "frame": {
-        "x": 3235,
-        "y": 834,
-        "w": 11,
-        "h": 21
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 43,
-        "y": 321,
-        "w": 11,
-        "h": 21
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 154.aseprite": {
-      "frame": {
-        "x": 3308,
-        "y": 834,
-        "w": 14,
-        "h": 20
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 40,
-        "y": 322,
-        "w": 14,
-        "h": 20
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 155.aseprite": {
-      "frame": {
-        "x": 3481,
-        "y": 834,
-        "w": 17,
-        "h": 18
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 37,
-        "y": 324,
-        "w": 17,
-        "h": 18
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 156.aseprite": {
-      "frame": {
-        "x": 3589,
-        "y": 834,
+        "x": 1053,
+        "y": 3235,
         "w": 21,
-        "h": 15
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 34,
-        "y": 325,
-        "w": 21,
-        "h": 15
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 157.aseprite": {
-      "frame": {
-        "x": 3639,
-        "y": 834,
-        "w": 21,
-        "h": 14
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 34,
-        "y": 327,
-        "w": 21,
-        "h": 14
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 158.aseprite": {
-      "frame": {
-        "x": 3498,
-        "y": 834,
-        "w": 27,
-        "h": 18
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 28,
-        "y": 325,
-        "w": 27,
-        "h": 18
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 159.aseprite": {
-      "frame": {
-        "x": 3322,
-        "y": 834,
-        "w": 26,
-        "h": 20
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 26,
-        "y": 323,
-        "w": 26,
-        "h": 20
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 160.aseprite": {
-      "frame": {
-        "x": 3160,
-        "y": 834,
-        "w": 24,
-        "h": 23
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 24,
-        "y": 320,
-        "w": 24,
-        "h": 23
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 161.aseprite": {
-      "frame": {
-        "x": 3095,
-        "y": 834,
-        "w": 23,
-        "h": 24
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 22,
-        "y": 318,
-        "w": 23,
-        "h": 24
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 162.aseprite": {
-      "frame": {
-        "x": 3046,
-        "y": 834,
-        "w": 24,
-        "h": 26
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 21,
-        "y": 316,
-        "w": 24,
-        "h": 26
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 163.aseprite": {
-      "frame": {
-        "x": 2920,
-        "y": 834,
-        "w": 19,
-        "h": 28
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 20,
-        "y": 314,
-        "w": 19,
-        "h": 28
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 164.aseprite": {
-      "frame": {
-        "x": 2862,
-        "y": 834,
-        "w": 16,
-        "h": 29
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 20,
-        "y": 311,
-        "w": 16,
-        "h": 29
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 165.aseprite": {
-      "frame": {
-        "x": 2750,
-        "y": 834,
-        "w": 14,
-        "h": 30
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 19,
-        "y": 309,
-        "w": 14,
-        "h": 30
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 166.aseprite": {
-      "frame": {
-        "x": 2764,
-        "y": 834,
-        "w": 11,
-        "h": 30
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 19,
-        "y": 307,
-        "w": 11,
-        "h": 30
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 167.aseprite": {
-      "frame": {
-        "x": 1768,
-        "y": 834,
-        "w": 43,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 19,
-        "y": 304,
-        "w": 43,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 168.aseprite": {
-      "frame": {
-        "x": 2775,
-        "y": 834,
-        "w": 42,
-        "h": 30
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 20,
-        "y": 302,
-        "w": 42,
-        "h": 30
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 169.aseprite": {
-      "frame": {
-        "x": 2878,
-        "y": 834,
-        "w": 42,
-        "h": 29
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 20,
-        "y": 301,
-        "w": 42,
-        "h": 29
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 170.aseprite": {
-      "frame": {
-        "x": 2939,
-        "y": 834,
-        "w": 44,
-        "h": 28
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 19,
-        "y": 299,
-        "w": 44,
-        "h": 28
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 171.aseprite": {
-      "frame": {
-        "x": 2817,
-        "y": 834,
-        "w": 45,
-        "h": 30
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 297,
-        "w": 45,
-        "h": 30
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 172.aseprite": {
-      "frame": {
-        "x": 1811,
-        "y": 834,
-        "w": 45,
-        "h": 33
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 295,
-        "w": 45,
-        "h": 33
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 173.aseprite": {
-      "frame": {
-        "x": 880,
-        "y": 834,
-        "w": 46,
-        "h": 35
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 294,
-        "w": 46,
-        "h": 35
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 174.aseprite": {
-      "frame": {
-        "x": 101,
-        "y": 834,
-        "w": 46,
-        "h": 38
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 292,
-        "w": 46,
-        "h": 38
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 175.aseprite": {
-      "frame": {
-        "x": 54,
-        "y": 834,
-        "w": 47,
-        "h": 41
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 291,
-        "w": 47,
-        "h": 41
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 176.aseprite": {
-      "frame": {
-        "x": 3998,
-        "y": 762,
-        "w": 48,
-        "h": 44
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 289,
-        "w": 48,
-        "h": 44
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 177.aseprite": {
-      "frame": {
-        "x": 1474,
-        "y": 762,
-        "w": 48,
-        "h": 46
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 18,
-        "y": 288,
-        "w": 48,
-        "h": 46
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 178.aseprite": {
-      "frame": {
-        "x": 1382,
-        "y": 762,
-        "w": 46,
-        "h": 49
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 20,
-        "y": 286,
-        "w": 46,
-        "h": 49
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 179.aseprite": {
-      "frame": {
-        "x": 1428,
-        "y": 762,
-        "w": 46,
-        "h": 49
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 21,
-        "y": 286,
-        "w": 46,
-        "h": 49
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 180.aseprite": {
-      "frame": {
-        "x": 1279,
-        "y": 762,
-        "w": 46,
-        "h": 51
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 21,
-        "y": 285,
-        "w": 46,
-        "h": 51
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 181.aseprite": {
-      "frame": {
-        "x": 1235,
-        "y": 762,
-        "w": 44,
-        "h": 52
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 23,
-        "y": 284,
-        "w": 44,
-        "h": 52
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 182.aseprite": {
-      "frame": {
-        "x": 1131,
-        "y": 762,
-        "w": 44,
-        "h": 54
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 23,
-        "y": 282,
-        "w": 44,
-        "h": 54
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 183.aseprite": {
-      "frame": {
-        "x": 1048,
-        "y": 762,
-        "w": 42,
-        "h": 55
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 25,
-        "y": 281,
-        "w": 42,
-        "h": 55
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 184.aseprite": {
-      "frame": {
-        "x": 1090,
-        "y": 762,
-        "w": 41,
-        "h": 55
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 26,
-        "y": 281,
-        "w": 41,
-        "h": 55
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 185.aseprite": {
-      "frame": {
-        "x": 1008,
-        "y": 762,
-        "w": 40,
-        "h": 56
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 27,
-        "y": 280,
-        "w": 40,
-        "h": 56
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 186.aseprite": {
-      "frame": {
-        "x": 842,
-        "y": 762,
-        "w": 38,
-        "h": 57
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 29,
-        "y": 279,
-        "w": 38,
-        "h": 57
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 187.aseprite": {
-      "frame": {
-        "x": 768,
-        "y": 762,
-        "w": 38,
-        "h": 58
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 29,
-        "y": 278,
-        "w": 38,
-        "h": 58
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 188.aseprite": {
-      "frame": {
-        "x": 806,
-        "y": 762,
-        "w": 36,
-        "h": 58
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 31,
-        "y": 278,
-        "w": 36,
-        "h": 58
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 189.aseprite": {
-      "frame": {
-        "x": 732,
-        "y": 762,
-        "w": 36,
-        "h": 59
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 31,
-        "y": 277,
-        "w": 36,
-        "h": 59
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 190.aseprite": {
-      "frame": {
-        "x": 601,
-        "y": 762,
-        "w": 33,
-        "h": 60
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 34,
-        "y": 276,
-        "w": 33,
-        "h": 60
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 191.aseprite": {
-      "frame": {
-        "x": 634,
-        "y": 762,
-        "w": 32,
-        "h": 60
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 35,
-        "y": 276,
-        "w": 32,
-        "h": 60
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 192.aseprite": {
-      "frame": {
-        "x": 570,
-        "y": 762,
-        "w": 31,
-        "h": 61
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 36,
-        "y": 275,
-        "w": 31,
-        "h": 61
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 193.aseprite": {
-      "frame": {
-        "x": 512,
-        "y": 762,
-        "w": 29,
-        "h": 62
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 38,
-        "y": 274,
-        "w": 29,
-        "h": 62
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 194.aseprite": {
-      "frame": {
-        "x": 541,
-        "y": 762,
-        "w": 29,
-        "h": 62
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 38,
-        "y": 274,
-        "w": 29,
-        "h": 62
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 195.aseprite": {
-      "frame": {
-        "x": 419,
-        "y": 762,
-        "w": 27,
-        "h": 63
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 40,
-        "y": 273,
-        "w": 27,
-        "h": 63
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 196.aseprite": {
-      "frame": {
-        "x": 370,
-        "y": 762,
-        "w": 25,
-        "h": 64
+        "h": 13
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 42,
-        "y": 272,
-        "w": 25,
-        "h": 64
+        "y": 618,
+        "w": 21,
+        "h": 13
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 197.aseprite": {
+    "proleg_terra2 96.aseprite": {
       "frame": {
-        "x": 395,
-        "y": 762,
+        "x": 1093,
+        "y": 3235,
+        "w": 18,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 616,
+        "w": 18,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 97.aseprite": {
+      "frame": {
+        "x": 1031,
+        "y": 3235,
+        "w": 22,
+        "h": 14
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 612,
+        "w": 22,
+        "h": 14
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 98.aseprite": {
+      "frame": {
+        "x": 951,
+        "y": 3235,
+        "w": 22,
+        "h": 18
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 34,
+        "y": 610,
+        "w": 22,
+        "h": 18
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 99.aseprite": {
+      "frame": {
+        "x": 973,
+        "y": 3235,
         "w": 24,
-        "h": 64
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 43,
-        "y": 272,
+        "x": 32,
+        "y": 608,
         "w": 24,
+        "h": 18
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 100.aseprite": {
+      "frame": {
+        "x": 927,
+        "y": 3235,
+        "w": 24,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 30,
+        "y": 606,
+        "w": 24,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 101.aseprite": {
+      "frame": {
+        "x": 1408,
+        "y": 3169,
+        "w": 273,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 28,
+        "y": 560,
+        "w": 273,
         "h": 64
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 198.aseprite": {
+    "proleg_terra2 102.aseprite": {
       "frame": {
-        "x": 324,
-        "y": 762,
-        "w": 23,
-        "h": 65
+        "x": 1941,
+        "y": 3079,
+        "w": 275,
+        "h": 71
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 44,
-        "y": 271,
-        "w": 23,
-        "h": 65
+        "x": 26,
+        "y": 560,
+        "w": 275,
+        "h": 71
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 199.aseprite": {
+    "proleg_terra2 103.aseprite": {
       "frame": {
-        "x": 347,
-        "y": 762,
-        "w": 23,
-        "h": 65
+        "x": 2216,
+        "y": 3079,
+        "w": 270,
+        "h": 71
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 44,
-        "y": 271,
-        "w": 23,
-        "h": 65
+        "x": 26,
+        "y": 560,
+        "w": 270,
+        "h": 71
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 200.aseprite": {
+    "proleg_terra2 104.aseprite": {
       "frame": {
-        "x": 268,
-        "y": 762,
-        "w": 20,
+        "x": 3403,
+        "y": 3079,
+        "w": 276,
         "h": 66
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 47,
-        "y": 270,
-        "w": 20,
+        "x": 20,
+        "y": 560,
+        "w": 276,
         "h": 66
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 201.aseprite": {
+    "proleg_terra2 105.aseprite": {
       "frame": {
-        "x": 288,
-        "y": 762,
-        "w": 19,
+        "x": 1681,
+        "y": 3169,
+        "w": 281,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 560,
+        "w": 281,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 106.aseprite": {
+      "frame": {
+        "x": 1962,
+        "y": 3169,
+        "w": 283,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 560,
+        "w": 283,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 107.aseprite": {
+      "frame": {
+        "x": 2245,
+        "y": 3169,
+        "w": 287,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 560,
+        "w": 287,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 108.aseprite": {
+      "frame": {
+        "x": 2532,
+        "y": 3169,
+        "w": 283,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 560,
+        "w": 283,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 109.aseprite": {
+      "frame": {
+        "x": 2815,
+        "y": 3169,
+        "w": 287,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 560,
+        "w": 287,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 110.aseprite": {
+      "frame": {
+        "x": 2486,
+        "y": 3079,
+        "w": 273,
+        "h": 71
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 28,
+        "y": 560,
+        "w": 273,
+        "h": 71
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 111.aseprite": {
+      "frame": {
+        "x": 2759,
+        "y": 3079,
+        "w": 275,
+        "h": 71
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 26,
+        "y": 560,
+        "w": 275,
+        "h": 71
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 112.aseprite": {
+      "frame": {
+        "x": 3034,
+        "y": 3079,
+        "w": 277,
+        "h": 71
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 560,
+        "w": 277,
+        "h": 71
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 113.aseprite": {
+      "frame": {
+        "x": 3679,
+        "y": 3079,
+        "w": 281,
         "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 560,
+        "w": 281,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 114.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 3169,
+        "w": 281,
+        "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 560,
+        "w": 281,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 115.aseprite": {
+      "frame": {
+        "x": 281,
+        "y": 3169,
+        "w": 283,
+        "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 560,
+        "w": 283,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 116.aseprite": {
+      "frame": {
+        "x": 564,
+        "y": 3169,
+        "w": 287,
+        "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 560,
+        "w": 287,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 117.aseprite": {
+      "frame": {
+        "x": 574,
+        "y": 2975,
+        "w": 285,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 16,
+        "y": 560,
+        "w": 285,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 118.aseprite": {
+      "frame": {
+        "x": 851,
+        "y": 3169,
+        "w": 281,
+        "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 20,
+        "y": 560,
+        "w": 281,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 119.aseprite": {
+      "frame": {
+        "x": 859,
+        "y": 2975,
+        "w": 283,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 18,
+        "y": 560,
+        "w": 283,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 120.aseprite": {
+      "frame": {
+        "x": 1142,
+        "y": 2975,
+        "w": 287,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 560,
+        "w": 287,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 121.aseprite": {
+      "frame": {
+        "x": 1429,
+        "y": 2975,
+        "w": 287,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 14,
+        "y": 560,
+        "w": 287,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 122.aseprite": {
+      "frame": {
+        "x": 1716,
+        "y": 2975,
+        "w": 291,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 10,
+        "y": 560,
+        "w": 291,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 123.aseprite": {
+      "frame": {
+        "x": 2007,
+        "y": 2975,
+        "w": 293,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 8,
+        "y": 560,
+        "w": 293,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 124.aseprite": {
+      "frame": {
+        "x": 2300,
+        "y": 2975,
+        "w": 295,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 6,
+        "y": 560,
+        "w": 295,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 125.aseprite": {
+      "frame": {
+        "x": 2595,
+        "y": 2975,
+        "w": 297,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 560,
+        "w": 297,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 126.aseprite": {
+      "frame": {
+        "x": 2892,
+        "y": 2975,
+        "w": 301,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 560,
+        "w": 301,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 127.aseprite": {
+      "frame": {
+        "x": 3193,
+        "y": 2975,
+        "w": 301,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 560,
+        "w": 301,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 128.aseprite": {
+      "frame": {
+        "x": 3494,
+        "y": 2975,
+        "w": 301,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 560,
+        "w": 301,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 129.aseprite": {
+      "frame": {
+        "x": 3795,
+        "y": 2975,
+        "w": 301,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 560,
+        "w": 301,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 130.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 3079,
+        "w": 299,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 560,
+        "w": 299,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 131.aseprite": {
+      "frame": {
+        "x": 299,
+        "y": 3079,
+        "w": 301,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 560,
+        "w": 301,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 132.aseprite": {
+      "frame": {
+        "x": 600,
+        "y": 3079,
+        "w": 301,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 560,
+        "w": 301,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 133.aseprite": {
+      "frame": {
+        "x": 901,
+        "y": 3079,
+        "w": 301,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 560,
+        "w": 301,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 134.aseprite": {
+      "frame": {
+        "x": 1202,
+        "y": 3079,
+        "w": 245,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 56,
+        "y": 560,
+        "w": 245,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 135.aseprite": {
+      "frame": {
+        "x": 1202,
+        "y": 3079,
+        "w": 245,
+        "h": 90
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 56,
+        "y": 560,
+        "w": 245,
+        "h": 90
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 136.aseprite": {
+      "frame": {
+        "x": 1139,
+        "y": 3235,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 137.aseprite": {
+      "frame": {
+        "x": 1139,
+        "y": 3235,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 138.aseprite": {
+      "frame": {
+        "x": 1139,
+        "y": 3235,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 139.aseprite": {
+      "frame": {
+        "x": 1139,
+        "y": 3235,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 140.aseprite": {
+      "frame": {
+        "x": 1139,
+        "y": 3235,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 141.aseprite": {
+      "frame": {
+        "x": 798,
+        "y": 3235,
+        "w": 8,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 102,
+        "y": 632,
+        "w": 8,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 142.aseprite": {
+      "frame": {
+        "x": 872,
+        "y": 3235,
+        "w": 8,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 102,
+        "y": 636,
+        "w": 8,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 143.aseprite": {
+      "frame": {
+        "x": 806,
+        "y": 3235,
+        "w": 8,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 104,
+        "y": 638,
+        "w": 8,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 144.aseprite": {
+      "frame": {
+        "x": 880,
+        "y": 3235,
+        "w": 8,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 104,
+        "y": 642,
+        "w": 8,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 145.aseprite": {
+      "frame": {
+        "x": 888,
+        "y": 3235,
+        "w": 8,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 104,
+        "y": 644,
+        "w": 8,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 146.aseprite": {
+      "frame": {
+        "x": 814,
+        "y": 3235,
+        "w": 8,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 104,
+        "y": 646,
+        "w": 8,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 147.aseprite": {
+      "frame": {
+        "x": 896,
+        "y": 3235,
+        "w": 8,
+        "h": 26
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 104,
+        "y": 650,
+        "w": 8,
+        "h": 26
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 148.aseprite": {
+      "frame": {
+        "x": 822,
+        "y": 3235,
+        "w": 8,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 106,
+        "y": 652,
+        "w": 8,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 149.aseprite": {
+      "frame": {
+        "x": 3664,
+        "y": 3169,
+        "w": 16,
+        "h": 52
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 98,
+        "y": 630,
+        "w": 16,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 150.aseprite": {
+      "frame": {
+        "x": 3680,
+        "y": 3169,
+        "w": 16,
+        "h": 52
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 98,
+        "y": 634,
+        "w": 16,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 151.aseprite": {
+      "frame": {
+        "x": 3789,
+        "y": 3169,
+        "w": 8,
+        "h": 50
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 100,
+        "y": 636,
+        "w": 8,
+        "h": 50
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 152.aseprite": {
+      "frame": {
+        "x": 3929,
+        "y": 3169,
+        "w": 8,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 100,
+        "y": 640,
+        "w": 8,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 153.aseprite": {
+      "frame": {
+        "x": 4067,
+        "y": 3169,
+        "w": 22,
+        "h": 42
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 86,
+        "y": 642,
+        "w": 22,
+        "h": 42
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 154.aseprite": {
+      "frame": {
+        "x": 174,
+        "y": 3235,
+        "w": 28,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 80,
+        "y": 644,
+        "w": 28,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 155.aseprite": {
+      "frame": {
+        "x": 515,
+        "y": 3235,
+        "w": 34,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 74,
+        "y": 648,
+        "w": 34,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 156.aseprite": {
+      "frame": {
+        "x": 729,
+        "y": 3235,
+        "w": 42,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 68,
+        "y": 650,
+        "w": 42,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 157.aseprite": {
+      "frame": {
+        "x": 830,
+        "y": 3235,
+        "w": 42,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 68,
+        "y": 654,
+        "w": 42,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 158.aseprite": {
+      "frame": {
+        "x": 549,
+        "y": 3235,
+        "w": 54,
+        "h": 36
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 56,
+        "y": 650,
+        "w": 54,
+        "h": 36
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 159.aseprite": {
+      "frame": {
+        "x": 202,
+        "y": 3235,
+        "w": 52,
+        "h": 40
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 52,
+        "y": 646,
+        "w": 52,
+        "h": 40
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 160.aseprite": {
+      "frame": {
+        "x": 3937,
+        "y": 3169,
+        "w": 48,
+        "h": 46
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 48,
-        "y": 270,
-        "w": 19,
-        "h": 66
+        "y": 640,
+        "w": 48,
+        "h": 46
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 202.aseprite": {
+    "proleg_terra2 161.aseprite": {
       "frame": {
-        "x": 152,
-        "y": 762,
-        "w": 18,
-        "h": 67
+        "x": 3797,
+        "y": 3169,
+        "w": 46,
+        "h": 48
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 49,
-        "y": 269,
-        "w": 18,
-        "h": 67
+        "x": 44,
+        "y": 636,
+        "w": 46,
+        "h": 48
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 203.aseprite": {
+    "proleg_terra2 162.aseprite": {
       "frame": {
-        "x": 307,
-        "y": 762,
-        "w": 17,
+        "x": 3696,
+        "y": 3169,
+        "w": 48,
+        "h": 52
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 42,
+        "y": 632,
+        "w": 48,
+        "h": 52
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 163.aseprite": {
+      "frame": {
+        "x": 3442,
+        "y": 3169,
+        "w": 38,
+        "h": 56
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 628,
+        "w": 38,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 164.aseprite": {
+      "frame": {
+        "x": 3326,
+        "y": 3169,
+        "w": 32,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 622,
+        "w": 32,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 165.aseprite": {
+      "frame": {
+        "x": 3102,
+        "y": 3169,
+        "w": 28,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 38,
+        "y": 618,
+        "w": 28,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 166.aseprite": {
+      "frame": {
+        "x": 3130,
+        "y": 3169,
+        "w": 22,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 38,
+        "y": 614,
+        "w": 22,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 167.aseprite": {
+      "frame": {
+        "x": 1132,
+        "y": 3169,
+        "w": 86,
         "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 38,
+        "y": 608,
+        "w": 86,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 168.aseprite": {
+      "frame": {
+        "x": 3152,
+        "y": 3169,
+        "w": 84,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 604,
+        "w": 84,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 169.aseprite": {
+      "frame": {
+        "x": 3358,
+        "y": 3169,
+        "w": 84,
+        "h": 58
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 602,
+        "w": 84,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 170.aseprite": {
+      "frame": {
+        "x": 3480,
+        "y": 3169,
+        "w": 88,
+        "h": 56
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 38,
+        "y": 598,
+        "w": 88,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 171.aseprite": {
+      "frame": {
+        "x": 3236,
+        "y": 3169,
+        "w": 90,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 594,
+        "w": 90,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 172.aseprite": {
+      "frame": {
+        "x": 1218,
+        "y": 3169,
+        "w": 90,
+        "h": 66
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 590,
+        "w": 90,
+        "h": 66
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 173.aseprite": {
+      "frame": {
+        "x": 3311,
+        "y": 3079,
+        "w": 92,
+        "h": 70
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 588,
+        "w": 92,
+        "h": 70
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 174.aseprite": {
+      "frame": {
+        "x": 1849,
+        "y": 3079,
+        "w": 92,
+        "h": 76
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 584,
+        "w": 92,
+        "h": 76
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 175.aseprite": {
+      "frame": {
+        "x": 1652,
+        "y": 3079,
+        "w": 94,
+        "h": 82
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 582,
+        "w": 94,
+        "h": 82
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 176.aseprite": {
+      "frame": {
+        "x": 1447,
+        "y": 3079,
+        "w": 96,
+        "h": 88
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 578,
+        "w": 96,
+        "h": 88
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 177.aseprite": {
+      "frame": {
+        "x": 478,
+        "y": 2975,
+        "w": 96,
+        "h": 92
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 36,
+        "y": 576,
+        "w": 96,
+        "h": 92
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 178.aseprite": {
+      "frame": {
+        "x": 294,
+        "y": 2975,
+        "w": 92,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 40,
+        "y": 572,
+        "w": 92,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 179.aseprite": {
+      "frame": {
+        "x": 386,
+        "y": 2975,
+        "w": 92,
+        "h": 98
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 42,
+        "y": 572,
+        "w": 92,
+        "h": 98
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 180.aseprite": {
+      "frame": {
+        "x": 88,
+        "y": 2975,
+        "w": 92,
+        "h": 102
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 42,
+        "y": 570,
+        "w": 92,
+        "h": 102
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 181.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 2975,
+        "w": 88,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 46,
+        "y": 568,
+        "w": 88,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 182.aseprite": {
+      "frame": {
+        "x": 3820,
+        "y": 2813,
+        "w": 88,
+        "h": 108
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 46,
+        "y": 564,
+        "w": 88,
+        "h": 108
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 183.aseprite": {
+      "frame": {
+        "x": 3654,
+        "y": 2813,
+        "w": 84,
+        "h": 110
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 50,
-        "y": 270,
-        "w": 17,
-        "h": 66
+        "y": 562,
+        "w": 84,
+        "h": 110
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 204.aseprite": {
+    "proleg_terra2 184.aseprite": {
       "frame": {
-        "x": 170,
-        "y": 762,
-        "w": 17,
-        "h": 67
+        "x": 3738,
+        "y": 2813,
+        "w": 82,
+        "h": 110
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 50,
-        "y": 269,
-        "w": 17,
-        "h": 67
+        "x": 52,
+        "y": 562,
+        "w": 82,
+        "h": 110
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
-    "proleg_terra2 205.aseprite": {
+    "proleg_terra2 185.aseprite": {
       "frame": {
-        "x": 187,
-        "y": 762,
-        "w": 14,
-        "h": 67
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 53,
-        "y": 269,
-        "w": 14,
-        "h": 67
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "proleg_terra2 206.aseprite": {
-      "frame": {
-        "x": 127,
-        "y": 762,
-        "w": 13,
-        "h": 68
+        "x": 3448,
+        "y": 2813,
+        "w": 80,
+        "h": 112
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 54,
-        "y": 268,
-        "w": 13,
-        "h": 68
+        "y": 560,
+        "w": 80,
+        "h": 112
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 186.aseprite": {
+      "frame": {
+        "x": 3243,
+        "y": 2813,
+        "w": 76,
+        "h": 114
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 58,
+        "y": 558,
+        "w": 76,
+        "h": 114
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 187.aseprite": {
+      "frame": {
+        "x": 3095,
+        "y": 2813,
+        "w": 76,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 58,
+        "y": 556,
+        "w": 76,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 188.aseprite": {
+      "frame": {
+        "x": 3171,
+        "y": 2813,
+        "w": 72,
+        "h": 116
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 62,
+        "y": 556,
+        "w": 72,
+        "h": 116
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 189.aseprite": {
+      "frame": {
+        "x": 3023,
+        "y": 2813,
+        "w": 72,
+        "h": 118
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 62,
+        "y": 554,
+        "w": 72,
+        "h": 118
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 190.aseprite": {
+      "frame": {
+        "x": 2893,
+        "y": 2813,
+        "w": 66,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 68,
+        "y": 552,
+        "w": 66,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 191.aseprite": {
+      "frame": {
+        "x": 2959,
+        "y": 2813,
+        "w": 64,
+        "h": 120
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 70,
+        "y": 552,
+        "w": 64,
+        "h": 120
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 192.aseprite": {
+      "frame": {
+        "x": 2698,
+        "y": 2813,
+        "w": 62,
+        "h": 122
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 72,
+        "y": 550,
+        "w": 62,
+        "h": 122
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 193.aseprite": {
+      "frame": {
+        "x": 2582,
+        "y": 2813,
+        "w": 58,
+        "h": 124
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 76,
+        "y": 548,
+        "w": 58,
+        "h": 124
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 194.aseprite": {
+      "frame": {
+        "x": 2640,
+        "y": 2813,
+        "w": 58,
+        "h": 124
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 76,
+        "y": 548,
+        "w": 58,
+        "h": 124
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 195.aseprite": {
+      "frame": {
+        "x": 2394,
+        "y": 2813,
+        "w": 54,
+        "h": 126
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 80,
+        "y": 546,
+        "w": 54,
+        "h": 126
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 196.aseprite": {
+      "frame": {
+        "x": 2296,
+        "y": 2813,
+        "w": 50,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 84,
+        "y": 544,
+        "w": 50,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 197.aseprite": {
+      "frame": {
+        "x": 2346,
+        "y": 2813,
+        "w": 48,
+        "h": 128
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 86,
+        "y": 544,
+        "w": 48,
+        "h": 128
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 198.aseprite": {
+      "frame": {
+        "x": 2204,
+        "y": 2813,
+        "w": 46,
+        "h": 130
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 542,
+        "w": 46,
+        "h": 130
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 199.aseprite": {
+      "frame": {
+        "x": 2250,
+        "y": 2813,
+        "w": 46,
+        "h": 130
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 88,
+        "y": 542,
+        "w": 46,
+        "h": 130
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 200.aseprite": {
+      "frame": {
+        "x": 2092,
+        "y": 2813,
+        "w": 40,
+        "h": 132
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 94,
+        "y": 540,
+        "w": 40,
+        "h": 132
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 201.aseprite": {
+      "frame": {
+        "x": 2132,
+        "y": 2813,
+        "w": 38,
+        "h": 132
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 96,
+        "y": 540,
+        "w": 38,
+        "h": 132
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 202.aseprite": {
+      "frame": {
+        "x": 1860,
+        "y": 2813,
+        "w": 36,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 98,
+        "y": 538,
+        "w": 36,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 203.aseprite": {
+      "frame": {
+        "x": 2170,
+        "y": 2813,
+        "w": 34,
+        "h": 132
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 100,
+        "y": 540,
+        "w": 34,
+        "h": 132
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 204.aseprite": {
+      "frame": {
+        "x": 1896,
+        "y": 2813,
+        "w": 34,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 100,
+        "y": 538,
+        "w": 34,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 205.aseprite": {
+      "frame": {
+        "x": 1930,
+        "y": 2813,
+        "w": 28,
+        "h": 134
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 106,
+        "y": 538,
+        "w": 28,
+        "h": 134
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
+      },
+      "duration": 100
+    },
+    "proleg_terra2 206.aseprite": {
+      "frame": {
+        "x": 1810,
+        "y": 2813,
+        "w": 26,
+        "h": 136
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 108,
+        "y": 536,
+        "w": 26,
+        "h": 136
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 207.aseprite": {
       "frame": {
-        "x": 140,
-        "y": 762,
-        "w": 12,
-        "h": 68
+        "x": 1836,
+        "y": 2813,
+        "w": 24,
+        "h": 136
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 55,
-        "y": 268,
-        "w": 12,
-        "h": 68
+        "x": 110,
+        "y": 536,
+        "w": 24,
+        "h": 136
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 208.aseprite": {
       "frame": {
-        "x": 93,
-        "y": 762,
-        "w": 11,
-        "h": 69
+        "x": 1742,
+        "y": 2813,
+        "w": 22,
+        "h": 138
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 56,
-        "y": 267,
-        "w": 11,
-        "h": 69
+        "x": 112,
+        "y": 534,
+        "w": 22,
+        "h": 138
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 209.aseprite": {
       "frame": {
-        "x": 104,
-        "y": 762,
-        "w": 12,
-        "h": 69
+        "x": 1764,
+        "y": 2813,
+        "w": 24,
+        "h": 138
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 56,
-        "y": 267,
-        "w": 12,
-        "h": 69
+        "x": 112,
+        "y": 534,
+        "w": 24,
+        "h": 138
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 210.aseprite": {
       "frame": {
-        "x": 116,
-        "y": 762,
-        "w": 11,
-        "h": 69
+        "x": 1788,
+        "y": 2813,
+        "w": 22,
+        "h": 138
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 267,
-        "w": 11,
-        "h": 69
+        "x": 116,
+        "y": 534,
+        "w": 22,
+        "h": 138
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 211.aseprite": {
       "frame": {
-        "x": 72,
-        "y": 762,
-        "w": 10,
-        "h": 70
+        "x": 1700,
+        "y": 2813,
+        "w": 20,
+        "h": 140
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 266,
-        "w": 10,
-        "h": 70
+        "x": 120,
+        "y": 532,
+        "w": 20,
+        "h": 140
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 212.aseprite": {
       "frame": {
-        "x": 82,
-        "y": 762,
-        "w": 11,
-        "h": 70
+        "x": 1720,
+        "y": 2813,
+        "w": 22,
+        "h": 140
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 266,
-        "w": 11,
-        "h": 70
+        "x": 120,
+        "y": 532,
+        "w": 22,
+        "h": 140
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 213.aseprite": {
       "frame": {
-        "x": 33,
-        "y": 762,
-        "w": 12,
-        "h": 71
+        "x": 1622,
+        "y": 2813,
+        "w": 24,
+        "h": 142
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 265,
-        "w": 12,
-        "h": 71
+        "x": 120,
+        "y": 530,
+        "w": 24,
+        "h": 142
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 214.aseprite": {
       "frame": {
-        "x": 45,
-        "y": 762,
-        "w": 13,
-        "h": 71
+        "x": 1646,
+        "y": 2813,
+        "w": 26,
+        "h": 142
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 265,
-        "w": 13,
-        "h": 71
+        "x": 120,
+        "y": 530,
+        "w": 26,
+        "h": 142
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 215.aseprite": {
       "frame": {
-        "x": 58,
-        "y": 762,
-        "w": 14,
-        "h": 71
+        "x": 1672,
+        "y": 2813,
+        "w": 28,
+        "h": 142
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 265,
-        "w": 14,
-        "h": 71
+        "x": 120,
+        "y": 530,
+        "w": 28,
+        "h": 142
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 216.aseprite": {
       "frame": {
-        "x": 4072,
-        "y": 628,
-        "w": 15,
-        "h": 72
+        "x": 1526,
+        "y": 2813,
+        "w": 30,
+        "h": 144
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 264,
-        "w": 15,
-        "h": 72
+        "x": 120,
+        "y": 528,
+        "w": 30,
+        "h": 144
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 217.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 762,
-        "w": 16,
-        "h": 72
+        "x": 1556,
+        "y": 2813,
+        "w": 32,
+        "h": 144
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 264,
-        "w": 16,
-        "h": 72
+        "x": 120,
+        "y": 528,
+        "w": 32,
+        "h": 144
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 218.aseprite": {
       "frame": {
-        "x": 16,
-        "y": 762,
-        "w": 17,
-        "h": 72
+        "x": 1588,
+        "y": 2813,
+        "w": 34,
+        "h": 144
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 264,
-        "w": 17,
-        "h": 72
+        "x": 120,
+        "y": 528,
+        "w": 34,
+        "h": 144
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 219.aseprite": {
       "frame": {
-        "x": 3997,
-        "y": 628,
-        "w": 18,
-        "h": 73
+        "x": 1376,
+        "y": 2813,
+        "w": 36,
+        "h": 146
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 263,
-        "w": 18,
-        "h": 73
+        "x": 120,
+        "y": 526,
+        "w": 36,
+        "h": 146
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 220.aseprite": {
       "frame": {
-        "x": 4015,
-        "y": 628,
-        "w": 19,
-        "h": 73
+        "x": 1412,
+        "y": 2813,
+        "w": 38,
+        "h": 146
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 263,
-        "w": 19,
-        "h": 73
+        "x": 120,
+        "y": 526,
+        "w": 38,
+        "h": 146
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 221.aseprite": {
       "frame": {
-        "x": 4034,
-        "y": 628,
-        "w": 19,
-        "h": 73
+        "x": 1450,
+        "y": 2813,
+        "w": 38,
+        "h": 146
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 263,
-        "w": 19,
-        "h": 73
+        "x": 120,
+        "y": 526,
+        "w": 38,
+        "h": 146
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 222.aseprite": {
       "frame": {
-        "x": 4053,
-        "y": 628,
-        "w": 19,
-        "h": 73
+        "x": 1488,
+        "y": 2813,
+        "w": 38,
+        "h": 146
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 263,
-        "w": 19,
-        "h": 73
+        "x": 120,
+        "y": 526,
+        "w": 38,
+        "h": 146
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 223.aseprite": {
       "frame": {
-        "x": 3955,
-        "y": 628,
-        "w": 20,
-        "h": 74
+        "x": 1292,
+        "y": 2813,
+        "w": 40,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 262,
-        "w": 20,
-        "h": 74
+        "x": 120,
+        "y": 524,
+        "w": 40,
+        "h": 148
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 224.aseprite": {
       "frame": {
-        "x": 3975,
-        "y": 628,
-        "w": 22,
-        "h": 74
+        "x": 1332,
+        "y": 2813,
+        "w": 44,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 262,
-        "w": 22,
-        "h": 74
+        "x": 120,
+        "y": 524,
+        "w": 44,
+        "h": 148
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 225.aseprite": {
       "frame": {
-        "x": 3860,
-        "y": 628,
-        "w": 23,
-        "h": 75
+        "x": 1102,
+        "y": 2813,
+        "w": 46,
+        "h": 150
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 261,
-        "w": 23,
-        "h": 75
+        "x": 120,
+        "y": 522,
+        "w": 46,
+        "h": 150
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 226.aseprite": {
       "frame": {
-        "x": 3883,
-        "y": 628,
-        "w": 23,
-        "h": 75
+        "x": 1148,
+        "y": 2813,
+        "w": 46,
+        "h": 150
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 261,
-        "w": 23,
-        "h": 75
+        "x": 120,
+        "y": 522,
+        "w": 46,
+        "h": 150
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 227.aseprite": {
       "frame": {
-        "x": 3906,
-        "y": 628,
-        "w": 24,
-        "h": 75
+        "x": 1194,
+        "y": 2813,
+        "w": 48,
+        "h": 150
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 261,
-        "w": 24,
-        "h": 75
+        "x": 120,
+        "y": 522,
+        "w": 48,
+        "h": 150
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 228.aseprite": {
       "frame": {
-        "x": 3930,
-        "y": 628,
-        "w": 25,
-        "h": 75
+        "x": 1242,
+        "y": 2813,
+        "w": 50,
+        "h": 150
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 261,
-        "w": 25,
-        "h": 75
+        "x": 120,
+        "y": 522,
+        "w": 50,
+        "h": 150
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 229.aseprite": {
       "frame": {
-        "x": 3780,
-        "y": 628,
-        "w": 26,
-        "h": 76
+        "x": 942,
+        "y": 2813,
+        "w": 52,
+        "h": 152
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 260,
-        "w": 26,
-        "h": 76
+        "x": 120,
+        "y": 520,
+        "w": 52,
+        "h": 152
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 230.aseprite": {
       "frame": {
-        "x": 3806,
-        "y": 628,
-        "w": 27,
-        "h": 76
+        "x": 994,
+        "y": 2813,
+        "w": 54,
+        "h": 152
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 260,
-        "w": 27,
-        "h": 76
+        "x": 120,
+        "y": 520,
+        "w": 54,
+        "h": 152
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 231.aseprite": {
       "frame": {
-        "x": 3833,
-        "y": 628,
-        "w": 27,
-        "h": 76
+        "x": 1048,
+        "y": 2813,
+        "w": 54,
+        "h": 152
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 260,
-        "w": 27,
-        "h": 76
+        "x": 120,
+        "y": 520,
+        "w": 54,
+        "h": 152
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 232.aseprite": {
       "frame": {
-        "x": 3722,
-        "y": 628,
-        "w": 28,
-        "h": 77
+        "x": 826,
+        "y": 2813,
+        "w": 56,
+        "h": 154
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 259,
-        "w": 28,
-        "h": 77
+        "x": 120,
+        "y": 518,
+        "w": 56,
+        "h": 154
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 233.aseprite": {
       "frame": {
-        "x": 3750,
-        "y": 628,
-        "w": 30,
-        "h": 77
+        "x": 882,
+        "y": 2813,
+        "w": 60,
+        "h": 154
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 259,
-        "w": 30,
-        "h": 77
+        "x": 120,
+        "y": 518,
+        "w": 60,
+        "h": 154
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 234.aseprite": {
       "frame": {
-        "x": 3598,
-        "y": 628,
-        "w": 30,
-        "h": 78
+        "x": 578,
+        "y": 2813,
+        "w": 60,
+        "h": 156
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 258,
-        "w": 30,
-        "h": 78
+        "x": 120,
+        "y": 516,
+        "w": 60,
+        "h": 156
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 235.aseprite": {
       "frame": {
-        "x": 3628,
-        "y": 628,
-        "w": 31,
-        "h": 78
+        "x": 638,
+        "y": 2813,
+        "w": 62,
+        "h": 156
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 258,
-        "w": 31,
-        "h": 78
+        "x": 120,
+        "y": 516,
+        "w": 62,
+        "h": 156
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 236.aseprite": {
       "frame": {
-        "x": 3659,
-        "y": 628,
-        "w": 31,
-        "h": 78
+        "x": 700,
+        "y": 2813,
+        "w": 62,
+        "h": 156
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 258,
-        "w": 31,
-        "h": 78
+        "x": 120,
+        "y": 516,
+        "w": 62,
+        "h": 156
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 237.aseprite": {
       "frame": {
-        "x": 3690,
-        "y": 628,
-        "w": 32,
-        "h": 78
+        "x": 762,
+        "y": 2813,
+        "w": 64,
+        "h": 156
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 258,
-        "w": 32,
-        "h": 78
+        "x": 120,
+        "y": 516,
+        "w": 64,
+        "h": 156
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 238.aseprite": {
       "frame": {
-        "x": 3461,
-        "y": 628,
-        "w": 33,
-        "h": 79
+        "x": 304,
+        "y": 2813,
+        "w": 66,
+        "h": 158
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 257,
-        "w": 33,
-        "h": 79
+        "x": 120,
+        "y": 514,
+        "w": 66,
+        "h": 158
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 239.aseprite": {
       "frame": {
-        "x": 3494,
-        "y": 628,
-        "w": 34,
-        "h": 79
+        "x": 370,
+        "y": 2813,
+        "w": 68,
+        "h": 158
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 257,
-        "w": 34,
-        "h": 79
+        "x": 120,
+        "y": 514,
+        "w": 68,
+        "h": 158
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 240.aseprite": {
       "frame": {
-        "x": 3528,
-        "y": 628,
-        "w": 35,
-        "h": 79
+        "x": 438,
+        "y": 2813,
+        "w": 70,
+        "h": 158
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 257,
-        "w": 35,
-        "h": 79
+        "x": 120,
+        "y": 514,
+        "w": 70,
+        "h": 158
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 241.aseprite": {
       "frame": {
-        "x": 3563,
-        "y": 628,
-        "w": 35,
-        "h": 79
+        "x": 508,
+        "y": 2813,
+        "w": 70,
+        "h": 158
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 257,
-        "w": 35,
-        "h": 79
+        "x": 120,
+        "y": 514,
+        "w": 70,
+        "h": 158
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 242.aseprite": {
       "frame": {
-        "x": 3350,
-        "y": 628,
-        "w": 36,
-        "h": 80
+        "x": 82,
+        "y": 2813,
+        "w": 72,
+        "h": 160
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 256,
-        "w": 36,
-        "h": 80
+        "x": 120,
+        "y": 512,
+        "w": 72,
+        "h": 160
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 243.aseprite": {
       "frame": {
-        "x": 3386,
-        "y": 628,
-        "w": 37,
-        "h": 80
+        "x": 154,
+        "y": 2813,
+        "w": 74,
+        "h": 160
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 256,
-        "w": 37,
-        "h": 80
+        "x": 120,
+        "y": 512,
+        "w": 74,
+        "h": 160
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 244.aseprite": {
       "frame": {
-        "x": 3423,
-        "y": 628,
-        "w": 38,
-        "h": 80
+        "x": 228,
+        "y": 2813,
+        "w": 76,
+        "h": 160
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 256,
-        "w": 38,
-        "h": 80
+        "x": 120,
+        "y": 512,
+        "w": 76,
+        "h": 160
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 245.aseprite": {
       "frame": {
-        "x": 3153,
-        "y": 628,
-        "w": 38,
-        "h": 81
+        "x": 3708,
+        "y": 2545,
+        "w": 76,
+        "h": 162
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 255,
-        "w": 38,
-        "h": 81
+        "x": 120,
+        "y": 510,
+        "w": 76,
+        "h": 162
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 246.aseprite": {
       "frame": {
-        "x": 3191,
-        "y": 628,
-        "w": 38,
-        "h": 81
+        "x": 3784,
+        "y": 2545,
+        "w": 76,
+        "h": 162
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 255,
-        "w": 38,
-        "h": 81
+        "x": 120,
+        "y": 510,
+        "w": 76,
+        "h": 162
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 247.aseprite": {
       "frame": {
-        "x": 3229,
-        "y": 628,
-        "w": 39,
-        "h": 81
+        "x": 3860,
+        "y": 2545,
+        "w": 78,
+        "h": 162
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 255,
-        "w": 39,
-        "h": 81
+        "x": 120,
+        "y": 510,
+        "w": 78,
+        "h": 162
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 248.aseprite": {
       "frame": {
-        "x": 3268,
-        "y": 628,
-        "w": 41,
-        "h": 81
+        "x": 3938,
+        "y": 2545,
+        "w": 82,
+        "h": 162
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 255,
-        "w": 41,
-        "h": 81
+        "x": 120,
+        "y": 510,
+        "w": 82,
+        "h": 162
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 249.aseprite": {
       "frame": {
-        "x": 3309,
-        "y": 628,
-        "w": 41,
-        "h": 81
+        "x": 0,
+        "y": 2813,
+        "w": 82,
+        "h": 162
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 255,
-        "w": 41,
-        "h": 81
+        "x": 120,
+        "y": 510,
+        "w": 82,
+        "h": 162
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 250.aseprite": {
       "frame": {
-        "x": 2983,
-        "y": 628,
-        "w": 42,
-        "h": 82
+        "x": 3368,
+        "y": 2545,
+        "w": 84,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 254,
-        "w": 42,
-        "h": 82
+        "x": 120,
+        "y": 508,
+        "w": 84,
+        "h": 164
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 251.aseprite": {
       "frame": {
-        "x": 3025,
-        "y": 628,
-        "w": 42,
-        "h": 82
+        "x": 3452,
+        "y": 2545,
+        "w": 84,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 254,
-        "w": 42,
-        "h": 82
+        "x": 120,
+        "y": 508,
+        "w": 84,
+        "h": 164
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 252.aseprite": {
       "frame": {
-        "x": 3067,
-        "y": 628,
-        "w": 42,
-        "h": 82
+        "x": 3536,
+        "y": 2545,
+        "w": 84,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 254,
-        "w": 42,
-        "h": 82
+        "x": 120,
+        "y": 508,
+        "w": 84,
+        "h": 164
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 253.aseprite": {
       "frame": {
-        "x": 3109,
-        "y": 628,
-        "w": 44,
-        "h": 82
+        "x": 3620,
+        "y": 2545,
+        "w": 88,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 254,
-        "w": 44,
-        "h": 82
+        "x": 120,
+        "y": 508,
+        "w": 88,
+        "h": 164
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 254.aseprite": {
       "frame": {
-        "x": 2711,
-        "y": 628,
-        "w": 44,
-        "h": 83
+        "x": 2824,
+        "y": 2545,
+        "w": 88,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 253,
-        "w": 44,
-        "h": 83
+        "x": 120,
+        "y": 506,
+        "w": 88,
+        "h": 166
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 255.aseprite": {
       "frame": {
-        "x": 2755,
-        "y": 628,
-        "w": 45,
-        "h": 83
+        "x": 2912,
+        "y": 2545,
+        "w": 90,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 253,
-        "w": 45,
-        "h": 83
+        "x": 120,
+        "y": 506,
+        "w": 90,
+        "h": 166
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 256.aseprite": {
       "frame": {
-        "x": 2800,
-        "y": 628,
-        "w": 45,
-        "h": 83
+        "x": 3002,
+        "y": 2545,
+        "w": 90,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 253,
-        "w": 45,
-        "h": 83
+        "x": 120,
+        "y": 506,
+        "w": 90,
+        "h": 166
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 257.aseprite": {
       "frame": {
-        "x": 2845,
-        "y": 628,
-        "w": 46,
-        "h": 83
+        "x": 3092,
+        "y": 2545,
+        "w": 92,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 253,
-        "w": 46,
-        "h": 83
+        "x": 120,
+        "y": 506,
+        "w": 92,
+        "h": 166
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 258.aseprite": {
       "frame": {
-        "x": 2232,
-        "y": 628,
-        "w": 47,
-        "h": 84
+        "x": 1866,
+        "y": 2545,
+        "w": 94,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 47,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 94,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 259.aseprite": {
       "frame": {
-        "x": 2279,
-        "y": 628,
-        "w": 47,
-        "h": 84
+        "x": 1960,
+        "y": 2545,
+        "w": 94,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 47,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 94,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 260.aseprite": {
       "frame": {
-        "x": 2326,
-        "y": 628,
-        "w": 48,
-        "h": 84
+        "x": 2054,
+        "y": 2545,
+        "w": 96,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 48,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 96,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 261.aseprite": {
       "frame": {
-        "x": 2374,
-        "y": 628,
-        "w": 48,
-        "h": 84
+        "x": 2150,
+        "y": 2545,
+        "w": 96,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 48,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 96,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 262.aseprite": {
       "frame": {
-        "x": 2422,
-        "y": 628,
-        "w": 49,
-        "h": 84
+        "x": 2246,
+        "y": 2545,
+        "w": 98,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 49,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 98,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 263.aseprite": {
       "frame": {
-        "x": 2065,
-        "y": 628,
-        "w": 50,
-        "h": 85
+        "x": 1666,
+        "y": 2545,
+        "w": 100,
+        "h": 170
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 251,
-        "w": 50,
-        "h": 85
+        "x": 120,
+        "y": 502,
+        "w": 100,
+        "h": 170
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 264.aseprite": {
       "frame": {
-        "x": 2891,
-        "y": 628,
-        "w": 46,
-        "h": 83
+        "x": 3184,
+        "y": 2545,
+        "w": 92,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 253,
-        "w": 46,
-        "h": 83
+        "x": 120,
+        "y": 506,
+        "w": 92,
+        "h": 166
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 265.aseprite": {
       "frame": {
-        "x": 2937,
-        "y": 628,
-        "w": 46,
-        "h": 83
+        "x": 3276,
+        "y": 2545,
+        "w": 92,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 253,
-        "w": 46,
-        "h": 83
+        "x": 120,
+        "y": 506,
+        "w": 92,
+        "h": 166
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 266.aseprite": {
       "frame": {
-        "x": 2471,
-        "y": 628,
-        "w": 47,
-        "h": 84
+        "x": 2344,
+        "y": 2545,
+        "w": 94,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 47,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 94,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 267.aseprite": {
       "frame": {
-        "x": 2518,
-        "y": 628,
-        "w": 47,
-        "h": 84
+        "x": 2438,
+        "y": 2545,
+        "w": 94,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 47,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 94,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 268.aseprite": {
       "frame": {
-        "x": 2565,
-        "y": 628,
-        "w": 48,
-        "h": 84
+        "x": 2532,
+        "y": 2545,
+        "w": 96,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 48,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 96,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 269.aseprite": {
       "frame": {
-        "x": 2613,
-        "y": 628,
-        "w": 49,
-        "h": 84
+        "x": 2628,
+        "y": 2545,
+        "w": 98,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 49,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 98,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 270.aseprite": {
       "frame": {
-        "x": 2662,
-        "y": 628,
-        "w": 49,
-        "h": 84
+        "x": 2726,
+        "y": 2545,
+        "w": 98,
+        "h": 168
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 252,
-        "w": 49,
-        "h": 84
+        "x": 120,
+        "y": 504,
+        "w": 98,
+        "h": 168
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 271.aseprite": {
       "frame": {
-        "x": 2115,
-        "y": 628,
-        "w": 50,
-        "h": 85
+        "x": 1766,
+        "y": 2545,
+        "w": 100,
+        "h": 170
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 251,
-        "w": 50,
-        "h": 85
+        "x": 120,
+        "y": 502,
+        "w": 100,
+        "h": 170
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 272.aseprite": {
       "frame": {
-        "x": 3777,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1111,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 273.aseprite": {
       "frame": {
-        "x": 3784,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1125,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 274.aseprite": {
       "frame": {
-        "x": 3784,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1125,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 275.aseprite": {
       "frame": {
-        "x": 3784,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1125,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 276.aseprite": {
       "frame": {
-        "x": 3784,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1125,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 277.aseprite": {
       "frame": {
-        "x": 3784,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1125,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 278.aseprite": {
       "frame": {
-        "x": 3784,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1125,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "proleg_terra2 279.aseprite": {
       "frame": {
-        "x": 3784,
-        "y": 834,
-        "w": 7,
-        "h": 5
+        "x": 1125,
+        "y": 3235,
+        "w": 14,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 331,
-        "w": 7,
-        "h": 5
+        "x": 120,
+        "y": 662,
+        "w": 14,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -5887,8 +5887,8 @@
     "image": "proleg_terra2.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4087,
-      "h": 877
+      "w": 4096,
+      "h": 3276
     },
     "scale": "1",
     "frameTags": [

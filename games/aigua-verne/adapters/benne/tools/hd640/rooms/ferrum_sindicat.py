@@ -23,6 +23,12 @@ from hd640.rooms.ferrum_comu import (
     RH, SMOG, SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WHITEV, BLACKT, FIREF, GLOWF, CLOTH, REDP, HELM,
     BLUEV, brick_lvl, qtext)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR = 214                     # on la paret del fons toca a terra
 LAMP = (300, 30)
 STOVE = (604, 220)              # l'estufa: centre x i base
@@ -493,7 +499,7 @@ def _frames_estufa():
     frames = []
     n = 6
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * Canvas.S, H * Canvas.S), (0, 0, 0, 0))
         cv = Canvas(light=LIGHT, img=img)
         for x in range(cx - 6, cx + 7):
             if x % 3 != 0:

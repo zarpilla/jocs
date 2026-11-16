@@ -4,20 +4,20 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -28,8 +28,8 @@
     "image": "verdant_residencia.png",
     "format": "RGBA8888",
     "size": {
-      "w": 640,
-      "h": 360
+      "w": 1280,
+      "h": 720
     },
     "scale": "1",
     "frameTags": [

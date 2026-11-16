@@ -4,125 +4,125 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "palau_control 1.aseprite": {
       "frame": {
-        "x": 693,
+        "x": 1385,
         "y": 0,
-        "w": 49,
-        "h": 92
+        "w": 98,
+        "h": 183
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 186,
-        "y": 108,
-        "w": 49,
-        "h": 92
+        "x": 372,
+        "y": 216,
+        "w": 98,
+        "h": 183
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "palau_control 2.aseprite": {
       "frame": {
-        "x": 742,
+        "x": 1483,
         "y": 0,
-        "w": 49,
-        "h": 92
+        "w": 98,
+        "h": 183
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 286,
-        "y": 108,
-        "w": 49,
-        "h": 92
+        "x": 572,
+        "y": 216,
+        "w": 98,
+        "h": 183
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "palau_control 3.aseprite": {
       "frame": {
-        "x": 791,
+        "x": 1581,
         "y": 0,
-        "w": 49,
-        "h": 92
+        "w": 98,
+        "h": 183
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 386,
-        "y": 108,
-        "w": 49,
-        "h": 92
+        "x": 772,
+        "y": 216,
+        "w": 98,
+        "h": 183
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "palau_control 4.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 53,
-        "h": 113
+        "w": 105,
+        "h": 226
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 508,
-        "y": 88,
-        "w": 53,
-        "h": 113
+        "x": 1016,
+        "y": 176,
+        "w": 105,
+        "h": 226
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "palau_control 5.aseprite": {
       "frame": {
-        "x": 840,
+        "x": 1679,
         "y": 0,
-        "w": 38,
-        "h": 30
+        "w": 76,
+        "h": 59
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 534,
-        "y": 62,
-        "w": 38,
-        "h": 30
+        "x": 1068,
+        "y": 125,
+        "w": 76,
+        "h": 59
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -133,8 +133,8 @@
     "image": "palau_control.png",
     "format": "RGBA8888",
     "size": {
-      "w": 878,
-      "h": 360
+      "w": 1755,
+      "h": 720
     },
     "scale": "1",
     "frameTags": [
