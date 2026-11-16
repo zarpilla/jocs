@@ -1323,7 +1323,6 @@
         {
           "verb": [
             "pull",
-            "push",
             "use"
           ],
           "if": {
@@ -1383,7 +1382,6 @@
         {
           "verb": [
             "pull",
-            "push",
             "use"
           ],
           "if": {
@@ -1399,7 +1397,6 @@
         {
           "verb": [
             "pull",
-            "push",
             "use"
           ],
           "lines": [

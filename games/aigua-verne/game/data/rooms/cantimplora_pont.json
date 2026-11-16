@@ -32,11 +32,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "protagonist": "vet"
           },
@@ -48,11 +44,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "capitana_accepta",
             "is": false
@@ -65,11 +57,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "goTo": "cantimplora_mapa"
         }
       ]
@@ -157,10 +145,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -244,10 +229,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -312,7 +294,18 @@
           "who": "iri",
           "text": "dlg.mapa.palau.2",
           "if": {
-            "flag": "nil_ajuda"
+            "not": {
+              "hasItem": "vestit_arreglat",
+              "who": "iri"
+            }
+          }
+        },
+        {
+          "who": "iri",
+          "text": "dlg.mapa.palau.3",
+          "if": {
+            "hasItem": "vestit_arreglat",
+            "who": "iri"
           }
         }
       ],

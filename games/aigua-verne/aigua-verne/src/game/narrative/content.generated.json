@@ -140,6 +140,7 @@
         "tomas_girat": false,
         "tornavis_agafat": false,
         "tractor_oliat": false,
+        "trampa_trepitjada": false,
         "trans_acte3_iri": false,
         "trans_acte3_vet": false,
         "trans_colada_fi": false,
@@ -1752,7 +1753,12 @@
                     "text": "sala.aqua_fons.porta_juana.4"
                   }
                 ],
-                "goTo": "casa_juana"
+                "goTo": "casa_juana",
+                "effects": [
+                  {
+                    "setFlag": "trampa_trepitjada"
+                  }
+                ]
               },
               {
                 "verb": [
@@ -1785,6 +1791,21 @@
                   {
                     "who": "player",
                     "text": "sala.aqua_fons.nanses.2"
+                  }
+                ],
+                "if": {
+                  "flag": "trampa_trepitjada"
+                }
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aqua_fons.nanses.3"
                   }
                 ]
               }
@@ -2099,11 +2120,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "grua_arreglada",
                   "is": false
@@ -2121,11 +2138,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -2654,13 +2667,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull",
-                  "pickUp"
-                ],
+                "verb": "look",
                 "if": {
                   "all": [
                     {
@@ -2716,13 +2723,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull",
-                  "pickUp"
-                ],
+                "verb": "look",
                 "if": {
                   "protagonist": "vet"
                 },
@@ -2734,13 +2735,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull",
-                  "pickUp"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -2849,11 +2844,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "pickUp"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -2867,10 +2858,7 @@
             "name": "sala.cantimplora_bodega.tauler.nom",
             "interactions": [
               {
-                "verb": [
-                  "look",
-                  "use"
-                ],
+                "verb": "look",
                 "dialogue": "tauler"
               }
             ]
@@ -2948,7 +2936,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "if": {
@@ -2982,7 +2969,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "if": {
@@ -3074,7 +3060,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "if": {
@@ -3111,7 +3096,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "lines": [
@@ -4265,11 +4249,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "protagonist": "vet"
                 },
@@ -4281,11 +4261,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "capitana_accepta",
                   "is": false
@@ -4298,11 +4274,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "goTo": "cantimplora_mapa"
               }
             ]
@@ -4390,10 +4362,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -4477,10 +4446,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -4545,7 +4511,18 @@
                 "who": "iri",
                 "text": "dlg.mapa.palau.2",
                 "if": {
-                  "flag": "nil_ajuda"
+                  "not": {
+                    "hasItem": "vestit_arreglat",
+                    "who": "iri"
+                  }
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.mapa.palau.3",
+                "if": {
+                  "hasItem": "vestit_arreglat",
+                  "who": "iri"
                 }
               }
             ],
@@ -4934,11 +4911,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4978,11 +4951,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "condensador_arreglat",
                   "is": false
@@ -5442,11 +5411,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5466,11 +5431,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5521,11 +5482,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5555,11 +5512,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -5571,11 +5524,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "motlle_preparat",
                   "is": false
@@ -5588,11 +5537,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -5615,11 +5560,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5639,11 +5580,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5694,11 +5631,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5728,11 +5661,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -5744,11 +5673,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "motlle_preparat",
                   "is": false
@@ -5761,11 +5686,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -5911,11 +5832,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "motlle_preparat",
                   "is": false
@@ -5928,11 +5845,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5952,11 +5865,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -6436,11 +6345,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -6473,11 +6378,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -6497,11 +6398,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -6513,11 +6410,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -6821,12 +6714,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -7492,12 +7380,7 @@
                 ]
               },
               {
-                "verb": [
-                  "look",
-                  "open",
-                  "pickUp",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -9353,7 +9236,6 @@
               {
                 "verb": [
                   "pull",
-                  "push",
                   "use"
                 ],
                 "if": {
@@ -9413,7 +9295,6 @@
               {
                 "verb": [
                   "pull",
-                  "push",
                   "use"
                 ],
                 "if": {
@@ -9429,7 +9310,6 @@
               {
                 "verb": [
                   "pull",
-                  "push",
                   "use"
                 ],
                 "lines": [
@@ -9818,22 +9698,14 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "talkTo",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_subhasta"
                 },
                 "dialogue": "subhasta"
               },
               {
-                "verb": [
-                  "use",
-                  "talkTo",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -10909,10 +10781,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -11214,12 +11083,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "pull",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -11267,12 +11131,7 @@
                 ]
               },
               {
-                "verb": [
-                  "look",
-                  "open",
-                  "pickUp",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -11332,12 +11191,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "pull",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -21340,7 +21194,7 @@
       "dlg.juana.peixos.2": "Diu que valdran més quan en quedi un.",
       "dlg.juana.peixos.3": "Això és...",
       "dlg.juana.peixos.4": "Sí. Ho és.",
-      "dlg.juana.llavors.1": "Ja les he anades a buscar mentre baixàveu. Gràcies.",
+      "dlg.juana.llavors.1": "Ja ho sé. La Capitana me les baixarà amb la cistella quan pugeu. Gràcies.",
       "dlg.juana.llavors.2": "Les sembraré aquí, al fons del mar. Algun dia serà el fons d'un camp. O d'un mar. Ja veurem què arriba primer.",
       "dlg.juana.opt.vendre": "La vendria. A bon preu.",
       "dlg.juana.opt.regalar": "La regalaria. Però només a qui m'agrada.",
@@ -21381,8 +21235,9 @@
       "dlg.mapa.verdant.2": "La Cantimplora tossa, tremola, s'enlaira...",
       "dlg.mapa.verdant.3": "...i aterra a Verdant, en una pista de gespa artificial.",
       "dlg.mapa.verdant.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
-      "dlg.mapa.palau.1": "Sense invitació, el palau no deixa atracar ni un mosquit. I la Cantimplora és un mosquit molt gros.",
-      "dlg.mapa.palau.2": "Hi hem d'anar per una altra via. La llançadora d'en Nil, i la invitació.",
+      "dlg.mapa.palau.1": "Amb invitació o sense, el palau no deixa atracar ni un mosquit. I la Cantimplora és un mosquit molt gros.",
+      "dlg.mapa.palau.2": "Hi hem d'anar per una altra via: la llançadora d'en Nil. La invitació ja la tenim; el que em falta és un vestit de gala.",
+      "dlg.mapa.palau.3": "Hi hem d'anar per una altra via: la llançadora d'en Nil. Invitació i vestit, ja els tinc. Abans, però, cal deixar la Cantimplora en ordre.",
       "dlg.capitana.primera.1": "Mira qui torna. La pilot que em va llogar el meu propi motor.",
       "dlg.capitana.primera.2": "Te'l vaig tornar.",
       "dlg.capitana.primera.3": "Sense el carburador.",
@@ -21507,7 +21362,7 @@
       "dlg.tomas.opt.informe": "Què li has dit, al Magnat?",
       "dlg.tomas.informe.1": "«Les germanes han plegat. La Vet plora. Hem menjat llenties.» M'ha contestat: «Excel·lent.»",
       "dlg.barril.opt.cas": "Això és el cas.",
-      "dlg.barril.opt.mirar": "(Mirar el barril.)",
+      "dlg.barril.opt.mirar": "(Donar el barril a la canalla.)",
       "dlg.barril.opt.no": "Ara no.",
       "dlg.barril.inici.1": "Ni ho pensis.",
       "dlg.barril.inici.2": "La canalla del piquet té tres garrafes per a quaranta.",
@@ -21516,9 +21371,9 @@
       "dlg.barril.inici.sola.vet": "L'últim barril. És el nostre. Per si de cas.",
       "dlg.barril.iri.1": "...Fes-ho. Abans que m'ho pensi.",
       "dlg.barril.iri.1.sola": "La Vet m'ho perdonarà. Algun dia.",
-      "dlg.barril.vet.1": "Per si de cas. *(sospira)* Això és el cas, oi?",
+      "dlg.barril.vet.1": "Per si de cas. (sospira) Això és el cas, oi?",
       "dlg.barril.vet.2": "Ho és.",
-      "dlg.barril.vet.1.sola": "Per si de cas. *(sospira)* La canalla del piquet té tres garrafes per a quaranta. Això és el cas.",
+      "dlg.barril.vet.1.sola": "Per si de cas. (sospira) La canalla del piquet té tres garrafes per a quaranta. Això és el cas.",
       "dlg.barril.baixar.1": "Baixen el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
       "dlg.barril.baixar.1.sola": "Baixa el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
       "dlg.tauler.inici.1": "Els paperets del tauler, amb la lletra de la Vet:",
@@ -21690,7 +21545,7 @@
       "dlg.trucada.no.9": "A mi no em mireu.",
       "dlg.trucada.no.10": "I la invitació diu «Etiqueta rigorosa». Jo només tinc aquesta jaqueta.",
       "dlg.trucada.no.11": "I la Capitana, un impermeable.",
-      "dlg.trucada.no.12": "...Al sindicat de Ferrum hi havia un vestit. Horrible. *(pausa)* Perfecte.",
+      "dlg.trucada.no.12": "...Al sindicat de Ferrum hi havia un vestit. Horrible. (pausa) Perfecte.",
       "dlg.verne_galeria.opt.piscines": "Per què són buides, les piscines?",
       "dlg.verne_galeria.opt.aigua": "I vostè, quina aigua beu?",
       "dlg.verne_galeria.opt.reserva": "No té aigua, aquí dalt?",
@@ -21887,7 +21742,7 @@
       "acte.3": "Acte 3 · Vint-i-tres piscines",
       "esc.esc1.1": "Hi ha d'haver algú que la té tota.",
       "esc.esc1.2": "Ho posa a la bomba: Verne.",
-      "esc.esc1.3": "Necessitem algú que vola a tot arreu i ho sap tot.",
+      "esc.esc1.3": "Necessitem algú que voli a tot arreu i ho sàpiga tot.",
       "esc.esc1.4": "La Capitana.",
       "esc.esc1.5": "La Capitana.",
       "esc.esc1.6": "Que no et parla des que li vas vendre el seu propi motor.",
@@ -22012,12 +21867,12 @@
       "ui.controls.titol": "Com es juga",
       "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
       "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
-      "ui.controls.dit.2": "Els punts ensenyen un moment tot el que es pot tocar. L'inventari, a baix a la dreta.",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
       "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
       "ui.controls.ratoli.dret": "Clic dret: la mires.",
       "ui.controls.ratoli.esquerre.mira": "Clic esquerre: la mires. Mantingues-lo premut per triar què hi fas.",
       "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
-      "ui.controls.ratoli.punts": "Els punts ensenyen un moment tot el que es pot clicar.",
+      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
       "ui.controls.nomostris": "No ho tornis a mostrar",
       "ui.controls.dacord": "D'acord",
       "ui.opcions.botons": "clic esquerre per mirar",
@@ -22078,7 +21933,7 @@
       "obj.carta_juana.nom": "carta de la Juana",
       "obj.carta_juana.desc": "La carta de la Juana per a en Bru, amb un segell de cera amb un peix.",
       "obj.nota_lia.nom": "nota per a la Lia",
-      "obj.nota_lia.desc": "Al dors de la carta de la Juana, en Bru ha escrit: «Lia: fes-los cas. Et vinc a buscar al moll. Papa.»",
+      "obj.nota_lia.desc": "Al dors de la carta de la Juana, en Bru ha escrit: «Lia: fes-los cass. Et vinc a buscar al moll. Papa.»",
       "obj.motlle.nom": "motlle",
       "obj.motlle.desc": "El motlle de les tres claus. Pesa com un remordiment.",
       "obj.motlle.no": "El motlle pesa massa per a la Mosca.",
@@ -22192,7 +22047,7 @@
       "pj.juana.1": "La Juana. Científica. Viu al fons d'un mar que no hi és.",
       "pj.bru.1": "En Bru. Fonedor, cap de la vaga i braços com columnes.",
       "pj.rosa.1": "Una minera amb casc. Té el nas d'en Tomàs.",
-      "pj.nil.1": "En Nil, el jardiner. Parla amb les flors de plàstic. Elles no li contesten, però escolten.",
+      "pj.nil.1": "En Nil, el jardiner. Parla amb les flors de plàstic. En veu baixa, perquè no s'espantin.",
       "pj.lia.1": "Una noia amb uniforme de servei i una fregona. Té el nas d'en Bru.",
       "pj.verne.1": "L'Aurelià Verne. El Magnat. Vestit blanc, ungles perfectes, somriure de lloguer.",
       "pj.verne.2": "Ara és a l'escenari. No m'escoltaria.",
@@ -22200,7 +22055,7 @@
       "pj.dividend.2": "Hola, Dividend.",
       "pj.dividend.3": "Guau.",
       "pj.dividend.4": "Mossega. Segur que mossega en crèdits.",
-      "pj.fidel.1": "En Fidel. Un robot majordom amb llacet. Programat per distingir la gent solvent de la gent.",
+      "pj.fidel.1": "En Fidel. Un robot majordom amb llacet. Té un ull per a la cara i un altre per a la cartera.",
       "pj.holm.1": "En Holm, director del Banc de Vesper. Somriu com el Magnat, però més fred.",
       "pj.kessel.1": "La senyora Kessel. Abric de pells sintètiques i una mascareta d'oxigen daurada.",
       "pista.escriptura.1": "L'escriptura és en algun racó de la casa del pare. El pare ho guarda tot... però sap on és cada cosa.",
@@ -22733,6 +22588,7 @@
       "sala.aqua_fons.porta_juana.4": "He trepitjat una trampa. Era una trampa de peixos. No fa res. Però fa pudor.",
       "sala.aqua_fons.nanses.1": "Nanses. Trampes de peixos. Esperant peixos des de fa anys. Com nosaltres l'aigua.",
       "sala.aqua_fons.nanses.2": "Ja n'he trepitjat una. Prou.",
+      "sala.aqua_fons.nanses.3": "Millor no tocar-les. Fan cara de mossegar.",
       "sala.aqua_fons.boies.1": "Boies de mesurar, clavades a la sorra, amb números pintats: 40, 38, 36, 34... Cada una, més avall que l'anterior.",
       "sala.aqua_fons.boies.2": "Algú mesura com baixa el mar. Dos metres cada vegada.",
       "sala.aqua_fons.bassal.1": "L'última aigua del mar d'Aqua. Hi cap una gavina. Si s'aprima.",

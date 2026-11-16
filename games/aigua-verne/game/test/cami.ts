@@ -95,7 +95,7 @@ export function acte2(p: Jugador, n: Narrative, barril: boolean) {
     anar(p, n, 'ferrum_carrer');
     p.use('corretja', 'condensador');
     p.use('filtre', 'condensador');
-    p.do('push', 'condensador');
+    p.do('use', 'condensador');
   }
   expect(n.flag('canalla_beu')).toBe(true);
   amb(p, 'iri');
@@ -119,7 +119,7 @@ export function acte2(p: Jugador, n: Narrative, barril: boolean) {
   p.do('pickUp', 'metall');
   p.do('use', 'rascle');
   amb(p, 'iri');
-  p.do('pull', 'gresol');
+  p.do('use', 'gresol');
   p.use('sorra', 'llit');
   expect(n.flag('claus_fetes')).toBe(true);
   expect(n.getVar('escena')).toBe(5);

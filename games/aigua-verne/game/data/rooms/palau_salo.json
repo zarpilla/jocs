@@ -57,22 +57,14 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "talkTo",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "sync_subhasta"
           },
           "dialogue": "subhasta"
         },
         {
-          "verb": [
-            "use",
-            "talkTo",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

@@ -305,11 +305,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -342,11 +338,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -366,11 +358,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "sync_colada"
           },
@@ -382,11 +370,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

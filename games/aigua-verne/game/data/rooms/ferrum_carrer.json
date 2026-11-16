@@ -256,11 +256,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -300,11 +296,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "condensador_arreglat",
             "is": false

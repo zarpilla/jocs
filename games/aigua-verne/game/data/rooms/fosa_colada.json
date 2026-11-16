@@ -32,11 +32,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -56,11 +52,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -111,11 +103,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -145,11 +133,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "sync_colada"
           },
@@ -161,11 +145,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "motlle_preparat",
             "is": false
@@ -178,11 +158,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -205,11 +181,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -229,11 +201,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -284,11 +252,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -318,11 +282,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "sync_colada"
           },
@@ -334,11 +294,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "motlle_preparat",
             "is": false
@@ -351,11 +307,7 @@
           ]
         },
         {
-          "verb": [
-            "pull",
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -501,11 +453,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "motlle_preparat",
             "is": false
@@ -518,11 +466,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -542,11 +486,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "sync_colada"
           },

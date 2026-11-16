@@ -172,11 +172,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "flag": "grua_arreglada",
             "is": false
@@ -194,11 +190,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
