@@ -11,9 +11,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -40,9 +40,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -69,9 +69,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "passadis"
         },
@@ -91,9 +91,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "sala_radio"
         },
@@ -113,9 +113,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "var": "escena",
@@ -131,9 +131,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "pal"
         },
@@ -151,6 +151,28 @@
     "terminal": {
       "name": "sala.pont.terminal.nom",
       "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "all": [
+              {
+                "var": "escena",
+                "op": "==",
+                "value": 9
+              },
+              {
+                "flag": "antena_ok",
+                "is": false
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.pont.terminal.27"
+            }
+          ]
+        },
         {
           "verb": "look",
           "if": {
@@ -1004,26 +1026,18 @@
           }
         },
         {
-          "verb": [
-            "open",
-            "pickUp"
-          ],
-          "action": {
-            "name": "munta.recollir"
-          }
-        },
-        {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
               "text": "sala.pont.munta.2"
             }
-          ]
+          ],
+          "if": {
+            "var": "munta_pont",
+            "op": "==",
+            "value": ""
+          }
         }
       ]
     },
@@ -1035,15 +1049,6 @@
         "value": ""
       },
       "interactions": [
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pont.safata.1"
-            }
-          ]
-        },
         {
           "verb": [
             "pickUp",
@@ -1085,29 +1090,16 @@
             "talkTo",
             "use"
           ],
-          "if": {
-            "flag": "tub_de_veu",
-            "is": false
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.pont.boca.3"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "talkTo",
-            "use"
-          ],
           "effects": [
             {
               "setFlag": "cara_a_cara",
               "value": false
             }
           ],
-          "dialogue": "tub"
+          "dialogue": "tub",
+          "if": {
+            "flag": "tub_de_veu"
+          }
         }
       ]
     },
@@ -1150,11 +1142,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "if": {
             "protagonist": "iri"
           },
@@ -1166,11 +1154,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

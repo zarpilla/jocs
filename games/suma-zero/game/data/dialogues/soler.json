@@ -16,6 +16,14 @@
       "node": "buscant"
     },
     {
+      "if": {
+        "var": "reinicis_aeroport",
+        "op": ">=",
+        "value": 1
+      },
+      "node": "hola_altra"
+    },
+    {
       "node": "hola"
     }
   ],
@@ -25,6 +33,15 @@
         {
           "who": "soler",
           "text": "dlg.soler.hola"
+        }
+      ],
+      "goto": "menu"
+    },
+    "hola_altra": {
+      "lines": [
+        {
+          "who": "soler",
+          "text": "dlg.soler.hola_altra"
         }
       ],
       "goto": "menu"
@@ -59,10 +76,6 @@
         }
       ],
       "lines": [
-        {
-          "who": "title",
-          "text": "sync.titol"
-        },
         {
           "who": "soler",
           "text": "dlg.soler.fill1",
@@ -174,6 +187,15 @@
         {
           "who": "narrator",
           "text": "dlg.soler.busca2"
+        },
+        {
+          "who": "title",
+          "text": "sync.titol",
+          "if": {
+            "var": "reinicis_aeroport",
+            "op": "<",
+            "value": 1
+          }
         }
       ]
     },

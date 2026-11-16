@@ -29,6 +29,7 @@ GAMES = HERE.parents[3]
 TOOLS = GAMES / 'ni-un-ou/adapters/benne/tools'
 sys.path.insert(0, str(TOOLS))
 sys.path.insert(0, str(HERE))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 from hd.pix import Canvas, Light, hr, mix, WALNUT, RUST, RED  # noqa: E402
@@ -448,7 +449,7 @@ def main():
     screen = Image.new('RGBA', (W, 360), (0, 0, 0, 255))
     screen.alpha_composite(petita, (0, 0))
     screen.alpha_composite(bar, (0, 260))
-    screen.resize((W * 2, 720), Image.NEAREST).save(HERE / 'granja-pati-joc.png')
+    nearest(screen, (W * 2, 720)).save(HERE / 'granja-pati-joc.png')
 
     # comparativa: de lluny (83 px) a dalt, de prop (110 px) a baix
     comp = Image.new('RGBA', (W, RH * 2 + 40), (24, 22, 26, 255))
@@ -457,7 +458,7 @@ def main():
     comp.alpha_composite(petita, (0, 20))
     d.text((8, RH + 24), 'De prop: ~110 px (la mida de Ni un ou a 640x360), a la mateixa sala', fill=(240, 230, 200))
     comp.alpha_composite(gran, (0, RH + 40))
-    comp.resize((W * 2, comp.height * 2), Image.NEAREST).save(HERE / 'comparativa.png')
+    nearest(comp, (W * 2, comp.height * 2)).save(HERE / 'comparativa.png')
     print('granja-pati.png, granja-pati-joc.png, comparativa.png')
 
 

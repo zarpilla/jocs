@@ -10,11 +10,18 @@ Props: `llibre`, `llanterna`. ANIMS: `manometres` (les agulles tremolen) i `gota
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
 import math
+from functools import lru_cache
 
 from hd.pix import Canvas, Light, W, H, hr, mix, B4, PAPER, RUST
 from hd.rooms.arenga import (WALL, ENG, ENG_LIGHT, CAB, DARK, WHITEP, YELL, REDP, SEAG, BRASS, WARM,
                              box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms.comu import _diff, text, text_width
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 K = 4 / 3
 FLOOR_Y = 203
@@ -367,7 +374,7 @@ def floor(cv):
 
 def gloss(cv, mask, k=0.22):
     """Reflex suau de la paret al terra (pintura brillant) i dels llums."""
-    src = cv.img.copy().load()
+    src, S = cv.img.copy().load(), cv.S                              # (src, en píxels reals)
     for y in range(FLOOR_Y + 1, BOTTOM + 12):
         f = k * max(0.0, 1 - (y - FLOOR_Y) / 40)
         for x in range(W):
@@ -375,7 +382,7 @@ def gloss(cv, mask, k=0.22):
                 continue
             sy = 2 * FLOOR_Y - y
             if 0 <= sy < FLOOR_Y:
-                cv.flat(x, y, mix(cv.get(x, y), src[x, sy][:3], f))
+                cv.flat(x, y, mix(cv.get(x, y), src[x * S, sy * S][:3], f))
     for lx in LAMPS:
         for y in range(FLOOR_Y + 2, FLOOR_Y + 40):
             t = (y - FLOOR_Y) / 40
@@ -449,28 +456,23 @@ def torch_body(cv):
 
 def torch_beam(cv):
     """El feix de llum: un con a terra cap a la dreta, i una taca a la bancada de la bomba vermella."""
-    for y in range(213, 261):
-        for x in range(318, 459):
-            t = (x - 318) / 141
-            half = 4 + t * 35
-            dy = abs(y - 242 + t * 8)
-            if dy < half:
-                k = 0.55 * (1 - t) ** 0.7 * (1 - (dy / half) ** 2)
-                if k > B4[y & 3][x & 3] * 0.5:
-                    cv.flat(x, y, mix(cv.get(x, y), (255, 238, 170), min(0.75, k + 0.1)))
+    for X, Y, x, y in cv.pixels(318, 213, 458, 260):                  # (a la resolució real)
+        t = max(0.0, (x - 318) / 141)
+        half = 4 + t * 35
+        dy = abs(y - 242 + t * 8)
+        if dy < half:
+            k = 0.55 * (1 - t) ** 0.7 * (1 - (dy / half) ** 2)
+            if k > B4[Y & 3][X & 3] * 0.5:
+                cv.P[X, Y] = mix(cv.P[X, Y], (255, 238, 170), min(0.75, k + 0.1)) + (255,)
     glow(cv, 317, 242, 13, (255, 250, 220), 0.9)
     glow(cv, 400, 200, 24, (255, 238, 170), 0.35)
 
 
-_BASE = {}
-
-
+@lru_cache(maxsize=1)
 def _base_img():
-    if 'img' not in _BASE:
-        b = Canvas(light=LIGHT)
-        bg(b)
-        _BASE['img'] = b.img
-    return _BASE['img']
+    b = Canvas(light=LIGHT)
+    bg(b)
+    return b.img
 
 
 def _frame_base():

@@ -16,6 +16,12 @@ from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import _diff, text, text_width
 from hd640.font import font640, text_width as fw, draw_text
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 PHONE = (245, 8, 395, 237)
 SCR = (253, 21, 387, 224)
 
@@ -78,6 +84,13 @@ def room(cv):
                     cv.flat(gx + (k // 5), gy + k, (40, 48, 72))
 
 
+def _write(cv, glyphs, s, x, y, col):
+    """Text amb la lletra de 640 (en píxels de sala: es pinta en una capa d'1× i s'amplia)."""
+    lay = Canvas1x(transparent=True)
+    draw_text(lay.img, glyphs, s, x, y, col, outline=None)
+    cv.blit(lay.img)
+
+
 def _round(cv, x0, y0, x1, y1, r, ramp, lvl, lit=0.0, edge_lvl=None):
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
@@ -132,7 +145,7 @@ def screen(cv, dots=0):
     cv.flat(ax - 2, ay, (200, 220, 240))
     cv.flat(ax + 2, ay, (200, 220, 240))
     bold, reg = font640(True), font640(False)
-    draw_text(cv.img, bold, 'Juana', x0 + 34, y0 + 7, TXT, outline=None)
+    _write(cv, bold, 'Juana', x0 + 34, y0 + 7, TXT)
     text(cv, 'EN LÍNIA', x0 + 35, y0 + 23, [(90, 200, 120)], 0, lit=0, flat=(90, 200, 120))
     cv.hline(x0, x1, y0 + 30, UI, 3.4, lit=0)
     # el missatge, en tres bombolles
@@ -144,7 +157,7 @@ def screen(cv, dots=0):
         bh = len(lines) * 11 + 6
         bubble(cv, x0 + 5, y, x0 + 5 + bw, y + bh)
         for i, s in enumerate(lines):
-            draw_text(cv.img, reg, s, x0 + 10, y - 2 + i * 11, TXT, outline=None)
+            _write(cv, reg, s, x0 + 10, y - 2 + i * 11, TXT)
         if hour:
             text(cv, hour, x0 + 5 + bw - text_width(hour) - 3, y + bh - 7, [DIM], 0, lit=0, flat=DIM)
         y += bh + 3

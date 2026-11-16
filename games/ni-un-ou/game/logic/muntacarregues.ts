@@ -47,7 +47,7 @@ export function enviar(n: Narrative, item: string, altraSala: string | null): Ac
   if (String(n.getVar(safata(cap)) ?? '')) return { lines: [player('munta.ple', { parada: n.t(`munta.cap.${cap}`) })] };
 
   n.apply([{ takeItem: item }, { setVar: safata(cap), value: item }]);
-  const objecte = n.t(`obj.${item}.amb_article`);
+  const objecte = ambArticle(n, item);
   return { lines: [{ ...player('munta.envia', { objecte, parada: n.t(`munta.cap.${cap}`) }), sound: 'muntacarregues' }, ...extra(n, `munta.${item}.envia`)] };
 }
 
@@ -57,7 +57,7 @@ export function recollir(n: Narrative): ActionResult {
   const item = String(n.getVar(safata(aqui)) ?? '');
   if (!item) return { lines: [player('munta.buit')] };
   n.apply([{ setVar: safata(aqui), value: '' }, { giveItem: item }]);
-  const objecte = n.t(`obj.${item}.amb_article`);
+  const objecte = ambArticle(n, item);
   return { lines: [player('munta.recull', { objecte }), ...extra(n, `munta.${item}.recull`)] };
 }
 
@@ -73,11 +73,21 @@ export function nota(n: Narrative, item: string, parada: Parada): ActionResult {
     const aqui = paradaActual(n);
     if (aqui && !String(n.getVar(safata(aqui)) ?? '')) n.apply({ setVar: safata(aqui), value: abans });
     else n.apply({ giveItem: abans });
-    lines.push(player('munta.retorna', { objecte: n.t(`obj.${abans}.amb_article`) }));
+    lines.push(player('munta.retorna', { objecte: ambArticle(n, abans) }));
   }
   n.apply({ setVar: safata(parada), value: item });
-  lines.push({ ...player('munta.envia', { objecte: n.t(`obj.${item}.amb_article`), parada: n.t(`munta.cap.${parada}`) }), sound: 'muntacarregues' });
+  lines.push({ ...player('munta.envia', { objecte: ambArticle(n, item), parada: n.t(`munta.cap.${parada}`) }), sound: 'muntacarregues' });
   return { lines };
+}
+
+/**
+ * L'objecte amb l'article, dit per la protagonista activa: si és seu (`props.de`) i té una forma pròpia
+ * (`obj.<objecte>.meu`), aquesta («la meva nota», no «el paper de l'Iri» dit per l'Iri).
+ */
+function ambArticle(n: Narrative, item: string): string {
+  const meu = `obj.${item}.meu`;
+  if (n.content.items[item]?.props?.de === n.world.activeProtagonist() && n.i18n.has(meu)) return n.t(meu);
+  return n.t(`obj.${item}.amb_article`);
 }
 
 /** Línies pròpies d'un objecte en enviar-lo o recollir-lo (`munta.<objecte>.envia`, `.recull`, `.recull2`...). */

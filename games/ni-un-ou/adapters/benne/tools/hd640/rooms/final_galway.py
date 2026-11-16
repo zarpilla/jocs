@@ -15,6 +15,12 @@ from hd.pix import Light, Canvas, W, H, hr, mix, IRON
 from hd.rooms.comu import _diff, text, text_width
 from hd.rooms.exterior import arenga, fbm, smooth, sheer, STEELX, ROPE
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 K = 4 / 3
 HOR = 131
 QUAY = 171          # la vora del moll (el que hi ha per sota tapa la flotació)
@@ -316,7 +322,7 @@ def tv_news(cv, frame=0):
     cv.rect(x0, y1 - 6, x1, y1, [(230, 230, 226)], 0, lit=0)
     tw = text_width(TICKER)
     off = (frame * 4) % tw
-    tmp = Canvas(w=tw * 2 + 4, h=6, transparent=True)
+    tmp = Canvas1x(w=tw * 2 + 4, h=6, transparent=True)            # (en píxels de sala)
     text(tmp, TICKER + TICKER, 0, 0, [(30, 30, 40)], 0, lit=0, flat=(30, 30, 40))
     tp = tmp.img.load()
     for x in range(x0 + 1, x1):
@@ -470,7 +476,8 @@ def _frames_badia():
     ref = Canvas(light=LIGHT)
     bay(ref, 0.0, boat=False)
     rp, bp = ref.img.load(), base.img.load()
-    open_ = [(x, y) for y in range(HOR + 3, QUAY + 5) for x in range(W) if bp[x, y] == rp[x, y]]
+    S = base.S                                                        # (en píxels reals: art a 2×)
+    open_ = [(X, Y) for Y in range((HOR + 3) * S, (QUAY + 5) * S) for X in range(base.w) if bp[X, Y] == rp[X, Y]]
     frames = []
     for i in range(BAY_N):
         a, b = Canvas(light=LIGHT), Canvas(light=LIGHT)
@@ -479,8 +486,8 @@ def _frames_badia():
         w = max(0, i - (BAY_N - BAY_FADE)) / BAY_FADE
         out = base.img.copy()
         o, ap, bpp = out.load(), a.img.load(), b.img.load()
-        for x, y in open_:
-            o[x, y] = bpp[x, y] if hr(x, y, 91) < w else ap[x, y]
+        for X, Y in open_:
+            o[X, Y] = bpp[X, Y] if hr(X // S, Y // S, 91) < w else ap[X, Y]
         frames.append(_diff(out, base.img))
     return frames
 

@@ -30,9 +30,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "camarot_iri"
         },
@@ -93,9 +93,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -122,9 +122,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -152,9 +152,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "sala_maquines"
         },
@@ -234,8 +234,8 @@
         },
         {
           "verb": [
-            "use",
-            "push"
+            "push",
+            "use"
           ],
           "if": {
             "protagonist": "iri"
@@ -249,8 +249,8 @@
         },
         {
           "verb": [
-            "use",
-            "push"
+            "push",
+            "use"
           ],
           "lines": [
             {
@@ -298,9 +298,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -323,9 +323,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "pallol"
         },
@@ -345,9 +345,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -370,9 +370,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "var": "escena",
@@ -388,9 +388,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "sala_bombes"
         },
@@ -410,9 +410,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -435,9 +435,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "passadis"
         },

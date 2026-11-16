@@ -30,6 +30,7 @@ from PIL import Image, ImageDraw
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent))
+from pixels import nearest  # noqa: E402
 
 from escala import RESOLUCIO  # noqa: E402
 if RESOLUCIO == 640:
@@ -50,10 +51,24 @@ def has_hd(name):
     return (ROOMS / f'{name}.py').exists()
 
 
+def art_scale(name):
+    """Píxels de l'art per píxel de sala: 2 si la sala té `ART_SCALE = 2` (es dibuixa amb hd1280.Canvas2x)."""
+    return getattr(load(name), 'ART_SCALE', 1)
+
+
+def canvas_class(name):
+    if art_scale(name) == 1:
+        return Canvas
+    from hd1280.canvas2x import Canvas2x, S
+    assert art_scale(name) == S, f'{name}: ART_SCALE només pot ser 1 o {S}'
+    return Canvas2x
+
+
 def render(name, prop_ids=None):
-    """→ (fons RGBA, {id: fotograma RGBA})."""
+    """→ (fons RGBA, {id: fotograma RGBA}), a la mida de l'art (×ART_SCALE)."""
     mod = load(name)
     light = getattr(mod, 'LIGHT', None)
+    Canvas = canvas_class(name)
     cv = Canvas(light=light)
     mod.bg(cv)
     props = {}
@@ -73,9 +88,10 @@ def front(name, bg):
         return None
     img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
     src, dst = bg.load(), img.load()
+    s = bg.size[0] // W                       # la màscara és en píxels de sala
     for y in range(bg.size[1]):
         for x in range(bg.size[0]):
-            if f['mask'](x, y):
+            if f['mask'](x // s, y // s):
                 dst[x, y] = src[x, y]
     return img, f
 
@@ -95,7 +111,8 @@ def _code_key(name):
     """Hash del codi que dibuixa la sala: pix.py (i hd640/__init__.py) i els mòduls de sala que fa servir (vegeu _deps)."""
     import hashlib
     tools = HERE.parent
-    files = [HERE / 'pix.py', tools / 'hd640' / '__init__.py'] + sorted(_deps(name))
+    files = [HERE / 'pix.py', tools / 'hd640' / '__init__.py', tools / 'hd640' / 'llum.py',
+             tools / 'hd1280' / 'canvas2x.py', HERE / 'rooms' / 'comu.py'] + sorted(_deps(name))
     h = hashlib.sha256()
     for f in files:
         if f.exists():
@@ -163,7 +180,7 @@ def main():
     bg.save(out / f'{name}.png')
 
     def x3(img, path):
-        img.crop((0, 0, W, VISIBLE_H)).resize((W * 3, VISIBLE_H * 3), Image.NEAREST).save(path)
+        nearest(img.crop((0, 0, W, VISIBLE_H)), (W * 3, VISIBLE_H * 3)).save(path)
 
     x3(bg, out / f'{name}_x3.png')
     full = bg.copy()
@@ -181,7 +198,7 @@ def main():
         for f in frames:
             im = bg.copy()
             im.alpha_composite(f)
-            gif.append(im.crop((0, 0, W, VISIBLE_H)).resize((W * 2, VISIBLE_H * 2), Image.NEAREST).convert('RGB'))
+            gif.append(nearest(im.crop((0, 0, W, VISIBLE_H)), (W * 2, VISIBLE_H * 2)).convert('RGB'))
         gif[0].save(out / f'{name}_{aid}.gif', save_all=True, append_images=gif[1:], duration=ms, loop=0)
 
     # Depuració: zones, terra, personatges
@@ -200,7 +217,7 @@ def main():
                     dbg.alpha_composite(spr, (fx - feet['x'], fy - feet['y']))
             if behind and fr:
                 dbg.alpha_composite(fr[0])
-    big = dbg.resize((W * 3, H * 3), Image.NEAREST)
+    big = nearest(dbg, (W * 3, H * 3))
     d = ImageDraw.Draw(big)
     if design:
         d.polygon([(Pt(x, y)[0] * 3 + 1, Pt(x, y)[1] * 3 + 1) for x, y in design['walkable']], outline=(0, 255, 0))

@@ -24,6 +24,7 @@ from PIL import Image
 HERE = Path(__file__).resolve().parent
 GAMES = HERE.parents[3]
 sys.path.insert(0, str(GAMES / 'ni-un-ou/adapters/benne/tools'))
+from pixels import nearest  # noqa: E402
 
 from hd.characters import M, person, SKIN_IRI, SKIN_VET, BOOT, STEELB, BRASS, LENS, HAIR_COPPER  # noqa: E402
 
@@ -259,7 +260,7 @@ def main():
     cols = [(IRI, f) for f in 'DLU'] + [(VET, f) for f in 'DLU']
     sheet = Image.new('RGBA', (49 * len(cols) * S, 87 * S), (196, 176, 140, 255))
     for i, (spec, f) in enumerate(cols):
-        img = figura(spec, f).resize((49 * S, 87 * S), Image.NEAREST)
+        img = nearest(figura(spec, f), (49 * S, 87 * S))
         sheet.alpha_composite(img, (i * 49 * S, 0))
     sheet.save(HERE / 'personatges.png')
     print('personatges.png')

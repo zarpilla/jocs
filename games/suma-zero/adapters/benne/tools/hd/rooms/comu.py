@@ -73,14 +73,12 @@ def poster(cv):
 
 
 def _diff(frame, base):
-    """Només els píxels que canvien respecte del fons (la resta, transparent)."""
-    out = frame.copy()
-    a, b, o = frame.load(), base.load(), out.load()
-    for y in range(H):
-        for x in range(W):
-            if a[x, y] == b[x, y]:
-                o[x, y] = (0, 0, 0, 0)
-    return out
+    """Només els píxels que canvien respecte del fons (la resta, transparent). De qualsevol mida (art a 2×)."""
+    import numpy as np
+    from PIL import Image
+    a, b = np.asarray(frame.convert('RGBA')), np.asarray(base.convert('RGBA'))
+    keep = (a != b).any(axis=2)
+    return Image.fromarray(np.where(keep[..., None], a, 0).astype(np.uint8), 'RGBA')
 
 
 # ─── Text petit (rètols, cartells, pantalles) ──────────────────────────────

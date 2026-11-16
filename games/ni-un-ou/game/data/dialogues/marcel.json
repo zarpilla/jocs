@@ -172,7 +172,8 @@
           "if": {
             "protagonist": "vet"
           },
-          "next": "gat_vet"
+          "next": "gat_vet",
+          "once": true
         },
         {
           "id": "adeu",

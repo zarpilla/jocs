@@ -39,11 +39,14 @@ from hd640.gui_rest import write_sheet, key_image, GAME  # noqa: E402
 W, H = 640, 288                         # l'alçada mínima (20:9); la pantalla pot ser més alta (pantalla.py)
 FRANJA = 260                            # a sota, la franja: la frase
 FONT, BOLD = 'suma-regular', 'suma-negreta'
+# el verb de la frase: el color de la frase, més apagat (el nom és el que compta)
+VERB_DIM = '#' + ''.join(f'{round(int(VERB_LINE[i:i + 2], 16) * 0.6):02x}' for i in (1, 3, 5))
 
 # ─── Disposició (ha de coincidir amb adapters/benne/tactil/guis: hud.ts i accions.gui.ts) ─────
 
 M = 4                                   # marge de la pantalla
-CANVIA = (M, M)                         # 57×43 (el de la barra)
+CANVIA = (M, M)                         # 57×52: el de la barra, més alt
+CANVIA_H = 52                           # (tan alt com el menú i els punts petits l'un sobre l'altre: hud.ts)
 MENU_BTN = (W - M - 25, M)              # 25×25
 BOTO = 32                               # els botons de baix (inventari, punts), a les cantonades
 PUNTS = (M, H - M - BOTO)
@@ -197,7 +200,7 @@ def safata2_xy():
 def safata2():
     """La safata gran de la consola: les pantalletes de 2×6 caselles i, a la dreta, els dos canals de les fletxes."""
     sx, sy = SAFATA2
-    cv = Canvas(SAFATA2_W, SAFATA2_H, transparent=True)
+    cv = panel(SAFATA2_W, SAFATA2_H, top=2.4)
     slots_x, top, fx = safata2_xy()
     for r in range(ROWS2):
         y0 = top - sy + r * (SLOT_H + GAP)
@@ -218,7 +221,7 @@ def safata3_xy():
 
 def safata3():
     """La safata d'una fila (6 caselles) del tauler baix, amb les fletxes als costats."""
-    cv = Canvas(SAFATA3_W, SAFATA3_H, transparent=True)
+    cv = panel(SAFATA3_W, SAFATA3_H, top=2.4)
     fx0, slots_x, fx1 = safata3_xy()
     top = (SAFATA3_H - SLOT_H) // 2
     for i in range(COLS2):
@@ -230,20 +233,18 @@ def safata3():
 
 
 def tauler():
-    """La consola de la franja de sota l'escena: la franja de la frase, la línia de llum i el cos amb la trama de punts
-    (com la barra, sense tecles ni juntes: a sobre hi van «Canvia», el menú, els punts i l'inventari)."""
+    """La consola de la franja de sota l'escena: la línia de llum arran de dalt (separa l'escena de la consola) i el cos
+    amb la trama de punts. Sense franja per a la frase: la frase va a sobre del cos (hud.ts), com a Aigua Verne; així
+    la franja és tota per a «Canvia», el menú, els punts i l'inventari, i la línia no els travessa."""
     _, _, tw, th = TAULER
     cv = Canvas(tw, th, transparent=True)
-    for y in range(0, vg.STRIP_H + 1):                          # la franja de la frase: una barra d'estat fosca
-        for x in range(tw):
-            cv.put(x, y, SLATE, 0.6 + (0.5 if y == 0 else 0), lit=0)
-    body(cv, 0, vg.BODY_Y, tw - 1, th - 1)
-    light_line(cv, 0, tw - 1, vg.LINE_Y, mag=(8, 53))
+    body(cv, 0, 0, tw - 1, th - 1)
+    light_line(cv, 0, tw - 1, 1, mag=(8, 53))
     for x in range(tw):
-        dark(cv, x, vg.BODY_Y, 0.5)
-        dark(cv, x, vg.BODY_Y + 1, 0.2)
+        dark(cv, x, 4, 0.5)
+        dark(cv, x, 5, 0.2)
         cv.put(x, th - 1, SLATE, 0.8, lit=0)
-    for y in range(vg.BODY_Y, th - 1):
+    for y in range(4, th - 1):
         cv.put(0, y, SLATE, 4.2, lit=0)
         cv.put(tw - 1, y, SLATE, 1.2, lit=0)
     return cv.img
@@ -260,10 +261,10 @@ def text_outline():
 # ─── El HUD (`verbs`) ──────────────────────────────────────────────────────
 
 def build_hud():
-    cw, ch = vg.CANVIA[2], vg.CANVIA[3]
+    cw, ch = vg.CANVIA[2], CANVIA_H
     ms = vg.MENU[2]
     frames = [
-        (vg.canvia_image(False), 'CanviaBtn'), (vg.canvia_image(True), 'CanviaBtn-hover'), (menu_btn(), 'MenuBtn'),
+        (vg.canvia_image(False, ch), 'CanviaBtn'), (vg.canvia_image(True, ch), 'CanviaBtn-hover'), (menu_btn(), 'MenuBtn'),
         (boto(bossa_icon), 'BossaBtn'), (boto(bossa_icon, hover=True), 'BossaBtn-hover'),
         (boto(bossa_icon, on=True), 'BossaBtn-on'),
         (boto(punts_icon), 'PuntsBtn'), (boto(punts_icon, hover=True), 'PuntsBtn-hover'),
@@ -300,6 +301,9 @@ def build_hud():
         # la frase: el nom del que hi ha sota el dit o el ratolí, o «Usa X amb...»
         {'type': 'text', 'id': 'verbLineText', 'x': W // 2, 'y': FRANJA + 9, 'text': '', 'font': FONT, 'fontSize': 8,
          'color': VERB_LINE, 'align': 'center', 'textOutline': text_outline(), 'zIndex': 5},
+        # el verb del clic («Obre»), més apagat que el nom: hud.ts el posa a l'esquerra del nom i centra la frase
+        {'type': 'text', 'id': 'verbLineVerb', 'x': W // 2, 'y': FRANJA + 9, 'text': '', 'font': FONT, 'fontSize': 8,
+         'color': VERB_DIM, 'align': 'left', 'textOutline': text_outline(), 'zIndex': 5},
         button('CanviaBtn', CANVIA, cw, ch, 'CanviaBtn', {'hover': 'CanviaBtn-hover'}),
         {'type': 'image', 'id': 'CaraIri', 'x': CANVIA[0], 'y': CANVIA[1], 'tag': 'CaraIri', 'backgroundAnchor': 'top-left',
          'visible': False, 'clickable': False},
@@ -343,7 +347,7 @@ def build_hud():
     ]
     # Pantalla adaptable (dissenyada a 288 d'alt): el que és a baix va enganxat a baix.
     for c in controls:
-        if c['id'] in ('verbLineText', 'PuntsBtn', 'BossaBtn', 'Safata', 'inventoryPanel', 'upBtn', 'downBtn'):
+        if c['id'] in ('verbLineText', 'verbLineVerb', 'PuntsBtn', 'BossaBtn', 'Safata', 'inventoryPanel', 'upBtn', 'downBtn'):
             c['anchorY'] = 'bottom'
     gui = {'id': 'verbs', 'name': 'HUD', 'description': 'Suma Zero: sense barra de verbs [hd640/hud.py]',
            'visible': True, 'display': {'aseprite': True}, 'controls': controls}
@@ -388,7 +392,20 @@ def build_accions():
     (d / 'accions.gui.json').write_text(json.dumps(gui, indent=2, ensure_ascii=False) + '\n')
 
 
+def build_targeta():
+    """La targeta «Com es juga» (GUI `controls`): compartida (adapters/benne/tactil/controls.py), amb les peces i els
+    colors d'aquest joc."""
+    sys.path.insert(0, str(TOOLS.parents[4] / 'adapters/benne/tactil'))
+    import hd640.gui_rest as gr
+    from controls import build_controls
+    build_controls(GAME, write_sheet=gr.write_sheet, nine_slice=gr.nine_slice, nine_slices=gr.nine_slices,
+                   checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon), font=FONT, bold=BOLD,
+                   text=gr.LABEL, title=gr.TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
+                   ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE)
+
+
 if __name__ == '__main__':
     build_hud()
     build_accions()
+    build_targeta()
     print(f'✔ HUD i menú d\'accions a {GAME}')

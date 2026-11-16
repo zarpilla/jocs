@@ -61,7 +61,12 @@
               "text": "sala.aqua_fons.porta_juana.4"
             }
           ],
-          "goTo": "casa_juana"
+          "goTo": "casa_juana",
+          "effects": [
+            {
+              "setFlag": "trampa_trepitjada"
+            }
+          ]
         },
         {
           "verb": [
@@ -94,6 +99,21 @@
             {
               "who": "player",
               "text": "sala.aqua_fons.nanses.2"
+            }
+          ],
+          "if": {
+            "flag": "trampa_trepitjada"
+          }
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.aqua_fons.nanses.3"
             }
           ]
         }

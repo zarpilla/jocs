@@ -125,6 +125,37 @@ export interface RoomRegionData {
   tintAlpha?: number;
 }
 
+/** A point light that falls on the room's characters (see {@link RoomCharacterLightsData}). */
+export interface RoomCharacterLightData {
+  x: number;
+  y: number;
+  /** Reach in room pixels: the light fades to nothing here. */
+  radius: number;
+  /** Hex RGB (e.g. `#50e6d2`). */
+  color: string;
+  /** Strength; `1` adds the full colour at the centre. Omitted = `1`. */
+  intensity?: number;
+  /** Vertical stretch of the distance (`> 1` = flatter light). Omitted = `1`. */
+  squash?: number;
+  /** Falloff exponent. Omitted = `1.6`. */
+  power?: number;
+  /** Only while this prop is visible (a lamp that is switched on, a hatch that is open). */
+  whenPropVisible?: string;
+}
+
+/**
+ * The room's light on its characters, evaluated at runtime at the corners of each sprite. The light is
+ * `ambient + Σ light` per channel, where `#ffffff` ambient and no light leave the sprite as drawn; it is set as an
+ * overlay tint (below 1 darkens, above 1 lightens). Replaces region tint (`tintEnabled`) in the room.
+ */
+export interface RoomCharacterLightsData {
+  /** Hex RGB; `#ffffff` = as drawn, darker = a darker room. Omitted = `#ffffff`. */
+  ambient?: string;
+  lights?: RoomCharacterLightData[];
+  /** Where the top corners sample the light, as a fraction of the sprite height from its top. Omitted = `0.15`. */
+  topSample?: number;
+}
+
 export interface RoomCharacterInstance {
   /** Unique id for this placement in the room (Phaser texture key suffix). */
   instanceId: string;
@@ -259,6 +290,14 @@ export interface RoomData {
   points?: RoomPointData[];
   /** Closed polygons for regions (optional; editor + future gameplay). */
   regions?: RoomRegionData[];
+  /** Runtime light on the characters (optional). */
+  characterLights?: RoomCharacterLightsData;
+  /**
+   * Pixels of the room sheet (`images/rooms/<id>/<id>.png`) per room pixel. `2` = the room art is drawn at twice the
+   * room resolution and shown at half scale: the geometry, scripts and characters stay in room pixels, and on a
+   * screen of at least twice the internal resolution the art shows all its detail. Omitted = `1`.
+   */
+  artScale?: number;
   /**
    * Layered Aseprite props from `images/rooms/<id>/<id>.png` + `.json` (one sheet per room).
    */

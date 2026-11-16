@@ -424,12 +424,7 @@
           ]
         },
         {
-          "verb": [
-            "look",
-            "open",
-            "pickUp",
-            "use"
-          ],
+          "verb": "look",
           "lines": [
             {
               "who": "player",

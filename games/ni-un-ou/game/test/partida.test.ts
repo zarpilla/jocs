@@ -1,6 +1,6 @@
 /** El joc sencer, jugat de cap a peus, amb una pista disponible a cada pas. */
 import { describe, expect, it } from 'vitest';
-import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, escena8, jugarTot, partida } from './partida.js';
+import { amb, anar, escena1, escena2, escena3, escena4, escena5, escena6, escena7, escena8, item, jugarTot, partida } from './partida.js';
 
 describe('Partida sencera', () => {
   it('amb tots els aliats: primera plana', () => {
@@ -56,9 +56,12 @@ describe('Acte 1', () => {
     anar(p, 'sala_radio');
     p.use('cable_nou', 'panell');
     p.use('cable_nou', 'panell');
-    p.do('use', 'radio');
+    const linies = p.do('use', 'radio').map((l) => l.key);
     expect(n.getVar('reinicis_radio')).toBe(1);
     expect(n.flag('radio_feta')).toBe(false);
+    // No diu que la ràdio funciona abans de tornar a començar.
+    expect(linies).not.toContain('sala.sala_radio.radio.4');
+    expect(linies).toContain('sala.sala_radio.radio.9');
   });
 });
 
@@ -73,16 +76,16 @@ describe('Atzucacs (primera repassada)', () => {
     expect(p.room).toBe('passadis');
   });
 
-  it('Escena 5: obrir el muntacàrregues en lloc d\'agafar la safata també llegeix la nota', () => {
+  it('Escena 5: obrir la safata en lloc d\'agafar-la també llegeix la nota', () => {
     const { n, p } = partida();
     escena1(p); escena2(p); escena3(p); escena4(p);
     anar(p, 'rebost');
     p.use('llibreta', 'munta');
     amb(p, 'vet');
-    p.do('open', 'munta');
+    p.do('open', 'safata');
     expect(n.flag('nota_llegida')).toBe(true);
     amb(p, 'iri');
-    p.do('open', 'munta');
+    p.do('open', 'safata');
     expect(n.flag('pla_fet')).toBe(true);
   });
 
@@ -217,15 +220,61 @@ describe('Pistes (revisió)', () => {
     anar(p, 'cuina');
     p.talk('tomas', 'clau7', 'entrepa7');
     p.use('clau_tomas', 'munta');
+    // La safata del rebost és cosa de l'Iri: la Vet no en té cap, i el botó diu «canviem».
+    expect(n.activeHints()).not.toContain('clau_safata');
+    expect(n.hintForOther()).toBe('iri');
+    amb(p, 'iri');
     expect(n.activeHints()[0]).toBe('clau_safata');
-    amb(p, 'iri', 'rebost');
+    anar(p, 'rebost');
     p.do('pickUp', 'safata');
     expect(n.activeHints()[0]).toBe('obrir');
     p.use('clau_tomas', 'registre');
     p.do('open', 'filtre');
+    expect(n.activeHints()[0]).toBe('tornar');
     anar(p, 'rebost');
     p.use('mostra7', 'munta');
+    expect(n.hintForOther()).toBe('vet');
+    amb(p, 'vet');
     expect(n.activeHints()[0]).toBe('mostra_safata');
+  });
+
+  it("Escena 7: la pista de les frontisses segueix la clau de tubs", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
+    amb(p, 'iri', 'taller');
+    expect(n.activeHints()[0]).toBe('frontisses');
+    p.do('pickUp', 'clau_tubs');
+    expect(n.activeHints()[0]).toBe('frontisses_clau');
+    anar(p, 'rebost');
+    p.use('clau_tubs', 'registre');
+    expect(n.activeHints()[0]).toBe('frontissa2');
+  });
+
+  it("Escena 1: a la cuina, la pista del muntacàrregues no explica com s'hi va", () => {
+    const { n, p } = partida();
+    p.do('look', 'got');
+    p.do('pickUp', 'maceta');
+    anar(p, 'passadis_baix');
+    p.do('look', 'repetidor');
+    p.use('maceta', 'porta_maquines');
+    p.do('look', 'valvula');
+    p.do('look', 'quadre');
+    anar(p, 'taller');
+    p.do('look', 'tauler');
+    p.do('talkTo', item('walkie'));
+    p.do('pickUp', 'llitera');
+    expect(n.activeHints()[0]).toBe('vet_munta');
+    anar(p, 'cuina');
+    expect(n.activeHints()[0]).toBe('vet_munta_cuina');
+  });
+
+  it("Escena 9: dalt del pal, la pista ja no diu que hi pugi", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p); escena7(p); escena8(p);
+    amb(p, 'iri');
+    expect(n.activeHints()[0]).toBe('pal');
+    anar(p, 'pal');
+    expect(n.activeHints()[0]).toBe('pal_antena');
   });
 
   it("Escena 8: si l'USB el té la Vet, la pista li diu que el pugi al pont", () => {
@@ -239,5 +288,26 @@ describe('Pistes (revisió)', () => {
     p.use('usb', 'munta');
     amb(p, 'iri');
     expect(n.activeHints()[0]).toBe('usb_safata');
+  });
+
+  it("Escena 5: qui envia el seu paper pel muntacàrregues diu «la meva nota» o «la resposta»", () => {
+    const { p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p);
+    anar(p, 'rebost');
+    expect(p.use('llibreta', 'munta').map((l) => l.text)).toContain('Envio la meva nota a la cuina.');
+    amb(p, 'vet');
+    expect(p.do('pickUp', 'safata').map((l) => l.text)).toContain('Envio la resposta al rebost.');
+  });
+
+  it("Escena 7: el registre sense frontisses és una porta, i no diu que és tancat", () => {
+    const { n, p } = partida();
+    escena1(p); escena2(p); escena3(p); escena4(p); escena5(p); escena6(p);
+    amb(p, 'iri', 'taller');
+    p.do('pickUp', 'clau_tubs');
+    anar(p, 'rebost');
+    p.use('clau_tubs', 'registre');
+    expect(p.do('open', 'registre').map((l) => l.key)).toEqual(['sala.rebost.registre.21']);
+    p.use('clau_tubs', 'registre');
+    expect(n.peek({ verb: 'pull', target: { kind: 'hotspot', id: 'registre' } })).toBeUndefined();
   });
 });

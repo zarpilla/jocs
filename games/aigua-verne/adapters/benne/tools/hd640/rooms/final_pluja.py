@@ -19,6 +19,12 @@ from hd640.rooms.terra2_comu import (
     RH, OLIVE, ORANGE, RUSTT, IRONR, PLANK, BLACKT, WATER, text, text_width, shadow)
 from hd640.rooms import granja_pati as G
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 LIGHT = Light(ambient=0.2, vignette=(70, 22), floor_fade=None)
 LIGHT.point(320, -120, r=700, k=0.7, power=1.0)          # la llum del cel tapat, que ve de tot arreu
 
@@ -114,7 +120,9 @@ SLANT = 0.22                                  # la pluja cau una mica inclinada 
 def _frames_pluja():
     """La pluja que cau, els esquitxos a terra i els cercles als bassals i al pou. Cada gota és sempre a la
     mateixa recta inclinada; quan arriba a baix torna a dalt, i en 20 fotogrames tot torna on era."""
-    src = _base().load()
+    base = _base()
+    sc = base.width // W                                                     # (2 amb l'art a 2×)
+    src = base.load()
     drops = []
     for k in range(420):
         x0 = hr(k, 1) * (W + 60)
@@ -135,13 +143,16 @@ def _frames_pluja():
     splashes = [(hr(k, 31) * W, 196 + hr(k, 32) * 62, int(hr(k, 33) * RAIN_N)) for k in range(70)]
     frames = []
     for i in range(RAIN_N):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * sc, H * sc), (0, 0, 0, 0))
         p = img.load()
 
         def put(x, y, col, a):
+            """Un píxel de sala (un bloc de sc×sc píxels reals)."""
             x, y = int(x), int(y)
             if 0 <= x < W and 0 <= y < RH:
-                p[x, y] = mix(src[x, y], col, a) + (255,)
+                for Y in range(y * sc, y * sc + sc):
+                    for X in range(x * sc, x * sc + sc):
+                        p[X, Y] = mix(src[X, Y], col, a) + (255,)
         for x0, y0, ln, near in drops:
             yy = (y0 + i * RAIN_V) % RAIN_P
             for t in range(ln):

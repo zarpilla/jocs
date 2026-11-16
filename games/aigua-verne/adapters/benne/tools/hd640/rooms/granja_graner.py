@@ -22,6 +22,12 @@ from hd640.rooms.terra2_comu import (
     RH, SKY, HILL, FIELD, EARTH, COL, PLANK, GREYW, STONE, BLACKT, IRONR, RUSTT, REDT, CLOTH, PAPER, STRAW,
     WHITEP, WARN, text, text_width, outline, shadow, motes_frames, _diff)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 206
 DOOR = (196, 70, 300, FLOOR_Y)             # el portal gran, obert al pati
 TR_GROUND = 230                            # on toquen a terra les rodes del tractor
@@ -147,14 +153,13 @@ def doorway(cv):
         cv.line(a, y1 - 18, b, y1 - 10, WOOD, 4.0)
         cv.line(a, y1 - 18, b, y0 + 26, WOOD, 3.6)
     # el sol que entra i cau a terra, davant del portal (cap a l'esquerra: el sol és a la dreta)
-    for y in range(FLOOR_Y + 1, RH):
+    for X, Y, x, y in cv.pixels(x0 + 4 - 40, FLOOR_Y + 1, x1 - 2, RH - 1):     # (píxel a píxel, a la resolució real)
         t = (y - FLOOR_Y) / (RH - FLOOR_Y)
         a, b = x0 + 4 - 40 * t, x1 - 2 - 22 * t
-        for x in range(int(a), int(b) + 1):
-            e = min(x - a, b - x)
-            k = 0.45 * min(1.0, e / 6)
-            if k > B4[y & 3][x & 3] * 0.6:
-                cv.flat(x, y, mix(cv.get(x, y), SUN, k))
+        e = min(x - a, b - x)
+        k = 0.45 * min(1.0, e / 6)
+        if k > B4[Y & 3][X & 3] * 0.6:
+            cv.P[X, Y] = mix(cv.P[X, Y], SUN, k) + (255,)
     for xx in range(x0, x1 + 1):                                              # el llindar
         cv.put(xx, y1, WOOD, 4.0)
 
@@ -370,13 +375,12 @@ def clutter(cv):
 
 def rays_paint(cv):
     """Els raigs de sol que travessen la pols, i les taques que fan a terra."""
-    for y in range(14, RH):
-        for x in range(W):
-            b = rays(x, y)
-            if b > 0:
-                k = (0.16 if y < FLOOR_Y else 0.36) * b
-                if k > B4[y & 3][x & 3] * 0.3:
-                    cv.flat(x, y, mix(cv.get(x, y), SUN, k * 0.9 + 0.04))
+    for X, Y, x, y in cv.pixels(0, 14, W - 1, RH - 1):                      # (píxel a píxel, a la resolució real)
+        b = rays(x, y)
+        if b > 0:
+            k = (0.16 if y < FLOOR_Y else 0.36) * b
+            if k > B4[Y & 3][X & 3] * 0.3:
+                cv.P[X, Y] = mix(cv.P[X, Y], SUN, k * 0.9 + 0.04) + (255,)
 
 
 # ─── Composició ─────────────────────────────────────────────────────────────

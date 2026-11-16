@@ -13,7 +13,7 @@
  * locales. El contingut hi afegeix el que sigui propi de cada pas amb efectes normals (p. ex. una
  * resposta massa llarga resta un torn més: `addVar` sobre el rellotge).
  */
-import type { Effect, Narrative, PlayerAction } from '@aventura/narrative-core';
+import type { Condition, Effect, Narrative, PlayerAction } from '@aventura/narrative-core';
 
 export interface PasSincronia {
   /** Flag que diu que el pas està en marxa. */
@@ -40,6 +40,11 @@ export interface PasSincronia {
   regla?: { torn: (n: Narrative) => boolean; linies: Linia[] };
   /** En reiniciar: línies i efectes, a més de tornar el rellotge a `torns` i apagar l'alarma. */
   reinici: { linies: Linia[]; efectes: Effect[] };
+  /**
+   * Línies del reinici (del rellotge o de l'alarma) que només es diuen si es compleix la condició, just abans de
+   * l'última: on s'ha quedat cadascuna quan tot torna a començar.
+   */
+  liniesSi?: { si: Condition; linia: Linia }[];
 }
 
 /** Una línia de reinici: una clau (la diu el narrador) o qui la diu i la clau. */
@@ -68,6 +73,8 @@ export const PASSOS: Record<string, PasSincronia> = {
         { addVar: 'reinicis_aeroport', amount: 1 },
       ],
     },
+    // Si l'Iri ja era a l'oficina, s'hi queda: el vigilant torna a ser a l'altra banda de la porta.
+    liniesSi: [{ si: { inRoom: 'aeroport_oficina', who: 'iri' }, linia: 'sync.aeroport.reinici_oficina' }],
   },
   // L'Escena 8: el mòbil del Director. Quan l'Iri ja ha demanat el codi, al final de cada torn en què el
   // Director no està distret, mira el mòbil i cancel·la l'aturada (per protocol). Si la senyora Pons o en
@@ -128,7 +135,7 @@ const LLIURES = new Set(['look', 'walkTo', 'talkTo']);
 
 export const SINCRONIA_TEXTS = [
   'sync.aeroport.queden', 'sync.aeroport.ultima', 'sync.aeroport.reinici1', 'sync.aeroport.reinici2', 'sync.aeroport.reinici3',
-  'sync.aeroport.xiulet_reinici1',
+  'sync.aeroport.xiulet_reinici1', 'sync.aeroport.reinici_oficina',
   'sync.collaret.reinici1', 'sync.collaret.reinici2', 'sync.collaret.reinici3',
   'sync.mobil.queden', 'sync.mobil.ultima', 'sync.mobil.mira1', 'sync.mobil.mira2', 'sync.mobil.mira3', 'sync.mobil.mira4',
   'sync.mobil.caducat', 'sync.mobil.reinici1',
@@ -171,9 +178,11 @@ export function despresDAccio(n: Narrative, action: PlayerAction) {
       ...(pas.rellotge ? [{ setVar: pas.rellotge, value: pas.torns ?? 0 }] as Effect[] : []),
       ...(pas.alarma ? [{ setFlag: pas.alarma.flag, value: false }, { setVar: pas.alarma.var, value: 0 }] as Effect[] : []),
     ]);
-    const linies = reglaTrencada ? pas.regla!.linies
+    let linies = reglaTrencada ? pas.regla!.linies
       : alarmaEsgotada && pas.alarma?.linies ? pas.alarma.linies
       : pas.reinici.linies;
+    const extra = reglaTrencada ? [] : (pas.liniesSi ?? []).filter((l) => n.check(l.si)).map((l) => l.linia);
+    if (extra.length) linies = [...linies.slice(0, -1), ...extra, ...linies.slice(-1)];
     return { lines: linies.map(linia), endDialogue: true };
   }
   const avis = pas.avisos?.[queden];

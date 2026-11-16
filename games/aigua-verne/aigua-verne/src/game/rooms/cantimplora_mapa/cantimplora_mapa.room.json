@@ -38,7 +38,305 @@
       }
     ]
   },
-  "hotspots": [],
+  "hotspots": [
+    {
+      "id": "terra2",
+      "active": true,
+      "description": "Navega a Terra-2",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 58,
+          "y": 116
+        },
+        {
+          "x": 126,
+          "y": 116
+        },
+        {
+          "x": 126,
+          "y": 194
+        },
+        {
+          "x": 58,
+          "y": 194
+        }
+      ],
+      "walkToPoint": {
+        "x": 92,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 92,
+        "y": 194
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "aqua",
+      "active": true,
+      "description": "Navega a Aqua",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 392,
+          "y": 40
+        },
+        {
+          "x": 448,
+          "y": 40
+        },
+        {
+          "x": 448,
+          "y": 106
+        },
+        {
+          "x": 392,
+          "y": 106
+        }
+      ],
+      "walkToPoint": {
+        "x": 420,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 420,
+        "y": 106
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "ferrum",
+      "active": true,
+      "description": "Navega a Ferrum",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 525,
+          "y": 143
+        },
+        {
+          "x": 599,
+          "y": 143
+        },
+        {
+          "x": 599,
+          "y": 227
+        },
+        {
+          "x": 525,
+          "y": 227
+        }
+      ],
+      "walkToPoint": {
+        "x": 562,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 562,
+        "y": 227
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "verdant",
+      "active": true,
+      "description": "Navega a Verdant",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 194,
+          "y": 39
+        },
+        {
+          "x": 236,
+          "y": 39
+        },
+        {
+          "x": 236,
+          "y": 91
+        },
+        {
+          "x": 194,
+          "y": 91
+        }
+      ],
+      "walkToPoint": {
+        "x": 215,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 215,
+        "y": 91
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "palau",
+      "active": true,
+      "description": "Navega al palau orbital",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 236,
+          "y": 37
+        },
+        {
+          "x": 270,
+          "y": 37
+        },
+        {
+          "x": 270,
+          "y": 53
+        },
+        {
+          "x": 236,
+          "y": 53
+        }
+      ],
+      "walkToPoint": {
+        "x": 253,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 253,
+        "y": 53
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "aqui_terra2",
+      "active": true,
+      "description": "Ens quedem on som",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 58,
+          "y": 106
+        },
+        {
+          "x": 154,
+          "y": 106
+        },
+        {
+          "x": 154,
+          "y": 194
+        },
+        {
+          "x": 58,
+          "y": 194
+        }
+      ],
+      "walkToPoint": {
+        "x": 106,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 106,
+        "y": 194
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "aqui_aqua",
+      "active": true,
+      "description": "Ens quedem on som",
+      "zIndex": 6,
+      "points": [
+        {
+          "x": 392,
+          "y": 34
+        },
+        {
+          "x": 476,
+          "y": 34
+        },
+        {
+          "x": 476,
+          "y": 106
+        },
+        {
+          "x": 392,
+          "y": 106
+        }
+      ],
+      "walkToPoint": {
+        "x": 434,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 434,
+        "y": 106
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "aqui_ferrum",
+      "active": true,
+      "description": "Ens quedem on som",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 525,
+          "y": 122
+        },
+        {
+          "x": 599,
+          "y": 122
+        },
+        {
+          "x": 599,
+          "y": 227
+        },
+        {
+          "x": 525,
+          "y": 227
+        }
+      ],
+      "walkToPoint": {
+        "x": 562,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 562,
+        "y": 227
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "aqui_verdant",
+      "active": true,
+      "description": "Ens quedem on som",
+      "zIndex": 8,
+      "points": [
+        {
+          "x": 166,
+          "y": 24
+        },
+        {
+          "x": 236,
+          "y": 24
+        },
+        {
+          "x": 236,
+          "y": 91
+        },
+        {
+          "x": 166,
+          "y": 91
+        }
+      ],
+      "walkToPoint": {
+        "x": 201,
+        "y": 254
+      },
+      "lookAtPoint": {
+        "x": 201,
+        "y": 91
+      },
+      "defaultVerb": "open"
+    }
+  ],
   "points": [],
   "regions": [],
   "props": [
@@ -173,5 +471,7 @@
       "clickable": false,
       "zIndex": 9
     }
-  ]
+  ],
+  "viewAnchorY": 0,
+  "artScale": 2
 }

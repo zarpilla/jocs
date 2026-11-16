@@ -304,7 +304,7 @@ def arenga(cv, xs, ywl, s, mode='night', facing=1, crane=True, zodiac=True, unde
 
 def reflection(cv, x0, x1, ywl, depth, k=0.5, seed=7, waves=True):
     """Reflex de tot el que hi ha per sobre de ywl (entre x0 i x1) al mar, ondulat i trencat."""
-    src = cv.img.copy().load()
+    src, S = cv.img.copy().load(), getattr(cv, 'S', 1)                 # (src, en píxels reals: art a 2×)
     for y in range(ywl + 1, min(H, ywl + depth)):
         dy = y - ywl
         for x in range(max(0, x0), min(W, x1 + 1)):
@@ -317,7 +317,7 @@ def reflection(cv, x0, x1, ywl, depth, k=0.5, seed=7, waves=True):
             o = cv.get(x, y)
             kk = k * (1 - dy / depth)
             if kk > B4[y & 3][x & 3] * 0.6:
-                cv.flat(x, y, mix(o, src[sx, sy][:3], kk))
+                cv.flat(x, y, mix(o, src[sx * S, sy * S][:3], kk))
 
 
 # ─── La plataforma ──────────────────────────────────────────────────────────

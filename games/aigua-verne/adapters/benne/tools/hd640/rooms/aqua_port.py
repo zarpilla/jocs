@@ -25,6 +25,12 @@ from hd640.rooms.aqua_comu import (RH, SKYA, SALT, SAND, STONEA, ALGA, WOODG, TE
                                    cel, plana, canonada, canonada_llum, panell, gota, shade, to_screen,
                                    calitja_frames, pols_frames, diff)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 HOR = 110                 # l'horitzó
 EDGE = 196                # la vora del moll (la pedra de coronament, de 196 a 202)
 FLOOR = 202               # el terra del moll
@@ -679,9 +685,8 @@ def bg(cv):
     cantimplora(cv)
     ombres(cv)
     panell(cv, *PANEL, post_to=FLOOR + 12)
-    for y in range(RH, H):                                                     # la barra de verbs: negre
-        for x in range(W):
-            cv.P[x, y] = (0, 0, 0, 255)
+    for X, Y, _, _ in cv.pixels(0, RH, W - 1, H - 1):                          # la barra de verbs: negre
+        cv.P[X, Y] = (0, 0, 0, 255)
 
 
 def grua_arreglada(cv):
@@ -699,7 +704,8 @@ def grua_arreglada(cv):
     cv.rect(wx0 + 3, wy1 - 3, wx1 - 3, wy1 - 1, GREENL, lambda x, y: 1.2 + (1.8 if x % 3 == 0 else 0), lit=0)
     cv.flat(GX + 5, 100, GREENL[3])                                             # el pilot del pedestal
     for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
-        cv.P[GX + 5 + dx, 100 + dy] = GREENL[2] + (170,)
+        for X, Y, _, _ in cv.pixels(GX + 5 + dx, 100 + dy, GX + 5 + dx, 100 + dy):
+            cv.P[X, Y] = GREENL[2] + (170,)
 
 
 PROPS = {'grua_arreglada': grua_arreglada}
@@ -718,11 +724,11 @@ def _frames_calitja():
 
 
 def _frames_pols():
-    return pols_frames(24, 26, (0, FLOOR - 6, W - 1, RH - 6), seed=5)
+    return pols_frames(24, 26, (0, FLOOR - 6, W - 1, RH - 6), seed=5, C=Canvas)
 
 
 def _frames_llum():
-    on = canonada_llum(CAN_X, CAN_LY, True)
+    on = canonada_llum(CAN_X, CAN_LY, True, Canvas)
     off = Canvas(transparent=True).img
     return [on, on, off, off, off, off, off, off]
 

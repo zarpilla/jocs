@@ -164,10 +164,9 @@ def shine(cv, mask, lamps, col=WARM, k=1.0, refl=0.22):
 def unmask(mask, cv, x0, y0, x1, y1, before):
     """Treu del terra els píxels que ha pintat un objecte (comparant amb una còpia d'abans)."""
     a, b = before.load(), cv.img.load()
-    for y in range(max(0, y0), min(H, y1 + 1)):
-        for x in range(max(0, x0), min(W, x1 + 1)):
-            if a[x, y] != b[x, y]:
-                mask[y][x] = False
+    for X, Y, x, y in cv.pixels(x0, y0, x1, y1):                   # (X, Y: píxel real, per a l'art a 2×)
+        if a[X, Y] != b[X, Y]:
+            mask[Y // cv.S][X // cv.S] = False
 
 
 def floor_shadow(cv, cx, cy, rx, ry, k=0.6):

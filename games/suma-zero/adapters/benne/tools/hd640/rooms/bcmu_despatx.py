@@ -24,6 +24,12 @@ from hd.rooms.bcmu_vestibul import DARKM, DOG
 from hd640.rooms.bcmu import MARBLE, BRASS, MAHOG, CARPET, logo
 from hd640.rooms.bcmu_avantdespatx import wall, sconce, frame, BANKG, PAPERW
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 DESK_TOP = 157
 DESK = (421, 573)
@@ -605,7 +611,6 @@ ANIM_N = 24
 
 
 def _frames():
-    from hd.pix import Canvas
     from hd.rooms.comu import _diff
     base = Canvas(light=LIGHT)
     bg(base)

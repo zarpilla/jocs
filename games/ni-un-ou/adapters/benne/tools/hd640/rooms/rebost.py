@@ -17,6 +17,7 @@ Aquí hi ha també les peces de la coberta de sota a 640 (paret de planxa, terra
 que fa servir hd640/rooms/taller.py.
 """
 import math
+from functools import lru_cache
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from PIL import Image
@@ -26,6 +27,12 @@ from hd.rooms.arenga import (WALL, ENG_LIGHT as ENG, DECK, CAB, REDP, YELL, SEAG
                              box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms.comu import text, text_width
 from hd640.rooms.sala_maquines import ceiling, _frame, _inside, _sill, _label
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 FLOOR_Y = 203
 BOTTOM = 260
@@ -595,20 +602,17 @@ PROPS = {'safata': safata, 'rascades': rascades, 'registre_obert': registre_ober
 # Els fotogrames es pinten directament en un llenç transparent amb el color barrejat amb el fons (el mateix que
 # _diff, però sense comparar la sala sencera a cada fotograma).
 
-_BASE = []
-
-
+@lru_cache(maxsize=1)
 def _base():
-    if not _BASE:
-        cv = Canvas(light=LIGHT)
-        bg(cv)
-        _BASE.append(cv.img)
-    return _BASE[0]
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
 
 
 def _frames_pols():
     """Pols que sura a la llum dels dos llums de gàbia (cada mota fa un llaç tancat: el bucle no salta)."""
     src = _base().load()
+    S = _base().width // W                                           # (fotogrames a la mida de l'art)
     motes = []
     for lx in LAMP_X:
         for k in range(19):
@@ -617,7 +621,7 @@ def _frames_pols():
     n = 48
     frames = []
     for i in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', _base().size, (0, 0, 0, 0))
         p = img.load()
         t = i / n
         for (cx, cy, ax, ay, ph, fx, lx) in motes:
@@ -628,7 +632,9 @@ def _frames_pols():
             tw = 0.5 + 0.5 * math.sin(a * 2 + ph * 7)
             alpha = near * (0.5 + 0.5 * tw)
             if alpha > 0.08 and 0 <= x < W and 0 <= y < FLOOR_Y:
-                p[x, y] = mix(src[x, y][:3], (255, 236, 196), alpha) + (255,)
+                for dy in range(S):
+                    for dx in range(S):
+                        p[x * S + dx, y * S + dy] = mix(src[x * S + dx, y * S + dy][:3], (255, 236, 196), alpha) + (255,)
         frames.append(img)
     return frames
 
@@ -638,8 +644,12 @@ MOUSE = [(70, 62, 60), (104, 94, 90), (138, 128, 120)]
 
 def _mouse(p, src, x, y, out, sniff):
     """El cap del ratolí que treu el morro d'entre dos sacs (x, y: l'espatlla, a terra; out: quant surt)."""
+    S = _base().width // W                                           # un píxel de sala = un bloc S×S
+
     def put(px, py, col):
-        p[px, py] = col + (255,)
+        for dy in range(S):
+            for dx in range(S):
+                p[px * S + dx, py * S + dy] = col + (255,)
     for dx in range(out):
         top = y - 4 + (1 if dx >= out - 2 else 0)
         for yy in range(top, y + 1):
@@ -654,7 +664,7 @@ def _mouse(p, src, x, y, out, sniff):
         put(x + out, y - 1 - sniff, (190, 120, 120))                 # el nas, que olora
         for k in (1, 2):                                             # bigotis
             px, py = x + out + k, y - 2 - sniff + (k - 1)
-            put(px, py, mix(src[px, py][:3], (200, 200, 190), 0.5))
+            put(px, py, mix(src[px * S, py * S][:3], (200, 200, 190), 0.5))
 
 
 def _frames_ratoli():
@@ -665,7 +675,7 @@ def _frames_ratoli():
           [(7, 0)] * 6 + [(7, i % 2) for i in range(6)] + [(4, 0), (1, 0)] + [(0, 0)] * 10
     frames = []
     for out, sniff in seq:
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', _base().size, (0, 0, 0, 0))
         if out:
             _mouse(img.load(), src, mx, my, out, sniff)
         frames.append(img)

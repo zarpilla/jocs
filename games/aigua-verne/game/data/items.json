@@ -4,7 +4,8 @@
     "name": "obj.comunicador.nom",
     "description": "obj.comunicador.desc",
     "props": {
-      "no_mosca": "obj.comunicador.no"
+      "no_mosca": "obj.comunicador.no",
+      "no_donar": true
     },
     "interactions": [
       {
@@ -20,7 +21,8 @@
     "name": "obj.mosca.nom",
     "description": "obj.mosca.desc",
     "props": {
-      "no_mosca": "obj.mosca.no"
+      "no_mosca": "obj.mosca.no",
+      "no_donar": true
     },
     "interactions": [
       {

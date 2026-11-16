@@ -18,6 +18,12 @@ from hd.rooms.principal import (CREAM, TEAK, LINO, DOORP, NIGHT, DAYSKY, DAYSEA,
                                porthole as _porthole, day_porthole, foot_shadow, floor_shadow)
 from hd.rooms.laboratori import SOCOL, EPOXY, GLASSB, PAPERC, BLUEB, GREENS
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 S = 4 / 3
 CEIL_H = 24
 FLOOR_Y = 203
@@ -136,24 +142,24 @@ def lino(cv, lvl=4.0):
 
 def shine(cv, mask, lamps, col=WARM, refl=0.22):
     src = cv.img.copy().load()
-    for y in range(FLOOR_Y + 1, H):
+    s = cv.S                                                         # (píxel per píxel real: art a 2×)
+    for X, Y, x, y in cv.pixels(0, FLOOR_Y + 1, W - 1, H - 1):
+        if not mask[Y // s][X // s]:
+            continue
         depth = (y - FLOOR_Y) / (BOTTOM - FLOOR_Y)
-        sy = 2 * FLOOR_Y - y
-        for x in range(W):
-            if not mask[y][x]:
-                continue
-            c = cv.get(x, y)[:3]
-            kk = refl * max(0.0, 1 - depth * 1.6)
-            if kk > 0 and 0 <= sy < H:
-                c = mix(c, src[x, sy][:3], kk)
-            for lx in lamps:
-                g = math.exp(-((x - lx) / (5 + depth * 13)) ** 2) * (1 - min(1, depth) * 0.7)
-                if g > 0.05:
-                    if g * 0.9 > B4[y & 3][x & 3]:
-                        c = mix(c, col, min(0.5, 0.18 + g * 0.3))
-                    else:
-                        c = mix(c, col, g * 0.15)
-            cv.flat(x, y, c)
+        sY = (2 * FLOOR_Y + 1) * s - 1 - Y                           # el reflex, mirall de la vora del terra
+        c = cv.P[X, Y][:3]
+        kk = refl * max(0.0, 1 - depth * 1.6)
+        if kk > 0 and 0 <= sY < cv.h:
+            c = mix(c, src[X, sY][:3], kk)
+        for lx in lamps:
+            g = math.exp(-((x - lx) / (5 + depth * 13)) ** 2) * (1 - min(1, depth) * 0.7)
+            if g > 0.05:
+                if g * 0.9 > B4[Y & 3][X & 3]:
+                    c = mix(c, col, min(0.5, 0.18 + g * 0.3))
+                else:
+                    c = mix(c, col, g * 0.15)
+        cv.P[X, Y] = tuple(c) + (255,)
 
 
 def door_frame(cv, x0, y0, x1, y1, lvl=5.2, r=11):

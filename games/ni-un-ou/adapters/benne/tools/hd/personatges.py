@@ -17,6 +17,7 @@ Personatges de Ni un ou, amb el sistema de figures amb volum de Suma Zero (hd/ch
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.characters import (M, Fig, person, SKIN_OLD, SKIN_PALE, SKIN_VET, SKIN_IRI, SKIN_RUDDY, BOOT, WHITE, HAIR_WHITE, HAIR_COPPER,
                            HAIR_BROWN, STEELB, TROUSER, DENIM, RED, ORANGE, NAVY_U, CREAM, GRAY_SHOE, SNEAKER)
@@ -676,5 +677,5 @@ def fitxa(out):
         frames = [fn('D'), fn('L'), fn('L').transpose(Image.FLIP_LEFT_RIGHT), fn('U')]
         for c, f in enumerate(frames):
             sheet.alpha_composite(f, (5 + c * cw, 3 + r * ch))
-    sheet.resize((sheet.width * 3, sheet.height * 3), Image.NEAREST).save(out)
+    nearest(sheet, (sheet.width * 3, sheet.height * 3)).save(out)
     print('✔', out)

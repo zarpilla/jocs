@@ -44,9 +44,50 @@ describe('Acte 1 · camins', () => {
     expect(n.getVar('donats')).toBe(3);
   });
 
+  it("amb en Tomàs al rebost (telèfon ocupat), la pista diu de donar el comandament a en Marcel", () => {
+    const { n, p } = partida({ checkHints: true });
+    jugarPis(p);
+    p.talk('marcel');
+    p.do('use', 'porta_rebost');
+    p.do('look', 'calaix');
+    p.do('use', 'porta');
+    p.talk('trucada', 'pany', 'adeu');
+    expect(n.activeHints()[0]).toBe('vet_dir_contrasenya');
+    p.talk('tomas', 'comandament', 'adeu');
+    p.talk('trucada', 'trucada', 'adeu');
+    p.switchTo('iri');
+    p.do('use', 'ordinadors');
+    p.switchTo('vet');
+    expect(n.flag('tomas_rebost')).toBe(true);
+    expect(n.activeHints()[0]).toBe('vet_agafar_comandament');
+    p.do('pickUp', 'comandament_barra');
+    expect(n.activeHints()[0]).toBe('vet_tomas_rebost');
+    p.do('give', 'marcel', 'comandament');
+    expect(n.activeHints()[0]).toBe('vet_dir_contrasenya');
+  });
+
   it('amb un codi dolent: la porta xiula i la Vet plora més fort', () => {
     const { n, p } = partida({ checkHints: true });
-    jugarActe1(p, { codiDolent: true });
+    jugarPis(p);
+    jugarBar(p);
+    p.talk('soler', 'fill', 'nom_curt', 'edat_curt', 'roba_curt');
+    p.switchTo('iri');
+    p.do('use', 'teclat');
+    expect(n.activeHints()[0]).toBe('iri_alarma'); // no «la Vet el veu»: primer, que plori
+    p.switchTo('vet');
+    expect(n.activeHints()[0]).toBe('vet_plorar');
+    p.talk('soler', 'plorar');
+    p.do('look', 'taulell');
+    p.switchTo('iri');
+    p.do('use', 'teclat');
+    p.do('use', 'terminal');
+    expect(n.activeHints()[0]).toBe('iri_impressora');
+    p.do('push', 'impressora');
+    expect(n.activeHints()[0]).toBe('iri_acreditacions');
+    p.do('pickUp', 'impressora');
+    p.do('use', 'porta');
+    p.switchTo('vet');
+    p.do('talkTo', 'nen');
     expect(n.flag('aeroport_fet')).toBe(true);
     expect(n.getVar('reinicis_aeroport')).toBe(0);
   });
@@ -135,20 +176,17 @@ describe('Acte 1 · coherència', () => {
     expect(n.canSwitch()).toBe(true);
   });
 
-  it('el passaplats tancat: no s\'hi parla ni s\'hi passa res; obert des d\'un costat, és obert per a les dues', () => {
+  it("el passaplats tancat: no s'hi passa res, i parlar-hi l'obre; obert des d'un costat, és obert per a les dues", () => {
     const { n, p, world } = partida();
     p.do('open', 'caixa');
-    expect(texts(p.do('talkTo', 'passaplats'))).toContain("Primer l'he d'obrir");
-    expect(n.flag('cable_demanat')).toBe(false);
-    p.do('open', 'passaplats');
+    expect(texts(p.use('cable_xarxa', 'passaplats'))).toContain("Primer l'hauria d'obrir");
+    expect(world.hasItem('cable_xarxa', 'iri')).toBe(true);
+    expect(texts(p.do('talkTo', 'passaplats'))).toContain('Obert');
     expect(n.flag('passaplats_obert')).toBe(true);
+    expect(n.flag('cable_demanat')).toBe(false);
     p.talk('passaplats', 'cable');
     p.switchTo('vet');
     p.do('pickUp', 'cafetera');
-    p.do('close', 'passaplats');
-    expect(texts(p.use('cable_alimentacio', 'passaplats'))).toContain("Primer l'hauria d'obrir");
-    expect(world.hasItem('cable_alimentacio', 'vet')).toBe(true);
-    p.do('open', 'passaplats');
     p.use('cable_alimentacio', 'passaplats');
     expect(world.hasItem('cable_alimentacio', 'iri')).toBe(true);
   });
@@ -265,13 +303,14 @@ describe('Acte 1 · revisió de coherència', () => {
 
   it("pistes del pis: amb en Diu distret però sense el cable d'alimentació, la pista diu d'on treure'l", () => {
     const { n, p } = partida();
-    p.do('pickUp', 'fibra'); // en Diu la mossega
+    p.do('use', 'fibra'); // en Diu la mossega
     expect(n.activeHints()[0]).toBe('iri_cable_cafetera'); // abans que en Diu: primer, els cables
     p.do('open', 'passaplats');
     p.talk('passaplats', 'pizza');
     p.switchTo('vet');
     p.do('open', 'nevera');
     p.do('pickUp', 'pizza_nevera');
+    expect(n.activeHints()[0]).toBe('vet_passar_pizza'); // ja la té la Vet: ara, passar-la
     p.use('pizza', 'passaplats');
     p.switchTo('iri');
     p.do('give', 'diu', 'pizza');

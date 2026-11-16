@@ -20,6 +20,12 @@ from hd.rooms.exterior import fbm
 from hd640.rooms.verdant_comu import (SKYV, CLOUDV, TURF, WHITEV, MARBLE, GOLDV, MAGENTA, SHEDG, BLUEG, FLOWERS,
                                       gota, flor, arbre_rodo, ombra)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 RH = 260
 FLOOR_Y = 216
 CEIL_Y = 16
@@ -336,13 +342,15 @@ def figures(cv):
     # la mà del Magnat, damunt del gos (va per sobre)
     cv_.disc(mx + 58, 95, 4, 2.6, SKINV, lambda nx, ny: 4.0 - nx * 0.6 - ny * 0.8, lit=LT)
     # el contorn fosc, de pintura, al voltant de les figures
+    # (en píxels reals: el contorn fa un píxel de sala de gruix, cv.S píxels reals)
     F = fig.img.load()
-    for y in range(PAINT[1] + 9, PAINT[3] - 8):
-        for x in range(PAINT[0] + 9, PAINT[2] - 8):
-            if F[x, y][3]:
-                continue
-            if any(F[x + ddx, y + ddy][3] for ddx, ddy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
-                cv.flat(x, y, mix(cv.get(x, y), (26, 14, 36), 0.75))
+    k = cv.S
+    near = [(d, 0) for d in range(-k, k + 1) if d] + [(0, d) for d in range(-k, k + 1) if d]
+    for X, Y, _, _ in cv.pixels(PAINT[0] + 9, PAINT[1] + 9, PAINT[2] - 9, PAINT[3] - 9):
+        if F[X, Y][3]:
+            continue
+        if any(F[X + ddx, Y + ddy][3] for ddx, ddy in near):
+            cv.P[X, Y] = mix(cv.P[X, Y], (26, 14, 36), 0.75) + (255,)
     cv.img.alpha_composite(fig.img)
     cv.P = cv.img.load()
 
@@ -470,11 +478,10 @@ def finestral(cv):
         fy = 176 + hr(i, 2) * 30
         flor(cv, round(fx), round(fy), FLOWERS[i % 5], size=2, lit=0)
     # el vidre: reflexos en diagonal
-    for y in range(y0, y1 + 1):
-        for x in range(x0, x1 + 1):
-            d = (x - x0) + (y - y0) * 0.5
-            if 20 < d % 90 < 26 or 32 < d % 90 < 34:
-                cv.flat(x, y, mix(cv.get(x, y), (255, 255, 255), 0.35))
+    for X, Y, x, y in cv.pixels(x0, y0, x1, y1):                            # (píxel a píxel, a la resolució real)
+        d = (x - x0) + (y - y0) * 0.5
+        if 20 < d % 90 < 26 or 32 < d % 90 < 34:
+            cv.P[X, Y] = mix(cv.P[X, Y], (255, 255, 255), 0.35) + (255,)
     # el marc d'or i els muntants
     for mx in (x0 + (x1 - x0) // 3, x0 + 2 * (x1 - x0) // 3):
         cv.rect(mx - 1, y0, mx + 1, y1, GOLDV, lambda x, y, mx=mx: 4.8 - (x - mx) * 0.8)

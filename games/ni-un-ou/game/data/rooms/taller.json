@@ -11,9 +11,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "sala_maquines"
         },
@@ -234,20 +234,6 @@
         },
         {
           "verb": "pickUp",
-          "if": {
-            "var": "escena",
-            "op": "<",
-            "value": 6
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.taller.cisalla.8"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
           "lines": [
             {
               "who": "player",
@@ -312,15 +298,6 @@
             },
             {
               "setFlag": "clau_tubs_fora"
-            }
-          ]
-        },
-        {
-          "verb": "pickUp",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.taller.clau_tubs.4"
             }
           ]
         }

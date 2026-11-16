@@ -260,11 +260,7 @@
       "name": "sala.bcmu_vestibul.maquina.nom",
       "interactions": [
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "entrepa_comprat"
           },
@@ -276,11 +272,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "propines"
           },
@@ -305,11 +297,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pickUp",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -371,8 +359,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "virus_aturat"
@@ -386,9 +374,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "auditoria_acceptada"
@@ -409,8 +397,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -435,9 +423,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -464,9 +452,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "virus_aturat"
@@ -486,9 +474,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "lines": [
             {

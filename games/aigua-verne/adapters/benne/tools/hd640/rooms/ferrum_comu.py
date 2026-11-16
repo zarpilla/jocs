@@ -477,30 +477,35 @@ def smoke_frames(base, sources, n=24, ramp=None, bounds=None):
     """Fotogrames de fum que puja i s'escampa amb el vent (cap a la dreta). `sources`: [(x, y, amplada, alçada)].
     Retorna imatges RGBA transparents amb només els píxels del fum."""
     ramp = ramp or HAZE
+    s = base.width // W                                     # píxels reals per píxel de sala (l'art pot ser a 2×)
     frames = []
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', base.size, (0, 0, 0, 0))
         P = img.load()
         S = base.load()
         ph = f / n
         for sx, sy, sw, sh in sources:
-            for y in range(max(0, int(sy - sh)), int(sy) + 1):
+            for Y in range(max(0, int(sy - sh)) * s, (int(sy) + 1) * s):
+                y = (Y + 0.5) / s - 0.5                                                # coordenada de sala
                 t = (sy - y) / sh                                                      # 0 a la boca, 1 a dalt
+                if t > 1:                                                              # (a 2×, la fila de dalt de tot)
+                    continue
                 drift = t * t * sh * 0.9
-                for x in range(int(sx - sw - 4), int(sx + sw + drift + 10)):
-                    if not (0 <= x < W and 0 <= y < RH):
+                for X in range(int(sx - sw - 4) * s, int(sx + sw + drift + 10) * s):
+                    if not (0 <= X < W * s and 0 <= Y < RH * s):
                         continue
+                    x = (X + 0.5) / s - 0.5
                     u = (x - sx - drift) / (sw * (1 + t * 2.2))
                     if abs(u) > 1.3:
                         continue
                     dens = (1 - t) ** 1.2 * max(0.0, 1 - u * u)
                     n_ = fbm((x - drift * 0.3) / 7, (y + ph * sh) / 6, int(sx) % 97)
                     dens *= 0.5 + n_ * 1.1
-                    if dens > 0.32 + B4[y & 3][x & 3] * 0.5:
-                        o = S[x, y]
+                    if dens > 0.32 + B4[Y & 3][X & 3] * 0.5:
+                        o = S[X, Y]
                         k = min(0.85, dens)
                         col = mix(ramp[min(len(ramp) - 1, int(2 + n_ * 3))], o[:3], 1 - k)
-                        P[x, y] = col + (255,)
+                        P[X, Y] = col + (255,)
         frames.append(img)
     return frames
 
@@ -547,7 +552,7 @@ def light_shafts(cv, shafts, k=0.22, col=(200, 150, 110), y1=NAVE_FLOOR + 30):
     for wx, ww, dx in shafts:
         def f(x, y, wx=wx, ww=ww, dx=dx):
             t = (y - 104) / (y1 - 104)
-            if t < 0:
+            if not 0 <= t <= 1:                                     # (a 2×, y pot passar una mica de y1)
                 return 0
             c = wx + dx * t
             u = (x - c) / ww
@@ -597,21 +602,22 @@ def foundry_floor(cv, y0=NAVE_FLOOR, y1=RH - 1, seed=9, plates=()):
 
 
 def miner_c(cv, *a, **kw):
-    """`miner` amb contorn fosc d'1 px (l'estil de tot el joc), perquè la figura es llegeixi sobre el fons."""
-    tmp = Canvas(cv.w, cv.h, light=cv.light, transparent=True)
+    """`miner` amb contorn fosc d'1 px de sala (l'estil de tot el joc), perquè la figura es llegeixi sobre el fons."""
+    k = cv.S                                                # el contorn: un píxel de sala (k píxels reals)
+    tmp = type(cv)(cv.w // k, cv.h // k, light=cv.light, transparent=True)
     miner(tmp, *a, **kw)
     bb = tmp.img.getbbox()
     if not bb:
         return
     T, D = tmp.img.load(), cv.img.load()
     x0, y0, x1, y1 = bb
+    near = [(d, 0) for d in range(-k, k + 1) if d] + [(0, d) for d in range(-k, k + 1) if d]
     out = []
-    for y in range(max(0, y0 - 1), min(cv.h, y1 + 1)):
-        for x in range(max(0, x0 - 1), min(cv.w, x1 + 1)):
+    for y in range(max(0, y0 - k), min(cv.h, y1 + k)):
+        for x in range(max(0, x0 - k), min(cv.w, x1 + k)):
             if T[x, y][3]:
                 continue
-            if any(0 <= x + dx < cv.w and 0 <= y + dy < cv.h and T[x + dx, y + dy][3]
-                   for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
+            if any(0 <= x + dx < cv.w and 0 <= y + dy < cv.h and T[x + dx, y + dy][3] for dx, dy in near):
                 out.append((x, y))
     for x, y in out:
         o = D[x, y]

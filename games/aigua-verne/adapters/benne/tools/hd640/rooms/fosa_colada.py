@@ -26,6 +26,12 @@ from hd640.rooms.ferrum_comu import (
     CLOTH, REDP, HELM, NAVE_FLOOR,
     brick_wall, nave_wall, light_shafts, trusses, crane_rail, foundry_floor)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 GIRDER = (40, 58)                # el pont grua: y de dalt i de baix de la biga
 TROLLEY = 372                    # el carro (x del centre)
 LADLE = (372, 122, 164)          # el gresol: centre x, dalt, baix
@@ -348,9 +354,10 @@ def gresol_ple(cv):
     lit = Canvas(light=LIGHT_PLE)
     draw(lit, True)
     d = _diff(lit.img, base.img)
-    # el llit (on hi pot haver el motlle i les claus, que són altres decorats) queda com és
-    d.paste((0, 0, 0, 0), (BED[0] - 2, BED[2] - 2, BED[1] + 3, BED[3] + 5))
-    d.paste((0, 0, 0, 0), (0, RH, W, H))
+    # el llit (on hi pot haver el motlle i les claus, que són altres decorats) queda com és (caixes en píxels reals)
+    k = base.S
+    d.paste((0, 0, 0, 0), tuple(v * k for v in (BED[0] - 2, BED[2] - 2, BED[1] + 3, BED[3] + 5)))
+    d.paste((0, 0, 0, 0), tuple(v * k for v in (0, RH, W, H)))
     cv.img.alpha_composite(d)
 
 
@@ -376,7 +383,7 @@ def _frames_fum_gresol():
     frames = []
     n = 12
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * Canvas.S, H * Canvas.S), (0, 0, 0, 0))
         cv = Canvas(light=LIGHT_PLE, img=img)
         ph = f / n
         for y in range(top - 2, top + 3):

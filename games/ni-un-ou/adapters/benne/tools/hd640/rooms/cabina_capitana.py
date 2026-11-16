@@ -21,6 +21,12 @@ from hd.rooms.principal import (CREAM, TEAK, LINO, DOORP, NIGHT, DAYSKY, DAYSEA,
 from hd.rooms.laboratori import PAPERC, BLUEB
 from hd640.rooms.laboratori import wall, ceiling, lamp, lamp_glow, lino, shine, door_frame
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 CEIL_H = 24
 FLOOR_Y = 203
 BOTTOM = 260                      # per sota hi ha la barra de verbs

@@ -14,6 +14,12 @@ from hd.pix import Light, Canvas, hr
 from hd.rooms.comu import outline, text, text_width, _diff
 from hd640.rooms import proleg_ginebra as pr
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 LIGHT = Light(ambient=0.0)
 
 
@@ -44,14 +50,14 @@ def finestres_apagades(cv):
     """Avui la torre plega a l'hora: s'apaguen moltes de les finestres que al pròleg eren enceses."""
     x0, x1 = pr.TOWER
     sx0, sy0, sx1, sy1 = pr.SCREEN
-    for y in range(pr.TOP, pr.BASE_Y):
-        for x in range(x0, x1 + 1):
-            if sx0 - 3 <= x <= sx1 + 3 and sy0 - 3 <= y <= sy1 + 3:
-                continue
-            r, g, b, _ = cv.img.getpixel((x, y))
-            lit = (r > 120 and r > b + 40) or (b > 150 and g > 120)        # una finestra càlida o un fluorescent
-            if lit and hr((x - x0) // pr.BAY, (y - pr.TOP) // pr.FLOOR, 31) > 0.3:     # s'apaga
-                cv.img.putpixel((x, y), (r // 6, g // 6 + 6, b // 4 + 14, 255))
+    for X, Y, _, _ in cv.pixels(x0, pr.TOP, x1, pr.BASE_Y - 1):
+        x, y = X // cv.S, Y // cv.S
+        if sx0 - 3 <= x <= sx1 + 3 and sy0 - 3 <= y <= sy1 + 3:
+            continue
+        r, g, b, _ = cv.P[X, Y]
+        lit = (r > 120 and r > b + 40) or (b > 150 and g > 120)        # una finestra càlida o un fluorescent
+        if lit and hr((x - x0) // pr.BAY, (y - pr.TOP) // pr.FLOOR, 31) > 0.3:     # s'apaga
+            cv.P[X, Y] = (r // 6, g // 6 + 6, b // 4 + 14, 255)
 
 
 def bg(cv, frame=0):

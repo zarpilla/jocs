@@ -11,9 +11,16 @@ i `disc_dur` (el llumet de la torre).
 import math
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
+from hd640 import llum
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, cable, text, _diff, PLASTIC, SCREEN, SKY, CITY, NEON, SHEET, GRAYC, YEL, CARD, RED
 from hd.rooms.pis_estudi import BRICK, MORTAR, FLOORB, DESKB, STEELB, MAGENTA, CYANL, FABRICB, WARMB
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 FLOOR_Y = 200
 DESK_Y = 155   # escala real: el taulell a l'altura del maluc d'una persona de ≈111 px
@@ -346,13 +353,13 @@ def hatch(cv):
     x0, y0, x1, y1 = HATCH
     for y in range(y0 + 3, y1 - 2):
         for x in range(x0 + 3, x1 - 2):
-            cv.put(x, y, WARMB, 2.0 + (y - y0) / 53 + (0.4 if (x - y) % 13 == 0 else 0), lit=0)   # vidre glaçat
-    cv.rect(x0 + 3, 106, x1 - 3, 108, WARMB, 1.0, lit=0)
+            cv.put(x, y, WARMB, 0.9 + (y - y0) / 70 + (0.4 if (x - y) % 13 == 0 else 0), lit=0)   # vidre glaçat (la cuina, fosca)
+    cv.rect(x0 + 3, 106, x1 - 3, 108, WARMB, 0.4, lit=0)
     cv.rect(603, 101, 610, 103, STEELB, 3.0)                                  # nanses
     cv.rect(603, 111, 610, 113, STEELB, 3.0)
     frame(cv, x0, y0, x1, y1, DESKB, 2.6)
     outline(cv, x0, y0, x1, y1, DESKB)
-    cv.glow(608, 120, 40, (240, 170, 100), 0.12)
+    cv.glow(608, 120, 30, (240, 170, 100), 0.05)
 
 
 def pizza_stack(cv):
@@ -375,7 +382,7 @@ def floor_cables(cv):
     cv.flat(621, 192, (20, 16, 14))
 
 
-def bg(cv):
+def _draw(cv):
     wall(cv)
     floor(cv)
     window(cv)
@@ -391,6 +398,31 @@ def bg(cv):
     floor_cables(cv)
     cv.darken(261, 213, 491, 221, 0.5)
     cv.darken(496, 211, 549, 219, 0.4)
+
+
+# ─── Llum (prototip: hd640/llum.py) ─────────────────────────────────────────
+
+def _stripe_fade(x, y):
+    import numpy as np
+    return np.clip(1 - (y - 40) / 220, 0, 1) * 0.8 + 0.2
+
+
+FX_LIGHT = [
+    llum.wash(377, 118, 210, (80, 230, 210), k=1.0, air=0.05, squash=1.1),            # les pantalles, cian
+    llum.wash(105, 105, 170, (190, 110, 255), k=0.9, air=0.06, squash=0.9),           # la finestra, lila
+    llum.haze([(50, 100), (160, 100), (232, 236), (8, 236)], (170, 90, 230), k=0.16, blur=10,
+              fade=lambda x, y: 1.25 - (y - 100) / 180),                                 # el con de la finestra
+    llum.haze([(173, 13), (373, 13), (373 + 0.9 * 206, 219), (173 + 0.9 * 206, 219)], (210, 70, 190), k=0.07,
+              blur=14, fade=_stripe_fade),                                               # el raig de les persianes
+]
+FX_TONE = [llum.grade(contrast=1.12, pivot=40, sat=1.25, lift=(5, 1, 10))]
+FX = FX_LIGHT + [llum.bloom(thr=125, mask=lambda x, y: 1 - 0.75 * ((x > 578) & (y < 138)) - 0.8 * ((x > 196) & (x < 258) & (y < 126)))] + FX_TONE
+FX_PROPS = FX_LIGHT + FX_TONE                       # els props no fan bloom (el halo cauria fora del seu alfa)
+
+
+def bg(cv):
+    _draw(cv)
+    llum.apply_cv(cv, FX)
 
 
 # ─── Props ──────────────────────────────────────────────────────────────────
@@ -467,27 +499,67 @@ def passaplats_obert(cv):
     cv.glow(608, 123, 45, (240, 170, 100), 0.2)
 
 
-PROPS = {'passaplats_obert': passaplats_obert, 'caixa': caixa, 'router_connectat': router_connectat, 'fibra_connectada': fibra_connectada,
+_PROPS = {'passaplats_obert': passaplats_obert, 'caixa': caixa, 'router_connectat': router_connectat, 'fibra_connectada': fibra_connectada,
          'xarxa_connectada': xarxa_connectada, 'alimentacio_connectada': alimentacio_connectada}
+
+
+def _lit_prop(fn):
+    def draw(cv):
+        fn(cv)
+        llum.apply_cv(cv, FX_PROPS)
+    return draw
+
+
+PROPS = {pid: _lit_prop(fn) for pid, fn in _PROPS.items()}
+
+# el passaplats obert deixa entrar la llum càlida de la cuina: el prop inclou la paret del voltant, tornada
+# a il·luminar (fins a y=147, per sobre de la presa de fibra; el raig s'acaba abans de les vores de la caixa)
+WARM_BOX = (545, 25, 639, 147)
+FX_OBERT = FX_LIGHT + [llum.wash(607, 105, 60, (255, 140, 60), k=1.4, air=0.18, squash=1.4, power=1.1)] + FX[len(FX_LIGHT):]
+
+
+def _passaplats_obert_llum(cv):
+    raw = _raw()
+    base = llum.apply(raw, FX)
+    lit = Canvas(light=LIGHT, img=raw.copy())
+    passaplats_obert(lit)
+    out = _diff(llum.apply(lit.img, FX_OBERT), base)
+    s = out.width // W
+    x0, y0, x1, y1 = (v * s for v in WARM_BOX)
+    cv.img.paste(out.crop((x0, y0, x1 + s, y1 + s)), (x0, y0))
+    cv.P = cv.img.load()
+
+
+PROPS['passaplats_obert'] = _passaplats_obert_llum
 
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
 
-def _base():
+def _raw():
     cv = Canvas(light=LIGHT)
-    bg(cv)
+    _draw(cv)
     return cv.img
 
 
+def _fx_diff(img, base):
+    """El fotograma (dibuixat sobre el fons cru) amb la llum, menys el fons amb la llum."""
+    return _diff(llum.apply(img, FX), base)
+
+
+def _base():
+    return llum.apply(_raw(), FX)
+
+
 def _frames():
-    base = _base()
+    raw = _raw()
+    base = llum.apply(raw, FX)
     frames = []
     for i in range(8):
-        cv = Canvas(light=LIGHT, img=base.copy())
+        cv = Canvas(light=LIGHT, img=raw.copy())
         window(cv, rain=i)
         monitors(cv, i)
         desk_clutter(cv)
-        frames.append(_diff(cv.img, base))
+        frames.append(_fx_diff(cv.img, base))
     return frames
 
 
@@ -499,10 +571,11 @@ NEON_SEQ = [1] * 14 + [0, 1, 0, 0, 1, 1, 0, 0, 0, 1]
 
 def _frames_neo():
     """El rètol de neó del carrer, a la finestra: de tant en tant la meitat dreta parpelleja i es fon."""
-    base = _base()
-    cv = Canvas(light=LIGHT, img=base.copy())
+    raw = _raw()
+    base = llum.apply(raw, FX)
+    cv = Canvas(light=LIGHT, img=raw.copy())
     window(cv, neon=False)
-    off = _diff(cv.img, base)
+    off = _fx_diff(cv.img, base)
     on = _diff(base, base)
     return [on if k else off for k in NEON_SEQ]
 
@@ -513,12 +586,13 @@ DISK_SEQ = [1, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0]
 
 def _frames_disc():
     """El llumet ambre del disc dur de la torre, sota la taula, que parpelleja mentre l'script de l'Iri treballa."""
-    base = _base()
-    cv = Canvas(light=LIGHT, img=base.copy())
+    raw = _raw()
+    base = llum.apply(raw, FX)
+    cv = Canvas(light=LIGHT, img=raw.copy())
     cv.flat(290, 180, (255, 170, 60))
     cv.flat(291, 180, (200, 110, 30))
     cv.glow(290, 180, 4, (255, 160, 60), 0.35)
-    lit = _diff(cv.img, base)
+    lit = _fx_diff(cv.img, base)
     dark = _diff(base, base)
     return [lit if k else dark for k in DISK_SEQ]
 
@@ -540,5 +614,15 @@ GEOMETRIA = {
         'caixa': {'rect': (400, 217, 456, 254), 'walk': (429, 263)},
     },
     'spawns': {'iri': (200, 256), 'diu': (349, 256)},
+    # la llum de la sala sobre els personatges, en temps d'execució (la mateixa que FX_LIGHT, en més suau)
+    'characterLights': {
+        'ambient': '#8c84a8',                                                           # habitació fosca, lila
+        'lights': [
+            {'x': 377, 'y': 118, 'radius': 260, 'color': '#50e6d2', 'intensity': 0.9},  # les pantalles
+            {'x': 105, 'y': 110, 'radius': 220, 'color': '#be6eff', 'intensity': 0.8},  # la finestra
+            {'x': 607, 'y': 105, 'radius': 170, 'color': '#ff8c3c', 'intensity': 1.3,
+             'whenPropVisible': 'passaplats_obert'},                                     # la cuina, si és obert
+        ],
+    },
     'walkable': [(19, 236), (621, 236), (632, 271), (8, 271)],
 }

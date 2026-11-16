@@ -99,8 +99,8 @@ export function viatjar(p: Jugador, n: Narrative, planeta: string) {
   if (p.active !== 'iri') p.switchTo('iri');
   anar(p, n, 'cantimplora_pont');
   p.do('use', 'mapa');
-  // el mapa és un diàleg: el condueix `talk`
-  p.talk('mapa', planeta);
+  // a la carta de navegació, es toca el planeta
+  p.do('walkTo', planeta);
   expect(n.getVar('planeta')).toBe(planeta);
 }
 

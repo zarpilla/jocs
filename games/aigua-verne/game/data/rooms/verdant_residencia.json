@@ -61,12 +61,7 @@
           ]
         },
         {
-          "verb": [
-            "open",
-            "look",
-            "pull",
-            "use"
-          ],
+          "verb": "look",
           "lines": [
             {
               "who": "player",
@@ -114,12 +109,7 @@
           ]
         },
         {
-          "verb": [
-            "look",
-            "open",
-            "pickUp",
-            "use"
-          ],
+          "verb": "look",
           "lines": [
             {
               "who": "player",
@@ -179,12 +169,7 @@
           ]
         },
         {
-          "verb": [
-            "open",
-            "look",
-            "pull",
-            "use"
-          ],
+          "verb": "look",
           "lines": [
             {
               "who": "player",

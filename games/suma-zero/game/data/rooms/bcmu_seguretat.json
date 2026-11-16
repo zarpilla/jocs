@@ -278,8 +278,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
             "push",
+            "use",
             "pickUp"
           ],
           "if": {
@@ -302,6 +302,10 @@
             {
               "who": "ballester",
               "text": "sala.bcmu_seguretat.got.trenca2"
+            },
+            {
+              "who": "narrator",
+              "text": "dlg.ballester.tapat"
             }
           ],
           "effects": [
@@ -320,8 +324,8 @@
         },
         {
           "verb": [
-            "use",
             "push",
+            "use",
             "pickUp"
           ],
           "if": {
@@ -336,8 +340,8 @@
         },
         {
           "verb": [
-            "use",
             "push",
+            "use",
             "pickUp"
           ],
           "lines": [
@@ -532,9 +536,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "sync_collaret"
@@ -548,9 +552,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -581,9 +585,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "lines": [
             {

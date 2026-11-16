@@ -10,7 +10,9 @@ export function donar(n: Narrative, item: string): ActionResult {
   const who = n.world.activeProtagonist();
   const other = n.content.manifest.protagonists.find((p) => p !== who)!;
   const props = n.content.items[item]?.props ?? {};
-  if (typeof props.no_mosca === 'string') return { lines: [{ who: 'player', text: props.no_mosca }] };
+  // Només el que no es pot donar de cap manera (el comunicador, la Mosca). El que no pot portar la Mosca (pesa
+  // massa, és aigua), en persona sí que es dona.
+  if (props.no_donar === true && typeof props.no_mosca === 'string') return { lines: [{ who: 'player', text: props.no_mosca }] };
   n.apply([{ takeItem: item }, { giveItem: item, who: other }]);
   return { lines: [{ who: 'player', text: 'donar.dona', params: { objecte: n.t(`obj.${item}.amb_article`) } }] };
 }

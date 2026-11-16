@@ -35,6 +35,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 from hd.pix import Canvas, hr, mix  # noqa: E402
@@ -626,7 +627,7 @@ def nine(img, slices, w, h):
     for sx, sw, dx, dw in cols:
         for sy, sh, dy, dh in rows:
             if dw > 0 and dh > 0:
-                out.paste(img.crop((sx, sy, sx + sw, sy + sh)).resize((dw, dh), Image.NEAREST), (dx, dy))
+                out.paste(nearest(img.crop((sx, sy, sx + sw, sy + sh)), (dw, dh)), (dx, dy))
     return out
 
 
@@ -813,7 +814,7 @@ def render_gui(name, res, backdrop):
             x, y = place(c, c['width'], c['height'])
             if 'slider-track' in tags:
                 tr = tags['slider-track'][0]
-                img.alpha_composite(tr.crop((0, 0, min(tr.width, c['width']), tr.height)).resize((c['width'], tr.height), Image.NEAREST), (x, y))
+                img.alpha_composite(nearest(tr.crop((0, 0, min(tr.width, c['width']), tr.height)), (c['width'], tr.height)), (x, y))
                 frac = (c.get('defaultValue', 1) - c.get('min', 0)) / max(1e-6, c.get('max', 1) - c.get('min', 0))
                 paste_tag('slider-handle', x + round(frac * (c['width'] - 4)), y)
         elif t == 'listBox':
@@ -856,7 +857,7 @@ def contact(out_dir):
         if not (OUT / n / f'{n}.gui.json').exists():
             continue
         im = render_gui(n, 640, back)
-        im.resize((W * 2, H * 2), Image.NEAREST).save(out_dir / f'gui_{n}_640.png')
+        nearest(im, (W * 2, H * 2)).save(out_dir / f'gui_{n}_640.png')
         shots.append((n, im))
     cols = 3
     rows = (len(shots) + cols - 1) // cols
@@ -868,7 +869,7 @@ def contact(out_dir):
         sheet.paste(im.convert('RGB'), (x, y + 20))
     sheet.save(out_dir / 'guis_640.png')
     cur = Image.new('RGB', (300, 300), (120, 130, 110))                  # el punter
-    c640 = Image.open(OUT / 'cursor/cursor.png').convert('RGBA').resize((258, 258), Image.NEAREST)
+    c640 = nearest(Image.open(OUT / 'cursor/cursor.png').convert('RGBA'), (258, 258))
     cur.paste(c640, (20, 20), c640)
     cur.save(out_dir / 'gui_cursor_640.png')
 

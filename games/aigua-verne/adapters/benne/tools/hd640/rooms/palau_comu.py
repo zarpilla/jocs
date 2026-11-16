@@ -144,11 +144,19 @@ def espai(cv, x0, y0, x1, y1, seed=1, mask=None, dens=1.0, neb=(0.3, 0.6)):
     return bright
 
 
+def llenc(img, light=None):
+    """Un llenç que pinta sobre `img` (un fotograma de sala): d'1× o de 2× (Canvas2x) segons la mida de l'art."""
+    if img.width == W:
+        return Canvas(light=light, img=img)
+    from hd1280.canvas2x import Canvas2x
+    return Canvas2x(light=light, img=img)
+
+
 def estrelles_frames(base, bright, n=8, seed=3):
     """Fotogrames (diferència respecte del fons) amb unes quantes estrelles brillants que parpellegen."""
     frames = []
     for i in range(n):
-        cv = Canvas(img=base.copy())
+        cv = llenc(base.copy())
         for k, (x, y) in enumerate(bright):
             ph = (hr(k, seed) * n + i) % n
             if ph < 1:                                          # s'apaga
@@ -490,7 +498,7 @@ def aquari_frames(base, rect, n=24, draw_glass=None):
     frames = []
     for i in range(n):
         t = i / n
-        cv = Canvas(img=base.copy())
+        cv = llenc(base.copy())
         aigua_aquari(cv, x0, y0, x1, y1, t)
         peixos(cv, x0, y0, x1, y1, t)
         if draw_glass:
@@ -539,14 +547,14 @@ def negre_barra(cv):
             cv.flat(x, y, (0, 0, 0))
 
 
-def diff_estat(estat, clau, bg, light):
-    """Prop que és la diferència entre el fons amb `estat[clau]` canviat i el fons normal."""
-    base = Canvas(light=light)
+def diff_estat(estat, clau, bg, light, Cv=Canvas):
+    """Prop que és la diferència entre el fons amb `estat[clau]` canviat i el fons normal (`Cv`: el Canvas de la sala)."""
+    base = Cv(light=light)
     bg(base)
     old = estat[clau]
     estat[clau] = not old
     try:
-        alt = Canvas(light=light)
+        alt = Cv(light=light)
         bg(alt)
     finally:
         estat[clau] = old

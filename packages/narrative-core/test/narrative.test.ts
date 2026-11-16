@@ -106,6 +106,30 @@ describe('diàlegs i memòria', () => {
 });
 
 describe('missions, objectes condicionals, pistes i finals', () => {
+  it('sense pista per a qui juga, diu que li toca a l\'altra (si en tindria i es pot canviar)', () => {
+    // la pista només és per a la Bo, i només si té la moneda (es mira el seu inventari, no el de qui juga)
+    const c: GameContent = {
+      ...content,
+      hints: { bo: { when: { all: [{ protagonist: 'bo' }, { hasItem: 'moneda' }] }, doneWhen: { flag: 'far_ences' }, levels: ['h.esquer.1'] } },
+    };
+    const loc = { ca: { ...locales.ca, 'ui.pista.cap': 'cap', 'ui.pista.altra.bo': 'li toca a la Bo' } };
+    const world = new MemoryWorld();
+    const n = new Narrative({ content: c, locales: loc, world });
+    const p = new HeadlessPlayer(n, world);
+    p.newGame();
+    expect(n.requestHint()).toBeNull();
+    expect(n.noHintText()).toBe('cap'); // la moneda la té l'Ana
+    world.give('moneda', 'bo');
+    expect(n.hintForOther()).toBe('bo');
+    expect(n.noHintText()).toBe('li toca a la Bo');
+    p.switchTo('bo');
+    expect(n.requestHint()!.text).toBe('[h.esquer.1]');
+    // si no es pot canviar, no
+    const tancat = new Narrative({ content: { ...c, manifest: { ...c.manifest, switchWhen: { flag: 'far_ences' } } }, locales: loc, world });
+    world.switchTo('ana');
+    expect(tancat.noHintText()).toBe('cap');
+  });
+
   it('missió secundària completa amb premi', () => {
     const { p, n, world, events } = setup();
     expect(n.isHotspotVisible('moll', 'cucs')).toBe(false);

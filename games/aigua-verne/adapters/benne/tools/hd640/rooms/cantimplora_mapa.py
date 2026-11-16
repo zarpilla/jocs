@@ -4,14 +4,14 @@ Aigua Verne — `cantimplora_mapa` (cinemàtica): la carta de navegació de la C
 El sistema de Vesper (el mateix cel que als crèdits, sense la pluja del final): l'estrella al cantó de baix a
 l'esquerra, les òrbites puntejades i els quatre planetes amb el seu nom, i el palau orbital, un punt daurat al
 costat de Verdant. Damunt, una quadrícula de carta molt fluixa. Els planetes queden als cantons: el mig és per al
-quadre del text, i a baix hi ha la llista d'opcions del diàleg.
+quadre del text. Es toca el planeta on es vol anar (vegeu GEOMETRIA).
 
 Tot el que es mou és un sol prop, `nau` (la Cantimplora, petita), amb aquestes animacions:
   - `nau_<planeta>` (bucle): aparcada en òrbita, amb el llum de navegació que fa pampallugues;
   - `tremola_<planeta>` (bucle): els motors que tussen abans d'enlairar-se (la nau tremola i treu fum);
   - `vol_<origen>_<destí>` (un cop): el viatge, en un arc que s'allunya de l'estrella, amb l'estela dels motors;
     l'últim fotograma és el mateix que `nau_<destí>`.
-Les tria rooms/cantimplora_mapa.json (en entrar) i dialogues/mapa.json (en triar on anar).
+Les tria rooms/cantimplora_mapa.json (en entrar, i en tocar un planeta).
 """
 import functools
 import math
@@ -21,6 +21,12 @@ from hd.pix import Canvas, Light, W, H, hr, mix
 from hd.rooms.comu import _diff, text, text_width
 from hd640.rooms.credits import space, planet, T2, AQ, FE, VE
 from hd640.rooms.nau_comu import OLIVE, SAFETY
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 STAR = (-30, 300)
@@ -158,13 +164,13 @@ def _ship_px(u, v):
 def ship(cv, x, y, ang, thrust=0.0, light=True, seed=0):
     """La nau centrada a (x, y). `thrust` (0–1): la flama dels motors. `light`: el llum de navegació."""
     ca, sa = math.cos(ang), math.sin(ang)
-    for py in range(int(y) - 12, int(y) + 13):
-        for px in range(int(x) - 12, int(x) + 13):
-            dx, dy = px + 0.5 - x, py + 0.5 - y
-            u, v = dx * ca + dy * sa, -dx * sa + dy * ca
-            col = _ship_px(u, v)
-            if col:
-                cv.flat(px, py, col)
+    # (es mostreja a cada píxel real: a 2×, la nau girada surt amb el doble de detall)
+    for X, Y, px, py in cv.pixels(int(x) - 12, int(y) - 12, int(x) + 12, int(y) + 12):
+        dx, dy = px + 0.5 - x, py + 0.5 - y
+        u, v = dx * ca + dy * sa, -dx * sa + dy * ca
+        col = _ship_px(u, v)
+        if col:
+            cv.P[X, Y] = tuple(col[:3]) + (255,)
     tail = (x - ca * 11, y - sa * 11)
     if thrust > 0:
         cv.glow(round(tail[0]), round(tail[1]), round(3 + 4 * thrust), ENGINE, 0.35 + 0.4 * thrust)
@@ -314,4 +320,39 @@ for _p in NAMES:
             ANIMS[f'vol_{_p}_{_q}'] = {'frames': functools.partial(_vol, _p, _q), 'frameDuration': round(ZT * 1000),
                                        'loop': False, 'prop': 'nau'}
 
-GEOMETRIA = {'things': {}, 'spawns': {}}
+
+def _zona(name):
+    """El rectangle que es pot tocar d'un planeta: el disc i el nom de sota."""
+    _, (cx, cy), r, _, _ = next(p for p in PLANETS if p[0] == name)
+    w = max(r + 4, text_width(LABELS[name]) // 2 + 4)
+    return (cx - w, cy - r - 4, cx + w, cy + r + 14)
+
+
+def _amb_nau(name):
+    """El planeta on som, amb la nau aparcada al costat (tocar-la també vol dir quedar-se)."""
+    x0, y0, x1, y1 = _zona(name)
+    px, py = PARK[name]
+    return (min(x0, px - 14), min(y0, py - 10), max(x1, px + 14), max(y1, py + 10))
+
+
+def _t(rect):
+    return {'rect': rect, 'walk': ((rect[0] + rect[2]) // 2, 254)}
+
+
+def _zona_palau():
+    _, (cx, cy), r, _, _ = PLANETS[1]
+    px, py = cx + r + 9, cy - r + 2
+    return (px - 5, py - 8, px + 16 + text_width('PALAU') // 2 + 4, py + 8)
+
+
+# Cada planeta es toca per anar-hi (`<planeta>`: només si és obert i no hi som) o per quedar-se (`aqui_<planeta>`: el
+# planeta on som); les condicions són a rooms/cantimplora_mapa.json. No hi ha protagonista: el passadís de sota és
+# només perquè el motor tingui on posar els punts d'arribada.
+GEOMETRIA = {
+    'things': {
+        **{n: _t(_zona(n)) for n in NAMES},
+        **{f'aqui_{n}': _t(_amb_nau(n)) for n in NAMES},
+        'palau': _t(_zona_palau()),
+    },
+    'spawns': {},
+}

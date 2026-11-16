@@ -12,9 +12,9 @@ ANIMS: `aigua` (el raig de la font i les esquitxades a la pica), `fum` (les xeme
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
+import functools
 import math
 
-from PIL import Image
 
 from hd.pix import Canvas, Light, W, H, hr, mix, B4
 from hd.rooms.comu import _diff, text, text_width
@@ -24,6 +24,12 @@ from hd640.rooms.ferrum_comu import (
     GLOWF, CLOTH, REDP, WATER, HELM,
     smog_sky, canonada, far_skyline, brick_wall, soot_top, window, cobbles, font_verne, miner, miner_c, tri)
 from hd640.rooms.ferrum_carrer import _smoke_loop
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 HOR = 140
 BASE = 186                      # on toquen a terra les façanes
@@ -225,15 +231,11 @@ PROPS = {}
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
 
-_BASE = []
-
-
+@functools.lru_cache(maxsize=None)
 def _base():
-    if not _BASE:
-        cv = Canvas(light=LIGHT)
-        bg(cv)
-        _BASE.append(cv.img)
-    return _BASE[0]
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
 
 
 def _frames_aigua():
@@ -243,15 +245,14 @@ def _frames_aigua():
     frames = []
     n = 8
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        P = img.load()
+        cv = Canvas(transparent=True)
         for y in range(y0, y1 + 1):
             t = (y - y0) / (y1 - y0)
             wob = math.sin(f * 0.8 + y * 0.9) * 0.4 * t
             for dx in (0, 1):
                 xx = int(round(x - 0.5 + dx + wob))
                 lvl = 2 + (1 if (y + f) % 4 == dx else 0) + (1 if dx == 0 else 0)
-                P[xx, y] = WATER[min(5, lvl + (1 if (y - f * 2) % 7 == 0 else 0))] + (255,)
+                cv.flat(xx, y, WATER[min(5, lvl + (1 if (y - f * 2) % 7 == 0 else 0))])
         # l'esquitx
         for k in range(5):
             s = ((f / n) + k / 5) % 1
@@ -259,15 +260,15 @@ def _frames_aigua():
             sx = x + math.sin(a) * s * 8
             sy = y1 - math.sin(s * math.pi) * 4
             if s < 0.9:
-                P[int(sx), int(sy)] = WATER[5 if s < 0.4 else 4] + (255,)
+                cv.flat(sx, sy, WATER[5 if s < 0.4 else 4])
         # els cercles a l'aigua de la pica
         r = 2 + (f % 4) * 3
         for a in range(0, 360, 24):
             px = x + math.cos(math.radians(a)) * r
             py = y1 + math.sin(math.radians(a)) * r * 0.2
             if ((px - x) / 18) ** 2 + ((py - base + 14) / 3.2) ** 2 < 1:
-                P[int(px), int(py)] = WATER[4] + (255,)
-        frames.append(img)
+                cv.flat(px, py, WATER[4])
+        frames.append(cv.img)
     return frames
 
 

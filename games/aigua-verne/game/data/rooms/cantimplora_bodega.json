@@ -233,13 +233,7 @@
           ]
         },
         {
-          "verb": [
-            "open",
-            "look",
-            "use",
-            "pull",
-            "pickUp"
-          ],
+          "verb": "look",
           "if": {
             "all": [
               {
@@ -295,13 +289,7 @@
           ]
         },
         {
-          "verb": [
-            "open",
-            "look",
-            "use",
-            "pull",
-            "pickUp"
-          ],
+          "verb": "look",
           "if": {
             "protagonist": "vet"
           },
@@ -313,13 +301,7 @@
           ]
         },
         {
-          "verb": [
-            "open",
-            "look",
-            "use",
-            "pull",
-            "pickUp"
-          ],
+          "verb": "look",
           "lines": [
             {
               "who": "player",
@@ -350,7 +332,14 @@
           "if": {
             "all": [
               {
-                "flag": "cal_filtre"
+                "any": [
+                  {
+                    "flag": "cal_filtre"
+                  },
+                  {
+                    "flag": "bru_set"
+                  }
+                ]
               },
               {
                 "flag": "filtre_agafat",
@@ -428,11 +417,19 @@
           ]
         },
         {
-          "verb": [
-            "open",
-            "look",
-            "pickUp"
-          ],
+          "verb": "look",
+          "if": {
+            "flag": "pernil_agafat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.nevera.3"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",
@@ -446,10 +443,7 @@
       "name": "sala.cantimplora_bodega.tauler.nom",
       "interactions": [
         {
-          "verb": [
-            "look",
-            "use"
-          ],
+          "verb": "look",
           "dialogue": "tauler"
         }
       ]
@@ -527,7 +521,6 @@
         {
           "verb": [
             "open",
-            "pickUp",
             "use"
           ],
           "if": {
@@ -561,7 +554,6 @@
         {
           "verb": [
             "open",
-            "pickUp",
             "use"
           ],
           "if": {
@@ -653,7 +645,6 @@
         {
           "verb": [
             "open",
-            "pickUp",
             "use"
           ],
           "if": {
@@ -680,6 +671,18 @@
         },
         {
           "verb": "look",
+          "if": {
+            "flag": "paper_donat"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carmanyola.15"
+            }
+          ]
+        },
+        {
+          "verb": "look",
           "lines": [
             {
               "who": "player",
@@ -690,7 +693,6 @@
         {
           "verb": [
             "open",
-            "pickUp",
             "use"
           ],
           "lines": [
@@ -959,6 +961,18 @@
             {
               "who": "player",
               "text": "sala.cantimplora_bodega.carrega.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "juana_coneguda"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.cantimplora_bodega.carrega.4"
             }
           ]
         },

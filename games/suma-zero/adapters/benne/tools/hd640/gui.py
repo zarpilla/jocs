@@ -26,6 +26,7 @@ from PIL import Image, ImageDraw
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 import hd.items as items480  # noqa: E402  (abans que res no canviï la Fig de hd.characters)
@@ -301,11 +302,11 @@ def portrait(who):
     return _FACES[who]
 
 
-def canvia_image(hover=False):
+def canvia_image(hover=False, h=None):
     """El botó «Canvia» a 57×43 (a 480, 43×32): mitja Iri i mitja Vet partides en diagonal; darrere, el passat
     (paret de maó) i el present (cel de nit amb estrelles). Marc de la consola: contorn fosc i vora de llum
     verd blavós; en hover, tot una mica més clar i la vora magenta."""
-    w, h = CANVIA[2], CANVIA[3]
+    w, h = CANVIA[2], h or CANVIA[3]
     passat = Image.new('RGBA', (w, h), (96, 52, 36, 255))
     pd = ImageDraw.Draw(passat)
     for y in range(0, h, 5):                              # maons de 13×5, a trencajunt
@@ -337,7 +338,7 @@ def canvia_image(hover=False):
     ImageDraw.Draw(meitat).polygon([(0, 0), (23, 0), (11, 39), (0, 39)], fill=255)
     cara.paste(portrait('vet'), (0, 0))
     cara.paste(portrait('iri'), (0, 0), meitat)
-    out.alpha_composite(cara, (12, 4))
+    out.alpha_composite(cara, (12, 4 + (h - CANVIA[3]) // 2))
     d = ImageDraw.Draw(out)
     d.line([(35, 0), (23, h - 1)], fill=(230, 200, 130, 255))
     d.line([(36, 0), (24, h - 1)], fill=(150, 120, 80, 255))
@@ -371,7 +372,7 @@ def inv_icons(ids):
         from hd640 import items as items640
         return [items640.render(i) for i in ids]
     except ImportError:
-        return [items480.render(i).resize((SLOT_W, SLOT_H), Image.NEAREST) for i in ids]
+        return [nearest(items480.render(i), (SLOT_W, SLOT_H)) for i in ids]
 
 
 # ─── La barra completa ─────────────────────────────────────────────────────
@@ -430,8 +431,8 @@ def bar480(line='Usa el cable de xarxa amb el router', inv=('auriculars', 'cable
 
 def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('barra_640.png')
-    a = bar480(hover='look').resize((1920, 300), Image.NEAREST)
-    b = verb_bar({'hover': 'look'}).resize((1920, 300), Image.NEAREST)
+    a = nearest(bar480(hover='look'), (1920, 300))
+    b = nearest(verb_bar({'hover': 'look'}), (1920, 300))
     gap = 40
     o = Image.new('RGB', (1920, 300 * 2 + gap * 2), (30, 30, 30))
     d = ImageDraw.Draw(o)

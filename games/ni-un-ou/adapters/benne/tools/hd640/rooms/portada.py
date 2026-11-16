@@ -17,6 +17,12 @@ from hd.rooms.comu import _diff
 from hd.rooms.exterior import vnoise, fbm, smooth, arenga, platform, reflection, sheer, NSKY, NSEA, GLOW_MOON
 from room_designs import LLETRES
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 K = 4 / 3
 HOR = 171
 TITLE_Y = 21
@@ -267,18 +273,26 @@ def _zpos(t, bob=0, sway_t=None):
     return x, WL_WATER + (WL_FAR - WL_WATER) * ky + wave, 1.0 - 0.38 * ky, True
 
 
+def _apx(cv, X, Y, col, a):
+    """Un píxel real (X, Y) semitransparent, si encara és buit."""
+    if 0 <= X < cv.w and 0 <= Y < cv.h and a > 0.03 and not cv.P[X, Y][3]:
+        cv.P[X, Y] = tuple(col) + (int(255 * min(1.0, a)),)
+
+
 def _aput(cv, x, y, col, a):
+    """Un píxel de sala (un bloc S×S a l'art a 2×)."""
     x, y = int(x), int(y)
-    if 0 <= x < W and 0 <= y < H and a > 0.03 and not cv.P[x, y][3]:
-        cv.P[x, y] = tuple(col) + (int(255 * min(1.0, a)),)
+    if 0 <= x < W and 0 <= y < H:
+        for dy in range(cv.S):
+            for dx in range(cv.S):
+                _apx(cv, x * cv.S + dx, y * cv.S + dy, col, a)
 
 
 def _aglow(cv, cx, cy, r, col, a0):
-    for y in range(int(cy - r), int(cy + r) + 1):
-        for x in range(int(cx - r), int(cx + r) + 1):
-            d = math.hypot(x - cx, (y - cy) * 1.2) / r
-            if d < 1:
-                _aput(cv, x, y, col, a0 * (1 - d) ** 2)
+    for X, Y, x, y in cv.pixels(int(cx - r), int(cy - r), int(cx + r), int(cy + r)):
+        d = math.hypot(x - cx, (y - cy) * 1.2) / r
+        if d < 1:
+            _apx(cv, X, Y, col, a0 * (1 - d) ** 2)
 
 
 def _ring(cv, cx, cy, r, a, seed):
@@ -462,10 +476,7 @@ def _watcher_layer():
     bg(a)
     bg(b, watcher=True)
     d = _diff(b.img, a.img)
-    px = d.load()
-    for y in range(HOR, H):
-        for x in range(W):
-            px[x, y] = (0, 0, 0, 0)
+    d.paste((0, 0, 0, 0), (0, HOR * a.S, d.width, d.height))       # (en píxels reals)
     return d
 
 

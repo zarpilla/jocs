@@ -11,9 +11,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "pont"
         },
@@ -34,14 +34,35 @@
         {
           "verb": "look",
           "if": {
+            "all": [
+              {
+                "flag": "radio_feta",
+                "is": false
+              },
+              {
+                "var": "empalmat",
+                "op": ">=",
+                "value": 2
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.8"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
             "flag": "radio_feta",
             "is": false
           },
           "lines": [
             {
               "who": "player",
-              "text": "sala.sala_radio.radio.1",
-              "sound": "estatica"
+              "text": "sala.sala_radio.radio.1"
             }
           ]
         },
@@ -51,6 +72,58 @@
             {
               "who": "player",
               "text": "sala.sala_radio.radio.2"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "var": "escena",
+                    "op": "==",
+                    "value": 3
+                  },
+                  {
+                    "flag": "sync_radio"
+                  }
+                ]
+              },
+              {
+                "var": "empalmat",
+                "op": ">=",
+                "value": 2
+              },
+              {
+                "flag": "panell_obert"
+              },
+              {
+                "var": "paciencia",
+                "op": ">=",
+                "value": 5
+              },
+              {
+                "var": "coberta",
+                "op": "==",
+                "value": 0
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.sala_radio.radio.3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.sala_radio.radio.9"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "radio_interrompuda"
             }
           ]
         },
@@ -111,8 +184,7 @@
           "lines": [
             {
               "who": "player",
-              "text": "sala.sala_radio.radio.6",
-              "sound": "estatica"
+              "text": "sala.sala_radio.radio.6"
             }
           ]
         },

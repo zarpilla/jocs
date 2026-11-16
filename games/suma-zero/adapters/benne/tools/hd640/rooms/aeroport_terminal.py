@@ -17,6 +17,7 @@ import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET, CARD, RED
@@ -27,6 +28,12 @@ from hd.personatges import hair_cap
 from hd.rooms.aeroport_terminal import (CONC, TILE, DAWN, TARMAC, GLASS, DESK, BLUE, AMBER, BOARD, YELS,  # noqa: F401
                                         WOODC, PLANT, CHROME, VEND)
 from hd640.draw_characters import person
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 FLOOR_Y = 200
 
@@ -177,12 +184,12 @@ ORTEGA = {'skin': M((56, 30, 34), (104, 62, 56), (152, 100, 80), (194, 138, 106)
 def ortega(cv, cig='sencera'):
     """La supervisora Ortega, darrere el vidre: uniforme granat, gafet, el mòbil en una mà i la cigarreta a l'altra."""
     fig = person(ORTEGA, 'D')
-    fig = fig.resize((round(fig.width * K), round(fig.height * K)), Image.NEAREST)
+    fig = nearest(fig, (round(fig.width * K), round(fig.height * K)))
     # l'ombra als peus, perquè trepitgi el paviment i no suri
     cx0, _ = _o(268, 0)
     cx1, _ = _o(290, 0)
     cv.tint(cx0, FEET_Y - 1, cx1, FEET_Y + 2, (4, 6, 10), 0.55)
-    cv.img.alpha_composite(fig, (_OX, _OY))
+    cv.blit(fig, (_OX, _OY))
     # el monyo i el mocador de coll
     mx, my = _o(278, 32)
     cv.disc(mx, my, 2.7, 2.7, [(10, 10, 12), (30, 28, 32), (56, 54, 58)], lambda nx, ny: 1.8 - ny, lit=0)

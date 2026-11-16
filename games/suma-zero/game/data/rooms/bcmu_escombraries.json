@@ -104,10 +104,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "virus_aturat"
           },
@@ -119,10 +116,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -142,10 +136,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -160,10 +151,7 @@
           "dialogue": "llibre"
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -339,10 +327,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -362,10 +347,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -426,10 +408,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -540,10 +519,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "all": [
               {
@@ -568,10 +544,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "cal_clau"
           },
@@ -583,19 +556,12 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "flag": "sync_collaret",
             "is": false
           },
           "lines": [
-            {
-              "who": "title",
-              "text": "sync.titol"
-            },
             {
               "who": "player",
               "text": "sala.bcmu_escombraries.llibre.codi1"
@@ -640,10 +606,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "var": "codis",
             "op": "==",
@@ -672,10 +635,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "if": {
             "var": "coberta",
             "op": ">=",
@@ -749,10 +709,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
@@ -870,8 +827,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "sync_mobil"
@@ -885,8 +842,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "sync_collaret"
@@ -900,8 +857,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "aliat_neta"
@@ -915,8 +872,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "var": "robot",
@@ -957,8 +914,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "iri_sap_neta"
@@ -972,8 +929,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -1010,8 +967,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "iri_llesta"
@@ -1025,8 +982,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "all": [
@@ -1048,8 +1005,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "all": [
@@ -1100,8 +1057,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "all": [
@@ -1193,8 +1150,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -1216,6 +1173,13 @@
     },
     "bosses": {
       "name": "sala.bcmu_escombraries.bosses.nom",
+      "visibleIf": {
+        "not": {
+          "var": "coixi",
+          "op": "==",
+          "value": "bosses"
+        }
+      },
       "interactions": [
         {
           "verb": "pickUp",
@@ -1265,9 +1229,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "bcmu_passadis"
         },

@@ -155,6 +155,22 @@ class Canvas:
     def get(self, x, y):
         return self.P[int(x), int(y)]
 
+    # ── per a l'art a 2× (hd1280.Canvas2x en fa la versió escalada) ──
+    S = 1   # píxels reals per píxel de sala
+
+    def blit(self, img, pos=(0, 0)):
+        """Enganxa (alpha_composite) una imatge feta en píxels de sala (una figura, una capa de W×H)."""
+        self.img.alpha_composite(img, (int(pos[0]), int(pos[1])))
+
+    def pixels(self, x0=0, y0=0, x1=None, y1=None):
+        """(X, Y, x, y) de cada píxel real del rectangle de sala (x0, y0)-(x1, y1), amb la coordenada de sala
+        (x, y) del seu centre: per a les passades que canvien colors píxel a píxel (via self.P[X, Y])."""
+        x1 = self.w - 1 if x1 is None else x1
+        y1 = self.h - 1 if y1 is None else y1
+        for Y in range(max(0, int(y0)), min(self.h, int(y1) + 1)):
+            for X in range(max(0, int(x0)), min(self.w, int(x1) + 1)):
+                yield X, Y, X, Y
+
     # formes (nivell constant o funció lvl(x, y))
     def rect(self, x0, y0, x1, y1, ramp, lvl, lit=1.0):
         for y in range(int(y0), int(y1) + 1):

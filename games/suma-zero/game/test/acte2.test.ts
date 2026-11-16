@@ -311,6 +311,7 @@ describe('Acte 2 · la sincronia del collaret', () => {
     p.do('use', 'llibre');
     p.do('use', 'llibre');
     p.switchTo('vet');
+    expect(n.activeHints()[0]).toBe('vet_clau'); // no promet la veritat: només el collaret
     expect(() => p.talk('ballester', 'veritat')).toThrow(/no disponible/);
     p.talk('ballester', 'or');
     expect(n.flag('clau_canviada')).toBe(true);
@@ -325,6 +326,7 @@ describe('Acte 2 · la sincronia del collaret', () => {
     p.do('use', 'llibre');
     p.do('use', 'llibre');
     p.switchTo('vet');
+    expect(n.activeHints()[0]).toBe('vet_clau_relaxat');
     expect(texts(p.talk('ballester', 'mentida'))).toContain('hipoteca');
     expect(n.quests().find((q) => q.id === 'veritat_ballester')?.status).toBe('failed');
     expect(n.flag('aliat_ballester')).toBe(false);

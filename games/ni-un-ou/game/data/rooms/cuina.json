@@ -59,9 +59,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -88,9 +88,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "menjador"
         },
@@ -144,68 +144,18 @@
           }
         },
         {
-          "verb": [
-            "pickUp",
-            "open",
-            "use"
-          ],
+          "verb": "use",
           "if": {
-            "var": "munta_cuina",
-            "op": "==",
-            "value": "nota_iri"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.cuina.nota1"
-            },
-            {
-              "who": "narrator",
-              "text": "sala.cuina.nota2"
-            },
-            {
-              "who": "player",
-              "text": "sala.cuina.nota3"
-            },
-            {
-              "who": "narrator",
-              "text": "sala.cuina.nota4"
-            }
-          ],
-          "effects": [
-            {
-              "setVar": "munta_cuina",
-              "value": ""
-            },
-            {
-              "setFlag": "nota_llegida"
-            }
-          ],
-          "action": {
-            "name": "munta.nota",
-            "args": {
-              "item": "nota_vet",
-              "parada": "rebost"
-            }
-          }
-        },
-        {
-          "verb": [
-            "open",
-            "pickUp"
-          ],
-          "action": {
-            "name": "munta.recollir"
-          }
-        },
-        {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
-          "if": {
-            "protagonist": "vet"
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "var": "munta_cuina",
+                "op": "==",
+                "value": ""
+              }
+            ]
           },
           "lines": [
             {
@@ -215,17 +165,18 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
               "text": "sala.cuina.munta.5"
             }
-          ]
+          ],
+          "if": {
+            "var": "munta_cuina",
+            "op": "==",
+            "value": ""
+          }
         }
       ]
     },
@@ -237,15 +188,6 @@
         "value": ""
       },
       "interactions": [
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.cuina.safata.1"
-            }
-          ]
-        },
         {
           "verb": [
             "pickUp",
@@ -410,8 +352,7 @@
         {
           "verb": [
             "open",
-            "use",
-            "walkTo"
+            "use"
           ],
           "if": {
             "all": [

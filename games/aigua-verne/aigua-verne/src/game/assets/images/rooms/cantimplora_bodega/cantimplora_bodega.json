@@ -4,446 +4,446 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 1.aseprite": {
       "frame": {
-        "x": 1648,
+        "x": 3304,
         "y": 0,
-        "w": 71,
-        "h": 73
+        "w": 142,
+        "h": 146
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 307,
-        "y": 145,
-        "w": 71,
-        "h": 73
+        "x": 614,
+        "y": 290,
+        "w": 142,
+        "h": 146
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 2.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 199,
-        "h": 196
+        "w": 400,
+        "h": 392
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 147,
-        "y": 64,
-        "w": 199,
-        "h": 196
+        "x": 293,
+        "y": 128,
+        "w": 400,
+        "h": 392
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 3.aseprite": {
       "frame": {
-        "x": 839,
+        "x": 1680,
         "y": 0,
-        "w": 199,
-        "h": 196
+        "w": 400,
+        "h": 392
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 147,
-        "y": 64,
-        "w": 199,
-        "h": 196
+        "x": 293,
+        "y": 128,
+        "w": 400,
+        "h": 392
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 4.aseprite": {
       "frame": {
-        "x": 1038,
+        "x": 2080,
         "y": 0,
-        "w": 199,
-        "h": 196
+        "w": 400,
+        "h": 392
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 147,
-        "y": 64,
-        "w": 199,
-        "h": 196
+        "x": 293,
+        "y": 128,
+        "w": 400,
+        "h": 392
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 5.aseprite": {
       "frame": {
-        "x": 1237,
+        "x": 2480,
         "y": 0,
-        "w": 199,
-        "h": 196
+        "w": 400,
+        "h": 392
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 147,
-        "y": 64,
-        "w": 199,
-        "h": 196
+        "x": 293,
+        "y": 128,
+        "w": 400,
+        "h": 392
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 6.aseprite": {
       "frame": {
-        "x": 1436,
+        "x": 2880,
         "y": 0,
-        "w": 111,
-        "h": 115
+        "w": 223,
+        "h": 230
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 106,
-        "w": 111,
-        "h": 115
+        "x": 764,
+        "y": 212,
+        "w": 223,
+        "h": 230
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 7.aseprite": {
       "frame": {
-        "x": 1719,
+        "x": 3446,
         "y": 0,
-        "w": 96,
-        "h": 36
+        "w": 192,
+        "h": 72
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 61,
-        "y": 184,
-        "w": 96,
-        "h": 36
+        "x": 122,
+        "y": 368,
+        "w": 192,
+        "h": 72
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 8.aseprite": {
       "frame": {
-        "x": 1815,
+        "x": 3638,
         "y": 0,
-        "w": 21,
-        "h": 25
+        "w": 42,
+        "h": 50
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 589,
-        "y": 140,
-        "w": 21,
-        "h": 25
+        "x": 1178,
+        "y": 280,
+        "w": 42,
+        "h": 50
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 9.aseprite": {
       "frame": {
-        "x": 1836,
+        "x": 3680,
         "y": 0,
-        "w": 4,
-        "h": 20
+        "w": 8,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 118,
-        "w": 4,
-        "h": 20
+        "x": 1050,
+        "y": 236,
+        "w": 8,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 10.aseprite": {
       "frame": {
-        "x": 1840,
+        "x": 3688,
         "y": 0,
-        "w": 4,
-        "h": 20
+        "w": 8,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 116,
-        "w": 4,
-        "h": 20
+        "x": 1050,
+        "y": 232,
+        "w": 8,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 11.aseprite": {
       "frame": {
-        "x": 1875,
+        "x": 3758,
         "y": 0,
-        "w": 5,
-        "h": 14
+        "w": 10,
+        "h": 28
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 120,
-        "w": 5,
-        "h": 14
+        "x": 1050,
+        "y": 240,
+        "w": 10,
+        "h": 28
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 12.aseprite": {
       "frame": {
-        "x": 1844,
+        "x": 3696,
         "y": 0,
-        "w": 5,
-        "h": 20
+        "w": 10,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 118,
-        "w": 5,
-        "h": 20
+        "x": 1050,
+        "y": 236,
+        "w": 10,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 13.aseprite": {
       "frame": {
-        "x": 1849,
+        "x": 3706,
         "y": 0,
-        "w": 4,
-        "h": 20
+        "w": 8,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 116,
-        "w": 4,
-        "h": 20
+        "x": 1050,
+        "y": 232,
+        "w": 8,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 14.aseprite": {
       "frame": {
-        "x": 1880,
+        "x": 3768,
         "y": 0,
-        "w": 6,
-        "h": 14
+        "w": 12,
+        "h": 28
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 524,
-        "y": 120,
-        "w": 6,
-        "h": 14
+        "x": 1048,
+        "y": 240,
+        "w": 12,
+        "h": 28
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 15.aseprite": {
       "frame": {
-        "x": 1853,
+        "x": 3714,
         "y": 0,
-        "w": 6,
-        "h": 20
+        "w": 12,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 524,
-        "y": 118,
-        "w": 6,
-        "h": 20
+        "x": 1048,
+        "y": 236,
+        "w": 12,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 16.aseprite": {
       "frame": {
-        "x": 1859,
+        "x": 3726,
         "y": 0,
-        "w": 5,
-        "h": 20
+        "w": 10,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 116,
-        "w": 5,
-        "h": 20
+        "x": 1050,
+        "y": 232,
+        "w": 10,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 17.aseprite": {
       "frame": {
-        "x": 1886,
+        "x": 3780,
         "y": 0,
-        "w": 4,
-        "h": 14
+        "w": 8,
+        "h": 28
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 120,
-        "w": 4,
-        "h": 14
+        "x": 1050,
+        "y": 240,
+        "w": 8,
+        "h": 28
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 18.aseprite": {
       "frame": {
-        "x": 1864,
+        "x": 3736,
         "y": 0,
-        "w": 6,
-        "h": 20
+        "w": 12,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 524,
-        "y": 118,
-        "w": 6,
-        "h": 20
+        "x": 1048,
+        "y": 236,
+        "w": 12,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 19.aseprite": {
       "frame": {
-        "x": 1870,
+        "x": 3748,
         "y": 0,
-        "w": 5,
-        "h": 20
+        "w": 10,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 116,
-        "w": 5,
-        "h": 20
+        "x": 1050,
+        "y": 232,
+        "w": 10,
+        "h": 40
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 20.aseprite": {
       "frame": {
-        "x": 1875,
+        "x": 3758,
         "y": 0,
-        "w": 5,
-        "h": 14
+        "w": 10,
+        "h": 28
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 525,
-        "y": 120,
-        "w": 5,
-        "h": 14
+        "x": 1050,
+        "y": 240,
+        "w": 10,
+        "h": 28
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 21.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -457,14 +457,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 22.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -478,14 +478,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 23.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -499,14 +499,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 24.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -520,14 +520,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 25.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -541,35 +541,35 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 26.aseprite": {
       "frame": {
-        "x": 1547,
+        "x": 3103,
         "y": 0,
-        "w": 101,
-        "h": 77
+        "w": 201,
+        "h": 157
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 296,
-        "y": 4,
-        "w": 101,
-        "h": 77
+        "x": 592,
+        "y": 8,
+        "w": 201,
+        "h": 157
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 27.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -583,35 +583,35 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 28.aseprite": {
       "frame": {
-        "x": 1547,
+        "x": 3103,
         "y": 0,
-        "w": 101,
-        "h": 77
+        "w": 201,
+        "h": 157
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 296,
-        "y": 4,
-        "w": 101,
-        "h": 77
+        "x": 592,
+        "y": 8,
+        "w": 201,
+        "h": 157
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 29.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -625,14 +625,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 30.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -646,14 +646,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 31.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -667,14 +667,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 32.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -688,14 +688,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 33.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -709,14 +709,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 34.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -730,14 +730,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 35.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -751,14 +751,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 36.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -772,14 +772,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 37.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -793,14 +793,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 38.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -814,14 +814,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 39.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -835,14 +835,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 40.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -856,14 +856,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 41.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -877,14 +877,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 42.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -898,14 +898,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 43.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -919,14 +919,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "cantimplora_bodega 44.aseprite": {
       "frame": {
-        "x": 1890,
+        "x": 3788,
         "y": 0,
         "w": 1,
         "h": 1
@@ -940,8 +940,8 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -952,8 +952,8 @@
     "image": "cantimplora_bodega.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1891,
-      "h": 360
+      "w": 3789,
+      "h": 720
     },
     "scale": "1",
     "frameTags": [

@@ -26,6 +26,12 @@ from hd.characters import M, ORANGE, BOOT, TROUSER, SKIN_VET, SKIN_RUDDY, HAIR_B
 from hd640.draw_characters import person
 from hd import personatges as P
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR = 301            # el terra de la cabina (on recolzen els peus)
 ROWS = (69, 187, 304, 421, 539, 656)
 SEATED = {187: 'tecnic', 304: 'iri', 421: 'vet'}
@@ -249,7 +255,7 @@ def seated(cv, who, x):
     spec = dict(SPECS[who], seated=49)
     fig = person(spec, 'L')
     # els peus del dibuix d'assegut queden a la fila 90 (la 68 de 480): hi posem el terra
-    cv.img.alpha_composite(fig, (x - 35, FLOOR - 90))
+    cv.blit(fig, (x - 35, FLOOR - 90))
 
 
 def sleeper_cap(cv, x):
@@ -277,7 +283,7 @@ def badge_in_hand(cv):
 def rius(cv):
     """La Rius, dreta al passadís, girada cap a les noves, amb la tauleta de la subcontracta."""
     fig = person(RIUS, 'L').transpose(Image.FLIP_LEFT_RIGHT)
-    cv.img.alpha_composite(fig, (RIUS_X - 32, FLOOR + 8 - 111))
+    cv.blit(fig, (RIUS_X - 32, FLOOR + 8 - 111))
     tx, ty = RIUS_X + 8, FLOOR + 8 - 48
     obox(cv, tx, ty, tx + 12, ty + 16, PLASTIC, 1.6)
     cv.rect(tx + 2, ty + 2, tx + 10, ty + 14, [(60, 140, 200), (120, 200, 240)], 0.6, lit=0)

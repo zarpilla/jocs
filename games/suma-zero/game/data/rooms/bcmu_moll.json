@@ -45,7 +45,23 @@
           "who": "vet",
           "text": "sala.bcmu_moll.intro8",
           "if": {
-            "flag": "auditoria_acceptada"
+            "all": [
+              {
+                "flag": "auditoria_acceptada"
+              },
+              {
+                "visited": "bcmu_seguretat",
+                "is": false
+              }
+            ]
+          },
+          "sound": "auricular"
+        },
+        {
+          "who": "vet",
+          "text": "sala.bcmu_moll.intro9",
+          "if": {
+            "visited": "bcmu_seguretat"
           },
           "sound": "auricular"
         }
@@ -136,9 +152,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "hasItem": "targeta"
@@ -179,8 +195,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -228,8 +244,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {

@@ -11,9 +11,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "sala_maquines"
         },
@@ -176,61 +176,18 @@
           }
         },
         {
-          "verb": [
-            "pickUp",
-            "open",
-            "use"
-          ],
-          "if": {
-            "var": "munta_rebost",
-            "op": "==",
-            "value": "nota_vet"
-          },
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.rebost.nota1"
-            },
-            {
-              "who": "narrator",
-              "text": "sala.rebost.nota2"
-            },
-            {
-              "who": "player",
-              "text": "sala.rebost.nota3"
-            }
-          ],
-          "effects": [
-            {
-              "setVar": "munta_rebost",
-              "value": ""
-            },
-            {
-              "setFlag": "pla_fet"
-            }
-          ]
-        },
-        {
-          "verb": [
-            "open",
-            "pickUp"
-          ],
-          "action": {
-            "name": "munta.recollir"
-          }
-        },
-        {
-          "verb": [
-            "use",
-            "push",
-            "pull"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",
               "text": "sala.rebost.munta.8"
             }
-          ]
+          ],
+          "if": {
+            "var": "munta_rebost",
+            "op": "==",
+            "value": ""
+          }
         }
       ]
     },
@@ -242,15 +199,6 @@
         "value": ""
       },
       "interactions": [
-        {
-          "verb": "look",
-          "lines": [
-            {
-              "who": "player",
-              "text": "sala.rebost.safata.1"
-            }
-          ]
-        },
         {
           "verb": [
             "pickUp",
@@ -350,9 +298,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "flag": "registre_obert"
@@ -479,8 +427,8 @@
         },
         {
           "verb": [
-            "use",
             "open",
+            "use",
             "pull"
           ],
           "if": {
@@ -492,6 +440,10 @@
               },
               {
                 "flag": "tomas_clau"
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
               }
             ]
           },
@@ -504,14 +456,22 @@
         },
         {
           "verb": [
-            "use",
             "open",
+            "use",
             "pull"
           ],
           "if": {
-            "var": "escena",
-            "op": "<",
-            "value": 7
+            "all": [
+              {
+                "var": "escena",
+                "op": "<",
+                "value": 7
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
+              }
+            ]
           },
           "lines": [
             {
@@ -522,8 +482,32 @@
         },
         {
           "verb": [
-            "use",
             "open",
+            "use",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "registre_obert",
+                "is": false
+              },
+              {
+                "flag": "frontissa1"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.rebost.registre.21"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
             "pull"
           ],
           "lines": [
@@ -531,7 +515,11 @@
               "who": "player",
               "text": "sala.rebost.registre.12"
             }
-          ]
+          ],
+          "if": {
+            "flag": "registre_obert",
+            "is": false
+          }
         }
       ]
     }

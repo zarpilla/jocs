@@ -19,8 +19,11 @@ d'aquí va sortir la interfície tàctil compartida.
 
 | Gest | Què fa |
 |---|---|
-| Tocar (clic) una cosa | La primera vegada, mirar-la (la descripció, amb la pista). Després: si té una sola acció, la fa (obrir, agafar, parlar...); si en té més d'una, encara que alguna sigui una broma, obre el menú i tries tu. Les sortides no es miren: s'hi va |
-| Mantenir premut (o clic dret) | El menú d'accions: «Mira» i les accions que té ara mateix (2–3 opcions) |
+| Tocar una cosa (amb el dit) | La primera vegada, mirar-la (la descripció, amb la pista). Després: si té una sola acció, la fa (obrir, agafar, parlar...); si en té més d'una, encara que alguna sigui una broma, obre el menú i tries tu. Les sortides no es miren: s'hi va |
+| Amb el ratolí: clic esquerre, clic dret | El clic esquerre fa el mateix que el toc, però sense mirar primer (l'acció, o el menú si n'hi ha més d'una); el clic dret mira |
+| Mantenir premut (el dit o el botó esquerre) | El menú d'accions: «Mira» i les accions que té ara mateix (2–3 opcions) |
+| «Com es juga» | En prémer «Comença», «Continua» o «Carrega una partida» surt una targeta que ho explica, amb el dit o amb el ratolí segons l'aparell (amb el ratolí, s'hi pot triar què fa cada botó), fins que marques «No ho tornis a mostrar». Es torna a veure a Opcions → Controls |
+| Opcions → «clic esquerre per mirar» | Gira els botons del ratolí: l'esquerre mira i el dret fa. Es desa en aquell aparell |
 | Tocar el terra | Caminar |
 | Bossa (a baix a la dreta) | Desplega la safata de l'inventari |
 | Tocar un objecte de la safata | El pren a la mà («Usa X amb...»); tocar una cosa l'hi fa servir, o li dona si és un personatge. Tocar el terra o el mateix objecte, el deixa |
@@ -86,12 +89,15 @@ Regla del toc: la primera vegada mira; després, una sola acció la fa i més d'
   l'inventari: en fa l'acció (el sync li posa `defaultVerb: "fes"`). Els que es combinen es prenen a la mà, i per
   mirar-los cal mantenir premut.
 
-| Joc | Passos | Un toc | Toc + menú | Mantenir premut | Toc de més (mira primer) | Gestos per pas |
-|---|---|---|---|---|---|---|
-| Aigua Verne (barril) | 163 | 163 | 0 | 0 | 29 | 1,18 |
-| Suma Zero | 66 | 61 | 5 | 0 | 25 | 1,45 |
-| Ni un ou | 106 | 106 | 0 | 0 | 14 | 1,13 |
-| Ferro-9 | 149 | 134 | 11 | 4 | 22 | 1,25 |
+| Joc | Passos | Un toc | Toc + menú | Mantenir premut | Toc de més (mira primer) | Gestos per pas (dit) | Gestos per pas (ratolí) |
+|---|---|---|---|---|---|---|---|
+| Aigua Verne (barril) | 171 | 171 | 0 | 0 | 29 | 1,17 | 1,00 |
+| Suma Zero | 66 | 61 | 5 | 0 | 25 | 1,45 | 1,08 |
+| Ni un ou | 109 | 109 | 0 | 0 | 15 | 1,14 | 1,00 |
+| Ferro-9 (amb barra de verbs; mesura del 15-11-2026) | 149 | 134 | 11 | 4 | 22 | 1,25 | — |
+
+Amb el ratolí (l'ordinador), el clic esquerre fa l'acció sense mirar primer i el clic dret mira: no hi ha tocs de més,
+i mirar és un gest quan el camí ho demana.
 
 A Aigua Verne cap cosa del camí té dues accions diferents: el contingut ja agrupa els verbs en una sola interacció
 (`["walkTo", "use", "open"]`). Al Ferro-9, el menú surt just on el verb és el trencaclosques (el panell, la molla, la
@@ -115,7 +121,7 @@ Compte: `hd640/gui_rest.py` torna a fer la barra de verbs; no s'ha d'executar (o
 |---|---|
 | Estructura | Pròleg, 3 actes i 8 escenes, un final amb variacions (l'últim barril, les respostes a la Juana) |
 | Protagonistes | L'Iri i la Vet, amb canvi lliure; les sales són compartides |
-| Viatges | La Cantimplora: el mapa del pont (només el fa servir l'Iri) porta a qualsevol planeta obert; alguns trencaclosques demanen tornar a un planeta |
+| Viatges | La Cantimplora: el mapa del pont (només el fa servir l'Iri) obre la carta de navegació, on es toca el planeta on es vol anar (només hi surt «Navega a...» si és obert) i la nau hi vola; alguns trencaclosques demanen tornar a un planeta |
 | Comunicació | El comunicador de canell (repeteix què toca fer) i la Mosca, el dron que porta objectes a l'altra si són al mateix planeta |
 | Sincronies | Per torns: la colada de les claus (la temperatura del forn) i la subhasta (els lots) |
 | Resolució | 640×360, amb **dues mides de personatge**: ≈83 px a les sales de lluny i ≈100 px a les de prop (roba `Lluny` a `characters.json`) |

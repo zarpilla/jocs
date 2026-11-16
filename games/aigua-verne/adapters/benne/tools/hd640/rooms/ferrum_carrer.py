@@ -14,6 +14,7 @@ verd i l'aixeta que goteja). ANIMS: `foc` (la foguera del bidó), `fum` (les xem
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
+import functools
 import math
 
 from PIL import Image
@@ -26,6 +27,12 @@ from hd640.rooms.ferrum_comu import (
     FIREF, GLOWF, CLOTH, REDP, WATER, HELM, WARMG,
     smog_sky, canonada, far_skyline, brick_wall, brick_lvl, soot_top, window, cobbles, panell, font_verne,
     pila_comptadors, miner, smoke_frames, chimney, qtext, miner_c)
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 HOR = 150                       # l'horitzó, al fons del carrer
 BASE = 192                      # on toquen a terra les façanes del fons
@@ -279,7 +286,7 @@ def fosa(cv):
     # FOSA, en lletres grosses de llauna clavades a la paret (n'hi falta una mica)
     s = 'FOSA'
     sx = 530 - (text_width(s) * 3) // 2
-    big = Canvas(40, 8, transparent=True)
+    big = Canvas1x(40, 8, transparent=True)
     text(big, s, 0, 0, CLOTH, 4.0, lit=0)
     bp = big.img.load()
     for y in range(5):
@@ -552,7 +559,7 @@ def barril_piquet(cv):
     # l'ombra cap a la dreta
     for y in range(base - 1, base + 3):
         for x in range(cx - 6, cx + 30):
-            if ((x - cx - 10) / 22) ** 2 + ((y - base - 1) / 2.5) ** 2 <= 1 and not cv.img.getpixel((x, y))[3]:
+            if ((x - cx - 10) / 22) ** 2 + ((y - base - 1) / 2.5) ** 2 <= 1 and not cv.get(x, y)[3]:
                 if 0.85 > B4[y & 3][x & 3]:
                     cv.flat(x, y, (30, 24, 24))
 
@@ -583,15 +590,11 @@ PROPS = {'barril_piquet': barril_piquet, 'condensador_arreglat': condensador_arr
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
 
-_BASE = []
-
-
+@functools.lru_cache(maxsize=None)
 def _base():
-    if not _BASE:
-        cv = Canvas(light=LIGHT)
-        bg(cv)
-        _BASE.append(cv.img)
-    return _BASE[0]
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
 
 
 def _frames_foc():
@@ -601,7 +604,7 @@ def _frames_foc():
     frames = []
     n = 8
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (W * Canvas.S, H * Canvas.S), (0, 0, 0, 0))
         cv = Canvas(light=LIGHT, img=img)
         ph = f / n * 2 * math.pi
         for y in range(top - 22, top + 1):
@@ -634,17 +637,22 @@ def _smoke_loop(base, sources, n):
     """Fum en bucle: cada fotograma barreja dues fases del soroll perquè l'últim encaixi amb el primer."""
     frames = []
     S = base.load()
+    s = base.width // W                                     # píxels reals per píxel de sala (l'art pot ser a 2×)
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', base.size, (0, 0, 0, 0))
         P = img.load()
         ph = f / n
         for sx, sy, sw, sh in sources:
-            for y in range(max(0, int(sy - sh)), int(sy) + 1):
+            for Y in range(max(0, int(sy - sh)) * s, (int(sy) + 1) * s):
+                y = (Y + 0.5) / s - 0.5                                                # coordenada de sala
                 t = (sy - y) / sh
+                if t > 1:                                                              # (a 2×, la fila de dalt de tot)
+                    continue
                 drift = t * t * sh * 0.8
-                for x in range(int(sx - sw - 3), int(sx + sw + drift + 12)):
-                    if not (0 <= x < W and 0 <= y < RH):
+                for X in range(int(sx - sw - 3) * s, int(sx + sw + drift + 12) * s):
+                    if not (0 <= X < W * s and 0 <= Y < RH * s):
                         continue
+                    x = (X + 0.5) / s - 0.5
                     u = (x - sx - drift) / (sw * (1 + t * 2.4))
                     if abs(u) > 1.2:
                         continue
@@ -653,11 +661,11 @@ def _smoke_loop(base, sources, n):
                     nb = fbm((x - drift * 0.4) / 6, (y + (ph - 1) * 24) / 5, int(sx))
                     nz = na * (1 - ph) + nb * ph
                     dens = shape * (0.4 + nz * 1.2)
-                    if dens > 0.3 + B4[y & 3][x & 3] * 0.45:
-                        o = S[x, y]
+                    if dens > 0.3 + B4[Y & 3][X & 3] * 0.45:
+                        o = S[X, Y]
                         k = min(0.8, dens)
                         col = mix(o[:3], HAZE[min(len(HAZE) - 1, int(1 + nz * 4))], k)
-                        P[x, y] = col + (255,)
+                        P[X, Y] = col + (255,)
         frames.append(img)
     return frames
 
@@ -669,21 +677,20 @@ def _frames_goteig():
     frames = []
     n = 10
     for f in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        P = img.load()
+        cv = Canvas(transparent=True)
         if f < 5:
-            P[gx, gy + 1] = WATER[3] + (255,)
+            cv.flat(gx, gy + 1, WATER[3])
             if f >= 3:
-                P[gx, gy + 2] = WATER[4] + (255,)
+                cv.flat(gx, gy + 2, WATER[4])
         elif f < 8:
             y = gy + 2 + (f - 4) ** 2 * 2
             if y < base:
-                P[gx, y] = WATER[4] + (255,)
-                P[gx, y - 1] = WATER[2] + (255,)
+                cv.flat(gx, y, WATER[4])
+                cv.flat(gx, y - 1, WATER[2])
         else:
             for dx in (-2, 2) if f == 8 else (-3, 3):
-                P[gx + dx, base] = WATER[5] + (255,)
-        frames.append(img)
+                cv.flat(gx + dx, base, WATER[5])
+        frames.append(cv.img)
     return frames
 
 

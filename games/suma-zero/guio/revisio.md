@@ -1400,7 +1400,7 @@ EN ENTRAR
         VET: I nosaltres no en tenim ni per pizzes.
         JUGADORA: Doncs per això ho repartirem. Pizza per a tothom.
         JUGADORA: Però primer... No. No, no, no. S'ha mort.
-        [SO: miol] JUGADORA: Necessito internet de debò. I el router nou encara és a la caixa.
+        [SO: miol] JUGADORA: Necessito internet de debò. I el router nou encara està per muntar.
         ⇒ comença acte1
 
 DECORAT router_connectat — es veu si router_connectat

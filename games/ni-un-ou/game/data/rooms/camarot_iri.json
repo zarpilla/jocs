@@ -95,9 +95,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -124,9 +124,9 @@
         },
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "goTo": "passadis_baix"
         },
@@ -349,11 +349,7 @@
           ]
         },
         {
-          "verb": [
-            "use",
-            "pull",
-            "push"
-          ],
+          "verb": "use",
           "lines": [
             {
               "who": "player",

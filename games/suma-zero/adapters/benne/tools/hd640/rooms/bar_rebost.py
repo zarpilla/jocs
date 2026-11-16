@@ -25,6 +25,12 @@ from hd.rooms.bar_rebost import (BRICK, MORTAR, CEMENT, DAMP, CRATE_Y, CRATE_R, 
                                  INK, WATER)
 from hd640.rooms.bar_sala import fast_diff
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 BULB = (317, 35)
 DESK_TOP = 155

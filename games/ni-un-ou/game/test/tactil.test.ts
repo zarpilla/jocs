@@ -1,7 +1,7 @@
 /**
  * Ni un ou, sense barra de verbs: el joc sencer (per dos camins de partida.ts) jugat amb la interfície tàctil.
  * Què es compta: adapters/benne/tactil/mesura.ts. Si alguna interacció del camí no es pot fer de cap manera, falla.
- * Amb TACTIL=1 escriu el recompte i la llista dels passos que no són un toc.
+ * Amb el dit (el primer toc mira) i amb el ratolí (el clic dret mira). Amb TACTIL=1 escriu el recompte i la llista dels passos que no són un toc.
  */
 import { describe, expect, it } from 'vitest';
 import { jugarTot, partida, type Jugador } from './partida.js';
@@ -13,10 +13,10 @@ const camins: { nom: string; jugar: (p: Jugador) => void }[] = [
 ];
 
 describe('Ni un ou: el camí, sense barra de verbs', () => {
-  for (const cami of camins) {
-    it(cami.nom, () => {
+  for (const mode of ['dit', 'ratoli'] as const) for (const cami of camins) {
+    it(`${cami.nom} (${mode})`, () => {
       const { n, p } = partida();
-      const m = mesura(n);
+      const m = mesura(n, mode);
       cami.jugar(m.jugador(p));
       expect(n.flag('enviat')).toBe(true);
       if (process.env.TACTIL) console.log(m.resum(cami.nom));

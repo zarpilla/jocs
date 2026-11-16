@@ -211,9 +211,10 @@ export interface RoomDef {
    */
   decor?: Record<Id, DecorDef>;
   /**
-   * Sala de cinemàtica (p. ex. el pròleg): no hi ha res per clicar ni cap protagonista, l'adaptador
-   * amaga la interfície, i l'`onEnter` es reprodueix sol fins al `goTo`. Si el jugador la salta,
-   * es va directament a `skipTo`.
+   * Sala de cinemàtica (p. ex. el pròleg): no hi ha cap protagonista, l'adaptador amaga la interfície, i
+   * l'`onEnter` es reprodueix sol fins al `goTo`. Si el jugador la salta, es va directament a `skipTo`.
+   * Si té `hotspots` (la carta de navegació d'Aigua Verne), en acabar l'`onEnter` s'hi queda i es poden tocar,
+   * sense que ningú hi camini.
    */
   cutscene?: { skipTo?: Id };
 }

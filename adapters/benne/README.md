@@ -171,7 +171,10 @@ Una interfície pròpia es pot quedar alguns clics abans que vagin al JSON: `set
 ### La interfície tàctil (`tactil/`)
 
 Sense barra de verbs, pensada per al mòbil: tocar una cosa la mira la primera vegada i després en fa l'acció (o
-obre el menú d'accions si en té més d'una), mantenir premut obre el menú, i l'alçada de la pantalla s'adapta a
+obre el menú d'accions si en té més d'una), mantenir premut obre el menú; amb el ratolí, per defecte el clic esquerre
+fa l'acció sense mirar primer i el dret mira (cada pulsació diu si és un dit o un ratolí: `pointerType`; a les opcions
+i a la targeta es pot girar), una targeta «Com es juga» ho explica en prémer «Comença», «Continua» o «Carrega» (fins que el jugador diu que no la torni a
+mostrar: preferències de cada joc i aparell, `tactil/runtime/preferencies.ts`), i l'alçada de la pantalla s'adapta a
 l'aparell. Un joc la fa servir amb `tactil: true` al seu `joc.ts` (Aigua Verne, Suma Zero, Ni un ou), i llavors el
 `benne:sync` hi posa el runtime (`tactil/runtime/`), els scripts del HUD i del menú (`tactil/guis/`), l'encaminador al
 `globalScript.ts`, la configuració (`configuraTactil`) i, als objectes que el contingut no combina mai amb res

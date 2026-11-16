@@ -20,6 +20,12 @@ from hd640.rooms.palau_comu import (MARB, ORP, TURQ, CROM, NEGRE, BLANC, VERMELL
                                     escaleta, aigua_aquari, peixos, ombra, negre_barra, panell_preu, panell_valor,
                                     estrelles_frames, fbm)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 PERSONA = 100
 CEIL = 10
 GLASS_Y1 = 196               # on el vidre toca el terra
@@ -51,13 +57,12 @@ def paret_vidre(cv):
     # l'espai, Terra-2 (enorme) i el dipòsit
     bright = espai(cv, 0, CEIL + 1, 639, GLASS_Y1 - 1, seed=17, dens=1.2)
     terra2(cv, 170, 410, 290, mask=lambda x, y: y < GLASS_Y1, seed=5, sun=(0.7, -0.5))
-    dep = Canvas(transparent=True)
+    dep = type(cv)(transparent=True)
     diposit(dep, 300, 44, 0.62)
     D = dep.img.load()
-    for y in range(CEIL + 1, GLASS_Y1):
-        for x in range(200, 400):
-            if D[x, y][3]:
-                cv.flat(x, y, D[x, y])
+    for X, Y, _, _ in cv.pixels(200, CEIL + 1, 399, GLASS_Y1 - 1):                         # (píxels reals)
+        if D[X, Y][3]:
+            cv.P[X, Y] = D[X, Y][:3] + (255,)
     vidre(cv, 0, CEIL + 1, 639, GLASS_Y1 - 1, k=0.12, seed=40)
     # els muntants d'or i el travesser
     for x in MULLS:
@@ -353,7 +358,8 @@ def _frames_estrelles():
     # només les que no tapa res (Terra-2, el dipòsit, els muntants, la taula...)
     base = _base()
     P = base.load()
-    ok = [(x, y) for x, y in bright if y < 150 and max(P[x, y][:3]) > 150]
+    k = base.width // 640                                       # píxels reals per píxel de sala
+    ok = [(x, y) for x, y in bright if y < 150 and max(P[x * k, y * k][:3]) > 150]
     return estrelles_frames(base, ok, n=10, seed=2)
 
 

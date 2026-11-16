@@ -25,6 +25,7 @@ from PIL import Image
 
 TOOLS = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TOOLS))
+from pixels import nearest  # noqa: E402
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 from hd.pix import Canvas, hr  # noqa: E402
@@ -133,13 +134,13 @@ def menu_button(cv):
         cv.hline(x + 6, x + s - 6, yy + 2, NAVYB, 1.6, lit=0)
 
 
-def porthole(cv, hover=False):
-    x, y, w, h = CANVIA
+def porthole(cv, hover=False, rect=None, port=None):
+    x, y, w, h = rect or CANVIA
     box(cv, x, y, x + w - 1, y + h - 1, NAVYB, 4.2 if hover else 3.6)
     cv.hline(x + 1, x + w - 2, y + 1, NAVYB, 5.0 if hover else 4.6, lit=0)
     for bx, by in ((x + 3, y + 3), (x + w - 5, y + 3), (x + 3, y + h - 5), (x + w - 5, y + h - 5)):
         big_rivet(cv, bx, by, 5.6)
-    cx, cy = PORT
+    cx, cy = port or PORT
     lift = 0.8 if hover else 0.0
     cv.disc(cx + 0.5, cy + 0.8, 18.5, 18.5, NAVYB, 1.0, lit=0)
     cv.disc(cx, cy, 17.5, 17.5, BRASS, lambda nx, ny: 3.6 + lift - nx - ny * 1.2, lit=0)
@@ -283,8 +284,8 @@ def bar480(line='Usa la cisalla amb el cable', inv=('walkie', 'cisalla', 'mostra
 def main():
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path('barra_640.png')
     from PIL import ImageDraw
-    a = bar480(hover='look').resize((1920, 300), Image.NEAREST)
-    b = verb_bar({'hover': 'look'}).resize((1920, 300), Image.NEAREST)
+    a = nearest(bar480(hover='look'), (1920, 300))
+    b = nearest(verb_bar({'hover': 'look'}), (1920, 300))
     gap = 40
     o = Image.new('RGB', (1920, 300 * 2 + gap * 2), (30, 30, 30))
     d = ImageDraw.Draw(o)

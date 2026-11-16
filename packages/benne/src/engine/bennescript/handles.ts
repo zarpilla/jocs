@@ -1276,6 +1276,12 @@ export class GuiControlHandle {
     this.control('y')?.setY(value);
   }
 
+  /** Width in GUI pixels (a text control: the width of the text it shows now). Read-only. */
+  get width(): number {
+    const w = (this.object as { width?: unknown } | null)?.width;
+    return typeof w === 'number' && Number.isFinite(w) ? w : 0;
+  }
+
   /** Buttons, text inputs and checkboxes. A disabled control ignores the pointer and looks disabled. */
   get enabled(): boolean {
     return this.resolve()?.enabled ?? false;

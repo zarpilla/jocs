@@ -41,7 +41,18 @@
       },
       {
         "who": "vet",
-        "text": "final.vet1"
+        "text": "final.vet1",
+        "if": {
+          "flag": "repartit"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet1_tornat",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
       },
       {
         "who": "narrator",
@@ -248,7 +259,18 @@
       },
       {
         "who": "vet",
-        "text": "final.vet1"
+        "text": "final.vet1",
+        "if": {
+          "flag": "repartit"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet1_tornat",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
       },
       {
         "who": "narrator",
@@ -468,7 +490,18 @@
       },
       {
         "who": "vet",
-        "text": "final.vet1"
+        "text": "final.vet1",
+        "if": {
+          "flag": "repartit"
+        }
+      },
+      {
+        "who": "vet",
+        "text": "final.vet1_tornat",
+        "if": {
+          "flag": "repartit",
+          "is": false
+        }
       },
       {
         "who": "narrator",

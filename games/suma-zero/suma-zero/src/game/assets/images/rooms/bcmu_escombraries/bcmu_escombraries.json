@@ -4,279 +4,279 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 1.aseprite": {
       "frame": {
-        "x": 1813,
+        "x": 3630,
         "y": 0,
-        "w": 117,
-        "h": 9
+        "w": 234,
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 127,
-        "w": 117,
-        "h": 9
+        "x": 656,
+        "y": 254,
+        "w": 234,
+        "h": 18
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 2.aseprite": {
       "frame": {
-        "x": 1930,
-        "y": 0,
-        "w": 117,
-        "h": 9
+        "x": 0,
+        "y": 720,
+        "w": 234,
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 127,
-        "w": 117,
-        "h": 9
+        "x": 656,
+        "y": 254,
+        "w": 234,
+        "h": 18
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 3.aseprite": {
       "frame": {
-        "x": 1111,
+        "x": 2226,
         "y": 0,
-        "w": 117,
-        "h": 29
+        "w": 234,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 107,
-        "w": 117,
-        "h": 29
+        "x": 656,
+        "y": 214,
+        "w": 234,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 4.aseprite": {
       "frame": {
-        "x": 1228,
+        "x": 2460,
         "y": 0,
-        "w": 117,
-        "h": 29
+        "w": 234,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 107,
-        "w": 117,
-        "h": 29
+        "x": 656,
+        "y": 214,
+        "w": 234,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 5.aseprite": {
       "frame": {
-        "x": 2047,
-        "y": 0,
-        "w": 117,
-        "h": 9
+        "x": 234,
+        "y": 720,
+        "w": 234,
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 127,
-        "w": 117,
-        "h": 9
+        "x": 656,
+        "y": 254,
+        "w": 234,
+        "h": 18
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 6.aseprite": {
       "frame": {
-        "x": 2164,
-        "y": 0,
-        "w": 117,
-        "h": 9
+        "x": 468,
+        "y": 720,
+        "w": 234,
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 127,
-        "w": 117,
-        "h": 9
+        "x": 656,
+        "y": 254,
+        "w": 234,
+        "h": 18
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 7.aseprite": {
       "frame": {
-        "x": 1345,
+        "x": 2694,
         "y": 0,
-        "w": 117,
-        "h": 29
+        "w": 234,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 107,
-        "w": 117,
-        "h": 29
+        "x": 656,
+        "y": 214,
+        "w": 234,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 8.aseprite": {
       "frame": {
-        "x": 1462,
+        "x": 2928,
         "y": 0,
-        "w": 117,
-        "h": 29
+        "w": 234,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 107,
-        "w": 117,
-        "h": 29
+        "x": 656,
+        "y": 214,
+        "w": 234,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 9.aseprite": {
       "frame": {
-        "x": 2281,
-        "y": 0,
-        "w": 117,
-        "h": 9
+        "x": 702,
+        "y": 720,
+        "w": 234,
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 127,
-        "w": 117,
-        "h": 9
+        "x": 656,
+        "y": 254,
+        "w": 234,
+        "h": 18
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 10.aseprite": {
       "frame": {
-        "x": 2398,
-        "y": 0,
-        "w": 117,
-        "h": 9
+        "x": 936,
+        "y": 720,
+        "w": 234,
+        "h": 18
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 127,
-        "w": 117,
-        "h": 9
+        "x": 656,
+        "y": 254,
+        "w": 234,
+        "h": 18
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 11.aseprite": {
       "frame": {
-        "x": 1579,
+        "x": 3162,
         "y": 0,
-        "w": 117,
-        "h": 29
+        "w": 234,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 107,
-        "w": 117,
-        "h": 29
+        "x": 656,
+        "y": 214,
+        "w": 234,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 12.aseprite": {
       "frame": {
-        "x": 1696,
+        "x": 3396,
         "y": 0,
-        "w": 117,
-        "h": 29
+        "w": 234,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 328,
-        "y": 107,
-        "w": 117,
-        "h": 29
+        "x": 656,
+        "y": 214,
+        "w": 234,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 13.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -289,15 +289,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 14.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -310,15 +310,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 15.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -331,15 +331,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 16.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -352,15 +352,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 17.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -373,15 +373,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 18.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -394,15 +394,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 19.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -415,15 +415,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 20.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -436,15 +436,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 21.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -457,15 +457,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 22.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -478,15 +478,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 23.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -499,15 +499,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 24.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -520,15 +520,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 25.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -541,15 +541,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 26.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -562,36 +562,36 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 27.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 241,
-        "h": 76
+        "w": 483,
+        "h": 151
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 28,
+        "x": 56,
         "y": 0,
-        "w": 241,
-        "h": 76
+        "w": 483,
+        "h": 151
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 28.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -604,57 +604,57 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 29.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 241,
-        "h": 76
+        "w": 483,
+        "h": 151
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 28,
+        "x": 56,
         "y": 0,
-        "w": 241,
-        "h": 76
+        "w": 483,
+        "h": 151
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 30.aseprite": {
       "frame": {
-        "x": 881,
+        "x": 1763,
         "y": 0,
-        "w": 230,
-        "h": 72
+        "w": 463,
+        "h": 144
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 34,
+        "x": 64,
         "y": 0,
-        "w": 230,
-        "h": 72
+        "w": 463,
+        "h": 144
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 31.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -667,36 +667,36 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 32.aseprite": {
       "frame": {
-        "x": 881,
+        "x": 1763,
         "y": 0,
-        "w": 230,
-        "h": 72
+        "w": 463,
+        "h": 144
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 34,
+        "x": 64,
         "y": 0,
-        "w": 230,
-        "h": 72
+        "w": 463,
+        "h": 144
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 33.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -709,15 +709,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 34.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -730,15 +730,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 35.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -751,15 +751,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 36.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -772,15 +772,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 37.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -793,15 +793,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 38.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -814,414 +814,414 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 39.aseprite": {
       "frame": {
-        "x": 2576,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 1290,
+        "y": 720,
+        "w": 2,
+        "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 33,
-        "w": 1,
-        "h": 1
+        "x": 578,
+        "y": 66,
+        "w": 2,
+        "h": 2
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 40.aseprite": {
       "frame": {
-        "x": 2576,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 1290,
+        "y": 720,
+        "w": 2,
+        "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 33,
-        "w": 1,
-        "h": 1
+        "x": 578,
+        "y": 66,
+        "w": 2,
+        "h": 2
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 41.aseprite": {
       "frame": {
-        "x": 2574,
-        "y": 0,
-        "w": 1,
-        "h": 2
+        "x": 1288,
+        "y": 720,
+        "w": 2,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 33,
-        "w": 1,
-        "h": 2
+        "x": 578,
+        "y": 66,
+        "w": 2,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 42.aseprite": {
       "frame": {
-        "x": 2574,
-        "y": 0,
-        "w": 1,
-        "h": 2
+        "x": 1288,
+        "y": 720,
+        "w": 2,
+        "h": 4
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 33,
-        "w": 1,
-        "h": 2
+        "x": 578,
+        "y": 66,
+        "w": 2,
+        "h": 4
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 43.aseprite": {
       "frame": {
-        "x": 2569,
-        "y": 0,
-        "w": 3,
-        "h": 3
+        "x": 1278,
+        "y": 720,
+        "w": 6,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 288,
-        "y": 33,
-        "w": 3,
-        "h": 3
+        "x": 576,
+        "y": 66,
+        "w": 6,
+        "h": 6
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 44.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 0,
-        "w": 3,
-        "h": 4
+        "x": 1260,
+        "y": 720,
+        "w": 6,
+        "h": 8
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 288,
-        "y": 33,
-        "w": 3,
-        "h": 4
+        "x": 576,
+        "y": 66,
+        "w": 6,
+        "h": 8
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 45.aseprite": {
       "frame": {
-        "x": 2572,
-        "y": 0,
-        "w": 1,
-        "h": 3
+        "x": 1284,
+        "y": 720,
+        "w": 2,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 38,
-        "w": 1,
-        "h": 3
+        "x": 578,
+        "y": 76,
+        "w": 2,
+        "h": 6
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 46.aseprite": {
       "frame": {
-        "x": 2573,
-        "y": 0,
-        "w": 1,
-        "h": 3
+        "x": 1286,
+        "y": 720,
+        "w": 2,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 46,
-        "w": 1,
-        "h": 3
+        "x": 578,
+        "y": 92,
+        "w": 2,
+        "h": 6
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 47.aseprite": {
       "frame": {
-        "x": 2563,
-        "y": 0,
-        "w": 1,
-        "h": 4
+        "x": 1266,
+        "y": 720,
+        "w": 2,
+        "h": 8
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 57,
-        "w": 1,
-        "h": 4
+        "x": 578,
+        "y": 114,
+        "w": 2,
+        "h": 8
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 48.aseprite": {
       "frame": {
-        "x": 2546,
-        "y": 0,
-        "w": 1,
-        "h": 5
+        "x": 1232,
+        "y": 720,
+        "w": 2,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 74,
-        "w": 1,
-        "h": 5
+        "x": 578,
+        "y": 148,
+        "w": 2,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 49.aseprite": {
       "frame": {
-        "x": 2535,
-        "y": 0,
-        "w": 1,
-        "h": 6
+        "x": 1210,
+        "y": 720,
+        "w": 2,
+        "h": 12
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 97,
-        "w": 1,
-        "h": 6
+        "x": 578,
+        "y": 194,
+        "w": 2,
+        "h": 12
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 50.aseprite": {
       "frame": {
-        "x": 2517,
-        "y": 0,
-        "w": 1,
-        "h": 7
+        "x": 1174,
+        "y": 720,
+        "w": 2,
+        "h": 14
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 126,
-        "w": 1,
-        "h": 7
+        "x": 578,
+        "y": 252,
+        "w": 2,
+        "h": 14
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 51.aseprite": {
       "frame": {
-        "x": 2515,
-        "y": 0,
-        "w": 1,
-        "h": 8
+        "x": 1170,
+        "y": 720,
+        "w": 2,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 160,
-        "w": 1,
-        "h": 8
+        "x": 578,
+        "y": 320,
+        "w": 2,
+        "h": 16
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 52.aseprite": {
       "frame": {
-        "x": 2516,
-        "y": 0,
-        "w": 1,
-        "h": 8
+        "x": 1172,
+        "y": 720,
+        "w": 2,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 198,
-        "w": 1,
-        "h": 8
+        "x": 578,
+        "y": 396,
+        "w": 2,
+        "h": 16
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 53.aseprite": {
       "frame": {
-        "x": 2536,
-        "y": 0,
-        "w": 1,
-        "h": 6
+        "x": 1212,
+        "y": 720,
+        "w": 2,
+        "h": 12
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 289,
-        "y": 224,
-        "w": 1,
-        "h": 6
+        "x": 578,
+        "y": 448,
+        "w": 2,
+        "h": 12
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 54.aseprite": {
       "frame": {
-        "x": 2564,
-        "y": 0,
-        "w": 5,
-        "h": 4
+        "x": 1268,
+        "y": 720,
+        "w": 10,
+        "h": 8
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 287,
-        "y": 229,
-        "w": 5,
-        "h": 4
+        "x": 574,
+        "y": 458,
+        "w": 10,
+        "h": 8
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 55.aseprite": {
       "frame": {
-        "x": 2537,
-        "y": 0,
-        "w": 9,
-        "h": 6
+        "x": 1214,
+        "y": 720,
+        "w": 18,
+        "h": 12
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 285,
-        "y": 227,
-        "w": 9,
-        "h": 6
+        "x": 570,
+        "y": 454,
+        "w": 18,
+        "h": 12
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 56.aseprite": {
       "frame": {
-        "x": 2547,
-        "y": 0,
-        "w": 13,
-        "h": 5
+        "x": 1234,
+        "y": 720,
+        "w": 26,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 283,
-        "y": 229,
-        "w": 13,
-        "h": 5
+        "x": 566,
+        "y": 458,
+        "w": 26,
+        "h": 10
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 57.aseprite": {
       "frame": {
-        "x": 2518,
-        "y": 0,
-        "w": 17,
-        "h": 7
+        "x": 1176,
+        "y": 720,
+        "w": 34,
+        "h": 14
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 281,
-        "y": 228,
-        "w": 17,
-        "h": 7
+        "x": 562,
+        "y": 456,
+        "w": 34,
+        "h": 14
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 58.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -1234,15 +1234,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "bcmu_escombraries 59.aseprite": {
       "frame": {
-        "x": 2575,
-        "y": 0,
+        "x": 1292,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -1255,8 +1255,8 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -1267,8 +1267,8 @@
     "image": "bcmu_escombraries.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2577,
-      "h": 360
+      "w": 3864,
+      "h": 738
     },
     "scale": "1",
     "frameTags": [

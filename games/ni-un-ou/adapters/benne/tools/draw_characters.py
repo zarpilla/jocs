@@ -207,8 +207,11 @@ def secundari(cid, draw=None, outfits=('',)):
                                   {'frameDuration': 90 if t.endswith('WalkL') else 80} if 'Walk' in t else
                                   {'frameDuration': 500} if t == 'Seu' else {})}
              for t, _ in tags}
+    # Els que seuen (`Seu`) surten de perfil, mirant a l'esquerra: qui hi parla se'ls posa al davant,
+    # a un metre i mig (≈73 px de disseny), i no pas a l'esquena.
+    walk_x = 25 - 73 if cid in SEUEN else 44
     write(cid, tags, (49, 87), {
-        'walkSpeed': 70, 'walkToPoint': {'x': 44, 'y': 83}, 'talkPoint': {'x': 25, 'y': -2}, 'feet': {'x': 25, 'y': 83},
+        'walkSpeed': 70, 'walkToPoint': {'x': walk_x, 'y': 83}, 'talkPoint': {'x': 25, 'y': -2}, 'feet': {'x': 25, 'y': 83},
         'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},
         'animations': anims, 'defaultVerb': 'talkTo',
     })

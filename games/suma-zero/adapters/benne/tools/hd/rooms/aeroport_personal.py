@@ -11,6 +11,7 @@ El racó de servei de l'aeroport (Escena 3, l'Iri), davant la porta de personal.
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, text, text_width, _diff, PLASTIC, SHEET, CARD, RED, YEL, GRAYC
@@ -124,7 +125,7 @@ def soler(cv):
     """L'agent Soler, de cara a la porta de personal (és a dir, mirant cap aquí)."""
     fig = person(NPCS['soler'], 'D')
     k = 0.82
-    fig = fig.resize((round(fig.width * k), round(fig.height * k)), Image.NEAREST)
+    fig = nearest(fig, (round(fig.width * k), round(fig.height * k)))
     fx, fy = SOLER_AT
     layer = Image.new('RGBA', (W, H), (0, 0, 0, 0))
     layer.alpha_composite(fig, (fx - round(25 * k), fy - round(83 * k)))

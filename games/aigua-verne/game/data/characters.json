@@ -286,6 +286,96 @@
       {
         "verb": "talkTo",
         "dialogue": "capitana"
+      },
+      {
+        "verb": "give",
+        "item": "albara",
+        "if": {
+          "all": [
+            {
+              "flag": "injector_posat"
+            },
+            {
+              "flag": "capitana_accepta",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "capitana",
+            "text": "dlg.capitana.entrego.1"
+          },
+          {
+            "who": "capitana",
+            "text": "dlg.capitana.entrego.2"
+          },
+          {
+            "who": "capitana",
+            "text": "dlg.capitana.entrego.3"
+          },
+          {
+            "who": "capitana",
+            "text": "dlg.capitana.entrego.4",
+            "if": {
+              "protagonist": "iri"
+            }
+          },
+          {
+            "who": "capitana",
+            "text": "dlg.capitana.entrego.4.vet",
+            "if": {
+              "protagonist": "vet"
+            }
+          },
+          {
+            "who": "iri",
+            "text": "dlg.capitana.entrego.5",
+            "if": {
+              "inRoom": "cantimplora_pont",
+              "who": "iri"
+            }
+          },
+          {
+            "who": "player",
+            "text": "dlg.capitana.entrego.5",
+            "if": {
+              "not": {
+                "inRoom": "cantimplora_pont",
+                "who": "iri"
+              }
+            }
+          },
+          {
+            "who": "capitana",
+            "text": "dlg.capitana.entrego.6"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "capitana_accepta"
+          },
+          {
+            "setFlag": "aqua_oberta"
+          },
+          {
+            "takeItem": "albara"
+          }
+        ]
+      },
+      {
+        "verb": "give",
+        "item": "albara",
+        "if": {
+          "flag": "capitana_accepta",
+          "is": false
+        },
+        "lines": [
+          {
+            "who": "capitana",
+            "text": "dlg.capitana.albara_sense_injector"
+          }
+        ]
       }
     ],
     "outfit": [
@@ -595,6 +685,49 @@
       {
         "verb": "talkTo",
         "dialogue": "lia"
+      },
+      {
+        "verb": "give",
+        "item": "nota_lia",
+        "lines": [
+          {
+            "who": "lia",
+            "text": "dlg.lia.nota.1"
+          },
+          {
+            "who": "lia",
+            "text": "dlg.lia.nota.2"
+          },
+          {
+            "who": "vet",
+            "text": "dlg.lia.nota.3"
+          },
+          {
+            "who": "lia",
+            "text": "dlg.lia.nota.4"
+          },
+          {
+            "who": "lia",
+            "text": "dlg.lia.nota.5"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "lia_avisada"
+          },
+          {
+            "setFlag": "lia_prova"
+          },
+          {
+            "setFlag": "lia_reserva"
+          },
+          {
+            "takeItem": "nota_lia"
+          },
+          {
+            "giveItem": "targeta"
+          }
+        ]
       }
     ],
     "outfit": [

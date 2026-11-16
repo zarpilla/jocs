@@ -36,12 +36,30 @@
       "anchorY": "bottom"
     },
     {
+      "type": "text",
+      "id": "verbLineVerb",
+      "x": 320,
+      "y": 269,
+      "text": "",
+      "font": "suma-regular",
+      "fontSize": 8,
+      "color": "#738f89",
+      "align": "left",
+      "textOutline": {
+        "enabled": true,
+        "color": "#03040a",
+        "sides": "allSides"
+      },
+      "zIndex": 5,
+      "anchorY": "bottom"
+    },
+    {
       "type": "button",
       "id": "CanviaBtn",
       "x": 4,
       "y": 4,
       "width": 57,
-      "height": 43,
+      "height": 52,
       "backgroundAnchor": "top-left",
       "text": "",
       "font": "suma-negreta",

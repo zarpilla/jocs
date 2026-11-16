@@ -11,6 +11,7 @@ amb el detall que hi cap). Mateixes rampes, mateixos props i mateixes animacions
 Animacions: `fluorescent` (la reactància cansada: pampallugues) i `mosca` (no deixa en pau l'entrepà).
 """
 import math
+from functools import lru_cache
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from PIL import Image
@@ -21,6 +22,12 @@ from hd.rooms.arenga import (WALL, ENG_LIGHT as ENG, DECK, CAB, REDP, YELL, SEAG
 from hd.rooms.comu import _diff, text, text_width
 from hd640.rooms.sala_maquines import ceiling
 from hd640.rooms.rebost import plate_wall, checker_floor, floor_shadow, engine_door, FLOOR_Y
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 TUBE = (320, 21)                       # el fluorescent
 COOL = (220, 236, 230)
@@ -451,15 +458,11 @@ PROPS = {'cisalla': cisalla, 'clau_tubs': clau_tubs}
 
 # ─── Animacions ─────────────────────────────────────────────────────────────
 
-_BASE = []
-
-
+@lru_cache(maxsize=1)
 def _base():
-    if not _BASE:
-        cv = Canvas(light=LIGHT)
-        bg(cv)
-        _BASE.append(cv.img)
-    return _BASE[0]
+    cv = Canvas(light=LIGHT)
+    bg(cv)
+    return cv.img
 
 
 def _frames_fluorescent():
@@ -472,7 +475,7 @@ def _frames_fluorescent():
     for i in range(56):
         k = dims.get(i, 0)
         if not k:
-            frames.append(Image.new('RGBA', (W, H), (0, 0, 0, 0)))
+            frames.append(Image.new('RGBA', _base().size, (0, 0, 0, 0)))
             continue
         if k not in done:
             base = _base()
@@ -491,15 +494,18 @@ def _frames_fluorescent():
 def _frames_mosca():
     """Una mosca que no deixa en pau l'entrepà vell: s'aixeca, fa voltes i hi torna a parar."""
     src = _base().load()
+    S = _base().width // W                                           # un píxel de sala = un bloc S×S
     lx, ly = 512, 136                                                # on es para (damunt del pa)
     fly_n, rest_n = 34, 22
     frames = []
 
     def put(p, x, y, col):
         if 0 <= x < W and 0 <= y < H:
-            p[x, y] = tuple(col[:3]) + (255,)
+            for dy in range(S):
+                for dx in range(S):
+                    p[x * S + dx, y * S + dy] = tuple(col[:3]) + (255,)
     for i in range(fly_n + rest_n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', _base().size, (0, 0, 0, 0))
         p = img.load()
         if i < fly_n:
             s = i / fly_n
@@ -508,16 +514,16 @@ def _frames_mosca():
             put(p, x, y, (16, 14, 18))
             put(p, x + 1, y, (30, 26, 30))
             wy = y - 1 if i % 2 else y + 1                           # les ales, que vibren
-            put(p, x, wy, mix(src[x, wy][:3], (200, 210, 220), 0.55))
-            put(p, x + 1, wy, mix(src[x + 1, wy][:3], (200, 210, 220), 0.4))
+            put(p, x, wy, mix(src[x * S, wy * S][:3], (200, 210, 220), 0.55))
+            put(p, x + 1, wy, mix(src[(x + 1) * S, wy * S][:3], (200, 210, 220), 0.4))
             if i % 2:
-                put(p, x - 1, wy, mix(src[x - 1, wy][:3], (200, 210, 220), 0.3))
+                put(p, x - 1, wy, mix(src[(x - 1) * S, wy * S][:3], (200, 210, 220), 0.3))
         else:
             j = i - fly_n
             dx = 1 if (j // 6) % 2 else 0                            # camina una mica per l'entrepà
             put(p, lx + dx, ly, (16, 14, 18))
             put(p, lx + dx + 1, ly, (30, 26, 30))
-            put(p, lx + dx, ly - 1, mix(src[lx + dx, ly - 1][:3], (170, 180, 190), 0.35))   # les ales, plegades
+            put(p, lx + dx, ly - 1, mix(src[(lx + dx) * S, (ly - 1) * S][:3], (170, 180, 190), 0.35))   # les ales, plegades
             if j % 7 in (2, 3):                                      # es frega les potes
                 put(p, lx + dx - 1, ly, (40, 34, 30))
         frames.append(img)

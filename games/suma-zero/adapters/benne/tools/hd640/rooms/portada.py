@@ -25,6 +25,12 @@ from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, cable, text, text_width, _diff, NEON
 from room_designs import LLETRES
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 SKYP = [(4, 2, 12), (8, 6, 22), (14, 10, 34), (22, 14, 46), (34, 18, 58), (50, 22, 70), (70, 28, 80), (96, 36, 88)]
 ROOF = [(4, 3, 10), (8, 6, 16), (12, 10, 22), (18, 14, 30), (26, 20, 40)]
 BLOCK = [(6, 5, 10), (12, 10, 18), (20, 16, 26), (30, 24, 36), (42, 34, 48), (58, 48, 62)]

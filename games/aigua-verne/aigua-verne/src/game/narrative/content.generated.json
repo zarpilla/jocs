@@ -140,6 +140,7 @@
         "tomas_girat": false,
         "tornavis_agafat": false,
         "tractor_oliat": false,
+        "trampa_trepitjada": false,
         "trans_acte3_iri": false,
         "trans_acte3_vet": false,
         "trans_colada_fi": false,
@@ -160,6 +161,7 @@
         "lots": 9,
         "planeta": "terra2",
         "preu_aigua": 48,
+        "reinicis_subhasta": 0,
         "safata": "",
         "temperatura": 8,
         "valvules": 0
@@ -452,6 +454,96 @@
           {
             "verb": "talkTo",
             "dialogue": "capitana"
+          },
+          {
+            "verb": "give",
+            "item": "albara",
+            "if": {
+              "all": [
+                {
+                  "flag": "injector_posat"
+                },
+                {
+                  "flag": "capitana_accepta",
+                  "is": false
+                }
+              ]
+            },
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.1"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.2"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.3"
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.4",
+                "if": {
+                  "protagonist": "iri"
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.4.vet",
+                "if": {
+                  "protagonist": "vet"
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "inRoom": "cantimplora_pont",
+                  "who": "iri"
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.capitana.entrego.5",
+                "if": {
+                  "not": {
+                    "inRoom": "cantimplora_pont",
+                    "who": "iri"
+                  }
+                }
+              },
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.entrego.6"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "capitana_accepta"
+              },
+              {
+                "setFlag": "aqua_oberta"
+              },
+              {
+                "takeItem": "albara"
+              }
+            ]
+          },
+          {
+            "verb": "give",
+            "item": "albara",
+            "if": {
+              "flag": "capitana_accepta",
+              "is": false
+            },
+            "lines": [
+              {
+                "who": "capitana",
+                "text": "dlg.capitana.albara_sense_injector"
+              }
+            ]
           }
         ],
         "outfit": [
@@ -761,6 +853,49 @@
           {
             "verb": "talkTo",
             "dialogue": "lia"
+          },
+          {
+            "verb": "give",
+            "item": "nota_lia",
+            "lines": [
+              {
+                "who": "lia",
+                "text": "dlg.lia.nota.1"
+              },
+              {
+                "who": "lia",
+                "text": "dlg.lia.nota.2"
+              },
+              {
+                "who": "vet",
+                "text": "dlg.lia.nota.3"
+              },
+              {
+                "who": "lia",
+                "text": "dlg.lia.nota.4"
+              },
+              {
+                "who": "lia",
+                "text": "dlg.lia.nota.5"
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "lia_avisada"
+              },
+              {
+                "setFlag": "lia_prova"
+              },
+              {
+                "setFlag": "lia_reserva"
+              },
+              {
+                "takeItem": "nota_lia"
+              },
+              {
+                "giveItem": "targeta"
+              }
+            ]
           }
         ],
         "outfit": [
@@ -1227,7 +1362,8 @@
         "name": "obj.comunicador.nom",
         "description": "obj.comunicador.desc",
         "props": {
-          "no_mosca": "obj.comunicador.no"
+          "no_mosca": "obj.comunicador.no",
+          "no_donar": true
         },
         "interactions": [
           {
@@ -1243,7 +1379,8 @@
         "name": "obj.mosca.nom",
         "description": "obj.mosca.desc",
         "props": {
-          "no_mosca": "obj.mosca.no"
+          "no_mosca": "obj.mosca.no",
+          "no_donar": true
         },
         "interactions": [
           {
@@ -1751,7 +1888,12 @@
                     "text": "sala.aqua_fons.porta_juana.4"
                   }
                 ],
-                "goTo": "casa_juana"
+                "goTo": "casa_juana",
+                "effects": [
+                  {
+                    "setFlag": "trampa_trepitjada"
+                  }
+                ]
               },
               {
                 "verb": [
@@ -1784,6 +1926,21 @@
                   {
                     "who": "player",
                     "text": "sala.aqua_fons.nanses.2"
+                  }
+                ],
+                "if": {
+                  "flag": "trampa_trepitjada"
+                }
+              },
+              {
+                "verb": [
+                  "pickUp",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.aqua_fons.nanses.3"
                   }
                 ]
               }
@@ -2098,11 +2255,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "grua_arreglada",
                   "is": false
@@ -2120,11 +2273,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -2653,13 +2802,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull",
-                  "pickUp"
-                ],
+                "verb": "look",
                 "if": {
                   "all": [
                     {
@@ -2715,13 +2858,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull",
-                  "pickUp"
-                ],
+                "verb": "look",
                 "if": {
                   "protagonist": "vet"
                 },
@@ -2733,13 +2870,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull",
-                  "pickUp"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -2770,7 +2901,14 @@
                 "if": {
                   "all": [
                     {
-                      "flag": "cal_filtre"
+                      "any": [
+                        {
+                          "flag": "cal_filtre"
+                        },
+                        {
+                          "flag": "bru_set"
+                        }
+                      ]
                     },
                     {
                       "flag": "filtre_agafat",
@@ -2848,11 +2986,19 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "pickUp"
-                ],
+                "verb": "look",
+                "if": {
+                  "flag": "pernil_agafat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.nevera.3"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -2866,10 +3012,7 @@
             "name": "sala.cantimplora_bodega.tauler.nom",
             "interactions": [
               {
-                "verb": [
-                  "look",
-                  "use"
-                ],
+                "verb": "look",
                 "dialogue": "tauler"
               }
             ]
@@ -2947,7 +3090,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "if": {
@@ -2981,7 +3123,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "if": {
@@ -3073,7 +3214,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "if": {
@@ -3100,6 +3240,18 @@
               },
               {
                 "verb": "look",
+                "if": {
+                  "flag": "paper_donat"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.carmanyola.15"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -3110,7 +3262,6 @@
               {
                 "verb": [
                   "open",
-                  "pickUp",
                   "use"
                 ],
                 "lines": [
@@ -3384,6 +3535,18 @@
               },
               {
                 "verb": "look",
+                "if": {
+                  "flag": "juana_coneguda"
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.cantimplora_bodega.carrega.4"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -3526,7 +3689,643 @@
       "cantimplora_mapa": {
         "name": "sala.cantimplora_mapa.nom",
         "cutscene": {},
-        "hotspots": {},
+        "hotspots": {
+          "terra2": {
+            "name": "sala.cantimplora_mapa.terra2.nom",
+            "visibleIf": {
+              "not": {
+                "var": "planeta",
+                "op": "==",
+                "value": "terra2"
+              }
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.terra2.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.terra2.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "aqua"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_aqua"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_aqua_terra2",
+                        "hold": 3.9
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.terra2.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "ferrum"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_ferrum"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_ferrum_terra2",
+                        "hold": 4.2
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.terra2.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "verdant"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_verdant"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_verdant_terra2",
+                        "hold": 2.9
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.terra2.3",
+                    "effects": [
+                      {
+                        "setVar": "planeta",
+                        "value": "terra2"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.terra2.4",
+                    "effects": [
+                      {
+                        "event": "situar",
+                        "args": {
+                          "who": "vet",
+                          "room": "cantimplora_bodega"
+                        }
+                      }
+                    ],
+                    "if": {
+                      "not": {
+                        "any": [
+                          {
+                            "inRoom": "cantimplora_pont",
+                            "who": "vet"
+                          },
+                          {
+                            "inRoom": "cantimplora_bodega",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "aqua": {
+            "name": "sala.cantimplora_mapa.aqua.nom",
+            "visibleIf": {
+              "all": [
+                {
+                  "not": {
+                    "var": "planeta",
+                    "op": "==",
+                    "value": "aqua"
+                  }
+                },
+                {
+                  "flag": "aqua_oberta"
+                }
+              ]
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.aqua.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.aqua.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "terra2"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_terra2"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_terra2_aqua",
+                        "hold": 3.9
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.aqua.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "ferrum"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_ferrum"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_ferrum_aqua",
+                        "hold": 3.1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.aqua.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "verdant"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_verdant"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_verdant_aqua",
+                        "hold": 3.7
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.aqua.3",
+                    "effects": [
+                      {
+                        "setVar": "planeta",
+                        "value": "aqua"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.aqua.4",
+                    "effects": [
+                      {
+                        "event": "situar",
+                        "args": {
+                          "who": "vet",
+                          "room": "cantimplora_bodega"
+                        }
+                      }
+                    ],
+                    "if": {
+                      "not": {
+                        "any": [
+                          {
+                            "inRoom": "cantimplora_pont",
+                            "who": "vet"
+                          },
+                          {
+                            "inRoom": "cantimplora_bodega",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "ferrum": {
+            "name": "sala.cantimplora_mapa.ferrum.nom",
+            "visibleIf": {
+              "all": [
+                {
+                  "not": {
+                    "var": "planeta",
+                    "op": "==",
+                    "value": "ferrum"
+                  }
+                },
+                {
+                  "flag": "ferrum_oberta"
+                }
+              ]
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.ferrum.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.ferrum.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "terra2"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_terra2"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_terra2_ferrum",
+                        "hold": 4.2
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.ferrum.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "aqua"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_aqua"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_aqua_ferrum",
+                        "hold": 3.1
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.ferrum.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "verdant"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_verdant"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_verdant_ferrum",
+                        "hold": 4.2
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.ferrum.3",
+                    "effects": [
+                      {
+                        "setVar": "planeta",
+                        "value": "ferrum"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.ferrum.4",
+                    "effects": [
+                      {
+                        "event": "situar",
+                        "args": {
+                          "who": "vet",
+                          "room": "cantimplora_bodega"
+                        }
+                      }
+                    ],
+                    "if": {
+                      "not": {
+                        "any": [
+                          {
+                            "inRoom": "cantimplora_pont",
+                            "who": "vet"
+                          },
+                          {
+                            "inRoom": "cantimplora_bodega",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "verdant": {
+            "name": "sala.cantimplora_mapa.verdant.nom",
+            "visibleIf": {
+              "all": [
+                {
+                  "not": {
+                    "var": "planeta",
+                    "op": "==",
+                    "value": "verdant"
+                  }
+                },
+                {
+                  "flag": "verdant_oberta"
+                }
+              ]
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "lines": [
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.verdant.1"
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.verdant.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "terra2"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_terra2"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_terra2_verdant",
+                        "hold": 2.9
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.verdant.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "aqua"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_aqua"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_aqua_verdant",
+                        "hold": 3.7
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.verdant.2",
+                    "sound": "motor_nau",
+                    "if": {
+                      "var": "planeta",
+                      "op": "==",
+                      "value": "ferrum"
+                    },
+                    "stage": [
+                      {
+                        "prop": "nau",
+                        "anim": "tremola_ferrum"
+                      }
+                    ],
+                    "stageAfter": [
+                      {
+                        "prop": "nau",
+                        "anim": "vol_ferrum_verdant",
+                        "hold": 4.2
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.verdant.3",
+                    "effects": [
+                      {
+                        "setVar": "planeta",
+                        "value": "verdant"
+                      }
+                    ]
+                  },
+                  {
+                    "who": "narrator",
+                    "text": "dlg.mapa.verdant.4",
+                    "effects": [
+                      {
+                        "event": "situar",
+                        "args": {
+                          "who": "vet",
+                          "room": "cantimplora_bodega"
+                        }
+                      }
+                    ],
+                    "if": {
+                      "not": {
+                        "any": [
+                          {
+                            "inRoom": "cantimplora_pont",
+                            "who": "vet"
+                          },
+                          {
+                            "inRoom": "cantimplora_bodega",
+                            "who": "vet"
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "palau": {
+            "name": "sala.cantimplora_mapa.palau.nom",
+            "visibleIf": {
+              "var": "escena",
+              "op": ">=",
+              "value": 6
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "effects": [
+                  {
+                    "setFlag": "palau_tancat"
+                  }
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "aqui_terra2": {
+            "name": "sala.cantimplora_mapa.aqui.nom",
+            "visibleIf": {
+              "var": "planeta",
+              "op": "==",
+              "value": "terra2"
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "aqui_aqua": {
+            "name": "sala.cantimplora_mapa.aqui.nom",
+            "visibleIf": {
+              "var": "planeta",
+              "op": "==",
+              "value": "aqua"
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "aqui_ferrum": {
+            "name": "sala.cantimplora_mapa.aqui.nom",
+            "visibleIf": {
+              "var": "planeta",
+              "op": "==",
+              "value": "ferrum"
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          },
+          "aqui_verdant": {
+            "name": "sala.cantimplora_mapa.aqui.nom",
+            "visibleIf": {
+              "var": "planeta",
+              "op": "==",
+              "value": "verdant"
+            },
+            "interactions": [
+              {
+                "verb": [
+                  "walkTo",
+                  "use"
+                ],
+                "goTo": "cantimplora_pont"
+              }
+            ]
+          }
+        },
         "onEnter": [
           {
             "verb": "*",
@@ -3591,8 +4390,7 @@
                   }
                 ]
               }
-            ],
-            "dialogue": "mapa"
+            ]
           }
         ]
       },
@@ -3629,11 +4427,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "protagonist": "vet"
                 },
@@ -3645,11 +4439,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "capitana_accepta",
                   "is": false
@@ -3662,11 +4452,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "goTo": "cantimplora_mapa"
               }
             ]
@@ -3754,10 +4540,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -3841,10 +4624,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -3909,7 +4689,18 @@
                 "who": "iri",
                 "text": "dlg.mapa.palau.2",
                 "if": {
-                  "flag": "nil_ajuda"
+                  "not": {
+                    "hasItem": "vestit_arreglat",
+                    "who": "iri"
+                  }
+                }
+              },
+              {
+                "who": "iri",
+                "text": "dlg.mapa.palau.3",
+                "if": {
+                  "hasItem": "vestit_arreglat",
+                  "who": "iri"
                 }
               }
             ],
@@ -4156,7 +4947,14 @@
                 "if": {
                   "all": [
                     {
-                      "flag": "cal_corretja"
+                      "any": [
+                        {
+                          "flag": "cal_corretja"
+                        },
+                        {
+                          "flag": "bru_set"
+                        }
+                      ]
                     },
                     {
                       "flag": "corretja_agafada",
@@ -4206,6 +5004,51 @@
                   {
                     "who": "player",
                     "text": "sala.ferrum_carrer.condensador.1"
+                  }
+                ]
+              },
+              {
+                "verb": "look",
+                "if": {
+                  "any": [
+                    {
+                      "flag": "corretja_posada"
+                    },
+                    {
+                      "flag": "filtre_posat"
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.ferrum_carrer.condensador.12",
+                    "if": {
+                      "flag": "filtre_posat",
+                      "is": false
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.ferrum_carrer.condensador.13",
+                    "if": {
+                      "flag": "corretja_posada",
+                      "is": false
+                    }
+                  },
+                  {
+                    "who": "player",
+                    "text": "sala.ferrum_carrer.condensador.14",
+                    "if": {
+                      "all": [
+                        {
+                          "flag": "corretja_posada"
+                        },
+                        {
+                          "flag": "filtre_posat"
+                        }
+                      ]
+                    }
                   }
                 ]
               },
@@ -4298,11 +5141,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4342,11 +5181,47 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "corretja_posada"
+                    },
+                    {
+                      "flag": "condensador_arreglat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.ferrum_carrer.condensador.12"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "filtre_posat"
+                    },
+                    {
+                      "flag": "condensador_arreglat",
+                      "is": false
+                    }
+                  ]
+                },
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.ferrum_carrer.condensador.13"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
                 "if": {
                   "flag": "condensador_arreglat",
                   "is": false
@@ -4806,11 +5681,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4830,11 +5701,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4885,11 +5752,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -4919,11 +5782,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -4935,11 +5794,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "motlle_preparat",
                   "is": false
@@ -4952,11 +5807,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -4979,11 +5830,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5003,11 +5850,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5058,11 +5901,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5092,11 +5931,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -5108,11 +5943,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "motlle_preparat",
                   "is": false
@@ -5125,11 +5956,7 @@
                 ]
               },
               {
-                "verb": [
-                  "pull",
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -5275,11 +6102,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "motlle_preparat",
                   "is": false
@@ -5292,11 +6115,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5316,11 +6135,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -5800,11 +6615,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5837,11 +6648,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "all": [
                     {
@@ -5861,11 +6668,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_colada"
                 },
@@ -5877,11 +6680,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "pickUp",
-                  "pull"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -6185,12 +6984,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "use",
-                  "pull"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -6856,12 +7650,7 @@
                 ]
               },
               {
-                "verb": [
-                  "look",
-                  "open",
-                  "pickUp",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -7510,10 +8299,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "all": [
@@ -7535,10 +8324,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "all": [
@@ -7821,10 +8610,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "flag": "obert_t2"
@@ -7838,10 +8627,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "lines": [
                   {
@@ -7929,10 +8718,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "all": [
@@ -7954,10 +8743,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "all": [
@@ -8240,10 +9029,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "flag": "obert_aqua"
@@ -8257,10 +9046,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "lines": [
                   {
@@ -8348,10 +9137,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "all": [
@@ -8373,10 +9162,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "all": [
@@ -8659,10 +9448,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "if": {
                   "flag": "obert_ferrum"
@@ -8676,10 +9465,10 @@
               },
               {
                 "verb": [
+                  "open",
                   "push",
                   "pull",
-                  "use",
-                  "open"
+                  "use"
                 ],
                 "lines": [
                   {
@@ -8717,7 +9506,6 @@
               {
                 "verb": [
                   "pull",
-                  "push",
                   "use"
                 ],
                 "if": {
@@ -8777,7 +9565,6 @@
               {
                 "verb": [
                   "pull",
-                  "push",
                   "use"
                 ],
                 "if": {
@@ -8793,7 +9580,6 @@
               {
                 "verb": [
                   "pull",
-                  "push",
                   "use"
                 ],
                 "lines": [
@@ -9182,22 +9968,14 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "talkTo",
-                  "push"
-                ],
+                "verb": "use",
                 "if": {
                   "flag": "sync_subhasta"
                 },
                 "dialogue": "subhasta"
               },
               {
-                "verb": [
-                  "use",
-                  "talkTo",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -9982,6 +10760,16 @@
               },
               {
                 "verb": "use",
+                "item": "reg",
+                "lines": [
+                  {
+                    "who": "player",
+                    "text": "sala.verdant_cobert.tomaquera.7"
+                  }
+                ]
+              },
+              {
+                "verb": "use",
                 "item": "reg_foradat",
                 "lines": [
                   {
@@ -10263,10 +11051,7 @@
                 ]
               },
               {
-                "verb": [
-                  "use",
-                  "push"
-                ],
+                "verb": "use",
                 "lines": [
                   {
                     "who": "player",
@@ -10568,12 +11353,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "pull",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -10621,12 +11401,7 @@
                 ]
               },
               {
-                "verb": [
-                  "look",
-                  "open",
-                  "pickUp",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -10686,12 +11461,7 @@
                 ]
               },
               {
-                "verb": [
-                  "open",
-                  "look",
-                  "pull",
-                  "use"
-                ],
+                "verb": "look",
                 "lines": [
                   {
                     "who": "player",
@@ -10855,6 +11625,9 @@
             "text": "mis.acte2.obj.espia",
             "completeWhen": {
               "flag": "tomas_girat"
+            },
+            "showWhen": {
+              "flag": "trucada_feta"
             }
           },
           {
@@ -10862,6 +11635,9 @@
             "text": "mis.acte2.obj.capitana",
             "completeWhen": {
               "flag": "capitana_si"
+            },
+            "showWhen": {
+              "flag": "contracte_agafat"
             }
           },
           {
@@ -10871,6 +11647,9 @@
               "var": "escena",
               "op": ">=",
               "value": 7
+            },
+            "showWhen": {
+              "flag": "trucada_feta"
             }
           }
         ]
@@ -11371,7 +12150,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "albara"
+              "any": [
+                {
+                  "hasItem": "albara",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "albara",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "injector_posat"
@@ -11484,7 +12272,16 @@
             },
             {
               "not": {
-                "hasItem": "fusible_apanyat"
+                "any": [
+                  {
+                    "hasItem": "fusible_apanyat",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "fusible_apanyat",
+                    "who": "vet"
+                  }
+                ]
               }
             },
             {
@@ -11495,7 +12292,16 @@
         "doneWhen": {
           "any": [
             {
-              "hasItem": "fusible_apanyat"
+              "any": [
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "grua_arreglada"
@@ -11503,6 +12309,7 @@
           ]
         },
         "levels": [
+          "pista.fusible.1.iri",
           "pista.fusible.1",
           "pista.fusible.2",
           "pista.fusible.3"
@@ -11521,7 +12328,16 @@
             },
             {
               "not": {
-                "hasItem": "fusible_apanyat"
+                "any": [
+                  {
+                    "hasItem": "fusible_apanyat",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "fusible_apanyat",
+                    "who": "vet"
+                  }
+                ]
               }
             },
             {
@@ -11532,7 +12348,16 @@
         "doneWhen": {
           "any": [
             {
-              "hasItem": "fusible_apanyat"
+              "any": [
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "grua_arreglada"
@@ -11550,7 +12375,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "fusible_apanyat"
+              "any": [
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "grua_arreglada",
@@ -11575,7 +12409,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "fusible_apanyat"
+              "any": [
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "fusible_apanyat",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "grua_arreglada",
@@ -12108,7 +12951,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "reg"
+              "any": [
+                {
+                  "hasItem": "reg",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "cal_agulla",
@@ -12124,7 +12976,7 @@
         },
         "levels": [
           "pista.reg2.1",
-          "pista.reg2.2",
+          "pista.reg2.2.iri",
           "pista.reg2.3"
         ]
       },
@@ -12133,7 +12985,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "reg"
+              "any": [
+                {
+                  "hasItem": "reg",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "cal_agulla",
@@ -12162,7 +13023,16 @@
             },
             {
               "not": {
-                "hasItem": "agulla"
+                "any": [
+                  {
+                    "hasItem": "agulla",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "agulla",
+                    "who": "vet"
+                  }
+                ]
               }
             },
             {
@@ -12171,7 +13041,16 @@
             },
             {
               "not": {
-                "hasItem": "reg_foradat"
+                "any": [
+                  {
+                    "hasItem": "reg_foradat",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "reg_foradat",
+                    "who": "vet"
+                  }
+                ]
               }
             },
             {
@@ -12182,13 +13061,31 @@
         "doneWhen": {
           "any": [
             {
-              "hasItem": "agulla"
+              "any": [
+                {
+                  "hasItem": "agulla",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "agulla",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "reg_muntat"
             },
             {
-              "hasItem": "reg_foradat"
+              "any": [
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "vet"
+                }
+              ]
             }
           ]
         },
@@ -12207,7 +13104,16 @@
             },
             {
               "not": {
-                "hasItem": "agulla"
+                "any": [
+                  {
+                    "hasItem": "agulla",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "agulla",
+                    "who": "vet"
+                  }
+                ]
               }
             },
             {
@@ -12216,7 +13122,16 @@
             },
             {
               "not": {
-                "hasItem": "reg_foradat"
+                "any": [
+                  {
+                    "hasItem": "reg_foradat",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "reg_foradat",
+                    "who": "vet"
+                  }
+                ]
               }
             },
             {
@@ -12227,13 +13142,31 @@
         "doneWhen": {
           "any": [
             {
-              "hasItem": "agulla"
+              "any": [
+                {
+                  "hasItem": "agulla",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "agulla",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "reg_muntat"
             },
             {
-              "hasItem": "reg_foradat"
+              "any": [
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "vet"
+                }
+              ]
             }
           ]
         },
@@ -12248,10 +13181,28 @@
         "when": {
           "all": [
             {
-              "hasItem": "agulla"
+              "any": [
+                {
+                  "hasItem": "agulla",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "agulla",
+                  "who": "vet"
+                }
+              ]
             },
             {
-              "hasItem": "reg"
+              "any": [
+                {
+                  "hasItem": "reg",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "protagonist": "iri"
@@ -12259,7 +13210,16 @@
           ]
         },
         "doneWhen": {
-          "hasItem": "reg_foradat"
+          "any": [
+            {
+              "hasItem": "reg_foradat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg_foradat",
+              "who": "vet"
+            }
+          ]
         },
         "levels": [
           "pista.foradar.1",
@@ -12272,10 +13232,28 @@
         "when": {
           "all": [
             {
-              "hasItem": "agulla"
+              "any": [
+                {
+                  "hasItem": "agulla",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "agulla",
+                  "who": "vet"
+                }
+              ]
             },
             {
-              "hasItem": "reg"
+              "any": [
+                {
+                  "hasItem": "reg",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "protagonist": "vet"
@@ -12283,7 +13261,16 @@
           ]
         },
         "doneWhen": {
-          "hasItem": "reg_foradat"
+          "any": [
+            {
+              "hasItem": "reg_foradat",
+              "who": "iri"
+            },
+            {
+              "hasItem": "reg_foradat",
+              "who": "vet"
+            }
+          ]
         },
         "levels": [
           "pista.foradar.1",
@@ -12296,7 +13283,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "reg_foradat"
+              "any": [
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "protagonist": "iri"
@@ -12316,7 +13312,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "reg_foradat"
+              "any": [
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "reg_foradat",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "protagonist": "vet"
@@ -12344,7 +13349,16 @@
             },
             {
               "not": {
-                "hasItem": "galleda_plena"
+                "any": [
+                  {
+                    "hasItem": "galleda_plena",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "galleda_plena",
+                    "who": "vet"
+                  }
+                ]
               }
             }
           ]
@@ -12352,7 +13366,16 @@
         "doneWhen": {
           "any": [
             {
-              "hasItem": "galleda_plena"
+              "any": [
+                {
+                  "hasItem": "galleda_plena",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "galleda_plena",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "tomaquera_regada"
@@ -12370,7 +13393,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "galleda_plena"
+              "any": [
+                {
+                  "hasItem": "galleda_plena",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "galleda_plena",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "tomaquera_regada",
@@ -12493,7 +13525,16 @@
             },
             {
               "not": {
-                "hasItem": "sac_llavors"
+                "any": [
+                  {
+                    "hasItem": "sac_llavors",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "sac_llavors",
+                    "who": "vet"
+                  }
+                ]
               }
             },
             {
@@ -12505,7 +13546,16 @@
         "doneWhen": {
           "any": [
             {
-              "hasItem": "sac_llavors"
+              "any": [
+                {
+                  "hasItem": "sac_llavors",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "sac_llavors",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "fidel_admet"
@@ -12523,7 +13573,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "sac_llavors"
+              "any": [
+                {
+                  "hasItem": "sac_llavors",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "sac_llavors",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "fidel_admet",
@@ -12548,7 +13607,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "sac_llavors"
+              "any": [
+                {
+                  "hasItem": "sac_llavors",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "sac_llavors",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "fidel_admet",
@@ -12657,7 +13725,16 @@
             },
             {
               "not": {
-                "hasItem": "pernil"
+                "any": [
+                  {
+                    "hasItem": "pernil",
+                    "who": "iri"
+                  },
+                  {
+                    "hasItem": "pernil",
+                    "who": "vet"
+                  }
+                ]
               }
             }
           ]
@@ -12665,7 +13742,16 @@
         "doneWhen": {
           "any": [
             {
-              "hasItem": "pernil"
+              "any": [
+                {
+                  "hasItem": "pernil",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "pernil",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "diu_aparta"
@@ -12683,7 +13769,16 @@
         "when": {
           "all": [
             {
-              "hasItem": "pernil"
+              "any": [
+                {
+                  "hasItem": "pernil",
+                  "who": "iri"
+                },
+                {
+                  "hasItem": "pernil",
+                  "who": "vet"
+                }
+              ]
             },
             {
               "flag": "diu_aparta",
@@ -12860,6 +13955,11 @@
             },
             {
               "protagonist": "iri"
+            },
+            {
+              "var": "escena",
+              "op": "<",
+              "value": 7
             }
           ]
         },
@@ -12904,6 +14004,11 @@
             },
             {
               "protagonist": "vet"
+            },
+            {
+              "var": "escena",
+              "op": "<",
+              "value": 7
             }
           ]
         },
@@ -13349,6 +14454,54 @@
           "pista.control.3"
         ]
       },
+      "valvules_reinici": {
+        "priority": 5,
+        "when": {
+          "all": [
+            {
+              "flag": "sync_subhasta"
+            },
+            {
+              "var": "valvules",
+              "op": "<",
+              "value": 3
+            },
+            {
+              "var": "reinicis_subhasta",
+              "op": ">=",
+              "value": 1
+            },
+            {
+              "flag": "oferta_feta",
+              "is": false
+            },
+            {
+              "flag": "contracte_llegit",
+              "is": false
+            }
+          ]
+        },
+        "doneWhen": {
+          "any": [
+            {
+              "flag": "oferta_feta"
+            },
+            {
+              "flag": "contracte_llegit"
+            },
+            {
+              "var": "valvules",
+              "op": ">=",
+              "value": 3
+            }
+          ]
+        },
+        "levels": [
+          "pista.valvules_reinici.1",
+          "pista.valvules_reinici.2",
+          "pista.valvules_reinici.3"
+        ]
+      },
       "valvules": {
         "priority": 5,
         "when": {
@@ -13360,6 +14513,25 @@
               "var": "valvules",
               "op": "<",
               "value": 3
+            },
+            {
+              "not": {
+                "all": [
+                  {
+                    "var": "reinicis_subhasta",
+                    "op": ">=",
+                    "value": 1
+                  },
+                  {
+                    "flag": "oferta_feta",
+                    "is": false
+                  },
+                  {
+                    "flag": "contracte_llegit",
+                    "is": false
+                  }
+                ]
+              }
             }
           ]
         },
@@ -17266,7 +18438,42 @@
               },
               {
                 "who": "juana",
-                "text": "dlg.juana.hola.5"
+                "text": "dlg.juana.hola.5",
+                "if": {
+                  "all": [
+                    {
+                      "inRoom": "casa_juana",
+                      "who": "iri"
+                    },
+                    {
+                      "inRoom": "casa_juana",
+                      "who": "vet"
+                    }
+                  ]
+                }
+              },
+              {
+                "who": "juana",
+                "text": "dlg.juana.hola.5.una",
+                "if": {
+                  "not": {
+                    "all": [
+                      {
+                        "inRoom": "casa_juana",
+                        "who": "iri"
+                      },
+                      {
+                        "inRoom": "casa_juana",
+                        "who": "vet"
+                      }
+                    ]
+                  }
+                }
+              }
+            ],
+            "effects": [
+              {
+                "setFlag": "juana_coneguda"
               }
             ],
             "goto": "menu"
@@ -17952,617 +19159,6 @@
           }
         }
       },
-      "mapa": {
-        "id": "mapa",
-        "with": "capitana",
-        "start": "inici",
-        "nodes": {
-          "inici": {
-            "choices": [
-              {
-                "id": "terra2",
-                "text": "dlg.mapa.opt.terra2",
-                "if": {
-                  "not": {
-                    "var": "planeta",
-                    "op": "==",
-                    "value": "terra2"
-                  }
-                },
-                "next": "terra2",
-                "silent": true
-              },
-              {
-                "id": "aqua",
-                "text": "dlg.mapa.opt.aqua",
-                "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "var": "planeta",
-                        "op": "==",
-                        "value": "aqua"
-                      }
-                    },
-                    {
-                      "flag": "aqua_oberta"
-                    }
-                  ]
-                },
-                "next": "aqua",
-                "silent": true
-              },
-              {
-                "id": "ferrum",
-                "text": "dlg.mapa.opt.ferrum",
-                "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "var": "planeta",
-                        "op": "==",
-                        "value": "ferrum"
-                      }
-                    },
-                    {
-                      "flag": "ferrum_oberta"
-                    }
-                  ]
-                },
-                "next": "ferrum",
-                "silent": true
-              },
-              {
-                "id": "verdant",
-                "text": "dlg.mapa.opt.verdant",
-                "if": {
-                  "all": [
-                    {
-                      "not": {
-                        "var": "planeta",
-                        "op": "==",
-                        "value": "verdant"
-                      }
-                    },
-                    {
-                      "flag": "verdant_oberta"
-                    }
-                  ]
-                },
-                "next": "verdant",
-                "silent": true
-              },
-              {
-                "id": "palau",
-                "text": "dlg.mapa.opt.palau",
-                "if": {
-                  "var": "escena",
-                  "op": ">=",
-                  "value": 6
-                },
-                "next": "palau",
-                "silent": true
-              },
-              {
-                "id": "res",
-                "text": "dlg.mapa.opt.res",
-                "end": true,
-                "silent": true,
-                "effects": [
-                  {
-                    "event": "anar",
-                    "args": {
-                      "room": "cantimplora_pont"
-                    }
-                  }
-                ]
-              }
-            ]
-          },
-          "terra2": {
-            "lines": [
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.terra2.1"
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.terra2.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "aqua"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_aqua"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_aqua_terra2",
-                    "hold": 3.9
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.terra2.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "ferrum"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_ferrum"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_ferrum_terra2",
-                    "hold": 4.2
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.terra2.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "verdant"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_verdant"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_verdant_terra2",
-                    "hold": 2.9
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.terra2.3",
-                "effects": [
-                  {
-                    "setVar": "planeta",
-                    "value": "terra2"
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.terra2.4",
-                "effects": [
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "vet",
-                      "room": "cantimplora_bodega"
-                    }
-                  }
-                ],
-                "if": {
-                  "not": {
-                    "any": [
-                      {
-                        "inRoom": "cantimplora_pont",
-                        "who": "vet"
-                      },
-                      {
-                        "inRoom": "cantimplora_bodega",
-                        "who": "vet"
-                      }
-                    ]
-                  }
-                }
-              }
-            ],
-            "effects": [
-              {
-                "event": "anar",
-                "args": {
-                  "room": "cantimplora_pont"
-                }
-              }
-            ]
-          },
-          "aqua": {
-            "lines": [
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.aqua.1"
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.aqua.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "terra2"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_terra2"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_terra2_aqua",
-                    "hold": 3.9
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.aqua.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "ferrum"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_ferrum"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_ferrum_aqua",
-                    "hold": 3.1
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.aqua.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "verdant"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_verdant"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_verdant_aqua",
-                    "hold": 3.7
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.aqua.3",
-                "effects": [
-                  {
-                    "setVar": "planeta",
-                    "value": "aqua"
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.aqua.4",
-                "effects": [
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "vet",
-                      "room": "cantimplora_bodega"
-                    }
-                  }
-                ],
-                "if": {
-                  "not": {
-                    "any": [
-                      {
-                        "inRoom": "cantimplora_pont",
-                        "who": "vet"
-                      },
-                      {
-                        "inRoom": "cantimplora_bodega",
-                        "who": "vet"
-                      }
-                    ]
-                  }
-                }
-              }
-            ],
-            "effects": [
-              {
-                "event": "anar",
-                "args": {
-                  "room": "cantimplora_pont"
-                }
-              }
-            ]
-          },
-          "ferrum": {
-            "lines": [
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.ferrum.1"
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.ferrum.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "terra2"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_terra2"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_terra2_ferrum",
-                    "hold": 4.2
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.ferrum.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "aqua"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_aqua"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_aqua_ferrum",
-                    "hold": 3.1
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.ferrum.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "verdant"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_verdant"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_verdant_ferrum",
-                    "hold": 4.2
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.ferrum.3",
-                "effects": [
-                  {
-                    "setVar": "planeta",
-                    "value": "ferrum"
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.ferrum.4",
-                "effects": [
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "vet",
-                      "room": "cantimplora_bodega"
-                    }
-                  }
-                ],
-                "if": {
-                  "not": {
-                    "any": [
-                      {
-                        "inRoom": "cantimplora_pont",
-                        "who": "vet"
-                      },
-                      {
-                        "inRoom": "cantimplora_bodega",
-                        "who": "vet"
-                      }
-                    ]
-                  }
-                }
-              }
-            ],
-            "effects": [
-              {
-                "event": "anar",
-                "args": {
-                  "room": "cantimplora_pont"
-                }
-              }
-            ]
-          },
-          "verdant": {
-            "lines": [
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.verdant.1"
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.verdant.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "terra2"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_terra2"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_terra2_verdant",
-                    "hold": 2.9
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.verdant.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "aqua"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_aqua"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_aqua_verdant",
-                    "hold": 3.7
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.verdant.2",
-                "sound": "motor_nau",
-                "if": {
-                  "var": "planeta",
-                  "op": "==",
-                  "value": "ferrum"
-                },
-                "stage": [
-                  {
-                    "prop": "nau",
-                    "anim": "tremola_ferrum"
-                  }
-                ],
-                "stageAfter": [
-                  {
-                    "prop": "nau",
-                    "anim": "vol_ferrum_verdant",
-                    "hold": 4.2
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.verdant.3",
-                "effects": [
-                  {
-                    "setVar": "planeta",
-                    "value": "verdant"
-                  }
-                ]
-              },
-              {
-                "who": "narrator",
-                "text": "dlg.mapa.verdant.4",
-                "effects": [
-                  {
-                    "event": "situar",
-                    "args": {
-                      "who": "vet",
-                      "room": "cantimplora_bodega"
-                    }
-                  }
-                ],
-                "if": {
-                  "not": {
-                    "any": [
-                      {
-                        "inRoom": "cantimplora_pont",
-                        "who": "vet"
-                      },
-                      {
-                        "inRoom": "cantimplora_bodega",
-                        "who": "vet"
-                      }
-                    ]
-                  }
-                }
-              }
-            ],
-            "effects": [
-              {
-                "event": "anar",
-                "args": {
-                  "room": "cantimplora_pont"
-                }
-              }
-            ]
-          },
-          "palau": {
-            "lines": [],
-            "effects": [
-              {
-                "setFlag": "palau_tancat"
-              },
-              {
-                "event": "anar",
-                "args": {
-                  "room": "cantimplora_pont"
-                }
-              }
-            ]
-          }
-        }
-      },
       "nil": {
         "id": "nil",
         "with": "nil",
@@ -18946,8 +19542,16 @@
                 "id": "escriptura",
                 "text": "dlg.pare.opt.escriptura",
                 "if": {
-                  "flag": "caixa_oberta",
-                  "is": false
+                  "all": [
+                    {
+                      "flag": "caixa_oberta",
+                      "is": false
+                    },
+                    {
+                      "flag": "quadre_apartat",
+                      "is": false
+                    }
+                  ]
                 },
                 "next": "escriptura"
               },
@@ -19057,7 +19661,18 @@
               },
               {
                 "who": "player",
-                "text": "dlg.pare.contrasenya.2"
+                "text": "dlg.pare.contrasenya.2",
+                "if": {
+                  "flag": "bol_vist",
+                  "is": false
+                }
+              },
+              {
+                "who": "player",
+                "text": "dlg.pare.contrasenya.4",
+                "if": {
+                  "flag": "bol_vist"
+                }
               },
               {
                 "who": "player",
@@ -19569,7 +20184,7 @@
           "cava": {
             "lines": [
               {
-                "who": "narrator",
+                "who": "iri",
                 "text": "dlg.subhasta.cava.1",
                 "sound": "cava"
               },
@@ -19584,7 +20199,7 @@
               },
               {
                 "addVar": "lots",
-                "amount": 1
+                "amount": 2
               }
             ]
           },
@@ -19605,7 +20220,7 @@
               },
               {
                 "addVar": "lots",
-                "amount": 1
+                "amount": 2
               }
             ]
           }
@@ -20660,19 +21275,40 @@
               {
                 "id": "venut",
                 "text": "dlg.tomas.opt.venut",
-                "once": true,
+                "if": {
+                  "not": {
+                    "seen": {
+                      "dialogue": "tomas",
+                      "node": "venut"
+                    }
+                  }
+                },
                 "next": "venut"
               },
               {
                 "id": "capitana",
                 "text": "dlg.tomas.opt.capitana",
-                "once": true,
+                "if": {
+                  "not": {
+                    "seen": {
+                      "dialogue": "tomas",
+                      "node": "amenaca"
+                    }
+                  }
+                },
                 "next": "amenaca"
               },
               {
                 "id": "per_que",
                 "text": "dlg.tomas.opt.per_que",
-                "once": true,
+                "if": {
+                  "not": {
+                    "seen": {
+                      "dialogue": "tomas",
+                      "node": "per_que"
+                    }
+                  }
+                },
                 "next": "per_que"
               },
               {
@@ -20742,19 +21378,40 @@
               {
                 "id": "venut",
                 "text": "dlg.tomas.opt.venut2",
-                "once": true,
+                "if": {
+                  "not": {
+                    "seen": {
+                      "dialogue": "tomas",
+                      "node": "venut"
+                    }
+                  }
+                },
                 "next": "venut"
               },
               {
                 "id": "capitana",
                 "text": "dlg.tomas.opt.capitana2",
-                "once": true,
+                "if": {
+                  "not": {
+                    "seen": {
+                      "dialogue": "tomas",
+                      "node": "amenaca"
+                    }
+                  }
+                },
                 "next": "amenaca"
               },
               {
                 "id": "per_que",
                 "text": "dlg.tomas.opt.per_que2",
-                "once": true,
+                "if": {
+                  "not": {
+                    "seen": {
+                      "dialogue": "tomas",
+                      "node": "per_que"
+                    }
+                  }
+                },
                 "next": "per_que"
               },
               {
@@ -21137,10 +21794,6 @@
   },
   "locales": {
     "ca": {
-      "dlg.mapa.opt.terra2": "Terra-2.",
-      "dlg.mapa.opt.aqua": "Aqua.",
-      "dlg.mapa.opt.ferrum": "Ferrum.",
-      "dlg.mapa.opt.verdant": "Verdant.",
       "dlg.tomas.opt.venut2": "Ens has venut!",
       "dlg.tomas.opt.capitana2": "Ho diré a la Capitana.",
       "dlg.tomas.opt.per_que2": "Per què?",
@@ -21167,6 +21820,7 @@
       "dlg.pare.contrasenya.1": "La paraula... És qui ens esperava a la porta. Cada dia. Movent la cua.",
       "dlg.pare.contrasenya.2": "Qui ens esperava a la porta, movent la cua... El gos! Com es deia? Fa tants anys...",
       "dlg.pare.contrasenya.3": "El pare ho guarda tot. Segur que per la casa en queda alguna cosa.",
+      "dlg.pare.contrasenya.4": "Qui ens esperava a la porta, movent la cua... En Titus! El nom és gravat al bol.",
       "dlg.pare.verne.1": "L'avi va comprar un tractor. Un Brau 40, vermell. Deia que era el millor negoci de la seva vida.",
       "dlg.pare.verne.2": "...No va arrencar mai.",
       "dlg.pare.llavors.1": "Les llavors són per sembrar, no per guardar. Ho deia la mare. Endueu-vos-en.",
@@ -21200,7 +21854,8 @@
       "dlg.juana.hola.3": "No. Volem salvar el nostre pou.",
       "dlg.juana.hola.4": "És el mateix. A una altra escala.",
       "dlg.juana.hola.5": "Seieu. A terra, que les cadires les vaig vendre per aigua.",
-      "dlg.juana.torna.1": "Digueu.",
+      "dlg.juana.hola.5.una": "Seu. A terra, que les cadires les vaig vendre per aigua.",
+      "dlg.juana.torna.1": "Sí?",
       "dlg.juana.opt.mar": "On és el mar d'Aqua?",
       "dlg.juana.opt.on": "I on va a parar, l'aigua?",
       "dlg.juana.opt.tornar": "Es pot fer tornar?",
@@ -21232,7 +21887,7 @@
       "dlg.juana.peixos.2": "Diu que valdran més quan en quedi un.",
       "dlg.juana.peixos.3": "Això és...",
       "dlg.juana.peixos.4": "Sí. Ho és.",
-      "dlg.juana.llavors.1": "Ja les he anades a buscar mentre baixàveu. Gràcies.",
+      "dlg.juana.llavors.1": "Ja ho sé. La Capitana me les baixarà amb la cistella quan pugeu. Gràcies.",
       "dlg.juana.llavors.2": "Les sembraré aquí, al fons del mar. Algun dia serà el fons d'un camp. O d'un mar. Ja veurem què arriba primer.",
       "dlg.juana.opt.vendre": "La vendria. A bon preu.",
       "dlg.juana.opt.regalar": "La regalaria. Però només a qui m'agrada.",
@@ -21244,7 +21899,7 @@
       "dlg.juana.opt.agafar": "L'agafaria. I després faria alguna cosa.",
       "dlg.juana.opt.res": "L'agafaria i no faria res. Però em sentiria fatal.",
       "dlg.juana.q2.1": "Segona: i si el Magnat us oferís un milió perquè no féssiu res?",
-      "dlg.juana.r2a.1": "Això és trampa. M'agrada.",
+      "dlg.juana.r2a.1": "Això és trampa. Bona trampa.",
       "dlg.juana.r2b.1": "Almenys sabeu que us sentiríeu fatal. Ja és alguna cosa.",
       "dlg.juana.opt.pou": "No vull salvar el món. Vull el meu pou.",
       "dlg.juana.opt.mon": "Vull salvar el món. Però el meu pou, primer.",
@@ -21256,27 +21911,26 @@
       "dlg.juana.recorda.3": "S'obren des de la sala de control del palau del Magnat, sota la piscina central. Amb tres claus que va fondre en Bru, a Ferrum.",
       "dlg.juana.recorda.4": "La carta per a en Bru ja la porteu.",
       "dlg.juana.adeu.1": "Si torneu, porteu-me sorra de Terra-2. Per comparar.",
-      "dlg.mapa.opt.palau": "El palau orbital.",
-      "dlg.mapa.opt.res": "Ens quedem on som.",
       "dlg.mapa.inici.1": "On anem?",
       "dlg.mapa.terra2.1": "Rumb a Terra-2 · tres hores",
-      "dlg.mapa.terra2.2": "La Cantimplora tossa, tremola, s'enlaira...",
+      "dlg.mapa.terra2.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.terra2.3": "...i aterra al port, entre una nuvolada de pols.",
       "dlg.mapa.terra2.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
       "dlg.mapa.aqua.1": "Rumb a Aqua · nou hores",
-      "dlg.mapa.aqua.2": "La Cantimplora tossa, tremola, s'enlaira...",
+      "dlg.mapa.aqua.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.aqua.3": "...i aterra al port d'Aqua, entre una nuvolada de sal.",
       "dlg.mapa.aqua.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
       "dlg.mapa.ferrum.1": "Rumb a Ferrum · sis hores",
-      "dlg.mapa.ferrum.2": "La Cantimplora tossa, tremola, s'enlaira...",
+      "dlg.mapa.ferrum.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.ferrum.3": "...i aterra a Ferrum, entre fum i xemeneies.",
       "dlg.mapa.ferrum.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
       "dlg.mapa.verdant.1": "Rumb a Verdant · cinc hores",
-      "dlg.mapa.verdant.2": "La Cantimplora tossa, tremola, s'enlaira...",
+      "dlg.mapa.verdant.2": "La Cantimplora tus, tremola, s'enlaira...",
       "dlg.mapa.verdant.3": "...i aterra a Verdant, en una pista de gespa artificial.",
       "dlg.mapa.verdant.4": "(La Vet ja és a bord: puja sempre abans d'enlairar-se.)",
-      "dlg.mapa.palau.1": "Sense invitació, el palau no deixa atracar ni un mosquit. I la Cantimplora és un mosquit molt gros.",
-      "dlg.mapa.palau.2": "Hi hem d'anar per una altra via. La llançadora d'en Nil, i la invitació.",
+      "dlg.mapa.palau.1": "Amb invitació o sense, el palau no deixa atracar ni un mosquit. I la Cantimplora és un mosquit molt gros.",
+      "dlg.mapa.palau.2": "Hi hem d'anar per una altra via: la llançadora d'en Nil. La invitació ja la tenim; el que em falta és un vestit de gala.",
+      "dlg.mapa.palau.3": "Hi hem d'anar per una altra via: la llançadora d'en Nil. Invitació i vestit, ja els tinc. Abans, però, cal deixar la Cantimplora en ordre.",
       "dlg.capitana.primera.1": "Mira qui torna. La pilot que em va llogar el meu propi motor.",
       "dlg.capitana.primera.2": "Te'l vaig tornar.",
       "dlg.capitana.primera.3": "Sense el carburador.",
@@ -21287,7 +21941,7 @@
       "dlg.capitana.nit.1": "...No tinc ganes de parlar, noia.",
       "dlg.capitana.opt.aigua": "On és l'aigua, Capitana?",
       "dlg.capitana.opt.portar": "Porta'ns a algú que sàpiga on és.",
-      "dlg.capitana.opt.recorda": "Què et calia per volar?",
+      "dlg.capitana.opt.recorda": "Recorda'm què et cal per volar.",
       "dlg.capitana.opt.entrego": "Albarà i injector. Anem a Aqua?",
       "dlg.capitana.opt.por": "Per què li tens tanta por, al Magnat?",
       "dlg.capitana.opt.contracte": "Capitana, això és el teu contracte. El vaig trobar al despatx del Magnat.",
@@ -21322,19 +21976,20 @@
       "dlg.capitana.entrego.4.vet": "Que voli la pilot. I si ens atura el Magnat, jo no hi era.",
       "dlg.capitana.entrego.5": "El mapa és teu, Capitana.",
       "dlg.capitana.entrego.6": "El mapa és de qui sap llegir-lo. Vinga.",
+      "dlg.capitana.albara_sense_injector": "Un albarà. Molt bé. Però sense injector, la Cantimplora no surt del port. Guarda-te'l.",
       "dlg.capitana.por.1": "No en tinc por. Li tinc... respecte. Molt de respecte. Com a les tempestes.",
       "dlg.capitana.por.2": "I no en parlem més.",
       "dlg.capitana.magnat.1": "Que té un gos que es diu Dividend. Que viu en un palau en òrbita, amb vint-i-tres piscines buides.",
       "dlg.capitana.magnat.2": "I que mai, mai, perd un negoci.",
-      "dlg.capitana.contracte.1": "...On l'has trobat, això?",
+      "dlg.capitana.contracte.1": "...El meu contracte. No l'havia vist mai sencer.",
       "dlg.capitana.contracte.2": "La Capitana llegeix el contracte. Dues vegades.",
       "dlg.capitana.contracte.3": "«Interès: variable, segons el preu de l'aigua.» Com més puja l'aigua, més li dec. Fa dotze anys que pago i cada any dec més.",
       "dlg.capitana.contracte.4": "I la casella. «Ànima (opcional).» La vaig marcar per fer broma. Estava de bon humor, aquell dia.",
       "dlg.capitana.contracte.5": "Si el preu de l'aigua baixés...",
       "dlg.capitana.contracte.6": "...el meu deute baixaria.",
       "dlg.capitana.contracte.7": "Doncs que baixi.",
-      "dlg.capitana.contracte.8": "Demà porto la Cantimplora al moll de càrrega del palau. Si algú ha d'entretenir la seguretat del Magnat, una vella borni és perfecta.",
-      "dlg.capitana.pla.1": "Vosaltres, a dalt amb la llançadora d'en Nil i la invitació. Jo, al moll de càrrega, a fer de vella i borni.",
+      "dlg.capitana.contracte.8": "Demà porto la Cantimplora al moll de càrrega del palau. Si algú ha d'entretenir la seguretat del Magnat, una vella bòrnia és perfecta.",
+      "dlg.capitana.pla.1": "Vosaltres, a dalt amb la llançadora d'en Nil i la invitació. Jo, al moll de càrrega, a fer de vella i bòrnia.",
       "dlg.capitana.pla.2": "I si cal, perdo els frens. Sé perdre els frens molt bé.",
       "dlg.capitana.pare.1": "Ho sé. Li truco cada diumenge. Em guanya a les cartes per telèfon. No sé com ho fa.",
       "dlg.capitana.gat.1": "A la meva nau, res que mengi sense pagar.",
@@ -21401,7 +22056,7 @@
       "dlg.tomas.opt.informe": "Què li has dit, al Magnat?",
       "dlg.tomas.informe.1": "«Les germanes han plegat. La Vet plora. Hem menjat llenties.» M'ha contestat: «Excel·lent.»",
       "dlg.barril.opt.cas": "Això és el cas.",
-      "dlg.barril.opt.mirar": "(Mirar el barril.)",
+      "dlg.barril.opt.mirar": "(Donar el barril a la canalla.)",
       "dlg.barril.opt.no": "Ara no.",
       "dlg.barril.inici.1": "Ni ho pensis.",
       "dlg.barril.inici.2": "La canalla del piquet té tres garrafes per a quaranta.",
@@ -21410,9 +22065,9 @@
       "dlg.barril.inici.sola.vet": "L'últim barril. És el nostre. Per si de cas.",
       "dlg.barril.iri.1": "...Fes-ho. Abans que m'ho pensi.",
       "dlg.barril.iri.1.sola": "La Vet m'ho perdonarà. Algun dia.",
-      "dlg.barril.vet.1": "Per si de cas. *(sospira)* Això és el cas, oi?",
+      "dlg.barril.vet.1": "Per si de cas. (sospira) Això és el cas, oi?",
       "dlg.barril.vet.2": "Ho és.",
-      "dlg.barril.vet.1.sola": "Per si de cas. *(sospira)* La canalla del piquet té tres garrafes per a quaranta. Això és el cas.",
+      "dlg.barril.vet.1.sola": "Per si de cas. (sospira) La canalla del piquet té tres garrafes per a quaranta. Això és el cas.",
       "dlg.barril.baixar.1": "Baixen el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
       "dlg.barril.baixar.1.sola": "Baixa el barril amb el carro de la bodega fins al piquet. La canalla fa cua amb gots.",
       "dlg.tauler.inici.1": "Els paperets del tauler, amb la lletra de la Vet:",
@@ -21463,7 +22118,7 @@
       "dlg.bru.carta.7": "És un home. I un home no vol ser un home. Vol ser el Magnat.",
       "dlg.bru.carta.8": "Voleu les claus de les vàlvules. Ho diu aquí.",
       "dlg.bru.carta.9": "Mentre la canalla del piquet tingui set, aquí no es parla de claus.",
-      "dlg.bru.torna.1": "Digueu.",
+      "dlg.bru.torna.1": "Què hi ha?",
       "dlg.bru.opt.canalla": "La canalla ja beu.",
       "dlg.bru.opt.promesa": "Te la portarem a casa, la Lia. T'ho prometo.",
       "dlg.bru.opt.promesa_vet": "I si et portem la Lia a casa?",
@@ -21505,7 +22160,7 @@
       "dlg.rosa.torna.1": "Què hi ha?",
       "dlg.rosa.opt.vestit": "Rosa, ens deixaries el vestit de reina del sindicat?",
       "dlg.rosa.opt.vaga": "Com va la vaga?",
-      "dlg.rosa.opt.tomas": "El Tomàs... és bon noi.",
+      "dlg.rosa.opt.tomas": "En Tomàs... és bon noi.",
       "dlg.rosa.opt.adeu": "Res, Rosa.",
       "dlg.rosa.vestit.1": "El de reina? Me'l vaig posar quan vaig ser reina de la Festa Major de la Fosa. Fa trenta anys.",
       "dlg.rosa.vestit.2": "...Per entrar a casa del Magnat? Endueu-vos-el. I torneu-me'l sense taques de cava.",
@@ -21572,7 +22227,7 @@
       "dlg.trucada.inici.7": "La Capitana no diu res. Es mira les mans.",
       "dlg.trucada.si.1": "Excel·lent. Envieu les claus amb el vostre mecànic.",
       "dlg.trucada.si.2": "No.",
-      "dlg.trucada.si.3": "La Vet talla la comunicació. Però després la torna a obrir.",
+      "dlg.trucada.si.3": "La Vet talla la comunicació. La pantalla s'encén tota sola: el Magnat no ha acabat.",
       "dlg.trucada.no.1": "La residència Bon Repòs beu aigua Verne. Des d'avui, mig got per cap.",
       "dlg.trucada.no.2": "Ho sento. És el mercat.",
       "dlg.trucada.no.3": "La pantalla s'apaga. Al panell del pont, el preu salta: 97.",
@@ -21584,7 +22239,7 @@
       "dlg.trucada.no.9": "A mi no em mireu.",
       "dlg.trucada.no.10": "I la invitació diu «Etiqueta rigorosa». Jo només tinc aquesta jaqueta.",
       "dlg.trucada.no.11": "I la Capitana, un impermeable.",
-      "dlg.trucada.no.12": "...Al sindicat de Ferrum hi havia un vestit. Horrible. *(pausa)* Perfecte.",
+      "dlg.trucada.no.12": "...Al sindicat de Ferrum hi havia un vestit. Horrible. (pausa) Perfecte.",
       "dlg.verne_galeria.opt.piscines": "Per què són buides, les piscines?",
       "dlg.verne_galeria.opt.aigua": "I vostè, quina aigua beu?",
       "dlg.verne_galeria.opt.reserva": "No té aigua, aquí dalt?",
@@ -21610,7 +22265,7 @@
       "dlg.holm.parlat.1": "Al Banc ens agrada el senyor Verne. Mentre el preu sigui alt.",
       "dlg.holm.parlat.2": "I si baixa?",
       "dlg.holm.parlat.3": "Si baixa de trenta, el Banc es queda el palau, els dipòsits i el gos. Però no baixarà. Mai baixa.",
-      "dlg.holm.parlat.4": "En Holm se'n va a buscar una copa. Ja no em mira.",
+      "dlg.holm.parlat.4": "En Holm se'n va a buscar una copa. A la senyora Pruna, ja no la mira.",
       "dlg.holm.torna.1": "Senyora Pruna. Gaudeixi del cava. No el paguem nosaltres.",
       "dlg.holm.torna.2": "I no pateixi pel preu: el Banc només s'hi fica si baixa de trenta. I no baixarà.",
       "dlg.holm.durant.1": "Silenci, senyora, que estic comptant lots.",
@@ -21635,7 +22290,7 @@
       "dlg.kessel.hola.2": "Quan tothom respiri a la meva manera, ja en parlarem.",
       "dlg.lia.hola.1": "Ets nova? Aquí no es parla. Es frega.",
       "dlg.lia.torna.1": "Encara aquí?",
-      "dlg.lia.opt.pare": "El teu pare diu que tornes a casa.",
+      "dlg.lia.opt.pare": "El teu pare diu que tornis a casa.",
       "dlg.lia.opt.nota": "Té. És d'ell.",
       "dlg.lia.opt.feina": "Què hi fas, aquí?",
       "dlg.lia.opt.adeu": "Res. Continua fregant.",
@@ -21648,7 +22303,7 @@
       "dlg.lia.nota.3": "Baixar a la sala de control. Sota la piscina central.",
       "dlg.lia.nota.4": "Amb la meva targeta. I quan el Magnat truqui a la sala per l'interfon, contestaré jo des d'aquí.",
       "dlg.lia.nota.5": "Allà baix hi ha tres panys i una palanca vermella que no es pot tocar mai. La seva «reserva».",
-      "dlg.lia.opt.control": "Què hi ha a la sala de control?",
+      "dlg.lia.opt.control": "Recorda'm què hi ha a la sala de control.",
       "dlg.lia.control.1": "Tres panys, T2, AQUA, FERRUM, i la palanca de la reserva del Magnat. Baixa amb l'ascensor.",
       "dlg.nil_palau.hola.1": "Jo trec la pols. Tu fes la teva.",
       "dlg.nil_palau.hola.2": "Ah: a la sala de control hi ha una càmera. Hi posaré unes flors al davant. Fan pols.",
@@ -21781,7 +22436,7 @@
       "acte.3": "Acte 3 · Vint-i-tres piscines",
       "esc.esc1.1": "Hi ha d'haver algú que la té tota.",
       "esc.esc1.2": "Ho posa a la bomba: Verne.",
-      "esc.esc1.3": "Necessitem algú que vola a tot arreu i ho sap tot.",
+      "esc.esc1.3": "Necessitem algú que voli a tot arreu i ho sàpiga tot.",
       "esc.esc1.4": "La Capitana.",
       "esc.esc1.5": "La Capitana.",
       "esc.esc1.6": "Que no et parla des que li vas vendre el seu propi motor.",
@@ -21794,14 +22449,14 @@
       "esc.colada_fi.5": "Busqueu en Nil, el jardiner de la residència d'estiu del Magnat, a Verdant. Cada dijous hi puja.",
       "esc.colada_fi.6": "I ja que hi sou: el que el Magnat no guarda al palau, ho guarda a la residència. Papers, sobretot.",
       "esc.esc5.1": "Ho tinc: la carta del banc, la invitació a la subhasta i el contracte de la Capitana.",
-      "esc.esc5.2": "I jo tinc un jardiner que plora. Ens puja al palau demà.",
+      "esc.esc5.2": "I en Nil ens puja al palau demà. Encara plora, per la tomaquera.",
       "esc.esc5.3": "I la subhasta és demà al vespre. El Magnat ens ho ha posat fàcil.",
       "esc.esc5.4": "Ningú no ens ho posa fàcil. Desconfia.",
       "esc.esc5.5": "Aquella nit, a la Cantimplora...",
-      "esc.acte3_iri.1": "Dijous. Us deixo a Verdant, i jo me'n vaig al moll de càrrega del palau, a fer de vella i borni.",
+      "esc.acte3_iri.1": "Dijous. Us deixo a Verdant, i jo me'n vaig al moll de càrrega del palau, a fer de vella i bòrnia.",
       "esc.acte3_iri.2": "L'endemà. La llançadora dels jardiners puja al palau amb en Nil, un carro de flors de plàstic i una jardinera amb granota.",
       "esc.acte3_iri.3": "En una altra nau, la de convidats, hi puja una senyora amb un vestit de reina i una corona d'engranatge.",
-      "esc.acte3_vet.1": "Dijous. Us deixo a Verdant, i jo me'n vaig al moll de càrrega del palau, a fer de vella i borni.",
+      "esc.acte3_vet.1": "Dijous. Us deixo a Verdant, i jo me'n vaig al moll de càrrega del palau, a fer de vella i bòrnia.",
       "esc.acte3_vet.2": "L'endemà. La llançadora dels jardiners puja al palau amb en Nil, un carro de flors de plàstic i una jardinera amb granota.",
       "esc.acte3_vet.3": "En una altra nau, la de convidats, hi puja una senyora amb un vestit de reina i una corona d'engranatge.",
       "sync.colada.1": "El metall comença a fer crosta a les vores.",
@@ -21825,7 +22480,7 @@
       "mosca.palau": "Al palau hi ha un camp antidrons. La Mosca ha fet un soroll molt trist i ha tornat a la butxaca.",
       "mosca.no_hi_cap": "Això la Mosca no ho aixeca.",
       "mosca.aqui": "Som a la mateixa sala: millor donar-l'hi en mà.",
-      "safata.posa": "Deixo {objecte} a la safata, entre les copes. Algun cambrer la baixarà al servei.",
+      "safata.posa": "Deixo {objecte} a la safata, entre les copes. Algun cambrer ho baixarà tot al servei.",
       "safata.plena": "A la safata ja hi ha una cosa nostra. Que la Vet la reculli primer.",
       "safata.no": "Això no passaria per una copa.",
       "safata.recull": "A la safata, entre copes buides: {objecte}.",
@@ -21897,10 +22552,26 @@
       "ui.defecte.use.vet": "No sé què hi faria. I no toco el que no entenc.",
       "ui.fi": "Fi",
       "ui.pista.cap": "Ara mateix no se m'acut res. Potser cal mirar al voltant.",
+      "ui.pista.altra.iri": "Jo ara mateix no tinc res a fer. Li toca a l'Iri: canviem.",
+      "ui.pista.altra.vet": "Jo ara mateix no tinc res a fer. Li toca a la Vet: canviem.",
       "ui.canvia.encara_no": "Encara no: ara és cosa d'una sola.",
       "ui.missio.completada": "Missió completada: {titol}",
       "ui.missio.fallida": "Missió fallida: {titol}",
       "ui.missio.nova": "Nova missió: {titol}",
+      "ui.controls.titol": "Com es juga",
+      "ui.controls.dit.0": "Toca una cosa: la primera vegada la mires; després hi fas l'acció (o tries, si n'hi ha més d'una).",
+      "ui.controls.dit.1": "Mantén el dit premut sobre una cosa: tries què hi fas (mirar-la, agafar-la, obrir-la...).",
+      "ui.controls.dit.2": "Toca un objecte de l'inventari i després on el vols fer servir (o a qui el dones). Els punts ensenyen el que es pot tocar.",
+      "ui.controls.ratoli.esquerre": "Clic esquerre: hi vas o hi fas l'acció (si n'hi ha més d'una, tries). Mantingues-lo premut per triar.",
+      "ui.controls.ratoli.dret": "Clic dret sobre una cosa: la mires.",
+      "ui.controls.ratoli.esquerre.mira": "Clic esquerre sobre una cosa: la mires. Mantingues-lo premut per triar què hi fas.",
+      "ui.controls.ratoli.dret.fa": "Clic dret: hi vas o hi fas l'acció (si n'hi ha més d'una, tries).",
+      "ui.controls.ratoli.punts": "Clica un objecte de l'inventari i després on el vols fer servir. Els punts ensenyen el que es pot clicar.",
+      "ui.controls.nomostris": "No ho tornis a mostrar",
+      "ui.controls.dacord": "D'acord",
+      "ui.opcions.botons": "clic esquerre per mirar",
+      "ui.opcions.controls": "Controls",
+      "ui.controls.intercanvia": "Clic esquerre per mirar (i dret per fer)",
       "mis.acte1.titol": "L'aigua que no hi és",
       "mis.acte1.obj.escriptura": "Trobar l'escriptura de la granja",
       "mis.acte1.obj.bomba": "Saber què fa la bomba de Verne al pou",
@@ -21920,7 +22591,7 @@
       "mis.acte3.obj.subhasta": "Que el preu toqui la ratlla",
       "obj.comunicador.nom": "comunicador",
       "obj.comunicador.desc": "El comunicador de canell. El que una diu, l'altra ho sent.",
-      "obj.comunicador.no": "El comunicador no se'n va de la meva canell.",
+      "obj.comunicador.no": "El comunicador no se'n va del meu canell.",
       "obj.mosca.nom": "Mosca",
       "obj.mosca.desc": "La Mosca: un dron de càrrega fet amb un aspirador. Porta a l'altra el que pesi poc, si som al mateix planeta.",
       "obj.mosca.no": "La Mosca no es pot portar a si mateixa. Ho ha intentat.",
@@ -21956,7 +22627,7 @@
       "obj.carta_juana.nom": "carta de la Juana",
       "obj.carta_juana.desc": "La carta de la Juana per a en Bru, amb un segell de cera amb un peix.",
       "obj.nota_lia.nom": "nota per a la Lia",
-      "obj.nota_lia.desc": "Al dors de la carta de la Juana, en Bru ha escrit: «Lia: fes-los cas. Et vinc a buscar al moll. Papa.»",
+      "obj.nota_lia.desc": "Al dors de la carta de la Juana, en Bru ha escrit: «Lia: fes-los cass. Et vinc a buscar al moll. Papa.»",
       "obj.motlle.nom": "motlle",
       "obj.motlle.desc": "El motlle de les tres claus. Pesa com un remordiment.",
       "obj.motlle.no": "El motlle pesa massa per a la Mosca.",
@@ -22070,7 +22741,7 @@
       "pj.juana.1": "La Juana. Científica. Viu al fons d'un mar que no hi és.",
       "pj.bru.1": "En Bru. Fonedor, cap de la vaga i braços com columnes.",
       "pj.rosa.1": "Una minera amb casc. Té el nas d'en Tomàs.",
-      "pj.nil.1": "En Nil, el jardiner. Parla amb les flors de plàstic. Elles no li contesten, però escolten.",
+      "pj.nil.1": "En Nil, el jardiner. Parla amb les flors de plàstic. En veu baixa, perquè no s'espantin.",
       "pj.lia.1": "Una noia amb uniforme de servei i una fregona. Té el nas d'en Bru.",
       "pj.verne.1": "L'Aurelià Verne. El Magnat. Vestit blanc, ungles perfectes, somriure de lloguer.",
       "pj.verne.2": "Ara és a l'escenari. No m'escoltaria.",
@@ -22078,7 +22749,7 @@
       "pj.dividend.2": "Hola, Dividend.",
       "pj.dividend.3": "Guau.",
       "pj.dividend.4": "Mossega. Segur que mossega en crèdits.",
-      "pj.fidel.1": "En Fidel. Un robot majordom amb llacet. Programat per distingir la gent solvent de la gent.",
+      "pj.fidel.1": "En Fidel. Un robot majordom amb llacet. Té un ull per a la cara i un altre per a la cartera.",
       "pj.holm.1": "En Holm, director del Banc de Vesper. Somriu com el Magnat, però més fred.",
       "pj.kessel.1": "La senyora Kessel. Abric de pells sintètiques i una mascareta d'oxigen daurada.",
       "pista.escriptura.1": "L'escriptura és en algun racó de la casa del pare. El pare ho guarda tot... però sap on és cada cosa.",
@@ -22086,8 +22757,8 @@
       "pista.escriptura.3": "Truca al pare amb el videotelèfon de la casa i pregunta-li per l'escriptura.",
       "pista.quadre.1": "«Darrere de la mare», ha dit el pare. Del quadre de la mare.",
       "pista.quadre.2": "A la casa hi ha el quadre de la mare.",
-      "pista.quadre.3": "Empeny o estira el quadre de la mare.",
-      "pista.caixa.1": "La caixa forta demana una paraula de cinc lletres. Qui la pot saber?",
+      "pista.quadre.3": "Aparta de la paret el quadre de la mare.",
+      "pista.caixa.1": "Darrere el quadre hi ha una caixa forta amb un teclat de lletres. Qui en pot saber la paraula?",
       "pista.caixa.2": "El pare la deu saber.",
       "pista.caixa.3": "Pregunta al pare per la paraula de la caixa forta, amb el videotelèfon.",
       "pista.titus.1": "Qui ens esperava a la porta, movent la cua: el gos. Com es deia?",
@@ -22120,27 +22791,28 @@
       "pista.injector.1": "La Cantimplora no vola: l'injector està esquerdat.",
       "pista.injector.2": "El motor és a la bodega. La Vet en sap.",
       "pista.injector.3": "Mira el motor de la bodega amb la Vet.",
-      "pista.injector.2.vet": "El motor és a la bodega. I de motors, en sé jo.",
+      "pista.injector.2.vet": "El motor és a la bodega. I de motors, en sap la Vet.",
       "pista.injector.3.vet": "Mira el motor de la bodega.",
       "pista.tractor.1": "El tractor de l'avi té el mateix injector que la Cantimplora.",
       "pista.tractor.2": "El cargol està rovellat: cal oli (hi ha una llauna al motor de la bodega) i una clau anglesa grossa (la porta en Tomàs).",
       "pista.tractor.3": "Agafa l'oli del motor, demana la clau anglesa a en Tomàs, posa oli al tractor del graner i treu-ne l'injector amb la clau.",
       "pista.injector2.1": "L'injector va al motor de la Cantimplora.",
       "pista.injector2.2": "El munta la Vet.",
-      "pista.injector2.3": "La Vet ha de fer servir l'injector amb el motor de la bodega (si el porto jo, l'hi dono o l'hi envio amb la Mosca).",
-      "pista.injector2.2.vet": "El munto jo.",
-      "pista.injector2.3.vet": "Fes servir l'injector amb el motor de la bodega (si el porta l'Iri, que me'l doni o me l'enviï amb la Mosca).",
+      "pista.injector2.3": "La Vet ha de fer servir l'injector amb el motor de la bodega (si el porta l'Iri, que l'hi doni o l'hi enviï amb la Mosca).",
+      "pista.injector2.2.vet": "El munta la Vet.",
+      "pista.injector2.3.vet": "Fes servir l'injector amb el motor de la bodega (si el porta l'Iri, que te'l doni o te l'enviï amb la Mosca).",
       "pista.entrega.1": "Ja tenim albarà i injector.",
       "pista.entrega.2": "La Capitana és al pont.",
       "pista.entrega.3": "Parla amb la Capitana.",
       "pista.aqua.1": "Rumb a Aqua.",
       "pista.aqua.2": "El mapa de navegació, al pont. El fa servir l'Iri.",
       "pista.aqua.3": "Amb l'Iri, fes servir el mapa del pont i tria Aqua.",
-      "pista.aqua.2.iri": "El mapa de navegació, al pont. Pilotar és cosa meva.",
+      "pista.aqua.2.iri": "El mapa de navegació, al pont. Pilotar és cosa de l'Iri.",
       "pista.aqua.3.iri": "Fes servir el mapa del pont i tria Aqua.",
       "pista.grua.1": "El mar d'Aqua és quaranta metres més avall. Com s'hi baixa?",
       "pista.grua.2": "Al port hi ha una grua amb una cistella.",
       "pista.grua.3": "Mira la grua del port.",
+      "pista.fusible.1.iri": "A la cabina de la grua hi falta una peça. La Vet sabrà quina.",
       "pista.fusible.1": "A la grua li falta un fusible de trenta. A la nau només n'hi ha de deu.",
       "pista.fusible.2": "Un fusible de deu embolicat amb alguna cosa que condueixi... com el paper de plata. En Tomàs sempre dina amb entrepà embolicat.",
       "pista.fusible.3": "Agafa un fusible del quadre de la bodega, demana a en Tomàs el paper de plata del seu entrepà i que la Vet els ajunti.",
@@ -22148,7 +22820,7 @@
       "pista.fusible2.1": "Ja tenim el fusible apanyat.",
       "pista.fusible2.2": "El munta la Vet.",
       "pista.fusible2.3": "La Vet ha de fer servir el fusible apanyat amb la grua del port.",
-      "pista.fusible2.2.vet": "El munto jo.",
+      "pista.fusible2.2.vet": "El munta la Vet.",
       "pista.fusible2.3.vet": "Fes servir el fusible apanyat amb la grua del port.",
       "pista.baixar.1": "Una a la cistella i l'altra als comandaments de la grua.",
       "pista.baixar.2": "Cal que siguin totes dues al port.",
@@ -22158,37 +22830,37 @@
       "pista.juana.3": "Parla amb la Juana i fes-li totes les preguntes fins que t'escrigui una carta per a en Bru.",
       "pista.bru.1": "La Juana ens ha enviat a Ferrum, a buscar en Bru.",
       "pista.bru.2": "En Bru és al sindicat. No es fia de ningú, però la carta de la Juana l'ajudarà.",
-      "pista.bru.3": "Viatja a Ferrum amb el mapa del pont, entra al sindicat i parla amb en Bru.",
+      "pista.bru.3": "Ves a Ferrum (amb el mapa del pont, si no hi sou), entra al sindicat i parla amb en Bru.",
       "pista.canalla.1": "La canalla del piquet té set. Hi ha dues maneres d'ajudar-la.",
       "pista.canalla.2": "L'últim barril de la Cantimplora... o el condensador vell del carrer, que treu aigua de l'aire i està espatllat.",
-      "pista.canalla.3": "Empeny el barril de la bodega, o arregla el condensador: corretja (de la font de Verne, amb la clau anglesa) i filtre (el de la cafetera de la nau).",
+      "pista.canalla.3": "Baixa al piquet el barril de la bodega, o arregla el condensador: corretja (de la font de Verne, amb la clau anglesa) i filtre (el de la cafetera de la nau).",
       "pista.bru2.1": "La canalla ja beu.",
       "pista.bru2.2": "En Bru volia veure-ho.",
       "pista.bru2.3": "Torna a parlar amb en Bru.",
       "pista.promesa.1": "En Bru té por per la seva filla, la Lia, que treballa al palau.",
       "pista.promesa.2": "Algú li ha de fer una promesa. La que negocia és l'Iri.",
       "pista.promesa.3": "Parla amb en Bru amb l'Iri i promet-li que li portareu la Lia a casa.",
-      "pista.promesa.2.iri": "Algú li ha de fer una promesa. I negociar és cosa meva.",
+      "pista.promesa.2.iri": "Algú li ha de fer una promesa. I negociar és cosa de l'Iri.",
       "pista.promesa.3.iri": "Parla amb en Bru i promet-li que li portareu la Lia a casa.",
       "pista.motlle.1": "En Bru ens ha donat el motlle de les claus.",
       "pista.motlle.2": "El motlle va al llit de colada, a la fosa.",
       "pista.motlle.3": "Entra a la fosa, passa a la colada i fes servir el motlle amb el llit de colada.",
       "pista.sorra.1": "Cal sorra fina. On n'hem vist, de sorra fina com farina?",
       "pista.sorra.2": "Al fons del mar d'Aqua hi havia una platja.",
-      "pista.sorra.3": "Viatja a Aqua, baixa al fons del mar i agafa la sorra fina.",
+      "pista.sorra.3": "Ves a Aqua (amb el mapa del pont, si no hi sou), baixa al fons del mar i agafa la sorra fina.",
       "pista.motlle2.1": "Ja tenim sorra fina.",
       "pista.motlle2.2": "Torna a la fosa de Ferrum.",
       "pista.motlle2.3": "Fes servir el motlle amb el llit de colada, amb la sorra a l'inventari.",
       "pista.colada_lloc.1": "Una al forn i l'altra a la colada, a la vegada.",
       "pista.colada_lloc.2": "La fosa té dues sales: el forn i la colada.",
-      "pista.colada_lloc.3": "Posa una protagonista a la sala del forn i l'altra a la de la colada (fes servir «Canvia»).",
+      "pista.colada_lloc.3": "Posa una protagonista a la sala del forn i l'altra a la de la colada (canvia de protagonista per moure l'altra).",
       "pista.c_manxa.1": "Al forn, primer, el foc: la manxa.",
       "pista.c_metall.1": "Al forn: el metall. La pila de comptadors.",
       "pista.c_escoria.1": "Al forn: fora l'escòria amb el rascle, abans d'abocar.",
       "pista.c_gresol.1": "A la colada: aboca el gresol.",
       "pista.c_sorra.1": "A la colada: tapa el motlle amb la sorra (fes servir la sorra amb el llit).",
       "pista.verdant.1": "En Bru ha dit: en Nil, el jardiner de la residència de Verdant, puja al palau cada dijous. I que el Magnat hi guarda papers.",
-      "pista.verdant.2": "Viatja a Verdant amb el mapa del pont.",
+      "pista.verdant.2": "En Nil és a Verdant: s'hi va amb el mapa del pont.",
       "pista.verdant.3": "A Verdant, parla amb en Nil, al jardí.",
       "pista.nil.1": "En Nil és al jardí, parlant amb les flors.",
       "pista.nil.2": "Parla amb en Nil.",
@@ -22200,20 +22872,21 @@
       "pista.tomaquera2.3": "Parla amb en Nil de la tomaquera.",
       "pista.reg.1": "La tomaquera necessita un reg gota a gota.",
       "pista.reg.2": "El pare en té un al graner de Terra-2. Però «no es toca».",
-      "pista.reg.3": "Viatja a Terra-2, demana el reg al pare pel videotelèfon de la casa i agafa'l del graner.",
+      "pista.reg.3": "A Terra-2 (amb el mapa del pont, si no hi sou), demana el reg al pare pel videotelèfon de la casa i agafa'l del graner.",
       "pista.reg2.1": "Ja tenim el reg.",
       "pista.reg2.2": "Ara, a la tomaquera.",
+      "pista.reg2.2.iri": "Ara, a la tomaquera. Però muntar-lo és cosa de la Vet.",
       "pista.reg2.3": "La Vet ha de fer servir el reg amb la tomaquera del cobert.",
       "pista.reg2.3.vet": "Fes servir el reg amb la tomaquera del cobert.",
       "pista.agulla.1": "Els goters del reg són tapats. Cal foradar-los.",
       "pista.agulla.2": "La Vet té una agulla al seu calaix.",
       "pista.agulla.3": "Agafa l'agulla del calaix de la Vet, a la bodega de la nau.",
-      "pista.agulla.2.vet": "Tinc una agulla al meu calaix.",
-      "pista.agulla.3.vet": "Agafa l'agulla del meu calaix, a la bodega de la nau.",
+      "pista.agulla.2.vet": "La Vet té una agulla al seu calaix.",
+      "pista.agulla.3.vet": "Agafa l'agulla del calaix de la Vet, a la bodega de la nau.",
       "pista.foradar.1": "Agulla i reg.",
       "pista.foradar.2": "La Vet ho ha de fer.",
       "pista.foradar.3": "Amb la Vet, fes servir l'agulla amb el reg.",
-      "pista.foradar.2.vet": "Ho he de fer jo.",
+      "pista.foradar.2.vet": "Ho ha de fer la Vet.",
       "pista.foradar.3.vet": "Fes servir l'agulla amb el reg.",
       "pista.muntar.1": "El reg ja és a punt.",
       "pista.muntar.2": "La Vet ha de fer servir el reg amb la tomaquera.",
@@ -22229,18 +22902,18 @@
       "pista.fidel.1": "Al despatx del Magnat, a la residència, hi pot haver coses que ens convinguin.",
       "pista.fidel.2": "El robot de la porta només deixa passar gent «solvent». Una inversora, per exemple. L'Iri sap fer-ne.",
       "pista.fidel.3": "Amb l'Iri, parla amb en Fidel i digues-li que ets inversora.",
-      "pista.fidel.2.iri": "El robot de la porta només deixa passar gent «solvent». Una inversora, per exemple. D'això, en sé fer.",
+      "pista.fidel.2.iri": "El robot de la porta només deixa passar gent «solvent». Una inversora, per exemple. D'això, l'Iri en sap fer.",
       "pista.fidel.3.iri": "Parla amb en Fidel i digues-li que ets inversora.",
       "pista.aval.1": "Què val, a Vesper, més que una granja sense aigua? El que hi creix sense aigua.",
       "pista.aval.2": "El quart sac de llavors del pare, al graner de Terra-2.",
-      "pista.aval.3": "Viatja a Terra-2 i agafa el quart sac del banc de llavors del graner.",
+      "pista.aval.3": "A Terra-2 (amb el mapa del pont, si no hi sou), agafa el quart sac del banc de llavors del graner.",
       "pista.aval2.1": "Ja tenim un aval.",
       "pista.aval2.2": "En Fidel.",
       "pista.aval2.3": "Amb l'Iri, parla amb en Fidel i ofereix-li el sac de llavors.",
       "pista.aval2.3.iri": "Parla amb en Fidel i ofereix-li el sac de llavors.",
-      "pista.despatx.1": "Som al despatx del Magnat. Remenem.",
+      "pista.despatx.1": "En Fidel ens deixa passar. Al despatx del Magnat, a la residència, remenem.",
       "pista.despatx.2": "La calaixera, la paperera, l'arxivador.",
-      "pista.despatx.3": "Obre la calaixera, mira la paperera i obre l'arxivador del despatx.",
+      "pista.despatx.3": "Amb l'Iri, entra a la residència: obre la calaixera, mira la paperera i obre l'arxivador del despatx.",
       "pista.espia.1": "Algú de la nau ho explica tot al Magnat. Qui pregunta sempre on anem?",
       "pista.espia.2": "En Tomàs. I la seva carmanyola fa bip a les nou.",
       "pista.espia.3": "Mira la carmanyola d'en Tomàs, a la bodega.",
@@ -22254,36 +22927,36 @@
       "pista.girar.1": "En Tomàs informa el Magnat. Per què ho fa?",
       "pista.girar.2": "El Magnat li va prometre una llicència de pilot. L'Iri li pot oferir una cosa millor.",
       "pista.girar.3": "Amb l'Iri, parla amb en Tomàs i ofereix-te a ensenyar-lo a volar.",
-      "pista.girar.2.iri": "El Magnat li va prometre una llicència de pilot. Jo li puc oferir una cosa millor.",
+      "pista.girar.2.iri": "El Magnat li va prometre una llicència de pilot. L'Iri li pot oferir una cosa millor.",
       "pista.girar.3.iri": "Parla amb en Tomàs i ofereix-te a ensenyar-lo a volar.",
       "pista.contracte.1": "La Capitana té por del Magnat. Ara sabem per què.",
       "pista.contracte.2": "El contracte del despatx de Verdant.",
       "pista.contracte.3": "Parla amb la Capitana, al pont, amb el contracte a l'inventari.",
       "pista.gala.1": "La invitació demana etiqueta rigorosa.",
       "pista.gala.2": "Al sindicat de Ferrum, al bagul de la colla de teatre, hi havia un vestit de reina. És de la Rosa.",
-      "pista.gala.3": "Viatja a Ferrum i demana el vestit a la Rosa, al piquet.",
+      "pista.gala.3": "A Ferrum (amb el mapa del pont, si no hi sou), demana el vestit a la Rosa, al piquet.",
       "pista.gala2.1": "La Rosa diu que sí.",
       "pista.gala2.2": "Agafa el vestit del bagul del sindicat.",
       "pista.gala3.1": "A l'Iri, el vestit li va gran.",
       "pista.gala3.2": "La Vet té agulla i fil.",
       "pista.gala3.3": "Amb la Vet, fes servir l'agulla amb el vestit.",
-      "pista.gala3.1.iri": "El vestit em va gran.",
-      "pista.gala3.2.vet": "Tinc agulla i fil.",
+      "pista.gala3.1.iri": "A l'Iri, el vestit li va gran.",
+      "pista.gala3.2.vet": "La Vet té agulla i fil.",
       "pista.gala3.3.vet": "Fes servir l'agulla amb el vestit.",
       "pista.gala4.1": "El vestit és per a l'Iri.",
       "pista.gala4.2": "Dona-l'hi o envia-l'hi amb la Mosca.",
-      "pista.gala4.1.iri": "El vestit és per a mi, però el té la Vet.",
-      "pista.gala4.2.iri": "Que me'l doni o que me l'enviï amb la Mosca.",
+      "pista.gala4.1.iri": "El vestit és per a l'Iri, però el té la Vet.",
+      "pista.gala4.2.iri": "Que te'l doni o que te l'enviï amb la Mosca.",
       "pista.lia.1": "Al palau, la Vet ha de trobar la Lia, la filla d'en Bru.",
       "pista.lia.2": "És als passadissos de servei, amb una fregona.",
       "pista.lia.3": "Amb la Vet, parla amb la Lia.",
-      "pista.lia.1.vet": "Al palau, he de trobar la Lia, la filla d'en Bru.",
+      "pista.lia.1.vet": "Al palau, la Vet ha de trobar la Lia, la filla d'en Bru.",
       "pista.lia.3.vet": "Parla amb la Lia.",
-      "pista.holm.1": "L'Iri porta les claus i la nota d'en Bru. I jo les necessito.",
+      "pista.holm.1": "L'Iri porta les claus i la nota d'en Bru. I la Vet les necessita.",
       "pista.holm.2": "La safata de les copes del saló baixa al servei. Però en Holm, el del banc, no treu els ulls de sobre a l'Iri.",
       "pista.holm.3": "Amb l'Iri, parla amb en Holm al saló.",
-      "pista.holm.1.iri": "Porto les claus i la nota d'en Bru. La Vet les necessita.",
-      "pista.holm.2.iri": "La safata de les copes del saló baixa al servei. Però en Holm, el del banc, no em treu els ulls de sobre.",
+      "pista.holm.1.iri": "L'Iri porta les claus i la nota d'en Bru. La Vet les necessita.",
+      "pista.holm.2.iri": "La safata de les copes del saló baixa al servei. Però en Holm, el del banc, no treu els ulls de sobre a l'Iri.",
       "pista.holm.3.iri": "Parla amb en Holm, al saló.",
       "pista.safata_nota.1": "La Lia vol la nota d'en Bru.",
       "pista.safata_nota.2": "La safata de les copes.",
@@ -22304,12 +22977,15 @@
       "pista.control.2": "A la sala de control s'hi baixa amb l'ascensor de servei i la targeta de la Lia.",
       "pista.control.3": "Porta la Vet a la sala de control i l'Iri al saló de la subhasta.",
       "pista.valvules.1": "Obre les tres vàlvules abans que s'acabin els lots. A cada pany: la clau, i girar.",
-      "pista.valvules.2": "El Magnat corre més a cada vàlvula. Qui és al saló pot allargar la subhasta (l'escenari, en Holm).",
-      "pista.valvules.3": "Vet: fes servir les claus amb un pany i empeny-lo; així tres vegades. Iri: parla amb en Holm i fes-li perdre temps.",
+      "pista.valvules.2": "El Magnat corre més a cada vàlvula, i la Vet sola no hi arriba: l'Iri ha d'allargar la subhasta des de l'escenari del saló.",
+      "pista.valvules.3": "Iri: toca l'escenari i puja l'oferta o demana que llegeixin el contracte. Vet: a cada pany, fes servir les claus i gira'l; així tres vegades.",
+      "pista.valvules_reinici.1": "S'han acabat els lots abans que la Vet acabés la feina: la Vet sola no hi arriba.",
+      "pista.valvules_reinici.2": "Abans de girar cap pany, l'Iri ha d'allargar la subhasta, des del saló.",
+      "pista.valvules_reinici.3": "Iri: toca l'escenari del saló i puja l'oferta o demana que llegeixin el contracte. Després, Vet: les claus a cada pany, i gira'l.",
       "pista.reserva.1": "31. Per sobre de la ratlla, per culpa de la reserva del Magnat.",
       "pista.reserva.2": "La palanca vermella.",
-      "pista.reserva.3": "Amb la Vet, estira la palanca de la reserva.",
-      "pista.reserva.3.vet": "Estira la palanca de la reserva.",
+      "pista.reserva.3": "Amb la Vet, acciona la palanca vermella de la reserva.",
+      "pista.reserva.3.vet": "Acciona la palanca vermella de la reserva.",
       "sala.granja_pati.nom": "Pati de la granja",
       "sala.granja_pati.porta_casa.nom": "casa",
       "sala.granja_pati.porta_graner.nom": "graner",
@@ -22365,6 +23041,12 @@
       "sala.casa_juana.finestra.nom": "finestra",
       "sala.cantimplora_pont.nom": "Pont de la Cantimplora",
       "sala.cantimplora_mapa.nom": "Carta de navegació",
+      "sala.cantimplora_mapa.terra2.nom": "Navega a Terra-2",
+      "sala.cantimplora_mapa.aqua.nom": "Navega a Aqua",
+      "sala.cantimplora_mapa.ferrum.nom": "Navega a Ferrum",
+      "sala.cantimplora_mapa.verdant.nom": "Navega a Verdant",
+      "sala.cantimplora_mapa.palau.nom": "Navega al palau orbital",
+      "sala.cantimplora_mapa.aqui.nom": "Ens quedem on som",
       "sala.cantimplora_pont.escala.nom": "bodega",
       "sala.cantimplora_pont.mapa.nom": "mapa de navegació",
       "sala.cantimplora_pont.radio.nom": "ràdio",
@@ -22561,7 +23243,7 @@
       "sala.port_terra2.tauler.2": "I un de diferent: «Es busca nau... per desballestar.»",
       "sala.port_terra2.tauler.3": "Cap d'aquestes feines ens porta on volem.",
       "sala.port_terra2.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
-      "sala.port_terra2.panell_preu.2": "És de Verne. Si el toco, segur que algú em cobra el dit.",
+      "sala.port_terra2.panell_preu.2": "El mateix panell que a la granja. Verne no gasta imaginació: gasta panells.",
       "sala.port_terra2.canonada.1": "La Canonada, des del port. Fa l'efecte que el cel té un tub de reg.",
       "sala.aqua_port.entra.1": "Aqua. Era el mar més gran de Vesper. Ara és un desert de sal amb un port al mig.",
       "sala.aqua_port.entra.2": "On és el mar?",
@@ -22591,7 +23273,7 @@
       "sala.aqua_port.cistella.9": "La cistella baixa.",
       "sala.aqua_port.vaixells.1": "Vaixells de pesca encallats a la sorra. Un es diu «Sempre Plena». Un altre, «Ja Tornarà».",
       "sala.aqua_port.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
-      "sala.aqua_port.panell_preu.2": "És de Verne. Si el toco, segur que algú em cobra el dit.",
+      "sala.aqua_port.panell_preu.2": "A Aqua, el panell és l'única cosa que encara puja.",
       "sala.aqua_port.canonada.1": "La Canonada d'Aqua. Xucla el mar. Literalment.",
       "sala.aqua_fons.entra.1": "El fons del mar d'Aqua. Sorra blanca, nanses, i al fons, una caseta feta amb un casc de vaixell bolcat.",
       "sala.aqua_fons.cistella.1": "La cistella puja.",
@@ -22601,6 +23283,7 @@
       "sala.aqua_fons.porta_juana.4": "He trepitjat una trampa. Era una trampa de peixos. No fa res. Però fa pudor.",
       "sala.aqua_fons.nanses.1": "Nanses. Trampes de peixos. Esperant peixos des de fa anys. Com nosaltres l'aigua.",
       "sala.aqua_fons.nanses.2": "Ja n'he trepitjat una. Prou.",
+      "sala.aqua_fons.nanses.3": "Millor no tocar-les. Fan cara de mossegar.",
       "sala.aqua_fons.boies.1": "Boies de mesurar, clavades a la sorra, amb números pintats: 40, 38, 36, 34... Cada una, més avall que l'anterior.",
       "sala.aqua_fons.boies.2": "Algú mesura com baixa el mar. Dos metres cada vegada.",
       "sala.aqua_fons.bassal.1": "L'última aigua del mar d'Aqua. Hi cap una gavina. Si s'aprima.",
@@ -22645,27 +23328,29 @@
       "sala.cantimplora_bodega.calaix.6": "Aigua, no. És l'única cosa que no porta.",
       "sala.cantimplora_bodega.calaix.7": "El meu calaix. Hi ha la Mosca, el meu dron, a mig arreglar: li falta un cargol de cap de flor. Amb el meu tornavís i la punta, ho faria en un minut.",
       "sala.cantimplora_bodega.calaix.8": "L'agulla grossa. Ja sabia jo que un dia em caldria.",
-      "sala.cantimplora_bodega.calaix.9": "Cargols, cinta, dues piles, fil de pescar, una agulla de cosir grossa... Ara no em cal res. Però m'agrada saber que hi és.",
-      "sala.cantimplora_bodega.calaix.10": "El calaix de la Vet. Cargols, cinta, una agulla, fil de pescar, dues piles... «Per si de cas.» No el toco: la Vet sap on és cada cosa.",
+      "sala.cantimplora_bodega.calaix.9": "Cargols, cinta, dues piles, fil de pescar... Ara no em cal res. Però m'agrada saber que hi és.",
+      "sala.cantimplora_bodega.calaix.10": "El calaix de la Vet. Cargols, cinta, fil de pescar, dues piles... «Per si de cas.» No el toco: la Vet sap on és cada cosa.",
       "sala.cantimplora_bodega.cafetera.1": "La cafetera. Fa el millor cafè de Vesper i el pitjor soroll. Té un filtre de tela.",
       "sala.cantimplora_bodega.cafetera.2": "El filtre de la cafetera. La Capitana prendrà el cafè amb pòsit uns dies.",
       "sala.cantimplora_bodega.cafetera.3": "Sense cafetera, la Capitana s'amotina. I és la capitana.",
       "sala.cantimplora_bodega.nevera.1": "Llenties, una ampolla d'aigua de la mida d'un dit... i el pernil d'en Tomàs. Per a una bona causa.",
       "sala.cantimplora_bodega.nevera.2": "Llenties, el pernil d'en Tomàs i una ampolla d'aigua de la mida d'un dit. No la toquem.",
+      "sala.cantimplora_bodega.nevera.3": "Llenties i una ampolla d'aigua de la mida d'un dit. El pernil ja ha trobat una bona causa.",
       "sala.cantimplora_bodega.carmanyola.1": "Ensumo... en Diu ensuma... I salta a buscar el pernil. Se l'endú al dipòsit.",
       "sala.cantimplora_bodega.carmanyola.2": "La carmanyola queda lliure.",
       "sala.cantimplora_bodega.carmanyola.3": "En Diu dorm damunt la carmanyola d'en Tomàs. Quan en Diu dorm a sobre d'una cosa, aquella cosa és d'en Diu.",
       "sala.cantimplora_bodega.carmanyola.4": "Si li oferís alguna cosa més interessant... Té debilitat pel pernil.",
       "sala.cantimplora_bodega.carmanyola.5": "En Diu dorm a sobre i em clava una mirada. No.",
-      "sala.cantimplora_bodega.carmanyola.6": "La carmanyola... Al fons, sota el paper de plata, hi ha un comunicador petit. I paperets doblegats.",
+      "sala.cantimplora_bodega.carmanyola.6": "La carmanyola... Al fons, sota l'entrepà, hi ha un comunicador petit. I paperets doblegats.",
       "sala.cantimplora_bodega.carmanyola.7": "«Avui la Vet ha dit «collons» tres vegades.» «L'Iri és molt bona pilot.» «Hem menjat llenties.»",
-      "sala.cantimplora_bodega.carmanyola.8": "«Les germanes tenen tres claus de comptador fos. Han estat al despatx de Verdant. Porten un sac de llavors.»",
+      "sala.cantimplora_bodega.carmanyola.8": "«Les germanes tenen tres claus de comptador fos. Han estat al despatx de Verdant. Han pagat l'entrada amb un sac de llavors.»",
       "sala.cantimplora_bodega.carmanyola.9": "En Tomàs.",
       "sala.cantimplora_bodega.carmanyola.10": "En Tomàs.",
       "sala.cantimplora_bodega.carmanyola.11": "El comunicador d'en Tomàs i els seus informes. Ja ho sabem tot.",
-      "sala.cantimplora_bodega.carmanyola.12": "La carmanyola d'en Tomàs, amb l'entrepà embolicat amb paper de plata. I aquesta nit ha fet bip.",
+      "sala.cantimplora_bodega.carmanyola.12": "La carmanyola d'en Tomàs. I aquesta nit ha fet bip. Les carmanyoles no fan bip.",
       "sala.cantimplora_bodega.carmanyola.13": "La carmanyola d'en Tomàs. Té un adhesiu d'una nau de curses. A dins, un entrepà embolicat amb paper de plata.",
       "sala.cantimplora_bodega.carmanyola.14": "No remeno les coses dels altres. Encara.",
+      "sala.cantimplora_bodega.carmanyola.15": "La carmanyola d'en Tomàs. Té un adhesiu d'una nau de curses. A dins, un entrepà sense paper: el paper aguanta un fusible.",
       "sala.cantimplora_bodega.motor.1": "Injector de l'avi al seu lloc... Rosca bona, broquet net.",
       "sala.cantimplora_bodega.motor.2": "La Cantimplora tornarà a volar.",
       "sala.cantimplora_bodega.motor.3": "Això l'ha de muntar la Vet. Jo, els motors, només els sé fer petar.",
@@ -22674,7 +23359,7 @@
       "sala.cantimplora_bodega.motor.6": "El motor. La Vet diu que l'injector té el broquet esquerdat, i que el tractor de l'avi en té un d'igual.",
       "sala.cantimplora_bodega.motor.7": "El motor de la Cantimplora. Ronca, però vola.",
       "sala.cantimplora_bodega.motor.8": "Una llauna d'oli de motor. Per al motor, per al tractor, i per a la Capitana quan fa mal temps.",
-      "sala.cantimplora_bodega.motor.9": "Ja porto l'oli.",
+      "sala.cantimplora_bodega.motor.9": "L'oli ja el tenim. Amb una llauna n'hi ha prou.",
       "sala.cantimplora_bodega.fusibles.1": "El quadre de fusibles. Sobren fusibles de deu. De trenta, cap.",
       "sala.cantimplora_bodega.fusibles.2": "Un fusible de deu. Per a la grua n'hi cal un de trenta... Ja hi pensaré.",
       "sala.cantimplora_bodega.fusibles.3": "Si en trec un sense motiu, s'apaga la cafetera. I la Capitana.",
@@ -22682,8 +23367,9 @@
       "sala.cantimplora_bodega.carrega.1": "Tres sacs de llavors, a la bodega. La càrrega més lleugera que ha portat mai la Cantimplora.",
       "sala.cantimplora_bodega.carrega.2": "Tres sacs de llavors per a la Juana.",
       "sala.cantimplora_bodega.carrega.3": "L'espai de càrrega. Buit des de fa tres mesos.",
+      "sala.cantimplora_bodega.carrega.4": "L'espai de càrrega. Buit una altra vegada: les llavors ja són de la Juana.",
       "sala.ferrum_carrer.entra.1": "Ferrum. El planeta de les mines. Fa olor de fum i de vaga.",
-      "sala.ferrum_carrer.entra.2": "Aquí l'aigua és més cara.",
+      "sala.ferrum_carrer.entra.2": "Aquí l'aigua no la pot pagar ningú.",
       "sala.ferrum_carrer.entra.3": "És on més se'n necessita.",
       "sala.ferrum_carrer.entra.4": "Des de la rampa, en Tomàs mira el piquet. Al piquet, una dona amb casc també el mira. Cap dels dos no diu res.",
       "sala.ferrum_carrer.porta_sindicat.1": "El local del sindicat. A la porta: «VAGA. AQUÍ NO ES VEN RES.»",
@@ -22701,16 +23387,19 @@
       "sala.ferrum_carrer.condensador.6": "Filtre al seu lloc.",
       "sala.ferrum_carrer.condensador.7": "Això ho ha de muntar la Vet.",
       "sala.ferrum_carrer.condensador.8": "Corretja i filtre al seu lloc... Engego.",
-      "sala.ferrum_carrer.condensador.9": "El condensador tossa, brunzeix, i per l'aixeta comença a caure aigua. A gotes, però cau.",
+      "sala.ferrum_carrer.condensador.9": "El condensador tus, brunzeix, i per l'aixeta comença a caure aigua. A gotes, però cau.",
       "sala.ferrum_carrer.condensador.10": "La canalla del piquet hi fa cua amb gots.",
       "sala.ferrum_carrer.condensador.11": "Sense corretja i sense filtre, no fa res.",
+      "sala.ferrum_carrer.condensador.12": "La corretja ja hi és. Sense filtre, no fa res.",
+      "sala.ferrum_carrer.condensador.13": "El filtre ja hi és. Sense corretja, no fa res.",
+      "sala.ferrum_carrer.condensador.14": "Corretja i filtre al seu lloc. Només cal engegar-lo.",
       "sala.ferrum_carrer.piquet.1": "El piquet. Canalla, mantes, un bidó amb foc i pancartes. «QUI NO TREBALLA NO BEU», ratllat. A sota: «QUI NO BEU NO TREBALLA».",
       "sala.ferrum_carrer.piquet.2": "Tenen tres garrafes per a quaranta persones.",
       "sala.ferrum_carrer.piquet.3": "La canalla beu. Un nen fa una competició de qui fa més soroll amb el got.",
       "sala.ferrum_carrer.comptadors.1": "Comptadors d'aigua de Verne, arrencats de les cases. Una muntanya.",
       "sala.ferrum_carrer.comptadors.2": "Pesen. I no són meus: ara són de tothom.",
       "sala.ferrum_carrer.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
-      "sala.ferrum_carrer.panell_preu.2": "És de Verne. Si el toco, segur que algú em cobra el dit.",
+      "sala.ferrum_carrer.panell_preu.2": "Té més cops de pedra que llums. El piquet ja hi ha dit la seva.",
       "sala.ferrum_carrer.canonada.1": "La Canonada de Ferrum. Xucla l'aigua de sota les mines. I els miners, sense.",
       "sala.ferrum_sindicat.bagul.1": "El bagul de la colla de teatre de la Festa Major. Ja no hi ha el vestit de reina.",
       "sala.ferrum_sindicat.bagul.2": "El bagul de la colla de teatre de la Festa Major. A dalt de tot, un vestit de reina de vellut granat, amb lluentons de llautó i una corona feta amb un engranatge.",
@@ -22728,7 +23417,7 @@
       "sala.fosa_forn.porta.1": "Ara no em puc moure d'aquí: el forn es refreda.",
       "sala.fosa_forn.manxa.1": "La manxa del forn: una palanca grossa que fa bufar el foc.",
       "sala.fosa_forn.manxa.2": "Manxa!",
-      "sala.fosa_forn.manxa.3": "El forn ruga i s'encén de taronja.",
+      "sala.fosa_forn.manxa.3": "El forn rugeix i s'encén de taronja.",
       "sala.fosa_forn.manxa.4": "Més aire. El forn s'enfila.",
       "sala.fosa_forn.manxa.5": "El forn ja és al màxim. Si bufo més, s'enfadarà.",
       "sala.fosa_forn.manxa.6": "Sense metall i sense motlle preparat, això només fa vent.",
@@ -22803,7 +23492,7 @@
       "sala.verdant_jardi.llancadora.2": "Sense en Nil, la llançadora no s'enlaira. I en Nil no hi porta ningú que no conegui.",
       "sala.verdant_jardi.llancadora.3": "Dijous. Demà. En Nil ens hi esperarà.",
       "sala.verdant_jardi.panell_preu.1": "AIGUA VERNE. Un litre: {preu_aigua} crèdits. I la fletxa, cap amunt.",
-      "sala.verdant_jardi.panell_preu.2": "És de Verne. Si el toco, segur que algú em cobra el dit.",
+      "sala.verdant_jardi.panell_preu.2": "Aquí ningú no el mira. A Verdant, el preu no es pregunta.",
       "sala.verdant_cobert.tomaquera.1": "La tomaquera, verda. Beu a poc a poc, com ha de ser.",
       "sala.verdant_cobert.tomaquera.2": "Una tomaquera. De debò. Mig seca, amagada darrere dels sacs.",
       "sala.verdant_cobert.tomaquera.3": "Algú la rega a escondides. Poc. Massa poc.",
@@ -22878,7 +23567,7 @@
       "sala.palau_servei.safates.1": "El passaplats on els cambrers deixen les safates del saló.",
       "sala.palau_servei.carro.1": "El carro de flors de plàstic d'en Nil.",
       "sala.palau_servei.carro.2": "En Nil me les deixaria, però ja s'ocupa ell de les flors.",
-      "sala.palau_servei.canonades.1": "Canonades gruixudes que baixen cap a la sala de control. Aquí passa tota l'aigua del palau. Que és cap.",
+      "sala.palau_servei.canonades.1": "Canonades gruixudes que baixen cap a la sala de control. Aquí passa tota l'aigua del palau. És a dir, cap.",
       "sala.palau_control.entra.1": "Benvinguts a la Gran Subhasta de l'Aigua. Avui no venem aigua. Venem set. Que és el que no s'acaba mai.",
       "sala.palau_control.entra.2": "Lot u: l'aigua de Terra-2, deu anys.",
       "sala.palau_control.entra.3": "Queden nou lots. Quan s'acabin, el Magnat haurà venut l'aigua de deu anys, i el preu ja no el podrà arruïnar.",
@@ -22900,7 +23589,7 @@
       "sala.palau_control.pany_t2.10": "A la pantalla: 84. La línia baixa.",
       "sala.palau_control.pany_t2.11": "Senyora Pell. Seguretat a la sala de control. Ara.",
       "sala.palau_control.pany_t2.12": "Seguretat és al moll de càrrega, senyor. Hi ha una cisterna que diu que ha perdut els frens.",
-      "sala.palau_control.pany_t2.13": "(per ràdio) Perdoni, perdoni! Soc vella i borni!",
+      "sala.palau_control.pany_t2.13": "(per ràdio) Perdoni, perdoni! Soc vella i bòrnia!",
       "sala.palau_control.pany_t2.14": "A la pantalla: 52.",
       "sala.palau_control.pany_t2.15": "A la pantalla: 31. Per sobre de la ratlla. Per poc.",
       "sala.palau_control.pany_t2.16": "Holm. Holm, és un error tècnic. Demà torna a pujar.",
@@ -22921,7 +23610,7 @@
       "sala.palau_control.pany_aqua.10": "A la pantalla: 84. La línia baixa.",
       "sala.palau_control.pany_aqua.11": "Senyora Pell. Seguretat a la sala de control. Ara.",
       "sala.palau_control.pany_aqua.12": "Seguretat és al moll de càrrega, senyor. Hi ha una cisterna que diu que ha perdut els frens.",
-      "sala.palau_control.pany_aqua.13": "(per ràdio) Perdoni, perdoni! Soc vella i borni!",
+      "sala.palau_control.pany_aqua.13": "(per ràdio) Perdoni, perdoni! Soc vella i bòrnia!",
       "sala.palau_control.pany_aqua.14": "A la pantalla: 52.",
       "sala.palau_control.pany_aqua.15": "A la pantalla: 31. Per sobre de la ratlla. Per poc.",
       "sala.palau_control.pany_aqua.16": "Holm. Holm, és un error tècnic. Demà torna a pujar.",
@@ -22942,7 +23631,7 @@
       "sala.palau_control.pany_ferrum.10": "A la pantalla: 84. La línia baixa.",
       "sala.palau_control.pany_ferrum.11": "Senyora Pell. Seguretat a la sala de control. Ara.",
       "sala.palau_control.pany_ferrum.12": "Seguretat és al moll de càrrega, senyor. Hi ha una cisterna que diu que ha perdut els frens.",
-      "sala.palau_control.pany_ferrum.13": "(per ràdio) Perdoni, perdoni! Soc vella i borni!",
+      "sala.palau_control.pany_ferrum.13": "(per ràdio) Perdoni, perdoni! Soc vella i bòrnia!",
       "sala.palau_control.pany_ferrum.14": "A la pantalla: 52.",
       "sala.palau_control.pany_ferrum.15": "A la pantalla: 31. Per sobre de la ratlla. Per poc.",
       "sala.palau_control.pany_ferrum.16": "Holm. Holm, és un error tècnic. Demà torna a pujar.",
@@ -22985,5 +23674,17 @@
     }
   },
   "locale": "ca",
-  "zones": {}
+  "zones": {
+    "cantimplora_mapa": [
+      "terra2",
+      "aqua",
+      "ferrum",
+      "verdant",
+      "palau",
+      "aqui_terra2",
+      "aqui_aqua",
+      "aqui_ferrum",
+      "aqui_verdant"
+    ]
+  }
 }

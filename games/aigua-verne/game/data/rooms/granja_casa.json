@@ -62,12 +62,7 @@
           ]
         },
         {
-          "verb": [
-            "open",
-            "look",
-            "use",
-            "pull"
-          ],
+          "verb": "look",
           "lines": [
             {
               "who": "player",

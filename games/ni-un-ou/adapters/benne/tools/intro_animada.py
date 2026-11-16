@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
 """
-Prova d'intro animada de Ni un ou (vídeo de pixel art, 640×360): els primers ~30 segons.
+Prova d'intro animada de Ni un ou (vídeo de pixel art, 1280×720: art a 2×, com les sales): els primers ~30 segons.
 
   Pla A, la portada: fosa des del negre, el mar que es mou, el títol que apareix i regalima; s'esvaeix.
   Pla B, el pròleg: la grua baixa la zòdiac amb la Juana, toca l'aigua, la deslliguen, va a poc a poc cap a la
   plataforma, s'atura; la Juana encén la llanterna, treu la mostra de l'aigua i l'aixeca a contrallum. A la
   plataforma s'encén el focus de la silueta, i en Bastida treu la pantalleta. Fosa a negre.
 
-Tot es dibuixa fotograma a fotograma amb les mateixes funcions que les sales (hd640/rooms/portada.py,
-proleg_punt7.py i hd/rooms/exterior.py), i ffmpeg ho munta amb el tema.
+Tot es dibuixa fotograma a fotograma amb les mateixes funcions que les sales (hd640/rooms/portada.py i
+hd/rooms/exterior.py), en coordenades de 640×360 sobre un Canvas2x (hd1280/canvas2x.py), i ffmpeg ho munta amb el
+tema. El pla B és el del pròleg antic (abans que el pròleg passés a fer-se al mateix pla que la portada): en
+Bastida i les constants del pla en són una còpia, aquí mateix.
 
 Ús: python3 intro_animada.py <carpeta de sortida> [--fps 12] [--only 120,240]
 """
@@ -20,6 +22,7 @@ import subprocess
 import sys
 from multiprocessing import Pool
 from pathlib import Path
+from types import SimpleNamespace
 
 import numpy as np
 from PIL import Image
@@ -34,11 +37,10 @@ pix.hr = functools.lru_cache(maxsize=1 << 22)(pix.hr)
 
 import hd640  # noqa: E402,F401  (posa la llibreria a 640×360)
 import room_designs  # noqa: E402,F401  (carrega les sales en l'ordre bo)
-from hd.pix import Canvas, W, H, mix, hr  # noqa: E402
+from hd.pix import Light, W, H, mix, hr  # noqa: E402
+from hd1280.canvas2x import Canvas2x as Canvas, S as ART  # noqa: E402  (art a 2×: 1280×720)
 from hd.rooms.exterior import arenga, platform, reflection, sheer, STEELX, ROPE, GLOW_WARM  # noqa: E402
 from hd640.rooms import portada as po  # noqa: E402
-from hd640.rooms import proleg_punt7 as pr  # noqa: E402
-from hd640.rooms.proleg_punt7 import SIL, JACKET, SKINR, ZODR, HAT, BEARD, JAR, CRANEW  # noqa: E402
 
 GAME = HERE.parent.parent.parent
 MUSIC = GAME / 'game' / 'audio' / 'music' / 'tema.ogg'
@@ -91,7 +93,7 @@ def _bayer(n):
     return np.block([[4 * m, 4 * m + 2], [4 * m + 3, 4 * m + 1]])
 
 
-TH = np.tile((_bayer(8) + 0.5) / 64, (H // 8 + 1, W // 8 + 1))[:H, :W]
+TH = np.tile((_bayer(8) + 0.5) / 64, (H * ART // 8 + 1, W * ART // 8 + 1))[:H * ART, :W * ART]   # (píxels reals)
 
 
 def dmix(a, b, k):
@@ -148,16 +150,71 @@ def shot_a(t):
     img = arr(cv)
     # el títol: les lletres apareixen tramades i els regalims creixen cap avall
     col, mask = title_layer()
-    base = po.TITLE_Y + 7 * po.S + 5
+    base = (po.TITLE_Y + 7 * po.S + 5) * ART                # (en píxels reals)
     k_in, k_out = seg(t, TITLE_IN), seg(t, TITLE_OUT)
-    grow = seg(t, DRIPS) * 40
-    ys = np.arange(H)[:, None]
+    grow = seg(t, DRIPS) * 40 * ART
+    ys = np.arange(H * ART)[:, None]
     show = mask & (TH < k_in) & ~(TH < k_out) & ((ys <= base) | (ys < base + grow))
     img[show] = col[show]
     return img
 
 
 # ─── Pla B: el pròleg ───────────────────────────────────────────────────────
+# El pla del pròleg antic (hd640/rooms/proleg_punt7.py fins al commit 4cdff5a): la popa de l'Arenga a l'esquerra,
+# mirant a l'esquerra, i la plataforma al fons a la dreta.
+
+SIL = [(4, 5, 8), (8, 9, 14), (14, 16, 22), (22, 24, 32), (34, 36, 46)]
+JACKET = [(20, 8, 6), (50, 16, 10), (96, 34, 16), (150, 62, 28), (196, 104, 50)]
+SKINR = [(40, 22, 18), (90, 52, 40), (150, 96, 70), (200, 140, 104)]
+ZODR = [(18, 18, 22), (30, 30, 36), (46, 46, 52), (66, 66, 72), (90, 90, 94), (120, 120, 122)]
+HAT = [(14, 34, 20), (20, 50, 30), (40, 90, 50), (70, 130, 80)]
+BEARD = [(110, 110, 108), (160, 160, 156), (200, 200, 196), (226, 226, 222)]
+JAR = [(60, 56, 46), (110, 104, 84), (170, 164, 140), (220, 216, 196)]
+CRANEW = [(60, 46, 10), (130, 100, 20), (200, 160, 40), (236, 200, 80)]
+
+
+def bastida(cv, x, y):
+    """En Bastida a la borda de popa: gorra, barba blanca, la pipa encesa i, a la mà, la pantalleta que fa llum."""
+    # el cos (de la cintura amunt; la resta queda darrere la borda): l'anorac fosc amb el coll alçat
+    cv.rect(x - 4, y - 15, x + 4, y, SIL, 2.4)
+    cv.vline(x + 4, y - 14, y, SIL, 3.2)                                   # la vora de la dreta, amb la lluna
+    cv.vline(x - 4, y - 14, y, SIL, 1.6)
+    cv.hline(x - 4, x + 4, y - 15, SIL, 3.0)                               # el coll
+    cv.vline(x, y - 13, y, SIL, 1.4)                                       # la cremallera
+    # la cara, mig a l'ombra, i l'ull
+    cv.rect(x - 3, y - 22, x + 3, y - 16, SKINR, 1.6)
+    cv.vline(x + 2, y - 21, y - 17, SKINR, 2.6)
+    cv.vline(x + 3, y - 21, y - 18, SKINR, 2.2)
+    cv.flat(x + 1, y - 20, (16, 10, 10))
+    cv.hline(x, x + 2, y - 21, BEARD, 1.2)                                 # la cella, blanca
+    # la barba blanca, que s'aprima cap avall
+    cv.rect(x - 3, y - 18, x + 3, y - 16, BEARD, 2.4, lit=0)
+    cv.hline(x - 2, x + 2, y - 15, BEARD, 2.0, lit=0)
+    cv.put(x + 2, y - 17, BEARD, 3.0, lit=0)
+    # la gorra de llana, amb la vora girada
+    cv.rect(x - 4, y - 26, x + 3, y - 23, SIL, 1.2)
+    cv.hline(x - 4, x + 4, y - 23, SIL, 2.2)
+    cv.hline(x - 3, x + 2, y - 26, SIL, 1.8)
+    # la pipa, amb la brasa i un fil de fum
+    cv.hline(x + 3, x + 5, y - 17, ROPE, 2.0)
+    cv.rect(x + 5, y - 19, x + 6, y - 17, ROPE, 1.6)
+    cv.flat(x + 5, y - 20, (255, 140, 60))
+    cv.flat(x + 6, y - 20, (200, 80, 30))
+    cv.glow(x + 5, y - 20, 3, (255, 140, 60), 0.4)
+    for i in range(7):
+        cv.flat(x + 6 + round(math.sin(i * 0.9) * 1.2), y - 22 - i * 2,
+                mix(cv.get(x + 6 + round(math.sin(i * 0.9) * 1.2), y - 22 - i * 2), (120, 126, 140), 0.35 - i * 0.04))
+    # el braç i la pantalleta (el missatger de satèl·lit), que li il·lumina la mà i la barba
+    cv.line(x - 3, y - 12, x - 7, y - 7, SIL, 3.0)
+    cv.line(x - 3, y - 11, x - 7, y - 6, SIL, 2.0)
+    cv.rect(x - 10, y - 8, x - 7, y - 4, [(30, 50, 70)], 0, lit=0)
+    cv.rect(x - 9, y - 7, x - 8, y - 5, [(150, 226, 255)], 0, lit=0)
+    cv.glow(x - 8, y - 6, 9, (120, 210, 255), 0.5)
+    cv.flat(x - 3, y - 16, mix(cv.get(x - 3, y - 16), (140, 210, 240), 0.35))
+
+
+pr = SimpleNamespace(HOR=187, SHIP=(261, 243, 7.0 * po.K), PLAT=(536, 187 + 4, 3.0 * po.K), MOON=(128, 48),
+                     LIGHT=Light(ambient=0.0, vignette=None, floor_fade=None), bastida=bastida)
 
 XS, YWL, SS = pr.SHIP
 
@@ -212,10 +269,8 @@ def bastida_layer(cv, tb, before):
     pr.bastida(cv, x, y)
     if arm != 'device':
         bp = before.load()
-        for yy in range(y - 18, y + 4):
-            for xx in range(x - 19, x - 4):
-                if 0 <= xx < W and 0 <= yy < H:
-                    cv.P[xx, yy] = bp[xx, yy]
+        for X_, Y_, _, _ in cv.pixels(x - 19, y - 18, x - 5, y + 3):
+            cv.P[X_, Y_] = bp[X_, Y_]
         cv.vline(x - 4, y - 14, y, SIL, 1.6)
         if arm == 'lever':
             post = round(X(3.2))
@@ -530,7 +585,7 @@ def main():
         'ffmpeg', '-y', '-loglevel', 'error', '-framerate', str(a.fps), '-i', str(frames / '%04d.png'),
         '-i', str(MUSIC), '-stream_loop', '-1', '-i', str(SEA),
         '-filter_complex',
-        f'[0:v]scale=1920:1080:flags=neighbor,fps=24[v];'
+        f'[0:v]fps=24[v];'                                  # (els fotogrames ja són de 1280×720)
         f'[1:a]volume=0.9[m];[2:a]volume=0.35[s];[m][s]amix=inputs=2:duration=first,'
         f'afade=t=in:d=1.5,afade=t=out:st={fade:.2f}:d=2.5,atrim=0:{TOTAL:.2f}[a]',
         '-map', '[v]', '-map', '[a]', '-c:v', 'libx264', '-crf', '14', '-pix_fmt', 'yuv420p',

@@ -20,6 +20,12 @@ from hd640.rooms.palau_comu import (MARB, ORP, TURQ, CROM, NEGRE, gota, RH, _dif
                                     estrelles_frames, terra2, diposit, terra_marbre, columna, motllura, marc_or,
                                     vidre, piscina, escaleta, aigua_aquari, peixos, ombra, negre_barra, fbm)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 PERSONA = 83
 FLOOR_Y = 186                 # on el terra de la galeria toca la primera terrassa
 WALL_TOP = 14
@@ -94,13 +100,13 @@ def finestral(cv):
     cx, cy, r = PLANET
     terra2(cv, cx, cy, r, mask=lambda x, y: any(a <= x <= b for a, b in panes) and WIN_Y0 <= y <= WIN_Y1)
     # el dipòsit, en un canvas a part i retallat als vidres
-    dep = Canvas(transparent=True)
+    dep = type(cv)(transparent=True)
     diposit(dep, *DEPOSIT)
     D = dep.img.load()
-    for y in range(WIN_Y0, WIN_Y1 + 1):
-        for x in range(DEPOSIT[0] - 60, DEPOSIT[0] + 60):
-            if D[x, y][3] and any(a <= x <= b for a, b in panes):
-                cv.flat(x, y, D[x, y])
+    for X, Y, _, _ in cv.pixels(DEPOSIT[0] - 60, WIN_Y0, DEPOSIT[0] + 59, WIN_Y1):          # (píxels reals)
+        c = D[X, Y]
+        if c[3] and any(a <= X // cv.S <= b for a, b in panes):
+            cv.P[X, Y] = c[:3] + (255,)
     for a, b in panes:
         vidre(cv, a, WIN_Y0, b, WIN_Y1, k=0.14, seed=a)
         marc_or(cv, a - 3, WIN_Y0 - 3, b + 3, WIN_Y1 + 3, t=3, lvl=4.2)
@@ -349,9 +355,8 @@ def piscines_plenes(cv):
 
 def _treu_aquari(cv):
     """Les piscines de les terrasses passen per darrere l'aquari: esborra el que el tapa."""
-    for y in range(AQ_CAP - 3, AQ_FOOT + 1):
-        for x in range(AQ[0] - 7, AQ[2] + 8):
-            cv.P[x, y] = (0, 0, 0, 0)
+    for X, Y, _, _ in cv.pixels(AQ[0] - 7, AQ_CAP - 3, AQ[2] + 7, AQ_FOOT):
+        cv.P[X, Y] = (0, 0, 0, 0)
 
 
 PROPS = {'piscines_plenes': piscines_plenes}

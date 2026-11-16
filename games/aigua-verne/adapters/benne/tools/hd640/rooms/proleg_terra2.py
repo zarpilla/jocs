@@ -20,9 +20,15 @@ import functools
 import math
 
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
-from hd.pix import Canvas, Light, hr, mix
+from hd.pix import Canvas, Light, W, hr, mix
 import hd640.rooms.portada as portada
 from hd640.rooms.portada import CAN_X, HOR, TANK, SHIP, PUMP
+
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 ZT = 0.1                                   # segons per fotograma de les animacions del pròleg
@@ -53,7 +59,7 @@ def _canvas(img=None):
 
 def _blend(cv, x, y, col, a):
     x, y = int(round(x)), int(round(y))
-    if 0 <= x < cv.w and 0 <= y < cv.h and a > 0.02:
+    if 0 <= x < cv.w // cv.S and 0 <= y < cv.h // cv.S and a > 0.02:
         cv.flat(x, y, mix(cv.get(x, y), col, min(1.0, a)))
 
 
@@ -148,8 +154,10 @@ SMOKE = (118, 106, 104)
 
 
 def _paste(img, src, box):
-    x0, y0, x1, y1 = box
-    img.paste(src.crop((x0, y0, x1 + 1, y1 + 1)), (x0, y0))
+    """Copia la caixa `box` (coordenades de sala) de `src` a `img` (a la mida de l'art: S píxels per píxel de sala)."""
+    s = img.width // W
+    x0, y0, x1, y1 = (v * s for v in box)
+    img.paste(src.crop((x0, y0, x1 + s, y1 + s)), (x0, y0))
 
 
 def _puff(cv, age, seed, big):

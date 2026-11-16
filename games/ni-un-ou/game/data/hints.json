@@ -45,6 +45,53 @@
         {
           "flag": "falca_desencallada",
           "is": false
+        },
+        {
+          "hasItem": "maceta",
+          "who": "iri",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "falca_desencallada"
+        },
+        {
+          "hasItem": "maceta",
+          "who": "iri"
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_falca.1",
+      "pista.iri_falca.2",
+      "pista.iri_falca.3"
+    ]
+  },
+  "iri_maceta": {
+    "priority": 1,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "escora_vista"
+        },
+        {
+          "flag": "falca_desencallada",
+          "is": false
+        },
+        {
+          "hasItem": "maceta",
+          "who": "iri"
         }
       ]
     },
@@ -52,9 +99,9 @@
       "flag": "falca_desencallada"
     },
     "levels": [
-      "pista.iri_falca.1",
-      "pista.iri_falca.2",
-      "pista.iri_falca.3"
+      "pista.iri_maceta.1",
+      "pista.iri_maceta.2",
+      "pista.iri_maceta.3"
     ]
   },
   "iri_diu": {
@@ -315,6 +362,11 @@
         {
           "flag": "valvula_tancada",
           "is": false
+        },
+        {
+          "not": {
+            "inRoom": "cuina"
+          }
         }
       ]
     },
@@ -336,6 +388,49 @@
       "pista.vet_munta.3"
     ]
   },
+  "vet_munta_cuina": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 1
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "travesser",
+          "who": "vet"
+        },
+        {
+          "flag": "valvula_tancada",
+          "is": false
+        },
+        {
+          "inRoom": "cuina"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "travesser",
+          "who": "vet",
+          "is": false
+        },
+        {
+          "flag": "valvula_tancada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.vet_munta_cuina.1",
+      "pista.vet_munta_cuina.2",
+      "pista.vet_munta_cuina.3"
+    ]
+  },
   "iri_rebost": {
     "priority": 6,
     "when": {
@@ -344,6 +439,9 @@
           "var": "escena",
           "op": "==",
           "value": 1
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "var": "munta_rebost",
@@ -787,6 +885,11 @@
           "var": "empalmat",
           "op": "<",
           "value": 2
+        },
+        {
+          "not": {
+            "inRoom": "pallol"
+          }
         }
       ]
     },
@@ -807,6 +910,63 @@
       "pista.iri_cable.1",
       "pista.iri_cable.2",
       "pista.iri_cable.3"
+    ]
+  },
+  "iri_cable_pallol": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 3
+            },
+            {
+              "flag": "radio_feta",
+              "is": false
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "tram_tret"
+        },
+        {
+          "hasItem": "cable_nou",
+          "who": "iri",
+          "is": false
+        },
+        {
+          "var": "empalmat",
+          "op": "<",
+          "value": 2
+        },
+        {
+          "inRoom": "pallol"
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "hasItem": "cable_nou",
+          "who": "iri"
+        },
+        {
+          "var": "empalmat",
+          "op": ">=",
+          "value": 2
+        }
+      ]
+    },
+    "levels": [
+      "pista.iri_cable_pallol.1",
+      "pista.iri_cable_pallol.2",
+      "pista.iri_cable_pallol.3"
     ]
   },
   "iri_empalmar": {
@@ -835,8 +995,50 @@
         },
         {
           "var": "empalmat",
-          "op": "<",
-          "value": 2
+          "op": "==",
+          "value": 0
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "empalmat",
+      "op": ">=",
+      "value": 1
+    },
+    "levels": [
+      "pista.iri_empalmar.1",
+      "pista.iri_empalmar.2",
+      "pista.iri_empalmar.3"
+    ]
+  },
+  "iri_crimpar": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 3
+            },
+            {
+              "flag": "radio_feta",
+              "is": false
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "cable_nou",
+          "who": "iri"
+        },
+        {
+          "var": "empalmat",
+          "op": "==",
+          "value": 1
         }
       ]
     },
@@ -846,9 +1048,9 @@
       "value": 2
     },
     "levels": [
-      "pista.iri_empalmar.1",
-      "pista.iri_empalmar.2",
-      "pista.iri_empalmar.3"
+      "pista.iri_crimpar.1",
+      "pista.iri_crimpar.2",
+      "pista.iri_crimpar.3"
     ]
   },
   "iri_provar": {
@@ -895,6 +1097,9 @@
           "var": "escena",
           "op": "==",
           "value": 3
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "flag": "rut_parlat"
@@ -1005,6 +1210,11 @@
         },
         {
           "flag": "portatil_obert"
+        },
+        {
+          "not": {
+            "inRoom": "sala_bombes"
+          }
         }
       ]
     },
@@ -1017,6 +1227,34 @@
       "pista.iri_bombes.1",
       "pista.iri_bombes.2",
       "pista.iri_bombes.3"
+    ]
+  },
+  "iri_bombes_dins": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 4
+        },
+        {
+          "flag": "portatil_obert"
+        },
+        {
+          "inRoom": "sala_bombes"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 5
+    },
+    "levels": [
+      "pista.iri_bombes_dins.1",
+      "pista.iri_bombes_dins.2",
+      "pista.iri_bombes_dins.3"
     ]
   },
   "iri_nota": {
@@ -1088,6 +1326,9 @@
           "value": 5
         },
         {
+          "protagonist": "vet"
+        },
+        {
           "var": "munta_cuina",
           "op": "==",
           "value": "nota_iri"
@@ -1111,6 +1352,9 @@
           "var": "escena",
           "op": "==",
           "value": 5
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "var": "munta_rebost",
@@ -1138,6 +1382,9 @@
           "value": 5
         },
         {
+          "protagonist": "iri"
+        },
+        {
           "flag": "pla_fet"
         },
         {
@@ -1163,6 +1410,9 @@
           "var": "escena",
           "op": "==",
           "value": 5
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "flag": "mentida_triada"
@@ -1222,6 +1472,9 @@
           "value": 5
         },
         {
+          "protagonist": "vet"
+        },
+        {
           "flag": "vet_amagada"
         },
         {
@@ -1251,6 +1504,44 @@
         {
           "flag": "cops_sentits",
           "is": false
+        },
+        {
+          "flag": "cops_marcel",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "cops_sentits"
+        },
+        {
+          "flag": "cops_marcel"
+        }
+      ]
+    },
+    "levels": [
+      "pista.buscar.1",
+      "pista.buscar.2",
+      "pista.buscar.3"
+    ]
+  },
+  "buscar_proa": {
+    "priority": 2,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 6
+        },
+        {
+          "flag": "cops_sentits",
+          "is": false
+        },
+        {
+          "flag": "cops_marcel"
         }
       ]
     },
@@ -1258,9 +1549,9 @@
       "flag": "cops_sentits"
     },
     "levels": [
-      "pista.buscar.1",
-      "pista.buscar.2",
-      "pista.buscar.3"
+      "pista.buscar_proa.1",
+      "pista.buscar_proa.2",
+      "pista.buscar_proa.3"
     ]
   },
   "cisalla": {
@@ -1271,6 +1562,9 @@
           "var": "escena",
           "op": "==",
           "value": 6
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "flag": "cops_sentits"
@@ -1311,6 +1605,9 @@
           "var": "escena",
           "op": "==",
           "value": 6
+        },
+        {
+          "protagonist": "vet"
         },
         {
           "flag": "cops_sentits"
@@ -1378,6 +1675,9 @@
           "var": "escena",
           "op": "==",
           "value": 6
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "flag": "cops_sentits"
@@ -1584,16 +1884,11 @@
           "value": 7
         },
         {
-          "any": [
-            {
-              "hasItem": "clau_tomas",
-              "who": "vet"
-            },
-            {
-              "hasItem": "clau_tomas",
-              "who": "iri"
-            }
-          ]
+          "protagonist": "iri"
+        },
+        {
+          "hasItem": "clau_tomas",
+          "who": "iri"
         },
         {
           "flag": "registre_obert",
@@ -1608,6 +1903,37 @@
       "pista.obrir.1",
       "pista.obrir.2",
       "pista.obrir.3"
+    ]
+  },
+  "obrir_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "clau_tomas",
+          "who": "vet"
+        },
+        {
+          "flag": "registre_obert",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "registre_obert"
+    },
+    "levels": [
+      "pista.obrir.1",
+      "pista.obrir_vet.2",
+      "pista.obrir_vet.3"
     ]
   },
   "frontisses": {
@@ -1625,6 +1951,98 @@
         {
           "flag": "registre_obert",
           "is": false
+        },
+        {
+          "hasItem": "clau_tubs",
+          "who": "iri",
+          "is": false
+        },
+        {
+          "flag": "frontissa1",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "registre_obert"
+        },
+        {
+          "hasItem": "clau_tubs",
+          "who": "iri"
+        },
+        {
+          "flag": "frontissa1"
+        }
+      ]
+    },
+    "levels": [
+      "pista.frontisses.1",
+      "pista.frontisses.2",
+      "pista.frontisses.3"
+    ]
+  },
+  "frontisses_clau": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "registre_obert",
+          "is": false
+        },
+        {
+          "hasItem": "clau_tubs",
+          "who": "iri"
+        },
+        {
+          "flag": "frontissa1",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "registre_obert"
+        },
+        {
+          "flag": "frontissa1"
+        }
+      ]
+    },
+    "levels": [
+      "pista.frontisses_clau.1",
+      "pista.frontisses_clau.2",
+      "pista.frontisses_clau.3"
+    ]
+  },
+  "frontissa2": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "registre_obert",
+          "is": false
+        },
+        {
+          "flag": "frontissa1"
         }
       ]
     },
@@ -1632,9 +2050,9 @@
       "flag": "registre_obert"
     },
     "levels": [
-      "pista.frontisses.1",
-      "pista.frontisses.2",
-      "pista.frontisses.3"
+      "pista.frontissa2.1",
+      "pista.frontissa2.2",
+      "pista.frontissa2.3"
     ]
   },
   "mostra": {
@@ -1674,7 +2092,20 @@
           "value": 7
         },
         {
+          "protagonist": "iri"
+        },
+        {
           "flag": "mostra_trobada"
+        },
+        {
+          "hasItem": "mostra7",
+          "who": "vet",
+          "is": false
+        },
+        {
+          "var": "munta_cuina",
+          "op": "!=",
+          "value": "mostra7"
         }
       ]
     },
@@ -1687,6 +2118,35 @@
       "pista.tornar.1",
       "pista.tornar.2",
       "pista.tornar.3"
+    ]
+  },
+  "tornar_vet": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "var": "escena",
+          "op": "==",
+          "value": 7
+        },
+        {
+          "protagonist": "vet"
+        },
+        {
+          "hasItem": "mostra7",
+          "who": "vet"
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "escena",
+      "op": ">=",
+      "value": 8
+    },
+    "levels": [
+      "pista.tornar.1",
+      "pista.tornar_vet.2",
+      "pista.tornar_vet.3"
     ]
   },
   "reunio": {
@@ -1816,6 +2276,9 @@
           "value": 8
         },
         {
+          "protagonist": "vet"
+        },
+        {
           "hasItem": "registre",
           "who": "vet"
         },
@@ -1853,6 +2316,9 @@
           "var": "escena",
           "op": "==",
           "value": 8
+        },
+        {
+          "protagonist": "vet"
         },
         {
           "var": "munta_cuina",
@@ -1922,6 +2388,11 @@
         {
           "flag": "antena_ok",
           "is": false
+        },
+        {
+          "not": {
+            "inRoom": "pal"
+          }
         }
       ]
     },
@@ -1932,6 +2403,44 @@
       "pista.pal.1",
       "pista.pal.2",
       "pista.pal.3"
+    ]
+  },
+  "pal_antena": {
+    "priority": 3,
+    "when": {
+      "all": [
+        {
+          "all": [
+            {
+              "var": "escena",
+              "op": "==",
+              "value": 9
+            },
+            {
+              "flag": "enviat",
+              "is": false
+            }
+          ]
+        },
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "antena_ok",
+          "is": false
+        },
+        {
+          "inRoom": "pal"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "antena_ok"
+    },
+    "levels": [
+      "pista.pal_antena.1",
+      "pista.pal_antena.2",
+      "pista.pal_antena.3"
     ]
   },
   "terminal": {
@@ -2106,6 +2615,9 @@
           "value": 7
         },
         {
+          "protagonist": "iri"
+        },
+        {
           "var": "munta_rebost",
           "op": "==",
           "value": "clau_tomas"
@@ -2131,6 +2643,9 @@
           "var": "escena",
           "op": "==",
           "value": 7
+        },
+        {
+          "protagonist": "vet"
         },
         {
           "var": "munta_cuina",
@@ -2212,6 +2727,9 @@
           "var": "escena",
           "op": "==",
           "value": 8
+        },
+        {
+          "protagonist": "iri"
         },
         {
           "var": "munta_pont",

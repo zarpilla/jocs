@@ -17,6 +17,12 @@ from hd.rooms.comu import _diff, text, text_width
 from hd640.font import font640, draw_text, text_width as font_width
 from hd640.rooms.pallol import FLOOR_Y, vladder, rust_streaks
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 HATCH = (296, 24)                       # el centre del registre, al sostre
 CEIL = 32                               # on acaba el sostre
 _PH = {'t': 0.0}                        # fase de l'aigua del bassal (animació `bassal`)
@@ -155,12 +161,12 @@ def floor(cv):
             cv.put(x, y, BOTTOMR, lv)
     # el bassal: una el·lipse d'aigua fosca amb la llum del registre reflectida
     pcx, pcy, prx, pry = 317, 240, 123, 15
-    src = cv.img.copy().load()
+    src, S = cv.img.copy().load(), cv.S                               # (src, en píxels reals)
     for y in range(pcy - pry - 3, pcy + pry + 4):
         for x in range(pcx - prx - 6, pcx + prx + 7):
             e = ((x - pcx) / (prx + hr(y, 1) * 8)) ** 2 + ((y - pcy) / pry) ** 2
             if e <= 1:
-                c = mix(src[x, y][:3], WATER[2], 0.7)
+                c = mix(src[x * S, y * S][:3], WATER[2], 0.7)
                 rx_ = 12 - abs(y - pcy) * 0.5
                 wob = round(math.sin(y * 1.0 + _PH['t']) * 1.9)
                 if abs(x - HATCH[0] - wob) < rx_ and (y % 2 == 0 or abs(x - HATCH[0] - wob) < 4):
@@ -209,9 +215,11 @@ def sign(cv):
     bold, reg = font640(True), font640(False)
     ink = (150, 30, 28)
     tx0, tw = 114, 84
+    lay = Canvas1x(transparent=True)                                     # (la lletra és en píxels de sala)
     for glyphs, s, y in ((bold, 'AIGUA', 100), (reg, 'NO POTABLE', 115)):
         w = font_width(glyphs, s)
-        draw_text(cv.img, glyphs, s, tx0 + (tw - w) // 2, y, ink, outline=None)
+        draw_text(lay.img, glyphs, s, tx0 + (tw - w) // 2, y, ink, outline=None)
+    cv.blit(lay.img)
     text(cv, '1984', x1 - 9 - text_width('1984'), y1 - 12, None, 0, flat=(160, 140, 120))
     # esmalt saltat i un cargol rovellat a cada cantó
     for (bx, by) in ((x0 + 3, y0 + 3), (x1 - 4, y0 + 3), (x0 + 3, y1 - 4), (x1 - 4, y1 - 4)):

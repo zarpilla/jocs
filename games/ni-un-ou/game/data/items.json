@@ -50,10 +50,6 @@
       {
         "verb": "look",
         "dialogue": "quadern"
-      },
-      {
-        "verb": "use",
-        "dialogue": "quadern"
       }
     ]
   },
@@ -164,7 +160,8 @@
   "nota_iri": {
     "name": "obj.nota_iri.nom",
     "props": {
-      "munta": true
+      "munta": true,
+      "de": "iri"
     },
     "interactions": [
       {
@@ -181,7 +178,8 @@
   "nota_vet": {
     "name": "obj.nota_vet.nom",
     "props": {
-      "munta": true
+      "munta": true,
+      "de": "vet"
     },
     "interactions": [
       {

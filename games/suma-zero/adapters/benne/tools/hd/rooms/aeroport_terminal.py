@@ -12,6 +12,7 @@ La terminal de l'aeroport (Escena 3, la Vet), dimarts de matinada. Art definitiu
 import math
 
 from PIL import Image
+from pixels import nearest
 
 from hd.pix import Light, Canvas, W, H, hr
 from hd.rooms.comu import obox, outline, cable, text, text_width, _diff, PLASTIC, SHEET, CARD, RED, YEL, GRAYC
@@ -146,7 +147,7 @@ ORTEGA = {'skin': M((56, 30, 34), (104, 62, 56), (152, 100, 80), (194, 138, 106)
 def ortega(cv, cig='sencera'):
     """La supervisora Ortega, darrere el vidre: uniforme granat, gafet, el mòbil en una mà i la cigarreta a l'altra."""
     fig = person(ORTEGA, 'D')
-    fig = fig.resize((round(fig.width * K), round(fig.height * K)), Image.NEAREST)
+    fig = nearest(fig, (round(fig.width * K), round(fig.height * K)))
     # l'ombra als peus, perquè trepitgi el paviment i no suri
     cx0, _ = _o(268, 0)
     cx1, _ = _o(290, 0)

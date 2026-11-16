@@ -315,10 +315,37 @@
               {
                 "flag": "tomas_ofes",
                 "is": false
+              },
+              {
+                "flag": "registre_obert",
+                "is": false
               }
             ]
           },
           "next": "clau7"
+        },
+        {
+          "id": "passa7",
+          "text": "dlg.tomas.opt.passa7",
+          "if": {
+            "all": [
+              {
+                "protagonist": "vet"
+              },
+              {
+                "flag": "registre_obert"
+              },
+              {
+                "flag": "clau_donada",
+                "is": false
+              },
+              {
+                "flag": "tomas_ofes",
+                "is": false
+              }
+            ]
+          },
+          "next": "passa7"
         },
         {
           "id": "entrepa7",
@@ -370,6 +397,24 @@
         },
         {
           "setFlag": "tomas_clau"
+        }
+      ],
+      "goto": "esc7_menu"
+    },
+    "passa7": {
+      "lines": [
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.passa7.1"
+        },
+        {
+          "who": "tomas",
+          "text": "dlg.tomas.clau7.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "tomas_ofes"
         }
       ],
       "goto": "esc7_menu"

@@ -238,19 +238,40 @@
         {
           "id": "venut",
           "text": "dlg.tomas.opt.venut",
-          "once": true,
+          "if": {
+            "not": {
+              "seen": {
+                "dialogue": "tomas",
+                "node": "venut"
+              }
+            }
+          },
           "next": "venut"
         },
         {
           "id": "capitana",
           "text": "dlg.tomas.opt.capitana",
-          "once": true,
+          "if": {
+            "not": {
+              "seen": {
+                "dialogue": "tomas",
+                "node": "amenaca"
+              }
+            }
+          },
           "next": "amenaca"
         },
         {
           "id": "per_que",
           "text": "dlg.tomas.opt.per_que",
-          "once": true,
+          "if": {
+            "not": {
+              "seen": {
+                "dialogue": "tomas",
+                "node": "per_que"
+              }
+            }
+          },
           "next": "per_que"
         },
         {
@@ -320,19 +341,40 @@
         {
           "id": "venut",
           "text": "dlg.tomas.opt.venut2",
-          "once": true,
+          "if": {
+            "not": {
+              "seen": {
+                "dialogue": "tomas",
+                "node": "venut"
+              }
+            }
+          },
           "next": "venut"
         },
         {
           "id": "capitana",
           "text": "dlg.tomas.opt.capitana2",
-          "once": true,
+          "if": {
+            "not": {
+              "seen": {
+                "dialogue": "tomas",
+                "node": "amenaca"
+              }
+            }
+          },
           "next": "amenaca"
         },
         {
           "id": "per_que",
           "text": "dlg.tomas.opt.per_que2",
-          "once": true,
+          "if": {
+            "not": {
+              "seen": {
+                "dialogue": "tomas",
+                "node": "per_que"
+              }
+            }
+          },
           "next": "per_que"
         },
         {

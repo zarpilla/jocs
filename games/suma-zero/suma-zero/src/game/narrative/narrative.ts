@@ -261,6 +261,23 @@ export const roomProtagonist = (room: string) => content.rooms[room]?.protagonis
 export const isSharedRoom = (room: string) => (content.rooms[room]?.protagonists?.length ?? 0) > 0;
 
 /**
+ * Una cinemàtica amb coses per tocar (la carta de navegació d'Aigua Verne): no hi ha protagonista, però en acabar
+ * l'`onEnter` es poden tocar les coses visibles, i el toc les fa sense que ningú hi camini. Compten les coses amb
+ * interaccions: el pròleg i els finals també tenen `hotspots`, però només per mostrar o amagar els personatges.
+ */
+export const isClickableCutscene = (room: string | null | undefined) => {
+  const def = room ? content.rooms[room] : undefined;
+  return !!def?.cutscene && Object.values(def.hotspots ?? {}).some((h) => (h.interactions?.length ?? 0) > 0);
+};
+
+/** El text de l'`onEnter` d'una cinemàtica amb coses per tocar («On anem?»): el HUD el posa a la frase quan no hi ha res a sota. */
+let prompt = '';
+export const clickablePrompt = () => prompt;
+export const setClickablePrompt = (text: string) => {
+  prompt = text;
+};
+
+/**
  * Qui entrarà a la sala següent, quan es canvia de protagonista cap a una sala compartida: en entrar-hi
  * no es pot saber per la sala (hi pot ser qualsevol de les dues). Ho posa `goToProtagonist`.
  */
@@ -488,6 +505,11 @@ export function bindHotspots(handles: Record<string, Showable>) {
 export interface TouchRouter {
   takes(verb: string, target: FallbackTarget, item?: string): boolean;
   route(verb: string, target: FallbackTarget, item?: string): unknown;
+  /**
+   * Just després que el nucli resolgui una interacció (abans de dir-ne les línies): la tàctil apunta què s'ha vist.
+   * `room` és la sala on era la cosa (abans de l'acció, que pot haver canviat de sala).
+   */
+  acted?(verb: string, target: FallbackTarget, room: string | null): void;
 }
 let router: TouchRouter | null = null;
 export function setTouchRouter(r: TouchRouter | null) {

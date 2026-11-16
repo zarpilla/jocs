@@ -21,6 +21,7 @@ from pathlib import Path
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from pixels import nearest  # noqa: E402
 from escala import GAME_H, GAME_W  # noqa: E402
 
 DESIGN_W, DESIGN_H = 352, 198   # la resolució de la plantilla 9-verb de Benne
@@ -67,7 +68,7 @@ def migrate_gui_image(png: Path):
         r = f['frame']
         x, y, w, h = r['x'], r['y'], r['w'], r['h']
         nx, ny, nw, nh = round(x * k), round(y * k), round(w * k), round(h * k)
-        out.paste(src.crop((x, y, x + w, y + h)).resize((nw, nh), Image.NEAREST), (nx, ny))
+        out.paste(nearest(src.crop((x, y, x + w, y + h)), (nw, nh)), (nx, ny))
         f['frame'] = {'x': nx, 'y': ny, 'w': nw, 'h': nh}
         # Fulls retallats: el desplaçament dins la pantalla també s'escala.
         f['spriteSourceSize'] = {key: round(v * k) for key, v in f['spriteSourceSize'].items()}

@@ -116,10 +116,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "all": [
@@ -141,10 +141,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "all": [
@@ -427,10 +427,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "flag": "obert_t2"
@@ -444,10 +444,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "lines": [
             {
@@ -535,10 +535,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "all": [
@@ -560,10 +560,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "all": [
@@ -846,10 +846,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "flag": "obert_aqua"
@@ -863,10 +863,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "lines": [
             {
@@ -954,10 +954,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "all": [
@@ -979,10 +979,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "all": [
@@ -1265,10 +1265,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "if": {
             "flag": "obert_ferrum"
@@ -1282,10 +1282,10 @@
         },
         {
           "verb": [
+            "open",
             "push",
             "pull",
-            "use",
-            "open"
+            "use"
           ],
           "lines": [
             {
@@ -1323,7 +1323,6 @@
         {
           "verb": [
             "pull",
-            "push",
             "use"
           ],
           "if": {
@@ -1383,7 +1382,6 @@
         {
           "verb": [
             "pull",
-            "push",
             "use"
           ],
           "if": {
@@ -1399,7 +1397,6 @@
         {
           "verb": [
             "pull",
-            "push",
             "use"
           ],
           "lines": [

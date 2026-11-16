@@ -648,9 +648,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "if": {
             "all": [
@@ -666,15 +666,19 @@
             {
               "who": "player",
               "text": "sala.bcmu_passadis.porta_neteja.entra",
-              "sound": "porta_neteja"
+              "sound": "porta_neteja",
+              "if": {
+                "visited": "bcmu_escombraries",
+                "is": false
+              }
             }
           ],
           "goTo": "bcmu_escombraries"
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "robot_aturat",
@@ -689,8 +693,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -758,8 +762,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "all": [
@@ -807,8 +811,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "escala_provada"
@@ -832,8 +836,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {
@@ -858,9 +862,9 @@
       "interactions": [
         {
           "verb": [
+            "walkTo",
             "use",
-            "open",
-            "walkTo"
+            "open"
           ],
           "lines": [
             {
@@ -922,8 +926,8 @@
       "interactions": [
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "if": {
             "flag": "virus_aturat"
@@ -937,8 +941,8 @@
         },
         {
           "verb": [
-            "use",
-            "open"
+            "open",
+            "use"
           ],
           "lines": [
             {

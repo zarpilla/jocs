@@ -40,11 +40,14 @@ OLIVA = NAVYB                           # la planxa (a Aigua Verne, oliva)
 W, H = 640, 288                         # l'alçada mínima (20:9); la pantalla pot ser més alta (pantalla.py)
 FRANJA = 260                            # a sota, la franja: la frase
 FONT, BOLD = 'niunou-regular', 'niunou-negreta'
+# el verb de la frase: el color de la frase, més apagat (el nom és el que compta)
+VERB_DIM = '#' + ''.join(f'{round(int(VERB_LINE[i:i + 2], 16) * 0.6):02x}' for i in (1, 3, 5))
 
 # ─── Disposició (ha de coincidir amb verbs.gui.ts i accions.gui.ts) ─────────
 
 M = 4                                   # marge de la pantalla
-CANVIA = (M, M)                         # 57×43 (la pantalla rodona de la barra)
+CANVIA = (M, M)                         # 57×52: la pantalla rodona de la barra, en una placa més alta
+CANVIA_H = 52                           # (tan alta com el menú i els punts petits l'un sobre l'altre: hud.ts)
 MENU_BTN = (W - M - 25, M)              # 25×25
 BOTO = 32                               # els botons de baix (bossa, punts), a les cantonades
 PUNTS = (M, H - M - BOTO)
@@ -248,9 +251,15 @@ def text_outline():
 # ─── El HUD (`verbs`) ──────────────────────────────────────────────────────
 
 def build_hud():
-    cx, cy, cw, ch = vg.CANVIA
-    canvia = crop_bar(lambda cv: vg.porthole(cv, False), cx, cy, cw, ch)
-    canvia_h = crop_bar(lambda cv: vg.porthole(cv, True), cx, cy, cw, ch)
+    cx, cy, cw, _ = vg.CANVIA
+    ch = CANVIA_H
+    port = (vg.PORT[0] - cx, (ch - 1) // 2)                    # la pantalla rodona, al mig de la placa
+
+    def canvia_img(hover):
+        cv = Canvas(cw, ch, transparent=True)
+        vg.porthole(cv, hover, rect=(0, 0, cw, ch), port=port)
+        return cv.img
+    canvia, canvia_h = canvia_img(False), canvia_img(True)
     mx, my, ms = vg.MENU
     menu = crop_bar(vg.menu_button, mx, my, ms, ms)
     cara = {who: vg.face(who) for who in ('iri', 'vet')}
@@ -270,8 +279,8 @@ def build_hud():
     write_sheet(sheet_dir, 'verbs', [(im, tag, (0, 0), im.size) for im, tag in frames])
 
     # la cara, al mig de la pantalla rodona (com a la barra: hd640/gui_rest.py, build_verbs)
-    fx = CANVIA[0] + vg.PORT[0] - cx - cara['iri'].width // 2
-    fy = CANVIA[1] + vg.PORT[1] - cy - cara['iri'].height // 2 - 1
+    fx = CANVIA[0] + port[0] - cara['iri'].width // 2
+    fy = CANVIA[1] + port[1] - cara['iri'].height // 2 - 1
     fx0, slots_x, fx1, top = safata_xy()
 
     def button(cid, xy, w, h, tag, states=None, visible=True):
@@ -296,6 +305,9 @@ def build_hud():
         # la frase: el nom del que hi ha sota el dit o el ratolí, o «Usa X amb...»
         {'type': 'text', 'id': 'verbLineText', 'x': W // 2, 'y': FRANJA + 9, 'text': '', 'font': FONT, 'fontSize': 8,
          'color': VERB_LINE, 'align': 'center', 'textOutline': text_outline(), 'zIndex': 5},
+        # el verb del clic («Obre»), més apagat que el nom: hud.ts el posa a l'esquerra del nom i centra la frase
+        {'type': 'text', 'id': 'verbLineVerb', 'x': W // 2, 'y': FRANJA + 9, 'text': '', 'font': FONT, 'fontSize': 8,
+         'color': VERB_DIM, 'align': 'left', 'textOutline': text_outline(), 'zIndex': 5},
         button('CanviaBtn', CANVIA, cw, ch, 'CanviaBtn', {'hover': 'CanviaBtn-hover'}),
         {'type': 'image', 'id': 'CaraIri', 'x': fx, 'y': fy, 'tag': 'CaraIri', 'backgroundAnchor': 'top-left',
          'visible': False, 'clickable': False},
@@ -340,7 +352,7 @@ def build_hud():
     # Pantalla adaptable (dissenyada a 288 d'alt): el que és a baix va enganxat a baix. En un monitor (360) la safata,
     # la frase i els botons queden a la franja de sota l'escena.
     for c in controls:
-        if c['id'] in ('verbLineText', 'PuntsBtn', 'BossaBtn', 'Safata', 'inventoryPanel', 'upBtn', 'downBtn'):
+        if c['id'] in ('verbLineText', 'verbLineVerb', 'PuntsBtn', 'BossaBtn', 'Safata', 'inventoryPanel', 'upBtn', 'downBtn'):
             c['anchorY'] = 'bottom'
     gui = {'id': 'verbs', 'name': 'HUD', 'description': 'Ni un ou: sense barra de verbs [hd640/hud.py]',
            'visible': True, 'display': {'aseprite': True}, 'controls': controls}
@@ -385,7 +397,20 @@ def build_accions():
     (d / 'accions.gui.json').write_text(json.dumps(gui, indent=2, ensure_ascii=False) + '\n')
 
 
+def build_targeta():
+    """La targeta «Com es juga» (GUI `controls`): compartida (adapters/benne/tactil/controls.py), amb les peces i els
+    colors d'aquest joc."""
+    sys.path.insert(0, str(TOOLS.parents[4] / 'adapters/benne/tactil'))
+    import hd640.gui_rest as gr
+    from controls import build_controls
+    build_controls(GAME, write_sheet=gr.write_sheet, nine_slice=gr.nine_slice, nine_slices=gr.nine_slices,
+                   checkbox=gr.checkbox, key_image=gr.key_image, punts=boto(punts_icon), font=FONT, bold=BOLD,
+                   text=gr.LABEL, title=gr.TITLE, outline=TEXT_OUTLINE, hover=TEXT_HOVER,
+                   ink=gr.LABEL, accent=TEXT_HOVER, shadow=TEXT_OUTLINE)
+
+
 if __name__ == '__main__':
     build_hud()
     build_accions()
+    build_targeta()
     print(f'✔ HUD i menú d\'accions a {GAME}')

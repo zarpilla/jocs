@@ -90,12 +90,12 @@ export function jugarPis(p: Jugador, o: OpcionsActe1 = {}) {
     p.switchTo('iri');
     p.use('pizza', 'diu');
   }
-  p.do('pickUp', 'fibra');
+  p.do('use', 'fibra');
   p.use('cable_xarxa', 'router');
   p.use('cable_alimentacio', 'router');
   p.switchTo('vet');
   if (o.entrepa) {
-    p.do('open', 'nevera');
+    if (o.sacrifici !== 'pizza') p.do('open', 'nevera'); // amb la pizza, ja és oberta
     p.do('pickUp', 'tonyina');
   }
   p.do('use', 'porta');

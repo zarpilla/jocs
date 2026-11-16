@@ -4,68 +4,68 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 1.aseprite": {
       "frame": {
-        "x": 667,
+        "x": 1334,
         "y": 0,
-        "w": 41,
-        "h": 41
+        "w": 82,
+        "h": 82
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 393,
-        "y": 73,
-        "w": 41,
-        "h": 41
+        "x": 786,
+        "y": 146,
+        "w": 82,
+        "h": 82
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 2.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 27,
-        "h": 48
+        "w": 54,
+        "h": 96
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 140,
-        "w": 27,
-        "h": 48
+        "x": 800,
+        "y": 280,
+        "w": 54,
+        "h": 96
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 3.aseprite": {
       "frame": {
-        "x": 970,
+        "x": 1960,
         "y": 0,
         "w": 1,
         "h": 1
@@ -79,155 +79,155 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 4.aseprite": {
       "frame": {
-        "x": 708,
+        "x": 1416,
         "y": 0,
-        "w": 32,
-        "h": 35
+        "w": 78,
+        "h": 72
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 77,
-        "w": 32,
-        "h": 35
+        "x": 788,
+        "y": 154,
+        "w": 78,
+        "h": 72
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 5.aseprite": {
       "frame": {
-        "x": 740,
+        "x": 1494,
         "y": 0,
-        "w": 39,
-        "h": 34
+        "w": 78,
+        "h": 68
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 79,
-        "w": 39,
-        "h": 34
+        "x": 788,
+        "y": 158,
+        "w": 78,
+        "h": 68
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 6.aseprite": {
       "frame": {
-        "x": 779,
+        "x": 1572,
         "y": 0,
-        "w": 39,
-        "h": 33
+        "w": 78,
+        "h": 66
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 80,
-        "w": 39,
-        "h": 33
+        "x": 788,
+        "y": 160,
+        "w": 78,
+        "h": 66
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 7.aseprite": {
       "frame": {
-        "x": 818,
+        "x": 1650,
         "y": 0,
-        "w": 39,
-        "h": 30
+        "w": 78,
+        "h": 62
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 82,
-        "w": 39,
-        "h": 30
+        "x": 788,
+        "y": 164,
+        "w": 78,
+        "h": 62
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 8.aseprite": {
       "frame": {
-        "x": 857,
+        "x": 1728,
         "y": 0,
-        "w": 39,
-        "h": 28
+        "w": 78,
+        "h": 60
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 83,
-        "w": 39,
-        "h": 28
+        "x": 788,
+        "y": 166,
+        "w": 78,
+        "h": 60
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 9.aseprite": {
       "frame": {
-        "x": 896,
+        "x": 1806,
         "y": 0,
-        "w": 39,
-        "h": 27
+        "w": 78,
+        "h": 58
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 84,
-        "w": 39,
-        "h": 27
+        "x": 788,
+        "y": 168,
+        "w": 78,
+        "h": 58
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "camarot_iri 10.aseprite": {
       "frame": {
-        "x": 935,
+        "x": 1884,
         "y": 0,
-        "w": 35,
-        "h": 25
+        "w": 76,
+        "h": 56
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 393,
-        "y": 86,
-        "w": 35,
-        "h": 25
+        "x": 786,
+        "y": 172,
+        "w": 76,
+        "h": 56
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -238,8 +238,8 @@
     "image": "camarot_iri.png",
     "format": "RGBA8888",
     "size": {
-      "w": 971,
-      "h": 360
+      "w": 1961,
+      "h": 720
     },
     "scale": "1",
     "frameTags": [
