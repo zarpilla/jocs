@@ -3,9 +3,11 @@
  * La interfície tàctil (sense barra de verbs), part instantània (l'estat del menú d'accions, on s'ha premut,
  * l'encaminador). Les funcions amb temps (fer la interacció, obrir i triar al menú) són a `tactil.script.ts`.
  *
- *  - Tocar (clic) una cosa (`queFaElToc`, runtime/accions.ts): la primera vegada, la mira; després, si té una sola
- *    acció la fa, i si en té més d'una obre el menú d'accions (el jugador tria el verb). Les sortides, s'hi va.
- *  - Mantenir premut (o clic dret): el menú d'accions, amb «Mira» i les accions que té la cosa ara mateix.
+ *  - Tocar una cosa amb el dit (`queFaElToc`, runtime/accions.ts): la primera vegada, la mira; després, si té una
+ *    sola acció la fa, i si en té més d'una obre el menú d'accions (el jugador tria el verb). Les sortides, s'hi va.
+ *  - Amb el ratolí, el clic esquerre és igual però sense mirar primer (fa l'acció o obre el menú), i el clic dret
+ *    mira, directament: a l'ordinador mirar no costa res, i qui no ho ha llegit bé ho torna a mirar.
+ *  - Mantenir premut (el dit o el botó esquerre): el menú d'accions, amb «Mira» i les accions que té la cosa ara.
  *  - Tocar un objecte de l'inventari: el pren a la mà (ho fa el motor: `toca` és un verb d'objecte). Llavors
  *    tocar una cosa el fa servir amb ella, o li dona si és un personatge. Tocar el mateix objecte o el terra, el deixa.
  *    Si l'objecte es fa servir sol (el contingut no el combina mai amb res: el plànol), el motor fa el seu
@@ -27,7 +29,14 @@ export const MENU = 'accions';
 /** El verb que fa tocar un objecte sol de l'inventari (el seu `defaultVerb`): en fa l'acció en lloc de prendre'l. */
 export const FES = 'fes';
 
-// ─── El dit que ha obert el menú ────────────────────────────────────────────
+// ─── Dit o ratolí, i el dit que ha obert el menú ─────────────────────────────
+
+/** L'última pulsació: si era un dit (o un llapis) i quin botó (0 esquerre, 2 dret). */
+let darrera = { dit: true, boto: 0 };
+/** Si l'última pulsació ha estat amb el dit (al mòbil, la tauleta): el primer toc mira. */
+export const esDit = () => darrera.dit;
+/** Si l'última pulsació ha estat un clic dret del ratolí: mira. */
+export const esClicDret = () => !darrera.dit && darrera.boto === 2;
 
 /** Si hi ha un dit (o el botó esquerre) premut ara mateix. */
 let prement = false;
@@ -38,6 +47,7 @@ let empassaFins = 0;
 
 if (typeof window !== 'undefined') {
   window.addEventListener('pointerdown', (e) => {
+    darrera = { dit: e.pointerType !== 'mouse', boto: e.button };
     if (e.button === 0) prement = true;
   }, true);
   const aixeca = (e: PointerEvent) => {

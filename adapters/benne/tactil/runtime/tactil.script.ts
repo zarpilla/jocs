@@ -9,7 +9,7 @@ import type { FallbackTarget } from '@benne/script';
 import { fromBenne, narrative, targetFromBenne } from './narrative';
 import { performInteraction } from './narrative.script';
 import { accions, marcaMirat, objecteSol, queFaElToc, verbAmbObjecte } from './accions';
-import { MENU, label, openMenu, setMenu, type Opcio } from './tactil';
+import { MENU, esClicDret, esDit, label, openMenu, setMenu, type Opcio } from './tactil';
 
 /** Fa el que vol dir un clic de la interfície tàctil (vegeu tactil.ts). */
 export function routeTouch(verb: string, target: FallbackTarget, item?: string) {
@@ -24,10 +24,12 @@ export function routeTouch(verb: string, target: FallbackTarget, item?: string) 
     return;
   }
   if (verb === MENU) {
-    openActions(target);
+    // el clic dret del ratolí mira; mantenir premut (el dit o el botó esquerre) obre el menú
+    if (esClicDret()) doVerb('look', target);
+    else openActions(target);
     return;
   }
-  const toc = queFaElToc(narrative, targetFromBenne(target.kind, target.id));
+  const toc = queFaElToc(narrative, targetFromBenne(target.kind, target.id), undefined, { mirarPrimer: esDit() });
   if (toc.fa === 'menu') {
     openActions(target);
     return;

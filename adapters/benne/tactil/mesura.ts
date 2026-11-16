@@ -6,7 +6,10 @@
  *  - menú: el toc obre el menú (la cosa té més d'una acció) i s'hi tria;
  *  - premut: el toc faria una altra cosa (p. ex. ja s'ha mirat i ara faria l'acció, o és un objecte de l'inventari
  *    que es pot combinar i el toc el pren a la mà): cal mantenir premut i triar;
- *  - mira primer: abans de l'acció, el primer toc ha mirat la cosa (un toc de més, però amb la descripció).
+ *  - mira primer: abans de l'acció, el primer toc ha mirat la cosa (un toc de més, però amb la descripció);
+ *  - dret: amb el ratolí, mirar és un clic dret (un gest).
+ *
+ * `mode`: `dit` (el mòbil: el primer toc mira) o `ratoli` (l'ordinador: el clic esquerre fa l'acció, el dret mira).
  *
  * Si alguna interacció del camí no es pot fer de cap manera, `impossibles` no és buit. És pur (només el nucli):
  * serveix per a qualsevol joc de narrative-core.
@@ -14,7 +17,8 @@
 import type { InteractionTarget, Narrative } from '@aventura/narrative-core';
 import { accions, marcaMirat, objecteSol, queFaElToc, verbAmbObjecte } from './runtime/accions.js';
 
-export type Com = 'toc' | 'menú' | 'premut';
+export type Com = 'toc' | 'menú' | 'premut' | 'dret';
+export type Mode = 'dit' | 'ratoli';
 export interface Pas { com: Com; on: string; miraPrimer: boolean }
 
 export interface Mesura {
@@ -25,7 +29,8 @@ export interface Mesura {
   resum(nom: string): string;
 }
 
-export function mesura(n: Narrative): Mesura {
+export function mesura(n: Narrative, mode: Mode = 'dit'): Mesura {
+  const mirarPrimer = mode === 'dit';
   const passos: Pas[] = [];
   const impossibles: string[] = [];
   const kind = (id: string): InteractionTarget['kind'] => (n.content.characters[id] ? 'character' : 'hotspot');
@@ -40,6 +45,11 @@ export function mesura(n: Narrative): Mesura {
       passos.push({ com: 'toc', on, miraPrimer: false });
       return;
     }
+    if (mode === 'ratoli' && verb === 'look') {
+      marcaMirat(n, t);
+      passos.push({ com: 'dret', on, miraPrimer: false });
+      return;
+    }
     if (t.kind === 'item' && !objecteSol(n.content, t.id)) {
       // tocar-lo el pren a la mà: per fer-ne alguna altra cosa, cal el menú
       const menu = [{ verb: 'look' }, ...accions(n, t)].map((a) => n.peek({ verb: a.verb, target: t }));
@@ -48,13 +58,13 @@ export function mesura(n: Narrative): Mesura {
       passos.push({ com: 'premut', on, miraPrimer: false });
       return;
     }
-    let toc = queFaElToc(n, t);
+    let toc = queFaElToc(n, t, undefined, { mirarPrimer });
     let miraPrimer = false;
     if (toc.fa === 'mira' && verb !== 'look') {
       // el primer toc la mira (al joc, de debò; aquí només s'apunta: el camí no la mira)
       marcaMirat(n, t);
       miraPrimer = true;
-      toc = queFaElToc(n, t);
+      toc = queFaElToc(n, t, undefined, { mirarPrimer });
     }
     if (verb === 'look') marcaMirat(n, t);
     const tocFa = toc.fa === 'mira' ? 'look' : toc.fa === 'accio' ? toc.verb : null;
@@ -91,9 +101,10 @@ export function mesura(n: Narrative): Mesura {
       const c = (k: Com) => passos.filter((x) => x.com === k).length;
       const mp = passos.filter((x) => x.miraPrimer).length;
       // gestos: un toc, o dos (tocar i triar al menú); mantenir premut i triar, dos; mirar primer, un més
-      const gestos = c('toc') + 2 * c('menú') + 2 * c('premut') + mp;
-      const llista = passos.filter((x) => x.com !== 'toc').map((x) => `  ${x.com}: ${x.on}`);
-      return [`${nom}: ${passos.length} passos; toc ${c('toc')}, menú ${c('menú')}, premut ${c('premut')}; ` +
+      const gestos = c('toc') + c('dret') + 2 * c('menú') + 2 * c('premut') + mp;
+      const llista = passos.filter((x) => x.com !== 'toc' && x.com !== 'dret').map((x) => `  ${x.com}: ${x.on}`);
+      return [`${nom} (${mode === 'dit' ? 'dit' : 'ratolí'}): ${passos.length} passos; toc ${c('toc')}, clic dret ${c('dret')}, ` +
+        `menú ${c('menú')}, premut ${c('premut')}; ` +
         `mira primer ${mp}; ${gestos} gestos (${(gestos / passos.length).toFixed(2)} per pas)`, ...llista].join('\n');
     },
   };

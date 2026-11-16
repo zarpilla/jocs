@@ -115,20 +115,24 @@ export type Toc = { fa: 'mira' } | { fa: 'accio'; verb: string } | { fa: 'menu' 
 
 /**
  * Què fa tocar una cosa:
- *  1. Si encara no s'ha mirat mai (i té alguna cosa a dir), la mira: la descripció, amb l'humor i les pistes,
- *     surt sense cap gest de més. Les sortides (que només es poden travessar) no: anar-hi no ha de costar dos tocs.
+ *  1. Amb el dit (`mirarPrimer`), si encara no s'ha mirat mai (i té alguna cosa a dir), la mira: la descripció,
+ *     amb l'humor i les pistes, surt sense cap gest de més. Les sortides (que només es poden travessar) no: anar-hi
+ *     no ha de costar dos tocs. Amb el ratolí no: el clic dret ja mira.
  *  2. Si té una sola acció, la fa.
  *  3. Si en té més d'una (encara que alguna sigui una broma), obre el menú: el joc no tria per tu quin verb
  *     resol el trencaclosques (empènyer o estirar).
  *  Sense cap acció, la mira.
  */
-export function queFaElToc(narrative: Narrative, target: InteractionTarget, room?: string): Toc {
+export function queFaElToc(
+  narrative: Narrative, target: InteractionTarget, room?: string, opts: { mirarPrimer?: boolean } = {},
+): Toc {
   if (target.kind === 'item') return queFaElTocObjecte(narrative, target);
+  const mirarPrimer = opts.mirarPrimer ?? true;
   const totes = accions(narrative, target, room);
   const unica = totes.length === 1 ? totes[0] : undefined;
   const sortida = unica?.verbs.includes('walkTo') === true;
   const teMira = narrative.peek({ verb: 'look', target, room }) !== undefined;
-  if (teMira && !sortida && !isMirat(narrative, target, room)) return { fa: 'mira' };
+  if (mirarPrimer && teMira && !sortida && !isMirat(narrative, target, room)) return { fa: 'mira' };
   if (unica) return { fa: 'accio', verb: unica.verb };
   if (totes.length === 0) return { fa: 'mira' };
   return { fa: 'menu' };

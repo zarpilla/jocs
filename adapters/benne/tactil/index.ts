@@ -1,8 +1,9 @@
 /**
  * La interfície tàctil (sense barra de verbs, pensada per al mòbil), per als jocs amb `tactil: true` al seu joc.ts.
  *
- *  - Tocar una cosa: la primera vegada la mira; després, si té una sola acció la fa, i si en té més d'una obre el
- *    menú d'accions. Mantenir premut (o clic dret): el menú d'accions. Regla: `queFaElToc` (runtime/accions.ts).
+ *  - Tocar una cosa amb el dit: la primera vegada la mira; després, si té una sola acció la fa, i si en té més d'una
+ *    obre el menú d'accions. Amb el ratolí, el clic esquerre fa el mateix sense mirar primer, i el clic dret mira.
+ *    Mantenir premut (el dit o el botó esquerre): el menú d'accions. Regla: `queFaElToc` (runtime/accions.ts).
  *  - L'alçada de la pantalla s'adapta a l'aparell (de 640×288, un mòbil 20:9, a 640×360, un monitor 16:9), i el HUD
  *    es col·loca segons quanta franja queda sota l'escena (guis/verbs/hud.ts).
  *
