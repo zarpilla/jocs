@@ -139,6 +139,7 @@ import {
   type CharacterFeetLocal,
 } from '../characterFeet';
 import { applyCharacterLights, compileCharacterLights } from '../room/characterLights';
+import { releaseOtherRoomSheets } from '../room/releaseRoomSheets';
 import {
   applyCharacterSpriteRegionTintFromWinningRegion,
   computeRoomRegionPerspective,
@@ -778,6 +779,8 @@ export class RoomScene extends Phaser.Scene {
   create(data: RoomSceneStartData): void {
     registerBenneCharacterPerspectiveBatch(this.game);
     this.roomData = data.room;
+    // The previous room's scene is already shut down: free every other room's sheet (GPU memory on phones).
+    releaseOtherRoomSheets(this, data.room.id);
     this.player = null;
     this.playerMoveTween = null;
     this.currentPlayerPath = null;
