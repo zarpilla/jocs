@@ -23,6 +23,7 @@ from hd.rooms.pis_cuina import (PLASTER, TILEW, CREAM, FRIDGEB, WOOD, STEELB, PO
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
 ART_SCALE = 2
 from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 FLOOR_Y = 200
 TOP_Y = 152        # taulell: el cantell del darrere (contra la paret)

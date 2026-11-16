@@ -23,6 +23,12 @@ from hd.rooms.final_bar import (DAYSKY, HILL, ASPH, NEONOFF, STUDIO, NEWSRED, TI
 from hd640.rooms.bar_sala import (bg as bar_bg, slot_machine, fast_diff, WIN, WOOD, STEELB, BRASS, ENAMEL, PORC,
                                   BOTTLES, FLOOR_Y, BAR_TOP, SLATE)
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 # De dia: el sol de la tarda per l'aparador i per la porta; el fluorescent, encès però sense protagonisme.
 LIGHT = Light(ambient=0.9, vignette=(80, 45), floor_fade=(261, 45))
 LIGHT.point(320, 77, r=293, k=2.4, squash=1.3, power=1.5)        # el fluorescent

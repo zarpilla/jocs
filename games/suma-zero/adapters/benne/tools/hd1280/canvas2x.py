@@ -12,6 +12,8 @@ Una sala hi passa amb `ART_SCALE = 2` i `from hd1280.canvas2x import Canvas2x as
 """
 import math
 
+from PIL import Image
+
 import hd640  # noqa: F401
 from hd.pix import B4, Canvas, W, H, mix
 
@@ -28,6 +30,21 @@ class Canvas2x(Canvas):
         super().__init__(w * S, h * S, light, transparent, img)
         if img is not None:
             self.w, self.h = img.size
+
+    S = S
+
+    def blit(self, img, pos=(0, 0)):
+        """Una imatge en píxels de sala (una figura, una capa de W×H), ampliada ×S, a la posició de sala `pos`."""
+        big = img.transform((img.width * S, img.height * S), Image.Transform.EXTENT, (0, 0, img.width, img.height),
+                            Image.Resampling.NEAREST)
+        self.img.alpha_composite(big, (int(pos[0]) * S, int(pos[1]) * S))
+
+    def pixels(self, x0=0, y0=0, x1=None, y1=None):
+        x1 = W - 1 if x1 is None else x1
+        y1 = H - 1 if y1 is None else y1
+        for Y in range(max(0, int(y0 * S)), min(self.h, int((y1 + 1) * S))):
+            for X in range(max(0, int(x0 * S)), min(self.w, int((x1 + 1) * S))):
+                yield X, Y, lc(X), lc(Y)
 
     # ── píxel real ──
     def px(self, X, Y, ramp, lvl, lit=1.0):
@@ -88,7 +105,8 @@ class Canvas2x(Canvas):
         horiz = abs(X1 - X0) >= abs(Y1 - Y0)
         for i in range(int(n) + 1):
             t = i / n
-            X, Y = round(X0 + (X1 - X0) * t), round(Y0 + (Y1 - Y0) * t)
+            # (floor + 0.5, no round(): els punts cauen just a .5 i round() arrodoneix cap al parell)
+            X, Y = math.floor(X0 + (X1 - X0) * t + 0.5), math.floor(Y0 + (Y1 - Y0) * t + 0.5)
             self.px(X, Y, ramp, lvl, lit)
             if not thin:
                 self.px(X, Y + 1, ramp, lvl, lit) if horiz else self.px(X + 1, Y, ramp, lvl, lit)

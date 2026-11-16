@@ -16,6 +16,12 @@ from hd.rooms.comu import cable, text, _diff
 from hd.rooms.postcredits import MOON, TERM, DIMSCR, CHEESE, SAUCE, CRUST, NETB
 from hd640.rooms.pis_estudi import _draw as estudi_bg, stripes, DESKB, FLOOR_Y, HATCH, PORTS
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 # Llums apagats: només les pantalles i, per la finestra, la lluna i el fanal.
 LIGHT = Light(ambient=-1.2, vignette=(107, 67), floor_fade=(248, 29))
 LIGHT.point(377, 117, r=160, k=2.6, squash=1.2, power=1.8)       # les pantalles
@@ -39,14 +45,13 @@ def blinds_floor(x, y):
 
 def night_grade(cv):
     """Tot cap al blau fosc, menys el que brilla (pantalles, leds, neó)."""
-    for y in range(H):
-        for x in range(W):
-            r, g, b, a = cv.P[x, y]
-            lum = max(r, g, b)
-            if lum > 150:                       # el que fa llum no es toca
-                continue
-            k = 0.35 if lum < 60 else 0.25
-            cv.P[x, y] = mix((r, g, b), (r * 0.6 + 6, g * 0.7 + 10, b * 0.9 + 26), k) + (a,)
+    for X, Y, _, _ in cv.pixels():
+        r, g, b, a = cv.P[X, Y]
+        lum = max(r, g, b)
+        if lum > 150:                       # el que fa llum no es toca
+            continue
+        k = 0.35 if lum < 60 else 0.25
+        cv.P[X, Y] = mix((r, g, b), (r * 0.6 + 6, g * 0.7 + 10, b * 0.9 + 26), k) + (a,)
     cv.tint(0, 0, W - 1, FLOOR_Y + 19, (50, 80, 160), lambda x, y: 0.22 * stripes(x, y))   # el neó, més blau
     cv.tint(0, FLOOR_Y + 1, W - 1, 272, (150, 180, 240), blinds_floor)
     cv.glow(105, 93, 80, MOON, 0.18)

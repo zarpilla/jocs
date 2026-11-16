@@ -69,6 +69,9 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 - en entrar a una sala s'alliberen els fulls de les altres (textura, JSON i animacions; `room/releaseRoomSheets.ts`),
   perquè la memòria de la GPU no creixi sala rere sala (al mòbil, si no, el joc acaba perdent el context WebGL);
   `__BENNE_HOOKS__.goToRoom(id)` i `roomSheets()` per provar-ho.
+- fulls de sala en pàgines: si un full no hi cap en 4096×4096 (el màxim segur als mòbils), ve com a `<sala>.png`,
+  `<sala>-2.png`... (`meta.pages` al JSON i `page` a cada fotograma); el motor carrega les imatges i, en crear la
+  sala, en fa una sola textura de diverses fonts (`room/roomSheetPages.ts`).
 
 `adapters/benne/patches/motor-benne.patch` en recull una part. Si mai s'actualitza el motor des d'un
 Benne nou (`npm run benne:create -- --from <benne> --motor`), revisa `git diff packages/benne` i torna a

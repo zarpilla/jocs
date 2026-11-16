@@ -24,6 +24,12 @@ from hd.rooms.aeroport_personal import BLOCK, LINO, DOOR, REDB, GREENS, TROLLEY 
 from hd.personatges import NPCS
 from hd640.draw_characters import person
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 
 LIGHT = Light(ambient=-0.3, vignette=(80, 40), floor_fade=(253, 37))
@@ -163,7 +169,7 @@ def soler(cv):
     layer.alpha_composite(fig, (fx - round(34 * k), fy - round(111 * k)))
     x0, y0, x1, y1 = GLASS
     layer = layer.crop((x0 + 3, y0 + 3, x1 - 2, y1 - 2))
-    cv.img.alpha_composite(layer, (x0 + 3, y0 + 3))
+    cv.blit(layer, (x0 + 3, y0 + 3))
 
 
 def glass_frame(cv):

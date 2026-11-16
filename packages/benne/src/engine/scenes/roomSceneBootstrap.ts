@@ -7,6 +7,7 @@ import {
 } from '../content/loadAsepriteAtlasData';
 import { getAsepriteAssetPaths, getAsepriteTextureKey, usesAsepriteDisplay } from '../content/characterAseprite';
 import { getRoomAsepriteAssetPaths, getRoomAsepriteTextureKey } from '../content/roomAseprite';
+import { getRoomSheetPagePaths, queueRoomSheetPages } from '../room/roomSheetPages';
 import { loadCharacterData } from '../content/loadCharacterData';
 import { resolveGameAssetUrl } from '../content/resolveGameAssetUrl';
 import type { RoomCharacterInstance, RoomData } from '../../types/room';
@@ -83,11 +84,17 @@ export function queueRoomSceneAssetLoads(scene: Phaser.Scene, data: RoomSceneSta
 
   if (roomPropsTextureKey && (room.props?.length ?? 0) > 0 && !tex.exists(roomPropsTextureKey)) {
     const paths = getRoomAsepriteAssetPaths(room.id);
-    load.aseprite({
-      key: roomPropsTextureKey,
-      textureURL: resolveGameAssetUrl(paths.png),
-      atlasURL: getNormalizedRoomAsepriteAtlasData(room.id),
-    });
+    // A sheet in several pages (room/roomSheetPages.ts): the images now, the texture when the room is created.
+    const pages = getRoomSheetPagePaths(room.id);
+    if (pages) {
+      queueRoomSheetPages(load, room.id, pages);
+    } else {
+      load.aseprite({
+        key: roomPropsTextureKey,
+        textureURL: resolveGameAssetUrl(paths.png),
+        atlasURL: getNormalizedRoomAsepriteAtlasData(room.id),
+      });
+    }
   }
 
   const dedupeAsepriteCharIds = new Set<string>();

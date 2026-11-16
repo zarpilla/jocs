@@ -11,6 +11,7 @@
 import type * as Phaser from 'phaser';
 
 import { getRoomAsepriteTextureKey } from '../content/roomAseprite';
+import { isRoomSheetPageTextureKey } from './roomSheetPages';
 
 const SHEET_PREFIX = getRoomAsepriteTextureKey('');
 
@@ -18,6 +19,10 @@ export function releaseOtherRoomSheets(scene: Phaser.Scene, keepRoomId: string):
   const keep = getRoomAsepriteTextureKey(keepRoomId);
   const released: string[] = [];
   for (const key of scene.textures.getTextureKeys()) {
+    if (isRoomSheetPageTextureKey(key)) {
+      scene.textures.remove(key); // a page of a sheet that was never put together (room/roomSheetPages.ts)
+      continue;
+    }
     if (!key.startsWith(SHEET_PREFIX) || key === keep) {
       continue;
     }

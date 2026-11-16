@@ -25,6 +25,12 @@ from hd.rooms.bcmu_escombraries import (WALLG, HOSP, MAIN, BEIGE, BAG, DOORG, RE
                                         DROP)
 from hd640.rooms.bcmu import CONCB, DUST, BRASS, SCREENB, tub_station
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 TUBE = (147, 5)              # el fluorescent brut
 SCREEN = (336, 67, 432, 117)  # la pantalla del Llibre Major
@@ -558,13 +564,12 @@ def _frames_fluorescent():
             c = Canvas(light=LIGHT, img=base.copy())
             c.img.alpha_composite(f)
             k = 0.3 if t == 0 else 0.15
-            for y in range(12, 80):
-                for x in range(max(0, TUBE[0] - 133), TUBE[0] + 134):
-                    d = math.hypot((x - TUBE[0]) / 133, (y - 8) / 72)
-                    if d < 1:
-                        o = c.P[x, y]
-                        m = 1 - k * (1 - d) ** 1.5
-                        c.P[x, y] = (round(o[0] * m), round(o[1] * m), round(o[2] * m), o[3])
+            for X, Y, x, y in c.pixels(max(0, TUBE[0] - 133), 12, TUBE[0] + 133, 79):
+                d = math.hypot((x - TUBE[0]) / 133, (y - 8) / 72)
+                if d < 1:
+                    o = c.P[X, Y]
+                    m = 1 - k * (1 - d) ** 1.5
+                    c.P[X, Y] = (round(o[0] * m), round(o[1] * m), round(o[2] * m), o[3])
             dims[t] = _diff(c.img, base)
         frames.append(dims[t])
     return frames

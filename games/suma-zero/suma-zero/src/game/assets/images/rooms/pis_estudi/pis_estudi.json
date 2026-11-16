@@ -24,7 +24,7 @@
     "pis_estudi 1.aseprite": {
       "frame": {
         "x": 1833,
-        "y": 1069,
+        "y": 1071,
         "w": 104,
         "h": 74
       },
@@ -45,7 +45,7 @@
     "pis_estudi 2.aseprite": {
       "frame": {
         "x": 1999,
-        "y": 1069,
+        "y": 1071,
         "w": 36,
         "h": 2
       },
@@ -66,7 +66,7 @@
     "pis_estudi 3.aseprite": {
       "frame": {
         "x": 1937,
-        "y": 1069,
+        "y": 1071,
         "w": 62,
         "h": 22
       },
@@ -87,7 +87,7 @@
     "pis_estudi 4.aseprite": {
       "frame": {
         "x": 1427,
-        "y": 1069,
+        "y": 1071,
         "w": 406,
         "h": 100
       },
@@ -108,7 +108,7 @@
     "pis_estudi 5.aseprite": {
       "frame": {
         "x": 1249,
-        "y": 1069,
+        "y": 1071,
         "w": 178,
         "h": 132
       },
@@ -129,7 +129,7 @@
     "pis_estudi 6.aseprite": {
       "frame": {
         "x": 1065,
-        "y": 1069,
+        "y": 1071,
         "w": 184,
         "h": 177
       },
@@ -150,7 +150,7 @@
     "pis_estudi 7.aseprite": {
       "frame": {
         "x": 0,
-        "y": 1069,
+        "y": 1071,
         "w": 813,
         "h": 274
       },
@@ -254,8 +254,8 @@
     },
     "pis_estudi 12.aseprite": {
       "frame": {
-        "x": 2177,
-        "y": 0,
+        "x": 0,
+        "y": 720,
         "w": 905,
         "h": 351
       },
@@ -275,10 +275,10 @@
     },
     "pis_estudi 13.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
+        "x": 2177,
+        "y": 0,
         "w": 905,
-        "h": 349
+        "h": 353
       },
       "rotated": false,
       "trimmed": true,
@@ -286,7 +286,7 @@
         "x": 60,
         "y": 67,
         "w": 905,
-        "h": 349
+        "h": 353
       },
       "sourceSize": {
         "w": 1280,
@@ -299,7 +299,7 @@
         "x": 3082,
         "y": 0,
         "w": 905,
-        "h": 351
+        "h": 353
       },
       "rotated": false,
       "trimmed": true,
@@ -307,7 +307,7 @@
         "x": 64,
         "y": 67,
         "w": 905,
-        "h": 351
+        "h": 353
       },
       "sourceSize": {
         "w": 1280,
@@ -318,7 +318,7 @@
     "pis_estudi 15.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -339,7 +339,7 @@
     "pis_estudi 16.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -360,7 +360,7 @@
     "pis_estudi 17.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -381,7 +381,7 @@
     "pis_estudi 18.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -402,7 +402,7 @@
     "pis_estudi 19.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -423,7 +423,7 @@
     "pis_estudi 20.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -444,7 +444,7 @@
     "pis_estudi 21.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -465,7 +465,7 @@
     "pis_estudi 22.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -486,7 +486,7 @@
     "pis_estudi 23.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -507,7 +507,7 @@
     "pis_estudi 24.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -528,7 +528,7 @@
     "pis_estudi 25.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -549,7 +549,7 @@
     "pis_estudi 26.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -570,7 +570,7 @@
     "pis_estudi 27.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -591,7 +591,7 @@
     "pis_estudi 28.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -633,7 +633,7 @@
     "pis_estudi 30.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -696,7 +696,7 @@
     "pis_estudi 33.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -717,7 +717,7 @@
     "pis_estudi 34.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -801,7 +801,7 @@
     "pis_estudi 38.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -822,17 +822,17 @@
     "pis_estudi 39.aseprite": {
       "frame": {
         "x": 813,
-        "y": 1069,
+        "y": 1071,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 466,
-        "y": 195,
+        "y": 205,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "sourceSize": {
         "w": 1280,
@@ -843,7 +843,7 @@
     "pis_estudi 40.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -864,17 +864,17 @@
     "pis_estudi 41.aseprite": {
       "frame": {
         "x": 813,
-        "y": 1069,
+        "y": 1071,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 466,
-        "y": 195,
+        "y": 205,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "sourceSize": {
         "w": 1280,
@@ -885,17 +885,17 @@
     "pis_estudi 42.aseprite": {
       "frame": {
         "x": 813,
-        "y": 1069,
+        "y": 1071,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 466,
-        "y": 195,
+        "y": 205,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "sourceSize": {
         "w": 1280,
@@ -906,7 +906,7 @@
     "pis_estudi 43.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -927,7 +927,7 @@
     "pis_estudi 44.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -948,17 +948,17 @@
     "pis_estudi 45.aseprite": {
       "frame": {
         "x": 813,
-        "y": 1069,
+        "y": 1071,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 466,
-        "y": 195,
+        "y": 205,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "sourceSize": {
         "w": 1280,
@@ -969,7 +969,7 @@
     "pis_estudi 46.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -990,7 +990,7 @@
     "pis_estudi 47.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1011,7 +1011,7 @@
     "pis_estudi 48.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1032,7 +1032,7 @@
     "pis_estudi 49.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1053,17 +1053,17 @@
     "pis_estudi 50.aseprite": {
       "frame": {
         "x": 813,
-        "y": 1069,
+        "y": 1071,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 466,
-        "y": 195,
+        "y": 205,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "sourceSize": {
         "w": 1280,
@@ -1074,7 +1074,7 @@
     "pis_estudi 51.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1095,17 +1095,17 @@
     "pis_estudi 52.aseprite": {
       "frame": {
         "x": 813,
-        "y": 1069,
+        "y": 1071,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 466,
-        "y": 195,
+        "y": 205,
         "w": 252,
-        "h": 225
+        "h": 215
       },
       "sourceSize": {
         "w": 1280,
@@ -1116,7 +1116,7 @@
     "pis_estudi 53.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1137,7 +1137,7 @@
     "pis_estudi 54.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1158,7 +1158,7 @@
     "pis_estudi 55.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1179,7 +1179,7 @@
     "pis_estudi 56.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1200,7 +1200,7 @@
     "pis_estudi 57.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1221,7 +1221,7 @@
     "pis_estudi 58.aseprite": {
       "frame": {
         "x": 2035,
-        "y": 1069,
+        "y": 1071,
         "w": 1,
         "h": 1
       },
@@ -1247,7 +1247,7 @@
     "format": "RGBA8888",
     "size": {
       "w": 3987,
-      "h": 1343
+      "h": 1345
     },
     "scale": "1",
     "frameTags": [

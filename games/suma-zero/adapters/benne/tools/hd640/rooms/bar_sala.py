@@ -26,6 +26,7 @@ from hd.rooms.bar_sala import (WALLY, WOOD, FORMICA, STEELB, BRASS, TERRAZ, SLAT
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
 ART_SCALE = 2
 from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
 FLOOR_Y = 200
 BAR_TOP = 149      # el taulell de la barra: cantell del darrere

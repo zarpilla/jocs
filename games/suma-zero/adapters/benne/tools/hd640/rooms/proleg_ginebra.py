@@ -32,6 +32,12 @@ from hd.personatges import hair_cap
 from hd640.draw_characters import person
 import hd640.rooms.portada as portada
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 K = 4 / 3
 HORIZON = 200
 
@@ -155,7 +161,7 @@ def reflections(cv, frame=0):
         for x in range(W):
             wob = round(math.sin(y * 0.52 + frame * 0.8) * min(4, d / 12))
             sx = max(0, min(W - 1, x + wob))
-            r, g, b, _ = S[sx, sy]
+            r, g, b, _ = S[sx * cv.S, sy * cv.S]
             if r + g + b > 260 and (y + x // 4) % 2 == 0:
                 o = cv.get(x, y)
                 k = 0.45 * max(0, 1 - d / 146)
@@ -189,7 +195,7 @@ def jet(cv, frame=0):
 def big_word(cv, word, cx, y, big):
     """Lletres daurades grosses (les petites ×`big`), amb bisell: llum a dalt, ombra a baix."""
     w = (text_width(word) + 1) * big
-    tmp = Canvas(w=60, h=10, transparent=True)
+    tmp = Canvas1x(w=60, h=10, transparent=True)
     text(tmp, word, 0, 0, GOLD, 4, lit=0)
     sm = nearest(tmp.img, (tmp.img.width * big, tmp.img.height * big))
     SM = sm.load()
@@ -204,7 +210,7 @@ def big_word(cv, word, cx, y, big):
                     O[xx, yy] = GOLD[4] + (255,)
                 elif not below:
                     O[xx, yy] = GOLD[2] + (255,)
-    cv.img.alpha_composite(out, (cx - w // 2, y))
+    cv.blit(out, (cx - w // 2, y))
     return cx - w // 2, w
 
 
@@ -321,7 +327,7 @@ def screen(cv, state='logo', talk=False, smile=True, look=False, fx=None):
         bust = _bust(talk, smile, look)
         lay = Image.new('RGBA', (W, H), (0, 0, 0, 0))
         lay.alpha_composite(bust, ((x0 + x1) // 2 - 44, y1 - 83))
-        cv.img.alpha_composite(lay.crop((x0, y0, x1 + 1, y1 + 1)), (x0, y0))
+        cv.blit(lay.crop((x0, y0, x1 + 1, y1 + 1)), (x0, y0))
         cv.rect(x0, y1 - 8, x1, y1, [(240, 200, 70)], 0, lit=0)          # el rètol de baix
         cv.hline(x0, x1, y1 - 8, [(255, 230, 130)], 0, lit=0)
         text(cv, 'BCMU', x0 + 4, y1 - 6, [(30, 20, 4)], 0, lit=0, flat=(40, 28, 6))
@@ -342,10 +348,12 @@ def _screen_fx(cv, fx):
         return
     if fx == 'glitch':                                                   # unes franges que es desplacen
         for a, b, dx in ((y0 + 9, y0 + 17, 7), (y0 + 30, y0 + 33, -11), (y0 + 50, y0 + 61, 5)):
-            band = cv.img.crop((x0, a, x1 + 1, b))
-            cv.img.paste(band, (x0 + dx, a))
-            cv.img.paste(band.crop((band.width - dx, 0, band.width, b - a)) if dx > 0 else band.crop((0, 0, -dx, b - a)),
-                         (x0, a) if dx > 0 else (x1 + 1 + dx, a))
+            k = cv.S                                                    # (en píxels reals)
+            X0, A, B, X1, DX = x0 * k, a * k, b * k, (x1 + 1) * k, dx * k
+            band = cv.img.crop((X0, A, X1, B))
+            cv.img.paste(band, (X0 + DX, A))
+            cv.img.paste(band.crop((band.width - DX, 0, band.width, B - A)) if DX > 0 else band.crop((0, 0, -DX, B - A)),
+                         (X0, A) if DX > 0 else (X1 + DX, A))
     elif fx in ('soroll', 'soroll2'):                                    # neu de televisor
         seed = 7 if fx == 'soroll' else 8
         for y in range(y0, y1 + 1):
@@ -423,7 +431,7 @@ def _screen(**kw):
     _top(cv, **kw)
     d = _diff(cv.img, _top_base())
     a = np.array(d)
-    a[HORIZON:, :, 3] = 0
+    a[HORIZON * cv.S:, :, 3] = 0
     return Image.fromarray(a)
 
 
@@ -460,23 +468,26 @@ def _glint_frames():
     x0, x1 = TOWER
     ys, ye = TOP - 26, TOP - 8
     gold = (a0[:, :, 0] > 170) & (a0[:, :, 2] < 140)
+    k_ = a0.shape[1] // W                                                # píxels reals per píxel de sala (ART_SCALE)
     frames = []
     for i in range(12):
         p = x0 - 6 + (x1 - x0 + 12) * i / 11
         out = np.zeros_like(a0)
-        for y in range(ys, ye):
-            for x in range(x0 - 4, x1 + 5):
-                if not gold[y, x]:
+        for Y in range(ys * k_, ye * k_):
+            for X in range((x0 - 4) * k_, (x1 + 5) * k_):
+                if not gold[Y, X]:
                     continue
+                x, y = (X + 0.5) / k_ - 0.5, (Y + 0.5) / k_ - 0.5
                 d = abs(x + (y - ys) * 0.7 - p)
                 k = 1.0 if d < 2 else 0.5 if d < 4 else 0
                 if k:
-                    c = a0[y, x, :3] + (np.array([255, 252, 230]) - a0[y, x, :3]) * k
-                    out[y, x] = [*c, 255]
+                    c = a0[Y, X, :3] + (np.array([255, 252, 230]) - a0[Y, X, :3]) * k
+                    out[Y, X] = [*c, 255]
         if i == 6:                                                       # i una estrelleta al mig
             cx, cy = (x0 + x1) // 2 + 14, ys - 1
             for dx, dy in ((0, 0), (-1, 0), (1, 0), (0, -1), (0, 1), (-2, 0), (2, 0), (0, -2), (0, 2)):
-                out[cy + dy, cx + dx] = [255, 255, 240, 255] if abs(dx) + abs(dy) < 2 else [250, 220, 140, 255]
+                Y0, X0 = (cy + dy) * k_, (cx + dx) * k_
+                out[Y0:Y0 + k_, X0:X0 + k_] = [255, 255, 240, 255] if abs(dx) + abs(dy) < 2 else [250, 220, 140, 255]
         frames.append(Image.fromarray(out.astype(np.uint8)))
     return frames + [_empty()]
 
@@ -498,8 +509,9 @@ FON = 8
 def _dissolve(k):
     """La portada amb una part `k`/FON dels quadrets ja fosa (0: sencera; FON: res)."""
     a = np.array(portada.base()).copy()
-    yy, xx = np.mgrid[0:H, 0:W]
-    t = BAYER[(yy // 2) % 4, (xx // 2) % 4]
+    s = a.shape[1] // W                                                  # (quadrets de 2 px de sala, també a 2×)
+    yy, xx = np.mgrid[0:a.shape[0], 0:a.shape[1]]
+    t = BAYER[(yy // (2 * s)) % 4, (xx // (2 * s)) % 4]
     a[t < k * 16 / FON, 3] = 0
     return Image.fromarray(a)
 

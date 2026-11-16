@@ -29,6 +29,12 @@ from hd.rooms.aeroport_terminal import (CONC, TILE, DAWN, TARMAC, GLASS, DESK, B
                                         WOODC, PLANT, CHROME, VEND)
 from hd640.draw_characters import person
 
+# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
+# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
+ART_SCALE = 2
+from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
+from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+
 FLOOR_Y = 200
 
 LIGHT = Light(ambient=-0.1, vignette=(93, 40), floor_fade=(259, 40))
@@ -183,7 +189,7 @@ def ortega(cv, cig='sencera'):
     cx0, _ = _o(268, 0)
     cx1, _ = _o(290, 0)
     cv.tint(cx0, FEET_Y - 1, cx1, FEET_Y + 2, (4, 6, 10), 0.55)
-    cv.img.alpha_composite(fig, (_OX, _OY))
+    cv.blit(fig, (_OX, _OY))
     # el monyo i el mocador de coll
     mx, my = _o(278, 32)
     cv.disc(mx, my, 2.7, 2.7, [(10, 10, 12), (30, 28, 32), (56, 54, 58)], lambda nx, ny: 1.8 - ny, lit=0)

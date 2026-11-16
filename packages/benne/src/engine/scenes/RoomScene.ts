@@ -140,6 +140,7 @@ import {
 } from '../characterFeet';
 import { applyCharacterLights, compileCharacterLights } from '../room/characterLights';
 import { releaseOtherRoomSheets } from '../room/releaseRoomSheets';
+import { assembleRoomSheetPages } from '../room/roomSheetPages';
 import {
   applyCharacterSpriteRegionTintFromWinningRegion,
   computeRoomRegionPerspective,
@@ -779,6 +780,8 @@ export class RoomScene extends Phaser.Scene {
   create(data: RoomSceneStartData): void {
     registerBenneCharacterPerspectiveBatch(this.game);
     this.roomData = data.room;
+    // A sheet in several pages becomes one texture now that its images are loaded (room/roomSheetPages.ts).
+    assembleRoomSheetPages(this, data.room.id);
     // The previous room's scene is already shut down: free every other room's sheet (GPU memory on phones).
     releaseOtherRoomSheets(this, data.room.id);
     this.player = null;

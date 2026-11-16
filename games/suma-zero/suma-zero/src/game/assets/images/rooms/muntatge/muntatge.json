@@ -4,27 +4,27 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 1.aseprite": {
       "frame": {
-        "x": 3004,
-        "y": 0,
+        "x": 2050,
+        "y": 720,
         "w": 1,
         "h": 1
       },
@@ -37,155 +37,155 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 2.aseprite": {
       "frame": {
-        "x": 2862,
-        "y": 0,
-        "w": 142,
-        "h": 44
+        "x": 1766,
+        "y": 720,
+        "w": 284,
+        "h": 88
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 454,
-        "y": 178,
-        "w": 142,
-        "h": 44
+        "x": 908,
+        "y": 356,
+        "w": 284,
+        "h": 88
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 3.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1280,
         "y": 0,
-        "w": 450,
-        "h": 248
+        "w": 900,
+        "h": 496
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 174,
-        "y": 8,
-        "w": 450,
-        "h": 248
+        "x": 348,
+        "y": 16,
+        "w": 900,
+        "h": 496
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 4.aseprite": {
       "frame": {
-        "x": 1090,
+        "x": 2180,
         "y": 0,
-        "w": 450,
-        "h": 248
+        "w": 900,
+        "h": 496
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 174,
-        "y": 8,
-        "w": 450,
-        "h": 248
+        "x": 348,
+        "y": 16,
+        "w": 900,
+        "h": 496
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 5.aseprite": {
       "frame": {
-        "x": 2418,
-        "y": 0,
-        "w": 222,
-        "h": 245
+        "x": 878,
+        "y": 720,
+        "w": 444,
+        "h": 490
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 391,
-        "y": 11,
-        "w": 222,
-        "h": 245
+        "x": 782,
+        "y": 22,
+        "w": 444,
+        "h": 490
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 6.aseprite": {
       "frame": {
-        "x": 2640,
-        "y": 0,
-        "w": 222,
-        "h": 245
+        "x": 1322,
+        "y": 720,
+        "w": 444,
+        "h": 490
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 391,
-        "y": 11,
-        "w": 222,
-        "h": 245
+        "x": 782,
+        "y": 22,
+        "w": 444,
+        "h": 490
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 7.aseprite": {
       "frame": {
-        "x": 1540,
+        "x": 3080,
         "y": 0,
-        "w": 439,
-        "h": 248
+        "w": 878,
+        "h": 496
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 174,
-        "y": 8,
-        "w": 439,
-        "h": 248
+        "x": 348,
+        "y": 16,
+        "w": 878,
+        "h": 496
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     },
     "muntatge 8.aseprite": {
       "frame": {
-        "x": 1979,
-        "y": 0,
-        "w": 439,
-        "h": 248
+        "x": 0,
+        "y": 720,
+        "w": 878,
+        "h": 496
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 174,
-        "y": 8,
-        "w": 439,
-        "h": 248
+        "x": 348,
+        "y": 16,
+        "w": 878,
+        "h": 496
       },
       "sourceSize": {
-        "w": 640,
-        "h": 360
+        "w": 1280,
+        "h": 720
       },
       "duration": 100
     }
@@ -196,8 +196,8 @@
     "image": "muntatge.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3005,
-      "h": 360
+      "w": 3958,
+      "h": 1216
     },
     "scale": "1",
     "frameTags": [
