@@ -4,7 +4,8 @@
  * quanta estona es juga. El servidor només suma comptadors per dia; no hi ha cap identificador.
  *
  * Res no es desa al dispositiu (ni galetes ni localStorage) i no s'envia res si el navegador demana
- * no ser seguit (Global Privacy Control o Do Not Track), ni des de localhost (`npm run dev` o un build
+ * no ser seguit (Global Privacy Control o Do Not Track), ni des d'un robot o un navegador automatitzat
+ * (cercadors, eines d'auditoria, scripts de proves), ni des de localhost (`npm run dev` o un build
  * provat en local): les proves no compten.
  *
  * Es copia a `src/game/narrative/` amb `npm run benne:sync`. No l'editis allà.
@@ -22,8 +23,11 @@ let joc = '';
 let actiu = false;
 const navegador = typeof navigator === 'object' ? (navigator as Navigator & { globalPrivacyControl?: boolean }) : undefined;
 const local = typeof location === 'object' && /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname);
+/** Robots i navegadors automatitzats: `webdriver` el posen Selenium, Puppeteer, Playwright i Chrome headless. */
+const robot =
+  navegador?.webdriver === true || /bot\b|crawl|spider|slurp|headless|lighthouse/i.test(navegador?.userAgent ?? '');
 const desactivat =
-  import.meta.env.DEV || local || !navegador || navegador.globalPrivacyControl === true || navegador.doNotTrack === '1';
+  import.meta.env.DEV || local || robot || !navegador || navegador.globalPrivacyControl === true || navegador.doNotTrack === '1';
 
 function envia(ev: Esdeveniment, v: string | number = '') {
   if (desactivat || !joc) return;
