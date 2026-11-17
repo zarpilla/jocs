@@ -5,7 +5,7 @@
  * Aquest fitxer es copia a `src/game/narrative/` del projecte Benne amb
  * `npm run benne:sync`. No l'editis allà: edita `adapters/benne/runtime/`.
  */
-import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type VarValue } from '@benne/script';
+import { HotspotHandle, PropHandle, ambient, camera, defineVars, events, game, inventory, player, setOutfit, shade, type FallbackTarget, type VarValue } from '@benne/script';
 import { characters, dialogs, guis, items, rooms } from '@game';
 import { Narrative, type StageCue, type Condition, type Effect, type GameContent, type InteractionTarget, type LocaleTable, type WorldPort } from '@aventura/narrative-core';
 import { installGameLogic } from '@aventura/game/logic';
@@ -261,6 +261,23 @@ export const roomProtagonist = (room: string) => content.rooms[room]?.protagonis
 export const isSharedRoom = (room: string) => (content.rooms[room]?.protagonists?.length ?? 0) > 0;
 
 /**
+ * Una cinemàtica amb coses per tocar (la carta de navegació d'Aigua Verne): no hi ha protagonista, però en acabar
+ * l'`onEnter` es poden tocar les coses visibles, i el toc les fa sense que ningú hi camini. Compten les coses amb
+ * interaccions: el pròleg i els finals també tenen `hotspots`, però només per mostrar o amagar els personatges.
+ */
+export const isClickableCutscene = (room: string | null | undefined) => {
+  const def = room ? content.rooms[room] : undefined;
+  return !!def?.cutscene && Object.values(def.hotspots ?? {}).some((h) => (h.interactions?.length ?? 0) > 0);
+};
+
+/** El text de l'`onEnter` d'una cinemàtica amb coses per tocar («On anem?»): el HUD el posa a la frase quan no hi ha res a sota. */
+let prompt = '';
+export const clickablePrompt = () => prompt;
+export const setClickablePrompt = (text: string) => {
+  prompt = text;
+};
+
+/**
  * Qui entrarà a la sala següent, quan es canvia de protagonista cap a una sala compartida: en entrar-hi
  * no es pot saber per la sala (hi pot ser qualsevol de les dues). Ho posa `goToProtagonist`.
  */
@@ -478,6 +495,27 @@ export function bindHotspots(handles: Record<string, Showable>) {
   boundHotspots = { ...boundHotspots, ...handles };
   applyHotspotVisibility();
 }
+
+/**
+ * Una interfície pròpia del joc (p. ex. la tàctil d'Aigua Verne, sense barra de verbs) pot quedar-se alguns
+ * clics abans que vagin al JSON (`routeInteraction`, narrative.script.ts): verbs seus (tocar, el menú d'accions) o
+ * decidir quin verb fa un objecte. `takes` ha de ser instantània; `route` pot ser una funció de pas, i per fer la
+ * interacció del JSON crida `performInteraction`. Sense encaminador, cada clic va directe al JSON.
+ */
+export interface TouchRouter {
+  takes(verb: string, target: FallbackTarget, item?: string): boolean;
+  route(verb: string, target: FallbackTarget, item?: string): unknown;
+  /**
+   * Just després que el nucli resolgui una interacció (abans de dir-ne les línies): la tàctil apunta què s'ha vist.
+   * `room` és la sala on era la cosa (abans de l'acció, que pot haver canviat de sala).
+   */
+  acted?(verb: string, target: FallbackTarget, room: string | null): void;
+}
+let router: TouchRouter | null = null;
+export function setTouchRouter(r: TouchRouter | null) {
+  router = r;
+}
+export const touchRouter = () => router;
 
 /**
  * El botó «Canvia» (a la barra de verbs i, si el joc el té, al menú) només hi és quan el jugador pot
