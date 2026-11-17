@@ -10,8 +10,8 @@ Dues mides a cada full (guió, «Art: dues mides de càmera»):
 Les robes porten el seu prefix davant: `Gala` / `LlunyGala`, `Brut` / `LlunyBrut`, `Moll` / `LlunyMoll`.
 
 Els fulls són a ART_SCALE = 2 (`artScale: 2` al .character.json; els punts continuen a la mida de prop, 59×104):
-la de prop es dibuixa a 2× (hd/personatges.FigK2: volums a la resolució real, cara en blocs de 2×2), i la de lluny,
-a ×1 i ampliada ×2 (igual que abans).
+la de prop i la de lluny es dibuixen a 2× (hd/personatges.FigK2 i FigL2: volums a la resolució real, cara i detalls
+en blocs de 2×2).
 
 Tres direccions (L, D, U; Benne fa el mirall per a R). Una persona: fotograma de 59×104, peus a (30, 100).
 
@@ -61,9 +61,11 @@ class Mides:
         return img
 
     def lluny(self, fn):
-        out = Image.new('RGBA', (self.W, self.H), CLEAR)
-        out.alpha_composite(fn(), self.off)
-        return nearest(out, (self.W * ART_SCALE, self.H * ART_SCALE)) if ART_SCALE != 1 else out
+        with P.de_lluny():
+            img = fn()
+        out = Image.new('RGBA', (self.W * ART_SCALE, self.H * ART_SCALE), CLEAR)
+        out.alpha_composite(img, (self.off[0] * ART_SCALE, self.off[1] * ART_SCALE))
+        return out
 
     def pt(self, x, y):
         """Un punt de disseny → del fotograma gran."""

@@ -204,6 +204,8 @@ class FigK2(FigK):
         bloc S×S. La cara, les ulleres... queden igual que a ×1,2.
     Els ganxos que recorren el buffer fan servir `px_scale(fg)` i `design(fg, X)`."""
 
+    kbase = K1               # l'escala de l'API (la de prop); FigL2, 1
+
     def __init__(self, w, h):
         super().__init__(w, h)
         self.S = ART_SCALE
@@ -215,13 +217,14 @@ class FigK2(FigK):
     def _fi(self):
         global K
         self._fine += 1
-        K = K1 * self.S
+        if self._fine == 1:
+            self._k_out, K = K, self.kbase * self.S
         try:
             yield
         finally:
             self._fine -= 1
             if not self._fine:
-                K = K1
+                K = self._k_out
 
     def ell(self, *a, **kw):
         with self._fi():
@@ -278,6 +281,28 @@ class FigK2(FigK):
             super().rset(x, y, v)
 
 
+class FigL2(FigK2):
+    """La figura de lluny (×1) a S×: l'API és la de la figura de sempre (coordenades de disseny = píxels de ×1) i el
+    buffer, a S×. Els volums i els píxels de disseny es rasteritzen a la resolució real (com FigK2 amb K = 1 × S); les
+    línies i els píxels que els ganxos posen un a un (`rset`), en blocs S×S. `big` és fals: els ganxos hi fan el camí
+    de ×1."""
+
+    big = False
+    kbase = 1.0
+
+    def __init__(self, w, h):
+        _Fig1.__init__(self, w * ART_SCALE, h * ART_SCALE)
+        self.S = ART_SCALE
+        self._fine = 0
+
+    def line(self, x0, y0, x1, y1, mat, lvl):
+        """Com la de ×1: un píxel de disseny de gruix (un bloc S×S)."""
+        n = int(math.ceil(max(abs(x1 - x0), abs(y1 - y0), 1)))
+        for i in range(n + 1):
+            t = i / n
+            self.rpx(x0 + (x1 - x0) * t + self.ox, y0 + (y1 - y0) * t + self.oy, mat, lvl)
+
+
 def big(fg):
     return getattr(fg, 'big', False)
 
@@ -288,8 +313,9 @@ def px_scale(fg):
 
 
 def design(fg, X):
-    """La coordenada de disseny del píxel X del buffer d'una figura de prop (a qualsevol S)."""
-    return (X + 0.5) / (K1 * px_scale(fg)) - 0.5
+    """La coordenada de disseny del píxel X del buffer d'una figura (de prop o de lluny, a qualsevol S)."""
+    kb = getattr(fg, 'kbase', K1 if big(fg) else 1.0)
+    return (X + 0.5) / (kb * px_scale(fg)) - 0.5
 
 
 # ─── La cara, a la mida de prop ─────────────────────────────────────────────
@@ -439,6 +465,18 @@ def de_prop():
         yield
     finally:
         C.Fig, C.front_face, C.side_face = saved
+
+
+@contextmanager
+def de_lluny():
+    """Dins d'aquest bloc, la mida de lluny es dibuixa a ART_SCALE× (FigL2), si cal."""
+    saved = C.Fig
+    if ART_SCALE > 1:
+        C.Fig = FigL2
+    try:
+        yield
+    finally:
+        C.Fig = saved
 
 
 def Fig(w, h):
@@ -864,6 +902,8 @@ def _rp(fg, X, Y, mat, lvl):
     """Píxel real a les dues mides."""
     if big(fg):
         fg.rpx(X, Y, mat, lvl)
+    elif hasattr(fg, 'rset'):                            # FigL2: un píxel de ×1, un bloc
+        fg.rset(X, Y, (mat, lvl))
     else:
         X, Y = int(round(X)), int(round(Y))
         if 0 <= X < fg.w and 0 <= Y < fg.h:
@@ -1619,7 +1659,7 @@ def _stains(fg, mat):
         for x in range(fg.w):
             v = fg.buf[y][x]
             if v and v[0] is mat:
-                gx, gy = (design(fg, x), design(fg, y)) if big(fg) else (x, y)
+                gx, gy = design(fg, x), design(fg, y)
                 n = math.sin(gx * 0.9 + gy * 0.37) + math.sin(gx * 0.31 - gy * 0.83 + 1.7) + math.sin(gy * 0.5 + 2.2)
                 d = 0.0
                 if n > 2.1:
@@ -1778,7 +1818,7 @@ def quim_over(fg, p, spec):
         for x in range(fg.w):
             v = fg.buf[y][x]
             if v and v[0] is KNIT:
-                gx, gy = (int(design(fg, x)), int(design(fg, y))) if big(fg) else (x, y)
+                gx, gy = int(design(fg, x)), int(design(fg, y))
                 if gx % 3 == 0:
                     fg.buf[y][x] = (KNIT, v[1] - 0.6)
                 elif gy % 2 == 0 and gx % 3 == 1:
@@ -1920,7 +1960,7 @@ def _stripes(fg, pix, vertical=True, w=2):
     for (X, Y), _ in pix.items():
         if not (0 <= X < fg.w and 0 <= Y < fg.h) or not fg.buf[Y][X]:
             continue
-        u = (design(fg, X) if big(fg) else X) if vertical else (design(fg, Y) if big(fg) else Y)
+        u = design(fg, X) if vertical else design(fg, Y)
         m, l = fg.buf[Y][X]
         fg.buf[Y][X] = (STRIPE_W if int(math.floor(u / w)) % 2 else STRIPE_N, l)
 
