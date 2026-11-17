@@ -352,18 +352,20 @@ def bastida_hair(fg, p, spec):
 
 def bastida_over(fg, p, spec):
     """Jersei de punt (trenes) i ratlles de pijama a les cames."""
+    s = getattr(fg, 'S', 1)                      # una figura a S× (hd640): els patrons, en píxels de 640
     for y in range(fg.h):
         for x in range(fg.w):
             v = fg.buf[y][x]
             if not v:
                 continue
             m, l = v
+            X, Y = x // s, y // s
             if m is JUMPER:
-                if x % 4 == 0:
+                if X % 4 == 0:
                     fg.buf[y][x] = (m, l - 0.7)
-                elif x % 4 == 2 and y % 3 == 0:
+                elif X % 4 == 2 and Y % 3 == 0:
                     fg.buf[y][x] = (m, l + 0.6)
-            elif m is PYJAMA and x % 3 == 0:
+            elif m is PYJAMA and X % 3 == 0:
                 fg.buf[y][x] = (m, l + 1.2)
     b = p.bob
     if p.f == 'L':
