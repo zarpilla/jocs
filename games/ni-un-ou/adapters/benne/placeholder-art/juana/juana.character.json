@@ -8,7 +8,7 @@
   },
   "walkSpeed": 93,
   "walkToPoint": {
-    "x": 59,
+    "x": -64,
     "y": 111
   },
   "talkPoint": {
@@ -86,5 +86,6 @@
       "frameDuration": 500
     }
   },
-  "defaultVerb": "talkTo"
+  "defaultVerb": "talkTo",
+  "artScale": 2
 }

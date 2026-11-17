@@ -11,11 +11,15 @@ FigK, que rep les mateixes ordres en coordenades de disseny (les de 49×87) i le
   - les línies són d'un píxel real.
 La cara (ulls, celles, nas, boca) i la diadema de l'Iri es dibuixen a part, píxel a píxel a la mida nova.
 
+Els fulls (main) es dibuixen a ART_SCALE = 2 amb FigK2: el que té volum, a la resolució real; els detalls píxel a
+píxel, en blocs de 2×2 (la cara és la mateixa). El .character.json porta `artScale: 2` i els punts continuen a 640.
+
 Ús (des de tools/): python3 hd640/draw_characters.py [carpeta]   (per defecte, hd640/characters/)
 """
 import json
 import math
 import sys
+from contextlib import contextmanager
 from pathlib import Path
 
 TOOLS = Path(__file__).resolve().parent.parent
@@ -27,6 +31,9 @@ import hd.characters as C  # noqa: E402
 from hd.pix import mix  # noqa: E402
 
 K = 4 / 3
+K640 = K
+ART_SCALE = 2     # els fulls (main): dibuixats a 2×, el motor els mostra a la meitat (artScale)
+S = 1             # l'escala d'aquest procés: 1, o ART_SCALE en fer els fulls (vegeu install)
 
 
 def f(u):
@@ -178,6 +185,81 @@ class FigK(C.Fig):
                 self.buf[Y][X] = (m, l + d)
 
 
+class FigK2(FigK):
+    """FigK a S× (S = 2): la mateixa figura, amb l'API en píxels de 640 i el buffer a S×.
+      - el que té volum (`ell`, `limb`, `lathe`, `poly`) i els píxels de disseny (`px`, `shade`, `erase`, `get`) es
+        rasteritzen a la resolució real (`f`, `g` i `span` hi treballen amb K = 4/3 × S);
+      - els detalls píxel a píxel (`rpx`, `rshade`, i `line`, que hi passa), en coordenades de 640: cada un, un bloc
+        S×S. La cara, la diadema i les ulleres queden igual que a 640."""
+
+    def __init__(self, w, h):
+        super().__init__(w, h)
+        self.S = S
+        self.w, self.h = self.w * S, self.h * S
+        self.buf = [[None] * self.w for _ in range(self.h)]
+        self._fine = 0
+
+    @contextmanager
+    def _fi(self):
+        global K
+        self._fine += 1
+        K = K640 * S
+        try:
+            yield
+        finally:
+            self._fine -= 1
+            if not self._fine:
+                K = K640
+
+    def ell(self, *a, **kw):
+        with self._fi():
+            return super().ell(*a, **kw)
+
+    def limb(self, *a, **kw):
+        with self._fi():
+            return super().limb(*a, **kw)
+
+    def lathe(self, *a, **kw):
+        with self._fi():
+            return super().lathe(*a, **kw)
+
+    def poly(self, *a, **kw):
+        with self._fi():
+            return super().poly(*a, **kw)
+
+    def px(self, *a, **kw):
+        with self._fi():
+            return super().px(*a, **kw)
+
+    def shade(self, *a, **kw):
+        with self._fi():
+            return super().shade(*a, **kw)
+
+    def erase(self, *a, **kw):
+        with self._fi():
+            return super().erase(*a, **kw)
+
+    def get(self, *a, **kw):
+        with self._fi():
+            return super().get(*a, **kw)
+
+    def _blk(self, X, Y):
+        X, Y = int(round(X)), int(round(Y))
+        return [(X * S + i, Y * S + j) for j in range(S) for i in range(S)]
+
+    def rpx(self, X, Y, mat, lvl):
+        if self._fine:
+            return super().rpx(X, Y, mat, lvl)
+        for x, y in self._blk(X, Y):
+            super().rpx(x, y, mat, lvl)
+
+    def rshade(self, X, Y, d, only=None):
+        if self._fine:
+            return super().rshade(X, Y, d, only)
+        for x, y in self._blk(X, Y):
+            super().rshade(x, y, d, only)
+
+
 # ─── La cara, a la mida nova ─────────────────────────────────────────────────
 
 def _eye(fg, x0, ey, inner_right, spec, closed):
@@ -292,13 +374,17 @@ def side_face(fg, p, spec):
         fg.rpx(mx, my, lip, 0); fg.rpx(mx + 1, my, mix(lip, C.MOUTH, 0.5), 0); fg.rpx(mx + 2, my, mix(lip, C.MOUTH, 0.3), 0)
 
 
-def install():
-    """Substitueix Fig i la cara a hd.characters (només en aquest procés). Cal fer-ho abans d'importar hd.personatges."""
-    C.Fig = FigK
+def install(art_scale=1):
+    """Substitueix Fig i la cara a hd.characters (només en aquest procés). Cal fer-ho abans d'importar hd.personatges.
+    `art_scale`: 1 per a figures de 640, ART_SCALE per als fulls."""
+    global S
+    S = art_scale
+    fig = FigK2 if S > 1 else FigK
+    C.Fig = fig
     C.front_face = front_face
     C.side_face = side_face
     import hd.personatges as P
-    P.Fig = FigK
+    P.Fig = fig
 
     def headband3(fg, cx, cy, rx, ry, a0, a1, n=None):
         """La diadema de tres ratlles, d'un píxel real cadascuna."""
@@ -351,7 +437,7 @@ def install():
 # ─── Fulls ───────────────────────────────────────────────────────────────────
 
 def main():
-    P = install()
+    P = install(ART_SCALE)
     import draw_characters as D
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent / 'characters'
     D.OUT = out
@@ -359,6 +445,8 @@ def main():
     def scaled_extra(extra):
         o = dict(extra)
         o['walkSpeed'] = round(extra['walkSpeed'] * K)
+        if S > 1:
+            o['artScale'] = S
 
         def pt(q):
             return {'x': round(f(q['x'])), 'y': round(f(q['y']))}

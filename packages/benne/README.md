@@ -68,6 +68,10 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
 - art de sala més dens (`artScale` al `.room.json`, p. ex. `2`): el full de la sala és a 2× i el motor el mostra a
   la meitat. La geometria, els scripts i els personatges continuen en píxels de sala; com que el canvas es pinta a la
   resolució de la pantalla, el detall de l'art es veu tot.
+- personatges més densos (`artScale` al `.character.json`, p. ex. `2`): el full és a 2× i el motor el mostra a
+  1/artScale, per sobre de l'escala de perspectiva. `feet`, `collider`, `walkToPoint` i `talkPoint` continuen en
+  unitats del fotograma a 1× (`characterFeet.characterArtScale`); el shader de perspectiva compta només la part de
+  perspectiva de l'escala, i l'editor de personatges treballa també a 1×.
 - en entrar a una sala s'alliberen els fulls de les altres (textura, JSON i animacions; `room/releaseRoomSheets.ts`),
   perquè la memòria de la GPU no creixi sala rere sala (al mòbil, si no, el joc acaba perdent el context WebGL);
   `__BENNE_HOOKS__.goToRoom(id)` i `roomSheets()` per provar-ho.

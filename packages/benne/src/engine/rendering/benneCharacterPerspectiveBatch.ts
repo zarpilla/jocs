@@ -26,6 +26,14 @@ export const BENNE_CHARACTER_SUBMITTER_NAME = 'SubmitterBenneCharacterQuad';
 
 const PERSP_EPS = 0.00015;
 
+/** `CharacterData.artScale` of the sprite being drawn (1 when it has none). */
+function characterSheetArtScale(obj: object): number {
+  const getData = (obj as { getData?: (key: string) => unknown }).getData;
+  const data = typeof getData === 'function' ? (getData.call(obj, 'character') as { artScale?: number } | undefined) : undefined;
+  const k = data?.artScale;
+  return typeof k === 'number' && k > 0 ? k : 1;
+}
+
 const benneCharacterPerspectiveShaderAddition = {
   name: 'BenneCharacterPerspective',
   additions: {
@@ -164,9 +172,11 @@ export function registerBenneCharacterPerspectiveBatch(game: Phaser.Game): void 
       renderOptions: Phaser.Types.Renderer.WebGL.RenderNodes.BatchHandlerQuadRenderOptions,
     ): void {
       const top = benneCharacterBatchObjectStack[benneCharacterBatchObjectStack.length - 1];
+      // The magnification in 1× frame units: a sheet drawn at `artScale`× is shown at 1/artScale on purpose (its
+      // detail is denser, not something to bucket away), so only the perspective part of the scale counts.
       const mag =
         top && 'scaleX' in top && 'scaleY' in top
-          ? Math.max(Math.abs(top.scaleX as number), Math.abs(top.scaleY as number))
+          ? Math.max(Math.abs(top.scaleX as number), Math.abs(top.scaleY as number)) * characterSheetArtScale(top)
           : 1;
 
       if (this.instanceCount === 0) {

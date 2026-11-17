@@ -2,6 +2,7 @@ import * as Phaser from 'phaser';
 import { applyBootAudioSettings } from '../../engine/applyAudioFromSettings';
 import { applyCharacterAnimationClips } from '../../engine/characterAnimationPlayback';
 import {
+  characterArtScale,
   placeSpriteByFeet,
   resolveCharacterFeetLocal,
   type CharacterFeetLocal,
@@ -340,7 +341,11 @@ class CharacterPreviewScene extends Phaser.Scene {
       }
     });
 
-    this.feetLocal = { ...resolveCharacterFeetLocal(this.character, this.sprite) };
+    // Everything here is in 1× frame units (the JSON's): a sheet drawn at `artScale`× is shown at 1/artScale.
+    const artScale = characterArtScale(this.character);
+    this.sprite.setScale(1 / artScale);
+    const feetTex = resolveCharacterFeetLocal(this.character, this.sprite);
+    this.feetLocal = { x: feetTex.x / artScale, y: feetTex.y / artScale };
     const wtp = this.character.walkToPoint;
     this.walkLocal = wtp ? { x: wtp.x, y: wtp.y } : { ...this.feetLocal };
     const ttp = this.character.talkPoint;
@@ -350,7 +355,7 @@ class CharacterPreviewScene extends Phaser.Scene {
 
     const feetWx = WORLD_PAD + this.feetLocal.x;
     const feetWy = WORLD_PAD + this.feetLocal.y;
-    placeSpriteByFeet(this.sprite, this.feetLocal, feetWx, feetWy);
+    placeSpriteByFeet(this.sprite, feetTex, feetWx, feetWy);
 
     const mount = this.game.canvas.parentElement;
     if (mount) {
@@ -428,8 +433,8 @@ class CharacterPreviewScene extends Phaser.Scene {
   private computeContentAabbWorld(): { minX: number; minY: number; maxX: number; maxY: number } {
     const sx = this.sprite.x;
     const sy = this.sprite.y;
-    const fw = this.sprite.frame.width;
-    const fh = this.sprite.frame.height;
+    const fw = this.sprite.displayWidth;
+    const fh = this.sprite.displayHeight;
     let minX = sx;
     let minY = sy;
     let maxX = sx + fw;
@@ -496,8 +501,8 @@ class CharacterPreviewScene extends Phaser.Scene {
     if (this.colliderLocal.length < MIN_COLLIDER_POINTS) {
       return null;
     }
-    const fw = this.sprite.frame.width;
-    const fh = this.sprite.frame.height;
+    const fw = this.sprite.displayWidth;
+    const fh = this.sprite.displayHeight;
     const points = this.colliderLocal.map((p) => ({
       x: Math.round(Phaser.Math.Clamp(p.x, 0, fw)),
       y: Math.round(Phaser.Math.Clamp(p.y, 0, fh)),
@@ -513,8 +518,8 @@ class CharacterPreviewScene extends Phaser.Scene {
 
   /** Feet and collider vertices stay inside the cel (texture hit-test space). */
   private clampFeetOrColliderLocal(lx: number, ly: number): Point2 {
-    const fw = this.sprite.frame.width;
-    const fh = this.sprite.frame.height;
+    const fw = this.sprite.displayWidth;
+    const fh = this.sprite.displayHeight;
     return { x: Phaser.Math.Clamp(lx, 0, fw), y: Phaser.Math.Clamp(ly, 0, fh) };
   }
 

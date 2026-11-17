@@ -57,6 +57,12 @@ export interface CharacterData {
    */
   feet?: { x: number; y: number };
   /**
+   * The sheet is drawn at `artScale`× (a denser texture) and shown at 1/artScale, so the character keeps its size.
+   * `feet`, `collider`, `walkToPoint` and `talkPoint` stay in the 1× frame units (the sheet's pixels ÷ artScale).
+   * Default 1. Same idea as the room `artScale`.
+   */
+  artScale?: number;
+  /**
    * Click hit area in **texture / frame pixel space** (same origin as `feet`). When omitted and the
    * character is clickable, the full sprite rectangle is used. Requires at least three vertices.
    */

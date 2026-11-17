@@ -55,7 +55,7 @@ export interface BenneContentReport {
 }
 
 /** Camps del .character.json que venen del sprite (mides, peus, animacions). */
-const SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'animations', 'clickable', 'display'];
+const SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'animations', 'clickable', 'display', 'artScale'];
 
 /**
  * Sprite provisional d'un personatge: el seu propi a placeholder-art/<id> (draw_characters.py),
@@ -179,6 +179,7 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
       const template = readJson(placeholderArt(sprite, `${sprite}.character.json`));
       const current = isNew ? {} : readJson(path);
       const fromSprite = Object.fromEntries(SPRITE_FIELDS.filter((k) => k in template).map((k) => [k, template[k]]));
+      if (!('artScale' in template)) delete current.artScale;   // un full a 1× (p. ex. si es torna enrere)
       writeJson(path, {
         ...template, ...current, ...fromSprite, id,
         speechColor: (current.speechColor as string) ?? joc.colorsVeu?.[id] ?? NPC_COLORS[npcs.indexOf(id) % NPC_COLORS.length],

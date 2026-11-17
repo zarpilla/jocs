@@ -55,12 +55,20 @@
       "loop": true,
       "frameDuration": 140
     },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 80
+    },
     "IdleL": {
       "loop": true
     },
     "TalkL": {
       "loop": true,
       "frameDuration": 140
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
     },
     "IdleU": {
       "loop": true
@@ -69,10 +77,15 @@
       "loop": true,
       "frameDuration": 140
     },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 80
+    },
     "Contenta": {
       "loop": true,
       "frameDuration": 400
     }
   },
-  "defaultVerb": "talkTo"
+  "defaultVerb": "talkTo",
+  "artScale": 2
 }

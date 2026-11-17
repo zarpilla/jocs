@@ -284,7 +284,9 @@ def portrait(who):
     if who in _FACES:
         return _FACES[who]
     d = Path(__file__).resolve().parent / 'characters' / who
-    if (d / f'{who}.json').exists():
+    ch = d / f'{who}.character.json'
+    escala1 = not ch.exists() or json.loads(ch.read_text()).get('artScale', 1) == 1
+    if (d / f'{who}.json').exists() and escala1:     # un full a 2× no serveix per al retrat, que és a 640
         sheet = json.loads((d / f'{who}.json').read_text())
         tag = next(t['from'] for t in sheet['meta']['frameTags'] if t['name'] == 'IdleD')
         fr = list(sheet['frames'].values())[tag]['frame']
