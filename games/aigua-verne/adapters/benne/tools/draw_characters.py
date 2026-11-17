@@ -9,6 +9,10 @@ Dues mides a cada full (guió, «Art: dues mides de càmera»):
     dins el mateix fotograma amb els peus al mateix punt (Benne té un sol punt de peus per personatge).
 Les robes porten el seu prefix davant: `Gala` / `LlunyGala`, `Brut` / `LlunyBrut`, `Moll` / `LlunyMoll`.
 
+Els fulls són a ART_SCALE = 2 (`artScale: 2` al .character.json; els punts continuen a la mida de prop, 59×104):
+la de prop es dibuixa a 2× (hd/personatges.FigK2: volums a la resolució real, cara en blocs de 2×2), i la de lluny,
+a ×1 i ampliada ×2 (igual que abans).
+
 Tres direccions (L, D, U; Benne fa el mirall per a R). Una persona: fotograma de 59×104, peus a (30, 100).
 
 Surt a adapters/benne/placeholder-art/<id>/. Ús (des d'aquesta carpeta):
@@ -27,6 +31,8 @@ from hd import personatges as P  # noqa: E402
 from hd.characters import person  # noqa: E402
 
 OUT = Path(__file__).resolve().parent.parent / 'placeholder-art'
+ART_SCALE = 2
+P.ART_SCALE = ART_SCALE
 CLEAR = (0, 0, 0, 0)
 DIRS = 'LDU'
 
@@ -51,13 +57,13 @@ class Mides:
     def prop(self, fn):
         with P.de_prop():
             img = fn()
-        assert img.size == (self.W, self.H), (img.size, self.W, self.H)
+        assert img.size == (self.W * ART_SCALE, self.H * ART_SCALE), (img.size, self.W, self.H)
         return img
 
     def lluny(self, fn):
         out = Image.new('RGBA', (self.W, self.H), CLEAR)
         out.alpha_composite(fn(), self.off)
-        return out
+        return nearest(out, (self.W * ART_SCALE, self.H * ART_SCALE)) if ART_SCALE != 1 else out
 
     def pt(self, x, y):
         """Un punt de disseny → del fotograma gran."""
@@ -126,7 +132,7 @@ def write(cid, tags, extra):
     (d / f'{cid}.json').write_text(json.dumps(meta, indent=2) + '\n')
     character = {
         'id': cid, 'name': cid, 'description': '', 'clickable': True, 'display': {'aseprite': True},
-        **extra,
+        **extra, **({'artScale': ART_SCALE} if ART_SCALE != 1 else {}),
     }
     (d / f'{cid}.character.json').write_text(json.dumps(character, indent=2) + '\n')
     print(f'✔ {cid}: {len(frames)} fotogrames ({w}×{h}), {len(tags)} etiquetes')
@@ -268,7 +274,7 @@ def fitxa(results, path, bg=(170, 160, 130, 255)):
             rows.append((f'{cid} {pre}', cells))
         if 'Seu' in t:
             rows.append((f'{cid} Seu', [t['Seu'][0], t['Seu'][3], t['LlunySeu'][0], t['LlunySeu'][3]]))
-    cw, ch = 60, 106
+    cw, ch = 60 * ART_SCALE, 106 * ART_SCALE
     ncol = max(len(c) for _, c in rows)
     per = 2                                           # dues files de la fitxa per columna de la imatge
     half = -(-len(rows) // per)
@@ -279,7 +285,8 @@ def fitxa(results, path, bg=(170, 160, 130, 255)):
         for c, im in enumerate(cells):
             x = X0 + c * cw
             sheet.alpha_composite(im, (x + (cw - im.width) // 2, y + ch - im.height - 1))
-    sheet = nearest(sheet, (sheet.width * 2, sheet.height * 2))
+    if ART_SCALE == 1:
+        sheet = nearest(sheet, (sheet.width * 2, sheet.height * 2))
     sheet.save(path)
     print('✔ fitxa:', path)
 

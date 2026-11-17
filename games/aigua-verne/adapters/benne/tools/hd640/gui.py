@@ -402,7 +402,10 @@ def _face_source(who):
             if 'IdleD' not in tags:
                 continue
             fr = list(sheet['frames'].values())[tags['IdleD']]['frame']
-            return Image.open(png).convert('RGBA').crop((fr['x'], fr['y'], fr['x'] + fr['w'], fr['y'] + fr['h']))
+            src = Image.open(png).convert('RGBA').crop((fr['x'], fr['y'], fr['x'] + fr['w'], fr['y'] + fr['h']))
+            ch = d / f'{who}.character.json'
+            k = json.loads(ch.read_text()).get('artScale', 1) if ch.exists() else 1
+            return nearest(src, (src.width // k, src.height // k)) if k != 1 else src   # un full a 2×: a la mida de 640
     return None
 
 

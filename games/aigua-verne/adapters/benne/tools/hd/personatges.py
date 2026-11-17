@@ -33,6 +33,8 @@ from hd.pix import mix
 # ═══════════════════════════════════════════════════════════════════════════
 
 K = 1.2
+K1 = K
+ART_SCALE = 1            # 2 en fer els fulls (draw_characters.py): la mida de prop es dibuixa a 2× (FigK2)
 _Fig1 = C.Fig            # la figura de sempre (×1)
 
 
@@ -187,8 +189,107 @@ class FigK(_Fig1):
                 self.buf[Y][X] = (m, l + d)
 
 
+    def rset(self, X, Y, v):
+        """Posa `v` (o None, per esborrar) en un píxel real."""
+        X, Y = int(round(X)), int(round(Y))
+        if 0 <= X < self.w and 0 <= Y < self.h:
+            self.buf[Y][X] = v
+
+
+class FigK2(FigK):
+    """FigK a S× (S = ART_SCALE): la mateixa figura de prop, amb l'API en píxels de ×1,2 i el buffer a S×.
+      - el que té volum (`ell`, `limb`, `lathe`, `poly`) i els píxels de disseny (`px`, `shade`, `erase`, `get`) es
+        rasteritzen a la resolució real (`f`, `g` i `span` hi treballen amb K = 1,2 × S);
+      - els detalls píxel a píxel (`rpx`, `rshade`, `rset`, i `line`, que hi passa), en píxels de ×1,2: cada un, un
+        bloc S×S. La cara, les ulleres... queden igual que a ×1,2.
+    Els ganxos que recorren el buffer fan servir `px_scale(fg)` i `design(fg, X)`."""
+
+    def __init__(self, w, h):
+        super().__init__(w, h)
+        self.S = ART_SCALE
+        self.w, self.h = self.w * self.S, self.h * self.S
+        self.buf = [[None] * self.w for _ in range(self.h)]
+        self._fine = 0
+
+    @contextmanager
+    def _fi(self):
+        global K
+        self._fine += 1
+        K = K1 * self.S
+        try:
+            yield
+        finally:
+            self._fine -= 1
+            if not self._fine:
+                K = K1
+
+    def ell(self, *a, **kw):
+        with self._fi():
+            return super().ell(*a, **kw)
+
+    def limb(self, *a, **kw):
+        with self._fi():
+            return super().limb(*a, **kw)
+
+    def lathe(self, *a, **kw):
+        with self._fi():
+            return super().lathe(*a, **kw)
+
+    def poly(self, *a, **kw):
+        with self._fi():
+            return super().poly(*a, **kw)
+
+    def px(self, *a, **kw):
+        with self._fi():
+            return super().px(*a, **kw)
+
+    def shade(self, *a, **kw):
+        with self._fi():
+            return super().shade(*a, **kw)
+
+    def erase(self, *a, **kw):
+        with self._fi():
+            return super().erase(*a, **kw)
+
+    def get(self, *a, **kw):
+        with self._fi():
+            return super().get(*a, **kw)
+
+    def _blk(self, X, Y):
+        X, Y, S = int(round(X)), int(round(Y)), self.S
+        return [(X * S + i, Y * S + j) for j in range(S) for i in range(S)]
+
+    def rpx(self, X, Y, mat, lvl):
+        if self._fine:
+            return super().rpx(X, Y, mat, lvl)
+        for x, y in self._blk(X, Y):
+            super().rpx(x, y, mat, lvl)
+
+    def rshade(self, X, Y, d, only=None):
+        if self._fine:
+            return super().rshade(X, Y, d, only)
+        for x, y in self._blk(X, Y):
+            super().rshade(x, y, d, only)
+
+    def rset(self, X, Y, v):
+        if self._fine:
+            return super().rset(X, Y, v)
+        for x, y in self._blk(X, Y):
+            super().rset(x, y, v)
+
+
 def big(fg):
     return getattr(fg, 'big', False)
+
+
+def px_scale(fg):
+    """Quants píxels del buffer fa cada píxel real de la figura (S a FigK2, 1 si no)."""
+    return getattr(fg, 'S', 1)
+
+
+def design(fg, X):
+    """La coordenada de disseny del píxel X del buffer d'una figura de prop (a qualsevol S)."""
+    return (X + 0.5) / (K1 * px_scale(fg)) - 0.5
 
 
 # ─── La cara, a la mida de prop ─────────────────────────────────────────────
@@ -300,8 +401,7 @@ def side_face_k(fg, p, spec):
     if p.talk:
         fg.rpx(mx, my, C.MOUTH, 0); fg.rpx(mx + 1, my, C.MOUTH, 0); fg.rpx(mx + 2, my, lip, 0)
         fg.rpx(mx + 1, my + 1, C.MOUTH, 0)
-        if 0 <= mx - 1 < fg.w and 0 <= my < fg.h:
-            fg.buf[my][mx - 1] = None                     # el llavi de baix cau: la boca oberta es veu de perfil
+        fg.rset(mx - 1, my, None)                         # el llavi de baix cau: la boca oberta es veu de perfil
     else:
         if spec.get('smile'):
             fg.rpx(mx + 3, my - 1, lip, 0)
@@ -334,7 +434,7 @@ C.front_face, C.side_face = front_face_1, side_face_1
 def de_prop():
     """Dins d'aquest bloc, tot el que es dibuixa amb hd.characters (i aquí) surt a ×1,2."""
     saved = C.Fig, C.front_face, C.side_face
-    C.Fig, C.front_face, C.side_face = FigK, front_face_k, side_face_k
+    C.Fig, C.front_face, C.side_face = (FigK2 if ART_SCALE > 1 else FigK), front_face_k, side_face_k
     try:
         yield
     finally:
@@ -525,7 +625,8 @@ def _sequins(fg, mat):
         for x in range(fg.w):
             v = fg.buf[y][x]
             if v and v[0] is mat:
-                h = (x * 7349 + y * 1931 + (x * y) % 13) % 41
+                X, Y = x // px_scale(fg), y // px_scale(fg)                      # en píxels de ×1,2
+                h = (X * 7349 + Y * 1931 + (X * Y) % 13) % 41
                 if h == 0:
                     fg.buf[y][x] = (SEQUIN, 1.0 + max(0.0, v[1] - 2.2) * 0.8)
                 elif h == 20 and v[1] > 2.6:
@@ -1518,7 +1619,7 @@ def _stains(fg, mat):
         for x in range(fg.w):
             v = fg.buf[y][x]
             if v and v[0] is mat:
-                gx, gy = (g(x), g(y)) if big(fg) else (x, y)
+                gx, gy = (design(fg, x), design(fg, y)) if big(fg) else (x, y)
                 n = math.sin(gx * 0.9 + gy * 0.37) + math.sin(gx * 0.31 - gy * 0.83 + 1.7) + math.sin(gy * 0.5 + 2.2)
                 d = 0.0
                 if n > 2.1:
@@ -1677,7 +1778,7 @@ def quim_over(fg, p, spec):
         for x in range(fg.w):
             v = fg.buf[y][x]
             if v and v[0] is KNIT:
-                gx, gy = (int(g(x)), int(g(y))) if big(fg) else (x, y)
+                gx, gy = (int(design(fg, x)), int(design(fg, y))) if big(fg) else (x, y)
                 if gx % 3 == 0:
                     fg.buf[y][x] = (KNIT, v[1] - 0.6)
                 elif gy % 2 == 0 and gx % 3 == 1:
@@ -1819,7 +1920,7 @@ def _stripes(fg, pix, vertical=True, w=2):
     for (X, Y), _ in pix.items():
         if not (0 <= X < fg.w and 0 <= Y < fg.h) or not fg.buf[Y][X]:
             continue
-        u = (g(X) if big(fg) else X) if vertical else (g(Y) if big(fg) else Y)
+        u = (design(fg, X) if big(fg) else X) if vertical else (design(fg, Y) if big(fg) else Y)
         m, l = fg.buf[Y][X]
         fg.buf[Y][X] = (STRIPE_W if int(math.floor(u / w)) % 2 else STRIPE_N, l)
 
