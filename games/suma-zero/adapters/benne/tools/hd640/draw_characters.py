@@ -17,6 +17,9 @@ els estampats («</>», l'alien, el grup, els pegats, la calavera), els quadres 
 zzz, l'auricular), la pantalla i el llum de la NETA-3. En Ballester (gros) i el nen (petit) es dibuixen a la seva
 escala, no s'amplien ni s'encongeixen.
 
+Els fulls (main) es dibuixen a ART_SCALE = 2 amb FigK2: el que té volum, a la resolució real; els detalls píxel a
+píxel, en blocs de 2×2 (la cara és la mateixa). El .character.json porta `artScale: 2` i els punts continuen a 640.
+
 Ús (des de tools/): python3 hd640/draw_characters.py [carpeta]   (per defecte, hd640/characters/)
 Les sales de 640 que dibuixen gent fan servir `person` (hd.characters.person a ×4/3).
 """
@@ -35,6 +38,8 @@ import hd.characters as C  # noqa: E402
 from hd.pix import mix  # noqa: E402
 
 K = 4 / 3
+ART_SCALE = 2     # els fulls dels personatges (main): dibuixats a 2×, el motor els mostra a la meitat (artScale)
+S = 1             # l'escala d'aquest procés: 1, o ART_SCALE en fer els fulls (vegeu install)
 
 
 def f(u):
@@ -214,6 +219,99 @@ class FigK(C.Fig):
         """Una fila de píxels reals enfosquida o aclarida (plecs, vores)."""
         for X in range(int(round(X0)), int(round(X1)) + 1):
             self.rshade(X, Y, d, only)
+
+
+class FigK2(FigK):
+    """FigK a S× (S = 2): la mateixa figura, amb l'API en píxels de 640 i el buffer a S×.
+      - el que té volum (`ell`, `limb`, `lathe`, `poly`) i els píxels de disseny (`px`, `shade`, `erase`, `get`) es
+        rasteritzen a la resolució real: vores, ombrejat i contorn d'un píxel real;
+      - els detalls píxel a píxel (`rpx`, `rshade`, `rget`, `rline`, `rrow`, i `line`), en coordenades de 640: cada
+        un, un bloc S×S. La cara, les ulleres, els auriculars... queden igual que a 640, ara més nets al voltant.
+    `F`, `G` i `k` són els de 640 (els ganxos hi compten), menys dins de `_fi`."""
+
+    def __init__(self, w, h):
+        super().__init__(w, h)
+        self.k640 = self.k
+        self.w, self.h = self.w * S, self.h * S
+        self.buf = [[None] * self.w for _ in range(self.h)]
+        self._fine = 0
+
+    @contextmanager
+    def _fi(self):
+        self._fine += 1
+        self.k = self.k640 * S
+        try:
+            yield
+        finally:
+            self._fine -= 1
+            if not self._fine:
+                self.k = self.k640
+
+    def ell(self, *a, **kw):
+        with self._fi():
+            return super().ell(*a, **kw)
+
+    def limb(self, *a, **kw):
+        with self._fi():
+            return super().limb(*a, **kw)
+
+    def lathe(self, *a, **kw):
+        with self._fi():
+            return super().lathe(*a, **kw)
+
+    def poly(self, *a, **kw):
+        with self._fi():
+            return super().poly(*a, **kw)
+
+    def px(self, *a, **kw):
+        with self._fi():
+            return super().px(*a, **kw)
+
+    def shade(self, *a, **kw):
+        with self._fi():
+            return super().shade(*a, **kw)
+
+    def erase(self, *a, **kw):
+        with self._fi():
+            return super().erase(*a, **kw)
+
+    def get(self, *a, **kw):
+        with self._fi():
+            return super().get(*a, **kw)
+
+    def line(self, x0, y0, x1, y1, mat, lvl):
+        """Línia d'un píxel de 640 (un bloc S×S de gruix)."""
+        F = self.F
+        self.rline(F(x0 + self.ox), F(y0 + self.oy), F(x1 + self.ox), F(y1 + self.oy), mat, lvl)
+
+    def _blk(self, X, Y):
+        X, Y = int(round(X)), int(round(Y))
+        return [(X * S + i, Y * S + j) for j in range(S) for i in range(S)]
+
+    def rpx(self, X, Y, mat, lvl):
+        if self._fine:
+            return super().rpx(X, Y, mat, lvl)
+        for x, y in self._blk(X, Y):
+            super().rpx(x, y, mat, lvl)
+
+    def rget(self, X, Y):
+        if self._fine:
+            return super().rget(X, Y)
+        return super().rget(round(X) * S, round(Y) * S)
+
+    def rshade(self, X, Y, d, only=None):
+        if self._fine:
+            return super().rshade(X, Y, d, only)
+        for x, y in self._blk(X, Y):
+            super().rshade(x, y, d, only)
+
+
+def _poke(img, x, y, col):
+    """Un píxel de 640 en una figura ja dibuixada (a S×: un bloc S×S)."""
+    P_ = img.load()
+    for j in range(S):
+        for i in range(S):
+            P_[x * S + i, y * S + j] = col
 
 
 @contextmanager
@@ -510,8 +608,9 @@ def _ganxos(P):
         for y in range(fg.h):
             for x in range(fg.w):
                 c = fg.buf[y][x]
-                if c and c[0] is P.FLANNEL and (x % 5 == 0 or y % 5 == 1):
-                    fg.buf[y][x] = (P.FLANNEL_DARK, c[1] - (0.6 if (x % 5 == 0 and y % 5 == 1) else 0))
+                X, Y = x // S, y // S                                            # en píxels de 640
+                if c and c[0] is P.FLANNEL and (X % 5 == 0 or Y % 5 == 1):
+                    fg.buf[y][x] = (P.FLANNEL_DARK, c[1] - (0.6 if (X % 5 == 0 and Y % 5 == 1) else 0))
 
     # --- Secundaris ---
     def glasses(fg, p, spec):
@@ -758,11 +857,10 @@ def _stamp_at(img, pat, pat480, x0, y0, col):
     w, h = len(pat480[0]), len(pat480)
     X0 = round(f(x0 + (w - 1) / 2) - (len(pat[0]) - 1) / 2)
     Y0 = round(f(y0 + (h - 1) / 2) - (len(pat) - 1) / 2)
-    P_ = img.load()
     for dy, row in enumerate(pat):
         for dx, ch in enumerate(row):
             if ch == 'X':
-                P_[X0 + dx, Y0 + dy] = col
+                _poke(img, X0 + dx, Y0 + dy, col)
 
 
 # ─── En Diu, a la mida nova ──────────────────────────────────────────────────
@@ -773,7 +871,7 @@ def _diu(P):
 
     def diu(cua=0, parpelleja=False):
         """Assegut de tres quarts, tigrat i amb el pitet blanc. Fotograma de 40×35."""
-        fg = FigK(P.GW, P.GH)
+        fg = C.Fig(P.GW, P.GH)
         tx = [24, 26, 27, 26][cua % 4]
         fg.limb((19, 22), (tx, 14), 1.4, 1.2, CAT, 2.2, cont=(0.2, 0.8),
                 lvlfn=lambda x, y: -0.7 if int(y * 1.5) % 3 == 0 else 0)            # la cua, anellada
@@ -809,14 +907,13 @@ def _diu(P):
 
     def zzz(img, k):
         """Una «z» que puja per sobre del cap d'en Diu quan dorm (k: fotograma, 0-3)."""
-        P_ = img.load()
         x0, y0 = 25 + (k % 2), 4 - round(k * K)
         if y0 < 0:
             return img
         for dx, dy in ((0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (3, 1), (2, 2), (1, 3), (0, 4), (1, 4), (2, 4), (3, 4), (4, 4)):
             x, y = x0 + dx, y0 + dy
-            if 0 <= x < img.width and 0 <= y < img.height:
-                P_[x, y] = (226, 220, 236, 255)
+            if 0 <= x < img.width // S and 0 <= y < img.height // S:
+                _poke(img, x, y, (226, 220, 236, 255))
         return img
 
     def diu_estat(estat, cua=0, dorm=False):
@@ -824,10 +921,10 @@ def _diu(P):
         base = diu(cua=0 if dorm else cua, parpelleja=dorm)
         if dorm and estat is None:
             return zzz(base, cua)
-        fg = FigK(P.GW, P.GH)
+        fg = C.Fig(P.GW, P.GH)
         if estat == 'caixa':
-            out = Image.new('RGBA', (GW, GH), (0, 0, 0, 0))
-            out.alpha_composite(base, (0, -5))
+            out = Image.new('RGBA', (GW * S, GH * S), (0, 0, 0, 0))
+            out.alpha_composite(base, (0, -5 * S))
             BOX = P.M((40, 24, 14), (90, 60, 30), (146, 102, 58), (184, 136, 80), (216, 172, 108))
             fg.poly([(2, 14), (26, 14), (26, 25), (2, 25)], BOX, 2.6, cont=(0.2, 0.8))
             Y0 = round(fg.F(14))
@@ -865,7 +962,7 @@ def _neta(P):
 
     def neta(facing='D', talk=False, estat='', k=0, davantal=False):
         """Com hd/personatges.neta, a 53×59: la pantalla, el llum, la franja de perill i les molles, a píxel real."""
-        fg = FigK(P.NW, P.NH)
+        fg = C.Fig(P.NW, P.NH)
         F = fg.F
         low = 4 if estat == 'descansa' else 0
         lean = estat == 'molles'
@@ -973,13 +1070,12 @@ def _neta(P):
         fg.ell(wx, wy + 1.5, 2.6, 1.6, BRUSH, 2.4, amp=1.0)
         img = fg.render()
         if estat == 'molles':                                                   # les molles, a terra
-            P_ = img.load()
             for i, (mx, my) in enumerate(((2, 42), (5, 43), (8, 42), (3, 41), (34, 43), (37, 42))):
                 if (i + k) % 3 != 0:
-                    X, Y = round(f(mx)), min(img.height - 1, round(f(my)))
-                    P_[X, Y] = (214, 170, 100, 255)
+                    X, Y = round(f(mx)), min(img.height // S - 1, round(f(my)))
+                    _poke(img, X, Y, (214, 170, 100, 255))
                     if i % 2:
-                        P_[X + 1, Y] = (176, 130, 70, 255)
+                        _poke(img, X + 1, Y, (176, 130, 70, 255))
         return img
 
     return neta
@@ -1024,15 +1120,19 @@ def _port(obj, seen=None):
     return obj
 
 
-def install():
-    """Substitueix Fig, la cara i els ganxos de detall a hd.characters i hd.personatges (només en aquest procés)."""
+def install(art_scale=1):
+    """Substitueix Fig, la cara i els ganxos de detall a hd.characters i hd.personatges (només en aquest procés).
+    `art_scale` (la primera vegada): 1 per a les figures de 640 (les sales), ART_SCALE per als fulls."""
+    global S
     import hd.personatges as P
     if getattr(P, '_hd640', False):
         return P
-    C.Fig = FigK
+    S = art_scale
+    fig = FigK2 if S > 1 else FigK
+    C.Fig = fig
     C.front_face = front_face
     C.side_face = side_face
-    P.Fig = FigK
+    P.Fig = fig
     P.front_face = front_face
     P.side_face = side_face
 
@@ -1059,10 +1159,9 @@ def install():
         img = C.person(spec, facing, walk=walk, talk=talk)
         if facing == 'D':
             b = C.Pose(facing, walk, talk, stoop=spec.get('stoop', 0)).bob
-            P_ = img.load()
             x0, y0 = round(f(24) - 7), round(f(33 + b))
             for dx, dy in LOGO:
-                P_[x0 + dx, y0 + dy] = (226, 236, 228, 255)
+                _poke(img, x0 + dx, y0 + dy, (226, 236, 228, 255))
         return img
 
     def vet(facing, walk=None, talk=False, roba='', ulleres=False):
@@ -1087,14 +1186,14 @@ def install():
         if spec.get('seated') is not None and facing != 'L':
             side = C.person(spec, 'L', talk=talk)
             out = Image.new('RGBA', side.size, (0, 0, 0, 0))
-            out.alpha_composite(side.transpose(Image.FLIP_LEFT_RIGHT), (3, 0))   # els peus, a x = 34 (com de perfil)
+            out.alpha_composite(side.transpose(Image.FLIP_LEFT_RIGHT), (3 * S, 0))   # els peus, a x = 34 (com de perfil)
             return out
         if cid == 'nen':
             # un nen de set anys: dibuixat directament a ×0,62 (no encongit), amb els peus al mateix lloc
             with escala(K * 0.62):
                 small = C.person(spec, facing, walk=walk, talk=talk)
-            out = Image.new('RGBA', (round(49 * K), round(87 * K)), (0, 0, 0, 0))
-            out.alpha_composite(small, (round(f(25) - (25.5 * K * 0.62 - 0.5)), round(f(83) - (83.5 * K * 0.62 - 0.5))))
+            out = Image.new('RGBA', (round(49 * K) * S, round(87 * K) * S), (0, 0, 0, 0))
+            out.alpha_composite(small, (round(f(25) - (25.5 * K * 0.62 - 0.5)) * S, round(f(83) - (83.5 * K * 0.62 - 0.5)) * S))
             return out
         return C.person(spec, facing, walk=walk, talk=talk)
 
@@ -1108,8 +1207,8 @@ def install():
             big = C.person(spec, facing, walk=walk, talk=talk)
         w, h = P.big2_size(cid)
         fx, fy = P.big2_feet(cid)
-        out = Image.new('RGBA', (round(w * K), round(h * K)), (0, 0, 0, 0))
-        out.alpha_composite(big, (round(f(fx)) - round(25.5 * K * k - 0.5), round(f(fy)) - round(83.5 * K * k - 0.5)))
+        out = Image.new('RGBA', (round(w * K) * S, round(h * K) * S), (0, 0, 0, 0))
+        out.alpha_composite(big, ((round(f(fx)) - round(25.5 * K * k - 0.5)) * S, (round(f(fy)) - round(83.5 * K * k - 0.5)) * S))
         return out
 
     P.iri, P.vet, P.npc, P.npc2 = iri, vet, npc, npc2
@@ -1140,6 +1239,8 @@ def scaled_extra(extra):
     """Punts i velocitats del .character.json, de coordenades de 480 a 640."""
     o = dict(extra)
     o['walkSpeed'] = round(extra['walkSpeed'] * K)
+    if S > 1:
+        o['artScale'] = S
 
     def pt(q):
         return {'x': round(f(q['x'])), 'y': round(f(q['y']))}
@@ -1150,7 +1251,7 @@ def scaled_extra(extra):
 
 
 def main():
-    install()
+    install(ART_SCALE)
     import draw_characters as D
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent / 'characters'
     D.OUT = out

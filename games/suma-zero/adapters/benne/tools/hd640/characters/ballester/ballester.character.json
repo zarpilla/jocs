@@ -55,6 +55,10 @@
       "loop": true,
       "frameDuration": 140
     },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 80
+    },
     "IdleL": {
       "loop": true
     },
@@ -62,12 +66,20 @@
       "loop": true,
       "frameDuration": 140
     },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
     "IdleU": {
       "loop": true
     },
     "TalkU": {
       "loop": true,
       "frameDuration": 140
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 80
     },
     "Relaxat": {
       "loop": true,
@@ -82,5 +94,6 @@
       "frameDuration": 400
     }
   },
-  "defaultVerb": "talkTo"
+  "defaultVerb": "talkTo",
+  "artScale": 2
 }

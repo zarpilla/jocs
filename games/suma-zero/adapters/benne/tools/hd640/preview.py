@@ -30,7 +30,7 @@ def sprite(cid, art):
     tags = {t['name']: t['from'] for t in sheet['meta']['frameTags']}
     f = list(sheet['frames'].values())[tags.get('IdleD', 0)]['frame']
     img = Image.open(art / cid / f'{cid}.png').convert('RGBA').crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h']))
-    return img, (ch['feet']['x'], ch['feet']['y'])
+    return img, (ch['feet']['x'], ch['feet']['y']), ch.get('artScale', 1)
 
 
 def main():
@@ -94,10 +94,9 @@ def main():
     chars = []
     for cid, (x, y) in spawns.items():
         if (art / cid / f'{cid}.png').exists():
-            spr, (fx, fy) = sprite(cid, art)
-            if s != 1:
-                spr = spr.transform((spr.width * s, spr.height * s), Image.Transform.EXTENT,
-                                    (0, 0, spr.width, spr.height), Image.Resampling.NEAREST)
+            spr, (fx, fy), k = sprite(cid, art)
+            if s != k:                                   # el full del personatge (a ×k) a la mida de la sala (×s)
+                spr = nearest(spr, (spr.width * s // k, spr.height * s // k))
             chars.append((y, spr, ((x - fx) * s, (y - fy) * s)))
     chars.sort(key=lambda c: c[0])
     # la llum de la sala sobre els personatges (characterLights del motor), amb els props visibles de --layers

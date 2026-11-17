@@ -133,6 +133,7 @@ import {
 } from '../benneRuntimeHiDpiScale.js';
 import {
   cameraFollowOffsetForFeet,
+  characterArtScale,
   getCharacterWorldFeet,
   placeSpriteByFeet,
   resolveCharacterFeetLocal,
@@ -2581,7 +2582,7 @@ export class RoomScene extends Phaser.Scene {
     if (data?.talkPoint) {
       return { x: sprite.x + data.talkPoint.x, y: sprite.y + data.talkPoint.y };
     }
-    return { x: sprite.x + f.width * 0.5, y: sprite.y - 4 };
+    return { x: sprite.x + (f.width * 0.5) / characterArtScale(data), y: sprite.y - 4 };
   }
 
   /**
@@ -4040,7 +4041,8 @@ export class RoomScene extends Phaser.Scene {
       this.roomData.regions,
       getPerspectiveSettings(),
     );
-    const s = perspective.characterScale;
+    // A sheet drawn at `artScale`× is shown at 1/artScale on top of the perspective scale.
+    const s = perspective.characterScale / characterArtScale(sprite.getData('character') as CharacterData | undefined);
     sprite.setScale(s, s);
     placeSpriteByFeet(sprite as Phaser.GameObjects.Sprite, feetLocal, worldFeetX, worldFeetY);
     const lights = compileCharacterLights(this.roomData.characterLights);
@@ -6199,6 +6201,7 @@ export class RoomScene extends Phaser.Scene {
     }
 
     const sprite = this.add.image(0, 0, spawn.textureKey);
+    sprite.setData('character', spawn.data);
     const feet = resolveCharacterFeetLocal(spawn.data, sprite as Phaser.GameObjects.Sprite);
     const manager = resolveGameStateManager(this.game);
     // Saved feet world position (from a prior flush) overrides the room JSON `(x, y)` — same
@@ -6307,7 +6310,9 @@ export class RoomScene extends Phaser.Scene {
 
     const colliderPts = spawn.data.collider?.points;
     if (colliderPts && colliderPts.length >= 3) {
-      const flat = colliderPts.flatMap((p) => [p.x, p.y]);
+      // Hit areas are in texture space; the collider is in 1× frame units.
+      const k = characterArtScale(spawn.data);
+      const flat = colliderPts.flatMap((p) => [p.x * k, p.y * k]);
       const poly = new Phaser.Geom.Polygon(flat);
       sprite.setInteractive({
         hitArea: poly,

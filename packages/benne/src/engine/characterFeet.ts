@@ -6,12 +6,19 @@ export type CharacterFeetLocal = { x: number; y: number };
 const FEET_LOCAL_X = 'feetLocalX';
 const FEET_LOCAL_Y = 'feetLocalY';
 
+/** The character sheet's `artScale` (1 when omitted or invalid). */
+export function characterArtScale(data: { artScale?: number } | undefined): number {
+  const k = data?.artScale;
+  return typeof k === 'number' && k > 0 ? k : 1;
+}
+
 /**
- * Resolves feet in frame space: explicit `character.feet`, else bottom-centre of the current frame.
+ * Resolves feet in frame (texture) space: explicit `character.feet`, else bottom-centre of the current frame.
  */
 export function resolveCharacterFeetLocal(data: CharacterData, sprite: Phaser.GameObjects.Sprite): CharacterFeetLocal {
   if (data.feet) {
-    return { x: data.feet.x, y: data.feet.y };
+    const k = characterArtScale(data);
+    return { x: data.feet.x * k, y: data.feet.y * k };
   }
   const f = sprite.frame;
   return { x: f.width * 0.5, y: f.height };
