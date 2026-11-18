@@ -1,426 +1,600 @@
 """
-Aigua Verne — `palau_galeria` (L): la galeria de les vint-i-tres piscines, al palau orbital del Magnat.
+Aigua Verne — `palau_galeria` (L: persones de ≈83 px): la galeria de les vint-i-tres piscines, al palau orbital del
+Magnat. EN 3D (hd640/tres_d.py), a 1×.
 
-  - al fons, el finestral a l'espai entre columnes blanques: Terra-2 (la corba ocre del planeta, a baix) i un
-    dels dipòsits orbitals de Verne (el cilindre blanc amb la gota blava);
-  - les piscines buides en tres terrasses (10 + 7 + 5), de rajola turquesa, amb escales cromades, i al terra de
-    la galeria la **piscina central** (la 23a), la gran, la que té la sala de control a sota;
-  - a l'esquerra, la paret amb la porta del saló (blanca i or) i l'escala de marbre que puja a les terrasses;
-  - a la dreta, l'**aquari** amb els trenta-tres peixos platejats i el rètol «LOT 12».
+Una càmera alta, a la dreta de la galeria, que mira de biaix cap a la cantonada de l'esquerra: la paret de la porta del
+saló fuig cap al fons, i la del finestral travessa el quadre en diagonal. Al fons, el finestral a l'espai entre
+columnes (Terra-2, i un dels dipòsits orbitals de Verne); davant, les tres terrasses de marbre que pugen cap al
+finestral, amb les piscines buides (5 + 7 + 10) enfonsades a la terrassa, vistes des de dalt; a l'esquerra, l'escala de
+marbre que hi puja, arran de la paret i amb la barana cromada; al terra de la galeria, la **piscina central** (la 23a),
+fonda, amb les escales cromades a la vora del fons; a la dreta, l'**aquari** dels trenta-tres peixos, exempt i girat,
+damunt el peu del rètol «LOT 12», i una gandula. Dos llums d'aranya pengen del sostre. Primer pla: un pilar en ombra
+tallat per la vora de la dreta i un cordó de vellut entre dos pals daurats, a baix a l'esquerra. Es passa per darrere de la gandula
+(a la vora de la piscina central) i de les escales cromades de la piscina; l'aquari també fa de capa del davant.
 
-PROPS: `piscines_plenes` (cinemàtica final: aigua a totes). ANIMS: `peixos`, `estrelles`, `aigua` (el reflex de
-l'aigua, per sobre de `piscines_plenes`).
+El detall ve del dibuix pla (palau_galeria_pla_comu.py): el finestral, la porta, el vidre de l'aquari i el seu peu, les
+columnes i els llums. PROPS: `piscines_plenes` (aigua a totes, quan s'obre la reserva). ANIMS: `peixos`, `estrelles`, i
+`aigua` (els reflexos de l'aigua de l'aquari, que juguen pel terra). La cinemàtica final (final_palau.py) fa servir
+aquesta mateixa escena amb les piscines plenes.
+
+El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra de la galeria), z cap al fons (560 = la paret
+del finestral); 1 unitat = 1 píxel de sala a la distància on un personatge fa ≈83 px (escala 1).
 """
 import functools
 import math
 
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
-from hd.pix import Canvas, Light, hr, mix
-from hd640.rooms.palau_comu import (MARB, ORP, TURQ, CROM, NEGRE, gota, RH, _diff, lletres, lletres_c, espai,
-                                    estrelles_frames, terra2, diposit, terra_marbre, columna, motllura, marc_or,
-                                    vidre, piscina, escaleta, aigua_aquari, peixos, ombra, negre_barra, fbm)
-
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+from hd.pix import Canvas, Light, W, hr
+from hd.rooms.comu import _diff
+from hd640.rooms import palau_galeria_pla_comu as PL
+from hd640.rooms.palau_comu import MARB, ORP, TURQ, CROM, GRANAT, BLAU, RH
+from hd640.tres_d import Camera, Escena, Llum
 
 PERSONA = 83
-FLOOR_Y = 186                 # on el terra de la galeria toca la primera terrassa
-WALL_TOP = 14
-WIN_Y0, WIN_Y1 = 20, 80       # els vidres del finestral
-BACK_Y = 84                   # on la terrassa de dalt toca la paret del fons
-COLS = (112, 216, 424, 528)   # les columnes del finestral
-PLANET = (322, 150, 104)      # Terra-2: centre i radi (només se'n veu la corba de dalt)
-DEPOSIT = (478, 46, 0.5)
+BOTTOM = RH - 1                                    # la sala acaba aquí (a sota, la barra de verbs)
+XR, ZW, YC = 900, 560, 270                         # la paret de la dreta (no es veu), la del finestral, el sostre
+ZN = -300                                          # el terra i les parets comencen aquí (darrere la càmera)
+ZT = (300, 387, 474)                               # el davant de cada terrassa
+TH = (28, 56, 84)                                  # l'alçada de cada terrassa
+XT = 100                                           # les terrasses comencen aquí (a l'esquerra, l'escala)
+NPOOL = (5, 7, 10)                                 # piscines a cada terrassa (+ la central: 23)
+POOL_D = 20                                        # la fondària de les piscines de les terrasses
+CEN = (262, 438, 150, 214, 56)                     # la piscina central: x0, x1, z0, z1, fondària
+ESC = (0, XT, 196, 7, 12, 29)                      # l'escala: x0, x1, z del primer graó, graons, alçada, petja
+AQ = (652, 238, -0.62)                             # l'aquari: centre (x, z) i gir
+ARANYES = ((420, 204, 140), (660, 214, 400))       # els llums d'aranya (x, y, z)
+ESCALETES = (CEN[0] + 40, CEN[1] - 56)             # les dues escales cromades de la piscina central (x)
+COLUMNA = (646, 96)                                # la columna del primer pla (x, z)
+GANDULA = (530, 170, -0.38)                         # la gandula, a la vora de la piscina central (x, z, gir)
+PALS = ((176, 6), (326, 22))                      # els pals del cordó de vellut (x, z), en primer pla
 
-# les terrasses: (y de la plataforma, y on comença la paret del davant, y on acaba, x0, x1, piscines)
-TIERS = ((BACK_Y, 99, 106, 118, 552, 10),
-         (106, 127, 136, 118, 566, 7),
-         (136, 170, FLOOR_Y, 118, 582, 5))
-# la piscina central, enfonsada al terra de la galeria
-CEN_TOP = (238, 402, 198)
-CEN_BOT = (222, 418, 232)
-CEN_DEPTH = 11
-# l'aquari: el vidre (x0, y0, x1, y1), el capçal i el peu
-AQ = (542, 96, 616, 186)
-AQ_CAP = 86
-AQ_FOOT = 214
-DOOR = ((10, 132, 240), (52, 112, 202))      # la porta del saló, a la paret de l'esquerra: (x, y dalt, y baix)
+CAM = Camera(pos=(520, 230, -250), yaw=-0.30, pitch=0.16, f=420, centre=(320, 76))
 
-_ST = {'aigua': False, 'fish_t': 0.0}
-
-LIGHT = Light(ambient=0.35, vignette=(56, 14), floor_fade=(236, 40))
-LIGHT.point(320, 10, r=420, k=1.0, squash=0.7, power=1.2)        # la claror del sostre
-LIGHT.point(579, 140, r=90, k=0.6, power=1.8)                    # la llum blava de l'aquari
-
-
-# ─── Sostre, paret del fons, finestral ──────────────────────────────────────
-
-def sostre(cv):
-    """Sostre de cassetons blancs amb filets d'or i llums encastats."""
-    for y in range(0, WALL_TOP + 1):
-        for x in range(640):
-            cx = (x - 320) * (1 + (WALL_TOP - y) * 0.06)
-            cell = int(cx // 46)
-            inner = abs((cx % 46) - 23) < 18 and 2 < y < WALL_TOP - 3
-            v = 4.6 + (0.9 if inner else 0) - (1.6 if (cx % 46) < 1.5 else 0)
-            cv.put(x, y, MARB, v)
-            if inner and abs((cx % 46) - 23) < 2.5 and y == 7 and cell % 2 == 0:
-                cv.flat(x, y, (255, 248, 220))
-    motllura(cv, 0, 639, WALL_TOP - 2, h=3)
+LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)   # (la llum és la del món: la de l'Escena)
+LLUMS = [Llum((x, y - 10, z), 420, 1.5, power=1.3) for x, y, z in ARANYES] + [
+    Llum((AQ[0], 90, AQ[1]), 150, 1.4, power=1.6),                # la claror blava de l'aquari
+    Llum((380, 160, ZW - 10), 420, 0.6, power=1.0),               # la claror del finestral
+    Llum((40, 120, 140), 160, 0.9, power=1.5),                    # els llums de paret de la porta
+]
+AMBIENT = -0.6
 
 
-def aranya(cv, x, y1=30):
-    """Un llum d'aranya petit: una tija d'or, un anell i penjolls de vidre que brillen."""
-    cv.vline(x, 0, y1 - 10, ORP, 4.0)
-    cv.disc(x, y1 - 6, 16, 4, ORP, lambda nx, ny: 4.6 - ny * 1.4 - abs(nx) * 0.6)
-    cv.disc(x, y1 - 7, 12, 2.4, ORP, 2.4)
-    for k in range(-14, 15, 3):
-        h = 6 + int(4 * math.cos(k / 14 * 1.4))
-        yy = y1 - 6 + int(4 * math.sqrt(max(0.0, 1 - (k / 16) ** 2)))
-        cv.vline(x + k, yy, yy + h, CROM, 5.6 if k % 2 else 4.2)
-        cv.flat(x + k, yy + h, (255, 255, 240))
-    cv.disc(x, y1 + 6, 3, 4, CROM, lambda nx, ny: 6.0 - nx - ny)
-    cv.glow(x, y1, 26, (255, 246, 210), 0.3)
+# ─── Les piscines ───────────────────────────────────────────────────────────
 
-
-def finestral(cv):
-    x0, x1 = 64, 576
-    # la paret del fons (marbre) i, dins els marcs, l'espai
-    cv.rect(x0, WALL_TOP + 1, x1, BACK_Y - 1, MARB, lambda x, y: 5.2 - (y - WALL_TOP) * 0.01)
-    panes = []
-    edges = (x0 + 6,) + COLS + (x1 - 6,)
-    for a, b in zip(edges, edges[1:]):
-        panes.append((a + 9, b - 9))
-    bright = []
-    for a, b in panes:
-        bright += espai(cv, a, WIN_Y0, b, WIN_Y1, seed=3 + a)
-    cx, cy, r = PLANET
-    terra2(cv, cx, cy, r, mask=lambda x, y: any(a <= x <= b for a, b in panes) and WIN_Y0 <= y <= WIN_Y1)
-    # el dipòsit, en un canvas a part i retallat als vidres
-    dep = type(cv)(transparent=True)
-    diposit(dep, *DEPOSIT)
-    D = dep.img.load()
-    for X, Y, _, _ in cv.pixels(DEPOSIT[0] - 60, WIN_Y0, DEPOSIT[0] + 59, WIN_Y1):          # (píxels reals)
-        c = D[X, Y]
-        if c[3] and any(a <= X // cv.S <= b for a, b in panes):
-            cv.P[X, Y] = c[:3] + (255,)
-    for a, b in panes:
-        vidre(cv, a, WIN_Y0, b, WIN_Y1, k=0.14, seed=a)
-        marc_or(cv, a - 3, WIN_Y0 - 3, b + 3, WIN_Y1 + 3, t=3, lvl=4.2)
-        # el travesser (un filet d'or) i els muntants prims
-        cv.hline(a, b, WIN_Y0 + 20, ORP, 3.6)
-        for mx in range(a + (b - a) // 3, b - 4, max(20, (b - a) // 3)):
-            cv.vline(mx, WIN_Y0, WIN_Y1, ORP, 3.4)
-    # les columnes del finestral
-    for x in COLS:
-        columna(cv, x, WALL_TOP + 1, BACK_Y - 1, r=6, base_h=8, cap_h=10)
-    # pilastres als dos extrems
-    for x in (x0 + 4, x1 - 4):
-        columna(cv, x, WALL_TOP + 1, BACK_Y - 1, r=4, base_h=8, cap_h=10)
-    for x in COLS[1:3]:
-        aranya(cv, x, 34)
-    return bright
-
-
-# ─── Terrasses i piscines ───────────────────────────────────────────────────
-
-def pools_tier(t):
-    """Les piscines d'una terrassa: [(top, bot, depth)]."""
-    py, ry0, ry1, x0, x1, n = TIERS[t]
-    out = []
-    gap = (6, 10, 14)[t]
-    w = (x1 - x0 - 12 - gap * (n - 1)) / n
-    ya, yb = py + (3, 4, 5)[t], ry0 - (3, 4, 6)[t]
-    vx, vy = 320, 20                                                   # fuga: les vores del fons, més estretes
-    k = (ya - vy) / (yb - vy)
-    for i in range(n):
-        a = x0 + 6 + i * (w + gap)
-        b = a + w
-        out.append(((round(vx + (a + 2 - vx) * k), round(vx + (b - 2 - vx) * k), ya), (round(a), round(b), yb),
-                    (2, 3, 5)[t]))
-    return out
+def piscines_terrassa(k):
+    """Les piscines de la terrassa k: [(x0, x1, z0, z1)]."""
+    n = NPOOL[k]
+    gap = (36, 24, 16)[k]
+    x0, x1 = XT + 26, XR - 20
+    w = (x1 - x0 - gap * (n - 1)) / n
+    z0, z1 = ZT[k] + 14, (ZT[k + 1] if k < 2 else ZW) - 16
+    return [(x0 + i * (w + gap), x0 + i * (w + gap) + w, z0, z1) for i in range(n)]
 
 
 def totes_piscines():
-    return [p for t in range(3) for p in pools_tier(t)] + [(CEN_TOP, CEN_BOT, CEN_DEPTH)]
+    """[(sid, x0, x1, z0, z1, y de la vora, fondària)]: les 22 de les terrasses i la central."""
+    out = [(f'piscina{k}_{i}', *p, TH[k], POOL_D) for k in range(3) for i, p in enumerate(piscines_terrassa(k))]
+    return out + [('piscina_central', CEN[0], CEN[1], CEN[2], CEN[3], 0.0, CEN[4])]
 
 
-def terrasses(cv, plena=False):
-    for t, (py, ry0, ry1, x0, x1, n) in enumerate(TIERS):
-        # la plataforma (marbre vist de dalt)
-        terra_marbre(cv, py, ry0 - 1, vp=(320, -40 - t * 30), base=6.4, tile=(30, 40, 52)[t], x0=x0, x1=x1, seed=7 + t)
-        # la paret del davant de la terrassa: marbre, filet d'or a dalt i un sòcol
-        cv.rect(x0, ry0, x1, ry1, MARB, lambda x, y: 4.6 - (y - ry0) * 0.12 + (fbm(x / 30, y / 10, 9 + t) - 0.5) * 0.5)
-        motllura(cv, x0, x1, ry0, h=2, lvl=4.6)
-        cv.hline(x0, x1, ry1, MARB, 2.6)
-        for p in pools_tier(t):
-            piscina(cv, p[0], p[1], p[2], plena=plena, lvl=4.2 + t * 0.2, tile=(4, 5, 6)[t], seed=p[0][0])
-            if not plena and t >= 1:                                       # una escaleta cromada a cada piscina
-                escaleta(cv, p[0][1] - (5, 9)[t - 1], p[0][2] - 1, (2, 4)[t - 1], s=(0.5, 0.7)[t - 1])
-        # graons laterals de terrassa a terrassa (a la dreta)
-        for k in range(3):
-            cv.hline(x1 - 14 + k * 3, x1, ry0 + k * (ry1 - ry0) // 3, MARB, 6.6)
+def _rajola(tile):
+    """La rajola turquesa de dins les piscines, en coordenades del món (s'empetiteix sola cap al fons)."""
+    def L(s, t, P):
+        a, b = s % tile, t % tile
+        val = 4.0 + (hr(int(s // tile), int(t // tile), 5) - 0.5) * 0.5
+        if a < 0.9 or b < 0.9:
+            val += 1.4
+        return val
+    return L
 
 
-def escala_marbre(cv):
-    """L'escala de marbre que puja de la galeria a la terrassa de dalt, amb barana cromada a cada banda."""
-    x0, x1 = 66, 116
-    cv.rect(64, BACK_Y, 118, FLOOR_Y + 2, MARB, lambda x, y: 3.6 + (fbm(x / 20, y / 20, 2) - 0.5) * 0.5)
-    y = FLOOR_Y + 2
-    steps = []
-    k = 0
-    while y > BACK_Y:
-        h = max(2, int(2 + (y - BACK_Y) / 26))                           # els de baix, més alts
-        steps.append((y - h, y))
-        y -= h
-        k += 1
-    for i, (ya, yb) in enumerate(steps):
-        f = (yb - BACK_Y) / (FLOOR_Y - BACK_Y)
-        a = x0 + (1 - f) * 6
-        b = x1 - (1 - f) * 2
-        cv.rect(a, ya, b, yb, MARB, lambda x, yy: (7.6 if yy == ya else 5.4 - (yy - ya) * 0.4) - (x - a) * 0.006
-                + (fbm(x / 16, yy / 6, 3) - 0.5) * 0.5)
-        cv.hline(a, b, yb, MARB, 3.0)
-    # les baranes: pals cromats i passamà
-    for side, (xa, xb) in ((0, (x0 - 1, x0 + 6)), (1, (x1 + 1, x1 - 1))):
-        cv.line(xa, FLOOR_Y - 14, xb, BACK_Y - 14, CROM, 6.0)
-        cv.line(xa, FLOOR_Y - 13, xb, BACK_Y - 13, CROM, 3.2)
-        for j in range(0, 9):
-            t = j / 8
-            px = round(xa + (xb - xa) * t)
-            py = round(FLOOR_Y - 14 + (BACK_Y - FLOOR_Y) * t)
-            cv.vline(px, py + 1, py + 14 - int(t * 4), CROM, 4.4)
-        cv.disc(xa, FLOOR_Y - 14, 2, 2, ORP, lambda nx, ny: 5 - ny)        # pom d'or
+def piscines(e, sid, pools, yv, D, plena, tex_aigua=None):
+    """Un grup de piscines enfonsades a la mateixa alçada i fondària (les d'una terrassa, o la central): el fons, les
+    parets de dins (rajola) i, si són plenes, l'aigua (textura). Una sola superfície per a tot el grup on es pot (el
+    fons, la paret del fons, l'aigua): l'Escena en recorda 255 com a màxim."""
+    yb = yv - D
+    tile = 6 if D < 30 else 9
+    xa, xb = min(p[0] for p in pools), max(p[1] for p in pools)
+    z0, z1 = pools[0][2], pools[0][3]
+
+    def dins(s, t=None):
+        x = xa + s
+        return any(a <= x <= b for a, b, _, _ in pools)
+
+    def mig(s):
+        x = xa + s
+        return any(abs(x - (a + b) / 2) < max(0.8, (b - a) * 0.012) for a, b, _, _ in pools)
+    e.quad(sid, (xa, yb, z1), (xb, yb, z1), (xb, yb, z0), (xa, yb, z0), ramp=TURQ, forma=dins,
+           lvl=lambda s, t, P: _rajola(tile)(s, t, P) + 0.4 * (t / max(1, z1 - z0)) - (2.6 if mig(s) else 0))
+    if sid == 'piscina_central':                                   # la gota de Verne, de mosaic, al fons
+        cx, cz = (xa + xb) / 2, (z0 + z1) / 2
+
+        def gota(s, t):
+            dx, dz = s - 18, t - 22
+            if dz < 0:
+                return math.hypot(dx, dz) < 12
+            return abs(dx) < 12 * max(0.0, 1 - dz / 26) ** 0.9
+        e.quad(sid, (cx - 18, yb + 0.3, cz + 22), (cx + 18, yb + 0.3, cz + 22), (cx + 18, yb + 0.3, cz - 22),
+               (cx - 18, yb + 0.3, cz - 22), ramp=BLAU, lvl=lambda s, t, P: 2.6 - (s - 18) * 0.06, forma=gota)
+    # les parets de dins: la del fons (de cara a la càmera) i, de cada piscina, el costat que es veu
+    e.quad(sid, (xa, yv, z1), (xb, yv, z1), (xb, yb, z1), (xa, yb, z1), ramp=TURQ, forma=dins,
+           lvl=lambda s, t, P: _rajola(tile)(s, t, P) - 1.0 - (t / D) * 0.6)
+    cx_ = CAM.pos[0]
+    for x0, x1, _, _ in pools:
+        if x0 < cx_:
+            e.quad(sid, (x0, yv, z1), (x0, yv, z0), (x0, yb, z0), (x0, yb, z1), ramp=TURQ,
+                   lvl=lambda s, t, P: _rajola(tile)(s, t, P) + 0.2, dues_cares=True)
+        if x1 > cx_:
+            e.quad(sid, (x1, yv, z0), (x1, yv, z1), (x1, yb, z1), (x1, yb, z0), ramp=TURQ,
+                   lvl=lambda s, t, P: _rajola(tile)(s, t, P) - 1.4, dues_cares=True)
+    if plena:
+        yw = yv - 3
+        e.quad(f'aigua_{sid}', (xa, yw, z1), (xb, yw, z1), (xb, yw, z0), (xa, yw, z0), forma=dins,
+               tex=(tex_aigua, (xa, PL.ZMAP - z1, xb, PL.ZMAP - z0), 1))
 
 
-def piscina_central(cv, plena=False):
-    piscina(cv, CEN_TOP, CEN_BOT, CEN_DEPTH, plena=plena, lvl=4.4, tile=10, seed=23, vora=4)
-    if not plena:
-        # una gota de Verne de mosaic al fons, i les escales cromades
-        gota(cv, 320, 220, 9, lit=1)
-    for x in (CEN_TOP[0] + 14, CEN_TOP[1] - 22):
-        escaleta(cv, x, CEN_TOP[2] - 2, 12 if not plena else 4, s=1.1)
+def _forats(pools, marge=3.0):
+    """forma(s, t) d'un terra que comença a (x0, z1) del món i va cap a +x i −z: fals dins les piscines (i la vora)."""
+    def f(x0, z1):
+        def forma(s, t):
+            x, z = x0 + s, z1 - t
+            return not any(a <= x <= b and c <= z <= d for a, b, c, d in pools)
+        return forma
+    return f
 
 
-# ─── Parets laterals i porta ────────────────────────────────────────────────
-
-def paret_esq(cv):
-    pts = [(0, 0), (64, WALL_TOP), (64, FLOOR_Y + 2), (0, 252)]
-    cv.poly(pts, MARB, lambda x, y: 4.2 + x * 0.012 + (fbm(x / 20, y / 30, 31) - 0.5) * 0.6)
-    # el sòcol d'or (la línia del terra) i la cornisa
-    for k in range(3):
-        cv.line(0, 252 - k * 6 - 6, 64, FLOOR_Y + 2 - k * 2 - 2, ORP if k == 0 else MARB, 4.0 + k)
-    cv.line(0, 2, 64, WALL_TOP + 1, ORP, 4.4)
-    cv.line(0, 3, 64, WALL_TOP + 2, ORP, 3.0)
-    cv.vline(64, WALL_TOP, FLOOR_Y + 2, MARB, 2.4)
-    # la porta del saló: dues fulles blanques, amb plafons i marc d'or (en perspectiva)
-    (xa, ta, ba), (xb, tb, bb) = DOOR
-
-    def top(x):
-        return ta + (tb - ta) * (x - xa) / (xb - xa)
-
-    def bot(x):
-        return ba + (bb - ba) * (x - xa) / (xb - xa)
-    # marc i frontó
-    for x in range(xa - 5, xb + 4):
-        f = (x - xa) / (xb - xa)
-        for y in range(int(top(x)) - 14 + int(f * 3), int(bot(x)) + 1):
-            if y < top(x) or x < xa or x >= xb:
-                cv.put(x, y, ORP, 4.2 + (1.0 if x == xa - 5 or y == int(top(x)) - 14 + int(f * 3) else 0)
-                       - (1.2 if y == int(top(x)) - 1 else 0))
-    for x in range(xa, xb):
-        f = (x - xa) / (xb - xa)
-        t, b = top(x), bot(x)
-        mid = xa + (xb - xa) * 0.52
-        for y in range(int(t), int(b) + 1):
-            fy = (y - t) / (b - t)
-            leaf_x = (x - xa) if x < mid else (x - mid)
-            lw = (mid - xa) if x < mid else (xb - mid)
-            in_panel = 3 < leaf_x < lw - 3 and (0.06 < fy < 0.46 or 0.54 < fy < 0.94)
-            v = 6.0 - f * 1.2 + (0.6 if in_panel else 0)
-            if in_panel and (leaf_x < 4.5 or fy < 0.075 or 0.53 < fy < 0.545):
-                v -= 1.4
-            if abs(x - mid) < 1:
-                v = 2.6
-            cv.put(x, y, MARB, v)
-            if in_panel and (abs(leaf_x - 3.5) < 0.6 or abs(leaf_x - (lw - 3.5)) < 0.6):
-                cv.put(x, y, ORP, 4.0)
-        # les manetes d'or
-    for hx in (int(xa + (xb - xa) * 0.52) - 3, int(xa + (xb - xa) * 0.52) + 2):
-        hy = int((top(hx) + bot(hx)) / 2) + 4
-        cv.rect(hx, hy - 4, hx, hy + 4, ORP, 5.0)
-    # rètol daurat damunt la porta
-    lletres(cv, 'SALÓ', xa + 8, int(top(xa + 8)) - 10, (120, 82, 28))
+def _vora(pools, w=4.0):
+    """Nivells que se sumen al terra (o a la terrassa) a tocar de les piscines: el coronament de pedra blanca."""
+    def f(x, z):
+        for a, b, c, d in pools:
+            if a - w <= x <= b + w and c - w <= z <= d + w:
+                return 1.8 if z > d else 0.6 if z < c else 1.2
+        return 0.0
+    return f
 
 
-def paret_dreta(cv):
-    pts = [(640, 0), (576, WALL_TOP), (576, FLOOR_Y + 2), (640, 252)]
-    cv.poly(pts, MARB, lambda x, y: 3.6 - (x - 576) * 0.01 + (fbm(x / 20, y / 30, 33) - 0.5) * 0.6)
-    cv.line(640, 2, 576, WALL_TOP + 1, ORP, 4.0)
-    cv.line(640, 3, 576, WALL_TOP + 2, ORP, 2.6)
-    cv.line(640, 246, 576, FLOOR_Y, ORP, 3.6)
-    cv.vline(576, WALL_TOP, FLOOR_Y + 2, MARB, 6.0)
-    # un finestral estret a la paret de la dreta (en perspectiva), amb l'espai
-    def top(x):
-        return 30 - (x - 586) / 46 * 8
+# ─── Superfícies procedurals ────────────────────────────────────────────────
 
-    def bot(x):
-        return 150 + (x - 586) / 46 * 26
-    espai(cv, 586, 20, 631, 178, seed=41, mask=lambda x, y: 586 <= x <= 631 and top(x) <= y < bot(x), dens=1.4)
-    for x in range(583, 635):
-        f = (x - 586) / 46
-        for k in range(3):
-            cv.put(x, int(top(x)) - 1 - k, ORP, 4.6 - k * 0.8)
-            cv.put(x, int(bot(x)) + k, ORP, 3.4 - k * 0.6)
-    for x, (a, b) in ((584, (top(584) - 3, bot(584) + 3)), (633, (top(633) - 3, bot(633) + 3))):
-        for k in range(3):
-            cv.vline(x + k - 1, int(a), int(b), ORP, 4.4 - k * 0.8)
-    for y in range(int(top(608)), int(bot(608))):
-        cv.put(608, y, ORP, 3.6)
-    vidre(cv, 586, 22, 631, 176, k=0.12, seed=9)
+_VT = PL.venes(XR + 2, ZW - ZN + 2, 21)               # les venes del marbre, al món: [z − ZN, x]
+_NT = PL.soroll(XR + 2, ZW - ZN + 2, 40, 22)
 
 
-# ─── L'aquari ───────────────────────────────────────────────────────────────
-
-def vidre_aquari(cv):
-    x0, y0, x1, y1 = AQ
-    for y in range(y0 + 2, y1):
-        for x in range(x0, x1 + 1):
-            s = (x - x0) * 1.0 - (y - y0) * 0.35
-            if 6 < s % 70 < 10 or 14 < s % 70 < 15:
-                o = cv.get(x, y)
-                cv.flat(x, y, mix(o, (230, 248, 255), 0.35))
+def _vena(x, z):
+    return float(_VT[min(ZW - ZN + 1, max(0, int(z - ZN))), min(XR + 1, max(0, int(x)))])
 
 
-def aquari(cv):
-    x0, y0, x1, y1 = AQ
-    ombra(cv, (x0 + x1) // 2 - 4, AQ_FOOT + 2, (x1 - x0) // 2 + 10, 5, 0.7)
-    # el peu: marbre amb un plafó d'or i el rètol
-    cv.rect(x0 - 4, y1 + 1, x1 + 4, AQ_FOOT, MARB, lambda x, y: 5.4 - (x - x0) * 0.02 - (1.2 if y == AQ_FOOT else 0))
-    motllura(cv, x0 - 5, x1 + 5, y1 + 1, h=3)
-    motllura(cv, x0 - 6, x1 + 6, AQ_FOOT - 3, h=3, lvl=3.8)
-    px0, px1, py0, py1 = x0 + 10, x1 - 10, y1 + 7, y1 + 21
-    cv.rect(px0, py0, px1, py1, ORP, lambda x, y: 4.8 - (y - py0) * 0.08)
-    marc_or(cv, px0, py0, px1, py1, t=1, lvl=4.0)
-    lletres_c(cv, 'LOT 12', (px0 + px1) // 2, py0 + 2, (70, 40, 14))
-    lletres_c(cv, 'DARRERS', (px0 + px1) // 2, py0 + 8, (110, 72, 26))
-    # el vidre i l'aigua amb els peixos
-    aigua_aquari(cv, x0, y0, x1, y1, _ST['fish_t'])
-    peixos(cv, x0, y0, x1, y1, _ST['fish_t'])
-    vidre_aquari(cv)
-    # els muntants d'or i el capçal
-    for x in (x0 - 3, x1 + 1):
-        cv.rect(x, AQ_CAP, x + 2, y1, ORP, lambda xx, yy: 4.6 + (1.0 if xx == x else -0.8 if xx == x + 2 else 0))
-    cv.rect(x0 - 5, AQ_CAP, x1 + 5, y0 - 1, ORP, lambda x, y: 4.0 - (y - AQ_CAP) * 0.1)
-    motllura(cv, x0 - 6, x1 + 6, AQ_CAP - 2, h=3, lvl=5.0)
-    cv.glow((x0 + x1) // 2, (y0 + y1) // 2, 70, (120, 200, 255), 0.18)
+def _es_or(x, z, tile, or_cada=2):
+    iu, iv = math.floor(x / tile), math.floor(z / tile)
+    ax, az = x - iu * tile, z - iv * tile
+    return (iu % or_cada == 0 and ax < 1.3) or (iv % or_cada == 0 and az < 1.3)
+
+
+def _marbre(base, tile=48, seed=5):
+    """Lloses de marbre blanc amb venes i filets d'or, en coordenades del món (x, z): s'empetiteixen cap al fons.
+    → el nivell (els filets d'or es pinten a part, amb `_es_or`)."""
+    def L(x, z):
+        iu, iv = math.floor(x / tile), math.floor(z / tile)
+        ax, az = x - iu * tile, z - iv * tile
+        if ax < 1.3 or az < 1.3:
+            return base - 1.4
+        zi = min(ZW - ZN + 1, max(0, int(z - ZN)))
+        xi = min(XR + 1, max(0, int(x)))
+        return (base + (hr(iu, iv, seed) - 0.5) * 0.6 - float(_VT[zi, (xi + seed * 131) % (XR + 2)]) * 1.8
+                + (float(_NT[zi, xi]) - 0.5) * 0.5)
+    return L
+
+
+_TILE_TERRA = 56
+_MARBRE_TERRA = _marbre(6.4, tile=_TILE_TERRA)
+
+
+def _terra_lvl(s, t, P):
+    return _MARBRE_TERRA(P[0], P[2])
+
+
+def _or_terra(s, t, P):
+    return 4.6
+
+
+def _sostre(s, t, P):
+    x, z = P[0], P[2]
+    a, b = x % 90, z % 90
+    v = 4.6
+    if a < 3 or b < 3:
+        v = 3.4 if (a < 1.2 or b < 1.2) else 5.6
+    elif 14 < a < 76 and 14 < b < 76:
+        v = 5.4
+    return v
+
+
+# ─── L'escena ───────────────────────────────────────────────────────────────
+
+@functools.lru_cache(maxsize=None)
+def _tex():
+    fons = Canvas(PL.FONS_W, PL.FONS_H, light=PL.LLUM_PLA)
+    bright = PL.paret_fons(fons)
+    esq = Canvas(PL.ESQ_W, PL.ESQ_H, light=PL.LLUM_PLA)
+    PL.paret_esq(esq)
+    return {'fons': fons.img, 'bright': bright, 'esq': esq.img, 'peu': PL.aquari_peu(),
+            'aq': PL.aquari_vidre(0.0), 'aq_costat': PL.aquari_vidre(0.0, costat=True)}
+
+
+def _rects_aigua():
+    return [(x0, z0, x1, z1) for _, x0, x1, z0, z1, _, _ in totes_piscines()]
+
+
+@functools.lru_cache(maxsize=None)
+def aigua_tex(frame=0):
+    return PL.aigua_mapa(_rects_aigua(), frame, focus=[(x, z) for x, _, z in ARANYES])
+
+
+def escena(cv, plena=False):
+    """Tota la galeria, de lluny a prop. → l'Escena (qui ha pintat què)."""
+    T = _tex()
+    e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
+    aigua = aigua_tex(0) if plena else None
+    # el sostre, de cassetons
+    e.quad('sostre', (0, YC, ZN), (XR, YC, ZN), (XR, YC, ZW), (0, YC, ZW), ramp=MARB, lvl=_sostre, dues_cares=True)
+    # la paret del finestral i la de la porta (els dibuixos plans)
+    e.quad('paret_fons', (0, YC, ZW), (XR, YC, ZW), (XR, TH[2], ZW), (0, TH[2], ZW),
+           tex=(T['fons'], (0, 0, PL.FONS_W, PL.FONS_H), 1))
+    e.quad('paret_esq', (0, YC, ZN), (0, YC, ZW), (0, 0, ZW), (0, 0, ZN),
+           tex=(T['esq'], (0, 0, PL.ESQ_W, PL.ESQ_H), 1))
+    e.quad('paret_dreta', (XR, YC, ZW), (XR, YC, ZN), (XR, 0, ZN), (XR, 0, ZW), ramp=MARB, lvl=4.6)
+    # la piscina central (de dins) i el terra de la galeria, amb el forat
+    cx0, cx1, cz0, cz1, cd = CEN
+    piscines(e, 'piscina_central', [(cx0, cx1, cz0, cz1)], 0.0, cd, plena, aigua)
+    vora_c = _vora([(cx0, cx1, cz0, cz1)], 6)
+    forats = _forats([(cx0, cx1, cz0, cz1)])
+    e.quad('terra', (0, 0, ZW), (XR, 0, ZW), (XR, 0, ZN), (0, 0, ZN), ramp=MARB,
+           lvl=lambda s, t, P: _terra_lvl(s, t, P) + vora_c(P[0], P[2]), forma=forats(0, ZW))
+    # els filets d'or del terra (a sobre, només on toca)
+    e.quad('terra', (0, 0.1, ZW), (XR, 0.1, ZW), (XR, 0.1, ZN), (0, 0.1, ZN), ramp=ORP, lvl=_or_terra,
+           forma=lambda s, t: _es_or(s, ZW - t, _TILE_TERRA) and forats(0, ZW)(s, t) and not vora_c(s, ZW - t))
+    # el reflex del finestral i dels llums al marbre polit
+    e.claror((XT, 0.4, ZT[0]), (XR, 0.4, ZT[0]), (XR, 0.4, 40), (XT, 0.4, 40), (236, 240, 255),
+             lambda s, t: 0.16 * max(0.0, 1 - t / 160) * (0.6 + 0.4 * math.sin(s * 0.02)))
+    # la foscor dels racons: on la paret de l'esquerra toca el terra
+    e.foscor('racons', (0.5, 0.5, ZW), (160, 0.5, ZW), (160, 0.5, ZN), (0.5, 0.5, ZN),
+             lambda s, t: 0.55 * max(0.0, 1 - s / 70) ** 1.4)
+    # les terrasses, de lluny a prop: les piscines (de dins), i la terrassa amb els forats
+    for k in (2, 1, 0):
+        pools = piscines_terrassa(k)
+        piscines(e, f'piscines{k}', pools, TH[k], POOL_D, plena, aigua)
+        vora = _vora(pools)
+        zb = ZT[k + 1] if k < 2 else ZW
+        f = _forats(pools)(XT, zb)
+        top = _marbre(6.8, tile=(34, 40, 46)[k], seed=7 + k)
+        e.caixa(f'terrassa{k}', XT, XR, 0, TH[k], ZT[k], zb, MARB, 5.0, cares={
+            'dalt': {'ramp': MARB, 'lvl': lambda s, t, P, top=top, vora=vora: top(P[0], P[2]) + vora(P[0], P[2]),
+                     'forma': f},
+            'davant': {'ramp': MARB, 'lvl': lambda s, t, P, k=k: 5.0 - (t / TH[k]) * 1.4
+                       - _vena(P[0] * 1.3, ZN + 40 + k * 60 + t * 3) * 1.4
+                       + (1.6 if t < 2 else -1.0 if t > TH[k] - 3 else 0)},
+            'esquerra': {'ramp': MARB, 'lvl': 4.0}})
+        e.quad(f'terrassa{k}', (XT, TH[k] - 3, ZT[k] - 0.4), (XR, TH[k] - 3, ZT[k] - 0.4),
+               (XR, TH[k] - 5, ZT[k] - 0.4), (XT, TH[k] - 5, ZT[k] - 0.4), ramp=ORP, lvl=4.4)  # el filet d'or
+        # l'ombra que fa la terrassa de dalt sobre la de sota (i la paret del fons a la de dalt)
+        e.foscor(f'ombra_t{k}', (XT, TH[k] + 0.5, zb), (XR, TH[k] + 0.5, zb), (XR, TH[k] + 0.5, zb - 20),
+                 (XT, TH[k] + 0.5, zb - 20), lambda s, t: 0.4 * max(0.0, 1 - t / 20))
+    # al peu de la primera terrassa, una franja d'ombra al terra
+    e.foscor('ombra_terrassa', (XT, 0.6, ZT[0]), (XR, 0.6, ZT[0]), (XR, 0.6, ZT[0] - 26), (XT, 0.6, ZT[0] - 26),
+             lambda s, t: 0.35 * max(0.0, 1 - t / 26))
+    # l'escala de marbre, arran de la paret: cada graó, de lluny a prop, i la barana cromada
+    ex0, ex1, ez, n, eh, ep = ESC
+    for i in range(n - 1, -1, -1):
+        z0 = ez + i * ep
+        z1 = z0 + ep if i < n - 1 else ZW
+        e.caixa('escales', ex0, ex1, 0, eh * (i + 1), z0, z1, MARB, 5.6, cares={
+            'davant': {'ramp': MARB, 'lvl': lambda s, t, P: 5.2 - t * 0.08 + (1.4 if t < 1.5 else 0)},
+            'dalt': {'ramp': MARB, 'lvl': lambda s, t, P: 7.0 - (0.8 if t < 2 else 0)
+                     - _vena(P[0] * 3 + 300, P[2]) * 1.4},
+            'dreta': {'ramp': MARB, 'lvl': lambda s, t, P: 4.2 - (1.2 if t > eh * (i + 1) - 2 else 0)}})
+    e.foscor('ombra_escala', (ex1, 0.6, ZT[0]), (ex1 + 30, 0.6, ZT[0]), (ex1 + 30, 0.6, ez), (ex1, 0.6, ez),
+             lambda s, t: 0.4 * max(0.0, 1 - s / 30))
+    top = [(ex1 - 4, eh * (i + 1) + 34, ez + i * ep + 4) for i in range(n)]
+    e.cable('escales', [(ex1 - 4, 34, ez - 6)] + top, CROM, 3.0, gruix=2.6)
+    for x, y, z in top[::2] + [(ex1 - 4, 34, ez - 6)]:
+        e.cable('escales', [(x, y, z), (x, y - 34, z)], CROM, 2.4, gruix=1.6)
+    # les escales cromades de la piscina central, a la vora del fons
+    for lx in ESCALETES:
+        for dx in (0, 14):
+            x = lx + dx
+            e.cable('escaleta', [(x, 0.5, cz1 + 10), (x, 22, cz1 + 7), (x, 27, cz1 + 1), (x, 18, cz1 - 3),
+                                 (x, -cd + 6, cz1 - 5)], CROM, 3.2, gruix=2.6)
+        for yy in (-8, -22, -36):
+            e.cable('escaleta', [(lx, yy, cz1 - 4), (lx + 14, yy, cz1 - 4)], CROM, 2.6, gruix=1.8)
+    # l'aquari: el peu, el vidre (davant i costat), el capçal d'or; l'ombra a terra
+    ax, az, ang = AQ
+    e.foscor('ombra_aquari', (ax - 90, 0.6, az + 60), (ax + 90, 0.6, az + 60), (ax + 90, 0.6, az - 70),
+             (ax - 90, 0.6, az - 70),
+             lambda s, t: 0.6 * max(0.0, 1 - ((s - 90) / 84) ** 2 - ((t - 70) / 52) ** 2) * 1.4)
+    w, d = PL.AQ_W, PL.AQ_D
+    e.caixa_girada('aquari', ax, az, w + 8, d + 8, PL.AQ_PEU, ang, MARB, 5.0, cares={
+        'davant': {'tex': (T['peu'], (0, 0, w + 8, PL.AQ_PEU), 1)},
+        'dreta': {'ramp': MARB, 'lvl': lambda s, t, P: 4.4 - t * 0.03},
+        'dalt': {'ramp': ORP, 'lvl': 4.8}})
+    e.caixa_girada('aquari', ax, az, w, d, PL.AQ_H, ang, CROM, 4.0, y0=PL.AQ_PEU,
+                   cares={'dalt': {'ramp': BLAU, 'lvl': 4.6}})
+    c, s_ = math.cos(ang), math.sin(ang)
+
+    def G(lx, y, lz):
+        return (ax + lx * c - lz * s_, y, az + lx * s_ + lz * c)
+    y0, y1, a2, b2 = PL.AQ_PEU, PL.AQ_PEU + PL.AQ_H, w / 2, d / 2
+    e.quad('aquari_vidre', G(-a2, y1, -b2), G(a2, y1, -b2), G(a2, y0, -b2), G(-a2, y0, -b2),
+           tex=(T['aq'], (0, 0, w, PL.AQ_H), 1))
+    e.quad('aquari_costat', G(a2, y1, -b2), G(a2, y1, b2), G(a2, y0, b2), G(a2, y0, -b2),
+           tex=(T['aq_costat'], (0, 0, d, PL.AQ_H), 1))
+    e.caixa_girada('aquari', ax, az, w + 10, d + 10, 12, ang, ORP, 4.2, y0=PL.AQ_PEU + PL.AQ_H, cares={
+        'davant': {'ramp': ORP, 'lvl': lambda s, t, P: 5.4 - t * 0.2 + (1.2 if t < 1.5 else 0)},
+        'dreta': {'ramp': ORP, 'lvl': lambda s, t, P: 3.6 - t * 0.15},
+        'dalt': {'ramp': ORP, 'lvl': 5.6}})
+    # els llums d'aranya, penjats del sostre
+    img, peu = PL.aranya_img()
+    for x, y, z in ARANYES:
+        e.cable('aranya', [(x, YC, z), (x, y, z)], ORP, 4.0, gruix=1.4)
+        e.sprite('aranya', img, peu, (x, y, z))
+    # la gandula, a la vora de la piscina central: el bastidor d'or, el matalàs blanc i el respatller aixecat
+    gx, gz, ga = GANDULA
+    e.foscor('ombra_gandula', (gx - 50, 0.6, gz + 30), (gx + 50, 0.6, gz + 30), (gx + 50, 0.6, gz - 34),
+             (gx - 50, 0.6, gz - 34),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - 50) / 46) ** 2 - ((t - 30) / 26) ** 2) * 1.5)
+    c, s_ = math.cos(ga), math.sin(ga)
+
+    def Gg(lx, y, lz):
+        return (gx + lx * c - lz * s_, y, gz + lx * s_ + lz * c)
+    for lx, lz in ((-36, -11), (36, -11), (-36, 11), (36, 11)):
+        p_ = Gg(lx, 0, lz)
+        e.caixa_girada('gandula', p_[0], p_[2], 3, 3, 14, ga, ORP, 3.0)
+    e.caixa_girada('gandula', gx, gz, 80, 26, 4, ga, ORP, 4.4, y0=14, cares={'dalt': {'ramp': ORP, 'lvl': 5.6}})
+    # el respatller, aixecat (a l'esquerra), i el matalàs blanc amb ratlles granat
+    e.quad('gandula', Gg(-40, 48, 12), Gg(-40, 48, -12), Gg(-20, 18, -12), Gg(-20, 18, 12), ramp=ORP, lvl=3.2,
+           dues_cares=True)
+    e.quad('gandula', Gg(-37, 49, -12), Gg(-37, 49, 12), Gg(-17, 19, 12), Gg(-17, 19, -12), ramp=MARB,
+           lvl=lambda s, t, P: 7.0 - t * 0.03 - (2.0 if int(s) % 6 < 2 else 0), dues_cares=True)
+    mx, _, mz = Gg(10, 0, 0)
+    e.caixa_girada('gandula', mx, mz, 56, 24, 5, ga, MARB, 7.0, y0=18, cares={
+        'dalt': {'ramp': MARB, 'lvl': lambda s, t, P: 7.4 - (2.2 if int(t) % 6 < 2 else 0)},
+        'davant': {'ramp': MARB, 'lvl': 5.4}, 'dreta': {'ramp': MARB, 'lvl': 4.6}})
+    e.caixa_girada('gandula', *Gg(22, 0, 2)[::2], 14, 18, 3, ga + 0.3, GRANAT, 4.6, y0=23)  # la tovallola plegada
+    # primer pla: la columna en ombra (a la dreta, tallada per la vora) i el cordó de vellut entre dos pals daurats
+    cx_, cz_ = COLUMNA
+    def estries(base):
+        return lambda s, t, P: base + (0.9 if s % 9 < 2 else -0.5 if s % 9 > 7 else 0) - (0.6 if t > YC - 30 else 0)
+    e.caixa('primer_pla', cx_ - 22, cx_ + 22, 0, YC, cz_ - 22, cz_ + 22, MARB, 1.6, cares={
+        'esquerra': {'ramp': MARB, 'lvl': estries(2.4)}, 'davant': {'ramp': MARB, 'lvl': estries(1.2)}})
+    for y0, h in ((0, 16), (YC - 60, 8)):                        # el sòcol i un anell d'or
+        e.caixa('primer_pla', cx_ - 24, cx_ + 24, y0, y0 + h, cz_ - 24, cz_ + 24, ORP, 1.8,
+                cares={'esquerra': {'ramp': ORP, 'lvl': 2.8}, 'davant': {'ramp': ORP, 'lvl': 1.6}})
+    # la foscor del primer pla: el terra de prop i el racó de la dreta, en ombra
+    e.foscor('ombra_prop', (0, 0.7, 90), (XR, 0.7, 90), (XR, 0.7, -60), (0, 0.7, -60),
+             lambda s, t: 0.6 * min(1.0, t / 110) ** 1.2)
+    e.foscor('ombra_dreta', (560, 0.7, 300), (XR, 0.7, 300), (XR, 0.7, -60), (560, 0.7, -60),
+             lambda s, t: 0.45 * min(1.0, s / 200) ** 1.5)
+    for px_, pz in PALS:
+        e.tub('primer_pla', (px_, 0, pz), (px_, 46, pz), 2.6, ORP, 2.4)
+        e.tub('primer_pla', (px_, 47, pz), (px_, 51, pz), 4.4, ORP, 3.4)
+    (a, az0), (b, bz0) = PALS
+    e.cable('primer_pla', [(a, 44, az0)] + [(a + (b - a) * k / 8, 44 - 14 * math.sin(math.pi * k / 8),
+                                             az0 + (bz0 - az0) * k / 8) for k in range(1, 8)] + [(b, 44, bz0)],
+            GRANAT, 2.2, gruix=4.4)
+    return e
 
 
 # ─── Composició ─────────────────────────────────────────────────────────────
 
-def bg(cv):
-    sostre(cv)
-    _ST['bright'] = finestral(cv)
-    terrasses(cv)
-    # el terra de la galeria: marbre blanc amb filets d'or, amb el reflex del finestral
-    terra_marbre(cv, FLOOR_Y + 1, RH - 1, vp=(320, 30), base=6.0, tile=48,
-                 refl=lambda x, y: -0.8 * max(0.0, 1 - (y - FLOOR_Y) / 26) if 120 < x < 520 else 0)
-    paret_esq(cv)
-    paret_dreta(cv)
-    escala_marbre(cv)
-    ombra(cv, 320, 236, 108, 5, 0.5)
-    piscina_central(cv)
-    aquari(cv)
-    negre_barra(cv)
-
-
 @functools.lru_cache(maxsize=None)
-def _base():
+def _base(plena=False):
     cv = Canvas(light=LIGHT)
-    bg(cv)
-    return cv.img
+    e = escena(cv, plena)
+    cv.rect(0, BOTTOM + 1, W - 1, cv.h - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
+    return cv.img, e
+
+
+def bg(cv):
+    img, _ = _base()
+    cv.img.paste(img)
+    cv.P = cv.img.load()
 
 
 def piscines_plenes(cv):
-    """Aigua a totes les piscines (la cinemàtica final)."""
-    for t in range(3):
-        for p in pools_tier(t):
-            piscina(cv, p[0], p[1], p[2], plena=True, lvl=4.2, seed=p[0][0])
-    piscina_central(cv, plena=True)
-    _treu_aquari(cv)
-
-
-def _treu_aquari(cv):
-    """Les piscines de les terrasses passen per darrere l'aquari: esborra el que el tapa."""
-    for X, Y, _, _ in cv.pixels(AQ[0] - 7, AQ_CAP - 3, AQ[2] + 7, AQ_FOOT):
-        cv.P[X, Y] = (0, 0, 0, 0)
+    """Aigua a totes les piscines (quan s'obre la reserva, i a la cinemàtica final)."""
+    cv.img.alpha_composite(_diff(_base(True)[0], _base()[0]))
 
 
 PROPS = {'piscines_plenes': piscines_plenes}
 
 
-def _frames_peixos():
-    return [_diff(f, _base()) for f in _aq_frames()]
-
-
-def _aq_frames(n=24):
-    out = []
-    for i in range(n):
-        _ST['fish_t'] = i / n
-        try:
-            cv = Canvas(light=LIGHT, img=_base().copy())
-            aquari(cv)
-        finally:
-            _ST['fish_t'] = 0.0
-        out.append(cv.img)
+def _capa_idx(e, flat, idx):
+    from PIL import Image
+    out = Image.new('RGBA', (e.cv.w, e.cv.h), (0, 0, 0, 0))
+    dst, src, W_ = out.load(), flat.load(), e.cv.w
+    Xs, Ys, TXs, TYs, ks = e.mapes[idx]
+    for X, Y, TX, TY, k in zip(Xs, Ys, TXs, TYs, ks):
+        if e.amo[Y * W_ + X] != idx or TX >= flat.width or TY >= flat.height:
+            continue
+        c = src[TX, TY]
+        if c[3]:
+            dst[X, Y] = (min(255, int(c[0] * k)), min(255, int(c[1] * k)), min(255, int(c[2] * k)), c[3])
     return out
 
 
-def _frames_estrelles():
-    base = _base()
-    _base_bright = []
-    # les estrelles brillants que ha deixat el finestral (es recalculen pintant-lo en un llenç a part)
-    tmp = Canvas(light=LIGHT)
-    sostre(tmp)
-    _base_bright = finestral(tmp)
-    return estrelles_frames(base, _base_bright, n=10)
+def frames_peixos(e, n=24):
+    """Els peixos que neden, projectats pel vidre del davant i pel del costat de l'aquari."""
+    idx = {e.ids[i]: i for i in e.mapes if e.ids[i] in ('aquari_vidre', 'aquari_costat')}
+    out = []
+    for i in range(n):
+        t = i / n
+        img = _capa_idx(e, PL.aquari_vidre(t), idx['aquari_vidre'])
+        img.alpha_composite(_capa_idx(e, PL.aquari_vidre(t, costat=True), idx['aquari_costat']))
+        out.append(img)
+    return out
 
 
-def _frames_aigua():
-    """El reflex de l'aigua de les piscines plenes (va per sobre de `piscines_plenes`)."""
-    frames = []
-    for i in range(8):
-        cv = Canvas(light=LIGHT, transparent=True)
-        for t in range(3):
-            for p in pools_tier(t):
-                piscina(cv, p[0], p[1], p[2], plena=True, lvl=4.2, seed=p[0][0] + i * 0.8)
-        piscina(cv, CEN_TOP, CEN_BOT, CEN_DEPTH, plena=True, lvl=4.4, tile=10, seed=23 + i * 0.8, vora=4)
-        for x in (CEN_TOP[0] + 14, CEN_TOP[1] - 22):
-            escaleta(cv, x, CEN_TOP[2] - 2, 4, s=1.1)
-        _treu_aquari(cv)
-        frames.append(cv.img)
-    return frames
+def frames_estrelles(e, n=10, seed=3):
+    """Les estrelles brillants del finestral que parpellegen, projectades per la paret del fons."""
+    T = _tex()
+    base = T['fons']
+    out = []
+    for i in range(n):
+        cv = Canvas(PL.FONS_W, PL.FONS_H, img=base.copy())
+        for k, (x, y) in enumerate(T['bright']):
+            ph = (hr(k, seed) * n + i) % n
+            if ph < 1:
+                for dx, dy in ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)):
+                    cv.flat(x + dx, y + dy, (40, 40, 70) if (dx or dy) else (130, 136, 170))
+            elif ph < 2:
+                for dx, dy in ((2, 0), (-2, 0), (0, 2), (0, -2)):
+                    cv.flat(x + dx, y + dy, (80, 86, 130))
+                for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    cv.flat(x + dx, y + dy, (190, 196, 230))
+        out.append(e.capa(_diff(cv.img, base), {'paret_fons'}))
+    return out
 
 
-ANIMS = {'peixos': {'frames': _frames_peixos, 'frameDuration': 140},
-         'estrelles': {'frames': _frames_estrelles, 'frameDuration': 300},
-         'aigua': {'frames': _frames_aigua, 'frameDuration': 180}}
+def frames_reflexos(img, e, n=8):
+    """Els reflexos de l'aigua de l'aquari que juguen pel terra, al seu voltant (només on es veu el terra)."""
+    import numpy as np
+    from PIL import Image
+    ax, az, _ = AQ
+    terra = [i for i, s in enumerate(e.ids) if s == 'terra']
+    mask = np.isin(np.frombuffer(bytes(e.amo), np.uint8).reshape(e.cv.h, e.cv.w), terra)[..., None]
+    base = np.asarray(img)
+    out = []
+    for i in range(n):
+        ph = i / n * 2 * math.pi
+        cv = Canvas(light=None, img=img.copy())
+
+        def fn(s, t, ph=ph):
+            x, z = ax - 130 + s, az + 110 - t
+            d = math.hypot((x - ax) / 130, (z - az) / 110)
+            if d >= 1:
+                return 0.0
+            w = math.sin(x * 0.16 + math.sin(z * 0.11 + ph) * 2.2) * math.sin(z * 0.19 - ph + math.sin(x * 0.07) * 1.6)
+            return (0.34 if w > 0.55 else 0.12 if w > 0.3 else 0.0) * (1 - d) ** 0.7
+        Escena(cv, CAM).claror((ax - 130, 0.4, az + 110), (ax + 130, 0.4, az + 110), (ax + 130, 0.4, az - 110),
+                               (ax - 130, 0.4, az - 110), (150, 220, 255), fn)
+        nou = np.where(mask, np.asarray(cv.img), base).astype(np.uint8)
+        out.append(_diff(Image.fromarray(nou, 'RGBA'), img))
+    return out
 
 
-# ─── Geometria (640×360) ────────────────────────────────────────────────────
+def _frames_peixos_anim():
+    _, e = _base()
+    return frames_peixos(e)
+
+
+def _frames_estrelles_anim():
+    _, e = _base()
+    return frames_estrelles(e)
+
+
+def _frames_aigua_anim():
+    img, e = _base()
+    return frames_reflexos(img, e)
+
+
+ANIMS = {'peixos': {'frames': _frames_peixos_anim, 'frameDuration': 140},
+         'estrelles': {'frames': _frames_estrelles_anim, 'frameDuration': 300},
+         'aigua': {'frames': _frames_aigua_anim, 'frameDuration': 160}}
+
+
+# ─── Capes del davant ───────────────────────────────────────────────────────
+
+def _amo(ids):
+    def mask(x, y):
+        _, e = _base()
+        return e.ids[e.amo[y * e.cv.w + x]] in ids
+    return mask
+
+
+def _v(x, z, y=0.0):
+    return CAM.projecta((x, y, z))[1]
+
+
+FRONT = [
+    # les escales cromades de la piscina central: qui és darrere la piscina hi passa per darrere
+    {'id': 'davant_escaleta', 'mask': _amo({'escaleta'}), 'baseline': round(_v(350, CEN[3] + 6)), 'zIndex': 20},
+    # l'aquari (el peu, el vidre i el capçal)
+    {'id': 'davant_aquari', 'mask': _amo({'aquari', 'aquari_vidre', 'aquari_costat'}), 'baseline': round(_v(AQ[0], AQ[1])),
+     'zIndex': 20},
+    # la gandula
+    {'id': 'davant_gandula', 'mask': _amo({'gandula'}), 'baseline': round(_v(GANDULA[0], GANDULA[1])), 'zIndex': 20},
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+]
+
+
+# ─── Geometria (coordenades de sala, projectades) ────────────────────────────
+
+def _p(x, z, y=0.0):
+    u, v, _ = CAM.projecta((x, y, z))
+    return round(u), round(v)
+
+
+def _rect_mon(*Ps):
+    pts = [CAM.projecta(P) for P in Ps]
+    return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
+            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+
+
+def _caixa_girada_terra(cx, cz, w, d, ang, marge):
+    c, s = math.cos(ang), math.sin(ang)
+    a, b = w / 2 + marge, d / 2 + marge
+    return [(cx + lx * c - lz * s, cz + lx * s + lz * c) for lx, lz in ((-a, -b), (a, -b), (a, b), (-a, b))]
+
+
+# El terra on es camina (al món): la galeria, davant les terrasses, fins a la paret de la porta i el peu de l'escala;
+# a prop, fins on el personatge no passa de ≈1,2. Forats: la piscina central i l'aquari (s'hi pot fer la volta).
+WALK_MON = [(14, 44), (14, ESC[2] - 8), (ESC[1] + 8, ESC[2] - 8), (ESC[1] + 8, ZT[0] - 8), (XR - 10, ZT[0] - 8),
+            (XR - 10, 44)]
+_WALK = PL.retalla([CAM.projecta((x, 0, z))[:2] for x, z in WALK_MON])
+_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+
+
+def _escala_a(v):
+    """L'escala d'un personatge amb els peus a la y de pantalla `v` (al terra, la profunditat només depèn de v)."""
+    lo, hi = -200.0, 3000.0
+    for _ in range(60):
+        z = (lo + hi) / 2
+        if CAM.projecta((360, 0, z))[1] > v:
+            lo = z
+        else:
+            hi = z
+    return CAM.escala((360, 0, (lo + hi) / 2))
+
+
+_CEN_FORAT = [_p(x, z) for x, z in ((CEN[0] - 8, CEN[2] - 8), (CEN[1] + 8, CEN[2] - 8), (CEN[1] + 8, CEN[3] + 8),
+                                     (CEN[0] - 8, CEN[3] + 8))]
+_AQ_FORAT = [_p(x, z) for x, z in _caixa_girada_terra(AQ[0], AQ[1], PL.AQ_W + 8, PL.AQ_D + 8, AQ[2], 8)]
+_GAN_FORAT = [_p(x, z) for x, z in _caixa_girada_terra(GANDULA[0], GANDULA[1], 78, 26, GANDULA[2], 6)]
+_PZ = PL.PORTA[0] + PL.ESQ_Z0, PL.PORTA[1] + PL.ESQ_Z0     # la porta, en z del món
+_AQ_PUNTS = [(x, y, z) for x, z in _caixa_girada_terra(AQ[0], AQ[1], PL.AQ_W + 10, PL.AQ_D + 10, AQ[2], 0)
+             for y in (0, PL.AQ_PEU + PL.AQ_H + 12)]
 
 GEOMETRIA = {
     'things': {
-        'porta_salo': {'rect': (6, 100, 56, 240), 'walk': (44, 236)},
-        'finestral': {'rect': (70, 16, 570, 83), 'walk': (170, 214)},
-        'piscines': {'rect': (118, 84, 582, 185), 'walk': (480, 206)},
-        'escales': {'rect': (62, 84, 118, 190), 'walk': (96, 206)},
-        'aquari': {'rect': (536, 84, 622, 214), 'walk': (560, 236)},
+        'porta_salo': {'rect': _rect_mon((0, PL.PORTA[2] + 26, _PZ[0] - 10), (0, 0, _PZ[1] + 10)),
+                       'walk': _p(34, (_PZ[0] + _PZ[1]) / 2)},
+        'finestral': {'rect': _rect_mon((PL.FONS_COLS[0], YC - PL.WIN_Y0 + 4, ZW),
+                                        (PL.FONS_COLS[-1], YC - PL.WIN_Y1, ZW)),
+                      'walk': _p(300, ZT[0] - 30)},
+        'piscines': {'rect': _rect_mon((XT, TH[2], ZW), (XR, 0, ZT[0]), (XT, 0, ZT[0])),
+                     'walk': _p(480, ZT[0] - 24)},
+        # les escales cromades de la piscina central (l'escala de marbre de l'esquerra no és clicable)
+        'escales': {'rect': _rect_mon(*[(x, y, CEN[3] + dz) for x in (ESCALETES[0] - 6, ESCALETES[1] + 20)
+                                        for y in (30, -20) for dz in (-6, 12)]),
+                    'walk': _p((CEN[0] + CEN[1]) / 2, CEN[2] - 16)},
+        'aquari': {'rect': _rect_mon(*_AQ_PUNTS), 'walk': _p(AQ[0] - 110, AQ[1] - 40)},
     },
-    'spawns': {'iri': (130, 240), 'verne': (190, 214), 'dividend': (444, 214)},
-    'walkable': [(4, 256), (26, 238), (66, 204), (66, 192), (222, 192), (208, 240), (432, 240), (418, 192),
-                 (530, 192), (530, 220), (626, 220), (634, 256)],
+    'spawns': {'iri': _p(60, (_PZ[0] + _PZ[1]) / 2 - 10), 'verne': _p(200, 150),
+               'dividend': _p(CEN[1] + 30, CEN[3] - 10)},
+    'walkable': _WALK,
+    'forats': [_CEN_FORAT, _AQ_FORAT, _GAN_FORAT],
+    'floorSquash': 0.45,                           # (la càmera, a 2,3 m i picada: el terra es veu aixafat)
+    'characterShadow': {'enabled': True, 'color': '#3a3040', 'alpha': 0.38, 'squash': 0.45, 'core': 0.6,
+                        'light': {'x': _p(ARANYES[0][0], ARANYES[0][2])[0], 'y': _p(ARANYES[0][0], ARANYES[0][2])[1],
+                                  'stretch': 0.6, 'reach': 140}},
+    'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
+                 'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
+                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
 }
