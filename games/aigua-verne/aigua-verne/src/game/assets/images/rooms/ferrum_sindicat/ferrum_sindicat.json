@@ -4,167 +4,251 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "ferrum_sindicat 1.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 1581,
         "y": 0,
-        "w": 144,
-        "h": 80
+        "w": 52,
+        "h": 41
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 782,
-        "y": 350,
-        "w": 144,
-        "h": 80
+        "x": 395,
+        "y": 119,
+        "w": 52,
+        "h": 41
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "ferrum_sindicat 2.aseprite": {
       "frame": {
-        "x": 1424,
+        "x": 1633,
         "y": 0,
-        "w": 26,
-        "h": 20
+        "w": 12,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1196,
-        "y": 376,
-        "w": 26,
-        "h": 20
+        "x": 574,
+        "y": 151,
+        "w": 12,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "ferrum_sindicat 3.aseprite": {
       "frame": {
-        "x": 1450,
+        "x": 1645,
         "y": 0,
-        "w": 26,
-        "h": 20
+        "w": 12,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1196,
-        "y": 376,
-        "w": 26,
-        "h": 20
+        "x": 574,
+        "y": 151,
+        "w": 12,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "ferrum_sindicat 4.aseprite": {
       "frame": {
-        "x": 1476,
+        "x": 1657,
         "y": 0,
-        "w": 26,
-        "h": 20
+        "w": 12,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1196,
-        "y": 376,
-        "w": 26,
-        "h": 20
+        "x": 574,
+        "y": 151,
+        "w": 12,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "ferrum_sindicat 5.aseprite": {
       "frame": {
-        "x": 1502,
+        "x": 1669,
         "y": 0,
-        "w": 26,
-        "h": 20
+        "w": 12,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1196,
-        "y": 376,
-        "w": 26,
-        "h": 20
+        "x": 574,
+        "y": 151,
+        "w": 12,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "ferrum_sindicat 6.aseprite": {
       "frame": {
-        "x": 1528,
+        "x": 1681,
         "y": 0,
-        "w": 26,
-        "h": 20
+        "w": 12,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1196,
-        "y": 376,
-        "w": 26,
-        "h": 20
+        "x": 574,
+        "y": 151,
+        "w": 12,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "ferrum_sindicat 7.aseprite": {
       "frame": {
-        "x": 1554,
+        "x": 1693,
         "y": 0,
-        "w": 26,
-        "h": 20
+        "w": 12,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1196,
-        "y": 376,
-        "w": 26,
-        "h": 20
+        "x": 574,
+        "y": 151,
+        "w": 12,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 8.aseprite": {
+      "frame": {
+        "x": 1493,
+        "y": 0,
+        "w": 88,
+        "h": 73
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 376,
+        "y": 97,
+        "w": 88,
+        "h": 73
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 9.aseprite": {
+      "frame": {
+        "x": 1241,
+        "y": 0,
+        "w": 59,
+        "h": 159
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 544,
+        "y": 27,
+        "w": 59,
+        "h": 159
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 10.aseprite": {
+      "frame": {
+        "x": 1300,
+        "y": 0,
+        "w": 193,
+        "h": 109
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 168,
+        "y": 113,
+        "w": 193,
+        "h": 109
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "ferrum_sindicat 11.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 601,
+        "h": 322
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 39,
+        "y": 0,
+        "w": 601,
+        "h": 322
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -175,8 +259,8 @@
     "image": "ferrum_sindicat.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1580,
-      "h": 720
+      "w": 1705,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [
@@ -198,6 +282,34 @@
         "name": "estufa",
         "from": 2,
         "to": 7,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_bagul",
+        "from": 8,
+        "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_estufa",
+        "from": 9,
+        "to": 9,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_taula",
+        "from": 10,
+        "to": 10,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 11,
+        "to": 11,
         "direction": "forward",
         "color": "#000000ff"
       }
