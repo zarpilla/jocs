@@ -4,293 +4,335 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 1.aseprite": {
       "frame": {
-        "x": 1039,
-        "y": 720,
-        "w": 50,
-        "h": 18
+        "x": 2048,
+        "y": 360,
+        "w": 189,
+        "h": 131
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 526,
-        "y": 296,
-        "w": 50,
-        "h": 18
+        "x": 200,
+        "y": 57,
+        "w": 189,
+        "h": 131
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 2.aseprite": {
       "frame": {
-        "x": 1134,
-        "y": 720,
-        "w": 34,
-        "h": 16
+        "x": 1500,
+        "y": 360,
+        "w": 180,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 604,
-        "y": 298,
-        "w": 34,
-        "h": 16
+        "x": 236,
+        "y": 57,
+        "w": 180,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 3.aseprite": {
       "frame": {
-        "x": 1089,
-        "y": 720,
-        "w": 45,
-        "h": 17
+        "x": 1859,
+        "y": 360,
+        "w": 189,
+        "h": 163
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 674,
-        "y": 297,
-        "w": 45,
-        "h": 17
+        "x": 268,
+        "y": 61,
+        "w": 189,
+        "h": 163
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 4.aseprite": {
       "frame": {
-        "x": 969,
-        "y": 720,
-        "w": 70,
-        "h": 150
+        "x": 1680,
+        "y": 360,
+        "w": 179,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 454,
-        "y": 282,
-        "w": 70,
-        "h": 150
+        "x": 172,
+        "y": 49,
+        "w": 179,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 5.aseprite": {
       "frame": {
-        "x": 1089,
-        "y": 720,
-        "w": 45,
-        "h": 17
+        "x": 1859,
+        "y": 360,
+        "w": 189,
+        "h": 163
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 674,
-        "y": 297,
-        "w": 45,
-        "h": 17
+        "x": 268,
+        "y": 61,
+        "w": 189,
+        "h": 163
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 6.aseprite": {
       "frame": {
-        "x": 1168,
-        "y": 720,
-        "w": 1,
-        "h": 1
+        "x": 1280,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
+        "x": 140,
         "y": 0,
-        "w": 1,
-        "h": 1
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 7.aseprite": {
       "frame": {
-        "x": 3327,
+        "x": 1780,
         "y": 0,
-        "w": 509,
-        "h": 184
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 389,
-        "y": 58,
-        "w": 509,
-        "h": 184
+        "x": 140,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 8.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 509,
-        "h": 184
+        "x": 2280,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 389,
-        "y": 58,
-        "w": 509,
-        "h": 184
+        "x": 140,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 9.aseprite": {
       "frame": {
-        "x": 509,
-        "y": 720,
-        "w": 460,
-        "h": 158
+        "x": 2780,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 84,
-        "w": 460,
-        "h": 158
+        "x": 140,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 10.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 3280,
         "y": 0,
-        "w": 513,
-        "h": 188
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 389,
-        "y": 54,
-        "w": 513,
-        "h": 188
+        "x": 140,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 11.aseprite": {
       "frame": {
-        "x": 1793,
-        "y": 0,
-        "w": 513,
-        "h": 188
+        "x": 0,
+        "y": 360,
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 389,
-        "y": 54,
-        "w": 513,
-        "h": 188
+        "x": 140,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 12.aseprite": {
       "frame": {
-        "x": 2306,
-        "y": 0,
-        "w": 508,
-        "h": 188
+        "x": 500,
+        "y": 360,
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 394,
-        "y": 54,
-        "w": 508,
-        "h": 188
+        "x": 140,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_seguretat 13.aseprite": {
       "frame": {
-        "x": 2814,
-        "y": 0,
-        "w": 513,
-        "h": 188
+        "x": 1000,
+        "y": 360,
+        "w": 500,
+        "h": 205
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 389,
-        "y": 54,
-        "w": 513,
-        "h": 188
+        "x": 140,
+        "y": 0,
+        "w": 500,
+        "h": 205
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_seguretat 14.aseprite": {
+      "frame": {
+        "x": 2237,
+        "y": 360,
+        "w": 55,
+        "h": 74
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 386,
+        "y": 156,
+        "w": 55,
+        "h": 74
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_seguretat 15.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 640,
+        "h": 295
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 64,
+        "w": 640,
+        "h": 295
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -301,8 +343,8 @@
     "image": "bcmu_seguretat.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3836,
-      "h": 904
+      "w": 3780,
+      "h": 565
     },
     "scale": "1",
     "frameTags": [
@@ -352,6 +394,20 @@
         "name": "monitors",
         "from": 6,
         "to": 13,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_cadira",
+        "from": 14,
+        "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 15,
+        "to": 15,
         "direction": "forward",
         "color": "#000000ff"
       }
