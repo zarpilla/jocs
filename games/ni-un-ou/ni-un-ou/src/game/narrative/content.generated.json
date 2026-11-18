@@ -16666,24 +16666,15 @@
           "esc2_menu": {
             "choices": [
               {
-                "id": "revisio",
-                "text": "dlg.bastida.opt.revisio",
-                "next": "revisio2"
-              },
-              {
-                "id": "mar",
-                "text": "dlg.bastida.opt.mar",
-                "if": {
-                  "flag": "bastida_arengades",
-                  "is": false
-                },
-                "next": "mar"
-              },
-              {
                 "id": "pipa",
                 "text": "dlg.bastida.opt.pipa",
                 "once": true,
                 "next": "pipa"
+              },
+              {
+                "id": "revisio",
+                "text": "dlg.bastida.opt.revisio",
+                "next": "revisio2"
               },
               {
                 "id": "plataforma",
@@ -16693,6 +16684,15 @@
                 },
                 "once": true,
                 "next": "plataforma"
+              },
+              {
+                "id": "mar",
+                "text": "dlg.bastida.opt.mar",
+                "if": {
+                  "flag": "bastida_arengades",
+                  "is": false
+                },
+                "next": "mar"
               },
               {
                 "id": "adeu",
@@ -17569,6 +17569,12 @@
           "revisio_menu": {
             "choices": [
               {
+                "id": "nadia",
+                "text": "dlg.capitana.opt.nadia",
+                "once": true,
+                "next": "nadia"
+              },
+              {
                 "id": "juana",
                 "text": "dlg.capitana.opt.juana",
                 "once": true,
@@ -17579,22 +17585,16 @@
                 }
               },
               {
-                "id": "gasoil",
-                "text": "dlg.capitana.opt.gasoil",
-                "once": true,
-                "next": "gasoil"
-              },
-              {
-                "id": "nadia",
-                "text": "dlg.capitana.opt.nadia",
-                "once": true,
-                "next": "nadia"
-              },
-              {
                 "id": "valvula",
                 "text": "dlg.capitana.opt.valvula",
                 "once": true,
                 "next": "valvula"
+              },
+              {
+                "id": "gasoil",
+                "text": "dlg.capitana.opt.gasoil",
+                "once": true,
+                "next": "gasoil"
               },
               {
                 "id": "fi",
@@ -18229,6 +18229,12 @@
           "menu": {
             "choices": [
               {
+                "id": "revisio",
+                "text": "dlg.juana.opt.revisio",
+                "once": true,
+                "next": "revisio"
+              },
+              {
                 "id": "valvula",
                 "text": "dlg.juana.opt.valvula",
                 "if": {
@@ -18236,12 +18242,6 @@
                   "is": false
                 },
                 "next": "valvula"
-              },
-              {
-                "id": "revisio",
-                "text": "dlg.juana.opt.revisio",
-                "once": true,
-                "next": "revisio"
               },
               {
                 "id": "adeu",
@@ -18901,14 +18901,14 @@
             ],
             "choices": [
               {
-                "id": "guardar",
-                "text": "dlg.marcel.opt.guardar",
-                "next": "aliat"
-              },
-              {
                 "id": "veritat",
                 "text": "dlg.marcel.opt.veritat",
                 "next": "enfadat_veritat"
+              },
+              {
+                "id": "guardar",
+                "text": "dlg.marcel.opt.guardar",
+                "next": "aliat"
               },
               {
                 "id": "capitana",
@@ -20419,6 +20419,15 @@
           "proves": {
             "choices": [
               {
+                "id": "gat",
+                "text": "dlg.reunio.opt.gat",
+                "if": {
+                  "flag": "marcel_gat"
+                },
+                "once": true,
+                "next": "p_gat"
+              },
+              {
                 "id": "cisalla",
                 "text": "dlg.reunio.opt.cisalla",
                 "if": {
@@ -20444,6 +20453,15 @@
                 "next": "p_ma"
               },
               {
+                "id": "croissant",
+                "text": "dlg.reunio.opt.croissant",
+                "if": {
+                  "flag": "nadia_croissant"
+                },
+                "once": true,
+                "next": "p_croissant"
+              },
+              {
                 "id": "pipa",
                 "text": "dlg.reunio.opt.pipa",
                 "if": {
@@ -20451,6 +20469,15 @@
                 },
                 "once": true,
                 "next": "p_pipa"
+              },
+              {
+                "id": "escaner",
+                "text": "dlg.reunio.opt.escaner",
+                "if": {
+                  "flag": "nadia_escolta"
+                },
+                "once": true,
+                "next": "p_escaner"
               },
               {
                 "id": "nus",
@@ -20478,42 +20505,6 @@
                 "next": "p_correu"
               },
               {
-                "id": "cambra",
-                "text": "dlg.reunio.opt.cambra",
-                "if": {
-                  "flag": "prova_cambra"
-                },
-                "once": true,
-                "next": "p_cambra"
-              },
-              {
-                "id": "gat",
-                "text": "dlg.reunio.opt.gat",
-                "if": {
-                  "flag": "marcel_gat"
-                },
-                "once": true,
-                "next": "p_gat"
-              },
-              {
-                "id": "croissant",
-                "text": "dlg.reunio.opt.croissant",
-                "if": {
-                  "flag": "nadia_croissant"
-                },
-                "once": true,
-                "next": "p_croissant"
-              },
-              {
-                "id": "escaner",
-                "text": "dlg.reunio.opt.escaner",
-                "if": {
-                  "flag": "nadia_escolta"
-                },
-                "once": true,
-                "next": "p_escaner"
-              },
-              {
                 "id": "clau",
                 "text": "dlg.reunio.opt.clau",
                 "if": {
@@ -20521,6 +20512,15 @@
                 },
                 "once": true,
                 "next": "p_clau"
+              },
+              {
+                "id": "cambra",
+                "text": "dlg.reunio.opt.cambra",
+                "if": {
+                  "flag": "prova_cambra"
+                },
+                "once": true,
+                "next": "p_cambra"
               },
               {
                 "id": "blaunet",

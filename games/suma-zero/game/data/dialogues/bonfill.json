@@ -351,30 +351,6 @@
           "next": "r_secrets"
         },
         {
-          "id": "avio",
-          "text": "dlg.bonfill.opt.avio",
-          "if": {
-            "all": [
-              {
-                "hasItem": "maleti",
-                "is": false
-              },
-              {
-                "var": "sospita",
-                "op": "<",
-                "value": 100
-              }
-            ]
-          },
-          "effects": [
-            {
-              "addVar": "sospita",
-              "amount": 40
-            }
-          ],
-          "next": "r_avio"
-        },
-        {
           "id": "nuvols",
           "text": "dlg.bonfill.opt.nuvols",
           "if": {
@@ -406,6 +382,30 @@
             }
           ],
           "next": "r_nuvols"
+        },
+        {
+          "id": "avio",
+          "text": "dlg.bonfill.opt.avio",
+          "if": {
+            "all": [
+              {
+                "hasItem": "maleti",
+                "is": false
+              },
+              {
+                "var": "sospita",
+                "op": "<",
+                "value": 100
+              }
+            ]
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 40
+            }
+          ],
+          "next": "r_avio"
         }
       ],
       "goto": "q_jove"
@@ -570,6 +570,33 @@
           "next": "r_directives"
         },
         {
+          "id": "crema",
+          "text": "dlg.bonfill.opt.crema",
+          "if": {
+            "all": [
+              {
+                "all": [
+                  {
+                    "flag": "ulleres_posades",
+                    "is": false
+                  },
+                  {
+                    "var": "sospita",
+                    "op": "<",
+                    "value": 100
+                  }
+                ]
+              },
+              {
+                "var": "marmota",
+                "op": ">=",
+                "value": 1
+              }
+            ]
+          },
+          "next": "r_crema"
+        },
+        {
           "id": "acreditacio",
           "text": "dlg.bonfill.opt.acreditacio",
           "if": {
@@ -599,33 +626,6 @@
             }
           ],
           "next": "r_acreditacio"
-        },
-        {
-          "id": "crema",
-          "text": "dlg.bonfill.opt.crema",
-          "if": {
-            "all": [
-              {
-                "all": [
-                  {
-                    "flag": "ulleres_posades",
-                    "is": false
-                  },
-                  {
-                    "var": "sospita",
-                    "op": "<",
-                    "value": 100
-                  }
-                ]
-              },
-              {
-                "var": "marmota",
-                "op": ">=",
-                "value": 1
-              }
-            ]
-          },
-          "next": "r_crema"
         }
       ],
       "goto": "q_banca"
@@ -785,22 +785,6 @@
           "next": "r_cordons"
         },
         {
-          "id": "cor",
-          "text": "dlg.bonfill.opt.cor",
-          "if": {
-            "var": "sospita",
-            "op": "<",
-            "value": 100
-          },
-          "effects": [
-            {
-              "addVar": "sospita",
-              "amount": 5
-            }
-          ],
-          "next": "r_cor"
-        },
-        {
           "id": "dacord",
           "text": "dlg.bonfill.opt.dacord",
           "if": {
@@ -818,6 +802,22 @@
             }
           ],
           "next": "r_dacord"
+        },
+        {
+          "id": "cor",
+          "text": "dlg.bonfill.opt.cor",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "effects": [
+            {
+              "addVar": "sospita",
+              "amount": 5
+            }
+          ],
+          "next": "r_cor"
         }
       ],
       "goto": "q_gos"
@@ -1128,16 +1128,6 @@
       ],
       "choices": [
         {
-          "id": "seguretat",
-          "text": "dlg.bonfill.opt.seguretat",
-          "if": {
-            "var": "sospita",
-            "op": "<",
-            "value": 100
-          },
-          "next": "acceptada"
-        },
-        {
           "id": "caixes",
           "text": "dlg.bonfill.opt.caixes",
           "if": {
@@ -1152,6 +1142,16 @@
             }
           ],
           "next": "r_caixes"
+        },
+        {
+          "id": "seguretat",
+          "text": "dlg.bonfill.opt.seguretat",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "next": "acceptada"
         },
         {
           "id": "comptes",
@@ -1289,16 +1289,6 @@
       ],
       "choices": [
         {
-          "id": "seguretat",
-          "text": "dlg.bonfill.opt.seguretat",
-          "if": {
-            "var": "sospita",
-            "op": "<",
-            "value": 100
-          },
-          "next": "acceptada"
-        },
-        {
           "id": "caixes",
           "text": "dlg.bonfill.opt.caixes",
           "if": {
@@ -1313,6 +1303,16 @@
             }
           ],
           "next": "r_caixes"
+        },
+        {
+          "id": "seguretat",
+          "text": "dlg.bonfill.opt.seguretat",
+          "if": {
+            "var": "sospita",
+            "op": "<",
+            "value": 100
+          },
+          "next": "acceptada"
         },
         {
           "id": "comptes",

@@ -6,12 +6,12 @@ dialog.onStart(() => {
   startNarrativeDialog('rosa', dialog)
 })
 
-options.menu__vestit.onChoose(() => {
-  chooseNarrativeOption('rosa', dialog, 'menu', 'vestit')
-})
-
 options.menu__vaga.onChoose(() => {
   chooseNarrativeOption('rosa', dialog, 'menu', 'vaga')
+})
+
+options.menu__vestit.onChoose(() => {
+  chooseNarrativeOption('rosa', dialog, 'menu', 'vestit')
 })
 
 options.menu__tomas.onChoose(() => {

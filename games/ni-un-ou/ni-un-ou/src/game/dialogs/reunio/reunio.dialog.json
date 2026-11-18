@@ -45,6 +45,13 @@
       "say": false
     },
     {
+      "id": "proves__gat",
+      "scriptName": "proves__gat",
+      "text": "Els pèls de gat.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "proves__cisalla",
       "scriptName": "proves__cisalla",
       "text": "La cisalla mellada.",
@@ -59,9 +66,23 @@
       "say": false
     },
     {
+      "id": "proves__croissant",
+      "scriptName": "proves__croissant",
+      "text": "El mareig i el croissant.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "proves__pipa",
       "scriptName": "proves__pipa",
       "text": "La pipa.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "proves__escaner",
+      "scriptName": "proves__escaner",
+      "text": "L'escàner.",
       "enabled": false,
       "say": false
     },
@@ -80,37 +101,16 @@
       "say": false
     },
     {
-      "id": "proves__cambra",
-      "scriptName": "proves__cambra",
-      "text": "«A la cambra freda estarien més segures.»",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "proves__gat",
-      "scriptName": "proves__gat",
-      "text": "Els pèls de gat.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "proves__croissant",
-      "scriptName": "proves__croissant",
-      "text": "El mareig i el croissant.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "proves__escaner",
-      "scriptName": "proves__escaner",
-      "text": "L'escàner.",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "proves__clau",
       "scriptName": "proves__clau",
       "text": "La clau d'en Tomàs.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "proves__cambra",
+      "scriptName": "proves__cambra",
+      "text": "«A la cambra freda estarien més segures.»",
       "enabled": false,
       "say": false
     },

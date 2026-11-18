@@ -105,6 +105,12 @@
     "menu": {
       "choices": [
         {
+          "id": "pilot",
+          "text": "dlg.tomas.opt.pilot",
+          "once": true,
+          "next": "pilot"
+        },
+        {
           "id": "clau",
           "text": "dlg.tomas.opt.clau",
           "if": {
@@ -121,6 +127,12 @@
           "next": "clau"
         },
         {
+          "id": "contracte",
+          "text": "dlg.tomas.opt.contracte",
+          "once": true,
+          "next": "contracte"
+        },
+        {
           "id": "paper",
           "text": "dlg.tomas.opt.paper",
           "if": {
@@ -135,18 +147,6 @@
             ]
           },
           "next": "paper"
-        },
-        {
-          "id": "contracte",
-          "text": "dlg.tomas.opt.contracte",
-          "once": true,
-          "next": "contracte"
-        },
-        {
-          "id": "pilot",
-          "text": "dlg.tomas.opt.pilot",
-          "once": true,
-          "next": "pilot"
         },
         {
           "id": "adeu",

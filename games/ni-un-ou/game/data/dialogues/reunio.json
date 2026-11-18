@@ -170,6 +170,15 @@
     "proves": {
       "choices": [
         {
+          "id": "gat",
+          "text": "dlg.reunio.opt.gat",
+          "if": {
+            "flag": "marcel_gat"
+          },
+          "once": true,
+          "next": "p_gat"
+        },
+        {
           "id": "cisalla",
           "text": "dlg.reunio.opt.cisalla",
           "if": {
@@ -195,6 +204,15 @@
           "next": "p_ma"
         },
         {
+          "id": "croissant",
+          "text": "dlg.reunio.opt.croissant",
+          "if": {
+            "flag": "nadia_croissant"
+          },
+          "once": true,
+          "next": "p_croissant"
+        },
+        {
           "id": "pipa",
           "text": "dlg.reunio.opt.pipa",
           "if": {
@@ -202,6 +220,15 @@
           },
           "once": true,
           "next": "p_pipa"
+        },
+        {
+          "id": "escaner",
+          "text": "dlg.reunio.opt.escaner",
+          "if": {
+            "flag": "nadia_escolta"
+          },
+          "once": true,
+          "next": "p_escaner"
         },
         {
           "id": "nus",
@@ -229,42 +256,6 @@
           "next": "p_correu"
         },
         {
-          "id": "cambra",
-          "text": "dlg.reunio.opt.cambra",
-          "if": {
-            "flag": "prova_cambra"
-          },
-          "once": true,
-          "next": "p_cambra"
-        },
-        {
-          "id": "gat",
-          "text": "dlg.reunio.opt.gat",
-          "if": {
-            "flag": "marcel_gat"
-          },
-          "once": true,
-          "next": "p_gat"
-        },
-        {
-          "id": "croissant",
-          "text": "dlg.reunio.opt.croissant",
-          "if": {
-            "flag": "nadia_croissant"
-          },
-          "once": true,
-          "next": "p_croissant"
-        },
-        {
-          "id": "escaner",
-          "text": "dlg.reunio.opt.escaner",
-          "if": {
-            "flag": "nadia_escolta"
-          },
-          "once": true,
-          "next": "p_escaner"
-        },
-        {
           "id": "clau",
           "text": "dlg.reunio.opt.clau",
           "if": {
@@ -272,6 +263,15 @@
           },
           "once": true,
           "next": "p_clau"
+        },
+        {
+          "id": "cambra",
+          "text": "dlg.reunio.opt.cambra",
+          "if": {
+            "flag": "prova_cambra"
+          },
+          "once": true,
+          "next": "p_cambra"
         },
         {
           "id": "blaunet",

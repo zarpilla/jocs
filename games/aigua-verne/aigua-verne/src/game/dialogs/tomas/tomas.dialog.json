@@ -3,16 +3,16 @@
   "displayName": "tomas",
   "options": [
     {
-      "id": "menu__clau",
-      "scriptName": "menu__clau",
-      "text": "Em deixes la clau anglesa?",
+      "id": "menu__pilot",
+      "scriptName": "menu__pilot",
+      "text": "On has après mecànica?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "menu__paper",
-      "scriptName": "menu__paper",
-      "text": "Em dones el paper de plata del teu entrepà?",
+      "id": "menu__clau",
+      "scriptName": "menu__clau",
+      "text": "Em deixes la clau anglesa?",
       "enabled": false,
       "say": false
     },
@@ -24,9 +24,9 @@
       "say": false
     },
     {
-      "id": "menu__pilot",
-      "scriptName": "menu__pilot",
-      "text": "On has après mecànica?",
+      "id": "menu__paper",
+      "scriptName": "menu__paper",
+      "text": "Em dones el paper de plata del teu entrepà?",
       "enabled": false,
       "say": false
     },

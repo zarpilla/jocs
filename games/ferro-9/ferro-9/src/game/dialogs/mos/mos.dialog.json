@@ -3,13 +3,6 @@
   "displayName": "mos",
   "options": [
     {
-      "id": "menu__reciclatge",
-      "scriptName": "menu__reciclatge",
-      "text": "Què és el reciclatge, Mos?",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "menu__llapis",
       "scriptName": "menu__llapis",
       "text": "Em deixes alguna cosa per escriure?",
@@ -27,6 +20,13 @@
       "id": "menu__maquillatge",
       "scriptName": "menu__maquillatge",
       "text": "Per què vas maquillat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__reciclatge",
+      "scriptName": "menu__reciclatge",
+      "text": "Què és el reciclatge, Mos?",
       "enabled": false,
       "say": false
     },

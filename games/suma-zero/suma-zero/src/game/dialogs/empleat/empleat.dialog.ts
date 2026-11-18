@@ -14,12 +14,12 @@ options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('empleat', dialog, 'menu', 'adeu')
 })
 
-options.maleti__llimona.onChoose(() => {
-  chooseNarrativeOption('empleat', dialog, 'maleti', 'llimona')
-})
-
 options.maleti__papers.onChoose(() => {
   chooseNarrativeOption('empleat', dialog, 'maleti', 'papers')
+})
+
+options.maleti__llimona.onChoose(() => {
+  chooseNarrativeOption('empleat', dialog, 'maleti', 'llimona')
 })
 
 options.maleti__oblit.onChoose(() => {

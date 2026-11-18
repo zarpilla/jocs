@@ -3,9 +3,9 @@
   "displayName": "pons",
   "options": [
     {
-      "id": "menu__escoltar",
-      "scriptName": "menu__escoltar",
-      "text": "(Llegir en veu alta la factura i la nòmina.)",
+      "id": "menu__per_que",
+      "scriptName": "menu__per_que",
+      "text": "Què fa, el Director?",
       "enabled": false,
       "say": false
     },
@@ -17,9 +17,9 @@
       "say": false
     },
     {
-      "id": "menu__per_que",
-      "scriptName": "menu__per_que",
-      "text": "Què fa, el Director?",
+      "id": "menu__escoltar",
+      "scriptName": "menu__escoltar",
+      "text": "(Llegir en veu alta la factura i la nòmina.)",
       "enabled": false,
       "say": false
     },

@@ -31,13 +31,6 @@
       "say": false
     },
     {
-      "id": "aval__sac",
-      "scriptName": "aval__sac",
-      "text": "Un sac de llavors resistents a la secada.",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "aval__escriptura",
       "scriptName": "aval__escriptura",
       "text": "Una granja a Terra-2. Aquí en tinc l'escriptura.",
@@ -48,6 +41,13 @@
       "id": "aval__contracte",
       "scriptName": "aval__contracte",
       "text": "Un contracte amb Verne S.A.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "aval__sac",
+      "scriptName": "aval__sac",
+      "text": "Un sac de llavors resistents a la secada.",
       "enabled": false,
       "say": false
     },

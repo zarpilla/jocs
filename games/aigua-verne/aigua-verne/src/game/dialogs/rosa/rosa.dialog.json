@@ -3,16 +3,16 @@
   "displayName": "rosa",
   "options": [
     {
-      "id": "menu__vestit",
-      "scriptName": "menu__vestit",
-      "text": "Rosa, ens deixaries el vestit de reina del sindicat?",
+      "id": "menu__vaga",
+      "scriptName": "menu__vaga",
+      "text": "Com va la vaga?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "menu__vaga",
-      "scriptName": "menu__vaga",
-      "text": "Com va la vaga?",
+      "id": "menu__vestit",
+      "scriptName": "menu__vestit",
+      "text": "Rosa, ens deixaries el vestit de reina del sindicat?",
       "enabled": false,
       "say": false
     },

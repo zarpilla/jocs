@@ -3,6 +3,13 @@
   "displayName": "tomas",
   "options": [
     {
+      "id": "menu__wifi",
+      "scriptName": "menu__wifi",
+      "text": "Quina és la contrasenya de la wifi?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__cafe",
       "scriptName": "menu__cafe",
       "text": "Un cafè amb llet per a en Marcel.",
@@ -20,13 +27,6 @@
       "id": "menu__comandament",
       "scriptName": "menu__comandament",
       "text": "Em deixes el comandament de la tele?",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "menu__wifi",
-      "scriptName": "menu__wifi",
-      "text": "Quina és la contrasenya de la wifi?",
       "enabled": false,
       "say": false
     },

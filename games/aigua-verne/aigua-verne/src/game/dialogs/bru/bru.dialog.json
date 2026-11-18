@@ -3,6 +3,20 @@
   "displayName": "bru",
   "options": [
     {
+      "id": "menu__lia",
+      "scriptName": "menu__lia",
+      "text": "Com és la Lia?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__juana",
+      "scriptName": "menu__juana",
+      "text": "La Juana diu que et deu una cervesa. D'aigua.",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__canalla",
       "scriptName": "menu__canalla",
       "text": "La canalla ja beu.",
@@ -31,23 +45,9 @@
       "say": false
     },
     {
-      "id": "menu__lia",
-      "scriptName": "menu__lia",
-      "text": "Com és la Lia?",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "menu__recorda",
       "scriptName": "menu__recorda",
       "text": "Recorda'm què cal fer.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "menu__juana",
-      "scriptName": "menu__juana",
-      "text": "La Juana diu que et deu una cervesa. D'aigua.",
       "enabled": false,
       "say": false
     },

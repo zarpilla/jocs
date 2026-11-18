@@ -80,6 +80,16 @@
     "menu": {
       "choices": [
         {
+          "id": "targeta",
+          "text": "dlg.rius.opt.targeta",
+          "if": {
+            "hasItem": "targeta",
+            "is": false
+          },
+          "once": true,
+          "next": "targeta"
+        },
+        {
           "id": "mobil",
           "text": "dlg.rius.opt.mobil",
           "if": {
@@ -103,16 +113,6 @@
             ]
           },
           "next": "arreglar"
-        },
-        {
-          "id": "targeta",
-          "text": "dlg.rius.opt.targeta",
-          "if": {
-            "hasItem": "targeta",
-            "is": false
-          },
-          "once": true,
-          "next": "targeta"
         },
         {
           "id": "cafe",

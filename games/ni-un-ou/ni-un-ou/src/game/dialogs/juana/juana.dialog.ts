@@ -6,12 +6,12 @@ dialog.onStart(() => {
   startNarrativeDialog('juana', dialog)
 })
 
-options.menu__valvula.onChoose(() => {
-  chooseNarrativeOption('juana', dialog, 'menu', 'valvula')
-})
-
 options.menu__revisio.onChoose(() => {
   chooseNarrativeOption('juana', dialog, 'menu', 'revisio')
+})
+
+options.menu__valvula.onChoose(() => {
+  chooseNarrativeOption('juana', dialog, 'menu', 'valvula')
 })
 
 options.menu__adeu.onChoose(() => {

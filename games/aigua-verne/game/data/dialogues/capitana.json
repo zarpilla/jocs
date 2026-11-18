@@ -120,6 +120,57 @@
     "menu": {
       "choices": [
         {
+          "id": "magnat",
+          "text": "dlg.capitana.opt.magnat",
+          "if": {
+            "all": [
+              {
+                "flag": "capitana_accepta"
+              },
+              {
+                "flag": "capitana_si",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "magnat"
+        },
+        {
+          "id": "por",
+          "text": "dlg.capitana.opt.por",
+          "if": {
+            "all": [
+              {
+                "flag": "cap_condicions"
+              },
+              {
+                "flag": "capitana_si",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "por"
+        },
+        {
+          "id": "pare",
+          "text": "dlg.capitana.opt.pare",
+          "once": true,
+          "next": "pare"
+        },
+        {
+          "id": "gat",
+          "text": "dlg.capitana.opt.gat",
+          "if": {
+            "var": "escena",
+            "op": ">=",
+            "value": 3
+          },
+          "once": true,
+          "next": "gat"
+        },
+        {
           "id": "aigua",
           "text": "dlg.capitana.opt.aigua",
           "if": {
@@ -145,22 +196,6 @@
           "next": "portar"
         },
         {
-          "id": "recorda",
-          "text": "dlg.capitana.opt.recorda",
-          "if": {
-            "all": [
-              {
-                "flag": "cap_condicions"
-              },
-              {
-                "flag": "capitana_accepta",
-                "is": false
-              }
-            ]
-          },
-          "next": "recorda"
-        },
-        {
           "id": "entrego",
           "text": "dlg.capitana.opt.entrego",
           "if": {
@@ -178,23 +213,6 @@
             ]
           },
           "next": "entrego"
-        },
-        {
-          "id": "por",
-          "text": "dlg.capitana.opt.por",
-          "if": {
-            "all": [
-              {
-                "flag": "cap_condicions"
-              },
-              {
-                "flag": "capitana_si",
-                "is": false
-              }
-            ]
-          },
-          "once": true,
-          "next": "por"
         },
         {
           "id": "contracte",
@@ -251,38 +269,20 @@
           "next": "pla"
         },
         {
-          "id": "magnat",
-          "text": "dlg.capitana.opt.magnat",
+          "id": "recorda",
+          "text": "dlg.capitana.opt.recorda",
           "if": {
             "all": [
               {
-                "flag": "capitana_accepta"
+                "flag": "cap_condicions"
               },
               {
-                "flag": "capitana_si",
+                "flag": "capitana_accepta",
                 "is": false
               }
             ]
           },
-          "once": true,
-          "next": "magnat"
-        },
-        {
-          "id": "pare",
-          "text": "dlg.capitana.opt.pare",
-          "once": true,
-          "next": "pare"
-        },
-        {
-          "id": "gat",
-          "text": "dlg.capitana.opt.gat",
-          "if": {
-            "var": "escena",
-            "op": ">=",
-            "value": 3
-          },
-          "once": true,
-          "next": "gat"
+          "next": "recorda"
         },
         {
           "id": "adeu",

@@ -38,12 +38,12 @@ options.eines__auditor.onChoose(() => {
   chooseNarrativeOption('ballester', dialog, 'eines', 'auditor')
 })
 
-options.eines__violi.onChoose(() => {
-  chooseNarrativeOption('ballester', dialog, 'eines', 'violi')
-})
-
 options.eines__vidua.onChoose(() => {
   chooseNarrativeOption('ballester', dialog, 'eines', 'vidua')
+})
+
+options.eines__violi.onChoose(() => {
+  chooseNarrativeOption('ballester', dialog, 'eines', 'violi')
 })
 
 options.eines__serie_sync.onChoose(() => {

@@ -20,6 +20,23 @@
     "menu": {
       "choices": [
         {
+          "id": "marcel",
+          "text": "dlg.passaplats.opt.marcel",
+          "if": {
+            "all": [
+              {
+                "flag": "llibre_trobat"
+              },
+              {
+                "flag": "vet_marxa",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "marcel"
+        },
+        {
           "id": "cable",
           "text": "dlg.passaplats.opt.cable",
           "if": {
@@ -47,23 +64,6 @@
             ]
           },
           "next": "pizza"
-        },
-        {
-          "id": "marcel",
-          "text": "dlg.passaplats.opt.marcel",
-          "if": {
-            "all": [
-              {
-                "flag": "llibre_trobat"
-              },
-              {
-                "flag": "vet_marxa",
-                "is": false
-              }
-            ]
-          },
-          "once": true,
-          "next": "marcel"
         },
         {
           "id": "adeu",

@@ -45,16 +45,16 @@
       "say": false
     },
     {
-      "id": "secret__guardar",
-      "scriptName": "secret__guardar",
-      "text": "No ho sabrà ningú. Ni que eres a màquines, ni el gat.",
+      "id": "secret__veritat",
+      "scriptName": "secret__veritat",
+      "text": "Hauries d'haver dit la veritat. Ara tothom sospita de tu.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "secret__veritat",
-      "scriptName": "secret__veritat",
-      "text": "Hauries d'haver dit la veritat. Ara tothom sospita de tu.",
+      "id": "secret__guardar",
+      "scriptName": "secret__guardar",
+      "text": "No ho sabrà ningú. Ni que eres a màquines, ni el gat.",
       "enabled": false,
       "say": false
     },

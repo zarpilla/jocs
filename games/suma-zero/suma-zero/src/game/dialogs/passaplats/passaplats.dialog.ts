@@ -6,16 +6,16 @@ dialog.onStart(() => {
   startNarrativeDialog('passaplats', dialog)
 })
 
+options.menu__marcel.onChoose(() => {
+  chooseNarrativeOption('passaplats', dialog, 'menu', 'marcel')
+})
+
 options.menu__cable.onChoose(() => {
   chooseNarrativeOption('passaplats', dialog, 'menu', 'cable')
 })
 
 options.menu__pizza.onChoose(() => {
   chooseNarrativeOption('passaplats', dialog, 'menu', 'pizza')
-})
-
-options.menu__marcel.onChoose(() => {
-  chooseNarrativeOption('passaplats', dialog, 'menu', 'marcel')
 })
 
 options.menu__adeu.onChoose(() => {

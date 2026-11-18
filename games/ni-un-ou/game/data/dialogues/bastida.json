@@ -110,24 +110,15 @@
     "esc2_menu": {
       "choices": [
         {
-          "id": "revisio",
-          "text": "dlg.bastida.opt.revisio",
-          "next": "revisio2"
-        },
-        {
-          "id": "mar",
-          "text": "dlg.bastida.opt.mar",
-          "if": {
-            "flag": "bastida_arengades",
-            "is": false
-          },
-          "next": "mar"
-        },
-        {
           "id": "pipa",
           "text": "dlg.bastida.opt.pipa",
           "once": true,
           "next": "pipa"
+        },
+        {
+          "id": "revisio",
+          "text": "dlg.bastida.opt.revisio",
+          "next": "revisio2"
         },
         {
           "id": "plataforma",
@@ -137,6 +128,15 @@
           },
           "once": true,
           "next": "plataforma"
+        },
+        {
+          "id": "mar",
+          "text": "dlg.bastida.opt.mar",
+          "if": {
+            "flag": "bastida_arengades",
+            "is": false
+          },
+          "next": "mar"
         },
         {
           "id": "adeu",

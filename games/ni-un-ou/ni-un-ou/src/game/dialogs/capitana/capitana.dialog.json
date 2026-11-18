@@ -3,20 +3,6 @@
   "displayName": "capitana",
   "options": [
     {
-      "id": "revisio_menu__juana",
-      "scriptName": "revisio_menu__juana",
-      "text": "Has vist la Juana?",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "revisio_menu__gasoil",
-      "scriptName": "revisio_menu__gasoil",
-      "text": "Com es paga, una campanya així?",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "revisio_menu__nadia",
       "scriptName": "revisio_menu__nadia",
       "text": "I la periodista?",
@@ -24,9 +10,23 @@
       "say": false
     },
     {
+      "id": "revisio_menu__juana",
+      "scriptName": "revisio_menu__juana",
+      "text": "Has vist la Juana?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "revisio_menu__valvula",
       "scriptName": "revisio_menu__valvula",
       "text": "La vàlvula d'aquesta nit...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "revisio_menu__gasoil",
+      "scriptName": "revisio_menu__gasoil",
+      "text": "Com es paga, una campanya així?",
       "enabled": false,
       "say": false
     },

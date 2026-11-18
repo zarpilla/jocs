@@ -3,16 +3,16 @@
   "displayName": "neta",
   "options": [
     {
-      "id": "menu__descansa",
-      "scriptName": "menu__descansa",
-      "text": "NETA, descansa.",
+      "id": "menu__hores",
+      "scriptName": "menu__hores",
+      "text": "Quantes hores fa que treballes?",
       "enabled": false,
       "say": false
     },
     {
-      "id": "menu__hores",
-      "scriptName": "menu__hores",
-      "text": "Quantes hores fa que treballes?",
+      "id": "menu__descansa",
+      "scriptName": "menu__descansa",
+      "text": "NETA, descansa.",
       "enabled": false,
       "say": false
     },

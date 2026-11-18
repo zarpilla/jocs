@@ -15347,6 +15347,21 @@
           "menu": {
             "choices": [
               {
+                "id": "lia",
+                "text": "dlg.bru.opt.lia",
+                "if": {
+                  "flag": "bru_lia"
+                },
+                "once": true,
+                "next": "lia"
+              },
+              {
+                "id": "juana",
+                "text": "dlg.bru.opt.juana",
+                "once": true,
+                "next": "juana"
+              },
+              {
                 "id": "canalla",
                 "text": "dlg.bru.opt.canalla",
                 "if": {
@@ -15417,24 +15432,9 @@
                 "next": "colada"
               },
               {
-                "id": "lia",
-                "text": "dlg.bru.opt.lia",
-                "if": {
-                  "flag": "bru_lia"
-                },
-                "once": true,
-                "next": "lia"
-              },
-              {
                 "id": "recorda",
                 "text": "dlg.bru.opt.recorda",
                 "next": "recorda"
-              },
-              {
-                "id": "juana",
-                "text": "dlg.bru.opt.juana",
-                "once": true,
-                "next": "juana"
               },
               {
                 "id": "adeu",
@@ -15775,6 +15775,57 @@
           "menu": {
             "choices": [
               {
+                "id": "magnat",
+                "text": "dlg.capitana.opt.magnat",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "capitana_accepta"
+                    },
+                    {
+                      "flag": "capitana_si",
+                      "is": false
+                    }
+                  ]
+                },
+                "once": true,
+                "next": "magnat"
+              },
+              {
+                "id": "por",
+                "text": "dlg.capitana.opt.por",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "cap_condicions"
+                    },
+                    {
+                      "flag": "capitana_si",
+                      "is": false
+                    }
+                  ]
+                },
+                "once": true,
+                "next": "por"
+              },
+              {
+                "id": "pare",
+                "text": "dlg.capitana.opt.pare",
+                "once": true,
+                "next": "pare"
+              },
+              {
+                "id": "gat",
+                "text": "dlg.capitana.opt.gat",
+                "if": {
+                  "var": "escena",
+                  "op": ">=",
+                  "value": 3
+                },
+                "once": true,
+                "next": "gat"
+              },
+              {
                 "id": "aigua",
                 "text": "dlg.capitana.opt.aigua",
                 "if": {
@@ -15800,22 +15851,6 @@
                 "next": "portar"
               },
               {
-                "id": "recorda",
-                "text": "dlg.capitana.opt.recorda",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "cap_condicions"
-                    },
-                    {
-                      "flag": "capitana_accepta",
-                      "is": false
-                    }
-                  ]
-                },
-                "next": "recorda"
-              },
-              {
                 "id": "entrego",
                 "text": "dlg.capitana.opt.entrego",
                 "if": {
@@ -15833,23 +15868,6 @@
                   ]
                 },
                 "next": "entrego"
-              },
-              {
-                "id": "por",
-                "text": "dlg.capitana.opt.por",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "cap_condicions"
-                    },
-                    {
-                      "flag": "capitana_si",
-                      "is": false
-                    }
-                  ]
-                },
-                "once": true,
-                "next": "por"
               },
               {
                 "id": "contracte",
@@ -15906,38 +15924,20 @@
                 "next": "pla"
               },
               {
-                "id": "magnat",
-                "text": "dlg.capitana.opt.magnat",
+                "id": "recorda",
+                "text": "dlg.capitana.opt.recorda",
                 "if": {
                   "all": [
                     {
-                      "flag": "capitana_accepta"
+                      "flag": "cap_condicions"
                     },
                     {
-                      "flag": "capitana_si",
+                      "flag": "capitana_accepta",
                       "is": false
                     }
                   ]
                 },
-                "once": true,
-                "next": "magnat"
-              },
-              {
-                "id": "pare",
-                "text": "dlg.capitana.opt.pare",
-                "once": true,
-                "next": "pare"
-              },
-              {
-                "id": "gat",
-                "text": "dlg.capitana.opt.gat",
-                "if": {
-                  "var": "escena",
-                  "op": ">=",
-                  "value": 3
-                },
-                "once": true,
-                "next": "gat"
+                "next": "recorda"
               },
               {
                 "id": "adeu",
@@ -18128,14 +18128,6 @@
             ],
             "choices": [
               {
-                "id": "sac",
-                "text": "dlg.fidel.opt.sac",
-                "if": {
-                  "hasItem": "sac_llavors"
-                },
-                "next": "sac"
-              },
-              {
                 "id": "escriptura",
                 "text": "dlg.fidel.opt.escriptura",
                 "if": {
@@ -18150,6 +18142,14 @@
                   "hasItem": "contracte_7788"
                 },
                 "next": "contracte"
+              },
+              {
+                "id": "sac",
+                "text": "dlg.fidel.opt.sac",
+                "if": {
+                  "hasItem": "sac_llavors"
+                },
+                "next": "sac"
               },
               {
                 "id": "res",
@@ -18490,6 +18490,21 @@
           "menu": {
             "choices": [
               {
+                "id": "llavors",
+                "text": "dlg.juana.opt.llavors",
+                "once": true,
+                "next": "llavors"
+              },
+              {
+                "id": "peixos",
+                "text": "dlg.juana.opt.peixos",
+                "if": {
+                  "flag": "juana_mar"
+                },
+                "once": true,
+                "next": "peixos"
+              },
+              {
                 "id": "mar",
                 "text": "dlg.juana.opt.mar",
                 "if": {
@@ -18545,21 +18560,6 @@
                   ]
                 },
                 "next": "bru"
-              },
-              {
-                "id": "peixos",
-                "text": "dlg.juana.opt.peixos",
-                "if": {
-                  "flag": "juana_mar"
-                },
-                "once": true,
-                "next": "peixos"
-              },
-              {
-                "id": "llavors",
-                "text": "dlg.juana.opt.llavors",
-                "once": true,
-                "next": "llavors"
               },
               {
                 "id": "preguntes",
@@ -19027,6 +19027,12 @@
           "menu": {
             "choices": [
               {
+                "id": "feina",
+                "text": "dlg.lia.opt.feina",
+                "once": true,
+                "next": "feina"
+              },
+              {
                 "id": "pare",
                 "text": "dlg.lia.opt.pare",
                 "if": {
@@ -19042,12 +19048,6 @@
                   "hasItem": "nota_lia"
                 },
                 "next": "nota"
-              },
-              {
-                "id": "feina",
-                "text": "dlg.lia.opt.feina",
-                "once": true,
-                "next": "feina"
               },
               {
                 "id": "adeu",
@@ -19539,6 +19539,26 @@
           "menu": {
             "choices": [
               {
+                "id": "com",
+                "text": "dlg.pare.opt.com",
+                "once": true,
+                "next": "com"
+              },
+              {
+                "id": "temporal",
+                "text": "dlg.pare.opt.temporal",
+                "next": "temporal"
+              },
+              {
+                "id": "verne",
+                "text": "dlg.pare.opt.verne",
+                "if": {
+                  "flag": "caixa_oberta"
+                },
+                "once": true,
+                "next": "verne"
+              },
+              {
                 "id": "escriptura",
                 "text": "dlg.pare.opt.escriptura",
                 "if": {
@@ -19572,15 +19592,6 @@
                 "next": "contrasenya"
               },
               {
-                "id": "verne",
-                "text": "dlg.pare.opt.verne",
-                "if": {
-                  "flag": "caixa_oberta"
-                },
-                "once": true,
-                "next": "verne"
-              },
-              {
                 "id": "llavors",
                 "text": "dlg.pare.opt.llavors",
                 "if": {
@@ -19611,17 +19622,6 @@
                   ]
                 },
                 "next": "reg"
-              },
-              {
-                "id": "com",
-                "text": "dlg.pare.opt.com",
-                "once": true,
-                "next": "com"
-              },
-              {
-                "id": "temporal",
-                "text": "dlg.pare.opt.temporal",
-                "next": "temporal"
               },
               {
                 "id": "adeu",
@@ -19990,6 +19990,12 @@
           "menu": {
             "choices": [
               {
+                "id": "vaga",
+                "text": "dlg.rosa.opt.vaga",
+                "once": true,
+                "next": "vaga"
+              },
+              {
                 "id": "vestit",
                 "text": "dlg.rosa.opt.vestit",
                 "if": {
@@ -20004,12 +20010,6 @@
                   ]
                 },
                 "next": "vestit"
-              },
-              {
-                "id": "vaga",
-                "text": "dlg.rosa.opt.vaga",
-                "once": true,
-                "next": "vaga"
               },
               {
                 "id": "tomas",
@@ -21142,6 +21142,12 @@
           "menu": {
             "choices": [
               {
+                "id": "pilot",
+                "text": "dlg.tomas.opt.pilot",
+                "once": true,
+                "next": "pilot"
+              },
+              {
                 "id": "clau",
                 "text": "dlg.tomas.opt.clau",
                 "if": {
@@ -21158,6 +21164,12 @@
                 "next": "clau"
               },
               {
+                "id": "contracte",
+                "text": "dlg.tomas.opt.contracte",
+                "once": true,
+                "next": "contracte"
+              },
+              {
                 "id": "paper",
                 "text": "dlg.tomas.opt.paper",
                 "if": {
@@ -21172,18 +21184,6 @@
                   ]
                 },
                 "next": "paper"
-              },
-              {
-                "id": "contracte",
-                "text": "dlg.tomas.opt.contracte",
-                "once": true,
-                "next": "contracte"
-              },
-              {
-                "id": "pilot",
-                "text": "dlg.tomas.opt.pilot",
-                "once": true,
-                "next": "pilot"
               },
               {
                 "id": "adeu",

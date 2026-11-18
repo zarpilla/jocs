@@ -30,6 +30,10 @@ options.qui__pensar.onChoose(() => {
   chooseNarrativeOption('reunio', dialog, 'qui', 'pensar')
 })
 
+options.proves__gat.onChoose(() => {
+  chooseNarrativeOption('reunio', dialog, 'proves', 'gat')
+})
+
 options.proves__cisalla.onChoose(() => {
   chooseNarrativeOption('reunio', dialog, 'proves', 'cisalla')
 })
@@ -38,8 +42,16 @@ options.proves__ma.onChoose(() => {
   chooseNarrativeOption('reunio', dialog, 'proves', 'ma')
 })
 
+options.proves__croissant.onChoose(() => {
+  chooseNarrativeOption('reunio', dialog, 'proves', 'croissant')
+})
+
 options.proves__pipa.onChoose(() => {
   chooseNarrativeOption('reunio', dialog, 'proves', 'pipa')
+})
+
+options.proves__escaner.onChoose(() => {
+  chooseNarrativeOption('reunio', dialog, 'proves', 'escaner')
 })
 
 options.proves__nus.onChoose(() => {
@@ -50,24 +62,12 @@ options.proves__correu.onChoose(() => {
   chooseNarrativeOption('reunio', dialog, 'proves', 'correu')
 })
 
-options.proves__cambra.onChoose(() => {
-  chooseNarrativeOption('reunio', dialog, 'proves', 'cambra')
-})
-
-options.proves__gat.onChoose(() => {
-  chooseNarrativeOption('reunio', dialog, 'proves', 'gat')
-})
-
-options.proves__croissant.onChoose(() => {
-  chooseNarrativeOption('reunio', dialog, 'proves', 'croissant')
-})
-
-options.proves__escaner.onChoose(() => {
-  chooseNarrativeOption('reunio', dialog, 'proves', 'escaner')
-})
-
 options.proves__clau.onChoose(() => {
   chooseNarrativeOption('reunio', dialog, 'proves', 'clau')
+})
+
+options.proves__cambra.onChoose(() => {
+  chooseNarrativeOption('reunio', dialog, 'proves', 'cambra')
 })
 
 options.proves__blaunet.onChoose(() => {

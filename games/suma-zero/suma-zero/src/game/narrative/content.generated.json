@@ -19692,22 +19692,6 @@
                 "next": "auditor"
               },
               {
-                "id": "violi",
-                "text": "dlg.ballester.opt.violi",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "marcel_ballester"
-                    },
-                    {
-                      "flag": "violi_dit",
-                      "is": false
-                    }
-                  ]
-                },
-                "next": "violi"
-              },
-              {
                 "id": "vidua",
                 "text": "dlg.ballester.opt.vidua",
                 "if": {
@@ -19722,6 +19706,22 @@
                   ]
                 },
                 "next": "vidua"
+              },
+              {
+                "id": "violi",
+                "text": "dlg.ballester.opt.violi",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "marcel_ballester"
+                    },
+                    {
+                      "flag": "violi_dit",
+                      "is": false
+                    }
+                  ]
+                },
+                "next": "violi"
               },
               {
                 "id": "serie_sync",
@@ -20503,30 +20503,6 @@
                 "next": "r_secrets"
               },
               {
-                "id": "avio",
-                "text": "dlg.bonfill.opt.avio",
-                "if": {
-                  "all": [
-                    {
-                      "hasItem": "maleti",
-                      "is": false
-                    },
-                    {
-                      "var": "sospita",
-                      "op": "<",
-                      "value": 100
-                    }
-                  ]
-                },
-                "effects": [
-                  {
-                    "addVar": "sospita",
-                    "amount": 40
-                  }
-                ],
-                "next": "r_avio"
-              },
-              {
                 "id": "nuvols",
                 "text": "dlg.bonfill.opt.nuvols",
                 "if": {
@@ -20558,6 +20534,30 @@
                   }
                 ],
                 "next": "r_nuvols"
+              },
+              {
+                "id": "avio",
+                "text": "dlg.bonfill.opt.avio",
+                "if": {
+                  "all": [
+                    {
+                      "hasItem": "maleti",
+                      "is": false
+                    },
+                    {
+                      "var": "sospita",
+                      "op": "<",
+                      "value": 100
+                    }
+                  ]
+                },
+                "effects": [
+                  {
+                    "addVar": "sospita",
+                    "amount": 40
+                  }
+                ],
+                "next": "r_avio"
               }
             ],
             "goto": "q_jove"
@@ -20722,6 +20722,33 @@
                 "next": "r_directives"
               },
               {
+                "id": "crema",
+                "text": "dlg.bonfill.opt.crema",
+                "if": {
+                  "all": [
+                    {
+                      "all": [
+                        {
+                          "flag": "ulleres_posades",
+                          "is": false
+                        },
+                        {
+                          "var": "sospita",
+                          "op": "<",
+                          "value": 100
+                        }
+                      ]
+                    },
+                    {
+                      "var": "marmota",
+                      "op": ">=",
+                      "value": 1
+                    }
+                  ]
+                },
+                "next": "r_crema"
+              },
+              {
                 "id": "acreditacio",
                 "text": "dlg.bonfill.opt.acreditacio",
                 "if": {
@@ -20751,33 +20778,6 @@
                   }
                 ],
                 "next": "r_acreditacio"
-              },
-              {
-                "id": "crema",
-                "text": "dlg.bonfill.opt.crema",
-                "if": {
-                  "all": [
-                    {
-                      "all": [
-                        {
-                          "flag": "ulleres_posades",
-                          "is": false
-                        },
-                        {
-                          "var": "sospita",
-                          "op": "<",
-                          "value": 100
-                        }
-                      ]
-                    },
-                    {
-                      "var": "marmota",
-                      "op": ">=",
-                      "value": 1
-                    }
-                  ]
-                },
-                "next": "r_crema"
               }
             ],
             "goto": "q_banca"
@@ -20937,22 +20937,6 @@
                 "next": "r_cordons"
               },
               {
-                "id": "cor",
-                "text": "dlg.bonfill.opt.cor",
-                "if": {
-                  "var": "sospita",
-                  "op": "<",
-                  "value": 100
-                },
-                "effects": [
-                  {
-                    "addVar": "sospita",
-                    "amount": 5
-                  }
-                ],
-                "next": "r_cor"
-              },
-              {
                 "id": "dacord",
                 "text": "dlg.bonfill.opt.dacord",
                 "if": {
@@ -20970,6 +20954,22 @@
                   }
                 ],
                 "next": "r_dacord"
+              },
+              {
+                "id": "cor",
+                "text": "dlg.bonfill.opt.cor",
+                "if": {
+                  "var": "sospita",
+                  "op": "<",
+                  "value": 100
+                },
+                "effects": [
+                  {
+                    "addVar": "sospita",
+                    "amount": 5
+                  }
+                ],
+                "next": "r_cor"
               }
             ],
             "goto": "q_gos"
@@ -21280,16 +21280,6 @@
             ],
             "choices": [
               {
-                "id": "seguretat",
-                "text": "dlg.bonfill.opt.seguretat",
-                "if": {
-                  "var": "sospita",
-                  "op": "<",
-                  "value": 100
-                },
-                "next": "acceptada"
-              },
-              {
                 "id": "caixes",
                 "text": "dlg.bonfill.opt.caixes",
                 "if": {
@@ -21304,6 +21294,16 @@
                   }
                 ],
                 "next": "r_caixes"
+              },
+              {
+                "id": "seguretat",
+                "text": "dlg.bonfill.opt.seguretat",
+                "if": {
+                  "var": "sospita",
+                  "op": "<",
+                  "value": 100
+                },
+                "next": "acceptada"
               },
               {
                 "id": "comptes",
@@ -21441,16 +21441,6 @@
             ],
             "choices": [
               {
-                "id": "seguretat",
-                "text": "dlg.bonfill.opt.seguretat",
-                "if": {
-                  "var": "sospita",
-                  "op": "<",
-                  "value": 100
-                },
-                "next": "acceptada"
-              },
-              {
                 "id": "caixes",
                 "text": "dlg.bonfill.opt.caixes",
                 "if": {
@@ -21465,6 +21455,16 @@
                   }
                 ],
                 "next": "r_caixes"
+              },
+              {
+                "id": "seguretat",
+                "text": "dlg.bonfill.opt.seguretat",
+                "if": {
+                  "var": "sospita",
+                  "op": "<",
+                  "value": 100
+                },
+                "next": "acceptada"
               },
               {
                 "id": "comptes",
@@ -22166,17 +22166,17 @@
             ],
             "choices": [
               {
+                "id": "papers",
+                "text": "dlg.empleat.opt.papers",
+                "next": "no"
+              },
+              {
                 "id": "llimona",
                 "text": "dlg.empleat.opt.llimona",
                 "if": {
                   "flag": "maleti_vist"
                 },
                 "next": "llimona"
-              },
-              {
-                "id": "papers",
-                "text": "dlg.empleat.opt.papers",
-                "next": "no"
               },
               {
                 "id": "oblit",
@@ -22263,14 +22263,6 @@
           "menu": {
             "choices": [
               {
-                "id": "rockefeller",
-                "text": "dlg.llibre.opt.rockefeller",
-                "if": {
-                  "flag": "sap_rockefeller"
-                },
-                "next": "ok"
-              },
-              {
                 "id": "bonfill",
                 "text": "dlg.llibre.opt.bonfill",
                 "next": "mal"
@@ -22279,6 +22271,14 @@
                 "id": "diners",
                 "text": "dlg.llibre.opt.diners",
                 "next": "mal"
+              },
+              {
+                "id": "rockefeller",
+                "text": "dlg.llibre.opt.rockefeller",
+                "if": {
+                  "flag": "sap_rockefeller"
+                },
+                "next": "ok"
               },
               {
                 "id": "sostenibilitat",
@@ -22847,18 +22847,18 @@
           "menu": {
             "choices": [
               {
+                "id": "hores",
+                "text": "dlg.neta.opt.hores",
+                "once": true,
+                "next": "hores"
+              },
+              {
                 "id": "descansa",
                 "text": "dlg.neta.opt.descansa",
                 "if": {
                   "flag": "iri_sap_neta"
                 },
                 "next": "descansa"
-              },
-              {
-                "id": "hores",
-                "text": "dlg.neta.opt.hores",
-                "once": true,
-                "next": "hores"
               },
               {
                 "id": "adeu",
@@ -22968,6 +22968,23 @@
           "menu": {
             "choices": [
               {
+                "id": "marcel",
+                "text": "dlg.passaplats.opt.marcel",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "llibre_trobat"
+                    },
+                    {
+                      "flag": "vet_marxa",
+                      "is": false
+                    }
+                  ]
+                },
+                "once": true,
+                "next": "marcel"
+              },
+              {
                 "id": "cable",
                 "text": "dlg.passaplats.opt.cable",
                 "if": {
@@ -22995,23 +23012,6 @@
                   ]
                 },
                 "next": "pizza"
-              },
-              {
-                "id": "marcel",
-                "text": "dlg.passaplats.opt.marcel",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "llibre_trobat"
-                    },
-                    {
-                      "flag": "vet_marxa",
-                      "is": false
-                    }
-                  ]
-                },
-                "once": true,
-                "next": "marcel"
               },
               {
                 "id": "adeu",
@@ -23148,6 +23148,21 @@
           "menu": {
             "choices": [
               {
+                "id": "per_que",
+                "text": "dlg.pons.opt.per_que",
+                "once": true,
+                "next": "per_que"
+              },
+              {
+                "id": "ue",
+                "text": "dlg.pons.opt.ue",
+                "if": {
+                  "flag": "pons_enredada",
+                  "is": false
+                },
+                "next": "ue"
+              },
+              {
                 "id": "escoltar",
                 "text": "dlg.pons.opt.escoltar",
                 "silent": true,
@@ -23166,21 +23181,6 @@
                   ]
                 },
                 "next": "escoltar"
-              },
-              {
-                "id": "ue",
-                "text": "dlg.pons.opt.ue",
-                "if": {
-                  "flag": "pons_enredada",
-                  "is": false
-                },
-                "next": "ue"
-              },
-              {
-                "id": "per_que",
-                "text": "dlg.pons.opt.per_que",
-                "once": true,
-                "next": "per_que"
               },
               {
                 "id": "adeu",
@@ -23318,11 +23318,6 @@
           "menu": {
             "choices": [
               {
-                "id": "font",
-                "text": "dlg.recepcionista.opt.font",
-                "next": "font"
-              },
-              {
                 "id": "dessuadora",
                 "text": "dlg.recepcionista.opt.dessuadora",
                 "next": "dessuadora"
@@ -23331,6 +23326,11 @@
                 "id": "altra",
                 "text": "dlg.recepcionista.opt.altra",
                 "next": "altra"
+              },
+              {
+                "id": "font",
+                "text": "dlg.recepcionista.opt.font",
+                "next": "font"
               },
               {
                 "id": "adeu",
@@ -23470,6 +23470,16 @@
           "menu": {
             "choices": [
               {
+                "id": "targeta",
+                "text": "dlg.rius.opt.targeta",
+                "if": {
+                  "hasItem": "targeta",
+                  "is": false
+                },
+                "once": true,
+                "next": "targeta"
+              },
+              {
                 "id": "mobil",
                 "text": "dlg.rius.opt.mobil",
                 "if": {
@@ -23493,16 +23503,6 @@
                   ]
                 },
                 "next": "arreglar"
-              },
-              {
-                "id": "targeta",
-                "text": "dlg.rius.opt.targeta",
-                "if": {
-                  "hasItem": "targeta",
-                  "is": false
-                },
-                "once": true,
-                "next": "targeta"
               },
               {
                 "id": "cafe",
@@ -23949,6 +23949,23 @@
           "menu": {
             "choices": [
               {
+                "id": "wifi",
+                "text": "dlg.tomas.opt.wifi",
+                "if": {
+                  "all": [
+                    {
+                      "flag": "cal_contrasenya"
+                    },
+                    {
+                      "flag": "contrasenya_llegida",
+                      "is": false
+                    }
+                  ]
+                },
+                "once": true,
+                "next": "wifi"
+              },
+              {
                 "id": "cafe",
                 "text": "dlg.tomas.opt.cafe",
                 "if": {
@@ -24009,23 +24026,6 @@
                   ]
                 },
                 "next": "comandament"
-              },
-              {
-                "id": "wifi",
-                "text": "dlg.tomas.opt.wifi",
-                "if": {
-                  "all": [
-                    {
-                      "flag": "cal_contrasenya"
-                    },
-                    {
-                      "flag": "contrasenya_llegida",
-                      "is": false
-                    }
-                  ]
-                },
-                "once": true,
-                "next": "wifi"
               },
               {
                 "id": "adeu",

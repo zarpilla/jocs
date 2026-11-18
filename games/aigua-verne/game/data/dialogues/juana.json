@@ -103,6 +103,21 @@
     "menu": {
       "choices": [
         {
+          "id": "llavors",
+          "text": "dlg.juana.opt.llavors",
+          "once": true,
+          "next": "llavors"
+        },
+        {
+          "id": "peixos",
+          "text": "dlg.juana.opt.peixos",
+          "if": {
+            "flag": "juana_mar"
+          },
+          "once": true,
+          "next": "peixos"
+        },
+        {
           "id": "mar",
           "text": "dlg.juana.opt.mar",
           "if": {
@@ -158,21 +173,6 @@
             ]
           },
           "next": "bru"
-        },
-        {
-          "id": "peixos",
-          "text": "dlg.juana.opt.peixos",
-          "if": {
-            "flag": "juana_mar"
-          },
-          "once": true,
-          "next": "peixos"
-        },
-        {
-          "id": "llavors",
-          "text": "dlg.juana.opt.llavors",
-          "once": true,
-          "next": "llavors"
         },
         {
           "id": "preguntes",

@@ -6,16 +6,16 @@ dialog.onStart(() => {
   startNarrativeDialog('llibre', dialog)
 })
 
-options.menu__rockefeller.onChoose(() => {
-  chooseNarrativeOption('llibre', dialog, 'menu', 'rockefeller')
-})
-
 options.menu__bonfill.onChoose(() => {
   chooseNarrativeOption('llibre', dialog, 'menu', 'bonfill')
 })
 
 options.menu__diners.onChoose(() => {
   chooseNarrativeOption('llibre', dialog, 'menu', 'diners')
+})
+
+options.menu__rockefeller.onChoose(() => {
+  chooseNarrativeOption('llibre', dialog, 'menu', 'rockefeller')
 })
 
 options.menu__sostenibilitat.onChoose(() => {

@@ -65,6 +65,21 @@
     "menu": {
       "choices": [
         {
+          "id": "per_que",
+          "text": "dlg.pons.opt.per_que",
+          "once": true,
+          "next": "per_que"
+        },
+        {
+          "id": "ue",
+          "text": "dlg.pons.opt.ue",
+          "if": {
+            "flag": "pons_enredada",
+            "is": false
+          },
+          "next": "ue"
+        },
+        {
           "id": "escoltar",
           "text": "dlg.pons.opt.escoltar",
           "silent": true,
@@ -83,21 +98,6 @@
             ]
           },
           "next": "escoltar"
-        },
-        {
-          "id": "ue",
-          "text": "dlg.pons.opt.ue",
-          "if": {
-            "flag": "pons_enredada",
-            "is": false
-          },
-          "next": "ue"
-        },
-        {
-          "id": "per_que",
-          "text": "dlg.pons.opt.per_que",
-          "once": true,
-          "next": "per_que"
         },
         {
           "id": "adeu",

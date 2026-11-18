@@ -42,18 +42,18 @@
     "menu": {
       "choices": [
         {
+          "id": "hores",
+          "text": "dlg.neta.opt.hores",
+          "once": true,
+          "next": "hores"
+        },
+        {
           "id": "descansa",
           "text": "dlg.neta.opt.descansa",
           "if": {
             "flag": "iri_sap_neta"
           },
           "next": "descansa"
-        },
-        {
-          "id": "hores",
-          "text": "dlg.neta.opt.hores",
-          "once": true,
-          "next": "hores"
         },
         {
           "id": "adeu",

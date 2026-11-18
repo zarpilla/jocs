@@ -104,14 +104,6 @@
       ],
       "choices": [
         {
-          "id": "sac",
-          "text": "dlg.fidel.opt.sac",
-          "if": {
-            "hasItem": "sac_llavors"
-          },
-          "next": "sac"
-        },
-        {
           "id": "escriptura",
           "text": "dlg.fidel.opt.escriptura",
           "if": {
@@ -126,6 +118,14 @@
             "hasItem": "contracte_7788"
           },
           "next": "contracte"
+        },
+        {
+          "id": "sac",
+          "text": "dlg.fidel.opt.sac",
+          "if": {
+            "hasItem": "sac_llavors"
+          },
+          "next": "sac"
         },
         {
           "id": "res",

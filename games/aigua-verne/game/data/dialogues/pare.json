@@ -104,6 +104,26 @@
     "menu": {
       "choices": [
         {
+          "id": "com",
+          "text": "dlg.pare.opt.com",
+          "once": true,
+          "next": "com"
+        },
+        {
+          "id": "temporal",
+          "text": "dlg.pare.opt.temporal",
+          "next": "temporal"
+        },
+        {
+          "id": "verne",
+          "text": "dlg.pare.opt.verne",
+          "if": {
+            "flag": "caixa_oberta"
+          },
+          "once": true,
+          "next": "verne"
+        },
+        {
           "id": "escriptura",
           "text": "dlg.pare.opt.escriptura",
           "if": {
@@ -137,15 +157,6 @@
           "next": "contrasenya"
         },
         {
-          "id": "verne",
-          "text": "dlg.pare.opt.verne",
-          "if": {
-            "flag": "caixa_oberta"
-          },
-          "once": true,
-          "next": "verne"
-        },
-        {
           "id": "llavors",
           "text": "dlg.pare.opt.llavors",
           "if": {
@@ -176,17 +187,6 @@
             ]
           },
           "next": "reg"
-        },
-        {
-          "id": "com",
-          "text": "dlg.pare.opt.com",
-          "once": true,
-          "next": "com"
-        },
-        {
-          "id": "temporal",
-          "text": "dlg.pare.opt.temporal",
-          "next": "temporal"
         },
         {
           "id": "adeu",

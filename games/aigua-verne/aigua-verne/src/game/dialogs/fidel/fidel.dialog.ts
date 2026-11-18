@@ -22,16 +22,16 @@ options.menu__adeu.onChoose(() => {
   chooseNarrativeOption('fidel', dialog, 'menu', 'adeu')
 })
 
-options.aval__sac.onChoose(() => {
-  chooseNarrativeOption('fidel', dialog, 'aval', 'sac')
-})
-
 options.aval__escriptura.onChoose(() => {
   chooseNarrativeOption('fidel', dialog, 'aval', 'escriptura')
 })
 
 options.aval__contracte.onChoose(() => {
   chooseNarrativeOption('fidel', dialog, 'aval', 'contracte')
+})
+
+options.aval__sac.onChoose(() => {
+  chooseNarrativeOption('fidel', dialog, 'aval', 'sac')
 })
 
 options.aval__res.onChoose(() => {

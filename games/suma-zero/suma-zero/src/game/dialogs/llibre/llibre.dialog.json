@@ -3,13 +3,6 @@
   "displayName": "llibre",
   "options": [
     {
-      "id": "menu__rockefeller",
-      "scriptName": "menu__rockefeller",
-      "text": "Rockefeller.",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "menu__bonfill",
       "scriptName": "menu__bonfill",
       "text": "Bonfill.",
@@ -20,6 +13,13 @@
       "id": "menu__diners",
       "scriptName": "menu__diners",
       "text": "Diners.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__rockefeller",
+      "scriptName": "menu__rockefeller",
+      "text": "Rockefeller.",
       "enabled": false,
       "say": false
     },

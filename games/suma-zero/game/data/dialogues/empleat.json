@@ -45,17 +45,17 @@
       ],
       "choices": [
         {
+          "id": "papers",
+          "text": "dlg.empleat.opt.papers",
+          "next": "no"
+        },
+        {
           "id": "llimona",
           "text": "dlg.empleat.opt.llimona",
           "if": {
             "flag": "maleti_vist"
           },
           "next": "llimona"
-        },
-        {
-          "id": "papers",
-          "text": "dlg.empleat.opt.papers",
-          "next": "no"
         },
         {
           "id": "oblit",

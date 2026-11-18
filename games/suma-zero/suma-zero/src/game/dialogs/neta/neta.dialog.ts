@@ -6,12 +6,12 @@ dialog.onStart(() => {
   startNarrativeDialog('neta', dialog)
 })
 
-options.menu__descansa.onChoose(() => {
-  chooseNarrativeOption('neta', dialog, 'menu', 'descansa')
-})
-
 options.menu__hores.onChoose(() => {
   chooseNarrativeOption('neta', dialog, 'menu', 'hores')
+})
+
+options.menu__descansa.onChoose(() => {
+  chooseNarrativeOption('neta', dialog, 'menu', 'descansa')
 })
 
 options.menu__adeu.onChoose(() => {

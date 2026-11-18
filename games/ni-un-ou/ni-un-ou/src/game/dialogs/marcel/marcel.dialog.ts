@@ -30,12 +30,12 @@ options.esc6_menu__adeu.onChoose(() => {
   chooseNarrativeOption('marcel', dialog, 'esc6_menu', 'adeu')
 })
 
-options.secret__guardar.onChoose(() => {
-  chooseNarrativeOption('marcel', dialog, 'secret', 'guardar')
-})
-
 options.secret__veritat.onChoose(() => {
   chooseNarrativeOption('marcel', dialog, 'secret', 'veritat')
+})
+
+options.secret__guardar.onChoose(() => {
+  chooseNarrativeOption('marcel', dialog, 'secret', 'guardar')
 })
 
 options.secret__capitana.onChoose(() => {

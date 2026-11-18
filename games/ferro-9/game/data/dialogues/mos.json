@@ -60,20 +60,6 @@
     "menu": {
       "choices": [
         {
-          "id": "reciclatge",
-          "text": "dlg.mos.opt.reciclatge",
-          "once": true,
-          "next": "reciclatge",
-          "effects": [
-            {
-              "remember": {
-                "who": "mos",
-                "fact": "preguntat_reciclatge"
-              }
-            }
-          ]
-        },
-        {
           "id": "llapis",
           "text": "dlg.mos.opt.llapis",
           "next": "llapis",
@@ -124,6 +110,20 @@
           "text": "dlg.mos.opt.maquillatge",
           "once": true,
           "next": "maquillatge"
+        },
+        {
+          "id": "reciclatge",
+          "text": "dlg.mos.opt.reciclatge",
+          "once": true,
+          "next": "reciclatge",
+          "effects": [
+            {
+              "remember": {
+                "who": "mos",
+                "fact": "preguntat_reciclatge"
+              }
+            }
+          ]
         },
         {
           "id": "galeria",

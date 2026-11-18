@@ -44,6 +44,12 @@
     "menu": {
       "choices": [
         {
+          "id": "feina",
+          "text": "dlg.lia.opt.feina",
+          "once": true,
+          "next": "feina"
+        },
+        {
           "id": "pare",
           "text": "dlg.lia.opt.pare",
           "if": {
@@ -59,12 +65,6 @@
             "hasItem": "nota_lia"
           },
           "next": "nota"
-        },
-        {
-          "id": "feina",
-          "text": "dlg.lia.opt.feina",
-          "once": true,
-          "next": "feina"
         },
         {
           "id": "adeu",

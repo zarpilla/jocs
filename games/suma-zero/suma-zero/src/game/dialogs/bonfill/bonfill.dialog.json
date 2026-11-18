@@ -10,16 +10,16 @@
       "say": false
     },
     {
-      "id": "q_maleti__avio",
-      "scriptName": "q_maleti__avio",
-      "text": "Ups, me'l dec haver deixat a l'avió.",
+      "id": "q_maleti__nuvols",
+      "scriptName": "q_maleti__nuvols",
+      "text": "La UE ja no fa servir maletins. Ara fem servir núvols.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "q_maleti__nuvols",
-      "scriptName": "q_maleti__nuvols",
-      "text": "La UE ja no fa servir maletins. Ara fem servir núvols.",
+      "id": "q_maleti__avio",
+      "scriptName": "q_maleti__avio",
+      "text": "Ups, me'l dec haver deixat a l'avió.",
       "enabled": false,
       "say": false
     },
@@ -31,16 +31,16 @@
       "say": false
     },
     {
-      "id": "q_jove__acreditacio",
-      "scriptName": "q_jove__acreditacio",
-      "text": "(Ensenyar-li l'acreditació.) Aquí ho diu tot.",
+      "id": "q_jove__crema",
+      "scriptName": "q_jove__crema",
+      "text": "Gràcies. És la crema antiedat de la Comissió.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "q_jove__crema",
-      "scriptName": "q_jove__crema",
-      "text": "Gràcies. És la crema antiedat de la Comissió.",
+      "id": "q_jove__acreditacio",
+      "scriptName": "q_jove__acreditacio",
+      "text": "(Ensenyar-li l'acreditació.) Aquí ho diu tot.",
       "enabled": false,
       "say": false
     },
@@ -52,16 +52,16 @@
       "say": false
     },
     {
-      "id": "q_banca__cor",
-      "scriptName": "q_banca__cor",
-      "text": "Quin cor més car, oi? El meu no cobra comissions.",
+      "id": "q_banca__dacord",
+      "scriptName": "q_banca__dacord",
+      "text": "Totalment d'acord. La banca és imprescindible.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "q_banca__dacord",
-      "scriptName": "q_banca__dacord",
-      "text": "Totalment d'acord. La banca és imprescindible.",
+      "id": "q_banca__cor",
+      "scriptName": "q_banca__cor",
+      "text": "Quin cor més car, oi? El meu no cobra comissions.",
       "enabled": false,
       "say": false
     },
@@ -80,16 +80,16 @@
       "say": false
     },
     {
-      "id": "q_veure__seguretat",
-      "scriptName": "q_veure__seguretat",
-      "text": "La seguretat física.",
+      "id": "q_veure__caixes",
+      "scriptName": "q_veure__caixes",
+      "text": "Les caixes fortes.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "q_veure__caixes",
-      "scriptName": "q_veure__caixes",
-      "text": "Les caixes fortes.",
+      "id": "q_veure__seguretat",
+      "scriptName": "q_veure__seguretat",
+      "text": "La seguretat física.",
       "enabled": false,
       "say": false
     },
@@ -108,16 +108,16 @@
       "say": false
     },
     {
-      "id": "q_veure2__seguretat",
-      "scriptName": "q_veure2__seguretat",
-      "text": "La seguretat física.",
+      "id": "q_veure2__caixes",
+      "scriptName": "q_veure2__caixes",
+      "text": "Les caixes fortes.",
       "enabled": false,
       "say": false
     },
     {
-      "id": "q_veure2__caixes",
-      "scriptName": "q_veure2__caixes",
-      "text": "Les caixes fortes.",
+      "id": "q_veure2__seguretat",
+      "scriptName": "q_veure2__seguretat",
+      "text": "La seguretat física.",
       "enabled": false,
       "say": false
     },

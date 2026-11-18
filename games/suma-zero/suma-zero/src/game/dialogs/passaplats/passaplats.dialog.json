@@ -3,6 +3,13 @@
   "displayName": "passaplats",
   "options": [
     {
+      "id": "menu__marcel",
+      "scriptName": "menu__marcel",
+      "text": "Com és, aquest Marcel?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__cable",
       "scriptName": "menu__cable",
       "text": "Vet, em cal el cable de la cafetera.",
@@ -13,13 +20,6 @@
       "id": "menu__pizza",
       "scriptName": "menu__pizza",
       "text": "Vet, passa'm la pizza de demà.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "menu__marcel",
-      "scriptName": "menu__marcel",
-      "text": "Com és, aquest Marcel?",
       "enabled": false,
       "say": false
     },

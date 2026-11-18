@@ -6,6 +6,14 @@ dialog.onStart(() => {
   startNarrativeDialog('juana', dialog)
 })
 
+options.menu__llavors.onChoose(() => {
+  chooseNarrativeOption('juana', dialog, 'menu', 'llavors')
+})
+
+options.menu__peixos.onChoose(() => {
+  chooseNarrativeOption('juana', dialog, 'menu', 'peixos')
+})
+
 options.menu__mar.onChoose(() => {
   chooseNarrativeOption('juana', dialog, 'menu', 'mar')
 })
@@ -20,14 +28,6 @@ options.menu__tornar.onChoose(() => {
 
 options.menu__bru.onChoose(() => {
   chooseNarrativeOption('juana', dialog, 'menu', 'bru')
-})
-
-options.menu__peixos.onChoose(() => {
-  chooseNarrativeOption('juana', dialog, 'menu', 'peixos')
-})
-
-options.menu__llavors.onChoose(() => {
-  chooseNarrativeOption('juana', dialog, 'menu', 'llavors')
 })
 
 options.menu__preguntes.onChoose(() => {

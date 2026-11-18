@@ -3,20 +3,6 @@
   "displayName": "bastida",
   "options": [
     {
-      "id": "esc2_menu__revisio",
-      "scriptName": "esc2_menu__revisio",
-      "text": "I la revisió, Ernest?",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "esc2_menu__mar",
-      "scriptName": "esc2_menu__mar",
-      "text": "Bon dia per pescar?",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "esc2_menu__pipa",
       "scriptName": "esc2_menu__pipa",
       "text": "Fumes molt?",
@@ -24,9 +10,23 @@
       "say": false
     },
     {
+      "id": "esc2_menu__revisio",
+      "scriptName": "esc2_menu__revisio",
+      "text": "I la revisió, Ernest?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "esc2_menu__plataforma",
       "scriptName": "esc2_menu__plataforma",
       "text": "Aquella plataforma...",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "esc2_menu__mar",
+      "scriptName": "esc2_menu__mar",
+      "text": "Bon dia per pescar?",
       "enabled": false,
       "say": false
     },

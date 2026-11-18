@@ -20,6 +20,23 @@
     "menu": {
       "choices": [
         {
+          "id": "wifi",
+          "text": "dlg.tomas.opt.wifi",
+          "if": {
+            "all": [
+              {
+                "flag": "cal_contrasenya"
+              },
+              {
+                "flag": "contrasenya_llegida",
+                "is": false
+              }
+            ]
+          },
+          "once": true,
+          "next": "wifi"
+        },
+        {
           "id": "cafe",
           "text": "dlg.tomas.opt.cafe",
           "if": {
@@ -80,23 +97,6 @@
             ]
           },
           "next": "comandament"
-        },
-        {
-          "id": "wifi",
-          "text": "dlg.tomas.opt.wifi",
-          "if": {
-            "all": [
-              {
-                "flag": "cal_contrasenya"
-              },
-              {
-                "flag": "contrasenya_llegida",
-                "is": false
-              }
-            ]
-          },
-          "once": true,
-          "next": "wifi"
         },
         {
           "id": "adeu",

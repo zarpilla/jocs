@@ -3,6 +3,27 @@
   "displayName": "pare",
   "options": [
     {
+      "id": "menu__com",
+      "scriptName": "menu__com",
+      "text": "Com estàs, papa?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__temporal",
+      "scriptName": "menu__temporal",
+      "text": "Explica'ns alguna cosa de la granja.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__verne",
+      "scriptName": "menu__verne",
+      "text": "Papa, l'avi va vendre l'aigua del pou a Verne?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__escriptura",
       "scriptName": "menu__escriptura",
       "text": "Papa, on és l'escriptura de la granja?",
@@ -17,13 +38,6 @@
       "say": false
     },
     {
-      "id": "menu__verne",
-      "scriptName": "menu__verne",
-      "text": "Papa, l'avi va vendre l'aigua del pou a Verne?",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "menu__llavors",
       "scriptName": "menu__llavors",
       "text": "Papa, podem vendre llavors del banc a la Juana, d'Aqua?",
@@ -34,20 +48,6 @@
       "id": "menu__reg",
       "scriptName": "menu__reg",
       "text": "Papa, ens deixes el reg gota a gota del graner?",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "menu__com",
-      "scriptName": "menu__com",
-      "text": "Com estàs, papa?",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "menu__temporal",
-      "scriptName": "menu__temporal",
-      "text": "Explica'ns alguna cosa de la granja.",
       "enabled": false,
       "say": false
     },

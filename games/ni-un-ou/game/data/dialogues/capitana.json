@@ -115,6 +115,12 @@
     "revisio_menu": {
       "choices": [
         {
+          "id": "nadia",
+          "text": "dlg.capitana.opt.nadia",
+          "once": true,
+          "next": "nadia"
+        },
+        {
           "id": "juana",
           "text": "dlg.capitana.opt.juana",
           "once": true,
@@ -125,22 +131,16 @@
           }
         },
         {
-          "id": "gasoil",
-          "text": "dlg.capitana.opt.gasoil",
-          "once": true,
-          "next": "gasoil"
-        },
-        {
-          "id": "nadia",
-          "text": "dlg.capitana.opt.nadia",
-          "once": true,
-          "next": "nadia"
-        },
-        {
           "id": "valvula",
           "text": "dlg.capitana.opt.valvula",
           "once": true,
           "next": "valvula"
+        },
+        {
+          "id": "gasoil",
+          "text": "dlg.capitana.opt.gasoil",
+          "once": true,
+          "next": "gasoil"
         },
         {
           "id": "fi",

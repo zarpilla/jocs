@@ -6,20 +6,20 @@ dialog.onStart(() => {
   startNarrativeDialog('tomas', dialog)
 })
 
-options.menu__clau.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'menu', 'clau')
+options.menu__pilot.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'menu', 'pilot')
 })
 
-options.menu__paper.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'menu', 'paper')
+options.menu__clau.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'menu', 'clau')
 })
 
 options.menu__contracte.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'menu', 'contracte')
 })
 
-options.menu__pilot.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'menu', 'pilot')
+options.menu__paper.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'menu', 'paper')
 })
 
 options.menu__adeu.onChoose(() => {

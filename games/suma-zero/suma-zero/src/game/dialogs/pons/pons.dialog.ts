@@ -6,16 +6,16 @@ dialog.onStart(() => {
   startNarrativeDialog('pons', dialog)
 })
 
-options.menu__escoltar.onChoose(() => {
-  chooseNarrativeOption('pons', dialog, 'menu', 'escoltar')
+options.menu__per_que.onChoose(() => {
+  chooseNarrativeOption('pons', dialog, 'menu', 'per_que')
 })
 
 options.menu__ue.onChoose(() => {
   chooseNarrativeOption('pons', dialog, 'menu', 'ue')
 })
 
-options.menu__per_que.onChoose(() => {
-  chooseNarrativeOption('pons', dialog, 'menu', 'per_que')
+options.menu__escoltar.onChoose(() => {
+  chooseNarrativeOption('pons', dialog, 'menu', 'escoltar')
 })
 
 options.menu__adeu.onChoose(() => {

@@ -6,16 +6,16 @@ dialog.onStart(() => {
   startNarrativeDialog('rius', dialog)
 })
 
+options.menu__targeta.onChoose(() => {
+  chooseNarrativeOption('rius', dialog, 'menu', 'targeta')
+})
+
 options.menu__mobil.onChoose(() => {
   chooseNarrativeOption('rius', dialog, 'menu', 'mobil')
 })
 
 options.menu__arreglar.onChoose(() => {
   chooseNarrativeOption('rius', dialog, 'menu', 'arreglar')
-})
-
-options.menu__targeta.onChoose(() => {
-  chooseNarrativeOption('rius', dialog, 'menu', 'targeta')
 })
 
 options.menu__cafe.onChoose(() => {

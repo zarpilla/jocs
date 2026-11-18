@@ -40,14 +40,6 @@
     "menu": {
       "choices": [
         {
-          "id": "rockefeller",
-          "text": "dlg.llibre.opt.rockefeller",
-          "if": {
-            "flag": "sap_rockefeller"
-          },
-          "next": "ok"
-        },
-        {
           "id": "bonfill",
           "text": "dlg.llibre.opt.bonfill",
           "next": "mal"
@@ -56,6 +48,14 @@
           "id": "diners",
           "text": "dlg.llibre.opt.diners",
           "next": "mal"
+        },
+        {
+          "id": "rockefeller",
+          "text": "dlg.llibre.opt.rockefeller",
+          "if": {
+            "flag": "sap_rockefeller"
+          },
+          "next": "ok"
         },
         {
           "id": "sostenibilitat",

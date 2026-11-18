@@ -46,6 +46,12 @@
     "menu": {
       "choices": [
         {
+          "id": "vaga",
+          "text": "dlg.rosa.opt.vaga",
+          "once": true,
+          "next": "vaga"
+        },
+        {
           "id": "vestit",
           "text": "dlg.rosa.opt.vestit",
           "if": {
@@ -60,12 +66,6 @@
             ]
           },
           "next": "vestit"
-        },
-        {
-          "id": "vaga",
-          "text": "dlg.rosa.opt.vaga",
-          "once": true,
-          "next": "vaga"
         },
         {
           "id": "tomas",

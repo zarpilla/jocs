@@ -115,6 +115,12 @@
     "menu": {
       "choices": [
         {
+          "id": "revisio",
+          "text": "dlg.juana.opt.revisio",
+          "once": true,
+          "next": "revisio"
+        },
+        {
           "id": "valvula",
           "text": "dlg.juana.opt.valvula",
           "if": {
@@ -122,12 +128,6 @@
             "is": false
           },
           "next": "valvula"
-        },
-        {
-          "id": "revisio",
-          "text": "dlg.juana.opt.revisio",
-          "once": true,
-          "next": "revisio"
         },
         {
           "id": "adeu",

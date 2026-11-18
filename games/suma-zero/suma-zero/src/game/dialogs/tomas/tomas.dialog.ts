@@ -6,6 +6,10 @@ dialog.onStart(() => {
   startNarrativeDialog('tomas', dialog)
 })
 
+options.menu__wifi.onChoose(() => {
+  chooseNarrativeOption('tomas', dialog, 'menu', 'wifi')
+})
+
 options.menu__cafe.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'menu', 'cafe')
 })
@@ -16,10 +20,6 @@ options.menu__cafe2.onChoose(() => {
 
 options.menu__comandament.onChoose(() => {
   chooseNarrativeOption('tomas', dialog, 'menu', 'comandament')
-})
-
-options.menu__wifi.onChoose(() => {
-  chooseNarrativeOption('tomas', dialog, 'menu', 'wifi')
 })
 
 options.menu__adeu.onChoose(() => {

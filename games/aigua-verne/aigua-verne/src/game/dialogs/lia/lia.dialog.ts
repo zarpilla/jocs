@@ -6,16 +6,16 @@ dialog.onStart(() => {
   startNarrativeDialog('lia', dialog)
 })
 
+options.menu__feina.onChoose(() => {
+  chooseNarrativeOption('lia', dialog, 'menu', 'feina')
+})
+
 options.menu__pare.onChoose(() => {
   chooseNarrativeOption('lia', dialog, 'menu', 'pare')
 })
 
 options.menu__nota.onChoose(() => {
   chooseNarrativeOption('lia', dialog, 'menu', 'nota')
-})
-
-options.menu__feina.onChoose(() => {
-  chooseNarrativeOption('lia', dialog, 'menu', 'feina')
 })
 
 options.menu__adeu.onChoose(() => {

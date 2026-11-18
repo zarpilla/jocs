@@ -232,6 +232,21 @@
     "menu": {
       "choices": [
         {
+          "id": "lia",
+          "text": "dlg.bru.opt.lia",
+          "if": {
+            "flag": "bru_lia"
+          },
+          "once": true,
+          "next": "lia"
+        },
+        {
+          "id": "juana",
+          "text": "dlg.bru.opt.juana",
+          "once": true,
+          "next": "juana"
+        },
+        {
           "id": "canalla",
           "text": "dlg.bru.opt.canalla",
           "if": {
@@ -302,24 +317,9 @@
           "next": "colada"
         },
         {
-          "id": "lia",
-          "text": "dlg.bru.opt.lia",
-          "if": {
-            "flag": "bru_lia"
-          },
-          "once": true,
-          "next": "lia"
-        },
-        {
           "id": "recorda",
           "text": "dlg.bru.opt.recorda",
           "next": "recorda"
-        },
-        {
-          "id": "juana",
-          "text": "dlg.bru.opt.juana",
-          "once": true,
-          "next": "juana"
         },
         {
           "id": "adeu",

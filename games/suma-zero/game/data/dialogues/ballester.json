@@ -199,22 +199,6 @@
           "next": "auditor"
         },
         {
-          "id": "violi",
-          "text": "dlg.ballester.opt.violi",
-          "if": {
-            "all": [
-              {
-                "flag": "marcel_ballester"
-              },
-              {
-                "flag": "violi_dit",
-                "is": false
-              }
-            ]
-          },
-          "next": "violi"
-        },
-        {
           "id": "vidua",
           "text": "dlg.ballester.opt.vidua",
           "if": {
@@ -229,6 +213,22 @@
             ]
           },
           "next": "vidua"
+        },
+        {
+          "id": "violi",
+          "text": "dlg.ballester.opt.violi",
+          "if": {
+            "all": [
+              {
+                "flag": "marcel_ballester"
+              },
+              {
+                "flag": "violi_dit",
+                "is": false
+              }
+            ]
+          },
+          "next": "violi"
         },
         {
           "id": "serie_sync",

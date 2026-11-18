@@ -6,10 +6,6 @@ dialog.onStart(() => {
   startNarrativeDialog('mos', dialog)
 })
 
-options.menu__reciclatge.onChoose(() => {
-  chooseNarrativeOption('mos', dialog, 'menu', 'reciclatge')
-})
-
 options.menu__llapis.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'llapis')
 })
@@ -20,6 +16,10 @@ options.menu__llapis_demanar.onChoose(() => {
 
 options.menu__maquillatge.onChoose(() => {
   chooseNarrativeOption('mos', dialog, 'menu', 'maquillatge')
+})
+
+options.menu__reciclatge.onChoose(() => {
+  chooseNarrativeOption('mos', dialog, 'menu', 'reciclatge')
 })
 
 options.menu__galeria.onChoose(() => {

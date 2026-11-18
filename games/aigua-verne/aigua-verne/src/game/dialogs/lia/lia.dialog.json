@@ -3,6 +3,13 @@
   "displayName": "lia",
   "options": [
     {
+      "id": "menu__feina",
+      "scriptName": "menu__feina",
+      "text": "Què hi fas, aquí?",
+      "enabled": false,
+      "say": false
+    },
+    {
       "id": "menu__pare",
       "scriptName": "menu__pare",
       "text": "El teu pare diu que tornis a casa.",
@@ -13,13 +20,6 @@
       "id": "menu__nota",
       "scriptName": "menu__nota",
       "text": "Té. És d'ell.",
-      "enabled": false,
-      "say": false
-    },
-    {
-      "id": "menu__feina",
-      "scriptName": "menu__feina",
-      "text": "Què hi fas, aquí?",
       "enabled": false,
       "say": false
     },

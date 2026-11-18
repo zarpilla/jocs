@@ -261,14 +261,14 @@
       ],
       "choices": [
         {
-          "id": "guardar",
-          "text": "dlg.marcel.opt.guardar",
-          "next": "aliat"
-        },
-        {
           "id": "veritat",
           "text": "dlg.marcel.opt.veritat",
           "next": "enfadat_veritat"
+        },
+        {
+          "id": "guardar",
+          "text": "dlg.marcel.opt.guardar",
+          "next": "aliat"
         },
         {
           "id": "capitana",

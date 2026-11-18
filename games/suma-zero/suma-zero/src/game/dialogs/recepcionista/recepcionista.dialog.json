@@ -3,13 +3,6 @@
   "displayName": "recepcionista",
   "options": [
     {
-      "id": "menu__font",
-      "scriptName": "menu__font",
-      "text": "Soc de la UE. Venia per la font.",
-      "enabled": false,
-      "say": false
-    },
-    {
       "id": "menu__dessuadora",
       "scriptName": "menu__dessuadora",
       "text": "No, no. Jo soc la de la dessuadora.",
@@ -20,6 +13,13 @@
       "id": "menu__altra",
       "scriptName": "menu__altra",
       "text": "M'ha confós amb una altra.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__font",
+      "scriptName": "menu__font",
+      "text": "Soc de la UE. Venia per la font.",
       "enabled": false,
       "say": false
     },

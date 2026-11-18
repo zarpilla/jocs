@@ -42,11 +42,6 @@
     "menu": {
       "choices": [
         {
-          "id": "font",
-          "text": "dlg.recepcionista.opt.font",
-          "next": "font"
-        },
-        {
           "id": "dessuadora",
           "text": "dlg.recepcionista.opt.dessuadora",
           "next": "dessuadora"
@@ -55,6 +50,11 @@
           "id": "altra",
           "text": "dlg.recepcionista.opt.altra",
           "next": "altra"
+        },
+        {
+          "id": "font",
+          "text": "dlg.recepcionista.opt.font",
+          "next": "font"
         },
         {
           "id": "adeu",

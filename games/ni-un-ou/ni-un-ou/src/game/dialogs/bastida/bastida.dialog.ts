@@ -6,20 +6,20 @@ dialog.onStart(() => {
   startNarrativeDialog('bastida', dialog)
 })
 
-options.esc2_menu__revisio.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'revisio')
-})
-
-options.esc2_menu__mar.onChoose(() => {
-  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'mar')
-})
-
 options.esc2_menu__pipa.onChoose(() => {
   chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'pipa')
 })
 
+options.esc2_menu__revisio.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'revisio')
+})
+
 options.esc2_menu__plataforma.onChoose(() => {
   chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'plataforma')
+})
+
+options.esc2_menu__mar.onChoose(() => {
+  chooseNarrativeOption('bastida', dialog, 'esc2_menu', 'mar')
 })
 
 options.esc2_menu__adeu.onChoose(() => {
