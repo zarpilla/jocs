@@ -326,6 +326,13 @@ export interface RoomData {
   /** Contact shadow under the characters (optional; off when omitted). */
   characterShadow?: RoomCharacterShadowData;
   /**
+   * How much the camera flattens the floor: screen height ÷ floor depth of a small patch of floor (the same idea as
+   * `characterShadow.squash`; e.g. `0.25` for a high camera far away). Walk facings are then chosen on the floor, so a
+   * diagonal walk into the room gets the 3/4 facings even when it looks almost horizontal on screen. Omitted = `1`
+   * (facings chosen on the screen, as before).
+   */
+  floorSquash?: number;
+  /**
    * Pixels of the room sheet (`images/rooms/<id>/<id>.png`) per room pixel. `2` = the room art is drawn at twice the
    * room resolution and shown at half scale: the geometry, scripts and characters stay in room pixels, and on a
    * screen of at least twice the internal resolution the art shows all its detail. Omitted = `1`.

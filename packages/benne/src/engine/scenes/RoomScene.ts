@@ -2357,7 +2357,7 @@ export class RoomScene extends Phaser.Scene {
     }
     const final = path[path.length - 1]!;
     const prev = path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite);
-    const facing = facingFromWorldDelta(final.x - prev.x, final.y - prev.y);
+    const facing = this.facingOnFloor(final.x - prev.x, final.y - prev.y);
     // Clearing the field first makes the running leg tween's onUpdate / onStop guards bail out,
     // so only finishPlayerWalk below resolves the walk.
     const tween = this.playerMoveTween;
@@ -2383,7 +2383,7 @@ export class RoomScene extends Phaser.Scene {
     const final = path[path.length - 1]!;
     const prev =
       path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
-    const facing = facingFromWorldDelta(final.x - prev.x, final.y - prev.y);
+    const facing = this.facingOnFloor(final.x - prev.x, final.y - prev.y);
     // Dropping the map entry first makes the running leg tween's onStop guard bail out.
     const tween = this.npcWalkTweens.get(sprite);
     this.npcWalkTweens.delete(sprite);
@@ -3056,7 +3056,7 @@ export class RoomScene extends Phaser.Scene {
     if (Math.hypot(dx, dy) < 1e-2) {
       return;
     }
-    const facing = facingFromWorldDelta(dx, dy);
+    const facing = this.facingOnFloor(dx, dy);
     if (getCharacterAnimationOverrideTag(observer)) {
       observer.setData('facing', facing);
       return;
@@ -4253,7 +4253,7 @@ export class RoomScene extends Phaser.Scene {
     if (Math.hypot(dx, dy) < 1e-2) {
       return;
     }
-    const facing = facingFromWorldDelta(dx, dy);
+    const facing = this.facingOnFloor(dx, dy);
     if (getCharacterAnimationOverrideTag(sprite)) {
       sprite.setData('facing', facing);
       return;
@@ -4270,7 +4270,7 @@ export class RoomScene extends Phaser.Scene {
     const dx = newFeet.x - oldFeet.x;
     const dy = newFeet.y - oldFeet.y;
     if (Math.hypot(dx, dy) >= 1e-2) {
-      const facing = facingFromWorldDelta(dx, dy);
+      const facing = this.facingOnFloor(dx, dy);
       if (!getCharacterAnimationOverrideTag(sprite)) {
         playDirectionalAnimation(sprite, 'Idle', facing);
       } else {
@@ -5315,11 +5315,11 @@ export class RoomScene extends Phaser.Scene {
         this.beginPlayerWalkLeg(sprite, path, legIndex + 1);
         return;
       }
-      this.finishPlayerWalk(sprite, facingFromWorldDelta(dx, dy));
+      this.finishPlayerWalk(sprite, this.facingOnFloor(dx, dy));
       return;
     }
 
-    const facing = facingFromWorldDelta(dx, dy);
+    const facing = this.facingOnFloor(dx, dy);
     if (!getCharacterAnimationOverrideTag(sprite)) {
       playDirectionalAnimation(sprite, 'Walk', facing);
     } else {
@@ -5385,6 +5385,16 @@ export class RoomScene extends Phaser.Scene {
     });
 
     this.playerMoveTween = moveTween;
+  }
+
+  /**
+   * The facing for a walk step of (dx, dy) room px, chosen on the floor rather than on the screen: in a room drawn
+   * in perspective the camera flattens the floor (`RoomData.floorSquash`), so a diagonal step into the room looks
+   * almost horizontal on screen. Un-squashing dy picks the 3/4 facings (DL, UL…) when the walk really is diagonal.
+   */
+  private facingOnFloor(dx: number, dy: number): CharacterFacing {
+    const k = this.roomData?.floorSquash;
+    return facingFromWorldDelta(dx, typeof k === 'number' && k > 0 && k < 1 ? dy / k : dy);
   }
 
   private finishPlayerWalk(sprite: DirectionalCharacterSprite, facing: CharacterFacing): void {
@@ -5493,7 +5503,7 @@ export class RoomScene extends Phaser.Scene {
         this.beginNpcWalkLeg(sprite, path, legIndex + 1, onArrive);
         return;
       }
-      const facing = facingFromWorldDelta(dx, dy);
+      const facing = this.facingOnFloor(dx, dy);
       if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
         if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
           playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Idle', facing);
@@ -5505,7 +5515,7 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
 
-    const facing = facingFromWorldDelta(dx, dy);
+    const facing = this.facingOnFloor(dx, dy);
     if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
       if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
         playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Walk', facing);
