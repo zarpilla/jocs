@@ -17,25 +17,25 @@ de rooms/proleg_terra2.json engega el seu tros d'animació amb una indicació d'
 Cada capa és la diferència amb el fons (portada.diff): com a la portada, es dibuixa sobre una còpia del fons.
 """
 import functools
+import json
 import math
+from pathlib import Path
 
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
-from hd.pix import Canvas, Light, W, hr, mix
-import hd640.rooms.portada as portada
-from hd640.rooms.portada import CAN_X, HOR, TANK, SHIP, PUMP
+from PIL import Image
 
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+from hd.pix import Canvas, Light, W, H, hr, mix
+import hd640.rooms.portada as portada
+from hd640.rooms.portada import CAN_X, HOR, TANK, CAM
+
+# Art a 1×, com la portada (en 3D).
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 ZT = 0.1                                   # segons per fotograma de les animacions del pròleg
 
 
 def bg(cv):
-    portada.scene(cv)
+    portada.bg(cv)
 
 
 @functools.lru_cache(maxsize=None)
@@ -140,14 +140,7 @@ def _canonada_on():
 
 # ─── La Cantimplora s'apaga ─────────────────────────────────────────────────
 
-X0, GY = SHIP
-L_SHIP = 124
-TOP, BOT = GY - 34, GY - 10
-CY = (TOP + BOT) // 2
-CABIN = (X0 + L_SHIP - 30, TOP - 18, X0 + L_SHIP - 4, TOP + 8)      # les finestres i la seva claror
-NAV = (X0 + L_SHIP - 23, TOP - 20, X0 + L_SHIP - 11, TOP - 8)       # el llum de navegació (i la seva claror)
-RAMP = (X0 + 12, BOT - 6, X0 + 24, BOT)
-EXHAUST = (X0 - 6, CY)
+CABIN, NAV, RAMP, EXHAUST = portada.CABIN, portada.NAV, portada.RAMP, portada.EXHAUST
 COUGHS = (0.2, 1.0, 1.8)
 N_APAGA = 44                               # fins que s'ha esvaït el fum de l'última tos
 SMOKE = (118, 106, 104)
@@ -208,135 +201,137 @@ def _nau_apaga():
 
 
 # ─── L'Iri i la Vet se'n van ────────────────────────────────────────────────
-# Baixen per la rampa i agafen el corriol cap a la posta. Les veiem d'esquena, a contrallum: gairebé siluetes.
+# Baixen per la rampa de la comporta (de cara, en 3/4) i agafen el corriol cap a la posta (d'esquena, en 3/4): els
+# seus sprites «de lluny», a l'escala que toca a cada distància, a contrallum (gairebé siluetes, amb la vora encesa) i
+# amb l'ombra llarga cap a la càmera. Qui passa per darrere de la nau, del primer pla o de la canonada, hi queda tapat.
 
 DUSK_SIL = (26, 18, 24)
-IRI = {'hair': (186, 92, 44), 'top': (104, 64, 40), 'legs': (46, 34, 34), 'bun': False}
-VET = {'hair': (22, 20, 24), 'top': (48, 78, 136), 'legs': (38, 60, 108), 'bun': True}
-RAMP_TOP, RAMP_FOOT = (X0 + 18, BOT + 1), portada.path_xy(0)[:2]
+ART = Path(__file__).resolve().parents[2].parent / 'placeholder-art'
 WALK = {'iri': 0.3, 'vet': 1.1}            # quan comença a baixar cadascuna
 RAMP_T = 1.0                               # el que triguen a baixar la rampa
-V_PATH = 0.17
+V_PATH = 0.13                              # (el corriol ja va més a poc a poc de lluny: vegeu portada._path_pts)
+SHIP_Z = portada.SHIP_C[1]
+TAPA_NAU = {'nau', 'cabina_finestres', 'porta', 'rampa'}
+TAPA_SEMPRE = {'primer_pla', 'canonada'}
+
+
+@functools.lru_cache(maxsize=None)
+def _sheet(cid, tag):
+    """→ ([fotogrames RGBA], peus (x, y)) d'una etiqueta del full d'un personatge."""
+    meta = json.loads((ART / cid / f'{cid}.json').read_text())
+    feet = json.loads((ART / cid / f'{cid}.character.json').read_text())['feet']
+    sheet = Image.open(ART / cid / f'{cid}.png').convert('RGBA')
+    frames = list(meta['frames'].values())
+    t = next(t for t in meta['meta']['frameTags'] if t['name'] == tag)
+    out = []
+    for i in range(t['from'], t['to'] + 1):
+        f = frames[i]['frame']
+        out.append(sheet.crop((f['x'], f['y'], f['x'] + f['w'], f['y'] + f['h'])))
+    return out, (feet['x'], feet['y'])
 
 
 @functools.lru_cache(maxsize=None)
 def _path_u():
-    """u del corriol segons el temps (des del peu de la rampa): de lluny, a la pantalla, es mouen més a poc a poc."""
     us, u = [0.0], 0.0
     while u < 1.0:
-        sc = portada.path_xy(u)[2]
-        u += V_PATH * ZT * (0.18 + sc)
+        u += V_PATH * ZT
         us.append(min(1.0, u))
     return us
 
 
+def _lerp3(A, B, k):
+    return tuple(a + (b - a) * k for a, b in zip(A, B))
+
+
 def _where(who, t):
-    """→ (x, y, escala, pas, alfa) o None si encara no ha sortit / ja no hi és."""
+    """→ (punt del món, etiqueta, fotograma, alfa) o None si encara no ha sortit / ja no hi és."""
     tau = t - WALK[who]
     if tau < 0:
         return None
-    step = int(tau / 0.2) % 2
-    side = -2 if who == 'vet' else 0
+    side = (-6, 0, -4) if who == 'vet' else (0, 0, 0)
+    step = int(tau / ZT)
     if tau < RAMP_T:
-        k = tau / RAMP_T
-        x = RAMP_TOP[0] + (RAMP_FOOT[0] - RAMP_TOP[0]) * k + side
-        y = RAMP_TOP[1] + (RAMP_FOOT[1] - RAMP_TOP[1]) * k
-        return x, y, 1.0, step, min(1.0, tau / 0.3)
+        P = _lerp3(portada.RAMP_TOP_P, portada.RAMP_FOOT_P, tau / RAMP_T)
+        return _lerp3(P, (P[0] + side[0], P[1], P[2] + side[2]), 1.0), 'LlunyWalkDL', step, min(1.0, tau / 0.3)
     us = _path_u()
     i = int((tau - RAMP_T) / ZT)
     if i >= len(us):
         return None
     u = us[i]
-    x, y, sc = portada.path_xy(u)
-    alpha = 1.0 if u < 0.85 else max(0.0, 1 - (u - 0.85) / 0.15)
+    x, z = portada.path_mon(u)
+    alpha = 1.0 if u < 0.8 else max(0.0, 1 - (u - 0.8) / 0.2)            # la pols se les empassa
     if alpha <= 0.05:
         return None
-    return x + side * sc, y, sc, step, alpha
+    k = min(1.0, u * 8)
+    return (x + side[0] * k, 0.0, z + side[2] * k), 'LlunyWalkUL', step, alpha
 
 
-def _person(cv, p, x, y, sc, step, alpha):
-    h = max(2, round(1 + 10 * sc))
-    head = max(1, round(h * 0.24))
-    torso = max(1, round(h * 0.36))
-    legs = max(1, h - head - torso)
-    tw = 3 if h >= 7 else 2 if h >= 4 else 1
-    x = round(x)
-    xl = x - tw // 2
-    sil = lambda col, k=0.35: mix(col, DUSK_SIL, k)                        # noqa: E731
-    # l'ombra llarga, cap a la càmera (el sol és davant seu)
-    for j in range(1, max(2, round(h * 0.5))):
-        _blend(cv, x + j // 2, y + j * 0.5, (20, 12, 14), 0.35 * alpha)
-    yy = y - legs + 1
-    for r in range(legs):                                                   # les cames, que fan passes
-        last = r == legs - 1 and legs >= 3
-        if tw < 2:
-            _blend(cv, x, yy + r, sil(p['legs']), alpha)
-            continue
-        if not (last and step == 0):
-            _blend(cv, xl, yy + r, sil(p['legs']), alpha)
-        if not (last and step == 1):
-            _blend(cv, xl + tw - 1, yy + r, sil(p['legs']), alpha)
-    yt = yy - torso
-    for r in range(torso):
-        for c in range(tw):
-            _blend(cv, xl + c, yt + r, sil(p['top'], 0.3 + 0.1 * c), alpha)
-    hw = 2 if h >= 6 else 1
-    yh = yt - head
-    for r in range(head):
-        for c in range(hw):
-            _blend(cv, x - (hw // 2) + c, yh + r, sil(p['hair'], 0.25), alpha)
-    if p['bun'] and h >= 6:
-        _blend(cv, x, yh - 1, sil(p['hair'], 0.25), alpha)
-    if h >= 7:                                                              # la vora que encén la posta
-        _blend(cv, xl, yt, mix(p['top'], (255, 190, 120), 0.4), alpha * 0.8)
-        _blend(cv, x - (hw // 2), yh, mix(p['hair'], (255, 200, 130), 0.4), alpha * 0.8)
+def _tapat(X, Y, z):
+    """Si el píxel (X, Y) de la pantalla és d'alguna cosa que hi ha davant d'un personatge a la profunditat z."""
+    e = portada.base_escena()
+    if not (0 <= X < W and 0 <= Y < H):
+        return True
+    sid = e.ids[e.amo[Y * e.cv.w + X]]
+    return sid in TAPA_SEMPRE or (sid in TAPA_NAU and z > SHIP_Z - 40)
 
 
-CAT, CAT_HI, BIB = (92, 80, 76), (132, 118, 108), (226, 220, 208)
+def _figura(cv, cid, P, tag, step, alpha, silueta=0.42):
+    frames, (fx, fy) = _sheet(cid, tag)
+    img = frames[step % len(frames)]
+    k = CAM.escala(P)
+    u, v, z = CAM.projecta(P)
+    w, h = max(1, round(img.width * k)), max(1, round(img.height * k))
+    im = img.resize((w, h), Image.Resampling.BOX)
+    ox, oy = round(u - fx * k), round(v - fy * k)
+    # l'ombra llarga, cap a la càmera i a la dreta (el sol és darrere, a l'esquerra)
+    L = max(2, round(44 * k))
+    for j in range(L):
+        sx, sy = u + j * 0.62, v + j * 0.26
+        rw = max(1.0, 9 * k * (1 - j / L * 0.4))
+        for dx in range(int(-rw), int(rw) + 1):
+            X, Y = round(sx + dx), round(sy)
+            if not _tapat(X, Y, z):
+                _blend(cv, X, Y, (20, 12, 14), 0.32 * alpha * (1 - j / L))
+    src = im.load()
+    for y in range(h):
+        first = True
+        for x in range(w):
+            r, g, b, a = src[x, y]
+            if a < 100:
+                continue
+            X, Y = ox + x, oy + y
+            if _tapat(X, Y, z):
+                first = False
+                continue
+            col = mix((r, g, b), DUSK_SIL, silueta)
+            if first:                                                       # la vora que encén la posta
+                col = mix(col, (255, 190, 120), 0.45)
+                first = False
+            _blend(cv, X, Y, col, alpha)
+
+
 DIU_OUT, DIU_SIT = 3.0, 4.4
-DIU_SPOT = (RAMP_TOP[0] + 9, RAMP_TOP[1] + 11)
+DIU_SPOT_P = portada.ship_p((portada.HATCH[0] + portada.HATCH[1]) / 2 + 22, 0, -portada.SHIP_R - portada.RAMP_LEN + 4)
 
 
 def _diu(cv, t):
-    """En Diu surt a la rampa, baixa i s'asseu al peu, de perfil, mirant cap on se'n van (la cua que va i ve)."""
+    """En Diu surt a la comporta, baixa la rampa i s'asseu al peu, mirant cap on se'n van (la cua que va i ve)."""
     if t < DIU_OUT:
         return
     k = _ease((t - DIU_OUT) / (DIU_SIT - DIU_OUT))
-    x = round(RAMP_TOP[0] + 4 + (DIU_SPOT[0] - RAMP_TOP[0] - 4) * k)
-    y = round(RAMP_TOP[1] + (DIU_SPOT[1] - RAMP_TOP[1]) * k)
-    if k < 1:                                                               # caminant, de perfil cap a l'esquerra
-        for dx in range(1, 5):
-            cv.flat(x + dx, y - 2, CAT)
-        cv.flat(x + 2, y - 3, CAT_HI)
-        cv.flat(x, y - 3, CAT)                                              # el cap
-        cv.flat(x, y - 4, CAT)                                              # l'orella
-        cv.flat(x - 1, y - 3, CAT)
-        step = int(t / 0.2) % 2
-        cv.flat(x + 1 + step, y - 1, CAT)
-        cv.flat(x + 4 - step, y - 1, CAT)
-        cv.flat(x + 5, y - 3, CAT)                                          # la cua, enlaire
-        cv.flat(x + 5, y - 4, CAT)
-        return
-    for dy in range(1, 4):                                                  # assegut, de perfil
-        cv.flat(x + 1, y - dy, CAT)
-        cv.flat(x + 2, y - dy, CAT if dy > 1 else CAT_HI)
-    cv.flat(x + 3, y - 1, CAT)
-    cv.flat(x, y - 2, BIB)                                                  # el pitet blanc
-    cv.flat(x, y - 4, CAT)                                                  # el cap
-    cv.flat(x + 1, y - 4, CAT_HI)
-    cv.flat(x, y - 5, CAT)                                                  # l'orella
-    cv.flat(x - 1, y - 4, CAT)
-    tail = int(t / 0.4) % 4                                                 # la cua, a terra, que es belluga
-    cv.flat(x + 4, y - 1, CAT)
-    cv.flat(x + 5, y - 1 - (1 if tail == 1 else 0), CAT)
+    if k < 1:
+        P = _lerp3(portada.RAMP_TOP_P, DIU_SPOT_P, k)
+        _figura(cv, 'diu', P, 'LlunyWalkL', int(t / ZT), min(1.0, (t - DIU_OUT) / 0.3), silueta=0.3)
+    else:
+        _figura(cv, 'diu', DIU_SPOT_P, 'LlunyIdleL', int(t / ZT / 2), 1.0, silueta=0.3)
 
 
 def _germanes_frame(t):
     cv = _canvas(_variant(ship_off=True))
     people = [(w, _where(w, t)) for w in ('iri', 'vet')]
     people = [(w, s) for w, s in people if s]
-    for w, (x, y, sc, step, alpha) in sorted(people, key=lambda p: p[1][1]):
-        _person(cv, IRI if w == 'iri' else VET, x, y, sc, step, alpha)
+    for w, (P, tag, step, alpha) in sorted(people, key=lambda p: -p[1][0][2]):   # de lluny a prop
+        _figura(cv, w, P, tag, step, alpha)
     _diu(cv, t)
     # la nau ja és apagada (la capa «nau» de sota): aquí només hi van elles i en Diu
     return portada.diff(cv.img, base=_variant(ship_off=True))

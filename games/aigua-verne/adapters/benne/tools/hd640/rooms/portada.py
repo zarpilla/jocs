@@ -1,21 +1,27 @@
 """
-Aigua Verne — la portada (pantalla sencera de 640×360, sense barra de verbs; mida de lluny).
+Aigua Verne — la portada (pantalla sencera de 640×360, sense barra de verbs; mida de lluny). EN 3D (hd640/tres_d.py),
+a 1×; referència: docs/referencies/cinematica-portada-desert.png.
 
-Terra-2 de lluny, al capvespre de pols: el sol baix i vermellós a l'esquerra, enterbolit; el cel que passa de
-l'ocre al morat i les primeres estrelles. Els camps secs fins a l'horitzó, amb les ombres llargues. La Canonada
-s'alça a la dreta fins a dalt de tot, on penja un dels dipòsits orbitals (el cilindre blanc amb la gota blava).
-A baix a l'esquerra, petita, la Cantimplora aparcada al port, amb la rampa oberta i els llums encesos.
+Terra-2 al capvespre de pols, vist des d'un turó: el sol baix i vermellós a l'esquerra, el cel que passa de l'ocre al
+morat i les primeres estrelles. Els solcs dels camps secs fugen cap a l'horitzó. La Canonada s'alça a la dreta fins
+a dalt de tot, on penja un dels dipòsits orbitals (el cilindre blanc amb la gota blava).
+
+La Cantimplora, aparcada a l'esquerra, en 3/4: el buc oliva amb la franja taronja, els nou dipòsits al llom, la
+cabina al morro, la comporta del costat oberta amb la rampa i la llum de dins; la seva ombra, llarga, cap a la dreta.
+La canonada de terra surt de baix, gruixuda i a prop, i puja en diagonal fins a la bomba de Verne del pou; d'allà,
+prima, fins a la base de la Canonada: és la línia que porta l'ull. En primer pla, roques i matolls secs en silueta
+emmarquen els cantons de baix. De la rampa de la nau surt un corriol cap a la posta.
 
 El títol, «AIGUA VERNE», és l'etiqueta d'una ampolla d'aigua de Verne: blanca i blava, una mica rovellada, i
 les lletres són de vidre, mig plenes d'aigua (cadascuna fins a un nivell diferent).
 
-A baix a la dreta, el pou d'una granja amb la bomba de Verne (blanca, amb la gota blava), quieta, i la canonada
-de terra que va del pou a la base de la Canonada. Del peu de la rampa de la nau surt un corriol cap a la posta.
-
-La meitat de baix (els botons de la GUI van a 220..420 × 224..328) només té cel baix i camp.
+Els botons de la GUI van a 220..420 × 224..328: allà només hi ha camp (i la canonada, a baix).
 ANIMS: `pols` (la pols que passa arran de terra), `llums` (els llums vermells de la Canonada i de la nau que fan
 pampallugues) i `titol` (el títol, en una capa a part amb l'aigua de dins les lletres que es gronxa: «Comença»
 l'esvaeix i el pròleg, `proleg_terra2`, continua al mateix pla).
+
+El món: x a la dreta, y amunt, z endavant (la càmera a l'origen, a 220 d'alçada); 1 unitat = 1 px a la distància on
+un personatge «de lluny» fa la seva mida normal (z = 400).
 """
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
 
@@ -25,28 +31,23 @@ import math
 from hd.pix import Canvas, Light, W, H, hr, mix, RUST
 from hd.rooms.comu import text, text_width
 from hd.rooms.exterior import fbm, smooth
-from hd640.rooms.nau_comu import (OLIVE, SAFETY, STEELN, WBLUE, WHITEV, COL, BLACKT, INK, PAPERN, drop,
+from hd640.rooms.nau_comu import (OLIVE, SAFETY, STEELN, WBLUE, WHITEV, COL, BLACKT, INK, drop,
                                   diposit_orbital, canonada)
+from hd640.tres_d import Camera, Escena, Llum
 
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
-
-HOR = 252
-SUN = (96, 236)
+HOR = 196
+CAM = Camera(pos=(0, 220, 0), yaw=0.0, pitch=0.0, f=400, centre=(320, HOR))
+SUN = (96, HOR - 14)
 CAN_X = 548                              # la Canonada
 TANK = (548, 22)                         # el dipòsit orbital
-SHIP = (34, 334)                         # la Cantimplora: popa i terra
-PUMP = (488, 318)                        # la bomba de Verne: el pal del balancí i terra
-PIPE = ((506, 315), (CAN_X - 10, HOR - 2))   # la canonada de terra, del pou a la base de la Canonada
+PUMP = (490, 255)                        # la bomba de Verne: el pal del balancí i terra (en pantalla)
+PIPE = ((PUMP[0] + 18, PUMP[1] - 3), (CAN_X - 10, HOR - 2))   # la canonada prima, del pou a la base de la Canonada
 LABEL = (122, 26, 518, 192)              # l'etiqueta del títol
 S = 8                                    # el «píxel» de les lletres grosses
 
-_ANIM = {'pols': None, 'llums': None}
-
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
+LLUMS_MON = [Llum((-60000, 5000, 110000), 1e7, 1.7, power=1.0)]   # el sol, darrere a l'esquerra, baix
+AMBIENT = -0.4
 
 # ─── Rampes ─────────────────────────────────────────────────────────────────
 DUSK = [(14, 10, 26), (24, 16, 38), (38, 22, 48), (56, 30, 54), (80, 40, 58), (108, 54, 58), (140, 72, 58),
@@ -59,6 +60,9 @@ CREAM = [(96, 86, 72), (142, 132, 112), (184, 176, 156), (214, 208, 190), (232, 
 NAVY = [(6, 12, 34), (10, 22, 60), (16, 36, 92)]
 GLASS = [(150, 176, 206), (184, 206, 228), (212, 228, 242), (232, 242, 250)]
 WATER = [(10, 40, 110), (18, 64, 156), (30, 92, 196), (52, 128, 226), (96, 170, 244), (170, 214, 255)]
+ROCK = [(10, 7, 10), (18, 12, 15), (28, 19, 21), (40, 27, 27), (56, 37, 33), (74, 49, 40)]
+WIN_ON = [(120, 70, 30), (200, 140, 60), (255, 210, 130), (255, 240, 200)]
+WIN_OFF = [(16, 18, 24), (24, 26, 32), (34, 38, 46), (44, 48, 56)]
 
 LETTERS = {
     'A': ['01110', '10001', '10001', '11111', '10001', '10001', '10001'],
@@ -80,12 +84,11 @@ def sky(cv):
         for x in range(W):
             d = math.hypot(x - SUN[0], (y - SUN[1]) * 1.8)
             lvl = 0.8 + 6.4 * t ** 1.7 + 4.0 * max(0.0, 1 - d / 260) ** 2.2
-            # bandes de pols allargades
-            band = fbm(x / 160, y / 9, 61)
+            band = fbm(x / 160, y / 9, 61)                                 # bandes de pols allargades
             lvl += (band - 0.5) * 1.4 * t
             lvl -= 0.6 * smooth(0.55, 0.75, fbm(x / 90, y / 14, 62)) * t ** 2
             cv.put(x, y, DUSK, lvl, lit=0)
-            if t < 0.45 and hr(x, y, 63) > 0.9975:                         # les primeres estrelles
+            if t < 0.5 and hr(x, y, 63) > 0.9975:                          # les primeres estrelles
                 cv.flat(x, y, (170, 160, 190) if hr(x, y, 64) > 0.5 else (110, 96, 140))
     # el sol: un disc enterbolit, partit per les bandes de pols
     cv.glow(SUN[0], SUN[1], 70, (255, 200, 130), 0.5)
@@ -93,7 +96,7 @@ def sky(cv):
         for x in range(SUN[0] - 11, SUN[0] + 12):
             if (x - SUN[0]) ** 2 + (y - SUN[1]) ** 2 <= 121 and not (y - SUN[1]) % 6 == 3:
                 cv.put(x, y, DUSK, 12.0 - (y - SUN[1] + 11) * 0.05, lit=0)
-    # turons llunyans, morats
+    # turons llunyans, morats, amb desnivells
     for x in range(W):
         h = HOR - 3 - 9 * fbm(x / 80, 0.5, 65) - 4 * fbm(x / 20, 1.5, 66)
         for y in range(int(h), HOR + 1):
@@ -107,8 +110,8 @@ def tank_and_pipe(cv, light=None):
     cv.tint(CAN_X - 4, TANK[1], CAN_X - 1, HOR, (255, 170, 100), lambda x, y: 0.25)
     cv.tint(CAN_X + 1, TANK[1], CAN_X + 4, HOR, (60, 30, 70), lambda x, y: 0.3)
     cv.tint(CAN_X - 4, TANK[1], CAN_X + 4, HOR, (40, 24, 60), lambda x, y: 0.35 * (1 - (y - TANK[1]) / (HOR - TANK[1])))
-    for y in range(TANK[1] + 30, HOR - 20, 50):
-        on = light is not None and (light + y // 50) % 4 == 0
+    for y in range(TANK[1] + 30, HOR - 20, 40):
+        on = light is not None and (light + y // 40) % 4 == 0
         cv.flat(CAN_X, y, (255, 70, 50) if on else (130, 30, 30))
         if on:
             cv.glow(CAN_X, y, 5, (255, 80, 60), 0.6)
@@ -123,8 +126,7 @@ def tank_and_pipe(cv, light=None):
             lambda x, y: 0.35 * max(0.0, (y - TANK[1] + 4) / 18) + 0.1 * max(0.0, (TANK[0] - x) / 50))
     cv.tint(TANK[0] - 36, TANK[1] - 9, TANK[0] + 36, TANK[1] + 9, (40, 30, 70),
             lambda x, y: 0.4 * max(0.0, (TANK[1] - y - 4) / 10))
-    # els panells solars i els braços
-    for side in (-1, 1):
+    for side in (-1, 1):                                               # els panells solars i els braços
         x0 = TANK[0] + side * 40
         for j in range(2):
             cv.rect(min(x0, x0 + side * 20), TANK[1] - 2 + j * 3, max(x0, x0 + side * 20), TANK[1] - 1 + j * 3,
@@ -135,61 +137,153 @@ def tank_and_pipe(cv, light=None):
         cv.flat(TANK[0] + 33, TANK[1] - 1, (120, 255, 120))
 
 
-# ─── Camps i port ───────────────────────────────────────────────────────────
+# ─── La Cantimplora (en el món) ──────────────────────────────────────────────
+# El buc és un cilindre ajagut, girat 20°: el morro (a la dreta) s'acosta una mica a la càmera. Coordenades locals:
+# lx al llarg del buc (cap al morro), lz cap a l'altre costat (lz < 0: el costat que es veu).
 
-def plain(cv):
-    vx = 320
-    for y in range(HOR + 1, H):
-        t = (y - HOR) / (H - HOR)
-        for x in range(W):
-            ang = math.atan2(y - (HOR - 30), x - vx)
-            furrow = math.sin(ang * 70) * 0.5
-            lvl = 4.6 - t * 3.0 + furrow * (0.3 + t) + (fbm(x / 40, y / 6, 67) - 0.5) * 1.2
-            lvl += 2.2 * max(0.0, 1 - math.hypot(x - SUN[0], (y - HOR) * 4) / 260) * (1 - t)   # la claror de la posta
-            cv.put(x, y, PLAIN, lvl, lit=0)
-    # la boira de pols arran de l'horitzó
-    cv.tint(0, HOR - 14, W - 1, HOR + 18, (220, 140, 90), lambda x, y: 0.28 * max(0.0, 1 - abs(y - HOR) / 18))
-    # el camí del port, de terra més clara
-    for y in range(HOR + 1, H):
-        t = (y - HOR) / (H - HOR)
-        cx = 300 - 220 * t ** 1.2
-        hw = 1 + 20 * t
-        for x in range(int(cx - hw), int(cx + hw) + 1):
-            cv.put(x, y, PLAIN, 5.0 - t * 2.6 + (hr(x // 3, y // 2, 68) - 0.5) * 0.8, lit=0)
-    # el corriol, del peu de la rampa de la nau cap a la posta (per on se'n van l'Iri i la Vet al pròleg)
-    for i in range(600):
-        x, y, sc = path_xy(i / 599)
-        y = round(y)
-        hw = 0.5 + 2.4 * sc
-        for xx in range(int(x - hw), int(x + hw) + 1):
-            edge = abs(xx - x) / max(0.5, hw)
-            if hr(xx // 2, int(y), 82) > 0.3 + 0.5 * edge ** 2:
-                cv.put(xx, y, PLAIN, 5.4 - (1 - sc) * 0.8 - edge * 1.0 + (hr(xx, int(y), 83) - 0.5) * 0.8, lit=0)
-    # una tanca vella i rocs
-    for x in range(380, 640, 22):
-        y = HOR + 10 + (x - 380) // 30
-        cv.vline(x, y - 4, y, BLACKT, 1.6, lit=0)
-    for x in range(380, 640):
-        y = HOR + 8 + (x - 380) // 30
-        if hr(x // 22, 69) > 0.2:
-            cv.flat(x, y, mix(cv.get(x, y), (30, 20, 22), 0.6))
+SK = 1.6                                             # la nau és grossa: 1,6 vegades més gran i més lluny (i més
+#                                                      baixa que la càmera: es veu una mica des de dalt)
+SHIP_C = (-470.0 * SK, 1018.0 * SK)
+SHIP_A = 0.35
+SHIP_L, SHIP_R, SHIP_Y = 460.0, 46.0, 58.0           # llargada, radi i alçada del centre del buc
+_CA, _SA = math.cos(SHIP_A), math.sin(SHIP_A)
+HATCH = (-150.0, -112.0, 22.0, 84.0)                 # la comporta del costat: lx0, lx1, y0, y1
+RAMP_LEN = 52.0
 
 
-PATH = [(54, 339), (36, 339), (22, 328), (19, 310), (28, 292), (50, 276), (82, 263), (110, 253)]
+def ship_p(lx, y, lz):
+    """Un punt de la nau (coordenades locals, a l'escala del dibuix: ×SK al món) al món."""
+    return (SHIP_C[0] + (_CA * lx + _SA * lz) * SK, y * SK, SHIP_C[1] + (-_SA * lx + _CA * lz) * SK)
+
+
+def _proj(P):
+    u, v, _ = CAM.projecta(P)
+    return u, v
+
+
+def _bbox(Ps, m=0):
+    pts = [_proj(P) for P in Ps]
+    return (int(min(p[0] for p in pts)) - m, int(min(p[1] for p in pts)) - m,
+            int(max(p[0] for p in pts)) + 1 + m, int(max(p[1] for p in pts)) + 1 + m)
+
+
+CAB = (120.0, 222.0, 96.0, 132.0)                    # la cabina: lx0, lx1, y0, y1 (d: 64)
+NAV_P = ship_p(150, 178, -6)                         # el llum de navegació, dalt del pal de la cabina
+EXHAUST_P = ship_p(-SHIP_L / 2 - 34, SHIP_Y, -14)
+# les caixes (coordenades de sala) que el pròleg apaga: la cabina, el llum de navegació, la comporta i la rampa
+CABIN = _bbox([ship_p(lx, y, lz) for lx in CAB[:2] for y in CAB[2:] for lz in (-32, 32)], 6)
+NAV = _bbox([NAV_P], 6)
+RAMP = _bbox([ship_p(lx, y, -SHIP_R - 1) for lx in HATCH[:2] for y in HATCH[2:]] +
+             [ship_p(lx, 0, -SHIP_R - RAMP_LEN) for lx in HATCH[:2]], 3)
+EXHAUST = tuple(round(c) for c in _proj(EXHAUST_P))
+RAMP_TOP_P = ship_p((HATCH[0] + HATCH[1]) / 2, HATCH[2], -SHIP_R - 2)
+RAMP_FOOT_P = ship_p((HATCH[0] + HATCH[1]) / 2, 0, -SHIP_R - RAMP_LEN - 4)
+
+
+def cantimplora(e, off=False):
+    L, r, yc = SHIP_L, SHIP_R, SHIP_Y
+    P = ship_p
+    # l'ombra, llarga, cap a la dreta i cap a la càmera (el sol és darrere, a l'esquerra)
+    sx, sz = 0.5 * 300 * SK, -0.86 * 300 * SK
+    e.foscor('ombra', P(-L / 2 - 30, 0.3, r), P(L / 2 + 10, 0.3, r),
+             (P(L / 2 + 10, 0, -r)[0] + sx, 0.3, P(L / 2 + 10, 0, -r)[2] + sz),
+             (P(-L / 2 - 30, 0, -r)[0] + sx, 0.3, P(-L / 2 - 30, 0, -r)[2] + sz),
+             lambda s, t: 0.62 * min(1.0, s / 60, t / 40) * (1 - 0.5 * smooth(0.4, 1.0, t / (320 * SK))))
+    # les potes
+    for lx in (-150, 0, 150):
+        for lz in (-r * 0.5, r * 0.5):
+            e.cable('nau', [P(lx, yc - r + 4, lz), P(lx + 6, 0.5, lz * 1.4)], BLACKT, 1.6, gruix=4 * SK)
+    # els motors, a popa
+    for lz in (-14, 14):
+        e.tub('nau', P(-L / 2 + 4, yc, lz), P(-L / 2 - 30, yc, lz), 12 * SK, STEELN, 1.8, llum_dir=(0.6, 1.0))
+    # l'aleta de cua
+    e.quad('nau', P(-L / 2 + 18, yc + r - 4, 0), P(-L / 2 + 74, yc + r - 4, 0), P(-L / 2 + 40, yc + r + 50, 0),
+           P(-L / 2 + 12, yc + r + 50, 0), ramp=OLIVE, lvl=lambda s, t, Pw: 3.6 - t * 0.02 if t > 8 else 4.4,
+           dues_cares=True)
+    e.quad('nau', P(-L / 2 + 12, yc + r + 50, 0), P(-L / 2 + 40, yc + r + 50, 0), P(-L / 2 + 38, yc + r + 40, 0),
+           P(-L / 2 + 11, yc + r + 40, 0), ramp=SAFETY, lvl=3.8, dues_cares=True)
+    # el buc: un cilindre oliva, més clar per dalt i a l'esquerra (la posta)
+    e.tub('nau', P(L / 2, yc, 0), P(-L / 2, yc, 0), r * SK, OLIVE, 2.6, brides=46 * SK, llum_dir=(0.5, 1.0))
+    # la franja taronja, al llarg del costat
+    e.cable('nau', [P(lx, yc - 4, -r - 0.5) for lx in range(int(-L / 2 + 6), int(L / 2 - 4), 40)] +
+            [P(L / 2 - 4, yc - 4, -r - 0.5)], SAFETY, 3.2, gruix=7 * SK)
+    # els nou dipòsits curts, al llom
+    for k in range(9):
+        lx = -180 + k * 35
+        e.tub('nau', P(lx, yc + r + 20, 0), P(lx, yc + r - 8, 0), 11 * SK, OLIVE, 3.4, llum_dir=(0.5, 1.0))
+    # la cabina, alçada al morro, amb les finestres
+    x0, x1, y0, y1 = CAB
+    e.caixa_girada('nau', SHIP_C[0] + _CA * (x0 + x1) / 2 * SK, SHIP_C[1] - _SA * (x0 + x1) / 2 * SK, (x1 - x0) * SK,
+                   64 * SK, (y1 - y0) * SK, -SHIP_A, OLIVE, 3.0, y0=y0 * SK,
+                   cares={'dalt': {'ramp': OLIVE, 'lvl': 4.6}, 'dreta': {'ramp': OLIVE, 'lvl': 2.2},
+                          'davant': {'ramp': OLIVE, 'lvl': 2.8}})
+    win = WIN_OFF if off else WIN_ON
+    for k in range(5):
+        a = x0 + 12 + k * 18
+        e.quad('cabina_finestres', P(a, y1 - 10, -32.6), P(a + 12, y1 - 10, -32.6), P(a + 12, y1 - 22, -32.6),
+               P(a, y1 - 22, -32.6), ramp=win, lvl=lambda s, t, Pw: 2.2 - t * 0.06)
+    # el pal de la cabina (el llum de navegació, a dalt, és a la capa dels llums)
+    e.cable('nau', [P(150, y1, -6), P(150, NAV_P[1] / SK - 2, -6)], BLACKT, 1.8, gruix=1.6 * SK)
+    # la comporta del costat, oberta, i la rampa fins a terra
+    hx0, hx1, hy0, hy1 = HATCH
+    inside = [(14, 10, 12), (26, 20, 22), (40, 30, 30)] if off else [(160, 100, 40), (230, 170, 90), (255, 220, 160)]
+    e.quad('porta', P(hx0, hy1, -r - 1), P(hx1, hy1, -r - 1), P(hx1, hy0, -r - 1), P(hx0, hy0, -r - 1), ramp=inside,
+           lvl=lambda s, t, Pw: 1.8 - t * 0.02)
+    e.quad('rampa', P(hx0, hy0, -r - 1), P(hx1, hy0, -r - 1), P(hx1, 0.5, -r - RAMP_LEN), P(hx0, 0.5, -r - RAMP_LEN),
+           ramp=OLIVE, lvl=lambda s, t, Pw: 2.4 - (1.2 if t % 9 < 1.2 else 0), dues_cares=True)
+    if not off:
+        e.claror(P(hx0 - 30, 0.3, -r - 2), P(hx1 + 30, 0.3, -r - 2), P(hx1 + 50, 0.3, -r - RAMP_LEN - 40),
+                 P(hx0 - 50, 0.3, -r - RAMP_LEN - 40), (255, 190, 110),
+                 lambda s, t: 0.45 * max(0.0, 1 - t / (110 * SK)) *
+                 max(0.0, math.sin(math.pi * s / ((hx1 - hx0 + 60) * SK + t * 0.6))))
+
+
+def ship_glow(cv, off=False):
+    """La claror de la cabina i de la comporta (en pantalla, damunt de tot)."""
+    if off:
+        return
+    cx, cy = _proj(ship_p((CAB[0] + CAB[1]) / 2, CAB[3] - 16, -33))
+    cv.glow(round(cx), round(cy), 14, (255, 200, 120), 0.3)
+    hx, hy = _proj(ship_p((HATCH[0] + HATCH[1]) / 2, (HATCH[2] + HATCH[3]) / 2, -SHIP_R - 1))
+    cv.glow(round(hx), round(hy), 10, (255, 190, 110), 0.35)
+
+
+def ship_lights(cv, light=None, off=False):
+    """El llum de navegació (fa pampallugues) i la brasa dels motors."""
+    nx, ny = (round(c) for c in _proj(NAV_P))
+    on = light is not None and light % 3 == 0 and not off
+    cv.flat(nx, ny, (255, 80, 60) if on else (60, 22, 22) if off else (120, 30, 30))
+    if on:
+        cv.glow(nx, ny, 5, (255, 80, 60), 0.6)
+    cv.flat(*EXHAUST, (60, 46, 44) if off else (255, 140, 60))
+
+
+# ─── El terra, el corriol, la canonada i el primer pla ─────────────────────────
+
+# el corriol: del peu de la rampa, se'n va cap a la posta (punts del món, x, z)
+# (es pensa en pantalla: passa per l'esquerra de la popa, sense amagar-s'hi darrere, i s'ajunta amb el sol de lluny)
+def _terra_mon(u, v):
+    z = CAM.f * CAM.pos[1] / (v - HOR)
+    return ((u - CAM.centre[0]) * z / CAM.f, z)
+
+
+PATH_MON = [(RAMP_FOOT_P[0], RAMP_FOOT_P[2])] + [_terra_mon(u, v) for u, v in (
+    (45, 248), (36, 238), (36, 226), (42, 216), (54, 208), (78, 203), (96, 199))]
+NEAR_PIPE = ((70.0, 6.0, 470.0), (606.0, 6.0, 1490.0))     # la canonada gruixuda: de baix fins a la bomba
 
 
 @functools.lru_cache(maxsize=None)
 def _path_pts():
-    """El corriol, suavitzat (Chaikin) i repartit per igual al llarg del camí."""
-    pts = [tuple(map(float, p)) for p in PATH]
+    """El corriol, suavitzat (Chaikin) i repartit per igual al llarg del camí (al món)."""
+    pts = [tuple(map(float, p)) for p in PATH_MON]
     for _ in range(4):
         out = [pts[0]]
-        for (ax, ay), (bx, by) in zip(pts, pts[1:]):
-            out += [(0.75 * ax + 0.25 * bx, 0.75 * ay + 0.25 * by), (0.25 * ax + 0.75 * bx, 0.25 * ay + 0.75 * by)]
+        for (ax, az), (bx, bz) in zip(pts, pts[1:]):
+            out += [(0.75 * ax + 0.25 * bx, 0.75 * az + 0.25 * bz), (0.25 * ax + 0.75 * bx, 0.25 * az + 0.75 * bz)]
         pts = out + [pts[-1]]
     acc = [0.0]
-    for (ax, ay), (bx, by) in zip(pts, pts[1:]):
-        acc.append(acc[-1] + math.hypot(bx - ax, by - ay))
+    for (ax, az), (bx, bz) in zip(pts, pts[1:]):
+        acc.append(acc[-1] + math.hypot(bx - ax, bz - az) / ((az + bz) / 2) ** 0.85)   # (de lluny, a poc a poc)
     n, out, j = 600, [], 0
     for i in range(n + 1):
         d = acc[-1] * i / n
@@ -200,22 +294,108 @@ def _path_pts():
     return tuple(out)
 
 
-def path_xy(u):
-    """El corriol: surt del peu de la rampa, volta la popa de la nau i se'n va cap a la posta (u=0 a la rampa, u=1
-    a l'horitzó, sota el sol). → (x, y, escala de 0 a 1)"""
+def path_mon(u):
+    """El corriol al món: u=0 al peu de la rampa, u=1 a l'horitzó, sota el sol. → (x, z)"""
     pts = _path_pts()
-    x, y = pts[round(max(0.0, min(1.0, u)) * (len(pts) - 1))]
-    return x, y, max(0.0, (y - HOR + 2) / (339 - HOR + 2))
+    return pts[round(max(0.0, min(1.0, u)) * (len(pts) - 1))]
+
+
+def path_xy(u):
+    """El corriol a la pantalla → (x, y, escala d'un personatge allà)."""
+    x, z = path_mon(u)
+    px, py, _ = CAM.projecta((x, 0, z))
+    return px, py, CAM.escala((x, 0, z))
+
+
+def _dist_path(x, z):
+    best = 1e9
+    pts = _path_pts()
+    for (ax, az), (bx, bz) in zip(pts[::8], pts[8::8]):
+        if not (min(az, bz) - 40 <= z <= max(az, bz) + 40):
+            continue
+        dx, dz = bx - ax, bz - az
+        k = max(0.0, min(1.0, ((x - ax) * dx + (z - az) * dz) / (dx * dx + dz * dz or 1)))
+        best = min(best, math.hypot(x - ax - dx * k, z - az - dz * k))
+    return best
+
+
+_B = 0.12                                                  # els solcs, una mica girats: fugen cap a la dreta
+
+
+def _terra(s, t, P):
+    x, z = P[0], P[2]
+    fc = x * math.cos(_B) - z * math.sin(_B)
+    # els solcs: es veuen a prop i s'esvaeixen abans que siguin més prims que un píxel (si no, fan moaré); de lluny,
+    # bandes allargades de terra més clara i més fosca, que també fugen
+    fade = 1 - smooth(700, 1900, z)
+    fur = math.sin(fc / 22 * math.pi)
+    lvl = 4.3 + fur * 0.7 * fade + (fbm(x / 140, z / 90, 67) - 0.5) * 1.4
+    lvl += (fbm(fc / 60, z / 900, 69) - 0.5) * 1.6 * (1 - fade)
+    lvl += (hr(int(fc) // 6, int(z) // 10, 68) - 0.5) * 0.5 * fade
+    lvl -= 1.1 * (1 - smooth(500, 1100, z))                # a prop, a contrallum
+    if z < 8000:                                           # el corriol, de terra trepitjada
+        d = _dist_path(x, z)
+        if d < 14:
+            lvl += 1.2 * (1 - d / 14) + (hr(int(x) // 3, int(z) // 3, 82) - 0.5) * 0.6
+    return lvl
+
+
+def far_fence(e):
+    """Una tanca vella que fuig cap a l'horitzó, a la dreta."""
+    (x0, z0), (x1, z1) = (1500.0, 3600.0), (5200.0, 9800.0)
+    n = 26
+    tops = []
+    for i in range(n + 1):
+        u = i / n
+        x, z = x0 + (x1 - x0) * u, z0 + (z1 - z0) * u
+        e.caixa('tanca', x - 3, x + 3, 0, 38 + (hr(i, 5) - 0.5) * 8, z - 3, z + 3, BLACKT, 2.0)
+        tops.append((x, z))
+    for (xa, za), (xb, zb) in zip(tops, tops[1:]):
+        e.cable('tanca', [(xa, 26, za), (xb, 26, zb)], BLACKT, 1.6, gruix=1.4)
+
+
+def near_pipe(e):
+    A, B = NEAR_PIPE
+    e.foscor('ombra', (A[0] + 4, 0.3, A[2]), (B[0] + 4, 0.3, B[2]), (B[0] + 26, 0.3, B[2] - 8), (A[0] + 26, 0.3, A[2] - 8),
+             lambda s, t: 0.5)
+    e.tub('canonada', B, A, 7, COL, 3.0, brides=90, llum_dir=(0.5, 1.0))
+
+
+def primer_pla(e):
+    """Roques i matolls secs en silueta als dos cantons de baix (a contrallum: gairebé negres)."""
+    for (x, z, r, seed) in ((-470, 620, 84, 11), (-590, 740, 60, 12), (-330, 590, 40, 13), (-640, 600, 70, 14),
+                            (460, 640, 92, 21), (330, 590, 40, 22), (600, 720, 64, 23)):
+        e.roca('primer_pla', (x, 0, z), r, ROCK, 1.6, llum_dir=(-0.8, -0.5), seed=seed)
+    # una iuca a l'esquerra: fulles com espases
+    bx, bz = -470.0, 570.0
+    for j in range(17):
+        a = math.pi / 2 + (j - 8) * 0.17 + (hr(j, 31) - 0.5) * 0.15
+        L = 60 + hr(j, 32) * 40
+        e.cable('primer_pla', [(bx, 40, bz), (bx + math.cos(a) * L, 40 + math.sin(a) * L, bz - 4)], ROCK, 2.0,
+                gruix=3.6)
+    e.cable('primer_pla', [(bx, 0, bz), (bx, 42, bz)], ROCK, 1.6, gruix=10)
+    # un matoll sec a la dreta: branques
+    mx, mz = 320.0, 590.0
+
+    def branca(P, a, L, n, seed):
+        if n == 0 or L < 5:
+            return
+        Q = (P[0] + math.cos(a) * L, P[1] + math.sin(a) * L, P[2])
+        e.cable('primer_pla', [P, Q], ROCK, 2.0, gruix=max(1.4, n * 1.1))
+        for k, da in enumerate((-0.45, 0.4)):
+            branca(Q, a + da + (hr(seed, k) - 0.5) * 0.3, L * 0.68, n - 1, seed * 3 + k + 1)
+    for k, a in enumerate((1.25, 1.6, 1.95)):
+        branca((mx, 0, mz), a, 46, 4, 50 + k)
 
 
 def ground_pipe(cv):
-    """La canonada de terra, del pou a la base de la Canonada: blanca, amb abraçadores, més prima de lluny."""
+    """La canonada prima, de la bomba a la base de la Canonada: blanca, amb abraçadores, més prima de lluny."""
     (ax, ay), (bx, by) = PIPE
     n = max(abs(bx - ax), abs(by - ay)) * 2
     for i in range(n + 1):
         u = i / n
         x, y = round(ax + (bx - ax) * u), round(ay + (by - ay) * u)
-        thick = 2 if u < 0.55 else 1
+        thick = 2 if u < 0.4 else 1
         cv.put(x, y, COL, 3.6 - u * 0.8, lit=0)
         if thick == 2:
             cv.put(x, y + 1, COL, 2.0, lit=0)
@@ -236,29 +416,24 @@ def bomba_verne(cv, phase=0.25):
     """La bomba de Verne al pou d'una granja: un balancí blanc amb la gota blava. El cap del balancí (a la dreta)
     puja i baixa damunt del pou; a l'esquerra, la manovella amb el contrapès. `phase` (0..1): una cabotada."""
     px, gy = PUMP
-    # l'ombra, cap a la dreta (el sol és a l'esquerra)
-    cv.darken(px - 16, gy - 1, px + 44, gy + 3,
-              lambda x, y: 0.6 if ((x - px - 12) / 30) ** 2 + ((y - gy - 1) / 2.4) ** 2 <= 1 else 0)
-    # el sòcol
-    cv.rect(px - 16, gy - 2, px + 20, gy, STEELN, lambda x, y: 1.8 - (y - gy + 2) * 0.4, lit=0)
-    # el pou: el capçal blau, amb la gota
-    wx = px + 15
+    # l'ombra, llarga cap a la dreta (el sol és a l'esquerra)
+    cv.darken(px - 16, gy - 1, px + 54, gy + 4,
+              lambda x, y: 0.6 if ((x - px - 18) / 36) ** 2 + ((y - gy - 1) / 2.6) ** 2 <= 1 else 0)
+    cv.rect(px - 16, gy - 2, px + 20, gy, STEELN, lambda x, y: 1.8 - (y - gy + 2) * 0.4, lit=0)   # el sòcol
+    wx = px + 15                                                         # el pou: el capçal blau, amb la gota
     cv.rect(wx - 3, gy - 7, wx + 3, gy - 3, WBLUE, lambda x, y: 3.2 - (x - wx) * 0.25, lit=0)
     cv.hline(wx - 4, wx + 4, gy - 8, WBLUE, 4.2, lit=0)
     cv.flat(wx, gy - 5, (220, 236, 255))
-    # el pal (una A)
-    pv = (px, gy - 18)
+    pv = (px, gy - 18)                                                   # el pal (una A)
     cv.line(px - 5, gy - 2, pv[0], pv[1], STEELN, 2.6, lit=0)
     cv.line(px + 4, gy - 2, pv[0], pv[1], STEELN, 1.4, lit=0)
-    # la manovella i el contrapès, a l'esquerra
-    ang = 2 * math.pi * phase
+    ang = 2 * math.pi * phase                                            # la manovella i el contrapès
     ck = (px - 11, gy - 7)
     cv.rect(ck[0] - 2, ck[1] - 1, ck[0] + 2, gy - 2, STEELN, 1.2, lit=0)
     cw = (ck[0] - 3 * math.cos(ang), ck[1] - 3 * math.sin(ang))
     cv.disc(cw[0], cw[1], 2.6, 2.6, STEELN, 2.2, lit=0)
     pin = (ck[0] + 3 * math.cos(ang), ck[1] + 3 * math.sin(ang))
-    # el balancí: puja del costat del pou quan la manovella baixa
-    a = 0.2 * math.sin(ang)
+    a = 0.2 * math.sin(ang)                                              # el balancí
     lx, ly = pv[0] - 12 * math.cos(a), pv[1] + 12 * math.sin(a)
     rx, ry = pv[0] + 15 * math.cos(a), pv[1] - 15 * math.sin(a)
     cv.line(lx, ly, pin[0], pin[1], STEELN, 2.8, lit=0)                  # la biela
@@ -269,95 +444,12 @@ def bomba_verne(cv, phase=0.25):
         cv.put(x, y - 1, WHITEV, 4.6, lit=0)
         cv.put(x, y, WBLUE if 0.3 < t < 0.6 else WHITEV, 3.0, lit=0)
     cv.flat(pv[0], pv[1], INK)
-    # el cap de cavall, damunt del pou, i la barra que hi baixa
-    hx, hy = round(rx), round(ry)
+    hx, hy = round(rx), round(ry)                                        # el cap de cavall i la barra
     cv.rect(hx, hy - 2, hx + 1, hy + 3, WHITEV, lambda x, y: 4.2 - (y - hy) * 0.3, lit=0)
     cv.flat(hx + 2, hy, WHITEV[5])
     cv.vline(hx + 1, hy + 4, gy - 9, STEELN, 3.2, lit=0)
-    # la gota de Verne al balancí
     gx, gy2 = round(pv[0] + 4 * math.cos(a)), round(pv[1] - 4 * math.sin(a))
     cv.flat(gx, gy2 - 2, (40, 110, 220))
-
-
-def cantimplora(cv, light=None, off=False):
-    """La nau, de costat, petita, mirant a la dreta: un buc panxut oliva amb la franja taronja, nou dipòsits
-    curts en fila al llom, la cabina alçada al morro, l'aleta de cua i la rampa de popa abaixada.
-    `off`: apagada (el pròleg): sense llum a la cabina ni a la rampa, el llum de navegació i la brasa morts."""
-    x0, gy = SHIP
-    L = 124
-    top, bot = gy - 34, gy - 10
-    cy = (top + bot) / 2
-    # l'ombra, llarga cap a la dreta (el sol és a l'esquerra)
-    cv.darken(x0 + 10, gy - 2, x0 + L + 60, gy + 5, lambda x, y: 0.7 if ((x - x0 - L / 2 - 26) / (L / 2 + 26)) ** 2 +
-              ((y - gy - 1) / 3.6) ** 2 <= 1 else 0)
-    cv.tint(x0 + 2, gy - 4, x0 + 50, gy + 8, (255, 190, 110), lambda x, y: 0.45 * max(0.0, 1 - math.hypot(
-        x - x0 - 22, (y - gy) * 3) / 26))
-    # les potes
-    for lx in (x0 + 26, x0 + 70, x0 + 106):
-        cv.line(lx, bot, lx - 3, gy, BLACKT, 1.8, lit=0)
-        cv.hline(lx - 6, lx, gy, BLACKT, 2.4, lit=0)
-    # l'aleta de cua
-    cv.poly([(x0 + 4, top + 2), (x0 + 20, top + 2), (x0 + 8, top - 12), (x0 + 2, top - 12)], OLIVE,
-            lambda x, y: 4.6 - (y - top + 12) * 0.08, lit=0)
-    cv.rect(x0 + 2, top - 12, x0 + 8, top - 9, SAFETY, 4.2, lit=0)
-    # els nou dipòsits: cilindres curts amb la tapa rodona, separats
-    for k in range(9):
-        tx = x0 + 22 + k * 10
-        for y in range(top - 8, top + 2):
-            for x in range(tx, tx + 8):
-                u = (x - tx) / 7
-                if y < top - 6 and (u < 0.15 or u > 0.85):
-                    continue
-                cv.put(x, y, OLIVE, 5.0 - u * 2.2 - (1.0 if y == top - 3 else 0), lit=0)
-        cv.flat(tx + 1, top - 7, OLIVE[8])
-    # el buc
-    for x in range(x0, x0 + L + 1):
-        u = (x - x0) / L
-        hh = 0.7 + 0.3 * min(1.0, u * 8) if u < 0.85 else 1.0 - ((u - 0.85) / 0.15) ** 2 * 0.6
-        a, b = cy - (cy - top) * hh, cy + (bot - cy) * hh
-        for y in range(int(a), int(b) + 1):
-            v = (y - a) / max(1, b - a)
-            lvl = 4.0 - v * 2.0 + (1.0 - u) * 1.2 - (0.9 if (x - x0) % 21 == 0 else 0)
-            ramp = SAFETY if 0.42 < v < 0.56 else OLIVE
-            if hr(x // 2, y // 2, 70) > 0.93:
-                ramp, lvl = RUST, 2.0
-            cv.put(x, y, ramp, lvl, lit=0)
-        cv.flat(x, int(a) - 1, INK)
-        cv.flat(x, int(b) + 1, INK)
-    # la cabina, alçada al morro, amb les finestres enceses
-    cv.poly([(x0 + L - 34, top + 1), (x0 + L - 26, top - 9), (x0 + L - 8, top - 9), (x0 + L, top + 3)], OLIVE,
-            lambda x, y: 4.4 - (y - top + 9) * 0.1, lit=0)
-    for i in range(4):
-        wx = x0 + L - 26 + i * 5
-        cv.rect(wx, top - 6, wx + 2, top - 3, [(24, 26, 32), (44, 48, 56)] if off else [(200, 140, 60), (255, 210, 130)],
-                1.0, lit=0)
-    if not off:
-        cv.glow(x0 + L - 17, top - 5, 12, (255, 200, 120), 0.3)
-    # els motors, a popa, amb una brasa
-    cv.rect(x0 - 5, int(cy) - 4, x0, int(cy) + 4, STEELN, 1.6, lit=0)
-    cv.flat(x0 - 6, int(cy), (60, 46, 44) if off else (255, 140, 60))
-    # la rampa abaixada, a popa, i la llum de dins
-    cv.poly([(x0 + 10, bot), (x0 + 26, bot), (x0 + 32, gy), (x0 + 6, gy)], OLIVE, 2.4, lit=0)
-    cv.rect(x0 + 12, bot - 6, x0 + 24, bot, [(14, 10, 12), (26, 20, 22), (40, 30, 30)] if off else
-            [(160, 100, 40), (230, 170, 90), (255, 220, 160)], 1.4, lit=0)
-    # el llum de navegació
-    lx, ly = x0 + L - 17, top - 14
-    cv.vline(lx, ly + 1, top - 10, BLACKT, 1.6, lit=0)
-    on = light is not None and light % 3 == 0 and not off
-    cv.flat(lx, ly, (255, 80, 60) if on else (60, 22, 22) if off else (120, 30, 30))
-    if on:
-        cv.glow(lx, ly, 5, (255, 80, 60), 0.6)
-    # el port: una grua petita i uns contenidors, en silueta, al costat
-    gx = x0 + 150
-    cv.vline(gx, gy - 34, gy, BLACKT, 1.2, lit=0)
-    cv.vline(gx + 2, gy - 34, gy, BLACKT, 1.2, lit=0)
-    cv.hline(gx - 8, gx + 22, gy - 34, BLACKT, 1.2, lit=0)
-    cv.vline(gx + 18, gy - 33, gy - 22, BLACKT, 1.0, lit=0)
-    cv.flat(gx + 1, gy - 35, (255, 90, 60))
-    for k in range(3):
-        cx = x0 + 132 + k * 13
-        cv.rect(cx, gy - 6 - (k % 2) * 6, cx + 11, gy, [(30, 22, 26), (60, 40, 40), (200, 210, 230)],
-                0.8 if k != 1 else 1.6, lit=0)
 
 
 # ─── El títol ──────────────────────────────────────────────────────────────
@@ -497,6 +589,7 @@ def title(cv, phase=0.0):
     cv.darken(x1 + 2, y0 + 4, x1 + 5, y1 + 5, 0.5)
 
 
+
 # ─── La pols ───────────────────────────────────────────────────────────────
 
 def dust(cv, frame):
@@ -517,32 +610,49 @@ def dust(cv, frame):
 
 def scene(cv, light=None, ship_off=False, pump=True):
     """L'escena sense el títol (el fons de la portada i del pròleg). Per a les capes del pròleg: `ship_off`, la nau
-    apagada; `pump=False`, sense la bomba (per dibuixar-la en una altra posició)."""
+    apagada; `pump=False`, sense la bomba (per dibuixar-la en una altra posició). → l'Escena (qui ha pintat què)."""
     sky(cv)
     tank_and_pipe(cv, light)
-    plain(cv)
+    e = Escena(cv, CAM, LLUMS_MON, ambient=AMBIENT)
+    e.quad('terra', (-80000, 0, 60000), (80000, 0, 60000), (80000, 0, 300), (-80000, 0, 300), ramp=PLAIN, lvl=_terra)
+    e.claror((-80000, 0.2, 60000), (80000, 0.2, 60000), (80000, 0.2, 900), (-80000, 0.2, 900), (200, 120, 92),
+             lambda s, t: 0.55 * smooth(1500, 30000, 60000 - t))          # la calitja: el fons es confon amb el cel
+    # la claror de la posta pel terra, i la boira de pols arran de l'horitzó
+    cv.tint(0, HOR + 1, W - 1, H - 1, (255, 170, 100),
+            lambda x, y: 0.4 * max(0.0, 1 - math.hypot(x - SUN[0], (y - HOR) * 4) / 300))
+    cv.tint(0, HOR - 14, W - 1, HOR + 18, (220, 140, 90), lambda x, y: 0.28 * max(0.0, 1 - abs(y - HOR) / 18))
+    far_fence(e)
     ground_pipe(cv)
+    cantimplora(e, off=ship_off)
     if pump:
         bomba_verne(cv)
-    cantimplora(cv, light, off=ship_off)
-
-
-def bg(cv):
-    scene(cv, _ANIM['llums'])
-    if _ANIM['pols'] is not None:
-        dust(cv, _ANIM['pols'])
+    near_pipe(e)
+    primer_pla(e)
+    ship_glow(cv, ship_off)
+    ship_lights(cv, light, ship_off)
+    return e
 
 
 @functools.lru_cache(maxsize=None)
-def _base_img():
+def _base():
     cv = Canvas(light=LIGHT)
-    bg(cv)
-    return cv.img.copy()
+    e = scene(cv)
+    return cv.img.copy(), e
+
+
+def bg(cv):
+    cv.img.paste(_base()[0])
+    cv.P = cv.img.load()
 
 
 def base_img():
     """El fons (sense títol ni animacions), per fer-hi capes a sobre: no el modifiquis, copia'l."""
-    return _base_img()
+    return _base()[0]
+
+
+def base_escena():
+    """L'Escena del fons: qui ha pintat cada píxel (per tapar el que passa per darrere de la nau)."""
+    return _base()[1]
 
 
 def diff(img, base=None, force=()):
@@ -550,13 +660,26 @@ def diff(img, base=None, force=()):
     import numpy as np
     from PIL import Image
     a = np.asarray(img.convert('RGBA')).copy()
-    b = np.asarray((base or _base_img()).convert('RGBA'))
+    b = np.asarray((base or base_img()).convert('RGBA'))
     same = (a == b).all(axis=2)
-    s = img.width // W                                     # les caixes són en coordenades de sala (art a 2×: ×2)
+    s = img.width // W
     for x0, y0, x1, y1 in force:
         same[max(0, y0 * s):(y1 + 1) * s, max(0, x0 * s):(x1 + 1) * s] = False
     a[same] = (0, 0, 0, 0)
     return Image.fromarray(a, 'RGBA')
+
+
+def tower_lights(cv, light):
+    """Només els llums (la Canonada, el dipòsit, la nau): per a la capa `llums`, damunt del fons."""
+    for y in range(TANK[1] + 30, HOR - 20, 40):
+        on = (light + y // 40) % 4 == 0
+        cv.flat(CAN_X, y, (255, 70, 50) if on else (130, 30, 30))
+        if on:
+            cv.glow(CAN_X, y, 5, (255, 80, 60), 0.6)
+    if light % 2 == 0:
+        cv.flat(TANK[0] - 33, TANK[1] - 1, (255, 80, 60))
+        cv.flat(TANK[0] + 33, TANK[1] - 1, (120, 255, 120))
+    ship_lights(cv, light)
 
 
 @functools.lru_cache(maxsize=None)
@@ -564,12 +687,11 @@ def _frames(key, n):
     """(La portada i el pròleg en fan servir els mateixos: es dibuixen una sola vegada.)"""
     out = []
     for f in range(n):
-        _ANIM[key] = f
-        try:
-            cv = Canvas(light=LIGHT)
-            bg(cv)
-        finally:
-            _ANIM[key] = None
+        cv = Canvas(light=LIGHT, img=base_img().copy())
+        if key == 'pols':
+            dust(cv, f)
+        else:
+            tower_lights(cv, f)
         out.append(diff(cv.img))
     return out
 
@@ -577,7 +699,7 @@ def _frames(key, n):
 def _title_frames(n=8):
     out = []
     for f in range(n):
-        cv = Canvas(light=LIGHT, img=_base_img().copy())
+        cv = Canvas(light=LIGHT, img=base_img().copy())
         title(cv, f * math.pi / 4)
         out.append(diff(cv.img))
     return out
