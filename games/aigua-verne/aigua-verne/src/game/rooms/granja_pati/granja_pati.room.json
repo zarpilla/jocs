@@ -587,7 +587,7 @@
       "animations": {
         "davant_pou": {}
       },
-      "zIndex": 22,
+      "zIndex": 26,
       "baseline": 218
     },
     {
@@ -611,7 +611,7 @@
       "animations": {
         "davant_arbre": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 210
     },
     {
@@ -623,8 +623,56 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 23,
+      "zIndex": 27,
       "baseline": 999
+    },
+    {
+      "id": "davant_tub0",
+      "tag": "davant_tub0",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub0": {}
+      },
+      "zIndex": 21,
+      "baseline": 208
+    },
+    {
+      "id": "davant_tub1",
+      "tag": "davant_tub1",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub1": {}
+      },
+      "zIndex": 23,
+      "baseline": 211
+    },
+    {
+      "id": "davant_tub2",
+      "tag": "davant_tub2",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub2": {}
+      },
+      "zIndex": 24,
+      "baseline": 214
+    },
+    {
+      "id": "davant_tub3",
+      "tag": "davant_tub3",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub3": {}
+      },
+      "zIndex": 25,
+      "baseline": 215
     }
   ],
   "characters": [
@@ -651,7 +699,7 @@
     {
       "instanceId": "diu-1",
       "definition": "diu/diu.character.json",
-      "x": 320,
+      "x": 331,
       "y": 198,
       "initialFacing": "D",
       "initialAnimation": "Idle",

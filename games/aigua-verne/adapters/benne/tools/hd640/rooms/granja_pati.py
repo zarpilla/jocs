@@ -71,6 +71,11 @@ def _up(P, h):
     return (P[0], P[1] + h, P[2])
 
 
+# El tub de la bomba al pou (punts del món): surt del costat de la bomba, fa un arc i es fica al pou.
+TUB = [(BOMBA[0] - 10, 26, BOMBA[1] - 4), (BOMBA[0] - 22, 34, BOMBA[1] - 24), (POU[0] + 18, 36, POU[1] + 30),
+       (POU[0] + 12, 33, POU[1] + 18), (POU[0] + 11, 26, POU[1] + 16)]
+
+
 # ─── Les textures: el pati pla de sempre ─────────────────────────────────────
 
 def _pla(fn):
@@ -227,10 +232,10 @@ def bomba(e, tex):
                    cares={'davant': {'tex': (tex['bomba'], (G.BX0, G.BY0, G.BX1 + 1, G.BY1 + 1))},
                           'dalt': {'ramp': WHITEP, 'lvl': 5.4}, 'dreta': {'ramp': WHITEP, 'lvl': 3.0},
                           'esquerra': {'ramp': WHITEP, 'lvl': 2.4}})
-    # el tub, blanc i nou, que fa un arc i es fica al pou
-    cx, cz = POU
-    e.cable('bomba', [(bx - 10, 26, bz - 4), (bx - 22, 34, bz - 24), (cx + 18, 36, cz + 30), (cx + 12, 33, cz + 18),
-                      (cx + 11, 26, cz + 16)], WHITEP, 4.6, gruix=3.0)
+    # el tub, blanc i nou, que fa un arc i es fica al pou: per trams, cadascun a la seva capa del davant (amb la línia
+    # base de la seva profunditat), perquè qui es posa entre el pou i la bomba en tingui una part davant i una darrere
+    for k, (A, B) in enumerate(zip(TUB, TUB[1:])):
+        e.cable(f'tub{k}', [A, B], WHITEP, 4.6, gruix=3.0)
 
 
 def tanca(e):
@@ -375,8 +380,12 @@ def _v(z):
 
 # Capes del davant: el personatge hi passa per darrere si té els peus més amunt (més lluny) que la seva base.
 FRONT = [
-    {'id': 'davant_pou', 'mask': _amo({'pou'}), 'baseline': round(_v(POU[1])), 'zIndex': 20},
+    # el pou: el cilindre, i també els pals, la biga i la politja (si no, qui hi és darrere sembla que sigui a dins)
+    {'id': 'davant_pou', 'mask': _amo({'pou', 'pou_pals'}), 'baseline': round(_v(POU[1])), 'zIndex': 20},
     {'id': 'davant_bomba', 'mask': _amo({'bomba'}), 'baseline': round(_v(BOMBA[1])), 'zIndex': 20},
+    # els trams del tub, cadascun amb la profunditat del seu mig
+    *[{'id': f'davant_tub{k}', 'mask': _amo({f'tub{k}'}), 'baseline': round(_v((A[2] + B[2]) / 2)), 'zIndex': 20}
+      for k, (A, B) in enumerate(zip(TUB, TUB[1:]))],
     {'id': 'davant_arbre', 'mask': _amo({'arbre'}), 'baseline': round(_v(ARBRE[1])), 'zIndex': 20},
     {'id': 'davant', 'mask': _amo({'primer_pla', 'pal_port'}), 'baseline': 999, 'zIndex': 20},
 ]
@@ -452,7 +461,8 @@ GEOMETRIA = {
         'tanca': {'rect': _rect((TANCA0[0], 28, TANCA0[1]), (TANCA0[0] + 340, 0, TANCA0[1] + 600)),
                   'walk': _p(-240, 770)},
     },
-    'spawns': {'iri': (384, 242), 'vet': (442, 236), 'diu': _p(POU[0] - 6, POU[1] - POU_R + 2, POU_H)},
+    # (en Diu, a la vora del pou, entre els dos pals: així no en queda cap davant seu)
+    'spawns': {'iri': (384, 242), 'vet': (442, 236), 'diu': _p(POU[0] + 8, POU[1] - POU_R + 2, POU_H)},
     'walkable': _WALK,
     # L'ombra de contacte dels personatges: el sol és a dalt a la dreta, l'ombra cau cap a l'esquerra i una mica cap
     # endavant (com les dels objectes); aixafada com el terra que veu la càmera a la distància del pati (140 / 500).
