@@ -116,5 +116,21 @@
     }
   },
   "defaultVerb": "talkTo",
-  "artScale": 2
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ]
 }

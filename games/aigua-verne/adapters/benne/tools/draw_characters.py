@@ -9,11 +9,11 @@ Dues mides a cada full (guió, «Art: dues mides de càmera»):
     dins el mateix fotograma amb els peus al mateix punt (Benne té un sol punt de peus per personatge).
 Les robes porten el seu prefix davant: `Gala` / `LlunyGala`, `Brut` / `LlunyBrut`, `Moll` / `LlunyMoll`.
 
-Els fulls són a ART_SCALE = 2 (`artScale: 2` al .character.json; els punts continuen a la mida de prop, 59×104):
-la de prop i la de lluny es dibuixen a 2× (hd/personatges.FigK2 i FigL2: volums a la resolució real, cara i detalls
-en blocs de 2×2).
+Els fulls són a ART_SCALE = 1, com les sales en 3D (fins al 18-11-2026, a 2×: `artScale: 2` i hd/personatges.FigK2 i
+FigL2, que encara hi són). Els punts són a la mida de prop, 59×104.
 
-Tres direccions (L, D, U; Benne fa el mirall per a R). Una persona: fotograma de 59×104, peus a (30, 100).
+Tres direccions (L, D, U; Benne fa el mirall per a R), i el 3/4 (DL i UL; DR i UR, el mirall) als personatges que el
+porten (`dirs` de `persona`; ara, l'Iri). Una persona: fotograma de 59×104, peus a (30, 100).
 
 Surt a adapters/benne/placeholder-art/<id>/. Ús (des d'aquesta carpeta):
     python3 draw_characters.py [--fitxa fitxa.png] [id ...]
@@ -31,7 +31,7 @@ from hd import personatges as P  # noqa: E402
 from hd.characters import person  # noqa: E402
 
 OUT = Path(__file__).resolve().parent.parent / 'placeholder-art'
-ART_SCALE = 2
+ART_SCALE = 1                  # a 1× (com les sales en 3D): els fulls fan la quarta part
 P.ART_SCALE = ART_SCALE
 CLEAR = (0, 0, 0, 0)
 DIRS = 'LDU'
@@ -91,7 +91,9 @@ def durations(tags, walk=(90, 90), talk=140, idle=None, extra=None):
     for t, _ in tags:
         a = {'loop': True}
         base = t.replace('Lluny', '', 1) if t.startswith('Lluny') else t
-        if 'Walk' in base:
+        if 'Blink' in base or 'Look' in base:           # micro-accions: un sol cop i torna a l'Idle
+            a = {'loop': False, 'frameDuration': 75 if 'Blink' in base else 260}
+        elif 'Walk' in base:
             a['frameDuration'] = walk[0] if base.endswith('L') else walk[1]
         elif 'Talk' in base:
             a['frameDuration'] = talk
@@ -143,16 +145,53 @@ def write(cid, tags, extra):
 
 # ─── Persones ───────────────────────────────────────────────────────────────
 
-def person_tags(spec_of):
-    """Idle (1), Walk (6) i Talk (2) en L, D i U. `spec_of()` torna l'especificació (es crida dins la mida)."""
+# La respiració (Idle de quatre fotogrames): no es mou cap píxel de la silueta; només la clariana del pit puja i baixa
+# (+5 %, +10 %, +5 %). A 1×, moure el cos 1 px amunt o avall era massa: semblava que arronsessin les espatlles o que
+# fessin reverències. Files de disseny (figura de 49×87): el pit, sota el coll.
+RESPIRA_DE, RESPIRA_FINS = 30, 41
+RESPIRA_X = (13, 36)
+RESPIRA = (0.0, 0.05, 0.10, 0.05)
+IDLE_MS = 650                                   # cada fotograma: un cicle de 2,6 s (en repòs, sense pressa)
+
+
+def respira(img, k):
+    """`img` (la persona sola, 49×87 de disseny a `sc` px per px) amb el pit un `k` més clar, més a dalt que a baix."""
+    if not k:
+        return img
+    sc = img.width / 49
+    y0, y1 = round(RESPIRA_DE * sc), round(RESPIRA_FINS * sc)
+    out = img.copy()
+    P_ = out.load()
+    for y in range(y0, y1):
+        f = 1 + k * (1 - (y - y0) / (y1 - y0))
+        for x in range(round(RESPIRA_X[0] * sc), round(RESPIRA_X[1] * sc)):
+            r, g, b, a = P_[x, y]
+            if a:
+                P_[x, y] = (min(255, int(r * f)), min(255, int(g * f)), min(255, int(b * f)), a)
+    return out
+
+
+def person_tags(spec_of, dirs=DIRS):
+    """Idle (4: respira), Walk (6) i Talk (2) en L, D i U (i DL i UL, el 3/4, si `dirs` les porta). `spec_of()` torna
+    l'especificació (es crida dins la mida)."""
+    dirs = [dirs[i:i + 2] if dirs[i:i + 2] in ('DL', 'UL') else dirs[i] for i in range(len(dirs))] if isinstance(dirs, str) else dirs
+
     def make():
         out = []
-        for f in DIRS:
-            out.append((f'Idle{f}', [lambda f=f: person(spec_of(), f)]))
-        for f in DIRS:
+        for f in dirs:
+            out.append((f'Idle{f}', [lambda f=f, k=k: respira(person(spec_of(), f), k) for k in RESPIRA]))
+        for f in dirs:
             out.append((f'Walk{f}', [lambda f=f, k=k: person(spec_of(), f, walk=k) for k in range(6)]))
-        for f in DIRS:
+        for f in dirs:
             out.append((f'Talk{f}', [lambda f=f: person(spec_of(), f), lambda f=f: person(spec_of(), f, talk=True)]))
+        # micro-accions de quan és quiet (idleActions del motor): parpellejar i mirar al voltant (on es veu la cara)
+        for f in dirs:
+            if f in ('D', 'L', 'DL'):
+                out.append((f'Blink{f}', [lambda f=f: person({**spec_of(), 'closed': True}, f)] * 2))
+        for f in dirs:
+            if f in ('D', 'DL'):
+                costat = [lambda f=f, m=m: person({**spec_of(), 'mira': m}, f) for m in (-1, -1, -1, 0, 1, 1, 1, 0)]
+                out.append((f'Look{f}', costat))
         return out
     return make
 
@@ -171,17 +210,20 @@ def person_extra(walk_speed, verb, anims, seu=False):
         'talkPoint': {'x': fx, 'y': -2},
         'feet': {'x': fx, 'y': fy}, 'collider': {'points': [m.pt(x, y) for x, y in poly]},
         'animations': anims, 'defaultVerb': verb,
+        # quan és quiet, de tant en tant parpelleja i, si fa estona, mira al voltant (el motor salta la que no hi és)
+        'idleActions': [{'animation': 'Blink', 'every': [3, 8]}, {'animation': 'Look', 'every': [9, 18], 'after': 6}],
     }
 
 
-def persona(cid, robes, walk_speed, verb, seu=None, walk=(90, 90)):
-    """`robes`: {prefix: spec}. `seu`: una funció (talk) → la figura asseguda (etiquetes Seu i LlunySeu)."""
+def persona(cid, robes, walk_speed, verb, seu=None, walk=(90, 90), dirs=('L', 'D', 'U')):
+    """`robes`: {prefix: spec}. `seu`: una funció (talk) → la figura asseguda (etiquetes Seu i LlunySeu). `dirs`: les
+    direccions del full (amb 'DL' i 'UL', el 3/4; R, DR i UR són el mirall)."""
     tags = []
     for o, spec in robes.items():
-        tags += tags_both(PERSONA, person_tags(lambda spec=spec: spec), o)
+        tags += tags_both(PERSONA, person_tags(lambda spec=spec: spec, list(dirs)), o)
     if seu:
         tags += tags_both(PERSONA, lambda: [('Seu', [seu, seu, seu, lambda: seu(True)])])
-    anims = durations(tags, walk=walk, extra={'Seu': 500})
+    anims = durations(tags, walk=walk, idle=IDLE_MS, extra={'Seu': 500})
     return write(cid, tags, person_extra(walk_speed, verb, anims, seu=bool(seu)))
 
 
@@ -251,8 +293,8 @@ def robot():
 def repartiment():
     """{id: funció que escriu el full}."""
     out = {
-        'iri': lambda: persona('iri', P.IRI_ROBA, 132, 'look', walk=(90, 100)),
-        'vet': lambda: persona('vet', {'': P.VET}, 132, 'look', walk=(90, 100)),
+        'iri': lambda: persona('iri', P.IRI_ROBA, 132, 'look', walk=(90, 100), dirs=('L', 'D', 'U', 'DL', 'UL')),
+        'vet': lambda: persona('vet', {'': P.VET}, 132, 'look', walk=(90, 100), dirs=('L', 'D', 'U', 'DL', 'UL')),
         'diu': gat,
     }
     for cid in P.NPCS:

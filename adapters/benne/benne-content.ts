@@ -55,7 +55,7 @@ export interface BenneContentReport {
 }
 
 /** Camps del .character.json que venen del sprite (mides, peus, animacions). */
-const SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'animations', 'clickable', 'display', 'artScale'];
+const SPRITE_FIELDS = ['walkSpeed', 'walkToPoint', 'talkPoint', 'feet', 'collider', 'animations', 'clickable', 'display', 'artScale', 'idleActions'];
 
 /**
  * Sprite provisional d'un personatge: el seu propi a placeholder-art/<id> (draw_characters.py),

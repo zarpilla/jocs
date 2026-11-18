@@ -49,13 +49,16 @@
   },
   "animations": {
     "IdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "IdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "IdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "WalkL": {
       "loop": true,
@@ -81,14 +84,29 @@
       "loop": true,
       "frameDuration": 140
     },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
     "LlunyIdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "LlunyIdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "LlunyIdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "LlunyWalkL": {
       "loop": true,
@@ -114,14 +132,29 @@
       "loop": true,
       "frameDuration": 140
     },
+    "LlunyBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
     "BrutIdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "BrutIdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "BrutIdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "BrutWalkL": {
       "loop": true,
@@ -147,14 +180,29 @@
       "loop": true,
       "frameDuration": 140
     },
+    "BrutBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BrutBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BrutLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
     "LlunyBrutIdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "LlunyBrutIdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "LlunyBrutIdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "LlunyBrutWalkL": {
       "loop": true,
@@ -179,8 +227,36 @@
     "LlunyBrutTalkU": {
       "loop": true,
       "frameDuration": 140
+    },
+    "LlunyBrutBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyBrutBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyBrutLookD": {
+      "loop": false,
+      "frameDuration": 260
     }
   },
   "defaultVerb": "talkTo",
-  "artScale": 2
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ]
 }

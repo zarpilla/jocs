@@ -334,7 +334,10 @@ def _eye(fg, x0, ey, inner_right, spec, closed):
         fg.rpx(x0 + i, ey - 1, eye, 0)
     dark = mix(iris, eye, 0.55)
     row = [C.EYE_W, iris, dark]
-    for i, c in enumerate(row if inner_right else row[::-1]):
+    row = row if inner_right else row[::-1]
+    if spec.get('mira'):                                 # mira a un costat: l'iris i la nineta, a aquella banda
+        row = [iris, dark, C.EYE_W] if spec['mira'] < 0 else [C.EYE_W, dark, iris]
+    for i, c in enumerate(row):
         fg.rpx(x0 + i, ey, c, 0)
     for i in range(3):                                   # la parpella de sota, una mica d'ombra
         fg.rshade(x0 + i, ey + 1, -0.45, S)
