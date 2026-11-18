@@ -56,6 +56,11 @@ def art_scale(name):
     return getattr(load(name), 'ART_SCALE', 1)
 
 
+def room_w(name):
+    """Amplada de la sala en píxels de sala: `ROOM_W` si la sala és més ampla que la pantalla (la càmera la recorre)."""
+    return getattr(load(name), 'ROOM_W', W)
+
+
 def canvas_class(name):
     if art_scale(name) == 1:
         return Canvas
@@ -69,31 +74,42 @@ def render(name, prop_ids=None):
     mod = load(name)
     light = getattr(mod, 'LIGHT', None)
     Canvas = canvas_class(name)
-    cv = Canvas(light=light)
+    rw = room_w(name)
+    cv = Canvas(rw, light=light)
     mod.bg(cv)
     props = {}
     for pid, fn in getattr(mod, 'PROPS', {}).items():
         if prop_ids is not None and pid not in prop_ids:
             continue
-        pc = Canvas(light=light, transparent=True)
+        pc = Canvas(rw, light=light, transparent=True)
         fn(pc)
         props[pid] = pc.img
     return cv.img, props
 
 
+def fronts(name, bg):
+    """→ [(retall RGBA del fons, FRONT, id del prop)]: les capes del davant de la sala (FRONT pot ser una sola o una
+    llista, cadascuna amb el seu `baseline`: p. ex. el pou, la bomba i l'arbre, per passar-hi per darrere)."""
+    fs = getattr(load(name), 'FRONT', None)
+    if not fs:
+        return []
+    out = []
+    for n, f in enumerate(fs if isinstance(fs, (list, tuple)) else [fs]):
+        img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
+        src, dst = bg.load(), img.load()
+        s = bg.size[1] // H                       # la màscara és en píxels de sala
+        for y in range(bg.size[1]):
+            for x in range(bg.size[0]):
+                if f['mask'](x // s, y // s):
+                    dst[x, y] = src[x, y]
+        out.append((img, f, f.get('id', 'davant' if n == 0 else f'davant_{n + 1}')))
+    return out
+
+
 def front(name, bg):
-    """→ (retall RGBA del fons, FRONT) o None si la sala no en té."""
-    f = getattr(load(name), 'FRONT', None)
-    if not f:
-        return None
-    img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
-    src, dst = bg.load(), img.load()
-    s = bg.size[0] // W                       # la màscara és en píxels de sala
-    for y in range(bg.size[1]):
-        for x in range(bg.size[0]):
-            if f['mask'](x // s, y // s):
-                dst[x, y] = src[x, y]
-    return img, f
+    """→ (retall RGBA del fons, FRONT) de la primera capa del davant, o None si la sala no en té."""
+    fs = fronts(name, bg)
+    return fs[0][:2] if fs else None
 
 
 def _render_anims(name):
@@ -204,6 +220,8 @@ def main():
     # Depuració: zones, terra, personatges
     sys.path.insert(0, str(HERE.parent))
     from room_designs import DESIGNS
+    # (a 640, la GEOMETRIA de les sales ja és en píxels de sala: no s'ha de passar del disseny de 480)
+    R_, Pt_ = ((lambda *r: r), (lambda x, y: (x, y))) if RESOLUCIO == 640 else (R, Pt)
     dbg = full.copy()
     design = DESIGNS.get(name)
     if design:
@@ -212,7 +230,7 @@ def main():
         for behind in (True, False):   # primer els de darrere la capa del davant, després la capa, després la resta
             for cid, (x, y) in design['spawns'].items():
                 spr, feet = _sprite(cid)
-                fx, fy = Pt(x, y)
+                fx, fy = Pt_(x, y)
                 if spr and (base is not None and fy <= base) == behind:
                     dbg.alpha_composite(spr, (fx - feet['x'], fy - feet['y']))
             if behind and fr:
@@ -220,12 +238,12 @@ def main():
     big = nearest(dbg, (W * 3, H * 3))
     d = ImageDraw.Draw(big)
     if design:
-        d.polygon([(Pt(x, y)[0] * 3 + 1, Pt(x, y)[1] * 3 + 1) for x, y in design['walkable']], outline=(0, 255, 0))
+        d.polygon([(Pt_(x, y)[0] * 3 + 1, Pt_(x, y)[1] * 3 + 1) for x, y in design['walkable']], outline=(0, 255, 0))
         for tid, t in design['things'].items():
-            x0, y0, x1, y1 = R(*t['rect'])
+            x0, y0, x1, y1 = R_(*t['rect'])
             d.rectangle([x0 * 3, y0 * 3, x1 * 3 + 2, y1 * 3 + 2], outline=(255, 0, 255))
             d.text((x0 * 3 + 2, y0 * 3 + 2), tid, fill=(255, 255, 0))
-            wx, wy = Pt(*t['walk'])
+            wx, wy = Pt_(*t['walk'])
             d.ellipse([wx * 3 - 3, wy * 3 - 3, wx * 3 + 3, wy * 3 + 3], outline=(0, 255, 255))
     big.crop((0, 0, W * 3, VISIBLE_H * 3)).save(out / f'{name}_debug_x3.png')
     print(f'✔ {name}: {out}/{name}_x3.png (+ props, debug)')
