@@ -6,6 +6,9 @@
 
 ## Normes d'art
 
+- **Profunditat:** les sales noves segueixen [la guia d'art de profunditat](../../../docs/guia-art-profunditat.md)
+  (cantonada i no paret de cara, primer pla, mobles girats, ombres en diagonal). Exemple: `cantimplora_pont` (en 3D, amb
+  `adapters/benne/tools/hd640/tres_d.py`).
 - **Resolució 640×360.** La sala ocupa 640×260 (y de 0 a 259); a sota hi ha la barra de verbs (y 260–359). Res
   important per sota de y≈258.
 - **Dues mides de càmera** (guió, «Art: dues mides de càmera»):
