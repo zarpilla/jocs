@@ -61,7 +61,9 @@ const benneCharacterPerspectiveShaderAddition = {
     // scaled-down sprites replace with perspective UVs from linear outTexCoord.
     texCoord: [
       'if (outPerspMag < (1.0 - ' + String(PERSP_EPS) + ')) {',
-      '    texCoord = bennePerspectiveTexCoord(outTexCoord, outPerspMag, uMainResolution[0]);',
+      // getTexRes(): the size of *this* sprite's texture. With multi-texturing a batch holds several sheets and
+      // uMainResolution[0] is the first one's (another character's): snapping on its grid pixelated the sprite.
+      '    texCoord = bennePerspectiveTexCoord(outTexCoord, outPerspMag, getTexRes());',
       '}',
     ].join('\n'),
   },
