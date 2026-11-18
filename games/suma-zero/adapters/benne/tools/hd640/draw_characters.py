@@ -17,8 +17,9 @@ els estampats («</>», l'alien, el grup, els pegats, la calavera), els quadres 
 zzz, l'auricular), la pantalla i el llum de la NETA-3. En Ballester (gros) i el nen (petit) es dibuixen a la seva
 escala, no s'amplien ni s'encongeixen.
 
-Els fulls (main) es dibuixen a ART_SCALE = 2 amb FigK2: el que té volum, a la resolució real; els detalls píxel a
-píxel, en blocs de 2×2 (la cara és la mateixa). El .character.json porta `artScale: 2` i els punts continuen a 640.
+Els fulls (main) es dibuixen a ART_SCALE = 1, com les sales en 3D (vegeu docs/guia-art-profunditat.md). Amb
+ART_SCALE = 2 es dibuixarien amb FigK2: el que té volum, a la resolució real; els detalls píxel a píxel, en blocs de
+2×2 (la cara és la mateixa), i el .character.json portaria `artScale: 2`.
 
 Ús (des de tools/): python3 hd640/draw_characters.py [carpeta]   (per defecte, hd640/characters/)
 Les sales de 640 que dibuixen gent fan servir `person` (hd.characters.person a ×4/3).
@@ -38,7 +39,7 @@ import hd.characters as C  # noqa: E402
 from hd.pix import mix  # noqa: E402
 
 K = 4 / 3
-ART_SCALE = 2     # els fulls dels personatges (main): dibuixats a 2×, el motor els mostra a la meitat (artScale)
+ART_SCALE = 1     # els fulls dels personatges (main): a 1×, com les sales en 3D (fins al 18-11-2026, a 2× amb FigK2)
 S = 1             # l'escala d'aquest procés: 1, o ART_SCALE en fer els fulls (vegeu install)
 
 
@@ -306,8 +307,16 @@ class FigK2(FigK):
             super().rshade(x, y, d, only)
 
 
-def _poke(img, x, y, col):
-    """Un píxel de 640 en una figura ja dibuixada (a S×: un bloc S×S)."""
+def _poke(img, x, y, col, q=None):
+    """Un píxel de 640 en una figura ja dibuixada (a S×: un bloc S×S). `q` ('DL'): la figura és en 3/4, i el píxel va
+    on l'ha portat el gir (hd.characters._gira: estreta i desplaçada cap on mira)."""
+    if q:
+        sc = img.width / S / 49
+        cx = 24.5 * sc + (sc - 1) / 2
+        k, dx = C._q_dx((y - (sc - 1) / 2) / sc, q)
+        x = round(cx + (x - cx) * k + dx * sc)
+        if not (0 <= x * S < img.width and img.getpixel((x * S, y * S))[3]):
+            return
     P_ = img.load()
     for j in range(S):
         for i in range(S):
@@ -351,8 +360,12 @@ def _eye(fg, x0, ey, inner_right, spec, closed):
         fg.rpx(x0 + i, ey - 1, eye, 0)
     dark = mix(iris, eye, 0.6)
     rows = ([C.EYE_W, iris, dark], [C.EYE_W, iris, iris])            # dues files: blanc, iris i pupil·la
+    rows = [row if inner_right else row[::-1] for row in rows]
+    if spec.get('mira'):                                 # mira a un costat: l'iris i la nineta, a aquella banda
+        rows = ([iris, dark, C.EYE_W], [iris, iris, C.EYE_W]) if spec['mira'] < 0 else \
+            ([C.EYE_W, dark, iris], [C.EYE_W, iris, iris])
     for j, row in enumerate(rows):
-        for i, c in enumerate(row if inner_right else row[::-1]):
+        for i, c in enumerate(row):
             fg.rpx(x0 + i, ey + j, c, 0)
     S = spec['skin']
     for i in range(3):                                   # la parpella de sota, una mica d'ombra
@@ -852,7 +865,7 @@ PATCH_B = ('..X..', '..X..', 'XXXXX', '..X..', '..X..')
 STAMPS = {'SKULL': SKULL, 'ALIEN': ALIEN, 'BAND': BAND, 'PATCH_A': PATCH_A, 'PATCH_B': PATCH_B}
 
 
-def _stamp_at(img, pat, pat480, x0, y0, col):
+def _stamp_at(img, pat, pat480, x0, y0, col, q=None):
     """Posa l'estampat de 640 on hi havia el de 480 (amb el mateix centre)."""
     w, h = len(pat480[0]), len(pat480)
     X0 = round(f(x0 + (w - 1) / 2) - (len(pat[0]) - 1) / 2)
@@ -860,7 +873,7 @@ def _stamp_at(img, pat, pat480, x0, y0, col):
     for dy, row in enumerate(pat):
         for dx, ch in enumerate(row):
             if ch == 'X':
-                _poke(img, X0 + dx, Y0 + dy, col)
+                _poke(img, X0 + dx, Y0 + dy, col, q)
 
 
 # ─── En Diu, a la mida nova ──────────────────────────────────────────────────
@@ -1157,11 +1170,11 @@ def install(art_scale=1):
         hooks.pop('over', None)
         spec['hooks'] = hooks
         img = C.person(spec, facing, walk=walk, talk=talk)
-        if facing == 'D':
+        if facing in ('D', 'DL'):
             b = C.Pose(facing, walk, talk, stoop=spec.get('stoop', 0)).bob
             x0, y0 = round(f(24) - 7), round(f(33 + b))
             for dx, dy in LOGO:
-                _poke(img, x0 + dx, y0 + dy, (226, 236, 228, 255))
+                _poke(img, x0 + dx, y0 + dy, (226, 236, 228, 255), 'DL' if facing == 'DL' else None)
         return img
 
     def vet(facing, walk=None, talk=False, roba='', ulleres=False):
@@ -1174,11 +1187,11 @@ def install(art_scale=1):
             hk['hair'] = lambda fg, p, s: (hair(fg, p, s), P.vet_glasses(fg, p, s))
             spec['hooks'] = hk
         img = C.person(spec, facing, walk=walk, talk=talk)
-        if facing == 'D':
+        if facing in ('D', 'DL'):
             b = C.Pose(facing, walk, talk, stoop=spec.get('stoop', 0)).bob
             for pattern, x, y, col in prints:
                 name = next(n for n in STAMPS if getattr(P, n) is pattern)
-                _stamp_at(img, STAMPS[name], pattern, x, y + b, col)
+                _stamp_at(img, STAMPS[name], pattern, x, y + b, col, 'DL' if facing == 'DL' else None)
         return img
 
     def npc(cid, facing, talk=False, walk=None):
