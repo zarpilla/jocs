@@ -18,19 +18,19 @@
         "active": true,
         "points": [
           {
-            "x": 10,
-            "y": 228
+            "x": 0,
+            "y": 183
           },
           {
-            "x": 630,
-            "y": 228
+            "x": 639,
+            "y": 183
           },
           {
-            "x": 630,
+            "x": 639,
             "y": 257
           },
           {
-            "x": 10,
+            "x": 0,
             "y": 257
           }
         ],
@@ -40,7 +40,34 @@
   },
   "hotspots": [],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.648,
+      "scaleBottom": 1.166,
+      "points": [
+        {
+          "x": 0,
+          "y": 181
+        },
+        {
+          "x": 639,
+          "y": 181
+        },
+        {
+          "x": 639,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -123,15 +150,27 @@
         "davant": {}
       },
       "zIndex": 20,
-      "baseline": 222
+      "baseline": 232
+    },
+    {
+      "id": "davant_camera",
+      "tag": "davant_camera",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_camera": {}
+      },
+      "zIndex": 21,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "verne-1",
       "definition": "verne/verne.character.json",
-      "x": 276,
-      "y": 214,
+      "x": 336,
+      "y": 208,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -140,8 +179,8 @@
     {
       "instanceId": "dividend-1",
       "definition": "dividend/dividend.character.json",
-      "x": 396,
-      "y": 240,
+      "x": 442,
+      "y": 238,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -159,5 +198,18 @@
       "zIndex": 9
     }
   ],
-  "artScale": 2
+  "characterShadow": {
+    "enabled": true,
+    "color": "#3a3040",
+    "alpha": 0.35,
+    "squash": 0.35,
+    "core": 0.6,
+    "light": {
+      "x": 162,
+      "y": 233,
+      "stretch": 0.7,
+      "reach": 160
+    }
+  },
+  "floorSquash": 0.35
 }

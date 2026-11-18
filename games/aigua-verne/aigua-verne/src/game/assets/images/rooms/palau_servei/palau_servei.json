@@ -4,26 +4,26 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 1.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -37,14 +37,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 2.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -58,14 +58,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 3.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -79,14 +79,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 4.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -100,14 +100,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 5.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -121,56 +121,56 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 6.aseprite": {
       "frame": {
-        "x": 1290,
+        "x": 1415,
         "y": 0,
-        "w": 6,
-        "h": 6
+        "w": 2,
+        "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1136,
-        "y": 160,
-        "w": 6,
-        "h": 6
+        "x": 135,
+        "y": 51,
+        "w": 2,
+        "h": 2
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 7.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 1411,
         "y": 0,
-        "w": 10,
-        "h": 10
+        "w": 4,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1134,
-        "y": 158,
-        "w": 10,
-        "h": 10
+        "x": 134,
+        "y": 50,
+        "w": 4,
+        "h": 6
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 8.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -184,14 +184,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 9.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -205,14 +205,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "palau_servei 10.aseprite": {
       "frame": {
-        "x": 1296,
+        "x": 1417,
         "y": 0,
         "w": 1,
         "h": 1
@@ -226,8 +226,71 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_servei 11.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 0,
+        "w": 33,
+        "h": 139
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 578,
+        "y": 46,
+        "w": 33,
+        "h": 139
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_servei 12.aseprite": {
+      "frame": {
+        "x": 1313,
+        "y": 0,
+        "w": 98,
+        "h": 109
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 356,
+        "y": 101,
+        "w": 98,
+        "h": 109
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "palau_servei 13.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 640,
+        "h": 324
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 324
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -238,8 +301,8 @@
     "image": "palau_servei.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1297,
-      "h": 720
+      "w": 1418,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [
@@ -254,6 +317,27 @@
         "name": "estrelles",
         "from": 1,
         "to": 10,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_neteja",
+        "from": 11,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_carro",
+        "from": 12,
+        "to": 12,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 13,
+        "to": 13,
         "direction": "forward",
         "color": "#000000ff"
       }
