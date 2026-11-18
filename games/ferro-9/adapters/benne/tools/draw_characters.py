@@ -86,8 +86,8 @@ class Canvas:
 # ─── Persones ───────────────────────────────────────────────────────────────
 
 def person(p, facing, walk=None, talk=False, thin=False):
-    """Una persona de 49×87 (36×64 de disseny), peus a (25, 83)."""
-    return hd_person(p, facing, walk=walk, talk=talk)
+    """Una persona de 49×87 (36×64 de disseny), peus a (25, 83). (Amb `_EXTRA`: els ulls tancats o la mirada.)"""
+    return hd_person({**p, **_EXTRA} if _EXTRA else p, facing, walk=walk, talk=talk)
 
 
 # ─── Fulls i definicions ────────────────────────────────────────────────────
@@ -101,6 +101,104 @@ def scaled_extra(extra):
         out[key] = {'x': x, 'y': y}
     out['collider'] = {'points': [dict(zip('xy', pt(p['x'], p['y']))) for p in extra['collider']['points']]}
     return out
+
+
+# ─── Quan són quiets: respiració i micro-accions (com a Aigua Verne) ────────
+
+# La respiració (Idle de quatre fotogrames): no es mou cap píxel de la silueta; només la clariana del pit puja i baixa
+# (+5 %, +10 %, +5 %). A 1×, moure el cos 1 px amunt o avall semblava que arronsessin les espatlles. Files de disseny
+# (figura de 49×87): el pit, sota el coll.
+RESPIRA_DE, RESPIRA_FINS = 30, 41
+RESPIRA_X = (13, 36)
+RESPIRA = (0.0, 0.05, 0.10, 0.05)
+IDLE_MS = 650                                   # cada fotograma: un cicle de 2,6 s
+# Les direccions dels fulls: L, D, U i el 3/4 (DL de cara, UL d'esquena); R, DR i UR són el mirall.
+DIRS = ('L', 'D', 'U', 'DL', 'UL')
+# Quan és quiet, de tant en tant parpelleja i, si fa estona, mira al voltant (el motor salta la que no hi és).
+IDLE_ACTIONS = [{'animation': 'Blink', 'every': [3, 8]}, {'animation': 'Look', 'every': [9, 18], 'after': 6}]
+
+_EXTRA = {}                                     # el que s'afegeix a l'especificació (ulls tancats, mirada)
+
+
+def _amb(extra, fn):
+    """Crida `fn()` amb `extra` afegit a l'especificació de qualsevol persona que es dibuixi."""
+    _EXTRA.clear()
+    _EXTRA.update(extra)
+    try:
+        return fn()
+    finally:
+        _EXTRA.clear()
+
+
+def _person_amb_extra():
+    """hd.characters.person, amb `_EXTRA` dins l'especificació (els dibuixos de hd640 la criden pel mòdul)."""
+    import hd.characters as C
+    if getattr(C.person, '_amb_extra', False):
+        return
+    orig = C.person
+
+    def person(spec, *a, **kw):
+        return orig({**spec, **_EXTRA} if _EXTRA else spec, *a, **kw)
+    person._amb_extra = True
+    C.person = person
+
+
+def respira(img, k):
+    """`img` (la persona sola, 49×87 de disseny a `sc` px per px) amb el pit un `k` més clar, més a dalt que a baix."""
+    if not k:
+        return img
+    sc = img.width / 49
+    y0, y1 = round(RESPIRA_DE * sc), round(RESPIRA_FINS * sc)
+    out = img.copy()
+    P_ = out.load()
+    for y in range(y0, y1):
+        f = 1 + k * (1 - (y - y0) / (y1 - y0))
+        for x in range(round(RESPIRA_X[0] * sc), round(RESPIRA_X[1] * sc)):
+            r, g, b, a = P_[x, y]
+            if a:
+                P_[x, y] = (min(255, int(r * f)), min(255, int(g * f)), min(255, int(b * f)), a)
+    return out
+
+
+def quiet_tags(d, pre='', dirs=DIRS, pit=True, walk=True):
+    """Idle (4: respira), Walk (6), Talk (2), Blink i Look per a `d(f, walk=None, talk=False)`. `pit`: si la
+    clariana del pit és on toca (no ho és en un fotograma més gran, com el d'en Ballester)."""
+    _person_amb_extra()
+    out = []
+    for f in dirs:
+        base = d(f)
+        out.append((f'{pre}Idle{f}', [respira(base, k) if pit else base for k in RESPIRA]))
+    if walk:
+        for f in dirs:
+            out.append((f'{pre}Walk{f}', [d(f, walk=k) for k in range(6)]))
+    for f in dirs:
+        out.append((f'{pre}Talk{f}', [d(f, talk=False), d(f, talk=True)]))
+    for f in dirs:
+        if f in ('D', 'L', 'DL'):                          # parpellejar: on es veu la cara
+            out.append((f'{pre}Blink{f}', [_amb({'closed': True}, lambda f=f: d(f))] * 2))
+    for f in dirs:
+        if f in ('D', 'DL'):                               # mirar al voltant: els ulls i la cara, a un costat i a l'altre
+            out.append((f'{pre}Look{f}', [_amb({'mira': m}, lambda f=f: d(f)) for m in (-1, -1, -1, 0, 1, 1, 1, 0)]))
+    return out
+
+
+def durations(tags, walk=(90, 100), talk=140, extra=None):
+    anims = {}
+    for t, _ in tags:
+        a = {'loop': True}
+        if 'Blink' in t or 'Look' in t:                    # micro-accions: un sol cop i torna a l'Idle
+            a = {'loop': False, 'frameDuration': 75 if 'Blink' in t else 260}
+        elif 'Walk' in t:
+            a['frameDuration'] = walk[0] if t.endswith('L') else walk[1]
+        elif 'Talk' in t:
+            a['frameDuration'] = talk
+        elif 'Idle' in t:
+            a['frameDuration'] = IDLE_MS
+        for k, v in (extra or {}).items():
+            if t == k:
+                a['frameDuration'] = v
+        anims[t] = a
+    return anims
 
 
 def write(cid, tags, size, extra):
@@ -137,40 +235,23 @@ def write(cid, tags, size, extra):
 
 
 def walker(cid, p):
-    tags = []
-    for f in 'LDU':
-        tags.append((f'Idle{f}', [person(p, f)]))
-    for f in 'LDU':
-        tags.append((f'Walk{f}', [person(p, f, walk=k) for k in range(6)]))
-    for f in 'LDU':
-        tags.append((f'Talk{f}', [person(p, f, talk=False), person(p, f, talk=True)]))
-    anims = {t: {'loop': True} for t, _ in tags}
-    for f in 'LDU':
-        anims[f'Walk{f}']['frameDuration'] = 90 if f == 'L' else 80
-        anims[f'Talk{f}']['frameDuration'] = 140
+    tags = quiet_tags(lambda f, walk=None, talk=False: person(p, f, walk=walk, talk=talk))
     write(cid, tags, (36, 64), {
         'walkSpeed': 84, 'walkToPoint': {'x': 40, 'y': 61}, 'talkPoint': {'x': 18, 'y': -2}, 'feet': {'x': 18, 'y': 61},
         'collider': {'points': [{'x': 11, 'y': 2}, {'x': 25, 'y': 2}, {'x': 27, 'y': 40}, {'x': 24, 'y': 63}, {'x': 11, 'y': 63}, {'x': 8, 'y': 40}]},
-        'animations': anims, 'defaultVerb': 'look',
+        'animations': durations(tags, walk=(90, 80)), 'defaultVerb': 'look', 'idleActions': IDLE_ACTIONS,
     })
 
 
 def standing(cid, p, thin=False, walks=False):
-    """Un secundari de peu: Idle i Talk en D, L i U; amb `walks`, també Walk (qui camina en un `stage`: sense
-    Walk, Benne el faria lliscar)."""
-    tags = []
-    for f in 'DLU':
-        tags.append((f'Idle{f}', [person(p, f, thin=thin)]))
-        tags.append((f'Talk{f}', [person(p, f, thin=thin), person(p, f, talk=True, thin=thin)]))
-        if walks:
-            tags.append((f'Walk{f}', [person(p, f, walk=k, thin=thin) for k in range(6)]))
-    anims = {t: {'loop': True, **({'frameDuration': 140} if t.startswith('Talk') else
-                                  {'frameDuration': 90 if t == 'WalkL' else 80} if t.startswith('Walk') else {})}
-             for t, _ in tags}
+    """Un secundari de peu: Idle i Talk en D, L i U; amb `walks`, també Walk i el 3/4 (qui camina en un `stage`:
+    sense Walk, Benne el faria lliscar)."""
+    tags = quiet_tags(lambda f, walk=None, talk=False: person(p, f, walk=walk, talk=talk, thin=thin),
+                      dirs=DIRS if walks else ('D', 'L', 'U'), walk=walks)
     write(cid, tags, (36, 64), {
         'walkSpeed': 60, 'walkToPoint': {'x': 44, 'y': 61}, 'talkPoint': {'x': 18, 'y': -2}, 'feet': {'x': 18, 'y': 61},
         'collider': {'points': [{'x': 11, 'y': 2}, {'x': 25, 'y': 2}, {'x': 27, 'y': 40}, {'x': 24, 'y': 63}, {'x': 11, 'y': 63}, {'x': 8, 'y': 40}]},
-        'animations': anims, 'defaultVerb': 'talkTo',
+        'animations': durations(tags, walk=(90, 80)), 'defaultVerb': 'talkTo', 'idleActions': IDLE_ACTIONS,
     })
 
 

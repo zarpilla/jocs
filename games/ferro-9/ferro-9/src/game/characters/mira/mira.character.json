@@ -1,7 +1,7 @@
 {
   "id": "mira",
   "name": "Mira",
-  "description": "La Mira d'Orís, ajudant del torn de nit. La meva amiga.",
+  "description": "La Mira d'Or\u00eds, ajudant del torn de nit. La meva amiga.",
   "clickable": true,
   "display": {
     "aseprite": true
@@ -49,27 +49,59 @@
   },
   "animations": {
     "IdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 650
     },
     "TalkD": {
       "loop": true,
       "frameDuration": 140
     },
-    "IdleL": {
-      "loop": true
-    },
     "TalkL": {
       "loop": true,
       "frameDuration": 140
     },
-    "IdleU": {
-      "loop": true
-    },
     "TalkU": {
       "loop": true,
       "frameDuration": 140
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LookD": {
+      "loop": false,
+      "frameDuration": 260
     }
   },
   "defaultVerb": "talkTo",
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ],
   "speechColor": "#c8c8c8"
 }

@@ -269,8 +269,12 @@ def _eye(fg, x0, ey, inner_right, spec, closed):
         fg.rpx(x0 + i, ey - 1, eye, 0)
     dark = mix(iris, eye, 0.6)
     rows = ([C.EYE_W, iris, dark], [C.EYE_W, iris, iris])            # dues files: blanc, iris i pupil·la
+    rows = [row if inner_right else row[::-1] for row in rows]
+    if spec.get('mira'):                                 # mira a un costat: l'iris i la nineta, a aquella banda
+        rows = ([iris, dark, C.EYE_W], [iris, iris, C.EYE_W]) if spec['mira'] < 0 else \
+            ([C.EYE_W, dark, iris], [C.EYE_W, iris, iris])
     for j, row in enumerate(rows):
-        for i, c in enumerate(row if inner_right else row[::-1]):
+        for i, c in enumerate(row):
             fg.rpx(x0 + i, ey + j, c, 0)
     S = spec['skin']
     for i in range(3):                                   # la parpella de sota, una mica d'ombra
