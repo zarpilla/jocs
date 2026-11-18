@@ -18,20 +18,36 @@
         "active": true,
         "points": [
           {
-            "x": 8,
-            "y": 228
+            "x": 174,
+            "y": 166
           },
           {
-            "x": 632,
-            "y": 228
+            "x": 428,
+            "y": 179
           },
           {
-            "x": 636,
-            "y": 257
+            "x": 436,
+            "y": 204
           },
           {
-            "x": 4,
-            "y": 257
+            "x": 618,
+            "y": 215
+          },
+          {
+            "x": 652,
+            "y": 243
+          },
+          {
+            "x": 577,
+            "y": 238
+          },
+          {
+            "x": 587,
+            "y": 250
+          },
+          {
+            "x": 107,
+            "y": 216
           }
         ],
         "holes": []
@@ -46,29 +62,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 6,
-          "y": 54
+          "x": 87,
+          "y": 55
         },
         {
-          "x": 84,
-          "y": 54
+          "x": 144,
+          "y": 55
         },
         {
-          "x": 84,
-          "y": 200
+          "x": 144,
+          "y": 162
         },
         {
-          "x": 6,
-          "y": 200
+          "x": 87,
+          "y": 162
         }
       ],
       "walkToPoint": {
-        "x": 45,
-        "y": 232
+        "x": 162,
+        "y": 180
       },
       "lookAtPoint": {
-        "x": 45,
-        "y": 200
+        "x": 115,
+        "y": 162
       },
       "defaultVerb": "open"
     },
@@ -79,29 +95,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 498,
-          "y": 156
+          "x": 445,
+          "y": 143
         },
         {
-          "x": 634,
-          "y": 156
+          "x": 592,
+          "y": 143
         },
         {
-          "x": 634,
-          "y": 224
+          "x": 592,
+          "y": 208
         },
         {
-          "x": 498,
-          "y": 224
+          "x": 445,
+          "y": 208
         }
       ],
       "walkToPoint": {
-        "x": 566,
-        "y": 238
+        "x": 529,
+        "y": 214
       },
       "lookAtPoint": {
-        "x": 566,
-        "y": 224
+        "x": 518,
+        "y": 208
       }
     },
     {
@@ -111,29 +127,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 84,
-          "y": 96
+          "x": 138,
+          "y": 81
         },
         {
-          "x": 148,
-          "y": 96
+          "x": 169,
+          "y": 81
         },
         {
-          "x": 148,
-          "y": 158
+          "x": 169,
+          "y": 116
         },
         {
-          "x": 84,
-          "y": 158
+          "x": 138,
+          "y": 116
         }
       ],
       "walkToPoint": {
-        "x": 116,
-        "y": 234
+        "x": 181,
+        "y": 168
       },
       "lookAtPoint": {
-        "x": 116,
-        "y": 158
+        "x": 153,
+        "y": 116
       }
     },
     {
@@ -143,29 +159,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 506,
-          "y": 26
+          "x": 433,
+          "y": 24
         },
         {
-          "x": 630,
-          "y": 26
+          "x": 531,
+          "y": 24
         },
         {
-          "x": 630,
-          "y": 118
+          "x": 531,
+          "y": 98
         },
         {
-          "x": 506,
-          "y": 118
+          "x": 433,
+          "y": 98
         }
       ],
       "walkToPoint": {
-        "x": 556,
-        "y": 236
+        "x": 509,
+        "y": 211
       },
       "lookAtPoint": {
-        "x": 568,
-        "y": 118
+        "x": 482,
+        "y": 98
       }
     },
     {
@@ -175,29 +191,29 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 150,
-          "y": 26
+          "x": 164,
+          "y": 23
         },
         {
-          "x": 490,
-          "y": 26
+          "x": 417,
+          "y": 23
         },
         {
-          "x": 490,
-          "y": 122
+          "x": 417,
+          "y": 98
         },
         {
-          "x": 150,
-          "y": 122
+          "x": 164,
+          "y": 98
         }
       ],
       "walkToPoint": {
-        "x": 320,
-        "y": 234
+        "x": 297,
+        "y": 173
       },
       "lookAtPoint": {
-        "x": 320,
-        "y": 122
+        "x": 290,
+        "y": 98
       }
     },
     {
@@ -207,34 +223,61 @@
       "zIndex": 5,
       "points": [
         {
-          "x": 376,
-          "y": 142
+          "x": 349,
+          "y": 97
         },
         {
-          "x": 432,
-          "y": 142
+          "x": 396,
+          "y": 97
         },
         {
-          "x": 432,
-          "y": 226
+          "x": 396,
+          "y": 174
         },
         {
-          "x": 376,
-          "y": 226
+          "x": 349,
+          "y": 174
         }
       ],
       "walkToPoint": {
-        "x": 438,
-        "y": 236
+        "x": 407,
+        "y": 180
       },
       "lookAtPoint": {
-        "x": 404,
-        "y": 226
+        "x": 372,
+        "y": 174
       }
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.797,
+      "scaleBottom": 1.254,
+      "points": [
+        {
+          "x": 0,
+          "y": 164
+        },
+        {
+          "x": 639,
+          "y": 164
+        },
+        {
+          "x": 639,
+          "y": 252
+        },
+        {
+          "x": 0,
+          "y": 252
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -328,14 +371,26 @@
           "frameDuration": 300
         }
       }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 300,
-      "y": 248,
+      "x": 332,
+      "y": 204,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -344,8 +399,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 172,
-      "y": 250,
+      "x": 243,
+      "y": 188,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -354,8 +409,8 @@
     {
       "instanceId": "capitana-1",
       "definition": "capitana/capitana.character.json",
-      "x": 476,
-      "y": 240,
+      "x": 428,
+      "y": 180,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -395,5 +450,5 @@
       "zIndex": 9
     }
   ],
-  "artScale": 2
+  "floorSquash": 0.45
 }
