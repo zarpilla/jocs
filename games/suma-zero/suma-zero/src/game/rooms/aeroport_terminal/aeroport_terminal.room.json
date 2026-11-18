@@ -18,20 +18,72 @@
         "active": true,
         "points": [
           {
-            "x": 19,
+            "x": 56,
+            "y": 201
+          },
+          {
+            "x": 133,
+            "y": 167
+          },
+          {
+            "x": 155,
+            "y": 172
+          },
+          {
+            "x": 138,
+            "y": 180
+          },
+          {
+            "x": 168,
+            "y": 187
+          },
+          {
+            "x": 244,
+            "y": 146
+          },
+          {
+            "x": 354,
+            "y": 161
+          },
+          {
+            "x": 362,
+            "y": 161
+          },
+          {
+            "x": 454,
+            "y": 175
+          },
+          {
+            "x": 458,
+            "y": 180
+          },
+          {
+            "x": 549,
+            "y": 195
+          },
+          {
+            "x": 585,
+            "y": 206
+          },
+          {
+            "x": 592,
+            "y": 235
+          },
+          {
+            "x": 433,
             "y": 236
           },
           {
-            "x": 621,
-            "y": 236
+            "x": 289,
+            "y": 234
           },
           {
-            "x": 632,
-            "y": 271
+            "x": 132,
+            "y": 233
           },
           {
-            "x": 8,
-            "y": 271
+            "x": 77,
+            "y": 221
           }
         ],
         "holes": []
@@ -46,29 +98,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 40,
-          "y": 139
+          "x": 144,
+          "y": 75
         },
         {
-          "x": 206,
-          "y": 139
+          "x": 242,
+          "y": 75
         },
         {
-          "x": 206,
-          "y": 200
+          "x": 242,
+          "y": 182
         },
         {
-          "x": 40,
-          "y": 200
+          "x": 144,
+          "y": 182
         }
       ],
       "walkToPoint": {
-        "x": 123,
-        "y": 248
+        "x": 225,
+        "y": 164
       },
       "lookAtPoint": {
-        "x": 123,
-        "y": 200
+        "x": 193,
+        "y": 182
       }
     },
     {
@@ -78,34 +130,61 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 227,
-          "y": 35
+          "x": 216,
+          "y": 15
         },
         {
-          "x": 414,
-          "y": 35
+          "x": 341,
+          "y": 15
         },
         {
-          "x": 414,
-          "y": 150
+          "x": 341,
+          "y": 108
         },
         {
-          "x": 227,
-          "y": 150
+          "x": 216,
+          "y": 108
         }
       ],
       "walkToPoint": {
-        "x": 320,
-        "y": 248
+        "x": 275,
+        "y": 154
       },
       "lookAtPoint": {
-        "x": 320,
-        "y": 150
+        "x": 278,
+        "y": 108
       }
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.761,
+      "scaleBottom": 1.222,
+      "points": [
+        {
+          "x": 0,
+          "y": 144
+        },
+        {
+          "x": 639,
+          "y": 144
+        },
+        {
+          "x": 639,
+          "y": 238
+        },
+        {
+          "x": 0,
+          "y": 238
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -130,30 +209,30 @@
       "collider": {
         "points": [
           {
-            "x": 523,
-            "y": 112
+            "x": 429,
+            "y": 87
           },
           {
-            "x": 558,
-            "y": 112
+            "x": 459,
+            "y": 87
           },
           {
-            "x": 558,
-            "y": 142
+            "x": 459,
+            "y": 115
           },
           {
-            "x": 523,
-            "y": 142
+            "x": 429,
+            "y": 115
           }
         ]
       },
       "walkToPoint": {
-        "x": 507,
-        "y": 248
+        "x": 434,
+        "y": 172
       },
       "lookAtPoint": {
-        "x": 540,
-        "y": 142
+        "x": 444,
+        "y": 115
       },
       "description": "maletí"
     },
@@ -170,30 +249,30 @@
       "collider": {
         "points": [
           {
-            "x": 581,
-            "y": 168
+            "x": 457,
+            "y": 124
           },
           {
-            "x": 616,
-            "y": 168
+            "x": 491,
+            "y": 124
           },
           {
-            "x": 616,
-            "y": 187
+            "x": 491,
+            "y": 145
           },
           {
-            "x": 581,
-            "y": 187
+            "x": 457,
+            "y": 145
           }
         ]
       },
       "walkToPoint": {
-        "x": 595,
-        "y": 248
+        "x": 430,
+        "y": 207
       },
       "lookAtPoint": {
-        "x": 598,
-        "y": 187
+        "x": 474,
+        "y": 145
       },
       "description": "ulleres"
     },
@@ -242,8 +321,8 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 20,
-      "baseline": 213
+      "zIndex": 22,
+      "baseline": 999
     },
     {
       "id": "panell",
@@ -272,14 +351,38 @@
           "frameDuration": 260
         }
       }
+    },
+    {
+      "id": "davant_garita",
+      "tag": "davant_garita",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_garita": {}
+      },
+      "zIndex": 20,
+      "baseline": 160
+    },
+    {
+      "id": "davant_taula",
+      "tag": "davant_taula",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_taula": {}
+      },
+      "zIndex": 21,
+      "baseline": 207
     }
   ],
   "characters": [
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 293,
-      "y": 261,
+      "x": 333,
+      "y": 201,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -288,8 +391,8 @@
     {
       "instanceId": "soler-1",
       "definition": "soler/soler.character.json",
-      "x": 59,
-      "y": 248,
+      "x": 126,
+      "y": 177,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -298,8 +401,8 @@
     {
       "instanceId": "empleat-1",
       "definition": "empleat/empleat.character.json",
-      "x": 501,
-      "y": 208,
+      "x": 377,
+      "y": 155,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -308,8 +411,8 @@
     {
       "instanceId": "nen-1",
       "definition": "nen/nen.character.json",
-      "x": 400,
-      "y": 259,
+      "x": 315,
+      "y": 166,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -328,5 +431,37 @@
     }
   ],
   "viewAnchorY": 0,
-  "artScale": 2
+  "characterLights": {
+    "ambient": "#a4acbc",
+    "lights": [
+      {
+        "x": 276,
+        "y": 80,
+        "radius": 260,
+        "color": "#e0a0a0",
+        "intensity": 0.6
+      },
+      {
+        "x": 512,
+        "y": 100,
+        "radius": 120,
+        "color": "#ff6e5a",
+        "intensity": 0.7
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#0a0e18",
+    "alpha": 0.4,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 278,
+      "y": 137,
+      "stretch": 0.7,
+      "reach": 200
+    }
+  },
+  "floorSquash": 0.42
 }
