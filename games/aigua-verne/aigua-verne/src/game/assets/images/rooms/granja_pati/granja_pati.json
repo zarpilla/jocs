@@ -1,1462 +1,1395 @@
 {
   "frames": {
     "granja_pati 0.aseprite": {
-      "page": 0,
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 1.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 2560,
-        "h": 189
+        "x": 1351,
+        "y": 0,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 2.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 909,
-        "w": 2560,
-        "h": 189
+        "x": 2631,
+        "y": 0,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 3.aseprite": {
-      "page": 0,
       "frame": {
         "x": 0,
-        "y": 1098,
-        "w": 2560,
-        "h": 189
+        "y": 360,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 4.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 1287,
-        "w": 2559,
-        "h": 189
+        "x": 1279,
+        "y": 360,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 5.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 1476,
-        "w": 2559,
-        "h": 189
+        "x": 2558,
+        "y": 360,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 6.aseprite": {
-      "page": 0,
       "frame": {
         "x": 0,
-        "y": 1665,
-        "w": 2559,
-        "h": 189
+        "y": 453,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 7.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 1854,
-        "w": 2559,
-        "h": 189
+        "x": 1279,
+        "y": 453,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 8.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 2043,
-        "w": 2560,
-        "h": 189
+        "x": 2558,
+        "y": 453,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 9.aseprite": {
-      "page": 0,
       "frame": {
         "x": 0,
-        "y": 2232,
-        "w": 2560,
-        "h": 189
+        "y": 546,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 10.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 2421,
-        "w": 2559,
-        "h": 189
+        "x": 1280,
+        "y": 546,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 11.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 2610,
-        "w": 2559,
-        "h": 189
+        "x": 2559,
+        "y": 546,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 12.aseprite": {
-      "page": 0,
       "frame": {
         "x": 0,
-        "y": 2799,
-        "w": 2560,
-        "h": 189
+        "y": 639,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 13.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 2988,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 639,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 14.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 3177,
-        "w": 2560,
-        "h": 189
+        "x": 2560,
+        "y": 639,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 15.aseprite": {
-      "page": 0,
       "frame": {
         "x": 0,
-        "y": 3366,
-        "w": 2560,
-        "h": 189
+        "y": 732,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 16.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 3555,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 732,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 17.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 3744,
-        "w": 2560,
-        "h": 189
+        "x": 2560,
+        "y": 732,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 18.aseprite": {
-      "page": 1,
       "frame": {
         "x": 0,
-        "y": 0,
-        "w": 2560,
-        "h": 189
+        "y": 825,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 19.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 0,
-        "y": 189,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 825,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 20.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 0,
-        "y": 378,
-        "w": 2559,
-        "h": 189
+        "x": 2560,
+        "y": 825,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 21.aseprite": {
-      "page": 1,
       "frame": {
         "x": 0,
-        "y": 567,
-        "w": 2497,
-        "h": 189
+        "y": 918,
+        "w": 1245,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 60,
-        "y": 316,
-        "w": 2497,
-        "h": 189
+        "x": 32,
+        "y": 160,
+        "w": 1245,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 22.aseprite": {
-      "page": 1,
+      "frame": {
+        "x": 1245,
+        "y": 918,
+        "w": 1245,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 24,
+        "y": 160,
+        "w": 1245,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 23.aseprite": {
+      "frame": {
+        "x": 2490,
+        "y": 918,
+        "w": 1245,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 12,
+        "y": 160,
+        "w": 1245,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 24.aseprite": {
       "frame": {
         "x": 0,
-        "y": 756,
-        "w": 2497,
-        "h": 189
+        "y": 1011,
+        "w": 1245,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 4,
+        "y": 160,
+        "w": 1245,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 25.aseprite": {
+      "frame": {
+        "x": 1245,
+        "y": 1011,
+        "w": 1279,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1279,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 26.aseprite": {
+      "frame": {
+        "x": 2524,
+        "y": 1011,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 27.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1104,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 28.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 1104,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 29.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 1104,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 30.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1197,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 31.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 1197,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 32.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 1197,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 33.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1290,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 34.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 1290,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 35.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 1290,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 36.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1383,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 37.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 1383,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 38.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 1383,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 39.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1476,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 40.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 1476,
+        "w": 1280,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1280,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 41.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 1476,
+        "w": 1279,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 160,
+        "w": 1279,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 42.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 1569,
+        "w": 1239,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 40,
-        "y": 316,
-        "w": 2497,
-        "h": 189
+        "y": 160,
+        "w": 1239,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
-    "granja_pati 23.aseprite": {
-      "page": 1,
+    "granja_pati 43.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 945,
-        "w": 2497,
-        "h": 189
+        "x": 1239,
+        "y": 1569,
+        "w": 1241,
+        "h": 93
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 28,
+        "y": 160,
+        "w": 1241,
+        "h": 93
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 44.aseprite": {
+      "frame": {
+        "x": 2480,
+        "y": 1569,
+        "w": 1239,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 20,
-        "y": 316,
-        "w": 2497,
-        "h": 189
+        "y": 160,
+        "w": 1239,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 24.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 1134,
-        "w": 2497,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2497,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 25.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 1323,
-        "w": 2559,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 26.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 1512,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 27.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 1701,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 28.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 1890,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 29.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 2079,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 30.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 2268,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 31.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 2457,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 32.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 2646,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 33.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 2835,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 34.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 3024,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 35.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 3213,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 36.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 3402,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 37.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 3591,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 38.aseprite": {
-      "page": 1,
-      "frame": {
-        "x": 0,
-        "y": 3780,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 39.aseprite": {
-      "page": 2,
-      "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 40.aseprite": {
-      "page": 2,
-      "frame": {
-        "x": 0,
-        "y": 189,
-        "w": 2560,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 41.aseprite": {
-      "page": 2,
-      "frame": {
-        "x": 0,
-        "y": 378,
-        "w": 2559,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 42.aseprite": {
-      "page": 2,
-      "frame": {
-        "x": 0,
-        "y": 567,
-        "w": 2481,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 76,
-        "y": 316,
-        "w": 2481,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 43.aseprite": {
-      "page": 2,
-      "frame": {
-        "x": 0,
-        "y": 756,
-        "w": 2481,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 56,
-        "y": 316,
-        "w": 2481,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
-      },
-      "duration": 100
-    },
-    "granja_pati 44.aseprite": {
-      "page": 2,
-      "frame": {
-        "x": 0,
-        "y": 945,
-        "w": 2481,
-        "h": 189
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 36,
-        "y": 316,
-        "w": 2481,
-        "h": 189
-      },
-      "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 45.aseprite": {
-      "page": 2,
       "frame": {
         "x": 0,
-        "y": 1134,
-        "w": 2481,
-        "h": 189
+        "y": 1662,
+        "w": 1241,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 16,
-        "y": 316,
-        "w": 2481,
-        "h": 189
+        "x": 8,
+        "y": 160,
+        "w": 1241,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 46.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 1323,
-        "w": 2557,
-        "h": 189
+        "x": 1241,
+        "y": 1662,
+        "w": 1239,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2557,
-        "h": 189
+        "y": 160,
+        "w": 1239,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 47.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 1512,
-        "w": 2560,
-        "h": 189
+        "x": 2480,
+        "y": 1662,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 48.aseprite": {
-      "page": 2,
       "frame": {
         "x": 0,
-        "y": 1701,
-        "w": 2560,
-        "h": 189
+        "y": 1755,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 49.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 1890,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 1755,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 50.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 2079,
-        "w": 2560,
-        "h": 189
+        "x": 2560,
+        "y": 1755,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 51.aseprite": {
-      "page": 2,
       "frame": {
         "x": 0,
-        "y": 2268,
-        "w": 2560,
-        "h": 189
+        "y": 1848,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 52.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 2457,
-        "w": 2559,
-        "h": 189
+        "x": 1280,
+        "y": 1848,
+        "w": 1279,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2559,
-        "h": 189
+        "y": 160,
+        "w": 1279,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 53.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 2646,
-        "w": 2560,
-        "h": 189
+        "x": 2559,
+        "y": 1848,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 54.aseprite": {
-      "page": 2,
       "frame": {
         "x": 0,
-        "y": 2835,
-        "w": 2560,
-        "h": 189
+        "y": 1941,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 55.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 3024,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 1941,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 56.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 3213,
-        "w": 2560,
-        "h": 189
+        "x": 2560,
+        "y": 1941,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 57.aseprite": {
-      "page": 2,
       "frame": {
         "x": 0,
-        "y": 3402,
-        "w": 2560,
-        "h": 189
+        "y": 2034,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 58.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 3591,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 2034,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 59.aseprite": {
-      "page": 2,
       "frame": {
-        "x": 0,
-        "y": 3780,
-        "w": 2560,
-        "h": 189
+        "x": 2560,
+        "y": 2034,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 60.aseprite": {
-      "page": 3,
       "frame": {
         "x": 0,
-        "y": 0,
-        "w": 2560,
-        "h": 189
+        "y": 2127,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 61.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 0,
-        "y": 189,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 2127,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 62.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 0,
-        "y": 378,
-        "w": 2560,
-        "h": 189
+        "x": 2560,
+        "y": 2127,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 63.aseprite": {
-      "page": 3,
       "frame": {
         "x": 0,
-        "y": 567,
-        "w": 2560,
-        "h": 189
+        "y": 2220,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 64.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 0,
-        "y": 756,
-        "w": 2560,
-        "h": 189
+        "x": 1280,
+        "y": 2220,
+        "w": 1280,
+        "h": 93
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 316,
-        "w": 2560,
-        "h": 189
+        "y": 160,
+        "w": 1280,
+        "h": 93
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 65.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2560,
-        "y": 756,
-        "w": 6,
-        "h": 6
+        "x": 3490,
+        "y": 2220,
+        "w": 3,
+        "h": 3
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 800,
-        "y": 42,
-        "w": 6,
-        "h": 6
+        "x": 438,
+        "y": 21,
+        "w": 3,
+        "h": 3
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 66.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1469,38 +1402,36 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 67.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2560,
-        "y": 756,
-        "w": 6,
-        "h": 6
+        "x": 3490,
+        "y": 2220,
+        "w": 3,
+        "h": 3
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 800,
-        "y": 42,
-        "w": 6,
-        "h": 6
+        "x": 438,
+        "y": 21,
+        "w": 3,
+        "h": 3
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 68.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1513,16 +1444,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 69.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1535,16 +1465,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 70.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1557,16 +1486,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 71.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1579,16 +1507,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 72.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1601,16 +1528,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 73.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1623,16 +1549,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 74.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1645,16 +1570,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 75.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1667,16 +1591,15 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     },
     "granja_pati 76.aseprite": {
-      "page": 3,
       "frame": {
-        "x": 2566,
-        "y": 756,
+        "x": 3493,
+        "y": 2220,
         "w": 1,
         "h": 1
       },
@@ -1689,8 +1612,92 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 2560,
-        "h": 720
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 77.aseprite": {
+      "frame": {
+        "x": 3419,
+        "y": 2220,
+        "w": 71,
+        "h": 27
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 355,
+        "y": 180,
+        "w": 71,
+        "h": 27
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 78.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 0,
+        "w": 71,
+        "h": 123
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 282,
+        "y": 89,
+        "w": 71,
+        "h": 123
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 79.aseprite": {
+      "frame": {
+        "x": 3372,
+        "y": 2220,
+        "w": 47,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 312,
+        "y": 194,
+        "w": 47,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_pati 80.aseprite": {
+      "frame": {
+        "x": 2560,
+        "y": 2220,
+        "w": 812,
+        "h": 54
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 468,
+        "y": 205,
+        "w": 812,
+        "h": 54
+      },
+      "sourceSize": {
+        "w": 1280,
+        "h": 360
       },
       "duration": 100
     }
@@ -1701,8 +1708,8 @@
     "image": "granja_pati.png",
     "format": "RGBA8888",
     "size": {
-      "w": 2560,
-      "h": 3933
+      "w": 3911,
+      "h": 2313
     },
     "scale": "1",
     "frameTags": [
@@ -1726,15 +1733,37 @@
         "to": 76,
         "direction": "forward",
         "color": "#000000ff"
+      },
+      {
+        "name": "davant_bomba",
+        "from": 77,
+        "to": 77,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_arbre",
+        "from": 78,
+        "to": 78,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_pou",
+        "from": 79,
+        "to": 79,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 80,
+        "to": 80,
+        "direction": "forward",
+        "color": "#000000ff"
       }
     ],
     "layers": [],
-    "slices": [],
-    "pages": [
-      "granja_pati.png",
-      "granja_pati-2.png",
-      "granja_pati-3.png",
-      "granja_pati-4.png"
-    ]
+    "slices": []
   }
 }
