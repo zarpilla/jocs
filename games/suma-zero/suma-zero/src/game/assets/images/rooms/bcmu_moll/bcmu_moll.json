@@ -4,125 +4,125 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_moll 1.aseprite": {
       "frame": {
-        "x": 1756,
+        "x": 2443,
         "y": 0,
-        "w": 1,
-        "h": 1
+        "w": 65,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 332,
+        "y": 29,
+        "w": 65,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_moll 2.aseprite": {
       "frame": {
-        "x": 1511,
+        "x": 1900,
         "y": 0,
-        "w": 85,
-        "h": 65
+        "w": 169,
+        "h": 128
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 680,
-        "y": 204,
-        "w": 85,
-        "h": 65
+        "x": 292,
+        "y": 11,
+        "w": 169,
+        "h": 128
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_moll 3.aseprite": {
       "frame": {
-        "x": 1596,
+        "x": 2238,
         "y": 0,
-        "w": 101,
-        "h": 49
+        "w": 161,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 680,
-        "y": 212,
-        "w": 101,
-        "h": 49
+        "x": 292,
+        "y": 15,
+        "w": 161,
+        "h": 105
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_moll 4.aseprite": {
       "frame": {
-        "x": 1697,
+        "x": 2069,
         "y": 0,
-        "w": 59,
-        "h": 49
+        "w": 169,
+        "h": 128
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 680,
-        "y": 212,
-        "w": 59,
-        "h": 49
+        "x": 292,
+        "y": 11,
+        "w": 169,
+        "h": 128
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_moll 5.aseprite": {
       "frame": {
-        "x": 1756,
+        "x": 2443,
         "y": 0,
-        "w": 1,
-        "h": 1
+        "w": 65,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 332,
+        "y": 29,
+        "w": 65,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
@@ -130,62 +130,125 @@
       "frame": {
         "x": 1280,
         "y": 0,
-        "w": 231,
-        "h": 221
+        "w": 460,
+        "h": 249
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 534,
-        "y": 48,
-        "w": 231,
-        "h": 221
+        "x": 14,
+        "y": 11,
+        "w": 460,
+        "h": 249
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_moll 7.aseprite": {
       "frame": {
-        "x": 1596,
+        "x": 2238,
         "y": 0,
-        "w": 101,
-        "h": 49
+        "w": 161,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 680,
-        "y": 212,
-        "w": 101,
-        "h": 49
+        "x": 292,
+        "y": 15,
+        "w": 161,
+        "h": 105
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_moll 8.aseprite": {
       "frame": {
-        "x": 1697,
+        "x": 2069,
         "y": 0,
-        "w": 59,
-        "h": 49
+        "w": 169,
+        "h": 128
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 680,
-        "y": 212,
-        "w": 59,
-        "h": 49
+        "x": 292,
+        "y": 11,
+        "w": 169,
+        "h": 128
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 9.aseprite": {
+      "frame": {
+        "x": 2399,
+        "y": 0,
+        "w": 44,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 397,
+        "y": 58,
+        "w": 44,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 10.aseprite": {
+      "frame": {
+        "x": 1740,
+        "y": 0,
+        "w": 160,
+        "h": 151
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 270,
+        "y": 45,
+        "w": 160,
+        "h": 151
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_moll 11.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -196,8 +259,8 @@
     "image": "bcmu_moll.png",
     "format": "RGBA8888",
     "size": {
-      "w": 1757,
-      "h": 720
+      "w": 2508,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [
@@ -212,6 +275,27 @@
         "name": "llum_toro",
         "from": 1,
         "to": 8,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_maquina",
+        "from": 9,
+        "to": 9,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_toro",
+        "from": 10,
+        "to": 10,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 11,
+        "to": 11,
         "direction": "forward",
         "color": "#000000ff"
       }

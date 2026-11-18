@@ -18,23 +18,74 @@
         "active": true,
         "points": [
           {
-            "x": 19,
-            "y": 236
+            "x": 0,
+            "y": 242
           },
           {
-            "x": 621,
-            "y": 236
+            "x": 48,
+            "y": 174
           },
           {
-            "x": 632,
-            "y": 271
+            "x": 224,
+            "y": 155
           },
           {
-            "x": 8,
-            "y": 271
+            "x": 228,
+            "y": 163
+          },
+          {
+            "x": 293,
+            "y": 157
+          },
+          {
+            "x": 397,
+            "y": 143
+          },
+          {
+            "x": 414,
+            "y": 144
+          },
+          {
+            "x": 444,
+            "y": 141
+          },
+          {
+            "x": 462,
+            "y": 138
+          },
+          {
+            "x": 639,
+            "y": 226
+          },
+          {
+            "x": 602,
+            "y": 242
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 265,
+                "y": 186
+              },
+              {
+                "x": 434,
+                "y": 197
+              },
+              {
+                "x": 427,
+                "y": 169
+              },
+              {
+                "x": 283,
+                "y": 160
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -46,29 +97,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 533,
-          "y": 53
+          "x": 492,
+          "y": 44
         },
         {
-          "x": 613,
-          "y": 53
+          "x": 548,
+          "y": 44
         },
         {
-          "x": 613,
-          "y": 200
+          "x": 548,
+          "y": 166
         },
         {
-          "x": 533,
-          "y": 200
+          "x": 492,
+          "y": 166
         }
       ],
       "walkToPoint": {
-        "x": 573,
-        "y": 248
+        "x": 483,
+        "y": 160
       },
       "lookAtPoint": {
-        "x": 573,
-        "y": 200
+        "x": 520,
+        "y": 166
       },
       "defaultVerb": "open"
     },
@@ -79,29 +130,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 400,
-          "y": 93
+          "x": 396,
+          "y": 58
         },
         {
-          "x": 446,
-          "y": 93
+          "x": 441,
+          "y": 58
         },
         {
-          "x": 446,
-          "y": 200
+          "x": 441,
+          "y": 140
         },
         {
-          "x": 400,
-          "y": 200
+          "x": 396,
+          "y": 140
         }
       ],
       "walkToPoint": {
-        "x": 421,
-        "y": 251
+        "x": 436,
+        "y": 154
       },
       "lookAtPoint": {
-        "x": 423,
-        "y": 200
+        "x": 418,
+        "y": 140
       }
     },
     {
@@ -111,29 +162,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 240,
-          "y": 128
+          "x": 220,
+          "y": 71
         },
         {
-          "x": 334,
-          "y": 128
+          "x": 282,
+          "y": 71
         },
         {
-          "x": 334,
-          "y": 200
+          "x": 282,
+          "y": 158
         },
         {
-          "x": 240,
-          "y": 200
+          "x": 220,
+          "y": 158
         }
       ],
       "walkToPoint": {
-        "x": 285,
-        "y": 251
+        "x": 262,
+        "y": 164
       },
       "lookAtPoint": {
-        "x": 287,
-        "y": 200
+        "x": 251,
+        "y": 158
       }
     },
     {
@@ -143,34 +194,61 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 27,
-          "y": 93
+          "x": 35,
+          "y": 94
         },
         {
-          "x": 227,
-          "y": 93
+          "x": 220,
+          "y": 94
         },
         {
-          "x": 227,
-          "y": 208
+          "x": 220,
+          "y": 155
         },
         {
-          "x": 27,
-          "y": 208
+          "x": 35,
+          "y": 155
         }
       ],
       "walkToPoint": {
-        "x": 133,
-        "y": 253
+        "x": 130,
+        "y": 168
       },
       "lookAtPoint": {
         "x": 127,
-        "y": 208
+        "y": 155
       }
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.645,
+      "scaleBottom": 1.206,
+      "points": [
+        {
+          "x": 0,
+          "y": 136
+        },
+        {
+          "x": 639,
+          "y": 136
+        },
+        {
+          "x": 639,
+          "y": 244
+        },
+        {
+          "x": 0,
+          "y": 244
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -195,14 +273,50 @@
           "frameDuration": 180
         }
       }
+    },
+    {
+      "id": "davant_maquina",
+      "tag": "davant_maquina",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_maquina": {}
+      },
+      "zIndex": 20,
+      "baseline": 139
+    },
+    {
+      "id": "davant_toro",
+      "tag": "davant_toro",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_toro": {}
+      },
+      "zIndex": 21,
+      "baseline": 191
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 160,
-      "y": 261,
+      "x": 135,
+      "y": 242,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -211,8 +325,8 @@
     {
       "instanceId": "rius-1",
       "definition": "rius/rius.character.json",
-      "x": 483,
-      "y": 248,
+      "x": 457,
+      "y": 163,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -231,5 +345,51 @@
     }
   ],
   "viewAnchorY": 0,
-  "artScale": 2
+  "characterLights": {
+    "ambient": "#a8acb4",
+    "lights": [
+      {
+        "x": 145,
+        "y": 99,
+        "radius": 300,
+        "color": "#fff0d2",
+        "intensity": 0.9
+      },
+      {
+        "x": 239,
+        "y": 43,
+        "radius": 260,
+        "color": "#e0ecff",
+        "intensity": 0.5
+      },
+      {
+        "x": 433,
+        "y": 37,
+        "radius": 240,
+        "color": "#e0ecff",
+        "intensity": 0.5
+      },
+      {
+        "x": 380,
+        "y": 60,
+        "radius": 70,
+        "color": "#ff8c28",
+        "intensity": 0.6
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#10141c",
+    "alpha": 0.42,
+    "squash": 0.38,
+    "core": 0.6,
+    "light": {
+      "x": 135,
+      "y": 151,
+      "stretch": 0.7,
+      "reach": 200
+    }
+  },
+  "floorSquash": 0.4
 }
