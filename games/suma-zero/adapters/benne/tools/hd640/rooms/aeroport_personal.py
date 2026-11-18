@@ -1,532 +1,573 @@
 """
-El racó de servei de l'aeroport (hd/rooms/aeroport_personal.py) a 640×360, la composició ×4/3 dibuixada de nou.
-Escena 3, l'Iri, davant la porta de personal:
-  - un passadís de servei: bloc de formigó pintat de verd hospital, linòleum gastat, un fluorescent que
-    parpelleja;
-  - el vidre cap a la terminal: es veuen els seients blaus i el rètol d'objectes perduts i, mentre vigila, l'agent
-    Soler (decorat `soler_vidre`, fins que la Vet el distreu);
-  - la porta de personal, metàl·lica, amb la franja vermella «NOMÉS PERSONAL», i el teclat de quatre xifres amb
-    les tecles 2, 4, 6 i 8 gastades; el llum: vermell (tancada), parpelleig (`alarma`) o verd (`porta_oberta`);
-  - un carro de la neteja, un extintor, el senyal de terra mullat, un radiador, taquilles i un tauler de torns.
-Animacions: `fluorescent` (el tub parpelleja) i `avio` (per la vidriera del fons, un avió que s'acosta).
+El racó de servei de l'aeroport (Escena 3, l'Iri, davant la porta de personal). EN 3D (hd640/tres_d.py), a 1×.
+
+Una càmera alta que mira de biaix la cantonada del fons a l'esquerra, com l'estudi de l'Iri:
+  - a la paret de l'esquerra, en escorç, el **vidre** cap a la terminal: a l'altra banda hi ha la terminal de debò
+    (el terra de rajola més avall, els seients blaus, el rètol d'objectes perduts i la vidriera de l'alba), i
+    mentre vigila, l'**agent Soler** dret darrere el vidre (decorat `soler_vidre`); a sota, el radiador;
+  - a la paret del fons, la **porta de personal** amb la franja vermella i el **teclat** (el llum: vermell,
+    `alarma` o verd; amb `porta_oberta`, la fulla girada cap endins i l'oficina il·luminada), l'extintor, el senyal
+    de sortida i el tauler de torns; les **taquilles** amb volum;
+  - el **carro de la neteja**, separat de la paret i girat (s'hi passa per darrere), i el senyal de terra mullat
+    amb el bassal;
+  - el **fluorescent** que penja del sostre (`fluorescent`: parpelleja), i a dalt, la canonada dels bombers i la
+    safata de cables que fugen per les dues parets;
+  - primer pla: una canonada vertical i una d'horitzontal en silueta, i una paperera i caixes a baix a l'esquerra.
+
+Tot el detall ve del dibuix pla de sempre (aeroport_personal_pla_comu.py), projectat. Els decorats tornen a pintar la
+sala amb aquell estat, i en surt la diferència.
+
+El món: x a la dreta (0 = la paret del vidre), y amunt (0 = el terra), z cap al fons (300 = la paret del fons);
+1 unitat = 1 píxel de sala a la distància on un personatge fa ≈111 px (escala 1).
 """
-import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
+import functools
+import math
 
 from PIL import Image
-from pixels import nearest
 
-from hd.pix import Light, Canvas, W, H, hr
-from hd.rooms.comu import obox, outline, text, text_width, _diff, SHEET, CARD, RED
-from hd.rooms.bar_sala import STEELB, SLATE
-from hd.rooms.pis_cuina import outline_poly
-from hd.rooms.aeroport_terminal import CONC, TILE, CHROME, DESK, BLUE, YELS, DAWN
-from hd.rooms.aeroport_personal import BLOCK, LINO, DOOR, REDB, GREENS, TROLLEY  # noqa: F401
+import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
+from hd.pix import Canvas, Light, W, H, hr
+from hd.rooms.comu import _diff, outline, SHEET
+from hd.rooms.exterior import fbm
 from hd.personatges import NPCS
 from hd640.draw_characters import person
+from hd640.rooms import aeroport_personal_pla_comu as PL
+from hd640.rooms.aeroport_personal_pla_comu import (BLOCK, LINO, CONC, TILE, CHROME, DOOR, REDB, YELS, TROLLEY,
+                                                    SLATE, BLUE, CARD)
+from hd640.tres_d import Camera, Escena, Llum
 
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
-
-FLOOR_Y = 200
-
-LIGHT = Light(ambient=-0.3, vignette=(80, 40), floor_fade=(253, 37))
-LIGHT.point(267, 8, r=347, k=2.6, squash=0.8, power=1.3)             # el fluorescent del passadís
-LIGHT.point(133, 100, r=133, k=0.5, squash=1.2, power=2.0)           # la claror de la terminal pel vidre
-LIGHT.point(315, 148, r=35, k=0.4, squash=1.0, power=2.0)            # el llum del teclat
-
-GLASS = (27, 40, 240, 160)
-LED = (315, 148)
-DOOR_BOX = (333, 59, 416, FLOOR_Y)
-KEYPAD = (299, 112, 331, 152)
-LOCKER = [(20, 30, 40), (34, 50, 64), (52, 74, 92), (74, 100, 120), (100, 128, 150), (140, 166, 184)]
-WHITE = [(250, 244, 236)]
+BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
+ZW = 300                                           # la paret del fons
+HW = 200                                           # l'alçada de les parets (el dibuix pla fa 200 fins al terra)
+XL = 250                                           # al dibuix pla, la cantonada: a l'esquerra, la paret del vidre
+XR = 780                                           # on s'acaba la paret del fons (fora de la pantalla)
+TROL = (262, 214, 84, 36, 0.42)                    # el carro: x, z del centre, ample, fons, gir
+CONE = (82, 168)                                   # el senyal de terra mullat (x, z)
+LAMP = (220, 184, 140)                             # el fluorescent que penja: x, y, z del centre
+TERM_Y = -14                                       # el terra de la terminal, una mica més avall
+TERM_X = -250                                      # la paret del fons de la terminal
+SOLER = (-62, 196)                                 # en Soler, dret a la terminal (x, z)
 
 
-# ─── Paret, sostre, terra ──────────────────────────────────────────────────
-
-def wall(cv):
-    """Bloc de formigó pintat de verd pàl·lid; a baix, una franja més fosca de cops de carro."""
-    for y in range(0, FLOOR_Y):
-        row = y * 3 // 40
-        ry = y - (row * 40 + 2) // 3                                    # la fila del bloc (13 o 14 px)
-        for x in range(W):
-            off = 20 if row % 2 else 0
-            joint = ((y + 1) * 3 // 40 != row) or ((x + off) % 40 == 39)
-            n = (hr(x // 2, y // 2, 5) - 0.5) * 0.3 + (hr(x, y, 8) - 0.5) * 0.12 + (hr((x + off) // 40, row, 2) - 0.5) * 0.3
-            lvl = 2.8 if joint else 4.2 + n + (0.4 if ry == 0 else 0)
-            if y > 157:
-                lvl -= 0.9
-            cv.put(x, y, BLOCK, lvl)
-    cv.rect(0, 156, W - 1, 157, BLOCK, 2.4)
-    for i in range(14):                                                 # els cops dels carros
-        x = 20 + int(hr(i, 21) * 600)
-        cv.hline(x, x + 3 + int(hr(i, 22) * 8), 170 + int(hr(i, 23) * 20), BLOCK, 2.0)
-    cv.rect(0, FLOOR_Y - 5, W - 1, FLOOR_Y - 1, LINO, 2.0)
-    cv.hline(0, W - 1, FLOOR_Y - 5, LINO, 3.0)
-    cv.hline(0, W - 1, FLOOR_Y, LINO, 0)
-    # el sostre baix, amb canonades i la safata de cables
-    cv.rect(0, 0, W - 1, 8, CONC, 3.0)
-    cv.rect(0, 12, W - 1, 16, CHROME, lambda x, y: 2.4 + (1.4 if y == 13 else 0) - (0.6 if y == 16 else 0))
-    for x in range(0, W, 8):                                            # la reixeta de la safata
-        cv.vline(x, 13, 15, CHROME, 1.6)
-    cv.rect(0, 18, W - 1, 21, REDB, lambda x, y: 2.4 + (1.0 if y == 19 else 0) - (0.8 if y == 21 else 0))   # la canonada dels bombers
-    for x in range(40, W, 107):                                         # les abraçadores
-        cv.rect(x, 17, x + 2, 22, CHROME, 3.4)
-        cv.vline(x + 1, 9, 17, CHROME, 2.4)
-    tube(cv, on=True)
+def _w(fx):
+    """Una x del dibuix pla de la paret del fons → la x del món."""
+    return fx - XL
 
 
-def tube(cv, on=True):
-    """El fluorescent del passadís."""
-    x0, x1, y = 213, 320, 4
-    obox(cv, x0 - 5, y - 3, x1 + 5, y + 4, CHROME, 3.0)
-    col = (230, 244, 255) if on else (120, 130, 140)
-    cv.hline(x0, x1, y + 1, [col], 0, lit=0)
-    cv.hline(x0, x1, y + 2, [col if on else (100, 108, 118)], 0, lit=0)
-    cv.rect(x0 - 2, y + 1, x0 - 1, y + 2, CHROME, 4.0)                 # els capçals
-    cv.rect(x1 + 1, y + 1, x1 + 2, y + 2, CHROME, 4.0)
-    if on:
-        cv.glow((x0 + x1) // 2, y + 3, 45, (220, 236, 255), 0.25)
+def _wz(fx):
+    """Una x del dibuix pla de la paret del vidre → la z del món."""
+    return ZW - XL + fx
 
 
-def floor(cv):
-    """Linòleum gris, gastat al camí de la porta, amb rascades de rodes."""
-    for y in range(FLOOR_Y + 1, H):
-        for x in range(W):
-            n = (hr(x // 2, y, 4) - 0.5) * 0.4 + (hr(x // 6, y // 3, 6) - 0.5) * 0.15
-            worn = max(0, 1 - abs(x - 373) / 93) * max(0, 1 - (y - FLOOR_Y) / 53) * 0.8
-            cv.put(x, y, LINO, 3.4 + n + worn)
-    for i in range(13):                                                  # rascades
-        x = 53 + int(hr(i, 7) * 533)
-        y = 211 + int(hr(i, 8) * 53)
-        cv.line(x, y, x + 13 + int(hr(i, 9) * 19), y + (1 if i % 2 else 0), LINO, 1.8)
-    for k in range(2):                                                   # el camí de les rodes del carro
-        cv.hline(452 + k * 70, 470 + k * 70, 224 + k, LINO, 2.0)
-    cv.tint(187, 203, 400, 253, (220, 236, 255), lambda x, y: 0.08 * max(0, 1 - abs(x - 267) / 107) * max(0, 1 - (y - 203) / 51))
+def _y(fy):
+    """Una y del dibuix pla (el terra, a 200) → l'alçada del món."""
+    return HW - fy
 
 
-# ─── El vidre cap a la terminal ────────────────────────────────────────────
+GLASS = (_wz(PL.GLASS[0]), _wz(PL.GLASS[2]), _y(PL.GLASS[3]), _y(PL.GLASS[1]))      # z0, z1, y0, y1
+DOOR_W = (_w(PL.DOOR_BOX[0]), _w(PL.DOOR_BOX[2]), 0, _y(PL.DOOR_BOX[1]))           # x0, x1, y0, y1
+KEYPAD = (_w(PL.KEYPAD[0]), _w(PL.KEYPAD[2]), _y(PL.KEYPAD[3]), _y(PL.KEYPAD[1]))
+LOCK_BOX = (547, 67, 633, 201)                     # les taquilles, de cara, al dibuix pla
+LOCK_D = 40
 
-def terminal_view(cv):
-    """Pel vidre: la terminal, una mica més avall i més lluny (seients blaus, el rètol groc, la vidriera de l'alba)."""
-    x0, y0, x1, y1 = GLASS
+CAM = Camera(pos=(420, 190, -260), yaw=-0.36, pitch=0.16, f=440, centre=(320, 90))
+
+LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
+TEX_LIGHT = Light(ambient=0.1, vignette=None, floor_fade=None)    # el dibuix pla de les textures, sense vinyeta
+TEX_LIGHT.point(315, 148, r=35, k=0.4, squash=1.0, power=2.0)    # el llum del teclat
+
+LLUMS = [Llum((LAMP[0], LAMP[1] - 6, LAMP[2]), 340, 2.0, power=1.3),       # el fluorescent
+         Llum((-40, 120, (GLASS[0] + GLASS[1]) / 2), 260, 0.9, power=1.5),   # la claror de la terminal pel vidre
+         Llum((KEYPAD[0] + 16, 70, ZW - 6), 40, 0.4, power=2.0)]            # el llum del teclat
+
+
+# ─── Les textures: el dibuix pla de sempre ───────────────────────────────────
+
+def _forat(cv, box):
+    """Buida (transparent) un rectangle del dibuix pla: s'hi veurà el que hi ha darrere."""
+    x0, y0, x1, y1 = box
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
-            cv.put(x, y, CONC, 3.6 + (hr(x // 40, 1) - 0.5) * 0.3 - (0.6 if (x % 40) == 0 else 0), lit=0)
-    cv.hline(x0, x1, 85, BLUE, 2.6, lit=0)                               # la franja blava de la terminal
-    # la vidriera gran de la terminal, al fons a l'esquerra, amb l'alba
-    for y in range(48, 94):
-        for x in range(35, 120):
-            cv.put(x, y, DAWN, 1.0 + (y - 48) / 8.0, lit=0)
-    for x in range(35, 120):                                             # l'horitzó
-        top = 86 - int(2 * hr(x // 4, 3))
-        for y in range(top, 94):
-            cv.put(x, y, [(8, 10, 16), (16, 18, 26)], 0.6, lit=0)
-    for lx in range(38, 120, 9):
-        cv.flat(lx, 88, (120, 200, 255) if lx % 2 else (250, 200, 90))
-    cv.rect(76, 48, 77, 93, CHROME, 3.0, lit=0)
-    outline(cv, 33, 47, 120, 94, CONC)
-    # el panell de sortides, penjat
-    obox(cv, 138, 49, 157, 57, [(4, 4, 6), (14, 14, 20)], 0.8, lit=0)
-    for k in range(3):
-        cv.hline(141, 148 + (k % 2) * 5, 51 + k * 2, [(250, 190, 50)], 0, lit=0)
-    # el rètol d'objectes perduts, a la dreta
-    obox(cv, 160, 59, 229, 69, YELS, 3.2, lit=0)
-    w = text_width('PERDUTS')
-    text(cv, 'PERDUTS', 195 - w // 2, 62, [(30, 22, 6)], 0, lit=0, flat=(30, 22, 6))
-    cv.rect(163, 70, 227, 101, CONC, 2.6, lit=0)
-    for yy in (82, 96):                                                  # els prestatges, endevinats
-        cv.hline(164, 226, yy, [(60, 34, 16), (96, 58, 28)], 1.0, lit=0)
-    for k in range(5):
-        bx = 168 + k * 12
-        cv.rect(bx, 89 - (k % 3) * 2, bx + 7, 95, [[(30, 50, 100)], [(120, 30, 30)], [(90, 60, 30)]][k % 3], 0, lit=0)
-    # el terra de la terminal i els seients
-    for y in range(107, y1 + 1):
-        for x in range(x0, x1 + 1):
-            cv.put(x, y, TILE, 4.2 + ((y - 107) / 27) - (0.8 if (x + (y - 107) // 2) % 36 == 0 else 0), lit=0)
-    for i in range(4):
-        sx = 45 + i * 21
-        obox(cv, sx, 99, sx + 17, 112, BLUE, 2.6, lit=0)
-        cv.rect(sx - 1, 112, sx + 19, 116, BLUE, lambda x, y: 3.4 - (y - 112) * 0.2, lit=0)
-    cv.rect(40, 117, 133, 118, CHROME, 3.0, lit=0)
-    for lx in (46, 126):
-        cv.vline(lx, 119, 124, CHROME, 2.4, lit=0)
+            cv.P[x, y] = (0, 0, 0, 0)
 
 
-SOLER_AT = (157, 160)   # on té els peus en Soler, vist pel vidre (amagats pel marc de baix)
-
-
-def soler(cv):
-    """L'agent Soler, de cara a la porta de personal (és a dir, mirant cap aquí)."""
-    fig = person(NPCS['soler'], 'D')
-    k = 0.82
-    fig = nearest(fig, (round(fig.width * k), round(fig.height * k)))
-    fx, fy = SOLER_AT
-    layer = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-    layer.alpha_composite(fig, (fx - round(34 * k), fy - round(111 * k)))
-    x0, y0, x1, y1 = GLASS
-    layer = layer.crop((x0 + 3, y0 + 3, x1 - 2, y1 - 2))
-    cv.blit(layer, (x0 + 3, y0 + 3))
-
-
-def glass_frame(cv):
-    """El marc d'alumini i els reflexos del passadís al vidre."""
-    x0, y0, x1, y1 = GLASS
-    cv.tint(x0, y0, x1, y1, (200, 230, 220), lambda x, y: 0.14 if (x + y) % 61 < 7 else (0.09 if (x + y) % 61 < 10 else 0.06))
-    for (a, b, c, d) in ((x0, y0, x1, y0 + 3), (x0, y1 - 3, x1, y1), (x0, y0, x0 + 3, y1), (x1 - 3, y0, x1, y1), (132, y0, 135, y1)):
+def _marc_vidre(cv):
+    """El marc d'alumini del vidre (sense el vidre: és un forat) i l'ampit."""
+    x0, y0, x1, y1 = PL.GLASS
+    for (a, b, c, d) in ((x0, y0, x1, y0 + 3), (x0, y1 - 3, x1, y1), (x0, y0, x0 + 3, y1), (x1 - 3, y0, x1, y1),
+                         (132, y0, 135, y1)):
         cv.rect(a, b, c, d, CHROME, lambda x, y, a=a, b=b: 3.2 + (0.8 if x == a or y == b else 0))
     outline(cv, x0 - 1, y0 - 1, x1 + 1, y1 + 1, BLOCK)
-    cv.rect(x0 - 4, y1 + 1, x1 + 4, y1 + 4, CHROME, lambda x, y: 4.0 + (0.8 if y == y1 + 1 else 0))   # l'ampit
+    cv.rect(x0 - 4, y1 + 1, x1 + 4, y1 + 4, CHROME, lambda x, y: 4.0 + (0.8 if y == y1 + 1 else 0))
     cv.darken(x0 - 4, y1 + 5, x1 + 4, y1 + 6, 0.5)
 
 
-# ─── La porta i el teclat ──────────────────────────────────────────────────
-
-def door(cv):
-    """La porta de personal: xapa grisa, la franja vermella, la barra i les frontisses."""
-    x0, y0, x1, y1 = DOOR_BOX
-    obox(cv, x0 - 5, y0 - 5, x1 + 5, y1, CHROME, 2.6)
-    door_leaf(cv)
-    cv.darken(x1 + 7, y0, x1 + 12, y1, 0.4)
-
-
-def door_leaf(cv):
-    x0, y0, x1, y1 = DOOR_BOX
-    obox(cv, x0, y0, x1, y1, DOOR, 3.6, top=0.6)
-    for yy in (y0 + 8, y1 - 40):
-        cv.rect(x0 + 5, yy, x1 - 5, yy + 29, DOOR, 3.2)
-        cv.hline(x0 + 5, x1 - 5, yy, DOOR, 2.0)
-        cv.vline(x0 + 5, yy, yy + 29, DOOR, 2.4)
-        cv.hline(x0 + 5, x1 - 5, yy + 29, DOOR, 4.6)
-        cv.vline(x1 - 5, yy, yy + 29, DOOR, 4.2)
-    cv.rect(x0 + 1, y1 - 8, x1 - 1, y1 - 1, DOOR, lambda x, y: 4.4 + (0.6 if y == y1 - 8 else 0) - (0.4 if (x + y) % 7 == 0 else 0))   # la xapa de cops
-    # la franja vermella amb el text
-    obox(cv, 344, 71, 405, 93, REDB, 3.0)
-    cv.hline(346, 403, 73, REDB, 3.8)
-    for k, word in enumerate(('NOMÉS', 'PERSONAL')):
-        text(cv, word, 375 - text_width(word) // 2, 76 + k * 8, WHITE, 0, flat=WHITE[0])
-    # la maneta i la placa
-    obox(cv, 339, 133, 344, 149, CHROME, 3.6)
-    cv.rect(339, 139, 355, 141, CHROME, lambda x, y: 4.6 + (0.6 if y == 139 else 0))
-    cv.disc(341, 145, 1.2, 1.4, SLATE, 0.6)                              # el pany
-    for hy in (72, 181):                                                 # frontisses, a la dreta
-        cv.rect(x1 - 1, hy, x1 + 1, hy + 8, CHROME, 3.2)
-        cv.flat(x1, hy + 1, CHROME[4])
-    # el braç tancaportes, dalt
-    obox(cv, x0 + 8, y0 + 2, x0 + 30, y0 + 6, CHROME, 3.0)
-    cv.line(x0 + 30, y0 + 4, x0 + 48, y0 + 2, CHROME, 3.6)
+def _paret(led='vermell', oberta=False):
+    """Les dues parets planes, de cara: el bloc verd amb les canonades de dalt, el vidre (un forat), el radiador,
+    l'extintor, el senyal de sortida, la porta (o el forat de la porta oberta), el teclat i el tauler de torns."""
+    cv = Canvas(light=TEX_LIGHT)
+    tube, PL.tube = PL.tube, lambda cv, on=True: None             # (el fluorescent penja del sostre: és en 3D)
+    try:
+        PL.wall(cv)
+    finally:
+        PL.tube = tube
+    x0, y0, x1, y1 = PL.GLASS
+    _marc_vidre(cv)
+    _forat(cv, (x0 + 4, y0 + 4, 131, y1 - 4))
+    _forat(cv, (136, y0 + 4, x1 - 4, y1 - 4))
+    PL.radiator(cv)
+    PL.extinguisher(cv)
+    PL.emergency_sign(cv)
+    if oberta:
+        dx0, dy0, dx1, dy1 = PL.DOOR_BOX
+        PL.obox(cv, dx0 - 5, dy0 - 5, dx1 + 5, dy1, CHROME, 2.6)
+        _forat(cv, (dx0, dy0, dx1, dy1))
+    else:
+        PL.door(cv)
+    PL.keypad(cv, 'verd' if oberta else led)
+    if led == 'alarma':
+        cv.glow(PL.LED[0], PL.LED[1], 61, (255, 40, 30), 0.55)
+        cv.disc(PL.LED[0], PL.LED[1], 4, 3.2, [(255, 120, 90)], 0, lit=0)
+        cv.flat(PL.LED[0] - 1, PL.LED[1] - 1, (255, 220, 200))
+    PL.notice_board(cv)
+    return cv.img
 
 
-def keypad(cv, led='vermell'):
-    """El teclat: caixa d'alumini, dotze tecles (2, 4, 6 i 8 gastades), una pantalleta i el llum."""
-    x0, y0, x1, y1 = KEYPAD
-    obox(cv, x0, y0, x1, y1, CHROME, 2.8, top=1.0)
-    cv.rect(x0 + 4, y0 + 3, x1 - 4, y0 + 7, [(10, 20, 14), (30, 60, 40)], 1.0, lit=0)
-    cv.hline(x0 + 6, x0 + 9, y0 + 5, [(60, 120, 80)], 0, lit=0)
-    keys = '123456789*0#'
-    for i, kch in enumerate(keys):
-        kx = x0 + 5 + (i % 3) * 8
-        ky = y0 + 10 + (i // 3) * 6
-        worn = kch in '2468'
-        cv.rect(kx, ky, kx + 4, ky + 4, CHROME, 4.6 if worn else 3.4)
-        cv.hline(kx + 1, kx + 4, ky + 4, CHROME, 1.6)
-        cv.vline(kx + 4, ky + 1, ky + 4, CHROME, 1.6)
-        if worn:
-            cv.rect(kx + 1, ky + 1, kx + 2, ky + 2, [(232, 230, 220)], 0)
-        else:
-            cv.flat(kx + 2, ky + 2, CHROME[1])                           # el número, encara llegible
-    for sx, sy in ((x0 + 2, y0 + 2), (x1 - 2, y0 + 2), (x0 + 2, y1 - 2), (x1 - 2, y1 - 2)):
-        cv.flat(sx, sy, CHROME[1])                                       # els cargols
-    led_at(cv, led)
+def _vista(avio=None):
+    """La terminal, de cara (el que es veia pel vidre): la vidriera de l'alba, el rètol i els seients.
+    `avio`: el fotograma dels llums de l'avió que s'acosta (None: no hi és)."""
+    cv = Canvas(light=TEX_LIGHT)
+    PL.terminal_view(cv)
+    if avio is not None:
+        cv.rect(54, 62, 56, 64, [(250, 240, 220)], 0, lit=0)                       # el far d'aterratge
+        cv.glow(55, 63, 4, (255, 236, 200), 0.4)
+        if avio in (0, 5):
+            cv.rect(57, 60, 58, 61, [(255, 70, 60)], 0, lit=0)                      # el llum anticol·lisió
+        if avio == 2:
+            cv.rect(49, 63, 50, 64, [(255, 255, 255)], 0, lit=0)                    # els flaixos de les puntes d'ala
+            cv.rect(60, 63, 61, 64, [(255, 255, 255)], 0, lit=0)
+    return cv.img
 
 
-def led_at(cv, led):
-    lx, ly = LED
-    col = {'vermell': (230, 40, 36), 'verd': (60, 230, 100), 'alarma': (255, 70, 40)}[led]
-    cv.disc(lx, ly, 3, 2.2, [col], 0, lit=0)
-    cv.flat(lx - 1, ly - 1, tuple(min(255, c + 60) for c in col))
-    cv.glow(lx, ly, 8 if led != 'alarma' else 27, col, 0.45 if led != 'alarma' else 0.7)
+def _peces():
+    """Les taquilles, el carro, el senyal groc i la porta oberta, plans (se'n treuen retalls)."""
+    out = {}
+    for nom, fn in (('taquilles', PL.lockers), ('carro', PL.trolley), ('con', PL.wet_floor)):
+        cv = Canvas(light=TEX_LIGHT, transparent=True)
+        fn(cv)
+        out[nom] = cv.img
+    cv = Canvas(light=TEX_LIGHT)
+    _oficina(cv)
+    out['oficina'] = cv.img
+    return out
 
 
-# ─── El passadís ───────────────────────────────────────────────────────────
-
-def extinguisher(cv):
-    """Un extintor penjat i el seu cartell."""
-    obox(cv, 261, 85, 277, 96, REDB, 3.4)
-    cv.rect(265, 88, 273, 93, WHITE, 0)
-    cv.rect(268, 89, 270, 92, [(200, 40, 40)], 0)
-    cv.rect(263, 143, 275, 145, SLATE, 1.6)                              # el suport
-    cv.disc(269, 131, 6, 4, REDB, lambda nx, ny: 3.4 - ny)
-    cv.rect(264, 131, 275, 160, REDB, lambda x, y: 3.0 + (1.6 if x == 267 else 0) - (0.8 if x >= 274 else 0))
-    cv.hline(264, 275, 160, REDB, 1.6)
-    obox(cv, 267, 123, 272, 127, SLATE, 2.6)
-    cv.disc(272, 121, 1.6, 1.6, [(30, 30, 30), (200, 200, 190)], 1.0)    # el manòmetre
-    cv.flat(272, 121, (60, 200, 90))
-    cv.line(272, 125, 280, 139, SLATE, 1.6)
-    cv.line(280, 139, 278, 146, SLATE, 1.6)
-    cv.disc(269, 149, 4, 2.4, WHITE, 0)
-    cv.hline(267, 271, 149, [(200, 40, 40)], 0)
-
-
-def running_man(cv, x, y, col):
-    """L'home que corre del senyal de sortida (6×9)."""
-    rows = ['...x..',
-            '..xx..',
-            '.xxxx.',
-            'x.xx.x',
-            '..xx..',
-            '..x.x.',
-            '.x...x',
-            'x.....',
-            '......']
-    cv.sprite(rows, x, y, {'x': col}, lit=0)
-
-
-def emergency_sign(cv):
-    """El senyal verd de sortida, damunt la porta."""
-    obox(cv, 355, 35, 395, 48, GREENS, 2.6, lit=0)
-    cv.rect(358, 37, 367, 46, [(240, 255, 240)], 0, lit=0)              # la porta blanca
-    running_man(cv, 360, 38, GREENS[1])
-    wt = (240, 255, 240)
-    cv.line(371, 41, 390, 41, [wt], 0, lit=0)
-    cv.line(386, 38, 390, 41, [wt], 0, lit=0)
-    cv.line(386, 44, 390, 41, [wt], 0, lit=0)
-    cv.glow(375, 41, 24, (120, 255, 150), 0.18)
-
-
-def notice_board(cv):
-    """El tauler de torns, amb fulls de colors i una nota amb caràcter."""
-    x0, y0, x1, y1 = 448, 69, 531, 133
-    obox(cv, x0, y0, x1, y1, CARD, 2.6)
-    for k in range(40):                                                  # el suro
-        cv.flat(x0 + 2 + int(hr(k, 31) * (x1 - x0 - 4)), y0 + 2 + int(hr(k, 32) * (y1 - y0 - 4)), CARD[1])
-    obox(cv, x0 + 4, y0 + 4, x1 - 4, y0 + 12, SHEET, 4.6)
-    text(cv, 'TORNS', x0 + (x1 - x0 - text_width('TORNS')) // 2, y0 + 6, [(20, 20, 30)], 0, flat=(30, 30, 40))
-    obox(cv, x0 + 4, y0 + 14, x1 - 27, y0 + 44, SHEET, 4.4)
-    for j in range(6):                                                   # la graella
-        yy = y0 + 16 + j * 5
-        cv.hline(x0 + 5, x1 - 28, yy, SHEET, 3.4)
-        for i in range(6):
-            if hr(i, j, 3) > 0.5:
-                cv.rect(x0 + 7 + i * 8, yy + 1, x0 + 11 + i * 8, yy + 3, [[(60, 100, 200)], [(220, 70, 60)]][(i + j) % 2], 0)
-    obox(cv, x1 - 24, y0 + 17, x1 - 5, y0 + 35, YELS, 4.2)               # un pòsit
-    for k in range(3):
-        cv.line(x1 - 21, y0 + 22 + k * 4, x1 - 9 - (k % 2) * 3, y0 + 21 + k * 4, [(40, 40, 120)], 0)
-    obox(cv, x0 + 8, y0 + 46, x0 + 40, y1 - 5, [(40, 60, 90), (90, 130, 170), (170, 200, 230), (220, 236, 248)], 3.0)
-    for k in range(3):
-        cv.hline(x0 + 12, x0 + 35 - k * 5, y0 + 51 + k * 4, SLATE, 1.6)
-    obox(cv, x0 + 46, y0 + 48, x1 - 6, y1 - 7, [(80, 30, 50), (200, 120, 150), (240, 200, 210)], 2.0)   # un full rosa de vacances
-    for k in range(2):
-        cv.hline(x0 + 49, x1 - 10 - k * 6, y0 + 52 + k * 3, SLATE, 1.6)
-    for (px, py) in ((x0 + 7, y0 + 3), (x1 - 7, y0 + 3), (x1 - 15, y0 + 16), (x0 + 24, y0 + 45), (x0 + 60, y0 + 47)):
-        cv.disc(px, py, 1.4, 1.4, RED, 3.4)
-
-
-def lockers(cv):
-    """Tres taquilles del personal, una amb la porta mal tancada."""
-    for i in range(3):
-        x0 = 547 + i * 29
-        obox(cv, x0, 67, x0 + 27, FLOOR_Y, LOCKER, 2.8, top=0.6)
-        for k in range(5):
-            cv.hline(x0 + 7, x0 + 20, 75 + k * 3, SLATE, 1.0)
-            cv.hline(x0 + 7, x0 + 20, 76 + k * 3, LOCKER, 4.0)
-        cv.rect(x0 + 20, 128, x0 + 21, 139, CHROME, lambda x, y, x0=x0: 4.0 + (0.8 if x == x0 + 20 else 0))
-        obox(cv, x0 + 8, 92, x0 + 19, 100, SHEET, 4.6)                   # la plaqueta del número
-        text(cv, str(i + 7), x0 + 14 - text_width(str(i + 7)) // 2, 94, [(20, 20, 30)], 0, flat=(30, 30, 40))
-        cv.rect(x0 + 4, 186, x0 + 23, 188, LOCKER, 1.8)                  # la reixeta de baix
-    cv.darken(603, 68, 605, FLOOR_Y - 1, 0.6)                            # l'escletxa de la mal tancada
-    cv.line(608, 93, 607, 99, [(220, 70, 60)], 0)                        # una màniga que en surt
-    cv.flat(609, 93, (220, 70, 60))
-
-
-def trolley(cv):
-    """El carro de la neteja amb la galleda, el pal de la fregona i les bosses."""
-    x0, x1 = 448, 528
-    cv.rect(x0, 171, x1, 176, TROLLEY, lambda x, y: 3.0 + (0.8 if y == 171 else 0))
-    cv.rect(x0 + 3, 176, x0 + 4, 213, CHROME, 3.0)
-    cv.rect(x1 - 4, 176, x1 - 3, 213, CHROME, 3.0)
-    cv.rect(x0, 200, x1, 203, TROLLEY, 2.6)
-    for wx in (x0 + 4, x1 - 4):
-        cv.disc(wx, 216, 3, 3, SLATE, lambda nx, ny: 1.8 - ny * 0.6)
-        cv.flat(wx, 216, CHROME[3])
-    # la bossa groga d'escombraries penjada
-    bag = [(x0 + 3, 139), (x0 + 29, 139), (x0 + 32, 171), (x0, 171)]
-    cv.poly(bag, YELS, lambda x, y: 2.6 + (0.6 if x < x0 + 8 else 0) + (0.5 if (x - x0 - 14) % 9 == 0 and y > 145 else 0))
-    outline_poly(cv, bag, YELS)
-    cv.rect(x0 + 10, 136, x0 + 22, 139, YELS, 3.6)                       # el nus
-    # els esprais i la galleda blava
-    for i, c in enumerate(([(10, 60, 30), (30, 140, 70), (100, 220, 140)], [(80, 10, 60), (170, 40, 140), (240, 120, 220)])):
-        sx = x0 + 40 + i * 11
-        obox(cv, sx, 155, sx + 7, 171, c, 1.6)
-        cv.rect(sx + 2, 150, sx + 5, 154, SLATE, 2.0)                    # el gallet
-        cv.rect(sx + 2, 160, sx + 5, 165, WHITE, 0)
-    cv.poly([(x0 + 61, 181), (x1 - 3, 181), (x1 - 5, 200), (x0 + 64, 200)], TROLLEY, 2.4)
-    cv.hline(x0 + 61, x1 - 3, 181, TROLLEY, 3.8)
-    cv.hline(x0 + 63, x1 - 5, 183, [(60, 70, 90), (110, 120, 140)], 1.0)  # l'aigua grisa
-    cv.line(x0 + 69, 181, x0 + 77, 139, CARD, 3.0)
-    cv.line(x0 + 70, 181, x0 + 78, 139, CARD, 2.0)
-    cv.darken(x0 - 3, 219, x1 + 3, 223, 0.55)
-
-
-def wet_floor(cv):
-    """El senyal groc de terra mullat (en tres idiomes, en teoria; aquí només el ninot que cau)."""
-    cx = 139
-    cone = [(cx - 11, 248), (cx - 4, 208), (cx + 4, 208), (cx + 11, 248)]
-    cv.poly(cone, YELS, lambda x, y: 3.4 - (x - cx) * 0.06)
-    outline_poly(cv, cone, YELS)
-    ink = [(20, 16, 6)]
-    cv.disc(cx, 221, 1.6, 1.6, ink, 0)
-    cv.line(cx, 223, cx - 3, 230, ink, 0)
-    cv.line(cx - 1, 225, cx + 3, 223, ink, 0)
-    cv.line(cx - 3, 230, cx + 3, 234, ink, 0)
-    cv.line(cx - 3, 230, cx - 6, 233, ink, 0)
-    cv.line(cx - 6, 236, cx + 5, 236, ink, 0)
-    cv.hline(cx - 7, cx + 7, 242, ink, 0)                                # el text, il·legible
-    cv.darken(cx - 12, 249, cx + 12, 252, 0.5)
-    # el bassal, amb el reflex del fluorescent
-    cv.tint(cx - 40, 238, cx + 30, 256, (150, 170, 190),
-            lambda x, y: 0.10 if ((x - cx + 5) / 35) ** 2 + ((y - 247) / 8) ** 2 < 1 else 0)
-    cv.hline(cx - 20, cx - 8, 244, LINO, 5.4)
-
-
-def radiator(cv):
-    """Un radiador sota el vidre."""
-    for i in range(14):
-        x = 53 + i * 8
-        cv.rect(x, 168, x + 5, 192, SHEET, lambda xx, yy, x=x: 3.6 + (0.8 if xx == x else 0) - (0.8 if xx == x + 5 else 0))
-        cv.disc(x + 2.5, 168, 2.5, 1, SHEET, 4.2)
-    cv.rect(51, 192, 165, 193, SHEET, 2.4)
-    cv.rect(165, 186, 171, 188, CHROME, 3.0)                             # la clau
-    cv.disc(172, 187, 2, 2, CHROME, 3.6)
-    cv.vline(168, 189, 199, CHROME, 2.4)
-
-
-def bg(cv, soler_hi=False):
-    wall(cv)
-    floor(cv)
-    terminal_view(cv)
-    if soler_hi:
-        soler(cv)
-    glass_frame(cv)
-    radiator(cv)
-    extinguisher(cv)
-    emergency_sign(cv)
-    door(cv)
-    keypad(cv)
-    notice_board(cv)
-    lockers(cv)
-    trolley(cv)
-    wet_floor(cv)
-
-
-_BASE = {}
-
-
-def _base():
-    if 'img' not in _BASE:
-        cv = Canvas(light=LIGHT)
-        bg(cv)
-        _BASE['img'] = cv.img
-    return _BASE['img']
-
-
-# ─── Props ──────────────────────────────────────────────────────────────────
-
-def soler_vidre(cv):
-    """En Soler, vigilant, vist pel vidre (fins que la Vet el distreu)."""
-    var = Canvas(light=LIGHT)
-    bg(var, soler_hi=True)
-    cv.img.alpha_composite(_diff(var.img, _base()))
-
-
-def porta_oberta(cv):
-    """La porta oberta cap endins: es veu l'oficina (llum fluorescent, un arxivador) i el llum verd."""
-    x0, y0, x1, y1 = DOOR_BOX
+def _oficina(cv):
+    """L'oficina, a l'altra banda de la porta oberta (el que es veia a `porta_oberta` del dibuix pla, sense la fulla):
+    la llum fluorescent, un arxivador i un racó del pòster de la companyia."""
+    x0, y0, x1, y1 = PL.DOOR_BOX
     for y in range(y0, y1 + 1):
         for x in range(x0, x1 + 1):
-            cv.put(x, y, CONC if y < 160 else TILE, (3.2 if y < 160 else 3.6) - (x1 - x) * 0.015 + (hr(x, y, 17) - 0.5) * 0.2)
-    cv.rect(x0, 159, x1, 160, CONC, 1.6)
-    obox(cv, 381, 93, 408, 187, DESK, 3.0)                               # un arxivador
+            cv.put(x, y, CONC if y < 160 else TILE, (4.2 if y < 160 else 4.4) - (y - y0) * 0.006 + (hr(x, y, 17) - 0.5) * 0.2)
+    cv.rect(x0, 159, x1, 160, CONC, 2.2)
+    PL.obox(cv, 341, 93, 368, 187, PL.DESK, 3.0)
     for k in range(3):
-        obox(cv, 384, 97 + k * 30, 405, 123 + k * 30, DESK, 3.4, top=0.6)
-        cv.rect(389, 104 + k * 30, 400, 105 + k * 30, CHROME, 4.0)
-    cv.darken(381, 188, 410, 190, 0.5)
-    obox(cv, 352, 100, 370, 124, [(40, 36, 30), (110, 104, 90), (190, 184, 166)], 1.8)   # un racó del pòster de la companyia
-    cv.rect(354, 102, 368, 116, BLUE, 2.8)
-    cv.rect(347, 64, 400, 65, [(230, 244, 255)], 0, lit=0)               # el fluorescent de l'oficina
-    cv.glow(373, 67, 27, (220, 236, 255), 0.3)
-    # el cantell de la porta, oberta cap endins (a l'esquerra)
-    leaf = [(x0, y0), (x0 + 11, y0 + 5), (x0 + 11, y1 - 3), (x0, y1)]
-    cv.poly(leaf, DOOR, lambda x, y: 4.0 - (x - x0) * 0.15)
-    outline_poly(cv, leaf, DOOR)
-    cv.rect(x0 + 6, 139, x0 + 8, 147, CHROME, 3.6)                       # la maneta, de cantell
-    led_at(cv, 'verd')
+        PL.obox(cv, 344, 97 + k * 30, 365, 123 + k * 30, PL.DESK, 3.4, top=0.6)
+        cv.rect(349, 104 + k * 30, 360, 105 + k * 30, CHROME, 4.0)
+    cv.darken(341, 188, 370, 190, 0.5)
+    PL.obox(cv, 376, 90, 398, 118, [(40, 36, 30), (110, 104, 90), (190, 184, 166)], 1.8)   # un racó del pòster
+    cv.rect(378, 92, 396, 108, BLUE, 2.8)
+    cv.rect(337, 64, 400, 65, [(230, 244, 255)], 0, lit=0)
+    cv.glow(368, 67, 30, (220, 236, 255), 0.3)
 
 
-def alarma(cv):
-    """La porta xiula: el llum vermell encès de debò, que tenyeix el teclat i la porta."""
-    base = _base()
-    var = Canvas(light=LIGHT, img=base.copy())
-    led_at(var, 'alarma')
-    var.glow(LED[0], LED[1], 61, (255, 40, 30), 0.55)
-    var.disc(LED[0], LED[1], 4, 3.2, [(255, 120, 90)], 0, lit=0)
-    var.flat(LED[0] - 1, LED[1] - 1, (255, 220, 200))
-    cv.img.alpha_composite(_diff(var.img, base))
+BAG_BOX = (446, 135, 482, 172)                     # la bossa groga, penjada del carro
+SPRAY_BOX = (487, 149, 508, 172)                   # els dos esprais
+BUCKET_BOX = (508, 180, 526, 201)                  # la galleda blava
+CONE_BOX = (126, 206, 153, 250)                    # el senyal de terra mullat
+VIEW_TOP = 98                                      # al dibuix pla de la terminal: on comença el seu terra
 
 
-PROPS = {'soler_vidre': soler_vidre, 'porta_oberta': porta_oberta, 'alarma': alarma}
+@functools.lru_cache(maxsize=None)
+def _textures(led='vermell', oberta=False):
+    return {'paret': _paret(led, oberta), 'vista': _vista(), **_peces()}
 
 
-# ─── El fluorescent que parpelleja ─────────────────────────────────────────
+@functools.lru_cache(maxsize=None)
+def _soler():
+    return person(NPCS['soler'], 'D')
+
+
+# ─── Les superfícies ────────────────────────────────────────────────────────
+
+def _bloc(lvl0=4.2, seed=3):
+    """Bloc de formigó pintat de verd en coordenades del món (s, t des del cantó de dalt): on el dibuix pla no
+    arriba (la paret de prop i la de més enllà de les taquilles)."""
+    def L(s, t, P):
+        if t < 9:
+            return 2.6                                                   # el sostre
+        if t < 23:
+            return 2.2 + (0.8 if t < 10 else 0)                          # l'ombra de la safata i la canonada
+        row = int(t // 13.3)
+        off = 20 if row % 2 else 0
+        if t % 13.3 < 1 or (s + off) % 40 < 1:
+            v = 2.8
+        else:
+            v = lvl0 + (hr(int((s + off) // 40), row, seed) - 0.5) * 0.3 + (hr(int(s // 2), int(t // 2), 5) - 0.5) * 0.3
+        if t > 157:
+            v -= 0.9
+        if t > HW - 5:
+            v = 2.0 if t > HW - 4 else 3.0                               # el sòcol de linòleum
+        return v
+    return L
+
+
+
+def _lino(s, t, P):
+    """El linòleum gris, en coordenades del món: les juntes de les lloses que fugen, el camí gastat de la porta i les
+    rascades de les rodes."""
+    x, z = P[0], P[2]
+    v = 3.2 + (fbm(x / 40, z / 30, 4) - 0.5) * 0.5 + (hr(int(x / 2), int(z / 2), 4) - 0.5) * 0.3
+    if x % 60 < 1.0 or z % 60 < 1.0:
+        v -= 0.9
+    v += max(0.0, 1 - math.hypot((x - (DOOR_W[0] + DOOR_W[1]) / 2) / 70, (z - ZW + 30) / 110)) * 0.8
+    i = int(x // 50) * 7 + int(z // 24)
+    if hr(i, 9) > 0.8 and abs((z % 24) - 12) < 0.7 and (x % 50) < 10 + hr(i, 3) * 26:
+        v -= 1.0                                                         # una rascada
+    return v
+
+
+def _dins_vidre(z, y):
+    z0, z1, y0, y1 = GLASS
+    return z0 + 4 < z < z1 - 4 and y0 + 4 < y < y1 - 4
+
+
+def escena(cv, tex, estat=frozenset()):
+    """Tota la sala, de lluny a prop. `estat`: 'soler', 'oberta', 'apagat'. → l'Escena (qui ha pintat què)."""
+    e = Escena(cv, CAM, LLUMS, ambient=-0.3)
+    zn = CAM.pos[2] + 60
+    paret = tex['paret']
+    gz0, gz1, gy0, gy1 = GLASS
+    # ── a l'altra banda del vidre: la terminal ──
+    tz0, tz1 = gz0 - 120, gz1 + 300
+    e.quad('terminal', (TERM_X, 400, tz0), (TERM_X, 400, tz1), (TERM_X, TERM_Y, tz1), (TERM_X, TERM_Y, tz0),
+           ramp=CONC, lvl=lambda s, t, P: 3.6 + (hr(int(s // 80), 1) - 0.5) * 0.3 - (0.6 if s % 80 < 1.5 else 0))
+    vw = PL.GLASS[2] - PL.GLASS[0]
+    vk = 1.8                                                              # la vista, gairebé el doble de gran
+    vh = (VIEW_TOP - PL.GLASS[1]) * vk
+    vz = (gz0 + gz1) / 2 + 230                                           # (el que es veu pel vidre, de biaix)
+    e.quad('vista', (TERM_X + 1, TERM_Y + vh, vz - vw * vk / 2), (TERM_X + 1, TERM_Y + vh, vz + vw * vk / 2),
+           (TERM_X + 1, TERM_Y, vz + vw * vk / 2), (TERM_X + 1, TERM_Y, vz - vw * vk / 2),
+           tex=(tex['vista'], (PL.GLASS[0], PL.GLASS[1], PL.GLASS[2], VIEW_TOP)))
+
+    def rajola(s, t, P):
+        x, z = P[0], P[2]
+        v = 4.2 + (fbm(x / 50, z / 50, 7) - 0.5) * 0.4 + (TERM_X - x) / -200 * 0.0
+        if x % 48 < 1.2 or z % 48 < 1.2:
+            v -= 0.9
+        return v
+    e.quad('terminal', (TERM_X, TERM_Y, tz1), (-1, TERM_Y, tz1), (-1, TERM_Y, tz0), (TERM_X, TERM_Y, tz0),
+           ramp=TILE, lvl=rajola)
+    # els seients blaus de la terminal, en fila, i en Soler
+    for k in range(3):
+        sz = vz - 150 + k * 92
+        e.caixa('terminal', TERM_X + 70, TERM_X + 104, TERM_Y, TERM_Y + 18, sz, sz + 80, BLUE, 3.0,
+                cares={'dalt': {'ramp': BLUE, 'lvl': lambda s, t, P: 3.6 - (1.0 if int(t) % 20 < 2 else 0)},
+                       'dreta': {'ramp': BLUE, 'lvl': 2.6}})
+        e.caixa('terminal', TERM_X + 96, TERM_X + 104, TERM_Y + 18, TERM_Y + 44, sz, sz + 80, BLUE, 2.4)
+    if 'soler' in estat:
+        sx, sz = SOLER
+        e.sprite('soler', _soler(), (34, 111), (sx, TERM_Y, sz))
+    # ── el sostre i les parets ──
+    e.quad('sostre', (0, HW, zn), (XR, HW, zn), (XR, HW, ZW), (0, HW, ZW), ramp=CONC, lvl=2.6, dues_cares=True)
+    # la paret del vidre (x = 0): de prop, bloc; cap a la cantonada, el dibuix pla (amb el forat del vidre)
+    e.quad('paret_esq_prop', (0, HW, zn), (0, HW, ZW - XL), (0, 0, ZW - XL), (0, 0, zn), ramp=BLOCK, lvl=_bloc())
+    e.quad('paret_esq', (0, HW, ZW - XL), (0, HW, ZW), (0, 0, ZW), (0, 0, ZW - XL), tex=(paret, (0, 0, XL, HW)))
+    # el vidre: els reflexos del passadís, en diagonal, per damunt de la terminal
+    e.claror((0.5, gy1 - 4, gz0 + 4), (0.5, gy1 - 4, gz1 - 4), (0.5, gy0 + 4, gz1 - 4), (0.5, gy0 + 4, gz0 + 4),
+             (200, 230, 220), lambda s, t: 0.16 if (s + t * 0.9) % 70 < 8 else (0.10 if (s + t * 0.9) % 70 < 12 else 0.06))
+    # la paret del fons (z = 300): el dibuix pla (x 250..640) i, a la dreta, més bloc
+    if 'oberta' in estat:
+        dx0, dx1, _, dy1 = DOOR_W
+        # l'oficina, a l'altra banda de la porta: el dibuix pla de la porta oberta, una mica endins, i el seu terra
+        e.quad('oficina', (dx0 - 90, dy1 + 20, ZW + 70), (dx1 + 10, dy1 + 20, ZW + 70), (dx1 + 10, 0, ZW + 70),
+               (dx0 - 90, 0, ZW + 70), tex=(tex['oficina'], PL.DOOR_BOX))
+        e.quad('oficina', (dx0 - 90, 0.2, ZW + 70), (dx1 + 10, 0.2, ZW + 70), (dx1 + 10, 0.2, ZW), (dx0 - 90, 0.2, ZW),
+               ramp=TILE, lvl=lambda s, t, P: 3.4 - (0.8 if int(s) % 40 == 0 else 0))
+        # la fulla, oberta cap endins (les frontisses, a la dreta)
+        a = 1.15
+        fx, fz = dx1 - (dx1 - dx0) * math.cos(a), ZW + (dx1 - dx0) * math.sin(a)
+        e.quad('porta', (fx, dy1, fz), (dx1, dy1, ZW), (dx1, 0, ZW), (fx, 0, fz), ramp=DOOR,
+               lvl=lambda s, t, P: 3.4 + s * 0.012 + (0.8 if abs(t - 70) < 2 else 0), dues_cares=True)
+        e.claror((dx0, 0.3, ZW), (dx1, 0.3, ZW), (dx1 + 40, 0.3, ZW - 90), (dx0 - 30, 0.3, ZW - 90), (230, 240, 255),
+                 lambda s, t: 0.22 * max(0.0, 1 - t / 90))
+    e.quad('paret_fons', (0, HW, ZW), (W - XL, HW, ZW), (W - XL, 0, ZW), (0, 0, ZW), tex=(paret, (XL, 0, W, HW)))
+    e.quad('paret_fons_dreta', (W - XL, HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (W - XL, 0, ZW), ramp=BLOCK,
+           lvl=_bloc(seed=5))
+    # l'armari de la mànega d'incendis, a la paret de més enllà de les taquilles
+    hx = W - XL + 40
+    e.caixa('bie', hx, hx + 46, 70, 128, ZW - 10, ZW - 0.5, REDB, 2.6,
+            cares={'davant': {'ramp': REDB, 'lvl': lambda s, t, P: 3.4 if s < 2 or t < 2 or s > 44 or t > 56 else
+                              (1.4 if 6 < s < 40 and 6 < t < 46 and abs(math.hypot(s - 23, t - 26) - 13) < 3 else 2.4)}})
+    e.caixa('bie', hx + 8, hx + 38, 132, 140, ZW - 1.5, ZW - 0.5, [(200, 200, 196), (240, 240, 236)], 1.4)
+    # la canonada dels bombers i la safata de cables, a dalt, que continuen per la paret de prop i la de la dreta
+    for pts in (((1.5, HW - 19.5, zn), (1.5, HW - 19.5, ZW - XL)), ((W - XL, HW - 19.5, ZW - 1.5), (XR, HW - 19.5, ZW - 1.5))):
+        e.tub('canonada', *pts, 2.2, REDB, 2.6, brides=107, llum_dir=(0.2, -1.0))
+    # la claror del fluorescent a la paret i el terra
+    e.quad('terra', (0, 0, ZW), (XR, 0, ZW), (XR, 0, zn), (0, 0, zn), ramp=LINO, lvl=_lino)
+    lx, ly, lz = LAMP
+    if 'apagat' not in estat:
+        e.claror((lx - 200, 0.3, lz + 200), (lx + 200, 0.3, lz + 200), (lx + 200, 0.3, lz - 200), (lx - 200, 0.3, lz - 200),
+                 (220, 236, 255), lambda s, t: 0.10 * max(0.0, 1 - math.hypot(s - 200, t - 200) / 200))
+    # la claror de la terminal, que entra pel vidre i s'estira pel terra
+    e.claror((0, 0.4, gz1), (200, 0.4, gz1 + 60), (200, 0.4, gz0 - 40), (0, 0.4, gz0), (190, 200, 230),
+             lambda s, t: 0.12 * max(0.0, 1 - s / 200) * min(1.0, t / 30, (gz1 - gz0 - t) / 30 + 1))
+    # la foscor dels racons
+    e.foscor('racons', (0, 0.5, ZW), (XR, 0.5, ZW), (XR, 0.5, zn), (0, 0.5, zn),
+             lambda s, t: max(0.55 * max(0.0, 1 - t / 26), 0.45 * max(0.0, 1 - s / 22)))
+    e.foscor('cantonada', (0, HW, ZW - 0.5), (60, HW, ZW - 0.5), (60, 0, ZW - 0.5), (0, 0, ZW - 0.5),
+             lambda s, t: 0.5 * max(0.0, 1 - s / 60))
+    e.foscor('cantonada2', (0.5, HW, ZW - 60), (0.5, HW, ZW), (0.5, 0, ZW), (0.5, 0, ZW - 60),
+             lambda s, t: 0.5 * max(0.0, 1 - (60 - s) / 60))
+    # les taquilles, contra la paret del fons
+    tx0 = _w(LOCK_BOX[0])
+    tx1 = _w(LOCK_BOX[2])
+    th = LOCK_BOX[3] - LOCK_BOX[1]
+    e.foscor('ombra_taquilles', (tx0 - 14, 0.6, ZW), (tx1 + 4, 0.6, ZW), (tx1 + 4, 0.6, ZW - LOCK_D - 16),
+             (tx0 - 14, 0.6, ZW - LOCK_D - 16), lambda s, t: 0.55 * min(1.0, max(0.0, (LOCK_D + 16 - t) / 16)))
+    e.caixa('taquilles', tx0, tx1, 0, th, ZW - 1 - LOCK_D, ZW - 1, [(20, 30, 40), (34, 50, 64), (52, 74, 92),
+                                                                  (74, 100, 120), (100, 128, 150), (140, 166, 184)], 2.4,
+            cares={'davant': {'tex': (tex['taquilles'], LOCK_BOX)},
+                   'dalt': {'ramp': CONC, 'lvl': lambda s, t, P: 2.8 + (fbm(s / 10, t / 8, 3) - 0.5) * 0.8},
+                   'esquerra': {'ramp': [(20, 30, 40), (34, 50, 64), (52, 74, 92), (74, 100, 120)],
+                                'lvl': lambda s, t, P: 2.0 - (0.6 if int(t) % 30 == 0 else 0)}})
+    # el senyal de terra mullat, amb el bassal (el reflex del fluorescent)
+    cx, cz = CONE
+    e.claror((cx - 50, 0.5, cz + 22), (cx + 40, 0.5, cz + 22), (cx + 40, 0.5, cz - 22), (cx - 50, 0.5, cz - 22),
+             (150, 170, 190), lambda s, t: 0.16 if ((s - 50) / 44) ** 2 + ((t - 22) / 20) ** 2 < 1 else 0)
+    e.claror((cx - 30, 0.6, cz + 6), (cx - 6, 0.6, cz + 6), (cx - 6, 0.6, cz - 2), (cx - 30, 0.6, cz - 2),
+             (200, 220, 240), lambda s, t: 0.35 if abs(t - 4) < 2 else 0)
+    e.foscor('ombra_con', (cx - 14, 0.7, cz + 10), (cx + 14, 0.7, cz + 10), (cx + 14, 0.7, cz - 10), (cx - 14, 0.7, cz - 10),
+             lambda s, t: 0.5 * max(0.0, 1 - ((s - 14) / 14) ** 2 - ((t - 10) / 10) ** 2) * 1.5)
+    e.sprite('con', tex['con'].crop(CONE_BOX), (PL_CONE_X - CONE_BOX[0], 249 - CONE_BOX[1]), (cx, 0, cz))
+    # el carro de la neteja, girat: dos prestatges, les potes, les rodes, la galleda, la bossa, els esprais i la fregona
+    rx, rz, rw, rd, ra = TROL
+    c_, s_ = math.cos(ra), math.sin(ra)
+
+    def R(lx, y, lz):
+        return (rx + lx * c_ - lz * s_, y, rz + lx * s_ + lz * c_)
+    e.foscor('ombra_carro', R(-rw / 2 - 10, 0.6, rd / 2 + 8), R(rw / 2 + 6, 0.6, rd / 2 + 8), R(rw / 2 + 6, 0.6, -rd / 2 - 12),
+             R(-rw / 2 - 10, 0.6, -rd / 2 - 12),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - rw / 2 - 8) / (rw / 2 + 8)) ** 2 - ((t - rd / 2 - 10) / (rd / 2 + 10)) ** 2) * 1.6)
+    for qx in (-rw / 2 + 3, rw / 2 - 3):
+        for qz in (-rd / 2 + 3, rd / 2 - 3):
+            e.caixa_girada('carro', *R(qx, 0, qz)[::2], 4, 4, 4, ra, SLATE, 1.6)                        # les rodes
+            e.caixa_girada('carro', *R(qx, 0, qz)[::2], 2, 2, 44, ra, CHROME, 3.0, y0=4)               # les potes
+    e.caixa_girada('carro', rx, rz, rw, rd, 3, ra, TROLLEY, 2.6, y0=14)                                 # a baix
+    e.caixa_girada('carro', *R(rw / 2 - 16, 0, 0)[::2], 22, 22, 20, ra, TROLLEY, 2.6, y0=17,
+                   cares={'dalt': {'ramp': [(30, 36, 50), (60, 70, 90), (110, 120, 140)], 'lvl': 1.2}})   # la galleda
+    e.caixa_girada('carro', rx, rz, rw, rd, 5, ra, TROLLEY, 3.0, y0=44,
+                   cares={'dalt': {'ramp': TROLLEY, 'lvl': 3.6}, 'davant': {'ramp': TROLLEY, 'lvl': 2.6}})   # a dalt
+    e.sprite('carro', tex['carro'].crop(SPRAY_BOX), (0, SPRAY_BOX[3] - SPRAY_BOX[1] - 1), R(-4, 49, 4))
+    e.cable('carro', [R(rw / 2 - 12, 34, 2), R(rw / 2 - 6, 70, 6), R(rw / 2 - 1, 92, 10)], CARD, 3.0, gruix=2.0)  # la fregona
+    e.sprite('carro', tex['carro'].crop(BAG_BOX), (18, 0), R(-rw / 2 - 2, 48, -rd / 2))               # la bossa
+    # el fluorescent que penja del sostre
+    on = [(200, 214, 228), (232, 244, 255), (250, 252, 255)]
+    off = [(70, 76, 86), (100, 108, 118), (120, 130, 140)]
+    tub = {'ramp': off if 'apagat' in estat else on, 'lvl': lambda s, t, P: 1.6 if 1.5 < t < 6 else 0.4}
+    e.caixa('fluorescent', lx - 60, lx + 60, ly - 5, ly + 3, lz - 6, lz + 6, CHROME, 2.0,
+            cares={'sota': tub, 'davant': tub, 'dalt': {'ramp': CHROME, 'lvl': 1.4}})
+    for xx in (lx - 50, lx + 50):
+        e.cable('fluorescent', [(xx, HW, lz), (xx, ly + 2, lz)], CHROME, 2.0, gruix=0.8)
+    # primer pla: una canonada vertical a la dreta i una d'horitzontal a dalt, i una paperera i caixes a l'esquerra
+    FOSC = [(3, 5, 5), (7, 10, 10), (12, 17, 16), (18, 25, 23), (26, 34, 31), (36, 45, 41)]
+    e.tub('primer_pla', (486, 0, 22), (486, HW, 22), 7, FOSC, 1.8, brides=60)
+    e.tub('primer_pla', (-10, HW - 4, 6), (520, HW - 4, 6), 6, FOSC, 1.6, brides=90, llum_dir=(0.0, -1.0))
+    for cx_, cz_, w, d, h, a, y0 in ((-6, 60, 64, 52, 40, 0.3, 0), (-4, 64, 46, 38, 30, 0.1, 40)):
+        e.caixa_girada('primer_pla', cx_, cz_, w, d, h, a, FOSC, 1.6, y0=y0,
+                       cares={'dalt': {'ramp': FOSC, 'lvl': lambda s, t, P: 3.0 - (1.2 if abs(s - 24) < 2 else 0)},
+                              'davant': {'ramp': FOSC, 'lvl': 1.2}, 'dreta': {'ramp': FOSC, 'lvl': 2.0}})
+    e.caixa_girada('primer_pla', 74, 14, 30, 30, 40, -0.2, FOSC, 1.4,
+                   cares={'dalt': {'ramp': FOSC, 'lvl': lambda s, t, P: 0.6 if 3 < s < 27 and 3 < t < 27 else 2.6},
+                          'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.4 + (0.6 if int(s) % 5 == 0 else 0)}})
+    return e
+
+
+PL_CONE_X = 139
+
+
+# ─── Composició ─────────────────────────────────────────────────────────────
+
+def _render(estat=frozenset(), tex=None):
+    cv = Canvas(light=LIGHT)
+    e = escena(cv, tex or _textures(), estat)
+    cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)    # la barra de verbs: negre
+    return cv.img, e
+
+
+@functools.lru_cache(maxsize=None)
+def _base():
+    return _render()
+
+
+def bg(cv):
+    cv.img.paste(_base()[0])
+    cv.P = cv.img.load()
+
+
+def _decorat(*estat, **kw):
+    """Un decorat: la sala amb aquell estat (i el dibuix pla canviat), menys la de sempre (només el que canvia)."""
+    def draw(cv):
+        img, _ = _render(frozenset(estat), _textures(**kw))
+        cv.img.alpha_composite(_diff(img, _base()[0]))
+        cv.P = cv.img.load()
+    return draw
+
+
+PROPS = {
+    'soler_vidre': _decorat('soler'),
+    'porta_oberta': _decorat('oberta', oberta=True),
+    'alarma': _decorat(led='alarma'),
+}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _fotograma(capes):
+    """El fons amb unes capes damunt, menys el fons."""
+    img, _ = _base()
+    img = img.copy()
+    for c in capes:
+        img.alpha_composite(c)
+    return _diff(img, _base()[0])
+
+
+@functools.lru_cache(maxsize=None)
+def _apagat():
+    """El fluorescent apagat: el tub fosc i, al voltant, la sala una mica més fosca (només a prop del llum)."""
+    import numpy as np
+    on = np.asarray(_base()[0]).astype(float)
+    off = np.asarray(_render(frozenset({'apagat'}))[0]).astype(float)
+    u, v, _ = CAM.projecta(LAMP)
+    yy, xx = np.mgrid[0:H, 0:W]
+    k = np.clip(1 - np.hypot((xx - u) / 260, (yy - v) / 200), 0, 1)[..., None] * 0.35
+    dark = on * (1 - k)
+    _, e = _base()
+    lamp = np.array([e.ids[i] == 'fluorescent' for i in e.amo], bool).reshape(H, W)
+    dark[lamp] = off[lamp]
+    return Image.fromarray(dark.astype('uint8'), 'RGBA')
+
 
 def _frames():
-    base = _base()
-    frames = []
-    for i in range(16):
-        cv = Canvas(light=LIGHT, img=base.copy())
-        if i in (5, 7, 12):
-            tube(cv, on=False)
-            cv.darken(200, 0, 333, 19, 0.25)
-        elif i in (6, 13):                                               # mig encès: només brillen els extrems
-            tube(cv, on=False)
-            for ex in (213, 316):
-                cv.hline(ex, ex + 4, 5, [(200, 220, 240)], 0, lit=0)
-        frames.append(_diff(cv.img, base))
-    return frames
+    """El fluorescent parpelleja: apagat (5, 7, 12) i mig encès, només els extrems (6, 13)."""
+    import numpy as np
+    base = _base()[0]
+    off = _apagat()
+    full = _diff(off, base)
+    # mig encès: els extrems del tub encara fan llum
+    half = np.asarray(off).copy()
+    on = np.asarray(base)
+    _, e = _base()
+    u0 = CAM.projecta((LAMP[0] - 60, LAMP[1], LAMP[2]))[0]
+    u1 = CAM.projecta((LAMP[0] + 60, LAMP[1], LAMP[2]))[0]
+    lamp = np.array([e.ids[i] == 'fluorescent' for i in e.amo], bool).reshape(H, W)
+    xx = np.mgrid[0:H, 0:W][1]
+    ends = lamp & ((xx < u0 + (u1 - u0) * 0.08) | (xx > u1 - (u1 - u0) * 0.08))
+    half[ends] = on[ends]
+    mig = _diff(Image.fromarray(half, 'RGBA'), base)
+    buit = _diff(base, base)
+    return [full if i in (5, 7, 12) else mig if i in (6, 13) else buit for i in range(16)]
 
 
 def _frames_avio():
-    """Per la vidriera del fons de la terminal, un avió que s'acosta de cara: el far fix i el llum vermell que parpelleja."""
-    base = _base()
-    frames = []
-    for i in range(10):
-        cv = Canvas(light=LIGHT, img=base.copy())
-        cv.flat(55, 63, (250, 240, 220))                                 # el far d'aterratge
-        cv.glow(55, 63, 3, (255, 236, 200), 0.35)
-        if i in (0, 5):
-            cv.flat(57, 61, (255, 70, 60))                               # el llum anticol·lisió
-            cv.glow(57, 61, 4, (255, 60, 60), 0.5)
-        if i == 2:
-            cv.flat(51, 63, (255, 255, 255))                             # el flaix blanc de la punta d'ala
-            cv.flat(59, 63, (255, 255, 255))
-        frames.append(_diff(cv.img, base))
-    return frames
+    """Per la vidriera del fons de la terminal, un avió que s'acosta de cara: el far fix i el llum vermell que
+    parpelleja."""
+    _, e = _base()
+    base = _vista()
+    return [_fotograma([e.capa(_diff(_vista(avio=i), base), {'vista'})]) for i in range(10)]
 
 
 ANIMS = {'fluorescent': {'frames': _frames, 'frameDuration': 120},
          'avio': {'frames': _frames_avio, 'frameDuration': 140}}
 
 
-# ─── Geometria a 640×360 (room_designs.AEROPORT_PERSONAL ×4/3) ─────────────
+# ─── Capes del davant ───────────────────────────────────────────────────────
 
+def _amo(ids):
+    def mask(x, y):
+        _, e = _base()
+        return e.ids[e.amo[y * e.cv.w + x]] in ids
+    return mask
+
+
+def _p(x, z, y=0.0):
+    u, v, _ = CAM.projecta((x, y, z))
+    return round(u), round(v)
+
+
+# El primer pla (sempre davant), el carro i el senyal de terra mullat (qui hi passa per darrere, hi queda darrere).
+FRONT = [
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    {'id': 'davant_carro', 'mask': _amo({'carro'}), 'baseline': _p(TROL[0], TROL[1] - 12)[1], 'zIndex': 20},
+    {'id': 'davant_con', 'mask': _amo({'con'}), 'baseline': _p(CONE[0], CONE[1] - 4)[1], 'zIndex': 20},
+]
+
+
+# ─── Geometria (coordenades de sala, projectades) ────────────────────────────
+
+def _rect_mon(*Ps):
+    pts = [CAM.projecta(P) for P in Ps]
+    return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
+            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+
+
+def _escala_a(v):
+    """L'escala d'un personatge amb els peus a la y de pantalla `v` (al terra, la profunditat només depèn de v)."""
+    lo, hi = 1.0, 2000.0
+    for _ in range(60):
+        z = (lo + hi) / 2
+        if CAM.projecta((260, 0, z))[1] > v:
+            lo = z
+        else:
+            hi = z
+    return CAM.escala((260, 0, (lo + hi) / 2))
+
+
+# El terra on es camina (al món): tot el passadís, menys el carro i les taquilles, i sense acostar-se tant a la càmera
+# que el personatge passi d'≈1,2.
+WALK_MON = [(20, 278), (420, 280), (420, 252), (470, 250), (480, 130), (330, 92), (190, 100), (90, 124), (20, 150)]
+_WALK = [_p(x, z) for x, z in WALK_MON]
+_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+
+_DX = (DOOR_W[0] + DOOR_W[1]) / 2
 GEOMETRIA = {
     'things': {
-        'teclat': {'rect': (299, 112, 331, 152), 'walk': (315, 251)},
-        'porta': {'rect': (333, 59, 416, 214), 'walk': (373, 248)},
+        'teclat': {'rect': _rect_mon((KEYPAD[0] - 2, KEYPAD[3] + 2, ZW), (KEYPAD[1] + 2, KEYPAD[2] - 2, ZW)),
+                   'walk': _p((KEYPAD[0] + KEYPAD[1]) / 2, 262)},
+        'porta': {'rect': _rect_mon((DOOR_W[0] - 4, DOOR_W[3] + 5, ZW), (DOOR_W[1] + 4, 0, ZW)),
+                  'walk': _p(_DX, 270)},
     },
-    'spawns': {'iri': (213, 259)},
-    'walkable': [(19, 236), (621, 236), (632, 271), (8, 271)],
+    'spawns': {'iri': _p(160, 150)},
+    'walkable': _WALK,
+    'forats': [],
+    'floorSquash': 0.42,                           # (la càmera, picada: el terra es veu aixafat)
+    # L'ombra de contacte: la llum dominant és el fluorescent que penja; curta, cap a fora del llum.
+    'characterShadow': {'enabled': True, 'color': '#081010', 'alpha': 0.42, 'squash': 0.4, 'core': 0.6,
+                        'light': {'x': _p(LAMP[0], LAMP[2])[0], 'y': _p(LAMP[0], LAMP[2])[1], 'stretch': 0.6,
+                                  'reach': 170}},
+    'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
+                 'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
+                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # la llum de la sala sobre els personatges, en temps d'execució
+    'characterLights': {
+        'ambient': '#a4b0aa',                                                           # verd d'hospital, fred
+        'lights': [
+            {'x': _p(LAMP[0], LAMP[2], LAMP[1])[0], 'y': _p(LAMP[0], LAMP[2], LAMP[1])[1], 'radius': 300,
+             'color': '#e6f0ff', 'intensity': 0.7},                                     # el fluorescent
+            {'x': _p(0, (GLASS[0] + GLASS[1]) / 2, 100)[0], 'y': _p(0, (GLASS[0] + GLASS[1]) / 2, 100)[1],
+             'radius': 220, 'color': '#c8c8f0', 'intensity': 0.5},                      # la terminal pel vidre
+            {'x': _p(KEYPAD[0] + 16, ZW, 70)[0], 'y': _p(KEYPAD[0] + 16, ZW, 70)[1], 'radius': 60,
+             'color': '#ff4a3a', 'intensity': 1.0, 'whenPropVisible': 'alarma'},       # l'alarma del teclat
+        ],
+    },
 }

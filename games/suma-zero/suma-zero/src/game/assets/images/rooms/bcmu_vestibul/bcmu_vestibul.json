@@ -4,530 +4,530 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 1.aseprite": {
       "frame": {
-        "x": 2261,
+        "x": 1867,
         "y": 0,
-        "w": 290,
-        "h": 30
+        "w": 145,
+        "h": 15
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 496,
-        "y": 6,
-        "w": 290,
-        "h": 30
+        "x": 248,
+        "y": 3,
+        "w": 145,
+        "h": 15
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 2.aseprite": {
       "frame": {
-        "x": 2642,
+        "x": 2046,
         "y": 0,
-        "w": 12,
-        "h": 14
+        "w": 6,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 614,
-        "y": 14,
-        "w": 12,
-        "h": 14
+        "x": 307,
+        "y": 7,
+        "w": 6,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 3.aseprite": {
       "frame": {
-        "x": 2654,
+        "x": 2052,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 666,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 333,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 4.aseprite": {
       "frame": {
-        "x": 2664,
+        "x": 2057,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 716,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 358,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 5.aseprite": {
       "frame": {
-        "x": 1481,
+        "x": 1195,
         "y": 0,
-        "w": 37,
-        "h": 132
+        "w": 14,
+        "h": 90
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 196,
-        "y": 272,
-        "w": 37,
-        "h": 132
+        "x": 186,
+        "y": 95,
+        "w": 14,
+        "h": 90
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 6.aseprite": {
       "frame": {
-        "x": 2626,
+        "x": 1180,
         "y": 0,
-        "w": 16,
-        "h": 17
+        "w": 15,
+        "h": 137
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1046,
-        "y": 234,
-        "w": 16,
-        "h": 17
+        "x": 454,
+        "y": 113,
+        "w": 15,
+        "h": 137
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 7.aseprite": {
       "frame": {
-        "x": 2674,
+        "x": 2062,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 574,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 287,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 8.aseprite": {
       "frame": {
-        "x": 2684,
+        "x": 2067,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 584,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 292,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 9.aseprite": {
       "frame": {
-        "x": 2694,
+        "x": 2072,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 594,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 297,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 10.aseprite": {
       "frame": {
-        "x": 2704,
+        "x": 2077,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 604,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 302,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 11.aseprite": {
       "frame": {
-        "x": 2714,
+        "x": 2082,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 626,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 313,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 12.aseprite": {
       "frame": {
-        "x": 2724,
+        "x": 2087,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 636,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 318,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 13.aseprite": {
       "frame": {
-        "x": 2734,
+        "x": 2092,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 646,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 323,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 14.aseprite": {
       "frame": {
-        "x": 2744,
+        "x": 2097,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 656,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 328,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 15.aseprite": {
       "frame": {
-        "x": 2754,
+        "x": 2102,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 676,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 338,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 16.aseprite": {
       "frame": {
-        "x": 2764,
+        "x": 2107,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 686,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 343,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 17.aseprite": {
       "frame": {
-        "x": 2774,
+        "x": 2112,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 696,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 348,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 18.aseprite": {
       "frame": {
-        "x": 2784,
+        "x": 2117,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 706,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 353,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 19.aseprite": {
       "frame": {
-        "x": 2794,
+        "x": 2122,
         "y": 0,
-        "w": 12,
-        "h": 14
+        "w": 6,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 726,
-        "y": 14,
-        "w": 12,
-        "h": 14
+        "x": 363,
+        "y": 7,
+        "w": 6,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 20.aseprite": {
       "frame": {
-        "x": 2806,
+        "x": 2128,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 738,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 369,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 21.aseprite": {
       "frame": {
-        "x": 2816,
+        "x": 2133,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 748,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 374,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 22.aseprite": {
       "frame": {
-        "x": 2826,
+        "x": 2138,
         "y": 0,
-        "w": 10,
-        "h": 14
+        "w": 5,
+        "h": 7
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 758,
-        "y": 14,
-        "w": 10,
-        "h": 14
+        "x": 379,
+        "y": 7,
+        "w": 5,
+        "h": 7
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 23.aseprite": {
       "frame": {
-        "x": 2593,
+        "x": 2012,
         "y": 0,
-        "w": 18,
-        "h": 21
+        "w": 8,
+        "h": 10
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1262,
-        "y": 252,
-        "w": 18,
-        "h": 21
+        "x": 562,
+        "y": 121,
+        "w": 8,
+        "h": 10
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 24.aseprite": {
       "frame": {
-        "x": 2611,
+        "x": 2039,
         "y": 0,
-        "w": 15,
-        "h": 21
+        "w": 7,
+        "h": 8
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1264,
-        "y": 252,
-        "w": 15,
-        "h": 21
+        "x": 562,
+        "y": 123,
+        "w": 7,
+        "h": 8
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 25.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -541,14 +541,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 26.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -562,14 +562,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 27.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -583,476 +583,476 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 28.aseprite": {
       "frame": {
-        "x": 2961,
+        "x": 2177,
         "y": 0,
-        "w": 14,
-        "h": 4
+        "w": 5,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 77,
-        "w": 14,
-        "h": 4
+        "x": 527,
+        "y": 44,
+        "w": 5,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 29.aseprite": {
       "frame": {
-        "x": 2916,
+        "x": 2157,
         "y": 0,
-        "w": 14,
-        "h": 8
+        "w": 6,
+        "h": 3
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 73,
-        "w": 14,
-        "h": 8
+        "x": 528,
+        "y": 42,
+        "w": 6,
+        "h": 3
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 30.aseprite": {
       "frame": {
-        "x": 2875,
+        "x": 2143,
         "y": 0,
-        "w": 14,
-        "h": 12
+        "w": 5,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 69,
-        "w": 14,
-        "h": 12
+        "x": 530,
+        "y": 40,
+        "w": 5,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 31.aseprite": {
       "frame": {
-        "x": 2836,
+        "x": 2148,
         "y": 0,
-        "w": 17,
-        "h": 14
+        "w": 2,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 67,
-        "w": 17,
-        "h": 14
+        "x": 533,
+        "y": 39,
+        "w": 2,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 32.aseprite": {
       "frame": {
-        "x": 2853,
+        "x": 2150,
         "y": 0,
-        "w": 22,
-        "h": 14
+        "w": 2,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 67,
-        "w": 22,
-        "h": 14
+        "x": 536,
+        "y": 39,
+        "w": 2,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 33.aseprite": {
       "frame": {
-        "x": 2889,
+        "x": 2152,
         "y": 0,
-        "w": 27,
-        "h": 12
+        "w": 5,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 69,
-        "w": 27,
-        "h": 12
+        "x": 536,
+        "y": 40,
+        "w": 5,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 34.aseprite": {
       "frame": {
-        "x": 2930,
+        "x": 2163,
         "y": 0,
-        "w": 31,
-        "h": 8
+        "w": 6,
+        "h": 3
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 73,
-        "w": 31,
-        "h": 8
+        "x": 537,
+        "y": 42,
+        "w": 6,
+        "h": 3
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 35.aseprite": {
       "frame": {
-        "x": 2975,
+        "x": 2169,
         "y": 0,
-        "w": 33,
-        "h": 4
+        "w": 7,
+        "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 77,
-        "w": 33,
-        "h": 4
+        "x": 537,
+        "y": 44,
+        "w": 7,
+        "h": 2
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 36.aseprite": {
       "frame": {
-        "x": 3008,
+        "x": 2182,
         "y": 0,
-        "w": 33,
-        "h": 2
+        "w": 6,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 79,
-        "w": 33,
-        "h": 2
+        "x": 537,
+        "y": 45,
+        "w": 6,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 37.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 1316,
         "y": 0,
-        "w": 101,
-        "h": 194
+        "w": 33,
+        "h": 86
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 79,
-        "w": 101,
-        "h": 194
+        "x": 537,
+        "y": 45,
+        "w": 33,
+        "h": 86
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 38.aseprite": {
       "frame": {
-        "x": 1381,
+        "x": 1349,
         "y": 0,
-        "w": 100,
-        "h": 194
+        "w": 32,
+        "h": 86
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 79,
-        "w": 100,
-        "h": 194
+        "x": 537,
+        "y": 45,
+        "w": 32,
+        "h": 86
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 39.aseprite": {
       "frame": {
-        "x": 3008,
+        "x": 2182,
         "y": 0,
-        "w": 33,
-        "h": 2
+        "w": 6,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 79,
-        "w": 33,
-        "h": 2
+        "x": 537,
+        "y": 45,
+        "w": 6,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 40.aseprite": {
       "frame": {
-        "x": 3008,
+        "x": 2182,
         "y": 0,
-        "w": 33,
-        "h": 2
+        "w": 6,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 79,
-        "w": 33,
-        "h": 2
+        "x": 537,
+        "y": 45,
+        "w": 6,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 41.aseprite": {
       "frame": {
-        "x": 3008,
+        "x": 2182,
         "y": 0,
-        "w": 33,
-        "h": 2
+        "w": 6,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 79,
-        "w": 33,
-        "h": 2
+        "x": 537,
+        "y": 45,
+        "w": 6,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 42.aseprite": {
       "frame": {
-        "x": 2975,
+        "x": 2169,
         "y": 0,
-        "w": 33,
-        "h": 4
+        "w": 7,
+        "h": 2
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 77,
-        "w": 33,
-        "h": 4
+        "x": 537,
+        "y": 44,
+        "w": 7,
+        "h": 2
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 43.aseprite": {
       "frame": {
-        "x": 2930,
+        "x": 2163,
         "y": 0,
-        "w": 31,
-        "h": 8
+        "w": 6,
+        "h": 3
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 73,
-        "w": 31,
-        "h": 8
+        "x": 537,
+        "y": 42,
+        "w": 6,
+        "h": 3
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 44.aseprite": {
       "frame": {
-        "x": 2889,
+        "x": 2152,
         "y": 0,
-        "w": 27,
-        "h": 12
+        "w": 5,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 69,
-        "w": 27,
-        "h": 12
+        "x": 536,
+        "y": 40,
+        "w": 5,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 45.aseprite": {
       "frame": {
-        "x": 2853,
+        "x": 2150,
         "y": 0,
-        "w": 22,
-        "h": 14
+        "w": 2,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 67,
-        "w": 22,
-        "h": 14
+        "x": 536,
+        "y": 39,
+        "w": 2,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 46.aseprite": {
       "frame": {
-        "x": 2836,
+        "x": 2148,
         "y": 0,
-        "w": 17,
-        "h": 14
+        "w": 2,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 67,
-        "w": 17,
-        "h": 14
+        "x": 533,
+        "y": 39,
+        "w": 2,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 47.aseprite": {
       "frame": {
-        "x": 2875,
+        "x": 2143,
         "y": 0,
-        "w": 14,
-        "h": 12
+        "w": 5,
+        "h": 5
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 69,
-        "w": 14,
-        "h": 12
+        "x": 530,
+        "y": 40,
+        "w": 5,
+        "h": 5
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 48.aseprite": {
       "frame": {
-        "x": 2916,
+        "x": 2157,
         "y": 0,
-        "w": 14,
-        "h": 8
+        "w": 6,
+        "h": 3
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 73,
-        "w": 14,
-        "h": 8
+        "x": 528,
+        "y": 42,
+        "w": 6,
+        "h": 3
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 49.aseprite": {
       "frame": {
-        "x": 2961,
+        "x": 2177,
         "y": 0,
-        "w": 14,
-        "h": 4
+        "w": 5,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1179,
-        "y": 77,
-        "w": 14,
-        "h": 4
+        "x": 527,
+        "y": 44,
+        "w": 5,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 50.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -1066,266 +1066,266 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 51.aseprite": {
       "frame": {
-        "x": 1828,
+        "x": 1557,
         "y": 0,
-        "w": 60,
-        "h": 57
+        "w": 29,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 257,
-        "w": 60,
-        "h": 57
+        "x": 118,
+        "y": 104,
+        "w": 29,
+        "h": 27
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 52.aseprite": {
       "frame": {
-        "x": 1888,
+        "x": 1586,
         "y": 0,
-        "w": 62,
-        "h": 57
+        "w": 29,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 257,
-        "w": 62,
-        "h": 57
+        "x": 118,
+        "y": 104,
+        "w": 29,
+        "h": 27
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 53.aseprite": {
       "frame": {
-        "x": 1950,
+        "x": 1669,
         "y": 0,
-        "w": 62,
-        "h": 57
+        "w": 28,
+        "h": 25
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 257,
-        "w": 62,
-        "h": 57
+        "x": 119,
+        "y": 104,
+        "w": 28,
+        "h": 25
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 54.aseprite": {
       "frame": {
-        "x": 2012,
+        "x": 1782,
         "y": 0,
-        "w": 63,
-        "h": 57
+        "w": 28,
+        "h": 24
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 257,
-        "w": 63,
-        "h": 57
+        "x": 119,
+        "y": 104,
+        "w": 28,
+        "h": 24
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 55.aseprite": {
       "frame": {
-        "x": 2075,
+        "x": 1697,
         "y": 0,
-        "w": 63,
-        "h": 57
+        "w": 28,
+        "h": 25
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 257,
-        "w": 63,
-        "h": 57
+        "x": 119,
+        "y": 104,
+        "w": 28,
+        "h": 25
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 56.aseprite": {
       "frame": {
-        "x": 2138,
+        "x": 1725,
         "y": 0,
-        "w": 62,
-        "h": 57
+        "w": 28,
+        "h": 25
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 257,
-        "w": 62,
-        "h": 57
+        "x": 119,
+        "y": 104,
+        "w": 28,
+        "h": 25
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 57.aseprite": {
       "frame": {
-        "x": 1518,
+        "x": 1753,
         "y": 0,
-        "w": 60,
-        "h": 58
+        "w": 29,
+        "h": 25
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 148,
-        "y": 256,
-        "w": 60,
-        "h": 58
+        "x": 118,
+        "y": 104,
+        "w": 29,
+        "h": 25
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 58.aseprite": {
       "frame": {
-        "x": 1578,
+        "x": 1838,
         "y": 0,
-        "w": 62,
-        "h": 58
+        "w": 29,
+        "h": 22
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 146,
-        "y": 256,
-        "w": 62,
-        "h": 58
+        "x": 118,
+        "y": 104,
+        "w": 29,
+        "h": 22
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 59.aseprite": {
       "frame": {
-        "x": 1640,
+        "x": 1810,
         "y": 0,
-        "w": 63,
-        "h": 58
+        "w": 28,
+        "h": 23
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 145,
-        "y": 256,
-        "w": 63,
-        "h": 58
+        "x": 118,
+        "y": 103,
+        "w": 28,
+        "h": 23
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 60.aseprite": {
       "frame": {
-        "x": 1703,
+        "x": 1530,
         "y": 0,
-        "w": 63,
-        "h": 58
+        "w": 27,
+        "h": 28
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 145,
-        "y": 256,
-        "w": 63,
-        "h": 58
+        "x": 118,
+        "y": 103,
+        "w": 27,
+        "h": 28
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 61.aseprite": {
       "frame": {
-        "x": 1766,
+        "x": 1615,
         "y": 0,
-        "w": 62,
-        "h": 58
+        "w": 26,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 146,
-        "y": 256,
-        "w": 62,
-        "h": 58
+        "x": 119,
+        "y": 104,
+        "w": 26,
+        "h": 27
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 62.aseprite": {
       "frame": {
-        "x": 2200,
+        "x": 1641,
         "y": 0,
-        "w": 61,
-        "h": 57
+        "w": 28,
+        "h": 27
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 147,
-        "y": 257,
-        "w": 61,
-        "h": 57
+        "x": 118,
+        "y": 104,
+        "w": 28,
+        "h": 27
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 63.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -1339,14 +1339,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 64.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -1360,14 +1360,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 65.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -1381,14 +1381,14 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 66.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -1402,35 +1402,35 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 67.aseprite": {
       "frame": {
-        "x": 2551,
+        "x": 2020,
         "y": 0,
-        "w": 42,
-        "h": 25
+        "w": 19,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1032,
-        "y": 348,
-        "w": 42,
-        "h": 25
+        "x": 453,
+        "y": 162,
+        "w": 19,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 68.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -1444,35 +1444,35 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 69.aseprite": {
       "frame": {
-        "x": 2551,
+        "x": 2020,
         "y": 0,
-        "w": 42,
-        "h": 25
+        "w": 19,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1032,
-        "y": 348,
-        "w": 42,
-        "h": 25
+        "x": 453,
+        "y": 162,
+        "w": 19,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "bcmu_vestibul 70.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 2176,
         "y": 0,
         "w": 1,
         "h": 1
@@ -1486,8 +1486,92 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_vestibul 71.aseprite": {
+      "frame": {
+        "x": 1381,
+        "y": 0,
+        "w": 31,
+        "h": 72
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 118,
+        "y": 102,
+        "w": 31,
+        "h": 72
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_vestibul 72.aseprite": {
+      "frame": {
+        "x": 1209,
+        "y": 0,
+        "w": 107,
+        "h": 87
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 169,
+        "y": 97,
+        "w": 107,
+        "h": 87
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_vestibul 73.aseprite": {
+      "frame": {
+        "x": 1412,
+        "y": 0,
+        "w": 118,
+        "h": 71
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 305,
+        "y": 117,
+        "w": 118,
+        "h": 71
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "bcmu_vestibul 74.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 540,
+        "h": 356
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 100,
+        "y": 0,
+        "w": 540,
+        "h": 356
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -1498,8 +1582,8 @@
     "image": "bcmu_vestibul.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3042,
-      "h": 720
+      "w": 2188,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [
@@ -1682,6 +1766,34 @@
         "name": "maquina",
         "from": 63,
         "to": 70,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_planta",
+        "from": 71,
+        "to": 71,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_font",
+        "from": 72,
+        "to": 72,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_recepcio",
+        "from": 73,
+        "to": 73,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 74,
+        "to": 74,
         "direction": "forward",
         "color": "#000000ff"
       }

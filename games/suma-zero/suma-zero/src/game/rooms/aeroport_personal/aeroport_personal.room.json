@@ -18,20 +18,40 @@
         "active": true,
         "points": [
           {
-            "x": 19,
-            "y": 236
+            "x": 198,
+            "y": 146
           },
           {
-            "x": 621,
-            "y": 236
+            "x": 478,
+            "y": 179
           },
           {
-            "x": 632,
-            "y": 271
+            "x": 478,
+            "y": 187
           },
           {
-            "x": 8,
-            "y": 271
+            "x": 526,
+            "y": 194
+          },
+          {
+            "x": 550,
+            "y": 248
+          },
+          {
+            "x": 365,
+            "y": 238
+          },
+          {
+            "x": 232,
+            "y": 210
+          },
+          {
+            "x": 167,
+            "y": 188
+          },
+          {
+            "x": 135,
+            "y": 173
           }
         ],
         "holes": []
@@ -46,29 +66,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 299,
-          "y": 112
+          "x": 219,
+          "y": 86
         },
         {
-          "x": 331,
-          "y": 112
+          "x": 241,
+          "y": 86
         },
         {
-          "x": 331,
-          "y": 152
+          "x": 241,
+          "y": 117
         },
         {
-          "x": 299,
-          "y": 152
+          "x": 219,
+          "y": 117
         }
       ],
       "walkToPoint": {
-        "x": 315,
-        "y": 251
+        "x": 217,
+        "y": 152
       },
       "lookAtPoint": {
-        "x": 315,
-        "y": 152
+        "x": 230,
+        "y": 117
       },
       "defaultVerb": "open"
     },
@@ -79,35 +99,62 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 333,
-          "y": 59
+          "x": 237,
+          "y": 49
         },
         {
-          "x": 416,
-          "y": 59
+          "x": 295,
+          "y": 49
         },
         {
-          "x": 416,
-          "y": 214
+          "x": 295,
+          "y": 152
         },
         {
-          "x": 333,
-          "y": 214
+          "x": 237,
+          "y": 152
         }
       ],
       "walkToPoint": {
-        "x": 373,
-        "y": 248
+        "x": 257,
+        "y": 155
       },
       "lookAtPoint": {
-        "x": 374,
-        "y": 214
+        "x": 266,
+        "y": 152
       },
       "defaultVerb": "open"
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.65,
+      "scaleBottom": 1.2,
+      "points": [
+        {
+          "x": 0,
+          "y": 144
+        },
+        {
+          "x": 639,
+          "y": 144
+        },
+        {
+          "x": 639,
+          "y": 250
+        },
+        {
+          "x": 0,
+          "y": 250
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -179,14 +226,50 @@
           "frameDuration": 140
         }
       }
+    },
+    {
+      "id": "davant_con",
+      "tag": "davant_con",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_con": {}
+      },
+      "zIndex": 20,
+      "baseline": 176
+    },
+    {
+      "id": "davant_carro",
+      "tag": "davant_carro",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_carro": {}
+      },
+      "zIndex": 21,
+      "baseline": 184
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 213,
-      "y": 259,
+      "x": 233,
+      "y": 189,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -194,5 +277,45 @@
     }
   ],
   "viewAnchorY": 0,
-  "artScale": 2
+  "characterLights": {
+    "ambient": "#a4b0aa",
+    "lights": [
+      {
+        "x": 274,
+        "y": 25,
+        "radius": 300,
+        "color": "#e6f0ff",
+        "intensity": 0.7
+      },
+      {
+        "x": 137,
+        "y": 89,
+        "radius": 220,
+        "color": "#c8c8f0",
+        "intensity": 0.5
+      },
+      {
+        "x": 230,
+        "y": 100,
+        "radius": 60,
+        "color": "#ff4a3a",
+        "intensity": 1.0,
+        "whenPropVisible": "alarma"
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#081010",
+    "alpha": 0.42,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 277,
+      "y": 199,
+      "stretch": 0.6,
+      "reach": 170
+    }
+  },
+  "floorSquash": 0.42
 }
