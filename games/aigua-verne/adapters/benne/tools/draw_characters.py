@@ -300,7 +300,8 @@ def repartiment():
     for cid in P.NPCS:
         robes = {'': P.NPCS[cid], **{k: v for k, v in P.ROBES.get(cid, {}).items() if k}}
         seu = (lambda talk=False, cid=cid: P.npc_seu(cid, talk)) if cid in P.SEUEN else None
-        out[cid] = lambda cid=cid, robes=robes, seu=seu: persona(cid, robes, 84, 'talkTo', seu=seu, walk=(90, 80))
+        out[cid] = lambda cid=cid, robes=robes, seu=seu: persona(cid, robes, 84, 'talkTo', seu=seu, walk=(90, 80),
+                                                                 dirs=('L', 'D', 'U', 'DL', 'UL'))
     out['dividend'] = gos
     out['fidel'] = robot
     return out

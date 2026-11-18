@@ -60,6 +60,14 @@
       "loop": true,
       "frameDuration": 650
     },
+    "IdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
     "WalkL": {
       "loop": true,
       "frameDuration": 90
@@ -71,6 +79,14 @@
     "WalkU": {
       "loop": true,
       "frameDuration": 80
+    },
+    "WalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkUL": {
+      "loop": true,
+      "frameDuration": 90
     },
     "TalkL": {
       "loop": true,
@@ -84,6 +100,14 @@
       "loop": true,
       "frameDuration": 140
     },
+    "TalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
     "BlinkL": {
       "loop": false,
       "frameDuration": 75
@@ -92,7 +116,15 @@
       "loop": false,
       "frameDuration": 75
     },
+    "BlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
     "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LookDL": {
       "loop": false,
       "frameDuration": 260
     },
@@ -108,6 +140,14 @@
       "loop": true,
       "frameDuration": 650
     },
+    "LlunyIdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyIdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
     "LlunyWalkL": {
       "loop": true,
       "frameDuration": 90
@@ -119,6 +159,14 @@
     "LlunyWalkU": {
       "loop": true,
       "frameDuration": 80
+    },
+    "LlunyWalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyWalkUL": {
+      "loop": true,
+      "frameDuration": 90
     },
     "LlunyTalkL": {
       "loop": true,
@@ -132,6 +180,14 @@
       "loop": true,
       "frameDuration": 140
     },
+    "LlunyTalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
     "LlunyBlinkL": {
       "loop": false,
       "frameDuration": 75
@@ -140,7 +196,15 @@
       "loop": false,
       "frameDuration": 75
     },
+    "LlunyBlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
     "LlunyLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyLookDL": {
       "loop": false,
       "frameDuration": 260
     },
