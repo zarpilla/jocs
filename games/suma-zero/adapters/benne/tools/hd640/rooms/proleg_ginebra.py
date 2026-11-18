@@ -1,438 +1,619 @@
 """
-El pròleg (cinemàtica), a 640×360 (vegeu hd/rooms/proleg_ginebra.py, la de 480×270): Ginebra de nit, la seu
-del Banc Central Mundial Unificat.
-  - el llac Léman, negre i quiet, amb el raig d'aigua il·luminat i les muntanyes retallades contra el cel;
-  - la seu del BCMU: una torre de vidre damunt d'un sòcol de pedra, amb «BCMU» daurat a dalt, el llum vermell
-    de l'antena i les finestres de qui encara treballa (algun fluorescent, alguna làmpada); tot s'emmiralla al llac;
-  - a la façana, una pantalla gegant: de primer, el logotip del banc; després, el Director Bonfill grava l'anunci
-    («Al BCMU construïm el futur de tothom»), i somriu massa.
+El pròleg (cinemàtica), a 640×360. EN 3D (hd640/tres_d.py), a 1×: Ginebra de nit, la seu del Banc Central Mundial
+Unificat, vista des de la vora del llac.
 
-És una cinemàtica que avança amb cada frase (vegeu rooms/proleg_ginebra.json), com la de Ni un ou. Comença al pla
-de la portada (la capa opaca `pis`, de portada.py), que «Comença» deixa sense títol: el pols de llum surt de la
-parabòlica de l'Iri cap a la torre (`senyal_va`) i el pla es fon en trama (`pis_fon`) cap a Ginebra. Les lletres
-del BCMU fan una espurna (`lletres_brilla`). La pantalla s'encén (`pantalla_entra`), el Director parla
-(`pantalla_parla`), perd el somriure i mira fora de camp (`pantalla_talla`, `pantalla_queixa`) i el torna a posar
-(`pantalla_somriu`). «Lluny. Prou lluny»: torna el pla del pis (`pis_torna`), i al monitor s'obre una porta
-(`pis_porta`, `pis_festa`).
+Un contrapicat: la càmera és arran d'aigua, al moll, i mira amunt la torre del banc, que és a l'altra banda de la
+rada, en 3/4 (el davant, amb la pantalla gegant, i el costat que fuig cap a l'esquerra; les verticals convergeixen
+cap amunt):
+  - la **torre de vidre** damunt d'un **sòcol de pedra** amb el vestíbul encès, el coronament amb «BCMU» daurat, l'antena
+    amb el llum vermell i les finestres de qui encara treballa; a la façana del davant, la **pantalla**: de primer, el
+    logotip del banc; després, el Director Bonfill grava l'anunci;
+  - el **moll de l'altra banda** fuig cap a l'esquerra, amb les cases de mansarda i els fanals que s'empetiteixen; al
+    llac, el **raig d'aigua**, il·luminat; al fons, les muntanyes retallades i la lluna;
+  - el **llac**, negre i quiet, que ho emmiralla tot (trencat per les ones);
+  - a primer pla, en silueta: un fanal del moll a l'esquerra, les branques d'un plàtan que pengen de dalt i un
+    noray amb la corda a baix.
+
+És una cinemàtica que avança amb cada frase (vegeu rooms/proleg_ginebra.json). Comença al pla de la portada (la capa
+opaca `pis`, el fons de portada.py), que «Comença» deixa sense títol: el pols de llum surt de la parabòlica de l'Iri
+cap a la torre (`senyal_va`) i el pla es fon en trama (`pis_fon`) cap a Ginebra. Les lletres del BCMU fan una espurna
+(`lletres_brilla`). La pantalla s'encén (`pantalla_entra`), el Director parla (`pantalla_parla`), perd el somriure i
+mira fora de camp (`pantalla_talla`, `pantalla_queixa`) i el torna a posar (`pantalla_somriu`). «Lluny. Prou lluny»:
+torna el pla del pis (`pis_torna`), i al monitor s'obre una porta (`pis_porta`, `pis_festa`).
 Animació de fons: `nit` (el raig, els reflexos al llac i el llum de l'antena).
-"""
-import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
+El dibuix pla (la pantalla, el bust del Director, les lletres) és a proleg_ginebra_pla_comu.py. Els crèdits
+(credits.py) fan servir aquesta mateixa escena, amb la pantalla apagada.
+El món: x a la dreta, y amunt (0 = l'aigua), z cap al fons; la càmera és a l'origen, a 30 d'alçada.
+"""
 import functools
 import math
 
 import numpy as np
 from PIL import Image
-from pixels import nearest
 
-from hd.pix import Light, Canvas, W, H, hr
-from hd.rooms.comu import outline, text, text_width, _diff
-from hd.characters import SKIN_PALE, GRAY_SHOE, SUIT_D, HAIR_PLAT
-from hd.personatges import hair_cap
-from hd640.draw_characters import person
+import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
+from hd640 import llum
+from hd.pix import Light, Canvas, W, H, hr, mix
+from hd.rooms.comu import outline, _diff
+from hd.rooms.exterior import fbm
+from hd640.rooms import proleg_ginebra_pla_comu as PL
+from hd640.rooms.proleg_ginebra_pla_comu import (NIGHT, MOUNT, WATER, STONE, GLASSB, WARM, COOL, GOLD, JET,
+                                                 BONFILL)  # noqa: F401  (BONFILL: el fan servir altres sales)
 import hd640.rooms.portada as portada
+from hd640.tres_d import Camera, Escena, Llum
 
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 
-K = 4 / 3
-HORIZON = 200
+# ─── La càmera i el món ─────────────────────────────────────────────────────
 
-NIGHT = [(2, 2, 8), (4, 6, 16), (8, 10, 26), (14, 16, 40), (22, 22, 56), (34, 30, 72), (50, 40, 88), (70, 54, 104)]
-MOUNT = [(4, 4, 10), (8, 8, 18), (14, 14, 28), (20, 20, 38)]
-WATER = [(1, 2, 6), (3, 5, 12), (6, 9, 20), (10, 14, 30), (16, 20, 40), (24, 28, 52)]
-STONE = [(14, 12, 14), (26, 24, 26), (42, 38, 40), (60, 56, 56), (82, 76, 74), (106, 100, 96), (132, 126, 120)]
-GLASSB = [(4, 8, 14), (8, 14, 24), (14, 22, 36), (22, 32, 50), (32, 44, 66), (46, 60, 84)]
-WARM = [(60, 36, 10), (130, 84, 26), (210, 150, 60), (250, 210, 120), (255, 240, 190)]
-COOL = [(20, 40, 50), (60, 100, 120), (140, 190, 210), (210, 236, 244)]
-GOLD = [(60, 40, 6), (130, 92, 16), (200, 150, 30), (240, 200, 70), (255, 236, 150)]
-JET = [(30, 40, 60), (70, 90, 120), (130, 150, 180), (190, 206, 226), (240, 246, 255)]
-TOWER = (253, 387)             # la torre: de x 253 a 387
-TOP = 29                       # el capdamunt del vidre
-BASE_Y = 160                   # el sòcol de pedra, de 160 a l'horitzó
-SCREEN = (267, 67, 373, 149)   # la pantalla de la façana
-FLOOR = 8                      # alçada d'un pis
-BAY = 10                       # amplada d'una crugia (entre muntants)
-MOON = (544, 40)
-JET_X, JET_TOP = 93, 83
+F = 420
+CAM = Camera(pos=(0.0, 30.0, 0.0), yaw=0.10, pitch=-0.2, f=F, centre=(320, 200))
+HOR = round(CAM.projecta((0, 30, 1e7))[1])            # l'horitzó a la pantalla
 
-LIGHT = Light(ambient=0.0)
+TX, TZ, TA = 300.0, 1450.0, 0.32          # la torre: el centre (x, z) i el gir
+TPX = 3.75                                # unitats del món per píxel de la textura de la façana
+FW, FH = 150, 176                         # la textura de la façana del davant (px)
+SW = 96                                   # la del costat
+TW, TD, TH = FW * TPX, SW * TPX, FH * TPX  # amplada, fons i alçada del vidre
+PH = 96.0                                 # el sòcol de pedra
+SCR_AT = (20, 34)                         # on va la pantalla, a la textura del davant
+JET_P = (-1000.0, 0.0, 2700.0)            # el raig d'aigua
+JET_H = 640.0
+MOON = (560, 46)
 
-BONFILL = {'skin': SKIN_PALE, 'legs': SUIT_D, 'top': SUIT_D, 'shoes': GRAY_SHOE, 'closed': True,
-           'brow': (200, 200, 210), 'hooks': {'hair': hair_cap(HAIR_PLAT, fringe=0.4)}}
+_C, _S = math.cos(TA), math.sin(TA)
 
 
-# ─── El cel, les muntanyes, el llac ────────────────────────────────────────
+def tp(lx, y, lz):
+    """Un punt de la torre (coordenades locals: lx al llarg del davant, lz cap al fons) al món."""
+    return (TX + lx * _C - lz * _S, y, TZ + lx * _S + lz * _C)
+
+
+def _p(P):
+    u, v, _ = CAM.projecta(P)
+    return u, v
+
+
+LLUNA = Llum((40000.0, 60000.0, 90000.0), 1e7, 0.9, power=1.0)       # la lluna, al fons a la dreta
+CIUTAT = Llum((TX - 200, 20.0, TZ - 400), 900, 1.2, power=1.6)       # els fanals del moll, des de baix
+
+SKYN = NIGHT
+QUAY = [(6, 6, 10), (12, 11, 16), (20, 18, 24), (30, 27, 32), (42, 38, 42), (58, 53, 56), (78, 72, 72)]
+HOUSE = [(5, 5, 12), (9, 9, 20), (14, 14, 28), (20, 20, 36), (28, 27, 46), (38, 36, 56),
+         (130, 84, 30), (210, 150, 60), (250, 210, 120)]
+SIL = [(1, 1, 4), (4, 4, 9), (8, 8, 15), (12, 12, 21)]
+WAT = [(1, 2, 6), (3, 5, 12), (5, 8, 18), (8, 12, 25), (12, 17, 33), (18, 23, 42)]
+
+
+# ─── El cel, la lluna i les muntanyes (en pantalla: són a l'infinit) ─────────
 
 def sky(cv):
-    for y in range(0, HORIZON):
+    for y in range(0, HOR + 1):
         for x in range(W):
-            cv.put(x, y, NIGHT, 1.0 + y / 40 + (hr(x // 3, y // 3) - 0.5) * 0.2, lit=0)
-    for i in range(130):                                                 # estrelles
-        x, y = int(hr(i, 1) * W), int(hr(i, 2) * 120)
+            cv.put(x, y, SKYN, 1.3 + 3.8 * (y / HOR) ** 1.6 + (hr(x // 3, y // 3) - 0.5) * 0.2
+                   + 0.8 * max(0.0, 1 - math.hypot(x - MOON[0], y - MOON[1]) / 160), lit=0)
+    for i in range(150):                                                 # estrelles
+        x, y = int(hr(i, 1) * W), int(hr(i, 2) * (HOR - 70))
         b = hr(i, 3)
+        if math.hypot(x - MOON[0], y - MOON[1]) < 40:
+            continue
         cv.flat(x, y, (200, 200, 230) if b > 0.7 else (110, 110, 150) if b > 0.25 else (70, 70, 110))
-        if b > 0.95:                                                     # les més brillants fan creueta
+        if b > 0.95:
             for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):
                 cv.flat(x + dx, y + dy, (90, 90, 130))
-    # la lluna, petita i a un costat, amb taques
-    mx, my = MOON
-    cv.glow(mx, my, 30, (180, 190, 230), 0.25)
+    mx, my = MOON                                                        # la lluna, petita, amb taques
+    cv.glow(mx, my, 34, (180, 190, 230), 0.28)
     cv.disc(mx, my, 8, 8, [(200, 200, 190), (236, 234, 220), (250, 250, 240)], lambda nx, ny: 1.4 - nx * 0.8, lit=0)
     for dx, dy, r in ((-3, -2, 1.6), (2, 2, 1.2), (-1, 4, 1.0), (3, -4, 0.8)):
         cv.disc(mx + dx, my + dy, r, r, [(186, 184, 176), (214, 212, 200)], 0.4 + dx * 0.1, lit=0)
 
 
 def mountains(cv):
-    """El Salève i companyia, retallats contra el cel; neu a les crestes."""
+    """El Salève i companyia, retallats contra el cel, neu a les crestes; una franja de llums de la riba de lluny."""
     for x in range(W):
-        u = x / K
-        h1 = K * (112 + 10 * math.sin(u / 47) + 6 * math.sin(u / 13 + 1) + 4 * hr(x // 8, 4)) + math.sin(x / 3.3) * 0.7
-        h2 = K * (126 + 6 * math.sin(u / 31 + 2) + 3 * hr(x // 5, 5))
-        for y in range(int(h1), HORIZON):
+        u = x / 1.33
+        h1 = HOR - 46 - 10 * math.sin(u / 47) - 6 * math.sin(u / 13 + 1) - 4 * hr(x // 8, 4) + math.sin(x / 3.3) * 0.7
+        h2 = HOR - 24 - 6 * math.sin(u / 31 + 2) - 3 * hr(x // 5, 5)
+        for y in range(int(h1), HOR + 1):
             depth = y - h1
             snow = depth < 2.6 + math.sin(x / 5) and math.sin(u / 47) > 0.4
             if snow:
-                cv.put(x, y, [(40, 46, 70), (60, 66, 90), (100, 106, 130)], 1.2 - depth * 0.3 + (0.4 if x % 7 < 3 else 0), lit=0)
+                cv.put(x, y, [(40, 46, 70), (60, 66, 90), (100, 106, 130)], 1.2 - depth * 0.3 + (0.4 if x % 7 < 3 else 0),
+                       lit=0)
             else:
-                cv.put(x, y, MOUNT, 1.4 + (0.3 if hr(x // 4, y // 6, 9) > 0.8 else 0), lit=0)
-        for y in range(int(h2), HORIZON):
-            cv.put(x, y, MOUNT, 0.6, lit=0)
+                cv.put(x, y, MOUNT, 1.6 - depth * 0.02 + (0.3 if hr(x // 4, y // 6, 9) > 0.8 else 0), lit=0)
+        for y in range(int(h2), HOR + 1):
+            cv.put(x, y, MOUNT, 0.9, lit=0)
+        if hr(x, 77) > 0.7:                                              # la riba de lluny: llumets
+            cv.flat(x, HOR - 1 - int(hr(x, 78) * 2), (200, 160, 100) if hr(x, 79) > 0.3 else (140, 170, 210))
 
 
-def city(cv):
-    """Edificis baixos al moll, amb teulades, finestres i els fanals de la riba."""
-    x = 0
-    i = 0
-    while x < W:
-        w = 21 + int(hr(i, 7) * 29)
-        h = 11 + int(hr(i, 8) * 21)
-        if not (TOWER[0] - 13 < x < TOWER[1] + 5):
-            top = HORIZON - h
-            roof = hr(i, 10)
-            for yy in range(top, HORIZON):
-                for xx in range(x, min(W, x + w - 1)):
-                    cv.put(xx, yy, MOUNT, 2.2 - (0.4 if xx == x + w - 2 else 0), lit=0)
-            if roof > 0.55:                                              # teulada de mansarda
-                for k in range(4):
-                    cv.hline(x + k + 1, x + w - 3 - k, top - 1 - k, MOUNT, 2.0, lit=0)
-            elif roof > 0.3:                                             # xemeneies
-                cv.rect(x + 4, top - 4, x + 6, top - 1, MOUNT, 2.0, lit=0)
-            for wy in range(top + 4, HORIZON - 3, 5):
-                for wx in range(x + 3, x + w - 4, 5):
-                    r = hr(wx, wy, 2)
-                    if r > 0.62:
-                        col = (240, 190, 110) if hr(wx, wy, 3) > 0.3 else (160, 200, 240)
-                        cv.flat(wx, wy, col)
-                        cv.flat(wx, wy + 1, tuple(c * 3 // 4 for c in col))
-                        if r > 0.9:
-                            cv.flat(wx + 1, wy, col)
-                            cv.flat(wx + 1, wy + 1, tuple(c * 3 // 4 for c in col))
-        x += w
-        i += 1
-    cv.hline(0, W - 1, HORIZON - 1, STONE, 1.0, lit=0)                  # el moll
-    for lx in range(8, W, 29):                                           # fanals de la riba
-        if TOWER[0] - 34 < lx < TOWER[1] + 34:
+# ─── La torre del BCMU (textures planes) ────────────────────────────────────
+
+def _vidre(w, h, seed, apagades=False, sheen_at=24):
+    """Una façana de vidre: forjats, muntants, el reflex de la lluna en diagonal i les finestres de qui treballa."""
+    cv = Canvas(w=w, h=h, light=LIGHT)
+    floor_h, bay = 8, 10
+    for y in range(h):
+        for x in range(w):
+            floor = y % floor_h == 0
+            mull = x % bay == 0
+            sheen = max(0, 1 - abs(x - sheen_at - y * 0.3) / 13) * 1.4
+            lvl = 2.2 + y / 260 + sheen + (1.0 if floor else 0) + (0.5 if mull else 0)
+            cv.put(x, y, GLASSB, lvl, lit=0)
+    for fy in range(2, h - 4, floor_h):
+        for fx in range(2, w - 6, bay):
+            r = hr(fx, fy, seed)
+            if r > (0.72 if not apagades else 0.9):
+                ramp = COOL if hr(fx, fy, seed + 2) > 0.8 else WARM
+                cv.rect(fx, fy + 1, fx + 7, fy + 5, ramp, lambda px, py: 2.0 + hr(fx, fy, 1) - (py - fy) * 0.15, lit=0)
+                if hr(fx, fy, seed + 3) > 0.5:                              # algú a la taula, a contrallum
+                    sx = fx + 2 + int(hr(fx, fy, seed + 4) * 3)
+                    cv.rect(sx, fy + 3, sx + 1, fy + 5, [(20, 14, 10)], 0, lit=0)
+                    cv.flat(sx, fy + 2, (20, 14, 10))
+                elif hr(fx, fy, seed + 5) > 0.5:                            # una persiana mig abaixada
+                    for py in range(fy + 1, fy + 3):
+                        cv.tint(fx, py, fx + 7, py, (20, 16, 20), 0.5 if py % 2 else 0.3)
+    return cv
+
+
+SCR_BOX = (PL.SCREEN[0] - 2, PL.SCREEN[1] - 2, PL.SCREEN[2] + 3, PL.SCREEN[3] + 3)   # la pantalla i el marc
+
+
+def _screen_img(**kw):
+    """La pantalla del dibuix pla (proleg_ginebra_pla_comu.screen), retallada, sense el halo (el fa la llum)."""
+    tmp = Canvas(light=LIGHT)
+    PL.screen(tmp, **kw)
+    return tmp.img.crop(SCR_BOX)
+
+
+def _apagada_img():
+    from hd640.rooms import credits_pla_comu as CR
+    tmp = Canvas(light=LIGHT)
+    CR.pantalla_apagada(tmp)
+    return tmp.img.crop(SCR_BOX)
+
+
+@functools.lru_cache(maxsize=None)
+def _vidre_davant(apagades=False):
+    return _vidre(FW, FH, 9, apagades).img
+
+
+@functools.lru_cache(maxsize=None)
+def _vidre_costat(apagades=False):
+    cv = _vidre(SW, FH, 19, apagades, sheen_at=70)
+    for X, Y, x, y in cv.pixels():                                       # el costat, a l'ombra
+        r, g, b, a = cv.P[X, Y]
+        cv.P[X, Y] = (r * 3 // 4, g * 3 // 4, b * 4 // 5, a)
+    return cv.img
+
+
+def facana(variant='pròleg', **screen_kw):
+    """La façana del davant: el vidre i la pantalla. `variant`: 'pròleg' (la pantalla amb `screen_kw`) o 'crèdits'
+    (apagada, amb el rètol de «FORA DE SERVEI», i menys finestres enceses)."""
+    img = _vidre_davant(variant == 'crèdits').copy()
+    scr = _apagada_img() if variant == 'crèdits' else _screen_img(**screen_kw)
+    img.alpha_composite(scr, SCR_AT)
+    return img
+
+
+@functools.lru_cache(maxsize=None)
+def _lletres_img():
+    """«BCMU» en lletres daurades grosses (les del dibuix pla), damunt del coronament."""
+    tmp = Canvas(w=80, h=40, light=LIGHT, transparent=True)
+    PL.big_word(tmp, 'BCMU', 40, 4, 3)
+    bb = tmp.img.getbbox()
+    return tmp.img.crop((bb[0] - 1, bb[1] - 1, bb[2] + 1, bb[3] + 1))
+
+
+LW = 340.0                                                               # l'amplada de les lletres al món
+
+
+@functools.lru_cache(maxsize=None)
+def _socol_img():
+    """El davant del sòcol de pedra: carreus, el vestíbul encès amb les columnes i el vigilant."""
+    w, h = 210, int(PH / TPX * 1.0) + 1
+    cv = Canvas(w=w, h=h, light=LIGHT)
+    for y in range(h):
+        for x in range(w):
+            cv.put(x, y, STONE, 2.6 + (0.8 if x % 21 < 4 else 0) - y * 0.03 + (0.3 if y % 7 == 0 else 0)
+                   + (hr(x // 2, y // 2, 3) - 0.5) * 0.3, lit=0)
+    cv.rect(0, 0, w - 1, 2, STONE, lambda x, y: 4.2 + (0.6 if y == 0 else 0), lit=0)
+    m = w // 2
+    cv.rect(m - 20, 9, m + 20, h - 1, WARM, lambda x, y: 1.8 + (0.4 if y > h - 8 else 0), lit=0)   # el vestíbul
+    cv.rect(m - 4, 12, m + 4, 15, GOLD, 2.6, lit=0)                                                 # el logotip
+    cv.flat(m - 8, 18, (30, 20, 10))                                                                # el vigilant
+    cv.rect(m - 9, 19, m - 7, h - 2, [(30, 20, 10)], 0, lit=0)
+    for cx in (m - 14, m - 1, m + 12):
+        cv.rect(cx, 9, cx + 1, h - 1, STONE, 1.2, lit=0)
+    cv.hline(m - 22, m + 22, 8, STONE, 4.6, lit=0)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _bandera_img():
+    cv = Canvas(w=16, h=40, light=LIGHT, transparent=True)
+    cv.vline(0, 1, 39, STONE, 3.4, lit=0)
+    cv.flat(0, 0, GOLD[3])
+    cv.rect(1, 1, 13, 9, GOLD, lambda x, y: 2.4 + (0.6 if y == 1 else 0) - (0.5 if y == 9 else 0), lit=0)
+    cv.rect(5, 3, 8, 6, GOLD, 1.2, lit=0)
+    return cv.img
+
+
+def torre(e, variant='pròleg', screen_kw=None):
+    a, b = TW / 2, TD / 2
+    # el moll de l'altra banda, on s'assenta la torre
+    e.caixa_girada('moll', TX - 200, TZ + 200, TW + 1600, TD + 900, 14, TA, QUAY, 2.2, y0=-6,
+                   cares={'dalt': {'ramp': QUAY, 'lvl': 2.6}, 'davant': {'ramp': QUAY, 'lvl': 1.6},
+                          'esquerra': {'ramp': QUAY, 'lvl': 1.2}})
+    # el sòcol de pedra
+    sa, sb = a + 60, b + 50
+    e.quad('socol', tp(-sa, PH + 8, -sb), tp(sa, PH + 8, -sb), tp(sa, 8, -sb), tp(-sa, 8, -sb),
+           tex=(_socol_img(), (0, 0, _socol_img().width, _socol_img().height)))
+    e.quad('socol', tp(-sa, PH + 8, sb), tp(-sa, PH + 8, -sb), tp(-sa, 8, -sb), tp(-sa, 8, sb),
+           ramp=STONE, lvl=lambda s, t, P: 1.8 + (0.6 if int(s) % 70 < 12 else 0) - t * 0.004)
+    e.caixa_girada('socol', TX, TZ, 2 * sa + 16, 2 * sb + 16, 6, TA, STONE, 4.0, y0=PH + 8,
+                   cares={'dalt': {'ramp': STONE, 'lvl': 4.4}, 'davant': {'ramp': STONE, 'lvl': 4.6},
+                          'esquerra': {'ramp': STONE, 'lvl': 3.4}})
+    y0 = PH + 14
+    # el vidre: el costat (a l'esquerra, a l'ombra) i el davant, amb la pantalla
+    tex_c = _vidre_costat(variant == 'crèdits')
+    e.quad('costat', tp(-a, y0 + TH, b), tp(-a, y0 + TH, -b), tp(-a, y0, -b), tp(-a, y0, b), tex=(tex_c, (0, 0, SW, FH)))
+    tex_d = facana(variant, **(screen_kw or {}))
+    e.quad('facana', tp(-a, y0 + TH, -b), tp(a, y0 + TH, -b), tp(a, y0, -b), tp(-a, y0, -b), tex=(tex_d, (0, 0, FW, FH)))
+    # el coronament de pedra
+    yc = y0 + TH
+    e.caixa_girada('coronament', TX, TZ, TW + 24, TD + 24, 34, TA, STONE, 3.2, y0=yc,
+                   cares={'dalt': {'ramp': STONE, 'lvl': 2.4}, 'davant': {'ramp': STONE, 'lvl': lambda s, t, P: 3.6 - t * 0.04
+                                                                          + (0.6 if int(s) % 22 < 3 else 0)},
+                          'esquerra': {'ramp': STONE, 'lvl': 2.2}})
+    # les lletres, dretes damunt del coronament, i l'antena
+    li = _lletres_img()
+    lh = LW * li.height / li.width
+    e.quad('lletres', tp(-LW / 2, yc + 40 + lh, -b + 30), tp(LW / 2, yc + 40 + lh, -b + 30), tp(LW / 2, yc + 40, -b + 30),
+           tp(-LW / 2, yc + 40, -b + 30), tex=(li, (0, 0, li.width, li.height)))
+    for lx in (-LW / 2 + 30, LW / 2 - 30):
+        e.cable('lletres_pal', [tp(lx, yc + 34, -b + 32), tp(lx, yc + 42, -b + 32)], STONE, 2.0, gruix=5)
+    e.cable('antena', [tp(a - 50, yc + 34, 0), tp(a - 50, yc + 200, 0)], STONE, 3.0, gruix=4)
+    for k in range(4):
+        e.cable('antena', [tp(a - 64, yc + 70 + k * 30, 0), tp(a - 36, yc + 70 + k * 30, 0)], STONE, 2.4, gruix=2)
+    # la bandera, al sòcol (no fa vent per als bancs)
+    e.sprite('bandera', _bandera_img(), (0, 39), tp(a + 40, PH + 14, -b - 20), escala_img=TPX * 1.4)
+
+
+def antenna_xy():
+    return _p(tp(TW / 2 - 50, PH + 14 + TH + 34 + 204, 0))
+
+
+# ─── El moll de l'altra banda, amb les cases ────────────────────────────────
+
+SHORE = [(-5200.0, 6800.0), (-2400.0, 3400.0), (TX - TW / 2 - 300, TZ - 60)]       # de lluny cap a la torre
+SHORE_R = [(TX + TW / 2 + 260, TZ + 200), (2600.0, 3800.0)]                        # i cap a la dreta
+
+
+def _cases():
+    """Cases de cinc o sis pisos amb mansarda al llarg del moll: (cx, cz, ample, fons, alt, gir, llavor)."""
+    out = []
+    for segs, side in ((SHORE, -1), (SHORE_R, 1)):
+        for (ax, az), (bx, bz) in zip(segs, segs[1:]):
+            L = math.hypot(bx - ax, bz - az)
+            ang = math.atan2(bz - az, bx - ax)
+            n = int(L // 190)
+            for k in range(n):
+                t = (k + 0.5) / n
+                seed = int(ax) // 7 + k * 13
+                w = 160 + hr(seed, 1) * 40
+                cx, cz = ax + (bx - ax) * t, az + (bz - az) * t
+                # una mica enrere del moll
+                cx -= math.sin(ang) * 120 * side * -1
+                cz += math.cos(ang) * 120
+                out.append((cx, cz, w, 180, 150 + hr(seed, 2) * 110, -ang, seed))
+    return out
+
+
+def _casa_lvl(seed, base=1.6):
+    def lvl(s, t, P):
+        col, fl = int(s // 28), int(t // 34)
+        a, b_ = s % 28, t % 34
+        v = base + (hr(int(s // 6), int(t // 8), seed) - 0.5) * 0.4
+        if 8 <= a < 20 and 8 <= b_ < 26:
+            if hr(col, fl, seed) > 0.62:
+                return 7.2 + (hr(col, fl, seed + 1) - 0.5)
+            return 0.4
+        return v
+    return lvl
+
+
+def cases(e):
+    for (cx, cz, w, d, h, ang, seed) in sorted(_cases(), key=lambda c: -c[1]):
+        e.caixa_girada('cases', cx, cz, w, d, h, ang, HOUSE, 1.6,
+                       cares={'davant': {'ramp': HOUSE, 'lvl': _casa_lvl(seed, 1.8)},
+                              'esquerra': {'ramp': HOUSE, 'lvl': _casa_lvl(seed + 3, 1.0)},
+                              'dreta': {'ramp': HOUSE, 'lvl': _casa_lvl(seed + 5, 1.2)},
+                              'dalt': {'ramp': HOUSE, 'lvl': 2.6}})
+        # la mansarda: una teulada més estreta
+        e.caixa_girada('cases', cx, cz, w - 30, d - 30, 40, ang, HOUSE, 2.4, y0=h,
+                       cares={'dalt': {'ramp': HOUSE, 'lvl': 3.0}, 'davant': {'ramp': HOUSE, 'lvl': 2.6},
+                              'esquerra': {'ramp': HOUSE, 'lvl': 1.8}, 'dreta': {'ramp': HOUSE, 'lvl': 1.8}})
+    # el moll, de pedra, al llarg de la riba
+    for segs in (SHORE, SHORE_R):
+        for (ax, az), (bx, bz) in zip(segs, segs[1:]):
+            L = math.hypot(bx - ax, bz - az)
+            ang = math.atan2(bz - az, bx - ax)
+            e.caixa_girada('moll', (ax + bx) / 2 - math.sin(ang) * -60, (az + bz) / 2 + math.cos(ang) * 60, L + 40, 220,
+                           14, -ang, QUAY, 2.0, y0=-6, cares={'davant': {'ramp': QUAY, 'lvl': 1.4},
+                                                            'dalt': {'ramp': QUAY, 'lvl': 2.4}})
+
+
+def _fanals():
+    out = []
+    for segs in (SHORE, SHORE_R):
+        for (ax, az), (bx, bz) in zip(segs, segs[1:]):
+            L = math.hypot(bx - ax, bz - az)
+            for k in range(int(L // 150)):
+                t = (k + 0.5) / int(L // 150)
+                out.append((ax + (bx - ax) * t, 0.0, az + (bz - az) * t - 50))
+    return out
+
+
+# ─── El primer pla ──────────────────────────────────────────────────────────
+
+FANAL_P = (-240.0, 8.0, 440.0)
+QUAY_EDGE = ((-420.0, 540.0), (60.0, 150.0))           # la vora del nostre moll: de l'esquerra al fons cap a baix
+
+
+def primer_pla(e):
+    """El nostre moll a baix a l'esquerra (la vora de pedra en diagonal), un fanal, un noray amb la corda, i les
+    branques d'un plàtan que pengen de dalt: tot en silueta."""
+    (ax, az), (bx, bz) = QUAY_EDGE
+    # el moll: el terra (fins a la càmera) i la cara que dona a l'aigua
+    e.quad('primer_pla', (ax, 8, az), (bx, 8, bz), (bx - 300, 8, bz - 120), (ax - 300, 8, az - 120),
+           ramp=SIL, lvl=lambda s, t, P: 1.2 + (1.6 if t < 5 else 0) + (hr(int(s // 22), int(t // 22), 5) - 0.5) * 0.5
+           - (0.6 if int(s) % 44 < 2 or int(t) % 44 < 2 else 0), dues_cares=True)
+    e.quad('primer_pla', (ax, 8, az), (bx, 8, bz), (bx, -12, bz), (ax, -12, az), ramp=SIL, lvl=0.6, dues_cares=True)
+    fx, fy, fz = FANAL_P
+    e.tub('primer_pla', (fx, 190, fz), (fx, fy + 20, fz), 4.0, SIL, 1.4, brides=50, llum_dir=(0.8, 0.2))
+    e.tub('primer_pla', (fx, fy + 22, fz), (fx, fy, fz), 8, SIL, 1.2, llum_dir=(0.8, 0.2))         # el peu
+    e.caixa('fanal', fx - 9, fx + 9, 190, 214, fz - 9, fz + 9, LANTERN, 2.6,
+            cares={'davant': {'ramp': LANTERN, 'lvl': 3.0}, 'dreta': {'ramp': LANTERN, 'lvl': 2.4},
+                   'esquerra': {'ramp': LANTERN, 'lvl': 2.0}})                                       # el fanal, encès
+    e.caixa('primer_pla', fx - 12, fx + 12, 214, 219, fz - 12, fz + 12, SIL, 1.4)
+    e.cable('primer_pla', [(fx, 219, fz), (fx, 230, fz)], SIL, 1.2, gruix=2)
+    # el noray, arran de la vora, i la corda que se'n va a l'aigua
+    nx, nz = -150.0, 345.0
+    e.tub('primer_pla', (nx, 8, nz), (nx, 22, nz), 5, SIL, 1.8, llum_dir=(0.6, 0.6))
+    e.tub('primer_pla', (nx, 22, nz), (nx, 25, nz), 6.5, SIL, 2.6, llum_dir=(0.6, 0.6))
+    e.cable('primer_pla', [(nx + 4, 20, nz), (nx + 30, 12, nz + 20), (nx + 70, 3, nz + 60), (nx + 110, 0, nz + 120)], SIL,
+            1.6, gruix=2.2)
+    # les branques del plàtan, des de dalt a l'esquerra
+
+    def branca(P, a, L, n, seed):
+        if n == 0 or L < 6:
+            FULLES.append(P)
+            return
+        Q = (P[0] + math.cos(a) * L, P[1] + math.sin(a) * L, P[2] + (hr(seed, 9) - 0.5) * 20)
+        e.cable('branques', [P, Q], SIL, 1.2, gruix=max(1.2, n * 1.6))
+        for k, da in enumerate((-0.5, 0.45)):
+            branca(Q, a + da + (hr(seed, k) - 0.5) * 0.4, L * 0.7, n - 1, seed * 3 + k + 1)
+    FULLES.clear()
+    branca((-470.0, 360.0, 330.0), -0.3, 130, 5, 3)
+    branca((-430.0, 400.0, 300.0), 0.05, 110, 4, 8)
+
+
+LANTERN = [(40, 28, 16), (120, 86, 40), (200, 150, 80), (250, 214, 140)]
+
+
+FULLES = []
+
+
+def fulles(cv, e):
+    """Fulles de plàtan als extrems de les branques: taques fosques, amb una vora que agafa la lluna."""
+    idx = e._idx_de('branques')
+    for i, P in enumerate(FULLES):
+        u, v = _p(P)
+        k = CAM.escala(P)
+        for j in range(5):
+            du = (hr(i, j, 1) - 0.5) * 22 * k
+            dv = (hr(i, j, 2) - 0.5) * 16 * k
+            r = (5 + hr(i, j, 3) * 5) * k
+            cv.disc(u + du, v + dv, r, r * 0.6, SIL, lambda nx, ny: 0.8 + (2.2 if nx + ny * 0.3 > 0.55 else 0), lit=0)
+            for y in range(int(v + dv - r), int(v + dv + r) + 1):
+                for x in range(int(u + du - r), int(u + du + r) + 1):
+                    if 0 <= x < W and 0 <= y < H and cv.P[x, y][:3] in [c for c in SIL]:
+                        e.amo[y * W + x] = idx
+
+
+# ─── Composició ────────────────────────────────────────────────────────────
+
+def _aigua(s, t, P):
+    x, z = P[0], P[2]
+    return 1.6 + math.sin(z / 9 + math.sin(x / 70) * 2) * 0.35 + (fbm(x / 160, z / 40, 31) - 0.5) * 0.8
+
+
+def escena(cv, variant='pròleg', screen_kw=None):
+    sky(cv)
+    mountains(cv)
+    e = Escena(cv, CAM, [LLUNA, CIUTAT], ambient=-0.3)
+    e.quad('aigua', (-40000, 0, 30000), (40000, 0, 30000), (40000, 0, 60), (-40000, 0, 60), ramp=WAT, lvl=_aigua)
+    cases(e)
+    torre(e, variant, screen_kw)
+    primer_pla(e)
+    fulles(cv, e)
+    return e
+
+
+def fanals(cv, e):
+    W_ = cv.w
+    for P in _fanals():
+        u, v = _p((P[0], 26, P[2]))
+        U, V = round(u), round(v)
+        bu, bv = _p((P[0], 8, P[2]))
+        if not (0 <= U < W and 0 <= V < H):
             continue
-        cv.vline(lx, HORIZON - 5, HORIZON - 2, STONE, 1.6, lit=0)
-        cv.flat(lx, HORIZON - 6, (255, 220, 150))
-        cv.glow(lx, HORIZON - 6, 6, (255, 210, 140), 0.4)
+        if e.ids[e.amo[V * W_ + U]] not in ('', 'cases', 'moll', 'aigua'):
+            continue
+        cv.flat(U, V, (255, 220, 150))
+        if CAM.escala(P) > 0.2:
+            cv.flat(U, V + 1, (200, 150, 90))
+        cv.glow(u, v, 3 + 10 * CAM.escala(P), (255, 210, 140), 0.4)
 
 
-def lake(cv):
-    for y in range(HORIZON, H):
-        for x in range(W):
-            ripple = math.sin(x / 12 + y * 0.97) * 0.3
-            cv.put(x, y, WATER, 2.0 - (y - HORIZON) / 66 + ripple * 0.5, lit=0)
-
-
-def reflections(cv, frame=0):
-    """Els llums s'emmirallen al llac, trencats per les ones."""
-    src = cv.img.copy()
-    S = src.load()
-    for y in range(HORIZON + 1, H):
-        d = y - HORIZON
-        sy = HORIZON - d
-        if sy < 0:
-            break
-        for x in range(W):
-            wob = round(math.sin(y * 0.52 + frame * 0.8) * min(4, d / 12))
-            sx = max(0, min(W - 1, x + wob))
-            r, g, b, _ = S[sx * cv.S, sy * cv.S]
-            if r + g + b > 260 and (y + x // 4) % 2 == 0:
-                o = cv.get(x, y)
-                k = 0.45 * max(0, 1 - d / 146)
-                cv.flat(x, y, (int(o[0] + (r - o[0]) * k), int(o[1] + (g - o[1]) * k), int(o[2] + (b - o[2]) * k)))
-
-
-def jet(cv, frame=0):
-    """El raig d'aigua, il·luminat, a l'esquerra."""
-    bx, top = JET_X, JET_TOP
-    for y in range(top, HORIZON):
-        t = (y - top) / (HORIZON - top)
-        wdt = 1 + t * 6.5 + (2.6 if y < top + 13 else 0)
+def jet(cv, e, frame=0):
+    """El raig d'aigua, il·luminat, damunt del llac (en pantalla, de la mida que toca a aquella distància)."""
+    bx, by = _p(JET_P)
+    _, top = _p((JET_P[0], JET_H, JET_P[2]))
+    k = CAM.escala(JET_P) / 0.16
+    ok = lambda x, y: e.ids[e.amo[int(y) * W + int(x)]] in ('', 'aigua', 'cases', 'moll')   # noqa: E731
+    bx = round(bx)
+    for y in range(int(top), int(by)):
+        t = (y - top) / (by - top)
+        wdt = (1 + t * 6.5 + (2.6 if y < top + 13 else 0)) * k
         for x in range(int(bx - wdt), int(bx + wdt) + 1):
-            if hr(x, y + frame * 4, 4) > 0.25 + t * 0.3:
+            if 0 <= x < W and 0 <= y < H and ok(x, y) and hr(x, y + frame * 4, 4) > 0.25 + t * 0.3:
                 cv.put(x, y, JET, 3.6 - abs(x - bx) / max(1, wdt) * 1.6 - t * 0.8, lit=0)
-    # la ploma que cau, a la dreta (el vent)
-    for k in range(100):
-        a = hr(k, frame, 5)
-        x = bx + 3 + int(a * 24)
-        y = top + int(a * a * 53) + int(hr(k, 6, 7) * 8)
-        cv.flat(x, y, JET[2] if hr(k, 8) > 0.5 else JET[3])
-    # l'escuma a la base, i el moll d'on surt
-    for k in range(30):
-        x = bx + int((hr(k, frame, 11) - 0.5) * 18)
-        cv.flat(x, HORIZON - 1 - int(hr(k, 12) * 3), JET[3])
+    for j in range(110):                                                 # la ploma que cau, a la dreta (el vent)
+        a = hr(j, frame, 5)
+        x = bx + 3 + int(a * 26 * k)
+        y = top + int(a * a * 56 * k) + int(hr(j, 6, 7) * 8)
+        if 0 <= x < W and 0 <= y < H and ok(x, y):
+            cv.flat(x, y, JET[2] if hr(j, 8) > 0.5 else JET[3])
+    for j in range(30):                                                  # l'escuma a la base
+        x = bx + int((hr(j, frame, 11) - 0.5) * 18 * k)
+        y = round(by) - 1 - int(hr(j, 12) * 3)
+        if 0 <= x < W and 0 <= y < H and ok(x, y):
+            cv.flat(x, y, JET[3])
     cv.glow(bx, top + 40, 40, (190, 210, 240), 0.12)
 
 
-# ─── La seu del BCMU ───────────────────────────────────────────────────────
-
-def big_word(cv, word, cx, y, big):
-    """Lletres daurades grosses (les petites ×`big`), amb bisell: llum a dalt, ombra a baix."""
-    w = (text_width(word) + 1) * big
-    tmp = Canvas1x(w=60, h=10, transparent=True)
-    text(tmp, word, 0, 0, GOLD, 4, lit=0)
-    sm = nearest(tmp.img, (tmp.img.width * big, tmp.img.height * big))
-    SM = sm.load()
-    out = sm.copy()
-    O = out.load()
-    for yy in range(sm.height):
-        for xx in range(sm.width):
-            if SM[xx, yy][3]:
-                above = yy > 0 and SM[xx, yy - 1][3]
-                below = yy < sm.height - 1 and SM[xx, yy + 1][3]
-                if not above:
-                    O[xx, yy] = GOLD[4] + (255,)
-                elif not below:
-                    O[xx, yy] = GOLD[2] + (255,)
-    cv.blit(out, (cx - w // 2, y))
-    return cx - w // 2, w
+def antenna(cv, on=True):
+    ax, ay = antenna_xy()
+    cv.rect(round(ax) - 1, round(ay) - 1, round(ax) + 1, round(ay), [(90, 20, 20), (255, 60, 50)], 1 if on else 0, lit=0)
+    if on:
+        cv.glow(ax, ay, 8, (255, 60, 50), 0.4)
 
 
-def bcmu(cv, antenna=True):
-    x0, x1 = TOWER
-    top = TOP
-    # la torre de vidre, amb els forjats i els muntants
-    for y in range(top, BASE_Y):
-        for x in range(x0, x1 + 1):
-            floor = (y - top) % FLOOR == 0
-            mull = (x - x0) % BAY == 0
-            sheen = max(0, 1 - abs((x - x0) - 24 - (y - top) * 0.3) / 13) * 1.4    # el reflex de la lluna
-            edge = 1.6 if x - x0 < 4 else (-0.8 if x1 - x < 4 else 0)
-            lvl = 2.4 + (y - top) / 213 + sheen + edge + (1.0 if floor else 0) + (0.5 if mull else 0)
-            cv.put(x, y, GLASSB, lvl, lit=0)
-    # les finestres de qui encara treballa: làmpades càlides i algun fluorescent fred
-    for fy in range(top + 2, BASE_Y - 4, FLOOR):
-        for fx in range(x0 + 2, x1 - 6, BAY):
-            r = hr(fx, fy, 9)
-            if r > 0.72:
-                ramp = COOL if hr(fx, fy, 2) > 0.8 else WARM
-                cv.rect(fx, fy + 1, fx + 7, fy + 5, ramp, lambda px, py: 2.0 + hr(fx, fy, 1) - (py - fy) * 0.15, lit=0)
-                if hr(fx, fy, 3) > 0.5:                                  # algú a la taula, a contrallum
-                    sx = fx + 2 + int(hr(fx, fy, 4) * 3)
-                    cv.rect(sx, fy + 3, sx + 1, fy + 5, [(20, 14, 10)], 0, lit=0)
-                    cv.flat(sx, fy + 2, (20, 14, 10))
-                elif hr(fx, fy, 5) > 0.5:                                # una persiana mig abaixada
-                    for py in range(fy + 1, fy + 3):
-                        cv.tint(fx, py, fx + 7, py, (20, 16, 20), 0.5 if py % 2 else 0.3)
-    # el coronament i les lletres daurades
-    cv.rect(x0 - 3, top - 8, x1 + 3, top - 1, STONE, lambda x, y: 3.2 + (0.8 if y == top - 8 else 0) - (0.6 if y == top - 1 else 0), lit=0)
-    for x in range(x0 - 1, x1 + 2, 6):                                  # les juntes de la pedra
-        cv.vline(x, top - 6, top - 2, STONE, 2.4, lit=0)
-    big_word(cv, 'BCMU', (x0 + x1) // 2, top - 25, 3)
-    cv.glow((x0 + x1) // 2, top - 17, 35, (255, 210, 110), 0.3)
-    # l'antena del terrat, amb el llum vermell
-    ax = x1 - 14
-    cv.vline(ax, top - 24, top - 9, STONE, 3.0, lit=0)
-    for y in range(top - 21, top - 9, 5):
-        cv.hline(ax - 1, ax + 1, y, STONE, 2.4, lit=0)
-    cv.rect(ax - 1, top - 26, ax + 1, top - 25, [(90, 20, 20), (255, 60, 50)], 1 if antenna else 0, lit=0)
-    if antenna:
-        cv.glow(ax, top - 25, 8, (255, 60, 50), 0.4)
-    # el sòcol de pedra, amb l'entrada i les columnes
-    cv.rect(x0 - 32, BASE_Y, x1 + 32, HORIZON - 1, STONE,
-            lambda x, y: 2.6 + (0.8 if (x - x0) % 21 < 4 else 0) - (y - BASE_Y) * 0.015 + (0.3 if (y - BASE_Y) % 7 == 0 else 0), lit=0)
-    cv.rect(x0 - 35, BASE_Y - 3, x1 + 35, BASE_Y, STONE, lambda x, y: 4.2 + (0.6 if y == BASE_Y - 3 else 0), lit=0)
-    cv.rect(301, 176, 339, HORIZON - 1, WARM, lambda x, y: 1.8 + (0.4 if y > 192 else 0), lit=0)   # el vestíbul, encès
-    cv.rect(316, 182, 324, 186, GOLD, 2.6, lit=0)                        # el logotip del vestíbul
-    cv.flat(312, 194, (30, 20, 10))                                      # el vigilant, d'esquena
-    cv.rect(311, 195, 313, HORIZON - 2, [(30, 20, 10)], 0, lit=0)
-    for cx in (307, 320, 333):
-        cv.rect(cx, 176, cx + 1, HORIZON - 1, STONE, 1.2, lit=0)
-    cv.hline(299, 341, 175, STONE, 4.6, lit=0)
-    cv.glow(320, 189, 27, (255, 210, 130), 0.25)
-    # una bandera que no es mou (no fa vent per als bancs)
-    fx = x1 + 24
-    cv.vline(fx, BASE_Y - 35, BASE_Y - 3, STONE, 3.4, lit=0)
-    cv.flat(fx, BASE_Y - 36, GOLD[3])
-    cv.rect(fx + 1, BASE_Y - 35, fx + 13, BASE_Y - 27, GOLD, lambda x, y: 2.4 + (0.6 if y == BASE_Y - 35 else 0) - (0.5 if y == BASE_Y - 27 else 0), lit=0)
-    cv.rect(fx + 5, BASE_Y - 33, fx + 8, BASE_Y - 30, GOLD, 1.2, lit=0)   # l'emblema
+@functools.lru_cache(maxsize=None)
+def _vora():
+    """Per a cada columna, la primera fila de llac (on toca el que s'hi emmiralla) i la màscara de l'aigua."""
+    _, e = _base('pròleg')
+    amo = np.frombuffer(e.amo, dtype=np.uint16).reshape(H, W)
+    water = amo == e.ids.index('aigua')
+    edge = np.full(W, H, dtype=np.int32)
+    for x in range(W):
+        ys = np.nonzero(water[:, x])[0]
+        if len(ys):
+            edge[x] = ys[0]
+    return edge, water
 
 
-def _bust(talk, smile=True, look=False):
-    """El bust del Director per a la pantalla: camisa blanca, corbata vermella, i el somriure amb massa dents.
-    Sense `smile`, la boca de sempre; amb `look`, obre els ulls i mira fora de camp (a la dreta)."""
-    fig = person(BONFILL, 'D', talk=talk)
-    P = fig.load()
-    # camisa blanca i corbata vermella al coll (en V, sota la nou)
-    for y in range(39, 54):
-        half = min(4, 1 + (y - 39) * 0.6)
-        for x in range(29, 38):
-            if P[x, y][3] and abs(x - 33) <= half:
-                tie = abs(x - 33) <= (0 if y < 42 else 1)
-                P[x, y] = (230, 230, 236, 255) if not tie else ((180, 30, 40, 255) if y > 41 else (210, 50, 50, 255))
-        if 39 < y < 48 and P[33 - int(half) - 1, y][3]:
-            P[33 - int(half) - 1, y] = (150, 150, 160, 255)                 # l'ombra del coll de la camisa
-    if smile:                                                            # massa dents, i les comissures amunt
-        for x in range(30, 34):
-            P[x, 29] = (250, 250, 250, 255)
-        P[29, 29] = P[34, 29] = (150, 66, 70, 255)
-        P[29, 28] = P[34, 28] = (178, 110, 100, 255)
-    if look:                                                             # els ulls oberts, mirant a la dreta
-        for ex in (27, 35):
-            P[ex, 22] = P[ex + 1, 22] = (236, 236, 240, 255)
-            P[ex + 2, 22] = (30, 30, 40, 255)
-            P[ex, 21] = P[ex + 1, 21] = P[ex + 2, 21] = (150, 100, 90, 255)       # la parpella, ben amunt
-        for x in (34, 35, 36, 37, 38):                                   # una cella aixecada
-            P[x, 19] = (200, 200, 210, 255)
-    return nearest(fig.crop((11, 4, 55, 48)), (88, 88))
+def reflex(img, frame=0, variant='pròleg'):
+    """El llac emmiralla el que té a sobre (a cada columna, des de la vora), trencat per les ones."""
+    edge, water = _vora()
+    a = np.asarray(img, dtype=np.float32).copy()
+    src = a.copy()
+    yy, xx = np.mgrid[0:H, 0:W]
+    d = yy - edge[None, :]
+    wob = np.round(np.sin(yy * 0.52 + frame * 0.8) * np.minimum(4, np.maximum(d, 0) / 10)).astype(int)
+    sx = np.clip(xx + wob, 0, W - 1)
+    sy = np.clip(2 * edge[None, :] - yy - 1, 0, H - 1)
+    s = src[sy, sx, :3]
+    lum = s.sum(axis=2)
+    k = np.clip(1 - d / 150, 0, 1) * np.where(lum > 240, 0.55, 0.22)
+    k = k * (((yy + xx // 4) % 2 == 0) | (lum > 400))                    # a ratlles (les ones)
+    k = k * water * (d >= 0)
+    a[..., :3] = a[..., :3] * (1 - k[..., None]) + s * k[..., None]
+    # el camí de la lluna: espurnes en una franja que s'eixampla cap a nosaltres
+    dm = yy - HOR
+    band = np.abs(xx - MOON[0] - np.sin(yy * 0.7 + frame) * 2) < 3 + dm * 0.22
+    rnd = _soroll(frame)
+    sp = band & water & (dm > 1) & (rnd > 0.55 + np.abs(xx - MOON[0]) / (3 + dm * 0.22) * 0.35) & ((yy % 2) == 0)
+    a[sp, :3] = a[sp, :3] * 0.3 + np.array([200, 205, 230], dtype=np.float32) * 0.7
+    return Image.fromarray(a.clip(0, 255).astype(np.uint8), 'RGBA').copy()
 
 
-SCREENB = [(10, 20, 50), (20, 40, 90), (40, 70, 140), (80, 120, 190)]
+@functools.lru_cache(maxsize=None)
+def _soroll(frame):
+    yy, xx = np.mgrid[0:H, 0:W]
+    return ((np.sin((xx // 2) * 12.9898 + yy * 78.233 + (frame % 3) * 37.719) * 43758.5453) % 1.0)
 
 
-def screen(cv, state='logo', talk=False, smile=True, look=False, fx=None):
-    """La pantalla de la façana. `state`: 'logo' (el logotip del banc, en espera) o 'director' (el Director Bonfill,
-    de cara, amb corbata i somriure d'anunci). `fx`: el soroll d'encendre-la ('glitch', 'soroll', 'ratlla',
-    'mig', 'flaix')."""
-    x0, y0, x1, y1 = SCREEN
-    for y in range(y0, y1 + 1):
-        for x in range(x0, x1 + 1):
-            cv.put(x, y, SCREENB, 1.0 + (y - y0) / 27, lit=0)
-    if state == 'logo':
-        cv.glow((x0 + x1) // 2, y0 + 36, 40, (240, 200, 90), 0.2)
-        big_word(cv, 'BCMU', (x0 + x1) // 2, y0 + 22, 4)
-        slogan = 'EL FUTUR DE TOTHOM'
-        text(cv, slogan, (x0 + x1) // 2 - text_width(slogan) // 2, y0 + 52, [(250, 230, 160)], 0, lit=0, flat=(250, 230, 160))
-        cv.hline(x0 + 22, x1 - 22, y0 + 47, GOLD, 2.6, lit=0)
-    else:
-        # el fons de l'estudi: el logotip del banc, desenfocat
-        cv.glow(x0 + 20, y0 + 18, 16, (200, 170, 80), 0.25)
-        cv.glow(x1 - 16, y0 + 30, 22, (120, 170, 240), 0.2)
-        bust = _bust(talk, smile, look)
-        lay = Image.new('RGBA', (W, H), (0, 0, 0, 0))
-        lay.alpha_composite(bust, ((x0 + x1) // 2 - 44, y1 - 83))
-        cv.blit(lay.crop((x0, y0, x1 + 1, y1 + 1)), (x0, y0))
-        cv.rect(x0, y1 - 8, x1, y1, [(240, 200, 70)], 0, lit=0)          # el rètol de baix
-        cv.hline(x0, x1, y1 - 8, [(255, 230, 130)], 0, lit=0)
-        text(cv, 'BCMU', x0 + 4, y1 - 6, [(30, 20, 4)], 0, lit=0, flat=(40, 28, 6))
-        s = 'EN DIRECTE'
-        cv.rect(x1 - text_width(s) - 6, y0 + 3, x1 - 3, y0 + 10, [(150, 20, 30)], 0, lit=0)
-        text(cv, s, x1 - text_width(s) - 4, y0 + 5, [(250, 230, 230)], 0, lit=0, flat=(250, 230, 230))
-    _screen_fx(cv, fx)
-    for y in range(y0, y1 + 1, 2):                                       # les línies de la pantalla
-        cv.tint(x0, y, x1, y, (0, 0, 0), 0.18)
-    outline(cv, x0 - 1, y0 - 1, x1 + 1, y1 + 1, [(4, 6, 10)])
-    outline(cv, x0 - 2, y0 - 2, x1 + 2, y1 + 2, [(30, 34, 40)])
-    cv.glow((x0 + x1) // 2, (y0 + y1) // 2, 67, (120, 160, 230), 0.12)
+def _fx():
+    sx, sy = _p(tp(-TW / 2 + (SCR_AT[0] + 55) * TPX, PH + 14 + TH - (SCR_AT[1] + 42) * TPX, -TD / 2))
+    lx, ly = _p(tp(0, PH / 2, -TD / 2 - 60))
+    light = [llum.wash(sx, sy, 150, (110, 150, 240), k=0.4, air=0.02, squash=0.9),        # la pantalla
+             llum.wash(lx, ly, 70, (255, 200, 120), k=0.6, air=0.04, squash=1.6),         # el vestíbul
+             llum.wash(sx, HOR + 40, 70, (90, 130, 230), k=0.5, air=0.08, squash=0.35,
+                       box=(0, HOR + 8, W, H))]                                           # i la pantalla, al llac
+    tone = [llum.grade(contrast=1.08, pivot=40, sat=1.1, lift=(2, 3, 9))]
+    # (la pantalla no fa bloom: si no, la cara del Director es crema)
+    yc = PH + 14 + TH
+    pts = [_p(tp(-TW / 2 + fx * TPX, yc - fy * TPX, -TD / 2)) for fx in (SCR_AT[0], SCR_AT[0] + 111)
+           for fy in (SCR_AT[1], SCR_AT[1] + 87)]
+    x0, x1 = min(p[0] for p in pts), max(p[0] for p in pts)
+    y0, y1 = min(p[1] for p in pts), max(p[1] for p in pts)
+    bloom = [llum.bloom(thr=150, radii=((2, 0.45), (8, 0.35), (22, 0.18)),
+                        mask=lambda x, y: 1 - 0.85 * ((x >= x0) & (x <= x1) & (y >= y0) & (y <= y1)))]
+    return light, bloom, tone
 
 
-def _screen_fx(cv, fx):
-    x0, y0, x1, y1 = SCREEN
-    if fx is None:
-        return
-    if fx == 'glitch':                                                   # unes franges que es desplacen
-        for a, b, dx in ((y0 + 9, y0 + 17, 7), (y0 + 30, y0 + 33, -11), (y0 + 50, y0 + 61, 5)):
-            k = cv.S                                                    # (en píxels reals)
-            X0, A, B, X1, DX = x0 * k, a * k, b * k, (x1 + 1) * k, dx * k
-            band = cv.img.crop((X0, A, X1, B))
-            cv.img.paste(band, (X0 + DX, A))
-            cv.img.paste(band.crop((band.width - DX, 0, band.width, B - A)) if DX > 0 else band.crop((0, 0, -DX, B - A)),
-                         (X0, A) if DX > 0 else (X1 + DX, A))
-    elif fx in ('soroll', 'soroll2'):                                    # neu de televisor
-        seed = 7 if fx == 'soroll' else 8
-        for y in range(y0, y1 + 1):
-            for x in range(x0, x1 + 1):
-                v = int(hr(x, y, seed) * 200) + 30
-                cv.flat(x, y, (v, v, min(255, v + 20)))
-        for y in range(y0 + (20 if seed == 7 else 52), y0 + (26 if seed == 7 else 57)):   # la franja que roda
-            cv.tint(x0, y, x1, y, (255, 255, 255), 0.4)
-    elif fx == 'ratlla':                                                 # negre, i una ratlla al mig
-        cv.rect(x0, y0, x1, y1, [(4, 6, 12)], 0, lit=0)
-        my = (y0 + y1) // 2
-        cv.rect(x0 + 8, my - 1, x1 - 8, my + 1, [(200, 220, 255)], 0, lit=0)
-        cv.hline(x0 + 20, x1 - 20, my, [(255, 255, 255)], 0, lit=0)
-    elif fx == 'mig':                                                    # la imatge s'obre des del mig
-        my = (y0 + y1) // 2
-        cv.rect(x0, y0, x1, my - 22, [(4, 6, 12)], 0, lit=0)
-        cv.rect(x0, my + 22, x1, y1, [(4, 6, 12)], 0, lit=0)
-    elif fx == 'flaix':
-        cv.tint(x0, y0, x1, y1, (230, 240, 255), 0.35)
+def _amb_llum(img):
+    light, bl, tone = _fx()
+    return llum.apply(img, light + bl + tone, scale=1)
 
 
-def bg(cv, frame=0):
-    sky(cv)
-    mountains(cv)
-    city(cv)
-    bcmu(cv, antenna=frame % 3 != 2)
-    screen(cv)
-    lake(cv)
-    jet(cv, frame)
-    reflections(cv, frame)
+@functools.lru_cache(maxsize=None)
+def _base(variant='pròleg'):
+    """L'escena sense els efectes que es mouen (el raig, el reflex, l'antena) → (imatge, Escena)."""
+    cv = Canvas(light=LIGHT)
+    e = escena(cv, variant)
+    fanals(cv, e)
+    return cv.img.copy(), e
+
+
+def _acaba(img, frame=0, variant='pròleg', on=True):
+    """Hi posa el raig, l'antena, el reflex al llac i la llum."""
+    _, e = _base(variant)
+    cv = Canvas(light=LIGHT, img=img.copy())
+    jet(cv, e, frame)
+    antenna(cv, on)
+    return _amb_llum(reflex(cv.img, frame, variant))
+
+
+@functools.lru_cache(maxsize=None)
+def base_llum(variant='pròleg'):
+    return _acaba(_base(variant)[0], 0, variant)
+
+
+def bg(cv):
+    cv.img.paste(base_llum())
+    cv.P = cv.img.load()
 
 
 PROPS = {}
 
 
-@functools.lru_cache(maxsize=1)
-def _base():
-    cv = Canvas(light=LIGHT)
-    bg(cv)
-    return cv.img
-
-
-def _frames():
-    frames = []
-    for i in range(6):
-        cv = Canvas(light=LIGHT)
-        bg(cv, i)
-        frames.append(_diff(cv.img, _base()))
-    return frames
+def nit_frames(variant='pròleg'):
+    return [_diff(_acaba(_base(variant)[0], i, variant, on=i % 3 != 2), base_llum(variant)) for i in range(6)]
 
 
 def _empty():
     return Canvas(light=LIGHT, transparent=True).img
 
 
-@functools.lru_cache(maxsize=1)
-def _top_base():
-    """Només el que hi ha sobre l'horitzó (per a les capes de la pantalla i les lletres: el llac no hi entra, que
-    el reflex quiet desentonaria amb les ones)."""
-    cv = Canvas(light=LIGHT)
-    _top(cv)
-    return cv.img
-
-
-def _top(cv, **screen_kw):
-    sky(cv)
-    mountains(cv)
-    city(cv)
-    bcmu(cv)
-    screen(cv, **screen_kw)
+def _sense_llac(img):
+    """Treu d'una capa el llac (el reflex quiet desentonaria amb les ones de `nit`)."""
+    _, water = _vora()
+    a = np.array(img)
+    a[water, 3] = 0
+    return Image.fromarray(a)
 
 
 def _screen(**kw):
-    cv = Canvas(light=LIGHT)
-    _top(cv, **kw)
-    d = _diff(cv.img, _top_base())
-    a = np.array(d)
-    a[HORIZON * cv.S:, :, 3] = 0
-    return Image.fromarray(a)
+    img, e = _base()
+    img = img.copy()
+    img.alpha_composite(e.capa(facana(**kw), {'facana'}))
+    return _sense_llac(_diff(_acaba(img), base_llum()))
 
 
 D = {'state': 'director'}
@@ -449,7 +630,8 @@ PANTALLA = {
                        'frameDuration': 100, 'loop': False, 'prop': 'pantalla'},
     'pantalla_parla': {'frames': _screen_clip([{**D}, {**D, 'talk': True}]), 'frameDuration': 170, 'prop': 'pantalla'},
     'pantalla_quiet': {'frames': _screen_clip([{**D}]), 'frameDuration': 1000, 'loop': False, 'prop': 'pantalla'},
-    'pantalla_talla': {'frames': _screen_clip([{**D}, {**D, 'smile': False}, {**D, 'smile': False}, {**D, 'smile': False, 'look': True}]),
+    'pantalla_talla': {'frames': _screen_clip([{**D}, {**D, 'smile': False}, {**D, 'smile': False},
+                                               {**D, 'smile': False, 'look': True}]),
                        'frameDuration': 140, 'loop': False, 'prop': 'pantalla'},
     'pantalla_queixa': {'frames': _screen_clip([{**D, 'smile': False, 'look': True},
                                                 {**D, 'smile': False, 'look': True, 'talk': True}]),
@@ -463,32 +645,31 @@ PANTALLA = {
 
 def _glint_frames():
     """Una espurna travessa en diagonal les lletres daurades del capdamunt (i acaba buida)."""
-    base = _top_base()
-    a0 = np.array(base).astype(int)
-    x0, x1 = TOWER
-    ys, ye = TOP - 26, TOP - 8
-    gold = (a0[:, :, 0] > 170) & (a0[:, :, 2] < 140)
-    k_ = a0.shape[1] // W                                                # píxels reals per píxel de sala (ART_SCALE)
+    src = _lletres_img()
+    a0 = np.array(src).astype(int)
+    h, w = a0.shape[:2]
+    gold = a0[:, :, 3] > 0
+    img, e = _base()
     frames = []
     for i in range(12):
-        p = x0 - 6 + (x1 - x0 + 12) * i / 11
-        out = np.zeros_like(a0)
-        for Y in range(ys * k_, ye * k_):
-            for X in range((x0 - 4) * k_, (x1 + 5) * k_):
-                if not gold[Y, X]:
+        p = -6 + (w + 12) * i / 11
+        out = a0.copy()
+        for y in range(h):
+            for x in range(w):
+                if not gold[y, x]:
                     continue
-                x, y = (X + 0.5) / k_ - 0.5, (Y + 0.5) / k_ - 0.5
-                d = abs(x + (y - ys) * 0.7 - p)
-                k = 1.0 if d < 2 else 0.5 if d < 4 else 0
+                dd = abs(x + y * 0.7 - p)
+                k = 1.0 if dd < 2 else 0.5 if dd < 4 else 0
                 if k:
-                    c = a0[Y, X, :3] + (np.array([255, 252, 230]) - a0[Y, X, :3]) * k
-                    out[Y, X] = [*c, 255]
+                    out[y, x, :3] = a0[y, x, :3] + (np.array([255, 252, 230]) - a0[y, x, :3]) * k
         if i == 6:                                                       # i una estrelleta al mig
-            cx, cy = (x0 + x1) // 2 + 14, ys - 1
-            for dx, dy in ((0, 0), (-1, 0), (1, 0), (0, -1), (0, 1), (-2, 0), (2, 0), (0, -2), (0, 2)):
-                Y0, X0 = (cy + dy) * k_, (cx + dx) * k_
-                out[Y0:Y0 + k_, X0:X0 + k_] = [255, 255, 240, 255] if abs(dx) + abs(dy) < 2 else [250, 220, 140, 255]
-        frames.append(Image.fromarray(out.astype(np.uint8)))
+            cx, cy = w // 2 + 8, 1
+            for dx, dy in ((0, 0), (-1, 0), (1, 0), (0, -1), (0, 1), (-2, 0), (2, 0)):
+                if 0 <= cy + dy < h and 0 <= cx + dx < w:
+                    out[cy + dy, cx + dx] = [255, 255, 240, 255] if abs(dx) + abs(dy) < 2 else [250, 220, 140, 255]
+        lay = img.copy()
+        lay.alpha_composite(e.capa(Image.fromarray(out.astype(np.uint8)), {'lletres'}))
+        frames.append(_sense_llac(_diff(_acaba(lay), base_llum())))
     return frames + [_empty()]
 
 
@@ -509,9 +690,8 @@ FON = 8
 def _dissolve(k):
     """La portada amb una part `k`/FON dels quadrets ja fosa (0: sencera; FON: res)."""
     a = np.array(portada.base()).copy()
-    s = a.shape[1] // W                                                  # (quadrets de 2 px de sala, també a 2×)
     yy, xx = np.mgrid[0:a.shape[0], 0:a.shape[1]]
-    t = BAYER[(yy // (2 * s)) % 4, (xx // (2 * s)) % 4]
+    t = BAYER[(yy // 2) % 4, (xx // 2) % 4]
     a[t < k * 16 / FON, 3] = 0
     return Image.fromarray(a)
 
@@ -531,7 +711,7 @@ PIS = {
 
 # L'ordre compta: cada capa abans de les seves etiquetes (draw_placeholders les hi afegeix).
 ANIMS = {
-    'nit': {'frames': _frames, 'frameDuration': 260},
+    'nit': {'frames': nit_frames, 'frameDuration': 260},
     **PANTALLA,
     **LLETRES,
     **PIS,
