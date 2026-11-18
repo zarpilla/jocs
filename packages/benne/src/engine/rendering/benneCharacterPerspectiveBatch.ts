@@ -70,6 +70,43 @@ const benneCharacterPerspectiveShaderAddition = {
   disable: false,
 };
 
+/**
+ * A scaled-down sprite samples one texel per bucket (above), which turns 1× pixel art into blocks of 2×2 or 3×3
+ * texels when a character walks into the distance. This replaces that texel with the **average of its bucket**
+ * (premultiplied colours, up to 4×4 texels), drawn opaque when at least half the bucket is: the colours blend the
+ * way a smaller drawing would, and the silhouette stays crisp.
+ */
+const benneCharacterPerspectiveAverageAddition = {
+  name: 'BenneCharacterPerspectiveAverage',
+  additions: {
+    fragmentHeader: [
+      'vec4 bennePerspectiveAverage(vec4 c0) {',
+      '    if (outPerspMag >= (1.0 - ' + String(PERSP_EPS) + ')) { return c0; }',
+      '    vec2 texWH = getTexRes();',
+      '    float m = clamp(outPerspMag, 0.0001, 1.0);',
+      '    float stepPx = min(4.0, max(1.0, floor(1.0 / m + 0.5)));',
+      '    if (stepPx < 1.5) { return c0; }',
+      '    vec2 g = floor(outTexCoord * texWH / stepPx) * stepPx;',
+      '    vec4 acc = vec4(0.0);',
+      '    float n = 0.0;',
+      '    for (int j = 0; j < 4; j++) {',
+      '        for (int i = 0; i < 4; i++) {',
+      '            if (float(i) < stepPx && float(j) < stepPx) {',
+      '                acc += getTexture((g + vec2(float(i), float(j)) + 0.5) / texWH);',
+      '                n += 1.0;',
+      '            }',
+      '        }',
+      '    }',
+      '    acc /= n;',
+      '    if (acc.a < 0.5) { return vec4(0.0); }',
+      '    return vec4(acc.rgb / acc.a, 1.0);',
+      '}',
+    ].join('\n'),
+    fragmentProcess: 'fragColor = bennePerspectiveAverage(fragColor);',
+  },
+  disable: false,
+};
+
 const benneCharacterQuadConfig = {
   name: BENNE_CHARACTER_BATCH_HANDLER_NAME,
   verticesPerInstance: 4,
@@ -84,6 +121,7 @@ const benneCharacterQuadConfig = {
     benneCharacterPerspectiveShaderAddition,
     benneMakeDefineTexCount(1),
     benneMakeGetTexture1(),
+    benneCharacterPerspectiveAverageAddition,
     benneMakeApplyTint(),
     benneMakeDefineLights(true),
     benneMakeRotationDatum(true),
