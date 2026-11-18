@@ -4,1154 +4,1175 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 1.aseprite": {
       "frame": {
-        "x": 2919,
+        "x": 1617,
         "y": 0,
-        "w": 152,
-        "h": 88
+        "w": 85,
+        "h": 50
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1016,
-        "y": 88,
-        "w": 152,
-        "h": 88
+        "x": 60,
+        "y": 47,
+        "w": 85,
+        "h": 50
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 2.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 0,
-        "w": 77,
-        "h": 117
+        "x": 2024,
+        "y": 478,
+        "w": 1,
+        "h": 1
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1052,
-        "y": 72,
-        "w": 77,
-        "h": 117
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 3.aseprite": {
       "frame": {
-        "x": 1357,
-        "y": 0,
-        "w": 146,
-        "h": 117
+        "x": 1250,
+        "y": 478,
+        "w": 82,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1018,
-        "y": 72,
-        "w": 146,
-        "h": 117
+        "x": 61,
+        "y": 87,
+        "w": 82,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 4.aseprite": {
       "frame": {
-        "x": 1503,
-        "y": 0,
-        "w": 148,
-        "h": 117
+        "x": 1332,
+        "y": 478,
+        "w": 83,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1018,
-        "y": 72,
-        "w": 148,
-        "h": 117
+        "x": 61,
+        "y": 87,
+        "w": 83,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 5.aseprite": {
       "frame": {
-        "x": 1651,
-        "y": 0,
-        "w": 148,
-        "h": 117
+        "x": 1415,
+        "y": 478,
+        "w": 83,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1018,
-        "y": 72,
-        "w": 148,
-        "h": 117
+        "x": 61,
+        "y": 87,
+        "w": 83,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 6.aseprite": {
       "frame": {
-        "x": 1799,
-        "y": 0,
-        "w": 148,
-        "h": 117
+        "x": 1498,
+        "y": 478,
+        "w": 83,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1018,
-        "y": 72,
-        "w": 148,
-        "h": 117
+        "x": 61,
+        "y": 87,
+        "w": 83,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 7.aseprite": {
       "frame": {
-        "x": 1947,
-        "y": 0,
-        "w": 148,
-        "h": 117
+        "x": 1581,
+        "y": 478,
+        "w": 83,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1018,
-        "y": 72,
-        "w": 148,
-        "h": 117
+        "x": 61,
+        "y": 87,
+        "w": 83,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 8.aseprite": {
       "frame": {
-        "x": 2095,
-        "y": 0,
-        "w": 148,
-        "h": 117
+        "x": 1664,
+        "y": 478,
+        "w": 83,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1018,
-        "y": 72,
-        "w": 148,
-        "h": 117
+        "x": 61,
+        "y": 87,
+        "w": 83,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 9.aseprite": {
       "frame": {
-        "x": 2243,
-        "y": 0,
-        "w": 146,
-        "h": 117
+        "x": 1747,
+        "y": 478,
+        "w": 82,
+        "h": 9
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 1018,
-        "y": 72,
-        "w": 146,
-        "h": 117
+        "x": 61,
+        "y": 87,
+        "w": 82,
+        "h": 9
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 10.aseprite": {
       "frame": {
-        "x": 844,
-        "y": 1146,
-        "w": 1,
-        "h": 1
+        "x": 1829,
+        "y": 478,
+        "w": 195,
+        "h": 6
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 13,
+        "y": 166,
+        "w": 195,
+        "h": 6
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 11.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 1280,
-        "h": 74
+        "x": 1702,
+        "y": 0,
+        "w": 622,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 622,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 12.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 720,
-        "w": 1280,
-        "h": 74
+        "x": 2324,
+        "y": 0,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 13.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 720,
-        "w": 1280,
-        "h": 74
+        "x": 2964,
+        "y": 0,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 14.aseprite": {
       "frame": {
         "x": 0,
-        "y": 794,
-        "w": 1280,
-        "h": 74
+        "y": 360,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 15.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 794,
-        "w": 1280,
-        "h": 74
+        "x": 640,
+        "y": 360,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 16.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 794,
-        "w": 1280,
-        "h": 74
+        "x": 1280,
+        "y": 360,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 17.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 868,
-        "w": 1280,
-        "h": 74
+        "x": 1920,
+        "y": 360,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 18.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 868,
-        "w": 1280,
-        "h": 74
+        "x": 2560,
+        "y": 360,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 19.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 868,
-        "w": 1280,
-        "h": 74
+        "x": 3200,
+        "y": 360,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 20.aseprite": {
       "frame": {
         "x": 0,
-        "y": 942,
-        "w": 1280,
-        "h": 74
+        "y": 403,
+        "w": 640,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 640,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 21.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 942,
-        "w": 1280,
-        "h": 74
+        "x": 640,
+        "y": 403,
+        "w": 627,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 268,
-        "w": 1280,
-        "h": 74
+        "y": 129,
+        "w": 627,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 22.aseprite": {
       "frame": {
-        "x": 3376,
-        "y": 1104,
-        "w": 422,
-        "h": 34
+        "x": 2487,
+        "y": 446,
+        "w": 250,
+        "h": 26
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 328,
-        "w": 422,
-        "h": 34
+        "x": 183,
+        "y": 184,
+        "w": 250,
+        "h": 26
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 23.aseprite": {
       "frame": {
-        "x": 416,
-        "y": 1104,
-        "w": 424,
-        "h": 40
+        "x": 500,
+        "y": 478,
+        "w": 250,
+        "h": 24
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 328,
-        "w": 424,
-        "h": 40
+        "x": 183,
+        "y": 185,
+        "w": 250,
+        "h": 24
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 24.aseprite": {
       "frame": {
-        "x": 2528,
-        "y": 1104,
-        "w": 424,
-        "h": 38
+        "x": 750,
+        "y": 478,
+        "w": 250,
+        "h": 24
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 328,
-        "w": 424,
-        "h": 38
+        "x": 183,
+        "y": 184,
+        "w": 250,
+        "h": 24
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 25.aseprite": {
       "frame": {
-        "x": 1686,
-        "y": 1060,
-        "w": 422,
-        "h": 42
+        "x": 2737,
+        "y": 446,
+        "w": 250,
+        "h": 26
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 326,
-        "w": 422,
-        "h": 42
+        "x": 183,
+        "y": 183,
+        "w": 250,
+        "h": 26
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 26.aseprite": {
       "frame": {
-        "x": 2980,
-        "y": 942,
-        "w": 416,
-        "h": 44
+        "x": 1762,
+        "y": 403,
+        "w": 247,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 454,
-        "y": 324,
-        "w": 416,
-        "h": 44
+        "x": 186,
+        "y": 183,
+        "w": 247,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 27.aseprite": {
       "frame": {
-        "x": 2108,
-        "y": 1060,
-        "w": 420,
-        "h": 42
+        "x": 2009,
+        "y": 403,
+        "w": 247,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 324,
-        "w": 420,
-        "h": 42
+        "x": 186,
+        "y": 182,
+        "w": 247,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 28.aseprite": {
       "frame": {
-        "x": 3396,
-        "y": 942,
-        "w": 420,
-        "h": 44
+        "x": 2256,
+        "y": 403,
+        "w": 248,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 322,
-        "w": 420,
-        "h": 44
+        "x": 185,
+        "y": 181,
+        "w": 248,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 29.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1016,
-        "w": 420,
-        "h": 44
+        "x": 2504,
+        "y": 403,
+        "w": 248,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 322,
-        "w": 420,
-        "h": 44
+        "x": 185,
+        "y": 181,
+        "w": 248,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 30.aseprite": {
       "frame": {
-        "x": 420,
-        "y": 1016,
-        "w": 422,
-        "h": 44
+        "x": 2752,
+        "y": 403,
+        "w": 249,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 320,
-        "w": 422,
-        "h": 44
+        "x": 184,
+        "y": 180,
+        "w": 249,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 31.aseprite": {
       "frame": {
-        "x": 842,
-        "y": 1016,
-        "w": 422,
-        "h": 44
+        "x": 3001,
+        "y": 403,
+        "w": 249,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 320,
-        "w": 422,
-        "h": 44
+        "x": 184,
+        "y": 179,
+        "w": 249,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 32.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1146,
-        "w": 422,
-        "h": 34
+        "x": 1987,
+        "y": 446,
+        "w": 250,
+        "h": 29
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 328,
-        "w": 422,
-        "h": 34
+        "x": 183,
+        "y": 181,
+        "w": 250,
+        "h": 29
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 33.aseprite": {
       "frame": {
-        "x": 840,
-        "y": 1104,
-        "w": 424,
-        "h": 40
+        "x": 3733,
+        "y": 446,
+        "w": 250,
+        "h": 25
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 328,
-        "w": 424,
-        "h": 40
+        "x": 183,
+        "y": 185,
+        "w": 250,
+        "h": 25
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 34.aseprite": {
       "frame": {
-        "x": 1264,
-        "y": 1104,
-        "w": 424,
-        "h": 40
+        "x": 0,
+        "y": 478,
+        "w": 250,
+        "h": 25
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 328,
-        "w": 424,
-        "h": 40
+        "x": 183,
+        "y": 184,
+        "w": 250,
+        "h": 25
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 35.aseprite": {
       "frame": {
-        "x": 2528,
-        "y": 1060,
-        "w": 424,
-        "h": 42
+        "x": 2987,
+        "y": 446,
+        "w": 250,
+        "h": 26
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 326,
-        "w": 424,
-        "h": 42
+        "x": 183,
+        "y": 184,
+        "w": 250,
+        "h": 26
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 36.aseprite": {
       "frame": {
-        "x": 1688,
-        "y": 1104,
-        "w": 416,
-        "h": 40
+        "x": 3237,
+        "y": 446,
+        "w": 246,
+        "h": 26
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 454,
-        "y": 326,
-        "w": 416,
-        "h": 40
+        "x": 187,
+        "y": 183,
+        "w": 246,
+        "h": 26
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 37.aseprite": {
       "frame": {
-        "x": 1264,
-        "y": 1016,
-        "w": 416,
-        "h": 44
+        "x": 1267,
+        "y": 403,
+        "w": 247,
+        "h": 33
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 454,
-        "y": 324,
-        "w": 416,
-        "h": 44
+        "x": 186,
+        "y": 182,
+        "w": 247,
+        "h": 33
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 38.aseprite": {
       "frame": {
-        "x": 1680,
-        "y": 1016,
-        "w": 420,
-        "h": 44
+        "x": 3250,
+        "y": 403,
+        "w": 247,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 324,
-        "w": 420,
-        "h": 44
+        "x": 186,
+        "y": 182,
+        "w": 247,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 39.aseprite": {
       "frame": {
-        "x": 2100,
-        "y": 1016,
-        "w": 420,
-        "h": 44
+        "x": 3497,
+        "y": 403,
+        "w": 248,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 322,
-        "w": 420,
-        "h": 44
+        "x": 185,
+        "y": 181,
+        "w": 248,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 40.aseprite": {
       "frame": {
-        "x": 2520,
-        "y": 1016,
-        "w": 420,
-        "h": 44
+        "x": 3745,
+        "y": 403,
+        "w": 248,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 322,
-        "w": 420,
-        "h": 44
+        "x": 185,
+        "y": 180,
+        "w": 248,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 41.aseprite": {
       "frame": {
-        "x": 2940,
-        "y": 1016,
-        "w": 422,
-        "h": 44
+        "x": 0,
+        "y": 446,
+        "w": 249,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 320,
-        "w": 422,
-        "h": 44
+        "x": 184,
+        "y": 180,
+        "w": 249,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 42.aseprite": {
       "frame": {
-        "x": 3362,
-        "y": 1016,
-        "w": 422,
-        "h": 44
+        "x": 1489,
+        "y": 446,
+        "w": 249,
+        "h": 30
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 318,
-        "w": 422,
-        "h": 44
+        "x": 184,
+        "y": 181,
+        "w": 249,
+        "h": 30
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 43.aseprite": {
       "frame": {
-        "x": 422,
-        "y": 1146,
-        "w": 422,
-        "h": 34
+        "x": 2237,
+        "y": 446,
+        "w": 250,
+        "h": 29
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 328,
-        "w": 422,
-        "h": 34
+        "x": 183,
+        "y": 181,
+        "w": 250,
+        "h": 29
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 44.aseprite": {
       "frame": {
-        "x": 2104,
-        "y": 1104,
-        "w": 424,
-        "h": 40
+        "x": 1000,
+        "y": 478,
+        "w": 250,
+        "h": 24
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 328,
-        "w": 424,
-        "h": 40
+        "x": 183,
+        "y": 185,
+        "w": 250,
+        "h": 24
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 45.aseprite": {
       "frame": {
-        "x": 2952,
-        "y": 1104,
-        "w": 424,
-        "h": 38
+        "x": 250,
+        "y": 478,
+        "w": 250,
+        "h": 25
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 328,
-        "w": 424,
-        "h": 38
+        "x": 183,
+        "y": 184,
+        "w": 250,
+        "h": 25
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 46.aseprite": {
       "frame": {
-        "x": 2952,
-        "y": 1060,
-        "w": 422,
-        "h": 42
+        "x": 3483,
+        "y": 446,
+        "w": 250,
+        "h": 26
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 448,
-        "y": 326,
-        "w": 422,
-        "h": 42
+        "x": 183,
+        "y": 184,
+        "w": 250,
+        "h": 26
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 47.aseprite": {
       "frame": {
-        "x": 3374,
-        "y": 1060,
-        "w": 416,
-        "h": 42
+        "x": 249,
+        "y": 446,
+        "w": 247,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 454,
-        "y": 326,
-        "w": 416,
-        "h": 42
+        "x": 186,
+        "y": 183,
+        "w": 247,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 48.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1104,
-        "w": 416,
-        "h": 42
+        "x": 496,
+        "y": 446,
+        "w": 247,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 454,
-        "y": 324,
-        "w": 416,
-        "h": 42
+        "x": 186,
+        "y": 182,
+        "w": 247,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 49.aseprite": {
       "frame": {
-        "x": 2560,
-        "y": 942,
-        "w": 420,
-        "h": 46
+        "x": 1514,
+        "y": 403,
+        "w": 248,
+        "h": 33
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 322,
-        "w": 420,
-        "h": 46
+        "x": 185,
+        "y": 181,
+        "w": 248,
+        "h": 33
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 50.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1060,
-        "w": 420,
-        "h": 44
+        "x": 743,
+        "y": 446,
+        "w": 248,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 452,
-        "y": 322,
-        "w": 420,
-        "h": 44
+        "x": 185,
+        "y": 181,
+        "w": 248,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 51.aseprite": {
       "frame": {
-        "x": 420,
-        "y": 1060,
-        "w": 422,
-        "h": 44
+        "x": 991,
+        "y": 446,
+        "w": 249,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 320,
-        "w": 422,
-        "h": 44
+        "x": 184,
+        "y": 180,
+        "w": 249,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 52.aseprite": {
       "frame": {
-        "x": 842,
-        "y": 1060,
-        "w": 422,
-        "h": 44
+        "x": 1240,
+        "y": 446,
+        "w": 249,
+        "h": 32
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 320,
-        "w": 422,
-        "h": 44
+        "x": 184,
+        "y": 179,
+        "w": 249,
+        "h": 32
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 53.aseprite": {
       "frame": {
-        "x": 1264,
-        "y": 1060,
-        "w": 422,
-        "h": 44
+        "x": 1738,
+        "y": 446,
+        "w": 249,
+        "h": 30
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 450,
-        "y": 318,
-        "w": 422,
-        "h": 44
+        "x": 184,
+        "y": 181,
+        "w": 249,
+        "h": 30
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "final_galway 54.aseprite": {
       "frame": {
-        "x": 2389,
+        "x": 1280,
         "y": 0,
-        "w": 530,
-        "h": 90
+        "w": 337,
+        "h": 102
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 378,
-        "y": 392,
-        "w": 530,
-        "h": 90
+        "x": 159,
+        "y": 195,
+        "w": 337,
+        "h": 102
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "final_galway 55.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -1162,8 +1183,8 @@
     "image": "final_galway.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3840,
-      "h": 1180
+      "w": 3993,
+      "h": 503
     },
     "scale": "1",
     "frameTags": [
@@ -1206,6 +1227,13 @@
         "name": "davant",
         "from": 54,
         "to": 54,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_primer_pla",
+        "from": 55,
+        "to": 55,
         "direction": "forward",
         "color": "#000000ff"
       }
