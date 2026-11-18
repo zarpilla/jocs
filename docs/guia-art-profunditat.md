@@ -171,6 +171,17 @@ línia del mar), i sembla un teló pla.
 *Referència: el vaixell a prop i en diagonal; la plataforma lluny, petita i girada; l'estela i les onades porten l'ull
 d'un a l'altre.*
 
+![El desert al capvespre, amb roques en primer pla i la canonada en diagonal cap a la torre](referencies/cinematica-portada-desert.png)
+
+*Referència per a la portada d'Aigua Verne, que ara és el mateix paisatge pla:*
+- *Primer pla:* roques i matolls secs en silueta, que emmarquen les dues cantonades de baix.
+- *Línies de fuga:* els solcs del camp fugen cap a l'horitzó, i la canonada surt de baix al mig i puja en diagonal
+  fins a la bomba i la torre. És la línia que porta l'ull.
+- *Llum rasant:* el sol es pon a l'esquerra, i el vehicle i la grua fan ombres llargues cap a la dreta.
+- *La torre:* el punt d'interès, alta i a la dreta, amb el dipòsit orbital a dalt.
+- *Animació:* les capes de parallax (les roques, el vehicle, la torre, el cel), el pilot blau de la torre que
+  batega, les finestres del vehicle i les estrelles.
+
 ### La composició
 
 - **Contrast d'escala.** Una cosa gran a prop (el vaixell, al primer pla d'un costat) i el destí petit a l'horitzó
@@ -236,6 +247,21 @@ tres cares, comporta oberta a un passadís il·luminat, barana i canonada en pri
   - **La llum:** la llum daurada de la finestra entra en diagonal i creua la sala de dreta a esquerra, amb pols
     suspesa. La llar de foc fa de penombra càlida. És la llum que ha de fer servir `characterShadow`, amb l'ombra cap
     a l'esquerra.
+- **Graner de la granja (Aigua Verne, `granja_graner`), per redissenyar.** Proposta
+  ([referència](referencies/sala-granja-graner.png)):
+  - **La cantonada:** la càmera mira una cantonada de taulons. A l'esquerra, la paret de les llavors fuig, amb els
+    sacs en files que s'empetiteixen. A la dreta, la paret del fons i la lateral fan l'angle. Les bigues del sostre
+    fugen cap a la cantonada.
+  - **Una sortida al fons:** la porta oberta deixa veure l'exterior lluminós (la torre d'aigua, els camps).
+  - **El tractor en 3/4:** se'n veuen el davant, el costat i la part de dalt (el volant, el seient). És el volum
+    principal, separat de la paret i girat.
+  - **Primer pla:** un pilar fosc a la dreta, tallat per la vora, i les bigues de dalt en silueta.
+  - **La llum:** feixos de sol en diagonal per les escletxes del sostre, amb pols, i la llum de la porta estirada
+    en diagonal pel terra. Fora d'aquests feixos, penombra càlida. Per a `characterShadow`, la llum dominant és la
+    porta: l'ombra cau cap endavant i cap a la dreta.
+  - **El terra:** palla escampada, més grossa a prop i més menuda al fons. Les bales de palla, i el banc
+    d'eines amb la caixa vermella, trenquen la línia de la paret amb el terra.
+  - El personatge ha de poder passar per darrere del tractor o de les bales.
 - **Sales de control i ponts.** El finestral en diagonal, amb els marcs inclinats; la consola amb tres cares;
   una comporta en escorç que s'obre a un passadís il·luminat; una canonada i una barana en silueta a baix; caixes
   d'eines i cables pel terra.
