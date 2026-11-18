@@ -374,14 +374,20 @@ ANIMS = {
 }
 
 
-def _davant(x, y):
-    _, e = _base()
-    S = e.S
-    i = e.amo[(y * S + S // 2) * e.cv.w + x * S + S // 2]
-    return e.ids[i] == 'primer_pla'
+def _amo(ids):
+    def mask(x, y):
+        _, e = _base()
+        S = e.S
+        return e.ids[e.amo[(y * S + S // 2) * e.cv.w + x * S + S // 2]] in ids
+    return mask
 
 
-FRONT = {'mask': _davant, 'baseline': 999, 'zIndex': 20}
+# Capes del davant: el primer pla (sempre davant) i la taula del mapa (qui hi passa per darrere, hi queda darrere).
+FRONT = [
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+    {'id': 'davant_mapa', 'mask': _amo({'mapa', 'mapa_vidre'}),
+     'baseline': round(CAM.projecta(((MAPA[0] + MAPA[1]) / 2, 0, MAPA[2]))[1]), 'zIndex': 20},
+]
 
 
 # ─── Geometria (coordenades de sala, projectades) ────────────────────────────
@@ -397,10 +403,12 @@ def _rect_mon(*Ps):
             min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
 
 
-# El terra on es camina (al món): davant la consola i els seients, amb un clot per la taula del mapa i lluny de la
-# caixa del primer pla.
-WALK_MON = [(44, 230), (352, 230), (352, 172), (520, 172), (520, 128), (462, 128), (462, 112), (44, 112)]
+# El terra on es camina (al món): davant la consola i els seients, i al voltant de la taula del mapa (s'hi passa per
+# darrere: és un forat), lluny de la caixa del primer pla.
+WALK_MON = [(44, 230), (340, 230), (340, 262), (536, 262), (530, 200), (520, 128), (462, 128), (462, 112), (44, 112)]
 _WALK = [_p(x, z) for x, z in WALK_MON]
+_FORAT_MAPA = [_p(x, z) for x, z in ((MAPA[0] - 4, MAPA[2] - 4), (MAPA[1] + 4, MAPA[2] - 4), (MAPA[1] + 4, MAPA[3] + 4),
+                                      (MAPA[0] - 4, MAPA[3] + 4))]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
 
@@ -435,7 +443,13 @@ GEOMETRIA = {
     },
     'spawns': {'capitana': _p(352, 226), 'iri': _p(250, 160), 'vet': _p(150, 182)},
     'walkable': _WALK,
+    'forats': [_FORAT_MAPA],
     'floorSquash': 0.45,                           # (la càmera, picada, a ≈1,9 m: el terra es veu aixafat)
+    # L'ombra de contacte: les dues bombetes del sostre (el punt del terra entre totes dues); curta, és llum de dalt.
+    'characterShadow': {'enabled': True, 'color': '#141810', 'alpha': 0.42, 'squash': 0.42, 'core': 0.6,
+                        'light': {'x': _p((LAMPS[0][0] + LAMPS[1][0]) / 2, LAMPS[0][1])[0],
+                                  'y': _p((LAMPS[0][0] + LAMPS[1][0]) / 2, LAMPS[0][1])[1], 'stretch': 0.5,
+                                  'reach': 140}},
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],

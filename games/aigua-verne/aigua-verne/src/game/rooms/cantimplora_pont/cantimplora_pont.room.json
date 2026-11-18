@@ -22,16 +22,20 @@
             "y": 166
           },
           {
-            "x": 428,
-            "y": 179
+            "x": 417,
+            "y": 178
           },
           {
-            "x": 436,
-            "y": 204
+            "x": 414,
+            "y": 167
           },
           {
-            "x": 618,
-            "y": 215
+            "x": 585,
+            "y": 175
+          },
+          {
+            "x": 612,
+            "y": 201
           },
           {
             "x": 652,
@@ -50,7 +54,30 @@
             "y": 216
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 451,
+                "y": 202
+              },
+              {
+                "x": 599,
+                "y": 211
+              },
+              {
+                "x": 563,
+                "y": 178
+              },
+              {
+                "x": 439,
+                "y": 172
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -381,8 +408,20 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 20,
+      "zIndex": 21,
       "baseline": 999
+    },
+    {
+      "id": "davant_mapa",
+      "tag": "davant_mapa",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_mapa": {}
+      },
+      "zIndex": 20,
+      "baseline": 204
     }
   ],
   "characters": [
@@ -450,5 +489,18 @@
       "zIndex": 9
     }
   ],
-  "floorSquash": 0.45
+  "floorSquash": 0.45,
+  "characterShadow": {
+    "enabled": true,
+    "color": "#141810",
+    "alpha": 0.42,
+    "squash": 0.42,
+    "core": 0.6,
+    "light": {
+      "x": 308,
+      "y": 162,
+      "stretch": 0.5,
+      "reach": 140
+    }
+  }
 }

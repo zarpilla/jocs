@@ -128,7 +128,7 @@
     },
     "cantimplora_pont 6.aseprite": {
       "frame": {
-        "x": 2491,
+        "x": 2642,
         "y": 0,
         "w": 142,
         "h": 27
@@ -149,7 +149,7 @@
     },
     "cantimplora_pont 7.aseprite": {
       "frame": {
-        "x": 2633,
+        "x": 2784,
         "y": 0,
         "w": 142,
         "h": 27
@@ -170,7 +170,7 @@
     },
     "cantimplora_pont 8.aseprite": {
       "frame": {
-        "x": 2775,
+        "x": 2926,
         "y": 0,
         "w": 142,
         "h": 27
@@ -191,7 +191,7 @@
     },
     "cantimplora_pont 9.aseprite": {
       "frame": {
-        "x": 2917,
+        "x": 3068,
         "y": 0,
         "w": 142,
         "h": 27
@@ -212,7 +212,7 @@
     },
     "cantimplora_pont 10.aseprite": {
       "frame": {
-        "x": 3059,
+        "x": 3210,
         "y": 0,
         "w": 142,
         "h": 27
@@ -233,7 +233,7 @@
     },
     "cantimplora_pont 11.aseprite": {
       "frame": {
-        "x": 2633,
+        "x": 2784,
         "y": 0,
         "w": 142,
         "h": 27
@@ -254,7 +254,7 @@
     },
     "cantimplora_pont 12.aseprite": {
       "frame": {
-        "x": 3201,
+        "x": 3352,
         "y": 0,
         "w": 142,
         "h": 27
@@ -275,7 +275,7 @@
     },
     "cantimplora_pont 13.aseprite": {
       "frame": {
-        "x": 2917,
+        "x": 3068,
         "y": 0,
         "w": 142,
         "h": 27
@@ -296,7 +296,7 @@
     },
     "cantimplora_pont 14.aseprite": {
       "frame": {
-        "x": 3343,
+        "x": 3494,
         "y": 0,
         "w": 142,
         "h": 27
@@ -317,7 +317,7 @@
     },
     "cantimplora_pont 15.aseprite": {
       "frame": {
-        "x": 2633,
+        "x": 2784,
         "y": 0,
         "w": 142,
         "h": 27
@@ -338,7 +338,7 @@
     },
     "cantimplora_pont 16.aseprite": {
       "frame": {
-        "x": 3485,
+        "x": 3636,
         "y": 0,
         "w": 142,
         "h": 27
@@ -359,7 +359,7 @@
     },
     "cantimplora_pont 17.aseprite": {
       "frame": {
-        "x": 2917,
+        "x": 3068,
         "y": 0,
         "w": 142,
         "h": 27
@@ -443,7 +443,7 @@
     },
     "cantimplora_pont 21.aseprite": {
       "frame": {
-        "x": 3627,
+        "x": 3778,
         "y": 0,
         "w": 252,
         "h": 27
@@ -548,6 +548,27 @@
     },
     "cantimplora_pont 26.aseprite": {
       "frame": {
+        "x": 2491,
+        "y": 0,
+        "w": 151,
+        "h": 60
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 445,
+        "y": 146,
+        "w": 151,
+        "h": 60
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cantimplora_pont 27.aseprite": {
+      "frame": {
         "x": 640,
         "y": 0,
         "w": 640,
@@ -574,7 +595,7 @@
     "image": "cantimplora_pont.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3879,
+      "w": 4030,
       "h": 387
     },
     "scale": "1",
@@ -636,9 +657,16 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_mapa",
         "from": 26,
         "to": 26,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 27,
+        "to": 27,
         "direction": "forward",
         "color": "#000000ff"
       }
