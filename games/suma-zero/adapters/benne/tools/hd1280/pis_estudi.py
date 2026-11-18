@@ -25,7 +25,7 @@ import hd640  # noqa: E402
 from hd.pix import Canvas, W, H, hr, mix  # noqa: E402
 from hd.rooms.comu import obox, outline, text  # noqa: E402
 from hd640 import llum  # noqa: E402
-from hd640.rooms import pis_estudi as m  # noqa: E402
+from hd640.rooms import pis_estudi_pla_comu as m  # noqa: E402
 from hd1280.canvas2x import Canvas2x, S, lc  # noqa: E402
 
 FLOOR_Y = m.FLOOR_Y

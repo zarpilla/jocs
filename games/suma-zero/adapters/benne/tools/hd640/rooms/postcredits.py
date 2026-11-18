@@ -14,7 +14,7 @@ import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import Light, Canvas, W, H, hr, mix
 from hd.rooms.comu import cable, text, _diff
 from hd.rooms.postcredits import MOON, TERM, DIMSCR, CHEESE, SAUCE, CRUST, NETB
-from hd640.rooms.pis_estudi import _draw as estudi_bg, stripes, DESKB, FLOOR_Y, HATCH, PORTS
+from hd640.rooms.pis_estudi_pla_comu import _draw as estudi_bg, stripes, DESKB, FLOOR_Y, HATCH, PORTS
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
