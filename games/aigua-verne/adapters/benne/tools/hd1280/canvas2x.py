@@ -46,8 +46,8 @@ class Canvas2x(Canvas):
         self.img.alpha_composite(big, (int(pos[0]) * S, int(pos[1]) * S))
 
     def pixels(self, x0=0, y0=0, x1=None, y1=None):
-        x1 = W - 1 if x1 is None else x1
-        y1 = H - 1 if y1 is None else y1
+        x1 = self.w // S - 1 if x1 is None else x1
+        y1 = self.h // S - 1 if y1 is None else y1
         for Y in range(max(0, int(y0 * S)), min(self.h, int((y1 + 1) * S))):
             for X in range(max(0, int(x0 * S)), min(self.w, int((x1 + 1) * S))):
                 yield X, Y, lc(X), lc(Y)

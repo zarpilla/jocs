@@ -17,7 +17,7 @@ from hd.pix import Canvas, Light, W, H, hr, mix
 from hd.rooms.exterior import fbm
 from hd640.rooms.terra2_comu import (
     RH, OLIVE, ORANGE, RUSTT, IRONR, PLANK, BLACKT, WATER, text, text_width, shadow)
-from hd640.rooms import granja_pati as G
+from hd640.rooms import granja_estreta_comu as G
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).

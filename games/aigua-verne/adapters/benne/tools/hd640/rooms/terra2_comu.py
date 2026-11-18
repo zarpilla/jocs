@@ -126,7 +126,7 @@ def dust_sky(cv, hor, sun=SUN, seed=31):
     """Cel de pols, groguenc, sense ni un núvol; el sol, dur, a dalt a la dreta."""
     for y in range(0, hor + 1):
         t = y / hor
-        for x in range(W):
+        for x in range(cv.w // cv.S):
             d = math.hypot(x - sun[0], (y - sun[1]) * 1.3)
             lvl = 2.0 + 3.6 * t ** 0.8 + 2.4 * max(0.0, 1 - d / 160) ** 2
             lvl += (fbm(x / 140, y / 18, seed) - 0.5) * 0.7                         # pols en suspensió
@@ -139,7 +139,7 @@ def rain_sky(cv, hor, seed=33):
     """Cel tapat de pluja: núvols baixos i grisos, a bandes, i la cortina de pluja que esborra el fons."""
     for y in range(0, hor + 1):
         t = y / hor
-        for x in range(W):
+        for x in range(cv.w // cv.S):
             c = fbm(x / 120, y / 14, seed)
             c2 = fbm(x / 40, y / 6, seed + 3)
             lvl = 1.6 + 3.2 * t ** 0.9 + (c - 0.5) * 2.6 + (c2 - 0.5) * 0.9
@@ -149,7 +149,7 @@ def rain_sky(cv, hor, seed=33):
 
 def hills(cv, hor, wet=False):
     ramp = RHILL if wet else HILL
-    for x in range(W):
+    for x in range(cv.w // cv.S):
         h1 = hor - 6 - 12 * fbm(x / 90, 0.3, 7)
         h2 = hor - 2 - 7 * fbm(x / 50, 1.7, 9)
         for y in range(int(h1), hor + 1):
@@ -177,18 +177,19 @@ def canonada(cv, x, hor, wmax=4.4, haze=(230, 214, 180), top=0, station=11):
     cv.flat(x - 1, 22, (120, 40, 34))
 
 
-def llum_canonada_frames(x, y=22, n=12, s=1):
+def llum_canonada_frames(x, y=22, n=12, s=1, w=W):
     """El llum d'aviació de dalt de la Canonada: fa pampallugues (dos cops seguits, i espera).
-    `s`: píxels de l'art per píxel de sala (Canvas.S de la sala); el llum es dibuixa a 1× i s'amplia."""
+    `s`: píxels de l'art per píxel de sala (Canvas.S de la sala); el llum es dibuixa a 1× i s'amplia. `w`: l'amplada
+    de la sala, si és més ampla que la pantalla."""
     frames = []
     for i in range(n):
-        img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+        img = Image.new('RGBA', (w, H), (0, 0, 0, 0))
         if i in (0, 2):
             p = img.load()
             p[x - 1, y] = (255, 90, 64, 255)                                          # el llum, encès
             for dx, dy in ((-1, 0), (1, 0), (0, -1), (0, 1)):                        # i el halo, en creu
                 p[x - 1 + dx, y + dy] = (236, 120, 96, 255)
-        frames.append(img if s == 1 else nearest(img, (W * s, H * s)))
+        frames.append(img if s == 1 else nearest(img, (w * s, H * s)))
     return frames
 
 
@@ -274,7 +275,8 @@ def dust_wind_frames(base, y0, y1, n=64, step=10, seed=51, k=0.5):
     (dithering), sobre el fons `base`. El patró es repeteix cada n·step píxels: el bucle no salta.
     `base` pot ser a la mida de l'art (2×): el dither es fa per píxel real."""
     period = n * step
-    s = base.width // W
+    s = base.height // H
+    BW = base.width // s                                                            # l'amplada de la sala
     src = base.load()
     # el camp de densitat, periòdic en x (soroll mostrejat sobre un cercle), es calcula una sola vegada
     dens = {}
@@ -289,13 +291,13 @@ def dust_wind_frames(base, y0, y1, n=64, step=10, seed=51, k=0.5):
         dens[y] = row
     frames = []
     for i in range(n):
-        img = Image.new('RGBA', (W * s, H * s), (0, 0, 0, 0))
+        img = Image.new('RGBA', (BW * s, H * s), (0, 0, 0, 0))
         p = img.load()
         off = i * step
         for Y in range(y0 * s, y1 * s):
             row = dens[Y // s]
             b = B4[Y & 3]
-            for X in range(W * s):
+            for X in range(BW * s):
                 d = row[(X // s + off) % period]
                 if d > b[X & 3]:
                     p[X, Y] = mix(src[X, Y], DUST, 0.32 + 0.2 * d) + (255,)
@@ -306,24 +308,25 @@ def dust_wind_frames(base, y0, y1, n=64, step=10, seed=51, k=0.5):
 def motes_frames(base, beams, n=40, count=60, seed=7, col=(255, 240, 200)):
     """Volves de pols que suren dins els raigs de llum. `beams`: funció (x, y) → 0..1 (dins el raig).
     Cada volva fa una petita òrbita tancada: el bucle no salta. Amb `base` a 2×, cada volva és un bloc de 2×2."""
-    s = base.width // W
+    s = base.height // H
+    BW = base.width // s                                                            # l'amplada de la sala
     src = base.load()
     pts = []
     rnd = 0
     while len(pts) < count and rnd < count * 200:
         rnd += 1
-        x, y = hr(seed, rnd, 1) * W, hr(seed, rnd, 2) * RH
+        x, y = hr(seed, rnd, 1) * BW, hr(seed, rnd, 2) * RH
         if beams(x, y) > 0.3:
             pts.append((x, y, hr(seed, rnd, 3) * 2 * math.pi, 3 + hr(seed, rnd, 4) * 8, 2 + hr(seed, rnd, 5) * 5))
     frames = []
     for i in range(n):
-        img = Image.new('RGBA', (W * s, H * s), (0, 0, 0, 0))
+        img = Image.new('RGBA', (BW * s, H * s), (0, 0, 0, 0))
         p = img.load()
         a = 2 * math.pi * i / n
         for x0, y0, ph, rx, ry in pts:
             x = round(x0 + math.cos(a + ph) * rx)
             y = round(y0 + math.sin(a * 2 + ph) * ry * 0.5 + math.sin(a + ph) * ry * 0.5)
-            if 0 <= x < W and 0 <= y < RH:
+            if 0 <= x < BW and 0 <= y < RH:
                 b = beams(x, y)
                 if b > 0.15:
                     for Y in range(y * s, y * s + s):

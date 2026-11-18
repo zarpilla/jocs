@@ -87,13 +87,13 @@ def sales():
         data = json.loads(path.read_text())
         before = (data.get('scrollBounds'), data.get('viewAnchorY'))
         if pintada_fins_a_baix(room, data.get('artScale', 1)):
-            data['scrollBounds'] = {'x': 0, 'y': 0, 'width': W, 'height': H0}
+            data['scrollBounds'] = {'x': 0, 'y': 0, 'width': data['size']['width'], 'height': H0}
             data['viewAnchorY'] = round(CAMERA_Y.get(room, MIG) / (H0 - H), 3)
             que = f'sencera en un monitor; en un mòbil, des de y={CAMERA_Y.get(room, MIG)}'
         else:
-            data['scrollBounds'] = {'x': 0, 'y': 0, 'width': W, 'height': H}
+            data['scrollBounds'] = {'x': 0, 'y': 0, 'width': data['size']['width'], 'height': H}
             data.pop('viewAnchorY', None)
-            que = f'{W}×{H} des de dalt'
+            que = f"{data['size']['width']}×{H} des de dalt"
         if (data.get('scrollBounds'), data.get('viewAnchorY')) != before:
             path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
             print(f'  sala {room}: {que}')

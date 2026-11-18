@@ -1,6 +1,10 @@
 """
 El pati de la granja (Escena 1), a Terra-2, un matí de secada. Sala «de lluny» (persones de ≈83 px).
 
+PROVA: sala ampla (1280 d'ample, la càmera segueix el personatge). La casa és a l'esquerra; el graner, lluny, a dalt a
+la dreta, al final d'un camí que s'enfila en diagonal pels camps: qui hi va es fa petit (una regió d'escala de
+perspectiva). El pati estret d'abans és a granja_estreta_comu.py (el fa servir final_pluja.py).
+
 Ve de la mostra aprovada (guio/art/mostra/granja_pati.py), redibuixada amb més detall:
   - el cel de pols, sense ni un núvol, i el sol dur a dalt a la dreta; els camps secs i la carretera;
   - la **Canonada de Terra-2** a l'horitzó, i la rasa recta que hi va des del pou, tapada de pressa;
@@ -32,6 +36,7 @@ ART_SCALE = 2
 from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
 from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
 
+ROOM_W = 1280                     # sala ampla: el doble de la pantalla
 HOR = 118
 CAN_X = 402                       # la Canonada
 WX, WTOP, WBASE, WRX = 300, 174, 204, 26          # el pou
@@ -39,13 +44,20 @@ BX0, BX1, BY0, BY1 = 336, 364, 172, 208           # la cara del davant de la bom
 PANEL = (412, 124)                # el panell del preu (cantó de dalt a l'esquerra)
 
 LIGHT = Light(ambient=0.6, vignette=(70, 18), floor_fade=None)
-LIGHT.point(560, -40, r=700, k=1.2, power=1.1)            # el sol, a dalt a la dreta
+LIGHT.width = ROOM_W
+LIGHT.point(820, -40, r=960, k=1.2, power=1.1)            # el sol, a dalt a la dreta
+SUN = (1010, 26)
+
+# El camí del graner: surt del pati (A) i s'enfila en diagonal pels camps fins a la porta del graner (B).
+CA, CB = (640, 212), (920, 150)
+GK = 0.62                          # l'escala del graner
+ESCALA_PORTA = 0.5                 # la dels personatges a la porta del graner (una mica més petits: semblen més lluny)
 
 
 # ─── Camps i carretera ──────────────────────────────────────────────────────
 
 def _road_cx(t):
-    return 430 + 90 * t
+    return 1130 + 100 * t
 
 
 def fields(cv, wet=False):
@@ -55,7 +67,7 @@ def fields(cv, wet=False):
     ramp = MUD if wet else FIELD
     for y in range(HOR + 1, 200):
         t = (y - HOR) / 82
-        for x in range(W):
+        for x in range(ROOM_W):
             ang = math.atan2(y - vy, x - vx)
             furrow = math.sin(ang * 90)
             lvl = 4.2 - t * 1.0 + furrow * 0.5 * t + (fbm(x / 30, y / 6, 11) - 0.5) * 1.0
@@ -233,6 +245,85 @@ def arbre(cv, x0=232, base=188, wet=False):
 
 # ─── El graner i el tractor ────────────────────────────────────────────────
 
+class Escalat:
+    """Un llenç que dibuixa sobre un altre a escala `k`: el punt (ax, ay) del dibuix va a (ox, oy). Les formes es
+    recorren a la resolució real del llenç de sota (el dither i la llum, per píxel real) i les funcions de nivell
+    reben les coordenades del dibuix original: així un dibuix fet per al primer pla serveix, sencer, de lluny."""
+
+    def __init__(self, cv, ax, ay, ox, oy, k):
+        self.cv, self.ax, self.ay, self.ox, self.oy, self.k, self.S = cv, ax, ay, ox, oy, k, cv.S
+
+    def f(self, x, y):
+        return self.ox + (x - self.ax) * self.k, self.oy + (y - self.ay) * self.k
+
+    def inv(self, x, y):
+        return self.ax + (x - self.ox) / self.k, self.ay + (y - self.oy) / self.k
+
+    def _fill(self, pts, paint):
+        S = self.S
+        P = [(fx * S, fy * S) for fx, fy in (self.f(x, y) for x, y in pts)]
+        ys = [q[1] for q in P]
+        for Y in range(int(min(ys)), int(max(ys)) + 1):
+            xs = []
+            for (xa, ya), (xb, yb) in zip(P, P[1:] + P[:1]):
+                if (ya <= Y + 0.5 < yb) or (yb <= Y + 0.5 < ya):
+                    xs.append(xa + (Y + 0.5 - ya) * (xb - xa) / (yb - ya))
+            xs.sort()
+            for a, b in zip(xs[::2], xs[1::2]):
+                for X in range(math.ceil(a - 0.5), math.floor(b - 0.5) + 1):
+                    paint(X, Y)
+
+    def _lvl(self, lvl, X, Y):
+        if not callable(lvl):
+            return lvl
+        x, y = self.inv((X + 0.5) / self.S, (Y + 0.5) / self.S)
+        return lvl(math.floor(x), math.floor(y))
+
+    def poly(self, pts, ramp, lvl, lit=1.0):
+        self._fill(pts, lambda X, Y: self.cv.px(X, Y, ramp, self._lvl(lvl, X, Y), lit))
+
+    def rect(self, x0, y0, x1, y1, ramp, lvl, lit=1.0):
+        self.poly([(x0, y0), (x1 + 1, y0), (x1 + 1, y1 + 1), (x0, y1 + 1)], ramp, lvl, lit)
+
+    def put(self, x, y, ramp, lvl, lit=1.0):
+        x, y = int(x), int(y)
+        self.rect(x, y, x, y, ramp, lvl, lit)
+
+    def flat(self, x, y, col):
+        x, y = int(x), int(y)
+        self._fill([(x, y), (x + 1, y), (x + 1, y + 1), (x, y + 1)], lambda X, Y: self.cv.pxflat(X, Y, col))
+
+    def line(self, x0, y0, x1, y1, ramp, lvl, lit=1.0, thin=False):
+        self.cv.line(*self.f(x0, y0), *self.f(x1, y1), ramp, lvl, lit, thin=thin or self.k < 0.8)
+
+    def disc(self, cx, cy, rx, ry, ramp, lvl, lit=1.0):
+        self.cv.disc(*self.f(cx, cy), rx * self.k, ry * self.k, ramp, lvl, lit)
+
+    def ring(self, cx, cy, r, ramp, lvl, lit=1.0, step=2):
+        for a in range(0, 360, step):
+            self.put(round(cx + math.cos(math.radians(a)) * r), round(cy + math.sin(math.radians(a)) * r), ramp, lvl, lit)
+
+    def _wrap(self, v):
+        return (lambda x, y: v(*self.inv(x, y))) if callable(v) else v
+
+    def tint(self, x0, y0, x1, y1, col, k, mask=None):
+        self.cv.tint(*self.f(x0, y0), *self.f(x1, y1), col, self._wrap(k), self._wrap(mask) if mask else None)
+
+    def darken(self, x0, y0, x1, y1, amount, dither=True):
+        self.cv.darken(*self.f(x0, y0), *self.f(x1, y1), self._wrap(amount), dither)
+
+
+def graner_lluny(cv, wet=False):
+    """El graner, lluny, a dalt a la dreta: el mateix dibuix del primer pla, a escala GK, amb la porta (556, 190) a la
+    punta del camí; i la calitja de pols, que l'allunya."""
+    sub = Canvas(ROOM_W, light=LIGHT, transparent=True)
+    graner(Escalat(sub, 556, 190, CB[0], CB[1] - 2, GK), wet)
+    x0, y0 = CB[0] - 60, CB[1] - 84
+    sub.tint(x0, y0, CB[0] + 64, CB[1] + 2, (236, 206, 150), 0.22)                  # (només on hi ha graner)
+    shadow(cv, CB[0] - 30, CB[1] - 1, 58, 3, 0.55)
+    cv.img.alpha_composite(sub.img)
+
+
 def graner(cv, wet=False):
     x0, x1, top, base = 472, 640, 92, 190
     dw = 0.8 if wet else 0
@@ -242,6 +333,9 @@ def graner(cv, wet=False):
     cv.rect(x0 - 4, top + 3, x1, top + 5, BLACKT, 1.4)                              # l'ombra del ràfec
     cv.rect(x0, top + 6, x1, base, GREYW, lambda x, y: 3.6 - dw - (1.8 if (x - x0) % 8 == 0 else 0) +
             (fbm(x / 6, y / 18, 41) - 0.5) * 1.2 - (0.8 if (x - x0) % 8 == 1 else 0))
+    cv.rect(x1 + 1, top + 4, x1 + 14, base - 2, GREYW, lambda x, y: 2.0 - dw - (1.0 if (x - x1) % 6 == 0 else 0) +
+            (fbm(x / 6, y / 18, 43) - 0.5) * 0.8)                                  # el costat, a l'ombra
+    cv.poly([(x1 + 4, top - 8), (x1 + 16, top - 2), (x1 + 16, top + 6), (x1 + 4, top + 4)], RUSTT, 2.0 - dw)
     for (nx, ny) in ((x0 + 4, top + 20), (x0 + 4, base - 20), (x1 - 4, top + 20)):   # claus de les taules
         cv.put(nx, ny, IRONR, 2.0)
     # la porta gran, oberta: dins, la penombra, i el tractor vermell de l'avi
@@ -299,7 +393,7 @@ def graner(cv, wet=False):
 
 def cami(cv, wet=False):
     """El pal indicador del camí del port, a la dreta, davant del graner."""
-    x, base = 620, 202
+    x, base = 1236, 202
     cv.rect(x, base - 32, x + 2, base, GREYW, lambda xx, y: 2.4 + (xx - x) * 0.8)
     cv.poly([(x - 14, base - 30), (x + 14, base - 30), (x + 19, base - 26), (x + 14, base - 22), (x - 14, base - 22)],
             GREYW, lambda xx, y: 4.2 - (0.8 if y == base - 22 else 0) - (0.8 if wet else 0))
@@ -308,10 +402,97 @@ def cami(cv, wet=False):
     shadow(cv, x - 6, base + 1, 9, 2, 0.6)
 
 
+# ─── El camí del graner ────────────────────────────────────────────────────
+
+def _cami_uv(x, y):
+    """(u, d): u = 0 al pati (CA) … 1 a la porta del graner (CB); d = distància (amb signe, + cap avall) a l'eix."""
+    dx, dy = CB[0] - CA[0], CB[1] - CA[1]
+    L2 = dx * dx + dy * dy
+    u = ((x - CA[0]) * dx + (y - CA[1]) * dy) / L2
+    L = math.sqrt(L2)
+    d = ((x - CA[0]) * -dy + (y - CA[1]) * dx) / -L
+    return u, d
+
+
+def _cami_hw(u):
+    """La mitja amplada del camí (perpendicular): ample al pati, prim a la porta."""
+    return 15 * (1 - u) + 4.5 * u
+
+
+def _cami_p(u, d=0.0):
+    dx, dy = CB[0] - CA[0], CB[1] - CA[1]
+    L = math.hypot(dx, dy)
+    nx, ny = -dy / L, dx / L                                                        # la normal, cap avall
+    if ny < 0:
+        nx, ny = -nx, -ny
+    return CA[0] + dx * u + nx * d, CA[1] + dy * u + ny * d
+
+
+def cami_graner(cv, wet=False):
+    """El camí de terra trepitjada que s'enfila pels camps fins al graner, amb les roderes del tractor."""
+    ramp = MUD if wet else EARTH
+    for y in range(CB[1] - 6, CA[1] + 14):
+        for x in range(CA[0] - 30, CB[0] + 12):
+            u, d = _cami_uv(x, y)
+            if not -0.08 <= u <= 1.0:
+                continue
+            hw = _cami_hw(max(0.0, u))
+            e = abs(d) / hw + (fbm(x / 9, y / 3, 73) - 0.5) * 0.35
+            if u < 0:                                                               # s'esvaeix dins el pati
+                e += -u * 9
+            if e > 1.0:
+                continue
+            rut = abs(abs(d) / hw - 0.45) < 0.13                                    # les roderes
+            lvl = 5.6 - u * 0.8 + (hr(x // 2, y) - 0.5) * 0.7 - (0.9 if rut else 0) - (0.5 if e > 0.85 else 0)
+            if wet:
+                lvl -= 2.2
+            cv.put(x, y, ramp, lvl)
+    # les vores: herba seca que el camí no ha trepitjat
+    for i in range(26):
+        u = 0.08 + i * 0.035
+        for side in (-1, 1):
+            x, y = _cami_p(u, side * (_cami_hw(u) + 1))
+            h = 2 + 4 * (1 - u)
+            for k in range(3):
+                cv.line(x + k, y, x + k + (k - 1) * 0.8, y - h * (0.6 + hr(i, k, side) * 0.5), GRASS,
+                        2.0 + hr(k, i) * 1.6, thin=u > 0.5)
+
+
+def tanca_cami(cv, wet=False):
+    """La tanca del costat de dalt del camí: pals cada cop més petits i més junts, que s'allunyen cap al graner."""
+    tops = []
+    for i in range(11):
+        u = 0.16 + i * 0.075
+        x, y = _cami_p(u, -(_cami_hw(u) + 6))
+        sc = 1 - (1 - GK) * u                                                       # (l'escala, com els personatges)
+        h = 26 * sc
+        w = max(1.0, 3 * sc)
+        cv.rect(x, y - h, x + w - 1, y, GREYW, lambda xx, yy: 3.0 + (xx - x) * 0.6 - (0.8 if wet else 0))
+        tops.append((x + w / 2, y - h, sc))
+    for (xa, ya, sa), (xb, yb, sb) in zip(tops, tops[1:]):
+        for f in (0.22, 0.6):
+            cv.line(xa, ya + 26 * sa * f, xb, yb + 26 * sb * f, GREYW, 4.0 - (0.8 if wet else 0), thin=sa < 0.8)
+
+
+def abeurador(cv, wet=False):
+    """L'abeurador de pedra, sec (plovent, ple): no hi ha bestiar per beure-hi."""
+    x0, x1, top, base = 1010, 1068, 184, 196
+    cv.rect(x0, top, x1, base, STONE, lambda x, y: 3.4 + (0.8 if y == top else 0) - (1.2 if x % 11 == 0 else 0) +
+            (fbm(x / 5, y / 4, 19) - 0.5) * 0.8 - (0.6 if wet else 0))
+    cv.rect(x0 + 2, top - 3, x1 - 2, top, STONE, lambda x, y: 4.8 - (top - y) * 0.4)   # la vora, vista de dalt
+    if wet:
+        cv.rect(x0 + 3, top - 2, x1 - 3, top - 1, WATER, 4.0, lit=0)
+    else:
+        cv.rect(x0 + 3, top - 2, x1 - 3, top - 1, BLACKT, 1.4, lit=0)
+    cv.rect(x1 - 6, top - 12, x1 - 4, top - 1, IRONR, lambda x, y: 2.2 + (x - x1 + 6) * 0.8)   # l'aixeta, seca
+    cv.rect(x1 - 10, top - 13, x1 - 4, top - 12, IRONR, 3.2)
+    shadow(cv, x0 + 24, base + 2, 34, 3, 0.6)
+
+
 # ─── Pou, bomba i tanca ────────────────────────────────────────────────────
 
 def tanca(cv, wet=False):
-    for x in range(250, 470, 26):
+    for x in range(250, 630, 26):
         lean = (hr(x, 3) - 0.5) * 2
         for y in range(160, 187):
             cv.put(x + lean * (186 - y) / 26, y, GREYW, 3.0 - (0.8 if wet else 0))
@@ -319,7 +500,7 @@ def tanca(cv, wet=False):
             cv.put(x + 2 + lean * (186 - y) / 26, y, GREYW, 2.2)
         cv.put(x + 1 + lean, 159, GREYW, 4.6)
     for y in (166, 176):
-        for x in range(250, 470):
+        for x in range(250, 618):
             if not (x % 26 in (0, 1, 2)) and hr(x // 26, y) > 0.15:
                 sag = math.sin(((x % 26) / 26) * math.pi) * 1.2
                 cv.put(x, y + sag, GREYW, 4.0 - (0.8 if (x // 3) % 7 == 0 else 0) - (0.8 if wet else 0))
@@ -484,11 +665,11 @@ def bomba_oberta(cv):
 
 def _path(x, y):
     """El camí del port: una franja trepitjada que surt per la dreta. → 0..1"""
-    if x < 360:
+    if x < 1000:
         return 0.0
-    f = min(1.0, (x - 360) / 60)
-    cy = 230 - (x - 360) * 0.06
-    hw = 9 + (x - 360) * 0.035
+    f = min(1.0, (x - 1000) / 60)
+    cy = 230 - (x - 1000) * 0.06
+    hw = 9 + (x - 1000) * 0.035
     return f * (1 - smooth(hw - 3, hw + 3, abs(y - cy) + (fbm(x / 12, y / 6, 71) - 0.5) * 6))
 
 
@@ -505,7 +686,7 @@ def puddle(x, y):
 def terra(cv, wet=False):
     for y in range(184, RH):
         t = (y - 184) / (RH - 184)
-        for x in range(W):
+        for x in range(ROOM_W):
             c = cracks(x, int((y - 184) / (0.5 + t)) + 184, cell=11 + int(t * 8))
             lvl = 4.4 + t * 0.6 + (fbm(x / 40, y / 10, 17) - 0.5) * 1.4
             p = _path(x, y)
@@ -528,10 +709,12 @@ def terra(cv, wet=False):
                 cv.put(x, y, MUD, lvl + 0.8)
             else:
                 cv.put(x, y, EARTH, lvl)
-    for x, y in ((40, 236), (120, 250), (470, 244), (600, 252), (210, 214), (330, 246)):  # pedres
+    for x, y in ((40, 236), (120, 250), (470, 244), (600, 252), (210, 214), (330, 246), (720, 240), (868, 252),
+                 (990, 228), (1110, 248), (1196, 236)):                             # pedres
         cv.disc(x, y, 3, 2, STONE, lambda nx, ny: 4.0 + nx - ny - (0.8 if wet else 0))
         cv.darken(x - 5, y + 1, x + 1, y + 3, 0.6)
-    for x0, y0 in ((6, 186), (196, 188), (476, 192), (246, 190), (624, 196), (440, 200)):   # herba seca (o verda)
+    for x0, y0 in ((6, 186), (196, 188), (476, 192), (246, 190), (440, 200), (684, 204), (812, 196), (948, 200),
+                   (1150, 194), (1262, 198)):                                       # herba seca (o verda)
         for k in range(7):
             a = 1.2 + (k - 3) * 0.18
             col = SPROUT if wet and k % 2 else GRASS
@@ -552,7 +735,7 @@ def draw(cv, wet=False):
     if wet:
         rain_sky(cv, HOR)
     else:
-        dust_sky(cv, HOR)
+        dust_sky(cv, HOR, sun=SUN)
     hills(cv, HOR, wet)
     canonada(cv, CAN_X, HOR, haze=(150, 152, 150) if wet else (230, 214, 180))
     if wet:                                                                         # els núvols s'empassen la Canonada
@@ -560,10 +743,13 @@ def draw(cv, wet=False):
     fields(cv, wet)
     panel(cv, wet)
     terra(cv, wet)
+    cami_graner(cv, wet)
+    graner_lluny(cv, wet)
     tanca(cv, wet)
+    tanca_cami(cv, wet)
     masia(cv, wet)
     arbre(cv, wet=wet)
-    graner(cv, wet)
+    abeurador(cv, wet)
     cami(cv, wet)
     if not wet:
         ombres(cv)
@@ -573,12 +759,12 @@ def draw(cv, wet=False):
     pou(cv, wet)
     bomba(cv, wet)
     if not wet:
-        cv.tint(0, 0, W - 1, RH - 1, (240, 200, 140), 0.06)                         # la calitja de pols
+        cv.tint(0, 0, ROOM_W - 1, RH - 1, (240, 200, 140), 0.06)                    # la calitja de pols
     else:
-        cv.tint(0, 0, W - 1, RH - 1, (96, 104, 112), 0.16)                          # tot, més fred i apagat
-        cv.tint(0, 0, W - 1, 190, (170, 176, 180), lambda x, y: 0.18 * (1 - y / 190))   # la cortina de pluja
+        cv.tint(0, 0, ROOM_W - 1, RH - 1, (96, 104, 112), 0.16)                     # tot, més fred i apagat
+        cv.tint(0, 0, ROOM_W - 1, 190, (170, 176, 180), lambda x, y: 0.18 * (1 - y / 190))   # la cortina de pluja
     for y in range(RH, H):                                                          # la barra de verbs: negre
-        for x in range(W):
+        for x in range(ROOM_W):
             cv.flat(x, y, (0, 0, 0))
 
 
@@ -596,7 +782,7 @@ _BASE = []
 
 def _base():
     if not _BASE:
-        cv = Canvas(light=LIGHT)
+        cv = Canvas(ROOM_W, light=LIGHT)
         bg(cv)
         _BASE.append(cv.img)
     return _BASE[0]
@@ -607,20 +793,32 @@ def _frames_pols():
 
 
 def _frames_llum():
-    return llum_canonada_frames(CAN_X, s=Canvas.S)
+    return llum_canonada_frames(CAN_X, s=Canvas.S, w=ROOM_W)
 
 
 ANIMS = {'pols': {'frames': _frames_pols, 'frameDuration': 110},
          'llum_canonada': {'frames': _frames_llum, 'frameDuration': 220}}
 
 
-# ─── Geometria (coordenades de 640×360) ─────────────────────────────────────
+# ─── Geometria (coordenades de la sala: 1280×360) ───────────────────────────
+
+def _walkable():
+    """El terra del pati i, enganxat, el corredor del camí del graner (una mica més estret que el que es veu)."""
+    hw = lambda u: _cami_hw(u) * 0.7                                                 # noqa: E731
+    us = [i / 10 for i in range(11)]
+    dalt = [_cami_p(u, -hw(u)) for u in us]                                          # la vora de dalt, cap al graner
+    baix = [_cami_p(u, hw(u)) for u in reversed(us)]                                 # i la de baix, de tornada
+    baix = [p for p in baix if p[1] < 199] + [(_cami_p(0.0, hw(0.0))[0] + 30, 199)]
+    r = lambda p: (round(p[0]), round(p[1]))                                          # noqa: E731
+    return ([(0, 198), (130, 197), (250, 199), (268, 214), (334, 216), (370, 211), (472, 198), (530, 199)] +
+            [r(p) for p in dalt[1:]] + [r(p) for p in baix] + [(ROOM_W - 1, 199), (ROOM_W - 1, 258), (0, 258)])
+
 
 GEOMETRIA = {
     'things': {
         'porta_casa': {'rect': (78, 104, 128, 185), 'walk': (104, 204)},
-        'porta_graner': {'rect': (516, 116, 602, 191), 'walk': (556, 206)},
-        'cami_port': {'rect': (606, 192, 639, 258), 'walk': (630, 224)},
+        'porta_graner': {'rect': (CB[0] - 27, CB[1] - 46, CB[0] + 28, CB[1]), 'walk': (CB[0], CB[1] + 1)},
+        'cami_port': {'rect': (1246, 192, ROOM_W - 1, 258), 'walk': (1270, 224)},
         'pou': {'rect': (272, 124, 328, 214), 'walk': (296, 224)},
         'bomba': {'rect': (330, 166, 366, 210), 'walk': (354, 222)},
         'canonada': {'rect': (390, 0, 414, 117), 'walk': (402, 214)},
@@ -628,7 +826,10 @@ GEOMETRIA = {
         'arbre': {'rect': (204, 112, 264, 190), 'walk': (236, 206)},
         'tanca': {'rect': (368, 159, 470, 189), 'walk': (420, 210)},
     },
-    'spawns': {'iri': (442, 236), 'vet': (384, 242), 'diu': (284, 180)},
-    'walkable': [(0, 198), (130, 197), (250, 199), (268, 214), (334, 216), (370, 211), (472, 198), (639, 199),
-                 (639, 258), (0, 258)],
+    'spawns': {'iri': (384, 242), 'vet': (442, 236), 'diu': (284, 180)},
+    'walkable': _walkable(),
+    # Pel camí, els personatges es fan petits: d'1 al pati (y = 200) a ESCALA_PORTA a la porta del graner (y = CB[1]).
+    'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
+                 'scaleTop': round((ESCALA_PORTA * (200 - CB[1] + 6) - 6) / (200 - CB[1]), 3), 'scaleBottom': 1,
+                 'points': [(500, CB[1] - 6), (CB[0] + 40, CB[1] - 6), (CB[0] + 40, 200), (500, 200)]}],
 }

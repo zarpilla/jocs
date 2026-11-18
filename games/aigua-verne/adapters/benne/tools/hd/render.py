@@ -56,6 +56,11 @@ def art_scale(name):
     return getattr(load(name), 'ART_SCALE', 1)
 
 
+def room_w(name):
+    """Amplada de la sala en píxels de sala: `ROOM_W` si la sala és més ampla que la pantalla (la càmera la recorre)."""
+    return getattr(load(name), 'ROOM_W', W)
+
+
 def canvas_class(name):
     if art_scale(name) == 1:
         return Canvas
@@ -69,13 +74,14 @@ def render(name, prop_ids=None):
     mod = load(name)
     light = getattr(mod, 'LIGHT', None)
     Canvas = canvas_class(name)
-    cv = Canvas(light=light)
+    rw = room_w(name)
+    cv = Canvas(rw, light=light)
     mod.bg(cv)
     props = {}
     for pid, fn in getattr(mod, 'PROPS', {}).items():
         if prop_ids is not None and pid not in prop_ids:
             continue
-        pc = Canvas(light=light, transparent=True)
+        pc = Canvas(rw, light=light, transparent=True)
         fn(pc)
         props[pid] = pc.img
     return cv.img, props
@@ -88,7 +94,7 @@ def front(name, bg):
         return None
     img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
     src, dst = bg.load(), img.load()
-    s = bg.size[0] // W                       # la màscara és en píxels de sala
+    s = bg.size[1] // H                       # la màscara és en píxels de sala
     for y in range(bg.size[1]):
         for x in range(bg.size[0]):
             if f['mask'](x // s, y // s):

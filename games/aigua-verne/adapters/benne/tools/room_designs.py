@@ -432,6 +432,7 @@ def _amb_geometria():
             continue
         DESIGNS[f.stem] = {'things': dict(geo.get('things', {})), 'spawns': dict(geo.get('spawns', {})),
                            'walkable': list(geo.get('walkable') or [(0, 250), (639, 250), (639, 258), (0, 258)]),
+                           'regions': list(geo.get('regions', [])),
                            'bg': lambda c: None, 'props': {}, 'etiquetes': False}
 
 

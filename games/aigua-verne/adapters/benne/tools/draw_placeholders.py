@@ -29,7 +29,7 @@ from room_designs import DESIGNS, C  # noqa: E402
 from draw_items import icon  # noqa: E402
 from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
 from hd.pix import W as HD_W, H as HD_H  # noqa: E402
-from hd.render import has_hd, load as load_hd, render as render_hd, render_anims as render_hd_anims, front as render_hd_front  # noqa: E402
+from hd.render import has_hd, room_w, load as load_hd, render as render_hd, render_anims as render_hd_anims, front as render_hd_front  # noqa: E402
 
 # La casella de l'inventari: la de la plantilla 9-verb (36×20) passada a la resolució del joc.
 from draw_items import W as INV_W, H as INV_H  # noqa: E402
@@ -286,7 +286,12 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     w, h = room['size']['width'], room['size']['height']
     k = room_designs.K = h / DESIGN_H  # el disseny és en coordenades de 352×198
 
-    hd = (w, h) == (HD_W, HD_H) and has_hd(name)  # art HD (hd/rooms/<sala>.py), si n'hi ha
+    hd = h == HD_H and has_hd(name)               # art HD (hd/rooms/<sala>.py), si n'hi ha
+    if hd and w != room_w(name):
+        # Una sala més ampla que la pantalla (ROOM_W al mòdul de la sala): la càmera la recorre seguint el personatge.
+        w = room['size']['width'] = room_w(name)
+        room.setdefault('scrollBounds', {'x': 0, 'y': 0, 'height': h})['width'] = w
+    hd = hd and (w == HD_W or w == room_w(name))
     s = 1                                         # píxels de l'art per píxel de sala (ART_SCALE: art a 2×)
     if hd:
         bg, hd_props = render_hd(name)
@@ -406,6 +411,10 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         if cid in design['spawns']:
             ch['x'], ch['y'] = pt(*design['spawns'][cid], k)
     room['walkable']['polygons'][0]['points'] = [xy(x, y) for x, y in design['walkable']]
+    # Regions d'escala de perspectiva (GEOMETRIA['regions']): els personatges es fan petits quan s'allunyen.
+    if design.get('regions'):
+        room['regions'] = [{**{k: v for k, v in r.items() if k != 'points'}, 'points': [xy(x, y) for x, y in r['points']]}
+                           for r in design['regions']]
     # La llum de la sala sobre els personatges (en temps d'execució: characterLights del motor).
     if design.get('characterLights'):
         cl = json.loads(json.dumps(design['characterLights']))
