@@ -1,81 +1,157 @@
 """
-Aigua Verne — `verdant_jardi` (L, de lluny: persones de ≈83 px). Escena 5.
+Aigua Verne — `verdant_jardi` (L, de lluny: persones de ≈83 px). Escena 5. EN 3D (hd640/tres_d.py), a 1×.
 
-El jardí de la residència d'estiu del Magnat, a Verdant: el planeta dels rics, on tot és de plàstic. Cel blau
-d'anunci amb núvols massa rodons, turons d'un verd impossible amb arbres de piruleta i viles blanques; la
-**gespa artificial** perfecta, segada a franges; el parterre de **flors de plàstic** de colors que no existeixen; els
-**aspersors**, que no reguen: fan boira de perfum. La **façana blanca** de la residència, amb columnes i or i la
-porta de vidre (en Fidel s'hi posa al davant: és un sprite a part). Al costat, el **climatitzador**, que degota a
-una **reixa** a terra (l'única aigua de veritat del jardí, i la llencen). A la dreta, el **cobert del jardiner**:
-fusta pintada de verd, vella, humana. A l'esquerra, la **Cantimplora** (nau cisterna vella) amb la rampa abaixada, i
-la **plataforma de la llançadora** dels jardiners. El **panell del preu** (64 ▲), polit, com tot aquí.
+El jardí de la residència d'estiu del Magnat, a Verdant: el planeta dels rics, on tot és de plàstic. Una càmera a
+l'altura d'una persona alta, sense mirar avall, amb l'horitzó a y = 100: el cel blau d'anunci, els turons d'un verd
+impossible amb arbres de piruleta i viles blanques, i la bardissa retallada amb regle que tanca el jardí. La
+**residència**, blanca i or, girada cap a l'esquerra (la façana amb el pòrtic i la paret de la dreta que fuig), amb
+les boles de boix a la porta (en Fidel s'hi posa al davant: és un sprite a part) i el **climatitzador**, que degota
+a una **reixa** a terra (l'única aigua de veritat del jardí). Al davant, a la dreta, el **cobert del jardiner**:
+fusta pintada de verd, vella, humana, girat cap a l'altra banda (la façana i la paret de l'esquerra), que tapa el
+cantó de la residència. A l'esquerra, la **Cantimplora** (el buc de la nau cisterna, que fuig cap al fons, amb la
+**rampa** abaixada a la gespa), la **plataforma de la llançadora** i el **panell del preu**. La **gespa
+artificial**, a franges de segar que fugen cap a l'horitzó; el camí de marbre de la porta; el parterre de **flors de
+plàstic**, els **aspersors** i un flamenc. Primer pla: mates de boix retallades a les dues cantonades de baix, a
+l'ombra.
+
+El detall (la façana, el cobert, el climatitzador, el panell, el rètol de la llançadora, les boles de boix, els
+aspersors i el flamenc) ve del jardí pla de sempre (verdant_jardi_pla_comu.py), dibuixat de cara i projectat.
 
 Decorat: `galleda_reixa` (la galleda d'en Nil sota el degoteig). ANIMS: `boira` (els aspersors), `degoteig`.
-"""
-import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
+El món: x a la dreta (0 = la càmera), y amunt, z endavant; 1 unitat = 1 px a la distància on un personatge fa la
+seva mida normal (z = 500). Al terra, l'escala d'un personatge és (v − 100) / 140, exacta.
+"""
+import functools
 import math
 
-from hd.pix import Canvas, Light, W, H, hr, mix
-from hd.rooms.arenga import box
-from hd.rooms.comu import _diff, text
-from hd.rooms.exterior import fbm
-from hd640.rooms.verdant_comu import (SKYV, CLOUDV, TURF, HILLV, WHITEV, MARBLE, GOLDV, GLASSV, FLOWERS, MAGENTA,
-                                      CYANF, YELLOWF, VIOLETF, ORANGEF, PLANK, WOODG, SHEDG, ZINC, BLACKT, OLIVE, SAFETY,
-                                      RUSTV, gota, panell_preu, flor, arbre_rodo, bola_boix, ombra, rotul, galleda)
+import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
+from PIL import Image
 
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+from hd.pix import Canvas, Light, W, H, hr
+from hd.rooms.comu import text
+from hd.rooms.exterior import fbm, smooth
+from hd640.rooms import verdant_jardi_pla_comu as PL
+from hd640.rooms.verdant_comu import (SKYV, TURF, HILLV, WHITEV, MARBLE, GOLDV, GLASSV, CYANF, SHEDG, ZINC, BLACKT,
+                                      OLIVE, SAFETY, RUSTV, MAGENTA, YELLOWF, ORANGEF, VIOLETF, panell_preu, flor,
+                                      arbre_rodo, galleda)
+from hd640.tres_d import Camera, Escena, Llum
 
-RH = 260                    # la sala (per sota, la barra de verbs)
-HOR = 140                   # l'horitzó (darrere els turons)
-LAWN_Y = 180                # on comença la gespa (la base de la bardissa del fons)
-SUN = (150, 20)
+RH = 260                                           # la sala (per sota, la barra de verbs)
+HOR = 100                                          # l'horitzó (la càmera no mira avall: les verticals, verticals)
+CAM = Camera(pos=(0, 140, 0), yaw=0.0, pitch=0.0, f=500, centre=(320, HOR))
+SUN = (118, 22)                                    # el sol, al cel (a dalt a l'esquerra, al fons: contrallum)
+BARDISSA_Z = 1500
 
-LIGHT = Light(ambient=0.9, vignette=None, floor_fade=None)
-LIGHT.point(SUN[0], SUN[1] - 60, r=760, k=1.3, power=1.2)            # el sol, a dalt a l'esquerra
-
-# la residència
-RX0, RX1, RBASE = 240, 464, 198
-DOOR = (334, 100, 370, 196)
-# el cobert
-SX0, SX1, SBASE, SAPEX = 506, 634, 204, (570, 94)
-SDOOR = (550, 116, 590, 204)
-# el climatitzador i la reixa
-AC = (470, 146, 496, 178)
-GRATE = (466, 203, 498, 210)
-DRIP = (484, 195)            # on surt la gota del tub
-# el parterre gran i els aspersors
-BED = (196, 232, 80, 16)
-SPRINK = ((524, 238), (608, 228))
+LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
+LLUMS = [Llum((-9000, 7000, 12000), 1e7, 1.4, power=1.0)]    # el sol, darrere a l'esquerra (ombres cap endavant i a la dreta)
+AMBIENT = 0.3
+TL = Light(ambient=0.7, vignette=None, floor_fade=None)       # la llum de les textures (el món d'anunci: tot brilla)
 
 
-# ─── Cel, turons i bardissa ────────────────────────────────────────────────
-
-def nuvol(cv, cx, cy, s):
-    """Un núvol de catàleg: boles perfectes, base plana, ombra blava a sota."""
-    balls = ((-18, 2, 10), (-6, -6, 13), (9, -3, 11), (21, 3, 8), (2, 4, 10))
-    for dx, dy, r in balls:
-        r *= s
-        cv.disc(cx + dx * s, cy + dy * s, r, r * 0.86, CLOUDV,
-                lambda nx, ny: 4.4 - ny * 1.6 - nx * 0.6 + (0.8 if ny < -0.55 else 0), lit=0)
-    cv.rect(cx - 26 * s, cy + 6 * s, cx + 28 * s, cy + 9 * s, CLOUDV, 2.4, lit=0)
+def _add(a, b, k=1.0):
+    return (a[0] + b[0] * k, a[1] + b[1] * k, a[2] + b[2] * k)
 
 
-def sky(cv):
-    for y in range(0, HOR + 1):
-        t = y / HOR
+def _up(P, h):
+    return (P[0], P[1] + h, P[2])
+
+
+# La residència: girada 29°, la façana mira cap a l'esquerra i endavant; la paret de la dreta fuig cap al fons
+FK = 1.4                                           # unitats del món per píxel del dibuix pla de la façana
+TH = -0.5
+TF = (math.cos(TH), 0.0, math.sin(TH))             # al llarg de la façana, d'esquerra a dreta
+NF = (math.sin(TH), 0.0, -math.cos(TH))            # la normal de la façana (cap a la càmera)
+FX0, FX1, FY0, FY1 = PL.RX0 - 8, PL.RX1 + 8, 18, 208   # el retall del dibuix pla (la base, a y = 208)
+FW = (FX1 - FX0) * FK
+R = (300.0, 0.0, 900.0)                            # el cantó de baix a la dreta de la façana
+LC = _add(R, TF, -FW)                              # el cantó de l'esquerra
+BK = _add((0, 0, 0), NF, -240)                     # cap enrere (la fondària de la casa)
+
+
+def _facana(fx, fy, out=0.0):
+    """Un punt del dibuix pla de la façana (x del pla, y amb la base a 208) al món; `out`: tantes unitats endavant."""
+    P = _add(_add(LC, TF, (fx - FX0) * FK), NF, out)
+    return (P[0], (FY1 - fy) * FK, P[2])
+
+
+DOOR_C = _facana((PL.DOOR[0] + PL.DOOR[2]) / 2, FY1)
+BOIX = [_facana(304, FY1, 22), _facana(400, FY1, 22)]
+AC = _facana(PL.RX0 + 30, FY1, 16)                 # el climatitzador, a l'esquerra del pòrtic, arran de la façana
+REIXA = _add(AC, NF, 26)
+
+# El cobert d'en Nil: girat 24° cap a l'altra banda, la façana mira cap a la dreta; la paret de l'esquerra fuig
+CK = 1.3
+THC = 0.42
+TFC = (math.cos(THC), 0.0, math.sin(THC))
+NFC = (math.sin(THC), 0.0, -math.cos(THC))
+CX0, CX1, CY0, CY1 = PL.SX0 - 9, PL.SX1 + 9, 88, 205
+LCC = (250.0, 0.0, 640.0)
+BKC = _add((0, 0, 0), NFC, -130)
+
+
+def _cobert(fx, fy, out=0.0):
+    P = _add(_add(LCC, TFC, (fx - CX0) * CK), NFC, out)
+    return (P[0], (CY1 - fy) * CK, P[2])
+
+
+COBERT_PORTA = _cobert((PL.SDOOR[0] + PL.SDOOR[2]) / 2, CY1)
+
+# La Cantimplora: el buc, a l'esquerra, fuig cap al fons; la boca de la bodega i la rampa abaixada
+NAU_X, NAU_Z0, NAU_Z1, NAU_Y0, NAU_Y1 = -250.0, 360.0, 800.0, 26.0, 320.0
+BOCA = (470.0, 570.0, 26.0, 112.0)                 # z0, z1, y0, y1
+RAMPA_X = -158.0                                   # on la rampa toca la gespa
+LLANC = (-120.0, 730.0, 48.0)                      # la plataforma de la llançadora: centre i radi
+PAL = (-64.0, 744.0)
+PANELL = (-214.0, 1000.0)
+PARTERRE = (14.0, 610.0, 60.0)
+SPRINK = ((236.0, 560.0), (-74.0, 520.0))
+FLAMENC = (96.0, 770.0)
+CAMI_X = (150.0, 168.0)                            # el camí de marbre: el mig a la porta i a baix
+
+
+# ─── Les textures: el jardí pla de sempre ────────────────────────────────────
+
+def _pla(fn):
+    cv = Canvas(light=TL, transparent=True)
+    fn(cv)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _textures():
+    return {
+        'facana': _pla(lambda cv: PL.residencia(cv, boix=False)),
+        'cobert': _pla(PL.cobert),
+        'clima': _pla(PL.climatitzador),
+        # (els sprites: el retall i el punt que toca a terra)
+        'panell': (_pla(lambda cv: panell_preu(cv, 186, 112, '', post=46, w=44)).crop((180, 104, 238, 186)), (28, 80)),
+        'llanc': (_pla(PL.llancadora).crop((90, 116, 146, 187)), (24, 76)),
+        'boix': (_pla(lambda cv: PL.bola_boix(cv, 40, 40, 7)).crop((28, 20, 52, 42)), (12, 20)),
+        'aspersor': (_pla(lambda cv: PL.aspersor(cv, 20, 20)).crop((12, 8, 28, 24)), (8, 12)),
+        'flamenc': (_pla(lambda cv: PL.flamenc(cv, 30, 40)).crop((18, 6, 44, 44)), (12, 34)),
+        'galleda': (_pla(lambda cv: galleda(cv, 30, 30, s=0.62, plena=True)).crop((14, 2, 46, 34)), (16, 28)),
+        'c7': _c7(),
+    }
+
+
+def _c7():
+    cv = Canvas(40, 12, light=None, transparent=True)
+    text(cv, 'C-7', 2, 2, None, 0, flat=(220, 210, 160))
+    return cv.img
+
+
+# ─── El fons (en pantalla): el cel, els turons ───────────────────────────────
+
+def fons(cv):
+    for y in range(0, HOR + 60):
+        t = min(1.0, y / HOR)
         for x in range(W):
             d = math.hypot(x - SUN[0], (y - SUN[1]) * 1.2)
-            lvl = 1.2 + 5.6 * t ** 1.3 + 2.6 * max(0.0, 1 - d / 120) ** 2
-            cv.put(x, y, SKYV, lvl, lit=0)
-    nuvol(cv, 238, 26, 1.0)
-    nuvol(cv, 540, 40, 1.25)
-    nuvol(cv, 420, 14, 0.7)
-    # el sol, amb els raigs d'anunci (massa perfectes)
+            cv.put(x, y, SKYV, 1.2 + 5.6 * t ** 1.3 + 2.6 * max(0.0, 1 - d / 120) ** 2, lit=0)
+    PL.nuvol(cv, 250, 30, 1.0)
+    PL.nuvol(cv, 540, 18, 1.2)
+    PL.nuvol(cv, 418, 52, 0.6)
     cv.glow(SUN[0], SUN[1], 44, (255, 255, 236), 0.9)
     for k in range(12):
         a = k * math.pi / 6 + 0.13
@@ -84,564 +160,540 @@ def sky(cv):
                 cv.flat(SUN[0] + math.cos(a) * r, SUN[1] + math.sin(a) * r, (255, 252, 214))
     cv.disc(SUN[0], SUN[1], 8, 8, [(255, 236, 140), (255, 248, 190), (255, 255, 236), (255, 255, 255)],
             lambda nx, ny: 3.4 - nx * 0.6 - ny * 0.6, lit=0)
-
-
-def hills(cv):
-    """Turons de gespa perfecta (corbes de sinus, ni un roc), arbres de piruleta i viles blanques amb piscina."""
+    # turons de gespa perfecta (corbes de sinus, ni un roc), amb arbres de piruleta i viles blanques
+    base = HOR + 52
     for x in range(W):
-        h1 = HOR - 22 + 9 * math.sin(x / 70 + 0.6) + 4 * math.sin(x / 31)
-        h2 = HOR - 6 + 6 * math.sin(x / 46 + 2.1)
-        for y in range(int(h1), LAWN_Y):
-            cv.put(x, y, HILLV, 4.2 - (y - h1) * 0.035 + (0.9 if y - h1 < 1.5 else 0), lit=0)
-        for y in range(int(h2), LAWN_Y):
-            cv.put(x, y, HILLV, 3.0 - (y - h2) * 0.02 + (1.0 if y - h2 < 1.5 else 0) +
-                   (0.4 if (x // 6 + int(y)) % 2 else 0) * (y > h2 + 4), lit=0)
-    # viles blanques llunyanes, amb la piscina blava al davant
-    for vx in (120, 214, 476):
-        vy = int(HOR - 22 + 9 * math.sin(vx / 70 + 0.6) + 4 * math.sin(vx / 31)) + 3
-        cv.rect(vx - 6, vy - 7, vx + 6, vy, WHITEV, lambda x, y: 5.4 if x < vx + 3 else 4.0, lit=0)
-        cv.rect(vx - 3, vy - 11, vx + 3, vy - 8, WHITEV, 5.2, lit=0)
-        cv.hline(vx - 7, vx + 7, vy - 7, GOLDV, 4.6, lit=0)
-        cv.hline(vx - 4, vx + 4, vy - 11, GOLDV, 4.6, lit=0)
-        for wx in range(vx - 4, vx + 5, 3):
-            cv.flat(wx, vy - 4, GLASSV[2])
-        cv.rect(vx - 9, vy + 1, vx + 2, vy + 2, CYANF, lambda x, y: 3.4 if y == vy + 1 else 2.4, lit=0)
-        cv.flat(vx - 7, vy + 1, CYANF[4])
-    for tx, tb, r in ((86, 136, 4), (140, 140, 5), (166, 134, 3), (228, 138, 4), (482, 134, 4), (496, 137, 3),
-                      (636, 128, 4)):
+        h1 = HOR - 14 + 7 * math.sin(x / 70 + 0.6) + 3 * math.sin(x / 31)
+        h2 = HOR - 2 + 5 * math.sin(x / 46 + 2.1)
+        for y in range(int(h1), base):
+            cv.put(x, y, HILLV, 4.0 - (y - h1) * 0.035 + (0.9 if y - h1 < 1.5 else 0), lit=0)
+        for y in range(int(h2), base):
+            cv.put(x, y, HILLV, 3.0 - (y - h2) * 0.02 + (1.0 if y - h2 < 1.5 else 0), lit=0)
+    for vx in (88, 196, 470, 600):
+        vy = int(HOR - 14 + 7 * math.sin(vx / 70 + 0.6) + 3 * math.sin(vx / 31)) + 3
+        cv.rect(vx - 5, vy - 6, vx + 5, vy, WHITEV, lambda x, y: 5.4 if x < vx + 2 else 4.0, lit=0)
+        cv.hline(vx - 6, vx + 6, vy - 6, GOLDV, 4.6, lit=0)
+        for wx in range(vx - 3, vx + 4, 3):
+            cv.flat(wx, vy - 3, GLASSV[2])
+        cv.rect(vx - 8, vy + 1, vx + 1, vy + 1, CYANF, 3.4, lit=0)
+    for tx, r in ((60, 3), (140, 4), (166, 3), (232, 3), (300, 4), (520, 3), (556, 4), (630, 3)):
+        tb = int(HOR - 2 + 5 * math.sin(tx / 46 + 2.1)) + 2
         arbre_rodo(cv, tx, tb, r, lit=0)
 
 
-def bardissa(cv, x0, x1):
-    """Bardissa retallada amb regle: un prisma verd perfecte."""
-    top = 158
-    cv.rect(x0, top, x1, LAWN_Y, TURF, lambda x, y: 2.8 + (hr(x // 2, y // 2, 3) - 0.5) * 0.7 -
-            (y - top) * 0.02 - (1.0 if y > LAWN_Y - 3 else 0))
-    cv.rect(x0, top - 5, x1, top - 1, TURF, lambda x, y: 4.6 + (hr(x // 2, y, 4) - 0.5) * 0.6)
-    cv.hline(x0, x1, top - 5, TURF, 6.0)
+# ─── El terra (en el món) ────────────────────────────────────────────────────
+
+def _dist_seg(x, z, A, B):
+    dx, dz = B[0] - A[0], B[1] - A[1]
+    u = max(0.0, min(1.0, ((x - A[0]) * dx + (z - A[1]) * dz) / (dx * dx + dz * dz)))
+    return math.hypot(x - A[0] - dx * u, z - A[1] - dz * u), u
 
 
-# ─── La gespa ──────────────────────────────────────────────────────────────
-
-def gespa(cv):
-    """Gespa artificial a franges de segar, en perspectiva, sense una mala herba."""
-    vx, vy = 330, 120
-    for y in range(LAWN_Y, RH):
-        t = (y - LAWN_Y) / (RH - LAWN_Y)
-        for x in range(W):
-            ang = math.atan2(x - vx, y - vy)
-            band = int(math.floor(ang * 9 + 50)) % 2
-            lvl = 4.1 + (0.75 if band else -0.15) - t * 0.4
-            if hr(x, y, 9) > 0.86:
-                lvl += 0.9                                             # els brins de plàstic, que brillen
-            elif hr(x, y, 10) > 0.9:
-                lvl -= 0.7
-            cv.put(x, y, TURF, lvl)
+def _gespa(s, t, P):
+    """Gespa artificial a franges de segar (al llarg de z: fugen cap a l'horitzó), amb els brins que brillen."""
+    x, z = P[0], P[2]
+    far = smooth(900, 1500, z)
+    band = int(math.floor((x + 1000) / 46)) % 2
+    v = 4.0 + (0.7 if band else -0.15) * (1 - far * 0.6) - far * 0.3
+    if hr(int(x) // 2, int(z) // 3, 9) > 0.9:
+        v += 0.8 * (1 - far)
+    elif hr(int(x) // 2, int(z) // 3, 10) > 0.93:
+        v -= 0.6 * (1 - far)
+    return v
 
 
-def cami(cv):
-    """El camí de marbre blanc de la porta fins a baix, en lloses."""
-    for y in range(206, RH):
-        t = (y - 206) / (RH - 206)
-        hw = 24 + 30 * t
-        cx = 352 + 6 * t
-        row = int((y - 206) ** 0.82 / 4)
-        for x in range(int(cx - hw), int(cx + hw) + 1):
-            u = (x - cx) / hw
-            joint = (abs(((u + 1) * 3 + (0.5 if row % 2 else 0)) % 1) < 0.04 + 0.02 * t) or \
-                (int((y - 205) ** 0.82 / 4) != int((y - 206) ** 0.82 / 4))
-            lvl = 4.8 - (1.8 if joint else 0) + (fbm(x / 9, y / 4, 61) - 0.5) * 0.5
-            cv.put(x, y, MARBLE, lvl)
-        cv.put(cx - hw - 1, y, TURF, 1.4)
-        cv.put(cx + hw + 1, y, TURF, 1.4)
+def _cami(s, t, P):
+    """El camí de lloses de marbre blanc, de la porta fins a baix (lloses del món: grans a prop)."""
+    x, z = P[0], P[2]
+    row = int(z // 34)
+    off = 23 if row % 2 else 0
+    v = 4.8 + (fbm(x / 20, z / 20, 61) - 0.5) * 0.5
+    if z % 34 < 1.6 or (x + off) % 46 < 1.6:
+        v -= 1.6
+    return v
 
 
-# ─── La Cantimplora (la rampa) ─────────────────────────────────────────────
+def _cami_x(z):
+    k = (z - 440) / (DOOR_C[2] - 440)
+    return CAMI_X[1] + (CAMI_X[0] - CAMI_X[1]) * k
 
-def cantimplora(cv):
-    """El morro de la nau cisterna: planxa verd oliva reblonada, franges taronja, rovell; la rampa abaixada."""
-    def edge(y):
-        return 70 + 10 * math.sin(min(1.0, y / 170) * math.pi * 0.9)
-    for y in range(0, 176):
-        e = edge(y)
-        for x in range(0, int(e) + 1):
-            u = x / e
-            lvl = 3.0 + u * 1.4 - (1.6 if x > e - 3 else 0) + (fbm(x / 12, y / 20, 71) - 0.5) * 0.9
-            if y % 34 == 0 or x % 28 == 27:
-                lvl -= 1.4                                             # juntes de les planxes
-            if (y % 34 in (3, 30)) and x % 6 == 2:
-                lvl += 1.6                                             # reblons
-            if fbm(x / 6, y / 30, 73) > 0.66 and y % 34 > 6:
-                cv.put(x, y, RUSTV, 2.6 + (hr(x, y) - 0.5))           # regalims de rovell
-                continue
-            cv.put(x, y, OLIVE, lvl)
+
+# ─── Les peces ──────────────────────────────────────────────────────────────
+
+def cilindre(e, sid, cx, cz, r, y0, y1, ramp, lvl, n=32):
+    """Un cilindre vertical: les facetes que es veuen. `lvl(angle, y, P)`."""
+    for i in range(n):
+        a0, a1 = 2 * math.pi * i / n, 2 * math.pi * (i + 1) / n
+        p0 = (cx + r * math.cos(a0), cz + r * math.sin(a0))
+        p1 = (cx + r * math.cos(a1), cz + r * math.sin(a1))
+        e.quad(sid, (p0[0], y1, p0[1]), (p1[0], y1, p1[1]), (p1[0], y0, p1[1]), (p0[0], y0, p0[1]), ramp=ramp,
+               lvl=lambda s, t, P: lvl(math.atan2(P[2] - cz, P[0] - cx), P[1], P))
+
+
+def disc(e, sid, cx, cz, r, y, ramp, lvl, ri=0.0):
+    """Un disc (o una anella, amb `ri`) pla, a l'alçada `y`."""
+    e.quad(sid, (cx - r, y, cz + r), (cx + r, y, cz + r), (cx + r, y, cz - r), (cx - r, y, cz - r), ramp=ramp, lvl=lvl,
+           forma=lambda s, t: ri * ri <= (s - r) ** 2 + (t - r) ** 2 <= r * r)
+
+
+def ombra(e, cx, cz, rx, rz, k=0.5, sid='ombra'):
+    """Una ombra el·líptica a terra, desplaçada cap endavant i a la dreta (el sol és darrere a l'esquerra)."""
+    e.foscor(sid, (cx - rx, 0.3, cz + rz), (cx + rx, 0.3, cz + rz), (cx + rx, 0.3, cz - rz), (cx - rx, 0.3, cz - rz),
+             lambda s, t: k * min(1.0, 1.8 * max(0.0, 1 - ((s - rx) / rx) ** 2 - ((t - rz) / rz) ** 2)))
+
+
+def bardissa(e):
+    """La bardissa del fons, retallada amb regle: un prisma verd perfecte que tanca el jardí."""
+    z = BARDISSA_Z
+    e.caixa('bardissa', -6000, 6000, 0, 34, z, z + 30, TURF, 3.0,
+            cares={'davant': {'ramp': TURF, 'lvl': lambda s, t, P: 2.6 + (hr(int(s) // 2, int(t) // 2, 3) - 0.5) * 0.8
+                              - (1.0 if t > 30 else 0)},
+                   'dalt': {'ramp': TURF, 'lvl': lambda s, t, P: 4.8 + (hr(int(s) // 3, int(t) // 3, 4) - 0.5) * 0.6}})
+
+
+def residencia(e, tex):
+    # la paret de la dreta, que fuig: blanca, carreus a la planta baixa, la cornisa d'or, dues finestres
+    hw = (FY1 - 36) * FK
+
+    def paret(s, t, P):
+        y = P[1]
+        if (208 - 48) * FK <= y <= (208 - 44) * FK:
+            return 5.0                                             # (la cornisa: es pinta d'or a sobre)
+        v = 3.6 + (fbm(s / 30, y / 20, 21) - 0.5) * 0.3
+        if y < (208 - 100) * FK and int(y) % 13 < 1:
+            v -= 0.8
+        for wx in (70, 170):
+            if wx < s < wx + 40 and 30 < y < 110:
+                return 1.8 + (1.4 if (s - wx + (110 - y) * 0.6) % 34 < 5 else 0)
+        return v
+    e.quad('residencia', _up(R, hw), _up(_add(R, BK), hw), _add(R, BK), R, ramp=WHITEV, lvl=paret)
+    e.quad('residencia', _up(R, (208 - 44) * FK), _up(_add(R, BK), (208 - 44) * FK), _up(_add(R, BK), (208 - 49) * FK),
+           _up(R, (208 - 49) * FK), ramp=GOLDV, lvl=lambda s, t, P: 3.6 - t * 0.2)
+    # la façana: el dibuix pla
+    e.quad('residencia', _up(LC, (FY1 - FY0) * FK), _up(R, (FY1 - FY0) * FK), R, LC,
+           tex=(tex['facana'], (FX0, FY0, FX1, FY1)))
+
+
+def cobert(e, tex):
+    h_ra = (CY1 - 130) * CK                        # l'alçada del ràfec
+    A = _cobert(PL.SAPEX[0], PL.SAPEX[1])
+    Ee = _cobert(PL.SX0 - 8, 130)
+    # la paret de l'esquerra, que fuig: taulons verds amb la pintura saltada
+    LB = _add(LCC, BKC)
+
+    def taulons(s, t, P):
+        y = P[1]
+        peel = fbm(s / 7, y / 9, 83)
+        if peel > 0.66:
+            return 2.4 + (peel - 0.66) * 4 - (1.4 if s % 9 < 1 else 0)
+        return 2.8 - (1.6 if s % 9 < 1 else 0) + (fbm(s / 5, y / 30, 81) - 0.5) * 0.9 - (1.2 if y < 5 else 0)
+    e.quad('cobert', _up(LB, h_ra), _up(LCC, h_ra), LCC, LB, ramp=SHEDG, lvl=taulons)
+    # el vessant de l'esquerra de la teulada, de xapa ondulada rovellada
+    e.quad('cobert', _up(_add(A, BKC), 0), A, Ee, _add(Ee, BKC), ramp=ZINC, dues_cares=True,
+           lvl=lambda s, t, P: 3.2 + (0.8 if int(t / 3) % 2 else -0.4) + (1.0 if fbm(s / 20, t / 8, 85) > 0.62 else 0))
+    # la façana: el dibuix pla
+    e.quad('cobert', _cobert(CX0, CY0), _cobert(CX1, CY0), _cobert(CX1, CY1), _cobert(CX0, CY1),
+           tex=(tex['cobert'], (CX0, CY0, CX1, CY1)))
+
+
+def climatitzador(e, tex):
+    x0, y0, x1, y1 = PL.AC
+    w, h = (x1 - x0 + 1) * FK, (y1 - y0 + 1) * FK
+    leg = (199 - y1) * FK
+    for lx in (-w / 2 + 4, w / 2 - 4):
+        P = _add(AC, TF, lx)
+        e.caixa_girada('clima', P[0], P[2], 3, 3, leg, TH, WHITEV, 3.6)
+    e.caixa_girada('clima', AC[0], AC[2], w, 20, h, TH, WHITEV, 4.2, y0=leg,
+                   cares={'davant': {'tex': (tex['clima'], (x0, y0, x1 + 1, y1 + 1))},
+                          'dalt': {'ramp': WHITEV, 'lvl': 5.4}, 'esquerra': {'ramp': WHITEV, 'lvl': 4.6},
+                          'dreta': {'ramp': WHITEV, 'lvl': 3.0}})
+    # el tub de desguàs, que surt per baix i fa colze fins a la reixa
+    P0 = _add(AC, TF, (PL.DRIP[0] - (x0 + x1) / 2) * FK)
+    e.cable('clima', [(P0[0], leg, P0[2]), (P0[0], 8, P0[2]), _up(_add(_add(P0, NF, 14), (0, 0, 0)), 8)], ZINC, 4.2,
+            gruix=2.6)
+
+
+def _tub_fi():
+    x0, _, x1, _ = PL.AC
+    P0 = _add(AC, TF, (PL.DRIP[0] - (x0 + x1) / 2) * FK)
+    return _up(_add(P0, NF, 14), 7)
+
+
+def reixa(e):
+    x, z = REIXA[0], REIXA[2]
+    e.foscor('ombra', (x - 32, 0.3, z + 14), (x + 32, 0.3, z + 14), (x + 32, 0.3, z - 14), (x - 32, 0.3, z - 14),
+             lambda s, t: 0.45 * max(0.0, 1 - ((s - 32) / 32) ** 2 - ((t - 14) / 14) ** 2) * 1.5)   # la taca d'humitat
+    e.quad('reixa', (x - 20, 0.5, z + 8), (x + 20, 0.5, z + 8), (x + 20, 0.5, z - 8), (x - 20, 0.5, z - 8), ramp=ZINC,
+           lvl=lambda s, t, P: (3.6 if (s % 4 < 1.4 or s < 1.5 or s > 38.5 or t < 1.5 or t > 14.5) else
+                                (0.6 if hr(int(s), 3) > 0.5 else 1.6)))
+
+
+def boix(e, tex):
+    for k, P in enumerate(BOIX):
+        ombra(e, P[0] + 10, P[2] - 8, 18, 10, 0.5)
+        e.sprite(f'boix{k}', *tex['boix'], P, escala_img=FK * 1.4)
+
+
+def cantimplora(e, tex):
+    x, z0, z1, y0, y1 = NAU_X, NAU_Z0, NAU_Z1, NAU_Y0, NAU_Y1
+    bz0, bz1, by0, by1 = BOCA
+    ombra(e, x - 150, (z0 + z1) / 2 - 20, 170, (z1 - z0) / 2 + 20, 0.6, sid='nau')
+    # les potes d'aterratge
+    for pz in (z0 + 40, z1 - 40):
+        e.caixa('nau', x - 30, x - 12, 0, y0 + 2, pz - 9, pz + 9, ZINC, 2.6)
+        e.caixa('nau', x - 36, x - 6, 0, 3, pz - 14, pz + 14, OLIVE, 2.0)
+
+    def planxa(s, t, P):
+        y, zz = P[1], P[2]
+        v = 2.8 + (fbm(zz / 40, y / 60, 71) - 0.5) * 0.9 + (y - y0) / (y1 - y0) * 0.8
+        if y % 50 < 1.6 or zz % 64 < 1.6:
+            v -= 1.4
+        if (y % 50 < 5 or y % 50 > 45) and zz % 8 < 1.6:
+            v += 1.4                                               # els reblons
+        return v
+    # el costat del buc (mira cap a la dreta) i la panxa
+    e.quad('nau', (x, y1, z0), (x, y1, z1), (x, y0, z1), (x, y0, z0), ramp=OLIVE, lvl=planxa)
+    e.quad('nau', (x, y0, z0), (x, y0, z1), (x - 30, y0 - 10, z1), (x - 30, y0 - 10, z0), ramp=OLIVE, lvl=1.2,
+           dues_cares=True)
+    # regalims de rovell
+    e.quad('nau', (x + 0.3, y1, z0), (x + 0.3, y1, z1), (x + 0.3, y0, z1), (x + 0.3, y0, z0), ramp=RUSTV,
+           lvl=lambda s, t, P: 2.4 + (hr(int(P[2]), int(P[1]) // 3) - 0.5),
+           forma=lambda s, t: fbm(s / 8, t / 40, 73) > 0.68 and (t % 50) > 6)
     # la franja de seguretat, taronja i negra en diagonal
-    for y in range(92, 102):
-        for x in range(0, int(edge(y)) - 1):
-            cv.put(x, y, SAFETY if ((x + y) // 5) % 2 else BLACKT, 3.0 if ((x + y) // 5) % 2 else 2.0)
-    text(cv, 'C-7', 10, 40, None, 0, flat=(220, 210, 160))
-    # la boca de la bodega, fosca amb llum càlida al fons
-    cv.rect(8, 112, 66, 170, BLACKT, lambda x, y: 0.6 + max(0.0, 1 - abs(x - 37) / 30) * 1.4, lit=0)
-    cv.glow(37, 150, 26, (255, 196, 110), 0.35)
-    box(cv, 6, 110, 68, 112, OLIVE, 4.0)
-    # la rampa: una planxa amb estries, de la boca fins a la gespa
-    ramp = [(8, 170), (66, 170), (106, 230), (30, 234)]
-    cv.poly(ramp, OLIVE, lambda x, y: 3.4 + (y - 170) * 0.012 + (1.2 if (y - 170) % 6 == 0 else 0) -
-            (0.6 if (y - 170) % 6 == 1 else 0))
-    for i in range(64):                                               # les vores de seguretat
-        t = i / 63
-        for k in (0, 1, 2):
-            x1 = 66 + (106 - 66) * t - k
-            y1 = 170 + 60 * t
-            cv.put(x1, y1, SAFETY if (i // 4) % 2 else BLACKT, 3.0)
-            x2 = 8 + (30 - 8) * t + k
-            cv.put(x2, 170 + 64 * t, SAFETY if (i // 4) % 2 else BLACKT, 2.4)
-    cv.line(30, 234, 106, 230, OLIVE, 1.4)
-    cv.line(31, 235, 106, 231, OLIVE, 0.6)
+    e.quad('nau', (x + 0.5, 182, z0), (x + 0.5, 182, z1), (x + 0.5, 168, z1), (x + 0.5, 168, z0), ramp=SAFETY,
+           lvl=lambda s, t, P: 3.0 if int((P[2] + P[1]) // 8) % 2 else -2.0)
+    e.quad('nau', (x + 0.6, 260, z0 + 40), (x + 0.6, 260, z0 + 140), (x + 0.6, 230, z0 + 140), (x + 0.6, 230, z0 + 40),
+           tex=(tex['c7'], (0, 0, 20, 8)))
+    # la boca de la bodega, fosca amb llum càlida al fons, i el marc
+    e.quad('nau_boca', (x + 0.7, by1, bz0), (x + 0.7, by1, bz1), (x + 0.7, by0, bz1), (x + 0.7, by0, bz0), ramp=BLACKT,
+           lvl=lambda s, t, P: 0.4 + max(0.0, 1 - abs(s - (bz1 - bz0) / 2) / 50) * 1.6 + t / (by1 - by0) * 1.0)
+    e.claror((x + 0.8, by1, bz0), (x + 0.8, by1, bz1), (x + 0.8, by0, bz1), (x + 0.8, by0, bz0), (255, 196, 110),
+             lambda s, t: 0.4 * max(0.0, 1 - math.hypot(s - (bz1 - bz0) / 2, (t - (by1 - by0)) * 1.4) / 60))
+    for zz in (bz0 - 4, bz1):
+        e.caixa('nau', x, x + 4, by0, by1 + 4, zz, zz + 4, OLIVE, 3.6)
+    e.caixa('nau', x, x + 4, by1, by1 + 4, bz0 - 4, bz1 + 4, OLIVE, 4.0)
+    # la rampa: una planxa estriada de la boca fins a la gespa, amb les vores de seguretat
+    rx = RAMPA_X
+    e.foscor('nau', (x, 0.4, bz1 + 6), (rx + 26, 0.4, bz1 + 6), (rx + 26, 0.4, bz0 - 14), (x, 0.4, bz0 - 14),
+             lambda s, t: 0.45)
+    e.quad('rampa', (x, by0, bz1), (rx, 0.6, bz1), (rx, 0.6, bz0), (x, by0, bz0), ramp=OLIVE, dues_cares=True,
+           lvl=lambda s, t, P: 4.8 + (1.2 if s % 6 < 1.2 else 0) - (0.6 if s % 6 < 2.4 else 0)
+           + (-3.2 if (t < 5 or t > (bz1 - bz0) - 5) and int(s // 6) % 2 else 0))
     # el pistó hidràulic
-    cv.line(74, 150, 90, 206, ZINC, 4.0)
-    cv.line(75, 150, 91, 206, ZINC, 2.4)
-    cv.line(73, 150, 80, 172, BLACKT, 2.4)
+    e.cable('rampa', [(x + 2, 70, bz1 - 6), ((x + rx) / 2, 14, bz1 - 6)], ZINC, 4.0, gruix=3.0)
 
 
-# ─── La plataforma de la llançadora ────────────────────────────────────────
-
-def llancadora(cv):
-    cx, cy = 142, 196
-    ombra(cv, cx + 6, cy + 3, 44, 7, 0.6)
-    cv.disc(cx, cy + 2, 42, 8, WHITEV, 2.4)                           # el gruix
-    cv.disc(cx, cy, 42, 8, MARBLE, lambda nx, ny: 4.4 - nx * 0.6 - ny * 0.4)
-    for a in range(0, 360, 2):                                        # l'anella daurada (el·lipse)
-        ra = math.radians(a)
-        cv.put(cx + math.cos(ra) * 36, cy + math.sin(ra) * 6.6, GOLDV, 4.6)
-    for a in range(0, 360, 30):                                       # els llums d'aterratge
-        ra = math.radians(a)
-        cv.flat(cx + math.cos(ra) * 40, cy + math.sin(ra) * 7.3, CYANF[3])
-    # la J pintada al mig, de «jardiners»
-    for x, y in ((cx + 4, cy - 3), (cx + 4, cy - 2), (cx + 4, cy - 1), (cx + 4, cy), (cx + 3, cy + 1),
-                 (cx + 2, cy + 1), (cx + 1, cy + 1), (cx, cy)):
-        cv.flat(x, y, (40, 150, 70))
-        cv.flat(x + 1, y, (40, 150, 70))
+def llancadora(e, tex):
+    cx, cz, r = LLANC
+    ombra(e, cx + 10, cz - 6, r + 6, r * 0.8, 0.45)
+    cilindre(e, 'llancadora', cx, cz, r, 0, 4, WHITEV, lambda a, y, P: 2.6 + math.cos(a + 2.4) * 0.6)
+    disc(e, 'llancadora', cx, cz, r, 4, MARBLE, lambda s, t, P: 4.6 - (t / r) * 0.3)
+    disc(e, 'llancadora', cx, cz, r - 6, 4.1, GOLDV, 4.6, ri=r - 8.5)
+    for k in range(12):
+        a = k * math.pi / 6
+        u, v, _ = CAM.projecta((cx + math.cos(a) * (r - 2.5), 4.2, cz + math.sin(a) * (r - 2.5)))
+        e.cv.flat(u, v, CYANF[3])
+    # la J de «jardiners», pintada al mig
+    e.quad('llancadora', (cx - 10, 4.2, cz + 12), (cx + 10, 4.2, cz + 12), (cx + 10, 4.2, cz - 12), (cx - 10, 4.2, cz - 12),
+           ramp=[(20, 100, 50), (40, 150, 70), (80, 190, 110)], lvl=1.6,
+           forma=lambda s, t: (11 < s < 15 and t < 18) or (15 < t < 22 and 4 < s < 15) or (t > 12 and 3 < s < 7 and t < 20))
     # el pal amb el rètol i l'horari
-    px = 114
-    cv.rect(px - 1, 132, px + 1, 192, ZINC, lambda x, y: 4.6 - (x - px + 1) * 1.1)
-    box(cv, 94, 124, 142, 146, [(10, 40, 24), (16, 64, 36), (24, 96, 52), (40, 130, 72), (70, 170, 100)], 2.4)
-    rotul(cv, 'LLANÇADORA', 118, 128, (236, 250, 236))
-    rotul(cv, 'DIJOUS · 7H', 118, 137, (250, 230, 120))
-    cv.flat(px, 120, (255, 80, 60))
-    cv.glow(px, 120, 5, (255, 90, 60), 0.5)
-    cv.rect(px, 121, px, 123, ZINC, 3.0)
+    ombra(e, PAL[0] + 14, PAL[1] - 8, 16, 6, 0.4)
+    e.sprite('llancadora_pal', *tex['llanc'], (PAL[0], 0, PAL[1]), escala_img=FK)
 
 
-# ─── La residència ─────────────────────────────────────────────────────────
-
-def residencia(cv):
-    # el cos, blanc, amb carreus marcats a la planta baixa
-    def wall(x, y):
-        lvl = 4.9 - (x - RX0) * 0.002
-        if y > 100 and (y - 100) % 9 == 0:
-            lvl -= 0.9
-        return lvl
-    cv.rect(RX0, 44, RX1, RBASE, WHITEV, wall)
-    cv.vline(RX1, 44, RBASE, WHITEV, 3.0)
-    cv.vline(RX1 - 1, 44, RBASE, WHITEV, 3.8)
-    # l'ampit del terrat, la cornisa d'or i les gerres daurades
-    cv.rect(RX0 - 4, 36, RX1 + 4, 43, WHITEV, lambda x, y: 5.6 if y == 36 else 4.4)
-    cv.rect(RX0 - 6, 44, RX1 + 6, 48, GOLDV, lambda x, y: 5.2 - (y - 44) * 0.6 + (0.8 if x % 6 == 0 else 0))
-    cv.hline(RX0 - 6, RX1 + 6, 49, WHITEV, 2.4)
-    for gx in (RX0 + 4, RX0 + 60, RX1 - 60, RX1 - 4):
-        cv.disc(gx, 30, 4, 5, GOLDV, lambda nx, ny: 4.4 - nx - ny * 0.8)
-        cv.rect(gx - 2, 34, gx + 2, 35, GOLDV, 3.0)
-        cv.rect(gx - 1, 23, gx + 1, 25, GOLDV, 4.6)
-    cv.rect(RX0, 96, RX1, 98, WHITEV, lambda x, y: 6.0 if y == 96 else 3.4)   # la imposta entre pisos
-    # les finestres del primer pis
-    for wx in (254, 286, 400, 432):
-        finestra(cv, wx, 58, 22, 28)
-    # les finestres grans de la planta baixa, d'arc
-    for wx in (254, 410):
-        finestra(cv, wx, 112, 42, 64, arc=True)
-    # els parterres de façana i les boles de boix
-    for x0, x1 in ((RX0 + 2, 302), (402, RX1 - 2)):
-        cv.rect(x0, 191, x1, 198, MARBLE, lambda x, y: 4.6 if y == 191 else 3.2)
-        for x in range(x0 + 3, x1 - 2, 4):
-            flor(cv, x, 189 - (x // 4) % 2, FLOWERS[(x // 4) % 5], size=1, lit=0.35)
-    bola_boix(cv, 304, 206, 7)
-    bola_boix(cv, 400, 206, 7)
-    portic(cv)
-    # la llum de reflex del sol a la façana: una diagonal blanca, d'anunci
-    for i in range(140):
-        x, y = RX0 + 10 + i, 50 + i * 0.4
-        for k in range(3):
-            if 0 <= y + k < RBASE and cv.get(x, y + k)[:3] != (0, 0, 0):
-                cv.flat(x, y + k, mix(cv.get(x, y + k), (255, 255, 255), 0.25))
+def panell(e, tex):
+    ombra(e, PANELL[0] + 26, PANELL[1] - 16, 34, 10, 0.4)
+    e.sprite('panell', *tex['panell'], (PANELL[0], 0, PANELL[1]), escala_img=1.7)
 
 
-def finestra(cv, x0, y0, w, h, arc=False):
-    """Vidre blau amb el cel reflectit, marc d'or, travesser blanc i el reflex en diagonal."""
-    r = w / 2
-    cx = x0 + r
-    cv.rect(x0 - 3, y0 + h + 1, x0 + w + 3, y0 + h + 3, WHITEV, lambda x, y: 5.6 if y == y0 + h + 1 else 3.2)
-
-    def inside(x, y, pad=0):
-        if arc and y < y0 + r:
-            return math.hypot(x - cx, y - (y0 + r)) <= r - pad
-        return x0 + pad <= x <= x0 + w - pad and y <= y0 + h - pad
-    for y in range(y0 - 2, y0 + h + 1):
-        for x in range(x0 - 2, x0 + w + 3):
-            if inside(x, y, 0):
-                t = (y - y0) / h
-                lvl = 4.4 - t * 2.4
-                d = (x - x0) + (y - y0) * 0.6
-                if 8 < d % 34 < 13 or 16 < d % 34 < 18:
-                    lvl += 1.6                                         # el reflex
-                cv.put(x, y, GLASSV, lvl)
-            elif inside(x - 2, y, -2) or inside(x + 2, y, -2) or inside(x, y + 2, -2):
-                cv.put(x, y, GOLDV, 4.4 if x < cx else 3.4)
-    # travessers
-    cv.vline(round(cx), y0 + (r if arc else 0), y0 + h, WHITEV, 5.0)
-    cv.hline(x0, x0 + w, y0 + (r if arc else h // 2), WHITEV, 5.0)
+def cami(e):
+    x0, x1 = CAMI_X
+    e.quad('cami', (x0 - 26, 0.2, DOOR_C[2] - 8), (x0 + 26, 0.2, DOOR_C[2] - 8), (x1 + 30, 0.2, 400),
+           (x1 - 30, 0.2, 400), ramp=MARBLE, lvl=_cami)
 
 
-def portic(cv):
-    x0, x1 = 308, 396
-    # el frontó amb el medalló daurat de la V
-    cv.poly([(x0 - 4, 86), (352, 60), (x1 + 4, 86)], WHITEV, lambda x, y: 5.2 - (y - 60) * 0.02)
-    cv.line(x0 - 4, 86, 352, 60, GOLDV, 5.0)
-    cv.line(352, 60, x1 + 4, 86, GOLDV, 4.0)
-    cv.disc(352, 76, 7, 7, GOLDV, lambda nx, ny: 4.6 - nx * 0.8 - ny * 0.8)
-    cv.disc(352, 76, 5, 5, WHITEV, 5.6)
-    for x, y in ((349, 73), (349, 74), (350, 75), (350, 76), (351, 77), (352, 78), (353, 77), (354, 76),
-                 (354, 75), (355, 74), (355, 73)):
-        cv.flat(x, y, GOLDV[3])
-    cv.rect(x0 - 6, 86, x1 + 6, 93, WHITEV, lambda x, y: 5.8 if y == 86 else (3.2 if y == 93 else 4.6))
-    cv.hline(x0 - 6, x1 + 6, 89, GOLDV, 5.0)
-    # la porta de vidre: a dins, blanc i una aranya de llums
-    dx0, dy0, dx1, dy1 = DOOR
-    cv.rect(dx0 - 3, dy0 - 3, dx1 + 3, dy1, GOLDV, lambda x, y: 4.6 if x < 352 else 3.6)
-    cv.rect(dx0, dy0, dx1, dy1, WHITEV, lambda x, y: 3.4 - (y - dy0) * 0.012 + (0.8 if (x - dx0 + (y - dy0) // 2) % 22 < 3 else 0))
-    cv.glow(352, dy0 + 12, 14, (255, 236, 170), 0.6)
-    cv.disc(352, dy0 + 12, 6, 3, GOLDV, 4.6)
-    cv.vline(352, dy0, dy0 + 9, GOLDV, 3.0)
-    cv.rect(dx0, dy0 + 60, dx1, dy1, MARBLE, 3.6)                      # el terra de dins
-    cv.vline(352, dy0, dy1, GOLDV, 3.2)                               # les dues fulles
-    cv.vline(351, dy0, dy1, GOLDV, 4.6)
-    for hx in (348, 356):
-        cv.rect(hx, 142, hx, 156, GOLDV, 5.0)                          # els poms
-    # les columnes, amb capitell i base d'or
-    for cx in (316, 388):
-        for y in range(93, 197):
-            for x in range(cx - 5, cx + 6):
-                u = (x - cx) / 5.5
-                flute = 0.7 if (x - cx) % 3 == 0 else 0
-                cv.put(x, y, WHITEV, 5.0 - u * 1.8 - u * u * 0.8 - flute)
-        cv.rect(cx - 7, 93, cx + 7, 97, GOLDV, lambda x, y: 4.8 - (y - 93) * 0.4)
-        cv.rect(cx - 7, 192, cx + 7, 196, GOLDV, lambda x, y: 4.6 - (y - 192) * 0.4)
-    # l'escalinata de marbre
-    for i, (y0, y1, ex) in enumerate(((196, 199, 0), (200, 203, 4), (204, 207, 8))):
-        cv.rect(x0 - 4 - ex, y0, x1 + 4 + ex, y1, MARBLE, lambda x, y, y0=y0: 5.6 if y == y0 else 3.4)
-
-
-def climatitzador(cv):
-    """El climatitzador (blanc, ventilador, la gota de Verne) i el tub que degota a la reixa."""
-    x0, y0, x1, y1 = AC
-    ombra(cv, (x0 + x1) / 2 + 6, 200, 18, 3, 0.7)
-    for lx in (x0 + 3, x1 - 3):                                       # les potes
-        cv.rect(lx - 1, y1, lx + 1, 199, WHITEV, lambda x, y, lx=lx: 4.4 - (x - lx + 1) * 1.0)
-    box(cv, x0, y0, x1, y1, WHITEV, 4.6, grad=1.0)
-    cy = (y0 + y1) // 2 + 1
-    cv.disc(483, cy, 10, 10, WHITEV, 2.6)
-    for r in (9, 7, 5):
-        cv.ring(483, cy, r, WHITEV, 1.6 + (9 - r) * 0.3, step=8)
-    for a in range(0, 360, 60):
-        ra = math.radians(a)
-        cv.line(483, cy, 483 + math.cos(ra) * 8, cy + math.sin(ra) * 8, WHITEV, 3.6)
-    cv.disc(483, cy, 1.5, 1.5, GOLDV, 4.6)
-    gota(cv, x0 + 4, y0 + 5, 0.6)
-    # el tub de desguàs, que surt per baix i fa colze cap a la reixa
-    cv.rect(DRIP[0] - 1, y1 + 1, DRIP[0] + 1, DRIP[1], ZINC, lambda x, y: 4.4 - (x - DRIP[0] + 1) * 0.9)
-    cv.hline(DRIP[0] - 1, DRIP[0] + 1, DRIP[1], ZINC, 1.4)
-
-
-def reixa(cv):
-    x0, y0, x1, y1 = GRATE
-    # la taca d'humitat: l'única gespa que està mullada de debò (i és de plàstic)
-    cv.darken(x0 - 8, y0 - 3, x1 + 8, y1 + 5, lambda x, y: 0.5 if ((x - (x0 + x1) / 2) / 22) ** 2 +
-              ((y - (y0 + y1) / 2) / 7) ** 2 <= 1 else 0)
-    cv.rect(x0, y0, x1, y1, BLACKT, 0.6, lit=0)
-    for x in range(x0 + 1, x1, 3):
-        cv.vline(x, y0 + 1, y1 - 1, ZINC, 3.0)
-    cv.hline(x0, x1, y0, ZINC, 4.2)
-    cv.hline(x0, x1, y1, ZINC, 2.2)
-    cv.vline(x0, y0, y1, ZINC, 3.6)
-    cv.vline(x1, y0, y1, ZINC, 2.4)
-    for x in range(x0 + 2, x1 - 1, 3):                               # l'aigua que brilla al fons
-        if hr(x, 3) > 0.4:
-            cv.flat(x, y1 - 1, (120, 190, 230))
-
-
-# ─── El cobert del jardiner ────────────────────────────────────────────────
-
-def cobert(cv):
-    """Fusta de debò pintada de verd, amb la pintura que salta, la porta vella i la teulada de xapa."""
-    ax, ay = SAPEX
-    eave = 128
-    ombra(cv, (SX0 + SX1) / 2 + 12, SBASE + 3, 72, 6, 0.7)
-
-    def plank(x, y):
-        lvl = 3.4 - (1.8 if (x - SX0) % 9 == 0 else 0) + (fbm(x / 5, y / 30, 81) - 0.5) * 1.0
-        if (x - SX0) % 9 == 1:
-            lvl += 0.8
-        return lvl
-    for y in range(ay + 4, SBASE + 1):
-        for x in range(SX0, SX1 + 1):
-            if y < eave and abs(x - ax) > (y - ay) * (ax - SX0) / (eave - ay):
-                continue
-            peel = fbm(x / 7, y / 9, 83)
-            if peel > 0.66:                                            # la pintura saltada: fusta grisa
-                cv.put(x, y, WOODG, 3.0 + (peel - 0.66) * 5 - (1.6 if (x - SX0) % 9 == 0 else 0))
-            else:
-                cv.put(x, y, SHEDG, plank(x, y))
-    # el sòcol, terrós (l'únic fang de tot Verdant)
-    cv.rect(SX0, SBASE - 4, SX1, SBASE, PLANK, lambda x, y: 2.0 + (hr(x // 2, y) - 0.5))
-    # la teulada de xapa ondulada, rovellada
-    for side in (-1, 1):
-        for k in range(6):
-            x_end = SX0 - 8 if side < 0 else SX1 + 8
-            for i in range(0, 90):
-                t = i / 89
-                x = ax + (x_end - ax) * t
-                y = ay - 1 + k + (eave + 2 - ay) * t
-                lvl = 3.4 - k * 0.3 + (0.9 if int(t * 40) % 2 else -0.5) - (0.6 if side > 0 else 0)
-                if fbm(x / 8, y / 8, 85) > 0.6:
-                    cv.put(x, y, RUSTV, lvl)
-                else:
-                    cv.put(x, y, ZINC, lvl - 0.6)
-    cv.line(SX0 - 8, eave + 2, ax, ay - 1, ZINC, 5.0)
-    cv.line(ax, ay - 1, SX1 + 8, eave + 2, ZINC, 4.2)
-    # la porta: taulons, travessers en Z, el baldó rovellat
-    dx0, dy0, dx1, dy1 = SDOOR
-    cv.rect(dx0 - 2, dy0 - 2, dx1 + 2, dy1, PLANK, 2.0)
-    cv.rect(dx0, dy0, dx1, dy1, SHEDG, lambda x, y: 3.0 - (1.6 if (x - dx0) % 8 == 0 else 0) +
-            (fbm(x / 6, y / 10, 87) - 0.5) * 1.2)
-    for yy in (dy0 + 10, dy1 - 12):
-        cv.rect(dx0 + 1, yy, dx1 - 1, yy + 3, SHEDG, lambda x, y: 4.0 if y == yy else 2.6)
-    cv.line(dx0 + 2, dy1 - 13, dx1 - 2, dy0 + 14, SHEDG, 3.8)
-    cv.line(dx0 + 3, dy1 - 13, dx1 - 1, dy0 + 14, SHEDG, 2.4)
-    cv.disc(dx1 - 7, 162, 2, 2, RUSTV, 3.6)
-    cv.rect(dx1 - 12, 160, dx1 - 9, 161, RUSTV, 3.0)
-    # el rètol a mà, «NIL», i una ferradura
-    box(cv, 556, 104, 584, 112, PLANK, 3.8)
-    text(cv, 'NIL', 564, 106, None, 0, flat=(240, 236, 214))
-    cv.ring(570, 99, 3, RUSTV, 3.0, step=30)
-    # la finestreta, bruta
-    box(cv, 602, 140, 624, 160, PLANK, 3.6)
-    cv.rect(605, 143, 621, 157, GLASSV, lambda x, y: 1.6 + (0.6 if (x + y) % 9 < 2 else 0) +
-            (fbm(x / 4, y / 4, 89) - 0.5) * 1.4)
-    cv.vline(613, 143, 157, PLANK, 3.0)
-    cv.hline(605, 621, 150, PLANK, 3.0)
-    # la regadora vella, abonyegada, a la porta
-    rx, ry = 528, 202
-    cv.poly([(rx - 8, ry - 14), (rx + 8, ry - 14), (rx + 9, ry), (rx - 9, ry)], ZINC,
-            lambda x, y: 4.0 - (x - rx) * 0.12 - (1.2 if y == ry - 10 else 0))
-    cv.disc(rx, ry - 14, 8, 2, ZINC, 2.0)
-    cv.line(rx + 8, ry - 6, rx + 18, ry - 18, ZINC, 3.4)
-    cv.disc(rx + 19, ry - 19, 2, 2, ZINC, 4.2)
-    for k in range(9):
-        a = math.pi * k / 8
-        cv.put(rx - math.cos(a) * 6, ry - 15 - math.sin(a) * 6, ZINC, 2.6)
-
-
-# ─── El parterre i els aspersors ───────────────────────────────────────────
-
-def parterre(cv):
-    cx, cy, rx, ry = BED
-    ombra(cv, cx + 4, cy + 3, rx + 3, ry + 2, 0.5)
-    cv.disc(cx, cy + 2, rx + 3, ry + 3, MARBLE, 3.0)                  # la vorada de marbre
-    cv.disc(cx, cy, rx + 3, ry + 3, MARBLE, lambda nx, ny: 5.0 - ny * 0.6)
-    cv.disc(cx, cy, rx, ry, TURF, lambda nx, ny: 1.6 + (hr(int(nx * 40), int(ny * 20), 91) - 0.5) * 0.6)
-    # anelles de flors, cada anella d'un color: de fora cap a dins
+def parterre(e, cx, cz, r, sid='parterre', fosc=0.0):
+    """El parterre: la vorada de marbre, la terra de plàstic i anelles de flors, cada anella d'un color."""
+    ombra(e, cx + 8, cz - 6, r + 8, r * 0.85, 0.35, sid=sid)
+    cilindre(e, sid, cx, cz, r + 4, 0, 4, MARBLE, lambda a, y, P: 4.0 - fosc + math.cos(a + 2.4) * 0.6)
+    disc(e, sid, cx, cz, r + 4, 4, MARBLE, 5.0 - fosc, ri=r)
+    disc(e, sid, cx, cz, r, 3.0, TURF, lambda s, t, P: 1.4 - fosc + (hr(int(s), int(t), 91) - 0.5) * 0.6)
     rings = ((0.9, MAGENTA), (0.72, CYANF), (0.54, YELLOWF), (0.36, ORANGEF), (0.16, VIOLETF))
     pts = []
     for k, (f, ramp) in enumerate(rings):
-        n = max(3, int(46 * f))
+        n = max(4, int(70 * f * r / 60))
         for i in range(n):
             a = 2 * math.pi * i / n + k * 0.3
-            pts.append((cy + math.sin(a) * ry * f, cx + math.cos(a) * rx * f, ramp))
-    for y, x, ramp in sorted(pts):                                     # de darrere cap a davant
-        s = 2 if y > cy - ry * 0.4 else 1
-        tija_y = 4 if s == 2 else 2
-        cv.vline(round(x), round(y) - tija_y + 1, round(y) + 1, TURF, 4.6)
-        flor(cv, round(x), round(y) - tija_y, ramp, size=s, lit=0.35)
+            pts.append((cz + math.sin(a) * r * f, cx + math.cos(a) * r * f, ramp))
+    cv = e.cv
+    idx = e._idx_de(sid)
+    for z, x, ramp in sorted(pts, reverse=True):                   # de darrere cap a davant
+        k = CAM.escala((x, 0, z))
+        u, v0, _ = CAM.projecta((x, 3, z))
+        _, v1, _ = CAM.projecta((x, 10, z))
+        s = 3 if k > 1.15 else 2 if k > 0.6 else 1
+        for vv in range(int(v1) + 1, int(v0) + 1):
+            cv.put(round(u), vv, TURF, 4.4 - fosc, lit=0)
+        flor(cv, round(u), round(v1), ramp, size=s, lit=0)
+        for yy in range(int(v1) - s - 1, int(v0) + 1):
+            for xx in range(round(u) - s - 1, round(u) + s + 2):
+                if 0 <= xx < W and 0 <= yy < RH:
+                    e.amo[yy * cv.w + xx] = idx
 
 
-def aspersor(cv, x, y):
-    ombra(cv, x + 2, y + 1, 5, 1.6, 0.6)
-    cv.disc(x, y, 4, 1.8, WHITEV, 3.6)
-    cv.rect(x - 1, y - 6, x + 1, y, WHITEV, lambda xx, yy: 5.4 - (xx - x + 1) * 1.1)
-    cv.disc(x, y - 7, 2.5, 1.6, GOLDV, lambda nx, ny: 4.6 - nx - ny)
-    cv.flat(x, y - 9, GOLDV[5])
+def sprites_petits(e, tex):
+    for k, (x, z) in enumerate(SPRINK):
+        ombra(e, x + 4, z - 3, 7, 3, 0.4)
+        e.sprite(f'aspersor{k}', *tex['aspersor'], (x, 0, z), escala_img=FK)
+    ombra(e, FLAMENC[0] + 8, FLAMENC[1] - 4, 10, 4, 0.4)
+    e.sprite('flamenc', *tex['flamenc'], (FLAMENC[0], 0, FLAMENC[1]), escala_img=FK)
 
 
-def flamenc(cv, x, y):
-    """Un flamenc de plàstic rosa, clavat a la gespa: el gust del Magnat."""
-    P = MAGENTA
-    ombra(cv, x + 5, y + 1, 6, 1.4, 0.6)
-    cv.vline(x, y - 12, y, ZINC, 3.0)
-    cv.vline(x + 2, y - 12, y - 2, ZINC, 2.4)
-    cv.disc(x + 1, y - 16, 7, 4, P, lambda nx, ny: 3.6 - nx * 0.5 - ny * 1.0)
-    cv.poly([(x + 6, y - 18), (x + 10, y - 19), (x + 8, y - 15)], P, 2.6)      # la cua
-    for k in range(10):                                                   # el coll en essa
-        cv.put(x - 5 + math.sin(k * 0.5) * 2, y - 18 - k, P, 3.8)
-        cv.put(x - 4 + math.sin(k * 0.5) * 2, y - 18 - k, P, 3.0)
-    cv.disc(x - 3, y - 29, 2.2, 2, P, 4.0)
-    cv.flat(x - 3, y - 30, (20, 20, 20))
-    cv.line(x - 5, y - 29, x - 7, y - 26, BLACKT, 2.0)
-    cv.flat(x - 6, y - 29, (250, 236, 220))
+def primer_pla(e):
+    """Mates de boix rodones, a baix a l'esquerra i a baix a la dreta, a l'ombra, tallades per la vora."""
+    e.roca('primer_pla', (-196, 0, 330), 60, TURF, 0.7, llum_dir=(-0.6, -0.7), aplana=0.95, seed=4)
+    e.roca('primer_pla', (-120, 0, 318), 34, TURF, 0.5, llum_dir=(-0.6, -0.7), aplana=1.0, seed=7)
+    e.roca('primer_pla', (236, 0, 344), 52, TURF, 0.6, llum_dir=(-0.6, -0.7), aplana=1.0, seed=9)
 
 
-def parterre_petit(cv):
-    """Un tros de parterre a baix a la dreta, tallat pel marc."""
-    cx, cy, rx, ry = 640, 254, 52, 12
-    cv.disc(cx, cy, rx + 3, ry + 3, MARBLE, lambda nx, ny: 5.0 - ny * 0.6)
-    cv.disc(cx, cy, rx, ry, TURF, 1.6)
-    for j in range(60):
-        a = math.pi * (0.5 + hr(j, 1, 2) * 1.0)
-        f = 0.2 + 0.75 * hr(j, 3, 4)
-        x, y = cx + math.cos(a) * rx * f, cy - abs(math.sin(a)) * ry * f
-        if y < RH - 1:
-            cv.vline(round(x), round(y) - 2, round(y) + 1, TURF, 4.6)
-            flor(cv, round(x), round(y) - 3, FLOWERS[j % 5], size=2, lit=0.35)
+def escena(cv, tex):
+    e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
+    fons(cv)
+    bardissa(e)
+    e.quad('terra', (-8000, 0, BARDISSA_Z), (8000, 0, BARDISSA_Z), (8000, 0, 300), (-8000, 0, 300), ramp=TURF,
+           lvl=_gespa)
+    e.claror((-8000, 0.2, BARDISSA_Z), (8000, 0.2, BARDISSA_Z), (8000, 0.2, 900), (-8000, 0.2, 900), (200, 236, 210),
+             lambda s, t: 0.25 * smooth(200, 600, 600 - t))       # la boira de perfum, al fons
+    cami(e)
+    # de lluny a prop
+    panell(e, tex)
+    ombra(e, R[0] + 90, R[2] - 40, 120, 50, 0.4)
+    residencia(e, tex)
+    climatitzador(e, tex)
+    reixa(e)
+    boix(e, tex)
+    cobert(e, tex)
+    sprites_petits(e, tex)
+    llancadora(e, tex)
+    parterre(e, *PARTERRE)
+    cantimplora(e, tex)
+    primer_pla(e)
+    return e
 
 
-# ─── Muntatge ───────────────────────────────────────────────────────────────
+# ─── Composició ─────────────────────────────────────────────────────────────
 
-def bg(cv):
-    sky(cv)
-    hills(cv)
-    bardissa(cv, 70, 640)
-    gespa(cv)
-    cami(cv)
-    llancadora(cv)
-    panell_preu(cv, 186, 112, '', post=46, w=44)
-    residencia(cv)
-    climatitzador(cv)
-    reixa(cv)
-    cobert(cv)
-    cantimplora(cv)
-    parterre(cv)
-    parterre_petit(cv)
-    flamenc(cv, 446, 236)
-    for x, y in SPRINK:
-        aspersor(cv, x, y)
-    # tot el que no és sala: negre (la barra de verbs)
-    cv.rect(0, RH, W - 1, H - 1, BLACKT, 0, lit=0)
-    for y in range(RH, H):
+@functools.lru_cache(maxsize=None)
+def _base():
+    cv = Canvas(light=LIGHT)
+    e = escena(cv, _textures())
+    for y in range(RH, H):                                         # sota la sala: negre
         for x in range(W):
             cv.flat(x, y, (0, 0, 0))
+    return cv.img, e
+
+
+def bg(cv):
+    img, _ = _base()
+    cv.img.paste(img)
+    cv.P = cv.img.load()
 
 
 def galleda_reixa(cv):
     """La galleda d'en Nil sota el tub del climatitzador, damunt la reixa, recollint les gotes."""
-    ombra(cv, DRIP[0] + 5, GRATE[3] + 1, 10, 2, 0.6)
-    galleda(cv, DRIP[0], GRATE[3], s=0.62, plena=True)
+    c2 = Canvas(light=LIGHT, transparent=True)
+    e2 = Escena(c2, CAM, LLUMS, ambient=AMBIENT)
+    P = _tub_fi()
+    e2.sprite('galleda', *_textures()['galleda'], (P[0], 0, P[2]), escala_img=FK)
+    _, e = _base()
+    W_ = e.cv.w
+    px = c2.P
+    for y in range(RH):
+        for x in range(W_):
+            if e.ids[e.amo[y * W_ + x]] in ('primer_pla', 'cobert'):
+                px[x, y] = (0, 0, 0, 0)
+    cv.img.alpha_composite(c2.img)
 
 
 PROPS = {'galleda_reixa': galleda_reixa}
 
-GEOMETRIA = {
-    'things': {
-        'rampa': {'rect': (0, 104, 96, 236), 'walk': (92, 238)},
-        'porta_residencia': {'rect': (330, 96, 374, 200), 'walk': (352, 214)},
-        'porta_cobert': {'rect': (546, 100, 594, 206), 'walk': (570, 214)},
-        'flors': {'rect': (114, 212, 280, 252), 'walk': (196, 254)},
-        'aspersors': {'rect': (508, 214, 624, 246), 'walk': (566, 246)},
-        'reixa': {'rect': (462, 142, 502, 214), 'walk': (482, 220)},
-        'panell_preu': {'rect': (182, 108, 234, 186), 'walk': (214, 214)},
-        'llancadora': {'rect': (98, 116, 190, 204), 'walk': (150, 212)},
-    },
-    'spawns': {
-        'nil': (196, 238),
-        'fidel': (352, 211),
-        'iri': (292, 236),
-        'vet': (110, 244),
-    },
-    'walkable': [(34, 238), (104, 232), (112, 208), (300, 210), (306, 214), (400, 214), (408, 210), (462, 212),
-                 (500, 212), (636, 208), (636, 256), (4, 256), (4, 242)],
-}
-
-
-# ─── Animacions ────────────────────────────────────────────────────────────
-
 PERFUM = [(255, 214, 240), (240, 200, 255), (255, 255, 255), (214, 240, 255)]
-
-
-def _base():
-    cv = Canvas(light=LIGHT)
-    bg(cv)
-    return cv.img
 
 
 def _frames_boira():
     """Els aspersors no reguen: escombren el jardí amb un raig de perfum (gotetes rosades, liles i blanques) que
-    va i ve, i deixen una boira a quadres que s'esvaeix."""
-    base = _base()
+    va i ve, i deixen una boira a quadres que s'esvaeix (tot del món: més petit com més lluny)."""
+    base, e = _base()
     frames = []
     n = 16
-    D = 30.0                                                          # l'abast del raig
+    D = 30.0
     for i in range(n):
-        cv = Canvas(light=LIGHT, img=base.copy())
-        for k, (sx, sy) in enumerate(SPRINK):
+        im = Image.new('RGBA', base.size, (0, 0, 0, 0))
+        P, B = im.load(), base.load()
+
+        def put(x, y, col, k=1.0):
+            x, y = int(x), int(y)
+            if 0 <= x < W and 0 <= y < RH and e.ids[e.amo[y * W + x]] != 'primer_pla':
+                o = B[x, y]
+                P[x, y] = (int(o[0] + (col[0] - o[0]) * k), int(o[1] + (col[1] - o[1]) * k),
+                           int(o[2] + (col[2] - o[2]) * k), 255)
+        for k, (wx, wz) in enumerate(SPRINK):
+            sx, sy, _ = CAM.projecta((wx, 0, wz))
+            sc = CAM.escala((wx, 0, wz)) * FK
             ph = 2 * math.pi * (i / n) + k * 2.2
-            # la boira que queda: un núvol baix, a quadres, que respira
-            for y in range(sy - 20, sy + 4):
-                for x in range(sx - 30, sx + 31):
-                    d = ((x - sx) / 30) ** 2 + ((y - sy + 6) / 11) ** 2
+            for y in range(int(sy - 20 * sc), int(sy + 4 * sc)):
+                for x in range(int(sx - 30 * sc), int(sx + 31 * sc)):
+                    d = ((x - sx) / (30 * sc)) ** 2 + ((y - sy + 6 * sc) / (11 * sc)) ** 2
                     if d < 1 and (x + 2 * y + i) % 4 == 0 and hr(x // 3, y // 2, (i + k) // 3) > 0.35 + d * 0.5:
-                        cv.flat(x, y, mix(cv.get(x, y), (255, 214, 244), 0.45 - d * 0.25))
-            # el raig: una paràbola de gotetes que gira d'una banda a l'altra
-            th = math.pi * (1.5 + 0.42 * math.sin(ph))                # cap amunt i escombrant
-            dirx, diry = math.cos(th + math.pi / 2), 0.3
+                        put(x, y, (255, 214, 244), 0.45 - d * 0.25)
             for j in range(0, int(D), 2):
                 d = j + (i % 2)
-                x = sx + math.sin(ph) * d * 1.0
-                y = sy - 9 - d * (1 - d / D) * 0.8 + d * 0.18 * math.cos(ph)
-                col = PERFUM[(j // 2 + k) % 4]
-                cv.flat(x, y, col)
-                if j > D * 0.6 and hr(j, i, k) > 0.4:
-                    cv.flat(x + 1, y + 1, PERFUM[(j + 1) % 4])
-            # l'esquitx al final del raig
-            ex = sx + math.sin(ph) * D
-            ey = sy - 9 + D * 0.18 * math.cos(ph)
+                x = sx + math.sin(ph) * d * sc
+                y = sy - (9 + d * (1 - d / D) * 0.8 - d * 0.18 * math.cos(ph)) * sc
+                put(x, y, PERFUM[(j // 2 + k) % 4])
+            ex = sx + math.sin(ph) * D * sc
+            ey = sy - (9 - D * 0.18 * math.cos(ph)) * sc
             for q in range(10):
-                cv.flat(ex + (hr(q, i, k) - 0.5) * 8, ey + (hr(q, i, k + 5) - 0.5) * 4, PERFUM[q % 4])
-        frames.append(_diff(cv.img, base))
+                put(ex + (hr(q, i, k) - 0.5) * 8 * sc, ey + (hr(q, i, k + 5) - 0.5) * 4 * sc, PERFUM[q % 4])
+        frames.append(im)
     return frames
 
 
 def _frames_degoteig():
     """La gota que cau del tub del climatitzador a la reixa (o a la galleda)."""
-    base = _base()
+    base, e = _base()
+    T = _tub_fi()
+    x, y0, _ = CAM.projecta(T)
+    _, y1, _ = CAM.projecta((T[0], 0.5, T[2]))
     frames = []
-    x, y0, y1 = DRIP[0], DRIP[1] + 1, GRATE[1] + 2
-    n = 12
-    for i in range(n):
-        cv = Canvas(light=LIGHT, img=base.copy())
-        if i < 5:                                                     # la gota s'infla
-            if i >= 1:
-                cv.flat(x, y0, (150, 210, 250))
+    for i in range(12):
+        im = Image.new('RGBA', base.size, (0, 0, 0, 0))
+        P = im.load()
+
+        def put(xx, yy, col):
+            xx, yy = int(xx), int(yy)
+            if 0 <= xx < W and 0 <= yy < RH and e.ids[e.amo[yy * W + xx]] not in ('primer_pla', 'cobert'):
+                P[xx, yy] = col + (255,)
+        if 1 <= i < 5:
+            put(x, y0 + 1, (150, 210, 250))
             if i >= 3:
-                cv.flat(x, y0 + 1, (200, 236, 255))
-        elif i < 9:                                                   # cau
-            yy = y0 + 2 + (i - 5) ** 2 * 1.4
+                put(x, y0 + 2, (200, 236, 255))
+        elif 5 <= i < 9:
+            yy = y0 + 3 + (i - 5) ** 2 * 1.2
             if yy < y1:
-                cv.flat(x, yy, (200, 236, 255))
-                cv.flat(x, yy - 1, (120, 190, 240))
-        elif i == 9:                                                  # esquitx
+                put(x, yy, (200, 236, 255))
+                put(x, yy - 1, (120, 190, 240))
+        elif i == 9:
             for dx, dy in ((-2, -1), (2, -1), (-1, -2), (1, -2)):
-                cv.flat(x + dx, y1 + dy, (200, 236, 255))
-        frames.append(_diff(cv.img, base))
+                put(x + dx, y1 + dy, (200, 236, 255))
+        frames.append(im)
     return frames
 
 
 ANIMS = {'boira': {'frames': _frames_boira, 'frameDuration': 140},
          'degoteig': {'frames': _frames_degoteig, 'frameDuration': 160}}
+
+
+def _amo(ids):
+    def mask(x, y):
+        _, e = _base()
+        return e.ids[e.amo[y * e.cv.w + x]] in ids
+    return mask
+
+
+def _v(z):
+    return round(HOR + CAM.f * CAM.pos[1] / z)
+
+
+# Capes del davant: el personatge hi passa per darrere si té els peus més amunt (més lluny) que la seva base.
+FRONT = [
+    *[{'id': f'davant_boix{k}', 'mask': _amo({f'boix{k}'}), 'baseline': _v(P[2]), 'zIndex': 20}
+      for k, P in enumerate(BOIX)],
+    {'id': 'davant_clima', 'mask': _amo({'clima'}), 'baseline': _v(AC[2] - 6), 'zIndex': 20},
+    {'id': 'davant_flamenc', 'mask': _amo({'flamenc'}), 'baseline': _v(FLAMENC[1]), 'zIndex': 20},
+    {'id': 'davant_parterre', 'mask': _amo({'parterre'}), 'baseline': _v(PARTERRE[1]), 'zIndex': 20},
+    {'id': 'davant_pal', 'mask': _amo({'llancadora_pal'}), 'baseline': _v(PAL[1]), 'zIndex': 20},
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+]
+
+
+# ─── Geometria (coordenades de sala, projectades) ─────────────────────────────
+
+def _p(x, z, y=0.0):
+    u, v, _ = CAM.projecta((x, y, z))
+    return round(u), round(v)
+
+
+def _pP(P):
+    return _p(P[0], P[2])
+
+
+def _rect(*Ps):
+    pts = [CAM.projecta(P) for P in Ps]
+    return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
+            min(W - 1, round(max(p[0] for p in pts))), min(RH - 1, round(max(p[1] for p in pts))))
+
+
+def _cercle(cx, cz, r, n=12):
+    return [_p(cx + r * math.cos(2 * math.pi * i / n), cz + r * math.sin(2 * math.pi * i / n)) for i in range(n)]
+
+
+Z_PROP = 470                                       # el terra on es camina no baixa d'aquí (escala ≈1,07)
+_F_R = _add(R, NF, 26)                             # davant la façana, a 26 unitats
+_F_L = _add(LC, NF, 26)
+_C_L = _add(LCC, NFC, 22)                          # davant el cobert
+_C_LB = _add(_add(LCC, BKC), TFC, -20)             # al llarg de la paret de l'esquerra del cobert
+# El terra on es camina (al món): de la rampa fins al cobert, de baix fins a la façana. Forats: el parterre, el
+# climatitzador, les boles de boix i el flamenc.
+WALK_MON = [(-150, Z_PROP), (380, Z_PROP), (388, 640), (_C_L[0], _C_L[2]), (_C_LB[0], _C_LB[2]), (_F_R[0], _F_R[2]),
+            (_F_L[0], _F_L[2]), (-150, 1010)]
+_WALK = [_p(x, z) for x, z in WALK_MON]
+_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+
+
+def _ac_forat():
+    c, s = math.cos(TH), math.sin(TH)
+    a, b = 26, 18
+    return [_p(AC[0] + lx * c - lz * s, AC[2] + lx * s + lz * c) for lx, lz in ((-a, -b), (a, -b), (a, b), (-a, b))]
+
+
+GEOMETRIA = {
+    'things': {
+        'rampa': {'rect': _rect((NAU_X, BOCA[3], BOCA[0]), (RAMPA_X, 0, BOCA[1]), (NAU_X, 0, BOCA[0])),
+                  'walk': _p(RAMPA_X + 12, (BOCA[0] + BOCA[1]) / 2)},
+        'porta_residencia': {'rect': _rect(_facana(PL.DOOR[0] - 4, PL.DOOR[1] - 4), _facana(PL.DOOR[2] + 4, FY1)),
+                             'walk': _pP(_add(DOOR_C, NF, 34))},
+        'porta_cobert': {'rect': _rect(_cobert(PL.SDOOR[0] - 4, PL.SDOOR[1] - 6), _cobert(PL.SDOOR[2] + 4, CY1)),
+                         'walk': _pP(_add(COBERT_PORTA, NFC, 30))},
+        'flors': {'rect': _rect((PARTERRE[0] - PARTERRE[2] - 4, 12, PARTERRE[1] - PARTERRE[2]),
+                                (PARTERRE[0] + PARTERRE[2] + 4, 0, PARTERRE[1] + PARTERRE[2])),
+                  'walk': _p(PARTERRE[0] + 30, PARTERRE[1] - PARTERRE[2] - 20)},
+        'aspersors': {'rect': _rect((SPRINK[1][0] - 10, 18, SPRINK[1][1]), (SPRINK[0][0] + 10, 0, SPRINK[0][1])),
+                      'walk': _p(SPRINK[0][0] - 30, SPRINK[0][1] - 26)},
+        'reixa': {'rect': _rect(_up(_add(AC, TF, -22), 76), _add(REIXA, TF, 22), _add(REIXA, NF, 10)),
+                  'walk': _pP(_add(REIXA, NF, 30))},
+        'panell_preu': {'rect': _rect((PANELL[0] - 44, 140, PANELL[1]), (PANELL[0] + 44, 0, PANELL[1])),
+                        'walk': _p(-140, 960)},
+        'llancadora': {'rect': _rect((PAL[0] - 30, 126, PAL[1]), (LLANC[0] + LLANC[2], 0, LLANC[1] - LLANC[2])),
+                       'walk': _p(LLANC[0] + 20, LLANC[1] - LLANC[2] - 20)},
+    },
+    'spawns': {
+        'nil': _p(PARTERRE[0] + 52, PARTERRE[1] - 40),
+        'fidel': _pP(_add(DOOR_C, NF, 20)),
+        'iri': _p(20, 500),
+        'vet': _p(-110, 560),
+    },
+    'walkable': _WALK,
+    'forats': [_cercle(PARTERRE[0], PARTERRE[1], PARTERRE[2] + 8), _ac_forat(), _cercle(FLAMENC[0], FLAMENC[1], 10, 6)]
+              + [_cercle(P[0], P[2], 16, 8) for P in BOIX] + [_cercle(PAL[0], PAL[1], 8, 6)],
+    # La càmera aixafa el terra: 140 d'alçada a ≈600 de fons (on es camina) → 0,23.
+    'floorSquash': 0.25,
+    # L'ombra de contacte: el sol és al fons a l'esquerra (contrallum), l'ombra cau cap endavant i a la dreta.
+    'characterShadow': {'enabled': True, 'color': '#0a3a1a', 'alpha': 0.4, 'squash': 0.26, 'core': 0.6,
+                        'light': {'x': 0.75, 'y': 0.3, 'direction': True, 'stretch': 0.6}},
+    'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
+                 'scaleTop': round((_V_FONS - 2 - HOR) / CAM.pos[1], 3),
+                 'scaleBottom': round((_V_PROP + 2 - HOR) / CAM.pos[1], 3),
+                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+}
