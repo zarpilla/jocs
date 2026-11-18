@@ -11,8 +11,8 @@ FigK, que rep les mateixes ordres en coordenades de disseny (les de 49×87) i le
   - les línies són d'un píxel real.
 La cara (ulls, celles, nas, boca) i la diadema de l'Iri es dibuixen a part, píxel a píxel a la mida nova.
 
-Els fulls (main) es dibuixen a ART_SCALE = 2 amb FigK2: el que té volum, a la resolució real; els detalls píxel a
-píxel, en blocs de 2×2 (la cara és la mateixa). El .character.json porta `artScale: 2` i els punts continuen a 640.
+Els fulls (main) es dibuixen a ART_SCALE = 1, com les sales en 3D (vegeu docs/guia-art-profunditat.md). Amb
+ART_SCALE = 2 es dibuixarien amb FigK2 (els detalls píxel a píxel, en blocs de 2×2) i portarien `artScale: 2`.
 
 Ús (des de tools/): python3 hd640/draw_characters.py [carpeta]   (per defecte, hd640/characters/)
 """
@@ -32,7 +32,7 @@ from hd.pix import mix  # noqa: E402
 
 K = 4 / 3
 K640 = K
-ART_SCALE = 2     # els fulls (main): dibuixats a 2×, el motor els mostra a la meitat (artScale)
+ART_SCALE = 1     # els fulls (main): a 1×, com les sales en 3D (fins al 18-11-2026, a 2× amb FigK2)
 S = 1             # l'escala d'aquest procés: 1, o ART_SCALE en fer els fulls (vegeu install)
 
 
@@ -274,8 +274,12 @@ def _eye(fg, x0, ey, inner_right, spec, closed):
         fg.rpx(x0 + i, ey - 1, eye, 0)
     dark = mix(iris, eye, 0.6)
     rows = ([C.EYE_W, iris, dark], [C.EYE_W, iris, iris])            # dues files: blanc, iris i pupil·la
+    rows = [row if inner_right else row[::-1] for row in rows]
+    if spec.get('mira'):                                 # mira a un costat: l'iris i la nineta, a aquella banda
+        rows = ([iris, dark, C.EYE_W], [iris, iris, C.EYE_W]) if spec['mira'] < 0 else \
+            ([C.EYE_W, dark, iris], [C.EYE_W, iris, iris])
     for j, row in enumerate(rows):
-        for i, c in enumerate(row if inner_right else row[::-1]):
+        for i, c in enumerate(row):
             fg.rpx(x0 + i, ey + j, c, 0)
     S = spec['skin']
     for i in range(3):                                   # la parpella de sota, una mica d'ombra

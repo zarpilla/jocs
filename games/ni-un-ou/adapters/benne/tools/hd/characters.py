@@ -262,32 +262,71 @@ class Pose:
 
     def __init__(self, facing, walk=None, talk=False, thin=0, stoop=0, seated=None):
         self.f, self.walk, self.talk, self.thin = facing, walk, talk, thin
+        self.q = None                                   # el 3/4: 'DL' (de cara, girat a l'esquerra) o 'UL' (d'esquena)
         self.bob = 0
         if seated is not None:
             self._seated(seated, stoop)
         elif facing == 'L':
             self._side(walk, stoop)
+        elif facing in ('DL', 'UL'):
+            self.q = facing
+            self.f = 'D' if facing == 'DL' else 'U'     # es dibuixa amb la de cara (o d'esquena) i després es gira
+            self._front(walk, stoop)
+            self._diagonal(walk)
         else:
             self._front(walk, stoop)
 
+    def _diagonal(self, walk):
+        """La passa en diagonal: el peu que va endavant va cap a l'esquerra i cap avall (DL, cap a la càmera) o cap
+        amunt (UL, cap al fons); els braços, al revés. Coordenades d'abans de girar la figura."""
+        if walk is None:
+            return
+        ph = 2 * math.pi * walk / 6
+        for i, sign in ((0, 1.0), (1, -1.0)):          # (les cames, ja les fa _front amb la passa en diagonal)
+            fw = sign * math.sin(ph)                    # +1: aquesta cama, endavant del tot
+            wx, wy = self.wrist[i]
+            self.wrist[i] = (wx + fw * 2.4, wy)
+
+    # Cap on va «endavant» a la pantalla, per píxel de passa: de cara, cap avall (cap a la càmera); d'esquena, cap
+    # amunt; en 3/4, cap a l'esquerra i una mica avall o amunt. (La càmera és una mica picada: la profunditat es veu.)
+    FWD = {'D': (0.0, 0.16), 'U': (0.0, -0.3), 'DL': (-0.5, 0.1), 'UL': (-0.5, -0.2)}   # (D: el peu no surt del fotograma)
+
     def _front(self, walk, stoop):
         t = self.thin
-        lift = [0, 0]
-        arm = [0, 0]
+        lift = [0.0, 0.0]
+        arm = [0.0, 0.0]
+        legs = None
         if walk is not None:
+            # la mateixa passa que de perfil (cuixa, genoll, canyella), vista de cara: la cama que avança s'acosta a
+            # la càmera (baixa a la pantalla) i la que es recull s'aixeca; el maluc baixa quan les cames s'obren
             ph = 2 * math.pi * walk / 6
+            legs = [leg_pose(ph), leg_pose(ph + math.pi)]
+            ext = [LEG * math.cos(math.radians(a)) + LEG * math.cos(math.radians(sh)) for a, sh, _ in legs]
+            hipy = GROUND - 3 - max(ext)
+            self.bob = round(hipy - HIPY)
             s = math.sin(ph)
-            lift = [max(0.0, s) * 3.0, max(0.0, -s) * 3.0]
-            self.bob = -1 if walk in (1, 4) else 0
-            arm = [-s * 1.6, s * 1.6]
+            arm = [-s * 2.4, s * 2.4]
         b = self.bob
         self.head = (24.5, 15.5 + b + stoop)
         self.sh = [(15.2 + t, 30 + b), (33.8 - t, 30 + b)]
         self.elbow = [(14.0 + t, 41 + b - arm[0] * 0.4), (35.0 - t, 41 + b - arm[1] * 0.4)]
         self.wrist = [(13.8 + t + abs(arm[0]) * 0.2, 50.5 + b - arm[0]), (35.2 - t - abs(arm[1]) * 0.2, 50.5 + b - arm[1])]
         self.hip = [(21 + t * 0.5, HIPY + b), (28 - t * 0.5, HIPY + b)]
-        self.knee = [(21 + t * 0.5, 66 + b - lift[0] * 0.6), (28 - t * 0.5, 66 + b - lift[1] * 0.6)]
-        self.ankle = [(21.5 + t * 0.5, 80 - lift[0]), (27.5 - t * 0.5, 80 - lift[1])]
+        self.knee = [(21 + t * 0.5, 66 + b), (28 - t * 0.5, 66 + b)]
+        self.ankle = [(21.5 + t * 0.5, 80), (27.5 - t * 0.5, 80)]
+        if legs:
+            fx, fy = self.FWD.get(self.q or self.f, (0.0, 0.16))
+            for i, (a, sh, _) in enumerate(legs):
+                ra, rs = math.radians(a), math.radians(sh)
+                hx, hy = self.hip[i]
+                fk = LEG * math.sin(ra)                    # quant avança el genoll (+: endavant)
+                fa = fk + LEG * math.sin(rs)               # i el turmell
+                ky = hy + LEG * math.cos(ra)
+                ay = ky + LEG * math.cos(rs)
+                kx0, ax0 = self.knee[i][0], self.ankle[i][0]
+                self.knee[i] = (kx0 + fk * fx, ky + fk * fy)
+                self.ankle[i] = (ax0 + fa * fx, min(ay + fa * fy, GROUND - 1.5))   # (que la sabata no surti del fotograma)
+                lift[i] = max(0.0, (GROUND - 3) - ay)       # el peu, enlaire (per a la faldilla, p. ex.)
         self.lift = lift
 
     def _seated(self, hipy, stoop):
@@ -388,7 +427,10 @@ def front_face(fg, p, spec):
             fg.px(x0, ey, eye, 0); fg.px(x0 + 1, ey, eye, 0)
     else:
         # parpella (fosca) a dalt, a sota iris i blanc
+        mira = spec.get('mira')                         # mira a un costat: l'iris, a aquella banda dels dos ulls
         for x0, inner in ((xl, xl + 1), (xr, xr)):
+            if mira:
+                inner = x0 if mira < 0 else x0 + 1
             fg.px(x0, ey - 1, eye, 0); fg.px(x0 + 1, ey - 1, eye, 0)
             fg.px(inner, ey, iris, 0)
             fg.px(x0 + (x0 + 1 - inner) if inner == x0 + 1 else x0 + 1, ey, EYE_W, 0)
@@ -458,8 +500,9 @@ def side_face(fg, p, spec):
 
 def head_front(fg, p, S, lvl=3.1):
     hx, hy = p.head
-    # orelles
-    fg.ell(hx - 6.6, hy + 2, 1.4, 2.0, S, lvl - 0.2, amp=1.2)
+    # orelles (en 3/4, la de l'esquerra queda amagada: el cap es gira cap a aquell costat)
+    if not getattr(p, 'q', None):
+        fg.ell(hx - 6.6, hy + 2, 1.4, 2.0, S, lvl - 0.2, amp=1.2)
     fg.ell(hx + 6.6, hy + 2, 1.4, 2.0, S, lvl - 0.6, amp=1.2)
     fg.ell(hx, hy, 6.5, 7.6, S, lvl, amp=1.5)
     fg.ell(hx, hy + 3.6, 5.6, 5.0, S, lvl, amp=1.5)
@@ -478,7 +521,8 @@ def head_side(fg, p, S, lvl=3.1):
 
 def head_back(fg, p, S, lvl=3.1):
     hx, hy = p.head
-    fg.ell(hx - 6.6, hy + 2, 1.4, 2.0, S, lvl - 0.2, amp=1.2)
+    if not getattr(p, 'q', None):
+        fg.ell(hx - 6.6, hy + 2, 1.4, 2.0, S, lvl - 0.2, amp=1.2)
     fg.ell(hx + 6.6, hy + 2, 1.4, 2.0, S, lvl - 0.6, amp=1.2)
     fg.ell(hx, hy, 6.5, 7.6, S, lvl, amp=1.5)
     fg.ell(hx, hy + 3.6, 5.6, 5.0, S, lvl, amp=1.5)
@@ -555,12 +599,78 @@ def person(spec, facing, walk=None, talk=False):
     S = spec['skin']
     if p.f == 'L':
         _person_side(fg, p, spec, S)
+    elif p.q:
+        _person_front(fg, p, spec, S, cara=False)
+        _gira(fg, p, spec, S)
     else:
         _person_front(fg, p, spec, S)
     return fg.render()
 
 
-def _person_front(fg, p, spec, S):
+# El 3/4: la figura de cara (o d'esquena), estreta i desplaçada cap on mira (el cap, menys que el cos: és rodó), amb
+# el costat dret a l'ombra (és el que es gira cap a la càmera), el nas a la silueta i la cara desplaçada dins el cap.
+Q_COS, Q_CAP = 0.78, 0.90                       # amplada que queda del cos i del cap
+Q_DX_COS, Q_DX_CAP, Q_DX_CARA = -1.0, -1.6, -1.8  # desplaçaments (px de disseny) de la superfície que es veu
+# (DL: la cara i el pit miren a l'esquerra, i s'hi desplacen; UL: d'esquena, el centre de l'esquena —la trena, el
+# pegat— es desplaça cap a la dreta, perquè l'esquena gira cap a l'altre costat)
+
+
+def _q_dx(yd, q='DL'):
+    """(factor, desplaçament) a la fila de disseny yd: el cap fins al coll, el cos a partir de les espatlles."""
+    t = max(0.0, min(1.0, (yd - 22) / 6))
+    sign = 1.0 if q == 'DL' else -0.8
+    return Q_CAP + (Q_COS - Q_CAP) * t, sign * (Q_DX_CAP + (Q_DX_COS - Q_DX_CAP) * t)
+
+
+def _gira(fg, p, spec, S):
+    sc = fg.w / 49                                  # píxels del buffer per píxel de disseny (×1, ×1,2, 2×...)
+    cx = 24.5 * sc + (sc - 1) / 2
+    old = [row[:] for row in fg.buf]
+    b = p.bob
+    for Y in range(fg.h):
+        yd = (Y - (sc - 1) / 2) / sc - b
+        k, dx = _q_dx(yd, p.q)
+        row = old[Y]
+        for X in range(fg.w):
+            xs = cx + (X - cx - dx * sc) / k
+            i = int(round(xs))
+            fg.buf[Y][X] = row[i] if 0 <= i < fg.w else None
+    # el costat que es gira cap a la càmera (la dreta de la pantalla), a l'ombra: tronc, braç i cames
+    side = max(1, round(1.6 * sc))
+    for Y in range(fg.h):
+        yd = (Y - (sc - 1) / 2) / sc - b
+        if yd < 27:
+            continue
+        row = fg.buf[Y]
+        xr = next((X for X in range(fg.w - 1, -1, -1) if row[X]), None)
+        if xr is None:
+            continue
+        for X in range(xr, max(-1, xr - side), -1):
+            if row[X]:
+                m, l = row[X]
+                row[X] = (m, l - 0.7)
+    if p.q != 'DL':
+        return
+    # la cara, desplaçada dins el cap (es dibuixa després de girar: així no perd cap píxel)
+    hx, hy = p.head
+    k, dx = _q_dx(hy, p.q)
+    p.head = (24.5 + (hx - 24.5) * k + dx + Q_DX_CARA, hy)
+    front_face(fg, p, spec)
+    # el nas a la silueta: un píxel de pell a l'esquerra de la galta, a l'alçada del nas
+    for yd in (hy + 2.0, hy + 3.0):
+        Y = int(round((yd + b) * sc + (sc - 1) / 2))
+        if not 0 <= Y < fg.h:
+            continue
+        row = fg.buf[Y]
+        xl = next((X for X in range(fg.w) if row[X] and row[X][0] is S), None)
+        if xl is not None:
+            for d in range(1, max(1, round(sc)) + 1):
+                if xl - d >= 0:
+                    row[xl - d] = (S, row[xl][1] + 0.4)
+    p.head = (hx, hy)
+
+
+def _person_front(fg, p, spec, S, cara=True):
     back = p.f == 'U'
     legs, top, shoes = spec['legs'], spec['top'], spec['shoes']
     sleeve = spec.get('sleeve', top)
@@ -601,7 +711,12 @@ def _person_front(fg, p, spec, S):
         head_back(fg, p, S)
     else:
         head_front(fg, p, S)
-        front_face(fg, p, spec)
+        if cara:
+            hx, hy = p.head
+            if spec.get('mira'):                         # mira a un costat: la cara també hi gira una mica
+                p.head = (hx + spec['mira'] * 1.0, hy)
+            front_face(fg, p, spec)
+            p.head = (hx, hy)
     if 'hair' in hk:
         hk['hair'](fg, p, spec)
 

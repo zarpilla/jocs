@@ -48,71 +48,165 @@
     ]
   },
   "animations": {
-    "IdleD": {
-      "loop": true
-    },
-    "TalkD": {
-      "loop": true,
-      "frameDuration": 140
-    },
-    "WalkD": {
-      "loop": true,
-      "frameDuration": 80
-    },
     "IdleL": {
-      "loop": true
-    },
-    "TalkL": {
       "loop": true,
-      "frameDuration": 140
+      "frameDuration": 650
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleUL": {
+      "loop": true,
+      "frameDuration": 650
     },
     "WalkL": {
       "loop": true,
       "frameDuration": 90
     },
-    "IdleU": {
-      "loop": true
-    },
-    "TalkU": {
+    "WalkD": {
       "loop": true,
-      "frameDuration": 140
+      "frameDuration": 80
     },
     "WalkU": {
       "loop": true,
       "frameDuration": 80
     },
-    "PijamaIdleD": {
-      "loop": true
+    "WalkDL": {
+      "loop": true,
+      "frameDuration": 90
     },
-    "PijamaTalkD": {
+    "WalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "TalkL": {
       "loop": true,
       "frameDuration": 140
     },
-    "PijamaWalkD": {
+    "TalkD": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LookDL": {
+      "loop": false,
+      "frameDuration": 260
     },
     "PijamaIdleL": {
-      "loop": true
-    },
-    "PijamaTalkL": {
       "loop": true,
-      "frameDuration": 140
+      "frameDuration": 650
+    },
+    "PijamaIdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "PijamaIdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "PijamaIdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "PijamaIdleUL": {
+      "loop": true,
+      "frameDuration": 650
     },
     "PijamaWalkL": {
       "loop": true,
       "frameDuration": 90
     },
-    "PijamaIdleU": {
-      "loop": true
+    "PijamaWalkD": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "PijamaWalkU": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "PijamaWalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "PijamaWalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "PijamaTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "PijamaTalkD": {
+      "loop": true,
+      "frameDuration": 140
     },
     "PijamaTalkU": {
       "loop": true,
       "frameDuration": 140
     },
-    "PijamaWalkU": {
+    "PijamaTalkDL": {
       "loop": true,
-      "frameDuration": 80
+      "frameDuration": 140
+    },
+    "PijamaTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "PijamaBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "PijamaBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "PijamaBlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "PijamaLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "PijamaLookDL": {
+      "loop": false,
+      "frameDuration": 260
     },
     "Seu": {
       "loop": true,
@@ -120,6 +214,22 @@
     }
   },
   "defaultVerb": "talkTo",
-  "artScale": 2,
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ],
   "speechColor": "#96c8f0"
 }

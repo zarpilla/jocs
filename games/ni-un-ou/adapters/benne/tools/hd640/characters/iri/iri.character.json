@@ -49,13 +49,24 @@
   },
   "animations": {
     "IdleL": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "IdleD": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
     },
     "IdleU": {
-      "loop": true
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleUL": {
+      "loop": true,
+      "frameDuration": 650
     },
     "WalkL": {
       "loop": true,
@@ -69,6 +80,14 @@
       "loop": true,
       "frameDuration": 100
     },
+    "WalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
     "TalkL": {
       "loop": true,
       "frameDuration": 140
@@ -80,8 +99,52 @@
     "TalkU": {
       "loop": true,
       "frameDuration": 140
+    },
+    "TalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LookDL": {
+      "loop": false,
+      "frameDuration": 260
     }
   },
   "defaultVerb": "look",
-  "artScale": 2
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ]
 }
