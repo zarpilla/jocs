@@ -289,7 +289,7 @@ def _sol_a_terra(x, z):
         dz, dt = (zz - win_z(k)) / WIN_RX, (tt - WIN_T) / WIN_RY
         d2 = dz * dz + dt * dt
         if d2 < 1.0:
-            return min(1.0, (1.0 - d2) * 2.2)
+            return (1.0 - d2) ** 1.6                   # (la vora, suau: amb un tall net semblava un forat)
     return 0.0
 
 
@@ -390,7 +390,7 @@ def escena(cv, tex):
                    (side_x - 1, 0.3, z - 1.5), ramp=[(120, 90, 50), (250, 226, 160)], lvl=1.2)
     # el sol al passadís: les taques de cada finestreta, estirades en diagonal
     e.claror((SEAT_L[1], 0.4, ZB), (XW, 0.4, ZB), (XW, 0.4, zn), (SEAT_L[1], 0.4, zn), (255, 186, 130),
-             lambda s, t: 0.7 * _sol_a_terra(SEAT_L[1] + s, ZB - t))
+             lambda s, t: 0.42 * _sol_a_terra(SEAT_L[1] + s, ZB - t))
     # la foscor dels racons: sota els seients i al peu de les parets
     e.foscor('racons', (0, 0.5, ZB), (XW, 0.5, ZB), (XW, 0.5, zn), (0, 0.5, zn),
              lambda s, t: max(0.6 * max(0.0, 1 - s / 30), 0.6 * max(0.0, 1 - (XW - s) / 30)))
