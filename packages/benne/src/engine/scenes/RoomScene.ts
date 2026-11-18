@@ -140,6 +140,8 @@ import {
   type CharacterFeetLocal,
 } from '../characterFeet';
 import { applyCharacterLights, compileCharacterLights } from '../room/characterLights';
+import { CharacterShadowLayer, compileCharacterShadow } from '../room/characterShadow';
+import { CharacterIdleActions, isIdleActionSprite } from '../idleActions';
 import { releaseOtherRoomSheets } from '../room/releaseRoomSheets';
 import { assembleRoomSheetPages } from '../room/roomSheetPages';
 import {
@@ -456,6 +458,12 @@ export class RoomScene extends Phaser.Scene {
    * (`zIndex` + optional `baseline` rules, with a deterministic fallback when those rules contradict).
    */
   private roomStackEntities: RoomStackEntity[] = [];
+
+  /** Contact shadows under the characters (`RoomData.characterShadow`). */
+  private readonly characterShadows = new CharacterShadowLayer(this);
+
+  /** Blinks, glances and tics while characters stand still (`CharacterData.idleActions`). */
+  private readonly characterIdleActions = new CharacterIdleActions();
 
   /** Prop id → sprite (every placed prop, for Bennescript). */
   private propSpritesById = new Map<string, Phaser.GameObjects.Sprite>();
@@ -796,6 +804,7 @@ export class RoomScene extends Phaser.Scene {
     this.previewHiddenCharacterVisibility = null;
     this.parallaxProps = [];
     this.roomStackEntities = [];
+    this.characterShadows.clear();
     this.propSpritesById.clear();
     this.characterSpritesByDefId.clear();
     this.characterJsonVisibleByDefId.clear();
@@ -4784,10 +4793,12 @@ export class RoomScene extends Phaser.Scene {
     this.snapWalkingSpritesToPixelGrid();
     this.updateCharacterFaceTowardCharacterLocks();
     this.updateCharacterFollowers();
+    this.updateCharacterIdleActions();
     this.syncIdleCharacterRegionScales();
     this.syncCharacterRegionEnterExit();
     this.updateParallaxProps();
     this.updateRoomStackDepths();
+    this.updateCharacterShadows();
     this.updatePathDebug();
     this.invokeOnUpdateHandlers(this.game.loop.delta / 1000);
   }
@@ -4804,6 +4815,31 @@ export class RoomScene extends Phaser.Scene {
     for (const sprite of this.npcWalkTweens.keys()) {
       snap(sprite);
     }
+  }
+
+  /** Plays the idle micro-actions of characters standing still (and desyncs their breathing). */
+  private updateCharacterIdleActions(): void {
+    const sprites: Phaser.GameObjects.Sprite[] = [];
+    for (const e of this.roomStackEntities) {
+      if (e.kind === 'character' && isIdleActionSprite(e.sprite)) {
+        sprites.push(e.sprite);
+      }
+    }
+    this.characterIdleActions.update(sprites, this.time.now);
+  }
+
+  /** Keeps each character's contact shadow under its feet, just below it in the room stack. */
+  private updateCharacterShadows(): void {
+    const shadow = compileCharacterShadow(this.roomData?.characterShadow);
+    const sprites: Array<Phaser.GameObjects.Sprite | Phaser.GameObjects.Image> = [];
+    if (shadow) {
+      for (const e of this.roomStackEntities) {
+        if (e.kind === 'character') {
+          sprites.push(e.sprite);
+        }
+      }
+    }
+    this.characterShadows.update(shadow, sprites);
   }
 
   /** Re-sorts props, characters, and hotspot zones by `zIndex` and optional `baseline` rules. */

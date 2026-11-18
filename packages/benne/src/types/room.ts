@@ -156,6 +156,37 @@ export interface RoomCharacterLightsData {
   topSample?: number;
 }
 
+/**
+ * Contact shadow under the room's characters: a dark, semi-transparent floor ellipse the engine draws under each
+ * character's feet (not part of the sheet), scaled with the character. Width per character: `CharacterData.shadow`.
+ */
+export interface RoomCharacterShadowData {
+  /** `false` turns it off (same as omitting the object). Omitted = on. */
+  enabled?: boolean;
+  /** Hex RGB. Omitted = `#000000`. */
+  color?: string;
+  /** Opacity at the centre. Omitted = `0.35`. */
+  alpha?: number;
+  /** Ellipse height ÷ width: how much of the floor the camera sees from above. Omitted = `0.3`. */
+  squash?: number;
+  /** Width of the darker core as a fraction of the shadow (two tones); `0` = one flat ellipse. Omitted = `0.6`. */
+  core?: number;
+  /**
+   * The dominant light: the shadow stretches across the floor away from it. `x, y` is the floor point under the
+   * light (room px: a lamp, the foot of a window); with `direction: true` it is instead the direction the shadow
+   * falls in (screen px, e.g. `{ x: 1, y: 0.3 }` for a low sun on the left).
+   */
+  light?: {
+    x: number;
+    y: number;
+    direction?: boolean;
+    /** Extra length along the fall, as a fraction of the width (`1` = twice as long). Omitted = `0.8`. */
+    stretch?: number;
+    /** Floor distance (room px) from the light at which the stretch is full; under it the shadow is round. Omitted = `120`. */
+    reach?: number;
+  };
+}
+
 export interface RoomCharacterInstance {
   /** Unique id for this placement in the room (Phaser texture key suffix). */
   instanceId: string;
@@ -292,6 +323,8 @@ export interface RoomData {
   regions?: RoomRegionData[];
   /** Runtime light on the characters (optional). */
   characterLights?: RoomCharacterLightsData;
+  /** Contact shadow under the characters (optional; off when omitted). */
+  characterShadow?: RoomCharacterShadowData;
   /**
    * Pixels of the room sheet (`images/rooms/<id>/<id>.png`) per room pixel. `2` = the room art is drawn at twice the
    * room resolution and shown at half scale: the geometry, scripts and characters stay in room pixels, and on a

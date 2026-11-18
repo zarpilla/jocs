@@ -45,6 +45,23 @@ export interface CharacterDisplayData {
   aseprite?: boolean;
 }
 
+/**
+ * One idle micro-action (see `CharacterData.idleActions`): a short one-shot animation the character plays now and
+ * then while standing still, before going back to its `Idle` loop.
+ */
+export interface CharacterIdleActionData {
+  /**
+   * Base name, e.g. `Blink`, `Look`, `Tap`. The tag played is the current idle tag with `Idle` replaced by this
+   * (`IdleDL` → `BlinkDL`, `LlunyGalaIdleD` → `LlunyGalaBlinkD`); when the sheet lacks it, the action is skipped.
+   * Make the tag non-looping (the default when `animations` doesn't say `loop: true`).
+   */
+  animation: string;
+  /** Seconds between two plays, picked at random in `[min, max]`. Omitted = `[5, 12]`. */
+  every?: [number, number];
+  /** Extra seconds of stillness before the first play, on top of `every` (a tic only after a long wait). Omitted = `0`. */
+  after?: number;
+}
+
 export interface CharacterData {
   id: string;
   /** BenneScript handle name, when the generated one doesn't fit (docs/bennescript-ergonomics-refactor.md §7.2). */
@@ -62,6 +79,14 @@ export interface CharacterData {
    * Default 1. Same idea as the room `artScale`.
    */
   artScale?: number;
+  /** Idle micro-actions (blink, look around, a tic) played at random while the character stands still. */
+  idleActions?: CharacterIdleActionData[];
+  /**
+   * Contact shadow in rooms that have one (`RoomData.characterShadow`). `false` = none for this character (a ghost, a
+   * screen). `width` is in 1× frame units at scale 1 (default: 85% of the collider width, else 40% of the frame);
+   * `offsetX` / `offsetY` move it from the feet, in the same units.
+   */
+  shadow?: false | { width?: number; offsetX?: number; offsetY?: number };
   /**
    * Click hit area in **texture / frame pixel space** (same origin as `feet`). When omitted and the
    * character is clickable, the full sprite rectangle is used. Requires at least three vertices.
