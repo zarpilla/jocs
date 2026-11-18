@@ -1,1168 +1,1157 @@
 {
   "frames": {
     "granja_graner 0.aseprite": {
-      "page": 0,
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 1.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 2048,
-        "y": 1550,
-        "w": 92,
-        "h": 97
+        "x": 2774,
+        "y": 853,
+        "w": 28,
+        "h": 29
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 618,
-        "y": 197,
-        "w": 92,
-        "h": 97
+        "x": 228,
+        "y": 87,
+        "w": 28,
+        "h": 29
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 2.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 2140,
-        "y": 1550,
-        "w": 186,
-        "h": 82
+        "x": 2684,
+        "y": 853,
+        "w": 60,
+        "h": 57
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 62,
-        "y": 360,
-        "w": 186,
-        "h": 82
+        "x": 80,
+        "y": 163,
+        "w": 60,
+        "h": 57
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 3.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 2326,
-        "y": 1550,
-        "w": 54,
-        "h": 70
+        "x": 2744,
+        "y": 853,
+        "w": 30,
+        "h": 30
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 290,
-        "y": 368,
-        "w": 54,
-        "h": 70
+        "x": 163,
+        "y": 153,
+        "w": 30,
+        "h": 30
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 4.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 1850,
-        "y": 1550,
-        "w": 198,
-        "h": 150
+        "x": 2606,
+        "y": 853,
+        "w": 78,
+        "h": 65
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 776,
-        "y": 224,
-        "w": 198,
-        "h": 150
+        "x": 341,
+        "y": 90,
+        "w": 78,
+        "h": 65
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 5.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 964,
-        "h": 450
+        "x": 1280,
+        "y": 0,
+        "w": 347,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 196,
-        "y": 54,
-        "w": 964,
-        "h": 450
+        "x": 162,
+        "y": 21,
+        "w": 347,
+        "h": 166
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 6.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1280,
+        "x": 3718,
         "y": 0,
-        "w": 964,
-        "h": 452
+        "w": 345,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 198,
-        "y": 54,
-        "w": 964,
-        "h": 452
+        "x": 165,
+        "y": 22,
+        "w": 345,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 7.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2244,
-        "y": 0,
-        "w": 966,
-        "h": 452
+        "x": 1730,
+        "y": 690,
+        "w": 347,
+        "h": 160
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 200,
-        "y": 56,
-        "w": 966,
-        "h": 452
+        "x": 164,
+        "y": 28,
+        "w": 347,
+        "h": 160
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 8.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 964,
-        "y": 720,
-        "w": 934,
-        "h": 444
+        "x": 697,
+        "y": 525,
+        "w": 348,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 198,
-        "y": 56,
-        "w": 934,
-        "h": 444
+        "x": 164,
+        "y": 23,
+        "w": 348,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 9.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 980,
-        "y": 0,
-        "w": 934,
-        "h": 408
+        "x": 1045,
+        "y": 525,
+        "w": 350,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 196,
-        "y": 94,
-        "w": 934,
-        "h": 408
+        "x": 163,
+        "y": 23,
+        "w": 350,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 10.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1858,
-        "y": 3322,
-        "w": 934,
-        "h": 414
+        "x": 1395,
+        "y": 525,
+        "w": 352,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 194,
-        "y": 92,
-        "w": 934,
-        "h": 414
+        "x": 162,
+        "y": 23,
+        "w": 352,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 11.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 926,
-        "y": 3322,
-        "w": 932,
-        "h": 418
+        "x": 3503,
+        "y": 525,
+        "w": 353,
+        "h": 163
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 192,
-        "y": 90,
-        "w": 932,
-        "h": 418
+        "x": 161,
+        "y": 23,
+        "w": 353,
+        "h": 163
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 12.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 0,
-        "y": 818,
-        "w": 932,
-        "h": 404
+        "x": 347,
+        "y": 690,
+        "w": 347,
+        "h": 162
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 92,
-        "w": 932,
-        "h": 404
+        "x": 161,
+        "y": 23,
+        "w": 347,
+        "h": 162
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 13.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 1864,
-        "y": 818,
-        "w": 932,
-        "h": 400
+        "x": 694,
+        "y": 690,
+        "w": 349,
+        "h": 161
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 188,
-        "y": 102,
-        "w": 932,
-        "h": 400
+        "x": 160,
+        "y": 23,
+        "w": 349,
+        "h": 161
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 14.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 932,
-        "y": 818,
-        "w": 932,
-        "h": 402
+        "x": 1043,
+        "y": 690,
+        "w": 344,
+        "h": 161
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 186,
-        "y": 100,
-        "w": 932,
-        "h": 402
+        "x": 160,
+        "y": 22,
+        "w": 344,
+        "h": 161
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 15.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 966,
-        "y": 410,
-        "w": 932,
-        "h": 406
+        "x": 1387,
+        "y": 690,
+        "w": 343,
+        "h": 161
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 184,
-        "y": 98,
-        "w": 932,
-        "h": 406
+        "x": 160,
+        "y": 21,
+        "w": 343,
+        "h": 161
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 16.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 1898,
-        "y": 410,
-        "w": 932,
-        "h": 406
+        "x": 0,
+        "y": 360,
+        "w": 344,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 184,
-        "y": 98,
-        "w": 932,
-        "h": 406
+        "x": 159,
+        "y": 21,
+        "w": 344,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 17.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 1836,
-        "y": 1222,
-        "w": 914,
-        "h": 326
+        "x": 1627,
+        "y": 0,
+        "w": 344,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 182,
-        "y": 180,
-        "w": 914,
-        "h": 326
+        "x": 158,
+        "y": 20,
+        "w": 344,
+        "h": 166
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 18.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 0,
-        "y": 1222,
-        "w": 916,
-        "h": 328
+        "x": 344,
+        "y": 360,
+        "w": 345,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 182,
-        "y": 180,
-        "w": 916,
-        "h": 328
+        "x": 157,
+        "y": 20,
+        "w": 345,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 19.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 916,
-        "y": 1222,
-        "w": 920,
-        "h": 328
+        "x": 1971,
+        "y": 0,
+        "w": 346,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 180,
-        "w": 920,
-        "h": 328
+        "x": 156,
+        "y": 19,
+        "w": 346,
+        "h": 166
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 20.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 2750,
-        "y": 1222,
-        "w": 922,
-        "h": 326
+        "x": 1440,
+        "y": 853,
+        "w": 347,
+        "h": 145
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 182,
-        "w": 922,
-        "h": 326
+        "x": 155,
+        "y": 39,
+        "w": 347,
+        "h": 145
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 21.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 0,
-        "y": 1550,
-        "w": 924,
-        "h": 326
+        "x": 1787,
+        "y": 853,
+        "w": 348,
+        "h": 145
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 182,
-        "w": 924,
-        "h": 326
+        "x": 154,
+        "y": 39,
+        "w": 348,
+        "h": 145
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 22.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 924,
-        "y": 1550,
-        "w": 926,
-        "h": 326
+        "x": 2135,
+        "y": 853,
+        "w": 349,
+        "h": 144
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 182,
-        "w": 926,
-        "h": 326
+        "x": 153,
+        "y": 39,
+        "w": 349,
+        "h": 144
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 23.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 2796,
-        "y": 818,
-        "w": 928,
-        "h": 386
+        "x": 718,
+        "y": 853,
+        "w": 361,
+        "h": 150
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 122,
-        "w": 928,
-        "h": 386
+        "x": 152,
+        "y": 33,
+        "w": 361,
+        "h": 150
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 24.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 910,
-        "y": 2472,
-        "w": 930,
-        "h": 424
+        "x": 1079,
+        "y": 853,
+        "w": 361,
+        "h": 150
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 84,
-        "w": 930,
-        "h": 424
+        "x": 151,
+        "y": 33,
+        "w": 361,
+        "h": 150
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 25.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1898,
-        "y": 720,
-        "w": 940,
-        "h": 444
+        "x": 2792,
+        "y": 690,
+        "w": 361,
+        "h": 151
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 182,
-        "y": 64,
-        "w": 940,
-        "h": 444
+        "x": 150,
+        "y": 32,
+        "w": 361,
+        "h": 151
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 26.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2838,
-        "y": 720,
-        "w": 938,
-        "h": 444
+        "x": 3153,
+        "y": 690,
+        "w": 360,
+        "h": 151
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 182,
-        "y": 64,
-        "w": 938,
-        "h": 444
+        "x": 150,
+        "y": 32,
+        "w": 360,
+        "h": 151
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 27.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 1170,
-        "w": 934,
-        "h": 444
+        "x": 3513,
+        "y": 690,
+        "w": 360,
+        "h": 151
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 184,
-        "y": 64,
-        "w": 934,
-        "h": 444
+        "x": 149,
+        "y": 32,
+        "w": 360,
+        "h": 151
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 28.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 934,
-        "y": 1170,
-        "w": 936,
-        "h": 442
+        "x": 0,
+        "y": 853,
+        "w": 359,
+        "h": 151
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 182,
-        "y": 64,
-        "w": 936,
-        "h": 442
+        "x": 149,
+        "y": 32,
+        "w": 359,
+        "h": 151
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 29.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1910,
-        "y": 2898,
-        "w": 982,
-        "h": 422
+        "x": 359,
+        "y": 853,
+        "w": 359,
+        "h": 151
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 84,
-        "w": 982,
-        "h": 422
+        "x": 149,
+        "y": 32,
+        "w": 359,
+        "h": 151
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 30.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2892,
-        "y": 2898,
-        "w": 978,
-        "h": 422
+        "x": 2077,
+        "y": 690,
+        "w": 358,
+        "h": 152
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 188,
-        "y": 84,
-        "w": 978,
-        "h": 422
+        "x": 149,
+        "y": 32,
+        "w": 358,
+        "h": 152
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 31.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1840,
-        "y": 2472,
-        "w": 978,
-        "h": 424
+        "x": 2435,
+        "y": 690,
+        "w": 357,
+        "h": 152
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 84,
-        "w": 978,
-        "h": 424
+        "x": 149,
+        "y": 32,
+        "w": 357,
+        "h": 152
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 32.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 910,
-        "y": 2044,
-        "w": 980,
-        "h": 426
+        "x": 1747,
+        "y": 525,
+        "w": 356,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 82,
-        "w": 980,
-        "h": 426
+        "x": 149,
+        "y": 20,
+        "w": 356,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 33.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2818,
-        "y": 2472,
-        "w": 982,
-        "h": 424
+        "x": 2103,
+        "y": 525,
+        "w": 356,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 82,
-        "w": 982,
-        "h": 424
+        "x": 150,
+        "y": 20,
+        "w": 356,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 34.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 2898,
-        "w": 982,
-        "h": 424
+        "x": 689,
+        "y": 360,
+        "w": 356,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 82,
-        "w": 982,
-        "h": 424
+        "x": 150,
+        "y": 19,
+        "w": 356,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 35.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1868,
-        "y": 1614,
-        "w": 984,
-        "h": 428
+        "x": 1045,
+        "y": 360,
+        "w": 356,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 80,
-        "w": 984,
-        "h": 428
+        "x": 151,
+        "y": 19,
+        "w": 356,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 36.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2778,
-        "y": 1170,
-        "w": 960,
-        "h": 430
+        "x": 1401,
+        "y": 360,
+        "w": 355,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 78,
-        "w": 960,
-        "h": 430
+        "x": 152,
+        "y": 19,
+        "w": 355,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 37.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 1614,
-        "w": 960,
-        "h": 430
+        "x": 2317,
+        "y": 0,
+        "w": 354,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 78,
-        "w": 960,
-        "h": 430
+        "x": 153,
+        "y": 18,
+        "w": 354,
+        "h": 166
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 38.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1890,
-        "y": 2044,
-        "w": 912,
-        "h": 426
+        "x": 1756,
+        "y": 360,
+        "w": 354,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 192,
-        "y": 78,
-        "w": 912,
-        "h": 426
+        "x": 154,
+        "y": 18,
+        "w": 354,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 39.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2802,
-        "y": 2044,
-        "w": 910,
-        "h": 426
+        "x": 2671,
+        "y": 0,
+        "w": 353,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 192,
-        "y": 76,
-        "w": 910,
-        "h": 426
+        "x": 155,
+        "y": 17,
+        "w": 353,
+        "h": 166
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 40.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2852,
-        "y": 1614,
-        "w": 910,
-        "h": 428
+        "x": 2110,
+        "y": 360,
+        "w": 352,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 192,
-        "y": 76,
-        "w": 910,
-        "h": 428
+        "x": 156,
+        "y": 17,
+        "w": 352,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 41.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 1870,
-        "y": 1170,
-        "w": 908,
-        "h": 432
+        "x": 3024,
+        "y": 0,
+        "w": 351,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 194,
-        "y": 76,
-        "w": 908,
-        "h": 432
+        "x": 157,
+        "y": 16,
+        "w": 351,
+        "h": 166
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 42.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 960,
-        "y": 1614,
-        "w": 908,
-        "h": 430
+        "x": 2462,
+        "y": 360,
+        "w": 349,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 194,
-        "y": 78,
-        "w": 908,
-        "h": 430
+        "x": 159,
+        "y": 16,
+        "w": 349,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 43.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 2044,
-        "w": 910,
-        "h": 428
+        "x": 2811,
+        "y": 360,
+        "w": 348,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 194,
-        "y": 78,
-        "w": 910,
-        "h": 428
+        "x": 160,
+        "y": 16,
+        "w": 348,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 44.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 2472,
-        "w": 910,
-        "h": 426
+        "x": 2459,
+        "y": 525,
+        "w": 348,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 196,
-        "y": 80,
-        "w": 910,
-        "h": 426
+        "x": 161,
+        "y": 16,
+        "w": 348,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 45.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 982,
-        "y": 2898,
-        "w": 928,
-        "h": 424
+        "x": 0,
+        "y": 690,
+        "w": 347,
+        "h": 163
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 180,
-        "y": 82,
-        "w": 928,
-        "h": 424
+        "x": 162,
+        "y": 16,
+        "w": 347,
+        "h": 163
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 46.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 0,
-        "y": 3322,
-        "w": 926,
-        "h": 422
+        "x": 2807,
+        "y": 525,
+        "w": 347,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 182,
-        "y": 84,
-        "w": 926,
-        "h": 422
+        "x": 162,
+        "y": 16,
+        "w": 347,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 47.aseprite": {
-      "page": 0,
       "frame": {
-        "x": 2792,
-        "y": 3322,
-        "w": 988,
-        "h": 410
+        "x": 3154,
+        "y": 525,
+        "w": 349,
+        "h": 164
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 184,
-        "y": 94,
-        "w": 988,
-        "h": 410
+        "x": 161,
+        "y": 17,
+        "w": 349,
+        "h": 164
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 48.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 2830,
-        "y": 410,
-        "w": 984,
-        "h": 406
+        "x": 3159,
+        "y": 360,
+        "w": 350,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 186,
-        "y": 96,
-        "w": 984,
-        "h": 406
+        "x": 160,
+        "y": 17,
+        "w": 350,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 49.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 0,
-        "y": 0,
-        "w": 980,
-        "h": 410
+        "x": 3509,
+        "y": 360,
+        "w": 351,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 188,
-        "y": 90,
-        "w": 980,
-        "h": 410
+        "x": 159,
+        "y": 18,
+        "w": 351,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 50.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 1914,
-        "y": 0,
-        "w": 976,
-        "h": 408
+        "x": 0,
+        "y": 525,
+        "w": 352,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 190,
-        "y": 92,
-        "w": 976,
-        "h": 408
+        "x": 158,
+        "y": 19,
+        "w": 352,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 51.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 2890,
-        "y": 0,
-        "w": 970,
-        "h": 408
+        "x": 352,
+        "y": 525,
+        "w": 345,
+        "h": 165
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 194,
-        "y": 92,
-        "w": 970,
-        "h": 408
+        "x": 165,
+        "y": 20,
+        "w": 345,
+        "h": 165
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "granja_graner 52.aseprite": {
-      "page": 1,
       "frame": {
-        "x": 0,
-        "y": 410,
-        "w": 966,
-        "h": 408
+        "x": 3375,
+        "y": 0,
+        "w": 343,
+        "h": 166
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 196,
-        "y": 94,
-        "w": 966,
-        "h": 408
+        "x": 166,
+        "y": 20,
+        "w": 343,
+        "h": 166
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_graner 53.aseprite": {
+      "frame": {
+        "x": 2484,
+        "y": 853,
+        "w": 122,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 331,
+        "y": 86,
+        "w": 122,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "granja_graner 54.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 640,
+        "h": 246
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 246
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -1173,8 +1162,8 @@
     "image": "granja_graner.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3870,
-      "h": 3744
+      "w": 4063,
+      "h": 1004
     },
     "scale": "1",
     "frameTags": [
@@ -1219,13 +1208,23 @@
         "to": 52,
         "direction": "forward",
         "color": "#000000ff"
+      },
+      {
+        "name": "davant_tractor",
+        "from": 53,
+        "to": 53,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 54,
+        "to": 54,
+        "direction": "forward",
+        "color": "#000000ff"
       }
     ],
     "layers": [],
-    "slices": [],
-    "pages": [
-      "granja_graner.png",
-      "granja_graner-2.png"
-    ]
+    "slices": []
   }
 }

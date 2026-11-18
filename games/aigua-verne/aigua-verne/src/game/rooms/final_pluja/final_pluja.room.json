@@ -19,52 +19,202 @@
         "points": [
           {
             "x": 0,
+            "y": 249
+          },
+          {
+            "x": 228,
+            "y": 237
+          },
+          {
+            "x": 295,
+            "y": 206
+          },
+          {
+            "x": 330,
             "y": 198
           },
           {
-            "x": 130,
-            "y": 197
-          },
-          {
-            "x": 250,
-            "y": 199
-          },
-          {
-            "x": 268,
-            "y": 214
-          },
-          {
-            "x": 334,
-            "y": 216
-          },
-          {
-            "x": 370,
-            "y": 211
-          },
-          {
-            "x": 472,
+            "x": 368,
             "y": 198
           },
           {
-            "x": 639,
-            "y": 199
+            "x": 467,
+            "y": 200
+          },
+          {
+            "x": 568,
+            "y": 194
           },
           {
             "x": 639,
-            "y": 258
+            "y": 193
+          },
+          {
+            "x": 639,
+            "y": 238
+          },
+          {
+            "x": 510,
+            "y": 238
+          },
+          {
+            "x": 491,
+            "y": 257
           },
           {
             "x": 0,
-            "y": 258
+            "y": 257
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 362,
+                "y": 218
+              },
+              {
+                "x": 366,
+                "y": 214
+              },
+              {
+                "x": 358,
+                "y": 213
+              },
+              {
+                "x": 343,
+                "y": 213
+              },
+              {
+                "x": 325,
+                "y": 214
+              },
+              {
+                "x": 310,
+                "y": 218
+              },
+              {
+                "x": 305,
+                "y": 221
+              },
+              {
+                "x": 312,
+                "y": 223
+              },
+              {
+                "x": 329,
+                "y": 223
+              },
+              {
+                "x": 348,
+                "y": 221
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 428,
+                "y": 206
+              },
+              {
+                "x": 428,
+                "y": 204
+              },
+              {
+                "x": 420,
+                "y": 203
+              },
+              {
+                "x": 409,
+                "y": 204
+              },
+              {
+                "x": 400,
+                "y": 206
+              },
+              {
+                "x": 400,
+                "y": 208
+              },
+              {
+                "x": 408,
+                "y": 209
+              },
+              {
+                "x": 419,
+                "y": 208
+              }
+            ]
+          },
+          {
+            "id": "forat-3",
+            "active": true,
+            "points": [
+              {
+                "x": 304,
+                "y": 210
+              },
+              {
+                "x": 305,
+                "y": 209
+              },
+              {
+                "x": 298,
+                "y": 209
+              },
+              {
+                "x": 290,
+                "y": 210
+              },
+              {
+                "x": 289,
+                "y": 211
+              },
+              {
+                "x": 296,
+                "y": 211
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   "hotspots": [],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.579,
+      "scaleBottom": 1.064,
+      "points": [
+        {
+          "x": 0,
+          "y": 191
+        },
+        {
+          "x": 639,
+          "y": 191
+        },
+        {
+          "x": 639,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -111,14 +261,110 @@
           "frameDuration": 70
         }
       }
+    },
+    {
+      "id": "davant_bomba",
+      "tag": "davant_bomba",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_bomba": {}
+      },
+      "zIndex": 20,
+      "baseline": 206
+    },
+    {
+      "id": "davant_tub0",
+      "tag": "davant_tub0",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub0": {}
+      },
+      "zIndex": 21,
+      "baseline": 208
+    },
+    {
+      "id": "davant_arbre",
+      "tag": "davant_arbre",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arbre": {}
+      },
+      "zIndex": 22,
+      "baseline": 210
+    },
+    {
+      "id": "davant_tub1",
+      "tag": "davant_tub1",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub1": {}
+      },
+      "zIndex": 23,
+      "baseline": 211
+    },
+    {
+      "id": "davant_tub2",
+      "tag": "davant_tub2",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub2": {}
+      },
+      "zIndex": 24,
+      "baseline": 214
+    },
+    {
+      "id": "davant_tub3",
+      "tag": "davant_tub3",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_tub3": {}
+      },
+      "zIndex": 25,
+      "baseline": 215
+    },
+    {
+      "id": "davant_pou",
+      "tag": "davant_pou",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_pou": {}
+      },
+      "zIndex": 26,
+      "baseline": 218
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 27,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 330,
-      "y": 238,
+      "x": 432,
+      "y": 227,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -127,7 +373,7 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 284,
+      "x": 358,
       "y": 230,
       "initialFacing": "D",
       "initialAnimation": "Idle",
@@ -137,8 +383,8 @@
     {
       "instanceId": "diu-1",
       "definition": "diu/diu.character.json",
-      "x": 470,
-      "y": 236,
+      "x": 523,
+      "y": 219,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -147,13 +393,20 @@
     {
       "instanceId": "quim-1",
       "definition": "quim/quim.character.json",
-      "x": 133,
-      "y": 197,
+      "x": 123,
+      "y": 246,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
     }
   ],
-  "artScale": 2
+  "characterShadow": {
+    "enabled": true,
+    "color": "#141210",
+    "alpha": 0.38,
+    "squash": 0.28,
+    "core": 0.6
+  },
+  "floorSquash": 0.25
 }
