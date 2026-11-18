@@ -18,20 +18,20 @@
         "active": true,
         "points": [
           {
-            "x": 200,
-            "y": 253
+            "x": 248,
+            "y": 215
           },
           {
-            "x": 267,
-            "y": 253
+            "x": 511,
+            "y": 220
           },
           {
-            "x": 267,
-            "y": 261
+            "x": 508,
+            "y": 215
           },
           {
-            "x": 200,
-            "y": 261
+            "x": 250,
+            "y": 210
           }
         ],
         "holes": []
@@ -40,7 +40,34 @@
   },
   "hotspots": [],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.858,
+      "scaleBottom": 1.187,
+      "points": [
+        {
+          "x": 0,
+          "y": 182
+        },
+        {
+          "x": 639,
+          "y": 182
+        },
+        {
+          "x": 639,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -76,7 +103,7 @@
         "davant": {}
       },
       "zIndex": 20,
-      "baseline": 267
+      "baseline": 233
     },
     {
       "id": "tele_apagada",
@@ -94,8 +121,8 @@
     {
       "instanceId": "rius-1",
       "definition": "rius/rius.character.json",
-      "x": 181,
-      "y": 259,
+      "x": 264,
+      "y": 212,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -104,8 +131,8 @@
     {
       "instanceId": "ballester-1",
       "definition": "ballester/ballester.character.json",
-      "x": 235,
-      "y": 259,
+      "x": 302,
+      "y": 213,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -114,8 +141,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 285,
-      "y": 259,
+      "x": 340,
+      "y": 214,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -124,8 +151,8 @@
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 336,
-      "y": 259,
+      "x": 378,
+      "y": 215,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -134,8 +161,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 387,
-      "y": 259,
+      "x": 416,
+      "y": 216,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -144,8 +171,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 437,
-      "y": 259,
+      "x": 454,
+      "y": 216,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -154,8 +181,8 @@
     {
       "instanceId": "pons-1",
       "definition": "pons/pons.character.json",
-      "x": 491,
-      "y": 259,
+      "x": 493,
+      "y": 217,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -164,8 +191,8 @@
     {
       "instanceId": "neta-1",
       "definition": "neta/neta.character.json",
-      "x": 125,
-      "y": 269,
+      "x": 224,
+      "y": 246,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -183,5 +210,37 @@
     }
   ],
   "viewAnchorY": 0,
-  "artScale": 2
+  "characterLights": {
+    "ambient": "#d8ccb8",
+    "lights": [
+      {
+        "x": 582,
+        "y": 88,
+        "radius": 420,
+        "color": "#ffd896",
+        "intensity": 0.8
+      },
+      {
+        "x": 411,
+        "y": 57,
+        "radius": 110,
+        "color": "#5a8cdc",
+        "intensity": 0.5
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#2a1a10",
+    "alpha": 0.4,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": -1,
+      "y": 0.25,
+      "direction": true,
+      "stretch": 0.6
+    }
+  },
+  "floorSquash": 0.42
 }
