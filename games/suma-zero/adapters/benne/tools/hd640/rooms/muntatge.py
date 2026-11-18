@@ -1,42 +1,63 @@
 """
-El muntatge del virus a 640×360 (cinemàtica, Acte 3; vegeu hd/rooms/muntatge.py, el de 480×270): ROBIN HOOD 2.0
-buida tots els comptes del món al «compte zero» i paga la primera ronda, 12 € per persona. Una sola imatge per
-a totes les frases: una paret de sis pantalles, com les de la sala de seguretat, cadascuna amb una vinyeta i el
-comptador en verd de terminal:
+El muntatge del virus a 640×360 (cinemàtica, Acte 3): ROBIN HOOD 2.0 buida tots els comptes del món al «compte
+zero» i paga la primera ronda, 12 € per persona. EN 3D (hd640/tres_d.py), a 1×.
+
+Una sola imatge per a totes les frases: la paret de sis pantalles d'una sala de control, vista una mica de biaix i
+des d'una mica més avall (es veuen el costat i la panxa dels marcs), cadascuna amb una vinyeta i el comptador en
+verd de terminal:
   - Mònaco: la roca amb els edificis pastel, un iot blanc a la badia i un milionari a la coberta mirant el mòbil;
   - Nova York: gratacels a l'alba (allà són les cinc i quart) i la gràfica del fons que cau en picat;
   - Ginebra: un despatx amb el llac i el raig d'aigua; l'home de la corbata i la secretària, 12 € cadascun;
   - el bar La Propina: en Tomàs abaixa la persiana amb el ganxo;
   - un caixer automàtic: una àvia amb bastó davant de la pantalla i un cambrer que espera el sou;
   - el mapa del món, de punts, amb totes les línies que van a parar al compte zero.
-A dalt, la capçalera «ROBIN HOOD 2.0» (verd de terminal) i el rellotge a les 11:15 (cian).
+A dalt, la capçalera «ROBIN HOOD 2.0» (verd de terminal) i el rellotge a les 11:15 (cian). A la dreta, que fuig, un
+armari de servidors amb els llums; a sota, la consola llarga de la sala, amb els teclats que fan llum; en primer
+pla, en silueta, una cadira buida, la vora d'una taula amb una tassa i un pilar tallat per la vora de la dreta.
 A baix hi va el quadre de text: tot el que importa és per sobre de y≈264.
+
+Les vinyetes es dibuixen planes, a 2× (hd1280/canvas2x.py), i es projecten fent la mitjana (a la distància a què
+són, més petites que 1×, el detall s'hi conserva). La lletra petita no es pot projectar (a menys d'1× es trenca):
+es grava a part i s'escriu després a 1:1, al lloc i amb la inclinació que toca (`_textos`).
 Animació `pantalles` (8 fotogrames): el cursor i els dos punts del rellotge parpellegen; els comptadors fan
-pampallugues; els diners corren per les línies del mapa cap al compte zero.
+pampallugues; els diners corren per les línies del mapa cap al compte zero; els llums dels servidors.
+
+El món: x a la dreta, y amunt, z cap a la paret; el pla de les pantalles és z = ZF i hi correspon el dibuix pla
+(x = fx - 320, y = 260 - fy).
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
+import functools
 import math
 
-from PIL import Image
 from pixels import nearest
 
-from hd.pix import Light, Canvas, W, H, B4, hr, mix
-from hd.rooms.comu import obox, outline, text, text_width, _diff
+from hd640 import llum
+from hd.pix import Light, Canvas, W, B4, hr, mix
+from hd.pix import Canvas as Canvas1x
+from hd.rooms.comu import obox, outline, text_width, _diff
+from hd.rooms.comu import text as _text
 from hd.rooms.muntatge import BEZEL, TERM, CYANT, GREEN_T, CYAN_T, LAND, CITIES
-
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+from hd1280.canvas2x import Canvas2x
+from hd640.tres_d import Camera, Escena, Llum
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 
 PANELS = [(11, 43, 212, 148), (219, 43, 420, 148), (427, 43, 628, 148),
           (11, 155, 212, 260), (219, 155, 420, 260), (427, 155, 628, 260)]
+HEADER = (5, 4, W - 6, 36)
 LABEL_H = 13
 NF = 8                 # fotogrames de l'animació
+
+_REC = None            # quan és una llista, `text` hi apunta la lletra petita en comptes d'escriure-la
+
+
+def text(cv, s, x, y, ramp, lvl, lit=1.0, flat=None):
+    """La lletra petita: o s'escriu (com sempre) o es grava per escriure-la després a 1:1 (vegeu `_textos`)."""
+    if _REC is not None:
+        _REC.append(('txt', s, x, y, flat))
+        return text_width(s)
+    return _text(cv, s, x, y, ramp, lvl, lit=lit, flat=flat)
 
 
 # ─── Eines ─────────────────────────────────────────────────────────────────
@@ -45,7 +66,7 @@ def big_text(cv, s, x, y, col, k=2, bevel=True):
     """Text de la font petita, ampliat k vegades (píxels grossos); `bevel`: cada píxel gros, amb la vora de
     dalt més clara i la de sota més fosca (com els fòsfors d'un terminal)."""
     tmp = Canvas1x(w=text_width(s) + 2, h=10, transparent=True)
-    text(tmp, s, 0, 3, [col], 0, lit=0, flat=col)
+    _text(tmp, s, 0, 3, [col], 0, lit=0, flat=col)
     img = nearest(tmp.img, (tmp.img.width * k, tmp.img.height * k))
     if bevel and k >= 3:
         hi, lo = mix(col, (255, 255, 255), 0.35), mix(col, (0, 0, 0), 0.3)
@@ -132,8 +153,29 @@ def label(cv, i, name, amount, blink=0):
     cv.glow(x1 - 4 - w // 2, y1 - 7, w // 2 + 5, (60, 220, 120), 0.18)
 
 
+def _peca(cv, rect, draw):
+    """Un tros que porta lletra petita dins una caixa feta a mida (una etiqueta, un rètol): quan es grava la lletra,
+    tot el tros es grava sencer i s'escriu després a 1:1 (si no, la caixa projectada quedaria més petita que la
+    lletra)."""
+    global _REC
+    if _REC is None:
+        draw(cv)
+        return
+    rec, _REC = _REC, None
+    tmp = Canvas1x(transparent=True)
+    draw(tmp)
+    _REC = rec
+    x0, y0, x1, y1 = rect
+    _REC.append(('img', tmp.img.crop((x0, y0, x1 + 1, y1 + 1)), x0, y0))
+
+
 def tag(cv, cx, y, s):
-    """Una etiqueta verda flotant (els 12 € de cadascú), amb el pal que la penja."""
+    """Una etiqueta verda flotant (els 12 € de cadascú)."""
+    w = text_width(s)
+    _peca(cv, (cx - w // 2 - 4, y - 3, cx + w - w // 2 + 3, y + 7), lambda c: _tag(c, cx, y, s))
+
+
+def _tag(cv, cx, y, s):
     w = text_width(s)
     fill(cv, cx - w // 2 - 4, y - 3, cx + w - w // 2 + 3, y + 7, (4, 20, 10))
     outline(cv, cx - w // 2 - 4, y - 3, cx + w - w // 2 + 3, y + 7, [(40, 170, 90)])
@@ -452,20 +494,14 @@ def mapa(cv, x0, y0, x1, y1, t=0):
     big_text(cv, '0', zx - 2, zy - 5, (4, 20, 30), 2, bevel=False)
     cv.glow(zx, zy, 29, (100, 230, 255), 0.35)
     s = 'COMPTE ZERO'
-    fill(cv, zx - text_width(s) // 2 - 3, zy + 15, zx + text_width(s) // 2 + 3, zy + 22, (2, 10, 12))
-    text(cv, s, zx - text_width(s) // 2, zy + 16, None, 0, lit=0, flat=CYAN_T)
+
+    def rot(c):
+        fill(c, zx - text_width(s) // 2 - 3, zy + 15, zx + text_width(s) // 2 + 3, zy + 22, (2, 10, 12))
+        text(c, s, zx - text_width(s) // 2, zy + 16, None, 0, lit=0, flat=CYAN_T)
+    _peca(cv, (zx - text_width(s) // 2 - 3, zy + 15, zx + text_width(s) // 2 + 3, zy + 22), rot)
 
 
-# ─── La paret de pantalles ─────────────────────────────────────────────────
-
-def backdrop(cv):
-    """El fons: una sala fosca amb la reixeta tènue d'un terminal i la claror verda que cau cap avall."""
-    for y in range(H):
-        for x in range(W):
-            grid = (x % 16 == 0 or y % 16 == 0)
-            cv.put(x, y, BEZEL, 1.0 + (0.6 if grid else 0) - max(0, (y - 267) / 80), lit=0)
-    cv.tint(0, 261, W - 1, H - 1, (20, 120, 70), lambda x, y: 0.12 * max(0, 1 - (y - 261) / 67))
-
+# ─── La paret de pantalles, plana ───────────────────────────────────────────
 
 def header(cv, cursor=True, colon=True):
     """La capçalera: «ROBIN HOOD 2.0» en verd de terminal, el pagament i el rellotge a les 11:15."""
@@ -479,16 +515,17 @@ def header(cv, cursor=True, colon=True):
     text(cv, 'TOTS ELS COMPTES - COMPTE ZERO', 13, 27, None, 0, lit=0, flat=(70, 190, 110))
     s = 'PAGAMENT 1: 12,00 € PER PERSONA'
     big_x = 261
-    text(cv, s, big_x, 12, None, 0, lit=0, flat=GREEN_T)
-    # una barra de progrés plena, amb les divisions
     sw = text_width(s)
-    fill(cv, big_x, 21, big_x + sw, 27, (6, 30, 16))
-    fill(cv, big_x + 1, 22, big_x + sw - 1, 26, (60, 210, 120))
-    cv.hline(big_x + 1, big_x + sw - 1, 22, [(130, 250, 170)], 0, lit=0)
-    for k in range(big_x + 10, big_x + sw, 10):
-        cv.vline(k, 23, 26, [(40, 160, 90)], 0, lit=0)
-    # el rellotge
-    fill(cv, 523, 7, W - 11, 33, (2, 12, 18))
+
+    def pagament(c):
+        text(c, s, big_x, 12, None, 0, lit=0, flat=GREEN_T)
+        fill(c, big_x, 21, big_x + sw, 27, (6, 30, 16))                           # la barra de progrés, plena
+        fill(c, big_x + 1, 22, big_x + sw - 1, 26, (60, 210, 120))
+        c.hline(big_x + 1, big_x + sw - 1, 22, [(130, 250, 170)], 0, lit=0)
+        for k in range(big_x + 10, big_x + sw, 10):
+            c.vline(k, 23, 26, [(40, 160, 90)], 0, lit=0)
+    _peca(cv, (big_x, 9, big_x + sw, 27), pagament)
+    fill(cv, 523, 7, W - 11, 33, (2, 12, 18))                                   # el rellotge
     outline(cv, 523, 7, W - 11, 33, [(30, 110, 140)])
     clock = '11:15' if colon else '11 15'
     cw = text_width(clock) * 4
@@ -514,29 +551,281 @@ def screens(cv, blink=0, t=0):
         label(cv, i, name, amount, blink)
         outline(cv, x0 - 1, y0 - 1, x1 + 1, y1 + 1, [(0, 0, 0)])
         cv.rect(x1 - 5, y0 + 3, x1 - 4, y0 + 4, [(240, 40, 36)], 0, lit=0)     # el punt vermell de directe
-    # la claror de les pantalles cap avall
-    cv.tint(0, 264, W - 1, 285, (40, 200, 160), lambda x, y: 0.12 * (1 - (y - 264) / 21))
 
 
-def bg(cv, t=0):
-    """t: fotograma (de 0 a NF-1, cada un de 200 ms)."""
-    backdrop(cv)
-    header(cv, cursor=(t // 2) % 2 == 0, colon=t % 8 < 4)
-    screens(cv, blink=t // 2, t=t)
+@functools.lru_cache(maxsize=None)
+def _pla(t=None):
+    """La paret plana (a 2×, transparent fora de les pantalles) i la lletra petita, gravada. t: fotograma (de 0 a
+    NF-1, cada un de 200 ms); None: el fons."""
+    global _REC
+    _REC = []
+    cv = Canvas2x(light=LIGHT, transparent=True)
+    tt = 0 if t is None else t
+    header(cv, cursor=(tt // 2) % 2 == 0, colon=tt % 8 < 4)
+    screens(cv, blink=tt // 2, t=tt)
+    rec, _REC = _REC, None
+    return cv.img, tuple(rec)
+
+
+# ─── El món ──────────────────────────────────────────────────────────────────
+
+ZF = 300                                   # el davant de les pantalles
+DEP = 10                                   # el gruix dels marcs
+ZW = ZF + DEP + 8                          # la paret
+YF = -96                                   # el terra
+CONSOLE = (-380, 330, ZF - 64, ZF - 24, -44)       # la consola llarga: x0, x1, z0, z1, alçada (y de la tapa)
+RACK = (360, 430, ZF - 70, ZF + 8, 150)            # l'armari de servidors: x0, x1, z0, z1, y de dalt
+
+CAM = Camera(pos=(-110, 70, -290), yaw=0.2, pitch=-0.06, f=520, centre=(320, 150))
+
+FOSC = [(2, 3, 4), (5, 7, 8), (9, 12, 13), (14, 18, 19), (20, 25, 26), (28, 34, 34)]
+WALLR = [(3, 6, 6), (6, 10, 10), (10, 16, 15), (16, 24, 22), (24, 34, 30), (34, 46, 40)]
+METAL = [(8, 10, 14), (16, 20, 26), (28, 32, 40), (44, 50, 60), (66, 72, 84), (96, 104, 116)]
+CONS = [(3, 5, 5), (8, 12, 12), (14, 20, 19), (22, 30, 28), (20, 80, 46), (50, 170, 100), (140, 250, 190)]
+
+
+def _w(fx, fy, z=ZF):
+    """Un punt del dibuix pla → el punt del món, al pla de les pantalles."""
+    return (fx - 320, 260 - fy, z)
+
+
+def _marc(e, rect, tex):
+    """Un marc de pantalla (o la capçalera): una caixa amb el davant del dibuix pla i els costats de metall fosc."""
+    x0, y0, x1, y1 = rect
+    a, b = _w(x0, y1), _w(x1, y0)
+    img = tex[0]
+    e.caixa('pantalles', a[0], b[0], a[1], b[1], ZF, ZF + DEP, BEZEL, 2.0,
+            cares={'davant': {'tex': (img, (x0, y0, x1 + 1, y1 + 1), 2)},
+                   'esquerra': {'ramp': BEZEL, 'lvl': lambda s, t, P: 2.4 - (0.8 if s > DEP - 2 else 0)},
+                   'sota': {'ramp': BEZEL, 'lvl': 1.6}, 'dalt': {'ramp': BEZEL, 'lvl': 3.4},
+                   'dreta': {'ramp': BEZEL, 'lvl': 1.4}})
+
+
+def escena(cv, t=None):
+    img, _ = _pla(t)
+    centres = [_w((x0 + x1) / 2, (y0 + y1) / 2, ZF - 30) for x0, y0, x1, y1 in PANELS]
+    cols = [2.0, 1.6, 1.6, 1.8, 1.6, 2.2]
+    e = Escena(cv, CAM, [Llum(c, 300, k, power=1.3) for c, k in zip(centres, cols)]
+               , ambient=-0.6)
+    # la paret, amb la reixeta tènue d'un terminal; el sostre i el terra
+    e.quad('paret', (-900, 420, ZW), (1100, 420, ZW), (1100, YF, ZW), (-900, YF, ZW), ramp=WALLR,
+           lvl=lambda s, t, P: 1.4 + (0.9 if (int(P[0]) % 32 == 0 or int(P[1]) % 32 == 0) else 0)
+           + (fbm_(P[0] / 90, P[1] / 70) - 0.5) * 0.6)
+    e.quad('terra', (-900, YF, ZW), (1100, YF, ZW), (1100, YF, -400), (-900, YF, -400), ramp=WALLR,
+           lvl=lambda s, t, P: 1.0 + (0.7 if (int(P[0] + 4000) % 60 < 1.2 or int(P[2] + 4000) % 60 < 1.2) else 0))
+    # el reflex verd de les pantalles al terra (brillant: les rajoles tècniques)
+    e.claror((-500, YF + 0.5, ZW), (700, YF + 0.5, ZW), (700, YF + 0.5, ZF - 260), (-500, YF + 0.5, ZF - 260),
+             (60, 200, 140), lambda s, t: 0.32 * max(0.0, 1 - t / 260) * max(0.0, 1 - abs(s - 520) / 560))
+    # els marcs de les pantalles i la capçalera
+    _marc(e, (HEADER[0], HEADER[1], HEADER[2], HEADER[3]), (img,))
+    for x0, y0, x1, y1 in PANELS:
+        _marc(e, (x0 - 4, y0 - 4, x1 + 4, y1 + 4), (img,))
+    # els suports de la paret de pantalles (dos peus de metall fins al terra)
+    for fx in (110, 530):
+        a = _w(fx, 264)
+        e.caixa('suports', a[0] - 6, a[0] + 6, YF, a[1], ZF + 2, ZF + DEP - 2, METAL, 1.6)
+    # la claror de les pantalles a la paret del voltant
+    e.claror((-500, 330, ZW - 0.5), (500, 330, ZW - 0.5), (500, YF, ZW - 0.5), (-500, YF, ZW - 0.5), (40, 200, 140),
+             lambda s, t: 0.22 * max(0.0, 1 - math.hypot((s - 500) / 520, (t - 160) / 260)))
+    # l'armari de servidors, a la dreta: davant de reixeta, llums, i el costat
+    rx0, rx1, rz0, rz1, ry = RACK
+    e.foscor('ombra_rack', (rx0 - 20, YF + 0.6, rz1 + 10), (rx1 + 10, YF + 0.6, rz1 + 10), (rx1 + 10, YF + 0.6, rz0 - 30),
+             (rx0 - 20, YF + 0.6, rz0 - 30), lambda s, t: 0.6 * max(0.0, 1 - abs(t - 50) / 50))
+    e.caixa('rack', rx0, rx1, YF, ry, rz0, rz1, METAL, 1.0,
+            cares={'davant': {'ramp': METAL, 'lvl': _rack_davant},
+                   'esquerra': {'ramp': CONS, 'lvl': lambda s, t, P: 2.2 + (1.2 if s > rz1 - rz0 - 3 else 0)
+                                - (0.8 if int(t) % 12 == 0 else 0)},
+                   'dalt': {'ramp': METAL, 'lvl': 1.8}})
+    # la consola llarga, davant les pantalles: la tapa amb els teclats (fan llum) i el davant fosc
+    cx0, cx1, cz0, cz1, ch = CONSOLE
+    e.foscor('ombra_consola', (cx0, YF + 0.6, cz1 + 10), (cx1, YF + 0.6, cz1 + 10), (cx1, YF + 0.6, cz0 - 20),
+             (cx0, YF + 0.6, cz0 - 20), lambda s, t: 0.65 * max(0.0, 1 - t / 60))
+    e.caixa('consola', cx0, cx1, YF, ch, cz0, cz1, FOSC, 2.0,
+            cares={'dalt': {'ramp': CONS, 'lvl': _consola_dalt},
+                   'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.2 - (1.0 if t < 3 else 0) - t * 0.01},
+                   'dreta': {'ramp': FOSC, 'lvl': 1.4}})
+    # primer pla: una cadira buida en silueta (a l'esquerra) i la vora d'una taula amb el teclat i una tassa (a baix)
+    e.foscor('ombra_cadira', (-215, YF + 0.6, 66), (-125, YF + 0.6, 66), (-125, YF + 0.6, 14), (-215, YF + 0.6, 14),
+             lambda s, t: 0.7 * max(0.0, 1 - ((s - 45) / 45) ** 2 - ((t - 26) / 26) ** 2) * 1.6)
+    e.sprite('primer_pla', _cadira(), (34, 111), (-170, YF, 40))
+    e.caixa('primer_pla', -260, 300, YF, -6, -110, -30, FOSC, 1.4,
+            cares={'dalt': {'ramp': CONS, 'lvl': _taula_dalt},
+                   'davant': {'ramp': FOSC, 'lvl': 0.8}, 'dreta': {'ramp': FOSC, 'lvl': 1.6}})
+    e.caixa('primer_pla', 150, 162, -6, 12, -70, -58, FOSC, 1.8,
+            cares={'dalt': {'ramp': [(4, 3, 2), (20, 12, 8)], 'lvl': 0.8},
+                   'esquerra': {'ramp': CONS, 'lvl': lambda s, t, P: 2.0 + (1.6 if s > 9 else 0)}})   # la tassa
+    # i, a la dreta, un pilar de formigó tallat per la vora, amb el canto de llum verda de les pantalles
+    e.caixa('primer_pla', 236, 290, YF, 520, 70, 110, FOSC, 1.0,
+            cares={'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.0 + (fbm_(s / 9, t / 14) - 0.5) * 0.8},
+                   'esquerra': {'ramp': CONS, 'lvl': lambda s, t, P: 1.6 + (1.4 if s > 37 else 0)
+                                + (fbm_(s / 9, t / 14) - 0.5) * 0.8}})
+    return e
+
+
+def fbm_(x, y):
+    from hd.rooms.exterior import fbm
+    return fbm(x, y, 5)
+
+
+def _rack_davant(s, t, P):
+    """El davant de l'armari: unitats de servidor, reixeta i llums."""
+    u, row = int(t) % 12, int(t) // 12
+    if u < 1:
+        return 0.2
+    if int(s) % 3 == 0 and 2 < u < 10:
+        return 0.4
+    return 1.2 + hr(row, 4) * 0.6
+
+
+LEDS = [(int(hr(i, 1) * 50) + 10, 6 + 12 * int(hr(i, 2) * 18)) for i in range(26)]
+
+
+def _consola_dalt(s, t, P):
+    """La tapa de la consola: teclats que fan llum verda, a trossos."""
+    x = P[0]
+    if 10 < t < 26 and int(x + 400) % 90 < 56:
+        return 4.6 if int(x) % 4 < 3 and int(t) % 4 < 3 else 1.6                  # les tecles, que fan llum
+    return 2.6 + (fbm_(x / 40, t / 10) - 0.5) * 0.6 + max(0.0, 1.0 - t / 12)
+
+
+def _taula_dalt(s, t, P):
+    """La taula de primer pla: un teclat i papers, a les fosques (només la llum de les pantalles)."""
+    x = P[0]
+    if 30 < t < 50 and 0 < x < 120:
+        return 4.2 if int(x) % 5 < 4 and int(t) % 5 < 4 else 1.2
+    if -120 < x < -60 and 20 < t < 60:
+        return 3.0                                                                  # uns papers
+    return 1.6 + max(0.0, 1.2 - (80 - t) / 20)
+
+
+def _cadira():
+    """Una cadira d'oficina buida, en silueta (girada en 3/4), amb el contorn verd de les pantalles a la dreta."""
+    cv = Canvas1x(w=68, h=116, transparent=True)
+    D = FOSC
+    cv.poly([(18, 8), (50, 4), (54, 10), (52, 52), (22, 56), (16, 50)], D, 1.4, lit=0)             # el respatller
+    cv.poly([(14, 60), (52, 56), (60, 64), (22, 70)], D, 2.2, lit=0)                              # el seient
+    cv.poly([(14, 60), (22, 70), (22, 74), (14, 64)], D, 1.0, lit=0)
+    cv.poly([(22, 70), (60, 64), (60, 68), (22, 74)], D, 0.8, lit=0)
+    for ax in (16, 54):                                                                           # els braços
+        cv.rect(ax - 1, 46, ax + 1, 60, D, 1.0, lit=0)
+        cv.rect(ax - 6, 45, ax + 3, 47, D, 1.6, lit=0)
+    cv.rect(36, 72, 39, 96, D, 1.2, lit=0)                                                        # el pistó
+    for dx, dy in ((-24, 6), (20, 8), (-10, 12), (26, 2), (-28, -1)):                             # la base d'estrella
+        cv.line(37, 97, 37 + dx, 104 + dy, D, 1.6, lit=0)
+        cv.disc(37 + dx, 106 + dy, 2, 1.5, D, 0.6, lit=0)
+    px = cv.img.load()                                                                            # el contorn verd
+    vora = [(x, y) for y in range(cv.h) for x in range(cv.w) if px[x, y][3]
+            and (x == cv.w - 1 or not px[x + 1, y][3] or y == 0 or not px[x, y - 1][3])]
+    for x, y in vora:
+        px[x, y] = (34, 120, 76, 255) if y < 72 else (20, 70, 46, 255)
+    return cv.img
+
+
+# ─── Composició i llum ──────────────────────────────────────────────────────
+
+def _proj(P):
+    u, v, _ = CAM.projecta(P)
+    return u, v
+
+
+def _caixa_de(cx, cy):
+    """La pantalla (o la capçalera) on cau un punt del dibuix pla: (x0, x1)."""
+    for x0, y0, x1, y1 in PANELS + [HEADER]:
+        if x0 - 4 <= cx <= x1 + 4 and y0 - 4 <= cy <= y1 + 4:
+            return x0, x1
+    return cx - 1, cx + 1
+
+
+def _textos(cv, e, rec):
+    """La lletra petita (i les peces que la porten), a 1:1: sense escalar, que no es trenqui. Cada tros va al lloc on
+    cau al pla de les pantalles (el punt que hi queda fix és el que és a la mateixa proporció de la pantalla: el que
+    era a la vora hi continua), recte (un mot amb una lletra més amunt que l'altra es llegeix pitjor que un mot que
+    no fa el pendent de la paret). Només on es veu la pantalla."""
+    sid = {i for i, n in enumerate(e.ids) if n == 'pantalles'}
+    P = cv.P
+    for it in rec:
+        if it[0] == 'txt':
+            _, st, x, y, col = it
+            w = text_width(st)
+            tmp = Canvas1x(w=w + 2, h=11, transparent=True)
+            _text(tmp, st, 0, 3, [col], 0, lit=0, flat=col)
+            im, y, h = tmp.img, y - 3, 11
+        else:
+            _, im, x, y = it
+            w, h = im.size
+        cx, cy = x + w / 2, y + h / 2
+        x0, x1 = _caixa_de(cx, cy)
+        a = min(1.0, max(0.0, (cx - x0) / max(1, x1 - x0)))      # on és, dins la pantalla (0 = a l'esquerra)
+        fx = x + a * w                                           # el punt del tros que queda fix
+        u0, v0 = _proj(_w(fx, cy))
+        ox, oy = round(u0 - a * w), round(v0 - h / 2)
+        src = im.load()
+        for j in range(im.height):
+            for i in range(im.width):
+                c = src[i, j]
+                if c[3] < 128:
+                    continue
+                X, Y = ox + i, oy + j
+                if 0 <= X < cv.w and 0 <= Y < cv.h and e.amo[Y * cv.w + X] in sid:
+                    P[X, Y] = c[:3] + (255,)
+
+
+def _fx():
+    light = []
+    tints = [(120, 200, 240), (240, 140, 120), (150, 190, 230), (255, 170, 90), (90, 240, 140), (80, 230, 255)]
+    for (x0, y0, x1, y1), col in zip(PANELS, tints):
+        u, v = _proj(_w((x0 + x1) / 2, y1 + 30, ZF - 60))
+        light.append(llum.wash(u, v, 120, col, k=0.35, air=0.02, squash=0.7))
+    u, v = _proj(_w(320, 20, ZF))
+    light.append(llum.wash(u, v, 220, (60, 255, 140), k=0.25, air=0.02, squash=0.4))
+    tone = [llum.grade(contrast=1.1, pivot=50, sat=1.1, lift=(2, 6, 6))]
+    bloom = [llum.bloom(thr=190, radii=((3, 0.35), (12, 0.25)))]
+    return light, bloom, tone
+
+
+def _render(t=None):
+    cv = Canvas(light=LIGHT)
+    e = escena(cv, t)
+    _textos(cv, e, _pla(t)[1])
+    _leds(cv, t)
+    return cv.img, e
+
+
+def _leds(cv, t):
+    """Els llums dels servidors (parpellegen amb t)."""
+    rx0, rx1, rz0, rz1, ry = RACK
+    for i, (dx, dy) in enumerate(LEDS):
+        on = hr(i, 0 if t is None else t, 9) > 0.35
+        u, v = _proj((rx0 + dx, ry - dy, rz0 - 0.5))
+        col = [(80, 255, 140), (255, 180, 60), (90, 200, 255)][i % 3] if on else (20, 40, 30)
+        cv.flat(round(u), round(v), col)
+
+
+@functools.lru_cache(maxsize=None)
+def _base():
+    return _render()
+
+
+def _amb_llum(img):
+    light, bl, tone = _fx()
+    return llum.apply(img, light + bl + tone)
+
+
+@functools.lru_cache(maxsize=None)
+def _base_llum():
+    return _amb_llum(_base()[0])
+
+
+def bg(cv):
+    cv.img.paste(_base_llum())
+    cv.P = cv.img.load()
 
 
 PROPS = {}
 
 
 def _frames():
-    base = Canvas(light=LIGHT)
-    bg(base)
-    frames = []
-    for t in range(NF):
-        cv = Canvas(light=LIGHT)
-        bg(cv, t)
-        frames.append(_diff(cv.img, base.img))
-    return frames
+    return [_diff(_amb_llum(_render(t)[0]), _base_llum()) for t in range(NF)]
 
 
 ANIMS = {'pantalles': {'frames': _frames, 'frameDuration': 200}}

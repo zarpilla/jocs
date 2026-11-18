@@ -4,272 +4,272 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 1.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 0,
-        "w": 1222,
-        "h": 78
+        "x": 1465,
+        "y": 360,
+        "w": 179,
+        "h": 111
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 169,
+        "y": 16,
+        "w": 179,
+        "h": 111
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 2.aseprite": {
       "frame": {
-        "x": 2502,
-        "y": 0,
-        "w": 1222,
-        "h": 78
+        "x": 0,
+        "y": 360,
+        "w": 551,
+        "h": 226
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 34,
+        "y": 16,
+        "w": 551,
+        "h": 226
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 3.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 1222,
-        "h": 78
+        "x": 3452,
+        "y": 0,
+        "w": 567,
+        "h": 232
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 18,
+        "y": 8,
+        "w": 567,
+        "h": 232
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 4.aseprite": {
       "frame": {
-        "x": 1222,
-        "y": 720,
-        "w": 1222,
-        "h": 78
+        "x": 1192,
+        "y": 0,
+        "w": 569,
+        "h": 235
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 16,
+        "y": 5,
+        "w": 569,
+        "h": 235
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 5.aseprite": {
       "frame": {
-        "x": 2444,
-        "y": 720,
-        "w": 1222,
-        "h": 78
+        "x": 1761,
+        "y": 0,
+        "w": 567,
+        "h": 235
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 18,
+        "y": 5,
+        "w": 567,
+        "h": 235
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 6.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 798,
-        "w": 1222,
-        "h": 78
+        "x": 1114,
+        "y": 360,
+        "w": 351,
+        "h": 210
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 24,
+        "y": 8,
+        "w": 351,
+        "h": 210
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 7.aseprite": {
       "frame": {
-        "x": 1222,
-        "y": 798,
-        "w": 1222,
-        "h": 78
+        "x": 640,
+        "y": 0,
+        "w": 552,
+        "h": 237
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 33,
+        "y": 5,
+        "w": 552,
+        "h": 237
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 8.aseprite": {
       "frame": {
-        "x": 2444,
-        "y": 798,
-        "w": 1222,
-        "h": 78
+        "x": 2328,
+        "y": 0,
+        "w": 562,
+        "h": 235
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 23,
+        "y": 5,
+        "w": 562,
+        "h": 235
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 9.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 876,
-        "w": 1222,
-        "h": 78
+        "x": 2890,
+        "y": 0,
+        "w": 562,
+        "h": 235
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 23,
+        "y": 5,
+        "w": 562,
+        "h": 235
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 10.aseprite": {
       "frame": {
-        "x": 1222,
-        "y": 876,
-        "w": 1222,
-        "h": 78
+        "x": 551,
+        "y": 360,
+        "w": 563,
+        "h": 224
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 22,
+        "y": 16,
+        "w": 563,
+        "h": 224
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 11.aseprite": {
       "frame": {
-        "x": 2444,
-        "y": 876,
-        "w": 1222,
-        "h": 78
+        "x": 1465,
+        "y": 360,
+        "w": 179,
+        "h": 111
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 169,
+        "y": 16,
+        "w": 179,
+        "h": 111
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "avio 12.aseprite": {
       "frame": {
         "x": 0,
-        "y": 954,
-        "w": 1222,
-        "h": 78
+        "y": 360,
+        "w": 551,
+        "h": 226
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 58,
-        "y": 362,
-        "w": 1222,
-        "h": 78
+        "x": 34,
+        "y": 16,
+        "w": 551,
+        "h": 226
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -280,8 +280,8 @@
     "image": "avio.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3724,
-      "h": 1032
+      "w": 4019,
+      "h": 586
     },
     "scale": "1",
     "frameTags": [
