@@ -4,524 +4,650 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 1.aseprite": {
       "frame": {
-        "x": 3938,
+        "x": 2587,
         "y": 0,
-        "w": 110,
-        "h": 112
+        "w": 40,
+        "h": 42
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 628,
-        "y": 144,
-        "w": 110,
-        "h": 112
+        "x": 330,
+        "y": 8,
+        "w": 40,
+        "h": 42
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 2.aseprite": {
       "frame": {
-        "x": 312,
-        "y": 720,
-        "w": 104,
-        "h": 100
+        "x": 2627,
+        "y": 0,
+        "w": 43,
+        "h": 41
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 634,
-        "y": 156,
-        "w": 104,
-        "h": 100
+        "x": 325,
+        "y": 11,
+        "w": 43,
+        "h": 41
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 3.aseprite": {
       "frame": {
-        "x": 532,
-        "y": 720,
-        "w": 92,
-        "h": 82
+        "x": 2765,
+        "y": 0,
+        "w": 33,
+        "h": 34
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 642,
-        "y": 152,
-        "w": 92,
-        "h": 82
+        "x": 333,
+        "y": 17,
+        "w": 33,
+        "h": 34
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 4.aseprite": {
       "frame": {
-        "x": 416,
-        "y": 720,
-        "w": 116,
-        "h": 100
+        "x": 2725,
+        "y": 0,
+        "w": 40,
+        "h": 37
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 626,
-        "y": 154,
-        "w": 116,
-        "h": 100
+        "x": 328,
+        "y": 17,
+        "w": 40,
+        "h": 37
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 5.aseprite": {
       "frame": {
-        "x": 206,
-        "y": 720,
-        "w": 106,
-        "h": 102
+        "x": 2460,
+        "y": 0,
+        "w": 48,
+        "h": 47
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 632,
-        "y": 154,
-        "w": 106,
-        "h": 102
+        "x": 326,
+        "y": 7,
+        "w": 48,
+        "h": 47
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 6.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 108,
-        "h": 104
+        "x": 2540,
+        "y": 0,
+        "w": 47,
+        "h": 43
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 628,
-        "y": 144,
-        "w": 108,
-        "h": 104
+        "x": 323,
+        "y": 9,
+        "w": 47,
+        "h": 43
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 7.aseprite": {
       "frame": {
-        "x": 108,
-        "y": 720,
-        "w": 98,
-        "h": 104
+        "x": 2670,
+        "y": 0,
+        "w": 43,
+        "h": 40
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 636,
-        "y": 148,
-        "w": 98,
-        "h": 104
+        "x": 327,
+        "y": 11,
+        "w": 43,
+        "h": 40
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 8.aseprite": {
       "frame": {
-        "x": 624,
-        "y": 720,
-        "w": 92,
-        "h": 80
+        "x": 2508,
+        "y": 0,
+        "w": 32,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 642,
-        "y": 168,
-        "w": 92,
-        "h": 80
+        "x": 333,
+        "y": 9,
+        "w": 32,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 9.aseprite": {
       "frame": {
-        "x": 3622,
+        "x": 1673,
         "y": 0,
-        "w": 152,
-        "h": 222
+        "w": 48,
+        "h": 118
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 590,
-        "y": 226,
-        "w": 152,
-        "h": 222
+        "x": 309,
+        "y": 50,
+        "w": 48,
+        "h": 118
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 10.aseprite": {
       "frame": {
-        "x": 1792,
+        "x": 1506,
         "y": 0,
-        "w": 154,
-        "h": 236
+        "w": 44,
+        "h": 120
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 592,
-        "y": 220,
-        "w": 154,
-        "h": 236
+        "x": 309,
+        "y": 47,
+        "w": 44,
+        "h": 120
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 11.aseprite": {
       "frame": {
-        "x": 1946,
+        "x": 1589,
         "y": 0,
-        "w": 164,
-        "h": 236
+        "w": 45,
+        "h": 119
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 584,
-        "y": 220,
-        "w": 164,
-        "h": 236
+        "x": 309,
+        "y": 48,
+        "w": 45,
+        "h": 119
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 12.aseprite": {
       "frame": {
-        "x": 2760,
+        "x": 1824,
         "y": 0,
-        "w": 168,
-        "h": 228
+        "w": 46,
+        "h": 115
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 584,
-        "y": 226,
-        "w": 168,
-        "h": 228
+        "x": 309,
+        "y": 50,
+        "w": 46,
+        "h": 115
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 13.aseprite": {
       "frame": {
-        "x": 2928,
+        "x": 1870,
         "y": 0,
-        "w": 188,
-        "h": 228
+        "w": 39,
+        "h": 115
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 566,
-        "y": 218,
-        "w": 188,
-        "h": 228
+        "x": 316,
+        "y": 47,
+        "w": 39,
+        "h": 115
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 14.aseprite": {
       "frame": {
-        "x": 3268,
+        "x": 1909,
         "y": 0,
-        "w": 186,
-        "h": 226
+        "w": 39,
+        "h": 115
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 570,
-        "y": 226,
-        "w": 186,
-        "h": 226
+        "x": 316,
+        "y": 50,
+        "w": 39,
+        "h": 115
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 15.aseprite": {
       "frame": {
-        "x": 2110,
+        "x": 1550,
         "y": 0,
-        "w": 184,
-        "h": 234
+        "w": 39,
+        "h": 120
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 574,
-        "y": 222,
-        "w": 184,
-        "h": 234
+        "x": 316,
+        "y": 49,
+        "w": 39,
+        "h": 120
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 16.aseprite": {
       "frame": {
-        "x": 2294,
+        "x": 1758,
         "y": 0,
-        "w": 150,
-        "h": 230
+        "w": 29,
+        "h": 116
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 578,
-        "y": 218,
-        "w": 150,
-        "h": 230
+        "x": 316,
+        "y": 47,
+        "w": 29,
+        "h": 116
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 17.aseprite": {
       "frame": {
-        "x": 1440,
+        "x": 1267,
         "y": 0,
-        "w": 180,
-        "h": 238
+        "w": 39,
+        "h": 122
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 578,
-        "y": 216,
-        "w": 180,
-        "h": 238
+        "x": 316,
+        "y": 46,
+        "w": 39,
+        "h": 122
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 18.aseprite": {
       "frame": {
-        "x": 1620,
+        "x": 1634,
         "y": 0,
-        "w": 172,
-        "h": 238
+        "w": 39,
+        "h": 119
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 584,
-        "y": 216,
-        "w": 172,
-        "h": 238
+        "x": 316,
+        "y": 46,
+        "w": 39,
+        "h": 119
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 19.aseprite": {
       "frame": {
-        "x": 3454,
+        "x": 1948,
         "y": 0,
-        "w": 168,
-        "h": 226
+        "w": 38,
+        "h": 114
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 586,
-        "y": 222,
-        "w": 168,
-        "h": 226
+        "x": 317,
+        "y": 48,
+        "w": 38,
+        "h": 114
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 20.aseprite": {
       "frame": {
-        "x": 3774,
+        "x": 1986,
         "y": 0,
-        "w": 164,
-        "h": 222
+        "w": 38,
+        "h": 114
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 588,
-        "y": 226,
-        "w": 164,
-        "h": 222
+        "x": 316,
+        "y": 50,
+        "w": 38,
+        "h": 114
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 21.aseprite": {
       "frame": {
-        "x": 2444,
+        "x": 1721,
         "y": 0,
-        "w": 158,
-        "h": 230
+        "w": 37,
+        "h": 117
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 590,
-        "y": 224,
-        "w": 158,
-        "h": 230
+        "x": 316,
+        "y": 50,
+        "w": 37,
+        "h": 117
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 22.aseprite": {
       "frame": {
-        "x": 3116,
+        "x": 2024,
         "y": 0,
-        "w": 152,
-        "h": 228
+        "w": 38,
+        "h": 114
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 592,
-        "y": 216,
-        "w": 152,
-        "h": 228
+        "x": 315,
+        "y": 46,
+        "w": 38,
+        "h": 114
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 23.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 1306,
         "y": 0,
-        "w": 160,
-        "h": 240
+        "w": 38,
+        "h": 122
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 592,
-        "y": 216,
-        "w": 160,
-        "h": 240
+        "x": 314,
+        "y": 46,
+        "w": 38,
+        "h": 122
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "casa_juana 24.aseprite": {
       "frame": {
-        "x": 2602,
+        "x": 1787,
         "y": 0,
-        "w": 158,
-        "h": 230
+        "w": 37,
+        "h": 116
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 590,
-        "y": 226,
-        "w": 158,
-        "h": 230
+        "x": 314,
+        "y": 51,
+        "w": 37,
+        "h": 116
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "casa_juana 25.aseprite": {
+      "frame": {
+        "x": 1249,
+        "y": 0,
+        "w": 18,
+        "h": 152
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 622,
+        "y": 4,
+        "w": 18,
+        "h": 152
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "casa_juana 26.aseprite": {
+      "frame": {
+        "x": 2062,
+        "y": 0,
+        "w": 298,
+        "h": 111
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 178,
+        "y": 103,
+        "w": 298,
+        "h": 111
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "casa_juana 27.aseprite": {
+      "frame": {
+        "x": 2360,
+        "y": 0,
+        "w": 100,
+        "h": 104
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 489,
+        "y": 66,
+        "w": 100,
+        "h": 104
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "casa_juana 28.aseprite": {
+      "frame": {
+        "x": 1344,
+        "y": 0,
+        "w": 162,
+        "h": 121
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 288,
+        "y": 67,
+        "w": 162,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "casa_juana 29.aseprite": {
+      "frame": {
+        "x": 2713,
+        "y": 0,
+        "w": 12,
+        "h": 39
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 628,
+        "y": 156,
+        "w": 12,
+        "h": 39
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "casa_juana 30.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 609,
+        "h": 268
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 29,
+        "y": 0,
+        "w": 609,
+        "h": 268
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -532,8 +658,8 @@
     "image": "casa_juana.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4048,
-      "h": 824
+      "w": 2798,
+      "h": 360
     },
     "scale": "1",
     "frameTags": [
@@ -555,6 +681,48 @@
         "name": "pols",
         "from": 9,
         "to": 24,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_estufa",
+        "from": 25,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_piles",
+        "from": 26,
+        "to": 26,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_aquari",
+        "from": 27,
+        "to": 27,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_taula",
+        "from": 28,
+        "to": 28,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_piles2",
+        "from": 29,
+        "to": 29,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 30,
+        "to": 30,
         "direction": "forward",
         "color": "#000000ff"
       }
