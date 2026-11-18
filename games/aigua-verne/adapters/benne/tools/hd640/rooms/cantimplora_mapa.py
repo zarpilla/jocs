@@ -1,10 +1,12 @@
 """
 Aigua Verne — `cantimplora_mapa` (cinemàtica): la carta de navegació de la Cantimplora, a pantalla sencera.
 
-El sistema de Vesper (el mateix cel que als crèdits, sense la pluja del final): l'estrella al cantó de baix a
-l'esquerra, les òrbites puntejades i els quatre planetes amb el seu nom, i el palau orbital, un punt daurat al
-costat de Verdant. Damunt, una quadrícula de carta molt fluixa. Els planetes queden als cantons: el mig és per al
-quadre del text. Es toca el planeta on es vol anar (vegeu GEOMETRIA).
+És la taula de vidre del pont vista des de dalt, amb la càmera picada: la carta (el sistema de Vesper, el mateix cel
+que als crèdits, amb la quadrícula i les òrbites puntejades) s'estira cap a nosaltres, i la quadrícula i les òrbites
+fugen cap al fons, on es veu el marc de llautó de la taula i la penombra del pont. El costat de prop queda tallat per
+la vora de baix. Els planetes, el palau i la nau són hologrames que suren damunt el vidre: es dibuixen drets (sense
+aixafar) al punt de la carta que els toca, i els noms es posen a la pantalla perquè es llegeixin. L'estrella al cantó
+de baix a l'esquerra; el mig queda lliure per al quadre del text. Es toca el planeta on es vol anar (vegeu GEOMETRIA).
 
 Tot el que es mou és un sol prop, `nau` (la Cantimplora, petita), amb aquestes animacions:
   - `nau_<planeta>` (bucle): aparcada en òrbita, amb el llum de navegació que fa pampallugues;
@@ -12,15 +14,18 @@ Tot el que es mou és un sol prop, `nau` (la Cantimplora, petita), amb aquestes 
   - `vol_<origen>_<destí>` (un cop): el viatge, en un arc que s'allunya de l'estrella, amb l'estela dels motors;
     l'últim fotograma és el mateix que `nau_<destí>`.
 Les tria rooms/cantimplora_mapa.json (en entrar, i en tocar un planeta).
+
+Les rutes es calculen a la carta (pla) i es projecten a la pantalla amb la mateixa homografia que el vidre (`_m`).
 """
 import functools
 import math
 
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
-from hd.pix import Canvas, Light, W, H, hr, mix
+from hd.pix import Canvas, Light, W, H, hr, mix, GOLD
 from hd.rooms.comu import _diff, text, text_width
 from hd640.rooms.credits import space, planet, T2, AQ, FE, VE
-from hd640.rooms.nau_comu import OLIVE, SAFETY
+from hd640.rooms.nau_comu import OLIVE, SAFETY, STEELN, DECKP
+from hd640.tres_d import _homografia, _inversa
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
@@ -32,7 +37,7 @@ LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 STAR = (-30, 300)
 ZT = 0.07                                   # segons per fotograma del vol
 
-# nom, centre, radi, rampa, pluja? (la forma de credits.PLANETS)
+# nom, centre, radi, rampa, pluja? (la forma de credits.PLANETS), a la carta (pla)
 PLANETS = (
     ('terra2', (92, 150), 30, T2, False),
     ('verdant', (215, 60), 17, VE, False),
@@ -40,12 +45,50 @@ PLANETS = (
     ('ferrum', (562, 180), 33, FE, False),
 )
 LABELS = {'terra2': 'TERRA-2', 'verdant': 'VERDANT', 'aqua': 'AQUA', 'ferrum': 'FERRUM'}
-# on queda aparcada la nau a cada planeta (el morro cap a la dreta)
+# on queda aparcada la nau a cada planeta (el morro cap a la dreta), a la carta
 PARK = {'terra2': (140, 116), 'verdant': (180, 34), 'aqua': (462, 44), 'ferrum': (574, 132)}
 NAMES = tuple(PARK)
 
 NAV = [(10, 30, 40), (20, 52, 66), (40, 90, 104), (80, 150, 160), (150, 214, 220), (220, 246, 248)]
 GRID = (22, 30, 52)
+
+
+# ─── La càmera: la carta (pla, 640×360) sobre el vidre, vista des de dalt ────
+# El vidre és un trapezi: el costat del fons, més estret i més amunt; el de prop, més ample que la pantalla i tallat
+# per la vora de baix. Una homografia (com les textures de tres_d) porta cada punt de la carta a la pantalla.
+
+QUAD = ((52, 34), (588, 34), (668, 384), (-28, 384))       # els cantons del vidre a la pantalla (de dalt a l'esq.)
+_M = _homografia(QUAD)
+_MI = _inversa(_M)
+
+
+def _m(x, y):
+    """Un punt de la carta → la pantalla."""
+    a, b, c, d, e, f, g, h, i = _M
+    s, t = x / W, y / H
+    w = g * s + h * t + i
+    return (a * s + b * t + c) / w, (d * s + e * t + f) / w
+
+
+def _carta(u, v):
+    """Un punt de la pantalla → la carta."""
+    a, b, c, d, e, f, g, h, i = _MI
+    w = g * u + h * v + i
+    return (a * u + b * v + c) / w * W, (d * u + e * v + f) / w * H
+
+
+def _k(x, y):
+    """Quants píxels de pantalla fa un píxel de la carta, en aquell punt."""
+    u0, v0 = _m(x - 0.5, y)
+    u1, v1 = _m(x + 0.5, y)
+    return math.hypot(u1 - u0, v1 - v0)
+
+
+def _ang(x, y, ang):
+    """Un angle de la carta (una direcció a (x, y)) → l'angle a la pantalla."""
+    u0, v0 = _m(x, y)
+    u1, v1 = _m(x + math.cos(ang), y + math.sin(ang))
+    return math.atan2(v1 - v0, u1 - u0)
 
 
 # ─── El fons ────────────────────────────────────────────────────────────────
@@ -55,26 +98,16 @@ def _grid(cv):
     for x in range(0, W, 40):
         for y in range(0, H):
             if y % 3 == 0:
-                cv.flat(x, y, mix(cv.get(x, y), GRID, 0.35))
+                cv.flat(x, y, mix(cv.get(x, y), GRID, 0.45))
     for y in range(0, H, 40):
         for x in range(0, W):
             if x % 3 == 0:
-                cv.flat(x, y, mix(cv.get(x, y), GRID, 0.35))
+                cv.flat(x, y, mix(cv.get(x, y), GRID, 0.45))
     for x in range(0, W, 40):
         for y in range(0, H, 40):
             for d in (-1, 0, 1):
-                cv.flat(x + d, y, mix(cv.get(x + d, y), (60, 80, 120), 0.5))
-                cv.flat(x, y + d, mix(cv.get(x, y + d), (60, 80, 120), 0.5))
-
-
-def _brackets(cv):
-    """Els cantons de la carta, com una pantalla de navegació."""
-    m, k = 6, 14
-    col = (70, 120, 140)
-    for (x, y, dx, dy) in ((m, m, 1, 1), (W - 1 - m, m, -1, 1), (m, 258, 1, -1), (W - 1 - m, 258, -1, -1)):
-        for i in range(k):
-            cv.flat(x + dx * i, y, col)
-            cv.flat(x, y + dy * i, col)
+                cv.flat(x + d, y, mix(cv.get(x + d, y), (60, 80, 120), 0.6))
+                cv.flat(x, y + d, mix(cv.get(x, y + d), (60, 80, 120), 0.6))
 
 
 def _label(cv, s, cx, y):
@@ -86,23 +119,84 @@ def _label(cv, s, cx, y):
     text(cv, s, x, y, NAV, 4.4, lit=0)
 
 
-def _palau(cv):
-    """El palau orbital, al costat de Verdant (el dibuixa `planet`), i el seu nom."""
+def _palau_carta():
     _, (cx, cy), r, _, _ = PLANETS[1]
-    px, py = cx + r + 9, cy - r + 2
-    cv.glow(px, py, 5, (255, 220, 120), 0.35)
-    _label(cv, 'PALAU', px + 16, py - 2)
+    return cx + r + 9, cy - r + 2
+
+
+def _pla(tw):
+    """La carta plana (la que va damunt el vidre): l'espai, l'estrella, les òrbites i la quadrícula."""
+    cv = Canvas1x(light=LIGHT)
+    space(cv, tw, star=STAR, planets=PLANETS)
+    _grid(cv)
+    return cv.img
+
+
+def _mapa_quad():
+    """Per a cada píxel real de la pantalla: (X, Y, x, y de la carta)."""
+    S = Canvas.S
+    for Y in range(H * S):
+        for X in range(W * S):
+            x, y = _carta((X + 0.5) / S, (Y + 0.5) / S)
+            yield X, Y, x, y
+
+
+def _vidre(cv, pla):
+    """La carta projectada al vidre; fora, el marc de llautó i la penombra del pont."""
+    src = pla.load()
+    P = cv.P
+    for X, Y, x, y in _mapa_quad():
+        if 0 <= x < W and 0 <= y < H:
+            c = src[int(x), int(y)]
+            # el fons, una mica més fosc i més blau (la llum del pont és a prop: el vidre de lluny la reflecteix menys)
+            k = 0.82 + 0.18 * min(1.0, y / 200)
+            P[X, Y] = (int(c[0] * k), int(c[1] * k), int(c[2] * k + (1 - k) * 30), 255)
+            continue
+        d = max(-x, x - W + 1, -y, y - H + 1)                    # a quanta distància del vidre (en unitats de carta)
+        if d < 3:
+            col = GOLD[2]                                         # el bisell fosc de dins
+        elif d < 12:
+            lit = 5.4 if (y < 0 and d < 6) else 4.2 if y < 0 else 3.6 - (0.8 if x > W else 0)
+            col = GOLD[max(0, min(len(GOLD) - 1, round(lit - (d - 3) * 0.12 + (hr(X // 3, Y // 2, 7) - 0.5) * 0.6)))]
+        elif d < 30:
+            col = STEELN[max(0, min(len(STEELN) - 1, round(2.2 - (d - 12) * 0.05 + (hr(X, Y, 8) - 0.5) * 0.5)))]
+        else:
+            # la penombra del pont, més allà de la taula: el terra de xapa, que s'enfosqueix lluny de la taula
+            v = 1.6 - min(1.4, (d - 30) / 60) + (0.6 if (int(x) // 6 + int(y) // 6) % 2 == 0 and d < 90 else 0)
+            col = DECKP[max(0, min(len(DECKP) - 1, round(v + (hr(X // 2, Y // 2, 9) - 0.5) * 0.8)))]
+        P[X, Y] = tuple(col[:3]) + (255,)
+
+
+def _reflex(cv):
+    """El reflex de les bombetes del pont al vidre: dues taques càlides allargades, molt fluixes, en diagonal."""
+    for (x, y), r in (((480, 250), 36), ((150, 300), 26)):
+        u, v = _m(x, y)
+        cv.glow(round(u), round(v), r, (255, 200, 130), 0.08)
+    for k in range(40):
+        u, v = _m(500 + k * 2.2, 40 + k * 1.2)
+        cv.flat(u, v, mix(cv.get(u, v), (200, 210, 230), 0.25))
+
+
+def _planetes(cv):
+    """Els planetes (hologrames drets, al punt de la carta), amb el nom, i el palau i el nom de l'estrella."""
+    star = _m(*STAR)
+    for name, c, r, ramp, rain in PLANETS:
+        u, v = _m(*c)
+        rr = r * _k(*c)
+        cv.glow(round(u), round(v + rr * 0.9), round(rr * 0.9), (120, 170, 220), 0.12)   # la claror al vidre
+        planet(cv, name, (u, v), rr, ramp, rain, star=star)
+        _label(cv, LABELS[name], u, v + rr + 6)
+    pu, pv = _m(*_palau_carta())
+    cv.glow(round(pu), round(pv), 5, (255, 220, 120), 0.35)
+    _label(cv, 'PALAU', pu + 16, pv - 2)
+    vu, vv = _m(34, 214)
+    _label(cv, 'VESPER', vu, vv)
 
 
 def bg(cv):
-    space(cv, _ANIM['estrelles'], star=STAR, planets=PLANETS)
-    _grid(cv)
-    for name, c, r, ramp, rain in PLANETS:
-        planet(cv, name, c, r, ramp, rain, star=STAR)
-        _label(cv, LABELS[name], c[0], c[1] + r + 6)
-    _palau(cv)
-    _label(cv, 'VESPER', 34, 214)
-    _brackets(cv)
+    _vidre(cv, _pla(_ANIM['estrelles']))
+    _planetes(cv)
+    _reflex(cv)
 
 
 _ANIM = {'estrelles': None}
@@ -131,7 +225,9 @@ def _estrelles():
 # ─── La Cantimplora ─────────────────────────────────────────────────────────
 # Una nau cisterna vista de dalt, de 17 píxels: el buc verd oliva i panxut, la franja taronja de seguretat, els
 # tres dipòsits rodons al llom, la cabina ambre al morro i els motors al darrere. Es dibuixa girada (`ang`, en
-# radians; 0 = el morro cap a la dreta) mostrejant cada píxel en les coordenades de la nau.
+# radians; 0 = el morro cap a la dreta) mostrejant cada píxel en les coordenades de la nau. Com els planetes, és un
+# holograma: es dibuixa a la seva mida al punt de la pantalla on cau (x, y de la carta), girada com la ruta a la
+# pantalla.
 
 AMBER = (255, 196, 90)
 ENGINE = (255, 150, 60)
@@ -161,8 +257,8 @@ def _ship_px(u, v):
     return None
 
 
-def ship(cv, x, y, ang, thrust=0.0, light=True, seed=0):
-    """La nau centrada a (x, y). `thrust` (0–1): la flama dels motors. `light`: el llum de navegació."""
+def _ship_pantalla(cv, x, y, ang, thrust=0.0, light=True, seed=0):
+    """La nau centrada a (x, y) de la pantalla. `thrust` (0–1): la flama dels motors. `light`: el llum de navegació."""
     ca, sa = math.cos(ang), math.sin(ang)
     # (es mostreja a cada píxel real: a 2×, la nau girada surt amb el doble de detall)
     for X, Y, px, py in cv.pixels(int(x) - 12, int(y) - 12, int(x) + 12, int(y) + 12):
@@ -184,6 +280,12 @@ def ship(cv, x, y, ang, thrust=0.0, light=True, seed=0):
         cv.glow(round(lx), round(ly), 2, (255, 90, 70), 0.4)
 
 
+def ship(cv, x, y, ang, thrust=0.0, light=True, seed=0):
+    """La nau al punt (x, y) de la carta, amb el morro cap a `ang` (a la carta)."""
+    u, v = _m(x, y)
+    _ship_pantalla(cv, u, v, _ang(x, y, ang), thrust, light, seed)
+
+
 def _frame(draw):
     cv = Canvas(light=LIGHT, img=_base_img().copy())
     draw(cv)
@@ -196,7 +298,7 @@ def _parked(name):
 
 
 def _puff(cv, x, y, age, seed):
-    """Una bufada de fum que s'eixampla i s'esvaeix."""
+    """Una bufada de fum que s'eixampla i s'esvaeix ((x, y): a la pantalla)."""
     if age < 0 or age > 0.9:
         return
     r = 1.5 + age * 5
@@ -217,6 +319,7 @@ N_TREMOLA = 10
 def _tremola(name):
     """Els motors que tussen: la nau tremola, la flama s'encén a batzegades i treu fum."""
     x0, y0 = PARK[name]
+    u0, v0 = _m(x0 - 11, y0)
     out = []
     for f in range(N_TREMOLA):
         jx = round((hr(f, 11) - 0.5) * 2.4)
@@ -226,7 +329,7 @@ def _tremola(name):
         def draw(cv, f=f, jx=jx, jy=jy, thrust=thrust):
             for k in range(3):                                    # una bufada cada 3 fotogrames, que dura 9
                 start = (f // 3 - k) * 3
-                _puff(cv, x0 - 11, y0, ((f - start) % N_TREMOLA) * ZT, 40 + (start % N_TREMOLA))
+                _puff(cv, u0, v0, ((f - start) % N_TREMOLA) * ZT, 40 + (start % N_TREMOLA))
             ship(cv, x0 + jx, y0 + jy, 0.0, thrust=thrust, seed=f)
         out.append(_frame(draw))
     return out
@@ -234,8 +337,8 @@ def _tremola(name):
 
 # ─── El vol ─────────────────────────────────────────────────────────────────
 # Una corba de Bézier de l'aparcament d'origen al de destí, amb el punt de control apartat de l'estrella (un arc,
-# com una òrbita de transferència). Accelera, va de pressa pel mig i frena; en sortir es gira cap al camí i en
-# arribar torna a posar el morro cap a la dreta. Deixa una estela taronja que s'apaga.
+# com una òrbita de transferència), a la carta. Accelera, va de pressa pel mig i frena; en sortir es gira cap al camí i
+# en arribar torna a posar el morro cap a la dreta. Deixa una estela taronja que s'apaga.
 
 def _route(a, b):
     (x0, y0), (x2, y2) = PARK[a], PARK[b]
@@ -247,7 +350,7 @@ def _route(a, b):
         nx, ny = -nx, -ny                                         # que s'allunyi de l'estrella
     bend = 0.14 * d
     cx, cy = mx + nx * bend, my + ny * bend
-    # que no surti de la pantalla ni baixi a la llista d'opcions
+    # que no surti del vidre ni baixi a la llista d'opcions
     cx, cy = max(30, min(W - 30, cx)), max(14, min(236, cy))
     return (x0, y0), (cx, cy), (x2, y2), d
 
@@ -271,7 +374,7 @@ def _vol(a, b):
     p0, p1, p2, d = _route(a, b)
     dur = 2.2 + d / 260                                           # de 2,6 s a uns 4 s
     n = round(dur / ZT)
-    trail = []                                                    # (x, y, edat en fotogrames)
+    trail = []                                                    # (x, y) a la pantalla
     out = []
     for f in range(n + 1):
         t = f / n
@@ -286,7 +389,9 @@ def _vol(a, b):
         ang = _lerp_ang(0.0, path_ang, _ease(turn_in) * _ease(turn_out))
         speed = 1 - abs(2 * t - 1)
         thrust = 0.0 if f == n else max(0.25, min(1.0, 0.3 + speed * 1.2)) if t < 0.85 else 0.3
-        trail.append((x - math.cos(ang) * 11, y - math.sin(ang) * 11))
+        u, v = _m(x, y)
+        sa = _ang(x, y, ang)
+        trail.append((u - math.cos(sa) * 11, v - math.sin(sa) * 11))
         trail = trail[-18:]
 
         def draw(cv, x=x, y=y, ang=ang, thrust=thrust, f=f, tr=list(trail)):
@@ -321,18 +426,22 @@ for _p in NAMES:
                                        'loop': False, 'prop': 'nau'}
 
 
+# ─── Geometria (coordenades de pantalla: els planetes, on cauen) ─────────────
+
 def _zona(name):
     """El rectangle que es pot tocar d'un planeta: el disc i el nom de sota."""
-    _, (cx, cy), r, _, _ = next(p for p in PLANETS if p[0] == name)
-    w = max(r + 4, text_width(LABELS[name]) // 2 + 4)
-    return (cx - w, cy - r - 4, cx + w, cy + r + 14)
+    _, c, r, _, _ = next(p for p in PLANETS if p[0] == name)
+    u, v = _m(*c)
+    rr = r * _k(*c)
+    w = max(rr + 4, text_width(LABELS[name]) // 2 + 4)
+    return (round(u - w), round(v - rr - 4), round(u + w), round(v + rr + 14))
 
 
 def _amb_nau(name):
     """El planeta on som, amb la nau aparcada al costat (tocar-la també vol dir quedar-se)."""
     x0, y0, x1, y1 = _zona(name)
-    px, py = PARK[name]
-    return (min(x0, px - 14), min(y0, py - 10), max(x1, px + 14), max(y1, py + 10))
+    pu, pv = _m(*PARK[name])
+    return (min(x0, round(pu) - 14), min(y0, round(pv) - 10), max(x1, round(pu) + 14), max(y1, round(pv) + 10))
 
 
 def _t(rect):
@@ -340,9 +449,8 @@ def _t(rect):
 
 
 def _zona_palau():
-    _, (cx, cy), r, _, _ = PLANETS[1]
-    px, py = cx + r + 9, cy - r + 2
-    return (px - 5, py - 8, px + 16 + text_width('PALAU') // 2 + 4, py + 8)
+    pu, pv = _m(*_palau_carta())
+    return (round(pu) - 5, round(pv) - 8, round(pu) + 16 + text_width('PALAU') // 2 + 4, round(pv) + 8)
 
 
 # Cada planeta es toca per anar-hi (`<planeta>`: només si és obert i no hi som) o per quedar-se (`aqui_<planeta>`: el
