@@ -17,7 +17,7 @@ import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import (Canvas, Light, B4, W, H, hr as _hr, WALNUT, GOLD, COPPER, RUST, BRICK, IRON, FIRE, RED, PAPER,
                     MANILA, GRAY, WARN, SIL)
 from hd.rooms.fabrica_cambra import STONE, FE9, FIELD, SLATE, CHALK, BULB, REDGL, GLASSD   # noqa: F401
-from hd640.rooms.gavina_passadis import text, text_w
+from hd640.rooms.gavina_passadis_pla_comu import text, text_w
 
 hr = lru_cache(maxsize=None)(_hr)     # (el soroll es repeteix a cada fotograma de l'animació: es desa)
 

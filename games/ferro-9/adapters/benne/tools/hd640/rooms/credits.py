@@ -5,8 +5,8 @@ l'espai, la Terra i la fàbrica es mouen com a la portada.
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
-from hd640.rooms import portada as po
-from hd640.rooms.proleg_gavina import ambient_frames
+from hd640.rooms import portada_pla_comu as po
+from hd640.rooms.proleg_gavina_pla_comu import ambient_frames
 
 LIGHT = po.LIGHT
 

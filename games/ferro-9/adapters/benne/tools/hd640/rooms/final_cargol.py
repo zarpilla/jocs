@@ -19,8 +19,8 @@ import numpy as np
 from PIL import Image, ImageOps
 
 from hd.pix import Canvas, Light, B4, W, H, hr, mix, ramp
-from hd640.rooms.proleg_gavina import espai, terra
-from hd640.rooms.final_estacio import (WALLW, DECK, MINT, text5_px, text5_width, bulb_sign, planter,  # noqa: F401
+from hd640.rooms.proleg_gavina_pla_comu import espai, terra
+from hd640.rooms.final_estacio_pla_comu import (WALLW, DECK, MINT, text5_px, text5_width, bulb_sign, planter,  # noqa: F401
                                        reflect, shadow, stamp, vinyeta, _person, K)
 from hd640.draw_characters import (FigK, f, M, Mat, SCREEN, RUBBER, RUSTY, RUST_BRASS, LAMP_OLD, spiral_lvl,
                                    SKIN_VET, ORANGE, INK)

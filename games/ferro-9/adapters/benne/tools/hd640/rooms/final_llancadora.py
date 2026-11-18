@@ -17,7 +17,7 @@ import random
 from functools import lru_cache
 
 from hd.pix import Canvas, Light, B4, W, H, hr, mix, ramp, COPPER, RUST, TEAL, PAPER
-from hd640.rooms.proleg_gavina import espai, gavina, vinyeta, Noise, OCEAN, LAND, CLOUD, ATMO
+from hd640.rooms.proleg_gavina_pla_comu import espai, gavina, vinyeta, Noise, OCEAN, LAND, CLOUD, ATMO
 from hd.rooms.fabrica_moll import OLDHULL, F9
 
 K = 4 / 3                           # 480 → 640

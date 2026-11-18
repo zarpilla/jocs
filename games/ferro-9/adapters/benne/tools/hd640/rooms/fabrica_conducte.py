@@ -14,7 +14,7 @@ import math
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import Canvas, Light, W, H, R, hr, IRON, COPPER, RUST, WARN, PAPER, RED, GRAY, WALNUT, MANILA, CYAN, B4  # noqa: F401
-from hd640.rooms.gavina_passadis import text, text_w
+from hd640.rooms.gavina_passadis_pla_comu import text, text_w
 
 # ─── Geometria (píxels de 640) ──────────────────────────────────────────────
 FAR = (233, 62, 407, 204)            # la paret del fons (on s'obre el passadís de dret)

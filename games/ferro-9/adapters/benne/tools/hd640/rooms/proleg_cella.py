@@ -15,7 +15,7 @@ import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×36
 import math
 
 from hd.pix import Canvas, Light, hr, mix, ramp, CYAN, SKIN, PAPER, GRAY, ORANGE
-from hd640.rooms.gavina_cella import (_static as cella_static, _dyn as cella_dyn, COVER, p_escarabat, p_safata,
+from hd640.rooms.gavina_cella_pla_comu import (_static as cella_static, _dyn as cella_dyn, COVER, p_escarabat, p_safata,
                                       Ambient, GRIME, MATT)  # noqa: F401
 
 LIGHT = Light(ambient=-0.9, vignette=(120, 67), floor_fade=(253, 40))
@@ -192,7 +192,7 @@ def _base():
 
 
 def _ulls_frames():
-    from hd640.rooms.fabrica_cambra import frame_diff
+    from hd640.rooms.fabrica_cambra_pla_comu import frame_diff
     base = _base()
 
     def layer(state):

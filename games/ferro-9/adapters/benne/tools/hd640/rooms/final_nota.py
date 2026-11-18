@@ -12,8 +12,8 @@ from functools import lru_cache
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import Canvas, Light, B4, W, H, ramp, mix, GOLD, COPPER, RUST, BRICK, IRON, PAPER, STEEL, WARN, MANILA
-from hd640.rooms.fabrica_cambra import FE9, FIELD, rivet, hr, frame_diff, Baked
-from hd640.rooms.gavina_passadis import text, text_w
+from hd640.rooms.fabrica_cambra_pla_comu import FE9, FIELD, rivet, hr, frame_diff, Baked
+from hd640.rooms.gavina_passadis_pla_comu import text, text_w
 
 CX, CY = 320, 149                 # centre del camp
 GX0, GX1, GY0, GY1 = 200, 440, 40, 285          # vidre

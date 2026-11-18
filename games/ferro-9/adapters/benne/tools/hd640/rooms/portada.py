@@ -14,8 +14,8 @@ import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×36
 import math
 
 from hd.pix import Canvas, Light, W, H, hr, mix, ramp, STEEL
-from hd640.rooms import proleg_fabrica as fab
-from hd640.rooms.proleg_gavina import espai, terra, gavina, vinyeta, ambient_frames
+from hd640.rooms import proleg_fabrica_pla_comu as fab
+from hd640.rooms.proleg_gavina_pla_comu import espai, terra, gavina, vinyeta, ambient_frames
 
 K = 4 / 3                                  # 480 → 640
 

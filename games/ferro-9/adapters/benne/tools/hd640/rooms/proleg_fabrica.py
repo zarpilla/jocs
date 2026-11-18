@@ -21,7 +21,7 @@ from PIL import Image
 
 from hd.pix import (Light, B4, W, H, hr, mix, ramp, BRICK, IRON, SMOKE, GLASS, FIRE, GOLD,
                     NAVY, SIL, PAPER, WALNUT, RUST, COPPER)
-from hd640.rooms.proleg_gavina import Noise, vinyeta, ambient_frames
+from hd640.rooms.proleg_gavina_pla_comu import Noise, vinyeta, ambient_frames
 
 K = 4 / 3                                  # 480 → 640
 
@@ -808,7 +808,7 @@ def _base():
 def _iri_frames():
     import numpy as np
     from hd.pix import Canvas
-    from hd640.rooms.fabrica_cambra import frame_diff
+    from hd640.rooms.fabrica_cambra_pla_comu import frame_diff
     base = _base()
     bayer = np.array([[(B4[y & 3][x & 3]) for x in range(W)] for y in range(H)])
     out = []

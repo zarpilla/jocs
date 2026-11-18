@@ -10,7 +10,7 @@ from functools import lru_cache
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import Canvas, B4, W, H, mix
-from hd640.rooms.fabrica_cambra import (bg as cambra_bg, make_light, Baked, BEACON, GLASS, palanca_alcada,
+from hd640.rooms.fabrica_cambra_pla_comu import (bg as cambra_bg, make_light, Baked, BEACON, GLASS, palanca_alcada,
                                         frame_diff)
 
 BX, BY = BEACON[0], BEACON[1] + 4          # centre del vidre del llum giratori
@@ -171,7 +171,7 @@ def _ambient_frames(n=24):
 
 from pathlib import Path  # noqa: E402
 from hd.pix import hr  # noqa: E402
-from hd640.rooms.fabrica_cambra import GLASS  # noqa: E402
+from hd640.rooms.fabrica_cambra_pla_comu import GLASS  # noqa: E402
 
 IRI_ART = Path(__file__).resolve().parents[3] / 'placeholder-art' / 'iri'
 IRI_FEET = 244

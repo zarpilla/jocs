@@ -681,7 +681,7 @@ def _base():
 
 def _layer(draw):
     """Capa transparent amb el que `draw(cv)` canvia sobre el fons quiet."""
-    from hd640.rooms.fabrica_cambra import frame_diff
+    from hd640.rooms.fabrica_cambra_pla_comu import frame_diff
     cv = Canvas(light=LIGHT, img=_base().copy())
     cv.P = cv.img.load()
     draw(cv)

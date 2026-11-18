@@ -19,7 +19,7 @@ import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import (Canvas, Light, B4, W, H, mix, ramp, STEEL, PANEL, RUST, TEAL, WARN, GRAY, SIL, IRON,
                     PAPER, WALNUT, RED, SUIT, SKIN)
 from hd640.draw_characters import person, VET
-from hd640.rooms.gavina_passadis import hr, diff, FONT7
+from hd640.rooms.gavina_passadis_pla_comu import hr, diff, FONT7
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 K4 = 4 / 3                      # 480 → 640

@@ -20,7 +20,7 @@ from hd.pix import (Canvas, Light, B4, W, H, hr, mix, ramp, WALNUT, FLOOR, GOLD,
 from hd.rooms.fabrica_moll import F9, ACER, OLDHULL, HULL, PAINT, MORTAR, NIGHT  # noqa: F401
 
 try:                                     # la pols i els fotogrames, els de la sala del costat (són els mateixos)
-    from hd640.rooms.fabrica_despatx import dust, ambient_frames
+    from hd640.rooms.fabrica_despatx_pla_comu import dust, ambient_frames
 except Exception:                        # (encara no hi és, o no carrega)
     from hd.rooms.fabrica_despatx import dust, ambient_frames
 

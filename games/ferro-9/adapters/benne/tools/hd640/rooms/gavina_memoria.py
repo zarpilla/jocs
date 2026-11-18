@@ -9,7 +9,7 @@ import math
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import Canvas, B4, W, H, mix, STEEL, CYAN, WARN, RED, PAPER, IRON, NAVY
 from hd.rooms.gavina_memoria import MUSE, RESIN, SEPIA, FRAME, VELVET, HOLO, SPOT  # noqa: F401
-from hd640.rooms.gavina_passadis import (LAMPW, SIGN, CORPG, PILOT, FLOOR_Y, WALL_B, CachedLight, hr, text,
+from hd640.rooms.gavina_passadis_pla_comu import (LAMPW, SIGN, CORPG, PILOT, FLOOR_Y, WALL_B, CachedLight, hr, text,
                                          text_w, smile, ambient_frames)
 
 HX, HY = 408, 123                    # centre de l'holograma

@@ -16,7 +16,7 @@ from functools import lru_cache
 from hd.pix import (Canvas, Light, B4, W, H, ramp, STEEL, PANEL, ORANGE, CYAN, TEAL, WARN, RUST, IRON, GRAY,  # noqa: F401
                     PAPER, MANILA, WALNUT, SIL, SPACE, PINK, COPPER, GOLD)
 from hd.rooms.gavina_hangar import WATER, DUST
-from hd640.rooms.fabrica_moll import (pillar, carved_mark, grate, shuttle, pipe, bricks, text, clip_frames, hr, _ys, _xs,
+from hd640.rooms.fabrica_moll_pla_comu import (pillar, carved_mark, grate, shuttle, pipe, bricks, text, clip_frames, hr, _ys, _xs,
                                       _interp, VP, FLOOR_Y, MORTAR)  # noqa: F401
 
 LIGHT = Light(vignette=(93, 53), floor_fade=(264, 59))

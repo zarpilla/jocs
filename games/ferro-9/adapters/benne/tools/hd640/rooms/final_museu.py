@@ -22,11 +22,11 @@ from PIL import Image
 
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import Canvas, B4, W, H, ramp, mix, STEEL, IRON, PAPER, GOLD, WALNUT, RED, WARN, COPPER
-from hd640.rooms.gavina_passadis import PILOT, text, text_w, hr, CachedLight
-from hd640.rooms.fabrica_cambra import FE9
+from hd640.rooms.gavina_passadis_pla_comu import PILOT, text, text_w, hr, CachedLight
+from hd640.rooms.fabrica_cambra_pla_comu import FE9
 from hd640.draw_characters import cargol, person, VET, DENIM, M
 try:
-    from hd640.rooms.gavina_memoria import SEPIA, FRAME, VELVET, spot_cone
+    from hd640.rooms.gavina_memoria_pla_comu import SEPIA, FRAME, VELVET, spot_cone
 except ImportError:                                   # (paletes de 480; spot_cone rep coordenades en píxels)
     from hd.rooms.gavina_memoria import SEPIA, FRAME, VELVET, spot_cone
 

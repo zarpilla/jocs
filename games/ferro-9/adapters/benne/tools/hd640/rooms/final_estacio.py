@@ -21,8 +21,8 @@ from functools import lru_cache
 from PIL import Image, ImageOps
 
 from hd.pix import (Canvas, Light, B4, W, H, hr, mix, ramp, PAPER, WALNUT, GOLD, STEEL)  # noqa: F401
-from hd640.rooms.proleg_gavina import espai, terra, lluna
-from hd640.rooms.fabrica_moll import shuttle, pillar, F9, clip_frames, _bb, _xs, _ys
+from hd640.rooms.proleg_gavina_pla_comu import espai, terra, lluna
+from hd640.rooms.fabrica_moll_pla_comu import shuttle, pillar, F9, clip_frames, _bb, _xs, _ys
 from hd640.draw_characters import (M, person, hair_lvl, waist_band, HAIR_COPPER, GOLDPIN, BELT, BOOT,  # noqa: F401
                                    VET, MOS, GUARDIA)
 import hd.characters as ch

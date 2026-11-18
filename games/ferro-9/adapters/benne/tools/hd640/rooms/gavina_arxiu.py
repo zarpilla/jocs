@@ -9,7 +9,7 @@ import math
 import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
 from hd.pix import (W, H, STEEL, PANEL, WARN, RED, PAPER, MANILA, IRON, SPACE, COPPER, BLUEP, TEAL, GRAY)
 from hd.rooms.gavina_arxiu import OLIVE, VERDIGRIS, BULB
-from hd640.rooms.gavina_passadis import (HULL, DECK, LAMPW, SIGN, FLOOR_Y, WALL_B, CachedLight, hr, text, text_w, wall,
+from hd640.rooms.gavina_passadis_pla_comu import (HULL, DECK, LAMPW, SIGN, FLOOR_Y, WALL_B, CachedLight, hr, text, text_w, wall,
                                          deck, pool, hazard, ambient_frames)
 
 VX, VY = 333, 53                     # punt de fuga del terra

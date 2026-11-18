@@ -15,7 +15,7 @@ from functools import lru_cache
 
 from PIL import Image, ImageChops
 
-from hd640.rooms.fabrica_calderes import drift
+from hd640.rooms.fabrica_calderes_pla_comu import drift
 
 from hd.pix import (Canvas, Light, B4, W, H, hr, mix, WALNUT, GREEN, FLOOR, GOLD, RED, NAVY, SKIN, GRAY, SUIT, PAPER,
                     MANILA, SKY, SIL, IRON, BLUEP, CYAN, LAMPG, COPPER, SMOKE, GLASS)

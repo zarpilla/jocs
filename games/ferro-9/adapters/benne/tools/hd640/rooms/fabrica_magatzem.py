@@ -14,9 +14,9 @@ from functools import lru_cache
 from hd.pix import (Canvas, Light, W, H, hr, WALNUT, FLOOR, GOLD, COPPER, RUST, IRON, RED, GREEN, PAPER,
                     MANILA, GLASS, LAMPG)
 from hd.rooms.fabrica_magatzem import F9, WOOD2, DADO
-from hd640.rooms.fabrica_calderes import (STONE, ENAMEL, CORK, FLOOR_Y, text, text_w, brick_wall, contact_shadow,  # noqa: F401
+from hd640.rooms.fabrica_calderes_pla_comu import (STONE, ENAMEL, CORK, FLOOR_Y, text, text_w, brick_wall, contact_shadow,  # noqa: F401
                                           plank_door, pipe_h, bracket, ceiling, wall_plinth, outline)
-from hd640.rooms.fabrica_despatx import dust, ambient_frames
+from hd640.rooms.fabrica_despatx_pla_comu import dust, ambient_frames
 
 LIGHT = Light(vignette=(93, 53), floor_fade=(264, 53))
 LIGHT.point(517, 112, r=200, k=2.8, squash=1.1, down=True, power=1.8)    # llum penjant del banc
