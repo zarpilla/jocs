@@ -26,7 +26,7 @@ from hd.pix import Canvas, Light, W, H, hr, mix, B4, RUST
 from hd.rooms.arenga import (WALL, ENG_LIGHT as ENG, DECK, CAB, REDP, YELL, SEAG, DARK, WHITEP, BRASS, WARM,
                              box, rrect, bolt, hpipe, vpipe, glow)
 from hd.rooms.comu import text, text_width
-from hd640.rooms.sala_maquines import ceiling, _frame, _inside, _sill, _label
+from hd640.rooms.sala_maquines_pla_comu import ceiling, _frame, _inside, _sill, _label
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).

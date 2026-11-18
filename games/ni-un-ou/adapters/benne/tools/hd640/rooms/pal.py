@@ -15,7 +15,7 @@ from hd.pix import Canvas, Light, W, H, hr, mix, B4
 from hd.rooms.arenga import CAB, DARK, REDP, YELL, WHITEP, box, bolt, vpipe, hpipe, glow
 from hd.rooms.comu import _diff, text, text_width
 from hd.rooms.exterior import fbm, NSEA, REDH, ROPE, DECKX, LAMP, GLOW_WARM
-from hd640.rooms.coberta_popa import night_sky, _wave
+from hd640.rooms.coberta_popa_pla_comu import night_sky, _wave
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).

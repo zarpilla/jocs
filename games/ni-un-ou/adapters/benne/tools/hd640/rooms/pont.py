@@ -15,7 +15,7 @@ from hd.rooms.arenga import CAB, ENG, DARK, WHITEP, REDP, YELL, BRASS, WARM, box
 from hd.rooms.comu import _diff, text
 from hd.rooms.exterior import day_sky, day_sea
 from hd.rooms.pont import BRI, AMB, SCRG, WOOD, FLOORB, NSKY, NSEA
-from hd640.rooms.sala_radio import door_frame
+from hd640.rooms.sala_radio_pla_comu import door_frame
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).

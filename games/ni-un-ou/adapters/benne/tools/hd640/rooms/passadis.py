@@ -19,8 +19,8 @@ from hd.rooms.arenga import CAB, DARK, WHITEP, REDP, YELL, BRASS, SEAG, box, rre
 from hd.rooms.comu import _diff, text, text_width
 from hd.rooms.principal import (CREAM, TEAK, DOORP, in_door, sill, plaque, porthole, day_porthole, unmask,
                                 foot_shadow, wear, second_hand)
-from hd640.rooms.laboratori import wall, ceiling, lamp, lamp_glow, lino, shine, door_frame
-from hd640.rooms.menjador import leaf, sign_box
+from hd640.rooms.laboratori_pla_comu import wall, ceiling, lamp, lamp_glow, lino, shine, door_frame
+from hd640.rooms.menjador_pla_comu import leaf, sign_box
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).

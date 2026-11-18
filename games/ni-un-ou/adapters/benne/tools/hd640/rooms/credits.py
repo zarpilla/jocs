@@ -8,7 +8,7 @@ import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×36
 from hd.pix import Light, Canvas, H
 from hd.rooms.comu import _diff
 from hd.rooms.exterior import arenga, reflection
-from hd640.rooms.portada import night_sky, night_sea, K
+from hd640.rooms.portada_pla_comu import night_sky, night_sea, K
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).

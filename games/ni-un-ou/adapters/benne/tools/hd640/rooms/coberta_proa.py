@@ -16,7 +16,7 @@ from hd.rooms.arenga import REDP
 from hd.rooms.comu import _diff, text
 from hd.rooms.arenga import YELL
 from hd.rooms.exterior import smooth, HULLN, REDH, STEELX, CABX, ORANGEB, ROPE, WINDOW, GLOW_WARM
-from hd640.rooms.coberta_popa import (night_sky, day_sky, night_sea, day_sea, bulwark, deck_floor, bitts, coil,
+from hd640.rooms.coberta_popa_pla_comu import (night_sky, day_sky, night_sea, day_sea, bulwark, deck_floor, bitts, coil,
                                       wt_door, deck_lamp, gull)
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la

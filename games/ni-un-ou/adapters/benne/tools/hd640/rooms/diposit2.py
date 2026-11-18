@@ -15,7 +15,7 @@ from hd.pix import Canvas, Light, W, H, hr, mix, RUST
 from hd.rooms.arenga import DARK, WHITEP, BRASS, WARM, box, rrect, bolt, hpipe, vpipe, glow
 from hd.rooms.comu import _diff, text, text_width
 from hd640.font import font640, draw_text, text_width as font_width
-from hd640.rooms.pallol import FLOOR_Y, vladder, rust_streaks
+from hd640.rooms.pallol_pla_comu import FLOOR_Y, vladder, rust_streaks
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).

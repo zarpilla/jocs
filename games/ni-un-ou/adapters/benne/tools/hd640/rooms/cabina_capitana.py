@@ -19,7 +19,7 @@ from hd.rooms.comu import _diff, text, text_width
 from hd.rooms.principal import (CREAM, TEAK, LINO, DOORP, NIGHT, DAYSKY, DAYSEA, sill, porthole as _porthole,
                                 day_porthole, second_hand, foot_shadow, floor_shadow)
 from hd.rooms.laboratori import PAPERC, BLUEB
-from hd640.rooms.laboratori import wall, ceiling, lamp, lamp_glow, lino, shine, door_frame
+from hd640.rooms.laboratori_pla_comu import wall, ceiling, lamp, lamp_glow, lino, shine, door_frame
 
 # Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
 # resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
