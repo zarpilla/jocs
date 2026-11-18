@@ -138,7 +138,8 @@ class Escena:
     def __init__(self, cv, cam, llums=(), ambient=0.0):
         self.cv, self.cam, self.llums, self.ambient = cv, cam, list(llums), ambient
         self.S = cv.S
-        self.amo = bytearray(cv.w * cv.h)                # 0 = ningú; si no, l'índex de la superfície + 1
+        # 0 = ningú; si no, l'índex de la superfície + 1 (de 16 bits: una sala gran en té més de 255)
+        self.amo = array('H', bytes(2 * cv.w * cv.h))
         self.ids = ['']
         self.caixes = {}                                 # id → (u0, v0, u1, v1) en coordenades de sala
         self.mapes = {}                                  # índex → (array X, Y, TX, TY, k): per reprojectar capes
