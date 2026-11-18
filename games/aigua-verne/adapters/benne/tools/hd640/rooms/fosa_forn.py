@@ -1,394 +1,518 @@
 """
-Aigua Verne — `fosa_forn` (L): la fosa de Ferrum per dins, la banda del forn.
+Aigua Verne — `fosa_forn` (L: persones de ≈83 px): la fosa de Ferrum per dins, la banda del forn. EN 3D
+(hd640/tres_d.py), a 1×.
 
-Una nau alta i fosca de maó negre, amb les encavallades de ferro a dalt i finestrals bruts per on entra una llum de
-fum. A l'esquerra, la **porta** del carrer (oberta: la claror de fora); la pila de **comptadors** d'aigua per fondre
-(el **metall**); al mig, el **forn** gran de maó amb la campana de ferro i la boca de foc (freda: la fosa està
-aturada des de la vaga); al costat, la **manxa** (el fol de cuir i la palanca gran); el **termòmetre** de rellotge,
-a la pilastra; el **rascle** de l'escòria, recolzat a la paret; i a la dreta, el **pas** cap a la colada.
+La nau, vista de biaix i des de dalt, mirant la cantonada de l'esquerra: la paret del carrer fuig cap al fons amb la
+**porta** oberta en escorç (la claror grisa de fora entra en diagonal pel terra i la fulla de fusta es veu oberta cap
+a dins); la paret del fons, de maó negre amb els finestrals bruts (feixos de llum de fum en diagonal), i a la dreta el
+**pas** cap a la colada, una obertura alta i fosca al fons. Al mig, el **forn**: un volum de maó amb la boca, la
+campana de ferro (un tronc de piràmide) i la xemeneia que travessa el sostre. Al costat, la **manxa**, girada: el fol
+de cuir en falca sobre el cavallet, el broc a la tovera del forn i la palanca amb la cadena. Les columnes de ferro
+colat aguanten les bigues del carril de la grua, que fugen cap al fons: a la de l'esquerra hi ha el **termòmetre**
+(el capil·lar va pel terra fins al forn); a la de la dreta, recolzat, el **rascle**. Al costat de la porta, la pila de
+**comptadors** (el **metall**) i una carretilla girada. En primer pla, fosc i tallat per la vora, un pilar de maó, la
+cadena d'un polispast que penja i un munt de carbó.
 
-Decorats (PROPS): `forn_ences` (el forn encès: brases, llum càlida a tota la nau, l'agulla del termòmetre a mitja
-esfera) i `forn_fort` (a tota manxa: llum blanca-groga, agulla a la zona vermella). ANIMS: `foc` (les flames de la
-boca, amb el forn encès), `foc_fort` (les flames a tota manxa) i `guspires`.
+La llum: sense foc, la nau és fosca, amb la claror freda de la porta i dels finestrals (les cares que miren la porta,
+més clares; els racons i el sostre, negres). Amb el forn encès (`forn_ences`, `forn_fort`) la llum del foc ve de la
+boca i pinta de taronja cada cara segons com la mira (la mateixa escena, il·luminada amb el foc, i la diferència de
+llum tenyida de taronja), amb les ombres llargues cap a la càmera.
+
+El detall ve de la fosa plana de sempre (fosa_forn_pla_comu.py): la paret amb els finestrals i el pas, la façana del
+forn amb la boca, el termòmetre, la porta i la pila de comptadors es dibuixen de cara i es projecten. Les flames
+(`foc`, `foc_fort`) es dibuixen planes i es projecten per la façana del forn; les guspires (`guspires`) salten de la
+boca en el món.
+
+El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (860 = la paret del fons);
+1 unitat = 1 píxel de sala a la distància on un personatge fa la seva mida de lluny (83 px).
 """
-import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
-
 import functools
 import math
 
+import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
+import numpy as np
 from PIL import Image
 
-from hd.pix import Canvas, Light, W, H, hr, mix, B4
-from hd.rooms.comu import _diff, text, text_width
+from hd.pix import Canvas, Light, W, H, hr
+from hd.rooms.comu import _diff
 from hd.rooms.exterior import fbm
-from hd640.rooms.ferrum_comu import (
-    RH, SMOG, HAZE, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WHITEV, BLACKT, FIREF, GLOWF,
-    CLOTH, REDP, HELM, NAVE_FLOOR,
-    brick_wall, brick_lvl, cobbles, pila_comptadors, nave_wall, light_shafts, trusses, crane_rail, foundry_floor)
+from hd640.rooms import fosa_forn_pla_comu as PL
+from hd640.rooms.ferrum_comu import (RH, SMOG, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, RUSTF, PLANKF, FIREF,
+                                     brick_lvl, nave_wall, crane_rail, pila_comptadors)
+from hd640.tres_d import Camera, Escena, Llum
 
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+BOTTOM = RH - 1                                    # la sala acaba aquí (a sota, la barra de verbs)
+ZB = 860                                           # la paret del fons
+KW = 1.8                                           # unitats del món per píxel del dibuix pla de la paret del fons
+HW = (198 - 31) * KW                               # l'alçada de les parets (fins a les encavallades)
+XR = 640 * KW                                      # on s'acaba la paret del fons (a la dreta, fora de pantalla)
+PAS = (372 * KW, 450 * KW, (198 - 64) * KW)        # el pas a la colada, a la paret del fons: x0, x1, alçada
+DOOR = (600.0, 600 + 61 * 1.6, 96 * 1.6)           # la porta del carrer, a la paret de l'esquerra: z0, z1, alçada
+FORN = (258.0, 502.0, 150.0, 154.0)                # el forn: x0, x1, fondària, alçada del cos
+FCX = (FORN[0] + FORN[1]) / 2
+FZ0 = ZB - FORN[2]                                 # la façana del forn
+HOOD = 290.0                                       # dalt de la campana
+COL1, COL2 = (196.0, 600.0), (742.0, 540.0)        # les columnes de ferro colat (x, z)
+MANXA = (536.0, 772.0, -0.62, 112.0, 40.0)         # el fol: la frontissa (x, z), l'angle, la llargada, l'amplada
+METALL = (118.0, 520.0)                            # la pila de comptadors (x, z)
+CARRET = (214.0, 494.0, 0.55)                      # la carretilla (x, z, angle)
+DIAL_Y = 128.0                                     # l'altura del termòmetre a la columna
 
-BOCA = (255, 176)               # el centre de la boca del forn
-FORN = (172, 338, 92, 206)      # x0, x1, dalt del cos, base
-DIAL = (150, 126, 15)           # el termòmetre: centre i radi
-LEATHER = [(18, 10, 8), (34, 18, 12), (54, 30, 18), (76, 44, 26), (100, 60, 34), (126, 80, 46), (150, 102, 62)]
+CAM = Camera(pos=(520, 185, 60), yaw=-0.16, pitch=0.11, f=430, centre=(330, 108))
 
-LIGHTS = {}
-for lvl, (k, r) in {0: (0, 0), 1: (2.2, 300), 2: (2.9, 380)}.items():
-    L = Light(ambient=-0.5, vignette=(80, 40), floor_fade=(250, 30))
-    L.point(36, 160, r=150, k=1.6, power=1.6)                    # la claror del carrer, per la porta
-    for wx in (96, 404, 498):
-        L.point(wx + 14, 70, r=120, k=0.9, power=1.6)            # els finestrals
-    if k:
-        L.point(BOCA[0], BOCA[1], r=r, k=k, power=1.6)           # el foc
-    LIGHTS[lvl] = L
-LIGHT = LIGHTS[0]
-WARM = {1: ((255, 120, 40), 0.3, 340), 2: ((255, 160, 70), 0.38, 420)}
+LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)      # (la llum és la del món: la de l'Escena)
+PLA = Light(ambient=0.2, vignette=None, floor_fade=None)        # la llum neutra de les textures planes
+AMBIENT = -1.2
+WINDOWS = (40, 300, 520)                           # els finestrals (x del dibuix pla de la paret del fons)
+LLUMS = [Llum(((wx + 14) * KW, 220, ZB - 70), 420, 1.0, power=1.4) for wx in WINDOWS] + [
+    Llum((20, 80, (DOOR[0] + DOOR[1]) / 2), 560, 2.8, power=1.3),          # la claror del carrer, per la porta
+]
+FOC = {1: Llum((FCX, 46, FZ0 - 24), 760, 3.0, power=1.2), 2: Llum((FCX, 50, FZ0 - 24), 900, 4.0, power=1.1)}
+PPELL = PL.LEATHER                                 # el cuir de la manxa
+TARONJA = {1: (1.6, 0.62, 0.2), 2: (1.5, 0.95, 0.42)}          # com tenyeix la llum del foc (r, g, b)
 
 
-# ─── La nau ────────────────────────────────────────────────────────────────
+# ─── Les textures: la fosa plana ─────────────────────────────────────────────
 
-def nau(cv):
-    trusses(cv, 0, 30, seed=3)
-    nave_wall(cv, 0, W - 1, top=31, seed=5, windows=((96, 28), (404, 28), (498, 28)), pilasters=(150, 556))
+@functools.lru_cache(maxsize=None)
+def _paret():
+    """La paret del fons, de cara: maó negre, pilastres, els finestrals, el carril de la grua i el pas."""
+    cv = Canvas(light=PLA)
+    nave_wall(cv, 0, W - 1, top=31, seed=5, windows=tuple((wx, 28) for wx in WINDOWS), pilasters=(132, 252, 600))
     crane_rail(cv, 86)
-    light_shafts(cv, ((96, 28, 60), (404, 28, 60), (498, 28, 60)), k=0.16)
+    tmp = Canvas(light=PLA)
+    PL.pas(tmp)                                                    # (el pas pla és a x 562..640: es trasllada)
+    cv.img.paste(tmp.img.crop((562, 58, 640, 199)), (int(PAS[0] / KW) - 6, 58))
+    return cv.img
 
 
-def porta(cv):
-    """La porta del carrer, oberta: la claror grisa i taronja de fora, i un tros de carrer."""
-    x0, x1, top = 14, 64, 108
-    cv.rect(x0 - 5, top - 6, x1 + 5, NAVE_FLOOR, MORTAR, lambda x, y: 2.4 - (0.8 if (y - top) % 8 == 7 else 0))
-    for y in range(top, NAVE_FLOOR + 1):
-        for x in range(x0, x1 + 1):
-            if y < 168:
-                cv.put(x, y, SMOG, 6.4 - (y - top) * 0.02 + (fbm(x / 9, y / 4, 13) - 0.5) * 1.6, lit=0)   # el cel
-            else:
-                cv.put(x, y, COB, 5.0 + (y - 168) * 0.05 + (fbm(x / 4, y / 2, 14) - 0.5) * 1.2, lit=0)    # el carrer
-    # una casa de fora i el pal del panell, en silueta
-    cv.rect(x0, 134, x0 + 22, 168, SOOT, lambda x, y: 2.6 + (0.8 if (y % 4 == 0) else 0), lit=0)
-    cv.rect(x0 + 6, 144, x0 + 12, 154, GLOWF, 2.6, lit=0)
-    cv.rect(x1 - 10, 120, x1 - 9, 168, IRONF, 2.0, lit=0)
-    # la fulla de la porta, de fusta, oberta cap a dins
-    cv.poly([(x1, top), (x1 + 16, top + 6), (x1 + 16, NAVE_FLOOR + 8), (x1, NAVE_FLOOR)], PLANKF,
-            lambda x, y: 2.2 - (1.2 if (x - x1) % 5 == 0 else 0))
-    cv.rect(x0 - 1, NAVE_FLOOR - 1, x1 + 1, NAVE_FLOOR + 1, MORTAR, 3.6)
+@functools.lru_cache(maxsize=None)
+def _porta():
+    cv = Canvas(light=PLA)
+    PL.porta(cv, fulla=False)
+    return cv.img
 
 
-# ─── El forn ───────────────────────────────────────────────────────────────
-
-def forn(cv, fire=0):
-    x0, x1, top, base = FORN
-    cx = (x0 + x1) // 2
-    # la xemeneia, que surt pel sostre, i la campana de ferro
-    for y in range(0, 52):
-        for x in range(cx - 18, cx + 19):
-            u = (x - cx) / 18
-            cv.put(x, y, IRONF, 2.6 - u * 1.4 + (0.8 if y % 18 == 0 else 0) - abs(u) ** 6 * 1.4)
-    cv.rect(cx - 20, 18, cx + 20, 20, IRONF, lambda x, y: 3.6 - (y - 18) * 0.8)
-    def hood_lvl(x, y):
-        t = (y - 50) / (top - 50)
-        hw = 20 + (x1 - x0) / 2 * t
-        u = (x - cx) / max(1, hw)
-        v = 2.8 - u * 1.2 + (fbm(x / 6, y / 8, 21) - 0.5) * 1.0
-        if (x - cx) % 14 == 0:
-            v -= 1.0                                                                  # juntes de les planxes
-        return v
-    cv.poly([(cx - 20, 50), (cx + 20, 50), (x1 + 4, top), (x0 - 4, top)], IRONF, hood_lvl)
-    for i in range(-5, 6):                                                            # reblons de la campana
-        t = 0.9
-        cv.put(cx + i * 14 * t, top - 3, IRONF, 4.6)
-    cv.rect(x0 - 6, top - 1, x1 + 6, top + 3, IRONF, lambda x, y: 3.8 - (y - top + 1) * 0.5)
-    cv.tint(x0, 50, x1, top, (110, 50, 26), lambda x, y: 0.35 * fbm(x / 5, y / 9, 22) ** 2)
-    # el cos de maó refractari, amb tirants i cèrcols de ferro
-    brick_wall(cv, x0, top + 4, x1, base, base=3.0, seed=23, bw=10, bh=4,
-               soot=lambda x, y: 0.9 * max(0.0, 1 - abs(x - cx) / 40) * max(0.0, 1 - abs(y - 132) / 30))
-    for bx in (x0 + 4, x1 - 6):                                                       # els muntants
-        cv.rect(bx, top + 4, bx + 2, base, IRONF, lambda x, y: 3.8 - (x - bx) * 0.8)
-    for by in (top + 16, base - 10):                                                  # els tirants
-        cv.rect(x0, by, x1, by + 2, IRONF, lambda x, y: 3.6 - (y - by) * 0.8)
-        for bx in (x0 + 5, x1 - 5):
-            cv.disc(bx, by + 1, 2.4, 2.4, IRONF, 4.6)
-    # la boca, d'arc, amb el marc de ferro colat
-    bcx, btop, bbot, bw = BOCA[0], 142, 198, 28
-    spring = 156
-    for y in range(btop - 6, bbot + 1):
-        for x in range(bcx - bw - 6, bcx + bw + 7):
-            dx = x - bcx
-            if y < spring:
-                r = math.hypot(dx, (y - spring) * (bw / (spring - btop)))
-                inner, outer = r <= bw, r <= bw + 6
-            else:
-                inner, outer = abs(dx) <= bw, abs(dx) <= bw + 6
-            if inner:
-                d = (y - btop) / (bbot - btop)
-                if fire == 0:
-                    v = 0.6 + max(0.0, d - 0.7) * 3 + (fbm(x / 3, y / 3, 25) - 0.5) * 0.8      # cendra freda
-                    cv.put(x, y, COAL, v, lit=0)
-                else:
-                    hot = 0.8 + d ** 1.5 * 4.6 + (fbm(x / 4, y / 3, 26) - 0.5) * 1.6 + fire * 0.5
-                    cv.put(x, y, FIREF, hot - abs(dx) / bw * 1.6, lit=0)
-            elif outer:
-                ang = math.atan2(y - spring, dx)
-                cv.put(x, y, IRONF, 3.4 - math.cos(ang) * 0.8 - (1.4 if hr(int(ang * 10), 3) > 0.85 else 0))
-    if fire == 0:
-        for i in range(10):                                                           # carbó i cendra a la solera
-            cv.disc(bcx - 20 + hr(i, 1) * 40, bbot - 4 - hr(i, 2) * 6, 2 + hr(i, 3) * 2, 1.4, SLAGF,
-                    lambda nx, ny: 2.6 - ny, lit=0)
-    else:
-        for i in range(26):                                                           # les brases
-            bx = bcx - 24 + hr(i, 4) * 48
-            by = bbot - 3 - hr(i, 5) * 8
-            cv.disc(bx, by, 2 + hr(i, 6) * 2, 1.6, FIREF, lambda nx, ny: 6.4 - ny * 2 - (1.6 if fire == 1 else 0) +
-                    hr(i, 7) * 0.8, lit=0)
-            cv.flat(bx, by + 2, FIREF[1])
-    # la porta de ferro de la boca, aixecada (penja d'una cadena)
-    cv.rect(bcx - bw - 2, btop - 18, bcx + bw + 2, btop - 8, IRONF, lambda x, y: 3.2 - (y - btop + 18) * 0.1 +
-            (fbm(x / 4, y / 3, 27) - 0.5) * 0.8)
-    cv.rect(bcx - bw - 2, btop - 8, bcx + bw + 2, btop - 8, COAL, 1.0)
-    cv.line(bcx, btop - 18, bcx + 4, top + 6, IRONF, 2.6)
-    # la solera de ferro i el canal de colada, cap a la dreta
-    cv.rect(bcx - bw - 8, bbot, bcx + bw + 8, bbot + 6, IRONF, lambda x, y: 4.2 - (y - bbot) * 0.5)
-    # la tovera: el tub de la manxa que entra pel costat
-    cv.rect(x1 - 2, 182, x1 + 14, 188, IRONF, lambda x, y: 4.0 - abs(y - 184) * 0.6)
-    # una placa de fosa amb l'any
-    cv.rect(cx + 40, top + 24, cx + 66, top + 34, IRONF, 3.2)
-    text(cv, '1907', cx + 45, top + 27, IRONF, 5.4)
+@functools.lru_cache(maxsize=None)
+def _forn(fire):
+    cv = Canvas(light=PL.LIGHTS[fire] if fire else PLA)
+    PL.forn(cv, fire)
+    return cv.img
 
 
-# ─── La manxa ──────────────────────────────────────────────────────────────
-
-def manxa(cv, fire=0):
-    """La manxa de la fosa: un fol gros de cuir (dues posts en falca i els plecs) sobre un cavallet, i la palanca:
-    una biga que bascula en un pal, lligada al fol per una barra; de l'altra punta penja la cadena amb el mànec."""
-    hx, hy = 350, 186                         # la frontissa del fol (a tocar del forn)
-    x1 = 432                                  # la punta del fol
-    open_ = 26 if fire == 0 else 18
-    # el cavallet
-    for lx in (hx + 8, x1 - 12):
-        cv.poly([(lx - 4, 212), (lx, 192), (lx + 3, 192), (lx + 7, 212)], PLANKF, lambda x, y: 3.2 - (x - lx) * 0.1)
-    cv.rect(hx + 2, 190, x1 - 4, 193, PLANKF, lambda x, y: 3.8 - (y - 190) * 0.5)
-    # la post de baix
-    cv.rect(hx, 186, x1, 189, PLANKF, lambda x, y: 4.0 - (y - 186) * 0.6 + (0.6 if x % 17 == 0 else 0))
-    top = lambda x: hy - 2 - open_ * (x - hx) / (x1 - hx)
-    # els plecs de cuir: un ventall de plecs que surten de la frontissa
-    for x in range(hx + 1, x1):
-        ty = top(x)
-        for y in range(int(ty) + 2, 186):
-            k = (186 - y) / max(1.0, 186 - ty)                                          # 0 a baix, 1 a dalt
-            fold = (k * 5) % 1
-            v = 2.6 + (1.4 if fold < 0.35 else -0.2) - (1.2 if 0.9 < fold else 0) - (x - hx) * 0.004
-            if x > x1 - 3:
-                v -= 1.0
-            cv.put(x, y, LEATHER, v)
-    # la post de dalt (gruixuda, amb dos cèrcols de ferro) i el pes de pedra a sobre
-    for x in range(hx - 4, x1 + 4):
-        y = top(min(x, x1))
-        for k in range(4):
-            cv.put(x, y - k + 2, PLANKF, 4.6 - k * 0.7 - (1.4 if k == 0 else 0))
-    for bx in (hx + 30, hx + 62):
-        for k in range(5):
-            cv.put(bx, top(bx) - 2 + k, IRONF, 4.0)
-            cv.put(bx + 1, top(bx) - 2 + k, IRONF, 2.6)
-    # el broc: un tub de ferro que entra a la tovera del forn
-    cv.rect(FORN[1] + 2, 181, hx + 2, 186, IRONF, lambda x, y: 4.2 - abs(y - 183) * 0.7)
-    cv.disc(hx - 2, 186, 4, 4, IRONF, lambda nx, ny: 4.0 - nx - ny)
-    # la palanca: el pal de suport, la biga i la barra que baixa fins a la punta del fol
-    px, py = 448, 112
-    cv.rect(px - 2, py, px + 2, 212, PLANKF, lambda x, y: 3.8 - (x - px + 2) * 0.5 - (0.6 if y % 19 == 0 else 0))
-    cv.poly([(px - 7, 212), (px + 7, 212), (px + 4, 206), (px - 4, 206)], PLANKF, 2.6)
-    ax, ay = x1 - 6, top(x1 - 6) - 2
-    bl, br = (ax - 4, py + 6), (506, py - 8)
-    for k in range(4):
-        cv.line(bl[0], bl[1] + k - 2, br[0], br[1] + k - 2, PLANKF, 4.6 - k * 0.8)
-    cv.disc(px, py, 3.4, 3.4, IRONF, lambda nx, ny: 4.6 - nx - ny)                       # l'eix
-    cv.disc(px, py, 1, 1, COAL, 1.0)
-    for k in range(2):                                                                   # la barra
-        cv.line(ax + k, ay, bl[0] + 2 + k, bl[1] + 2, IRONF, 3.6 - k * 1.2)
-    cv.disc(ax, ay, 2, 2, IRONF, 4.4)
-    # la cadena i el mànec, a l'altra punta
-    cy = br[1] + 2
-    for y in range(cy, 170, 3):
-        cv.disc(br[0] - 2, y, 1, 1.4, IRONF, 4.4 - (1.4 if (y // 3) % 2 else 0))
-    cv.rect(br[0] - 9, 170, br[0] + 5, 173, PLANKF, lambda x, y: 4.6 - (y - 170) * 0.6)
-
-# ─── Termòmetre, rascle, metall ────────────────────────────────────────────
-
-def termometre(cv, fire=0):
-    cx, cy, r = DIAL
-    # el capil·lar que ve del forn i el suport de la pilastra
-    cv.line(cx + r + 1, cy + 8, FORN[0] - 6, cy + 8, IRONF, 3.0)
-    cv.line(cx + r + 1, cy + 9, FORN[0] - 6, cy + 9, COAL, 1.0)
-    cv.rect(cx - 3, cy + r, cx + 3, cy + r + 10, IRONF, 3.0)
-    cv.disc(cx, cy, r + 3, r + 3, TIN, lambda nx, ny: 4.6 - nx * 1.2 - ny * 1.2)          # el bisell de llautó
-    cv.disc(cx, cy, r, r, WHITEV, lambda nx, ny: 3.4 - ny * 0.6 - nx * 0.3)
-    # la zona vermella (de 9 a 10)
-    for a in range(0, 360, 2):
-        an = math.radians(a)
-        frac = ((a - 135) % 360) / 270
-        if frac <= 1:
-            for d in (r - 1, r - 2):
-                x, y = cx + math.cos(an) * d, cy + math.sin(an) * d
-                if frac > 0.78:
-                    cv.put(x, y, REDP, 4.4, lit=0)
-            if int(frac * 270) % 27 == 0:
-                for d in range(r - 4, r - 1):
-                    cv.put(cx + math.cos(an) * d, cy + math.sin(an) * d, COAL, 1.0)
-    text(cv, 'C', cx - 1, cy + 5, COAL, 1.4)
-    frac = {0: 0.04, 1: 0.5, 2: 0.88}[fire]
-    an = math.radians(135 + frac * 270)
-    cv.line(cx, cy, cx + math.cos(an) * (r - 3), cy + math.sin(an) * (r - 3), REDP, 3.0, lit=0)
-    cv.line(cx, cy, cx - math.cos(an) * 3, cy - math.sin(an) * 3, COAL, 1.0, lit=0)
-    cv.disc(cx, cy, 1.4, 1.4, IRONF, 4.0)
-    cv.put(cx - r * 0.5, cy - r * 0.55, WHITEV, 7.0, lit=0)                                # reflex del vidre
-    cv.put(cx - r * 0.45, cy - r * 0.6, WHITEV, 7.0, lit=0)
+@functools.lru_cache(maxsize=None)
+def _dial(fire):
+    cv = Canvas(light=PLA, transparent=True)
+    PL.termometre(cv, fire)
+    cx, cy, r = PL.DIAL
+    return cv.img.crop((cx - r - 4, cy - r - 4, cx + r + 5, cy + r + 11)), (r + 4, r + 4)
 
 
-def rascle(cv):
-    """El rascle de l'escòria: un pal de ferro llarg amb la pala plana, recolzat a la paret."""
-    for k in range(2):
-        cv.line(540 + k, 104, 522 + k, 214, IRONF, 4.0 - k * 1.8)
-    cv.poly([(512, 210), (532, 212), (532, 218), (512, 216)], IRONF, lambda x, y: 3.4 - (y - 210) * 0.2)
-    cv.rect(538, 100, 544, 106, PLANKF, 3.4)                                               # el mànec
-    cv.tint(512, 208, 532, 218, (90, 50, 30), 0.35)
-
-
-def metall(cv):
-    """El metall per fondre: la pila de comptadors de Verne que han portat els miners, i una carretilla."""
+@functools.lru_cache(maxsize=None)
+def _pila():
+    cv = Canvas(light=PLA, transparent=True)
     pila_comptadors(cv, 70, 156, 236, 38, seed=11)
-    # la carretilla, mig plena
-    cv.poly([(84, 206), (124, 206), (118, 222), (90, 222)], IRONF, lambda x, y: 3.0 - (x - 84) * 0.02)
-    cv.rect(84, 205, 124, 206, IRONF, 4.6)
+    return cv.img.crop((62, 192, 164, 242)), (113 - 62, 236 - 192)
 
 
-# ─── El pas cap a la colada ────────────────────────────────────────────────
+# ─── Peces ──────────────────────────────────────────────────────────────────
 
-def pas(cv):
-    """Una obertura gran a la paret de la dreta: l'altra banda de la nau, fosca, amb el gresol que s'hi endevina."""
-    x0, x1, top = 568, 640, 64
-    cv.rect(x0 - 6, top - 6, x1, top - 1, MORTAR, lambda x, y: 3.0 - (y - top + 6) * 0.2)
-    for y in range(top, NAVE_FLOOR + 1):
-        for x in range(x0, x1):
-            cv.put(x, y, COAL, 0.8 + (y - top) * 0.004 + (fbm(x / 10, y / 10, 33) - 0.5) * 0.6, lit=0)
-    cv.rect(x0 - 6, top, x0 - 1, NAVE_FLOOR, MORTAR, lambda x, y: 2.6 - (x - x0 + 6) * 0.3)
-    # el pont grua de l'altra banda i el gresol, en silueta
-    cv.rect(x0, 86, x1, 92, IRONF, 1.4, lit=0)
-    cv.line(612, 92, 612, 128, IRONF, 1.2, lit=0)
-    cv.poly([(598, 130), (626, 130), (622, 156), (602, 156)], IRONF, 1.2, lit=0)
-    cv.rect(x0 + 4, 170, x0 + 40, NAVE_FLOOR, SLAGF, 1.2, lit=0)                         # sacs
-    cv.tint(x0, top, x1, NAVE_FLOOR, (60, 40, 40), 0.2)
+def _brick(seed, base=2.4, soot=None):
+    """Maó en coordenades del món (`a` al llarg de la paret, `y` amunt), del mateix gra que la paret plana."""
+    def L(a, y):
+        return brick_lvl(int(a / KW), int((HW - y) / KW), 0, 0, bw=12, bh=4, base=base, seed=seed,
+                         soot=soot)
+    return L
+
+
+def _terra(s, t, P):
+    """Sorra negra trepitjada: grans, taques d'oli i escòria, en coordenades del món (més menuda cap al fons)."""
+    x, z = P[0], P[2]
+    v = 2.6 + (fbm(x / 90, z / 60, 9) - 0.5) * 1.4 + (hr(int(x) // 3, int(z) // 3, 9) - 0.5) * 0.7
+    cx, cz = int(x // 26), int(z // 26)
+    if hr(cx, cz, 31) > 0.82:                                      # trossos d'escòria
+        ox, oz = hr(cx, cz, 32) * 26, hr(cx, cz, 33) * 26
+        d = math.hypot(x - cx * 26 - ox, (z - cz * 26 - oz) * 1.3)
+        r = 2 + hr(cx, cz, 34) * 3
+        if d < r:
+            v += 1.4 - d / r * 1.2
+        elif d < r + 1.6:
+            v -= 0.9
+    if fbm(x / 60, z / 45, 21) > 0.66:                             # taques d'oli
+        v -= 0.9
+    worn = max(0.0, 1 - abs(z - 560) / 160) * max(0.0, 1 - abs(x - 420) / 360)
+    return v + worn * 0.6
+
+
+def _planxes(s, t, P):
+    """Les planxes de ferro davant la boca del forn (on es treballa amb el rascle)."""
+    x, z = P[0], P[2]
+    v = 2.8 + (fbm(x / 20, z / 14, 2) - 0.5) * 1.4 + (0.6 if (int(x) + int(z) * 2) % 17 == 0 else 0)
+    if s % 62 < 1.6 or t % 46 < 1.6:
+        v -= 1.8
+    return v
+
+
+def cilindre(e, sid, cx, cz, r, y0, y1, ramp, lvl, n=24):
+    """Un cilindre vertical: les facetes que es veuen. `lvl(angle, y, P)`."""
+    for i in range(n):
+        a0, a1 = 2 * math.pi * i / n, 2 * math.pi * (i + 1) / n
+        p0 = (cx + r * math.cos(a0), cz + r * math.sin(a0))
+        p1 = (cx + r * math.cos(a1), cz + r * math.sin(a1))
+        e.quad(sid, (p0[0], y1, p0[1]), (p1[0], y1, p1[1]), (p1[0], y0, p1[1]), (p0[0], y0, p0[1]), ramp=ramp,
+               lvl=lambda s, t, P: lvl(math.atan2(P[2] - cz, P[0] - cx), P[1], P))
+
+
+def tronc(e, sid, cx, cz, wb, db, wt, dt, zt, y0, y1, ramp, lvl):
+    """Un tronc de piràmide (una campana): la base wb × db centrada a (cx, cz), el cim wt × dt centrat a (cx, zt),
+    de y0 a y1. Les cares inclinades que es veuen (trapezis: el polígon és el dels quatre cantons); `lvl(s, t, P)`."""
+    zb0, zb1, zt0, zt1 = cz - db / 2, cz + db / 2, zt - dt / 2, zt + dt / 2
+    xb0, xb1, xt0, xt1 = cx - wb / 2, cx + wb / 2, cx - wt / 2, cx + wt / 2
+    e.quad(sid, (xt1, y1, zt0), (xt1, y1, zt1), (xb1, y0, zb1), (xb1, y0, zb0), ramp=ramp, lvl=lvl)
+    e.quad(sid, (xt0, y1, zt1), (xt0, y1, zt0), (xb0, y0, zb0), (xb0, y0, zb1), ramp=ramp, lvl=lvl)
+    e.quad(sid, (xt0, y1, zt0), (xt1, y1, zt0), (xb1, y0, zb0), (xb0, y0, zb0), ramp=ramp, lvl=lvl)
+
+
+def _local(o, a):
+    """Un sistema de coordenades girat `a` al voltant de la vertical, amb l'origen a o = (x, z): (u, y, w) → món."""
+    c, s_ = math.cos(a), math.sin(a)
+    return lambda u, y, w: (o[0] + u * c - w * s_, y, o[1] + u * s_ + w * c)
+
+
+# ─── La sala ────────────────────────────────────────────────────────────────
+
+def nau(e):
+    zn = CAM.pos[2] - 60
+    # el sostre, negre, amb les encavallades de ferro (fugen cap al fons)
+    e.quad('sostre', (0, HW, zn), (XR + 400, HW, zn), (XR + 400, HW, ZB), (0, HW, ZB), ramp=COAL,
+           lvl=lambda s, t, P: 0.6 + (fbm(P[0] / 80, P[2] / 60, 3) - 0.5) * 0.6, dues_cares=True)
+    for z in (380, 620, ZB - 20):
+        e.cable('sostre', [(0, HW - 8, z), (XR + 200, HW - 8, z)], IRONF, 1.6, gruix=6)
+        for x in range(0, int(XR) + 200, 70):
+            e.cable('sostre', [(x, HW - 8, z), (x + 35, HW + 40, z), (x + 70, HW - 8, z)], IRONF, 1.2, gruix=2.4)
+    # la paret de l'esquerra (la del carrer): maó, amb pilastres; de prop, més sutge
+    e.quad('paret_esq', (0, HW, zn), (0, HW, ZB), (0, 0, ZB), (0, 0, zn), ramp=SOOT,
+           lvl=lambda s, t, P: _brick(17)(P[2], P[1]) - 0.9 * max(0.0, 1 - (HW - P[1]) / 120))
+    # la paret del fons (el dibuix pla) i la de la dreta del pas (planxa de maó més enllà del dibuix)
+    e.quad('paret_fons', (0, HW, ZB), (XR, HW, ZB), (XR, 0, ZB), (0, 0, ZB), tex=(_paret(), (0, 31, W, 198)))
+    e.quad('paret_fons', (XR, HW, ZB), (XR + 600, HW, ZB), (XR + 600, 0, ZB), (XR, 0, ZB), ramp=SOOT,
+           lvl=lambda s, t, P: _brick(19)(P[0], P[1]))
+    # el terra, i les planxes davant la boca
+    e.quad('terra', (0, 0, ZB), (XR + 600, 0, ZB), (XR + 600, 0, zn), (0, 0, zn), ramp=COB, lvl=_terra)
+    e.quad('terra', (FORN[0] - 20, 0.2, FZ0), (FORN[1] + 30, 0.2, FZ0), (FORN[1] + 30, 0.2, FZ0 - 92),
+           (FORN[0] - 20, 0.2, FZ0 - 92), ramp=IRONF, lvl=_planxes)
+    # el pas a la colada: els brancals de maó, que fan gruix, i el terra de l'altra banda, fosc
+    x0, x1, ph = PAS
+    e.quad('pas_terra', (x0, 0.3, ZB + 120), (x1, 0.3, ZB + 120), (x1, 0.3, ZB), (x0, 0.3, ZB), ramp=COB,
+           lvl=lambda s, t, P: 1.0 - t / 120)
+    for bx in (x0 - 14, x1):
+        e.caixa('pas', bx, bx + 14, 0, ph + 10, ZB - 16, ZB, MORTAR, 2.4,
+                cares={'davant': {'ramp': MORTAR, 'lvl': lambda s, t, P: _brick(23, 2.8)(P[0], P[1])},
+                       'esquerra': {'ramp': MORTAR, 'lvl': 1.8}, 'dreta': {'ramp': MORTAR, 'lvl': 1.6}})
+    e.caixa('pas', x0 - 14, x1 + 14, ph, ph + 14, ZB - 16, ZB, MORTAR, 3.0)
+    # la porta del carrer: l'obertura (el dibuix pla), i la fulla de fusta oberta cap a dins
+    z0, z1, dh = DOOR
+    e.quad('porta', (0.5, dh, z0), (0.5, dh, z1), (0.5, 0, z1), (0.5, 0, z0), tex=(_porta(), (9, 102, 70, 198)))
+    a = math.radians(64)                                           # (oberta 64°, amb la frontissa al brancal del fons)
+    fx = 80 * math.sin(a)
+    e.quad('porta_fulla', (0.5, dh - 6, z1 + 2), (fx, dh - 6, z1 + 2 - 80 * math.cos(a)),
+           (fx, 2, z1 + 2 - 80 * math.cos(a)), (0.5, 2, z1 + 2), ramp=PLANKF, dues_cares=True,
+           lvl=lambda s, t, P: 2.6 - (1.4 if s % 12 < 1.4 else 0) + (fbm(s / 5, t / 30, 4) - 0.5) * 0.8
+           - (1.0 if abs(t - 30) < 3 or abs(t - 120) < 3 else 0))
+    # la claror del carrer: entra per la porta i s'escampa en ventall pel terra, cap a la dreta i endavant
+    zc = (z0 + z1) / 2
+
+    def ventall(s, t):
+        x, dz = s, (z1 + 60 - t) - zc
+        return 0.8 * max(0.0, 1 - x / 440) ** 1.2 * max(0.0, 1 - abs(dz + 0.38 * x) / (52 + 0.5 * x)) ** 0.8
+    e.claror((0, 0.5, z1 + 60), (440, 0.5, z1 + 60), (440, 0.5, 380), (0, 0.5, 380), (206, 182, 156), ventall)
+    # la foscor dels racons: on les parets toquen a terra, la cantonada, i el sostre
+    e.foscor('racons', (0, 0.5, ZB), (XR + 600, 0.5, ZB), (XR + 600, 0.5, zn), (0, 0.5, zn),
+             lambda s, t: max(0.6 * max(0.0, 1 - t / 60), 0.5 * max(0.0, 1 - s / 50)))
+    e.foscor('cantonada', (0, HW, ZB - 0.5), (120, HW, ZB - 0.5), (120, 0, ZB - 0.5), (0, 0, ZB - 0.5),
+             lambda s, t: 0.6 * max(0.0, 1 - s / 120))
+    e.foscor('dalt', (0, HW, ZB - 0.6), (XR, HW, ZB - 0.6), (XR, HW - 140, ZB - 0.6), (0, HW - 140, ZB - 0.6),
+             lambda s, t: 0.55 * max(0.0, 1 - t / 140))
+    e.foscor('dalt_esq', (0.6, HW, zn), (0.6, HW, ZB), (0.6, HW - 140, ZB), (0.6, HW - 140, zn),
+             lambda s, t: 0.55 * max(0.0, 1 - t / 140))
+    # els feixos de llum dels finestrals, en diagonal fins a terra
+    for wx in WINDOWS:
+        a0, a1 = wx * KW, (wx + 28) * KW
+        e.claror((a0, 262, ZB - 2), (a1, 262, ZB - 2), (a1 + 70, 0, ZB - 330), (a0 + 70, 0, ZB - 330), (190, 150, 116),
+                 lambda s, t: 0.24 * (1 - t / 420) * (0.5 + fbm(s / 12, t / 40, wx)))
+
+
+def columna(e, sid, x, z, fins=None):
+    """Una columna de ferro colat: el fust, el capitell que aguanta la biga del carril de la grua, i la base."""
+    lv = lambda a, y, P: 2.6 - math.cos(a - 2.0) * 1.2 + (1.2 if y % 60 < 3 else 0)       # noqa: E731
+    cilindre(e, sid, x, z, 8, 0, 236, IRONF, lv, n=14)
+    e.caixa(sid, x - 13, x + 13, 0, 10, z - 13, z + 13, IRONF, 2.8,
+            cares={'dalt': {'ramp': IRONF, 'lvl': 3.8}, 'davant': {'ramp': IRONF, 'lvl': 2.6}})
+    e.caixa(sid, x - 14, x + 14, 232, 244, z - 14, z + 14, IRONF, 3.0, cares={'davant': {'ramp': IRONF, 'lvl': 2.4}})
+
+
+def bigues(e):
+    """Les bigues del carril de la grua, damunt les columnes: fugen cap al fons."""
+    zn = CAM.pos[2] - 40
+    for x, _ in (COL1, COL2):
+        e.caixa('bigues', x - 10, x + 10, 244, 270, zn, ZB, IRONF, 2.4,
+                cares={'davant': {'ramp': IRONF, 'lvl': 1.4},
+                       'esquerra': {'ramp': IRONF, 'lvl': lambda s, t, P: 1.8 + (1.2 if t < 3 else 0)
+                                    - (1.4 if P[2] % 90 < 3 else 0)},
+                       'dreta': {'ramp': IRONF, 'lvl': lambda s, t, P: 1.8 - (1.2 if P[2] % 90 < 3 else 0)},
+                       'sota': {'ramp': IRONF, 'lvl': 0.6}})
+        e.caixa('bigues', x - 3, x + 3, 270, 276, zn, ZB, IRONF, 3.6)                     # el carril
+
+
+def forn(e, fire):
+    x0, x1, fd, fh = FORN
+    tex = _forn(fire)
+    side = _brick(23, 2.8, soot=lambda a, y: 0.8 * max(0.0, 1 - y / 40))
+    # el cos de maó refractari: la façana és el dibuix pla (x 168..342, de y 96 a la base, 206)
+    e.caixa('forn', x0, x1, 0, fh, FZ0, ZB, SOOT, 2.6,
+            cares={'davant': {'tex': (tex, (168, 96, 342, 206))},
+                   'dreta': {'ramp': SOOT, 'lvl': lambda s, t, P: side(P[2], P[1])},
+                   'esquerra': {'ramp': SOOT, 'lvl': lambda s, t, P: side(P[2], P[1])},
+                   'dalt': {'ramp': IRONF, 'lvl': 1.6}})
+    # els cèrcols i els tirants de ferro que l'abracen pels costats
+    for y in (22, fh - 26):
+        e.caixa('forn', x0 - 3, x0, y, y + 5, FZ0 - 3, ZB, IRONF, 3.2)
+        e.caixa('forn', x1, x1 + 3, y, y + 5, FZ0 - 3, ZB, IRONF, 3.2)
+    # la vora de la campana i la campana (un tronc de piràmide de planxa), i la xemeneia
+    e.caixa('forn', x0 - 8, x1 + 8, fh, fh + 7, FZ0 - 8, ZB, IRONF, 3.4,
+            cares={'davant': {'ramp': IRONF, 'lvl': lambda s, t, P: 3.4 + (1.4 if s % 24 < 2 and 2 < t < 5 else 0)}})
+    hood = lambda s, t, P: (2.8 + (fbm(P[0] / 12, P[1] / 16, 21) - 0.5) * 1.2           # noqa: E731
+                            - (1.2 if (P[0] - FCX) % 30 < 1.6 else 0) - (0.9 if P[1] % 44 < 1.4 else 0))
+    tronc(e, 'forn', FCX, (FZ0 - 8 + ZB) / 2, x1 - x0 + 16, ZB - FZ0 + 8, 60, 52, ZB - 34, fh + 7, HOOD, IRONF,
+          hood)
+    cilindre(e, 'forn', FCX, ZB - 34, 26, HOOD, HW + 60, IRONF,
+             lambda a, y, P: 2.4 - math.cos(a - 2.0) * 1.2 + (1.4 if y % 70 < 4 else 0), n=18)
+    # la tovera (el tub de la manxa entra pel costat de la dreta)
+    e.tub('forn', (x1 + 2, 38, FZ0 + 46), _local(MANXA[:2], MANXA[2])(-6, 39, 0), 4.4, IRONF, 2.8, brides=40)
+
+
+def manxa(e):
+    """La manxa: el fol de cuir en falca sobre el cavallet, girat; la palanca, amb el pal, la biga i la cadena."""
+    hx, hz, ang, Lm, Wm = MANXA
+    L = _local((hx, hz), ang)
+    w2 = Wm / 2
+    ub, uc = Lm / 2, Lm + 2
+    # el cavallet: dues potes en A i el travesser
+    for u in (18, Lm - 16):
+        cx, _, cz = L(u, 0, 0)
+        e.caixa_girada('manxa', cx, cz, 7, Wm + 14, 30, ang, PLANKF, 2.6,
+                       cares={'dalt': {'ramp': PLANKF, 'lvl': 3.8}, 'davant': {'ramp': PLANKF, 'lvl': 2.4}})
+    cx, _, cz = L(ub, 0, 0)
+    e.caixa_girada('manxa', cx, cz, Lm + 4, Wm + 8, 5, ang, PLANKF, 3.4, y0=30,
+                   cares={'dalt': {'ramp': PLANKF, 'lvl': 4.0}})
+    # el cuir: els dos costats (falques amb els plecs) i el darrere (el fons de l'acordió)
+    top = lambda u: 38 + 36 * u / Lm                                                      # noqa: E731
+    pleat = lambda s, t, P, hgt: (2.6 + (1.4 if ((hgt - t) / max(1.0, hgt) * 5) % 1 < 0.35 else -0.2)  # noqa: E731
+                                  - (1.0 if ((hgt - t) / max(1.0, hgt) * 5) % 1 > 0.88 else 0))
+    for w in sorted((-w2, w2), key=lambda w: -math.dist(L(ub, 50, w), CAM.pos)):
+        e.quad('manxa', L(0, 76, w), L(Lm, 76, w), L(Lm, 35, w), L(0, 35, w), ramp=PPELL, dues_cares=True,
+               lvl=lambda s, t, P: pleat(s, t - (76 - top(s)), P, top(s) - 35),
+               forma=lambda s, t: t >= 76 - top(s) - 0.5)
+    e.quad('manxa', L(Lm, 74, -w2), L(Lm, 74, w2), L(Lm, 35, w2), L(Lm, 35, -w2), ramp=PPELL, dues_cares=True,
+           lvl=lambda s, t, P: 2.4 + (1.4 if (t / 39 * 5) % 1 < 0.35 else -0.4) - abs(s - w2) / w2 * 0.6)
+    # la post de dalt, inclinada, amb dos cèrcols de ferro, i el pes de pedra
+    e.quad('manxa', L(-4, 40, -w2 - 3), L(uc, 77, -w2 - 3), L(uc, 77, w2 + 3), L(-4, 40, w2 + 3), ramp=PLANKF,
+           dues_cares=True,
+           lvl=lambda s, t, P: 3.8 - (1.4 if s % 18 < 1.2 else 0) + (1.4 if abs(s - 40) < 3 or abs(s - 78) < 3 else 0))
+    # el broc, de ferro
+    e.tub('manxa', L(-14, 39, 0), L(2, 39, 0), 5, IRONF, 3.2)
+    # la palanca: el pal, la biga (de l'extrem del fol cap enlaire), la barra i la cadena amb el mànec
+    px, _, pz = L(Lm + 14, 0, w2 + 20)
+    e.caixa('manxa', px - 3, px + 3, 0, 150, pz - 3, pz + 3, PLANKF, 3.0,
+            cares={'davant': {'ramp': PLANKF, 'lvl': lambda s, t, P: 3.2 - (0.8 if t % 40 < 2 else 0)}})
+    e.caixa('manxa', px - 7, px + 7, 0, 7, pz - 7, pz + 7, PLANKF, 2.6)
+    A = L(Lm - 18, 116, w2 + 20)
+    B = L(Lm + 60, 164, -46)
+    e.cable('manxa', [A, (px, 150, pz), B], PLANKF, 3.8, gruix=5)
+    e.cable('manxa', [L(Lm - 4, 78, 0), A], IRONF, 3.4, gruix=2)
+    e.cable('manxa', [B, (B[0], 70, B[2])], IRONF, 4.2, gruix=1.6)
+    e.caixa('manxa', B[0] - 9, B[0] + 9, 62, 66, B[2] - 2, B[2] + 2, PLANKF, 4.2)
+
+
+
+def termometre(e, fire):
+    x, z = COL1
+    # el capil·lar: de l'esfera, columna avall i pel terra fins al costat del forn
+    e.cable('capil', [(x - 2, DIAL_Y - 12, z - 10), (x - 2, 4, z - 10), (x + 30, 1.2, z + 10),
+                      (FORN[0] - 30, 1.2, FZ0 + 30), (FORN[0], 30, FZ0 + 30)], IRONF, 2.6, gruix=1.4)
+    img, peu = _dial(fire)
+    e.sprite('termometre', img, peu, (x, DIAL_Y, z - 12), escala_img=1.4)
+
+
+def rascle(e):
+    x, z = COL2
+    foot, top = (x - 34, 2, z - 24), (x - 6, 168, z - 10)
+    e.cable('rascle', [foot, top], IRONF, 3.8, gruix=2.4)
+    e.cable('rascle', [(top[0], top[1] - 2, top[2]), (top[0] + 1, top[1] + 12, top[2] + 1)], PLANKF, 4.0, gruix=3.4)
+    a = 0.5
+    e.quad('rascle', (foot[0] - 15 * math.cos(a), 12, foot[2] + 15 * math.sin(a)),
+           (foot[0] + 15 * math.cos(a), 12, foot[2] - 15 * math.sin(a)),
+           (foot[0] + 15 * math.cos(a), 0.6, foot[2] - 15 * math.sin(a)),
+           (foot[0] - 15 * math.cos(a), 0.6, foot[2] + 15 * math.sin(a)), ramp=IRONF, dues_cares=True,
+           lvl=lambda s, t, P: 3.0 - t * 0.08 + (fbm(s / 4, t / 4, 5) - 0.5))
+
+
+def metall(e):
+    """La pila de comptadors (el dibuix pla, dret) i la carretilla, girada, amb la seva ombra."""
+    mx, mz = METALL
+    e.foscor('ombra_metall', (mx - 64, 0.6, mz + 26), (mx + 64, 0.6, mz + 26), (mx + 64, 0.6, mz - 34),
+             (mx - 64, 0.6, mz - 34), lambda s, t: 0.6 * max(0.0, 1 - ((s - 64) / 64) ** 2 - ((t - 30) / 30) ** 2) * 1.6)
+    img, peu = _pila()
+    e.sprite('metall', img, peu, (mx, 0, mz), escala_img=1.5)
+    cx, cz, a = CARRET
+    L = _local((cx, cz), a)
+    e.foscor('ombra_metall', L(-36, 0.6, -24), L(36, 0.6, -24), L(36, 0.6, 24), L(-36, 0.6, 24),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - 36) / 36) ** 2 - ((t - 24) / 24) ** 2) * 1.5)
+    e.caixa_girada('metall', cx, cz, 50, 32, 16, a, IRONF, 2.8, y0=14,
+                   cares={'dalt': {'ramp': COB, 'lvl': lambda s, t, P: 1.0 if 3 < s < 47 and 3 < t < 29 else 4.4},
+                          'davant': {'ramp': IRONF, 'lvl': lambda s, t, P: 3.2 - t * 0.08},
+                          'dreta': {'ramp': IRONF, 'lvl': 2.2}, 'esquerra': {'ramp': IRONF, 'lvl': 3.6}})
+    e.quad('metall', L(-34, 16, 0), L(-18, 16, 0), L(-18, 0, 0), L(-34, 0, 0), ramp=RUSTF, dues_cares=True,
+           lvl=lambda s, t, P: 2.4 + (1.4 if math.hypot(s - 8, t - 8) > 5.6 else -0.6),
+           forma=lambda s, t: math.hypot(s - 8, t - 8) <= 8)                               # la roda
+    for w in (-12, 12):                                                                   # els mànecs
+        e.cable('metall', [L(22, 28, w), L(56, 22, w * 1.1), L(58, 0, w * 1.1)], PLANKF, 3.6, gruix=2.2)
+
+
+def primer_pla(e):
+    """Fosc i tallat per la vora: les caixes de motlles de la dreta, la cadena del polispast i el munt de carbó."""
+    for (cx, cz, w, d, h, ang, y0) in ((640, 420, 96, 60, 44, 0.32, 0), (700, 470, 80, 56, 40, -0.2, 0),
+                                       (650, 424, 70, 46, 30, 0.5, 44)):
+        e.caixa_girada('primer_pla', cx, cz, w, d, h, ang, PLANKF, 1.4, y0=y0,
+                       cares={'dalt': {'ramp': PLANKF, 'lvl': lambda s, t, P: 2.2 - (1.2 if s % 16 < 1.4 else 0)},
+                              'davant': {'ramp': PLANKF, 'lvl': lambda s, t, P: 1.2 - (0.8 if t % 11 < 1.2 else 0)
+                                         + (1.0 if s < 3 else 0)},
+                              'esquerra': {'ramp': PLANKF, 'lvl': 0.8}, 'dreta': {'ramp': PLANKF, 'lvl': 0.6}})
+    hx, hz = 430, 330                                                                     # el polispast
+    for dx in (-6, 6):
+        e.cable('primer_pla', [(hx + dx, HW + 30, hz), (hx + dx * 0.5, 156, hz)], IRONF, 2.0, gruix=2.4)
+    e.caixa('primer_pla', hx - 5, hx + 5, 146, 158, hz - 3, hz + 3, IRONF, 3.4,
+            cares={'davant': {'ramp': IRONF, 'lvl': lambda s, t, P: 3.2 + (1.6 if 4 < t < 7 else 0)}})  # el bossell
+    e.cable('primer_pla', [(hx, 144, hz), (hx, 130, hz), (hx - 6, 122, hz), (hx, 116, hz), (hx + 5, 120, hz)],
+            IRONF, 2.8, gruix=2.6)                                                         # el ganxo
+    for (x, z, r, seed) in ((150, 384, 52, 3), (70, 420, 38, 5), (236, 380, 22, 7)):
+        e.roca('primer_pla', (x, 0, z), r, COAL, 1.6, llum_dir=(-0.6, -0.6), seed=seed)
+
+
+def ombres_foc(e):
+    """Amb el forn encès, les ombres llargues que el foc de la boca fa pel terra, lluny de la boca."""
+    bx, bz = FCX, FZ0 - 24
+    L = _local(MANXA[:2], MANXA[2])
+    for (x, z, w, ll) in ((*COL1, 22, 260), (*COL2, 22, 300), (METALL[0], METALL[1], 110, 220),
+                          (CARRET[0], CARRET[1], 60, 200), (L(MANXA[3] / 2, 0, 0)[0], L(MANXA[3] / 2, 0, 0)[2], 70, 160)):
+        d = math.hypot(x - bx, z - bz)
+        dx, dz = (x - bx) / d, (z - bz) / d
+        px, pz = -dz * w / 2, dx * w / 2
+        P0, P1 = (x - px, 0.7, z - pz), (x + px, 0.7, z + pz)
+        e.foscor('ombra_foc', P0, P1, (P1[0] + dx * ll, 0.7, P1[2] + dz * ll), (P0[0] + dx * ll, 0.7, P0[2] + dz * ll),
+                 lambda s, t, w=w, ll=ll: 0.75 * (1 - t / ll) * min(1.0, (w / 2 - abs(s - w / 2)) / (w * 0.2) + 0.1))
+
+
+def escena(cv, fire=0, foc=False):
+    """Tota la sala, de lluny a prop; `fire`: el dibuix del forn (0, 1, 2); `foc`: la llum del foc al món."""
+    e = Escena(cv, CAM, LLUMS + ([FOC[fire]] if foc and fire else []), ambient=AMBIENT)
+    nau(e)
+    forn(e, fire)
+    bigues(e)
+    # les ombres a terra: el forn, la manxa, les columnes
+    e.foscor('ombra', (FORN[0] - 30, 0.6, FZ0), (FORN[1] + 30, 0.6, FZ0), (FORN[1] + 30, 0.6, FZ0 - 40),
+             (FORN[0] - 30, 0.6, FZ0 - 40), lambda s, t: 0.5 * max(0.0, 1 - t / 40))
+    L = _local(MANXA[:2], MANXA[2])
+    e.foscor('ombra', L(-10, 0.6, -40), L(MANXA[3] + 20, 0.6, -40), L(MANXA[3] + 20, 0.6, 40), L(-10, 0.6, 40),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - 70) / 70) ** 2 - ((t - 40) / 40) ** 2) * 1.6)
+    for x, z in (COL1, COL2):
+        e.foscor('ombra', (x - 14, 0.6, z + 70), (x + 40, 0.6, z + 70), (x + 40, 0.6, z - 30), (x - 14, 0.6, z - 30),
+                 lambda s, t: 0.45 * max(0.0, 1 - abs(s - 14 - (t - 30) * 0.25) / 14) * max(0.0, 1 - abs(t - 30) / 40))
+    if foc and fire:
+        ombres_foc(e)
+    manxa(e)
+    columna(e, 'columna_dreta', *COL2)
+    rascle(e)
+    columna(e, 'columna_esq', *COL1)
+    termometre(e, fire)
+    metall(e)
+    primer_pla(e)
+    return e
 
 
 # ─── Composició ────────────────────────────────────────────────────────────
 
-def draw(cv, fire=0):
-    nau(cv)
-    foundry_floor(cv, NAVE_FLOOR, RH - 1, seed=9, plates=((168, 206, 344, 226), (344, 212, 430, 230)))
-    porta(cv)
-    pas(cv)
-    forn(cv, fire)
-    termometre(cv, fire)
-    rascle(cv)
-    manxa(cv, fire)
-    metall(cv)
-    # ombres al terra
-    cv.darken(160, 204, 350, 214, lambda x, y: 0.7 if fire == 0 else 0)
-    cv.darken(346, 210, 440, 214, 0.6)
-    cv.darken(60, 234, 166, 240, lambda x, y: 0.8 if ((x - 113) / 50) ** 2 + ((y - 236) / 3) ** 2 <= 1 else 0)
-    if fire:
-        col, k, rr = WARM[fire]
-        bx, by = BOCA
-        cv.tint(0, 0, W - 1, RH - 1, col, lambda x, y: k * max(0.0, 1 - math.hypot(x - bx, (y - by) * 1.2) / rr) ** 1.4)
-        cv.glow(bx, by + 6, 46 + fire * 10, (255, 200, 120), 0.5 + fire * 0.15)
-        # la llum del foc al terra, davant la boca
-        cv.tint(bx - 70, 206, bx + 70, RH - 1, (255, 170, 80),
-                lambda x, y: 0.2 * fire * max(0.0, 1 - math.hypot((x - bx) / 70, (y - 206) / 40)))
-    for y in range(RH, H):
-        for x in range(W):
-            cv.flat(x, y, (0, 0, 0))
+def _negre(cv):
+    cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)      # la barra de verbs: negre
+
+
+@functools.lru_cache(maxsize=None)
+def _escena(fire, foc):
+    cv = Canvas(light=LIGHT)
+    e = escena(cv, fire, foc)
+    _negre(cv)
+    return cv.img, e
+
+
+@functools.lru_cache(maxsize=None)
+def _base(fire=0):
+    """La sala amb el forn en l'estat `fire`: sense foc, tal qual; amb foc, la llum del foc tenyida de taronja."""
+    img, e = _escena(fire, False)
+    if not fire:
+        return img, e
+    lit, _ = _escena(fire, True)
+    a = np.asarray(lit).astype(np.float32)
+    b = np.asarray(img).astype(np.float32)
+    dl = np.clip((a[..., :3] - b[..., :3]).mean(axis=2, keepdims=True), 0, None)
+    out = b[..., :3] + dl * np.array(TARONJA[fire], np.float32) * 1.6
+    out = np.concatenate([np.clip(out, 0, 255), b[..., 3:]], axis=2).astype(np.uint8)
+    return Image.fromarray(out, 'RGBA'), e
 
 
 def bg(cv):
-    draw(cv, 0)
-
-
-# ─── Decorats ──────────────────────────────────────────────────────────────
-
-@functools.lru_cache(maxsize=None)
-def _render(fire):
-    cv = Canvas(light=LIGHTS[fire])
-    draw(cv, fire)
-    return cv.img
+    img, _ = _base(0)
+    cv.img.paste(img)
+    cv.P = cv.img.load()
 
 
 def _fire_prop(fire):
     def fn(cv):
-        cv.img.alpha_composite(_diff(_render(fire), _render(0)))
+        cv.img.alpha_composite(_diff(_base(fire)[0], _base(0)[0]))
     return fn
 
 
-forn_ences = _fire_prop(1)
-forn_fort = _fire_prop(2)
-
-PROPS = {'forn_ences': forn_ences, 'forn_fort': forn_fort}
+PROPS = {'forn_ences': _fire_prop(1), 'forn_fort': _fire_prop(2)}
 
 
-# ─── Animacions ─────────────────────────────────────────────────────────────
-
-def _flames(fire, n=8):
-    """Les flames que surten de la boca i llepen l'arc; més altes i més blanques a tota manxa."""
-    bcx, bbot, bw = BOCA[0], 196, 26
-    frames = []
-    hmax = 30 if fire == 1 else 44
-    for f in range(n):
-        img = Image.new('RGBA', (W * Canvas.S, H * Canvas.S), (0, 0, 0, 0))
-        cv = Canvas(light=LIGHTS[fire], img=img)
-        ph = f / n * 2 * math.pi
-        for y in range(bbot - hmax, bbot - 2):
-            t = (bbot - 2 - y) / hmax
-            for x in range(bcx - bw, bcx + bw + 1):
-                u = (x - bcx) / bw
-                # que no surtin de l'arc
-                spring, btop = 156, 142
-                if y < spring and math.hypot(x - bcx, (y - spring) * (28 / (spring - btop))) > 27:
-                    continue
-                sway = math.sin(ph + t * 5 + u * 2) * 0.12 * t
-                tongue = 0.5 + 0.5 * math.sin((u + sway) * 9 + ph * 2 + 1.3 * math.sin(ph + u * 3))
-                hgt = (1 - abs(u) ** 2.2) * (0.45 + 0.6 * tongue)
-                if t < hgt:
-                    lvl = 6.8 - t / max(0.05, hgt) * 3.6 - abs(u) * 0.6 + (0.6 if fire == 2 else -0.2)
-                    if lvl > 3.4:
-                        cv.put(x, y, FIREF, lvl, lit=0)
-        frames.append(img)
-    return frames
+def _flames(fire):
+    _, e = _base(fire)
+    return [e.capa(f, {'forn'}) for f in PL._flames(fire)]
 
 
 def _frames_guspires():
-    """Guspires que salten de la boca i cauen fent un arc (més com més fort)."""
-    bcx, by = BOCA[0], 168
-    frames = []
+    """Guspires que salten de la boca cap a la càmera i cauen fent un arc, al món (a la mida de cada distància)."""
+    out = []
     n = 16
     for f in range(n):
         cv = Canvas(transparent=True)
-        for k in range(9):
+        for k in range(12):
             s = ((f / n) + hr(k, 1)) % 1
-            vx = (hr(k, 2) - 0.3) * 70
-            vy = -40 - hr(k, 3) * 40
-            x = bcx + (hr(k, 4) - 0.5) * 30 + vx * s
-            y = by + vy * s + 90 * s * s
-            if s < 0.85 and 0 <= x < W and 0 <= y < RH:
-                c = FIREF[6] if s < 0.25 else FIREF[5] if s < 0.55 else FIREF[3]
-                cv.flat(x, y, c)
-                if s < 0.4:
-                    px, py = int(x - vx * 0.02), int(y - (vy + 180 * s) * 0.02)
-                    if 0 <= px < W and 0 <= py < RH:
-                        cv.flat(px, py, FIREF[4])
-        frames.append(cv.img)
-    return frames
+            P0 = (FCX + (hr(k, 4) - 0.5) * 50, 40 + hr(k, 6) * 20, FZ0 - 4)
+            v = ((hr(k, 2) - 0.5) * 120, 70 + hr(k, 3) * 70, -90 - hr(k, 5) * 120)
+            P = (P0[0] + v[0] * s, P0[1] + v[1] * s - 220 * s * s, P0[2] + v[2] * s)
+            if s > 0.85 or P[1] < 0:
+                continue
+            u, vv, _ = CAM.projecta(P)
+            c = FIREF[6] if s < 0.25 else FIREF[5] if s < 0.55 else FIREF[3]
+            if 0 <= u < W and 0 <= vv < BOTTOM:
+                cv.flat(u, vv, c)
+                if s < 0.45:
+                    Q = (P[0] - v[0] * 0.03, P[1] - (v[1] - 440 * s) * 0.03, P[2] - v[2] * 0.03)
+                    uq, vq, _ = CAM.projecta(Q)
+                    if 0 <= uq < W and 0 <= vq < BOTTOM:
+                        cv.flat(uq, vq, FIREF[4])
+        out.append(cv.img)
+    return out
 
 
 ANIMS = {'foc': {'frames': lambda: _flames(1), 'frameDuration': 100},
@@ -396,19 +520,106 @@ ANIMS = {'foc': {'frames': lambda: _flames(1), 'frameDuration': 100},
          'guspires': {'frames': _frames_guspires, 'frameDuration': 70}}
 
 
-# ─── Geometria (640×360) ───────────────────────────────────────────────────
+def _amo(ids):
+    def mask(x, y):
+        _, e = _base(0)
+        return e.ids[e.amo[y * e.cv.w + x]] in ids
+    return mask
+
+
+# ─── Geometria (coordenades de sala, projectades) ────────────────────────────
+
+def _p(x, z, y=0.0):
+    u, v, _ = CAM.projecta((x, y, z))
+    return round(u), round(v)
+
+
+def _rect_mon(*Ps):
+    pts = [CAM.projecta(P) for P in Ps]
+    return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
+            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+
+
+def _escala_a(v):
+    """L'escala d'un personatge amb els peus a la y de pantalla `v` (al terra, la profunditat només depèn de v)."""
+    lo, hi = 1.0, 4000.0
+    for _ in range(60):
+        z = (lo + hi) / 2
+        if CAM.projecta((420, 0, z))[1] > v:
+            lo = z
+        else:
+            hi = z
+    return CAM.escala((420, 0, (lo + hi) / 2))
+
+
+def _cercle(cx, cz, r, n=10):
+    return [_p(cx + r * math.cos(2 * math.pi * i / n), cz + r * math.sin(2 * math.pi * i / n)) for i in range(n)]
+
+
+def _manxa_peu():
+    hx, hz, ang, Lm, Wm = MANXA
+    L = _local((hx, hz), ang)
+    return [(L(u, 0, w)[0], L(u, 0, w)[2]) for u, w in ((-6, -Wm / 2 - 10), (Lm + 34, -Wm / 2 - 10),
+                                                       (Lm + 34, Wm / 2 + 30), (-6, Wm / 2 + 10))]
+
+
+# El terra on es camina (al món): de la porta del carrer fins al pas de la colada, davant el forn; no arriba al
+# primer pla (el pilar i el carbó). Forats: la manxa, les columnes, la pila i la carretilla.
+WALK_MON = [(14, 450), (14, DOOR[1] - 6), (90, DOOR[1] - 6), (FORN[0] - 24, FZ0 - 14), (FORN[1] + 4, FZ0 - 14),
+            (FORN[1] + 4, ZB - 12), (PAS[0] + 6, ZB - 10), (PAS[0] + 6, ZB + 40), (PAS[1] - 6, ZB + 40),
+            (PAS[1] - 6, ZB - 12), (900, 680), (900, 610), (790, 572), (560, 512), (300, 432), (190, 440), (110, 470)]
+_WALK = [_p(x, z) for x, z in WALK_MON]
+_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+_MP = _manxa_peu()
+
+
+def _vfront(*xz):
+    """La línia base d'una cosa: la y de pantalla del seu punt de terra més proper."""
+    return round(max(_p(x, z)[1] for x, z in xz))
+
+
+FRONT = [
+    {'id': 'davant_manxa', 'mask': _amo({'manxa'}), 'baseline': _vfront(*_MP), 'zIndex': 20},
+    {'id': 'davant_columna_esq', 'mask': _amo({'columna_esq', 'termometre'}),
+     'baseline': _vfront((COL1[0], COL1[1] - 13)), 'zIndex': 20},
+    {'id': 'davant_columna_dreta', 'mask': _amo({'columna_dreta', 'rascle'}),
+     'baseline': _vfront((COL2[0], COL2[1] - 13), (COL2[0] - 34, COL2[1] - 24)), 'zIndex': 20},
+    {'id': 'davant_metall', 'mask': _amo({'metall'}),
+     'baseline': _vfront((METALL[0], METALL[1] - 10), (CARRET[0] + 30, CARRET[1] - 30)), 'zIndex': 20},
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
+]
+
+_DIAL = CAM.projecta((COL1[0], DIAL_Y, COL1[1] - 12))
+_DR = 15 * 1.4 * CAM.escala((COL1[0], DIAL_Y, COL1[1] - 12))
 
 GEOMETRIA = {
     'things': {
-        'porta': {'rect': (8, 100, 82, 206), 'walk': (44, 220)},
-        'pas': {'rect': (562, 58, 640, 214), 'walk': (602, 224)},
-        'forn': {'rect': (166, 40, 344, 206), 'walk': (256, 230)},
-        'manxa': {'rect': (340, 96, 512, 214), 'walk': (404, 230)},
-        'metall': {'rect': (66, 196, 160, 238), 'walk': (114, 246)},
-        'rascle': {'rect': (510, 98, 548, 220), 'walk': (530, 232)},
-        'termometre': {'rect': (130, 106, 170, 146), 'walk': (176, 230)},
+        'porta': {'rect': _rect_mon((0, DOOR[2], DOOR[0]), (0, 0, DOOR[1])), 'walk': _p(30, (DOOR[0] + DOOR[1]) / 2)},
+        'pas': {'rect': _rect_mon((PAS[0], PAS[2], ZB), (PAS[1], 0, ZB)), 'walk': _p((PAS[0] + PAS[1]) / 2, ZB + 20)},
+        'forn': {'rect': _rect_mon((FORN[0], HOOD, ZB - 40), (FORN[1], 0, FZ0)), 'walk': _p(FCX, FZ0 - 40)},
+        'manxa': {'rect': _rect_mon(*[(x, 0, z) for x, z in _MP], *[(x, 80, z) for x, z in _MP[:2]],
+                                    _local(MANXA[:2], MANXA[2])(MANXA[3] + 60, 168, -46),
+                                    _local(MANXA[:2], MANXA[2])(MANXA[3] + 60, 60, -46)),
+                  'walk': _p(*_local(MANXA[:2], MANXA[2])(MANXA[3] + 40, 0, -40)[::2])},
+        'metall': {'rect': _rect_mon((METALL[0] - 70, 60, METALL[1]), (CARRET[0] + 40, 0, CARRET[1] - 40)),
+                   'walk': _p(METALL[0] + 60, METALL[1] - 70)},
+        'rascle': {'rect': _rect_mon((COL2[0] - 50, 180, COL2[1] - 24), (COL2[0] + 2, 0, COL2[1] - 24)),
+                   'walk': _p(COL2[0] - 40, COL2[1] - 70)},
+        'termometre': {'rect': (round(_DIAL[0] - _DR - 2), round(_DIAL[1] - _DR - 2), round(_DIAL[0] + _DR + 2),
+                                round(_DIAL[1] + _DR + 2)),
+                       'walk': _p(COL1[0] + 50, COL1[1] - 60)},
     },
-    'spawns': {'iri': (300, 242), 'vet': (380, 236)},
-    'walkable': [(0, 214), (90, 212), (90, 230), (64, 242), (166, 242), (166, 214), (640, 214), (640, 257),
-                 (0, 257)],
+    'spawns': {'iri': _p(380, 500), 'vet': _p(500, 540)},
+    'walkable': _WALK,
+    'forats': [[_p(x, z) for x, z in _MP], _cercle(*COL1, 22, 8), _cercle(*COL2, 22, 8),
+               _cercle(METALL[0], METALL[1], 56, 10), _cercle(CARRET[0], CARRET[1], 40, 8)],
+    # La càmera, a 1,85 m i mirant avall, aixafa el terra: 185 d'alçada a ≈500 de fons (on es camina).
+    'floorSquash': 0.4,
+    # L'ombra de contacte: la llum dominant és la claror del carrer, per la porta (l'ombra cau cap a la dreta).
+    'characterShadow': {'enabled': True, 'color': '#120a08', 'alpha': 0.42, 'squash': 0.4, 'core': 0.6,
+                        'light': {'x': _p(10, (DOOR[0] + DOOR[1]) / 2)[0], 'y': _p(10, (DOOR[0] + DOOR[1]) / 2)[1],
+                                  'stretch': 0.8, 'reach': 160}},
+    'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
+                 'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
+                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
 }
