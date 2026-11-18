@@ -47,20 +47,45 @@ def has_hd(name):
     return (ROOMS / f'{name}.py').exists()
 
 
+def room_w(name):
+    """Amplada de la sala en píxels de sala: `ROOM_W` si la sala és més ampla que la pantalla (la càmera la recorre)."""
+    return getattr(load(name), 'ROOM_W', W)
+
+
 def render(name, prop_ids=None):
     """→ (fons RGBA, {id: fotograma RGBA})."""
     mod = load(name)
     light = getattr(mod, 'LIGHT', None)
-    cv = Canvas(light=light)
+    rw = room_w(name)
+    cv = Canvas(rw, light=light)
     mod.bg(cv)
     props = {}
     for pid, fn in getattr(mod, 'PROPS', {}).items():
         if prop_ids is not None and pid not in prop_ids:
             continue
-        pc = Canvas(light=light, transparent=True)
+        pc = Canvas(rw, light=light, transparent=True)
         fn(pc)
         props[pid] = pc.img
     return cv.img, props
+
+
+def fronts(name, bg):
+    """→ [(retall RGBA del fons, FRONT, id del prop)]: les capes del davant de la sala (FRONT pot ser una sola o una
+    llista, cadascuna amb el seu `baseline`, per passar-hi per darrere)."""
+    fs = getattr(load(name), 'FRONT', None)
+    if not fs:
+        return []
+    out = []
+    for n, f in enumerate(fs if isinstance(fs, (list, tuple)) else [fs]):
+        img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
+        src, dst = bg.load(), img.load()
+        s = bg.size[1] // H                       # la màscara és en píxels de sala
+        for y in range(bg.size[1]):
+            for x in range(bg.size[0]):
+                if f['mask'](x // s, y // s):
+                    dst[x, y] = src[x, y]
+        out.append((img, f, f.get('id', 'davant' if n == 0 else f'davant_{n + 1}')))
+    return out
 
 
 def _render_anims(name):

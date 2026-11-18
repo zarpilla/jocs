@@ -1581,3 +1581,33 @@ DESIGNS = {
     'portada': PORTADA,
     **FINALS,
 }
+
+
+# ─── Les sales en 3D (a 640×360) ────────────────────────────────────────────
+# Una sala amb art en 3D (hd640/rooms/<sala>.py, vegeu docs/guia-art-profunditat.md) porta la seva geometria al
+# mòdul (`GEOMETRIA`), en píxels de sala de 640×360, i substitueix la d'aquí (que és en coordenades de 352×198):
+# així el dibuix i el que es clica són al mateix fitxer. `px`: draw_placeholders no l'escala.
+
+def _amb_geometria():
+    import importlib
+    from pathlib import Path as _P
+    from escala import RESOLUCIO
+    if RESOLUCIO != 640:
+        return
+    import hd640  # noqa: F401  (posa hd.pix a 640×360 abans de cap sala)
+    rooms = _P(__file__).resolve().parent / 'hd640' / 'rooms'
+    for name in list(DESIGNS):
+        if not (rooms / f'{name}.py').exists():
+            continue
+        geo = getattr(importlib.import_module(f'hd640.rooms.{name}'), 'GEOMETRIA', None)
+        if geo is None:
+            continue
+        DESIGNS[name] = {**DESIGNS[name], 'px': True,
+                         'things': dict(geo.get('things', {})), 'spawns': dict(geo.get('spawns', {})),
+                         'walkable': list(geo.get('walkable') or [(0, 250), (639, 250), (639, 258), (0, 258)]),
+                         'regions': list(geo.get('regions', [])), 'forats': list(geo.get('forats', [])),
+                         'characterShadow': geo.get('characterShadow'), 'floorSquash': geo.get('floorSquash'),
+                         'characterLights': geo.get('characterLights')}
+
+
+_amb_geometria()

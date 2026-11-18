@@ -29,7 +29,7 @@ from room_designs import DESIGNS, C  # noqa: E402
 from draw_items import icon  # noqa: E402
 from escala import DESIGN_H, box, n as scaled, pt  # noqa: E402
 from hd.pix import W as HD_W, H as HD_H  # noqa: E402
-from hd.render import has_hd, load as load_hd, render as render_hd, render_anims as render_hd_anims  # noqa: E402
+from hd.render import has_hd, room_w, load as load_hd, render as render_hd, render_anims as render_hd_anims, fronts as render_hd_fronts  # noqa: E402
 
 # La casella de l'inventari: la de la plantilla 9-verb (36×20) passada a la resolució del joc (49×27, 65×36).
 from draw_items import W as INV_W, H as INV_H  # noqa: E402
@@ -266,8 +266,15 @@ def draw_designed(dir_: Path, game_dir: Path, design):
     room = json.loads(room_path.read_text())
     w, h = room['size']['width'], room['size']['height']
     k = room_designs.K = h / DESIGN_H  # el disseny és en coordenades de 352×198
+    if design.get('px'):
+        k = 1                             # la GEOMETRIA d'una sala en 3D (hd640/rooms/<sala>.py) ja és en píxels de sala
 
-    hd = (w, h) == (HD_W, HD_H) and has_hd(name)  # art HD (hd/rooms/<sala>.py), si n'hi ha
+    hd = h == HD_H and has_hd(name)               # art HD (hd/rooms/<sala>.py), si n'hi ha
+    if hd and w != room_w(name):
+        # Una sala més ampla que la pantalla (ROOM_W al mòdul de la sala): la càmera la recorre seguint el personatge.
+        w = room['size']['width'] = room_w(name)
+        room.setdefault('scrollBounds', {'x': 0, 'y': 0, 'height': h})['width'] = w
+    hd = hd and (w == HD_W or w == room_w(name))
     if hd:
         bg, hd_props = render_hd(name)
         hd_anims = render_hd_anims(name)
@@ -276,7 +283,7 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         design['bg'](C(bg))
     frames, tags = [bg], ['BG']
     for prop in room['props']:
-        if prop['id'] == 'BG' or (hd and prop['id'] in hd_anims):
+        if prop['id'] == 'BG' or (hd and (prop['id'] in hd_anims or prop['id'] == 'davant' or prop['id'].startswith('davant_'))):
             continue
         frame = Image.new('RGBA', (w, h), (0, 0, 0, 0))
         if hd:
@@ -314,6 +321,26 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         extra = {k: v for k, v in prop.get('animations', {}).items() if defs.get(k, {}).get('prop') == aid}
         prop['animations'] = {aid: {'loop': defs.get(aid, {}).get('loop', True), 'frameDuration': ms}, **extra}
 
+    # Capes del davant (hd FRONT): retalls del fons que tapen els personatges que hi ha darrere. Amb diverses capes,
+    # cadascuna un zIndex més amunt segons la seva línia base (de lluny a prop): el motor ordena les capes pel zIndex i
+    # després pel nom, i si aquest ordre no és el de la profunditat el personatge queda darrere de totes.
+    fronts = sorted(render_hd_fronts(name, bg) if hd else [], key=lambda fr: fr[1]['baseline'])
+    for rank, (img, f, fid) in enumerate(fronts):
+        f = {**f, 'zIndex': f.get('zIndex', 20) + (rank if len(fronts) > 1 else 0)}
+        frames.append(img)
+        tags.append(fid)
+        prop = next((p for p in room['props'] if p['id'] == fid), None)
+        if prop is None:
+            prop = {'id': fid, 'tag': fid, 'visible': True, 'alpha': 1, 'clickable': False}
+            room['props'].append(prop)
+        prop['animations'] = {fid: {}}
+        z = f.get('zIndex', 20)
+        for p in room['props']:
+            if p is prop:
+                p['zIndex'], p['baseline'] = z, f['baseline']
+            elif p['id'] in f.get('props', ()):
+                p['zIndex'], p['baseline'] = z + 1, f['baseline']
+
     sheet, meta = packed_sheet(name, frames, tags, w, h, spans)
     sheet.save(dir_ / f'{name}.png')
     (dir_ / f'{name}.json').write_text(json.dumps(meta, indent=2) + '\n')
@@ -346,6 +373,36 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         if cid in design['spawns']:
             ch['x'], ch['y'] = pt(*design['spawns'][cid], k)
     room['walkable']['polygons'][0]['points'] = [xy(x, y) for x, y in design['walkable']]
+    # Forats del terra (GEOMETRIA['forats']): on no es pot trepitjar però sí passar-hi pel voltant (i per darrere).
+    room['walkable']['polygons'][0]['holes'] = [{'id': f'forat-{n + 1}', 'active': True, 'points': [xy(x, y) for x, y in f]}
+                                                for n, f in enumerate(design.get('forats', []))]
+    # Regions d'escala de perspectiva (GEOMETRIA['regions']): els personatges es fan petits quan s'allunyen.
+    if design.get('regions'):
+        room['regions'] = [{**{k: v for k, v in r.items() if k != 'points'}, 'points': [xy(x, y) for x, y in r['points']]}
+                           for r in design['regions']]
+    # La llum de la sala sobre els personatges (en temps d'execució: characterLights del motor).
+    if design.get('characterLights'):
+        cl = json.loads(json.dumps(design['characterLights']))
+        for light in cl.get('lights', []):
+            light['x'], light['y'] = pt(light['x'], light['y'], k)
+            light['radius'] = pt(light['radius'], 0, k)[0] - pt(0, 0, k)[0]
+        room['characterLights'] = cl
+    # L'ombra de contacte sota els personatges (characterShadow del motor); la llum, en coordenades del disseny.
+    if design.get('characterShadow'):
+        cs = json.loads(json.dumps(design['characterShadow']))
+        light = cs.get('light')
+        if light and not light.get('direction'):
+            light['x'], light['y'] = pt(light['x'], light['y'], k)
+        if light and 'reach' in light:
+            light['reach'] = pt(light['reach'], 0, k)[0] - pt(0, 0, k)[0]
+        room['characterShadow'] = cs
+    else:
+        room.pop('characterShadow', None)
+    # Quant aixafa la càmera el terra (floorSquash del motor): les direccions de caminar es trien sobre el terra.
+    if design.get('floorSquash'):
+        room['floorSquash'] = design['floorSquash']
+    else:
+        room.pop('floorSquash', None)
     room_path.write_text(json.dumps(room, indent=2, ensure_ascii=False) + '\n')
     print(f'✔ escena provisional: rooms/{name}')
 

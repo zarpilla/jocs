@@ -120,7 +120,7 @@ class Light:
             v += fn(x, y)
         if self.vig:
             side, top = self.vig
-            ex = min(x, W - 1 - x)
+            ex = min(x, (getattr(self, 'width', None) or W) - 1 - x)   # `width`: una sala més ampla que la pantalla
             v -= 1.4 * max(0.0, 1 - ex / side) ** 2
             v -= 1.1 * max(0.0, 1 - y / top) ** 2
         if self.floor_fade and y > self.floor_fade[0]:
