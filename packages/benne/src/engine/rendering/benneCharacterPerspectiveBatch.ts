@@ -24,7 +24,6 @@ export const BENNE_CHARACTER_BATCH_HANDLER_NAME = 'BatchHandlerBenneCharacterQua
 /** Companion submitter that brackets each draw with {@link benneCharacterBatchObjectStack}. */
 export const BENNE_CHARACTER_SUBMITTER_NAME = 'SubmitterBenneCharacterQuad';
 
-const PERSP_EPS = 0.00015;
 
 /** `CharacterData.artScale` of the sprite being drawn (1 when it has none). */
 function characterSheetArtScale(obj: object): number {
@@ -40,69 +39,61 @@ const benneCharacterPerspectiveShaderAddition = {
     vertexDefine: 'attribute float inPerspMag;\n',
     outVariables: 'varying float outPerspMag;\n',
     vertexProcess: 'outPerspMag = inPerspMag;\n',
-    fragmentHeader: [
-      '// mag = sprite scale (e.g. 0.25). Bucket width ≈ 1/mag source pixels; integer plateau keeps',
-      '// snap stable while mag drifts (region scale vs feet Y), so LINEAR does not smear mid-motion.',
-      'vec2 bennePerspectiveTexCoord(vec2 uv, float mag, vec2 texWH) {',
-      '    float m = clamp(mag, 0.0001, 1.0);',
-      '    float rawStep = 1.0 / m;',
-      '    float stepPx = max(1.0, floor(rawStep + 0.5));',
-      '    vec2 cont = uv * texWH;',
-      '    vec2 g = floor(cont / stepPx);',
-      '    vec2 maxG = max(floor((texWH - vec2(1.0)) / stepPx), vec2(0.0));',
-      '    g = clamp(g, vec2(0.0), maxG);',
-      '    vec2 atlasPix = g * stepPx + stepPx * 0.5;',
-      '    atlasPix = min(atlasPix, texWH - vec2(0.5));',
-      '    vec2 snapped = floor(atlasPix + vec2(1e-3)) + vec2(0.5);',
-      '    return snapped / texWH;',
-      '}',
-    ].join('\n'),
-    // Runs after SmoothPixelArt when enabled: near-scale-1 keeps prior texCoord (blocky path);
-    // scaled-down sprites replace with perspective UVs from linear outTexCoord.
-    texCoord: [
-      'if (outPerspMag < (1.0 - ' + String(PERSP_EPS) + ')) {',
-      // getTexRes(): the size of *this* sprite's texture. With multi-texturing a batch holds several sheets and
-      // uMainResolution[0] is the first one's (another character's): snapping on its grid pixelated the sprite.
-      '    texCoord = bennePerspectiveTexCoord(outTexCoord, outPerspMag, getTexRes());',
-      '}',
-    ].join('\n'),
   },
   disable: false,
 };
 
 /**
- * A scaled-down sprite samples one texel per bucket (above), which turns 1× pixel art into blocks of 2×2 or 3×3
- * texels when a character walks into the distance. This replaces that texel with the **average of its bucket**
- * (premultiplied colours, up to 4×4 texels), drawn opaque when at least half the bucket is: the colours blend the
- * way a smaller drawing would, and the silhouette stays crisp.
+ * Pixel art at a non-integer size. A character is drawn at whatever size its perspective scale and the screen give
+ * (scale 0.37–1.25 in a deep room, × 2 to 3.7 screen px per room px), and with plain nearest sampling some texels
+ * then cover one screen pixel and others two, or are skipped: the figure looks ragged, and blocky when it is small.
+ * This samples by the texel footprint of each screen pixel (`fwidth`):
+ * - **magnified** (a texel covers more than a pixel): "sharp bilinear" — each texel stays solid and only the one-pixel
+ *   seam between two texels is blended, so every texel looks the same size;
+ * - **minified** (several texels per pixel, a figure in the distance): the average of the footprint (up to 4×4
+ *   samples), like a smaller drawing.
+ * Colours are premultiplied, so averaging them blends the edges of the silhouette correctly.
  */
-const benneCharacterPerspectiveAverageAddition = {
-  name: 'BenneCharacterPerspectiveAverage',
+const benneCharacterPixelArtSamplingAddition = {
+  name: 'BenneCharacterPixelArtSampling',
   additions: {
+    extensions: '#extension GL_OES_standard_derivatives : enable',
     fragmentHeader: [
-      'vec4 bennePerspectiveAverage(vec4 c0) {',
-      '    if (outPerspMag >= (1.0 - ' + String(PERSP_EPS) + ')) { return c0; }',
-      '    vec2 texWH = getTexRes();',
-      '    float m = clamp(outPerspMag, 0.0001, 1.0);',
-      '    float stepPx = min(4.0, max(1.0, floor(1.0 / m + 0.5)));',
-      '    if (stepPx < 1.5) { return c0; }',
-      '    vec2 g = floor(outTexCoord * texWH / stepPx) * stepPx;',
-      '    vec4 acc = vec4(0.0);',
-      '    float n = 0.0;',
-      '    for (int j = 0; j < 4; j++) {',
-      '        for (int i = 0; i < 4; i++) {',
-      '            if (float(i) < stepPx && float(j) < stepPx) {',
-      '                acc += getTexture((g + vec2(float(i), float(j)) + 0.5) / texWH);',
-      '                n += 1.0;',
+      'vec4 benneTexel(vec2 t, vec2 texWH) {',
+      '    t = clamp(t, vec2(0.0), texWH - vec2(1.0));',
+      '    return getTexture((t + vec2(0.5)) / texWH);',
+      '}',
+      'vec4 bennePixelArtSample(vec2 uv, vec2 texWH) {',
+      '    vec2 px = uv * texWH;',
+      '    vec2 fw = max(fwidth(px), vec2(1e-4));',
+      '    float foot = max(fw.x, fw.y);',
+      '    if (foot > 1.2) {',
+      '        float n = min(4.0, ceil(foot));',
+      '        vec4 acc = vec4(0.0);',
+      '        float k = 0.0;',
+      '        for (int j = 0; j < 4; j++) {',
+      '            for (int i = 0; i < 4; i++) {',
+      '                if (float(i) < n && float(j) < n) {',
+      '                    vec2 o = (vec2(float(i), float(j)) + 0.5) / n - 0.5;',
+      '                    acc += benneTexel(floor(px + o * fw), texWH);',
+      '                    k += 1.0;',
+      '                }',
       '            }',
       '        }',
+      '        return acc / k;',
       '    }',
-      '    acc /= n;',
-      '    if (acc.a < 0.5) { return vec4(0.0); }',
-      '    return vec4(acc.rgb / acc.a, 1.0);',
+      '    vec2 p = px - 0.5;',
+      '    vec2 i0 = floor(p);',
+      '    vec2 f = p - i0;',
+      '    vec2 w = clamp((f - 0.5) / fw + 0.5, 0.0, 1.0);',
+      '    vec4 a = benneTexel(i0, texWH);',
+      '    vec4 b = benneTexel(i0 + vec2(1.0, 0.0), texWH);',
+      '    vec4 c = benneTexel(i0 + vec2(0.0, 1.0), texWH);',
+      '    vec4 d = benneTexel(i0 + vec2(1.0, 1.0), texWH);',
+      '    return mix(mix(a, b, w.x), mix(c, d, w.x), w.y);',
       '}',
     ].join('\n'),
-    fragmentProcess: 'fragColor = bennePerspectiveAverage(fragColor);',
+    fragmentProcess: 'fragColor = bennePixelArtSample(outTexCoord, getTexRes());',
   },
   disable: false,
 };
@@ -121,7 +112,7 @@ const benneCharacterQuadConfig = {
     benneCharacterPerspectiveShaderAddition,
     benneMakeDefineTexCount(1),
     benneMakeGetTexture1(),
-    benneCharacterPerspectiveAverageAddition,
+    benneCharacterPixelArtSamplingAddition,
     benneMakeApplyTint(),
     benneMakeDefineLights(true),
     benneMakeRotationDatum(true),
