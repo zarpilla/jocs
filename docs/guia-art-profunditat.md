@@ -64,8 +64,21 @@ una carpeta compartida quan un segon joc el necessiti).
 - **Les sales en 3D són a 1× (640×360).** A 2× el pont tardava ≈1,5 min (sobretot el dibuix pla de les textures) i a
   1× tarda 25 s; amb la perspectiva i la llum, la diferència només es nota al detall petit projectat (rètols i
   agulles en escorç), i aquest detall, a 1×, s'ha de dibuixar prou gros. El sync del pont i el pati junts: ≈2 min.
-  Els personatges continuen a 2×.
+  Els personatges també són a 1×.
 - Per provar enquadraments, un esbós amb colors plans (segons) i imprimir on cauen les coses (`Camera.projecta`).
+
+### Com es treballa una sala (Aigua Verne)
+
+- El dibuix pla de sempre es mou a `<sala>_pla_comu.py` (font de les textures) i el mòdul de la sala munta l'escena 3D
+  i la `GEOMETRIA` projectant punts del món. Els ids de `things`, `spawns`, `PROPS` i `ANIMS` no canvien.
+- `python3 redibuixa_sala.py <sala>` escriu el full i la geometria d'una sala al joc (sense el sync sencer, que
+  redibuixa totes les provisionals); `python3 hd/render.py <sala> <carpeta>` en fa previsualitzacions, amb una de
+  depuració (el terra on es camina, les zones, els personatges).
+- Es prova al joc: `window.__BENNE_HOOKS__` (`goToRoom`, `walkTo`) amb playwright, i es mira que l'escala, el
+  terra, els clics i el passar per darrere vagin bé.
+- Paranys: els forats del terra que la càmera aixafa fins a ≈2 px fan fallar el camí (millor treure'ls); `e.linia`
+  amb punts darrere la càmera pinta milions de píxels; el `fbm` de la llibreria és lent per a superfícies grans (el
+  palau en fa servir un de numpy); una sala amb un decorat al `PROPS` que no és al `.room.json` no el porta al joc.
 
 ### Números que han funcionat (el pati de la granja)
 
@@ -230,11 +243,24 @@ girada, pou des de dalt, tanca en diagonal, esquerdes, roques en primer pla),
 franges, caixes en silueta) i [el pont de control](referencies/sala-pont-control.png) (finestral inclinat, consola amb
 tres cares, comporta oberta a un passadís il·luminat, barana i canonada en primer pla).
 
+**Aigua Verne: totes les sales i les cinemàtiques són en 3D, a 1×** (novembre del 2026). Queda pendent:
+
+- Rètols petits que no es llegeixen en escorç: la bodega («RAMPA», «MOTOR», «VET»), els subtítols de la pantalla del
+  saló, el «C-7» de la nau al jardí de Verdant. S'han de dibuixar més grossos al pla.
+- La Cantimplora no és igual a tot arreu: al port de Terra-2 té cinc cúpules al llom i a la portada, nou dipòsits
+  curts; al carrer de Ferrum es veu gairebé de popa i al port d'Aqua és un pla amb textura.
+- Alguns volums encara són senzills: la butaca de la residència, la llar de foc de la casa de la granja (plana a la
+  paret), els feixos de llum del graner (es pinten per sobre del tractor).
+- A la galeria del palau no es pot passar per darrere de l'aquari, ni al port d'Aqua per darrere de la grua.
+- La fosa: la meitat de baix del terra és força buida; el motlle no s'il·lumina amb el gresol ple, i
+  `motlle_posat` no és al `.room.json` de la colada (ja era així abans).
+- Els crèdits i els postcrèdits no s'han tocat.
+
 - **Pati de la granja (Aigua Verne).** Fet en 3D (`granja_pati.py`): la casa girada amb el teulat, el pou vist des de
   dalt, la bomba amb tres cares, la tanca i el camí del graner en diagonal, el panell en angle, dunes, esquerdes que
-  s'empetiteixen i roques en primer pla; es passa per darrere del pou, la bomba i l'olivera. Pendent: el final plovent
-  (`final_pluja`) encara és el pati pla d'abans.
-- **Casa de la granja (Aigua Verne, `granja_casa`), per redissenyar.** Ara és tot en un sol pla llarg: la llar de
+  s'empetiteixen i roques en primer pla; es passa per darrere del pou, la bomba i l'olivera. El final plovent
+  (`final_pluja`) en reaprofita l'escena.
+- **Casa de la granja (Aigua Verne, `granja_casa`), feta així.** Abans era tot en un sol pla llarg: la llar de
   foc, els prestatges, la pica, la porta, la tele, el quadre, l'escriptori i la finestra arrenglerats contra la paret
   del fons. Proposta ([referència](referencies/sala-granja-casa.png)), amb els mateixos objectes:
   - **Les parets:** la paret de la finestra gira i fuig cap a la dreta, i la finestra queda en escorç. Les bigues del
@@ -247,7 +273,7 @@ tres cares, comporta oberta a un passadís il·luminat, barana i canonada en pri
   - **La llum:** la llum daurada de la finestra entra en diagonal i creua la sala de dreta a esquerra, amb pols
     suspesa. La llar de foc fa de penombra càlida. És la llum que ha de fer servir `characterShadow`, amb l'ombra cap
     a l'esquerra.
-- **Graner de la granja (Aigua Verne, `granja_graner`), per redissenyar.** Proposta
+- **Graner de la granja (Aigua Verne, `granja_graner`), fet així.** Proposta
   ([referència](referencies/sala-granja-graner.png)):
   - **La cantonada:** la càmera mira una cantonada de taulons. A l'esquerra, la paret de les llavors fuig, amb els
     sacs en files que s'empetiteixen. A la dreta, la paret del fons i la lateral fan l'angle. Les bigues del sostre
