@@ -242,7 +242,7 @@ capvespre de pols), sense el títol. «Comença» l'esvaeix i s'hi entra amb un 
 d'animació, de fons i sense detall:
 
 > NARRADOR: Vesper. Un sistema petit, al voltant d'una estrella taronja.
-> NARRADOR: Terra-2, el planeta pagès. Al pou de cada granja hi ha una bomba amb una gota blava.
+> NARRADOR: Terra-2. Granges, pols i pous. Al pou de cada granja hi ha una bomba amb una gota blava.
 > *(La bomba de Verne del pou comença a cabotejar; a cada cabotada, un glop d'aigua blava corre per la canonada de
 > terra fins a la Canonada.)*
 > *(Sense text: un pols d'aigua puja per la Canonada fins al dipòsit orbital, que s'il·lumina de blau. En venen
