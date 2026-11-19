@@ -348,16 +348,17 @@ def _lloc(i, n=8):
     return x, z
 
 
+# (a la mida dels personatges, que fan ≈98: els grans 93–99 i la canalla ≈0,7; el cap gran i el cos prim, com ells)
 CUA = [
-    (FONT[0] - 32, FONT[1] - 4, 76, 0, dict(tipus='dona', facing=1, hold='bidon'), {}),                 # omple la garrafa
-    (*_lloc(0), 81, 0, dict(tipus='miner', hold='bidon'), {3: dict(facing=1), 4: dict(facing=1)}),
-    (*_lloc(1), 58, 1, dict(tipus='nen', lamp=False), {1: dict(facing=1), 6: dict(facing=1), 7: dict(facing=1)}),
-    (*_lloc(2), 79, 1, dict(tipus='dona', facing=1), {5: dict(facing=-1), 6: dict(facing=-1)}),     # fa petar la xerrada
-    (*_lloc(3), 78, 2, dict(tipus='miner', cua=True, hold='butxaca'), {}),
-    (*_lloc(4), 77, 1, dict(tipus='vell', hold='bidon'), {2: dict(hold='got'), 3: dict(hold='got')}),
-    (*_lloc(5), 52, 0, dict(tipus='nena'), {0: dict(facing=1), 4: dict(facing=1)}),
-    (*_lloc(6), 82, 3, dict(tipus='miner', hold='bidon', lamp=False), {7: dict(facing=1)}),
-    (*_lloc(7), 77, 3, dict(tipus='dona', hold='bidon'), {}),
+    (FONT[0] - 32, FONT[1] - 4, 96, 0, dict(tipus='dona', facing=1, hold='bidon'), {}),                 # omple la garrafa
+    (*_lloc(0), 98, 0, dict(tipus='miner', hold='bidon'), {3: dict(facing=1), 4: dict(facing=1)}),
+    (*_lloc(1), 68, 1, dict(tipus='nen', lamp=False), {1: dict(facing=1), 6: dict(facing=1), 7: dict(facing=1)}),
+    (*_lloc(2), 95, 1, dict(tipus='dona', facing=1), {5: dict(facing=-1), 6: dict(facing=-1)}),     # fa petar la xerrada
+    (*_lloc(3), 96, 2, dict(tipus='miner', cua=True, hold='butxaca'), {}),
+    (*_lloc(4), 93, 1, dict(tipus='vell', hold='bidon'), {2: dict(hold='got'), 3: dict(hold='got')}),
+    (*_lloc(5), 64, 0, dict(tipus='nena'), {0: dict(facing=1), 4: dict(facing=1)}),
+    (*_lloc(6), 99, 3, dict(tipus='miner', hold='bidon', lamp=False), {7: dict(facing=1)}),
+    (*_lloc(7), 94, 3, dict(tipus='dona', hold='bidon'), {}),
 ]
 CUA_N = 8
 
@@ -365,15 +366,17 @@ CUA_N = 8
 @functools.lru_cache(maxsize=None)
 def _figura(h, var, kw):
     cv = Canvas(70, 110, light=TEXL, transparent=True)
-    k = dict(facing=-1, light_from=1)
-    k.update(dict(kw))
+    kw = dict(kw)
+    nen = kw.get('tipus') in ('nen', 'nena')
+    k = dict(facing=-1, light_from=1, cap=4.6 if nen else 4.8, ample=0.085 if nen else 0.08)
+    k.update(kw)
     persona_c(cv, 35, 104, h=h, var=var, **k)
     return cv.img
 
 
 def cua(e, f=None):
     for i, (x, z, h, var, ex, gestos) in sorted(enumerate(CUA), key=lambda p: -p[1][1]):
-        ombra(e, x, z, 13 * h / 80, h, 0.45)
+        ombra(e, x, z, 11 * h / 80, h, 0.45)
     for i, (x, z, h, var, ex, gestos) in sorted(enumerate(CUA), key=lambda p: -p[1][1]):
         kw = dict(ex)
         if f is not None:
