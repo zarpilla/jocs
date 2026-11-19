@@ -465,6 +465,14 @@ def draw_designed(dir_: Path, game_dir: Path, design):
         room['characterShadow'] = cs
     else:
         room.pop('characterShadow', None)
+    # El reflex dels personatges al terra polit (characterReflection del motor); maxY, en coordenades del disseny.
+    if design.get('characterReflection'):
+        cr = dict(design['characterReflection'])
+        if 'maxY' in cr:
+            cr['maxY'] = pt(0, cr['maxY'], k)[1]
+        room['characterReflection'] = cr
+    else:
+        room.pop('characterReflection', None)
     # Quant aixafa la càmera el terra (floorSquash del motor): les direccions de caminar es trien sobre el terra.
     if design.get('floorSquash'):
         room['floorSquash'] = design['floorSquash']

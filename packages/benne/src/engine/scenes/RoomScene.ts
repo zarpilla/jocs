@@ -141,6 +141,7 @@ import {
 } from '../characterFeet';
 import { applyCharacterLights, compileCharacterLights } from '../room/characterLights';
 import { CharacterShadowLayer, compileCharacterShadow } from '../room/characterShadow';
+import { CharacterReflectionLayer, compileCharacterReflection } from '../room/characterReflection';
 import { CharacterIdleActions, isIdleActionSprite } from '../idleActions';
 import { releaseOtherRoomSheets } from '../room/releaseRoomSheets';
 import { assembleRoomSheetPages } from '../room/roomSheetPages';
@@ -461,6 +462,8 @@ export class RoomScene extends Phaser.Scene {
 
   /** Contact shadows under the characters (`RoomData.characterShadow`). */
   private readonly characterShadows = new CharacterShadowLayer(this);
+  /** Characters mirrored in a polished floor (`RoomData.characterReflection`). */
+  private readonly characterReflections = new CharacterReflectionLayer(this);
 
   /** Blinks, glances and tics while characters stand still (`CharacterData.idleActions`). */
   private readonly characterIdleActions = new CharacterIdleActions();
@@ -805,6 +808,7 @@ export class RoomScene extends Phaser.Scene {
     this.parallaxProps = [];
     this.roomStackEntities = [];
     this.characterShadows.clear();
+    this.characterReflections.clear();
     this.propSpritesById.clear();
     this.characterSpritesByDefId.clear();
     this.characterJsonVisibleByDefId.clear();
@@ -4840,6 +4844,25 @@ export class RoomScene extends Phaser.Scene {
       }
     }
     this.characterShadows.update(shadow, sprites);
+    this.updateCharacterReflections();
+  }
+
+  /** Keeps each character's floor reflection under its feet (after the light tint of this frame). */
+  private updateCharacterReflections(): void {
+    const reflection = compileCharacterReflection(this.roomData?.characterReflection);
+    const sprites: Array<Phaser.GameObjects.Sprite | Phaser.GameObjects.Image> = [];
+    // just above the room background: the lowest sprite of the room stack
+    let floor = Infinity;
+    if (reflection) {
+      for (const e of this.roomStackEntities) {
+        if (e.kind === 'character') {
+          sprites.push(e.sprite);
+        } else if (e.kind !== 'hotspot') {
+          floor = Math.min(floor, e.sprite.depth);
+        }
+      }
+    }
+    this.characterReflections.update(reflection, sprites, (Number.isFinite(floor) ? floor : 0) + 0.5);
   }
 
   /** Re-sorts props, characters, and hotspot zones by `zIndex` and optional `baseline` rules. */

@@ -158,6 +158,19 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
    disseny de la sala (`room_designs`), com `characterLights`, i el sync en passa les coordenades a la sala. Cada
    personatge hi pot posar `"shadow": { "width": 22 }` (l'ample a escala 1; per defecte, el 85% del collider) o
    `"shadow": false`.
+
+   **Reflex al terra polit** (marbre, rajola molla): el reflex de la sala es pinta al fons (la mateixa escena des
+   de sota el terra, girada, com al vestíbul del banc de Suma Zero), però el dels personatges el fa el motor amb
+   `characterReflection`: una còpia del fotograma girada pels peus, amb la mateixa llum, que s'esvaeix lluny dels
+   peus. Va just damunt del fons, sota tots els props: les capes del davant el tapen com tapen el personatge.
+
+   ```json
+   "characterReflection": { "alpha": 0.5, "fade": 0.1, "length": 0.9, "maxY": 259 }
+   ```
+
+   `alpha` és l'opacitat als peus (a 0,2 la roba fosca damunt els escacs ja no es veia), `fade` la del final (en
+   fracció d'`alpha`), `length` l'alt respecte del personatge, i `maxY` on s'acaba el terra que brilla. A Suma Zero
+   es posa a la `GEOMETRIA` de la sala; cada personatge hi pot posar `"reflection": false`.
 4. **Escala contínua i ordre de dibuix.**
    - L'escala ja és contínua: una regió `scaleEnabled` interpola linealment entre `scaleTop` i `scaleBottom` segons
      la y dels peus (`Camera.escala()` dona els valors exactes). Res de dues mides fixes amb un salt al mig. Els fulls
@@ -285,7 +298,6 @@ personatges en 3/4, la respiració i les micro-accions. Queda pendent:
   ràdio de Ni un ou, les normes del Cargol i els peus del museu a Ferro-9). Els noms de les portes (Ni un ou, la sala
   de calderes de Ferro-9) i el panell de sortides de la terminal es queden com a textura, perquè no es llegeixen
   però tampoc cal.
-- Els personatges no surten als reflexos del terra (el vestíbul del banc de Suma Zero).
 - Alguns mobles i objectes encara són dibuixos plans drets (sprites), no volums: els tamborets del bar, les bombes de
   la sala de bombes, la llançadora de l'hangar.
 

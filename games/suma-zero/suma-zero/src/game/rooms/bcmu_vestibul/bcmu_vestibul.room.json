@@ -805,7 +805,7 @@
       "animations": {
         "davant_font": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 182
     },
     {
@@ -817,7 +817,7 @@
       "animations": {
         "davant_recepcio": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 184
     },
     {
@@ -829,7 +829,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 999
     }
   ],
@@ -909,5 +909,12 @@
       "reach": 200
     }
   },
-  "floorSquash": 0.42
+  "floorSquash": 0.42,
+  "characterReflection": {
+    "enabled": true,
+    "alpha": 0.5,
+    "fade": 0.1,
+    "length": 0.9,
+    "maxY": 259
+  }
 }

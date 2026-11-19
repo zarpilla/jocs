@@ -540,6 +540,9 @@ GEOMETRIA = {
     # L'ombra de contacte: la llum dominant és la claraboia, a sobre de la sala; curta i rodona.
     'characterShadow': {'enabled': True, 'color': '#1a140c', 'alpha': 0.38, 'squash': 0.4, 'core': 0.6,
                         'light': {'x': _p(300, 160)[0], 'y': _p(300, 160)[1], 'stretch': 0.35, 'reach': 200}},
+    # El reflex dels personatges al marbre polit (més fort que el de la sala, a _render: la roba fosca damunt els
+    # escacs, a 0,2, no es veia), que s'esvaeix lluny dels peus.
+    'characterReflection': {'enabled': True, 'alpha': 0.5, 'fade': 0.1, 'length': 0.9, 'maxY': BOTTOM},
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],

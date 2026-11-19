@@ -87,6 +87,8 @@ export interface CharacterData {
    * `offsetX` / `offsetY` move it from the feet, in the same units.
    */
   shadow?: false | { width?: number; offsetX?: number; offsetY?: number };
+  /** `false` = no reflection in polished floors (`RoomData.characterReflection`): a ghost, a vampire. */
+  reflection?: false;
   /**
    * Click hit area in **texture / frame pixel space** (same origin as `feet`). When omitted and the
    * character is clickable, the full sprite rectangle is used. Requires at least three vertices.

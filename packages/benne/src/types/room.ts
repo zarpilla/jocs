@@ -187,6 +187,23 @@ export interface RoomCharacterShadowData {
   };
 }
 
+/**
+ * A polished floor (marble, wet tiles): each character gets a faint copy of itself mirrored about its feet, fading
+ * away from them. The room art carries the reflection of the room itself; this is the characters'.
+ */
+export interface RoomCharacterReflectionData {
+  /** `false` turns it off (same as omitting the object). Omitted = on. */
+  enabled?: boolean;
+  /** Opacity next to the feet. Omitted = `0.2`. */
+  alpha?: number;
+  /** Opacity at the far end (the mirrored head), as a fraction of `alpha`. Omitted = `0` (fades out). */
+  fade?: number;
+  /** Height of the reflection ÷ height of the character (a high camera sees it shorter). Omitted = `1`. */
+  length?: number;
+  /** Room y below which the floor does not reflect (where the polished floor ends). Omitted = no limit. */
+  maxY?: number;
+}
+
 export interface RoomCharacterInstance {
   /** Unique id for this placement in the room (Phaser texture key suffix). */
   instanceId: string;
@@ -325,6 +342,8 @@ export interface RoomData {
   characterLights?: RoomCharacterLightsData;
   /** Contact shadow under the characters (optional; off when omitted). */
   characterShadow?: RoomCharacterShadowData;
+  /** Characters mirrored in a polished floor. */
+  characterReflection?: RoomCharacterReflectionData;
   /**
    * How much the camera flattens the floor: screen height ÷ floor depth of a small patch of floor (the same idea as
    * `characterShadow.squash`; e.g. `0.25` for a high camera far away). Walk facings are then chosen on the floor, so a
