@@ -272,7 +272,7 @@
       "animations": {
         "tap_barra": {}
       },
-      "zIndex": 23,
+      "zIndex": 25,
       "visible": true,
       "alpha": 1,
       "clickable": true,
@@ -313,7 +313,7 @@
       "animations": {
         "comandament_barra": {}
       },
-      "zIndex": 23,
+      "zIndex": 25,
       "visible": true,
       "alpha": 1,
       "clickable": true,
@@ -393,7 +393,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 26,
+      "zIndex": 32,
       "baseline": 999
     },
     {
@@ -417,7 +417,7 @@
       "animations": {
         "davant_barra4": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 177
     },
     {
@@ -429,7 +429,7 @@
       "animations": {
         "davant_barra3": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 183
     },
     {
@@ -441,7 +441,7 @@
       "animations": {
         "davant_escura": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 187
     },
     {
@@ -453,7 +453,7 @@
       "animations": {
         "davant_barra2": {}
       },
-      "zIndex": 24,
+      "zIndex": 28,
       "baseline": 190
     },
     {
@@ -465,7 +465,7 @@
       "animations": {
         "davant_barra1": {}
       },
-      "zIndex": 25,
+      "zIndex": 30,
       "baseline": 197
     }
   ],

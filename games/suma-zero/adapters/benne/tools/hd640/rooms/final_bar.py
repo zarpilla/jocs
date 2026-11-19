@@ -121,13 +121,49 @@ def _cistella():
 CIST_CROP = (555, 199, 594, 233)
 
 
-def _cadira():
-    cv = Canvas(light=B.TEXL, transparent=True)
-    PL.table_chair(cv, 128, 229)
-    return cv.img
+# la cadira de fusta de la punta de l'esquerra (x, z, gir): un volum, separada de la taula i de biaix, de cara a la
+# taula (el respatller cap a l'esquerra)
+CADIRA = (_l(-166, 12)[0], _l(-166, 12)[2], TAULA[2] + math.pi / 2 + 0.6)
 
 
-CAD_CROP = (115, 199, 142, 262)
+def _cadira(e, cx, cz, ang):
+    """Una cadira de bar, de fusta (la del dibuix pla, ara amb volum): quatre potes amb el travesser, el seient amb el
+    cantell i el respatller de dos travessers entre els muntants. De lluny a prop, peça a peça."""
+    c, s_ = math.cos(ang), math.sin(ang)
+
+    def P(lx, y, lz):
+        return (cx + lx * c - lz * s_, y, cz + lx * s_ + lz * c)
+    sid, hs = 'cadira', 32
+    e.foscor('ombra_cadira', P(-17, 0.6, 19), P(15, 0.6, 19), P(15, 0.6, -17), P(-17, 0.6, -17),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - 16) ** 2 + (t - 18) ** 2) / 300) * 1.5)
+    ull = CAM.pos
+
+    def lluny(q):
+        return -math.hypot(q[0] - ull[0], q[2] - ull[2])
+    # les potes (fins a sota el seient) i els travessers dels costats, de lluny a prop
+    potes = [P(lx, 0, lz) for lx in (-10.5, 10.5) for lz in (-10.5, 10.5)]
+    trav = [P(0, 0, lz) for lz in (-10.5, 10.5)]
+    for q in sorted(potes + trav, key=lluny):
+        if q in potes:
+            e.caixa(sid, q[0] - 1.3, q[0] + 1.3, 0, hs - 4, q[2] - 1.3, q[2] + 1.3, WOOD, 3.6)
+        else:
+            e.caixa_girada(sid, q[0], q[2], 20, 1.6, 1.8, ang, WOOD, 3.2, y0=10)
+
+    def seient():
+        e.caixa_girada(sid, cx, cz, 25, 25, 4, ang, WOOD, 3.6, y0=hs - 4,
+                       cares={'dalt': {'ramp': WOOD, 'lvl': lambda s, t, P_: 5.0 + (hr(int(s) // 6, 1, 7) - 0.5) * 0.4
+                                       + (0.6 if s < 1.2 or t < 1.2 or s > 23.8 or t > 23.8 else 0)},
+                              'davant': {'ramp': WOOD, 'lvl': lambda s, t, P_: 3.8 + (0.8 if t < 1 else 0)}})
+
+    def respatller():
+        qs = sorted((P(lx, 0, 10.5) for lx in (-10.5, 10.5)), key=lluny)
+        e.caixa(sid, qs[0][0] - 1.3, qs[0][0] + 1.3, hs, 61, qs[0][2] - 1.3, qs[0][2] + 1.3, WOOD, 3.6)
+        qb = P(0, 0, 10.5)
+        e.caixa_girada(sid, qb[0], qb[2], 19, 2.2, 2.4, ang, WOOD, 4.0, y0=47)
+        e.caixa_girada(sid, qb[0], qb[2], 19, 2.2, 3, ang, WOOD, 4.6, y0=58)
+        e.caixa(sid, qs[1][0] - 1.3, qs[1][0] + 1.3, hs, 61, qs[1][2] - 1.3, qs[1][2] + 1.3, WOOD, 3.6)
+    for q, pinta in sorted(((P(0, 0, 0), seient), (P(0, 0, 10.5), respatller)), key=lambda p: lluny(p[0])):
+        pinta()
 
 
 def _tela(kind, w, h, faldo=False, dy=0):
@@ -165,8 +201,7 @@ def _tela(kind, w, h, faldo=False, dy=0):
 def _textures(apagada=False):
     t = dict(B._textures())
     t.update({'fons': B._paret_fons(extra=_suport), 'facana': B._facana(dia=True), 'tele': _tele(apagada=apagada),
-              'tv_box': TV, 'tv_crop': TV_CROP, 'pernil': False, 'paper': _paper(), 'cistella': _cistella(),
-              'cadira': _cadira()})
+              'tv_box': TV, 'tv_crop': TV_CROP, 'pernil': False, 'paper': _paper(), 'cistella': _cistella()})
     for _, _, kind, _, dy in TAULES:
         t['dalt_' + kind] = _tela(kind, 92, T_D)
         t['faldo_' + kind] = _tela(kind, 92, T_H - 4, faldo=True, dy=dy)
@@ -291,8 +326,7 @@ def escena(cv, tex, estat=frozenset()):
                            (XR - 2, 1, ZW - 20), (XR - 2, 1, mz1 + 6), (mx1 - 2, mh + 1, mz1 - 2), (rx, mh + 2, rz + 8)],
             SLATE, 1.4, gruix=1.2)
     # la cadira de la punta de l'esquerra i la taula llarga
-    pc = _l(-162, 14)
-    e.sprite('cadira', tex['cadira'].crop(CAD_CROP), (128 - CAD_CROP[0], 261 - CAD_CROP[1]), pc)
+    _cadira(e, *CADIRA)
     _taula(e, tex)
     # la cistella d'en Diu, damunt un tamboret baix de fusta, a la punta de la dreta
     cx, cz, ch = CISTELLA

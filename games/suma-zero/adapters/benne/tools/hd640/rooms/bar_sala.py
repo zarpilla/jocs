@@ -223,11 +223,10 @@ SLOT_CROP = (91, 125, 132, 204)
 
 def _objectes():
     """Les coses dretes, dibuixades planes sobre transparent: el taulell del darrere (la cafetera, la cervesera, la
-    caixa), el que hi ha damunt la barra, un tamboret i el pernil."""
+    caixa), el que hi ha damunt la barra i el pernil."""
     cv = _llenc(transparent=True)
     PL.back_counter(cv)
     PL.bar(cv)                                     # (en surten el pot, el tovalloner, la tassa i l'ampolla)
-    PL.stools(cv)
     PL.ham(cv)
     return cv.img
 
@@ -239,7 +238,6 @@ POT = (298, 123, 318, 152)
 TOVALLONER = (407, 132, 425, 151)
 CAFE = (182, 143, 202, 154)
 AMPOLLA = (538, 130, 550, 151)
-TAMBORET = (162, 179, 191, 235)
 PERNIL = (555, 0, 583, 71)
 
 
@@ -412,15 +410,9 @@ def escena(cv, tex, estat=frozenset(), dia=False, llums=None, cam=None, primer_p
         hx, hz = HAM
         e.cable('pernil', [(hx, HT, hz), (hx, 200 - 12, hz)], SLATE, 1.6, gruix=0.8)
         _dret(e, 'pernil', ob, PERNIL, (hx, 200 - PERNIL[3] + PERNIL[1], hz), PERNIL[3])
-    # els tamborets, davant la barra (el dibuix pla, dret), amb la seva ombra
+    # els tamborets, davant la barra: volums (la base, la columna, el reposapeus i el seient de skai), amb l'ombra
     for k, sx_ in enumerate(STOOLS):
-        e.foscor('ombra_tamboret', (sx_ - 16, 0.7, STOOL_Z + 10), (sx_ + 16, 0.7, STOOL_Z + 10),
-                 (sx_ + 16, 0.7, STOOL_Z - 10), (sx_ - 16, 0.7, STOOL_Z - 10),
-                 lambda s, t: 0.6 * max(0.0, 1 - ((s - 16) / 16) ** 2 - ((t - 10) / 10) ** 2) * 1.6)
-        img = ob.crop(TAMBORET)
-        if k == 2:                                                       # el de la cinta americana
-            img = ob.crop((TAMBORET[0] + 240, TAMBORET[1], TAMBORET[2] + 240, TAMBORET[3]))
-        e.sprite('tamborets', img, (176 - TAMBORET[0], 231 - TAMBORET[1]), (sx_, 0, STOOL_Z), escala_img=1.15)
+        _tamboret(e, sx_, STOOL_Z, k)
     if primer_pla:
         _primer_pla(e)
     return e
@@ -447,6 +439,88 @@ def _primer_pla(e):
     e.caixa('primer_pla', px_ - 16, px_ + 16, 0, HT, pz_ - 16, pz_ + 16, FOSC, 1.6,
             cares={'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.4 + (0.6 if s < 3 else 0)},
                    'esquerra': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.2 + (hr(int(s) // 3, int(t) // 5) - 0.5) * 0.4}})
+
+
+def _disc(e, sid, cx, cz, r, y, ramp, lvl):
+    """Un disc horitzontal (de cara amunt) de radi `r` a l'alçada `y`: `lvl(dx, dz)` des del centre."""
+    e.quad(sid, (cx - r, y, cz + r), (cx + r, y, cz + r), (cx + r, y, cz - r), (cx - r, y, cz - r), ramp=ramp,
+           lvl=lambda s, t, P: lvl(s - r, r - t), forma=lambda s, t: (s - r) ** 2 + (t - r) ** 2 <= r * r)
+
+
+def _cilindre(e, sid, cx, cz, r, y0, y1, ramp, lvl, n=20, gir=0.0):
+    """Un cilindre dret (el costat, a cares: la llum del món hi cau cara per cara). `lvl(a, t)`: a = l'angle de la
+    cara, t = l'alçada des de baix. La tapa, a part (_disc)."""
+    for i in range(n):
+        a0, a1 = gir + 2 * math.pi * i / n, gir + 2 * math.pi * (i + 1) / n
+        P0 = (cx + r * math.cos(a0), y1, cz + r * math.sin(a0))
+        P1 = (cx + r * math.cos(a1), y1, cz + r * math.sin(a1))
+        am = (a0 + a1) / 2
+        e.quad(sid, P0, P1, (P1[0], y0, P1[2]), (P0[0], y0, P0[2]), ramp=ramp,
+               lvl=lambda s, t, P, am=am: lvl(am, y1 - y0 - t))
+
+
+SKAI = [(26, 4, 8), (54, 10, 14), (92, 18, 22), (136, 28, 30), (180, 46, 42), (216, 84, 66), (244, 140, 110)]
+
+
+def _tamboret(e, x, z, k):
+    """Un tamboret de bar: la base rodona, la columna cromada, el reposapeus en anella amb tres radis, el plat de
+    sota i el seient de skai vermell amb el ribet. `k`: cadascun una mica diferent (el gir, el desgast, l'alçada) i el
+    tercer, amb el seient esquinçat i cinta americana."""
+    sid = 'tamborets'
+    gir = (0.4, 1.3, 2.1, 0.9)[k % 4]
+    dl = (0.0, -0.25, 0.15, -0.1)[k % 4]                  # el desgast: uns més mats que d'altres
+    hs = (54, 53, 55, 53.5)[k % 4]                         # el seient (dalt)
+    fx = FLUO[0]
+    # l'ombra: el seient la fa una mica cap a fora del fluorescent i cap a la càmera; i la base, a terra, de contacte
+    ox, oz = x + (x - fx) * 0.1, z - 5
+    e.foscor('ombra_tamboret', (ox - 20, 0.7, oz + 20), (ox + 20, 0.7, oz + 20), (ox + 20, 0.7, oz - 20),
+             (ox - 20, 0.7, oz - 20), lambda s, t: 0.5 * max(0.0, 1 - ((s - 20) ** 2 + (t - 20) ** 2) / 400) * 1.5)
+    e.foscor('ombra_tamboret', (x - 15, 0.8, z + 15), (x + 15, 0.8, z + 15), (x + 15, 0.8, z - 15), (x - 15, 0.8, z - 15),
+             lambda s, t: 0.7 * max(0.0, 1 - ((s - 15) ** 2 + (t - 15) ** 2) / 225) * 2)
+    # la base: un plat baix i bombat
+    _cilindre(e, sid, x, z, 12, 0, 2.2, STEELB, lambda a, t: 2.0 + dl - math.sin(a) * 0.6, gir=gir)
+    _disc(e, sid, x, z, 12, 2.2, STEELB,
+          lambda dx, dz: 3.4 + dl + (1.6 if -4 < dx < -1 and 1 < dz < 5 else 0) - math.hypot(dx, dz) * 0.07)
+    # el reposapeus (l'anella i els radis): la meitat del fons abans de la columna, la del davant després
+    yr, rr = 20 + (k % 2), 10
+    pts = [(x + rr * math.cos(gir + i * math.pi / 8), yr, z + rr * math.sin(gir + i * math.pi / 8)) for i in range(17)]
+    radis = [(x + rr * math.cos(gir + i * 2 * math.pi / 3), yr, z + rr * math.sin(gir + i * 2 * math.pi / 3))
+             for i in range(3)]
+    seg = list(zip(pts, pts[1:])) + [((x, yr, z), R) for R in radis]
+    lluny = [s_ for s_ in seg if (s_[0][2] + s_[1][2]) / 2 >= z]
+    a_prop = [s_ for s_ in seg if (s_[0][2] + s_[1][2]) / 2 < z]
+    for A, B_ in sorted(lluny, key=lambda s_: -(s_[0][2] + s_[1][2])):
+        e.tub(sid, A, B_, 1.0, STEELB, 3.2 + dl)
+    e.tub(sid, (x, 2, z), (x, hs - 8, z), 1.7, STEELB, 3.0 + dl)          # la columna
+    for A, B_ in sorted(a_prop, key=lambda s_: -(s_[0][2] + s_[1][2])):
+        e.tub(sid, A, B_, 1.0, STEELB, 3.6 + dl)
+    # el plat de sota el seient i el seient: el costat (amb el ribet a dalt i a baix) i la tapa
+    _cilindre(e, sid, x, z, 7, hs - 9, hs - 6, STEELB, lambda a, t: 2.2 + dl - math.sin(a) * 0.5, n=12, gir=gir)
+    _cilindre(e, sid, x, z, 15, hs - 6, hs, SKAI,
+              lambda a, t: 2.4 + dl - math.sin(a) * 0.5 + (0.9 if t > 5.2 else 0) - (0.9 if t < 0.8 else 0)
+              + (0.3 if int(a * 6) % 5 == 0 else 0), gir=gir)
+
+    def seient(dx, dz):
+        d = math.hypot(dx, dz)
+        v = 3.4 + dl - d * 0.04 - dz * 0.02                  # bombat: més clar al mig
+        if d > 13.4:
+            v += 0.8                                         # el ribet
+        if math.hypot(dx + 5, dz - 6) < 2.6:
+            v += 1.6                                         # el reflex del skai
+        if k == 2:                                           # l'esquinç (la cinta hi va damunt)
+            u, w = dx * math.cos(gir) + dz * math.sin(gir), -dx * math.sin(gir) + dz * math.cos(gir)
+            if 0 < u < 11 and abs(w) < 0.5:
+                return 0.6
+        return v
+    _disc(e, sid, x, z, 15, hs, SKAI, seient)
+    if k == 2:                                                # dues tires de cinta americana, en creu sobre l'esquinç
+        tape = [(60, 60, 64), (110, 110, 116), (160, 160, 166), (196, 196, 200)]
+        c, s = math.cos(gir), math.sin(gir)
+        for u0, w0 in ((3, 0.4), (8, -0.3)):
+            P = [(x + u * c - w * s, hs + 0.3, z + u * s + w * c) for u, w in
+                 ((u0 - 1.3, w0 - 3.2), (u0 + 1.3, w0 - 3.2), (u0 + 1.3, w0 + 3.2), (u0 - 1.3, w0 + 3.2))]
+            e.quad(sid, P[0], P[1], P[2], P[3], ramp=tape, lvl=lambda s_, t, P_: 3.0 + (0.8 if t < 0.8 else 0),
+                   dues_cares=True)
 
 
 def _dret(e, sid, img, box, peu, base_y):
