@@ -250,8 +250,9 @@ export function writeBenneContent(gameDir: string, content: GameContent, text: L
       for (const [did, def] of Object.entries(room.decor ?? {})) {
         const existing = props.find((p) => p.id === did);
         if (existing) {
-          // Només si el contingut ho diu (`sota`): si no, es respecta el que s'hagi retocat a l'editor.
-          if (def.sota !== undefined) existing.zIndex = decorZ(def.sota);
+          // Només si el contingut ho diu (`sota`): si no, es respecta el que s'hagi retocat a l'editor. Tampoc si
+          // l'art l'ha posat damunt d'una capa del davant (porta la línia base de la capa): baixat, la capa el taparia.
+          if (def.sota !== undefined && existing.baseline === undefined) existing.zIndex = decorZ(def.sota);
           continue;
         }
         props.push(decorProp(did, def.sota));
