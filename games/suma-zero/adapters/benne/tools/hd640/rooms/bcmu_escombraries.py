@@ -46,6 +46,7 @@ BOXES = (466, 200, 0.42)                           # les caixes d'arxiu: x, z, g
 CAIXES = ((0, 0, 0, 0.0), (44, 22, 0, 0.18), (3, 4, 29, -0.16))  # les caixes: dx, dz, y de sota, gir de més
 DOCK = (476, 528, 266, 296)                        # la base de càrrega de NETA-3: x0, x1, z0, z1
 BIN = (46, 58)                                     # el contenidor del primer pla (x, z)
+BAIXANT = (418, -88, 8)                            # la baixant, en primer pla a la dreta: x, z, radi
 STAIN = (196, 274)                                 # la taca d'humitat on cau la gota (x, z)
 
 
@@ -320,6 +321,12 @@ def escena(cv, tex, estat=frozenset()):
         e.tub('primer_pla', (wx, 4, wz - 3), (wx, 4, wz + 3), 4.5, FOSC, 1.6)
     e.tub('primer_pla', (10, HW - 10, -300), (10, HW - 10, ZW - 4), 10, FOSC, 2.0, brides=70)
     e.tub('primer_pla', (30, HW - 6, -300), (30, HW - 6, ZW - 4), 5, FOSC, 1.6, brides=110)
+    # a tocar de la càmera, a la dreta: la baixant (mig fora de pla, retallada contra les caixes) i un cable que
+    # penja del sostre
+    px_, pz_, pr = BAIXANT
+    e.tub('primer_pla', (px_, -40, pz_), (px_, HW + 40, pz_), pr, FOSC, 1.8, brides=56, llum_dir=(-1.0, 0.3))
+    e.cable('primer_pla', [(px_ - 12, HW, pz_ + 2), (px_ - 18, 176, pz_ + 2), (px_ - 11, 162, pz_)],
+            FOSC, 1.6, gruix=2.4)
     return e
 
 
@@ -590,8 +597,9 @@ WALK_MON = [(14, 290), (14, 262), (110, 240), (130, 286), (_LL[0][0], 296), (_LL
             (_LL[2][0], _LL[2][2]), (_LL[3][0], _LL[3][2]), (_LL[3][0] + 6, 292), (DOCK[0] - 6, 292), (DOCK[0] - 6, 262),
             (560, 250), (600, -100), (BIN[0] + 50, -100), (BIN[0] + 44, BIN[1] + 40), (14, BIN[1] + 50)]
 V_MAX = _v_escala(1.2)
+U_MAX = 565                                        # (més a la dreta, la baixant del primer pla la tapa sencera)
 _WALK = [_p(x, z) for x, z in WALK_MON]
-for _a, _b, _c in ((1, 0, -4), (-1, 0, W - 5), (0, -1, V_MAX)):
+for _a, _b, _c in ((1, 0, -4), (-1, 0, U_MAX), (0, -1, V_MAX)):
     _WALK = _talla(_WALK, _a, _b, _c)
 _WALK = [(round(u), round(v)) for u, v in _WALK]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)

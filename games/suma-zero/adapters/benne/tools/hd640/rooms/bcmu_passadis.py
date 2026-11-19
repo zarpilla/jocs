@@ -40,7 +40,7 @@ LL = 636                                           # l'amplada de la paret llisa
 XR = W - XC + 2 * LL                               # on s'acaba la paret llarga, a la dreta (fora de la pantalla)
 BENCH = (236, 176, 92, 32, 0.38)                   # el banc: x, z del centre, llarg, fons, gir
 PLANT = (44, 30)                                   # la jardinera del primer pla (x, z)
-COLUMN = (506, 144)                                # la columna del primer pla (x, z)
+COLUMN = (560, 40)                                 # la columna del primer pla (x, z)
 CARTELL = (52, 268)                                # el cartell de terra (x, z dels peus)
 GALLEDA = (184, 276)                               # la galleda (x, z)
 
@@ -67,7 +67,7 @@ def _fw(fx, fy):
     return (_w(fx), _y(fy), ZW)
 
 
-CAM = Camera(pos=(360, 175, -230), yaw=-0.26, pitch=0.17, f=460, centre=(320, 88))
+CAM = Camera(pos=(540, 200, -160), yaw=-0.55, pitch=0.22, f=420, centre=(320, 88))
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 TUBS = [(_w(x), HW - 4, ZW - 60) for x in PL.TUBES] + [(-40 + 0, HW - 4, ZW - 180), (720, HW - 4, ZW - 60)]
@@ -505,8 +505,9 @@ def _v_escala(k):
 # pantalla i per on un personatge passaria d'escala 1,2 (més a prop, el primer pla).
 WALK_MON = [(14, 284), (700, 284), (700, -100), (14, -100)]
 V_MAX = _v_escala(1.2)
+U_MAX = 575                                        # (més a la dreta, la columna del primer pla la tapa sencera)
 _WALK = [_p(x, z) for x, z in WALK_MON]
-for _a, _b, _c in ((1, 0, -4), (-1, 0, W - 5), (0, -1, V_MAX)):
+for _a, _b, _c in ((1, 0, -4), (-1, 0, U_MAX), (0, -1, V_MAX)):
     _WALK = _talla(_WALK, _a, _b, _c)
 _WALK = [(round(u), round(v)) for u, v in _WALK]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)

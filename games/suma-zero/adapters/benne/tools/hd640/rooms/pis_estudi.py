@@ -46,6 +46,30 @@ PIZZA = (58, 116)                                  # la pila de capses de pizza 
 BOX = (346, 152, 40, 30, 26, -0.32)                # la caixa del router (decorat): x, z, ample, fons, alt, gir
 SHELF = (486, 546, 268, 298, 138)                  # la prestatgeria, a la dreta del passaplats: x0, x1, z0, z1, alt
 BIN = (530, 236)                                   # la paperera
+JAMB = (303, 309, -160, -152)                      # el brancal de la porta, en primer pla: x0, x1, z0, z1
+NIGHT = (430, 514, -80, -40, 96)                   # la calaixera, en primer pla: x0, x1, z0, z1, alçada
+CLOCK = (16, 8, 8)                                 # el despertador, damunt: ample, alt, fons
+
+_FONT3 = {'0': ('111', '101', '101', '101', '111'), '1': ('010', '110', '010', '010', '111'),
+          '2': ('111', '001', '111', '100', '111'), '3': ('111', '001', '111', '001', '111')}
+
+
+def _digits(txt, w, h):
+    """La cara del despertador: dígits de 3×5 encesos (els dos punts al mig) sobre negre; (s, t) des de dalt a
+    l'esquerra, en unitats del món."""
+    cols = 4 * len(txt) + 1                        # 3 per dígit + 1 d'espai, i els dos punts
+    def lvl(s, t, P):
+        c, r = int(s / w * (cols + 2)) - 1, int(t / h * 7) - 1
+        if not (0 <= r < 5 and 0 <= c < cols):
+            return 0.2
+        if c == 8 and r in (1, 3):                # els dos punts, entre el segon i el tercer dígit
+            return 4.6
+        k = c - (1 if c >= 8 else 0)
+        d, x = divmod(k, 4)
+        if d >= len(txt) or x == 3:
+            return 0.2
+        return 4.6 if _FONT3[txt[d]][r][x] == '1' else 0.6
+    return lvl
 
 
 def _w(fx):
@@ -441,6 +465,10 @@ def escena(cv, tex, estat=frozenset()):
         e.caixa_girada('primer_pla', cx, cz, w, d, h, a, FOSC, 1.6, y0=y0,
                        cares={'dalt': {'ramp': FOSC, 'lvl': lambda s, t, P: 3.0 - (1.2 if abs(s - 30) < 2 else 0)},
                               'davant': {'ramp': FOSC, 'lvl': 1.2}, 'dreta': {'ramp': FOSC, 'lvl': 2.0}})
+    # el brancal de la porta per on mirem, a tocar de la càmera a l'esquerra (amb un fil de claror de les pantalles)
+    e.caixa('primer_pla', JAMB[0], JAMB[1], 0, HW + 40, JAMB[2], JAMB[3], FOSC, 1.0,
+            cares={'dreta': {'ramp': FOSC, 'lvl': lambda s, t, P: 3.6 if s < 1.2 else 1.4},
+                   'davant': {'ramp': FOSC, 'lvl': 0.8}})
     e.tub('primer_pla', (470, 0, 20), (470, HW, 20), 6, FOSC, 1.8, brides=60)
     e.roca('primer_pla', (432, 0, 96), 30, [(10, 4, 14), (20, 8, 26), (32, 14, 40), (46, 22, 56), (62, 32, 72)], lvl=2.0,
            llum_dir=(-0.7, -0.6), aplana=0.5, seed=4)                            # el puf
@@ -450,6 +478,32 @@ def escena(cv, tex, estat=frozenset()):
         e.cable('primer_pla', [(xx, HW, 10 + k * 10), (xx + 10 + k * 6, 150 - k * 18, 16 + k * 10),
                                (xx + 4, 112 - k * 24, 20 + k * 10)], [(4, 4, 8), (14, 12, 20), (26, 22, 34)], 1.2,
                 gruix=2.0)
+    # la calaixera, a baix a la dreta (l'última: és el més proper a la càmera i ho tapa tot): una silueta amb el
+    # cantell tocat pel cian de les pantalles, i el despertador damunt (les 03:12, en vermell)
+    RIM = [(4, 3, 6), (9, 8, 14), (14, 18, 26), (20, 40, 48), (40, 90, 100), (90, 170, 175)]
+    tx0, tx1, tz0, tz1, th = NIGHT
+    BRASA = [(4, 3, 6), (14, 6, 10), (30, 10, 14), (60, 16, 20), (110, 30, 30), (170, 60, 50)]
+
+    def tapa(s, t, P):                             # la claror vermella del despertador, i el cantell
+        d = math.hypot(s - 16, t - 8)
+        return max(1.4, 4.2 - d / 9) + (0.8 if s < 1.2 or t > tz1 - tz0 - 1.2 else 0)
+
+    def calaixos(s, t, P):                         # tres calaixos: les juntes, fosques, i els poms, amb el cian
+        if abs(t - th / 3) < 0.9 or abs(t - 2 * th / 3) < 0.9:
+            return 0.2
+        if t < 1.0 or s < 1.0:
+            return 3.0
+        if abs(s - (tx1 - tx0) / 2) < 3 and any(abs(t - (k + 0.5) * th / 3) < 1.5 for k in range(3)):
+            return 3.6
+        return 1.0
+    e.caixa('primer_pla', tx0, tx1, 0, th, tz0, tz1, FOSC, 1.2,
+            cares={'dalt': {'ramp': BRASA, 'lvl': tapa},
+                   'esquerra': {'ramp': RIM, 'lvl': lambda s, t, P: 4.0 if t < 1.0 else 1.8},
+                   'davant': {'ramp': RIM, 'lvl': calaixos}})
+    cx0, cz0 = tx0 + 8, tz1 - 12
+    e.caixa('primer_pla', cx0, cx0 + CLOCK[0], th, th + CLOCK[1], cz0, cz0 + CLOCK[2], FOSC, 1.4,
+            cares={'davant': {'ramp': RED, 'lvl': _digits('0312', CLOCK[0], CLOCK[1])},
+                   'esquerra': {'ramp': RIM, 'lvl': 2.6}, 'dalt': {'ramp': RIM, 'lvl': 2.2}})
     return e
 
 

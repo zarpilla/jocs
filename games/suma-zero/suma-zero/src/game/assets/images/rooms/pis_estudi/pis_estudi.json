@@ -128,10 +128,10 @@
     },
     "pis_estudi 6.aseprite": {
       "frame": {
-        "x": 1265,
+        "x": 1280,
         "y": 0,
         "w": 321,
-        "h": 241
+        "h": 239
       },
       "rotated": false,
       "trimmed": true,
@@ -139,7 +139,7 @@
         "x": 319,
         "y": 0,
         "w": 321,
-        "h": 241
+        "h": 239
       },
       "sourceSize": {
         "w": 640,
@@ -149,7 +149,7 @@
     },
     "pis_estudi 7.aseprite": {
       "frame": {
-        "x": 1586,
+        "x": 1601,
         "y": 0,
         "w": 314,
         "h": 160
@@ -170,7 +170,7 @@
     },
     "pis_estudi 8.aseprite": {
       "frame": {
-        "x": 1900,
+        "x": 1915,
         "y": 0,
         "w": 314,
         "h": 160
@@ -191,7 +191,7 @@
     },
     "pis_estudi 9.aseprite": {
       "frame": {
-        "x": 2214,
+        "x": 2229,
         "y": 0,
         "w": 314,
         "h": 160
@@ -212,7 +212,7 @@
     },
     "pis_estudi 10.aseprite": {
       "frame": {
-        "x": 2528,
+        "x": 2543,
         "y": 0,
         "w": 314,
         "h": 160
@@ -233,7 +233,7 @@
     },
     "pis_estudi 11.aseprite": {
       "frame": {
-        "x": 2842,
+        "x": 2857,
         "y": 0,
         "w": 314,
         "h": 160
@@ -254,7 +254,7 @@
     },
     "pis_estudi 12.aseprite": {
       "frame": {
-        "x": 3156,
+        "x": 3171,
         "y": 0,
         "w": 314,
         "h": 160
@@ -275,7 +275,7 @@
     },
     "pis_estudi 13.aseprite": {
       "frame": {
-        "x": 3470,
+        "x": 3485,
         "y": 0,
         "w": 314,
         "h": 160
@@ -1285,16 +1285,16 @@
       "frame": {
         "x": 640,
         "y": 0,
-        "w": 625,
-        "h": 352
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
-      "trimmed": true,
+      "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 625,
-        "h": 352
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
         "w": 640,
@@ -1309,7 +1309,7 @@
     "image": "pis_estudi.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3784,
+      "w": 3799,
       "h": 520
     },
     "scale": "1",

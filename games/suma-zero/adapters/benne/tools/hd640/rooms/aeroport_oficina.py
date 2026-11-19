@@ -41,6 +41,7 @@ DESK = (338, 196, 300, 66, 46, 0.24)               # el taulell: x i z del centr
 CAB = (96, 186, 40)                                # els arxivadors: x0, x1, fons (contra la paret del fons)
 CHAIR = (270, 128)                                 # els peus de la cadira (x, z)
 TOWER = (166, 150)                                 # la torre, a terra a l'esquerra del taulell (x, z)
+FONT = (48, 22)                                    # la font d'aigua del primer pla (x, z)
 MK = 1.15                                          # el monitor, una mica més gros que al dibuix pla (es llegeix)
 
 
@@ -63,7 +64,7 @@ WIN = (_w(PL.WINDOW[0]), _w(PL.WINDOW[2]), _y(PL.WINDOW[3]), _y(PL.WINDOW[1]))  
 DOOR_W = (_wz(600), _wz(533), 0, _y(67))                                           # z0, z1, y0, y1 (la fulla)
 CLOCK_W = (_w(PL.CLOCK[0]), _y(PL.CLOCK[1]))
 
-CAM = Camera(pos=(XR - 420, 190, -260), yaw=0.36, pitch=0.16, f=440, centre=(320, 90))
+CAM = Camera(pos=(60, 190, -160), yaw=0.55, pitch=0.16, f=420, centre=(320, 90))
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)  # (la llum és la del món: la de l'Escena)
 TEX_LIGHT = Light(ambient=-0.1, vignette=None, floor_fade=None)   # el dibuix pla de les textures, sense vinyeta
@@ -282,12 +283,12 @@ def escena(cv, tex, estat=frozenset()):
     e.sprite('cadira', tex['cadira'].crop(CHAIR_BOX), (301 - CHAIR_BOX[0], 221 - CHAIR_BOX[1]), (chx, 0, chz))
     # primer pla: la font d'aigua en silueta a l'esquerra, caixes d'arxiu a baix a la dreta i el fluorescent que penja
     FOSC = [(3, 4, 8), (8, 10, 16), (14, 16, 24), (21, 24, 33), (30, 34, 44), (40, 45, 56)]
-    e.caixa_girada('primer_pla', 112, 30, 38, 38, 92, -0.3, FOSC, 1.4,
+    e.caixa_girada('primer_pla', FONT[0], FONT[1], 38, 38, 92, -0.3, FOSC, 1.4,
                    cares={'dalt': {'ramp': FOSC, 'lvl': 2.6}, 'davant': {'ramp': FOSC, 'lvl': 1.8},
                           'dreta': {'ramp': FOSC, 'lvl': 2.2}})
-    e.tub('primer_pla', (112, 92, 30), (112, 134, 30), 13, [(4, 8, 16), (8, 18, 34), (14, 32, 54), (24, 50, 76),
+    e.tub('primer_pla', (FONT[0], 92, FONT[1]), (FONT[0], 134, FONT[1]), 13, [(4, 8, 16), (8, 18, 34), (14, 32, 54), (24, 50, 76),
                                                           (40, 74, 104)], 1.0, llum_dir=(0.6, -0.8))   # la garrafa
-    e.tub('primer_pla', (112, 134, 30), (112, 140, 30), 5, FOSC, 1.6)
+    e.tub('primer_pla', (FONT[0], 134, FONT[1]), (FONT[0], 140, FONT[1]), 5, FOSC, 1.6)
     for cx_, cz_, w, d, h, a, y0 in ((612, 56, 72, 54, 42, -0.3, 0), (616, 60, 56, 44, 34, -0.12, 42),
                                      (538, 4, 58, 44, 36, 0.2, 0)):
         e.caixa_girada('primer_pla', cx_, cz_, w, d, h, a, FOSC, 1.6, y0=y0,
@@ -450,7 +451,23 @@ def _cantons(cx, cz, w, d, a, y0, y1):
 # càmera que el personatge passi d'≈1,2.
 WALK_MON = [(214, 102), (300, 70), (440, 50), (560, 62), (590, 100), (590, 292), (520, 292), (486, 270), (503, 202),
             (494, 189), (212, 116)]
-_WALK = [_p(x, z) for x, z in WALK_MON]
+V_MAX = 246                                        # (més avall, la vora de la pantalla: retallat aquí)
+
+
+def _talla(poly, a, b, c):
+    """Retalla el polígon (de pantalla) pel semiplà a·u + b·v + c ≥ 0."""
+    out = []
+    for P, Q in zip(poly, poly[1:] + poly[:1]):
+        fp, fq = a * P[0] + b * P[1] + c, a * Q[0] + b * Q[1] + c
+        if fp >= 0:
+            out.append(P)
+        if (fp >= 0) != (fq >= 0):
+            k = fp / (fp - fq)
+            out.append((P[0] + (Q[0] - P[0]) * k, P[1] + (Q[1] - P[1]) * k))
+    return out
+
+
+_WALK = [(round(u), round(v)) for u, v in _talla([_p(x, z) for x, z in WALK_MON], 0, -1, V_MAX)]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 
 
