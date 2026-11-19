@@ -366,12 +366,12 @@ L'endemà al matí.
 
 **Entrada: el Punt 7 de dia.** Fa un sol fred de febrer i l'esmorzar és a coberta, a popa, amb guants. La Nadia
 repeteix croissant (es veu: és la pista de la seva revisió). L'Arenga encara és on va passar la nit. A una
-milla, a estribord, hi ha la plataforma del pròleg, ara de dia: el logotip tapat amb cinta americana i, al voltant,
+milla, a babord, hi ha la plataforma del pròleg, ara de dia: el logotip tapat amb cinta americana i, al voltant,
 una taca d'aigua tèrbola, d'un gris que no és el del mar. Les gavines hi passen per sobre i no s'hi posen. Ningú no en
 parla. (És el mirall del pròleg: allà era de nit i només es veia el pot.)
 
 Si el jugador fa mirar la plataforma a la Vet: «L'aigua és d'un altre color, allà.» Ningú no li respon. En Bastida
-tomba la cadira d'esquena a estribord.
+tomba la cadira d'esquena a babord.
 
 La Capitana:
 

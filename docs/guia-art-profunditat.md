@@ -273,8 +273,6 @@ personatges en 3/4, la respiració i les micro-accions. Queda pendent:
 - Rètols petits que no es llegeixen en escorç: a Suma Zero, el panell de sortides i «FACTURACIÓ» de la terminal i la
   placa «DIRECTOR»; a Ni un ou, «COBERTA», «CUINA», «MUNTACÀRREGUES», «RÀDIO», «PONT» i els noms de les portes del
   passadís; a Ferro-9, «ACCÉS RESTRINGIT», «HANGAR», les normes del Cargol i «ALDAIA · FERRO-9» al museu.
-- Ni un ou, la coberta de popa: la càmera mira cap a popa i la plataforma queda a babord, però el text diu «a
-  estribord».
 - Escenes amb gent asseguda que no s'han vist al joc: la reunió del menjador i la infermeria de Ni un ou.
 - Els personatges no surten als reflexos del terra (el vestíbul del banc de Suma Zero).
 - Alguns mobles i objectes encara són dibuixos plans drets (sprites), no volums: els tamborets del bar, les bombes de
