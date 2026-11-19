@@ -13,8 +13,10 @@ de biaix la cantonada del fons a l'esquerra:
   - la **caixa de recanvis**, girada (s'hi passa per darrere); primer pla: la biga de la dreta, una cadena amb el
     ganxo i unes caixes en silueta.
 
-El detall de les parets ve del dibuix pla de sempre (gavina_hangar_pla_comu.py) sense el pilar, projectat; el pilar
-i la llançadora són el dibuix pla dret (sprites); la resta, en 3D. Decorats: la diferència amb la sala de sempre.
+El detall de les parets ve del dibuix pla de sempre (gavina_hangar_pla_comu.py) sense el pilar, projectat. El pilar
+és un cos de revolució amb el perfil i la pintura del dibuix pla de cara; la llançadora, la mateixa nau de facetes de
+final_llancadora (FL.Nau), girada (flanc, morro i llom), amb les calcomanies del dibuix pla de perfil, el bressol, les
+aletes i la fulla de la porta. Decorats: la diferència amb la sala de sempre.
 
 El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (300 = la paret del fons);
 1 unitat = 1 píxel de sala a la distància on un personatge fa ≈110 px (escala 1).
@@ -32,6 +34,9 @@ from hd640.rooms import gavina_hangar_pla_comu as PL
 from hd640.rooms.fabrica_moll_pla_comu import pillar, carved_mark, shuttle, text, hr
 from hd640.rooms.gavina_passadis_pla_comu import diff
 from hd640.tres_d import Camera, Escena, Llum
+import hd640.rooms.final_llancadora as FL
+from hd.rooms.fabrica_moll import OLDHULL
+from hd.pix import COPPER, B4
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 ZW = 300                                           # la paret del fons
@@ -169,12 +174,52 @@ def _pilar(marca=False):
     return cv.img
 
 
-PILAR_BOX = (PL.PILAR_CX - 16, 28, PL.PILAR_CX + 17, FLOOR_Y)
+def _pilar_3d(e, img, sid='pilar', M=28):
+    """El pilar 7 de volum: un cos de revolució al voltant de la vertical, amb el perfil (el mig ample de cada fila)
+    del dibuix pla de cara; cada faceta du el tros del dibuix pla que li toca (el que mira la càmera, el del mig)."""
+    px, pz = PILAR
+    a = np.asarray(img)[..., 3]
+    files = []                                                    # (y0, y1, centre, mig ample) del dibuix pla
+    for fy in range(28, FLOOR_Y):
+        xs = np.nonzero(a[fy] > 128)[0]
+        if not len(xs):
+            continue
+        c, hw = (xs[0] + xs[-1] + 1) / 2, (xs[-1] - xs[0] + 1) / 2
+        if files and files[-1][1] == fy and files[-1][2:] == (c, hw):
+            files[-1] = (files[-1][0], fy + 1, c, hw)
+        else:
+            files.append((fy, fy + 1, c, hw))
+    tx, tz = CAM.pos[0] - px, CAM.pos[2] - pz
+    n = math.hypot(tx, tz)
+    tx, tz = tx / n, tz / n                                       # cap a la càmera
+    rx, rz = -tz, tx                                              # cap a la dreta de la pantalla
+    dt = 2 * math.pi / M
+
+    def P(th, y, r):
+        return (px + r * (math.sin(th) * rx + math.cos(th) * tx), y, pz + r * (math.sin(th) * rz + math.cos(th) * tz))
+    for fy0, fy1, c, hw in files:
+        ya, yb = _y(fy0), _y(fy1)
+        for j in range(M):
+            ta = -math.pi + j * dt
+            tb = ta + dt
+            if math.cos(ta + dt / 2) < -0.3:
+                continue                                          # (d'esquena)
+            sa, sb = max(-1.0, min(1.0, math.sin(ta))), max(-1.0, min(1.0, math.sin(tb)))
+            e.quad(sid, P(ta, ya, hw), P(tb, ya, hw), P(tb, yb, hw), P(ta, yb, hw),
+                   tex=(img, (c + hw * sa, fy0, c + hw * sb, fy1)),
+                   ombra=lambda s, t, k=max(0.0, 0.35 * (1 - math.cos(ta + dt / 2))): k)
+    # la tapa de l'àbac (s'hi veu una mica, de dalt)
+    fy0, _, c, hw = files[0]
+    tapa = [(px + hw * (math.sin(t) * rx + math.cos(t) * tx), _y(fy0), pz + hw * (math.sin(t) * rz + math.cos(t) * tz))
+            for t in (math.pi * 0.75, math.pi * 0.25, -math.pi * 0.25, -math.pi * 0.75)]
+    e.quad(sid, *tapa, ramp=IRON, lvl=lambda s, t, P_: 2.6 if math.hypot(P_[0] - px, P_[2] - pz) < hw - 1.5 else 3.8,
+           forma=lambda s, t, R=hw * math.sqrt(2): math.hypot(s - R / 2, t - R / 2) <= hw, dues_cares=True)
 
 
 @functools.lru_cache(maxsize=None)
 def _llancadora(porta=False):
-    """La llançadora vella, de perfil, sobre transparent (amb la porta oberta, si cal) i l'etiqueta dels forats."""
+    """La llançadora vella, de perfil, sobre transparent (amb la porta oberta, si cal) i l'etiqueta dels forats:
+    d'aquí surten les calcomanies del flanc de la nau en 3D."""
     cv = Canvas(light=_llum_pla(), transparent=True)
     shuttle(cv, 333, 133, aged=True)
     cv.rect(469, 157, 480, 164, PAPER, 3.6, 0.6)
@@ -185,8 +230,156 @@ def _llancadora(porta=False):
     return cv.img
 
 
-SHUTTLE_BOX = (330, 78, 514, 198)
-SHUTTLE_FOOT = (422, 196)                          # (al dibuix pla: entre les dues potes, a terra)
+# ─── La llançadora en 3D (la mateixa nau de final_llancadora i final_estacio: FL.Nau) ───
+
+NAU_L, NAU_R = 180.0, 27.0                         # (el perfil de FL.radi, una mica més grossa: la del dibuix pla)
+NAU_ANG = 0.45                                     # el morro, girat cap a la càmera (a l'esquerra)
+NAU_Y = 31 + NAU_R                                 # l'eix: el ventre, a 31 del terra (damunt el bressol)
+_FX0, _FCY, _FL, _FR = 333, 133, 173, 32           # la llançadora al dibuix pla: morro, eix, llarg i radi
+# les calcomanies del flanc (u0, u1, v0, v1 al dibuix pla, des del morro i l'eix): la finestreta, la porta amb el
+# pany, els tres forats, el rètol «L-1» i l'etiqueta dels forats
+_DECALS = ((19, 39, -19, 1), (50, 94, -24, 26), (95, 150, 11, 24), (118, 135, -18, -9), (135, 148, 23, 32))
+_NTW = int(2 * math.pi * NAU_R) + 2
+_UD0, _UD1 = 53 * NAU_L / _FL, 77 * NAU_L / _FL   # la porta (u), la frontissa al cantell del morro
+_PD0, _PD1 = math.asin(-23 / _FR), math.asin(25 / _FR)
+_UPANY, _UB = (77 + 8) * NAU_L / _FL, (40 * NAU_L / _FL, 126 * NAU_L / _FL)   # el pany; el bressol
+
+
+def _nau():
+    d = (-math.cos(NAU_ANG), 0.0, -math.sin(NAU_ANG))              # de la cua cap al morro
+    nose = (SHUTTLE_X + d[0] * NAU_L / 2, NAU_Y, SHUTTLE_Z + d[2] * NAU_L / 2)
+    return FL.Nau(nose, d, 0.0, L=NAU_L, R=NAU_R, espill=True)
+
+
+@functools.lru_cache(maxsize=None)
+def _nau_tex(porta=False):
+    """El casc desplegat (x = (φ + π)·R, y = u): el procedural de FL._casc, amb les calcomanies del dibuix pla."""
+    flat = np.asarray(_llancadora(False)).copy()
+    if porta:
+        dx0 = _FX0 + 53
+        flat[:, dx0:] = np.asarray(_llancadora(True))[:, dx0:]
+    caixes = np.zeros(flat.shape[:2], bool)
+    for u0, u1, v0, v1 in _DECALS:
+        caixes[_FCY + v0:_FCY + v1 + 1, _FX0 + u0:_FX0 + u1 + 1] = True
+    # dins les caixes, només el que no és casc nu (el casc, el de FL._casc): el que té color, el que és fosc i el
+    # marc de la porta
+    rgb = flat[..., :3].astype(np.int32)
+    sat = rgb.max(-1) - rgb.min(-1)
+    lum = rgb.mean(-1)
+    marc = np.zeros_like(caixes)
+    dx0, dx1, dy0, dy1 = _FX0 + 53, _FX0 + 77, _FCY - 23, _FCY + 25
+    marc[dy0:dy1 + 2, dx0 - 1:dx0 + 2] = marc[dy0:dy1 + 2, dx1 - 1:dx1 + 2] = True
+    marc[dy0 - 1:dy0 + 2, dx0:dx1 + 1] = marc[dy1:dy1 + 2, dx0:dx1 + 1] = True
+    yy, xx = np.mgrid[0:flat.shape[0], 0:flat.shape[1]]
+    marc |= np.hypot(xx - (_FX0 + 29), yy - (_FCY - 9)) < 9.5           # la finestreta sencera
+    keep = caixes & ((sat > 26) | (lum < 48) | marc | (porta & (np.arange(flat.shape[1])[None, :] > dx0 + 1)
+                                                         & (np.arange(flat.shape[0])[:, None] > dy0 + 1)
+                                                         & (np.arange(flat.shape[1])[None, :] < dx1)
+                                                         & (np.arange(flat.shape[0])[:, None] < dy1)))
+    img = Image.new('RGBA', (_NTW, int(NAU_L) + 2), (0, 0, 0, 0))
+    P = img.load()
+    for u in range(int(NAU_L) + 2):
+        uu = min(u + 0.5, NAU_L)
+        r = FL.radi(uu, NAU_L, NAU_R)
+        for x in range(_NTW):
+            phi = x / NAU_R - math.pi
+            rmp, lvl = FL._casc(uu * FL.LEN / NAU_L, phi, r)
+            lvl += 1.0                                                # (a la badia, sota el llum: més clara)
+            col = rmp[max(0, min(len(rmp) - 1, math.floor(lvl + B4[u & 3][x & 3] - 0.5)))]
+            if abs(phi) < math.pi / 2:
+                X = int(_FX0 + uu * _FL / NAU_L)
+                Y = int(round(_FCY + r * math.sin(phi) * _FR / NAU_R))
+                if keep[Y, X] and flat[Y, X, 3] > 128:
+                    col = tuple(int(q) for q in flat[Y, X, :3])
+            P[x, u] = tuple(col) + (255,)
+    return img
+
+
+def _cap_a_camera(P, v):
+    """Si el vector `v` (des de P) mira cap a la càmera."""
+    ull = CAM.ull()
+    return sum(v[i] * (ull[i] - P[i]) for i in range(3)) > 0
+
+
+def _llancadora_3d(e, porta=False, sid='llancadora', M=28):
+    """La llançadora vella a la badia, girada (es veu el flanc, el morro i el llom): el casc de facetes amb la
+    textura desplegada, el bressol de dues potes, la tobera, les tres aletes i, oberta, la fulla de la porta."""
+    nv = _nau()
+    L, R = nv.L, nv.R
+    d = nv.d
+    c = nv.eix(L / 2)
+    sx, sz = nv.side[0], nv.side[2]
+    # l'ombra de sota, allargada al llarg de l'eix
+    a, b = L / 2 + 26, R + 26
+    e.foscor('badia', (c[0] + d[0] * a - sx * b, 0.6, c[2] + d[2] * a - sz * b),
+             (c[0] - d[0] * a - sx * b, 0.6, c[2] - d[2] * a - sz * b),
+             (c[0] - d[0] * a + sx * b, 0.6, c[2] - d[2] * a + sz * b),
+             (c[0] + d[0] * a + sx * b, 0.6, c[2] + d[2] * a + sz * b),
+             lambda s, t: 0.55 * max(0.0, 1 - ((s - a) / a) ** 2 - ((t - b) / b) ** 2) * 1.4)
+
+    def aleta(phi):
+        r0 = FL.radi(L - 43, L, R) - 1
+        P0, P1 = nv.p(L - 45, phi, r0), nv.p(L + 3, phi, r0)
+        P3, P2 = nv.p(L - 45, phi, r0 + 23), nv.p(L + 3, phi, r0 + 23)
+
+        def lvl_a(s, t, Pw):
+            v = 3.0 + (hr(int(s) // 4, int(t) // 3, 8) - 0.5) * 0.5
+            if t > 21:
+                v = 2.4                                           # la vora de coure
+            if abs(s - t * 1.6) < 1.2:
+                v += 1.4                                          # el cantell d'atac
+            return v
+        e.quad(sid, P0, P1, P2, P3, ramp=OLDHULL, lvl=lvl_a, dues_cares=True,
+               forma=lambda s, t: t * 1.6 <= s <= 48 - t * 0.25)
+    aletes = [(-math.pi / 2), math.pi / 6, 5 * math.pi / 6]       # la de dalt i les dues de sota, a 120°
+    lluny = [ph for ph in aletes if not _cap_a_camera(c, tuple(nv.p(L / 2, ph, 1.0)[i] - c[i] for i in range(3)))]
+    for ph in lluny:
+        aleta(ph)
+    # la tobera i la tapa de popa (d'esquena: abans que el casc)
+    e.tub(sid, nv.eix(L - 2), nv.eix(L + 13), 8.0 * R / FL.RAD, OLDHULL, 1.6, llum_dir=(-0.6, 1.0))
+    rc = FL.radi(L, L, R)
+    dphi = 2 * math.pi / M
+    for j in range(M):
+        pa = -math.pi + j * dphi
+        e.quad(sid, nv.eix(L), nv.eix(L), nv.p(L, pa + dphi, rc), nv.p(L, pa, rc), ramp=OLDHULL, lvl=1.4,
+               dues_cares=True)
+    # el bressol: dues potes de ferro amb el seient i el peu
+    for ub in _UB:
+        q = nv.p(ub, math.pi / 2, FL.radi(ub, L, R))
+        fx, fz, fy = q[0], q[2], q[1]
+        e.caixa_girada(sid, fx, fz, 22, 22, 4, NAU_ANG, IRON, 2.6,
+                       cares={'dalt': {'ramp': IRON, 'lvl': 3.4}, 'davant': {'ramp': IRON, 'lvl': 2.4}})
+        e.tub(sid, (fx, 4, fz), (fx, fy - 3, fz), 4.0, IRON, 2.4)
+        e.caixa_girada(sid, fx, fz, 9, R * 1.5, 6, NAU_ANG, IRON, 2.6, y0=fy - 4,
+                       cares={'dalt': {'ramp': IRON, 'lvl': 3.6}, 'davant': {'ramp': IRON, 'lvl': 2.8}})
+    # el casc
+    tex = _nau_tex(porta)
+    us = [0.02, 0.6, 1.5, 3, 5, 8, 11.5, 15.5, 20, 25, 30, 36, 42] + \
+        [42 + k * (L * 0.86 - 42) / 14 for k in range(1, 15)] + [L * 0.9, L * 0.95, L]
+    for i in range(len(us) - 1):
+        ua, ub = us[i], us[i + 1]
+        for j in range(M):
+            pa = -math.pi + j * dphi
+            pb = pa + dphi
+            k = max(0.0, min(0.6, 0.12 + 0.3 * math.sin(pa + dphi / 2)))       # el volum del cilindre: el ventre, fosc
+            e.quad(sid, nv.p(ua, pb), nv.p(ua, pa), nv.p(ub, pa), nv.p(ub, pb),
+                   tex=(tex, ((pb + math.pi) * R, ua, (pa + math.pi) * R, ub)), ombra=lambda s, t, k=k: k)
+    for ph in aletes:
+        if ph not in lluny:
+            aleta(ph)
+    # la porta oberta: la fulla, girada sobre la frontissa del cantell del morro
+    if porta:
+        Ht, Hb = nv.p(_UD0, _PD0), nv.p(_UD0, _PD1)
+        w = (_UD1 - _UD0) * 1.05
+        be = math.radians(150)
+        dr = tuple(-d[i] * math.cos(be) + nv.side[i] * math.sin(be) for i in range(3))
+        e.quad(sid, Ht, tuple(Ht[i] + dr[i] * w for i in range(3)), tuple(Hb[i] + dr[i] * w for i in range(3)), Hb,
+               ramp=OLDHULL, lvl=lambda s, t, P_: 1.8 - t * 0.01 + (2.4 if s > w - 1.6 or t < 1.2 else 0)
+               - (0.8 if s < 1.2 else 0) + (0.5 if 4 < s < w - 4 and int(t) % 12 == 0 else 0), dues_cares=True)
+        for hy in (8, 38):                                        # les frontisses
+            Q = nv.p(_UD0, math.asin((hy - 23) / _FR), R + 1)
+            e.caixa(sid, Q[0] - 1.5, Q[0] + 1.5, Q[1] - 2, Q[1] + 2, Q[2] - 1.5, Q[2] + 1.5, COPPER, 3.2)
+    return nv
 
 
 @functools.lru_cache(maxsize=None)
@@ -283,14 +476,10 @@ def escena(cv, tex, estat=frozenset()):
         for gx in (bx0 + 26, bx1 - 26):
             e.caixa('badia', gx - 3, gx + 3, 0, by - 8, BAY_Z - 70, BAY_Z - 64, STEEL, 2.4)
         e.caixa('badia', bx0 + 20, bx1 - 20, by - 14, by - 8, BAY_Z - 70, BAY_Z - 64, STEEL, 2.8)
-        e.foscor('badia', (SHUTTLE_X - 110, 0.6, SHUTTLE_Z + 40), (SHUTTLE_X + 110, 0.6, SHUTTLE_Z + 40),
-                 (SHUTTLE_X + 110, 0.6, SHUTTLE_Z - 40), (SHUTTLE_X - 110, 0.6, SHUTTLE_Z - 40),
-                 lambda s, t: 0.6 * max(0.0, 1 - ((s - 110) / 110) ** 2 - ((t - 40) / 40) ** 2) * 1.4)
-        lla = tex['llancadora_porta'] if 'porta' in estat else tex['llancadora']
-        e.sprite('llancadora', lla.crop(SHUTTLE_BOX), (SHUTTLE_FOOT[0] - SHUTTLE_BOX[0], SHUTTLE_FOOT[1] - SHUTTLE_BOX[1]),
-                 (SHUTTLE_X, 0, SHUTTLE_Z))
-        e.cable('badia', [(bx0 + 4, 6, ZW - 6), (bx0 + 40, 1, ZW + 30), (SHUTTLE_X - 30, 1, SHUTTLE_Z - 30),
-                          (SHUTTLE_X + 10, 30, SHUTTLE_Z - 4)], RUST, 2.6, gruix=3.0)
+        nv = _llancadora_3d(e, 'porta' in estat)
+        q = nv.p(150 * NAU_L / _FL, 0.75)                          # (la mànega entra al flanc, a popa)
+        e.cable('badia', [(bx0 + 4, 6, ZW - 6), (bx0 + 40, 1, ZW + 30), (q[0] - 50, 1, q[2] - 30),
+                          (q[0] - 4, q[1] - 14, q[2] - 4), q], RUST, 2.6, gruix=3.0)
         for k in range(40):                                       # pols a l'aire, a la llum
             P = (bx0 + 20 + hr(k, 1) * (bx1 - bx0 - 40), 20 + hr(k, 2) * 120, ZW + 20 + hr(k, 3) * 200)
             u, v, _ = CAM.projecta(P)
@@ -362,7 +551,7 @@ def escena(cv, tex, estat=frozenset()):
     e.foscor('ombra_pilar', (px_ - 30, 0.7, pz_ + 50), (px_ + 30, 0.7, pz_ + 50), (px_ + 30, 0.7, pz_ - 20),
              (px_ - 30, 0.7, pz_ - 20), lambda s, t: 0.6 * max(0.0, 1 - ((s - 30) / 20) ** 2 - ((t - 22) / 40) ** 2) * 1.5)
     pil = tex['pilar_marca'] if 'marca' in estat else tex['pilar']
-    e.sprite('pilar', pil.crop(PILAR_BOX), (PL.PILAR_CX - PILAR_BOX[0], FLOOR_Y - PILAR_BOX[1] - 1), (px_, 0, pz_))
+    _pilar_3d(e, pil)
     # ── la caixa de recanvis, girada, amb la nota (decorat) ──
     cx_, cz_, cw, cd, ch, ca = CAIXA
     e.foscor('ombra_caixa', (cx_ - 46, 0.6, cz_ + 34), (cx_ + 46, 0.6, cz_ + 34), (cx_ + 46, 0.6, cz_ - 30),
@@ -439,7 +628,7 @@ def _recanvis_tex():
 
 def _tex(t=0.0, aigua=False):
     return {'paret': _paret(t, aigua), 'nua': _nua(), 'pilar': _pilar(), 'pilar_marca': _pilar(True),
-            'llancadora': _llancadora(), 'llancadora_porta': _llancadora(True), 'badia': _badia_fons(),
+            'badia': _badia_fons(),
             'caixa': _caixa_flotant_tex(), 'recanvis': _recanvis_tex()}
 
 
@@ -592,17 +781,26 @@ def _forat(cx, cz, w, d, ang, m=8):
             for lx, lz in ((-w / 2 - m, -d / 2 - m), (w / 2 + m, -d / 2 - m), (w / 2 + m, d / 2 + m - 2), (-w / 2 - m, d / 2 + m - 2))]
 
 
-def _sprite_rect(peu, peu_img, box, fbox):
-    """El rectangle de pantalla d'un tros (`fbox`, al dibuix pla) d'un sprite dret (retall `box`, peu `peu_img`)."""
-    k = CAM.escala(peu)
-    u, v, _ = CAM.projecta(peu)
-    ox, oy = u - peu_img[0] * k, v - peu_img[1] * k
-    return (round(ox + (fbox[0] - box[0]) * k), round(oy + (fbox[1] - box[1]) * k),
-            round(ox + (fbox[2] - box[0]) * k), round(oy + (fbox[3] - box[1]) * k))
+def _rect_pts(pts, m=0):
+    pp = [CAM.projecta(P) for P in pts]
+    return (max(0, round(min(p[0] for p in pp)) - m), max(0, round(min(p[1] for p in pp)) - m),
+            min(W - 1, round(max(p[0] for p in pp)) + m), min(BOTTOM, round(max(p[1] for p in pp)) + m))
 
 
-_SH = ((SHUTTLE_X, 0, SHUTTLE_Z), (SHUTTLE_FOOT[0] - SHUTTLE_BOX[0], SHUTTLE_FOOT[1] - SHUTTLE_BOX[1]), SHUTTLE_BOX)
-_PL = (PILAR[0], 0, PILAR[1])
+def _rect_nau():
+    """El rectangle de pantalla de la llançadora sencera: el casc, les aletes i el bressol."""
+    nv = _nau()
+    pts = [nv.p(u, ph) for u in range(0, int(NAU_L) + 1, 10) for ph in (k * math.pi / 8 for k in range(16))]
+    pts += [nv.p(NAU_L + 3, ph, NAU_R + 22) for ph in (-math.pi / 2, math.pi / 6, 5 * math.pi / 6)]
+    pts += [(q[0] + dx, 0, q[2] + dz) for q in (nv.p(ub, math.pi / 2) for ub in _UB) for dx in (-11, 11) for dz in (-11, 11)]
+    return _rect_pts(pts)
+
+
+def _rect_pany():
+    nv = _nau()
+    return _rect_pts([nv.p(_UPANY + du, math.asin(dv / _FR)) for du in (-9, 9) for dv in (-10, 8)], 1)
+
+
 
 
 def _grate_rect(k):
@@ -615,12 +813,12 @@ GEOMETRIA = {
         'porta_passadis': {'rect': _rect_mon((0, _y(59), _wz(9)), (0, 0, _wz(88))), 'walk': _p(32, _wz(48))},
         'comporta': {'rect': _rect_mon((_w(CX0) - 6, _y(CTOP - 6), ZW), (_w(CX1) + 6, 0, ZW)),
                      'walk': _p((_w(CX0) + _w(CX1)) / 2, 262)},
-        'pilar': {'rect': _sprite_rect(_PL, (PL.PILAR_CX - PILAR_BOX[0], FLOOR_Y - PILAR_BOX[1] - 1), PILAR_BOX,
-                                       (PL.PILAR_CX - 13, 28, PL.PILAR_CX + 13, FLOOR_Y)),
+        'pilar': {'rect': _rect_pts([(PILAR[0] + dx, y, PILAR[1] + dz) for dx in (-13, 13) for dz in (-13, 13)
+                                     for y in (0, _y(28))]),
                   'walk': _p(PILAR[0] + 40, PILAR[1] - 40)},
         'placa_terra': {'rect': _grate_rect(1), 'walk': _p((GRATES[1][0] + GRATES[1][1]) / 2, GRATES[1][2] - 16)},
-        'llancadora': {'rect': _sprite_rect(*_SH, (333, 80, 511, 197)), 'walk': _p(SHUTTLE_X - 40, 270)},
-        'pany': {'rect': _sprite_rect(*_SH, (405, 116, 435, 150)), 'walk': _p(SHUTTLE_X - 10, 270)},
+        'llancadora': {'rect': _rect_nau(), 'walk': _p(SHUTTLE_X - 40, 270)},
+        'pany': {'rect': _rect_pany(), 'walk': _p(SHUTTLE_X - 10, 270)},
         'conducte': {'rect': _rect_mon((_w(PL.PIPE_X) - 2, _y(30), ZW), (_w(PL.PIPE_X + PL.PIPE_W) + 4, 0, ZW)),
                      'walk': _p(40, 262)},
         'escala': {'rect': _rect_mon((_w(101), _y(134), ZW), (_w(183), 0, ZW)), 'walk': _p(_w(142), 266)},

@@ -46,16 +46,16 @@
       "frame": {
         "x": 2771,
         "y": 360,
-        "w": 23,
-        "h": 34
+        "w": 31,
+        "h": 31
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 419,
-        "y": 95,
-        "w": 23,
-        "h": 34
+        "x": 424,
+        "y": 105,
+        "w": 31,
+        "h": 31
       },
       "sourceSize": {
         "w": 640,
@@ -65,7 +65,7 @@
     },
     "gavina_hangar 3.aseprite": {
       "frame": {
-        "x": 1636,
+        "x": 1640,
         "y": 0,
         "w": 565,
         "h": 144
@@ -86,7 +86,7 @@
     },
     "gavina_hangar 4.aseprite": {
       "frame": {
-        "x": 2794,
+        "x": 2802,
         "y": 360,
         "w": 57,
         "h": 22
@@ -107,7 +107,7 @@
     },
     "gavina_hangar 5.aseprite": {
       "frame": {
-        "x": 2885,
+        "x": 2877,
         "y": 360,
         "w": 1,
         "h": 1
@@ -128,18 +128,18 @@
     },
     "gavina_hangar 6.aseprite": {
       "frame": {
-        "x": 2851,
-        "y": 360,
-        "w": 16,
-        "h": 10
+        "x": 3306,
+        "y": 0,
+        "w": 18,
+        "h": 69
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 266,
-        "y": 108,
-        "w": 16,
-        "h": 10
+        "x": 261,
+        "y": 83,
+        "w": 18,
+        "h": 69
       },
       "sourceSize": {
         "w": 640,
@@ -149,7 +149,7 @@
     },
     "gavina_hangar 7.aseprite": {
       "frame": {
-        "x": 2867,
+        "x": 2859,
         "y": 360,
         "w": 17,
         "h": 8
@@ -170,7 +170,7 @@
     },
     "gavina_hangar 8.aseprite": {
       "frame": {
-        "x": 2885,
+        "x": 2877,
         "y": 360,
         "w": 1,
         "h": 1
@@ -212,7 +212,7 @@
     },
     "gavina_hangar 10.aseprite": {
       "frame": {
-        "x": 3378,
+        "x": 3400,
         "y": 0,
         "w": 330,
         "h": 58
@@ -338,7 +338,7 @@
     },
     "gavina_hangar 16.aseprite": {
       "frame": {
-        "x": 2886,
+        "x": 2878,
         "y": 360,
         "w": 1,
         "h": 1
@@ -380,7 +380,7 @@
     },
     "gavina_hangar 18.aseprite": {
       "frame": {
-        "x": 2974,
+        "x": 2978,
         "y": 0,
         "w": 328,
         "h": 82
@@ -401,7 +401,7 @@
     },
     "gavina_hangar 19.aseprite": {
       "frame": {
-        "x": 2516,
+        "x": 2520,
         "y": 0,
         "w": 283,
         "h": 91
@@ -422,7 +422,7 @@
     },
     "gavina_hangar 20.aseprite": {
       "frame": {
-        "x": 2201,
+        "x": 2205,
         "y": 0,
         "w": 158,
         "h": 92
@@ -485,7 +485,7 @@
     },
     "gavina_hangar 23.aseprite": {
       "frame": {
-        "x": 3708,
+        "x": 3730,
         "y": 0,
         "w": 163,
         "h": 58
@@ -506,7 +506,7 @@
     },
     "gavina_hangar 24.aseprite": {
       "frame": {
-        "x": 2884,
+        "x": 2876,
         "y": 360,
         "w": 1,
         "h": 2
@@ -632,7 +632,7 @@
     },
     "gavina_hangar 30.aseprite": {
       "frame": {
-        "x": 2799,
+        "x": 2803,
         "y": 0,
         "w": 175,
         "h": 90
@@ -653,7 +653,7 @@
     },
     "gavina_hangar 31.aseprite": {
       "frame": {
-        "x": 2359,
+        "x": 2363,
         "y": 0,
         "w": 157,
         "h": 92
@@ -676,16 +676,16 @@
       "frame": {
         "x": 1609,
         "y": 0,
-        "w": 27,
-        "h": 153
+        "w": 31,
+        "h": 160
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 259,
-        "y": 40,
-        "w": 27,
-        "h": 153
+        "x": 254,
+        "y": 37,
+        "w": 31,
+        "h": 160
       },
       "sourceSize": {
         "w": 640,
@@ -695,7 +695,7 @@
     },
     "gavina_hangar 33.aseprite": {
       "frame": {
-        "x": 3302,
+        "x": 3324,
         "y": 0,
         "w": 76,
         "h": 59
@@ -742,7 +742,7 @@
     "image": "gavina_hangar.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3871,
+      "w": 3893,
       "h": 418
     },
     "scale": "1",
