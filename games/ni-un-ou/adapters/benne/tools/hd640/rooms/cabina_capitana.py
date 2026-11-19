@@ -1,535 +1,90 @@
 """
-Prova de resolució: la cabina de la Capitana a 640×360 (la composició de hd/rooms/cabina_capitana.py ×4/3,
-dibuixada de nou amb el detall que hi cap). Mateixes rampes, props i animacions.
+La cabina de la Capitana. EN 3D (hd640/tres_d.py), a 1×.
 
-  - la porta estanca del passadís a l'esquerra (oberta, fulla de teca), amb la gorra i l'anorac penjats al costat;
-  - l'ull de bou, el rellotge i el baròmetre de llautó;
-  - l'escriptori de teca amb el contracte de Blau Net (`contracte`), la novel·la romàntica (`novella`), el flexo,
-    una tassa i una foto; a sobre, el prestatge amb barana amb els llibres de navegació i el model de l'Arenga;
-  - la carta nàutica (`carta`), amb Galway i Port Hallen encerclats (Port Hallen, en vermell i més fort);
-  - la llitera de teca amb la manta blava, sota la carta; una catifa al linòleum.
-ANIMS: `mar` (l'ull de bou de nit), `ulls_dia_mar` (el mateix de dia, damunt del decorat `ulls_dia`) i `rellotge`.
+Una càmera alta que mira de biaix la cantonada del fons a l'esquerra, amb el sostre baix:
+  - a la paret de l'esquerra, en escorç, la **porta** estanca oberta al passadís (el camí cap al fons), la gorra i
+    l'anorac penjats i l'ull de bou;
+  - a la paret del fons, el rellotge i el baròmetre, el prestatge dels llibres amb el model de l'Arenga i la **carta
+    nàutica**; a sota de la carta, la llitera de teca encastada, amb volum (la manta, el coixí, els calaixos);
+  - l'**escriptori** de teca, separat de la paret i girat, amb el **contracte**, la **novel·la**, el flexo, la tassa i
+    la foto a sobre; la cadira al davant i la catifa, girades amb ell; s'hi passa per darrere (la Capitana hi espera);
+  - primer pla: la canonada i els cables del sostre, una columna a la dreta i un bagul en silueta a l'esquerra.
+
+Tot el detall ve del dibuix pla de sempre (cabina_capitana_pla_comu.py), projectat; l'ull de bou de dia és un
+decorat 3D (en surt la diferència) i el rellotge, una capa per la paret.
+
+El món: x a la dreta (0 = la paret de la porta), y amunt (0 = el terra), z cap al fons (300 = la paret del fons);
+1 unitat = 1 píxel de sala a la distància on un personatge fa ≈110 px (escala 1).
 """
+import functools
 import math
 
-import hd640  # noqa: F401  (posa la llibreria de dibuix a 640×360)
-from hd.pix import Canvas, Light, W, H, hr, mix  # noqa: F401
-from hd.rooms.arenga import box, rrect, bolt, hpipe, glow, CAB, DARK, WHITEP, REDP, YELL, BRASS
-from hd.rooms.comu import _diff, text, text_width
-from hd.rooms.principal import (CREAM, TEAK, LINO, DOORP, NIGHT, DAYSKY, DAYSEA, sill, porthole as _porthole,
-                                day_porthole, second_hand, foot_shadow, floor_shadow)
-from hd.rooms.laboratori import PAPERC, BLUEB
-from hd640.rooms.laboratori_pla_comu import wall, ceiling, lamp, lamp_glow, lino, shine, door_frame
+import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
+from PIL import Image
 
-# Art a 2× (1280×720 per a una sala de 640×360): el mateix dibuix, amb les formes, el dither i la llum a la
-# resolució real (hd1280/canvas2x.py); el motor el mostra a 1/2 (artScale al .room.json).
-ART_SCALE = 2
-from hd1280.canvas2x import Canvas2x as Canvas  # noqa: E402,F811
-from hd.pix import Canvas as Canvas1x  # noqa: E402,F401  (llenços auxiliars en píxels de sala: figures, textos)
+from hd.pix import Canvas, Light, W, H, hr, mix
+from hd.rooms.arenga import CAB, WHITEP, REDP, YELL, BRASS, box
+from hd.rooms.comu import _diff
+from hd.rooms.exterior import fbm
+from hd.rooms.principal import CREAM, TEAK, LINO, NIGHT, DAYSKY, DAYSEA, day_porthole, second_hand
+from hd.rooms.laboratori import PAPERC
+from hd640.rooms import cabina_capitana_pla_comu as PL
+from hd640.rooms.laboratori_pla_comu import wall, lamp
+from hd640.tres_d import Camera, Escena, Llum
 
-CEIL_H = 24
-FLOOR_Y = 203
-BOTTOM = 260                      # per sota hi ha la barra de verbs
-LAMPS = ((171, 27), (496, 27))
-WAINSCOT_Y = 147
-FLEXO = (389, 149)                # el peu del flexo
-
-LIGHT = Light(ambient=0.3, vignette=(80, 35), floor_fade=None)
-LIGHT.point(171, 35, r=200, k=2.0, squash=1.05, down=True, power=1.5)
-LIGHT.point(496, 35, r=200, k=2.0, squash=1.05, down=True, power=1.5)
-LIGHT.point(376, 128, r=120, k=1.6, power=1.6)                   # el flexo de l'escriptori
-
-NAVY = [(6, 8, 16), (10, 14, 28), (16, 22, 44), (24, 32, 62), (36, 46, 84), (52, 64, 108), (76, 90, 136)]
-SHADE = [(8, 24, 14), (14, 44, 26), (22, 70, 40), (36, 100, 58), (56, 132, 80)]
-PINK = [(60, 10, 30), (120, 30, 60), (180, 60, 100), (220, 110, 140), (246, 170, 190)]
-GREENB = [(20, 40, 30), (40, 80, 56), (70, 120, 84), (110, 160, 120)]
-YELLOWJ = YELL
-INK = (34, 30, 26)
+BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
+ZW = 300                                           # la paret del fons
+FY = PL.FLOOR_Y                                    # al dibuix pla, el terra (203)
+HW = FY - PL.CEIL_H                                # l'alçada de les parets (179)
+XL = 160                                           # al dibuix pla, la cantonada: a l'esquerra, la paret de la porta
+XR = 640                                           # la paret de la dreta
+ZN = -260
+DESK = (150, 222, 187, 50, FY - PL.DESK[1] - 6, 0.16)   # l'escriptori: x, z del centre, ample, fons, alçada, gir
+BUNK = (PL.DESK[2] - XL + 30, 637 - XL, 66, FY - 160)   # la llitera: x0, x1, fons, alçada del matalàs
+LAMPS = ((PL.LAMPS[0][0] - XL + 40, 200), (PL.LAMPS[1][0] - XL, 150))
 
 
-# ─── Paret, folre i porta ───────────────────────────────────────────────────
-
-def wainscot(cv):
-    """Folre de teca a la part de baix de la paret, de plafons (la cabina del capità sempre en té)."""
-    for y in range(WAINSCOT_Y, FLOOR_Y):
-        for x in range(W):
-            grain = math.sin(x * 0.7 + math.sin(y * 0.11 + x * 0.04) * 3) * 0.25
-            lv = 3.6 + grain + (hr(x // 40, 3) - 0.5) * 0.4
-            if x % 40 == 0:
-                lv = 2.0
-            elif x % 40 == 1:
-                lv = 4.6
-            cv.put(x, y, TEAK, lv)
-    # els plafons: una motllura a cada tauló
-    for px in range(0, W, 40):
-        for y in range(WAINSCOT_Y + 8, FLOOR_Y - 13):
-            cv.put(px + 6, y, TEAK, 2.4)
-            cv.put(px + 34, y, TEAK, 4.4)
-        cv.hline(px + 6, px + 34, WAINSCOT_Y + 8, TEAK, 2.4)
-        cv.hline(px + 6, px + 34, FLOOR_Y - 13, TEAK, 4.4)
-    box(cv, 0, WAINSCOT_Y - 4, W - 1, WAINSCOT_Y, TEAK, 4.8)
-    cv.hline(0, W - 1, WAINSCOT_Y - 3, TEAK, 5.8)
-    cv.hline(0, W - 1, WAINSCOT_Y + 1, TEAK, 1.6)
-    box(cv, 0, FLOOR_Y - 8, W - 1, FLOOR_Y - 1, TEAK, 3.0)
-    cv.hline(0, W - 1, FLOOR_Y - 8, TEAK, 4.2)
+def _w(fx):
+    return fx - XL
 
 
-def watertight_door(cv, x0=19, y0=88, x1=75, y1=FLOOR_Y, leaf_ramp=TEAK, leaf_lvl=4.0):
-    """La porta del passadís, oberta: el passadís de crema i linòleum vermell al fons, i la fulla de teca."""
-    cx = (x0 + x1) // 2
-    for y in range(y0, y1):
-        for x in range(x0, x1 + 1):
-            cv.put(x, y, CREAM, 3.4 - abs(x - cx) / 32 - (y - y0) / 120, lit=0.25)
-    # l'altra banda del passadís: una porta tancada (la del laboratori) i el passamans
-    rrect(cv, cx - 9, y0 + 30, cx + 9, y1 - 22, 4, DOORP, 2.0)
-    cv.vline(cx + 5, y0 + 60, y0 + 66, BRASS, 2.6, lit=0.25)
-    hpipe(cv, x0, x1, y1 - 46, 1, TEAK, 2.6)
-    cv.rect(x0, y1 - 24, x1, y1 - 16, TEAK, 2.6, lit=0.25)
-    cv.rect(x0, y1 - 15, x1, y1 - 1, LINO, lambda x, y: 2.6 + (y - y1 + 15) * 0.09, lit=0.2)
-    for x in range(x0, x1 + 1, 6):
-        cv.line(x, y1 - 1, cx + (x - cx) * 0.4, y1 - 14, LINO, 2.0, lit=0.2)
-    cv.disc(cx, y0 + 13, 5, 2, [(120, 100, 60), (220, 190, 130), (250, 230, 190)], 1.6, lit=0)
-    glow(cv, cx, y0 + 15, 18, (230, 200, 140), 0.35)
-    door_frame(cv, x0, y0, x1, y1)
-    sill(cv, x0, x1, y1, h=7)
-    for x in range(x0 + 4, x1 - 2, 9):
-        cv.put(x, y1 - 4, DOORP, 4.6)
-    # la fulla, oberta contra la paret (de cantó), de teca
-    lx = x0 - 15
-    cv.poly([(lx, y0 + 5), (x0 - 4, y0 - 1), (x0 - 4, y1 - 3), (lx, y1 - 5)], leaf_ramp,
-            lambda x, y: leaf_lvl - (x - lx) * 0.05)
-    cv.vline(lx, y0 + 5, y1 - 5, leaf_ramp, leaf_lvl - 1.6)
-    cv.vline(x0 - 4, y0, y1 - 3, leaf_ramp, leaf_lvl + 1.0)
-    for y in range(y0 + 8, y1 - 8, 5):                                 # la veta, de cantó
-        cv.put(lx + 4 + (y // 5) % 4, y, leaf_ramp, leaf_lvl - 0.8)
-    box(cv, lx + 3, (y0 + y1) // 2, lx + 7, (y0 + y1) // 2 + 8, BRASS, 3.2)   # la maneta
-    for dy in (y0 + 18, y1 - 24):
-        box(cv, lx + 2, dy, lx + 6, dy + 3, BRASS, 3.0)                  # les frontisses
-    # el rètol verd de SORTIDA
-    teal = [(6, 22, 16), (10, 38, 28), (16, 58, 42), (26, 82, 58), (40, 108, 76), (62, 138, 98)]
-    w = text_width('SORTIDA') + 8
-    box(cv, cx - w // 2, y0 - 22, cx + w // 2, y0 - 13, teal, 3.4)
-    text(cv, 'SORTIDA', cx - w // 2 + 4, y0 - 20, None, 0, flat=(230, 250, 236))
-    glow(cv, cx, y0 - 17, 22, (80, 220, 140), 0.15)
+def _wz(fx):
+    return ZW - XL + fx
 
 
-def cap_hook(cv):
-    """La gorra de capitana (blanca, visera negra i ancoreta daurada) i l'anorac groc de mar, penjats."""
-    for hy in (93, 123):
-        box(cv, 91, hy, 96, hy + 4, BRASS, 3.6)
-        cv.put(95, hy + 5, BRASS, 4.8)
-    # la gorra: copa blanca, cinta blau marí, visera negra i l'àncora
-    cv.disc(93, 104, 11, 5, WHITEP, lambda nx, ny: 4.6 - nx * 0.6 - ny * 0.8)
-    cv.hline(84, 102, 100, WHITEP, 5.4)
-    cv.rect(83, 105, 104, 109, NAVY, 1.4)
-    cv.hline(83, 104, 105, NAVY, 2.6)
-    cv.poly([(84, 110), (103, 110), (107, 114), (80, 114)], DARK, lambda x, y: 2.4 + (y - 110) * 0.2)
-    cv.hline(81, 106, 114, DARK, 0.6)
-    ax, ay = 93, 106                                                     # l'ancoreta daurada
-    cv.vline(ax, ay - 1, ay + 2, YELL, 5.0)
-    cv.hline(ax - 1, ax + 1, ay - 1, YELL, 5.0)
-    cv.put(ax - 1, ay + 2, YELL, 4.0)
-    cv.put(ax + 1, ay + 2, YELL, 4.0)
-    for x in range(86, 101, 3):                                          # el cordó daurat
-        cv.put(x, 108, YELL, 4.2)
-    # l'anorac groc, amb la cremallera, la caputxa i les bandes reflectants
-    cv.poly([(88, 128), (99, 128), (107, 139), (107, 184), (83, 184), (83, 139)], YELL,
-            lambda x, y: 3.6 - (x - 83) * 0.04 + (0.5 if (x * 3 + y) % 13 == 0 else 0))
-    cv.poly([(89, 128), (98, 128), (96, 134), (91, 134)], YELL, 2.4)     # la caputxa plegada
-    cv.vline(95, 131, 184, CAB, 2.4)
-    for y in range(133, 184, 3):
-        cv.put(96, y, CAB, 4.0)
-    cv.line(85, 139, 81, 176, YELL, 2.4)
-    cv.line(105, 141, 108, 172, YELL, 2.8)
-    for y in (165, 174):
-        cv.hline(83, 107, y, [(120, 120, 110), (220, 220, 200), (250, 250, 240)], 1.8)
-        cv.hline(83, 107, y + 1, [(120, 120, 110), (220, 220, 200), (250, 250, 240)], 1.0)
-    box(cv, 99, 147, 105, 153, YELL, 3.0)                                # la butxaca
-    floor_shadow(cv, 95, FLOOR_Y + 4, 14, 2, 0.3)
+def _y(fy):
+    return FY - fy
 
 
-def clock_barometer(cv):
-    """Rellotge i baròmetre de llautó, aparellats en una post de teca."""
-    box(cv, 173, 53, 237, 83, TEAK, 4.0)
-    cv.hline(174, 236, 54, TEAK, 5.2)
-    for bx in (176, 234):
-        cv.put(bx, 56, BRASS, 5.0)
-        cv.put(bx, 80, BRASS, 5.0)
-    for cx in (191, 220):
-        cv.disc(cx, 68, 12, 12, BRASS, lambda nx, ny: 3.8 - nx * 1.2 - ny * 1.2)
-        cv.disc(cx, 68, 9, 9, WHITEP, lambda nx, ny: 4.8 - ny * 0.3)
-        for a in range(0, 360, 30):
-            d = 8 if a % 90 else 7
-            cv.put(cx + round(math.cos(math.radians(a)) * d), 68 + round(math.sin(math.radians(a)) * d), CAB, 1.4)
-    cv.line(191, 68, 191, 62, CAB, 0.6)                              # les quatre menys deu
-    cv.line(191, 68, 196, 68, CAB, 0.6)
-    # el baròmetre: escala vermella de mal temps a l'esquerra, l'agulla baixant
-    for a in range(150, 211, 6):
-        cv.put(220 + round(math.cos(math.radians(a)) * 7), 68 + round(math.sin(math.radians(a)) * 7), REDP, 4.0)
-    text(cv, 'MB', 216, 71, None, 0, flat=(60, 50, 40))
-    cv.line(220, 68, 215, 62, REDP, 3.0)
-    cv.line(220, 68, 224, 71, CAB, 1.0)
-    cv.put(220, 68, BRASS, 5.0)
+DOOR = (_wz(19), _wz(75), _y(88))
+PORT = (_wz(PL.PORT[0]), _y(PL.PORT[1]), PL.PORT[2])
+
+CAM = Camera(pos=(320, 160, -230), yaw=-0.22, pitch=0.2, f=400, centre=(330, 108))
+
+LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
+FLEXO_W = None                                     # (es calcula més avall: on és el flexo, al món)
 
 
-def bookshelf(cv):
-    """Prestatge amb barana sobre l'escriptori: derroters, l'almanac, carpetes i un model de l'Arenga."""
-    x0, x1, y = 248, 400, 93
-    box(cv, x0, y, x1, y + 4, TEAK, 4.6)
-    cv.hline(x0, x1, y, TEAK, 5.6)
-    for bx in (x0 + 8, x1 - 8):
-        cv.poly([(bx - 1, y + 5), (bx + 2, y + 5), (bx + 2, y + 16), (bx - 1, y + 8)], CAB, 3.2)
-    cols = [NAVY, REDP, TEAK, GREENB, NAVY, PAPERC]
-    x = x0 + 4
-    i = 0
-    while x < 338:
-        w = 4 + int(hr(i, 81) * 4)
-        h = 16 + int(hr(i, 82) * 8)
-        c = cols[int(hr(i, 83) * len(cols))]
-        lean = i == 9
-        for xx in range(x, x + w):
-            for yy in range(y - h, y):
-                cv.put(xx + (1 if lean and yy < y - h // 2 else 0), yy, c, 3.0 - (xx - x) * 0.25 + (0.8 if xx == x else 0))
-        if h > 19:
-            cv.hline(x, x + w - 1, y - h + 5, BRASS, 4.0)                   # les lletres daurades del llom
-            cv.hline(x + 1, x + w - 2, y - h + 8, BRASS, 3.2)
-        cv.hline(x, x + w - 1, y - h, c, 4.2)
-        x += w + 1
-        i += 1
-    # el model de l'Arenga: casc blanc, línia vermella, el pont amb finestres i el pal, en una base de fusta
-    box(cv, 346, 88, 394, 92, TEAK, 3.6)
-    cv.poly([(349, 80), (395, 80), (390, 87), (355, 87)], WHITEP, lambda x, y: 4.6 - (y - 80) * 0.12)
-    cv.hline(352, 392, 83, REDP, 4.2)
-    cv.hline(352, 391, 84, REDP, 3.0)
-    box(cv, 365, 70, 381, 79, WHITEP, 4.6)
-    for wx in range(367, 380, 3):
-        cv.put(wx, 73, NAVY, 2.4)
-    cv.vline(376, 57, 69, CAB, 3.0)
-    cv.hline(373, 379, 61, CAB, 3.0)
-    cv.rect(356, 76, 362, 79, (YELL), 4.0)                                # la grua
-    cv.hline(x0, x1, y - 9, BRASS, 3.6)                                   # la barana
-    cv.hline(x0, x1, y - 8, BRASS, 2.2)
-    for bx in range(x0 + 2, x1, 25):
-        cv.vline(bx, y - 9, y - 1, BRASS, 3.0)
+def _desk_P(fx, y, lz):
+    """Un punt de l'escriptori: `fx` és la x del dibuix pla (229..416), `lz` des del davant."""
+    cx, cz, w, d, h, a = DESK
+    c, s_ = math.cos(a), math.sin(a)
+    X, Z = (fx - PL.DESK[0]) * w / (PL.DESK[2] - PL.DESK[0]) - w / 2, lz - d / 2
+    return (cx + X * c - Z * s_, y, cz + X * s_ + Z * c)
 
 
-DESK = (229, 144, 416, 211)     # x0, y del sobre (darrere), x1, y dels peus
+FLEXO_W = _desk_P(PL.FLEXO[0] + 12, DESK[4] + 30, 30)
+LLUMS = [Llum((x, HW - 10, z), 250, 1.6, power=1.4) for x, z in LAMPS] + [
+    Llum(FLEXO_W, 140, 1.6, power=1.6),
+    Llum((10, PORT[1], PORT[0]), 110, 0.4, power=1.6)]
 
 
-def desk(cv):
-    x0, ytop, x1, ybot = DESK
-    # el sobre, una mica en perspectiva, amb la veta
-    cv.poly([(x0 + 4, ytop), (x1 - 4, ytop), (x1, ytop + 8), (x0, ytop + 8)], TEAK,
-            lambda x, y: 4.0 + (y - ytop) * 0.12 + math.sin(x * 0.3 + y) * 0.15)
-    cv.rect(x0, ytop + 9, x1, ytop + 13, TEAK, 4.4)
-    cv.hline(x0, x1, ytop + 9, TEAK, 5.6)
-    cv.hline(x0, x1, ytop + 14, TEAK, 1.0)
-    # el caixó dels calaixos (a la dreta) i la pota de l'esquerra
-    box(cv, x1 - 61, ytop + 14, x1 - 3, ybot, TEAK, 3.6, grad=0.8)
-    for cy in (ytop + 18, ytop + 34, ytop + 50):
-        box(cv, x1 - 57, cy, x1 - 7, cy + 13, TEAK, 4.0)
-        cv.hline(x1 - 56, x1 - 8, cy + 13, TEAK, 2.0)
-        box(cv, x1 - 37, cy + 5, x1 - 27, cy + 7, BRASS, 4.0)
-        cv.put(x1 - 32, cy + 8, BRASS, 2.4)
-    box(cv, x0 + 3, ytop + 14, x0 + 10, ybot, TEAK, 3.2)
-    # el buit de sota, fosc, i el calaix del mig
-    cv.rect(x0 + 11, ytop + 14, x1 - 62, ybot, TEAK, lambda x, y: 1.0 + (y - ytop) * 0.008)
-    cv.rect(x0 + 11, ytop + 14, x1 - 62, ytop + 24, TEAK, 3.2)
-    cv.hline(x0 + 11, x1 - 62, ytop + 24, TEAK, 1.8)
-    mx = (x0 + x1 - 51) // 2
-    box(cv, mx - 5, ytop + 18, mx + 5, ytop + 20, BRASS, 4.0)
-    # la paperera, de reixeta, amb un paper arrugat
-    for y in range(ybot - 18, ybot + 1):
-        for x in range(261, 280):
-            u = (x - 270.5) / 9.5
-            if (x + y) % 3:
-                cv.put(x, y, CAB, 3.0 - u * 1.2)
-    cv.disc(270, ybot - 18, 9, 2, CAB, 1.0)
-    cv.hline(261, 280, ybot - 18, CAB, 3.8)
-    cv.disc(267, ybot - 20, 4, 3, PAPERC, lambda nx, ny: 4.0 - nx - ny)
-    cv.put(266, ybot - 21, PAPERC, 2.4)
-
-
-def chair(cv):
-    """La cadira de l'escriptori, de teca amb el coixí blau, separada de la taula."""
-    cx, y0 = 315, 141
-    rrect(cv, cx - 17, y0, cx + 17, y0 + 8, 4, TEAK, lambda x, y: 4.6 - (y - y0) * 0.1)
-    cv.hline(cx - 14, cx + 14, y0, TEAK, 5.6)
-    for x in range(cx - 13, cx + 15, 6):
-        cv.vline(x, y0 + 8, y0 + 29, TEAK, 3.4)
-        cv.vline(x + 1, y0 + 8, y0 + 29, TEAK, 2.2)
-    cv.vline(cx - 17, y0 + 4, y0 + 35, TEAK, 3.8)
-    cv.vline(cx - 16, y0 + 4, y0 + 35, TEAK, 3.2)
-    cv.vline(cx + 17, y0 + 4, y0 + 35, TEAK, 2.6)
-    cv.vline(cx + 16, y0 + 4, y0 + 35, TEAK, 2.0)
-    cv.disc(cx, y0 + 39, 21, 5, TEAK, lambda nx, ny: 3.8 - ny * 1.4)
-    cv.disc(cx, y0 + 36, 17, 4, NAVY, lambda nx, ny: 4.0 - ny * 1.2)
-    cv.put(cx, y0 + 36, NAVY, 2.0)                                       # el botó del coixí
-    cv.vline(cx, y0 + 44, y0 + 67, CAB, 3.6)
-    cv.vline(cx + 1, y0 + 44, y0 + 67, CAB, 2.2)
-    for dx in (-20, -8, 8, 20):
-        cv.line(cx, y0 + 67, cx + dx, y0 + 73, CAB, 3.0)
-        cv.disc(cx + dx, y0 + 74, 1.5, 1.5, DARK, 0.8)
-    cv.darken(cx - 21, y0 + 75, cx + 21, y0 + 77, 0.6)
-
-
-def contract(cv):
-    """El contracte de Blau Net: un plec grapat, amb la capçalera blava i el logotip (una gota)."""
-    x0, y0 = 259, 139
-    cv.poly([(x0 + 3, y0), (x0 + 32, y0 - 1), (x0 + 35, y0 + 11), (x0, y0 + 12)], PAPERC,
-            lambda x, y: 4.4 - (y - y0) * 0.04)
-    cv.poly([(x0 + 11, y0 + 1), (x0 + 48, y0 + 1), (x0 + 51, y0 + 12), (x0 + 8, y0 + 12)], PAPERC,
-            lambda x, y: 4.8 - (y - y0) * 0.04)
-    cv.rect(x0 + 12, y0 + 2, x0 + 48, y0 + 4, [(10, 40, 90), (20, 80, 160), (60, 140, 220)], 1.6)
-    cv.put(x0 + 14, y0 + 2, [(240, 250, 255)], 0, lit=0)                   # la gota del logotip
-    cv.put(x0 + 14, y0 + 3, [(240, 250, 255)], 0, lit=0)
-    cv.put(x0 + 13, y0 + 3, [(200, 220, 240)], 0, lit=0)
-    for y in (y0 + 6, y0 + 8, y0 + 10):
-        for x in range(x0 + 13, x0 + 48):
-            if hr(x // 2, y) > 0.3:
-                cv.put(x, y, PAPERC, 2.4)
-    cv.line(x0 + 36, y0 + 10, x0 + 46, y0 + 9, BLUEB, 2.4)                # la signatura (no hi és: només la ratlla)
-    cv.rect(x0 + 12, y0 + 1, x0 + 14, y0 + 1, CAB, 4.6)                   # la grapa
-    # el bolígraf al damunt
-    cv.line(x0 + 27, y0 + 13, x0 + 45, y0 + 8, NAVY, 3.0)
-    cv.line(x0 + 27, y0 + 14, x0 + 45, y0 + 9, NAVY, 1.6)
-    cv.put(x0 + 45, y0 + 8, BRASS, 4.6)
-
-
-def novel(cv):
-    """«Amor a alta mar», volum tres: butxaca de tapa rosa, amb un cor i un punt de llibre amb una àncora."""
-    x0, y0 = 331, 141
-    cv.poly([(x0 + 3, y0), (x0 + 27, y0), (x0 + 29, y0 + 7), (x0, y0 + 7)], PINK,
-            lambda x, y: 3.0 + (y - y0) * 0.08)
-    cv.rect(x0, y0 + 8, x0 + 29, y0 + 10, PAPERC, 4.0)
-    for x in range(x0 + 1, x0 + 29, 2):
-        cv.put(x, y0 + 9, PAPERC, 3.0)                                   # les pàgines
-    cv.hline(x0, x0 + 29, y0 + 11, PINK, 1.4)
-    for dx, dy in ((12, 2), (14, 2), (16, 2), (18, 2), (11, 3), (12, 3), (13, 3), (14, 3), (15, 3), (16, 3),
-                   (17, 3), (18, 3), (19, 3), (12, 4), (13, 4), (14, 4), (15, 4), (16, 4), (17, 4), (18, 4),
-                   (14, 5), (15, 5), (16, 5)):
-        cv.flat(x0 + dx, y0 + dy, (250, 220, 230))
-    cv.flat(x0 + 15, y0 + 2, (220, 140, 170))                            # el cor partit en dos
-    cv.rect(x0 + 21, y0 - 7, x0 + 22, y0, BRASS, 4.4)                    # el punt de llibre
-    cv.put(x0 + 21, y0 - 8, BRASS, 5.4)
-    cv.put(x0 + 22, y0 - 8, BRASS, 5.4)
-    cv.put(x0 + 20, y0 - 7, BRASS, 3.4)
-
-
-def desk_things(cv):
-    """El flexo, una tassa i la foto."""
-    bx, by = FLEXO
-    cv.disc(bx, by, 9, 3, BRASS, lambda nx, ny: 3.6 - nx - ny * 0.4)
-    cv.line(bx, by - 1, bx - 5, 128, BRASS, 4.0)
-    cv.line(bx + 1, by - 1, bx - 4, 128, BRASS, 2.6)
-    cv.disc(bx - 5, 128, 1.5, 1.5, BRASS, 4.6)                           # la ròtula
-    cv.line(bx - 5, 128, bx + 8, 117, BRASS, 4.0)
-    cv.line(bx - 5, 129, bx + 8, 118, BRASS, 2.6)
-    cv.poly([(bx + 3, 115), (bx + 13, 112), (bx + 21, 125), (bx + 3, 128)], SHADE, lambda x, y: 3.4 - (y - 112) * 0.08)
-    cv.hline(bx + 4, bx + 20, 127, [(200, 170, 100), (255, 240, 190)], 1.4, lit=0)
-    cv.hline(bx + 6, bx + 12, 114, SHADE, 4.6)
-    # la tassa (blanca, amb el logotip de Mar Obert: un cercle vermell) i el cafè
-    for y in range(136, 150):
-        for x in range(237, 248):
-            cv.put(x, y, WHITEP, 4.4 - (x - 237) * 0.12)
-    cv.disc(241, 142, 2, 2, REDP, 4.4)
-    cv.put(241, 142, WHITEP, 5.0)
-    cv.ring(250, 142, 3, WHITEP, 3.6, step=20)
-    cv.disc(242, 136, 5, 1.5, [(30, 18, 10), (60, 36, 20)], 1.0)
-    # la foto: un marc de llautó amb un vaixell petit i el mar
-    box(cv, 368, 128, 381, 147, BRASS, 3.2)
-    cv.rect(370, 130, 379, 145, [(60, 90, 120), (120, 150, 170), (180, 200, 210)], 1.8)
-    cv.rect(370, 140, 379, 145, [(20, 40, 70), (40, 70, 100)], 1.0)
-    cv.hline(371, 378, 138, WHITEP, 4.0)
-    cv.rect(373, 136, 376, 137, WHITEP, 4.2)
-    cv.vline(375, 132, 135, CAB, 2.0)
-    cv.line(381, 147, 384, 150, BRASS, 2.0)                               # el peu del marc
-
-
-def sea_chart(cv):
-    """La carta nàutica de la campanya: mar blau pàl·lid, terra groguenca, batimètriques, la ruta, Galway i
-    Port Hallen encerclats. Irlanda, a l'est (dreta), amb la badia de Galway; la costa de Valmark, al nord-est."""
-    x0, y0, x1, y1 = 440, 48, 603, 133
-    box(cv, x0 - 3, y0 - 3, x1 + 3, y1 + 3, TEAK, 4.2)
-    cv.hline(x0 - 2, x1 + 2, y0 - 2, TEAK, 5.4)
-
-    def irlanda(x, y):
-        u, v = (x - x0) * 0.75, (y - y0) * 0.75
-        if not 24 <= v <= 62:
-            return False
-        costa = 82 + 4 * math.sin(v * 0.45) + 1.5 * math.sin(v * 1.3) + abs(v - 42) ** 2 * 0.04
-        if 33 <= v <= 37:                                                # la badia de Galway
-            costa += 5 - abs(v - 35) * 1.5
-        return u > costa
-
-    def valmark(x, y):
-        u, v = (x - x0) * 0.75, (y - y0) * 0.75
-        return u > 64 and v < 3 + (u - 64) * 0.12 + 1.5 * math.sin(u * 0.3)
-
-    land = [(150, 134, 90), (196, 180, 128), (226, 212, 160)]
-    for y in range(y0, y1 + 1):
-        for x in range(x0, x1 + 1):
-            if irlanda(x, y) or valmark(x, y):
-                edge = not (irlanda(x - 1, y) or valmark(x - 1, y)) or not (irlanda(x, y - 1) or valmark(x, y - 1))
-                cv.put(x, y, land, 0.6 if edge else 1.6 + (0.4 if (x * 7 + y) % 13 == 0 else 0))
-            else:
-                deep = math.sin((x - x0) * 0.06 + (y - y0) * 0.038)
-                lv = 1.8 if deep > 0.6 else 2.2
-                cv.put(x, y, [(120, 150, 170), (160, 190, 206), (200, 222, 232), (226, 238, 242)], lv)
-                if abs(deep - 0.6) < 0.03:
-                    cv.put(x, y, [(90, 120, 150), (120, 150, 170)], 1.0)           # les batimètriques
-    # la quadrícula de longitud i latitud
-    for x in range(x0 + 27, x1, 40):
-        for y in range(y0, y1, 2):
-            cv.put(x, y, [(90, 110, 130), (130, 150, 170)], 1.0)
-    for y in range(y0 + 21, y1, 29):
-        for x in range(x0, x1, 2):
-            cv.put(x, y, [(90, 110, 130), (130, 150, 170)], 1.0)
-    # la rosa dels vents, a baix a l'esquerra (mar obert)
-    rx, ry = x0 + 19, y0 + 66
-    rose = [(90, 60, 80), (150, 100, 120)]
-    cv.ring(rx, ry, 8, rose, 1.4, step=15)
-    cv.line(rx, ry - 10, rx, ry + 10, rose, 1.4)
-    cv.line(rx - 10, ry, rx + 10, ry, rose, 1.4)
-    cv.line(rx - 5, ry - 5, rx + 5, ry + 5, rose, 1.0)
-    cv.line(rx - 5, ry + 5, rx + 5, ry - 5, rose, 1.0)
-    cv.poly([(rx - 2, ry - 2), (rx, ry - 10), (rx + 2, ry - 2)], rose, 0.4)
-    text(cv, 'N', rx - 1, ry - 17, None, 0, flat=(90, 60, 80))
-    # la ruta, a llapis, del Punt 7 cap a Galway (a l'est)
-    gal = (x0 + 115, y0 + 47)
-    hal = (x0 + 131, y0 + 12)
-    p7 = (x0 + 56, y0 + 53)
-    for i in range(0, 60):
-        t = i / 60
-        x = round(p7[0] + (gal[0] - p7[0]) * t)
-        y = round(p7[1] + (gal[1] - p7[1]) * t)
-        if i % 4 != 3:
-            cv.flat(x, y, (70, 70, 80))
-    for dx in (-1, 0, 1):
-        for dy in (-1, 0, 1):
-            if abs(dx) + abs(dy) < 2:
-                cv.flat(p7[0] + dx, p7[1] + dy, (30, 30, 40))
-    text(cv, '7', p7[0] - 2, p7[1] + 3, None, 0, flat=(40, 40, 50))
-    # Galway: un cercle fi, a llapis blau, i el nom
-    cv.ring(gal[0], gal[1], 6, BLUEB, 2.4, step=10)
-    # Port Hallen: en vermell, repassat dues vegades, i un signe d'interrogació
-    cv.ring(hal[0], hal[1], 8, REDP, 4.0, step=6)
-    cv.ring(hal[0] + 1, hal[1], 9, REDP, 3.4, step=6)
-    cv.flat(hal[0], hal[1], (40, 20, 20))
-    text(cv, '?', hal[0] - 16, hal[1] - 2, None, 0, flat=(170, 40, 34))
-    # el títol de la carta i les xinxetes
-    text(cv, 'ATLÀNTIC N', x0 + 4, y0 + 4, None, 0, flat=(80, 96, 116))
-    for x, y in ((x0 + 1, y0 + 1), (x1 - 1, y0 + 1), (x0 + 1, y1 - 1), (x1 - 1, y1 - 1)):
-        cv.flat(x, y, (220, 50, 46))
-        cv.flat(x + 1, y + 1, (120, 20, 20))
-
-
-def bunk(cv):
-    """La llitera de teca amb calaixos, la manta blava de ratlla vermella i el coixí; un llum de lectura."""
-    x0, x1, top = 432, 637, 160
-    # el llum de lectura de llautó
-    box(cv, 616, 139, 627, 144, BRASS, 3.4)
-    cv.vline(621, 133, 139, BRASS, 3.0)
-    cv.disc(621, 146, 5, 3, [(120, 96, 50), (210, 176, 110), (250, 228, 170)], 1.6, lit=0)
-    glow(cv, 621, 148, 14, (255, 220, 150), 0.25)
-    # el matalàs i la manta, amb els plecs
-    cv.rect(x0 + 5, top, x1, top + 5, PAPERC, lambda x, y: 3.6 + (0.4 if y == top else 0))
-    for y in range(top + 4, top + 21):
-        for x in range(x0 + 5, x1 + 1):
-            fold = math.sin(x * 0.09 + y * 0.22) * 0.3
-            cv.put(x, y, NAVY, 3.6 - (y - top) * 0.045 + fold)
-    cv.hline(x0 + 5, x1, top + 4, NAVY, 5.0)
-    for x in range(x0 + 5, x1 + 1):
-        cv.put(x, top + 12, REDP, 3.6)
-        cv.put(x, top + 13, REDP, 2.8)
-    # el coixí, a la dreta, amb el plec
-    rrect(cv, 595, top - 8, 632, top + 4, 4, PAPERC, lambda x, y: 4.6 - (y - top + 8) * 0.07)
-    cv.line(604, top - 6, 610, top + 2, PAPERC, 3.4)
-    # la post de davant (la vora alta perquè no et tiri la mar) i els calaixos
-    box(cv, x0, top + 19, x1, top + 27, TEAK, 4.6)
-    cv.hline(x0, x1, top + 19, TEAK, 5.6)
-    box(cv, x0, top + 28, x1, FLOOR_Y + 5, TEAK, 3.4, grad=0.6)
-    for dx in range(x0 + 8, x1 - 40, 67):
-        box(cv, dx, top + 32, dx + 56, FLOOR_Y, TEAK, 3.8)
-        cv.hline(dx + 1, dx + 55, FLOOR_Y, TEAK, 2.0)
-        box(cv, dx + 23, top + 37, dx + 33, top + 39, BRASS, 4.0)
-        cv.put(dx + 28, top + 40, BRASS, 2.4)
-    box(cv, x0, top - 5, x0 + 5, FLOOR_Y + 5, TEAK, 4.2)                    # el capçal dels peus
-    cv.hline(x0, x0 + 5, top - 5, TEAK, 5.6)
-
-
-def rug(cv):
-    """Una catifa gastada, blau marí amb vora vermella i serrell, a terra davant l'escriptori."""
-    pts = [(235, 219), (424, 219), (445, 251), (213, 251)]
-    cv.poly(pts, NAVY, lambda x, y: 2.6 + (0.4 if (x // 3 + y) % 6 == 0 else 0) + (hr(x // 5, y) - 0.5) * 0.3)
-    cv.poly([(243, 223), (416, 223), (435, 247), (224, 247)], REDP, 2.2)
-    cv.poly([(248, 225), (411, 225), (428, 244), (232, 244)], NAVY, lambda x, y: 2.8 + (hr(x // 4, y // 2) - 0.5) * 0.3)
-    # el motiu del mig: un rombe vermell
-    cv.poly([(330, 228), (348, 234), (330, 241), (312, 234)], REDP, 2.0)
-    cv.poly([(330, 231), (340, 234), (330, 238), (320, 234)], NAVY, 3.2)
-    for x in range(213, 446, 3):                                         # el serrell
-        cv.put(x, 252, PAPERC, 2.0)
-        cv.put(x, 253, PAPERC, 1.4)
-    for x in range(236, 424, 3):
-        cv.put(x, 218, PAPERC, 1.8)
-
-
-# ─── Muntatge ───────────────────────────────────────────────────────────────
-
-PORT = (141, 101, 15)              # l'ull de bou: centre i radi del vidre
-
-
-def bg(cv):
-    wall(cv, dado=FLOOR_Y, rail=FLOOR_Y + 20, seed=3)                  # sense sòcol ni passamans: hi ha el folre
-    wainscot(cv)
-    ceiling(cv)
-    mask = lino(cv, lvl=3.8)
-    foot_shadow(cv, 0, W - 1, FLOOR_Y + 1, 5, 0.35)
-    shine(cv, mask, [lx for lx, _ in LAMPS])
-    rug(cv)
-    watertight_door(cv)
-    cap_hook(cv)
-    _porthole(cv, PORT[0], PORT[1], PORT[2], None, rim=4)
-    box(cv, PORT[0] - 2, PORT[1] + PORT[2] + 5, PORT[0] + 2, PORT[1] + PORT[2] + 9, BRASS, 3.2)   # la palanca
-    clock_barometer(cv)
-    bookshelf(cv)
-    desk(cv)
-    chair(cv)
-    desk_things(cv)
-    contract(cv)
-    novel(cv)
-    sea_chart(cv)
-    bunk(cv)
-    for lx, ly in LAMPS:
-        lamp(cv, lx, ly)
-    cv.darken(DESK[0], DESK[3] + 1, DESK[2], DESK[3] + 5, lambda x, y: 0.8 - (y - DESK[3]) * 0.16)
-    cv.darken(432, FLOOR_Y + 6, 639, FLOOR_Y + 10, lambda x, y: 0.7 - (y - FLOOR_Y - 6) * 0.16)
-    for lx, ly in LAMPS:
-        lamp_glow(cv, lx, ly)
-    glow(cv, 401, 131, 35, (255, 220, 150), 0.35)                     # el flexo
-
-
-# Escenes 2 i 3: de dia, el vidre de l'ull de bou clar
-PROPS = {'ulls_dia': lambda cv: day_porthole(cv, *PORT)}
-
-GEOMETRIA = {
-    'things': {
-        'porta': {'rect': (5, 67, 80, 203), 'walk': (48, 243)},
-        'contracte': {'rect': (256, 132, 312, 152), 'walk': (285, 240)},
-        'novella': {'rect': (328, 133, 363, 153), 'walk': (347, 240)},
-        'carta': {'rect': (435, 43, 608, 139), 'walk': (520, 240)},
-    },
-    'spawns': {'iri': (200, 256), 'vet': (267, 261), 'capitana': (440, 245)},
-    'walkable': [(16, 224), (624, 224), (635, 264), (5, 264)],
-}
-
-
-# ─── Animacions ────────────────────────────────────────────────────────────
+# ─── Les textures: el dibuix pla de sempre ───────────────────────────────────
 
 def _glass(cv, t, day):
     """El vidre de l'ull de bou, amb `t` (0..1 del bucle): l'horitzó puja i baixa amb el balanceig i les ratlles
-    d'onada corren."""
-    cx, cy, r = PORT
+    d'onada corren (el de la sala plana d'abans)."""
+    cx, cy, r = PL.PORT
     ph = t * 2 * math.pi
     hz = cy + r * 0.15 + math.sin(ph) * 2.2
     for y in range(cy - r, cy + r + 1):
@@ -555,36 +110,411 @@ def _glass(cv, t, day):
         cv.flat(x, y, mix(cv.get(x, y), shine_c, 0.35))
 
 
-def _base(day):
-    cv = Canvas(light=LIGHT)
-    bg(cv)
-    if day:
-        top = Canvas(light=LIGHT, transparent=True)
-        PROPS['ulls_dia'](top)
-        cv.img.alpha_composite(top.img)
+def _paret(dia=False, vidre=None, segon=None):
+    """Les dues parets planes, de cara: la porta, la gorra, l'ull de bou, el rellotge, els llibres i la carta."""
+    cv = Canvas(light=PL.LIGHT)
+    wall(cv, dado=FY, rail=FY + 20, seed=3)
+    PL.wainscot(cv)
+    PL.watertight_door(cv)
+    PL.cap_hook(cv)
+    PL._porthole(cv, PL.PORT[0], PL.PORT[1], PL.PORT[2], None, rim=4)
+    box(cv, PL.PORT[0] - 2, PL.PORT[1] + PL.PORT[2] + 5, PL.PORT[0] + 2, PL.PORT[1] + PL.PORT[2] + 9, BRASS, 3.2)
+    PL.clock_barometer(cv)
+    PL.bookshelf(cv)
+    PL.sea_chart(cv)
+    if dia:
+        day_porthole(cv, *PL.PORT)
+    if vidre is not None:
+        _glass(cv, vidre, dia)
+    if segon is not None:
+        second_hand(cv, 191, 68, segon, r=7)
     return cv.img
 
 
-def _frames_port(day):
-    base = _base(day)
-    frames = []
-    for i in range(12):
-        cv = Canvas(light=LIGHT, img=base.copy())
-        _glass(cv, i / 12, day)
-        frames.append(_diff(cv.img, base))
-    return frames
+@functools.lru_cache(maxsize=None)
+def _paret_base(dia=False):
+    return _paret(dia)
+
+
+@functools.lru_cache(maxsize=None)
+def _paret_nua():
+    cv = Canvas(light=PL.LIGHT)
+    wall(cv, dado=FY, rail=FY + 20, seed=3)
+    PL.wainscot(cv)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _mobles():
+    """L'escriptori, la cadira, les coses de damunt, la llitera i la catifa, plans sobre transparent."""
+    cv = Canvas(light=PL.LIGHT, transparent=True)
+    PL.desk(cv)
+    PL.desk_things(cv)
+    PL.contract(cv)
+    PL.novel(cv)
+    PL.bunk(cv)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _cadira():
+    cv = Canvas(light=PL.LIGHT, transparent=True)
+    PL.chair(cv)
+    return cv.img
+
+
+@functools.lru_cache(maxsize=None)
+def _llum_pla():
+    cv = Canvas(80, 40, light=PL.LIGHT, transparent=True)
+    lamp(cv, 40, 10)
+    return cv.img
+
+
+DESK_BOX = (PL.DESK[0], PL.DESK[1] + 14, PL.DESK[2] + 1, PL.DESK[3] + 1)   # el davant de l'escriptori
+CHAIR_BOX = (293, 140, 338, 217)
+FLEXO_BOX = (378, 110, 412, 153)
+CUP_BOX = (235, 133, 255, 151)
+PHOTO_BOX = (366, 126, 386, 151)
+CONTRACT_BOX = (258, 137, 311, 153)
+NOVEL_BOX = (330, 132, 362, 153)
+BUNK_BOX = (PL.DESK[2] + 16, 179, 638, FY + 6)                             # el davant de la llitera (post i calaixos)
+LAMP_BOX = (612, 132, 630, 152)                                            # el llum de lectura
+
+
+# ─── Les superfícies ────────────────────────────────────────────────────────
+
+def _terra(s, t, P):
+    """Linòleum vermell fosc en tires de 40 que fugen, juntes de testa."""
+    x, z = P[0], P[2]
+    tira = math.floor(x / 40)
+    v = 3.4 + (hr(tira, 5) - 0.5) * 0.5 + (fbm(x / 70, z / 40, 7) - 0.5) * 0.7
+    v += (hr(int(x) // 4, int(z) // 4, 3) - 0.5) * 0.35
+    if x % 40 < 1.0:
+        return 1.8
+    if int(z + hr(tira, 9) * 160) % 160 < 1.0:
+        return 2.2
+    return v
+
+
+def _sostre(s, t, P):
+    x = P[0]
+    if (x + 13) % 96 < 10:
+        return 2.6 + (0.6 if (x + 13) % 96 < 2 else 0)
+    return 1.8 + (fbm(x / 50, P[2] / 50, 3) - 0.5) * 0.6
+
+
+FOSC = [(4, 3, 2), (9, 6, 4), (15, 10, 7), (22, 15, 10), (31, 22, 15), (42, 30, 20)]
+NAVY = PL.NAVY
+
+
+def escena(cv, tex, estat=frozenset()):
+    """Tota la sala, de lluny a prop. `estat`: els decorats ('dia'). → l'Escena (qui ha pintat què)."""
+    e = Escena(cv, CAM, LLUMS, ambient=-0.3)
+    paret, nua, mob = tex['paret'], tex['nua'], tex['mobles']
+    e.quad('sostre', (0, HW, ZN), (XR, HW, ZN), (XR, HW, ZW), (0, HW, ZW), ramp=CREAM, lvl=_sostre, dues_cares=True)
+    e.quad('paret_esq_prop', (0, HW, ZN), (0, HW, ZW - XL), (0, 0, ZW - XL), (0, 0, ZN),
+           tex=(nua, (W - (ZW - XL - ZN), PL.CEIL_H, W, FY)))
+    e.quad('paret_esq', (0, HW, ZW - XL), (0, HW, ZW), (0, 0, ZW), (0, 0, ZW - XL), tex=(paret, (0, PL.CEIL_H, XL, FY)))
+    e.quad('paret_fons', (0, HW, ZW), (W - XL, HW, ZW), (W - XL, 0, ZW), (0, 0, ZW), tex=(paret, (XL, PL.CEIL_H, W, FY)))
+    e.quad('paret_fons_dreta', (W - XL, HW, ZW), (XR, HW, ZW), (XR, 0, ZW), (W - XL, 0, ZW),
+           tex=(nua, (0, PL.CEIL_H, XR - (W - XL), FY)))
+    e.quad('paret_dreta', (XR, HW, ZW), (XR, HW, ZN), (XR, 0, ZN), (XR, 0, ZW), tex=(nua, (60, PL.CEIL_H, 60 + ZW - ZN, FY)))
+    e.quad('terra', (0, 0, ZW), (XR, 0, ZW), (XR, 0, ZN), (0, 0, ZN), ramp=LINO, lvl=_terra)
+    for lx, lz in LAMPS:
+        e.claror((lx - 120, 0.3, lz + 120), (lx + 120, 0.3, lz + 120), (lx + 120, 0.3, lz - 120), (lx - 120, 0.3, lz - 120),
+                 (255, 214, 140), lambda s, t: 0.26 * max(0.0, 1 - math.hypot(s - 120, t - 120) / 120) ** 1.3)
+    dz0, dz1, dh = DOOR
+    e.claror((0, 0.4, dz1 + 10), (90, 0.4, dz1 + 50), (90, 0.4, dz0 - 40), (0, 0.4, dz0 - 4), (230, 200, 140),
+             lambda s, t: 0.3 * max(0.0, 1 - s / 90) * max(0.0, math.sin(math.pi * min(1.0, t / max(1.0, 60 + 0.9 * s)))))
+    if 'dia' in estat:
+        pz = PORT[0]
+        e.claror((0, 0.5, pz + 30), (240, 0.5, pz - 50), (240, 0.5, pz - 150), (0, 0.5, pz - 60), (210, 226, 236),
+                 lambda s, t: 0.34 * max(0.0, 1 - s / 240) * max(0.0, 1 - abs(t - 50) / 45))
+    # la catifa, girada amb l'escriptori, davant seu
+    cx, cz, dw, dd, dh_, da = DESK
+    c, s_ = math.cos(da), math.sin(da)
+
+    def Pr(lx, lz):
+        return (cx + lx * c - lz * s_, 0.4, cz + lx * s_ + lz * c)
+    RW, RD = 200, 74
+
+    def catifa(s, t, P):
+        vora = min(s, t, RW - s, RD - t)
+        if vora < 2:
+            return 2.2 + (1.0 if int(s) % 3 == 0 else 0)                  # el serrell
+        if vora < 7:
+            return -9 if False else 2.6
+        d = abs(s - RW / 2) / 34 + abs(t - RD / 2) / 16
+        base = 2.8 + (0.4 if (int(s) // 3 + int(t)) % 6 == 0 else 0) + (hr(int(s) // 5, int(t), 2) - 0.5) * 0.3
+        if 0.7 < d < 1.0:
+            return 1.8
+        return base
+    e.quad('catifa', Pr(-RW / 2, -dd / 2 - 8), Pr(RW / 2, -dd / 2 - 8), Pr(RW / 2, -dd / 2 - 8 - RD), Pr(-RW / 2, -dd / 2 - 8 - RD),
+           ramp=NAVY, lvl=catifa,
+           tint=None)
+    # (la vora vermella i el rombe: una segona passada)
+    e.claror(Pr(-RW / 2 + 2, -dd / 2 - 10), Pr(RW / 2 - 2, -dd / 2 - 10), Pr(RW / 2 - 2, -dd / 2 - 6 - RD),
+             Pr(-RW / 2 + 2, -dd / 2 - 6 - RD), (150, 40, 34),
+             lambda s, t: 0.75 if (min(s, t, RW - 4 - s, RD - 4 - t) < 5 or
+                                   0.7 < abs(s - RW / 2 + 2) / 34 + abs(t - RD / 2 + 2) / 16 < 1.0) else 0.0)
+    # la foscor dels racons
+    e.foscor('racons', (0, 0.5, ZW), (XR, 0.5, ZW), (XR, 0.5, ZN), (0, 0.5, ZN),
+             lambda s, t: max(0.6 * max(0.0, 1 - t / 26), 0.5 * max(0.0, 1 - s / 22), 0.5 * max(0.0, 1 - (XR - s) / 30)))
+    e.foscor('cantonada', (0, HW, ZW - 0.5), (60, HW, ZW - 0.5), (60, 0, ZW - 0.5), (0, 0, ZW - 0.5),
+             lambda s, t: 0.5 * max(0.0, 1 - s / 60))
+    e.foscor('cantonada2', (0.5, HW, ZW - 60), (0.5, HW, ZW), (0.5, 0, ZW), (0.5, 0, ZW - 60),
+             lambda s, t: 0.5 * max(0.0, 1 - (60 - s) / 60))
+    e.foscor('sostre_fosc', (0, HW - 0.5, ZW - 0.6), (XR, HW - 0.5, ZW - 0.6), (XR, 0, ZW - 0.6), (0, 0, ZW - 0.6),
+             lambda s, t: 0.4 * max(0.0, 1 - t / 40))
+    for z in (ZW - XL - 108 + 96 * k for k in range(-3, 1)):
+        if z < ZN + 10:
+            continue
+        e.caixa('quadernes', 0, 7, 0, HW, z, z + 6, CREAM, 3.6,
+                cares={'dreta': {'ramp': CREAM, 'lvl': lambda s, t, P: 4.2 - (1.2 if int(t) % 14 == 0 else 0)},
+                       'davant': {'ramp': CREAM, 'lvl': 2.6}})
+    e.tub('canonades', (16, HW - 8, ZW), (16, HW - 8, ZN + 40), 4, REDP, 3.4, brides=70)
+    e.tub('canonades', (30, HW - 6, ZW), (30, HW - 6, ZN + 40), 2.5, WHITEP, 3.2, brides=90)
+    e.tub('canonades', (0, HW - 7, ZW - 6), (XR, HW - 7, ZW - 6), 4, REDP, 3.0, brides=120)
+    # la llitera encastada, sota la carta: el davant (la post i els calaixos), la manta i el coixí
+    bx0, bx1, bd, bh = BUNK
+    e.foscor('ombra_llitera', (bx0 - 8, 0.6, ZW), (bx1 + 8, 0.6, ZW), (bx1 + 8, 0.6, ZW - bd - 16), (bx0 - 8, 0.6, ZW - bd - 16),
+             lambda s, t: 0.55 * min(1.0, max(0.0, (bd + 16 - t) / 16)))
+    e.caixa('llitera', bx0, bx1, 0, bh - 16, ZW - bd, ZW, TEAK, 3.0,
+            cares={'davant': {'tex': (mob, (BUNK_BOX[0], BUNK_BOX[1] + 1, BUNK_BOX[2], BUNK_BOX[3]))},
+                   'esquerra': {'ramp': TEAK, 'lvl': lambda s, t, P: 3.4 + math.sin(t * 0.5 + s * 0.05) * 0.2}})
+
+    def manta(s, t, P):
+        v = 3.4 + math.sin(s * 0.09 + t * 0.22) * 0.3 - t * 0.008
+        return v
+    e.caixa('llitera', bx0 + 4, bx1, bh - 16, bh - 2, ZW - bd + 6, ZW, NAVY, 3.0,
+            cares={'dalt': {'ramp': NAVY, 'lvl': manta},
+                   'davant': {'ramp': NAVY, 'lvl': lambda s, t, P: 3.2 + (1.4 if abs(t - 7) < 1.2 else 0)},
+                   'esquerra': {'ramp': NAVY, 'lvl': 2.6}})
+    e.quad('llitera', (bx0 + 4, bh - 1.5, ZW - bd + 6 + 18), (bx1, bh - 1.5, ZW - bd + 6 + 18), (bx1, bh - 1.5, ZW - bd + 6 + 14),
+           (bx0 + 4, bh - 1.5, ZW - bd + 6 + 14), ramp=REDP, lvl=3.4)
+    e.caixa('llitera', bx0, bx0 + 6, 0, bh + 6, ZW - bd, ZW, TEAK, 3.8, cares={'dalt': {'ramp': TEAK, 'lvl': 5.0}})
+    e.caixa('llitera', bx0, bx1, bh - 18, bh - 10, ZW - bd - 2, ZW - bd + 4, TEAK, 4.4,
+            cares={'dalt': {'ramp': TEAK, 'lvl': 5.4}})                      # la post alta del davant
+    e.caixa('llitera', bx1 - 42, bx1 - 4, bh - 2, bh + 9, ZW - 40, ZW - 4, PAPERC, 4.2,
+            cares={'dalt': {'ramp': PAPERC, 'lvl': lambda s, t, P: 4.6 - (1.0 if abs(s - 14 - t * 0.3) < 0.8 else 0)}})
+    e.sprite('llitera', mob.crop(LAMP_BOX), (621 - LAMP_BOX[0], LAMP_BOX[3] - LAMP_BOX[1]), (_w(621), bh + 20, ZW - 2))
+    # l'escriptori, separat de la paret i girat: el davant (el dibuix pla), el sobre i el costat
+    e.foscor('ombra_escriptori', *[_desk_P(fx, 0.6, lz) for fx, lz in ((PL.DESK[0] - 12, dd + 16), (PL.DESK[2] + 12, dd + 16),
+                                                                         (PL.DESK[2] + 12, -14), (PL.DESK[0] - 12, -14))],
+             lambda s, t: 0.6 * min(1.0, min(s, t, dw + 24 - s, dd + 30 - t) / 14))
+    e.caixa_girada('escriptori', cx, cz, dw - 4, dd - 4, dh_ - 5, da, TEAK, 2.6,
+                   cares={'davant': {'tex': (mob, DESK_BOX)},
+                          'esquerra': {'ramp': TEAK, 'lvl': lambda s, t, P: 3.4 + math.sin(t * 0.6 + s * 0.04) * 0.25},
+                          'dreta': {'ramp': TEAK, 'lvl': 2.6}})
+
+    def sobre(s, t, P):
+        return 4.0 + math.sin(s * 0.3 + t * 0.9) * 0.15 + (fbm(s / 30, t / 6, 2) - 0.5) * 0.5
+    e.caixa_girada('escriptori', cx, cz, dw, dd, 5, da, TEAK, 4.4, y0=dh_ - 5,
+                   cares={'dalt': {'ramp': TEAK, 'lvl': sobre}, 'davant': {'ramp': TEAK, 'lvl': 4.6},
+                          'esquerra': {'ramp': TEAK, 'lvl': 3.8}})
+    # damunt: el contracte i la novel·la (estesos), la tassa, la foto i el flexo (drets)
+    for sid, bx, l0, l1 in (('contracte', CONTRACT_BOX, 6, 28), ('novella', NOVEL_BOX, 8, 26)):
+        e.quad(sid, _desk_P(bx[0], dh_ + 0.6, l1), _desk_P(bx[2], dh_ + 0.6, l1), _desk_P(bx[2], dh_ + 0.6, l0),
+               _desk_P(bx[0], dh_ + 0.6, l0), tex=(mob, bx))
+    e.sprite('tassa', mob.crop(CUP_BOX), (242 - CUP_BOX[0], 149 - CUP_BOX[1]), _desk_P(242, dh_, 22))
+    e.sprite('foto', mob.crop(PHOTO_BOX), (375 - PHOTO_BOX[0], 149 - PHOTO_BOX[1]), _desk_P(375, dh_, 38))
+    e.sprite('flexo', mob.crop(FLEXO_BOX), (PL.FLEXO[0] - FLEXO_BOX[0], PL.FLEXO[1] - FLEXO_BOX[1] + 2),
+             _desk_P(PL.FLEXO[0], dh_, 34))
+    # la llum del flexo, damunt del sobre
+    fP = _desk_P(PL.FLEXO[0] + 14, dh_ + 0.8, 20)
+    e.claror(_desk_P(PL.FLEXO[0] - 50, dh_ + 0.8, dd), _desk_P(PL.DESK[2], dh_ + 0.8, dd), _desk_P(PL.DESK[2], dh_ + 0.8, 0),
+             _desk_P(PL.FLEXO[0] - 50, dh_ + 0.8, 0), (255, 220, 150),
+             lambda s, t: 0.35 * max(0.0, 1 - math.hypot(s - 60, t - 26) / 60))
+    del fP
+    # la cadira, davant l'escriptori (el dibuix pla, dret), amb la seva ombra
+    chP = _desk_P(315, 0, -26)
+    e.foscor('ombra_cadira', (chP[0] - 22, 0.7, chP[2] + 14), (chP[0] + 22, 0.7, chP[2] + 14), (chP[0] + 22, 0.7, chP[2] - 14),
+             (chP[0] - 22, 0.7, chP[2] - 14), lambda s, t: 0.6 * max(0.0, 1 - ((s - 22) / 22) ** 2 - ((t - 14) / 14) ** 2) * 1.6)
+    e.sprite('cadira', tex['cadira'].crop(CHAIR_BOX), (315 - CHAIR_BOX[0], 215 - CHAIR_BOX[1]), chP)
+    # els llums del sostre
+    lp = _llum_pla()
+    for lx, lz in LAMPS:
+        e.sprite('llums', lp, (40, 6), (lx, HW - 2, lz))
+    # primer pla: una canonada que travessa el sostre, cables que pengen, una columna a la dreta i un bagul
+    e.tub('primer_pla', (-40, HW - 6, -70), (XR + 40, HW - 6, -70), 7, FOSC, 2.4, brides=90)
+    for k, (xa, xb, cai) in enumerate(((40, 130, 16), (400, 490, 14))):
+        pts = [(xa + (xb - xa) * i / 8, HW - 10 - cai * math.sin(math.pi * i / 8), -64 + k * 6) for i in range(9)]
+        e.cable('primer_pla', pts, FOSC, 2.0, gruix=2.6)
+    e.tub('primer_pla', (445, 0, 12), (445, HW, 12), 8, FOSC, 2.2, brides=56)
+    e.caixa_girada('primer_pla', 26, 18, 40, 26, 24, 0.5, FOSC, 2.0,
+                   cares={'dalt': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.8 - (1.2 if abs(t - 16) < 1 else 0)},
+                          'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.4 + (1.2 if abs(s - 25) < 3 and 18 < t < 24 else 0)
+                                     + (0.8 if t < 3 else 0)},
+                          'dreta': {'ramp': FOSC, 'lvl': 2.2}})
+    return e
+
+
+# ─── Composició ─────────────────────────────────────────────────────────────
+
+@functools.lru_cache(maxsize=None)
+def _textures(dia=False):
+    return {'paret': _paret_base(dia), 'nua': _paret_nua(), 'mobles': _mobles(), 'cadira': _cadira()}
+
+
+def _render(estat=frozenset(), tex=None):
+    cv = Canvas(light=LIGHT)
+    e = escena(cv, tex or _textures('dia' in estat), estat)
+    cv.rect(0, BOTTOM + 1, W - 1, H - 1, [(0, 0, 0)], 0, lit=0)
+    return cv.img, e
+
+
+@functools.lru_cache(maxsize=None)
+def _base(estat=frozenset()):
+    return _render(estat)
+
+
+def bg(cv):
+    cv.img.paste(_base()[0])
+    cv.P = cv.img.load()
+
+
+def _decorat(*estat):
+    def draw(cv):
+        img, _ = _base(frozenset(estat))
+        cv.img.alpha_composite(_diff(img, _base()[0]))
+        cv.P = cv.img.load()
+    return draw
+
+
+# Escenes 2 i 3: de dia, el vidre de l'ull de bou clar i la claror pel terra
+PROPS = {'ulls_dia': _decorat('dia')}
+
+
+# ─── Animacions ─────────────────────────────────────────────────────────────
+
+def _fotograma(capes, estat=frozenset()):
+    img = _base(estat)[0]
+    out = img.copy()
+    for c in capes:
+        out.alpha_composite(c)
+    return _diff(out, img)
+
+
+def _frames_port(dia):
+    estat = frozenset({'dia'}) if dia else frozenset()
+    _, e = _base(estat)
+    return [_fotograma([e.capa(_paret(dia, vidre=i / 12), {'paret_esq'})], estat) for i in range(12)]
 
 
 def _frames_rellotge():
-    base = _base(False)
-    frames = []
-    for sec in range(60):
-        cv = Canvas(light=LIGHT, img=base.copy())
-        second_hand(cv, 191, 68, sec, r=7)
-        frames.append(_diff(cv.img, base))
-    return frames
+    _, e = _base()
+    return [_fotograma([e.capa(_paret(segon=s), {'paret_fons'})]) for s in range(60)]
 
 
 ANIMS = {'mar': {'frames': lambda: _frames_port(False), 'frameDuration': 220},
          'ulls_dia_mar': {'frames': lambda: _frames_port(True), 'frameDuration': 220},
          'rellotge': {'frames': _frames_rellotge, 'frameDuration': 1000}}
+
+
+# ─── Capes del davant i geometria (coordenades de sala, projectades) ─────────
+
+def _amo(ids, estat=frozenset()):
+    def mask(x, y):
+        _, e = _base(estat)
+        return e.ids[e.amo[y * e.cv.w + x]] in ids
+    return mask
+
+
+def _p(x, z, y=0.0):
+    u, v, _ = CAM.projecta((x, y, z))
+    return round(u), round(v)
+
+
+def _pd(fx, lz, y=0.0):
+    P = _desk_P(fx, y, lz)
+    return _p(P[0], P[2], y)
+
+
+_CHAIR = _desk_P(315, 0, -26)
+
+FRONT = [
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 30},
+    {'id': 'davant_escriptori', 'mask': _amo({'escriptori', 'contracte', 'novella', 'tassa', 'foto', 'flexo'}),
+     'baseline': _pd((PL.DESK[0] + PL.DESK[2]) / 2, -2)[1], 'zIndex': 20},
+    {'id': 'davant_cadira', 'mask': _amo({'cadira'}), 'baseline': _p(_CHAIR[0], _CHAIR[2])[1], 'zIndex': 20},
+]
+
+
+def _rect_mon(*Ps):
+    pts = [CAM.projecta(P) for P in Ps]
+    return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
+            min(W - 1, round(max(p[0] for p in pts))), min(BOTTOM, round(max(p[1] for p in pts))))
+
+
+def _v_escala(k):
+    lo, hi = -2000.0, 3000.0
+    for _ in range(60):
+        z = (lo + hi) / 2
+        if CAM.escala((260, 0, z)) > k:
+            lo = z
+        else:
+            hi = z
+    return CAM.projecta((260, 0, lo))[1]
+
+
+def _talla(poly, vmax):
+    out = []
+    for (ax, ay), (bx, by) in zip(poly, poly[1:] + poly[:1]):
+        if ay <= vmax:
+            out.append((ax, ay))
+        if (ay <= vmax) != (by <= vmax):
+            k = (vmax - ay) / (by - ay)
+            out.append((round(ax + (bx - ax) * k), round(vmax)))
+    return [(max(0, min(W - 1, x)), y) for x, y in out]
+
+
+def _escala_a(v):
+    lo, hi = -2000.0, 3000.0
+    for _ in range(60):
+        z = (lo + hi) / 2
+        if CAM.projecta((260, 0, z))[1] > v:
+            lo = z
+        else:
+            hi = z
+    return CAM.escala((260, 0, (lo + hi) / 2))
+
+
+# El terra on es camina: de la porta fins davant la llitera encastada; l'escriptori és un forat (s'hi passa per
+# darrere).
+WALK_MON = [(12, ZW - 10), (BUNK[0] - 8, ZW - 10), (BUNK[0] - 8, ZW - BUNK[2] - 12), (XR - 40, ZW - BUNK[2] - 12),
+            (XR - 40, -200), (12, -200)]
+_WALK = _talla([_p(x, z) for x, z in WALK_MON], _v_escala(1.2))
+_FORAT = [_pd(fx, lz) for fx, lz in ((PL.DESK[0] - 6, DESK[3] + 6), (PL.DESK[2] + 6, DESK[3] + 6),
+                                      (PL.DESK[2] + 6, -6), (PL.DESK[0] - 6, -6))]
+_V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
+_DH = DESK[4]
+
+GEOMETRIA = {
+    'things': {
+        'porta': {'rect': _rect_mon((0, DOOR[2] + 8, DOOR[0] - 8), (0, 0, DOOR[1] + 2)), 'walk': _p(40, (DOOR[0] + DOOR[1]) / 2)},
+        'contracte': {'rect': _rect_mon(*[_desk_P(fx, y, lz) for fx in (CONTRACT_BOX[0], CONTRACT_BOX[2])
+                                          for lz in (4, 30) for y in (_DH, _DH + 4)]),
+                      'walk': _pd((CONTRACT_BOX[0] + CONTRACT_BOX[2]) / 2, -34)},
+        'novella': {'rect': _rect_mon(*[_desk_P(fx, y, lz) for fx in (NOVEL_BOX[0], NOVEL_BOX[2])
+                                        for lz in (6, 28) for y in (_DH, _DH + 6)]),
+                    'walk': _pd((NOVEL_BOX[0] + NOVEL_BOX[2]) / 2, -34)},
+        'carta': {'rect': _rect_mon((_w(437), _y(45), ZW), (_w(606), _y(136), ZW)),
+                  'walk': _p(_w(521), ZW - BUNK[2] - 26)},
+    },
+    'spawns': {'iri': _p(120, 120), 'vet': _p(200, 100), 'capitana': _pd(330, DESK[3] + 26)},
+    'walkable': _WALK,
+    'forats': [_FORAT],
+    'floorSquash': 0.42,
+    'characterShadow': {'enabled': True, 'color': '#120806', 'alpha': 0.45, 'squash': 0.4, 'core': 0.6,
+                        'light': {'x': _p(*LAMPS[1])[0], 'y': _p(*LAMPS[1])[1], 'stretch': 0.6, 'reach': 160}},
+    'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
+                 'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
+                 'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    'characterLights': {
+        'ambient': '#a89880',
+        'lights': [{'x': _p(lx, lz, HW - 10)[0], 'y': _p(lx, lz, HW - 10)[1], 'radius': 220, 'color': '#ffd68c',
+                    'intensity': 0.7} for lx, lz in LAMPS] + [
+            {'x': _p(FLEXO_W[0], FLEXO_W[2], FLEXO_W[1])[0], 'y': _p(FLEXO_W[0], FLEXO_W[2], FLEXO_W[1])[1],
+             'radius': 120, 'color': '#ffdc96', 'intensity': 0.6}],
+    },
+}

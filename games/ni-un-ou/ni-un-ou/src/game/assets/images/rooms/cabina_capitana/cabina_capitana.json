@@ -4,1805 +4,1868 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 1.aseprite": {
       "frame": {
-        "x": 1280,
-        "y": 0,
-        "w": 62,
-        "h": 62
+        "x": 3321,
+        "y": 900,
+        "w": 179,
+        "h": 110
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 62,
-        "h": 62
+        "x": 169,
+        "y": 58,
+        "w": 179,
+        "h": 110
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 2.aseprite": {
       "frame": {
-        "x": 1342,
+        "x": 1280,
         "y": 0,
-        "w": 58,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 254,
-        "y": 172,
-        "w": 58,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 3.aseprite": {
       "frame": {
-        "x": 1400,
+        "x": 1356,
         "y": 0,
-        "w": 59,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 253,
-        "y": 172,
-        "w": 59,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 4.aseprite": {
       "frame": {
-        "x": 2409,
+        "x": 1432,
         "y": 0,
-        "w": 59,
-        "h": 61
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 253,
-        "y": 172,
-        "w": 59,
-        "h": 61
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 5.aseprite": {
       "frame": {
-        "x": 1459,
+        "x": 1508,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 253,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 6.aseprite": {
       "frame": {
-        "x": 1519,
+        "x": 1584,
         "y": 0,
-        "w": 59,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 253,
-        "y": 172,
-        "w": 59,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 7.aseprite": {
       "frame": {
-        "x": 1578,
+        "x": 1660,
         "y": 0,
-        "w": 59,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 253,
-        "y": 172,
-        "w": 59,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 8.aseprite": {
       "frame": {
-        "x": 1342,
+        "x": 1280,
         "y": 0,
-        "w": 58,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 254,
-        "y": 172,
-        "w": 58,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 9.aseprite": {
       "frame": {
-        "x": 1637,
+        "x": 1736,
         "y": 0,
-        "w": 58,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 254,
-        "y": 172,
-        "w": 58,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 10.aseprite": {
       "frame": {
-        "x": 2528,
+        "x": 1812,
         "y": 0,
-        "w": 58,
-        "h": 60
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 254,
-        "y": 172,
-        "w": 58,
-        "h": 60
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 11.aseprite": {
       "frame": {
-        "x": 1695,
+        "x": 1888,
         "y": 0,
-        "w": 58,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 254,
-        "y": 172,
-        "w": 58,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 12.aseprite": {
       "frame": {
-        "x": 1753,
+        "x": 1964,
         "y": 0,
-        "w": 58,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 254,
-        "y": 172,
-        "w": 58,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 13.aseprite": {
       "frame": {
-        "x": 1811,
+        "x": 2040,
         "y": 0,
-        "w": 58,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 254,
-        "y": 172,
-        "w": 58,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 14.aseprite": {
       "frame": {
-        "x": 1869,
+        "x": 2116,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 15.aseprite": {
       "frame": {
-        "x": 1929,
+        "x": 2192,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 16.aseprite": {
       "frame": {
-        "x": 2468,
+        "x": 2268,
         "y": 0,
-        "w": 60,
-        "h": 61
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 61
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 17.aseprite": {
       "frame": {
-        "x": 1989,
+        "x": 2344,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 18.aseprite": {
       "frame": {
-        "x": 2049,
+        "x": 2420,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 19.aseprite": {
       "frame": {
-        "x": 2109,
+        "x": 2496,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 20.aseprite": {
       "frame": {
-        "x": 1869,
+        "x": 2116,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 21.aseprite": {
       "frame": {
-        "x": 2169,
+        "x": 2572,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 22.aseprite": {
       "frame": {
-        "x": 2586,
+        "x": 2648,
         "y": 0,
-        "w": 60,
-        "h": 60
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 60
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 23.aseprite": {
       "frame": {
-        "x": 2229,
+        "x": 2724,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 24.aseprite": {
       "frame": {
-        "x": 2289,
+        "x": 2800,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 25.aseprite": {
       "frame": {
-        "x": 2349,
+        "x": 2876,
         "y": 0,
-        "w": 60,
-        "h": 62
+        "w": 76,
+        "h": 148
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 252,
-        "y": 172,
-        "w": 60,
-        "h": 62
+        "x": 123,
+        "y": 22,
+        "w": 76,
+        "h": 148
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 26.aseprite": {
       "frame": {
-        "x": 2646,
+        "x": 2952,
         "y": 0,
-        "w": 2,
-        "h": 16
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 122,
-        "w": 2,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 27.aseprite": {
       "frame": {
-        "x": 2648,
+        "x": 3321,
         "y": 0,
-        "w": 4,
-        "h": 16
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 122,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 28.aseprite": {
       "frame": {
-        "x": 2652,
+        "x": 3690,
         "y": 0,
-        "w": 4,
-        "h": 16
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 122,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 29.aseprite": {
       "frame": {
-        "x": 2656,
-        "y": 0,
-        "w": 6,
-        "h": 16
+        "x": 0,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 122,
-        "w": 6,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 30.aseprite": {
       "frame": {
-        "x": 2706,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 369,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 124,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 31.aseprite": {
       "frame": {
-        "x": 2714,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 738,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 124,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 32.aseprite": {
       "frame": {
-        "x": 2722,
-        "y": 0,
-        "w": 10,
-        "h": 14
+        "x": 1107,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 124,
-        "w": 10,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 33.aseprite": {
       "frame": {
-        "x": 2810,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 1476,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 126,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 34.aseprite": {
       "frame": {
-        "x": 2822,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 1476,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 126,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 35.aseprite": {
       "frame": {
-        "x": 2906,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 1845,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 128,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 36.aseprite": {
       "frame": {
-        "x": 2920,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 2214,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 128,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 37.aseprite": {
       "frame": {
-        "x": 3018,
-        "y": 0,
-        "w": 14,
-        "h": 8
+        "x": 2583,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 130,
-        "w": 14,
-        "h": 8
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 38.aseprite": {
       "frame": {
-        "x": 3074,
-        "y": 0,
-        "w": 16,
-        "h": 6
+        "x": 2952,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 132,
-        "w": 16,
-        "h": 6
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 39.aseprite": {
       "frame": {
-        "x": 3138,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 3321,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 134,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 40.aseprite": {
       "frame": {
-        "x": 3154,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 3690,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 134,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 41.aseprite": {
       "frame": {
-        "x": 3266,
-        "y": 0,
-        "w": 16,
-        "h": 2
+        "x": 738,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 16,
-        "h": 2
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 42.aseprite": {
       "frame": {
-        "x": 3170,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 0,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 43.aseprite": {
       "frame": {
-        "x": 3186,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 369,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 44.aseprite": {
       "frame": {
-        "x": 3090,
-        "y": 0,
-        "w": 16,
-        "h": 6
+        "x": 738,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 16,
-        "h": 6
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 45.aseprite": {
       "frame": {
-        "x": 3032,
-        "y": 0,
-        "w": 14,
-        "h": 8
+        "x": 1107,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 14,
-        "h": 8
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 46.aseprite": {
       "frame": {
-        "x": 2934,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 1476,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 47.aseprite": {
       "frame": {
-        "x": 2948,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 1845,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 48.aseprite": {
       "frame": {
-        "x": 2834,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 2214,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 49.aseprite": {
       "frame": {
-        "x": 2846,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 2214,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 50.aseprite": {
       "frame": {
-        "x": 2732,
-        "y": 0,
-        "w": 10,
-        "h": 14
+        "x": 2583,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 10,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 51.aseprite": {
       "frame": {
-        "x": 2742,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 2952,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 52.aseprite": {
       "frame": {
-        "x": 2750,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 3321,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 53.aseprite": {
       "frame": {
-        "x": 2662,
-        "y": 0,
-        "w": 6,
-        "h": 16
+        "x": 3690,
+        "y": 495,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 6,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 54.aseprite": {
       "frame": {
-        "x": 2668,
-        "y": 0,
-        "w": 4,
-        "h": 16
+        "x": 0,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 55.aseprite": {
       "frame": {
-        "x": 2672,
-        "y": 0,
-        "w": 4,
-        "h": 16
+        "x": 369,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 56.aseprite": {
       "frame": {
-        "x": 2676,
-        "y": 0,
-        "w": 2,
-        "h": 16
+        "x": 738,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 382,
-        "y": 136,
-        "w": 2,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 57.aseprite": {
       "frame": {
-        "x": 2678,
-        "y": 0,
-        "w": 4,
-        "h": 16
+        "x": 1107,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 380,
-        "y": 136,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 58.aseprite": {
       "frame": {
-        "x": 2682,
-        "y": 0,
-        "w": 4,
-        "h": 16
+        "x": 1476,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 380,
-        "y": 136,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 59.aseprite": {
       "frame": {
-        "x": 2686,
-        "y": 0,
-        "w": 6,
-        "h": 16
+        "x": 1845,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 378,
-        "y": 136,
-        "w": 6,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 60.aseprite": {
       "frame": {
-        "x": 2758,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 2214,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 376,
-        "y": 136,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 61.aseprite": {
       "frame": {
-        "x": 2766,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 2583,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 376,
-        "y": 136,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 62.aseprite": {
       "frame": {
-        "x": 2774,
-        "y": 0,
-        "w": 10,
-        "h": 14
+        "x": 2952,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 374,
-        "y": 136,
-        "w": 10,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 63.aseprite": {
       "frame": {
-        "x": 2858,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 3321,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 372,
-        "y": 136,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 64.aseprite": {
       "frame": {
-        "x": 2870,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 3690,
+        "y": 630,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 372,
-        "y": 136,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 65.aseprite": {
       "frame": {
-        "x": 2962,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 0,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 370,
-        "y": 136,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 66.aseprite": {
       "frame": {
-        "x": 2976,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 369,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 370,
-        "y": 136,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 67.aseprite": {
       "frame": {
-        "x": 3046,
-        "y": 0,
-        "w": 14,
-        "h": 8
+        "x": 738,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 370,
-        "y": 136,
-        "w": 14,
-        "h": 8
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 68.aseprite": {
       "frame": {
-        "x": 3106,
-        "y": 0,
-        "w": 16,
-        "h": 6
+        "x": 1107,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 368,
-        "y": 136,
-        "w": 16,
-        "h": 6
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 69.aseprite": {
       "frame": {
-        "x": 3202,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 1476,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 368,
-        "y": 136,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 70.aseprite": {
       "frame": {
-        "x": 3218,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 1845,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 368,
-        "y": 136,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 71.aseprite": {
       "frame": {
-        "x": 3282,
-        "y": 0,
-        "w": 16,
-        "h": 2
+        "x": 738,
+        "y": 360,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 368,
-        "y": 136,
-        "w": 16,
-        "h": 2
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 72.aseprite": {
       "frame": {
-        "x": 3234,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 2214,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 368,
-        "y": 134,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 73.aseprite": {
       "frame": {
-        "x": 3250,
-        "y": 0,
-        "w": 16,
-        "h": 4
+        "x": 2583,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 368,
-        "y": 134,
-        "w": 16,
-        "h": 4
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 74.aseprite": {
       "frame": {
-        "x": 3122,
-        "y": 0,
-        "w": 16,
-        "h": 6
+        "x": 2952,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 368,
-        "y": 132,
-        "w": 16,
-        "h": 6
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 75.aseprite": {
       "frame": {
-        "x": 3060,
-        "y": 0,
-        "w": 14,
-        "h": 8
+        "x": 3321,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 370,
-        "y": 130,
-        "w": 14,
-        "h": 8
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 76.aseprite": {
       "frame": {
-        "x": 2990,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 3690,
+        "y": 765,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 370,
-        "y": 128,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 77.aseprite": {
       "frame": {
-        "x": 3004,
-        "y": 0,
-        "w": 14,
-        "h": 10
+        "x": 0,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 370,
-        "y": 128,
-        "w": 14,
-        "h": 10
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 78.aseprite": {
       "frame": {
-        "x": 2882,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 369,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 372,
-        "y": 126,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 79.aseprite": {
       "frame": {
-        "x": 2894,
-        "y": 0,
-        "w": 12,
-        "h": 12
+        "x": 738,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 372,
-        "y": 126,
-        "w": 12,
-        "h": 12
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 80.aseprite": {
       "frame": {
-        "x": 2784,
-        "y": 0,
-        "w": 10,
-        "h": 14
+        "x": 1107,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 374,
-        "y": 124,
-        "w": 10,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 81.aseprite": {
       "frame": {
-        "x": 2794,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 1476,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 376,
-        "y": 124,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 82.aseprite": {
       "frame": {
-        "x": 2802,
-        "y": 0,
-        "w": 8,
-        "h": 14
+        "x": 1845,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 376,
-        "y": 124,
-        "w": 8,
-        "h": 14
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 83.aseprite": {
       "frame": {
-        "x": 2692,
-        "y": 0,
-        "w": 6,
-        "h": 16
+        "x": 2214,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 378,
-        "y": 122,
-        "w": 6,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 84.aseprite": {
       "frame": {
-        "x": 2698,
-        "y": 0,
-        "w": 4,
-        "h": 16
+        "x": 2583,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 380,
-        "y": 122,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "cabina_capitana 85.aseprite": {
       "frame": {
-        "x": 2702,
-        "y": 0,
-        "w": 4,
-        "h": 16
+        "x": 2952,
+        "y": 900,
+        "w": 369,
+        "h": 135
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 380,
-        "y": 122,
-        "w": 4,
-        "h": 16
+        "x": 193,
+        "y": 11,
+        "w": 369,
+        "h": 135
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 86.aseprite": {
+      "frame": {
+        "x": 3500,
+        "y": 900,
+        "w": 160,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 192,
+        "y": 84,
+        "w": 160,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 87.aseprite": {
+      "frame": {
+        "x": 3660,
+        "y": 900,
+        "w": 38,
+        "h": 67
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 242,
+        "y": 106,
+        "w": 38,
+        "h": 67
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "cabina_capitana 88.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 640,
+        "h": 319
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 319
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -1813,8 +1876,8 @@
     "image": "cabina_capitana.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3298,
-      "h": 720
+      "w": 4059,
+      "h": 1035
     },
     "scale": "1",
     "frameTags": [
@@ -1850,6 +1913,27 @@
         "name": "rellotge",
         "from": 26,
         "to": 85,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_escriptori",
+        "from": 86,
+        "to": 86,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_cadira",
+        "from": 87,
+        "to": 87,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 88,
+        "to": 88,
         "direction": "forward",
         "color": "#000000ff"
       }
