@@ -5,13 +5,13 @@ Aigua Verne — `ferrum_carrer` (L): un carrer de miners de Ferrum, a la tarda, 
 Una càmera alta, girada cap a la dreta i mirant una mica avall (picat), en una cantonada: la fila de façanes fuig cap
 a la dreta (el **sindicat** a la cantonada, les cases dels miners amb el **panell del preu**, la **fosa** amb el
 portal gran i la xemeneia, i un magatzem), i a l'esquerra el carrer del costat, que just darrere el sindicat s'eixampla
-en una plaça on hi ha aparcada de través la Cantimplora (el model canònic de cantimplora_comu.py: la proa tallada per
-la vora, la popa amagada darrere el sindicat; se'n veu el costat de babord, amb la matrícula, el final del nom i la
+en una plaça on hi ha aparcada de biaix la Cantimplora (el model canònic de cantimplora_comu.py: la popa amagada
+darrere el sindicat i la proa que fuig cap al fons; se'n veu el costat de babord, amb el nom CANTIMPLORA sencer i la
 porta de la bodega encesa) amb la **rampa** baixada fins a les llambordes; per sobre, la **Canonada**. Al mig del carrer, el
 **piquet** (la pancarta girada, el bidó amb la foguera, la canalla en caixes); la **font** de Verne; la pila de
 **comptadors** arrencats; el **condensador** vell, girat. Primer pla: el fanal i unes caixes a l'esquerra, la
 vagoneta al carril a la dreta. El sol, baix a l'esquerra, fa ombres llargues en diagonal cap a la dreta. Es passa per
-darrere de la rampa (entre la rampa i la vorera, arran del buc).
+darrere de la rampa (a banda i banda, arran del buc). El fanal és a la vora esquerra, gairebé fora de quadre.
 
 Tot el detall ve del carrer pla de sempre (ferrum_carrer_pla_comu.py): les façanes, el condensador, la font, el
 piquet i la canalla es dibuixen de cara i es projecten (textures i sprites). Decorats (PROPS): `barril_piquet`,
@@ -56,10 +56,10 @@ FC = (455, 22, 641, 193)
 FX0, FZ = CX1, ZR - 8
 FX1 = FX0 + (FC[2] - FC[0]) * KF
 FH = (FC[3] - FC[1]) * KF
-# la Cantimplora (el model canònic, cantimplora_comu), aparcada de través on el carrer del costat s'eixampla: la
-# proa cap a l'esquerra (i una mica cap a la càmera), la popa darrere les cases de la dreta; la porta, a babord (el
-# costat que es veu), amb la rampa baixada fins a les llambordes del carrer
-NAU = Cantimplora(popa=(110.0, 900.0), rumb=math.pi + 0.3, porta='babord')
+# la Cantimplora (el model canònic, cantimplora_comu), aparcada de biaix on el carrer del costat s'eixampla: la
+# popa amagada darrere el sindicat i la proa que fuig cap al fons a l'esquerra (així el nom, CANTIMPLORA, cap sencer
+# entre la vora i la porta); la porta, a babord (el costat que es veu), amb la rampa baixada fins a les llambordes
+NAU = Cantimplora(popa=(240.0, 850.0), rumb=math.pi - 0.5, porta='babord')
 PORTA_L, PORTA_T, RAMPA_OUT = NAU.PORTA_L, NAU.PORTA_T, NAU.RAMPA_OUT
 ZE, ZF = ZR + 190, 1100.0                          # el carrer del costat s'eixampla en una plaça just darrere el
                                                    # sindicat (la nau); les cases tornen a començar més enllà
@@ -70,7 +70,7 @@ PANC = ((X0 + 186, ZR - 92), (X0 + 346, ZR - 126))  # els dos pals de la pancart
 FONT = (X0 + 168, ZR - 62)
 COMPT = (X0 + 132, ZR - 40)
 COND = (FX0 + 120, ZR - 96, 0.42)                  # (x, z, gir)
-FANAL = (-30.0, 340.0)                            # (a la vora: deixa veure la porta de la nau)
+FANAL = (-45.0, 340.0)                            # (a la vora: deixa veure la porta de la nau)
 VAGO = (500.0, 300.0)
 BARRIL = (X0 + 360, ZR - 200)
 
@@ -675,6 +675,7 @@ _ZV = ZR - 36                                     # davant la vorera
 _SL = sum(PORTA_L) / 2
 _NAU_W = [NAU.terra(PORTA_L[1] + 44, 130), NAU.terra(PORTA_L[1] + 10, 130), NAU.terra(PORTA_L[1] + 10, RAMPA_OUT + 14),
           NAU.terra(PORTA_L[0] - 10, RAMPA_OUT + 14), NAU.terra(PORTA_L[0] - 8, 112)]
+_NAU_W = [(min(x, X0 - 34), z) for x, z in _NAU_W]                 # (sense pujar a la vorera del sindicat)
 WALK_MON = [
     *_NAU_W, (X0 - 34, _NAU_W[-1][1]), (X0 - 34, ZR - 4), (X0 - 34, _ZV),
     (FX0 - 10, _ZV), (FX0 - 10, FZ - 36), (FX1 + 300, FZ - 36),
