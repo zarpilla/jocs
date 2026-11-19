@@ -194,14 +194,21 @@ def durations(tags, walk=(90, 100), talk=140, extra=None):
 def write(cid, tags, size, extra):
     """tags: [(nom, [imatges])]. Escriu <id>.png, <id>.json (Aseprite) i <id>.character.json."""
     frames = [img for _, imgs in tags for img in imgs]
-    w, h = frames[0].size
     extra = scaled_extra(extra)
-    # en graella: una sola fila de molts fotogrames passaria de l'amplada màxima d'una textura (4096)
-    cols = min(len(frames), 4096 // w)
-    rows = -(-len(frames) // cols)
-    sheet = Image.new('RGBA', (w * cols, h * rows), CLEAR)
+    # en graella: una sola fila de molts fotogrames passaria de l'amplada màxima d'una textura (4096). Cada mida de
+    # fotograma (la normal; la de lluny, `sizeVariants`) va en files pròpies, una sota l'altra.
+    pos, y, sw = [None] * len(frames), 0, 0
+    for size in dict.fromkeys(img.size for img in frames):
+        w, h = size
+        idx = [i for i, img in enumerate(frames) if img.size == size]
+        cols = min(len(idx), 4096 // w)
+        for n, i in enumerate(idx):
+            pos[i] = ((n % cols) * w, y + (n // cols) * h)
+        y += h * -(-len(idx) // cols)
+        sw = max(sw, w * cols)
+    sheet = Image.new('RGBA', (sw, y), CLEAR)
     for i, img in enumerate(frames):
-        sheet.paste(img, ((i % cols) * w, (i // cols) * h))
+        sheet.paste(img, pos[i])
     d = OUT / cid
     d.mkdir(parents=True, exist_ok=True)
     sheet.save(d / f'{cid}.png')
@@ -211,8 +218,9 @@ def write(cid, tags, size, extra):
         i += len(imgs)
     meta = {
         'frames': {f'{cid} {n}.aseprite': {
-            'frame': {'x': (n % cols) * w, 'y': (n // cols) * h, 'w': w, 'h': h}, 'rotated': False, 'trimmed': False,
-            'spriteSourceSize': {'x': 0, 'y': 0, 'w': w, 'h': h}, 'sourceSize': {'w': w, 'h': h}, 'duration': 100,
+            'frame': {'x': pos[n][0], 'y': pos[n][1], 'w': frames[n].width, 'h': frames[n].height}, 'rotated': False,
+            'trimmed': False, 'spriteSourceSize': {'x': 0, 'y': 0, 'w': frames[n].width, 'h': frames[n].height},
+            'sourceSize': {'w': frames[n].width, 'h': frames[n].height}, 'duration': 100,
         } for n in range(len(frames))},
         'meta': {'app': 'https://www.aseprite.org/', 'version': 'provisional (draw_characters.py)', 'image': f'{cid}.png',
                  'format': 'RGBA8888', 'size': {'w': sheet.width, 'h': sheet.height}, 'scale': '1',
@@ -259,31 +267,14 @@ def standing(cid, p, thin=False):
     })
 
 
-# De lluny (prefix `Lluny`, com a Aigua Verne): la figura dibuixada directament a LLUNY de la mida (no encongida; la
-# cara de píxel solt és la petita, la del nen), enganxada dins el fotograma gran amb els peus al mateix punt (Benne té
-# un sol punt de peus per personatge). És per a les sales on la perspectiva deixa la figura a ≈0,4 (bcmu_contenidor),
-# on el motor, encongint el full d'1×, perd la cara. Ho dibuixa hd640/draw_characters.py (`DE_LLUNY`: dibuixa amb
-# `fn()` a ×LLUNY; a 480, None). ENCARA NO ES FA SERVIR: el motor escala tot el full amb un sol `artScale`, i una
-# figura petita dins el fotograma gran demana dividir l'escala de la regió per LLUNY (i llavors la velocitat de
-# caminar, el `collider` i el `talkPoint`, que en surten, s'espatllen). Cal un `artScale` per a les etiquetes `Lluny`
-# al motor; mentrestant, les robes de `lluny` de cada protagonista són buides.
-LLUNY = 0.56
+# De lluny (prefix `Lluny`): la figura dibuixada directament a LLUNY de la mida (no encongida; la cara és la petita,
+# de píxel solt, la del nen), en fotogrames propis de LLUNY × la mida (el mateix cantó de dalt a l'esquerra, els peus
+# a `feet` × LLUNY) i `sizeVariants: {Lluny: LLUNY}` al .character.json: el motor la mostra a escala/LLUNY i el
+# collider, el talkPoint, l'ombra i la velocitat es comporten com amb el full normal. Ho dibuixa
+# hd640/draw_characters.py (`DE_LLUNY`: dibuixa amb `fn()` a ×K×LLUNY). A bcmu_contenidor la Vet va de 0,40 a 0,80:
+# a 0,66, el full de lluny es mostra entre 0,6 i 1,2 (a 0,56 —la mida de 480— s'hauria d'ampliar fins a 1,43).
+LLUNY = 0.66
 DE_LLUNY = None
-
-
-def _peus(feet, h):
-    """Els peus de disseny `feet` (fotograma de 87 d'alt) en una figura de `h` píxels reals d'alt."""
-    k = h / 87
-    return round((feet[0] + 0.5) * k - 0.5), round((feet[1] + 0.5) * k - 0.5)
-
-
-def _enganxa(img, w, h, feet):
-    """La figura de lluny (`img`, dibuixada a ×LLUNY) dins un fotograma de w×h, amb els peus de disseny `feet` al
-    mateix lloc que els de la gran."""
-    (X, Y), (x, y) = _peus(feet, h), _peus(feet, img.height)
-    out = Image.new('RGBA', (w, h), CLEAR)
-    out.alpha_composite(img, (X - x, Y - y))
-    return out
 
 
 def protagonist(cid, draw, feet=(25, 83), outfits=('',), lluny=()):
@@ -295,15 +286,15 @@ def protagonist(cid, draw, feet=(25, 83), outfits=('',), lluny=()):
         d = (lambda f, walk=None, talk=False: draw(f, walk=walk, talk=talk)) if not o else \
             (lambda f, walk=None, talk=False, o=o: draw(f, walk=walk, talk=talk, roba=o))
         tags += quiet_tags(d, o)
-    w0, h0 = tags[0][1][0].size
     for o in lluny if DE_LLUNY else ():
-        # la respiració (respira) es fa a la figura petita, abans d'enganxar-la: la clariana del pit és la seva
+        # la respiració (respira) es fa a la figura petita: la clariana del pit és la seva
         d = (lambda f, walk=None, talk=False, o=o: DE_LLUNY(lambda: draw(f, walk=walk, talk=talk, roba=o)))
-        tags += [(t, [_enganxa(img, w0, h0, feet) for img in imgs]) for t, imgs in quiet_tags(d, f'Lluny{o}')]
+        tags += quiet_tags(d, f'Lluny{o}')
     anims = durations(tags, walk=(90, 100))
     w, h = tags[0][1][0].size
     fx, fy = feet
-    write(cid, tags, (w, h), {
+    variants = {'sizeVariants': {'Lluny': LLUNY}} if lluny and DE_LLUNY else {}
+    write(cid, tags, (w, h), {**variants,
         'walkSpeed': 110, 'walkToPoint': {'x': fx + 18, 'y': fy}, 'talkPoint': {'x': fx, 'y': -2}, 'feet': {'x': fx, 'y': fy},
         'collider': {'points': [{'x': 15, 'y': 2}, {'x': 35, 'y': 2}, {'x': 37, 'y': 50}, {'x': 33, 'y': 85}, {'x': 16, 'y': 85}, {'x': 12, 'y': 50}]},
         'animations': anims, 'defaultVerb': 'look', 'idleActions': IDLE_ACTIONS,
@@ -318,8 +309,8 @@ def vet(f, walk=None, talk=False, roba=''):
 
 VET_OUTFITS = tuple(personatges.VET_ROBA) + tuple(f'{o}Ulleres' for o in personatges.VET_ULLERES)
 # Les robes de la Vet de lluny (vegeu LLUNY): a bcmu_contenidor, la d'auditora (amb ulleres o sense) i, després de
-# l'escapada, la de casa. Buit fins que el motor ho pugui mostrar.
-VET_LLUNY = ()
+# l'escapada, la de casa (les regles `outfit` de game/data/characters.json).
+VET_LLUNY = ('', 'Auditora', 'AuditoraUlleres')
 
 
 def secundari(cid):

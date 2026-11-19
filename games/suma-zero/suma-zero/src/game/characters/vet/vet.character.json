@@ -6,6 +6,9 @@
   "display": {
     "aseprite": true
   },
+  "sizeVariants": {
+    "Lluny": 0.66
+  },
   "walkSpeed": 147,
   "walkToPoint": {
     "x": 58,
@@ -605,6 +608,246 @@
       "frameDuration": 260
     },
     "AuditoraUlleresLookDL": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyIdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyIdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyIdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyIdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyIdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyWalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyWalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyTalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyBlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyLookDL": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyAuditoraIdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraIdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraIdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraIdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraIdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyAuditoraWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyAuditoraWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyAuditoraWalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyAuditoraWalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyAuditoraTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraTalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyAuditoraBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyAuditoraBlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyAuditoraLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyAuditoraLookDL": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyAuditoraUlleresIdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraUlleresIdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraUlleresIdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraUlleresIdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraUlleresIdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "LlunyAuditoraUlleresWalkL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyAuditoraUlleresWalkD": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyAuditoraUlleresWalkU": {
+      "loop": true,
+      "frameDuration": 100
+    },
+    "LlunyAuditoraUlleresWalkDL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyAuditoraUlleresWalkUL": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "LlunyAuditoraUlleresTalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraUlleresTalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraUlleresTalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraUlleresTalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraUlleresTalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "LlunyAuditoraUlleresBlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyAuditoraUlleresBlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyAuditoraUlleresBlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LlunyAuditoraUlleresLookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LlunyAuditoraUlleresLookDL": {
       "loop": false,
       "frameDuration": 260
     }

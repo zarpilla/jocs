@@ -211,6 +211,57 @@
         "outfit": [
           {
             "if": {
+              "all": [
+                {
+                  "flag": "escapada"
+                },
+                {
+                  "inRoom": [
+                    "bcmu_contenidor"
+                  ],
+                  "who": "vet"
+                }
+              ]
+            },
+            "name": "Lluny"
+          },
+          {
+            "if": {
+              "all": [
+                {
+                  "flag": "aeroport_fet"
+                },
+                {
+                  "flag": "ulleres_posades"
+                },
+                {
+                  "inRoom": [
+                    "bcmu_contenidor"
+                  ],
+                  "who": "vet"
+                }
+              ]
+            },
+            "name": "LlunyAuditoraUlleres"
+          },
+          {
+            "if": {
+              "all": [
+                {
+                  "flag": "aeroport_fet"
+                },
+                {
+                  "inRoom": [
+                    "bcmu_contenidor"
+                  ],
+                  "who": "vet"
+                }
+              ]
+            },
+            "name": "LlunyAuditora"
+          },
+          {
+            "if": {
               "flag": "escapada"
             },
             "name": ""
