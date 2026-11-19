@@ -315,6 +315,16 @@ const DEBUG_OVERLAY_DEPTH = 20_000;
 /** Renders above typical room + GUI depth so the custom pointer stays on top (shipped game). */
 const CUSTOM_CURSOR_DEPTH = 500_000;
 
+/** The room's `cameraFollow`, with the defaults (a centred deadzone of 30% of the screen and a soft lerp). */
+export function cameraFollowOptions(data: RoomData['cameraFollow']): { deadzone: number; lerp: number } {
+  const dz = data?.deadzone;
+  const lp = data?.lerp;
+  return {
+    deadzone: typeof dz === 'number' && Number.isFinite(dz) ? Math.min(0.9, Math.max(0, dz)) : 0.3,
+    lerp: typeof lp === 'number' && Number.isFinite(lp) && lp > 0 ? Math.min(1, lp) : 0.1,
+  };
+}
+
 /** `startFollow` offset so the camera tracks {@link getCharacterWorldFeet}, not the sprite top-left. */
 function getFeetFollowOffset(player: Phaser.GameObjects.Sprite): { x: number; y: number } {
   const sx = player.scaleX;
@@ -4786,7 +4796,15 @@ export class RoomScene extends Phaser.Scene {
       return;
     }
     const feet = getFeetFollowOffset(this.player);
-    this.cameras.main.startFollow(this.player, true, 1, fixedY ? 0 : 1, feet.x, feet.y);
+    const { deadzone, lerp } = cameraFollowOptions(this.roomData.cameraFollow);
+    const cam = this.cameras.main;
+    // (startFollow puts the camera on the player at once; the lerp and the deadzone only apply from then on)
+    cam.startFollow(this.player, true, lerp, fixedY ? 0 : lerp, feet.x, feet.y);
+    if (deadzone > 0) {
+      cam.setDeadzone(vW * deadzone, vH * deadzone);
+    } else {
+      cam.deadzone = null;
+    }
     this.applyViewAnchorY(roomH);
   }
 

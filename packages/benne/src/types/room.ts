@@ -330,6 +330,13 @@ export interface RoomData {
    * For a room painted for the tallest screen whose playable part fits the shortest.
    */
   viewAnchorY?: number;
+  /**
+   * How the camera follows the player in a room larger than the screen. `deadzone`: the fraction of the screen
+   * (centred, both axes) the player can move in without the camera moving (`0.3` = between 35% and 65%); `lerp`:
+   * how much of the remaining distance the camera covers each frame (`1` = it sticks to the player). Omitted =
+   * `{ deadzone: 0.3, lerp: 0.1 }`; `{ deadzone: 0, lerp: 1 }` is the old rigid follow.
+   */
+  cameraFollow?: { deadzone?: number; lerp?: number };
   walkable: {
     polygons: WalkablePolygon[];
   };
