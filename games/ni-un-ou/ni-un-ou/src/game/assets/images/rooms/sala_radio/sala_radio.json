@@ -107,7 +107,7 @@
     },
     "sala_radio 5.aseprite": {
       "frame": {
-        "x": 3437,
+        "x": 3586,
         "y": 0,
         "w": 1,
         "h": 1
@@ -359,7 +359,7 @@
     },
     "sala_radio 17.aseprite": {
       "frame": {
-        "x": 3437,
+        "x": 3586,
         "y": 0,
         "w": 1,
         "h": 1
@@ -380,6 +380,342 @@
     },
     "sala_radio 18.aseprite": {
       "frame": {
+        "x": 3437,
+        "y": 0,
+        "w": 29,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 29,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 19.aseprite": {
+      "frame": {
+        "x": 3437,
+        "y": 0,
+        "w": 29,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 29,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 20.aseprite": {
+      "frame": {
+        "x": 3466,
+        "y": 0,
+        "w": 30,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 30,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 21.aseprite": {
+      "frame": {
+        "x": 3466,
+        "y": 0,
+        "w": 30,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 30,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 22.aseprite": {
+      "frame": {
+        "x": 3466,
+        "y": 0,
+        "w": 30,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 30,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 23.aseprite": {
+      "frame": {
+        "x": 3437,
+        "y": 0,
+        "w": 29,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 29,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 24.aseprite": {
+      "frame": {
+        "x": 3437,
+        "y": 0,
+        "w": 29,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 202,
+        "y": 29,
+        "w": 29,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 25.aseprite": {
+      "frame": {
+        "x": 3586,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 26.aseprite": {
+      "frame": {
+        "x": 3496,
+        "y": 0,
+        "w": 29,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 201,
+        "y": 29,
+        "w": 29,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 27.aseprite": {
+      "frame": {
+        "x": 3525,
+        "y": 0,
+        "w": 30,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 200,
+        "y": 29,
+        "w": 30,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 28.aseprite": {
+      "frame": {
+        "x": 3555,
+        "y": 0,
+        "w": 31,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 199,
+        "y": 29,
+        "w": 31,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 29.aseprite": {
+      "frame": {
+        "x": 3555,
+        "y": 0,
+        "w": 31,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 199,
+        "y": 29,
+        "w": 31,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 30.aseprite": {
+      "frame": {
+        "x": 3555,
+        "y": 0,
+        "w": 31,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 199,
+        "y": 29,
+        "w": 31,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 31.aseprite": {
+      "frame": {
+        "x": 3525,
+        "y": 0,
+        "w": 30,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 200,
+        "y": 29,
+        "w": 30,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 32.aseprite": {
+      "frame": {
+        "x": 3496,
+        "y": 0,
+        "w": 29,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 201,
+        "y": 29,
+        "w": 29,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 33.aseprite": {
+      "frame": {
+        "x": 3586,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "sala_radio 34.aseprite": {
+      "frame": {
         "x": 3412,
         "y": 0,
         "w": 25,
@@ -399,7 +735,7 @@
       },
       "duration": 100
     },
-    "sala_radio 19.aseprite": {
+    "sala_radio 35.aseprite": {
       "frame": {
         "x": 3387,
         "y": 0,
@@ -420,7 +756,7 @@
       },
       "duration": 100
     },
-    "sala_radio 20.aseprite": {
+    "sala_radio 36.aseprite": {
       "frame": {
         "x": 2999,
         "y": 0,
@@ -441,7 +777,7 @@
       },
       "duration": 100
     },
-    "sala_radio 21.aseprite": {
+    "sala_radio 37.aseprite": {
       "frame": {
         "x": 3024,
         "y": 0,
@@ -462,7 +798,7 @@
       },
       "duration": 100
     },
-    "sala_radio 22.aseprite": {
+    "sala_radio 38.aseprite": {
       "frame": {
         "x": 3049,
         "y": 0,
@@ -483,7 +819,7 @@
       },
       "duration": 100
     },
-    "sala_radio 23.aseprite": {
+    "sala_radio 39.aseprite": {
       "frame": {
         "x": 3287,
         "y": 0,
@@ -504,7 +840,7 @@
       },
       "duration": 100
     },
-    "sala_radio 24.aseprite": {
+    "sala_radio 40.aseprite": {
       "frame": {
         "x": 3312,
         "y": 0,
@@ -525,7 +861,7 @@
       },
       "duration": 100
     },
-    "sala_radio 25.aseprite": {
+    "sala_radio 41.aseprite": {
       "frame": {
         "x": 3337,
         "y": 0,
@@ -546,7 +882,7 @@
       },
       "duration": 100
     },
-    "sala_radio 26.aseprite": {
+    "sala_radio 42.aseprite": {
       "frame": {
         "x": 3074,
         "y": 0,
@@ -567,7 +903,7 @@
       },
       "duration": 100
     },
-    "sala_radio 27.aseprite": {
+    "sala_radio 43.aseprite": {
       "frame": {
         "x": 3124,
         "y": 0,
@@ -588,7 +924,7 @@
       },
       "duration": 100
     },
-    "sala_radio 28.aseprite": {
+    "sala_radio 44.aseprite": {
       "frame": {
         "x": 3149,
         "y": 0,
@@ -609,7 +945,7 @@
       },
       "duration": 100
     },
-    "sala_radio 29.aseprite": {
+    "sala_radio 45.aseprite": {
       "frame": {
         "x": 2778,
         "y": 0,
@@ -630,7 +966,7 @@
       },
       "duration": 100
     },
-    "sala_radio 30.aseprite": {
+    "sala_radio 46.aseprite": {
       "frame": {
         "x": 2826,
         "y": 0,
@@ -651,7 +987,7 @@
       },
       "duration": 100
     },
-    "sala_radio 31.aseprite": {
+    "sala_radio 47.aseprite": {
       "frame": {
         "x": 2680,
         "y": 0,
@@ -672,7 +1008,7 @@
       },
       "duration": 100
     },
-    "sala_radio 32.aseprite": {
+    "sala_radio 48.aseprite": {
       "frame": {
         "x": 2729,
         "y": 0,
@@ -693,7 +1029,7 @@
       },
       "duration": 100
     },
-    "sala_radio 33.aseprite": {
+    "sala_radio 49.aseprite": {
       "frame": {
         "x": 1280,
         "y": 0,
@@ -714,7 +1050,7 @@
       },
       "duration": 100
     },
-    "sala_radio 34.aseprite": {
+    "sala_radio 50.aseprite": {
       "frame": {
         "x": 1920,
         "y": 0,
@@ -742,7 +1078,7 @@
     "image": "sala_radio.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3438,
+      "w": 3587,
       "h": 360
     },
     "scale": "1",
@@ -790,51 +1126,58 @@
         "color": "#000000ff"
       },
       {
-        "name": "dia_mar",
+        "name": "llum",
         "from": 17,
-        "to": 28,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_tamboret",
-        "from": 29,
-        "to": 29,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "dia__davant_tamboret",
-        "from": 30,
-        "to": 30,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "davant_caixa",
-        "from": 31,
-        "to": 31,
-        "direction": "forward",
-        "color": "#000000ff"
-      },
-      {
-        "name": "dia__davant_caixa",
-        "from": 32,
         "to": 32,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "dia_mar",
         "from": 33,
-        "to": 33,
+        "to": 44,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_tamboret",
+        "from": 45,
+        "to": 45,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dia__davant_tamboret",
+        "from": 46,
+        "to": 46,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_caixa",
+        "from": 47,
+        "to": 47,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dia__davant_caixa",
+        "from": 48,
+        "to": 48,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 49,
+        "to": 49,
         "direction": "forward",
         "color": "#000000ff"
       },
       {
         "name": "dia__davant",
-        "from": 34,
-        "to": 34,
+        "from": 50,
+        "to": 50,
         "direction": "forward",
         "color": "#000000ff"
       }

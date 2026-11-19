@@ -250,7 +250,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 999
     }
   ],
@@ -287,12 +287,12 @@
     }
   ],
   "characterLights": {
-    "ambient": "#5a4a40",
+    "ambient": "#76645a",
     "lights": [
       {
         "x": 379,
         "y": -57,
-        "radius": 260,
+        "radius": 340,
         "color": "#ffcf82",
         "intensity": 1.2
       }
@@ -311,5 +311,9 @@
       "reach": 140
     }
   },
-  "floorSquash": 0.42
+  "floorSquash": 0.42,
+  "characterOutline": {
+    "color": "#b88a52",
+    "alpha": 0.4
+  }
 }

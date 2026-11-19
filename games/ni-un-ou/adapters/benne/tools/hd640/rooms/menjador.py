@@ -28,7 +28,7 @@ from hd.pix import Canvas, Light, W, H, hr
 from hd.rooms.arenga import CAB, DARK, WHITEP, REDP, YELL, BRASS, glow
 from hd.rooms.comu import _diff
 from hd.rooms.exterior import fbm
-from hd.rooms.principal import CREAM, TEAK, LINO, DOORP, wear, porthole, day_porthole, second_hand, in_door
+from hd.rooms.principal import CREAM, TEAK, LINO, DOORP, NIGHT, wear, porthole, day_porthole, second_hand, in_door
 from hd.rooms.menjador import VINYL, STEEL, MUGS
 from hd640.rooms import menjador_pla_comu as PL
 from hd640.rooms.laboratori_pla_comu import lamp, door_frame
@@ -92,7 +92,7 @@ def _passadis_pla(cv):
     PL.sign_box(cv, x0 + 4, 64, 'PASSADÍS', WHITEP, 4.2, (24, 28, 30))
 
 
-def _paret(dia=False, tasses=True, dx=None, segons=None):
+def _paret(dia=False, tasses=True, dx=None, segons=None, mar=None):
     """Les dues parets planes, de cara (sense la banqueta, la taula ni l'aparador, que són en 3D)."""
     cv = Canvas(light=TEX_LIGHT)
     PL.wall(cv)
@@ -102,7 +102,8 @@ def _paret(dia=False, tasses=True, dx=None, segons=None):
     PL.passaplats(cv)
     _passadis_pla(cv)
     for i, (px, py) in enumerate(PL.PORTS):
-        porthole(cv, px, py, PL.PORT_R, rim=4, seed=i + 1)
+        porthole(cv, px, py, PL.PORT_R, rim=4, seed=i + 1,
+                 fn=None if mar is None else _ull_mar(px, py, PL.PORT_R, i + 1, mar))
     PL.poster(cv)
     PL.clocks(cv)
     if segons is not None:
@@ -458,6 +459,39 @@ def _frames_rellotge():
     return [_fotograma([e.capa(_paret(segons=s), {'paret_fons'})]) for s in range(60)]
 
 
+def _ull_mar(cx, cy, r, seed, t):
+    """El que es veu per l'ull de bou en el moment `t` (0..1) del balanceig: l'horitzó que puja i baixa amb el
+    vaixell, i les crestes de les onades que corren (el mateix mar de nit de principal.night_sea)."""
+    a = 2 * math.pi * t
+
+    def fn(cv, x, y):
+        hz = cy + r * 0.15 + 1.6 * math.sin(a + seed * 0.4)
+        if y < hz:
+            cl = hr(int((x + seed * 7) // 4), int(y // 2), seed)
+            v = 2.6 + (hz - y) / (r * 2) + (0.8 if cl > 0.72 else 0)
+            if hz - y < 1.5:
+                v = 4.4                                            # (la línia clara de l'horitzó)
+        else:
+            v = 1.8 - (y - hz) / (r * 1.6)
+            if math.sin(x * 0.7 + y * 2.3 + seed - a * 2) > 0.8:
+                v += 2.6
+        cv.put(x, y, NIGHT, v, lit=0.1)
+    return fn
+
+
+def _frames_mar():
+    """El mar pels ulls de bou (de nit): l'horitzó es gronxa amb el balanceig i les onades corren."""
+    img0, e = _base()
+    quiet = img0.copy()
+    quiet.alpha_composite(e.capa(_paret(), {'paret_fons'}))
+    out = []
+    for i in range(12):                                            # (només els vidres: la resta, com el fons)
+        img = img0.copy()
+        img.alpha_composite(e.capa(_paret(mar=i / 12), {'paret_fons'}))
+        out.append(_diff(img, quiet))
+    return out
+
+
 def _frames_tasses():
     """Les tasses penjades es gronxen amb el balanceig, cadascuna una mica endarrerida respecte de l'anterior."""
     _, e = _base()
@@ -471,7 +505,8 @@ def _frames_tasses():
 
 
 ANIMS = {'rellotge': {'frames': _frames_rellotge, 'frameDuration': 1000},
-         'tasses': {'frames': _frames_tasses, 'frameDuration': 160}}
+         'tasses': {'frames': _frames_tasses, 'frameDuration': 160},
+         'mar': {'frames': _frames_mar, 'frameDuration': 240}}
 
 
 def _amo(ids):

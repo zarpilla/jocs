@@ -242,10 +242,11 @@ def escena(cv, tex, estat=frozenset()):
     # la foscor dels racons: on les parets es troben amb el terra i entre elles
     e.foscor('racons', (0, 0.5, ZW), (XR, 0.5, ZW), (XR, 0.5, zn), (0, 0.5, zn),
              lambda s, t: max(0.6 * max(0.0, 1 - t / 30), 0.55 * max(0.0, 1 - s / 24), 0.5 * max(0.0, 1 - (XR - s) / 30)))
-    e.foscor('cantonada', (0, HW, ZW - 0.5), (60, HW, ZW - 0.5), (60, 0, ZW - 0.5), (0, 0, ZW - 0.5),
-             lambda s, t: 0.5 * max(0.0, 1 - s / 60))
-    e.foscor('cantonada2', (0.5, HW, ZW - 60), (0.5, HW, ZW), (0.5, 0, ZW), (0.5, 0, ZW - 60),
-             lambda s, t: 0.5 * max(0.0, 1 - (60 - s) / 60))
+    # la cantonada de les dues parets: una ombra ampla i, arran de la junta, ben fosca (el relleu del racó)
+    e.foscor('cantonada', (0, HW, ZW - 0.5), (110, HW, ZW - 0.5), (110, 0, ZW - 0.5), (0, 0, ZW - 0.5),
+             lambda s, t: max(0.72 * max(0.0, 1 - s / 110) ** 1.3, 0.85 if s < 3 else 0.0))
+    e.foscor('cantonada2', (0.5, HW, ZW - 110), (0.5, HW, ZW), (0.5, 0, ZW), (0.5, 0, ZW - 110),
+             lambda s, t: max(0.72 * max(0.0, 1 - (110 - s) / 110) ** 1.3, 0.85 if s > 107 else 0.0))
     e.foscor('sostre_fosc', (-60, HW - 0.5, ZW - 0.6), (XR, HW - 0.5, ZW - 0.6), (XR, 0, ZW - 0.6), (-60, 0, ZW - 0.6),
              lambda s, t: 0.5 * max(0.0, 1 - t / 40))
     e.foscor('sostre_fosc2', (XR - 0.5, HW, ZW), (XR - 0.5, HW, zn), (XR - 0.5, 0, zn), (XR - 0.5, 0, ZW),

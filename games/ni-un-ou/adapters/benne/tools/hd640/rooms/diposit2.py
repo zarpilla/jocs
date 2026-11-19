@@ -263,6 +263,17 @@ def escena(cv, tex, estat=frozenset()):
     e.caixa('primer_pla', 92, 112, 0, HW, 20, 40, FOSC, 1.6,
             cares={'dreta': {'ramp': FOSC, 'lvl': lambda s, t, P: 2.6 + (1.4 if int(t) % 16 == 0 else 0)},
                    'davant': {'ramp': FOSC, 'lvl': lambda s, t, P: 1.4 + (1.6 if s > 18 else 0)}})
+    # molt a prop de la càmera, a les dues cantonades de baix: una biga en I del buc (a la dreta) i una canonada
+    # vertical gruixuda amb brides (a l'esquerra), en silueta; només un fil de llum a la vora que mira el focus
+    bx, bz = 400, -56
+    vora = {'ramp': FOSC, 'lvl': lambda s, t, P: 1.4 + (3.6 if s < 1.5 else 0)}
+    e.caixa('primer_pla', bx - 11, bx + 11, 0, HW + 60, bz - 3, bz + 3, FOSC, 1.0, cares={'esquerra': vora})
+    e.caixa('primer_pla', bx - 3, bx + 3, 0, HW + 60, bz + 3, bz + 30, FOSC, 1.2, cares={'esquerra': vora})
+    e.caixa('primer_pla', bx - 11, bx + 11, 0, HW + 60, bz + 30, bz + 36, FOSC, 1.0, cares={'esquerra': vora})
+    for y in range(20, HW, 46):                                     # els reblons
+        e.caixa('primer_pla', bx - 8, bx + 8, y, y + 3, bz - 4.5, bz - 3, FOSC, 2.0)
+    e.tub('primer_pla', (122, -10, -64), (122, HW + 60, -64), 11, FOSC, 2.6, brides=52, llum_dir=(1.0, 0.4))
+    e.silueta({'primer_pla'}, 0.12, col=(2, 3, 4))
     return e
 
 

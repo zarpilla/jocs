@@ -223,6 +223,15 @@ def _llum_ull(x, z):
     return 0.22 * max(0.0, 1 - d) ** 1.4
 
 
+def llum_penjat(e, tex, angle=0.0):
+    """El llum de pantalla verda, penjat del sostre damunt la taula; `angle`: quant es decanta (el balanceig)."""
+    lx, ly, lz = LAMP
+    img, peu = tex['pantalla']
+    dx = (HW - ly) * math.sin(angle)
+    e.linia((lx, HW, lz), (lx + dx * (HW - ly - 8) / (HW - ly), ly + 8, lz), PL.CABLE, 2.0)
+    e.sprite('llum', img, peu, (lx + dx, ly - 3, lz))
+
+
 def escena(cv, tex, estat=frozenset()):
     """Tota la sala, de lluny a prop. `estat`: 'dia', 'xapa' (la tapa del panell, a terra). → l'Escena."""
     dia = 'dia' in estat
@@ -316,9 +325,8 @@ def escena(cv, tex, estat=frozenset()):
             cares={'dalt': {'ramp': PL.WOOD, 'lvl': 1.2}})
     e.caixa_girada('radio', _w(366), zf + 12, 16, 2, 2, -0.5, PL.YELL, 4.0, y0=dh)
     # el llum, penjat del sostre damunt la taula
-    img, peu = tex['pantalla']
-    e.linia((lx, HW, lz), (lx, ly + 8, lz), PL.CABLE, 2.0)
-    e.sprite('llum', img, peu, (lx, ly - 3, lz))
+    if 'sense_llum' not in estat:
+        llum_penjat(e, tex)
     # el tamboret, davant la taula, una mica girat
     sx, sz = STOOL
     e.foscor('ombra_tamboret', (sx - 22, 0.7, sz + 16), (sx + 22, 0.7, sz + 16), (sx + 22, 0.7, sz - 16),
@@ -491,7 +499,31 @@ def _amb_dia(img, dia):
     return img
 
 
+def _frames_llum(n=16):
+    """El llum penjat que es gronxa amb el balanceig del vaixell (±4°, lent): la sala sense el llum i, a sobre, el llum
+    decantat, només on no hi ha res pintat després d'ell (el tamboret, el primer pla)."""
+    img0, e0 = _base()
+    sense, es = _render(frozenset({'sense_llum'}))
+    despres = set(e0.ids[e0.ids.index('llum') + 1:])
+    W_ = es.cv.w
+    out = []
+    for i in range(n):
+        cv = Canvas(light=LIGHT, transparent=True)
+        e = Escena(cv, CAM, _llums(False), ambient=-0.2)
+        llum_penjat(e, _tex(False), 0.07 * math.sin(2 * math.pi * i / n))
+        img = sense.copy()
+        P, L = img.load(), cv.img.load()
+        for Y in range(BOTTOM + 1):
+            for X in range(W_):
+                c = L[X, Y]
+                if c[3] and es.ids[es.amo[Y * W_ + X]] not in despres:
+                    P[X, Y] = c
+        out.append(_diff(img, img0))
+    return out
+
+
 ANIMS = {'mar': {'frames': lambda: _frames(False), 'frameDuration': 260},
+         'llum': {'frames': _frames_llum, 'frameDuration': 150},
          'dia_mar': {'frames': lambda: _frames(True), 'frameDuration': 260}}
 
 

@@ -67,7 +67,7 @@ def _night(cv, x0, y0, x1, y1, t=0.0):
         for x in range(x0, x1 + 1):
             if y < HORIZON:
                 d = math.hypot(x - mx, (y - my) * 1.4)
-                lvl = 2.6 + (y - 13) * 0.022 + max(0, 1 - d / 93) * 2.8
+                lvl = 3.4 + (y - 13) * 0.022 + max(0, 1 - d / 120) * 3.2     # (la claror de la lluna)
                 c = _cloud(x, y)
                 if c > 0.55:
                     lvl += (c - 0.55) * 4.0 * (0.6 + max(0, 1 - d / 120) * 1.6)
@@ -80,7 +80,7 @@ def _night(cv, x0, y0, x1, y1, t=0.0):
                 cv.put(x, y, NSKY, lvl, lit=0)
             else:
                 dd = y - HORIZON
-                lvl = 2.8 - dd * 0.022
+                lvl = 3.4 - dd * 0.02 + max(0.0, 1 - abs(x - mx) / 150) * 0.8
                 ph = math.sin(x * (0.135 - dd * 0.0011) + dd * 0.68 + math.sin(x * 0.038 + dd * 0.22) * 1.6 + t)
                 if ph > 0.7:
                     lvl += 0.9
@@ -89,13 +89,13 @@ def _night(cv, x0, y0, x1, y1, t=0.0):
                 w = 13 + dd * 1.5                              # el camí de la lluna
                 g = math.exp(-((x - mx) / w) ** 2)
                 if g > 0.15 and ph > 0.4 and hr(x // 2, y, int(t * 2) % 7) < g * 0.9:
-                    lvl += 2.6 * g
+                    lvl += 3.0 * g
                 cv.put(x, y, NSEA, lvl, lit=0)
     if y0 <= HORIZON <= y1:
         for x in range(x0, x1 + 1):
             cv.put(x, HORIZON, NSEA, 3.0 + (0.8 if abs(x - mx) < 24 else 0), lit=0)
     if x0 <= mx <= x1 and y0 <= my <= y1:
-        glow(cv, mx, my, 21, (150, 160, 180), 0.35)
+        glow(cv, mx, my, 30, (170, 184, 214), 0.5)
 
 
 @functools.lru_cache(maxsize=None)
@@ -203,7 +203,8 @@ def windows(cv):
             for i in range(36 if k != 13 else 18):
                 x, y = a + 10 + k + i, y1 - 13 - i
                 if a < x < b and y0 + 8 < y < y1 - 8 and hr(i, k, a) > 0.35:
-                    cv.flat(x, y, mix(cv.get(x, y)[:3], (230, 234, 236) if _MODE['dia'] else (120, 130, 150), 0.18))
+                    cv.flat(x, y, mix(cv.get(x, y)[:3], (230, 234, 236) if _MODE['dia'] else (150, 176, 220),
+                                      0.18 if _MODE['dia'] else 0.32))
         for i in range(10):                            # gotes de sal seques
             sx, sy = a + 4 + int(hr(i, a, 1) * (b - a - 8)), y0 + 10 + int(hr(i, a, 2) * (y1 - y0 - 20))
             cv.flat(sx, sy, mix(cv.get(sx, sy)[:3], (200, 206, 212), 0.25 if _MODE['dia'] else 0.15))

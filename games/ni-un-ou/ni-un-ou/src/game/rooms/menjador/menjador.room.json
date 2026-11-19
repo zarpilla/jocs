@@ -413,6 +413,20 @@
       },
       "zIndex": 25,
       "baseline": 999
+    },
+    {
+      "id": "mar",
+      "tag": "mar",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "mar": {
+          "loop": true,
+          "frameDuration": 240
+        }
+      }
     }
   ],
   "characters": [

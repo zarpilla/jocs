@@ -95,6 +95,9 @@ def fronts(name, bg):
         return []
     out = []
     for n, f in enumerate(fs if isinstance(fs, (list, tuple)) else [fs]):
+        if 'image' in f:                          # una capa que no és un retall del fons (el fons no la porta)
+            out.append((f['image'](), f, f.get('id', 'davant' if n == 0 else f'davant_{n + 1}')))
+            continue
         img = Image.new('RGBA', bg.size, (0, 0, 0, 0))
         src, dst = bg.load(), img.load()
         s = bg.size[1] // H                       # la màscara és en píxels de sala
