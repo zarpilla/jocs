@@ -330,6 +330,19 @@ def side_face_k(fg, p, spec):
         fg.rpx(mx + 2, my, mix(lip, C.MOUTH, 0.3), 0)
 
 
+def head_side_k(fg, p, S, lvl=3.1):
+    """`head_side` a ×K amb el nas més curt i rodó. El triangle del nas d'1×, rasteritzat petit, queda d'un píxel i
+    arrodonit; dibuixat sencer a ×K sortia punxegut i massa llarg."""
+    hx, hy = p.head
+    fg.ell(hx + 0.8, hy, 6.8, 7.6, S, lvl, amp=1.5)
+    fg.ell(hx - 1.6, hy + 3.4, 4.8, 4.8, S, lvl, amp=1.4)
+    fg.ell(hx - 6.2, hy + 3.0, NAS_RX, NAS_RY, S, lvl + 0.3, amp=1.2)                # el nas: surt poc i és rodó
+    fg.ell(hx - 4.6, hy + 6.4, 1.6, 1.4, S, lvl, amp=1.2)                         # barbeta
+
+
+NAS_RX, NAS_RY = 1.1, 1.3
+
+
 # ═══════════════════════════════════════════════════════════════════════════
 #  El 3/4 a la mida gran
 # ═══════════════════════════════════════════════════════════════════════════
@@ -389,12 +402,12 @@ def _gira_yk(fg, p, spec, S):
 def _gran(spec, sub):
     prop = spec.get('prop', A.ADULT)
     cls = type('FigPK', (FigYK,), {'prop': prop, 'sub': sub})
-    saved = C.Fig, C._gira, C.front_face, C.side_face
-    C.Fig, C._gira, C.front_face, C.side_face = cls, _gira_yk, front_face_k, side_face_k
+    saved = C.Fig, C._gira, C.front_face, C.side_face, C.head_side
+    C.Fig, C._gira, C.front_face, C.side_face, C.head_side = cls, _gira_yk, front_face_k, side_face_k, head_side_k
     try:
         yield
     finally:
-        C.Fig, C._gira, C.front_face, C.side_face = saved
+        C.Fig, C._gira, C.front_face, C.side_face, C.head_side = saved
 
 
 def figura(spec, facing, walk=None, talk=False, sub=(0.0, 0.0)):
