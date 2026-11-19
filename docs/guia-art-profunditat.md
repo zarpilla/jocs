@@ -282,17 +282,12 @@ personatges en 3/4, la respiració i les micro-accions. Queda pendent:
   ràdio de Ni un ou, les normes del Cargol i els peus del museu a Ferro-9). Els noms de les portes (Ni un ou, la sala
   de calderes de Ferro-9) i el panell de sortides de la terminal es queden com a textura, perquè no es llegeixen
   però tampoc cal.
-- Escenes amb gent asseguda que no s'han vist al joc: la reunió del menjador i la infermeria de Ni un ou.
 - Els personatges no surten als reflexos del terra (el vestíbul del banc de Suma Zero).
 - Alguns mobles i objectes encara són dibuixos plans drets (sprites), no volums: els tamborets del bar, les bombes de
   la sala de bombes, la llançadora de l'hangar.
 
-**Aigua Verne: totes les sales i les cinemàtiques són en 3D, a 1×** (novembre del 2026). Queda pendent:
-
-- La Cantimplora canònica (`cantimplora_comu.py`) ja és al port de Terra-2, a la portada, al pròleg, al port
-  d'Aqua, al carrer de Ferrum i al jardí de Verdant; falta posar-la als crèdits (quan hi sigui, cal treure aquest
-  ítem).
-- Els crèdits i els postcrèdits no s'han tocat.
+**Aigua Verne: totes les sales i les cinemàtiques són en 3D, a 1×** (novembre del 2026), també els crèdits i els
+postcrèdits. La Cantimplora és una sola nau (`cantimplora_comu.py`) a totes les sales on surt. No queda res pendent.
 
 - **Pati de la granja (Aigua Verne).** Fet en 3D (`granja_pati.py`): la casa girada amb el teulat, el pou vist des de
   dalt, la bomba amb tres cares, la tanca i el camí del graner en diagonal, el panell en angle, dunes, esquerdes que

@@ -18,19 +18,27 @@
         "active": true,
         "points": [
           {
-            "x": 0,
-            "y": 238
+            "x": 325,
+            "y": 192
           },
           {
-            "x": 640,
-            "y": 238
+            "x": 539,
+            "y": 187
           },
           {
-            "x": 640,
+            "x": 639,
+            "y": 208
+          },
+          {
+            "x": 639,
+            "y": 239
+          },
+          {
+            "x": 590,
             "y": 257
           },
           {
-            "x": 0,
+            "x": 351,
             "y": 257
           }
         ],
@@ -40,7 +48,34 @@
   },
   "hotspots": [],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.736,
+      "scaleBottom": 1.145,
+      "points": [
+        {
+          "x": 0,
+          "y": 177
+        },
+        {
+          "x": 639,
+          "y": 177
+        },
+        {
+          "x": 639,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -79,14 +114,52 @@
           "frameDuration": 160
         }
       }
+    },
+    {
+      "id": "cua",
+      "tag": "cua",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "cua": {
+          "loop": true,
+          "frameDuration": 520
+        }
+      }
+    },
+    {
+      "id": "davant_fanal",
+      "tag": "davant_fanal",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_fanal": {}
+      },
+      "zIndex": 20,
+      "baseline": 204
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "verne-1",
       "definition": "verne/verne.character.json",
-      "x": 522,
-      "y": 244,
+      "x": 500,
+      "y": 242,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -95,8 +168,8 @@
     {
       "instanceId": "dividend-1",
       "definition": "dividend/dividend.character.json",
-      "x": 320,
-      "y": 236,
+      "x": 528,
+      "y": 246,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -105,13 +178,26 @@
     {
       "instanceId": "rosa-1",
       "definition": "rosa/rosa.character.json",
-      "x": 478,
-      "y": 240,
+      "x": 452,
+      "y": 236,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 9
     }
   ],
-  "artScale": 2
+  "characterShadow": {
+    "enabled": true,
+    "color": "#1a1012",
+    "alpha": 0.4,
+    "squash": 0.32,
+    "core": 0.6,
+    "light": {
+      "x": -45.75,
+      "y": 11.93,
+      "direction": true,
+      "stretch": 0.9
+    }
+  },
+  "floorSquash": 0.32
 }

@@ -79,9 +79,22 @@
           "frameDuration": 400
         }
       }
+    },
+    {
+      "id": "motors",
+      "tag": "motors",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "motors": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
     }
   ],
   "characters": [],
-  "viewAnchorY": 0.5,
-  "artScale": 2
+  "viewAnchorY": 0.5
 }
