@@ -1,0 +1,41 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El toll dels gripaus",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "arxiu",
+      "label": "arxiu",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 118,
+      "y": 76
+    },
+    {
+      "id": "rierol",
+      "label": "rierol",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 25
+    },
+    {
+      "id": "comporta",
+      "label": "comporta",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 424,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Registrador Bufó",
+    "Gripau vaguista"
+  ]
+}

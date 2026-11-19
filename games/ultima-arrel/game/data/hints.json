@@ -1,0 +1,700 @@
+{
+  "$schema": "../schemas/hints.schema.json",
+  "campaneta": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "vora_bosc"
+        },
+        {
+          "flag": "espora_respon",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "espora_respon"
+    },
+    "levels": [
+      "pista.campaneta.1",
+      "pista.campaneta.2",
+      "pista.campaneta.3"
+    ],
+    "targets": [
+      "campaneta"
+    ]
+  },
+  "estaca": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "vora_bosc"
+        },
+        {
+          "flag": "estaca_treta",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "estaca_treta"
+    },
+    "levels": [
+      "pista.estaca.1",
+      "pista.estaca.2",
+      "pista.estaca.3"
+    ],
+    "targets": [
+      "estaca"
+    ]
+  },
+  "entrar": {
+    "priority": 4,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "vora_bosc"
+        },
+        {
+          "flag": "porta_oberta"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "radar_ences"
+    },
+    "levels": [
+      "pista.entrar.1"
+    ],
+    "targets": [
+      "porta_roure"
+    ]
+  },
+  "cargol": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "flag": "radar_sense_corrent"
+        },
+        {
+          "flag": "cargol_agafat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "cargol_agafat"
+    },
+    "levels": [
+      "pista.cargol.1",
+      "pista.cargol.2",
+      "pista.cargol.3"
+    ],
+    "targets": [
+      "escala",
+      "cargol"
+    ]
+  },
+  "pila": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "centraleta"
+        },
+        {
+          "flag": "radar_sense_corrent"
+        },
+        {
+          "hasItem": "pila_llimona",
+          "who": "iri",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "radar_ences"
+    },
+    "levels": [
+      "pista.pila.1",
+      "pista.pila.2",
+      "pista.pila.3"
+    ],
+    "targets": [
+      "radar"
+    ]
+  },
+  "radar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "centraleta"
+        },
+        {
+          "hasItem": "pila_llimona",
+          "who": "iri"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "radar_ences"
+    },
+    "levels": [
+      "pista.radar.1",
+      "pista.radar.2"
+    ],
+    "targets": [
+      "radar"
+    ]
+  },
+  "fil": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "centraleta"
+        },
+        {
+          "flag": "radar_ences"
+        },
+        {
+          "flag": "fil_agafat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "fil_agafat"
+    },
+    "levels": [
+      "pista.fil.1",
+      "pista.fil.2"
+    ],
+    "targets": [
+      "fil_saba"
+    ]
+  },
+  "arrel": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "centraleta"
+        },
+        {
+          "flag": "fil_agafat"
+        },
+        {
+          "flag": "xarxa_encesa",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "xarxa_encesa"
+    },
+    "levels": [
+      "pista.arrel.1",
+      "pista.arrel.2",
+      "pista.arrel.3"
+    ],
+    "targets": [
+      "arrel_1",
+      "arrel_2",
+      "arrel_3"
+    ]
+  },
+  "corn": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "centraleta"
+        },
+        {
+          "flag": "xarxa_encesa"
+        },
+        {
+          "flag": "crit_escoltat",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "crit_escoltat"
+        },
+        {
+          "flag": "crit_gravat"
+        }
+      ]
+    },
+    "levels": [
+      "pista.corn.1",
+      "pista.corn.2",
+      "pista.corn.3"
+    ],
+    "targets": [
+      "corn"
+    ]
+  },
+  "gravar": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "centraleta"
+        },
+        {
+          "flag": "crit_escoltat"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "crit_gravat"
+    },
+    "levels": [
+      "pista.gravar.1",
+      "pista.gravar.2",
+      "pista.gravar.3"
+    ],
+    "targets": [
+      "corn"
+    ]
+  },
+  "melmelada": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "campament_fades"
+        },
+        {
+          "flag": "fades_amigues",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "fades_amigues"
+    },
+    "levels": [
+      "pista.melmelada.1",
+      "pista.melmelada.2",
+      "pista.melmelada.3"
+    ],
+    "targets": [
+      "urtica",
+      "pica",
+      "card"
+    ],
+    "who": "iri"
+  },
+  "flor": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "campament_fades"
+        },
+        {
+          "flag": "fades_amigues"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pol_len_collit"
+    },
+    "levels": [
+      "pista.flor.1",
+      "pista.flor.2",
+      "pista.flor.3"
+    ],
+    "targets": [
+      "gronxador"
+    ],
+    "who": "iri"
+  },
+  "bufo": {
+    "priority": 7,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "toll_gripaus"
+        },
+        {
+          "flag": "sap_plans",
+          "is": false
+        },
+        {
+          "flag": "aigua_tornada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "sap_plans"
+        },
+        {
+          "flag": "aigua_tornada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.bufo.1",
+      "pista.bufo.2"
+    ],
+    "targets": [
+      "bufo"
+    ]
+  },
+  "tap": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "toll_gripaus"
+        },
+        {
+          "flag": "sap_plans"
+        },
+        {
+          "flag": "tap_tret",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "tap_tret"
+    },
+    "levels": [
+      "pista.tap.1",
+      "pista.tap.2",
+      "pista.tap.3"
+    ],
+    "targets": [
+      "tap_plastics"
+    ]
+  },
+  "comporta": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "toll_gripaus"
+        },
+        {
+          "flag": "sap_plans"
+        },
+        {
+          "flag": "comporta_provada",
+          "is": false
+        },
+        {
+          "flag": "comporta_tancada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "any": [
+        {
+          "flag": "comporta_provada"
+        },
+        {
+          "flag": "comporta_tancada"
+        }
+      ]
+    },
+    "levels": [
+      "pista.comporta.1",
+      "pista.comporta.2"
+    ],
+    "targets": [
+      "comporta"
+    ]
+  },
+  "gripau": {
+    "priority": 5,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "toll_gripaus"
+        },
+        {
+          "flag": "comporta_provada"
+        },
+        {
+          "flag": "comporta_tancada",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "comporta_tancada"
+    },
+    "levels": [
+      "pista.gripau.1",
+      "pista.gripau.2",
+      "pista.gripau.3"
+    ],
+    "targets": [
+      "gripau"
+    ]
+  },
+  "segell": {
+    "priority": 8,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "toll_gripaus"
+        },
+        {
+          "flag": "aigua_tornada"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "plans_segellats"
+    },
+    "levels": [
+      "pista.segell.1",
+      "pista.segell.2"
+    ],
+    "targets": [
+      "bufo"
+    ]
+  },
+  "fora": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "caseta_obra"
+        },
+        {
+          "flag": "pla_fora",
+          "is": false
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "pla_fora"
+    },
+    "levels": [
+      "pista.fora.1",
+      "pista.fora.2",
+      "pista.fora.3"
+    ],
+    "targets": [
+      "arbre_wifi"
+    ],
+    "who": "iri"
+  },
+  "canal": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "caseta_obra"
+        },
+        {
+          "flag": "pla_fora"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "altaveu_canal7"
+    },
+    "levels": [
+      "pista.canal.1",
+      "pista.canal.2",
+      "pista.canal.3"
+    ],
+    "targets": [
+      "altaveu"
+    ],
+    "who": "iri"
+  },
+  "xiulet": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "zona_zero"
+        },
+        {
+          "var": "discurs",
+          "op": "==",
+          "value": 1
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "discurs",
+      "op": ">=",
+      "value": 2
+    },
+    "levels": [
+      "pista.xiulet.1",
+      "pista.xiulet.2",
+      "pista.xiulet.3"
+    ],
+    "targets": [
+      "sensors",
+      "urtica"
+    ]
+  },
+  "cadastre": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "zona_zero"
+        },
+        {
+          "var": "discurs",
+          "op": "==",
+          "value": 2
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "discurs",
+      "op": ">=",
+      "value": 3
+    },
+    "levels": [
+      "pista.cadastre.1",
+      "pista.cadastre.2",
+      "pista.cadastre.3"
+    ],
+    "targets": [
+      "bufo"
+    ]
+  },
+  "crit": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "iri"
+        },
+        {
+          "inRoom": "zona_zero"
+        },
+        {
+          "var": "discurs",
+          "op": "==",
+          "value": 3
+        }
+      ]
+    },
+    "doneWhen": {
+      "var": "discurs",
+      "op": ">=",
+      "value": 4
+    },
+    "levels": [
+      "pista.crit.1",
+      "pista.crit.2",
+      "pista.crit.3"
+    ],
+    "targets": [
+      "altaveu"
+    ]
+  },
+  "taula": {
+    "priority": 6,
+    "when": {
+      "all": [
+        {
+          "protagonist": "vet"
+        },
+        {
+          "inRoom": "bosc_obert"
+        }
+      ]
+    },
+    "doneWhen": {
+      "flag": "final_taula"
+    },
+    "levels": [
+      "pista.taula.1"
+    ],
+    "targets": [
+      "taula"
+    ],
+    "who": "iri"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El campament de les Fades d'Ortiga",
+  "era": "vet",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "gronxador",
+      "label": "gronxador",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 118,
+      "y": 76
+    },
+    {
+      "id": "flor_pebre",
+      "label": "Flor de Pebre",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 25
+    },
+    {
+      "id": "diana",
+      "label": "diana",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 424,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Urtica",
+    "Pica",
+    "Card"
+  ]
+}

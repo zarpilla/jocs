@@ -382,6 +382,13 @@ export interface HintDef {
   priority?: number;
   /** De més vaga a més explícita. */
   levels: TextKey[];
+  /**
+   * Les coses de la sala on apunta la pista (ids de coses o de personatges). Un adaptador hi pot dibuixar alguna
+   * cosa (a L'Última Arrel, els filaments de la lupa). Si no n'hi ha, la pista només és text.
+   */
+  targets?: Id[];
+  /** Qui diu la pista (un personatge, p. ex. l'altra germana pel walkie). Per defecte, la protagonista que juga. */
+  who?: Id;
 }
 
 // ─── Finals ──────────────────────────────────────────────────────────────────

@@ -1,0 +1,445 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.toll_gripaus.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "walkIn": "left",
+      "lines": [
+        {
+          "who": "title",
+          "text": "sala.toll_gripaus.intro.1"
+        },
+        {
+          "who": "player",
+          "text": "sala.toll_gripaus.intro.2",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "sala.toll_gripaus.intro.3"
+        },
+        {
+          "who": "player",
+          "text": "sala.toll_gripaus.intro.4"
+        },
+        {
+          "who": "gripau",
+          "text": "sala.toll_gripaus.intro.5"
+        },
+        {
+          "who": "player",
+          "text": "sala.toll_gripaus.intro.6"
+        },
+        {
+          "who": "player",
+          "text": "sala.toll_gripaus.intro.7"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "bufo": {
+      "interactions": []
+    },
+    "gripau": {
+      "interactions": []
+    },
+    "tap_plastics": {
+      "name": "sala.toll_gripaus.tap_plastics.nom",
+      "visibleIf": {
+        "flag": "tap_tret",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "estaca",
+          "if": {
+            "flag": "ampolles_tretes"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.toll_gripaus.tap.palanca.1",
+              "sound": "ampolles"
+            },
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.tap.palanca.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.toll_gripaus.aigua.tap.1",
+              "sound": "rierol",
+              "if": {
+                "flag": "comporta_tancada"
+              },
+              "effects": [
+                {
+                  "setFlag": "aigua_tornada"
+                }
+              ]
+            },
+            {
+              "who": "gripau",
+              "text": "sala.toll_gripaus.aigua.tap.2",
+              "if": {
+                "flag": "comporta_tancada"
+              }
+            },
+            {
+              "who": "bufo",
+              "text": "sala.toll_gripaus.aigua.tap.3",
+              "if": {
+                "flag": "comporta_tancada"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "estaca"
+            },
+            {
+              "setFlag": "tap_tret"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "estaca",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.tap.ampolles",
+              "sound": "ampolles"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.toll_gripaus.tap.palanca.1",
+              "sound": "ampolles"
+            },
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.tap.palanca.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.toll_gripaus.aigua.tap.1",
+              "sound": "rierol",
+              "if": {
+                "flag": "comporta_tancada"
+              },
+              "effects": [
+                {
+                  "setFlag": "aigua_tornada"
+                }
+              ]
+            },
+            {
+              "who": "gripau",
+              "text": "sala.toll_gripaus.aigua.tap.2",
+              "if": {
+                "flag": "comporta_tancada"
+              }
+            },
+            {
+              "who": "bufo",
+              "text": "sala.toll_gripaus.aigua.tap.3",
+              "if": {
+                "flag": "comporta_tancada"
+              }
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "estaca"
+            },
+            {
+              "setFlag": "tap_tret"
+            },
+            {
+              "setFlag": "ampolles_tretes"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "use"
+          ],
+          "if": {
+            "flag": "ampolles_tretes"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.tap.encallada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.tap.ampolles",
+              "sound": "ampolles"
+            },
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.tap.encallada1"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "ampolles_tretes"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.tap.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "comporta": {
+      "name": "sala.toll_gripaus.comporta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "close",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "comporta_tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.comporta.feta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "close",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "comporta_provada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.comporta.dura2"
+            },
+            {
+              "who": "gripau",
+              "text": "sala.toll_gripaus.comporta.gripau2"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "close",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.comporta.dura"
+            },
+            {
+              "who": "gripau",
+              "text": "sala.toll_gripaus.comporta.gripau"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "comporta_provada"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "comporta_tancada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.comporta.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.comporta.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "rierol": {
+      "name": "sala.toll_gripaus.rierol.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aigua_tornada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.rierol.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.rierol.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "toll": {
+      "name": "sala.toll_gripaus.toll.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aigua_tornada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.toll.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.toll.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "arxiu": {
+      "name": "sala.toll_gripaus.arxiu.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.arxiu.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "bufo",
+              "text": "sala.toll_gripaus.arxiu.obre"
+            }
+          ]
+        }
+      ]
+    },
+    "joncs": {
+      "name": "sala.toll_gripaus.joncs.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "aigua_tornada"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.joncs.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.joncs.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "cami": {
+      "name": "sala.toll_gripaus.cami.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.cami.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.toll_gripaus.cami.no"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "aigua": {
+      "visibleIf": {
+        "flag": "aigua_tornada"
+      },
+      "sota": true
+    }
+  }
+}

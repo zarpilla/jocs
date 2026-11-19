@@ -1,0 +1,149 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "espora",
+  "with": "espora",
+  "start": "hola",
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "espora",
+          "text": "dlg.espora.hola.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "qui",
+          "text": "dlg.espora.opt.qui",
+          "once": true,
+          "next": "qui"
+        },
+        {
+          "id": "miceli",
+          "text": "dlg.espora.opt.miceli",
+          "once": true,
+          "next": "miceli"
+        },
+        {
+          "id": "node",
+          "text": "dlg.espora.opt.node",
+          "once": true,
+          "next": "node"
+        },
+        {
+          "id": "melmelada",
+          "text": "dlg.espora.opt.melmelada",
+          "once": true,
+          "next": "melmelada"
+        },
+        {
+          "id": "que",
+          "text": "dlg.espora.opt.que",
+          "next": "que"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.espora.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "qui": {
+      "lines": [
+        {
+          "who": "espora",
+          "text": "dlg.espora.qui.1"
+        },
+        {
+          "who": "espora",
+          "text": "dlg.espora.qui.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "miceli": {
+      "lines": [
+        {
+          "who": "espora",
+          "text": "dlg.espora.miceli.1"
+        },
+        {
+          "who": "espora",
+          "text": "dlg.espora.miceli.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "node": {
+      "lines": [
+        {
+          "who": "espora",
+          "text": "dlg.espora.node.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "melmelada": {
+      "lines": [
+        {
+          "who": "espora",
+          "text": "dlg.espora.melmelada.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "que": {
+      "lines": [
+        {
+          "who": "espora",
+          "text": "dlg.espora.que.pila",
+          "if": {
+            "flag": "radar_ences",
+            "is": false
+          }
+        },
+        {
+          "who": "espora",
+          "text": "dlg.espora.que.fil",
+          "if": {
+            "all": [
+              {
+                "flag": "radar_ences"
+              },
+              {
+                "flag": "xarxa_encesa",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "espora",
+          "text": "dlg.espora.que.corn",
+          "if": {
+            "all": [
+              {
+                "flag": "xarxa_encesa"
+              },
+              {
+                "flag": "crit_escoltat",
+                "is": false
+              }
+            ]
+          }
+        },
+        {
+          "who": "espora",
+          "text": "dlg.espora.que.grava",
+          "if": {
+            "flag": "crit_escoltat"
+          }
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

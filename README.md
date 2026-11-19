@@ -9,6 +9,7 @@ motor i la història separada del motor.
 | **Suma Zero**: dues germanes de fet volen repartir tots els diners del món a parts iguals. | [games/suma-zero](games/suma-zero/README.md) |
 | **Ni un ou**: a bord d'un vaixell d'una ONG, algú sabota les màquines perquè una mostra de fang no arribi a terra. | [games/ni-un-ou](games/ni-un-ou/README.md) |
 | **Aigua Verne**: l'Iri i la Vet volen el pou de la granja; el Magnat Verne s'ha endut l'aigua de tot un sistema planetari. | [games/aigua-verne](games/aigua-verne/README.md) |
+| **L'Última Arrel**: la Iri i la Vet, de nenes, han de tornar a encendre l'internet dels fongs d'un bosc vell abans que hi arribi el formigó. | [games/ultima-arrel](games/ultima-arrel/README.md) |
 
 Suma Zero, Ni un ou i Aigua Verne es juguen sense barra de verbs, també amb el dit en un mòbil apaïsat: tocar una cosa
 la mira la primera vegada i després en fa l'acció (amb el ratolí, per defecte el clic esquerre mira i el dret fa l'acció), i

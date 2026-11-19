@@ -1,0 +1,40 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "La caseta d'obra",
+  "era": "vet",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "altaveu",
+      "label": "altaveu",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 118,
+      "y": 76
+    },
+    {
+      "id": "arbre_wifi",
+      "label": "arbre Wi-Fi",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 25
+    },
+    {
+      "id": "maqueta",
+      "label": "maqueta",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 424,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Senyora Pla"
+  ]
+}

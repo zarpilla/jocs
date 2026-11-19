@@ -1,0 +1,81 @@
+{
+  "$schema": "../schemas/quests.schema.json",
+  "acte1": {
+    "kind": "main",
+    "title": "mis.acte1.titol",
+    "startWhen": {
+      "visited": "vora_bosc"
+    },
+    "objectives": [
+      {
+        "id": "porta",
+        "text": "mis.acte1.obj.porta",
+        "completeWhen": {
+          "flag": "porta_oberta"
+        }
+      },
+      {
+        "id": "xarxa",
+        "text": "mis.acte1.obj.xarxa",
+        "completeWhen": {
+          "flag": "xarxa_encesa"
+        }
+      },
+      {
+        "id": "crit",
+        "text": "mis.acte1.obj.crit",
+        "completeWhen": {
+          "flag": "crit_gravat"
+        }
+      }
+    ]
+  },
+  "acte2": {
+    "kind": "main",
+    "title": "mis.acte2.titol",
+    "startWhen": {
+      "quest": "acte1",
+      "status": "completed"
+    },
+    "objectives": [
+      {
+        "id": "fades",
+        "text": "mis.acte2.obj.fades",
+        "completeWhen": {
+          "flag": "pol_len_collit"
+        }
+      },
+      {
+        "id": "gripaus",
+        "text": "mis.acte2.obj.gripaus",
+        "completeWhen": {
+          "flag": "plans_segellats"
+        }
+      },
+      {
+        "id": "caseta",
+        "text": "mis.acte2.obj.caseta",
+        "completeWhen": {
+          "flag": "altaveu_canal7"
+        }
+      }
+    ]
+  },
+  "acte3": {
+    "kind": "main",
+    "title": "mis.acte3.titol",
+    "startWhen": {
+      "quest": "acte2",
+      "status": "completed"
+    },
+    "objectives": [
+      {
+        "id": "presentacio",
+        "text": "mis.acte3.obj.presentacio",
+        "completeWhen": {
+          "flag": "presentacio_feta"
+        }
+      }
+    ]
+  }
+}

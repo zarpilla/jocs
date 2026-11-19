@@ -1,0 +1,592 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.campament_fades.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "title",
+          "text": "sala.campament_fades.intro.1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.campament_fades.intro.2"
+        },
+        {
+          "who": "urtica",
+          "text": "sala.campament_fades.intro.3"
+        },
+        {
+          "who": "player",
+          "text": "sala.campament_fades.intro.4"
+        },
+        {
+          "who": "card",
+          "text": "sala.campament_fades.intro.5"
+        },
+        {
+          "who": "pica",
+          "text": "sala.campament_fades.intro.6"
+        },
+        {
+          "who": "player",
+          "text": "sala.campament_fades.intro.7",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "sala.campament_fades.intro.8"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "urtica": {
+      "interactions": [
+        {
+          "verb": [
+            "give",
+            "use"
+          ],
+          "item": "pot_melmelada",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.melmelada.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.melmelada.2",
+              "sound": "fades_mengen"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.3"
+            },
+            {
+              "who": "card",
+              "text": "sala.campament_fades.melmelada.4"
+            },
+            {
+              "who": "card",
+              "text": "sala.campament_fades.melmelada.5"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.6"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.7"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.8"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.melmelada.9"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pot_melmelada"
+            },
+            {
+              "giveItem": "pot_buit"
+            },
+            {
+              "setFlag": "fades_amigues"
+            }
+          ]
+        }
+      ]
+    },
+    "pica": {
+      "interactions": [
+        {
+          "verb": [
+            "give",
+            "use"
+          ],
+          "item": "pot_melmelada",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.melmelada.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.melmelada.2",
+              "sound": "fades_mengen"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.3"
+            },
+            {
+              "who": "card",
+              "text": "sala.campament_fades.melmelada.4"
+            },
+            {
+              "who": "card",
+              "text": "sala.campament_fades.melmelada.5"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.6"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.7"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.8"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.melmelada.9"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pot_melmelada"
+            },
+            {
+              "giveItem": "pot_buit"
+            },
+            {
+              "setFlag": "fades_amigues"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "fades_amigues",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "pica",
+              "text": "sala.campament_fades.pica.parla"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "pica",
+              "text": "sala.campament_fades.pica.parla2"
+            }
+          ]
+        }
+      ]
+    },
+    "card": {
+      "interactions": [
+        {
+          "verb": [
+            "give",
+            "use"
+          ],
+          "item": "pot_melmelada",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.melmelada.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.melmelada.2",
+              "sound": "fades_mengen"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.3"
+            },
+            {
+              "who": "card",
+              "text": "sala.campament_fades.melmelada.4"
+            },
+            {
+              "who": "card",
+              "text": "sala.campament_fades.melmelada.5"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.6"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.7"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.melmelada.8"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.melmelada.9"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pot_melmelada"
+            },
+            {
+              "giveItem": "pot_buit"
+            },
+            {
+              "setFlag": "fades_amigues"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "flag": "fades_amigues",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "card",
+              "text": "sala.campament_fades.card.parla"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "card",
+              "text": "sala.campament_fades.card.parla2"
+            }
+          ]
+        }
+      ]
+    },
+    "flor": {
+      "name": "sala.campament_fades.flor.nom",
+      "visibleIf": {
+        "flag": "pol_len_collit",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.flor.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.flor.agafa"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "pot_buit",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.flor.pot"
+            }
+          ]
+        }
+      ]
+    },
+    "branca": {
+      "name": "sala.campament_fades.branca.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.branca.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.branca.camina"
+            },
+            {
+              "who": "iri",
+              "text": "sala.campament_fades.branca.iri",
+              "sound": "walkie"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.branca.vet"
+            },
+            {
+              "who": "iri",
+              "text": "sala.campament_fades.branca.iri2"
+            }
+          ]
+        }
+      ]
+    },
+    "gronxador": {
+      "name": "sala.campament_fades.gronxador.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "fades_amigues"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.1",
+              "sound": "gronxador"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.5"
+            },
+            {
+              "who": "pica",
+              "text": "sala.campament_fades.empenta.6",
+              "sound": "esternut_fada"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.7"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.empenta.8"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.campament_fades.empenta.9"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.10"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.empenta.11"
+            },
+            {
+              "who": "player",
+              "text": "sala.campament_fades.empenta.12",
+              "sound": "walkie"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pot_buit"
+            },
+            {
+              "giveItem": "xiulet"
+            },
+            {
+              "setFlag": "pol_len_collit"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "toll_gripaus"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.gronxador.seu"
+            },
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.gronxador.no"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.gronxador.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "catapulta": {
+      "name": "sala.campament_fades.catapulta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.catapulta.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "urtica",
+              "text": "sala.campament_fades.catapulta.no"
+            }
+          ]
+        }
+      ]
+    },
+    "diana": {
+      "name": "sala.campament_fades.diana.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.diana.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "grafits": {
+      "name": "sala.campament_fades.grafits.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.grafits.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "tenda": {
+      "name": "sala.campament_fades.tenda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.tenda.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "walkTo"
+          ],
+          "lines": [
+            {
+              "who": "card",
+              "text": "sala.campament_fades.tenda.no"
+            }
+          ]
+        }
+      ]
+    },
+    "escala_corda": {
+      "name": "sala.campament_fades.escala_corda.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.escala_corda.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.campament_fades.escala_corda.no"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "flor_buida": {
+      "visibleIf": {
+        "flag": "pol_len_collit"
+      }
+    }
+  }
+}

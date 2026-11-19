@@ -1,0 +1,901 @@
+{
+  "frames": {
+    "vora_bosc 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 1.aseprite": {
+      "frame": {
+        "x": 3731,
+        "y": 360,
+        "w": 85,
+        "h": 87
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 180,
+        "y": 158,
+        "w": 85,
+        "h": 87
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 2.aseprite": {
+      "frame": {
+        "x": 3857,
+        "y": 360,
+        "w": 19,
+        "h": 9
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 504,
+        "y": 200,
+        "w": 19,
+        "h": 9
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 3.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 4.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 5.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 6.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 7.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 8.aseprite": {
+      "frame": {
+        "x": 3816,
+        "y": 360,
+        "w": 41,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 148,
+        "w": 41,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 9.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 10.aseprite": {
+      "frame": {
+        "x": 3816,
+        "y": 360,
+        "w": 41,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 148,
+        "w": 41,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 11.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 12.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 13.aseprite": {
+      "frame": {
+        "x": 3876,
+        "y": 360,
+        "w": 1,
+        "h": 1
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 1,
+        "h": 1
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 14.aseprite": {
+      "frame": {
+        "x": 3816,
+        "y": 360,
+        "w": 41,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 232,
+        "y": 148,
+        "w": 41,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 15.aseprite": {
+      "frame": {
+        "x": 1440,
+        "y": 0,
+        "w": 274,
+        "h": 212
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 133,
+        "y": 8,
+        "w": 274,
+        "h": 212
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 16.aseprite": {
+      "frame": {
+        "x": 1977,
+        "y": 0,
+        "w": 285,
+        "h": 211
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 130,
+        "y": 20,
+        "w": 285,
+        "h": 211
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 17.aseprite": {
+      "frame": {
+        "x": 2262,
+        "y": 0,
+        "w": 281,
+        "h": 211
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 137,
+        "y": 30,
+        "w": 281,
+        "h": 211
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 18.aseprite": {
+      "frame": {
+        "x": 1714,
+        "y": 0,
+        "w": 263,
+        "h": 212
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 152,
+        "y": 40,
+        "w": 263,
+        "h": 212
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 19.aseprite": {
+      "frame": {
+        "x": 2325,
+        "y": 360,
+        "w": 243,
+        "h": 171
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 165,
+        "y": 9,
+        "w": 243,
+        "h": 171
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 20.aseprite": {
+      "frame": {
+        "x": 1314,
+        "y": 360,
+        "w": 245,
+        "h": 172
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 154,
+        "y": 20,
+        "w": 245,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 21.aseprite": {
+      "frame": {
+        "x": 2568,
+        "y": 360,
+        "w": 242,
+        "h": 171
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 148,
+        "y": 31,
+        "w": 242,
+        "h": 171
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 22.aseprite": {
+      "frame": {
+        "x": 1559,
+        "y": 360,
+        "w": 243,
+        "h": 172
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 142,
+        "y": 40,
+        "w": 243,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 23.aseprite": {
+      "frame": {
+        "x": 1802,
+        "y": 360,
+        "w": 255,
+        "h": 172
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 51,
+        "w": 255,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 24.aseprite": {
+      "frame": {
+        "x": 2057,
+        "y": 360,
+        "w": 268,
+        "h": 172
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 123,
+        "y": 61,
+        "w": 268,
+        "h": 172
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 25.aseprite": {
+      "frame": {
+        "x": 2810,
+        "y": 360,
+        "w": 281,
+        "h": 171
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 119,
+        "y": 72,
+        "w": 281,
+        "h": 171
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 26.aseprite": {
+      "frame": {
+        "x": 910,
+        "y": 0,
+        "w": 267,
+        "h": 236
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 142,
+        "y": 1,
+        "w": 267,
+        "h": 236
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 27.aseprite": {
+      "frame": {
+        "x": 1177,
+        "y": 0,
+        "w": 263,
+        "h": 236
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 153,
+        "y": 12,
+        "w": 263,
+        "h": 236
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 28.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 244,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 161,
+        "y": 5,
+        "w": 244,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 29.aseprite": {
+      "frame": {
+        "x": 244,
+        "y": 360,
+        "w": 255,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 158,
+        "y": 15,
+        "w": 255,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 30.aseprite": {
+      "frame": {
+        "x": 1046,
+        "y": 360,
+        "w": 268,
+        "h": 191
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 149,
+        "y": 27,
+        "w": 268,
+        "h": 191
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 31.aseprite": {
+      "frame": {
+        "x": 3607,
+        "y": 0,
+        "w": 267,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 149,
+        "y": 36,
+        "w": 267,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 32.aseprite": {
+      "frame": {
+        "x": 499,
+        "y": 360,
+        "w": 275,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 135,
+        "y": 47,
+        "w": 275,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 33.aseprite": {
+      "frame": {
+        "x": 774,
+        "y": 360,
+        "w": 272,
+        "h": 192
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 129,
+        "y": 57,
+        "w": 272,
+        "h": 192
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 34.aseprite": {
+      "frame": {
+        "x": 2543,
+        "y": 0,
+        "w": 264,
+        "h": 211
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 128,
+        "y": 7,
+        "w": 264,
+        "h": 211
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 35.aseprite": {
+      "frame": {
+        "x": 3075,
+        "y": 0,
+        "w": 265,
+        "h": 210
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 121,
+        "y": 18,
+        "w": 265,
+        "h": 210
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 36.aseprite": {
+      "frame": {
+        "x": 3340,
+        "y": 0,
+        "w": 267,
+        "h": 210
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 118,
+        "y": 29,
+        "w": 267,
+        "h": 210
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 37.aseprite": {
+      "frame": {
+        "x": 2807,
+        "y": 0,
+        "w": 268,
+        "h": 211
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 121,
+        "y": 38,
+        "w": 268,
+        "h": 211
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 38.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 270,
+        "h": 245
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 128,
+        "y": 6,
+        "w": 270,
+        "h": 245
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "vora_bosc 39.aseprite": {
+      "frame": {
+        "x": 3091,
+        "y": 360,
+        "w": 640,
+        "h": 112
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 189,
+        "w": 640,
+        "h": 112
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "vora_bosc.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 3877,
+      "h": 552
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "porta_oberta",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "cargol",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "llum",
+        "from": 3,
+        "to": 14,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "fulles",
+        "from": 15,
+        "to": 38,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 39,
+        "to": 39,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

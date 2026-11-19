@@ -1,0 +1,12 @@
+{
+  "id": "llibreta",
+  "onVerb": {},
+  "stackable": false,
+  "animations": {},
+  "display": {
+    "aseprite": "shared"
+  },
+  "name": "llibreta",
+  "description": "llibreta",
+  "defaultVerb": "fes"
+}

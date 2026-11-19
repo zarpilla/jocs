@@ -1,0 +1,896 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.centraleta.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "espora",
+          "text": "sala.centraleta.intro.1"
+        },
+        {
+          "who": "espora",
+          "text": "sala.centraleta.intro.2"
+        },
+        {
+          "who": "player",
+          "text": "sala.centraleta.intro.3"
+        },
+        {
+          "who": "espora",
+          "text": "sala.centraleta.intro.4"
+        },
+        {
+          "who": "espora",
+          "text": "sala.centraleta.intro.5"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "radar_sense_corrent"
+        }
+      ]
+    },
+    {
+      "id": "torna",
+      "verb": "*",
+      "if": {
+        "flag": "crit_gravat",
+        "is": false
+      },
+      "lines": [
+        {
+          "who": "espora",
+          "text": "sala.centraleta.torna",
+          "if": {
+            "flag": "radar_ences",
+            "is": false
+          }
+        },
+        {
+          "who": "espora",
+          "text": "sala.centraleta.torna2",
+          "if": {
+            "flag": "radar_ences"
+          }
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "espora": {
+      "interactions": []
+    },
+    "escala": {
+      "name": "sala.centraleta.escala.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.escala.surt"
+            }
+          ],
+          "goTo": "vora_bosc"
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.escala.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "radar": {
+      "name": "sala.centraleta.radar.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "pila_llimona",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.pila.1",
+              "sound": "radar"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.pila.2"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.pila.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.pila.4"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "pila_llimona"
+            },
+            {
+              "setFlag": "radar_ences"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llimona",
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.radar.classe"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llimona_centim",
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.radar.classe"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "llimona_cargol",
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.radar.classe"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "centim",
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.radar.classe"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "cargol",
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.radar.classe"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "radar_ences"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.radar.mira.ences"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.radar.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "radar_ences",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.radar.usa"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.radar.usa2"
+            }
+          ]
+        }
+      ]
+    },
+    "tauler": {
+      "name": "sala.centraleta.tauler.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.tauler.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.tauler.usa"
+            }
+          ]
+        }
+      ]
+    },
+    "fil_saba": {
+      "name": "sala.centraleta.fil_saba.nom",
+      "visibleIf": {
+        "all": [
+          {
+            "flag": "radar_ences"
+          },
+          {
+            "flag": "fil_agafat",
+            "is": false
+          }
+        ]
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.fil_saba.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.fil_saba.agafa"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "fil_saba"
+            },
+            {
+              "setFlag": "fil_agafat"
+            }
+          ]
+        }
+      ]
+    },
+    "arrel_1": {
+      "name": "sala.centraleta.arrel_1.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "fil_saba",
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.arrel_morta.fil"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel_morta.lupa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "xarxa_encesa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel_morta.encesa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "radar_ences"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel.mira.radar"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.arrel.estira"
+            }
+          ]
+        }
+      ]
+    },
+    "arrel_2": {
+      "name": "sala.centraleta.arrel_2.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "fil_saba",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.xarxa.1",
+              "sound": "xarxa_encesa"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.xarxa.2"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.xarxa.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.xarxa.4"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.xarxa.5"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.xarxa.6"
+            }
+          ],
+          "effects": [
+            {
+              "takeItem": "fil_saba"
+            },
+            {
+              "setFlag": "xarxa_encesa"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel_viva.lupa"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "arrel_viva_vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "xarxa_encesa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel_viva.encesa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "arrel_viva_vista"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel_viva.vista"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "radar_ences"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel.mira.radar"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.arrel.estira"
+            }
+          ]
+        }
+      ]
+    },
+    "arrel_3": {
+      "name": "sala.centraleta.arrel_3.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "fil_saba",
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.arrel_morta.fil"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "lupa",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel_morta.lupa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "xarxa_encesa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel_morta.encesa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "radar_ences"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel.mira.radar"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.arrel.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.arrel.estira"
+            }
+          ]
+        }
+      ]
+    },
+    "corn": {
+      "name": "sala.centraleta.corn.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "xarxa_encesa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.corn.grava_res"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "crit_escoltat"
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.grava.1",
+              "sound": "walkie_grava"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.2"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.4"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.6"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.7"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.8"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.9",
+              "sound": "walkie"
+            },
+            {
+              "who": "vet",
+              "text": "sala.centraleta.grava.10"
+            },
+            {
+              "who": "vet",
+              "text": "sala.centraleta.grava.11"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "crit_gravat"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "campament_fades"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.escolta.1",
+              "sound": "crit"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.escolta.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.escolta.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.escolta.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.escolta.5"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.grava.1",
+              "sound": "walkie_grava"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.2"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.4"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.6"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.grava.7"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.8"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.grava.9",
+              "sound": "walkie"
+            },
+            {
+              "who": "vet",
+              "text": "sala.centraleta.grava.10"
+            },
+            {
+              "who": "vet",
+              "text": "sala.centraleta.grava.11"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "crit_escoltat"
+            },
+            {
+              "setFlag": "crit_gravat"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "campament_fades"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "if": {
+            "flag": "xarxa_encesa",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.corn.res"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "if": {
+            "flag": "crit_escoltat",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.escolta.1",
+              "sound": "crit"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.escolta.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.escolta.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.centraleta.escolta.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.escolta.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "crit_escoltat"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "talkTo",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.centraleta.corn.altra",
+              "sound": "crit"
+            },
+            {
+              "who": "player",
+              "text": "sala.centraleta.corn.altra.b"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "xarxa_encesa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.corn.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.corn.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "fils_paret": {
+      "name": "sala.centraleta.fils_paret.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "xarxa_encesa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.fils.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.centraleta.fils.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "espora",
+              "text": "sala.centraleta.fils.estira"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "xarxa_encesa": {
+      "visibleIf": {
+        "flag": "xarxa_encesa"
+      }
+    },
+    "radar_ences": {
+      "visibleIf": {
+        "flag": "radar_ences"
+      }
+    }
+  }
+}

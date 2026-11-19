@@ -1,0 +1,39 @@
+{
+  "$schema": "../schemas/state.schema.json",
+  "flags": {
+    "aigua_tornada": false,
+    "altaveu_canal7": false,
+    "ampolles_tretes": false,
+    "arrel_viva_vista": false,
+    "avia_marxa": false,
+    "cargol_agafat": false,
+    "comporta_provada": false,
+    "comporta_tancada": false,
+    "crit_escoltat": false,
+    "crit_gravat": false,
+    "espora_respon": false,
+    "estaca_fluixa": false,
+    "estaca_treta": false,
+    "fades_amigues": false,
+    "fil_agafat": false,
+    "final_taula": false,
+    "pla_fora": false,
+    "plans_segellats": false,
+    "pol_len_collit": false,
+    "porta_oberta": false,
+    "presentacio_feta": false,
+    "radar_ences": false,
+    "radar_sense_corrent": false,
+    "sap_altaveu": false,
+    "sap_plans": false,
+    "secret_avia": false,
+    "tap_tret": false,
+    "vet_coneix_espora": false,
+    "walkie_mirat_canal": false,
+    "xarxa_encesa": false
+  },
+  "vars": {
+    "discurs": 0,
+    "canals_provats": 0
+  }
+}

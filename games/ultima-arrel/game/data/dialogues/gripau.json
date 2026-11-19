@@ -1,0 +1,145 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "gripau",
+  "with": "gripau",
+  "start": [
+    {
+      "if": {
+        "flag": "aigua_tornada"
+      },
+      "node": "feta"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "gripau",
+          "text": "dlg.gripau.hola.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "vaga",
+          "text": "dlg.gripau.opt.vaga",
+          "once": true,
+          "next": "vaga"
+        },
+        {
+          "id": "ajuda",
+          "text": "dlg.gripau.opt.ajuda",
+          "if": {
+            "all": [
+              {
+                "flag": "comporta_provada"
+              },
+              {
+                "flag": "comporta_tancada",
+                "is": false
+              }
+            ]
+          },
+          "next": "ajuda",
+          "end": true
+        },
+        {
+          "id": "pancarta",
+          "text": "dlg.gripau.opt.pancarta",
+          "once": true,
+          "next": "pancarta"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.gripau.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "vaga": {
+      "lines": [
+        {
+          "who": "gripau",
+          "text": "dlg.gripau.vaga.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "pancarta": {
+      "lines": [
+        {
+          "who": "gripau",
+          "text": "dlg.gripau.pancarta.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "ajuda": {
+      "lines": [
+        {
+          "who": "gripau",
+          "text": "dlg.gripau.ajuda.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.gripau.ajuda.2"
+        },
+        {
+          "who": "gripau",
+          "text": "dlg.gripau.ajuda.3"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.gripau.ajuda.4",
+          "sound": "roda"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.gripau.aigua.1",
+          "sound": "rierol",
+          "if": {
+            "flag": "tap_tret"
+          },
+          "effects": [
+            {
+              "setFlag": "aigua_tornada"
+            }
+          ]
+        },
+        {
+          "who": "gripau",
+          "text": "dlg.gripau.aigua.2",
+          "if": {
+            "flag": "tap_tret"
+          }
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.gripau.aigua.3",
+          "if": {
+            "flag": "tap_tret"
+          }
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "comporta_tancada"
+        }
+      ]
+    },
+    "feta": {
+      "lines": [
+        {
+          "who": "gripau",
+          "text": "dlg.gripau.feta.1"
+        }
+      ],
+      "goto": "menu"
+    }
+  }
+}

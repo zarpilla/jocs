@@ -1,0 +1,47 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "La vora del bosc",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "porta_roure",
+      "label": "porta del roure",
+      "kind": "exit",
+      "w": 62,
+      "h": 120,
+      "x": 11,
+      "y": 95
+    },
+    {
+      "id": "cartell",
+      "label": "cartell",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 118,
+      "y": 76
+    },
+    {
+      "id": "tanca",
+      "label": "tanca",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 25
+    },
+    {
+      "id": "excavadora",
+      "label": "excavadora",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 424,
+      "y": 76
+    }
+  ],
+  "characters": []
+}

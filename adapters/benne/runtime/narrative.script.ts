@@ -11,7 +11,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -449,10 +449,23 @@ export function chooseNarrativeOption(id: string, dialog: DialogHandle, node: st
   if (step.ended) endDialog(dialog)
 }
 
-/** Botó o verb de "pista": cada vegada una mica més explícita. */
+/**
+ * Botó o verb de "pista": cada vegada una mica més explícita. Si la pista apunta a coses de la sala (`targets`), hi
+ * surten uns filaments que hi porten (la lupa de L'Última Arrel); si la diu una altra (`who`, p. ex. la germana pel
+ * walkie), la diu ella.
+ */
 export function sayHint() {
   const hint = narrative.requestHint()
   const text = hint ? hint.text : narrative.noHintText()
+  if (hint?.targets.length) {
+    const ids = hint.targets.map((t) => (narrative.content.characters[t] ? toBenne('characters', t) : toBenne('hotspots', t)))
+    game.showThreads(ids, 3.2)
+  }
+  const speaker = hint?.who ? benneCharacter(hint.who) : undefined
+  if (hint?.who && speaker) {
+    playLines([{ who: hint.who, key: `pista.${hint.id}`, text }])
+    return
+  }
   recordLine('player', text)
   player.say(text)
 }

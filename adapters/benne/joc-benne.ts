@@ -37,6 +37,11 @@ export interface JocBenne {
    * el menú d'accions, i l'alçada de la pantalla s'adapta a l'aparell. El joc hi posa l'art (tools/hd640/hud.py).
    */
   tactil?: boolean;
+  /**
+   * Amb `tactil`, per als jocs on no es pot canviar de protagonista (L'Última Arrel): el botó «Canvia» del HUD és el de
+   * la pista (la lupa), sempre a la vista. L'art del botó el fa el hud.py del joc.
+   */
+  botoPista?: boolean;
   /** Retocs propis a game-config.json, cada vegada que se sincronitza. */
   configura?(config: Json, t: Translate): void;
   /** GUI pròpies del joc (menú, historial...), cada vegada que se sincronitza. */

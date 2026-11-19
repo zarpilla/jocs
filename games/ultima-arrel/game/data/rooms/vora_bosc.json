@@ -1,0 +1,770 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.vora_bosc.nom",
+  "protagonist": "iri",
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "walkIn": "left",
+      "lines": [
+        {
+          "who": "avia",
+          "text": "sala.vora_bosc.intro.1"
+        },
+        {
+          "who": "player",
+          "text": "sala.vora_bosc.intro.2"
+        },
+        {
+          "who": "avia",
+          "text": "sala.vora_bosc.intro.3"
+        },
+        {
+          "who": "avia",
+          "text": "sala.vora_bosc.intro.4"
+        },
+        {
+          "who": "player",
+          "text": "sala.vora_bosc.intro.5"
+        },
+        {
+          "who": "avia",
+          "text": "sala.vora_bosc.intro.6",
+          "stageAfter": [
+            {
+              "who": "avia",
+              "walk": "cami"
+            },
+            {
+              "who": "avia",
+              "visible": false
+            }
+          ]
+        },
+        {
+          "who": "player",
+          "text": "sala.vora_bosc.intro.7"
+        },
+        {
+          "who": "player",
+          "text": "sala.vora_bosc.intro.8"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "avia_marxa"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "avia": {
+      "visibleIf": {
+        "flag": "avia_marxa",
+        "is": false
+      },
+      "interactions": []
+    },
+    "porta_roure": {
+      "name": "sala.vora_bosc.porta_roure.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "open",
+            "use",
+            "push"
+          ],
+          "if": {
+            "flag": "porta_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.entra"
+            }
+          ],
+          "goTo": "centraleta"
+        },
+        {
+          "verb": [
+            "open",
+            "push",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "estaca_treta",
+                "is": false
+              },
+              {
+                "flag": "espora_respon"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.topa"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "push",
+            "pull",
+            "use"
+          ],
+          "if": {
+            "flag": "estaca_treta",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.tancada"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "push",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.tancada2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "estaca_treta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.mira"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.porta_roure.mira.b"
+            }
+          ]
+        }
+      ]
+    },
+    "campaneta": {
+      "name": "sala.vora_bosc.campaneta.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "porta_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.campaneta.oberta"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "espora_respon",
+                "is": false
+              },
+              {
+                "flag": "estaca_treta"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.vora_bosc.truca.1",
+              "sound": "campaneta"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.truca.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.truca.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.truca.4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.vora_bosc.obre.1",
+              "sound": "porta_roure"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.obre.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.obre.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.obre.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.obre.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "espora_respon"
+            },
+            {
+              "setFlag": "porta_oberta"
+            }
+          ],
+          "goTo": "centraleta"
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "espora_respon",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.vora_bosc.truca.1",
+              "sound": "campaneta"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.truca.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.truca.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.truca.4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.vora_bosc.topa.1",
+              "sound": "porta_topa"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.topa.2"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "espora_respon"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.vora_bosc.campaneta.altra",
+              "sound": "campaneta"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.campaneta.altra.2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.campaneta.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "bustia": {
+      "name": "sala.vora_bosc.bustia.nom",
+      "interactions": [
+        {
+          "verb": [
+            "look",
+            "open",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.bustia.mira"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.bustia.mira.b",
+              "if": {
+                "flag": "espora_respon",
+                "is": false
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "llum_vermell": {
+      "name": "sala.vora_bosc.llum_vermell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "if": {
+            "flag": "porta_oberta"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.llum_vermell.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.llum_vermell.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.llum_vermell.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "estaca": {
+      "name": "sala.vora_bosc.estaca.nom",
+      "visibleIf": {
+        "flag": "estaca_treta",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": [
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "all": [
+              {
+                "flag": "estaca_fluixa"
+              },
+              {
+                "flag": "espora_respon"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.fora"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.vora_bosc.obre.1",
+              "sound": "porta_roure"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.obre.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.obre.3"
+            },
+            {
+              "who": "espora",
+              "text": "sala.vora_bosc.obre.4"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.obre.5"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "estaca_treta"
+            },
+            {
+              "giveItem": "estaca"
+            },
+            {
+              "setFlag": "porta_oberta"
+            }
+          ],
+          "goTo": "centraleta"
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp"
+          ],
+          "if": {
+            "flag": "estaca_fluixa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.fora"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.fora.sola"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "estaca_treta"
+            },
+            {
+              "giveItem": "estaca"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.clavada"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.clavada.b"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "if": {
+            "flag": "estaca_fluixa"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.ja"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.empeny"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "estaca_fluixa"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.estaca.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "cargol": {
+      "name": "sala.vora_bosc.cargol.nom",
+      "visibleIf": {
+        "flag": "cargol_agafat",
+        "is": false
+      },
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cargol.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cargol.agafa"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cargol.agafa.b"
+            }
+          ],
+          "effects": [
+            {
+              "giveItem": "cargol"
+            },
+            {
+              "setFlag": "cargol_agafat"
+            }
+          ]
+        }
+      ]
+    },
+    "cartell": {
+      "name": "sala.vora_bosc.cartell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cartell.mira"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cartell.mira.b"
+            },
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cartell.mira.c"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "push",
+            "pickUp"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cartell.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "tanca": {
+      "name": "sala.vora_bosc.tanca.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.tanca.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.tanca.obre"
+            }
+          ]
+        }
+      ]
+    },
+    "gespa": {
+      "name": "sala.vora_bosc.gespa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.gespa.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "pickUp",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.gespa.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "excavadora": {
+      "name": "sala.vora_bosc.excavadora.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.excavadora.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.excavadora.usa"
+            }
+          ]
+        }
+      ]
+    },
+    "bolets": {
+      "name": "sala.vora_bosc.bolets.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.bolets.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.bolets.agafa"
+            }
+          ]
+        }
+      ]
+    },
+    "cami": {
+      "name": "sala.vora_bosc.cami.nom",
+      "interactions": [
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cami.surt"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.vora_bosc.cami.mira"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "porta_oberta": {
+      "visibleIf": {
+        "flag": "porta_oberta"
+      }
+    }
+  }
+}

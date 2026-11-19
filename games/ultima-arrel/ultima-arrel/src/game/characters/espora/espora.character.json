@@ -1,0 +1,95 @@
+{
+  "id": "espora",
+  "name": "Espora",
+  "description": "Espora",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 60,
+  "walkToPoint": {
+    "x": 31,
+    "y": 36
+  },
+  "talkPoint": {
+    "x": 11,
+    "y": -2
+  },
+  "feet": {
+    "x": 11,
+    "y": 36
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 7,
+        "y": 2
+      },
+      {
+        "x": 16,
+        "y": 2
+      },
+      {
+        "x": 18,
+        "y": 20
+      },
+      {
+        "x": 16,
+        "y": 36
+      },
+      {
+        "x": 7,
+        "y": 36
+      },
+      {
+        "x": 5,
+        "y": 20
+      }
+    ]
+  },
+  "defaultVerb": "talkTo",
+  "animations": {
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 150
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 150
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 150
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    }
+  },
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        7
+      ]
+    }
+  ],
+  "speechColor": "#5ee0c8"
+}

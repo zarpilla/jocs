@@ -1,0 +1,496 @@
+{
+  "id": "bosc_obert",
+  "name": "El bosc obert",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 210
+          },
+          {
+            "x": 104,
+            "y": 212
+          },
+          {
+            "x": 140,
+            "y": 223
+          },
+          {
+            "x": 300,
+            "y": 223
+          },
+          {
+            "x": 340,
+            "y": 220
+          },
+          {
+            "x": 364,
+            "y": 223
+          },
+          {
+            "x": 500,
+            "y": 223
+          },
+          {
+            "x": 504,
+            "y": 204
+          },
+          {
+            "x": 560,
+            "y": 202
+          },
+          {
+            "x": 620,
+            "y": 216
+          },
+          {
+            "x": 630,
+            "y": 228
+          },
+          {
+            "x": 600,
+            "y": 236
+          },
+          {
+            "x": 560,
+            "y": 244
+          },
+          {
+            "x": 540,
+            "y": 253
+          },
+          {
+            "x": 0,
+            "y": 253
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 386,
+                "y": 234
+              },
+              {
+                "x": 381,
+                "y": 238
+              },
+              {
+                "x": 368,
+                "y": 240
+              },
+              {
+                "x": 350,
+                "y": 241
+              },
+              {
+                "x": 332,
+                "y": 240
+              },
+              {
+                "x": 319,
+                "y": 238
+              },
+              {
+                "x": 314,
+                "y": 234
+              },
+              {
+                "x": 319,
+                "y": 230
+              },
+              {
+                "x": 332,
+                "y": 228
+              },
+              {
+                "x": 350,
+                "y": 227
+              },
+              {
+                "x": 368,
+                "y": 228
+              },
+              {
+                "x": 381,
+                "y": 230
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "taula",
+      "active": true,
+      "description": "taula",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 316,
+          "y": 202
+        },
+        {
+          "x": 386,
+          "y": 202
+        },
+        {
+          "x": 386,
+          "y": 242
+        },
+        {
+          "x": 316,
+          "y": 242
+        }
+      ],
+      "walkToPoint": {
+        "x": 396,
+        "y": 244
+      },
+      "lookAtPoint": {
+        "x": 351,
+        "y": 242
+      }
+    },
+    {
+      "id": "porta_oberta",
+      "active": true,
+      "description": "porta del roure",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 190,
+          "y": 154
+        },
+        {
+          "x": 237,
+          "y": 154
+        },
+        {
+          "x": 237,
+          "y": 213
+        },
+        {
+          "x": 190,
+          "y": 213
+        }
+      ],
+      "walkToPoint": {
+        "x": 226,
+        "y": 227
+      },
+      "lookAtPoint": {
+        "x": 213,
+        "y": 213
+      }
+    },
+    {
+      "id": "bolets",
+      "active": true,
+      "description": "bolets",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 118,
+          "y": 170
+        },
+        {
+          "x": 176,
+          "y": 170
+        },
+        {
+          "x": 176,
+          "y": 198
+        },
+        {
+          "x": 118,
+          "y": 198
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 228
+      },
+      "lookAtPoint": {
+        "x": 147,
+        "y": 198
+      }
+    },
+    {
+      "id": "gespa",
+      "active": true,
+      "description": "gespa enrotllada",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 358,
+          "y": 186
+        },
+        {
+          "x": 498,
+          "y": 186
+        },
+        {
+          "x": 498,
+          "y": 221
+        },
+        {
+          "x": 358,
+          "y": 221
+        }
+      ],
+      "walkToPoint": {
+        "x": 430,
+        "y": 228
+      },
+      "lookAtPoint": {
+        "x": 428,
+        "y": 221
+      }
+    },
+    {
+      "id": "forats",
+      "active": true,
+      "description": "forats",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 484,
+          "y": 186
+        },
+        {
+          "x": 632,
+          "y": 186
+        },
+        {
+          "x": 632,
+          "y": 238
+        },
+        {
+          "x": 484,
+          "y": 238
+        }
+      ],
+      "walkToPoint": {
+        "x": 560,
+        "y": 234
+      },
+      "lookAtPoint": {
+        "x": 558,
+        "y": 238
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.88,
+      "scaleBottom": 1.102,
+      "points": [
+        {
+          "x": 0,
+          "y": 200
+        },
+        {
+          "x": 639,
+          "y": 200
+        },
+        {
+          "x": 639,
+          "y": 254
+        },
+        {
+          "x": 0,
+          "y": 254
+        }
+      ]
+    },
+    {
+      "id": "branca",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": false,
+      "scaleTop": 0.55,
+      "scaleBottom": 0.55,
+      "points": [
+        {
+          "x": 270,
+          "y": 12
+        },
+        {
+          "x": 340,
+          "y": 12
+        },
+        {
+          "x": 340,
+          "y": 62
+        },
+        {
+          "x": 270,
+          "y": 62
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "espores",
+      "tag": "espores",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "espores": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "fulles",
+      "tag": "fulles",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fulles": {
+          "loop": true,
+          "frameDuration": 120
+        }
+      }
+    },
+    {
+      "id": "davant_taula",
+      "tag": "davant_taula",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_taula": {}
+      },
+      "zIndex": 20,
+      "baseline": 234
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "vet-1",
+      "definition": "vet/vet.character.json",
+      "x": 110,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "avia-1",
+      "definition": "avia/avia.character.json",
+      "x": 304,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 400,
+      "y": 240,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "espora-1",
+      "definition": "espora/espora.character.json",
+      "x": 356,
+      "y": 226,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "urtica-1",
+      "definition": "urtica/urtica.character.json",
+      "x": 304,
+      "y": 40,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "bufo-1",
+      "definition": "bufo/bufo.character.json",
+      "x": 474,
+      "y": 250,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    }
+  ],
+  "characterShadow": {
+    "enabled": true,
+    "color": "#1e1a0c",
+    "alpha": 0.38,
+    "squash": 0.28,
+    "core": 0.6,
+    "light": {
+      "x": 0.8,
+      "y": 0.3,
+      "direction": true,
+      "stretch": 0.45
+    }
+  }
+}

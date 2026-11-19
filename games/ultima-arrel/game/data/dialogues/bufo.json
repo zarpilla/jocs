@@ -1,0 +1,216 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "bufo",
+  "with": "bufo",
+  "start": [
+    {
+      "if": {
+        "flag": "aigua_tornada"
+      },
+      "node": "segell"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "bufo",
+          "node": "hola"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.hola.1"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.hola.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "paper",
+          "text": "dlg.bufo.opt.paper",
+          "next": "paper",
+          "if": {
+            "flag": "sap_plans",
+            "is": false
+          }
+        },
+        {
+          "id": "paper2",
+          "text": "dlg.bufo.opt.paper2",
+          "next": "paper2",
+          "if": {
+            "flag": "sap_plans"
+          }
+        },
+        {
+          "id": "rierol",
+          "text": "dlg.bufo.opt.rierol",
+          "once": true,
+          "next": "rierol"
+        },
+        {
+          "id": "tramit",
+          "text": "dlg.bufo.opt.tramit",
+          "once": true,
+          "next": "tramit"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.bufo.opt.adeu",
+          "end": true
+        }
+      ]
+    },
+    "paper": {
+      "lines": [
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.paper.1"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.paper.2"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.paper.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sap_plans"
+        }
+      ],
+      "goto": "menu"
+    },
+    "paper2": {
+      "lines": [
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.paper2.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "rierol": {
+      "lines": [
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.rierol.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "tramit": {
+      "lines": [
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.tramit.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "segell": {
+      "lines": [
+        {
+          "who": "narrator",
+          "text": "dlg.bufo.segell.1",
+          "sound": "segell"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.segell.2"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.segell.3"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bufo.segell.4"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.segell.5"
+        },
+        {
+          "who": "narrator",
+          "text": "dlg.bufo.segell.6"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bufo.segell.7"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.segell.8"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.segell.9"
+        },
+        {
+          "who": "bufo",
+          "text": "dlg.bufo.segell.10"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bufo.segell.11",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.bufo.segell.12"
+        },
+        {
+          "who": "player",
+          "text": "dlg.bufo.segell.13"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.bufo.segell.14"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "plans_segellats"
+        },
+        {
+          "event": "situar",
+          "args": {
+            "who": "vet",
+            "room": "caseta_obra"
+          }
+        },
+        {
+          "event": "protagonista",
+          "args": {
+            "id": "vet"
+          }
+        }
+      ]
+    }
+  }
+}

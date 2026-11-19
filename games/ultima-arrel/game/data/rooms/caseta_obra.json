@@ -1,0 +1,510 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.caseta_obra.nom",
+  "protagonist": "vet",
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "walkIn": "left",
+      "lines": [
+        {
+          "who": "title",
+          "text": "sala.caseta_obra.intro.1"
+        },
+        {
+          "who": "pla",
+          "text": "sala.caseta_obra.intro.2"
+        },
+        {
+          "who": "pla",
+          "text": "sala.caseta_obra.intro.3"
+        },
+        {
+          "who": "player",
+          "text": "sala.caseta_obra.intro.4"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "pla": {
+      "visibleIf": {
+        "flag": "pla_fora",
+        "is": false
+      },
+      "interactions": []
+    },
+    "arbre_wifi": {
+      "name": "sala.caseta_obra.arbre_wifi.nom",
+      "interactions": [
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "use",
+            "close"
+          ],
+          "if": {
+            "flag": "pla_fora"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.arbre_wifi.fet"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pull",
+            "pickUp",
+            "use",
+            "close"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.caseta_obra.wifi.1",
+              "sound": "pip"
+            },
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.wifi.2"
+            },
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.wifi.3"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.wifi.4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.caseta_obra.wifi.5",
+              "stageAfter": [
+                {
+                  "who": "pla",
+                  "walk": "porta"
+                },
+                {
+                  "who": "pla",
+                  "visible": false
+                }
+              ]
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.wifi.6"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "pla_fora"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "flag": "pla_fora"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.arbre_wifi.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.arbre_wifi.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "altaveu": {
+      "name": "sala.caseta_obra.altaveu.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "item": "walkie",
+          "if": {
+            "flag": "altaveu_canal7"
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.fet"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "flag": "pla_fora",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.altaveu.no"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.no.b"
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.caseta_obra.canal7.1",
+              "sound": "ruleta"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.canal7.2",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "sala.caseta_obra.canal7.3",
+              "sound": "altaveu_iri"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.canal7.4"
+            },
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.canal7.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.canal7.6"
+            },
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.canal7.7"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "altaveu_canal7"
+            },
+            {
+              "takeItem": "xiulet",
+              "who": "vet"
+            },
+            {
+              "giveItem": "xiulet",
+              "who": "iri"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "zona_zero"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "zona_zero"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "flag": "pla_fora",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.altaveu.no"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.no.b"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "any": [
+              {
+                "var": "canals_provats",
+                "op": ">=",
+                "value": 2
+              },
+              {
+                "flag": "walkie_mirat_canal"
+              }
+            ]
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.recorda"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.caseta_obra.canal7.1",
+              "sound": "ruleta"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.canal7.2",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "sala.caseta_obra.canal7.3",
+              "sound": "altaveu_iri"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.canal7.4"
+            },
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.canal7.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.canal7.6"
+            },
+            {
+              "who": "pla",
+              "text": "sala.caseta_obra.canal7.7"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "altaveu_canal7"
+            },
+            {
+              "takeItem": "xiulet",
+              "who": "vet"
+            },
+            {
+              "giveItem": "xiulet",
+              "who": "iri"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "zona_zero"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "zona_zero"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "iri"
+              }
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "if": {
+            "var": "canals_provats",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.caseta_obra.ruleta.2",
+              "sound": "futbol"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.caseta_obra.ruleta.3",
+              "sound": "anunci"
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "canals_provats",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.caseta_obra.ruleta.1",
+              "sound": "ascensor"
+            },
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.quin"
+            }
+          ],
+          "effects": [
+            {
+              "addVar": "canals_provats",
+              "amount": 1
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.altaveu.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "maqueta": {
+      "name": "sala.caseta_obra.maqueta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.maqueta.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "use",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.maqueta.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "cartell": {
+      "name": "sala.caseta_obra.cartell.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.cartell.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "escriptori": {
+      "name": "sala.caseta_obra.escriptori.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.escriptori.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "open",
+            "pickUp",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.escriptori.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "porta": {
+      "name": "sala.caseta_obra.porta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.porta.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.caseta_obra.porta.no"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

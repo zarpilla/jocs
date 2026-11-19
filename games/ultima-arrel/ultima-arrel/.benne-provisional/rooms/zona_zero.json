@@ -1,0 +1,40 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "La Zona Zero",
+  "era": "iri",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "sensors",
+      "label": "sensors d'aire",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 118,
+      "y": 76
+    },
+    {
+      "id": "pantalla",
+      "label": "pantalla",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 25
+    },
+    {
+      "id": "formigonera",
+      "label": "formigonera",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 424,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Txell"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "$comment": "Identificadors nostres → identificadors de Benne, només quan no coincideixen.",
+  "characters": {},
+  "items": {},
+  "rooms": {},
+  "hotspots": {},
+  "music": {
+    "$comment": "Música d'ambient de cada sala: sala → pista (game/audio/music/<pista>.ogg, `npm run musica`). Totes duren el mateix i s'encadenen al mateix punt (musicaSincronitzada a joc.ts).",
+    "portada": "tema",
+    "vora_bosc": "bosc",
+    "centraleta": "centraleta",
+    "campament_fades": "fades",
+    "toll_gripaus": "gripaus",
+    "caseta_obra": "naturaplus",
+    "zona_zero": "presentacio",
+    "bosc_obert": "bosc_viu",
+    "credits": "final"
+  },
+  "ambient": {
+    "$comment": "So de fons en bucle de cada sala (game/audio/sfx/amb_*.ogg, `npm run sons`). El primer cas que es compleix.",
+    "vora_bosc": [
+      {
+        "sound": "amb_vora_bosc",
+        "volume": 1
+      }
+    ],
+    "centraleta": [
+      {
+        "if": {
+          "flag": "xarxa_encesa"
+        },
+        "sound": "amb_centraleta_encesa",
+        "volume": 1
+      },
+      {
+        "sound": "amb_centraleta",
+        "volume": 1
+      }
+    ],
+    "campament_fades": [
+      {
+        "sound": "amb_campament_fades",
+        "volume": 1
+      }
+    ],
+    "toll_gripaus": [
+      {
+        "if": {
+          "flag": "aigua_tornada"
+        },
+        "sound": "amb_toll_gripaus_aigua",
+        "volume": 1
+      },
+      {
+        "sound": "amb_toll_gripaus",
+        "volume": 1
+      }
+    ],
+    "caseta_obra": [
+      {
+        "if": {
+          "flag": "pla_fora"
+        },
+        "sound": "amb_caseta_obra_sense_wifi",
+        "volume": 1
+      },
+      {
+        "sound": "amb_caseta_obra",
+        "volume": 1
+      }
+    ],
+    "zona_zero": [
+      {
+        "if": {
+          "flag": "presentacio_feta"
+        },
+        "sound": "amb_zona_zero_fi",
+        "volume": 1
+      },
+      {
+        "sound": "amb_zona_zero",
+        "volume": 1
+      }
+    ],
+    "bosc_obert": [
+      {
+        "sound": "amb_bosc_obert",
+        "volume": 1
+      }
+    ]
+  },
+  "fosc": [],
+  "doors": {}
+}

@@ -1,0 +1,150 @@
+{
+  "id": "vet",
+  "name": "vet",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 104,
+  "walkToPoint": {
+    "x": 40,
+    "y": 60
+  },
+  "talkPoint": {
+    "x": 18,
+    "y": -2
+  },
+  "feet": {
+    "x": 18,
+    "y": 60
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 12,
+        "y": 3
+      },
+      {
+        "x": 24,
+        "y": 3
+      },
+      {
+        "x": 26,
+        "y": 32
+      },
+      {
+        "x": 24,
+        "y": 60
+      },
+      {
+        "x": 12,
+        "y": 60
+      },
+      {
+        "x": 10,
+        "y": 32
+      }
+    ]
+  },
+  "animations": {
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleDL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "IdleUL": {
+      "loop": true,
+      "frameDuration": 650
+    },
+    "WalkL": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "WalkD": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkU": {
+      "loop": true,
+      "frameDuration": 90
+    },
+    "WalkDL": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "WalkUL": {
+      "loop": true,
+      "frameDuration": 80
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkDL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "TalkUL": {
+      "loop": true,
+      "frameDuration": 140
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkDL": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "LookD": {
+      "loop": false,
+      "frameDuration": 260
+    },
+    "LookDL": {
+      "loop": false,
+      "frameDuration": 260
+    }
+  },
+  "defaultVerb": "look",
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        8
+      ]
+    },
+    {
+      "animation": "Look",
+      "every": [
+        9,
+        18
+      ],
+      "after": 6
+    }
+  ]
+}

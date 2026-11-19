@@ -1,0 +1,48 @@
+{
+  "id": "pla",
+  "displayName": "pla",
+  "options": [
+    {
+      "id": "menu__bosc",
+      "scriptName": "menu__bosc",
+      "text": "Què és el Bosc 2.0?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__vells",
+      "scriptName": "menu__vells",
+      "text": "I els arbres vells?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__ocells",
+      "scriptName": "menu__ocells",
+      "text": "I els ocells, on faran el niu? Al Wi-Fi?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__aire",
+      "scriptName": "menu__aire",
+      "text": "Què és l'Aire Pur embotellat?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__altaveu",
+      "scriptName": "menu__altaveu",
+      "text": "Per a què és aquest altaveu tan gros?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Adeu!",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

@@ -1,0 +1,313 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.bosc_obert.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "walkIn": "left",
+      "lines": [
+        {
+          "who": "title",
+          "text": "sala.bosc_obert.intro.1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.bosc_obert.intro.2"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.bosc_obert.intro.3"
+        },
+        {
+          "who": "iri",
+          "text": "sala.bosc_obert.intro.4"
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "taula": {
+      "name": "sala.bosc_obert.taula.nom",
+      "interactions": [
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "push"
+          ],
+          "if": {
+            "flag": "secret_avia",
+            "is": false
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.seu"
+            },
+            {
+              "who": "avia",
+              "text": "sala.bosc_obert.secret.1"
+            },
+            {
+              "who": "espora",
+              "text": "sala.bosc_obert.secret.2"
+            },
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.secret.3"
+            },
+            {
+              "who": "avia",
+              "text": "sala.bosc_obert.secret.4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.taula.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.4"
+            },
+            {
+              "who": "iri",
+              "text": "sala.bosc_obert.taula.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.taula.6"
+            },
+            {
+              "who": "iri",
+              "text": "sala.bosc_obert.taula.7"
+            },
+            {
+              "who": "espora",
+              "text": "sala.bosc_obert.taula.8"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.9"
+            },
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.taula.10",
+              "sound": "walkie"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.11",
+              "sound": "resposta"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "secret_avia"
+            },
+            {
+              "setFlag": "final_taula"
+            },
+            {
+              "ending": "taula"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "walkTo",
+            "push"
+          ],
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.seu"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.1"
+            },
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.taula.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.3"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.4"
+            },
+            {
+              "who": "iri",
+              "text": "sala.bosc_obert.taula.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.taula.6"
+            },
+            {
+              "who": "iri",
+              "text": "sala.bosc_obert.taula.7"
+            },
+            {
+              "who": "espora",
+              "text": "sala.bosc_obert.taula.8"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.9"
+            },
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.taula.10",
+              "sound": "walkie"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.bosc_obert.taula.11",
+              "sound": "resposta"
+            }
+          ],
+          "effects": [
+            {
+              "setFlag": "final_taula"
+            },
+            {
+              "ending": "taula"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.taula.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "espora": {
+      "interactions": []
+    },
+    "avia": {
+      "interactions": []
+    },
+    "urtica": {
+      "interactions": []
+    },
+    "bufo": {
+      "interactions": []
+    },
+    "porta_oberta": {
+      "name": "sala.bosc_obert.porta_oberta.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.porta_oberta.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.porta_oberta.entra"
+            }
+          ]
+        }
+      ]
+    },
+    "bolets": {
+      "name": "sala.bosc_obert.bolets.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.bolets.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "pickUp",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.bolets.agafa"
+            }
+          ]
+        }
+      ]
+    },
+    "gespa": {
+      "name": "sala.bosc_obert.gespa.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.gespa.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "push",
+            "pull",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.gespa.empeny"
+            }
+          ]
+        }
+      ]
+    },
+    "forats": {
+      "name": "sala.bosc_obert.forats.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.bosc_obert.forats.mira"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

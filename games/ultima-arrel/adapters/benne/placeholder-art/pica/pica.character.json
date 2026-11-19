@@ -1,0 +1,94 @@
+{
+  "id": "pica",
+  "name": "pica",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 60,
+  "walkToPoint": {
+    "x": 35,
+    "y": 40
+  },
+  "talkPoint": {
+    "x": 13,
+    "y": -2
+  },
+  "feet": {
+    "x": 13,
+    "y": 40
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 8,
+        "y": 2
+      },
+      {
+        "x": 19,
+        "y": 2
+      },
+      {
+        "x": 20,
+        "y": 20
+      },
+      {
+        "x": 19,
+        "y": 40
+      },
+      {
+        "x": 8,
+        "y": 40
+      },
+      {
+        "x": 7,
+        "y": 20
+      }
+    ]
+  },
+  "defaultVerb": "look",
+  "animations": {
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 120
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 120
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 120
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 110
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    }
+  },
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        7
+      ]
+    }
+  ]
+}

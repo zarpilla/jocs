@@ -1,0 +1,41 @@
+{
+  "startRoomId": "portada",
+  "rooms": [
+    {
+      "id": "bosc_obert",
+      "definition": "bosc_obert/bosc_obert.room.json"
+    },
+    {
+      "id": "campament_fades",
+      "definition": "campament_fades/campament_fades.room.json"
+    },
+    {
+      "id": "caseta_obra",
+      "definition": "caseta_obra/caseta_obra.room.json"
+    },
+    {
+      "id": "centraleta",
+      "definition": "centraleta/centraleta.room.json"
+    },
+    {
+      "id": "credits",
+      "definition": "credits/credits.room.json"
+    },
+    {
+      "id": "portada",
+      "definition": "portada/portada.room.json"
+    },
+    {
+      "id": "toll_gripaus",
+      "definition": "toll_gripaus/toll_gripaus.room.json"
+    },
+    {
+      "id": "vora_bosc",
+      "definition": "vora_bosc/vora_bosc.room.json"
+    },
+    {
+      "id": "zona_zero",
+      "definition": "zona_zero/zona_zero.room.json"
+    }
+  ]
+}

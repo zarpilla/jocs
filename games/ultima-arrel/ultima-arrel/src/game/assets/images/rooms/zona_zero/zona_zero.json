@@ -1,0 +1,306 @@
+{
+  "frames": {
+    "zona_zero 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 1.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 187,
+        "h": 156
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 447,
+        "y": 68,
+        "w": 187,
+        "h": 156
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 2.aseprite": {
+      "frame": {
+        "x": 2139,
+        "y": 0,
+        "w": 10,
+        "h": 17
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 244,
+        "y": 70,
+        "w": 10,
+        "h": 17
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 3.aseprite": {
+      "frame": {
+        "x": 1944,
+        "y": 0,
+        "w": 66,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 68,
+        "w": 66,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 4.aseprite": {
+      "frame": {
+        "x": 1746,
+        "y": 0,
+        "w": 67,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 66,
+        "w": 67,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 5.aseprite": {
+      "frame": {
+        "x": 2010,
+        "y": 0,
+        "w": 65,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 69,
+        "w": 65,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 6.aseprite": {
+      "frame": {
+        "x": 1878,
+        "y": 0,
+        "w": 66,
+        "h": 47
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 190,
+        "y": 67,
+        "w": 66,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 7.aseprite": {
+      "frame": {
+        "x": 1680,
+        "y": 0,
+        "w": 66,
+        "h": 49
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 65,
+        "w": 66,
+        "h": 49
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 8.aseprite": {
+      "frame": {
+        "x": 2075,
+        "y": 0,
+        "w": 64,
+        "h": 45
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 69,
+        "w": 64,
+        "h": 45
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 9.aseprite": {
+      "frame": {
+        "x": 1813,
+        "y": 0,
+        "w": 65,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 191,
+        "y": 66,
+        "w": 65,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 10.aseprite": {
+      "frame": {
+        "x": 827,
+        "y": 0,
+        "w": 213,
+        "h": 85
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 2,
+        "y": 142,
+        "w": 213,
+        "h": 85
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "zona_zero 11.aseprite": {
+      "frame": {
+        "x": 1040,
+        "y": 0,
+        "w": 640,
+        "h": 59
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 201,
+        "w": 640,
+        "h": 59
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "zona_zero.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 2149,
+      "h": 360
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "sensors_vermells",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "formigonera",
+        "from": 2,
+        "to": 9,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_public",
+        "from": 10,
+        "to": 10,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 11,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

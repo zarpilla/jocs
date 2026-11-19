@@ -1,0 +1,499 @@
+{
+  "id": "toll_gripaus",
+  "name": "El toll dels gripaus",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 0,
+            "y": 226
+          },
+          {
+            "x": 60,
+            "y": 220
+          },
+          {
+            "x": 150,
+            "y": 210
+          },
+          {
+            "x": 300,
+            "y": 208
+          },
+          {
+            "x": 380,
+            "y": 212
+          },
+          {
+            "x": 540,
+            "y": 212
+          },
+          {
+            "x": 639,
+            "y": 214
+          },
+          {
+            "x": 639,
+            "y": 256
+          },
+          {
+            "x": 0,
+            "y": 256
+          }
+        ],
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 558,
+                "y": 222
+              },
+              {
+                "x": 545,
+                "y": 228
+              },
+              {
+                "x": 510,
+                "y": 232
+              },
+              {
+                "x": 462,
+                "y": 234
+              },
+              {
+                "x": 414,
+                "y": 232
+              },
+              {
+                "x": 379,
+                "y": 228
+              },
+              {
+                "x": 366,
+                "y": 222
+              },
+              {
+                "x": 379,
+                "y": 216
+              },
+              {
+                "x": 414,
+                "y": 212
+              },
+              {
+                "x": 462,
+                "y": 210
+              },
+              {
+                "x": 510,
+                "y": 212
+              },
+              {
+                "x": 545,
+                "y": 216
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "arxiu",
+      "active": true,
+      "description": "arxiu",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 176,
+          "y": 100
+        },
+        {
+          "x": 300,
+          "y": 100
+        },
+        {
+          "x": 300,
+          "y": 206
+        },
+        {
+          "x": 176,
+          "y": 206
+        }
+      ],
+      "walkToPoint": {
+        "x": 200,
+        "y": 224
+      },
+      "lookAtPoint": {
+        "x": 238,
+        "y": 206
+      }
+    },
+    {
+      "id": "rierol",
+      "active": true,
+      "description": "rierol",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 500,
+          "y": 60
+        },
+        {
+          "x": 584,
+          "y": 60
+        },
+        {
+          "x": 584,
+          "y": 172
+        },
+        {
+          "x": 500,
+          "y": 172
+        }
+      ],
+      "walkToPoint": {
+        "x": 548,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 542,
+        "y": 172
+      }
+    },
+    {
+      "id": "comporta",
+      "active": true,
+      "description": "tub dels aspersors",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 592,
+          "y": 128
+        },
+        {
+          "x": 639,
+          "y": 128
+        },
+        {
+          "x": 639,
+          "y": 186
+        },
+        {
+          "x": 592,
+          "y": 186
+        }
+      ],
+      "walkToPoint": {
+        "x": 602,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 615,
+        "y": 186
+      }
+    },
+    {
+      "id": "toll",
+      "active": true,
+      "description": "toll",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 362,
+          "y": 204
+        },
+        {
+          "x": 562,
+          "y": 204
+        },
+        {
+          "x": 562,
+          "y": 236
+        },
+        {
+          "x": 362,
+          "y": 236
+        }
+      ],
+      "walkToPoint": {
+        "x": 440,
+        "y": 242
+      },
+      "lookAtPoint": {
+        "x": 462,
+        "y": 236
+      }
+    },
+    {
+      "id": "joncs",
+      "active": true,
+      "description": "joncs",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 364,
+          "y": 180
+        },
+        {
+          "x": 432,
+          "y": 180
+        },
+        {
+          "x": 432,
+          "y": 210
+        },
+        {
+          "x": 364,
+          "y": 210
+        }
+      ],
+      "walkToPoint": {
+        "x": 380,
+        "y": 238
+      },
+      "lookAtPoint": {
+        "x": 398,
+        "y": 210
+      }
+    },
+    {
+      "id": "cami",
+      "active": true,
+      "description": "camí",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 0,
+          "y": 196
+        },
+        {
+          "x": 34,
+          "y": 196
+        },
+        {
+          "x": 34,
+          "y": 258
+        },
+        {
+          "x": 0,
+          "y": 258
+        }
+      ],
+      "walkToPoint": {
+        "x": 14,
+        "y": 240
+      },
+      "lookAtPoint": {
+        "x": 17,
+        "y": 258
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.827,
+      "scaleBottom": 1.098,
+      "points": [
+        {
+          "x": 0,
+          "y": 198
+        },
+        {
+          "x": 639,
+          "y": 198
+        },
+        {
+          "x": 639,
+          "y": 259
+        },
+        {
+          "x": 0,
+          "y": 259
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "aigua",
+      "tag": "aigua",
+      "animations": {
+        "aigua": {}
+      },
+      "zIndex": 2,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "tap_plastics",
+      "tag": "tap_plastics",
+      "animations": {
+        "tap_plastics": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 546,
+            "y": 174
+          },
+          {
+            "x": 590,
+            "y": 174
+          },
+          {
+            "x": 590,
+            "y": 198
+          },
+          {
+            "x": 546,
+            "y": 198
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 566,
+        "y": 222
+      },
+      "lookAtPoint": {
+        "x": 568,
+        "y": 198
+      },
+      "description": "tap d'ampolles"
+    },
+    {
+      "id": "libellules",
+      "tag": "libellules",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "libellules": {
+          "loop": true,
+          "frameDuration": 70
+        }
+      }
+    },
+    {
+      "id": "calor",
+      "tag": "calor",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "calor": {
+          "loop": true,
+          "frameDuration": 140
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 110,
+      "y": 238,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "bufo-1",
+      "definition": "bufo/bufo.character.json",
+      "x": 237,
+      "y": 211,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "gripau-1",
+      "definition": "gripau/gripau.character.json",
+      "x": 322,
+      "y": 216,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-veu",
+      "definition": "vet/vet.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ],
+  "characterShadow": {
+    "enabled": true,
+    "color": "#3a2a12",
+    "alpha": 0.42,
+    "squash": 0.28,
+    "core": 0.6,
+    "light": {
+      "x": 0.5,
+      "y": 0.25,
+      "direction": true,
+      "stretch": 0.25
+    }
+  },
+  "floorSquash": 0.25
+}

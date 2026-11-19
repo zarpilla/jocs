@@ -1,0 +1,94 @@
+{
+  "id": "gripau",
+  "name": "gripau",
+  "description": "",
+  "clickable": true,
+  "display": {
+    "aseprite": true
+  },
+  "walkSpeed": 60,
+  "walkToPoint": {
+    "x": 48,
+    "y": 46
+  },
+  "talkPoint": {
+    "x": 22,
+    "y": -2
+  },
+  "feet": {
+    "x": 22,
+    "y": 46
+  },
+  "collider": {
+    "points": [
+      {
+        "x": 15,
+        "y": 1
+      },
+      {
+        "x": 34,
+        "y": 1
+      },
+      {
+        "x": 37,
+        "y": 24
+      },
+      {
+        "x": 34,
+        "y": 46
+      },
+      {
+        "x": 15,
+        "y": 46
+      },
+      {
+        "x": 12,
+        "y": 24
+      }
+    ]
+  },
+  "defaultVerb": "talkTo",
+  "animations": {
+    "IdleL": {
+      "loop": true,
+      "frameDuration": 380
+    },
+    "IdleD": {
+      "loop": true,
+      "frameDuration": 380
+    },
+    "IdleU": {
+      "loop": true,
+      "frameDuration": 380
+    },
+    "TalkL": {
+      "loop": true,
+      "frameDuration": 170
+    },
+    "TalkD": {
+      "loop": true,
+      "frameDuration": 170
+    },
+    "TalkU": {
+      "loop": true,
+      "frameDuration": 170
+    },
+    "BlinkD": {
+      "loop": false,
+      "frameDuration": 75
+    },
+    "BlinkL": {
+      "loop": false,
+      "frameDuration": 75
+    }
+  },
+  "idleActions": [
+    {
+      "animation": "Blink",
+      "every": [
+        3,
+        7
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "kit",
+  "onVerb": {},
+  "stackable": false,
+  "animations": {},
+  "display": {
+    "aseprite": "shared"
+  },
+  "name": "Kit del Petit Guardabosc",
+  "description": "Kit del Petit Guardabosc",
+  "defaultVerb": "fes"
+}

@@ -1,0 +1,137 @@
+{
+  "id": "load-menu",
+  "name": "Load Menu",
+  "description": " [640×360: hd640/gui_rest.py]",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "controls": [
+    {
+      "type": "nineSliceImage",
+      "id": "load-bg",
+      "x": 84,
+      "y": 60,
+      "width": 473,
+      "height": 240,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      }
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 320,
+      "y": 76,
+      "text": "Carrega",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 8,
+      "color": "#f0a446",
+      "align": "center"
+    },
+    {
+      "type": "listBox",
+      "id": "load-list",
+      "x": 109,
+      "y": 127,
+      "width": 287,
+      "height": 145,
+      "rowCount": 5,
+      "rowPadding": 4,
+      "normalBackgroundColor": "#09150b",
+      "hoverBackgroundColor": "#13281a",
+      "selectedBackgroundColor": "#6a300c",
+      "textColor": "#e6dcb6",
+      "selectedTextColor": "#fff4dc",
+      "placeholderTextColor": "#5f644a",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8
+    },
+    {
+      "type": "text",
+      "id": "instructions",
+      "x": 109,
+      "y": 98,
+      "text": "Tria una partida per carregar.",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "color": "#e6dcb6",
+      "wordWrapWidth": 407
+    },
+    {
+      "type": "button",
+      "id": "load-btn",
+      "x": 415,
+      "y": 162,
+      "width": 113,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Carrega",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-113x27",
+      "states": {
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "back-btn",
+      "x": 415,
+      "y": 193,
+      "width": 113,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Torna",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-113x27",
+      "states": {
+        "hover": "key-113x27-hover",
+        "pressed": "key-113x27-pressed",
+        "disabled": "key-113x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    }
+  ],
+  "modal": true,
+  "zIndex": 101
+}

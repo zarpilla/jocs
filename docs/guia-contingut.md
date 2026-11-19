@@ -345,6 +345,14 @@ estigui resolta (`doneWhen`). Cada nova petició mostra el nivell següent, de m
 explícit.
 
 Posa `{ "protagonist": "iri" }` dins del `when` perquè la pista només surti a qui la pot fer servir.
+
+Dos camps opcionals:
+
+- `"targets": ["estaca"]`: les coses de la sala (o personatges) on apunta la pista. A Benne, en demanar-la, hi surten
+  uns filaments que hi porten des de la protagonista (`game.showThreads`; la lupa de L'Última Arrel). Només compten les
+  que es veuen ara a la sala on és; si no n'hi ha cap, la pista només és text.
+- `"who": "iri"`: qui diu la pista, si no és la protagonista que juga (a L'Última Arrel, quan juga la Vet, li respon
+  la Iri pel walkie). Ha de ser un personatge que pugui parlar a la sala (com qualsevol línia del contingut).
 El test de l'Acte 1 comprova que, a cada pas de la partida, hi hagi alguna pista disponible: si
 afegeixes un trencaclosques i t'oblides la pista, el test ho diu.
 

@@ -6123,6 +6123,102 @@ export class RoomScene extends Phaser.Scene {
     });
   }
 
+  /** Threads drawn by {@link showThreads}, removed when they fade or the room changes. */
+  private threads: Phaser.GameObjects.Graphics | null = null;
+
+  /**
+   * Draws, for a moment, glowing wavy threads from the player to some things of the room (props, hotspots or
+   * characters, by id), with a light that runs along each one: a hint that points without words. Ids that are not
+   * in the room, or not visible, are skipped. Calling it again restarts it.
+   */
+  showThreads(ids: string[], opts: { durationMs?: number; color?: number } = {}): void {
+    const durationMs = opts.durationMs ?? 2600;
+    const color = opts.color ?? 0x5ee8d8;
+    this.threads?.destroy();
+    this.threads = null;
+    const player = this.characterSpritesByDefId.get(this.getActivePlayerCharacterId());
+    const centerOf = (id: string): { x: number; y: number } | null => {
+      const prop = this.propSpritesById.get(id) as Phaser.GameObjects.Sprite | undefined;
+      if (prop && prop.visible && prop.alpha > 0.05) {
+        const b = prop.getBounds();
+        return { x: b.centerX, y: b.centerY };
+      }
+      const character = this.characterSpritesByDefId.get(id);
+      if (character && character.visible && character.alpha > 0.05) {
+        const b = character.getBounds();
+        return { x: b.centerX, y: b.top + b.height * 0.35 };
+      }
+      for (const e of this.roomStackEntities) {
+        if (e.kind !== 'hotspot' || e.sortKey !== `hotspot:${id}`) continue;
+        const area = e.zone.input?.hitArea as Phaser.Geom.Polygon | undefined;
+        if (!e.zone.input?.enabled || !area?.points?.length) return null;
+        const b = Phaser.Geom.Polygon.GetAABB(area);
+        const mid = { x: b.centerX, y: b.centerY };
+        return Phaser.Geom.Polygon.Contains(area, mid.x, mid.y) ? mid : { x: area.points[0]!.x, y: area.points[0]!.y };
+      }
+      return null;
+    };
+    const ends = ids.map(centerOf).filter((c): c is { x: number; y: number } => c !== null);
+    if (ends.length === 0) return;
+    const start = player ? (() => { const b = player.getBounds(); return { x: b.centerX, y: b.top + b.height * 0.45 }; })()
+      : { x: ends[0]!.x, y: ends[0]!.y + 40 };
+    const g = this.add.graphics();
+    g.setDepth(1_000_000);
+    this.threads = g;
+    // Each thread is a gently waving curve (a sine across the straight line), drawn in two passes (glow and core).
+    const curve = (a: { x: number; y: number }, b: { x: number; y: number }, k: number, phase: number) => {
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const len = Math.max(1, Math.hypot(dx, dy));
+      const nx = -dy / len;
+      const ny = dx / len;
+      const amp = Math.min(10, len * 0.06);
+      const pts: { x: number; y: number }[] = [];
+      const steps = Math.max(8, Math.round(len / 6));
+      for (let i = 0; i <= steps; i++) {
+        const t = i / steps;
+        const w = Math.sin(t * Math.PI * 2.5 + phase + k) * amp * Math.sin(t * Math.PI);
+        pts.push({ x: a.x + dx * t + nx * w, y: a.y + dy * t + ny * w });
+      }
+      return pts;
+    };
+    const t0 = this.time.now;
+    const draw = () => {
+      const elapsed = this.time.now - t0;
+      const grow = Math.min(1, elapsed / 450);
+      const fade = Math.min(1, Math.max(0, (durationMs - elapsed) / 400));
+      g.clear();
+      ends.forEach((end, k) => {
+        const pts = curve(start, end, k * 1.7, elapsed / 260);
+        const n = Math.max(2, Math.round(pts.length * grow));
+        for (const [width, alpha] of [[5, 0.18], [2, 0.85]] as const) {
+          g.lineStyle(width, color, alpha * fade);
+          g.beginPath();
+          g.moveTo(pts[0]!.x, pts[0]!.y);
+          for (let i = 1; i < n; i++) g.lineTo(pts[i]!.x, pts[i]!.y);
+          g.strokePath();
+        }
+        // a spark that runs along the thread, and a soft glow at the end
+        const p = pts[Math.floor(((elapsed / 900 + k * 0.3) % 1) * (n - 1))]!;
+        g.fillStyle(0xffffff, 0.9 * fade);
+        g.fillCircle(p.x, p.y, 1.6);
+        if (grow >= 1) {
+          g.fillStyle(color, 0.25 * fade);
+          g.fillCircle(end.x, end.y, 9);
+          g.lineStyle(1.5, color, 0.9 * fade);
+          g.strokeCircle(end.x, end.y, 6 + Math.sin(elapsed / 150) * 1.2);
+        }
+      });
+    };
+    draw();
+    const timer = this.time.addEvent({ delay: 33, loop: true, callback: draw });
+    this.time.delayedCall(durationMs, () => {
+      timer.remove();
+      if (this.threads === g) this.threads = null;
+      g.destroy();
+    });
+  }
+
   /**
    * Dispatches the **look** verb on this prop (same as a primary-button look click). Does not move or rotate the player.
    */

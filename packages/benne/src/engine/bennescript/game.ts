@@ -90,6 +90,14 @@ export const game = {
   },
 
   /**
+   * Glowing threads from the player to some things of the room (prop, hotspot or character ids), for a few seconds:
+   * a hint that points without words. Doesn't wait.
+   */
+  showThreads(ids: string[], seconds = 2.6, color?: number): void {
+    liveRoomScene()?.showThreads(ids, { durationMs: Math.round(seconds * 1000), color });
+  },
+
+  /**
    * Starts a fresh game: resets all state, then goes to `startRoom` (the configured starting room
    * by default). Ends the handler.
    */

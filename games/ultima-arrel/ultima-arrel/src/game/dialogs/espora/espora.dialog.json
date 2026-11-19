@@ -1,0 +1,48 @@
+{
+  "id": "espora",
+  "displayName": "espora",
+  "options": [
+    {
+      "id": "menu__qui",
+      "scriptName": "menu__qui",
+      "text": "Qui ets?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__miceli",
+      "scriptName": "menu__miceli",
+      "text": "Què és la Xarxa Miceli?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__node",
+      "scriptName": "menu__node",
+      "text": "Què és el node 12?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__melmelada",
+      "scriptName": "menu__melmelada",
+      "text": "Menges melmelada?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__que",
+      "scriptName": "menu__que",
+      "text": "Què he de fer, ara?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Res, gràcies.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

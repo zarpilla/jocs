@@ -1,0 +1,36 @@
+{
+  "$schema": "../schemas/game.schema.json",
+  "id": "ultimaarrel",
+  "title": "joc.titol",
+  "defaultLocale": "ca",
+  "locales": [
+    "ca"
+  ],
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "start": {
+    "iri": {
+      "room": "vora_bosc",
+      "items": [
+        "walkie",
+        "lupa",
+        "llibreta",
+        "centim",
+        "llimona"
+      ]
+    },
+    "vet": {
+      "room": "campament_fades",
+      "items": [
+        "walkie",
+        "pot_melmelada"
+      ]
+    }
+  },
+  "cover": "portada",
+  "switchWhen": {
+    "any": []
+  }
+}

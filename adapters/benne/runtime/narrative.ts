@@ -362,6 +362,8 @@ export function takeDoorSound() {
 
 /** Si totes les pistes duren el mateix i, en canviar-ne, la nova continua al mateix punt (`musicSync`). */
 export const musicSync = (mapping as { musicSync?: boolean }).musicSync === true;
+/** Si el botó «Canvia» del HUD és el de la pista (`botoPista` del joc: L'Última Arrel, on no es pot canviar). */
+export const botoPista = (mapping as { botoPista?: boolean }).botoPista === true;
 
 /** On és (o era) cada protagonista. */
 export function protagonistRoom(who: string): string | null {
@@ -529,7 +531,7 @@ export const touchRouter = () => router;
  */
 export function applySwitchButton() {
   const pot = narrative.canSwitch();
-  guis.verbs.controls.canviaBtn.visible = pot;
+  guis.verbs.controls.canviaBtn.visible = pot || botoPista;
   const menu = guis.gameMenu.controls as unknown as Record<string, { visible: boolean } | undefined>;
   if (menu.canviar) menu.canviar.visible = pot;
 }

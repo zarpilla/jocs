@@ -1,0 +1,335 @@
+{
+  "id": "game-menu",
+  "name": "Game Menu",
+  "description": " [640×360: hd640/gui_rest.py]",
+  "visible": false,
+  "display": {
+    "aseprite": true
+  },
+  "controls": [
+    {
+      "type": "nineSliceImage",
+      "id": "menu-bg",
+      "x": 215,
+      "y": 76,
+      "width": 211,
+      "height": 207,
+      "tag": "9-slice-BG",
+      "sliceNames": {
+        "topLeft": "TopLeft",
+        "topCenter": "TopMid",
+        "topRight": "TopRight",
+        "middleLeft": "MidLeft",
+        "center": "Mid",
+        "middleRight": "MidRight",
+        "bottomLeft": "BottomLeft",
+        "bottomCenter": "BottomMid",
+        "bottomRight": "BottomRight"
+      },
+      "zIndex": 1
+    },
+    {
+      "type": "grid",
+      "id": "menu-layout",
+      "x": 227,
+      "y": 84,
+      "width": 185,
+      "height": 185,
+      "rows": 6,
+      "columns": 1,
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "x": 0,
+      "y": 0,
+      "text": "Menú",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 8,
+      "color": "#f0a446",
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 0,
+        "col": 0,
+        "align": "center"
+      },
+      "zIndex": 3
+    },
+    {
+      "type": "button",
+      "id": "save",
+      "x": 0,
+      "y": 0,
+      "width": 91,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Desa",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-91x27",
+      "zIndex": 5,
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 2,
+        "col": 0,
+        "align": "center-left"
+      },
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "load",
+      "x": 0,
+      "y": 0,
+      "width": 91,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Carrega",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-91x27",
+      "zIndex": 5,
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 2,
+        "col": 0,
+        "align": "center-right"
+      },
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "settings",
+      "scriptName": "settingsBtn",
+      "x": 0,
+      "y": 0,
+      "width": 185,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Opcions",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-185x27",
+      "zIndex": 5,
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 3,
+        "col": 0,
+        "align": "center"
+      },
+      "states": {
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "quit",
+      "x": 0,
+      "y": 0,
+      "width": 185,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Surt",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-185x27",
+      "zIndex": 5,
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 5,
+        "col": 0,
+        "align": "center"
+      },
+      "states": {
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "resume",
+      "x": 0,
+      "y": 0,
+      "width": 185,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Continua",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-185x27",
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 1,
+        "col": 0,
+        "align": "center"
+      },
+      "states": {
+        "hover": "key-185x27-hover",
+        "pressed": "key-185x27-pressed",
+        "disabled": "key-185x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "historial",
+      "x": 0,
+      "y": 0,
+      "width": 91,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Historial",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-91x27",
+      "zIndex": 5,
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 4,
+        "col": 0,
+        "align": "center-left"
+      },
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    },
+    {
+      "type": "button",
+      "id": "pista",
+      "x": 0,
+      "y": 0,
+      "width": 91,
+      "height": 27,
+      "backgroundAnchor": "top-left",
+      "text": "Pista",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#e6dcb6",
+      "textAlign": "center",
+      "textOffsetX": 0,
+      "textOffsetY": -2,
+      "backgroundTag": "key-91x27",
+      "zIndex": 5,
+      "gridPlacement": {
+        "gridControlId": "menu-layout",
+        "row": 4,
+        "col": 0,
+        "align": "center-right"
+      },
+      "states": {
+        "hover": "key-91x27-hover",
+        "pressed": "key-91x27-pressed",
+        "disabled": "key-91x27-disabled"
+      },
+      "textColorStates": {
+        "hover": "#ff9a32",
+        "pressed": "#ff9a32",
+        "disabled": "#5f644a"
+      },
+      "textOutline": {
+        "enabled": true,
+        "color": "#070804",
+        "sides": "bottomRight"
+      }
+    }
+  ],
+  "modal": true,
+  "zIndex": 100
+}

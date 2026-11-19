@@ -1,0 +1,84 @@
+{
+  "id": "historial",
+  "name": "Historial",
+  "description": "Les últimes línies dites (adapters/benne/benne-content.ts).",
+  "visible": false,
+  "display": {
+    "aseprite": false
+  },
+  "modal": true,
+  "zIndex": 110,
+  "controls": [
+    {
+      "type": "button",
+      "id": "fons",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 288,
+      "anchorY": "stretch",
+      "backgroundAnchor": "top-left",
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "textColor": "#ffffff",
+      "backgroundTag": "",
+      "backgroundColor": "#060a14",
+      "backgroundColorStates": {
+        "hover": "#060a14",
+        "pressed": "#060a14",
+        "disabled": "#060a14"
+      },
+      "zIndex": 1
+    },
+    {
+      "type": "text",
+      "id": "titol",
+      "x": 19,
+      "y": 11,
+      "text": "",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 8,
+      "color": "#e8c260",
+      "align": "left",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "noms",
+      "x": 19,
+      "y": 32,
+      "text": "",
+      "font": "ultimaarrel-negreta",
+      "fontSize": 8,
+      "color": "#ff963c",
+      "align": "left",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "linies",
+      "x": 19,
+      "y": 32,
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "color": "#e2d6b4",
+      "align": "left",
+      "zIndex": 2
+    },
+    {
+      "type": "text",
+      "id": "peu",
+      "x": 621,
+      "y": 268,
+      "text": "",
+      "font": "ultimaarrel-regular",
+      "fontSize": 8,
+      "color": "#8a9aa8",
+      "align": "right",
+      "zIndex": 2,
+      "anchorY": "bottom"
+    }
+  ]
+}

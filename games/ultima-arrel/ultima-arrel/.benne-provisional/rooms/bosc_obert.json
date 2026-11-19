@@ -1,0 +1,40 @@
+{
+  "width": 640,
+  "height": 360,
+  "title": "El bosc obert",
+  "era": "vet",
+  "floorTop": 204,
+  "floorBottom": 269,
+  "boxes": [
+    {
+      "id": "taula",
+      "label": "taula",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 118,
+      "y": 76
+    },
+    {
+      "id": "porta_oberta",
+      "label": "porta del roure",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 271,
+      "y": 25
+    },
+    {
+      "id": "bolets",
+      "label": "bolets",
+      "kind": "hotspot",
+      "w": 98,
+      "h": 44,
+      "x": 424,
+      "y": 76
+    }
+  ],
+  "characters": [
+    "Àvia Montse"
+  ]
+}

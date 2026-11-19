@@ -1,0 +1,278 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "urtica",
+  "with": "urtica",
+  "start": [
+    {
+      "if": {
+        "flag": "fades_amigues"
+      },
+      "node": "amigues"
+    },
+    {
+      "if": {
+        "seen": {
+          "dialogue": "urtica",
+          "node": "hola"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.hola.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "avia",
+          "text": "dlg.urtica.opt.avia",
+          "once": true,
+          "next": "avia"
+        },
+        {
+          "id": "espora",
+          "text": "dlg.urtica.opt.espora",
+          "once": true,
+          "next": "espora"
+        },
+        {
+          "id": "naturaplus",
+          "text": "dlg.urtica.opt.naturaplus",
+          "once": true,
+          "next": "naturaplus"
+        },
+        {
+          "id": "apunteu",
+          "text": "dlg.urtica.opt.apunteu",
+          "once": true,
+          "next": "apunteu"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.urtica.opt.adeu",
+          "next": "adeu",
+          "end": true
+        }
+      ]
+    },
+    "avia": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.avia.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "espora": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.espora.1"
+        },
+        {
+          "who": "pica",
+          "text": "dlg.urtica.espora.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "naturaplus": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.naturaplus.1"
+        },
+        {
+          "who": "card",
+          "text": "dlg.urtica.naturaplus.2"
+        }
+      ],
+      "goto": "menu"
+    },
+    "apunteu": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.apunteu.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.adeu.1"
+        },
+        {
+          "who": "card",
+          "text": "dlg.urtica.adeu.2"
+        }
+      ]
+    },
+    "amigues": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.amigues.1"
+        }
+      ],
+      "goto": "menu2"
+    },
+    "menu2": {
+      "choices": [
+        {
+          "id": "pla",
+          "text": "dlg.urtica.opt.pla",
+          "next": "pla"
+        },
+        {
+          "id": "flor",
+          "text": "dlg.urtica.opt.flor",
+          "next": "flor"
+        },
+        {
+          "id": "empeny",
+          "text": "dlg.urtica.opt.empeny",
+          "next": "empeny",
+          "end": true
+        },
+        {
+          "id": "adeu2",
+          "text": "dlg.urtica.opt.adeu2",
+          "end": true
+        }
+      ]
+    },
+    "pla": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.pla.1"
+        },
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.pla.2"
+        }
+      ],
+      "goto": "menu2"
+    },
+    "flor": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.flor.1"
+        },
+        {
+          "who": "pica",
+          "text": "dlg.urtica.flor.2"
+        }
+      ],
+      "goto": "menu2"
+    },
+    "empeny": {
+      "lines": [
+        {
+          "who": "urtica",
+          "text": "dlg.urtica.empeny.1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.campament_fades.empenta.1",
+          "sound": "gronxador"
+        },
+        {
+          "who": "player",
+          "text": "sala.campament_fades.empenta.2"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.campament_fades.empenta.3"
+        },
+        {
+          "who": "player",
+          "text": "sala.campament_fades.empenta.4"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.campament_fades.empenta.5"
+        },
+        {
+          "who": "pica",
+          "text": "sala.campament_fades.empenta.6",
+          "sound": "esternut_fada"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.campament_fades.empenta.7"
+        },
+        {
+          "who": "urtica",
+          "text": "sala.campament_fades.empenta.8"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.campament_fades.empenta.9"
+        },
+        {
+          "who": "player",
+          "text": "sala.campament_fades.empenta.10"
+        },
+        {
+          "who": "urtica",
+          "text": "sala.campament_fades.empenta.11"
+        },
+        {
+          "who": "player",
+          "text": "sala.campament_fades.empenta.12",
+          "sound": "walkie"
+        }
+      ],
+      "effects": [
+        {
+          "takeItem": "pot_buit"
+        },
+        {
+          "giveItem": "xiulet"
+        },
+        {
+          "setFlag": "pol_len_collit"
+        },
+        {
+          "event": "situar",
+          "args": {
+            "who": "iri",
+            "room": "toll_gripaus"
+          }
+        },
+        {
+          "event": "protagonista",
+          "args": {
+            "id": "iri"
+          }
+        }
+      ]
+    }
+  }
+}

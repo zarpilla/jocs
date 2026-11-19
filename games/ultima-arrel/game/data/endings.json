@@ -1,0 +1,37 @@
+{
+  "$schema": "../schemas/endings.schema.json",
+  "taula": {
+    "title": "final.taula.titol",
+    "text": "final.taula.text",
+    "scene": [
+      {
+        "who": "narrator",
+        "text": "final.taula.1"
+      },
+      {
+        "who": "narrator",
+        "text": "final.taula.2"
+      },
+      {
+        "who": "narrator",
+        "text": "final.taula.3"
+      }
+    ],
+    "credits": [
+      {
+        "who": "narrator",
+        "text": "final.credits.1",
+        "room": "credits"
+      },
+      {
+        "who": "narrator",
+        "text": "final.credits.2",
+        "room": "credits"
+      }
+    ],
+    "when": {
+      "flag": "final_taula"
+    },
+    "priority": 1
+  }
+}

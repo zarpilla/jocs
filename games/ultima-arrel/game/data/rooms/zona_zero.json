@@ -1,0 +1,631 @@
+{
+  "$schema": "../../schemas/room.schema.json",
+  "name": "sala.zona_zero.nom",
+  "protagonists": [
+    "iri",
+    "vet"
+  ],
+  "onEnter": [
+    {
+      "id": "primera",
+      "verb": "*",
+      "once": true,
+      "lines": [
+        {
+          "who": "title",
+          "text": "sala.zona_zero.intro.1"
+        },
+        {
+          "who": "narrator",
+          "text": "sala.zona_zero.intro.2"
+        },
+        {
+          "who": "player",
+          "text": "sala.zona_zero.intro.3"
+        },
+        {
+          "who": "player",
+          "text": "sala.zona_zero.intro.4"
+        },
+        {
+          "who": "pla",
+          "text": "sala.zona_zero.intro.5"
+        },
+        {
+          "who": "pla",
+          "text": "sala.zona_zero.intro.6"
+        }
+      ],
+      "effects": [
+        {
+          "setVar": "discurs",
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "hotspots": {
+    "pla": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.pla.parla"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.1",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.2",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.3",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "sensors": {
+      "name": "sala.zona_zero.sensors.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "xiulet",
+          "if": {
+            "var": "discurs",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.1",
+              "sound": "xiulet"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.2",
+              "sound": "fades_vol"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.3",
+              "sound": "sensors_esternut"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.4"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.xiulet.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.zona_zero.xiulet.6"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.xiulet.7"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.8"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "discurs",
+              "value": 2
+            },
+            {
+              "takeItem": "xiulet"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "if": {
+            "var": "discurs",
+            "op": ">=",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.sensors.mira2"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.sensors.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.sensors.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "altaveu": {
+      "name": "sala.zona_zero.altaveu.nom",
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "walkie",
+          "if": {
+            "var": "discurs",
+            "op": "==",
+            "value": 3
+          },
+          "lines": [
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.crit.1"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.crit.2",
+              "sound": "walkie"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.crit.3",
+              "sound": "crit"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.crit.4"
+            },
+            {
+              "who": "txell",
+              "text": "sala.zona_zero.crit.5"
+            },
+            {
+              "who": "avia",
+              "text": "sala.zona_zero.crit.6"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.crit.7"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.crit.8"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.crit.9"
+            },
+            {
+              "who": "vet",
+              "text": "sala.zona_zero.crit.10"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "discurs",
+              "value": 4
+            },
+            {
+              "setFlag": "presentacio_feta"
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "iri",
+                "room": "bosc_obert"
+              }
+            },
+            {
+              "event": "situar",
+              "args": {
+                "who": "vet",
+                "room": "bosc_obert"
+              }
+            },
+            {
+              "event": "protagonista",
+              "args": {
+                "id": "vet"
+              }
+            }
+          ]
+        },
+        {
+          "verb": "use",
+          "item": "walkie",
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.dhora.1",
+              "sound": "walkie"
+            },
+            {
+              "who": "iri",
+              "text": "sala.zona_zero.dhora.2",
+              "sound": "altaveu_iri"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.dhora.3"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.1",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.2",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.3",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 3
+              }
+            },
+            {
+              "who": "player",
+              "text": "sala.zona_zero.dhora.4"
+            }
+          ]
+        },
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.altaveu.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.altaveu.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "bufo": {
+      "interactions": [
+        {
+          "verb": "talkTo",
+          "if": {
+            "var": "discurs",
+            "op": "==",
+            "value": 2
+          },
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.bufo.1"
+            },
+            {
+              "who": "bufo",
+              "text": "sala.zona_zero.bufo.2"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.bufo.3",
+              "sound": "passos_gripau"
+            },
+            {
+              "who": "bufo",
+              "text": "sala.zona_zero.bufo.4"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.bufo.5"
+            },
+            {
+              "who": "txell",
+              "text": "sala.zona_zero.bufo.6"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.bufo.7"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.bufo.8"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.bufo.9"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "discurs",
+              "value": 3
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "if": {
+            "var": "discurs",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "bufo",
+              "text": "sala.zona_zero.bufo.aviat"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "bufo",
+              "text": "sala.zona_zero.bufo.fet"
+            }
+          ]
+        }
+      ]
+    },
+    "urtica": {
+      "interactions": [
+        {
+          "verb": "use",
+          "item": "xiulet",
+          "if": {
+            "var": "discurs",
+            "op": "==",
+            "value": 1
+          },
+          "lines": [
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.1",
+              "sound": "xiulet"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.2",
+              "sound": "fades_vol"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.3",
+              "sound": "sensors_esternut"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.4"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.xiulet.5"
+            },
+            {
+              "who": "player",
+              "text": "sala.zona_zero.xiulet.6"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.xiulet.7"
+            },
+            {
+              "who": "narrator",
+              "text": "sala.zona_zero.xiulet.8"
+            }
+          ],
+          "effects": [
+            {
+              "setVar": "discurs",
+              "value": 2
+            },
+            {
+              "takeItem": "xiulet"
+            }
+          ]
+        }
+      ]
+    },
+    "txell": {
+      "interactions": []
+    },
+    "avia": {
+      "interactions": []
+    },
+    "pantalla": {
+      "name": "sala.zona_zero.pantalla.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.pantalla.mira"
+            }
+          ]
+        }
+      ]
+    },
+    "escenari": {
+      "name": "sala.zona_zero.escenari.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.escenari.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "walkTo",
+            "use"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.escenari.puja"
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.1",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 1
+              }
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.2",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 2
+              }
+            },
+            {
+              "who": "pla",
+              "text": "sala.zona_zero.repeteix.3",
+              "if": {
+                "var": "discurs",
+                "op": "==",
+                "value": 3
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "formigonera": {
+      "name": "sala.zona_zero.formigonera.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.formigonera.mira"
+            }
+          ]
+        },
+        {
+          "verb": [
+            "use",
+            "push",
+            "pull",
+            "open"
+          ],
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.formigonera.toca"
+            }
+          ]
+        }
+      ]
+    },
+    "public": {
+      "name": "sala.zona_zero.public.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.public.mira"
+            }
+          ]
+        },
+        {
+          "verb": "talkTo",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.public.parla"
+            }
+          ]
+        }
+      ]
+    },
+    "soques": {
+      "name": "sala.zona_zero.soques.nom",
+      "interactions": [
+        {
+          "verb": "look",
+          "lines": [
+            {
+              "who": "player",
+              "text": "sala.zona_zero.soques.mira"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "decor": {
+    "sensors_vermells": {
+      "visibleIf": {
+        "var": "discurs",
+        "op": ">=",
+        "value": 2
+      }
+    }
+  }
+}

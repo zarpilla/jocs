@@ -1,0 +1,25 @@
+{
+  "name": "ultima-arrel",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run --root ../.. games/ultima-arrel/",
+    "typecheck": "tsc --noEmit -p ../..",
+    "validate": "tsx ../../tools/validate.ts",
+    "jugar": "tsx ../../tools/jugar.ts",
+    "fitxes": "tsx ../../tools/fitxes.ts",
+    "full-sales": "python3 ../../tools/full_sales.py",
+    "revisio": "tsx ../../tools/revisio.ts",
+    "schemas": "tsx ../../tools/generate-schemas.ts",
+    "sons": "python3 tools/sons.py",
+    "musica": "python3 tools/musica.py",
+    "font": "python3 tools/font/ultimaarrel_font.py",
+    "benne:create": "tsx ../../adapters/benne/create-project.ts",
+    "benne:sync": "tsx ../../adapters/benne/sync.ts",
+    "benne:pegat": "tsx ../../adapters/benne/refes-pegat.ts",
+    "dev": "npm run dev --prefix ultima-arrel",
+    "build": "npm run build --prefix ultima-arrel",
+    "textos": "tsx ../../tools/textos.ts"
+  }
+}

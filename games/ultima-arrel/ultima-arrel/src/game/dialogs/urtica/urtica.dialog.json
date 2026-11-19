@@ -1,0 +1,69 @@
+{
+  "id": "urtica",
+  "displayName": "urtica",
+  "options": [
+    {
+      "id": "menu__avia",
+      "scriptName": "menu__avia",
+      "text": "No! Treballo per a la meva àvia.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__espora",
+      "scriptName": "menu__espora",
+      "text": "Vinc de part de l'Espora.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__naturaplus",
+      "scriptName": "menu__naturaplus",
+      "text": "Què us ha fet NaturaPlus?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__apunteu",
+      "scriptName": "menu__apunteu",
+      "text": "Per què m'apunteu?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Ja parlarem.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu2__pla",
+      "scriptName": "menu2__pla",
+      "text": "Quin era el pla?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu2__flor",
+      "scriptName": "menu2__flor",
+      "text": "Com arribo a la flor?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu2__empeny",
+      "scriptName": "menu2__empeny",
+      "text": "M'empenys al gronxador?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu2__adeu2",
+      "scriptName": "menu2__adeu2",
+      "text": "Ara torno.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

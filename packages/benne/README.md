@@ -50,7 +50,8 @@ Benne és de codi obert i aquest motor en surt, amb canvis nostres:
   `src/engine/verbs/holdGesture.ts`), un verb d'objecte (`usesItem`) com a botó principal fa «Usa X amb...» quan hi ha
   un objecte a la mà, i tocar un objecte de l'inventari que té `defaultVerb` fa aquest verb en lloc de prendre'l a la
   mà (el plànol de Ni un ou s'obre d'un toc), i `game.showClickables(segons)` marca un moment tot el que es pot
-  clicar;
+  clicar; `game.showThreads(ids, segons)` hi dibuixa uns filaments que brillen, de la protagonista a unes coses de
+  la sala (props, zones o personatges): la lupa de L'Última Arrel (`RoomScene.showThreads`);
 - alçada adaptable (Aigua Verne): amb `resolution.minHeight` a `game-config.json`, el joc tria en arrencar una alçada
   entre aquesta i `resolution.height` segons la proporció de la pantalla (presa en apaïsat), perquè un mòbil 20:9 i un
   monitor 16:9 quedin plens. Les GUI es dissenyen a l'alçada mínima i `anchorY` (a la GUI o a cada control: `top`,

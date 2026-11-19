@@ -18,7 +18,7 @@
 // protagonista, ni inventari, ni «Canvia».
 import { game, player, pointer } from '@benne/script';
 import { verbs } from '@game';
-import { clickablePrompt, isClickableCutscene, narrative, targetFromBenne } from '../../narrative/narrative';
+import { botoPista, clickablePrompt, isClickableCutscene, narrative, targetFromBenne } from '../../narrative/narrative';
 import { esSortida, queFaElToc } from '../../narrative/accions';
 import { esDit } from '../../narrative/tactil';
 import { esquerreMira } from '../../narrative/preferencies';
@@ -120,7 +120,8 @@ export function layoutHud() {
   }
   // La pantalla rodona del botó «Canvia» mostra la cara de l'altra protagonista (la que no juga). El botó el mostra o
   // l'amaga narrative.ts (si es pot canviar).
-  const on = canviaBtn.visible;
+  // (amb `botoPista`, el botó és la lupa i no hi ha cap cara)
+  const on = canviaBtn.visible && !botoPista;
   const iri = on && player.id === 'vet';
   const vet = on && player.id !== 'vet';
   if (caraIri.visible !== iri) caraIri.visible = iri;

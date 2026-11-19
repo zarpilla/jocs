@@ -1,0 +1,1881 @@
+{
+  "frames": {
+    "avia 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 1.aseprite": {
+      "frame": {
+        "x": 41,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 2.aseprite": {
+      "frame": {
+        "x": 82,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 3.aseprite": {
+      "frame": {
+        "x": 123,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 4.aseprite": {
+      "frame": {
+        "x": 164,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 5.aseprite": {
+      "frame": {
+        "x": 205,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 6.aseprite": {
+      "frame": {
+        "x": 246,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 7.aseprite": {
+      "frame": {
+        "x": 287,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 8.aseprite": {
+      "frame": {
+        "x": 328,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 9.aseprite": {
+      "frame": {
+        "x": 369,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 10.aseprite": {
+      "frame": {
+        "x": 410,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 11.aseprite": {
+      "frame": {
+        "x": 451,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 12.aseprite": {
+      "frame": {
+        "x": 492,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 13.aseprite": {
+      "frame": {
+        "x": 533,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 14.aseprite": {
+      "frame": {
+        "x": 574,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 15.aseprite": {
+      "frame": {
+        "x": 615,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 16.aseprite": {
+      "frame": {
+        "x": 656,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 17.aseprite": {
+      "frame": {
+        "x": 697,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 18.aseprite": {
+      "frame": {
+        "x": 738,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 19.aseprite": {
+      "frame": {
+        "x": 779,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 20.aseprite": {
+      "frame": {
+        "x": 820,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 21.aseprite": {
+      "frame": {
+        "x": 861,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 22.aseprite": {
+      "frame": {
+        "x": 902,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 23.aseprite": {
+      "frame": {
+        "x": 943,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 24.aseprite": {
+      "frame": {
+        "x": 984,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 25.aseprite": {
+      "frame": {
+        "x": 1025,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 26.aseprite": {
+      "frame": {
+        "x": 1066,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 27.aseprite": {
+      "frame": {
+        "x": 1107,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 28.aseprite": {
+      "frame": {
+        "x": 1148,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 29.aseprite": {
+      "frame": {
+        "x": 1189,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 30.aseprite": {
+      "frame": {
+        "x": 1230,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 31.aseprite": {
+      "frame": {
+        "x": 1271,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 32.aseprite": {
+      "frame": {
+        "x": 1312,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 33.aseprite": {
+      "frame": {
+        "x": 1353,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 34.aseprite": {
+      "frame": {
+        "x": 1394,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 35.aseprite": {
+      "frame": {
+        "x": 1435,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 36.aseprite": {
+      "frame": {
+        "x": 1476,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 37.aseprite": {
+      "frame": {
+        "x": 1517,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 38.aseprite": {
+      "frame": {
+        "x": 1558,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 39.aseprite": {
+      "frame": {
+        "x": 1599,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 40.aseprite": {
+      "frame": {
+        "x": 1640,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 41.aseprite": {
+      "frame": {
+        "x": 1681,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 42.aseprite": {
+      "frame": {
+        "x": 1722,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 43.aseprite": {
+      "frame": {
+        "x": 1763,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 44.aseprite": {
+      "frame": {
+        "x": 1804,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 45.aseprite": {
+      "frame": {
+        "x": 1845,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 46.aseprite": {
+      "frame": {
+        "x": 1886,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 47.aseprite": {
+      "frame": {
+        "x": 1927,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 48.aseprite": {
+      "frame": {
+        "x": 1968,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 49.aseprite": {
+      "frame": {
+        "x": 2009,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 50.aseprite": {
+      "frame": {
+        "x": 2050,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 51.aseprite": {
+      "frame": {
+        "x": 2091,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 52.aseprite": {
+      "frame": {
+        "x": 2132,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 53.aseprite": {
+      "frame": {
+        "x": 2173,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 54.aseprite": {
+      "frame": {
+        "x": 2214,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 55.aseprite": {
+      "frame": {
+        "x": 2255,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 56.aseprite": {
+      "frame": {
+        "x": 2296,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 57.aseprite": {
+      "frame": {
+        "x": 2337,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 58.aseprite": {
+      "frame": {
+        "x": 2378,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 59.aseprite": {
+      "frame": {
+        "x": 2419,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 60.aseprite": {
+      "frame": {
+        "x": 2460,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 61.aseprite": {
+      "frame": {
+        "x": 2501,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 62.aseprite": {
+      "frame": {
+        "x": 2542,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 63.aseprite": {
+      "frame": {
+        "x": 2583,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 64.aseprite": {
+      "frame": {
+        "x": 2624,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 65.aseprite": {
+      "frame": {
+        "x": 2665,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 66.aseprite": {
+      "frame": {
+        "x": 2706,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 67.aseprite": {
+      "frame": {
+        "x": 2747,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 68.aseprite": {
+      "frame": {
+        "x": 2788,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 69.aseprite": {
+      "frame": {
+        "x": 2829,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 70.aseprite": {
+      "frame": {
+        "x": 2870,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 71.aseprite": {
+      "frame": {
+        "x": 2911,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 72.aseprite": {
+      "frame": {
+        "x": 2952,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 73.aseprite": {
+      "frame": {
+        "x": 2993,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 74.aseprite": {
+      "frame": {
+        "x": 3034,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 75.aseprite": {
+      "frame": {
+        "x": 3075,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 76.aseprite": {
+      "frame": {
+        "x": 3116,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 77.aseprite": {
+      "frame": {
+        "x": 3157,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 78.aseprite": {
+      "frame": {
+        "x": 3198,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 79.aseprite": {
+      "frame": {
+        "x": 3239,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 80.aseprite": {
+      "frame": {
+        "x": 3280,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    },
+    "avia 81.aseprite": {
+      "frame": {
+        "x": 3321,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 41,
+        "h": 81
+      },
+      "sourceSize": {
+        "w": 41,
+        "h": 81
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "draw_characters.py",
+    "image": "avia.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 3362,
+      "h": 81
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "IdleL",
+        "from": 0,
+        "to": 3,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleD",
+        "from": 4,
+        "to": 7,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleU",
+        "from": 8,
+        "to": 11,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleDL",
+        "from": 12,
+        "to": 15,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "IdleUL",
+        "from": 16,
+        "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "WalkL",
+        "from": 20,
+        "to": 25,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "WalkD",
+        "from": 26,
+        "to": 31,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "WalkU",
+        "from": 32,
+        "to": 37,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "WalkDL",
+        "from": 38,
+        "to": 43,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "WalkUL",
+        "from": 44,
+        "to": 49,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkL",
+        "from": 50,
+        "to": 51,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkD",
+        "from": 52,
+        "to": 53,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkU",
+        "from": 54,
+        "to": 55,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkDL",
+        "from": 56,
+        "to": 57,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "TalkUL",
+        "from": 58,
+        "to": 59,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "BlinkL",
+        "from": 60,
+        "to": 61,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "BlinkD",
+        "from": 62,
+        "to": 63,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "BlinkDL",
+        "from": 64,
+        "to": 65,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "LookD",
+        "from": 66,
+        "to": 73,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "LookDL",
+        "from": 74,
+        "to": 81,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

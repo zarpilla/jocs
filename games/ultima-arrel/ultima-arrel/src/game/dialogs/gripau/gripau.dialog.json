@@ -1,0 +1,34 @@
+{
+  "id": "gripau",
+  "displayName": "gripau",
+  "options": [
+    {
+      "id": "menu__vaga",
+      "scriptName": "menu__vaga",
+      "text": "Per què feu vaga?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__ajuda",
+      "scriptName": "menu__ajuda",
+      "text": "M'ajudes amb la roda del tub?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__pancarta",
+      "scriptName": "menu__pancarta",
+      "text": "Què diu la pancarta?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Bona vaga.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

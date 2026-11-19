@@ -1,0 +1,533 @@
+{
+  "id": "centraleta",
+  "name": "La centraleta del Miceli",
+  "size": {
+    "width": 640,
+    "height": 360
+  },
+  "scrollBounds": {
+    "x": 0,
+    "y": 0,
+    "width": 640,
+    "height": 288
+  },
+  "walkable": {
+    "polygons": [
+      {
+        "id": "walk-1",
+        "active": true,
+        "points": [
+          {
+            "x": 40,
+            "y": 222
+          },
+          {
+            "x": 70,
+            "y": 186
+          },
+          {
+            "x": 110,
+            "y": 176
+          },
+          {
+            "x": 440,
+            "y": 174
+          },
+          {
+            "x": 461,
+            "y": 175
+          },
+          {
+            "x": 581,
+            "y": 216
+          },
+          {
+            "x": 600,
+            "y": 236
+          },
+          {
+            "x": 606,
+            "y": 258
+          },
+          {
+            "x": 34,
+            "y": 258
+          }
+        ],
+        "holes": []
+      }
+    ]
+  },
+  "hotspots": [
+    {
+      "id": "escala",
+      "active": true,
+      "description": "escala",
+      "zIndex": 0,
+      "points": [
+        {
+          "x": 228,
+          "y": 0
+        },
+        {
+          "x": 265,
+          "y": 0
+        },
+        {
+          "x": 265,
+          "y": 176
+        },
+        {
+          "x": 228,
+          "y": 176
+        }
+      ],
+      "walkToPoint": {
+        "x": 262,
+        "y": 184
+      },
+      "lookAtPoint": {
+        "x": 246,
+        "y": 176
+      },
+      "defaultVerb": "open"
+    },
+    {
+      "id": "tauler",
+      "active": true,
+      "description": "tauler",
+      "zIndex": 1,
+      "points": [
+        {
+          "x": 469,
+          "y": 63
+        },
+        {
+          "x": 582,
+          "y": 63
+        },
+        {
+          "x": 582,
+          "y": 212
+        },
+        {
+          "x": 469,
+          "y": 212
+        }
+      ],
+      "walkToPoint": {
+        "x": 463,
+        "y": 193
+      },
+      "lookAtPoint": {
+        "x": 525,
+        "y": 212
+      }
+    },
+    {
+      "id": "radar",
+      "active": true,
+      "description": "radar d'arrels",
+      "zIndex": 2,
+      "points": [
+        {
+          "x": 525,
+          "y": 87
+        },
+        {
+          "x": 569,
+          "y": 87
+        },
+        {
+          "x": 569,
+          "y": 134
+        },
+        {
+          "x": 525,
+          "y": 134
+        }
+      ],
+      "walkToPoint": {
+        "x": 511,
+        "y": 204
+      },
+      "lookAtPoint": {
+        "x": 547,
+        "y": 134
+      }
+    },
+    {
+      "id": "corn",
+      "active": true,
+      "description": "corn de fusta",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 566,
+          "y": 80
+        },
+        {
+          "x": 630,
+          "y": 80
+        },
+        {
+          "x": 630,
+          "y": 124
+        },
+        {
+          "x": 566,
+          "y": 124
+        }
+      ],
+      "walkToPoint": {
+        "x": 560,
+        "y": 226
+      },
+      "lookAtPoint": {
+        "x": 598,
+        "y": 124
+      }
+    },
+    {
+      "id": "arrel_1",
+      "active": true,
+      "description": "arrel esquerra",
+      "zIndex": 3,
+      "points": [
+        {
+          "x": 327,
+          "y": 12
+        },
+        {
+          "x": 353,
+          "y": 12
+        },
+        {
+          "x": 353,
+          "y": 163
+        },
+        {
+          "x": 327,
+          "y": 163
+        }
+      ],
+      "walkToPoint": {
+        "x": 342,
+        "y": 181
+      },
+      "lookAtPoint": {
+        "x": 340,
+        "y": 163
+      }
+    },
+    {
+      "id": "arrel_2",
+      "active": true,
+      "description": "arrel del mig",
+      "zIndex": 4,
+      "points": [
+        {
+          "x": 365,
+          "y": 12
+        },
+        {
+          "x": 391,
+          "y": 12
+        },
+        {
+          "x": 391,
+          "y": 165
+        },
+        {
+          "x": 365,
+          "y": 165
+        }
+      ],
+      "walkToPoint": {
+        "x": 380,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 378,
+        "y": 165
+      }
+    },
+    {
+      "id": "arrel_3",
+      "active": true,
+      "description": "arrel dreta",
+      "zIndex": 5,
+      "points": [
+        {
+          "x": 403,
+          "y": 12
+        },
+        {
+          "x": 429,
+          "y": 12
+        },
+        {
+          "x": 429,
+          "y": 165
+        },
+        {
+          "x": 403,
+          "y": 165
+        }
+      ],
+      "walkToPoint": {
+        "x": 418,
+        "y": 183
+      },
+      "lookAtPoint": {
+        "x": 416,
+        "y": 165
+      }
+    },
+    {
+      "id": "fils_paret",
+      "active": true,
+      "description": "fils de la paret",
+      "zIndex": 7,
+      "points": [
+        {
+          "x": 0,
+          "y": 18
+        },
+        {
+          "x": 196,
+          "y": 18
+        },
+        {
+          "x": 196,
+          "y": 150
+        },
+        {
+          "x": 0,
+          "y": 150
+        }
+      ],
+      "walkToPoint": {
+        "x": 150,
+        "y": 190
+      },
+      "lookAtPoint": {
+        "x": 98,
+        "y": 150
+      }
+    }
+  ],
+  "points": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.738,
+      "scaleBottom": 1.077,
+      "points": [
+        {
+          "x": 0,
+          "y": 172
+        },
+        {
+          "x": 639,
+          "y": 172
+        },
+        {
+          "x": 639,
+          "y": 260
+        },
+        {
+          "x": 0,
+          "y": 260
+        }
+      ]
+    }
+  ],
+  "props": [
+    {
+      "id": "BG",
+      "tag": "BG",
+      "animations": {
+        "BG": {}
+      },
+      "zIndex": 0,
+      "visible": true,
+      "alpha": 1
+    },
+    {
+      "id": "xarxa_encesa",
+      "tag": "xarxa_encesa",
+      "animations": {
+        "xarxa_encesa": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "radar_ences",
+      "tag": "radar_ences",
+      "animations": {
+        "radar_ences": {}
+      },
+      "zIndex": 4,
+      "visible": false,
+      "alpha": 1,
+      "clickable": false
+    },
+    {
+      "id": "fil_saba",
+      "tag": "fil_saba",
+      "animations": {
+        "fil_saba": {}
+      },
+      "zIndex": 3,
+      "visible": true,
+      "alpha": 1,
+      "clickable": true,
+      "collider": {
+        "points": [
+          {
+            "x": 449,
+            "y": 135
+          },
+          {
+            "x": 479,
+            "y": 135
+          },
+          {
+            "x": 479,
+            "y": 185
+          },
+          {
+            "x": 449,
+            "y": 185
+          }
+        ]
+      },
+      "walkToPoint": {
+        "x": 447,
+        "y": 191
+      },
+      "lookAtPoint": {
+        "x": 464,
+        "y": 185
+      },
+      "description": "fil de saba"
+    },
+    {
+      "id": "pols",
+      "tag": "pols",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "pols": {
+          "loop": true,
+          "frameDuration": 130
+        }
+      }
+    },
+    {
+      "id": "hifa",
+      "tag": "hifa",
+      "zIndex": 1,
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "hifa": {
+          "loop": true,
+          "frameDuration": 110
+        }
+      }
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 20,
+      "baseline": 999
+    }
+  ],
+  "characters": [
+    {
+      "instanceId": "iri-1",
+      "definition": "iri/iri.character.json",
+      "x": 262,
+      "y": 184,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 10
+    },
+    {
+      "instanceId": "espora-1",
+      "definition": "espora/espora.character.json",
+      "x": 419,
+      "y": 187,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": true,
+      "zIndex": 9
+    },
+    {
+      "instanceId": "vet-veu",
+      "definition": "vet/vet.character.json",
+      "x": 73,
+      "y": 127,
+      "initialFacing": "D",
+      "initialAnimation": "Idle",
+      "visible": false,
+      "clickable": false,
+      "zIndex": 9
+    }
+  ],
+  "characterLights": {
+    "ambient": "#7a6656",
+    "lights": [
+      {
+        "x": 240,
+        "y": 40,
+        "radius": 300,
+        "color": "#ffd79a",
+        "intensity": 1.1
+      },
+      {
+        "x": 528,
+        "y": 32,
+        "radius": 200,
+        "color": "#ffc878",
+        "intensity": 0.9
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#0a0604",
+    "alpha": 0.45,
+    "squash": 0.38,
+    "core": 0.6,
+    "light": {
+      "x": 290,
+      "y": 222,
+      "stretch": 0.7,
+      "reach": 150
+    }
+  },
+  "characterOutline": {
+    "color": "#c89a5a",
+    "alpha": 0.35
+  },
+  "floorSquash": 0.4
+}

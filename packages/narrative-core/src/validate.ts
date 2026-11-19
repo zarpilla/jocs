@@ -299,6 +299,11 @@ export function validateContent(
     cond(`${w}.doneWhen`, h.doneWhen);
     if (h.levels.length === 0) err(w, `Una pista necessita almenys un nivell.`);
     h.levels.forEach((k, i) => text(`${w}.levels[${i}]`, k));
+    if (h.who && !characters[h.who]) err(`${w}.who`, `Personatge desconegut: "${h.who}".`);
+    for (const t of h.targets ?? []) {
+      const enUnaSala = Object.values(rooms).some((r) => r.hotspots?.[t]) || !!characters[t];
+      if (!enUnaSala) err(`${w}.targets`, `"${t}" no és cap cosa de cap sala ni cap personatge.`);
+    }
   }
 
   for (const [eid, e] of Object.entries(endings)) {

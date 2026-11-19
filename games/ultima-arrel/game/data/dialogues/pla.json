@@ -1,0 +1,173 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "pla",
+  "with": "pla",
+  "start": [
+    {
+      "if": {
+        "seen": {
+          "dialogue": "pla",
+          "node": "hola"
+        }
+      },
+      "node": "torna"
+    },
+    {
+      "node": "hola"
+    }
+  ],
+  "nodes": {
+    "hola": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.hola.1"
+        },
+        {
+          "who": "pla",
+          "text": "dlg.pla.hola.2"
+        }
+      ],
+      "effects": [
+        {
+          "giveItem": "kit"
+        }
+      ],
+      "goto": "menu"
+    },
+    "torna": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.torna.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "menu": {
+      "choices": [
+        {
+          "id": "bosc",
+          "text": "dlg.pla.opt.bosc",
+          "once": true,
+          "next": "bosc"
+        },
+        {
+          "id": "vells",
+          "text": "dlg.pla.opt.vells",
+          "once": true,
+          "next": "vells",
+          "if": {
+            "seen": {
+              "dialogue": "pla",
+              "node": "bosc"
+            }
+          }
+        },
+        {
+          "id": "ocells",
+          "text": "dlg.pla.opt.ocells",
+          "once": true,
+          "next": "ocells",
+          "if": {
+            "seen": {
+              "dialogue": "pla",
+              "node": "vells"
+            }
+          }
+        },
+        {
+          "id": "aire",
+          "text": "dlg.pla.opt.aire",
+          "once": true,
+          "next": "aire"
+        },
+        {
+          "id": "altaveu",
+          "text": "dlg.pla.opt.altaveu",
+          "next": "altaveu"
+        },
+        {
+          "id": "adeu",
+          "text": "dlg.pla.opt.adeu",
+          "end": true,
+          "next": "adeu"
+        }
+      ]
+    },
+    "bosc": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.bosc.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "vells": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.vells.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "ocells": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.ocells.1"
+        }
+      ],
+      "goto": "menu"
+    },
+    "aire": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.aire.1"
+        },
+        {
+          "who": "player",
+          "text": "dlg.pla.aire.2"
+        },
+        {
+          "who": "pla",
+          "text": "dlg.pla.aire.3"
+        }
+      ],
+      "goto": "menu"
+    },
+    "altaveu": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.altaveu.1"
+        },
+        {
+          "who": "pla",
+          "text": "dlg.pla.altaveu.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.pla.altaveu.3"
+        }
+      ],
+      "effects": [
+        {
+          "setFlag": "sap_altaveu"
+        }
+      ],
+      "goto": "menu"
+    },
+    "adeu": {
+      "lines": [
+        {
+          "who": "pla",
+          "text": "dlg.pla.adeu.1"
+        }
+      ]
+    }
+  }
+}

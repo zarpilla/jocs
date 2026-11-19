@@ -108,6 +108,10 @@ export interface HintView {
   levels: number;
   /** Encara hi ha una pista més explícita. */
   hasMore: boolean;
+  /** Les coses de la sala on apunta (vegeu `HintDef.targets`), només les que es veuen ara. */
+  targets: Id[];
+  /** Qui la diu, si no és la protagonista (`HintDef.who`). */
+  who?: Id;
 }
 
 export interface EndingView {
@@ -378,7 +382,12 @@ export class Narrative {
     return this.batch(() => {
       const level = Math.min((this._state.hints[id] ?? 0) + 1, def.levels.length);
       this._state.hints[id] = level;
-      return { id, level, levels: def.levels.length, text: this.t(def.levels[level - 1]!), hasMore: level < def.levels.length };
+      const room = this.world.currentRoom();
+      const targets = (def.targets ?? []).filter((t) => room !== null && this.isHotspotVisible(room, t));
+      return {
+        id, level, levels: def.levels.length, text: this.t(def.levels[level - 1]!), hasMore: level < def.levels.length,
+        targets, ...(def.who ? { who: def.who } : {}),
+      };
     });
   }
 

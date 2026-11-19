@@ -1,0 +1,240 @@
+{
+  "$schema": "../../schemas/dialogue.schema.json",
+  "id": "walkie",
+  "with": "vet",
+  "start": [
+    {
+      "if": {
+        "all": [
+          {
+            "inRoom": "vora_bosc"
+          },
+          {
+            "seen": {
+              "dialogue": "walkie",
+              "node": "e1"
+            }
+          }
+        ]
+      },
+      "node": "e1b"
+    },
+    {
+      "if": {
+        "inRoom": "vora_bosc"
+      },
+      "node": "e1"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "inRoom": "centraleta"
+          },
+          {
+            "seen": {
+              "dialogue": "walkie",
+              "node": "e2"
+            }
+          }
+        ]
+      },
+      "node": "e2b"
+    },
+    {
+      "if": {
+        "inRoom": "centraleta"
+      },
+      "node": "e2"
+    },
+    {
+      "if": {
+        "all": [
+          {
+            "inRoom": "campament_fades"
+          },
+          {
+            "flag": "fades_amigues"
+          }
+        ]
+      },
+      "node": "e3b"
+    },
+    {
+      "if": {
+        "inRoom": "campament_fades"
+      },
+      "node": "e3"
+    },
+    {
+      "if": {
+        "inRoom": "toll_gripaus"
+      },
+      "node": "e4"
+    },
+    {
+      "if": {
+        "inRoom": "caseta_obra"
+      },
+      "node": "e5"
+    },
+    {
+      "node": "e7"
+    }
+  ],
+  "nodes": {
+    "e1": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e1.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e1.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e1.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e1.4"
+        }
+      ]
+    },
+    "e1b": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e1b.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e1b.2"
+        }
+      ]
+    },
+    "e2": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e2.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e2.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e2.3"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e2.4"
+        }
+      ]
+    },
+    "e2b": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e2b.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e2b.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e2b.3"
+        }
+      ]
+    },
+    "e3": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e3.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e3.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e3.3"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e3.4"
+        }
+      ]
+    },
+    "e3b": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e3b.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e3b.2"
+        }
+      ]
+    },
+    "e4": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e4.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "vet",
+          "text": "dlg.walkie.e4.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e4.3"
+        }
+      ]
+    },
+    "e5": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e5.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e5.2"
+        }
+      ]
+    },
+    "e7": {
+      "lines": [
+        {
+          "who": "player",
+          "text": "dlg.walkie.e7.1",
+          "sound": "walkie"
+        },
+        {
+          "who": "iri",
+          "text": "dlg.walkie.e7.2"
+        },
+        {
+          "who": "player",
+          "text": "dlg.walkie.e7.3"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,985 @@
+{
+  "frames": {
+    "toll_gripaus 0.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "rotated": false,
+      "trimmed": false,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 360
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 1.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 228,
+        "h": 167
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 345,
+        "y": 70,
+        "w": 228,
+        "h": 167
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 2.aseprite": {
+      "frame": {
+        "x": 423,
+        "y": 360,
+        "w": 43,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 545,
+        "y": 174,
+        "w": 43,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 3.aseprite": {
+      "frame": {
+        "x": 2354,
+        "y": 360,
+        "w": 141,
+        "h": 10
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 388,
+        "y": 181,
+        "w": 141,
+        "h": 10
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 4.aseprite": {
+      "frame": {
+        "x": 2022,
+        "y": 360,
+        "w": 140,
+        "h": 12
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 386,
+        "y": 180,
+        "w": 140,
+        "h": 12
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 5.aseprite": {
+      "frame": {
+        "x": 2162,
+        "y": 360,
+        "w": 138,
+        "h": 12
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 384,
+        "y": 182,
+        "w": 138,
+        "h": 12
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 6.aseprite": {
+      "frame": {
+        "x": 1685,
+        "y": 360,
+        "w": 134,
+        "h": 16
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 383,
+        "y": 178,
+        "w": 134,
+        "h": 16
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 7.aseprite": {
+      "frame": {
+        "x": 720,
+        "y": 360,
+        "w": 128,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 383,
+        "y": 174,
+        "w": 128,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 8.aseprite": {
+      "frame": {
+        "x": 466,
+        "y": 360,
+        "w": 122,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 383,
+        "y": 172,
+        "w": 122,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 9.aseprite": {
+      "frame": {
+        "x": 1110,
+        "y": 360,
+        "w": 114,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 385,
+        "y": 174,
+        "w": 114,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 10.aseprite": {
+      "frame": {
+        "x": 2676,
+        "y": 0,
+        "w": 106,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 388,
+        "y": 169,
+        "w": 106,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 11.aseprite": {
+      "frame": {
+        "x": 1976,
+        "y": 0,
+        "w": 99,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 391,
+        "y": 169,
+        "w": 99,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 12.aseprite": {
+      "frame": {
+        "x": 0,
+        "y": 360,
+        "w": 94,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 395,
+        "y": 171,
+        "w": 94,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 13.aseprite": {
+      "frame": {
+        "x": 94,
+        "y": 360,
+        "w": 87,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 399,
+        "y": 175,
+        "w": 87,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 14.aseprite": {
+      "frame": {
+        "x": 3972,
+        "y": 0,
+        "w": 78,
+        "h": 29
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 404,
+        "y": 173,
+        "w": 78,
+        "h": 29
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 15.aseprite": {
+      "frame": {
+        "x": 1316,
+        "y": 360,
+        "w": 68,
+        "h": 22
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 408,
+        "y": 176,
+        "w": 68,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 16.aseprite": {
+      "frame": {
+        "x": 1463,
+        "y": 360,
+        "w": 61,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 413,
+        "y": 174,
+        "w": 61,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 17.aseprite": {
+      "frame": {
+        "x": 1524,
+        "y": 360,
+        "w": 57,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 417,
+        "y": 175,
+        "w": 57,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 18.aseprite": {
+      "frame": {
+        "x": 2300,
+        "y": 360,
+        "w": 54,
+        "h": 12
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 421,
+        "y": 179,
+        "w": 54,
+        "h": 12
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 19.aseprite": {
+      "frame": {
+        "x": 2495,
+        "y": 360,
+        "w": 53,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 425,
+        "y": 182,
+        "w": 53,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 20.aseprite": {
+      "frame": {
+        "x": 2688,
+        "y": 360,
+        "w": 54,
+        "h": 6
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 427,
+        "y": 183,
+        "w": 54,
+        "h": 6
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 21.aseprite": {
+      "frame": {
+        "x": 1956,
+        "y": 360,
+        "w": 66,
+        "h": 13
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 419,
+        "y": 180,
+        "w": 66,
+        "h": 13
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 22.aseprite": {
+      "frame": {
+        "x": 1384,
+        "y": 360,
+        "w": 79,
+        "h": 22
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 411,
+        "y": 175,
+        "w": 79,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 23.aseprite": {
+      "frame": {
+        "x": 1224,
+        "y": 360,
+        "w": 92,
+        "h": 23
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 404,
+        "y": 176,
+        "w": 92,
+        "h": 23
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 24.aseprite": {
+      "frame": {
+        "x": 1581,
+        "y": 360,
+        "w": 104,
+        "h": 20
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 398,
+        "y": 174,
+        "w": 104,
+        "h": 20
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 25.aseprite": {
+      "frame": {
+        "x": 181,
+        "y": 360,
+        "w": 114,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 394,
+        "y": 171,
+        "w": 114,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 26.aseprite": {
+      "frame": {
+        "x": 3850,
+        "y": 0,
+        "w": 122,
+        "h": 30
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 391,
+        "y": 168,
+        "w": 122,
+        "h": 30
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 27.aseprite": {
+      "frame": {
+        "x": 295,
+        "y": 360,
+        "w": 128,
+        "h": 28
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 391,
+        "y": 172,
+        "w": 128,
+        "h": 28
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 28.aseprite": {
+      "frame": {
+        "x": 3016,
+        "y": 0,
+        "w": 132,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 391,
+        "y": 172,
+        "w": 132,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 29.aseprite": {
+      "frame": {
+        "x": 2075,
+        "y": 0,
+        "w": 133,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 394,
+        "y": 171,
+        "w": 133,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 30.aseprite": {
+      "frame": {
+        "x": 588,
+        "y": 360,
+        "w": 132,
+        "h": 25
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 398,
+        "y": 173,
+        "w": 132,
+        "h": 25
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 31.aseprite": {
+      "frame": {
+        "x": 848,
+        "y": 360,
+        "w": 129,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 404,
+        "y": 174,
+        "w": 129,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 32.aseprite": {
+      "frame": {
+        "x": 977,
+        "y": 360,
+        "w": 133,
+        "h": 24
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 400,
+        "y": 173,
+        "w": 133,
+        "h": 24
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 33.aseprite": {
+      "frame": {
+        "x": 1819,
+        "y": 360,
+        "w": 137,
+        "h": 15
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 396,
+        "y": 179,
+        "w": 137,
+        "h": 15
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 34.aseprite": {
+      "frame": {
+        "x": 2548,
+        "y": 360,
+        "w": 140,
+        "h": 7
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 392,
+        "y": 181,
+        "w": 140,
+        "h": 7
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 35.aseprite": {
+      "frame": {
+        "x": 3148,
+        "y": 0,
+        "w": 234,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 81,
+        "w": 234,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 36.aseprite": {
+      "frame": {
+        "x": 2208,
+        "y": 0,
+        "w": 234,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 81,
+        "w": 234,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 37.aseprite": {
+      "frame": {
+        "x": 3382,
+        "y": 0,
+        "w": 234,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 83,
+        "w": 234,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 38.aseprite": {
+      "frame": {
+        "x": 1508,
+        "y": 0,
+        "w": 234,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 80,
+        "w": 234,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 39.aseprite": {
+      "frame": {
+        "x": 1742,
+        "y": 0,
+        "w": 234,
+        "h": 34
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 80,
+        "w": 234,
+        "h": 34
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 40.aseprite": {
+      "frame": {
+        "x": 3616,
+        "y": 0,
+        "w": 234,
+        "h": 31
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 80,
+        "w": 234,
+        "h": 31
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 41.aseprite": {
+      "frame": {
+        "x": 2782,
+        "y": 0,
+        "w": 234,
+        "h": 32
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 80,
+        "w": 234,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 42.aseprite": {
+      "frame": {
+        "x": 2442,
+        "y": 0,
+        "w": 234,
+        "h": 33
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 150,
+        "y": 80,
+        "w": 234,
+        "h": 33
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 43.aseprite": {
+      "frame": {
+        "x": 868,
+        "y": 0,
+        "w": 640,
+        "h": 48
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 212,
+        "w": 640,
+        "h": 48
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    }
+  },
+  "meta": {
+    "app": "https://www.aseprite.org/",
+    "version": "provisional (draw_placeholders.py, retallat)",
+    "image": "toll_gripaus.png",
+    "format": "RGBA8888",
+    "size": {
+      "w": 4050,
+      "h": 388
+    },
+    "scale": "1",
+    "frameTags": [
+      {
+        "name": "BG",
+        "from": 0,
+        "to": 0,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "aigua",
+        "from": 1,
+        "to": 1,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "tap_plastics",
+        "from": 2,
+        "to": 2,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "libellules",
+        "from": 3,
+        "to": 34,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "calor",
+        "from": 35,
+        "to": 42,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 43,
+        "to": 43,
+        "direction": "forward",
+        "color": "#000000ff"
+      }
+    ],
+    "layers": [],
+    "slices": []
+  }
+}

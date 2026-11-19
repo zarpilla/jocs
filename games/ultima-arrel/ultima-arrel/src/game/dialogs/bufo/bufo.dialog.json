@@ -1,0 +1,41 @@
+{
+  "id": "bufo",
+  "displayName": "bufo",
+  "options": [
+    {
+      "id": "menu__paper",
+      "scriptName": "menu__paper",
+      "text": "Busco un paper que digui de qui és el bosc.",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__paper2",
+      "scriptName": "menu__paper2",
+      "text": "Me'ls segelles, els plànols?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__rierol",
+      "scriptName": "menu__rierol",
+      "text": "Per què no arriba l'aigua?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__tramit",
+      "scriptName": "menu__tramit",
+      "text": "Què és un tràmit?",
+      "enabled": false,
+      "say": false
+    },
+    {
+      "id": "menu__adeu",
+      "scriptName": "menu__adeu",
+      "text": "Tornaré.",
+      "enabled": false,
+      "say": false
+    }
+  ]
+}

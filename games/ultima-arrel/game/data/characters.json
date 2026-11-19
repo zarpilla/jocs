@@ -1,0 +1,543 @@
+{
+  "$schema": "../schemas/characters.schema.json",
+  "iri": {
+    "name": "pj.iri.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.iri.mira"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.iri.parla.1"
+          },
+          {
+            "who": "vet",
+            "text": "pj.iri.parla.2"
+          },
+          {
+            "who": "iri",
+            "text": "pj.iri.parla.3"
+          }
+        ]
+      }
+    ]
+  },
+  "vet": {
+    "name": "pj.vet.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "iri",
+            "text": "pj.vet.mira"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "vet",
+            "text": "pj.vet.parla.1"
+          },
+          {
+            "who": "iri",
+            "text": "pj.vet.parla.2"
+          }
+        ]
+      }
+    ]
+  },
+  "avia": {
+    "name": "pj.avia.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "inRoom": "vora_bosc"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.avia.mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.avia.mira.zz"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.avia.mira.vet"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "secret_avia",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "avia",
+            "text": "sala.bosc_obert.secret.1"
+          },
+          {
+            "who": "espora",
+            "text": "sala.bosc_obert.secret.2"
+          },
+          {
+            "who": "player",
+            "text": "sala.bosc_obert.secret.3"
+          },
+          {
+            "who": "avia",
+            "text": "sala.bosc_obert.secret.4"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "secret_avia"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "avia",
+            "text": "pj.avia.parla.vet"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "avia",
+            "text": "pj.avia.parla.zz"
+          }
+        ]
+      }
+    ]
+  },
+  "espora": {
+    "name": "pj.espora.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.espora.mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.espora.mira.vet"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "flag": "vet_coneix_espora",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.espora.vet.1"
+          },
+          {
+            "who": "espora",
+            "text": "pj.espora.vet.2"
+          },
+          {
+            "who": "player",
+            "text": "pj.espora.vet.3"
+          },
+          {
+            "who": "espora",
+            "text": "pj.espora.vet.4"
+          }
+        ],
+        "effects": [
+          {
+            "setFlag": "vet_coneix_espora"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "espora",
+            "text": "pj.espora.vet.5"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "espora"
+      }
+    ]
+  },
+  "urtica": {
+    "name": "pj.urtica.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "vet"
+            },
+            {
+              "inRoom": "campament_fades"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.urtica.mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.urtica.mira.bosc"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.urtica.mira.zz"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "inRoom": "campament_fades"
+        },
+        "dialogue": "urtica"
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "urtica",
+            "text": "pj.urtica.parla.bosc"
+          },
+          {
+            "who": "vet",
+            "text": "pj.urtica.parla.bosc2"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "urtica",
+            "text": "pj.urtica.parla.zz"
+          }
+        ]
+      }
+    ]
+  },
+  "pica": {
+    "name": "pj.pica.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.pica.mira"
+          }
+        ]
+      }
+    ]
+  },
+  "card": {
+    "name": "pj.card.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.card.mira"
+          }
+        ]
+      }
+    ]
+  },
+  "bufo": {
+    "name": "pj.bufo.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "inRoom": "toll_gripaus"
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.bufo.mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.bufo.mira.zz"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.bufo.mira.vet"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "bufo",
+            "text": "pj.bufo.parla.vet"
+          },
+          {
+            "who": "bufo",
+            "text": "pj.bufo.parla.vet2"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "bufo"
+      }
+    ]
+  },
+  "gripau": {
+    "name": "pj.gripau.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "all": [
+            {
+              "protagonist": "iri"
+            },
+            {
+              "flag": "aigua_tornada",
+              "is": false
+            }
+          ]
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.gripau.mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.gripau.mira2"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "gripau"
+      }
+    ]
+  },
+  "pla": {
+    "name": "pj.pla.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "vet"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.pla.mira"
+          }
+        ]
+      },
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.pla.mira.zz"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "dialogue": "pla"
+      }
+    ]
+  },
+  "txell": {
+    "name": "pj.txell.nom",
+    "interactions": [
+      {
+        "verb": "look",
+        "if": {
+          "protagonist": "iri"
+        },
+        "lines": [
+          {
+            "who": "player",
+            "text": "pj.txell.mira"
+          }
+        ]
+      },
+      {
+        "verb": "talkTo",
+        "lines": [
+          {
+            "who": "txell",
+            "text": "pj.txell.parla"
+          }
+        ]
+      }
+    ]
+  }
+}
