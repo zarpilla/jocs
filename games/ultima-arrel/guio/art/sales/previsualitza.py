@@ -4,8 +4,8 @@ Previsualització ×2 d'una sala d'art definitiu (hd640/rooms/<sala>.py), com es
 es demanen, els personatges als seus `spawns` a l'escala de la regió de perspectiva (amb els fulls provisionals de
 placeholder-art) i la capa del davant (FRONT) a sobre. Retalla l'escena (fins a y = 260) si la sala té HUD.
 
-Ús: python3 previsualitza.py <sala> [--props id,id] [--sencera] [--debug]
-Surt: guio/art/sales/<sala>.png (o <sala>-debug.png, amb les zones clicables i el terra on es camina)
+Ús: python3 previsualitza.py <sala> [--props id,id] [--sufix nom] [--sencera] [--debug]
+Surt: guio/art/sales/<sala>[-nom].png (o <sala>-debug.png, amb les zones clicables i el terra on es camina)
 """
 import json
 import sys
@@ -100,8 +100,9 @@ def main():
         big.save(HERE / f'{name}-debug.png')
         print(HERE / f'{name}-debug.png')
     else:
-        nearest(img, (img.width * 2, img.height * 2)).save(HERE / f'{name}.png')
-        print(HERE / f'{name}.png')
+        out = HERE / (f'{name}-{sys.argv[sys.argv.index("--sufix") + 1]}.png' if '--sufix' in sys.argv else f'{name}.png')
+        nearest(img, (img.width * 2, img.height * 2)).save(out)
+        print(out)
 
 
 if __name__ == '__main__':
