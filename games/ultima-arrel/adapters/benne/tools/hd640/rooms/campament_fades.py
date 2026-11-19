@@ -13,7 +13,8 @@ El sol del matí entra de dalt a l'esquerra, daurat, entre les fulles; tot és v
   - a la dreta, la branca s'acaba i en surt la **branca prima** (com un llapis), amb la **flor** de pebre a la punta
     (decorat a part: `flor`, i `flor_buida` quan ja s'ha collit el pol·len); just al costat, el **gronxador** de cinta
     rosa fluor, que penja de la branca de dalt;
-  - primer pla: fulles de roure a contrallum a les cantonades (`FRONT`).
+  - primer pla: fulles de roure a contrallum a les cantonades (`FRONT`); la tenda i la catapulta també són capes del
+    davant, amb la seva línia base: la Vet hi passa per darrere i per davant.
 Animacions: la pols i les clapes de sol que bateguen (`llum`) i unes fulles que es mouen a la branca de dalt
 (`fulles`).
 
@@ -445,7 +446,8 @@ def _davant():
 
 @functools.lru_cache(maxsize=None)
 def _render(estat=frozenset()):
-    """Tota la sala amb un estat: 'flor' (la flor amb pol·len), 'buida' (la flor sense pol·len)."""
+    """Tota la sala amb un estat: 'flor' (la flor amb pol·len), 'buida' (la flor sense pol·len); 'sense_tenda' i
+    'sense_catapulta' (per a les màscares de les capes del davant)."""
     cv = Canvas(light=LIGHT)
     cel(cv)
     avall(cv)
@@ -459,8 +461,10 @@ def _render(estat=frozenset()):
         _flor(cv, False)
     if 'buida' in estat:
         _flor(cv, True)
-    tenda(cv)
-    catapulta(cv)
+    if 'sense_tenda' not in estat:
+        tenda(cv)
+    if 'sense_catapulta' not in estat:
+        catapulta(cv)
     diana(cv)
     gronxador(cv)
     escala_corda(cv)
@@ -546,15 +550,36 @@ def _mask_davant(x, y):
     return _davant().getpixel((x, y))[3] > 0
 
 
-FRONT = [{'id': 'davant', 'mask': _mask_davant, 'baseline': 999, 'zIndex': 20}]
+@functools.lru_cache(maxsize=None)
+def _mask_sense(que):
+    """La màscara del que canvia en no pintar `que` ('tenda' o 'catapulta'): el moble, amb la seva ombra."""
+    import numpy as np
+    a = np.asarray(_base().convert('RGB'))
+    b = np.asarray(_render(frozenset({f'sense_{que}'})).convert('RGB'))
+    m = (a != b).any(axis=2)
+    return lambda x, y: bool(m[y, x])
+
+
+# La tenda i la catapulta, damunt la branca, amb la seva línia base: la Vet hi passa per darrere (si va per la vora
+# de dalt de la branca) i per davant. I el primer pla, que tapa sempre.
+FRONT = [{'id': 'davant_tenda', 'mask': lambda x, y: _mask_sense('tenda')(x, y), 'baseline': TENDA[2], 'zIndex': 20},
+         {'id': 'davant_catapulta', 'mask': lambda x, y: _mask_sense('catapulta')(x, y), 'baseline': CATA[1],
+          'zIndex': 20},
+         {'id': 'davant', 'mask': _mask_davant, 'baseline': 999, 'zIndex': 20}]
 
 
 # ─── Geometria (coordenades de sala) ─────────────────────────────────────────
 # La Vet hi és gran: a la cara de dalt de la branca, de ≈1,1 (al fons) a 1,2 (a la vora de davant); a les sales de
 # lluny va a ≈0,65-0,7. Per damunt de la branca (les fades a la tenda, a la diana o al brot del tronc), 1,1 fix.
 
+def _el(cx, cy, rx, ry, n=10):
+    return [(round(cx + rx * math.cos(2 * math.pi * i / n)), round(cy + ry * math.sin(2 * math.pi * i / n)))
+            for i in range(n)]
+
+
 def _walk():
-    top = [(x, round(branca(x)[0] - branca(x)[1] * 0.72)) for x in range(120, 441, 40)]
+    # (fins a prop de la vora de dalt de la branca: s'hi pot passar per darrere de la tenda i de la catapulta)
+    top = [(x, round(branca(x)[0] - branca(x)[1] * 0.88)) for x in range(120, 441, 40)]
     bot = [(x, round(branca(x)[0] + branca(x)[1] * 0.3)) for x in range(440, 119, -40)]
     return top + [(452, round(branca(452)[0] - 2))] + bot
 
@@ -584,6 +609,8 @@ def _geometria():
         'spawns': {'vet': (eb + 14, round(c_e - 4)), 'urtica': (cat_x + 38, min(cat_y - 1, v_top - 6)),  # vola damunt la catapulta: a l'escala de les fades
                    'pica': ((x0 + x1) // 2 + 2, yb - 53), 'card': (cx + 2, cy - r - 1)},
         'walkable': walk,
+        # la tenda i la catapulta no es trepitgen: s'hi fa la volta (per davant o per la vora de dalt de la branca)
+        'forats': [_el((x0 + x1) / 2, yb, (x1 - x0) / 2 - 4, 3), _el(cat_x + 6, cat_y, 18, 3)],
         'floorSquash': 0.45,
         'regions': [
             {'id': 'branques', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': False,

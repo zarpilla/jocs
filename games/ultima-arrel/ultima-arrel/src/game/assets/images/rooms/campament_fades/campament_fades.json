@@ -44,7 +44,7 @@
     },
     "campament_fades 2.aseprite": {
       "frame": {
-        "x": 2354,
+        "x": 2551,
         "y": 1530,
         "w": 25,
         "h": 25
@@ -1388,7 +1388,7 @@
     },
     "campament_fades 66.aseprite": {
       "frame": {
-        "x": 2379,
+        "x": 2576,
         "y": 1530,
         "w": 288,
         "h": 24
@@ -1409,7 +1409,7 @@
     },
     "campament_fades 67.aseprite": {
       "frame": {
-        "x": 2667,
+        "x": 2864,
         "y": 1530,
         "w": 288,
         "h": 24
@@ -1430,7 +1430,7 @@
     },
     "campament_fades 68.aseprite": {
       "frame": {
-        "x": 2955,
+        "x": 3152,
         "y": 1530,
         "w": 289,
         "h": 24
@@ -1451,7 +1451,7 @@
     },
     "campament_fades 69.aseprite": {
       "frame": {
-        "x": 3244,
+        "x": 3441,
         "y": 1530,
         "w": 289,
         "h": 24
@@ -1472,7 +1472,7 @@
     },
     "campament_fades 70.aseprite": {
       "frame": {
-        "x": 3533,
+        "x": 3730,
         "y": 1530,
         "w": 289,
         "h": 24
@@ -1577,6 +1577,48 @@
     },
     "campament_fades 75.aseprite": {
       "frame": {
+        "x": 2474,
+        "y": 1530,
+        "w": 77,
+        "h": 44
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 296,
+        "y": 159,
+        "w": 77,
+        "h": 44
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "campament_fades 76.aseprite": {
+      "frame": {
+        "x": 2354,
+        "y": 1530,
+        "w": 120,
+        "h": 61
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 177,
+        "y": 143,
+        "w": 120,
+        "h": 61
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "campament_fades 77.aseprite": {
+      "frame": {
         "x": 640,
         "y": 0,
         "w": 640,
@@ -1644,9 +1686,23 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_catapulta",
         "from": 75,
         "to": 75,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_tenda",
+        "from": 76,
+        "to": 76,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 77,
+        "to": 77,
         "direction": "forward",
         "color": "#000000ff"
       }

@@ -551,6 +551,12 @@ GEOMETRIA = {
     'floorSquash': 0.25,
     'characterShadow': {'enabled': True, 'color': '#2a1c10', 'alpha': 0.4, 'squash': 0.28, 'core': 0.6,
                         'light': {'x': 1, 'y': 0.15, 'direction': True, 'stretch': 0.7}},
+    # La llum de la sala sobre els personatges: el matí de tardor (l'ambient, càlid) i el sol baix de l'esquerra, que
+    # els toca pel costat esquerre i s'apaga cap a la dreta (cap als sensors i la caseta).
+    'characterLights': {
+        'ambient': '#c2b6a2',
+        'lights': [{'x': SOL[0], 'y': SOL[1] + 120, 'radius': 700, 'color': '#ffd496', 'intensity': 0.55}],
+    },
     'regions': [
         {'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
          'scaleTop': ESCALA[0], 'scaleBottom': ESCALA[1],

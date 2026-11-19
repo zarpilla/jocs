@@ -374,7 +374,7 @@
       "id": "bolets",
       "active": true,
       "description": "bolets",
-      "zIndex": 9,
+      "zIndex": 8,
       "points": [
         {
           "x": 118,
@@ -406,7 +406,7 @@
       "id": "cami",
       "active": true,
       "description": "camí del poble",
-      "zIndex": 10,
+      "zIndex": 8,
       "points": [
         {
           "x": 0,
@@ -563,8 +563,308 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 20,
+      "zIndex": 70,
       "baseline": 999
+    },
+    {
+      "id": "davant_arrel1_11",
+      "tag": "davant_arrel1_11",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_11": {}
+      },
+      "zIndex": 20,
+      "baseline": 211
+    },
+    {
+      "id": "davant_arrel2_12",
+      "tag": "davant_arrel2_12",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel2_12": {}
+      },
+      "zIndex": 22,
+      "baseline": 211
+    },
+    {
+      "id": "davant_arrel1_10",
+      "tag": "davant_arrel1_10",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_10": {}
+      },
+      "zIndex": 24,
+      "baseline": 212
+    },
+    {
+      "id": "davant_arrel3_14",
+      "tag": "davant_arrel3_14",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel3_14": {}
+      },
+      "zIndex": 26,
+      "baseline": 212
+    },
+    {
+      "id": "davant_arrel1_09",
+      "tag": "davant_arrel1_09",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_09": {}
+      },
+      "zIndex": 28,
+      "baseline": 214
+    },
+    {
+      "id": "davant_arrel2_11",
+      "tag": "davant_arrel2_11",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel2_11": {}
+      },
+      "zIndex": 30,
+      "baseline": 216
+    },
+    {
+      "id": "davant_arrel1_08",
+      "tag": "davant_arrel1_08",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_08": {}
+      },
+      "zIndex": 32,
+      "baseline": 217
+    },
+    {
+      "id": "davant_arrel3_15",
+      "tag": "davant_arrel3_15",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel3_15": {}
+      },
+      "zIndex": 34,
+      "baseline": 217
+    },
+    {
+      "id": "davant_arrel1_07",
+      "tag": "davant_arrel1_07",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_07": {}
+      },
+      "zIndex": 36,
+      "baseline": 219
+    },
+    {
+      "id": "davant_arrel1_06",
+      "tag": "davant_arrel1_06",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_06": {}
+      },
+      "zIndex": 38,
+      "baseline": 222
+    },
+    {
+      "id": "davant_arrel1_05",
+      "tag": "davant_arrel1_05",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_05": {}
+      },
+      "zIndex": 40,
+      "baseline": 224
+    },
+    {
+      "id": "davant_arrel2_10",
+      "tag": "davant_arrel2_10",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel2_10": {}
+      },
+      "zIndex": 42,
+      "baseline": 224
+    },
+    {
+      "id": "davant_arrel3_16",
+      "tag": "davant_arrel3_16",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel3_16": {}
+      },
+      "zIndex": 44,
+      "baseline": 224
+    },
+    {
+      "id": "davant_arrel1_04",
+      "tag": "davant_arrel1_04",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_04": {}
+      },
+      "zIndex": 46,
+      "baseline": 227
+    },
+    {
+      "id": "davant_arrel1_03",
+      "tag": "davant_arrel1_03",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_03": {}
+      },
+      "zIndex": 48,
+      "baseline": 229
+    },
+    {
+      "id": "davant_arrel3_17",
+      "tag": "davant_arrel3_17",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel3_17": {}
+      },
+      "zIndex": 50,
+      "baseline": 231
+    },
+    {
+      "id": "davant_arrel1_02",
+      "tag": "davant_arrel1_02",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_02": {}
+      },
+      "zIndex": 52,
+      "baseline": 232
+    },
+    {
+      "id": "davant_arrel2_09",
+      "tag": "davant_arrel2_09",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel2_09": {}
+      },
+      "zIndex": 54,
+      "baseline": 232
+    },
+    {
+      "id": "davant_arrel1_01",
+      "tag": "davant_arrel1_01",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel1_01": {}
+      },
+      "zIndex": 56,
+      "baseline": 234
+    },
+    {
+      "id": "davant_arrel3_18",
+      "tag": "davant_arrel3_18",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel3_18": {}
+      },
+      "zIndex": 58,
+      "baseline": 238
+    },
+    {
+      "id": "davant_arrel2_08",
+      "tag": "davant_arrel2_08",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel2_08": {}
+      },
+      "zIndex": 60,
+      "baseline": 240
+    },
+    {
+      "id": "davant_arrel3_19",
+      "tag": "davant_arrel3_19",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel3_19": {}
+      },
+      "zIndex": 62,
+      "baseline": 245
+    },
+    {
+      "id": "davant_arrel2_07",
+      "tag": "davant_arrel2_07",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel2_07": {}
+      },
+      "zIndex": 64,
+      "baseline": 247
+    },
+    {
+      "id": "davant_arrel3_20",
+      "tag": "davant_arrel3_20",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel3_20": {}
+      },
+      "zIndex": 66,
+      "baseline": 252
+    },
+    {
+      "id": "davant_arrel2_06",
+      "tag": "davant_arrel2_06",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel2_06": {}
+      },
+      "zIndex": 68,
+      "baseline": 255
     }
   ],
   "characters": [
@@ -612,5 +912,24 @@
       "direction": true,
       "stretch": 1.0
     }
+  },
+  "characterLights": {
+    "ambient": "#9c8c98",
+    "lights": [
+      {
+        "x": 56,
+        "y": 122,
+        "radius": 520,
+        "color": "#ffa868",
+        "intensity": 0.65
+      },
+      {
+        "x": 253,
+        "y": 170,
+        "radius": 70,
+        "color": "#ff4a36",
+        "intensity": 0.4
+      }
+    ]
   }
 }

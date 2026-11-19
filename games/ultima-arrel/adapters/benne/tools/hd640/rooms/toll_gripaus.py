@@ -17,6 +17,8 @@ verticals, verticals), amb l'horitzó a y = 110: el terra fuig cap al fons i les
     cap a la tanca del fons.
   - El gripau vaguista (`gripau`) amb la pancarta, i al costat un altre de fons (sense id) amb una altra pancarta.
   - A l'esquerra, el **camí** (sortida, que no surt), i el bosc càlid, que fa ombra.
+  - La mata de joncs de l'esquerra del toll és una capa del davant amb la seva línia base (FRONT): s'hi passa per
+    darrere i per davant.
   - Primer pla (FRONT): a les cantonades de baix, molt a prop i a l'ombra, falgueres, joncs i boga en silueta, el
     tronc caigut i una pedra: emmarquen el quadre.
 
@@ -641,7 +643,9 @@ GRIPAU = (322, 216)
 
 
 @functools.lru_cache(maxsize=None)
-def _base():
+def _base(sense_mata=None):
+    """→ (la sala, el primer pla). `sense_mata`: l'índex d'una mata de JONCS que no es pinta (per a la màscara de la
+    seva capa del davant: el que canvia sense ella)."""
     cv = Canvas(W, H, light=LIGHT)
     cel(cv)
     bosc_fons(cv)
@@ -652,8 +656,9 @@ def _base():
     rierol_sec(cv)
     toll_sec(cv)
     # els joncs del toll (secs i caiguts), del fons a prop
-    for (x, y, n, h, s) in JONCS:
-        mata_joncs(cv, x, y, n, h, s, caiguts=True, escala=1.0, lvl=4.0)
+    for i, (x, y, n, h, s) in enumerate(JONCS):
+        if i != sense_mata:
+            mata_joncs(cv, x, y, n, h, s, caiguts=True, escala=1.0, lvl=4.0)
     joncs_davant(cv)
     tub(cv)
     comporta(cv)
@@ -768,7 +773,24 @@ def _frames_calor():
 ANIMS = {'libellules': {'frames': _frames_libellules, 'frameDuration': 70},
          'calor': {'frames': _frames_calor, 'frameDuration': 140}}
 
-FRONT = [{'id': 'davant', 'mask': lambda x, y: mascara(_base()[1])(x, y), 'baseline': 999, 'zIndex': 20}]
+# La mata de joncs de l'esquerra del toll (JONCS[5]) és dins el terra on es camina: qui va pel darrere del toll hi
+# passa per darrere (les cames tapades), i qui va pel davant, per davant. La màscara: el que canvia sense la mata (el
+# gripau de fons, que hi ha a sobre, no hi entra). Amb l'aigua, la mata és verda i dreta: la variant `aigua`.
+MATA_DAVANT = 5
+
+
+@functools.lru_cache(maxsize=None)
+def _mask_mata():
+    import numpy as np
+    a = np.asarray(_base()[0].convert('RGB'))
+    b = np.asarray(_base(MATA_DAVANT)[0].convert('RGB'))
+    m = (a != b).any(axis=2)
+    return lambda x, y: bool(m[y, x])
+
+
+FRONT = [{'id': 'davant_joncs', 'mask': lambda x, y: _mask_mata()(x, y), 'baseline': JONCS[MATA_DAVANT][1],
+          'zIndex': 20, 'variants': ('aigua',)},
+         {'id': 'davant', 'mask': lambda x, y: mascara(_base()[1])(x, y), 'baseline': 999, 'zIndex': 22}]
 
 
 # ─── Geometria ───────────────────────────────────────────────────────────────
@@ -796,11 +818,21 @@ GEOMETRIA = {
     'spawns': {'iri': IRI, 'bufo': BUFO, 'gripau': GRIPAU},
     'walkable': [(0, 226), (60, 220), (150, 210), (300, 208), (380, 212), (540, 212), (639, 214), (639, 256),
                  (0, 256)],
-    'forats': [_el(TOLL[0], TOLL[1] + 1, TOLL[2] - 4, TOLL[3] - 3)],
+    'forats': [_el(TOLL[0], TOLL[1] + 1, TOLL[2] - 4, TOLL[3] - 3),
+               _el(JONCS[MATA_DAVANT][0], JONCS[MATA_DAVANT][1] + 1, 9, 3, n=8)],
     # El sol és alt i una mica a l'esquerra: l'ombra, curta, cau cap a la dreta i endavant.
     'floorSquash': 0.25,
     'characterShadow': {'enabled': True, 'color': '#3a2a12', 'alpha': 0.42, 'squash': 0.28, 'core': 0.6,
                         'light': {'x': 0.5, 'y': 0.25, 'direction': True, 'stretch': 0.25}},
+    # La llum de la sala sobre els personatges: el migdia (l'ambient, clar i una mica groc de calitja), el sol alt
+    # a l'esquerra, blanc, i l'ombra del bosc de l'esquerra (un ambient més fosc no es pot fer per zones: el sol
+    # hi arriba menys). Amb l'aigua, el reflex fresc del toll, de baix.
+    'characterLights': {
+        'ambient': '#d6cdb6',
+        'lights': [{'x': SOL[0] + 120, 'y': SOL[1], 'radius': 420, 'color': '#fff2d6', 'intensity': 0.3},
+                   {'x': TOLL[0], 'y': TOLL[1] + 6, 'radius': 130, 'color': '#a8e0ec', 'intensity': 0.3,
+                    'whenPropVisible': 'aigua'}],
+    },
     # A escala 1 la Iri fa ≈97 px: aquí, de lluny, ≈0,6 al fons (58 px, al peu de l'arxiu) i ≈0,77 a baix de tot.
     # (No és l'escala exacta de l'horitzó, que encongiria massa el fons: el terra s'ha dibuixat a l'ull.)
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,

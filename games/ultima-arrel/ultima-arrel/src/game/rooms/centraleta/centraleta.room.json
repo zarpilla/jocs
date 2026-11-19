@@ -54,7 +54,54 @@
             "y": 258
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 200,
+                "y": 235
+              },
+              {
+                "x": 189,
+                "y": 237
+              },
+              {
+                "x": 161,
+                "y": 239
+              },
+              {
+                "x": 125,
+                "y": 239
+              },
+              {
+                "x": 97,
+                "y": 237
+              },
+              {
+                "x": 86,
+                "y": 235
+              },
+              {
+                "x": 97,
+                "y": 233
+              },
+              {
+                "x": 125,
+                "y": 231
+              },
+              {
+                "x": 161,
+                "y": 231
+              },
+              {
+                "x": 189,
+                "y": 233
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -456,8 +503,20 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 20,
+      "zIndex": 22,
       "baseline": 999
+    },
+    {
+      "id": "davant_arrel",
+      "tag": "davant_arrel",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_arrel": {}
+      },
+      "zIndex": 20,
+      "baseline": 235
     }
   ],
   "characters": [

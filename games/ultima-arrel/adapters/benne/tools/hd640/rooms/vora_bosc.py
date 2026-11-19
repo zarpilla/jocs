@@ -13,7 +13,8 @@ tan altes com la Iri. El sol es pon entre els troncs, a l'esquerra.
     fons, sense id), i el `cargol` (PROP) entre el fang, al peu de la tanca.
   - Decorat `porta_oberta`: la porta oberta, amb la llum càlida de la centraleta a dins.
   - ANIMS: `llum` (el fanalet parpelleja) i `fulles` (fulles de tardor que cauen de la capçada).
-  - FRONT: el primer pla (falgueres, una arrel i una pedra en silueta), que tapa sempre.
+  - FRONT: les arrels del roure que travessen el terra (en franges, cadascuna amb la seva línia base: s'hi passa
+    per darrere i per davant) i el primer pla (falgueres, una arrel i una pedra en silueta), que tapa sempre.
 """
 import functools
 
@@ -23,7 +24,8 @@ from PIL import Image
 import hd640  # noqa: F401
 from hd.rooms.comu import _diff
 from hd640.rooms.vora_comu import (Mode, Llenc, llum, escena, mascara, fons_sala, fulles_frames, estaca, cargol,
-                                   porta_oberta, sala, DY)
+                                   porta_oberta, sala, DY, SUN, LAMP, W, ARRELS_TERRA, arrel_terra, arrel_terra_punts,
+                                   bezier, DOOR, ESTACA)
 
 M = Mode('capvespre')
 LIGHT = llum(M)
@@ -78,12 +80,54 @@ ANIMS = {
     'fulles': {'frames': _fulles, 'frameDuration': 120},
 }
 
-FRONT = [{'id': 'davant', 'mask': lambda x, y: _MASK()(x, y), 'baseline': 999, 'zIndex': 20}]
-
-
 @functools.lru_cache(maxsize=None)
 def _MASK():
     return mascara(escena('capvespre')[2])
+
+
+# Les arrels del roure que travessen el terra on es camina (ARRELS_TERRA de vora_comu: la de l'esquerra, la que baixa
+# cap a l'esquerra i la que baixa cap a la dreta): qui hi és darrere en té els peus tapats. Fan diagonal a la
+# pantalla, i una sola línia base no deixaria passar per davant d'una punta i per darrere de l'altra: es tallen en
+# franges verticals (com `_llesques` de Ferro-9), cadascuna amb la línia base on l'arrel toca a terra en aquella
+# franja (el mig del tub). Sense el peu de la porta (al fons, la porta tapa l'arrel: amb la porta oberta, el retall
+# hi posaria la tancada) ni el de l'estaca, amb la cinta i l'ombra (un prop, clavat davant la porta: el retall el
+# tallaria).
+ARRELS_DAVANT = (0, 1, 2)
+FRANJA = 16
+
+
+@functools.lru_cache(maxsize=None)
+def _arrel(i):
+    """→ (màscara d'una arrel, {franja: línia base}), en píxels de sala."""
+    a = ARRELS_TERRA[i]
+    cv = Llenc(-DY, LIGHT, transparent=True)
+    arrel_terra(cv, a)
+    p0, p1, p2, _, _ = arrel_terra_punts(a)
+    ys = {}
+    for k in range(201):
+        x, y = bezier(p0, p1, p2, k / 200)
+        ys.setdefault(int(x) // FRANJA, []).append(sala(y))
+    m = mascara(cv.img)
+    cx, _, baix, hw = DOOR
+    ex, _, ebaix = ESTACA
+
+    def msk(x, y):
+        return (m(x, y) and not (cx - hw - 2 <= x <= cx + hw + 2 and y <= sala(baix) + 1)
+                and not (ex - 5 <= x <= ex + 19 and y <= sala(ebaix) + 3))
+    return msk, {f: round(sum(v) / len(v)) for f, v in ys.items()}
+
+
+def _franges():
+    out = []
+    for i in ARRELS_DAVANT:
+        msk, base = _arrel(i)
+        out += [{'id': f'davant_arrel{i + 1}_{f:02d}', 'baseline': b, 'zIndex': 20,
+                 'mask': (lambda f, msk: lambda x, y: x // FRANJA == f and msk(x, y))(f, msk)}
+                for f, b in sorted(base.items()) if 0 <= f * FRANJA < W]
+    return out
+
+
+FRONT = _franges() + [{'id': 'davant', 'mask': lambda x, y: _MASK()(x, y), 'baseline': 999, 'zIndex': 20}]
 
 
 # ─── Geometria (en píxels de sala) ─────────────────────────────────────────
@@ -132,6 +176,13 @@ GEOMETRIA = {
     # el sol es pon a l'esquerra, arran de terra: les ombres, llargues, cap a la dreta
     'characterShadow': {'enabled': True, 'color': '#1c0e14', 'alpha': 0.42, 'squash': 0.28, 'core': 0.6,
                         'light': {'x': 1, 'y': 0.08, 'direction': True, 'stretch': 1.0}},
+    # La llum de la sala sobre els personatges: el capvespre (l'ambient, morat i fosc), el sol que es pon entre els
+    # troncs, a l'esquerra (els toca pel costat esquerre, taronja), i el fanalet vermell, només a tocar.
+    'characterLights': {
+        'ambient': '#9c8c98',
+        'lights': [{'x': _p(*SUN)[0] - 40, 'y': _p(*SUN)[1], 'radius': 520, 'color': '#ffa868', 'intensity': 0.65},
+                   {'x': _p(*LAMP)[0], 'y': _p(*LAMP)[1], 'radius': 70, 'color': '#ff4a36', 'intensity': 0.4}],
+    },
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_alt(_Y0) / IRI_ALT, 3), 'scaleBottom': round(_alt(_Y1) / IRI_ALT, 3),
                  'points': [(0, _Y0), (639, _Y0), (639, _Y1), (0, _Y1)]}],

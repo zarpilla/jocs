@@ -318,7 +318,7 @@
       "active": true,
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
-      "scaleTop": 1,
+      "scaleTop": 1.0,
       "scaleBottom": 1.769,
       "points": [
         {
@@ -438,9 +438,41 @@
   "characterShadow": {
     "enabled": true,
     "color": "#202630",
-    "alpha": 0.35,
+    "alpha": 0.44,
     "squash": 0.35,
-    "core": 0.6
+    "core": 0.6,
+    "light": {
+      "x": 259,
+      "y": 192,
+      "stretch": 0.45,
+      "reach": 150
+    }
   },
-  "floorSquash": 0.35
+  "floorSquash": 0.35,
+  "characterLights": {
+    "ambient": "#b8bcc8",
+    "lights": [
+      {
+        "x": 160,
+        "y": 117,
+        "radius": 300,
+        "color": "#e6eeff",
+        "intensity": 0.2
+      },
+      {
+        "x": 331,
+        "y": 102,
+        "radius": 300,
+        "color": "#e6eeff",
+        "intensity": 0.2
+      },
+      {
+        "x": 96,
+        "y": 133,
+        "radius": 230,
+        "color": "#ffd08a",
+        "intensity": 0.35
+      }
+    ]
+  }
 }

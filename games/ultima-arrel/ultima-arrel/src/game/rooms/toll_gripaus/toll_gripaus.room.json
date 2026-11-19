@@ -108,6 +108,44 @@
                 "y": 216
               }
             ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 365,
+                "y": 219
+              },
+              {
+                "x": 362,
+                "y": 221
+              },
+              {
+                "x": 356,
+                "y": 222
+              },
+              {
+                "x": 350,
+                "y": 221
+              },
+              {
+                "x": 347,
+                "y": 219
+              },
+              {
+                "x": 350,
+                "y": 217
+              },
+              {
+                "x": 356,
+                "y": 216
+              },
+              {
+                "x": 362,
+                "y": 217
+              }
+            ]
           }
         ]
       }
@@ -435,8 +473,32 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 20,
+      "zIndex": 24,
       "baseline": 999
+    },
+    {
+      "id": "davant_joncs",
+      "tag": "davant_joncs",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_joncs": {}
+      },
+      "zIndex": 20,
+      "baseline": 218
+    },
+    {
+      "id": "aigua__davant_joncs",
+      "tag": "aigua__davant_joncs",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "aigua__davant_joncs": {}
+      },
+      "zIndex": 21,
+      "baseline": 218
     }
   ],
   "characters": [
@@ -495,5 +557,25 @@
       "stretch": 0.25
     }
   },
-  "floorSquash": 0.25
+  "floorSquash": 0.25,
+  "characterLights": {
+    "ambient": "#d6cdb6",
+    "lights": [
+      {
+        "x": 270,
+        "y": -40,
+        "radius": 420,
+        "color": "#fff2d6",
+        "intensity": 0.3
+      },
+      {
+        "x": 462,
+        "y": 227,
+        "radius": 130,
+        "color": "#a8e0ec",
+        "intensity": 0.3,
+        "whenPropVisible": "aigua"
+      }
+    ]
+  }
 }

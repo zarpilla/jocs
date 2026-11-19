@@ -11,6 +11,8 @@ Una cova entre les arrels del roure, de prop i una mica des de dalt (la composic
     apagada) i el rètol «MICELI»; el llum de bolet que hi penja, i el **corn** de fusta que surt de l'arrel;
   - entre l'escala i el tauler, les **tres arrels** del trencaclosques 2.2: el mateix dibuix tres vegades (a ull nu
     són iguals);
+  - al terra, a l'esquerra del raig, una arrel que surt de terra en arc (capa del davant amb la seva línia base: s'hi
+    passa per darrere i per davant);
   - primer pla: arrels gruixudes a dalt a l'esquerra i falgueres a les cantonades de baix (`FRONT`).
 Decorats: `fil_saba` (penja del taulell, brilla una mica), `radar_ences` (la pantalla verda amb el node 12 aixafat),
 `xarxa_encesa` (tots els fils turquesa fins al sostre, l'arrel del mig encesa per dins i el fil de saba lligat).
@@ -157,6 +159,21 @@ def vora(cv):
         cv.disc(x, y, r * 1.5, r * 0.7, STONE, lambda nx, ny: 2.2 - ny * 1.4 - nx * 0.5, lit=1.0)
     for x, y, h, r in ((172, 172, 5, 5), (182, 174, 3, 3), (300, 168, 4, 5), (438, 172, 4, 4), (60, 214, 5, 6),
                        (70, 220, 3, 4), (150, 236, 4, 5)):
+        bolet(cv, x, y, h, r, glow=0, cap=LEAF, stem=CREAM)
+
+
+# Una arrel que surt del terra, fa un arc i hi torna a entrar, a l'esquerra del raig: un moble del pla mitjà (capa del
+# davant amb la seva línia base) perquè els personatges hi passin per darrere i per davant. En pantalla: els dos peus
+# (on entra a terra) i el punt de control de l'arc.
+ARC = ((88, 237), (138, 196), (198, 233))
+ARC_BASE = 235                                      # la línia base: on l'arrel toca a terra
+
+
+def arrel_arc(cv):
+    """L'arrel en arc, amb dos bolets de terra al llom."""
+    p0, p1, p2 = ARC
+    arrel(cv, p0, p1, p2, 7, 5, base=3.0, seed=86, moss=True, lit=1.0)
+    for x, y, h, r in ((126, 213, 4, 4), (133, 212, 3, 3)):
         bolet(cv, x, y, h, r, glow=0, cap=LEAF, stem=CREAM)
 
 
@@ -468,6 +485,8 @@ def _render(estat=frozenset()):
     fils(cv, encesa)
     terra(cv)
     vora(cv)
+    ombra(cv, (ARC[0][0] + ARC[2][0]) / 2, ARC_BASE + 1, (ARC[2][0] - ARC[0][0]) / 2 + 4, 4, k=0.6)
+    arrel_arc(cv)
     e = Escena(cv, CAM, LLUMS, ambient=-0.3)
     escala(e)
     arrels(cv, encesa)
@@ -581,7 +600,19 @@ def _mask_davant(x, y):
     return _davant().getpixel((x, y))[3] > 0
 
 
-FRONT = [{'id': 'davant', 'mask': _mask_davant, 'baseline': 999, 'zIndex': 20}]
+@functools.lru_cache(maxsize=None)
+def _arc():
+    cv = Canvas(light=LIGHT, transparent=True)
+    arrel_arc(cv)
+    return cv.img
+
+
+def _mask_arc(x, y):
+    return _arc().getpixel((x, y))[3] > 0
+
+
+FRONT = [{'id': 'davant_arrel', 'mask': _mask_arc, 'baseline': ARC_BASE, 'zIndex': 20},
+         {'id': 'davant', 'mask': _mask_davant, 'baseline': 999, 'zIndex': 20}]
 
 
 # ─── Geometria (coordenades de sala) ─────────────────────────────────────────
@@ -633,6 +664,9 @@ def _geometria():
         'things': things,
         'spawns': {'iri': peu, 'espora': espora},
         'walkable': walk,
+        # l'arrel en arc no es trepitja: s'hi fa la volta
+        'forats': [[(round((ARC[0][0] + ARC[2][0]) / 2 + ((ARC[2][0] - ARC[0][0]) / 2 + 2) * math.cos(a * math.pi / 5)),
+                     round(ARC_BASE + 4 * math.sin(a * math.pi / 5))) for a in range(10)]],
         'floorSquash': 0.4,
         'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                      'scaleTop': round(_escala_a(v_top - 2), 3), 'scaleBottom': round(_escala_a(v_bot + 2), 3),

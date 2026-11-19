@@ -826,6 +826,24 @@ ESTACA = (243, 224, 250)       # x, dalt, baix: clavada just davant el cantell d
 CARGOL = (512, 233)            # al peu de la tanca, entre el fang
 
 
+# Les arrels del roure per terra: (punt de control, punta, gruix a la soca, llavor). Les que travessen el terra on es
+# camina fan de capa del davant a la vora del bosc (vora_bosc.py): s'hi passa per darrere.
+ARRELS_TERRA = (((120, 246), (30, 262), 15, 11), ((150, 262), (96, 286), 13, 12),
+                ((290, 262), (330, 282), 12, 13), ((300, 244), (382, 252), 11, 14),
+                ((176, 258), (186, 290), 10, 15), ((80, 232), (10, 238), 8, 16))
+
+
+def arrel_terra_punts(a):
+    """(p0, p1, p2, r0, r1) d'una arrel per terra (la corba surt de la soca)."""
+    p1, p2, r0, _ = a
+    return (TC + (p2[0] - TC) * 0.15, TBASE - 8), p1, p2, r0, 2
+
+
+def arrel_terra(cv, a):
+    p0, p1, p2, r0, r1 = arrel_terra_punts(a)
+    arrel(cv, p0, p1, p2, r0, r1, base=3.4, seed=a[3])
+
+
 def roure(cv, m):
     # les branques grosses, que surten del quadre
     for p0, p1, p2, r0, r1, s in (((200, 70), (120, 30), (-20, 10), 20, 9, 3),
@@ -851,10 +869,8 @@ def roure(cv, m):
             else:
                 cv.put(x, y, BARK, lvl, lit=0.9)
     # les arrels per terra
-    for p1, p2, r0, s in (((120, 246), (30, 262), 15, 11), ((150, 262), (96, 286), 13, 12),
-                          ((290, 262), (330, 282), 12, 13), ((300, 244), (382, 252), 11, 14),
-                          ((176, 258), (186, 290), 10, 15), ((80, 232), (10, 238), 8, 16)):
-        arrel(cv, (TC + (p2[0] - TC) * 0.15, TBASE - 8), p1, p2, r0, 2, base=3.4, seed=s)
+    for a in ARRELS_TERRA:
+        arrel_terra(cv, a)
     # heura que s'enfila pel tronc (a la banda del sol)
     rnd = random.Random(9)
     for k in range(3):

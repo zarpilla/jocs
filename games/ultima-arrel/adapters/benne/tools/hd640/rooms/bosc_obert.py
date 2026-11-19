@@ -18,7 +18,7 @@ import functools
 
 import hd640  # noqa: F401
 from hd640.rooms.vora_comu import (Mode, llum, escena, mascara, fons_sala, fulles_frames, espores_frames, sala, DY,
-                                   TAULA, BASSAL)
+                                   TAULA, BASSAL, SUN_M, DOOR)
 from hd640.rooms.vora_bosc import WALK as _WALK_VORA, _alt, IRI_ALT, _r, _p
 
 M = Mode('dia')
@@ -53,6 +53,7 @@ def _masks():
 
 
 _TX, _TY, _TRX, _TRY, _TH = TAULA
+DOOR_C = (DOOR[0], DOOR[2] - 8)           # la porta oberta, a l'alçada dels genolls (al món)
 _TBASE = _TY + _TH + 1                    # on la soca toca a terra, al mig (al món)
 
 FRONT = [
@@ -94,6 +95,13 @@ GEOMETRIA = {
     # el sol del matí és baix a la dreta: les ombres, llargues, cap a l'esquerra
     'characterShadow': {'enabled': True, 'color': '#2a1a08', 'alpha': 0.4, 'squash': 0.28, 'core': 0.6,
                         'light': {'x': -1, 'y': 0.12, 'direction': True, 'stretch': 0.9}},
+    # La llum de la sala sobre els personatges: el matí daurat (l'ambient, càlid), el sol baix de la clariana, que
+    # els toca pel costat dret, i la claror turquesa de la porta oberta del roure, una mica.
+    'characterLights': {
+        'ambient': '#c4b49a',
+        'lights': [{'x': _p(*SUN_M)[0] + 60, 'y': _p(*SUN_M)[1], 'radius': 560, 'color': '#ffd27e', 'intensity': 0.6},
+                   {'x': _p(*DOOR_C)[0], 'y': _p(*DOOR_C)[1], 'radius': 80, 'color': '#50e6d2', 'intensity': 0.35}],
+    },
     'regions': [
         {'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
          'scaleTop': round(_alt(_Y0) / IRI_ALT, 3), 'scaleBottom': round(_alt(_Y1) / IRI_ALT, 3),

@@ -518,6 +518,10 @@ def _sota(cx, cz, w, d, ang, marge=8):
                                           (w / 2 + marge, d / 2 + marge), (-w / 2 - marge, d / 2 + marge))]
 
 
+# El punt de terra just sota la llum, per a l'ombra de contacte: entre els dos fluorescents (al món: x, z).
+_LLUM_TERRA = (240, 180)
+
+
 # El terra on es camina (en pantalla): de la porta (al fons a l'esquerra) i la cantonada de l'arbre fins a davant,
 # tallat on la Vet arriba a ≈1,25 (més a prop, el terra és del primer pla).
 _WALK = [(52, 184), (386, 156), (456, 192), (474, 214), (300, 236), (0, 238), (0, 226)]
@@ -555,7 +559,17 @@ GEOMETRIA = {
                _sota(*CAIXA[:4], CAIXA[5], marge=6)],
     # La llum és de sostre (els fluorescents): l'ombra, rodona i suau, just a sota.
     'floorSquash': 0.35,
-    'characterShadow': {'enabled': True, 'color': '#202630', 'alpha': 0.35, 'squash': 0.35, 'core': 0.6},
+    'characterShadow': {'enabled': True, 'color': '#202630', 'alpha': 0.44, 'squash': 0.35, 'core': 0.6,
+                        'light': {'x': _p(*_LLUM_TERRA)[0], 'y': _p(*_LLUM_TERRA)[1], 'stretch': 0.45, 'reach': 150}},
+    # La llum de la sala sobre els personatges: el fluorescent (l'ambient, fred i pla), els dos tubs del sostre (blanc
+    # blavós, de dalt) i la claror càlida de la porta del fons a l'esquerra, que els toca pel costat.
+    'characterLights': {
+        'ambient': '#b8bcc8',
+        'lights': [*({'x': _p(x, z, 90)[0], 'y': _p(x, z, 90)[1], 'radius': 300, 'color': '#e6eeff', 'intensity': 0.2}
+                     for (x, _, z) in (L.pos for L in LLUMS)),
+                   {'x': _p((DOOR[0] + DOOR[1]) / 2, ZW, 50)[0], 'y': _p((DOOR[0] + DOOR[1]) / 2, ZW, 50)[1],
+                    'radius': 230, 'color': '#ffd08a', 'intensity': 0.35}],
+    },
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_v(min(_VS)) * K_FULLS, 3), 'scaleBottom': round(_escala_v(max(_VS)) * K_FULLS, 3),
                  'points': [(0, min(_VS)), (W - 1, min(_VS)), (W - 1, max(_VS)), (0, max(_VS))]}],

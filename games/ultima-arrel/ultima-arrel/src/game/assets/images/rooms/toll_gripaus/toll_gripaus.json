@@ -65,7 +65,7 @@
     },
     "toll_gripaus 3.aseprite": {
       "frame": {
-        "x": 2354,
+        "x": 2423,
         "y": 360,
         "w": 141,
         "h": 10
@@ -86,7 +86,7 @@
     },
     "toll_gripaus 4.aseprite": {
       "frame": {
-        "x": 2022,
+        "x": 2091,
         "y": 360,
         "w": 140,
         "h": 12
@@ -107,7 +107,7 @@
     },
     "toll_gripaus 5.aseprite": {
       "frame": {
-        "x": 2162,
+        "x": 2231,
         "y": 360,
         "w": 138,
         "h": 12
@@ -128,7 +128,7 @@
     },
     "toll_gripaus 6.aseprite": {
       "frame": {
-        "x": 1685,
+        "x": 1754,
         "y": 360,
         "w": 134,
         "h": 16
@@ -380,7 +380,7 @@
     },
     "toll_gripaus 18.aseprite": {
       "frame": {
-        "x": 2300,
+        "x": 2369,
         "y": 360,
         "w": 54,
         "h": 12
@@ -401,7 +401,7 @@
     },
     "toll_gripaus 19.aseprite": {
       "frame": {
-        "x": 2495,
+        "x": 2564,
         "y": 360,
         "w": 53,
         "h": 7
@@ -422,7 +422,7 @@
     },
     "toll_gripaus 20.aseprite": {
       "frame": {
-        "x": 2688,
+        "x": 2757,
         "y": 360,
         "w": 54,
         "h": 6
@@ -443,7 +443,7 @@
     },
     "toll_gripaus 21.aseprite": {
       "frame": {
-        "x": 1956,
+        "x": 2025,
         "y": 360,
         "w": 66,
         "h": 13
@@ -695,7 +695,7 @@
     },
     "toll_gripaus 33.aseprite": {
       "frame": {
-        "x": 1819,
+        "x": 1888,
         "y": 360,
         "w": 137,
         "h": 15
@@ -716,7 +716,7 @@
     },
     "toll_gripaus 34.aseprite": {
       "frame": {
-        "x": 2548,
+        "x": 2617,
         "y": 360,
         "w": 140,
         "h": 7
@@ -905,6 +905,48 @@
     },
     "toll_gripaus 43.aseprite": {
       "frame": {
+        "x": 1685,
+        "y": 360,
+        "w": 39,
+        "h": 18
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 338,
+        "y": 201,
+        "w": 39,
+        "h": 18
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 44.aseprite": {
+      "frame": {
+        "x": 1724,
+        "y": 360,
+        "w": 30,
+        "h": 18
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 347,
+        "y": 201,
+        "w": 30,
+        "h": 18
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "toll_gripaus 45.aseprite": {
+      "frame": {
         "x": 871,
         "y": 0,
         "w": 640,
@@ -972,9 +1014,23 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_joncs",
         "from": 43,
         "to": 43,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "aigua__davant_joncs",
+        "from": 44,
+        "to": 44,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 45,
+        "to": 45,
         "direction": "forward",
         "color": "#000000ff"
       }

@@ -44,7 +44,7 @@
     },
     "centraleta 2.aseprite": {
       "frame": {
-        "x": 3775,
+        "x": 3898,
         "y": 360,
         "w": 39,
         "h": 34
@@ -1766,6 +1766,27 @@
     },
     "centraleta 84.aseprite": {
       "frame": {
+        "x": 3775,
+        "y": 360,
+        "w": 123,
+        "h": 38
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 81,
+        "y": 207,
+        "w": 123,
+        "h": 38
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "centraleta 85.aseprite": {
+      "frame": {
         "x": 640,
         "y": 0,
         "w": 640,
@@ -1840,9 +1861,16 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_arrel",
         "from": 84,
         "to": 84,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 85,
+        "to": 85,
         "direction": "forward",
         "color": "#000000ff"
       }

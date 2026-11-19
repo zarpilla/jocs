@@ -460,5 +460,24 @@
       "direction": true,
       "stretch": 0.9
     }
+  },
+  "characterLights": {
+    "ambient": "#c4b49a",
+    "lights": [
+      {
+        "x": 678,
+        "y": 112,
+        "radius": 560,
+        "color": "#ffd27e",
+        "intensity": 0.6
+      },
+      {
+        "x": 222,
+        "y": 202,
+        "radius": 80,
+        "color": "#50e6d2",
+        "intensity": 0.35
+      }
+    ]
   }
 }
