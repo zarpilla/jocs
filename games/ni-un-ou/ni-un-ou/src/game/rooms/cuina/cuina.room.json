@@ -18,23 +18,90 @@
         "active": true,
         "points": [
           {
-            "x": 8,
-            "y": 224
+            "x": 23,
+            "y": 212
           },
           {
-            "x": 635,
-            "y": 224
+            "x": 205,
+            "y": 140
           },
           {
-            "x": 635,
-            "y": 263
+            "x": 199,
+            "y": 140
           },
           {
-            "x": 8,
-            "y": 263
+            "x": 185,
+            "y": 145
+          },
+          {
+            "x": 253,
+            "y": 152
+          },
+          {
+            "x": 264,
+            "y": 146
+          },
+          {
+            "x": 313,
+            "y": 151
+          },
+          {
+            "x": 304,
+            "y": 158
+          },
+          {
+            "x": 367,
+            "y": 164
+          },
+          {
+            "x": 366,
+            "y": 165
+          },
+          {
+            "x": 439,
+            "y": 173
+          },
+          {
+            "x": 439,
+            "y": 174
+          },
+          {
+            "x": 554,
+            "y": 186
+          },
+          {
+            "x": 565,
+            "y": 218
+          },
+          {
+            "x": 54,
+            "y": 218
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 217,
+                "y": 196
+              },
+              {
+                "x": 326,
+                "y": 202
+              },
+              {
+                "x": 333,
+                "y": 185
+              },
+              {
+                "x": 234,
+                "y": 179
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -46,29 +113,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 8,
-          "y": 61
+          "x": 68,
+          "y": 68
         },
         {
-          "x": 69,
-          "y": 61
+          "x": 116,
+          "y": 68
         },
         {
-          "x": 69,
-          "y": 203
+          "x": 116,
+          "y": 170
         },
         {
-          "x": 8,
-          "y": 203
+          "x": 68,
+          "y": 170
         }
       ],
       "walkToPoint": {
-        "x": 40,
-        "y": 235
+        "x": 120,
+        "y": 180
       },
       "lookAtPoint": {
-        "x": 38,
-        "y": 203
+        "x": 92,
+        "y": 170
       },
       "defaultVerb": "open"
     },
@@ -79,29 +146,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 77,
-          "y": 53
+          "x": 116,
+          "y": 33
         },
         {
-          "x": 152,
-          "y": 53
+          "x": 168,
+          "y": 33
         },
         {
-          "x": 152,
-          "y": 139
+          "x": 168,
+          "y": 150
         },
         {
-          "x": 77,
-          "y": 139
+          "x": 116,
+          "y": 150
         }
       ],
       "walkToPoint": {
-        "x": 115,
-        "y": 237
+        "x": 171,
+        "y": 161
       },
       "lookAtPoint": {
-        "x": 114,
-        "y": 139
+        "x": 142,
+        "y": 150
       }
     },
     {
@@ -111,29 +178,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 200,
+          "x": 187,
+          "y": 62
+        },
+        {
+          "x": 198,
+          "y": 62
+        },
+        {
+          "x": 198,
           "y": 93
         },
         {
-          "x": 221,
+          "x": 187,
           "y": 93
-        },
-        {
-          "x": 221,
-          "y": 139
-        },
-        {
-          "x": 200,
-          "y": 139
         }
       ],
       "walkToPoint": {
-        "x": 211,
-        "y": 237
+        "x": 206,
+        "y": 145
       },
       "lookAtPoint": {
-        "x": 210,
-        "y": 139
+        "x": 192,
+        "y": 93
       }
     },
     {
@@ -143,29 +210,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 327,
-          "y": 45
+          "x": 264,
+          "y": 35
         },
         {
-          "x": 401,
-          "y": 45
+          "x": 317,
+          "y": 35
         },
         {
-          "x": 401,
-          "y": 203
+          "x": 317,
+          "y": 150
         },
         {
-          "x": 327,
-          "y": 203
+          "x": 264,
+          "y": 150
         }
       ],
       "walkToPoint": {
-        "x": 364,
-        "y": 237
+        "x": 285,
+        "y": 151
       },
       "lookAtPoint": {
-        "x": 364,
-        "y": 203
+        "x": 290,
+        "y": 150
       }
     },
     {
@@ -175,29 +242,29 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 408,
-          "y": 74
+          "x": 313,
+          "y": 49
         },
         {
-          "x": 472,
-          "y": 74
+          "x": 371,
+          "y": 49
         },
         {
-          "x": 472,
-          "y": 203
+          "x": 371,
+          "y": 162
         },
         {
-          "x": 408,
-          "y": 203
+          "x": 313,
+          "y": 162
         }
       ],
       "walkToPoint": {
-        "x": 440,
-        "y": 237
+        "x": 334,
+        "y": 162
       },
       "lookAtPoint": {
-        "x": 440,
-        "y": 203
+        "x": 342,
+        "y": 162
       }
     },
     {
@@ -207,34 +274,61 @@
       "zIndex": 5,
       "points": [
         {
-          "x": 483,
-          "y": 115
+          "x": 373,
+          "y": 89
         },
         {
-          "x": 555,
-          "y": 115
+          "x": 435,
+          "y": 89
         },
         {
-          "x": 555,
-          "y": 203
+          "x": 435,
+          "y": 171
         },
         {
-          "x": 483,
-          "y": 203
+          "x": 373,
+          "y": 171
         }
       ],
       "walkToPoint": {
-        "x": 519,
-        "y": 237
+        "x": 401,
+        "y": 171
       },
       "lookAtPoint": {
-        "x": 519,
-        "y": 203
+        "x": 404,
+        "y": 171
       }
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.702,
+      "scaleBottom": 1.208,
+      "points": [
+        {
+          "x": 0,
+          "y": 138
+        },
+        {
+          "x": 639,
+          "y": 138
+        },
+        {
+          "x": 639,
+          "y": 220
+        },
+        {
+          "x": 0,
+          "y": 220
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -259,30 +353,30 @@
       "collider": {
         "points": [
           {
-            "x": 85,
-            "y": 141
+            "x": 126,
+            "y": 113
           },
           {
-            "x": 131,
-            "y": 141
+            "x": 155,
+            "y": 113
           },
           {
-            "x": 131,
-            "y": 165
+            "x": 155,
+            "y": 124
           },
           {
-            "x": 85,
-            "y": 165
+            "x": 126,
+            "y": 124
           }
         ]
       },
       "walkToPoint": {
-        "x": 115,
-        "y": 237
+        "x": 171,
+        "y": 161
       },
       "lookAtPoint": {
-        "x": 108,
-        "y": 165
+        "x": 140,
+        "y": 124
       },
       "description": "safata del muntacàrregues"
     },
@@ -339,30 +433,30 @@
       "collider": {
         "points": [
           {
-            "x": 483,
-            "y": 115
+            "x": 373,
+            "y": 89
           },
           {
-            "x": 555,
-            "y": 115
+            "x": 435,
+            "y": 89
           },
           {
-            "x": 555,
-            "y": 203
+            "x": 435,
+            "y": 171
           },
           {
-            "x": 483,
-            "y": 203
+            "x": 373,
+            "y": 171
           }
         ]
       },
       "walkToPoint": {
-        "x": 519,
-        "y": 237
+        "x": 401,
+        "y": 171
       },
       "lookAtPoint": {
-        "x": 519,
-        "y": 203
+        "x": 404,
+        "y": 171
       },
       "description": "forn"
     },
@@ -379,14 +473,86 @@
           "frameDuration": 110
         }
       }
+    },
+    {
+      "id": "davant_illa",
+      "tag": "davant_illa",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_illa": {}
+      },
+      "zIndex": 20,
+      "baseline": 190
+    },
+    {
+      "id": "davant_primer_pla",
+      "tag": "davant_primer_pla",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_primer_pla": {}
+      },
+      "zIndex": 22,
+      "baseline": 999
+    },
+    {
+      "id": "ulls_dia__davant_illa",
+      "tag": "ulls_dia__davant_illa",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ulls_dia__davant_illa": {}
+      },
+      "zIndex": 21,
+      "baseline": 190
+    },
+    {
+      "id": "armari_obert__davant_illa",
+      "tag": "armari_obert__davant_illa",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "armari_obert__davant_illa": {}
+      },
+      "zIndex": 21,
+      "baseline": 190
+    },
+    {
+      "id": "ulls_dia__davant_primer_pla",
+      "tag": "ulls_dia__davant_primer_pla",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "ulls_dia__davant_primer_pla": {}
+      },
+      "zIndex": 23,
+      "baseline": 999
+    },
+    {
+      "id": "armari_obert__davant_primer_pla",
+      "tag": "armari_obert__davant_primer_pla",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "armari_obert__davant_primer_pla": {}
+      },
+      "zIndex": 23,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 440,
-      "y": 259,
+      "x": 415,
+      "y": 209,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -395,8 +561,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 200,
-      "y": 256,
+      "x": 165,
+      "y": 174,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -405,8 +571,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 595,
-      "y": 248,
+      "x": 477,
+      "y": 181,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -415,8 +581,8 @@
     {
       "instanceId": "nadia-1",
       "definition": "nadia/nadia.character.json",
-      "x": 368,
-      "y": 245,
+      "x": 288,
+      "y": 164,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -446,5 +612,65 @@
     }
   ],
   "viewAnchorY": 0,
-  "artScale": 2
+  "characterLights": {
+    "ambient": "#a89880",
+    "lights": [
+      {
+        "x": 194,
+        "y": 20,
+        "radius": 200,
+        "color": "#ffd28c",
+        "intensity": 0.7
+      },
+      {
+        "x": 348,
+        "y": 19,
+        "radius": 200,
+        "color": "#ffd28c",
+        "intensity": 0.7
+      },
+      {
+        "x": 165,
+        "y": 18,
+        "radius": 200,
+        "color": "#ffd28c",
+        "intensity": 0.7
+      },
+      {
+        "x": 456,
+        "y": 17,
+        "radius": 200,
+        "color": "#ffd28c",
+        "intensity": 0.7
+      },
+      {
+        "x": 404,
+        "y": 133,
+        "radius": 110,
+        "color": "#ff9640",
+        "intensity": 0.6
+      },
+      {
+        "x": 291,
+        "y": 117,
+        "radius": 90,
+        "color": "#bedcf0",
+        "intensity": 0.4
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#120a06",
+    "alpha": 0.42,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 346,
+      "y": 180,
+      "stretch": 0.5,
+      "reach": 160
+    }
+  },
+  "floorSquash": 0.4
 }
