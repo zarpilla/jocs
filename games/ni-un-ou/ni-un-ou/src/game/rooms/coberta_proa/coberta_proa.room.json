@@ -596,5 +596,33 @@
       "stretch": 0.5
     }
   },
-  "floorSquash": 0.27
+  "floorSquash": 0.27,
+  "characterLights": {
+    "ambient": "#7484a2",
+    "lights": [
+      {
+        "x": 101,
+        "y": 87,
+        "radius": 250,
+        "color": "#ffd28c",
+        "intensity": 0.7
+      },
+      {
+        "x": 483,
+        "y": 38,
+        "radius": 330,
+        "color": "#ffe2b0",
+        "intensity": 0.6
+      },
+      {
+        "x": 320,
+        "y": 200,
+        "radius": 4000,
+        "power": 1.0,
+        "color": "#ffe4b0",
+        "intensity": 0.56,
+        "whenPropVisible": "dia"
+      }
+    ]
+  }
 }

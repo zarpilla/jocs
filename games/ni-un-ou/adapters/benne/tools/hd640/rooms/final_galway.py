@@ -764,20 +764,25 @@ FRONT = [{'id': 'davant', 'mask': _mascara_taula, 'baseline': _BASE_TAULA, 'zInd
           'baseline': 999, 'zIndex': 21}]
 
 _V_FONS = min(v for _, v in _SEU.values()) - 8
+_WALK = [_p(IRI[0] - 20, IRI[1] - 10), _p(VET[0] + 20, VET[1] - 10), _p(VET[0] + 20, VET[1] + 10),
+         _p(IRI[0] - 20, IRI[1] + 10)]
+# L'escala només fins on hi ha algú (la franja on seuen i on són l'Iri i la Vet, ≤ 1,27; l'Iri, 1,22): fins a baix de
+# tot de la pantalla arribaria a 1,85, i els fulls, que són a 1×, s'hi pixelarien. Ningú no camina (és la cinemàtica
+# del final), però el polígon de la regió diu fins on val l'escala.
+_V_PROP = max(v for _, v in _WALK) + 2
 
 GEOMETRIA = {
     'things': {},
     'spawns': {**_SEU, 'iri': _p(*IRI), 'vet': _p(*VET), 'diu': _DIU},
-    'walkable': [_p(IRI[0] - 20, IRI[1] - 10), _p(VET[0] + 20, VET[1] - 10), _p(VET[0] + 20, VET[1] + 10),
-                 _p(IRI[0] - 20, IRI[1] + 10)],
+    'walkable': _WALK,
     'floorSquash': 0.3,
     # el sol baix, a l'esquerra i al fons: les ombres cauen cap a la dreta i cap a nosaltres
     'characterShadow': {'enabled': True, 'color': '#1a1420', 'alpha': 0.4, 'squash': 0.3, 'core': 0.6,
                         'light': {'x': 1, 'y': 0.35, 'direction': True, 'stretch': 0.9}},
     'regions': [
         {'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
-         'scaleTop': round(_escala_a(_V_FONS), 3), 'scaleBottom': round(_escala_a(H - 1), 3),
-         'points': [(0, _V_FONS), (W - 1, _V_FONS), (W - 1, H - 1), (0, H - 1)]},
+         'scaleTop': round(_escala_a(_V_FONS), 3), 'scaleBottom': round(_escala_a(_V_PROP), 3),
+         'points': [(0, _V_FONS), (W - 1, _V_FONS), (W - 1, _V_PROP), (0, _V_PROP)]},
         # en Diu, damunt la taula: l'escala de la taula, no la del terra que hi ha a sota a la pantalla
         {'id': 'diu', 'active': True, 'scaleEnabled': True,
          'scaleTop': round(CAM.escala((DIU[0], TAULA_H, DIU[1])), 3),

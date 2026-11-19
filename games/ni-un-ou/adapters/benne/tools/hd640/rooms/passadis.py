@@ -345,6 +345,12 @@ def _p(x, z, y=0.0):
     return round(u), round(v)
 
 
+def _llum_pj(P, radius, color, intensity, **kw):
+    """Una llum del món (x, y, z), a la pantalla: una llum dels personatges (`characterLights`)."""
+    u, v = _p(P[0], P[2], P[1])
+    return {'x': u, 'y': v, 'radius': radius, 'color': color, 'intensity': intensity, **kw}
+
+
 # Capes del davant: el primer pla (sempre davant), el carretó i la barana del pou (qui hi passa per darrere, hi queda
 # darrere).
 FRONT = [
@@ -437,4 +443,14 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (les de _llums, a la pantalla): els tres llums de sostre, càlids; la
+    # porta del menjador, i el verd de les màquines que puja pel pou de l'escala.
+    'characterLights': {
+        'ambient': '#9c9282',
+        'lights': [
+            *[_llum_pj((x, 176, ZW - 16), 200, '#ffd28c', 0.6) for x in PL.LAMPS],           # els llums de sostre
+            _llum_pj(MENJ_C, 140, '#ffc880', 0.5),                                        # el menjador
+            _llum_pj((HOLE_C[0], 10, HOLE_C[2]), 100, '#78e6a0', 0.5),                    # les màquines, pel pou
+        ],
+    },
 }

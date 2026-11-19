@@ -472,7 +472,7 @@
       "animations": {
         "davant_carreto": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 199
     },
     {
@@ -484,7 +484,7 @@
       "animations": {
         "davant_galleda": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 202
     },
     {
@@ -496,7 +496,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 999
     }
   ],
@@ -536,5 +536,45 @@
       "reach": 150
     }
   },
-  "floorSquash": 0.42
+  "floorSquash": 0.42,
+  "characterLights": {
+    "ambient": "#9c9282",
+    "lights": [
+      {
+        "x": 178,
+        "y": 46,
+        "radius": 200,
+        "color": "#ffd28c",
+        "intensity": 0.6
+      },
+      {
+        "x": 317,
+        "y": 47,
+        "radius": 200,
+        "color": "#ffd28c",
+        "intensity": 0.6
+      },
+      {
+        "x": 436,
+        "y": 47,
+        "radius": 200,
+        "color": "#ffd28c",
+        "intensity": 0.6
+      },
+      {
+        "x": 88,
+        "y": 142,
+        "radius": 140,
+        "color": "#ffc880",
+        "intensity": 0.5
+      },
+      {
+        "x": 426,
+        "y": 152,
+        "radius": 100,
+        "color": "#78e6a0",
+        "intensity": 0.5
+      }
+    ]
+  }
 }

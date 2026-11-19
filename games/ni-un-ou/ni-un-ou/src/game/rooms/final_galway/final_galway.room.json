@@ -47,7 +47,7 @@
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
       "scaleTop": 0.928,
-      "scaleBottom": 1.848,
+      "scaleBottom": 1.288,
       "points": [
         {
           "x": 0,
@@ -59,11 +59,11 @@
         },
         {
           "x": 639,
-          "y": 359
+          "y": 289
         },
         {
           "x": 0,
-          "y": 359
+          "y": 289
         }
       ]
     },
@@ -178,7 +178,7 @@
       "animations": {
         "davant_primer_pla": {}
       },
-      "zIndex": 22,
+      "zIndex": 23,
       "baseline": 999
     }
   ],

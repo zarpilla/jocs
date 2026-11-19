@@ -586,6 +586,12 @@ def _p(x, z, y=0.0):
     return round(u), round(v)
 
 
+def _llum_pj(P, radius, color, intensity, **kw):
+    """Una llum del món (x, y, z), a la pantalla: una llum dels personatges (`characterLights`)."""
+    u, v = _p(P[0], P[2], P[1])
+    return {'x': u, 'y': v, 'radius': radius, 'color': color, 'intensity': intensity, **kw}
+
+
 # Capes del davant: el primer pla (sempre davant), el timó, la cadira i la taula de cartes (qui hi passa per
 # darrere, hi queda darrere).
 FRONT = [
@@ -695,4 +701,21 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (les de _llums, a la pantalla): penombra freda; el llum de sostre,
+    # vermellós; el verd de les pantalles a la consola; la llum càlida que puja de l'escala, i la lluna pels vidres.
+    'characterLights': {
+        'ambient': '#6e7690',
+        'lights': [
+            _llum_pj((LAMP[0], 196, LAMP[1]), 230, '#ffb898', 0.5),                       # el llum de sostre
+            _llum_pj(TERM_C, 110, '#8cf0a0', 0.45),                                       # el terminal
+            _llum_pj(RADAR_C, 100, '#78e68c', 0.4),                                       # el radar
+            _llum_pj(STAIRS_C, 150, '#ffc070', 0.7),                                      # l'escala
+            _llum_pj((WIN_C[0] - 60, 140, ZW + 20), 300, '#a8bce0', 0.3),                 # la lluna, pels vidres
+            _llum_pj((_w(610), 110, ZW + 10), 110, '#ffd8a0', 0.3),                       # el llum del pal
+            # de dia (el decorat `dia`): la claror grisa dels vidres
+            _llum_pj(WIN_C, 420, '#e0e8f0', 0.6, power=1.0, whenPropVisible='dia'),
+            # el generador parat (`fosc`): els llums d'emergència, vermells
+            *[_llum_pj(p, 200, '#ff4030', 0.5, whenPropVisible='fosc') for p in EMERG],
+        ],
+    },
 }

@@ -483,5 +483,56 @@
       "reach": 150
     }
   },
-  "floorSquash": 0.45
+  "floorSquash": 0.45,
+  "characterLights": {
+    "ambient": "#6e7890",
+    "lights": [
+      {
+        "x": 216,
+        "y": 39,
+        "radius": 240,
+        "color": "#f0e6b4",
+        "intensity": 0.6
+      },
+      {
+        "x": 513,
+        "y": 106,
+        "radius": 160,
+        "color": "#c8d0e0",
+        "intensity": 0.35
+      },
+      {
+        "x": 430,
+        "y": 46,
+        "radius": 140,
+        "color": "#a8bce0",
+        "intensity": 0.25
+      },
+      {
+        "x": 225,
+        "y": 86,
+        "radius": 90,
+        "color": "#ffb060",
+        "intensity": 0.4
+      },
+      {
+        "x": 430,
+        "y": 46,
+        "radius": 400,
+        "color": "#e8eef4",
+        "intensity": 0.45,
+        "power": 1.0,
+        "whenPropVisible": "dia"
+      },
+      {
+        "x": 514,
+        "y": 97,
+        "radius": 380,
+        "color": "#e8eef4",
+        "intensity": 0.4,
+        "power": 1.0,
+        "whenPropVisible": "dia"
+      }
+    ]
+  }
 }

@@ -839,5 +839,77 @@
       "reach": 140
     }
   },
-  "floorSquash": 0.45
+  "floorSquash": 0.45,
+  "characterLights": {
+    "ambient": "#6e7690",
+    "lights": [
+      {
+        "x": 325,
+        "y": 3,
+        "radius": 230,
+        "color": "#ffb898",
+        "intensity": 0.5
+      },
+      {
+        "x": 337,
+        "y": 88,
+        "radius": 110,
+        "color": "#8cf0a0",
+        "intensity": 0.45
+      },
+      {
+        "x": 221,
+        "y": 87,
+        "radius": 100,
+        "color": "#78e68c",
+        "intensity": 0.4
+      },
+      {
+        "x": 101,
+        "y": 164,
+        "radius": 150,
+        "color": "#ffc070",
+        "intensity": 0.7
+      },
+      {
+        "x": 257,
+        "y": 43,
+        "radius": 300,
+        "color": "#a8bce0",
+        "intensity": 0.3
+      },
+      {
+        "x": 524,
+        "y": 73,
+        "radius": 110,
+        "color": "#ffd8a0",
+        "intensity": 0.3
+      },
+      {
+        "x": 295,
+        "y": 58,
+        "radius": 420,
+        "color": "#e0e8f0",
+        "intensity": 0.6,
+        "power": 1.0,
+        "whenPropVisible": "dia"
+      },
+      {
+        "x": 94,
+        "y": 31,
+        "radius": 200,
+        "color": "#ff4030",
+        "intensity": 0.5,
+        "whenPropVisible": "fosc"
+      },
+      {
+        "x": 462,
+        "y": 26,
+        "radius": 200,
+        "color": "#ff4030",
+        "intensity": 0.5,
+        "whenPropVisible": "fosc"
+      }
+    ]
+  }
 }

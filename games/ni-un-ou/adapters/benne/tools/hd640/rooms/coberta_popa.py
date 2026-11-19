@@ -655,6 +655,12 @@ def _p(x, z, y=0.0):
     return round(u), round(v)
 
 
+def _llum_pj(P, radius, color, intensity, **kw):
+    """Una llum del món (x, y, z), a la pantalla: una llum dels personatges (`characterLights`)."""
+    u, v = _p(P[0], P[2], P[1])
+    return {'x': u, 'y': v, 'radius': radius, 'color': color, 'intensity': intensity, **kw}
+
+
 def _rect_mon(*Ps):
     pts = [CAM.projecta(P) for P in Ps]
     return (max(0, round(min(p[0] for p in pts))), max(0, round(min(p[1] for p in pts))),
@@ -722,4 +728,17 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round((_V_FONS - 2 - HOR) / CAM_Y, 3), 'scaleBottom': round((_V_PROP + 2 - HOR) / CAM_Y, 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (les de _llums, a la pantalla): de nit, la claror freda de la lluna i
+    # el mar, i els focus càlids de la porta, de la grua i de popa.
+    'characterLights': {
+        'ambient': '#7484a2',
+        'lights': [
+            _llum_pj(LAMP_P, 250, '#ffd28c', 0.7),                                        # el focus de la porta
+            _llum_pj((GRUA[0] + 30, 168, GRUA[1] - 20), 230, '#ffdca0', 0.55),            # el focus de la grua
+            _llum_pj((PAL_POPA[0], 190, PAL_POPA[1]), 160, '#ffd8a0', 0.35),              # el llum de popa
+        # de dia (el decorat `dia`): el sol, alt; gairebé igual a tota la coberta, i treu el blau de la nit
+        {'x': W // 2, 'y': 200, 'radius': 4000, 'power': 1.0, 'color': '#ffe4b0', 'intensity': 0.56,
+         'whenPropVisible': 'dia'},
+        ],
+    },
 }

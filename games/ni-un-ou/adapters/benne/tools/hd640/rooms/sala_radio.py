@@ -539,6 +539,12 @@ def _p(x, z, y=0.0):
     return round(u), round(v)
 
 
+def _llum_pj(P, radius, color, intensity, **kw):
+    """Una llum del món (x, y, z), a la pantalla: una llum dels personatges (`characterLights`)."""
+    u, v = _p(P[0], P[2], P[1])
+    return {'x': u, 'y': v, 'radius': radius, 'color': color, 'intensity': intensity, **kw}
+
+
 # Capes del davant: el primer pla (sempre davant) i el tamboret (qui hi passa per darrere, hi queda darrere).
 FRONT = [
     {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20, 'variants': ('dia',)},
@@ -613,4 +619,18 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (les de _llums, a la pantalla): penombra freda; el llum de pantalla
+    # verda damunt la taula; la claror del pont per la porta; la lluna per l'ull de bou, i el visor de la ràdio.
+    'characterLights': {
+        'ambient': '#6e7890',
+        'lights': [
+            _llum_pj((LAMP[0], LAMP[1] - 6, LAMP[2]), 240, '#f0e6b4', 0.6),               # el llum
+            _llum_pj((XR - 4, 80, _wz(43)), 160, '#c8d0e0', 0.35),                        # el pont, per la porta
+            _llum_pj(PORT_C, 140, '#a8bce0', 0.25),                                       # la lluna, per l'ull de bou
+            _llum_pj((_w(311), 100, RADIO[2] - 4), 90, '#ffb060', 0.4),                   # el visor de la ràdio
+            # de dia (el decorat `dia`): la claror de l'ull de bou i de la porta
+            _llum_pj(PORT_C, 400, '#e8eef4', 0.45, power=1.0, whenPropVisible='dia'),
+            _llum_pj((XR - 4, 90, _wz(43)), 380, '#e8eef4', 0.4, power=1.0, whenPropVisible='dia'),
+        ],
+    },
 }
