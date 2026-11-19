@@ -38,6 +38,22 @@
             "y": 177
           },
           {
+            "x": 269,
+            "y": 173
+          },
+          {
+            "x": 376,
+            "y": 172
+          },
+          {
+            "x": 349,
+            "y": 175
+          },
+          {
+            "x": 302,
+            "y": 179
+          },
+          {
             "x": 287,
             "y": 184
           },
@@ -46,20 +62,20 @@
             "y": 196
           },
           {
-            "x": 381,
+            "x": 354,
+            "y": 203
+          },
+          {
+            "x": 307,
             "y": 209
           },
           {
-            "x": 329,
-            "y": 217
+            "x": 340,
+            "y": 219
           },
           {
-            "x": 365,
-            "y": 227
-          },
-          {
-            "x": 418,
-            "y": 218
+            "x": 389,
+            "y": 211
           },
           {
             "x": 453,
@@ -200,29 +216,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 340,
-          "y": 89
+          "x": 317,
+          "y": 80
         },
         {
-          "x": 445,
-          "y": 89
+          "x": 420,
+          "y": 80
         },
         {
-          "x": 445,
-          "y": 224
+          "x": 420,
+          "y": 216
         },
         {
-          "x": 340,
-          "y": 224
+          "x": 317,
+          "y": 216
         }
       ],
       "walkToPoint": {
-        "x": 335,
-        "y": 224
+        "x": 313,
+        "y": 215
       },
       "lookAtPoint": {
-        "x": 392,
-        "y": 224
+        "x": 368,
+        "y": 216
       },
       "defaultVerb": "open"
     },
@@ -330,16 +346,16 @@
       "active": true,
       "scaleEnabled": true,
       "scaleWalkSpeed": true,
-      "scaleTop": 0.485,
+      "scaleTop": 0.446,
       "scaleBottom": 1.123,
       "points": [
         {
           "x": 0,
-          "y": 175
+          "y": 170
         },
         {
           "x": 639,
-          "y": 175
+          "y": 170
         },
         {
           "x": 639,
@@ -426,7 +442,7 @@
       "animations": {
         "davant_nau4": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 185
     },
     {
@@ -438,7 +454,7 @@
       "animations": {
         "davant_nau3": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 191
     },
     {
@@ -450,7 +466,7 @@
       "animations": {
         "davant_nau2": {}
       },
-      "zIndex": 23,
+      "zIndex": 26,
       "baseline": 198
     },
     {
@@ -462,7 +478,7 @@
       "animations": {
         "davant_tauler": {}
       },
-      "zIndex": 24,
+      "zIndex": 28,
       "baseline": 202
     },
     {
@@ -474,7 +490,7 @@
       "animations": {
         "davant_nau1": {}
       },
-      "zIndex": 25,
+      "zIndex": 30,
       "baseline": 206
     },
     {
@@ -486,7 +502,7 @@
       "animations": {
         "davant_nau0": {}
       },
-      "zIndex": 26,
+      "zIndex": 34,
       "baseline": 216
     },
     {
@@ -498,8 +514,8 @@
       "animations": {
         "davant_rampa": {}
       },
-      "zIndex": 27,
-      "baseline": 216
+      "zIndex": 32,
+      "baseline": 209
     },
     {
       "id": "davant_pal",
@@ -510,7 +526,7 @@
       "animations": {
         "davant_pal": {}
       },
-      "zIndex": 28,
+      "zIndex": 36,
       "baseline": 222
     },
     {
@@ -522,7 +538,7 @@
       "animations": {
         "davant_sortidor": {}
       },
-      "zIndex": 29,
+      "zIndex": 38,
       "baseline": 231
     },
     {
@@ -534,7 +550,7 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 30,
+      "zIndex": 40,
       "baseline": 999
     }
   ],

@@ -17,8 +17,8 @@ Una càmera baixa (sense picat: les verticals, verticals), amb l'horitzó a y = 
 Es passa per darrere del tauler, dels bidons, del sortidor, de la rampa i de la nau (per trams).
 
 El detall (el tauler, els contenidors, els dipòsits, els hangars, el rètol del pal) ve del port pla de sempre
-(port_terra2_pla_comu.py), dibuixat de cara i projectat. ANIMS: `pols`, `llum_canonada` i `balisa` (el llum taronja de
-dalt de la nau).
+(port_terra2_pla_comu.py), dibuixat de cara i projectat. ANIMS: `pols`, `llum_canonada` i `balisa` (el llum de navegació
+vermell, dalt del pal de proa). La nau és la canònica (cantimplora_comu.py).
 
 El món: x a la dreta (0 = la càmera), y amunt, z endavant; 1 unitat = 1 px a la distància on un personatge fa la seva
 mida normal (z = 500·130/(v − 112)). Al terra, l'escala d'un personatge és (v − 112) / 130, exacta.
@@ -35,7 +35,8 @@ from hd.rooms.exterior import fbm, smooth, vnoise
 from hd640.rooms import port_terra2_pla_comu as PL
 from hd640.rooms.terra2_comu import (
     RH, EARTH, STONE, PLANK, GREYW, WHITEP, BLUE, BLACKT, IRONR, RUSTT, OLIVE, ORANGE, WARN, GRASS, HILL, COL,
-    text, text_width, gota, dust_sky, canonada, panell_preu, cracks, dust_wind_frames, llum_canonada_frames)
+    gota, dust_sky, canonada, panell_preu, cracks, dust_wind_frames, llum_canonada_frames)
+from hd640.rooms.cantimplora_comu import Cantimplora
 from hd640.tres_d import Camera, Escena, Llum
 
 HOR = 112                                          # l'horitzó
@@ -48,18 +49,16 @@ LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
 LLUMS = [Llum((6000, 5000, 2000), 1e6, 2.0, power=1.0)]   # el sol, a dalt a la dreta (ombres cap a l'esquerra)
 AMBIENT = -1.1
 
-# La Cantimplora: la popa, a prop i a la dreta; l'eix fuig cap al fons a l'esquerra, cap a la Canonada
+# La Cantimplora (el model canònic, cantimplora_comu): la popa, a prop i a la dreta; l'eix fuig cap al fons a
+# l'esquerra, cap a la Canonada; la porta, a babord (el costat que es veu)
 STERN = (250.0, 650.0)                             # la popa (x, z), arran de terra sota l'eix
 NAU_B = math.radians(35)
-D = (-math.sin(NAU_B), 0.0, math.cos(NAU_B))       # de popa a proa
-NS = (-math.cos(NAU_B), 0.0, -math.sin(NAU_B))     # el costat que es veu (cap a la càmera i a l'esquerra)
-NAU_A = math.atan2(D[2], D[0])                     # (el gir de les peces alineades amb l'eix)
-NR = 92.0                                          # el radi del buc
-NY = 112.0                                         # l'alçada de l'eix
-NL = 400.0                                         # l'eslora (sense les cúpules)
-PORTA_L = (52.0, 104.0)                            # la porta de la bodega (al llarg de l'eix)
-PORTA_T = (-0.46, 0.5)                             # (angles: 0 = el costat, π/2 = dalt)
-RAMPA_OUT = 205.0                                  # on toca a terra la rampa (des de l'eix, cap a NS)
+SEGS = (0, 80, 160, 240, 320, 400)                 # els trams del buc (cada un, una capa del davant)
+NAU = Cantimplora(popa=STERN, rumb=math.pi / 2 + NAU_B, porta='babord', trams=SEGS)
+NAU_A = NAU.ang                                    # (el gir de les peces alineades amb l'eix)
+NR, NL = NAU.NR, NAU.NL
+PORTA_L, PORTA_T, RAMPA_OUT = NAU.PORTA_L, NAU.PORTA_T, NAU.RAMPA_OUT
+SOL = (0.55, 1.0, -0.1)                            # cap al sol (a dalt a la dreta): les ombres, cap a l'esquerra
 
 TAULER = (-300.0, 720.0, 0.62)                     # x, z, gir
 PAL = (-330.0, 590.0)
@@ -77,35 +76,9 @@ def _up(P, h):
     return (P[0], P[1] + h, P[2])
 
 
-LS, LB = 28.0, 34.0                                # la cúpula de popa i la de proa
-
-
-def nau_r(l):
-    """El radi del buc al llarg de l'eix: la popa arrodonida (una cúpula), panxut al mig i la proa que s'afua."""
-    if l < 0:
-        return NR * 0.72 * math.sqrt(max(0.0, 1 - (l / LS) ** 2))
-    if l > NL:
-        return NR * 0.5 * math.sqrt(max(0.0, 1 - ((l - NL) / LB) ** 2))
-    r = NR * (0.72 + 0.28 * math.sin(min(1.0, l / 60) * math.pi / 2))
-    if l > NL - 110:
-        r *= 1 - 0.5 * ((l - (NL - 110)) / 110) ** 1.5
-    return r
-
-
-def nau_dr(l):
-    return (nau_r(l + 0.5) - nau_r(l - 0.5))
-
-
-def nau_p(l, th, dr=0.0):
-    """Un punt del buc: `l` al llarg de l'eix, `th` l'angle (0 = el costat que es veu, π/2 = dalt)."""
-    r = nau_r(l) + dr
-    c = (STERN[0] + D[0] * l, NY, STERN[1] + D[2] * l)
-    return (c[0] + NS[0] * r * math.cos(th), c[1] + r * math.sin(th), c[2] + NS[2] * r * math.cos(th))
-
-
 def nau_terra(l, off):
     """Un punt del terra: `l` al llarg de l'eix, `off` cap al costat que es veu."""
-    return (STERN[0] + D[0] * l + NS[0] * off, STERN[1] + D[2] * l + NS[2] * off)
+    return NAU.terra(l, off)
 
 
 # ─── Les textures: el port pla de sempre, i el buc desenrotllat ──────────────
@@ -114,105 +87,6 @@ def _pla(fn, w=W, h=H):
     cv = Canvas(w, h, light=PL.LIGHT, transparent=True)
     fn(cv)
     return cv.img
-
-
-def _text_gran(cv, s, x, y, col, k, mirror=False):
-    """Text de la font petita, ampliat k vegades (pintat amb plantilla). `mirror`: per a una superfície que es veu
-    d'esquerra a dreta al revés que la textura (el costat de la nau)."""
-    tw = text_width(s)
-    t = Canvas(tw + 2, 9, transparent=True)
-    text(t, s, 0, 1, BLACKT, 1.0, lit=0, flat=col)
-    src = t.img.load()
-    for yy in range(9):
-        for xx in range(tw + 2):
-            if src[xx, yy][3]:
-                for dy in range(k):
-                    for dx in range(k):
-                        X = x + (tw * k - 1 - (xx * k + dx) if mirror else xx * k + dx)
-                        if hr(X, y + yy * k + dy, 77) > 0.12:                  # la pintura, gastada
-                            cv.flat(X, y + yy * k + dy, col)
-    return tw * k
-
-
-TEX_H = int(math.pi * NR) + 1                      # el buc desenrotllat: x = l + LS, y = (π/2 − th)·NR (dalt a y 0)
-TEX_W = int(LS + NL + LB) + 1
-
-
-def _ty(th):
-    return (math.pi / 2 - th) * NR
-
-
-def buc_tex():
-    """La planxa del buc, desenrotllada (de popa a proa, de dalt a baix): plaques oliva amb reblons, la franja
-    taronja, els regalims de rovell, el nom i la matrícula, els ulls de bou, el finestral del pont i la porta de la
-    bodega oberta, amb el marc de la banda de perill."""
-    w = TEX_W
-    cv = Canvas(w, TEX_H, light=None)
-    for y in range(TEX_H):
-        th = math.pi / 2 - y / NR
-        for x in range(w):
-            pv = y / 26
-            plate_r = int(pv)
-            px = x + (plate_r % 2) * 22
-            plate_c = px // 44
-            seam = (pv % 1) < 0.05 or px % 44 == 0
-            lvl = 3.7 + (hr(plate_c, plate_r) - 0.5) * 0.7 + (vnoise(x / 30, y / 10, 8) - 0.5) * 0.6
-            ramp = OLIVE
-            if -0.36 < th < -0.22:
-                ramp, lvl = ORANGE, lvl - 0.5                                 # la franja de seguretat
-            if fbm(x / 3, y / 22, 21) > 0.68 and th < 0.7:
-                ramp, lvl = RUSTT, lvl - 0.2                                  # regalims de rovell
-            if seam:
-                lvl -= 1.0
-            elif px % 44 in (3, 41) and y % 4 == 0:
-                lvl += 1.0                                                    # els reblons
-            cv.put(x, y, ramp, lvl, lit=0)
-    # el nom, amb plantilla, i la matrícula
-    # (el costat que es veu va de popa, a la dreta, cap a proa, a l'esquerra: les lletres, al revés)
-    tw = text_width('CANTIMPLORA') * 3
-    _text_gran(cv, 'CANTIMPLORA', int(LS + 215 - tw / 2), int(_ty(0.12)), (226, 220, 190), 3, mirror=True)
-    _text_gran(cv, 'T2-0447', int(LS + 150), int(_ty(-0.06)), (196, 190, 160), 2, mirror=True)
-    # els ulls de bou
-    for l in (150 + LS, 190 + LS, 230 + LS, 270 + LS):
-        cy = _ty(0.42)
-        cv.disc(l, cy, 6, 6, IRONR, lambda nx, ny: 3.6 + nx - ny, lit=0)
-        cv.disc(l, cy, 4, 4, BLACKT, lambda nx, ny: 1.6 - ny, lit=0)
-        cv.flat(l - 1, int(cy) - 2, (226, 214, 180))
-    # el finestral del pont, a proa
-    for x in range(int(NL - 70 + LS), int(NL + LS + 16)):
-        for y in range(int(_ty(0.8)), int(_ty(0.58))):
-            glass = (x - int(NL - 70 + LS)) % 18 not in (0, 1, 2)
-            if glass:
-                cv.put(x, y, BLACKT, 2.0 + (1.6 if y - _ty(0.78) < 4 else 0) - (0.4 if (x + y) % 5 else 0), lit=0)
-            else:
-                cv.put(x, y, OLIVE, 1.6, lit=0)
-    # la porta de la bodega, oberta: a dins, la llum càlida de filament
-    x0, x1 = PORTA_L[0] + LS, PORTA_L[1] + LS
-    y0, y1 = _ty(PORTA_T[1]), _ty(PORTA_T[0])
-    for y in range(int(y0), int(y1) + 1):
-        for x in range(int(x0), int(x1) + 1):
-            d = math.hypot((x - (x0 + x1) / 2) / 26, (y - y0 - 18) / 44)
-            cv.put(x, y, PL.WARM, 2.3 - d * 1.6 + (y - y0) * 0.004, lit=0)
-    cv.rect(x0 + 6, y0 + 34, x0 + 20, y1, BLACKT, lambda x, y: 1.0 + (0.6 if x % 4 == 0 else 0), lit=0)
-    cv.disc(x1 - 12, y1 - 16, 9, 14, PL.WARM, lambda nx, ny: 0.4 + nx * 0.6, lit=0)   # l'últim barril
-    for k in (x0 + 12, x1 - 12):
-        cv.disc(k, y0 + 4, 1.6, 1.6, PL.WARM, 4.6, lit=0)                            # els llums de filament
-    for y in range(int(y0) - 5, int(y1) + 1):
-        for x in range(int(x0) - 5, int(x1) + 6):
-            if x0 <= x <= x1 and y >= y0:
-                continue
-            on = (y + x) // 4 % 2
-            cv.put(x, y, WARN if on else BLACKT, 3.4 if on else 2.0, lit=0)
-    # la balisa: el peu (el llum és l'animació)
-    return cv.img
-
-
-def _tanc(r):
-    """Un dipòsit esfèric, dibuixat de cara (és igual des d'on es miri): → (imatge, el centre)."""
-    n = int(r * 2 + 8)
-    cv = Canvas(n, n, light=PL.LIGHT, transparent=True)
-    PL._tank(cv, n // 2, n // 2, r)
-    return cv.img, (n // 2, n // 2)
 
 
 @functools.lru_cache(maxsize=None)
@@ -231,9 +105,6 @@ def _textures():
     def hangars(cv):
         PL.hangars(cv)
     return {
-        'buc': buc_tex(),
-        'tanc': _tanc(34),
-        'tanc_d': _tanc(38),
         'verne': contenidor('verne', 3.6),
         'verne2': contenidor('verne', 4.0),
         'rovell': contenidor('rovell', 3.4),
@@ -287,7 +158,7 @@ def _terra(s, t, P):
             rut = abs(d / 38 - 0.5) < 0.1
             lvl = 6.2 + (hr(int(x) // 3, int(z) // 3) - 0.5) * 0.6 - (1.0 if rut else 0)
     # les roderes de les vagonetes, del camí cap a la rampa
-    rx, rz = nau_terra(91, RAMPA_OUT + 20)
+    rx, rz = nau_terra(sum(PORTA_L) / 2, RAMPA_OUT + 20)
     for off in (-14, 14):
         d, u = _dist_seg(x, z, (CAMI[-1][0], CAMI[-1][1] + off), (rx, rz + off))
         if d < 2.2 and 0 < u < 1:
@@ -333,151 +204,11 @@ def ombra(e, cx, cz, rx, rz, k=0.55, ang=0.0):
              lambda s, t: k * min(1.0, 1.8 * max(0.0, 1 - ((s - rx) / rx) ** 2 - ((t - rz) / rz) ** 2)))
 
 
-BAL_L = 220.0                                      # on és la balisa (al llom)
-
-
-SEGS = (0, 80, 160, 240, 320, NL)                  # els trams del buc (cada un, una capa del davant)
-
-
-def _seg(l):
-    for k, (a, b) in enumerate(zip(SEGS, SEGS[1:])):
-        if a <= l < b:
-            return k
-    return 0 if l < 0 else len(SEGS) - 2
-
-
 def nau(e, tex):
-    buc = tex['buc']
-    up = (0, 1, 0)
-    # l'ombra de la nau, cap a l'esquerra (el sol és a dalt a la dreta)
-    for l in range(-20, int(NL) + 20, 30):
-        cx, cz = nau_terra(l, 0)
-        ombra(e, cx - 70, cz + 10, nau_r(max(0, l)) * 1.15, 50, 0.55, ang=NAU_A)
-    # les potes del costat de darrere (es veuen per sota de la panxa)
-    potes(e, -1)
-    # els dipòsits: primer els de darrere, després els del davant (els tapa el llom del buc)
-    img, c = tex['tanc']
-    for l in (40, 120, 200, 280, 350):
-        P = _add(nau_p(l, math.pi / 2), NS, -36)
-        e.sprite(f'nau{_seg(l)}', img, (c[0], c[1] + 24), _up(P, -6))
-    # el pal de la balisa
-    B = nau_p(BAL_L, math.pi / 2)
-    e.caixa(f'nau{_seg(BAL_L)}', B[0] - 1.5, B[0] + 1.5, B[1], B[1] + 60, B[2] - 1.5, B[2] + 1.5, IRONR, 2.4)
-    # el buc: una superfície de revolució, pintada punt a punt (convexa: no cal ordenar res)
-    buc_superficie(e, buc)
-    # els dipòsits del davant, damunt del buc (la part de sota, que hi queda ficada, no es pinta)
-    img, c = tex['tanc_d']
-    for l in (80, 160, 240, 314):
-        P = _add(nau_p(l, 1.25), NS, 4)
-        e.sprite(f'nau{_seg(l)}', img.crop((0, 0, img.width, int(c[1] + 38 * 0.62))), (c[0], c[1] + 38 * 0.62), P)
-    # els dos motors: surten de la popa cap enrere
-    for th, rr in ((0.62, 11), (-0.42, 13)):
-        rad = nau_r(0) * 0.42
-        c0 = (STERN[0], NY, STERN[1])
-        off = _add((NS[0] * math.cos(th) * rad, math.sin(th) * rad, NS[2] * math.cos(th) * rad), (0, 0, 0))
-        A = _add(_add(c0, off), D, -LS - 26)
-        B = _add(_add(c0, off), D, -4)
-        e.tub('nau0', A, B, rr, IRONR, 2.8, llum_dir=(0.8, 0.6))
-        e.tub('nau0', A, _add(A, D, 3), rr * 1.12, IRONR, 3.6, llum_dir=(0.8, 0.6))
-        k = 0.8
-        Q = _add(_add(A, NS, -rr * k), up, rr * k)
-        R_ = (-NS[0], 0, -NS[2])
-        e.quad('nau0', _add(_add(A, R_, rr * k), up, rr * k), _add(_add(A, R_, -rr * k), up, rr * k),
-               _add(_add(A, R_, -rr * k), up, -rr * k), _add(_add(A, R_, rr * k), up, -rr * k),
-               ramp=BLACKT, lvl=lambda s, t, P: 0.3 + t * 0.04, dues_cares=True,
-               forma=lambda s, t, r=rr * k: (s - r) ** 2 + (t - r) ** 2 <= r * r)
-    # les potes del costat que es veu
-    potes(e, 1)
-    rampa(e)
+    NAU.dibuixa(e, ombra={'sol': SOL, 'k': 0.55})
     # la mànega de combustible: del ventre de la nau al sortidor
-    e.cable('sortidor', [nau_p(-6, -1.2), (nau_terra(-10, 90)[0], 6, nau_terra(-10, 90)[1]), (SORTIDOR[0] - 4, 3, SORTIDOR[1] + 14),
-                         (SORTIDOR[0], 26, SORTIDOR[1] + 4)], BLACKT, 2.2, gruix=4)
-
-
-def buc_superficie(e, buc):
-    """Pinta el buc mostrejant-lo prou dens (≈2 mostres per píxel): textura, llum del sol per cada punt, la panxa a
-    l'ombra. Cada punt pertany al tram (`nau0`..) de la seva l."""
-    cv, cam, W_ = e.cv, e.cam, e.cv.w
-    P_, amo = cv.P, e.amo
-    src = buc.load()
-    ull = cam.ull()
-    idx = {k: e._idx_de(f'nau{k}') for k in range(len(SEGS) - 1)}
-    from hd.pix import B4
-    l = -LS
-    while l <= NL + LB:
-        r, dr = nau_r(l), nau_dr(l)
-        k_ = idx[_seg(max(0.0, min(NL - 1, l)))]
-        c = (STERN[0] + D[0] * l, NY, STERN[1] + D[2] * l)
-        # el pas en angle: ≈0,5 unitats d'arc (i més dens a les cúpules, on el radi és petit)
-        dth = 0.5 / max(4.0, r)
-        th = -math.pi / 2
-        TX = min(TEX_W - 1, max(0, int(l + LS)))
-        while th < math.pi / 2 + 0.25:
-            ct, st = math.cos(th), math.sin(th)
-            er = (NS[0] * ct, st, NS[2] * ct)
-            P = (c[0] + er[0] * r, c[1] + er[1] * r, c[2] + er[2] * r)
-            n = (er[0] - D[0] * dr, er[1], er[2] - D[2] * dr)
-            nn = math.sqrt(n[0] ** 2 + n[1] ** 2 + n[2] ** 2) or 1
-            n = (n[0] / nn, n[1] / nn, n[2] / nn)
-            vx, vy, vz = ull[0] - P[0], ull[1] - P[1], ull[2] - P[2]
-            if n[0] * vx + n[1] * vy + n[2] * vz > 0:
-                u, v, _ = cam.projecta(P)
-                X, Y = int(u), int(v)
-                if 0 <= X < W_ and 0 <= Y < cv.h:
-                    ty = min(TEX_H - 1, max(0, int(_ty(min(th, math.pi / 2)))))
-                    col = src[TX, ty]
-                    kk = 1.0 + e.llum(P, n) * 0.18
-                    kk *= 1 - 0.5 * max(0.0, -st) ** 1.3 + 0.08 * max(0.0, st) ** 3
-                    kk += (B4[Y & 3][X & 3] - 0.5) * 0.06
-                    P_[X, Y] = (min(255, int(col[0] * kk)), min(255, int(col[1] * kk)), min(255, int(col[2] * kk)), 255)
-                    amo[Y * W_ + X] = k_
-            th += dth
-        l += 0.5 if -LS + 2 < l < NL + LB - 2 else 0.25
-
-
-def potes(e, costat):
-    for l in (30, 190, 350):
-        sid = f'nau{_seg(l)}'
-        top = nau_p(l, -1.1) if costat > 0 else _add(nau_p(l, -1.1), NS, -2 * nau_r(l) * math.cos(1.1))
-        foot = _add((top[0], 0, top[2]), NS, costat * 36)
-        e.cable(sid, [top, _up(_add(top, NS, costat * 14), -26), _up(foot, 8)], IRONR, 2.6 if costat > 0 else 1.8,
-                gruix=9)
-        e.caixa_girada(sid, foot[0], foot[2], 30, 24, 6, NAU_A, IRONR, 3.0,
-                       cares={'dalt': {'ramp': IRONR, 'lvl': 4.0}})
-        e.caixa_girada(sid, foot[0], foot[2], 10, 10, 16, NAU_A, WARN, 3.2, y0=6)
-        if costat > 0:
-            ombra(e, foot[0] - 18, foot[2], 24, 10, 0.5)
-
-
-def _rampa_cantons():
-    """Els quatre cantons de la rampa: dalt (el llindar de la porta) i baix (a terra)."""
-    la, lb = PORTA_L[0] + 3, PORTA_L[1] - 3
-    sa, sb = nau_p(la, PORTA_T[0], 1), nau_p(lb, PORTA_T[0], 1)
-    fa, fb = nau_terra(la, RAMPA_OUT), nau_terra(lb, RAMPA_OUT)
-    return sa, sb, (fb[0], 0.5, fb[1]), (fa[0], 0.5, fa[1])
-
-
-def rampa(e):
-    sa, sb, fb, fa = _rampa_cantons()
-    # l'ombra de la rampa al terra
-    m = nau_terra(sum(PORTA_L) / 2, RAMPA_OUT * 0.7)
-    ombra(e, m[0] - 40, m[1] + 10, 34, 60, 0.4, ang=NAU_A + math.pi / 2)
-    # els pistons
-    for a, f in ((sa, fa), (sb, fb)):
-        m = nau_p(PORTA_L[0] if a is sa else PORTA_L[1], -0.95, 1)
-        e.cable('rampa', [m, ((a[0] + f[0]) / 2, (a[1] + f[1]) / 2 - 4, (a[2] + f[2]) / 2)], IRONR, 3.4, gruix=3)
-    L = math.dist(sa, fa)
-    e.quad('rampa', sa, sb, fb, fa, ramp=IRONR, dues_cares=True,
-           lvl=lambda s, t, P: 3.4 + t * 0.006 - (1.6 if t % 7 < 1.2 else 0) + (fbm(s / 6, t / 6, 4) - 0.5) * 0.6
-           - (1.4 if s < 3 or s > 41 else 0))
-    for a, f in ((sa, fa), (sb, fb)):                                        # les baranes de perill
-        e.cable('rampa', [_up(a, 2), _up(f, 2)], WARN, 3.6, gruix=2.2)
-    # la llum de dins, que es vessa per la rampa i pel terra
-    e.claror(sa, sb, fb, fa, (255, 214, 150), lambda s, t: 0.3 * max(0.0, 1 - t / L))
-    g0, g1 = nau_terra(PORTA_L[0] - 10, RAMPA_OUT - 4), nau_terra(PORTA_L[1] + 10, RAMPA_OUT - 4)
-    g2, g3 = nau_terra(PORTA_L[1] + 30, RAMPA_OUT + 70), nau_terra(PORTA_L[0] - 30, RAMPA_OUT + 70)
-    e.claror((g3[0], 0.2, g3[1]), (g2[0], 0.2, g2[1]), (g1[0], 0.2, g1[1]), (g0[0], 0.2, g0[1]), (255, 210, 140),
-             lambda s, t: 0.18 * max(0.0, t / 74) * max(0.0, 1 - abs(s - 45) / 70))
+    e.cable('sortidor', [NAU.buc(-6, -1.2), (nau_terra(-10, 90)[0], 6, nau_terra(-10, 90)[1]),
+                         (SORTIDOR[0] - 4, 3, SORTIDOR[1] + 14), (SORTIDOR[0], 26, SORTIDOR[1] + 4)], BLACKT, 2.2, gruix=4)
 
 
 def grua(e):
@@ -684,26 +415,24 @@ def _frames_llum():
 
 
 def _balisa():
-    B = nau_p(BAL_L, math.pi / 2)
-    u, v, _ = CAM.projecta(_up(B, 62))
-    return round(u), round(v)
+    return NAU.xy(CAM, NAU.LLUM_NAV)
 
 
 def _frames_balisa():
-    """La balisa taronja de dalt de la Cantimplora: gira (s'encén i s'apaga a poc a poc)."""
+    """El llum de navegació vermell, dalt del pal de proa de la Cantimplora: s'encén i s'apaga a poc a poc."""
     x, y = _balisa()
     frames = []
     for i in range(10):
         img = Image.new('RGBA', (W, H), (0, 0, 0, 0))
         k = max(0.0, math.cos(i / 10 * 2 * math.pi))
         cv = Canvas(img=img)
-        col = mix((150, 70, 20), (255, 190, 80), k) if k > 0.1 else (110, 50, 20)
+        col = mix((150, 30, 24), (255, 90, 60), k) if k > 0.1 else (100, 26, 22)
         for dx in (-1, 0, 1):
             cv.flat(x + dx, y, col)
             cv.flat(x + dx, y + 1, col)
         if k > 0.6:
             for dx, dy in ((-2, 0), (2, 0), (0, -1), (-3, 1), (3, 1)):
-                cv.flat(x + dx, y + dy, (240, 150, 70))
+                cv.flat(x + dx, y + dy, (240, 90, 70))
         frames.append(img)
     return frames
 
@@ -733,7 +462,7 @@ def _vt(P):
 
 # Els trams del buc: cadascun amb la línia base del terra que té just davant (el costat que es veu).
 FRONT = [
-    *[{'id': f'davant_nau{k}', 'mask': _amo({f'nau{k}'}),
+    *[{'id': f'davant_nau{k}', 'mask': _amo(NAU.sids_tram(k)),
        'baseline': round(_vt(nau_terra((a + b) / 2, NR + 10))), 'zIndex': 20}
       for k, (a, b) in enumerate(zip(SEGS, SEGS[1:]))],
     {'id': 'davant_rampa', 'mask': _amo({'rampa'}),
@@ -776,12 +505,12 @@ def _x_u(u, z):
     return (u - 320) * z / CAM.f
 
 
-# El terra on es camina (al món): la plaça, del primer pla (sense les roques) fins als bidons i el tauler, i al
-# llarg del costat de la nau (sense la rampa ni les potes).
+# El terra on es camina (al món): la plaça, del primer pla (sense les roques) fins als bidons i el tauler, al llarg
+# del costat de la nau (sense la rampa ni les potes) i, per sota del morro, una franja per darrere de la proa.
 _ZP = _z_v(256)                                                      # la vora de baix
 _ZF = 1000.0                                                         # el fons
 WALK_MON = ([(_x_u(1, _ZP) + 70, _ZP), (_x_u(1, 560), 560), (_x_u(1, 700), 700), (_x_u(1, _ZF), _ZF),
-             (-170, _ZF), nau_terra(NL - 20, 112), nau_terra(240, NR + 36), nau_terra(PORTA_L[1] + 8, NR + 36),
+             (-170, _ZF), (-110, 1070), (120, 1075), (60, 1035), nau_terra(NL + 24, 50), nau_terra(NL - 20, 112), nau_terra(240, NR + 36), nau_terra(PORTA_L[1] + 8, NR + 36),
              nau_terra(PORTA_L[1] + 8, RAMPA_OUT + 8), nau_terra(PORTA_L[0] - 8, RAMPA_OUT + 8),
              nau_terra(PORTA_L[0] - 8, NR + 36), nau_terra(0, NR + 24), nau_terra(-70, 60)]
             + [(_x_u(638, z), z) for z in (590,)]
@@ -789,12 +518,12 @@ WALK_MON = ([(_x_u(1, _ZP) + 70, _ZP), (_x_u(1, 560), 560), (_x_u(1, 700), 700),
 _WALK = [_p(x, z) for x, z in WALK_MON]
 _V_FONS, _V_PROP = min(v for _, v in _WALK), max(v for _, v in _WALK)
 _SL = sum(PORTA_L) / 2
-_RAMPA = _rampa_cantons()
+_RAMPA = NAU.rampa_cantons()
 
 GEOMETRIA = {
     'things': {
         'cami_granja': {'rect': (0, _p(*CAMI[1])[1] - 30, 46, 258), 'walk': _p(_x_u(14, 620), 620)},
-        'rampa': {'rect': _rect(nau_p(PORTA_L[0] - 6, PORTA_T[1] + 0.06), nau_p(PORTA_L[1] + 6, PORTA_T[1] + 0.06),
+        'rampa': {'rect': _rect(NAU.buc(PORTA_L[0] - 6, PORTA_T[1] + 0.06), NAU.buc(PORTA_L[1] + 6, PORTA_T[1] + 0.06),
                                 *_RAMPA),
                   'walk': _p(*nau_terra(_SL, RAMPA_OUT + 24))},
         'tauler': {'rect': _rect(*[_up(_tauler_p(k), y) for y in (0, 132) for k in (-58, 58)]),

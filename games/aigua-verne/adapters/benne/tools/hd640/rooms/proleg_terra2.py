@@ -210,7 +210,7 @@ ART = Path(__file__).resolve().parents[2].parent / 'placeholder-art'
 WALK = {'iri': 0.3, 'vet': 1.1}            # quan comença a baixar cadascuna
 RAMP_T = 1.0                               # el que triguen a baixar la rampa
 V_PATH = 0.13                              # (el corriol ja va més a poc a poc de lluny: vegeu portada._path_pts)
-SHIP_Z = portada.SHIP_C[1]
+NAU = portada.NAU
 TAPA_NAU = {'nau', 'cabina_finestres', 'porta', 'rampa'}
 TAPA_SEMPRE = {'primer_pla', 'canonada'}
 
@@ -272,7 +272,7 @@ def _tapat(X, Y, z):
     if not (0 <= X < W and 0 <= Y < H):
         return True
     sid = e.ids[e.amo[Y * e.cv.w + X]]
-    return sid in TAPA_SEMPRE or (sid in TAPA_NAU and z > SHIP_Z - 40)
+    return sid in TAPA_SEMPRE or (sid in TAPA_NAU and NAU.tapa(X, Y, z))
 
 
 def _figura(cv, cid, P, tag, step, alpha, silueta=0.42):
@@ -311,7 +311,7 @@ def _figura(cv, cid, P, tag, step, alpha, silueta=0.42):
 
 
 DIU_OUT, DIU_SIT = 3.0, 4.4
-DIU_SPOT_P = portada.ship_p((portada.HATCH[0] + portada.HATCH[1]) / 2 + 22, 0, -portada.SHIP_R - portada.RAMP_LEN + 4)
+DIU_SPOT_P = NAU.p(NAU.PORTA_L[1] + 6, NAU.RAMPA_OUT - 30, 0)       # al costat del peu de la rampa, cap a proa
 
 
 def _diu(cv, t):

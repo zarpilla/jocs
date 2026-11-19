@@ -9,6 +9,8 @@ regalima, llums càlids de filament. Aquí hi ha:
   - el que es veu per les finestres a cada planeta (`vista`): Terra-2, Aqua, Ferrum i Verdant, amb la Canonada;
   - la cara del Magnat a la pantalla (`cara_verne`);
   - la gota blava de Verne i un dipòsit orbital (per a la portada).
+La nau vista de fora (el buc, els dipòsits, la rampa...) no és aquí: és el model 3D canònic de cantimplora_comu.py,
+el mateix a totes les sales i cinemàtiques.
 """
 import hd640  # noqa: F401  (abans de cap hd.rooms: posa la llibreria a 640×360)
 
