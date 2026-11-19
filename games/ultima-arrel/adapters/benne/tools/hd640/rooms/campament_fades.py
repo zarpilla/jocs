@@ -615,8 +615,10 @@ def _geometria():
         'regions': [
             {'id': 'branques', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': False,
              'scaleTop': 0.87, 'scaleBottom': 0.87, 'points': [(0, 0), (W - 1, 0), (W - 1, v_top - 3), (0, v_top - 3)]},
+            # A 1,65–1,8 (la sala es va pintar per a personatges de 97 px; els fulls en fan 68), cada píxel del
+            # personatge era el doble que els del decorat. Mentre no hi ha una mida gran dels fulls, a ≈1,2 com màxim.
             {'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
-             'scaleTop': 1.65, 'scaleBottom': 1.8,
+             'scaleTop': 1.1, 'scaleBottom': 1.2,
              'points': [(0, v_top - 2), (W - 1, v_top - 2), (W - 1, v_bot + 2), (0, v_bot + 2)]},
         ],
         # L'ombra de contacte: el sol del matí, de dalt a l'esquerra (l'ombra cau cap a la dreta i endavant).
