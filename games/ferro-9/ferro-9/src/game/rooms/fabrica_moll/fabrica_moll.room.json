@@ -18,23 +18,116 @@
         "active": true,
         "points": [
           {
-            "x": 26,
-            "y": 215
+            "x": 113,
+            "y": 172
           },
           {
-            "x": 615,
-            "y": 215
+            "x": 193,
+            "y": 135
           },
           {
-            "x": 630,
-            "y": 270
+            "x": 425,
+            "y": 157
           },
           {
-            "x": 11,
-            "y": 270
+            "x": 439,
+            "y": 156
+          },
+          {
+            "x": 591,
+            "y": 171
+          },
+          {
+            "x": 636,
+            "y": 180
+          },
+          {
+            "x": 637,
+            "y": 180
+          },
+          {
+            "x": 637,
+            "y": 232
+          },
+          {
+            "x": 100,
+            "y": 232
+          },
+          {
+            "x": 57,
+            "y": 224
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 172,
+                "y": 178
+              },
+              {
+                "x": 309,
+                "y": 170
+              },
+              {
+                "x": 307,
+                "y": 165
+              },
+              {
+                "x": 174,
+                "y": 172
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 373,
+                "y": 180
+              },
+              {
+                "x": 371,
+                "y": 177
+              },
+              {
+                "x": 364,
+                "y": 174
+              },
+              {
+                "x": 355,
+                "y": 173
+              },
+              {
+                "x": 346,
+                "y": 174
+              },
+              {
+                "x": 341,
+                "y": 176
+              },
+              {
+                "x": 342,
+                "y": 179
+              },
+              {
+                "x": 349,
+                "y": 182
+              },
+              {
+                "x": 359,
+                "y": 183
+              },
+              {
+                "x": 368,
+                "y": 182
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -46,29 +139,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 10,
-          "y": 87
+          "x": 151,
+          "y": 53
         },
         {
-          "x": 77,
-          "y": 87
+          "x": 185,
+          "y": 53
         },
         {
-          "x": 77,
-          "y": 208
+          "x": 185,
+          "y": 148
         },
         {
-          "x": 10,
-          "y": 208
+          "x": 151,
+          "y": 148
         }
       ],
       "walkToPoint": {
-        "x": 55,
-        "y": 244
+        "x": 189,
+        "y": 143
       },
       "lookAtPoint": {
-        "x": 44,
-        "y": 208
+        "x": 168,
+        "y": 148
       },
       "defaultVerb": "open"
     },
@@ -79,29 +172,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 305,
-          "y": 227
+          "x": 324,
+          "y": 182
         },
         {
-          "x": 382,
-          "y": 227
+          "x": 372,
+          "y": 182
         },
         {
-          "x": 382,
-          "y": 253
+          "x": 372,
+          "y": 197
         },
         {
-          "x": 305,
-          "y": 253
+          "x": 324,
+          "y": 197
         }
       ],
       "walkToPoint": {
-        "x": 344,
-        "y": 260
+        "x": 341,
+        "y": 200
       },
       "lookAtPoint": {
-        "x": 344,
-        "y": 253
+        "x": 348,
+        "y": 197
       }
     },
     {
@@ -111,29 +204,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 429,
-          "y": 76
+          "x": 437,
+          "y": 56
         },
         {
-          "x": 629,
-          "y": 76
+          "x": 596,
+          "y": 56
         },
         {
-          "x": 629,
-          "y": 200
+          "x": 596,
+          "y": 157
         },
         {
-          "x": 429,
-          "y": 200
+          "x": 437,
+          "y": 157
         }
       ],
       "walkToPoint": {
-        "x": 480,
-        "y": 248
+        "x": 465,
+        "y": 161
       },
       "lookAtPoint": {
-        "x": 530,
-        "y": 200
+        "x": 516,
+        "y": 157
       }
     },
     {
@@ -143,29 +236,29 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 443,
-          "y": 14
+          "x": 441,
+          "y": 3
         },
         {
-          "x": 637,
-          "y": 14
+          "x": 594,
+          "y": 3
         },
         {
-          "x": 637,
-          "y": 73
+          "x": 594,
+          "y": 58
         },
         {
-          "x": 443,
-          "y": 73
+          "x": 441,
+          "y": 58
         }
       ],
       "walkToPoint": {
-        "x": 539,
-        "y": 240
+        "x": 503,
+        "y": 164
       },
       "lookAtPoint": {
-        "x": 540,
-        "y": 73
+        "x": 517,
+        "y": 58
       }
     },
     {
@@ -175,29 +268,29 @@
       "zIndex": 4,
       "points": [
         {
-          "x": 287,
-          "y": 36
+          "x": 319,
+          "y": 18
         },
         {
-          "x": 328,
-          "y": 36
+          "x": 346,
+          "y": 18
         },
         {
-          "x": 328,
-          "y": 204
+          "x": 346,
+          "y": 114
         },
         {
-          "x": 287,
-          "y": 204
+          "x": 319,
+          "y": 114
         }
       ],
       "walkToPoint": {
-        "x": 306,
-        "y": 237
+        "x": 320,
+        "y": 150
       },
       "lookAtPoint": {
-        "x": 308,
-        "y": 204
+        "x": 332,
+        "y": 114
       }
     },
     {
@@ -207,34 +300,61 @@
       "zIndex": 5,
       "points": [
         {
-          "x": 330,
+          "x": 346,
           "y": 14
         },
         {
-          "x": 357,
+          "x": 370,
           "y": 14
         },
         {
-          "x": 357,
-          "y": 197
+          "x": 370,
+          "y": 179
         },
         {
-          "x": 330,
-          "y": 197
+          "x": 346,
+          "y": 179
         }
       ],
       "walkToPoint": {
-        "x": 344,
-        "y": 233
+        "x": 324,
+        "y": 182
       },
       "lookAtPoint": {
-        "x": 344,
-        "y": 197
+        "x": 358,
+        "y": 179
       }
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.678,
+      "scaleBottom": 1.203,
+      "points": [
+        {
+          "x": 0,
+          "y": 133
+        },
+        {
+          "x": 639,
+          "y": 133
+        },
+        {
+          "x": 639,
+          "y": 234
+        },
+        {
+          "x": 0,
+          "y": 234
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -252,39 +372,40 @@
       "animations": {
         "biga_acer": {}
       },
-      "zIndex": 3,
+      "zIndex": 23,
       "visible": true,
       "alpha": 1,
       "clickable": true,
       "collider": {
         "points": [
           {
-            "x": 98,
-            "y": 163
+            "x": 168,
+            "y": 120
           },
           {
-            "x": 288,
-            "y": 163
+            "x": 310,
+            "y": 120
           },
           {
-            "x": 288,
-            "y": 189
+            "x": 310,
+            "y": 145
           },
           {
-            "x": 98,
-            "y": 189
+            "x": 168,
+            "y": 145
           }
         ]
       },
       "walkToPoint": {
-        "x": 193,
-        "y": 240
+        "x": 251,
+        "y": 185
       },
       "lookAtPoint": {
-        "x": 193,
-        "y": 190
+        "x": 239,
+        "y": 145
       },
-      "description": "biga d'acer"
+      "description": "biga d'acer",
+      "baseline": 172
     },
     {
       "id": "biga_ferro9",
@@ -299,30 +420,30 @@
       "collider": {
         "points": [
           {
-            "x": 101,
-            "y": 83
+            "x": 194,
+            "y": 58
           },
           {
-            "x": 284,
-            "y": 83
+            "x": 309,
+            "y": 58
           },
           {
-            "x": 284,
-            "y": 120
+            "x": 309,
+            "y": 79
           },
           {
-            "x": 101,
-            "y": 120
+            "x": 194,
+            "y": 79
           }
         ]
       },
       "walkToPoint": {
-        "x": 193,
-        "y": 233
+        "x": 238,
+        "y": 144
       },
       "lookAtPoint": {
-        "x": 193,
-        "y": 120
+        "x": 251,
+        "y": 79
       },
       "description": "biga de ferro-9"
     },
@@ -339,30 +460,30 @@
       "collider": {
         "points": [
           {
-            "x": 385,
-            "y": 76
+            "x": 387,
+            "y": 50
           },
           {
-            "x": 440,
-            "y": 76
+            "x": 431,
+            "y": 50
           },
           {
-            "x": 440,
-            "y": 99
+            "x": 431,
+            "y": 63
           },
           {
-            "x": 385,
-            "y": 99
+            "x": 387,
+            "y": 63
           }
         ]
       },
       "walkToPoint": {
-        "x": 411,
-        "y": 233
+        "x": 399,
+        "y": 159
       },
       "lookAtPoint": {
-        "x": 413,
-        "y": 99
+        "x": 409,
+        "y": 63
       },
       "description": "serra"
     },
@@ -379,30 +500,30 @@
       "collider": {
         "points": [
           {
-            "x": 421,
-            "y": 101
+            "x": 413,
+            "y": 73
           },
           {
-            "x": 440,
-            "y": 101
+            "x": 422,
+            "y": 73
           },
           {
-            "x": 440,
-            "y": 146
+            "x": 422,
+            "y": 109
           },
           {
-            "x": 421,
-            "y": 146
+            "x": 413,
+            "y": 109
           }
         ]
       },
       "walkToPoint": {
-        "x": 422,
-        "y": 233
+        "x": 412,
+        "y": 160
       },
       "lookAtPoint": {
-        "x": 431,
-        "y": 146
+        "x": 417,
+        "y": 109
       },
       "description": "llima"
     },
@@ -412,10 +533,11 @@
       "animations": {
         "marca_pilar": {}
       },
-      "zIndex": 4,
+      "zIndex": 25,
       "visible": false,
       "alpha": 1,
-      "clickable": false
+      "clickable": false,
+      "baseline": 178
     },
     {
       "id": "ambient",
@@ -430,18 +552,106 @@
           "frameDuration": 130
         }
       }
+    },
+    {
+      "id": "davant_caixes",
+      "tag": "davant_caixes",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_caixes": {}
+      },
+      "zIndex": 20,
+      "baseline": 162
+    },
+    {
+      "id": "davant_cavallets",
+      "tag": "davant_cavallets",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_cavallets": {}
+      },
+      "zIndex": 22,
+      "baseline": 172
+    },
+    {
+      "id": "davant_pilar",
+      "tag": "davant_pilar",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_pilar": {}
+      },
+      "zIndex": 24,
+      "baseline": 178
+    },
+    {
+      "id": "davant",
+      "tag": "davant",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant": {}
+      },
+      "zIndex": 26,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 73,
-      "y": 251,
+      "x": 178,
+      "y": 152,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
       "zIndex": 10
     }
-  ]
+  ],
+  "characterLights": {
+    "ambient": "#7a6a66",
+    "lights": [
+      {
+        "x": 241,
+        "y": 112,
+        "radius": 220,
+        "color": "#ffd890",
+        "intensity": 0.9
+      },
+      {
+        "x": 196,
+        "y": 104,
+        "radius": 200,
+        "color": "#ff8a3c",
+        "intensity": 1.0
+      },
+      {
+        "x": 513,
+        "y": 173,
+        "radius": 180,
+        "color": "#96aae6",
+        "intensity": 0.7
+      }
+    ]
+  },
+  "characterShadow": {
+    "enabled": true,
+    "color": "#120a08",
+    "alpha": 0.42,
+    "squash": 0.4,
+    "core": 0.6,
+    "light": {
+      "x": 241,
+      "y": 172,
+      "stretch": 0.7,
+      "reach": 170
+    }
+  },
+  "floorSquash": 0.4
 }

@@ -23,18 +23,18 @@
     },
     "fabrica_moll 1.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 904,
-        "w": 174,
-        "h": 13
+        "x": 1724,
+        "y": 751,
+        "w": 142,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 107,
-        "y": 165,
-        "w": 174,
-        "h": 13
+        "x": 168,
+        "y": 125,
+        "w": 142,
+        "h": 16
       },
       "sourceSize": {
         "w": 640,
@@ -44,18 +44,18 @@
     },
     "fabrica_moll 2.aseprite": {
       "frame": {
-        "x": 3721,
-        "y": 723,
-        "w": 174,
-        "h": 24
+        "x": 1611,
+        "y": 751,
+        "w": 113,
+        "h": 20
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 107,
-        "y": 97,
-        "w": 174,
-        "h": 24
+        "x": 196,
+        "y": 61,
+        "w": 113,
+        "h": 20
       },
       "sourceSize": {
         "w": 640,
@@ -65,18 +65,18 @@
     },
     "fabrica_moll 3.aseprite": {
       "frame": {
-        "x": 3895,
-        "y": 723,
-        "w": 51,
-        "h": 19
+        "x": 1866,
+        "y": 751,
+        "w": 41,
+        "h": 16
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 389,
-        "y": 74,
-        "w": 51,
-        "h": 19
+        "y": 51,
+        "w": 41,
+        "h": 16
       },
       "sourceSize": {
         "w": 640,
@@ -86,18 +86,18 @@
     },
     "fabrica_moll 4.aseprite": {
       "frame": {
-        "x": 3715,
-        "y": 723,
-        "w": 6,
-        "h": 43
+        "x": 1606,
+        "y": 751,
+        "w": 5,
+        "h": 34
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 424,
-        "y": 102,
-        "w": 6,
-        "h": 43
+        "x": 416,
+        "y": 74,
+        "w": 5,
+        "h": 34
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "fabrica_moll 5.aseprite": {
       "frame": {
-        "x": 174,
-        "y": 904,
-        "w": 18,
-        "h": 12
+        "x": 958,
+        "y": 751,
+        "w": 28,
+        "h": 160
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 336,
-        "y": 106,
-        "w": 18,
-        "h": 12
+        "x": 343,
+        "y": 18,
+        "w": 28,
+        "h": 160
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "fabrica_moll 6.aseprite": {
       "frame": {
-        "x": 192,
-        "y": 904,
-        "w": 1,
-        "h": 1
+        "x": 1014,
+        "y": 751,
+        "w": 419,
+        "h": 89
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 0,
-        "y": 0,
-        "w": 1,
-        "h": 1
+        "x": 216,
+        "y": 92,
+        "w": 419,
+        "h": 89
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "fabrica_moll 7.aseprite": {
       "frame": {
-        "x": 621,
-        "y": 360,
-        "w": 619,
-        "h": 181
+        "x": 1777,
+        "y": 557,
+        "w": 482,
+        "h": 180
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 482,
+        "h": 180
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "fabrica_moll 8.aseprite": {
       "frame": {
-        "x": 1240,
-        "y": 360,
-        "w": 609,
-        "h": 181
+        "x": 2259,
+        "y": 557,
+        "w": 479,
+        "h": 180
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 22,
-        "y": 65,
-        "w": 609,
-        "h": 181
+        "x": 161,
+        "y": 1,
+        "w": 479,
+        "h": 180
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "fabrica_moll 9.aseprite": {
       "frame": {
-        "x": 1849,
-        "y": 360,
-        "w": 619,
-        "h": 181
+        "x": 2738,
+        "y": 557,
+        "w": 484,
+        "h": 180
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 484,
+        "h": 180
       },
       "sourceSize": {
         "w": 640,
@@ -212,18 +212,18 @@
     },
     "fabrica_moll 10.aseprite": {
       "frame": {
-        "x": 2468,
-        "y": 360,
-        "w": 619,
-        "h": 181
+        "x": 1296,
+        "y": 557,
+        "w": 481,
+        "h": 193
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 157,
+        "y": 1,
+        "w": 481,
+        "h": 193
       },
       "sourceSize": {
         "w": 640,
@@ -233,18 +233,18 @@
     },
     "fabrica_moll 11.aseprite": {
       "frame": {
-        "x": 3087,
+        "x": 2364,
         "y": 360,
-        "w": 620,
-        "h": 181
+        "w": 434,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 620,
-        "h": 181
+        "x": 157,
+        "y": 1,
+        "w": 434,
+        "h": 194
       },
       "sourceSize": {
         "w": 640,
@@ -254,18 +254,18 @@
     },
     "fabrica_moll 12.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 542,
-        "w": 621,
-        "h": 181
+        "x": 2798,
+        "y": 360,
+        "w": 434,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 621,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 434,
+        "h": 194
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "fabrica_moll 13.aseprite": {
       "frame": {
-        "x": 621,
-        "y": 542,
-        "w": 620,
-        "h": 181
+        "x": 3232,
+        "y": 360,
+        "w": 434,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 620,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 434,
+        "h": 194
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "fabrica_moll 14.aseprite": {
       "frame": {
-        "x": 1241,
-        "y": 542,
-        "w": 619,
-        "h": 181
+        "x": 0,
+        "y": 557,
+        "w": 434,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 434,
+        "h": 194
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "fabrica_moll 15.aseprite": {
       "frame": {
-        "x": 1860,
-        "y": 542,
-        "w": 619,
-        "h": 181
+        "x": 434,
+        "y": 557,
+        "w": 428,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 162,
+        "y": 1,
+        "w": 428,
+        "h": 194
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "fabrica_moll 16.aseprite": {
       "frame": {
-        "x": 2479,
-        "y": 542,
-        "w": 619,
-        "h": 181
+        "x": 862,
+        "y": 557,
+        "w": 434,
+        "h": 194
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 434,
+        "h": 194
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "fabrica_moll 17.aseprite": {
       "frame": {
-        "x": 3098,
-        "y": 542,
-        "w": 619,
-        "h": 181
+        "x": 1426,
+        "y": 360,
+        "w": 467,
+        "h": 195
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 159,
+        "y": 1,
+        "w": 467,
+        "h": 195
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "fabrica_moll 18.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 723,
-        "w": 619,
-        "h": 181
+        "x": 1893,
+        "y": 360,
+        "w": 471,
+        "h": 195
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 471,
+        "h": 195
       },
       "sourceSize": {
         "w": 640,
@@ -401,18 +401,18 @@
     },
     "fabrica_moll 19.aseprite": {
       "frame": {
-        "x": 619,
-        "y": 723,
-        "w": 619,
-        "h": 181
+        "x": 955,
+        "y": 360,
+        "w": 471,
+        "h": 196
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 471,
+        "h": 196
       },
       "sourceSize": {
         "w": 640,
@@ -422,18 +422,18 @@
     },
     "fabrica_moll 20.aseprite": {
       "frame": {
-        "x": 1238,
-        "y": 723,
-        "w": 620,
-        "h": 181
+        "x": 0,
+        "y": 360,
+        "w": 478,
+        "h": 197
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 620,
-        "h": 181
+        "x": 156,
+        "y": 1,
+        "w": 478,
+        "h": 197
       },
       "sourceSize": {
         "w": 640,
@@ -443,18 +443,18 @@
     },
     "fabrica_moll 21.aseprite": {
       "frame": {
-        "x": 1858,
-        "y": 723,
-        "w": 619,
-        "h": 181
+        "x": 478,
+        "y": 360,
+        "w": 477,
+        "h": 197
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 157,
+        "y": 1,
+        "w": 477,
+        "h": 197
       },
       "sourceSize": {
         "w": 640,
@@ -464,18 +464,18 @@
     },
     "fabrica_moll 22.aseprite": {
       "frame": {
-        "x": 2477,
-        "y": 723,
-        "w": 619,
-        "h": 181
+        "x": 3191,
+        "y": 0,
+        "w": 479,
+        "h": 198
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 157,
+        "y": 1,
+        "w": 479,
+        "h": 198
       },
       "sourceSize": {
         "w": 640,
@@ -485,18 +485,18 @@
     },
     "fabrica_moll 23.aseprite": {
       "frame": {
-        "x": 3096,
-        "y": 723,
-        "w": 619,
-        "h": 181
+        "x": 1269,
+        "y": 0,
+        "w": 481,
+        "h": 199
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 181
+        "x": 157,
+        "y": 1,
+        "w": 481,
+        "h": 199
       },
       "sourceSize": {
         "w": 640,
@@ -506,18 +506,18 @@
     },
     "fabrica_moll 24.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 1750,
         "y": 0,
-        "w": 619,
-        "h": 183
+        "w": 483,
+        "h": 199
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 183
+        "x": 157,
+        "y": 1,
+        "w": 483,
+        "h": 199
       },
       "sourceSize": {
         "w": 640,
@@ -527,18 +527,18 @@
     },
     "fabrica_moll 25.aseprite": {
       "frame": {
-        "x": 1259,
+        "x": 2233,
         "y": 0,
-        "w": 619,
-        "h": 183
+        "w": 484,
+        "h": 199
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 183
+        "x": 156,
+        "y": 1,
+        "w": 484,
+        "h": 199
       },
       "sourceSize": {
         "w": 640,
@@ -548,18 +548,18 @@
     },
     "fabrica_moll 26.aseprite": {
       "frame": {
-        "x": 1878,
+        "x": 2717,
         "y": 0,
-        "w": 619,
-        "h": 183
+        "w": 474,
+        "h": 199
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 619,
-        "h": 183
+        "x": 164,
+        "y": 1,
+        "w": 474,
+        "h": 199
       },
       "sourceSize": {
         "w": 640,
@@ -569,18 +569,18 @@
     },
     "fabrica_moll 27.aseprite": {
       "frame": {
-        "x": 2497,
-        "y": 0,
-        "w": 621,
-        "h": 183
+        "x": 0,
+        "y": 751,
+        "w": 480,
+        "h": 179
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 621,
-        "h": 183
+        "x": 156,
+        "y": 1,
+        "w": 480,
+        "h": 179
       },
       "sourceSize": {
         "w": 640,
@@ -590,18 +590,18 @@
     },
     "fabrica_moll 28.aseprite": {
       "frame": {
-        "x": 3118,
-        "y": 0,
-        "w": 621,
-        "h": 183
+        "x": 480,
+        "y": 751,
+        "w": 478,
+        "h": 179
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 621,
-        "h": 183
+        "x": 156,
+        "y": 1,
+        "w": 478,
+        "h": 179
       },
       "sourceSize": {
         "w": 640,
@@ -611,18 +611,102 @@
     },
     "fabrica_moll 29.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 621,
-        "h": 182
+        "x": 3222,
+        "y": 557,
+        "w": 478,
+        "h": 180
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 12,
-        "y": 65,
-        "w": 621,
-        "h": 182
+        "x": 156,
+        "y": 1,
+        "w": 478,
+        "h": 180
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_moll 30.aseprite": {
+      "frame": {
+        "x": 1433,
+        "y": 751,
+        "w": 38,
+        "h": 47
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 140,
+        "y": 116,
+        "w": 38,
+        "h": 47
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_moll 31.aseprite": {
+      "frame": {
+        "x": 1471,
+        "y": 751,
+        "w": 135,
+        "h": 46
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 172,
+        "y": 133,
+        "w": 135,
+        "h": 46
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_moll 32.aseprite": {
+      "frame": {
+        "x": 986,
+        "y": 751,
+        "w": 28,
+        "h": 160
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 343,
+        "y": 18,
+        "w": 28,
+        "h": 160
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_moll 33.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 629,
+        "h": 332
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 629,
+        "h": 332
       },
       "sourceSize": {
         "w": 640,
@@ -637,8 +721,8 @@
     "image": "fabrica_moll.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3946,
-      "h": 917
+      "w": 3700,
+      "h": 930
     },
     "scale": "1",
     "frameTags": [
@@ -688,6 +772,34 @@
         "name": "ambient",
         "from": 6,
         "to": 29,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_caixes",
+        "from": 30,
+        "to": 30,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_cavallets",
+        "from": 31,
+        "to": 31,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_pilar",
+        "from": 32,
+        "to": 32,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 33,
+        "to": 33,
         "direction": "forward",
         "color": "#000000ff"
       }
