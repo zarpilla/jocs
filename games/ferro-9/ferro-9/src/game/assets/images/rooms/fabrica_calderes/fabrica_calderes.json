@@ -23,18 +23,18 @@
     },
     "fabrica_calderes 1.aseprite": {
       "frame": {
-        "x": 3863,
+        "x": 4010,
         "y": 0,
-        "w": 34,
-        "h": 33
+        "w": 28,
+        "h": 24
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 407,
-        "y": 221,
-        "w": 34,
-        "h": 33
+        "x": 373,
+        "y": 133,
+        "w": 28,
+        "h": 24
       },
       "sourceSize": {
         "w": 640,
@@ -44,18 +44,18 @@
     },
     "fabrica_calderes 2.aseprite": {
       "frame": {
-        "x": 3554,
+        "x": 3608,
         "y": 0,
-        "w": 122,
-        "h": 143
+        "w": 232,
+        "h": 177
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 518,
-        "y": 7,
-        "w": 122,
-        "h": 143
+        "x": 330,
+        "y": 0,
+        "w": 232,
+        "h": 177
       },
       "sourceSize": {
         "w": 640,
@@ -65,7 +65,427 @@
     },
     "fabrica_calderes 3.aseprite": {
       "frame": {
-        "x": 3897,
+        "x": 1232,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 4.aseprite": {
+      "frame": {
+        "x": 1378,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 5.aseprite": {
+      "frame": {
+        "x": 1526,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 6.aseprite": {
+      "frame": {
+        "x": 1674,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 7.aseprite": {
+      "frame": {
+        "x": 1824,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 8.aseprite": {
+      "frame": {
+        "x": 1974,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 9.aseprite": {
+      "frame": {
+        "x": 2124,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 10.aseprite": {
+      "frame": {
+        "x": 2274,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 11.aseprite": {
+      "frame": {
+        "x": 2420,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 12.aseprite": {
+      "frame": {
+        "x": 2566,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 13.aseprite": {
+      "frame": {
+        "x": 2714,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 148,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 14.aseprite": {
+      "frame": {
+        "x": 2862,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 15.aseprite": {
+      "frame": {
+        "x": 3012,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 16.aseprite": {
+      "frame": {
+        "x": 3162,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 17.aseprite": {
+      "frame": {
+        "x": 3312,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 150,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 18.aseprite": {
+      "frame": {
+        "x": 3462,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 131,
+        "y": 0,
+        "w": 146,
+        "h": 193
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 19.aseprite": {
+      "frame": {
+        "x": 3901,
+        "y": 0,
+        "w": 55,
+        "h": 63
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 363,
+        "y": 80,
+        "w": 55,
+        "h": 63
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 20.aseprite": {
+      "frame": {
+        "x": 3956,
+        "y": 0,
+        "w": 54,
+        "h": 37
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 364,
+        "y": 102,
+        "w": 54,
+        "h": 37
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 21.aseprite": {
+      "frame": {
+        "x": 3840,
+        "y": 0,
+        "w": 61,
+        "h": 64
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 273,
+        "y": 142,
+        "w": 61,
+        "h": 64
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 22.aseprite": {
+      "frame": {
+        "x": 640,
+        "y": 0,
+        "w": 592,
+        "h": 312
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 48,
+        "w": 592,
+        "h": 312
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "fabrica_calderes 23.aseprite": {
+      "frame": {
+        "x": 4038,
         "y": 0,
         "w": 1,
         "h": 1
@@ -83,321 +503,6 @@
         "h": 360
       },
       "duration": 100
-    },
-    "fabrica_calderes 4.aseprite": {
-      "frame": {
-        "x": 2517,
-        "y": 0,
-        "w": 209,
-        "h": 253
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 8,
-        "w": 209,
-        "h": 253
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 5.aseprite": {
-      "frame": {
-        "x": 849,
-        "y": 0,
-        "w": 205,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 205,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 6.aseprite": {
-      "frame": {
-        "x": 2935,
-        "y": 0,
-        "w": 209,
-        "h": 251
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 251
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 7.aseprite": {
-      "frame": {
-        "x": 640,
-        "y": 0,
-        "w": 209,
-        "h": 257
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 4,
-        "w": 209,
-        "h": 257
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 8.aseprite": {
-      "frame": {
-        "x": 1054,
-        "y": 0,
-        "w": 209,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 9.aseprite": {
-      "frame": {
-        "x": 1263,
-        "y": 0,
-        "w": 209,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 10.aseprite": {
-      "frame": {
-        "x": 1472,
-        "y": 0,
-        "w": 209,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 11.aseprite": {
-      "frame": {
-        "x": 3676,
-        "y": 0,
-        "w": 187,
-        "h": 109
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 152,
-        "w": 187,
-        "h": 109
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 12.aseprite": {
-      "frame": {
-        "x": 2726,
-        "y": 0,
-        "w": 209,
-        "h": 253
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 8,
-        "w": 209,
-        "h": 253
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 13.aseprite": {
-      "frame": {
-        "x": 3144,
-        "y": 0,
-        "w": 205,
-        "h": 251
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 205,
-        "h": 251
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 14.aseprite": {
-      "frame": {
-        "x": 1681,
-        "y": 0,
-        "w": 209,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 15.aseprite": {
-      "frame": {
-        "x": 3349,
-        "y": 0,
-        "w": 205,
-        "h": 249
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 84,
-        "y": 4,
-        "w": 205,
-        "h": 249
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 16.aseprite": {
-      "frame": {
-        "x": 1890,
-        "y": 0,
-        "w": 209,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 17.aseprite": {
-      "frame": {
-        "x": 2099,
-        "y": 0,
-        "w": 209,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
-    },
-    "fabrica_calderes 18.aseprite": {
-      "frame": {
-        "x": 2308,
-        "y": 0,
-        "w": 209,
-        "h": 255
-      },
-      "rotated": false,
-      "trimmed": true,
-      "spriteSourceSize": {
-        "x": 80,
-        "y": 6,
-        "w": 209,
-        "h": 255
-      },
-      "sourceSize": {
-        "w": 640,
-        "h": 360
-      },
-      "duration": 100
     }
   },
   "meta": {
@@ -406,7 +511,7 @@
     "image": "fabrica_calderes.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3898,
+      "w": 4039,
       "h": 360
     },
     "scale": "1",
@@ -436,6 +541,41 @@
         "name": "ambient",
         "from": 3,
         "to": 18,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_taula",
+        "from": 19,
+        "to": 19,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "alarma_encesa__davant_taula",
+        "from": 20,
+        "to": 20,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_vagoneta",
+        "from": 21,
+        "to": 21,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 22,
+        "to": 22,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "alarma_encesa__davant",
+        "from": 23,
+        "to": 23,
         "direction": "forward",
         "color": "#000000ff"
       }
