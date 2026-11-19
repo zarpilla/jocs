@@ -9,6 +9,7 @@
     "validate": "tsx ../../tools/validate.ts",
     "jugar": "tsx ../../tools/jugar.ts",
     "fitxes": "tsx ../../tools/fitxes.ts",
+    "full-sales": "python3 ../../tools/full_sales.py",
     "revisio": "tsx ../../tools/revisio.ts",
     "schemas": "tsx ../../tools/generate-schemas.ts",
     "sons": "python3 tools/sons.py",

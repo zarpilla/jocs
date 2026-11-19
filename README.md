@@ -63,6 +63,9 @@ jocs. Fan servir els mateixos secrets: `DEPLOY_SSH_KEY`, `DEPLOY_KNOWN_HOSTS` i 
 
 ## Un joc nou
 
+Tot el procés, de la idea a la web pública, amb una llista de comprovació per fase:
+[docs/guia-joc-nou.md](docs/guia-joc-nou.md). L'esquelet:
+
 1. `games/<joc>/` amb `game/` (copiat d'un altre joc i buidat), `package.json` (com el dels altres) i
    `adapters/benne/joc.ts` + `mapping.json`.
 2. `npm run benne:create -w <joc> -- --from <checkout de Benne>` crea el projecte Benne.
