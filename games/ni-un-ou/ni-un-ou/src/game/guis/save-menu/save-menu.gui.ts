@@ -27,7 +27,7 @@ function showSlot(slot: number) {
 /** Repaints the rows. `autoSelect` picks the first empty slot, or the last one when all are used. */
 function refresh(autoSelect: boolean) {
   for (let i = 0; i < SLOTS; i++) {
-    savedList.setRowText(i, saves.get(i)?.name ?? `(Empty Slot ${i + 1})`)
+    savedList.setRowText(i, saves.get(i)?.name ?? `(Posició ${i + 1}: buida)`)
   }
   if (autoSelect) selected = firstEmptySlot()
   savedList.selectedIndex = selected

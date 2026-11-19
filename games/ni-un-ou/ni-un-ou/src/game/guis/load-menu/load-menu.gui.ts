@@ -16,7 +16,7 @@ function firstUsedSlot(): number {
 /** Repaints the rows. `autoSelect` picks the first used slot (or 0 if none). */
 function refresh(autoSelect: boolean) {
   for (let i = 0; i < SLOTS; i++) {
-    loadList.setRowText(i, saves.get(i)?.name ?? `(Empty Slot ${i + 1})`)
+    loadList.setRowText(i, saves.get(i)?.name ?? `(Posició ${i + 1}: buida)`)
   }
   if (autoSelect) selected = firstUsedSlot()
   loadList.selectedIndex = selected
