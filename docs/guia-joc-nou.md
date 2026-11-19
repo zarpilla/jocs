@@ -282,7 +282,10 @@ configuració del motor més unes quantes etiquetes al full; és barat i es nota
 - [ ] **Ombra de contacte** (`characterShadow` de la sala), allargada i girada lluny de la llum dominant.
 - [ ] **Reflex** al terra polit (`characterReflection`), on n'hi hagi.
 - [ ] **Contorn fosc** a les sales molt clares (`characterOutline`), perquè el personatge es llegeixi.
-- [ ] **Escala contínua** amb la profunditat (regió `scaleEnabled`), sense passar de ≈1,2 a prop.
+- [ ] **Llum de la sala** sobre els personatges (`characterLights`), a partir dels llums de l'escena.
+- [ ] **Escala contínua** amb la profunditat (regió `scaleEnabled`), sense passar de ≈1,2 a prop (on es camina, no
+      a la vora de la regió). La mida dels fulls, decidida abans de dibuixar les sales.
+- [ ] `npm run profunditat` sense avisos: llum, ombra, escala, velocitat i capes de totes les sales jugables.
 - [ ] **Respiració**: `Idle` de quatre fotogrames, la clariana del pit puja i baixa, a 650 ms (`respira`).
 - [ ] **Parpelleig** (`Blink`, cada 2,5-5 s) i **mirar al voltant** (`Look`), a `idleActions` del
       `.character.json`, on es veu la cara (D, L, DL).
@@ -346,6 +349,7 @@ dins `games/<joc>/<joc>/`):
 |---|---|---|
 | **Portada** (la pantalla de títol sense botons) | `node eines/portada.mjs <url> /tmp/<joc>-portada.png`, reduïda a 640×360 | `public/img/<joc>-portada.png` |
 | **Captura 1 i 2** (una protagonista a la sala, de vegades dient una frase) | Una escena a `eines/escenes/<joc>-<sala>.json` i `node eines/grava.mjs <url> <escena> /tmp/<carpeta>`; se'n tria un fotograma i es redueix a 640×360 | `public/img/<joc>-joc.png`, `<joc>-joc2.png` |
+| **Revisió de profunditat** (no fa cap imatge) | `npm run profunditat` des de `games/<joc>/` ([tools/profunditat.py](../tools/profunditat.py)): per a cada sala, la llum i l'ombra dels personatges, l'escala on es camina i les capes | la terminal |
 | **Full de totes les sales** (només de referència) | `npm run full-sales` des de `games/<joc>/` ([tools/full_sales.py](../tools/full_sales.py)): les pantalles i les sales del projecte Benne, sense personatges | `referencia/<joc>-sales.png` |
 
 A les reduccions, NEAREST (amb `pixels.nearest` si el Pillow del sistema peta).

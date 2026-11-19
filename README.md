@@ -22,7 +22,7 @@ compartida, [adapters/benne/tactil](adapters/benne/tactil/index.ts)). Ferro-9 ma
 packages/narrative-core/   MOTOR NARRATIU: estat, condicions, diàlegs, missions, pistes, finals (TS pur)
 packages/benne/            MOTOR DE BENNE: un de sol; cada joc en té una còpia de només lectura
 adapters/benne/            L'ADAPTADOR: porta el contingut de qualsevol joc al seu projecte Benne
-tools/                     EINES: validate, jugar, fitxes, revisio, schemas
+tools/                     EINES: validate, jugar, fitxes, revisio, profunditat, schemas
 games/<joc>/
   game/                    el contingut del joc (JSON, textos, regles pròpies a logic/)
   guio/                    el guió

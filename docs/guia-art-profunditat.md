@@ -171,13 +171,53 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
    `alpha` és l'opacitat als peus (a 0,2 la roba fosca damunt els escacs ja no es veia), `fade` la del final (en
    fracció d'`alpha`), `length` l'alt respecte del personatge, i `maxY` on s'acaba el terra que brilla. A Suma Zero
    es posa a la `GEOMETRIA` de la sala; cada personatge hi pot posar `"reflection": false`.
+
+   **La llum de la sala, també al personatge** (`characterLights`). El fons s'il·lumina quan es dibuixa; el full
+   del personatge no, i sense això fa els mateixos colors al migdia, a la farga i a la coberta de nit: és la meitat
+   de l'efecte adhesiu. El motor (`engine/room/characterLights.ts`) mostreja la llum a les quatre cantonades del
+   sprite i el tenyeix en mode *overlay*: el valor 1 per canal (`#ffffff`) és neutre, per sota enfosqueix i per
+   sobre il·lumina o acoloreix. Així, el costat que mira la pantalla o el foc s'encén i el racó fosc l'enfosqueix.
+
+   ```json
+   "characterLights": { "ambient": "#7c8aa8",
+     "lights": [{ "x": 330, "y": 120, "radius": 260, "color": "#ffd28c", "intensity": 0.8, "whenPropHidden": "fosc" }] }
+   ```
+
+   `ambient` és la llum de tota la sala; cada llum suma `color × intensity` amb una caiguda fins a `radius` px
+   (`squash`, `power` com a l'ombra). `whenPropVisible` / `whenPropHidden`: només mentre aquell prop es veu (el
+   forn encès, el sol de la variant `dia`) o mentre no es veu (el llum que s'apaga amb el decorat `fosc`). El motor
+   no avisa d'una clau mal escrita: el llum quedaria sempre encès (`npm run profunditat` sí que ho diu).
+   Els valors no s'inventen: surten dels llums de l'escena (`LLUMS`, `Llum(pos, r, k)`), projectats amb la `CAM`
+   de la sala (`llum_personatges` de `tres_d.py` a Aigua Verne, que abaixa els llums de sostre a l'alçada del pit;
+   `_p(...)` a la centraleta de L'Última Arrel). Valors que han funcionat:
+
+   | Sala | `ambient` | Llums |
+   |---|---|---|
+   | Interior fosc (farga, bodega, pont de nit) | ≈0,4–0,55, amb el to de l'art (`#645a54`, `#6e7690`) | cada làmpada o finestra a 0,2–0,7 |
+   | Exterior de nit (coberta) | fred, `#7484a2` | els focus, càlids; el sol amb `whenPropVisible: 'dia'` |
+   | Exterior de dia, sala clara (palau) | gairebé neutre (`#d6cdb6`, `#e6e6ee`) | un sol molt ample i suau, 0,12–0,6 |
+   | Oficina fluorescent | fred i clar, `#b8bcc8` | els tubs a 0,2: a 0,4 la cara de la Vet es cremava |
+
+   Ha de ser subtil: la cara s'ha de continuar llegint, i res de taques de color. Es comprova al navegador, amb el
+   personatge a prop i lluny dels llums. A Aigua Verne va a la `GEOMETRIA` i `room_designs.py` la passa al disseny;
+   en un joc nou, comproveu que aquest pas hi és (a Aigua Verne hi faltava, i cap sala no en tenia).
 4. **Escala contínua i ordre de dibuix.**
    - L'escala ja és contínua: una regió `scaleEnabled` interpola linealment entre `scaleTop` i `scaleBottom` segons
      la y dels peus (`Camera.escala()` dona els valors exactes). Res de dues mides fixes amb un salt al mig. Els fulls
      són a 1×: reduir no deforma gaire la cara (el motor fa la mitjana dels píxels), i el límit és per dalt (≈1,2,
-     vegeu més amunt). En
-     sales molt profundes (el carreró, el desert), on al fons el personatge baixa de ≈0,55, es pot dibuixar a mà una
-     segona mida petita del full i deixar l'escalat només per als trams intermedis.
+     vegeu més amunt). El màxim es mira on es camina de debò (la vora de baix de la zona caminable o els llocs on
+     els personatges són quiets), no a la vora de la regió, que pot anar més avall (a final_galway semblava 1,85 i
+     era 1,22). A 0,42 la cara de la Vet encara es llegeix; per sota de ≈0,4 cal mirar-ho a la pantalla.
+   - **Mides de full diferents (`Lluny`).** El motor les tria per sala, no per franja: són una roba més
+     (`outfit` amb `inRoom` a `characters.json`), i tot el full s'escala amb un sol `artScale`. Una figura molt
+     més petita (o més gran) dins el mateix fotograma espatlla la velocitat de caminar, el `collider` i el
+     `talkPoint`, que en surten; a Aigua Verne funciona perquè les dues mides només es porten 1,2×. Abans de
+     dibuixar-ne una: si la punta caminable que baixa tant no té res a fer, és més barat retallar-la. Suma Zero
+     té els fulls de lluny de la Vet dibuixats però apagats (`VET_LLUNY`) fins que el motor ho sàpiga fer.
+   - **La mida dels personatges es decideix abans de les sales.** A L'Última Arrel, la caseta d'obra i el
+     campament es van dibuixar per a personatges de 97 px i els fulls van quedar a 68: escalats a 1,75, cada píxel
+     del personatge és el doble que els del decorat (`K_FULLS`). Arreglar-ho després vol dir allunyar la càmera
+     (la sala es perd) o dibuixar una mida gran dels fulls.
    - Ordre de dibuix: els mobles del pla mitjà (el llit, el pou, les caixes) van en capes pròpies amb una línia base
      (`baseline`). Si els peus del personatge queden per sobre de la línia base (més al fons), el moble el tapa; si
      queden per sota, el personatge passa per davant. Sense això no hi ha superposició de plans (principi 5).
@@ -274,10 +314,12 @@ Totes es fan per codi sobre capes quietes, sense dibuixar fotogrames nous:
 - [ ] Cap moble important enganxat a la paret a 90°: almenys un de separat i girat.
 - [ ] La línia paret-terra queda trencada per objectes, cables o brutícia.
 - [ ] El personatge pot passar per darrere d'alguna cosa.
+- [ ] La llum de la sala cau també sobre els personatges (`characterLights`), subtil.
 - [ ] Les ombres van en diagonal i hi ha racons foscos.
 - [ ] Les textures del terra s'empetiteixen cap al fons.
 - [ ] Hi ha almenys un camí o una sortida cap al fons, no només a l'esquerra i a la dreta.
-- [ ] Els personatges canvien de mida quan s'allunyen (regió d'escala) i no passen de ≈1,2 a prop.
+- [ ] Els personatges canvien de mida quan s'allunyen (regió d'escala) i no passen de ≈1,2 a prop (on es camina).
+- [ ] `npm run profunditat` (des de `games/<joc>/`) no dona cap avís per a la sala.
 - [ ] Els mobles del pla mitjà tenen la seva línia base i el personatge hi passa per davant i per darrere.
 - [ ] Els personatges que hi caminen en diagonal tenen les vistes en 3/4 (`DL`, `UL`) i els peus vistos des de dalt.
 - [ ] Si la sala té una llum dominant, l'ombra de contacte n'agafa la direcció.
