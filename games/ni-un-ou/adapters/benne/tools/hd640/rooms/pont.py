@@ -589,10 +589,10 @@ def _p(x, z, y=0.0):
 # Capes del davant: el primer pla (sempre davant), el timó, la cadira i la taula de cartes (qui hi passa per
 # darrere, hi queda darrere).
 FRONT = [
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
-    {'id': 'davant_timo', 'mask': _amo({'timo'}), 'baseline': _p(WHEEL[0], WHEEL[1] - 4)[1], 'zIndex': 20},
-    {'id': 'davant_cadira', 'mask': _amo({'cadira'}), 'baseline': _p(CHAIR[0], CHAIR[1] - 6)[1], 'zIndex': 20},
-    {'id': 'davant_taula', 'mask': _amo({'taula'}), 'baseline': _p(TAULA[0], TAULA[1] - 14)[1], 'zIndex': 20},
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20, 'variants': ('dia', 'fosc')},
+    {'id': 'davant_timo', 'mask': _amo({'timo'}), 'baseline': _p(WHEEL[0], WHEEL[1] - 4)[1], 'zIndex': 20, 'variants': ('dia', 'fosc')},
+    {'id': 'davant_cadira', 'mask': _amo({'cadira'}), 'baseline': _p(CHAIR[0], CHAIR[1] - 6)[1], 'zIndex': 20, 'variants': ('dia', 'fosc')},
+    {'id': 'davant_taula', 'mask': _amo({'taula'}), 'baseline': _p(TAULA[0], TAULA[1] - 14)[1], 'zIndex': 20, 'variants': ('dia', 'fosc')},
 ]
 
 

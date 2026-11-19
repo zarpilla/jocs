@@ -360,7 +360,7 @@
       "animations": {
         "davant_caixa": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 194
     },
     {
@@ -372,7 +372,43 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
+      "baseline": 999
+    },
+    {
+      "id": "dia__davant_tamboret",
+      "tag": "dia__davant_tamboret",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant_tamboret": {}
+      },
+      "zIndex": 21,
+      "baseline": 183
+    },
+    {
+      "id": "dia__davant_caixa",
+      "tag": "dia__davant_caixa",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant_caixa": {}
+      },
+      "zIndex": 23,
+      "baseline": 194
+    },
+    {
+      "id": "dia__davant",
+      "tag": "dia__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant": {}
+      },
+      "zIndex": 25,
       "baseline": 999
     }
   ],

@@ -509,9 +509,9 @@ def _p(x, z, y=0.0):
 
 # Capes del davant: el primer pla (sempre davant) i el tamboret (qui hi passa per darrere, hi queda darrere).
 FRONT = [
-    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20},
-    {'id': 'davant_tamboret', 'mask': _amo({'tamboret'}), 'baseline': _p(STOOL[0], STOOL[1] - 8)[1], 'zIndex': 20},
-    {'id': 'davant_caixa', 'mask': _amo({'caixa'}), 'baseline': _p(CRATE[0], CRATE[1] - 12)[1], 'zIndex': 20},
+    {'id': 'davant', 'mask': _amo({'primer_pla'}), 'baseline': 999, 'zIndex': 20, 'variants': ('dia',)},
+    {'id': 'davant_tamboret', 'mask': _amo({'tamboret'}), 'baseline': _p(STOOL[0], STOOL[1] - 8)[1], 'zIndex': 20, 'variants': ('dia',)},
+    {'id': 'davant_caixa', 'mask': _amo({'caixa'}), 'baseline': _p(CRATE[0], CRATE[1] - 12)[1], 'zIndex': 20, 'variants': ('dia',)},
 ]
 
 

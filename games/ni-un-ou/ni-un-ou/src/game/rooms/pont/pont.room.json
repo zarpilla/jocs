@@ -636,7 +636,7 @@
       "animations": {
         "davant_cadira": {}
       },
-      "zIndex": 21,
+      "zIndex": 22,
       "baseline": 176
     },
     {
@@ -648,7 +648,7 @@
       "animations": {
         "davant_taula": {}
       },
-      "zIndex": 22,
+      "zIndex": 24,
       "baseline": 225
     },
     {
@@ -660,7 +660,103 @@
       "animations": {
         "davant": {}
       },
+      "zIndex": 26,
+      "baseline": 999
+    },
+    {
+      "id": "dia__davant_timo",
+      "tag": "dia__davant_timo",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant_timo": {}
+      },
+      "zIndex": 21,
+      "baseline": 163
+    },
+    {
+      "id": "fosc__davant_timo",
+      "tag": "fosc__davant_timo",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fosc__davant_timo": {}
+      },
+      "zIndex": 21,
+      "baseline": 163
+    },
+    {
+      "id": "dia__davant_cadira",
+      "tag": "dia__davant_cadira",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant_cadira": {}
+      },
       "zIndex": 23,
+      "baseline": 176
+    },
+    {
+      "id": "fosc__davant_cadira",
+      "tag": "fosc__davant_cadira",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fosc__davant_cadira": {}
+      },
+      "zIndex": 23,
+      "baseline": 176
+    },
+    {
+      "id": "dia__davant_taula",
+      "tag": "dia__davant_taula",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant_taula": {}
+      },
+      "zIndex": 25,
+      "baseline": 225
+    },
+    {
+      "id": "fosc__davant_taula",
+      "tag": "fosc__davant_taula",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fosc__davant_taula": {}
+      },
+      "zIndex": 25,
+      "baseline": 225
+    },
+    {
+      "id": "dia__davant",
+      "tag": "dia__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant": {}
+      },
+      "zIndex": 27,
+      "baseline": 999
+    },
+    {
+      "id": "fosc__davant",
+      "tag": "fosc__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "fosc__davant": {}
+      },
+      "zIndex": 27,
       "baseline": 999
     }
   ],
