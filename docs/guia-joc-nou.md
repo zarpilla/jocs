@@ -210,16 +210,59 @@ Als scripts Python, `from pixels import nearest`, mai `resize(..., Image.NEAREST
 
 ## 10. Portada, pròleg, cinemàtiques i finals
 
-Vegeu [pròleg i cinemàtiques](guia-contingut.md#pròleg-i-cinemàtiques) (el contingut) i
+Les cinemàtiques són on més es pot trencar la càmera fixa del joc. També són el primer que veu qui obre el joc, i
+l'últim. Detalls: [pròleg i cinemàtiques](guia-contingut.md#pròleg-i-cinemàtiques) (el contingut),
+[moviment a mitja escena](guia-contingut.md#moviment-a-mitja-escena-stage) (l'animació) i
 [cinemàtiques](guia-art-profunditat.md#cinemàtiques) (l'art).
 
-- [ ] **Portada**: la sala de `cover`, amb intro animada (parallax, llums que bateguen) i el pròleg que en continua
-      el pla. Ha de quedar bé **sense els botons**: serà la imatge de la web.
-- [ ] **Pròleg** (`intro`) i les cinemàtiques entre actes, que es poden saltar (Esc → `skipTo`).
-- [ ] Composició de cinema: contrast d'escala, 3/4, línies que guien l'ull, barres negres.
-- [ ] **Finals** amb títol, escena (amb `if` segons la partida), text de tancament i **crèdits** («Una aventura
-      gràfica feta amb males herbes - malaherbasoft.cat»), i postcrèdits si n'hi ha.
-- [ ] Rètols de temps entre escenes si n'hi ha salts («L'endemà al matí»).
+### Quines n'hi ha
+
+Es decideixen al guió (fase 2), amb el text de cada pla. Als nostres jocs:
+
+| Cinemàtica | Què fa | Exemples |
+|---|---|---|
+| **Portada** (`cover`) | La pantalla de títol, animada en bucle, amb «Comença» i «Carrega» | Totes |
+| **Pròleg** (`intro`) | Planteja el conflicte abans de la primera sala; acaba amb el títol i «Acte 1» | `proleg_ginebra` (Suma Zero), `proleg_terra2` → `proleg_palau` (Aigua Verne) |
+| **Entre actes o escenes** | Un salt de lloc o de temps, el dolent que mou fitxa | `muntatge` (Suma Zero), els pròlegs de la Gavina i de la cel·la (Ferro-9) |
+| **Pantalles especials** | Una pantalla que no és una sala per caminar | `avio` (Suma Zero), `cantimplora_mapa` (Aigua Verne) |
+| **Finals** | Un per final, amb el que ha passat segons la partida | `final_bar`, `final_palau`, `final_galway`, els sis de Ferro-9 |
+| **Crèdits i postcrèdits** | Els noms, el «Fi» i, si n'hi ha, una última escena | `credits`, `postcredits` |
+
+### Com es fa una cinemàtica
+
+1. **El contingut.** Una sala de `game/data/rooms/` amb `"cutscene": { "skipTo": "<sala següent>" }` i un
+   `onEnter` amb les línies, que acaba amb `goTo`. Línies especials:
+   - `"who": "title"`: un rètol a pantalla (`joc.titol`, `acte.1`, «L'endemà al matí»);
+   - `"who": "narrator"`: el narrador;
+   - `stage` i `stageAfter` amb `"prop"`: una capa de l'art canvia d'animació (`anim`) o es mostra o s'amaga
+     (`visible`), i `hold` espera aquells segons sense text mentre dura l'animació; `shake` sacseja la pantalla.
+     Així anima la cinemàtica el contingut, i no cal codi. Vegeu el pròleg de Suma Zero
+     (`games/suma-zero/game/data/rooms/proleg_ginebra.json`): el senyal va de l'antena a la torre, el pis es fon,
+     la pantalla del BCMU entra, parla, talla i somriu.
+2. **L'art.** Un mòdul `hd640/rooms/<sala>.py` com qualsevol sala. Cada cosa que s'anima és una capa (un prop) amb
+   les seves animacions (`pis`, `pis_fon`, `pis_torna`…). Les capes quietes amb parallax i els llums que bateguen
+   es fan per codi, sense dibuixar fotogrames.
+3. **Portada i pròleg al mateix pla.** El títol és una capa a part (`titol`): «Comença» l'esvaeix i el pròleg
+   comença sense tall, sobre el mateix dibuix (un `*_pla_comu.py` que comparteixen `portada.py` i el pròleg). Ho
+   fan Suma Zero i Ni un ou.
+4. **Els finals** són a `data/endings.json`: títol, escena (amb `if` segons la partida, p. ex. qui ha ajudat qui),
+   text de tancament i crèdits. Cada línia pot dur `room` (una cinemàtica) per sortir damunt la imatge; sense, es
+   llegeix sobre negre.
+5. **La música:** el tema a la portada i al pròleg, i el final amb la seva peça (vegeu la fase 12).
+
+### Llista de comprovació
+
+- [ ] **Portada**: animada en bucle (parallax, llums que bateguen, algú que es mou), i que quedi bé **sense els
+      botons**: serà la imatge de la web.
+- [ ] **Pròleg** curt: en mig minut s'ha d'entendre el conflicte. Acaba amb el títol i «Acte 1».
+- [ ] Totes es poden saltar (Esc → `skipTo`) i, saltant-les, la partida queda igual que mirant-les (els efectes
+      d'estat no poden dependre de veure-les senceres).
+- [ ] Composició de cinema: contrast d'escala, 3/4 i no de perfil, línies que guien l'ull, barres negres (~24 px).
+- [ ] Les animacions de les capes duren el que diu `hold`: ni es tallen ni es queden esperant.
+- [ ] **Finals** amb títol, escena (amb `if`), text de tancament i **crèdits** («Una aventura gràfica feta amb males
+      herbes - malaherbasoft.cat»), i postcrèdits si n'hi ha. Els tests arriben a tots els finals.
+- [ ] Rètols de temps entre escenes si hi ha salts («L'endemà al matí»).
+- [ ] Al full de sales (`npm run full-sales`) surten a «Pantalles»: si no hi surten, no tenen `cutscene`.
 
 ## 11. Detalls d'acabat
 

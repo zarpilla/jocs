@@ -167,6 +167,18 @@ punt `{ "x": …, "y": … }`.
 - Un personatge que no és a la sala (ni com a cosa ni com a veu) i surt en un `stage`, el sync l'hi posa
   amagat, com una veu. Per fer-lo aparèixer, `"visible": true`. En acabar, torna a quedar amagat (p. ex. en
   Sic, que entra a la cambra a buscar l'Iri).
+- **Les capes de l'art (cinemàtiques).** En lloc de `who`, `"prop": "<capa>"`: una capa del decorat de la sala
+  (un prop de l'art, que no cal que sigui al JSON del joc) canvia d'animació (`anim`) o es mostra o s'amaga
+  (`visible`). `"hold": <segons>` espera aquell temps sense text, mentre dura l'animació (saltant la cinemàtica,
+  no s'espera). `"shake": <segons>` sacseja la pantalla, i pot anar sol. És com s'animen els pròlegs:
+
+  ```json
+  { "who": "narrator", "text": "proleg.1", "stage": [
+    { "prop": "senyal", "anim": "senyal_va", "hold": 1.9 },
+    { "prop": "pis_vida", "visible": false },
+    { "prop": "pis", "anim": "pis_fon", "hold": 0.9 }
+  ] }
+  ```
 - `"stageAfter"` és el mateix, però en acabar de dir la línia. Serveix per a qui diu «me'n vaig» i després
   marxa, sobretot si és l'última línia i no n'hi ha cap més on posar-ho.
 
