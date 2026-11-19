@@ -56,7 +56,7 @@ registerOnUpdateHandler(() => {
 
 function writeSave(save: SaveRef, name?: string): void {
   if (typeof save === 'number') {
-    manager('save')?.save(name ?? `Slot ${save + 1}`, save);
+    manager('save')?.save(name ?? `Posició ${save + 1}`, save);
   } else {
     manager('save')?.save(save);
   }

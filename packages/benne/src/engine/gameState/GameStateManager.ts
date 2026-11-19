@@ -908,7 +908,7 @@ export class GameStateManager {
           continue;
         }
         next.push({
-          name: `Slot ${slot}`,
+          name: `Posició ${slot + 1}`,
           slot,
           storageKey: key,
           timestamp: now,
@@ -966,7 +966,7 @@ export class GameStateManager {
       if (fromManifest) {
         return fromManifest;
       }
-      return { name: `Slot ${slot}`, slot, storageKey, timestamp: Date.now() };
+      return { name: `Posició ${slot + 1}`, slot, storageKey, timestamp: Date.now() };
     }
     const normalized = normalizeSaveName(nameOrSlot);
     if (normalized.length === 0) {
@@ -1056,7 +1056,7 @@ export class GameStateManager {
           return entry;
         });
         if (!updated.some((entry) => entry.slot === nameOrSlot || entry.storageKey === storageKey)) {
-          updated.push({ name: `Slot ${nameOrSlot}`, slot: nameOrSlot, storageKey, timestamp: now });
+          updated.push({ name: `Posició ${nameOrSlot + 1}`, slot: nameOrSlot, storageKey, timestamp: now });
         }
         this.writeSaveManifest({ version: 1, saves: this.sortManifestEntries(updated) });
       }
