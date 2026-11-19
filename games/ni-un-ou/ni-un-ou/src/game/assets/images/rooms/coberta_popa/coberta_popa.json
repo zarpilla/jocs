@@ -4,90 +4,90 @@
       "frame": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 1.aseprite": {
       "frame": {
-        "x": 2405,
-        "y": 925,
-        "w": 194,
-        "h": 166
+        "x": 1780,
+        "y": 360,
+        "w": 110,
+        "h": 69
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 816,
-        "y": 308,
-        "w": 194,
-        "h": 166
+        "x": 266,
+        "y": 150,
+        "w": 110,
+        "h": 69
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 2.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1470,
-        "w": 518,
-        "h": 48
+        "x": 640,
+        "y": 595,
+        "w": 291,
+        "h": 31
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 234,
-        "w": 518,
-        "h": 48
+        "x": 100,
+        "y": 110,
+        "w": 291,
+        "h": 31
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 3.aseprite": {
       "frame": {
-        "x": 1280,
+        "x": 640,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "rotated": false,
       "trimmed": false,
       "spriteSourceSize": {
         "x": 0,
         "y": 0,
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 4.aseprite": {
       "frame": {
-        "x": 518,
-        "y": 1470,
+        "x": 931,
+        "y": 595,
         "w": 1,
         "h": 1
       },
@@ -100,246 +100,246 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 5.aseprite": {
       "frame": {
-        "x": 2599,
-        "y": 925,
-        "w": 1208,
-        "h": 50
+        "x": 1890,
+        "y": 360,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 6.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1120,
-        "w": 1208,
-        "h": 50
+        "x": 2530,
+        "y": 360,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 7.aseprite": {
       "frame": {
-        "x": 1208,
-        "y": 1120,
-        "w": 1208,
-        "h": 50
+        "x": 3170,
+        "y": 360,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 8.aseprite": {
       "frame": {
-        "x": 2416,
-        "y": 1120,
-        "w": 1208,
-        "h": 50
+        "x": 0,
+        "y": 460,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 9.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1170,
-        "w": 1208,
-        "h": 50
+        "x": 640,
+        "y": 460,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 10.aseprite": {
       "frame": {
-        "x": 1208,
-        "y": 1170,
-        "w": 1208,
-        "h": 50
+        "x": 1280,
+        "y": 460,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 11.aseprite": {
       "frame": {
-        "x": 2416,
-        "y": 1170,
-        "w": 1208,
-        "h": 50
+        "x": 1920,
+        "y": 460,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 12.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1220,
-        "w": 1208,
-        "h": 50
+        "x": 2560,
+        "y": 460,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 13.aseprite": {
       "frame": {
-        "x": 1208,
-        "y": 1220,
-        "w": 1208,
-        "h": 50
+        "x": 3200,
+        "y": 460,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 14.aseprite": {
       "frame": {
-        "x": 2416,
-        "y": 1220,
-        "w": 1208,
-        "h": 50
+        "x": 0,
+        "y": 505,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 15.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1270,
-        "w": 1208,
-        "h": 50
+        "x": 640,
+        "y": 505,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 16.aseprite": {
       "frame": {
-        "x": 518,
-        "y": 1470,
+        "x": 931,
+        "y": 595,
         "w": 1,
         "h": 1
       },
@@ -352,582 +352,666 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 17.aseprite": {
       "frame": {
-        "x": 1208,
-        "y": 1270,
-        "w": 1208,
-        "h": 50
+        "x": 1280,
+        "y": 505,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 18.aseprite": {
       "frame": {
-        "x": 2416,
-        "y": 1270,
-        "w": 1208,
-        "h": 50
+        "x": 1920,
+        "y": 505,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 19.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1320,
-        "w": 1208,
-        "h": 50
+        "x": 2560,
+        "y": 505,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 20.aseprite": {
       "frame": {
-        "x": 1208,
-        "y": 1320,
-        "w": 1208,
-        "h": 50
+        "x": 3200,
+        "y": 505,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 21.aseprite": {
       "frame": {
-        "x": 2416,
-        "y": 1320,
-        "w": 1208,
-        "h": 50
+        "x": 0,
+        "y": 550,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 22.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1370,
-        "w": 1208,
-        "h": 50
+        "x": 640,
+        "y": 550,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 23.aseprite": {
       "frame": {
-        "x": 1208,
-        "y": 1370,
-        "w": 1208,
-        "h": 50
+        "x": 1280,
+        "y": 550,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 24.aseprite": {
       "frame": {
-        "x": 2416,
-        "y": 1370,
-        "w": 1208,
-        "h": 50
+        "x": 1920,
+        "y": 550,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 25.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 1420,
-        "w": 1208,
-        "h": 50
+        "x": 2560,
+        "y": 550,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 26.aseprite": {
       "frame": {
-        "x": 1208,
-        "y": 1420,
-        "w": 1208,
-        "h": 50
+        "x": 3200,
+        "y": 550,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 27.aseprite": {
       "frame": {
-        "x": 2416,
-        "y": 1420,
-        "w": 1208,
-        "h": 50
+        "x": 0,
+        "y": 595,
+        "w": 640,
+        "h": 45
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
         "x": 0,
-        "y": 232,
-        "w": 1208,
-        "h": 50
+        "y": 101,
+        "w": 640,
+        "h": 45
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 28.aseprite": {
       "frame": {
-        "x": 481,
-        "y": 925,
-        "w": 481,
-        "h": 193
+        "x": 1068,
+        "y": 360,
+        "w": 178,
+        "h": 97
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 70,
-        "w": 481,
-        "h": 193
+        "x": 255,
+        "y": 20,
+        "w": 178,
+        "h": 97
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 29.aseprite": {
       "frame": {
-        "x": 962,
-        "y": 925,
-        "w": 481,
-        "h": 193
+        "x": 1246,
+        "y": 360,
+        "w": 178,
+        "h": 97
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 70,
-        "w": 481,
-        "h": 193
+        "x": 255,
+        "y": 20,
+        "w": 178,
+        "h": 97
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 30.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 925,
-        "w": 481,
-        "h": 195
+        "x": 890,
+        "y": 360,
+        "w": 178,
+        "h": 98
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 68,
-        "w": 481,
-        "h": 195
+        "x": 255,
+        "y": 19,
+        "w": 178,
+        "h": 98
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 31.aseprite": {
       "frame": {
-        "x": 1443,
-        "y": 720,
-        "w": 481,
-        "h": 199
+        "x": 0,
+        "y": 360,
+        "w": 178,
+        "h": 100
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 64,
-        "w": 481,
-        "h": 199
+        "x": 255,
+        "y": 17,
+        "w": 178,
+        "h": 100
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 32.aseprite": {
       "frame": {
-        "x": 481,
-        "y": 720,
-        "w": 481,
-        "h": 203
+        "x": 3712,
+        "y": 0,
+        "w": 178,
+        "h": 102
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 60,
-        "w": 481,
-        "h": 203
+        "x": 255,
+        "y": 15,
+        "w": 178,
+        "h": 102
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 33.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 720,
-        "w": 481,
-        "h": 205
+        "x": 3534,
+        "y": 0,
+        "w": 178,
+        "h": 103
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 58,
-        "w": 481,
-        "h": 205
+        "x": 255,
+        "y": 14,
+        "w": 178,
+        "h": 103
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 34.aseprite": {
       "frame": {
-        "x": 3041,
+        "x": 3178,
         "y": 0,
-        "w": 481,
-        "h": 207
+        "w": 178,
+        "h": 104
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 56,
-        "w": 481,
-        "h": 207
+        "x": 255,
+        "y": 13,
+        "w": 178,
+        "h": 104
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 35.aseprite": {
       "frame": {
-        "x": 2560,
+        "x": 3000,
         "y": 0,
-        "w": 481,
-        "h": 209
+        "w": 178,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 54,
-        "w": 481,
-        "h": 209
+        "x": 255,
+        "y": 12,
+        "w": 178,
+        "h": 105
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 36.aseprite": {
       "frame": {
-        "x": 3522,
+        "x": 3356,
         "y": 0,
-        "w": 481,
-        "h": 207
+        "w": 178,
+        "h": 104
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 56,
-        "w": 481,
-        "h": 207
+        "x": 255,
+        "y": 13,
+        "w": 178,
+        "h": 104
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 37.aseprite": {
       "frame": {
-        "x": 962,
-        "y": 720,
-        "w": 481,
-        "h": 201
+        "x": 3890,
+        "y": 0,
+        "w": 178,
+        "h": 101
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 62,
-        "w": 481,
-        "h": 201
+        "x": 255,
+        "y": 16,
+        "w": 178,
+        "h": 101
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 38.aseprite": {
       "frame": {
-        "x": 2405,
-        "y": 720,
-        "w": 481,
-        "h": 197
+        "x": 356,
+        "y": 360,
+        "w": 178,
+        "h": 99
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 66,
-        "w": 481,
-        "h": 197
+        "x": 255,
+        "y": 18,
+        "w": 178,
+        "h": 99
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 39.aseprite": {
       "frame": {
-        "x": 1443,
-        "y": 925,
-        "w": 481,
-        "h": 193
+        "x": 1424,
+        "y": 360,
+        "w": 178,
+        "h": 97
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 70,
-        "w": 481,
-        "h": 193
+        "x": 255,
+        "y": 20,
+        "w": 178,
+        "h": 97
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 40.aseprite": {
       "frame": {
-        "x": 1924,
-        "y": 925,
-        "w": 481,
-        "h": 191
+        "x": 1602,
+        "y": 360,
+        "w": 178,
+        "h": 96
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 72,
-        "w": 481,
-        "h": 191
+        "x": 255,
+        "y": 21,
+        "w": 178,
+        "h": 96
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 41.aseprite": {
       "frame": {
-        "x": 2886,
-        "y": 720,
-        "w": 481,
-        "h": 197
+        "x": 534,
+        "y": 360,
+        "w": 178,
+        "h": 99
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 66,
-        "w": 481,
-        "h": 197
+        "x": 255,
+        "y": 18,
+        "w": 178,
+        "h": 99
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 42.aseprite": {
       "frame": {
-        "x": 1924,
-        "y": 720,
-        "w": 481,
-        "h": 199
+        "x": 178,
+        "y": 360,
+        "w": 178,
+        "h": 100
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 64,
-        "w": 481,
-        "h": 199
+        "x": 255,
+        "y": 17,
+        "w": 178,
+        "h": 100
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 43.aseprite": {
       "frame": {
-        "x": 3367,
-        "y": 720,
-        "w": 481,
-        "h": 197
+        "x": 712,
+        "y": 360,
+        "w": 178,
+        "h": 99
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 400,
-        "y": 66,
-        "w": 481,
-        "h": 197
+        "x": 255,
+        "y": 18,
+        "w": 178,
+        "h": 99
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     },
     "coberta_popa 44.aseprite": {
       "frame": {
-        "x": 518,
-        "y": 1470,
+        "x": 2560,
+        "y": 0,
+        "w": 174,
+        "h": 214
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 422,
+        "y": 0,
+        "w": 174,
+        "h": 214
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "coberta_popa 45.aseprite": {
+      "frame": {
+        "x": 2734,
+        "y": 0,
+        "w": 174,
+        "h": 214
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 422,
+        "y": 0,
+        "w": 174,
+        "h": 214
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "coberta_popa 46.aseprite": {
+      "frame": {
+        "x": 2908,
+        "y": 0,
+        "w": 46,
+        "h": 129
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 64,
+        "y": 87,
+        "w": 46,
+        "h": 129
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "coberta_popa 47.aseprite": {
+      "frame": {
+        "x": 2954,
+        "y": 0,
+        "w": 46,
+        "h": 129
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 64,
+        "y": 87,
+        "w": 46,
+        "h": 129
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "coberta_popa 48.aseprite": {
+      "frame": {
+        "x": 931,
+        "y": 595,
         "w": 1,
         "h": 1
       },
@@ -940,8 +1024,50 @@
         "h": 1
       },
       "sourceSize": {
-        "w": 1280,
-        "h": 720
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "coberta_popa 49.aseprite": {
+      "frame": {
+        "x": 1280,
+        "y": 0,
+        "w": 640,
+        "h": 271
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 271
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
+      },
+      "duration": 100
+    },
+    "coberta_popa 50.aseprite": {
+      "frame": {
+        "x": 1920,
+        "y": 0,
+        "w": 640,
+        "h": 271
+      },
+      "rotated": false,
+      "trimmed": true,
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 640,
+        "h": 271
+      },
+      "sourceSize": {
+        "w": 640,
+        "h": 360
       },
       "duration": 100
     }
@@ -952,8 +1078,8 @@
     "image": "coberta_popa.png",
     "format": "RGBA8888",
     "size": {
-      "w": 4003,
-      "h": 1518
+      "w": 4068,
+      "h": 640
     },
     "scale": "1",
     "frameTags": [
@@ -1007,9 +1133,51 @@
         "color": "#000000ff"
       },
       {
-        "name": "davant",
+        "name": "davant_caseta",
         "from": 44,
         "to": 44,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dia__davant_caseta",
+        "from": 45,
+        "to": 45,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_grua",
+        "from": 46,
+        "to": 46,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dia__davant_grua",
+        "from": 47,
+        "to": 47,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant_taula",
+        "from": 48,
+        "to": 48,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "davant",
+        "from": 49,
+        "to": 49,
+        "direction": "forward",
+        "color": "#000000ff"
+      },
+      {
+        "name": "dia__davant",
+        "from": 50,
+        "to": 50,
         "direction": "forward",
         "color": "#000000ff"
       }

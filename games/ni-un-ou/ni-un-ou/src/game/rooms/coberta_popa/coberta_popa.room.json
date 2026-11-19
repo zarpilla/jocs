@@ -18,39 +18,100 @@
         "active": true,
         "points": [
           {
-            "x": 75,
-            "y": 213
+            "x": 0,
+            "y": 211
           },
           {
-            "x": 587,
-            "y": 213
-          },
-          {
-            "x": 613,
-            "y": 213
+            "x": 490,
+            "y": 175
           },
           {
             "x": 639,
-            "y": 219
+            "y": 218
           },
           {
             "x": 639,
-            "y": 261
+            "y": 256
+          },
+          {
+            "x": 60,
+            "y": 256
           },
           {
             "x": 0,
-            "y": 261
-          },
-          {
-            "x": 0,
-            "y": 229
-          },
-          {
-            "x": 27,
-            "y": 219
+            "y": 245
           }
         ],
-        "holes": []
+        "holes": [
+          {
+            "id": "forat-1",
+            "active": true,
+            "points": [
+              {
+                "x": 119,
+                "y": 207
+              },
+              {
+                "x": 115,
+                "y": 204
+              },
+              {
+                "x": 100,
+                "y": 203
+              },
+              {
+                "x": 81,
+                "y": 204
+              },
+              {
+                "x": 63,
+                "y": 207
+              },
+              {
+                "x": 52,
+                "y": 212
+              },
+              {
+                "x": 55,
+                "y": 216
+              },
+              {
+                "x": 71,
+                "y": 217
+              },
+              {
+                "x": 93,
+                "y": 216
+              },
+              {
+                "x": 112,
+                "y": 212
+              }
+            ]
+          },
+          {
+            "id": "forat-2",
+            "active": true,
+            "points": [
+              {
+                "x": 495,
+                "y": 218
+              },
+              {
+                "x": 601,
+                "y": 206
+              },
+              {
+                "x": 510,
+                "y": 184
+              },
+              {
+                "x": 420,
+                "y": 191
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -62,29 +123,29 @@
       "zIndex": 0,
       "points": [
         {
-          "x": 525,
-          "y": 88
+          "x": 451,
+          "y": 105
         },
         {
-          "x": 587,
-          "y": 88
+          "x": 485,
+          "y": 105
         },
         {
-          "x": 587,
-          "y": 203
+          "x": 485,
+          "y": 199
         },
         {
-          "x": 525,
-          "y": 203
+          "x": 451,
+          "y": 199
         }
       ],
       "walkToPoint": {
-        "x": 556,
-        "y": 224
+        "x": 444,
+        "y": 206
       },
       "lookAtPoint": {
-        "x": 556,
-        "y": 203
+        "x": 468,
+        "y": 199
       },
       "defaultVerb": "open"
     },
@@ -95,29 +156,29 @@
       "zIndex": 1,
       "points": [
         {
-          "x": 603,
-          "y": 32
+          "x": 606,
+          "y": 130
         },
         {
           "x": 639,
-          "y": 32
+          "y": 130
         },
         {
           "x": 639,
-          "y": 224
+          "y": 259
         },
         {
-          "x": 603,
-          "y": 224
+          "x": 606,
+          "y": 259
         }
       ],
       "walkToPoint": {
-        "x": 624,
-        "y": 232
+        "x": 633,
+        "y": 212
       },
       "lookAtPoint": {
-        "x": 621,
-        "y": 224
+        "x": 622,
+        "y": 259
       },
       "defaultVerb": "open"
     },
@@ -128,29 +189,29 @@
       "zIndex": 2,
       "points": [
         {
-          "x": 29,
-          "y": 27
+          "x": 73,
+          "y": 30
         },
         {
-          "x": 197,
-          "y": 27
+          "x": 204,
+          "y": 30
         },
         {
-          "x": 197,
-          "y": 211
+          "x": 204,
+          "y": 210
         },
         {
-          "x": 29,
-          "y": 211
+          "x": 73,
+          "y": 210
         }
       ],
       "walkToPoint": {
         "x": 128,
-        "y": 232
+        "y": 218
       },
       "lookAtPoint": {
-        "x": 113,
-        "y": 211
+        "x": 138,
+        "y": 210
       }
     },
     {
@@ -160,34 +221,61 @@
       "zIndex": 3,
       "points": [
         {
-          "x": 200,
-          "y": 139
+          "x": 156,
+          "y": 140
         },
         {
-          "x": 400,
-          "y": 139
+          "x": 384,
+          "y": 140
         },
         {
-          "x": 400,
-          "y": 205
+          "x": 384,
+          "y": 178
         },
         {
-          "x": 200,
-          "y": 205
+          "x": 156,
+          "y": 178
         }
       ],
       "walkToPoint": {
-        "x": 301,
-        "y": 224
+        "x": 266,
+        "y": 193
       },
       "lookAtPoint": {
-        "x": 300,
-        "y": 205
+        "x": 270,
+        "y": 178
       }
     }
   ],
   "points": [],
-  "regions": [],
+  "regions": [
+    {
+      "id": "perspectiva",
+      "active": true,
+      "scaleEnabled": true,
+      "scaleWalkSpeed": true,
+      "scaleTop": 0.541,
+      "scaleBottom": 1.17,
+      "points": [
+        {
+          "x": 0,
+          "y": 173
+        },
+        {
+          "x": 639,
+          "y": 173
+        },
+        {
+          "x": 639,
+          "y": 258
+        },
+        {
+          "x": 0,
+          "y": 258
+        }
+      ]
+    }
+  ],
   "props": [
     {
       "id": "BG",
@@ -215,30 +303,30 @@
       "collider": {
         "points": [
           {
-            "x": 272,
-            "y": 35
+            "x": 327,
+            "y": 20
           },
           {
-            "x": 371,
-            "y": 35
+            "x": 426,
+            "y": 20
           },
           {
-            "x": 371,
-            "y": 123
+            "x": 426,
+            "y": 108
           },
           {
-            "x": 272,
-            "y": 123
+            "x": 327,
+            "y": 108
           }
         ]
       },
       "walkToPoint": {
-        "x": 320,
-        "y": 224
+        "x": 336,
+        "y": 188
       },
       "lookAtPoint": {
-        "x": 321,
-        "y": 123
+        "x": 376,
+        "y": 108
       },
       "description": "plataforma"
     },
@@ -248,40 +336,40 @@
       "animations": {
         "taula": {}
       },
-      "zIndex": 21,
+      "zIndex": 25,
       "visible": true,
       "alpha": 1,
       "clickable": true,
       "collider": {
         "points": [
           {
-            "x": 405,
-            "y": 157
+            "x": 273,
+            "y": 149
           },
           {
-            "x": 507,
-            "y": 157
+            "x": 386,
+            "y": 149
           },
           {
-            "x": 507,
-            "y": 237
+            "x": 386,
+            "y": 222
           },
           {
-            "x": 405,
-            "y": 237
+            "x": 273,
+            "y": 222
           }
         ]
       },
       "walkToPoint": {
-        "x": 456,
-        "y": 251
+        "x": 359,
+        "y": 223
       },
       "lookAtPoint": {
-        "x": 456,
-        "y": 237
+        "x": 329,
+        "y": 222
       },
       "description": "esmorzar",
-      "baseline": 235
+      "baseline": 213
     },
     {
       "id": "horitzo",
@@ -296,30 +384,30 @@
       "collider": {
         "points": [
           {
-            "x": 200,
-            "y": 117
+            "x": 196,
+            "y": 107
           },
           {
-            "x": 453,
-            "y": 117
+            "x": 468,
+            "y": 107
           },
           {
-            "x": 453,
-            "y": 140
+            "x": 468,
+            "y": 152
           },
           {
-            "x": 200,
-            "y": 140
+            "x": 196,
+            "y": 152
           }
         ]
       },
       "walkToPoint": {
-        "x": 320,
-        "y": 224
+        "x": 259,
+        "y": 194
       },
       "lookAtPoint": {
-        "x": 326,
-        "y": 140
+        "x": 332,
+        "y": 152
       },
       "description": "horitzó"
     },
@@ -343,8 +431,8 @@
       "animations": {
         "davant": {}
       },
-      "zIndex": 20,
-      "baseline": 235
+      "zIndex": 26,
+      "baseline": 999
     },
     {
       "id": "dia_mar",
@@ -373,14 +461,86 @@
           "frameDuration": 260
         }
       }
+    },
+    {
+      "id": "davant_caseta",
+      "tag": "davant_caseta",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_caseta": {}
+      },
+      "zIndex": 20,
+      "baseline": 193
+    },
+    {
+      "id": "davant_grua",
+      "tag": "davant_grua",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_grua": {}
+      },
+      "zIndex": 22,
+      "baseline": 212
+    },
+    {
+      "id": "davant_taula",
+      "tag": "davant_taula",
+      "visible": true,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "davant_taula": {}
+      },
+      "zIndex": 24,
+      "baseline": 213
+    },
+    {
+      "id": "dia__davant_caseta",
+      "tag": "dia__davant_caseta",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant_caseta": {}
+      },
+      "zIndex": 21,
+      "baseline": 193
+    },
+    {
+      "id": "dia__davant_grua",
+      "tag": "dia__davant_grua",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant_grua": {}
+      },
+      "zIndex": 23,
+      "baseline": 212
+    },
+    {
+      "id": "dia__davant",
+      "tag": "dia__davant",
+      "visible": false,
+      "alpha": 1,
+      "clickable": false,
+      "animations": {
+        "dia__davant": {}
+      },
+      "zIndex": 27,
+      "baseline": 999
     }
   ],
   "characters": [
     {
       "instanceId": "iri-1",
       "definition": "iri/iri.character.json",
-      "x": 309,
-      "y": 253,
+      "x": 280,
+      "y": 231,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -389,8 +549,8 @@
     {
       "instanceId": "vet-1",
       "definition": "vet/vet.character.json",
-      "x": 200,
-      "y": 256,
+      "x": 167,
+      "y": 246,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -399,8 +559,8 @@
     {
       "instanceId": "bastida-1",
       "definition": "bastida/bastida.character.json",
-      "x": 253,
-      "y": 224,
+      "x": 217,
+      "y": 197,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -409,8 +569,8 @@
     {
       "instanceId": "capitana-1",
       "definition": "capitana/capitana.character.json",
-      "x": 435,
-      "y": 224,
+      "x": 368,
+      "y": 196,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -419,8 +579,8 @@
     {
       "instanceId": "marcel-1",
       "definition": "marcel/marcel.character.json",
-      "x": 531,
-      "y": 253,
+      "x": 628,
+      "y": 207,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -429,8 +589,8 @@
     {
       "instanceId": "nadia-1",
       "definition": "nadia/nadia.character.json",
-      "x": 384,
-      "y": 248,
+      "x": 236,
+      "y": 213,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -439,8 +599,8 @@
     {
       "instanceId": "tomas-1",
       "definition": "tomas/tomas.character.json",
-      "x": 483,
-      "y": 224,
+      "x": 386,
+      "y": 189,
       "initialFacing": "D",
       "initialAnimation": "Idle",
       "visible": true,
@@ -448,5 +608,18 @@
     }
   ],
   "viewAnchorY": 0,
-  "artScale": 2
+  "characterShadow": {
+    "enabled": true,
+    "color": "#0a0e16",
+    "alpha": 0.42,
+    "squash": 0.3,
+    "core": 0.6,
+    "light": {
+      "x": -1,
+      "y": -0.18,
+      "direction": true,
+      "stretch": 0.5
+    }
+  },
+  "floorSquash": 0.27
 }
