@@ -131,7 +131,7 @@ export class CharacterOutlineLayer {
       if (img.texture.key !== sprite.texture.key || img.frame.name !== sprite.frame.name) {
         img.setTexture(sprite.texture.key, sprite.frame.name);
       }
-      // (the batch reads the character data: the sheet's artScale)
+      // (the batch reads the character data and the frame: the sheet's artScale and size variant)
       img.setData('character', data);
       img.setDepth(depth);
       img.setFlipX(sprite.flipX);

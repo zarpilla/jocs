@@ -132,10 +132,15 @@ import {
   syncBenneRuntimeHiDpiSceneMainCameras,
 } from '../benneRuntimeHiDpiScale.js';
 import {
+  applyCharacterSizeVariant,
   cameraFollowOffsetForFeet,
   characterArtScale,
+  characterSpriteArtScale,
+  frameSizeVariantScale,
   getCharacterWorldFeet,
-  placeSpriteByFeet,
+  getPlacedPlainFeetLocal,
+  keepFeetAcrossSizeVariants,
+  registerCharacterSizeVariantFrames,
   resolveCharacterFeetLocal,
   type CharacterFeetLocal,
 } from '../characterFeet';
@@ -337,7 +342,9 @@ function getFeetFollowOffset(player: Phaser.GameObjects.Sprite): { x: number; y:
   }
   const data = player.getData('character') as CharacterData | undefined;
   const feet = data ? resolveCharacterFeetLocal(data, player) : { x: player.frame.width * 0.5, y: player.frame.height };
-  return cameraFollowOffsetForFeet({ x: feet.x * sx, y: feet.y * sy });
+  // (in the plain sheet's px: a size variant's frame is that many times bigger)
+  const v = data ? frameSizeVariantScale(player) : 1;
+  return cameraFollowOffsetForFeet({ x: feet.x * v * sx, y: feet.y * v * sy });
 }
 
 /** Outline color for `debug.showWalkable` (green). */
@@ -2609,7 +2616,7 @@ export class RoomScene extends Phaser.Scene {
     if (data?.talkPoint) {
       return { x: sprite.x + data.talkPoint.x, y: sprite.y + data.talkPoint.y };
     }
-    return { x: sprite.x + (f.width * 0.5) / characterArtScale(data), y: sprite.y - 4 };
+    return { x: sprite.x + (f.width * 0.5) / characterSpriteArtScale(sprite), y: sprite.y - 4 };
   }
 
   /**
@@ -4068,10 +4075,15 @@ export class RoomScene extends Phaser.Scene {
       this.roomData.regions,
       getPerspectiveSettings(),
     );
-    // A sheet drawn at `artScale`× is shown at 1/artScale on top of the perspective scale.
-    const s = perspective.characterScale / characterArtScale(sprite.getData('character') as CharacterData | undefined);
-    sprite.setScale(s, s);
-    placeSpriteByFeet(sprite as Phaser.GameObjects.Sprite, feetLocal, worldFeetX, worldFeetY);
+    // A sheet drawn at `artScale`× (and a size variant drawn bigger or smaller) is shown at 1/artScale (and 1/its
+    // scale) on top of the perspective scale; `feetLocal` is in the plain sheet's px.
+    applyCharacterSizeVariant(
+      sprite as Phaser.GameObjects.Sprite,
+      feetLocal,
+      perspective.characterScale,
+      worldFeetX,
+      worldFeetY,
+    );
     const lights = compileCharacterLights(this.roomData.characterLights);
     if (lights) {
       applyCharacterLights(sprite, lights, this.isPropShownForLights);
@@ -5349,14 +5361,16 @@ export class RoomScene extends Phaser.Scene {
     this.beginPlayerWalkLeg(sprite, path, 0);
   }
 
-  /** Get (and memoize on the sprite) the feet offset in local sprite coordinates. */
+  /**
+   * Get (and memoize on the sprite) the feet offset in local sprite coordinates of the plain sheet (a size variant's
+   * frames scale it; {@link applyFeetWorldWithRegionScale} does).
+   */
   private getSpriteFeetLocal(
     sprite: Phaser.GameObjects.Sprite | Phaser.GameObjects.Image,
   ): { x: number; y: number } {
-    let lx = sprite.getData('feetLocalX') as number | undefined;
-    let ly = sprite.getData('feetLocalY') as number | undefined;
-    if (typeof lx === 'number' && typeof ly === 'number') {
-      return { x: lx, y: ly };
+    const placed = getPlacedPlainFeetLocal(sprite);
+    if (placed) {
+      return placed;
     }
     const data = sprite.getData('character') as CharacterData | undefined;
     const resolved = data
@@ -5365,8 +5379,8 @@ export class RoomScene extends Phaser.Scene {
           x: (sprite as Phaser.GameObjects.Sprite).frame.width * 0.5,
           y: (sprite as Phaser.GameObjects.Sprite).frame.height,
         };
-    lx = resolved.x;
-    ly = resolved.y;
+    const lx = resolved.x;
+    const ly = resolved.y;
     sprite.setData('feetLocalX', lx);
     sprite.setData('feetLocalY', ly);
     return { x: lx, y: ly };
@@ -6474,6 +6488,11 @@ export class RoomScene extends Phaser.Scene {
     const createdAnims = sprite.anims.createFromAseprite(spawn.textureKey);
     setupCharacterAsepritePlayback(sprite, spawn.data, createdAnims);
     attachDirectionalAnimationApi(sprite);
+    // Size variants (`sizeVariants`): which frames are drawn bigger or smaller, and keep the feet put on a switch.
+    registerCharacterSizeVariantFrames(spawn.textureKey, spawn.data, createdAnims);
+    if (spawn.data.sizeVariants) {
+      keepFeetAcrossSizeVariants(sprite);
+    }
 
     const animBase = spawn.initialAnimation ?? 'Idle';
     const facing = resolveSpawnIdleFacing(sprite, spawn.initialFacing);
@@ -6535,6 +6554,8 @@ export class RoomScene extends Phaser.Scene {
     const handlers = getCharacterVerbHandlers(spawn.data);
 
     const colliderPts = spawn.data.collider?.points;
+    // A size variant's frames are that many times bigger than the plain sheet's: its hit test scales the point back.
+    const sized = spawn.data.sizeVariants !== undefined;
     if (colliderPts && colliderPts.length >= 3) {
       // Hit areas are in texture space; the collider is in 1× frame units.
       const k = characterArtScale(spawn.data);
@@ -6542,7 +6563,24 @@ export class RoomScene extends Phaser.Scene {
       const poly = new Phaser.Geom.Polygon(flat);
       sprite.setInteractive({
         hitArea: poly,
-        hitAreaCallback: Phaser.Geom.Polygon.Contains,
+        hitAreaCallback: sized
+          ? (area: Phaser.Geom.Polygon, x: number, y: number, go: Phaser.GameObjects.Sprite): boolean => {
+              const v = frameSizeVariantScale(go);
+              return Phaser.Geom.Polygon.Contains(area, x / v, y / v);
+            }
+          : Phaser.Geom.Polygon.Contains,
+        useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
+      });
+    } else if (sized) {
+      // The whole frame, as without a collider, but the plain sheet's (whichever variant is shown).
+      const v0 = frameSizeVariantScale(sprite);
+      const rect = new Phaser.Geom.Rectangle(0, 0, sprite.frame.width / v0, sprite.frame.height / v0);
+      sprite.setInteractive({
+        hitArea: rect,
+        hitAreaCallback: (area: Phaser.Geom.Rectangle, x: number, y: number, go: Phaser.GameObjects.Sprite): boolean => {
+          const v = frameSizeVariantScale(go);
+          return Phaser.Geom.Rectangle.Contains(area, x / v, y / v);
+        },
         useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
       });
     } else {

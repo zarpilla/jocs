@@ -68,15 +68,46 @@ diff -ruN index.html index.html
 diff -ruN src/editor/preview/createCharacterPreviewGame.ts src/editor/preview/createCharacterPreviewGame.ts
 --- src/editor/preview/createCharacterPreviewGame.ts
 +++ src/editor/preview/createCharacterPreviewGame.ts
-@@ -2,6 +2,7 @@
+@@ -2,6 +2,8 @@
  import { applyBootAudioSettings } from '../../engine/applyAudioFromSettings';
  import { applyCharacterAnimationClips } from '../../engine/characterAnimationPlayback';
  import {
 +  characterArtScale,
++  characterSizeVariantScale,
    placeSpriteByFeet,
    resolveCharacterFeetLocal,
    type CharacterFeetLocal,
-@@ -340,7 +341,11 @@
+@@ -317,6 +319,25 @@
+     this.animationTag = data.animationTag;
+   }
+ 
++  /** The feet in the plain sheet's texture px (`feet` × `artScale`), and where they stand in the preview world. */
++  private feetTex: CharacterFeetLocal = { x: 0, y: 0 };
++  private feetWorld: CharacterFeetLocal = { x: 0, y: 0 };
++
++  /**
++   * Shows a size variant's tag (`sizeVariants`) at the plain sheet's size, feet on the same point, so the collider and
++   * the points drawn over it still fit.
++   */
++  private fitSizeVariant(tag: string): void {
++    const v = characterSizeVariantScale(this.character, tag);
++    this.sprite.setScale(1 / (characterArtScale(this.character) * v));
++    placeSpriteByFeet(
++      this.sprite,
++      { x: this.feetTex.x * v, y: this.feetTex.y * v },
++      this.feetWorld.x,
++      this.feetWorld.y,
++    );
++  }
++
+   create(): void {
+     const rawPts = this.character.collider?.points;
+     this.colliderLocal =
+@@ -337,10 +358,15 @@
+     this.game.registry.set('benneCharacterPreviewPlayAnimation', (tag: string) => {
+       if (this.anims.exists(tag)) {
+         this.sprite.play(tag);
++        this.fitSizeVariant(tag);
        }
      });
  
@@ -89,16 +120,20 @@ diff -ruN src/editor/preview/createCharacterPreviewGame.ts src/editor/preview/cr
      const wtp = this.character.walkToPoint;
      this.walkLocal = wtp ? { x: wtp.x, y: wtp.y } : { ...this.feetLocal };
      const ttp = this.character.talkPoint;
-@@ -350,7 +355,7 @@
+@@ -348,9 +374,9 @@
+       ? { x: ttp.x, y: ttp.y }
+       : { x: this.feetLocal.x, y: this.feetLocal.y - 48 };
  
-     const feetWx = WORLD_PAD + this.feetLocal.x;
-     const feetWy = WORLD_PAD + this.feetLocal.y;
+-    const feetWx = WORLD_PAD + this.feetLocal.x;
+-    const feetWy = WORLD_PAD + this.feetLocal.y;
 -    placeSpriteByFeet(this.sprite, this.feetLocal, feetWx, feetWy);
-+    placeSpriteByFeet(this.sprite, feetTex, feetWx, feetWy);
++    this.feetTex = feetTex;
++    this.feetWorld = { x: WORLD_PAD + this.feetLocal.x, y: WORLD_PAD + this.feetLocal.y };
++    this.fitSizeVariant(this.animationTag);
  
      const mount = this.game.canvas.parentElement;
      if (mount) {
-@@ -428,8 +433,8 @@
+@@ -428,8 +454,8 @@
    private computeContentAabbWorld(): { minX: number; minY: number; maxX: number; maxY: number } {
      const sx = this.sprite.x;
      const sy = this.sprite.y;
@@ -109,7 +144,7 @@ diff -ruN src/editor/preview/createCharacterPreviewGame.ts src/editor/preview/cr
      let minX = sx;
      let minY = sy;
      let maxX = sx + fw;
-@@ -496,8 +501,8 @@
+@@ -496,8 +522,8 @@
      if (this.colliderLocal.length < MIN_COLLIDER_POINTS) {
        return null;
      }
@@ -120,7 +155,7 @@ diff -ruN src/editor/preview/createCharacterPreviewGame.ts src/editor/preview/cr
      const points = this.colliderLocal.map((p) => ({
        x: Math.round(Phaser.Math.Clamp(p.x, 0, fw)),
        y: Math.round(Phaser.Math.Clamp(p.y, 0, fh)),
-@@ -513,8 +518,8 @@
+@@ -513,8 +539,8 @@
  
    /** Feet and collider vertices stay inside the cel (texture hit-test space). */
    private clampFeetOrColliderLocal(lx: number, ly: number): Point2 {
@@ -664,7 +699,7 @@ diff -ruN src/engine/bootLoadingScreen.ts src/engine/bootLoadingScreen.ts
 diff -ruN src/engine/characterFeet.ts src/engine/characterFeet.ts
 --- src/engine/characterFeet.ts
 +++ src/engine/characterFeet.ts
-@@ -6,12 +6,19 @@
+@@ -6,15 +6,166 @@
  const FEET_LOCAL_X = 'feetLocalX';
  const FEET_LOCAL_Y = 'feetLocalY';
  
@@ -674,9 +709,93 @@ diff -ruN src/engine/characterFeet.ts src/engine/characterFeet.ts
 +  return typeof k === 'number' && k > 0 ? k : 1;
 +}
 +
++/** Sprite data key: the size-variant scale the sprite was last placed at (see {@link applyCharacterSizeVariant}). */
++const PLACED_SIZE_SCALE = 'benneSizeScale';
++
++/**
++ * Scale of the size variant an animation tag belongs to (`CharacterData.sizeVariants`): the longest prefix of `tag`
++ * listed there, else 1 (the plain sheet).
++ */
++export function characterSizeVariantScale(
++  data: { sizeVariants?: Record<string, number> } | undefined,
++  tag: string | undefined,
++): number {
++  const variants = data?.sizeVariants;
++  if (!variants || !tag) {
++    return 1;
++  }
++  let best = '';
++  let k = 1;
++  for (const [prefix, scale] of Object.entries(variants)) {
++    if (prefix.length > best.length && tag.startsWith(prefix) && typeof scale === 'number' && scale > 0) {
++      best = prefix;
++      k = scale;
++    }
++  }
++  return k;
++}
++
++/** Per texture key: frame name → size-variant scale, for the frames that belong to a variant (the rest are 1). */
++const sizeVariantFrames = new Map<string, Map<string, number>>();
++
++/**
++ * Records which frames of a character sheet belong to a size variant, from the clips `createFromAseprite` made
++ * (the tag names). Call once per spawn; a sheet without `sizeVariants` records nothing.
++ */
++export function registerCharacterSizeVariantFrames(
++  textureKey: string,
++  data: CharacterData,
++  anims: readonly { key: string; frames: readonly { textureFrame: string | number }[] }[],
++): void {
++  if (!data.sizeVariants || Object.keys(data.sizeVariants).length === 0) {
++    sizeVariantFrames.delete(textureKey);
++    return;
++  }
++  const byFrame = new Map<string, number>();
++  for (const anim of anims) {
++    const k = characterSizeVariantScale(data, anim.key);
++    if (k === 1) {
++      continue;
++    }
++    for (const f of anim.frames) {
++      byFrame.set(String(f.textureFrame), k);
++    }
++  }
++  sizeVariantFrames.set(textureKey, byFrame);
++}
++
++/** Size-variant scale of the frame a sprite / image shows now (1 for the plain sheet or a non-character). */
++export function frameSizeVariantScale(obj: {
++  texture?: { key: string };
++  frame?: { name: string | number };
++}): number {
++  const key = obj.texture?.key;
++  const name = obj.frame?.name;
++  if (key === undefined || name === undefined) {
++    return 1;
++  }
++  return sizeVariantFrames.get(key)?.get(String(name)) ?? 1;
++}
++
++/**
++ * Sheet pixels per 1× frame unit for the frame shown now: `artScale` × the frame's size variant. The sprite is shown
++ * at `perspective scale / this`, so a variant drawn bigger keeps the size the room gives the character.
++ */
++export function characterSpriteArtScale(obj: {
++  texture?: { key: string };
++  frame?: { name: string | number };
++  getData?: (key: string) => unknown;
++}): number {
++  const data = typeof obj.getData === 'function' ? (obj.getData('character') as CharacterData | undefined) : undefined;
++  return characterArtScale(data) * frameSizeVariantScale(obj);
++}
++
  /**
 - * Resolves feet in frame space: explicit `character.feet`, else bottom-centre of the current frame.
-+ * Resolves feet in frame (texture) space: explicit `character.feet`, else bottom-centre of the current frame.
++ * Resolves feet in the plain sheet's texture space (`feet` × `artScale`, without any size variant): explicit
++ * `character.feet`, else bottom-centre of the current frame. A variant's frames keep the 1× layout scaled by its
++ * factor (same top-left corner, feet × factor), so the variant's feet are these × its scale
++ * ({@link applyCharacterSizeVariant}).
   */
  export function resolveCharacterFeetLocal(data: CharacterData, sprite: Phaser.GameObjects.Sprite): CharacterFeetLocal {
    if (data.feet) {
@@ -685,7 +804,71 @@ diff -ruN src/engine/characterFeet.ts src/engine/characterFeet.ts
 +    return { x: data.feet.x * k, y: data.feet.y * k };
    }
    const f = sprite.frame;
-   return { x: f.width * 0.5, y: f.height };
+-  return { x: f.width * 0.5, y: f.height };
++  const v = frameSizeVariantScale(sprite);
++  return { x: (f.width * 0.5) / v, y: f.height / v };
++}
++
++/**
++ * The plain-sheet feet of a sprite placed by {@link applyCharacterSizeVariant} (its stored feet ÷ the variant it was
++ * placed at), or `undefined` when it was never placed.
++ */
++export function getPlacedPlainFeetLocal(sprite: Phaser.GameObjects.GameObject): CharacterFeetLocal | undefined {
++  const lx = sprite.getData(FEET_LOCAL_X) as number | undefined;
++  const ly = sprite.getData(FEET_LOCAL_Y) as number | undefined;
++  if (typeof lx !== 'number' || typeof ly !== 'number') {
++    return undefined;
++  }
++  const v = (sprite.getData(PLACED_SIZE_SCALE) as number | undefined) ?? 1;
++  return { x: lx / v, y: ly / v };
++}
++
++/**
++ * Places a character by its feet at `perspectiveScale` (the room's region scale), taking the frame's size variant
++ * into account: the sprite is scaled by `perspectiveScale / (artScale × variant)` and the feet (`plainFeet`, in the
++ * plain sheet's texture px) by the variant. Everything in 1× frame units (collider, talkPoint, shadow) then lands
++ * where it would with the plain sheet at that scale.
++ */
++export function applyCharacterSizeVariant(
++  sprite: Phaser.GameObjects.Sprite,
++  plainFeet: CharacterFeetLocal,
++  perspectiveScale: number,
++  worldFeetX: number,
++  worldFeetY: number,
++): void {
++  const v = frameSizeVariantScale(sprite);
++  const s = perspectiveScale / (characterArtScale(sprite.getData('character') as CharacterData | undefined) * v);
++  sprite.setScale(s, s);
++  placeSpriteByFeet(sprite, v === 1 ? plainFeet : { x: plainFeet.x * v, y: plainFeet.y * v }, worldFeetX, worldFeetY);
++  sprite.setData(PLACED_SIZE_SCALE, v);
++}
++
++/**
++ * When the frame switches to another size variant (a new outfit, an idle action, a script tag), rescales the sprite
++ * about its feet at once, so the feet and the on-screen size don't jump until the next placement. Attach once per
++ * character sprite whose data has `sizeVariants`.
++ */
++export function keepFeetAcrossSizeVariants(sprite: Phaser.GameObjects.Sprite): void {
++  const resync = (): void => {
++    const placed = sprite.getData(PLACED_SIZE_SCALE) as number | undefined;
++    const v = frameSizeVariantScale(sprite);
++    if (typeof placed !== 'number' || placed === v) {
++      return;
++    }
++    const plain = getPlacedPlainFeetLocal(sprite);
++    if (!plain) {
++      return;
++    }
++    const feet = getCharacterWorldFeet(sprite);
++    const perspective = Math.abs(sprite.scaleX) * characterArtScale(sprite.getData('character') as CharacterData) * placed;
++    applyCharacterSizeVariant(sprite, plain, perspective, feet.x, feet.y);
++  };
++  sprite.on('animationstart', resync);
++  sprite.on('animationrestart', resync);
++  sprite.on('animationupdate', resync);
+ }
+ 
+ /** Top-left sprite position so world feet sit at `(worldFeetX, worldFeetY)` (accounts for `sprite.scale`). */
 diff -ruN src/engine/directionalCharacterAnimation.ts src/engine/directionalCharacterAnimation.ts
 --- src/engine/directionalCharacterAnimation.ts
 +++ src/engine/directionalCharacterAnimation.ts
@@ -1443,23 +1626,28 @@ diff -ruN src/engine/idleActions.ts src/engine/idleActions.ts
 diff -ruN src/engine/rendering/benneCharacterPerspectiveBatch.ts src/engine/rendering/benneCharacterPerspectiveBatch.ts
 --- src/engine/rendering/benneCharacterPerspectiveBatch.ts
 +++ src/engine/rendering/benneCharacterPerspectiveBatch.ts
-@@ -24,7 +24,14 @@
+@@ -15,6 +15,7 @@
+   benneMakeRotationDatum,
+   benneMakeSmoothPixelArt,
+ } from './phaserQuadStandardShaderInline.js';
++import { characterSpriteArtScale } from '../characterFeet';
+ 
+ type BenneQuadRenderOptions = { texRes?: boolean; [key: string]: unknown };
+ 
+@@ -24,7 +25,11 @@
  /** Companion submitter that brackets each draw with {@link benneCharacterBatchObjectStack}. */
  export const BENNE_CHARACTER_SUBMITTER_NAME = 'SubmitterBenneCharacterQuad';
  
 -const PERSP_EPS = 0.00015;
 +
-+/** `CharacterData.artScale` of the sprite being drawn (1 when it has none). */
++/** `CharacterData.artScale` × the frame's size variant, of the sprite being drawn (1 when it has neither). */
 +function characterSheetArtScale(obj: object): number {
-+  const getData = (obj as { getData?: (key: string) => unknown }).getData;
-+  const data = typeof getData === 'function' ? (getData.call(obj, 'character') as { artScale?: number } | undefined) : undefined;
-+  const k = data?.artScale;
-+  return typeof k === 'number' && k > 0 ? k : 1;
++  return characterSpriteArtScale(obj as Parameters<typeof characterSpriteArtScale>[0]);
 +}
  
  const benneCharacterPerspectiveShaderAddition = {
    name: 'BenneCharacterPerspective',
-@@ -32,30 +39,61 @@
+@@ -32,30 +37,61 @@
      vertexDefine: 'attribute float inPerspMag;\n',
      outVariables: 'varying float outPerspMag;\n',
      vertexProcess: 'outPerspMag = inPerspMag;\n',
@@ -1541,7 +1729,7 @@ diff -ruN src/engine/rendering/benneCharacterPerspectiveBatch.ts src/engine/rend
    },
    disable: false,
  };
-@@ -74,6 +112,7 @@
+@@ -74,6 +110,7 @@
      benneCharacterPerspectiveShaderAddition,
      benneMakeDefineTexCount(1),
      benneMakeGetTexture1(),
@@ -1549,12 +1737,13 @@ diff -ruN src/engine/rendering/benneCharacterPerspectiveBatch.ts src/engine/rend
      benneMakeApplyTint(),
      benneMakeDefineLights(true),
      benneMakeRotationDatum(true),
-@@ -164,9 +203,11 @@
+@@ -164,9 +201,12 @@
        renderOptions: Phaser.Types.Renderer.WebGL.RenderNodes.BatchHandlerQuadRenderOptions,
      ): void {
        const top = benneCharacterBatchObjectStack[benneCharacterBatchObjectStack.length - 1];
-+      // The magnification in 1× frame units: a sheet drawn at `artScale`× is shown at 1/artScale on purpose (its
-+      // detail is denser, not something to bucket away), so only the perspective part of the scale counts.
++      // The magnification in 1× frame units: a sheet drawn at `artScale`× (or a size variant drawn bigger) is shown
++      // at 1/artScale on purpose (its detail is denser, not something to bucket away), so only the perspective part of
++      // the scale counts.
        const mag =
          top && 'scaleX' in top && 'scaleY' in top
 -          ? Math.max(Math.abs(top.scaleX as number), Math.abs(top.scaleY as number))
@@ -1841,7 +2030,7 @@ diff -ruN src/engine/room/characterOutline.ts src/engine/room/characterOutline.t
 +      if (img.texture.key !== sprite.texture.key || img.frame.name !== sprite.frame.name) {
 +        img.setTexture(sprite.texture.key, sprite.frame.name);
 +      }
-+      // (the batch reads the character data: the sheet's artScale)
++      // (the batch reads the character data and the frame: the sheet's artScale and size variant)
 +      img.setData('character', data);
 +      img.setDepth(depth);
 +      img.setFlipX(sprite.flipX);
@@ -2017,7 +2206,7 @@ diff -ruN src/engine/room/characterReflection.ts src/engine/room/characterReflec
 diff -ruN src/engine/room/characterShadow.ts src/engine/room/characterShadow.ts
 --- src/engine/room/characterShadow.ts
 +++ src/engine/room/characterShadow.ts
-@@ -0,0 +1,244 @@
+@@ -0,0 +1,250 @@
 +/**
 + * Contact shadow: a dark, semi-transparent ellipse on the floor under each character's feet.
 + *
@@ -2033,7 +2222,12 @@ diff -ruN src/engine/room/characterShadow.ts src/engine/room/characterShadow.ts
 +
 +import type { CharacterData } from '../../types/character';
 +import type { RoomCharacterShadowData } from '../../types/room';
-+import { characterArtScale, getCharacterWorldFeet } from '../characterFeet';
++import {
++  characterArtScale,
++  characterSpriteArtScale,
++  frameSizeVariantScale,
++  getCharacterWorldFeet,
++} from '../characterFeet';
 +
 +export interface CompiledCharacterShadow {
 +  color: number;
@@ -2233,13 +2427,14 @@ diff -ruN src/engine/room/characterShadow.ts src/engine/room/characterShadow.ts
 +    if (!visible) {
 +      return;
 +    }
-+    const artScale = characterArtScale(data);
++    // `artScale` × the frame's size variant: the perspective scale in 1× frame units.
++    const artScale = characterSpriteArtScale(sprite);
 +    const perspective = Math.abs(sprite.scaleX) * artScale;
 +    const feet = getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
 +    const cfg = data?.shadow && typeof data.shadow === 'object' ? data.shadow : undefined;
 +    const fx = feet.x + num(cfg?.offsetX, 0) * perspective;
 +    const fy = feet.y + num(cfg?.offsetY, 0) * perspective;
-+    const rx = (characterShadowBaseWidth(data, sprite.frame.width) * perspective) / 2;
++    const rx = (characterShadowBaseWidth(data, sprite.frame.width / frameSizeVariantScale(sprite)) * perspective) / 2;
 +    const key = `${fx.toFixed(2)},${fy.toFixed(2)},${rx.toFixed(3)},${alpha.toFixed(3)}`;
 +    if (key === entry.key) {
 +      return;
@@ -2424,13 +2619,20 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  } from '../ConfigManager';
  import {
    applyGameCursorSpriteHotspot,
-@@ -132,11 +133,19 @@
+@@ -131,12 +132,25 @@
+   syncBenneRuntimeHiDpiSceneMainCameras,
  } from '../benneRuntimeHiDpiScale.js';
  import {
++  applyCharacterSizeVariant,
    cameraFollowOffsetForFeet,
 +  characterArtScale,
++  characterSpriteArtScale,
++  frameSizeVariantScale,
    getCharacterWorldFeet,
-   placeSpriteByFeet,
+-  placeSpriteByFeet,
++  getPlacedPlainFeetLocal,
++  keepFeetAcrossSizeVariants,
++  registerCharacterSizeVariantFrames,
    resolveCharacterFeetLocal,
    type CharacterFeetLocal,
  } from '../characterFeet';
@@ -2444,7 +2646,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import {
    applyCharacterSpriteRegionTintFromWinningRegion,
    computeRoomRegionPerspective,
-@@ -144,7 +153,7 @@
+@@ -144,7 +158,7 @@
  } from '../room/regionCharacterScale';
  import { roomRegionEnterEventId, roomRegionExitEventId } from '../events/regionEnterExitEvents';
  import type { RegionEnterExitContext } from '../../types/regionEnterExit';
@@ -2453,7 +2655,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { findWalkPath } from '../pathfinding';
  import { dispatchVerbInteraction } from '../verbs/dispatchVerb';
  import {
-@@ -158,7 +167,8 @@
+@@ -158,7 +172,8 @@
    getPropVerbHandlers,
  } from '../verbs/normalizeHandlers';
  import { getEffectiveInputProfile } from '../verbs/verbConfig';
@@ -2463,7 +2665,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { resolveGameStateManager } from '../gameState/resolveGameStateManager';
  import { BENNE_USER_INPUT_DISABLED_REGISTRY_KEY } from '../input/userInputDisabledRegistry';
  import { incrementRoomVisitCount } from '../gameState/roomVisitState';
-@@ -173,7 +183,7 @@
+@@ -173,7 +188,7 @@
  import type { GuiButtonControl, GuiData, GuiGridControl } from '../../types/gui';
  import type { RoomCharacterSpawn, RoomPropSpawn, RoomSceneStartData } from './BootScene';
  import { attachRoomHandlers } from '../bennescript/roomHandlers.js';
@@ -2472,7 +2674,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { runOnUpdateHandlers } from '../bennescript/onUpdateRegistry.js';
  import {
    buildGuiOverlay,
-@@ -230,9 +240,12 @@
+@@ -230,9 +245,12 @@
    BENNE_SCREEN_FADE_DEFAULT_COLOR,
    BENNE_SCREEN_FADE_DEFAULT_DURATION_SEC,
    BENNE_SCREEN_FADE_OVERLAY_DEPTH,
@@ -2485,7 +2687,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  import { benneVideoCacheKey } from '../video/benneVideoCacheKeys.js';
  import { BENNE_VIDEO_ENDED_EVENT } from '../video/benneVideoEvents.js';
  import type { VideoPlayOptions } from '../video/benneVideoTypes.js';
-@@ -303,6 +316,16 @@
+@@ -303,6 +321,16 @@
  /** Renders above typical room + GUI depth so the custom pointer stays on top (shipped game). */
  const CUSTOM_CURSOR_DEPTH = 500_000;
  
@@ -2502,7 +2704,18 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  /** `startFollow` offset so the camera tracks {@link getCharacterWorldFeet}, not the sprite top-left. */
  function getFeetFollowOffset(player: Phaser.GameObjects.Sprite): { x: number; y: number } {
    const sx = player.scaleX;
-@@ -345,6 +368,12 @@
+@@ -314,7 +342,9 @@
+   }
+   const data = player.getData('character') as CharacterData | undefined;
+   const feet = data ? resolveCharacterFeetLocal(data, player) : { x: player.frame.width * 0.5, y: player.frame.height };
+-  return cameraFollowOffsetForFeet({ x: feet.x * sx, y: feet.y * sy });
++  // (in the plain sheet's px: a size variant's frame is that many times bigger)
++  const v = data ? frameSizeVariantScale(player) : 1;
++  return cameraFollowOffsetForFeet({ x: feet.x * v * sx, y: feet.y * v * sy });
+ }
+ 
+ /** Outline color for `debug.showWalkable` (green). */
+@@ -345,6 +375,12 @@
    return v && v.length > 0 ? { defaultVerb: v } : {};
  }
  
@@ -2515,7 +2728,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  export class RoomScene extends Phaser.Scene {
    private roomData!: RoomData;
  
-@@ -442,6 +471,16 @@
+@@ -442,6 +478,16 @@
     */
    private roomStackEntities: RoomStackEntity[] = [];
  
@@ -2532,7 +2745,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** Prop id → sprite (every placed prop, for Bennescript). */
    private propSpritesById = new Map<string, Phaser.GameObjects.Sprite>();
  
-@@ -534,6 +573,9 @@
+@@ -534,6 +580,9 @@
     */
    private screenFadeRect: Phaser.GameObjects.Rectangle | null = null;
  
@@ -2542,7 +2755,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Single-slot cinematic video layer (`video.x.play()`). Created hidden in {@link create} (no source) and
     * reused across `play` calls; renders at {@link ROOM_VIDEO_LAYER_DEPTH} (above room art, below all
-@@ -684,6 +726,10 @@
+@@ -684,6 +733,10 @@
     * before the room's own `pointerdown` handler sees the same click.
     */
    private scriptedDialogClickToSkipArmedDuringDown: number | null = null;
@@ -2553,7 +2766,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
    /** Screen-space sprite when `game-config.json` enables `cursor.display.aseprite`. */
    private customCursorSprite: Phaser.GameObjects.Sprite | null = null;
-@@ -707,6 +753,16 @@
+@@ -707,6 +760,16 @@
      if (event.key !== 'Escape') {
        return;
      }
@@ -2570,7 +2783,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // A skippable cutscene wins over the video handler: skipping fast-forwards the whole cutscene,
      // which stops any video playing inside it as part of finishing the in-flight step.
      if (this.canSkipActiveCutscene()) {
-@@ -749,6 +805,10 @@
+@@ -749,6 +812,10 @@
    create(data: RoomSceneStartData): void {
      registerBenneCharacterPerspectiveBatch(this.game);
      this.roomData = data.room;
@@ -2581,7 +2794,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.player = null;
      this.playerMoveTween = null;
      this.currentPlayerPath = null;
-@@ -760,6 +820,9 @@
+@@ -760,6 +827,9 @@
      this.previewHiddenCharacterVisibility = null;
      this.parallaxProps = [];
      this.roomStackEntities = [];
@@ -2591,7 +2804,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.propSpritesById.clear();
      this.characterSpritesByDefId.clear();
      this.characterJsonVisibleByDefId.clear();
-@@ -874,7 +937,14 @@
+@@ -874,7 +944,14 @@
        const isGenericHud = !isSpeakingText && !isDisplayText && !isChoiceDialog;
  
        const stackDepth = GUI_TEXT_OVERLAY_DEPTH + stackIndex * GUI_OVERLAY_DEPTH_STRIDE;
@@ -2607,7 +2820,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const guiStartVisible =
          isSpeakingText || isDisplayText || isChoiceDialog
            ? false
-@@ -888,7 +958,7 @@
+@@ -888,7 +965,7 @@
          this.makeGuiOverlayBuildOptions(guiDepth, {
            startVisible: guiStartVisible,
            inventoryPanelPointerContext,
@@ -2616,7 +2829,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
            previewGuiAsepriteSheetJson: data.previewGuiAsepriteSheetJsonById?.[gui.id],
          }),
        );
-@@ -898,6 +968,9 @@
+@@ -898,6 +975,9 @@
        }
  
        this.registerModalGuiOverlay(gui, guiDepth, built.handle, guiStartVisible);
@@ -2626,7 +2839,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.guiOverlayHandleByGuiId.set(gui.id, built.handle);
  
        // Every GUI gets a runtime, so `guis.x.controls.y` handles can reach its controls.
-@@ -924,6 +997,7 @@
+@@ -924,6 +1004,7 @@
      this.wireDialogChoiceUi();
  
      this.createRoomVideoLayer();
@@ -2634,7 +2847,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.createScreenFadeOverlay();
      const startKind: BenneRoomStartKind =
        (this.game.registry.get(BENNE_ROOM_START_KIND_KEY) as BenneRoomStartKind | undefined) ?? 'boot';
-@@ -1006,6 +1080,8 @@
+@@ -1006,6 +1087,8 @@
        this.dialogChoiceInputSuppressionActive = false;
        this.scriptedDialogInputSuppressionDepth = 0;
        this.scriptedDialogClickToSkip = null;
@@ -2643,7 +2856,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.scale.off('resize', this.onScaleResize, this);
        this.input.off('pointerdown', this.handleRoomPointerDown);
        this.input.off('pointermove', this.onRoomPointerMove);
-@@ -1018,6 +1094,11 @@
+@@ -1018,6 +1101,11 @@
          this.screenFadeRect.destroy();
          this.screenFadeRect = null;
        }
@@ -2655,7 +2868,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        this.teardownRoomVideoLayer();
        this.missingVideoKeysWarned.clear();
        this.editorUiChildListenerOff?.();
-@@ -1617,6 +1698,40 @@
+@@ -1617,6 +1705,40 @@
      this.refreshDialogChoiceOverlay();
    }
  
@@ -2696,7 +2909,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    private createScreenFadeOverlay(): void {
      const w = getInternalWidth();
      const h = getInternalHeight();
-@@ -1831,6 +1946,19 @@
+@@ -1831,6 +1953,19 @@
    }
  
    /** True while a cinematic video is loaded and playing/paused. */
@@ -2716,7 +2929,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    isRoomVideoPlaying(): boolean {
      return this.roomVideoActiveKey !== null;
    }
-@@ -1866,6 +1994,12 @@
+@@ -1866,6 +2001,12 @@
    }
  
    /**
@@ -2729,7 +2942,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * @param toAlpha 0 = transparent, 1 = fully opaque. Kills any running fade tweens on the overlay first.
     * @param fillColor RGB (`0xRRGGBB`); the overlay fill is set before the tween; animation uses game object alpha.
     */
-@@ -2047,6 +2181,14 @@
+@@ -2047,6 +2188,14 @@
      );
    }
  
@@ -2744,7 +2957,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** True while `input.disabled` is set. Survives room changes; not part of save snapshots. */
    private isUserInputDisabled(): boolean {
      return this.game.registry.get(BENNE_USER_INPUT_DISABLED_REGISTRY_KEY) === true;
-@@ -2233,7 +2375,7 @@
+@@ -2233,7 +2382,7 @@
      }
      const final = path[path.length - 1]!;
      const prev = path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite);
@@ -2753,7 +2966,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // Clearing the field first makes the running leg tween's onUpdate / onStop guards bail out,
      // so only finishPlayerWalk below resolves the walk.
      const tween = this.playerMoveTween;
-@@ -2259,7 +2401,7 @@
+@@ -2259,7 +2408,7 @@
      const final = path[path.length - 1]!;
      const prev =
        path.length >= 2 ? path[path.length - 2]! : getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
@@ -2762,7 +2975,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      // Dropping the map entry first makes the running leg tween's onStop guard bail out.
      const tween = this.npcWalkTweens.get(sprite);
      this.npcWalkTweens.delete(sprite);
-@@ -2308,6 +2450,37 @@
+@@ -2308,6 +2457,37 @@
      this.modalGuiEntries.push({ depth, isVisible: () => overlayVisible });
    }
  
@@ -2800,7 +3013,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * While a skippable scripted dialog line is showing, left-clicks invoke **`fn`** once (same cleanup as the timer).
     * Cleared when the line ends or when {@link clearScriptedDialogClickToSkip} runs.
-@@ -2316,6 +2489,7 @@
+@@ -2316,6 +2496,7 @@
      this.scriptedDialogClickToSkip = fn;
      const pointer = this.input?.activePointer;
      this.scriptedDialogClickToSkipArmedDuringDown = fn && pointer?.isDown ? pointer.downTime : null;
@@ -2808,7 +3021,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    clearScriptedDialogClickToSkip(): void {
-@@ -2339,9 +2513,19 @@
+@@ -2339,9 +2520,19 @@
      if (!pointer.leftButtonDown()) {
        return false;
      }
@@ -2828,16 +3041,16 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const fn = this.scriptedDialogClickToSkip;
      this.scriptedDialogClickToSkip = null;
      fn();
-@@ -2425,7 +2609,7 @@
+@@ -2425,7 +2616,7 @@
      if (data?.talkPoint) {
        return { x: sprite.x + data.talkPoint.x, y: sprite.y + data.talkPoint.y };
      }
 -    return { x: sprite.x + f.width * 0.5, y: sprite.y - 4 };
-+    return { x: sprite.x + (f.width * 0.5) / characterArtScale(data), y: sprite.y - 4 };
++    return { x: sprite.x + (f.width * 0.5) / characterSpriteArtScale(sprite), y: sprite.y - 4 };
    }
  
    /**
-@@ -2890,7 +3074,7 @@
+@@ -2890,7 +3081,7 @@
      if (Math.hypot(dx, dy) < 1e-2) {
        return;
      }
@@ -2846,16 +3059,23 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(observer)) {
        observer.setData('facing', facing);
        return;
-@@ -3884,12 +4068,23 @@
+@@ -3884,12 +4075,28 @@
        this.roomData.regions,
        getPerspectiveSettings(),
      );
 -    const s = perspective.characterScale;
-+    // A sheet drawn at `artScale`× is shown at 1/artScale on top of the perspective scale.
-+    const s = perspective.characterScale / characterArtScale(sprite.getData('character') as CharacterData | undefined);
-     sprite.setScale(s, s);
-     placeSpriteByFeet(sprite as Phaser.GameObjects.Sprite, feetLocal, worldFeetX, worldFeetY);
+-    sprite.setScale(s, s);
+-    placeSpriteByFeet(sprite as Phaser.GameObjects.Sprite, feetLocal, worldFeetX, worldFeetY);
 -    applyCharacterSpriteRegionTintFromWinningRegion(sprite, perspective.tintRegion);
++    // A sheet drawn at `artScale`× (and a size variant drawn bigger or smaller) is shown at 1/artScale (and 1/its
++    // scale) on top of the perspective scale; `feetLocal` is in the plain sheet's px.
++    applyCharacterSizeVariant(
++      sprite as Phaser.GameObjects.Sprite,
++      feetLocal,
++      perspective.characterScale,
++      worldFeetX,
++      worldFeetY,
++    );
 +    const lights = compileCharacterLights(this.roomData.characterLights);
 +    if (lights) {
 +      applyCharacterLights(sprite, lights, this.isPropShownForLights);
@@ -2872,7 +3092,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Applies region perspective scale for characters that are not mid–feet-interpolating walk tween.
     */
-@@ -4077,7 +4272,7 @@
+@@ -4077,7 +4284,7 @@
      if (Math.hypot(dx, dy) < 1e-2) {
        return;
      }
@@ -2881,7 +3101,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (getCharacterAnimationOverrideTag(sprite)) {
        sprite.setData('facing', facing);
        return;
-@@ -4094,7 +4289,7 @@
+@@ -4094,7 +4301,7 @@
      const dx = newFeet.x - oldFeet.x;
      const dy = newFeet.y - oldFeet.y;
      if (Math.hypot(dx, dy) >= 1e-2) {
@@ -2890,7 +3110,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (!getCharacterAnimationOverrideTag(sprite)) {
          playDirectionalAnimation(sprite, 'Idle', facing);
        } else {
-@@ -4213,10 +4408,11 @@
+@@ -4213,10 +4420,11 @@
      if (charSprite) {
        const data = charSprite.getData('character') as CharacterData | undefined;
        if (data?.walkToPoint) {
@@ -2903,7 +3123,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        }
        return getCharacterWorldFeet(charSprite as Phaser.GameObjects.Sprite);
      }
-@@ -4234,6 +4430,28 @@
+@@ -4234,6 +4442,28 @@
    }
  
    /**
@@ -2932,7 +3152,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
     * Resolve a camera focus / zoom target in room space. String ids: prop → hotspot → character →
     * `room.points`. Props and hotspots use **`lookAtPoint`** (not **`walkToPoint`**); characters use
     * **`talkPoint`** in frame space when set, else world feet.
-@@ -4567,6 +4785,30 @@
+@@ -4567,6 +4797,30 @@
        sb?.width ?? roomW,
        sb?.height ?? roomH,
      );
@@ -2963,7 +3183,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    }
  
    /** Starts follow on the player’s feet (see `CharacterData.feet`). */
-@@ -4576,21 +4818,37 @@
+@@ -4576,21 +4830,37 @@
      }
      const vW = getInternalWidth();
      const vH = getInternalHeight();
@@ -3003,7 +3223,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      this.updatePathDebug();
      this.invokeOnUpdateHandlers(this.game.loop.delta / 1000);
    }
-@@ -4609,6 +4867,65 @@
+@@ -4609,6 +4879,65 @@
      }
    }
  
@@ -3069,7 +3289,40 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /** Re-sorts props, characters, and hotspot zones by `zIndex` and optional `baseline` rules. */
    private updateRoomStackDepths(): void {
      if (this.roomStackEntities.length === 0) {
-@@ -5082,11 +5399,11 @@
+@@ -5032,14 +5361,16 @@
+     this.beginPlayerWalkLeg(sprite, path, 0);
+   }
+ 
+-  /** Get (and memoize on the sprite) the feet offset in local sprite coordinates. */
++  /**
++   * Get (and memoize on the sprite) the feet offset in local sprite coordinates of the plain sheet (a size variant's
++   * frames scale it; {@link applyFeetWorldWithRegionScale} does).
++   */
+   private getSpriteFeetLocal(
+     sprite: Phaser.GameObjects.Sprite | Phaser.GameObjects.Image,
+   ): { x: number; y: number } {
+-    let lx = sprite.getData('feetLocalX') as number | undefined;
+-    let ly = sprite.getData('feetLocalY') as number | undefined;
+-    if (typeof lx === 'number' && typeof ly === 'number') {
+-      return { x: lx, y: ly };
++    const placed = getPlacedPlainFeetLocal(sprite);
++    if (placed) {
++      return placed;
+     }
+     const data = sprite.getData('character') as CharacterData | undefined;
+     const resolved = data
+@@ -5048,8 +5379,8 @@
+           x: (sprite as Phaser.GameObjects.Sprite).frame.width * 0.5,
+           y: (sprite as Phaser.GameObjects.Sprite).frame.height,
+         };
+-    lx = resolved.x;
+-    ly = resolved.y;
++    const lx = resolved.x;
++    const ly = resolved.y;
+     sprite.setData('feetLocalX', lx);
+     sprite.setData('feetLocalY', ly);
+     return { x: lx, y: ly };
+@@ -5082,11 +5413,11 @@
          this.beginPlayerWalkLeg(sprite, path, legIndex + 1);
          return;
        }
@@ -3083,7 +3336,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (!getCharacterAnimationOverrideTag(sprite)) {
        playDirectionalAnimation(sprite, 'Walk', facing);
      } else {
-@@ -5154,6 +5471,16 @@
+@@ -5154,6 +5485,16 @@
      this.playerMoveTween = moveTween;
    }
  
@@ -3100,7 +3353,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    private finishPlayerWalk(sprite: DirectionalCharacterSprite, facing: CharacterFacing): void {
      this.currentPlayerPath = null;
      if (!getCharacterAnimationOverrideTag(sprite)) {
-@@ -5260,7 +5587,7 @@
+@@ -5260,7 +5601,7 @@
          this.beginNpcWalkLeg(sprite, path, legIndex + 1, onArrive);
          return;
        }
@@ -3109,7 +3362,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
          if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
            playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Idle', facing);
-@@ -5272,7 +5599,7 @@
+@@ -5272,7 +5613,7 @@
        return;
      }
  
@@ -3118,7 +3371,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      if (sprite instanceof Phaser.GameObjects.Sprite && sprite.anims) {
        if (!getCharacterAnimationOverrideTag(sprite as Phaser.GameObjects.Sprite)) {
          playDirectionalAnimation(sprite as DirectionalCharacterSprite, 'Walk', facing);
-@@ -5594,6 +5921,11 @@
+@@ -5594,6 +5935,11 @@
        // sheets (the typical BENNE workflow) each frame already covers the full room width
        // and height, so no explicit setDisplaySize is needed.
        const sprite = this.add.sprite(spawnX, spawnY, textureKey).setOrigin(0, 0);
@@ -3130,7 +3383,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const jsonVisible = spawn.data.visible !== false;
        const jsonAlpha = spawn.data.alpha ?? 1;
        sprite.setVisible(readSavedPropVisible(manager, data.room.id, spawn.id, jsonVisible));
-@@ -5675,7 +6007,9 @@
+@@ -5675,7 +6021,9 @@
        return;
      }
  
@@ -3141,7 +3394,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const poly = new Phaser.Geom.Polygon(flat);
      sprite.setInteractive({
        hitArea: poly,
-@@ -5683,8 +6017,8 @@
+@@ -5683,8 +6031,8 @@
        useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
      });
  
@@ -3152,7 +3405,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5692,12 +6026,24 @@
+@@ -5692,12 +6040,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3177,7 +3430,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5742,10 +6088,161 @@
+@@ -5742,10 +6102,161 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }
@@ -3340,7 +3593,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
    /**
     * Dispatches the **look** verb on this prop (same as a primary-button look click). Does not move or rotate the player.
     */
-@@ -5808,8 +6305,8 @@
+@@ -5808,8 +6319,8 @@
        return;
      }
  
@@ -3351,7 +3604,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -5818,12 +6315,24 @@
+@@ -5818,12 +6329,24 @@
        const handlers = getHotspotVerbHandlers(hotspot);
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3376,7 +3629,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -5887,7 +6396,7 @@
+@@ -5887,7 +6410,7 @@
      const geom = new Phaser.Geom.Polygon(flat);
      zone.setInteractive(geom, Phaser.Geom.Polygon.Contains);
      zone.input!.cursor = isBenneGameCursorAsepriteEnabled(getGameSettings()) ? 'none' : 'pointer';
@@ -3385,7 +3638,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
  
      this.roomStackEntities.push({
        kind: 'hotspot',
-@@ -5918,6 +6427,7 @@
+@@ -5918,6 +6441,7 @@
      }
  
      const sprite = this.add.image(0, 0, spawn.textureKey);
@@ -3393,9 +3646,24 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
      const feet = resolveCharacterFeetLocal(spawn.data, sprite as Phaser.GameObjects.Sprite);
      const manager = resolveGameStateManager(this.game);
      // Saved feet world position (from a prior flush) overrides the room JSON `(x, y)` — same
-@@ -6026,7 +6536,9 @@
+@@ -5964,6 +6488,11 @@
+     const createdAnims = sprite.anims.createFromAseprite(spawn.textureKey);
+     setupCharacterAsepritePlayback(sprite, spawn.data, createdAnims);
+     attachDirectionalAnimationApi(sprite);
++    // Size variants (`sizeVariants`): which frames are drawn bigger or smaller, and keep the feet put on a switch.
++    registerCharacterSizeVariantFrames(spawn.textureKey, spawn.data, createdAnims);
++    if (spawn.data.sizeVariants) {
++      keepFeetAcrossSizeVariants(sprite);
++    }
+ 
+     const animBase = spawn.initialAnimation ?? 'Idle';
+     const facing = resolveSpawnIdleFacing(sprite, spawn.initialFacing);
+@@ -6025,19 +6554,40 @@
+     const handlers = getCharacterVerbHandlers(spawn.data);
  
      const colliderPts = spawn.data.collider?.points;
++    // A size variant's frames are that many times bigger than the plain sheet's: its hit test scales the point back.
++    const sized = spawn.data.sizeVariants !== undefined;
      if (colliderPts && colliderPts.length >= 3) {
 -      const flat = colliderPts.flatMap((p) => [p.x, p.y]);
 +      // Hit areas are in texture space; the collider is in 1× frame units.
@@ -3404,7 +3672,27 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        const poly = new Phaser.Geom.Polygon(flat);
        sprite.setInteractive({
          hitArea: poly,
-@@ -6036,8 +6548,8 @@
+-        hitAreaCallback: Phaser.Geom.Polygon.Contains,
++        hitAreaCallback: sized
++          ? (area: Phaser.Geom.Polygon, x: number, y: number, go: Phaser.GameObjects.Sprite): boolean => {
++              const v = frameSizeVariantScale(go);
++              return Phaser.Geom.Polygon.Contains(area, x / v, y / v);
++            }
++          : Phaser.Geom.Polygon.Contains,
++        useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
++      });
++    } else if (sized) {
++      // The whole frame, as without a collider, but the plain sheet's (whichever variant is shown).
++      const v0 = frameSizeVariantScale(sprite);
++      const rect = new Phaser.Geom.Rectangle(0, 0, sprite.frame.width / v0, sprite.frame.height / v0);
++      sprite.setInteractive({
++        hitArea: rect,
++        hitAreaCallback: (area: Phaser.Geom.Rectangle, x: number, y: number, go: Phaser.GameObjects.Sprite): boolean => {
++          const v = frameSizeVariantScale(go);
++          return Phaser.Geom.Rectangle.Contains(area, x / v, y / v);
++        },
+         useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()),
+       });
      } else {
        sprite.setInteractive({ useHandCursor: !isBenneGameCursorAsepriteEnabled(getGameSettings()) });
      }
@@ -3415,7 +3703,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
          return;
        }
        if (this.isPlayerPointerBlocked()) {
-@@ -6045,12 +6557,24 @@
+@@ -6045,12 +6595,24 @@
        }
        const profile = getEffectiveInputProfile(getGameSettings());
        const manager = resolveGameStateManager(this.game);
@@ -3440,7 +3728,7 @@ diff -ruN src/engine/scenes/RoomScene.ts src/engine/scenes/RoomScene.ts
        );
        if (resolution.kind === 'none') {
          return;
-@@ -6118,7 +6642,8 @@
+@@ -6118,7 +6680,8 @@
        if (resolution.consumeActive) {
          manager.clearActiveVerb();
        }
@@ -4075,7 +4363,7 @@ diff -ruN src/types/character.ts src/types/character.ts
  export interface CharacterData {
    id: string;
    /** BenneScript handle name, when the generated one doesn't fit (docs/bennescript-ergonomics-refactor.md §7.2). */
-@@ -57,6 +74,24 @@
+@@ -57,6 +74,33 @@
     */
    feet?: { x: number; y: number };
    /**
@@ -4084,6 +4372,15 @@ diff -ruN src/types/character.ts src/types/character.ts
 +   * Default 1. Same idea as the room `artScale`.
 +   */
 +  artScale?: number;
++  /**
++   * Size variants of the sheet, as `{ prefix: scale }` (e.g. `{ "Gran": 1.5 }` or `{ "Lluny": 0.56 }`): frames of the
++   * tags that start with `prefix` (`GranIdleD`, `GranGalaWalkL`; the longest prefix wins) are the same figure drawn at
++   * `scale`× its plain size, in frames laid out like the plain ones scaled by `scale` (same top-left corner, feet at
++   * `feet` × scale). The room's perspective scale keeps meaning how big the character is there: such a frame is
++   * shown at 1/scale on top of it, and `feet`, `collider`, `walkToPoint`, `talkPoint`, the shadow and the walk speed
++   * behave as with the plain sheet. Pick the variant per room with an outfit (`setOutfit`). Default: none.
++   */
++  sizeVariants?: Record<string, number>;
 +  /** Idle micro-actions (blink, look around, a tic) played at random while the character stands still. */
 +  idleActions?: CharacterIdleActionData[];
 +  /**

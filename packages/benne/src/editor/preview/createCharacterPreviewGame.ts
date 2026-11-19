@@ -3,6 +3,7 @@ import { applyBootAudioSettings } from '../../engine/applyAudioFromSettings';
 import { applyCharacterAnimationClips } from '../../engine/characterAnimationPlayback';
 import {
   characterArtScale,
+  characterSizeVariantScale,
   placeSpriteByFeet,
   resolveCharacterFeetLocal,
   type CharacterFeetLocal,
@@ -318,6 +319,25 @@ class CharacterPreviewScene extends Phaser.Scene {
     this.animationTag = data.animationTag;
   }
 
+  /** The feet in the plain sheet's texture px (`feet` × `artScale`), and where they stand in the preview world. */
+  private feetTex: CharacterFeetLocal = { x: 0, y: 0 };
+  private feetWorld: CharacterFeetLocal = { x: 0, y: 0 };
+
+  /**
+   * Shows a size variant's tag (`sizeVariants`) at the plain sheet's size, feet on the same point, so the collider and
+   * the points drawn over it still fit.
+   */
+  private fitSizeVariant(tag: string): void {
+    const v = characterSizeVariantScale(this.character, tag);
+    this.sprite.setScale(1 / (characterArtScale(this.character) * v));
+    placeSpriteByFeet(
+      this.sprite,
+      { x: this.feetTex.x * v, y: this.feetTex.y * v },
+      this.feetWorld.x,
+      this.feetWorld.y,
+    );
+  }
+
   create(): void {
     const rawPts = this.character.collider?.points;
     this.colliderLocal =
@@ -338,6 +358,7 @@ class CharacterPreviewScene extends Phaser.Scene {
     this.game.registry.set('benneCharacterPreviewPlayAnimation', (tag: string) => {
       if (this.anims.exists(tag)) {
         this.sprite.play(tag);
+        this.fitSizeVariant(tag);
       }
     });
 
@@ -353,9 +374,9 @@ class CharacterPreviewScene extends Phaser.Scene {
       ? { x: ttp.x, y: ttp.y }
       : { x: this.feetLocal.x, y: this.feetLocal.y - 48 };
 
-    const feetWx = WORLD_PAD + this.feetLocal.x;
-    const feetWy = WORLD_PAD + this.feetLocal.y;
-    placeSpriteByFeet(this.sprite, feetTex, feetWx, feetWy);
+    this.feetTex = feetTex;
+    this.feetWorld = { x: WORLD_PAD + this.feetLocal.x, y: WORLD_PAD + this.feetLocal.y };
+    this.fitSizeVariant(this.animationTag);
 
     const mount = this.game.canvas.parentElement;
     if (mount) {

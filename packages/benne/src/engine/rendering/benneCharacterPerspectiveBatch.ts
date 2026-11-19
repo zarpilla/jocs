@@ -15,6 +15,7 @@ import {
   benneMakeRotationDatum,
   benneMakeSmoothPixelArt,
 } from './phaserQuadStandardShaderInline.js';
+import { characterSpriteArtScale } from '../characterFeet';
 
 type BenneQuadRenderOptions = { texRes?: boolean; [key: string]: unknown };
 
@@ -25,12 +26,9 @@ export const BENNE_CHARACTER_BATCH_HANDLER_NAME = 'BatchHandlerBenneCharacterQua
 export const BENNE_CHARACTER_SUBMITTER_NAME = 'SubmitterBenneCharacterQuad';
 
 
-/** `CharacterData.artScale` of the sprite being drawn (1 when it has none). */
+/** `CharacterData.artScale` × the frame's size variant, of the sprite being drawn (1 when it has neither). */
 function characterSheetArtScale(obj: object): number {
-  const getData = (obj as { getData?: (key: string) => unknown }).getData;
-  const data = typeof getData === 'function' ? (getData.call(obj, 'character') as { artScale?: number } | undefined) : undefined;
-  const k = data?.artScale;
-  return typeof k === 'number' && k > 0 ? k : 1;
+  return characterSpriteArtScale(obj as Parameters<typeof characterSpriteArtScale>[0]);
 }
 
 const benneCharacterPerspectiveShaderAddition = {
@@ -203,8 +201,9 @@ export function registerBenneCharacterPerspectiveBatch(game: Phaser.Game): void 
       renderOptions: Phaser.Types.Renderer.WebGL.RenderNodes.BatchHandlerQuadRenderOptions,
     ): void {
       const top = benneCharacterBatchObjectStack[benneCharacterBatchObjectStack.length - 1];
-      // The magnification in 1× frame units: a sheet drawn at `artScale`× is shown at 1/artScale on purpose (its
-      // detail is denser, not something to bucket away), so only the perspective part of the scale counts.
+      // The magnification in 1× frame units: a sheet drawn at `artScale`× (or a size variant drawn bigger) is shown
+      // at 1/artScale on purpose (its detail is denser, not something to bucket away), so only the perspective part of
+      // the scale counts.
       const mag =
         top && 'scaleX' in top && 'scaleY' in top
           ? Math.max(Math.abs(top.scaleX as number), Math.abs(top.scaleY as number)) * characterSheetArtScale(top)

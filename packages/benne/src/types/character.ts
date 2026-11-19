@@ -79,6 +79,15 @@ export interface CharacterData {
    * Default 1. Same idea as the room `artScale`.
    */
   artScale?: number;
+  /**
+   * Size variants of the sheet, as `{ prefix: scale }` (e.g. `{ "Gran": 1.5 }` or `{ "Lluny": 0.56 }`): frames of the
+   * tags that start with `prefix` (`GranIdleD`, `GranGalaWalkL`; the longest prefix wins) are the same figure drawn at
+   * `scale`× its plain size, in frames laid out like the plain ones scaled by `scale` (same top-left corner, feet at
+   * `feet` × scale). The room's perspective scale keeps meaning how big the character is there: such a frame is
+   * shown at 1/scale on top of it, and `feet`, `collider`, `walkToPoint`, `talkPoint`, the shadow and the walk speed
+   * behave as with the plain sheet. Pick the variant per room with an outfit (`setOutfit`). Default: none.
+   */
+  sizeVariants?: Record<string, number>;
   /** Idle micro-actions (blink, look around, a tic) played at random while the character stands still. */
   idleActions?: CharacterIdleActionData[];
   /**

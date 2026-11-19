@@ -13,7 +13,12 @@ import * as Phaser from 'phaser';
 
 import type { CharacterData } from '../../types/character';
 import type { RoomCharacterShadowData } from '../../types/room';
-import { characterArtScale, getCharacterWorldFeet } from '../characterFeet';
+import {
+  characterArtScale,
+  characterSpriteArtScale,
+  frameSizeVariantScale,
+  getCharacterWorldFeet,
+} from '../characterFeet';
 
 export interface CompiledCharacterShadow {
   color: number;
@@ -213,13 +218,14 @@ export class CharacterShadowLayer {
     if (!visible) {
       return;
     }
-    const artScale = characterArtScale(data);
+    // `artScale` × the frame's size variant: the perspective scale in 1× frame units.
+    const artScale = characterSpriteArtScale(sprite);
     const perspective = Math.abs(sprite.scaleX) * artScale;
     const feet = getCharacterWorldFeet(sprite as Phaser.GameObjects.Sprite);
     const cfg = data?.shadow && typeof data.shadow === 'object' ? data.shadow : undefined;
     const fx = feet.x + num(cfg?.offsetX, 0) * perspective;
     const fy = feet.y + num(cfg?.offsetY, 0) * perspective;
-    const rx = (characterShadowBaseWidth(data, sprite.frame.width) * perspective) / 2;
+    const rx = (characterShadowBaseWidth(data, sprite.frame.width / frameSizeVariantScale(sprite)) * perspective) / 2;
     const key = `${fx.toFixed(2)},${fy.toFixed(2)},${rx.toFixed(3)},${alpha.toFixed(3)}`;
     if (key === entry.key) {
       return;
