@@ -1,14 +1,23 @@
 """
-Final · La fugida, a 640×360 (vegeu hd/rooms/final_llancadora.py, la de 480×270): la llançadora vella (la de
-l'hangar, rovellada i apedaçada, amb el tub de ferro-9 nou que brilla al ventre) travessa la nit amb el motor encès,
-d'un blau de ferro-9. A sota, la cara de nit de la Terra amb les ciutats enceses; a la dreta, el sol que surt per la
-vora. Darrere, petita i llunyana, La Gavina, i l'estela que en surt. A la finestreta, la llum càlida de la cabina
-(la Vet és a dins).
-  - la mateixa composició ×4/3; la Terra de nit, calculada a 640 amb una octava més (costes i núvols més fins);
-  - la llançadora, redibuixada: planxes de 23 píxels amb reblons, pedaços més grans, el tub de ferro-9 de 7 píxels
-    de gruix, la Vet de 15×15 a la finestreta (a 480, d'11×11), el rètol «L-1» de 6 píxels;
-  - la flama i l'estela, a la mida de 640.
-Pantalla sencera (sense barra de verbs).
+Final · La fugida (i el de l'Estació d'Orís): la llançadora vella travessa la nit. EN 3D (hd640/tres_d.py), a 1×;
+el dibuix pla d'abans és a final_llancadora_pla_comu.py (en surten la Terra de nit, el sol i les rampes).
+
+Un pla de cinema, com la referència del vaixell i la plataforma (docs/referencies/cinematica-vaixell-plataforma.png):
+  - la llançadora, grossa i a prop, a baix a la dreta, en 3/4: ve cap a nosaltres de biaix, amb el morro de coure
+    girat cap a la dreta. Se'n veu el costat (la finestreta amb la Vet i la llum de la cabina, la porta, el tub de
+    ferro-9 nou al ventre, el rètol «L-1»), el llom i les tres aletes de la cua. És un cos de revolució de facetes
+    (`nau`), amb les planxes, els reblons, els pedaços i el rovell en coordenades de la nau: s'empetiteixen cap a la
+    cua. La il·lumina el sol per darrere (el contorn del llom, encès) i la Terra per sota (blava);
+  - La Gavina, petita i lluny, a dalt a l'esquerra, també girada (un pla del món amb el dibuix de sempre), just
+    damunt de la vora de la Terra on surt el sol: hi queda a contrallum;
+  - l'estela blava, del motor fins a La Gavina: s'aprima i s'esvaeix amb la distància, i porta l'ull de la nau a
+    l'estació que deixen enrere;
+  - la Terra de nit (les ciutats enceses) ocupa el cantó de baix a l'esquerra, amb la vora inclinada.
+El quadre del text del narrador va al mig (≈145..495 × 140..240): la nau i l'estació en queden fora.
+
+`nau(e, ...)` es fa servir també a final_estacio (la llançadora aterrada al moll).
+Pantalla sencera (sense barra de verbs). Animació: `ambient` (les estrelles i les ciutats, el sol, la flama i
+l'estela que bateguen, els llums de La Gavina).
 """
 import hd640  # noqa: F401  (abans que cap hd.rooms: posa la llibreria a 640×360)
 
@@ -16,511 +25,406 @@ import math
 import random
 from functools import lru_cache
 
-from hd.pix import Canvas, Light, B4, W, H, hr, mix, ramp, COPPER, RUST, TEAL, PAPER
-from hd640.rooms.proleg_gavina_pla_comu import espai, gavina, vinyeta, Noise, OCEAN, LAND, CLOUD, ATMO
-from hd.rooms.fabrica_moll import OLDHULL, F9
+import numpy as np
+from PIL import Image
 
-K = 4 / 3                           # 480 → 640
+from hd.pix import Canvas, Light, B4, W, H, hr, mix, COPPER, RUST, TEAL, PAPER
+import hd640.rooms.final_llancadora_pla_comu as pla
+from hd640.rooms.proleg_gavina_pla_comu import espai, gavina, vinyeta
+from hd.rooms.fabrica_moll import OLDHULL, F9
+from hd640.tres_d import Camera, Escena, Llum, _cross, _norm, _sub, _dot
 
 LIGHT = Light(ambient=0.0, vignette=None, floor_fade=None)
-
-CABIN = ramp((20, 10, 14), (46, 22, 22), (86, 42, 28), (140, 72, 36), (196, 116, 56), (240, 170, 90), n=7)
-DAWN = ramp((40, 10, 20), (120, 36, 30), (210, 90, 40), (250, 160, 70), (255, 220, 150), (255, 250, 230), n=8)
-FLAME = ramp((10, 20, 60), (24, 60, 140), (50, 120, 220), (110, 190, 255), (190, 236, 255), (250, 254, 255), n=8)
-NIGHTSEA = ramp((2, 4, 12), (4, 8, 22), (8, 16, 36), (14, 26, 54), (24, 42, 78), n=6)
-
-N_LAND, N_CLOUD, N_CITY = Noise(191), Noise(192), Noise(193)
-NLAND = ramp((4, 6, 8), (10, 12, 14), (18, 20, 20), (30, 30, 28), (46, 44, 38), (66, 62, 50), n=6)
-
-EX, EY, ER = 307, 960, 720          # la Terra (només se'n veu el casquet)
-SX, SY = 581, 0                     # el sol: es calcula sobre la vora
-SUN = (0.80, 0.42, -0.42)
-_l = math.sqrt(sum(c * c for c in SUN))
-SUN = tuple(c / _l for c in SUN)
-
-NX, NY, ANG = 539, 76, -0.13        # morro de la llançadora i inclinació (puja cap a la dreta)
-NY0 = NY
+CABIN, FLAME = pla.CABIN, pla.FLAME
 TAU = 2 * math.pi
-_T = 0.0                            # temps del bucle d'animació (0..1); t=0 és el fons quiet
-LEN, RAD = 200, 25
-GVX, GVY = 72, 59                   # La Gavina, lluny
+
+# ─── La Terra (el casquet de nit, a baix a l'esquerra, amb la vora inclinada) ─
+# (el dibuix pla la calcula amb aquests valors del mòdul: es posen abans de dibuixar-la)
+pla.EX, pla.EY, pla.ER = 40, 930, 720
+pla.SX = 128                                       # el sol surt per la vora, sota La Gavina
+_s = (0.15, 0.40, -0.90)
+_l = math.sqrt(sum(c * c for c in _s))
+pla.SUN = tuple(c / _l for c in _s)
+
+# ─── La càmera i el món ─────────────────────────────────────────────────────
+CAM = Camera(pos=(0.0, 0.0, 0.0), yaw=0.0, pitch=0.0, f=420, centre=(320, 170))
+NOSE = (150.0, -66.0, 238.0)                       # el morro de la llançadora
+_d = (0.70, -0.06, -0.71)
+_l = math.sqrt(sum(c * c for c in _d))
+AXIS = tuple(c / _l for c in _d)                   # de la cua cap al morro
+ROLL = 0.18                                        # (la nau, una mica escorada: es veu més el llom)
+GAV = (-4300.0, 1250.0, 9000.0)                    # La Gavina, el centre
+GAV_W = 2300.0                                     # l'envergadura al món
+GAV_YAW = 0.62                                     # girada: l'ala dreta fuig
+SUNW = (-30000.0, 9000.0, 90000.0)                 # el sol, darrere La Gavina
+
+LEN, RAD = 200.0, 25.0
 
 
-def blend(cv, x, y, col, a):
-    """Barreja el píxel (x, y) cap a `col` (si és dins del llenç)."""
-    x, y = round(x), round(y)
-    if 0 <= x < cv.w and 0 <= y < cv.h and a > 0:
+# ─── La llançadora en 3D ────────────────────────────────────────────────────
+
+def radi(u, L=LEN, R=RAD):
+    """El perfil (el mateix del dibuix pla): el morro arrodonit i la popa que s'estreny."""
+    s = u / L
+    if s < 0.24:
+        return R * math.sqrt(max(0.0, 1 - ((0.24 - s) / 0.24) ** 2)) ** 0.9
+    if s > 0.86:
+        return R * (1 - (s - 0.86) / 0.14 * 0.3)
+    return R
+
+
+class Nau:
+    """La llançadora: el morro a `nose`, l'eix `axis` (cua → morro), escorada `roll` radiants. Coordenades de la nau:
+    u (des del morro cap a la cua), φ (al voltant: 0 = el costat del dibuix pla, π/2 = el ventre) i r."""
+
+    def __init__(self, nose, axis, roll=0.0, L=LEN, R=RAD, espill=False, k=1.0):
+        self.N, self.d, self.L, self.R, self.espill, self.k = nose, axis, L, R, espill, k
+        up = (0.0, 1.0, 0.0)
+        side = _norm(_cross(up, axis))                   # el costat del dibuix pla (el morro a la dreta)
+        upp = _norm(_cross(axis, side))
+        if espill:                                       # (o el de l'altra banda: el dibuix, a l'inrevés)
+            side = (-side[0], -side[1], -side[2])
+        c, s = math.cos(roll), math.sin(roll)
+        self.side = tuple(side[i] * c + upp[i] * s for i in range(3))
+        self.up = tuple(upp[i] * c - side[i] * s for i in range(3))
+
+    def p(self, u, phi, r=None):
+        r = (radi(u, self.L, self.R) if r is None else r) * self.k
+        cp, sp = math.cos(phi), math.sin(phi)
+        return tuple(self.N[i] - self.d[i] * u * self.k + r * (cp * self.side[i] - sp * self.up[i]) for i in range(3))
+
+    def eix(self, u):
+        return tuple(self.N[i] - self.d[i] * u * self.k for i in range(3))
+
+
+_RNG = random.Random(9)
+PATCHES = [(_RNG.uniform(0.28, 0.8) * LEN, _RNG.uniform(-2.6, 2.6), _RNG.randint(8, 15), _RNG.uniform(0.25, 0.4))
+           for _ in range(9)]                            # pedaços: u, φ, llarg, ample (en radiants)
+
+
+def _casc(u, phi, r):
+    """El nivell del casc (sense la llum del món) i la rampa: planxes, reblons, pedaços, rovell, morro de coure."""
+    s = u / LEN
+    arc = phi * RAD
+    lvl = 3.2 + (hr(int(u) // 23, int(phi * 4) + 9, 11) - 0.5) * 0.5 + (hr(int(u) // 4, int(arc) // 3, 12) - 0.5) * 0.35
+    rmp = OLDHULL
+    if s > 0.2:
+        if u % 23 < 1.1:
+            lvl -= 1.3
+            if round(arc) % 5 == 0:
+                lvl += 2.6                                # els reblons
+        elif u % 23 < 2.2:
+            lvl += 0.4
+        if (phi * 4 / math.pi) % 1 < 0.05:
+            lvl -= 0.9                                    # les juntes de llarg
+    for pu, pp, pl, pw in PATCHES:
+        if pu <= u <= pu + pl and abs(phi - pp) < pw / 2:
+            lvl += 0.5
+            if u - pu < 1 or pu + pl - u < 1 or abs(abs(phi - pp) - pw / 2) < 0.04:
+                lvl -= 1.3
+    rr = hr(int(u), 31)
+    if rr > 0.92 and 0.2 < s < 0.85 and math.sin(phi) > -0.2 + hr(int(u), 32) * 0.5:
+        rmp, lvl = RUST, 1.8 + (hr(int(u), int(arc), 34) - 0.5) * 1.0       # regalims de rovell
+    if s < 0.06:
+        rmp, lvl = COPPER, 3.0 + math.cos(phi + 0.6) * 0.6
+        if hr(int(u) // 2, int(arc) // 3, 4) > 0.9 and hr(int(u), int(arc), 5) > 0.35:
+            rmp, lvl = TEAL, 2.2 + hr(int(u), int(arc), 6)
+    if 0.86 < s < 0.885:
+        rmp, lvl = COPPER, 2.8 + (0.8 if s < 0.865 else 0)
+    return rmp, lvl
+
+
+@lru_cache(maxsize=None)
+def _decals(retol=True, vet=True):
+    """El costat del dibuix pla, sense el casc: la finestreta amb la Vet, la porta, el pany, el tub de ferro-9 i el
+    rètol (la nau de pla, horitzontal, amb el morro a (NX, NY))."""
+    nx0, ny0, ang0 = pla.NX, pla.NY, pla.ANG
+    pla.NX, pla.NY, pla.ANG = 300, 120, 0.0
+    cv = Canvas(transparent=True)
+    pla.llancadora(cv)
+    pla.NX, pla.NY, pla.ANG = nx0, ny0, ang0
+    if not vet:                                             # (la Vet ja n'ha baixat: la cabina, buida)
+        cv.disc(267, 113, 8.3, 8.3, CABIN, lambda nx, ny: 3.2 - ny * 1.8 - math.hypot(nx - 0.3, ny + 0.4) * 1.2, 0)
+        for k in range(4):
+            cv.flat(261 + k, 111 - k, (255, 236, 200) if k not in (1, 2) else (255, 250, 230))
+    a = np.array(cv.img)
+    keep = np.zeros(a.shape[:2], bool)
+    NX, NY = 300, 120
+    boxes = ((20, 46, -20, 6), (54, 96, -22, 23), (94, 174, 13, 24)) + (((115, 133, -19, -10),) if retol else ())
+    for (u0, u1, v0, v1) in boxes:
+        keep[NY + v0:NY + v1 + 1, NX - u1:NX - u0 + 1] = True
+    a[~keep] = 0
+    return a, NX, NY
+
+
+TW = int(TAU * RAD) + 2                                     # la textura desplegada: x = (φ + π)·RAD, y = u
+
+
+@lru_cache(maxsize=None)
+def textura(retol=True, vet=True):
+    """El casc desplegat (procedural, en coordenades de la nau) amb les calcomanies del costat del dibuix pla."""
+    img = Image.new('RGBA', (TW, int(LEN) + 2), (0, 0, 0, 0))
+    P = img.load()
+    dec, NX, NY = _decals(retol, vet)
+    for u in range(int(LEN) + 2):
+        r = radi(min(u + 0.5, LEN))
+        for x in range(TW):
+            phi = x / RAD - math.pi
+            rmp, lvl = _casc(u + 0.5, phi, r)
+            col = rmp[max(0, min(len(rmp) - 1, math.floor(lvl + B4[u & 3][x & 3] - 0.5)))]
+            if abs(phi) < math.pi / 2:
+                v = r * math.sin(phi)
+                c = dec[int(round(NY + v)), NX - u]
+                if c[3] > 128:
+                    col = tuple(int(q) for q in c[:3])
+            P[x, u] = col + (255,)
+    return img
+
+
+def nau(e, nv, sid='nau', M=32, cua=True, ombra_cilindre=0.22, vet=True):
+    """Dibuixa la llançadora `nv` (una Nau) a l'Escena `e`: el casc de facetes amb la textura desplegada, la tapa de
+    popa, la tobera i les tres aletes."""
+    L = nv.L
+    us = [0.02, 0.6, 1.5, 3, 5, 8, 11.5, 15.5, 20, 25, 30, 36, 42, 48] + \
+        [48 + k * (172 - 48) / 12 for k in range(1, 13)] + [180, 190, L]
+    tex = textura(not nv.espill, vet)
+    dphi = TAU / M
+    for i in range(len(us) - 1):
+        ua, ub = us[i], us[i + 1]
+        for j in range(M):
+            pa = -math.pi + j * dphi
+            pb = pa + dphi
+            k = max(0.0, min(0.7, ombra_cilindre + 0.32 * math.sin(pa + dphi / 2)))   # el volum del cilindre
+            if nv.espill:                                  # (el sistema de la nau és a l'inrevés: es giren els cantons)
+                e.quad(sid, nv.p(ua, pb), nv.p(ua, pa), nv.p(ub, pa), nv.p(ub, pb),
+                       tex=(tex, ((pb + math.pi) * RAD, ua, (pa + math.pi) * RAD, ub)), ombra=lambda s, t, k=k: k)
+            else:
+                e.quad(sid, nv.p(ua, pa), nv.p(ua, pb), nv.p(ub, pb), nv.p(ub, pa),
+                       tex=(tex, ((pa + math.pi) * RAD, ua, (pb + math.pi) * RAD, ub)), ombra=lambda s, t, k=k: k)
+    # la tapa de popa (un disc fosc) i la tobera
+    rc = radi(L, L, nv.R)
+    for j in range(M):
+        pa = -math.pi + j * dphi
+        e.quad(sid, nv.eix(L), nv.eix(L), nv.p(L, pa + dphi, rc), nv.p(L, pa, rc), ramp=OLDHULL, lvl=1.4,
+               dues_cares=True)
+    if cua:
+        A, B = nv.eix(L - 2), nv.eix(L + 13)
+        e.tub(sid, A, B, 8.0 * nv.k, OLDHULL, 1.6, llum_dir=(-0.6, -1.0))
+    # les tres aletes: dalt i les dues de sota, a 120°
+    for phi in (-math.pi / 2, math.pi / 6, 5 * math.pi / 6):
+        r0 = radi(L - 43, L, nv.R) - 1
+        P0 = nv.p(L - 45, phi, r0)
+        P1 = nv.p(L + 3, phi, r0)
+        P3 = nv.p(L - 45, phi, r0 + 23)
+        P2 = nv.p(L + 3, phi, r0 + 23)
+
+        def forma(s, t, k=nv.k):
+            s, t = s / k, t / k
+            return s >= t * 1.6 and s <= 48 - t * 0.25
+
+        def lvl_a(s, t, Pw, k=nv.k):
+            s, t = s / k, t / k
+            v = 3.2 + (hr(int(s) // 4, int(t) // 3, 8) - 0.5) * 0.5
+            if t > 21:
+                v = 2.6                                   # la vora de coure
+            if abs(s - t * 1.6) < 1.2:
+                v += 1.4                                  # el cantell d'atac
+            return v
+        e.quad(sid + '_aleta', P0, P1, P2, P3, ramp=OLDHULL, lvl=lvl_a, forma=forma, dues_cares=True)
+
+
+# ─── El món: els llums ──────────────────────────────────────────────────────
+
+LLUMS = [Llum(SUNW, 1e7, 7.0, power=1.0),                       # el sol, darrere: el contorn
+         Llum((200.0, -6000.0, 900.0), 1e5, 2.6, power=1.0)]     # la Terra, per sota
+AMBIENT = -4.0
+
+
+def _nau_obj():
+    return Nau(NOSE, AXIS, ROLL)
+
+
+@lru_cache(maxsize=None)
+def _nau_capa():
+    """La llançadora sola (RGBA) i qui ha pintat cada píxel."""
+    cv = Canvas(transparent=True)
+    cv.S = 1
+    e = Escena(cv, CAM, LLUMS, ambient=AMBIENT)
+    nv = _nau_obj()
+    nau(e, nv)
+    # la Terra, blava, per sota; el sol, càlid, al contorn de dalt (es mira cap a on mira cada píxel en pantalla)
+    a = np.array(cv.img).astype(np.int32)
+    m = a[..., 3] > 0
+    up = np.zeros_like(m)
+    up[1:] = m[:-1]
+    top = m & ~up                                                 # el contorn de dalt
+    lf = np.zeros_like(m)
+    lf[:, 1:] = m[:, :-1]
+    left = m & ~lf
+    ys = np.arange(H)[:, None]
+    blue = np.clip((ys - 200) / 120.0, 0, 1) * 0.22
+    rgb = a[..., :3].astype(np.float64)
+    rgb = rgb + (np.array((70, 120, 220)) - rgb) * (blue[..., None] * m[..., None])
+    for mk, k in ((top, 0.6), (left, 0.35)):
+        rgb[mk] = rgb[mk] + (np.array((255, 214, 170)) - rgb[mk]) * k
+    a[..., :3] = np.clip(rgb, 0, 255)
+    img = Image.fromarray(a.astype(np.uint8), 'RGBA')
+    return img, e
+
+
+def _proj(P):
+    u, v, _ = CAM.projecta(P)
+    return u, v
+
+
+def finestra_xy():
+    nv = _nau_obj()
+    return _proj(nv.p(33, -0.28))
+
+
+# ─── La Gavina ──────────────────────────────────────────────────────────────
+
+@lru_cache(maxsize=32)
+def _gavina_tex(t=0.0):
+    cv = Canvas(transparent=True)
+    gavina(cv, 320, 180, 0.62, t=t)
+    box = cv.img.getbbox()
+    return cv.img, box
+
+
+def gavina_3d(cv, t=0.0):
+    """La Gavina, un pla del món girat GAV_YAW: el dibuix de sempre, en escorç."""
+    img, (x0, y0, x1, y1) = _gavina_tex(t)
+    w, h = x1 - x0, y1 - y0
+    hw, hh = GAV_W / 2, GAV_W * h / w / 2
+    c, s = math.cos(GAV_YAW), math.sin(GAV_YAW)
+    gx, gy, gz = GAV
+
+    def P(lx, ly):
+        return (gx + lx * c, gy + ly, gz + lx * s)
+    e = Escena(cv, CAM, [], ambient=0.0)
+    e.quad('gavina', P(-hw, hh), P(hw, hh), P(hw, -hh), P(-hw, -hh), tex=(img, (x0, y0, x1, y1)), dues_cares=True)
+
+
+# ─── L'estela i la flama ────────────────────────────────────────────────────
+
+def _blend(cv, x, y, col, a):
+    x, y = int(round(x)), int(round(y))
+    if 0 <= x < W and 0 <= y < H and a > 0.01:
         cv.flat(x, y, mix(cv.get(x, y), col, min(1.0, a)))
 
 
-def limb_y(x):
-    return EY - math.sqrt(max(0.0, ER * ER - (x - EX) ** 2))
+def estela(cv, t=0.0):
+    """L'estela, de la popa fins a La Gavina: surt seguint l'eix de la nau i es corba cap a l'estació (una corba de
+    Bézier al món); més ampla i més viva a prop, i s'esvaeix de lluny."""
+    nv = _nau_obj()
+    A = nv.eix(LEN + 30)
+    C = nv.eix(LEN + 900)
+    B = (GAV[0] + 250, GAV[1] - 330, GAV[2])
+    n = 1400
+    for i in range(n):
+        k = i / n                                                 # 0 a la nau, 1 a l'estació
+        q = k ** 2.0                                              # (es reparteix per la pantalla, no pel món)
+        P = tuple((1 - q) ** 2 * A[j] + 2 * (1 - q) * q * C[j] + q * q * B[j] for j in range(3))
+        u, v, z = CAM.projecta(P)
+        r = max(0.6, 6.0 * CAM.f / z)
+        pulse = 0.8 + 0.2 * math.sin(TAU * (2 * t - k * 3))
+        a = (1 - k * 0.85) ** 1.2 * 0.5 * pulse
+        if hr(i, 3) > 0.97 - k * 0.5:
+            continue
+        for dy in range(-int(r), int(r) + 1):
+            f = 1 - abs(dy) / (r + 0.5)
+            _blend(cv, u, v + dy, (110, 170, 240) if f < 0.6 else (170, 210, 255), a * f)
 
 
-def _col(rmp, lvl, x, y):
-    """El color que posaria `Canvas.put(x, y, rmp, lvl, 0)` (per desar-lo a la memòria cau)."""
-    i = math.floor(lvl + B4[y & 3][x & 3] - 0.5)
-    return rmp[max(0, min(len(rmp) - 1, i))]
+def flama(cv, t=0.0):
+    """El plomall blau del motor: s'allunya de nosaltres i s'aprima; amb diamants de xoc que corren."""
+    nv = _nau_obj()
+    FL = 240
+    for k in range(FL, -1, -1):                                   # del lluny al prop
+        q = k / FL
+        P = nv.eix(LEN + 12 + k)
+        u, v, z = CAM.projecta(P)
+        sc = CAM.f / z
+        half = (9.0 * (1 - q) ** 0.7 + 1.4 * math.sin(q * 9 - TAU * 2 * t) * (1 - q)) * (1 + 0.08 * math.sin(TAU * 3 * t))
+        R = max(0.8, half * sc)
+        core = 0.9 * max(0.0, math.cos(q * 30 - TAU * 4 * t)) * (1 - q)
+        for yy in range(int(v - R - 3), int(v + R + 4)):
+            for xx in range(int(u - R - 3), int(u + R + 4)):
+                d = math.hypot(xx - u, yy - v)
+                if d > R + 3:
+                    continue
+                c = max(0.0, 1 - d / R)
+                lvl = c * 6.2 * (1 - q) ** 0.8 + (1 - q) * 1.6 + core * c
+                if d > R:
+                    lvl = (1 - (d - R) / 3) * 1.4 * (1 - q)
+                if 0 <= xx < W and 0 <= yy < H and lvl > 0.4 + B4[yy & 3][xx & 3] * 0.6:
+                    if lvl > 1.0 or cv.get(xx, yy)[2] < 120:
+                        cv.put(xx, yy, FLAME, lvl, 0)
+    cx, cy = _proj(nv.eix(LEN + 20))
+    cv.glow(int(cx), int(cy), 64, (80, 150, 255), 0.45 + 0.07 * math.sin(TAU * 3 * t))
+    cv.glow(int(cx), int(cy), 20, (200, 236, 255), 0.65)
 
 
-# ─── La Terra, de nit ───────────────────────────────────────────────────────
+def llums_nau(cv, t=0.0):
+    """La llum càlida de la finestreta i el llum de posició de l'aleta de dalt (fa pampallugues)."""
+    fx, fy = finestra_xy()
+    cv.glow(int(fx), int(fy), 22, (255, 170, 90), 0.35)
+    nv = _nau_obj()
+    lx, ly = _proj(nv.p(LEN - 2, -math.pi / 2, radi(LEN - 43) + 22))
+    on = not (0.40 <= t % 0.5 < 0.47)
+    if on:
+        cv.flat(int(lx), int(ly), (255, 90, 70))
+        cv.flat(int(lx) + 1, int(ly), (220, 50, 46))
+        cv.glow(int(lx), int(ly), 9, (255, 70, 60), 0.6)
+
+
+# ─── Composició ────────────────────────────────────────────────────────────
+
+def scene(cv, t=0.0):
+    cv.S = 1
+    pla._T = t % 1.0
+    espai(cv, seed=21)
+    pla.titil(cv)
+    pla.terra_nit(cv)
+    pla.sol(cv)
+    gavina_3d(cv, t)
+    estela(cv, t)
+    flama(cv, t)
+    cv.img.alpha_composite(_nau_capa()[0])
+    cv.P = cv.img.load()
+    llums_nau(cv, t)
+    vinyeta(cv, 0.45)
+    pla._T = 0.0
+
 
 @lru_cache(maxsize=None)
-def _terra_nit_ops():
-    """La Terra de nit, desada: ('p', x, y, color) per als píxels fixos, ('c', x, y, color) per a les llums de ciutat
-    que titil·len i les guspires de les ciutats grosses (que es dibuixen al final)."""
-    ops, glows = [], []
-    sx, sy = SX, limb_y(SX)
-    HALO, RIM = 21, 16                                       # (16 i 12 a 480)
-    for y in range(int(EY - ER) - HALO - 2, H):
-        for x in range(W):
-            nx, ny = (x - EX) / ER, (y - EY) / ER
-            dd = nx * nx + ny * ny
-            if dd > 1:
-                d = (math.sqrt(dd) - 1) * ER
-                if d < HALO:
-                    ds = math.hypot(x - sx, y - sy)
-                    sun = max(0.0, 1 - ds / 347)
-                    a = (1 - d / HALO) ** 2.4 * (0.16 + 1.1 * sun ** 1.6)
-                    if a > B4[y & 3][x & 3] * 0.8:
-                        rmp = DAWN if sun > 0.55 and d < (5 + sun * 6) * K else ATMO
-                        ops.append(('p', x, y, _col(rmp, 1.0 + a * 4.5 + sun * 1.5, x, y)))
-                continue
-            nz = math.sqrt(1 - dd)
-            diff = nx * SUN[0] + ny * SUN[1] + nz * SUN[2]
-            lon = math.atan2(nx, nz) * 9.0
-            lat = math.asin(max(-1, min(1, ny))) * 9.0
-            land = N_LAND.fbm(lon + 3.1, lat * 1.6 + 1.7, 6)
-            cloud = N_CLOUD.fbm(lon * 1.3 + math.sin(lat * 3) * 0.6, lat * 4.0, 6)
-            cloud = max(0.0, (cloud - 0.5) * 3.0)
-            day = max(0.0, min(1.0, diff * 5.0 + 0.2))
-            rim = (1 - math.sqrt(dd)) * ER                       # px fins a la vora
-            sunk = max(0.0, 1 - math.hypot(x - sx, y - sy) / 373)
-            moon = 0.5 + 0.7 * nz
-            if land > 0.57:
-                rmp, lvl = NLAND, 1.0 + moon * 0.9 + (land - 0.57) * 3
-            else:
-                rmp, lvl = NIGHTSEA, 1.2 + moon * 1.4 + (land - 0.5) * 2.5
-                if land > 0.55:
-                    lvl += 0.4                                   # la plataforma de la costa, una mica més clara
-            c = cloud - 0.38 - (B4[y & 3][x & 3] - 0.5) * 0.35
-            if c > 0:
-                rmp, lvl = CLOUD, 0.6 + moon * 0.9 + min(cloud, 1.5) * 0.9
-            if day > 0:
-                if rmp is CLOUD:
-                    if day < 0.7:
-                        rmp, lvl = DAWN, 1.0 + day * 6
-                    else:
-                        lvl += day * 5.0
-                elif rmp is NLAND:
-                    rmp, lvl = LAND, lvl + day * 3.5
-                else:
-                    rmp, lvl = OCEAN, lvl + day * 3.5
-            # vora: la boirina de l'atmosfera, blava, i daurada cap al sol
-            if rim < RIM:
-                k = (1 - rim / RIM) ** 1.6
-                if k > B4[y & 3][x & 3] * 0.9:
-                    if sunk > 0.45 and k > 0.55:
-                        rmp, lvl = DAWN, 2.0 + k * 2.5 + sunk * 2.5
-                    else:
-                        rmp, lvl = ATMO, 0.6 + k * 1.6 + sunk * 3.0
-            col = _col(rmp, lvl, x, y)
-            # ciutats (al costat de nit): constel·lacions a les costes i als rius
-            if day < 0.12 and rmp in (NLAND, NIGHTSEA) and land > 0.555:
-                coast = max(0.0, 1 - (land - 0.57) * 7) if land > 0.57 else 0.5
-                blob = N_CITY.fbm(lon * 2.2, lat * 4.4, 3)
-                dens = max(0.0, blob - 0.52) * 3.2 * coast
-                cc = hr(x, y, 5)
-                if cc < dens * 0.55:
-                    city = (255, 220, 140) if cc < dens * 0.14 else (214, 132, 60) if cc < dens * 0.35 else (130, 74, 46)
-                    ops.append(('c' if hr(x, y, 8) < 0.35 else 'p', x, y, city))
-                    if cc < dens * 0.04:
-                        glows.append((x, y))
-                    continue
-            elif day < 0.12 and rmp is CLOUD and N_CITY.fbm(lon * 2.2, lat * 4.4, 3) > 0.6 and hr(x, y, 9) < 0.25:
-                col = mix(col, (200, 130, 80), 0.4)              # ciutat sota el núvol
-            ops.append(('p', x, y, col))
-    # línia d'atmosfera a la vora, que s'encén cap al sol
-    seen = set()
-    for a in range(0, 4800):
-        th = math.radians(a / 13.333)
-        x, y = EX + math.cos(th) * (ER + 0.5), EY + math.sin(th) * (ER + 0.5)
-        if 0 <= x < W and 0 <= y < H and (int(x), int(y)) not in seen:
-            seen.add((int(x), int(y)))
-            sun = max(0.0, 1 - math.hypot(x - sx, y - sy) / 400)
-            ops.append(('p', int(x), int(y), mix(ATMO[2], (255, 200, 120) if sun > 0.6 else ATMO[5], min(1, 0.25 + sun * 1.2))))
-    return tuple(ops), tuple(glows)
-
-
-def terra_nit(cv):
-    ops, glows = _terra_nit_ops()
-    P = cv.P
-    for k, x, y, col in ops:
-        if k == 'c' and _T:                                     # llumetes que titil·len
-            m = 1 + int(hr(x, y, 9) * 3)
-            col = mix(col, (12, 12, 16), 0.65 * math.sin(math.pi * m * _T) ** 2)
-        P[x, y] = col + (255,)
-    for x, y in glows:
-        cv.glow(x, y, 5, (255, 170, 80), 0.3)
-
-
-def sol(cv):
-    """El sol que surt per la vora de la Terra: nucli blanc, halo càlid i un esclat al llarg de l'horitzó."""
-    sx, sy = SX, limb_y(SX) - 1
-    cv.glow(sx, sy, 200, (255, 130, 60), 0.18)
-    cv.glow(sx, sy, 120, (255, 150, 70), 0.35)
-    cv.glow(sx, sy, 53, (255, 200, 120), 0.6 + 0.12 * math.sin(TAU * _T))
-    cv.glow(sx, sy, 19, (255, 250, 230), 1.0)
-    # esclat horitzontal (seguint la tangent de la vora) i raigs curts
-    tx = 1.0
-    ty = (limb_y(sx + 1) - limb_y(sx - 1)) / 2
-    tl = math.hypot(tx, ty)
-    tx, ty = tx / tl, ty / tl
-    for k in range(-160, 161):
-        a = (1 - abs(k) / 160) ** 2.2
-        x, y = sx + tx * k, sy + ty * k
-        if a > 0.08:
-            blend(cv, x, y, (255, 236, 200), a * 1.3)
-        if a > 0.4:
-            blend(cv, x, y - 1, (255, 200, 140), a * 0.5)
-        if a > 0.7:
-            blend(cv, x, y + 1, (255, 220, 170), a * 0.4)
-    rl = (34 + 6 * math.sin(TAU * 2 * _T)) * K              # el centelleig: els raigs s'allarguen i s'escurcen
-    for k in range(1, int(rl) + 1):
-        a = (1 - k / rl) ** 2
-        for dx, dy in ((0, -k), (k * 0.6, -k * 0.6), (-k * 0.6, -k * 0.6)):
-            blend(cv, sx + dx, sy + dy, (255, 240, 210), a * 0.9)
-            if k < 19:
-                blend(cv, sx + dx + 1, sy + dy, (255, 220, 170), a * 0.4)
-    for dx in range(-3, 4):
-        for dy in range(-3, 1):
-            if abs(dx) + abs(dy) < 4:
-                cv.flat(sx + dx, sy + dy, (255, 255, 250))
-
-
-# ─── L'estela i la llançadora ───────────────────────────────────────────────
-
-def _axis():
-    ax, ay = math.cos(ANG), math.sin(ANG)          # de la cua cap al morro (pantalla)
-    return ax, ay, -ay, ax                         # i la perpendicular «avall» de la nau
-
-
-def _to_screen(u, v):
-    ax, ay, bx, by = _axis()
-    return NX - ax * u + bx * v, NY - ay * u + by * v
-
-
-def estela(cv):
-    """Una estela tènue i puntejada des de La Gavina fins a la cua, i el plomall blau del motor."""
-    tx, ty = _to_screen(LEN + 11, 0)
-    n = 350
-    for i in range(n):
-        t = i / n
-        # corba suau: surt cap avall de l'estació i s'endreça
-        x = GVX + 8 + (tx - GVX - 8) * t
-        y = GVY + 16 + (ty - GVY - 16) * t + math.sin(t * math.pi) * 35
-        a = t ** 1.6
-        if hr(i, 3) < 0.25 + a * 0.75:
-            blend(cv, x, y, (110, 170, 240), 0.15 + a * 0.55)
-        if t > 0.6 and hr(i, 4) < a * 0.5:
-            blend(cv, x, y + 1, (70, 120, 210), a * 0.35)
-        if t > 0.8 and hr(i, 5) < a * 0.3:
-            blend(cv, x, y - 1, (70, 120, 210), a * 0.25)
-
-
-def flama(cv):
-    """El plomall del motor: un con de llum blava, blanc al cor, que tremola en anelles (diamants de xoc)."""
-    ax, ay, bx, by = _axis()
-    L0 = LEN + 12
-    FL = 123
-    for y in range(0, H):
-        for x in range(0, 400):
-            dx, dy = x - NX, y - NY
-            u = -(dx * ax + dy * ay)                   # distància des del morro cap a la cua
-            v = dx * bx + dy * by
-            t = (u - L0) / FL
-            if t < 0 or t > 1:
-                continue
-            half = (8.0 * (1 - t) ** 0.7 + 1.2 * math.sin(t * 9 - TAU * 2 * _T) * (1 - t)) \
-                * (1 + 0.08 * math.sin(TAU * 3 * _T)) * K  # respira
-            if abs(v) > half + 4:
-                continue
-            core = max(0.0, 1 - abs(v) / max(half, 0.5))
-            lvl = core * 6.2 * (1 - t) ** 0.8 + (1 - t) * 1.6
-            lvl += 0.9 * max(0.0, math.cos(t * 30 - TAU * 4 * _T)) * (1 - t) * core   # diamants, que corren
-            lvl += (0.4 * math.sin(TAU * 5 * _T) + 0.25 * (math.cos(TAU * 3 * _T) - 1)) * core * (1 - t)   # parpelleig
-            if abs(v) > half:
-                lvl = (1 - (abs(v) - half) / 4) * 1.4 * (1 - t)
-            if lvl > 0.4 + B4[y & 3][x & 3] * 0.6:
-                cv.put(x, y, FLAME, lvl, 0)
-    cx, cy = _to_screen(L0 + 5, 0)
-    cv.glow(cx, cy, 61, (80, 150, 255), 0.45 + 0.07 * math.sin(TAU * 3 * _T))
-    cv.glow(cx, cy, 21, (200, 236, 255), 0.7)
-
-
-VET = ['.....hhhh......',
-       '...hhhhhhh.....',
-       '..hhhhhhhhh....',
-       '..Hhhhhhsss....',
-       '..HHhhhssss....',
-       '..HHHhssssss...',
-       '..HHHhsssss....',
-       '...HHH.sss.....',
-       '....HH.ss......',
-       '......oooo.....',
-       '....oooOOooo...',
-       '..ooooOOOoooo..',
-       '.oooooOOOooooo.',
-       'ooooooOOOoooooo',
-       'ooooooOOOoooooo']
-
-
-def llancadora(dst):
-    cv = Canvas(dst.w, dst.h, transparent=True)
-    ax, ay, bx, by = _axis()
-    rnd = random.Random(9)
-
-    def half(s):
-        if s < 0.24:
-            return RAD * math.sqrt(max(0.0, 1 - ((0.24 - s) / 0.24) ** 2)) ** 0.9
-        if s > 0.86:
-            return RAD * (1 - (s - 0.86) / 0.14 * 0.3)
-        return RAD
-
-    # llum: el sol baix a la dreta (vora de sota i morro, càlida) i la Terra (blau, per sota)
-    def hull_lvl(s, nv, u):
-        lvl = 3.3 - nv * nv * 1.8
-        lvl += 2.2 * max(0.0, 1 - abs(nv + 0.5) / 0.2) * (1 - s * 0.6)         # reflex llarg al llom
-        lvl += 1.6 * max(0.0, nv - 0.35) / 0.65 * (1.2 - s)                  # el sol, per sota i davant
-        lvl += 0.9 * (1 - s) + 0.9
-        return lvl
-
-    patches = [(rnd.uniform(0.28, 0.8), rnd.uniform(-0.8, 0.5), rnd.randint(8, 15), rnd.randint(5, 9)) for _ in range(5)]
-    x0, x1 = int(NX - LEN - 27), int(NX + 11)
-    y0, y1 = int(NY - 67), int(NY + 93)
-    pix = {}
-    for y in range(y0, y1):
-        for x in range(x0, x1):
-            dx, dy = x - NX, y - NY
-            u = -(dx * ax + dy * ay)
-            v = dx * bx + dy * by
-            s = u / LEN
-            if not 0 <= s <= 1:
-                continue
-            h = half(s)
-            if abs(v) > h or h < 0.5:
-                continue
-            nv = v / h
-            lvl = hull_lvl(s, nv, u)
-            rmp = OLDHULL
-            # junts de planxa amb reblons
-            seam = (u % 23) < 1 and s > 0.2
-            if seam:
-                lvl -= 1.3
-                if round(v) % 5 == 0:
-                    lvl += 2.6
-            elif (u % 23) < 2 and s > 0.2:
-                lvl += 0.4                                           # el cantell de la planxa, que sobresurt
-            if abs(nv - 0.42) < 0.05 and s > 0.22:
-                lvl -= 1.0
-            if abs(nv) > 0.82:
-                lvl -= 0.8                                           # el cilindre es tanca a les vores
-            lvl += (hr(int(u) // 4, int(v) // 3, 11) - 0.5) * 0.4
-            # pedaços soldats, d'un altre gris
-            for ps, pv, pw, ph in patches:
-                pu = ps * LEN
-                if pu <= u <= pu + pw and pv * RAD <= v <= pv * RAD + ph:
-                    lvl += 0.8 if (u - pu < 1 or v - pv * RAD < 1) else 0.4
-                    if (u - pu) < 1 or (pu + pw - u) < 1:
-                        lvl -= 1.4
-                    if 1.5 < (u - pu) < 2.5 and round(v) % 3 == 0:
-                        lvl += 1.4                                   # el cordó de soldadura
-            # rovell: regalims cap avall i a les juntes
-            rr = hr(int(u), 31)
-            if rr > 0.93 and nv > -0.5 + hr(int(u), 32) * 0.4 and nv < 0.2 + hr(int(u), 33) * 0.6:
-                rmp, lvl = RUST, 1.6 + (1 - abs(nv)) * 1.0 + (0.6 if hr(int(u), int(v), 34) > 0.8 else 0)
-            # el morro de coure, amb verdet
-            if s < 0.06:
-                rmp = COPPER
-                lvl = 2.6 - nv * 1.4 - nv * nv + (1.2 if -0.6 < nv < -0.3 else 0)
-                if hr(int(u), int(v) // 3, 4) > 0.8:
-                    rmp, lvl = TEAL, 2.6
-            # cèrcol de popa
-            if 0.86 < s < 0.885:
-                rmp, lvl = COPPER, 2.4 - nv * 1.2 + (1.0 if s < 0.865 else 0)
-            pix[(x, y)] = (rmp, lvl, s, nv, u, v)
-    for (x, y), (rmp, lvl, s, nv, u, v) in pix.items():
-        cv.put(x, y, rmp, lvl, 0)
-
-    def P(u, v):
-        return _to_screen(u, v)
-
-    # aletes (dalt i baix, a la cua)
-    for sign in (-1, 1):
-        pts = [P(LEN - 43, sign * (RAD - 4)), P(LEN - 8, sign * (RAD + 21)), P(LEN + 3, sign * (RAD + 21)),
-               P(LEN - 3, sign * (RAD - 8))]
-        cv.poly(pts, OLDHULL, lambda x, y, sg=sign: (4.0 if sg < 0 else 2.8) + (hr(x // 4, y // 3, 8) - 0.5) * 0.5
-                + 0.0225 * (x - NX + LEN))
-        cv.line(*P(LEN - 8, sign * (RAD + 21)), *P(LEN + 3, sign * (RAD + 21)), COPPER, 3.4 if sign < 0 else 2.2)
-        cv.line(*P(LEN - 40, sign * (RAD - 3)), *P(LEN - 8, sign * (RAD + 20)), OLDHULL, 4.0 if sign < 0 else 2.6)
-        cv.line(*P(LEN - 24, sign * (RAD + 2)), *P(LEN - 4, sign * (RAD + 2)), OLDHULL, 1.6 if sign < 0 else 1.2)   # la costella
-        for k in range(4):                                          # reblons al llarg de l'arrel
-            rx, ry = P(LEN - 36 + k * 10, sign * (RAD - 1))
-            cv.put(rx, ry, OLDHULL, 5.4 if sign < 0 else 4.0)
-        rx, ry = P(LEN - 19, sign * (RAD + 8))
-        cv.put(rx, ry, RUST, 2.2)
-        cv.put(rx + 1, ry + 1, RUST, 1.6)
-        cv.put(rx + 1, ry + 2, RUST, 1.2)
-    # tobera
-    for u in range(LEN, LEN + 13):
-        r = 9 + (u - LEN) * 0.5
-        for k in range(-int(r), int(r) + 1):
-            x, y = P(u, k)
-            nv = k / r
-            if u >= LEN + 9:
-                cv.put(round(x), round(y), FLAME, 4.6 - abs(nv) * 1.5, 0)      # la vora, blanca de calor
-            else:
-                cv.put(round(x), round(y), COPPER, 2.4 - nv * 1.2 - (u - LEN) * 0.09 + (0.8 if (u - LEN) % 4 == 0 else 0))
-    # finestreta, amb la llum de la cabina (i la melena platí de la Vet)
-    px_, py_ = round(P(33, -7)[0]), round(P(33, -7)[1])
-    cv.disc(px_, py_, 11, 11, COPPER, lambda nx, ny: 3.0 - nx * 0.6 - ny * 1.4)
-    cv.ring(px_, py_, 9.9, COPPER, 4.6, step=15)
-    for k in range(8):                                              # els cargols del marc
-        a = k * math.pi / 4 + 0.3
-        cv.put(px_ + math.cos(a) * 9.6, py_ + math.sin(a) * 9.6, COPPER, 5.6 if math.sin(a) < 0 else 1.4)
-    cv.disc(px_, py_, 8.3, 8.3, CABIN, lambda nx, ny: 3.2 - ny * 1.8 - math.hypot(nx - 0.3, ny + 0.4) * 1.2, 0)
-    leg = {'h': (232, 226, 210), 'H': (162, 158, 166), 's': (108, 64, 50), 'o': (190, 84, 26), 'O': (140, 54, 18)}
-    for j, row in enumerate(VET):
-        for i, ch in enumerate(row):
-            x, y = px_ - 7 + i, py_ - 7 + j
-            if ch in leg and math.hypot(x - px_, y - py_) < 8.3:
-                cv.flat(x, y, leg[ch])
-    cv.flat(px_ + 2, py_ - 3, (40, 20, 24))                         # l'ull, mirant endavant
-    cv.flat(px_ + 3, py_ - 4, (186, 180, 170))                      # la cella, platí
-    cv.flat(px_ - 1, py_ - 5, (255, 250, 236))                      # un brill a la melena
-    for k in range(4):                                              # reflex del vidre
-        cv.flat(px_ - 6 + k, py_ - 2 - k, (255, 236, 200) if k not in (1, 2) else (255, 250, 230))
-    cv.flat(px_ + 4, py_ + 4, (255, 220, 170))
-    # porta i pany sònic
-    for u in range(56, 81):
-        for vv in (-20, 21):
-            x, y = P(u, vv)
-            cv.put(round(x), round(y), OLDHULL, 0.6)
-    for vv in range(-20, 22):
-        for u in (56, 80):
-            x, y = P(u, vv)
-            cv.put(round(x), round(y), OLDHULL, 0.6 if u == 80 else 3.8)
-    for vv in (-14, 15):                                            # les frontisses
-        for du in range(3):
-            x, y = P(78 - du, vv)
-            cv.put(round(x), round(y), COPPER, 2.8)
-    lx, ly = P(89, -1)
-    cv.disc(lx, ly, 6, 6, COPPER, lambda nx, ny: 2.6 - nx * 0.6 - ny * 1.2)
-    cv.ring(lx, ly, 4, COPPER, 1.0, step=6)
-    cv.put(lx, ly, COPPER, 4.4)
-    cv.put(lx - 1, ly - 1, COPPER, 5.2)
-    # el tub de ferro-9 nou, al ventre: net i lluent entre tant de rovell
-    for u in range(96, 171):
-        for k in range(0, 7):
-            x, y = P(u, 15 + k)
-            lvl = [5.6, 6.6, 6.8, 5.6, 4.4, 3.0, 2.0][k] + (0.8 if 128 < u < 136 else 0)
-            cv.put(round(x), round(y), F9, lvl, 0)
-    for u in (107, 139, 160):                                      # abraçadores
-        for k in range(-1, 8):
-            x, y = P(u, 15 + k)
-            cv.put(round(x), round(y), COPPER, 3.4 - k * 0.3)
-            x, y = P(u + 1, 15 + k)
-            cv.put(round(x), round(y), COPPER, 2.4 - k * 0.2)
-            x, y = P(u + 2, 15 + k)
-            cv.put(round(x), round(y), COPPER, 1.4)
-        x, y = P(u + 1, 14)
-        cv.put(round(x), round(y), COPPER, 4.6)                     # el cargol de l'abraçadora
-    tx_, ty_ = P(131, 16)
-    # «L-1», pintat i esvaït a la popa
-    glyphs = [(-9, dv) for dv in range(6)] + [(-8, 5), (-7, 5)] \
-        + [(-5, 3), (-4, 3)] \
-        + [(0, dv) for dv in range(6)] + [(1, 1), (1, 5), (-1, 5)]
-    for du, dv in glyphs:
-        x, y = P(128 + du, -17 + dv)
-        cv.put(round(x), round(y), PAPER, 1.6 - (0.6 if hr(du, dv, 61) > 0.75 else 0))   # alguna escata saltada
-    # vora encesa pel sol: el ventre i el morro, càlids; el llom, blavós de la Terra no (és a sota)
-    for (x, y), (rmp, lvl, s, nv, u, v) in pix.items():
-        if (x, y + 1) not in pix or (x + 1, y + 1) not in pix and nv > 0.4:
-            o = cv.get(x, y)
-            cv.flat(x, y, mix(o, (255, 190, 120), 0.55))
-        elif nv > 0.55:
-            cv.tint(x, y, x, y, (240, 140, 80), 0.18 * (nv - 0.55) / 0.45 * (1.4 - s))
-        if (x, y - 1) not in pix and nv < -0.5 and s > 0.08:
-            cv.flat(x, y, mix(cv.get(x, y), (130, 150, 190), 0.35))     # retall fred del llom
-        if s < 0.2 and (x + 1, y) not in pix:
-            o = cv.get(x, y)
-            cv.flat(x, y, mix(o, (255, 210, 150), 0.5))
-    dst.img.alpha_composite(cv.img)
-    # reflex fort al tub (el sol)
-    dst.glow(tx_, ty_ + 3, 9, (220, 240, 255), 0.6)
-    dst.glow(px_, py_, 16, (255, 170, 90), 0.35)
-    # antena doblegada al llom i un parell de toberes de maniobra
-    ax0, ay0 = P(77, -RAD)
-    ax1, ay1 = P(88, -RAD - 12)
-    dst.line(round(ax0), round(ay0), round(ax1), round(ay1), OLDHULL, 4.4, 0)
-    dst.line(round(ax1), round(ay1), round(ax1) + 5, round(ay1) - 1, OLDHULL, 3.6, 0)
-    dst.rect(round(ax0) - 1, round(ay0), round(ax0) + 1, round(ay0) + 1, OLDHULL, 2.6, 0)   # la base de l'antena
-    dst.flat(round(ax1) + 5, round(ay1) - 1, (200, 230, 255))
-    for uu, vv in ((40, -RAD), (149, RAD)):
-        qx, qy = P(uu, vv)
-        dst.rect(round(qx) - 1, round(qy) - (2 if vv < 0 else 0), round(qx) + 2, round(qy) + (0 if vv < 0 else 2), COPPER, 2.4, 0)
-        dst.put(round(qx), round(qy) + (-2 if vv < 0 else 2), COPPER, 1.0, 0)
-    # llum de posició a l'aleta
-    fx, fy = P(LEN - 5, -(RAD + 21))
-    dst.flat(round(fx), round(fy) - 1, (255, 70, 60))
-    dst.flat(round(fx) + 1, round(fy) - 1, (220, 50, 46))
-    dst.glow(round(fx), round(fy) - 1, 8, (255, 70, 60), 0.6)
-
-
-def titil(cv):
-    """Estrelles que titil·len: s'apaguen una mica, cadascuna al seu ritme (a t=0, totes enceses)."""
-    if not _T:
-        return
-    for y in range(H):
-        for x in range(W):
-            p = cv.P[x, y]
-            if p[0] + p[1] + p[2] > 420 and hr(x, y, 21) < 0.6:
-                m = 1 + int(hr(x, y, 22) * 3)
-                cv.flat(x, y, mix(p, (20, 18, 40), 0.75 * math.sin(math.pi * m * _T) ** 2))
+def _base():
+    cv = Canvas(light=LIGHT)
+    scene(cv)
+    return cv.img.copy()
 
 
 def bg(cv, t=0.0):
-    global _T, NY
-    _T = t % 1.0
-    NY = NY0 + round(math.sin(TAU * _T) * 1.2 * K)  # la nau balanceja un píxel o dos
-    espai(cv, seed=21)
-    titil(cv)
-    terra_nit(cv)
-    sol(cv)
-    gavina(cv, GVX, GVY, 0.26 * K)
-    estela(cv)
-    flama(cv)
-    llancadora(cv)
-    vinyeta(cv, 0.45)
+    if t:
+        scene(cv, t)
+        return
+    cv.img.paste(_base())
+    cv.P = cv.img.load()
 
 
 PROPS = {}
 
 
 def _ambient_frames(n=16):
-    import numpy as np
-    from PIL import Image
-    base = Canvas(light=LIGHT)
-    bg(base)
-    B = np.asarray(base.img)
+    B = np.asarray(_base())
     frames = []
     for i in range(n):
         cv = Canvas(light=LIGHT)
-        bg(cv, t=i / n)
+        scene(cv, t=i / n)
         A = np.array(cv.img)
         A[~(A != B).any(axis=2)] = 0
         frames.append(Image.fromarray(A, 'RGBA'))
-    bg(Canvas(light=LIGHT))                         # deixa l'estat del mòdul com el del fons quiet
     return frames
 
 

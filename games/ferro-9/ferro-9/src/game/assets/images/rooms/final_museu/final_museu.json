@@ -23,17 +23,17 @@
     },
     "final_museu 1.aseprite": {
       "frame": {
-        "x": 2846,
+        "x": 2067,
         "y": 360,
-        "w": 11,
+        "w": 13,
         "h": 33
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 159,
-        "y": 86,
-        "w": 11,
+        "x": 130,
+        "y": 102,
+        "w": 13,
         "h": 33
       },
       "sourceSize": {
@@ -44,18 +44,18 @@
     },
     "final_museu 2.aseprite": {
       "frame": {
-        "x": 2759,
+        "x": 1989,
         "y": 360,
-        "w": 87,
-        "h": 94
+        "w": 78,
+        "h": 83
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 536,
-        "y": 181,
-        "w": 87,
-        "h": 94
+        "x": 555,
+        "y": 129,
+        "w": 78,
+        "h": 83
       },
       "sourceSize": {
         "w": 640,
@@ -65,7 +65,7 @@
     },
     "final_museu 3.aseprite": {
       "frame": {
-        "x": 2857,
+        "x": 2080,
         "y": 360,
         "w": 1,
         "h": 1
@@ -86,18 +86,18 @@
     },
     "final_museu 4.aseprite": {
       "frame": {
-        "x": 640,
+        "x": 3416,
         "y": 0,
-        "w": 397,
-        "h": 148
+        "w": 329,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 23,
-        "w": 397,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 329,
+        "h": 105
       },
       "sourceSize": {
         "w": 640,
@@ -107,18 +107,18 @@
     },
     "final_museu 5.aseprite": {
       "frame": {
-        "x": 1037,
+        "x": 3745,
         "y": 0,
-        "w": 401,
-        "h": 148
+        "w": 333,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 23,
-        "w": 401,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 333,
+        "h": 105
       },
       "sourceSize": {
         "w": 640,
@@ -128,18 +128,18 @@
     },
     "final_museu 6.aseprite": {
       "frame": {
-        "x": 1438,
-        "y": 0,
-        "w": 405,
-        "h": 148
+        "x": 0,
+        "y": 360,
+        "w": 333,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 23,
-        "w": 405,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 333,
+        "h": 105
       },
       "sourceSize": {
         "w": 640,
@@ -149,18 +149,18 @@
     },
     "final_museu 7.aseprite": {
       "frame": {
-        "x": 1843,
-        "y": 0,
-        "w": 405,
-        "h": 148
+        "x": 333,
+        "y": 360,
+        "w": 333,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 23,
-        "w": 405,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 333,
+        "h": 105
       },
       "sourceSize": {
         "w": 640,
@@ -170,18 +170,18 @@
     },
     "final_museu 8.aseprite": {
       "frame": {
-        "x": 2248,
+        "x": 640,
         "y": 0,
-        "w": 401,
-        "h": 148
+        "w": 376,
+        "h": 138
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 23,
-        "w": 401,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 376,
+        "h": 138
       },
       "sourceSize": {
         "w": 640,
@@ -191,18 +191,18 @@
     },
     "final_museu 9.aseprite": {
       "frame": {
-        "x": 2649,
+        "x": 1016,
         "y": 0,
-        "w": 397,
-        "h": 148
+        "w": 383,
+        "h": 138
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 23,
-        "w": 397,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 383,
+        "h": 138
       },
       "sourceSize": {
         "w": 640,
@@ -212,17 +212,17 @@
     },
     "final_museu 10.aseprite": {
       "frame": {
-        "x": 1592,
-        "y": 360,
-        "w": 396,
+        "x": 1399,
+        "y": 0,
+        "w": 391,
         "h": 137
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 140,
-        "y": 23,
-        "w": 396,
+        "x": 112,
+        "y": 46,
+        "w": 391,
         "h": 137
       },
       "sourceSize": {
@@ -233,17 +233,17 @@
     },
     "final_museu 11.aseprite": {
       "frame": {
-        "x": 1988,
-        "y": 360,
-        "w": 379,
+        "x": 1790,
+        "y": 0,
+        "w": 388,
         "h": 137
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 154,
-        "y": 23,
-        "w": 379,
+        "x": 122,
+        "y": 46,
+        "w": 388,
         "h": 137
       },
       "sourceSize": {
@@ -254,18 +254,18 @@
     },
     "final_museu 12.aseprite": {
       "frame": {
-        "x": 3046,
+        "x": 2178,
         "y": 0,
-        "w": 393,
-        "h": 148
+        "w": 405,
+        "h": 137
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 144,
-        "y": 23,
-        "w": 393,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 405,
+        "h": 137
       },
       "sourceSize": {
         "w": 640,
@@ -275,18 +275,18 @@
     },
     "final_museu 13.aseprite": {
       "frame": {
-        "x": 3439,
+        "x": 2583,
         "y": 0,
-        "w": 399,
-        "h": 148
+        "w": 413,
+        "h": 137
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 144,
-        "y": 23,
-        "w": 399,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 413,
+        "h": 137
       },
       "sourceSize": {
         "w": 640,
@@ -296,18 +296,18 @@
     },
     "final_museu 14.aseprite": {
       "frame": {
-        "x": 0,
-        "y": 360,
-        "w": 401,
-        "h": 148
+        "x": 2996,
+        "y": 0,
+        "w": 420,
+        "h": 137
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 144,
-        "y": 23,
-        "w": 401,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 420,
+        "h": 137
       },
       "sourceSize": {
         "w": 640,
@@ -317,18 +317,18 @@
     },
     "final_museu 15.aseprite": {
       "frame": {
-        "x": 401,
+        "x": 666,
         "y": 360,
-        "w": 401,
-        "h": 148
+        "w": 333,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 144,
-        "y": 23,
-        "w": 401,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 333,
+        "h": 105
       },
       "sourceSize": {
         "w": 640,
@@ -338,18 +338,18 @@
     },
     "final_museu 16.aseprite": {
       "frame": {
-        "x": 802,
+        "x": 999,
         "y": 360,
-        "w": 397,
-        "h": 148
+        "w": 333,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 144,
-        "y": 23,
-        "w": 397,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 333,
+        "h": 105
       },
       "sourceSize": {
         "w": 640,
@@ -359,18 +359,18 @@
     },
     "final_museu 17.aseprite": {
       "frame": {
-        "x": 1199,
+        "x": 1332,
         "y": 360,
-        "w": 393,
-        "h": 148
+        "w": 329,
+        "h": 105
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 144,
-        "y": 23,
-        "w": 393,
-        "h": 148
+        "x": 112,
+        "y": 46,
+        "w": 329,
+        "h": 105
       },
       "sourceSize": {
         "w": 640,
@@ -380,18 +380,18 @@
     },
     "final_museu 18.aseprite": {
       "frame": {
-        "x": 2367,
+        "x": 1661,
         "y": 360,
-        "w": 392,
-        "h": 126
+        "w": 328,
+        "h": 94
       },
       "rotated": false,
       "trimmed": true,
       "spriteSourceSize": {
-        "x": 144,
-        "y": 23,
-        "w": 392,
-        "h": 126
+        "x": 112,
+        "y": 45,
+        "w": 328,
+        "h": 94
       },
       "sourceSize": {
         "w": 640,
@@ -406,8 +406,8 @@
     "image": "final_museu.png",
     "format": "RGBA8888",
     "size": {
-      "w": 3838,
-      "h": 508
+      "w": 4078,
+      "h": 465
     },
     "scale": "1",
     "frameTags": [
