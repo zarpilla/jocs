@@ -153,7 +153,7 @@ import {
 } from '../room/regionCharacterScale';
 import { roomRegionEnterEventId, roomRegionExitEventId } from '../events/regionEnterExitEvents';
 import type { RegionEnterExitContext } from '../../types/regionEnterExit';
-import { clampWalkDestinationTowardClick, pointInPolygon, withNonWalkableRegionsAsHoles } from '../walkable';
+import { clampWalkDestinationTowardClick, isPointInWalkableArea, pointInPolygon, withNonWalkableRegionsAsHoles } from '../walkable';
 import { findWalkPath } from '../pathfinding';
 import { dispatchVerbInteraction } from '../verbs/dispatchVerb';
 import {
@@ -4408,10 +4408,11 @@ export class RoomScene extends Phaser.Scene {
     if (charSprite) {
       const data = charSprite.getData('character') as CharacterData | undefined;
       if (data?.walkToPoint) {
-        return {
+        const stand = {
           x: charSprite.x + data.walkToPoint.x,
           y: charSprite.y + data.walkToPoint.y,
         };
+        return this.characterStandSide(charSprite as Phaser.GameObjects.Sprite, data, stand, walkerFeet);
       }
       return getCharacterWorldFeet(charSprite as Phaser.GameObjects.Sprite);
     }
@@ -4426,6 +4427,28 @@ export class RoomScene extends Phaser.Scene {
       console.warn(`[Benne] walkTo: unresolved target "${id}"`);
     }
     return walkerFeet;
+  }
+
+  /**
+   * A `walkToPoint` straight to the right of the feet (the default: "stand beside them") is mirrored to
+   * the side the walker comes from, if that side is walkable. Any other `walkToPoint` (left, in front,
+   * behind) was placed on purpose and is kept as is.
+   */
+  private characterStandSide(
+    sprite: Phaser.GameObjects.Sprite,
+    data: CharacterData,
+    stand: Point2,
+    walkerFeet: Point2,
+  ): Point2 {
+    const feet = getCharacterWorldFeet(sprite);
+    const dx = stand.x - feet.x;
+    const offset = data.feet ? { x: data.walkToPoint!.x - data.feet.x, y: data.walkToPoint!.y - data.feet.y } : null;
+    if (!offset || offset.x <= 0 || offset.y !== 0 || walkerFeet.x >= feet.x - 2) {
+      return stand;
+    }
+    const mirrored = { x: feet.x - dx, y: stand.y };
+    const polys = withNonWalkableRegionsAsHoles(this.roomData.walkable.polygons, this.roomData.regions);
+    return isPointInWalkableArea(mirrored.x, mirrored.y, polys) ? mirrored : stand;
   }
 
   /**

@@ -432,6 +432,25 @@ export function facingToward(kind: 'prop' | 'hotspot' | 'character' | 'item', be
   return Math.abs(dx) >= Math.abs(dy) ? (dx < 0 ? 'L' : 'R') : dy < 0 ? 'U' : 'D';
 }
 
+type CharacterFile = { id: string; walkToPoint?: Point; feet?: Point; animations?: Record<string, unknown> };
+const characterFiles = Object.values(import.meta.glob<CharacterFile>('../characters/*/*.character.json', { eager: true, import: 'default' }));
+
+/**
+ * Cap on s'ha de girar un personatge (L o R) per mirar la protagonista quan li parla o li dona alguna cosa,
+ * o `null` si no s'ha de girar: no té animacions de costat, o el seu `walkToPoint` no és el de per defecte
+ * (just a la dreta dels peus) perquè està posat a propòsit (assegut a una taula, d'esquena, de cara a algú).
+ */
+export function npcFacingPlayer(benneId: string): 'L' | 'R' | null {
+  const def = characterFiles.find((c) => c.id === benneId);
+  if (!def?.animations?.IdleL || !def.walkToPoint || !def.feet) return null;
+  if (def.walkToPoint.x <= def.feet.x || def.walkToPoint.y !== def.feet.y) return null;
+  const handle = benneCharacter(fromBenne('characters', benneId)) as { position?: Point } | undefined;
+  const at = handle?.position;
+  if (!at) return null;
+  const dx = player.position.x - at.x;
+  return Math.abs(dx) < 2 ? null : dx < 0 ? 'L' : 'R';
+}
+
 /** Les capes de l'art lligades a la cosa `id` d'una sala (props `<id>__<capa>`): es mostren i s'amaguen amb ella. */
 function linkedLayers(room: string, id: string): PropHandle[] {
   const file = roomFiles.find((r) => r.id === toBenne('rooms', room));

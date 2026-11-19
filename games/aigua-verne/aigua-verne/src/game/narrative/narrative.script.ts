@@ -12,7 +12,7 @@ import type { DialogHandle, FallbackTarget } from '@benne/script';
 import { guis, music } from '@game';
 import type { Effect, InteractionResult, ResolvedChoice, ResolvedLine, StageCue } from '@aventura/narrative-core';
 import {
-  AMPLADA, AUTOSAVE, applyStageNow, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
+  AMPLADA, AUTOSAVE, applyStageNow, toBenne, roomProp, stageActor, stagePoint, adoptLoadedState, prepareSituation, type Situacio, applyAppearances, prepareEndingPreview, applyPlaces, facingToward, npcFacingPlayer, applySwitchButton, applyHotspotVisibility, showSpeaker, showDueCharacters, benneCharacter, benneDialog, benneRoom, ensureStarted, fromBenne, narrative, optionName, protagonistRoom,
   musicSync, touchRouter, roomMusic, recordLine, setDoorSound, takeDoorSound, rememberProtagonistRoom, roomProtagonist, isSharedRoom, isClickableCutscene, setClickablePrompt, setEnteringProtagonist, takeEnteringProtagonist, takePendingEnding, takePendingSwitch, takePendingGoTo, leavesRoom, targetFromBenne,
 } from './narrative';
 import { statsEnding, statsLoadedGame, statsNewGame } from './estadistiques';
@@ -157,6 +157,12 @@ export function performInteraction(verb: string, target: FallbackTarget, item?: 
     player.walkTo(target.id)
     const facing = facingToward(target.kind, target.id)
     if (facing) player.face(facing)
+    // Si li parla o li dona alguna cosa, el personatge també es gira cap a ella.
+    if (target.kind === 'character' && (verb === 'talkTo' || verb === 'give' || item)) {
+      const npcFacing = npcFacingPlayer(target.id)
+      const npc = benneCharacter(fromBenne('characters', target.id)) as unknown as { face: { now(d: 'L' | 'R'): unknown } } | undefined
+      if (npcFacing && npc) npc.face.now(npcFacing)
+    }
   }
   adoptLoadedState()
   playerActed()
