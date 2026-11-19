@@ -28,7 +28,7 @@ from hd.rooms.comu import _diff
 from hd640.rooms import palau_salo_pla_comu as PL
 from hd640.rooms import palau_galeria_pla_comu as GP
 from hd640.rooms.palau_comu import MARB, ORP, GRANAT, RH
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 PERSONA = 83
 BOTTOM = RH - 1
@@ -377,4 +377,14 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el saló de la subhasta, clar: les aranyes,
+    # la pantalla i el llum de la taula.
+    'characterLights': {
+        'ambient': '#dcd6e0',
+        'lights': [
+            *[llum_personatges(CAM, l.pos, l.r, '#fff0d4', 0.18) for l in LLUMS[:len(ARANYES)]],  # les aranyes
+            llum_personatges(CAM, LLUMS[len(ARANYES)].pos, LLUMS[len(ARANYES)].r, '#9cc0ff', 0.25),  # la pantalla
+            llum_personatges(CAM, LLUMS[len(ARANYES) + 1].pos, LLUMS[len(ARANYES) + 1].r, '#ffe0b0', 0.2),  # el llum de la taula
+        ],
+    },
 }

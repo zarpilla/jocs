@@ -458,5 +458,31 @@
       "reach": 110
     }
   },
-  "floorSquash": 0.45
+  "floorSquash": 0.45,
+  "characterLights": {
+    "ambient": "#7c6c5c",
+    "lights": [
+      {
+        "x": 307,
+        "y": 79,
+        "radius": 224,
+        "color": "#ffd890",
+        "intensity": 0.45
+      },
+      {
+        "x": 148,
+        "y": 103,
+        "radius": 150,
+        "color": "#f4ffe0",
+        "intensity": 0.6
+      },
+      {
+        "x": 464,
+        "y": 140,
+        "radius": 132,
+        "color": "#fff4c8",
+        "intensity": 0.4
+      }
+    ]
+  }
 }

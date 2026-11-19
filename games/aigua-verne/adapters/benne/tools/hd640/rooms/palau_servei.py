@@ -27,7 +27,7 @@ from hd.pix import Canvas, Light, W, H, hr
 from hd.rooms.exterior import fbm
 from hd640.rooms import palau_servei_pla_comu as PL
 from hd640.rooms.palau_comu import (GRIS, CROM, BLANC, BLAU, VERMELL, VERD, NEGRE, estrelles_frames)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 YELLOW, PLAST = PL.YELLOW, PL.PLAST
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
@@ -440,4 +440,16 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el passadís de servei, gris: els
+    # fluorescents, el passaplats i el moll del fons.
+    'characterLights': {
+        'ambient': '#a6aab0',
+        'lights': [
+            llum_personatges(CAM, LLUMS[0].pos, LLUMS[0].r, '#eef6ff', 0.3),  # els fluorescents
+            llum_personatges(CAM, LLUMS[1].pos, LLUMS[1].r, '#eef6ff', 0.3),  # els fluorescents
+            llum_personatges(CAM, LLUMS[2].pos, LLUMS[2].r, '#ffd8a0', 0.25),  # la cuina, pel passaplats
+            llum_personatges(CAM, LLUMS[3].pos, LLUMS[3].r, '#f0f0e8', 0.2),  # el passadís
+            llum_personatges(CAM, LLUMS[4].pos, LLUMS[4].r, '#e0e8ff', 0.3),  # el moll de càrrega
+        ],
+    },
 }

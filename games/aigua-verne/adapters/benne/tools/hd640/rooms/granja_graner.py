@@ -29,7 +29,7 @@ from hd.rooms.exterior import fbm, smooth
 from hd640.rooms import granja_graner_pla_comu as PL
 from hd640.rooms.terra2_comu import (SKY, HILL, FIELD, EARTH, COL, GREYW, BLACKT, IRONR, STRAW, PAPER, text, text_width,
                                      motes_frames, _diff)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 WOOD, DIRT, TRED = PL.WOOD, PL.DIRT, PL.TRED
 
@@ -678,4 +678,14 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el graner fosc: el sol del portal i la
+    # claror de les escletxes.
+    'characterLights': {
+        'ambient': '#76685a',
+        'lights': [
+            llum_personatges(CAM, LLUMS[0].pos, LLUMS[0].r, '#ffdca0', 0.7),  # el sol del portal
+            llum_personatges(CAM, LLUMS[1].pos, LLUMS[1].r, '#ffd090', 0.3),  # el portal, pel terra
+            llum_personatges(CAM, LLUMS[2].pos, LLUMS[2].r, '#ffe0b0', 0.2),  # les escletxes del sostre
+        ],
+    },
 }

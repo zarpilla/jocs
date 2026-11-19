@@ -31,7 +31,7 @@ from hd.rooms.comu import _diff
 from hd.rooms.exterior import fbm
 from hd640.rooms import verdant_cobert_pla_comu as PL
 from hd640.rooms.verdant_comu import (PLANK, WOODG, ZINC, TERRACOTA, BLACKT, HOSE, MAGENTA, CYANF, YELLOWF, galleda)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 ZW = 300                                           # la paret del fons (les eines)
@@ -617,4 +617,14 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el cobert de fusta, fosc: la bombeta, el
+    # sol del jardí per la porta i el raig de la finestra.
+    'characterLights': {
+        'ambient': '#7c6c5c',
+        'lights': [
+            llum_personatges(CAM, LLUMS[0].pos, LLUMS[0].r, '#ffd890', 0.45),  # la bombeta
+            llum_personatges(CAM, LLUMS[1].pos, LLUMS[1].r, '#f4ffe0', 0.6),  # el sol del jardí, per la porta
+            llum_personatges(CAM, LLUMS[2].pos, LLUMS[2].r, '#fff4c8', 0.4),  # el raig de la finestra
+        ],
+    },
 }

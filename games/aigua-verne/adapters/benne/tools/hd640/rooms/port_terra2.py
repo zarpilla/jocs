@@ -546,4 +546,12 @@ GEOMETRIA = {
                  'scaleTop': round((_V_FONS - 2 - HOR) / CH, 3),
                  'scaleBottom': round((_V_PROP + 2 - HOR) / CH, 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el port al ple sol del desert: neutra i
+    # una mica càlida, el sol a dalt a la dreta.
+    'characterLights': {
+        'ambient': '#f6ead8',
+        'lights': [
+            {'x': W + 200, 'y': -300, 'radius': 1000, 'color': '#fff2d8', 'intensity': 0.15},  # el sol: una mica més de llum, i càlida
+        ],
+    },
 }

@@ -523,4 +523,12 @@ GEOMETRIA = {
                  'scaleTop': round((_V_FONS - 2 - HOR) / CAM.pos[1], 3),
                  'scaleBottom': round((_V_PROP + 2 - HOR) / CAM.pos[1], 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la pluja: el cel tapat, gris i fred, sense
+    # cap llum que destaqui.
+    'characterLights': {
+        'ambient': '#90969e',
+        'lights': [
+            {'x': 320, 'y': -400, 'radius': 1000, 'color': '#c8d4e0', 'intensity': 0.12},  # la claror del cel tapat, de dalt
+        ],
+    },
 }

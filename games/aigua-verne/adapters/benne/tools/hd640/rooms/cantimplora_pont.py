@@ -27,7 +27,7 @@ from hd.rooms.exterior import fbm
 from hd640.rooms import pont_pla_comu as PL
 from hd640.rooms.nau_comu import (OLIVE, SAFETY, STEELN, GLASSD, WBLUE, BLACKT, DECKP, WARM, cara_verne, hazard,
                                   stencil)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 # Art a 1× (640×360): amb la perspectiva i la llum, el 2× no compensava el temps de càlcul (vegeu
 # docs/guia-art-profunditat.md). Les textures (el pont pla) també són a 1×.
@@ -453,4 +453,15 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el pont, en penombra: les bombetes, el
+    # finestral, la llum càlida de la bodega i el vidre del mapa.
+    'characterLights': {
+        'ambient': '#8c8c7a',
+        'lights': [
+            *[llum_personatges(CAM, l.pos, l.r, '#ffdc9a', 0.4) for l in LLUMS[:len(LAMPS)]],  # les bombetes
+            llum_personatges(CAM, LLUMS[len(LAMPS)].pos, LLUMS[len(LAMPS)].r, '#ffb070', 0.35),  # la bodega, per la boca
+            llum_personatges(CAM, LLUMS[len(LAMPS) + 1].pos, LLUMS[len(LAMPS) + 1].r, '#9ad0ff', 0.3),  # el vidre del mapa
+            llum_personatges(CAM, LLUMS[len(LAMPS) + 2].pos, LLUMS[len(LAMPS) + 2].r, '#ffe8c0', 0.35),  # el finestral
+        ],
+    },
 }

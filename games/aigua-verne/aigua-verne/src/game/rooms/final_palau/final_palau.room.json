@@ -324,5 +324,38 @@
   "characterOutline": {
     "color": "#1c1626",
     "alpha": 0.75
+  },
+  "characterLights": {
+    "ambient": "#e4e2ea",
+    "lights": [
+      {
+        "x": 500,
+        "y": 131,
+        "radius": 424,
+        "color": "#fff0d4",
+        "intensity": 0.18
+      },
+      {
+        "x": 711,
+        "y": 95,
+        "radius": 298,
+        "color": "#fff0d4",
+        "intensity": 0.18
+      },
+      {
+        "x": 634,
+        "y": 135,
+        "radius": 135,
+        "color": "#78d0ff",
+        "intensity": 0.35
+      },
+      {
+        "x": 206,
+        "y": 105,
+        "radius": 128,
+        "color": "#ffe0b0",
+        "intensity": 0.2
+      }
+    ]
   }
 }

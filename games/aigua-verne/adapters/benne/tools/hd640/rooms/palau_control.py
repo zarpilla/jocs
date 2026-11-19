@@ -32,7 +32,7 @@ from hd.rooms.exterior import fbm
 from hd640.rooms import palau_control_pla_comu as PL
 from hd640.rooms.palau_comu import (CROM, BLANC, BLAU, TURQ, VERMELL, NEGRE, MARB, ORP, lletres_c,
                                     lletres_grans, text_width, gota)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 ACER = PL.ACER
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
@@ -516,4 +516,16 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la sala de control, blava i en penombra:
+    # la claror de la piscina, l'ascensor i el tauler.
+    'characterLights': {
+        'ambient': '#8a94a2',
+        'lights': [
+            llum_personatges(CAM, LLUMS[0].pos, LLUMS[0].r, '#c8f4f0', 0.35),  # la piscina
+            llum_personatges(CAM, LLUMS[1].pos, LLUMS[1].r, '#c8f4f0', 0.2),  # la piscina
+            llum_personatges(CAM, LLUMS[2].pos, LLUMS[2].r, '#f0f4ff', 0.45),  # la cabina de l'ascensor
+            llum_personatges(CAM, LLUMS[3].pos, LLUMS[3].r, '#a8e0ff', 0.25),  # el tauler
+            llum_personatges(CAM, LLUMS[4].pos, LLUMS[4].r, '#ff8070', 0.2),  # la palanca
+        ],
+    },
 }

@@ -439,5 +439,31 @@
   "characterOutline": {
     "color": "#1c1626",
     "alpha": 0.75
+  },
+  "characterLights": {
+    "ambient": "#e6e6ee",
+    "lights": [
+      {
+        "x": 212,
+        "y": 72,
+        "radius": 113,
+        "color": "#fff0d0",
+        "intensity": 0.15
+      },
+      {
+        "x": 361,
+        "y": 75,
+        "radius": 119,
+        "color": "#fff0d0",
+        "intensity": 0.15
+      },
+      {
+        "x": 484,
+        "y": 79,
+        "radius": 288,
+        "color": "#fff8e0",
+        "intensity": 0.35
+      }
+    ]
   }
 }

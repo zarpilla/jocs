@@ -26,7 +26,7 @@ from hd.pix import Canvas, Light, W, H, hr
 from hd.rooms.exterior import fbm
 from hd640.rooms import ferrum_sindicat_pla_comu as PL
 from hd640.rooms.ferrum_comu import COAL, IRONF, TIN, HELM, brick_lvl
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = 259
 ZW = 300                                           # la paret del fons
@@ -453,4 +453,14 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el local del sindicat, fosc i càlid: la
+    # bombeta, l'estufa i el vidre de la porta.
+    'characterLights': {
+        'ambient': '#7a6a5e',
+        'lights': [
+            llum_personatges(CAM, LLUMS[0].pos, LLUMS[0].r, '#ffd090', 0.55),  # la bombeta
+            llum_personatges(CAM, LLUMS[1].pos, LLUMS[1].r, '#ff8840', 0.45, whenPropVisible='estufa'),  # el foc de l'estufa
+            llum_personatges(CAM, LLUMS[2].pos, LLUMS[2].r, '#c8d8ff', 0.25),  # el vidre de la porta
+        ],
+    },
 }

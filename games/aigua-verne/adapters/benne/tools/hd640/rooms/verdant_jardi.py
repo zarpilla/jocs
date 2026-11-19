@@ -681,4 +681,12 @@ GEOMETRIA = {
                  'scaleTop': round((_V_FONS - 2 - HOR) / CAM.pos[1], 3),
                  'scaleBottom': round((_V_PROP + 2 - HOR) / CAM.pos[1], 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el jardí al sol: neutra, el sol al fons a
+    # l'esquerra.
+    'characterLights': {
+        'ambient': '#fafff2',
+        'lights': [
+            {'x': -200, 'y': -300, 'radius': 1200, 'color': '#fffbe0', 'intensity': 0.12},  # el sol: una mica més de llum, i càlida
+        ],
+    },
 }

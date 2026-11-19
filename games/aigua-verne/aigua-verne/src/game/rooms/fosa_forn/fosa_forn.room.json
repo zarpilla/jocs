@@ -1027,5 +1027,54 @@
       "reach": 160
     }
   },
-  "floorSquash": 0.4
+  "floorSquash": 0.4,
+  "characterLights": {
+    "ambient": "#645a54",
+    "lights": [
+      {
+        "x": 166,
+        "y": 102,
+        "radius": 228,
+        "color": "#c8d0dc",
+        "intensity": 0.3
+      },
+      {
+        "x": 426,
+        "y": 106,
+        "radius": 252,
+        "color": "#c8d0dc",
+        "intensity": 0.3
+      },
+      {
+        "x": 692,
+        "y": 110,
+        "radius": 276,
+        "color": "#c8d0dc",
+        "intensity": 0.3
+      },
+      {
+        "x": 73,
+        "y": 128,
+        "radius": 360,
+        "color": "#e8dcc8",
+        "intensity": 0.55
+      },
+      {
+        "x": 305,
+        "y": 153,
+        "radius": 501,
+        "color": "#ff8a30",
+        "intensity": 0.7,
+        "whenPropVisible": "forn_ences"
+      },
+      {
+        "x": 305,
+        "y": 150,
+        "radius": 594,
+        "color": "#ffa040",
+        "intensity": 1.0,
+        "whenPropVisible": "forn_fort"
+      }
+    ]
+  }
 }

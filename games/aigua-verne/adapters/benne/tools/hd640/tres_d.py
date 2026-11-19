@@ -107,6 +107,22 @@ class Llum:
         return (1 - dist / self.r) ** self.power * self.k * (0.35 + 0.65 * cos)
 
 
+def llum_personatges(cam, pos, r, color, intensitat, alt=110, **extra):
+    """
+    Una llum de l'escena com a llum dels personatges (un element de `characterLights.lights` de la GEOMETRIA).
+
+    Els personatges són dibuixos plans: el motor mostreja la llum als cantons del sprite (el cap i els peus), en
+    coordenades de sala. Una llum de sostre projectada tal qual quedaria molt per sobre dels caps, així que el punt
+    baixa fins a `alt` (≈ el pit d'un personatge) i l'abast és el de l'escena a la profunditat d'aquell punt.
+    `extra`: `power`, `squash`, `whenPropVisible`.
+    """
+    x, y, z = pos
+    P = (x, min(y, alt), z)
+    u, v, _ = cam.projecta(P)
+    return {'x': round(u), 'y': round(v), 'radius': round(r * cam.escala(P)), 'color': color,
+            'intensity': intensitat, **extra}
+
+
 def _homografia(q):
     """Matriu 3×3 que porta el quadrat unitat (s, t) al quadrilàter q (P0, P1, P2, P3) de la pantalla."""
     (x0, y0), (x1, y1), (x2, y2), (x3, y3) = q

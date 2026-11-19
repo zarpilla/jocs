@@ -753,4 +753,12 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la sal enlluernadora del fons del mar:
+    # gairebé neutra, una mica freda, i el sol de dalt.
+    'characterLights': {
+        'ambient': '#eceef2',
+        'lights': [
+            {'x': W, 'y': -300, 'radius': 1000, 'color': '#fff6e6', 'intensity': 0.15},  # el sol: una mica més de llum, i càlida
+        ],
+    },
 }

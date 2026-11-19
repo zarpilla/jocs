@@ -31,7 +31,7 @@ from hd.pix import Canvas, Light, W, H, hr, B4, mix
 from hd.rooms.exterior import fbm
 from hd640.rooms import granja_casa_pla_comu as PL
 from hd640.rooms.terra2_comu import LIME, TERRA, PLANK, STONE, BLACKT, PAPER, CLOTH, motes_frames, _diff
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 XR = 420                                           # la paret del finestró (la de la dreta)
@@ -649,4 +649,13 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la cuina de la granja, en penombra: el sol
+    # del finestró i les brases de la llar.
+    'characterLights': {
+        'ambient': '#8a7a6a',
+        'lights': [
+            llum_personatges(CAM, LLUMS[0].pos, LLUMS[0].r, '#ffe2a8', 0.6),  # el sol del finestró
+            llum_personatges(CAM, LLUMS[2].pos, LLUMS[2].r, '#ff7a30', 0.5),  # les brases
+        ],
+    },
 }

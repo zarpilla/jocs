@@ -48,7 +48,7 @@ from hd640.rooms import fosa_colada_pla_comu as PL
 from hd640.rooms.ferrum_comu import (RH, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, PLANKF, RUSTF, nave_wall, crane_rail)
 from hd640.rooms.fosa_forn import (_brick, _terra, _local, _peu, cilindre, columna, tronc, lingots, lingoteres,
                                    carretilla, tenalles, escoria)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = RH - 1
 ZB = 860                                           # la paret del fons
@@ -772,4 +772,15 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la fosa, fosca i de sutge: els finestrals,
+    # el llum de taller, la claror del forn i el metall fos.
+    'characterLights': {
+        'ambient': '#645a54',
+        'lights': [
+            *[llum_personatges(CAM, l.pos, l.r, '#c8d0dc', 0.3) for l in LLUMS[:3]],  # els finestrals
+            llum_personatges(CAM, LLUMS[3].pos, LLUMS[3].r, '#ffd8a0', 0.55),  # el llum de taller
+            llum_personatges(CAM, LLUMS[4].pos, LLUMS[4].r, '#ff9a50', 0.3),  # el forn, pel pas
+            llum_personatges(CAM, FOS.pos, FOS.r, '#ff7a28', 0.7, whenPropVisible='gresol_ple'),  # el metall fos, amb el gresol ple
+        ],
+    },
 }

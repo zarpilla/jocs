@@ -502,5 +502,45 @@
       "stretch": 0.5,
       "reach": 140
     }
+  },
+  "characterLights": {
+    "ambient": "#8c8c7a",
+    "lights": [
+      {
+        "x": 235,
+        "y": 75,
+        "radius": 183,
+        "color": "#ffdc9a",
+        "intensity": 0.4
+      },
+      {
+        "x": 382,
+        "y": 78,
+        "radius": 192,
+        "color": "#ffdc9a",
+        "intensity": 0.4
+      },
+      {
+        "x": 130,
+        "y": 151,
+        "radius": 104,
+        "color": "#ffb070",
+        "intensity": 0.35
+      },
+      {
+        "x": 515,
+        "y": 136,
+        "radius": 105,
+        "color": "#9ad0ff",
+        "intensity": 0.3
+      },
+      {
+        "x": 291,
+        "y": 72,
+        "radius": 197,
+        "color": "#ffe8c0",
+        "intensity": 0.35
+      }
+    ]
   }
 }

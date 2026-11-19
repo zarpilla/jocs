@@ -544,5 +544,45 @@
       "reach": 140
     }
   },
-  "floorSquash": 0.45
+  "floorSquash": 0.45,
+  "characterLights": {
+    "ambient": "#8a94a2",
+    "lights": [
+      {
+        "x": 354,
+        "y": 82,
+        "radius": 291,
+        "color": "#c8f4f0",
+        "intensity": 0.35
+      },
+      {
+        "x": 199,
+        "y": 83,
+        "radius": 213,
+        "color": "#c8f4f0",
+        "intensity": 0.2
+      },
+      {
+        "x": 120,
+        "y": 68,
+        "radius": 163,
+        "color": "#f0f4ff",
+        "intensity": 0.45
+      },
+      {
+        "x": 319,
+        "y": 85,
+        "radius": 128,
+        "color": "#a8e0ff",
+        "intensity": 0.25
+      },
+      {
+        "x": 554,
+        "y": 104,
+        "radius": 104,
+        "color": "#ff8070",
+        "intensity": 0.2
+      }
+    ]
+  }
 }

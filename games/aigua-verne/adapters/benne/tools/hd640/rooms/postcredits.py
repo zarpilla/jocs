@@ -631,4 +631,12 @@ GEOMETRIA = {
     'characterShadow': {'enabled': True, 'color': '#1a1012', 'alpha': 0.4, 'squash': 0.32, 'core': 0.6,
                         'light': {'x': round(_U_SOMBRA[0] - _U_SOMBRA0[0], 2),
                                   'y': round(_U_SOMBRA[1] - _U_SOMBRA0[1], 2), 'direction': True, 'stretch': 0.9}},
+    # La llum de la sala sobre els personatges (characterLights del motor): el carrer de Ferrum al capvespre: una mica
+    # fosc i morat, el sol baix a la dreta.
+    'characterLights': {
+        'ambient': '#8a7a7c',
+        'lights': [
+            {'x': W + 200, 'y': 100, 'radius': 900, 'color': '#ffb478', 'intensity': 0.25},  # el sol baix, a la dreta
+        ],
+    },
 }

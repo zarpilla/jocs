@@ -31,7 +31,7 @@ from hd.rooms.comu import _diff
 from hd640.rooms import proleg_palau_pla_comu as PL
 from hd640.rooms.palau_comu import (MARB, ORP, TURQ, CROM, NEGRE, AIGUA, espai, terra2, diposit,
                                     vena, panell_valor, estrelles_frames, aigua_aquari, peixos)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, negre)
 BARRA = 18                                         # la franja negra de dalt (cinema)
@@ -484,4 +484,14 @@ GEOMETRIA = {
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, round(_V_FONS) - 2), (W - 1, round(_V_FONS) - 2), (W - 1, round(_V_PROP) + 2),
                             (0, round(_V_PROP) + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el despatx de l'anunci: la llum perfecta
+    # de plató, l'aquari, Terra-2 pel vidre i el focus.
+    'characterLights': {
+        'ambient': '#b8b4c0',
+        'lights': [
+            # l'anunci, l'aquari, Terra-2 pel vidre i el focus (encès: el decorat `focus_apagat` no en treu la llum)
+            *[llum_personatges(CAM, l.pos, l.r, c, k) for l, c, k in zip(_llums(), ('#fff4e8', '#78d0ff', '#ffd8a8', '#fff8e8'),
+                                                              (0.25, 0.35, 0.2, 0.35))],
+        ],
+    },
 }

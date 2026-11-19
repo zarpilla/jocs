@@ -28,7 +28,7 @@ from hd.pix import Canvas, Light, W, H, hr
 from hd.rooms.exterior import fbm
 from hd640.rooms import verdant_residencia_pla_comu as PL
 from hd640.rooms.verdant_comu import WHITEV, MARBLE, GOLDV, BLUEG
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 ZW = 300                                           # la paret del fons (el quadre)
@@ -470,4 +470,13 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la residència blanca, molt clara: les
+    # apliques i el sol del finestral.
+    'characterLights': {
+        'ambient': '#e6e6ee',
+        'lights': [
+            *[llum_personatges(CAM, l.pos, l.r, '#fff0d0', 0.15) for l in LLUMS[:len(APLIQUES)]],  # les apliques
+            llum_personatges(CAM, LLUMS[len(APLIQUES)].pos, LLUMS[len(APLIQUES)].r, '#fff8e0', 0.35),  # el sol del finestral
+        ],
+    },
 }

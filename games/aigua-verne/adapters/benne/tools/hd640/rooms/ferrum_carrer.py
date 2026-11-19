@@ -34,7 +34,7 @@ from hd640.rooms.ferrum_comu import (
     SOOT, MORTAR, COB, COAL, IRONF, RUSTF, TIN, PLANKF, WATER, GLOWF, smog_sky, canonada, brick_lvl,
     finestres_enceses, llum_finestra, bassa_fanal, con_fanal, fanal_paret)
 from hd640.rooms.cantimplora_comu import Cantimplora
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = 259
 HOR = 21                                           # l'horitzó a la pantalla (amagat darrere les cases)
@@ -766,4 +766,13 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): el carrer al capvespre: una mica fosc i
+    # morat, el sol baix a l'esquerra i la foguera.
+    'characterLights': {
+        'ambient': '#8a7a7c',
+        'lights': [
+            {'x': -200, 'y': 100, 'radius': 900, 'color': '#ffb478', 'intensity': 0.25},  # el sol baix, a l'esquerra
+            llum_personatges(CAM, LLUMS[1].pos, LLUMS[1].r, '#ff9040', 0.7),  # la foguera
+        ],
+    },
 }

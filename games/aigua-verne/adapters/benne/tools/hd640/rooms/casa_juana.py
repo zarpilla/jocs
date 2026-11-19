@@ -33,7 +33,7 @@ from hd.rooms.exterior import fbm, vnoise
 from hd640.rooms import casa_juana_pla_comu as PL
 from hd640.rooms.casa_juana_pla_comu import WOODI, RIB, DAY, BOOKS
 from hd640.rooms.aqua_comu import SAND, PAINTW, STEELA, BLACKT, RUSTA
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = 259                                       # la sala acaba aquí (a sota, la barra de verbs)
 ZW = 300                                           # la paret del fons (el costat de la barca)
@@ -581,4 +581,14 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la casa de fusta, càlida i fosca: la
+    # làmpada, la claror freda de la porta i l'ull de bou.
+    'characterLights': {
+        'ambient': '#8a7464',
+        'lights': [
+            llum_personatges(CAM, LLUMS[0].pos, LLUMS[0].r, '#ffc880', 0.55),  # la làmpada
+            llum_personatges(CAM, LLUMS[1].pos, LLUMS[1].r, '#eef2ff', 0.5),  # la porta
+            llum_personatges(CAM, LLUMS[2].pos, LLUMS[2].r, '#dde8ff', 0.2),  # l'ull de bou
+        ],
+    },
 }

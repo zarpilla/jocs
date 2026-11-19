@@ -408,5 +408,17 @@
     "squash": 0.28,
     "core": 0.6
   },
-  "floorSquash": 0.25
+  "floorSquash": 0.25,
+  "characterLights": {
+    "ambient": "#90969e",
+    "lights": [
+      {
+        "x": 320,
+        "y": -400,
+        "radius": 1000,
+        "color": "#c8d4e0",
+        "intensity": 0.12
+      }
+    ]
+  }
 }

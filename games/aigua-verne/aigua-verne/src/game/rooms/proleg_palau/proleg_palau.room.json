@@ -211,5 +211,38 @@
       "reach": 160
     }
   },
-  "floorSquash": 0.35
+  "floorSquash": 0.35,
+  "characterLights": {
+    "ambient": "#b8b4c0",
+    "lights": [
+      {
+        "x": 335,
+        "y": 121,
+        "radius": 389,
+        "color": "#fff4e8",
+        "intensity": 0.25
+      },
+      {
+        "x": 581,
+        "y": 114,
+        "radius": 120,
+        "color": "#78d0ff",
+        "intensity": 0.35
+      },
+      {
+        "x": 237,
+        "y": 107,
+        "radius": 350,
+        "color": "#ffd8a8",
+        "intensity": 0.2
+      },
+      {
+        "x": 332,
+        "y": 120,
+        "radius": 144,
+        "color": "#fff8e8",
+        "intensity": 0.35
+      }
+    ]
+  }
 }

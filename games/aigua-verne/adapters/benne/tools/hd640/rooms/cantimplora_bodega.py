@@ -34,7 +34,7 @@ from hd.rooms.exterior import fbm
 from hd.personatges import diu
 from hd640.rooms import cantimplora_bodega_pla_comu as PL
 from hd640.rooms.nau_comu import OLIVE, SAFETY, STEELN, DECKP, BLACKT, REDK, WOODB
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 # Art a 1× (640×360), com el pont: les textures (la bodega plana) també són a 1×.
 from hd.pix import Canvas  # noqa: E402,F811
@@ -642,4 +642,13 @@ GEOMETRIA = {
                  'scaleTop': round(CAM.escala(_DIU), 3), 'scaleBottom': round(CAM.escala(_DIU), 3),
                  'points': [(round(_DIU_UV[0]) - 24, round(_DIU_UV[1]) - 30), (round(_DIU_UV[0]) + 24, round(_DIU_UV[1]) - 30),
                             (round(_DIU_UV[0]) + 24, round(_DIU_UV[1]) + 4), (round(_DIU_UV[0]) - 24, round(_DIU_UV[1]) + 4)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la bodega verd oliva, fosca: les bombetes
+    # del sostre i la claror de fora, per la rampa.
+    'characterLights': {
+        'ambient': '#8c8a78',
+        'lights': [
+            *[llum_personatges(CAM, l.pos, l.r, '#ffdc9a', 0.45) for l in _llums()[:len(LAMPS)]],  # les bombetes
+            llum_personatges(CAM, _llums()[len(LAMPS)].pos, _llums()[len(LAMPS)].r, '#fff0d0', 0.5),  # la claror del desert, per la rampa
+        ],
+    },
 }

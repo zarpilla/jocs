@@ -42,7 +42,7 @@ from hd.rooms.exterior import fbm
 from hd640.rooms import fosa_forn_pla_comu as PL
 from hd640.rooms.ferrum_comu import (RH, SMOG, SLAGF, SOOT, MORTAR, COB, COAL, IRONF, RUSTF, PLANKF, FIREF,
                                      brick_lvl, nave_wall, crane_rail, pila_comptadors)
-from hd640.tres_d import Camera, Escena, Llum
+from hd640.tres_d import Camera, Escena, Llum, llum_personatges
 
 BOTTOM = RH - 1                                    # la sala acaba aquí (a sota, la barra de verbs)
 ZB = 860                                           # la paret del fons
@@ -780,4 +780,15 @@ GEOMETRIA = {
     'regions': [{'id': 'perspectiva', 'active': True, 'scaleEnabled': True, 'scaleWalkSpeed': True,
                  'scaleTop': round(_escala_a(_V_FONS - 2), 3), 'scaleBottom': round(_escala_a(_V_PROP + 2), 3),
                  'points': [(0, _V_FONS - 2), (W - 1, _V_FONS - 2), (W - 1, _V_PROP + 2), (0, _V_PROP + 2)]}],
+    # La llum de la sala sobre els personatges (characterLights del motor): la fosa, fosca i de sutge: els finestrals,
+    # la claror del carrer per la porta i el forn quan crema.
+    'characterLights': {
+        'ambient': '#645a54',
+        'lights': [
+            *[llum_personatges(CAM, l.pos, l.r, '#c8d0dc', 0.3) for l in LLUMS[:len(WINDOWS)]],  # els finestrals
+            llum_personatges(CAM, LLUMS[len(WINDOWS)].pos, LLUMS[len(WINDOWS)].r, '#e8dcc8', 0.55),  # el carrer, per la porta
+            llum_personatges(CAM, FOC[1].pos, FOC[1].r, '#ff8a30', 0.7, whenPropVisible='forn_ences'),  # el forn encès
+            llum_personatges(CAM, FOC[2].pos, FOC[2].r, '#ffa040', 1.0, whenPropVisible='forn_fort'),  # el forn a tota màquina
+        ],
+    },
 }
