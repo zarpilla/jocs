@@ -233,8 +233,9 @@ enganxat sobre el fons. Quatre ajustos el fan seure a l'espai, i el cinquè el f
        un píxel enter (`sub` a `hd/gran.py`), o els peus es mouen mig píxel en canviar de mida.
      - A L'Última Arrel, la caseta d'obra i el campament es van dibuixar per a personatges de 97 px i els fulls van
        quedar a 68 (`K_FULLS`): escalats a 1,75, cada píxel del personatge era el doble que els del decorat. Ara la
-       Vet hi porta la mida `Gran` (×1,5) i el motor la mostra a 0,7–1,2. Suma Zero té els fulls de lluny de la Vet
-       dibuixats però apagats (`VET_LLUNY`): amb `sizeVariants` ja es poden encendre.
+       Vet hi porta la mida `Gran` (×1,5) i el motor la mostra a 0,7–1,2. A Suma Zero, a bcmu_contenidor (de 0,40 a
+       0,80), la Vet porta `Lluny` a 0,66 i no a 0,56 (la mida de 480): així el full petit no s'amplia mai de més
+       d'1,2. L'escala de la mida es tria pel rang de tota la sala, no pel punt més llunyà.
    - **La mida dels personatges es decideix abans de les sales.** Una mida de full nova és feina (totes les
      animacions i robes que s'hi porten, i la cara refeta); si es decideix abans de pintar la sala, no cal.
    - Ordre de dibuix: els mobles del pla mitjà (el llit, el pou, les caixes) van en capes pròpies amb una línia base
